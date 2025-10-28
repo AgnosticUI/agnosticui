@@ -680,8 +680,124 @@ describe('AccordionItem - Accessibility Compliance', () => {
     });
 
     it.todo('should support configurable auto-collapse behavior');
-    it.todo('should support customizable expand/collapse icons');
     it.todo('should handle rapid keyboard interactions gracefully');
     it.todo('should maintain proper screen reader announcements for state changes');
+  });
+
+  describe('Indicator Variants - New Features', () => {
+    it('should default to chevron indicator (useChevron=true)', async () => {
+      expect(el.useChevron).toBe(true);
+      expect(el.useX).toBe(false);
+      expect(el.useMinus).toBe(false);
+      expect(el.noIndicator).toBe(false);
+
+      // Verify chevron SVG is rendered
+      await el.updateComplete;
+      const indicator = el.shadowRoot!.querySelector('.indicator');
+      const svg = indicator!.querySelector('svg');
+      expect(svg).not.toBeNull();
+
+      // Chevron has the down-pointing path
+      const path = svg!.querySelector('path');
+      expect(path!.getAttribute('d')).toBe('m6 9 6 6 6-6');
+    });
+
+    it('should render X indicator when useX is true', async () => {
+      el.useX = true;
+      await el.updateComplete;
+
+      expect(el.hasAttribute('use-x')).toBe(true);
+
+      // Verify plus SVG is rendered (for X indicator)
+      const indicator = el.shadowRoot!.querySelector('.indicator');
+      const svg = indicator!.querySelector('svg');
+      expect(svg).not.toBeNull();
+
+      // Plus has vertical and horizontal paths
+      const paths = svg!.querySelectorAll('path');
+      expect(paths.length).toBe(2);
+    });
+
+    it('should render plus/minus indicator when useMinus is true', async () => {
+      el.useMinus = true;
+      await el.updateComplete;
+
+      expect(el.hasAttribute('use-minus')).toBe(true);
+
+      // When closed, should show plus
+      let indicator = el.shadowRoot!.querySelector('.indicator');
+      let svg = indicator!.querySelector('svg');
+      let paths = svg!.querySelectorAll('path');
+      expect(paths.length).toBe(2); // Plus has 2 paths
+
+      // When open, should show minus
+      el.open = true;
+      await el.updateComplete;
+
+      indicator = el.shadowRoot!.querySelector('.indicator');
+      svg = indicator!.querySelector('svg');
+      paths = svg!.querySelectorAll('path');
+      expect(paths.length).toBe(1); // Minus has 1 path
+    });
+
+    it('should hide indicator when noIndicator is true', async () => {
+      el.noIndicator = true;
+      await el.updateComplete;
+
+      expect(el.hasAttribute('no-indicator')).toBe(true);
+
+      // Verify CSS rule exists for hiding indicator
+      const styleContent = AccordionItem.styles.toString();
+      expect(styleContent).toContain(':host([no-indicator]) .indicator');
+      expect(styleContent).toContain('display: none');
+    });
+
+    it('should respect indicator priority: noIndicator > useX > useMinus > useChevron', async () => {
+      // Set all to true
+      el.useChevron = true;
+      el.useX = true;
+      el.useMinus = true;
+      el.noIndicator = true;
+      await el.updateComplete;
+
+      // noIndicator should win - verify attribute is set
+      expect(el.hasAttribute('no-indicator')).toBe(true);
+
+      // Verify CSS rule exists for hiding
+      const styleContent = AccordionItem.styles.toString();
+      expect(styleContent).toContain(':host([no-indicator]) .indicator');
+
+      // Remove noIndicator, useX should win (check attribute and SVG)
+      el.noIndicator = false;
+      await el.updateComplete;
+
+      expect(el.hasAttribute('use-x')).toBe(true);
+      const indicator = el.shadowRoot!.querySelector('.indicator');
+      const svg = indicator!.querySelector('svg');
+      const paths = svg!.querySelectorAll('path');
+      expect(paths.length).toBe(2); // Plus for X indicator
+    });
+
+    it('should apply correct transform for chevron when open', async () => {
+      el.useChevron = true;
+      await el.updateComplete;
+
+      // Verify CSS contains rotation rule
+      const styleContent = AccordionItem.styles.toString();
+      expect(styleContent).toContain(':host([use-chevron][open]) .indicator');
+      expect(styleContent).toContain('transform: rotate(180deg)');
+    });
+
+    it('should apply correct transforms for X indicator', async () => {
+      el.useX = true;
+      await el.updateComplete;
+
+      // Verify CSS contains both rotation rules
+      const styleContent = AccordionItem.styles.toString();
+      expect(styleContent).toContain(':host([use-x]) .indicator');
+      expect(styleContent).toContain('transform: rotate(180deg)');
+      expect(styleContent).toContain(':host([use-x][open]) .indicator');
+      expect(styleContent).toContain('transform: rotate(45deg)');
+    });
   });
 });

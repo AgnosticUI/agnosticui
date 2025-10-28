@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 import { fn } from 'storybook/test';
 import { ReactAccordion, AccordionItem, ItemHeader, ItemContent, type ReactAccordionItemProps } from 'agnosticui-core/accordion/react';
 
@@ -22,9 +21,21 @@ const meta: Meta<ReactAccordionItemProps> = {
       control: 'boolean',
       description: 'Disabled state',
     },
-    indicator: {
+    useChevron: {
       control: 'boolean',
-      description: 'Show expand/collapse indicator',
+      description: 'Uses chevron indicator (default, rotates 180° when open)',
+    },
+    useX: {
+      control: 'boolean',
+      description: 'Uses X indicator (plus rotated 180°, becomes X at 45° when open)',
+    },
+    useMinus: {
+      control: 'boolean',
+      description: 'Uses plus/minus indicator (plus transitions to minus when open)',
+    },
+    noIndicator: {
+      control: 'boolean',
+      description: 'Hides the indicator completely',
     },
     bordered: {
       control: 'boolean',
@@ -45,7 +56,10 @@ const meta: Meta<ReactAccordionItemProps> = {
     open: false,
     headingLevel: 3,
     disabled: false,
-    indicator: true,
+    useChevron: true,
+    useX: false,
+    useMinus: false,
+    noIndicator: false,
     bordered: false,
     background: false,
     onToggle: fn(),
@@ -82,7 +96,7 @@ export const Default: Story = {
 
 export const WithIndicator: Story = {
   args: {
-    indicator: true,
+    useChevron: true,
   },
   render: (args) => (
     <ReactAccordion>
@@ -105,7 +119,7 @@ export const WithIndicator: Story = {
 export const Bordered: Story = {
   args: {
     bordered: true,
-    indicator: true,
+    useChevron: true,
   },
   render: (args) => (
     <ReactAccordion>
@@ -128,7 +142,7 @@ export const Bordered: Story = {
 export const WithBackground: Story = {
   args: {
     background: true,
-    indicator: true,
+    useChevron: true,
   },
   render: (args) => (
     <ReactAccordion>
@@ -150,7 +164,7 @@ export const WithBackground: Story = {
 
 export const OneOpen: Story = {
   args: {
-    indicator: true,
+    useChevron: true,
   },
   render: (args) => (
     <ReactAccordion>
@@ -179,11 +193,11 @@ export const OneOpen: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
-    indicator: true,
+    useChevron: true,
   },
   render: (args) => (
     <ReactAccordion>
-      <AccordionItem indicator={true}>
+      <AccordionItem useChevron={true}>
         <ItemHeader>Enabled Item</ItemHeader>
         <ItemContent>
           <p>This item can be toggled</p>
@@ -195,7 +209,7 @@ export const Disabled: Story = {
           <p>This item cannot be toggled</p>
         </ItemContent>
       </AccordionItem>
-      <AccordionItem indicator={true}>
+      <AccordionItem useChevron={true}>
         <ItemHeader>Another Enabled Item</ItemHeader>
         <ItemContent>
           <p>This item can also be toggled</p>
@@ -205,10 +219,82 @@ export const Disabled: Story = {
   ),
 };
 
+export const PlusMinusIndicator: Story = {
+  args: {
+    useMinus: true,
+  },
+  render: (args) => (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h4 style={{ marginTop: 0 }}>Plus/Minus Indicator</h4>
+      <p style={{ marginBottom: '1rem', color: '#6b7280' }}>
+        Plus transitions to minus when open with smooth animation.
+      </p>
+      <ReactAccordion>
+        <AccordionItem useMinus={true}>
+          <ItemHeader>Accordion with Plus/Minus</ItemHeader>
+          <ItemContent>
+            <p>This shows a plus when closed and a minus when open.</p>
+          </ItemContent>
+        </AccordionItem>
+
+        <AccordionItem useMinus={true}>
+          <ItemHeader>Another Plus/Minus Item</ItemHeader>
+          <ItemContent>
+            <p>The plus rotates while swapping to minus.</p>
+          </ItemContent>
+        </AccordionItem>
+
+        <AccordionItem useMinus={true}>
+          <ItemHeader>Third Plus/Minus Item</ItemHeader>
+          <ItemContent>
+            <p>A classic expand/collapse indicator style.</p>
+          </ItemContent>
+        </AccordionItem>
+      </ReactAccordion>
+    </div>
+  ),
+};
+
+export const XIndicator: Story = {
+  args: {
+    useX: true,
+  },
+  render: (args) => (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h4 style={{ marginTop: 0 }}>X Indicator</h4>
+      <p style={{ marginBottom: '1rem', color: '#6b7280' }}>
+        Plus rotated 180° (upside down) when closed, rotates to 45° forming an X when open.
+      </p>
+      <ReactAccordion>
+        <AccordionItem useX={true}>
+          <ItemHeader>Accordion with X Indicator</ItemHeader>
+          <ItemContent>
+            <p>This uses a plus icon that transforms into an X when opened.</p>
+          </ItemContent>
+        </AccordionItem>
+
+        <AccordionItem useX={true}>
+          <ItemHeader>Another X Item</ItemHeader>
+          <ItemContent>
+            <p>Watch the smooth transition from plus to X.</p>
+          </ItemContent>
+        </AccordionItem>
+
+        <AccordionItem useX={true}>
+          <ItemHeader>Third X Item</ItemHeader>
+          <ItemContent>
+            <p>The X indicator provides a different visual style.</p>
+          </ItemContent>
+        </AccordionItem>
+      </ReactAccordion>
+    </div>
+  ),
+};
+
 export const CustomHeadingLevel: Story = {
   args: {
     headingLevel: 2,
-    indicator: true,
+    useChevron: true,
   },
   render: (args) => (
     <div>
@@ -233,7 +319,7 @@ export const CustomHeadingLevel: Story = {
 
 export const RichContent: Story = {
   args: {
-    indicator: true,
+    useChevron: true,
     bordered: true,
   },
   render: (args) => (
@@ -253,7 +339,7 @@ export const RichContent: Story = {
         <ItemHeader>Code Example</ItemHeader>
         <ItemContent>
           <pre>
-{`<AccordionItem indicator={true}>
+{`<AccordionItem useChevron={true}>
   <ItemHeader>Title</ItemHeader>
   <ItemContent>Content</ItemContent>
 </AccordionItem>`}
@@ -279,58 +365,41 @@ export const RichContent: Story = {
 // Event testing story
 export const EventTesting: Story = {
   args: {
-    indicator: true,
+    useChevron: true,
   },
-  render: (args) => {
-    const [toggleCounts, setToggleCounts] = useState<Record<number, number>>({
-      0: 0,
-      1: 0,
-      2: 0,
-    });
-    const [lastToggled, setLastToggled] = useState<string>('None');
+  render: (args) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '20px' }}>
+      <p style={{ marginBottom: '1rem' }}>
+        Click on accordion headers to test toggle events. Check the Actions panel below for event logs.
+      </p>
 
-    const handleToggle = (index: number, itemName: string) => (event: any) => {
-      setToggleCounts(prev => ({ ...prev, [index]: prev[index] + 1 }));
-      setLastToggled(`${itemName} (${event.detail.open ? 'opened' : 'closed'})`);
-      args.onToggle?.(event);
-    };
+      <ReactAccordion>
+        <AccordionItem useChevron={true} onToggle={args.onToggle}>
+          <ItemHeader>Click to Test Events</ItemHeader>
+          <ItemContent>
+            <p>Click the header above to trigger a toggle event. Check the Actions
+            panel below for event logs.</p>
+          </ItemContent>
+        </AccordionItem>
+        <AccordionItem useChevron={true} onToggle={args.onToggle}>
+          <ItemHeader>Another Test Item</ItemHeader>
+          <ItemContent>
+            <p>This is another accordion item for testing events.</p>
+          </ItemContent>
+        </AccordionItem>
+        <AccordionItem useChevron={true} onToggle={args.onToggle}>
+          <ItemHeader>Third Test Item</ItemHeader>
+          <ItemContent>
+            <p>Test keyboard navigation with Space/Enter to toggle.</p>
+          </ItemContent>
+        </AccordionItem>
+      </ReactAccordion>
 
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '20px' }}>
-        <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-          <p>Item 1 toggles: {toggleCounts[0]}</p>
-          <p>Item 2 toggles: {toggleCounts[1]}</p>
-          <p>Item 3 toggles: {toggleCounts[2]}</p>
-        </div>
-        <p>Last toggled: {lastToggled}</p>
-
-        <ReactAccordion>
-          <AccordionItem {...args} onToggle={handleToggle(0, 'Item 1')}>
-            <ItemHeader>Item 1</ItemHeader>
-            <ItemContent>
-              <p>Click the header or press Space/Enter to toggle</p>
-            </ItemContent>
-          </AccordionItem>
-          <AccordionItem {...args} onToggle={handleToggle(1, 'Item 2')}>
-            <ItemHeader>Item 2</ItemHeader>
-            <ItemContent>
-              <p>Use arrow keys to navigate between items</p>
-            </ItemContent>
-          </AccordionItem>
-          <AccordionItem {...args} onToggle={handleToggle(2, 'Item 3')}>
-            <ItemHeader>Item 3</ItemHeader>
-            <ItemContent>
-              <p>Home/End keys jump to first/last item</p>
-            </ItemContent>
-          </AccordionItem>
-        </ReactAccordion>
-
-        <p style={{ fontSize: '0.875rem', color: '#6b7280' }}>
-          Click headers or use keyboard (Space/Enter to toggle, Arrow keys to navigate)
-        </p>
-      </div>
-    );
-  },
+      <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '1rem' }}>
+        Check the Actions panel below for event logs (shows open/closed state)
+      </p>
+    </div>
+  ),
 };
 
 // CSS Parts customization
@@ -407,7 +476,7 @@ export const CSSPartsCustomization: Story = {
         <div style={{ marginBottom: '3rem' }}>
           <h4>Gradient Style</h4>
           <ReactAccordion>
-            <AccordionItem className="custom-accordion" indicator={true}>
+            <AccordionItem className="custom-accordion" useChevron={true}>
               <ItemHeader>Custom Styled Header</ItemHeader>
               <ItemContent>
                 This accordion uses CSS Shadow Parts to apply a gradient background,
@@ -415,7 +484,7 @@ export const CSSPartsCustomization: Story = {
               </ItemContent>
             </AccordionItem>
 
-            <AccordionItem className="custom-accordion" indicator={true}>
+            <AccordionItem className="custom-accordion" useChevron={true}>
               <ItemHeader>Another Custom Item</ItemHeader>
               <ItemContent>
                 All styling is done through CSS Shadow Parts, allowing full control
@@ -423,7 +492,7 @@ export const CSSPartsCustomization: Story = {
               </ItemContent>
             </AccordionItem>
 
-            <AccordionItem className="custom-accordion" indicator={true}>
+            <AccordionItem className="custom-accordion" useChevron={true}>
               <ItemHeader>Third Custom Item</ItemHeader>
               <ItemContent>
                 This demonstrates the power of CSS Shadow Parts for component customization
@@ -436,21 +505,21 @@ export const CSSPartsCustomization: Story = {
         <div>
           <h4>Minimal Style</h4>
           <ReactAccordion>
-            <AccordionItem className="minimal-accordion" indicator={true}>
+            <AccordionItem className="minimal-accordion" useChevron={true}>
               <ItemHeader>Minimal Styled Header</ItemHeader>
               <ItemContent>
                 This variant uses a minimal border-left design with subtle styling.
               </ItemContent>
             </AccordionItem>
 
-            <AccordionItem className="minimal-accordion" indicator={true}>
+            <AccordionItem className="minimal-accordion" useChevron={true}>
               <ItemHeader>Another Minimal Item</ItemHeader>
               <ItemContent>
                 Clean and simple styling focused on content hierarchy.
               </ItemContent>
             </AccordionItem>
 
-            <AccordionItem className="minimal-accordion" indicator={true}>
+            <AccordionItem className="minimal-accordion" useChevron={true}>
               <ItemHeader>Third Minimal Item</ItemHeader>
               <ItemContent>
                 Demonstrates alternative styling approach using the same CSS Shadow Parts API.

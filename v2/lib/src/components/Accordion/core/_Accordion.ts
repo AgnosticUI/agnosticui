@@ -42,9 +42,13 @@ export interface AccordionItemProps {
   open?: boolean;
   headingLevel?: number;
   disabled?: boolean;
-  indicator?: boolean;
   bordered?: boolean;
   background?: boolean;
+  // Indicator variants (mutually exclusive, priority: noIndicator > useX > useMinus > useChevron)
+  useChevron?: boolean;
+  useX?: boolean;
+  useMinus?: boolean;
+  noIndicator?: boolean;
   // Event handlers
   onToggle?: (event: AccordionItemToggleEvent) => void;
 }
@@ -75,17 +79,23 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
     open: { type: Boolean, reflect: true },
     headingLevel: { type: Number, attribute: 'heading-level' },
     disabled: { type: Boolean, reflect: true },
-    indicator: { type: Boolean, reflect: true },
     bordered: { type: Boolean, reflect: true },
-    background: { type: Boolean, reflect: true }
+    background: { type: Boolean, reflect: true },
+    useChevron: { type: Boolean, reflect: true, attribute: 'use-chevron' },
+    useX: { type: Boolean, reflect: true, attribute: 'use-x' },
+    useMinus: { type: Boolean, reflect: true, attribute: 'use-minus' },
+    noIndicator: { type: Boolean, reflect: true, attribute: 'no-indicator' }
   };
 
   declare open: boolean;
   declare headingLevel: number;
   declare disabled: boolean;
-  declare indicator: boolean;
   declare bordered: boolean;
   declare background: boolean;
+  declare useChevron: boolean;
+  declare useX: boolean;
+  declare useMinus: boolean;
+  declare noIndicator: boolean;
   private _id = generateUniqueId('accordion-item');
 
   constructor() {
@@ -93,9 +103,12 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
     this.open = false;
     this.headingLevel = 3; // Default to h3
     this.disabled = false;
-    this.indicator = false;
     this.bordered = false;
     this.background = false;
+    this.useChevron = true; // Default indicator
+    this.useX = false;
+    this.useMinus = false;
+    this.noIndicator = false;
 
     // Add keyboard event listener
     this.addEventListener('keydown', this._handleKeydown.bind(this));
@@ -162,19 +175,33 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
       pointer-events: none;
     }
 
-    /* Indicator wrapper - only visible when indicator attribute present */
+    /* Indicator wrapper - visible by default unless noIndicator is set */
     .indicator {
-      display: none;
+      display: block;
       flex-shrink: 0;
       transition: transform var(--ag-motion-slow) ease;
     }
-    :host([indicator]) .indicator {
-      display: block;
+    :host([no-indicator]) .indicator {
+      display: none;
     }
 
-    /* Rotate indicator when open (starts pointing down, rotates to up) */
-    :host([indicator][open]) .indicator {
+    /* Chevron indicator (default): starts pointing down, rotates 180deg to point up when open */
+    :host([use-chevron][open]) .indicator {
       transform: rotate(180deg);
+    }
+
+    /* X indicator: starts rotated 180deg (upside-down plus), rotates to 45deg (X) when open */
+    :host([use-x]) .indicator {
+      transform: rotate(180deg);
+    }
+    :host([use-x][open]) .indicator {
+      transform: rotate(45deg);
+    }
+
+    /* Minus indicator: Plus swaps to minus icon when open - no rotation needed */
+    :host([use-minus]) .indicator {
+      /* No rotation - the icon swap from plus to minus provides the visual feedback */
+      transform: none;
     }
 
     /* Respect prefers-reduced-motion */
@@ -221,7 +248,7 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
     `;
   }
 
-  private _renderDefaultIndicator() {
+  private _renderChevronIndicator() {
     return html`
       <svg
         width="20"
@@ -239,6 +266,64 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
     `;
   }
 
+  private _renderPlusIndicator() {
+    return html`
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 5v14"></path>
+        <path d="M5 12h14"></path>
+      </svg>
+    `;
+  }
+
+  private _renderMinusIndicator() {
+    return html`
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M5 12h14"></path>
+      </svg>
+    `;
+  }
+
+  private _renderIndicator() {
+    // Priority: noIndicator > useX > useMinus > useChevron (default)
+    if (this.noIndicator) {
+      return null;
+    }
+
+    if (this.useX) {
+      return this._renderPlusIndicator();
+    }
+
+    if (this.useMinus) {
+      // Render plus when closed, minus when open
+      return this.open ? this._renderMinusIndicator() : this._renderPlusIndicator();
+    }
+
+    // Default: chevron
+    return this._renderChevronIndicator();
+  }
+
   private _renderHeading() {
     const headingContent = html`
       <button
@@ -253,7 +338,7 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
         <slot name="header"></slot>
         <span class="indicator" part="ag-accordion-indicator">
           <slot name="indicator">
-            ${this._renderDefaultIndicator()}
+            ${this._renderIndicator()}
           </slot>
         </span>
       </button>

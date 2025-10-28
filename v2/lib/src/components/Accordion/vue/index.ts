@@ -13,9 +13,13 @@ export interface VueAccordionItemProps {
   open?: boolean;
   headingLevel?: number;
   disabled?: boolean;
-  indicator?: boolean;
   background?: boolean;
   bordered?: boolean;
+  // Indicator variants (mutually exclusive, priority: noIndicator > useX > useMinus > useChevron)
+  useChevron?: boolean;
+  useX?: boolean;
+  useMinus?: boolean;
+  noIndicator?: boolean;
 }
 
 export interface VueAccordionHeaderProps {

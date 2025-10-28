@@ -38,10 +38,10 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
       </VueAccordionItem>
     </VueAccordion>
 
-    <!-- With indicator and styling -->
+    <!-- With chevron indicator and styling -->
     <VueAccordion>
       <VueAccordionItem
-        indicator
+        use-chevron
         bordered
       >
         <VueAccordionHeader>Features</VueAccordionHeader>
@@ -54,7 +54,7 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
         </VueAccordionContent>
       </VueAccordionItem>
       <VueAccordionItem
-        indicator
+        use-chevron
         bordered
         open
       >
@@ -65,15 +65,28 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
       </VueAccordionItem>
     </VueAccordion>
 
-    <!-- With event handling -->
+    <!-- With X indicator -->
     <VueAccordion>
       <VueAccordionItem
-        indicator
+        use-x
         @toggle="handleToggle"
       >
-        <VueAccordionHeader>Interactive Item</VueAccordionHeader>
+        <VueAccordionHeader>X Indicator</VueAccordionHeader>
         <VueAccordionContent>
-          <p>Click to trigger a toggle event</p>
+          <p>Plus icon that transforms into an X when opened</p>
+        </VueAccordionContent>
+      </VueAccordionItem>
+    </VueAccordion>
+
+    <!-- With plus/minus indicator -->
+    <VueAccordion>
+      <VueAccordionItem
+        use-minus
+        @toggle="handleToggle"
+      >
+        <VueAccordionHeader>Plus/Minus Indicator</VueAccordionHeader>
+        <VueAccordionContent>
+          <p>Plus icon that changes to minus when opened</p>
         </VueAccordionContent>
       </VueAccordionItem>
     </VueAccordion>
@@ -133,9 +146,9 @@ export default function AccordionExample() {
         </AccordionItem>
       </ReactAccordion>
 
-      {/* With indicator and styling */}
+      {/* With chevron indicator and styling */}
       <ReactAccordion>
-        <AccordionItem indicator bordered>
+        <AccordionItem useChevron bordered>
           <ItemHeader>Features</ItemHeader>
           <ItemContent>
             <ul>
@@ -145,7 +158,7 @@ export default function AccordionExample() {
             </ul>
           </ItemContent>
         </AccordionItem>
-        <AccordionItem indicator bordered open={true}>
+        <AccordionItem useChevron bordered open={true}>
           <ItemHeader>Open by Default</ItemHeader>
           <ItemContent>
             <p>This item starts in the open state.</p>
@@ -153,12 +166,22 @@ export default function AccordionExample() {
         </AccordionItem>
       </ReactAccordion>
 
-      {/* With event handling */}
+      {/* With X indicator */}
       <ReactAccordion>
-        <AccordionItem indicator onToggle={handleToggle}>
-          <ItemHeader>Interactive Item</ItemHeader>
+        <AccordionItem useX onToggle={handleToggle}>
+          <ItemHeader>X Indicator</ItemHeader>
           <ItemContent>
-            <p>Click to trigger a toggle event</p>
+            <p>Plus icon that transforms into an X when opened</p>
+          </ItemContent>
+        </AccordionItem>
+      </ReactAccordion>
+
+      {/* With plus/minus indicator */}
+      <ReactAccordion>
+        <AccordionItem useMinus onToggle={handleToggle}>
+          <ItemHeader>Plus/Minus Indicator</ItemHeader>
+          <ItemContent>
+            <p>Plus icon that changes to minus when opened</p>
           </ItemContent>
         </AccordionItem>
       </ReactAccordion>
@@ -207,9 +230,9 @@ export default function AccordionExample() {
     </ag-accordion-item>
   </ag-accordion>
 
-  <!-- With indicator and styling -->
+  <!-- With chevron indicator and styling -->
   <ag-accordion>
-    <ag-accordion-item indicator bordered>
+    <ag-accordion-item use-chevron bordered>
       <span slot="header">Features</span>
       <div slot="content">
         <ul>
@@ -219,7 +242,7 @@ export default function AccordionExample() {
         </ul>
       </div>
     </ag-accordion-item>
-    <ag-accordion-item indicator bordered open>
+    <ag-accordion-item use-chevron bordered open>
       <span slot="header">Open by Default</span>
       <div slot="content">
         <p>This item starts in the open state.</p>
@@ -227,12 +250,22 @@ export default function AccordionExample() {
     </ag-accordion-item>
   </ag-accordion>
 
-  <!-- With event handling -->
+  <!-- With X indicator -->
   <ag-accordion>
-    <ag-accordion-item id="interactive-item" indicator>
-      <span slot="header">Interactive Item</span>
+    <ag-accordion-item id="x-indicator-item" use-x>
+      <span slot="header">X Indicator</span>
       <div slot="content">
-        <p>Click to trigger a toggle event</p>
+        <p>Plus icon that transforms into an X when opened</p>
+      </div>
+    </ag-accordion-item>
+  </ag-accordion>
+
+  <!-- With plus/minus indicator -->
+  <ag-accordion>
+    <ag-accordion-item id="minus-indicator-item" use-minus>
+      <span slot="header">Plus/Minus Indicator</span>
+      <div slot="content">
+        <p>Plus icon that changes to minus when opened</p>
       </div>
     </ag-accordion-item>
   </ag-accordion>
@@ -253,9 +286,14 @@ The `Accordion` component is a simple container with no specific props. It wraps
 | `open` | `boolean` | `false` | Whether the accordion item is expanded |
 | `headingLevel` | `number` | `3` | Heading level for semantic HTML (1-6, renders as h1-h6) |
 | `disabled` | `boolean` | `false` | Whether the accordion item is disabled |
-| `indicator` | `boolean` | `false` | Whether to show the expand/collapse indicator icon |
+| `useChevron` | `boolean` | `true` | Use chevron indicator (default) - rotates 180° when open |
+| `useX` | `boolean` | `false` | Use X indicator - plus rotated 180° initially, becomes X at 45° when open |
+| `useMinus` | `boolean` | `false` | Use plus/minus indicator - plus transitions to minus when open |
+| `noIndicator` | `boolean` | `false` | Hide the indicator completely |
 | `bordered` | `boolean` | `false` | Whether to apply border styling to the header |
 | `background` | `boolean` | `false` | Whether to apply background color to the header |
+
+**Note:** Indicator props are mutually exclusive with priority: `noIndicator` > `useX` > `useMinus` > `useChevron` (default)
 
 ## Events
 
