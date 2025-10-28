@@ -358,10 +358,6 @@ export const CSSPartsCustomization: Story = {
           transition: background 0.2s ease;
         }
 
-        .custom-accordion::part(ag-accordion-header):hover {
-          background: rgba(0, 0, 0, 0.1);
-        }
-
         .custom-accordion::part(ag-accordion-indicator) {
           color: white;
           font-weight: bold;
