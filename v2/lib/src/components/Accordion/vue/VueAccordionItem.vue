@@ -4,7 +4,10 @@
     :heading-level="headingLevel"
     :open="open || undefined"
     :disabled="disabled || undefined"
-    :indicator="indicator || undefined"
+    :use-chevron="useChevron || undefined"
+    :use-x="useX || undefined"
+    :use-minus="useMinus || undefined"
+    :no-indicator="noIndicator || undefined"
     :background="background || undefined"
     :bordered="bordered || undefined"
     v-bind="$attrs"
@@ -22,9 +25,13 @@ export interface VueAccordionItemProps {
   open?: boolean;
   headingLevel?: number;
   disabled?: boolean;
-  indicator?: boolean;
   background?: boolean;
   bordered?: boolean;
+  // Indicator variants (mutually exclusive, priority: noIndicator > useX > useMinus > useChevron)
+  useChevron?: boolean;
+  useX?: boolean;
+  useMinus?: boolean;
+  noIndicator?: boolean;
 }
 
 // Define props with defaults
@@ -32,9 +39,12 @@ const props = withDefaults(defineProps<VueAccordionItemProps>(), {
   open: false,
   headingLevel: 3,
   disabled: false,
-  indicator: false,
   background: false,
   bordered: false,
+  useChevron: true,
+  useX: false,
+  useMinus: false,
+  noIndicator: false,
 });
 
 // Define emits

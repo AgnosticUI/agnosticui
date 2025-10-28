@@ -21,9 +21,21 @@ const meta: Meta<AccordionItemProps> = {
       control: "boolean",
       description: "Disables the accordion item",
     },
-    indicator: {
+    useChevron: {
       control: "boolean",
-      description: "Shows the expand/collapse indicator",
+      description: "Uses chevron indicator (default, rotates 180° when open)",
+    },
+    useX: {
+      control: "boolean",
+      description: "Uses X indicator (plus rotated 180°, becomes X at 45° when open)",
+    },
+    useMinus: {
+      control: "boolean",
+      description: "Uses plus/minus indicator (plus transitions to minus when open)",
+    },
+    noIndicator: {
+      control: "boolean",
+      description: "Hides the indicator completely",
     },
     bordered: {
       control: "boolean",
@@ -38,7 +50,10 @@ const meta: Meta<AccordionItemProps> = {
     open: false,
     headingLevel: 3,
     disabled: false,
-    indicator: false,
+    useChevron: true,
+    useX: false,
+    useMinus: false,
+    noIndicator: false,
     bordered: false,
     background: false,
     onToggle: fn(),
@@ -60,7 +75,10 @@ export const Default: Story = {
     open,
     headingLevel,
     disabled,
-    indicator,
+    useChevron,
+    useX,
+    useMinus,
+    noIndicator,
     bordered,
     background,
     onToggle,
@@ -70,7 +88,10 @@ export const Default: Story = {
         .open=${open}
         .headingLevel=${headingLevel}
         .disabled=${disabled}
-        .indicator=${indicator}
+        .useChevron=${useChevron}
+        .useX=${useX}
+        .useMinus=${useMinus}
+        .noIndicator=${noIndicator}
         .bordered=${bordered}
         .background=${background}
         @toggle=${(e: CustomEvent) => onToggle(e.detail)}
@@ -85,7 +106,10 @@ export const Default: Story = {
         .open=${open}
         .headingLevel=${headingLevel}
         .disabled=${disabled}
-        .indicator=${indicator}
+        .useChevron=${useChevron}
+        .useX=${useX}
+        .useMinus=${useMinus}
+        .noIndicator=${noIndicator}
         .bordered=${bordered}
         .background=${background}
         @toggle=${(e: CustomEvent) => onToggle(e.detail)}
@@ -100,7 +124,10 @@ export const Default: Story = {
         .open=${open}
         .headingLevel=${headingLevel}
         .disabled=${disabled}
-        .indicator=${indicator}
+        .useChevron=${useChevron}
+        .useX=${useX}
+        .useMinus=${useMinus}
+        .noIndicator=${noIndicator}
         .bordered=${bordered}
         .background=${background}
         @toggle=${(e: CustomEvent) => onToggle(e.detail)}
@@ -172,31 +199,140 @@ export const Disabled: Story = {
   `,
 };
 
-// With indicator
-export const WithIndicator: Story = {
+// Chevron indicator (default)
+export const ChevronIndicator: Story = {
   args: {
-    indicator: true,
+    useChevron: true,
   },
   render: () => html`
     <div style="padding: 50px; max-width: 600px;">
-      <ag-accordion-item .indicator=${true}>
-        <span slot="header">Accordion Item with Indicator</span>
+      <h4 style="margin-top: 0;">Chevron Indicator (Default)</h4>
+      <p style="margin-bottom: 1rem; color: #6b7280;">
+        Chevron points down when closed, rotates 180° to point up when open.
+      </p>
+      <ag-accordion-item .useChevron=${true}>
+        <span slot="header">Accordion with Chevron</span>
         <div slot="content">
-          This accordion item has a visible expand/collapse indicator.
+          This uses the default chevron indicator that rotates 180° when opened.
         </div>
       </ag-accordion-item>
 
-      <ag-accordion-item .indicator=${true}>
-        <span slot="header">Another Item with Indicator</span>
+      <ag-accordion-item .useChevron=${true}>
+        <span slot="header">Another Chevron Item</span>
         <div slot="content">
-          This is another accordion item with an indicator.
+          Click to see the smooth rotation animation.
         </div>
       </ag-accordion-item>
 
-      <ag-accordion-item .indicator=${true}>
-        <span slot="header">Third Item with Indicator</span>
+      <ag-accordion-item .useChevron=${true}>
+        <span slot="header">Third Chevron Item</span>
         <div slot="content">
-          This is a third accordion item with an indicator.
+          The chevron indicator is the default style.
+        </div>
+      </ag-accordion-item>
+    </div>
+  `,
+};
+
+// X indicator
+export const XIndicator: Story = {
+  args: {
+    useX: true,
+  },
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h4 style="margin-top: 0;">X Indicator</h4>
+      <p style="margin-bottom: 1rem; color: #6b7280;">
+        Plus rotated 180° (upside down) when closed, rotates to 45° forming an X when open.
+      </p>
+      <ag-accordion-item .useX=${true}>
+        <span slot="header">Accordion with X Indicator</span>
+        <div slot="content">
+          This uses a plus icon that transforms into an X when opened.
+        </div>
+      </ag-accordion-item>
+
+      <ag-accordion-item .useX=${true}>
+        <span slot="header">Another X Item</span>
+        <div slot="content">
+          Watch the smooth transition from plus to X.
+        </div>
+      </ag-accordion-item>
+
+      <ag-accordion-item .useX=${true}>
+        <span slot="header">Third X Item</span>
+        <div slot="content">
+          The X indicator provides a different visual style.
+        </div>
+      </ag-accordion-item>
+    </div>
+  `,
+};
+
+// Plus/Minus indicator
+export const PlusMinusIndicator: Story = {
+  args: {
+    useMinus: true,
+  },
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h4 style="margin-top: 0;">Plus/Minus Indicator</h4>
+      <p style="margin-bottom: 1rem; color: #6b7280;">
+        Plus transitions to minus when open with smooth animation.
+      </p>
+      <ag-accordion-item .useMinus=${true}>
+        <span slot="header">Accordion with Plus/Minus</span>
+        <div slot="content">
+          This shows a plus when closed and a minus when open.
+        </div>
+      </ag-accordion-item>
+
+      <ag-accordion-item .useMinus=${true}>
+        <span slot="header">Another Plus/Minus Item</span>
+        <div slot="content">
+          The icon changes rather than rotates.
+        </div>
+      </ag-accordion-item>
+
+      <ag-accordion-item .useMinus=${true}>
+        <span slot="header">Third Plus/Minus Item</span>
+        <div slot="content">
+          A classic expand/collapse indicator style.
+        </div>
+      </ag-accordion-item>
+    </div>
+  `,
+};
+
+// No indicator
+export const NoIndicator: Story = {
+  args: {
+    noIndicator: true,
+  },
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h4 style="margin-top: 0;">No Indicator</h4>
+      <p style="margin-bottom: 1rem; color: #6b7280;">
+        Accordion items without any visual indicator.
+      </p>
+      <ag-accordion-item .noIndicator=${true}>
+        <span slot="header">Accordion without Indicator</span>
+        <div slot="content">
+          This accordion has no expand/collapse indicator.
+        </div>
+      </ag-accordion-item>
+
+      <ag-accordion-item .noIndicator=${true}>
+        <span slot="header">Another Item without Indicator</span>
+        <div slot="content">
+          Clean header without indicator icon.
+        </div>
+      </ag-accordion-item>
+
+      <ag-accordion-item .noIndicator=${true}>
+        <span slot="header">Third Item without Indicator</span>
+        <div slot="content">
+          Minimal style focused on content.
         </div>
       </ag-accordion-item>
     </div>
@@ -305,7 +441,7 @@ export const EventTesting: Story = {
         Click on accordion headers to test toggle events
       </p>
       <ag-accordion-item
-        .indicator=${true}
+        .useChevron=${true}
         @toggle=${(e: CustomEvent) => onToggle(e.detail)}
       >
         <span slot="header">Click to Test Events</span>
@@ -316,7 +452,7 @@ export const EventTesting: Story = {
       </ag-accordion-item>
 
       <ag-accordion-item
-        .indicator=${true}
+        .useChevron=${true}
         @toggle=${(e: CustomEvent) => onToggle(e.detail)}
       >
         <span slot="header">Another Test Item</span>
@@ -343,46 +479,48 @@ export const KeyboardNavigation: Story = {
         Home/End: Jump to first/last item <br />• Enter/Space: Toggle the
         focused item
       </p>
-      <ag-accordion-item
-        .indicator=${true}
-        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
-      >
-        <span slot="header">First Accordion Item</span>
-        <div slot="content">
-          Focus this item and use arrow keys to navigate to other items.
-        </div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item
+          .useChevron=${true}
+          @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+        >
+          <span slot="header">First Accordion Item</span>
+          <div slot="content">
+            Focus this item and use arrow keys to navigate to other items.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item
-        .indicator=${true}
-        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
-      >
-        <span slot="header">Second Accordion Item</span>
-        <div slot="content">
-          Press Space or Enter to toggle this item when focused.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item
+          .useChevron=${true}
+          @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+        >
+          <span slot="header">Second Accordion Item</span>
+          <div slot="content">
+            Press Space or Enter to toggle this item when focused.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item
-        .indicator=${true}
-        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
-      >
-        <span slot="header">Third Accordion Item</span>
-        <div slot="content">
-          Try pressing Home to jump to the first item, or End to jump to this
-          last item.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item
+          .useChevron=${true}
+          @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+        >
+          <span slot="header">Third Accordion Item</span>
+          <div slot="content">
+            Try pressing Home to jump to the first item, or End to jump to this
+            last item.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item
-        .indicator=${true}
-        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
-      >
-        <span slot="header">Fourth Accordion Item</span>
-        <div slot="content">
-          Test full keyboard navigation across all accordion items.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item
+          .useChevron=${true}
+          @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+        >
+          <span slot="header">Fourth Accordion Item</span>
+          <div slot="content">
+            Test full keyboard navigation across all accordion items.
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -403,7 +541,7 @@ export const AllStyleCombinations: Story = {
 
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">With Indicator</p>
-        <ag-accordion-item .indicator=${true}>
+        <ag-accordion-item .useChevron=${true}>
           <span slot="header">Accordion with Indicator</span>
           <div slot="content">
             Shows a chevron icon that rotates when opened.
@@ -432,7 +570,7 @@ export const AllStyleCombinations: Story = {
           Combined: Indicator + Bordered + Background
         </p>
         <ag-accordion-item
-          .indicator=${true}
+          .useChevron=${true}
           .bordered=${true}
           .background=${true}
         >
@@ -445,7 +583,7 @@ export const AllStyleCombinations: Story = {
 
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Disabled</p>
-        <ag-accordion-item .disabled=${true} .indicator=${true}>
+        <ag-accordion-item .disabled=${true} .useChevron=${true}>
           <span slot="header">Disabled Accordion</span>
           <div slot="content">This content cannot be toggled.</div>
         </ag-accordion-item>
@@ -458,7 +596,7 @@ export const AllStyleCombinations: Story = {
 export const RichContent: Story = {
   render: () => html`
     <div style="padding: 50px; max-width: 600px;">
-      <ag-accordion-item .indicator=${true} .bordered=${true}>
+      <ag-accordion-item .useChevron=${true} .bordered=${true}>
         <span slot="header">FAQ: What is AgnosticUI?</span>
         <div slot="content" style="padding: 1rem;">
           <p>
@@ -474,7 +612,7 @@ export const RichContent: Story = {
         </div>
       </ag-accordion-item>
 
-      <ag-accordion-item .indicator=${true} .bordered=${true}>
+      <ag-accordion-item .useChevron=${true} .bordered=${true}>
         <span slot="header">FAQ: How do I install it?</span>
         <div slot="content" style="padding: 1rem;">
           <p>Install via npm:</p>
@@ -488,7 +626,7 @@ export const RichContent: Story = {
         </div>
       </ag-accordion-item>
 
-      <ag-accordion-item .indicator=${true} .bordered=${true}>
+      <ag-accordion-item .useChevron=${true} .bordered=${true}>
         <span slot="header">FAQ: Is it accessible?</span>
         <div slot="content" style="padding: 1rem;">
           <p>Yes! All components follow WAI-ARIA guidelines:</p>
@@ -515,21 +653,21 @@ export const MultipleGroups: Story = {
     <div style="padding: 50px; display: flex; gap: 2rem;">
       <div style="flex: 1;">
         <h3 style="margin-top: 0;">Product Features</h3>
-        <ag-accordion-item .indicator=${true} .background=${true}>
+        <ag-accordion-item .useChevron=${true} .background=${true}>
           <span slot="header">Performance</span>
           <div slot="content">
             Built for speed and efficiency with minimal overhead.
           </div>
         </ag-accordion-item>
 
-        <ag-accordion-item .indicator=${true} .background=${true}>
+        <ag-accordion-item .useChevron=${true} .background=${true}>
           <span slot="header">Accessibility</span>
           <div slot="content">
             WCAG 2.1 AA compliant components out of the box.
           </div>
         </ag-accordion-item>
 
-        <ag-accordion-item .indicator=${true} .background=${true}>
+        <ag-accordion-item .useChevron=${true} .background=${true}>
           <span slot="header">Customization</span>
           <div slot="content">
             Fully customizable through CSS custom properties.
@@ -539,21 +677,21 @@ export const MultipleGroups: Story = {
 
       <div style="flex: 1;">
         <h3 style="margin-top: 0;">Support Options</h3>
-        <ag-accordion-item .indicator=${true} .background=${true}>
+        <ag-accordion-item .useChevron=${true} .background=${true}>
           <span slot="header">Community Support</span>
           <div slot="content">
             Free support through GitHub discussions and Discord.
           </div>
         </ag-accordion-item>
 
-        <ag-accordion-item .indicator=${true} .background=${true}>
+        <ag-accordion-item .useChevron=${true} .background=${true}>
           <span slot="header">Premium Support</span>
           <div slot="content">
             Priority support with guaranteed response times.
           </div>
         </ag-accordion-item>
 
-        <ag-accordion-item .indicator=${true} .background=${true}>
+        <ag-accordion-item .useChevron=${true} .background=${true}>
           <span slot="header">Enterprise</span>
           <div slot="content">Custom solutions and dedicated support team.</div>
         </ag-accordion-item>
@@ -634,7 +772,7 @@ export const CSSPartsCustomization: Story = {
 
       <div style="margin-bottom: 3rem;">
         <h4>Gradient Style</h4>
-        <ag-accordion-item class="custom-accordion" .indicator=${true}>
+        <ag-accordion-item class="custom-accordion" .useChevron=${true}>
           <span slot="header">Custom Styled Header</span>
           <div slot="content">
             This accordion uses CSS Shadow Parts to apply a gradient background,
@@ -642,7 +780,7 @@ export const CSSPartsCustomization: Story = {
           </div>
         </ag-accordion-item>
 
-        <ag-accordion-item class="custom-accordion" .indicator=${true}>
+        <ag-accordion-item class="custom-accordion" .useChevron=${true}>
           <span slot="header">Another Custom Item</span>
           <div slot="content">
             All styling is done through CSS Shadow Parts, allowing full control
@@ -651,7 +789,7 @@ export const CSSPartsCustomization: Story = {
           </div>
         </ag-accordion-item>
 
-        <ag-accordion-item class="custom-accordion" .indicator=${true}>
+        <ag-accordion-item class="custom-accordion" .useChevron=${true}>
           <span slot="header">Third Custom Item</span>
           <div slot="content">
             This demonstrates the power of CSS Shadow Parts for component
@@ -662,21 +800,21 @@ export const CSSPartsCustomization: Story = {
 
       <div>
         <h4>Minimal Style</h4>
-        <ag-accordion-item class="minimal-accordion" .indicator=${true}>
+        <ag-accordion-item class="minimal-accordion" .useChevron=${true}>
           <span slot="header">Minimal Styled Header</span>
           <div slot="content">
             This variant uses a minimal border-left design with subtle styling.
           </div>
         </ag-accordion-item>
 
-        <ag-accordion-item class="minimal-accordion" .indicator=${true}>
+        <ag-accordion-item class="minimal-accordion" .useChevron=${true}>
           <span slot="header">Another Minimal Item</span>
           <div slot="content">
             Clean and simple styling focused on content hierarchy.
           </div>
         </ag-accordion-item>
 
-        <ag-accordion-item class="minimal-accordion" .indicator=${true}>
+        <ag-accordion-item class="minimal-accordion" .useChevron=${true}>
           <span slot="header">Third Minimal Item</span>
           <div slot="content">
             Demonstrates alternative styling approach using the same CSS Shadow

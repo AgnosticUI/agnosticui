@@ -1,52 +1,128 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Accordion</h3>
+      <h3>Basic Accordion (Default)</h3>
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
+        By default, the Accordion provides a chevron which points down when closed, then rotates 180° to point up when open. See below for how to opt out or use different indicators.
+      </p>
     </div>
     <div class="stacked mbe4">
       <VueAccordion>
-        <VueAccordionItem>
-          <VueAccordionHeader>Accordion Item 1</VueAccordionHeader>
+        <VueAccordionItem use-chevron>
+          <VueAccordionHeader>Chevron Section 1</VueAccordionHeader>
           <VueAccordionContent>
-            <p>This is the content of the first accordion item.</p>
+            <p>Default chevron indicator with smooth rotation</p>
           </VueAccordionContent>
         </VueAccordionItem>
-        <VueAccordionItem>
-          <VueAccordionHeader>Accordion Item 2</VueAccordionHeader>
+        <VueAccordionItem use-chevron>
+          <VueAccordionHeader>Chevron Section 2</VueAccordionHeader>
           <VueAccordionContent>
-            <p>This is the content of the second accordion item.</p>
+            <p>Click to see the 180° rotation animation</p>
           </VueAccordionContent>
         </VueAccordionItem>
-        <VueAccordionItem>
-          <VueAccordionHeader>Accordion Item 3</VueAccordionHeader>
+        <VueAccordionItem use-chevron>
+          <VueAccordionHeader>Chevron Section 3</VueAccordionHeader>
           <VueAccordionContent>
-            <p>This is the content of the third accordion item.</p>
+            <p>Classic accordion indicator style</p>
           </VueAccordionContent>
         </VueAccordionItem>
       </VueAccordion>
     </div>
 
     <div class="mbe4">
-      <h3>With Indicator</h3>
+      <h3>X Indicator</h3>
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
+        Plus rotated 180° (upside down) when closed, rotates to 45° forming an X when open.
+      </p>
     </div>
     <div class="stacked mbe4">
       <VueAccordion>
-        <VueAccordionItem indicator>
-          <VueAccordionHeader>Section 1</VueAccordionHeader>
+        <VueAccordionItem use-x>
+          <VueAccordionHeader>X Indicator Section 1</VueAccordionHeader>
           <VueAccordionContent>
-            <p>Content with expand/collapse indicator</p>
+            <p>Plus transforms into X when opened</p>
           </VueAccordionContent>
         </VueAccordionItem>
-        <VueAccordionItem indicator>
-          <VueAccordionHeader>Section 2</VueAccordionHeader>
+        <VueAccordionItem use-x>
+          <VueAccordionHeader>X Indicator Section 2</VueAccordionHeader>
           <VueAccordionContent>
-            <p>Another section with indicator</p>
+            <p>Smooth transition from plus to X</p>
           </VueAccordionContent>
         </VueAccordionItem>
-        <VueAccordionItem indicator>
-          <VueAccordionHeader>Section 3</VueAccordionHeader>
+        <VueAccordionItem use-x>
+          <VueAccordionHeader>X Indicator Section 3</VueAccordionHeader>
           <VueAccordionContent>
-            <p>Third section with indicator</p>
+            <p>Modern accordion indicator style</p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+      </VueAccordion>
+    </div>
+
+    <div class="mbe4">
+      <h3>Plus/Minus Indicator</h3>
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
+        Plus transitions to minus when open with smooth animation.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <VueAccordion>
+        <VueAccordionItem use-minus>
+          <VueAccordionHeader>Plus/Minus Section 1</VueAccordionHeader>
+          <VueAccordionContent>
+            <p>Plus changes to minus when opened</p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+        <VueAccordionItem use-minus>
+          <VueAccordionHeader>Plus/Minus Section 2</VueAccordionHeader>
+          <VueAccordionContent>
+            <p>Classic expand/collapse indicator</p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+        <VueAccordionItem use-minus>
+          <VueAccordionHeader>Plus/Minus Section 3</VueAccordionHeader>
+          <VueAccordionContent>
+            <p>Clear visual indication of state</p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+      </VueAccordion>
+    </div>
+
+    <div class="mbe4">
+      <h3>No Indicator</h3>
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
+        Accordion items without any visual indicator.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <VueAccordion>
+        <VueAccordionItem no-indicator>
+          <VueAccordionHeader>No Indicator Section 1</VueAccordionHeader>
+          <VueAccordionContent>
+            <p>Clean header without indicator icon</p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+        <VueAccordionItem no-indicator>
+          <VueAccordionHeader>No Indicator Section 2</VueAccordionHeader>
+          <VueAccordionContent>
+            <p>Minimal design focused on content</p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+        <VueAccordionItem no-indicator>
+          <VueAccordionHeader>No Indicator Section 3</VueAccordionHeader>
+          <VueAccordionContent>
+            <p>Simple accordion without visual clutter</p>
           </VueAccordionContent>
         </VueAccordionItem>
       </VueAccordion>
@@ -59,7 +135,7 @@
       <VueAccordion>
         <VueAccordionItem
           bordered
-          indicator
+          use-chevron
         >
           <VueAccordionHeader>Bordered Item 1</VueAccordionHeader>
           <VueAccordionContent>
@@ -68,7 +144,7 @@
         </VueAccordionItem>
         <VueAccordionItem
           bordered
-          indicator
+          use-chevron
         >
           <VueAccordionHeader>Bordered Item 2</VueAccordionHeader>
           <VueAccordionContent>
@@ -77,7 +153,7 @@
         </VueAccordionItem>
         <VueAccordionItem
           bordered
-          indicator
+          use-chevron
         >
           <VueAccordionHeader>Bordered Item 3</VueAccordionHeader>
           <VueAccordionContent>
@@ -94,7 +170,7 @@
       <VueAccordion>
         <VueAccordionItem
           background
-          indicator
+          use-chevron
         >
           <VueAccordionHeader>Background Item 1</VueAccordionHeader>
           <VueAccordionContent>
@@ -103,7 +179,7 @@
         </VueAccordionItem>
         <VueAccordionItem
           background
-          indicator
+          use-chevron
         >
           <VueAccordionHeader>Background Item 2</VueAccordionHeader>
           <VueAccordionContent>
@@ -112,7 +188,7 @@
         </VueAccordionItem>
         <VueAccordionItem
           background
-          indicator
+          use-chevron
         >
           <VueAccordionHeader>Background Item 3</VueAccordionHeader>
           <VueAccordionContent>
@@ -127,14 +203,14 @@
     </div>
     <div class="stacked mbe4">
       <VueAccordion>
-        <VueAccordionItem indicator>
+        <VueAccordionItem use-chevron>
           <VueAccordionHeader>Closed Item</VueAccordionHeader>
           <VueAccordionContent>
             <p>This item starts closed</p>
           </VueAccordionContent>
         </VueAccordionItem>
         <VueAccordionItem
-          indicator
+          use-chevron
           open
         >
           <VueAccordionHeader>Open Item</VueAccordionHeader>
@@ -142,7 +218,7 @@
             <p>This item starts open</p>
           </VueAccordionContent>
         </VueAccordionItem>
-        <VueAccordionItem indicator>
+        <VueAccordionItem use-chevron>
           <VueAccordionHeader>Another Closed Item</VueAccordionHeader>
           <VueAccordionContent>
             <p>This item also starts closed</p>
@@ -156,14 +232,14 @@
     </div>
     <div class="stacked mbe4">
       <VueAccordion>
-        <VueAccordionItem indicator>
+        <VueAccordionItem use-chevron>
           <VueAccordionHeader>Enabled Item</VueAccordionHeader>
           <VueAccordionContent>
             <p>This item can be toggled</p>
           </VueAccordionContent>
         </VueAccordionItem>
         <VueAccordionItem
-          indicator
+          use-chevron
           disabled
         >
           <VueAccordionHeader>Disabled Item</VueAccordionHeader>
@@ -171,7 +247,7 @@
             <p>This item cannot be toggled</p>
           </VueAccordionContent>
         </VueAccordionItem>
-        <VueAccordionItem indicator>
+        <VueAccordionItem use-chevron>
           <VueAccordionHeader>Another Enabled Item</VueAccordionHeader>
           <VueAccordionContent>
             <p>This item can also be toggled</p>
@@ -186,7 +262,7 @@
     <div class="stacked mbe4">
       <VueAccordion>
         <VueAccordionItem
-          indicator
+          use-chevron
           bordered
         >
           <VueAccordionHeader>
@@ -209,7 +285,7 @@
           </VueAccordionContent>
         </VueAccordionItem>
         <VueAccordionItem
-          indicator
+          use-chevron
           bordered
         >
           <VueAccordionHeader>
@@ -224,14 +300,14 @@
           </VueAccordionHeader>
           <VueAccordionContent>
             <pre style="background: var(--ag-background-secondary); padding: 1rem; border-radius: 4px; overflow-x: auto;">
-&lt;VueAccordionItem indicator&gt;
+&lt;VueAccordionItem use-chevron&gt;
   &lt;VueAccordionHeader&gt;Title&lt;/VueAccordionHeader&gt;
   &lt;VueAccordionContent&gt;Content&lt;/VueAccordionContent&gt;
 &lt;/VueAccordionItem&gt;</pre>
           </VueAccordionContent>
         </VueAccordionItem>
         <VueAccordionItem
-          indicator
+          use-chevron
           bordered
         >
           <VueAccordionHeader>
@@ -259,7 +335,10 @@
 
     <div class="mbe4">
       <h3>CSS Parts Customization</h3>
-      <p class="mbe2" style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
         Customize accordion appearance using CSS Shadow Parts without breaking encapsulation.
       </p>
     </div>
@@ -267,7 +346,7 @@
       <VueAccordion>
         <VueAccordionItem
           class="custom-gradient-accordion"
-          indicator
+          use-chevron
         >
           <VueAccordionHeader>Gradient Styled</VueAccordionHeader>
           <VueAccordionContent>
@@ -276,7 +355,7 @@
         </VueAccordionItem>
         <VueAccordionItem
           class="custom-gradient-accordion"
-          indicator
+          use-chevron
         >
           <VueAccordionHeader>Another Gradient Item</VueAccordionHeader>
           <VueAccordionContent>
@@ -285,7 +364,7 @@
         </VueAccordionItem>
         <VueAccordionItem
           class="custom-minimal-accordion"
-          indicator
+          use-chevron
         >
           <VueAccordionHeader>Minimal Border Style</VueAccordionHeader>
           <VueAccordionContent>
@@ -294,7 +373,7 @@
         </VueAccordionItem>
         <VueAccordionItem
           class="custom-minimal-accordion"
-          indicator
+          use-chevron
         >
           <VueAccordionHeader>Another Minimal Item</VueAccordionHeader>
           <VueAccordionContent>
@@ -307,7 +386,11 @@
 </template>
 
 <script>
-import VueAccordion, { VueAccordionItem, VueAccordionHeader, VueAccordionContent } from "agnosticui-core/accordion/vue";
+import VueAccordion, {
+  VueAccordionItem,
+  VueAccordionHeader,
+  VueAccordionContent,
+} from "agnosticui-core/accordion/vue";
 import { Info, Code, HelpCircle } from "lucide-vue-next";
 
 export default {

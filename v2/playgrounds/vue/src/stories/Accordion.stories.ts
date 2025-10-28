@@ -15,9 +15,21 @@ const meta = {
       control: 'boolean',
       description: 'Disables the accordion item',
     },
-    indicator: {
+    useChevron: {
       control: 'boolean',
-      description: 'Shows the expand/collapse indicator',
+      description: 'Uses chevron indicator (default, rotates 180° when open)',
+    },
+    useX: {
+      control: 'boolean',
+      description: 'Uses X indicator (plus rotated 180°, becomes X at 45° when open)',
+    },
+    useMinus: {
+      control: 'boolean',
+      description: 'Uses plus/minus indicator (plus transitions to minus when open)',
+    },
+    noIndicator: {
+      control: 'boolean',
+      description: 'Hides the indicator completely',
     },
     bordered: {
       control: 'boolean',
@@ -36,7 +48,10 @@ const meta = {
   args: {
     headingLevel: 3,
     disabled: false,
-    indicator: false,
+    useChevron: true,
+    useX: false,
+    useMinus: false,
+    noIndicator: false,
     bordered: false,
     background: false,
     onToggle: fn(),
@@ -126,9 +141,87 @@ export const Disabled: Story = {
   }),
 };
 
+export const PlusMinusIndicator: Story = {
+  args: {
+    useMinus: true,
+  },
+  render: () => ({
+    components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h4 style="margin-top: 0;">Plus/Minus Indicator</h4>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Plus transitions to minus when open with smooth animation.
+        </p>
+        <VueAccordion>
+          <VueAccordionItem :use-minus="true">
+            <VueAccordionHeader>Accordion with Plus/Minus</VueAccordionHeader>
+            <VueAccordionContent>
+              <p>This shows a plus when closed and a minus when open.</p>
+            </VueAccordionContent>
+          </VueAccordionItem>
+
+          <VueAccordionItem :use-minus="true">
+            <VueAccordionHeader>Another Plus/Minus Item</VueAccordionHeader>
+            <VueAccordionContent>
+              <p>The plus rotates while swapping to minus.</p>
+            </VueAccordionContent>
+          </VueAccordionItem>
+
+          <VueAccordionItem :use-minus="true">
+            <VueAccordionHeader>Third Plus/Minus Item</VueAccordionHeader>
+            <VueAccordionContent>
+              <p>A classic expand/collapse indicator style.</p>
+            </VueAccordionContent>
+          </VueAccordionItem>
+        </VueAccordion>
+      </div>
+    `,
+  }),
+};
+
+export const XIndicator: Story = {
+  args: {
+    useX: true,
+  },
+  render: () => ({
+    components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h4 style="margin-top: 0;">X Indicator</h4>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Plus rotated 180° (upside down) when closed, rotates to 45° forming an X when open.
+        </p>
+        <VueAccordion>
+          <VueAccordionItem :use-x="true">
+            <VueAccordionHeader>Accordion with X Indicator</VueAccordionHeader>
+            <VueAccordionContent>
+              <p>This uses a plus icon that transforms into an X when opened.</p>
+            </VueAccordionContent>
+          </VueAccordionItem>
+
+          <VueAccordionItem :use-x="true">
+            <VueAccordionHeader>Another X Item</VueAccordionHeader>
+            <VueAccordionContent>
+              <p>Watch the smooth transition from plus to X.</p>
+            </VueAccordionContent>
+          </VueAccordionItem>
+
+          <VueAccordionItem :use-x="true">
+            <VueAccordionHeader>Third X Item</VueAccordionHeader>
+            <VueAccordionContent>
+              <p>The X indicator provides a different visual style.</p>
+            </VueAccordionContent>
+          </VueAccordionItem>
+        </VueAccordion>
+      </div>
+    `,
+  }),
+};
+
 export const WithIndicator: Story = {
   args: {
-    indicator: true,
+    useChevron: true,
   },
   render: (args: VueAccordionItemProps) => ({
     components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
@@ -350,7 +443,7 @@ export const CSSPartsCustomization: Story = {
         <div style="margin-bottom: 3rem;">
           <h4>Gradient Style</h4>
           <VueAccordion>
-            <VueAccordionItem class="custom-accordion" :indicator="true">
+            <VueAccordionItem class="custom-accordion" :use-chevron="true">
               <VueAccordionHeader>Custom Styled Header</VueAccordionHeader>
               <VueAccordionContent>
                 This accordion uses CSS Shadow Parts to apply a gradient background,
@@ -358,7 +451,7 @@ export const CSSPartsCustomization: Story = {
               </VueAccordionContent>
             </VueAccordionItem>
 
-            <VueAccordionItem class="custom-accordion" :indicator="true">
+            <VueAccordionItem class="custom-accordion" :use-chevron="true">
               <VueAccordionHeader>Another Custom Item</VueAccordionHeader>
               <VueAccordionContent>
                 All styling is done through CSS Shadow Parts, allowing full control
@@ -366,7 +459,7 @@ export const CSSPartsCustomization: Story = {
               </VueAccordionContent>
             </VueAccordionItem>
 
-            <VueAccordionItem class="custom-accordion" :indicator="true">
+            <VueAccordionItem class="custom-accordion" :use-chevron="true">
               <VueAccordionHeader>Third Custom Item</VueAccordionHeader>
               <VueAccordionContent>
                 This demonstrates the power of CSS Shadow Parts for component customization
@@ -379,21 +472,21 @@ export const CSSPartsCustomization: Story = {
         <div>
           <h4>Minimal Style</h4>
           <VueAccordion>
-            <VueAccordionItem class="minimal-accordion" :indicator="true">
+            <VueAccordionItem class="minimal-accordion" :use-chevron="true">
               <VueAccordionHeader>Minimal Styled Header</VueAccordionHeader>
               <VueAccordionContent>
                 This variant uses a minimal border-left design with subtle styling.
               </VueAccordionContent>
             </VueAccordionItem>
 
-            <VueAccordionItem class="minimal-accordion" :indicator="true">
+            <VueAccordionItem class="minimal-accordion" :use-chevron="true">
               <VueAccordionHeader>Another Minimal Item</VueAccordionHeader>
               <VueAccordionContent>
                 Clean and simple styling focused on content hierarchy.
               </VueAccordionContent>
             </VueAccordionItem>
 
-            <VueAccordionItem class="minimal-accordion" :indicator="true">
+            <VueAccordionItem class="minimal-accordion" :use-chevron="true">
               <VueAccordionHeader>Third Minimal Item</VueAccordionHeader>
               <VueAccordionContent>
                 Demonstrates alternative styling approach using the same CSS Shadow Parts API.
