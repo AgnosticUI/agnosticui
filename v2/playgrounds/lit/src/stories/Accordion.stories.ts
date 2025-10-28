@@ -84,7 +84,8 @@ export const Default: Story = {
     onToggle,
   }) => html`
     <div style="padding: 50px; max-width: 600px;">
-      <ag-accordion-item
+      <ag-accordion>
+        <ag-accordion-item
         .open=${open}
         .headingLevel=${headingLevel}
         .disabled=${disabled}
@@ -94,7 +95,7 @@ export const Default: Story = {
         .noIndicator=${noIndicator}
         .bordered=${bordered}
         .background=${background}
-        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+        @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
       >
         <span slot="header">Accordion Item 1</span>
         <div slot="content">
@@ -112,7 +113,7 @@ export const Default: Story = {
         .noIndicator=${noIndicator}
         .bordered=${bordered}
         .background=${background}
-        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+        @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
       >
         <span slot="header">Accordion Item 2</span>
         <div slot="content">
@@ -130,13 +131,14 @@ export const Default: Story = {
         .noIndicator=${noIndicator}
         .bordered=${bordered}
         .background=${background}
-        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+        @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
       >
         <span slot="header">Accordion Item 3</span>
         <div slot="content">
           This is the content of the third accordion item.
         </div>
       </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -146,26 +148,28 @@ export const OpenByDefault: Story = {
   args: {},
   render: () => html`
     <div style="padding: 50px; max-width: 600px;">
-      <ag-accordion-item .open=${true}>
-        <span slot="header">Accordion Item 1 (Open)</span>
-        <div slot="content">
-          This is the content of the first accordion item, open by default.
-        </div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item .open=${true}>
+          <span slot="header">Accordion Item 1 (Open)</span>
+          <div slot="content">
+            This is the content of the first accordion item, open by default.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item>
-        <span slot="header">Accordion Item 2</span>
-        <div slot="content">
-          This is the content of the second accordion item.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item>
+          <span slot="header">Accordion Item 2</span>
+          <div slot="content">
+            This is the content of the second accordion item.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item>
-        <span slot="header">Accordion Item 3</span>
-        <div slot="content">
-          This is the content of the third accordion item.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item>
+          <span slot="header">Accordion Item 3</span>
+          <div slot="content">
+            This is the content of the third accordion item.
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -177,24 +181,26 @@ export const Disabled: Story = {
   },
   render: () => html`
     <div style="padding: 50px; max-width: 600px;">
-      <ag-accordion-item .disabled=${true}>
-        <span slot="header">Disabled Accordion Item</span>
-        <div slot="content">
-          This content cannot be toggled because the item is disabled.
-        </div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item .disabled=${true}>
+          <span slot="header">Disabled Accordion Item</span>
+          <div slot="content">
+            This content cannot be toggled because the item is disabled.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item>
-        <span slot="header">Enabled Accordion Item</span>
-        <div slot="content">
-          This is the content of an enabled accordion item.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item>
+          <span slot="header">Enabled Accordion Item</span>
+          <div slot="content">
+            This is the content of an enabled accordion item.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item>
-        <span slot="header">Another Enabled Item</span>
-        <div slot="content">This is another enabled accordion item.</div>
-      </ag-accordion-item>
+        <ag-accordion-item>
+          <span slot="header">Another Enabled Item</span>
+          <div slot="content">This is another enabled accordion item.</div>
+        </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -210,26 +216,28 @@ export const ChevronIndicator: Story = {
       <p style="margin-bottom: 1rem; color: #6b7280;">
         Chevron points down when closed, rotates 180° to point up when open.
       </p>
-      <ag-accordion-item .useChevron=${true}>
-        <span slot="header">Accordion with Chevron</span>
-        <div slot="content">
-          This uses the default chevron indicator that rotates 180° when opened.
-        </div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item .useChevron=${true}>
+          <span slot="header">Accordion with Chevron</span>
+          <div slot="content">
+            This uses the default chevron indicator that rotates 180° when opened.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .useChevron=${true}>
-        <span slot="header">Another Chevron Item</span>
-        <div slot="content">
-          Click to see the smooth rotation animation.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .useChevron=${true}>
+          <span slot="header">Another Chevron Item</span>
+          <div slot="content">
+            Click to see the smooth rotation animation.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .useChevron=${true}>
-        <span slot="header">Third Chevron Item</span>
-        <div slot="content">
-          The chevron indicator is the default style.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .useChevron=${true}>
+          <span slot="header">Third Chevron Item</span>
+          <div slot="content">
+            The chevron indicator is the default style.
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -245,26 +253,28 @@ export const XIndicator: Story = {
       <p style="margin-bottom: 1rem; color: #6b7280;">
         Plus rotated 180° (upside down) when closed, rotates to 45° forming an X when open.
       </p>
-      <ag-accordion-item .useX=${true}>
-        <span slot="header">Accordion with X Indicator</span>
-        <div slot="content">
-          This uses a plus icon that transforms into an X when opened.
-        </div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item .useX=${true}>
+          <span slot="header">Accordion with X Indicator</span>
+          <div slot="content">
+            This uses a plus icon that transforms into an X when opened.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .useX=${true}>
-        <span slot="header">Another X Item</span>
-        <div slot="content">
-          Watch the smooth transition from plus to X.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .useX=${true}>
+          <span slot="header">Another X Item</span>
+          <div slot="content">
+            Watch the smooth transition from plus to X.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .useX=${true}>
-        <span slot="header">Third X Item</span>
-        <div slot="content">
-          The X indicator provides a different visual style.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .useX=${true}>
+          <span slot="header">Third X Item</span>
+          <div slot="content">
+            The X indicator provides a different visual style.
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -280,26 +290,28 @@ export const PlusMinusIndicator: Story = {
       <p style="margin-bottom: 1rem; color: #6b7280;">
         Plus transitions to minus when open with smooth animation.
       </p>
-      <ag-accordion-item .useMinus=${true}>
-        <span slot="header">Accordion with Plus/Minus</span>
-        <div slot="content">
-          This shows a plus when closed and a minus when open.
-        </div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item .useMinus=${true}>
+          <span slot="header">Accordion with Plus/Minus</span>
+          <div slot="content">
+            This shows a plus when closed and a minus when open.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .useMinus=${true}>
-        <span slot="header">Another Plus/Minus Item</span>
-        <div slot="content">
-          The icon changes rather than rotates.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .useMinus=${true}>
+          <span slot="header">Another Plus/Minus Item</span>
+          <div slot="content">
+            The icon changes rather than rotates.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .useMinus=${true}>
-        <span slot="header">Third Plus/Minus Item</span>
-        <div slot="content">
-          A classic expand/collapse indicator style.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .useMinus=${true}>
+          <span slot="header">Third Plus/Minus Item</span>
+          <div slot="content">
+            A classic expand/collapse indicator style.
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -315,26 +327,28 @@ export const NoIndicator: Story = {
       <p style="margin-bottom: 1rem; color: #6b7280;">
         Accordion items without any visual indicator.
       </p>
-      <ag-accordion-item .noIndicator=${true}>
-        <span slot="header">Accordion without Indicator</span>
-        <div slot="content">
-          This accordion has no expand/collapse indicator.
-        </div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item .noIndicator=${true}>
+          <span slot="header">Accordion without Indicator</span>
+          <div slot="content">
+            This accordion has no expand/collapse indicator.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .noIndicator=${true}>
-        <span slot="header">Another Item without Indicator</span>
-        <div slot="content">
-          Clean header without indicator icon.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .noIndicator=${true}>
+          <span slot="header">Another Item without Indicator</span>
+          <div slot="content">
+            Clean header without indicator icon.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .noIndicator=${true}>
-        <span slot="header">Third Item without Indicator</span>
-        <div slot="content">
-          Minimal style focused on content.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .noIndicator=${true}>
+          <span slot="header">Third Item without Indicator</span>
+          <div slot="content">
+            Minimal style focused on content.
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -346,24 +360,26 @@ export const Bordered: Story = {
   },
   render: () => html`
     <div style="padding: 50px; max-width: 600px;">
-      <ag-accordion-item .bordered=${true}>
-        <span slot="header">Bordered Accordion Item</span>
-        <div slot="content">This accordion item has a bordered header.</div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item .bordered=${true}>
+          <span slot="header">Bordered Accordion Item</span>
+          <div slot="content">This accordion item has a bordered header.</div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .bordered=${true}>
-        <span slot="header">Another Bordered Item</span>
-        <div slot="content">
-          This is another accordion item with a bordered header.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .bordered=${true}>
+          <span slot="header">Another Bordered Item</span>
+          <div slot="content">
+            This is another accordion item with a bordered header.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .bordered=${true}>
-        <span slot="header">Third Bordered Item</span>
-        <div slot="content">
-          This is a third accordion item with a bordered header.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .bordered=${true}>
+          <span slot="header">Third Bordered Item</span>
+          <div slot="content">
+            This is a third accordion item with a bordered header.
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -375,26 +391,28 @@ export const WithBackground: Story = {
   },
   render: () => html`
     <div style="padding: 50px; max-width: 600px;">
-      <ag-accordion-item .background=${true}>
-        <span slot="header">Accordion Item with Background</span>
-        <div slot="content">
-          This accordion item has a background color on the header.
-        </div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item .background=${true}>
+          <span slot="header">Accordion Item with Background</span>
+          <div slot="content">
+            This accordion item has a background color on the header.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .background=${true}>
-        <span slot="header">Another Item with Background</span>
-        <div slot="content">
-          This is another accordion item with a background header.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .background=${true}>
+          <span slot="header">Another Item with Background</span>
+          <div slot="content">
+            This is another accordion item with a background header.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .background=${true}>
-        <span slot="header">Third Item with Background</span>
-        <div slot="content">
-          This is a third accordion item with a background header.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .background=${true}>
+          <span slot="header">Third Item with Background</span>
+          <div slot="content">
+            This is a third accordion item with a background header.
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -407,27 +425,29 @@ export const CustomHeadingLevel: Story = {
   render: () => html`
     <div style="padding: 50px; max-width: 600px;">
       <h1>Main Page Title</h1>
-      <ag-accordion-item .headingLevel=${2}>
-        <span slot="header">Accordion Item (H2)</span>
-        <div slot="content">
-          This accordion item uses an H2 heading to maintain proper document
-          outline.
-        </div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item .headingLevel=${2}>
+          <span slot="header">Accordion Item (H2)</span>
+          <div slot="content">
+            This accordion item uses an H2 heading to maintain proper document
+            outline.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .headingLevel=${2}>
-        <span slot="header">Another Item (H2)</span>
-        <div slot="content">
-          This is another accordion item with an H2 heading.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .headingLevel=${2}>
+          <span slot="header">Another Item (H2)</span>
+          <div slot="content">
+            This is another accordion item with an H2 heading.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item .headingLevel=${2}>
-        <span slot="header">Third Item (H2)</span>
-        <div slot="content">
-          This is a third accordion item with an H2 heading.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item .headingLevel=${2}>
+          <span slot="header">Third Item (H2)</span>
+          <div slot="content">
+            This is a third accordion item with an H2 heading.
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
     </div>
   `,
 };
@@ -440,26 +460,28 @@ export const EventTesting: Story = {
       <p style="margin-bottom: 1rem;">
         Click on accordion headers to test toggle events
       </p>
-      <ag-accordion-item
-        .useChevron=${true}
-        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
-      >
-        <span slot="header">Click to Test Events</span>
-        <div slot="content">
-          Click the header above to trigger a toggle event. Check the Actions
-          panel below for event logs.
-        </div>
-      </ag-accordion-item>
+      <ag-accordion>
+        <ag-accordion-item
+          .useChevron=${true}
+          @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
+        >
+          <span slot="header">Click to Test Events</span>
+          <div slot="content">
+            Click the header above to trigger a toggle event. Check the Actions
+            panel below for event logs.
+          </div>
+        </ag-accordion-item>
 
-      <ag-accordion-item
-        .useChevron=${true}
-        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
-      >
-        <span slot="header">Another Test Item</span>
-        <div slot="content">
-          This is another accordion item for testing events.
-        </div>
-      </ag-accordion-item>
+        <ag-accordion-item
+          .useChevron=${true}
+          @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
+        >
+          <span slot="header">Another Test Item</span>
+          <div slot="content">
+            This is another accordion item for testing events.
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
 
       <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1rem;">
         Check the Actions panel below for event logs (shows open/closed state)
@@ -482,7 +504,7 @@ export const KeyboardNavigation: Story = {
       <ag-accordion>
         <ag-accordion-item
           .useChevron=${true}
-          @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+          @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
         >
           <span slot="header">First Accordion Item</span>
           <div slot="content">
@@ -492,7 +514,7 @@ export const KeyboardNavigation: Story = {
 
         <ag-accordion-item
           .useChevron=${true}
-          @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+          @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
         >
           <span slot="header">Second Accordion Item</span>
           <div slot="content">
@@ -502,7 +524,7 @@ export const KeyboardNavigation: Story = {
 
         <ag-accordion-item
           .useChevron=${true}
-          @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+          @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
         >
           <span slot="header">Third Accordion Item</span>
           <div slot="content">
@@ -513,7 +535,7 @@ export const KeyboardNavigation: Story = {
 
         <ag-accordion-item
           .useChevron=${true}
-          @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+          @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
         >
           <span slot="header">Fourth Accordion Item</span>
           <div slot="content">
@@ -525,77 +547,11 @@ export const KeyboardNavigation: Story = {
   `,
 };
 
-// All style combinations
-export const AllStyleCombinations: Story = {
-  render: () => html`
-    <div
-      style="display: flex; flex-direction: column; gap: 2rem; padding: 50px; max-width: 800px;"
-    >
-      <div>
-        <p style="margin-bottom: 0.5rem; font-weight: bold;">Default</p>
-        <ag-accordion-item>
-          <span slot="header">Default Accordion</span>
-          <div slot="content">Default styling without any modifiers.</div>
-        </ag-accordion-item>
-      </div>
-
-      <div>
-        <p style="margin-bottom: 0.5rem; font-weight: bold;">With Indicator</p>
-        <ag-accordion-item .useChevron=${true}>
-          <span slot="header">Accordion with Indicator</span>
-          <div slot="content">
-            Shows a chevron icon that rotates when opened.
-          </div>
-        </ag-accordion-item>
-      </div>
-
-      <div>
-        <p style="margin-bottom: 0.5rem; font-weight: bold;">Bordered</p>
-        <ag-accordion-item .bordered=${true}>
-          <span slot="header">Bordered Accordion</span>
-          <div slot="content">Has a border on the header button.</div>
-        </ag-accordion-item>
-      </div>
-
-      <div>
-        <p style="margin-bottom: 0.5rem; font-weight: bold;">With Background</p>
-        <ag-accordion-item .background=${true}>
-          <span slot="header">Accordion with Background</span>
-          <div slot="content">Has a background color on the header.</div>
-        </ag-accordion-item>
-      </div>
-
-      <div>
-        <p style="margin-bottom: 0.5rem; font-weight: bold;">
-          Combined: Indicator + Bordered + Background
-        </p>
-        <ag-accordion-item
-          .useChevron=${true}
-          .bordered=${true}
-          .background=${true}
-        >
-          <span slot="header">Fully Styled Accordion</span>
-          <div slot="content">
-            Combines indicator, border, and background styling.
-          </div>
-        </ag-accordion-item>
-      </div>
-
-      <div>
-        <p style="margin-bottom: 0.5rem; font-weight: bold;">Disabled</p>
-        <ag-accordion-item .disabled=${true} .useChevron=${true}>
-          <span slot="header">Disabled Accordion</span>
-          <div slot="content">This content cannot be toggled.</div>
-        </ag-accordion-item>
-      </div>
-    </div>
-  `,
-};
-
 // Rich content
 export const RichContent: Story = {
   render: () => html`
     <div style="padding: 50px; max-width: 600px;">
+    <ag-accordion>
       <ag-accordion-item .useChevron=${true} .bordered=${true}>
         <span slot="header">FAQ: What is AgnosticUI?</span>
         <div slot="content" style="padding: 1rem;">
@@ -643,6 +599,7 @@ export const RichContent: Story = {
           </p>
         </div>
       </ag-accordion-item>
+    </ag-accordion>
     </div>
   `,
 };
@@ -653,48 +610,52 @@ export const MultipleGroups: Story = {
     <div style="padding: 50px; display: flex; gap: 2rem;">
       <div style="flex: 1;">
         <h3 style="margin-top: 0;">Product Features</h3>
-        <ag-accordion-item .useChevron=${true} .background=${true}>
-          <span slot="header">Performance</span>
-          <div slot="content">
-            Built for speed and efficiency with minimal overhead.
-          </div>
-        </ag-accordion-item>
+        <ag-accordion>
+          <ag-accordion-item .useChevron=${true} .background=${true}>
+            <span slot="header">Performance</span>
+            <div slot="content">
+              Built for speed and efficiency with minimal overhead.
+            </div>
+          </ag-accordion-item>
 
-        <ag-accordion-item .useChevron=${true} .background=${true}>
-          <span slot="header">Accessibility</span>
-          <div slot="content">
-            WCAG 2.1 AA compliant components out of the box.
-          </div>
-        </ag-accordion-item>
+          <ag-accordion-item .useChevron=${true} .background=${true}>
+            <span slot="header">Accessibility</span>
+            <div slot="content">
+              WCAG 2.1 AA compliant components out of the box.
+            </div>
+          </ag-accordion-item>
 
-        <ag-accordion-item .useChevron=${true} .background=${true}>
-          <span slot="header">Customization</span>
-          <div slot="content">
-            Fully customizable through CSS custom properties.
-          </div>
-        </ag-accordion-item>
+          <ag-accordion-item .useChevron=${true} .background=${true}>
+            <span slot="header">Customization</span>
+            <div slot="content">
+              Fully customizable through CSS custom properties.
+            </div>
+          </ag-accordion-item>
+        </ag-accordion>
       </div>
 
       <div style="flex: 1;">
         <h3 style="margin-top: 0;">Support Options</h3>
-        <ag-accordion-item .useChevron=${true} .background=${true}>
-          <span slot="header">Community Support</span>
-          <div slot="content">
-            Free support through GitHub discussions and Discord.
-          </div>
-        </ag-accordion-item>
+        <ag-accordion>
+          <ag-accordion-item .useChevron=${true} .background=${true}>
+            <span slot="header">Community Support</span>
+            <div slot="content">
+              Free support through GitHub discussions and Discord.
+            </div>
+          </ag-accordion-item>
 
-        <ag-accordion-item .useChevron=${true} .background=${true}>
-          <span slot="header">Premium Support</span>
-          <div slot="content">
-            Priority support with guaranteed response times.
-          </div>
-        </ag-accordion-item>
+          <ag-accordion-item .useChevron=${true} .background=${true}>
+            <span slot="header">Premium Support</span>
+            <div slot="content">
+              Priority support with guaranteed response times.
+            </div>
+          </ag-accordion-item>
 
-        <ag-accordion-item .useChevron=${true} .background=${true}>
-          <span slot="header">Enterprise</span>
-          <div slot="content">Custom solutions and dedicated support team.</div>
-        </ag-accordion-item>
+          <ag-accordion-item .useChevron=${true} .background=${true}>
+            <span slot="header">Enterprise</span>
+            <div slot="content">Custom solutions and dedicated support team.</div>
+          </ag-accordion-item>
+        </ag-accordion>
       </div>
     </div>
   `,
@@ -772,55 +733,59 @@ export const CSSPartsCustomization: Story = {
 
       <div style="margin-bottom: 3rem;">
         <h4>Gradient Style</h4>
-        <ag-accordion-item class="custom-accordion" .useChevron=${true}>
-          <span slot="header">Custom Styled Header</span>
-          <div slot="content">
-            This accordion uses CSS Shadow Parts to apply a gradient background,
-            custom padding, border radius, and hover effects.
-          </div>
-        </ag-accordion-item>
+        <ag-accordion>
+          <ag-accordion-item class="custom-accordion" .useChevron=${true}>
+            <span slot="header">Custom Styled Header</span>
+            <div slot="content">
+              This accordion uses CSS Shadow Parts to apply a gradient background,
+              custom padding, border radius, and hover effects.
+            </div>
+          </ag-accordion-item>
 
-        <ag-accordion-item class="custom-accordion" .useChevron=${true}>
-          <span slot="header">Another Custom Item</span>
-          <div slot="content">
-            All styling is done through CSS Shadow Parts, allowing full control
-            over the component's appearance without modifying the component
-            itself.
-          </div>
-        </ag-accordion-item>
+          <ag-accordion-item class="custom-accordion" .useChevron=${true}>
+            <span slot="header">Another Custom Item</span>
+            <div slot="content">
+              All styling is done through CSS Shadow Parts, allowing full control
+              over the component's appearance without modifying the component
+              itself.
+            </div>
+          </ag-accordion-item>
 
-        <ag-accordion-item class="custom-accordion" .useChevron=${true}>
-          <span slot="header">Third Custom Item</span>
-          <div slot="content">
-            This demonstrates the power of CSS Shadow Parts for component
-            customization while maintaining encapsulation and accessibility.
-          </div>
-        </ag-accordion-item>
+          <ag-accordion-item class="custom-accordion" .useChevron=${true}>
+            <span slot="header">Third Custom Item</span>
+            <div slot="content">
+              This demonstrates the power of CSS Shadow Parts for component
+              customization while maintaining encapsulation and accessibility.
+            </div>
+          </ag-accordion-item>
+        </ag-accordion>
       </div>
 
       <div>
         <h4>Minimal Style</h4>
-        <ag-accordion-item class="minimal-accordion" .useChevron=${true}>
-          <span slot="header">Minimal Styled Header</span>
-          <div slot="content">
-            This variant uses a minimal border-left design with subtle styling.
-          </div>
-        </ag-accordion-item>
+        <ag-accordion>
+          <ag-accordion-item class="minimal-accordion" .useChevron=${true}>
+            <span slot="header">Minimal Styled Header</span>
+            <div slot="content">
+              This variant uses a minimal border-left design with subtle styling.
+            </div>
+          </ag-accordion-item>
 
-        <ag-accordion-item class="minimal-accordion" .useChevron=${true}>
-          <span slot="header">Another Minimal Item</span>
-          <div slot="content">
-            Clean and simple styling focused on content hierarchy.
-          </div>
-        </ag-accordion-item>
+          <ag-accordion-item class="minimal-accordion" .useChevron=${true}>
+            <span slot="header">Another Minimal Item</span>
+            <div slot="content">
+              Clean and simple styling focused on content hierarchy.
+            </div>
+          </ag-accordion-item>
 
-        <ag-accordion-item class="minimal-accordion" .useChevron=${true}>
-          <span slot="header">Third Minimal Item</span>
-          <div slot="content">
-            Demonstrates alternative styling approach using the same CSS Shadow
-            Parts API.
-          </div>
-        </ag-accordion-item>
+          <ag-accordion-item class="minimal-accordion" .useChevron=${true}>
+            <span slot="header">Third Minimal Item</span>
+            <div slot="content">
+              Demonstrates alternative styling approach using the same CSS Shadow
+              Parts API.
+            </div>
+          </ag-accordion-item>
+        </ag-accordion>
       </div>
     </div>
   `,

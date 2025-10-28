@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
-import VueAccordion, { VueAccordionItem, VueAccordionHeader, VueAccordionContent, type VueAccordionItemProps } from 'agnosticui-core/accordion/vue';
+import VueAccordion, { VueAccordionItem, VueAccordionHeader, VueAccordionContent } from 'agnosticui-core/accordion/vue';
 
 const meta = {
   title: 'AgnosticUI Vue/Accordion',
-  component: VueAccordion,
+  component: VueAccordionItem,
   tags: ['autodocs'],
   argTypes: {
     headingLevel: {
@@ -56,14 +56,14 @@ const meta = {
     background: false,
     onToggle: fn(),
   },
-} satisfies Meta<typeof VueAccordion>;
+} satisfies Meta<typeof VueAccordionItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
-  render: (args: VueAccordionItemProps) => ({
+  render: (args) => ({
     components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
     setup() {
       return { args };
@@ -89,7 +89,7 @@ export const Default: Story = {
 
 export const OpenByDefault: Story = {
   args: {},
-  render: (args: VueAccordionItemProps) => ({
+  render: (args) => ({
     components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
     setup() {
       return { args };
@@ -117,7 +117,7 @@ export const Disabled: Story = {
   args: {
     disabled: true,
   },
-  render: (args: VueAccordionItemProps) => ({
+  render: (args) => ({
     components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
     setup() {
       return { args };
@@ -223,7 +223,7 @@ export const WithIndicator: Story = {
   args: {
     useChevron: true,
   },
-  render: (args: VueAccordionItemProps) => ({
+  render: (args) => ({
     components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
     setup() {
       return { args };
@@ -251,7 +251,7 @@ export const Bordered: Story = {
   args: {
     bordered: true,
   },
-  render: (args: VueAccordionItemProps) => ({
+  render: (args) => ({
     components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
     setup() {
       return { args };
@@ -279,7 +279,7 @@ export const WithBackground: Story = {
   args: {
     background: true,
   },
-  render: (args: VueAccordionItemProps) => ({
+  render: (args) => ({
     components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
     setup() {
       return { args };
@@ -307,7 +307,7 @@ export const CustomHeadingLevel: Story = {
   args: {
     headingLevel: 2,
   },
-  render: (args: VueAccordionItemProps) => ({
+  render: (args) => ({
     components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
     setup() {
       return { args };
@@ -333,7 +333,7 @@ export const CustomHeadingLevel: Story = {
 
 export const Accessible: Story = {
   args: {},
-  render: (args: VueAccordionItemProps) => ({
+  render: (args) => ({
     components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
     setup() {
       return { args };

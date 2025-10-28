@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from 'storybook/test';
-import { ReactAccordion, AccordionItem, ItemHeader, ItemContent, type ReactAccordionItemProps } from 'agnosticui-core/accordion/react';
+import { ReactAccordion, AccordionItem, ItemHeader, ItemContent } from 'agnosticui-core/accordion/react';
 
-const meta: Meta<ReactAccordionItemProps> = {
+const meta = {
   title: 'AgnosticUI React/Accordion',
   component: AccordionItem,
   tags: ['autodocs'],
@@ -64,7 +64,7 @@ const meta: Meta<ReactAccordionItemProps> = {
     background: false,
     onToggle: fn(),
   },
-} satisfies Meta<ReactAccordionItemProps>;
+} satisfies Meta<typeof AccordionItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
