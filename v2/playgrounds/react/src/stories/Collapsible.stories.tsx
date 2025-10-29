@@ -1,38 +1,57 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
-import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
-import type { ReactCollapsibleProps } from 'agnosticui-core/collapsible/react';
+import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
+import { ReactCollapsible } from "agnosticui-core/collapsible/react";
+import type { ReactCollapsibleProps } from "agnosticui-core/collapsible/react";
 
 const meta: Meta<typeof ReactCollapsible> = {
-  title: 'AgnosticUI React/Collapsible',
+  title: "AgnosticUI React/Collapsible",
   component: ReactCollapsible,
   argTypes: {
-    isOpen: {
-      control: 'boolean',
-      description: 'Controls whether the collapsible is expanded or collapsed',
+    open: {
+      control: "boolean",
+      description: "Controls whether the collapsible is expanded or collapsed",
       defaultValue: false,
     },
-    isSkinned: {
-      control: 'boolean',
-      description: 'Applies border-radius styling',
-      defaultValue: true,
-    },
     isBordered: {
-      control: 'boolean',
-      description: 'Adds a border around the collapsible',
+      control: "boolean",
+      description: "Adds a border around the collapsible",
       defaultValue: false,
     },
     isShadow: {
-      control: 'boolean',
-      description: 'Applies box-shadow',
+      control: "boolean",
+      description: "Applies box-shadow",
+      defaultValue: false,
+    },
+    useChevron: {
+      control: "boolean",
+      description: "Use chevron indicator (default)",
+      defaultValue: true,
+    },
+    useX: {
+      control: "boolean",
+      description:
+        "Use X/plus indicator (rotates from upside-down plus to 45deg X)",
+      defaultValue: false,
+    },
+    useMinus: {
+      control: "boolean",
+      description: "Use plus/minus indicator (swaps icon when toggled)",
+      defaultValue: false,
+    },
+    noIndicator: {
+      control: "boolean",
+      description: "Hide the indicator completely",
       defaultValue: false,
     },
   },
   args: {
-    isOpen: false,
-    isSkinned: true,
+    open: false,
     isBordered: false,
     isShadow: false,
+    useChevron: true,
+    useX: false,
+    useMinus: false,
+    noIndicator: false,
   } as ReactCollapsibleProps,
 };
 
@@ -50,24 +69,12 @@ export const Default: Story = {
 
 export const Open: Story = {
   args: {
-    isOpen: true,
+    open: true,
   },
   render: (args) => (
     <ReactCollapsible {...args}>
       <span slot="summary">Already expanded</span>
       <p>This collapsible starts in an open state.</p>
-    </ReactCollapsible>
-  ),
-};
-
-export const Unskinned: Story = {
-  args: {
-    isSkinned: false,
-  },
-  render: (args) => (
-    <ReactCollapsible {...args}>
-      <span slot="summary">Unskinned collapsible</span>
-      <p>This collapsible has no border-radius applied.</p>
     </ReactCollapsible>
   ),
 };
@@ -109,29 +116,113 @@ export const CombinedFeatures: Story = {
   ),
 };
 
-export const CustomIndicator: Story = {
+export const ChevronIndicator: Story = {
   args: {
     isBordered: true,
+    useChevron: true,
   },
   render: (args) => (
     <ReactCollapsible {...args}>
-      <span slot="summary">Custom indicator</span>
-      <span slot="indicator">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </span>
-      <p>This collapsible uses a custom chevron indicator that rotates when opened.</p>
+      <span slot="summary">Chevron indicator (default)</span>
+      <p>
+        This collapsible uses the default chevron indicator that rotates 180°
+        when opened.
+      </p>
     </ReactCollapsible>
+  ),
+};
+
+export const UseXIndicator: Story = {
+  args: {
+    isBordered: true,
+    useChevron: false,
+    useX: true,
+  },
+  render: (args) => (
+    <ReactCollapsible {...args}>
+      <span slot="summary">X/Plus indicator</span>
+      <p>
+        This collapsible uses the X/plus indicator. It starts as an upside-down
+        plus (closed) and rotates to form an X shape (open).
+      </p>
+    </ReactCollapsible>
+  ),
+};
+
+export const UseMinusIndicator: Story = {
+  args: {
+    isBordered: true,
+    useChevron: false,
+    useMinus: true,
+  },
+  render: (args) => (
+    <ReactCollapsible {...args}>
+      <span slot="summary">Plus/Minus indicator</span>
+      <p>
+        This collapsible swaps between a plus icon (closed) and a minus icon
+        (open). No rotation, just icon swap.
+      </p>
+    </ReactCollapsible>
+  ),
+};
+
+export const NoIndicator: Story = {
+  args: {
+    isBordered: true,
+    noIndicator: true,
+  },
+  render: (args) => (
+    <ReactCollapsible {...args}>
+      <span slot="summary">No indicator</span>
+      <p>This collapsible has no indicator icon at all.</p>
+    </ReactCollapsible>
+  ),
+};
+
+export const IndicatorComparison: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        maxWidth: "600px",
+      }}
+    >
+      <h3 style={{ marginTop: 0 }}>Indicator Variants Comparison</h3>
+      <p style={{ color: "#6b7280", marginBottom: "1rem" }}>
+        Toggle each collapsible to see how the different indicators behave.
+      </p>
+
+      <ReactCollapsible isBordered useChevron>
+        <span slot="summary">🔽 Chevron (default) - Rotates 180°</span>
+        <p>
+          The chevron points down when closed and up when open via rotation.
+        </p>
+      </ReactCollapsible>
+
+      <ReactCollapsible isBordered useX>
+        <span slot="summary">
+          ✖️ X Indicator - Rotates from upside-down plus to X
+        </span>
+        <p>
+          Starts as an upside-down plus sign and rotates 45° to form an X when
+          open.
+        </p>
+      </ReactCollapsible>
+
+      <ReactCollapsible isBordered useMinus>
+        <span slot="summary">➕ Plus/Minus - Swaps icons</span>
+        <p>
+          Shows a plus icon when closed and swaps to a minus icon when open.
+        </p>
+      </ReactCollapsible>
+
+      <ReactCollapsible isBordered noIndicator>
+        <span slot="summary">⚪ No Indicator - Completely hidden</span>
+        <p>No indicator is shown at all.</p>
+      </ReactCollapsible>
+    </div>
   ),
 };
 
@@ -162,7 +253,14 @@ export const RichContent: Story = {
 
 export const FAQ: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '600px' }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        maxWidth: "600px",
+      }}
+    >
       <h3 style={{ marginTop: 0 }}>Frequently Asked Questions</h3>
 
       <ReactCollapsible isBordered>
@@ -177,7 +275,14 @@ export const FAQ: Story = {
       <ReactCollapsible isBordered>
         <span slot="summary">How do I install it?</span>
         <p>You can install AgnosticUI via npm:</p>
-        <pre style={{ background: '#f3f4f6', padding: '1rem', borderRadius: '4px', overflowX: 'auto' }}>
+        <pre
+          style={{
+            background: "#f3f4f6",
+            padding: "1rem",
+            borderRadius: "4px",
+            overflowX: "auto",
+          }}
+        >
           npm install agnosticui-core
         </pre>
       </ReactCollapsible>
@@ -194,9 +299,10 @@ export const FAQ: Story = {
       <ReactCollapsible isBordered>
         <span slot="summary">Can I customize the styling?</span>
         <p>
-          Absolutely! AgnosticUI uses CSS Shadow Parts to allow deep customization
-          of component internals while maintaining encapsulation. You can also use
-          design tokens for consistent theming across your application.
+          Absolutely! AgnosticUI uses CSS Shadow Parts to allow deep
+          customization of component internals while maintaining encapsulation.
+          You can also use design tokens for consistent theming across your
+          application.
         </p>
       </ReactCollapsible>
     </div>
@@ -208,18 +314,21 @@ export const NestedCollapsibles: Story = {
     isBordered: true,
   },
   render: (args) => (
-    <div style={{ maxWidth: '600px' }}>
+    <div style={{ maxWidth: "600px" }}>
       <ReactCollapsible {...args}>
         <span slot="summary">Level 1 - Main Topic</span>
         <div>
           <p>This is the main content area.</p>
 
-          <ReactCollapsible isBordered style={{ marginTop: '1rem' }}>
+          <ReactCollapsible isBordered useMinus style={{ marginTop: "1rem" }}>
             <span slot="summary">Level 2 - Subtopic A</span>
-            <p>Nested collapsible content for subtopic A.</p>
+            <p>
+              Nested collapsible content for subtopic A. Note the different
+              indicator style.
+            </p>
           </ReactCollapsible>
 
-          <ReactCollapsible isBordered style={{ marginTop: '0.5rem' }}>
+          <ReactCollapsible isBordered useMinus style={{ marginTop: "0.5rem" }}>
             <span slot="summary">Level 2 - Subtopic B</span>
             <p>Nested collapsible content for subtopic B.</p>
           </ReactCollapsible>
@@ -229,76 +338,38 @@ export const NestedCollapsibles: Story = {
   ),
 };
 
+const InteractiveStory = (args: ReactCollapsibleProps) => {
+  return (
+    <ReactCollapsible
+      {...args}
+      onToggle={(e: Event) => {
+        const collapsible = e.target as HTMLElement & { open: boolean };
+        console.log("Toggle event open state:", collapsible.open);
+      }}
+    >
+      <span slot="summary">Click to toggle (watch console)</span>
+      <div>
+        <p>
+          The collapsible dispatches a <code>toggle</code> event when opened or
+          closed.
+        </p>
+        <p>
+          Current status:{" "}
+          <strong style={{ color: status === "Open" ? "green" : "red" }}>
+            {status}
+          </strong>
+        </p>
+      </div>
+    </ReactCollapsible>
+  );
+};
+
 export const Interactive: Story = {
   args: {
     isBordered: true,
     isShadow: true,
   },
-  render: (args) => {
-    const [status, setStatus] = useState('Closed');
-
-    return (
-      <ReactCollapsible
-        {...args}
-        onToggle={(e: CustomEvent) => {
-          console.log('Toggle event:', e.detail);
-          setStatus(e.detail.isOpen ? 'Open' : 'Closed');
-        }}
-      >
-        <span slot="summary">Click to toggle (watch console)</span>
-        <div>
-          <p>The collapsible dispatches a <code>toggle</code> event when opened or closed.</p>
-          <p>
-            Current status: <strong style={{ color: status === 'Open' ? 'green' : 'red' }}>{status}</strong>
-          </p>
-        </div>
-      </ReactCollapsible>
-    );
-  },
-};
-
-export const ControlledComponent: Story = {
-  args: {
-    isBordered: true,
-  },
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-      <div>
-        <div style={{ marginBottom: '1rem' }}>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            style={{ padding: '0.5rem 1rem', marginRight: '0.5rem' }}
-          >
-            Toggle Externally
-          </button>
-          <button
-            onClick={() => setIsOpen(true)}
-            style={{ padding: '0.5rem 1rem', marginRight: '0.5rem' }}
-          >
-            Open
-          </button>
-          <button
-            onClick={() => setIsOpen(false)}
-            style={{ padding: '0.5rem 1rem' }}
-          >
-            Close
-          </button>
-        </div>
-
-        <ReactCollapsible
-          {...args}
-          isOpen={isOpen}
-          onToggle={(e: CustomEvent) => setIsOpen(e.detail.isOpen)}
-        >
-          <span slot="summary">Controlled collapsible</span>
-          <p>This collapsible's state is controlled by external buttons and React state.</p>
-          <p>Current state: <strong>{isOpen ? 'Open' : 'Closed'}</strong></p>
-        </ReactCollapsible>
-      </div>
-    );
-  },
+  render: (args) => <InteractiveStory {...args} />,
 };
 
 export const CSSPartsCustomization: Story = {
@@ -329,39 +400,20 @@ export const CSSPartsCustomization: Story = {
 
         /* Minimal style */
         .custom-minimal::part(ag-collapsible-summary) {
-          background: var(--ag-background-secondary);
-          border-left: 4px solid var(--ag-primary);
+          background: #f9fafb;
+          border-left: 4px solid #3b82f6;
           padding: 1rem 1rem 1rem 1.5rem;
         }
 
         .custom-minimal::part(ag-collapsible-content) {
-          background: var(--ag-background-primary);
+          background: #ffffff;
           padding: 1rem 1rem 1rem 1.5rem;
-        }
-
-        /* Card style */
-        .custom-card::part(ag-collapsible-details) {
-          border: 2px solid var(--ag-border);
-          border-radius: 16px;
-          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .custom-card::part(ag-collapsible-details):hover {
-          transform: translateY(-2px);
-          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .custom-card::part(ag-collapsible-summary) {
-          background: var(--ag-background-secondary);
-          font-weight: 600;
-          font-size: 1.1rem;
         }
       `}</style>
 
-      <div style={{ padding: '50px', maxWidth: '800px' }}>
+      <div style={{ padding: "2rem", maxWidth: "800px" }}>
         <h3 style={{ marginTop: 0 }}>Styled with CSS Shadow Parts</h3>
-        <p style={{ marginBottom: '2rem', color: '#6b7280' }}>
+        <p style={{ marginBottom: "2rem", color: "#6b7280" }}>
           Collapsible can be customized using CSS Shadow Parts:
           <code>::part(ag-collapsible-details)</code>,
           <code>::part(ag-collapsible-summary)</code>,
@@ -369,28 +421,28 @@ export const CSSPartsCustomization: Story = {
           <code>::part(ag-collapsible-content)</code>
         </p>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+        >
           <div>
             <h4>Gradient Style</h4>
             <ReactCollapsible className="custom-gradient">
               <span slot="summary">🎨 Vibrant gradient background</span>
-              <p>This collapsible uses a gradient background with white text and custom styling.</p>
+              <p>
+                This collapsible uses a gradient background with white text and
+                custom styling.
+              </p>
             </ReactCollapsible>
           </div>
 
           <div>
             <h4>Minimal with Left Accent</h4>
-            <ReactCollapsible className="custom-minimal">
+            <ReactCollapsible className="custom-minimal" useMinus>
               <span slot="summary">💡 Clean, minimal design</span>
-              <p>This style uses a subtle background with a colored left border accent.</p>
-            </ReactCollapsible>
-          </div>
-
-          <div>
-            <h4>Elevated Card Style</h4>
-            <ReactCollapsible className="custom-card">
-              <span slot="summary">📋 Card-style with elevation</span>
-              <p>This collapsible looks like a card with elevation and hover effects.</p>
+              <p>
+                This style uses a subtle background with a colored left border
+                accent and plus/minus indicators.
+              </p>
             </ReactCollapsible>
           </div>
         </div>

@@ -3,19 +3,15 @@ import { ref } from 'vue';
 import { VueCollapsible } from 'agnosticui-core/collapsible/vue';
 import type { VueCollapsibleProps } from 'agnosticui-core/collapsible/vue';
 
-const meta = {
+const meta: Meta<VueCollapsibleProps> = {
   title: 'AgnosticUI Vue/Collapsible',
   component: VueCollapsible,
+  tags: ['autodocs'],
   argTypes: {
-    isOpen: {
+    open: {
       control: 'boolean',
       description: 'Controls whether the collapsible is expanded or collapsed',
       defaultValue: false,
-    },
-    isSkinned: {
-      control: 'boolean',
-      description: 'Applies border-radius styling',
-      defaultValue: true,
     },
     isBordered: {
       control: 'boolean',
@@ -27,14 +23,37 @@ const meta = {
       description: 'Applies box-shadow',
       defaultValue: false,
     },
+    useChevron: {
+      control: 'boolean',
+      description: 'Use chevron indicator (default)',
+      defaultValue: true,
+    },
+    useX: {
+      control: 'boolean',
+      description: 'Use X/plus indicator (rotates from upside-down plus to 45deg X)',
+      defaultValue: false,
+    },
+    useMinus: {
+      control: 'boolean',
+      description: 'Use plus/minus indicator (swaps icon when toggled)',
+      defaultValue: false,
+    },
+    noIndicator: {
+      control: 'boolean',
+      description: 'Hide the indicator completely',
+      defaultValue: false,
+    },
   },
   args: {
-    isOpen: false,
-    isSkinned: true,
+    open: false,
     isBordered: false,
     isShadow: false,
+    useChevron: true,
+    useX: false,
+    useMinus: false,
+    noIndicator: false,
   } as VueCollapsibleProps,
-} satisfies Meta<typeof VueCollapsible>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -58,7 +77,7 @@ export const Default: Story = {
 
 export const Open: Story = {
   args: {
-    isOpen: true,
+    open: true,
   },
   render: (args) => ({
     components: { VueCollapsible },
@@ -66,31 +85,11 @@ export const Open: Story = {
       return { args };
     },
     template: `
-      <VueCollapsible v-bind="args">
+      <VueCollapsible v-bind="args" open>
         <template #summary>
           <span>Already expanded</span>
         </template>
         <p>This collapsible starts in an open state.</p>
-      </VueCollapsible>
-    `,
-  }),
-};
-
-export const Unskinned: Story = {
-  args: {
-    isSkinned: false,
-  },
-  render: (args) => ({
-    components: { VueCollapsible },
-    setup() {
-      return { args };
-    },
-    template: `
-      <VueCollapsible v-bind="args">
-        <template #summary>
-          <span>Unskinned collapsible</span>
-        </template>
-        <p>This collapsible has no border-radius applied.</p>
       </VueCollapsible>
     `,
   }),
@@ -157,9 +156,75 @@ export const CombinedFeatures: Story = {
   }),
 };
 
-export const CustomIndicator: Story = {
+export const ChevronIndicator: Story = {
   args: {
     isBordered: true,
+    useChevron: true,
+  },
+  render: (args) => ({
+    components: { VueCollapsible },
+    setup() {
+      return { args };
+    },
+    template: `
+      <VueCollapsible :use-chevron="true">
+        <template #summary>
+          <span>Chevron indicator (default)</span>
+        </template>
+        <p>This collapsible uses the default chevron indicator that rotates 180° when opened.</p>
+      </VueCollapsible>
+    `,
+  }),
+};
+
+export const UseXIndicator: Story = {
+  args: {
+    isBordered: true,
+    useChevron: false,
+    useX: true,
+  },
+  render: (args) => ({
+    components: { VueCollapsible },
+    setup() {
+      return { args };
+    },
+    template: `
+      <VueCollapsible :use-x="true">
+        <template #summary>
+          <span>X/Plus indicator</span>
+        </template>
+        <p>This collapsible uses the X/plus indicator. It starts as an upside-down plus (closed) and rotates to form an X shape (open).</p>
+      </VueCollapsible>
+    `,
+  }),
+};
+
+export const UseMinusIndicator: Story = {
+  args: {
+    isBordered: true,
+    useChevron: false,
+    useMinus: true,
+  },
+  render: (args) => ({
+    components: { VueCollapsible },
+    setup() {
+      return { args };
+    },
+    template: `
+      <VueCollapsible :use-minus="true">
+        <template #summary>
+          <span>Plus/Minus indicator</span>
+        </template>
+        <p>This collapsible swaps between a plus icon (closed) and a minus icon (open). No rotation, just icon swap.</p>
+      </VueCollapsible>
+    `,
+  }),
+};
+
+export const NoIndicator: Story = {
+  args: {
+    isBordered: true,
+    noIndicator: true,
   },
   render: (args) => ({
     components: { VueCollapsible },
@@ -169,24 +234,52 @@ export const CustomIndicator: Story = {
     template: `
       <VueCollapsible v-bind="args">
         <template #summary>
-          <span>Custom indicator</span>
+          <span>No indicator</span>
         </template>
-        <template #indicator>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </template>
-        <p>This collapsible uses a custom chevron indicator that rotates when opened.</p>
+        <p>This collapsible has no indicator icon at all.</p>
       </VueCollapsible>
+    `,
+  }),
+};
+
+export const IndicatorComparison: Story = {
+  render: () => ({
+    components: { VueCollapsible },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 600px;">
+        <h3 style="margin-top: 0;">Indicator Variants Comparison</h3>
+        <p style="color: #6b7280; margin-bottom: 1rem;">
+          Toggle each collapsible to see how the different indicators behave.
+        </p>
+
+        <VueCollapsible :is-bordered="true" :use-chevron="true">
+          <template #summary>
+            <span>🔽 Chevron (default) - Rotates 180°</span>
+          </template>
+          <p>The chevron points down when closed and up when open via rotation.</p>
+        </VueCollapsible>
+
+        <VueCollapsible :is-bordered="true" :use-x="true">
+          <template #summary>
+            <span>✖️ X Indicator - Rotates from upside-down plus to X</span>
+          </template>
+          <p>Starts as an upside-down plus sign and rotates 45° to form an X when open.</p>
+        </VueCollapsible>
+
+        <VueCollapsible :is-bordered="true" :use-minus="true">
+          <template #summary>
+            <span>➕ Plus/Minus - Swaps icons</span>
+          </template>
+          <p>Shows a plus icon when closed and swaps to a minus icon when open.</p>
+        </VueCollapsible>
+
+        <VueCollapsible :is-bordered="true" :no-indicator="true">
+          <template #summary>
+            <span>⚪ No Indicator - Completely hidden</span>
+          </template>
+          <p>No indicator is shown at all.</p>
+        </VueCollapsible>
+      </div>
     `,
   }),
 };
@@ -294,14 +387,14 @@ export const NestedCollapsibles: Story = {
           <div>
             <p>This is the main content area.</p>
 
-            <VueCollapsible :is-bordered="true" style="margin-top: 1rem;">
+            <VueCollapsible :is-bordered="true" :use-minus="true" style="margin-top: 1rem;">
               <template #summary>
                 <span>Level 2 - Subtopic A</span>
               </template>
-              <p>Nested collapsible content for subtopic A.</p>
+              <p>Nested collapsible content for subtopic A. Note the different indicator style.</p>
             </VueCollapsible>
 
-            <VueCollapsible :is-bordered="true" style="margin-top: 0.5rem;">
+            <VueCollapsible :is-bordered="true" :use-minus="true" style="margin-top: 0.5rem;">
               <template #summary>
                 <span>Level 2 - Subtopic B</span>
               </template>
@@ -322,14 +415,16 @@ export const Interactive: Story = {
   render: (args) => ({
     components: { VueCollapsible },
     setup() {
-      const status = ref('Closed');
+      const isExpanded = ref(false);
 
-      const handleToggle = (e: CustomEvent) => {
-        console.log('Toggle event:', e.detail);
-        status.value = e.detail.isOpen ? 'Open' : 'Closed';
+      const handleToggle = (e: Event) => {
+        // e.target is the underlying <ag-collapsible> element
+        const newOpenState = (e.target as HTMLElement & { open: boolean }).open;
+        isExpanded.value = newOpenState;
+        console.log('Collapsible Toggled. New state:', newOpenState);
       };
 
-      return { args, status, handleToggle };
+      return { args, isExpanded, handleToggle };
     },
     template: `
       <VueCollapsible v-bind="args" @toggle="handleToggle">
@@ -338,71 +433,17 @@ export const Interactive: Story = {
         </template>
         <div>
           <p>The collapsible dispatches a <code>toggle</code> event when opened or closed.</p>
-          <p>
-            Current status: <strong :style="{ color: status === 'Open' ? 'green' : 'red' }">{{ status }}</strong>
-          </p>
         </div>
       </VueCollapsible>
-    `,
-  }),
-};
-
-export const ControlledComponent: Story = {
-  args: {
-    isBordered: true,
-  },
-  render: (args) => ({
-    components: { VueCollapsible },
-    setup() {
-      const isOpen = ref(false);
-
-      const handleToggle = (e: CustomEvent) => {
-        isOpen.value = e.detail.isOpen;
-      };
-
-      return { args, isOpen, handleToggle };
-    },
-    template: `
-      <div>
-        <div style="margin-bottom: 1rem;">
-          <button
-            @click="isOpen = !isOpen"
-            style="padding: 0.5rem 1rem; margin-right: 0.5rem;"
-          >
-            Toggle Externally
-          </button>
-          <button
-            @click="isOpen = true"
-            style="padding: 0.5rem 1rem; margin-right: 0.5rem;"
-          >
-            Open
-          </button>
-          <button
-            @click="isOpen = false"
-            style="padding: 0.5rem 1rem;"
-          >
-            Close
-          </button>
-        </div>
-
-        <VueCollapsible
-          v-bind="args"
-          :is-open="isOpen"
-          @toggle="handleToggle"
-        >
-          <template #summary>
-            <span>Controlled collapsible</span>
-          </template>
-          <p>This collapsible's state is controlled by external buttons and Vue ref.</p>
-          <p>Current state: <strong>{{ isOpen ? 'Open' : 'Closed' }}</strong></p>
-        </VueCollapsible>
-      </div>
+      <p styl="margin-top: 2rem;">
+        Current isExpanded: <strong :style="{ color: isExpanded ? 'green' : 'red' }">{{ isExpanded }}</strong>
+      </p>
     `,
   }),
 };
 
 export const CSSPartsCustomization: Story = {
-  render: (args) => ({
+  render: () => ({
     components: { VueCollapsible },
     setup() {
       const styles = `
@@ -431,43 +472,24 @@ export const CSSPartsCustomization: Story = {
 
           /* Minimal style */
           .custom-minimal::part(ag-collapsible-summary) {
-            background: var(--ag-background-secondary);
-            border-left: 4px solid var(--ag-primary);
+            background: #f9fafb;
+            border-left: 4px solid #3b82f6;
             padding: 1rem 1rem 1rem 1.5rem;
           }
 
           .custom-minimal::part(ag-collapsible-content) {
-            background: var(--ag-background-primary);
+            background: #ffffff;
             padding: 1rem 1rem 1rem 1.5rem;
-          }
-
-          /* Card style */
-          .custom-card::part(ag-collapsible-details) {
-            border: 2px solid var(--ag-border);
-            border-radius: 16px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-          }
-
-          .custom-card::part(ag-collapsible-details):hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-          }
-
-          .custom-card::part(ag-collapsible-summary) {
-            background: var(--ag-background-secondary);
-            font-weight: 600;
-            font-size: 1.1rem;
           }
         </style>
       `;
-      return { args, styles };
+      return { styles };
     },
     template: `
       <div>
         <div v-html="styles"></div>
 
-        <div style="padding: 50px; max-width: 800px;">
+        <div style="padding: 2rem; max-width: 800px;">
           <h3 style="margin-top: 0;">Styled with CSS Shadow Parts</h3>
           <p style="margin-bottom: 2rem; color: #6b7280;">
             Collapsible can be customized using CSS Shadow Parts:
@@ -490,21 +512,11 @@ export const CSSPartsCustomization: Story = {
 
             <div>
               <h4>Minimal with Left Accent</h4>
-              <VueCollapsible class="custom-minimal">
+              <VueCollapsible class="custom-minimal" :use-minus="true">
                 <template #summary>
                   <span>💡 Clean, minimal design</span>
                 </template>
-                <p>This style uses a subtle background with a colored left border accent.</p>
-              </VueCollapsible>
-            </div>
-
-            <div>
-              <h4>Elevated Card Style</h4>
-              <VueCollapsible class="custom-card">
-                <template #summary>
-                  <span>📋 Card-style with elevation</span>
-                </template>
-                <p>This collapsible looks like a card with elevation and hover effects.</p>
+                <p>This style uses a subtle background with a colored left border accent and plus/minus indicators.</p>
               </VueCollapsible>
             </div>
           </div>

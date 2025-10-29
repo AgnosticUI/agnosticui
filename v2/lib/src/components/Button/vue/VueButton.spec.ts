@@ -206,6 +206,7 @@ describe('VueButton Wrapper', () => {
         slots: {
           default: 'Click Me'
         },
+        props: { toggle: true },
         global: {
           config: {
             compilerOptions: {
@@ -221,7 +222,7 @@ describe('VueButton Wrapper', () => {
       expect(agButton.exists()).toBe(true);
 
       // Simulate a click event on the ag-button element
-      const clickEvent = new Event('click');
+      const clickEvent = new MouseEvent('click', { bubbles: true, composed: true });
       agButton.element.dispatchEvent(clickEvent);
 
       await wrapper.vm.$nextTick();

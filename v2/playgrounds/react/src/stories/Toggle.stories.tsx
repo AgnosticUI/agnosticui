@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 import { fn } from 'storybook/test';
 import { ReactToggle, type ReactToggleProps } from 'agnosticui-core/toggle/react';
 
