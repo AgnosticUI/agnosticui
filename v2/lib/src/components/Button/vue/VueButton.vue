@@ -4,10 +4,21 @@
     :type="type"
     :aria-label="ariaLabel"
     :aria-describedby="ariaDescribedby"
-    :disabled="disabled || undefined"
-    :loading="loading || undefined"
-    :toggle="toggle || undefined"
-    :pressed="pressed || undefined"
+    :disabled="disabled"
+    :loading="loading"
+    :toggle="toggle"
+    :pressed="pressed"
+    :variant="variant"
+    :size="size"
+    :shape="shape"
+    :bordered="bordered"
+    :ghost="ghost"
+    :link="link"
+    :grouped="grouped"
+    @click="handleClick"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @toggle="handleToggle"
     v-bind="$attrs"
   >
     <slot />
@@ -15,19 +26,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, watch } from "vue";
+import type {
+  ButtonProps,
+  ButtonToggleEvent,
+  ButtonToggleEventDetail,
+} from "../core/Button";
 import "../core/Button"; // Registers the ag-button web component
 
-// Define props interface
-export interface VueButtonProps {
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
-  loading?: boolean;
-  toggle?: boolean;
-  pressed?: boolean;
-  ariaLabel?: string;
-  ariaDescribedby?: string;
-}
+// Define props interface (omit function props since wrapper uses emits)
+export interface VueButtonProps
+  extends Omit<ButtonProps, "onClick" | "onFocus" | "onBlur" | "onToggle"> {}
 
 // Define props with defaults
 const props = withDefaults(defineProps<VueButtonProps>(), {
@@ -36,46 +45,54 @@ const props = withDefaults(defineProps<VueButtonProps>(), {
   loading: false,
   toggle: false,
   pressed: false,
+  variant: "",
+  size: "md",
+  shape: "",
+  bordered: false,
+  ghost: false,
+  link: false,
+  grouped: false,
 });
 
 // Define emits
 const emit = defineEmits<{
-  click: [event: Event];
-  toggle: [detail: { pressed: boolean }];
+  click: [event: MouseEvent];
+  focus: [event: FocusEvent];
+  blur: [event: FocusEvent];
+  toggle: [detail: ButtonToggleEventDetail];
+  "update:pressed": [pressed: boolean];
 }>();
 
 // Template ref
 const buttonRef = ref<HTMLElement>();
 
 // Event handlers
-const handleClick = (event: Event) => {
+const handleClick = (event: MouseEvent) => {
   emit("click", event);
 };
 
-const handleToggle = (event: Event) => {
-  const detail = (event as CustomEvent).detail;
-  emit("toggle", detail);
+const handleFocus = (event: FocusEvent) => {
+  emit("focus", event);
 };
 
-// Setup event listeners
-onMounted(async () => {
-  // Wait for web components to be defined
-  await customElements.whenDefined("ag-button");
+const handleBlur = (event: FocusEvent) => {
+  emit("blur", event);
+};
 
-  if (!buttonRef.value) return;
+const handleToggle = (event: Event) => {
+  const toggleEvent = event as ButtonToggleEvent;
+  emit("toggle", toggleEvent.detail);
+  emit("update:pressed", toggleEvent.detail.pressed);
+};
 
-  buttonRef.value.addEventListener("click", handleClick);
-  if (props.toggle) {
-    buttonRef.value.addEventListener("toggle", handleToggle);
+// Watch for pressed prop changes and sync with web component
+// This ensures two-way binding works correctly
+watch(
+  () => props.pressed,
+  (newPressed) => {
+    if (buttonRef.value && props.toggle) {
+      (buttonRef.value as any).pressed = newPressed;
+    }
   }
-});
-
-onUnmounted(() => {
-  if (!buttonRef.value) return;
-
-  buttonRef.value.removeEventListener("click", handleClick);
-  if (props.toggle) {
-    buttonRef.value.removeEventListener("toggle", handleToggle);
-  }
-});
+);
 </script>

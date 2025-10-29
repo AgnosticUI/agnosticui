@@ -1,7 +1,7 @@
 /**
  * AgnosticUI v2 Button - Canonical Implementation
  *
- * �  IMMUTABLE CANONICAL VERSION �
+ * �  IMMUTABLE CANONICAL VERSION �
  *
  * This file contains the canonical, upgrade-safe implementation of the Button component.
  * It should NEVER be modified directly by users or AI assistants.
@@ -50,7 +50,9 @@ export interface ButtonProps {
   pressed?: boolean;
   ariaLabel?: string;
   ariaDescribedby?: string;
-  // Event handlers
+  onClick?: (event: MouseEvent) => void;
+  onFocus?: (event: FocusEvent) => void;
+  onBlur?: (event: FocusEvent) => void;
   onToggle?: (event: ButtonToggleEvent) => void;
 }
 
@@ -445,6 +447,17 @@ export class AgButton extends LitElement implements ButtonProps {
   @property({ type: String })
   declare ariaDescribedby: string;
 
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  @property({ attribute: false })
+  declare onFocus?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onBlur?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onToggle?: (event: ButtonToggleEvent) => void;
 
   constructor() {
     super();
@@ -464,22 +477,37 @@ export class AgButton extends LitElement implements ButtonProps {
     this.grouped = false;
   }
 
-  private _handleClick() {
-    if (this.toggle && !this.disabled && !this.loading) {
+  private _handleClick(event: MouseEvent) {
+    // Invoke user-defined onClick handler if provided
+    if (this.onClick) {
+      this.onClick(event);
+    }
+
+    if (this.toggle && !this.disabled && !this.loading && !event.defaultPrevented) {
       this.pressed = !this.pressed;
 
       // Dispatch custom toggle event
-      const toggleEvent = new CustomEvent('toggle', {
+      const toggleEvent = new CustomEvent<ButtonToggleEventDetail>('toggle', {
         detail: { pressed: this.pressed },
         bubbles: true,
         composed: true
       });
       this.dispatchEvent(toggleEvent);
+
+      // Call onToggle if provided
+      if (this.onToggle) {
+        this.onToggle(toggleEvent);
+      }
     }
   }
 
-  private _handleFocus() {
-    // Forward focus event from internal button to custom element
+  private _handleFocus(event: FocusEvent) {
+    // Call user-defined onFocus handler if provided
+    if (this.onFocus) {
+      this.onFocus(event);
+    }
+
+    // Re-dispatch native platform events for consumers
     const focusEvent = new FocusEvent('focus', {
       bubbles: true,
       composed: true
@@ -487,7 +515,12 @@ export class AgButton extends LitElement implements ButtonProps {
     this.dispatchEvent(focusEvent);
   }
 
-  private _handleBlur() {
+  private _handleBlur(event: FocusEvent) {
+    // Call prop handler for consumer if it's listening
+    if (this.onBlur) {
+      this.onBlur(event);
+    }
+
     // Forward blur event from internal button to custom element
     const blurEvent = new FocusEvent('blur', {
       bubbles: true,
@@ -537,8 +570,4 @@ export class AgButton extends LitElement implements ButtonProps {
       </button>
     `;
   }
-}
-
-if (!customElements.get('ag-button')) {
-  customElements.define('ag-button', AgButton);
 }

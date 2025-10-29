@@ -44,6 +44,7 @@ function getComponents() {
   return {
     text: 'Components',
     items: [
+      { text: 'Accordion', link: '/components/accordion' },
       { text: 'Alerts', link: '/components/alert' },
       { text: 'Avatar', link: '/components/avatar' },
       { text: 'Badge', link: '/components/badge' },
@@ -72,7 +73,6 @@ function getComponents() {
       { text: 'Toast', link: '/components/toast' },
       { text: 'Toggle', link: '/components/toggle' },
       { text: 'Tooltip', link: '/components/tooltip' },
-{ text: 'Accordion', link: '/components/accordion' },
 
     ]
   }

@@ -7,32 +7,43 @@ const meta: Meta<CollapsibleProps> = {
   title: 'AgnosticUI Lit/Collapsible',
   component: 'ag-collapsible',
   argTypes: {
-    isOpen: {
+    open: {
       control: 'boolean',
       description: 'Controls whether the collapsible is expanded or collapsed',
-      defaultValue: false,
-    },
-    isSkinned: {
-      control: 'boolean',
-      description: 'Applies border-radius styling',
-      defaultValue: true,
     },
     isBordered: {
       control: 'boolean',
       description: 'Adds a border around the collapsible',
-      defaultValue: false,
     },
     isShadow: {
       control: 'boolean',
       description: 'Applies box-shadow',
-      defaultValue: false,
+    },
+    useChevron: {
+      control: 'boolean',
+      description: 'Use chevron indicator (default)',
+    },
+    useX: {
+      control: 'boolean',
+      description: 'Use X/plus indicator (rotates from upside-down plus to 45deg X)',
+    },
+    useMinus: {
+      control: 'boolean',
+      description: 'Use plus/minus indicator (swaps icon when toggled)',
+    },
+    noIndicator: {
+      control: 'boolean',
+      description: 'Hide the indicator completely',
     },
   },
   args: {
-    isOpen: false,
-    isSkinned: true,
+    open: false,
     isBordered: false,
     isShadow: false,
+    useChevron: true,
+    useX: false,
+    useMinus: false,
+    noIndicator: false,
   },
 };
 
@@ -42,10 +53,13 @@ type Story = StoryObj<CollapsibleProps>;
 export const Default: Story = {
   render: (args) => html`
     <ag-collapsible
-      .isOpen=${args.isOpen}
-      .isSkinned=${args.isSkinned}
-      .isBordered=${args.isBordered}
-      .isShadow=${args.isShadow}
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
     >
       <span slot="summary">Click to expand</span>
       <p>This is the collapsible content that can be shown or hidden.</p>
@@ -55,34 +69,20 @@ export const Default: Story = {
 
 export const Open: Story = {
   args: {
-    isOpen: true,
+    open: true,
   },
   render: (args) => html`
     <ag-collapsible
-      .isOpen=${args.isOpen}
-      .isSkinned=${args.isSkinned}
-      .isBordered=${args.isBordered}
-      .isShadow=${args.isShadow}
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
     >
       <span slot="summary">Already expanded</span>
       <p>This collapsible starts in an open state.</p>
-    </ag-collapsible>
-  `,
-};
-
-export const Unskinned: Story = {
-  args: {
-    isSkinned: false,
-  },
-  render: (args) => html`
-    <ag-collapsible
-      .isOpen=${args.isOpen}
-      .isSkinned=${args.isSkinned}
-      .isBordered=${args.isBordered}
-      .isShadow=${args.isShadow}
-    >
-      <span slot="summary">Unskinned collapsible</span>
-      <p>This collapsible has no border-radius applied.</p>
     </ag-collapsible>
   `,
 };
@@ -93,10 +93,13 @@ export const Bordered: Story = {
   },
   render: (args) => html`
     <ag-collapsible
-      .isOpen=${args.isOpen}
-      .isSkinned=${args.isSkinned}
-      .isBordered=${args.isBordered}
-      .isShadow=${args.isShadow}
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
     >
       <span slot="summary">Bordered collapsible</span>
       <p>This collapsible has a border around it.</p>
@@ -110,10 +113,13 @@ export const Shadow: Story = {
   },
   render: (args) => html`
     <ag-collapsible
-      .isOpen=${args.isOpen}
-      .isSkinned=${args.isSkinned}
-      .isBordered=${args.isBordered}
-      .isShadow=${args.isShadow}
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
     >
       <span slot="summary">Collapsible with shadow</span>
       <p>This collapsible has a box-shadow applied.</p>
@@ -128,10 +134,13 @@ export const CombinedFeatures: Story = {
   },
   render: (args) => html`
     <ag-collapsible
-      .isOpen=${args.isOpen}
-      .isSkinned=${args.isSkinned}
-      .isBordered=${args.isBordered}
-      .isShadow=${args.isShadow}
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
     >
       <span slot="summary">Bordered with shadow</span>
       <p>This collapsible combines both border and shadow styling.</p>
@@ -139,34 +148,120 @@ export const CombinedFeatures: Story = {
   `,
 };
 
-export const CustomIndicator: Story = {
+export const ChevronIndicator: Story = {
   args: {
     isBordered: true,
+    useChevron: true,
   },
   render: (args) => html`
     <ag-collapsible
-      .isOpen=${args.isOpen}
-      .isSkinned=${args.isSkinned}
-      .isBordered=${args.isBordered}
-      .isShadow=${args.isShadow}
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
     >
-      <span slot="summary">Custom indicator</span>
-      <span slot="indicator">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </span>
-      <p>This collapsible uses a custom chevron indicator that rotates when opened.</p>
+      <span slot="summary">Chevron indicator (default)</span>
+      <p>This collapsible uses the default chevron indicator that rotates 180° when opened.</p>
     </ag-collapsible>
+  `,
+};
+
+export const UseXIndicator: Story = {
+  args: {
+    isBordered: true,
+    useChevron: false,
+    useX: true,
+  },
+  render: (args) => html`
+    <ag-collapsible
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
+    >
+      <span slot="summary">X/Plus indicator</span>
+      <p>This collapsible uses the X/plus indicator. It starts as an upside-down plus (closed) and rotates to form an X shape (open).</p>
+    </ag-collapsible>
+  `,
+};
+
+export const UseMinusIndicator: Story = {
+  args: {
+    isBordered: true,
+    useChevron: false,
+    useMinus: true,
+  },
+  render: (args) => html`
+    <ag-collapsible
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
+    >
+      <span slot="summary">Plus/Minus indicator</span>
+      <p>This collapsible swaps between a plus icon (closed) and a minus icon (open). No rotation, just icon swap.</p>
+    </ag-collapsible>
+  `,
+};
+
+export const NoIndicator: Story = {
+  args: {
+    isBordered: true,
+    noIndicator: true,
+  },
+  render: (args) => html`
+    <ag-collapsible
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
+    >
+      <span slot="summary">No indicator</span>
+      <p>This collapsible has no indicator icon at all.</p>
+    </ag-collapsible>
+  `,
+};
+
+export const IndicatorComparison: Story = {
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 600px;">
+      <h3 style="margin-top: 0;">Indicator Variants Comparison</h3>
+      <p style="color: #6b7280; margin-bottom: 1rem;">
+        Toggle each collapsible to see how the different indicators behave.
+      </p>
+
+      <ag-collapsible isbordered use-chevron>
+        <span slot="summary">🔽 Chevron (default) - Rotates 180°</span>
+        <p>The chevron points down when closed and up when open via rotation.</p>
+      </ag-collapsible>
+
+      <ag-collapsible isbordered use-x>
+        <span slot="summary">✖️ X Indicator - Rotates from upside-down plus to X</span>
+        <p>Starts as an upside-down plus sign and rotates 45° to form an X when open.</p>
+      </ag-collapsible>
+
+      <ag-collapsible isbordered use-minus>
+        <span slot="summary">➕ Plus/Minus - Swaps icons</span>
+        <p>Shows a plus icon when closed and swaps to a minus icon when open.</p>
+      </ag-collapsible>
+
+      <ag-collapsible isbordered no-indicator>
+        <span slot="summary">⚪ No Indicator - Completely hidden</span>
+        <p>No indicator is shown at all.</p>
+      </ag-collapsible>
+    </div>
   `,
 };
 
@@ -177,10 +272,13 @@ export const RichContent: Story = {
   },
   render: (args) => html`
     <ag-collapsible
-      .isOpen=${args.isOpen}
-      .isSkinned=${args.isSkinned}
-      .isBordered=${args.isBordered}
-      .isShadow=${args.isShadow}
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
     >
       <strong slot="summary">Product Details</strong>
       <div>
@@ -205,7 +303,7 @@ export const FAQ: Story = {
     <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 600px;">
       <h3 style="margin-top: 0;">Frequently Asked Questions</h3>
 
-      <ag-collapsible isBordered>
+      <ag-collapsible isbordered>
         <span slot="summary">What is AgnosticUI?</span>
         <p>
           AgnosticUI is a framework-agnostic component library built with web
@@ -214,13 +312,13 @@ export const FAQ: Story = {
         </p>
       </ag-collapsible>
 
-      <ag-collapsible isBordered>
+      <ag-collapsible isbordered>
         <span slot="summary">How do I install it?</span>
         <p>You can install AgnosticUI via npm:</p>
         <pre style="background: #f3f4f6; padding: 1rem; border-radius: 4px; overflow-x: auto;">npm install agnosticui-core</pre>
       </ag-collapsible>
 
-      <ag-collapsible isBordered>
+      <ag-collapsible isbordered>
         <span slot="summary">Is it accessible?</span>
         <p>
           Yes! All AgnosticUI components are built with accessibility in mind,
@@ -229,7 +327,7 @@ export const FAQ: Story = {
         </p>
       </ag-collapsible>
 
-      <ag-collapsible isBordered>
+      <ag-collapsible isbordered>
         <span slot="summary">Can I customize the styling?</span>
         <p>
           Absolutely! AgnosticUI uses CSS Shadow Parts to allow deep customization
@@ -248,21 +346,24 @@ export const NestedCollapsibles: Story = {
   render: (args) => html`
     <div style="max-width: 600px;">
       <ag-collapsible
-        .isOpen=${args.isOpen}
-        .isSkinned=${args.isSkinned}
-        .isBordered=${args.isBordered}
-        .isShadow=${args.isShadow}
+        ?open=${args.open}
+        ?isBordered=${args.isBordered}
+        ?isShadow=${args.isShadow}
+        ?use-chevron=${args.useChevron}
+        ?use-x=${args.useX}
+        ?use-minus=${args.useMinus}
+        ?no-indicator=${args.noIndicator}
       >
         <span slot="summary">Level 1 - Main Topic</span>
         <div>
           <p>This is the main content area.</p>
 
-          <ag-collapsible isBordered style="margin-top: 1rem;">
+          <ag-collapsible isbordered use-minus style="margin-top: 1rem;">
             <span slot="summary">Level 2 - Subtopic A</span>
-            <p>Nested collapsible content for subtopic A.</p>
+            <p>Nested collapsible content for subtopic A. Note the different indicator style.</p>
           </ag-collapsible>
 
-          <ag-collapsible isBordered style="margin-top: 0.5rem;">
+          <ag-collapsible isbordered use-minus style="margin-top: 0.5rem;">
             <span slot="summary">Level 2 - Subtopic B</span>
             <p>Nested collapsible content for subtopic B.</p>
           </ag-collapsible>
@@ -279,25 +380,28 @@ export const Interactive: Story = {
   },
   render: (args) => html`
     <ag-collapsible
-      .isOpen=${args.isOpen}
-      .isSkinned=${args.isSkinned}
-      .isBordered=${args.isBordered}
-      .isShadow=${args.isShadow}
-      @toggle=${(e: CustomEvent) => {
-        console.log('Toggle event:', e.detail);
+      ?open=${args.open}
+      ?isBordered=${args.isBordered}
+      ?isShadow=${args.isShadow}
+      ?use-chevron=${args.useChevron}
+      ?use-x=${args.useX}
+      ?use-minus=${args.useMinus}
+      ?no-indicator=${args.noIndicator}
+      @toggle=${(e: Event) => {
+        const newOpenState = (e.target as HTMLElement & { open: boolean }).open;
         const status = document.getElementById('toggle-status');
         if (status) {
-          status.textContent = e.detail.isOpen ? 'Open' : 'Closed';
-          status.style.color = e.detail.isOpen ? 'green' : 'red';
+          status.textContent = newOpenState ? 'Open' : 'Closed';
+          status.style.color = newOpenState ? 'green' : 'red';
         }
       }}
     >
       <span slot="summary">Click to toggle (watch console)</span>
       <div>
         <p>The collapsible dispatches a <code>toggle</code> event when opened or closed.</p>
-        <p>Current status: <strong id="toggle-status" style="color: red;">Closed</strong></p>
       </div>
     </ag-collapsible>
+    <p styl="margin-top: 2rem;">Current status: <strong id="toggle-status" style="color: red;">Closed</strong></p>
   `,
 };
 
@@ -328,37 +432,18 @@ export const CSSPartsCustomization: Story = {
 
       /* Minimal style */
       .custom-minimal::part(ag-collapsible-summary) {
-        background: var(--ag-background-secondary);
-        border-left: 4px solid var(--ag-primary);
+        background: #f9fafb;
+        border-left: 4px solid #3b82f6;
         padding: 1rem 1rem 1rem 1.5rem;
       }
 
       .custom-minimal::part(ag-collapsible-content) {
-        background: var(--ag-background-primary);
+        background: #ffffff;
         padding: 1rem 1rem 1rem 1.5rem;
-      }
-
-      /* Card style */
-      .custom-card::part(ag-collapsible-details) {
-        border: 2px solid var(--ag-border);
-        border-radius: 16px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .custom-card::part(ag-collapsible-details):hover {
-        transform: translateY(-2px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-      }
-
-      .custom-card::part(ag-collapsible-summary) {
-        background: var(--ag-background-secondary);
-        font-weight: 600;
-        font-size: 1.1rem;
       }
     </style>
 
-    <div style="padding: 50px; max-width: 800px;">
+    <div style="padding: 2rem; max-width: 800px;">
       <h3 style="margin-top: 0;">Styled with CSS Shadow Parts</h3>
       <p style="margin-bottom: 2rem; color: #6b7280;">
         Collapsible can be customized using CSS Shadow Parts:
@@ -379,17 +464,9 @@ export const CSSPartsCustomization: Story = {
 
         <div>
           <h4>Minimal with Left Accent</h4>
-          <ag-collapsible class="custom-minimal">
+          <ag-collapsible class="custom-minimal" use-minus>
             <span slot="summary">💡 Clean, minimal design</span>
-            <p>This style uses a subtle background with a colored left border accent.</p>
-          </ag-collapsible>
-        </div>
-
-        <div>
-          <h4>Elevated Card Style</h4>
-          <ag-collapsible class="custom-card">
-            <span slot="summary">📋 Card-style with elevation</span>
-            <p>This collapsible looks like a card with elevation and hover effects.</p>
+            <p>This style uses a subtle background with a colored left border accent and plus/minus indicators.</p>
           </ag-collapsible>
         </div>
       </div>
