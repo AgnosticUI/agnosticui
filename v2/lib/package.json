@@ -370,6 +370,18 @@
     "./kbd/vue": {
       "types": "./dist/components/Kbd/vue/index.d.ts",
       "import": "./dist/components/Kbd/vue/index.js"
+    },
+    "./collapsible": {
+      "types": "./dist/components/Collapsible/core/Collapsible.d.ts",
+      "import": "./dist/components/Collapsible/core/Collapsible.js"
+    },
+    "./collapsible/react": {
+      "types": "./dist/components/Collapsible/react/index.d.ts",
+      "import": "./dist/components/Collapsible/react/index.js"
+    },
+    "./collapsible/vue": {
+      "types": "./dist/components/Collapsible/vue/index.d.ts",
+      "import": "./dist/components/Collapsible/vue/index.js"
     }
   },
   "scripts": {

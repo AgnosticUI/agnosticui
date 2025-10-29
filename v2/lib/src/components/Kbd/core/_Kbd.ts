@@ -125,7 +125,7 @@ export class Kbd extends LitElement implements KbdProps {
     }
   `;
 
-  updated(changedProperties: Map<string, any>) {
+  updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
     this._checkSingleChar();
   }

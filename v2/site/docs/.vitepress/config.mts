@@ -44,7 +44,6 @@ function getComponents() {
   return {
     text: 'Components',
     items: [
-      { text: 'Accordion', link: '/components/accordion' },
       { text: 'Alerts', link: '/components/alert' },
       { text: 'Avatar', link: '/components/avatar' },
       { text: 'Badge', link: '/components/badge' },
@@ -52,6 +51,7 @@ function getComponents() {
       { text: 'Buttons', link: '/components/buttons' },
       { text: 'Card', link: '/components/card' },
       { text: 'Checkbox', link: '/components/checkbox' },
+      { text: 'Collapsible', link: '/components/collapsible' },
       { text: 'Dialog', link: '/components/dialog' },
       { text: 'Divider', link: '/components/divider' },
       { text: 'Drawer', link: '/components/drawer' },
@@ -72,6 +72,8 @@ function getComponents() {
       { text: 'Toast', link: '/components/toast' },
       { text: 'Toggle', link: '/components/toggle' },
       { text: 'Tooltip', link: '/components/tooltip' },
+{ text: 'Accordion', link: '/components/accordion' },
+
     ]
   }
 }
