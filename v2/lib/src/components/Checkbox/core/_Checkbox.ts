@@ -5,12 +5,15 @@ import { property } from 'lit/decorators.js';
 export type CheckboxSize = 'small' | 'medium' | 'large';
 export type CheckboxTheme = 'default' | 'primary' | 'monochrome';
 
-export type CheckboxChangeEvent = CustomEvent<{
+// Event types
+export interface CheckboxChangeEventDetail {
   checked: boolean;
   value: string;
   name: string;
   indeterminate: boolean;
-}>;
+}
+
+export type CheckboxChangeEvent = CustomEvent<CheckboxChangeEventDetail>;
 
 /**
  * @csspart ag-checkbox-wrapper - The outer wrapper label element
@@ -28,6 +31,9 @@ export interface CheckboxProps {
   theme: CheckboxTheme;
   labelText: string;
   labelPosition: 'end' | 'start';
+  // Event callbacks
+  onClick?: (event: MouseEvent) => void;
+  onChange?: (event: CheckboxChangeEvent) => void;
 }
 
 export class Checkbox extends LitElement implements CheckboxProps {
@@ -267,6 +273,12 @@ export class Checkbox extends LitElement implements CheckboxProps {
   @property({ type: String })
   labelPosition: 'end' | 'start' = 'end';
 
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  @property({ attribute: false })
+  declare onChange?: (event: CheckboxChangeEvent) => void;
+
   private inputRef?: HTMLInputElement;
 
   override updated(changedProperties: Map<string, unknown>) {
@@ -275,6 +287,13 @@ export class Checkbox extends LitElement implements CheckboxProps {
     // Sync indeterminate state to native input
     if (changedProperties.has('indeterminate') && this.inputRef) {
       this.inputRef.indeterminate = this.indeterminate;
+    }
+  }
+
+  private handleClick(e: MouseEvent) {
+    // Invoke native click callback if provided
+    if (this.onClick) {
+      this.onClick(e);
     }
   }
 
@@ -292,23 +311,25 @@ export class Checkbox extends LitElement implements CheckboxProps {
       this.indeterminate = false;
     }
 
-    this.dispatchEvent(
-      new CustomEvent<{
-        checked: boolean;
-        value: string;
-        name: string;
-        indeterminate: boolean;
-      }>('ag-change', {
-        detail: {
-          checked: this.checked,
-          value: this.value,
-          name: this.name,
-          indeterminate: this.indeterminate,
-        },
-        bubbles: true,
-        composed: true,
-      })
-    );
+    // Dispatch custom change event with dual-dispatch pattern
+    const changeEvent = new CustomEvent<CheckboxChangeEventDetail>('change', {
+      detail: {
+        checked: this.checked,
+        value: this.value,
+        name: this.name,
+        indeterminate: this.indeterminate,
+      },
+      bubbles: true,
+      composed: true,
+    });
+
+    // Dual-dispatch: DOM event first
+    this.dispatchEvent(changeEvent);
+
+    // Then invoke callback if provided
+    if (this.onChange) {
+      this.onChange(changeEvent);
+    }
   }
 
   override render() {
@@ -339,6 +360,7 @@ export class Checkbox extends LitElement implements CheckboxProps {
           .checked=${this.checked}
           .indeterminate=${this.indeterminate}
           ?disabled=${this.disabled}
+          @click=${this.handleClick}
           @change=${this.handleChange}
           aria-checked=${this.indeterminate
             ? 'mixed'
