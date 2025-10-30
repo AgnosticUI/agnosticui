@@ -240,14 +240,24 @@ export default function ToggleExample() {
 
 ## Events
 
-The Toggle component supports **dual-dispatch event propagation**: it dispatches both DOM CustomEvents and invokes callback props, giving you flexibility in how you handle events.
+| Event           | Framework                                                                     | Detail                                               | Description                                                                                      |
+| --------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `click`         | Vue: `@click`<br>React: `onClick`<br>Lit: `@click`                            | `MouseEvent`                                         | Fired when the toggle is clicked.                                                                |
+| `toggle-change` | Vue: `@toggle-change`<br>React: `onToggleChange`<br>Lit: `@toggle-change`    | `{ checked: boolean, name: string, value: string }` | Fired when toggle state changes. Contains the new checked state and form integration data.      |
 
-### Event Types
+**Note:** The Toggle component supports **dual-dispatch event propagation**: it dispatches both DOM CustomEvents (usable with `addEventListener`) and invokes callback props (`.onToggleChange`), giving you flexibility in how you handle events.
 
-| Event | Type | Detail Payload | Description |
-|-------|------|----------------|-------------|
-| `toggle-change` | `CustomEvent<ToggleChangeEventDetail>` | `{ checked: boolean, name: string, value: string }` | Fired when toggle state changes. Contains the new checked state and form integration data. |
-| `click` | `MouseEvent` | Standard MouseEvent | Native click event (composed, bubbles automatically) |
+**Type:**
+
+```ts
+export type ToggleChangeEvent = CustomEvent<ToggleChangeEventDetail>;
+
+export interface ToggleChangeEventDetail {
+  checked: boolean;  // New checked state
+  name: string;      // Form name (if provided)
+  value: string;     // Form value (if provided)
+}
+```
 
 ### Event Handling Patterns
 
