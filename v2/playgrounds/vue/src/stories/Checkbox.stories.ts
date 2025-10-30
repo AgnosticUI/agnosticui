@@ -1,5 +1,6 @@
 
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { ref } from 'vue';
 import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
 
 const meta = {
@@ -180,7 +181,6 @@ export const EventTesting: Story = {
   render: (args) => ({
     components: { VueCheckbox },
     setup() {
-      const { ref } = require('vue');
       const vModelChecked = ref(false);
       const vModelIndeterminate = ref(false);
       const eventChecked = ref(false);
@@ -190,7 +190,7 @@ export const EventTesting: Story = {
         eventChecked.value = detail.checked;
       };
 
-      return { args, vModelChecked, vModelIndeterminate, eventChecked, handleChange };
+      return { ...args, vModelChecked, vModelIndeterminate, eventChecked, handleChange };
     },
     template: `
       <div style="display: flex; flex-direction: column; align-items: flex-start; padding: 1rem; gap: 1.5rem;">
