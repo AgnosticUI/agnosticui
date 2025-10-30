@@ -269,7 +269,14 @@ export class Radio extends LitElement implements RadioProps {
     }
 
     const input = e.target as HTMLInputElement;
+    const wasChecked = this.checked;
     this.checked = input.checked;
+
+    // Radio group coordination: When this radio is checked, uncheck all other radios with the same name
+    // This is necessary because native radios in separate shadow DOMs don't coordinate automatically
+    if (this.checked && !wasChecked && this.name) {
+      this.uncheckOtherRadiosInGroup();
+    }
 
     // Dual-dispatch: CustomEvent + callback
     const changeEvent = new CustomEvent<RadioChangeEventDetail>(
@@ -290,6 +297,28 @@ export class Radio extends LitElement implements RadioProps {
     if (this.onChange) {
       this.onChange(changeEvent as RadioChangeEvent);
     }
+  }
+
+  private uncheckOtherRadiosInGroup() {
+    // Find the root document (traverse up from shadow roots if needed)
+    let root: Node = this.getRootNode();
+    while (root && 'host' in root) {
+      const parent = (root as ShadowRoot).host?.getRootNode();
+      if (parent && parent !== root) {
+        root = parent;
+      } else {
+        break;
+      }
+    }
+
+    const doc = root instanceof Document ? root : document;
+    const allRadios = doc.querySelectorAll(`ag-radio[name="${this.name}"]`);
+
+    allRadios.forEach((radio) => {
+      if (radio !== this && radio instanceof Radio) {
+        radio.checked = false;
+      }
+    });
   }
 
   override render() {
