@@ -25,14 +25,14 @@
  */
 
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-
+// Event types
 export interface ToggleChangeEventDetail {
   checked: boolean;
   name: string;
-  value: string; 
+  value: string;
 }
 
 export type ToggleChangeEvent = CustomEvent<ToggleChangeEventDetail>;
@@ -48,7 +48,9 @@ export interface ToggleProps {
   describedBy?: string;
   name?: string;
   value?: string;
-  onToggleChange?: (evnt: ToggleChangeEvent) => void;
+  // Event callbacks
+  onClick?: (event: MouseEvent) => void;
+  onToggleChange?: (event: ToggleChangeEvent) => void;
 }
 
 /**
@@ -66,7 +68,6 @@ export interface ToggleProps {
  * - Size variants with consistent proportions
  * - Form integration support
  */
-@customElement('ag-toggle')
 export class AgToggle extends LitElement implements ToggleProps {
   static styles = css`
     /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
@@ -279,6 +280,18 @@ export class AgToggle extends LitElement implements ToggleProps {
   @property({ type: String })
   declare value: string;
 
+  /**
+   * Click event callback
+   */
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  /**
+   * Toggle change event callback
+   */
+  @property({ attribute: false })
+  declare onToggleChange?: (event: ToggleChangeEvent) => void;
+
   constructor() {
     super();
 
@@ -303,7 +316,24 @@ export class AgToggle extends LitElement implements ToggleProps {
     }
   }
 
-  private _handleClick = (event: Event) => {
+  private _handleClick = (event: MouseEvent) => {
+    // Invoke native click callback if provided
+    if (this.onClick) {
+      this.onClick(event);
+    }
+
+    this._performToggle(event);
+  };
+
+  private _handleKeydown = (event: KeyboardEvent) => {
+    // WAI-ARIA Switch pattern: Space and Enter should toggle
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+      this._performToggle(event);
+    }
+  };
+
+  private _performToggle = (event: Event) => {
     if (this.disabled || this.readonly) {
       event.preventDefault();
       return;
@@ -311,8 +341,8 @@ export class AgToggle extends LitElement implements ToggleProps {
 
     this.checked = !this.checked;
 
-    // Dispatch change event with form integration details
-    this.dispatchEvent(new CustomEvent('toggle-change', {
+    // Dispatch custom event with form integration details
+    const toggleChangeEvent = new CustomEvent<ToggleChangeEventDetail>('toggle-change', {
       detail: {
         checked: this.checked,
         name: this.name,
@@ -320,14 +350,14 @@ export class AgToggle extends LitElement implements ToggleProps {
       },
       bubbles: true,
       composed: true
-    }));
-  };
+    });
 
-  private _handleKeydown = (event: KeyboardEvent) => {
-    // WAI-ARIA Switch pattern: Space and Enter should toggle
-    if (event.key === ' ' || event.key === 'Enter') {
-      event.preventDefault();
-      this._handleClick(event);
+    // Dual-dispatch: DOM event first
+    this.dispatchEvent(toggleChangeEvent);
+
+    // Then invoke callback if provided
+    if (this.onToggleChange) {
+      this.onToggleChange(toggleChangeEvent);
     }
   };
 
