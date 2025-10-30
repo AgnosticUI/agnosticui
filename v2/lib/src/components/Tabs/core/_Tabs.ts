@@ -174,10 +174,10 @@ export class Tabs extends LitElement implements TabsProps {
   @property({ type: String })
   declare orientation: TabsOrientation;
 
-  @property({ type: String, attribute: 'aria-label' })
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
-  @property({ type: String, attribute: 'aria-labelledby' })
+  @property({ type: String, reflect: true, attribute: 'aria-labelledby' })
   declare ariaLabelledBy: string;
 
   @state()

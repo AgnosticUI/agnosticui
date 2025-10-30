@@ -130,7 +130,7 @@ export class Spinner extends LitElement implements SpinnerProps {
   @property({ type: String, reflect: true })
   size: SpinnerSize = 'default';
 
-  @property({ type: String, attribute: 'aria-label' })
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
   ariaLabel = 'Loading...';
 
   render() {
