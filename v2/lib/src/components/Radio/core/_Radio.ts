@@ -225,10 +225,10 @@ export class Radio extends LitElement implements RadioProps {
     }
   `;
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   name = '';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   value = '';
 
   @property({ type: Boolean, reflect: true })
