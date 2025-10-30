@@ -4,10 +4,15 @@ import { AgToggle, type ToggleProps, type ToggleChangeEvent } from '../core/Togg
 
 /**
  * React-specific props interface derived from core ToggleProps
- * Extends core props including event handlers (onToggleChange)
+ * Extends core props including event handlers
  */
 export interface ReactToggleProps extends ToggleProps {
   children?: React.ReactNode;
+  className?: string;
+  id?: string;
+  // Explicitly include event handler types
+  onClick?: (event: MouseEvent) => void;
+  onToggleChange?: (event: ToggleChangeEvent) => void;
 }
 
 // Create component with @lit/react
