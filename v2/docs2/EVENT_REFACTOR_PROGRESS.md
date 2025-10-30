@@ -114,6 +114,15 @@ E. Storybook Stories (all 3 frameworks):
 
 F. VitePress Documentation:
    - Update events API table in docs/components/[componentname].md
+     - **CRITICAL**: Use standard format: `Event | Framework | Detail | Description`
+     - Framework column shows: `Vue: @eventname`<br>`React: onEventName`<br>`Lit: @eventname`
+     - Match Button/Collapsible format for consistency
+     - Example:
+       ```markdown
+       | Event    | Framework                                             | Detail              | Description                    |
+       | -------- | ----------------------------------------------------- | ------------------- | ------------------------------ |
+       | `toggle` | Vue: `@toggle`<br>React: `onToggle`<br>Lit: `@toggle` | `{ open: boolean }` | Fired when state changes.      |
+       ```
    - Add usage examples for all 3 frameworks
    - Update interactive examples in docs/examples/[ComponentName]Examples.vue
 
