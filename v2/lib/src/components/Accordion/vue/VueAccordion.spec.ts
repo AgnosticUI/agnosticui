@@ -192,8 +192,9 @@ describe('VueAccordion Wrapper Suite', () => {
         const agAccordionItem = wrapper.find('ag-accordion-item');
         expect(agAccordionItem.exists()).toBe(true);
 
-        // Check the attribute since heading-level is kebab-case
-        expect(agAccordionItem.attributes('heading-level')).toBe('2');
+        // Check the JavaScript property on the DOM element
+        const agAccordionItemElement = agAccordionItem.element as any;
+        expect(agAccordionItemElement.headingLevel).toBe(2);
       });
 
       it('should use default prop values correctly', async () => {
@@ -219,10 +220,11 @@ describe('VueAccordion Wrapper Suite', () => {
         const agAccordionItemElement = agAccordionItem.element as HTMLElement & {
           open: boolean;
           disabled: boolean;
+          headingLevel: number;
         };
         expect(agAccordionItemElement.open).toBe(false);
         expect(agAccordionItemElement.disabled).toBe(false);
-        expect(agAccordionItem.attributes('heading-level')).toBe('3');
+        expect(agAccordionItemElement.headingLevel).toBe(3);
       });
     });
 
