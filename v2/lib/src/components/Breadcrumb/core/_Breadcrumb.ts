@@ -190,7 +190,7 @@ export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
   /**
    * Custom aria-label for the navigation landmark
    */
-  @property({ type: String, attribute: 'aria-label' })
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
   constructor() {
