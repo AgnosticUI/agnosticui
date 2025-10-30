@@ -2,6 +2,519 @@
 
 This document provides the complete, end-to-end workflow for creating a new component in AgnosticUI v2. It follows a hybrid model that uses an automated script for scaffolding and an LLM agent for implementation.
 
+## Event Conventions
+
+AgnosticUI v2 uses a **standardized dual-dispatch event propagation pattern** for component-specific events, while leveraging native composed events wherever possible. This section documents the conventions established in components like Button and Collapsible, which should be followed when implementing or refactoring any component with events.
+
+### Shadow DOM Event Propagation Fundamentals
+
+Understanding how events propagate across Shadow DOM boundaries is critical to implementing the correct event pattern:
+
+#### Composed Events (Already Available to Consumers)
+
+Most native UI events are **composed** by the browser, meaning they automatically bubble across Shadow DOM boundaries. **Don't reinvent the wheel** - if a native event already does what you need and propagates naturally, let it work as-is.
+
+**Composed Events Include**:
+- `click`, `dblclick`
+- `mousedown`, `mouseup`, `mousemove`, `mouseover`, `mouseout`
+- `keydown`, `keyup`, `keypress`
+- `input`, `change`
+- `submit`
+- `touchstart`, `touchmove`, `touchend`
+
+**Consumer Usage Examples**:
+```typescript
+// Native composed events work automatically - no special handling needed
+const button = document.querySelector('ag-button');
+
+// Method 1: Standard addEventListener (works because click is composed)
+button.addEventListener('click', (e) => console.log('Clicked!'));
+
+// Method 2: Callback prop (convenient alternative, especially in frameworks)
+// <ag-button .onClick=${(e) => console.log('Clicked!')}></ag-button>
+```
+
+**Why These Work**: When you dispatch a `click` event inside the Shadow DOM (e.g., on an internal `<button>` element), the browser marks it as `composed: true` automatically. This allows the event to cross the Shadow boundary and be heard by listeners on the `<ag-button>` custom element itself.
+
+#### Non-Composed/Non-Bubbling Events (Must Be Manually Exposed)
+
+Some events **do not bubble** or are **not composed**, meaning they stay isolated on the element that triggered them. If consumers need access to these events, you must manually re-dispatch them from the host element.
+
+**Non-Bubbling Events Include**:
+- `focus`, `blur` (isolated, don't bubble even in light DOM)
+- `load`, `error`
+- `scroll`
+- Custom component-specific events (e.g., `toggle`, `collapse`, `expand`)
+
+**Example: Manually Exposing `focus` and `blur`**:
+```typescript
+export class AgButton extends LitElement {
+  @property({ attribute: false })
+  declare onFocus?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onBlur?: (event: FocusEvent) => void;
+
+  private _handleFocus(event: FocusEvent) {
+    // Re-dispatch from host so consumers can listen on <ag-button>
+    this.dispatchEvent(new FocusEvent('focus', {
+      bubbles: true,
+      composed: true,
+      // Optionally preserve other event properties
+    }));
+
+    // Invoke callback if provided
+    if (this.onFocus) {
+      this.onFocus(event);
+    }
+  }
+
+  render() {
+    return html`
+      <button @focus=${this._handleFocus} @blur=${this._handleBlur}>
+        <slot></slot>
+      </button>
+    `;
+  }
+}
+```
+
+**Key Rule**: Only manually expose events that don't naturally propagate OR are component-specific state changes (like `toggle`). For everything else, let native browser behavior handle it.
+
+### Core Event Patterns
+
+AgnosticUI v2 uses two primary event patterns:
+
+1. **Native Event Pattern**: Leverage composed events with optional callback props for convenience
+2. **Custom Event Pattern**: Dual-dispatch pattern for component-specific state changes
+
+#### Pattern 1: Native Events with Optional Callbacks
+
+For events that already compose naturally (like `click`), we provide optional callback props as a convenience, especially for framework users:
+
+```typescript
+// Props interface
+export interface ButtonProps {
+  onClick?: (event: MouseEvent) => void;
+  // Note: We still provide the callback even though click composes naturally
+  // This is a convenience for framework users who prefer props over addEventListener
+}
+
+// Implementation
+export class AgButton extends LitElement {
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  private _handleClick(event: MouseEvent) {
+    // Native click already composes - we just invoke callback if provided
+    if (this.onClick) {
+      this.onClick(event);
+    }
+  }
+
+  render() {
+    return html`
+      <button @click=${this._handleClick}>
+        <slot></slot>
+      </button>
+    `;
+  }
+}
+```
+
+**Consumer Usage**:
+```typescript
+// Method 1: Standard addEventListener (works because click is composed)
+buttonElement.addEventListener('click', (e) => console.log('Clicked!'));
+
+// Method 2: Callback prop (convenient, especially in Lit/frameworks)
+html`<ag-button .onClick=${(e) => console.log('Clicked!')}></ag-button>`
+
+// Method 3: Framework wrappers (React)
+<ReactButton onClick={(e) => console.log('Clicked!')} />
+```
+
+#### Pattern 2: Custom Events with Dual-Dispatch
+
+For component-specific behavior (state changes, interactions unique to the component), dispatch a CustomEvent AND invoke a callback prop:
+
+```typescript
+// 1. Define event types
+export interface ButtonToggleEventDetail {
+  pressed: boolean;
+}
+export type ButtonToggleEvent = CustomEvent<ButtonToggleEventDetail>;
+
+// 2. Add callback prop to Props interface
+export interface ButtonProps {
+  toggle?: boolean;
+  pressed?: boolean;
+  onToggle?: (event: ButtonToggleEvent) => void;
+}
+
+// 3. Implement dual-dispatch pattern
+export class AgButton extends LitElement {
+  @property({ attribute: false })
+  declare onToggle?: (event: ButtonToggleEvent) => void;
+
+  private _handleClick(event: MouseEvent) {
+    if (this.onClick) {
+      this.onClick(event);
+    }
+
+    if (this.toggle && !this.disabled && !event.defaultPrevented) {
+      this.pressed = !this.pressed;
+
+      // Dispatch custom event with composed: true and bubbles: true
+      const toggleEvent = new CustomEvent<ButtonToggleEventDetail>('toggle', {
+        detail: { pressed: this.pressed },
+        bubbles: true,
+        composed: true,
+      });
+
+      // Dispatch DOM event first
+      this.dispatchEvent(toggleEvent);
+
+      // Then invoke callback if provided
+      if (this.onToggle) {
+        this.onToggle(toggleEvent);
+      }
+    }
+  }
+}
+```
+
+**Consumer Usage**:
+```typescript
+// Method 1: Standard addEventListener
+buttonElement.addEventListener('toggle', (e) => {
+  console.log('Toggled to', e.detail.pressed);
+});
+
+// Method 2: Callback prop
+html`<ag-button toggle .onToggle=${(e) => console.log('Toggled to', e.detail.pressed)}></ag-button>`
+
+// Method 3: Framework wrappers (React)
+<ReactButton toggle onToggle={(e) => console.log('Toggled to', e.detail.pressed)} />
+```
+
+### Lit Core Implementation Pattern
+
+The canonical Lit implementation establishes the event contract for all frameworks:
+
+```typescript
+// Event types at the top of the file
+export interface ToggleEventDetail {
+  pressed: boolean;
+}
+export type ToggleEvent = CustomEvent<ToggleEventDetail>;
+
+// Props interface
+export interface MyComponentProps {
+  // Native event callbacks (optional convenience)
+  onClick?: (event: MouseEvent) => void;
+  onFocus?: (event: FocusEvent) => void;
+  onBlur?: (event: FocusEvent) => void;
+
+  // Custom event callbacks (for component-specific behavior)
+  onToggle?: (event: ToggleEvent) => void;
+}
+
+// Component implementation
+export class MyComponent extends LitElement implements MyComponentProps {
+  // Declare callbacks as properties (NOT reflected as attributes)
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  @property({ attribute: false })
+  declare onFocus?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onBlur?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onToggle?: (event: ToggleEvent) => void;
+
+  // Native composed event handler (click already bubbles naturally)
+  private _handleClick(event: MouseEvent) {
+    if (this.onClick) {
+      this.onClick(event);
+    }
+    // ... handle toggle logic if needed
+  }
+
+  // Non-bubbling event handler (focus doesn't bubble, must re-dispatch)
+  private _handleFocus(event: FocusEvent) {
+    // Re-dispatch from host for consumer access
+    this.dispatchEvent(new FocusEvent('focus', {
+      bubbles: true,
+      composed: true,
+    }));
+
+    if (this.onFocus) {
+      this.onFocus(event);
+    }
+  }
+
+  // Custom event handler (component-specific state change)
+  private _handleToggle() {
+    const toggleEvent = new CustomEvent<ToggleEventDetail>('toggle', {
+      detail: { pressed: this.pressed },
+      bubbles: true,
+      composed: true,
+    });
+
+    // Dispatch DOM event first
+    this.dispatchEvent(toggleEvent);
+
+    // Then invoke callback if provided
+    if (this.onToggle) {
+      this.onToggle(toggleEvent);
+    }
+  }
+}
+```
+
+**Key Implementation Details**:
+- Use `@property({ attribute: false })` for callback props to prevent them from being reflected as HTML attributes
+- Event names use lowercase (e.g., `'toggle'`, `'focus'`) as per DOM standards
+- Always set `bubbles: true` and `composed: true` for CustomEvents to ensure cross-boundary propagation
+- For non-bubbling native events (focus, blur), re-dispatch them from the host element
+- For composed native events (click), you can optionally invoke callbacks but don't need to re-dispatch
+
+### React Wrapper Pattern
+
+React wrappers use `@lit/react`'s `createComponent` to map DOM events to React event props:
+
+```typescript
+import * as React from "react";
+import { createComponent, type EventName } from "@lit/react";
+import {
+  AgButton,
+  type ButtonProps,
+  type ButtonToggleEvent,
+} from "../core/Button";
+
+export interface ReactButtonProps extends ButtonProps {
+  children?: React.ReactNode;
+  className?: string;
+  id?: string;
+  // Explicitly include event handler types
+  onClick?: (event: MouseEvent) => void;
+  onFocus?: (event: FocusEvent) => void;
+  onBlur?: (event: FocusEvent) => void;
+  onToggle?: (event: ButtonToggleEvent) => void;
+}
+
+export const ReactButton = createComponent({
+  tagName: "ag-button",
+  elementClass: AgButton,
+  react: React,
+  events: {
+    // Map custom events (native composed events like click work automatically)
+    onToggle: "toggle" as EventName<ButtonToggleEvent>,
+  },
+});
+
+// Re-export event types
+export type { ButtonToggleEvent } from "../core/Button";
+```
+
+**Key Implementation Details**:
+- Only map custom events in the `events` object - native composed events (click, input, etc.) work automatically through React's event system
+- Use `as EventName<MyCustomEvent>` for proper TypeScript typing
+- Re-export event types for consumer convenience
+
+### Vue Wrapper Pattern
+
+Vue wrappers bridge web component events to Vue's emit system:
+
+```typescript
+<template>
+  <ag-button
+    ref="buttonRef"
+    :type="type"
+    :toggle="toggle"
+    :pressed="pressed"
+    @click="handleClick"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @toggle="handleToggle"
+    v-bind="$attrs"
+  >
+    <slot />
+  </ag-button>
+</template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import type {
+  ButtonProps,
+  ButtonToggleEvent,
+  ButtonToggleEventDetail,
+} from "../core/Button";
+import "../core/Button";
+
+// Omit callback props (Vue uses emits instead)
+export interface VueButtonProps
+  extends Omit<ButtonProps, "onClick" | "onFocus" | "onBlur" | "onToggle"> {}
+
+const props = withDefaults(defineProps<VueButtonProps>(), {
+  type: "button",
+  toggle: false,
+  pressed: false,
+});
+
+// Define emits for all events (native + custom)
+const emit = defineEmits<{
+  click: [event: MouseEvent];
+  focus: [event: FocusEvent];
+  blur: [event: FocusEvent];
+  toggle: [detail: ButtonToggleEventDetail];
+  "update:pressed": [pressed: boolean];  // v-model support
+}>();
+
+const buttonRef = ref<HTMLElement>();
+
+// Bridge handlers
+const handleClick = (event: MouseEvent) => {
+  emit("click", event);
+};
+
+const handleFocus = (event: FocusEvent) => {
+  emit("focus", event);
+};
+
+const handleBlur = (event: FocusEvent) => {
+  emit("blur", event);
+};
+
+const handleToggle = (event: Event) => {
+  const toggleEvent = event as ButtonToggleEvent;
+  emit("toggle", toggleEvent.detail);
+  emit("update:pressed", toggleEvent.detail.pressed);
+};
+</script>
+```
+
+**Key Implementation Details**:
+- Listen to all events with `@eventname` (lowercase, no "on" prefix)
+- Omit callback props from VueProps interface (use emits instead)
+- For custom events, emit the `detail` payload (not the entire CustomEvent) for cleaner Vue consumer code
+- For native events, emit the full event object
+- Add `update:propName` emits for v-model support on state props
+
+### Event Naming Conventions
+
+- **DOM Event Names**: Use lowercase, no prefixes (e.g., `'toggle'`, `'change'`, `'select'`)
+- **Callback Props**: Use camelCase with "on" prefix (e.g., `onToggle`, `onChange`, `onSelect`)
+- **Event Type Names**: Use PascalCase with "Event" suffix (e.g., `ToggleEvent`, `ChangeEvent`)
+- **Event Detail Interfaces**: Use PascalCase with "EventDetail" suffix (e.g., `ToggleEventDetail`)
+
+### Common Custom Event Patterns
+
+#### Toggle Events (Button, Collapsible)
+
+**Use Case**: Components with binary state (pressed/unpressed, open/closed)
+
+```typescript
+// Event definition
+export interface ToggleEventDetail {
+  pressed: boolean;  // or 'open: boolean' for Collapsible
+}
+export type ToggleEvent = CustomEvent<ToggleEventDetail>;
+
+// Dispatch implementation
+const toggleEvent = new CustomEvent<ToggleEventDetail>('toggle', {
+  detail: { pressed: this.pressed },
+  bubbles: true,
+  composed: true,
+});
+this.dispatchEvent(toggleEvent);
+if (this.onToggle) {
+  this.onToggle(toggleEvent);
+}
+```
+
+**Vue Integration with v-model support**:
+```typescript
+const emit = defineEmits<{
+  toggle: [detail: ToggleEventDetail];
+  "update:pressed": [pressed: boolean];
+}>();
+
+const handleToggle = (event: Event) => {
+  const toggleEvent = event as ToggleEvent;
+  emit("toggle", toggleEvent.detail);
+  emit("update:pressed", toggleEvent.detail.pressed);
+};
+```
+
+### Refactoring Legacy Components
+
+When refactoring components with legacy event patterns, follow these steps:
+
+1. **Audit Events**: Identify all events the component dispatches
+   - Categorize as: Native Composed (already works) vs. Non-Bubbling (needs re-dispatch) vs. Custom (needs dual-dispatch)
+2. **Add Event Types**: Create TypeScript interfaces for custom event detail payloads
+3. **Update Props Interface**: Add optional callback props with proper typing
+4. **Add Property Declarations**: Use `@property({ attribute: false })` for all callback props
+5. **Implement Correct Pattern**:
+   - Native composed events: Just invoke callback if provided
+   - Non-bubbling events: Re-dispatch from host + invoke callback
+   - Custom events: Dual-dispatch (dispatchEvent + callback)
+6. **Update React Wrapper**: Map only custom events in `events` object
+7. **Update Vue Wrapper**:
+   - Remove callback props from VueProps interface
+   - Add all events to emit signatures
+   - Create bridge handlers
+   - Add v-model support where appropriate
+8. **Update Tests**: Verify both addEventListener and callback props work
+9. **Update Storybook**: Add interactive event handling examples for all frameworks
+10. **Update Documentation**: Document events in API tables with usage examples
+
+### Testing Events
+
+Test both dispatch mechanisms for custom events:
+
+```typescript
+it('dispatches toggle event (addEventListener pattern)', async () => {
+  const el = await fixture<AgButton>(html`<ag-button toggle></ag-button>`);
+  const toggleSpy = vi.fn();
+  el.addEventListener('toggle', toggleSpy);
+
+  el.click();
+  await el.updateComplete;
+
+  expect(toggleSpy).toHaveBeenCalledOnce();
+  expect(toggleSpy.mock.calls[0][0].detail).toEqual({ pressed: true });
+});
+
+it('invokes onToggle callback (prop pattern)', async () => {
+  const onToggleSpy = vi.fn();
+  const el = await fixture<AgButton>(
+    html`<ag-button toggle .onToggle=${onToggleSpy}></ag-button>`
+  );
+
+  el.click();
+  await el.updateComplete;
+
+  expect(onToggleSpy).toHaveBeenCalledOnce();
+  expect(onToggleSpy.mock.calls[0][0].detail).toEqual({ pressed: true });
+});
+
+it('click event propagates naturally (composed event)', async () => {
+  const el = await fixture<AgButton>(html`<ag-button></ag-button>`);
+  const clickSpy = vi.fn();
+  el.addEventListener('click', clickSpy);
+
+  el.click();
+  await el.updateComplete;
+
+  expect(clickSpy).toHaveBeenCalledOnce();
+});
+```
+
 ## Phase 1: Scaffolding (Automated Script)
 
 The first step is to use the unified scaffolding script to create all the necessary boilerplate files for the new component. This eliminates manual setup and ensures consistency.
