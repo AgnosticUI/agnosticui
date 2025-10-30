@@ -54,9 +54,9 @@ export const CheckboxGroup: Story = {
       <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
         <legend style="padding: 0 0.5rem; font-weight: 600;">Select Features</legend>
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-          <VueCheckbox name="features" value="dark-mode" :size="args.size" :theme="args.theme" label-text="Dark Mode" :checked="true" />
-          <VueCheckbox name="features" value="notifications" :size="args.size" :theme="args.theme" label-text="Notifications" />
-          <VueCheckbox name="features" value="analytics" :size="args.size" :theme="args.theme" label-text="Analytics" :checked="true" />
+          <VueCheckbox name="features" value="dark-mode" :size="args.size" :theme="args.theme" :checked="true">Dark Mode</VueCheckbox>
+          <VueCheckbox name="features" value="notifications" :size="args.size" :theme="args.theme">Notifications</VueCheckbox>
+          <VueCheckbox name="features" value="analytics" :size="args.size" :theme="args.theme" :checked="true">Analytics</VueCheckbox>
         </div>
       </fieldset>
     `,
