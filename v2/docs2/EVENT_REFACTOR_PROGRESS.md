@@ -211,14 +211,14 @@ Provide a structured response:
 
 **Priority**: HIGH - These have the most complex event patterns and highest consumer impact
 
-**Status**: 3/12 complete (25%)
+**Status**: 4/12 complete (33%)
 
 | Component | Status | Branch | Commits | Risk | Notes |
 |-----------|--------|--------|---------|------|-------|
 | Button | ✅ Complete | main | 442432d, 11a657a | LOW | Reference implementation |
 | Collapsible | ✅ Complete | main | 442432d, 11a657a, 6888e11 | LOW | Reference implementation |
 | Toggle | ✅ Complete | feature/toggle-event-refactor | 47db8e6, 0881575, b9028ca, 056a9f7, adb05d5 | LOW | Dual-dispatch + v-model:checked + unified docs |
-| Checkbox | ⏳ Pending | - | - | MEDIUM | Binary/indeterminate state |
+| Checkbox | ✅ Complete | feature/checkbox-event-refactor | 38222d0, 295e06d | MEDIUM | Dual-dispatch + v-model:checked/indeterminate + comprehensive event stories |
 | Radio | ⏳ Pending | - | - | MEDIUM | Selection state, group coordination |
 | Input | ⏳ Pending | - | - | HIGH | Complex: input/change/blur/focus/validation |
 | Select | ⏳ Pending | - | - | HIGH | Selection state, dropdown interaction |
@@ -375,6 +375,25 @@ Ref: Button (442432d, 11a657a), Collapsible (6888e11)
 - **Breaking Changes**: None
 - **Reference**: Complete end-to-end refactor following all specifications
 
+### Checkbox ✅
+- **Commits**: 38222d0 (core + docs), 295e06d (storybooks)
+- **Events**: click (native), change (custom, renamed from ag-change)
+- **Pattern**: Dual-dispatch for change with { checked, value, name, indeterminate }
+- **Core Changes**:
+  - Renamed ag-change to change for consistency
+  - Added onClick, onChange callback props with @property({ attribute: false })
+  - Event includes indeterminate state (unique to checkbox)
+  - 46 tests passing (includes event tests)
+- **React**: Maps change event to onChange, native onClick available
+- **Vue**: Modern emit pattern + v-model:checked + v-model:indeterminate support
+- **Storybooks**: All 3 frameworks updated with comprehensive event examples
+  - Lit: addEventListener, callback props, dual-dispatch, native click patterns
+  - React: onChange, with state, native onClick, indeterminate handling
+  - Vue: @change, v-model:checked, v-model:indeterminate, both patterns, native click
+- **Docs**: Comprehensive Events section with standardized table format
+- **Breaking Changes**: Event renamed from ag-change to change
+- **Reference**: Similar to Toggle, with additional indeterminate state handling
+
 ---
 
 ## Notes & Lessons Learned
@@ -399,4 +418,4 @@ Ref: Button (442432d, 11a657a), Collapsible (6888e11)
 ---
 
 **Last Updated**: 2025-10-30
-**Current Phase**: Tier 1 - Toggle complete (3/12), ready for next component
+**Current Phase**: Tier 1 - Checkbox complete (4/12), ready for Radio
