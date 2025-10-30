@@ -203,13 +203,13 @@ Provide a structured response:
 
 **Priority**: HIGH - These have the most complex event patterns and highest consumer impact
 
-**Status**: 2/12 complete (17%)
+**Status**: 3/12 complete (25%)
 
 | Component | Status | Branch | Commits | Risk | Notes |
 |-----------|--------|--------|---------|------|-------|
 | Button | ✅ Complete | main | 442432d, 11a657a | LOW | Reference implementation |
 | Collapsible | ✅ Complete | main | 442432d, 11a657a, 6888e11 | LOW | Reference implementation |
-| Toggle | 🔄 In Progress | feature/toggle-event-refactor | - | LOW | Similar to Button |
+| Toggle | ✅ Complete | feature/toggle-event-refactor | 47db8e6, 0881575, b9028ca, 056a9f7, adb05d5 | LOW | Dual-dispatch + v-model:checked + unified docs |
 | Checkbox | ⏳ Pending | - | - | MEDIUM | Binary/indeterminate state |
 | Radio | ⏳ Pending | - | - | MEDIUM | Selection state, group coordination |
 | Input | ⏳ Pending | - | - | HIGH | Complex: input/change/blur/focus/validation |
@@ -348,6 +348,25 @@ Ref: Button (442432d, 11a657a), Collapsible (6888e11)
 - **Breaking Changes**: None
 - **Reference**: Clean toggle pattern, good Vue v-model example
 
+### Toggle ✅
+- **Commits**: 47db8e6 (core), 0881575 (storybooks), b9028ca (docs), 056a9f7 (table fix), adb05d5 (guide update)
+- **Events**: click (native), toggle-change (custom)
+- **Pattern**: Dual-dispatch for toggle-change with { checked, name, value }
+- **Core Changes**:
+  - Removed @customElement decorator (uses barrel pattern)
+  - Added onClick, onToggleChange callback props with @property({ attribute: false })
+  - Separated _handleClick and _performToggle for proper typing
+  - 54 tests passing (8 new event tests)
+- **React**: Added explicit event types (className, id, onClick, onToggleChange)
+- **Vue**: Modern emit pattern + v-model:checked support
+- **Storybooks**: All 3 frameworks updated with event handling examples
+  - Lit: addEventListener, callback prop, dual-dispatch patterns
+  - React: onToggleChange, with state, with onClick patterns
+  - Vue: @toggle-change, v-model:checked, both together + interactive demo
+- **Docs**: Comprehensive Events section with standardized table format
+- **Breaking Changes**: None
+- **Reference**: Complete end-to-end refactor following all specifications
+
 ---
 
 ## Notes & Lessons Learned
@@ -372,4 +391,4 @@ Ref: Button (442432d, 11a657a), Collapsible (6888e11)
 ---
 
 **Last Updated**: 2025-10-30
-**Current Phase**: Starting Tier 1 - Toggle component
+**Current Phase**: Tier 1 - Toggle complete (3/12), ready for next component
