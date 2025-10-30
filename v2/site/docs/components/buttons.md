@@ -208,11 +208,15 @@ export default function ButtonExample() {
 
 ## Events
 
-| Event | Detail | Description |
-|-------|---------|-------------|
-| `toggle` (Vue: `@toggle`, React: `onToggle`) | `{ pressed: boolean }` | Emitted when toggle button is clicked (only when `toggle` prop is `true`) |
+| Event    | Framework                                             | Detail                 | Description                                                                      |
+| -------- | ----------------------------------------------------- | ---------------------- | -------------------------------------------------------------------------------- |
+| `click`  | Vue: `@click`<br>React: `onClick`<br>Lit: `@click`    | `MouseEvent`           | Fired when the button is clicked.                                                |
+| `focus`  | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus`    | `FocusEvent`           | Fired when the button receives focus.                                            |
+| `blur`   | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur`       | `FocusEvent`           | Fired when the button loses focus.                                               |
+| `toggle` | Vue: `@toggle`<br>React: `onToggle`<br>Lit: `@toggle` | `{ pressed: boolean }` | Emitted when a toggle button is clicked (only when the `toggle` prop is `true`). |
 
-**Note:** Standard button click events work as expected. The `toggle` event is only emitted for toggle buttons.
+
+**Note:** Standard button events (`click`, `focus`, `blur`) work uniformly across all frameworks. The `toggle` event is custom and only fires when the `toggle` prop is true, providing `{ pressed: boolean }` in its detail.
 
 ## Accessibility
 

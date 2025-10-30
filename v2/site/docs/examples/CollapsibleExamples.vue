@@ -87,7 +87,7 @@
         use-chevron
       >
         <template #summary>
-          <span>🔽 Chevron (default) - Rotates 180°</span>
+          <span>Chevron (default) - Rotates 180°</span>
         </template>
         <p>The chevron points down when closed and up when open via rotation.</p>
       </VueCollapsible>
@@ -97,7 +97,7 @@
         use-x
       >
         <template #summary>
-          <span>✖️ X Indicator - Rotates from upside-down plus to X</span>
+          <span>X Indicator - Rotates from upside-down plus to X</span>
         </template>
         <p>Starts as an upside-down plus sign and rotates 45° to form an X when open.</p>
       </VueCollapsible>
@@ -107,7 +107,7 @@
         use-minus
       >
         <template #summary>
-          <span>➕ Plus/Minus - Swaps icons</span>
+          <span>Plus/Minus - Swaps icons</span>
         </template>
         <p>Shows a plus icon when closed and swaps to a minus icon when open.</p>
       </VueCollapsible>
@@ -117,7 +117,7 @@
         no-indicator
       >
         <template #summary>
-          <span>⚪ No Indicator - Completely hidden</span>
+          <span>No Indicator - Completely hidden</span>
         </template>
         <p>No indicator is shown at all.</p>
       </VueCollapsible>

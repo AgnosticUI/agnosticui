@@ -79,26 +79,26 @@ import CollapsibleExamples from '../examples/CollapsibleExamples.vue'
 import { VueCollapsible } from "agnosticui-core/collapsible/vue";
 
 export default {
-  components: {
-    VueCollapsible,
-  },
+  components: { VueCollapsible },
   methods: {
     handleToggle(event) {
-      const newOpenState = event.target.open;
+      const newOpenState = event.detail.open;
       console.log("Collapsible toggled:", newOpenState);
     },
   },
 };
 </script>
-```
+````
+
 :::
 
 ::: details React
+
 ```tsx
 import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
 
 export default function CollapsibleExample() {
-  const handleToggle = (event: CustomEvent) => {
+  const handleToggle = (event: CustomEvent<{ open: boolean }>) => {
     console.log("Collapsible toggled:", event.detail.open);
   };
 
@@ -143,18 +143,18 @@ export default function CollapsibleExample() {
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
   import 'agnosticui-core/collapsible';
 
   document.addEventListener('DOMContentLoaded', () => {
-    const collapsibles = document.querySelectorAll('ag-collapsible');
-
-    collapsibles.forEach(collapsible => {
-      collapsible.addEventListener('toggle', (event) => {
+    document.querySelectorAll('ag-collapsible').forEach(el => {
+      el.addEventListener('toggle', (event) => {
         console.log('Collapsible toggled:', event.detail.open);
       });
     });
@@ -181,13 +181,13 @@ export default function CollapsibleExample() {
   </ag-collapsible>
 
   <!-- With X indicator -->
-  <ag-collapsible id="x-indicator" use-x>
+  <ag-collapsible use-x>
     <span slot="summary">X Indicator</span>
     <p>Plus icon that transforms into an X when opened</p>
   </ag-collapsible>
 
   <!-- With plus/minus indicator -->
-  <ag-collapsible id="minus-indicator" use-minus>
+  <ag-collapsible use-minus>
     <span slot="summary">Plus/Minus Indicator</span>
     <p>Plus icon that changes to minus when opened</p>
   </ag-collapsible>
@@ -199,38 +199,43 @@ export default function CollapsibleExample() {
   </ag-collapsible>
 </section>
 ```
+
 :::
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `open` | `boolean` | `false` | Whether the collapsible is expanded |
-| `isBordered` | `boolean` | `false` | Whether to apply border styling |
-| `isShadow` | `boolean` | `false` | Whether to apply box-shadow styling |
-| `useChevron` | `boolean` | `true` | Use chevron indicator (default) - rotates 180° when open |
-| `useX` | `boolean` | `false` | Use X indicator - plus rotated 180° initially, becomes X at 45° when open |
-| `useMinus` | `boolean` | `false` | Use plus/minus indicator - plus transitions to minus when open |
-| `noIndicator` | `boolean` | `false` | Hide the indicator completely |
+| Prop          | Type      | Default | Description                                                    |
+| ------------- | --------- | ------- | -------------------------------------------------------------- |
+| `open`        | `boolean` | `false` | Whether the collapsible is expanded                            |
+| `isBordered`  | `boolean` | `false` | Whether to apply border styling                                |
+| `isShadow`    | `boolean` | `false` | Whether to apply box-shadow styling                            |
+| `useChevron`  | `boolean` | `true`  | Use chevron indicator (default) — rotates 180° when open       |
+| `useX`        | `boolean` | `false` | Use X indicator — plus rotates to form an X when open          |
+| `useMinus`    | `boolean` | `false` | Use plus/minus indicator — plus transitions to minus when open |
+| `noIndicator` | `boolean` | `false` | Hide the indicator completely                                  |
 
 **Note:** Indicator props are mutually exclusive with priority: `noIndicator` > `useX` > `useMinus` > `useChevron` (default)
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `@toggle` (Vue) / `onToggle` (React) / `toggle` (Lit) | `{ open: boolean }` | Emitted when the collapsible is toggled between open and closed states |
+| Event    | Framework                                             | Detail              | Description                                                                                 |
+| -------- | ----------------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------- |
+| `toggle` | Vue: `@toggle`<br>React: `onToggle`<br>Lit: `@toggle` | `{ open: boolean }` | Fired when the collapsible opens or closes. The event detail contains the new `open` state. |
+
+**Type:**
+
+```ts
+export type CollapsibleToggleEvent = CustomEvent<{ open: boolean }>;
+```
 
 ## CSS Shadow Parts
 
-The Collapsible exposes CSS Shadow Parts that allow you to customize internal elements without breaking encapsulation:
-
-| Part | Description | Element |
-|------|-------------|---------|
-| `ag-collapsible-details` | The main details element container | `<details>` |
-| `ag-collapsible-summary` | The interactive summary/trigger element | `<summary>` |
-| `ag-collapsible-indicator` | The expand/collapse indicator icon wrapper | `<span>` |
-| `ag-collapsible-content` | The collapsible content region | `<div>` |
+| Part                       | Description                                | Element     |
+| -------------------------- | ------------------------------------------ | ----------- |
+| `ag-collapsible-details`   | The main details element container         | `<details>` |
+| `ag-collapsible-summary`   | The interactive summary/trigger element    | `<summary>` |
+| `ag-collapsible-indicator` | The expand/collapse indicator icon wrapper | `<span>`    |
+| `ag-collapsible-content`   | The collapsible content region             | `<div>`     |
 
 ### Example Usage
 
@@ -281,20 +286,21 @@ See the [Storybook CSS Parts Customization story](https://github.com/AgnosticUI/
 
 The Collapsible is built on the native HTML `<details>` and `<summary>` elements, providing excellent accessibility by default:
 
-- Uses semantic HTML `<details>` and `<summary>` elements
-- Native keyboard support:
-  - **Space/Enter**: Toggle the collapsible
-  - Screen readers can interact with it naturally
-- The `open` attribute communicates state to assistive technologies
-- Focus indicators are clearly visible for keyboard navigation
-- No additional ARIA attributes needed due to native semantics
+* Uses semantic HTML `<details>` and `<summary>` elements
+* Native keyboard support:
+
+  * **Space/Enter**: Toggle the collapsible
+* The `open` attribute communicates state to assistive technologies
+* Screen readers can interact with it naturally
+* Focus indicators are clearly visible for keyboard navigation
+* No additional ARIA attributes are needed due to native semantics
 
 ## Progressive Enhancement
 
 The Collapsible is designed with progressive enhancement in mind:
 
-- Built on native `<details>` and `<summary>` HTML elements
-- Content is accessible even if JavaScript fails to load
-- Core expand/collapse functionality works without JavaScript
-- JavaScript enhancement adds custom indicators and smoother animations
-- Gracefully degrades to native browser behavior
+* Built on native `<details>` and `<summary>` HTML elements
+* Content is accessible even if JavaScript fails to load
+* Core expand/collapse functionality works without JavaScript
+* JavaScript enhancement adds custom indicators and smoother animations
+* Gracefully degrades to native browser behavior
