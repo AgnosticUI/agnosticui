@@ -18,6 +18,10 @@ const meta = {
       options: ['', 'primary', 'secondary', 'success', 'warning', 'danger'],
       description: 'Visual style of the button',
     },
+    label: {
+      control: 'text',
+      description: 'The label for button',
+    },
     size: {
       control: 'select',
       options: ['small', 'medium', 'large'],
@@ -82,6 +86,7 @@ const meta = {
     },
   },
   args: {
+    label: 'Button',
     type: 'button',
     variant: '',
     size: 'medium',
@@ -293,6 +298,26 @@ export const Grouped: Story = {
     grouped: true,
   },
 };
+export const GroupedPrimary: Story = {
+  render: (args) => ({
+    components: { Button },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="display: flex;">
+        <Button v-bind="args" grouped label="First" />
+        <Button v-bind="args" grouped label="Middle" />
+        <Button v-bind="args" grouped label="Last" />
+      </div>
+    `,
+  }),
+  args: {
+    label: 'Grouped Button', // Fallback label to satisfy TypeScript
+    variant: 'primary',
+    grouped: true,
+  },
+};
 
 // CSS Parts Customization Story
 export const Customization: Story = {
@@ -331,6 +356,6 @@ export const Customization: Story = {
   }),
   args: {
     variant: 'primary',
-    size: 'lg',
+    size: 'large',
   },
 };

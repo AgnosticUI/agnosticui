@@ -109,7 +109,7 @@ type Story = StoryObj<typeof meta>;
 // Default story with all controls and debugging
 export const Default: Story = {
   args: {
-    variant: 'primary',
+    variant: '',
     size: 'md',
     shape: '',
     bordered: false,
@@ -157,53 +157,53 @@ export const Danger: Story = {
 
 // Size Stories
 export const ExtraSmall: Story = {
-  args: { variant: 'primary', size: 'x-sm' },
+  args: { size: 'x-sm' },
   render: ({ variant, size }) => <ReactButton variant={variant} size={size} > X - Small Button</ReactButton>,
 };
 
 export const Small: Story = {
-  args: { variant: 'primary', size: 'sm' },
+  args: { size: 'sm' },
   render: ({ variant, size }) => <ReactButton variant={variant} size={size} > Small Button</ReactButton>,
 };
 
 export const Medium: Story = {
-  args: { variant: 'primary', size: 'md' },
+  args: { size: 'md' },
   render: ({ variant, size }) => <ReactButton variant={variant} size={size} > Medium Button</ReactButton>,
 };
 
 export const Large: Story = {
-  args: { variant: 'primary', size: 'lg' },
+  args: { size: 'lg' },
   render: ({ variant, size }) => <ReactButton variant={variant} size={size} > Large Button</ReactButton>,
 };
 
 export const ExtraLarge: Story = {
-  args: { variant: 'primary', size: 'xl' },
+  args: { size: 'xl' },
   render: ({ variant, size }) => <ReactButton variant={variant} size={size} > Extra Large Button</ReactButton>,
 };
 
 // Shape Stories
 export const Capsule: Story = {
-  args: { variant: 'primary', shape: 'capsule' },
+  args: { shape: 'capsule' },
   render: ({ variant, shape }) => <ReactButton variant={variant} shape={shape} > Capsule Button</ReactButton>,
 };
 
 export const Rounded: Story = {
-  args: { variant: 'primary', shape: 'rounded' },
+  args: { shape: 'rounded' },
   render: ({ variant, shape }) => <ReactButton variant={variant} shape={shape} > Rounded Button</ReactButton>,
 };
 
 export const Circle: Story = {
-  args: { variant: 'primary', shape: 'circle' },
+  args: { shape: 'circle' },
   render: ({ variant, shape }) => <ReactButton variant={variant} shape={shape} >★</ReactButton>,
 };
 
 export const Square: Story = {
-  args: { variant: 'primary', shape: 'square' },
+  args: { shape: 'square' },
   render: ({ variant, shape }) => <ReactButton variant={variant} shape={shape} >★</ReactButton>,
 };
 
 export const RoundedSquare: Story = {
-  args: { variant: 'primary', shape: 'rounded-square' },
+  args: { shape: 'rounded-square' },
   render: ({ variant, shape }) => <ReactButton variant={variant} shape={shape} >★</ReactButton>,
 };
 
@@ -234,6 +234,16 @@ export const LinkPrimary: Story = {
 };
 
 export const Grouped: Story = {
+  args: { grouped: true },
+  render: ({ variant, grouped }) => (
+    <div style={{ display: 'flex' }}>
+      <ReactButton variant={variant} grouped={grouped} > First </ReactButton>
+      < ReactButton variant={variant} grouped={grouped} > Middle </ReactButton>
+      < ReactButton variant={variant} grouped={grouped} > Last </ReactButton>
+    </div>
+  ),
+};
+export const GroupedPrimary: Story = {
   args: { variant: 'primary', grouped: true },
   render: ({ variant, grouped }) => (
     <div style={{ display: 'flex' }}>

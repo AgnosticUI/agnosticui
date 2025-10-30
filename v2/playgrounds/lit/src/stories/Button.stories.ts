@@ -78,7 +78,7 @@ const meta: Meta<ButtonProps> = {
     },
   },
   args: {
-    variant: "primary",
+    variant: "",
     size: "md",
     shape: "",
     bordered: false,
@@ -208,7 +208,6 @@ export const ExtraSmall: Story = {
 
 export const Small: Story = {
   args: {
-    variant: "primary",
     size: "sm",
   },
   render: ({ variant, size }) =>
@@ -217,7 +216,6 @@ export const Small: Story = {
 
 export const Medium: Story = {
   args: {
-    variant: "primary",
     size: "md",
   },
   render: ({ variant, size }) =>
@@ -228,7 +226,6 @@ export const Medium: Story = {
 
 export const Large: Story = {
   args: {
-    variant: "primary",
     size: "lg",
   },
   render: ({ variant, size }) =>
@@ -237,7 +234,6 @@ export const Large: Story = {
 
 export const ExtraLarge: Story = {
   args: {
-    variant: "primary",
     size: "xl",
   },
   render: ({ variant, size }) =>
@@ -249,7 +245,6 @@ export const ExtraLarge: Story = {
 // Shape Stories
 export const Capsule: Story = {
   args: {
-    variant: "primary",
     shape: "capsule",
   },
   render: ({ variant, shape }) =>
@@ -260,7 +255,6 @@ export const Capsule: Story = {
 
 export const Rounded: Story = {
   args: {
-    variant: "primary",
     shape: "rounded",
   },
   render: ({ variant, shape }) =>
@@ -271,7 +265,6 @@ export const Rounded: Story = {
 
 export const Circle: Story = {
   args: {
-    variant: "primary",
     shape: "circle",
   },
   render: ({ variant, shape }) =>
@@ -280,7 +273,6 @@ export const Circle: Story = {
 
 export const Square: Story = {
   args: {
-    variant: "primary",
     shape: "square",
   },
   render: ({ variant, shape }) =>
@@ -289,7 +281,6 @@ export const Square: Story = {
 
 export const RoundedSquare: Story = {
   args: {
-    variant: "primary",
     shape: "rounded-square",
   },
   render: ({ variant, shape }) =>
@@ -352,6 +343,19 @@ export const LinkPrimary: Story = {
 
 export const Grouped: Story = {
   args: {
+    grouped: true,
+  },
+  render: ({ variant, grouped }) => html`
+    <div style="display: flex;">
+      <ag-button .variant=${variant} .grouped=${grouped}>First</ag-button>
+      <ag-button .variant=${variant} .grouped=${grouped}>Middle</ag-button>
+      <ag-button .variant=${variant} .grouped=${grouped}>Last</ag-button>
+    </div>
+  `,
+};
+
+export const GroupedPrimary: Story = {
+  args: {
     variant: "primary",
     grouped: true,
   },
@@ -367,7 +371,6 @@ export const Grouped: Story = {
 // State Stories
 export const Disabled: Story = {
   args: {
-    variant: "primary",
     disabled: true,
   },
   render: ({ variant, disabled }) =>
@@ -378,7 +381,6 @@ export const Disabled: Story = {
 
 export const Loading: Story = {
   args: {
-    variant: "primary",
     loading: true,
   },
   render: ({ variant, loading }) =>

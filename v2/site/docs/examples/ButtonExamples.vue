@@ -43,6 +43,42 @@
       <VueButton shape="rounded-square">RS</VueButton>
     </div>
 
+    <!-- Bordered -->
+    <div class="mbe2">
+      <h3>Bordered</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        bordered
+        shape="rounded"
+      >Default</VueButton>
+      <VueButton
+        bordered
+        shape="rounded"
+        variant="primary"
+      >Primary</VueButton>
+      <VueButton
+        bordered
+        shape="rounded"
+        variant="secondary"
+      >Secondary</VueButton>
+      <VueButton
+        bordered
+        shape="rounded"
+        variant="success"
+      >Success</VueButton>
+      <VueButton
+        bordered
+        shape="rounded"
+        variant="warning"
+      >Warning</VueButton>
+      <VueButton
+        bordered
+        shape="rounded"
+        variant="danger"
+      >Danger</VueButton>
+    </div>
+
     <!-- Sizes -->
     <div class="mbe2">
       <h3>Sizes</h3>
@@ -69,48 +105,269 @@
         shape="rounded"
       >Extra Large</VueButton>
     </div>
-
-    <!-- Bordered -->
-    <div class="mbe2">
-      <h3>Bordered</h3>
-    </div>
     <div class="stacked-mobile mbe4">
       <VueButton
         bordered
+        size="x-sm"
         shape="rounded"
-      >Go</VueButton>
+      >Extra Small</VueButton>
       <VueButton
         bordered
+        size="sm"
         shape="rounded"
-        variant="primary"
-      >Go</VueButton>
+      >Small</VueButton>
       <VueButton
         bordered
+        size="md"
         shape="rounded"
-        variant="secondary"
-      >Go</VueButton>
+      >Medium</VueButton>
       <VueButton
         bordered
+        size="lg"
         shape="rounded"
-        variant="success"
-      >Go</VueButton>
+      >Large</VueButton>
       <VueButton
         bordered
+        size="xl"
         shape="rounded"
-        variant="warning"
-      >Go</VueButton>
-      <VueButton
-        bordered
-        shape="rounded"
-        variant="danger"
-      >Go</VueButton>
-      <VueButton
-        bordered
-        shape="rounded"
-        variant="primary"
-      >Go</VueButton>
+      >Extra Large</VueButton>
     </div>
-
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        size="x-sm"
+        variant="primary"
+        shape="rounded"
+      >Extra Small</VueButton>
+      <VueButton
+        size="sm"
+        variant="primary"
+        shape="rounded"
+      >Small</VueButton>
+      <VueButton
+        size="md"
+        variant="primary"
+        shape="rounded"
+      >Medium</VueButton>
+      <VueButton
+        size="lg"
+        variant="primary"
+        shape="rounded"
+      >Large</VueButton>
+      <VueButton
+        size="xl"
+        variant="primary"
+        shape="rounded"
+      >Extra Large</VueButton>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        size="x-sm"
+        variant="primary"
+        bordered
+        shape="rounded"
+      >Extra Small</VueButton>
+      <VueButton
+        size="sm"
+        variant="primary"
+        bordered
+        shape="rounded"
+      >Small</VueButton>
+      <VueButton
+        size="md"
+        variant="primary"
+        bordered
+        shape="rounded"
+      >Medium</VueButton>
+      <VueButton
+        size="lg"
+        variant="primary"
+        bordered
+        shape="rounded"
+      >Large</VueButton>
+      <VueButton
+        size="xl"
+        variant="primary"
+        bordered
+        shape="rounded"
+      >Extra Large</VueButton>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        size="x-sm"
+        variant="success"
+        shape="rounded"
+      >Extra Small</VueButton>
+      <VueButton
+        size="sm"
+        variant="success"
+        shape="rounded"
+      >Small</VueButton>
+      <VueButton
+        size="md"
+        variant="success"
+        shape="rounded"
+      >Medium</VueButton>
+      <VueButton
+        size="lg"
+        variant="success"
+        shape="rounded"
+      >Large</VueButton>
+      <VueButton
+        size="xl"
+        variant="success"
+        shape="rounded"
+      >Extra Large</VueButton>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        size="x-sm"
+        variant="success"
+        bordered
+        shape="rounded"
+      >Extra Small</VueButton>
+      <VueButton
+        size="sm"
+        variant="success"
+        bordered
+        shape="rounded"
+      >Small</VueButton>
+      <VueButton
+        size="md"
+        variant="success"
+        bordered
+        shape="rounded"
+      >Medium</VueButton>
+      <VueButton
+        size="lg"
+        variant="success"
+        bordered
+        shape="rounded"
+      >Large</VueButton>
+      <VueButton
+        size="xl"
+        variant="success"
+        bordered
+        shape="rounded"
+      >Extra Large</VueButton>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        size="x-sm"
+        variant="warning"
+        shape="rounded"
+      >Extra Small</VueButton>
+      <VueButton
+        size="sm"
+        variant="warning"
+        shape="rounded"
+      >Small</VueButton>
+      <VueButton
+        size="md"
+        variant="warning"
+        shape="rounded"
+      >Medium</VueButton>
+      <VueButton
+        size="lg"
+        variant="warning"
+        shape="rounded"
+      >Large</VueButton>
+      <VueButton
+        size="xl"
+        variant="warning"
+        shape="rounded"
+      >Extra Large</VueButton>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        size="x-sm"
+        variant="warning"
+        bordered
+        shape="rounded"
+      >Extra Small</VueButton>
+      <VueButton
+        size="sm"
+        variant="warning"
+        bordered
+        shape="rounded"
+      >Small</VueButton>
+      <VueButton
+        size="md"
+        variant="warning"
+        bordered
+        shape="rounded"
+      >Medium</VueButton>
+      <VueButton
+        size="lg"
+        variant="warning"
+        bordered
+        shape="rounded"
+      >Large</VueButton>
+      <VueButton
+        size="xl"
+        variant="warning"
+        bordered
+        shape="rounded"
+      >Extra Large</VueButton>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        size="x-sm"
+        variant="danger"
+        shape="rounded"
+      >Extra Small</VueButton>
+      <VueButton
+        size="sm"
+        variant="danger"
+        shape="rounded"
+      >Small</VueButton>
+      <VueButton
+        size="md"
+        variant="danger"
+        shape="rounded"
+      >Medium</VueButton>
+      <VueButton
+        size="lg"
+        variant="danger"
+        shape="rounded"
+      >Large</VueButton>
+      <VueButton
+        size="xl"
+        variant="danger"
+        shape="rounded"
+      >Extra Large</VueButton>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        size="x-sm"
+        bordered
+        variant="danger"
+        shape="rounded"
+      >Extra Small</VueButton>
+      <VueButton
+        size="sm"
+        bordered
+        variant="danger"
+        shape="rounded"
+      >Small</VueButton>
+      <VueButton
+        size="md"
+        bordered
+        variant="danger"
+        shape="rounded"
+      >Medium</VueButton>
+      <VueButton
+        size="lg"
+        bordered
+        variant="danger"
+        shape="rounded"
+      >Large</VueButton>
+      <VueButton
+        size="xl"
+        bordered
+        variant="danger"
+        shape="rounded"
+      >Extra Large</VueButton>
+    </div>
     <!-- Grouped -->
     <div class="mbe2">
       <h3>Grouped</h3>
@@ -177,22 +434,22 @@
     <!-- CSS Parts Customization -->
     <div class="mbe4">
       <h3>CSS Parts Customization</h3>
-      <p class="mbe2" style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
         Customize button appearance using CSS Shadow Parts without breaking encapsulation.
       </p>
     </div>
     <div class="stacked-mobile mbe4">
-      <VueButton class="custom-gradient-button">
-        🎨 Gradient Button
+      <VueButton class="custom-gradient-button mie3">
+        Gradient Button
       </VueButton>
-      <VueButton class="custom-neon-button">
-        ⚡ Neon Button
+      <VueButton class="custom-neon-button mie3">
+        Neon Button
       </VueButton>
       <VueButton class="custom-minimal-button">
-        💡 Minimal Button
-      </VueButton>
-      <VueButton class="custom-elevated-button">
-        📋 Elevated Button
+        Minimal Button
       </VueButton>
     </div>
   </section>
@@ -234,9 +491,7 @@ export default {
   border: 2px solid #0ff;
   padding: 1rem 2rem;
   border-radius: 8px;
-  box-shadow:
-    0 0 10px #0ff,
-    0 0 20px #0ff,
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff,
     inset 0 0 10px rgba(0, 255, 255, 0.2);
   text-shadow: 0 0 5px #0ff;
   font-weight: 600;
@@ -244,9 +499,7 @@ export default {
 }
 
 .custom-neon-button::part(ag-button):hover {
-  box-shadow:
-    0 0 15px #0ff,
-    0 0 30px #0ff,
+  box-shadow: 0 0 15px #0ff, 0 0 30px #0ff,
     inset 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
@@ -266,26 +519,5 @@ export default {
   background: var(--ag-background-secondary);
   border-bottom-color: var(--ag-primary);
   transform: translateY(-1px);
-}
-
-/* Elevated button with shadow */
-.custom-elevated-button::part(ag-button) {
-  background: white;
-  color: #333;
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.custom-elevated-button::part(ag-button):hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.15),
-    0 10px 10px -5px rgba(0, 0, 0, 0.08);
 }
 </style>
