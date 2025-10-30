@@ -5,11 +5,14 @@ import { property } from 'lit/decorators.js';
 export type RadioSize = 'small' | 'medium' | 'large';
 export type RadioTheme = 'default' | 'primary' | 'monochrome';
 
-export type RadioChangeEvent = CustomEvent<{
+// Event type definitions
+export interface RadioChangeEventDetail {
   checked: boolean;
   value: string;
   name: string;
-}>;
+}
+
+export type RadioChangeEvent = CustomEvent<RadioChangeEventDetail>;
 
 /**
  * @csspart ag-radio-wrapper - The outer wrapper label element
@@ -50,6 +53,14 @@ export interface RadioProps {
    * Position of label relative to radio
    */
   labelPosition: 'end' | 'start';
+  /**
+   * Callback for native click events
+   */
+  onClick?: (event: MouseEvent) => void;
+  /**
+   * Callback for change events (fired when radio selection changes)
+   */
+  onChange?: (event: RadioChangeEvent) => void;
 }
 
 export class Radio extends LitElement implements RadioProps {
@@ -238,6 +249,19 @@ export class Radio extends LitElement implements RadioProps {
   @property({ type: String })
   labelPosition: 'end' | 'start' = 'end';
 
+  // Event callback props
+  @property({ attribute: false })
+  onClick?: (event: MouseEvent) => void;
+
+  @property({ attribute: false })
+  onChange?: (event: RadioChangeEvent) => void;
+
+  private handleClick(e: MouseEvent) {
+    if (this.onClick) {
+      this.onClick(e);
+    }
+  }
+
   private handleChange(e: Event) {
     if (this.disabled) {
       e.preventDefault();
@@ -247,20 +271,25 @@ export class Radio extends LitElement implements RadioProps {
     const input = e.target as HTMLInputElement;
     this.checked = input.checked;
 
-    this.dispatchEvent(
-      new CustomEvent<{ checked: boolean; value: string; name: string }>(
-        'ag-change',
-        {
-          detail: {
-            checked: this.checked,
-            value: this.value,
-            name: this.name,
-          },
-          bubbles: true,
-          composed: true,
-        }
-      )
+    // Dual-dispatch: CustomEvent + callback
+    const changeEvent = new CustomEvent<RadioChangeEventDetail>(
+      'change',
+      {
+        detail: {
+          checked: this.checked,
+          value: this.value,
+          name: this.name,
+        },
+        bubbles: true,
+        composed: true,
+      }
     );
+
+    this.dispatchEvent(changeEvent);
+
+    if (this.onChange) {
+      this.onChange(changeEvent as RadioChangeEvent);
+    }
   }
 
   override render() {
@@ -290,6 +319,7 @@ export class Radio extends LitElement implements RadioProps {
           value=${this.value}
           .checked=${this.checked}
           ?disabled=${this.disabled}
+          @click=${this.handleClick}
           @change=${this.handleChange}
           aria-checked=${this.checked ? 'true' : 'false'}
         />

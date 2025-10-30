@@ -159,7 +159,7 @@ describe('Radio - Comprehensive Tests', () => {
   });
 
   describe('Events', () => {
-    it('should emit ag-change event when changed', async () => {
+    it('should emit change event when changed (addEventListener pattern)', async () => {
       const radio = await createRadio({
         name: 'test',
         value: 'option1',
@@ -169,7 +169,7 @@ describe('Radio - Comprehensive Tests', () => {
       let eventFired = false;
       let eventDetail: any;
 
-      radio.addEventListener('ag-change', ((e: CustomEvent) => {
+      radio.addEventListener('change', ((e: CustomEvent) => {
         eventFired = true;
         eventDetail = e.detail;
       }) as EventListener);
@@ -184,6 +184,77 @@ describe('Radio - Comprehensive Tests', () => {
       expect(eventDetail.name).toBe('test');
     });
 
+    it('should fire onChange callback prop', async () => {
+      const radio = await createRadio({
+        name: 'test',
+        value: 'option1',
+        labelText: 'Option 1',
+      });
+
+      let callbackFired = false;
+      let callbackDetail: any;
+
+      radio.onChange = (e: CustomEvent) => {
+        callbackFired = true;
+        callbackDetail = e.detail;
+      };
+
+      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      input.click();
+      await radio.updateComplete;
+
+      expect(callbackFired).toBe(true);
+      expect(callbackDetail.checked).toBe(true);
+      expect(callbackDetail.value).toBe('option1');
+      expect(callbackDetail.name).toBe('test');
+    });
+
+    it('should support dual-dispatch (both addEventListener and callback)', async () => {
+      const radio = await createRadio({
+        name: 'test',
+        value: 'option1',
+        labelText: 'Option 1',
+      });
+
+      let eventFired = false;
+      let callbackFired = false;
+
+      radio.addEventListener('change', () => {
+        eventFired = true;
+      });
+
+      radio.onChange = () => {
+        callbackFired = true;
+      };
+
+      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      input.click();
+      await radio.updateComplete;
+
+      expect(eventFired).toBe(true);
+      expect(callbackFired).toBe(true);
+    });
+
+    it('should fire onClick callback for native click events', async () => {
+      const radio = await createRadio({
+        name: 'test',
+        value: 'option1',
+        labelText: 'Option 1',
+      });
+
+      let clickFired = false;
+
+      radio.onClick = () => {
+        clickFired = true;
+      };
+
+      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      input.click();
+      await radio.updateComplete;
+
+      expect(clickFired).toBe(true);
+    });
+
     it('should not emit events when disabled', async () => {
       const radio = await createRadio({
         name: 'test',
@@ -193,7 +264,7 @@ describe('Radio - Comprehensive Tests', () => {
       });
 
       let eventFired = false;
-      radio.addEventListener('ag-change', () => {
+      radio.addEventListener('change', () => {
         eventFired = true;
       });
 
@@ -212,7 +283,7 @@ describe('Radio - Comprehensive Tests', () => {
       });
 
       let eventBubbled = false;
-      container.addEventListener('ag-change', () => {
+      container.addEventListener('change', () => {
         eventBubbled = true;
       });
 
@@ -221,6 +292,26 @@ describe('Radio - Comprehensive Tests', () => {
       await radio.updateComplete;
 
       expect(eventBubbled).toBe(true);
+    });
+
+    it('should set composed: true for events to cross shadow boundary', async () => {
+      const radio = await createRadio({
+        name: 'test',
+        value: 'option1',
+        labelText: 'Option 1',
+      });
+
+      let composedValue: boolean | undefined;
+
+      radio.addEventListener('change', ((e: CustomEvent) => {
+        composedValue = e.composed;
+      }) as EventListener);
+
+      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      input.click();
+      await radio.updateComplete;
+
+      expect(composedValue).toBe(true);
     });
   });
 

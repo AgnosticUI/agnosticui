@@ -20,7 +20,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import type { RadioSize, RadioTheme } from "../core/Radio";
 import "../core/Radio"; // Registers the ag-radio web component
 
-// Define props interface
+// Define props interface (Omit callback props - Vue uses emits)
 export interface VueRadioProps {
   name?: string;
   value?: string;
@@ -46,16 +46,23 @@ withDefaults(defineProps<VueRadioProps>(), {
 
 // Define emits
 const emit = defineEmits<{
+  click: [event: MouseEvent];
   change: [detail: { checked: boolean; value: string; name: string }];
+  "update:checked": [checked: boolean];
 }>();
 
 // Template ref
 const radioRef = ref<HTMLElement>();
 
 // Event handlers
+const handleClick = (event: Event) => {
+  emit("click", event as MouseEvent);
+};
+
 const handleChange = (event: Event) => {
   const detail = (event as CustomEvent).detail;
   emit("change", detail);
+  emit("update:checked", detail.checked);
 };
 
 // Setup event listeners
@@ -65,12 +72,14 @@ onMounted(async () => {
 
   if (!radioRef.value) return;
 
-  radioRef.value.addEventListener("ag-change", handleChange);
+  radioRef.value.addEventListener("click", handleClick);
+  radioRef.value.addEventListener("change", handleChange);
 });
 
 onUnmounted(() => {
   if (!radioRef.value) return;
 
-  radioRef.value.removeEventListener("ag-change", handleChange);
+  radioRef.value.removeEventListener("click", handleClick);
+  radioRef.value.removeEventListener("change", handleChange);
 });
 </script>
