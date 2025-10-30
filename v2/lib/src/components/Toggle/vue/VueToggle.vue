@@ -11,17 +11,27 @@
     :describedby="describedBy"
     :name="name"
     :value="value"
+    @click="handleClick"
+    @toggle-change="handleToggleChange"
     v-bind="$attrs"
   />
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
+import type {
+  ToggleProps,
+  ToggleChangeEvent,
+  ToggleChangeEventDetail,
+} from "../core/Toggle";
 import "../core/Toggle"; // Registers the ag-toggle web component
-import { type ToggleProps } from "../core/Toggle";
+
+// Define props interface (omit function props since wrapper uses emits)
+export interface VueToggleProps
+  extends Omit<ToggleProps, "onClick" | "onToggleChange"> {}
 
 // Define props with defaults
-const props = withDefaults(defineProps<ToggleProps>(), {
+const props = withDefaults(defineProps<VueToggleProps>(), {
   checked: false,
   size: "md",
   variant: "default",
@@ -29,33 +39,24 @@ const props = withDefaults(defineProps<ToggleProps>(), {
   readonly: false,
 });
 
-// Define emits
+// Define emits for all events (native + custom)
 const emit = defineEmits<{
-  "toggle-change": [detail: { checked: boolean; name: string; value: string }];
+  click: [event: MouseEvent];
+  "toggle-change": [detail: ToggleChangeEventDetail];
+  "update:checked": [checked: boolean];
 }>();
 
 // Template ref
 const toggleRef = ref<HTMLElement>();
 
-// Event handlers
-const handleToggleChange = (event: Event) => {
-  const detail = (event as CustomEvent).detail;
-  emit("toggle-change", detail);
+// Event handlers that bridge web component events to Vue emits
+const handleClick = (event: MouseEvent) => {
+  emit("click", event);
 };
 
-// Setup event listeners
-onMounted(async () => {
-  // Wait for web components to be defined
-  await customElements.whenDefined("ag-toggle");
-
-  if (!toggleRef.value) return;
-
-  toggleRef.value.addEventListener("toggle-change", handleToggleChange);
-});
-
-onUnmounted(() => {
-  if (!toggleRef.value) return;
-
-  toggleRef.value.removeEventListener("toggle-change", handleToggleChange);
-});
+const handleToggleChange = (event: Event) => {
+  const toggleEvent = event as ToggleChangeEvent;
+  emit("toggle-change", toggleEvent.detail);
+  emit("update:checked", toggleEvent.detail.checked);
+};
 </script>
