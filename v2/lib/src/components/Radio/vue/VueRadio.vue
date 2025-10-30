@@ -7,8 +7,8 @@
     :disabled="disabled || undefined"
     :size="size"
     :theme="theme"
-    :label-text="labelText"
-    :label-position="labelPosition"
+    :labelText="labelText"
+    :labelPosition="labelPosition"
     v-bind="$attrs"
   >
     <slot />
