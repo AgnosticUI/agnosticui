@@ -273,7 +273,7 @@ export class AgInput extends LitElement implements InputProps {
   @property({ type: Boolean, attribute: 'no-label' })
   declare noLabel: boolean;
 
-  @property({ type: String, attribute: 'aria-label' })
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
   @property({ type: String, attribute: 'labelled-by' })
