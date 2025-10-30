@@ -2,8 +2,8 @@
   <ag-button
     ref="buttonRef"
     :type="type"
-    :aria-label="ariaLabel"
-    :aria-describedby="ariaDescribedby"
+    :ariaLabel="ariaLabel"
+    :ariaDescribedby="ariaDescribedby"
     :disabled="disabled"
     :loading="loading"
     :toggle="toggle"
