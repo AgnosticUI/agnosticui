@@ -123,7 +123,7 @@ export class Loader extends LitElement implements LoaderProps {
   @property({ type: String, reflect: true })
   size: LoaderSize = 'default';
 
-  @property({ type: String, attribute: 'aria-label' })
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
   ariaLabel = 'Loading...';
 
   render() {

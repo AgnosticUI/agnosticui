@@ -158,7 +158,7 @@ export class Avatar extends LitElement implements AvatarProps {
   @property({ type: String, reflect: true })
   declare variant: AvatarVariant;
 
-  @property({ type: String, attribute: 'aria-label' })
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
   constructor() {
