@@ -211,7 +211,7 @@ Provide a structured response:
 
 **Priority**: HIGH - These have the most complex event patterns and highest consumer impact
 
-**Status**: 4/12 complete (33%)
+**Status**: 5/12 complete (42%)
 
 | Component | Status | Branch | Commits | Risk | Notes |
 |-----------|--------|--------|---------|------|-------|
@@ -219,7 +219,7 @@ Provide a structured response:
 | Collapsible | ✅ Complete | main | 442432d, 11a657a, 6888e11 | LOW | Reference implementation |
 | Toggle | ✅ Complete | feature/toggle-event-refactor | 47db8e6, 0881575, b9028ca, 056a9f7, adb05d5 | LOW | Dual-dispatch + v-model:checked + unified docs |
 | Checkbox | ✅ Complete | feature/checkbox-event-refactor | 38222d0, 295e06d | MEDIUM | Dual-dispatch + v-model:checked/indeterminate + comprehensive event stories |
-| Radio | ⏳ Pending | - | - | MEDIUM | Selection state, group coordination |
+| Radio | ✅ Complete | feature/radio-event-refactor | 10eeca4, 85e05b8 | MEDIUM | Dual-dispatch + v-model:checked + radio group patterns |
 | Input | ⏳ Pending | - | - | HIGH | Complex: input/change/blur/focus/validation |
 | Select | ⏳ Pending | - | - | HIGH | Selection state, dropdown interaction |
 | Tabs | ⏳ Pending | - | - | MEDIUM | Active tab state, navigation |
@@ -394,6 +394,22 @@ Ref: Button (442432d, 11a657a), Collapsible (6888e11)
 - **Breaking Changes**: Event renamed from ag-change to change
 - **Reference**: Similar to Toggle, with additional indeterminate state handling
 
+### Radio ✅
+- **Commits**: 10eeca4 (core), 85e05b8 (docs)
+- **Events**: click (native), change (custom, renamed from ag-change)
+- **Pattern**: Dual-dispatch for change with { checked, value, name }
+- **Core Changes**:
+  - Renamed ag-change to change for consistency
+  - Added onClick, onChange callback props with @property({ attribute: false })
+  - Event includes radio group coordination data
+  - 36 tests passing (4 new event tests)
+- **React**: Maps change event to onChange, native onClick available
+- **Vue**: Modern emit pattern + v-model:checked support + click emit
+- **Docs**: Comprehensive Events section with radio group examples
+- **Storybook**: TODO - to be added in follow-up commit
+- **Breaking Changes**: Event renamed from ag-change to change
+- **Reference**: Similar pattern to Checkbox/Toggle, with radio group coordination
+
 ---
 
 ## Notes & Lessons Learned
@@ -418,4 +434,4 @@ Ref: Button (442432d, 11a657a), Collapsible (6888e11)
 ---
 
 **Last Updated**: 2025-10-30
-**Current Phase**: Tier 1 - Checkbox complete (4/12), ready for Radio
+**Current Phase**: Tier 1 - Radio complete (5/12, 42%), ready for next component
