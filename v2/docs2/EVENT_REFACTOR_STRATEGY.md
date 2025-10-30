@@ -495,25 +495,43 @@ private _handleMyEvent() {
 
 ### 2. Git Strategy
 
+**🚨 CRITICAL: V2 BRANCH INFORMATION 🚨**
+
+**⚠️ DO NOT MERGE TO `master` OR `develop`! ⚠️**
+
+**AgnosticUI v2 Working Branch**: `feature/agnosticui-v2-integration`
+
+All v2 work, including event refactors, MUST be merged to `feature/agnosticui-v2-integration`, NOT to `master` or `develop`. Those branches are for v1.
+
 ```bash
-# Create refactor branch
-git checkout -b feature/event-refactor-standardization
+# CORRECT: Create refactor branch from v2 working branch
+git checkout feature/agnosticui-v2-integration
+git checkout -b feature/[component]-event-refactor
 
-# For each tier, create sub-branch
-git checkout -b feature/event-refactor-tier1
+# For each component, implement with individual commits
+# ... make changes ...
 
-# Implement components with individual commits
-
-# Before merging to main:
-git checkout feature/event-refactor-standardization
-git merge feature/event-refactor-tier1
+# CORRECT: Merge back to v2 working branch
+git checkout feature/agnosticui-v2-integration
+git merge feature/[component]-event-refactor
 # Test thoroughly
 npm run build && npm run lint && npm run typecheck && npm run test
 
-# Only merge to main when tier is fully verified
-git checkout main
-git merge feature/event-refactor-standardization
-git push origin main
+# CORRECT: Push to v2 working branch
+git push origin feature/agnosticui-v2-integration
+
+# ❌ WRONG - DO NOT DO THIS:
+# git checkout master  # ← NO!
+# git checkout develop # ← NO!
+# git merge ...        # ← NO!
+```
+
+**Branch Hierarchy**:
+```
+master (v1) ← DO NOT TOUCH
+develop (v1) ← DO NOT TOUCH
+feature/agnosticui-v2-integration (v2) ← MERGE HERE
+  └── feature/[component]-event-refactor ← Work here
 ```
 
 ### 3. Rollback Strategy

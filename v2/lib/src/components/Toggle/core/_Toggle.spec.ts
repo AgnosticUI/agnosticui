@@ -742,4 +742,184 @@ describe('AgToggle', () => {
       expect(element.shadowRoot!.querySelector('.ag-toggle__handle')).toBeTruthy();
     });
   });
+
+  describe('Event Propagation (Standardized Pattern)', () => {
+    it('should dispatch toggle-change event via addEventListener pattern', async () => {
+      element.label = 'Event test';
+      element.checked = false;
+      await element.updateComplete;
+
+      const eventSpy = vi.fn();
+      element.addEventListener('toggle-change', eventSpy);
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      expect(eventSpy).toHaveBeenCalledOnce();
+      const event = eventSpy.mock.calls[0][0] as CustomEvent;
+      expect(event.detail).toEqual({
+        checked: true,
+        name: '',
+        value: ''
+      });
+      expect(event.bubbles).toBe(true);
+      expect(event.composed).toBe(true);
+    });
+
+    it('should invoke onToggleChange callback prop pattern', async () => {
+      element.label = 'Callback test';
+      element.checked = false;
+
+      const onToggleChangeSpy = vi.fn();
+      element.onToggleChange = onToggleChangeSpy;
+
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      expect(onToggleChangeSpy).toHaveBeenCalledOnce();
+      const event = onToggleChangeSpy.mock.calls[0][0];
+      expect(event.detail).toEqual({
+        checked: true,
+        name: '',
+        value: ''
+      });
+    });
+
+    it('should invoke onClick callback for native click event', async () => {
+      element.label = 'Click callback test';
+
+      const onClickSpy = vi.fn();
+      element.onClick = onClickSpy;
+
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      expect(onClickSpy).toHaveBeenCalledOnce();
+      const event = onClickSpy.mock.calls[0][0];
+      expect(event).toBeInstanceOf(MouseEvent);
+    });
+
+    it('should dispatch both DOM event and invoke callback (dual-dispatch)', async () => {
+      element.label = 'Dual dispatch test';
+      element.checked = false;
+
+      const domEventSpy = vi.fn();
+      const callbackSpy = vi.fn();
+
+      element.addEventListener('toggle-change', domEventSpy);
+      element.onToggleChange = callbackSpy;
+
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      // Both should be called
+      expect(domEventSpy).toHaveBeenCalledOnce();
+      expect(callbackSpy).toHaveBeenCalledOnce();
+
+      // Both should receive the same event data
+      const domEvent = domEventSpy.mock.calls[0][0] as CustomEvent;
+      const callbackEvent = callbackSpy.mock.calls[0][0];
+      expect(domEvent.detail).toEqual(callbackEvent.detail);
+    });
+
+    it('should include form integration data in toggle-change event', async () => {
+      element.label = 'Form data test';
+      element.name = 'notifications';
+      element.value = 'enabled';
+      element.checked = false;
+      await element.updateComplete;
+
+      const eventSpy = vi.fn();
+      element.addEventListener('toggle-change', eventSpy);
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      expect(eventSpy).toHaveBeenCalledOnce();
+      const event = eventSpy.mock.calls[0][0] as CustomEvent;
+      expect(event.detail).toEqual({
+        checked: true,
+        name: 'notifications',
+        value: 'enabled'
+      });
+    });
+
+    it('should not invoke callbacks when disabled', async () => {
+      element.label = 'Disabled callback test';
+      element.disabled = true;
+
+      const onClickSpy = vi.fn();
+      const onToggleChangeSpy = vi.fn();
+
+      element.onClick = onClickSpy;
+      element.onToggleChange = onToggleChangeSpy;
+
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      // Disabled buttons don't fire click events at all (native browser behavior)
+      expect(onClickSpy).not.toHaveBeenCalled();
+      // And onToggleChange should not be called either
+      expect(onToggleChangeSpy).not.toHaveBeenCalled();
+    });
+
+    it('should not invoke callbacks when readonly', async () => {
+      element.label = 'Readonly callback test';
+      element.readonly = true;
+
+      const onClickSpy = vi.fn();
+      const onToggleChangeSpy = vi.fn();
+
+      element.onClick = onClickSpy;
+      element.onToggleChange = onToggleChangeSpy;
+
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      // onClick should still be called (native event behavior)
+      expect(onClickSpy).toHaveBeenCalledOnce();
+      // But onToggleChange should not (toggle is prevented)
+      expect(onToggleChangeSpy).not.toHaveBeenCalled();
+    });
+
+    it('should invoke callbacks for keyboard activation', async () => {
+      element.label = 'Keyboard callback test';
+      element.checked = false;
+
+      const onToggleChangeSpy = vi.fn();
+      element.onToggleChange = onToggleChangeSpy;
+
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      const spaceEvent = new KeyboardEvent('keydown', {
+        key: ' ',
+        bubbles: true,
+        cancelable: true
+      });
+
+      button!.dispatchEvent(spaceEvent);
+      await element.updateComplete;
+
+      expect(onToggleChangeSpy).toHaveBeenCalledOnce();
+      expect(element.checked).toBe(true);
+    });
+  });
 });

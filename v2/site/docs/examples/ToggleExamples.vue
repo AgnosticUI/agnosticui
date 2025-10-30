@@ -72,15 +72,54 @@
     </div>
 
     <div class="mbe2">
-      <h3>Interactive Example</h3>
+      <h3>Interactive Examples</h3>
+      <p class="mbs2 mbe3">
+        Demonstrates event handling with @toggle-change and v-model:checked
+      </p>
     </div>
     <div class="stacked-mobile mbe4">
-      <VueToggle
-        label="Notifications"
-        :checked="notificationsEnabled"
-        @toggle-change="handleToggleChange"
-      />
-      <p>Notifications are <strong>{{ notificationsEnabled ? 'enabled' : 'disabled' }}</strong></p>
+      <!-- Pattern 1: @toggle-change event -->
+      <div>
+        <VueToggle
+          label="Notifications (@toggle-change)"
+          :checked="notificationsEnabled"
+          @toggle-change="handleToggleChange"
+        />
+        <p style="margin-top: 0.5rem">
+          Notifications: <strong>{{ notificationsEnabled ? 'Enabled' : 'Disabled' }}</strong>
+        </p>
+      </div>
+
+      <!-- Pattern 2: v-model:checked (two-way binding) -->
+      <div>
+        <VueToggle
+          label="Dark Mode (v-model:checked)"
+          v-model:checked="darkModeEnabled"
+        />
+        <p style="margin-top: 0.5rem">
+          Dark mode: <strong>{{ darkModeEnabled ? 'On' : 'Off' }}</strong>
+        </p>
+        <button
+          @click="darkModeEnabled = !darkModeEnabled"
+          style="margin-top: 0.5rem; padding: 0.25rem 0.75rem; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-sm); cursor: pointer;"
+        >
+          Toggle programmatically
+        </button>
+      </div>
+
+      <!-- Pattern 3: Form integration with event detail -->
+      <div>
+        <VueToggle
+          label="Newsletter Subscription"
+          name="newsletter"
+          value="subscribed"
+          :checked="formData.newsletter"
+          @toggle-change="handleFormToggle"
+        />
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
+          Form data: name="{{ formData.name }}", value="{{ formData.value }}", checked={{ formData.newsletter }}
+        </p>
+      </div>
     </div>
     <div class="mbe2">
       <h3>CSS Shadow Parts Customization</h3>
@@ -105,6 +144,12 @@ export default {
   data() {
     return {
       notificationsEnabled: false,
+      darkModeEnabled: false,
+      formData: {
+        newsletter: false,
+        name: '',
+        value: '',
+      },
       customToggleStyles: `
         <style>
           .custom-toggle::part(ag-toggle-button) {
@@ -133,6 +178,12 @@ export default {
     handleToggleChange(event) {
       this.notificationsEnabled = event.checked;
       console.log("Toggle changed:", event);
+    },
+    handleFormToggle(event) {
+      this.formData.newsletter = event.checked;
+      this.formData.name = event.name;
+      this.formData.value = event.value;
+      console.log("Form toggle changed:", event);
     },
   },
 };

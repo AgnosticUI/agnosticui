@@ -382,22 +382,79 @@ export const EventTesting: Story = {
   },
   render: ({ label, size, variant, onToggleChange }) => html`
     <div
-      style="display: flex; flex-direction: column; align-items: center; padding: 50px; gap: 1rem;"
+      style="display: flex; flex-direction: column; align-items: flex-start; padding: 50px; gap: 1.5rem;"
     >
-      <p style="margin: 0;">
-        Click the toggle or use Space/Enter to test events
-      </p>
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <ag-toggle
-          .label=${label}
-          .size=${size}
-          .variant=${variant}
-          @toggle-change=${(e: CustomEvent) => onToggleChange(e.detail)}
-        ></ag-toggle>
-        <span>${label}</span>
+      <div>
+        <h3 style="margin: 0 0 0.5rem 0;">Event Handling Patterns</h3>
+        <p style="margin: 0; color: #6b7280; font-size: 0.875rem;">
+          Toggle demonstrates both addEventListener and callback prop patterns
+        </p>
       </div>
-      <p style="font-size: 0.875rem; color: #6b7280; margin: 0;">
-        Check the Actions panel below for event logs (shows checked state)
+
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Pattern 1: addEventListener (DOM event) -->
+        <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+          <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+            Pattern 1: addEventListener
+          </p>
+          <ag-toggle
+            .label=${label}
+            .size=${size}
+            .variant=${variant}
+            @toggle-change=${(e: CustomEvent) => {
+              console.log('addEventListener pattern:', e.detail);
+              onToggleChange?.(e.detail);
+            }}
+          ></ag-toggle>
+          <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+            Uses @toggle-change (addEventListener via Lit template)
+          </p>
+        </div>
+
+        <!-- Pattern 2: Callback prop -->
+        <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+          <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+            Pattern 2: Callback Prop
+          </p>
+          <ag-toggle
+            .label=${label}
+            .size=${size}
+            .variant=${"success"}
+            .onToggleChange=${(e: CustomEvent) => {
+              console.log('Callback prop pattern:', e.detail);
+              onToggleChange?.(e.detail);
+            }}
+          ></ag-toggle>
+          <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+            Uses .onToggleChange callback prop
+          </p>
+        </div>
+
+        <!-- Pattern 3: Both (dual-dispatch) -->
+        <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+          <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+            Pattern 3: Both (Dual-Dispatch)
+          </p>
+          <ag-toggle
+            .label=${label}
+            .size=${size}
+            .variant=${"danger"}
+            @toggle-change=${(e: CustomEvent) => {
+              console.log('DOM event fired:', e.detail);
+            }}
+            .onToggleChange=${(e: CustomEvent) => {
+              console.log('Callback also fired:', e.detail);
+              onToggleChange?.(e.detail);
+            }}
+          ></ag-toggle>
+          <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+            Both patterns work simultaneously
+          </p>
+        </div>
+      </div>
+
+      <p style="font-size: 0.875rem; color: #6b7280; margin: 0; padding: 1rem; background: #f9fafb; border-radius: 8px;">
+        💡 Check the Actions panel below and browser console for event logs
       </p>
     </div>
   `,

@@ -137,6 +137,108 @@ export const Readonly: Story = {
   ),
 };
 
+export const EventHandling: Story = {
+  args: {
+    label: 'Toggle to test events',
+  },
+  render: (args: ReactToggleProps) => {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          padding: '50px',
+          gap: '1.5rem',
+        }}
+      >
+        <div>
+          <h3 style={{ margin: '0 0 0.5rem 0' }}>Event Handling in React</h3>
+          <p style={{ margin: 0, color: '#6b7280', fontSize: '0.875rem' }}>
+            React wrapper uses onToggleChange prop (mapped from toggle-change event)
+          </p>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          {/* Pattern 1: onToggleChange prop */}
+          <div style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem' }}>
+            <p style={{ margin: '0 0 0.75rem 0', fontWeight: 600 }}>
+              React Event Pattern
+            </p>
+            <ReactToggle
+              label={args.label || 'Toggle'}
+              size={args.size}
+              variant="default"
+              onToggleChange={(e) => {
+                console.log('React onToggleChange:', e.detail);
+                args.onToggleChange?.(e);
+              }}
+            />
+            <p style={{ fontSize: '0.75rem', color: '#6b7280', margin: '0.5rem 0 0 0' }}>
+              Uses onToggleChange prop (automatically mapped by @lit/react)
+            </p>
+          </div>
+
+          {/* Pattern 2: With state management */}
+          <div style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem' }}>
+            <p style={{ margin: '0 0 0.75rem 0', fontWeight: 600 }}>
+              With React State
+            </p>
+            <ReactToggle
+              label="Controlled Toggle"
+              size={args.size}
+              variant="success"
+              checked={false}
+              onToggleChange={(e) => {
+                console.log('State updated:', e.detail.checked);
+                args.onToggleChange?.(e);
+              }}
+            />
+            <p style={{ fontSize: '0.75rem', color: '#6b7280', margin: '0.5rem 0 0 0' }}>
+              Event detail includes: checked, name, value
+            </p>
+          </div>
+
+          {/* Pattern 3: Native onClick also available */}
+          <div style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem' }}>
+            <p style={{ margin: '0 0 0.75rem 0', fontWeight: 600 }}>
+              Native Events (onClick)
+            </p>
+            <ReactToggle
+              label="With onClick"
+              size={args.size}
+              variant="danger"
+              onClick={(e) => {
+                console.log('Native click event:', e);
+              }}
+              onToggleChange={(e) => {
+                console.log('Toggle change event:', e.detail);
+                args.onToggleChange?.(e);
+              }}
+            />
+            <p style={{ fontSize: '0.75rem', color: '#6b7280', margin: '0.5rem 0 0 0' }}>
+              Both onClick and onToggleChange work together
+            </p>
+          </div>
+        </div>
+
+        <p
+          style={{
+            fontSize: '0.875rem',
+            color: '#6b7280',
+            margin: 0,
+            padding: '1rem',
+            background: '#f9fafb',
+            borderRadius: '8px',
+          }}
+        >
+          💡 Check the Actions panel below and browser console for event logs
+        </p>
+      </div>
+    );
+  },
+};
+
 export const CSSPartsCustomization: Story = {
   args: {
     label: 'Customized Toggle',
