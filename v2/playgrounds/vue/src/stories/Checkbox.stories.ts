@@ -190,7 +190,7 @@ export const EventTesting: Story = {
         eventChecked.value = detail.checked;
       };
 
-      return { ...args, vModelChecked, vModelIndeterminate, eventChecked, handleChange };
+      return { args, vModelChecked, vModelIndeterminate, eventChecked, handleChange };
     },
     template: `
       <div style="display: flex; flex-direction: column; align-items: flex-start; padding: 1rem; gap: 1.5rem;">
