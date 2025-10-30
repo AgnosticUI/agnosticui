@@ -8,12 +8,14 @@ import {
 
 /**
  * React-specific props interface derived from core CheckboxProps
- * Extends core props including event handlers (onChange)
+ * Extends core props including event handlers
  */
 export interface ReactCheckboxProps extends CheckboxProps {
   children?: React.ReactNode;
   className?: string;
   id?: string;
+  // Explicitly include event handler types
+  onClick?: (event: MouseEvent) => void;
   onChange?: (event: CheckboxChangeEvent) => void;
 }
 
@@ -23,7 +25,7 @@ export const ReactCheckbox = createComponent({
   elementClass: Checkbox,
   react: React,
   events: {
-    onChange: 'ag-change' as EventName<CheckboxChangeEvent>,
+    onChange: 'change' as EventName<CheckboxChangeEvent>,
   },
 });
 
