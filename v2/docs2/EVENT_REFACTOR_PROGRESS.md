@@ -1,5 +1,13 @@
 # Event Refactor Progress
 
+**🚨 CRITICAL: V2 BRANCH INFORMATION 🚨**
+
+**⚠️ ALL v2 work merges to `feature/agnosticui-v2-integration` - NOT `master` or `develop`! ⚠️**
+
+See [EVENT_REFACTOR_STRATEGY.md](./EVENT_REFACTOR_STRATEGY.md#2-git-strategy) for complete Git workflow.
+
+---
+
 ## Related Documentation
 
 - **[EVENT_REFACTOR_STRATEGY.md](./EVENT_REFACTOR_STRATEGY.md)** - Comprehensive refactor strategy including:
