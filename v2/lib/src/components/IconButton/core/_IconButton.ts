@@ -361,7 +361,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
   /**
    * ARIA described by reference
    */
-  @property({ type: String, attribute: 'aria-describedby' })
+  @property({ type: String, reflect: true, attribute: 'aria-describedby' })
   declare ariaDescribedby: string;
 
   constructor() {
