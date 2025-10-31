@@ -73,6 +73,7 @@ export const CustomColor: Story = {
   ),
 };
 
+// Note the label is not visually shown but is available for screen readers
 export const CustomLabel: Story = {
   args: {
     ariaLabel: 'Processing your request...',
