@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { Checkbox } from './Checkbox';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -259,7 +259,7 @@ describe('Checkbox - Comprehensive Tests', () => {
       let eventFired = false;
       let eventDetail: any;
 
-      checkbox.addEventListener('ag-change', ((e: CustomEvent) => {
+      checkbox.addEventListener('change', ((e: CustomEvent) => {
         eventFired = true;
         eventDetail = e.detail;
       }) as EventListener);
@@ -286,7 +286,7 @@ describe('Checkbox - Comprehensive Tests', () => {
       });
 
       let eventDetail: any;
-      checkbox.addEventListener('ag-change', ((e: CustomEvent) => {
+      checkbox.addEventListener('change', ((e: CustomEvent) => {
         eventDetail = e.detail;
       }) as EventListener);
 
@@ -330,7 +330,7 @@ describe('Checkbox - Comprehensive Tests', () => {
       });
 
       let eventBubbled = false;
-      container.addEventListener('ag-change', () => {
+      container.addEventListener('change', () => {
         eventBubbled = true;
       });
 
@@ -501,6 +501,166 @@ describe('Checkbox - Comprehensive Tests', () => {
       expect(styleContent).toContain('.checkbox-label::after');
       expect(styleContent).toContain('content');
       expect(styleContent).toContain('transform');
+    });
+  });
+
+  describe('Event Propagation (Standardized Pattern)', () => {
+    it('should dispatch change event via addEventListener pattern', async () => {
+      const checkbox = await createCheckbox({
+        labelText: 'Event test',
+        name: 'test',
+        value: 'testValue',
+      });
+
+      const eventSpy = vi.fn();
+      checkbox.addEventListener('change', eventSpy);
+
+      const input = checkbox.shadowRoot?.querySelector('input');
+      input?.click();
+      await checkbox.updateComplete;
+
+      expect(eventSpy).toHaveBeenCalledOnce();
+      const event = eventSpy.mock.calls[0][0] as CustomEvent;
+      expect(event.detail).toEqual({
+        checked: true,
+        value: 'testValue',
+        name: 'test',
+        indeterminate: false,
+      });
+      expect(event.bubbles).toBe(true);
+      expect(event.composed).toBe(true);
+    });
+
+    it('should invoke onChange callback prop pattern', async () => {
+      const onChangeSpy = vi.fn();
+      const checkbox = await createCheckbox({
+        labelText: 'Callback test',
+        name: 'test',
+        value: 'testValue',
+      });
+      checkbox.onChange = onChangeSpy;
+      await checkbox.updateComplete;
+
+      const input = checkbox.shadowRoot?.querySelector('input');
+      input?.click();
+      await checkbox.updateComplete;
+
+      expect(onChangeSpy).toHaveBeenCalledOnce();
+      const event = onChangeSpy.mock.calls[0][0];
+      expect(event.detail).toEqual({
+        checked: true,
+        value: 'testValue',
+        name: 'test',
+        indeterminate: false,
+      });
+    });
+
+    it('should invoke onClick callback for native click event', async () => {
+      const onClickSpy = vi.fn();
+      const checkbox = await createCheckbox({ labelText: 'Click test' });
+      checkbox.onClick = onClickSpy;
+      await checkbox.updateComplete;
+
+      const input = checkbox.shadowRoot?.querySelector('input');
+      input?.click();
+      await checkbox.updateComplete;
+
+      expect(onClickSpy).toHaveBeenCalledOnce();
+      const event = onClickSpy.mock.calls[0][0];
+      expect(event).toBeInstanceOf(MouseEvent);
+    });
+
+    it('should dispatch both DOM event and invoke callback (dual-dispatch)', async () => {
+      const domEventSpy = vi.fn();
+      const callbackSpy = vi.fn();
+
+      const checkbox = await createCheckbox({
+        labelText: 'Dual dispatch test',
+        name: 'test',
+        value: 'testValue',
+      });
+      checkbox.addEventListener('change', domEventSpy);
+      checkbox.onChange = callbackSpy;
+      await checkbox.updateComplete;
+
+      const input = checkbox.shadowRoot?.querySelector('input');
+      input?.click();
+      await checkbox.updateComplete;
+
+      // Both should be called
+      expect(domEventSpy).toHaveBeenCalledOnce();
+      expect(callbackSpy).toHaveBeenCalledOnce();
+
+      // Both should receive the same event data
+      const domEvent = domEventSpy.mock.calls[0][0] as CustomEvent;
+      const callbackEvent = callbackSpy.mock.calls[0][0];
+      expect(domEvent.detail).toEqual(callbackEvent.detail);
+    });
+
+    it('should clear indeterminate state on change', async () => {
+      const eventSpy = vi.fn();
+      const checkbox = await createCheckbox({
+        labelText: 'Indeterminate test',
+        indeterminate: true,
+      });
+      checkbox.addEventListener('change', eventSpy);
+      await checkbox.updateComplete;
+
+      expect(checkbox.indeterminate).toBe(true);
+
+      const input = checkbox.shadowRoot?.querySelector('input');
+      input?.click();
+      await checkbox.updateComplete;
+
+      expect(checkbox.indeterminate).toBe(false);
+      expect(eventSpy).toHaveBeenCalledOnce();
+      const event = eventSpy.mock.calls[0][0] as CustomEvent;
+      expect(event.detail.indeterminate).toBe(false);
+    });
+
+    it('should not invoke callbacks when disabled', async () => {
+      const onClickSpy = vi.fn();
+      const onChangeSpy = vi.fn();
+
+      const checkbox = await createCheckbox({
+        labelText: 'Disabled test',
+        disabled: true,
+      });
+      checkbox.onClick = onClickSpy;
+      checkbox.onChange = onChangeSpy;
+      await checkbox.updateComplete;
+
+      const input = checkbox.shadowRoot?.querySelector('input');
+      input?.click();
+      await checkbox.updateComplete;
+
+      // Disabled checkboxes don't fire events
+      expect(onClickSpy).not.toHaveBeenCalled();
+      expect(onChangeSpy).not.toHaveBeenCalled();
+    });
+
+    it('should include form integration data in change event', async () => {
+      const eventSpy = vi.fn();
+      const checkbox = await createCheckbox({
+        labelText: 'Form data test',
+        name: 'newsletter',
+        value: 'subscribed',
+      });
+      checkbox.addEventListener('change', eventSpy);
+      await checkbox.updateComplete;
+
+      const input = checkbox.shadowRoot?.querySelector('input');
+      input?.click();
+      await checkbox.updateComplete;
+
+      expect(eventSpy).toHaveBeenCalledOnce();
+      const event = eventSpy.mock.calls[0][0] as CustomEvent;
+      expect(event.detail).toEqual({
+        checked: true,
+        value: 'subscribed',
+        name: 'newsletter',
+        indeterminate: false,
+      });
     });
   });
 });

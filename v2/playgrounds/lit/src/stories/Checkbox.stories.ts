@@ -487,3 +487,113 @@ export const CheckmarkAnimation: Story = {
     </div>
   `,
 };
+
+export const EventTesting: Story = {
+  args: {
+    labelText: "Checkbox to test events",
+  },
+  render: (args) => html`
+    <div
+      style="display: flex; flex-direction: column; align-items: flex-start; padding: 1rem; gap: 1.5rem;"
+    >
+      <div>
+        <h3 style="margin: 0 0 0.5rem 0;">Event Handling Patterns</h3>
+        <p style="margin: 0; color: #6b7280; font-size: 0.875rem;">
+          Checkbox demonstrates both addEventListener and callback prop patterns
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%;">
+        <!-- Pattern 1: addEventListener (DOM event) -->
+        <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+          <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+            Pattern 1: addEventListener
+          </p>
+          <ag-checkbox
+            name="test1"
+            value="option1"
+            .labelText=${args.labelText}
+            .size=${args.size}
+            .theme=${args.theme}
+            @change=${(e: CustomEvent) => {
+              console.log('addEventListener pattern:', e.detail);
+            }}
+          ></ag-checkbox>
+          <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+            Uses @change (addEventListener via Lit template)
+          </p>
+        </div>
+
+        <!-- Pattern 2: Callback prop -->
+        <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+          <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+            Pattern 2: Callback Prop
+          </p>
+          <ag-checkbox
+            name="test2"
+            value="option2"
+            .labelText=${args.labelText}
+            .size=${args.size}
+            .theme=${"primary"}
+            .onChange=${(e: CustomEvent) => {
+              console.log('Callback prop pattern:', e.detail);
+            }}
+          ></ag-checkbox>
+          <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+            Uses .onChange callback prop
+          </p>
+        </div>
+
+        <!-- Pattern 3: Both (dual-dispatch) -->
+        <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+          <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+            Pattern 3: Both (Dual-Dispatch)
+          </p>
+          <ag-checkbox
+            name="test3"
+            value="option3"
+            .labelText=${args.labelText}
+            .size=${args.size}
+            .theme=${"monochrome"}
+            @change=${(e: CustomEvent) => {
+              console.log('DOM event fired:', e.detail);
+            }}
+            .onChange=${(e: CustomEvent) => {
+              console.log('Callback also fired:', e.detail);
+            }}
+          ></ag-checkbox>
+          <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+            Both patterns work simultaneously
+          </p>
+        </div>
+
+        <!-- Pattern 4: Click event -->
+        <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+          <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+            Pattern 4: Native Click Event
+          </p>
+          <ag-checkbox
+            name="test4"
+            value="option4"
+            .labelText=${args.labelText}
+            .size=${args.size}
+            .theme=${args.theme}
+            @click=${(e: MouseEvent) => {
+              console.log('Click event:', e);
+            }}
+            .onClick=${(e: MouseEvent) => {
+              console.log('Click callback prop:', e);
+            }}
+          ></ag-checkbox>
+          <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+            Native click event works via addEventListener and callback prop
+          </p>
+        </div>
+      </div>
+
+      <p style="font-size: 0.875rem; color: #6b7280; margin: 0; padding: 1rem; background: #f9fafb; border-radius: 8px; width: 100%;">
+        💡 Check the Actions panel below and browser console for event logs
+      </p>
+    </div>
+  `,
+};

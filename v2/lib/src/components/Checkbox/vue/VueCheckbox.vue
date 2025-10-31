@@ -10,6 +10,8 @@
     :theme="theme"
     :label-text="labelText"
     :label-position="labelPosition"
+    @click="handleClick"
+    @change="handleChange"
     v-bind="$attrs"
   >
     <slot />
@@ -17,22 +19,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
-import type { CheckboxSize, CheckboxTheme } from "../core/Checkbox";
+import { ref } from "vue";
+import type {
+  CheckboxProps,
+  CheckboxSize,
+  CheckboxTheme,
+  CheckboxChangeEvent,
+  CheckboxChangeEventDetail,
+} from "../core/Checkbox";
 import "../core/Checkbox"; // Registers the ag-checkbox web component
 
-// Define props interface
-export interface VueCheckboxProps {
-  name?: string;
-  value?: string;
-  checked?: boolean;
-  indeterminate?: boolean;
-  disabled?: boolean;
-  size?: CheckboxSize;
-  theme?: CheckboxTheme;
-  labelText?: string;
-  labelPosition?: "end" | "start";
-}
+// Define props interface (omit function props since wrapper uses emits)
+export interface VueCheckboxProps
+  extends Omit<CheckboxProps, "onClick" | "onChange"> {}
 
 // Define props with defaults
 withDefaults(defineProps<VueCheckboxProps>(), {
@@ -47,40 +46,26 @@ withDefaults(defineProps<VueCheckboxProps>(), {
   labelPosition: "end",
 });
 
-// Define emits
+// Define emits for all events (native + custom)
 const emit = defineEmits<{
-  change: [
-    detail: {
-      checked: boolean;
-      value: string;
-      name: string;
-      indeterminate: boolean;
-    }
-  ];
+  click: [event: MouseEvent];
+  change: [detail: CheckboxChangeEventDetail];
+  "update:checked": [checked: boolean];
+  "update:indeterminate": [indeterminate: boolean];
 }>();
 
 // Template ref
 const checkboxRef = ref<HTMLElement>();
 
-// Event handlers
-const handleChange = (event: Event) => {
-  const detail = (event as CustomEvent).detail;
-  emit("change", detail);
+// Event handlers that bridge web component events to Vue emits
+const handleClick = (event: MouseEvent) => {
+  emit("click", event);
 };
 
-// Setup event listeners
-onMounted(async () => {
-  // Wait for web components to be defined
-  await customElements.whenDefined("ag-checkbox");
-
-  if (!checkboxRef.value) return;
-
-  checkboxRef.value.addEventListener("ag-change", handleChange);
-});
-
-onUnmounted(() => {
-  if (!checkboxRef.value) return;
-
-  checkboxRef.value.removeEventListener("ag-change", handleChange);
-});
+const handleChange = (event: Event) => {
+  const changeEvent = event as CheckboxChangeEvent;
+  emit("change", changeEvent.detail);
+  emit("update:checked", changeEvent.detail.checked);
+  emit("update:indeterminate", changeEvent.detail.indeterminate);
+};
 </script>

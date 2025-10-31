@@ -199,9 +199,214 @@ export default function Example() {
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `ag-change` | `{ checked: boolean, value: string, name: string, indeterminate: boolean }` | Fired when the checkbox state changes |
+| Event    | Framework                                             | Detail                                                                  | Description                                                                                |
+| -------- | ----------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `click`  | Vue: `@click`<br>React: `onClick`<br>Lit: `@click`    | `MouseEvent`                                                            | Fired when the checkbox is clicked.                                                        |
+| `change` | Vue: `@change`<br>React: `onChange`<br>Lit: `@change` | `{ checked: boolean, value: string, name: string, indeterminate: boolean }` | Fired when checkbox state changes. Contains the new checked state and form integration data. |
+
+**Note:** The Checkbox component supports **dual-dispatch event propagation**: it dispatches both DOM CustomEvents (usable with `addEventListener`) and invokes callback props (`.onChange`), giving you flexibility in how you handle events.
+
+### Event Usage Examples
+
+::: details Vue
+```vue
+<template>
+  <section>
+    <!-- Event handler with @change -->
+    <VueCheckbox
+      name="terms"
+      value="agree"
+      label-text="I agree to the terms"
+      @change="handleChange"
+    />
+
+    <!-- v-model:checked for two-way binding -->
+    <VueCheckbox
+      name="newsletter"
+      value="subscribed"
+      label-text="Subscribe to newsletter"
+      v-model:checked="isSubscribed"
+    />
+
+    <!-- v-model:indeterminate (unique to checkbox) -->
+    <VueCheckbox
+      name="select-all"
+      value="all"
+      label-text="Select All"
+      v-model:indeterminate="isIndeterminate"
+      v-model:checked="allChecked"
+    />
+
+    <!-- Both event and v-model together -->
+    <VueCheckbox
+      name="notifications"
+      value="enabled"
+      label-text="Enable notifications"
+      v-model:checked="notificationsEnabled"
+      @change="handleNotificationChange"
+    />
+  </section>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
+
+const isSubscribed = ref(false);
+const isIndeterminate = ref(false);
+const allChecked = ref(false);
+const notificationsEnabled = ref(false);
+
+const handleChange = (detail) => {
+  console.log('Checkbox changed:', detail);
+  // detail: { checked, value, name, indeterminate }
+};
+
+const handleNotificationChange = (detail) => {
+  console.log('Notifications:', detail.checked ? 'enabled' : 'disabled');
+};
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { useState } from 'react';
+import { ReactCheckbox } from 'agnosticui-core/checkbox/react';
+
+export default function Example() {
+  const [isChecked, setIsChecked] = useState(false);
+
+  return (
+    <section>
+      {/* Event handler with onChange */}
+      <ReactCheckbox
+        name="terms"
+        value="agree"
+        labelText="I agree to the terms"
+        onChange={(e) => {
+          console.log('Checkbox changed:', e.detail);
+          // e.detail: { checked, value, name, indeterminate }
+        }}
+      />
+
+      {/* Controlled checkbox with state */}
+      <ReactCheckbox
+        name="newsletter"
+        value="subscribed"
+        labelText="Subscribe to newsletter"
+        checked={isChecked}
+        onChange={(e) => {
+          setIsChecked(e.detail.checked);
+        }}
+      />
+
+      {/* With native click handler */}
+      <ReactCheckbox
+        name="notifications"
+        value="enabled"
+        labelText="Enable notifications"
+        onClick={(e) => console.log('Clicked:', e)}
+        onChange={(e) => console.log('Changed:', e.detail)}
+      />
+
+      {/* Indeterminate state */}
+      <ReactCheckbox
+        name="select-all"
+        value="all"
+        labelText="Select All"
+        indeterminate
+        onChange={(e) => {
+          console.log('Indeterminate cleared on click:', e.detail);
+        }}
+      />
+    </section>
+  );
+}
+```
+:::
+
+::: details Lit (Web Components)
+```html
+<script type="module">
+  import 'agnosticui-core/checkbox';
+
+  // Pattern 1: addEventListener (DOM events)
+  const checkbox1 = document.querySelector('#checkbox1');
+  checkbox1.addEventListener('change', (e) => {
+    console.log('Event listener:', e.detail);
+    // e.detail: { checked, value, name, indeterminate }
+  });
+
+  // Pattern 2: Callback prop
+  const checkbox2 = document.querySelector('#checkbox2');
+  checkbox2.onChange = (e) => {
+    console.log('Callback prop:', e.detail);
+  };
+
+  // Pattern 3: Both patterns work (dual-dispatch)
+  const checkbox3 = document.querySelector('#checkbox3');
+  checkbox3.addEventListener('change', (e) => {
+    console.log('DOM event:', e.detail);
+  });
+  checkbox3.onChange = (e) => {
+    console.log('Callback also fired:', e.detail);
+  };
+
+  // Native click events work too
+  const checkbox4 = document.querySelector('#checkbox4');
+  checkbox4.addEventListener('click', (e) => {
+    console.log('Click event:', e);
+  });
+  checkbox4.onClick = (e) => {
+    console.log('Click callback:', e);
+  };
+</script>
+
+<section>
+  <ag-checkbox
+    id="checkbox1"
+    name="example1"
+    value="1"
+    label-text="addEventListener pattern"
+  ></ag-checkbox>
+
+  <ag-checkbox
+    id="checkbox2"
+    name="example2"
+    value="2"
+    label-text="Callback prop pattern"
+  ></ag-checkbox>
+
+  <ag-checkbox
+    id="checkbox3"
+    name="example3"
+    value="3"
+    label-text="Dual-dispatch (both patterns)"
+  ></ag-checkbox>
+
+  <ag-checkbox
+    id="checkbox4"
+    name="example4"
+    value="4"
+    label-text="With click handlers"
+  ></ag-checkbox>
+</section>
+```
+:::
+
+**Type:**
+
+```ts
+export type CheckboxChangeEvent = CustomEvent<CheckboxChangeEventDetail>;
+
+export interface CheckboxChangeEventDetail {
+  checked: boolean;      // New checked state
+  value: string;         // Form value (if provided)
+  name: string;          // Form name (if provided)
+  indeterminate: boolean; // Indeterminate state (false after user click)
+}
+```
 
 ## CSS Shadow Parts
 
