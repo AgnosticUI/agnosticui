@@ -26,20 +26,6 @@
           value="enterprise"
           label-text="Enterprise Plan"
         />
-        <VueRadio
-          name="plan"
-          value="foo"
-        >asdf</VueRadio>
-        <VueRadio
-          name="plan"
-          value="foo"
-          :label-text="'Label with colon and single quotes wrapped in double quotes'"
-        />
-        <VueRadio
-          name="plan"
-          value="bar"
-          :checked="true"
-        />
       </div>
     </fieldset>
 
@@ -295,14 +281,6 @@
         :checked="true"
         class="custom-radio-2"
       />
-      <VueRadio
-        name="custom3"
-        value="3"
-        label-text="Fully customized"
-        :checked="true"
-        theme="primary"
-        class="custom-radio-3"
-      />
     </div>
   </section>
 </template>
@@ -334,28 +312,6 @@ export default defineComponent({
 
 .custom-radio-2::part(ag-radio-label) {
   font-weight: 600;
-  color: var(--ag-primary);
-}
-
-.custom-radio-3::part(ag-radio-indicator) {
-  transform: scale(1.4);
-  box-shadow: 0 2px 8px rgba(0, 99, 168, 0.3);
-}
-
-.custom-radio-3::part(ag-radio-wrapper) {
-  padding: 0.75rem;
-  background: linear-gradient(
-    135deg,
-    var(--ag-primary-background) 0%,
-    var(--ag-background-secondary) 100%
-  );
-  border-radius: var(--ag-radius-lg);
-  border: 2px solid var(--ag-primary-border);
-}
-
-.custom-radio-3::part(ag-radio-label) {
-  font-weight: 700;
-  font-size: 1.1rem;
   color: var(--ag-primary);
 }
 </style>
