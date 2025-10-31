@@ -795,6 +795,220 @@ describe('Tabs - Tab Interaction', () => {
     element.removeEventListener('keydown', keydownSpy);
   });
 
+  describe('Keyboard Navigation - Disabled Tabs', () => {
+    it('should skip disabled tab when pressing ArrowRight', async () => {
+      element.innerHTML = `
+        <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+        <ag-tab slot="tab" panel="panel2" disabled>Tab 2</ag-tab>
+        <ag-tab slot="tab" panel="panel3">Tab 3</ag-tab>
+        <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+      `;
+
+      await element.updateComplete;
+      (element as any)._updateTabsAndPanels();
+
+      const tabs = element.querySelectorAll('ag-tab');
+
+      // Focus on first tab
+      tabs[0].focus();
+      await element.updateComplete;
+
+      // Press ArrowRight - should skip disabled tab 2 and go to tab 3
+      const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true });
+      tabs[0].dispatchEvent(event);
+      await element.updateComplete;
+
+      // Check that focus moved to tab 3 (index 2), not disabled tab 2 (index 1)
+      expect(document.activeElement).toBe(tabs[2]);
+      expect(tabs[2].getAttribute('tabindex')).toBe('0');
+      expect(tabs[1].getAttribute('tabindex')).toBe('-1');
+    });
+
+    it('should skip disabled tab when pressing ArrowLeft', async () => {
+      element.innerHTML = `
+        <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+        <ag-tab slot="tab" panel="panel2" disabled>Tab 2</ag-tab>
+        <ag-tab slot="tab" panel="panel3">Tab 3</ag-tab>
+        <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+      `;
+
+      await element.updateComplete;
+      (element as any)._updateTabsAndPanels();
+
+      const tabs = element.querySelectorAll('ag-tab');
+
+      // Focus on third tab
+      tabs[2].focus();
+      (element as any)._focusedTab = 2;
+      await element.updateComplete;
+
+      // Press ArrowLeft - should skip disabled tab 2 and go to tab 1
+      const event = new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true });
+      tabs[2].dispatchEvent(event);
+      await element.updateComplete;
+
+      // Check that focus moved to tab 1 (index 0), not disabled tab 2 (index 1)
+      expect(document.activeElement).toBe(tabs[0]);
+      expect(tabs[0].getAttribute('tabindex')).toBe('0');
+      expect(tabs[1].getAttribute('tabindex')).toBe('-1');
+    });
+
+    it('should skip multiple disabled tabs', async () => {
+      element.innerHTML = `
+        <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+        <ag-tab slot="tab" panel="panel2" disabled>Tab 2</ag-tab>
+        <ag-tab slot="tab" panel="panel3" disabled>Tab 3</ag-tab>
+        <ag-tab slot="tab" panel="panel4">Tab 4</ag-tab>
+        <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel4">Content 4</ag-tab-panel>
+      `;
+
+      await element.updateComplete;
+      (element as any)._updateTabsAndPanels();
+
+      const tabs = element.querySelectorAll('ag-tab');
+
+      // Focus on first tab
+      tabs[0].focus();
+      await element.updateComplete;
+
+      // Press ArrowRight - should skip both disabled tabs and go to tab 4
+      const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true });
+      tabs[0].dispatchEvent(event);
+      await element.updateComplete;
+
+      // Check that focus moved to tab 4 (index 3), skipping tabs 2 and 3
+      expect(document.activeElement).toBe(tabs[3]);
+      expect(tabs[3].getAttribute('tabindex')).toBe('0');
+    });
+
+    it('should go to first enabled tab on Home key', async () => {
+      element.innerHTML = `
+        <ag-tab slot="tab" panel="panel1" disabled>Tab 1</ag-tab>
+        <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+        <ag-tab slot="tab" panel="panel3">Tab 3</ag-tab>
+        <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+      `;
+
+      await element.updateComplete;
+      (element as any)._updateTabsAndPanels();
+
+      const tabs = element.querySelectorAll('ag-tab');
+
+      // Focus on third tab
+      tabs[2].focus();
+      (element as any)._focusedTab = 2;
+      await element.updateComplete;
+
+      // Press Home - should go to first enabled tab (tab 2, index 1)
+      const event = new KeyboardEvent('keydown', { key: 'Home', bubbles: true });
+      tabs[2].dispatchEvent(event);
+      await element.updateComplete;
+
+      // Check that focus moved to tab 2 (index 1), not disabled tab 1 (index 0)
+      expect(document.activeElement).toBe(tabs[1]);
+      expect(tabs[1].getAttribute('tabindex')).toBe('0');
+    });
+
+    it('should go to last enabled tab on End key', async () => {
+      element.innerHTML = `
+        <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+        <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+        <ag-tab slot="tab" panel="panel3" disabled>Tab 3</ag-tab>
+        <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+      `;
+
+      await element.updateComplete;
+      (element as any)._updateTabsAndPanels();
+
+      const tabs = element.querySelectorAll('ag-tab');
+
+      // Focus on first tab
+      tabs[0].focus();
+      await element.updateComplete;
+
+      // Press End - should go to last enabled tab (tab 2, index 1)
+      const event = new KeyboardEvent('keydown', { key: 'End', bubbles: true });
+      tabs[0].dispatchEvent(event);
+      await element.updateComplete;
+
+      // Check that focus moved to tab 2 (index 1), not disabled tab 3 (index 2)
+      expect(document.activeElement).toBe(tabs[1]);
+      expect(tabs[1].getAttribute('tabindex')).toBe('0');
+    });
+
+    it('should skip disabled tabs in vertical orientation', async () => {
+      element.orientation = 'vertical';
+      element.innerHTML = `
+        <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+        <ag-tab slot="tab" panel="panel2" disabled>Tab 2</ag-tab>
+        <ag-tab slot="tab" panel="panel3">Tab 3</ag-tab>
+        <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+      `;
+
+      await element.updateComplete;
+      (element as any)._updateTabsAndPanels();
+
+      const tabs = element.querySelectorAll('ag-tab');
+
+      // Focus on first tab
+      tabs[0].focus();
+      await element.updateComplete;
+
+      // Press ArrowDown - should skip disabled tab 2 and go to tab 3
+      const event = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true });
+      tabs[0].dispatchEvent(event);
+      await element.updateComplete;
+
+      // Check that focus moved to tab 3 (index 2), not disabled tab 2 (index 1)
+      expect(document.activeElement).toBe(tabs[2]);
+      expect(tabs[2].getAttribute('tabindex')).toBe('0');
+    });
+
+    it('should not activate disabled tab in automatic activation mode', async () => {
+      element.activation = 'automatic';
+      element.innerHTML = `
+        <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+        <ag-tab slot="tab" panel="panel2" disabled>Tab 2</ag-tab>
+        <ag-tab slot="tab" panel="panel3">Tab 3</ag-tab>
+        <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+      `;
+
+      await element.updateComplete;
+      (element as any)._updateTabsAndPanels();
+
+      const tabs = element.querySelectorAll('ag-tab');
+
+      // Focus on first tab
+      tabs[0].focus();
+      await element.updateComplete;
+
+      // Press ArrowRight - should skip disabled tab 2, go to tab 3, and activate it
+      const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true });
+      tabs[0].dispatchEvent(event);
+      await element.updateComplete;
+
+      // Check that tab 3 is active and focused
+      expect(element.activeTab).toBe(2);
+      expect(tabs[2].getAttribute('aria-selected')).toBe('true');
+      expect(tabs[1].getAttribute('aria-selected')).toBe('false'); // Disabled tab should not be selected
+    });
+  });
+
   describe('Event Handling - Callback Props Pattern', () => {
     it('should fire onTabChange callback', async () => {
       element.innerHTML = `
