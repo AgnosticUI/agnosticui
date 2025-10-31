@@ -2,6 +2,7 @@ node_modules/
 .DS_Store
 **/.DS_Store
 TODO.md
+IDEAS.md
 agnostic-angularOLD/
 experiments/
 site/docs/.vitepress/dist/
