@@ -6,6 +6,12 @@
     .disabled="disabled"
     .name="name"
     .multipleSize="multipleSize"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @click="handleClick"
+    @keydown="handleKeydown"
+    @keyup="handleKeyup"
     v-bind="$attrs"
   >
     <slot />
@@ -13,9 +19,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted, ref, type PropType } from "vue";
-import type { SelectProps, SelectSize } from "../core/Select";
+import { defineComponent, ref, type PropType } from "vue";
+import type { SelectProps, SelectSize, SelectChangeEventDetail } from "../core/Select";
 import "../core/Select"; // Registers the ag-select web component
+
+// Re-export event types
+export type { SelectChangeEvent, SelectChangeEventDetail } from "../core/Select";
+
+export interface VueSelectProps extends Omit<SelectProps, 'onClick' | 'onFocus' | 'onBlur' | 'onChange'> {
+  value?: string | string[];
+}
 
 export default defineComponent({
   name: "VueSelect",
@@ -40,76 +53,61 @@ export default defineComponent({
       type: Number,
       default: undefined,
     },
+    value: {
+      type: [String, Array] as PropType<string | string[]>,
+      default: undefined,
+    },
   },
-  emits: ['change', 'focus', 'blur', 'input', 'click', 'keydown', 'keyup'],
+  emits: {
+    // Custom event - emit detail payload
+    change: (detail: SelectChangeEventDetail) => true,
+    // v-model support
+    'update:value': (value: string | string[]) => true,
+    // Native events - emit full event
+    focus: (event: FocusEvent) => true,
+    blur: (event: FocusEvent) => true,
+    click: (event: MouseEvent) => true,
+    keydown: (event: KeyboardEvent) => true,
+    keyup: (event: KeyboardEvent) => true,
+  },
   setup(props, { emit }) {
     const agComponent = ref<(HTMLElement & SelectProps) | null>(null);
 
-    // Event handlers
-    const handleChange = (event: Event) => {
-      emit("change", event);
+    // Custom event handler - emit detail payload
+    const handleChange = (event: CustomEvent<SelectChangeEventDetail>) => {
+      emit("change", event.detail);
+      emit("update:value", event.detail.value);
     };
 
-    const handleFocus = (event: Event) => {
+    // Native event handlers - emit full event
+    const handleFocus = (event: FocusEvent) => {
       emit("focus", event);
     };
 
-    const handleBlur = (event: Event) => {
+    const handleBlur = (event: FocusEvent) => {
       emit("blur", event);
     };
 
-    const handleInput = (event: Event) => {
-      emit("input", event);
-    };
-
-    const handleClick = (event: Event) => {
+    const handleClick = (event: MouseEvent) => {
       emit("click", event);
     };
 
-    const handleKeyDown = (event: Event) => {
+    const handleKeydown = (event: KeyboardEvent) => {
       emit("keydown", event);
     };
 
-    const handleKeyUp = (event: Event) => {
+    const handleKeyup = (event: KeyboardEvent) => {
       emit("keyup", event);
     };
 
-    onMounted(async () => {
-      // Ensure the web component is defined
-      await customElements.whenDefined("ag-select");
-
-      if (!agComponent.value) return;
-
-      // Attach event listeners
-      agComponent.value.addEventListener("change", handleChange);
-      agComponent.value.addEventListener("focus", handleFocus);
-      agComponent.value.addEventListener("blur", handleBlur);
-      agComponent.value.addEventListener("input", handleInput);
-      agComponent.value.addEventListener("click", handleClick);
-      agComponent.value.addEventListener("keydown", handleKeyDown);
-      agComponent.value.addEventListener("keyup", handleKeyUp);
-    });
-
-    onUnmounted(() => {
-      if (!agComponent.value) return;
-
-      // Remove event listeners
-      agComponent.value.removeEventListener("change", handleChange);
-      agComponent.value.removeEventListener("focus", handleFocus);
-      agComponent.value.removeEventListener("blur", handleBlur);
-      agComponent.value.removeEventListener("input", handleInput);
-      agComponent.value.removeEventListener("click", handleClick);
-      agComponent.value.removeEventListener("keydown", handleKeyDown);
-      agComponent.value.removeEventListener("keyup", handleKeyUp);
-    });
-
     return {
       agComponent,
-      size: props.size,
-      multiple: props.multiple,
-      disabled: props.disabled,
-      name: props.name,
-      multipleSize: props.multipleSize,
+      handleChange,
+      handleFocus,
+      handleBlur,
+      handleClick,
+      handleKeydown,
+      handleKeyup,
     };
   },
 });

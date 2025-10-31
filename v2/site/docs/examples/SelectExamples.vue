@@ -115,7 +115,7 @@
     <div class="mbe4">
       <h3>With Change Handler</h3>
       <p class="mbs2 mbe3">
-        Listen to selection changes with the <code>change</code> event.
+        Listen to selection changes with the <code>@change</code> event.
       </p>
     </div>
     <div class="mbe4" style="max-width: 400px;">
@@ -136,6 +136,91 @@
       <p v-if="selectedFruit" style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
         You selected: <strong>{{ selectedFruit }}</strong>
       </p>
+    </div>
+
+    <div class="mbe4">
+      <h3>With v-model</h3>
+      <p class="mbs2 mbe3">
+        Use <code>v-model:value</code> for two-way data binding.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 400px;">
+      <label for="vmodel-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+        Choose Your Favorite Color
+      </label>
+      <VueSelect
+        id="vmodel-select"
+        name="color"
+        v-model:value="selectedColor"
+      >
+        <option value="">Choose a color</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="purple">Purple</option>
+      </VueSelect>
+      <p v-if="selectedColor" style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
+        Your favorite color is: <strong>{{ selectedColor }}</strong>
+      </p>
+    </div>
+
+    <div class="mbe4">
+      <h3>Multiple Selection with v-model</h3>
+      <p class="mbs2 mbe3">
+        Use <code>v-model:value</code> with <code>multiple</code> to manage an array of selected values.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 400px;">
+      <label for="vmodel-multiple-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+        Select Your Favorite Sports (Ctrl/Cmd + Click)
+      </label>
+      <VueSelect
+        id="vmodel-multiple-select"
+        name="sports"
+        v-model:value="selectedSports"
+        :multiple="true"
+        :multiple-size="5"
+      >
+        <option value="tennis">Tennis</option>
+        <option value="football">Football</option>
+        <option value="basketball">Basketball</option>
+        <option value="baseball">Baseball</option>
+        <option value="soccer">Soccer</option>
+      </VueSelect>
+      <p v-if="selectedSports.length > 0" style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
+        You selected <strong>{{ selectedSports.length }}</strong> sport(s): {{ selectedSports.join(', ') }}
+      </p>
+    </div>
+
+    <div class="mbe4">
+      <h3>Event Handling</h3>
+      <p class="mbs2 mbe3">
+        The Select component fires multiple events: <code>@change</code>, <code>@focus</code>, <code>@blur</code>, and <code>@click</code>.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 600px;">
+      <label for="event-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+        Interact with this select to see events
+      </label>
+      <VueSelect
+        id="event-select"
+        name="events"
+        @change="handleEventChange"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @click="handleClick"
+      >
+        <option value="">Select an option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </VueSelect>
+      <div v-if="eventLog.length > 0" style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
+        <strong>Event Log (most recent first):</strong>
+        <div style="margin-top: 0.5rem; font-family: monospace; font-size: 0.875rem; line-height: 1.6;">
+          <div v-for="(event, index) in eventLog" :key="index">{{ event }}</div>
+        </div>
+      </div>
     </div>
 
     <div class="mbe4">
@@ -173,15 +258,52 @@ export default defineComponent({
     VueSelect,
   },
   setup() {
+    // Basic @change example
     const selectedFruit = ref('');
 
-    const handleChange = (e: CustomEvent) => {
-      selectedFruit.value = e.detail.value;
+    // Vue wrapper emits detail payload directly, not full CustomEvent
+    const handleChange = (detail: { value: string | string[] }) => {
+      selectedFruit.value = detail.value as string;
+    };
+
+    // v-model examples
+    const selectedColor = ref('');
+    const selectedSports = ref<string[]>([]);
+
+    // Event logging example
+    const eventLog = ref<string[]>([]);
+
+    const logEvent = (message: string) => {
+      eventLog.value.unshift(message);
+      if (eventLog.value.length > 8) eventLog.value.pop();
+    };
+
+    const handleEventChange = (detail: { value: string | string[] }) => {
+      logEvent(`@change - value: ${detail.value}`);
+    };
+
+    const handleFocus = () => {
+      logEvent('@focus');
+    };
+
+    const handleBlur = () => {
+      logEvent('@blur');
+    };
+
+    const handleClick = () => {
+      logEvent('@click');
     };
 
     return {
       selectedFruit,
       handleChange,
+      selectedColor,
+      selectedSports,
+      eventLog,
+      handleEventChange,
+      handleFocus,
+      handleBlur,
+      handleClick,
     };
   },
 });

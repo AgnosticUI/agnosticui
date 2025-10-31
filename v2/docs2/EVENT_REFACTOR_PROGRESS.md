@@ -211,7 +211,7 @@ Provide a structured response:
 
 **Priority**: HIGH - These have the most complex event patterns and highest consumer impact
 
-**Status**: 4/12 complete (33%)
+**Status**: 7/14 complete (50%)
 
 | Component | Status | Branch | Commits | Risk | Notes |
 |-----------|--------|--------|---------|------|-------|
@@ -219,9 +219,9 @@ Provide a structured response:
 | Collapsible | ✅ Complete | main | 442432d, 11a657a, 6888e11 | LOW | Reference implementation |
 | Toggle | ✅ Complete | feature/toggle-event-refactor | 47db8e6, 0881575, b9028ca, 056a9f7, adb05d5 | LOW | Dual-dispatch + v-model:checked + unified docs |
 | Checkbox | ✅ Complete | feature/checkbox-event-refactor | 38222d0, 295e06d | MEDIUM | Dual-dispatch + v-model:checked/indeterminate + comprehensive event stories |
-| Radio | ⏳ Pending | - | - | MEDIUM | Selection state, group coordination |
-| Input | ⏳ Pending | - | - | HIGH | Complex: input/change/blur/focus/validation |
-| Select | ⏳ Pending | - | - | HIGH | Selection state, dropdown interaction |
+| Radio | ✅ Complete | feature/radio-event-refactor | 10eeca4, 85e05b8 | MEDIUM | Dual-dispatch + v-model:checked + radio group patterns |
+| Input | ✅ Complete | feature/radio-event-refactor | (on radio branch) | HIGH | Complex: input/change/blur/focus/validation |
+| Select | ✅ Complete | feature/select-event-refactor | (pending commit) | HIGH | Dual-dispatch + v-model:value + comprehensive event stories |
 | Tabs | ⏳ Pending | - | - | MEDIUM | Active tab state, navigation |
 | Accordion | ⏳ Pending | - | - | MEDIUM | Expand/collapse, group coordination |
 | Dialog | ⏳ Pending | - | - | MEDIUM | Open/close, modal behavior |
