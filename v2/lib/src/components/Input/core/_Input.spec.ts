@@ -931,6 +931,216 @@ describe('Event Handling for Textarea', () => {
   });
 });
 
+describe('AgnosticUI v2 Event Conventions', () => {
+  let element: AgInput;
+
+  beforeEach(async () => {
+    element = new AgInput();
+    element.label = 'Event Convention Test';
+    document.body.appendChild(element);
+    await element.updateComplete;
+  });
+
+  afterEach(() => {
+    if (document.body.contains(element)) {
+      document.body.removeChild(element);
+    }
+  });
+
+  describe('Callback Props Pattern', () => {
+    it('invokes onClick callback when clicked', async () => {
+      let clickEvent: MouseEvent | undefined;
+      element.onClick = (e) => {
+        clickEvent = e;
+      };
+
+      const inputEl = element.shadowRoot?.querySelector('input') as HTMLInputElement;
+      inputEl.click();
+
+      expect(clickEvent).toBeDefined();
+      expect(clickEvent instanceof MouseEvent).toBe(true);
+    });
+
+    it('invokes onInput callback on input event', async () => {
+      let inputEvent: InputEvent | undefined;
+      element.onInput = (e) => {
+        inputEvent = e;
+      };
+
+      const inputEl = element.shadowRoot?.querySelector('input') as HTMLInputElement;
+      inputEl.value = 'test';
+      inputEl.dispatchEvent(new InputEvent('input', { bubbles: true, composed: true }));
+
+      await element.updateComplete;
+
+      expect(inputEvent).toBeDefined();
+      expect(element.value).toBe('test');
+    });
+
+    it('invokes onChange callback on change event', async () => {
+      let changeEvent: Event | undefined;
+      element.onChange = (e) => {
+        changeEvent = e;
+      };
+
+      const inputEl = element.shadowRoot?.querySelector('input') as HTMLInputElement;
+      inputEl.value = 'changed';
+      inputEl.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+
+      await element.updateComplete;
+
+      expect(changeEvent).toBeDefined();
+      expect(element.value).toBe('changed');
+    });
+
+    it('invokes onFocus callback on focus event', async () => {
+      let focusEvent: FocusEvent | undefined;
+      element.onFocus = (e) => {
+        focusEvent = e;
+      };
+
+      const inputEl = element.shadowRoot?.querySelector('input') as HTMLInputElement;
+      inputEl.dispatchEvent(new FocusEvent('focus', { bubbles: true, composed: true }));
+
+      expect(focusEvent).toBeDefined();
+    });
+
+    it('invokes onBlur callback on blur event', async () => {
+      let blurEvent: FocusEvent | undefined;
+      element.onBlur = (e) => {
+        blurEvent = e;
+      };
+
+      const inputEl = element.shadowRoot?.querySelector('input') as HTMLInputElement;
+      inputEl.dispatchEvent(new FocusEvent('blur', { bubbles: true, composed: true }));
+
+      expect(blurEvent).toBeDefined();
+    });
+  });
+
+  describe('Non-Bubbling Event Re-dispatch Pattern', () => {
+    it('re-dispatches focus event from host element', async () => {
+      let focusEventOnHost: Event | undefined;
+      element.addEventListener('focus', (e) => {
+        focusEventOnHost = e;
+      });
+
+      const inputEl = element.shadowRoot?.querySelector('input') as HTMLInputElement;
+      inputEl.dispatchEvent(new FocusEvent('focus', { bubbles: false }));
+
+      expect(focusEventOnHost).toBeDefined();
+      expect(focusEventOnHost?.type).toBe('focus');
+      expect(focusEventOnHost?.bubbles).toBe(true);
+      expect(focusEventOnHost?.composed).toBe(true);
+    });
+
+    it('re-dispatches blur event from host element', async () => {
+      let blurEventOnHost: Event | undefined;
+      element.addEventListener('blur', (e) => {
+        blurEventOnHost = e;
+      });
+
+      const inputEl = element.shadowRoot?.querySelector('input') as HTMLInputElement;
+      inputEl.dispatchEvent(new FocusEvent('blur', { bubbles: false }));
+
+      expect(blurEventOnHost).toBeDefined();
+      expect(blurEventOnHost?.type).toBe('blur');
+      expect(blurEventOnHost?.bubbles).toBe(true);
+      expect(blurEventOnHost?.composed).toBe(true);
+    });
+  });
+
+  describe('Dual Event Listening Pattern', () => {
+    it('supports both addEventListener and callback prop for input', async () => {
+      let callbackCalled = false;
+      let listenerCalled = false;
+
+      element.onInput = () => {
+        callbackCalled = true;
+      };
+
+      element.addEventListener('input', () => {
+        listenerCalled = true;
+      });
+
+      const inputEl = element.shadowRoot?.querySelector('input') as HTMLInputElement;
+      inputEl.value = 'dual';
+      inputEl.dispatchEvent(new InputEvent('input', { bubbles: true, composed: true }));
+
+      await element.updateComplete;
+
+      expect(callbackCalled).toBe(true);
+      expect(listenerCalled).toBe(true);
+    });
+
+    it('supports both addEventListener and callback prop for focus', async () => {
+      let callbackCalled = false;
+      let listenerCalled = false;
+
+      element.onFocus = () => {
+        callbackCalled = true;
+      };
+
+      element.addEventListener('focus', () => {
+        listenerCalled = true;
+      });
+
+      const inputEl = element.shadowRoot?.querySelector('input') as HTMLInputElement;
+      inputEl.dispatchEvent(new FocusEvent('focus', { bubbles: false }));
+
+      expect(callbackCalled).toBe(true);
+      expect(listenerCalled).toBe(true);
+    });
+  });
+
+  describe('Textarea Event Callbacks', () => {
+    beforeEach(async () => {
+      element.type = 'textarea';
+      await element.updateComplete;
+    });
+
+    it('invokes onInput callback for textarea', async () => {
+      let inputEvent: InputEvent | undefined;
+      element.onInput = (e) => {
+        inputEvent = e;
+      };
+
+      const textareaEl = element.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
+      textareaEl.value = 'textarea test';
+      textareaEl.dispatchEvent(new InputEvent('input', { bubbles: true, composed: true }));
+
+      await element.updateComplete;
+
+      expect(inputEvent).toBeDefined();
+      expect(element.value).toBe('textarea test');
+    });
+
+    it('invokes onFocus callback for textarea', async () => {
+      let focusEvent: FocusEvent | undefined;
+      element.onFocus = (e) => {
+        focusEvent = e;
+      };
+
+      const textareaEl = element.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
+      textareaEl.dispatchEvent(new FocusEvent('focus', { bubbles: false }));
+
+      expect(focusEvent).toBeDefined();
+    });
+
+    it('invokes onBlur callback for textarea', async () => {
+      let blurEvent: FocusEvent | undefined;
+      element.onBlur = (e) => {
+        blurEvent = e;
+      };
+
+      const textareaEl = element.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
+      textareaEl.dispatchEvent(new FocusEvent('blur', { bubbles: false }));
+
+      expect(blurEvent).toBeDefined();
+    });
+  });
+});
+
 // TODO: Next blocks to implement incrementally:
 // - HTML5 Input Attributes
 // - Accessibility Compliance
