@@ -18,7 +18,7 @@ import InputExamples from '../examples/InputExamples.vue'
   <section>
     <!-- Basic input -->
     <VueInput
-      v-model="email"
+      v-model:value="email"
       label="Email"
       type="email"
       placeholder="you@example.com"
@@ -26,7 +26,7 @@ import InputExamples from '../examples/InputExamples.vue'
 
     <!-- With validation -->
     <VueInput
-      v-model="username"
+      v-model:value="username"
       label="Username"
       :required="true"
       :invalid="isInvalid"
@@ -36,7 +36,7 @@ import InputExamples from '../examples/InputExamples.vue'
 
     <!-- Textarea -->
     <VueInput
-      v-model="message"
+      v-model:value="message"
       label="Message"
       type="textarea"
       :rows="4"
@@ -45,7 +45,7 @@ import InputExamples from '../examples/InputExamples.vue'
 
     <!-- With addons -->
     <VueInput
-      v-model="price"
+      v-model:value="price"
       label="Price"
       :has-left-addon="true"
     >
@@ -56,7 +56,7 @@ import InputExamples from '../examples/InputExamples.vue'
 
     <!-- Size variants -->
     <VueInput
-      v-model="small"
+      v-model:value="small"
       label="Small Input"
       size="small"
       placeholder="Small size"
@@ -66,13 +66,13 @@ import InputExamples from '../examples/InputExamples.vue'
     <VueInput
       v-model="rounded"
       label="Rounded"
-      :is-rounded="true"
+      :rounded="true"
       placeholder="Rounded corners"
     />
 
     <!-- States -->
     <VueInput
-      v-model="disabled"
+      v-model:value="disabled"
       label="Disabled"
       :disabled="true"
       value="Cannot edit"
@@ -294,11 +294,11 @@ export default function InputExample() {
 | `invalid` | `boolean` | `false` | Marks the input as invalid. Changes border color to red and sets aria-invalid |
 | `helpText` | `string` | `''` | Helper text displayed below the input |
 | `errorMessage` | `string` | `''` | Error message displayed when invalid. Linked via aria-describedby |
-| `isRounded` | `boolean` | `false` | Applies rounded corners (border-radius: md) |
-| `isCapsule` | `boolean` | `false` | Applies capsule shape (fully rounded ends) |
-| `isUnderlined` | `boolean` | `false` | Shows only bottom border (underlined style) |
-| `isUnderlinedWithBackground` | `boolean` | `false` | Underlined style with subtle background color |
-| `isInline` | `boolean` | `false` | Changes display to inline-block for inline layouts |
+| `rounded` | `boolean` | `false` | Applies rounded corners (border-radius: md) |
+| `capsule` | `boolean` | `false` | Applies capsule shape (fully rounded ends) |
+| `underlined` | `boolean` | `false` | Shows only bottom border (underlined style) |
+| `underlinedWithBackground` | `boolean` | `false` | Underlined style with subtle background color |
+| `inline` | `boolean` | `false` | Changes display to inline-block for inline layouts |
 | `labelHidden` | `boolean` | `false` | Visually hides the label while keeping it accessible to screen readers |
 | `noLabel` | `boolean` | `false` | Completely removes the label element. Use with ariaLabel for accessibility |
 | `ariaLabel` | `string` | `''` | ARIA label for accessibility when label is not visible |
@@ -310,13 +310,62 @@ export default function InputExample() {
 
 ## Events
 
+The Input component follows AgnosticUI v2 event conventions for native events. All events work consistently across Lit, React, and Vue:
+
 | Event | Payload | Description |
 |-------|---------|-------------|
-| `@update:modelValue` | `string` | Emitted when the input value changes. Use with v-model for two-way binding |
-| `@input` | `Event` | Native input event, fired on every keystroke |
-| `@change` | `Event` | Native change event, fired when input loses focus after value changed |
-| `@focus` | `Event` | Fired when input receives focus |
-| `@blur` | `Event` | Fired when input loses focus |
+| `click` | `MouseEvent` | Native click event on the input |
+| `input` | `InputEvent` | Native input event, fired on every keystroke |
+| `change` | `Event` | Native change event, fired when input loses focus after value changed |
+| `focus` | `FocusEvent` | Fired when input receives focus (re-dispatched from host for cross-shadow-DOM access) |
+| `blur` | `FocusEvent` | Fired when input loses focus (re-dispatched from host for cross-shadow-DOM access) |
+
+### Framework-Specific Event Usage
+
+**Vue:**
+- Use `v-model:value` for two-way binding
+- Listen to events with `@event-name` syntax (e.g., `@input`, `@change`, `@focus`, `@blur`)
+- The `update:value` emit is automatically fired on input for v-model support
+
+```vue
+<VueInput
+  v-model:value="email"
+  label="Email"
+  @input="handleInput"
+  @change="handleChange"
+  @focus="handleFocus"
+  @blur="handleBlur"
+/>
+```
+
+**React:**
+- All native events work automatically through callback props
+- Use `onInput`, `onChange`, `onFocus`, `onBlur`, `onClick`
+
+```tsx
+<ReactInput
+  label="Email"
+  onInput={(e) => console.log('input:', e.target.value)}
+  onChange={(e) => console.log('change:', e.target.value)}
+  onFocus={(e) => console.log('focused')}
+  onBlur={(e) => console.log('blurred')}
+/>
+```
+
+**Lit/Web Components:**
+- Use both `addEventListener` and callback properties
+- Focus and blur events bubble through shadow DOM
+
+```js
+// addEventListener pattern
+const input = document.querySelector('ag-input');
+input.addEventListener('input', (e) => console.log(e.target.value));
+input.addEventListener('focus', (e) => console.log('focused'));
+
+// Or use callback props
+input.onInput = (e) => console.log(e.target.value);
+input.onFocus = (e) => console.log('focused');
+```
 
 ## Slots
 
@@ -344,7 +393,7 @@ Always provide a label for accessibility. The component supports multiple label 
 **Visible label (recommended):**
 ```vue
 <VueInput
-  v-model="email"
+  v-model:value="email"
   label="Email Address"
 />
 ```
@@ -352,7 +401,7 @@ Always provide a label for accessibility. The component supports multiple label 
 **Visually hidden label (when design requires it):**
 ```vue
 <VueInput
-  v-model="search"
+  v-model:value="search"
   label="Search"
   :label-hidden="true"
   placeholder="Search..."
@@ -363,7 +412,7 @@ Always provide a label for accessibility. The component supports multiple label 
 ```vue
 <label for="custom-input">Custom Label</label>
 <VueInput
-  v-model="value"
+  v-model:value="value"
   :no-label="true"
   labelled-by="custom-input"
 />
@@ -377,7 +426,7 @@ Use v-model for two-way data binding with form data:
 <template>
   <form @submit.prevent="handleSubmit">
     <VueInput
-      v-model="form.firstName"
+      v-model:value="form.firstName"
       label="First Name"
       name="firstName"
       :required="true"
@@ -386,7 +435,7 @@ Use v-model for two-way data binding with form data:
     />
 
     <VueInput
-      v-model="form.email"
+      v-model:value="form.email"
       label="Email"
       name="email"
       type="email"
@@ -397,7 +446,7 @@ Use v-model for two-way data binding with form data:
     />
 
     <VueInput
-      v-model="form.message"
+      v-model:value="form.message"
       label="Message"
       name="message"
       type="textarea"
@@ -456,7 +505,7 @@ Add icons or text before or after the input using slots:
 <template>
   <!-- Icon addon with color -->
   <VueInput
-    v-model="url"
+    v-model:value="url"
     label="Website URL"
     placeholder="example.com"
     :has-left-addon="true"
@@ -471,7 +520,7 @@ Add icons or text before or after the input using slots:
 
   <!-- Icon addon on right -->
   <VueInput
-    v-model="price"
+    v-model:value="price"
     label="Price"
     placeholder="0.00"
     :has-right-addon="true"
@@ -486,7 +535,7 @@ Add icons or text before or after the input using slots:
 
   <!-- Both icon and text addons -->
   <VueInput
-    v-model="amount"
+    v-model:value="amount"
     label="Amount"
     placeholder="100"
     :has-left-addon="true"
@@ -528,10 +577,10 @@ The component supports all HTML5 input types:
 - **Textarea**: Use `type="textarea"` for multi-line text input
 
 ```vue
-<VueInput v-model="email" label="Email" type="email" />
-<VueInput v-model="password" label="Password" type="password" />
-<VueInput v-model="date" label="Date" type="date" />
-<VueInput v-model="message" label="Message" type="textarea" :rows="4" />
+<VueInput v-model:value="email" label="Email" type="email" />
+<VueInput v-model:value="password" label="Password" type="password" />
+<VueInput v-model:value="date" label="Date" type="date" />
+<VueInput v-model:value="message" label="Message" type="textarea" :rows="4" />
 ```
 
 ## Shape Variants
@@ -540,22 +589,22 @@ Customize the input appearance with shape variants:
 
 ```vue
 <!-- Default: Rectangular -->
-<VueInput v-model="value" label="Default" />
+<VueInput v-model:value="value" label="Default" />
 
 <!-- Rounded corners -->
-<VueInput v-model="value" label="Rounded" :is-rounded="true" />
+<VueInput v-model:value="value" label="Rounded" :rounded="true" />
 
 <!-- Capsule (fully rounded) -->
-<VueInput v-model="value" label="Capsule" :is-capsule="true" />
+<VueInput v-model:value="value" label="Capsule" :capsule="true" />
 
 <!-- Underlined only -->
-<VueInput v-model="value" label="Underlined" :is-underlined="true" />
+<VueInput v-model:value="value" label="Underlined" :underlined="true" />
 
 <!-- Underlined with background -->
 <VueInput
-  v-model="value"
+  v-model:value="value"
   label="Underlined + BG"
-  :is-underlined-with-background="true"
+  :underlined-with-background="true"
 />
 ```
 
@@ -566,7 +615,7 @@ Show validation states and error messages:
 ```vue
 <template>
   <VueInput
-    v-model="email"
+    v-model:value="email"
     label="Email"
     type="email"
     :required="true"
