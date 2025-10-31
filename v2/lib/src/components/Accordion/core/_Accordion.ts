@@ -84,7 +84,8 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
     useChevron: { type: Boolean, reflect: true, attribute: 'use-chevron' },
     useX: { type: Boolean, reflect: true, attribute: 'use-x' },
     useMinus: { type: Boolean, reflect: true, attribute: 'use-minus' },
-    noIndicator: { type: Boolean, reflect: true, attribute: 'no-indicator' }
+    noIndicator: { type: Boolean, reflect: true, attribute: 'no-indicator' },
+    onToggle: { attribute: false }
   };
 
   declare open: boolean;
@@ -96,6 +97,7 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
   declare useX: boolean;
   declare useMinus: boolean;
   declare noIndicator: boolean;
+  declare onToggle?: (event: AccordionItemToggleEvent) => void;
   private _id = generateUniqueId('accordion-item');
 
   constructor() {
@@ -366,10 +368,19 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
     if (this.disabled) return; // Don't toggle when disabled
 
     this.open = !this.open;
-    this.dispatchEvent(new CustomEvent('toggle', {
+
+    // Dual-dispatch: dispatchEvent + callback
+    const toggleEvent = new CustomEvent<AccordionItemToggleEventDetail>('toggle', {
       detail: { open: this.open },
-      bubbles: true
-    }));
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(toggleEvent);
+
+    // Invoke callback if provided
+    if (this.onToggle) {
+      this.onToggle(toggleEvent);
+    }
   }
 
   /**

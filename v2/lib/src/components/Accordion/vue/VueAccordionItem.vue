@@ -20,6 +20,9 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import "../core/Accordion";
 
+// Re-export event types
+export type { AccordionItemToggleEvent, AccordionItemToggleEventDetail } from '../core/Accordion';
+
 // VueAccordionItem component
 export interface VueAccordionItemProps {
   open?: boolean;
@@ -49,16 +52,21 @@ const props = withDefaults(defineProps<VueAccordionItemProps>(), {
 
 // Define emits
 const emit = defineEmits<{
+  // Custom event - emit detail payload
   toggle: [detail: { open: boolean }];
+  // v-model support
+  'update:open': [value: boolean];
 }>();
 
 // Template ref
 const accordionItemRef = ref<HTMLElement>();
 
-// Event handlers
+// Event handlers - emit detail payload for custom event
 const handleToggle = (event: Event) => {
   const detail = (event as CustomEvent).detail;
   emit("toggle", detail);
+  // Also emit for v-model support
+  emit("update:open", detail.open);
 };
 
 // Setup event listeners

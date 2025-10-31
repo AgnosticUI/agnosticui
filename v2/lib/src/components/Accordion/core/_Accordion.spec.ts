@@ -800,4 +800,93 @@ describe('AccordionItem - Accessibility Compliance', () => {
       expect(styleContent).toContain('transform: rotate(45deg)');
     });
   });
+
+  describe('Event Handling - Callback Props Pattern', () => {
+    it('should fire onToggle callback', async () => {
+      let callbackEventDetail: any = null;
+      el.onToggle = (event: any) => {
+        callbackEventDetail = event.detail;
+      };
+
+      // Toggle open
+      el.toggle();
+      await el.updateComplete;
+
+      expect(callbackEventDetail).toBeTruthy();
+      expect(callbackEventDetail.open).toBe(true);
+
+      // Toggle closed
+      el.toggle();
+      await el.updateComplete;
+
+      expect(callbackEventDetail.open).toBe(false);
+    });
+
+    it('should work without callback defined', async () => {
+      // Should not throw when callback is not defined
+      expect(() => {
+        el.toggle();
+      }).not.toThrow();
+    });
+  });
+
+  describe('Event Handling - Dual Dispatch Pattern', () => {
+    it('should fire both addEventListener and callback for toggle event', async () => {
+      let eventListenerCalled = false;
+      let callbackCalled = false;
+
+      el.addEventListener('toggle', () => {
+        eventListenerCalled = true;
+      });
+
+      el.onToggle = () => {
+        callbackCalled = true;
+      };
+
+      el.toggle();
+      await el.updateComplete;
+
+      // Both should have been called
+      expect(eventListenerCalled).toBe(true);
+      expect(callbackCalled).toBe(true);
+    });
+
+    it('should dispatch composed event', async () => {
+      let eventComposed = false;
+      let eventBubbles = false;
+
+      el.addEventListener('toggle', (event: any) => {
+        eventComposed = event.composed;
+        eventBubbles = event.bubbles;
+      });
+
+      el.toggle();
+      await el.updateComplete;
+
+      // Should be composed and bubbling
+      expect(eventComposed).toBe(true);
+      expect(eventBubbles).toBe(true);
+    });
+
+    it('should provide correct detail in both patterns', async () => {
+      let listenerDetail: any = null;
+      let callbackDetail: any = null;
+
+      el.addEventListener('toggle', (event: any) => {
+        listenerDetail = event.detail;
+      });
+
+      el.onToggle = (event: any) => {
+        callbackDetail = event.detail;
+      };
+
+      el.toggle();
+      await el.updateComplete;
+
+      // Both should receive the same detail
+      expect(listenerDetail).toEqual({ open: true });
+      expect(callbackDetail).toEqual({ open: true });
+      expect(listenerDetail).toEqual(callbackDetail);
+    });
+  });
 });
