@@ -171,9 +171,9 @@ export const EventTesting: Story = {
         <ReactTabs
           {...args}
           activeTab={activeTab}
-          onTabChange={(detail) => {
-            setActiveTab(detail.activeTab);
-            args.onTabChange?.(detail);
+          onTabChange={(event) => {
+            setActiveTab(event.detail.activeTab);
+            args.onTabChange?.(event);
           }}
         >
           <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
@@ -205,6 +205,76 @@ export const LabelledBy: Story = {
       </ReactTabs>
     </div>
   ),
+};
+
+export const OnTabChangeWithState: Story = {
+  args: {
+    ariaLabel: 'onTabChange with State',
+  },
+  render: (args: ReactTabsProps) => {
+    const [activeTab, setActiveTab] = useState(0);
+    const [eventLog, setEventLog] = useState<string>('Click a tab to see events...');
+
+    return (
+      <div>
+        <p><strong>onTabChange Event Handler:</strong></p>
+        <p>{eventLog}</p>
+        <ReactTabs
+          {...args}
+          activeTab={activeTab}
+          onTabChange={(event) => {
+            console.log('tab-change event:', event.detail);
+            setActiveTab(event.detail.activeTab);
+            setEventLog(`Active: ${event.detail.activeTab}, Previous: ${event.detail.previousTab}`);
+            args.onTabChange?.(event);
+          }}
+        >
+          <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+          <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+          <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+          <ReactTabPanel slot="panel" id="panel-1">Content for Tab 1</ReactTabPanel>
+          <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
+          <ReactTabPanel slot="panel" id="panel-3">Content for Tab 3</ReactTabPanel>
+        </ReactTabs>
+      </div>
+    );
+  },
+};
+
+export const ControlledTab: Story = {
+  args: {
+    ariaLabel: 'Controlled Tab',
+  },
+  render: (args: ReactTabsProps) => {
+    const [activeTab, setActiveTab] = useState(0);
+
+    return (
+      <div>
+        <p><strong>Controlled Tab Example:</strong></p>
+        <div style={{ marginBottom: '1rem' }}>
+          <button onClick={() => setActiveTab(0)}>Go to Tab 1</button>{' '}
+          <button onClick={() => setActiveTab(1)}>Go to Tab 2</button>{' '}
+          <button onClick={() => setActiveTab(2)}>Go to Tab 3</button>
+        </div>
+        <p>Current Active Tab: {activeTab}</p>
+        <ReactTabs
+          {...args}
+          activeTab={activeTab}
+          onTabChange={(event) => {
+            setActiveTab(event.detail.activeTab);
+            args.onTabChange?.(event);
+          }}
+        >
+          <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+          <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+          <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+          <ReactTabPanel slot="panel" id="panel-1">Content for Tab 1</ReactTabPanel>
+          <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
+          <ReactTabPanel slot="panel" id="panel-3">Content for Tab 3</ReactTabPanel>
+        </ReactTabs>
+      </div>
+    );
+  },
 };
 
 export const CSSPartsCustomization: Story = {

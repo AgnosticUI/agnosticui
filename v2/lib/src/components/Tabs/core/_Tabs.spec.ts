@@ -794,4 +794,99 @@ describe('Tabs - Tab Interaction', () => {
 
     element.removeEventListener('keydown', keydownSpy);
   });
+
+  describe('Event Handling - Callback Props Pattern', () => {
+    it('should fire onTabChange callback', async () => {
+      element.innerHTML = `
+        <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+        <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+        <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+      `;
+
+      await element.updateComplete;
+      (element as any)._updateTabsAndPanels();
+
+      let callbackEventDetail: any = null;
+      element.onTabChange = (event: any) => {
+        callbackEventDetail = event.detail;
+      };
+
+      const tabs = element.querySelectorAll('ag-tab');
+
+      // Click second tab
+      tabs[1].click();
+      await element.updateComplete;
+
+      // Should have fired callback
+      expect(callbackEventDetail).toBeTruthy();
+      expect(callbackEventDetail.activeTab).toBe(1);
+      expect(callbackEventDetail.previousTab).toBe(0);
+    });
+  });
+
+  describe('Event Handling - Dual Dispatch Pattern', () => {
+    it('should fire both addEventListener and callback for tab-change event', async () => {
+      element.innerHTML = `
+        <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+        <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+        <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+      `;
+
+      await element.updateComplete;
+      (element as any)._updateTabsAndPanels();
+
+      let eventListenerCalled = false;
+      let callbackCalled = false;
+
+      element.addEventListener('tab-change', () => {
+        eventListenerCalled = true;
+      });
+
+      element.onTabChange = () => {
+        callbackCalled = true;
+      };
+
+      const tabs = element.querySelectorAll('ag-tab');
+
+      // Click second tab
+      tabs[1].click();
+      await element.updateComplete;
+
+      // Both should have been called
+      expect(eventListenerCalled).toBe(true);
+      expect(callbackCalled).toBe(true);
+    });
+
+    it('should dispatch composed event', async () => {
+      element.innerHTML = `
+        <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+        <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+        <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+        <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+      `;
+
+      await element.updateComplete;
+      (element as any)._updateTabsAndPanels();
+
+      let eventComposed = false;
+      let eventBubbles = false;
+
+      element.addEventListener('tab-change', (event: any) => {
+        eventComposed = event.composed;
+        eventBubbles = event.bubbles;
+      });
+
+      const tabs = element.querySelectorAll('ag-tab');
+
+      // Click second tab
+      tabs[1].click();
+      await element.updateComplete;
+
+      // Should be composed and bubbling
+      expect(eventComposed).toBe(true);
+      expect(eventBubbles).toBe(true);
+    });
+  });
 });

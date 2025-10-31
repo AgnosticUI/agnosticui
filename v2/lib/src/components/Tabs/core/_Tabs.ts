@@ -145,6 +145,7 @@ export interface TabsProps {
   orientation?: TabsOrientation;
   ariaLabel?: string;
   ariaLabelledBy?: string;
+  // Event callback prop
   onTabChange?: (event: TabChangeEvent) => void;
 }
 
@@ -179,6 +180,9 @@ export class Tabs extends LitElement implements TabsProps {
 
   @property({ type: String, attribute: 'aria-labelledby' })
   declare ariaLabelledBy: string;
+
+  @property({ attribute: false })
+  declare onTabChange?: (event: TabChangeEvent) => void;
 
   @state()
   private declare _tabs: Tab[];
@@ -393,14 +397,21 @@ export class Tabs extends LitElement implements TabsProps {
         // Focus the newly activated tab
         this._tabs[index].focus();
 
-        // Dispatch custom event
-        this.dispatchEvent(new CustomEvent('tab-change', {
+        // Dual-dispatch: dispatchEvent + callback
+        const tabChangeEvent = new CustomEvent<TabChangeEventDetail>('tab-change', {
           detail: {
             activeTab: index,
             previousTab: previousTab
           },
-          bubbles: true
-        }));
+          bubbles: true,
+          composed: true,
+        });
+        this.dispatchEvent(tabChangeEvent);
+
+        // Invoke callback if provided
+        if (this.onTabChange) {
+          this.onTabChange(tabChangeEvent);
+        }
       } else {
         // If clicking the same tab, just ensure it has focus
         this._tabs[index].focus();

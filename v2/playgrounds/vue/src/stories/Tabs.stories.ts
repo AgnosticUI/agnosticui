@@ -182,6 +182,119 @@ export const EventTesting: Story = {
   }),
 };
 
+export const VModelActiveTab: Story = {
+  args: {
+    ariaLabel: 'v-model:activeTab Example',
+  },
+  render: (args: VueTabsProps) => ({
+    components: { VueTabs, VueTab, VueTabPanel },
+    setup() {
+      const activeTab = ref(0);
+      return { args, activeTab };
+    },
+    template: `
+      <div>
+        <p><strong>v-model:activeTab Pattern:</strong></p>
+        <div style="margin-bottom: 1rem">
+          <button @click="activeTab = 0">Go to Tab 1</button>
+          <button @click="activeTab = 1">Go to Tab 2</button>
+          <button @click="activeTab = 2">Go to Tab 3</button>
+        </div>
+        <p>Current Active Tab: {{ activeTab }}</p>
+        <VueTabs
+          v-model:activeTab="activeTab"
+          :aria-label="args.ariaLabel"
+        >
+          <VueTab panel="panel-1">Tab 1</VueTab>
+          <VueTab panel="panel-2">Tab 2</VueTab>
+          <VueTab panel="panel-3">Tab 3</VueTab>
+          <VueTabPanel panel="panel-1">Content for Tab 1</VueTabPanel>
+          <VueTabPanel panel="panel-2">Content for Tab 2</VueTabPanel>
+          <VueTabPanel panel="panel-3">Content for Tab 3</VueTabPanel>
+        </VueTabs>
+      </div>
+    `,
+  }),
+};
+
+export const TabChangeEvent: Story = {
+  args: {
+    ariaLabel: '@tab-change Event',
+  },
+  render: (args: VueTabsPropsWithEvents) => ({
+    components: { VueTabs, VueTab, VueTabPanel },
+    setup() {
+      const eventLog = ref('Click a tab to see events...');
+      const onTabChange = (detail: { activeTab: number; previousTab: number }) => {
+        console.log('@tab-change event:', detail);
+        eventLog.value = `Active: ${detail.activeTab}, Previous: ${detail.previousTab}`;
+        args.onTabChange?.(detail);
+      };
+      return { args, eventLog, onTabChange };
+    },
+    template: `
+      <div>
+        <p><strong>@tab-change Event Handler:</strong></p>
+        <p>{{ eventLog }}</p>
+        <VueTabs
+          :aria-label="args.ariaLabel"
+          @tab-change="onTabChange"
+        >
+          <VueTab panel="panel-1">Tab 1</VueTab>
+          <VueTab panel="panel-2">Tab 2</VueTab>
+          <VueTab panel="panel-3">Tab 3</VueTab>
+          <VueTabPanel panel="panel-1">Content for Tab 1</VueTabPanel>
+          <VueTabPanel panel="panel-2">Content for Tab 2</VueTabPanel>
+          <VueTabPanel panel="panel-3">Content for Tab 3</VueTabPanel>
+        </VueTabs>
+      </div>
+    `,
+  }),
+};
+
+export const BothPatterns: Story = {
+  args: {
+    ariaLabel: 'Both v-model and @tab-change',
+  },
+  render: (args: VueTabsPropsWithEvents) => ({
+    components: { VueTabs, VueTab, VueTabPanel },
+    setup() {
+      const activeTab = ref(0);
+      const eventLog = ref('Click a tab or button...');
+      const onTabChange = (detail: { activeTab: number; previousTab: number }) => {
+        console.log('@tab-change event:', detail);
+        eventLog.value = `Event fired! Active: ${detail.activeTab}, Previous: ${detail.previousTab}`;
+        args.onTabChange?.(detail);
+      };
+      return { args, activeTab, eventLog, onTabChange };
+    },
+    template: `
+      <div>
+        <p><strong>Combined v-model:activeTab + @tab-change:</strong></p>
+        <div style="margin-bottom: 1rem">
+          <button @click="activeTab = 0">Go to Tab 1</button>
+          <button @click="activeTab = 1">Go to Tab 2</button>
+          <button @click="activeTab = 2">Go to Tab 3</button>
+        </div>
+        <p>Current Active Tab: {{ activeTab }}</p>
+        <p>{{ eventLog }}</p>
+        <VueTabs
+          v-model:activeTab="activeTab"
+          :aria-label="args.ariaLabel"
+          @tab-change="onTabChange"
+        >
+          <VueTab panel="panel-1">Tab 1</VueTab>
+          <VueTab panel="panel-2">Tab 2</VueTab>
+          <VueTab panel="panel-3">Tab 3</VueTab>
+          <VueTabPanel panel="panel-1">Content for Tab 1</VueTabPanel>
+          <VueTabPanel panel="panel-2">Content for Tab 2</VueTabPanel>
+          <VueTabPanel panel="panel-3">Content for Tab 3</VueTabPanel>
+        </VueTabs>
+      </div>
+    `,
+  }),
+};
+
 export const CSSPartsCustomization: Story = {
   args: {
     ariaLabel: 'Customized Tabs',
