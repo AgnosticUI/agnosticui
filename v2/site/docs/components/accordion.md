@@ -297,9 +297,104 @@ The `Accordion` component is a simple container with no specific props. It wraps
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `@toggle` (Vue) / `onToggle` (React) / `toggle` (Lit) | `{ open: boolean }` | Emitted when the accordion item is toggled between open and closed states |
+The AccordionItem component follows AgnosticUI v2 event conventions with **dual-dispatch** for the `toggle` custom event - you can use either `addEventListener` or callback props (e.g., `onToggle`).
+
+| Event | Framework | Detail | Description |
+| -------- | ----------------------------------------------------- | ------------------- | ------------------------------ |
+| `toggle` | Vue: `@toggle`<br>React: `onToggle`<br>Lit: `@toggle` or `.onToggle` | `{ open: boolean }` | Fired when the accordion item is toggled between open and closed states. |
+
+### Event Handling Examples
+
+::: details Vue
+```vue
+<template>
+  <!-- Using @toggle emit -->
+  <VueAccordionItem @toggle="handleToggle">
+    <template #header>Toggle me</template>
+    <template #content>Content here</template>
+  </VueAccordionItem>
+
+  <!-- Using v-model:open for two-way binding -->
+  <VueAccordionItem v-model:open="isOpen">
+    <template #header>Controlled accordion</template>
+    <template #content>Content here</template>
+  </VueAccordionItem>
+
+  <!-- Both patterns together -->
+  <VueAccordionItem
+    v-model:open="isOpen"
+    @toggle="handleToggle"
+  >
+    <template #header>Both patterns</template>
+    <template #content>Content here</template>
+  </VueAccordionItem>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { VueAccordionItem } from 'agnosticui-core/accordion/vue';
+
+const isOpen = ref(false);
+
+const handleToggle = (detail) => {
+  console.log('Toggle event:', detail);
+  // detail: { open: true/false }
+};
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { useState } from 'react';
+import { AccordionItem, ItemHeader, ItemContent } from 'agnosticui-core/accordion/react';
+
+export default function AccordionExample() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = (event) => {
+    console.log('Toggle event:', event.detail);
+    // event.detail: { open: true/false }
+    setIsOpen(event.detail.open);
+  };
+
+  return (
+    <AccordionItem open={isOpen} onToggle={handleToggle}>
+      <ItemHeader>Click to toggle</ItemHeader>
+      <ItemContent>Accordion content here</ItemContent>
+    </AccordionItem>
+  );
+}
+```
+:::
+
+::: details Lit (Web Components)
+```html
+<script type="module">
+  import 'agnosticui-core/accordion';
+
+  const item = document.querySelector('#my-accordion');
+
+  // Pattern 1: Using addEventListener (standard Web Components)
+  item.addEventListener('toggle', (event) => {
+    console.log('Toggle event:', event.detail);
+    // event.detail: { open: true/false }
+  });
+
+  // Pattern 2: Using callback prop
+  item.onToggle = (event) => {
+    console.log('Toggle event (callback):', event.detail);
+  };
+
+  // Both patterns work simultaneously (dual-dispatch)
+</script>
+
+<ag-accordion-item id="my-accordion">
+  <span slot="header">Click to toggle</span>
+  <div slot="content">Accordion content here</div>
+</ag-accordion-item>
+```
+:::
 
 ## CSS Shadow Parts
 
