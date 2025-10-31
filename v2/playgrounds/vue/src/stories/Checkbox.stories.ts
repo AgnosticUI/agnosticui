@@ -1,5 +1,6 @@
 
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { ref } from 'vue';
 import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
 
 const meta = {
@@ -168,6 +169,156 @@ export const LabelPosition: Story = {
       <div style="display: flex; flex-direction: column; gap: 1rem;">
         <VueCheckbox name="position" value="1" :size="args.size" :theme="args.theme" label-text="Label on End (Default)" label-position="end" :checked="true" />
         <VueCheckbox name="position" value="2" :size="args.size" :theme="args.theme" label-text="Label on Start" label-position="start" :checked="true" />
+      </div>
+    `,
+  }),
+};
+
+export const EventTesting: Story = {
+  args: {
+    labelText: 'Event Testing',
+  },
+  render: (args) => ({
+    components: { VueCheckbox },
+    setup() {
+      const vModelChecked = ref(false);
+      const vModelIndeterminate = ref(false);
+      const eventChecked = ref(false);
+
+      const handleChange = (detail: any) => {
+        console.log('change event:', detail);
+        eventChecked.value = detail.checked;
+      };
+
+      return { args, vModelChecked, vModelIndeterminate, eventChecked, handleChange };
+    },
+    template: `
+      <div style="display: flex; flex-direction: column; align-items: flex-start; padding: 1rem; gap: 1.5rem;">
+        <div>
+          <h3 style="margin: 0 0 0.5rem 0;">Event Handling in Vue</h3>
+          <p style="margin: 0; color: #6b7280; font-size: 0.875rem;">
+            Vue wrapper supports @change event and v-model:checked / v-model:indeterminate
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%;">
+          <!-- Pattern 1: @change event -->
+          <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+            <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+              Pattern 1: @change Event
+            </p>
+            <VueCheckbox
+              name="test1"
+              value="option1"
+              :label-text="args.labelText"
+              :size="args.size"
+              theme="default"
+              @change="handleChange"
+            />
+            <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+              Event emits detail with: checked, value, name, indeterminate
+            </p>
+            <p style="font-size: 0.75rem; color: #059669; margin: 0.25rem 0 0 0;">
+              Status: {{ eventChecked ? 'Checked' : 'Unchecked' }}
+            </p>
+          </div>
+
+          <!-- Pattern 2: v-model:checked (two-way binding) -->
+          <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+            <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+              Pattern 2: v-model:checked (Two-Way Binding)
+            </p>
+            <VueCheckbox
+              name="test2"
+              value="option2"
+              label-text="Controlled with v-model"
+              :size="args.size"
+              theme="primary"
+              v-model:checked="vModelChecked"
+            />
+            <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+              Uses update:checked emit for reactive two-way binding
+            </p>
+            <p style="font-size: 0.75rem; color: #059669; margin: 0.25rem 0 0 0;">
+              v-model value: {{ vModelChecked }}
+            </p>
+            <button
+              @click="vModelChecked = !vModelChecked"
+              style="margin-top: 0.5rem; padding: 0.25rem 0.75rem; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer;"
+            >
+              Toggle programmatically
+            </button>
+          </div>
+
+          <!-- Pattern 3: v-model:indeterminate -->
+          <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+            <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+              Pattern 3: v-model:indeterminate
+            </p>
+            <VueCheckbox
+              name="test3"
+              value="option3"
+              label-text="Indeterminate state control"
+              :size="args.size"
+              theme="monochrome"
+              v-model:indeterminate="vModelIndeterminate"
+            />
+            <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+              Uses update:indeterminate emit (unique to checkbox)
+            </p>
+            <p style="font-size: 0.75rem; color: #059669; margin: 0.25rem 0 0 0;">
+              Indeterminate: {{ vModelIndeterminate }}
+            </p>
+            <button
+              @click="vModelIndeterminate = !vModelIndeterminate"
+              style="margin-top: 0.5rem; padding: 0.25rem 0.75rem; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer;"
+            >
+              Toggle indeterminate programmatically
+            </button>
+          </div>
+
+          <!-- Pattern 4: Both event + v-model -->
+          <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+            <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+              Pattern 4: Both Event + v-model
+            </p>
+            <VueCheckbox
+              name="test4"
+              value="option4"
+              label-text="With both patterns"
+              :size="args.size"
+              theme="default"
+              v-model:checked="vModelChecked"
+              @change="(detail) => console.log('Event also fired:', detail)"
+            />
+            <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+              Both @change and v-model:checked work together
+            </p>
+          </div>
+
+          <!-- Pattern 5: Native click event -->
+          <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem;">
+            <p style="margin: 0 0 0.75rem 0; font-weight: 600;">
+              Pattern 5: Native Click Event
+            </p>
+            <VueCheckbox
+              name="test5"
+              value="option5"
+              label-text="With click handler"
+              :size="args.size"
+              theme="primary"
+              @click="(e) => console.log('Click event:', e)"
+              @change="(detail) => console.log('Change event:', detail)"
+            />
+            <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
+              Both native (@click) and custom (@change) events work
+            </p>
+          </div>
+        </div>
+
+        <p style="font-size: 0.875rem; color: #6b7280; margin: 0; padding: 1rem; background: #f9fafb; border-radius: 8px; width: 100%;">
+          💡 Check the Actions panel below and browser console for event logs
+        </p>
       </div>
     `,
   }),
