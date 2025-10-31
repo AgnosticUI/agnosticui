@@ -274,9 +274,119 @@ export default function TabsExample() {
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `@tab-change` (Vue) / `onTabChange` (React) / `tab-change` (Lit) | `{ activeTab: number, previousTab: number }` | Emitted when the active tab changes |
+The Tabs component follows AgnosticUI v2 event conventions with **dual-dispatch** for the `tab-change` custom event - you can use either `addEventListener` or callback props (e.g., `onTabChange`).
+
+| Event | Framework | Detail | Description |
+| -------- | ----------------------------------------------------- | ------------------- | ------------------------------ |
+| `tab-change` | Vue: `@tab-change`<br>React: `onTabChange`<br>Lit: `@tab-change` or `.onTabChange` | `{ activeTab: number, previousTab: number }` | Fired when the active tab changes. |
+
+### Event Handling Examples
+
+::: details Vue
+```vue
+<template>
+  <!-- Using @tab-change emit -->
+  <VueTabs @tab-change="handleTabChange" aria-label="Event example">
+    <VueTab panel="panel-1">Tab 1</VueTab>
+    <VueTab panel="panel-2">Tab 2</VueTab>
+    <VueTabPanel panel="panel-1">Content 1</VueTabPanel>
+    <VueTabPanel panel="panel-2">Content 2</VueTabPanel>
+  </VueTabs>
+
+  <!-- Using v-model:activeTab for two-way binding -->
+  <VueTabs v-model:activeTab="currentTab" aria-label="v-model example">
+    <VueTab panel="panel-1">Tab 1</VueTab>
+    <VueTab panel="panel-2">Tab 2</VueTab>
+    <VueTabPanel panel="panel-1">Content 1</VueTabPanel>
+    <VueTabPanel panel="panel-2">Content 2</VueTabPanel>
+  </VueTabs>
+
+  <!-- Both patterns together -->
+  <VueTabs
+    v-model:activeTab="currentTab"
+    @tab-change="handleTabChange"
+    aria-label="Combined example"
+  >
+    <VueTab panel="panel-1">Tab 1</VueTab>
+    <VueTab panel="panel-2">Tab 2</VueTab>
+    <VueTabPanel panel="panel-1">Content 1</VueTabPanel>
+    <VueTabPanel panel="panel-2">Content 2</VueTabPanel>
+  </VueTabs>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import VueTabs, { VueTab, VueTabPanel } from 'agnosticui-core/tabs/vue';
+
+const currentTab = ref(0);
+
+const handleTabChange = (detail) => {
+  console.log('Tab changed:', detail);
+  // detail: { activeTab: 0, previousTab: 1 }
+};
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { useState } from 'react';
+import { ReactTabs, ReactTab, ReactTabPanel } from 'agnosticui-core/tabs/react';
+
+export default function TabsEventExample() {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTabChange = (event) => {
+    console.log('Tab changed:', event.detail);
+    // event.detail: { activeTab: 0, previousTab: 1 }
+    setActiveTab(event.detail.activeTab);
+  };
+
+  return (
+    <ReactTabs
+      activeTab={activeTab}
+      onTabChange={handleTabChange}
+      ariaLabel="Event example"
+    >
+      <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+      <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+      <ReactTabPanel slot="panel" id="panel-1">Content 1</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-2">Content 2</ReactTabPanel>
+    </ReactTabs>
+  );
+}
+```
+:::
+
+::: details Lit (Web Components)
+```html
+<script type="module">
+  import 'agnosticui-core/tabs';
+
+  const tabs = document.querySelector('#my-tabs');
+
+  // Pattern 1: Using addEventListener (standard Web Components)
+  tabs.addEventListener('tab-change', (event) => {
+    console.log('Tab changed:', event.detail);
+    // event.detail: { activeTab: 0, previousTab: 1 }
+  });
+
+  // Pattern 2: Using callback prop
+  tabs.onTabChange = (event) => {
+    console.log('Tab changed (callback):', event.detail);
+  };
+
+  // Both patterns work simultaneously (dual-dispatch)
+</script>
+
+<ag-tabs id="my-tabs" aria-label="Event example">
+  <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
+  <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
+  <ag-tab-panel slot="panel" panel="panel-1">Content 1</ag-tab-panel>
+  <ag-tab-panel slot="panel" panel="panel-2">Content 2</ag-tab-panel>
+</ag-tabs>
+```
+:::
 
 ## Components
 
