@@ -40,15 +40,14 @@ npm install agnosticui-core
 
 ### Events
 
-| Event | Detail | Description |
-|-------|--------|-------------|
-| `change` | `{ value: string \| string[] }` | Emitted when selection changes |
-| `focus` | Native FocusEvent | Emitted when select receives focus |
-| `blur` | Native FocusEvent | Emitted when select loses focus |
-| `input` | Native InputEvent | Emitted on input |
-| `click` | Native MouseEvent | Emitted on click |
-| `keydown` | Native KeyboardEvent | Emitted on key down |
-| `keyup` | Native KeyboardEvent | Emitted on key up |
+The Select component supports both custom and native events following the AgnosticUI v2 [event conventions](../EVENT_CONVENTIONS.md).
+
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `change` | Vue: `@change`<br>React: `onChange`<br>Lit: `@change` | `{ value: string \| string[] }` | Fired when the selected value changes. **Custom event** with detail payload. |
+| `focus` | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus` | `FocusEvent` | Fired when select receives focus. **Native event**, re-dispatched from host. |
+| `blur` | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur` | `FocusEvent` | Fired when select loses focus. **Native event**, re-dispatched from host. |
+| `click` | Vue: `@click`<br>React: `onClick`<br>Lit: `@click` | `MouseEvent` | Fired when select is clicked. **Native event**. |
 
 ### Slots
 
@@ -109,10 +108,13 @@ function App() {
 
 ```vue
 <script setup>
+import { ref } from 'vue';
 import { VueSelect } from 'agnosticui-core/select/vue';
 
-const handleChange = (e) => {
-  console.log('Selected:', e.detail.value);
+const selectedPlayer = ref('');
+
+const handleChange = (detail) => {
+  console.log('Selected:', detail.value);
 };
 </script>
 
@@ -122,6 +124,7 @@ const handleChange = (e) => {
     <VueSelect
       id="tennis"
       name="tennis"
+      v-model:value="selectedPlayer"
       @change="handleChange"
     >
       <option value="">Select a player</option>
@@ -129,7 +132,128 @@ const handleChange = (e) => {
       <option value="roger">Roger Federer</option>
       <option value="rafa">Rafael Nadal</option>
     </VueSelect>
+    <p v-if="selectedPlayer">Selected: {{ selectedPlayer }}</p>
   </div>
+</template>
+```
+
+**Vue v-model Support:**
+- `v-model:value` - Two-way binding for the selected value (single or multiple)
+
+## Event Handling Examples
+
+The Select component supports both **addEventListener** and **callback props** patterns for all events.
+
+### Lit - Dual Dispatch Pattern
+
+```ts
+import 'agnosticui-core/select';
+import { html } from 'lit';
+
+// Pattern 1: addEventListener
+const select = document.querySelector('ag-select');
+select.addEventListener('change', (e) => {
+  console.log('Value changed:', e.detail.value);
+});
+
+// Pattern 2: Callback props
+const template = html`
+  <ag-select
+    .onChange=${(e) => console.log('Callback:', e.detail.value)}
+    .onFocus=${() => console.log('Focused')}
+    .onBlur=${() => console.log('Blurred')}
+  >
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </ag-select>
+`;
+```
+
+### React - Event Props
+
+```tsx
+import { ReactSelect } from 'agnosticui-core/select/react';
+import { useState } from 'react';
+
+function SelectExample() {
+  const [value, setValue] = useState('');
+
+  return (
+    <ReactSelect
+      onChange={(e) => setValue(e.detail.value as string)}
+      onFocus={() => console.log('Focused')}
+      onBlur={() => console.log('Blurred')}
+    >
+      <option value="">Choose...</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+    </ReactSelect>
+  );
+}
+```
+
+### Vue - Event Emits & v-model
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { VueSelect } from 'agnosticui-core/select/vue';
+
+const selectedValue = ref('');
+const eventLog = ref([]);
+
+const handleChange = (detail) => {
+  eventLog.value.push(`Changed to: ${detail.value}`);
+};
+</script>
+
+<template>
+  <VueSelect
+    v-model:value="selectedValue"
+    @change="handleChange"
+    @focus="() => eventLog.push('Focused')"
+    @blur="() => eventLog.push('Blurred')"
+  >
+    <option value="">Choose...</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </VueSelect>
+
+  <!-- Display current value and event log -->
+  <p>Current: {{ selectedValue }}</p>
+  <ul>
+    <li v-for="(event, i) in eventLog" :key="i">{{ event }}</li>
+  </ul>
+</template>
+```
+
+### Multiple Select with Events
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { VueSelect } from 'agnosticui-core/select/vue';
+
+const selectedPlayers = ref<string[]>([]);
+
+const handleChange = (detail) => {
+  console.log('Selected players:', detail.value);
+};
+</script>
+
+<template>
+  <VueSelect
+    v-model:value="selectedPlayers"
+    @change="handleChange"
+    :multiple="true"
+    :multipleSize="5"
+  >
+    <option value="serena">Serena Williams</option>
+    <option value="roger">Roger Federer</option>
+    <option value="rafa">Rafael Nadal</option>
+  </VueSelect>
+
+  <p>Selected: {{ selectedPlayers.join(', ') }}</p>
 </template>
 ```
 
