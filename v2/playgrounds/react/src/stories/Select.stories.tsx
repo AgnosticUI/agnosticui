@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ReactSelect } from '../../../../lib/src/components/Select/react';
 
@@ -201,4 +202,134 @@ export const WithChangeHandler: Story = {
       </p>
     </div>
   ),
+};
+
+export const EventTesting: Story = {
+  render: () => {
+    const [events, setEvents] = React.useState<string[]>([]);
+
+    const logEvent = (message: string) => {
+      setEvents(prev => {
+        const newEvents = [message, ...prev];
+        return newEvents.slice(0, 8); // Keep last 8
+      });
+    };
+
+    return (
+      <div style={{ maxWidth: '600px' }}>
+        <h3 style={{ marginBottom: '1rem' }}>Event Testing - React onChange Pattern</h3>
+        <label htmlFor="event-test" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>
+          Select an option to see all events
+        </label>
+        <ReactSelect
+          id="event-test"
+          name="event-test"
+          onChange={(e) => logEvent(`onChange - value: ${e.detail.value}`)}
+          onFocus={() => logEvent('onFocus')}
+          onBlur={() => logEvent('onBlur')}
+          onClick={() => logEvent('onClick')}
+        >
+          <option value="">Select an option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </ReactSelect>
+
+        <div style={{
+          marginTop: '1rem',
+          padding: '1rem',
+          background: 'var(--ag-background-secondary)',
+          borderRadius: 'var(--ag-radius-md)'
+        }}>
+          <strong>Event Log (newest first):</strong>
+          <div style={{ marginTop: '0.5rem', fontFamily: 'monospace', fontSize: '0.875rem', lineHeight: 1.6 }}>
+            {events.length === 0 ? '(select an option to see events)' : events.map((event, i) => (
+              <div key={i}>{event}</div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  },
+};
+
+export const WithState: Story = {
+  render: () => {
+    const [selectedValue, setSelectedValue] = React.useState('');
+
+    return (
+      <div style={{ maxWidth: '400px' }}>
+        <h3 style={{ marginBottom: '1rem' }}>Select with React State</h3>
+        <label htmlFor="state-select" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>
+          Choose a fruit
+        </label>
+        <ReactSelect
+          id="state-select"
+          name="fruit"
+          onChange={(e) => setSelectedValue(e.detail.value as string)}
+        >
+          <option value="">Select a fruit</option>
+          <option value="apple">Apple</option>
+          <option value="banana">Banana</option>
+          <option value="orange">Orange</option>
+          <option value="grape">Grape</option>
+        </ReactSelect>
+
+        {selectedValue && (
+          <div style={{
+            marginTop: '1rem',
+            padding: '1rem',
+            background: 'var(--ag-background-secondary)',
+            borderRadius: 'var(--ag-radius-md)'
+          }}>
+            <strong>Selected:</strong> {selectedValue}
+          </div>
+        )}
+      </div>
+    );
+  },
+};
+
+export const MultipleWithState: Story = {
+  render: () => {
+    const [selectedPlayers, setSelectedPlayers] = React.useState<string[]>([]);
+
+    return (
+      <div style={{ maxWidth: '400px' }}>
+        <h3 style={{ marginBottom: '1rem' }}>Multiple Select with React State</h3>
+        <label htmlFor="multiple-state" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>
+          Select Tennis Players (Ctrl/Cmd + Click)
+        </label>
+        <ReactSelect
+          id="multiple-state"
+          name="players"
+          multiple
+          multipleSize={5}
+          onChange={(e) => setSelectedPlayers(e.detail.value as string[])}
+        >
+          <option value="andre">Andre Agassi</option>
+          <option value="serena">Serena Williams</option>
+          <option value="roger">Roger Federer</option>
+          <option value="mac">John McEnroe</option>
+          <option value="martina">Martina Navratilova</option>
+        </ReactSelect>
+
+        {selectedPlayers.length > 0 && (
+          <div style={{
+            marginTop: '1rem',
+            padding: '1rem',
+            background: 'var(--ag-background-secondary)',
+            borderRadius: 'var(--ag-radius-md)'
+          }}>
+            <strong>Selected ({selectedPlayers.length}):</strong>
+            <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
+              {selectedPlayers.map((player) => (
+                <li key={player}>{player}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  },
 };

@@ -212,4 +212,154 @@ describe('ag-select', () => {
     // This is expected behavior - once moved, it's in shadow DOM
     expect(select.options.length).toBe(4);
   });
+
+  describe('Event Handling - addEventListener Pattern', () => {
+    it('should fire change event via addEventListener', async () => {
+      let changeEvent: CustomEvent<{ value: string | string[] }> | null = null;
+      element.addEventListener('change', (e: Event) => {
+        changeEvent = e as CustomEvent<{ value: string | string[] }>;
+      });
+
+      const select = element.shadowRoot?.querySelector('select') as HTMLSelectElement;
+      select.value = '2';
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+
+      await element.updateComplete;
+
+      expect(changeEvent).toBeDefined();
+      expect(changeEvent!.detail.value).toBe('2');
+      expect(changeEvent!.bubbles).toBe(true);
+      expect(changeEvent!.composed).toBe(true);
+    });
+
+    it('should fire focus event via addEventListener', async () => {
+      let focusEvent: FocusEvent | null = null;
+      element.addEventListener('focus', (e: Event) => {
+        focusEvent = e as FocusEvent;
+      });
+
+      const select = element.shadowRoot?.querySelector('select') as HTMLSelectElement;
+      select.dispatchEvent(new FocusEvent('focus', { bubbles: true }));
+
+      await element.updateComplete;
+
+      expect(focusEvent).toBeDefined();
+      expect(focusEvent!.bubbles).toBe(true);
+      expect(focusEvent!.composed).toBe(true);
+    });
+
+    it('should fire blur event via addEventListener', async () => {
+      let blurEvent: FocusEvent | null = null;
+      element.addEventListener('blur', (e: Event) => {
+        blurEvent = e as FocusEvent;
+      });
+
+      const select = element.shadowRoot?.querySelector('select') as HTMLSelectElement;
+      select.dispatchEvent(new FocusEvent('blur', { bubbles: true }));
+
+      await element.updateComplete;
+
+      expect(blurEvent).toBeDefined();
+      expect(blurEvent!.bubbles).toBe(true);
+      expect(blurEvent!.composed).toBe(true);
+    });
+
+    it('should fire click event via addEventListener', async () => {
+      let clickEvent: MouseEvent | null = null;
+      element.addEventListener('click', (e: Event) => {
+        clickEvent = e as MouseEvent;
+      });
+
+      const select = element.shadowRoot?.querySelector('select') as HTMLSelectElement;
+      select.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+      await element.updateComplete;
+
+      expect(clickEvent).toBeDefined();
+    });
+  });
+
+  describe('Event Handling - Callback Props Pattern', () => {
+    it('should fire onChange callback', async () => {
+      let changeEvent: CustomEvent<{ value: string | string[] }> | null = null;
+      element.onChange = (e) => {
+        changeEvent = e;
+      };
+
+      const select = element.shadowRoot?.querySelector('select') as HTMLSelectElement;
+      select.value = '3';
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+
+      await element.updateComplete;
+
+      expect(changeEvent).toBeDefined();
+      expect(changeEvent!.detail.value).toBe('3');
+    });
+
+    it('should fire onFocus callback', async () => {
+      let focusEvent: FocusEvent | null = null;
+      element.onFocus = (e) => {
+        focusEvent = e;
+      };
+
+      const select = element.shadowRoot?.querySelector('select') as HTMLSelectElement;
+      select.dispatchEvent(new FocusEvent('focus', { bubbles: true }));
+
+      await element.updateComplete;
+
+      expect(focusEvent).toBeDefined();
+    });
+
+    it('should fire onBlur callback', async () => {
+      let blurEvent: FocusEvent | null = null;
+      element.onBlur = (e) => {
+        blurEvent = e;
+      };
+
+      const select = element.shadowRoot?.querySelector('select') as HTMLSelectElement;
+      select.dispatchEvent(new FocusEvent('blur', { bubbles: true }));
+
+      await element.updateComplete;
+
+      expect(blurEvent).toBeDefined();
+    });
+
+    it('should fire onClick callback', async () => {
+      let clickEvent: MouseEvent | null = null;
+      element.onClick = (e) => {
+        clickEvent = e;
+      };
+
+      const select = element.shadowRoot?.querySelector('select') as HTMLSelectElement;
+      select.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+      await element.updateComplete;
+
+      expect(clickEvent).toBeDefined();
+    });
+  });
+
+  describe('Event Handling - Dual Dispatch Pattern', () => {
+    it('should fire both addEventListener and callback for change event', async () => {
+      let eventListenerCalled = false;
+      let callbackCalled = false;
+
+      element.addEventListener('change', () => {
+        eventListenerCalled = true;
+      });
+
+      element.onChange = () => {
+        callbackCalled = true;
+      };
+
+      const select = element.shadowRoot?.querySelector('select') as HTMLSelectElement;
+      select.value = '2';
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+
+      await element.updateComplete;
+
+      expect(eventListenerCalled).toBe(true);
+      expect(callbackCalled).toBe(true);
+    });
+  });
 });

@@ -1,6 +1,9 @@
 import React from 'react';
-import { createComponent } from '@lit/react';
-import { Select as SelectWC } from '../core/Select.js';
+import { createComponent, type EventName } from '@lit/react';
+import { Select as SelectWC, type SelectChangeEvent } from '../core/Select.js';
+
+// Re-export event types
+export type { SelectChangeEvent, SelectChangeEventDetail } from '../core/Select.js';
 
 export interface ReactSelectProps {
   size?: 'small' | 'large' | '';
@@ -10,11 +13,10 @@ export interface ReactSelectProps {
   multipleSize?: number;
   children?: React.ReactNode;
 
-  // Native select events
-  onChange?: (event: CustomEvent<{ value: string | string[] }>) => void;
+  // Event callbacks
+  onChange?: (event: SelectChangeEvent) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
-  onInput?: (event: InputEvent) => void;
   onClick?: (event: MouseEvent) => void;
   onKeyDown?: (event: KeyboardEvent) => void;
   onKeyUp?: (event: KeyboardEvent) => void;
@@ -25,12 +27,7 @@ export const ReactSelect = createComponent({
   elementClass: SelectWC,
   react: React,
   events: {
-    onChange: 'change',
-    onFocus: 'focus',
-    onBlur: 'blur',
-    onInput: 'input',
-    onClick: 'click',
-    onKeyDown: 'keydown',
-    onKeyUp: 'keyup',
+    // Only map custom events - native events work automatically
+    onChange: 'change' as EventName<SelectChangeEvent>,
   },
 });
