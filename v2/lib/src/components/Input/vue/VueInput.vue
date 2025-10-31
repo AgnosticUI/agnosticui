@@ -9,7 +9,11 @@ import "../core/Input"; // Registers the ag-input web component
  * - Omit callback props (Vue uses emits)
  * - Support v-model:value via update:value emit
  */
-export interface VueInputProps extends Omit<InputProps, "onClick" | "onInput" | "onChange" | "onFocus" | "onBlur"> {}
+export interface VueInputProps
+  extends Omit<
+    InputProps,
+    "onClick" | "onInput" | "onChange" | "onFocus" | "onBlur"
+  > {}
 
 // Define props with defaults
 const props = withDefaults(defineProps<VueInputProps>(), {
@@ -121,15 +125,16 @@ watch(
     @blur="handleBlur"
     v-bind="$attrs"
   >
-    <slot
-      v-if="$slots['addon-left']"
-      name="addon-left"
-      slot="addon-left"
-    ></slot>
-    <slot
-      v-if="$slots['addon-right']"
-      name="addon-right"
-      slot="addon-right"
-    ></slot>
+    <!-- Fix: The slot attribute goes on the content being passed through, not the slot element -->
+    <template v-if="$slots['addon-left']">
+      <span slot="addon-left">
+        <slot name="addon-left"></slot>
+      </span>
+    </template>
+    <template v-if="$slots['addon-right']">
+      <span slot="addon-right">
+        <slot name="addon-right"></slot>
+      </span>
+    </template>
   </ag-input>
 </template>
