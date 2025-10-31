@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { fn } from 'storybook/test';
+import { ref } from 'vue';
 import VueMenu, { VueMenuItem, VueMenuSeparator } from 'agnosticui-core/menu/vue';
 import type { VueMenuProps } from 'agnosticui-core/menu/vue';
 
@@ -274,6 +274,7 @@ export const EventTesting: Story = {
     },
     template: `
       <div>
+        <p v-if="lastEvent" style="margin-top: 1rem;">{{ lastEvent }}</p>
         <VueMenu
           v-bind="args"
           @menu-open="onMenuOpen"
@@ -288,7 +289,6 @@ export const EventTesting: Story = {
             <VueMenuItem value="option3">Option 3</VueMenuItem>
           </template>
         </VueMenu>
-        <p v-if="lastEvent" style="margin-top: 1rem;">{{ lastEvent }}</p>
       </div>
     `,
   }),
