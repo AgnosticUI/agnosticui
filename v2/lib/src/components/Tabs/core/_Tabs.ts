@@ -293,39 +293,39 @@ export class Tabs extends LitElement implements TabsProps {
     switch (key) {
       case 'ArrowRight':
         if (isHorizontal) {
-          newFocusedTab = (this._focusedTab + 1) % this._tabs.length;
+          newFocusedTab = this._findNextEnabledTab(this._focusedTab, 1);
           shouldActivate = this.activation === 'automatic';
           event.preventDefault();
         }
         break;
       case 'ArrowLeft':
         if (isHorizontal) {
-          newFocusedTab = this._focusedTab === 0 ? this._tabs.length - 1 : this._focusedTab - 1;
+          newFocusedTab = this._findNextEnabledTab(this._focusedTab, -1);
           shouldActivate = this.activation === 'automatic';
           event.preventDefault();
         }
         break;
       case 'ArrowDown':
         if (!isHorizontal) {
-          newFocusedTab = (this._focusedTab + 1) % this._tabs.length;
+          newFocusedTab = this._findNextEnabledTab(this._focusedTab, 1);
           shouldActivate = this.activation === 'automatic';
           event.preventDefault();
         }
         break;
       case 'ArrowUp':
         if (!isHorizontal) {
-          newFocusedTab = this._focusedTab === 0 ? this._tabs.length - 1 : this._focusedTab - 1;
+          newFocusedTab = this._findNextEnabledTab(this._focusedTab, -1);
           shouldActivate = this.activation === 'automatic';
           event.preventDefault();
         }
         break;
       case 'Home':
-        newFocusedTab = 0;
+        newFocusedTab = this._findFirstEnabledTab(true);
         shouldActivate = this.activation === 'automatic';
         event.preventDefault();
         break;
       case 'End':
-        newFocusedTab = this._tabs.length - 1;
+        newFocusedTab = this._findFirstEnabledTab(false);
         shouldActivate = this.activation === 'automatic';
         event.preventDefault();
         break;
@@ -370,6 +370,66 @@ export class Tabs extends LitElement implements TabsProps {
         this._activateTab(tabIndex);
       }
     }
+  }
+
+  /**
+   * Helper method to find the next non-disabled tab in a given direction
+   * @param startIndex - The starting index
+   * @param direction - 1 for forward, -1 for backward
+   * @returns The index of the next non-disabled tab, or startIndex if none found
+   */
+  private _findNextEnabledTab(startIndex: number, direction: 1 | -1): number {
+    const length = this._tabs.length;
+    if (length === 0) return startIndex;
+
+    let index = startIndex;
+    let attempts = 0;
+
+    // Try to find a non-disabled tab, but don't loop forever
+    while (attempts < length) {
+      index = direction === 1
+        ? (index + 1) % length
+        : (index === 0 ? length - 1 : index - 1);
+
+      const tab = this._tabs[index];
+      const isDisabled = tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true';
+
+      if (!isDisabled) {
+        return index;
+      }
+
+      attempts++;
+    }
+
+    // If all tabs are disabled, return the start index
+    return startIndex;
+  }
+
+  /**
+   * Helper method to find the first non-disabled tab from start
+   * @param fromStart - If true, search from beginning; if false, search from end
+   * @returns The index of the first non-disabled tab, or 0 if none found
+   */
+  private _findFirstEnabledTab(fromStart: boolean): number {
+    const length = this._tabs.length;
+    if (length === 0) return 0;
+
+    if (fromStart) {
+      for (let i = 0; i < length; i++) {
+        const tab = this._tabs[i];
+        const isDisabled = tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true';
+        if (!isDisabled) return i;
+      }
+    } else {
+      for (let i = length - 1; i >= 0; i--) {
+        const tab = this._tabs[i];
+        const isDisabled = tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true';
+        if (!isDisabled) return i;
+      }
+    }
+
+    // If all tabs are disabled, return 0
+    return 0;
   }
 
   private _setFocusedTab(index: number) {
