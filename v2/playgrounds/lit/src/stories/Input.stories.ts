@@ -882,6 +882,292 @@ export const LabelledBy: Story = {
   `,
 };
 
+// Event Handling Stories - AgnosticUI v2 Event Conventions
+
+// Callback Props Pattern
+export const CallbackPropsPattern: Story = {
+  render: () => {
+    const events: string[] = [];
+    const logEvent = (eventName: string, detail: any) => {
+      const timestamp = new Date().toLocaleTimeString();
+      events.push(`[${timestamp}] ${eventName}: ${JSON.stringify(detail)}`);
+      const log = document.getElementById("event-log-callback");
+      if (log) {
+        log.textContent = events.slice(-5).join("\n");
+      }
+    };
+
+    return html`
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Callback Props Pattern</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Native events work automatically with callback props (onClick, onInput,
+          onChange, onFocus, onBlur)
+        </p>
+
+        <ag-input
+          .label=${"Test All Events"}
+          .placeholder=${"Type, focus, blur..."}
+          .helpText=${"Try typing, focusing, and blurring the input"}
+          .onClick=${(e: MouseEvent) => logEvent("click", { type: "mouse" })}
+          .onInput=${(e: InputEvent) =>
+            logEvent("input", {
+              value: (e.target as any).value,
+            })}
+          .onChange=${(e: Event) =>
+            logEvent("change", {
+              value: (e.target as any).value,
+            })}
+          .onFocus=${(e: FocusEvent) => logEvent("focus", { type: "focus" })}
+          .onBlur=${(e: FocusEvent) => logEvent("blur", { type: "blur" })}
+        ></ag-input>
+
+        <div style="margin-top: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;">Event Log (last 5 events):</h4>
+          <pre
+            id="event-log-callback"
+            style="background: #f3f4f6; padding: 1rem; border-radius: 6px; min-height: 100px; font-size: 0.75rem; overflow-x: auto;"
+          >
+No events yet. Try interacting with the input above.
+</pre
+          >
+        </div>
+      </div>
+    `;
+  },
+};
+
+// addEventListener Pattern
+export const AddEventListenerPattern: Story = {
+  render: () => {
+    const events: string[] = [];
+    const logEvent = (eventName: string, detail: any) => {
+      const timestamp = new Date().toLocaleTimeString();
+      events.push(`[${timestamp}] ${eventName}: ${JSON.stringify(detail)}`);
+      const log = document.getElementById("event-log-listener");
+      if (log) {
+        log.textContent = events.slice(-5).join("\n");
+      }
+    };
+
+    setTimeout(() => {
+      const input = document.querySelector<any>("#event-listener-input");
+      if (input) {
+        input.addEventListener("click", (e: MouseEvent) =>
+          logEvent("click", { type: "mouse" })
+        );
+        input.addEventListener("input", (e: Event) =>
+          logEvent("input", { value: (e.target as any).value })
+        );
+        input.addEventListener("change", (e: Event) =>
+          logEvent("change", { value: (e.target as any).value })
+        );
+        input.addEventListener("focus", (e: FocusEvent) =>
+          logEvent("focus", { type: "focus" })
+        );
+        input.addEventListener("blur", (e: FocusEvent) =>
+          logEvent("blur", { type: "blur" })
+        );
+      }
+    }, 0);
+
+    return html`
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">addEventListener Pattern</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Standard addEventListener works for all native events (click, input,
+          change, focus, blur)
+        </p>
+
+        <ag-input
+          id="event-listener-input"
+          .label=${"Test addEventListener"}
+          .placeholder=${"Type, focus, blur..."}
+          .helpText=${"Events are captured via addEventListener"}
+        ></ag-input>
+
+        <div style="margin-top: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;">Event Log (last 5 events):</h4>
+          <pre
+            id="event-log-listener"
+            style="background: #f3f4f6; padding: 1rem; border-radius: 6px; min-height: 100px; font-size: 0.75rem; overflow-x: auto;"
+          >
+No events yet. Try interacting with the input above.
+</pre
+          >
+        </div>
+      </div>
+    `;
+  },
+};
+
+// Focus and Blur Events
+export const FocusAndBlurEvents: Story = {
+  render: () => {
+    let focusCount = 0;
+    let blurCount = 0;
+
+    const updateCounts = () => {
+      const focusEl = document.getElementById("focus-count");
+      const blurEl = document.getElementById("blur-count");
+      if (focusEl) focusEl.textContent = String(focusCount);
+      if (blurEl) blurEl.textContent = String(blurCount);
+    };
+
+    return html`
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Focus & Blur Event Handling</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Focus and blur events are re-dispatched from the host element and work
+          with both addEventListener and callback props
+        </p>
+
+        <ag-input
+          .label=${"Focus me!"}
+          .placeholder=${"Click in and out..."}
+          .helpText=${"Try focusing and blurring this input"}
+          .onFocus=${() => {
+            focusCount++;
+            updateCounts();
+          }}
+          .onBlur=${() => {
+            blurCount++;
+            updateCounts();
+          }}
+        ></ag-input>
+
+        <div style="margin-top: 1.5rem; display: flex; gap: 2rem;">
+          <div>
+            <strong>Focus events:</strong>
+            <span
+              id="focus-count"
+              style="display: inline-block; margin-left: 0.5rem; padding: 0.25rem 0.75rem; background: #dbeafe; color: #1e40af; border-radius: 9999px; font-weight: bold;"
+            >
+              0
+            </span>
+          </div>
+          <div>
+            <strong>Blur events:</strong>
+            <span
+              id="blur-count"
+              style="display: inline-block; margin-left: 0.5rem; padding: 0.25rem 0.75rem; background: #fef3c7; color: #92400e; border-radius: 9999px; font-weight: bold;"
+            >
+              0
+            </span>
+          </div>
+        </div>
+      </div>
+    `;
+  },
+};
+
+// Reactive Value Updates
+export const ReactiveValueUpdates: Story = {
+  render: () => {
+    let currentValue = "";
+
+    const updateDisplay = (value: string) => {
+      currentValue = value;
+      const displayEl = document.getElementById("current-value-display");
+      if (displayEl) {
+        displayEl.textContent = value || "(empty)";
+        displayEl.style.color = value ? "#059669" : "#6b7280";
+      }
+      const lengthEl = document.getElementById("character-length");
+      if (lengthEl) {
+        lengthEl.textContent = String(value.length);
+      }
+    };
+
+    return html`
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Reactive Value Updates</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Input events fire on every keystroke, enabling real-time reactive UI
+        </p>
+
+        <ag-input
+          .label=${"Type to see reactive updates"}
+          .placeholder=${"Start typing..."}
+          .onInput=${(e: InputEvent) => {
+            const value = (e.target as any).value;
+            updateDisplay(value);
+          }}
+        ></ag-input>
+
+        <div style="margin-top: 1.5rem; padding: 1rem; background: #f9fafb; border-radius: 6px;">
+          <div style="margin-bottom: 0.5rem;">
+            <strong>Current value:</strong>
+            <code
+              id="current-value-display"
+              style="margin-left: 0.5rem; padding: 0.25rem 0.5rem; background: white; border-radius: 4px; color: #6b7280;"
+            >
+              (empty)
+            </code>
+          </div>
+          <div>
+            <strong>Character count:</strong>
+            <span
+              id="character-length"
+              style="margin-left: 0.5rem; font-weight: bold; color: #2563eb;"
+            >
+              0
+            </span>
+          </div>
+        </div>
+      </div>
+    `;
+  },
+};
+
+// Textarea Events
+export const TextareaEvents: Story = {
+  render: () => {
+    const events: string[] = [];
+    const logEvent = (eventName: string) => {
+      const timestamp = new Date().toLocaleTimeString();
+      events.push(`[${timestamp}] ${eventName}`);
+      const log = document.getElementById("textarea-event-log");
+      if (log) {
+        log.textContent = events.slice(-8).join("\n");
+      }
+    };
+
+    return html`
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Textarea Event Handling</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          All event patterns work the same for textarea type
+        </p>
+
+        <ag-input
+          .type=${"textarea"}
+          .label=${"Comments"}
+          .placeholder=${"Enter your feedback..."}
+          .rows=${6}
+          .helpText=${"Try typing, focusing, and blurring"}
+          .onClick=${() => logEvent("click")}
+          .onInput=${() => logEvent("input")}
+          .onChange=${() => logEvent("change")}
+          .onFocus=${() => logEvent("focus")}
+          .onBlur=${() => logEvent("blur")}
+        ></ag-input>
+
+        <div style="margin-top: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;">Event Log (last 8 events):</h4>
+          <pre
+            id="textarea-event-log"
+            style="background: #f3f4f6; padding: 1rem; border-radius: 6px; min-height: 120px; font-size: 0.75rem; overflow-x: auto;"
+          >
+No events yet. Try interacting with the textarea above.
+</pre
+          >
+        </div>
+      </div>
+    `;
+  },
+};
+
 // CSS Parts Customization
 export const CSSPartsCustomization: Story = {
   render: () => html`
