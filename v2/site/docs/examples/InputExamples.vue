@@ -5,21 +5,21 @@
     </div>
     <div class="stacked mbe4">
       <VueInput
-        v-model="basicValue"
+        v-model:value="basicValue"
         label="Email"
         type="email"
         placeholder="you@example.com"
         class="mbe2"
       />
       <VueInput
-        v-model="password"
+        v-model:value="password"
         label="Password"
         type="password"
         placeholder="Enter password"
         class="mbe2"
       />
       <VueInput
-        v-model="search"
+        v-model:value="search"
         label="Search"
         type="search"
         placeholder="Search..."
@@ -32,21 +32,21 @@
     </div>
     <div class="stacked mbe4">
       <VueInput
-        v-model="sizeSmall"
+        v-model:value="sizeSmall"
         label="Small Input"
         size="small"
         placeholder="Small size"
         class="mbe2"
       />
       <VueInput
-        v-model="sizeDefault"
+        v-model:value="sizeDefault"
         label="Default Input"
         size="default"
         placeholder="Default size"
         class="mbe2"
       />
       <VueInput
-        v-model="sizeLarge"
+        v-model:value="sizeLarge"
         label="Large Input"
         size="large"
         placeholder="Large size"
@@ -59,36 +59,36 @@
     </div>
     <div class="stacked mbe4">
       <VueInput
-        v-model="shapeDefault"
+        v-model:value="shapeDefault"
         label="Default (rectangular)"
         placeholder="Default rectangular"
         class="mbe2"
       />
       <VueInput
-        v-model="shapeRounded"
+        v-model:value="shapeRounded"
         label="Rounded"
-        :is-rounded="true"
+        :rounded="true"
         placeholder="Rounded corners"
         class="mbe2"
       />
       <VueInput
-        v-model="shapeCapsule"
+        v-model:value="shapeCapsule"
         label="Capsule"
-        :is-capsule="true"
+        :capsule="true"
         placeholder="Capsule shape"
         class="mbe2"
       />
       <VueInput
-        v-model="shapeUnderlined"
+        v-model:value="shapeUnderlined"
         label="Underlined"
-        :is-underlined="true"
+        :underlined="true"
         placeholder="Underlined only"
         class="mbe2"
       />
       <VueInput
-        v-model="shapeUnderlinedBg"
+        v-model:value="shapeUnderlinedBg"
         label="Underlined with Background"
-        :is-underlined-with-background="true"
+        :underlined-with-background="true"
         placeholder="Underlined with background"
         class="mbe2"
       />
@@ -99,13 +99,13 @@
     </div>
     <div class="stacked mbe4">
       <VueInput
-        v-model="stateDefault"
+        v-model:value="stateDefault"
         label="Normal"
         placeholder="Normal state"
         class="mbe2"
       />
       <VueInput
-        v-model="stateRequired"
+        v-model:value="stateRequired"
         label="Required"
         :required="true"
         placeholder="Required field"
@@ -113,21 +113,21 @@
         class="mbe2"
       />
       <VueInput
-        v-model="stateDisabled"
+        v-model:value="stateDisabled"
         label="Disabled"
         :disabled="true"
         placeholder="Disabled input"
         class="mbe2"
       />
       <VueInput
-        v-model="stateReadonly"
+        v-model:value="stateReadonly"
         label="Readonly"
         :readonly="true"
         value="Read-only value"
         class="mbe2"
       />
       <VueInput
-        v-model="stateInvalid"
+        v-model:value="stateInvalid"
         label="Invalid"
         :invalid="true"
         placeholder="Invalid input"
@@ -141,7 +141,7 @@
     </div>
     <div class="stacked mbe4">
       <VueInput
-        v-model="textareaValue"
+        v-model:value="textareaValue"
         label="Comments"
         type="textarea"
         placeholder="Enter your comments..."
@@ -149,7 +149,7 @@
         class="mbe2"
       />
       <VueInput
-        v-model="textareaLarge"
+        v-model:value="textareaLarge"
         label="Description"
         type="textarea"
         placeholder="Enter description..."
@@ -165,7 +165,7 @@
     </div>
     <div class="stacked mbe4">
       <VueInput
-        v-model="addonLeft"
+        v-model:value="addonLeft"
         label="Website URL"
         placeholder="example.com"
         :has-left-addon="true"
@@ -180,7 +180,7 @@
       </VueInput>
 
       <VueInput
-        v-model="addonRight"
+        v-model:value="addonRight"
         label="Price"
         placeholder="0.00"
         :has-right-addon="true"
@@ -195,7 +195,7 @@
       </VueInput>
 
       <VueInput
-        v-model="addonBoth"
+        v-model:value="addonBoth"
         label="Amount"
         placeholder="100"
         :has-left-addon="true"
@@ -215,6 +215,104 @@
     </div>
 
     <div class="mbe4">
+      <h3>Interactive Event Handling</h3>
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
+        Demonstrates event handling with @input, @change, @focus, @blur, and v-model:value
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <!-- Pattern 1: @input event for real-time tracking -->
+      <div>
+        <VueInput
+          v-model:value="interactiveEmail"
+          label="Email (@input event)"
+          type="email"
+          placeholder="you@example.com"
+          @input="handleInputEvent"
+          class="mbe2"
+        />
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
+          Character count: <strong>{{ interactiveEmail.length }}</strong> | Last input: <strong>{{ lastInputTime }}</strong>
+        </p>
+      </div>
+
+      <!-- Pattern 2: @change event for completed changes -->
+      <div>
+        <VueInput
+          v-model:value="interactiveUsername"
+          label="Username (@change event)"
+          placeholder="Enter username"
+          @change="handleChangeEvent"
+          class="mbe2"
+        />
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
+          Last confirmed value: <strong>{{ confirmedUsername || '(none)' }}</strong>
+        </p>
+      </div>
+
+      <!-- Pattern 3: Focus and Blur events -->
+      <div>
+        <VueInput
+          v-model:value="interactiveFocus"
+          label="Focus Tracking (@focus/@blur)"
+          placeholder="Click to focus"
+          @focus="handleFocus"
+          @blur="handleBlur"
+          class="mbe2"
+        />
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+          Status: <strong :style="{ color: isFocused ? 'var(--ag-success)' : 'var(--ag-text-secondary)' }">
+            {{ isFocused ? 'Focused' : 'Not focused' }}
+          </strong>
+          {{ focusCount > 0 ? `(focused ${focusCount} time${focusCount > 1 ? 's' : ''})` : '' }}
+        </p>
+      </div>
+
+      <!-- Pattern 4: v-model:value with reactive updates -->
+      <div>
+        <VueInput
+          v-model:value="interactiveReactive"
+          label="Two-way Binding (v-model:value)"
+          placeholder="Type here..."
+          class="mbe2"
+        />
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
+          Current value: <strong>{{ interactiveReactive || '(empty)' }}</strong>
+        </p>
+        <button
+          @click="interactiveReactive = 'Programmatically set!'"
+          style="margin-top: 0.5rem; padding: 0.25rem 0.75rem; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-sm); cursor: pointer;"
+        >
+          Set value programmatically
+        </button>
+      </div>
+
+      <!-- Pattern 5: Textarea with all events -->
+      <div>
+        <VueInput
+          v-model:value="interactiveTextarea"
+          label="Textarea with Events"
+          type="textarea"
+          :rows="3"
+          placeholder="Try typing, then click outside..."
+          @input="handleTextareaInput"
+          @change="handleTextareaChange"
+          @focus="handleTextareaFocus"
+          @blur="handleTextareaBlur"
+          class="mbe2"
+        />
+        <div style="margin-top: 0.5rem; font-size: 0.875rem; padding: 0.5rem; background: var(--ag-background-secondary); border-radius: 4px;">
+          <div>Words: <strong>{{ wordCount }}</strong></div>
+          <div>Characters: <strong>{{ interactiveTextarea.length }}</strong></div>
+          <div>Status: <strong>{{ textareaStatus }}</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
       <p style="margin-top: 0.5rem; margin-bottom: 1rem; color: var(--vp-c-text-2);">
         Input can be customized using CSS Shadow Parts:
@@ -227,7 +325,7 @@
     </div>
     <div class="stacked mbe4">
       <VueInput
-        v-model="customGradient"
+        v-model:value="customGradient"
         class="custom-gradient-input mbe2"
         label="Modern Gradient Border"
         placeholder="you@example.com"
@@ -235,14 +333,14 @@
       />
 
       <VueInput
-        v-model="customMaterial"
+        v-model:value="customMaterial"
         class="custom-material-input mbe2"
         label="Material Design Style"
         placeholder="John Doe"
       />
 
       <VueInput
-        v-model="customError"
+        v-model:value="customError"
         class="custom-error-input mbe2"
         label="Custom Error Styling"
         value="invalid-email"
@@ -251,7 +349,7 @@
       />
 
       <VueInput
-        v-model="customTextarea"
+        v-model:value="customTextarea"
         class="custom-textarea mbe2"
         label="Styled Textarea"
         type="textarea"
@@ -314,7 +412,61 @@ export default {
       customMaterial: "",
       customError: "",
       customTextarea: "",
+
+      // Interactive event handling
+      interactiveEmail: "",
+      lastInputTime: "(none)",
+      interactiveUsername: "",
+      confirmedUsername: "",
+      interactiveFocus: "",
+      isFocused: false,
+      focusCount: 0,
+      interactiveReactive: "",
+      interactiveTextarea: "",
+      textareaStatus: "Ready",
     };
+  },
+  computed: {
+    wordCount() {
+      if (!this.interactiveTextarea.trim()) return 0;
+      return this.interactiveTextarea.trim().split(/\s+/).length;
+    },
+  },
+  methods: {
+    handleInputEvent(event) {
+      const now = new Date();
+      this.lastInputTime = now.toLocaleTimeString();
+      console.log("Input event:", event);
+    },
+    handleChangeEvent(event) {
+      this.confirmedUsername = this.interactiveUsername;
+      console.log("Change event:", event);
+    },
+    handleFocus(event) {
+      this.isFocused = true;
+      this.focusCount++;
+      console.log("Focus event:", event);
+    },
+    handleBlur(event) {
+      this.isFocused = false;
+      console.log("Blur event:", event);
+    },
+    handleTextareaInput(event) {
+      this.textareaStatus = "Typing...";
+      console.log("Textarea input event:", event);
+    },
+    handleTextareaChange(event) {
+      this.textareaStatus = "Changes saved";
+      console.log("Textarea change event:", event);
+    },
+    handleTextareaFocus(event) {
+      this.textareaStatus = "Focused";
+      console.log("Textarea focus event:", event);
+    },
+    handleTextareaBlur(event) {
+      this.textareaStatus = "Ready";
+      console.log("Textarea blur event:", event);
+    },
   },
 };
 </script>
