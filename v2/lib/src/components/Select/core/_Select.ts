@@ -3,12 +3,22 @@ import { property, query } from 'lit/decorators.js';
 
 export type SelectSize = 'small' | 'large' | '';
 
+// Event types
+export interface SelectChangeEventDetail {
+  value: string | string[];
+}
+export type SelectChangeEvent = CustomEvent<SelectChangeEventDetail>;
+
 export interface SelectProps {
   size?: SelectSize;
   multiple?: boolean;
   disabled?: boolean;
   name?: string;
   multipleSize?: number;
+  onClick?: (event: MouseEvent) => void;
+  onFocus?: (event: FocusEvent) => void;
+  onBlur?: (event: FocusEvent) => void;
+  onChange?: (event: SelectChangeEvent) => void;
 }
 
 /**
@@ -35,6 +45,18 @@ export class Select extends LitElement implements SelectProps {
 
   @property({ type: Number, attribute: 'multiple-size' })
   public multipleSize?: number;
+
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  @property({ attribute: false })
+  declare onFocus?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onBlur?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onChange?: (event: SelectChangeEvent) => void;
 
   @query('select')
   private selectElement!: HTMLSelectElement;
@@ -166,6 +188,39 @@ export class Select extends LitElement implements SelectProps {
     }
   `;
 
+  private handleClick(event: MouseEvent) {
+    // Invoke callback if provided (native composed event)
+    if (this.onClick) {
+      this.onClick(event);
+    }
+  }
+
+  private handleFocus(event: FocusEvent) {
+    // Re-dispatch from host so consumers can listen on <ag-select>
+    this.dispatchEvent(new FocusEvent('focus', {
+      bubbles: true,
+      composed: true,
+    }));
+
+    // Invoke callback if provided
+    if (this.onFocus) {
+      this.onFocus(event);
+    }
+  }
+
+  private handleBlur(event: FocusEvent) {
+    // Re-dispatch from host so consumers can listen on <ag-select>
+    this.dispatchEvent(new FocusEvent('blur', {
+      bubbles: true,
+      composed: true,
+    }));
+
+    // Invoke callback if provided
+    if (this.onBlur) {
+      this.onBlur(event);
+    }
+  }
+
   private handleChange(e: Event) {
     const select = e.target as HTMLSelectElement;
     let value: string | string[];
@@ -176,13 +231,18 @@ export class Select extends LitElement implements SelectProps {
       value = select.value;
     }
 
-    this.dispatchEvent(
-      new CustomEvent('change', {
-        detail: { value },
-        bubbles: true,
-        composed: true,
-      })
-    );
+    // Dual-dispatch: dispatchEvent + callback
+    const changeEvent = new CustomEvent<SelectChangeEventDetail>('change', {
+      detail: { value },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(changeEvent);
+
+    // Invoke callback if provided
+    if (this.onChange) {
+      this.onChange(changeEvent);
+    }
   }
 
   render() {
@@ -194,6 +254,9 @@ export class Select extends LitElement implements SelectProps {
         ?disabled=${this.disabled}
         .name=${this.name}
         .size=${this.multipleSize ?? (this.multiple ? 4 : 1)}
+        @click=${this.handleClick}
+        @focus=${this.handleFocus}
+        @blur=${this.handleBlur}
         @change=${this.handleChange}
         aria-disabled=${this.disabled ? 'true' : 'false'}
       ></select>

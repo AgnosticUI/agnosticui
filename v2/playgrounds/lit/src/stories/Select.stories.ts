@@ -210,3 +210,157 @@ export const WithChangeHandler: Story = {
     </div>
   `,
 };
+
+export const EventTesting: Story = {
+  render: () => {
+    let outputEl: HTMLElement | null = null;
+    const events: string[] = [];
+
+    const log = (message: string) => {
+      if (!outputEl) {
+        outputEl = document.getElementById('event-output');
+      }
+      if (outputEl) {
+        events.unshift(message);
+        if (events.length > 8) events.pop();
+        outputEl.innerHTML = events.map(e => `<div>${e}</div>`).join('');
+      }
+    };
+
+    setTimeout(() => {
+      outputEl = document.getElementById('event-output');
+    }, 0);
+
+    return html`
+      <div style="max-width: 600px;">
+        <h3 style="margin-bottom: 1rem;">Event Testing - addEventListener Pattern</h3>
+        <label for="event-test-1" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+          Select an option to see all events
+        </label>
+        <ag-select
+          id="event-test-1"
+          name="event-test"
+          @change=${(e: CustomEvent) => log(`<strong>change:</strong> value=${e.detail.value}`)}
+          @focus=${() => log('focus')}
+          @blur=${() => log('blur')}
+          @click=${() => log('click')}
+        >
+          <option value="">Select an option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </ag-select>
+
+        <div style="margin-top: 1rem; padding: 1rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
+          <strong>Event Log (newest first):</strong>
+          <div id="event-output" style="margin-top: 0.5rem; font-family: monospace; font-size: 0.875rem; line-height: 1.6;">
+            (select an option to see events)
+          </div>
+        </div>
+      </div>
+    `;
+  },
+};
+
+export const CallbackProps: Story = {
+  render: () => {
+    let outputEl: HTMLElement | null = null;
+    const events: string[] = [];
+
+    const log = (message: string) => {
+      if (!outputEl) {
+        outputEl = document.getElementById('callback-output');
+      }
+      if (outputEl) {
+        events.unshift(message);
+        if (events.length > 8) events.pop();
+        outputEl.innerHTML = events.map(e => `<div>${e}</div>`).join('');
+      }
+    };
+
+    setTimeout(() => {
+      outputEl = document.getElementById('callback-output');
+      const select = document.getElementById('callback-test') as any;
+      if (select) {
+        select.onChange = (e: CustomEvent) => log(`<strong>onChange:</strong> value=${e.detail.value}`);
+        select.onFocus = () => log('onFocus');
+        select.onBlur = () => log('onBlur');
+        select.onClick = () => log('onClick');
+      }
+    }, 0);
+
+    return html`
+      <div style="max-width: 600px;">
+        <h3 style="margin-bottom: 1rem;">Event Testing - Callback Props Pattern</h3>
+        <label for="callback-test" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+          Select an option to see all callback events
+        </label>
+        <ag-select id="callback-test" name="callback-test">
+          <option value="">Select an option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </ag-select>
+
+        <div style="margin-top: 1rem; padding: 1rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
+          <strong>Event Log (newest first):</strong>
+          <div id="callback-output" style="margin-top: 0.5rem; font-family: monospace; font-size: 0.875rem; line-height: 1.6;">
+            (select an option to see events)
+          </div>
+        </div>
+      </div>
+    `;
+  },
+};
+
+export const DualDispatch: Story = {
+  render: () => {
+    let outputEl: HTMLElement | null = null;
+
+    const log = (message: string) => {
+      if (!outputEl) {
+        outputEl = document.getElementById('dual-output');
+      }
+      if (outputEl) {
+        outputEl.innerHTML += `<div>${message}</div>`;
+      }
+    };
+
+    setTimeout(() => {
+      outputEl = document.getElementById('dual-output');
+      const select = document.getElementById('dual-test') as any;
+      if (select) {
+        select.onChange = (e: CustomEvent) => log(`✓ Callback: onChange - ${e.detail.value}`);
+      }
+    }, 0);
+
+    return html`
+      <div style="max-width: 600px;">
+        <h3 style="margin-bottom: 1rem;">Event Testing - Dual Dispatch Pattern</h3>
+        <p style="margin-bottom: 1rem; color: var(--ag-text-secondary);">
+          Both addEventListener AND callback should fire for custom events
+        </p>
+        <label for="dual-test" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+          Select with Both Patterns
+        </label>
+        <ag-select
+          id="dual-test"
+          name="dual-test"
+          @change=${(e: CustomEvent) => log(`✓ addEventListener: change - ${e.detail.value}`)}
+        >
+          <option value="">Select an option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </ag-select>
+
+        <div style="margin-top: 1rem; padding: 1rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
+          <strong>Event Log:</strong>
+          <div id="dual-output" style="margin-top: 0.5rem; font-family: monospace; font-size: 0.875rem; max-height: 200px; overflow-y: auto;">
+            (interact with the select - both methods should fire)
+          </div>
+        </div>
+      </div>
+    `;
+  },
+};
