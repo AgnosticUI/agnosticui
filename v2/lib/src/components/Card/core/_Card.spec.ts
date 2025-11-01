@@ -17,26 +17,26 @@ describe('Card', () => {
     const el = document.createElement('ag-card') as Card;
     host.appendChild(el);
     expect(el).toBeInstanceOf(Card);
-    expect(el.isSkinned).toBe(true);
-    expect(el.isStacked).toBe(false);
-    expect(el.isShadow).toBe(false);
-    expect(el.isAnimated).toBe(false);
-    expect(el.isRounded).toBe(false);
+    expect(el.skinned).toBe(true);
+    expect(el.stacked).toBe(false);
+    expect(el.shadow).toBe(false);
+    expect(el.animated).toBe(false);
+    expect(el.rounded).toBe('');
     expect(el.variant).toBe('');
   });
 
   it('reflects properties as attributes', async () => {
     const el = document.createElement('ag-card') as Card;
-    el.isSkinned = false;
-    el.isStacked = true;
-    el.isShadow = true;
+    el.skinned = false;
+    el.stacked = true;
+    el.shadow = true;
     host.appendChild(el);
     await el.updateComplete; // Wait for Lit to update the DOM
 
     // Boolean properties with reflect: true are removed when false
-    expect(el.hasAttribute('isskinned')).toBe(false);
-    expect(el.hasAttribute('isstacked')).toBe(true);
-    expect(el.hasAttribute('isshadow')).toBe(true);
+    expect(el.hasAttribute('skinned')).toBe(false);
+    expect(el.hasAttribute('stacked')).toBe(true);
+    expect(el.hasAttribute('shadow')).toBe(true);
   });
 
   it('has relative position for the pseudo-element trick', async () => {
@@ -74,32 +74,45 @@ describe('Card', () => {
     expect(footerSlot?.textContent).toContain('Footer');
   });
 
-  it('applies isAnimated attribute correctly', async () => {
+  it('applies animated attribute correctly', async () => {
     const el = document.createElement('ag-card') as Card;
-    el.isAnimated = true;
+    el.animated = true;
     host.appendChild(el);
     await el.updateComplete;
 
-    expect(el.hasAttribute('isanimated')).toBe(true);
+    expect(el.hasAttribute('animated')).toBe(true);
 
     // Verify animation styles are defined
     const styleContent = Card.styles.toString();
-    expect(styleContent).toContain('isanimated');
+    expect(styleContent).toContain('animated');
     expect(styleContent).toContain('transition');
     expect(styleContent).toContain('transform');
   });
 
-  it('applies isRounded attribute correctly', async () => {
-    const el = document.createElement('ag-card') as Card;
-    el.isRounded = true;
-    host.appendChild(el);
-    await el.updateComplete;
+  it('applies rounded attribute variants correctly', async () => {
+    const elSm = document.createElement('ag-card') as Card;
+    elSm.rounded = 'sm';
+    host.appendChild(elSm);
+    await elSm.updateComplete;
+    expect(elSm.getAttribute('rounded')).toBe('sm');
 
-    expect(el.hasAttribute('isrounded')).toBe(true);
+    const elMd = document.createElement('ag-card') as Card;
+    elMd.rounded = 'md';
+    host.appendChild(elMd);
+    await elMd.updateComplete;
+    expect(elMd.getAttribute('rounded')).toBe('md');
 
-    // Verify rounded styles are defined
+    const elLg = document.createElement('ag-card') as Card;
+    elLg.rounded = 'lg';
+    host.appendChild(elLg);
+    await elLg.updateComplete;
+    expect(elLg.getAttribute('rounded')).toBe('lg');
+
+    // Verify rounded styles are defined for all variants
     const styleContent = Card.styles.toString();
-    expect(styleContent).toContain('isrounded');
+    expect(styleContent).toContain('rounded="sm"');
+    expect(styleContent).toContain('rounded="md"');
+    expect(styleContent).toContain('rounded="lg"');
     expect(styleContent).toContain('border-radius');
   });
 
@@ -157,7 +170,7 @@ describe('Card', () => {
 
   it('respects reduced motion preferences for animations', async () => {
     const el = document.createElement('ag-card') as Card;
-    el.isAnimated = true;
+    el.animated = true;
     host.appendChild(el);
     await el.updateComplete;
 
@@ -168,16 +181,18 @@ describe('Card', () => {
 
   it('combines multiple attributes correctly', async () => {
     const el = document.createElement('ag-card') as Card;
-    el.isSkinned = true;
-    el.isShadow = true;
-    el.isAnimated = true;
+    el.skinned = true;
+    el.shadow = true;
+    el.animated = true;
+    el.rounded = 'md';
     el.variant = 'success';
     host.appendChild(el);
     await el.updateComplete;
 
-    expect(el.hasAttribute('isskinned')).toBe(true);
-    expect(el.hasAttribute('isshadow')).toBe(true);
-    expect(el.hasAttribute('isanimated')).toBe(true);
+    expect(el.hasAttribute('skinned')).toBe(true);
+    expect(el.hasAttribute('shadow')).toBe(true);
+    expect(el.hasAttribute('animated')).toBe(true);
+    expect(el.getAttribute('rounded')).toBe('md');
     expect(el.getAttribute('variant')).toBe('success');
   });
 
@@ -190,17 +205,20 @@ describe('Card', () => {
 
     // CRITICAL: Boolean attributes should use [attrname] not [attrname="true"]
     // Lit reflects boolean props as present/absent, not as ="true"/"false"
-    expect(styleContent).toContain(':host([isskinned])');
-    expect(styleContent).toContain(':host([isshadow])');
-    expect(styleContent).toContain(':host([isanimated])');
-    expect(styleContent).toContain(':host([isrounded])');
-    expect(styleContent).toContain(':host([isstacked])');
+    expect(styleContent).toContain(':host([skinned])');
+    expect(styleContent).toContain(':host([shadow])');
+    expect(styleContent).toContain(':host([animated])');
+    expect(styleContent).toContain(':host([stacked])');
+
+    // String attribute variants
+    expect(styleContent).toContain('[rounded="sm"]');
+    expect(styleContent).toContain('[rounded="md"]');
+    expect(styleContent).toContain('[rounded="lg"]');
 
     // These should NOT exist (common mistake)
-    expect(styleContent).not.toContain('[isskinned="true"]');
-    expect(styleContent).not.toContain('[isshadow="true"]');
-    expect(styleContent).not.toContain('[isanimated="true"]');
-    expect(styleContent).not.toContain('[isrounded="true"]');
-    expect(styleContent).not.toContain('[isstacked="true"]');
+    expect(styleContent).not.toContain('[skinned="true"]');
+    expect(styleContent).not.toContain('[shadow="true"]');
+    expect(styleContent).not.toContain('[animated="true"]');
+    expect(styleContent).not.toContain('[stacked="true"]');
   });
 });

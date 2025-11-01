@@ -2,23 +2,24 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 export type CardVariant = 'success' | 'info' | 'error' | 'warning' | '';
+export type CardRounded = 'sm' | 'md' | 'lg' | '';
 
 export interface CardProps {
-  isSkinned?: boolean;
-  isStacked?: boolean;
-  isShadow?: boolean;
-  isAnimated?: boolean;
-  isRounded?: boolean;
+  skinned?: boolean;
+  stacked?: boolean;
+  shadow?: boolean;
+  animated?: boolean;
+  rounded?: CardRounded;
   variant?: CardVariant;
 }
 
 @customElement('ag-card')
 export class Card extends LitElement implements CardProps {
-  @property({ type: Boolean, reflect: true }) isSkinned = true;
-  @property({ type: Boolean, reflect: true }) isStacked = false;
-  @property({ type: Boolean, reflect: true }) isShadow = false;
-  @property({ type: Boolean, reflect: true }) isAnimated = false;
-  @property({ type: Boolean, reflect: true }) isRounded = false;
+  @property({ type: Boolean, reflect: true }) skinned = true;
+  @property({ type: Boolean, reflect: true }) stacked = false;
+  @property({ type: Boolean, reflect: true }) shadow = false;
+  @property({ type: Boolean, reflect: true }) animated = false;
+  @property({ type: String, reflect: true }) rounded: CardRounded = '';
   @property({ type: String, reflect: true }) variant: CardVariant = '';
 
   private _hasHeaderSlotContent = false;
@@ -75,35 +76,42 @@ export class Card extends LitElement implements CardProps {
       --card-padding: var(--ag-space-8);
     }
 
-    :host([isskinned]) {
+    :host([skinned]) {
       background-color: var(--ag-background-primary);
       border: var(--ag-border-width-1) solid var(--ag-border);
     }
 
-    :host([isrounded]),
-    :host([isskinned]) {
+    /* Rounded variants - no rounding by default */
+    :host([rounded="sm"]) {
+      border-radius: var(--ag-radius-sm);
+    }
+
+    :host([rounded="md"]) {
+      border-radius: var(--ag-radius-md);
+    }
+
+    :host([rounded="lg"]) {
       border-radius: var(--ag-radius-lg);
     }
 
-    :host([isshadow]) {
+    :host([shadow]) {
       box-shadow: var(--ag-shadow-lg);
-      border-radius: var(--ag-radius-lg);
       overflow: hidden;
     }
 
     /* Enhanced hover effect for shadow cards */
-    :host([isshadow]:hover) {
-      box-shadow: var(--ag-shadow-xl, 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04));
+    :host([shadow]:hover) {
+      box-shadow: var(--ag-shadow-xl);
     }
 
     /* Animated cards - smooth transitions */
-    :host([isanimated]) {
+    :host([animated]) {
       transition:
         box-shadow var(--ag-timing-fast, 150ms) ease-out,
         transform var(--ag-timing-fast, 150ms) cubic-bezier(0.39, 0.575, 0.565, 1);
     }
 
-    :host([isanimated]:hover) {
+    :host([animated]:hover) {
       transform: translateY(-3px);
       transition:
         box-shadow var(--ag-timing-fast, 150ms) ease-out,
@@ -112,8 +120,8 @@ export class Card extends LitElement implements CardProps {
 
     /* Respect reduced motion preferences */
     @media (prefers-reduced-motion), (update: slow) {
-      :host([isanimated]),
-      :host([isanimated]:hover) {
+      :host([animated]),
+      :host([animated]:hover) {
         transition-duration: 0.001ms !important;
         transform: none !important;
       }
@@ -165,7 +173,7 @@ export class Card extends LitElement implements CardProps {
       padding: var(--card-padding);
     }
 
-    :host([isstacked]) .card-content > ::slotted(*:not(:last-child)) {
+    :host([stacked]) .card-content > ::slotted(*:not(:last-child)) {
       margin-bottom: var(--ag-space-8);
     }
 
