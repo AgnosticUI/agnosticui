@@ -55,14 +55,14 @@ describe('Divider', () => {
       expect(dividerEl?.getAttribute('aria-orientation')).toBe('horizontal');
     });
 
-    it('has aria-orientation="vertical" when isVertical is true', async () => {
-      const el = await createDivider({ isVertical: true });
+    it('has aria-orientation="vertical" when vertical is true', async () => {
+      const el = await createDivider({ vertical: true });
       const dividerEl = el.shadowRoot?.querySelector('.divider');
       expect(dividerEl?.getAttribute('aria-orientation')).toBe('vertical');
     });
 
-    it('applies divider-vertical class when isVertical is true', async () => {
-      const el = await createDivider({ isVertical: true });
+    it('applies divider-vertical class when vertical is true', async () => {
+      const el = await createDivider({ vertical: true });
       const dividerEl = el.shadowRoot?.querySelector('.divider');
       expect(dividerEl?.classList.contains('divider-vertical')).toBe(true);
     });
@@ -90,7 +90,7 @@ describe('Divider', () => {
     });
 
     it('does not apply justify classes when vertical', async () => {
-      const el = await createDivider({ isVertical: true, justify: 'start' });
+      const el = await createDivider({ vertical: true, justify: 'start' });
       const dividerEl = el.shadowRoot?.querySelector('.divider');
       expect(dividerEl?.classList.contains('divider-justify-start')).toBe(false);
     });
@@ -183,9 +183,9 @@ describe('Divider', () => {
   });
 
   describe('Property updates', () => {
-    it('updates isVertical dynamically', async () => {
-      const el = await createDivider({ isVertical: false });
-      el.isVertical = true;
+    it('updates vertical dynamically', async () => {
+      const el = await createDivider({ vertical: false });
+      el.vertical = true;
       await el.updateComplete;
       const dividerEl = el.shadowRoot?.querySelector('.divider');
       expect(dividerEl?.classList.contains('divider-vertical')).toBe(true);

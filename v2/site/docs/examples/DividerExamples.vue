@@ -23,11 +23,14 @@
     <div class="mbe4">
       <h3>Vertical Dividers</h3>
     </div>
-    <div class="mbe4" style="display: flex; min-height: 200px;">
+    <div
+      class="mbe4"
+      style="display: flex; min-height: 200px;"
+    >
       <p style="flex: 1;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <VueDivider is-vertical>Yes</VueDivider>
+      <VueDivider vertical>Yes</VueDivider>
       <p style="flex: 1;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-      <VueDivider is-vertical>Sir!</VueDivider>
+      <VueDivider vertical>Sir!</VueDivider>
       <p style="flex: 1;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
 
@@ -47,15 +50,30 @@
     <div class="mbe4">
       <h3>Sizes - Vertical</h3>
     </div>
-    <div class="mbe4" style="display: flex; gap: 1rem; min-height: 150px;">
+    <div
+      class="mbe4"
+      style="display: flex; gap: 1rem; min-height: 150px;"
+    >
       <p style="flex: 1;">Content</p>
-      <VueDivider is-vertical size="small">Sm</VueDivider>
+      <VueDivider
+        vertical
+        size="small"
+      >Sm</VueDivider>
       <p style="flex: 1;">Content</p>
-      <VueDivider is-vertical size="default">Def</VueDivider>
+      <VueDivider
+        vertical
+        size="default"
+      >Def</VueDivider>
       <p style="flex: 1;">Content</p>
-      <VueDivider is-vertical size="large">Lg</VueDivider>
+      <VueDivider
+        vertical
+        size="large"
+      >Lg</VueDivider>
       <p style="flex: 1;">Content</p>
-      <VueDivider is-vertical size="xlarge">XL</VueDivider>
+      <VueDivider
+        vertical
+        size="xlarge"
+      >XL</VueDivider>
       <p style="flex: 1;">Content</p>
     </div>
 
@@ -87,7 +105,10 @@
       <div class="mbe4"></div>
       <div style="display: flex; min-height: 150px;">
         <p style="flex: 1;">Custom vertical gradient divider on the right</p>
-        <VueDivider class="custom-divider-vertical" is-vertical>Custom</VueDivider>
+        <VueDivider
+          class="custom-divider-vertical"
+          vertical
+        >Custom</VueDivider>
         <p style="flex: 1;">Styled with CSS Shadow Parts</p>
       </div>
     </div>
@@ -95,11 +116,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { VueDivider } from 'agnosticui-core/divider/vue';
+import { defineComponent } from "vue";
+import { VueDivider } from "agnosticui-core/divider/vue";
 
 export default defineComponent({
-  name: 'DividerExamples',
+  name: "DividerExamples",
   components: {
     VueDivider,
   },
@@ -139,7 +160,7 @@ export default defineComponent({
 }
 
 .custom-divider-vertical::part(ag-divider-content) {
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   letter-spacing: 2px;
   font-weight: 700;
 }

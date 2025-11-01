@@ -7,7 +7,7 @@ const meta: Meta<DividerProps> = {
   title: "AgnosticUI Lit/Divider",
   component: "ag-divider",
   argTypes: {
-    isVertical: { control: "boolean", description: "Vertical orientation" },
+    vertical: { control: "boolean", description: "Vertical orientation" },
     justify: {
       control: "select",
       options: ["center", "start", "end"],
@@ -25,7 +25,7 @@ const meta: Meta<DividerProps> = {
     },
   },
   args: {
-    isVertical: false,
+    vertical: false,
     justify: "center",
     size: "default",
     variant: "default",
@@ -36,9 +36,9 @@ export default meta;
 type Story = StoryObj<DividerProps>;
 
 export const Default: Story = {
-  render: ({ isVertical, justify, size, variant }) => html`
+  render: ({ vertical, justify, size, variant }) => html`
     <ag-divider
-      ?is-vertical=${isVertical}
+      ?is-vertical=${vertical}
       justify=${justify}
       size=${size}
       variant=${variant}

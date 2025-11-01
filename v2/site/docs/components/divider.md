@@ -27,7 +27,7 @@ import DividerExamples from '../examples/DividerExamples.vue'
     <!-- Vertical divider -->
     <div style="display: flex;">
       <p>Left content</p>
-      <VueDivider is-vertical />
+      <VueDivider vertical />
       <p>Right content</p>
     </div>
 
@@ -67,7 +67,7 @@ export default function Example() {
       {/* Vertical divider */}
       <div style={{ display: 'flex' }}>
         <p>Left content</p>
-        <ReactDivider isVertical />
+        <ReactDivider vertical />
         <p>Right content</p>
       </div>
 
@@ -98,7 +98,7 @@ export default function Example() {
 <!-- Vertical divider -->
 <div style="display: flex;">
   <p>Left content</p>
-  <ag-divider is-vertical></ag-divider>
+  <ag-divider vertical></ag-divider>
   <p>Right content</p>
 </div>
 
@@ -111,7 +111,7 @@ export default function Example() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `isVertical` | `boolean` | `false` | Vertical orientation (divides content left/right instead of top/bottom) |
+| `vertical` | `boolean` | `false` | Vertical orientation (divides content left/right instead of top/bottom) |
 | `justify` | `'center' \| 'start' \| 'end'` | `'center'` | Content justification (horizontal only). Center places content in middle, start on left, end on right |
 | `size` | `'default' \| 'small' \| 'large' \| 'xlarge'` | `'default'` | Thickness of the divider line |
 | `variant` | `'default' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'default'` | Color variant |
@@ -165,17 +165,17 @@ The Divider component does not emit any events. It is a presentational component
 <!-- Vue -->
 <VueDivider class="custom-divider">Gradient Divider</VueDivider>
 <VueDivider class="custom-dotted">Dotted Pattern</VueDivider>
-<VueDivider class="custom-vertical" is-vertical>Vertical</VueDivider>
+<VueDivider class="custom-vertical" vertical>Vertical</VueDivider>
 
 <!-- React -->
 <ReactDivider className="custom-divider">Gradient Divider</ReactDivider>
 <ReactDivider className="custom-dotted">Dotted Pattern</ReactDivider>
-<ReactDivider className="custom-vertical" isVertical>Vertical</ReactDivider>
+<ReactDivider className="custom-vertical" vertical>Vertical</ReactDivider>
 
 <!-- Lit (Web Components) -->
 <ag-divider class="custom-divider">Gradient Divider</ag-divider>
 <ag-divider class="custom-dotted">Dotted Pattern</ag-divider>
-<ag-divider class="custom-vertical" is-vertical>Vertical</ag-divider>
+<ag-divider class="custom-vertical" vertical>Vertical</ag-divider>
 ```
 
 ## Accessibility
@@ -185,7 +185,7 @@ The Divider component is designed to be accessible by default:
 - **Role**: Uses `role="separator"` to indicate its purpose as a visual divider
 - **Orientation**: Automatically sets `aria-orientation` to:
   - `"horizontal"` for horizontal dividers (default)
-  - `"vertical"` for vertical dividers (when `isVertical` is true)
+  - `"vertical"` for vertical dividers (when `vertical` is true)
 - **Semantics**: The separator role is non-interactive and properly indicates content divisions to assistive technologies
 
 ### Best Practices
@@ -215,7 +215,7 @@ The Divider component is designed to be accessible by default:
 <!-- Good: Vertical divider with adequate container height -->
 <div style="display: flex; min-height: 200px;">
   <div>Left panel content</div>
-  <ag-divider is-vertical></ag-divider>
+  <ag-divider vertical></ag-divider>
   <div>Right panel content</div>
 </div>
 ```
@@ -256,7 +256,7 @@ Use vertical dividers in sidebar layouts:
   <aside style="width: 250px; padding: 1rem;">
     <!-- sidebar navigation -->
   </aside>
-  <ag-divider is-vertical></ag-divider>
+  <ag-divider vertical></ag-divider>
   <main style="flex: 1; padding: 1rem;">
     <!-- main content -->
   </main>

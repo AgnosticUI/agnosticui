@@ -10,7 +10,7 @@ export type DividerVariant = 'default' | 'success' | 'info' | 'warning' | 'error
  * @csspart ag-divider-content - The content container (when slotted content is provided)
  */
 export interface DividerProps {
-  isVertical?: boolean;
+  vertical?: boolean;
   justify?: DividerJustify;
   size?: DividerSize;
   variant?: DividerVariant;
@@ -154,7 +154,7 @@ export class Divider extends LitElement implements DividerProps {
   `;
 
   @property({ type: Boolean, attribute: 'is-vertical', reflect: true })
-  isVertical = false;
+  vertical = false;
 
   @property({ type: String, reflect: true })
   justify: DividerJustify = 'center';
@@ -184,11 +184,11 @@ export class Divider extends LitElement implements DividerProps {
   private getClasses() {
     const classes = ['divider'];
 
-    if (this.isVertical) {
+    if (this.vertical) {
       classes.push('divider-vertical');
     }
 
-    if (this.justify !== 'center' && !this.isVertical) {
+    if (this.justify !== 'center' && !this.vertical) {
       classes.push(`divider-justify-${this.justify}`);
     }
 
@@ -204,7 +204,7 @@ export class Divider extends LitElement implements DividerProps {
   }
 
   render() {
-    const orientation = this.isVertical ? 'vertical' : 'horizontal';
+    const orientation = this.vertical ? 'vertical' : 'horizontal';
     const contentClasses = this.hasContent ? 'divider-content divider-has-content' : 'divider-content';
 
     return html`
