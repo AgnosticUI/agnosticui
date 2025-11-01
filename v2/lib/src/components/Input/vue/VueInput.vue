@@ -1,74 +1,91 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, defineEmits, defineProps } from "vue";
+import { ref, watch } from "vue";
+import type { InputProps } from "../core/Input";
+import "../core/Input"; // Registers the ag-input web component
 
-// Import your Lit web component (registers <ag-input>)
-import "../core/Input";
+/**
+ * Vue Input Props
+ * Following AgnosticUI v2 event conventions:
+ * - Omit callback props (Vue uses emits)
+ * - Support v-model:value via update:value emit
+ */
+export interface VueInputProps
+  extends Omit<
+    InputProps,
+    "onClick" | "onInput" | "onChange" | "onFocus" | "onBlur"
+  > {}
 
-const props = defineProps({
-  modelValue: { type: String, default: "" },
-  type: { type: String, default: "text" },
-  placeholder: { type: String, default: "" },
-  disabled: { type: Boolean, default: false },
-  readonly: { type: Boolean, default: false },
-  name: { type: String, default: "" },
-  label: { type: String, default: "" },
-  labelHidden: { type: Boolean, default: false },
-  noLabel: { type: Boolean, default: false },
-  ariaLabel: { type: String, default: "" },
-  labelledBy: { type: String, default: "" },
-  helpText: { type: String, default: "" },
-  errorMessage: { type: String, default: "" },
-  required: { type: Boolean, default: false },
-  invalid: { type: Boolean, default: false },
-  // Size variants
-  size: { type: String, default: "default" },
-  // Styling variants (Vue uses "is" prefix by convention)
-  isRounded: { type: Boolean, default: false },
-  isUnderlined: { type: Boolean, default: false },
-  isUnderlinedWithBackground: { type: Boolean, default: false },
-  isInline: { type: Boolean, default: false },
-  isCapsule: { type: Boolean, default: false },
-  // Addon support
-  hasLeftAddon: { type: Boolean, default: false },
-  hasRightAddon: { type: Boolean, default: false },
-  // Textarea properties
-  rows: { type: Number, default: 4 },
-  cols: { type: Number, default: 50 },
+// Define props with defaults
+const props = withDefaults(defineProps<VueInputProps>(), {
+  value: "",
+  label: "",
+  labelHidden: false,
+  noLabel: false,
+  ariaLabel: "",
+  labelledBy: "",
+  type: "text",
+  placeholder: "",
+  rows: 4,
+  cols: 50,
+  size: "default",
+  capsule: false,
+  rounded: false,
+  underlined: false,
+  underlinedWithBackground: false,
+  inline: false,
+  hasLeftAddon: false,
+  hasRightAddon: false,
+  required: false,
+  disabled: false,
+  readonly: false,
+  invalid: false,
+  errorMessage: "",
+  helpText: "",
 });
 
-const emit = defineEmits([
-  "update:modelValue",
-  "input",
-  "change",
-  "focus",
-  "blur",
-]);
+// Define emits - native events emit full event object
+const emit = defineEmits<{
+  click: [event: MouseEvent];
+  input: [event: InputEvent];
+  change: [event: Event];
+  focus: [event: FocusEvent];
+  blur: [event: FocusEvent];
+  "update:value": [value: string];
+}>();
 
-const inputEl = ref<HTMLElement | null>(null);
+// Template ref
+const inputRef = ref<HTMLElement>();
 
-onMounted(() => {
-  const el = inputEl.value;
-  if (!el) return;
+// Event handlers - native events emit full event object
+const handleClick = (event: MouseEvent) => {
+  emit("click", event);
+};
 
-  const handle = (event: Event) => {
-    const target = event.target as HTMLInputElement;
-    if (event.type === "input") {
-      emit("update:modelValue", target.value);
-    }
-    emit(event.type as "input" | "change" | "focus" | "blur", event);
-  };
+const handleInput = (event: Event) => {
+  emit("input", event as InputEvent);
+  // Update v-model
+  const target = event.target as HTMLInputElement;
+  emit("update:value", target.value);
+};
 
-  ["input", "change", "focus", "blur"].forEach((evt) =>
-    el.addEventListener(evt, handle)
-  );
-});
+const handleChange = (event: Event) => {
+  emit("change", event);
+};
 
-// Keep web component and Vue modelValue synced
+const handleFocus = (event: FocusEvent) => {
+  emit("focus", event);
+};
+
+const handleBlur = (event: FocusEvent) => {
+  emit("blur", event);
+};
+
+// Keep web component and Vue value synced
 watch(
-  () => props.modelValue,
-  (val) => {
-    if (inputEl.value && (inputEl.value as any).value !== val) {
-      (inputEl.value as any).value = val;
+  () => props.value,
+  (newValue) => {
+    if (inputRef.value && (inputRef.value as any).value !== newValue) {
+      (inputRef.value as any).value = newValue;
     }
   }
 );
@@ -76,45 +93,48 @@ watch(
 
 <template>
   <ag-input
-    ref="inputEl"
-    :value="modelValue || undefined"
+    ref="inputRef"
+    :value="value || undefined"
     :type="type"
     :placeholder="placeholder || undefined"
-    :name="name || undefined"
     :label="label || undefined"
-    :aria-label="ariaLabel || undefined"
-    :labelled-by="labelledBy || undefined"
-    :help-text="helpText || undefined"
-    :error-message="errorMessage || undefined"
+    :ariaLabel="ariaLabel || undefined"
+    :labelledBy="labelledBy || undefined"
+    :helpText="helpText || undefined"
+    :errorMessage="errorMessage || undefined"
     :size="size !== 'default' ? size : undefined"
     :disabled="disabled || undefined"
     :readonly="readonly || undefined"
-    :label-hidden="labelHidden || undefined"
-    :no-label="noLabel || undefined"
+    :labelHidden="labelHidden || undefined"
+    :noLabel="noLabel || undefined"
     :required="required || undefined"
     :invalid="invalid || undefined"
-    :rounded="isRounded || undefined"
-    :underlined="isUnderlined || undefined"
-    :underlined-with-background="isUnderlinedWithBackground || undefined"
-    :inline="isInline || undefined"
-    :capsule="isCapsule || undefined"
-    :has-left-addon="hasLeftAddon || undefined"
-    :has-right-addon="hasRightAddon || undefined"
+    :rounded="rounded || undefined"
+    :underlined="underlined || undefined"
+    :underlinedWithBackground="underlinedWithBackground || undefined"
+    :inline="inline || undefined"
+    :capsule="capsule || undefined"
+    :hasLeftAddon="hasLeftAddon || undefined"
+    :hasRightAddon="hasRightAddon || undefined"
     :rows="type === 'textarea' && rows !== 4 ? rows : undefined"
     :cols="type === 'textarea' && cols !== 50 ? cols : undefined"
+    @click="handleClick"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
     v-bind="$attrs"
   >
-    <span
-      v-if="$slots['addon-left']"
-      slot="addon-left"
-    >
-      <slot name="addon-left"></slot>
-    </span>
-    <span
-      v-if="$slots['addon-right']"
-      slot="addon-right"
-    >
-      <slot name="addon-right"></slot>
-    </span>
+    <!-- Fix: The slot attribute goes on the content being passed through, not the slot element -->
+    <template v-if="$slots['addon-left']">
+      <span slot="addon-left">
+        <slot name="addon-left"></slot>
+      </span>
+    </template>
+    <template v-if="$slots['addon-right']">
+      <span slot="addon-right">
+        <slot name="addon-right"></slot>
+      </span>
+    </template>
   </ag-input>
 </template>

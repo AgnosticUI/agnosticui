@@ -10,7 +10,7 @@
     :disabled="disabled || undefined"
     :pressed="pressed || undefined"
     :loading="loading || undefined"
-    :aria-describedby="ariaDescribedby"
+    :ariaDescribedby="ariaDescribedby"
     v-bind="$attrs"
   >
     <slot />

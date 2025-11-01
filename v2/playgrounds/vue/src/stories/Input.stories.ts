@@ -1,5 +1,5 @@
+import { ref } from 'vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { fn } from 'storybook/test';
 import VueInput from 'agnosticui-core/input/vue';
 import type { VueInputProps } from 'agnosticui-core/input/vue';
 
@@ -29,24 +29,24 @@ const meta = {
       description: 'ARIA labelledby for accessibility',
     },
     capsule: {
-      control: false,
-      description: 'Capsule variant (not used in Vue, use isRounded instead)',
+      control: 'boolean',
+      description: 'Capsule styling (fully rounded corners)',
     },
     rounded: {
-      control: false,
-      description: 'Rounded variant (not used in Vue, use isRounded instead)',
+      control: 'boolean',
+      description: 'Rounded corners styling',
     },
     underlined: {
-      control: false,
-      description: 'Underlined variant (not used in Vue, use isUnderlined instead)',
+      control: 'boolean',
+      description: 'Underlined styling without background',
     },
     underlinedWithBackground: {
-      control: false,
-      description: 'Underlined with background variant (not used in Vue, use isUnderlinedWithBackground instead)',
+      control: 'boolean',
+      description: 'Underlined styling with background',
     },
     inline: {
-      control: false,
-      description: 'Inline variant (not used in Vue, use isInline instead)',
+      control: 'boolean',
+      description: 'Inline display mode',
     },
     type: {
       control: 'select',
@@ -73,22 +73,6 @@ const meta = {
       control: 'select',
       options: ['small', 'default', 'large'],
       description: 'Size of the input',
-    },
-    isRounded: {
-      control: 'boolean',
-      description: 'Rounded corners styling',
-    },
-    isUnderlined: {
-      control: 'boolean',
-      description: 'Underlined styling without background',
-    },
-    isUnderlinedWithBackground: {
-      control: 'boolean',
-      description: 'Underlined styling with background',
-    },
-    isInline: {
-      control: 'boolean',
-      description: 'Inline display mode',
     },
     hasLeftAddon: {
       control: 'boolean',
@@ -133,10 +117,11 @@ const meta = {
     rows: 4,
     cols: 50,
     size: 'default',
-    isRounded: false,
-    isUnderlined: false,
-    isUnderlinedWithBackground: false,
-    isInline: false,
+    capsule: false,
+    rounded: false,
+    underlined: false,
+    underlinedWithBackground: false,
+    inline: false,
     hasLeftAddon: false,
     hasRightAddon: false,
     required: false,
@@ -232,7 +217,7 @@ export const Rounded: Story = {
     label: 'Rounded Input',
     placeholder: 'Rounded corners',
     type: 'text',
-    isRounded: true,
+    rounded: true,
   },
 };
 
@@ -241,7 +226,7 @@ export const Underlined: Story = {
     label: 'Underlined Input',
     placeholder: 'Underlined style',
     type: 'text',
-    isUnderlined: true,
+    underlined: true,
   },
 };
 
@@ -250,7 +235,7 @@ export const UnderlinedWithBackground: Story = {
     label: 'Underlined with Background',
     placeholder: 'Underlined with background',
     type: 'text',
-    isUnderlinedWithBackground: true,
+    underlinedWithBackground: true,
   },
 };
 
@@ -302,7 +287,7 @@ export const Search: Story = {
     label: 'Search',
     placeholder: 'Search for something...',
     type: 'search',
-    isRounded: true,
+    rounded: true,
   },
 };
 
@@ -399,6 +384,181 @@ export const ComplexForm: Story = {
           :rows="4"
           help-text="Optional: Share a brief description"
         />
+      </div>
+    `,
+  }),
+};
+
+// Event Handling Stories - AgnosticUI v2 Event Conventions
+
+// Callback Props Pattern (using @event handlers in Vue)
+export const CallbackPropsPattern: Story = {
+  render: () => ({
+    components: { VueInput },
+    setup() {
+      const events = ref<string[]>([]);
+
+      const logEvent = (eventName: string, detail: any) => {
+        const timestamp = new Date().toLocaleTimeString();
+        const newEvent = `[${timestamp}] ${eventName}: ${JSON.stringify(detail)}`;
+        events.value = [...events.value, newEvent].slice(-5);
+      };
+
+      return { events, logEvent };
+    },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Event Handling Pattern</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Vue uses @event syntax for event handling (click, input, change, focus, blur)
+        </p>
+
+        <VueInput
+          label="Test All Events"
+          placeholder="Type, focus, blur..."
+          help-text="Try typing, focusing, and blurring the input"
+          @click="logEvent('click', { type: 'mouse' })"
+          @input="(e) => logEvent('input', { value: e.target?.value })"
+          @change="(e) => logEvent('change', { value: e.target?.value })"
+          @focus="logEvent('focus', { type: 'focus' })"
+          @blur="logEvent('blur', { type: 'blur' })"
+        />
+
+        <div style="margin-top: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;">Event Log (last 5 events):</h4>
+          <pre
+            style="background: #f3f4f6; padding: 1rem; border-radius: 6px; min-height: 100px; font-size: 0.75rem; overflow-x: auto;"
+          >{{ events.length > 0 ? events.join('\\n') : 'No events yet. Try interacting with the input above.' }}</pre>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// Focus and Blur Events
+export const FocusAndBlurEvents: Story = {
+  render: () => ({
+    components: { VueInput },
+    setup() {
+      const focusCount = ref(0);
+      const blurCount = ref(0);
+
+      return { focusCount, blurCount };
+    },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Focus & Blur Event Handling</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Focus and blur events are re-dispatched from the host element
+        </p>
+
+        <VueInput
+          label="Focus me!"
+          placeholder="Click in and out..."
+          help-text="Try focusing and blurring this input"
+          @focus="focusCount++"
+          @blur="blurCount++"
+        />
+
+        <div style="margin-top: 1.5rem; display: flex; gap: 2rem;">
+          <div>
+            <strong>Focus events:</strong>
+            <span style="display: inline-block; margin-left: 0.5rem; padding: 0.25rem 0.75rem; background: #dbeafe; color: #1e40af; border-radius: 9999px; font-weight: bold;">
+              {{ focusCount }}
+            </span>
+          </div>
+          <div>
+            <strong>Blur events:</strong>
+            <span style="display: inline-block; margin-left: 0.5rem; padding: 0.25rem 0.75rem; background: #fef3c7; color: #92400e; border-radius: 9999px; font-weight: bold;">
+              {{ blurCount }}
+            </span>
+          </div>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// Reactive Value Updates with v-model
+export const ReactiveValueUpdates: Story = {
+  render: () => ({
+    components: { VueInput },
+    setup() {
+      const currentValue = ref('');
+
+      return { currentValue };
+    },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Reactive Value Updates (v-model)</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Use v-model:value for two-way binding with real-time reactive UI
+        </p>
+
+        <VueInput
+          v-model:value="currentValue"
+          label="Type to see reactive updates"
+          placeholder="Start typing..."
+        />
+
+        <div style="margin-top: 1.5rem; padding: 1rem; background: #f9fafb; border-radius: 6px;">
+          <div style="margin-bottom: 0.5rem;">
+            <strong>Current value:</strong>
+            <code :style="{ marginLeft: '0.5rem', padding: '0.25rem 0.5rem', background: 'white', borderRadius: '4px', color: currentValue ? '#059669' : '#6b7280' }">
+              {{ currentValue || '(empty)' }}
+            </code>
+          </div>
+          <div>
+            <strong>Character count:</strong>
+            <span style="margin-left: 0.5rem; font-weight: bold; color: #2563eb;">
+              {{ currentValue.length }}
+            </span>
+          </div>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// Textarea Events
+export const TextareaEvents: Story = {
+  render: () => ({
+    components: { VueInput },
+    setup() {
+      const events = ref<string[]>([]);
+
+      const logEvent = (eventName: string) => {
+        const timestamp = new Date().toLocaleTimeString();
+        const newEvent = `[${timestamp}] ${eventName}`;
+        events.value = [...events.value, newEvent].slice(-8);
+      };
+
+      return { events, logEvent };
+    },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Textarea Event Handling</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          All event patterns work the same for textarea type
+        </p>
+
+        <VueInput
+          type="textarea"
+          label="Comments"
+          placeholder="Enter your feedback..."
+          :rows="6"
+          help-text="Try typing, focusing, and blurring"
+          @click="logEvent('click')"
+          @input="logEvent('input')"
+          @change="logEvent('change')"
+          @focus="logEvent('focus')"
+          @blur="logEvent('blur')"
+        />
+
+        <div style="margin-top: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;">Event Log (last 8 events):</h4>
+          <pre style="background: #f3f4f6; padding: 1rem; border-radius: 6px; min-height: 120px; font-size: 0.75rem; overflow-x: auto;">{{ events.length > 0 ? events.join('\\n') : 'No events yet. Try interacting with the textarea above.' }}</pre>
+        </div>
       </div>
     `,
   }),

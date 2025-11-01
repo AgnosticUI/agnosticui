@@ -2,7 +2,7 @@
   <ag-menu-button
     ref="menuButtonRef"
     :disabled="disabled || undefined"
-    :aria-label="ariaLabel"
+    :ariaLabel="ariaLabel"
     v-bind="$attrs"
   >
     <slot />
@@ -11,8 +11,8 @@
       slot="menu"
       v-bind="open === true ? { open: true } : {}"
       :placement="placement"
-      :aria-label="menuAriaLabel"
-      :aria-labelledby="menuAriaLabelledBy"
+      :ariaLabel="menuAriaLabel"
+      :ariaLabelledBy="menuAriaLabelledBy"
     >
       <slot name="menu" />
     </ag-menu>

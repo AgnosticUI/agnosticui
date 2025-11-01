@@ -86,8 +86,8 @@ export class Avatar extends LitElement implements AvatarProps {
     }
 
     :host([size="xl"]) .avatar {
-      width: var(--ag-space-16);
-      height: var(--ag-space-16);
+      width: var(--ag-space-14);
+      height: var(--ag-space-14);
       font-size: var(--ag-font-size-xl);
     }
 
@@ -158,7 +158,7 @@ export class Avatar extends LitElement implements AvatarProps {
   @property({ type: String, reflect: true })
   declare variant: AvatarVariant;
 
-  @property({ type: String, attribute: 'aria-label' })
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
   constructor() {

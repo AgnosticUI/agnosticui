@@ -199,7 +199,10 @@ describe('VueIconButton Wrapper', () => {
 
       const iconButton = wrapper.find('ag-icon-button');
       expect(iconButton.exists()).toBe(true);
-      expect(iconButton.attributes('aria-describedby')).toBe('help-text');
+
+      // Check the JavaScript property on the DOM element
+      const iconButtonElement = iconButton.element as any;
+      expect(iconButtonElement.ariaDescribedby).toBe('help-text');
     });
   });
 

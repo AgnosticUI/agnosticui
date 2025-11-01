@@ -2,7 +2,7 @@
   <ag-breadcrumb
     ref="breadcrumbRef"
     :type="type"
-    :aria-label="ariaLabel"
+    :ariaLabel="ariaLabel"
     v-bind="$attrs"
   ></ag-breadcrumb>
 </template>

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from 'storybook/test';
 import { ReactInput } from 'agnosticui-core/react';
@@ -574,6 +575,251 @@ export const ComplexForm: Story = {
       />
     </div>
   ),
+};
+
+// Event Handling Stories - AgnosticUI v2 Event Conventions
+
+// Callback Props Pattern
+const CallbackPropsPatternComponent = () => {
+  const [events, setEvents] = useState<string[]>([]);
+
+  const logEvent = (eventName: string, detail: Record<string, unknown>) => {
+    const timestamp = new Date().toLocaleTimeString();
+    const newEvent = `[${timestamp}] ${eventName}: ${JSON.stringify(detail)}`;
+    setEvents((prev) => [...prev, newEvent].slice(-5));
+  };
+
+  return (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Callback Props Pattern</h3>
+      <p style={{ marginBottom: '1rem', color: '#6b7280' }}>
+        Native events work automatically with callback props (onClick, onInput,
+        onChange, onFocus, onBlur)
+      </p>
+
+      <ReactInput
+        label="Test All Events"
+        placeholder="Type, focus, blur..."
+        helpText="Try typing, focusing, and blurring the input"
+        onClick={() => logEvent('click', { type: 'mouse' })}
+        onInput={(e) =>
+          logEvent('input', {
+            value: (e.target as HTMLInputElement).value,
+          })
+        }
+        onChange={(e) =>
+          logEvent('change', {
+            value: (e.target as HTMLInputElement).value,
+          })
+        }
+        onFocus={() => logEvent('focus', { type: 'focus' })}
+        onBlur={() => logEvent('blur', { type: 'blur' })}
+      />
+
+      <div style={{ marginTop: '1.5rem' }}>
+        <h4 style={{ marginBottom: '0.5rem' }}>Event Log (last 5 events):</h4>
+        <pre
+          style={{
+            background: '#f3f4f6',
+            padding: '1rem',
+            borderRadius: '6px',
+            minHeight: '100px',
+            fontSize: '0.75rem',
+            overflowX: 'auto',
+          }}
+        >
+          {events.length > 0
+            ? events.join('\n')
+            : 'No events yet. Try interacting with the input above.'}
+        </pre>
+      </div>
+    </div>
+  );
+};
+
+export const CallbackPropsPattern: Story = {
+  render: () => <CallbackPropsPatternComponent />,
+};
+
+// Focus and Blur Events
+const FocusAndBlurEventsComponent = () => {
+  const [focusCount, setFocusCount] = useState(0);
+  const [blurCount, setBlurCount] = useState(0);
+
+  return (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Focus & Blur Event Handling</h3>
+      <p style={{ marginBottom: '1rem', color: '#6b7280' }}>
+        Focus and blur events are re-dispatched from the host element and work
+        with callback props
+      </p>
+
+      <ReactInput
+        label="Focus me!"
+        placeholder="Click in and out..."
+        helpText="Try focusing and blurring this input"
+        onFocus={() => setFocusCount((c) => c + 1)}
+        onBlur={() => setBlurCount((c) => c + 1)}
+      />
+
+      <div style={{ marginTop: '1.5rem', display: 'flex', gap: '2rem' }}>
+        <div>
+          <strong>Focus events:</strong>
+          <span
+            style={{
+              display: 'inline-block',
+              marginLeft: '0.5rem',
+              padding: '0.25rem 0.75rem',
+              background: '#dbeafe',
+              color: '#1e40af',
+              borderRadius: '9999px',
+              fontWeight: 'bold',
+            }}
+          >
+            {focusCount}
+          </span>
+        </div>
+        <div>
+          <strong>Blur events:</strong>
+          <span
+            style={{
+              display: 'inline-block',
+              marginLeft: '0.5rem',
+              padding: '0.25rem 0.75rem',
+              background: '#fef3c7',
+              color: '#92400e',
+              borderRadius: '9999px',
+              fontWeight: 'bold',
+            }}
+          >
+            {blurCount}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const FocusAndBlurEvents: Story = {
+  render: () => <FocusAndBlurEventsComponent />,
+};
+
+// Reactive Value Updates
+const ReactiveValueUpdatesComponent = () => {
+  const [currentValue, setCurrentValue] = useState('');
+
+  return (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Reactive Value Updates</h3>
+      <p style={{ marginBottom: '1rem', color: '#6b7280' }}>
+        Input events fire on every keystroke, enabling real-time reactive UI
+      </p>
+
+      <ReactInput
+        label="Type to see reactive updates"
+        placeholder="Start typing..."
+        onInput={(e) => {
+          const value = (e.target as HTMLInputElement).value;
+          setCurrentValue(value);
+        }}
+      />
+
+      <div
+        style={{
+          marginTop: '1.5rem',
+          padding: '1rem',
+          background: '#f9fafb',
+          borderRadius: '6px',
+        }}
+      >
+        <div style={{ marginBottom: '0.5rem' }}>
+          <strong>Current value:</strong>
+          <code
+            style={{
+              marginLeft: '0.5rem',
+              padding: '0.25rem 0.5rem',
+              background: 'white',
+              borderRadius: '4px',
+              color: currentValue ? '#059669' : '#6b7280',
+            }}
+          >
+            {currentValue || '(empty)'}
+          </code>
+        </div>
+        <div>
+          <strong>Character count:</strong>
+          <span
+            style={{
+              marginLeft: '0.5rem',
+              fontWeight: 'bold',
+              color: '#2563eb',
+            }}
+          >
+            {currentValue.length}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ReactiveValueUpdates: Story = {
+  render: () => <ReactiveValueUpdatesComponent />,
+};
+
+// Textarea Events
+const TextareaEventsComponent = () => {
+  const [events, setEvents] = useState<string[]>([]);
+
+  const logEvent = (eventName: string) => {
+    const timestamp = new Date().toLocaleTimeString();
+    const newEvent = `[${timestamp}] ${eventName}`;
+    setEvents((prev) => [...prev, newEvent].slice(-8));
+  };
+
+  return (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Textarea Event Handling</h3>
+      <p style={{ marginBottom: '1rem', color: '#6b7280' }}>
+        All event patterns work the same for textarea type
+      </p>
+
+      <ReactInput
+        type="textarea"
+        label="Comments"
+        placeholder="Enter your feedback..."
+        rows={6}
+        helpText="Try typing, focusing, and blurring"
+        onClick={() => logEvent('click')}
+        onInput={() => logEvent('input')}
+        onChange={() => logEvent('change')}
+        onFocus={() => logEvent('focus')}
+        onBlur={() => logEvent('blur')}
+      />
+
+      <div style={{ marginTop: '1.5rem' }}>
+        <h4 style={{ marginBottom: '0.5rem' }}>Event Log (last 8 events):</h4>
+        <pre
+          style={{
+            background: '#f3f4f6',
+            padding: '1rem',
+            borderRadius: '6px',
+            minHeight: '120px',
+            fontSize: '0.75rem',
+            overflowX: 'auto',
+          }}
+        >
+          {events.length > 0
+            ? events.join('\n')
+            : 'No events yet. Try interacting with the textarea above.'}
+        </pre>
+      </div>
+    </div>
+  );
+};
+
+export const TextareaEvents: Story = {
+  render: () => <TextareaEventsComponent />,
 };
 
 // CSS Parts Customization

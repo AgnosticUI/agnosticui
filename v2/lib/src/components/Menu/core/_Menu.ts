@@ -21,7 +21,7 @@ export class MenuButton extends LitElement {
   @property({ type: Boolean })
   disabled = false;
 
-  @property({ attribute: 'aria-label' })
+  @property({ reflect: true, attribute: 'aria-label' })
   ariaLabel = '';
 
   @property({ type: String })
@@ -470,10 +470,10 @@ export class Menu extends LitElement {
   @property()
   placement = 'bottom-start';
 
-  @property({ attribute: 'aria-label' })
+  @property({ reflect: true, attribute: 'aria-label' })
   ariaLabel = '';
 
-  @property({ attribute: 'aria-labelledby' })
+  @property({ reflect: true, attribute: 'aria-labelledby' })
   ariaLabelledBy = '';
 
   @property({ attribute: 'selected-value' })

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { ref } from "vue";
 import { fn } from "storybook/test";
 import VueToggle, { type VueToggleProps } from "agnosticui-core/toggle/vue";
 
@@ -132,17 +133,17 @@ export const EventTesting: Story = {
   render: (args) => ({
     components: { VueToggle },
     setup() {
-      const { ref } = require('vue');
       const vModelChecked = ref(false);
+      const vModelChecked2 = ref(false);
       const eventChecked = ref(false);
 
       const handleToggleChange = (event: any) => {
-        console.log('toggle-change event:', event.detail);
-        eventChecked.value = event.detail.checked;
+        console.log('toggle-change name:', event.name, 'value:', event.value, 'checked:', event.checked  );
+        eventChecked.value = event.checked;
         args['onToggle-change']?.(event);
       };
 
-      return { args, vModelChecked, eventChecked, handleToggleChange };
+      return { args, vModelChecked, vModelChecked2, eventChecked, handleToggleChange };
     },
     template: `
       <div style="display: flex; flex-direction: column; align-items: flex-start; padding: 50px; gap: 1.5rem;">
@@ -163,6 +164,8 @@ export const EventTesting: Story = {
               :label="args.label || 'Toggle'"
               :size="args.size"
               variant="default"
+              :name="'event-toggle'"
+              :value="'event-value'"
               @toggle-change="handleToggleChange"
             />
             <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
@@ -182,6 +185,8 @@ export const EventTesting: Story = {
               label="Controlled with v-model"
               :size="args.size"
               variant="success"
+              :name="'vmodel-toggle'"
+              :value="'vmodel-value'"
               v-model:checked="vModelChecked"
             />
             <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
@@ -207,11 +212,16 @@ export const EventTesting: Story = {
               label="With both patterns"
               :size="args.size"
               variant="danger"
-              v-model:checked="vModelChecked"
-              @toggle-change="(e) => console.log('Event also fired:', e.detail)"
+              :name="'both-toggle'"
+              :value="'both-value'"
+              v-model:checked="vModelChecked2"
+              @toggle-change="(e) => console.log('Event also fired:', e.checked)"
             />
             <p style="font-size: 0.75rem; color: #6b7280; margin: 0.5rem 0 0 0;">
               Both @toggle-change and v-model:checked work together
+            </p>
+            <p style="font-size: 0.75rem; color: #059669; margin: 0.25rem 0 0 0;">
+              v-model value: {{ vModelChecked2 }}
             </p>
           </div>
         </div>

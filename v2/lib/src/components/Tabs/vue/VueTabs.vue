@@ -2,10 +2,10 @@
   <ag-tabs
     ref="tabsRef"
     :activation="activation"
-    :active-tab="activeTab"
+    :activeTab="activeTab"
     :orientation="orientation"
-    :aria-label="ariaLabel"
-    :aria-labelledby="ariaLabelledBy"
+    :ariaLabel="ariaLabel"
+    :ariaLabelledBy="ariaLabelledBy"
     @tab-change="handleTabChange"
     v-bind="$attrs"
   >
