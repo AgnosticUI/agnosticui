@@ -27,7 +27,7 @@ import "../core/Divider"; // Registers the ag-divider web component
 export default defineComponent({
   name: "VueDivider",
   props: {
-    isVertical: { type: Boolean, default: false },
+    vertical: { type: Boolean, default: false },
     justify: {
       type: String as PropType<DividerJustify>,
       default: "center" as DividerJustify,
@@ -48,7 +48,7 @@ export default defineComponent({
       const webComponent = agComponent.value;
       if (!webComponent) return;
 
-      webComponent.isVertical = props.isVertical;
+      webComponent.vertical = props.vertical;
       webComponent.justify = props.justify;
       webComponent.size = props.size;
       webComponent.variant = props.variant;

@@ -5,7 +5,7 @@ const meta: Meta<ReactDividerProps> = {
   title: 'AgnosticUI React/Divider',
   component: ReactDivider,
   argTypes: {
-    isVertical: { control: 'boolean', description: 'Vertical orientation' },
+    vertical: { control: 'boolean', description: 'Vertical orientation' },
     justify: {
       control: 'select',
       options: ['center', 'start', 'end'],
@@ -23,7 +23,7 @@ const meta: Meta<ReactDividerProps> = {
     },
   },
   args: {
-    isVertical: false,
+    vertical: false,
     justify: 'center',
     size: 'default',
     variant: 'default',
@@ -61,7 +61,7 @@ export const VerticalBasic: Story = {
   render: () => (
     <div style={{ display: 'flex', minHeight: '200px' }}>
       <p style={{ flex: 1 }}>Left content</p>
-      <ReactDivider isVertical />
+      <ReactDivider vertical />
       <p style={{ flex: 1 }}>Right content</p>
     </div>
   ),
@@ -73,11 +73,11 @@ export const VerticalWithContent: Story = {
       <p style={{ flex: 1 }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </p>
-      <ReactDivider isVertical>Yes</ReactDivider>
+      <ReactDivider vertical>Yes</ReactDivider>
       <p style={{ flex: 1 }}>
         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
       </p>
-      <ReactDivider isVertical>Sir!</ReactDivider>
+      <ReactDivider vertical>Sir!</ReactDivider>
       <p style={{ flex: 1 }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </p>
@@ -100,13 +100,13 @@ export const SizesVertical: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', minHeight: '150px' }}>
       <p style={{ flex: 1 }}>Content</p>
-      <ReactDivider isVertical size="small">Sm</ReactDivider>
+      <ReactDivider vertical size="small">Sm</ReactDivider>
       <p style={{ flex: 1 }}>Content</p>
-      <ReactDivider isVertical size="default">Def</ReactDivider>
+      <ReactDivider vertical size="default">Def</ReactDivider>
       <p style={{ flex: 1 }}>Content</p>
-      <ReactDivider isVertical size="large">Lg</ReactDivider>
+      <ReactDivider vertical size="large">Lg</ReactDivider>
       <p style={{ flex: 1 }}>Content</p>
-      <ReactDivider isVertical size="xlarge">XL</ReactDivider>
+      <ReactDivider vertical size="xlarge">XL</ReactDivider>
       <p style={{ flex: 1 }}>Content</p>
     </div>
   ),
@@ -163,7 +163,7 @@ export const CustomizedWithCSSParts: Story = {
         <ReactDivider className="custom-dotted">Dotted Pattern</ReactDivider>
         <div style={{ display: 'flex', minHeight: '150px' }}>
           <p style={{ flex: 1 }}>Custom vertical gradient divider</p>
-          <ReactDivider className="custom-vertical" isVertical>Custom</ReactDivider>
+          <ReactDivider className="custom-vertical" vertical>Custom</ReactDivider>
           <p style={{ flex: 1 }}>Styled with CSS Shadow Parts</p>
         </div>
       </div>

@@ -5,7 +5,7 @@ const meta = {
   title: 'AgnosticUI Vue/Divider',
   component: VueDivider,
   argTypes: {
-    isVertical: { control: 'boolean', description: 'Vertical orientation' },
+    vertical: { control: 'boolean', description: 'Vertical orientation' },
     justify: {
       control: 'select',
       options: ['center', 'start', 'end'],
@@ -23,7 +23,7 @@ const meta = {
     },
   },
   args: {
-    isVertical: false,
+    vertical: false,
     justify: 'center',
     size: 'default',
     variant: 'default',
