@@ -80,7 +80,7 @@ export class AgTag extends LitElement {
     }
 
     /* Uppercase modifier */
-    :host([isUppercase]) .tag-wrapper {
+    :host([uppercase]) .tag-wrapper {
       text-transform: uppercase;
       font-size: var(--ag-font-size-xs);
       letter-spacing: var(--ag-letter-spacing-wide);
@@ -112,7 +112,7 @@ export class AgTag extends LitElement {
   /**
    * If `true`, the tag text will be transformed to uppercase.
    */
-  @property({ type: Boolean, reflect: true }) isUppercase = false;
+  @property({ type: Boolean, reflect: true }) uppercase = false;
 
   render() {
     return html`

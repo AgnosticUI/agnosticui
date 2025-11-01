@@ -57,12 +57,12 @@
       <p class="mbs2 mbe3">Transforms text to uppercase with condensed typography.</p>
       <div class="stacked">
         <VueTag
-          :is-uppercase="true"
+          :uppercase="true"
           variant="warning"
           class="mbe2"
         >Uppercase Tag</VueTag>
         <VueTag
-          :is-uppercase="true"
+          :uppercase="true"
           shape="pill"
           class="mbe2"
         >PILL LABEL</VueTag>
@@ -95,7 +95,7 @@
         </VueTag>
         <VueTag
           variant="warning"
-          :is-uppercase="true"
+          :uppercase="true"
           class="mbe2"
         >
           Pending

@@ -13,7 +13,7 @@ import TagExamples from '../examples/TagExamples.vue'
 ::: details Vue
 ```vue
 <template>
-  <VueTag variant="success" shape="pill" :is-uppercase="true">
+  <VueTag variant="success" shape="pill" :uppercase="true">
     Active Task
     <button slot="close" @click="handleClose">✕</button>
   </VueTag>
@@ -55,7 +55,7 @@ export default function Example() {
 <script type="module">
   import 'agnosticui-core/tag';
 </script>
-<ag-tag variant="success" shape="pill" is-uppercase>
+<ag-tag variant="success" shape="pill" uppercase>
   Active Task
   <button slot="close" @click=${() => console.log('Close')}>✕</button>
 </ag-tag>
@@ -99,4 +99,4 @@ The tag component uses a semantic `<div>` with ARIA attributes for the close slo
 - **Variants**: Empty `variant` uses subtle neutral styling; use 'info', 'warning', 'error', or 'success' for semantic colors.
 - **Shapes**: 'circle' is ideal for icons/single characters (e.g., "!"); it sets fixed min-width/height.
 - **Close Slot**: Use a button with `slot="close"` for dismissible tags; it auto-margins for alignment.
-- All implementations share the same underlying styles and behavior. Properties can be set via attributes (e.g., `<ag-tag is-uppercase>`) or property binding in Lit templates (e.g., `.isUppercase=${true}`).
+- All implementations share the same underlying styles and behavior. Properties can be set via attributes (e.g., `<ag-tag uppercase>`) or property binding in Lit templates (e.g., `.isUppercase=${true}`).

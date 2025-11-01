@@ -16,7 +16,7 @@ const meta = {
       options: ["", "pill", "round", "circle"],
       description: "The shape of the tag",
     },
-    isUppercase: {
+    uppercase: {
       control: "boolean",
       description: "Whether to render the text in uppercase",
     },
@@ -24,7 +24,7 @@ const meta = {
   args: {
     variant: "",
     shape: "",
-    isUppercase: false,
+    uppercase: false,
   },
 } satisfies Meta<typeof VueTag>;
 
@@ -113,7 +113,7 @@ export const CircleShape: Story = {
 };
 
 export const Uppercase: Story = {
-  args: { isUppercase: true, variant: "warning"},
+  args: { uppercase: true, variant: "warning"},
   render: (args: VueTagProps) => ({
     components: { VueTag },
     setup() {

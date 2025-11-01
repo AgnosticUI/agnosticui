@@ -35,9 +35,9 @@ describe('<ag-tag>', () => {
   });
 
   it('toggles uppercase correctly', async () => {
-    el.isUppercase = true;
+    el.uppercase = true;
     await el.updateComplete;
-    expect(el.hasAttribute('isUppercase')).toBe(true);
+    expect(el.hasAttribute('uppercase')).toBe(true);
   });
 
   it('renders slot content for close', async () => {
