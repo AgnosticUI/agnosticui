@@ -35,7 +35,7 @@ const meta: Meta<Checkbox> = {
     },
     theme: {
       control: "select",
-      options: ["default", "primary", "monochrome"],
+      options: ["default", "primary", "success", "monochrome"],
       description: "Color theme variant",
     },
     labelText: {
@@ -55,7 +55,7 @@ const meta: Meta<Checkbox> = {
     indeterminate: false,
     disabled: false,
     size: "medium",
-    theme: "default",
+    theme: "primary",
     labelText: "Checkbox Option",
     labelPosition: "end",
   },
@@ -340,7 +340,7 @@ export const AllThemes: Story = {
         style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
       >
         <legend style="padding: 0 0.5rem; font-weight: 600;">
-          Default Theme (Green)
+          Default Theme (Primary)
         </legend>
         <div style="display: flex; gap: 1rem;">
           <ag-checkbox
@@ -396,6 +396,38 @@ export const AllThemes: Story = {
             value="3"
             .size=${args.size}
             theme="primary"
+            labelText="Indeterminate"
+            .indeterminate=${true}
+          ></ag-checkbox>
+        </div>
+      </fieldset>
+      <fieldset
+        style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
+      >
+        <legend style="padding: 0 0.5rem; font-weight: 600;">
+          Success Theme (Green)
+        </legend>
+        <div style="display: flex; gap: 1rem;">
+          <ag-checkbox
+            name="theme-success"
+            value="1"
+            .size=${args.size}
+            theme="success"
+            >Unchecked</ag-checkbox
+          >
+          <ag-checkbox
+            name="theme-success"
+            value="2"
+            .size=${args.size}
+            theme="success"
+            labelText="Checked"
+            .checked=${true}
+          ></ag-checkbox>
+          <ag-checkbox
+            name="theme-success"
+            value="3"
+            .size=${args.size}
+            theme="success"
             labelText="Indeterminate"
             .indeterminate=${true}
           ></ag-checkbox>

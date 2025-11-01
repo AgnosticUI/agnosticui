@@ -66,7 +66,7 @@ describe('Radio - Comprehensive Tests', () => {
       expect(radio.checked).toBe(false);
       expect(radio.disabled).toBe(false);
       expect(radio.size).toBe('medium');
-      expect(radio.theme).toBe('default');
+      expect(radio.theme).toBe('primary');
       expect(radio.labelText).toBe('');
       expect(radio.labelPosition).toBe('end');
     });
@@ -135,6 +135,12 @@ describe('Radio - Comprehensive Tests', () => {
       const radio = await createRadio({ theme: 'primary', labelText: 'Primary' });
       const indicator = radio.shadowRoot?.querySelector('.radio-indicator');
       expect(indicator?.classList.contains('radio-indicator--primary')).toBe(true);
+    });
+
+    it('should render success theme correctly', async () => {
+      const radio = await createRadio({ theme: 'success', labelText: 'Success' });
+      const indicator = radio.shadowRoot?.querySelector('.radio-indicator');
+      expect(indicator?.classList.contains('radio-indicator--success')).toBe(true);
     });
 
     it('should render monochrome theme correctly', async () => {

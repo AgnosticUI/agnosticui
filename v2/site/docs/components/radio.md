@@ -264,7 +264,7 @@ export default function Example() {
 | `checked` | `boolean` | `false` | Whether the radio is checked |
 | `disabled` | `boolean` | `false` | Whether the radio is disabled |
 | `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Size of the radio button |
-| `theme` | `'default' \| 'primary' \| 'monochrome'` | `'default'` | Color theme variant (default=green, primary=blue, monochrome=black/white) |
+| `theme` | `'default' \| 'primary' \| 'success' \| 'monochrome'` | `'primary'` | Color theme variant (default=blue alias to primary, primary=blue, success=green, monochrome=black/white) |
 | `labelText` | `string` | `''` | Label text for the radio button |
 | `labelPosition` | `'end' \| 'start'` | `'end'` | Position of label relative to radio button |
 
@@ -552,8 +552,9 @@ ag-radio::part(ag-radio-label) {
 
 All themes automatically support dark mode through CSS design tokens:
 
-- **Default theme**: Uses `--ag-success` (green) which adapts to dark mode
+- **Default theme**: Alias to primary theme - uses `--ag-primary` (blue) which adapts to dark mode
 - **Primary theme**: Uses `--ag-primary` (blue) which adapts to dark mode
+- **Success theme**: Uses `--ag-success` (green) which adapts to dark mode
 - **Monochrome theme**: Uses `--ag-black` and `--ag-white` which invert in dark mode
 
 ## Best Practices

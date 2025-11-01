@@ -11,7 +11,7 @@ const meta = {
     checked: { control: 'boolean', description: 'Whether the radio is checked' },
     disabled: { control: 'boolean', description: 'Whether the radio is disabled' },
     size: { control: 'select', options: ['small', 'medium', 'large'], description: 'Size' },
-    theme: { control: 'select', options: ['default', 'primary', 'monochrome'], description: 'Theme' },
+    theme: { control: 'select', options: ['default', 'primary', 'success', 'monochrome'], description: 'Theme' },
     labelText: { control: 'text', description: 'Label text' },
     labelPosition: { control: 'select', options: ['end', 'start'], description: 'Label position' },
   },
@@ -21,7 +21,7 @@ const meta = {
     checked: false,
     disabled: false,
     size: 'medium',
-    theme: 'default',
+    theme: 'primary',
     labelText: 'Radio Option',
     labelPosition: 'end',
   },
@@ -68,18 +68,24 @@ export const AllThemes: Story = {
     template: `
       <div style="display: flex; flex-direction: column; gap: 1.5rem;">
         <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-          <legend style="padding: 0 0.5rem; font-weight: 600;">Default Theme (Green)</legend>
+          <legend style="padding: 0 0.5rem; font-weight: 600;">Default Theme (Blue)</legend>
           <div style="display: flex; gap: 1rem;">
             <VueRadio name="theme-default" value="1" :size="args.size" theme="default" label-text="Unchecked" />
             <VueRadio name="theme-default" value="2" :size="args.size" theme="default" label-text="Checked" :checked="true" />
           </div>
         </fieldset>
-
         <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
           <legend style="padding: 0 0.5rem; font-weight: 600;">Primary Theme (Blue)</legend>
           <div style="display: flex; gap: 1rem;">
             <VueRadio name="theme-primary" value="1" :size="args.size" theme="primary" label-text="Unchecked" />
             <VueRadio name="theme-primary" value="2" :size="args.size" theme="primary" label-text="Checked" :checked="true" />
+          </div>
+        </fieldset>
+        <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
+          <legend style="padding: 0 0.5rem; font-weight: 600;">Success Theme (Green)</legend>
+          <div style="display: flex; gap: 1rem;">
+            <VueRadio name="theme-green" value="1" :size="args.size" theme="green" label-text="Unchecked" />
+            <VueRadio name="theme-green" value="2" :size="args.size" theme="green" label-text="Checked" :checked="true" />
           </div>
         </fieldset>
 

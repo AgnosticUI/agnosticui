@@ -14,7 +14,7 @@ const meta = {
     indeterminate: { control: 'boolean', description: 'Whether the checkbox is in indeterminate state' },
     disabled: { control: 'boolean', description: 'Whether the checkbox is disabled' },
     size: { control: 'select', options: ['small', 'medium', 'large'], description: 'Size' },
-    theme: { control: 'select', options: ['default', 'primary', 'monochrome'], description: 'Theme' },
+    theme: { control: 'select', options: ['default', 'primary', 'success', 'monochrome'], description: 'Theme' },
     labelText: { control: 'text', description: 'Label text' },
     labelPosition: { control: 'select', options: ['end', 'start'], description: 'Label position' },
   },
@@ -25,7 +25,7 @@ const meta = {
     indeterminate: false,
     disabled: false,
     size: 'medium',
-    theme: 'default',
+    theme: 'primary',
     labelText: 'Checkbox Option',
     labelPosition: 'end',
   },
@@ -91,7 +91,7 @@ export const AllThemes: Story = {
     template: `
       <div style="display: flex; flex-direction: column; gap: 1.5rem;">
         <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-          <legend style="padding: 0 0.5rem; font-weight: 600;">Default Theme (Green)</legend>
+          <legend style="padding: 0 0.5rem; font-weight: 600;">Default Theme (Primary)</legend>
           <div style="display: flex; gap: 1rem;">
             <VueCheckbox name="theme-default" value="1" :size="args.size" theme="default" label-text="Unchecked" />
             <VueCheckbox name="theme-default" value="2" :size="args.size" theme="default" label-text="Checked" :checked="true" />
@@ -107,7 +107,14 @@ export const AllThemes: Story = {
             <VueCheckbox name="theme-primary" value="3" :size="args.size" theme="primary" label-text="Indeterminate" :indeterminate="true" />
           </div>
         </fieldset>
-
+        <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
+          <legend style="padding: 0 0.5rem; font-weight: 600;">Success Theme (Green)</legend>
+          <div style="display: flex; gap: 1rem;">
+            <VueCheckbox name="theme-success" value="1" :size="args.size" theme="success" label-text="Unchecked" />
+            <VueCheckbox name="theme-success" value="2" :size="args.size" theme="success" label-text="Checked" :checked="true" />
+            <VueCheckbox name="theme-success" value="3" :size="args.size" theme="success" label-text="Indeterminate" :indeterminate="true" />
+          </div>
+        </fieldset>
         <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
           <legend style="padding: 0 0.5rem; font-weight: 600;">Monochrome Theme (Black/White)</legend>
           <div style="display: flex; gap: 1rem;">

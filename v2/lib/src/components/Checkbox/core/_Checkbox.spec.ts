@@ -84,7 +84,7 @@ describe('Checkbox - Comprehensive Tests', () => {
       expect(checkbox.indeterminate).toBe(false);
       expect(checkbox.disabled).toBe(false);
       expect(checkbox.size).toBe('medium');
-      expect(checkbox.theme).toBe('default');
+      expect(checkbox.theme).toBe('primary');
       expect(checkbox.labelText).toBe('');
       expect(checkbox.labelPosition).toBe('end');
     });
@@ -211,6 +211,17 @@ describe('Checkbox - Comprehensive Tests', () => {
       });
       const indicator = checkbox.shadowRoot?.querySelector('.checkbox-label');
       expect(indicator?.classList.contains('checkbox-label--primary')).toBe(
+        true
+      );
+    });
+
+    it('should render success theme correctly', async () => {
+      const checkbox = await createCheckbox({
+        theme: 'success',
+        labelText: 'Success',
+      });
+      const indicator = checkbox.shadowRoot?.querySelector('.checkbox-label');
+      expect(indicator?.classList.contains('checkbox-label--success')).toBe(
         true
       );
     });

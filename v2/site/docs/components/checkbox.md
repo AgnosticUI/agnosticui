@@ -193,7 +193,7 @@ export default function Example() {
 | `indeterminate` | `boolean` | `false` | Whether the checkbox is in indeterminate state (used for "select all" scenarios) |
 | `disabled` | `boolean` | `false` | Whether the checkbox is disabled |
 | `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Size of the checkbox |
-| `theme` | `'default' \| 'primary' \| 'monochrome'` | `'default'` | Color theme variant (default=green, primary=blue, monochrome=black/white) |
+| `theme` | `'default' \| 'primary' \| 'success' \| 'monochrome'` | `'primary'` | Color theme variant (default=blue alias to primary, primary=blue, success=green, monochrome=black/white) |
 | `labelText` | `string` | `''` | Label text for the checkbox |
 | `labelPosition` | `'end' \| 'start'` | `'end'` | Position of label relative to checkbox |
 
@@ -455,8 +455,9 @@ ag-checkbox::part(ag-checkbox-label) {
 
 All themes automatically support dark mode through CSS design tokens:
 
-- **Default theme**: Uses `--ag-success` (green) which adapts to dark mode
+- **Default theme**: Alias to primary theme - uses `--ag-primary` (blue) which adapts to dark mode
 - **Primary theme**: Uses `--ag-primary` (blue) which adapts to dark mode
+- **Success theme**: Uses `--ag-success` (green) which adapts to dark mode
 - **Monochrome theme**: Uses `--ag-black` and `--ag-white` which invert in dark mode
 
 ## Notes

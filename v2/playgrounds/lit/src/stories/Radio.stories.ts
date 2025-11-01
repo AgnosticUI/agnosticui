@@ -31,7 +31,7 @@ const meta: Meta<Radio> = {
     },
     theme: {
       control: "select",
-      options: ["default", "primary", "monochrome"],
+      options: ["default", "primary", "success", "monochrome"],
       description: "Color theme variant",
     },
     labelText: {
@@ -50,7 +50,7 @@ const meta: Meta<Radio> = {
     checked: false,
     disabled: false,
     size: "medium",
-    theme: "default",
+    theme: "primary",
     labelText: "Radio Option",
     labelPosition: "end",
   },
@@ -320,7 +320,7 @@ export const AllThemes: Story = {
         style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
       >
         <legend style="padding: 0 0.5rem; font-weight: 600;">
-          Default Theme (Green)
+          Default Theme (Primary)
         </legend>
         <div style="display: flex; gap: 1rem;">
           <ag-radio
@@ -340,8 +340,7 @@ export const AllThemes: Story = {
           >
         </div>
       </fieldset>
-
-      <fieldset
+<fieldset
         style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
       >
         <legend style="padding: 0 0.5rem; font-weight: 600;">
@@ -360,6 +359,30 @@ export const AllThemes: Story = {
             value="2"
             .size=${args.size}
             theme="primary"
+            .checked=${true}
+            >Checked</ag-radio
+          >
+        </div>
+      </fieldset>
+      <fieldset
+        style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
+      >
+        <legend style="padding: 0 0.5rem; font-weight: 600;">
+          Success Theme (Green)
+        </legend>
+        <div style="display: flex; gap: 1rem;">
+          <ag-radio
+            name="theme-success"
+            value="1"
+            .size=${args.size}
+            theme="success"
+            >Unchecked</ag-radio
+          >
+          <ag-radio
+            name="theme-success"
+            value="2"
+            .size=${args.size}
+            theme="success"
             .checked=${true}
             >Checked</ag-radio
           >
