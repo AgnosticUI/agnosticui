@@ -8,7 +8,7 @@ import {
 type TagStoryArgs = {
   variant: ReactTagVariant;
   shape: ReactTagShape;
-  isUppercase: boolean;
+  uppercase: boolean;
 };
 
 const meta: Meta<TagStoryArgs> = {
@@ -26,7 +26,7 @@ const meta: Meta<TagStoryArgs> = {
       options: ["", "pill", "round", "circle"],
       description: "The shape of the tag",
     },
-    isUppercase: {
+    uppercase: {
       control: "boolean",
       description: "Whether to render the text in uppercase",
     },
@@ -34,7 +34,7 @@ const meta: Meta<TagStoryArgs> = {
   args: {
     variant: "",
     shape: "",
-    isUppercase: false,
+    uppercase: false,
   },
 };
 
@@ -42,8 +42,8 @@ export default meta;
 type Story = StoryObj<TagStoryArgs>;
 
 export const Default: Story = {
-  render: ({ variant, shape, isUppercase }) => (
-    <ReactTag variant={variant} shape={shape} isUppercase={isUppercase}>
+  render: ({ variant, shape, uppercase }) => (
+    <ReactTag variant={variant} shape={shape} uppercase={uppercase}>
       Default Tag
     </ReactTag>
   ),
@@ -88,9 +88,9 @@ export const CircleShape: Story = {
 };
 
 export const Uppercase: Story = {
-  args: { isUppercase: true, variant: "warning" },
-  render: ({ isUppercase, variant }) => (
-    <ReactTag isUppercase={isUppercase} variant={variant}>
+  args: { uppercase: true, variant: "warning" },
+  render: ({ uppercase, variant }) => (
+    <ReactTag uppercase={uppercase} variant={variant}>
       Uppercase Tag
     </ReactTag>
   ),

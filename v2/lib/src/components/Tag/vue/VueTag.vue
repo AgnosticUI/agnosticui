@@ -3,7 +3,7 @@
     ref="agComponent"
     :variant="variant"
     :shape="shape"
-    :isUppercase="isUppercase"
+    :uppercase="uppercase"
     v-bind="$attrs"
   >
     <slot />
@@ -20,7 +20,7 @@ import "../core/Tag"; // Registers <ag-tag> on wrapper load
 const props = defineProps<{
   variant?: TagVariant;
   shape?: TagShape;
-  isUppercase?: boolean;
+  uppercase?: boolean;
 }>();
 
 const agComponent = ref<InstanceType<typeof AgTag> | null>(null);

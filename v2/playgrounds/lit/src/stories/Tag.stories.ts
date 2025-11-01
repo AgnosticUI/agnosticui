@@ -6,7 +6,7 @@ import type { TagVariant, TagShape } from 'agnosticui-core/tag';
 type TagStoryArgs = {
   variant: TagVariant;
   shape: TagShape;
-  isUppercase: boolean;
+  uppercase: boolean;
 };
 
 const meta: Meta<TagStoryArgs> = {
@@ -24,7 +24,7 @@ const meta: Meta<TagStoryArgs> = {
       options: ["", "pill", "round", "circle"],
       description: "The shape of the tag",
     },
-    isUppercase: {
+    uppercase: {
       control: "boolean",
       description: "Whether to render the text in uppercase",
     },
@@ -32,7 +32,7 @@ const meta: Meta<TagStoryArgs> = {
   args: {
     variant: "",
     shape: "",
-    isUppercase: false,
+    uppercase: false,
   },
 };
 
@@ -40,8 +40,8 @@ export default meta;
 type Story = StoryObj<TagStoryArgs>;
 
 export const Default: Story = {
-  render: ({ variant, shape, isUppercase }) => html`
-    <ag-tag .variant=${variant} .shape=${shape} .isUppercase=${isUppercase}>
+  render: ({ variant, shape, uppercase }) => html`
+    <ag-tag .variant=${variant} .shape=${shape} .uppercase=${uppercase}>
       Default Tag
     </ag-tag>
   `,
@@ -82,9 +82,9 @@ export const CircleShape: Story = {
 };
 
 export const Uppercase: Story = {
-  args: { isUppercase: true, variant: "warning" },
-  render: ({ isUppercase, variant }) =>
-    html`<ag-tag .isUppercase=${isUppercase} .variant=${variant}>
+  args: { uppercase: true, variant: "warning" },
+  render: ({ uppercase, variant }) =>
+    html`<ag-tag .uppercase=${uppercase} .variant=${variant}>
       Uppercase Tag
     </ag-tag>`,
 };
