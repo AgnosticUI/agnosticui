@@ -168,7 +168,6 @@ export const SmallSize: Story = {
   args: {
     variant: 'button',
     size: 'sm',
-    buttonVariant: 'secondary',
     label: 'Small Menu',
   },
   render: (args) => (
@@ -190,7 +189,6 @@ export const LargeSize: Story = {
   args: {
     variant: 'button',
     size: 'lg',
-    buttonVariant: 'primary',
     label: 'Large Menu',
   },
   render: (args) => (
@@ -265,7 +263,6 @@ export const MenuWithLinks: Story = {
   args: {
     variant: 'chevron',
     size: 'md',
-    buttonVariant: 'primary',
     label: 'Navigation',
   },
   render: (args) => (
@@ -295,7 +292,6 @@ export const Disabled: Story = {
   args: {
     variant: 'button',
     size: 'md',
-    buttonVariant: 'primary',
     label: 'Disabled Menu',
     disabled: true,
   },
@@ -315,7 +311,6 @@ export const DisabledItems: Story = {
   args: {
     variant: 'button',
     size: 'md',
-    buttonVariant: 'primary',
     label: 'Mixed States',
   },
   render: (args) => (
@@ -345,7 +340,6 @@ export const ComplexMenu: Story = {
   args: {
     variant: 'button',
     size: 'md',
-    buttonVariant: 'primary',
     label: 'File',
   },
   render: (args) => (

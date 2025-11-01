@@ -144,8 +144,6 @@ export const Default: Story = {
 export const ChevronVariant: Story = {
   args: {
     variant: "chevron",
-    size: "md",
-    buttonVariant: "ghost",
     label: "Options",
   },
   render: ({ variant, size, buttonVariant, label }) => html`
@@ -170,15 +168,13 @@ export const ChevronVariant: Story = {
 export const ButtonVariant: Story = {
   args: {
     variant: "button",
-    size: "md",
     buttonVariant: "primary",
     label: "Actions",
   },
-  render: ({ variant, size, buttonVariant, label }) => html`
+  render: ({ variant, buttonVariant, label }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
-        .size=${size}
         .buttonVariant=${buttonVariant}
       >
         ${label}
@@ -228,15 +224,13 @@ export const SizeXS: Story = {
   args: {
     variant: "button",
     size: "xs",
-    buttonVariant: "secondary",
     label: "XS Menu",
   },
-  render: ({ variant, size, buttonVariant, label }) => html`
+  render: ({ variant, size, label }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
         .size=${size}
-        .buttonVariant=${buttonVariant}
       >
         ${label}
         <ag-menu slot="menu" .ariaLabel=${"Extra small menu"}>
@@ -252,15 +246,13 @@ export const SizeSM: Story = {
   args: {
     variant: "button",
     size: "sm",
-    buttonVariant: "secondary",
     label: "Small Menu",
   },
-  render: ({ variant, size, buttonVariant, label }) => html`
+  render: ({ variant, size, label }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
         .size=${size}
-        .buttonVariant=${buttonVariant}
       >
         ${label}
         <ag-menu slot="menu" .ariaLabel=${"Small menu"}>
@@ -276,15 +268,13 @@ export const SizeMD: Story = {
   args: {
     variant: "button",
     size: "md",
-    buttonVariant: "primary",
     label: "Medium Menu",
   },
-  render: ({ variant, size, buttonVariant, label }) => html`
+  render: ({ variant, size, label }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
         .size=${size}
-        .buttonVariant=${buttonVariant}
       >
         ${label}
         <ag-menu slot="menu" .ariaLabel=${"Medium menu"}>
@@ -300,15 +290,13 @@ export const SizeLG: Story = {
   args: {
     variant: "button",
     size: "lg",
-    buttonVariant: "primary",
     label: "Large Menu",
   },
-  render: ({ variant, size, buttonVariant, label }) => html`
+  render: ({ variant, size, label }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
         .size=${size}
-        .buttonVariant=${buttonVariant}
       >
         ${label}
         <ag-menu slot="menu" .ariaLabel=${"Large menu"}>
@@ -324,15 +312,13 @@ export const SizeXL: Story = {
   args: {
     variant: "button",
     size: "xl",
-    buttonVariant: "primary",
     label: "XL Menu",
   },
-  render: ({ variant, size, buttonVariant, label }) => html`
+  render: ({ variant, size, label }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
         .size=${size}
-        .buttonVariant=${buttonVariant}
       >
         ${label}
         <ag-menu slot="menu" .ariaLabel=${"Extra large menu"}>
@@ -451,15 +437,13 @@ export const MenuWithLinks: Story = {
   args: {
     variant: "chevron",
     size: "md",
-    buttonVariant: "primary",
     label: "Navigation",
   },
-  render: ({ variant, size, buttonVariant, label }) => html`
+  render: ({ variant, size, label }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
         .size=${size}
-        .buttonVariant=${buttonVariant}
       >
         ${label}
         <ag-menu slot="menu" .ariaLabel=${"Navigation menu"}>
@@ -487,16 +471,14 @@ export const Disabled: Story = {
   args: {
     variant: "button",
     size: "md",
-    buttonVariant: "primary",
     label: "Disabled Menu",
     disabled: true,
   },
-  render: ({ variant, size, buttonVariant, label, disabled }) => html`
+  render: ({ variant, size, label, disabled }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
         .size=${size}
-        .buttonVariant=${buttonVariant}
         .disabled=${disabled}
       >
         ${label}
@@ -514,15 +496,13 @@ export const DisabledItems: Story = {
   args: {
     variant: "button",
     size: "md",
-    buttonVariant: "primary",
     label: "Mixed States",
   },
-  render: ({ variant, size, buttonVariant, label }) => html`
+  render: ({ variant, size, label }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
         .size=${size}
-        .buttonVariant=${buttonVariant}
       >
         ${label}
         <ag-menu slot="menu" .ariaLabel=${"Menu with disabled items"}>
@@ -546,15 +526,13 @@ export const ComplexMenu: Story = {
   args: {
     variant: "button",
     size: "md",
-    buttonVariant: "primary",
     label: "File",
   },
-  render: ({ variant, size, buttonVariant, label }) => html`
+  render: ({ variant, size, label }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
         .size=${size}
-        .buttonVariant=${buttonVariant}
       >
         ${label}
         <ag-menu slot="menu" .ariaLabel=${"File menu"}>
@@ -582,13 +560,11 @@ export const EventTesting: Story = {
   args: {
     variant: "chevron",
     size: "md",
-    buttonVariant: "primary",
     label: "Event Testing",
   },
   render: ({
     variant,
     size,
-    buttonVariant,
     label,
     onMenuOpen,
     onMenuClose,
@@ -601,7 +577,6 @@ export const EventTesting: Story = {
       <ag-menu-button
         .variant=${variant}
         .size=${size}
-        .buttonVariant=${buttonVariant}
         @menu-open=${(e: Event) => onMenuOpen(e)}
         @menu-close=${(e: Event) => onMenuClose(e)}
       >
