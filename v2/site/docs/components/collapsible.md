@@ -117,7 +117,7 @@ export default function CollapsibleExample() {
       </ReactCollapsible>
 
       {/* With border and shadow */}
-      <ReactCollapsible isBordered isShadow>
+      <ReactCollapsible bordered shadow>
         <span slot="summary">Bordered with shadow</span>
         <p>This collapsible has both border and shadow styling.</p>
       </ReactCollapsible>
@@ -207,8 +207,8 @@ export default function CollapsibleExample() {
 | Prop          | Type      | Default | Description                                                    |
 | ------------- | --------- | ------- | -------------------------------------------------------------- |
 | `open`        | `boolean` | `false` | Whether the collapsible is expanded                            |
-| `isBordered`  | `boolean` | `false` | Whether to apply border styling                                |
-| `isShadow`    | `boolean` | `false` | Whether to apply box-shadow styling                            |
+| `bordered`  | `boolean` | `false` | Whether to apply border styling                                |
+| `shadow`    | `boolean` | `false` | Whether to apply box-shadow styling                            |
 | `useChevron`  | `boolean` | `true`  | Use chevron indicator (default) — rotates 180° when open       |
 | `useX`        | `boolean` | `false` | Use X indicator — plus rotates to form an X when open          |
 | `useMinus`    | `boolean` | `false` | Use plus/minus indicator — plus transitions to minus when open |
