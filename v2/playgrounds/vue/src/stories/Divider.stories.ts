@@ -75,7 +75,7 @@ export const VerticalBasic: Story = {
     template: `
       <div style="display: flex; min-height: 200px;">
         <p style="flex: 1;">Left content</p>
-        <VueDivider is-vertical />
+        <VueDivider vertical />
         <p style="flex: 1;">Right content</p>
       </div>
     `,
@@ -90,11 +90,11 @@ export const VerticalWithContent: Story = {
         <p style="flex: 1;">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        <VueDivider is-vertical>Yes</VueDivider>
+        <VueDivider vertical>Yes</VueDivider>
         <p style="flex: 1;">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
         </p>
-        <VueDivider is-vertical>Sir!</VueDivider>
+        <VueDivider vertical>Sir!</VueDivider>
         <p style="flex: 1;">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
@@ -123,13 +123,13 @@ export const SizesVertical: Story = {
     template: `
       <div style="display: flex; gap: 1rem; min-height: 150px;">
         <p style="flex: 1;">Content</p>
-        <VueDivider is-vertical size="small">Sm</VueDivider>
+        <VueDivider vertical size="small">Sm</VueDivider>
         <p style="flex: 1;">Content</p>
-        <VueDivider is-vertical size="default">Def</VueDivider>
+        <VueDivider vertical size="default">Def</VueDivider>
         <p style="flex: 1;">Content</p>
-        <VueDivider is-vertical size="large">Lg</VueDivider>
+        <VueDivider vertical size="large">Lg</VueDivider>
         <p style="flex: 1;">Content</p>
-        <VueDivider is-vertical size="xlarge">XL</VueDivider>
+        <VueDivider vertical size="xlarge">XL</VueDivider>
         <p style="flex: 1;">Content</p>
       </div>
     `,
@@ -198,7 +198,7 @@ export const CustomizedWithCSSParts: Story = {
           <VueDivider class="custom-dotted">Dotted Pattern</VueDivider>
           <div style="display: flex; min-height: 150px;">
             <p style="flex: 1;">Custom vertical gradient divider</p>
-            <VueDivider class="custom-vertical" is-vertical>Custom</VueDivider>
+            <VueDivider class="custom-vertical" vertical>Custom</VueDivider>
             <p style="flex: 1;">Styled with CSS Shadow Parts</p>
           </div>
         </div>
