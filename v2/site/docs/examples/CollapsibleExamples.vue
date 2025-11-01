@@ -83,7 +83,7 @@
     </div>
     <div class="stacked mbe4">
       <VueCollapsible
-        is-bordered
+        bordered
         use-chevron
       >
         <template #summary>
@@ -93,7 +93,7 @@
       </VueCollapsible>
 
       <VueCollapsible
-        is-bordered
+        bordered
         use-x
       >
         <template #summary>
@@ -103,7 +103,7 @@
       </VueCollapsible>
 
       <VueCollapsible
-        is-bordered
+        bordered
         use-minus
       >
         <template #summary>
@@ -113,7 +113,7 @@
       </VueCollapsible>
 
       <VueCollapsible
-        is-bordered
+        bordered
         no-indicator
       >
         <template #summary>
@@ -127,7 +127,7 @@
       <h3>Bordered</h3>
     </div>
     <div class="stacked mbe4">
-      <VueCollapsible is-bordered>
+      <VueCollapsible bordered>
         <template #summary>
           <span>Bordered collapsible</span>
         </template>
@@ -139,7 +139,7 @@
       <h3>With Shadow</h3>
     </div>
     <div class="stacked mbe4">
-      <VueCollapsible is-shadow>
+      <VueCollapsible shadow>
         <template #summary>
           <span>Collapsible with shadow</span>
         </template>
@@ -152,8 +152,8 @@
     </div>
     <div class="stacked mbe4">
       <VueCollapsible
-        is-bordered
-        is-shadow
+        bordered
+        shadow
       >
         <template #summary>
           <span>Bordered with shadow</span>
@@ -167,7 +167,7 @@
     </div>
     <div class="stacked mbe4">
       <VueCollapsible
-        is-bordered
+        bordered
         open
       >
         <template #summary>
@@ -182,8 +182,8 @@
     </div>
     <div class="stacked mbe4">
       <VueCollapsible
-        is-bordered
-        is-shadow
+        bordered
+        shadow
       >
         <template #summary>
           <div class="flex-inline items-center">
@@ -215,7 +215,7 @@
       <h3>FAQ Example</h3>
     </div>
     <div class="stacked mbe4">
-      <VueCollapsible is-bordered>
+      <VueCollapsible bordered>
         <template #summary>
           <span>What is AgnosticUI?</span>
         </template>
@@ -226,7 +226,7 @@
         </p>
       </VueCollapsible>
 
-      <VueCollapsible is-bordered>
+      <VueCollapsible bordered>
         <template #summary>
           <span>How do I install it?</span>
         </template>
@@ -234,7 +234,7 @@
         <pre style="background: var(--ag-background-secondary); padding: 1rem; border-radius: 4px; overflow-x: auto;">npm install agnosticui-core</pre>
       </VueCollapsible>
 
-      <VueCollapsible is-bordered>
+      <VueCollapsible bordered>
         <template #summary>
           <span>Is it accessible?</span>
         </template>
@@ -245,7 +245,7 @@
         </p>
       </VueCollapsible>
 
-      <VueCollapsible is-bordered>
+      <VueCollapsible bordered>
         <template #summary>
           <span>Can I customize the styling?</span>
         </template>
@@ -261,7 +261,7 @@
       <h3>Nested Collapsibles</h3>
     </div>
     <div class="stacked mbe4">
-      <VueCollapsible is-bordered>
+      <VueCollapsible bordered>
         <template #summary>
           <span>Level 1 - Main Topic</span>
         </template>
@@ -269,7 +269,7 @@
           <p>This is the main content area.</p>
 
           <VueCollapsible
-            :is-bordered="true"
+            :bordered="true"
             :use-minus="true"
             style="margin-top: 1rem;"
           >
@@ -280,7 +280,7 @@
           </VueCollapsible>
 
           <VueCollapsible
-            :is-bordered="true"
+            :bordered="true"
             :use-minus="true"
             style="margin-top: 0.5rem;"
           >
@@ -298,8 +298,8 @@
     </div>
     <div class="stacked mbe4">
       <VueCollapsible
-        is-bordered
-        is-shadow
+        bordered
+        shadow
         @toggle="handleToggle"
       >
         <template #summary>
