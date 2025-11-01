@@ -62,12 +62,21 @@
     </div>
 
     <div class="mbe4">
-      <h3>Rounded Card</h3>
+      <h3>Rounded Card Variants</h3>
+      <p class="mbs2 mbe3">Cards can have different border radius sizes: small, medium, or large.</p>
     </div>
-    <div class="stacked-mobile">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+      <VueCard rounded="sm">
+        <h4 class="m0">Small Rounded (sm)</h4>
+        <p>Subtle rounded corners using --ag-radius-sm (0.25rem).</p>
+      </VueCard>
       <VueCard rounded="md">
-        <h4 class="m0">Rounded Corners</h4>
-        <p>This card has explicitly rounded corners.</p>
+        <h4 class="m0">Medium Rounded (md)</h4>
+        <p>Moderate rounded corners using --ag-radius-md (0.375rem).</p>
+      </VueCard>
+      <VueCard rounded="lg">
+        <h4 class="m0">Large Rounded (lg)</h4>
+        <p>Prominent rounded corners using --ag-radius-lg (1rem).</p>
       </VueCard>
     </div>
 
