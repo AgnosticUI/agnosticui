@@ -13,7 +13,7 @@
       <h3>Card with Header</h3>
     </div>
     <div class="stacked-mobile">
-      <VueCard :is-shadow="true">
+      <VueCard :shadow="true">
         <template #header>
           <h4 class="m0">Product Details</h4>
         </template>
@@ -25,7 +25,7 @@
       <h3>Unskinned Card</h3>
     </div>
     <div class="stacked-mobile">
-      <VueCard :is-skinned="false">
+      <VueCard :skinned="false">
         <h4 class="m0">Unskinned Card</h4>
         <p>No background or border applied. Useful for layout purposes or to customize the styling.</p>
       </VueCard>
@@ -35,7 +35,7 @@
       <h3>Shadow Card</h3>
     </div>
     <div class="stacked-mobile">
-      <VueCard :is-shadow="true">
+      <VueCard :shadow="true">
         <h4 class="m0">Card with Shadow</h4>
         <p>Hover over this card to see the enhanced shadow effect.</p>
       </VueCard>
@@ -46,8 +46,8 @@
     </div>
     <div class="stacked-mobile">
       <VueCard
-        :is-shadow="true"
-        :is-animated="true"
+        :shadow="true"
+        :animated="true"
       >
         <template #header>
           <h4 class="m0">Animated Card</h4>
@@ -65,7 +65,7 @@
       <h3>Rounded Card</h3>
     </div>
     <div class="stacked-mobile">
-      <VueCard :is-rounded="true">
+      <VueCard rounded="md">
         <h4 class="m0">Rounded Corners</h4>
         <p>This card has explicitly rounded corners.</p>
       </VueCard>
@@ -75,7 +75,7 @@
       <h3>Stacked Content</h3>
     </div>
     <div class="stacked-mobile">
-      <VueCard :is-stacked="true">
+      <VueCard :stacked="true">
         <h4 class="m0">Stacked Content</h4>
         <p>First paragraph with automatic margin.</p>
         <p>Second paragraph with automatic margin.</p>
@@ -121,7 +121,7 @@
       <h3>Card with Slots (Header and Footer)</h3>
     </div>
     <div class="stacked-mobile">
-      <VueCard :is-shadow="true">
+      <VueCard :shadow="true">
         <template #header>
           <h4 class="m0">Card Header</h4>
         </template>
@@ -145,9 +145,9 @@
     </div>
     <div class="stacked-mobile">
       <VueCard
-        :is-shadow="true"
-        :is-animated="true"
-        :is-rounded="true"
+        :shadow="true"
+        :animated="true"
+        rounded="md"
         variant="success"
       >
         <h4 class="m0">Premium Card</h4>
@@ -161,8 +161,8 @@
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
       <VueCard
-        :is-shadow="true"
-        :is-animated="true"
+        :shadow="true"
+        :animated="true"
       >
         <template #header>
           <h5>Card 1</h5>
@@ -171,8 +171,8 @@
       </VueCard>
 
       <VueCard
-        :is-shadow="true"
-        :is-animated="true"
+        :shadow="true"
+        :animated="true"
         variant="success"
       >
         <h5>Card 2</h5>
@@ -180,8 +180,8 @@
       </VueCard>
 
       <VueCard
-        :is-shadow="true"
-        :is-animated="true"
+        :shadow="true"
+        :animated="true"
         variant="info"
       >
         <template #header>
@@ -194,8 +194,8 @@
       </VueCard>
 
       <VueCard
-        :is-shadow="true"
-        :is-animated="true"
+        :shadow="true"
+        :animated="true"
         variant="error"
       >
         <h5>Card 4</h5>
@@ -203,8 +203,8 @@
       </VueCard>
 
       <VueCard
-        :is-shadow="true"
-        :is-animated="true"
+        :shadow="true"
+        :animated="true"
         variant="warning"
       >
         <template #header>
@@ -214,9 +214,9 @@
       </VueCard>
 
       <VueCard
-        :is-shadow="true"
-        :is-animated="true"
-        :is-rounded="true"
+        :shadow="true"
+        :animated="true"
+        rounded="md"
       >
         <h5>Card 6</h5>
         <p>Rounded corners with shadow and animation.</p>
@@ -231,7 +231,7 @@
     </div>
     <div class="stacked-mobile">
       <VueCard
-        :is-shadow="true"
+        :shadow="true"
         class="custom-parts-card"
       >
         <template #header>
