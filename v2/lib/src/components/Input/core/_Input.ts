@@ -52,7 +52,12 @@ export interface InputProps {
   errorMessage?: string;
   helpText?: string;
 
-  // Note: Input uses native input/change events, no custom events
+  // Event callbacks (native events only - no custom events)
+  onClick?: (event: MouseEvent) => void;
+  onInput?: (event: InputEvent) => void;
+  onChange?: (event: Event) => void;
+  onFocus?: (event: FocusEvent) => void;
+  onBlur?: (event: FocusEvent) => void;
 }
 
 /**
@@ -273,7 +278,7 @@ export class AgInput extends LitElement implements InputProps {
   @property({ type: Boolean, attribute: 'no-label' })
   declare noLabel: boolean;
 
-  @property({ type: String, attribute: 'aria-label' })
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
   @property({ type: String, attribute: 'labelled-by' })
@@ -354,6 +359,25 @@ export class AgInput extends LitElement implements InputProps {
   @property({ type: String, attribute: 'help-text' })
   declare helpText: string;
 
+  /**
+   * Event callback props (not reflected as attributes)
+   * Following AgnosticUI v2 event conventions for native events
+   */
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  @property({ attribute: false })
+  declare onInput?: (event: InputEvent) => void;
+
+  @property({ attribute: false })
+  declare onChange?: (event: Event) => void;
+
+  @property({ attribute: false })
+  declare onFocus?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onBlur?: (event: FocusEvent) => void;
+
   constructor() {
     super();
     this.label = '';
@@ -382,20 +406,65 @@ export class AgInput extends LitElement implements InputProps {
     this.helpText = '';
   }
 
+  /**
+   * Event Handlers
+   * Following AgnosticUI v2 event conventions:
+   * - Native composed events (input, change, click) just invoke callbacks
+   * - Native non-bubbling events (focus, blur) re-dispatch from host + invoke callbacks
+   */
+  private _handleClick(e: MouseEvent) {
+    // Native click is composed - just invoke callback if provided
+    if (this.onClick) {
+      this.onClick(e);
+    }
+  }
+
   private _handleInput(e: Event) {
     const target = e.target as HTMLInputElement;
     this.value = target.value;
-    // Dispatch native input event
-    const inputEvent = new Event('input', { bubbles: true, composed: true });
-    this.dispatchEvent(inputEvent);
+
+    // Native input is composed - just invoke callback if provided
+    if (this.onInput) {
+      this.onInput(e as InputEvent);
+    }
   }
 
   private _handleChange(e: Event) {
     const target = e.target as HTMLInputElement;
     this.value = target.value;
-    // Dispatch native change event
-    const changeEvent = new Event('change', { bubbles: true, composed: true });
-    this.dispatchEvent(changeEvent);
+
+    // Native change is composed - just invoke callback if provided
+    if (this.onChange) {
+      this.onChange(e);
+    }
+  }
+
+  private _handleFocus(e: FocusEvent) {
+    // Focus doesn't bubble - re-dispatch from host so consumers can listen
+    this.dispatchEvent(new FocusEvent('focus', {
+      bubbles: true,
+      composed: true,
+      relatedTarget: e.relatedTarget,
+    }));
+
+    // Invoke callback if provided
+    if (this.onFocus) {
+      this.onFocus(e);
+    }
+  }
+
+  private _handleBlur(e: FocusEvent) {
+    // Blur doesn't bubble - re-dispatch from host so consumers can listen
+    this.dispatchEvent(new FocusEvent('blur', {
+      bubbles: true,
+      composed: true,
+      relatedTarget: e.relatedTarget,
+    }));
+
+    // Invoke callback if provided
+    if (this.onBlur) {
+      this.onBlur(e);
+    }
   }
 
   render() {
@@ -456,8 +525,11 @@ export class AgInput extends LitElement implements InputProps {
         aria-label="${ifDefined(this.ariaLabel || undefined)}"
         aria-labelledby="${ifDefined(this.labelledBy || undefined)}"
         aria-describedby="${describedByIds.length > 0 ? describedByIds.join(' ') : ifDefined(undefined)}"
+        @click=${this._handleClick}
         @input=${this._handleInput}
         @change=${this._handleChange}
+        @focus=${this._handleFocus}
+        @blur=${this._handleBlur}
       ></textarea>
     ` : html`
       <input
@@ -475,8 +547,11 @@ export class AgInput extends LitElement implements InputProps {
         aria-label="${ifDefined(this.ariaLabel || undefined)}"
         aria-labelledby="${ifDefined(this.labelledBy || undefined)}"
         aria-describedby="${describedByIds.length > 0 ? describedByIds.join(' ') : ifDefined(undefined)}"
+        @click=${this._handleClick}
         @input=${this._handleInput}
         @change=${this._handleChange}
+        @focus=${this._handleFocus}
+        @blur=${this._handleBlur}
       />
     `;
 

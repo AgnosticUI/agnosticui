@@ -1,13 +1,13 @@
 <template>
   <ag-accordion-item
     ref="accordionItemRef"
-    :heading-level="headingLevel"
+    :headingLevel="headingLevel"
     :open="open || undefined"
     :disabled="disabled || undefined"
-    :use-chevron="useChevron || undefined"
-    :use-x="useX || undefined"
-    :use-minus="useMinus || undefined"
-    :no-indicator="noIndicator || undefined"
+    :useChevron="useChevron || undefined"
+    :useX="useX || undefined"
+    :useMinus="useMinus || undefined"
+    :noIndicator="noIndicator || undefined"
     :background="background || undefined"
     :bordered="bordered || undefined"
     v-bind="$attrs"

@@ -195,8 +195,11 @@ describe('VueButton Wrapper', () => {
 
       const agButton = wrapper.find('ag-button');
       expect(agButton.exists()).toBe(true);
-      expect(agButton.attributes('aria-label')).toBe('Custom button label');
-      expect(agButton.attributes('aria-describedby')).toBe('help-text');
+
+      // Check the JavaScript properties on the DOM element
+      const agButtonElement = agButton.element as any;
+      expect(agButtonElement.ariaLabel).toBe('Custom button label');
+      expect(agButtonElement.ariaDescribedby).toBe('help-text');
     });
   });
 

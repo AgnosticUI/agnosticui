@@ -50,9 +50,9 @@ export const RadioGroup: Story = {
       <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
         <legend style="padding: 0 0.5rem; font-weight: 600;">Select Framework</legend>
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-          <VueRadio name="framework" value="react" :size="args.size" :theme="args.theme" label-text="React" />
-          <VueRadio name="framework" value="vue" :size="args.size" :theme="args.theme" label-text="Vue" :checked="true" />
-          <VueRadio name="framework" value="angular" :size="args.size" :theme="args.theme" label-text="Angular" />
+          <VueRadio name="framework" value="react" :size="args.size" :theme="args.theme">React</VueRadio>
+          <VueRadio name="framework" value="vue" :size="args.size" :theme="args.theme" :checked="true">Vue</VueRadio>
+          <VueRadio name="framework" value="angular" :size="args.size" :theme="args.theme">Angular</VueRadio>
         </div>
       </fieldset>
     `,

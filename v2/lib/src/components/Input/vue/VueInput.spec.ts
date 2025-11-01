@@ -23,19 +23,19 @@ describe('VueInput.vue', () => {
     expect(el.type).toBe('email')
   })
 
-  it('emits update:modelValue when input event fired', async () => {
-    const wrapper = mount(VueInput, { props: { modelValue: '' } })
+  it('emits update:value when input event fired', async () => {
+    const wrapper = mount(VueInput, { props: { value: '' } })
     const el = wrapper.find('ag-input').element as any
     el.value = 'Hola'
     el.dispatchEvent(new Event('input'))
     await wrapper.vm.$nextTick()
-    const emitted = wrapper.emitted('update:modelValue')
+    const emitted = wrapper.emitted('update:value')
     expect(emitted).toBeTruthy()
     expect(emitted![0]![0]).toBe('Hola')
   })
 
-  // Lit doesn’t emit target.value on change natively
-  it.skip('emits update:modelValue on change event (not used by web component)', async () => { })
+  // Lit doesn't emit target.value on change natively
+  it.skip('emits update:value on change event (not used by web component)', async () => { })
 
   it('renders addon slots (template presence)', () => {
     const wrapper = mount(VueInput, {

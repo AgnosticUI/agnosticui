@@ -438,13 +438,13 @@ export class AgButton extends LitElement implements ButtonProps {
   /**
    * ARIA label for accessibility
    */
-  @property({ type: String })
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
   /**
    * ARIA described-by for accessibility
    */
-  @property({ type: String })
+  @property({ type: String, reflect: true, attribute: 'aria-describedby' })
   declare ariaDescribedby: string;
 
   @property({ attribute: false })

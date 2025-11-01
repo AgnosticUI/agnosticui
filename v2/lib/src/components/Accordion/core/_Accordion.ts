@@ -77,7 +77,7 @@ export class Accordion extends LitElement implements AccordionProps {
 export class AccordionItem extends LitElement implements AccordionItemProps {
   static properties = {
     open: { type: Boolean, reflect: true },
-    headingLevel: { type: Number, attribute: 'heading-level' },
+    headingLevel: { type: Number, reflect: true, attribute: 'heading-level' },
     disabled: { type: Boolean, reflect: true },
     bordered: { type: Boolean, reflect: true },
     background: { type: Boolean, reflect: true },

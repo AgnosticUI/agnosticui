@@ -270,9 +270,240 @@ export default function Example() {
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `ag-change` | `{ checked: boolean, value: string, name: string }` | Fired when the radio selection changes |
+| Event    | Framework                                             | Detail                                                    | Description                                                                   |
+| -------- | ----------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `click`  | Vue: `@click`<br>React: `onClick`<br>Lit: `@click`    | `MouseEvent`                                              | Fired when the radio is clicked.                                              |
+| `change` | Vue: `@change`<br>React: `onChange`<br>Lit: `@change` | `{ checked: boolean, value: string, name: string }` | Fired when radio selection changes. Contains the checked state and form data. |
+
+**Note:** The Radio component supports **dual-dispatch event propagation**: it dispatches both DOM CustomEvents (usable with `addEventListener`) and invokes callback props (`.onChange`), giving you flexibility in how you handle events.
+
+### Event Usage Examples
+
+::: details Vue
+```vue
+<template>
+  <section>
+    <!-- Event handler with @change -->
+    <VueRadio
+      name="color"
+      value="red"
+      label-text="Red"
+      @change="handleChange"
+    />
+
+    <!-- v-model:checked for two-way binding -->
+    <VueRadio
+      name="color"
+      value="blue"
+      label-text="Blue"
+      v-model:checked="selectedColor"
+    />
+
+    <!-- Both event and v-model together -->
+    <VueRadio
+      name="color"
+      value="green"
+      label-text="Green"
+      v-model:checked="selectedColor"
+      @change="handleColorChange"
+    />
+
+    <!-- Radio group with shared name -->
+    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <VueRadio
+        v-for="option in options"
+        :key="option.value"
+        name="options"
+        :value="option.value"
+        :label-text="option.label"
+        :checked="selectedOption === option.value"
+        @change="(detail) => selectedOption = detail.value"
+      />
+    </div>
+  </section>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { VueRadio } from 'agnosticui-core/radio/vue';
+
+const selectedColor = ref('blue');
+const selectedOption = ref('option1');
+
+const options = [
+  { value: 'option1', label: 'Option 1' },
+  { value: 'option2', label: 'Option 2' },
+  { value: 'option3', label: 'Option 3' },
+];
+
+const handleChange = (detail) => {
+  console.log('Radio changed:', detail);
+  // detail: { checked, value, name }
+};
+
+const handleColorChange = (detail) => {
+  console.log('Color selected:', detail.value);
+};
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { useState } from 'react';
+import { ReactRadio } from 'agnosticui-core/radio/react';
+
+export default function Example() {
+  const [selectedColor, setSelectedColor] = useState('red');
+
+  return (
+    <section>
+      {/* Event handler with onChange */}
+      <ReactRadio
+        name="color"
+        value="red"
+        labelText="Red"
+        checked={selectedColor === 'red'}
+        onChange={(e) => {
+          console.log('Radio changed:', e.detail);
+          setSelectedColor(e.detail.value);
+        }}
+      />
+
+      {/* Controlled radio group */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <ReactRadio
+          name="color"
+          value="red"
+          labelText="Red"
+          checked={selectedColor === 'red'}
+          onChange={(e) => setSelectedColor(e.detail.value)}
+        />
+        <ReactRadio
+          name="color"
+          value="blue"
+          labelText="Blue"
+          checked={selectedColor === 'blue'}
+          onChange={(e) => setSelectedColor(e.detail.value)}
+        />
+        <ReactRadio
+          name="color"
+          value="green"
+          labelText="Green"
+          checked={selectedColor === 'green'}
+          onChange={(e) => setSelectedColor(e.detail.value)}
+        />
+      </div>
+
+      {/* With native click handler */}
+      <ReactRadio
+        name="notification"
+        value="enabled"
+        labelText="Enable notifications"
+        onClick={(e) => console.log('Clicked:', e)}
+        onChange={(e) => console.log('Changed:', e.detail)}
+      />
+    </section>
+  );
+}
+```
+:::
+
+::: details Lit (Web Components)
+```html
+<script type="module">
+  import 'agnosticui-core/radio';
+
+  // Pattern 1: addEventListener (DOM events)
+  const radio1 = document.querySelector('#radio1');
+  radio1.addEventListener('change', (e) => {
+    console.log('Event listener:', e.detail);
+    // e.detail: { checked, value, name }
+  });
+
+  // Pattern 2: Callback prop
+  const radio2 = document.querySelector('#radio2');
+  radio2.onChange = (e) => {
+    console.log('Callback prop:', e.detail);
+  };
+
+  // Pattern 3: Both patterns work (dual-dispatch)
+  const radio3 = document.querySelector('#radio3');
+  radio3.addEventListener('change', (e) => {
+    console.log('DOM event:', e.detail);
+  });
+  radio3.onChange = (e) => {
+    console.log('Callback also fired:', e.detail);
+  };
+
+  // Native click events work too
+  const radio4 = document.querySelector('#radio4');
+  radio4.addEventListener('click', (e) => {
+    console.log('Click event:', e);
+  });
+  radio4.onClick = (e) => {
+    console.log('Click callback:', e);
+  };
+
+  // Radio group with shared name
+  const radios = document.querySelectorAll('ag-radio[name="group"]');
+  radios.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      console.log('Selected:', e.detail.value);
+    });
+  });
+</script>
+
+<section>
+  <ag-radio
+    id="radio1"
+    name="example1"
+    value="1"
+    label-text="addEventListener pattern"
+  ></ag-radio>
+
+  <ag-radio
+    id="radio2"
+    name="example2"
+    value="2"
+    label-text="Callback prop pattern"
+  ></ag-radio>
+
+  <ag-radio
+    id="radio3"
+    name="example3"
+    value="3"
+    label-text="Dual-dispatch (both patterns)"
+  ></ag-radio>
+
+  <ag-radio
+    id="radio4"
+    name="example4"
+    value="4"
+    label-text="With click handlers"
+  ></ag-radio>
+
+  <!-- Radio group -->
+  <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+    <ag-radio name="group" value="a" label-text="Option A"></ag-radio>
+    <ag-radio name="group" value="b" label-text="Option B"></ag-radio>
+    <ag-radio name="group" value="c" label-text="Option C"></ag-radio>
+  </div>
+</section>
+```
+:::
+
+**Type:**
+
+```ts
+export type RadioChangeEvent = CustomEvent<RadioChangeEventDetail>;
+
+export interface RadioChangeEventDetail {
+  checked: boolean;  // Whether this radio is checked
+  value: string;     // Form value of the radio
+  name: string;      // Form name (shared by radio group)
+}
+```
 
 ## CSS Shadow Parts
 

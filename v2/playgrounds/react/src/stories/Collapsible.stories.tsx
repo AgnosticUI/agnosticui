@@ -353,12 +353,6 @@ const InteractiveStory = (args: ReactCollapsibleProps) => {
           The collapsible dispatches a <code>toggle</code> event when opened or
           closed.
         </p>
-        <p>
-          Current status:{" "}
-          <strong style={{ color: status === "Open" ? "green" : "red" }}>
-            {status}
-          </strong>
-        </p>
       </div>
     </ReactCollapsible>
   );
