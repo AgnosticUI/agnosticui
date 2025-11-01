@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
 import { ReactCollapsible } from "agnosticui-core/collapsible/react";
 import type { ReactCollapsibleProps } from "agnosticui-core/collapsible/react";
 
@@ -12,12 +11,12 @@ const meta: Meta<typeof ReactCollapsible> = {
       description: "Controls whether the collapsible is expanded or collapsed",
       defaultValue: false,
     },
-    isBordered: {
+    bordered: {
       control: "boolean",
       description: "Adds a border around the collapsible",
       defaultValue: false,
     },
-    isShadow: {
+    shadow: {
       control: "boolean",
       description: "Applies box-shadow",
       defaultValue: false,
@@ -46,8 +45,8 @@ const meta: Meta<typeof ReactCollapsible> = {
   },
   args: {
     open: false,
-    isBordered: false,
-    isShadow: false,
+    bordered: false,
+    shadow: false,
     useChevron: true,
     useX: false,
     useMinus: false,
@@ -81,7 +80,7 @@ export const Open: Story = {
 
 export const Bordered: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
   },
   render: (args) => (
     <ReactCollapsible {...args}>
@@ -93,7 +92,7 @@ export const Bordered: Story = {
 
 export const Shadow: Story = {
   args: {
-    isShadow: true,
+    shadow: true,
   },
   render: (args) => (
     <ReactCollapsible {...args}>
@@ -105,8 +104,8 @@ export const Shadow: Story = {
 
 export const CombinedFeatures: Story = {
   args: {
-    isBordered: true,
-    isShadow: true,
+    bordered: true,
+    shadow: true,
   },
   render: (args) => (
     <ReactCollapsible {...args}>
@@ -118,7 +117,7 @@ export const CombinedFeatures: Story = {
 
 export const ChevronIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     useChevron: true,
   },
   render: (args) => (
@@ -134,7 +133,7 @@ export const ChevronIndicator: Story = {
 
 export const UseXIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     useChevron: false,
     useX: true,
   },
@@ -151,7 +150,7 @@ export const UseXIndicator: Story = {
 
 export const UseMinusIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     useChevron: false,
     useMinus: true,
   },
@@ -168,7 +167,7 @@ export const UseMinusIndicator: Story = {
 
 export const NoIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     noIndicator: true,
   },
   render: (args) => (
@@ -194,14 +193,14 @@ export const IndicatorComparison: Story = {
         Toggle each collapsible to see how the different indicators behave.
       </p>
 
-      <ReactCollapsible isBordered useChevron>
+      <ReactCollapsible bordered useChevron>
         <span slot="summary">🔽 Chevron (default) - Rotates 180°</span>
         <p>
           The chevron points down when closed and up when open via rotation.
         </p>
       </ReactCollapsible>
 
-      <ReactCollapsible isBordered useX>
+      <ReactCollapsible bordered useX>
         <span slot="summary">
           ✖️ X Indicator - Rotates from upside-down plus to X
         </span>
@@ -211,14 +210,14 @@ export const IndicatorComparison: Story = {
         </p>
       </ReactCollapsible>
 
-      <ReactCollapsible isBordered useMinus>
+      <ReactCollapsible bordered useMinus>
         <span slot="summary">➕ Plus/Minus - Swaps icons</span>
         <p>
           Shows a plus icon when closed and swaps to a minus icon when open.
         </p>
       </ReactCollapsible>
 
-      <ReactCollapsible isBordered noIndicator>
+      <ReactCollapsible bordered noIndicator>
         <span slot="summary">⚪ No Indicator - Completely hidden</span>
         <p>No indicator is shown at all.</p>
       </ReactCollapsible>
@@ -228,8 +227,8 @@ export const IndicatorComparison: Story = {
 
 export const RichContent: Story = {
   args: {
-    isBordered: true,
-    isShadow: true,
+    bordered: true,
+    shadow: true,
   },
   render: (args) => (
     <ReactCollapsible {...args}>
@@ -263,7 +262,7 @@ export const FAQ: Story = {
     >
       <h3 style={{ marginTop: 0 }}>Frequently Asked Questions</h3>
 
-      <ReactCollapsible isBordered>
+      <ReactCollapsible bordered>
         <span slot="summary">What is AgnosticUI?</span>
         <p>
           AgnosticUI is a framework-agnostic component library built with web
@@ -272,7 +271,7 @@ export const FAQ: Story = {
         </p>
       </ReactCollapsible>
 
-      <ReactCollapsible isBordered>
+      <ReactCollapsible bordered>
         <span slot="summary">How do I install it?</span>
         <p>You can install AgnosticUI via npm:</p>
         <pre
@@ -287,7 +286,7 @@ export const FAQ: Story = {
         </pre>
       </ReactCollapsible>
 
-      <ReactCollapsible isBordered>
+      <ReactCollapsible bordered>
         <span slot="summary">Is it accessible?</span>
         <p>
           Yes! All AgnosticUI components are built with accessibility in mind,
@@ -296,7 +295,7 @@ export const FAQ: Story = {
         </p>
       </ReactCollapsible>
 
-      <ReactCollapsible isBordered>
+      <ReactCollapsible bordered>
         <span slot="summary">Can I customize the styling?</span>
         <p>
           Absolutely! AgnosticUI uses CSS Shadow Parts to allow deep
@@ -311,7 +310,7 @@ export const FAQ: Story = {
 
 export const NestedCollapsibles: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
   },
   render: (args) => (
     <div style={{ maxWidth: "600px" }}>
@@ -320,7 +319,7 @@ export const NestedCollapsibles: Story = {
         <div>
           <p>This is the main content area.</p>
 
-          <ReactCollapsible isBordered useMinus style={{ marginTop: "1rem" }}>
+          <ReactCollapsible bordered useMinus style={{ marginTop: "1rem" }}>
             <span slot="summary">Level 2 - Subtopic A</span>
             <p>
               Nested collapsible content for subtopic A. Note the different
@@ -328,7 +327,7 @@ export const NestedCollapsibles: Story = {
             </p>
           </ReactCollapsible>
 
-          <ReactCollapsible isBordered useMinus style={{ marginTop: "0.5rem" }}>
+          <ReactCollapsible bordered useMinus style={{ marginTop: "0.5rem" }}>
             <span slot="summary">Level 2 - Subtopic B</span>
             <p>Nested collapsible content for subtopic B.</p>
           </ReactCollapsible>
@@ -360,8 +359,8 @@ const InteractiveStory = (args: ReactCollapsibleProps) => {
 
 export const Interactive: Story = {
   args: {
-    isBordered: true,
-    isShadow: true,
+    bordered: true,
+    shadow: true,
   },
   render: (args) => <InteractiveStory {...args} />,
 };

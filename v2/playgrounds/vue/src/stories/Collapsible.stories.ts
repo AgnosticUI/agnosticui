@@ -13,12 +13,12 @@ const meta: Meta<VueCollapsibleProps> = {
       description: 'Controls whether the collapsible is expanded or collapsed',
       defaultValue: false,
     },
-    isBordered: {
+    bordered: {
       control: 'boolean',
       description: 'Adds a border around the collapsible',
       defaultValue: false,
     },
-    isShadow: {
+    shadow: {
       control: 'boolean',
       description: 'Applies box-shadow',
       defaultValue: false,
@@ -46,8 +46,8 @@ const meta: Meta<VueCollapsibleProps> = {
   },
   args: {
     open: false,
-    isBordered: false,
-    isShadow: false,
+    bordered: false,
+    shadow: false,
     useChevron: true,
     useX: false,
     useMinus: false,
@@ -97,7 +97,7 @@ export const Open: Story = {
 
 export const Bordered: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
   },
   render: (args) => ({
     components: { VueCollapsible },
@@ -117,7 +117,7 @@ export const Bordered: Story = {
 
 export const Shadow: Story = {
   args: {
-    isShadow: true,
+    shadow: true,
   },
   render: (args) => ({
     components: { VueCollapsible },
@@ -137,8 +137,8 @@ export const Shadow: Story = {
 
 export const CombinedFeatures: Story = {
   args: {
-    isBordered: true,
-    isShadow: true,
+    bordered: true,
+    shadow: true,
   },
   render: (args) => ({
     components: { VueCollapsible },
@@ -158,7 +158,7 @@ export const CombinedFeatures: Story = {
 
 export const ChevronIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     useChevron: true,
   },
   render: (args) => ({
@@ -179,7 +179,7 @@ export const ChevronIndicator: Story = {
 
 export const UseXIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     useChevron: false,
     useX: true,
   },
@@ -201,7 +201,7 @@ export const UseXIndicator: Story = {
 
 export const UseMinusIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     useChevron: false,
     useMinus: true,
   },
@@ -223,7 +223,7 @@ export const UseMinusIndicator: Story = {
 
 export const NoIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     noIndicator: true,
   },
   render: (args) => ({
@@ -286,8 +286,8 @@ export const IndicatorComparison: Story = {
 
 export const RichContent: Story = {
   args: {
-    isBordered: true,
-    isShadow: true,
+    bordered: true,
+    shadow: true,
   },
   render: (args) => ({
     components: { VueCollapsible },
@@ -371,7 +371,7 @@ export const FAQ: Story = {
 
 export const NestedCollapsibles: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
   },
   render: (args) => ({
     components: { VueCollapsible },
@@ -409,8 +409,8 @@ export const NestedCollapsibles: Story = {
 
 export const Interactive: Story = {
   args: {
-    isBordered: true,
-    isShadow: true,
+    bordered: true,
+    shadow: true,
   },
   render: (args) => ({
     components: { VueCollapsible },

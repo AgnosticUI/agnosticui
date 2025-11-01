@@ -7,8 +7,8 @@ export type CollapsibleToggleEvent = CustomEvent<{ open: boolean }>;
 // Props interface
 export interface CollapsibleProps {
   open?: boolean;
-  isBordered?: boolean;
-  isShadow?: boolean;
+  bordered?: boolean;
+  shadow?: boolean;
   // Indicator variants (mutually exclusive, priority: noIndicator > useX > useMinus > useChevron)
   useChevron?: boolean;
   useX?: boolean;
@@ -23,10 +23,10 @@ export class AgCollapsible extends LitElement implements CollapsibleProps {
   public open = false;
 
   @property({ type: Boolean, reflect: true })
-  public isBordered = false;
+  public bordered = false;
 
   @property({ type: Boolean, reflect: true })
-  public isShadow = false;
+  public shadow = false;
 
   @property({ type: Boolean, reflect: true, attribute: 'use-chevron' })
   public useChevron = true; // Default indicator
@@ -54,11 +54,11 @@ export class AgCollapsible extends LitElement implements CollapsibleProps {
       border-radius: var(--ag-radius-md);
     }
 
-    :host([isbordered]) details {
+    :host([bordered]) details {
       border: var(--ag-border-width-1) solid var(--ag-border);
     }
 
-    :host([isshadow]) details {
+    :host([shadow]) details {
       box-shadow: var(--ag-shadow-md);
     }
 

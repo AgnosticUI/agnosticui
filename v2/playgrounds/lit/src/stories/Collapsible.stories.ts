@@ -11,11 +11,11 @@ const meta: Meta<CollapsibleProps> = {
       control: 'boolean',
       description: 'Controls whether the collapsible is expanded or collapsed',
     },
-    isBordered: {
+    bordered: {
       control: 'boolean',
       description: 'Adds a border around the collapsible',
     },
-    isShadow: {
+    shadow: {
       control: 'boolean',
       description: 'Applies box-shadow',
     },
@@ -38,8 +38,8 @@ const meta: Meta<CollapsibleProps> = {
   },
   args: {
     open: false,
-    isBordered: false,
-    isShadow: false,
+    bordered: false,
+    shadow: false,
     useChevron: true,
     useX: false,
     useMinus: false,
@@ -54,8 +54,8 @@ export const Default: Story = {
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}
@@ -74,8 +74,8 @@ export const Open: Story = {
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}
@@ -89,13 +89,13 @@ export const Open: Story = {
 
 export const Bordered: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
   },
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}
@@ -109,13 +109,13 @@ export const Bordered: Story = {
 
 export const Shadow: Story = {
   args: {
-    isShadow: true,
+    shadow: true,
   },
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}
@@ -129,14 +129,14 @@ export const Shadow: Story = {
 
 export const CombinedFeatures: Story = {
   args: {
-    isBordered: true,
-    isShadow: true,
+    bordered: true,
+    shadow: true,
   },
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}
@@ -150,14 +150,14 @@ export const CombinedFeatures: Story = {
 
 export const ChevronIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     useChevron: true,
   },
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}
@@ -171,15 +171,15 @@ export const ChevronIndicator: Story = {
 
 export const UseXIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     useChevron: false,
     useX: true,
   },
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}
@@ -193,15 +193,15 @@ export const UseXIndicator: Story = {
 
 export const UseMinusIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     useChevron: false,
     useMinus: true,
   },
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}
@@ -215,14 +215,14 @@ export const UseMinusIndicator: Story = {
 
 export const NoIndicator: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
     noIndicator: true,
   },
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}
@@ -242,22 +242,22 @@ export const IndicatorComparison: Story = {
         Toggle each collapsible to see how the different indicators behave.
       </p>
 
-      <ag-collapsible isbordered use-chevron>
+      <ag-collapsible bordered use-chevron>
         <span slot="summary">🔽 Chevron (default) - Rotates 180°</span>
         <p>The chevron points down when closed and up when open via rotation.</p>
       </ag-collapsible>
 
-      <ag-collapsible isbordered use-x>
+      <ag-collapsible bordered use-x>
         <span slot="summary">✖️ X Indicator - Rotates from upside-down plus to X</span>
         <p>Starts as an upside-down plus sign and rotates 45° to form an X when open.</p>
       </ag-collapsible>
 
-      <ag-collapsible isbordered use-minus>
+      <ag-collapsible bordered use-minus>
         <span slot="summary">➕ Plus/Minus - Swaps icons</span>
         <p>Shows a plus icon when closed and swaps to a minus icon when open.</p>
       </ag-collapsible>
 
-      <ag-collapsible isbordered no-indicator>
+      <ag-collapsible bordered no-indicator>
         <span slot="summary">⚪ No Indicator - Completely hidden</span>
         <p>No indicator is shown at all.</p>
       </ag-collapsible>
@@ -267,14 +267,14 @@ export const IndicatorComparison: Story = {
 
 export const RichContent: Story = {
   args: {
-    isBordered: true,
-    isShadow: true,
+    bordered: true,
+    shadow: true,
   },
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}
@@ -303,7 +303,7 @@ export const FAQ: Story = {
     <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 600px;">
       <h3 style="margin-top: 0;">Frequently Asked Questions</h3>
 
-      <ag-collapsible isbordered>
+      <ag-collapsible bordered>
         <span slot="summary">What is AgnosticUI?</span>
         <p>
           AgnosticUI is a framework-agnostic component library built with web
@@ -312,13 +312,13 @@ export const FAQ: Story = {
         </p>
       </ag-collapsible>
 
-      <ag-collapsible isbordered>
+      <ag-collapsible bordered>
         <span slot="summary">How do I install it?</span>
         <p>You can install AgnosticUI via npm:</p>
         <pre style="background: #f3f4f6; padding: 1rem; border-radius: 4px; overflow-x: auto;">npm install agnosticui-core</pre>
       </ag-collapsible>
 
-      <ag-collapsible isbordered>
+      <ag-collapsible bordered>
         <span slot="summary">Is it accessible?</span>
         <p>
           Yes! All AgnosticUI components are built with accessibility in mind,
@@ -327,7 +327,7 @@ export const FAQ: Story = {
         </p>
       </ag-collapsible>
 
-      <ag-collapsible isbordered>
+      <ag-collapsible bordered>
         <span slot="summary">Can I customize the styling?</span>
         <p>
           Absolutely! AgnosticUI uses CSS Shadow Parts to allow deep customization
@@ -341,14 +341,14 @@ export const FAQ: Story = {
 
 export const NestedCollapsibles: Story = {
   args: {
-    isBordered: true,
+    bordered: true,
   },
   render: (args) => html`
     <div style="max-width: 600px;">
       <ag-collapsible
         ?open=${args.open}
-        ?isBordered=${args.isBordered}
-        ?isShadow=${args.isShadow}
+        ?bordered=${args.bordered}
+        ?shadow=${args.shadow}
         ?use-chevron=${args.useChevron}
         ?use-x=${args.useX}
         ?use-minus=${args.useMinus}
@@ -358,12 +358,12 @@ export const NestedCollapsibles: Story = {
         <div>
           <p>This is the main content area.</p>
 
-          <ag-collapsible isbordered use-minus style="margin-top: 1rem;">
+          <ag-collapsible bordered use-minus style="margin-top: 1rem;">
             <span slot="summary">Level 2 - Subtopic A</span>
             <p>Nested collapsible content for subtopic A. Note the different indicator style.</p>
           </ag-collapsible>
 
-          <ag-collapsible isbordered use-minus style="margin-top: 0.5rem;">
+          <ag-collapsible bordered use-minus style="margin-top: 0.5rem;">
             <span slot="summary">Level 2 - Subtopic B</span>
             <p>Nested collapsible content for subtopic B.</p>
           </ag-collapsible>
@@ -375,14 +375,14 @@ export const NestedCollapsibles: Story = {
 
 export const Interactive: Story = {
   args: {
-    isBordered: true,
-    isShadow: true,
+    bordered: true,
+    shadow: true,
   },
   render: (args) => html`
     <ag-collapsible
       ?open=${args.open}
-      ?isBordered=${args.isBordered}
-      ?isShadow=${args.isShadow}
+      ?bordered=${args.bordered}
+      ?shadow=${args.shadow}
       ?use-chevron=${args.useChevron}
       ?use-x=${args.useX}
       ?use-minus=${args.useMinus}

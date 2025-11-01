@@ -21,8 +21,8 @@ describe('Collapsible Component', () => {
   it('should have correct default properties', async () => {
     await el.updateComplete;
     expect(el.open).toBe(false);
-    expect(el.isBordered).toBe(false);
-    expect(el.isShadow).toBe(false);
+    expect(el.bordered).toBe(false);
+    expect(el.shadow).toBe(false);
   });
 
   it('should reflect open property to attribute', async () => {
@@ -35,14 +35,14 @@ describe('Collapsible Component', () => {
   it('uses correct CSS attribute selectors for boolean props', async () => {
     await el.updateComplete;
     const styleContent = (el.constructor as typeof AgCollapsible).styles.toString();
-    expect(styleContent).toContain(':host([isbordered])');
-    expect(styleContent).not.toContain('[isbordered="true"]');
-    expect(styleContent).toContain(':host([isshadow])');
-    expect(styleContent).not.toContain('[isshadow="true"]');
+    expect(styleContent).toContain(':host([bordered])');
+    expect(styleContent).not.toContain('[bordered="true"]');
+    expect(styleContent).toContain(':host([shadow])');
+    expect(styleContent).not.toContain('[shadow="true"]');
   });
 
   it('should apply bordered styles', async () => {
-    el.isBordered = true;
+    el.bordered = true;
     await el.updateComplete;
     const details = el.shadowRoot?.querySelector('details');
     const styles = window.getComputedStyle(details!);
@@ -50,7 +50,7 @@ describe('Collapsible Component', () => {
   });
 
   it('should apply shadow styles', async () => {
-    el.isShadow = true;
+    el.shadow = true;
     await el.updateComplete;
     const details = el.shadowRoot?.querySelector('details');
     const styles = window.getComputedStyle(details!);
