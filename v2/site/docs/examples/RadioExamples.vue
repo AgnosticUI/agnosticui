@@ -208,6 +208,40 @@
     </div>
 
     <div class="mbe4">
+      <h3>Keyboard Navigation with Disabled Radios</h3>
+      <p class="mbs2 mbe3">
+        Disabled radios are automatically skipped when navigating with arrow keys.
+        Try using <kbd>↑</kbd> / <kbd>↓</kbd> or <kbd>←</kbd> / <kbd>→</kbd> arrow keys, or <kbd>HOME</kbd> and <kbd>END</kbd> (to jump to start and end respectively) to navigate between options.
+        The disabled middle option will be skipped.
+      </p>
+    </div>
+    <fieldset
+      class="mbe4"
+      style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);"
+    >
+      <legend style="padding: 0 0.5rem; font-weight: 600;">Select Shipping Method</legend>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <VueRadio
+          name="keyboard-nav-demo"
+          value="standard"
+          label-text="Standard Shipping - $5.99"
+          :checked="true"
+        />
+        <VueRadio
+          name="keyboard-nav-demo"
+          value="express"
+          label-text="Express Shipping - Currently Unavailable"
+          :disabled="true"
+        />
+        <VueRadio
+          name="keyboard-nav-demo"
+          value="overnight"
+          label-text="Overnight Shipping - $24.99"
+        />
+      </div>
+    </fieldset>
+
+    <div class="mbe4">
       <h3>Label Position</h3>
       <p class="mbs2 mbe3">Labels can be positioned at the end (default) or start of the radio button</p>
     </div>
