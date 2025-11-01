@@ -1,12 +1,12 @@
 <template>
   <ag-card
     ref="agComponent"
-    .isSkinned="isSkinned"
-    .isStacked="isStacked"
-    .isShadow="isShadow"
-    .isAnimated="isAnimated"
-    .isRounded="isRounded"
-    .variant="variant"
+    :skinned="skinned || undefined"
+    :stacked="stacked || undefined"
+    :shadow="shadow || undefined"
+    :animated="animated || undefined"
+    :rounded="rounded"
+    :variant="variant"
     v-bind="$attrs"
   >
     <slot
@@ -23,31 +23,31 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, type PropType } from "vue";
-import type { CardProps, CardVariant } from "../core/Card";
+import type { CardProps, CardVariant, CardRounded } from "../core/Card";
 import "../core/Card"; // Registers the ag-card web component
 
 export default defineComponent({
   name: "VueCard",
   props: {
-    isSkinned: {
+    skinned: {
       type: Boolean,
       default: true,
     },
-    isStacked: {
+    stacked: {
       type: Boolean,
       default: false,
     },
-    isShadow: {
+    shadow: {
       type: Boolean,
       default: false,
     },
-    isAnimated: {
+    animated: {
       type: Boolean,
       default: false,
     },
-    isRounded: {
-      type: Boolean,
-      default: false,
+    rounded: {
+      type: String as PropType<CardRounded>,
+      default: "" as CardRounded,
     },
     variant: {
       type: String as PropType<CardVariant>,
@@ -68,11 +68,11 @@ export default defineComponent({
 
     return {
       agComponent,
-      isSkinned: props.isSkinned,
-      isStacked: props.isStacked,
-      isShadow: props.isShadow,
-      isAnimated: props.isAnimated,
-      isRounded: props.isRounded,
+      skinned: props.skinned,
+      stacked: props.stacked,
+      shadow: props.shadow,
+      animated: props.animated,
+      rounded: props.rounded,
       variant: props.variant,
     };
   },
