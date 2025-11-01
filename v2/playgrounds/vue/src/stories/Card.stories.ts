@@ -6,30 +6,31 @@ const meta = {
   title: 'AgnosticUI Vue/Card',
   component: VueCard,
   argTypes: {
-    isSkinned: {
+    skinned: {
       control: 'boolean',
       description: 'Applies background color and border',
       defaultValue: true,
     },
-    isStacked: {
+    stacked: {
       control: 'boolean',
       description: 'Applies vertical stacking with margin between slotted children',
       defaultValue: false,
     },
-    isShadow: {
+    shadow: {
       control: 'boolean',
       description: 'Applies box-shadow with hover enhancement',
       defaultValue: false,
     },
-    isAnimated: {
+    animated: {
       control: 'boolean',
       description: 'Enables smooth transitions on hover (translateY + box-shadow)',
       defaultValue: false,
     },
-    isRounded: {
+    rounded: {
       control: 'boolean',
       description: 'Applies border-radius',
-      defaultValue: false,
+      options: ["", "sm", "md", "lg"],
+      defaultValue: "",
     },
     variant: {
       control: 'select',
@@ -39,11 +40,11 @@ const meta = {
     },
   },
   args: {
-    isSkinned: true,
-    isStacked: false,
-    isShadow: false,
-    isAnimated: false,
-    isRounded: false,
+    skinned: true,
+    stacked: false,
+    shadow: false,
+    animated: false,
+    rounded: "",
     variant: '',
   } as VueCardProps,
 } satisfies Meta<typeof VueCard>;
@@ -68,7 +69,7 @@ export const Default: Story = {
 
 export const Unskinned: Story = {
   args: {
-    isSkinned: false,
+    skinned: false,
   },
   render: (args) => ({
     components: { VueCard },
@@ -86,7 +87,7 @@ export const Unskinned: Story = {
 
 export const Shadow: Story = {
   args: {
-    isShadow: true,
+    shadow: true,
   },
   render: (args) => ({
     components: { VueCard },
@@ -106,8 +107,8 @@ export const Shadow: Story = {
 
 export const Animated: Story = {
   args: {
-    isAnimated: true,
-    isShadow: true,
+    animated: true,
+    shadow: true,
   },
   render: (args) => ({
     components: { VueCard },
@@ -128,7 +129,7 @@ export const Animated: Story = {
 
 export const Rounded: Story = {
   args: {
-    isRounded: true,
+    rounded: "md",
   },
   render: (args) => ({
     components: { VueCard },
@@ -146,7 +147,7 @@ export const Rounded: Story = {
 
 export const Stacked: Story = {
   args: {
-    isStacked: true,
+    stacked: true,
   },
   render: (args) => ({
     components: { VueCard },
@@ -246,7 +247,7 @@ export const WarningVariant: Story = {
 
 export const WithSlots: Story = {
   args: {
-    isShadow: true,
+    shadow: true,
   },
   render: (args) => ({
     components: { VueCard },
@@ -279,8 +280,8 @@ export const WithSlots: Story = {
 
 export const ClickableCard: Story = {
   args: {
-    isShadow: true,
-    isAnimated: true,
+    shadow: true,
+    animated: true,
   },
   render: (args) => ({
     components: { VueCard },
@@ -305,8 +306,8 @@ export const ClickableCard: Story = {
 
 export const WithSecondaryActions: Story = {
   args: {
-    isShadow: true,
-    isAnimated: true,
+    shadow: true,
+    animated: true,
   },
   render: (args) => ({
     components: { VueCard },
@@ -356,9 +357,9 @@ export const WithSecondaryActions: Story = {
 
 export const CombinedFeatures: Story = {
   args: {
-    isShadow: true,
-    isAnimated: true,
-    isRounded: true,
+    shadow: true,
+    animated: true,
+    rounded: "md",
     variant: 'success',
   },
   render: (args) => ({
@@ -429,7 +430,7 @@ export const Gallery: Story = {
 
 export const Customization: Story = {
   args: {
-    isShadow: true,
+    shadow: true,
   },
   render: (args) => ({
     components: { VueCard },

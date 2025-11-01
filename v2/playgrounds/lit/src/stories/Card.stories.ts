@@ -7,32 +7,33 @@ const meta: Meta<CardProps> = {
   title: "AgnosticUI Lit/Card",
   component: "ag-card",
   argTypes: {
-    isSkinned: {
+    skinned: {
       control: "boolean",
       description: "Applies background color and border",
       defaultValue: true,
     },
-    isStacked: {
+    stacked: {
       control: "boolean",
       description:
         "Applies vertical stacking with margin between slotted children",
       defaultValue: false,
     },
-    isShadow: {
+    shadow: {
       control: "boolean",
       description: "Applies box-shadow with hover enhancement",
       defaultValue: false,
     },
-    isAnimated: {
+    animated: {
       control: "boolean",
       description:
         "Enables smooth transitions on hover (translateY + box-shadow)",
       defaultValue: false,
     },
-    isRounded: {
-      control: "boolean",
-      description: "Applies border-radius",
-      defaultValue: false,
+    rounded: {
+      control: "select",
+      description: "Border radius variant (sm, md, lg)",
+      options: ["", "sm", "md", "lg"],
+      defaultValue: "",
     },
     variant: {
       control: "select",
@@ -42,11 +43,11 @@ const meta: Meta<CardProps> = {
     },
   },
   args: {
-    isSkinned: true,
-    isStacked: false,
-    isShadow: false,
-    isAnimated: false,
-    isRounded: false,
+    skinned: true,
+    stacked: false,
+    shadow: false,
+    animated: false,
+    rounded: "",
     variant: "",
   },
 };
@@ -57,11 +58,11 @@ type Story = StoryObj<CardProps>;
 export const Default: Story = {
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3>Card Title</h3>
@@ -72,15 +73,15 @@ export const Default: Story = {
 
 export const Unskinned: Story = {
   args: {
-    isSkinned: false,
+    skinned: false,
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3>Unskinned Card</h3>
@@ -91,15 +92,15 @@ export const Unskinned: Story = {
 
 export const Shadow: Story = {
   args: {
-    isShadow: true,
+    shadow: true,
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3 slot="header" style="margin: 0;">Product Details</h3>
@@ -110,16 +111,16 @@ export const Shadow: Story = {
 
 export const Animated: Story = {
   args: {
-    isAnimated: true,
-    isShadow: true,
+    animated: true,
+    shadow: true,
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3>Animated Card</h3>
@@ -134,15 +135,15 @@ export const Animated: Story = {
 
 export const Rounded: Story = {
   args: {
-    isRounded: true,
+    rounded: "md",
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3>Rounded Card</h3>
@@ -153,15 +154,15 @@ export const Rounded: Story = {
 
 export const Stacked: Story = {
   args: {
-    isStacked: true,
+    stacked: true,
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3>Stacked Content</h3>
@@ -178,11 +179,11 @@ export const SuccessVariant: Story = {
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3>Success</h3>
@@ -197,11 +198,11 @@ export const InfoVariant: Story = {
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3 slot="header" style="margin: 0;">Information</h3>
@@ -216,11 +217,11 @@ export const ErrorVariant: Story = {
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3>Error</h3>
@@ -235,11 +236,11 @@ export const WarningVariant: Story = {
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3>Warning</h3>
@@ -254,15 +255,15 @@ export const WarningVariant: Story = {
 
 export const WithSlots: Story = {
   args: {
-    isShadow: true,
+    shadow: true,
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3
@@ -294,16 +295,16 @@ export const WithSlots: Story = {
 
 export const ClickableCard: Story = {
   args: {
-    isShadow: true,
-    isAnimated: true,
+    shadow: true,
+    animated: true,
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3 slot="header" style="margin: 0;">
@@ -323,16 +324,16 @@ export const ClickableCard: Story = {
 
 export const WithSecondaryActions: Story = {
   args: {
-    isShadow: true,
-    isAnimated: true,
+    shadow: true,
+    animated: true,
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3 slot="header" style="margin: 0;">
@@ -370,18 +371,18 @@ export const WithSecondaryActions: Story = {
 
 export const CombinedFeatures: Story = {
   args: {
-    isShadow: true,
-    isAnimated: true,
-    isRounded: true,
+    shadow: true,
+    animated: true,
+    rounded: "md",
     variant: "success",
   },
   render: (args) => html`
     <ag-card
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <h3>Premium Card</h3>
@@ -399,33 +400,33 @@ export const Gallery: Story = {
     <div
       style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;"
     >
-      <ag-card isshadow isanimated>
+      <ag-card shadow animated>
         <h4 slot="header" style="margin: 0;">Card 1</h4>
         <p>Standard card with header, shadow and animation.</p>
       </ag-card>
 
-      <ag-card isshadow isanimated variant="success">
+      <ag-card shadow animated variant="success">
         <h4>Card 2</h4>
         <p>Success variant with shadow and animation.</p>
       </ag-card>
 
-      <ag-card isshadow isanimated variant="info">
+      <ag-card shadow animated variant="info">
         <h4 slot="header" style="margin: 0;">Card 3</h4>
         <p>Info variant with header, shadow and animation.</p>
         <button slot="footer" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Learn More</button>
       </ag-card>
 
-      <ag-card isshadow isanimated variant="error">
+      <ag-card shadow animated variant="error">
         <h4>Card 4</h4>
         <p>Error variant with shadow and animation.</p>
       </ag-card>
 
-      <ag-card isshadow isanimated variant="warning">
+      <ag-card shadow animated variant="warning">
         <h4 slot="header" style="margin: 0;">Card 5</h4>
         <p>Warning variant with header.</p>
       </ag-card>
 
-      <ag-card isshadow isanimated isrounded>
+      <ag-card shadow animated rounded>
         <h4>Card 6</h4>
         <p>Rounded corners with shadow and animation.</p>
         <button slot="footer" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Action</button>
@@ -436,7 +437,7 @@ export const Gallery: Story = {
 
 export const Customization: Story = {
   args: {
-    isShadow: true,
+    shadow: true,
   },
   render: (args) => html`
     <style>
@@ -461,11 +462,11 @@ export const Customization: Story = {
     </style>
     <ag-card
       class="custom-card"
-      .isSkinned=${args.isSkinned}
-      .isStacked=${args.isStacked}
-      .isShadow=${args.isShadow}
-      .isAnimated=${args.isAnimated}
-      .isRounded=${args.isRounded}
+      .skinned=${args.skinned}
+      .stacked=${args.stacked}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+      rounded=${args.rounded || ""}
       .variant=${args.variant}
     >
       <div slot="header">
