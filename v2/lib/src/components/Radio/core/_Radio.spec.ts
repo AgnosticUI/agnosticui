@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Radio } from './Radio';
+import { AgRadio } from './Radio';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
@@ -16,8 +16,8 @@ describe('Radio - Comprehensive Tests', () => {
     container.innerHTML = '';
   });
 
-  const createRadio = async (props: Partial<Radio> = {}) => {
-    const radio = new Radio();
+  const createRadio = async (props: Partial<AgRadio> = {}) => {
+    const radio = new AgRadio();
     Object.assign(radio, props);
     container.appendChild(radio);
     await radio.updateComplete;
@@ -370,7 +370,7 @@ describe('Radio - Comprehensive Tests', () => {
 
   describe('CSS Selectors', () => {
     it('should use correct attribute selectors for disabled state', () => {
-      const styleContent = Radio.styles.toString();
+      const styleContent = AgRadio.styles.toString();
       expect(styleContent).toContain(':host([disabled])');
       expect(styleContent).not.toContain('[disabled="true"]');
     });
