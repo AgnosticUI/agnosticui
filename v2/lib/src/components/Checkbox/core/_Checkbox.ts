@@ -3,7 +3,7 @@ import { property } from 'lit/decorators.js';
 
 
 export type CheckboxSize = 'small' | 'medium' | 'large';
-export type CheckboxTheme = 'default' | 'primary' | 'monochrome';
+export type CheckboxTheme = 'default' | 'primary' | 'success' | 'monochrome';
 
 // Event types
 export interface CheckboxChangeEventDetail {
@@ -159,16 +159,16 @@ export class Checkbox extends LitElement implements CheckboxProps {
       transform: rotate(40deg) scale(1) translate(2px);
     }
 
-    /* Default theme - green from v1 */
+    /* Default theme - alias to primary */
     .checkbox-label--default::before {
-      border: var(--ag-border-width-2) solid var(--ag-border);
+      border: var(--ag-border-width-2) solid var(--ag-primary-border);
       background: var(--ag-white);
     }
 
     .checkbox-input:checked + .checkbox-label--default::before,
     .checkbox-input:indeterminate + .checkbox-label--default::before {
-      background: var(--ag-success);
-      border-color: var(--ag-success);
+      background: var(--ag-primary);
+      border-color: var(--ag-primary);
     }
 
     .checkbox-input:focus + .checkbox-label--default::before {
@@ -190,6 +190,24 @@ export class Checkbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-input:focus + .checkbox-label--primary::before {
+      box-shadow: 0 0 0 var(--ag-focus-width) var(--ag-focus);
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
+    }
+
+    /* Success theme - green */
+    .checkbox-label--success::before {
+      border: var(--ag-border-width-2) solid var(--ag-border);
+      background: var(--ag-white);
+    }
+
+    .checkbox-input:checked + .checkbox-label--success::before,
+    .checkbox-input:indeterminate + .checkbox-label--success::before {
+      background: var(--ag-success);
+      border-color: var(--ag-success);
+    }
+
+    .checkbox-input:focus + .checkbox-label--success::before {
       box-shadow: 0 0 0 var(--ag-focus-width) var(--ag-focus);
       outline: var(--ag-focus-width) solid var(--ag-focus);
       outline-offset: var(--ag-focus-offset);
@@ -265,7 +283,7 @@ export class Checkbox extends LitElement implements CheckboxProps {
   size: CheckboxSize = 'medium';
 
   @property({ type: String })
-  theme: CheckboxTheme = 'default';
+  theme: CheckboxTheme = 'primary';
 
   @property({ type: String })
   labelText = '';

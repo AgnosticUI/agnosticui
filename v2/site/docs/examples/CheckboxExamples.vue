@@ -2,7 +2,7 @@
   <section>
     <div class="mbe4">
       <h3>Default Checkbox</h3>
-      <p class="mbs2 mbe3">Basic checkbox with default theme (green)</p>
+      <p class="mbs2 mbe3">Basic checkbox with default theme (primary)</p>
     </div>
     <div class="stacked-mobile mbe4">
       <VueCheckbox
@@ -128,7 +128,7 @@
       style="display: flex; flex-direction: column; gap: 1.5rem;"
     >
       <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Default Theme (Green)</legend>
+        <legend style="padding: 0 0.5rem; font-weight: 600;">Default Theme (Blue)</legend>
         <div style="display: flex; gap: 1rem;">
           <VueCheckbox
             name="theme-default"
@@ -152,7 +152,6 @@
           />
         </div>
       </fieldset>
-
       <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
         <legend style="padding: 0 0.5rem; font-weight: 600;">Primary Theme (Blue)</legend>
         <div style="display: flex; gap: 1rem;">
@@ -173,6 +172,31 @@
             name="theme-primary"
             value="3"
             theme="primary"
+            label-text="Indeterminate"
+            :indeterminate="true"
+          />
+        </div>
+      </fieldset>
+      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
+        <legend style="padding: 0 0.5rem; font-weight: 600;">Success Theme (Green)</legend>
+        <div style="display: flex; gap: 1rem;">
+          <VueCheckbox
+            name="theme-success"
+            value="1"
+            theme="success"
+            label-text="Unchecked"
+          />
+          <VueCheckbox
+            name="theme-success"
+            value="2"
+            theme="success"
+            label-text="Checked"
+            :checked="true"
+          />
+          <VueCheckbox
+            name="theme-success"
+            value="3"
+            theme="success"
             label-text="Indeterminate"
             :indeterminate="true"
           />

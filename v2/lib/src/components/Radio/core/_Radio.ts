@@ -3,7 +3,7 @@ import { property } from 'lit/decorators.js';
 
 
 export type RadioSize = 'small' | 'medium' | 'large';
-export type RadioTheme = 'default' | 'primary' | 'monochrome';
+export type RadioTheme = 'default' | 'primary' | 'success' | 'monochrome';
 
 // Event type definitions
 export interface RadioChangeEventDetail {
@@ -119,21 +119,21 @@ export class AgRadio extends LitElement implements RadioProps {
       height: 16px;
     }
 
-    /* Default theme - green from v1 */
+    /* Default theme - alias to primary */
     .radio-indicator--default {
-      border: var(--ag-border-width-2) solid var(--ag-border);
+      border: var(--ag-border-width-2) solid var(--ag-primary-border);
       background: var(--ag-white);
       box-shadow: 0 0 0 var(--ag-border-width-2) transparent;
     }
 
     .radio-input:checked + .radio-indicator--default {
-      background: var(--ag-success);
-      border-color: var(--ag-success);
+      background: var(--ag-primary);
+      border-color: var(--ag-primary);
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-white) inset;
     }
 
     .radio-input:focus + .radio-indicator--default {
-      box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-border),
+      box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-primary-border),
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
     }
@@ -164,6 +164,31 @@ export class AgRadio extends LitElement implements RadioProps {
     }
 
     .radio-input:checked:focus + .radio-indicator--primary {
+      box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-white) inset,
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
+    }
+
+    /* Success theme - green */
+    .radio-indicator--success {
+      border: var(--ag-border-width-2) solid var(--ag-border);
+      background: var(--ag-white);
+      box-shadow: 0 0 0 var(--ag-border-width-2) transparent;
+    }
+
+    .radio-input:checked + .radio-indicator--success {
+      background: var(--ag-success);
+      border-color: var(--ag-success);
+      box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-white) inset;
+    }
+
+    .radio-input:focus + .radio-indicator--success {
+      box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-border),
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
+    }
+
+    .radio-input:checked:focus + .radio-indicator--success {
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-white) inset,
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
@@ -241,7 +266,7 @@ export class AgRadio extends LitElement implements RadioProps {
   size: RadioSize = 'medium';
 
   @property({ type: String })
-  theme: RadioTheme = 'default';
+  theme: RadioTheme = 'primary';
 
   @property({ type: String })
   labelText = '';
