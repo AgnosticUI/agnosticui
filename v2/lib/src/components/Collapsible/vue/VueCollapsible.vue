@@ -2,8 +2,8 @@
   <ag-collapsible
     ref="collapsibleRef"
     :open="open || undefined"
-    :isBordered="isBordered || undefined"
-    :isShadow="isShadow || undefined"
+    :bordered="bordered || undefined"
+    :shadow="shadow || undefined"
     :useChevron="useChevron || undefined"
     :useX="useX || undefined"
     :useMinus="useMinus || undefined"
@@ -33,8 +33,8 @@ export interface VueCollapsibleProps
 // Define props with defaults
 const props = withDefaults(defineProps<VueCollapsibleProps>(), {
   open: false,
-  isBordered: false,
-  isShadow: false,
+  bordered: false,
+  shadow: false,
   useChevron: true,
   useX: false,
   useMinus: false,
