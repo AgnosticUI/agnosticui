@@ -34,8 +34,8 @@ import CollapsibleExamples from '../examples/CollapsibleExamples.vue'
 
     <!-- With border and shadow -->
     <VueCollapsible
-      is-bordered
-      is-shadow
+      bordered
+      shadow
     >
       <template #summary>
         <span>Bordered with shadow</span>
@@ -175,7 +175,7 @@ export default function CollapsibleExample() {
   </ag-collapsible>
 
   <!-- With border and shadow -->
-  <ag-collapsible is-bordered is-shadow>
+  <ag-collapsible bordered shadow>
     <span slot="summary">Bordered with shadow</span>
     <p>This collapsible has both border and shadow styling.</p>
   </ag-collapsible>
