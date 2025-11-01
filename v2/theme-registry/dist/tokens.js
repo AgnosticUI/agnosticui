@@ -40,6 +40,17 @@ export const MotionMedium = "0.2s";
 export const MotionSlow = "0.4s";
 export const FocusWidth = "2px";
 export const FocusOffset = "2px";
+export const ShadowNone = "none";
+export const ShadowXs = "0 1px 2px 0 rgba(0, 0, 0, 0.05)";
+export const ShadowSm =
+  "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)";
+export const ShadowMd =
+  "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)";
+export const ShadowLg =
+  "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)";
+export const ShadowXl =
+  "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)";
+export const Shadow2xl = "0 25px 50px -12px rgba(0, 0, 0, 0.25)";
 export const ZIndexDropdown = "100";
 export const ZIndexModal = "1000";
 export const ZIndexToast = "1100";
