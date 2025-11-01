@@ -2,13 +2,262 @@
 
 The Select component is a lightly styled native HTML select element that provides consistent styling across browsers while maintaining native functionality and accessibility.
 
-## Usage
+## Examples
+
+<SelectExamples />
 
 <script setup>
 import SelectExamples from '../examples/SelectExamples.vue'
 </script>
 
-<SelectExamples />
+## Usage
+
+::: details Vue
+```vue
+<template>
+  <section>
+    <!-- Basic Select -->
+    <div>
+      <label for="tennis">Greatest Tennis Player</label>
+      <VueSelect id="tennis" name="tennis" v-model:value="selectedPlayer">
+        <option value="">Select a player</option>
+        <option value="serena">Serena Williams</option>
+        <option value="roger">Roger Federer</option>
+        <option value="rafa">Rafael Nadal</option>
+      </VueSelect>
+      <p v-if="selectedPlayer">Selected: {{ selectedPlayer }}</p>
+    </div>
+
+    <!-- Small Select -->
+    <div>
+      <label for="small">Small Select</label>
+      <VueSelect id="small" size="small">
+        <option value="">Choose size</option>
+        <option value="xs">Extra Small</option>
+        <option value="s">Small</option>
+        <option value="m">Medium</option>
+      </VueSelect>
+    </div>
+
+    <!-- Large Select -->
+    <div>
+      <label for="large">Large Select</label>
+      <VueSelect id="large" size="large">
+        <option value="">Choose size</option>
+        <option value="l">Large</option>
+        <option value="xl">Extra Large</option>
+      </VueSelect>
+    </div>
+
+    <!-- Multiple Select -->
+    <div>
+      <label for="multiple">Multiple Select</label>
+      <VueSelect
+        id="multiple"
+        :multiple="true"
+        :multipleSize="5"
+        v-model:value="selectedPlayers"
+      >
+        <option value="serena">Serena Williams</option>
+        <option value="roger">Roger Federer</option>
+        <option value="rafa">Rafael Nadal</option>
+        <option value="novak">Novak Djokovic</option>
+      </VueSelect>
+      <p v-if="selectedPlayers.length">Selected: {{ selectedPlayers.join(', ') }}</p>
+    </div>
+
+    <!-- Disabled Select -->
+    <div>
+      <label for="disabled">Disabled Select</label>
+      <VueSelect id="disabled" :disabled="true">
+        <option value="">Cannot select</option>
+        <option value="1">Option 1</option>
+      </VueSelect>
+    </div>
+  </section>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { VueSelect } from 'agnosticui-core/select/vue';
+
+const selectedPlayer = ref('');
+const selectedPlayers = ref<string[]>([]);
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { ReactSelect } from 'agnosticui-core/select/react';
+import { useState } from 'react';
+
+export default function SelectExamples() {
+  const [selectedPlayer, setSelectedPlayer] = useState('');
+  const [selectedPlayers, setSelectedPlayers] = useState<string[]>([]);
+
+  return (
+    <section>
+      {/* Basic Select */}
+      <div>
+        <label htmlFor="tennis">Greatest Tennis Player</label>
+        <ReactSelect
+          id="tennis"
+          name="tennis"
+          onChange={(e) => setSelectedPlayer(e.detail.value as string)}
+        >
+          <option value="">Select a player</option>
+          <option value="serena">Serena Williams</option>
+          <option value="roger">Roger Federer</option>
+          <option value="rafa">Rafael Nadal</option>
+        </ReactSelect>
+        {selectedPlayer && <p>Selected: {selectedPlayer}</p>}
+      </div>
+
+      {/* Small Select */}
+      <div>
+        <label htmlFor="small">Small Select</label>
+        <ReactSelect id="small" size="small">
+          <option value="">Choose size</option>
+          <option value="xs">Extra Small</option>
+          <option value="s">Small</option>
+          <option value="m">Medium</option>
+        </ReactSelect>
+      </div>
+
+      {/* Large Select */}
+      <div>
+        <label htmlFor="large">Large Select</label>
+        <ReactSelect id="large" size="large">
+          <option value="">Choose size</option>
+          <option value="l">Large</option>
+          <option value="xl">Extra Large</option>
+        </ReactSelect>
+      </div>
+
+      {/* Multiple Select */}
+      <div>
+        <label htmlFor="multiple">Multiple Select</label>
+        <ReactSelect
+          id="multiple"
+          multiple={true}
+          multipleSize={5}
+          onChange={(e) => setSelectedPlayers(e.detail.value as string[])}
+        >
+          <option value="serena">Serena Williams</option>
+          <option value="roger">Roger Federer</option>
+          <option value="rafa">Rafael Nadal</option>
+          <option value="novak">Novak Djokovic</option>
+        </ReactSelect>
+        {selectedPlayers.length > 0 && (
+          <p>Selected: {selectedPlayers.join(', ')}</p>
+        )}
+      </div>
+
+      {/* Disabled Select */}
+      <div>
+        <label htmlFor="disabled">Disabled Select</label>
+        <ReactSelect id="disabled" disabled={true}>
+          <option value="">Cannot select</option>
+          <option value="1">Option 1</option>
+        </ReactSelect>
+      </div>
+    </section>
+  );
+}
+```
+:::
+
+::: details Lit
+```ts
+import 'agnosticui-core/select';
+import { html, LitElement } from 'lit';
+import { customElement, state } from 'lit/decorators.js';
+
+@customElement('select-examples')
+export class SelectExamples extends LitElement {
+  @state() private selectedPlayer = '';
+  @state() private selectedPlayers: string[] = [];
+
+  render() {
+    return html`
+      <section>
+        <!-- Basic Select -->
+        <div>
+          <label for="tennis">Greatest Tennis Player</label>
+          <ag-select
+            id="tennis"
+            name="tennis"
+            @change=${(e: CustomEvent) => {
+              this.selectedPlayer = e.detail.value;
+            }}
+          >
+            <option value="">Select a player</option>
+            <option value="serena">Serena Williams</option>
+            <option value="roger">Roger Federer</option>
+            <option value="rafa">Rafael Nadal</option>
+          </ag-select>
+          ${this.selectedPlayer ? html`<p>Selected: ${this.selectedPlayer}</p>` : ''}
+        </div>
+
+        <!-- Small Select -->
+        <div>
+          <label for="small">Small Select</label>
+          <ag-select id="small" size="small">
+            <option value="">Choose size</option>
+            <option value="xs">Extra Small</option>
+            <option value="s">Small</option>
+            <option value="m">Medium</option>
+          </ag-select>
+        </div>
+
+        <!-- Large Select -->
+        <div>
+          <label for="large">Large Select</label>
+          <ag-select id="large" size="large">
+            <option value="">Choose size</option>
+            <option value="l">Large</option>
+            <option value="xl">Extra Large</option>
+          </ag-select>
+        </div>
+
+        <!-- Multiple Select -->
+        <div>
+          <label for="multiple">Multiple Select</label>
+          <ag-select
+            id="multiple"
+            multiple
+            multipleSize="5"
+            @change=${(e: CustomEvent) => {
+              this.selectedPlayers = e.detail.value as string[];
+            }}
+          >
+            <option value="serena">Serena Williams</option>
+            <option value="roger">Roger Federer</option>
+            <option value="rafa">Rafael Nadal</option>
+            <option value="novak">Novak Djokovic</option>
+          </ag-select>
+          ${this.selectedPlayers.length > 0
+            ? html`<p>Selected: ${this.selectedPlayers.join(', ')}</p>`
+            : ''
+          }
+        </div>
+
+        <!-- Disabled Select -->
+        <div>
+          <label for="disabled">Disabled Select</label>
+          <ag-select id="disabled" disabled>
+            <option value="">Cannot select</option>
+            <option value="1">Option 1</option>
+          </ag-select>
+        </div>
+      </section>
+    `;
+  }
+}
+```
+:::
+
 
 ## Features
 
@@ -60,85 +309,6 @@ The Select component supports both custom and native events following the Agnost
 | Part | Description |
 |------|-------------|
 | `ag-select` | The select element itself |
-
-## Framework Examples
-
-### Lit
-
-```ts
-import 'agnosticui-core/select';
-import { html } from 'lit';
-
-const template = html`
-  <label for="tennis">Greatest Tennis Player</label>
-  <ag-select id="tennis" name="tennis">
-    <option value="">Select a player</option>
-    <option value="serena">Serena Williams</option>
-    <option value="roger">Roger Federer</option>
-    <option value="rafa">Rafael Nadal</option>
-  </ag-select>
-`;
-```
-
-### React
-
-```tsx
-import { ReactSelect } from 'agnosticui-core/select/react';
-
-function App() {
-  return (
-    <div>
-      <label htmlFor="tennis">Greatest Tennis Player</label>
-      <ReactSelect
-        id="tennis"
-        name="tennis"
-        onChange={(e) => console.log(e.detail.value)}
-      >
-        <option value="">Select a player</option>
-        <option value="serena">Serena Williams</option>
-        <option value="roger">Roger Federer</option>
-        <option value="rafa">Rafael Nadal</option>
-      </ReactSelect>
-    </div>
-  );
-}
-```
-
-### Vue
-
-```vue
-<script setup>
-import { ref } from 'vue';
-import { VueSelect } from 'agnosticui-core/select/vue';
-
-const selectedPlayer = ref('');
-
-const handleChange = (detail) => {
-  console.log('Selected:', detail.value);
-};
-</script>
-
-<template>
-  <div>
-    <label for="tennis">Greatest Tennis Player</label>
-    <VueSelect
-      id="tennis"
-      name="tennis"
-      v-model:value="selectedPlayer"
-      @change="handleChange"
-    >
-      <option value="">Select a player</option>
-      <option value="serena">Serena Williams</option>
-      <option value="roger">Roger Federer</option>
-      <option value="rafa">Rafael Nadal</option>
-    </VueSelect>
-    <p v-if="selectedPlayer">Selected: {{ selectedPlayer }}</p>
-  </div>
-</template>
-```
-
-**Vue v-model Support:**
-- `v-model:value` - Two-way binding for the selected value (single or multiple)
 
 ## Event Handling Examples
 
