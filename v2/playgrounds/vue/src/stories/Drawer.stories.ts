@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
 import VueDrawer from 'agnosticui-core/drawer/vue';
 import type { VueDrawerProps } from 'agnosticui-core/drawer/vue';
+import { VueRadio } from 'agnosticui-core/radio/vue';
 import { ref } from 'vue';
 
 const meta = {
@@ -346,7 +347,7 @@ export const EventTesting: Story = {
 
 export const WithRadioButtons: Story = {
   render: (args: VueDrawerProps) => ({
-    components: { VueDrawer },
+    components: { VueDrawer, VueRadio },
     setup() {
       const isOpen = ref(false);
 
@@ -371,18 +372,31 @@ export const WithRadioButtons: Story = {
           @close="closeDrawer"
         >
           <div style="padding: 1rem 0;">
-            <fieldset>
-              <legend>Choose your favorite flavor</legend>
-              <label style="display: block; margin-bottom: 0.5rem;">
-                <input type="radio" name="flavor" value="grape" /> Grape
-              </label>
-              <label style="display: block; margin-bottom: 0.5rem;">
-                <input type="radio" name="flavor" value="cherry" /> Cherry
-              </label>
-              <label style="display: block; margin-bottom: 0.5rem;">
-                <input type="radio" name="flavor" value="orange" checked /> Orange
-              </label>
+            <fieldset style="border: none; padding: 0; margin: 0;">
+              <legend style="margin-bottom: 1rem;">Choose your favorite flavor</legend>
+              <VueRadio
+                name="flavor"
+                value="grape"
+                labelText="Grape"
+                style="display: block; margin-bottom: 0.5rem;"
+              />
+              <VueRadio
+                name="flavor"
+                value="cherry"
+                labelText="Cherry"
+                style="display: block; margin-bottom: 0.5rem;"
+              />
+              <VueRadio
+                name="flavor"
+                value="orange"
+                labelText="Orange"
+                :checked="true"
+                style="display: block; margin-bottom: 0.5rem;"
+              />
             </fieldset>
+            <p style="margin-top: 1rem; font-size: 0.875rem; color: #6b7280;">
+              Use arrow keys to navigate between radio buttons
+            </p>
           </div>
         </VueDrawer>
       </div>

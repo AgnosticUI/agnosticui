@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { fn } from 'storybook/test';
 import { ReactDrawer, DrawerHeader, DrawerFooter, type ReactDrawerProps } from 'agnosticui-core/drawer/react';
+import { ReactRadio } from 'agnosticui-core/radio/react';
 
 const meta: Meta<ReactDrawerProps> = {
   title: 'AgnosticUI React/Drawer',
@@ -328,18 +329,31 @@ export const WithRadioButtons: Story = {
           onClose={() => setIsOpen(false)}
         >
           <div style={{ padding: '1rem 0' }}>
-            <fieldset>
-              <legend>Choose your favorite flavor</legend>
-              <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-                <input type="radio" name="flavor" value="grape" /> Grape
-              </label>
-              <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-                <input type="radio" name="flavor" value="cherry" /> Cherry
-              </label>
-              <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-                <input type="radio" name="flavor" value="orange" checked /> Orange
-              </label>
+            <fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
+              <legend style={{ marginBottom: '1rem' }}>Choose your favorite flavor</legend>
+              <ReactRadio
+                name="flavor"
+                value="grape"
+                labelText="Grape"
+                style={{ display: 'block', marginBottom: '0.5rem' }}
+              />
+              <ReactRadio
+                name="flavor"
+                value="cherry"
+                labelText="Cherry"
+                style={{ display: 'block', marginBottom: '0.5rem' }}
+              />
+              <ReactRadio
+                name="flavor"
+                value="orange"
+                labelText="Orange"
+                checked={true}
+                style={{ display: 'block', marginBottom: '0.5rem' }}
+              />
             </fieldset>
+            <p style={{ marginTop: '1rem', fontSize: '0.875rem', color: '#6b7280' }}>
+              Use arrow keys to navigate between radio buttons
+            </p>
           </div>
         </ReactDrawer>
       </div>

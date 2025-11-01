@@ -3,6 +3,7 @@ import { html } from "lit";
 import { fn } from "storybook/test";
 import "agnosticui-core/drawer";
 import "agnosticui-core/button";
+import "agnosticui-core/radio";
 
 // Props interface for Drawer
 interface DrawerProps {
@@ -401,18 +402,31 @@ export const WithRadioButtons: Story = {
       args,
       html`
         <div style="padding: 1rem 0;">
-          <fieldset>
-            <legend>Choose your favorite flavor</legend>
-            <label style="display: block; margin-bottom: 0.5rem;">
-              <input type="radio" name="flavor" value="grape" /> Grape
-            </label>
-            <label style="display: block; margin-bottom: 0.5rem;">
-              <input type="radio" name="flavor" value="cherry" /> Cherry
-            </label>
-            <label style="display: block; margin-bottom: 0.5rem;">
-              <input type="radio" name="flavor" value="orange" checked /> Orange
-            </label>
+          <fieldset style="border: none; padding: 0; margin: 0;">
+            <legend style="margin-bottom: 1rem;">Choose your favorite flavor</legend>
+            <ag-radio
+              name="flavor"
+              value="grape"
+              labelText="Grape"
+              style="display: block; margin-bottom: 0.5rem;"
+            ></ag-radio>
+            <ag-radio
+              name="flavor"
+              value="cherry"
+              labelText="Cherry"
+              style="display: block; margin-bottom: 0.5rem;"
+            ></ag-radio>
+            <ag-radio
+              name="flavor"
+              value="orange"
+              labelText="Orange"
+              checked
+              style="display: block; margin-bottom: 0.5rem;"
+            ></ag-radio>
           </fieldset>
+          <p style="margin-top: 1rem; font-size: 0.875rem; color: #6b7280;">
+            Use arrow keys to navigate between radio buttons
+          </p>
         </div>
       `
     ),

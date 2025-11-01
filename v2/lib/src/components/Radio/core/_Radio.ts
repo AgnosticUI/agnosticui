@@ -63,7 +63,7 @@ export interface RadioProps {
   onChange?: (event: RadioChangeEvent) => void;
 }
 
-export class Radio extends LitElement implements RadioProps {
+export class AgRadio extends LitElement implements RadioProps {
   static override styles = css`
     :host {
       display: inline-block;
@@ -326,7 +326,7 @@ export class Radio extends LitElement implements RadioProps {
     }
   }
 
-  private getRadiosInGroup(): Radio[] {
+  private getRadiosInGroup(): AgRadio[] {
     if (!this.name) return [];
 
     // Find the root document (traverse up from shadow roots if needed)
@@ -344,8 +344,8 @@ export class Radio extends LitElement implements RadioProps {
     const allRadios = doc.querySelectorAll(`ag-radio[name="${this.name}"]`);
 
     // Filter to only enabled radios and return as array
-    return Array.from(allRadios).filter((radio): radio is Radio => {
-      return radio instanceof Radio && !radio.disabled;
+    return Array.from(allRadios).filter((radio): radio is AgRadio => {
+      return radio instanceof AgRadio && !radio.disabled;
     });
   }
 
@@ -402,7 +402,7 @@ export class Radio extends LitElement implements RadioProps {
     const allRadios = doc.querySelectorAll(`ag-radio[name="${this.name}"]`);
 
     allRadios.forEach((radio) => {
-      if (radio !== this && radio instanceof Radio) {
+      if (radio !== this && radio instanceof AgRadio) {
         radio.checked = false;
       }
     });
@@ -447,8 +447,4 @@ export class Radio extends LitElement implements RadioProps {
       </label>
     `;
   }
-}
-
-if (!customElements.get('ag-radio')) {
-  customElements.define('ag-radio', Radio);
 }

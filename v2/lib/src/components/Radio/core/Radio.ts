@@ -1,12 +1,12 @@
-import { Radio } from './_Radio.js';
+import { AgRadio } from './_Radio.js';
 
 if (!customElements.get('ag-radio')) {
-  customElements.define('ag-radio', Radio);
+  customElements.define('ag-radio', AgRadio);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ag-radio': Radio;
+    'ag-radio': AgRadio;
   }
 }
 
