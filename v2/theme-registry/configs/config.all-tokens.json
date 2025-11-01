@@ -5,6 +5,7 @@
     "tokens/radii.json",
     "tokens/motion.json",
     "tokens/focus.json",
+    "tokens/shadow.json",
     "tokens/shared.json",
     "tokens/z-index.json",
     "tokens/component-tokens.json",
