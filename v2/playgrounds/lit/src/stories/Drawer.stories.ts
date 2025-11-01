@@ -347,8 +347,9 @@ export const EventTesting: Story = {
     position: "end",
     heading: "Event Testing Drawer",
     showCloseButton: true,
+    onClose: fn(),
   },
-  render: () => html`
+  render: (args) => html`
     <div style="padding: 20px;">
       <div style="margin-bottom: 1rem;">
         <p>Close events will be logged to the Actions panel</p>
@@ -367,13 +368,13 @@ export const EventTesting: Story = {
         Open Drawer
       </ag-button>
       <ag-drawer
-        .position=${"end"}
-        .heading=${"Event Testing Drawer"}
-        .showCloseButton=${true}
+        .position=${args.position}
+        .heading=${args.heading}
+        .showCloseButton=${args.showCloseButton}
         @close=${(e: Event) => {
           const drawer = e.target as any;
           drawer.open = false;
-          console.log("Drawer closed");
+          if (args.onClose) args.onClose(e);
         }}
       >
         <p>Try different ways to close the drawer:</p>
