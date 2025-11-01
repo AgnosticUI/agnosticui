@@ -262,6 +262,93 @@ export class Radio extends LitElement implements RadioProps {
     }
   }
 
+  private handleKeyDown(e: KeyboardEvent) {
+    // Only handle arrow keys, Home, and End for keyboard navigation within radio groups
+    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
+      return;
+    }
+
+    e.preventDefault(); // Prevent page scroll
+
+    const radios = this.getRadiosInGroup();
+    if (radios.length === 0) return;
+
+    const currentIndex = radios.indexOf(this);
+    if (currentIndex === -1) return;
+
+    let nextIndex: number;
+
+    // Handle different key types
+    if (e.key === 'Home') {
+      // Go to first radio
+      nextIndex = 0;
+    } else if (e.key === 'End') {
+      // Go to last radio
+      nextIndex = radios.length - 1;
+    } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      // Move forward (wrap to beginning)
+      nextIndex = (currentIndex + 1) % radios.length;
+    } else {
+      // ArrowUp or ArrowLeft: Move backward (wrap to end)
+      nextIndex = (currentIndex - 1 + radios.length) % radios.length;
+    }
+
+    // Focus and check the next radio
+    const nextRadio = radios[nextIndex];
+    if (nextRadio && !nextRadio.disabled) {
+      // Find the input element in the next radio's shadow DOM
+      const nextInput = nextRadio.shadowRoot?.querySelector('.radio-input') as HTMLInputElement;
+      if (nextInput) {
+        nextInput.focus();
+        // Programmatically check the radio by setting checked and dispatching change
+        nextRadio.checked = true;
+        nextRadio.uncheckOtherRadiosInGroup();
+
+        // Dispatch change event
+        const changeEvent = new CustomEvent<RadioChangeEventDetail>(
+          'change',
+          {
+            detail: {
+              checked: true,
+              value: nextRadio.value,
+              name: nextRadio.name,
+            },
+            bubbles: true,
+            composed: true,
+          }
+        );
+        nextRadio.dispatchEvent(changeEvent);
+
+        if (nextRadio.onChange) {
+          nextRadio.onChange(changeEvent as RadioChangeEvent);
+        }
+      }
+    }
+  }
+
+  private getRadiosInGroup(): Radio[] {
+    if (!this.name) return [];
+
+    // Find the root document (traverse up from shadow roots if needed)
+    let root: Node = this.getRootNode();
+    while (root && 'host' in root) {
+      const parent = (root as ShadowRoot).host?.getRootNode();
+      if (parent && parent !== root) {
+        root = parent;
+      } else {
+        break;
+      }
+    }
+
+    const doc = root instanceof Document ? root : document;
+    const allRadios = doc.querySelectorAll(`ag-radio[name="${this.name}"]`);
+
+    // Filter to only enabled radios and return as array
+    return Array.from(allRadios).filter((radio): radio is Radio => {
+      return radio instanceof Radio && !radio.disabled;
+    });
+  }
+
   private handleChange(e: Event) {
     if (this.disabled) {
       e.preventDefault();
@@ -350,6 +437,7 @@ export class Radio extends LitElement implements RadioProps {
           ?disabled=${this.disabled}
           @click=${this.handleClick}
           @change=${this.handleChange}
+          @keydown=${this.handleKeyDown}
           aria-checked=${this.checked ? 'true' : 'false'}
         />
         <span class=${indicatorClasses.trim()} part="ag-radio-indicator"></span>
