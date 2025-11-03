@@ -27,7 +27,6 @@ describe('Header Component', () => {
     await element.updateComplete;
     expect(element.sticky).toBe(false);
     expect(element.contentJustify).toBe('between');
-    expect(element.isSkinned).toBe(true);
   });
 
   it('should render semantic header element', async () => {
@@ -95,32 +94,6 @@ describe('Header Component', () => {
     it('should use "between" as default contentJustify', async () => {
       await element.updateComplete;
       expect(element.contentJustify).toBe('between');
-    });
-  });
-
-  describe('Skinned styling', () => {
-    it('should be skinned by default', async () => {
-      await element.updateComplete;
-      expect(element.isSkinned).toBe(true);
-      expect(element.hasAttribute('isSkinned')).toBe(true);
-    });
-
-    it('should apply isSkinned attribute when true', async () => {
-      element.isSkinned = true;
-      await element.updateComplete;
-      expect(element.hasAttribute('isSkinned')).toBe(true);
-    });
-
-    it('should remove isSkinned attribute when false', async () => {
-      element.isSkinned = false;
-      await element.updateComplete;
-      expect(element.hasAttribute('isSkinned')).toBe(false);
-    });
-
-    it('uses correct CSS attribute selector for isSkinned', () => {
-      const styleContent = Header.styles.toString();
-      expect(styleContent).toContain(':host([isSkinned])');
-      expect(styleContent).not.toContain(':host([isSkinned="true"])');
     });
   });
 

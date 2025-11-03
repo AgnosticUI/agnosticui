@@ -11,18 +11,24 @@ import HeaderExamples from '../examples/HeaderExamples.vue'
 ## Usage
 
 ::: details Vue
+
 ```vue
 <template>
   <div>
     <!-- Basic header -->
     <VueHeader>
       <template #logo>
-        <a href="/" style="text-decoration: none; color: inherit; font-weight: 700; font-size: 1.25rem;">
+        <a
+          href="/"
+          style="text-decoration: none; color: inherit; font-weight: 700; font-size: 1.25rem;"
+        >
           MyBrand
         </a>
       </template>
       <nav>
-        <ul style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+        <ul
+          style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;"
+        >
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -45,85 +51,108 @@ import HeaderExamples from '../examples/HeaderExamples.vue'
       </template>
       <nav>Menu</nav>
     </VueHeader>
-
-    <!-- Unskinned header -->
-    <VueHeader :isSkinned="false">
-      <template #logo>
-        <a href="/">Brand</a>
-      </template>
-      <nav>Menu</nav>
-    </VueHeader>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { VueHeader } from 'agnosticui-core/header/vue';
+import { defineComponent } from "vue";
+import { VueHeader } from "agnosticui-core/header/vue";
 
 export default defineComponent({
-  components: { VueHeader }
+  components: { VueHeader },
 });
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactHeader } from 'agnosticui-core/header/react';
+import { ReactHeader } from "agnosticui-core/header/react";
 
 export default function Example() {
   return (
     <div>
       {/* Basic header */}
       <ReactHeader>
-        <a href="/" slot="logo" style={{ textDecoration: 'none', color: 'inherit', fontWeight: 700, fontSize: '1.25rem' }}>
+        <a
+          href="/"
+          slot="logo"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            fontWeight: 700,
+            fontSize: "1.25rem",
+          }}
+        >
           MyBrand
         </a>
         <nav>
-          <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <ul
+            style={{
+              display: "flex",
+              gap: "2rem",
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
           </ul>
         </nav>
       </ReactHeader>
 
       {/* Sticky header */}
       <ReactHeader sticky>
-        <a href="/" slot="logo">Brand</a>
+        <a href="/" slot="logo">
+          Brand
+        </a>
         <nav>Navigation</nav>
       </ReactHeader>
 
       {/* Custom content justification */}
       <ReactHeader contentJustify="start">
-        <a href="/" slot="logo">Logo</a>
-        <nav>Menu</nav>
-      </ReactHeader>
-
-      {/* Unskinned header */}
-      <ReactHeader isSkinned={false}>
-        <a href="/" slot="logo">Brand</a>
+        <a href="/" slot="logo">
+          Logo
+        </a>
         <nav>Menu</nav>
       </ReactHeader>
     </div>
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
-  import 'agnosticui-core/header';
+  import "agnosticui-core/header";
 </script>
 
 <!-- Basic header -->
 <ag-header>
-  <a href="/" slot="logo" style="text-decoration: none; color: inherit; font-weight: 700; font-size: 1.25rem;">
+  <a
+    href="/"
+    slot="logo"
+    style="text-decoration: none; color: inherit; font-weight: 700; font-size: 1.25rem;"
+  >
     MyBrand
   </a>
   <nav>
-    <ul style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+    <ul
+      style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;"
+    >
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -142,29 +171,23 @@ export default function Example() {
   <a href="/" slot="logo">Logo</a>
   <nav>Menu</nav>
 </ag-header>
-
-<!-- Unskinned header -->
-<ag-header>
-  <a href="/" slot="logo">Brand</a>
-  <nav>Menu</nav>
-</ag-header>
 ```
+
 :::
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `sticky` | `boolean` | `false` | Makes the header sticky at the viewport top. The header will remain visible when scrolling |
+| Prop             | Type                                                    | Default     | Description                                                                                                                                                                         |
+| ---------------- | ------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sticky`         | `boolean`                                               | `false`     | Makes the header sticky at the viewport top. The header will remain visible when scrolling                                                                                          |
 | `contentJustify` | `'start' \| 'end' \| 'between' \| 'around' \| 'center'` | `'between'` | Controls flex content alignment. `between` puts logo and nav at opposite ends, `start` aligns to the left, `end` to the right, `around` distributes space, `center` centers content |
-| `isSkinned` | `boolean` | `true` | Applies default styling including background color, box shadow, border, and padding. Set to `false` for a minimal unstyled header |
 
 ## Slots
 
-| Slot | Description |
-|------|-------------|
-| `logo` | Content for the logo/brand area, typically a link with logo image or text |
-| (default) | Navigation content, typically a `<nav>` element containing menu items |
+| Slot      | Description                                                               |
+| --------- | ------------------------------------------------------------------------- |
+| `logo`    | Content for the logo/brand area, typically a link with logo image or text |
+| (default) | Navigation content, typically a `<nav>` element containing menu items     |
 
 ## Events
 
@@ -172,9 +195,9 @@ The Header component does not emit any custom events. It relies on standard DOM 
 
 ## CSS Shadow Parts
 
-| Part | Description |
-|------|-------------|
-| `ag-header` | The outer `<header>` element |
+| Part                | Description                                                    |
+| ------------------- | -------------------------------------------------------------- |
+| `ag-header`         | The outer `<header>` element                                   |
 | `ag-header-content` | The inner content wrapper div that controls layout and spacing |
 
 ### Customization Example
@@ -222,7 +245,9 @@ The Header component is designed to be accessible by default:
 
 ```css
 /* Adjust based on your header height */
-h1[id], h2[id], h3[id] {
+h1[id],
+h2[id],
+h3[id] {
   scroll-margin-top: var(--your-headers-height);
 }
 ```
@@ -232,6 +257,7 @@ h1[id], h2[id], h3[id] {
 The Header component uses a mobile-first responsive approach:
 
 - **Mobile (<960px)**:
+
   - Stacked column layout
   - Logo and navigation centered
   - Vertical spacing between logo and navigation
@@ -272,21 +298,6 @@ For mobile navigation menus (hamburger menus), you'll need to implement the togg
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-  </nav>
-</VueHeader>
-```
-
-### Minimal Unskinned Header
-
-```vue
-<VueHeader :isSkinned="false" contentJustify="start">
-  <template #logo>
-    <a href="/" style="color: var(--ag-primary); font-weight: 700;">
-      Brand
-    </a>
-  </template>
-  <nav>
-    <a href="#docs" style="margin-left: 2rem;">Docs</a>
   </nav>
 </VueHeader>
 ```

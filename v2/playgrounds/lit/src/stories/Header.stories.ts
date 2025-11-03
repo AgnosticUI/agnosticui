@@ -13,12 +13,10 @@ const meta: Meta<HeaderProps> = {
       options: ["start", "end", "between", "around", "center"],
       description: "Controls content alignment in flex container",
     },
-    isSkinned: { control: "boolean", description: "Applies default styling (shadow, border, padding)" },
   },
   args: {
     sticky: false,
     contentJustify: "between",
-    isSkinned: true,
   },
 };
 
@@ -26,11 +24,10 @@ export default meta;
 type Story = StoryObj<HeaderProps>;
 
 export const Default: Story = {
-  render: ({ sticky, contentJustify, isSkinned }) => html`
+  render: ({ sticky, contentJustify }) => html`
     <ag-header
       .sticky=${sticky}
       .contentJustify=${contentJustify}
-      .isSkinned=${isSkinned}
     >
       <a href="#" slot="logo" style="text-decoration: none; color: inherit; font-weight: 600; font-size: 1.25rem;">
         AgnosticUI
@@ -154,25 +151,6 @@ export const ContentJustifyAround: Story = {
         </ul>
       </nav>
     </ag-header>
-  `,
-};
-
-export const Unskinned: Story = {
-  render: () => html`
-    <ag-header .isSkinned=${false}>
-      <a href="#" slot="logo" style="text-decoration: none; color: var(--ag-primary); font-weight: 700; font-size: 1.25rem;">
-        Unskinned Header
-      </a>
-      <nav>
-        <ul style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
-          <li><a href="#home" style="text-decoration: none; color: inherit;">Home</a></li>
-          <li><a href="#docs" style="text-decoration: none; color: inherit;">Docs</a></li>
-        </ul>
-      </nav>
-    </ag-header>
-    <div style="padding: 2rem;">
-      <p>This header has no background, shadow, or border (isSkinned=false).</p>
-    </div>
   `,
 };
 
