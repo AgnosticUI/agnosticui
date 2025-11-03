@@ -43,11 +43,10 @@ import InputExamples from '../examples/InputExamples.vue'
       placeholder="Enter your message..."
     />
 
-    <!-- With addons -->
+    <!-- With addons (automatically detected) -->
     <VueInput
       v-model:value="price"
       label="Price"
-      :has-left-addon="true"
     >
       <template #addon-left>
         <DollarSign :size="18" />
@@ -152,12 +151,11 @@ export default function InputExample() {
         placeholder="Enter your message..."
       />
 
-      {/* With addons */}
+      {/* With addons (automatically detected) */}
       <ReactInput
         value={price}
         onChange={(e) => setPrice(e.target.value)}
         label="Price"
-        hasLeftAddon
       >
         <span slot="addon-left">$</span>
       </ReactInput>
@@ -245,11 +243,10 @@ export default function InputExample() {
     placeholder="Enter your message..."
   ></ag-input>
 
-  <!-- With addons -->
+  <!-- With addons (automatically detected) -->
   <ag-input
     id="price-input"
     label="Price"
-    has-left-addon
   >
     <span slot="addon-left">$</span>
   </ag-input>
@@ -303,8 +300,8 @@ export default function InputExample() {
 | `noLabel` | `boolean` | `false` | Completely removes the label element. Use with ariaLabel for accessibility |
 | `ariaLabel` | `string` | `''` | ARIA label for accessibility when label is not visible |
 | `labelledBy` | `string` | `''` | ID of element that labels this input (aria-labelledby) |
-| `hasLeftAddon` | `boolean` | `false` | Enables left addon slot for icons or text |
-| `hasRightAddon` | `boolean` | `false` | Enables right addon slot for icons or text |
+| ~~`hasLeftAddon`~~ | `boolean` | `false` | **Deprecated:** Addons are now automatically detected. Simply use the `addon-left` slot. |
+| ~~`hasRightAddon`~~ | `boolean` | `false` | **Deprecated:** Addons are now automatically detected. Simply use the `addon-right` slot. |
 | `rows` | `number` | `4` | Number of rows for textarea (only applies when type="textarea") |
 | `cols` | `number` | `50` | Number of columns for textarea (only applies when type="textarea") |
 
@@ -371,8 +368,8 @@ input.onFocus = (e) => console.log('focused');
 
 | Slot | Description |
 |------|-------------|
-| `addon-left` | Content to display on the left side of the input (requires hasLeftAddon prop) |
-| `addon-right` | Content to display on the right side of the input (requires hasRightAddon prop) |
+| `addon-left` | Content to display on the left side of the input (automatically detected when provided) |
+| `addon-right` | Content to display on the right side of the input (automatically detected when provided) |
 
 ## Accessibility
 
@@ -499,16 +496,15 @@ export default {
 
 ## Input Addons
 
-Add icons or text before or after the input using slots:
+Add icons or text before or after the input using slots. Addons are **automatically detected** when you provide slot content - no props needed!
 
 ```vue
 <template>
-  <!-- Icon addon with color -->
+  <!-- Icon addon with color (left side) -->
   <VueInput
     v-model:value="url"
     label="Website URL"
     placeholder="example.com"
-    :has-left-addon="true"
   >
     <template #addon-left>
       <Globe
@@ -523,7 +519,6 @@ Add icons or text before or after the input using slots:
     v-model:value="price"
     label="Price"
     placeholder="0.00"
-    :has-right-addon="true"
   >
     <template #addon-right>
       <DollarSign
@@ -533,13 +528,11 @@ Add icons or text before or after the input using slots:
     </template>
   </VueInput>
 
-  <!-- Both icon and text addons -->
+  <!-- Both left and right addons -->
   <VueInput
     v-model:value="amount"
     label="Amount"
     placeholder="100"
-    :has-left-addon="true"
-    :has-right-addon="true"
   >
     <template #addon-left>
       <DollarSign
@@ -551,6 +544,18 @@ Add icons or text before or after the input using slots:
       <span>.00</span>
     </template>
   </VueInput>
+
+  <!-- Text addons -->
+  <VueInput
+    v-model:value="discount"
+    label="Discount"
+    type="number"
+    placeholder="10"
+  >
+    <template #addon-right>
+      <span style="font-weight: bold;">%</span>
+    </template>
+  </VueInput>
 </template>
 
 <script>
@@ -560,7 +565,7 @@ import { Globe, DollarSign } from "lucide-vue-next";
 export default {
   components: { VueInput, Globe, DollarSign },
   data() {
-    return { url: "", price: "", amount: "" };
+    return { url: "", price: "", amount: "", discount: "" };
   },
 };
 </script>
