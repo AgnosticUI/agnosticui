@@ -242,10 +242,12 @@ export class AgInput extends LitElement implements InputProps {
     /* Capsule variant with addons */
     :host([capsule]) .ag-input__addon--left {
       border-radius: var(--ag-radius-full) 0 0 var(--ag-radius-full);
+      padding: var(--ag-space-2) var(--ag-space-4);
     }
 
     :host([capsule]) .ag-input__addon--right {
       border-radius: 0 var(--ag-radius-full) var(--ag-radius-full) 0;
+      padding: var(--ag-space-2) var(--ag-space-4);
     }
 
     /* Remove border on INPUT where it meets the addon for capsule */
