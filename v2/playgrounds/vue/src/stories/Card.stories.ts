@@ -6,11 +6,6 @@ const meta = {
   title: 'AgnosticUI Vue/Card',
   component: VueCard,
   argTypes: {
-    skinned: {
-      control: 'boolean',
-      description: 'Applies background color and border',
-      defaultValue: true,
-    },
     stacked: {
       control: 'boolean',
       description: 'Applies vertical stacking with margin between slotted children',
@@ -40,7 +35,6 @@ const meta = {
     },
   },
   args: {
-    skinned: true,
     stacked: false,
     shadow: false,
     animated: false,
@@ -62,24 +56,6 @@ export const Default: Story = {
       <VueCard v-bind="args">
         <h3>Card Title</h3>
         <p>This is a basic card with default styling.</p>
-      </VueCard>
-    `,
-  }),
-};
-
-export const Unskinned: Story = {
-  args: {
-    skinned: false,
-  },
-  render: (args) => ({
-    components: { VueCard },
-    setup() {
-      return { args };
-    },
-    template: `
-      <VueCard v-bind="args">
-        <h3>Unskinned Card</h3>
-        <p>No background or border applied.</p>
       </VueCard>
     `,
   }),

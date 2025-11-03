@@ -17,7 +17,6 @@ describe('Card', () => {
     const el = document.createElement('ag-card') as Card;
     host.appendChild(el);
     expect(el).toBeInstanceOf(Card);
-    expect(el.skinned).toBe(true);
     expect(el.stacked).toBe(false);
     expect(el.shadow).toBe(false);
     expect(el.animated).toBe(false);
@@ -27,14 +26,12 @@ describe('Card', () => {
 
   it('reflects properties as attributes', async () => {
     const el = document.createElement('ag-card') as Card;
-    el.skinned = false;
     el.stacked = true;
     el.shadow = true;
     host.appendChild(el);
     await el.updateComplete; // Wait for Lit to update the DOM
 
     // Boolean properties with reflect: true are removed when false
-    expect(el.hasAttribute('skinned')).toBe(false);
     expect(el.hasAttribute('stacked')).toBe(true);
     expect(el.hasAttribute('shadow')).toBe(true);
   });
@@ -181,7 +178,6 @@ describe('Card', () => {
 
   it('combines multiple attributes correctly', async () => {
     const el = document.createElement('ag-card') as Card;
-    el.skinned = true;
     el.shadow = true;
     el.animated = true;
     el.rounded = 'md';
@@ -189,7 +185,6 @@ describe('Card', () => {
     host.appendChild(el);
     await el.updateComplete;
 
-    expect(el.hasAttribute('skinned')).toBe(true);
     expect(el.hasAttribute('shadow')).toBe(true);
     expect(el.hasAttribute('animated')).toBe(true);
     expect(el.getAttribute('rounded')).toBe('md');
@@ -205,7 +200,6 @@ describe('Card', () => {
 
     // CRITICAL: Boolean attributes should use [attrname] not [attrname="true"]
     // Lit reflects boolean props as present/absent, not as ="true"/"false"
-    expect(styleContent).toContain(':host([skinned])');
     expect(styleContent).toContain(':host([shadow])');
     expect(styleContent).toContain(':host([animated])');
     expect(styleContent).toContain(':host([stacked])');
@@ -216,7 +210,6 @@ describe('Card', () => {
     expect(styleContent).toContain('[rounded="lg"]');
 
     // These should NOT exist (common mistake)
-    expect(styleContent).not.toContain('[skinned="true"]');
     expect(styleContent).not.toContain('[shadow="true"]');
     expect(styleContent).not.toContain('[animated="true"]');
     expect(styleContent).not.toContain('[stacked="true"]');

@@ -5,7 +5,7 @@
     </div>
     <div class="stacked-mobile">
       <VueCard>
-        <p>This is a basic card with default styling (skinned with background and border).</p>
+        <p>This is a basic card with default styling.</p>
       </VueCard>
     </div>
 
@@ -18,16 +18,6 @@
           <h4 class="m0">Product Details</h4>
         </template>
         <p>This card demonstrates using the header slot to add a title section with visual separation.</p>
-      </VueCard>
-    </div>
-
-    <div class="mbe4">
-      <h3>Unskinned Card</h3>
-    </div>
-    <div class="stacked-mobile">
-      <VueCard :skinned="false">
-        <h4 class="m0">Unskinned Card</h4>
-        <p>No background or border applied. Useful for layout purposes or to customize the styling.</p>
       </VueCard>
     </div>
 
