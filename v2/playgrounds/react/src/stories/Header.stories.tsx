@@ -11,12 +11,10 @@ const meta: Meta<ReactHeaderProps> = {
       options: ['start', 'end', 'between', 'around', 'center'],
       description: 'Controls content alignment in flex container',
     },
-    isSkinned: { control: 'boolean', description: 'Applies default styling (shadow, border, padding)' },
   },
   args: {
     sticky: false,
     contentJustify: 'between',
-    isSkinned: true,
   },
 } satisfies Meta<ReactHeaderProps>;
 
@@ -152,27 +150,6 @@ export const ContentJustifyAround: Story = {
         </ul>
       </nav>
     </ReactHeader>
-  ),
-};
-
-export const Unskinned: Story = {
-  render: () => (
-    <>
-      <ReactHeader isSkinned={false}>
-        <a href="#" slot="logo" style={{ textDecoration: 'none', color: 'var(--ag-primary)', fontWeight: 700, fontSize: '1.25rem' }}>
-          Unskinned Header
-        </a>
-        <nav>
-          <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
-            <li><a href="#home" style={{ textDecoration: 'none', color: 'inherit' }}>Home</a></li>
-            <li><a href="#docs" style={{ textDecoration: 'none', color: 'inherit' }}>Docs</a></li>
-          </ul>
-        </nav>
-      </ReactHeader>
-      <div style={{ padding: '2rem' }}>
-        <p>This header has no background, shadow, or border (isSkinned=false).</p>
-      </div>
-    </>
   ),
 };
 

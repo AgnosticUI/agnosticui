@@ -6,7 +6,6 @@ export type HeaderContentJustify = 'start' | 'end' | 'between' | 'around' | 'cen
 export interface HeaderProps {
   sticky?: boolean;
   contentJustify?: HeaderContentJustify;
-  isSkinned?: boolean;
 }
 
 /**
@@ -26,9 +25,6 @@ export class Header extends LitElement implements HeaderProps {
   @property({ type: String, reflect: true })
   public contentJustify: HeaderContentJustify = 'between';
 
-  @property({ type: Boolean, reflect: true })
-  public isSkinned = true;
-
   static styles = css`
     :host {
       display: block;
@@ -43,10 +39,6 @@ export class Header extends LitElement implements HeaderProps {
 
     .header {
       font-family: inherit;
-    }
-
-    /* Skinned styles - box shadow, border, padding, background */
-    :host([isSkinned]) .header {
       background-color: var(--ag-background-primary);
       box-shadow: 0 1px 5px 2px rgb(0 0 0 / 10%);
       border-bottom: var(--ag-border-width-1) solid var(--ag-border);

@@ -11,12 +11,10 @@ const meta = {
       options: ['start', 'end', 'between', 'around', 'center'],
       description: 'Controls content alignment in flex container',
     },
-    isSkinned: { control: 'boolean', description: 'Applies default styling (shadow, border, padding)' },
   },
   args: {
     sticky: false,
     contentJustify: 'between',
-    isSkinned: true,
   },
 } satisfies Meta<typeof VueHeader>;
 
@@ -189,32 +187,6 @@ export const ContentJustifyAround: Story = {
           </ul>
         </nav>
       </VueHeader>
-    `,
-  }),
-};
-
-export const Unskinned: Story = {
-  render: () => ({
-    components: { VueHeader },
-    template: `
-      <div>
-        <VueHeader :isSkinned="false">
-          <template #logo>
-            <a href="#" style="text-decoration: none; color: var(--ag-primary); font-weight: 700; font-size: 1.25rem;">
-              Unskinned Header
-            </a>
-          </template>
-          <nav>
-            <ul style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#docs">Docs</a></li>
-            </ul>
-          </nav>
-        </VueHeader>
-        <div style="padding: 2rem;">
-          <p>This header has no background, shadow, or border (isSkinned=false).</p>
-        </div>
-      </div>
     `,
   }),
 };

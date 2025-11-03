@@ -246,37 +246,6 @@
     </div>
 
     <div class="mbe4">
-      <h3>Unskinned Header</h3>
-      <p class="mbs2 mbe3">
-        Remove default styling by setting <code>isSkinned</code> to false. This removes the background, shadow, border, and padding.
-      </p>
-    </div>
-    <div class="mbe4">
-      <VueHeader :isSkinned="false">
-        <template #logo>
-          <a
-            href="#"
-            style="text-decoration: none; color: var(--ag-primary); font-weight: 700; font-size: 1.25rem;"
-          >
-            Minimal Header
-          </a>
-        </template>
-        <nav>
-          <ul style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
-            <li><a
-                href="#home"
-                style="text-decoration: none; color: inherit;"
-              >Home</a></li>
-            <li><a
-                href="#docs"
-                style="text-decoration: none; color: inherit;"
-              >Docs</a></li>
-          </ul>
-        </nav>
-      </VueHeader>
-    </div>
-
-    <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the header's appearance without affecting its internal structure.
