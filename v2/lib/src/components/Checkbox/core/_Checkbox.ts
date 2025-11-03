@@ -172,8 +172,8 @@ export class Checkbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-input:focus + .checkbox-label--default::before {
-      box-shadow: 0 0 0 var(--ag-focus-width) var(--ag-focus);
-      outline: var(--ag-focus-width) solid var(--ag-focus);
+      box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
       outline-offset: var(--ag-focus-offset);
     }
 
@@ -190,8 +190,8 @@ export class Checkbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-input:focus + .checkbox-label--primary::before {
-      box-shadow: 0 0 0 var(--ag-focus-width) var(--ag-focus);
-      outline: var(--ag-focus-width) solid var(--ag-focus);
+      box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
       outline-offset: var(--ag-focus-offset);
     }
 
@@ -203,13 +203,13 @@ export class Checkbox extends LitElement implements CheckboxProps {
 
     .checkbox-input:checked + .checkbox-label--success::before,
     .checkbox-input:indeterminate + .checkbox-label--success::before {
-      background: var(--ag-success);
-      border-color: var(--ag-success);
+      background: rgb(var(--ag-success));
+      border-color: rgb(var(--ag-success));
     }
 
     .checkbox-input:focus + .checkbox-label--success::before {
-      box-shadow: 0 0 0 var(--ag-focus-width) var(--ag-focus);
-      outline: var(--ag-focus-width) solid var(--ag-focus);
+      box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
       outline-offset: var(--ag-focus-offset);
     }
 
@@ -226,8 +226,8 @@ export class Checkbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-input:focus + .checkbox-label--monochrome::before {
-      box-shadow: 0 0 0 var(--ag-focus-width) var(--ag-focus);
-      outline: var(--ag-focus-width) solid var(--ag-focus);
+      box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
       outline-offset: var(--ag-focus-offset);
     }
 

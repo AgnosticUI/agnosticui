@@ -135,13 +135,13 @@ export class AgRadio extends LitElement implements RadioProps {
     .radio-input:focus + .radio-indicator--default {
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-primary-border),
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
-                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) rgba(var(--ag-focus), 0.5);
     }
 
     .radio-input:checked:focus + .radio-indicator--default {
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-white) inset,
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
-                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) rgba(var(--ag-focus), 0.5);
     }
 
     /* Primary theme */
@@ -160,13 +160,13 @@ export class AgRadio extends LitElement implements RadioProps {
     .radio-input:focus + .radio-indicator--primary {
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-primary-border),
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
-                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) rgba(var(--ag-focus), 0.5);
     }
 
     .radio-input:checked:focus + .radio-indicator--primary {
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-white) inset,
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
-                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) rgba(var(--ag-focus), 0.5);
     }
 
     /* Success theme - green */
@@ -177,21 +177,21 @@ export class AgRadio extends LitElement implements RadioProps {
     }
 
     .radio-input:checked + .radio-indicator--success {
-      background: var(--ag-success);
-      border-color: var(--ag-success);
+      background: rgb(var(--ag-success));
+      border-color: rgb(var(--ag-success));
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-white) inset;
     }
 
     .radio-input:focus + .radio-indicator--success {
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-border),
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
-                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) rgba(var(--ag-focus), 0.5);
     }
 
     .radio-input:checked:focus + .radio-indicator--success {
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-white) inset,
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
-                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) rgba(var(--ag-focus), 0.5);
     }
 
     /* Monochrome theme */
@@ -210,13 +210,13 @@ export class AgRadio extends LitElement implements RadioProps {
     .radio-input:focus + .radio-indicator--monochrome {
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-black),
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
-                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) rgba(var(--ag-focus), 0.5);
     }
 
     .radio-input:checked:focus + .radio-indicator--monochrome {
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-white) inset,
                   0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2)) var(--ag-white),
-                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) var(--ag-focus);
+                  0 0 0 calc(var(--ag-focus-width) + var(--ag-border-width-2) + var(--ag-focus-offset)) rgba(var(--ag-focus), 0.5);
     }
 
     .radio-label {

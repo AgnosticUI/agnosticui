@@ -120,16 +120,16 @@
     "description": "Darker shade of secondary for hover states"
   },
   "danger": {
-    "value": "#ca1d1d",
-    "description": "Error and danger state color"
+    "value": "202, 29, 29",
+    "description": "Error and danger state color (RGB format for alpha channel support)"
   },
   "danger-dark": {
     "value": "#b71c1c",
     "description": "Darker shade of danger for hover states"
   },
   "warning": {
-    "value": "#bf6804",
-    "description": "Warning state color"
+    "value": "191, 104, 4",
+    "description": "Warning state color (RGB format for alpha channel support)"
   },
   "warning-dark": {
     "value": "#b45309",
@@ -152,8 +152,8 @@
     "description": "Darker shade of info for hover states"
   },
   "focus": {
-    "value": "#2563eb",
-    "description": "Blue focus ring color for accessibility (light mode)"
+    "value": "37, 99, 235",
+    "description": "Blue focus ring color for accessibility (RGB format for alpha channel support)"
   },
   "focus-dark": {
     "value": "#3b82f6",
@@ -223,8 +223,8 @@
       "description": "Medium green"
     },
     "500": {
-      "value": "#1a7f37",
-      "description": "Primary green"
+      "value": "26, 127, 55",
+      "description": "Primary green (RGB format for alpha channel support)"
     },
     "600": {
       "value": "#116329",
