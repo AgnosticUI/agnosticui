@@ -40,9 +40,8 @@ export interface InputProps {
   underlinedWithBackground?: boolean;
   inline?: boolean;
 
-  // Addon support
-  hasLeftAddon?: boolean;
-  hasRightAddon?: boolean;
+  // Addon support - REMOVED: hasLeftAddon and hasRightAddon props
+  // Slots are now auto-detected via slotchange events
 
   // Validation & state
   required?: boolean;
@@ -211,24 +210,26 @@ export class AgInput extends LitElement implements InputProps {
       border: 1px solid var(--ag-border-subtle);
     }
 
-    :host([has-left-addon]) .ag-input__addon--left {
+    .ag-input__addon--left {
       border-right: 0;
       border-radius: var(--ag-radius-md) 0 0 var(--ag-radius-md);
     }
 
-    :host([has-right-addon]) .ag-input__addon--right {
+    .ag-input__addon--right {
       border-left: 0;
       border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
     }
 
-    :host([has-left-addon]) .ag-input__field .ag-input__input,
-    :host([has-left-addon]) .ag-input__field .ag-input__textarea {
+    /* When left addon is present (preceded by left addon div) */
+    .ag-input__addon--left ~ .ag-input__input,
+    .ag-input__addon--left ~ .ag-input__textarea {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
 
-    :host([has-right-addon]) .ag-input__field .ag-input__input,
-    :host([has-right-addon]) .ag-input__field .ag-input__textarea {
+    /* When right addon is present */
+    .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
+    .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
@@ -331,12 +332,10 @@ export class AgInput extends LitElement implements InputProps {
 
   /**
    * v1 Parity - Addon Support
+   * REMOVED: hasLeftAddon and hasRightAddon props - now auto-detected
    */
-  @property({ type: Boolean, reflect: true, attribute: 'has-left-addon' })
-  declare hasLeftAddon: boolean;
-
-  @property({ type: Boolean, reflect: true, attribute: 'has-right-addon' })
-  declare hasRightAddon: boolean;
+  private _hasLeftAddon = false;
+  private _hasRightAddon = false;
 
   /**
    * Validation & State
@@ -396,8 +395,6 @@ export class AgInput extends LitElement implements InputProps {
     this.underlined = false;
     this.underlinedWithBackground = false;
     this.inline = false;
-    this.hasLeftAddon = false;
-    this.hasRightAddon = false;
     this.required = false;
     this.disabled = false;
     this.readonly = false;
@@ -467,9 +464,60 @@ export class AgInput extends LitElement implements InputProps {
     }
   }
 
+  /**
+   * Check if a slot has meaningful content (not just whitespace)
+   */
+  private _hasSlotContent(slot: HTMLSlotElement | null): boolean {
+    if (!slot) return false;
+    const assignedNodes = slot.assignedNodes({ flatten: true });
+    return assignedNodes.some(node => {
+      if (node.nodeType === Node.ELEMENT_NODE) return true;
+      if (node.nodeType === Node.TEXT_NODE) {
+        return node.textContent?.trim() !== '';
+      }
+      return false;
+    });
+  }
+
+  /**
+   * Handle slot changes to detect if addons are present
+   */
+  private _handleSlotChange(e: Event) {
+    const slot = e.target as HTMLSlotElement;
+    const slotName = slot.name;
+
+    if (slotName === 'addon-left') {
+      this._hasLeftAddon = this._hasSlotContent(slot);
+    } else if (slotName === 'addon-right') {
+      this._hasRightAddon = this._hasSlotContent(slot);
+    }
+
+    this.requestUpdate();
+  }
+
+  override firstUpdated() {
+    // Initial check for slot content
+    // We need to defer this check to avoid "change in update" warning
+    setTimeout(() => {
+      const leftAddonSlot = this.shadowRoot?.querySelector('slot[name="addon-left"]') as HTMLSlotElement;
+      const rightAddonSlot = this.shadowRoot?.querySelector('slot[name="addon-right"]') as HTMLSlotElement;
+
+      const hadLeftAddon = this._hasLeftAddon;
+      const hadRightAddon = this._hasRightAddon;
+
+      this._hasLeftAddon = this._hasSlotContent(leftAddonSlot);
+      this._hasRightAddon = this._hasSlotContent(rightAddonSlot);
+
+      // Only request update if something changed
+      if (hadLeftAddon !== this._hasLeftAddon || hadRightAddon !== this._hasRightAddon) {
+        this.requestUpdate();
+      }
+    }, 0);
+  }
+
   render() {
     const isTextarea = this.type === 'textarea';
-    const hasAddons = this.hasLeftAddon || this.hasRightAddon;
+    const hasAddons = this._hasLeftAddon || this._hasRightAddon;
 
     // Generate IDs for help and error text
     const helpId = `${this._inputId}-help`;
@@ -586,21 +634,29 @@ export class AgInput extends LitElement implements InputProps {
 
         ${hasAddons ? html`
           <div class="ag-input__field" part="ag-input-field-wrapper">
-            ${this.hasLeftAddon ? html`
+            ${this._hasLeftAddon ? html`
               <div class="ag-input__addon ag-input__addon--left" part="ag-input-addon-left">
-                <slot name="addon-left"></slot>
+                <slot name="addon-left" @slotchange=${this._handleSlotChange}></slot>
               </div>
-            ` : ''}
+            ` : html`
+              <slot name="addon-left" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
+            `}
 
             ${inputElement}
 
-            ${this.hasRightAddon ? html`
+            ${this._hasRightAddon ? html`
               <div class="ag-input__addon ag-input__addon--right" part="ag-input-addon-right">
-                <slot name="addon-right"></slot>
+                <slot name="addon-right" @slotchange=${this._handleSlotChange}></slot>
               </div>
-            ` : ''}
+            ` : html`
+              <slot name="addon-right" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
+            `}
           </div>
-        ` : inputElement}
+        ` : html`
+          ${inputElement}
+          <slot name="addon-left" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
+          <slot name="addon-right" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
+        `}
       </div>
     `;
   }

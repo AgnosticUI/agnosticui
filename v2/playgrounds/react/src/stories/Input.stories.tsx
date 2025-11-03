@@ -96,14 +96,6 @@ const meta: Meta<ReactInputProps> = {
       control: 'text',
       description: 'Help text to display',
     },
-    hasLeftAddon: {
-      control: 'boolean',
-      description: 'Enables left addon slot',
-    },
-    hasRightAddon: {
-      control: 'boolean',
-      description: 'Enables right addon slot',
-    },
     rows: {
       control: 'number',
       description: 'Number of rows for textarea',
@@ -1064,5 +1056,342 @@ export const CSSPartsCustomization: Story = {
         </div>
       </div>
     </>
+  ),
+};
+
+// Addon Examples - Automatic Slot Detection
+// React components for icons
+const SearchIcon = () => (
+  <svg
+    slot="addon-left"
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.35-4.35" />
+  </svg>
+);
+
+const DollarIcon = () => (
+  <span slot="addon-left" style={{ fontWeight: 'bold', color: 'var(--ag-primary)' }}>
+    $
+  </span>
+);
+
+const PercentIcon = () => (
+  <span slot="addon-right" style={{ fontWeight: 'bold', color: 'var(--ag-text-secondary)' }}>
+    %
+  </span>
+);
+
+// Left Addon - Search
+export const LeftAddonSearch: Story = {
+  render: () => (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Left Addon - Search Icon</h3>
+      <p style={{ marginBottom: '1rem', color: '#6b7280' }}>
+        Addons are automatically detected via slots - no props needed!
+      </p>
+
+      <ReactInput
+        label="Search"
+        type="search"
+        placeholder="Search for something..."
+        rounded
+      >
+        <SearchIcon />
+      </ReactInput>
+    </div>
+  ),
+};
+
+// Right Addon - Units
+export const RightAddonUnits: Story = {
+  render: () => (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Right Addon - Unit Indicator</h3>
+      <p style={{ marginBottom: '1rem', color: '#6b7280' }}>
+        Perfect for displaying units or currencies
+      </p>
+
+      <ReactInput
+        label="Discount Rate"
+        type="number"
+        placeholder="Enter discount percentage"
+        value="15"
+      >
+        <PercentIcon />
+      </ReactInput>
+    </div>
+  ),
+};
+
+// Both Addons - Currency Input
+export const BothAddonsCurrency: Story = {
+  render: () => (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Both Addons - Currency Input</h3>
+      <p style={{ marginBottom: '1rem', color: '#6b7280' }}>
+        Combine left and right addons for complex inputs
+      </p>
+
+      <ReactInput
+        label="Amount"
+        type="number"
+        placeholder="0.00"
+        helpText="Enter amount in US Dollars"
+      >
+        <DollarIcon />
+        <span slot="addon-right" style={{ fontWeight: 600, color: 'var(--ag-text-secondary)' }}>
+          USD
+        </span>
+      </ReactInput>
+    </div>
+  ),
+};
+
+// Addons with Different Sizes
+export const AddonsWithSizes: Story = {
+  render: () => (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Addons with Size Variants</h3>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1.5rem' }}>
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Small</p>
+          <ReactInput
+            label="Small Search"
+            type="search"
+            placeholder="Small"
+            size="small"
+            rounded
+          >
+            <SearchIcon />
+          </ReactInput>
+        </div>
+
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Default</p>
+          <ReactInput
+            label="Default Search"
+            type="search"
+            placeholder="Default"
+            rounded
+          >
+            <SearchIcon />
+          </ReactInput>
+        </div>
+
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Large</p>
+          <ReactInput
+            label="Large Search"
+            type="search"
+            placeholder="Large"
+            size="large"
+            rounded
+          >
+            <SearchIcon />
+          </ReactInput>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+// Addons with Styling Variants
+export const AddonsWithStyles: Story = {
+  render: () => (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Addons with Style Variants</h3>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1.5rem' }}>
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Rounded</p>
+          <ReactInput
+            label="Price"
+            type="number"
+            placeholder="0.00"
+            rounded
+          >
+            <DollarIcon />
+            <span slot="addon-right" style={{ fontWeight: 600 }}>USD</span>
+          </ReactInput>
+        </div>
+
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Capsule</p>
+          <ReactInput
+            label="Search Products"
+            type="search"
+            placeholder="Find products..."
+            capsule
+          >
+            <SearchIcon />
+          </ReactInput>
+        </div>
+
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Underlined</p>
+          <ReactInput
+            label="Discount"
+            type="number"
+            placeholder="10"
+            underlined
+          >
+            <PercentIcon />
+          </ReactInput>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+// Textarea with Addons
+export const TextareaWithAddons: Story = {
+  render: () => (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Textarea with Addons</h3>
+      <p style={{ marginBottom: '1rem', color: '#6b7280' }}>
+        Addons work with textarea type as well
+      </p>
+
+      <ReactInput
+        label="Notes"
+        type="textarea"
+        placeholder="Enter your notes..."
+        rows={6}
+        helpText="Character counter will appear on the right"
+      >
+        <svg
+          slot="addon-left"
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+        </svg>
+        <span slot="addon-right" style={{ fontSize: '0.875rem', color: 'var(--ag-text-muted)' }}>
+          0/500
+        </span>
+      </ReactInput>
+    </div>
+  ),
+};
+
+// Complex Form with Addons
+export const ComplexFormWithAddons: Story = {
+  render: () => (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Product Form with Addons</h3>
+
+      <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1.5rem' }}>
+        <ReactInput
+          label="Search Products"
+          type="search"
+          placeholder="Find products..."
+          rounded
+        >
+          <SearchIcon />
+        </ReactInput>
+
+        <ReactInput
+          label="Product Name"
+          type="text"
+          placeholder="Enter product name"
+          required
+        />
+
+        <ReactInput
+          label="Price"
+          type="number"
+          placeholder="0.00"
+          required
+          helpText="Enter the product price"
+        >
+          <DollarIcon />
+          <span slot="addon-right" style={{ fontWeight: 600 }}>USD</span>
+        </ReactInput>
+
+        <ReactInput
+          label="Discount"
+          type="number"
+          placeholder="0"
+          helpText="Optional discount percentage"
+        >
+          <PercentIcon />
+        </ReactInput>
+
+        <ReactInput
+          label="Website URL"
+          type="url"
+          placeholder="example.com"
+          rounded
+        >
+          <svg
+            slot="addon-left"
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+        </ReactInput>
+
+        <button type="submit" style={{ padding: '0.75rem 1.5rem', cursor: 'pointer', borderRadius: '6px' }}>
+          Save Product
+        </button>
+      </form>
+    </div>
+  ),
+};
+
+// Invalid State with Addons
+export const InvalidWithAddons: Story = {
+  render: () => (
+    <div style={{ padding: '50px', maxWidth: '600px' }}>
+      <h3 style={{ marginTop: 0 }}>Validation with Addons</h3>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1.5rem' }}>
+        <ReactInput
+          label="Price"
+          type="number"
+          value="abc"
+          invalid
+          errorMessage="Please enter a valid number"
+        >
+          <DollarIcon />
+          <span slot="addon-right" style={{ fontWeight: 600 }}>USD</span>
+        </ReactInput>
+
+        <ReactInput
+          label="Discount"
+          type="number"
+          value="150"
+          invalid
+          errorMessage="Discount cannot exceed 100%"
+        >
+          <PercentIcon />
+        </ReactInput>
+      </div>
+    </div>
   ),
 };

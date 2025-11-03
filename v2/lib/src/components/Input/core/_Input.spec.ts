@@ -447,14 +447,23 @@ describe('v1 Parity - Addon Support', () => {
   });
 
   describe('Left Addon Support', () => {
-    it('enables left addon when hasLeftAddon is true', async () => {
+    it('enables left addon when slot content is provided', async () => {
       const element = new AgInput();
       element.label = 'Search';
-      element.hasLeftAddon = true;
+
+      // Create and add addon content
+      const icon = document.createElement('span');
+      icon.textContent = '🔍';
+      icon.setAttribute('slot', 'addon-left');
+      element.appendChild(icon);
+
       document.body.appendChild(element);
       await element.updateComplete;
 
-      expect(element.hasAttribute('has-left-addon')).toBe(true);
+      // Wait for slotchange event to process
+      await new Promise(resolve => setTimeout(resolve, 10));
+      await element.updateComplete;
+
       const leftAddon = element.shadowRoot?.querySelector('.ag-input__addon--left');
       expect(leftAddon).toBeTruthy();
 
@@ -465,8 +474,16 @@ describe('v1 Parity - Addon Support', () => {
     it('wraps input in field container when addons present', async () => {
       const element = new AgInput();
       element.label = 'With Addon';
-      element.hasLeftAddon = true;
+
+      const icon = createSearchIcon();
+      icon.setAttribute('slot', 'addon-left');
+      element.appendChild(icon);
+
       document.body.appendChild(element);
+      await element.updateComplete;
+
+      // Wait for slotchange event to process
+      await new Promise(resolve => setTimeout(resolve, 10));
       await element.updateComplete;
 
       const fieldWrapper = element.shadowRoot?.querySelector('.ag-input__field');
@@ -477,8 +494,16 @@ describe('v1 Parity - Addon Support', () => {
     it('input receives flex: 1 for remaining space', async () => {
       const element = new AgInput();
       element.label = 'Flex Input';
-      element.hasLeftAddon = true;
+
+      const icon = createDollarIcon();
+      icon.setAttribute('slot', 'addon-left');
+      element.appendChild(icon);
+
       document.body.appendChild(element);
+      await element.updateComplete;
+
+      // Wait for slotchange event to process
+      await new Promise(resolve => setTimeout(resolve, 10));
       await element.updateComplete;
 
       const fieldWrapper = element.shadowRoot?.querySelector('.ag-input__field');
@@ -488,14 +513,21 @@ describe('v1 Parity - Addon Support', () => {
   });
 
   describe('Right Addon Support', () => {
-    it('enables right addon when hasRightAddon is true', async () => {
+    it('enables right addon when slot content is provided', async () => {
       const element = new AgInput();
       element.label = 'Amount';
-      element.hasRightAddon = true;
+
+      const dollarIcon = createDollarIcon();
+      dollarIcon.setAttribute('slot', 'addon-right');
+      element.appendChild(dollarIcon);
+
       document.body.appendChild(element);
       await element.updateComplete;
 
-      expect(element.hasAttribute('has-right-addon')).toBe(true);
+      // Wait for slotchange event to process
+      await new Promise(resolve => setTimeout(resolve, 10));
+      await element.updateComplete;
+
       const rightAddon = element.shadowRoot?.querySelector('.ag-input__addon--right');
       expect(rightAddon).toBeTruthy();
 
@@ -508,9 +540,21 @@ describe('v1 Parity - Addon Support', () => {
     it('supports both left and right addons together', async () => {
       const element = new AgInput();
       element.label = 'Currency';
-      element.hasLeftAddon = true;
-      element.hasRightAddon = true;
+
+      const leftIcon = createDollarIcon();
+      leftIcon.setAttribute('slot', 'addon-left');
+      element.appendChild(leftIcon);
+
+      const rightText = document.createElement('span');
+      rightText.textContent = 'USD';
+      rightText.setAttribute('slot', 'addon-right');
+      element.appendChild(rightText);
+
       document.body.appendChild(element);
+      await element.updateComplete;
+
+      // Wait for slotchange event to process
+      await new Promise(resolve => setTimeout(resolve, 10));
       await element.updateComplete;
 
       const leftAddon = element.shadowRoot?.querySelector('.ag-input__addon--left');
@@ -525,9 +569,20 @@ describe('v1 Parity - Addon Support', () => {
     it('maintains proper order: left addon, input, right addon', async () => {
       const element = new AgInput();
       element.label = 'Ordered Elements';
-      element.hasLeftAddon = true;
-      element.hasRightAddon = true;
+
+      const leftIcon = createSearchIcon();
+      leftIcon.setAttribute('slot', 'addon-left');
+      element.appendChild(leftIcon);
+
+      const rightIcon = createDollarIcon();
+      rightIcon.setAttribute('slot', 'addon-right');
+      element.appendChild(rightIcon);
+
       document.body.appendChild(element);
+      await element.updateComplete;
+
+      // Wait for slotchange event to process
+      await new Promise(resolve => setTimeout(resolve, 10));
       await element.updateComplete;
 
       const fieldWrapper = element.shadowRoot?.querySelector('.ag-input__field');
@@ -544,9 +599,20 @@ describe('v1 Parity - Addon Support', () => {
       const element = new AgInput();
       element.label = 'Textarea with Addons';
       element.type = 'textarea';
-      element.hasLeftAddon = true;
-      element.hasRightAddon = true;
+
+      const leftIcon = createSearchIcon();
+      leftIcon.setAttribute('slot', 'addon-left');
+      element.appendChild(leftIcon);
+
+      const rightIcon = createDollarIcon();
+      rightIcon.setAttribute('slot', 'addon-right');
+      element.appendChild(rightIcon);
+
       document.body.appendChild(element);
+      await element.updateComplete;
+
+      // Wait for slotchange event to process
+      await new Promise(resolve => setTimeout(resolve, 10));
       await element.updateComplete;
 
       const fieldWrapper = element.shadowRoot?.querySelector('.ag-input__field');
@@ -564,9 +630,20 @@ describe('v1 Parity - Addon Support', () => {
       element.label = 'Combined Features';
       element.size = 'large';
       element.rounded = true;
-      element.hasLeftAddon = true;
-      element.hasRightAddon = true;
+
+      const leftIcon = createSearchIcon();
+      leftIcon.setAttribute('slot', 'addon-left');
+      element.appendChild(leftIcon);
+
+      const rightIcon = createDollarIcon();
+      rightIcon.setAttribute('slot', 'addon-right');
+      element.appendChild(rightIcon);
+
       document.body.appendChild(element);
+      await element.updateComplete;
+
+      // Wait for slotchange event to process
+      await new Promise(resolve => setTimeout(resolve, 10));
       await element.updateComplete;
 
       const wrapper = element.shadowRoot?.querySelector('.ag-input');
@@ -796,11 +873,23 @@ describe('Validation & Error Handling (BBC GEL)', () => {
     it('works with addon layout', async () => {
       const element = new AgInput();
       element.label = 'Amount';
-      element.hasLeftAddon = true;
-      element.hasRightAddon = true;
       element.required = true;
       element.helpText = 'Enter amount in USD';
+
+      const leftIcon = createDollarIcon();
+      leftIcon.setAttribute('slot', 'addon-left');
+      element.appendChild(leftIcon);
+
+      const rightText = document.createElement('span');
+      rightText.textContent = 'USD';
+      rightText.setAttribute('slot', 'addon-right');
+      element.appendChild(rightText);
+
       document.body.appendChild(element);
+      await element.updateComplete;
+
+      // Wait for slotchange event to process
+      await new Promise(resolve => setTimeout(resolve, 10));
       await element.updateComplete;
 
       const fieldWrapper = element.shadowRoot?.querySelector('.ag-input__field');
@@ -1140,6 +1229,23 @@ describe('AgnosticUI v2 Event Conventions', () => {
     });
   });
 });
+
+// Helper functions for creating addon content in tests
+const createSearchIcon = () => {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('width', '16');
+  svg.setAttribute('height', '16');
+  svg.innerHTML = '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>';
+  return svg;
+};
+
+const createDollarIcon = () => {
+  const span = document.createElement('span');
+  span.textContent = '$';
+  span.style.fontWeight = 'bold';
+  return span;
+};
 
 // TODO: Next blocks to implement incrementally:
 // - HTML5 Input Attributes

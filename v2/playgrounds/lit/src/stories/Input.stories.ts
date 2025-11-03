@@ -85,14 +85,6 @@ const meta: Meta<InputProps> = {
       control: "boolean",
       description: "Inline display mode",
     },
-    hasLeftAddon: {
-      control: "boolean",
-      description: "Enables left addon slot",
-    },
-    hasRightAddon: {
-      control: "boolean",
-      description: "Enables right addon slot",
-    },
     required: {
       control: "boolean",
       description: "Makes the input required",
@@ -133,8 +125,6 @@ const meta: Meta<InputProps> = {
     underlined: false,
     underlinedWithBackground: false,
     inline: false,
-    hasLeftAddon: false,
-    hasRightAddon: false,
     required: false,
     disabled: false,
     readonly: false,
@@ -178,8 +168,6 @@ export const Default: Story = {
     underlined,
     underlinedWithBackground,
     inline,
-    hasLeftAddon,
-    hasRightAddon,
     required,
     disabled,
     readonly,
@@ -207,8 +195,6 @@ export const Default: Story = {
         .underlined=${underlined}
         .underlinedWithBackground=${underlinedWithBackground}
         .inline=${inline}
-        .hasLeftAddon=${hasLeftAddon}
-        .hasRightAddon=${hasRightAddon}
         .required=${required}
         .disabled=${disabled}
         .readonly=${readonly}
@@ -1395,6 +1381,343 @@ export const CSSPartsCustomization: Story = {
             .helpText=${"Monospace font with dashed border"}
           ></ag-input>
         </div>
+      </div>
+    </div>
+  `,
+};
+
+// Addon Examples - Automatic Slot Detection
+// Helper to create SVG icons
+const createSearchIcon = () => html`
+  <svg
+    slot="addon-left"
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.35-4.35" />
+  </svg>
+`;
+
+const createDollarIcon = () => html`
+  <span slot="addon-left" style="font-weight: bold; color: var(--ag-primary);">
+    $
+  </span>
+`;
+
+const createPercentIcon = () => html`
+  <span slot="addon-right" style="font-weight: bold; color: var(--ag-text-secondary);">
+    %
+  </span>
+`;
+
+// Left Addon - Search
+export const LeftAddonSearch: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h3 style="margin-top: 0;">Left Addon - Search Icon</h3>
+      <p style="margin-bottom: 1rem; color: #6b7280;">
+        Addons are automatically detected via slots - no props needed!
+      </p>
+
+      <ag-input
+        .label=${"Search"}
+        .type=${"search"}
+        .placeholder=${"Search for something..."}
+        .rounded=${true}
+      >
+        ${createSearchIcon()}
+      </ag-input>
+    </div>
+  `,
+};
+
+// Right Addon - Units
+export const RightAddonUnits: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h3 style="margin-top: 0;">Right Addon - Unit Indicator</h3>
+      <p style="margin-bottom: 1rem; color: #6b7280;">
+        Perfect for displaying units or currencies
+      </p>
+
+      <ag-input
+        .label=${"Discount Rate"}
+        .type=${"number"}
+        .placeholder=${"Enter discount percentage"}
+        .value=${"15"}
+      >
+        ${createPercentIcon()}
+      </ag-input>
+    </div>
+  `,
+};
+
+// Both Addons - Currency Input
+export const BothAddonsCurrency: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h3 style="margin-top: 0;">Both Addons - Currency Input</h3>
+      <p style="margin-bottom: 1rem; color: #6b7280;">
+        Combine left and right addons for complex inputs
+      </p>
+
+      <ag-input
+        .label=${"Amount"}
+        .type=${"number"}
+        .placeholder=${"0.00"}
+        .helpText=${"Enter amount in US Dollars"}
+      >
+        ${createDollarIcon()}
+        <span slot="addon-right" style="font-weight: 600; color: var(--ag-text-secondary);">
+          USD
+        </span>
+      </ag-input>
+    </div>
+  `,
+};
+
+// Addons with Different Sizes
+export const AddonsWithSizes: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h3 style="margin-top: 0;">Addons with Size Variants</h3>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
+        <div>
+          <p style="margin-bottom: 0.5rem; font-weight: bold;">Small</p>
+          <ag-input
+            .label=${"Small Search"}
+            .type=${"search"}
+            .placeholder=${"Small"}
+            .size=${"small"}
+            .rounded=${true}
+          >
+            ${createSearchIcon()}
+          </ag-input>
+        </div>
+
+        <div>
+          <p style="margin-bottom: 0.5rem; font-weight: bold;">Default</p>
+          <ag-input
+            .label=${"Default Search"}
+            .type=${"search"}
+            .placeholder=${"Default"}
+            .rounded=${true}
+          >
+            ${createSearchIcon()}
+          </ag-input>
+        </div>
+
+        <div>
+          <p style="margin-bottom: 0.5rem; font-weight: bold;">Large</p>
+          <ag-input
+            .label=${"Large Search"}
+            .type=${"search"}
+            .placeholder=${"Large"}
+            .size=${"large"}
+            .rounded=${true}
+          >
+            ${createSearchIcon()}
+          </ag-input>
+        </div>
+      </div>
+    </div>
+  `,
+};
+
+// Addons with Styling Variants
+export const AddonsWithStyles: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h3 style="margin-top: 0;">Addons with Style Variants</h3>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
+        <div>
+          <p style="margin-bottom: 0.5rem; font-weight: bold;">Rounded</p>
+          <ag-input
+            .label=${"Price"}
+            .type=${"number"}
+            .placeholder=${"0.00"}
+            .rounded=${true}
+          >
+            ${createDollarIcon()}
+            <span slot="addon-right" style="font-weight: 600;">USD</span>
+          </ag-input>
+        </div>
+
+        <div>
+          <p style="margin-bottom: 0.5rem; font-weight: bold;">Capsule</p>
+          <ag-input
+            .label=${"Search Products"}
+            .type=${"search"}
+            .placeholder=${"Find products..."}
+            .capsule=${true}
+          >
+            ${createSearchIcon()}
+          </ag-input>
+        </div>
+
+        <div>
+          <p style="margin-bottom: 0.5rem; font-weight: bold;">Underlined</p>
+          <ag-input
+            .label=${"Discount"}
+            .type=${"number"}
+            .placeholder=${"10"}
+            .underlined=${true}
+          >
+            ${createPercentIcon()}
+          </ag-input>
+        </div>
+      </div>
+    </div>
+  `,
+};
+
+// Textarea with Addons
+export const TextareaWithAddons: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h3 style="margin-top: 0;">Textarea with Addons</h3>
+      <p style="margin-bottom: 1rem; color: #6b7280;">
+        Addons work with textarea type as well
+      </p>
+
+      <ag-input
+        .label=${"Notes"}
+        .type=${"textarea"}
+        .placeholder=${"Enter your notes..."}
+        .rows=${6}
+        .helpText=${"Character counter will appear on the right"}
+      >
+        <svg
+          slot="addon-left"
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+        </svg>
+        <span slot="addon-right" style="font-size: 0.875rem; color: var(--ag-text-muted);">
+          0/500
+        </span>
+      </ag-input>
+    </div>
+  `,
+};
+
+// Complex Form with Addons
+export const ComplexFormWithAddons: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h3 style="margin-top: 0;">Product Form with Addons</h3>
+
+      <form style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
+        <ag-input
+          .label=${"Search Products"}
+          .type=${"search"}
+          .placeholder=${"Find products..."}
+          .rounded=${true}
+        >
+          ${createSearchIcon()}
+        </ag-input>
+
+        <ag-input
+          .label=${"Product Name"}
+          .type=${"text"}
+          .placeholder=${"Enter product name"}
+          .required=${true}
+        ></ag-input>
+
+        <ag-input
+          .label=${"Price"}
+          .type=${"number"}
+          .placeholder=${"0.00"}
+          .required=${true}
+          .helpText=${"Enter the product price"}
+        >
+          ${createDollarIcon()}
+          <span slot="addon-right" style="font-weight: 600;">USD</span>
+        </ag-input>
+
+        <ag-input
+          .label=${"Discount"}
+          .type=${"number"}
+          .placeholder=${"0"}
+          .helpText=${"Optional discount percentage"}
+        >
+          ${createPercentIcon()}
+        </ag-input>
+
+        <ag-input
+          .label=${"Website URL"}
+          .type=${"url"}
+          .placeholder=${"example.com"}
+          .rounded=${true}
+        >
+          <svg
+            slot="addon-left"
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+        </ag-input>
+
+        <button type="submit" style="padding: 0.75rem 1.5rem; cursor: pointer; border-radius: 6px;">
+          Save Product
+        </button>
+      </form>
+    </div>
+  `,
+};
+
+// Invalid State with Addons
+export const InvalidWithAddons: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h3 style="margin-top: 0;">Validation with Addons</h3>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
+        <ag-input
+          .label=${"Price"}
+          .type=${"number"}
+          .value=${"abc"}
+          .invalid=${true}
+          .errorMessage=${"Please enter a valid number"}
+        >
+          ${createDollarIcon()}
+          <span slot="addon-right" style="font-weight: 600;">USD</span>
+        </ag-input>
+
+        <ag-input
+          .label=${"Discount"}
+          .type=${"number"}
+          .value=${"150"}
+          .invalid=${true}
+          .errorMessage=${"Discount cannot exceed 100%"}
+        >
+          ${createPercentIcon()}
+        </ag-input>
       </div>
     </div>
   `,
