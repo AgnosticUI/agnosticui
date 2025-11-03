@@ -1079,6 +1079,25 @@ const SearchIcon = () => (
   </svg>
 );
 
+const SearchIconRight = () => (
+  <svg
+    slot="addon-right"
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.35-4.35" />
+  </svg>
+);
+
+
 const DollarIcon = () => (
   <span slot="addon-left" style={{ fontWeight: 'bold', color: 'var(--ag-primary)' }}>
     $
@@ -1234,7 +1253,7 @@ export const AddonsWithStyles: Story = {
             placeholder="Find products..."
             capsule
           >
-            <SearchIcon />
+          <SearchIconRight />
           </ReactInput>
         </div>
 
@@ -1318,6 +1337,7 @@ export const ComplexFormWithAddons: Story = {
           label="Price"
           type="number"
           placeholder="0.00"
+          rounded
           required
           helpText="Enter the product price"
         >
