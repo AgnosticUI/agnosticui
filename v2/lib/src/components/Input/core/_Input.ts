@@ -239,6 +239,66 @@ export class AgInput extends LitElement implements InputProps {
       flex: 1;
     }
 
+    /* Capsule variant with addons */
+    :host([capsule]) .ag-input__addon--left {
+      border-radius: var(--ag-radius-full) 0 0 var(--ag-radius-full);
+    }
+
+    :host([capsule]) .ag-input__addon--right {
+      border-radius: 0 var(--ag-radius-full) var(--ag-radius-full) 0;
+    }
+
+    /* Remove border on INPUT where it meets the addon for capsule */
+    :host([capsule]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
+    :host([capsule]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
+      border-left: 0;
+    }
+
+    :host([capsule]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
+    :host([capsule]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
+      border-right: 0;
+    }
+
+    /* Underlined variant with addons */
+    :host([underlined]) .ag-input__addon,
+    :host([underlined-with-background]) .ag-input__addon {
+      border-top: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    :host([underlined]) .ag-input__addon--left,
+    :host([underlined-with-background]) .ag-input__addon--left {
+      border-left: 0;
+      border-right: 0;
+    }
+
+    :host([underlined]) .ag-input__addon--right,
+    :host([underlined-with-background]) .ag-input__addon--right {
+      border-right: 0;
+      border-left: 0;
+    }
+
+    /* Remove border on INPUT where it meets the addon for underlined */
+    :host([underlined]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
+    :host([underlined]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea,
+    :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
+    :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
+      border-left: 0;
+    }
+
+    :host([underlined]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
+    :host([underlined]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea,
+    :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
+    :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
+      border-right: 0;
+    }
+
+    /* Underlined with background variant - add background to addon */
+    :host([underlined-with-background]) .ag-input__addon {
+      background-color: var(--ag-background-secondary);
+    }
+
     /* Help & Error Text */
     .ag-input__help,
     .ag-input__error {

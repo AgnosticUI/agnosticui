@@ -1110,6 +1110,11 @@ const PercentIcon = () => (
   </span>
 );
 
+const PercentIconLeft = () => (
+  <span slot="addon-left" style={{ fontWeight: 'bold', color: 'var(--ag-text-secondary)' }}>
+    %
+  </span>
+);
 // Left Addon - Search
 export const LeftAddonSearch: Story = {
   render: () => (
@@ -1253,10 +1258,31 @@ export const AddonsWithStyles: Story = {
             placeholder="Find products..."
             capsule
           >
+          <SearchIcon />
+          </ReactInput>
+        </div>
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Capsule</p>
+          <ReactInput
+            label="Search Products"
+            type="search"
+            placeholder="Find products..."
+            capsule
+          >
           <SearchIconRight />
           </ReactInput>
         </div>
-
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Underlined</p>
+          <ReactInput
+            label="Discount"
+            type="number"
+            placeholder="10"
+            underlined
+          >
+            <PercentIconLeft />
+          </ReactInput>
+        </div>
         <div>
           <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>Underlined</p>
           <ReactInput
