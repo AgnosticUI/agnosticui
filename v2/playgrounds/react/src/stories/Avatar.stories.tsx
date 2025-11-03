@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ReactAvatar, type ReactAvatarProps } from 'agnosticui-core/avatar/react';
+import { ReactAvatar, ReactAvatarGroup, type ReactAvatarProps } from 'agnosticui-core/avatar/react';
 
 const meta: Meta<ReactAvatarProps> = {
   title: 'AgnosticUI React/Avatar',
@@ -131,6 +131,157 @@ export const WithIcon: Story = {
       </ReactAvatar>
     </div>
   ),
+};
+
+const AvatarGroupStyles = `
+  ag-avatar-group ag-avatar::part(ag-avatar) {
+    border: 2px solid white;
+  }
+`;
+
+export const AvatarGroup: Story = {
+  render: () => {
+    return (
+      <>
+        <style>{AvatarGroupStyles}</style>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div>
+            <h4 style={{ marginBottom: '1rem' }}>Text Avatars</h4>
+            <ReactAvatarGroup>
+              <ReactAvatar text="AB" variant="info" size="lg" />
+              <ReactAvatar text="CD" variant="info" size="lg" />
+              <ReactAvatar text="EF" variant="info" size="lg" />
+              <ReactAvatar text="GH" variant="info" size="lg" />
+            </ReactAvatarGroup>
+          </div>
+
+          <div>
+            <h4 style={{ marginBottom: '1rem' }}>Mixed Content</h4>
+            <ReactAvatarGroup>
+              <ReactAvatar text="AB" variant="info" size="lg" />
+              <ReactAvatar text="RL" variant="info" size="lg" />
+              <ReactAvatar size="lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    fillRule="evenodd"
+                    d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+                  />
+                </svg>
+              </ReactAvatar>
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=10" imgAlt="User 1" size="lg" />
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=11" imgAlt="User 2" size="lg" />
+            </ReactAvatarGroup>
+          </div>
+
+          <div>
+            <h4 style={{ marginBottom: '1rem' }}>Images</h4>
+            <ReactAvatarGroup>
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=1" imgAlt="User 1" size="lg" />
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=2" imgAlt="User 2" size="lg" />
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=3" imgAlt="User 3" size="lg" />
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=4" imgAlt="User 4" size="lg" />
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=5" imgAlt="User 5" size="lg" />
+            </ReactAvatarGroup>
+          </div>
+
+          <div>
+            <h4 style={{ marginBottom: '1rem' }}>Different Sizes</h4>
+            <ReactAvatarGroup>
+              <ReactAvatar text="SM" size="sm" />
+              <ReactAvatar text="SM" size="sm" />
+              <ReactAvatar text="SM" size="sm" />
+            </ReactAvatarGroup>
+            <br />
+            <ReactAvatarGroup>
+              <ReactAvatar text="MD" size="md" />
+              <ReactAvatar text="MD" size="md" />
+              <ReactAvatar text="MD" size="md" />
+            </ReactAvatarGroup>
+            <br />
+            <ReactAvatarGroup>
+              <ReactAvatar text="XL" size="xl" />
+              <ReactAvatar text="XL" size="xl" />
+              <ReactAvatar text="XL" size="xl" />
+            </ReactAvatarGroup>
+          </div>
+
+          <div>
+            <h4 style={{ marginBottom: '1rem' }}>With Variants</h4>
+            <ReactAvatarGroup>
+              <ReactAvatar text="DF" variant="default" size="lg" />
+              <ReactAvatar text="IN" variant="info" size="lg" />
+              <ReactAvatar text="WN" variant="warning" size="lg" />
+              <ReactAvatar text="SC" variant="success" size="lg" />
+              <ReactAvatar text="ER" variant="error" size="lg" />
+            </ReactAvatarGroup>
+          </div>
+        </div>
+      </>
+    );
+  },
+};
+
+const CustomGroupStyles = `
+  ag-avatar-group ag-avatar::part(ag-avatar) {
+    border: 2px solid white;
+  }
+
+  .custom-avatar-group::part(ag-avatar-group) {
+    gap: 0.5rem;
+  }
+
+  .custom-avatar-group ag-avatar::part(ag-avatar) {
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-avatar-group ag-avatar:not(:first-child) {
+    margin-inline-start: 0;
+  }
+
+  .stacked-group ag-avatar::part(ag-avatar) {
+    border: 3px solid #10b981;
+  }
+
+  .stacked-group ag-avatar {
+    transition: all 0.3s ease;
+  }
+
+  .stacked-group ag-avatar:hover {
+    transform: translateY(-8px) scale(1.1);
+    z-index: 100 !important;
+  }
+`;
+
+export const AvatarGroupCustomStyling: Story = {
+  render: () => {
+    return (
+      <>
+        <style>{CustomGroupStyles}</style>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', padding: '2rem' }}>
+          <div>
+            <h4 style={{ marginBottom: '1rem' }}>Custom Spacing (No Overlap)</h4>
+            <ReactAvatarGroup className="custom-avatar-group">
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=20" imgAlt="User 1" size="lg" />
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=21" imgAlt="User 2" size="lg" />
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=22" imgAlt="User 3" size="lg" />
+              <ReactAvatar imgSrc="https://i.pravatar.cc/150?img=23" imgAlt="User 4" size="lg" />
+            </ReactAvatarGroup>
+          </div>
+
+          <div>
+            <h4 style={{ marginBottom: '1rem' }}>Enhanced Hover Effects</h4>
+            <ReactAvatarGroup className="stacked-group">
+              <ReactAvatar text="AB" variant="info" size="lg" />
+              <ReactAvatar text="CD" variant="success" size="lg" />
+              <ReactAvatar text="EF" variant="warning" size="lg" />
+              <ReactAvatar text="GH" variant="error" size="lg" />
+            </ReactAvatarGroup>
+          </div>
+        </div>
+      </>
+    );
+  },
 };
 
 export const CustomizedWithCSSParts: Story = {
