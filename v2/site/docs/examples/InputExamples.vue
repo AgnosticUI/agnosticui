@@ -161,14 +161,16 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Addons</h3>
+      <h3>With Addons (Automatic Detection)</h3>
+      <p style="margin-top: 0.5rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
+        Addons are automatically detected when you provide slot content - no props needed!
+      </p>
     </div>
     <div class="stacked mbe4">
       <VueInput
         v-model:value="addonLeft"
         label="Website URL"
         placeholder="example.com"
-        :has-left-addon="true"
         class="mbe2"
       >
         <template #addon-left>
@@ -183,7 +185,6 @@
         v-model:value="addonRight"
         label="Price"
         placeholder="0.00"
-        :has-right-addon="true"
         class="mbe2"
       >
         <template #addon-right>
@@ -198,8 +199,6 @@
         v-model:value="addonBoth"
         label="Amount"
         placeholder="100"
-        :has-left-addon="true"
-        :has-right-addon="true"
         class="mbe2"
       >
         <template #addon-left>
@@ -210,6 +209,44 @@
         </template>
         <template #addon-right>
           <span>.00</span>
+        </template>
+      </VueInput>
+
+      <VueInput
+        v-model:value="addonPercent"
+        label="Discount"
+        type="number"
+        placeholder="10"
+        class="mbe2"
+      >
+        <template #addon-right>
+          <span style="font-weight: bold;">%</span>
+        </template>
+      </VueInput>
+
+      <VueInput
+        v-model:value="addonSearch"
+        label="Search Products"
+        type="search"
+        placeholder="Find products..."
+        :rounded="true"
+        class="mbe2"
+      >
+        <template #addon-left>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
         </template>
       </VueInput>
     </div>
@@ -406,6 +443,8 @@ export default {
       addonLeft: "",
       addonRight: "",
       addonBoth: "",
+      addonPercent: "",
+      addonSearch: "",
 
       // Custom styles
       customGradient: "",
