@@ -206,7 +206,7 @@ export class AgInput extends LitElement implements InputProps {
       font-size: var(--ag-font-size-base);
       line-height: var(--ag-line-height-base);
       color: var(--ag-text-primary);
-      background-color: var(--ag-background-secondary);
+      /* background-color: var(--ag-background-secondary); */
       border: 1px solid var(--ag-border-subtle);
     }
 
@@ -220,9 +220,9 @@ export class AgInput extends LitElement implements InputProps {
       border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
     }
 
-    /* When left addon is present (preceded by left addon div) */
-    .ag-input__addon--left ~ .ag-input__input,
-    .ag-input__addon--left ~ .ag-input__textarea {
+    /* When left addon is present */
+    .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
+    .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
