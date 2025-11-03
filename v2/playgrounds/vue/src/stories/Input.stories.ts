@@ -74,14 +74,6 @@ const meta = {
       options: ['small', 'default', 'large'],
       description: 'Size of the input',
     },
-    hasLeftAddon: {
-      control: 'boolean',
-      description: 'Enables left addon slot',
-    },
-    hasRightAddon: {
-      control: 'boolean',
-      description: 'Enables right addon slot',
-    },
     required: {
       control: 'boolean',
       description: 'Makes the input required',
@@ -122,8 +114,6 @@ const meta = {
     underlined: false,
     underlinedWithBackground: false,
     inline: false,
-    hasLeftAddon: false,
-    hasRightAddon: false,
     required: false,
     disabled: false,
     readonly: false,
@@ -792,6 +782,215 @@ export const CSSPartsCustomization: Story = {
               help-text="Monospace font with dashed border"
             />
           </div>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// Addon Examples - Automatic Slot Detection
+// Left Addon - Search
+export const LeftAddonSearch: Story = {
+  render: () => ({
+    components: { VueInput },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Left Addon - Search Icon</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Addons are automatically detected via slots - no props needed!
+        </p>
+
+        <VueInput
+          label="Search"
+          type="search"
+          placeholder="Search for something..."
+          :rounded="true"
+        >
+          <template #addon-left>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </template>
+        </VueInput>
+      </div>
+    `,
+  }),
+};
+
+// Right Addon - Units
+export const RightAddonUnits: Story = {
+  render: () => ({
+    components: { VueInput },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Right Addon - Unit Indicator</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Perfect for displaying units or currencies
+        </p>
+
+        <VueInput
+          label="Discount Rate"
+          type="number"
+          placeholder="Enter discount percentage"
+          value="15"
+        >
+          <template #addon-right>
+            <span style="font-weight: bold; color: var(--ag-text-secondary);">%</span>
+          </template>
+        </VueInput>
+      </div>
+    `,
+  }),
+};
+
+// Both Addons - Currency Input
+export const BothAddonsCurrency: Story = {
+  render: () => ({
+    components: { VueInput },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Both Addons - Currency Input</h3>
+        <p style="margin-bottom: 1rem; color: #6b7280;">
+          Combine left and right addons for complex inputs
+        </p>
+
+        <VueInput
+          label="Amount"
+          type="number"
+          placeholder="0.00"
+          helpText="Enter amount in US Dollars"
+        >
+          <template #addon-left>
+            <span style="font-weight: bold; color: var(--ag-primary);">$</span>
+          </template>
+          <template #addon-right>
+            <span style="font-weight: 600; color: var(--ag-text-secondary);">USD</span>
+          </template>
+        </VueInput>
+      </div>
+    `,
+  }),
+};
+
+// Complex Form with Addons
+export const ComplexFormWithAddons: Story = {
+  render: () => ({
+    components: { VueInput },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Product Form with Addons</h3>
+
+        <form style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
+          <VueInput
+            label="Search Products"
+            type="search"
+            placeholder="Find products..."
+            :rounded="true"
+          >
+            <template #addon-left>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </template>
+          </VueInput>
+
+          <VueInput
+            label="Product Name"
+            type="text"
+            placeholder="Enter product name"
+            :required="true"
+          />
+
+          <VueInput
+            label="Price"
+            type="number"
+            placeholder="0.00"
+            :required="true"
+            helpText="Enter the product price"
+          >
+            <template #addon-left>
+              <span style="font-weight: bold;">$</span>
+            </template>
+            <template #addon-right>
+              <span style="font-weight: 600;">USD</span>
+            </template>
+          </VueInput>
+
+          <VueInput
+            label="Discount"
+            type="number"
+            placeholder="0"
+            helpText="Optional discount percentage"
+          >
+            <template #addon-right>
+              <span style="font-weight: bold;">%</span>
+            </template>
+          </VueInput>
+
+          <button type="submit" style="padding: 0.75rem 1.5rem; cursor: pointer; border-radius: 6px;">
+            Save Product
+          </button>
+        </form>
+      </div>
+    `,
+  }),
+};
+
+// Invalid State with Addons
+export const InvalidWithAddons: Story = {
+  render: () => ({
+    components: { VueInput },
+    template: `
+      <div style="padding: 50px; max-width: 600px;">
+        <h3 style="margin-top: 0;">Validation with Addons</h3>
+
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
+          <VueInput
+            label="Price"
+            type="number"
+            value="abc"
+            :invalid="true"
+            errorMessage="Please enter a valid number"
+          >
+            <template #addon-left>
+              <span style="font-weight: bold;">$</span>
+            </template>
+            <template #addon-right>
+              <span style="font-weight: 600;">USD</span>
+            </template>
+          </VueInput>
+
+          <VueInput
+            label="Discount"
+            type="number"
+            value="150"
+            :invalid="true"
+            errorMessage="Discount cannot exceed 100%"
+          >
+            <template #addon-right>
+              <span style="font-weight: bold;">%</span>
+            </template>
+          </VueInput>
         </div>
       </div>
     `,

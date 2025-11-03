@@ -33,8 +33,6 @@ const props = withDefaults(defineProps<VueInputProps>(), {
   underlined: false,
   underlinedWithBackground: false,
   inline: false,
-  hasLeftAddon: false,
-  hasRightAddon: false,
   required: false,
   disabled: false,
   readonly: false,
@@ -114,8 +112,6 @@ watch(
     :underlinedWithBackground="underlinedWithBackground || undefined"
     :inline="inline || undefined"
     :capsule="capsule || undefined"
-    :hasLeftAddon="hasLeftAddon || undefined"
-    :hasRightAddon="hasRightAddon || undefined"
     :rows="type === 'textarea' && rows !== 4 ? rows : undefined"
     :cols="type === 'textarea' && cols !== 50 ? cols : undefined"
     @click="handleClick"
