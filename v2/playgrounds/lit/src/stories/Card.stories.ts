@@ -7,11 +7,6 @@ const meta: Meta<CardProps> = {
   title: "AgnosticUI Lit/Card",
   component: "ag-card",
   argTypes: {
-    skinned: {
-      control: "boolean",
-      description: "Applies background color and border",
-      defaultValue: true,
-    },
     stacked: {
       control: "boolean",
       description:
@@ -43,7 +38,6 @@ const meta: Meta<CardProps> = {
     },
   },
   args: {
-    skinned: true,
     stacked: false,
     shadow: false,
     animated: false,
@@ -58,7 +52,6 @@ type Story = StoryObj<CardProps>;
 export const Default: Story = {
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -71,24 +64,6 @@ export const Default: Story = {
   `,
 };
 
-export const Unskinned: Story = {
-  args: {
-    skinned: false,
-  },
-  render: (args) => html`
-    <ag-card
-      .skinned=${args.skinned}
-      .stacked=${args.stacked}
-      .shadow=${args.shadow}
-      .animated=${args.animated}
-      rounded=${args.rounded || ""}
-      .variant=${args.variant}
-    >
-      <h3>Unskinned Card</h3>
-      <p>No background or border applied.</p>
-    </ag-card>
-  `,
-};
 
 export const Shadow: Story = {
   args: {
@@ -96,7 +71,6 @@ export const Shadow: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -116,7 +90,6 @@ export const Animated: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -139,7 +112,6 @@ export const Rounded: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -158,7 +130,6 @@ export const Stacked: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -179,7 +150,6 @@ export const SuccessVariant: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -198,7 +168,6 @@ export const InfoVariant: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -217,7 +186,6 @@ export const ErrorVariant: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -236,7 +204,6 @@ export const WarningVariant: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -259,7 +226,6 @@ export const WithSlots: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -300,7 +266,6 @@ export const ClickableCard: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -329,7 +294,6 @@ export const WithSecondaryActions: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -378,7 +342,6 @@ export const CombinedFeatures: Story = {
   },
   render: (args) => html`
     <ag-card
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}
@@ -462,7 +425,6 @@ export const Customization: Story = {
     </style>
     <ag-card
       class="custom-card"
-      .skinned=${args.skinned}
       .stacked=${args.stacked}
       .shadow=${args.shadow}
       .animated=${args.animated}

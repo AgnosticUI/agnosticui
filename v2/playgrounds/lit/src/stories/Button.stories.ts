@@ -197,7 +197,6 @@ export const Danger: Story = {
 // Size Stories
 export const ExtraSmall: Story = {
   args: {
-    variant: "primary",
     size: "x-sm",
   },
   render: ({ variant, size }) =>

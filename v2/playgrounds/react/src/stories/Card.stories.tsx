@@ -6,11 +6,6 @@ const meta: Meta<typeof ReactCard> = {
   title: 'AgnosticUI React/Card',
   component: ReactCard,
   argTypes: {
-    skinned: {
-      control: 'boolean',
-      description: 'Applies background color and border',
-      defaultValue: true,
-    },
     stacked: {
       control: 'boolean',
       description: 'Applies vertical stacking with margin between slotted children',
@@ -40,7 +35,6 @@ const meta: Meta<typeof ReactCard> = {
     },
   },
   args: {
-    skinned: true,
     stacked: false,
     shadow: false,
     animated: false,
@@ -57,18 +51,6 @@ export const Default: Story = {
     <ReactCard {...args}>
       <h3>Card Title</h3>
       <p>This is a basic card with default styling.</p>
-    </ReactCard>
-  ),
-};
-
-export const Unskinned: Story = {
-  args: {
-    skinned: false,
-  },
-  render: (args) => (
-    <ReactCard {...args}>
-      <h3>Unskinned Card</h3>
-      <p>No background or border applied.</p>
     </ReactCard>
   ),
 };

@@ -5,7 +5,6 @@ export type CardVariant = 'success' | 'info' | 'error' | 'warning' | '';
 export type CardRounded = 'sm' | 'md' | 'lg' | '';
 
 export interface CardProps {
-  skinned?: boolean;
   stacked?: boolean;
   shadow?: boolean;
   animated?: boolean;
@@ -15,7 +14,6 @@ export interface CardProps {
 
 @customElement('ag-card')
 export class Card extends LitElement implements CardProps {
-  @property({ type: Boolean, reflect: true }) skinned = true;
   @property({ type: Boolean, reflect: true }) stacked = false;
   @property({ type: Boolean, reflect: true }) shadow = false;
   @property({ type: Boolean, reflect: true }) animated = false;
@@ -74,9 +72,6 @@ export class Card extends LitElement implements CardProps {
       width: 100%;
       /* Use the global token directly for padding */
       --card-padding: var(--ag-space-8);
-    }
-
-    :host([skinned]) {
       background-color: var(--ag-background-primary);
       border: var(--ag-border-width-1) solid var(--ag-border);
     }

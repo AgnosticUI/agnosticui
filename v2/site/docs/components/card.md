@@ -13,6 +13,7 @@ import CardExamples from '../examples/CardExamples.vue'
 ## Usage
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -48,29 +49,25 @@ import CardExamples from '../examples/CardExamples.vue'
         <button>Action</button>
       </template>
     </VueCard>
-
-    <!-- Unskinned Card (no background/border) -->
-    <VueCard :is-skinned="false">
-      <h3>Layout Card</h3>
-      <p>Used for layout without visual styling.</p>
-    </VueCard>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { VueCard } from 'agnosticui-core/card/vue';
+import { defineComponent } from "vue";
+import { VueCard } from "agnosticui-core/card/vue";
 
 export default defineComponent({
-  components: { VueCard }
+  components: { VueCard },
 });
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactCard } from 'agnosticui-core/card/react';
+import { ReactCard } from "agnosticui-core/card/react";
 
 export default function CardExamples() {
   return (
@@ -95,7 +92,9 @@ export default function CardExamples() {
 
       {/* Card with Slots */}
       <ReactCard isShadow={true}>
-        <h4 slot="header" style={{ margin: 0 }}>Header Slot</h4>
+        <h4 slot="header" style={{ margin: 0 }}>
+          Header Slot
+        </h4>
 
         <div>
           <p>Main content goes here.</p>
@@ -103,22 +102,18 @@ export default function CardExamples() {
 
         <button slot="footer">Action</button>
       </ReactCard>
-
-      {/* Unskinned Card */}
-      <ReactCard isSkinned={false}>
-        <h3>Layout Card</h3>
-        <p>Used for layout without visual styling.</p>
-      </ReactCard>
     </section>
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
-  import 'agnosticui-core/card';
+  import "agnosticui-core/card";
 </script>
 
 <!-- Basic Card -->
@@ -149,44 +144,38 @@ export default function CardExamples() {
 
   <button slot="footer">Action</button>
 </ag-card>
-
-<!-- Unskinned Card -->
-<ag-card isskinned="false">
-  <h3>Layout Card</h3>
-  <p>Used for layout without visual styling.</p>
-</ag-card>
 ```
+
 :::
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `isSkinned` | `boolean` | `true` | Applies background color and border. Set to `false` for layout-only cards |
-| `isStacked` | `boolean` | `false` | Applies vertical spacing between slotted children |
-| `isShadow` | `boolean` | `false` | Adds box-shadow with enhanced hover effect |
-| `isAnimated` | `boolean` | `false` | Enables smooth transitions on hover (translateY + shadow) |
-| `isRounded` | `boolean` | `false` | Applies border-radius to corners |
-| `variant` | `'success' \| 'info' \| 'error' \| 'warning' \| ''` | `''` | Color variant for semantic meaning |
+| Prop         | Type                                                | Default | Description                                               |
+| ------------ | --------------------------------------------------- | ------- | --------------------------------------------------------- |
+| `isStacked`  | `boolean`                                           | `false` | Applies vertical spacing between slotted children         |
+| `isShadow`   | `boolean`                                           | `false` | Adds box-shadow with enhanced hover effect                |
+| `isAnimated` | `boolean`                                           | `false` | Enables smooth transitions on hover (translateY + shadow) |
+| `isRounded`  | `boolean`                                           | `false` | Applies border-radius to corners                          |
+| `variant`    | `'success' \| 'info' \| 'error' \| 'warning' \| ''` | `''`    | Color variant for semantic meaning                        |
 
 ## Slots
 
-| Slot | Description |
-|------|-------------|
-| `header` | Optional header content displayed at the top of the card |
-| `default` | Main content of the card |
-| `footer` | Optional footer content displayed at the bottom of the card |
+| Slot      | Description                                                 |
+| --------- | ----------------------------------------------------------- |
+| `header`  | Optional header content displayed at the top of the card    |
+| `default` | Main content of the card                                    |
+| `footer`  | Optional footer content displayed at the bottom of the card |
 
 ## CSS Shadow Parts
 
 Shadow Parts allow you to style internal elements of the card from outside the shadow DOM using the `::part()` CSS selector.
 
-| Part | Description |
-|------|-------------|
+| Part              | Description                                             |
+| ----------------- | ------------------------------------------------------- |
 | `ag-card-wrapper` | The main wrapper element that contains all card content |
-| `ag-card-header` | The header section wrapper (even when empty) |
-| `ag-card-content` | The main content section wrapper |
-| `ag-card-footer` | The footer section wrapper (even when empty) |
+| `ag-card-header`  | The header section wrapper (even when empty)            |
+| `ag-card-content` | The main content section wrapper                        |
+| `ag-card-footer`  | The footer section wrapper (even when empty)            |
 
 ### Customization Example
 
@@ -219,7 +208,9 @@ ag-card::part(ag-card-footer) {
 ## Design Patterns
 
 ### Basic Content Card
+
 Use for grouping related information with a simple border and background:
+
 ```vue
 <VueCard>
   <h3>Product Title</h3>
@@ -229,7 +220,9 @@ Use for grouping related information with a simple border and background:
 ```
 
 ### Interactive Card with Hover Effects
+
 Combine shadow and animation for engaging hover interactions:
+
 ```vue
 <VueCard :is-shadow="true" :is-animated="true">
   <h3>Featured Item</h3>
@@ -238,7 +231,9 @@ Combine shadow and animation for engaging hover interactions:
 ```
 
 ### Semantic Cards with Variants
+
 Use variant colors to convey status or context:
+
 ```vue
 <VueCard variant="success">
   <h3>Payment Successful</h3>
@@ -247,7 +242,9 @@ Use variant colors to convey status or context:
 ```
 
 ### Structured Card with Slots
+
 Use slots for clearly separated header/footer sections. The header and footer automatically get appropriate styling (borders, padding) and are hidden when empty:
+
 ```vue
 <!-- Card with header and footer -->
 <VueCard :is-shadow="true">
@@ -285,11 +282,17 @@ Use slots for clearly separated header/footer sections. The header and footer au
 ```
 
 ### Clickable Card Pattern
+
 Create fully clickable cards while maintaining accessibility:
+
 ```html
 <ag-card isshadow isanimated>
   <h4 slot="header" style="margin: 0;">
-    <a href="/article" class="card-primary-action" style="text-decoration: none; color: inherit;">
+    <a
+      href="/article"
+      class="card-primary-action"
+      style="text-decoration: none; color: inherit;"
+    >
       Article Title
     </a>
   </h4>
@@ -302,16 +305,6 @@ Create fully clickable cards while maintaining accessibility:
 
 The `card-primary-action` class creates a pseudo-element that covers the entire card, making it fully clickable. Elements with `card-secondary-action` class maintain their own click handlers.
 
-### Layout Card
-Use unskinned cards for layout structure without visual styling:
-```vue
-<VueCard :is-skinned="false" :is-stacked="true">
-  <FormSection />
-  <FormSection />
-  <FormSection />
-</VueCard>
-```
-
 ## Accessibility
 
 - Cards are semantic containers that help organize content visually
@@ -322,9 +315,8 @@ Use unskinned cards for layout structure without visual styling:
 
 ## Notes
 
-- **Default Styling**: Cards are "skinned" by default (with background and border). Set `:is-skinned="false"` for layout-only usage
 - **Combining Features**: Multiple props can be combined (e.g., `variant="success" :is-shadow="true" :is-animated="true"`)
 - **Responsive Design**: Cards are `width: 100%` by default and work well in grid layouts
-- **Lit Property Binding**: In Lit templates, use property binding (`.isSkinned=${value}`) for boolean props instead of attribute binding (`?isskinned`)
+- **Lit Property Binding**: In Lit templates, use property bindings for boolean props
 - **Reduced Motion**: Animation transitions are automatically disabled for users who prefer reduced motion
 - All three framework implementations share the same underlying styles and behavior
