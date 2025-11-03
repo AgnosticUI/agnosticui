@@ -167,8 +167,8 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
       justify-content: space-between;
     }
     .header button:focus-visible {
-      /* High-contrast focus ring using CSS custom property */
-      outline: var(--ag-focus-width) solid var(--ag-focus);
+      /* Softer focus ring using alpha channel */
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
       outline-offset: var(--ag-focus-offset);
       transition: outline var(--ag-motion-medium) ease;
     }

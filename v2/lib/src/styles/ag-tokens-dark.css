@@ -40,15 +40,15 @@
   --ag-primary-dark: #0969da;
   --ag-secondary: #9198A1;
   --ag-secondary-dark: #656C76;
-  --ag-danger: #dc2626;
+  --ag-danger: 220, 38, 38;
   --ag-danger-dark: #f85149;
-  --ag-warning: #d97706;
+  --ag-warning: 217, 119, 6;
   --ag-warning-dark: #db6d28;
-  --ag-success: #2ea043;
+  --ag-success: 46, 160, 67;
   --ag-success-dark: #3fb950;
   --ag-info: #9198A1;
   --ag-info-dark: #9EA5AF;
-  --ag-focus: #58a6ff;
+  --ag-focus: 88, 166, 255;
   --ag-focus-dark: #388bfd;
   --ag-blue-50: #cae8ff;
   --ag-blue-100: #a5d6ff;
@@ -64,7 +64,7 @@
   --ag-green-100: #7ee787;
   --ag-green-200: #56d364;
   --ag-green-300: #3fb950;
-  --ag-green-400: #2ea043;
+  --ag-green-400: 46, 160, 67;
   --ag-green-500: #238636;
   --ag-green-600: #196c2e;
   --ag-green-700: #0f5323;

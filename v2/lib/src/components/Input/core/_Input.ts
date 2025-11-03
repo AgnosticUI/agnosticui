@@ -123,9 +123,9 @@ export class AgInput extends LitElement implements InputProps {
 
     .ag-input__input:focus-visible,
     .ag-input__textarea:focus-visible {
-      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
       outline-offset: var(--ag-focus-offset);
-      border-color: var(--ag-focus);
+      border-color: rgba(var(--ag-focus), 0.6);
     }
 
     .ag-input__textarea {
@@ -183,13 +183,13 @@ export class AgInput extends LitElement implements InputProps {
 
     :host([invalid]) .ag-input__input,
     :host([invalid]) .ag-input__textarea {
-      border-color: var(--ag-danger);
+      border-color: rgb(var(--ag-danger));
     }
 
     :host([invalid]) .ag-input__input:focus-visible,
     :host([invalid]) .ag-input__textarea:focus-visible {
-      border-color: var(--ag-danger);
-      outline-color: var(--ag-danger);
+      border-color: rgba(var(--ag-danger), 0.6);
+      outline-color: rgba(var(--ag-danger), 0.5);
     }
 
     /* Addons */
@@ -313,7 +313,7 @@ export class AgInput extends LitElement implements InputProps {
     }
 
     .ag-input__error {
-      color: var(--ag-danger);
+      color: rgb(var(--ag-danger));
     }
 
     .ag-input__error[hidden] {
@@ -321,7 +321,7 @@ export class AgInput extends LitElement implements InputProps {
     }
 
     .ag-input__required {
-      color: var(--ag-danger);
+      color: rgb(var(--ag-danger));
       margin-left: var(--ag-space-1);
     }
   `;

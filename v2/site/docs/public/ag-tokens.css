@@ -91,15 +91,15 @@
   --ag-primary-dark: #063f69;
   --ag-secondary: #6b7280;
   --ag-secondary-dark: #4b5563;
-  --ag-danger: #ca1d1d;
+  --ag-danger: 202, 29, 29;
   --ag-danger-dark: #b71c1c;
-  --ag-warning: #bf6804;
+  --ag-warning: 191, 104, 4;
   --ag-warning-dark: #b45309;
-  --ag-success: #1a7f37;
+  --ag-success: 26, 127, 55;
   --ag-success-dark: #116329;
   --ag-info: #4b5563;
   --ag-info-dark: #2e3745;
-  --ag-focus: #2563eb;
+  --ag-focus: 37, 99, 235;
   --ag-focus-dark: #3b82f6;
   --ag-blue-50: #ddf4ff;
   --ag-blue-100: #b6e3ff;
@@ -116,7 +116,7 @@
   --ag-green-200: #6fdd8b;
   --ag-green-300: #4ac26b;
   --ag-green-400: #2da44e;
-  --ag-green-500: #1a7f37;
+  --ag-green-500: 26, 127, 55;
   --ag-green-600: #116329;
   --ag-green-700: #044f1e;
   --ag-green-800: #003d16;

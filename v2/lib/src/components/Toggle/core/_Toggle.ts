@@ -102,7 +102,7 @@ export class AgToggle extends LitElement implements ToggleProps {
     }
 
     button:focus-visible {
-      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
       outline-offset: var(--ag-focus-offset);
     }
 
@@ -189,15 +189,15 @@ export class AgToggle extends LitElement implements ToggleProps {
     }
 
     :host([checked][variant="success"]) .ag-toggle__track {
-      background: var(--ag-success);
+      background: rgb(var(--ag-success));
     }
 
     :host([checked][variant="warning"]) .ag-toggle__track {
-      background: var(--ag-warning);
+      background: rgb(var(--ag-warning));
     }
 
     :host([checked][variant="danger"]) .ag-toggle__track {
-      background: var(--ag-danger);
+      background: rgb(var(--ag-danger));
     }
 
     /* Readonly state */

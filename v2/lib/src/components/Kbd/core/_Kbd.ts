@@ -97,28 +97,28 @@ export class Kbd extends LitElement implements KbdProps {
     }
     :host([variant='warning']) .kbd-wrapper {
       color: var(--ag-warning-text);
-      border-color: var(--ag-warning);
+      border-color: rgb(var(--ag-warning));
     }
     :host([variant='warning'][background]) .kbd-wrapper {
       background-color: var(--ag-warning-background);
     }
     :host([variant='success']) .kbd-wrapper {
       color: var(--ag-success-text);
-      border-color: var(--ag-success);
+      border-color: rgb(var(--ag-success));
     }
     :host([variant='success'][background]) .kbd-wrapper {
       background-color: var(--ag-success-background);
     }
     :host([variant='danger']) .kbd-wrapper {
       color: var(--ag-danger-text);
-      border-color: var(--ag-danger);
+      border-color: rgb(var(--ag-danger));
     }
     :host([variant='danger'][background]) .kbd-wrapper {
       background-color: var(--ag-danger-background);
     }
     :host([variant='error']) .kbd-wrapper {
       color: var(--ag-danger-text);
-      border-color: var(--ag-danger);
+      border-color: rgb(var(--ag-danger));
     }
     :host([variant='error'][background]) .kbd-wrapper {
       background-color: var(--ag-danger-background);

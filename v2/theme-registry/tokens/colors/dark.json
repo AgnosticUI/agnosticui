@@ -120,16 +120,16 @@
     "description": "Darker secondary for hover states on dark backgrounds"
   },
   "danger": {
-    "value": "#dc2626",
-    "description": "Error and danger state color brightened for dark backgrounds"
+    "value": "220, 38, 38",
+    "description": "Error and danger state color brightened for dark backgrounds (RGB format for alpha channel support)"
   },
   "danger-dark": {
     "value": "#f85149",
     "description": "Darker danger for hover states on dark backgrounds"
   },
   "warning": {
-    "value": "#d97706",
-    "description": "Warning state color brightened for dark backgrounds"
+    "value": "217, 119, 6",
+    "description": "Warning state color brightened for dark backgrounds (RGB format for alpha channel support)"
   },
   "warning-dark": {
     "value": "#db6d28",
@@ -152,8 +152,8 @@
     "description": "Brighter info for hover states on dark backgrounds"
   },
   "focus": {
-    "value": "#58a6ff",
-    "description": "Blue focus ring brightened for accessibility on dark backgrounds"
+    "value": "88, 166, 255",
+    "description": "Blue focus ring brightened for accessibility on dark backgrounds (RGB format for alpha channel support)"
   },
   "focus-dark": {
     "value": "#388bfd",
@@ -219,8 +219,8 @@
       "description": "Medium light green"
     },
     "400": {
-      "value": "#2ea043",
-      "description": "Medium green"
+      "value": "46, 160, 67",
+      "description": "Medium green (RGB format for alpha channel support)"
     },
     "500": {
       "value": "#238636",

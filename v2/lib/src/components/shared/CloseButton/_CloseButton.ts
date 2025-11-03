@@ -92,7 +92,7 @@ export class CloseButton extends LitElement implements CloseButtonProps {
     }
 
     .close-button:focus-visible {
-      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
       outline-offset: var(--ag-focus-offset);
     }
 
