@@ -223,13 +223,37 @@
           <span style="font-weight: bold;">%</span>
         </template>
       </VueInput>
+    </div>
+
+    <div class="mbe4">
+      <h3>Addons with Style Variants</h3>
+      <p style="margin-top: 0.5rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
+        Addons work seamlessly with all input styling variants
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <VueInput
+        v-model:value="addonRounded"
+        label="Rounded with Addons"
+        type="number"
+        placeholder="0.00"
+        :rounded="true"
+        class="mbe2"
+      >
+        <template #addon-left>
+          <span style="font-weight: bold;">$</span>
+        </template>
+        <template #addon-right>
+          <span style="font-weight: 600;">USD</span>
+        </template>
+      </VueInput>
 
       <VueInput
-        v-model:value="addonSearch"
-        label="Search Products"
+        v-model:value="addonCapsule"
+        label="Capsule with Addon"
         type="search"
         placeholder="Find products..."
-        :rounded="true"
+        :capsule="true"
         class="mbe2"
       >
         <template #addon-left>
@@ -246,6 +270,45 @@
           >
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.35-4.35" />
+          </svg>
+        </template>
+      </VueInput>
+
+      <VueInput
+        v-model:value="addonUnderlined"
+        label="Underlined with Addon"
+        type="number"
+        placeholder="10"
+        :underlined="true"
+        class="mbe2"
+      >
+        <template #addon-right>
+          <span style="font-weight: bold;">%</span>
+        </template>
+      </VueInput>
+
+      <VueInput
+        v-model:value="addonUnderlinedBg"
+        label="Underlined with Background"
+        type="text"
+        placeholder="Enter username"
+        :underlined-with-background="true"
+        class="mbe2"
+      >
+        <template #addon-left>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
           </svg>
         </template>
       </VueInput>
@@ -444,7 +507,12 @@ export default {
       addonRight: "",
       addonBoth: "",
       addonPercent: "",
-      addonSearch: "",
+
+      // Addons with style variants
+      addonRounded: "",
+      addonCapsule: "",
+      addonUnderlined: "",
+      addonUnderlinedBg: "",
 
       // Custom styles
       customGradient: "",
