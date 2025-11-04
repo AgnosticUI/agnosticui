@@ -9,7 +9,8 @@
     "tokens/shared.json",
     "tokens/z-index.json",
     "tokens/component-tokens.json",
-    "tokens/colors/light.json"
+    "tokens/colors/light-primitives.json",
+    "tokens/colors/light-semantic.json"
   ],
   "platforms": {
     "css": {
