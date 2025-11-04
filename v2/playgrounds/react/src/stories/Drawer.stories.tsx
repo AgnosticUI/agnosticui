@@ -41,9 +41,17 @@ const meta: Meta<ReactDrawerProps> = {
     },
 
     // Event handlers
-    onClose: {
-      action: 'close',
+    onDrawerOpen: {
+      action: 'drawer-open',
+      description: 'Emitted when drawer opens',
+    },
+    onDrawerClose: {
+      action: 'drawer-close',
       description: 'Emitted when drawer closes',
+    },
+    onDrawerCancel: {
+      action: 'drawer-cancel',
+      description: 'Emitted when drawer is cancelled',
     },
   },
   args: {
@@ -52,7 +60,9 @@ const meta: Meta<ReactDrawerProps> = {
     noCloseOnEscape: false,
     noCloseOnBackdrop: false,
     showCloseButton: false,
-    onClose: fn(),
+    onDrawerOpen: fn(),
+    onDrawerClose: fn(),
+    onDrawerCancel: fn(),
   },
 } satisfies Meta<ReactDrawerProps>;
 
@@ -71,7 +81,7 @@ export const Bottom: Story = {
           position="bottom"
           heading="Bottom Drawer"
           description="This drawer slides from the bottom"
-          onClose={() => setIsOpen(false)}
+          onDrawerClose={() => setIsOpen(false)}
         >
           <p>Content of the bottom drawer.</p>
         </ReactDrawer>
@@ -92,7 +102,7 @@ export const Start: Story = {
           position="start"
           heading="Start Drawer"
           showCloseButton={true}
-          onClose={() => setIsOpen(false)}
+          onDrawerClose={() => setIsOpen(false)}
         >
           <p>This drawer slides in from the left (start) side.</p>
           <p>Commonly used for navigation menus.</p>
@@ -114,7 +124,7 @@ export const End: Story = {
           position="end"
           heading="End Drawer"
           showCloseButton={true}
-          onClose={() => setIsOpen(false)}
+          onDrawerClose={() => setIsOpen(false)}
         >
           <p>This drawer slides in from the right (end) side.</p>
           <p>Commonly used for settings or filters.</p>
@@ -136,7 +146,7 @@ export const Top: Story = {
           position="top"
           heading="Top Drawer"
           showCloseButton={true}
-          onClose={() => setIsOpen(false)}
+          onDrawerClose={() => setIsOpen(false)}
         >
           <p>This drawer slides down from the top.</p>
           <p>Useful for notifications or alerts.</p>
@@ -156,7 +166,7 @@ export const WithCustomSlots: Story = {
         <ReactDrawer
           open={isOpen}
           position="end"
-          onClose={() => setIsOpen(false)}
+          onDrawerClose={() => setIsOpen(false)}
         >
           <DrawerHeader>
             <h2 style={{ margin: 0 }}>Settings</h2>
@@ -197,7 +207,7 @@ export const NavigationMenu: Story = {
           open={isOpen}
           position="start"
           heading="Navigation"
-          onClose={() => setIsOpen(false)}
+          onDrawerClose={() => setIsOpen(false)}
         >
           <nav>
             <ul style={{ listStyle: 'none', padding: 0 }}>
@@ -233,7 +243,7 @@ export const FilterPanel: Story = {
           position="end"
           heading="Filter Results"
           showCloseButton={true}
-          onClose={() => setIsOpen(false)}
+          onDrawerClose={() => setIsOpen(false)}
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div>
@@ -281,7 +291,7 @@ export const EventTesting: Story = {
     const [isOpen, setIsOpen] = useState(false);
     const [closeCount, setCloseCount] = useState(0);
 
-    const handleClose = (event: any) => {
+    const handleClose = () => {
       setCloseCount(c => c + 1);
       setIsOpen(false);
     };
@@ -297,7 +307,7 @@ export const EventTesting: Story = {
           position="end"
           heading="Event Testing Drawer"
           showCloseButton={true}
-          onClose={handleClose}
+          onDrawerClose={handleClose}
         >
           <p>Try different ways to close the drawer:</p>
           <ul>
@@ -326,7 +336,7 @@ export const WithRadioButtons: Story = {
           position="end"
           heading="Radio Button Demo"
           showCloseButton={true}
-          onClose={() => setIsOpen(false)}
+          onDrawerClose={() => setIsOpen(false)}
         >
           <div style={{ padding: '1rem 0' }}>
             <fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
@@ -373,7 +383,7 @@ export const FocusTrapping: Story = {
           position="end"
           heading="Focus Trapping Demo"
           showCloseButton={true}
-          onClose={() => setIsOpen(false)}
+          onDrawerClose={() => setIsOpen(false)}
         >
           <div style={{ padding: '1rem 0' }}>
             <p>Press Tab to move focus to the next element. Press Shift+Tab to move to the previous element.</p>

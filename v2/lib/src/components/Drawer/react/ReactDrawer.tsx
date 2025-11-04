@@ -3,7 +3,9 @@ import { createComponent, type EventName } from '@lit/react';
 import {
   AgnosticDrawer,
   type DrawerProps,
-  type DrawerCloseEvent
+  type DrawerOpenEvent,
+  type DrawerCloseEvent,
+  type DrawerCancelEvent
 } from '../core/Drawer';
 
 /**
@@ -35,7 +37,9 @@ export const ReactDrawer = createComponent({
   elementClass: AgnosticDrawer,
   react: React,
   events: {
-    onClose: 'close' as EventName<DrawerCloseEvent>,
+    onDrawerOpen: 'drawer-open' as EventName<DrawerOpenEvent>,
+    onDrawerClose: 'drawer-close' as EventName<DrawerCloseEvent>,
+    onDrawerCancel: 'drawer-cancel' as EventName<DrawerCancelEvent>,
   },
 });
 
@@ -49,4 +53,4 @@ export const DrawerFooter: React.FC<DrawerFooterProps> = ({ children }) => {
 };
 
 // Re-export event types
-export type { DrawerCloseEvent } from '../core/Drawer';
+export type { DrawerOpenEvent, DrawerCloseEvent, DrawerCancelEvent } from '../core/Drawer';
