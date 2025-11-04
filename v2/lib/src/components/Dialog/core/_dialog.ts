@@ -49,6 +49,15 @@ export class AgnosticDialog extends LitElement implements DialogProps {
   @property({ type: String, reflect: true, attribute: 'drawer-position' })
   declare drawerPosition: EdgePosition | undefined;
 
+  @property({ attribute: false })
+  declare onDialogOpen?: (event: DialogOpenEvent) => void;
+
+  @property({ attribute: false })
+  declare onDialogClose?: (event: DialogCloseEvent) => void;
+
+  @property({ attribute: false })
+  declare onDialogCancel?: (event: DialogCancelEvent) => void;
+
   private _focusTrap: FocusTrap | null = null;
 
   constructor() {
@@ -67,7 +76,9 @@ export class AgnosticDialog extends LitElement implements DialogProps {
 
     if (event.key === 'Escape' && !this.noCloseOnEscape) {
       event.preventDefault();
-      this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));
+      const cancelEvent = new CustomEvent<void>('dialog-cancel', { bubbles: true, composed: true });
+      this.dispatchEvent(cancelEvent);
+      this.onDialogCancel?.(cancelEvent);
       this.open = false;
       return;
     }
@@ -90,14 +101,18 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     if (this.noCloseOnBackdrop || !this.open) return;
 
     if (isBackdropClick(event, this.shadowRoot, '.dialog-container')) {
-      this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));
+      const cancelEvent = new CustomEvent<void>('dialog-cancel', { bubbles: true, composed: true });
+      this.dispatchEvent(cancelEvent);
+      this.onDialogCancel?.(cancelEvent);
       this.open = false;
     }
   };
 
   private _handleCloseButtonClick = (event: MouseEvent) => {
     event.stopPropagation();
-    this.dispatchEvent(new CustomEvent('dialog-close', { bubbles: true }));
+    const closeEvent = new CustomEvent<void>('dialog-close', { bubbles: true, composed: true });
+    this.dispatchEvent(closeEvent);
+    this.onDialogClose?.(closeEvent);
     this.open = false;
   };
 
@@ -126,11 +141,15 @@ export class AgnosticDialog extends LitElement implements DialogProps {
         // Opening: Add keydown listener for this dialog only
         document.addEventListener('keydown', this._handleKeydown);
         this._preventBackgroundScroll();
-        this.dispatchEvent(new CustomEvent('dialog-open', { bubbles: true }));
+        const openEvent = new CustomEvent<void>('dialog-open', { bubbles: true, composed: true });
+        this.dispatchEvent(openEvent);
+        this.onDialogOpen?.(openEvent);
       } else if (!this.open && previousOpen) {
         // Closing: Remove keydown listener for this dialog
         document.removeEventListener('keydown', this._handleKeydown);
-        this.dispatchEvent(new CustomEvent('dialog-close', { bubbles: true }));
+        const closeEvent = new CustomEvent<void>('dialog-close', { bubbles: true, composed: true });
+        this.dispatchEvent(closeEvent);
+        this.onDialogClose?.(closeEvent);
         this._restoreBackgroundScroll();
         // Deactivate focus trap when closing
         if (this._focusTrap) {

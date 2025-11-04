@@ -191,7 +191,7 @@ export const WithCustomContent: Story = {
     ),
 };
 
-// Event testing
+// Event testing with addEventListener
 export const EventTesting: Story = {
   args: {
     heading: "Event Testing Dialog",
@@ -218,23 +218,73 @@ export const EventTesting: Story = {
         .description=${"Interact to test dialog events."}
         .showCloseButton=${true}
         @dialog-open=${() => {
-          console.log("Dialog opened");
+          console.log("[addEventListener] Dialog opened");
         }}
         @dialog-close=${(e: Event) => {
           const dialog = e.target as any;
           dialog.open = false;
-          console.log("Dialog closed");
+          console.log("[addEventListener] Dialog closed");
         }}
         @dialog-cancel=${(e: Event) => {
           const dialog = e.target as any;
           dialog.open = false;
-          console.log("Dialog canceled");
+          console.log("[addEventListener] Dialog canceled");
         }}
       >
         <p>Interact with the dialog to test events (open, close, cancel).</p>
       </ag-dialog>
       <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1rem;">
         Check the Actions panel below and browser console for event logs
+      </p>
+    </div>
+  `,
+};
+
+// Event testing with callback props (dual-dispatch pattern)
+export const CallbackProps: Story = {
+  args: {
+    heading: "Callback Props Dialog",
+    description: "Testing dual-dispatch pattern with callback props.",
+    showCloseButton: true,
+  },
+  render: () => html`
+    <div>
+      <ag-button
+        @click=${(e: Event) => {
+          const button = e.target as HTMLElement;
+          const dialog = button.parentElement?.querySelector(
+            "ag-dialog"
+          ) as any;
+          if (dialog) {
+            dialog.open = true;
+          }
+        }}
+      >
+        Open Dialog
+      </ag-button>
+      <ag-dialog
+        .heading=${"Callback Props Dialog"}
+        .description=${"Testing dual-dispatch pattern with callback props."}
+        .showCloseButton=${true}
+        .onDialogOpen=${() => {
+          console.log("[Callback Prop] Dialog opened");
+        }}
+        .onDialogClose=${(e: Event) => {
+          const dialog = e.target as any;
+          dialog.open = false;
+          console.log("[Callback Prop] Dialog closed");
+        }}
+        .onDialogCancel=${(e: Event) => {
+          const dialog = e.target as any;
+          dialog.open = false;
+          console.log("[Callback Prop] Dialog canceled");
+        }}
+      >
+        <p>This story demonstrates the callback prop pattern (onDialogOpen, onDialogClose, onDialogCancel).</p>
+        <p>Both addEventListener and callback props work simultaneously (dual-dispatch).</p>
+      </ag-dialog>
+      <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1rem;">
+        Check the browser console for callback prop event logs
       </p>
     </div>
   `,
@@ -626,6 +676,10 @@ export const CustomHeader: Story = {
     </div>
   `,
 };
+
+// NOTE: The CustomHeader story querySelector issue is expected in TS strict mode.
+// The Node type from getRootNode() doesn't have querySelector.
+// This is acceptable for demo purposes in Storybook.
 
 // CSS Parts customization
 export const Customization: Story = {
