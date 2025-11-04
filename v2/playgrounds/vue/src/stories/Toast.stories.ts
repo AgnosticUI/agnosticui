@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { ref } from 'vue';
 import { VueToast, type VueToastProps } from 'agnosticui-core/toast/vue';
 
 const meta = {
@@ -283,5 +284,303 @@ export const NoCloseButton: Story = {
       return { args };
     },
     template: `<VueToast v-bind="args">Toast without close button</VueToast>`,
+  }),
+};
+
+// Event Handling Stories
+export const WithEventHandlers: Story = {
+  name: 'With Event Handlers (@toast-open, @toast-close, @toast-dismiss)',
+  render: (args: VueToastProps) => ({
+    components: { VueToast },
+    setup() {
+      const isOpen = ref(false);
+      const events = ref<string[]>([]);
+
+      const logEvent = (eventName: string) => {
+        events.value.push(`${eventName} at ${new Date().toLocaleTimeString()}`);
+      };
+
+      const handleToastOpen = () => {
+        logEvent('toast-open');
+      };
+
+      const handleToastClose = () => {
+        logEvent('toast-close');
+        isOpen.value = false;
+      };
+
+      const handleToastDismiss = () => {
+        logEvent('toast-dismiss (auto)');
+      };
+
+      const showToast = () => {
+        isOpen.value = true;
+      };
+
+      const clearEvents = () => {
+        events.value = [];
+      };
+
+      return {
+        isOpen,
+        events,
+        handleToastOpen,
+        handleToastClose,
+        handleToastDismiss,
+        showToast,
+        clearEvents,
+      };
+    },
+    template: `
+      <div style="padding: 20px;">
+        <div style="margin-bottom: 16px;">
+          <button
+            @click="showToast"
+            style="
+              padding: 8px 16px;
+              background: var(--ag-primary);
+              color: white;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+            "
+          >
+            Show Toast
+          </button>
+          <button
+            @click="clearEvents"
+            style="
+              margin-left: 8px;
+              padding: 8px 16px;
+              background: var(--ag-secondary);
+              color: white;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+            "
+          >
+            Clear Events
+          </button>
+        </div>
+
+        <VueToast
+          :open="isOpen"
+          type="success"
+          position="top-end"
+          :duration="3000"
+          :autoDismiss="true"
+          :showCloseButton="true"
+          @toast-open="handleToastOpen"
+          @toast-close="handleToastClose"
+          @toast-dismiss="handleToastDismiss"
+        >
+          This toast will auto-dismiss in 3 seconds. Try closing it manually too!
+        </VueToast>
+
+        <div
+          style="
+            margin-top: 16px;
+            padding: 12px;
+            background: var(--ag-background-secondary);
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+          "
+        >
+          <strong>Event Log:</strong>
+          <div v-if="events.length === 0" style="color: var(--ag-text-secondary); margin-top: 8px;">
+            No events yet. Click "Show Toast" to start.
+          </div>
+          <ul v-else style="margin: 8px 0 0 0; padding: 0 0 0 20px;">
+            <li v-for="(event, index) in events" :key="index" style="margin-bottom: 4px;">
+              {{ event }}
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="
+            margin-top: 16px;
+            padding: 12px;
+            background: var(--ag-info-light);
+            border-radius: 4px;
+            font-size: 14px;
+          "
+        >
+          <strong>Try this:</strong>
+          <ul style="margin: 8px 0 0 0; padding: 0 0 0 20px;">
+            <li>Click "Show Toast" and let it auto-dismiss (3 seconds)</li>
+            <li>Click "Show Toast" and manually close it with the X button</li>
+            <li>Click "Show Toast" and press Escape to close</li>
+            <li>Notice the different events logged for each action</li>
+          </ul>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+export const WithVModelOpen: Story = {
+  name: 'With v-model:open',
+  render: (args: VueToastProps) => ({
+    components: { VueToast },
+    setup() {
+      const isOpen = ref(false);
+
+      const showToast = () => {
+        isOpen.value = true;
+      };
+
+      return { isOpen, showToast };
+    },
+    template: `
+      <div style="padding: 20px;">
+        <div style="margin-bottom: 16px;">
+          <button
+            @click="showToast"
+            style="
+              padding: 8px 16px;
+              background: var(--ag-primary);
+              color: white;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+            "
+          >
+            Show Toast
+          </button>
+        </div>
+
+        <VueToast
+          v-model:open="isOpen"
+          type="info"
+          position="top-end"
+          :duration="3000"
+        >
+          Using v-model:open for two-way binding!
+        </VueToast>
+
+        <div
+          style="
+            margin-top: 16px;
+            padding: 12px;
+            background: var(--ag-background-secondary);
+            border-radius: 4px;
+          "
+        >
+          <strong>Current state:</strong> {{ isOpen ? 'Open' : 'Closed' }}
+        </div>
+
+        <div
+          style="
+            margin-top: 16px;
+            padding: 12px;
+            background: var(--ag-info-light);
+            border-radius: 4px;
+            font-size: 14px;
+          "
+        >
+          <strong>Note:</strong> The <code>v-model:open</code> directive provides two-way binding.
+          When the toast closes (manually or auto-dismiss), the <code>isOpen</code> variable is
+          automatically updated.
+        </div>
+      </div>
+    `,
+  }),
+};
+
+export const EventPropagation: Story = {
+  name: 'Event Propagation Demo',
+  render: (args: VueToastProps) => ({
+    components: { VueToast },
+    setup() {
+      const isOpen = ref(false);
+      const lastEvent = ref('None');
+
+      const handleToastOpen = (event: Event) => {
+        lastEvent.value = '@toast-open emitted';
+        console.log('Toast opened:', event);
+      };
+
+      const handleToastClose = (event: Event) => {
+        lastEvent.value = '@toast-close emitted';
+        isOpen.value = false;
+        console.log('Toast closed:', event);
+      };
+
+      const handleToastDismiss = (event: Event) => {
+        lastEvent.value = '@toast-dismiss emitted';
+        console.log('Toast dismissed:', event);
+      };
+
+      const openToast = () => {
+        isOpen.value = true;
+      };
+
+      return {
+        isOpen,
+        lastEvent,
+        handleToastOpen,
+        handleToastClose,
+        handleToastDismiss,
+        openToast,
+      };
+    },
+    template: `
+      <div style="padding: 20px;">
+        <button
+          @click="openToast"
+          style="
+            padding: 8px 16px;
+            background: var(--ag-primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 16px;
+          "
+        >
+          Open Toast
+        </button>
+
+        <VueToast
+          :open="isOpen"
+          type="info"
+          position="top-end"
+          :duration="5000"
+          :showCloseButton="true"
+          @toast-open="handleToastOpen"
+          @toast-close="handleToastClose"
+          @toast-dismiss="handleToastDismiss"
+        >
+          Watch the event propagation in the console and below!
+        </VueToast>
+
+        <div
+          style="
+            padding: 12px;
+            background: var(--ag-background-secondary);
+            border-radius: 4px;
+            margin-top: 16px;
+          "
+        >
+          <strong>Last Event:</strong> {{ lastEvent }}
+        </div>
+
+        <div
+          style="
+            margin-top: 16px;
+            padding: 12px;
+            background: var(--ag-info-light);
+            border-radius: 4px;
+            font-size: 14px;
+          "
+        >
+          <strong>Note:</strong> Events are dispatched with <code>bubbles: true</code> and
+          <code>composed: true</code>, allowing them to cross shadow DOM boundaries. Check the
+          browser console to see the full event objects.
+        </div>
+      </div>
+    `,
   }),
 };

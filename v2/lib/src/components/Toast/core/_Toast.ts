@@ -80,6 +80,15 @@ export class Toast extends LitElement implements ToastProps {
   @property({ type: Boolean })
   declare borderedLeft: boolean;
 
+  @property({ attribute: false })
+  declare onToastOpen?: (event: ToastOpenEvent) => void;
+
+  @property({ attribute: false })
+  declare onToastClose?: (event: ToastCloseEvent) => void;
+
+  @property({ attribute: false })
+  declare onToastDismiss?: (event: ToastDismissEvent) => void;
+
   @state()
   private _isHovered = false;
 
@@ -114,15 +123,26 @@ export class Toast extends LitElement implements ToastProps {
     if (changedProperties.has('open')) {
       const previousOpen = changedProperties.get('open');
       if (this.open && !previousOpen) {
-        // Opening
-        this.dispatchEvent(new CustomEvent('toast-open', { bubbles: true }));
+        // Opening - Dual-dispatch pattern
+        const openEvent = new CustomEvent<void>('toast-open', {
+          bubbles: true,
+          composed: true,
+        });
+        this.dispatchEvent(openEvent);
+        this.onToastOpen?.(openEvent);
+
         if (this.autoDismiss && this.duration > 0) {
           this._startTimer();
         }
       } else if (!this.open && previousOpen) {
-        // Closing
+        // Closing - Dual-dispatch pattern
         this._clearTimer();
-        this.dispatchEvent(new CustomEvent('toast-close', { bubbles: true }));
+        const closeEvent = new CustomEvent<void>('toast-close', {
+          bubbles: true,
+          composed: true,
+        });
+        this.dispatchEvent(closeEvent);
+        this.onToastClose?.(closeEvent);
       }
     }
   }
@@ -164,7 +184,14 @@ export class Toast extends LitElement implements ToastProps {
   }
 
   private _handleAutoDismiss() {
-    this.dispatchEvent(new CustomEvent('toast-dismiss', { bubbles: true }));
+    // Dual-dispatch pattern for dismiss event
+    const dismissEvent = new CustomEvent<void>('toast-dismiss', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(dismissEvent);
+    this.onToastDismiss?.(dismissEvent);
+
     this.open = false;
   }
 

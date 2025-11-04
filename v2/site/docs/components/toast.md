@@ -357,11 +357,15 @@ export default function ToastExamples() {
 
 ## Events
 
-| Event | Type | Description |
-|-------|------|-------------|
-| `toast-open` | `CustomEvent<void>` | Dispatched when toast becomes visible |
-| `toast-close` | `CustomEvent<void>` | Dispatched when toast is dismissed (by user or auto-dismiss) |
-| `toast-dismiss` | `CustomEvent<void>` | Dispatched when auto-dismiss timer completes |
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `toast-open` | Vue: `@toast-open`<br>React: `onToastOpen`<br>Lit: `@toast-open` | `void` | Emitted when toast becomes visible |
+| `toast-close` | Vue: `@toast-close`<br>React: `onToastClose`<br>Lit: `@toast-close` | `void` | Emitted when toast is closed (manually or via auto-dismiss) |
+| `toast-dismiss` | Vue: `@toast-dismiss`<br>React: `onToastDismiss`<br>Lit: `@toast-dismiss` | `void` | Emitted specifically when auto-dismiss timer completes (not when closed manually) |
+
+**Note:** All events use the dual-dispatch pattern:
+- Native web component events (`toast-open`, `toast-close`, `toast-dismiss`) are dispatched with `bubbles: true` and `composed: true`
+- Callback props (`onToastOpen`, `onToastClose`, `onToastDismiss`) are also invoked when set
 
 ### Event Handling Examples
 
