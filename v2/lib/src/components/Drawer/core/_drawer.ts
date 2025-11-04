@@ -73,10 +73,7 @@ export class AgnosticDrawer extends LitElement implements DrawerProps {
     super.firstUpdated(changedProperties);
     this._dialogElement = this.shadowRoot?.querySelector('ag-dialog') as AgnosticDialog | undefined;
 
-    // Set initial open state
     if (this._dialogElement) {
-      this._dialogElement.open = this.open;
-
       // Set up event forwarding from Dialog events to Drawer events
       this._dialogElement.addEventListener('dialog-open', () => {
         const openEvent = new CustomEvent<void>('drawer-open', {
@@ -94,7 +91,7 @@ export class AgnosticDrawer extends LitElement implements DrawerProps {
         });
         this.dispatchEvent(closeEvent);
         this.onDrawerClose?.(closeEvent);
-        // Sync state only if needed to avoid triggering another render cycle
+        // Sync Drawer's state when Dialog closes itself
         if (this.open) {
           this.open = false;
         }
@@ -107,7 +104,7 @@ export class AgnosticDrawer extends LitElement implements DrawerProps {
         });
         this.dispatchEvent(cancelEvent);
         this.onDrawerCancel?.(cancelEvent);
-        // Sync state only if needed to avoid triggering another render cycle
+        // Sync Drawer's state when Dialog cancels itself
         if (this.open) {
           this.open = false;
         }
@@ -118,9 +115,8 @@ export class AgnosticDrawer extends LitElement implements DrawerProps {
   updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
 
-    // Manually sync open property changes to Dialog
+    // Sync open property changes from Drawer to Dialog
     if (changedProperties.has('open') && this._dialogElement) {
-      // Only update Dialog's open if Drawer's open actually changed
       if (this._dialogElement.open !== this.open) {
         this._dialogElement.open = this.open;
       }
