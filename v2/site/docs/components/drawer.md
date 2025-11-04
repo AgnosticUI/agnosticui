@@ -23,7 +23,7 @@ import DrawerExamples from '../examples/DrawerExamples.vue'
       position="start"
       heading="Navigation"
       show-close-button
-      @close="isStartDrawerOpen = false"
+      @drawer-close="isStartDrawerOpen = false"
     >
       <nav>
         <ul style="list-style: none; padding: 0;">
@@ -41,7 +41,7 @@ import DrawerExamples from '../examples/DrawerExamples.vue'
       position="end"
       heading="Settings"
       show-close-button
-      @close="isEndDrawerOpen = false"
+      @drawer-close="isEndDrawerOpen = false"
     >
       <div>
         <h4>Preferences</h4>
@@ -65,7 +65,7 @@ import DrawerExamples from '../examples/DrawerExamples.vue'
       position="top"
       heading="Notifications"
       show-close-button
-      @close="isTopDrawerOpen = false"
+      @drawer-close="isTopDrawerOpen = false"
     >
       <div style="display: flex; flex-direction: column; gap: 1rem;">
         <div style="padding: 0.75rem; background: var(--ag-background-secondary);">
@@ -82,7 +82,7 @@ import DrawerExamples from '../examples/DrawerExamples.vue'
       position="bottom"
       heading="Quick Actions"
       show-close-button
-      @close="isBottomDrawerOpen = false"
+      @drawer-close="isBottomDrawerOpen = false"
     >
       <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
         <VueButton>New Item</VueButton>
@@ -149,7 +149,7 @@ export default function DrawerExample() {
         position="start"
         heading="Navigation"
         showCloseButton={true}
-        onClose={() => setIsStartDrawerOpen(false)}
+        onDrawerClose={() => setIsStartDrawerOpen(false)}
       >
         <nav>
           <ul style={{ listStyle: 'none', padding: 0 }}>
@@ -167,7 +167,7 @@ export default function DrawerExample() {
         position="end"
         heading="Settings"
         showCloseButton={true}
-        onClose={() => setIsEndDrawerOpen(false)}
+        onDrawerClose={() => setIsEndDrawerOpen(false)}
       >
         <div>
           <h4>Preferences</h4>
@@ -191,7 +191,7 @@ export default function DrawerExample() {
         position="top"
         heading="Notifications"
         showCloseButton={true}
-        onClose={() => setIsTopDrawerOpen(false)}
+        onDrawerClose={() => setIsTopDrawerOpen(false)}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{ padding: '0.75rem', background: 'var(--ag-background-secondary)' }}>
@@ -208,7 +208,7 @@ export default function DrawerExample() {
         position="bottom"
         heading="Quick Actions"
         showCloseButton={true}
-        onClose={() => setIsBottomDrawerOpen(false)}
+        onDrawerClose={() => setIsBottomDrawerOpen(false)}
       >
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
           <button>New Item</button>
@@ -256,7 +256,7 @@ export default function DrawerExample() {
 
     // Handle close events
     [startDrawer, endDrawer, topDrawer, bottomDrawer].forEach(drawer => {
-      drawer?.addEventListener('close', () => {
+      drawer?.addEventListener('drawer-close', () => {
         drawer.open = false;
       });
     });
@@ -352,7 +352,9 @@ export default function DrawerExample() {
 
 | Event | Payload | Description |
 |-------|---------|-------------|
-| `@close` (Vue) / `onClose` (React) / `close` (Lit) | `void` | Emitted when the drawer is closed (via close button, Escape key, or backdrop click) |
+| `@drawer-open` (Vue) / `onDrawerOpen` (React) / `drawer-open` (Lit) | `DrawerOpenEvent` | Emitted when the drawer is opened |
+| `@drawer-close` (Vue) / `onDrawerClose` (React) / `drawer-close` (Lit) | `DrawerCloseEvent` | Emitted when the drawer is closed (via close button, Escape key, or backdrop click) |
+| `@drawer-cancel` (Vue) / `onDrawerCancel` (React) / `drawer-cancel` (Lit) | `DrawerCancelEvent` | Emitted when the drawer is cancelled (via Escape key or backdrop click, but not via close button) |
 
 ## Slots
 
