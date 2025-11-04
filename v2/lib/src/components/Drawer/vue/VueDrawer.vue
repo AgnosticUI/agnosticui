@@ -1,13 +1,16 @@
 <template>
   <ag-drawer
     ref="drawerRef"
-    .heading="heading"
-    .description="description"
-    .noCloseOnEscape="noCloseOnEscape"
-    .noCloseOnBackdrop="noCloseOnBackdrop"
-    .showCloseButton="showCloseButton"
-    .position="position"
-    v-bind="$attrs"
+    :heading="heading"
+    :description="description"
+    v-bind="{
+      ...(open ? { open: true } : {}),
+      ...(noCloseOnEscape ? { 'no-close-on-escape': true } : {}),
+      ...(noCloseOnBackdrop ? { 'no-close-on-backdrop': true } : {}),
+      ...(showCloseButton ? { 'show-close-button': true } : {}),
+      ...(position ? { position } : {}),
+      ...$attrs
+    }"
   >
     <slot />
   </ag-drawer>
@@ -41,25 +44,32 @@ const props = withDefaults(defineProps<VueDrawerProps>(), {
 
 // Define emits
 const emit = defineEmits<{
-  close: [event: Event];
+  "drawer-open": [event: Event];
+  "drawer-close": [event: Event];
+  "drawer-cancel": [event: Event];
+  "update:open": [value: boolean];
 }>();
 
 // Template ref
-const drawerRef = ref<(HTMLElement & { open?: boolean }) | undefined>();
-
-// Ensure the web component's `open` property stays in sync with the prop
-watch(
-  () => props.open,
-  (newValue) => {
-    if (drawerRef.value) {
-      drawerRef.value.open = newValue;
-    }
-  }
-);
+const drawerRef = ref<HTMLElement>();
 
 // Event handlers
+const handleOpen = (event: Event) => {
+  event.stopPropagation();
+  emit("drawer-open", event);
+  emit("update:open", true);
+};
+
 const handleClose = (event: Event) => {
-  emit("close", event);
+  event.stopPropagation();
+  emit("drawer-close", event);
+  emit("update:open", false);
+};
+
+const handleCancel = (event: Event) => {
+  event.stopPropagation();
+  emit("drawer-cancel", event);
+  emit("update:open", false);
 };
 
 // Setup event listeners
@@ -69,17 +79,54 @@ onMounted(async () => {
 
   if (!drawerRef.value) return;
 
-  // Set initial value, and the watch will handle subsequent changes
-  drawerRef.value.open = props.open;
+  const drawerEl = drawerRef.value as any;
 
-  // Listen for "close" event (not "dialog-close") because ag-drawer
-  // stops propagation of "dialog-close" and dispatches "close" instead
-  drawerRef.value.addEventListener("close", handleClose);
+  // Explicitly set boolean properties to ensure they're properly handled
+  if (props.noCloseOnEscape !== undefined) {
+    drawerEl.noCloseOnEscape = props.noCloseOnEscape;
+  }
+  if (props.noCloseOnBackdrop !== undefined) {
+    drawerEl.noCloseOnBackdrop = props.noCloseOnBackdrop;
+  }
+  if (props.showCloseButton !== undefined) {
+    drawerEl.showCloseButton = props.showCloseButton;
+  }
+
+  drawerRef.value.addEventListener("drawer-open", handleOpen);
+  drawerRef.value.addEventListener("drawer-close", handleClose);
+  drawerRef.value.addEventListener("drawer-cancel", handleCancel);
 });
 
 onUnmounted(() => {
   if (!drawerRef.value) return;
 
-  drawerRef.value.removeEventListener("close", handleClose);
+  drawerRef.value.removeEventListener("drawer-open", handleOpen);
+  drawerRef.value.removeEventListener("drawer-close", handleClose);
+  drawerRef.value.removeEventListener("drawer-cancel", handleCancel);
 });
+
+// Watch for prop changes and update web component properties
+watch(
+  [
+    () => props.noCloseOnEscape,
+    () => props.noCloseOnBackdrop,
+    () => props.showCloseButton,
+  ],
+  () => {
+    if (!drawerRef.value) return;
+
+    const drawerEl = drawerRef.value as any;
+
+    // Update boolean properties when props change
+    if (props.noCloseOnEscape !== undefined) {
+      drawerEl.noCloseOnEscape = props.noCloseOnEscape;
+    }
+    if (props.noCloseOnBackdrop !== undefined) {
+      drawerEl.noCloseOnBackdrop = props.noCloseOnBackdrop;
+    }
+    if (props.showCloseButton !== undefined) {
+      drawerEl.showCloseButton = props.showCloseButton;
+    }
+  }
+);
 </script>

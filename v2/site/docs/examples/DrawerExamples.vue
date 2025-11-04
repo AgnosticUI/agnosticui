@@ -10,7 +10,7 @@
         position="start"
         heading="Navigation"
         show-close-button
-        @close="isStartDrawerOpen = false"
+        @drawer-close="isStartDrawerOpen = false"
       >
         <nav>
           <ul style="list-style: none; padding: 0;">
@@ -33,7 +33,7 @@
         position="end"
         heading="Settings"
         show-close-button
-        @close="isEndDrawerOpen = false"
+        @drawer-close="isEndDrawerOpen = false"
       >
         <div>
           <h4 style="margin-top: 0;">Preferences</h4>
@@ -72,7 +72,7 @@
         position="top"
         heading="Notifications"
         show-close-button
-        @close="isTopDrawerOpen = false"
+        @drawer-close="isTopDrawerOpen = false"
       >
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div style="padding: 0.75rem; background: var(--ag-background-secondary); border-radius: 4px;">
@@ -101,7 +101,7 @@
         position="bottom"
         heading="Quick Actions"
         show-close-button
-        @close="isBottomDrawerOpen = false"
+        @drawer-close="isBottomDrawerOpen = false"
       >
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
           <VueButton>
@@ -153,7 +153,7 @@
         :open="isCustomDrawerOpen"
         position="end"
         show-close-button
-        @close="isCustomDrawerOpen = false"
+        @drawer-close="isCustomDrawerOpen = false"
       >
         <div slot="header">
           <h2 style="margin: 0; font-size: var(--ag-font-size-lg);">

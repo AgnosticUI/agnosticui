@@ -76,7 +76,7 @@ export const Bottom: Story = {
           position="bottom"
           heading="Bottom Drawer"
           description="This drawer slides from the bottom"
-          @close="closeDrawer"
+          @drawer-close="closeDrawer"
         >
           <p>Content of the bottom drawer.</p>
         </VueDrawer>
@@ -109,7 +109,7 @@ export const Start: Story = {
           position="start"
           heading="Start Drawer"
           :show-close-button="true"
-          @close="closeDrawer"
+          @drawer-close="closeDrawer"
         >
           <p>This drawer slides in from the left (start) side.</p>
           <p>Commonly used for navigation menus.</p>
@@ -143,7 +143,7 @@ export const End: Story = {
           position="end"
           heading="End Drawer"
           :show-close-button="true"
-          @close="closeDrawer"
+          @drawer-close="closeDrawer"
         >
           <p>This drawer slides in from the right (end) side.</p>
           <p>Commonly used for settings or filters.</p>
@@ -177,7 +177,7 @@ export const Top: Story = {
           position="top"
           heading="Top Drawer"
           :show-close-button="true"
-          @close="closeDrawer"
+          @drawer-close="closeDrawer"
         >
           <p>This drawer slides down from the top.</p>
           <p>Useful for notifications or alerts.</p>
@@ -210,7 +210,7 @@ export const NavigationMenu: Story = {
           :open="isOpen"
           position="start"
           heading="Navigation"
-          @close="closeDrawer"
+          @drawer-close="closeDrawer"
         >
           <nav>
             <ul style="list-style: none; padding: 0;">
@@ -258,7 +258,7 @@ export const FilterPanel: Story = {
           position="end"
           heading="Filter Results"
           :show-close-button="true"
-          @close="closeDrawer"
+          @drawer-close="closeDrawer"
         >
           <div style="display: flex; flex-direction: column; gap: 1rem;">
             <div>
@@ -328,7 +328,7 @@ export const EventTesting: Story = {
           position="end"
           heading="Event Testing Drawer"
           :show-close-button="true"
-          @close="handleClose"
+          @drawer-close="handleClose"
         >
           <p>Try different ways to close the drawer:</p>
           <ul>
@@ -369,7 +369,7 @@ export const WithRadioButtons: Story = {
           position="end"
           heading="Radio Button Demo"
           :show-close-button="true"
-          @close="closeDrawer"
+          @drawer-close="closeDrawer"
         >
           <div style="padding: 1rem 0;">
             <fieldset style="border: none; padding: 0; margin: 0;">
@@ -428,7 +428,7 @@ export const FocusTrapping: Story = {
           position="end"
           heading="Focus Trapping Demo"
           :show-close-button="true"
-          @close="closeDrawer"
+          @drawer-close="closeDrawer"
         >
           <div style="padding: 1rem 0;">
             <p>Press Tab to move focus to the next element. Press Shift+Tab to move to the previous element.</p>
