@@ -1,6 +1,7 @@
 {
   "source": [
-    "tokens/colors/dark.json"
+    "tokens/colors/dark-primitives.json",
+    "tokens/colors/dark-semantic.json"
   ],
   "platforms": {
     "css": {

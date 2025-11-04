@@ -7,56 +7,6 @@
     "value": "#ffffff",
     "description": "Base white for dark mode"
   },
-  "text-primary": {
-    "value": "{neutral.50.value}",
-    "description": "Primary text for high emphasis"
-  },
-  "text-secondary": {
-    "value": "{neutral.100.value}",
-    "description": "Secondary text for less emphasis"
-  },
-  "text-muted": {
-    "value": "{neutral.400.value}",
-    "description": "Muted text for less emphasis"
-  },
-  "text-primary-muted": {
-    "value": "{neutral.100.value}",
-    "description": "Primary text slightly muted - between primary and secondary emphasis"
-  },
-  "background-primary": {
-    "value": "{black.value}",
-    "description": "Background for primary"
-  },
-  "background-secondary": {
-    "value": "{neutral.800.value}",
-    "description": "Background for secondary (accordion backgrounds)"
-  },
-  "background-tertiary": {
-    "value": "{neutral.600.value}",
-    "description": "Background for tertiary (neutral buttons)"
-  },
-  "background-disabled": {
-    "value": "{neutral.700.value}",
-    "description": "Background for secondary (accordion backgrounds)"
-  },
-  "primary-background": { "value": "{blue.900.value}" },
-  "primary-text": { "value": "{blue.100.value}" },
-  "success-background": { "value": "{green.900.value}" },
-  "success-text": { "value": "{green.100.value}" },
-  "info-background": { "value": "{neutral.800.value}" },
-  "info-text": { "value": "{neutral.100.value}" },
-  "warning-background": { "value": "{yellow.900.value}" },
-  "warning-text": { "value": "{yellow.100.value}" },
-  "danger-background": { "value": "{red.900.value}" },
-  "danger-text": { "value": "{red.100.value}" },
-  "border": {
-    "value": "{neutral.600.value}",
-    "description": "Primary border for structural dividers and prominent elements"
-  },
-  "border-subtle": {
-    "value": "{neutral.500.value}",
-    "description": "Subtle border for interactive controls, form inputs, and secondary UI elements"
-  },
   "neutral": {
     "50": {
       "value": "#F0F6FC",
@@ -98,66 +48,6 @@
       "value": "#0D1117",
       "description": "Darkest gray for dark mode backgrounds"
     }
-  },
-  "primary": {
-    "value": "#077acb",
-    "description": "Primary brand color brightened for dark backgrounds"
-  },
-  "primary-border": {
-    "value": "#1f6feb",
-    "description": "Border color for primary elements on dark backgrounds"
-  },
-  "primary-dark": {
-    "value": "#0969da",
-    "description": "Darker primary for hover states on dark backgrounds"
-  },
-  "secondary": {
-    "value": "#9198A1",
-    "description": "Secondary gray brightened for dark backgrounds"
-  },
-  "secondary-dark": {
-    "value": "#656C76",
-    "description": "Darker secondary for hover states on dark backgrounds"
-  },
-  "danger": {
-    "value": "220, 38, 38",
-    "description": "Error and danger state color brightened for dark backgrounds (RGB format for alpha channel support)"
-  },
-  "danger-dark": {
-    "value": "#f85149",
-    "description": "Darker danger for hover states on dark backgrounds"
-  },
-  "warning": {
-    "value": "217, 119, 6",
-    "description": "Warning state color brightened for dark backgrounds (RGB format for alpha channel support)"
-  },
-  "warning-dark": {
-    "value": "#db6d28",
-    "description": "Darker warning for hover states on dark backgrounds"
-  },
-  "success": {
-    "value": "{green.400.value}",
-    "description": "Success state color brightened for dark backgrounds"
-  },
-  "success-dark": {
-    "value": "{green.300.value}",
-    "description": "Brighter success for hover states on dark backgrounds"
-  },
-  "info": {
-    "value": "{neutral.400.value}",
-    "description": "Info state color for informational messages on dark backgrounds"
-  },
-  "info-dark": {
-    "value": "{neutral.300.value}",
-    "description": "Brighter info for hover states on dark backgrounds"
-  },
-  "focus": {
-    "value": "88, 166, 255",
-    "description": "Blue focus ring brightened for accessibility on dark backgrounds (RGB format for alpha channel support)"
-  },
-  "focus-dark": {
-    "value": "#388bfd",
-    "description": "Slightly darker focus ring for dark mode"
   },
   "blue": {
     "50": {

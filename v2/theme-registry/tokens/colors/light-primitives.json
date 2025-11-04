@@ -7,56 +7,6 @@
     "value": "#ffffff",
     "description": "Base white for light mode"
   },
-  "text-primary": {
-    "value": "{neutral.900.value}",
-    "description": "Primary text for high emphasis"
-  },
-  "text-secondary": {
-    "value": "{neutral.500.value}",
-    "description": "Secondary text for less emphasis"
-  },
-  "text-muted": {
-    "value": "{neutral.400.value}",
-    "description": "Muted text for less emphasis"
-  },
-  "text-primary-muted": {
-    "value": "{neutral.700.value}",
-    "description": "Primary text slightly muted - between primary and secondary emphasis"
-  },
-  "background-primary": {
-    "value": "{white.value}",
-    "description": "Background for primary"
-  },
-  "background-secondary": {
-    "value": "{neutral.100.value}",
-    "description": "Background for secondary (accordion backgrounds)"
-  },
-  "background-tertiary": {
-    "value": "{neutral.200.value}",
-    "description": "Background for tertiary (neutral buttons)"
-  },
-  "background-disabled": {
-    "value": "{neutral.100.value}",
-    "description": "Background for secondary (accordion backgrounds)"
-  },
-  "primary-background": { "value": "{blue.50.value}" },
-  "primary-text": { "value": "{blue.900.value}" },
-  "success-background": { "value": "{green.50.value}" },
-  "success-text": { "value": "{green.900.value}" },
-  "info-background": { "value": "{neutral.100.value}" },
-  "info-text": { "value": "{neutral.900.value}" },
-  "warning-background": { "value": "{yellow.50.value}" },
-  "warning-text": { "value": "{yellow.900.value}" },
-  "danger-background": { "value": "{red.50.value}" },
-  "danger-text": { "value": "{red.900.value}" },
-  "border": {
-    "value": "{neutral.200.value}",
-    "description": "Primary border for structural dividers and prominent elements"
-  },
-  "border-subtle": {
-    "value": "{neutral.300.value}",
-    "description": "Subtle border for interactive controls, form inputs, and secondary UI elements"
-  },
   "neutral": {
     "50": {
       "value": "#f9fafb",
@@ -98,66 +48,6 @@
       "value": "#111827",
       "description": "Darkest gray for high contrast text"
     }
-  },
-  "primary": {
-    "value": "#0063a8",
-    "description": "Primary brand color for buttons, links, and key UI elements"
-  },
-  "primary-border": {
-    "value": "#c1d9e9",
-    "description": "Light border color that complements primary"
-  },
-  "primary-dark": {
-    "value": "#063f69",
-    "description": "Darker shade of primary for hover states"
-  },
-  "secondary": {
-    "value": "#6b7280",
-    "description": "Secondary gray color for less prominent elements"
-  },
-  "secondary-dark": {
-    "value": "#4b5563",
-    "description": "Darker shade of secondary for hover states"
-  },
-  "danger": {
-    "value": "202, 29, 29",
-    "description": "Error and danger state color (RGB format for alpha channel support)"
-  },
-  "danger-dark": {
-    "value": "#b71c1c",
-    "description": "Darker shade of danger for hover states"
-  },
-  "warning": {
-    "value": "191, 104, 4",
-    "description": "Warning state color (RGB format for alpha channel support)"
-  },
-  "warning-dark": {
-    "value": "#b45309",
-    "description": "Darker shade of warning for hover states"
-  },
-  "success": {
-    "value": "{green.500.value}",
-    "description": "Success state color"
-  },
-  "success-dark": {
-    "value": "{green.600.value}",
-    "description": "Darker shade of success for hover states"
-  },
-  "info": {
-    "value": "{neutral.600.value}",
-    "description": "Info state color for informational messages"
-  },
-  "info-dark": {
-    "value": "{neutral.700.value}",
-    "description": "Darker shade of info for hover states"
-  },
-  "focus": {
-    "value": "37, 99, 235",
-    "description": "Blue focus ring color for accessibility (RGB format for alpha channel support)"
-  },
-  "focus-dark": {
-    "value": "#3b82f6",
-    "description": "Lighter blue focus ring color for dark mode accessibility"
   },
   "blue": {
     "50": {
