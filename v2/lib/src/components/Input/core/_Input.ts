@@ -723,9 +723,3 @@ export class AgInput extends LitElement implements InputProps {
     `;
   }
 }
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ag-input': AgInput;
-  }
-}
