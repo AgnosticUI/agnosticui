@@ -1,3 +1,4 @@
+import * as React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { ReactToast, type ReactToastProps } from "agnosticui-core/toast/react";
 
@@ -230,4 +231,191 @@ export const NoCloseButton: Story = {
     children: "Toast without close button",
   },
   render: (args) => <ReactToast {...args} />,
+};
+
+// Event Handling Stories
+export const WithEventHandlers: Story = {
+  name: "With Event Handlers (onToastOpen, onToastClose, onToastDismiss)",
+  render: () => {
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [events, setEvents] = React.useState<string[]>([]);
+
+    const logEvent = (eventName: string) => {
+      setEvents(prev => [...prev, `${eventName} at ${new Date().toLocaleTimeString()}`]);
+    };
+
+    return (
+      <div style={{ padding: '20px' }}>
+        <div style={{ marginBottom: '16px' }}>
+          <button
+            onClick={() => setIsOpen(true)}
+            style={{
+              padding: '8px 16px',
+              background: 'var(--ag-primary)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          >
+            Show Toast
+          </button>
+          <button
+            onClick={() => setEvents([])}
+            style={{
+              marginLeft: '8px',
+              padding: '8px 16px',
+              background: 'var(--ag-secondary)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          >
+            Clear Events
+          </button>
+        </div>
+
+        <ReactToast
+          open={isOpen}
+          type="success"
+          position="top-end"
+          duration={3000}
+          autoDismiss={true}
+          showCloseButton={true}
+          onToastOpen={() => {
+            logEvent('toast-open');
+          }}
+          onToastClose={() => {
+            logEvent('toast-close');
+            setIsOpen(false);
+          }}
+          onToastDismiss={() => {
+            logEvent('toast-dismiss (auto)');
+          }}
+        >
+          This toast will auto-dismiss in 3 seconds. Try closing it manually too!
+        </ReactToast>
+
+        <div
+          style={{
+            marginTop: '16px',
+            padding: '12px',
+            background: 'var(--ag-background-secondary)',
+            borderRadius: '4px',
+            fontFamily: 'monospace',
+            fontSize: '14px',
+          }}
+        >
+          <strong>Event Log:</strong>
+          {events.length === 0 ? (
+            <div style={{ color: 'var(--ag-text-secondary)', marginTop: '8px' }}>
+              No events yet. Click "Show Toast" to start.
+            </div>
+          ) : (
+            <ul style={{ margin: '8px 0 0 0', padding: '0 0 0 20px' }}>
+              {events.map((event, index) => (
+                <li key={index} style={{ marginBottom: '4px' }}>
+                  {event}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div
+          style={{
+            marginTop: '16px',
+            padding: '12px',
+            background: 'var(--ag-info-light)',
+            borderRadius: '4px',
+            fontSize: '14px',
+          }}
+        >
+          <strong>Try this:</strong>
+          <ul style={{ margin: '8px 0 0 0', padding: '0 0 0 20px' }}>
+            <li>Click "Show Toast" and let it auto-dismiss (3 seconds)</li>
+            <li>Click "Show Toast" and manually close it with the X button</li>
+            <li>Click "Show Toast" and press Escape to close</li>
+            <li>Notice the different events logged for each action</li>
+          </ul>
+        </div>
+      </div>
+    );
+  },
+};
+
+export const EventPropagation: Story = {
+  name: "Event Propagation Demo",
+  render: () => {
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [lastEvent, setLastEvent] = React.useState<string>('None');
+
+    return (
+      <div style={{ padding: '20px' }}>
+        <button
+          onClick={() => setIsOpen(true)}
+          style={{
+            padding: '8px 16px',
+            background: 'var(--ag-primary)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            marginBottom: '16px',
+          }}
+        >
+          Open Toast
+        </button>
+
+        <ReactToast
+          open={isOpen}
+          type="info"
+          position="top-end"
+          duration={5000}
+          showCloseButton={true}
+          onToastOpen={(e) => {
+            setLastEvent('onToastOpen callback invoked');
+            console.log('Toast opened via callback prop:', e);
+          }}
+          onToastClose={(e) => {
+            setLastEvent('onToastClose callback invoked');
+            setIsOpen(false);
+            console.log('Toast closed via callback prop:', e);
+          }}
+          onToastDismiss={(e) => {
+            setLastEvent('onToastDismiss callback invoked');
+            console.log('Toast dismissed via callback prop:', e);
+          }}
+        >
+          Watch the event propagation in the console and below!
+        </ReactToast>
+
+        <div
+          style={{
+            padding: '12px',
+            background: 'var(--ag-background-secondary)',
+            borderRadius: '4px',
+            marginTop: '16px',
+          }}
+        >
+          <strong>Last Event:</strong> {lastEvent}
+        </div>
+
+        <div
+          style={{
+            marginTop: '16px',
+            padding: '12px',
+            background: 'var(--ag-info-light)',
+            borderRadius: '4px',
+            fontSize: '14px',
+          }}
+        >
+          <strong>Note:</strong> Events are dispatched with <code>bubbles: true</code> and{' '}
+          <code>composed: true</code>, allowing them to cross shadow DOM boundaries. Check the
+          browser console to see the full event objects.
+        </div>
+      </div>
+    );
+  },
 };

@@ -224,9 +224,9 @@ Provide a structured response:
 | Select | ✅ Complete | feature/select-event-refactor | (pending commit) | HIGH | Dual-dispatch + v-model:value + comprehensive event stories |
 | Tabs | ✅ Complete | feature/tabs-event-refactor | (merged) | MEDIUM | Active tab state, navigation |
 | Accordion | ✅ Complete | feature/accordion-event-refactor | (merged) | MEDIUM | Expand/collapse, group coordination |
-| Dialog | ⏳ Pending | - | - | MEDIUM | Open/close, modal behavior |
-| Drawer | ⏳ Pending | - | - | MEDIUM | Open/close, slide behavior |
-| Toast | ⏳ Pending | - | - | LOW | Dismiss action |
+| Dialog  ✅| ⏳ Pending | - | - | MEDIUM | Open/close, modal behavior |
+| Drawer  ✅| ⏳ Pending | - | - | MEDIUM | Open/close, slide behavior |
+| Toast ✅| ⏳ Pending | - | - | LOW | Dismiss action |
 | Menu | ⏳ Pending | - | - | HIGH | Selection + open/close, keyboard nav |
 | Tooltip | ⏳ Pending | - | - | LOW | Show/hide state |
 

@@ -199,6 +199,102 @@ describe('Toast', () => {
       expect(dismissSpy).toHaveBeenCalledOnce();
       expect(element.open).toBe(false);
     });
+
+    describe('Dual-dispatch Pattern (Callback Props)', () => {
+      it('invokes onToastOpen callback when opened', async () => {
+        const onToastOpen = vi.fn();
+        element.onToastOpen = onToastOpen;
+
+        element.open = true;
+        await element.updateComplete;
+
+        expect(onToastOpen).toHaveBeenCalledOnce();
+        expect(onToastOpen).toHaveBeenCalledWith(
+          expect.objectContaining({
+            type: 'toast-open',
+            bubbles: true,
+          })
+        );
+      });
+
+      it('invokes onToastClose callback when closed', async () => {
+        const onToastClose = vi.fn();
+        element.onToastClose = onToastClose;
+
+        element.open = true;
+        await element.updateComplete;
+
+        element.open = false;
+        await element.updateComplete;
+
+        expect(onToastClose).toHaveBeenCalledOnce();
+        expect(onToastClose).toHaveBeenCalledWith(
+          expect.objectContaining({
+            type: 'toast-close',
+            bubbles: true,
+          })
+        );
+      });
+
+      it('invokes onToastDismiss callback on auto-dismiss', async () => {
+        const onToastDismiss = vi.fn();
+        element.onToastDismiss = onToastDismiss;
+
+        element.duration = 100;
+        element.autoDismiss = true;
+        element.open = true;
+        await element.updateComplete;
+
+        await new Promise(resolve => setTimeout(resolve, 150));
+
+        expect(onToastDismiss).toHaveBeenCalledOnce();
+        expect(onToastDismiss).toHaveBeenCalledWith(
+          expect.objectContaining({
+            type: 'toast-dismiss',
+            bubbles: true,
+          })
+        );
+        expect(element.open).toBe(false);
+      });
+
+      it('supports both addEventListener and callback prop simultaneously', async () => {
+        const eventListener = vi.fn();
+        const callbackProp = vi.fn();
+
+        element.addEventListener('toast-open', eventListener);
+        element.onToastOpen = callbackProp;
+
+        element.open = true;
+        await element.updateComplete;
+
+        expect(eventListener).toHaveBeenCalledOnce();
+        expect(callbackProp).toHaveBeenCalledOnce();
+      });
+    });
+
+    describe('CustomEvent Properties', () => {
+      it('dispatches events with bubbles: true', async () => {
+        const openSpy = vi.fn();
+        element.addEventListener('toast-open', openSpy);
+
+        element.open = true;
+        await element.updateComplete;
+
+        const event = openSpy.mock.calls[0][0];
+        expect(event.bubbles).toBe(true);
+      });
+
+      it('dispatches events with composed: true', async () => {
+        const openSpy = vi.fn();
+        element.addEventListener('toast-open', openSpy);
+
+        element.open = true;
+        await element.updateComplete;
+
+        const event = openSpy.mock.calls[0][0];
+        expect(event.composed).toBe(true);
+      });
+    });
   });
 
   describe('Auto-dismiss Behavior', () => {
