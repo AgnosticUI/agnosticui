@@ -258,11 +258,59 @@ export default function DialogExample() {
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `@dialog-open` (Vue) / `onDialogOpen` (React) / `dialog-open` (Lit) | `void` | Emitted when the dialog is opened |
-| `@dialog-close` (Vue) / `onDialogClose` (React) / `dialog-close` (Lit) | `void` | Emitted when the dialog is closed via the close button |
-| `@dialog-cancel` (Vue) / `onDialogCancel` (React) / `dialog-cancel` (Lit) | `void` | Emitted when the dialog is cancelled (Escape key or backdrop click) |
+| Event | Framework | Detail | Description |
+| -------- | ----------------------------------------------------- | ------------------- | ------------------------------ |
+| `dialog-open` | Vue: `@dialog-open`<br>React: `onDialogOpen`<br>Lit: `@dialog-open` | `void` | Fired when the dialog opens. |
+| `dialog-close` | Vue: `@dialog-close`<br>React: `onDialogClose`<br>Lit: `@dialog-close` | `void` | Fired when the dialog closes via the close button. |
+| `dialog-cancel` | Vue: `@dialog-cancel`<br>React: `onDialogCancel`<br>Lit: `@dialog-cancel` | `void` | Fired when the dialog is cancelled (Escape key or backdrop click). |
+
+### Event Handling Examples
+
+**Vue:**
+```vue
+<VueDialog
+  v-model:open="isOpen"
+  @dialog-open="handleOpen"
+  @dialog-close="handleClose"
+  @dialog-cancel="handleCancel"
+>
+  <p>Dialog content</p>
+</VueDialog>
+```
+
+**React:**
+```tsx
+<ReactDialog
+  open={isOpen}
+  onDialogOpen={(e) => console.log('Dialog opened', e)}
+  onDialogClose={(e) => setIsOpen(false)}
+  onDialogCancel={(e) => setIsOpen(false)}
+>
+  <p>Dialog content</p>
+</ReactDialog>
+```
+
+**Lit:**
+```html
+<!-- Using addEventListener -->
+<script>
+  const dialog = document.querySelector('ag-dialog');
+  dialog.addEventListener('dialog-open', (e) => {
+    console.log('Dialog opened', e);
+  });
+  dialog.addEventListener('dialog-close', (e) => {
+    console.log('Dialog closed', e);
+  });
+</script>
+
+<!-- Using callback props -->
+<ag-dialog id="my-dialog"></ag-dialog>
+<script>
+  const dialog = document.querySelector('#my-dialog');
+  dialog.onDialogOpen = (e) => console.log('Dialog opened', e);
+  dialog.onDialogClose = (e) => console.log('Dialog closed', e);
+</script>
+```
 
 ## Slots
 

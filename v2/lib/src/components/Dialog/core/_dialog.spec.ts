@@ -163,6 +163,120 @@ describe('AgnosticDialog', () => {
     });
   });
 
+  describe('Event Callback Props (Dual-Dispatch Pattern)', () => {
+    it('should invoke onDialogOpen callback when opened', async () => {
+      const openCallback = vi.fn();
+      element.onDialogOpen = openCallback;
+
+      element.open = true;
+      await element.updateComplete;
+
+      expect(openCallback).toHaveBeenCalledTimes(1);
+      expect(openCallback).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'dialog-open',
+          bubbles: true,
+          composed: true,
+        })
+      );
+    });
+
+    it('should invoke onDialogClose callback when closed', async () => {
+      const closeCallback = vi.fn();
+      element.onDialogClose = closeCallback;
+
+      element.open = true;
+      await element.updateComplete;
+
+      element.open = false;
+      await element.updateComplete;
+
+      expect(closeCallback).toHaveBeenCalledTimes(1);
+      expect(closeCallback).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'dialog-close',
+          bubbles: true,
+          composed: true,
+        })
+      );
+    });
+
+    it('should invoke onDialogCancel callback on Escape key', async () => {
+      const cancelCallback = vi.fn();
+      element.onDialogCancel = cancelCallback;
+
+      element.open = true;
+      element.noCloseOnEscape = false;
+      await element.updateComplete;
+
+      const escapeEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+      document.dispatchEvent(escapeEvent);
+      await element.updateComplete;
+
+      expect(cancelCallback).toHaveBeenCalledTimes(1);
+      expect(cancelCallback).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'dialog-cancel',
+          bubbles: true,
+          composed: true,
+        })
+      );
+    });
+
+    it('should invoke onDialogCancel callback on backdrop click', async () => {
+      const cancelCallback = vi.fn();
+      element.onDialogCancel = cancelCallback;
+
+      element.open = true;
+      element.noCloseOnBackdrop = false;
+      await element.updateComplete;
+
+      const backdrop = element.shadowRoot?.querySelector('.dialog-backdrop');
+      backdrop?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await element.updateComplete;
+
+      expect(cancelCallback).toHaveBeenCalledTimes(1);
+      expect(cancelCallback).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'dialog-cancel',
+          bubbles: true,
+          composed: true,
+        })
+      );
+    });
+
+    it('should invoke onDialogClose callback when close button is clicked', async () => {
+      const closeCallback = vi.fn();
+      element.onDialogClose = closeCallback;
+
+      element.open = true;
+      element.showCloseButton = true;
+      await element.updateComplete;
+
+      const closeButtonComponent = element.shadowRoot?.querySelector('ag-close-button');
+      const button = closeButtonComponent?.shadowRoot?.querySelector('button') as HTMLButtonElement;
+      button.click();
+      await element.updateComplete;
+
+      expect(closeCallback).toHaveBeenCalledTimes(2); // Once for close button click, once for willUpdate closing
+    });
+
+    it('should support both addEventListener and callback prop patterns simultaneously', async () => {
+      const listenerSpy = vi.fn();
+      const callbackSpy = vi.fn();
+
+      element.addEventListener('dialog-open', listenerSpy);
+      element.onDialogOpen = callbackSpy;
+
+      element.open = true;
+      await element.updateComplete;
+
+      // Both should be called
+      expect(listenerSpy).toHaveBeenCalledTimes(1);
+      expect(callbackSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('Keyboard Interaction', () => {
     it('should close on Escape key by default', async () => {
       element.open = true;

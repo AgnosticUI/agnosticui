@@ -39,9 +39,9 @@ const props = withDefaults(defineProps<VueDialogProps>(), {
 
 // Define emits
 const emit = defineEmits<{
-  "dialog-open": [];
-  "dialog-close": [];
-  "dialog-cancel": [];
+  "dialog-open": [event: Event];
+  "dialog-close": [event: Event];
+  "dialog-cancel": [event: Event];
   "update:open": [value: boolean];
 }>();
 
@@ -51,18 +51,20 @@ const dialogRef = ref<HTMLElement>();
 // Event handlers
 const handleDialogOpen = (event: Event) => {
   event.stopPropagation();
-  emit("dialog-open");
+  emit("dialog-open", event);
+  emit("update:open", true);
 };
 
 const handleDialogClose = (event: Event) => {
   event.stopPropagation();
-  emit("dialog-close");
+  emit("dialog-close", event);
   emit("update:open", false);
 };
 
 const handleDialogCancel = (event: Event) => {
   event.stopPropagation();
-  emit("dialog-cancel");
+  emit("dialog-cancel", event);
+  emit("update:open", false);
 };
 
 // Setup event listeners
