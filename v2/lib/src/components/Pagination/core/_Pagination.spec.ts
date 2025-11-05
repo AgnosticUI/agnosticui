@@ -23,7 +23,7 @@ describe('Pagination - Component Initialization', () => {
     expect(element.justify).toBe('');
     expect(element.ariaLabel).toBe('pagination');
     expect(element.bordered).toBe(false);
-    expect(element.firstLastNavigation).toBe(true);
+    expect(element.firstLastNavigation).toBe(false); // Changed from true to false
   });
 
   it('should render with custom properties', async () => {
@@ -224,10 +224,9 @@ describe('Pagination - ARIA Compliance', () => {
     await element.updateComplete;
 
     const buttons = element.shadowRoot?.querySelectorAll('.pagination-button');
-    const firstButton = buttons?.[0] as HTMLElement;
-    const prevButton = buttons?.[1] as HTMLElement;
+    // When firstLastNavigation is false (default), buttons[0] is previous
+    const prevButton = buttons?.[0] as HTMLElement;
 
-    expect(firstButton.getAttribute('aria-disabled')).toBe('true');
     expect(prevButton.getAttribute('aria-disabled')).toBe('true');
   });
 
@@ -258,6 +257,7 @@ describe('Pagination - ARIA Compliance', () => {
   it('should provide descriptive aria-labels for navigation buttons', async () => {
     element.current = 2;
     element.totalPages = 5;
+    element.firstLastNavigation = true; // Enable first/last buttons for this test
     await element.updateComplete;
 
     const buttons = element.shadowRoot?.querySelectorAll('.pagination-button');
@@ -306,7 +306,8 @@ describe('Pagination - User Interaction', () => {
     await element.updateComplete;
 
     const buttons = element.shadowRoot?.querySelectorAll('.pagination-button');
-    const nextButton = buttons?.[buttons.length - 2] as HTMLButtonElement;
+    // Without firstLastNavigation, next button is second to last
+    const nextButton = buttons?.[buttons.length - 1] as HTMLButtonElement;
     nextButton.click();
     await element.updateComplete;
 
@@ -319,7 +320,8 @@ describe('Pagination - User Interaction', () => {
     await element.updateComplete;
 
     const buttons = element.shadowRoot?.querySelectorAll('.pagination-button');
-    const prevButton = buttons?.[1] as HTMLButtonElement;
+    // Without firstLastNavigation, previous button is first
+    const prevButton = buttons?.[0] as HTMLButtonElement;
     prevButton.click();
     await element.updateComplete;
 
@@ -329,6 +331,7 @@ describe('Pagination - User Interaction', () => {
   it('should navigate to first page', async () => {
     element.current = 3;
     element.totalPages = 5;
+    element.firstLastNavigation = true; // Enable first button
     await element.updateComplete;
 
     const buttons = element.shadowRoot?.querySelectorAll('.pagination-button');
@@ -342,6 +345,7 @@ describe('Pagination - User Interaction', () => {
   it('should navigate to last page', async () => {
     element.current = 3;
     element.totalPages = 5;
+    element.firstLastNavigation = true; // Enable last button
     await element.updateComplete;
 
     const buttons = element.shadowRoot?.querySelectorAll('.pagination-button');
@@ -358,7 +362,8 @@ describe('Pagination - User Interaction', () => {
     await element.updateComplete;
 
     const buttons = element.shadowRoot?.querySelectorAll('.pagination-button');
-    const prevButton = buttons?.[1] as HTMLButtonElement;
+    // Without firstLastNavigation, previous button is first
+    const prevButton = buttons?.[0] as HTMLButtonElement;
     
     expect(prevButton.disabled).toBe(true);
     prevButton.click();
@@ -373,7 +378,8 @@ describe('Pagination - User Interaction', () => {
     await element.updateComplete;
 
     const buttons = element.shadowRoot?.querySelectorAll('.pagination-button');
-    const nextButton = buttons?.[buttons.length - 2] as HTMLButtonElement;
+    // Without firstLastNavigation, next button is last
+    const nextButton = buttons?.[buttons.length - 1] as HTMLButtonElement;
     
     expect(nextButton.disabled).toBe(true);
     nextButton.click();

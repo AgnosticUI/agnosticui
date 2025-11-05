@@ -22,16 +22,16 @@
     </div>
     <div class="stacked-mobile mbe4">
       <VuePagination
-        :current="basicPage"
+        :current="basicPageFirstLast"
         :total-pages="20"
         :first-last-navigation="true"
-        @page-change="handleBasicPageChange"
+        @page-change="handleBasicPageChangeFirstLast"
       />
       <p
-        v-if="basicPageMessage"
+        v-if="basicPageMessageFirstLast"
         style="margin: 0; padding: 0; font-size: var(--ag-font-size-sm); color: var(--ag-text-secondary);"
       >
-        {{ basicPageMessage }}
+        {{ basicPageMessageFirstLast }}
       </p>
     </div>
 
@@ -171,6 +171,7 @@ export default {
   },
   data() {
     return {
+      basicPageFirstLast: 5,
       basicPage: 5,
       basicPageMessage: null,
       borderedPage: 3,
@@ -219,6 +220,10 @@ export default {
     };
   },
   methods: {
+    handleBasicPageChangeFirstLast(detail) {
+      this.basicPageFirstLast = detail.page;
+      this.basicPageMessageFirstLast = `Current page: ${detail.page} of 20`;
+    },
     handleBasicPageChange(detail) {
       this.basicPage = detail.page;
       this.basicPageMessage = `Current page: ${detail.page} of 20`;

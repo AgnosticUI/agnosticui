@@ -27,11 +27,11 @@ import PaginationExamples from '../examples/PaginationExamples.vue'
     <!-- Bordered style -->
     <VuePagination :current="1" :total-pages="15" bordered />
 
-    <!-- Without first/last navigation -->
+    <!-- With first/last navigation -->
     <VuePagination
       :current="5"
       :total-pages="10"
-      :first-last-navigation="false"
+      :first-last-navigation="true"
     />
 
     <!-- Different offset (1 instead of 2) -->
@@ -104,12 +104,8 @@ export default function PaginationExample() {
       {/* Bordered style */}
       <ReactPagination current={1} totalPages={15} bordered />
 
-      {/* Without first/last navigation */}
-      <ReactPagination
-        current={5}
-        totalPages={10}
-        firstLastNavigation={false}
-      />
+      {/* With first/last navigation */}
+      <ReactPagination current={5} totalPages={10} firstLastNavigation={true} />
 
       {/* Different offset (1 instead of 2) */}
       <ReactPagination current={10} totalPages={20} offset={1} />
@@ -161,11 +157,11 @@ export default function PaginationExample() {
   <!-- Bordered style -->
   <ag-pagination current="1" total-pages="15" bordered></ag-pagination>
 
-  <!-- Without first/last navigation -->
+  <!-- With first/last navigation -->
   <ag-pagination
     current="5"
     total-pages="10"
-    first-last-navigation="false"
+    first-last-navigation="true"
   ></ag-pagination>
 
   <!-- Different offset (1 instead of 2) -->
@@ -188,7 +184,7 @@ export default function PaginationExample() {
 | `justify`             | `'start' \| 'center' \| 'end' \| ''` | `''`           | Horizontal alignment of pagination controls                               |
 | `ariaLabel`           | `string`                             | `'pagination'` | ARIA label for the navigation element                                     |
 | `bordered`            | `boolean`                            | `false`        | Show bordered style (outline instead of solid background for active page) |
-| `firstLastNavigation` | `boolean`                            | `true`         | Show first/last page navigation buttons                                   |
+| `firstLastNavigation` | `boolean`                            | `false`        | Show first/last page navigation buttons                                   |
 | `navigationLabels`    | `NavigationLabels`                   | See below      | Custom labels for navigation buttons                                      |
 
 ### NavigationLabels Interface

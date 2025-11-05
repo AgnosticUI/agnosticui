@@ -48,7 +48,7 @@ const meta: Meta<PaginationProps> = {
     justify: "",
     ariaLabel: "pagination",
     bordered: false,
-    firstLastNavigation: true,
+    firstLastNavigation: false,
     onPageChange: fn(),
   },
 };
@@ -150,11 +150,11 @@ export const OffsetTwo: Story = {
   `,
 };
 
-export const NoFirstLast: Story = {
+export const FirstLast: Story = {
   args: {
     current: 5,
     totalPages: 10,
-    firstLastNavigation: false,
+    firstLastNavigation: true,
   },
   render: ({ current, totalPages, firstLastNavigation, onPageChange }) => html`
     <ag-pagination
@@ -170,11 +170,13 @@ export const CustomLabels: Story = {
   args: {
     current: 5,
     totalPages: 10,
+    firstLastNavigation: true,
   },
-  render: ({ current, totalPages, onPageChange }) => html`
+  render: ({ current, totalPages, onPageChange, firstLastNavigation }) => html`
     <ag-pagination
       .current=${current}
       .totalPages=${totalPages}
+      ?first-last-navigation=${firstLastNavigation}
       .navigationLabels=${{
         first: 'Erste',
         previous: 'Zurück',
