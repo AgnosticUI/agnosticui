@@ -23,13 +23,11 @@ const meta = {
       control: "text",
       description: "Alternative aria-label for the navigation",
     },
+    bordered: {
+      control: "boolean",
+      description: "Whether to display borders around navigation links",
+    },
   },
-  args: {
-    previous: { title: "Introduction", href: "/introduction" },
-    next: { title: "Getting Started", href: "/getting-started" },
-    parent: { title: "Documentation", href: "/documentation" },
-    ariaLabel: "Content navigation",
-  } as VueContentPaginationProps,
 } satisfies Meta<typeof VueContentPagination>;
 
 export default meta;
@@ -94,6 +92,43 @@ export const ParentOnly: Story = {
     }),
 };
 
+export const Bordered: Story = {
+    args: {
+        previous: { title: "Introduction", href: "/introduction" },
+        next: { title: "Getting Started", href: "/getting-started" },
+        parent: { title: "Documentation", href: "/documentation" },
+        bordered: true,
+    } as VueContentPaginationProps,
+    render: (args) => ({
+        components: { VueContentPagination },
+        setup() {
+            return { args, onNavigate: (e: any) => action("navigate")(e) };
+        },
+        template: `<VueContentPagination v-bind="args" @navigate="onNavigate" />`,
+    }),
+};
+
+export const CustomIcons: Story = {
+    args: {
+        previous: { title: "Introduction", href: "/introduction" },
+        next: { title: "Getting Started", href: "/getting-started" },
+        parent: { title: "Documentation", href: "/documentation" },
+    } as VueContentPaginationProps,
+    render: (args) => ({
+        components: { VueContentPagination },
+        setup() {
+            return { args, onNavigate: (e: any) => action("navigate")(e) };
+        },
+        template: `
+            <VueContentPagination v-bind="args" @navigate="onNavigate">
+                <template #previous-icon><span>◀️</span></template>
+                <template #next-icon><span>▶️</span></template>
+                <template #parent-icon><span>⬆️</span></template>
+            </VueContentPagination>
+        `,
+    }),
+};
+
 export const Customization: Story = {
     args: {
         previous: { title: "Introduction", href: "/introduction" },
@@ -106,15 +141,12 @@ export const Customization: Story = {
             const styles = `
                 <style>
                 .custom-content-pagination::part(ag-content-pagination-container) {
-                    border: 2px solid #1e40af;
-                    border-radius: 0.5rem;
                     padding: 1rem;
                 }
-                .custom-content-pagination::part(ag-content-pagination-parent) {
+                .custom-content-pagination::part(ag-content-pagination-parent):hover {
                     background-color: #dbeafe;
                 }
                 .custom-content-pagination::part(ag-content-pagination-link) {
-                    background-color: #eff6ff;
                     color: #1d4ed8;
                     border-color: #93c5fd;
                 }
@@ -130,8 +162,8 @@ export const Customization: Story = {
             <div>
                 <div v-html="styles"></div>
                 <VueContentPagination v-bind="args" class="custom-content-pagination" @navigate="onNavigate">
-                    <template #previous-icon><span>⬅️</span></template>
-                    <template #next-icon><span>➡️</span></template>
+                    <template #previous-icon><span>‹️</span></template>
+                    <template #next-icon><span>›️</span></template>
                     <template #parent-icon><span>⬆️</span></template>
                 </VueContentPagination>
             </div>

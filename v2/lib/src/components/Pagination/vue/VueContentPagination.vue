@@ -1,12 +1,10 @@
 <template>
   <ag-content-pagination
     ref="contentPaginationRef"
-    :previous="previous"
-    :next="next"
-    :parent="parent"
     :aria-label="ariaLabel"
     :bordered="bordered"
     @navigate="handleNavigate"
+    v-bind="dynamicProps"
   >
     <!--
       We are using the 'slot' attribute here to pass a named slot to the underlying
@@ -35,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed, useAttrs } from "vue";
 import "../core/ContentPagination"; // Registers the ag-content-pagination web component
 import type {
   ContentPaginationProps,
@@ -58,6 +56,21 @@ export interface VueContentPaginationProps
   parent?: ContentNavigationItem;
   bordered?: boolean;
 }
+
+const attrs = useAttrs();
+const dynamicProps = computed(() => {
+  const result: Record<string, any> = { ...attrs };
+  if (props.previous) {
+    result.previous = props.previous;
+  }
+  if (props.next) {
+    result.next = props.next;
+  }
+  if (props.parent) {
+    result.parent = props.parent;
+  }
+  return result;
+});
 
 // Define props with defaults
 const props = withDefaults(defineProps<VueContentPaginationProps>(), {
