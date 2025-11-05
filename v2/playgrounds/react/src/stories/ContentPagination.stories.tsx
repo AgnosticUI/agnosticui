@@ -23,8 +23,12 @@ const meta: Meta<ReactContentPaginationProps> = {
       control: "text",
       description: "Alternative aria-label for the navigation",
     },
+    bordered: {
+      control: "boolean",
+      description: "Whether to display borders around navigation links",
+    },
   },
-} satisfies Meta<ReactContentPaginationProps>;;
+} satisfies Meta<ReactContentPaginationProps>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -68,6 +72,33 @@ export const ParentOnly: Story = {
     render: (args) => <ReactContentPagination {...args} />,
 };
 
+export const Bordered: Story = {
+    args: {
+        previous: { title: "Introduction", href: "/introduction" },
+        next: { title: "Getting Started", href: "/getting-started" },
+        parent: { title: "Documentation", href: "/documentation" },
+        bordered: true,
+        onNavigate: (e: NavigateEvent) => action("navigate")(e.detail),
+    } as ReactContentPaginationProps,
+    render: (args) => <ReactContentPagination {...args} />,
+};
+
+export const CustomIcons: Story = {
+    args: {
+        previous: { title: "Introduction", href: "/introduction" },
+        next: { title: "Getting Started", href: "/getting-started" },
+        parent: { title: "Documentation", href: "/documentation" },
+        onNavigate: (e: NavigateEvent) => action("navigate")(e.detail),
+    } as ReactContentPaginationProps,
+    render: (args) => (
+        <ReactContentPagination {...args}>
+            <span slot="previous-icon">◀️</span>
+            <span slot="next-icon">▶️</span>
+            <span slot="parent-icon">⬆️</span>
+        </ReactContentPagination>
+    ),
+};
+
 export const Customization: Story = {
     args: {
         previous: { title: "Introduction", href: "/introduction" },
@@ -96,7 +127,7 @@ export const Customization: Story = {
             <ReactContentPagination {...args} className="custom-content-pagination">
                 <span slot="previous-icon">‹️</span>
                 <span slot="next-icon">›️</span>
-                <span slot="parent-icon">️</span>
+                <span slot="parent-icon">⬆️</span>
             </ReactContentPagination>
         </>
     ),
