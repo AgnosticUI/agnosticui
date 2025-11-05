@@ -51,10 +51,6 @@
       "types": "./dist/components/Input/react/ReactInput.d.ts",
       "import": "./dist/components/Input/react/ReactInput.js"
     },
-    "./icon-button/react": {
-      "types": "./dist/components/IconButton/react/ReactIconButton.d.ts",
-      "import": "./dist/components/IconButton/react/ReactIconButton.js"
-    },
     "./button": {
       "types": "./dist/components/Button/core/Button.d.ts",
       "import": "./dist/components/Button/core/Button.js"
@@ -78,6 +74,14 @@
     "./input/vue": {
       "types": "./dist/components/Input/vue/index.d.ts",
       "import": "./dist/components/Input/vue/index.js"
+    },
+    "./icon-button": {
+      "types": "./dist/components/IconButton/core/IconButton.d.ts",
+      "import": "./dist/components/IconButton/core/IconButton.js"
+    },
+    "./icon-button/react": {
+      "types": "./dist/components/IconButton/react/ReactIconButton.d.ts",
+      "import": "./dist/components/IconButton/react/ReactIconButton.js"
     },
     "./icon-button/vue": {
       "types": "./dist/components/IconButton/vue/index.d.ts",
@@ -130,10 +134,6 @@
     "./dialog": {
       "types": "./dist/components/Dialog/core/Dialog.d.ts",
       "import": "./dist/components/Dialog/core/Dialog.js"
-    },
-    "./icon-button": {
-      "types": "./dist/components/IconButton/core/IconButton.d.ts",
-      "import": "./dist/components/IconButton/core/IconButton.js"
     },
     "./toggle": {
       "types": "./dist/components/Toggle/core/Toggle.d.ts",
@@ -278,6 +278,18 @@
     "./checkbox/vue": {
       "types": "./dist/components/Checkbox/vue/index.d.ts",
       "import": "./dist/components/Checkbox/vue/index.js"
+    },
+    "./content-pagination": {
+      "types": "./dist/components/Pagination/core/ContentPagination.d.ts",
+      "import": "./dist/components/Pagination/core/ContentPagination.js"
+    },
+    "./content-pagination/react": {
+      "types": "./dist/components/Pagination/react/ReactContentPagination.d.ts", 
+      "import": "./dist/components/Pagination/react/ReactContentPagination.js"
+    },
+    "./content-pagination/vue": {
+      "types": "./dist/components/Pagination/vue/index.d.ts",
+      "import": "./dist/components/Pagination/vue/index.js"
     },
     "./pagination": {
       "types": "./dist/components/Pagination/core/Pagination.d.ts",
