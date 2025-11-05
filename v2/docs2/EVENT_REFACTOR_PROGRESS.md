@@ -1,12 +1,8 @@
 # Event Refactor Progress
 
-**🚨 CRITICAL: V2 BRANCH INFORMATION 🚨**
-
 **⚠️ ALL v2 work merges to `feature/agnosticui-v2-integration` - NOT `master` or `develop`! ⚠️**
 
 See [EVENT_REFACTOR_STRATEGY.md](./EVENT_REFACTOR_STRATEGY.md#2-git-strategy) for complete Git workflow.
-
----
 
 ## Related Documentation
 
@@ -324,93 +320,6 @@ refactor([ComponentName]): standardize event propagation
 Follows event conventions from COMPONENT_DEVELOPMENT_WORKFLOW.md
 Ref: Button (442432d, 11a657a), Collapsible (6888e11)
 ```
-
----
-
-## Blockers & Issues
-
-**Current Blockers**: None
-
-**Known Issues**:
-- None yet
-
-**Questions/Decisions Needed**:
-- None yet
-
----
-
-## Completed Component Summaries
-
-### Button ✅
-- **Commits**: 442432d, 11a657a
-- **Events**: click (native), focus/blur (re-dispatched), toggle (custom)
-- **Pattern**: Dual-dispatch for toggle, callback props for native events
-- **Breaking Changes**: None
-- **Reference**: First implementation of standardized pattern
-
-### Collapsible ✅
-- **Commits**: 442432d, 11a657a, 6888e11
-- **Events**: toggle (custom)
-- **Pattern**: Dual-dispatch for toggle event with { open: boolean }
-- **Vue**: Added v-model:open support
-- **Breaking Changes**: None
-- **Reference**: Clean toggle pattern, good Vue v-model example
-
-### Toggle ✅
-- **Commits**: 47db8e6 (core), 0881575 (storybooks), b9028ca (docs), 056a9f7 (table fix), adb05d5 (guide update)
-- **Events**: click (native), toggle-change (custom)
-- **Pattern**: Dual-dispatch for toggle-change with { checked, name, value }
-- **Core Changes**:
-  - Removed @customElement decorator (uses barrel pattern)
-  - Added onClick, onToggleChange callback props with @property({ attribute: false })
-  - Separated _handleClick and _performToggle for proper typing
-  - 54 tests passing (8 new event tests)
-- **React**: Added explicit event types (className, id, onClick, onToggleChange)
-- **Vue**: Modern emit pattern + v-model:checked support
-- **Storybooks**: All 3 frameworks updated with event handling examples
-  - Lit: addEventListener, callback prop, dual-dispatch patterns
-  - React: onToggleChange, with state, with onClick patterns
-  - Vue: @toggle-change, v-model:checked, both together + interactive demo
-- **Docs**: Comprehensive Events section with standardized table format
-- **Breaking Changes**: None
-- **Reference**: Complete end-to-end refactor following all specifications
-
-### Checkbox ✅
-- **Commits**: 38222d0 (core + docs), 295e06d (storybooks)
-- **Events**: click (native), change (custom, renamed from ag-change)
-- **Pattern**: Dual-dispatch for change with { checked, value, name, indeterminate }
-- **Core Changes**:
-  - Renamed ag-change to change for consistency
-  - Added onClick, onChange callback props with @property({ attribute: false })
-  - Event includes indeterminate state (unique to checkbox)
-  - 46 tests passing (includes event tests)
-- **React**: Maps change event to onChange, native onClick available
-- **Vue**: Modern emit pattern + v-model:checked + v-model:indeterminate support
-- **Storybooks**: All 3 frameworks updated with comprehensive event examples
-  - Lit: addEventListener, callback props, dual-dispatch, native click patterns
-  - React: onChange, with state, native onClick, indeterminate handling
-  - Vue: @change, v-model:checked, v-model:indeterminate, both patterns, native click
-- **Docs**: Comprehensive Events section with standardized table format
-- **Breaking Changes**: Event renamed from ag-change to change
-- **Reference**: Similar to Toggle, with additional indeterminate state handling
-
-### Radio ✅
-- **Commits**: 10eeca4 (core), 85e05b8 (docs)
-- **Events**: click (native), change (custom, renamed from ag-change)
-- **Pattern**: Dual-dispatch for change with { checked, value, name }
-- **Core Changes**:
-  - Renamed ag-change to change for consistency
-  - Added onClick, onChange callback props with @property({ attribute: false })
-  - Event includes radio group coordination data
-  - 36 tests passing (4 new event tests)
-- **React**: Maps change event to onChange, native onClick available
-- **Vue**: Modern emit pattern + v-model:checked support + click emit
-- **Docs**: Comprehensive Events section with radio group examples
-- **Storybook**: TODO - to be added in follow-up commit
-- **Breaking Changes**: Event renamed from ag-change to change
-- **Reference**: Similar pattern to Checkbox/Toggle, with radio group coordination
-
----
 
 ## Notes & Lessons Learned
 
