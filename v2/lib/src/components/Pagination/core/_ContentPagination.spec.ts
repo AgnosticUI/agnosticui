@@ -149,6 +149,7 @@ describe('ContentPagination - Icon Slots', () => {
     const iconContainer = prevLink?.querySelector('.content-pagination-icon');
     const svg = iconContainer?.querySelector('svg');
     expect(svg).toBeDefined();
+    expect(svg?.tagName.toLowerCase()).toBe('svg');
   });
 
   it('should render default next icon', async () => {
@@ -158,6 +159,7 @@ describe('ContentPagination - Icon Slots', () => {
     const iconContainer = nextLink?.querySelector('.content-pagination-icon');
     const svg = iconContainer?.querySelector('svg');
     expect(svg).toBeDefined();
+    expect(svg?.tagName.toLowerCase()).toBe('svg');
   });
 
   it('should render default parent icon', async () => {
@@ -545,21 +547,23 @@ describe('ContentPagination - Conditional Styling', () => {
     expect(nav?.classList.contains('content-pagination-nav-with-parent')).toBe(true);
   });
 
-  it('should not have a border-top when no parent is provided', async () => {
-    element.previous = { title: 'Previous' };
-    element.next = { title: 'Next' };
-    await element.updateComplete;
-    const nav = element.shadowRoot?.querySelector('.content-pagination-nav');
-    const computedStyle = getComputedStyle(nav!);
-    expect(computedStyle.borderTopWidth).toBe('0px');
-  });
-
-  it('should have a border-top when parent and child are provided', async () => {
+  it('should reflect has-parent attribute when parent and child are provided', async () => {
     element.parent = { title: 'Parent' };
     element.previous = { title: 'Previous' };
     await element.updateComplete;
-    const nav = element.shadowRoot?.querySelector('.content-pagination-nav');
-    const computedStyle = getComputedStyle(nav!);
-    expect(computedStyle.borderTopWidth).toBe('1px');
+    expect(element.hasAttribute('has-parent')).toBe(true);
+  });
+
+  it('should not reflect has-parent attribute when no parent is provided', async () => {
+    element.previous = { title: 'Previous' };
+    element.next = { title: 'Next' };
+    await element.updateComplete;
+    expect(element.hasAttribute('has-parent')).toBe(false);
+  });
+
+  it('should not reflect has-parent attribute when parent exists but no children', async () => {
+    element.parent = { title: 'Parent' };
+    await element.updateComplete;
+    expect(element.hasAttribute('has-parent')).toBe(false);
   });
 });
