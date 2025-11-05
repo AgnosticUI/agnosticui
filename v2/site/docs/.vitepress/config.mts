@@ -63,6 +63,7 @@ function getComponents() {
       { text: 'Kbd', link: '/components/kbd' },
       { text: 'Loader', link: '/components/loader' },
       { text: 'Menu', link: '/components/menu' },
+      { text: 'Pagination', link: '/components/pagination' },
       { text: 'Progress', link: '/components/progress' },
       { text: 'Radio', link: '/components/radio' },
       { text: 'Select', link: '/components/select' },
