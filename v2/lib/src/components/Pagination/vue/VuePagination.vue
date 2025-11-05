@@ -45,7 +45,6 @@ const dynamicProps = computed(() => {
   if (props.firstLastNavigation) {
     result.firstLastNavigation = true;
   }
-  console.log("result: ", result);
   return result;
 });
 
