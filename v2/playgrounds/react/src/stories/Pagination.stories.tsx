@@ -58,7 +58,7 @@ const meta: Meta<ReactPaginationProps> = {
     justify: '',
     ariaLabel: 'pagination',
     bordered: false,
-    firstLastNavigation: true,
+    firstLastNavigation: false,
     className: '',
     id: '',
     onPageChange: fn(),
@@ -138,11 +138,11 @@ export const OffsetTwo: Story = {
   ),
 };
 
-export const NoFirstLast: Story = {
+export const FirstLast: Story = {
   args: {
     current: 5,
     totalPages: 10,
-    firstLastNavigation: false,
+    firstLastNavigation: true,
   },
   render: (args: ReactPaginationProps) => (
     <ReactPagination {...args} />
@@ -153,6 +153,7 @@ export const CustomLabels: Story = {
   args: {
     current: 5,
     totalPages: 10,
+    firstLastNavigation: true,
     navigationLabels: {
       first: 'Erste',
       previous: 'Zurück',

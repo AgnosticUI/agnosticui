@@ -47,7 +47,7 @@ const meta = {
     justify: "",
     ariaLabel: "pagination",
     bordered: false,
-    firstLastNavigation: true,
+    firstLastNavigation: false,
     onPageChange: fn(),
   },
 } satisfies Meta<VuePaginationPropsWithEvents>;
@@ -141,11 +141,11 @@ export const OffsetTwo: Story = {
   render: renderPagination,
 };
 
-export const NoFirstLast: Story = {
+export const FirstLast: Story = {
   args: {
     current: 5,
     totalPages: 10,
-    firstLastNavigation: false,
+    firstLastNavigation: true,
   },
   render: renderPagination,
 };
@@ -154,6 +154,7 @@ export const CustomLabels: Story = {
   args: {
     current: 5,
     totalPages: 10,
+    firstLastNavigation: true,
     navigationLabels: {
       first: 'Erste',
       previous: 'Zurück',
