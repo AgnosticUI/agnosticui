@@ -79,15 +79,12 @@ export const Customization: Story = {
         <>
             <style>{`
                 .custom-content-pagination::part(ag-content-pagination-container) {
-                    border: 2px solid #1e40af;
-                    border-radius: 0.5rem;
                     padding: 1rem;
                 }
-                .custom-content-pagination::part(ag-content-pagination-parent) {
+                .custom-content-pagination::part(ag-content-pagination-parent):hover {
                     background-color: #dbeafe;
                 }
                 .custom-content-pagination::part(ag-content-pagination-link) {
-                    background-color: #eff6ff;
                     color: #1d4ed8;
                     border-color: #93c5fd;
                 }
@@ -97,9 +94,9 @@ export const Customization: Story = {
                 }
             `}</style>
             <ReactContentPagination {...args} className="custom-content-pagination">
-                <span slot="previous-icon">⬅️</span>
-                <span slot="next-icon">➡️</span>
-                <span slot="parent-icon">⬆️</span>
+                <span slot="previous-icon">‹️</span>
+                <span slot="next-icon">›️</span>
+                <span slot="parent-icon">️</span>
             </ReactContentPagination>
         </>
     ),
