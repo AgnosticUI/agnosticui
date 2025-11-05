@@ -279,6 +279,18 @@
       "types": "./dist/components/Checkbox/vue/index.d.ts",
       "import": "./dist/components/Checkbox/vue/index.js"
     },
+    "./pagination": {
+      "types": "./dist/components/Pagination/core/Pagination.d.ts",
+      "import": "./dist/components/Pagination/core/Pagination.js"
+    },
+    "./pagination/react": {
+      "types": "./dist/components/Pagination/react/index.d.ts",
+      "import": "./dist/components/Pagination/react/index.js"
+    },
+    "./pagination/vue": {
+      "types": "./dist/components/Pagination/vue/index.d.ts",
+      "import": "./dist/components/Pagination/vue/index.js"
+    },
     "./progress": {
       "types": "./dist/components/Progress/core/Progress.d.ts",
       "import": "./dist/components/Progress/core/Progress.js"
