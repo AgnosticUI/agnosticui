@@ -21,6 +21,7 @@ describe('ContentPagination - Component Initialization', () => {
     expect(element.next).toBeUndefined();
     expect(element.parent).toBeUndefined();
     expect(element.ariaLabel).toBe('content navigation');
+    expect(element.bordered).toBe(false);
   });
 
   it('should render with custom properties', async () => {
@@ -487,6 +488,57 @@ describe('ContentPagination - Layout and Styling', () => {
 
     parentContainer = element.shadowRoot?.querySelector('.content-pagination-parent');
     expect(parentContainer).toBeDefined();
+  });
+});
+
+describe('ContentPagination - Bordered Prop', () => {
+  let element: ContentPagination;
+
+  beforeEach(() => {
+    element = document.createElement('ag-content-pagination') as ContentPagination;
+    document.body.appendChild(element);
+  });
+
+  afterEach(() => {
+    document.body.removeChild(element);
+  });
+
+  it('should not have bordered attribute by default', async () => {
+    await element.updateComplete;
+    expect(element.hasAttribute('bordered')).toBe(false);
+    expect(element.bordered).toBe(false);
+  });
+
+  it('should reflect bordered attribute when set to true', async () => {
+    element.bordered = true;
+    await element.updateComplete;
+    expect(element.hasAttribute('bordered')).toBe(true);
+    expect(element.bordered).toBe(true);
+  });
+
+  it('should remove bordered attribute when set to false', async () => {
+    element.bordered = true;
+    await element.updateComplete;
+    expect(element.hasAttribute('bordered')).toBe(true);
+
+    element.bordered = false;
+    await element.updateComplete;
+    expect(element.hasAttribute('bordered')).toBe(false);
+  });
+
+  it('should apply bordered styling to navigation links', async () => {
+    element.previous = { title: 'Previous', href: '/prev' };
+    element.next = { title: 'Next', href: '/next' };
+    element.bordered = true;
+    await element.updateComplete;
+
+    expect(element.hasAttribute('bordered')).toBe(true);
+    
+    const prevLink = element.shadowRoot?.querySelector('[aria-label="Previous: Previous"]');
+    const nextLink = element.shadowRoot?.querySelector('[aria-label="Next: Next"]');
+    
+    expect(prevLink).toBeDefined();
+    expect(nextLink).toBeDefined();
   });
 });
 
