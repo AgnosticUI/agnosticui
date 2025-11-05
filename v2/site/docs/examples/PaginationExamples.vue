@@ -11,7 +11,25 @@
       />
       <p
         v-if="basicPageMessage"
-        style="margin-top: 1rem; font-size: 0.875rem; color: var(--ag-text-secondary);"
+        style="margin: 0; padding: 0; font-size: var(--ag-font-size-sm); color: var(--ag-text-secondary);"
+      >
+        {{ basicPageMessage }}
+      </p>
+    </div>
+
+    <div class="mbe4">
+      <h3>First Last Navigation Opt-In</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="basicPage"
+        :total-pages="20"
+        :first-last-navigation="true"
+        @page-change="handleBasicPageChange"
+      />
+      <p
+        v-if="basicPageMessage"
+        style="margin: 0; padding: 0; font-size: var(--ag-font-size-sm); color: var(--ag-text-secondary);"
       >
         {{ basicPageMessage }}
       </p>
@@ -28,35 +46,24 @@
         @page-change="handleBorderedPageChange"
       />
     </div>
-
-    <div class="mbe4">
-      <h3>Without First/Last Navigation</h3>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <VuePagination
-        :current="noFirstLastPage"
-        :total-pages="10"
-        :first-last-navigation="false"
-        @page-change="handleNoFirstLastPageChange"
-      />
-    </div>
-
     <div class="mbe4">
       <h3>Offset Comparison</h3>
     </div>
+    <p>
+      Offset 2 (default) - shows 2 buttons on each side:
+    </p>
     <div class="stacked-mobile mbe4">
-      <p style="margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
-        Offset 2 (default) - shows 2 buttons on each side:
-      </p>
       <VuePagination
         :current="offset2Page"
         :total-pages="50"
         :offset="2"
         @page-change="handleOffset2PageChange"
       />
-      <p style="margin: 1rem 0 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
-        Offset 1 - shows 1 button on each side:
-      </p>
+    </div>
+    <p style="margin: 1rem 0 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
+      Offset 1 - shows 1 button on each side:
+    </p>
+    <div class="stacked-mobile mbe4">
       <VuePagination
         :current="offset1Page"
         :total-pages="50"
@@ -68,26 +75,24 @@
     <div class="mbe4">
       <h3>Alignment Options</h3>
     </div>
+    <p>
+      Justify 'start', 'center', and 'end' respectively:
+    </p>
     <div class="stacked-mobile mbe4">
-      <p style="margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
-        Start (left-aligned):
-      </p>
       <VuePagination
         :current="1"
         :total-pages="10"
         justify="start"
       />
-      <p style="margin: 1rem 0 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
-        Center:
-      </p>
+    </div>
+    <div class="stacked-mobile mbe4">
       <VuePagination
         :current="1"
         :total-pages="10"
         justify="center"
       />
-      <p style="margin: 1rem 0 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
-        End (right-aligned):
-      </p>
+    </div>
+    <div class="stacked-mobile mbe4">
       <VuePagination
         :current="1"
         :total-pages="10"
@@ -102,6 +107,7 @@
       <VuePagination
         :current="spanishPage"
         :total-pages="10"
+        :first-last-navigation="true"
         :navigation-labels="{
           first: 'Primera',
           previous: 'Anterior',
@@ -115,10 +121,10 @@
     <div class="mbe4">
       <h3>Small Page Count</h3>
     </div>
+    <p>
+      When there are few pages, all page numbers are shown:
+    </p>
     <div class="stacked-mobile mbe4">
-      <p style="margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
-        When there are few pages, all page numbers are shown:
-      </p>
       <VuePagination
         :current="smallPage"
         :total-pages="5"
@@ -129,10 +135,10 @@
     <div class="mbe4">
       <h3>Large Page Count</h3>
     </div>
+    <p>
+      With many pages, ellipsis (...) indicates skipped pages:
+    </p>
     <div class="stacked-mobile mbe4">
-      <p style="margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
-        With many pages, ellipsis (...) indicates skipped pages:
-      </p>
       <VuePagination
         :current="largePage"
         :total-pages="100"

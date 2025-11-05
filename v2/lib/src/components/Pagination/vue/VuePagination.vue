@@ -6,18 +6,16 @@
     :offset="offset"
     :justify="justify"
     :aria-label="ariaLabel"
-    :bordered="bordered || null"
-    :first-last-navigation="firstLastNavigation"
     :navigationLabels="navigationLabels"
     @page-change="handlePageChange"
-    v-bind="$attrs"
+    v-bind="dynamicProps"
   >
     <slot />
   </ag-pagination>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed, useAttrs } from "vue";
 import "../core/Pagination"; // Registers the ag-pagination web component
 import type {
   PaginationProps,
@@ -36,6 +34,21 @@ export interface VuePaginationProps
   current?: number;
 }
 
+const attrs = useAttrs();
+const dynamicProps = computed(() => {
+  const result: Record<string, any> = { ...attrs };
+
+  // Only add these props when they're explicitly true
+  if (props.bordered) {
+    result.bordered = true;
+  }
+  if (props.firstLastNavigation) {
+    result.firstLastNavigation = true;
+  }
+  console.log("result: ", result);
+  return result;
+});
+
 // Define props with defaults
 const props = withDefaults(defineProps<VuePaginationProps>(), {
   current: 1,
@@ -44,7 +57,7 @@ const props = withDefaults(defineProps<VuePaginationProps>(), {
   justify: "",
   ariaLabel: "pagination",
   bordered: false,
-  firstLastNavigation: true,
+  firstLastNavigation: false,
 });
 
 // Define emits

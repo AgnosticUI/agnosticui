@@ -100,7 +100,7 @@ export class Pagination extends LitElement implements PaginationProps {
   @property({ type: Number })
   declare offset: PaginationOffset;
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare justify: PaginationJustify;
 
   @property({ type: String, attribute: 'aria-label' })
@@ -126,7 +126,7 @@ export class Pagination extends LitElement implements PaginationProps {
     this.justify = '';
     this.ariaLabel = 'pagination';
     this.bordered = false;
-    this.firstLastNavigation = true;
+    this.firstLastNavigation = false;
     this.navigationLabels = {
       first: 'First',
       previous: 'Previous',
@@ -280,6 +280,13 @@ export class Pagination extends LitElement implements PaginationProps {
 
     .pagination-container {
       display: flex;
+      font-size: var(--ag-font-size-sm);
+    }
+    
+    :host([justify="start"]),
+    :host([justify="center"]),
+    :host([justify="end"]) {
+      width: 100%;
     }
 
     .pagination-center {
@@ -302,6 +309,15 @@ export class Pagination extends LitElement implements PaginationProps {
     }
 
     .pagination-item {
+      margin-inline-start: 0.125rem;
+      margin-inline-end: 0.125rem;
+    }
+
+    /* The first previous next last buttons are slightly tighter */
+    .pagination-button-first,
+    .pagination-button-previous,
+    .pagination-button-next,
+    .pagination-button-last {
       padding-inline-start: var(--ag-space-1);
       padding-inline-end: var(--ag-space-1);
     }
@@ -310,10 +326,8 @@ export class Pagination extends LitElement implements PaginationProps {
       color: var(--ag-primary);
       display: inline-block;
       line-height: var(--ag-line-height-4);
-      padding-inline-start: var(--ag-space-3);
-      padding-inline-end: var(--ag-space-3);
-      padding-block-start: var(--ag-space-2);
-      padding-block-end: var(--ag-space-2);
+      padding-inline-start: var(--ag-space-2);
+      padding-inline-end: var(--ag-space-2);
       border-radius: var(--ag-radius-md);
       border: var(--ag-border-width-1) solid transparent;
       background-color: transparent;
@@ -344,8 +358,8 @@ export class Pagination extends LitElement implements PaginationProps {
     }
 
     .pagination-item-active .pagination-button {
-      background-color: var(--ag-primary);
-      color: var(--ag-text-on-primary);
+      background-color: var(--ag-background-tertiary);
+      color: var(--ag-primary-dark);
     }
 
     :host([bordered]) .pagination-item-active .pagination-button {
@@ -396,7 +410,7 @@ export class Pagination extends LitElement implements PaginationProps {
                   part="ag-pagination-item"
                 >
                   <button
-                    class="pagination-button"
+                    class="pagination-button pagination-button-first"
                     part="ag-pagination-button"
                     type="button"
                     @click=${() => this._handlePageChange(1)}
@@ -416,7 +430,7 @@ export class Pagination extends LitElement implements PaginationProps {
             part="ag-pagination-item"
           >
             <button
-              class="pagination-button"
+              class="pagination-button pagination-button-previous"
               part="ag-pagination-button"
               type="button"
               @click=${() => this._handlePageChange(this.current - 1)}
@@ -467,7 +481,7 @@ export class Pagination extends LitElement implements PaginationProps {
             part="ag-pagination-item"
           >
             <button
-              class="pagination-button"
+              class="pagination-button pagination-button-next"
               part="ag-pagination-button"
               type="button"
               @click=${() => this._handlePageChange(this.current + 1)}
@@ -481,14 +495,14 @@ export class Pagination extends LitElement implements PaginationProps {
           ${this.firstLastNavigation
             ? html`
                 <li
-                  class="pagination-item ${this.current === this.totalPages
+                  class="pagination-item pagination-item-last ${this.current === this.totalPages
                     ? 'pagination-item-disabled'
                     : ''}"
                   part="ag-pagination-item"
                 >
                   <button
                     type="button"
-                    class="pagination-button"
+                    class="pagination-button pagination-button-last"
                     part="ag-pagination-button"
                     @click=${() => this._handlePageChange(this.totalPages)}
                     ?disabled=${this.current === this.totalPages}
