@@ -6,7 +6,7 @@
     .isSkinned="isSkinned"
     v-bind="$attrs"
   >
-    <span slot="logo">
+    <span slot="logo"> <!-- eslint-disable-line vue/no-deprecated-slot-attribute -->
       <slot name="logo"></slot>
     </span>
     <slot />
