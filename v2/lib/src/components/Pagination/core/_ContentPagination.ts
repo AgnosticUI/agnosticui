@@ -44,6 +44,10 @@ export interface ContentPaginationProps {
    */
   ariaLabel?: string;
   /**
+   * Whether to display borders around navigation links
+   */
+  bordered?: boolean;
+  /**
    * Event callback fired when navigation occurs (for SPA routing)
    */
   onNavigate?: (event: NavigateEvent) => void;
@@ -84,6 +88,9 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
   @property({ type: String, attribute: 'aria-label' })
   declare ariaLabel: string;
 
+  @property({ type: Boolean, reflect: true })
+  declare bordered: boolean;
+
   @property({ attribute: false })
   declare onNavigate?: (event: NavigateEvent) => void;
 
@@ -93,6 +100,7 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
   constructor() {
     super();
     this.ariaLabel = 'content navigation';
+    this.bordered = false;
   }
 
   willUpdate(changedProperties: Map<string, unknown>) {
@@ -231,8 +239,9 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
       min-width: 0;
     }
 
-    /* TODO add bordered boolean to active button bordered like look below */
-    /* :host(bordered) .content-pagination-link { border: 1px solid var(--ag-border); } */
+    :host([bordered]) .content-pagination-link {
+      border: 1px solid var(--ag-border);
+    }
     
     .content-pagination-link:hover {
       background-color: var(--ag-background-secondary);
@@ -251,6 +260,10 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
     button.content-pagination-link {
       background-color: transparent;
       border: 0;
+    }
+
+    :host([bordered]) button.content-pagination-link {
+      border: 1px solid var(--ag-border);
     }
 
     .content-pagination-title {
