@@ -375,11 +375,6 @@
         img-src="https://i.pravatar.cc/150?img=8"
         img-alt="Custom border"
       />
-      <VueAvatar
-        class="custom-avatar-shadow"
-        text="SH"
-        size="lg"
-      />
     </div>
   </section>
 </template>
@@ -420,18 +415,6 @@ export default defineComponent({
 .custom-avatar-border::part(ag-avatar) {
   border: 4px solid #10b981;
   box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
-}
-
-.custom-avatar-shadow::part(ag-avatar) {
-  background: var(--ag-error);
-  color: white;
-  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.4);
-  border: 2px solid var(--ag-error-dark);
-}
-
-.custom-avatar-shadow::part(ag-avatar-text) {
-  font-family: "Courier New", monospace;
-  letter-spacing: 3px;
 }
 
 /* Avatar Group custom styling examples */

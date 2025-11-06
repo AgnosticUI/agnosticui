@@ -49,14 +49,16 @@
 
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
-          <h4>Gradient Style</h4>
+          <h4 class="mbe4">Gradient Style</h4>
+          <div class="mbe3"></div>
           <VueBreadcrumb
             class="custom-gradient-breadcrumb"
             :items="items"
           />
         </div>
         <div>
-          <h4>Neon Glow Effect</h4>
+          <h4 class="pbe4">Neon Glow Effect</h4>
+          <div class="mbe3"></div>
           <VueBreadcrumb
             class="custom-neon-breadcrumb"
             :items="items"
@@ -64,6 +66,7 @@
         </div>
         <div>
           <h4>Minimal with Underline</h4>
+          <div class="mbe3"></div>
           <VueBreadcrumb
             class="custom-minimal-breadcrumb"
             :items="items"
