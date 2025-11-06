@@ -147,25 +147,26 @@ export default {
       darkModeEnabled: false,
       formData: {
         newsletter: false,
-        name: '',
-        value: '',
+        name: "",
+        value: "",
       },
       customToggleStyles: `
         <style>
           .custom-toggle::part(ag-toggle-button) {
-            border: 2px solid #bada55;
+            border: 2px solid var(--ag-coral-50);
             border-radius: 9999px;
+            padding: var(--ag-space-2) var(--ag-space-3);
           }
           .custom-toggle::part(ag-toggle-track) {
             background-color: #f0f0f0;
           }
           .custom-toggle::part(ag-toggle-handle) {
-            background-color: #bada55;
+            background-color: var(--ag-coral-200);
             border: 2px solid #fff;
-            box-shadow: 0 0 5px #bada55;
+            box-shadow: 0 0 5px var(--ag-coral-200);
           }
           .custom-toggle[checked]::part(ag-toggle-track) {
-            background-color: #bada55;
+            background-color:var(--ag-coral-300);
           }
           .custom-toggle[checked]::part(ag-toggle-handle) {
             background-color: #fff;
