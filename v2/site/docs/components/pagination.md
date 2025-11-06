@@ -8,6 +8,7 @@ Pagination allows users to navigate through pages of content. It displays page n
 
 <script setup>
 import PaginationExamples from '../examples/PaginationExamples.vue'
+import ContentPaginationExamples from '../examples/ContentPaginationExamples.vue'
 </script>
 
 ## Usage
@@ -426,3 +427,345 @@ Common translations:
 ```javascript
 { first: '最初', previous: '前', next: '次', last: '最後' }
 ```
+
+---
+
+# Content Pagination
+
+Content Pagination provides navigation between sequential content items (like documentation pages or articles). It displays previous/next links and an optional parent/overview link, making it easy to navigate through structured content hierarchies.
+
+## Examples
+
+<ContentPaginationExamples />
+
+## Usage
+
+::: details Vue
+
+```vue
+<template>
+  <section>
+    <!-- Basic content pagination -->
+    <VueContentPagination
+      :previous="{ title: 'Introduction', href: '/introduction' }"
+      :next="{ title: 'Getting Started', href: '/getting-started' }"
+      :parent="{ title: 'Documentation', href: '/documentation' }"
+      @navigate="handleNavigate"
+    />
+
+    <!-- Previous/Next only (no parent) -->
+    <VueContentPagination
+      :previous="{ title: 'Installation' }"
+      :next="{ title: 'Configuration' }"
+    />
+
+    <!-- Bordered style -->
+    <VueContentPagination
+      :previous="{ title: 'Chapter 1', href: '/chapter-1' }"
+      :next="{ title: 'Chapter 3', href: '/chapter-3' }"
+      bordered
+    />
+
+    <!-- Custom icons -->
+    <VueContentPagination
+      :previous="{ title: 'Prev Page' }"
+      :next="{ title: 'Next Page' }"
+    >
+      <template #previous-icon><span>◀️</span></template>
+      <template #next-icon><span>▶️</span></template>
+      <template #parent-icon><span>⬆️</span></template>
+    </VueContentPagination>
+  </section>
+</template>
+
+<script>
+import { VueContentPagination } from "agnosticui-core/content-pagination/vue";
+
+export default {
+  components: {
+    VueContentPagination,
+  },
+  methods: {
+    handleNavigate(detail) {
+      console.log("Navigate to:", detail);
+      // detail: { type: 'previous' | 'next' | 'parent', item: { title, href? } }
+      // Handle navigation (e.g., router.push, window.location, etc.)
+    },
+  },
+};
+</script>
+```
+
+:::
+
+::: details React
+
+```tsx
+import { ReactContentPagination } from "agnosticui-core/content-pagination/react";
+
+export default function ContentPaginationExample() {
+  const handleNavigate = (event) => {
+    console.log("Navigate to:", event.detail);
+    // event.detail: { type: 'previous' | 'next' | 'parent', item: { title, href? } }
+  };
+
+  return (
+
+      {/* Basic content pagination */}
+      <ReactContentPagination
+        previous={{ title: "Introduction", href: "/introduction" }}
+        next={{ title: "Getting Started", href: "/getting-started" }}
+        parent={{ title: "Documentation", href: "/documentation" }}
+        onNavigate={handleNavigate}
+      />
+
+      {/* Previous/Next only */}
+
+
+      {/* Bordered style */}
+      <ReactContentPagination
+        previous={{ title: "Chapter 1", href: "/chapter-1" }}
+        next={{ title: "Chapter 3", href: "/chapter-3" }}
+        bordered
+      />
+
+  );
+}
+```
+
+:::
+
+::: details Lit (Web Components)
+
+```html
+import "agnosticui-core/content-pagination";
+document.addEventListener("DOMContentLoaded", () => { const contentPagination =
+document.querySelector("#my-content-pagination");
+contentPagination?.addEventListener("navigate", (e) => { console.log("Navigate
+to:", e.detail); // e.detail: { type: 'previous' | 'next' | 'parent', item: {
+title, href? } } }); });
+```
+
+:::
+
+## Props
+
+| Prop        | Type          | Default                | Description                                 |
+| ----------- | ------------- | ---------------------- | ------------------------------------------- |
+| `previous`  | `ContentItem` | `undefined`            | Previous content item                       |
+| `next`      | `ContentItem` | `undefined`            | Next content item                           |
+| `parent`    | `ContentItem` | `undefined`            | Parent/overview content item                |
+| `ariaLabel` | `string`      | `'Content navigation'` | ARIA label for the navigation element       |
+| `bordered`  | `boolean`     | `false`                | Show bordered style around navigation links |
+
+### ContentItem Interface
+
+```typescript
+interface ContentItem {
+  title: string; // Display title for the link
+  href?: string; // Optional URL (if omitted, navigate event still fires)
+}
+```
+
+## Events
+
+The Content Pagination component follows AgnosticUI v2 event conventions with **dual-dispatch** for the `navigate` custom event.
+
+| Event      | Framework                                                                    | Detail                                                          | Description                              |
+| ---------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------- | ---------------------------------------- |
+| `navigate` | Vue: `@navigate`<br>React: `onNavigate`<br>Lit: `@navigate` or `.onNavigate` | `{ type: 'previous' \| 'next' \| 'parent', item: ContentItem }` | Fired when user clicks a navigation link |
+
+### Event Handling Examples
+
+::: details Vue
+
+```vue
+<template>
+  <VueContentPagination
+    :previous="previous"
+    :next="next"
+    :parent="parent"
+    @navigate="handleNavigate"
+  />
+</template>
+
+<script setup>
+import { VueContentPagination } from "agnosticui-core/content-pagination/vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const previous = { title: "Introduction", href: "/docs/introduction" };
+const next = { title: "Getting Started", href: "/docs/getting-started" };
+const parent = { title: "Documentation", href: "/docs" };
+
+const handleNavigate = (detail) => {
+  console.log("Navigate:", detail);
+  // detail: { type: 'previous', item: { title: 'Introduction', href: '/docs/introduction' } }
+
+  if (detail.item.href) {
+    router.push(detail.item.href);
+  }
+};
+</script>
+```
+
+:::
+
+::: details React
+
+```tsx
+import { ReactContentPagination } from "agnosticui-core/content-pagination/react";
+import { useNavigate } from "react-router-dom";
+
+export default function ContentPaginationEventExample() {
+  const navigate = useNavigate();
+
+  const handleNavigate = (event) => {
+    console.log("Navigate:", event.detail);
+    // event.detail: { type: 'next', item: { title: 'Getting Started', href: '/docs/getting-started' } }
+
+    if (event.detail.item.href) {
+      navigate(event.detail.item.href);
+    }
+  };
+
+  return (
+    <ReactContentPagination
+      previous={{ title: "Introduction", href: "/docs/introduction" }}
+      next={{ title: "Getting Started", href: "/docs/getting-started" }}
+      parent={{ title: "Documentation", href: "/docs" }}
+      onNavigate={handleNavigate}
+    />
+  );
+}
+```
+
+:::
+
+::: details Lit (Web Components)
+
+```html
+import "agnosticui-core/content-pagination"; const contentPagination =
+document.querySelector("#my-content-pagination"); // Pattern 1: Using
+addEventListener contentPagination.addEventListener("navigate", (event) => {
+console.log("Navigate:", event.detail); // event.detail: { type: 'parent', item:
+{ title: 'Documentation', href: '/docs' } } if (event.detail.item.href) {
+window.location.href = event.detail.item.href; } }); // Pattern 2: Using
+callback prop contentPagination.onNavigate = (event) => { console.log("Navigate
+(callback):", event.detail); };
+```
+
+:::
+
+## Slots/Children
+
+Content Pagination provides slots for customizing navigation icons:
+
+| Slot/Template   | Description                       |
+| --------------- | --------------------------------- |
+| `previous-icon` | Custom icon for the previous link |
+| `next-icon`     | Custom icon for the next link     |
+| `parent-icon`   | Custom icon for the parent link   |
+
+### Custom Icons Example
+
+::: details Vue
+
+```vue
+<template>
+  <VueContentPagination :previous="previous" :next="next" :parent="parent">
+    <template #previous-icon><span>◀️</span></template>
+    <template #next-icon><span>▶️</span></template>
+    <template #parent-icon><span>⬆️</span></template>
+  </VueContentPagination>
+</template>
+```
+
+:::
+
+::: details React
+
+```tsx
+
+  ◀️
+  ▶️
+  ⬆️
+
+```
+
+:::
+
+## Accessibility
+
+The Content Pagination component implements accessible navigation:
+
+- Uses `<nav>` element with `aria-label` for screen readers
+- Each link has descriptive text (title) for clarity
+- Links without `href` are rendered as buttons with appropriate semantics
+- Keyboard navigation works seamlessly (Tab, Enter/Space)
+
+### Best Practices
+
+- Provide descriptive titles that clearly indicate the destination
+- Include `href` when possible for standard link behavior and SEO
+- Use the `navigate` event to integrate with client-side routing
+- Position content pagination at the end of your content for natural flow
+- Consider showing content pagination at both top and bottom for long content
+
+## Styling
+
+### Bordered Style
+
+Set `bordered={true}` to display borders around navigation links:
+
+```vue
+<VueContentPagination :previous="previous" :next="next" bordered />
+```
+
+## CSS Shadow Parts
+
+| Part                              | Description                       |
+| --------------------------------- | --------------------------------- |
+| `ag-content-pagination-container` | The outer nav container element   |
+| `ag-content-pagination-parent`    | The parent/overview link          |
+| `ag-content-pagination-previous`  | The previous link container       |
+| `ag-content-pagination-next`      | The next link container           |
+| `ag-content-pagination-link`      | Individual navigation link/button |
+
+### Example
+
+```css
+.custom-content-pagination::part(ag-content-pagination-container) {
+  padding: 2rem 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.custom-content-pagination::part(ag-content-pagination-parent) {
+  margin-bottom: 1.5rem;
+}
+
+.custom-content-pagination::part(ag-content-pagination-link) {
+  padding: 1rem 1.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.custom-content-pagination::part(ag-content-pagination-link):hover {
+  background-color: #dbeafe;
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+}
+```
+
+## Use Cases
+
+Content Pagination is ideal for:
+
+- **Documentation sites**: Navigate between guide pages, API references, and tutorials
+- **Multi-page articles**: Move between chapters or sections of long-form content
+- **Course materials**: Progress through lessons with easy navigation to course overview
+- **Blog series**: Link related posts in a series with navigation to the series index
+- **Wizard flows**: Guide users through multi-step processes with clear navigation

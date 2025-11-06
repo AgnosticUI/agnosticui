@@ -49,6 +49,28 @@ export const Default: Story = {
   }),
 };
 
+export const DefaultIcons: Story = {
+    args: {
+        previous: { title: "Introduction", href: "/introduction" },
+        next: { title: "Getting Started", href: "/getting-started" },
+        parent: { title: "Documentation", href: "/documentation" },
+    } as VueContentPaginationProps,
+    render: (args) => ({
+        components: { VueContentPagination },
+        setup() {
+            return { args, onNavigate: (e: any) => action("navigate")(e) };
+        },
+        template: `
+            <div>
+                <p style="margin-bottom: 1rem; font-size: 0.875rem; color: #666;">
+                    Default icons: SVG chevrons (‹ ›) and ↑ character.
+                </p>
+                <VueContentPagination v-bind="args" @navigate="onNavigate" />
+            </div>
+        `,
+    }),
+};
+
 export const NoHrefs: Story = {
     args: {
         previous: { title: "Introduction" },
@@ -162,9 +184,9 @@ export const Customization: Story = {
             <div>
                 <div v-html="styles"></div>
                 <VueContentPagination v-bind="args" class="custom-content-pagination" @navigate="onNavigate">
-                    <template #previous-icon><span>‹️</span></template>
-                    <template #next-icon><span>›️</span></template>
-                    <template #parent-icon><span>⬆️</span></template>
+                    <template #previous-icon><span>‹</span></template>
+                    <template #next-icon><span>›</span></template>
+                    <template #parent-icon><span>⬆</span></template>
                 </VueContentPagination>
             </div>
         `,
