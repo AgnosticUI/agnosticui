@@ -174,6 +174,7 @@ export default {
       basicPageFirstLast: 5,
       basicPage: 5,
       basicPageMessage: null,
+      basicPageMessageFirstLast: null,
       borderedPage: 3,
       noFirstLastPage: 5,
       offset2Page: 25,
