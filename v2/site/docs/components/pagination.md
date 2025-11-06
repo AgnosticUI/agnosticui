@@ -45,6 +45,7 @@ import ContentPaginationExamples from '../examples/ContentPaginationExamples.vue
     <VuePagination
       :current="1"
       :total-pages="10"
+      :first-last-navigation="true"
       :navigation-labels="{
         first: 'Primera',
         previous: 'Anterior',
@@ -118,6 +119,7 @@ export default function PaginationExample() {
       <ReactPagination
         current={1}
         totalPages={10}
+        firstLastNavigation={true}
         navigationLabels={{
           first: "Primera",
           previous: "Anterior",
@@ -393,6 +395,7 @@ Customize navigation labels for different languages:
 <VuePagination
   :current="1"
   :total-pages="10"
+  :first-last-navigation="true"
   :navigation-labels="{
     first: '最初',
     previous: '前',
@@ -402,30 +405,16 @@ Customize navigation labels for different languages:
 />
 ```
 
-Common translations:
+**Japanese:**
+
+```javascript
+{ first: '最初', previous: '前', next: '次', last: '最後' }
+```
 
 **Spanish:**
 
 ```javascript
 { first: 'Primera', previous: 'Anterior', next: 'Siguiente', last: 'Última' }
-```
-
-**French:**
-
-```javascript
-{ first: 'Première', previous: 'Précédent', next: 'Suivant', last: 'Dernière' }
-```
-
-**German:**
-
-```javascript
-{ first: 'Erste', previous: 'Zurück', next: 'Weiter', last: 'Letzte' }
-```
-
-**Japanese:**
-
-```javascript
-{ first: '最初', previous: '前', next: '次', last: '最後' }
 ```
 
 ---
@@ -471,19 +460,23 @@ Content Pagination provides navigation between sequential content items (like do
       :previous="{ title: 'Prev Page' }"
       :next="{ title: 'Next Page' }"
     >
-      <template #previous-icon><span>◀️</span></template>
-      <template #next-icon><span>▶️</span></template>
-      <template #parent-icon><span>⬆️</span></template>
+      <template #previous-icon><ChevronLeft :size="20" /></template>
+      <template #next-icon><ChevronRight :size="20" /></template>
+      <template #parent-icon><ChevronUp :size="20" /></template>
     </VueContentPagination>
   </section>
 </template>
 
 <script>
 import { VueContentPagination } from "agnosticui-core/content-pagination/vue";
+import { ChevronLeft, ChevronRight, ChevronUp } from "lucide-vue-next";
 
 export default {
   components: {
     VueContentPagination,
+    ChevronLeft,
+    ChevronRight,
+    ChevronUp,
   },
   methods: {
     handleNavigate(detail) {
@@ -537,13 +530,46 @@ export default function ContentPaginationExample() {
 
 ::: details Lit (Web Components)
 
-```html
-import "agnosticui-core/content-pagination";
-document.addEventListener("DOMContentLoaded", () => { const contentPagination =
-document.querySelector("#my-content-pagination");
-contentPagination?.addEventListener("navigate", (e) => { console.log("Navigate
-to:", e.detail); // e.detail: { type: 'previous' | 'next' | 'parent', item: {
-title, href? } } }); });
+```lit
+<script type="module">
+  import "agnosticui-core/content-pagination";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const contentPagination = document.querySelector("#my-content-pagination");
+
+    contentPagination?.addEventListener("navigate", (e) => {
+      console.log("Navigate to:", e.detail);
+      // e.detail: { direction: 'previous' | 'next' | 'parent', title: string, href?: string }
+    });
+  });
+</script>
+
+<section>
+  <!-- Basic content pagination (uses default chevron icons) -->
+  <ag-content-pagination
+    id="my-content-pagination"
+    previous='{"title": "Introduction", "href": "/introduction"}'
+    next='{"title": "Getting Started", "href": "/getting-started"}'
+    parent='{"title": "Documentation", "href": "/documentation"}'
+  ></ag-content-pagination>
+
+  <!-- Bordered style -->
+  <ag-content-pagination
+    previous='{"title": "Chapter 1", "href": "/chapter-1"}'
+    next='{"title": "Chapter 3", "href": "/chapter-3"}'
+    bordered
+  ></ag-content-pagination>
+
+  <!-- Custom icons using slots -->
+  <ag-content-pagination
+    previous='{"title": "Prev Page"}'
+    next='{"title": "Next Page"}'
+  >
+    <span slot="previous-icon">←</span>
+    <span slot="next-icon">→</span>
+    <span slot="parent-icon">↑</span>
+  </ag-content-pagination>
+</section>
 ```
 
 :::
@@ -645,18 +671,28 @@ export default function ContentPaginationEventExample() {
 
 ::: details Lit (Web Components)
 
-```html
-import "agnosticui-core/content-pagination"; const contentPagination =
-document.querySelector("#my-content-pagination"); // Pattern 1: Using
-addEventListener contentPagination.addEventListener("navigate", (event) => {
-console.log("Navigate:", event.detail); // event.detail: { type: 'parent', item:
-{ title: 'Documentation', href: '/docs' } } if (event.detail.item.href) {
-window.location.href = event.detail.item.href; } }); // Pattern 2: Using
-callback prop contentPagination.onNavigate = (event) => { console.log("Navigate
-(callback):", event.detail); };
-```
+```lit
 
-:::
+import "agnosticui-core/content-pagination";
+
+const contentPagination = document.querySelector("#my-content-pagination");
+
+// Pattern 1: Using addEventListener
+contentPagination.addEventListener("navigate", (event) => {
+  console.log("Navigate:", event.detail);
+  // event.detail: { direction: 'parent', title: 'Documentation', href: '/docs' }
+
+  if (event.detail.href) {
+    window.location.href = event.detail.href;
+  }
+});
+
+// Pattern 2: Using callback prop
+contentPagination.onNavigate = (event) => {
+  console.log("Navigate (callback):", event.detail);
+};
+
+```
 
 ## Slots/Children
 
@@ -675,23 +711,11 @@ Content Pagination provides slots for customizing navigation icons:
 ```vue
 <template>
   <VueContentPagination :previous="previous" :next="next" :parent="parent">
-    <template #previous-icon><span>◀️</span></template>
-    <template #next-icon><span>▶️</span></template>
-    <template #parent-icon><span>⬆️</span></template>
+    <template #previous-icon>️<ChevronLeft :size="20" /></template>
+    <template #next-icon><ChevronRight :size="20" /></template>
+    <template #parent-icon><ChevronUp :size="20" /></template>
   </VueContentPagination>
 </template>
-```
-
-:::
-
-::: details React
-
-```tsx
-
-  ◀️
-  ▶️
-  ⬆️
-
 ```
 
 :::
