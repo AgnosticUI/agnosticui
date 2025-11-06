@@ -76,7 +76,7 @@
       <VueTooltip content="Edit item">
         <VueButton aria-label="Edit">
           <Pencil
-            color="var(--ag-white)"
+            color="var(--ag-secondary)"
             :size="18"
           />
         </VueButton>
@@ -151,12 +151,7 @@
 <script>
 import VueTooltip from "agnosticui-core/tooltip/vue";
 import VueButton from "agnosticui-core/button/vue";
-import {
-  Pencil,
-  Trash2,
-  Download,
-  Share2,
-} from "lucide-vue-next";
+import { Pencil, Trash2, Download, Share2 } from "lucide-vue-next";
 
 export default {
   name: "TooltipExamples",
