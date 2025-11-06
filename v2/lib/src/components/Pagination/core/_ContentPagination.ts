@@ -160,7 +160,7 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
     .content-pagination-container {
       display: flex;
       flex-direction: column;
-      gap: var(--ag-space-2);
+      gap: var(--ag-space-1);
     }
 
     .content-pagination-parent {
