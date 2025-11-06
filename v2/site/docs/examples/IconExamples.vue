@@ -4,13 +4,11 @@
       <h3>Default Icon</h3>
       <p class="mbs2 mbe3">Basic icon with default sizing and neutral styling.</p>
       <div class="stacked-mobile">
-        <VueIcon size="16">
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+        <VueIcon
+          size="16"
+          noFill
+        >
+          <Star />
         </VueIcon>
       </div>
     </div>
@@ -19,53 +17,41 @@
       <h3>Sizes</h3>
       <p class="mbs2 mbe3">Different size variants for the icon wrapper and SVG.</p>
       <div class="stacked-mobile items-center mbe4">
-        <VueIcon size="14">
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+        <VueIcon
+          noFill
+          size="14"
+        >
+          <Star />
         </VueIcon>
-        <VueIcon size="16">
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+        <VueIcon
+          noFill
+          size="16"
+        >
+          <Star />
         </VueIcon>
-        <VueIcon size="20">
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+        <VueIcon
+          noFill
+          size="20"
+        >
+          <Star />
         </VueIcon>
-        <VueIcon size="24">
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+        <VueIcon
+          noFill
+          size="24"
+        >
+          <Star />
         </VueIcon>
-        <VueIcon size="32">
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+        <VueIcon
+          noFill
+          size="32"
+        >
+          <Star />
         </VueIcon>
-        <VueIcon size="48">
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+        <VueIcon
+          noFill
+          size="48"
+        >
+          <Star />
         </VueIcon>
       </div>
     </div>
@@ -75,59 +61,39 @@
       <p class="mbs2 mbe3">Semantic types for color theming the icon.</p>
       <div class="stacked-mobile mbe4">
         <VueIcon
+          noFill
           type="info"
           size="20"
         >
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+          <Star />
         </VueIcon>
         <VueIcon
+          noFill
           type="success"
           size="20"
         >
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+          <Star />
         </VueIcon>
         <VueIcon
+          noFill
           type="warning"
           size="20"
         >
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+          <Star />
         </VueIcon>
         <VueIcon
+          noFill
           type="error"
           size="20"
         >
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+          <Star />
         </VueIcon>
         <VueIcon
+          noFill
           type="action"
           size="20"
         >
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
+          <Star />
         </VueIcon>
       </div>
     </div>
@@ -136,27 +102,26 @@
       <h3>With Custom SVG</h3>
       <p class="mbs2 mbe3">Using the default slot to provide custom SVG content.</p>
       <div class="stacked-mobile mbe4">
-        <VueIcon size="20">
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-        </VueIcon>
         <VueIcon
+          noFill
           size="24"
           type="error"
         >
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 001-1v-4a1 1 0 00-1-1H9z"
-            />
-          </svg>
+          <Apple />
+        </VueIcon>
+        <VueIcon
+          noFill
+          size="24"
+          type="warning"
+        >
+          <Zap />
+        </VueIcon>
+        <VueIcon
+          noFill
+          size="24"
+          type="success"
+        >
+          <CalendarCheck />
         </VueIcon>
       </div>
     </div>
@@ -172,38 +137,15 @@
         class="custom-icon-base"
         size="24"
       >
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
-      </VueIcon>
-      <VueIcon
-        class="custom-glow"
-        size="32"
-        type="info"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 001-1v-4a1 1 0 00-1-1H9z"
-          />
-        </svg>
+        <Star />
       </VueIcon>
       <VueIcon
         class="custom-minimal"
-        size="20"
+        size="32"
+        noFill
+        type="primary"
       >
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
+        <CalendarCheck />
       </VueIcon>
     </div>
   </section>
@@ -211,6 +153,7 @@
 
 <script setup lang="ts">
 import { VueIcon } from "agnosticui-core/icon/vue";
+import { Apple, CalendarCheck, Zap, Star } from "lucide-vue-next";
 </script>
 
 <style scoped>
@@ -219,16 +162,15 @@ import { VueIcon } from "agnosticui-core/icon/vue";
 .custom-icon-base::part(icon-base) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 8px;
-  padding: 0.5rem;
+  padding: 0.4rem;
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .custom-icon-base svg {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-.custom-glow::part(icon-base) {
-  filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.5));
+  color: #b9c6ff;
+  fill: none;
+  stroke: currentColor;
 }
 
 .custom-minimal::part(icon-base) {

@@ -2,11 +2,12 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 export type IconSize = '14' | '16' | '18' | '20' | '24' | '32' | '36' | '40' | '48' | '56' | '64' | '';
-export type IconType = 'info' | 'action' | 'success' | 'warning' | 'error' | '';
+export type IconType = 'info' | 'primary' | 'action' | 'success' | 'warning' | 'error' | '';
 
 export interface IconProps {
   size?: IconSize;
   type?: IconType;
+  // Used to support SVG outline icons
   noFill?: boolean;
 }
 
@@ -94,12 +95,20 @@ export class Icon extends LitElement implements IconProps {
       height: 100%;
       max-width: 100%;
       max-height: 100%;
+      /* Outline SVG so we need to remove the fill and apply currentColor to stroke */
+      fill: none;
+      stroke: currentColor;
     }
 
     /* Type theming via host attribute (inherits to slotted svg via currentColor for stroke or fill) */
     :host([type="info"]) {
       color: var(--ag-primary);
     }
+    
+    :host([type="primary"]) {
+      color: var(--ag-primary);
+    }
+
 
     :host([type="action"]),
     :host([type="success"]) {

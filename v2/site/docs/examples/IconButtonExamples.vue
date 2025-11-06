@@ -195,27 +195,6 @@
 
     <div class="stacked-mobile mbe4">
       <VueIconButton
-        class="custom-neon-button"
-        label="Neon effect"
-      >
-        <Zap :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        class="custom-neon-button"
-        label="Neon bell"
-      >
-        <Bell :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        class="custom-neon-button"
-        label="Neon alert"
-      >
-        <AlertTriangle :size="18" />
-      </VueIconButton>
-    </div>
-
-    <div class="stacked-mobile mbe4">
-      <VueIconButton
         class="custom-outlined-button"
         label="Outlined settings"
       >
@@ -235,25 +214,6 @@
       </VueIconButton>
     </div>
 
-    <div class="stacked-mobile mbe4">
-      <VueIconButton
-        class="custom-minimal-button"
-        label="Minimal delete"
-      >
-        <Trash2 :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        class="custom-minimal-button"
-        label="Minimal close"
-        unicode="×"
-      />
-      <VueIconButton
-        class="custom-minimal-button"
-        label="Minimal check"
-      >
-        <Check :size="18" />
-      </VueIconButton>
-    </div>
   </section>
 </template>
 
@@ -332,29 +292,6 @@ export default {
   box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
 }
 
-/* Neon glow effect */
-.custom-neon-button::part(ag-icon-button) {
-  background: #1a1a2e;
-  color: #0ff;
-  border: 2px solid #0ff;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff,
-    inset 0 0 10px rgba(0, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
-
-.custom-neon-button::part(ag-icon-button):hover {
-  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff,
-    inset 0 0 20px rgba(0, 255, 255, 0.3);
-  text-shadow: 0 0 10px #0ff;
-}
-
-.custom-neon-button::part(ag-icon-has-slotted),
-.custom-neon-button::part(ag-icon-unicode) {
-  filter: drop-shadow(0 0 5px #0ff);
-}
-
 /* Outlined style */
 .custom-outlined-button::part(ag-icon-button) {
   background: transparent;
@@ -373,32 +310,5 @@ export default {
 
 .custom-outlined-button::part(ag-icon-button):active {
   transform: rotate(0deg) scale(0.95);
-}
-
-/* Minimal style with left border accent */
-.custom-minimal-button::part(ag-icon-button) {
-  background: var(--ag-background-secondary);
-  color: var(--ag-text-primary);
-  border-radius: 4px;
-  border-left: 4px solid var(--ag-danger);
-  padding: 8px 12px;
-  transition: all 0.2s ease;
-}
-
-.custom-minimal-button::part(ag-icon-button):hover {
-  background: var(--ag-background-tertiary);
-  border-left-color: var(--ag-danger-dark);
-  padding-left: 16px;
-}
-
-.custom-minimal-button::part(ag-icon-has-slotted),
-.custom-minimal-button::part(ag-icon-unicode) {
-  color: var(--ag-danger);
-  transition: transform 0.2s ease;
-}
-
-.custom-minimal-button:hover::part(ag-icon-has-slotted),
-.custom-minimal-button:hover::part(ag-icon-unicode) {
-  transform: scale(1.1);
 }
 </style>

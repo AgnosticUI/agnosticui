@@ -98,17 +98,17 @@ export class CloseButton extends LitElement implements CloseButtonProps {
 
     /* Size variants */
     .close-button-sm {
-      font-size: var(--ag-font-size-xl);
+      font-size: var(--ag-font-size-2xl);
       padding: var(--ag-space-1);
     }
 
     .close-button-md {
-      font-size: var(--ag-font-size-2xl);
+      font-size: var(--ag-font-size-3xl);
       padding: var(--ag-space-2);
     }
 
     .close-button-lg {
-      font-size: var(--ag-font-size-3xl);
+      font-size: var(--ag-font-size-4xl);
       padding: var(--ag-space-3);
     }
 
@@ -174,7 +174,9 @@ export class CloseButton extends LitElement implements CloseButtonProps {
         aria-label="${this.label}"
         @click=${this._handleClick}
       >
-        ×
+        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
       </button>
     `;
   }

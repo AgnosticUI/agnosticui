@@ -132,7 +132,7 @@ export default defineComponent({
 .custom-divider-gradient::part(ag-divider)::before,
 .custom-divider-gradient::part(ag-divider)::after {
   background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-  height: 4px;
+  height: var(--ag-space-1);
 }
 
 .custom-divider-gradient::part(ag-divider-content) {
@@ -156,7 +156,7 @@ export default defineComponent({
 .custom-divider-vertical::part(ag-divider)::before,
 .custom-divider-vertical::part(ag-divider)::after {
   background: linear-gradient(180deg, #ef4444 0%, #fbbf24 100%);
-  width: 6px;
+  width: var(--ag-space-1);
 }
 
 .custom-divider-vertical::part(ag-divider-content) {
