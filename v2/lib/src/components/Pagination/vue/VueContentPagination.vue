@@ -7,26 +7,29 @@
     v-bind="dynamicProps"
   >
     <!--
-      We are using the 'slot' attribute here to pass a named slot to the underlying
-      'ag-content-pagination' web component. The 'slot' attribute is the standard HTML
-      way to target a web component's slot from the outside.
-      The 'vue/no-deprecated-slot-attribute' ESLint rule is disabled because it is
-      designed for Vue-to-Vue component communication and does not distinguish
-      that we are targeting a native web component.
-      The nested <slot> tag is used to pass through the content that this Vue
-      wrapper component receives in its own named slot. This 'span-wrapping'
-      pattern is a common workaround in Vue for forwarding named slots to web
-      components.
-      See: https://github.com/orgs/vuejs/discussions/12875
-      https://github.com/vuejs/vue/issues/6553
+      Only forward slots if they're actually provided by the parent component.
+      This allows the web component's default icons to show when no custom icons are provided.
+      
+      The 'slot' attribute is used to target the web component's named slots.
+      The 'vue/no-deprecated-slot-attribute' ESLint rule is disabled because it's
+      designed for Vue-to-Vue communication and doesn't recognize web component slots.
     -->
-    <span slot="previous-icon"> <!-- eslint-disable-line vue/no-deprecated-slot-attribute -->
+    <span
+      v-if="$slots['previous-icon']"
+      slot="previous-icon"
+    > <!-- eslint-disable-line vue/no-deprecated-slot-attribute -->
       <slot name="previous-icon"></slot>
     </span>
-    <span slot="next-icon"> <!-- eslint-disable-line vue/no-deprecated-slot-attribute -->
+    <span
+      v-if="$slots['next-icon']"
+      slot="next-icon"
+    > <!-- eslint-disable-line vue/no-deprecated-slot-attribute -->
       <slot name="next-icon"></slot>
     </span>
-    <span slot="parent-icon"> <!-- eslint-disable-line vue/no-deprecated-slot-attribute -->
+    <span
+      v-if="$slots['parent-icon']"
+      slot="parent-icon"
+    > <!-- eslint-disable-line vue/no-deprecated-slot-attribute -->
       <slot name="parent-icon"></slot>
     </span>
   </ag-content-pagination>
