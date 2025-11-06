@@ -147,7 +147,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h3>CSS Shadow Parts Customization (Gradient)</h3>
     </div>
     <div class="stacked-mobile mbe4">
       <div v-html="customPaginationStyles"></div>
@@ -156,6 +156,19 @@
         :current="customPage"
         :total-pages="10"
         @page-change="handleCustomPageChange"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h3>CSS Shadow Parts Customization (Monochrome)</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <div v-html="monochromeCustomPaginationStyles"></div>
+      <VuePagination
+        class="monochrome-custom-pagination"
+        :current="monochromeCustomPage"
+        :total-pages="10"
+        @page-change="handleMonochromeCustomPageChange"
       />
     </div>
   </section>
@@ -183,6 +196,7 @@ export default {
       smallPage: 3,
       largePage: 50,
       customPage: 5,
+      monochromeCustomPage: 5,
       customPaginationStyles: `
         <style>
           .custom-pagination::part(ag-pagination-container) {
@@ -194,7 +208,6 @@ export default {
             gap: 0.5rem;
           }
           .custom-pagination::part(ag-pagination-button) {
-            border-radius: 50%;
             min-width: 2.5rem;
             height: 2.5rem;
             font-weight: 600;
@@ -215,6 +228,44 @@ export default {
           .custom-pagination::part(ag-pagination-button):disabled {
             background: rgba(255, 255, 255, 0.3);
             color: rgba(255, 255, 255, 0.6);
+          }
+        </style>
+      `,
+      monochromeCustomPaginationStyles: `
+        <style>
+          .monochrome-custom-pagination::part(ag-pagination-container) {
+            padding: 1rem;
+            background: #000000;
+            border-radius: 12px;
+          }
+          .monochrome-custom-pagination::part(ag-pagination) {
+            gap: 0.25rem;
+          }
+          .monochrome-custom-pagination::part(ag-pagination-button) {
+            min-width: 2.5rem;
+            height: 2.5rem;
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #404040;
+            font-weight: 400;
+            transition: all 0.2s ease;
+          }
+          .monochrome-custom-pagination::part(ag-pagination-button):hover:not(:disabled) {
+            background: #1a1a1a;
+            border-color: #ffffff;
+            font-weight: 600;
+            transform: translateY(-1px);
+          }
+          .monochrome-custom-pagination .pagination-item-active .pagination-button {
+            background: #ffffff !important;
+            color: #000000 !important;
+            font-weight: 600;
+            border-color: #ffffff;
+          }
+          .monochrome-custom-pagination::part(ag-pagination-button):disabled {
+            background: transparent;
+            color: #404040;
+            border-color: #262626;
           }
         </style>
       `,
@@ -252,6 +303,9 @@ export default {
     },
     handleCustomPageChange(detail) {
       this.customPage = detail.page;
+    },
+    handleMonochromeCustomPageChange(detail) {
+      this.monochromeCustomPage = detail.page;
     },
   },
 };
