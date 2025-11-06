@@ -183,7 +183,7 @@ export class AgInput extends LitElement implements InputProps {
 
     :host([invalid]) .ag-input__input,
     :host([invalid]) .ag-input__textarea {
-      border-color: rgb(var(--ag-danger));
+      border-color: var(--ag-danger);
     }
 
     :host([invalid]) .ag-input__input:focus-visible,
@@ -313,7 +313,7 @@ export class AgInput extends LitElement implements InputProps {
     }
 
     .ag-input__error {
-      color: rgb(var(--ag-danger));
+      color: var(--ag-danger);
     }
 
     .ag-input__error[hidden] {
@@ -321,7 +321,7 @@ export class AgInput extends LitElement implements InputProps {
     }
 
     .ag-input__required {
-      color: rgb(var(--ag-danger));
+      color: var(--ag-danger);
       margin-left: var(--ag-space-1);
     }
   `;

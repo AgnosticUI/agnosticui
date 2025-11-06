@@ -177,8 +177,8 @@ export class AgRadio extends LitElement implements RadioProps {
     }
 
     .radio-input:checked + .radio-indicator--success {
-      background: rgb(var(--ag-success));
-      border-color: rgb(var(--ag-success));
+      background: var(--ag-success);
+      border-color: var(--ag-success);
       box-shadow: 0 0 0 var(--ag-border-width-2) var(--ag-white) inset;
     }
 
