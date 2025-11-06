@@ -220,7 +220,7 @@
         class="mbe2"
       >
         <template #addon-right>
-          <span style="font-weight: bold;">%</span>
+          <Percent :size="18" />
         </template>
       </VueInput>
     </div>
@@ -241,7 +241,10 @@
         class="mbe2"
       >
         <template #addon-left>
-          <span style="font-weight: bold;">$</span>
+          <DollarSign
+            :size="18"
+            color="var(--ag-primary)"
+          />
         </template>
         <template #addon-right>
           <span style="font-weight: 600;">USD</span>
@@ -257,20 +260,10 @@
         class="mbe2"
       >
         <template #addon-left>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
+          <Search
+            :size="18"
+            color="var(--ag-secondary)"
+          />
         </template>
       </VueInput>
 
@@ -283,7 +276,7 @@
         class="mbe2"
       >
         <template #addon-right>
-          <span style="font-weight: bold;">%</span>
+          <Percent :size="18" />
         </template>
       </VueInput>
 
@@ -296,20 +289,10 @@
         class="mbe2"
       >
         <template #addon-left>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
+          <User2
+            :size="18"
+            color="var(--ag-secondary)"
+          />
         </template>
       </VueInput>
     </div>
@@ -463,7 +446,7 @@
 
 <script>
 import VueInput from "agnosticui-core/input/vue";
-import { Globe, DollarSign } from "lucide-vue-next";
+import { Globe, DollarSign, Percent, Search, User2 } from "lucide-vue-next";
 
 export default {
   name: "InputExamples",
@@ -471,6 +454,9 @@ export default {
     VueInput,
     Globe,
     DollarSign,
+    Percent,
+    User2,
+    Search,
   },
   data() {
     return {
