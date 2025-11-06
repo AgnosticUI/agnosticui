@@ -125,12 +125,35 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h3>CSS Shadow Parts Customization (Blue Theme)</h3>
     </div>
     <div class="stacked-mobile mbe4">
       <div v-html="customContentPaginationStyles"></div>
       <VueContentPagination
         class="custom-content-pagination"
+        :previous="{ title: 'Introduction', href: '/introduction' }"
+        :next="{ title: 'Getting Started', href: '/getting-started' }"
+        :parent="{ title: 'Documentation', href: '/documentation' }"
+      >
+        <template #previous-icon>
+          <ChevronLeft :size="20" />
+        </template>
+        <template #next-icon>
+          <ChevronRight :size="20" />
+        </template>
+        <template #parent-icon>
+          <ChevronUp :size="20" />
+        </template>
+      </VueContentPagination>
+    </div>
+
+    <div class="mbe4">
+      <h3>CSS Shadow Parts Customization (Monochrome)</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <div v-html="monochromeCustomContentPaginationStyles"></div>
+      <VueContentPagination
+        class="monochrome-custom-content-pagination"
         :previous="{ title: 'Introduction', href: '/introduction' }"
         :next="{ title: 'Getting Started', href: '/getting-started' }"
         :parent="{ title: 'Documentation', href: '/documentation' }"
@@ -186,6 +209,41 @@ export default {
           }
           .custom-content-pagination::part(ag-content-pagination-link):hover {
             border-color: #3b82f6;
+            transform: translateY(-2px);
+          }
+        </style>
+      `,
+      monochromeCustomContentPaginationStyles: `
+        <style>
+          .monochrome-custom-content-pagination::part(ag-content-pagination-container) {
+            padding: 1.5rem;
+            background: #000000;
+            border-radius: 12px;
+          }
+          .monochrome-custom-content-pagination::part(ag-content-pagination-parent) {
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            padding: 0;
+          }
+          .monochrome-custom-content-pagination::part(ag-content-pagination-parent):hover {
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transform: translateY(-1px);
+          }
+          .monochrome-custom-content-pagination::part(ag-content-pagination-link) {
+            padding: var(--ag-space-3) var(--ag-space-4);
+            background: transparent;
+            color: #ffffff;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 400;
+          }
+          .monochrome-custom-content-pagination::part(ag-content-pagination-link):hover {
+            background: #1a1a1a;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
             transform: translateY(-2px);
           }
         </style>
