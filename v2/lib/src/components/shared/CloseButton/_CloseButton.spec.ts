@@ -31,12 +31,15 @@ describe('CloseButton', () => {
     expect(button?.getAttribute('aria-label')).toBe('Close dialog');
   });
 
-  it('renders × character as button content', async () => {
+  it('renders an SVG icon inside the button', async () => {
     await element.updateComplete;
 
     const button = element.shadowRoot?.querySelector('button');
-    expect(button?.textContent?.trim()).toBe('×');
+    const svg = button?.querySelector('svg');
+    expect(svg).toBeTruthy();
+    expect(svg?.querySelector('path')).not.toBeNull();
   });
+
 
   it('applies size classes', async () => {
     // Small size
