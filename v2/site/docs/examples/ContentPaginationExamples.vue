@@ -86,14 +86,20 @@
         :next="{ title: 'Next Page', href: '/next' }"
         :parent="{ title: 'Overview', href: '/overview' }"
       >
-        <template #previous-icon><span>◀️</span></template>
-        <template #next-icon><span>▶️</span></template>
-        <template #parent-icon><span>⬆️</span></template>
+        <template #previous-icon>
+          <ChevronLeft :size="20" />
+        </template>
+        <template #next-icon>
+          <ChevronRight :size="20" />
+        </template>
+        <template #parent-icon>
+          <ChevronUp :size="20" />
+        </template>
       </VueContentPagination>
     </div>
 
     <div class="mbe4">
-      <h3>Only Previous</h3>
+      <h3>Only Next</h3>
     </div>
     <p>
       First page scenario - only show next link:
@@ -106,7 +112,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Only Next</h3>
+      <h3>Only Previous</h3>
     </div>
     <p>
       Last page scenario - only show previous link:
@@ -129,9 +135,15 @@
         :next="{ title: 'Getting Started', href: '/getting-started' }"
         :parent="{ title: 'Documentation', href: '/documentation' }"
       >
-        <template #previous-icon><span>‹</span></template>
-        <template #next-icon><span>›</span></template>
-        <template #parent-icon><span>⬆</span></template>
+        <template #previous-icon>
+          <ChevronLeft :size="20" />
+        </template>
+        <template #next-icon>
+          <ChevronRight :size="20" />
+        </template>
+        <template #parent-icon>
+          <ChevronUp :size="20" />
+        </template>
       </VueContentPagination>
     </div>
   </section>
@@ -139,11 +151,15 @@
 
 <script>
 import { VueContentPagination } from "agnosticui-core/content-pagination/vue";
+import { ChevronLeft, ChevronRight, ChevronUp } from "lucide-vue-next";
 
 export default {
   name: "ContentPaginationExamples",
   components: {
     VueContentPagination,
+    ChevronLeft,
+    ChevronRight,
+    ChevronUp,
   },
   data() {
     return {
@@ -155,7 +171,6 @@ export default {
             padding: 1rem;
           }
           .custom-content-pagination::part(ag-content-pagination-parent) {
-            background-color: #dbeafe;
             border-radius: 6px;
             transition: all 0.2s;
           }
@@ -170,10 +185,8 @@ export default {
             transition: all 0.2s;
           }
           .custom-content-pagination::part(ag-content-pagination-link):hover {
-            background-color: #dbeafe;
             border-color: #3b82f6;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
           }
         </style>
       `,
