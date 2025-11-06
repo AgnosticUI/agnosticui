@@ -112,8 +112,8 @@
       "value": "#2da44e",
       "description": "Medium green"
     },
-    "500": {
-      "value": "26, 127, 55",
+    "500": { 
+      "value": "#238636",
       "description": "Primary green (RGB format for alpha channel support)"
     },
     "600": {

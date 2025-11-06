@@ -109,8 +109,8 @@
       "description": "Medium light green"
     },
     "400": {
-      "value": "46, 160, 67",
-      "description": "Medium green (RGB format for alpha channel support)"
+      "value": "#2EA043",
+      "description": "Medium green (hex format)"
     },
     "500": {
       "value": "#238636",

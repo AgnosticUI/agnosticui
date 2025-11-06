@@ -188,8 +188,8 @@ export class AgInput extends LitElement implements InputProps {
 
     :host([invalid]) .ag-input__input:focus-visible,
     :host([invalid]) .ag-input__textarea:focus-visible {
-      border-color: rgba(var(--ag-danger), 0.6);
-      outline-color: rgba(var(--ag-danger), 0.5);
+      border-color: rgba(var(--ag-danger-rgb), 0.6);
+      outline-color: rgba(var(--ag-danger-rgb), 0.5);
     }
 
     /* Addons */
