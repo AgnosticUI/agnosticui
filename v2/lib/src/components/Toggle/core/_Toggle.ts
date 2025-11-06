@@ -189,15 +189,15 @@ export class AgToggle extends LitElement implements ToggleProps {
     }
 
     :host([checked][variant="success"]) .ag-toggle__track {
-      background: rgb(var(--ag-success));
+      background: var(--ag-success);
     }
 
     :host([checked][variant="warning"]) .ag-toggle__track {
-      background: rgb(var(--ag-warning));
+      background: var(--ag-warning);
     }
 
     :host([checked][variant="danger"]) .ag-toggle__track {
-      background: rgb(var(--ag-danger));
+      background: var(--ag-danger);
     }
 
     /* Readonly state */

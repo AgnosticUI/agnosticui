@@ -203,8 +203,8 @@ export class Checkbox extends LitElement implements CheckboxProps {
 
     .checkbox-input:checked + .checkbox-label--success::before,
     .checkbox-input:indeterminate + .checkbox-label--success::before {
-      background: rgb(var(--ag-success));
-      border-color: rgb(var(--ag-success));
+      background: var(--ag-success);
+      border-color: var(--ag-success);
     }
 
     .checkbox-input:focus + .checkbox-label--success::before {

@@ -49,7 +49,7 @@ export class Alert extends LitElement implements AlertProps {
       color: var(--ag-warning-text);
     }
     .alert-border-left.alert-warning {
-      border-left-color: rgb(var(--ag-warning));
+      border-left-color: var(--ag-warning);
     }
     .alert-info {
       background-color: var(--ag-info-background);
@@ -63,7 +63,7 @@ export class Alert extends LitElement implements AlertProps {
       color: var(--ag-success-text);
     }
     .alert-border-left.alert-success {
-      border-left-color: rgb(var(--ag-success));
+      border-left-color: var(--ag-success);
     }
     .alert-danger,
     .alert-error {
@@ -72,7 +72,7 @@ export class Alert extends LitElement implements AlertProps {
     }
     .alert-border-left.alert-danger,
     .alert-border-left.alert-error {
-      border-left-color: rgb(var(--ag-danger));
+      border-left-color: var(--ag-danger);
     }
     .alert-primary {
       background-color: var(--ag-primary-background);
