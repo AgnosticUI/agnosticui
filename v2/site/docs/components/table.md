@@ -7,10 +7,16 @@ Web Components and native HTML tables don’t mix well.
 Tables are inherently **relational structures** — they rely on selectors like  
 `thead th + td`, `tr:nth-child(even)`, and `<th scope="col">`, all of which break down when you introduce Shadow DOM boundaries.
 
-Because AgnosticUI’s mission is *interoperability and simplicity across frameworks*, we’ve chosen **not** to ship a `<ag-table>` web component at this time.
+Because AgnosticUI’s mission is _interoperability and simplicity across frameworks_, we’ve chosen **not** to ship a `<ag-table>` web component at this time.
 
 Instead, we recommend using **native HTML tables** styled with AgnosticUI design tokens.  
 This keeps your tables standards-based, accessible, and visually consistent with the rest of your design system.
+
+::: info
+
+AgnosticUI provides UI primitives. For complex data grids requiring sorting, filtering, virtual scrolling, and integrated pagination, we recommend specialized libraries like AG Grid, TanStack Table, or similar that are designed for this use case.
+
+:::
 
 ## Quick Start: Token-Powered Base Table Styles
 
@@ -100,4 +106,4 @@ If something is already well-served by native HTML, we don’t wrap it for parit
 Tables are one of those cases — encapsulation here causes more pain than value.
 
 We’ll continue watching proposals like **Scoped Styles**, **Constructable Stylesheets**, and **Open Shadow DOM**,
-but for now, *native tables + tokens* is the best combination of simplicity and power.
+but for now, _native tables + tokens_ is the best combination of simplicity and power.
