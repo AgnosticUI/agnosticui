@@ -406,6 +406,18 @@
     "./collapsible/vue": {
       "types": "./dist/components/Collapsible/vue/index.d.ts",
       "import": "./dist/components/Collapsible/vue/index.js"
+    },
+    "./slider": {
+      "types": "./dist/components/Slider/core/Slider.d.ts",
+      "import": "./dist/components/Slider/core/Slider.js"
+    },
+    "./slider/react": {
+      "types": "./dist/components/Slider/react/ReactSlider.d.ts",
+      "import": "./dist/components/Slider/react/ReactSlider.js"
+    },
+    "./slider/vue": {
+      "types": "./dist/components/Slider/vue/index.d.ts",
+      "import": "./dist/components/Slider/vue/index.js"
     }
   },
   "scripts": {

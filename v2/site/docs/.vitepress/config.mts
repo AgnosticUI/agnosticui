@@ -67,6 +67,7 @@ function getComponents() {
       { text: 'Progress', link: '/components/progress' },
       { text: 'Radio', link: '/components/radio' },
       { text: 'Select', link: '/components/select' },
+      { text: 'Slider', link: '/components/slider' },
       { text: 'Spinner', link: '/components/spinner' },
       { text: 'Table', link: '/components/table' },
       { text: 'Tabs', link: '/components/tabs' },

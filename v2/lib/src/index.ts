@@ -25,3 +25,4 @@ export * from './components/Toast/core/_Toast';
 export * from './components/Badge/core/_Badge';
 export * from './components/Kbd';
 export * from './components/Collapsible/core/_Collapsible';
+export * from './components/Slider/core/Slider';
