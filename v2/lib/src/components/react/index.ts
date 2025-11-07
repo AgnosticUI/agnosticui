@@ -23,3 +23,4 @@ export * from '../Toast/react/ReactToast';
 export * from '../Badge/react/ReactBadge';
 export * from '../Kbd/react/ReactKbd';
 export * from '../Collapsible/react';
+export * from '../Link/react/ReactLink';

@@ -284,7 +284,7 @@
       "import": "./dist/components/Pagination/core/ContentPagination.js"
     },
     "./content-pagination/react": {
-      "types": "./dist/components/Pagination/react/ReactContentPagination.d.ts", 
+      "types": "./dist/components/Pagination/react/ReactContentPagination.d.ts",
       "import": "./dist/components/Pagination/react/ReactContentPagination.js"
     },
     "./content-pagination/vue": {
@@ -418,6 +418,18 @@
     "./slider/vue": {
       "types": "./dist/components/Slider/vue/index.d.ts",
       "import": "./dist/components/Slider/vue/index.js"
+    },
+    "./link": {
+      "types": "./dist/components/Link/core/Link.d.ts",
+      "import": "./dist/components/Link/core/Link.js"
+    },
+    "./link/react": {
+      "types": "./dist/components/Link/react/ReactLink.d.ts",
+      "import": "./dist/components/Link/react/ReactLink.js"
+    },
+    "./link/vue": {
+      "types": "./dist/components/Link/vue/index.d.ts",
+      "import": "./dist/components/Link/vue/index.js"
     }
   },
   "scripts": {
