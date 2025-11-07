@@ -249,6 +249,65 @@ describe('AgBreadcrumb', () => {
 
       document.removeEventListener('breadcrumb-click', parentHandler);
     });
+
+    it('should invoke onBreadcrumbClick callback when item is clicked', async () => {
+      const onClickCallback = vi.fn();
+      element.onBreadcrumbClick = onClickCallback;
+
+      element.items = [
+        { label: 'Home', href: '/' },
+        { label: 'Category', href: '/category' }
+      ];
+      await element.updateComplete;
+
+      const firstLink = element.shadowRoot!.querySelector('a')!;
+      firstLink.click();
+
+      expect(onClickCallback).toHaveBeenCalledTimes(1);
+      expect(onClickCallback.mock.calls[0][0].detail.item).toEqual({ label: 'Home', href: '/' });
+      expect(onClickCallback.mock.calls[0][0].detail.index).toBe(0);
+    });
+
+    it('should support both addEventListener and callback props simultaneously (dual-dispatch)', async () => {
+      const onClickCallback = vi.fn();
+      const addEventListenerHandler = vi.fn();
+
+      element.onBreadcrumbClick = onClickCallback;
+      element.addEventListener('breadcrumb-click', addEventListenerHandler);
+
+      element.items = [
+        { label: 'Home', href: '/' },
+        { label: 'Products', href: '/products' },
+        { label: 'Current Page', current: true }
+      ];
+      await element.updateComplete;
+
+      const secondLink = element.shadowRoot!.querySelectorAll('a')[1]!;
+      secondLink.click();
+
+      // Both patterns should work
+      expect(onClickCallback).toHaveBeenCalledTimes(1);
+      expect(addEventListenerHandler).toHaveBeenCalledTimes(1);
+
+      // Verify same event details
+      expect(onClickCallback.mock.calls[0][0].detail.index).toBe(1);
+      expect(addEventListenerHandler.mock.calls[0][0].detail.index).toBe(1);
+    });
+
+    it('should dispatch events with bubbles: true and composed: true', async () => {
+      let breadcrumbEvent: any = null;
+
+      element.addEventListener('breadcrumb-click', (e: Event) => {
+        breadcrumbEvent = e;
+      });
+
+      await element.updateComplete;
+      const firstLink = element.shadowRoot!.querySelector('a')!;
+      firstLink.click();
+
+      expect(breadcrumbEvent.bubbles).toBe(true);
+      expect(breadcrumbEvent.composed).toBe(true);
+    });
   });
 
   describe('Item Rendering and Link Behavior', () => {

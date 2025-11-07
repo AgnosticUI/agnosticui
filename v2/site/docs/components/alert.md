@@ -281,6 +281,196 @@ export default function AlertExamples() {
 
 :::
 
+## Dismissible Alerts
+
+Alerts can be made dismissible by adding the `dismissible` prop. This displays a close button and fires the `alert-dismiss` event when clicked.
+
+::: details Vue
+
+```vue
+<template>
+  <div>
+    <VueAlert
+      v-if="showAlert"
+      type="success"
+      dismissible
+      @alert-dismiss="showAlert = false"
+      class="mbe2"
+    >
+      This is a dismissible success alert. Click the × to dismiss.
+    </VueAlert>
+
+    <VueAlert
+      v-if="showWarning"
+      type="warning"
+      dismissible
+      rounded
+      @alert-dismiss="handleWarningDismiss"
+      class="mbe2"
+    >
+      Warning: This action cannot be undone!
+    </VueAlert>
+
+    <button v-if="!showAlert" @click="showAlert = true">
+      Show Success Alert
+    </button>
+    <button v-if="!showWarning" @click="showWarning = true">
+      Show Warning Alert
+    </button>
+  </div>
+</template>
+
+<script>
+import VueAlert from "agnosticui-core/alert/vue";
+
+export default {
+  components: { VueAlert },
+  data() {
+    return {
+      showAlert: true,
+      showWarning: true,
+    };
+  },
+  methods: {
+    handleWarningDismiss(event) {
+      console.log('Warning dismissed, type:', event.detail.type);
+      this.showWarning = false;
+    },
+  },
+};
+</script>
+```
+
+:::
+
+::: details React
+
+```tsx
+import { useState } from 'react';
+import { ReactAlert } from 'agnosticui-core/alert/react';
+
+export default function DismissibleAlertExample() {
+  const [showAlert, setShowAlert] = useState(true);
+  const [showWarning, setShowWarning] = useState(true);
+
+  const handleWarningDismiss = (event) => {
+    console.log('Warning dismissed, type:', event.detail.type);
+    setShowWarning(false);
+  };
+
+  return (
+    <div>
+      {showAlert && (
+        <ReactAlert
+          type="success"
+          dismissible
+          onAlertDismiss={() => setShowAlert(false)}
+          className="mbe2"
+        >
+          This is a dismissible success alert. Click the × to dismiss.
+        </ReactAlert>
+      )}
+
+      {showWarning && (
+        <ReactAlert
+          type="warning"
+          dismissible
+          rounded
+          onAlertDismiss={handleWarningDismiss}
+          className="mbe2"
+        >
+          Warning: This action cannot be undone!
+        </ReactAlert>
+      )}
+
+      {!showAlert && (
+        <button onClick={() => setShowAlert(true)}>
+          Show Success Alert
+        </button>
+      )}
+      {!showWarning && (
+        <button onClick={() => setShowWarning(true)}>
+          Show Warning Alert
+        </button>
+      )}
+    </div>
+  );
+}
+```
+
+:::
+
+::: details Lit (Web Components)
+
+```html
+<script type="module">
+  import "agnosticui-core/alert";
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const successAlert = document.querySelector('#success-alert');
+    const warningAlert = document.querySelector('#warning-alert');
+    const showSuccessBtn = document.querySelector('#show-success');
+    const showWarningBtn = document.querySelector('#show-warning');
+
+    // Using addEventListener pattern
+    successAlert?.addEventListener('alert-dismiss', (e) => {
+      console.log('Success alert dismissed, type:', e.detail.type);
+      successAlert.style.display = 'none';
+      showSuccessBtn.style.display = 'inline-block';
+    });
+
+    // Using callback prop pattern
+    if (warningAlert) {
+      warningAlert.onAlertDismiss = (e) => {
+        console.log('Warning dismissed, type:', e.detail.type);
+        warningAlert.style.display = 'none';
+        showWarningBtn.style.display = 'inline-block';
+      };
+    }
+
+    showSuccessBtn?.addEventListener('click', () => {
+      successAlert.style.display = 'block';
+      showSuccessBtn.style.display = 'none';
+    });
+
+    showWarningBtn?.addEventListener('click', () => {
+      warningAlert.style.display = 'block';
+      showWarningBtn.style.display = 'none';
+    });
+  });
+</script>
+
+<div>
+  <ag-alert
+    id="success-alert"
+    type="success"
+    dismissible
+    class="mbe2"
+  >
+    This is a dismissible success alert. Click the × to dismiss.
+  </ag-alert>
+
+  <ag-alert
+    id="warning-alert"
+    type="warning"
+    dismissible
+    rounded
+    class="mbe2"
+  >
+    Warning: This action cannot be undone!
+  </ag-alert>
+
+  <button id="show-success" style="display: none;">
+    Show Success Alert
+  </button>
+  <button id="show-warning" style="display: none;">
+    Show Warning Alert
+  </button>
+</div>
+```
+
+:::
+
 ## Props
 
 | Prop           | Type                                                                                | Default     | Description                            |
@@ -289,6 +479,58 @@ export default function AlertExamples() {
 | `bordered`     | `boolean`                                                                           | `false`     | Adds a border around the alert         |
 | `rounded`      | `boolean`                                                                           | `false`     | Applies rounded corners to the alert   |
 | `borderedLeft` | `boolean`                                                                           | `false`     | Adds a left border accent to the alert |
+| `dismissible`  | `boolean`                                                                           | `false`     | Shows a close button to dismiss the alert |
+
+## Events
+
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `alert-dismiss` | Vue: `@alert-dismiss`<br>React: `onAlertDismiss`<br>Lit: `@alert-dismiss` or `.onAlertDismiss` | `{ type: AlertType }` | Fired when the alert's close button is clicked. Provides the alert type in the detail. |
+
+### Event Patterns
+
+AgnosticUI Alert supports **three event handling patterns**:
+
+1. **addEventListener** (Lit/Vanilla JS):
+```javascript
+const alert = document.querySelector('ag-alert');
+alert.addEventListener('alert-dismiss', (e) => {
+  console.log('Alert dismissed, type:', e.detail.type);
+  // Remove the alert from the DOM
+  alert.remove();
+});
+```
+
+2. **Callback props** (Lit/Vanilla JS):
+```javascript
+const alert = document.querySelector('ag-alert');
+alert.onAlertDismiss = (e) => {
+  console.log('Alert dismissed, type:', e.detail.type);
+  alert.remove();
+};
+```
+
+3. **Framework event handlers** (Vue/React):
+```vue
+<!-- Vue -->
+<VueAlert
+  dismissible
+  @alert-dismiss="handleDismiss"
+>
+  Dismissible alert
+</VueAlert>
+```
+```tsx
+// React
+<ReactAlert
+  dismissible
+  onAlertDismiss={handleDismiss}
+>
+  Dismissible alert
+</ReactAlert>
+```
+
+All three patterns work identically thanks to the **dual-dispatch** system.
 
 ## CSS Shadow Parts
 

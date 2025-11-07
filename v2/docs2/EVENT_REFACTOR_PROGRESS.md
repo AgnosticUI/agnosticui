@@ -197,9 +197,12 @@ Provide a structured response:
 ### Overview
 
 - **Total Components**: 31
-- **Completed**: 14 (Button, Collapsible, Toggle, Checkbox, Radio, Input, Select, Tabs, Accordion, Menu, Dialog, Drawer, Toast, Tooltip)
-- **Remaining**: 17
-- **Current Focus**: 🎉 **TIER 1 COMPLETE!** Moving to Tier 2 (Native Event Exposure)
+- **Completed**: 19 (Button, Collapsible, Toggle, Checkbox, Radio, Input, Select, Tabs, Accordion, Menu, Dialog, Drawer, Toast, Tooltip, IconButton, Alert, Tag, Breadcrumb, Header)
+- **Remaining**: 12
+- **Current Focus**: 🎉 **TIER 1 & 2 COMPLETE!** (18/18 interactive components done)
+  - Tier 1: 14/14 complete (100%) ✅
+  - Tier 2: 4/4 complete (100%) ✅
+  - Tier 3: 1/13 complete (8%)
 
 ---
 
@@ -228,30 +231,30 @@ Provide a structured response:
 
 ---
 
-## Tier 2: Components with Native Event Exposure (5 total)
+## Tier 2: Components with Native Event Exposure (4 total)
 
 **Priority**: MEDIUM - Simpler patterns, often just adding callback props
 
-**Status**: 1/5 complete (20%)
+**Status**: 4/4 complete (100%) ✅
 
 | Component | Status | Branch | Commits | Risk | Notes |
 |-----------|--------|--------|---------|------|-------|
 | IconButton | ✅ Complete | feature/agnosticui-v2-integration | (current) | LOW | Dual-dispatch + icon-button-click & activate events |
-| Alert | ⏳ Pending | - | - | LOW | Close button, dismiss event |
-| Tag | ⏳ Pending | - | - | LOW | Optional remove button |
-| Breadcrumb | ⏳ Pending | - | - | LOW | Click navigation |
-| Header | ⏳ Pending | - | - | LOW | Interactive elements (burger menu) |
+| Alert | ✅ Complete | feature/agnosticui-v2-integration | (current) | LOW | Added dismissible prop + dual-dispatch alert-dismiss event |
+| Tag | ✅ Complete | feature/agnosticui-v2-integration | (current) | LOW | Added removable prop + dual-dispatch tag-remove event |
+| Breadcrumb | ✅ Complete | feature/agnosticui-v2-integration | (current) | LOW | Added onBreadcrumbClick callback + dual-dispatch breadcrumb-click event |
 
 ---
 
-## Tier 3: Display-Only Components (12 total)
+## Tier 3: Display-Only Components (13 total)
 
 **Priority**: LOW - Minimal or no interactive events
 
-**Status**: 0/12 complete (0%)
+**Status**: 1/13 complete (8%)
 
 | Component | Status | Notes |
 |-----------|--------|-------|
+| Header | ✅ Complete | Layout component - no interactive events needed |
 | Card | ⏳ Pending | May have click for clickable variant |
 | Avatar | ⏳ Pending | Presentational, no custom events |
 | Badge | ⏳ Pending | Presentational, no custom events |
@@ -262,7 +265,7 @@ Provide a structured response:
 | Progress | ⏳ Pending | Presentational, no events |
 | Spinner | ⏳ Pending | Presentational, no events |
 
-**Note**: These may be batch-processed or skipped if no event exposure is needed.
+**Note**: These may be batch-processed or skipped if no event exposure is needed. Header moved from Tier 2 after audit revealed no interactive elements.
 
 ---
 

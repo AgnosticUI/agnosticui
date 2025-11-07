@@ -508,4 +508,196 @@ describe('AgIconButton', () => {
       expect(hasSemanticTokens).toBeTruthy();
     });
   });
+
+  describe('Event Handling Patterns', () => {
+    describe('addEventListener Pattern', () => {
+      it('should dispatch icon-button-click event when button is clicked', async () => {
+        element.label = 'Test button';
+        await element.updateComplete;
+
+        let eventFired = false;
+        let eventDetail: any;
+
+        element.addEventListener('icon-button-click', (e: Event) => {
+          eventFired = true;
+          eventDetail = (e as CustomEvent).detail;
+        });
+
+        const button = element.shadowRoot!.querySelector('button');
+        button!.click();
+
+        expect(eventFired).toBe(true);
+        expect(eventDetail.label).toBe('Test button');
+        expect(eventDetail.pressed).toBe(false);
+        expect(eventDetail.originalEvent).toBeInstanceOf(MouseEvent);
+      });
+
+      it('should dispatch icon-button-activate event on keyboard activation', async () => {
+        element.label = 'Test button';
+        await element.updateComplete;
+
+        let eventFired = false;
+        let eventDetail: any;
+
+        element.addEventListener('icon-button-activate', (e: Event) => {
+          eventFired = true;
+          eventDetail = (e as CustomEvent).detail;
+        });
+
+        const button = element.shadowRoot!.querySelector('button');
+        const spaceEvent = new KeyboardEvent('keydown', { key: ' ' });
+        button!.dispatchEvent(spaceEvent);
+
+        expect(eventFired).toBe(true);
+        expect(eventDetail.label).toBe('Test button');
+        expect(eventDetail.pressed).toBe(false);
+        expect(eventDetail.originalEvent.key).toBe(' ');
+      });
+
+      it('should include pressed state in event details', async () => {
+        element.label = 'Toggle button';
+        element.pressed = true;
+        await element.updateComplete;
+
+        let clickDetail: any;
+        let activateDetail: any;
+
+        element.addEventListener('icon-button-click', (e: Event) => {
+          clickDetail = (e as CustomEvent).detail;
+        });
+
+        element.addEventListener('icon-button-activate', (e: Event) => {
+          activateDetail = (e as CustomEvent).detail;
+        });
+
+        const button = element.shadowRoot!.querySelector('button');
+        button!.click();
+
+        const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+        button!.dispatchEvent(enterEvent);
+
+        expect(clickDetail.pressed).toBe(true);
+        expect(activateDetail.pressed).toBe(true);
+      });
+    });
+
+    describe('Callback Props Pattern', () => {
+      it('should invoke onIconButtonClick callback when button is clicked', async () => {
+        const onClickCallback = vi.fn();
+        element.label = 'Test button';
+        element.onIconButtonClick = onClickCallback;
+        await element.updateComplete;
+
+        const button = element.shadowRoot!.querySelector('button');
+        button!.click();
+
+        expect(onClickCallback).toHaveBeenCalledTimes(1);
+        expect(onClickCallback.mock.calls[0][0].detail.label).toBe('Test button');
+        expect(onClickCallback.mock.calls[0][0].detail.pressed).toBe(false);
+        expect(onClickCallback.mock.calls[0][0].detail.originalEvent).toBeInstanceOf(MouseEvent);
+      });
+
+      it('should invoke onIconButtonActivate callback on keyboard activation', async () => {
+        const onActivateCallback = vi.fn();
+        element.label = 'Test button';
+        element.onIconButtonActivate = onActivateCallback;
+        await element.updateComplete;
+
+        const button = element.shadowRoot!.querySelector('button');
+        const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+        button!.dispatchEvent(enterEvent);
+
+        expect(onActivateCallback).toHaveBeenCalledTimes(1);
+        expect(onActivateCallback.mock.calls[0][0].detail.label).toBe('Test button');
+        expect(onActivateCallback.mock.calls[0][0].detail.originalEvent.key).toBe('Enter');
+      });
+
+      it('should not invoke callbacks when disabled', async () => {
+        const onClickCallback = vi.fn();
+        const onActivateCallback = vi.fn();
+        element.label = 'Test button';
+        element.disabled = true;
+        element.onIconButtonClick = onClickCallback;
+        element.onIconButtonActivate = onActivateCallback;
+        await element.updateComplete;
+
+        const button = element.shadowRoot!.querySelector('button');
+        button!.click();
+
+        const spaceEvent = new KeyboardEvent('keydown', { key: ' ' });
+        button!.dispatchEvent(spaceEvent);
+
+        expect(onClickCallback).not.toHaveBeenCalled();
+        expect(onActivateCallback).not.toHaveBeenCalled();
+      });
+
+      it('should not invoke callbacks when loading', async () => {
+        const onClickCallback = vi.fn();
+        const onActivateCallback = vi.fn();
+        element.label = 'Test button';
+        element.loading = true;
+        element.onIconButtonClick = onClickCallback;
+        element.onIconButtonActivate = onActivateCallback;
+        await element.updateComplete;
+
+        const button = element.shadowRoot!.querySelector('button');
+        button!.click();
+
+        const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+        button!.dispatchEvent(enterEvent);
+
+        expect(onClickCallback).not.toHaveBeenCalled();
+        expect(onActivateCallback).not.toHaveBeenCalled();
+      });
+
+      it('should support both addEventListener and callback props simultaneously', async () => {
+        const onClickCallback = vi.fn();
+        let addEventListenerCalled = false;
+
+        element.label = 'Test button';
+        element.onIconButtonClick = onClickCallback;
+        await element.updateComplete;
+
+        element.addEventListener('icon-button-click', () => {
+          addEventListenerCalled = true;
+        });
+
+        const button = element.shadowRoot!.querySelector('button');
+        button!.click();
+
+        // Both patterns should work
+        expect(onClickCallback).toHaveBeenCalledTimes(1);
+        expect(addEventListenerCalled).toBe(true);
+      });
+    });
+
+    describe('Event Bubbling and Composition', () => {
+      it('should dispatch events with bubbles: true and composed: true', async () => {
+        element.label = 'Test button';
+        await element.updateComplete;
+
+        let clickEvent: any = null;
+        let activateEvent: any = null;
+
+        element.addEventListener('icon-button-click', (e: Event) => {
+          clickEvent = e;
+        });
+
+        element.addEventListener('icon-button-activate', (e: Event) => {
+          activateEvent = e;
+        });
+
+        const button = element.shadowRoot!.querySelector('button');
+        button!.click();
+
+        const spaceEvent = new KeyboardEvent('keydown', { key: ' ' });
+        button!.dispatchEvent(spaceEvent);
+
+        expect(clickEvent.bubbles).toBe(true);
+        expect(clickEvent.composed).toBe(true);
+        expect(activateEvent.bubbles).toBe(true);
+        expect(activateEvent.composed).toBe(true);
+      });
+    });
+  });
 });
