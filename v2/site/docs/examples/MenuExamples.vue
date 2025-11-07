@@ -225,6 +225,7 @@ export default {
           .custom-menu-button ag-menu-item::part(ag-menu-item-button) {
             color: white;
           }
+          .custom-menu-button ag-menu-item::part(ag-menu-item-button):focus,
           .custom-menu-button ag-menu-item::part(ag-menu-item-button):hover {
             color: black;
           }

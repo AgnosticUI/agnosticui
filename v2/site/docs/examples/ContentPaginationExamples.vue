@@ -5,9 +5,9 @@
     </div>
     <div class="stacked-mobile mbe4">
       <VueContentPagination
-        :previous="{ title: 'Introduction', href: '/introduction' }"
-        :next="{ title: 'Getting Started', href: '/getting-started' }"
-        :parent="{ title: 'Documentation', href: '/documentation' }"
+        :previous="{ title: 'Introduction', href: '#examples-1' }"
+        :next="{ title: 'Getting Started', href: '#examples-1' }"
+        :parent="{ title: 'Documentation', href: '#examples-1' }"
         @navigate="handleNavigate"
       />
       <p
@@ -47,8 +47,8 @@
     </p>
     <div class="stacked-mobile mbe4">
       <VueContentPagination
-        :previous="{ title: 'Chapter 1: Basics', href: '/chapter-1' }"
-        :next="{ title: 'Chapter 3: Advanced', href: '/chapter-3' }"
+        :previous="{ title: 'Chapter 1: Basics', href: '#examples-1' }"
+        :next="{ title: 'Chapter 3: Advanced', href: '#examples-1' }"
       />
     </div>
 
@@ -59,7 +59,7 @@
       Show only the parent/overview link:
     </p>
     <div class="stacked-mobile mbe4">
-      <VueContentPagination :parent="{ title: 'Back to Documentation', href: '/documentation' }" />
+      <VueContentPagination :parent="{ title: 'Back to Documentation', href: '#examples-1' }" />
     </div>
 
     <div class="mbe4">
@@ -67,9 +67,9 @@
     </div>
     <div class="stacked-mobile mbe4">
       <VueContentPagination
-        :previous="{ title: 'Installation', href: '/installation' }"
-        :next="{ title: 'Configuration', href: '/configuration' }"
-        :parent="{ title: 'Guides', href: '/guides' }"
+        :previous="{ title: 'Installation', href: '#examples-1' }"
+        :next="{ title: 'Configuration', href: '#examples-1' }"
+        :parent="{ title: 'Guides', href: '#examples-1' }"
         bordered
       />
     </div>
@@ -82,9 +82,9 @@
     </p>
     <div class="stacked-mobile mbe4">
       <VueContentPagination
-        :previous="{ title: 'Prev Page', href: '/prev' }"
-        :next="{ title: 'Next Page', href: '/next' }"
-        :parent="{ title: 'Overview', href: '/overview' }"
+        :previous="{ title: 'Prev Page', href: '#examples-1' }"
+        :next="{ title: 'Next Page', href: '#examples-1' }"
+        :parent="{ title: 'Overview', href: '#examples-1' }"
       >
         <template #previous-icon>
           <ChevronLeft :size="20" />
@@ -106,8 +106,8 @@
     </p>
     <div class="stacked-mobile mbe4">
       <VueContentPagination
-        :next="{ title: 'Getting Started', href: '/getting-started' }"
-        :parent="{ title: 'Documentation', href: '/docs' }"
+        :next="{ title: 'Getting Started', href: '#examples-1' }"
+        :parent="{ title: 'Documentation', href: '#examples-1' }"
       />
     </div>
 
@@ -119,8 +119,8 @@
     </p>
     <div class="stacked-mobile mbe4">
       <VueContentPagination
-        :previous="{ title: 'Deployment', href: '/deployment' }"
-        :parent="{ title: 'Documentation', href: '/docs' }"
+        :previous="{ title: 'Deployment', href: '#examples-1' }"
+        :parent="{ title: 'Documentation', href: '#examples-1' }"
       />
     </div>
 
@@ -131,9 +131,9 @@
       <div v-html="customContentPaginationStyles"></div>
       <VueContentPagination
         class="custom-content-pagination"
-        :previous="{ title: 'Introduction', href: '/introduction' }"
-        :next="{ title: 'Getting Started', href: '/getting-started' }"
-        :parent="{ title: 'Documentation', href: '/documentation' }"
+        :previous="{ title: 'Introduction', href: '#examples-1' }"
+        :next="{ title: 'Getting Started', href: '#examples-1' }"
+        :parent="{ title: 'Documentation', href: '#examples-1' }"
       >
         <template #previous-icon>
           <ChevronLeft :size="20" />
@@ -154,9 +154,9 @@
       <div v-html="monochromeCustomContentPaginationStyles"></div>
       <VueContentPagination
         class="monochrome-custom-content-pagination"
-        :previous="{ title: 'Introduction', href: '/introduction' }"
-        :next="{ title: 'Getting Started', href: '/getting-started' }"
-        :parent="{ title: 'Documentation', href: '/documentation' }"
+        :previous="{ title: 'Introduction', href: '#examples-1' }"
+        :next="{ title: 'Getting Started', href: '#examples-1' }"
+        :parent="{ title: 'Documentation', href: '#examples-1' }"
       >
         <template #previous-icon>
           <ChevronLeft :size="20" />
