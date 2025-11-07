@@ -247,18 +247,30 @@ input, select, textarea {
 
 | Token | Light Mode | Dark Mode | Usage |
 |-------|-----------|-----------|-------|
-| `--ag-focus` | `#2563eb` | `#58a6ff` | Focus ring color |
+| `--ag-focus` | `37, 99, 235` (RGB) | `88, 166, 255` (RGB) | Focus ring color (RGB channels for alpha support) |
 | `--ag-focus-width` | `2px` | `2px` | Focus ring width |
 | `--ag-focus-offset` | `2px` | `2px` | Focus ring offset |
 
 **CRITICAL**: Always use `--ag-focus` for focus rings, NEVER `currentColor` (poor contrast).
 
+**RGB Channel Format**: `--ag-focus` stores RGB channel values (e.g., `37, 99, 235`) to support flexible alpha channel usage:
+- Opaque: `rgb(var(--ag-focus))`
+- Semi-transparent: `rgba(var(--ag-focus), 0.5)`
+
 **Usage Example** (from `_Accordion.ts:134-136`):
 ```css
 .header button:focus-visible {
-  outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+  outline: var(--ag-focus-width, 2px) solid rgb(var(--ag-focus));
   outline-offset: var(--ag-focus-offset, 2px);
   transition: outline var(--ag-motion-medium, 0.2s) ease;
+}
+```
+
+**Usage with Alpha Channel** (semi-transparent focus ring):
+```css
+.element:focus-visible {
+  outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+  outline-offset: var(--ag-focus-offset);
 }
 ```
 
@@ -334,16 +346,25 @@ button:hover {
 **When to use**: ALL focusable elements.
 
 ```css
+/* Opaque focus ring */
 element:focus-visible {
-  outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+  outline: var(--ag-focus-width, 2px) solid rgb(var(--ag-focus));
   outline-offset: var(--ag-focus-offset, 2px);
   transition: outline var(--ag-motion-medium, 0.2s) ease;
+}
+
+/* Semi-transparent focus ring (for layered effects) */
+element:focus-visible {
+  outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+  outline-offset: var(--ag-focus-offset);
 }
 ```
 
 **Why not `currentColor`?**
 - Poor contrast on colored backgrounds (e.g., red button with red outline)
 - Blue `--ag-focus` provides excellent contrast on all button variants
+
+**RGB Channel Pattern**: `--ag-focus` uses RGB channel values (`37, 99, 235`) to support both `rgb()` and `rgba()` usage with flexible alpha channels
 
 ### Pattern 5: Bordered Variants with Fill on Hover
 
@@ -526,7 +547,7 @@ button:hover {
 ```css
 .ag-input__input:focus-visible,
 .ag-input__textarea:focus-visible {
-  outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+  outline: var(--ag-focus-width, 2px) solid rgb(var(--ag-focus));
   outline-offset: var(--ag-focus-offset, 2px);
   transition: outline var(--ag-motion-medium, 0.2s) ease;
 }
@@ -544,7 +565,7 @@ button {
 }
 
 button:focus-visible {
-  outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+  outline: var(--ag-focus-width, 2px) solid rgb(var(--ag-focus));
   outline-offset: var(--ag-focus-offset, 2px);
 }
 
@@ -636,11 +657,11 @@ button:focus-visible {
 }
 ```
 
-**Solution**: Always use `--ag-focus`
+**Solution**: Always use `--ag-focus` with RGB channel format
 ```css
 /* CORRECT */
 button:focus-visible {
-  outline: var(--ag-focus-width, 2px) solid var(--ag-focus);
+  outline: var(--ag-focus-width, 2px) solid rgb(var(--ag-focus));
   outline-offset: var(--ag-focus-offset, 2px);
 }
 ```
@@ -813,8 +834,8 @@ From `_Button.ts:298-304`:
 ```css
 button:focus-visible,
 button:focus:not(:hover) {
-  /* High-contrast focus ring using semantic tokens */
-  outline: var(--ag-focus-width) solid var(--ag-focus);
+  /* High-contrast focus ring using RGB channel tokens */
+  outline: var(--ag-focus-width) solid rgb(var(--ag-focus));
   outline-offset: var(--ag-focus-offset);
   transition: outline var(--ag-motion-medium) ease;
 }
@@ -845,7 +866,7 @@ From `_Accordion.ts:100-115, 132-137`:
 
 /* Focus state */
 .header button:focus-visible {
-  outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+  outline: var(--ag-focus-width, 2px) solid rgb(var(--ag-focus));
   outline-offset: var(--ag-focus-offset, 2px);
   transition: outline var(--ag-motion-medium, 0.2s) ease;
 }
