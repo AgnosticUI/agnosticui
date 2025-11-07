@@ -1073,7 +1073,6 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
 
     // Validate tickStep to prevent infinite loops
     if (!this.tickStep || this.tickStep <= 0 || !isFinite(this.tickStep)) {
-      console.warn('Invalid tickStep value:', this.tickStep);
       return null;
     }
 
@@ -1083,7 +1082,6 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
     // Additional safety: cap the number of ticks to prevent memory issues
     const maxTicks = 1000;
     if (tickCount > maxTicks) {
-      console.warn(`tickCount (${tickCount}) exceeds maximum (${maxTicks}). Increase tickStep.`);
       return null;
     }
 
