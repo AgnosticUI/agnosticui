@@ -83,11 +83,11 @@ export default {
     VueMenuSeparator,
   },
   methods: {
-    handleMenuOpen() {
-      console.log("Menu opened");
+    handleMenuOpen(detail) {
+      console.log("Menu opened, open:", detail.open);
     },
-    handleMenuClose() {
-      console.log("Menu closed");
+    handleMenuClose(detail) {
+      console.log("Menu closed, open:", detail.open);
     },
     handleMenuSelect(detail) {
       console.log("Selected:", detail.value);
@@ -103,12 +103,12 @@ export default {
 import { ReactMenuButton, ReactMenu, ReactMenuItem, ReactMenuSeparator } from 'agnosticui-core/menu/react';
 
 export default function MenuExample() {
-  const handleMenuOpen = () => {
-    console.log("Menu opened");
+  const handleMenuOpen = (event) => {
+    console.log("Menu opened, open:", event.detail.open);
   };
 
-  const handleMenuClose = () => {
-    console.log("Menu closed");
+  const handleMenuClose = (event) => {
+    console.log("Menu closed, open:", event.detail.open);
   };
 
   const handleMenuSelect = (event) => {
@@ -212,12 +212,13 @@ export default function MenuExample() {
   document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.querySelector('#my-menu');
 
-    menuButton?.addEventListener('menu-open', () => {
-      console.log('Menu opened');
+    // Using addEventListener pattern
+    menuButton?.addEventListener('menu-open', (e) => {
+      console.log('Menu opened, open:', e.detail.open);
     });
 
-    menuButton?.addEventListener('menu-close', () => {
-      console.log('Menu closed');
+    menuButton?.addEventListener('menu-close', (e) => {
+      console.log('Menu closed, open:', e.detail.open);
     });
 
     const menuItems = document.querySelectorAll('ag-menu-item');
@@ -226,6 +227,17 @@ export default function MenuExample() {
         console.log('Selected:', e.detail.value);
       });
     });
+
+    // Alternative: Using callback props pattern
+    const menuButton2 = document.querySelector('#callback-menu');
+    if (menuButton2) {
+      menuButton2.onMenuOpen = (e) => {
+        console.log('Menu opened via callback, open:', e.detail.open);
+      };
+      menuButton2.onMenuClose = (e) => {
+        console.log('Menu closed via callback, open:', e.detail.open);
+      };
+    }
   });
 </script>
 
@@ -324,11 +336,61 @@ export default function MenuExample() {
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `@menu-open` (Vue) / `onMenuOpen` (React) / `menu-open` (Lit) | `void` | Emitted when the menu is opened |
-| `@menu-close` (Vue) / `onMenuClose` (React) / `menu-close` (Lit) | `void` | Emitted when the menu is closed |
-| `@menu-select` (Vue) / `onMenuSelect` (React) / `menu-select` (Lit) | `{ value: string }` | Emitted when a menu item is selected |
+### MenuButton Events
+
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `menu-open` | Vue: `@menu-open`<br>React: `onMenuOpen`<br>Lit: `@menu-open` or `.onMenuOpen` | `{ open: boolean }` | Fired when menu opens. The `open` property will be `true`. |
+| `menu-close` | Vue: `@menu-close`<br>React: `onMenuClose`<br>Lit: `@menu-close` or `.onMenuClose` | `{ open: boolean }` | Fired when menu closes. The `open` property will be `false`. |
+| `click` | Vue: `@click`<br>React: `onClick`<br>Lit: `@click` or `.onClick` | Native `MouseEvent` | Fired when the menu button is clicked (native composed event). |
+| `focus` | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus` or `.onFocus` | Native `FocusEvent` | Fired when the menu button receives focus (re-dispatched from host). |
+| `blur` | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur` or `.onBlur` | Native `FocusEvent` | Fired when the menu button loses focus (re-dispatched from host). |
+| `keydown` | Vue: `@keydown`<br>React: `onKeyDown`<br>Lit: `@keydown` or `.onKeyDown` | Native `KeyboardEvent` | Fired when a key is pressed on the menu button (native composed event). |
+
+### MenuItem Events
+
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `menu-select` | Vue: `@menu-select`<br>React: `onMenuSelect`<br>Lit: `@menu-select` or `.onMenuSelect` | `{ value: string }` | Fired when a menu item is selected. Contains the item's `value`. |
+| `click` | Vue: `@click`<br>React: `onClick`<br>Lit: `@click` or `.onClick` | Native `MouseEvent` | Fired when the menu item is clicked (native composed event). |
+
+### Menu Events
+
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `keydown` | Vue: `@menu-keydown`<br>React: `onKeyDown` on menu<br>Lit: `@keydown` or `.onKeyDown` | Native `KeyboardEvent` | Fired when a key is pressed in the menu (native composed event). |
+
+### Event Patterns
+
+AgnosticUI Menu supports **three event handling patterns**:
+
+1. **addEventListener** (Lit/Vanilla JS):
+```javascript
+const menuButton = document.querySelector('ag-menu-button');
+menuButton.addEventListener('menu-open', (e) => {
+  console.log('Menu opened:', e.detail.open);
+});
+```
+
+2. **Callback props** (Lit/Vanilla JS):
+```javascript
+const menuButton = document.querySelector('ag-menu-button');
+menuButton.onMenuOpen = (e) => {
+  console.log('Menu opened:', e.detail.open);
+};
+```
+
+3. **Framework event handlers** (Vue/React):
+```vue
+<!-- Vue -->
+<VueMenu @menu-open="handleMenuOpen" />
+```
+```tsx
+// React
+<ReactMenuButton onMenuOpen={handleMenuOpen} />
+```
+
+All three patterns work identically thanks to the **dual-dispatch** system.
 
 ## Components
 

@@ -386,6 +386,101 @@ export const ComplexMenu: Story = {
   ),
 };
 
+// Callback Props Pattern (React)
+export const CallbackPropsPattern: Story = {
+  render: () => {
+    const [logs, setLogs] = React.useState<string[]>([]);
+
+    const addLog = (message: string) => {
+      setLogs(prev => [...prev, `${new Date().toLocaleTimeString()}: ${message}`]);
+    };
+
+    return (
+      <div style={{ padding: '50px' }}>
+        <p style={{ marginBottom: '1rem' }}>
+          <strong>React Callback Props:</strong>
+          <br />
+          This demonstrates React event handlers for Menu components.
+          <br />
+          All events use the onEventName callback pattern.
+        </p>
+        <ReactMenuButton
+          variant="chevron"
+          size="md"
+          onMenuOpen={(e) => {
+            addLog(`Menu opened: open=${e.detail.open}`);
+          }}
+          onMenuClose={(e) => {
+            addLog(`Menu closed: open=${e.detail.open}`);
+          }}
+          onClick={(e) => {
+            addLog('Button clicked!');
+          }}
+          onFocus={() => {
+            addLog('Button focused');
+          }}
+          onBlur={() => {
+            addLog('Button blurred');
+          }}
+        >
+          Interactive Menu
+          <ReactMenu slot="menu" ariaLabel="Interactive menu">
+            <ReactMenuItem
+              value="item1"
+              onClick={() => addLog('Item 1 clicked')}
+              onMenuSelect={(e) => {
+                addLog(`Item selected: ${e.detail.value}`);
+              }}
+            >
+              Item 1 (Select me!)
+            </ReactMenuItem>
+            <ReactMenuItem
+              value="item2"
+              onMenuSelect={(e) => {
+                addLog(`Item selected: ${e.detail.value}`);
+              }}
+            >
+              Item 2
+            </ReactMenuItem>
+            <ReactMenuSeparator />
+            <ReactMenuItem
+              value="item3"
+              onMenuSelect={(e) => {
+                addLog(`Item selected: ${e.detail.value}`);
+              }}
+            >
+              Item 3
+            </ReactMenuItem>
+          </ReactMenu>
+        </ReactMenuButton>
+
+        <div style={{ marginTop: '1.5rem', padding: '1rem', backgroundColor: '#f3f4f6', borderRadius: '4px' }}>
+          <strong>Event Log:</strong>
+          {logs.length === 0 ? (
+            <p style={{ color: '#6b7280', fontSize: '0.875rem', marginTop: '0.5rem' }}>
+              Interact with the menu to see events...
+            </p>
+          ) : (
+            <div style={{ marginTop: '0.5rem', maxHeight: '200px', overflow: 'auto' }}>
+              {logs.map((log, i) => (
+                <div key={i} style={{ fontSize: '0.75rem', fontFamily: 'monospace', padding: '0.25rem 0' }}>
+                  {log}
+                </div>
+              ))}
+            </div>
+          )}
+          <button
+            onClick={() => setLogs([])}
+            style={{ marginTop: '0.5rem', padding: '0.25rem 0.5rem', fontSize: '0.75rem' }}
+          >
+            Clear Log
+          </button>
+        </div>
+      </div>
+    );
+  },
+};
+
 // CSS Parts Customization with styling
 export const CSSPartsCustomization: Story = {
   render: () => (

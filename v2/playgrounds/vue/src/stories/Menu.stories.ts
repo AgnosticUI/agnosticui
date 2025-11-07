@@ -294,6 +294,94 @@ export const EventTesting: Story = {
   }),
 };
 
+// Vue Event Handlers (using @event syntax)
+export const VueEventHandlers: Story = {
+  render: (args: VueMenuProps) => ({
+    components: { VueMenu, VueMenuItem, VueMenuSeparator },
+    setup() {
+      const logs = ref<string[]>([]);
+
+      const addLog = (message: string) => {
+        logs.value.push(`${new Date().toLocaleTimeString()}: ${message}`);
+      };
+
+      const clearLogs = () => {
+        logs.value = [];
+      };
+
+      return { args, logs, addLog, clearLogs };
+    },
+    template: `
+      <div style="padding: 50px;">
+        <p style="margin-bottom: 1rem;">
+          <strong>Vue Event Handlers:</strong>
+          <br />
+          This demonstrates Vue event handlers using the @event syntax.
+          <br />
+          Menu component emits: @menu-open, @menu-close, @click, @focus, @blur
+          <br />
+          MenuItem component emits: @menu-select, @click
+        </p>
+        <VueMenu
+          v-bind="args"
+          menuAriaLabel="Interactive menu"
+          @menu-open="(detail) => addLog(\`Menu opened: open=\${detail.open}\`)"
+          @menu-close="(detail) => addLog(\`Menu closed: open=\${detail.open}\`)"
+          @click="() => addLog('Button clicked!')"
+          @focus="() => addLog('Button focused')"
+          @blur="() => addLog('Button blurred')"
+        >
+          Interactive Menu
+          <template #menu>
+            <VueMenuItem
+              value="item1"
+              @click="() => addLog('Item 1 clicked')"
+              @menu-select="(detail) => addLog(\`Item selected: \${detail.value}\`)"
+            >
+              Item 1 (Select me!)
+            </VueMenuItem>
+            <VueMenuItem
+              value="item2"
+              @menu-select="(detail) => addLog(\`Item selected: \${detail.value}\`)"
+            >
+              Item 2
+            </VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem
+              value="item3"
+              @menu-select="(detail) => addLog(\`Item selected: \${detail.value}\`)"
+            >
+              Item 3
+            </VueMenuItem>
+          </template>
+        </VueMenu>
+
+        <div style="margin-top: 1.5rem; padding: 1rem; background-color: #f3f4f6; border-radius: 4px;">
+          <strong>Event Log:</strong>
+          <p v-if="logs.length === 0" style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">
+            Interact with the menu to see events...
+          </p>
+          <div v-else style="margin-top: 0.5rem; max-height: 200px; overflow: auto;">
+            <div
+              v-for="(log, i) in logs"
+              :key="i"
+              style="font-size: 0.75rem; font-family: monospace; padding: 0.25rem 0;"
+            >
+              {{ log }}
+            </div>
+          </div>
+          <button
+            @click="clearLogs"
+            style="margin-top: 0.5rem; padding: 0.25rem 0.5rem; font-size: 0.75rem;"
+          >
+            Clear Log
+          </button>
+        </div>
+      </div>
+    `,
+  }),
+};
+
 export const CSSPartsCustomization: Story = {
   render: (args: VueMenuProps) => ({
     components: { VueMenu, VueMenuItem, VueMenuSeparator },
@@ -333,7 +421,7 @@ export const CSSPartsCustomization: Story = {
     template: `
       <div>
         <div v-html="styles"></div>
-        <VueMenu v-bind="args" class="custom-menu-button">
+        <VueMenu v-bind="args" class="custom-menu-button" menuAriaLabel="Custom styled menu">
           Custom Menu
           <template #menu>
             <VueMenuItem value="one">Option 1</VueMenuItem>

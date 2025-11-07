@@ -3,6 +3,12 @@
     ref="menuButtonRef"
     :disabled="disabled || undefined"
     :ariaLabel="ariaLabel"
+    @click="handleClick"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @keydown="handleKeyDown"
+    @menu-open="handleMenuOpen"
+    @menu-close="handleMenuClose"
     v-bind="$attrs"
   >
     <slot />
@@ -13,6 +19,7 @@
       :placement="placement"
       :ariaLabel="menuAriaLabel"
       :ariaLabelledBy="menuAriaLabelledBy"
+      @keydown="handleMenuKeyDown"
     >
       <slot name="menu" />
     </ag-menu>
@@ -20,13 +27,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
+import type {
+  MenuButtonProps,
+  MenuOpenEventDetail,
+  MenuCloseEventDetail,
+} from "../core/Menu";
 import "../core/Menu"; // Registers the ag-menu web component
 
-// Define props interface
-export interface VueMenuProps {
-  disabled?: boolean;
-  ariaLabel?: string;
+// Omit callback props (Vue uses emits instead)
+export interface VueMenuProps
+  extends Omit<MenuButtonProps, "onClick" | "onFocus" | "onBlur" | "onKeyDown" | "onMenuOpen" | "onMenuClose"> {
   open?: boolean;
   placement?: string;
   menuAriaLabel?: string;
@@ -34,64 +45,58 @@ export interface VueMenuProps {
 }
 
 // Define props with defaults
-const props = withDefaults(defineProps<VueMenuProps>(), {
+withDefaults(defineProps<VueMenuProps>(), {
   disabled: false,
   placement: "bottom-start",
 });
 
-// Define emits
+// Define emits for all events (native + custom)
 const emit = defineEmits<{
-  "menu-open": [];
-  "menu-close": [];
-  "menu-select": [detail: { value: string }];
+  click: [event: MouseEvent];
+  focus: [event: FocusEvent];
+  blur: [event: FocusEvent];
+  keydown: [event: KeyboardEvent];
+  "menu-keydown": [event: KeyboardEvent];
+  "menu-open": [detail: MenuOpenEventDetail];
+  "menu-close": [detail: MenuCloseEventDetail];
+  "update:open": [open: boolean];
 }>();
 
 // Template refs
 const menuButtonRef = ref<HTMLElement>();
 const menuRef = ref<HTMLElement>();
 
-// Event handlers
+// Bridge handlers for native events
+const handleClick = (event: MouseEvent) => {
+  emit("click", event);
+};
+
+const handleFocus = (event: FocusEvent) => {
+  emit("focus", event);
+};
+
+const handleBlur = (event: FocusEvent) => {
+  emit("blur", event);
+};
+
+const handleKeyDown = (event: KeyboardEvent) => {
+  emit("keydown", event);
+};
+
+const handleMenuKeyDown = (event: KeyboardEvent) => {
+  emit("menu-keydown", event);
+};
+
+// Bridge handlers for custom events
 const handleMenuOpen = (event: Event) => {
-  emit("menu-open");
+  const menuOpenEvent = event as CustomEvent<MenuOpenEventDetail>;
+  emit("menu-open", menuOpenEvent.detail);
+  emit("update:open", menuOpenEvent.detail.open);
 };
 
 const handleMenuClose = (event: Event) => {
-  emit("menu-close");
+  const menuCloseEvent = event as CustomEvent<MenuCloseEventDetail>;
+  emit("menu-close", menuCloseEvent.detail);
+  emit("update:open", menuCloseEvent.detail.open);
 };
-
-const handleMenuSelect = (event: Event) => {
-  const detail = (event as CustomEvent).detail;
-  emit("menu-select", detail);
-};
-
-// Setup event listeners
-onMounted(async () => {
-  // Wait for web components to be defined
-  await Promise.all([
-    customElements.whenDefined("ag-menu-button"),
-    customElements.whenDefined("ag-menu"),
-    customElements.whenDefined("ag-menu-item"),
-    customElements.whenDefined("ag-menu-separator"),
-  ]);
-
-  if (menuButtonRef.value) {
-    menuButtonRef.value.addEventListener("menu-open", handleMenuOpen);
-    menuButtonRef.value.addEventListener("menu-close", handleMenuClose);
-  }
-
-  if (menuRef.value) {
-    menuRef.value.addEventListener("menu-select", handleMenuSelect);
-  }
-});
-
-onUnmounted(() => {
-  if (menuButtonRef.value) {
-    menuButtonRef.value.removeEventListener("menu-open", handleMenuOpen);
-    menuButtonRef.value.removeEventListener("menu-close", handleMenuClose);
-  }
-
-  if (menuRef.value) {
-    menuRef.value.removeEventListener("menu-select", handleMenuSelect);
-  }
-});
 </script>

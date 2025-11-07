@@ -5,4 +5,4 @@ export type {
   ReactMenuItemProps,
   ReactMenuSeparatorProps
 } from './ReactMenu';
-export type { MenuSelectEventDetail, MenuSelectEvent } from './ReactMenu';
+export type { MenuOpenEvent, MenuCloseEvent, MenuSelectEvent } from './ReactMenu';

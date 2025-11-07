@@ -1,8 +1,62 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property, state, query } from 'lit/decorators.js';
 
+// Event type definitions
+export interface MenuOpenEventDetail {
+  open: boolean;
+}
+export type MenuOpenEvent = CustomEvent<MenuOpenEventDetail>;
+
+export interface MenuCloseEventDetail {
+  open: boolean;
+}
+export type MenuCloseEvent = CustomEvent<MenuCloseEventDetail>;
+
+export interface MenuSelectEventDetail {
+  value: string;
+}
+export type MenuSelectEvent = CustomEvent<MenuSelectEventDetail>;
+
+// Props interfaces
+export interface MenuButtonProps {
+  variant?: 'chevron' | 'button' | 'icon';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  buttonVariant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+  disabled?: boolean;
+  ariaLabel?: string;
+  icon?: string;
+  unicode?: string;
+  label?: string;
+  onClick?: (event: MouseEvent) => void;
+  onFocus?: (event: FocusEvent) => void;
+  onBlur?: (event: FocusEvent) => void;
+  onKeyDown?: (event: KeyboardEvent) => void;
+  onMenuOpen?: (event: MenuOpenEvent) => void;
+  onMenuClose?: (event: MenuCloseEvent) => void;
+}
+
+export interface MenuItemProps {
+  value?: string;
+  disabled?: boolean;
+  href?: string;
+  target?: string;
+  checked?: boolean;
+  onClick?: (event: MouseEvent) => void;
+  onMenuSelect?: (event: MenuSelectEvent) => void;
+}
+
+export interface MenuProps {
+  open?: boolean;
+  placement?: string;
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  selectedValue?: string;
+  type?: 'default' | 'single-select';
+  onKeyDown?: (event: KeyboardEvent) => void;
+}
+
 @customElement('ag-menu-button')
-export class MenuButton extends LitElement {
+export class MenuButton extends LitElement implements MenuButtonProps {
   @query('.menu-trigger')
   declare _trigger: HTMLElement;
 
@@ -32,6 +86,24 @@ export class MenuButton extends LitElement {
 
   @property({ type: String })
   label = '';
+
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  @property({ attribute: false })
+  declare onFocus?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onBlur?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onKeyDown?: (event: KeyboardEvent) => void;
+
+  @property({ attribute: false })
+  declare onMenuOpen?: (event: MenuOpenEvent) => void;
+
+  @property({ attribute: false })
+  declare onMenuClose?: (event: MenuCloseEvent) => void;
 
   @state()
   _menuOpen = false;
@@ -333,8 +405,13 @@ export class MenuButton extends LitElement {
     }
   }
 
-  private _handleClick(_event: Event) {
+  private _handleClick(event: MouseEvent) {
     if (this.disabled) return;
+
+    // Invoke callback if provided (native composed event)
+    if (this.onClick) {
+      this.onClick(event);
+    }
 
     if (this._menuOpen) {
       this._closeMenu();
@@ -343,7 +420,40 @@ export class MenuButton extends LitElement {
     }
   }
 
+  private _handleFocus(event: FocusEvent) {
+    // Re-dispatch from host for consumer access (non-bubbling event)
+    const focusEvent = new FocusEvent('focus', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(focusEvent);
+
+    // Invoke callback if provided
+    if (this.onFocus) {
+      this.onFocus(event);
+    }
+  }
+
+  private _handleBlur(event: FocusEvent) {
+    // Re-dispatch from host for consumer access (non-bubbling event)
+    const blurEvent = new FocusEvent('blur', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(blurEvent);
+
+    // Invoke callback if provided
+    if (this.onBlur) {
+      this.onBlur(event);
+    }
+  }
+
   private _handleKeydown(event: KeyboardEvent) {
+    // Invoke callback if provided (native composed event)
+    if (this.onKeyDown) {
+      this.onKeyDown(event);
+    }
+
     switch (event.key) {
       case 'Enter':
       case ' ':
@@ -373,7 +483,19 @@ export class MenuButton extends LitElement {
         this._menu._focusLastItem();
       }
     }
-    this._dispatchEvent('menu-open');
+
+    // Dual-dispatch pattern for custom event
+    const menuOpenEvent = new CustomEvent<MenuOpenEventDetail>('menu-open', {
+      detail: { open: true },
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(menuOpenEvent);
+
+    // Invoke callback if provided
+    if (this.onMenuOpen) {
+      this.onMenuOpen(menuOpenEvent);
+    }
   }
 
   _closeMenu() {
@@ -383,14 +505,19 @@ export class MenuButton extends LitElement {
       this._menu.open = false;
     }
     this._trigger?.focus();
-    this._dispatchEvent('menu-close');
-  }
 
-  private _dispatchEvent(type: string) {
-    this.dispatchEvent(new CustomEvent(type, {
+    // Dual-dispatch pattern for custom event
+    const menuCloseEvent = new CustomEvent<MenuCloseEventDetail>('menu-close', {
+      detail: { open: false },
       bubbles: true,
       composed: true
-    }));
+    });
+    this.dispatchEvent(menuCloseEvent);
+
+    // Invoke callback if provided
+    if (this.onMenuClose) {
+      this.onMenuClose(menuCloseEvent);
+    }
   }
 
   private _renderChevronIcon() {
@@ -413,6 +540,8 @@ export class MenuButton extends LitElement {
           ?disabled="${this.disabled}"
           aria-label="${this.ariaLabel || this.label || 'Menu'}"
           @click="${this._handleClick}"
+          @focus="${this._handleFocus}"
+          @blur="${this._handleBlur}"
           @keydown="${this._handleKeydown}"
         >
           ${this.unicode ? html`<span class="unicode-icon" part="ag-menu-unicode-icon">${this.unicode}</span>` : html`<slot></slot>`}
@@ -432,6 +561,8 @@ export class MenuButton extends LitElement {
           ?disabled="${this.disabled}"
           aria-label="${this.ariaLabel || nothing}"
           @click="${this._handleClick}"
+          @focus="${this._handleFocus}"
+          @blur="${this._handleBlur}"
           @keydown="${this._handleKeydown}"
         >
           <slot></slot>
@@ -450,6 +581,8 @@ export class MenuButton extends LitElement {
         ?disabled="${this.disabled}"
         aria-label="${this.ariaLabel || nothing}"
         @click="${this._handleClick}"
+        @focus="${this._handleFocus}"
+        @blur="${this._handleBlur}"
         @keydown="${this._handleKeydown}"
       >
         <span class="label" part="ag-menu-label">
@@ -463,7 +596,7 @@ export class MenuButton extends LitElement {
 }
 
 @customElement('ag-menu')
-export class Menu extends LitElement {
+export class Menu extends LitElement implements MenuProps {
   @property({ type: Boolean })
   open = false;
 
@@ -481,6 +614,9 @@ export class Menu extends LitElement {
 
   @property({ type: String })
   type: 'default' | 'single-select' = 'default';
+
+  @property({ attribute: false })
+  declare onKeyDown?: (event: KeyboardEvent) => void;
 
   @state()
   _focusedIndex = 0;
@@ -631,6 +767,11 @@ export class Menu extends LitElement {
   }
 
   private _handleKeydown(event: KeyboardEvent) {
+    // Invoke callback if provided (native composed event)
+    if (this.onKeyDown) {
+      this.onKeyDown(event);
+    }
+
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
@@ -673,7 +814,7 @@ export class Menu extends LitElement {
 }
 
 @customElement('ag-menu-item')
-export class MenuItem extends LitElement {
+export class MenuItem extends LitElement implements MenuItemProps {
   @property()
   value = '';
 
@@ -688,6 +829,12 @@ export class MenuItem extends LitElement {
 
   @property({ type: Boolean })
   checked = false;
+
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  @property({ attribute: false })
+  declare onMenuSelect?: (event: MenuSelectEvent) => void;
 
   private _menu: Menu | null = null;
 
@@ -782,13 +929,25 @@ export class MenuItem extends LitElement {
       return;
     }
 
+    // Invoke onClick callback if provided (native composed event)
+    if (this.onClick && event instanceof MouseEvent) {
+      this.onClick(event);
+    }
+
     const menuButton = this.closest('ag-menu-button') as MenuButton;
 
-    this.dispatchEvent(new CustomEvent('menu-select', {
+    // Dual-dispatch pattern for custom event
+    const menuSelectEvent = new CustomEvent<MenuSelectEventDetail>('menu-select', {
       detail: { value: this.value },
       bubbles: true,
       composed: true
-    }));
+    });
+    this.dispatchEvent(menuSelectEvent);
+
+    // Invoke callback if provided
+    if (this.onMenuSelect) {
+      this.onMenuSelect(menuSelectEvent);
+    }
 
     if (menuButton && !this.href) {
       menuButton._closeMenu();

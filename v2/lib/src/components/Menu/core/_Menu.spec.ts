@@ -78,10 +78,10 @@ describe('Menu Components', () => {
       expect(menuButton._menuOpen).toBe(false);
 
       // Call the handler directly as fireEvent may not work with Lit event handling
-      menuButton['_handleClick'](new Event('click'));
+      menuButton['_handleClick'](new MouseEvent('click'));
       expect(menuButton._menuOpen).toBe(true);
 
-      menuButton['_handleClick'](new Event('click'));
+      menuButton['_handleClick'](new MouseEvent('click'));
       expect(menuButton._menuOpen).toBe(false);
     });
 
@@ -293,6 +293,222 @@ describe('Menu Components', () => {
 
       await separator.updateComplete;
       expect(separator.getAttribute('role')).toBe('separator');
+    });
+  });
+
+  describe('Event Handling', () => {
+    describe('MenuButton Events', () => {
+      let menuButton: MenuButton;
+
+      beforeEach(() => {
+        menuButton = document.createElement('ag-menu-button') as MenuButton;
+        document.body.appendChild(menuButton);
+      });
+
+      afterEach(() => {
+        if (menuButton && menuButton.parentNode) {
+          menuButton.parentNode.removeChild(menuButton);
+        }
+      });
+
+      it('should support addEventListener for menu-open event', async () => {
+        const menu = document.createElement('ag-menu') as Menu;
+        menu.setAttribute('slot', 'menu');
+        menuButton.appendChild(menu);
+
+        let eventFired = false;
+        let eventDetail: any;
+        menuButton.addEventListener('menu-open', (e: Event) => {
+          eventFired = true;
+          eventDetail = (e as CustomEvent).detail;
+        });
+
+        await menuButton.updateComplete;
+        menuButton._openMenu();
+
+        expect(eventFired).toBe(true);
+        expect(eventDetail.open).toBe(true);
+      });
+
+      it('should support addEventListener for menu-close event', async () => {
+        const menu = document.createElement('ag-menu') as Menu;
+        menu.setAttribute('slot', 'menu');
+        menuButton.appendChild(menu);
+
+        let eventFired = false;
+        let eventDetail: any;
+        menuButton.addEventListener('menu-close', (e: Event) => {
+          eventFired = true;
+          eventDetail = (e as CustomEvent).detail;
+        });
+
+        await menuButton.updateComplete;
+        menuButton._openMenu();
+        menuButton._closeMenu();
+
+        expect(eventFired).toBe(true);
+        expect(eventDetail.open).toBe(false);
+      });
+
+      it('should support callback prop for onMenuOpen', async () => {
+        const menu = document.createElement('ag-menu') as Menu;
+        menu.setAttribute('slot', 'menu');
+        menuButton.appendChild(menu);
+
+        let callbackFired = false;
+        let callbackDetail: any;
+        menuButton.onMenuOpen = (e) => {
+          callbackFired = true;
+          callbackDetail = e.detail;
+        };
+
+        await menuButton.updateComplete;
+        menuButton._openMenu();
+
+        expect(callbackFired).toBe(true);
+        expect(callbackDetail.open).toBe(true);
+      });
+
+      it('should support callback prop for onMenuClose', async () => {
+        const menu = document.createElement('ag-menu') as Menu;
+        menu.setAttribute('slot', 'menu');
+        menuButton.appendChild(menu);
+
+        let callbackFired = false;
+        let callbackDetail: any;
+        menuButton.onMenuClose = (e) => {
+          callbackFired = true;
+          callbackDetail = e.detail;
+        };
+
+        await menuButton.updateComplete;
+        menuButton._openMenu();
+        menuButton._closeMenu();
+
+        expect(callbackFired).toBe(true);
+        expect(callbackDetail.open).toBe(false);
+      });
+
+      it('should support callback prop for onClick', async () => {
+        let callbackFired = false;
+        menuButton.onClick = () => {
+          callbackFired = true;
+        };
+
+        await menuButton.updateComplete;
+        const button = menuButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+        button.click();
+
+        expect(callbackFired).toBe(true);
+      });
+
+      it('should support callback props for onFocus and onBlur', async () => {
+        let focusFired = false;
+        let blurFired = false;
+
+        menuButton.onFocus = () => {
+          focusFired = true;
+        };
+        menuButton.onBlur = () => {
+          blurFired = true;
+        };
+
+        await menuButton.updateComplete;
+        const button = menuButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+
+        button.dispatchEvent(new FocusEvent('focus'));
+        expect(focusFired).toBe(true);
+
+        button.dispatchEvent(new FocusEvent('blur'));
+        expect(blurFired).toBe(true);
+      });
+
+      it('should re-dispatch focus event from host', async () => {
+        let hostFocusFired = false;
+        menuButton.addEventListener('focus', () => {
+          hostFocusFired = true;
+        });
+
+        await menuButton.updateComplete;
+        const button = menuButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+        button.dispatchEvent(new FocusEvent('focus'));
+
+        expect(hostFocusFired).toBe(true);
+      });
+
+      it('should re-dispatch blur event from host', async () => {
+        let hostBlurFired = false;
+        menuButton.addEventListener('blur', () => {
+          hostBlurFired = true;
+        });
+
+        await menuButton.updateComplete;
+        const button = menuButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+        button.dispatchEvent(new FocusEvent('blur'));
+
+        expect(hostBlurFired).toBe(true);
+      });
+    });
+
+    describe('MenuItem Events', () => {
+      let menuItem: MenuItem;
+
+      beforeEach(() => {
+        menuItem = document.createElement('ag-menu-item') as MenuItem;
+        menuItem.value = 'test';
+        document.body.appendChild(menuItem);
+      });
+
+      afterEach(() => {
+        if (menuItem && menuItem.parentNode) {
+          menuItem.parentNode.removeChild(menuItem);
+        }
+      });
+
+      it('should support addEventListener for menu-select event', async () => {
+        let eventFired = false;
+        let eventDetail: any;
+        menuItem.addEventListener('menu-select', (e: Event) => {
+          eventFired = true;
+          eventDetail = (e as CustomEvent).detail;
+        });
+
+        await menuItem.updateComplete;
+        const button = menuItem.shadowRoot?.querySelector('button') as HTMLButtonElement;
+        button.click();
+
+        expect(eventFired).toBe(true);
+        expect(eventDetail.value).toBe('test');
+      });
+
+      it('should support callback prop for onMenuSelect', async () => {
+        let callbackFired = false;
+        let callbackDetail: any;
+        menuItem.onMenuSelect = (e) => {
+          callbackFired = true;
+          callbackDetail = e.detail;
+        };
+
+        await menuItem.updateComplete;
+        const button = menuItem.shadowRoot?.querySelector('button') as HTMLButtonElement;
+        button.click();
+
+        expect(callbackFired).toBe(true);
+        expect(callbackDetail.value).toBe('test');
+      });
+
+      it('should support callback prop for onClick', async () => {
+        let callbackFired = false;
+        menuItem.onClick = () => {
+          callbackFired = true;
+        };
+
+        await menuItem.updateComplete;
+        const button = menuItem.shadowRoot?.querySelector('button') as HTMLButtonElement;
+        button.click();
+
+        expect(callbackFired).toBe(true);
+      });
     });
   });
 

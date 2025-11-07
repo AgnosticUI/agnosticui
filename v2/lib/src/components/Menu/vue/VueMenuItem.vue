@@ -5,6 +5,8 @@
     :disabled="disabled || undefined"
     :href="href"
     :target="target"
+    @click="handleClick"
+    @menu-select="handleMenuSelect"
     v-bind="$attrs"
   >
     <slot />
@@ -12,50 +14,39 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
+import type {
+  MenuItemProps,
+  MenuSelectEventDetail,
+} from "../core/Menu";
 import "../core/Menu";
 
-// Define props interface
-export interface VueMenuItemProps {
-  value?: string;
-  disabled?: boolean;
-  href?: string;
-  target?: string;
-}
+// Omit callback props (Vue uses emits instead)
+export interface VueMenuItemProps
+  extends Omit<MenuItemProps, "onClick" | "onMenuSelect"> {}
 
 // Define props with defaults
-const props = withDefaults(defineProps<VueMenuItemProps>(), {
+withDefaults(defineProps<VueMenuItemProps>(), {
   value: "",
   disabled: false,
 });
 
-// Define emits
+// Define emits for all events (native + custom)
 const emit = defineEmits<{
-  "menu-select": [detail: { value: string }];
+  click: [event: MouseEvent];
+  "menu-select": [detail: MenuSelectEventDetail];
 }>();
 
 // Template ref
 const menuItemRef = ref<HTMLElement>();
 
-// Event handlers
-const handleMenuSelect = (event: Event) => {
-  const detail = (event as CustomEvent).detail;
-  emit("menu-select", detail);
+// Bridge handlers
+const handleClick = (event: MouseEvent) => {
+  emit("click", event);
 };
 
-// Setup event listeners
-onMounted(async () => {
-  // Wait for web components to be defined
-  await customElements.whenDefined("ag-menu-item");
-
-  if (!menuItemRef.value) return;
-
-  menuItemRef.value.addEventListener("menu-select", handleMenuSelect);
-});
-
-onUnmounted(() => {
-  if (!menuItemRef.value) return;
-
-  menuItemRef.value.removeEventListener("menu-select", handleMenuSelect);
-});
+const handleMenuSelect = (event: Event) => {
+  const menuSelectEvent = event as CustomEvent<MenuSelectEventDetail>;
+  emit("menu-select", menuSelectEvent.detail);
+};
 </script>
