@@ -80,12 +80,21 @@ import IconButtonExamples from '../examples/IconButtonExamples.vue'
     >
       <Loader :size="18" />
     </VueIconButton>
+
+    <!-- With event handlers -->
+    <VueIconButton
+      label="Action button"
+      @icon-button-click="handleClick"
+      @icon-button-activate="handleActivate"
+    >
+      <Zap :size="18" />
+    </VueIconButton>
   </section>
 </template>
 
 <script>
 import VueIconButton from "agnosticui-core/icon-button/vue";
-import { Settings, Trash, Save, Heart, Loader } from "lucide-vue-next";
+import { Settings, Trash, Save, Heart, Loader, Zap } from "lucide-vue-next";
 
 export default {
   components: {
@@ -95,6 +104,7 @@ export default {
     Save,
     Heart,
     Loader,
+    Zap,
   },
   data() {
     return {
@@ -104,6 +114,12 @@ export default {
   methods: {
     toggleFavorite() {
       this.isFavorite = !this.isFavorite;
+    },
+    handleClick(event) {
+      console.log('Button clicked:', event.detail.label, event.detail.pressed);
+    },
+    handleActivate(event) {
+      console.log('Button activated via keyboard:', event.detail.label);
     },
   },
 };
@@ -115,13 +131,21 @@ export default {
 ```tsx
 import { useState } from 'react';
 import { ReactIconButton } from 'agnosticui-core/icon-button/react';
-import { Settings, Trash, Save, Heart, Loader } from 'lucide-react';
+import { Settings, Trash, Save, Heart, Loader, Zap } from 'lucide-react';
 
 export default function IconButtonExample() {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
+  };
+
+  const handleClick = (event) => {
+    console.log('Button clicked:', event.detail.label, event.detail.pressed);
+  };
+
+  const handleActivate = (event) => {
+    console.log('Button activated via keyboard:', event.detail.label);
   };
 
   return (
@@ -169,6 +193,15 @@ export default function IconButtonExample() {
       <ReactIconButton label="Loading" loading>
         <Loader size={18} />
       </ReactIconButton>
+
+      {/* With event handlers */}
+      <ReactIconButton
+        label="Action button"
+        onIconButtonClick={handleClick}
+        onIconButtonActivate={handleActivate}
+      >
+        <Zap size={18} />
+      </ReactIconButton>
     </section>
   );
 }
@@ -193,6 +226,23 @@ export default function IconButtonExample() {
         heartIcon.setAttribute('fill', isFavorite ? 'currentColor' : 'none');
       }
     });
+
+    // Event handling with addEventListener
+    const actionBtn = document.querySelector('#action-btn');
+    actionBtn?.addEventListener('icon-button-click', (e) => {
+      console.log('Button clicked:', e.detail.label, e.detail.pressed);
+    });
+    actionBtn?.addEventListener('icon-button-activate', (e) => {
+      console.log('Button activated via keyboard:', e.detail.label);
+    });
+
+    // Event handling with callback props
+    const callbackBtn = document.querySelector('#callback-btn');
+    if (callbackBtn) {
+      callbackBtn.onIconButtonClick = (e) => {
+        console.log('Callback click:', e.detail.label);
+      };
+    }
   });
 </script>
 
@@ -250,6 +300,21 @@ export default function IconButtonExample() {
       <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
     </svg>
   </ag-icon-button>
+
+  <!-- With addEventListener -->
+  <ag-icon-button id="action-btn" label="Action button">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+    </svg>
+  </ag-icon-button>
+
+  <!-- With callback props -->
+  <ag-icon-button id="callback-btn" label="Callback button">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M12 8v8m-4-4h8"></path>
+    </svg>
+  </ag-icon-button>
 </section>
 ```
 :::
@@ -272,10 +337,48 @@ export default function IconButtonExample() {
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `@click` | `Event` | Emitted when the button is clicked. The original event object is passed. |
-| `@activate` | `{ label: string, pressed: boolean, originalEvent: KeyboardEvent }` | Emitted when the button is activated via keyboard (Space or Enter keys). Provides context about the button state. |
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `icon-button-click` | Vue: `@icon-button-click`<br>React: `onIconButtonClick`<br>Lit: `@icon-button-click` or `.onIconButtonClick` | `{ originalEvent: MouseEvent, label: string, pressed: boolean }` | Fired when the icon button is clicked. Provides the original mouse event and button state. |
+| `icon-button-activate` | Vue: `@icon-button-activate`<br>React: `onIconButtonActivate`<br>Lit: `@icon-button-activate` or `.onIconButtonActivate` | `{ originalEvent: KeyboardEvent, label: string, pressed: boolean }` | Fired when the button is activated via keyboard (Space or Enter keys). Provides the original keyboard event and button state. |
+
+### Event Patterns
+
+AgnosticUI IconButton supports **three event handling patterns**:
+
+1. **addEventListener** (Lit/Vanilla JS):
+```javascript
+const iconButton = document.querySelector('ag-icon-button');
+iconButton.addEventListener('icon-button-click', (e) => {
+  console.log('Button clicked:', e.detail.label, 'Pressed:', e.detail.pressed);
+});
+```
+
+2. **Callback props** (Lit/Vanilla JS):
+```javascript
+const iconButton = document.querySelector('ag-icon-button');
+iconButton.onIconButtonClick = (e) => {
+  console.log('Button clicked:', e.detail.label);
+};
+```
+
+3. **Framework event handlers** (Vue/React):
+```vue
+<!-- Vue -->
+<VueIconButton
+  @icon-button-click="handleClick"
+  @icon-button-activate="handleActivate"
+/>
+```
+```tsx
+// React
+<ReactIconButton
+  onIconButtonClick={handleClick}
+  onIconButtonActivate={handleActivate}
+/>
+```
+
+All three patterns work identically thanks to the **dual-dispatch** system.
 
 ## CSS Shadow Parts
 

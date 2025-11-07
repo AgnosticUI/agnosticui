@@ -1,14 +1,25 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-
+import '../../shared/CloseButton/CloseButton';
 
 export type AlertType = 'warning' | 'info' | 'success' | 'error' | 'danger' | 'primary' | 'default';
+
+// Event detail interfaces
+export interface AlertDismissEventDetail {
+  type: AlertType;
+}
+
+// Event type definitions
+export type AlertDismissEvent = CustomEvent<AlertDismissEventDetail>;
 
 export interface AlertProps {
   type?: AlertType;
   bordered?: boolean;
   rounded?: boolean;
   borderedLeft?: boolean;
+  dismissible?: boolean;
+  // Event handlers
+  onAlertDismiss?: (event: AlertDismissEvent) => void;
 }
 
 @customElement('ag-alert')
@@ -25,14 +36,31 @@ export class Alert extends LitElement implements AlertProps {
   @property({ type: Boolean })
   public borderedLeft = false;
 
+  @property({ type: Boolean })
+  public dismissible = false;
+
+  @property({ attribute: false })
+  declare onAlertDismiss?: (event: AlertDismissEvent) => void;
+
   static styles = css`
     .alert {
+      position: relative;
       padding: var(--ag-space-3);
       background-color: var(--ag-info-background);
       color: var(--ag-info-text);
       border-width: var(--ag-border-width-1);
       border-style: solid;
       border-color: transparent;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--ag-space-2);
+    }
+    .alert-content {
+      flex: 1;
+    }
+    .alert-close {
+      flex-shrink: 0;
+      margin-left: auto;
     }
     .alert-rounded {
       border-radius: var(--ag-radius-md);
@@ -83,6 +111,25 @@ export class Alert extends LitElement implements AlertProps {
     }
   `;
 
+  private _handleDismiss = () => {
+    // Dual-dispatch pattern for custom event
+    const dismissEvent = new CustomEvent<AlertDismissEventDetail>('alert-dismiss', {
+      detail: {
+        type: this.type
+      },
+      bubbles: true,
+      composed: true
+    });
+
+    // Dispatch DOM event first
+    this.dispatchEvent(dismissEvent);
+
+    // Then invoke callback if provided
+    if (this.onAlertDismiss) {
+      this.onAlertDismiss(dismissEvent);
+    }
+  };
+
   render() {
     const classes = [
       'alert',
@@ -94,7 +141,18 @@ export class Alert extends LitElement implements AlertProps {
 
     return html`
       <div class="${classes}" part="ag-alert" role="alert">
-        <slot></slot>
+        <div class="alert-content">
+          <slot></slot>
+        </div>
+        ${this.dismissible ? html`
+          <div class="alert-close">
+            <ag-close-button
+              @click=${this._handleDismiss}
+              aria-label="Dismiss alert"
+              size="sm"
+            ></ag-close-button>
+          </div>
+        ` : ''}
       </div>
     `;
   }

@@ -193,6 +193,12 @@ export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
   @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
+  /**
+   * Callback for breadcrumb click events
+   */
+  @property({ attribute: false })
+  declare onBreadcrumbClick?: (event: BreadcrumbClickEvent) => void;
+
   constructor() {
     super();
 
@@ -205,8 +211,8 @@ export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
 
   private _handleItemClick = (event: MouseEvent, item: BreadcrumbItem, index: number) => {
     // Don't prevent default for normal navigation
-    // Just dispatch our custom event for additional handling
-    this.dispatchEvent(new CustomEvent('breadcrumb-click', {
+    // Dual-dispatch pattern for custom event
+    const clickEvent = new CustomEvent<BreadcrumbClickEventDetail>('breadcrumb-click', {
       detail: {
         item,
         index,
@@ -214,7 +220,15 @@ export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
       },
       bubbles: true,
       composed: true
-    }));
+    });
+
+    // Dispatch DOM event first
+    this.dispatchEvent(clickEvent);
+
+    // Then invoke callback if provided
+    if (this.onBreadcrumbClick) {
+      this.onBreadcrumbClick(clickEvent);
+    }
   };
 
   private _renderBreadcrumbItem(item: BreadcrumbItem, index: number) {

@@ -209,9 +209,53 @@ interface BreadcrumbItem {
 
 ## Events
 
-| Event | Detail | Description |
-|-------|--------|-------------|
-| `breadcrumb-click` | `{ item: BreadcrumbItem, index: number }` | Emitted when a breadcrumb item is clicked |
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `breadcrumb-click` | Vue: `@breadcrumb-click`<br>React: `onBreadcrumbClick`<br>Lit: `@breadcrumb-click` or `.onBreadcrumbClick` | `{ item: BreadcrumbItem, index: number, event: MouseEvent }` | Fired when a breadcrumb link is clicked. Provides the clicked item, its index, and the original mouse event. |
+
+### Event Patterns
+
+AgnosticUI Breadcrumb supports **three event handling patterns**:
+
+1. **addEventListener** (Lit/Vanilla JS):
+```javascript
+const breadcrumb = document.querySelector('ag-breadcrumb');
+breadcrumb.addEventListener('breadcrumb-click', (e) => {
+  console.log('Breadcrumb clicked:', e.detail.item.label);
+  console.log('Item index:', e.detail.index);
+  // Optionally prevent navigation
+  e.detail.event.preventDefault();
+});
+```
+
+2. **Callback props** (Lit/Vanilla JS):
+```javascript
+const breadcrumb = document.querySelector('ag-breadcrumb');
+breadcrumb.onBreadcrumbClick = (e) => {
+  console.log('Breadcrumb clicked:', e.detail.item.label);
+  // Custom navigation logic
+};
+```
+
+3. **Framework event handlers** (Vue/React):
+```vue
+<!-- Vue -->
+<VueBreadcrumb
+  :items="items"
+  @breadcrumb-click="handleClick"
+/>
+```
+```tsx
+// React
+<ReactBreadcrumb
+  items={items}
+  onBreadcrumbClick={handleClick}
+/>
+```
+
+All three patterns work identically thanks to the **dual-dispatch** system.
+
+**Note**: The component does NOT prevent default navigation by default. To implement client-side routing, call `event.detail.event.preventDefault()` in your event handler.
 
 ## CSS Shadow Parts
 
