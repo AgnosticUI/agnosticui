@@ -197,9 +197,9 @@ Provide a structured response:
 ### Overview
 
 - **Total Components**: 31
-- **Completed**: 2 (Button, Collapsible)
-- **Remaining**: 29
-- **Current Focus**: Tier 1 (Interactive Components)
+- **Completed**: 14 (Button, Collapsible, Toggle, Checkbox, Radio, Input, Select, Tabs, Accordion, Menu, Dialog, Drawer, Toast, Tooltip)
+- **Remaining**: 17
+- **Current Focus**: 🎉 **TIER 1 COMPLETE!** Moving to Tier 2 (Native Event Exposure)
 
 ---
 
@@ -207,7 +207,7 @@ Provide a structured response:
 
 **Priority**: HIGH - These have the most complex event patterns and highest consumer impact
 
-**Status**: 7/12 complete (58%)
+**Status**: 12/12 complete (100%) ✅ TIER 1 COMPLETE!
 
 | Component | Status | Branch | Commits | Risk | Notes |
 |-----------|--------|--------|---------|------|-------|
@@ -220,11 +220,11 @@ Provide a structured response:
 | Select | ✅ Complete | feature/select-event-refactor | (pending commit) | HIGH | Dual-dispatch + v-model:value + comprehensive event stories |
 | Tabs | ✅ Complete | feature/tabs-event-refactor | (merged) | MEDIUM | Active tab state, navigation |
 | Accordion | ✅ Complete | feature/accordion-event-refactor | (merged) | MEDIUM | Expand/collapse, group coordination |
-| Dialog  ✅| ⏳ Pending | - | - | MEDIUM | Open/close, modal behavior |
-| Drawer  ✅| ⏳ Pending | - | - | MEDIUM | Open/close, slide behavior |
-| Toast ✅| ⏳ Pending | - | - | LOW | Dismiss action |
-| Menu | ⏳ Pending | - | - | HIGH | Selection + open/close, keyboard nav |
-| Tooltip | ⏳ Pending | - | - | LOW | Show/hide state |
+| Menu | ✅ Complete | feature/agnosticui-v2-integration | (current) | HIGH | Dual-dispatch + v-model:open + focus/blur re-dispatch + comprehensive event tests |
+| Dialog | ✅ Complete | feature/agnosticui-v2-integration | (current) | MEDIUM | Open/close, modal behavior |
+| Drawer | ✅ Complete | feature/agnosticui-v2-integration | (current) | MEDIUM | Open/close, slide behavior |
+| Toast | ✅ Complete | feature/agnosticui-v2-integration | (current) | LOW | Dismiss action |
+| Tooltip | ✅ Complete | feature/agnosticui-v2-integration | (current) | LOW | Dual-dispatch + show/hide events with detail + comprehensive tests |
 
 ---
 
@@ -232,11 +232,11 @@ Provide a structured response:
 
 **Priority**: MEDIUM - Simpler patterns, often just adding callback props
 
-**Status**: 0/5 complete (0%)
+**Status**: 1/5 complete (20%)
 
 | Component | Status | Branch | Commits | Risk | Notes |
 |-----------|--------|--------|---------|------|-------|
-| IconButton | ⏳ Pending | - | - | LOW | Extends Button patterns |
+| IconButton | ✅ Complete | feature/agnosticui-v2-integration | (current) | LOW | Dual-dispatch + icon-button-click & activate events |
 | Alert | ⏳ Pending | - | - | LOW | Close button, dismiss event |
 | Tag | ⏳ Pending | - | - | LOW | Optional remove button |
 | Breadcrumb | ⏳ Pending | - | - | LOW | Click navigation |

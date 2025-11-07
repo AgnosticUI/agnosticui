@@ -13,14 +13,28 @@ import { property, query, state } from 'lit/decorators.js';
 import { computePosition, autoUpdate, flip, shift, offset, arrow, type Placement } from '@floating-ui/dom';
 
 /**
+ * Event detail for show event
+ */
+export interface TooltipShowEventDetail {
+  visible: boolean;
+}
+
+/**
+ * Event detail for hide event
+ */
+export interface TooltipHideEventDetail {
+  visible: boolean;
+}
+
+/**
  * Custom event dispatched when the tooltip is shown
  */
-export type TooltipShowEvent = CustomEvent<void>;
+export type TooltipShowEvent = CustomEvent<TooltipShowEventDetail>;
 
 /**
  * Custom event dispatched when the tooltip is hidden
  */
-export type TooltipHideEvent = CustomEvent<void>;
+export type TooltipHideEvent = CustomEvent<TooltipHideEventDetail>;
 
 /**
  * Props interface for Tooltip component including event handlers
@@ -102,6 +116,12 @@ export class Tooltip extends LitElement implements TooltipProps {
 
   @property({ type: Boolean, reflect: true })
   declare disabled: boolean;
+
+  @property({ attribute: false })
+  declare onShow?: (event: TooltipShowEvent) => void;
+
+  @property({ attribute: false })
+  declare onHide?: (event: TooltipHideEvent) => void;
 
   @state()
   private declare _open: boolean;
@@ -225,11 +245,35 @@ export class Tooltip extends LitElement implements TooltipProps {
         this.updateComplete.then(() => {
           this._startPositioning();
         });
-        this.dispatchEvent(new CustomEvent('show'));
+
+        // Dual-dispatch pattern for custom event
+        const showEvent = new CustomEvent<TooltipShowEventDetail>('show', {
+          detail: { visible: true },
+          bubbles: true,
+          composed: true
+        });
+        this.dispatchEvent(showEvent);
+
+        // Invoke callback if provided
+        if (this.onShow) {
+          this.onShow(showEvent);
+        }
       } else {
         this._stopPositioning();
         document.removeEventListener('keydown', this._handleDocumentKeyDown);
-        this.dispatchEvent(new CustomEvent('hide'));
+
+        // Dual-dispatch pattern for custom event
+        const hideEvent = new CustomEvent<TooltipHideEventDetail>('hide', {
+          detail: { visible: false },
+          bubbles: true,
+          composed: true
+        });
+        this.dispatchEvent(hideEvent);
+
+        // Invoke callback if provided
+        if (this.onHide) {
+          this.onHide(hideEvent);
+        }
       }
     }
   }

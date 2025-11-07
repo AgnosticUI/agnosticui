@@ -182,10 +182,42 @@ export default function TooltipExample() {
 
 ## Events
 
-| Event | Detail | Description |
-|-------|--------|-------------|
-| `show` (Vue: `@show`, React: `onShow`) | `void` | Emitted when the tooltip becomes visible |
-| `hide` (Vue: `@hide`, React: `onHide`) | `void` | Emitted when the tooltip becomes hidden |
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `show` | Vue: `@show`<br>React: `onShow`<br>Lit: `@show` or `.onShow` | `{ visible: boolean }` | Fired when the tooltip becomes visible. The `visible` property will be `true`. |
+| `hide` | Vue: `@hide`<br>React: `onHide`<br>Lit: `@hide` or `.onHide` | `{ visible: boolean }` | Fired when the tooltip becomes hidden. The `visible` property will be `false`. |
+
+### Event Patterns
+
+AgnosticUI Tooltip supports **three event handling patterns**:
+
+1. **addEventListener** (Lit/Vanilla JS):
+```javascript
+const tooltip = document.querySelector('ag-tooltip');
+tooltip.addEventListener('show', (e) => {
+  console.log('Tooltip shown:', e.detail.visible);
+});
+```
+
+2. **Callback props** (Lit/Vanilla JS):
+```javascript
+const tooltip = document.querySelector('ag-tooltip');
+tooltip.onShow = (e) => {
+  console.log('Tooltip shown:', e.detail.visible);
+};
+```
+
+3. **Framework event handlers** (Vue/React):
+```vue
+<!-- Vue -->
+<VueTooltip @show="handleShow" @hide="handleHide" />
+```
+```tsx
+// React
+<ReactTooltip onShow={handleShow} onHide={handleHide} />
+```
+
+All three patterns work identically thanks to the **dual-dispatch** system.
 
 ## Accessibility
 

@@ -11,6 +11,8 @@
     :pressed="pressed || undefined"
     :loading="loading || undefined"
     :ariaDescribedby="ariaDescribedby"
+    @icon-button-click="handleClick"
+    @icon-button-activate="handleActivate"
     v-bind="$attrs"
   >
     <slot />
@@ -18,53 +20,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
+import type {
+  IconButtonProps,
+  IconButtonClickEventDetail,
+  IconButtonActivateEventDetail,
+} from "../core/IconButton";
 import "../core/IconButton"; // Registers the ag-icon-button web component
 
-// Define props interface
-export interface VueIconButtonProps {
-  /** Required accessible name for the button */
-  label: string;
-
-  /** Icon identifier or name (for icon systems) */
-  icon?: string;
-
-  /** Unicode symbol for simple icons (×, ☰, etc.) */
-  unicode?: string;
-
-  /** Button size variant */
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
-
-  /** Visual variant */
-  variant?:
-    | "primary"
-    | "secondary"
-    | "success"
-    | "warning"
-    | "danger"
-    | "ghost";
-
-  /** Button type */
-  type?: "button" | "submit" | "reset";
-
-  /** Disabled state */
-  disabled?: boolean;
-
-  /** Pressed state for toggle buttons */
-  pressed?: boolean;
-
-  /** Loading state */
-  loading?: boolean;
-
+// Omit callback props (Vue uses emits instead)
+export interface VueIconButtonProps extends Omit<IconButtonProps, "onIconButtonClick" | "onIconButtonActivate"> {
   /** Additional ARIA label (will override label prop) */
   ariaLabel?: string;
-
-  /** ARIA described by reference */
-  ariaDescribedby?: string;
 }
 
 // Define props with defaults
-const props = withDefaults(defineProps<VueIconButtonProps>(), {
+withDefaults(defineProps<VueIconButtonProps>(), {
   size: "md",
   variant: "ghost",
   type: "button",
@@ -73,57 +44,23 @@ const props = withDefaults(defineProps<VueIconButtonProps>(), {
   loading: false,
 });
 
-// Define emits
+// Define emits for all events
 const emit = defineEmits<{
-  click: [event: Event];
-  activate: [
-    detail: { label: string; pressed: boolean; originalEvent: KeyboardEvent }
-  ];
+  "icon-button-click": [detail: IconButtonClickEventDetail];
+  "icon-button-activate": [detail: IconButtonActivateEventDetail];
 }>();
 
 // Template ref
 const iconButtonRef = ref<HTMLElement>();
 
-// Event handlers
+// Bridge handlers for custom events
 const handleClick = (event: Event) => {
-  console.log("VueIconButton click:", {
-    label: props.ariaLabel || props.label,
-    pressed: props.pressed,
-    timestamp: new Date().toISOString(),
-    event: event.type,
-  });
-  emit("click", event);
+  const clickEvent = event as CustomEvent<IconButtonClickEventDetail>;
+  emit("icon-button-click", clickEvent.detail);
 };
 
 const handleActivate = (event: Event) => {
-  const customEvent = event as CustomEvent;
-  console.log("VueIconButton keyboard activate:", {
-    label: props.ariaLabel || props.label,
-    key: customEvent.detail.originalEvent?.key,
-    timestamp: new Date().toISOString(),
-    detail: customEvent.detail,
-  });
-  emit("activate", customEvent.detail);
+  const activateEvent = event as CustomEvent<IconButtonActivateEventDetail>;
+  emit("icon-button-activate", activateEvent.detail);
 };
-
-// Setup event listeners
-onMounted(async () => {
-  // Wait for web components to be defined
-  await customElements.whenDefined("ag-icon-button");
-
-  if (!iconButtonRef.value) return;
-
-  iconButtonRef.value.addEventListener("icon-button-click", handleClick);
-  iconButtonRef.value.addEventListener("icon-button-activate", handleActivate);
-});
-
-onUnmounted(() => {
-  if (!iconButtonRef.value) return;
-
-  iconButtonRef.value.removeEventListener("icon-button-click", handleClick);
-  iconButtonRef.value.removeEventListener(
-    "icon-button-activate",
-    handleActivate
-  );
-});
 </script>

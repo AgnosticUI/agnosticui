@@ -7,6 +7,8 @@
     :skidding="skidding"
     :trigger="trigger"
     :disabled="disabled || undefined"
+    @show="handleShow"
+    @hide="handleHide"
     v-bind="$attrs"
   >
     <slot />
@@ -14,30 +16,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
+import type {
+  TooltipProps,
+  TooltipShowEventDetail,
+  TooltipHideEventDetail,
+} from "../core/Tooltip";
 import "../core/Tooltip"; // Registers the ag-tooltip web component
 
-// Define props interface
-export interface VueTooltipProps {
-  content?: string;
-  placement?:
-    | "top"
-    | "bottom"
-    | "left"
-    | "right"
-    | "top-start"
-    | "top-end"
-    | "bottom-start"
-    | "bottom-end"
-    | "left-start"
-    | "left-end"
-    | "right-start"
-    | "right-end";
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-}
+// Omit callback props (Vue uses emits instead)
+export interface VueTooltipProps extends Omit<TooltipProps, "onShow" | "onHide"> {}
 
 // Define props with defaults
 withDefaults(defineProps<VueTooltipProps>(), {
@@ -49,10 +37,10 @@ withDefaults(defineProps<VueTooltipProps>(), {
   disabled: false,
 });
 
-// Define emits
+// Define emits for all events
 const emit = defineEmits<{
-  show: [];
-  hide: [];
+  show: [detail: TooltipShowEventDetail];
+  hide: [detail: TooltipHideEventDetail];
 }>();
 
 // Template ref
@@ -64,13 +52,15 @@ const tooltipRef = ref<
   }
 >();
 
-// Event handlers
-const handleShow = () => {
-  emit("show");
+// Bridge handlers for custom events
+const handleShow = (event: Event) => {
+  const showEvent = event as CustomEvent<TooltipShowEventDetail>;
+  emit("show", showEvent.detail);
 };
 
-const handleHide = () => {
-  emit("hide");
+const handleHide = (event: Event) => {
+  const hideEvent = event as CustomEvent<TooltipHideEventDetail>;
+  emit("hide", hideEvent.detail);
 };
 
 // Expose imperative methods
@@ -91,23 +81,5 @@ defineExpose({
   show,
   hide,
   toggle,
-});
-
-// Setup event listeners
-onMounted(async () => {
-  // Wait for web components to be defined
-  await customElements.whenDefined("ag-tooltip");
-
-  if (!tooltipRef.value) return;
-
-  tooltipRef.value.addEventListener("show", handleShow);
-  tooltipRef.value.addEventListener("hide", handleHide);
-});
-
-onUnmounted(() => {
-  if (!tooltipRef.value) return;
-
-  tooltipRef.value.removeEventListener("show", handleShow);
-  tooltipRef.value.removeEventListener("hide", handleHide);
 });
 </script>

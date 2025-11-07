@@ -364,6 +364,18 @@ export class AgIconButton extends LitElement implements IconButtonProps {
   @property({ type: String, reflect: true, attribute: 'aria-describedby' })
   declare ariaDescribedby: string;
 
+  /**
+   * Callback for icon button click events
+   */
+  @property({ attribute: false })
+  declare onIconButtonClick?: (event: IconButtonClickEvent) => void;
+
+  /**
+   * Callback for icon button activate events
+   */
+  @property({ attribute: false })
+  declare onIconButtonActivate?: (event: IconButtonActivateEvent) => void;
+
   constructor() {
     super();
     this.label = '';
@@ -385,29 +397,44 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       return;
     }
 
-    // Dispatch custom event for component interactions
-    this.dispatchEvent(new CustomEvent('icon-button-click', {
+    // Dual-dispatch pattern for custom event
+    const iconButtonClickEvent = new CustomEvent<IconButtonClickEventDetail>('icon-button-click', {
       detail: {
         originalEvent: event,
         label: this.label,
         pressed: this.pressed
       },
-      bubbles: true
-    }));
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(iconButtonClickEvent);
+
+    // Invoke callback if provided
+    if (this.onIconButtonClick) {
+      this.onIconButtonClick(iconButtonClickEvent);
+    }
   };
 
   private _handleKeyDown = (event: KeyboardEvent) => {
     // Space and Enter activation (browser handles this automatically for <button>)
     // But we dispatch our custom event for consistency
     if ((event.key === ' ' || event.key === 'Enter') && !this.disabled && !this.loading) {
-      this.dispatchEvent(new CustomEvent('icon-button-activate', {
+      // Dual-dispatch pattern for custom event
+      const iconButtonActivateEvent = new CustomEvent<IconButtonActivateEventDetail>('icon-button-activate', {
         detail: {
           originalEvent: event,
           label: this.label,
           pressed: this.pressed
         },
-        bubbles: true
-      }));
+        bubbles: true,
+        composed: true
+      });
+      this.dispatchEvent(iconButtonActivateEvent);
+
+      // Invoke callback if provided
+      if (this.onIconButtonActivate) {
+        this.onIconButtonActivate(iconButtonActivateEvent);
+      }
     }
   };
 

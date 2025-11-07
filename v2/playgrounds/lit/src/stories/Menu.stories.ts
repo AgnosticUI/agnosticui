@@ -851,6 +851,85 @@ export const AllButtonVariants: Story = {
   `,
 };
 
+// Callback Props Pattern (alternative to addEventListener)
+export const CallbackPropsPattern: Story = {
+  render: () => {
+    const menuButton = document.createElement('ag-menu-button');
+
+    // Using callback props instead of addEventListener
+    menuButton.onMenuOpen = (e) => {
+      console.log('onMenuOpen callback:', e.detail);
+      alert('Menu opened via callback prop!');
+    };
+    menuButton.onMenuClose = (e) => {
+      console.log('onMenuClose callback:', e.detail);
+    };
+    menuButton.onClick = (e) => {
+      console.log('onClick callback:', e);
+    };
+
+    return html`
+      <div style="padding: 50px;">
+        <p style="margin-bottom: 1rem;">
+          <strong>Using Callback Props:</strong>
+          <br />This example demonstrates using callback properties (onMenuOpen, onMenuClose, onClick)
+          <br />instead of addEventListener. Both patterns work identically.
+        </p>
+        <ag-menu-button
+          .variant=${"chevron"}
+          .size=${"md"}
+          .onMenuOpen=${(e: CustomEvent) => {
+            console.log('Menu opened! Detail:', e.detail);
+            alert(`Menu opened! open=${e.detail.open}`);
+          }}
+          .onMenuClose=${(e: CustomEvent) => {
+            console.log('Menu closed! Detail:', e.detail);
+          }}
+          .onClick=${(e: MouseEvent) => {
+            console.log('Button clicked!', e);
+          }}
+        >
+          Callback Props Menu
+          <ag-menu slot="menu" .ariaLabel=${"Callback props menu"}>
+            <ag-menu-item
+              .value=${"option1"}
+              .onMenuSelect=${(e: CustomEvent) => {
+                console.log('Item selected via callback! Detail:', e.detail);
+                alert(`Selected: ${e.detail.value}`);
+              }}
+              .onClick=${(e: MouseEvent) => {
+                console.log('Menu item clicked!', e);
+              }}
+            >
+              Option 1 (click me!)
+            </ag-menu-item>
+            <ag-menu-item
+              .value=${"option2"}
+              .onMenuSelect=${(e: CustomEvent) => {
+                console.log('Option 2 selected:', e.detail);
+              }}
+            >
+              Option 2
+            </ag-menu-item>
+            <ag-menu-item
+              .value=${"option3"}
+              .onMenuSelect=${(e: CustomEvent) => {
+                console.log('Option 3 selected:', e.detail);
+              }}
+            >
+              Option 3
+            </ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+        <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1rem;">
+          Check the browser console for callback logs, and interact with the menu
+          to see alerts from callback props!
+        </p>
+      </div>
+    `;
+  },
+};
+
 // CSS Parts customization
 export const CSSPartsCustomization: Story = {
   render: () => html`
