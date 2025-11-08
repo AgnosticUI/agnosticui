@@ -442,6 +442,18 @@
     "./skeleton/vue": {
       "types": "./dist/components/SkeletonLoader/vue/index.d.ts",
       "import": "./dist/components/SkeletonLoader/vue/index.js"
+    },
+    "./popover": {
+      "types": "./dist/components/Popover/core/Popover.d.ts",
+      "import": "./dist/components/Popover/core/Popover.js"
+    },
+    "./popover/react": {
+      "types": "./dist/components/Popover/react/index.d.ts",
+      "import": "./dist/components/Popover/react/index.js"
+    },
+    "./popover/vue": {
+      "types": "./dist/components/Popover/vue/index.d.ts",
+      "import": "./dist/components/Popover/vue/index.js"
     }
   },
   "scripts": {
