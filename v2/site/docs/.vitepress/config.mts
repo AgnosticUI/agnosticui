@@ -44,6 +44,7 @@ function getComponents() {
   return {
     text: 'Components',
     items: [
+      { text: 'Accordion', link: '/components/accordion' },
       { text: 'Alerts', link: '/components/alert' },
       { text: 'Avatar', link: '/components/avatar' },
       { text: 'Badge', link: '/components/badge' },
@@ -67,6 +68,7 @@ function getComponents() {
       { text: 'Progress', link: '/components/progress' },
       { text: 'Radio', link: '/components/radio' },
       { text: 'Select', link: '/components/select' },
+      { text: 'Skeleton Loader', link: '/components/skeleton-loader' },
       { text: 'Slider', link: '/components/slider' },
       { text: 'Spinner', link: '/components/spinner' },
       { text: 'Table', link: '/components/table' },
@@ -75,9 +77,6 @@ function getComponents() {
       { text: 'Toast', link: '/components/toast' },
       { text: 'Toggle', link: '/components/toggle' },
       { text: 'Tooltip', link: '/components/tooltip' },
-{ text: 'Accordion', link: '/components/accordion' },
-
-
     ]
   }
 }

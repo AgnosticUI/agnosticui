@@ -430,6 +430,18 @@
     "./link/vue": {
       "types": "./dist/components/Link/vue/index.d.ts",
       "import": "./dist/components/Link/vue/index.js"
+    },
+    "./skeleton": {
+      "types": "./dist/components/SkeletonLoader/core/SkeletonLoader.d.ts",
+      "import": "./dist/components/SkeletonLoader/core/SkeletonLoader.js"
+    },
+    "./skeleton/react": {
+      "types": "./dist/components/SkeletonLoader/react/index.d.ts",
+      "import": "./dist/components/SkeletonLoader/react/index.js"
+    },
+    "./skeleton/vue": {
+      "types": "./dist/components/SkeletonLoader/vue/index.d.ts",
+      "import": "./dist/components/SkeletonLoader/vue/index.js"
     }
   },
   "scripts": {
