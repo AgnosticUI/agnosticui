@@ -27,3 +27,4 @@ export * from './components/Kbd';
 export * from './components/Collapsible/core/_Collapsible';
 export * from './components/Slider/core/Slider';
 export * from './components/Link/core/_Link';
+export * from './components/SkeletonLoader/core/_SkeletonLoader';
