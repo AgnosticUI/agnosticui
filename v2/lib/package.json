@@ -478,6 +478,18 @@
     "./fieldset/vue": {
       "types": "./dist/components/Fieldset/vue/index.d.ts",
       "import": "./dist/components/Fieldset/vue/index.js"
+    },
+    "./rating": {
+      "types": "./dist/components/Rating/core/_Rating.d.ts",
+      "import": "./dist/components/Rating/core/_Rating.js"
+    },
+    "./rating/react": {
+      "types": "./dist/components/Rating/react/index.d.ts",
+      "import": "./dist/components/Rating/react/index.js"
+    },
+    "./rating/vue": {
+      "types": "./dist/components/Rating/vue/index.d.ts",
+      "import": "./dist/components/Rating/vue/index.js"
     }
   },
   "scripts": {
