@@ -454,6 +454,18 @@
     "./popover/vue": {
       "types": "./dist/components/Popover/vue/index.d.ts",
       "import": "./dist/components/Popover/vue/index.js"
+    },
+    "./flex": {
+      "types": "./dist/components/Flex/core/index.d.ts",
+      "import": "./dist/components/Flex/core/index.js"
+    },
+    "./flex/react": {
+      "types": "./dist/components/Flex/react/index.d.ts",
+      "import": "./dist/components/Flex/react/index.js"
+    },
+    "./flex/vue": {
+      "types": "./dist/components/Flex/vue/index.d.ts",
+      "import": "./dist/components/Flex/vue/index.js"
     }
   },
   "scripts": {
