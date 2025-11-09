@@ -231,7 +231,7 @@
         </VueFlexRow>
 
         <VueFlexRow justify="center">
-          <div class="demo-box demo-box-primary">Footer</div>
+          <div class="demo-box demo-box-primary full-width">Footer</div>
         </VueFlexRow>
       </VueFlexCol>
     </div>
@@ -432,9 +432,6 @@ code {
   }
   .responsive-direction .demo-box {
     margin-inline-end: var(--ag-space-3);
-    background-color: transparent;
-    border: 2px solid var(--ag-primary);
-    border-radius: var(--ag-space-2);
     padding-inline: var(--ag-space-8);
     white-space: nowrap;
   }
