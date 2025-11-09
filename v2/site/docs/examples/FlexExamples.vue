@@ -300,14 +300,18 @@
       <p class="mbs2">Stack on mobile (≤640px), row on desktop (≥769px). <strong>Resize your browser to see the effect!</strong></p>
     </div>
     <div class="mbe4">
-      <VueFlexRow
-        gap="1rem"
-        style="--flex-direction-mobile: column; --flex-direction-desktop: row;"
-      >
-        <div class="demo-box">Item 1</div>
-        <div class="demo-box">Item 2</div>
-        <div class="demo-box">Item 3</div>
-      </VueFlexRow>
+      <ag-flex-row style="--flex-direction: column; --flex-gap: 1rem;">
+        <div class="demo-box">Item 1 (inline test)</div>
+        <div class="demo-box">Item 2 (inline test)</div>
+        <div class="demo-box">Item 3 (inline test)</div>
+      </ag-flex-row>
+    </div>
+    <div class="mbe4">
+      <ag-flex-row class="responsive-direction">
+        <div class="demo-box">Item 1 (class test)</div>
+        <div class="demo-box">Item 2 (class test)</div>
+        <div class="demo-box">Item 3 (class test)</div>
+      </ag-flex-row>
     </div>
 
     <!-- Responsive Gap -->
@@ -316,13 +320,11 @@
       <p class="mbs2">Different gap sizes per breakpoint: 0.5rem (mobile), 1rem (tablet), 2rem (desktop).</p>
     </div>
     <div class="mbe4">
-      <VueFlexRow
-        style="--flex-gap-mobile: 0.5rem; --flex-gap-tablet: 1rem; --flex-gap-desktop: 2rem;"
-      >
+      <ag-flex-row class="responsive-gap">
         <div class="demo-box">Item 1</div>
         <div class="demo-box">Item 2</div>
         <div class="demo-box">Item 3</div>
-      </VueFlexRow>
+      </ag-flex-row>
     </div>
 
     <!-- Responsive Justify -->
@@ -331,14 +333,11 @@
       <p class="mbs2">Center on mobile, space-between on desktop.</p>
     </div>
     <div class="mbe4">
-      <VueFlexRow
-        gap="1rem"
-        style="--flex-justify-mobile: center; --flex-justify-desktop: space-between;"
-      >
+      <ag-flex-row class="responsive-justify">
         <div class="demo-box">Start</div>
         <div class="demo-box">Middle</div>
         <div class="demo-box">End</div>
-      </VueFlexRow>
+      </ag-flex-row>
     </div>
 
     <!-- Responsive Card Grid -->
@@ -347,18 +346,15 @@
       <p class="mbs2">Real-world example: column on mobile, wrapped row on desktop.</p>
     </div>
     <div class="mbe4">
-      <VueFlexRow
-        style="--flex-direction-mobile: column; --flex-direction-desktop: row; --flex-wrap-desktop: wrap; --flex-gap-mobile: 1rem; --flex-gap-desktop: 1.5rem;"
-      >
+      <ag-flex-row class="responsive-cards">
         <div
           v-for="i in 6"
           :key="i"
-          class="demo-box"
-          style="flex: 1 1 calc(33.333% - 1rem); min-width: 200px;"
+          class="demo-box card-item"
         >
           Card {{ i }}
         </div>
-      </VueFlexRow>
+      </ag-flex-row>
     </div>
   </section>
 </template>
@@ -370,10 +366,12 @@ import {
   VueFlexInline,
   VueStack,
   VueGroup,
-} from '../../../lib/src/components/Flex/vue';
+} from "../../../lib/src/components/Flex/vue";
+// Also import raw web components for responsive examples
+import "../../../lib/src/components/Flex/FlexRow";
 </script>
 
-<style scoped>
+<style>
 /* Clean demo boxes inspired by the flexbox patterns site */
 .demo-box {
   padding: 1rem;
@@ -421,5 +419,62 @@ code {
   padding: 0.125rem 0.375rem;
   border-radius: 3px;
   font-size: 0.875em;
+}
+
+/* Responsive layouts using CSS custom properties - no !important needed! */
+.responsive-direction {
+  --flex-direction: column;
+  --flex-gap: 1rem;
+}
+
+@media (min-width: 769px) {
+  .responsive-direction {
+    --flex-direction: row;
+  }
+}
+
+.responsive-gap {
+  --flex-gap: 0.5rem;
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .responsive-gap {
+    --flex-gap: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .responsive-gap {
+    --flex-gap: 2rem;
+  }
+}
+
+.responsive-justify {
+  --flex-gap: 1rem;
+  --flex-justify: center;
+}
+
+@media (min-width: 769px) {
+  .responsive-justify {
+    --flex-justify: space-between;
+  }
+}
+
+.responsive-cards {
+  --flex-direction: column;
+  --flex-gap: 1rem;
+}
+
+@media (min-width: 769px) {
+  .responsive-cards {
+    --flex-direction: row;
+    --flex-wrap: wrap;
+    --flex-gap: 1.5rem;
+  }
+}
+
+.card-item {
+  flex: 1 1 calc(33.333% - 1rem);
+  min-width: 200px;
 }
 </style>

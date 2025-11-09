@@ -228,45 +228,32 @@ See the interactive examples above for common flexbox patterns including:
 
 ## Responsive Design
 
-Flex components include built-in responsive support with three breakpoints:
-
-- **Mobile**: ≤ 640px
-- **Tablet**: 641px - 768px
-- **Desktop**: ≥ 769px
-
-### Using CSS Custom Properties
-
-The simplest way to create responsive layouts is with CSS custom properties:
+Flex components provide full responsive control through CSS custom properties combined with your own media queries. Use CSS classes with media queries to define responsive behavior:
 
 ::: details Vue
 ```vue
 <template>
   <!-- Stack on mobile, row on desktop -->
-  <VueFlexRow
-    gap="1rem"
-    style="--flex-direction-mobile: column; --flex-direction-desktop: row;"
-  >
+  <VueFlexRow class="responsive-layout">
     <div>Item 1</div>
     <div>Item 2</div>
     <div>Item 3</div>
   </VueFlexRow>
-
-  <!-- Different gaps per breakpoint -->
-  <VueFlexRow
-    style="--flex-gap-mobile: 0.5rem; --flex-gap-tablet: 1rem; --flex-gap-desktop: 2rem;"
-  >
-    <div>Item 1</div>
-    <div>Item 2</div>
-  </VueFlexRow>
-
-  <!-- Center on mobile, space-between on desktop -->
-  <VueFlexRow
-    style="--flex-justify-mobile: center; --flex-justify-desktop: space-between;"
-  >
-    <div>Start</div>
-    <div>End</div>
-  </VueFlexRow>
 </template>
+
+<style scoped>
+.responsive-layout {
+  --flex-direction: column;
+  --flex-gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-layout {
+    --flex-direction: row;
+    --flex-gap: 1.5rem;
+  }
+}
+</style>
 ```
 :::
 

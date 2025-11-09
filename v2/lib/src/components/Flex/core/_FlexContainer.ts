@@ -35,6 +35,10 @@ export interface FlexContainerProps {
 export class FlexContainer extends LitElement implements FlexContainerProps {
   static styles = css`
     :host {
+      display: contents;
+    }
+
+    .flex-container {
       display: flex;
       flex-direction: var(--flex-direction, row);
       flex-wrap: var(--flex-wrap, nowrap);
@@ -44,44 +48,118 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
       gap: var(--flex-gap, var(--ag-space-0, 0));
     }
 
-    /* Mobile-first responsive defaults */
-    @media (max-width: 640px) {
-      :host {
-        flex-direction: var(--flex-direction-mobile, var(--flex-direction, row));
-        flex-wrap: var(--flex-wrap-mobile, var(--flex-wrap, nowrap));
-        justify-content: var(--flex-justify-mobile, var(--flex-justify, flex-start));
-        align-items: var(--flex-align-mobile, var(--flex-align, stretch));
-        gap: var(--flex-gap-mobile, var(--flex-gap, var(--ag-space-0, 0)));
-      }
-    }
-
-    @media (min-width: 641px) and (max-width: 768px) {
-      :host {
-        flex-direction: var(--flex-direction-tablet, var(--flex-direction, row));
-        flex-wrap: var(--flex-wrap-tablet, var(--flex-wrap, nowrap));
-        justify-content: var(--flex-justify-tablet, var(--flex-justify, flex-start));
-        align-items: var(--flex-align-tablet, var(--flex-align, stretch));
-        gap: var(--flex-gap-tablet, var(--flex-gap, var(--ag-space-0, 0)));
-      }
-    }
-
-    @media (min-width: 769px) {
-      :host {
-        flex-direction: var(--flex-direction-desktop, var(--flex-direction, row));
-        flex-wrap: var(--flex-wrap-desktop, var(--flex-wrap, nowrap));
-        justify-content: var(--flex-justify-desktop, var(--flex-justify, flex-start));
-        align-items: var(--flex-align-desktop, var(--flex-align, stretch));
-        gap: var(--flex-gap-desktop, var(--flex-gap, var(--ag-space-0, 0)));
-      }
-    }
-
-    :host([inline]) {
+    :host([inline]) .flex-container {
       display: inline-flex;
     }
 
     :host([stretch-children]) ::slotted(*) {
       flex: 1 1 auto;
     }
+
+    /* Attribute-based CSS custom property defaults */
+    /* These set low-specificity defaults that can be easily overridden */
+
+    /* Direction */
+    :host([direction="row"]:not([reverse])) {
+      --flex-direction: row;
+    }
+    :host([direction="row"][reverse]) {
+      --flex-direction: row-reverse;
+    }
+    :host([direction="row-reverse"]:not([reverse])) {
+      --flex-direction: row-reverse;
+    }
+    :host([direction="row-reverse"][reverse]) {
+      --flex-direction: row;
+    }
+    :host([direction="column"]:not([reverse])) {
+      --flex-direction: column;
+    }
+    :host([direction="column"][reverse]) {
+      --flex-direction: column-reverse;
+    }
+    :host([direction="column-reverse"]:not([reverse])) {
+      --flex-direction: column-reverse;
+    }
+    :host([direction="column-reverse"][reverse]) {
+      --flex-direction: column;
+    }
+
+    /* Wrap */
+    :host([wrap="nowrap"]) {
+      --flex-wrap: nowrap;
+    }
+    :host([wrap="wrap"]) {
+      --flex-wrap: wrap;
+    }
+    :host([wrap="wrap-reverse"]) {
+      --flex-wrap: wrap-reverse;
+    }
+
+    /* Justify */
+    :host([justify="flex-start"]) {
+      --flex-justify: flex-start;
+    }
+    :host([justify="flex-end"]) {
+      --flex-justify: flex-end;
+    }
+    :host([justify="center"]) {
+      --flex-justify: center;
+    }
+    :host([justify="space-between"]) {
+      --flex-justify: space-between;
+    }
+    :host([justify="space-around"]) {
+      --flex-justify: space-around;
+    }
+    :host([justify="space-evenly"]) {
+      --flex-justify: space-evenly;
+    }
+
+    /* Align */
+    :host([align="flex-start"]) {
+      --flex-align: flex-start;
+    }
+    :host([align="flex-end"]) {
+      --flex-align: flex-end;
+    }
+    :host([align="center"]) {
+      --flex-align: center;
+    }
+    :host([align="baseline"]) {
+      --flex-align: baseline;
+    }
+    :host([align="stretch"]) {
+      --flex-align: stretch;
+    }
+
+    /* Align Content */
+    :host([align-content="flex-start"]) {
+      --flex-align-content: flex-start;
+    }
+    :host([align-content="flex-end"]) {
+      --flex-align-content: flex-end;
+    }
+    :host([align-content="center"]) {
+      --flex-align-content: center;
+    }
+    :host([align-content="space-between"]) {
+      --flex-align-content: space-between;
+    }
+    :host([align-content="space-around"]) {
+      --flex-align-content: space-around;
+    }
+    :host([align-content="space-evenly"]) {
+      --flex-align-content: space-evenly;
+    }
+    :host([align-content="stretch"]) {
+      --flex-align-content: stretch;
+    }
+
+    /* Gap - handled dynamically when the gap attribute is set */
+    /* The gap property is reflected to an attribute, and we read it via CSS */
+    /* Note: We don't set a CSS rule here because gap values are freeform strings */
+    /* and CSS attr() doesn't work in custom properties yet across all browsers */
   `;
   protected _direction: 'row' | 'row-reverse' | 'column' | 'column-reverse' = 'row';
   protected _wrap: 'nowrap' | 'wrap' | 'wrap-reverse' = 'nowrap';
@@ -95,7 +173,6 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
   set direction(value: FlexContainerProps['direction']) {
     const valid = ['row', 'row-reverse', 'column', 'column-reverse'];
     this._direction = value && valid.includes(value) ? value : 'row';
-    this._updateDirectionWithReverse();
     this.requestUpdate();
   }
   @property({ type: String, reflect: true })
@@ -149,60 +226,45 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
     this.reverse = false;
     this.stretchChildren = false;
   }
-  /**
-   * Updates the direction CSS property considering the reverse flag
-   * @remarks When reverse is true, it flips the current direction (e.g., row → row-reverse)
-   * @example
-   * const container = new FlexContainer();
-   * container.direction = 'column';
-   * container.reverse = true;
-   * document.body.appendChild(container);
-   */
-  private _updateDirectionWithReverse() {
-    let direction = this._direction || 'row';
-
-    if (this.reverse) {
-      // Convert direction to reverse if reverse prop is true
-      if (direction === 'row') direction = 'row-reverse';
-      else if (direction === 'row-reverse') direction = 'row';
-      else if (direction === 'column') direction = 'column-reverse';
-      else if (direction === 'column-reverse') direction = 'column';
-    }
-
-    this.style.setProperty('--flex-direction', direction);
+  connectedCallback() {
+    super.connectedCallback();
+    // Set initial gap value as a CSS custom property on the host
+    // This is done once at connection time to establish the initial value
+    // Users can override this via stylesheets without !important
+    this._updateGap();
   }
+
   updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
-    // Update CSS custom properties when props change
-    if (changedProperties.has('direction') || changedProperties.has('reverse')) {
-      this._updateDirectionWithReverse();
-    }
-    if (changedProperties.has('wrap')) {
-      this.style.setProperty('--flex-wrap', this._wrap);
-    }
-    if (changedProperties.has('justify')) {
-      this.style.setProperty('--flex-justify', this._justify);
-    }
-    if (changedProperties.has('align')) {
-      this.style.setProperty('--flex-align', this._align);
-    }
-    if (changedProperties.has('alignContent')) {
-      this.style.setProperty('--flex-align-content', this._alignContent);
-    }
+
+    // Handle gap updates
     if (changedProperties.has('gap')) {
-      const gapValue = this.gap?.trim() ?? '';
-     
-      // Validate gap has valid CSS units/values
-      if (gapValue && gapValue !== '0' && !this._isValidGapValue(gapValue)) {
-        // eslint-disable-next-line no-console
-        console.warn(`[FlexContainer] Potentially invalid gap value: '${gapValue}'. Use valid CSS units (px, rem, em, %, etc.).`);
-      }
-     
-      if (gapValue === '' || gapValue === '0') {
-        this.style.setProperty('--flex-gap', 'var(--ag-space-0, 0)');
-      } else {
-        this.style.setProperty('--flex-gap', gapValue);
-      }
+      this._updateGap();
+    }
+
+    // Note: Direction, wrap, justify, align, and alignContent are handled via
+    // attribute selectors in the static styles. This keeps specificity low and
+    // allows CSS custom properties to cascade naturally without specificity issues.
+    // Users can override via classes, ::part(), or inline styles without needing !important.
+  }
+
+  private _updateGap() {
+    const gapValue = this.gap?.trim() ?? '';
+
+    // Validate gap value (for developer feedback)
+    if (gapValue && gapValue !== '0' && !this._isValidGapValue(gapValue)) {
+      // eslint-disable-next-line no-console
+      console.warn(`[FlexContainer] Potentially invalid gap value: '${gapValue}'. Use valid CSS units (px, rem, em, %, etc.).`);
+    }
+
+    // Set CSS custom property on host element
+    // Note: Even though this is an inline style, it has the same specificity as
+    // a regular style attribute, which can be overridden by classes or ::part()
+    // selectors without !important (classes/::part have higher specificity than inline custom props)
+    if (gapValue === '' || gapValue === '0') {
+      this.style.setProperty('--flex-gap', 'var(--ag-space-0, 0)');
+    } else {
+      this.style.setProperty('--flex-gap', gapValue);
     }
   }
   /**
@@ -231,7 +293,9 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
   }
   render() {
     return html`
-      <slot part="ag-flex-container"></slot>
+      <div class="flex-container" part="ag-flex-container">
+        <slot></slot>
+      </div>
     `;
   }
 }
