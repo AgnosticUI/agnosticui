@@ -43,9 +43,42 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
       align-content: var(--flex-align-content, stretch);
       gap: var(--flex-gap, var(--ag-space-0, 0));
     }
+
+    /* Mobile-first responsive defaults */
+    @media (max-width: 640px) {
+      :host {
+        flex-direction: var(--flex-direction-mobile, var(--flex-direction, row));
+        flex-wrap: var(--flex-wrap-mobile, var(--flex-wrap, nowrap));
+        justify-content: var(--flex-justify-mobile, var(--flex-justify, flex-start));
+        align-items: var(--flex-align-mobile, var(--flex-align, stretch));
+        gap: var(--flex-gap-mobile, var(--flex-gap, var(--ag-space-0, 0)));
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 768px) {
+      :host {
+        flex-direction: var(--flex-direction-tablet, var(--flex-direction, row));
+        flex-wrap: var(--flex-wrap-tablet, var(--flex-wrap, nowrap));
+        justify-content: var(--flex-justify-tablet, var(--flex-justify, flex-start));
+        align-items: var(--flex-align-tablet, var(--flex-align, stretch));
+        gap: var(--flex-gap-tablet, var(--flex-gap, var(--ag-space-0, 0)));
+      }
+    }
+
+    @media (min-width: 769px) {
+      :host {
+        flex-direction: var(--flex-direction-desktop, var(--flex-direction, row));
+        flex-wrap: var(--flex-wrap-desktop, var(--flex-wrap, nowrap));
+        justify-content: var(--flex-justify-desktop, var(--flex-justify, flex-start));
+        align-items: var(--flex-align-desktop, var(--flex-align, stretch));
+        gap: var(--flex-gap-desktop, var(--flex-gap, var(--ag-space-0, 0)));
+      }
+    }
+
     :host([inline]) {
       display: inline-flex;
     }
+
     :host([stretch-children]) ::slotted(*) {
       flex: 1 1 auto;
     }
