@@ -56,6 +56,7 @@ function getComponents() {
       { text: 'Dialog', link: '/components/dialog' },
       { text: 'Divider', link: '/components/divider' },
       { text: 'Drawer', link: '/components/drawer' },
+      { text: 'Flex', link: '/components/flex' },
       { text: 'Header', link: '/components/header' },
       { text: 'Icon Button', link: '/components/icon-button' },
       { text: 'Icon', link: '/components/icon' },
