@@ -466,6 +466,18 @@
     "./flex/vue": {
       "types": "./dist/components/Flex/vue/index.d.ts",
       "import": "./dist/components/Flex/vue/index.js"
+    },
+    "./fieldset": {
+      "types": "./dist/components/Fieldset/Fieldset.d.ts",
+      "import": "./dist/components/Fieldset/Fieldset.js"
+    },
+    "./fieldset/react": {
+      "types": "./dist/components/Fieldset/react/ReactFieldset.d.ts",
+      "import": "./dist/components/Fieldset/react/ReactFieldset.js"
+    },
+    "./fieldset/vue": {
+      "types": "./dist/components/Fieldset/vue/index.d.ts",
+      "import": "./dist/components/Fieldset/vue/index.js"
     }
   },
   "scripts": {
