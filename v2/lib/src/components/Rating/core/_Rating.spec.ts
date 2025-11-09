@@ -1,7 +1,7 @@
 // v2/lib/src/components/Rating/core/_Rating.spec.ts
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { AgRating } from './_Rating.js';
+import { AgRating } from './Rating.js';
 
 expect.extend(toHaveNoViolations);
 
@@ -11,6 +11,10 @@ describe('AgRating (core)', () => {
   beforeEach(() => {
     instance = new AgRating();
     document.body.appendChild(instance);
+    // Mock setPointerCapture for happy-dom
+    if (typeof instance.setPointerCapture !== 'function') {
+      instance.setPointerCapture = (_pointerId: number) => {};
+    }
   });
 
   afterEach(() => {
@@ -57,7 +61,7 @@ describe('AgRating (core)', () => {
     await instance.updateComplete;
 
     // programmatically click the 3rd star button
-    const starBtn = instance.shadowRoot!.querySelector<HTMLElement>('button:nth-of-type(3)');
+    const starBtn = instance.shadowRoot!.querySelector<HTMLElement>('.star-button:nth-of-type(3)');
     expect(starBtn).toBeTruthy();
     // first click sets value
     starBtn!.click();
@@ -83,7 +87,9 @@ describe('AgRating (core)', () => {
     };
     instance.addEventListener('rating-change', listener);
 
-    instance.value = 4;
+    // Simulate a click on the 4th star to trigger the change
+    const starBtn = instance.shadowRoot!.querySelector<HTMLElement>('.star-button:nth-of-type(4)');
+    starBtn!.click();
     const ev = await eventPromise;
     instance.removeEventListener('rating-change', listener);
     expect(ev.detail.oldValue).toEqual(0);

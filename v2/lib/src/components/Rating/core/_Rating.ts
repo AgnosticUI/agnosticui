@@ -1,6 +1,36 @@
-// v2/lib/src/components/Rating/core/_Rating.ts
 import { LitElement, html, css, svg } from 'lit';
 import { property, state } from 'lit/decorators.js';
+
+// Event detail interfaces
+export interface RatingChangeEventDetail {
+  oldValue: number;
+  newValue: number;
+}
+export interface RatingHoverEventDetail {
+  phase: 'start' | 'move' | 'end';
+  value: number;
+}
+
+// Event type definitions
+export type RatingChangeEvent = CustomEvent<RatingChangeEventDetail>;
+export type RatingHoverEvent = CustomEvent<RatingHoverEventDetail>;
+
+// Prop types
+export type RatingPrecision = 'whole' | 'half';
+export type RatingSize = 'sm' | 'md' | 'lg';
+export type RatingVariant = '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+
+export interface RatingProps {
+  value?: number;
+  max?: number;
+  precision?: RatingPrecision;
+  readonly?: boolean;
+  allowClear?: boolean;
+  variant?: RatingVariant;
+  size?: RatingSize;
+  onRatingChange?: (event: RatingChangeEvent) => void;
+  onRatingHover?: (event: RatingHoverEvent) => void;
+}
 
 let uniqueIdCounter = 0;
 
@@ -14,7 +44,14 @@ export class AgRating extends LitElement {
   @property({ type: Boolean, reflect: true }) readonly = false; // Disables interaction if true
   @property({ type: Boolean }) allowClear = false; // Allows clearing rating by clicking the same value
   @property({ type: String }) variant: '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' = ''; // Visual variant (not used for colors here)
-  @property({ type: String }) size: 'sm' | 'md' | 'lg' = 'md'; // Size: small, medium, large
+  @property({ type: String, reflect: true }) size: RatingSize = 'md'; // Size: small, medium, large
+
+  // Event handlers
+  @property({ attribute: false })
+  declare onRatingChange?: (event: RatingChangeEvent) => void;
+
+  @property({ attribute: false })
+  declare onRatingHover?: (event: RatingHoverEvent) => void;
 
   // Internal state
   @state() private hoverValue = 0; // Value during hover or drag
@@ -84,13 +121,16 @@ export class AgRating extends LitElement {
       height: var(--ag-font-size-3x);
     }
 
-    .star.filled svg path,
-    .star.hover svg path {
-      fill: var(--ag-yellow-400); /* Filled color */
-    }
-
     .star svg path {
       fill: var(--ag-neutral-300); /* Empty color */
+    }
+
+    .star.filled > svg > path:last-of-type {
+      fill: var(--ag-yellow-400);
+    }
+
+    .star.hover svg path {
+      fill: var(--ag-yellow-400);
     }
 
     .star-button {
@@ -156,18 +196,16 @@ export class AgRating extends LitElement {
     const clipId = `ag-rating-half-${this.uniqueId}-${starIndex}`;
 
     return html`
-      <button
-        type="button"
+      <span
         class="star-button"
         @click="${(e: MouseEvent) => this.handleClickStar(e, starIndex)}"
         aria-label="${starIndex} star"
         title="${starIndex} star"
-        tabindex="-1"
       >
         <span class="star ${filledClass} ${hoverClass}" data-star="${starIndex}">
           ${this.renderStarSvg(full, half, clipId)}
         </span>
-      </button>
+      </span>
     `;
   }
 
@@ -221,11 +259,11 @@ export class AgRating extends LitElement {
     this.commitValue(newValue, oldValue);
   }
 
-  private handlePointerEnter(e: PointerEvent) {
+  private handlePointerEnter(_e: PointerEvent) {
     // Placeholder for future enhancements
   }
 
-  private handlePointerLeave(e: PointerEvent) {
+  private handlePointerLeave(_e: PointerEvent) {
     if (this.isPointerDown) return;
     this.isHovering = false;
     this.hoverValue = 0;
@@ -317,18 +355,26 @@ export class AgRating extends LitElement {
   private commitValue(newValue: number, oldValue: number) {
     const normalized = this.roundToPrecision(newValue);
     this.value = normalized;
-    this.dispatchEvent(new CustomEvent('rating-change', {
+    const changeEvent = new CustomEvent<RatingChangeEventDetail>('rating-change', {
       detail: { oldValue, newValue: normalized },
       bubbles: true,
       composed: true
-    }));
+    });
+    this.dispatchEvent(changeEvent);
+    if (this.onRatingChange) {
+      this.onRatingChange(changeEvent);
+    }
   }
 
   private emitHoverEvent(phase: 'start' | 'move' | 'end', value: number) {
-    this.dispatchEvent(new CustomEvent('rating-hover', {
+    const hoverEvent = new CustomEvent<RatingHoverEventDetail>('rating-hover', {
       detail: { phase, value },
       bubbles: true,
       composed: true
-    }));
+    });
+    this.dispatchEvent(hoverEvent);
+    if (this.onRatingHover) {
+      this.onRatingHover(hoverEvent);
+    }
   }
 }
