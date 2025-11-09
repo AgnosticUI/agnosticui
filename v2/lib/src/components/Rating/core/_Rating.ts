@@ -43,7 +43,7 @@ export class AgRating extends LitElement {
   @property({ type: String }) precision: 'whole' | 'half' = 'whole'; // Precision mode: whole or half stars
   @property({ type: Boolean, reflect: true }) readonly = false; // Disables interaction if true
   @property({ type: Boolean }) allowClear = false; // Allows clearing rating by clicking the same value
-  @property({ type: String }) variant: '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' = ''; // Visual variant (not used for colors here)
+  @property({ type: String, reflect: true }) variant: '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' = ''; // Visual variant
   @property({ type: String, reflect: true }) size: RatingSize = 'md'; // Size: small, medium, large
 
   // Event handlers
@@ -125,12 +125,30 @@ export class AgRating extends LitElement {
       fill: var(--ag-neutral-300); /* Empty color */
     }
 
-    .star.filled > svg > path:last-of-type {
-      fill: var(--ag-yellow-400);
+    .star.filled > svg > path:last-of-type,
+    .star.hover svg path {
+      fill: var(--ag-yellow-400); /* Default filled color */
     }
 
-    .star.hover svg path {
-      fill: var(--ag-yellow-400);
+    :host([variant="primary"]) .star.filled > svg > path:last-of-type,
+    :host([variant="primary"]) .star.hover svg path {
+      fill: var(--ag-primary);
+    }
+    :host([variant="secondary"]) .star.filled > svg > path:last-of-type,
+    :host([variant="secondary"]) .star.hover svg path {
+      fill: var(--ag-secondary);
+    }
+    :host([variant="success"]) .star.filled > svg > path:last-of-type,
+    :host([variant="success"]) .star.hover svg path {
+      fill: var(--ag-success);
+    }
+    :host([variant="warning"]) .star.filled > svg > path:last-of-type,
+    :host([variant="warning"]) .star.hover svg path {
+      fill: var(--ag-warning);
+    }
+    :host([variant="danger"]) .star.filled > svg > path:last-of-type,
+    :host([variant="danger"]) .star.hover svg path {
+      fill: var(--ag-danger);
     }
 
     .star-button {

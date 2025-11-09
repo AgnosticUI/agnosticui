@@ -23,7 +23,7 @@ const meta: Meta<ReactRatingProps> = {
     variant: {
       control: 'select',
       options: ['', 'primary', 'secondary', 'success', 'warning', 'danger'],
-      description: 'Visual variant (not used for colors here)',
+      description: 'Visual variant that applies a color scheme.',
     },
   },
   args: {
@@ -80,6 +80,18 @@ export const Sizes: Story = {
       <ReactRating size="sm" value={3} />
       <ReactRating size="md" value={3} />
       <ReactRating size="lg" value={3} />
+    </div>
+  ),
+};
+
+export const Variants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
+      <ReactRating variant="primary" value={3} />
+      <ReactRating variant="secondary" value={3} />
+      <ReactRating variant="success" value={3} />
+      <ReactRating variant="warning" value={3} />
+      <ReactRating variant="danger" value={3} />
     </div>
   ),
 };
