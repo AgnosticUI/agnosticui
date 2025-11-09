@@ -29,3 +29,4 @@ export * from './components/Slider/core/Slider';
 export * from './components/Link/core/_Link';
 export * from './components/SkeletonLoader/core/_SkeletonLoader';
 export * from './components/Popover/core/_Popover';
+export * from './components/Flex/core/index';
