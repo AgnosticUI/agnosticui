@@ -2,6 +2,10 @@
 
 ## The Honest Truth
 
+# TODO investigate <template shodowrootmode="open"> to create a more feasible <table>
+
+Apparently shadowrootmode open has been available for a couple yeares now.
+
 Web Components and native HTML tables don’t mix well.
 
 Tables are inherently **relational structures** — they rely on selectors like  
