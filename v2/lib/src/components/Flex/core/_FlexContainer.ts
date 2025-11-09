@@ -23,7 +23,7 @@ export interface FlexContainerProps {
   align?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
   /** Space distribution between lines in multi-line containers (defaults to 'stretch') */
   alignContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
-  /** Spacing between flex items (defaults to 'var(--ag-space-0, 0)') */
+  /** Spacing between flex items (can be set via gap attribute or --flex-gap CSS custom property) */
   gap?: string;
   /** Use inline-flex instead of flex (defaults to false) */
   inline?: boolean;
@@ -156,10 +156,10 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
       --flex-align-content: stretch;
     }
 
-    /* Gap - handled dynamically when the gap attribute is set */
-    /* The gap property is reflected to an attribute, and we read it via CSS */
-    /* Note: We don't set a CSS rule here because gap values are freeform strings */
-    /* and CSS attr() doesn't work in custom properties yet across all browsers */
+    /* Gap - NOT handled via attribute selectors like other properties */
+    /* Gap values are freeform strings and CSS attr() doesn't work in custom properties */
+    /* The --flex-gap custom property can be overridden via classes, ::part(), or inline styles */
+    /* without any specificity issues. The fallback var(--ag-space-0, 0) provides the default. */
   `;
   protected _direction: 'row' | 'row-reverse' | 'column' | 'column-reverse' = 'row';
   protected _wrap: 'nowrap' | 'wrap' | 'wrap-reverse' = 'nowrap';
@@ -221,52 +221,30 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
   declare stretchChildren: boolean;
   constructor() {
     super();
-    this.gap = 'var(--ag-space-0, 0)';
+    // Don't set gap here - let CSS handle the default via var(--flex-gap, var(--ag-space-0, 0))
+    // This prevents specificity issues when users override --flex-gap via classes
     this.inline = false;
     this.reverse = false;
     this.stretchChildren = false;
   }
-  connectedCallback() {
-    super.connectedCallback();
-    // Set initial gap value as a CSS custom property on the host
-    // This is done once at connection time to establish the initial value
-    // Users can override this via stylesheets without !important
-    this._updateGap();
-  }
-
   updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
 
-    // Handle gap updates
+    // Validate gap value (for developer feedback)
     if (changedProperties.has('gap')) {
-      this._updateGap();
+      const gapValue = this.gap?.trim() ?? '';
+      if (gapValue && gapValue !== '0' && !this._isValidGapValue(gapValue)) {
+        // eslint-disable-next-line no-console
+        console.warn(`[FlexContainer] Potentially invalid gap value: '${gapValue}'. Use valid CSS units (px, rem, em, %, etc.).`);
+      }
     }
 
-    // Note: Direction, wrap, justify, align, and alignContent are handled via
+    // Note: Direction, wrap, justify, align, alignContent, and gap are handled via
     // attribute selectors in the static styles. This keeps specificity low and
     // allows CSS custom properties to cascade naturally without specificity issues.
     // Users can override via classes, ::part(), or inline styles without needing !important.
   }
 
-  private _updateGap() {
-    const gapValue = this.gap?.trim() ?? '';
-
-    // Validate gap value (for developer feedback)
-    if (gapValue && gapValue !== '0' && !this._isValidGapValue(gapValue)) {
-      // eslint-disable-next-line no-console
-      console.warn(`[FlexContainer] Potentially invalid gap value: '${gapValue}'. Use valid CSS units (px, rem, em, %, etc.).`);
-    }
-
-    // Set CSS custom property on host element
-    // Note: Even though this is an inline style, it has the same specificity as
-    // a regular style attribute, which can be overridden by classes or ::part()
-    // selectors without !important (classes/::part have higher specificity than inline custom props)
-    if (gapValue === '' || gapValue === '0') {
-      this.style.setProperty('--flex-gap', 'var(--ag-space-0, 0)');
-    } else {
-      this.style.setProperty('--flex-gap', gapValue);
-    }
-  }
   /**
    * Validates gap values against common CSS units and keywords
    * Uses simple checks instead of complex regex for maintainability

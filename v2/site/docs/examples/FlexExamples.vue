@@ -300,13 +300,6 @@
       <p class="mbs2">Stack on mobile (≤640px), row on desktop (≥769px). <strong>Resize your browser to see the effect!</strong></p>
     </div>
     <div class="mbe4">
-      <ag-flex-row style="--flex-direction: column; --flex-gap: 1rem;">
-        <div class="demo-box">Item 1 (inline test)</div>
-        <div class="demo-box">Item 2 (inline test)</div>
-        <div class="demo-box">Item 3 (inline test)</div>
-      </ag-flex-row>
-    </div>
-    <div class="mbe4">
       <ag-flex-row class="responsive-direction">
         <div class="demo-box">Item 1 (class test)</div>
         <div class="demo-box">Item 2 (class test)</div>
@@ -375,6 +368,8 @@ import "../../../lib/src/components/Flex/FlexRow";
 /* Clean demo boxes inspired by the flexbox patterns site */
 .demo-box {
   padding: 1rem;
+  margin-inline-end: var(--ag-space-2);
+  margin-block-end: var(--ag-space-2);
   background: var(--ag-primary-light, #e0f2fe);
   border: 1px solid var(--ag-primary, #0ea5e9);
   border-radius: 3px;
@@ -427,9 +422,21 @@ code {
   --flex-gap: 1rem;
 }
 
+.responsive-direction .demo-box {
+  margin-block-end: var(--ag-space-2);
+}
+
 @media (min-width: 769px) {
   .responsive-direction {
     --flex-direction: row;
+  }
+  .responsive-direction .demo-box {
+    margin-inline-end: var(--ag-space-3);
+    background-color: transparent;
+    border: 2px solid var(--ag-primary);
+    border-radius: var(--ag-space-2);
+    padding-inline: var(--ag-space-8);
+    white-space: nowrap;
   }
 }
 
