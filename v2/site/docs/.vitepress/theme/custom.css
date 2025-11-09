@@ -57,6 +57,10 @@
   text-align: center;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .m0,
 h1.m0,
 h2.m0,
