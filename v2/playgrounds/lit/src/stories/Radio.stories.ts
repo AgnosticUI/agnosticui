@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import "agnosticui-core/radio";
-import type { Radio } from "agnosticui-core/radio";
+import type { AgRadio } from "agnosticui-core/radio";
 
-const meta: Meta<Radio> = {
+const meta: Meta<AgRadio> = {
   title: "AgnosticUI Lit/Radio",
   component: "ag-radio",
   tags: ["autodocs"],
@@ -57,7 +57,7 @@ const meta: Meta<Radio> = {
 };
 
 export default meta;
-type Story = StoryObj<Radio>;
+type Story = StoryObj<AgRadio>;
 
 export const Default: Story = {
   render: (args) => html`
