@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, type PropType } from "vue";
+import { defineComponent, onMounted, ref, nextTick, type PropType } from "vue";
 import type { AgEmptyState } from "../core/_EmptyState";
 import "../core/EmptyState"; // Registers the ag-empty-state web component
 
@@ -61,6 +61,25 @@ export default defineComponent({
     onMounted(async () => {
       // Ensure the web component is defined
       await customElements.whenDefined("ag-empty-state");
+      await nextTick();
+
+      // Manually trigger slot content detection for Vue
+      // Vue's slot content might not trigger slotchange event reliably
+      await nextTick();
+      const webComponent = agComponent.value;
+      if (webComponent) {
+        const iconSlot = webComponent.shadowRoot?.querySelector('slot[name="icon"]');
+        const actionsSlot = webComponent.shadowRoot?.querySelector('slot[name="actions"]');
+
+        if (iconSlot) {
+          // Force the slot change handler to run
+          iconSlot.dispatchEvent(new Event("slotchange"));
+        }
+        if (actionsSlot) {
+          // Force the slot change handler to run
+          actionsSlot.dispatchEvent(new Event("slotchange"));
+        }
+      }
     });
 
     return {

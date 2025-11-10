@@ -14,20 +14,49 @@ export type EmptyStateProps = {
 export class AgEmptyState extends LitElement implements EmptyStateProps {
   @property({ type: String }) title = '';
   @property({ type: String }) subtitle = '';
-  @property({ type: String }) buttonText = '';
+  @property({ type: String, attribute: 'button-text' }) buttonText = '';
   @property({ type: String, reflect: true })
   size: 'sm' | 'md' | 'lg' = 'md';
   @property({ type: Boolean }) bordered = false;
   @property({ type: Boolean }) rounded = false;
 
-  private _iconSlot: HTMLSlotElement | null = null;
-  private _actionsSlot: HTMLSlotElement | null = null;
+  @property({ type: Boolean, state: true })
+  private _hasIconSlot = false;
 
-  firstUpdated() {
-    this._iconSlot = this.shadowRoot?.querySelector('slot[name="icon"]') ?? null;
-    this._actionsSlot = this.shadowRoot?.querySelector('slot[name="actions"]') ?? null;
-    this._iconSlot?.addEventListener('slotchange', () => this.requestUpdate());
-    this._actionsSlot?.addEventListener('slotchange', () => this.requestUpdate());
+  @property({ type: Boolean, state: true })
+  private _hasActionsSlot = false;
+
+  private _handleSlotChange(e: Event) {
+    const slot = e.target as HTMLSlotElement;
+    const slotName = slot.name;
+
+    if (slotName === 'icon') {
+      this._hasIconSlot = hasSlotContent(slot);
+    } else if (slotName === 'actions') {
+      this._hasActionsSlot = hasSlotContent(slot);
+    }
+
+    this.requestUpdate();
+  }
+
+  override firstUpdated() {
+    // Initial check for slot content
+    // We need to defer this check to avoid "change in update" warning
+    setTimeout(() => {
+      const iconSlot = this.shadowRoot?.querySelector('slot[name="icon"]') as HTMLSlotElement;
+      const actionsSlot = this.shadowRoot?.querySelector('slot[name="actions"]') as HTMLSlotElement;
+
+      const hadIconSlot = this._hasIconSlot;
+      const hadActionsSlot = this._hasActionsSlot;
+
+      this._hasIconSlot = hasSlotContent(iconSlot);
+      this._hasActionsSlot = hasSlotContent(actionsSlot);
+
+      // Only request update if something changed
+      if (hadIconSlot !== this._hasIconSlot || hadActionsSlot !== this._hasActionsSlot) {
+        this.requestUpdate();
+      }
+    }, 0);
   }
 
   static styles = css`
@@ -128,9 +157,6 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
   `;
 
   render() {
-    const hasIconSlot = hasSlotContent(this._iconSlot);
-    const hasActionsSlot = hasSlotContent(this._actionsSlot);
-    
     const classes = [
       'empty',
       this.bordered ? 'empty-bordered' : '',
@@ -140,21 +166,21 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
 return html`
       <!-- Main container with a part for the whole component -->
       <div class="${classes}" role="region" aria-label="Empty state" part="container">
-        
+
         <!-- Icon section part -->
         <div class="icon" part="icon">
           <div class="icon-inner" part="icon-inner">
-            <slot name="icon" part="icon-slot"></slot>
-            ${!hasIconSlot ? html`
+            <slot name="icon" part="icon-slot" @slotchange=${this._handleSlotChange}></slot>
+            ${!this._hasIconSlot ? html`
               <!-- Fallback SVG part -->
-              <svg 
+              <svg
                 part="icon-svg"
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round" 
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
                 stroke-linejoin="round"
               >
                 <circle cx="12" cy="12" r="10"></circle>
@@ -167,14 +193,14 @@ return html`
 
         <!-- Title part -->
         ${this.title ? html`<h3 class="title" part="title">${this.title}</h3>` : ''}
-        
+
         <!-- Subtitle part -->
         ${this.subtitle ? html`<p class="subtitle" part="subtitle">${this.subtitle}</p>` : ''}
 
         <!-- Actions container part -->
         <div class="actions" part="actions">
-          <slot name="actions" part="actions-slot">
-            ${this.buttonText && !hasActionsSlot
+          <slot name="actions" part="actions-slot" @slotchange=${this._handleSlotChange}>
+            ${this.buttonText && !this._hasActionsSlot
               ? html`
                 <!-- Fallback button part -->
                 <button type="button" part="actions-button">${this.buttonText}</button>
