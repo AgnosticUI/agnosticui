@@ -163,13 +163,13 @@ export class AgButton extends LitElement implements ButtonProps {
 
     :host([size="lg"]) button {
       font-size: var(--ag-font-size-lg);
-      padding: var(--ag-space-3) var(--ag-space-6);
+      padding: var(--ag-space-2) var(--ag-space-6);
       min-height: var(--ag-space-12);
     }
 
     :host([size="xl"]) button {
       font-size: var(--ag-font-size-xl);
-      padding: var(--ag-space-4) var(--ag-space-8);
+      padding: var(--ag-space-3) var(--ag-space-8);
       min-height: var(--ag-space-14);
     }
 

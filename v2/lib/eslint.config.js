@@ -33,6 +33,9 @@ export default [
       'no-debugger': 'error',
       'no-unused-vars': 'off', // Use TypeScript version instead
       
+      // Vue specific - slot forwarding (see v2/lib/src/components/VUE_SLOTS.md)
+      'vue/no-deprecated-slot-attribute': 'off',
+
       // Lit specific - allow custom element patterns
       'no-undef': 'off', // TypeScript handles this better
       'prefer-const': 'error'

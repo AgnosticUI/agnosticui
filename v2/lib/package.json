@@ -135,6 +135,18 @@
       "types": "./dist/components/Dialog/core/Dialog.d.ts",
       "import": "./dist/components/Dialog/core/Dialog.js"
     },
+    "./empty-state": {
+      "types": "./dist/components/EmptyState/core/EmptyState.d.ts",
+      "import": "./dist/components/EmptyState/core/EmptyState.js"
+    },
+    "./empty-state/react": {
+      "types": "./dist/components/EmptyState/react/ReactEmptyState.d.ts",
+      "import": "./dist/components/EmptyState/react/ReactEmptyState.js"
+    },
+    "./empty-state/vue": {
+      "types": "./dist/components/EmptyState/react/index.d.ts",
+      "import": "./dist/components/EmptyState/vue/index.js"
+    },
     "./toggle": {
       "types": "./dist/components/Toggle/core/Toggle.d.ts",
       "import": "./dist/components/Toggle/core/Toggle.js"
