@@ -69,25 +69,38 @@
     "value": "{neutral.500.value}",
     "description": "Darker secondary for hover states on dark backgrounds"
   },
+
   "danger": {
+    "value": "#DC2626",
+    "description": "Error and danger state color (hex format)"
+  },
+  "danger-rgb": {
     "value": "220, 38, 38",
-    "description": "Error and danger state color brightened for dark backgrounds (RGB format for alpha channel support)"
+    "description": "Error and danger state color (RGB format for alpha channel support)"
   },
   "danger-dark": {
     "value": "{red.400.value}",
-    "description": "Darker danger for hover states on dark backgrounds"
+    "description": "Darker danger for hover states"
   },
   "warning": {
+    "value": "#D97706",
+    "description": "Warning state color (hex format)"
+  },
+  "warning-rgb": {
     "value": "217, 119, 6",
-    "description": "Warning state color brightened for dark backgrounds (RGB format for alpha channel support)"
+    "description": "Warning state color (RGB format for alpha channel support)"
   },
   "warning-dark": {
     "value": "{yellow.300.value}",
-    "description": "Darker warning for hover states on dark backgrounds"
+    "description": "Darker warning for hover states"
   },
   "success": {
-    "value": "{green.400.value}",
-    "description": "Success state color brightened for dark backgrounds"
+    "value": "#2EA043",
+    "description": "Success state color (hex format)"
+  },
+  "success-rgb": {
+    "value": "46, 160, 67",
+    "description": "Success state color (RGB format for alpha channel support)"
   },
   "success-dark": {
     "value": "{green.300.value}",
@@ -108,5 +121,29 @@
   "focus-dark": {
     "value": "{blue.400.value}",
     "description": "Slightly darker focus ring for dark mode"
+  },
+  "rating-filled": {
+    "value": "{yellow.300.value}",
+    "description": "Filled star color in dark mode"
+  },
+  "rating-filled-primary": {
+    "value": "{blue.400.value}",
+    "description": "Primary variant filled star"
+  },
+  "rating-filled-success": {
+    "value": "{green.300.value}",
+    "description": "Success variant filled star"
+  },
+  "rating-filled-warning": {
+    "value": "{yellow.300.value}",
+    "description": "Warning variant filled star"
+  },
+  "rating-filled-danger": {
+    "value": "{red.400.value}",
+    "description": "Danger variant filled star"
+  },
+  "rating-filled-secondary": {
+    "value": "{neutral.50.value}",
+    "description": "Secondary variant filled star for dark mode"
   }
 }

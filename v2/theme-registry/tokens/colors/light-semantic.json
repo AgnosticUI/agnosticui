@@ -120,5 +120,25 @@
   "focus-dark": {
     "value": "{blue.400.value}",
     "description": "Lighter blue focus ring color for dark mode accessibility"
+  },
+  "rating-filled": {
+    "value": "{yellow.400.value}",
+    "description": "Default filled star color"
+  },
+  "rating-filled-primary": {
+    "value": "{blue.500.value}",
+    "description": "Primary variant"
+  },
+  "rating-filled-success": {
+    "value": "{green.500.value}",
+    "description": "Success variant"
+  },
+  "rating-filled-warning": {
+    "value": "{yellow.500.value}",
+    "description": "Warning variant"
+  },
+  "rating-filled-danger": {
+    "value": "{red.500.value}",
+    "description": "Danger variant"
   }
 }
