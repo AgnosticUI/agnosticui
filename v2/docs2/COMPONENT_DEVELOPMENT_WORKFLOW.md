@@ -565,6 +565,440 @@ Now, the LLM agent takes over to perform the context-aware implementation work.
         -   Document any v1 features that should be ported to v2 for feature parity
         -   Update the `SpecSheet.md` to include these v1-inspired features
 
+## Slot Detection Patterns
+
+When implementing components with slots that have fallback content, follow these critical patterns to ensure proper slot detection across all frameworks (especially Vue).
+
+### The Slot Detection Problem
+
+Components often need to detect whether a slot has content to conditionally render fallback content. However, slot detection behaves differently across frameworks:
+
+- **React/Lit**: Reliably trigger `slotchange` events when slot content changes
+- **Vue**: Does NOT reliably trigger `slotchange` events due to how Vue projects slots into web components
+
+### Required Pattern for Slot Detection
+
+Follow this exact pattern (as demonstrated in Divider, Input, and EmptyState components):
+
+#### 1. Use Reactive State Properties (NOT Slot References)
+
+```typescript
+// ❌ WRONG: Storing slot references (null on initial render)
+private _iconSlot: HTMLSlotElement | null = null;
+private _actionsSlot: HTMLSlotElement | null = null;
+
+// ✅ CORRECT: Store boolean state using reactive properties
+@property({ type: Boolean, state: true })
+private _hasIconSlot = false;
+
+@property({ type: Boolean, state: true })
+private _hasActionsSlot = false;
+```
+
+**Why**: Slot references are `null` during initial render, causing `hasSlotContent()` checks to fail.
+
+#### 2. Implement Event-Driven Slot Change Handler
+
+```typescript
+private _handleSlotChange(e: Event) {
+  const slot = e.target as HTMLSlotElement;
+  const slotName = slot.name;
+
+  if (slotName === 'icon') {
+    this._hasIconSlot = hasSlotContent(slot);
+  } else if (slotName === 'actions') {
+    this._hasActionsSlot = hasSlotContent(slot);
+  }
+
+  this.requestUpdate();
+}
+```
+
+**Key Points**:
+- Get slot element from `e.target` (NOT from stored references)
+- Call `hasSlotContent()` on the event target
+- Store result in reactive state property
+- Call `requestUpdate()` to trigger re-render
+
+#### 3. Initial Detection in firstUpdated with setTimeout
+
+```typescript
+override firstUpdated() {
+  // Initial check for slot content
+  // We need to defer this check to avoid "change in update" warning
+  setTimeout(() => {
+    const iconSlot = this.shadowRoot?.querySelector('slot[name="icon"]') as HTMLSlotElement;
+    const actionsSlot = this.shadowRoot?.querySelector('slot[name="actions"]') as HTMLSlotElement;
+
+    const hadIconSlot = this._hasIconSlot;
+    const hadActionsSlot = this._hasActionsSlot;
+
+    this._hasIconSlot = hasSlotContent(iconSlot);
+    this._hasActionsSlot = hasSlotContent(actionsSlot);
+
+    // Only request update if something changed
+    if (hadIconSlot !== this._hasIconSlot || hadActionsSlot !== this._hasActionsSlot) {
+      this.requestUpdate();
+    }
+  }, 0);
+}
+```
+
+**Key Points**:
+- Use `setTimeout` to defer check (avoids Lit update cycle warnings)
+- Store previous values to detect changes
+- Only call `requestUpdate()` if state actually changed
+
+#### 4. Attach Event Handlers in Render
+
+```typescript
+render() {
+  return html`
+    <slot name="icon" @slotchange=${this._handleSlotChange}></slot>
+    ${!this._hasIconSlot ? html`
+      <!-- Fallback content -->
+    ` : ''}
+
+    <slot name="actions" @slotchange=${this._handleSlotChange}>
+      ${this.buttonText && !this._hasActionsSlot
+        ? html`<button>${this.buttonText}</button>`
+        : ''}
+    </slot>
+  `;
+}
+```
+
+**Key Points**:
+- Attach `@slotchange` handler directly on `<slot>` elements
+- Use reactive state properties (e.g., `this._hasActionsSlot`) in conditionals
+- NEVER call `hasSlotContent()` directly in render method
+
+### Vue-Specific: Manual Event Dispatch
+
+Vue wrappers must manually dispatch `slotchange` events after mounting:
+
+```typescript
+// In VueMyComponent.vue setup()
+onMounted(async () => {
+  await customElements.whenDefined('ag-mycomponent');
+  await nextTick();
+
+  // Manually trigger slot content detection for Vue
+  // Vue's slot content might not trigger slotchange event reliably
+  await nextTick();
+  const webComponent = agComponent.value;
+  if (webComponent) {
+    const iconSlot = webComponent.shadowRoot?.querySelector('slot[name="icon"]');
+    const actionsSlot = webComponent.shadowRoot?.querySelector('slot[name="actions"]');
+
+    if (iconSlot) {
+      iconSlot.dispatchEvent(new Event("slotchange"));
+    }
+    if (actionsSlot) {
+      actionsSlot.dispatchEvent(new Event("slotchange"));
+    }
+  }
+});
+```
+
+**Why**: Vue doesn't automatically trigger `slotchange` events when slots are projected, so we must manually dispatch them.
+
+### hasSlotContent Utility
+
+The `hasSlotContent` utility (in `v2/lib/src/utils/slot.ts`) checks if a slot has meaningful content:
+
+```typescript
+export function hasSlotContent(slot: HTMLSlotElement | null): boolean {
+  if (!slot) {
+    return false;
+  }
+  const assignedNodes = slot.assignedNodes({ flatten: true });
+
+  // Helper to check if an element has meaningful content
+  const hasElementContent = (element: Element): boolean => {
+    // Check if element has any child elements
+    if (element.children.length > 0) {
+      return true;
+    }
+    // Check if element has non-whitespace text content
+    if (element.textContent?.trim() !== '') {
+      return true;
+    }
+    return false;
+  };
+
+  return assignedNodes.some((node) => {
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      const element = node as Element;
+      // Check if this element actually has content
+      return hasElementContent(element);
+    }
+    if (node.nodeType === Node.TEXT_NODE) {
+      return node.textContent?.trim() !== '';
+    }
+    return false;
+  });
+}
+```
+
+**Key Features**:
+- Returns `false` for `null` slots
+- Handles empty wrapper elements (important for Vue!)
+- Checks both element children and text content
+- Ignores whitespace-only text nodes
+
+### Common Mistakes to Avoid
+
+1. ❌ **Storing slot references instead of state**
+   ```typescript
+   private _iconSlot: HTMLSlotElement | null = null; // WRONG
+   ```
+
+2. ❌ **Calling hasSlotContent in render**
+   ```typescript
+   render() {
+     const hasIcon = hasSlotContent(this._iconSlot); // WRONG - null on first render
+   }
+   ```
+
+3. ❌ **Not handling Vue's lack of slotchange events**
+   ```vue
+   <!-- VueMyComponent.vue without manual dispatch - WRONG -->
+   <script setup>
+   onMounted(async () => {
+     await customElements.whenDefined('ag-mycomponent');
+     // Missing manual slotchange dispatch!
+   });
+   </script>
+   ```
+
+4. ❌ **Checking slot references without setTimeout**
+   ```typescript
+   firstUpdated() {
+     this._hasIconSlot = hasSlotContent(this._iconSlot); // WRONG - timing issue
+   }
+   ```
+
+### Testing Slot Detection
+
+Always test slot detection in all three frameworks:
+
+```typescript
+// Lit test
+it('shows fallback when slot is empty', async () => {
+  const el = await fixture(html`<ag-empty-state buttonText="Click"></ag-empty-state>`);
+  const button = el.shadowRoot?.querySelector('button');
+  expect(button?.textContent).toBe('Click');
+});
+
+// Ensure Vue wrapper tests manually dispatch slotchange events
+```
+
+## Vue to Lit Attribute Naming Conventions
+
+Vue uses kebab-case for HTML attributes, while Lit has specific rules for mapping property names to attributes. Understanding this mapping is critical for Vue integration.
+
+### The Attribute Mapping Problem
+
+When Vue passes props to web components using kebab-case attributes (e.g., `:button-text="value"`), Lit must be configured to recognize these attribute names. By default, Lit converts camelCase property names to **all lowercase** attributes (not kebab-case).
+
+#### Default Lit Behavior
+
+```typescript
+// Lit component
+@property({ type: String }) buttonText = '';  // Maps to 'buttontext' attribute
+
+// Vue template
+<ag-empty-state :button-text="value">  // Passes 'button-text' attribute
+</ag-empty-state>
+
+// RESULT: Mismatch! Vue's 'button-text' ≠ Lit's 'buttontext'
+```
+
+### Required Pattern: Explicit Attribute Names
+
+For all camelCase properties that will be used from Vue, **explicitly specify the kebab-case attribute name**:
+
+```typescript
+// ✅ CORRECT: Explicit attribute mapping
+@property({ type: String, attribute: 'button-text' }) buttonText = '';
+@property({ type: String, attribute: 'error-message' }) errorMessage = '';
+@property({ type: String, attribute: 'help-text' }) helpText = '';
+@property({ type: String, attribute: 'label-hidden' }) labelHidden = false;
+@property({ type: Boolean, attribute: 'no-label' }) noLabel = false;
+@property({ type: Boolean, attribute: 'underlined-with-background' }) underlinedWithBackground = false;
+```
+
+### When to Use Explicit Attributes
+
+| Property Name Pattern | Needs Explicit Attribute? | Example |
+|----------------------|---------------------------|---------|
+| Single word | ❌ No | `title`, `size`, `variant` |
+| camelCase (2+ words) | ✅ Yes | `buttonText` → `attribute: 'button-text'` |
+| Boolean props | Depends on name | `disabled` (no), `isRounded` (yes, use `is-rounded`) |
+
+### Naming Convention Standards
+
+Follow these conventions for consistency across the codebase:
+
+#### 1. Simple Props (No Attribute Needed)
+
+```typescript
+@property({ type: String }) title = '';
+@property({ type: String }) subtitle = '';
+@property({ type: String }) size = 'md';
+@property({ type: Boolean }) disabled = false;
+@property({ type: Boolean }) readonly = false;
+```
+
+#### 2. Multi-Word Props (Attribute Required)
+
+```typescript
+// Text/String props
+@property({ type: String, attribute: 'button-text' }) buttonText = '';
+@property({ type: String, attribute: 'aria-label' }) ariaLabel = '';
+@property({ type: String, attribute: 'labelled-by' }) labelledBy = '';
+
+// Boolean props with multiple words
+@property({ type: Boolean, attribute: 'is-rounded' }) isRounded = false;
+@property({ type: Boolean, attribute: 'is-bordered' }) isBordered = false;
+@property({ type: Boolean, attribute: 'no-label' }) noLabel = false;
+
+// Compound boolean props
+@property({ type: Boolean, attribute: 'underlined-with-background' })
+underlinedWithBackground = false;
+```
+
+#### 3. Reflected Props (Both Ways)
+
+For props that should be readable as attributes from JavaScript (useful for CSS selectors), add `reflect: true`:
+
+```typescript
+@property({ type: String, reflect: true })
+size: 'sm' | 'md' | 'lg' = 'md';
+
+@property({ type: String, reflect: true, attribute: 'aria-label' })
+ariaLabel = '';
+```
+
+**Note**: Reflection is typically used for:
+- Size/variant props used in CSS attribute selectors
+- ARIA attributes that external scripts might read
+- Props that define component state visually
+
+### Vue Wrapper Pattern
+
+Vue wrappers should use kebab-case attributes that match the Lit property declarations:
+
+```vue
+<template>
+  <ag-empty-state
+    ref="agComponent"
+    :title="title"
+    :subtitle="subtitle"
+    :button-text="buttonText"        <!-- Matches attribute: 'button-text' -->
+    :size="size"
+    :bordered="bordered || undefined"
+    :rounded="rounded || undefined"
+    v-bind="$attrs"
+  >
+    <!-- slots -->
+  </ag-empty-state>
+</template>
+
+<script lang="ts">
+export default defineComponent({
+  name: 'VueEmptyState',
+  props: {
+    title: { type: String, default: '' },
+    subtitle: { type: String, default: '' },
+    buttonText: { type: String, default: '' },  // Vue prop is camelCase
+    size: { type: String as PropType<'sm' | 'md' | 'lg'>, default: 'md' },
+    bordered: { type: Boolean, default: false },
+    rounded: { type: Boolean, default: false },
+  },
+  // ...
+});
+</script>
+```
+
+**Key Pattern**:
+- Vue component props: camelCase (`buttonText`)
+- Vue template attributes: kebab-case (`:button-text`)
+- Lit property decorator: Explicit attribute (`attribute: 'button-text'`)
+
+### Debugging Attribute Mapping Issues
+
+If a prop isn't being passed from Vue to the Lit component:
+
+1. **Check the browser DevTools Elements tab**:
+   ```html
+   <!-- Should see: -->
+   <ag-empty-state button-text="Click Me" title="Hello">
+
+   <!-- Not: -->
+   <ag-empty-state buttontext="Click Me" title="Hello">
+   ```
+
+2. **Add console logging to debug**:
+   ```typescript
+   // In Lit component
+   @property({ type: String, attribute: 'button-text' })
+   set buttonText(value: string) {
+     console.log('[EmptyState] buttonText set to:', value);
+     this._buttonText = value;
+   }
+   get buttonText() { return this._buttonText; }
+   private _buttonText = '';
+   ```
+
+3. **Verify in Vue wrapper**:
+   ```vue
+   <script setup lang="ts">
+   const props = defineProps<{ buttonText: string }>();
+
+   watch(() => props.buttonText, (newValue) => {
+     console.log('[VueEmptyState] buttonText changed to:', newValue);
+   });
+   </script>
+   ```
+
+### Common Mistakes to Avoid
+
+1. ❌ **Forgetting attribute mapping for multi-word props**
+   ```typescript
+   @property({ type: String }) buttonText = '';  // WRONG - creates 'buttontext' attribute
+   ```
+
+2. ❌ **Using camelCase in Vue templates**
+   ```vue
+   <ag-empty-state :buttonText="value">  <!-- WRONG - doesn't work in HTML -->
+   </ag-empty-state>
+   ```
+
+3. ❌ **Inconsistent naming between Vue prop and attribute**
+   ```vue
+   <!-- Vue component defines 'buttonLabel' but Lit expects 'button-text' -->
+   <template>
+     <ag-empty-state :button-label="buttonLabel">  <!-- WRONG -->
+     </ag-empty-state>
+   </template>
+   ```
+
+4. ❌ **Using `or undefined` for string props**
+   ```vue
+   <!-- String props should use empty string, not undefined -->
+   <ag-empty-state :button-text="buttonText || undefined">  <!-- WRONG -->
+   <ag-empty-state :button-text="buttonText">  <!-- CORRECT -->
+   ```
+
+### Reference Examples
+
+See these components for correct patterns:
+- **Input** (`v2/lib/src/components/Input/core/_Input.ts`): Lines 418-422 (errorMessage, helpText, etc.)
+- **EmptyState** (`v2/lib/src/components/EmptyState/core/_EmptyState.ts`): Line 17 (buttonText)
+- **VueInput** (`v2/lib/src/components/Input/vue/VueInput.vue`): Lines 98-116 (Vue template usage)
+
 ### Step 2: Core Component Implementation
 
 Using the `SpecSheet.md`, the agent will:
