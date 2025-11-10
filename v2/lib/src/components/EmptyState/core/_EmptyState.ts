@@ -5,10 +5,20 @@ import { property } from 'lit/decorators.js';
 export class AgEmptyState extends LitElement {
   @property({ type: String }) title = '';
   @property({ type: String }) subtitle = '';
+  @property({ type: String }) buttonText = '';
   @property({ type: String, reflect: true })
   size: 'sm' | 'md' | 'lg' = 'md';
   @property({ type: Boolean }) bordered = false;
   @property({ type: Boolean }) rounded = false;
+
+  firstUpdated() {
+    // Listen to slotchange events from shadow DOM slots
+    const iconSlot = this.shadowRoot?.querySelector('slot[name="icon"]');
+    const actionsSlot = this.shadowRoot?.querySelector('slot[name="actions"]');
+    
+    iconSlot?.addEventListener('slotchange', () => this.requestUpdate());
+    actionsSlot?.addEventListener('slotchange', () => this.requestUpdate());
+  }
 
   static styles = css`
     :host {
@@ -106,28 +116,36 @@ export class AgEmptyState extends LitElement {
   `;
 
   render() {
+    // Check for slotted content directly in render
+    const hasIconSlot = this.querySelector('[slot="icon"]') !== null;
+    const hasActionsSlot = this.querySelector('[slot="actions"]') !== null;
+    
+    const classes = [
+      'empty',
+      this.bordered ? 'empty-bordered' : '',
+      this.rounded ? 'empty-rounded' : ''
+    ].filter(Boolean).join(' ');
+
     return html`
-      <div
-        class="empty ${this.bordered ? 'empty-bordered' : ''} ${this.rounded ? 'empty-rounded' : ''}"
-        part="base"
-        role="region"
-        aria-label="Empty state"
-      >
+      <div class="${classes}" role="region" aria-label="Empty state">
         <div class="icon" part="icon">
           <div class="icon-inner">
-            <slot name="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="currentColor"
+            <slot name="icon"></slot>
+            ${!hasIconSlot ? html`
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"
               >
-                <path
-                  fill-rule="evenodd"
-                  d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
-                />
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
               </svg>
-            </slot>
+            ` : ''}
           </div>
         </div>
 
@@ -135,7 +153,11 @@ export class AgEmptyState extends LitElement {
         ${this.subtitle ? html`<p class="subtitle">${this.subtitle}</p>` : ''}
 
         <div class="actions">
-          <slot name="actions"></slot>
+          <slot name="actions">
+            ${this.buttonText && !hasActionsSlot
+              ? html`<button type="button">${this.buttonText}</button>`
+              : ''}
+          </slot>
         </div>
       </div>
     `;
