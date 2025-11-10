@@ -2,9 +2,9 @@
 
 ## The Honest Truth
 
-# TODO investigate <template shodowrootmode="open"> to create a more feasible <table>
+# TODO investigate `template shodowrootmode="open"` to create a more feasible &lt;table&gt;
 
-Apparently shadowrootmode open has been available for a couple yeares now.
+Apparently `shadowrootmode` open has been available for a couple years now.
 
 Web Components and native HTML tables don’t mix well.
 
