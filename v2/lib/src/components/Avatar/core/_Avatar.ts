@@ -53,7 +53,7 @@ export class Avatar extends LitElement implements AvatarProps {
       width: var(--ag-space-10);
       height: var(--ag-space-10);
       max-width: 100%;
-      background: var(--ag-background-secondary);
+      background: var(--ag-background-tertiary);
       color: var(--ag-text-primary);
       border-radius: 50%;
       font-size: var(--ag-font-size-base);
