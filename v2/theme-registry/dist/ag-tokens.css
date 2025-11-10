@@ -164,4 +164,9 @@
   --ag-info-dark: #2e3745;
   --ag-focus: 37, 99, 235;
   --ag-focus-dark: #218bff;
+  --ag-rating-filled: #bf8700;
+  --ag-rating-filled-primary: #0969da;
+  --ag-rating-filled-success: #238636;
+  --ag-rating-filled-warning: #9a6700;
+  --ag-rating-filled-danger: #cf222e;
 }

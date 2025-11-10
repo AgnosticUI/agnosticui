@@ -100,14 +100,23 @@
   --ag-primary-dark: #0d419d;
   --ag-secondary: #9198A1;
   --ag-secondary-dark: #656C76;
-  --ag-danger: 220, 38, 38;
+  --ag-danger: #DC2626;
+  --ag-danger-rgb: 220, 38, 38;
   --ag-danger-dark: #f85149;
-  --ag-warning: 217, 119, 6;
+  --ag-warning: #D97706;
+  --ag-warning-rgb: 217, 119, 6;
   --ag-warning-dark: #d29922;
   --ag-success: #2EA043;
+  --ag-success-rgb: 46, 160, 67;
   --ag-success-dark: #3fb950;
   --ag-info: #9198A1;
   --ag-info-dark: #9EA5AF;
   --ag-focus: 88, 166, 255;
   --ag-focus-dark: #388bfd;
+  --ag-rating-filled: #d29922;
+  --ag-rating-filled-primary: #388bfd;
+  --ag-rating-filled-success: #3fb950;
+  --ag-rating-filled-warning: #d29922;
+  --ag-rating-filled-danger: #f85149;
+  --ag-rating-filled-secondary: #F0F6FC;
 }

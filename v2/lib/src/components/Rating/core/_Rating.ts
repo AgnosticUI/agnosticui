@@ -96,59 +96,64 @@ export class AgRating extends LitElement {
       pointer-events: none;
     }
 
+    /* Default (≈ Chakra UI “xs”) */
     .star {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: transform var(--ag-motion-medium) ease, opacity var(--ag-motion-medium);
+      transition:
+        transform var(--ag-motion-medium) ease,
+        opacity   var(--ag-motion-medium);
       color: var(--ag-neutral-300);
-      width: var(--ag-font-size-lg); /* Default size, overridden by size attribute */
-      height: var(--ag-font-size-lg);
+      width:  var(--ag-space-3);   /* 0.75rem  → xs */
+      height: var(--ag-space-3);
     }
 
+    /* size="sm"  → Chakra UI “sm” ≈ 1rem */
     :host([size="sm"]) .star {
-      width: var(--ag-font-size-md);
-      height: var(--ag-font-size-md);
+      width:  var(--ag-space-4);   /* 1rem */
+      height: var(--ag-space-4);
     }
 
+    /* size="md"  → Chakra UI “md” ≈ 1.25rem */
     :host([size="md"]) .star {
-      width: var(--ag-font-size-2x);
-      height: var(--ag-font-size-2x);
+      width:  var(--ag-space-5);   /* 1.25rem */
+      height: var(--ag-space-5);
     }
 
+    /* size="lg"  → Chakra UI “lg” ≈ 1.5rem */
     :host([size="lg"]) .star {
-      width: var(--ag-font-size-3x);
-      height: var(--ag-font-size-3x);
+      width:  var(--ag-space-6);   /* 1.5rem */
+      height: var(--ag-space-6);
     }
 
     .star svg path {
       fill: var(--ag-neutral-300); /* Empty color */
     }
-
     .star.filled > svg > path:last-of-type,
     .star.hover svg path {
-      fill: var(--ag-yellow-400); /* Default filled color */
+      fill: var(--ag-rating-filled, var(--ag-yellow-400));
     }
 
     :host([variant="primary"]) .star.filled > svg > path:last-of-type,
     :host([variant="primary"]) .star.hover svg path {
-      fill: var(--ag-primary);
-    }
-    :host([variant="secondary"]) .star.filled > svg > path:last-of-type,
-    :host([variant="secondary"]) .star.hover svg path {
-      fill: var(--ag-secondary);
+      fill: var(--ag-rating-filled-primary, var(--ag-primary));
     }
     :host([variant="success"]) .star.filled > svg > path:last-of-type,
     :host([variant="success"]) .star.hover svg path {
-      fill: var(--ag-success);
+      fill: var(--ag-rating-filled-success, var(--ag-success));
     }
     :host([variant="warning"]) .star.filled > svg > path:last-of-type,
     :host([variant="warning"]) .star.hover svg path {
-      fill: var(--ag-warning);
+      fill: var(--ag-rating-filled-warning, var(--ag-warning));
     }
     :host([variant="danger"]) .star.filled > svg > path:last-of-type,
     :host([variant="danger"]) .star.hover svg path {
-      fill: var(--ag-danger);
+      fill: var(--ag-rating-filled-danger, var(--ag-danger));
+    }
+    :host([variant="secondary"]) .star.filled > svg > path:last-of-type,
+    :host([variant="secondary"]) .star.hover svg path {
+      fill: var(--ag-rating-filled-secondary, var(--ag-secondary));
     }
 
     .star-button {

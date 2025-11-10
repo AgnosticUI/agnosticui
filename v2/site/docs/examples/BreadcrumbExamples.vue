@@ -14,16 +14,19 @@
         <h3>Types</h3>
       </div>
       <VueBreadcrumb
+        class="mbe4"
         type="slash"
         :items="items"
         @breadcrumb-click="handleClick"
       />
       <VueBreadcrumb
+        class="mbe4"
         type="bullet"
         :items="items"
         @breadcrumb-click="handleClick"
       />
       <VueBreadcrumb
+        class="mbe4"
         type="arrow"
         :items="items"
         @breadcrumb-click="handleClick"
