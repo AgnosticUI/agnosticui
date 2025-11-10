@@ -20,15 +20,15 @@
     "description": "Background for primary"
   },
   "background-secondary": {
-    "value": "{neutral.800.value}",
+    "value": "{neutral.700.value}",
     "description": "Background for secondary (accordion backgrounds)"
   },
   "background-tertiary": {
-    "value": "{neutral.700.value}",
+    "value": "{neutral.600.value}",
     "description": "Background for tertiary (neutral buttons)"
   },
   "background-disabled": {
-    "value": "{neutral.600.value}",
+    "value": "{neutral.500.value}",
     "description": "Background for secondary (accordion backgrounds)"
   },
   "primary-background": { "value": "{blue.900.value}" },
