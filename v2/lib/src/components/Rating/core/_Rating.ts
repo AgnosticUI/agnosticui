@@ -216,11 +216,12 @@ export class AgRating extends LitElement {
     return html`
       <span
         class="star-button"
+        part="star-button"
         @click="${(e: MouseEvent) => this.handleClickStar(e, starIndex)}"
         aria-label="${starIndex} star"
         title="${starIndex} star"
       >
-        <span class="star ${filledClass} ${hoverClass}" data-star="${starIndex}">
+        <span class="star ${filledClass} ${hoverClass}" part="star" data-star="${starIndex}">
           ${this.renderStarSvg(full, half, clipId)}
         </span>
       </span>

@@ -70,6 +70,7 @@ function getComponents() {
       { text: 'Popover', link: '/components/popover' },
       { text: 'Progress', link: '/components/progress' },
       { text: 'Radio', link: '/components/radio' },
+      { text: 'Rating', link: '/components/rating' },
       { text: 'Select', link: '/components/select' },
       { text: 'Skeleton Loader', link: '/components/skeleton-loader' },
       { text: 'Slider', link: '/components/slider' },

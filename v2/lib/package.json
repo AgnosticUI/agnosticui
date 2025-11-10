@@ -480,8 +480,8 @@
       "import": "./dist/components/Fieldset/vue/index.js"
     },
     "./rating": {
-      "types": "./dist/components/Rating/core/_Rating.d.ts",
-      "import": "./dist/components/Rating/core/_Rating.js"
+      "types": "./dist/components/Rating/core/Rating.d.ts",
+      "import": "./dist/components/Rating/core/Rating.js"
     },
     "./rating/react": {
       "types": "./dist/components/Rating/react/index.d.ts",
