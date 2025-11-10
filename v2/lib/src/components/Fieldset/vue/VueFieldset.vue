@@ -28,8 +28,8 @@ export default defineComponent({
       default: false,
     },
     layout: {
-      type: String as PropType<'vertical' | 'horizontal'>,
-      default: "vertical" as 'vertical' | 'horizontal',
+      type: String as PropType<"vertical" | "horizontal">,
+      default: "vertical" as "vertical" | "horizontal",
     },
     legendHidden: {
       type: Boolean,

@@ -102,7 +102,7 @@ export class Icon extends LitElement implements IconProps {
 
     /* Type theming via host attribute (inherits to slotted svg via currentColor for stroke or fill) */
     :host([type="info"]) {
-      color: var(--ag-primary);
+      color: var(--ag-info);
     }
     
     :host([type="primary"]) {

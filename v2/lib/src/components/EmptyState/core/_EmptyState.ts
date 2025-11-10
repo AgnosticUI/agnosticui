@@ -2,7 +2,16 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
-export class AgEmptyState extends LitElement {
+export type EmptyStateProps = {
+  title?: string;
+  subtitle?: string;
+  buttonText?: string;
+  size?: 'sm' | 'md' | 'lg';
+  bordered?: boolean;
+  rounded?: boolean;
+};
+
+export class AgEmptyState extends LitElement implements EmptyStateProps {
   @property({ type: String }) title = '';
   @property({ type: String }) subtitle = '';
   @property({ type: String }) buttonText = '';
@@ -30,7 +39,6 @@ export class AgEmptyState extends LitElement {
       flex-direction: column;
       align-items: center;
       text-align: center;
-      width: 100%;
       padding: var(--ag-space-8);
       background: var(--ag-background-secondary);
       min-height: var(--ag-space-14);
@@ -47,7 +55,7 @@ export class AgEmptyState extends LitElement {
 
     /* Icon sizing and containment */
     .icon {
-      margin-bottom: var(--ag-space-4);
+      margin-bottom: var(--ag-space-1);
       color: var(--ag-neutral-400);
     }
 
@@ -66,7 +74,7 @@ export class AgEmptyState extends LitElement {
     }
 
     :host([size="sm"]) {
-      --ag-empty-icon-size: var(--ag-space-6);
+      --ag-empty-icon-size: var(--ag-space-8);
     }
 
     :host([size="lg"]) {
@@ -76,7 +84,8 @@ export class AgEmptyState extends LitElement {
     /* Title */
     .title {
       font-size: var(--ag-font-size-xl);
-      margin-bottom: var(--ag-space-2);
+      margin-block-start: 0;
+      margin-block-end: var(--ag-space-2);
       line-height: var(--ag-line-height-lg);
     }
 
@@ -92,18 +101,20 @@ export class AgEmptyState extends LitElement {
     .subtitle {
       font-size: var(--ag-font-size-base);
       color: var(--ag-text-muted);
-      margin-bottom: var(--ag-space-6);
+      /* The title will provide enough gap */
+      margin-block-start: 0;
+      margin-block-end: var(--ag-space-4);
       line-height: var(--ag-line-height-base);
     }
 
     :host([size="sm"]) .subtitle {
       font-size: var(--ag-font-size-sm);
-      margin-bottom: var(--ag-space-4);
+      margin-bottom: var(--ag-space-3);
     }
 
     :host([size="lg"]) .subtitle {
       font-size: var(--ag-font-size-md);
-      margin-bottom: var(--ag-space-8);
+      margin-bottom: var(--ag-space-6);
     }
 
     /* Actions */
@@ -126,13 +137,18 @@ export class AgEmptyState extends LitElement {
       this.rounded ? 'empty-rounded' : ''
     ].filter(Boolean).join(' ');
 
-    return html`
-      <div class="${classes}" role="region" aria-label="Empty state">
+return html`
+      <!-- Main container with a part for the whole component -->
+      <div class="${classes}" role="region" aria-label="Empty state" part="container">
+        
+        <!-- Icon section part -->
         <div class="icon" part="icon">
-          <div class="icon-inner">
-            <slot name="icon"></slot>
+          <div class="icon-inner" part="icon-inner">
+            <slot name="icon" part="icon-slot"></slot>
             ${!hasIconSlot ? html`
+              <!-- Fallback SVG part -->
               <svg 
+                part="icon-svg"
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 0 24 24" 
                 fill="none" 
@@ -149,13 +165,20 @@ export class AgEmptyState extends LitElement {
           </div>
         </div>
 
-        ${this.title ? html`<h3 class="title">${this.title}</h3>` : ''}
-        ${this.subtitle ? html`<p class="subtitle">${this.subtitle}</p>` : ''}
+        <!-- Title part -->
+        ${this.title ? html`<h3 class="title" part="title">${this.title}</h3>` : ''}
+        
+        <!-- Subtitle part -->
+        ${this.subtitle ? html`<p class="subtitle" part="subtitle">${this.subtitle}</p>` : ''}
 
-        <div class="actions">
-          <slot name="actions">
+        <!-- Actions container part -->
+        <div class="actions" part="actions">
+          <slot name="actions" part="actions-slot">
             ${this.buttonText && !hasActionsSlot
-              ? html`<button type="button">${this.buttonText}</button>`
+              ? html`
+                <!-- Fallback button part -->
+                <button type="button" part="actions-button">${this.buttonText}</button>
+              `
               : ''}
           </slot>
         </div>
