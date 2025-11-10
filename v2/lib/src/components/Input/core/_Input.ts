@@ -11,6 +11,7 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { generateUniqueId } from '../../../utils/unique-id';
+import { hasSlotContent } from '../../../utils/slot';
 
 // Props interface following INTERFACE_STANDARDS.md
 export interface InputProps {
@@ -527,21 +528,6 @@ export class AgInput extends LitElement implements InputProps {
   }
 
   /**
-   * Check if a slot has meaningful content (not just whitespace)
-   */
-  private _hasSlotContent(slot: HTMLSlotElement | null): boolean {
-    if (!slot) return false;
-    const assignedNodes = slot.assignedNodes({ flatten: true });
-    return assignedNodes.some(node => {
-      if (node.nodeType === Node.ELEMENT_NODE) return true;
-      if (node.nodeType === Node.TEXT_NODE) {
-        return node.textContent?.trim() !== '';
-      }
-      return false;
-    });
-  }
-
-  /**
    * Handle slot changes to detect if addons are present
    */
   private _handleSlotChange(e: Event) {
@@ -549,9 +535,9 @@ export class AgInput extends LitElement implements InputProps {
     const slotName = slot.name;
 
     if (slotName === 'addon-left') {
-      this._hasLeftAddon = this._hasSlotContent(slot);
+      this._hasLeftAddon = hasSlotContent(slot);
     } else if (slotName === 'addon-right') {
-      this._hasRightAddon = this._hasSlotContent(slot);
+      this._hasRightAddon = hasSlotContent(slot);
     }
 
     this.requestUpdate();
@@ -567,8 +553,8 @@ export class AgInput extends LitElement implements InputProps {
       const hadLeftAddon = this._hasLeftAddon;
       const hadRightAddon = this._hasRightAddon;
 
-      this._hasLeftAddon = this._hasSlotContent(leftAddonSlot);
-      this._hasRightAddon = this._hasSlotContent(rightAddonSlot);
+      this._hasLeftAddon = hasSlotContent(leftAddonSlot);
+      this._hasRightAddon = hasSlotContent(rightAddonSlot);
 
       // Only request update if something changed
       if (hadLeftAddon !== this._hasLeftAddon || hadRightAddon !== this._hasRightAddon) {

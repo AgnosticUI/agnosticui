@@ -9,16 +9,16 @@
     :rounded="rounded || undefined"
     v-bind="$attrs"
   >
-    <!-- Using native slot attribute for web component slot forwarding -->
-    <!-- See: https://vuejs.org/guide/extras/web-components#slots -->
-    <slot
-      name="icon"
-      slot="icon"
-    />
-    <slot
-      name="actions"
-      slot="actions"
-    />
+    <template v-if="$slots.icon">
+      <span slot="icon">
+        <slot name="icon" />
+      </span>
+    </template>
+    <template v-if="$slots.actions">
+      <span slot="actions">
+        <slot name="actions" />
+      </span>
+    </template>
   </ag-empty-state>
 </template>
 

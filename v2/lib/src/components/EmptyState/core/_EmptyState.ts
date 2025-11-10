@@ -1,4 +1,4 @@
-// v2/lib/src/components/EmptyState/core/_EmptyState.ts
+import { hasSlotContent } from '../../../utils/slot';
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
@@ -20,13 +20,14 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
   @property({ type: Boolean }) bordered = false;
   @property({ type: Boolean }) rounded = false;
 
+  private _iconSlot: HTMLSlotElement | null = null;
+  private _actionsSlot: HTMLSlotElement | null = null;
+
   firstUpdated() {
-    // Listen to slotchange events from shadow DOM slots
-    const iconSlot = this.shadowRoot?.querySelector('slot[name="icon"]');
-    const actionsSlot = this.shadowRoot?.querySelector('slot[name="actions"]');
-    
-    iconSlot?.addEventListener('slotchange', () => this.requestUpdate());
-    actionsSlot?.addEventListener('slotchange', () => this.requestUpdate());
+    this._iconSlot = this.shadowRoot?.querySelector('slot[name="icon"]') ?? null;
+    this._actionsSlot = this.shadowRoot?.querySelector('slot[name="actions"]') ?? null;
+    this._iconSlot?.addEventListener('slotchange', () => this.requestUpdate());
+    this._actionsSlot?.addEventListener('slotchange', () => this.requestUpdate());
   }
 
   static styles = css`
@@ -127,9 +128,8 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
   `;
 
   render() {
-    // Check for slotted content directly in render
-    const hasIconSlot = this.querySelector('[slot="icon"]') !== null;
-    const hasActionsSlot = this.querySelector('[slot="actions"]') !== null;
+    const hasIconSlot = hasSlotContent(this._iconSlot);
+    const hasActionsSlot = hasSlotContent(this._actionsSlot);
     
     const classes = [
       'empty',

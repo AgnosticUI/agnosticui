@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { hasSlotContent } from '../../../utils/slot';
 
 export type DividerJustify = 'center' | 'start' | 'end';
 export type DividerSize = 'default' | 'small' | 'large' | 'xlarge';
@@ -169,16 +170,7 @@ export class Divider extends LitElement implements DividerProps {
   private hasContent = false;
 
   private handleSlotChange(e: Event) {
-    const slot = e.target as HTMLSlotElement;
-    const nodes = slot.assignedNodes();
-    // Check if there's any meaningful content (not just whitespace text nodes)
-    this.hasContent = nodes.some(node => {
-      if (node.nodeType === Node.ELEMENT_NODE) return true;
-      if (node.nodeType === Node.TEXT_NODE) {
-        return (node.textContent?.trim().length ?? 0) > 0;
-      }
-      return false;
-    });
+    this.hasContent = hasSlotContent(e.target as HTMLSlotElement);
   }
 
   private getClasses() {

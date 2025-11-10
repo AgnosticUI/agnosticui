@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { hasSlotContent } from '../../../utils/slot'; 
 
 export type CardVariant = 'success' | 'info' | 'error' | 'warning' | '';
 export type CardRounded = 'sm' | 'md' | 'lg' | '';
@@ -24,21 +25,6 @@ export class Card extends LitElement implements CardProps {
   private _hasFooterSlotContent = false;
 
   /**
-   * Check if a slot has meaningful content (not just whitespace)
-   */
-  private _hasSlotContent(slot: HTMLSlotElement | null): boolean {
-    if (!slot) return false;
-    const assignedNodes = slot.assignedNodes({ flatten: true });
-    return assignedNodes.some(node => {
-      if (node.nodeType === Node.ELEMENT_NODE) return true;
-      if (node.nodeType === Node.TEXT_NODE) {
-        return node.textContent?.trim() !== '';
-      }
-      return false;
-    });
-  }
-
-  /**
    * Handle slot changes to detect if header/footer are empty
    */
   private _handleSlotChange(e: Event) {
@@ -46,9 +32,9 @@ export class Card extends LitElement implements CardProps {
     const slotName = slot.name;
 
     if (slotName === 'header') {
-      this._hasHeaderSlotContent = this._hasSlotContent(slot);
+      this._hasHeaderSlotContent = hasSlotContent(slot);
     } else if (slotName === 'footer') {
-      this._hasFooterSlotContent = this._hasSlotContent(slot);
+      this._hasFooterSlotContent = hasSlotContent(slot);
     }
 
     this.requestUpdate();
@@ -59,8 +45,8 @@ export class Card extends LitElement implements CardProps {
     const headerSlot = this.shadowRoot?.querySelector('slot[name="header"]') as HTMLSlotElement;
     const footerSlot = this.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
 
-    this._hasHeaderSlotContent = this._hasSlotContent(headerSlot);
-    this._hasFooterSlotContent = this._hasSlotContent(footerSlot);
+    this._hasHeaderSlotContent = hasSlotContent(headerSlot);
+    this._hasFooterSlotContent = hasSlotContent(footerSlot);
     this.requestUpdate();
   }
 
