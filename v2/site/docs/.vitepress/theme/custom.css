@@ -265,3 +265,9 @@ h6.b0 {
 .vp-doc .ag-header-examples li + li {
   margin-top: unset;
 }
+
+/* Dark mode support for inline code in component examples */
+.vp-doc code {
+  background-color: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
+}
