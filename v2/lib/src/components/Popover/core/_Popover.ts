@@ -120,12 +120,34 @@ export class Popover extends LitElement implements PopoverProps {
     }
 
     #arrow {
+      /* Base styles for the arrow: a rotated square with borders for the visible edges. */
       position: absolute;
       background: var(--ag-background-primary);
       width: var(--ag-popover-arrow-size);
       height: var(--ag-popover-arrow-size);
       border: var(--ag-border-width-1) solid transparent;
       transform: rotate(45deg);
+    }
+
+    /* Placement-specific border colors for the arrow to match the popover border on the visible sides. */
+    #popover[data-placement^="top"] #arrow {
+      border-bottom-color: var(--ag-border);
+      border-right-color: var(--ag-border);
+    }
+
+    #popover[data-placement^="right"] #arrow {
+      border-bottom-color: var(--ag-border);
+      border-left-color: var(--ag-border);
+    }
+
+    #popover[data-placement^="bottom"] #arrow {
+      border-left-color: var(--ag-border);
+      border-top-color: var(--ag-border);
+    }
+
+    #popover[data-placement^="left"] #arrow {
+      border-top-color: var(--ag-border);
+      border-right-color: var(--ag-border);
     }
 
     .popover-header {
@@ -554,9 +576,12 @@ export class Popover extends LitElement implements PopoverProps {
     const triggerElement = this.triggerElement;
     if (!triggerElement) return;
 
+    // Middleware array for Floating UI positioning.
+    // Each middleware modifies the behavior or coordinates during positioning.
     const middleware = [];
 
-    // Add match trigger width middleware FIRST for proper space calculations
+    // Optional: Match popover width to trigger width if enabled.
+    // This must come first for accurate space calculations in later middleware.
     if (this.matchTriggerWidth) {
       middleware.push(
         size({
@@ -569,7 +594,11 @@ export class Popover extends LitElement implements PopoverProps {
       );
     }
 
-    // Add offset and positioning middleware
+    // Core positioning middleware:
+    // - offset: Applies main/cross axis offsets (distance and skidding).
+    // - flip: Auto-flips placement if the popover would overflow the boundary.
+    // - shift: Slides the popover along the edge to stay within view, with padding.
+    // - size: Sets max width/height based on available space to prevent overflow.
     middleware.push(
       offset({ mainAxis: this.distance, crossAxis: this.skidding }),
       flip(),
@@ -584,8 +613,13 @@ export class Popover extends LitElement implements PopoverProps {
       })
     );
 
+    // Optional: Arrow middleware to dynamically position the arrow along the edge.
+    // Padding ensures the arrow doesn't overflow the popover's rounded corners.
     if (this.arrow && this.arrowElement) {
-      middleware.push(arrow({ element: this.arrowElement }));
+      middleware.push(arrow({
+        element: this.arrowElement,
+        padding: 5 // Adjust this value if arrow placement near corners needs tweaking.
+      }));
     }
 
     try {
@@ -598,14 +632,23 @@ export class Popover extends LitElement implements PopoverProps {
         }
       );
 
+      // Apply computed position to the popover.
       Object.assign(popoverElement.style, {
         left: `${x}px`,
         top: `${y}px`,
       });
 
+      // Set data-placement attribute for CSS to apply placement-specific styles (e.g., arrow border colors).
+      popoverElement.dataset.placement = placement;
+
+      // If arrow is enabled and data is available, apply positioning.
       if (this.arrow && this.arrowElement && middlewareData.arrow) {
         const { x: arrowX, y: arrowY } = middlewareData.arrow;
+
+        // Determine the main side of the placement (e.g., 'top', 'bottom').
         const side = placement.split('-')[0] as 'top' | 'right' | 'bottom' | 'left';
+
+        // Map to the static side (opposite side where the arrow is attached).
         const staticSide = {
           top: 'bottom',
           right: 'left',
@@ -613,35 +656,18 @@ export class Popover extends LitElement implements PopoverProps {
           left: 'right'
         }[side];
 
-        // Dynamic arrow border styling based on placement
-        const staticSideMap = {
-          top: { borderProp: 'borderBottomColor', rotate: '135deg' },
-          right: { borderProp: 'borderLeftColor', rotate: '-135deg' },
-          bottom: { borderProp: 'borderTopColor', rotate: '-45deg' },
-          left: { borderProp: 'borderRightColor', rotate: '45deg' }
-        } as const;
-
-        const { borderProp, rotate } = staticSideMap[side];
-
-        // Calculate arrow offset based on CSS custom property
-        const arrowSize = parseFloat(getComputedStyle(this).getPropertyValue('--ag-popover-arrow-size')) || 8;
-        const arrowOffset = `-${arrowSize / 2}px`;
-
+        // Apply styles to the arrow:
+        // - Set dynamic axis position from middleware (left/top).
+        // - Clear unused sides (right/bottom) to prevent style persistence across updates.
+        // - Set static side offset: negative half the arrow's offsetWidth (includes borders) to make it protrude.
+        //   Note: For rotated square arrows, this may leave a small gap (~0.207 * size) due to the diagonal protrusion.
+        //   If no gap is desired, adjust to `-${this.arrowElement.offsetWidth / Math.sqrt(2)}px`, but test for overlaps.
         Object.assign(this.arrowElement.style, {
           left: arrowX != null ? `${arrowX}px` : '',
           top: arrowY != null ? `${arrowY}px` : '',
           right: '',
           bottom: '',
-          [staticSide]: arrowOffset,
-          // Clear all border colors first
-          borderTopColor: 'transparent',
-          borderRightColor: 'transparent',
-          borderBottomColor: 'transparent',
-          borderLeftColor: 'transparent',
-          // Apply the border color to the edge facing the popover
-          [borderProp]: 'var(--ag-border)',
-          // Apply rotation
-          transform: `rotate(${rotate})`,
+          [staticSide]: `-${this.arrowElement.offsetWidth / 2}px`,
         });
       }
     } catch {
