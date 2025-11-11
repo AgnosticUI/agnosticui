@@ -76,12 +76,12 @@ const alertSvg = svg`
 // ---------------------------------------------------
 const sharedActionStyles = html`
   <style>
-    .empty-state-with-button::part(actions) {
+    .empty-state-with-button::part(ag-actions) {
       display: flex;
       justify-content: center;
       margin-top: 1rem;
     }
-    .empty-state-with-button::part(actions-button) {
+    .empty-state-with-button::part(ag-actions-button) {
       background: #09090b;
       color: white;
       border-radius: 0.25rem;
@@ -90,7 +90,7 @@ const sharedActionStyles = html`
       font-weight: 600;
       cursor: pointer;
     }
-    .empty-state-with-button::part(icon) {
+    .empty-state-with-button::part(ag-icon) {
       color: var(--ag-text-muted, #999);
     }
   </style>
@@ -401,17 +401,17 @@ export const Customization: Story = {
   },
   render: (args) => html`
     <style>
-      .custom-empty::part(icon) {
+      .custom-empty::part(ag-icon) {
         color: #7a69e3;
       }
       /* style the whole actions area */
-      .custom-empty::part(actions) {
+      .custom-empty::part(ag-actions) {
         display: flex;
         justify-content: center;
       }
 
       /* style the button itself */
-      .custom-empty::part(actions-button) {
+      .custom-empty::part(ag-actions-button) {
         background: #4a37bc;
         color: white;
         border-radius: 0.25rem;

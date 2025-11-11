@@ -79,12 +79,12 @@ const injectStyles = (styleContent: string, styleId: string) => {
 };
 
 const sharedActionStyles = `
-  .empty-state-with-button::part(actions) {
+  .empty-state-with-button::part(ag-actions) {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
   }
-  .empty-state-with-button::part(actions-button) {
+  .empty-state-with-button::part(ag-actions-button) {
     background: #09090b;
     color: white;
     border-radius: 0.25rem;
@@ -93,7 +93,7 @@ const sharedActionStyles = `
     font-weight: 600;
     cursor: pointer;
   }
-  .empty-state-with-button::part(icon) {
+  .empty-state-with-button::part(ag-icon) {
     color: var(--ag-text-muted, #999);
   }
 `;
@@ -430,14 +430,14 @@ export const Customization: Story = {
     components: { VueEmptyState },
     setup() {
       const customStyles = `
-        .custom-empty::part(icon) {
+        .custom-empty::part(ag-icon) {
           color: #7a69e3;
         }
-        .custom-empty::part(actions) {
+        .custom-empty::part(ag-actions) {
           display: flex;
           justify-content: center;
         }
-        .custom-empty::part(actions-button) {
+        .custom-empty::part(ag-actions-button) {
           background: #4a37bc;
           color: white;
           border-radius: 0.25rem;

@@ -25,19 +25,18 @@
       <h3>Size Variants</h3>
       <p class="mbs2 mbe3">Choose from small, medium, or large sizes to fit your layout</p>
     </div>
-    <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--ag-space-4);"
-      class="mbe6"
-    >
+    <div class="mbe6">
       <VueEmptyState
         title="No notifications"
         subtitle="You're all caught up!"
         size="sm"
+        class="mbe4"
       />
       <VueEmptyState
         title="No activity"
         subtitle="Recent activity will appear here"
         size="md"
+        class="mbe4"
       />
       <VueEmptyState
         title="Welcome!"
@@ -52,23 +51,20 @@
       <h3>Bordered & Rounded</h3>
       <p class="mbs2 mbe3">Add visual separation with borders and rounded corners</p>
     </div>
-    <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--ag-space-4);"
-      class="mbe6"
-    >
+    <div class="mbe6">
       <VueEmptyState
         title="No data available"
         subtitle="Upload a file to see your data"
         buttonText="Upload File"
         :bordered="true"
-        class="empty-state-with-button"
+        class="empty-state-with-button mbe4"
       />
       <VueEmptyState
         title="Empty folder"
         subtitle="This folder contains no files yet"
         buttonText="Add Files"
         :rounded="true"
-        class="empty-state-with-button"
+        class="empty-state-with-button mbe4"
       />
       <VueEmptyState
         title="No messages"
@@ -84,14 +80,13 @@
       <h3>Custom Icons</h3>
       <p class="mbs2 mbe3">Provide custom icons that match your context using the icon slot</p>
     </div>
-    <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--ag-space-4);"
-      class="mbe6"
-    >
+    <div class="mbe6">
       <VueEmptyState
         title="No search results"
         subtitle="Try different keywords or remove filters"
+        :rounded="true"
         size="md"
+        class="mbe4"
       >
         <template #icon>
           <SearchX
@@ -106,6 +101,8 @@
         subtitle="Drag and drop files here"
         size="md"
         :bordered="true"
+        :rounded="true"
+        class="mbe4"
       >
         <template #icon>
           <Folder
@@ -118,6 +115,7 @@
       <VueEmptyState
         title="No favorites yet"
         subtitle="Mark items as favorites to see them here"
+        :rounded="true"
         size="md"
       >
         <template #icon>
@@ -133,18 +131,17 @@
       <h3>Custom Actions</h3>
       <p class="mbs2 mbe3">Use the actions slot for complete control over buttons and interactions</p>
     </div>
-    <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--ag-space-4);"
-      class="mbe6"
-    >
+    <div class="mbe6">
       <VueEmptyState
         title="No team members"
         subtitle="Invite people to collaborate"
         size="md"
         :bordered="true"
+        :rounded="true"
+        class="mbe4"
       >
         <template #actions>
-          <div style="display: flex; gap: 0.5rem; justify-content: center;">
+          <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
             <VueButton
               variant="primary"
               size="sm"
@@ -215,10 +212,7 @@
       <h3>Real-World Examples</h3>
       <p class="mbs2 mbe3">Common patterns for shopping cart, inbox, dashboard, and error states</p>
     </div>
-    <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--ag-space-4);"
-      class="mbe6"
-    >
+    <div class="mbe6">
       <!-- Shopping Cart -->
       <VueEmptyState
         title="Your cart is empty"
@@ -226,6 +220,7 @@
         size="md"
         :bordered="true"
         :rounded="true"
+        class="mbe4"
       >
         <template #icon>
           <ShoppingCart
@@ -253,6 +248,8 @@
         title="Inbox Zero! 🎉"
         subtitle="All caught up. No new messages."
         size="md"
+        :rounded="true"
+        class="mbe4"
       >
         <template #icon>
           <Inbox
@@ -268,6 +265,7 @@
         subtitle="Data will appear once you start tracking"
         :bordered="true"
         :rounded="true"
+        class="mbe4"
       >
         <template #icon>
           <BarChart3
@@ -291,6 +289,7 @@
         title="Something went wrong"
         subtitle="Please try again or contact support"
         size="md"
+        :rounded="true"
         :bordered="true"
       >
         <template #icon>
@@ -300,7 +299,7 @@
           />
         </template>
         <template #actions>
-          <div style="display: flex; gap: 0.5rem; justify-content: center;">
+          <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
             <VueButton
               variant="danger"
               shape="rounded"
@@ -315,7 +314,7 @@
               :isBordered="true"
               size="md"
             >
-              <span style="margin-inline-end: 4px;">Contact Support</span>
+              <span style="margin-inline-end: 0.125rem;">Contact Support</span>
               <Send :size="16" />
             </VueButton>
           </div>
@@ -327,16 +326,14 @@
       <h3>State-Specific Variants</h3>
       <p class="mbs2 mbe3">Empty states for different scenarios with appropriate icons and actions</p>
     </div>
-    <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--ag-space-4);"
-      class="mbe6"
-    >
+    <div class="mbe6">
       <!-- No Results -->
       <VueEmptyState
         title="No matches found"
         subtitle="Try adjusting your filters or search"
         size="md"
         :bordered="true"
+        class="mbe4"
       >
         <template #icon>
           <SearchX
@@ -363,6 +360,7 @@
         size="md"
         :bordered="true"
         :rounded="true"
+        class="mbe4"
       >
         <template #icon>
           <AlertCircle
@@ -371,7 +369,7 @@
           />
         </template>
         <template #actions>
-          <div style="display: flex; gap: 0.5rem; justify-content: center;">
+          <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
             <VueButton
               variant="warning"
               size="md"
@@ -418,7 +416,7 @@
       <p class="mbs2 mbe3">Small empty states work great in sidebars, cards, or dense layouts</p>
     </div>
     <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--ag-space-3);"
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--ag-space-4);"
       class="mbe6"
     >
       <VueEmptyState
@@ -464,50 +462,13 @@
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize appearance:
         <code>::part(ag-empty-state)</code>,
-        <code>::part(icon)</code>,
-        <code>::part(title)</code>,
-        <code>::part(subtitle)</code>,
-        <code>::part(actions)</code>
+        <code>::part(ag-icon)</code>,
+        <code>::part(ag-title)</code>,
+        <code>::part(ag-subtitle)</code>,
+        <code>::part(ag-actions)</code>
       </p>
     </div>
-    <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--ag-space-4);"
-      class="mbe6"
-    >
-      <!-- Gradient Border -->
-      <VueEmptyState
-        title="Gradient Border Style"
-        subtitle="Custom styled with CSS parts"
-        buttonText="Get Started"
-        :bordered="true"
-        :rounded="true"
-        class="custom-empty-state-1"
-      >
-        <template #icon>
-          <Sparkles
-            :size="48"
-            color="#667eea"
-          />
-        </template>
-      </VueEmptyState>
-
-      <!-- Dark Theme with Glow -->
-      <VueEmptyState
-        title="Dark Theme"
-        subtitle="With glowing icon effect"
-        buttonText="Explore"
-        :bordered="true"
-        :rounded="true"
-        class="custom-empty-state-2"
-      >
-        <template #icon>
-          <Zap
-            :size="48"
-            color="#60a5fa"
-          />
-        </template>
-      </VueEmptyState>
-
+    <div class="mbe6">
       <!-- Colorful Accent -->
       <VueEmptyState
         title="Colorful Accent"
@@ -529,21 +490,23 @@
       <h3>Minimal Empty States</h3>
       <p class="mbs2 mbe3">Simple empty states without icons for clean, understated designs</p>
     </div>
-    <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--ag-space-4);"
-      class="mbe6"
-    >
+    <div class="mbe6">
       <VueEmptyState
         title="Nothing here yet"
         size="sm"
+        :rounded="true"
+        class="mbe4"
       />
       <VueEmptyState
         title="No activity"
         subtitle="Recent activity will appear here"
         size="md"
+        :rounded="true"
+        class="mbe4"
       />
       <VueEmptyState
         title="Empty"
+        :rounded="true"
         size="md"
       />
     </div>
@@ -583,7 +546,7 @@
     >
       <template #icon>
         <AlertCircle
-          :size="32"
+          :size="40"
           color="#999"
         />
       </template>
@@ -624,6 +587,7 @@
       subtitle="Choose the right size for your layout"
       size="md"
       :bordered="true"
+      :rounded="true"
       class="mbe6"
     >
       <template #icon>
@@ -633,7 +597,7 @@
         />
       </template>
       <template #actions>
-        <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: center;">
+        <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: center; flex-wrap: wrap;">
           <VueButton
             variant="primary"
             size="sm"
@@ -724,14 +688,53 @@ export default {
 </script>
 
 <style scoped>
-/* Shared action styles for buttonText prop */
-.empty-state-with-button::part(actions) {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
+/* Force empty state components to have proper height */
+ag-empty-state {
+  display: block;
+  min-height: 200px;
 }
 
-.empty-state-with-button::part(actions-button) {
+ag-empty-state::part(ag-empty-state) {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--ag-space-6, 2rem) var(--ag-space-4, 1rem);
+}
+
+/* Size-specific min heights */
+ag-empty-state[size="sm"]::part(ag-empty-state) {
+  min-height: 180px;
+  padding: var(--ag-space-5, 1.5rem) var(--ag-space-4, 1rem);
+}
+
+ag-empty-state[size="md"]::part(ag-empty-state) {
+  min-height: 220px;
+  padding: var(--ag-space-6, 2rem) var(--ag-space-4, 1rem);
+}
+
+ag-empty-state[size="lg"]::part(ag-empty-state) {
+  min-height: 300px;
+  padding: var(--ag-space-8, 3rem) var(--ag-space-4, 1rem);
+}
+
+/* Add spacing for icon */
+ag-empty-state::part(ag-icon) {
+  margin-bottom: var(--ag-space-4, 1.5rem);
+}
+
+/* Shared action styles for buttonText prop */
+.empty-state-with-button::part(ag-actions) {
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--ag-space-4);
+}
+
+.empty-state-with-button::part(ag-title) {
+  margin-block-start: var(--ag-space-4);
+}
+
+.empty-state-with-button::part(ag-actions-button) {
   background: #09090b;
   color: white;
   border-radius: 0.25rem;
@@ -742,81 +745,25 @@ export default {
   transition: all 0.2s;
 }
 
-.empty-state-with-button::part(actions-button):hover {
+.empty-state-with-button::part(ag-actions-button):hover {
   background: #18181b;
   transform: translateY(-1px);
 }
 
-/* Custom Empty State 1 - Gradient Border */
-.custom-empty-state-1::part(ag-empty-state) {
-  border: 2px solid transparent;
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
-  border-radius: 16px;
-  padding: 2rem;
-}
-
-.custom-empty-state-1::part(title) {
-  color: #667eea;
-  font-weight: 700;
-}
-
-.custom-empty-state-1::part(actions-button) {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-/* Custom Empty State 2 - Dark Theme with Glow */
-.custom-empty-state-2::part(ag-empty-state) {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-  border: 2px solid #475569;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  padding: 2rem;
-}
-
-.custom-empty-state-2::part(icon) {
-  color: #60a5fa;
-  filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.5));
-}
-
-.custom-empty-state-2::part(title) {
-  color: #f1f5f9;
-  font-weight: 700;
-}
-
-.custom-empty-state-2::part(subtitle) {
-  color: #cbd5e1;
-}
-
-.custom-empty-state-2::part(actions-button) {
-  background: #60a5fa;
-  color: #1e293b;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-}
-
 /* Custom Empty State 3 - Colorful Icon Accent */
-.custom-empty-state-3::part(icon) {
+.custom-empty-state-3::part(ag-icon) {
   color: #f59e0b;
   background: rgba(245, 158, 11, 0.1);
   border-radius: 50%;
-  padding: 1rem;
+  padding: var(--ag-space-4);
 }
 
-.custom-empty-state-3::part(title) {
+.custom-empty-state-3::part(ag-title) {
   color: #f59e0b;
   font-weight: 700;
 }
 
-.custom-empty-state-3::part(actions-button) {
+.custom-empty-state-3::part(ag-actions-button) {
   background: #f59e0b;
   color: white;
   border: none;

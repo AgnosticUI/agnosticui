@@ -605,7 +605,7 @@ ag-empty-state::part(ag-empty-state) {
   padding: 2rem;
 }
 
-ag-empty-state::part(title) {
+ag-empty-state::part(ag-title) {
   color: #667eea;
   font-weight: 700;
 }
@@ -618,22 +618,22 @@ ag-empty-state::part(ag-empty-state) {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-ag-empty-state::part(icon) {
+ag-empty-state::part(ag-icon) {
   color: #60a5fa;
   filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.5));
 }
 
-ag-empty-state::part(title) {
+ag-empty-state::part(ag-title) {
   color: #f1f5f9;
   font-weight: 700;
 }
 
-ag-empty-state::part(subtitle) {
+ag-empty-state::part(ag-subtitle) {
   color: #cbd5e1;
 }
 
 /* Colorful icon accent */
-ag-empty-state::part(icon) {
+ag-empty-state::part(ag-icon) {
   color: #f59e0b;
   background: rgba(245, 158, 11, 0.1);
   border-radius: 50%;
@@ -641,7 +641,7 @@ ag-empty-state::part(icon) {
 }
 
 /* Custom button styling */
-ag-empty-state::part(actions-button) {
+ag-empty-state::part(ag-actions-button) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
@@ -652,7 +652,7 @@ ag-empty-state::part(actions-button) {
   transition: all 0.2s;
 }
 
-ag-empty-state::part(actions-button):hover {
+ag-empty-state::part(ag-actions-button):hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
 }

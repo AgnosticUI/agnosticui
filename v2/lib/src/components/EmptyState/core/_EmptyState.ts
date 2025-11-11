@@ -71,7 +71,6 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
       text-align: center;
       padding: var(--ag-space-8);
       background: var(--ag-background-secondary);
-      min-height: var(--ag-space-14);
     }
 
     .empty-bordered {
@@ -165,16 +164,16 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
 
 return html`
       <!-- Main container with a part for the whole component -->
-      <div class="${classes}" role="region" aria-label="Empty state" part="container">
+      <div class="${classes}" role="region" aria-label="Empty state" part="ag-empty-state">
 
         <!-- Icon section part -->
-        <div class="icon" part="icon">
-          <div class="icon-inner" part="icon-inner">
-            <slot name="icon" part="icon-slot" @slotchange=${this._handleSlotChange}></slot>
+        <div class="icon" part="ag-icon">
+          <div class="icon-inner" part="ag-icon-inner">
+            <slot name="icon" part="ag-icon-slot" @slotchange=${this._handleSlotChange}></slot>
             ${!this._hasIconSlot ? html`
               <!-- Fallback SVG part -->
               <svg
-                part="icon-svg"
+                part="ag-icon-svg"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
@@ -192,18 +191,18 @@ return html`
         </div>
 
         <!-- Title part -->
-        ${this.title ? html`<h3 class="title" part="title">${this.title}</h3>` : ''}
+        ${this.title ? html`<h3 class="title" part="ag-title">${this.title}</h3>` : ''}
 
         <!-- Subtitle part -->
-        ${this.subtitle ? html`<p class="subtitle" part="subtitle">${this.subtitle}</p>` : ''}
+        ${this.subtitle ? html`<p class="subtitle" part="ag-subtitle">${this.subtitle}</p>` : ''}
 
         <!-- Actions container part -->
-        <div class="actions" part="actions">
-          <slot name="actions" part="actions-slot" @slotchange=${this._handleSlotChange}>
+        <div class="actions" part="ag-actions">
+          <slot name="actions" part="ag-actions-slot" @slotchange=${this._handleSlotChange}>
             ${this.buttonText && !this._hasActionsSlot
               ? html`
                 <!-- Fallback button part -->
-                <button type="button" part="actions-button">${this.buttonText}</button>
+                <button type="button" part="ag-actions-button">${this.buttonText}</button>
               `
               : ''}
           </slot>
