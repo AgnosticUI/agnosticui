@@ -23,7 +23,7 @@
         gap="1rem"
         justify="center"
         align="center"
-        style="min-height: 150px; background: var(--ag-gray-100); border-radius: 3px;"
+        style="min-height: 150px; background: var(--ag-background-secondary); border-radius: 3px;"
       >
         <div class="demo-box">Centered 1</div>
         <div class="demo-box">Centered 2</div>
@@ -148,7 +148,7 @@
           <VueFlexRow
             gap="1rem"
             align="flex-start"
-            style="min-height: 120px; background: var(--ag-gray-100); border-radius: 3px;"
+            style="min-height: 120px; background: var(--ag-background-secondary); border-radius: 3px;"
           >
             <div class="demo-box">Item 1</div>
             <div
@@ -165,7 +165,7 @@
           <VueFlexRow
             gap="1rem"
             align="center"
-            style="min-height: 120px; background: var(--ag-gray-100); border-radius: 3px;"
+            style="min-height: 120px; background: var(--ag-background-secondary); border-radius: 3px;"
           >
             <div class="demo-box">Item 1</div>
             <div
@@ -182,7 +182,7 @@
           <VueFlexRow
             gap="1rem"
             align="flex-end"
-            style="min-height: 120px; background: var(--ag-gray-100); border-radius: 3px;"
+            style="min-height: 120px; background: var(--ag-background-secondary); border-radius: 3px;"
           >
             <div class="demo-box">Item 1</div>
             <div
@@ -205,7 +205,7 @@
     <div class="mbe4">
       <VueFlexCol
         gap="1rem"
-        style="padding: 1rem; background: var(--ag-gray-100); border-radius: 3px;"
+        style="padding: 1rem; background: var(--ag-background-secondary); border-radius: 3px;"
       >
         <VueFlexRow justify="space-between">
           <div class="demo-box demo-box-primary">Header Left</div>
@@ -254,8 +254,8 @@
         <div style="flex: 1;">
           <p class="mbe2"><strong>Group (FlexRow alias)</strong></p>
           <VueGroup gap="0.5rem">
-            <button class="demo-button">Action 1</button>
-            <button class="demo-button">Action 2</button>
+            <button class="demo-button mie1">Action 1</button>
+            <button class="demo-button mie1">Action 2</button>
             <button class="demo-button">Action 3</button>
           </VueGroup>
         </div>
@@ -272,21 +272,21 @@
       <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
         <VueFlexInline
           gap="0.5rem"
-          style="background: var(--ag-gray-100); padding: 0.5rem; border-radius: 3px;"
+          style="background: var(--ag-background-secondary); padding: 0.5rem; border-radius: 3px;"
         >
           <span class="demo-tag">Tag 1</span>
           <span class="demo-tag">Tag 2</span>
         </VueFlexInline>
         <VueFlexInline
           gap="0.5rem"
-          style="background: var(--ag-gray-100); padding: 0.5rem; border-radius: 3px;"
+          style="background: var(--ag-background-secondary); padding: 0.5rem; border-radius: 3px;"
         >
           <span class="demo-tag">Tag 3</span>
           <span class="demo-tag">Tag 4</span>
         </VueFlexInline>
         <VueFlexInline
           gap="0.5rem"
-          style="background: var(--ag-gray-100); padding: 0.5rem; border-radius: 3px;"
+          style="background: var(--ag-background-secondary); padding: 0.5rem; border-radius: 3px;"
         >
           <span class="demo-tag">Tag 5</span>
           <span class="demo-tag">Tag 6</span>
@@ -370,35 +370,39 @@ import "../../../lib/src/components/Flex/FlexRow";
   padding: 1rem;
   margin-inline-end: var(--ag-space-2);
   margin-block-end: var(--ag-space-2);
-  background: var(--ag-primary-light, #e0f2fe);
-  border: 1px solid var(--ag-primary, #0ea5e9);
+  background: var(--ag-blue-100);
+  border: 1px solid var(--ag-blue-300);
   border-radius: 3px;
   text-align: center;
   font-size: 0.875rem;
+  color: var(--ag-neutral-900);
 }
 
 .demo-box-primary {
-  background: var(--ag-primary-light, #dbeafe);
-  border-color: var(--ag-primary, #3b82f6);
+  background: var(--ag-blue-100);
+  border-color: var(--ag-blue-300);
+  color: var(--ag-neutral-900);
 }
 
 .demo-box-secondary {
-  background: var(--ag-secondary-light, #f3e8ff);
-  border-color: var(--ag-secondary, #a855f7);
+  background: var(--ag-purple-100);
+  border-color: var(--ag-purple-300);
+  color: var(--ag-neutral-900);
 }
 
 .demo-tag {
   padding: 0.25rem 0.75rem;
-  background: white;
-  border: 1px solid var(--ag-gray-300, #d1d5db);
+  background: var(--ag-background-primary);
+  border: 1px solid var(--ag-border);
   border-radius: 3px;
   font-size: 0.875rem;
+  color: var(--ag-text-primary);
 }
 
 .demo-button {
   padding: 0.5rem 1rem;
-  background: var(--ag-primary, #3b82f6);
-  color: white;
+  background: var(--ag-primary);
+  color: var(--ag-white);
   border: none;
   border-radius: 3px;
   font-size: 0.875rem;
@@ -406,11 +410,12 @@ import "../../../lib/src/components/Flex/FlexRow";
 }
 
 .demo-button:hover {
-  background: var(--ag-primary-dark, #2563eb);
+  background: var(--ag-primary-dark);
 }
 
 code {
-  background: var(--ag-gray-100, #f3f4f6);
+  background: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
   padding: 0.125rem 0.375rem;
   border-radius: 3px;
   font-size: 0.875em;
