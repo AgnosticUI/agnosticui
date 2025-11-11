@@ -275,7 +275,6 @@
         </template>
         <template #actions>
           <VueButton
-            variant="primary"
             :isGhost="true"
             size="md"
           >
@@ -517,7 +516,7 @@
     </div>
     <VueEmptyState
       title="Welcome to Your Dashboard"
-      subtitle="Start by adding some content to see it appear here. You'll be able to track analytics, manage projects, and collaborate with your team."
+      subtitle="Add some content and you'll see it appear here. You'll be able to manage projects and collaborate with your team."
       buttonText="Get Started"
       size="lg"
       :bordered="true"
@@ -526,7 +525,7 @@
     >
       <template #icon>
         <Sparkles
-          :size="72"
+          :size="48"
           color="#6366f1"
         />
       </template>
@@ -738,7 +737,7 @@ ag-empty-state::part(ag-icon) {
   background: #09090b;
   color: white;
   border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
+  padding: var(--ag-space-4) var(--ag-space-6);
   border: none;
   font-weight: 600;
   cursor: pointer;
