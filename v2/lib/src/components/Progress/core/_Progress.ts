@@ -55,6 +55,64 @@ export class Progress extends LitElement implements ProgressProps {
 
       progress {
         width: 100%;
+        height: 1rem;
+        appearance: none;
+        border: none;
+        border-radius: var(--ag-radius-sm);
+        background-color: var(--ag-background-secondary);
+      }
+
+      /* WebKit/Blink browsers (Chrome, Safari, Edge) */
+      progress::-webkit-progress-bar {
+        background-color: var(--ag-background-secondary);
+        border-radius: var(--ag-radius-sm);
+      }
+
+      progress::-webkit-progress-value {
+        background-color: var(--ag-primary);
+        border-radius: var(--ag-radius-sm);
+      }
+
+      /* Firefox */
+      progress::-moz-progress-bar {
+        background-color: var(--ag-primary);
+        border-radius: var(--ag-radius-sm);
+      }
+
+      /* Indeterminate state animations */
+      progress:indeterminate {
+        background: linear-gradient(
+          to right,
+          var(--ag-background-secondary) 0%,
+          var(--ag-primary) 50%,
+          var(--ag-background-secondary) 100%
+        );
+        background-size: 200% 100%;
+        animation: progress-indeterminate 2s linear infinite;
+      }
+
+      progress:indeterminate::-webkit-progress-bar {
+        background: transparent;
+      }
+
+      progress:indeterminate::-moz-progress-bar {
+        background: linear-gradient(
+          to right,
+          var(--ag-background-secondary) 0%,
+          var(--ag-primary) 50%,
+          var(--ag-background-secondary) 100%
+        );
+        background-size: 200% 100%;
+        animation: progress-indeterminate 2s linear infinite;
+      }
+
+      @keyframes progress-indeterminate {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
       }
     `;
   }
