@@ -37,14 +37,15 @@ export default defineComponent({
 
 <style>
 .custom-progress::part(ag-progress-bar) {
-  background-color: var(--ag-color-primary-light);
+  background-color: var(--ag-purple-100);
+  height: 1.5rem;
 }
 
 .custom-progress::part(ag-progress-bar)::-webkit-progress-value {
-  background-color: var(--ag-color-primary);
+  background-color: var(--ag-purple-500);
 }
 
 .custom-progress::part(ag-progress-bar)::-moz-progress-bar {
-  background-color: var(--ag-color-primary);
+  background-color: var(--ag-purple-500);
 }
 </style>
