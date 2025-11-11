@@ -304,7 +304,7 @@
     <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
       <p class="mbs2 mbe3">
-        Use CSS Shadow Parts to customize the popover's appearance without affecting the component's internal styling.
+        Use CSS Shadow Parts to customize the popover's appearance without affecting the component's internal styling. One drawback is that the arrow part can be tricky to style due to its border-based implementation so we hide it in these examples.
       </p>
     </div>
     <div class="stacked-mobile mbe4">
@@ -393,9 +393,9 @@ export default {
   box-shadow: 0 20px 40px rgba(67, 56, 202, 0.5);
 }
 
+/* How to match a custom gradient? Just hide ¯\_(ツ)_/¯  */
 .custom-popover-gradient::part(ag-popover-arrow) {
-  background: #4338ca;
-  border-color: #4338ca;
+  display: none;
 }
 
 .custom-popover-success::part(ag-popover) {
@@ -405,8 +405,9 @@ export default {
   box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
 }
 
+/* The border-based arrow, floating-ui's flip, and other complexities makes
+the ROI on having an arrow questionable. So, we just hide ¯\_(ツ)_/¯  */
 .custom-popover-success::part(ag-popover-arrow) {
-  background: #059669;
-  border-color: #047857;
+  display: none;
 }
 </style>

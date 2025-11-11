@@ -335,12 +335,17 @@ export class Tooltip extends LitElement implements TooltipProps {
       left: 'right'
     }[placement.split('-')[0]];
 
+    // Calculate arrow offset based on arrow size
+    // The arrow is 8px (var(--ag-space-2)), so offset by half
+    const arrowSize = 8;
+    const arrowOffset = `-${arrowSize / 2}px`;
+
     Object.assign(arrowElement.style, {
       left: arrowX != null ? `${arrowX}px` : '',
       top: arrowY != null ? `${arrowY}px` : '',
       right: '',
       bottom: '',
-      [staticSide as string]: '-4px',
+      [staticSide as string]: arrowOffset,
     });
   }
 

@@ -119,7 +119,7 @@
     <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
       <p class="mbs2 mbe3">
-        Use CSS Shadow Parts to customize the tooltip's appearance without affecting the component's internal styling.
+        Use CSS Shadow Parts to customize the tooltip's appearance without affecting the component's internal styling. One drawback is that the arrow part can be tricky to style due to its border-based implementation so we hide it in this example.
       </p>
     </div>
     <div class="stacked-mobile mbe4">
@@ -129,20 +129,6 @@
         placement="top"
       >
         <VueButton variant="primary">Gradient Tooltip</VueButton>
-      </VueTooltip>
-      <VueTooltip
-        class="custom-tooltip-dark"
-        content="Dark theme tooltip"
-        placement="top"
-      >
-        <VueButton variant="secondary">Dark Tooltip</VueButton>
-      </VueTooltip>
-      <VueTooltip
-        class="custom-tooltip-success"
-        content="Success style tooltip"
-        placement="top"
-      >
-        <VueButton variant="success">Success Tooltip</VueButton>
       </VueTooltip>
     </div>
   </section>
@@ -178,35 +164,9 @@ export default {
   max-width: 250px;
 }
 
+/* The border-based arrow, floating-ui's flip, and other complexities makes
+the ROI on having an arrow questionable. So, we just hide ¯\_(ツ)_/¯  */
 .custom-tooltip-gradient::part(ag-tooltip-arrow) {
-  background: #667eea;
-}
-
-.custom-tooltip-dark::part(ag-tooltip) {
-  background: var(--ag-neutral-900);
-  color: var(--ag-white);
-  border: 2px solid var(--ag-neutral-700);
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: var(--ag-font-size-sm);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-.custom-tooltip-dark::part(ag-tooltip-arrow) {
-  background: var(--ag-neutral-900);
-  border: inherit;
-}
-
-.custom-tooltip-success::part(ag-tooltip) {
-  background: var(--ag-success);
-  color: white;
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-weight: 500;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
-}
-
-.custom-tooltip-success::part(ag-tooltip-arrow) {
-  background: var(--ag-success);
+  display: none;
 }
 </style>
