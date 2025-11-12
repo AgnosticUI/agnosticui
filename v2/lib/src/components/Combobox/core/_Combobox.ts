@@ -612,6 +612,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     this._open = true;
     this._filterOptions();
 
+    // Reflect to host attribute
+    this.setAttribute('open', '');
+
     // Dispatch open event
     const openEvent = new CustomEvent<ComboboxOpenEventDetail>('open', {
       detail: { open: true },
@@ -630,6 +633,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     this._open = false;
     this._activeIndex = -1;
+
+    // Remove from host attribute
+    this.removeAttribute('open');
 
     // Dispatch close event
     const closeEvent = new CustomEvent<ComboboxCloseEventDetail>('close', {
@@ -776,18 +782,37 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   }
 
   private _handleInputChange(e: Event) {
-    const input = e.target as HTMLInputElement;
-    this._searchTerm = input.value;
+    console.log('[Combobox] _handleInputChange fired', {
+      event: e.type,
+      target: e.target,
+      value: (e.target as HTMLInputElement).value,
+      currentSearchTerm: this._searchTerm,
+      isOpen: this._open
+    });
 
-    // Open listbox if closed and has search term
-    if (!this._open && this._searchTerm) {
+    const input = e.target as HTMLInputElement;
+    const newValue = input.value;
+    
+    // Only update if value actually changed
+    if (newValue === this._searchTerm) {
+      console.log('[Combobox] Value unchanged, skipping');
+      return;
+    }
+    
+    this._searchTerm = newValue;
+
+    // Open listbox if closed when user types
+    if (!this._open) {
+      console.log('[Combobox] Opening listbox from input change');
       this.open();
     }
 
     this._filterOptions();
+    console.log('[Combobox] After filter - filteredOptions:', this._filteredOptions.length);
   }
 
   private _handleInputKeyDown(e: KeyboardEvent) {
+    console.log('[Combobox] _handleInputKeyDown', { key: e.key, isOpen: this._open });
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
@@ -869,10 +894,19 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   }
 
   private _handleInputFocus(e: FocusEvent) {
+    console.log('[Combobox] Focus event', { isOpen: this._open });
+    
+    // Open listbox on focus to show available options
+    if (!this._open && !this.disabled && !this.readonly) {
+      console.log('[Combobox] Opening listbox from focus');
+      this.open();
+    }
+    
     this.onFocus?.(e);
   }
 
   private _handleInputBlur(e: FocusEvent) {
+    console.log('[Combobox] Blur event', { isOpen: this._open });
     this.onBlur?.(e);
   }
 
@@ -1022,8 +1056,8 @@ export class AgCombobox extends LitElement implements ComboboxProps {
             aria-describedby=${describedBy || nothing}
             aria-invalid=${this.invalid ? 'true' : 'false'}
             aria-required=${this.required ? 'true' : 'false'}
-            .value=${this._searchTerm}
-            .placeholder=${this.placeholder}
+            value=${this._searchTerm}
+            placeholder=${this.placeholder}
             ?disabled=${this.disabled}
             ?readonly=${this.readonly}
             @input=${this._handleInputChange}
