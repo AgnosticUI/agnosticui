@@ -971,6 +971,13 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     this.onBlur?.(e);
   }
 
+  private _handleInputClick() {
+    console.log('[Combobox] _handleInputClick called.', { open: this._open });
+    if (!this._open) {
+      this.open();
+    }
+  }
+
   private _handleOptionClick(option: ComboboxOption, event: MouseEvent) {
     event.preventDefault();
     if (!option.disabled) {
@@ -1125,6 +1132,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
             @keydown=${this._handleInputKeyDown}
             @focus=${this._handleInputFocus}
             @blur=${this._handleInputBlur}
+            @click=${this._handleInputClick}
           />
 
           ${this.clearable && this._selectedOption ? html`
