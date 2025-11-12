@@ -179,7 +179,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     .combobox-input {
       flex: 1;
       padding: var(--ag-space-3) var(--ag-space-4);
-      padding-right: calc(var(--combobox-toggle-size) + var(--ag-space-4));
+      padding-right: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
       font-size: var(--ag-font-size-base);
       font-family: var(--ag-font-family-base);
       line-height: var(--ag-line-height-base);
@@ -248,6 +248,35 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     .combobox-toggle-button:disabled {
       opacity: var(--ag-opacity-disabled);
       cursor: not-allowed;
+    }
+
+    .ag-combobox__clear {
+      position: absolute;
+      right: calc(var(--ag-space-2) * 2 + var(--combobox-toggle-size));
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--combobox-toggle-size);
+      height: var(--combobox-toggle-size);
+      padding: 0;
+      background: transparent;
+      border: none;
+      border-radius: var(--ag-radius-sm);
+      cursor: pointer;
+      color: var(--ag-text-secondary);
+      transition: background-color var(--ag-motion-fast) ease-in-out;
+    }
+
+    .ag-combobox__clear:hover:not(:disabled) {
+      background-color: var(--ag-background-tertiary);
+      color: var(--ag-text-primary);
+    }
+
+    .ag-combobox__clear:focus {
+      outline: var(--ag-focus-ring-width) solid var(--ag-focus-ring-color);
+      outline-offset: var(--ag-focus-ring-offset);
     }
 
     .combobox-toggle-icon {
@@ -584,7 +613,6 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     // Handle value property changes
     if (changedProperties.has('value')) {
-      console.log('[Combobox] willUpdate detected "value" change:', this.value);
       const option = this.options.find(opt => opt.value === this.value);
       if (option) {
         this._selectedOption = option;
@@ -634,7 +662,6 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
   close() {
     if (!this._open) return;
-    console.log('[Combobox] close() called.', { open: this._open, searchTerm: this._searchTerm, selected: this._selectedOption?.label });
 
     this._open = false;
     this._activeIndex = -1;
@@ -645,10 +672,8 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     if (!isSearchTermAValidOptionLabel) {
       if (this._selectedOption) {
-        console.log(`[Combobox] Invalid search term '${this._searchTerm}'. Reverting to selected option '${this._selectedOption.label}'.`);
         this._searchTerm = this._selectedOption.label;
       } else {
-        console.log(`[Combobox] Invalid search term '${this._searchTerm}' and no selection. Clearing input.`);
         this._searchTerm = '';
       }
     }
@@ -689,7 +714,6 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
 
     if (option.disabled) return;
-    console.log('[Combobox] selectOption called with:', option);
 
     this._selectedOption = option;
     this._searchTerm = option.label;
@@ -699,8 +723,6 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     if (this._inputElement) {
       this._inputElement.value = option.label;
     }
-
-    console.log('[Combobox] State after selection:', { searchTerm: this._searchTerm, value: this.value, selectedOption: this._selectedOption.label });
 
     // Dispatch select event
     const selectEvent = new CustomEvent<ComboboxSelectEventDetail>('select', {
@@ -733,25 +755,22 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     // Set flag to prevent reopening on focus
     this._justSelected = true;
-    console.log('[Combobox] _justSelected set to true');
 
     // Return focus to input
     this._inputElement?.focus();
 
     // Defer setting cursor position until after the DOM has updated
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       const input = this._inputElement;
       if (input) {
         const len = input.value.length;
         input.setSelectionRange(len, len);
-        console.log(`[Combobox] Cursor position set to ${len}`);
       }
-    }, 0);
+    });
 
     // Clear flag on next animation frame
     setTimeout(() => {
       this._justSelected = false;
-      console.log('[Combobox] _justSelected set to false after timeout');
     }, 100);
   }
 
@@ -777,25 +796,21 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   // Private methods
   private _filterOptions() {
     const term = this._searchTerm.trim();
-    console.log('[Combobox] _filterOptions called', { searchTerm: term, selectedOption: this._selectedOption?.label });
 
     // If the search term is the label of the selected option, the user is not
     // actively searching. Show all options so they can pick a new one.
     if (this._selectedOption && term === this._selectedOption.label) {
-      console.log('[Combobox] Not searching, showing all options.');
       this._filteredOptions = this.options.slice(0, this.maxVisibleOptions);
       this._activeIndex = this.options.findIndex(opt => opt.value === this._selectedOption?.value);
       return;
     }
 
     if (!term || this.filterMode === 'none') {
-      console.log('[Combobox] No search term or filterMode is none, showing all options.');
       this._filteredOptions = this.options.slice(0, this.maxVisibleOptions);
       return;
     }
 
     let filtered: ComboboxOption[];
-    console.log(`[Combobox] Filtering by '${term}' with mode '${this.filterMode}'.`);
 
     switch (this.filterMode) {
       case 'startsWith':
@@ -842,21 +857,14 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
   private _handleInputChange(e: Event) {
     const newValue = (e.target as HTMLInputElement).value;
-    console.log('[Combobox] _handleInputChange fired', {
-      newValue,
-      currentSearchTerm: this._searchTerm,
-      justSelected: this._justSelected,
-    });
 
     // Don't process input changes immediately after selection
     if (this._justSelected) {
-      console.log('[Combobox] Skipping input change - _justSelected is true');
       return;
     }
 
     // Only update if value actually changed
     if (newValue === this._searchTerm) {
-      console.log('[Combobox] Value unchanged, skipping');
       return;
     }
     
@@ -864,16 +872,13 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     // Open listbox if closed when user types
     if (!this._open) {
-      console.log('[Combobox] Opening listbox from input change');
       this.open();
     }
 
     this._filterOptions();
-    console.log('[Combobox] After filter - filteredOptions:', this._filteredOptions.length);
   }
 
   private _handleInputKeyDown(e: KeyboardEvent) {
-    console.log('[Combobox] _handleInputKeyDown', { key: e.key, isOpen: this._open });
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
@@ -955,18 +960,14 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   }
 
   private _handleInputFocus(e: FocusEvent) {
-    console.log('[Combobox] Focus event', { isOpen: this._open, justSelected: this._justSelected });
-    
     // Don't reopen if we just selected an option
     if (this._justSelected) {
-      console.log('[Combobox] Skipping open - just selected');
       this.onFocus?.(e);
       return;
     }
     
     // Open listbox on focus to show available options
     if (!this._open && !this.disabled && !this.readonly) {
-      console.log('[Combobox] Opening listbox from focus');
       this.open();
     }
     
@@ -974,12 +975,10 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   }
 
   private _handleInputBlur(e: FocusEvent) {
-    console.log('[Combobox] Blur event', { isOpen: this._open });
     this.onBlur?.(e);
   }
 
   private _handleInputClick() {
-    console.log('[Combobox] _handleInputClick called.', { open: this._open });
     if (!this._open) {
       this.open();
     }
@@ -1052,8 +1051,8 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   private _scrollOptionIntoView(index: number) {
     if (index < 0 || index >= this._filteredOptions.length) return;
 
-    // Use setTimeout to ensure DOM is updated
-    setTimeout(() => {
+    // Use requestAnimationFrame to ensure DOM is updated before scrolling
+    requestAnimationFrame(() => {
       const optionId = this._getOptionId(index);
       const optionEl = this.shadowRoot?.getElementById(optionId);
 
@@ -1067,7 +1066,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
           optionEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         }
       }
-    }, 0);
+    });
   }
 
   private _announceOption(option: ComboboxOption) {
