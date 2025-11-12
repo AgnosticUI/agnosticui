@@ -584,6 +584,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     // Handle value property changes
     if (changedProperties.has('value')) {
+      console.log('[Combobox] willUpdate detected "value" change:', this.value);
       const option = this.options.find(opt => opt.value === this.value);
       if (option) {
         this._selectedOption = option;
@@ -633,9 +634,24 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
   close() {
     if (!this._open) return;
+    console.log('[Combobox] close() called.', { open: this._open, searchTerm: this._searchTerm, selected: this._selectedOption?.label });
 
     this._open = false;
     this._activeIndex = -1;
+
+    // When closing, ensure the input value is valid.
+    // If the user was typing a search, but closes without selecting, revert the input.
+    const isSearchTermAValidOptionLabel = this.options.some(opt => opt.label === this._searchTerm);
+
+    if (!isSearchTermAValidOptionLabel) {
+      if (this._selectedOption) {
+        console.log(`[Combobox] Invalid search term '${this._searchTerm}'. Reverting to selected option '${this._selectedOption.label}'.`);
+        this._searchTerm = this._selectedOption.label;
+      } else {
+        console.log(`[Combobox] Invalid search term '${this._searchTerm}' and no selection. Clearing input.`);
+        this._searchTerm = '';
+      }
+    }
 
     // Remove from host attribute
     this.removeAttribute('open');
@@ -673,10 +689,12 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
 
     if (option.disabled) return;
+    console.log('[Combobox] selectOption called with:', option);
 
     this._selectedOption = option;
     this._searchTerm = option.label;
     this.value = option.value;
+    console.log('[Combobox] State after selection:', { searchTerm: this._searchTerm, value: this.value, selectedOption: this._selectedOption.label });
 
     // Dispatch select event
     const selectEvent = new CustomEvent<ComboboxSelectEventDetail>('select', {
@@ -714,9 +732,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     this._inputElement?.focus();
 
     // Clear flag on next animation frame
-    requestAnimationFrame(() => {
+    setTimeout(() => {
       this._justSelected = false;
-    });
+    }, 100);
   }
 
   clearSelection() {
@@ -741,13 +759,25 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   // Private methods
   private _filterOptions() {
     const term = this._searchTerm.trim();
+    console.log('[Combobox] _filterOptions called', { searchTerm: term, selectedOption: this._selectedOption?.label });
+
+    // If the search term is the label of the selected option, the user is not
+    // actively searching. Show all options so they can pick a new one.
+    if (this._selectedOption && term === this._selectedOption.label) {
+      console.log('[Combobox] Not searching, showing all options.');
+      this._filteredOptions = this.options.slice(0, this.maxVisibleOptions);
+      this._activeIndex = this.options.findIndex(opt => opt.value === this._selectedOption?.value);
+      return;
+    }
 
     if (!term || this.filterMode === 'none') {
+      console.log('[Combobox] No search term or filterMode is none, showing all options.');
       this._filteredOptions = this.options.slice(0, this.maxVisibleOptions);
       return;
     }
 
     let filtered: ComboboxOption[];
+    console.log(`[Combobox] Filtering by '${term}' with mode '${this.filterMode}'.`);
 
     switch (this.filterMode) {
       case 'startsWith':
@@ -798,11 +828,24 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       target: e.target,
       value: (e.target as HTMLInputElement).value,
       currentSearchTerm: this._searchTerm,
-      isOpen: this._open
+      isOpen: this._open,
+      justSelected: this._justSelected
     });
+
+    // Don't process input changes immediately after selection
+    if (this._justSelected) {
+      console.log('[Combobox] Skipping input change - just selected');
+      return;
+    }
 
     const input = e.target as HTMLInputElement;
     const newValue = input.value;
+
+    // If the new value matches the currently selected option's label,
+    // it's likely an artifact of the selection process. Don't process.
+    if (this._selectedOption && newValue === this._selectedOption.label) {
+      return;
+    }
     
     // Only update if value actually changed
     if (newValue === this._searchTerm) {
