@@ -694,6 +694,12 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     this._selectedOption = option;
     this._searchTerm = option.label;
     this.value = option.value;
+
+    // Force-update the input value in the DOM to prevent race conditions
+    if (this._inputElement) {
+      this._inputElement.value = option.label;
+    }
+
     console.log('[Combobox] State after selection:', { searchTerm: this._searchTerm, value: this.value, selectedOption: this._selectedOption.label });
 
     // Dispatch select event
@@ -727,13 +733,25 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     // Set flag to prevent reopening on focus
     this._justSelected = true;
+    console.log('[Combobox] _justSelected set to true');
 
     // Return focus to input
     this._inputElement?.focus();
 
+    // Defer setting cursor position until after the DOM has updated
+    setTimeout(() => {
+      const input = this._inputElement;
+      if (input) {
+        const len = input.value.length;
+        input.setSelectionRange(len, len);
+        console.log(`[Combobox] Cursor position set to ${len}`);
+      }
+    }, 0);
+
     // Clear flag on next animation frame
     setTimeout(() => {
       this._justSelected = false;
+      console.log('[Combobox] _justSelected set to false after timeout');
     }, 100);
   }
 
@@ -823,30 +841,19 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   }
 
   private _handleInputChange(e: Event) {
+    const newValue = (e.target as HTMLInputElement).value;
     console.log('[Combobox] _handleInputChange fired', {
-      event: e.type,
-      target: e.target,
-      value: (e.target as HTMLInputElement).value,
+      newValue,
       currentSearchTerm: this._searchTerm,
-      isOpen: this._open,
-      justSelected: this._justSelected
+      justSelected: this._justSelected,
     });
 
     // Don't process input changes immediately after selection
     if (this._justSelected) {
-      console.log('[Combobox] Skipping input change - just selected');
+      console.log('[Combobox] Skipping input change - _justSelected is true');
       return;
     }
 
-    const input = e.target as HTMLInputElement;
-    const newValue = input.value;
-
-    // If the new value matches the currently selected option's label,
-    // it's likely an artifact of the selection process. Don't process.
-    if (this._selectedOption && newValue === this._selectedOption.label) {
-      return;
-    }
-    
     // Only update if value actually changed
     if (newValue === this._searchTerm) {
       console.log('[Combobox] Value unchanged, skipping');
