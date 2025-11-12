@@ -537,6 +537,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   // Click outside handler
   private _clickOutsideHandler?: (event: MouseEvent) => void;
 
+  // Flag to prevent reopening after selection
+  private _justSelected = false;
+
   connectedCallback() {
     super.connectedCallback();
     this._comboboxId = this.id || generateUniqueId('combobox');
@@ -704,8 +707,16 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       this.close();
     }
 
+    // Set flag to prevent reopening on focus
+    this._justSelected = true;
+
     // Return focus to input
     this._inputElement?.focus();
+
+    // Clear flag on next animation frame
+    requestAnimationFrame(() => {
+      this._justSelected = false;
+    });
   }
 
   clearSelection() {
@@ -894,7 +905,14 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   }
 
   private _handleInputFocus(e: FocusEvent) {
-    console.log('[Combobox] Focus event', { isOpen: this._open });
+    console.log('[Combobox] Focus event', { isOpen: this._open, justSelected: this._justSelected });
+    
+    // Don't reopen if we just selected an option
+    if (this._justSelected) {
+      console.log('[Combobox] Skipping open - just selected');
+      this.onFocus?.(e);
+      return;
+    }
     
     // Open listbox on focus to show available options
     if (!this._open && !this.disabled && !this.readonly) {
