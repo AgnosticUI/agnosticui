@@ -207,6 +207,18 @@
       "types": "./dist/components/Card/vue/index.d.ts",
       "import": "./dist/components/Card/vue/index.js"
     },
+    "./combobox": {
+      "types": "./dist/components/Combobox/core/Combobox.d.ts",
+      "import": "./dist/components/Combobox/core/Combobox.js"
+    },
+    "./combobox/react": {
+      "types": "./dist/components/Combobox/react/ReactCombobox.d.ts",
+      "import": "./dist/components/Combobox/react/ReactCombobox.js"
+    },
+    "./combobox/vue": {
+      "types": "./dist/components/Combobox/vue/index.d.ts",
+      "import": "./dist/components/Combobox/vue/index.js"
+    },
     "./avatar": {
       "types": "./dist/components/Avatar/core/Avatar.d.ts",
       "import": "./dist/components/Avatar/core/Avatar.js"
