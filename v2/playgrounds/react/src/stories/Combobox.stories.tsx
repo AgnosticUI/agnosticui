@@ -159,13 +159,31 @@ export const AllSizes: Story = {
   ),
 };
 
-export const MonochromeVariant: Story = {
+export const SingleMonochrome: Story = {
   render: () => (
     <div style={{ maxWidth: '400px' }}>
       <ReactCombobox
-        label="Monochrome Combobox"
-        placeholder="Type to search..."
-        options={tennisPlayers}
+        label="Select State"
+        placeholder="Choose a state..."
+        options={countryOptions}
+        closeOnSelect={false}
+        variant="monochrome"
+      />
+    </div>
+  ),
+};
+
+export const MultipleMonochrome: Story = {
+  render: () => (
+    <div style={{ maxWidth: '400px' }}>
+      <ReactCombobox
+        label="Select States"
+        placeholder="Choose one or more states..."
+        options={countryOptions}
+        multiple
+        closeOnSelect={false}
+        defaultValue={['us', 'ca']}
+        helpText="Selected items use the monochrome variant."
         variant="monochrome"
       />
     </div>
