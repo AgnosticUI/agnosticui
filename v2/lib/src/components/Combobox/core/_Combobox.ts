@@ -17,9 +17,9 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state, query } from 'lit/decorators.js';
 import { generateUniqueId } from '../../../utils/unique-id';
-import '../../shared/CloseButton/_CloseButton.js';
-import '../../Checkbox/core/_Checkbox.js';
-import '../../Tag/core/_Tag.js';
+import '../../shared/CloseButton/CloseButton.js';
+import '../../Checkbox/core/Checkbox.js';
+import '../../Tag/core/Tag.js';
 
 // Event interfaces
 export interface ComboboxOption {
