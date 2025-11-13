@@ -902,6 +902,14 @@ export class MenuItem extends LitElement implements MenuItemProps {
       color: var(--ag-text-primary-inverted);
     }
 
+    /* hover/active + selected gets --ag-background-secondary-inverted affordance */
+    :host([variant="monochrome"][aria-checked='true']) button:focus:not([disabled]),
+    :host([variant="monochrome"][aria-checked='true']) a:focus:not([disabled]),
+    :host([variant="monochrome"][aria-checked='true']) button:hover:not([disabled]),
+    :host([variant="monochrome"][aria-checked='true']) a:hover:not([disabled]) {
+      background-color: var(--ag-background-secondary-inverted);
+    }
+
     button[disabled],
     a[disabled] {
       background-color: transparent;
