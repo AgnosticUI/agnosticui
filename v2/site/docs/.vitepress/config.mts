@@ -1,10 +1,12 @@
 import { defineConfig } from 'vitepress'
+import type MarkdownIt from 'markdown-it'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   head: [
     ['link', { rel: 'stylesheet', href: '/ag-tokens.css' }],
     ['link', { rel: 'stylesheet', href: '/ag-tokens-dark.css' }],
+    ['link', { rel: 'stylesheet', href: '/table.css' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
   ],
   title: "AgnosticUI",
@@ -15,6 +17,18 @@ export default defineConfig({
         isCustomElement: (tag) => tag.startsWith('ag-'),
       },
     },
+  },
+  markdown: {
+    config: (md) => {
+      md.renderer.rules.table_open = function (tokens, idx, options, env, self) {
+        const token = tokens[idx];
+        // The 'attrJoin' method is the correct and idiomatic way to add a class.
+        // It handles creating the class attribute if it doesn't exist and
+        // appending to it if it does.
+        token.attrJoin('class', 'ag-table ag-table--striped');
+        return self.renderToken(tokens, idx, options);
+      };
+    }
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

@@ -227,8 +227,10 @@ h6.b0 {
 
 /* Table demo */
 /* Scoped table styling for AgnosticUI tables in VitePress docs */
+
+/*
 .vp-doc .ag-table {
-  all: unset; /* resets VitePress table styles */
+  all: unset; 
   display: table;
   width: 100%;
   border-collapse: collapse;
@@ -265,6 +267,41 @@ h6.b0 {
 .vp-doc .ag-header-examples li + li {
   margin-top: unset;
 }
+  */
+
+/* Reset VitePress's aggressive table styling */
+.vp-doc table {
+  display: table !important; /* VitePress uses display: block */
+  border-collapse: collapse;
+  margin: 0; /* Remove VitePress margin */
+  overflow-x: visible; /* Remove VitePress overflow */
+}
+
+.vp-doc tr {
+  background-color: transparent; /* Remove VitePress zebra striping */
+  border-top: none; /* Remove VitePress border */
+  transition: none;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: transparent; /* Remove VitePress even row coloring */
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: none; /* Remove all VitePress borders */
+  padding: 0; /* Reset padding */
+  text-align: left;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+.vp-doc th {
+  background-color: transparent; /* Remove VitePress header background */
+}
+
 
 /* Dark mode support for inline code in component examples */
 .vp-doc code {

@@ -6,7 +6,7 @@
   "author": "Rob Levin",
   "license": "MIT",
   "scripts": {
-    "sync-tokens": "npm run --prefix ../theme-registry rebuild && cp ../theme-registry/dist/ag-tokens.css ./docs/public/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css ./docs/public/ag-tokens-dark.css",
+    "sync-tokens": "npm run --prefix ../theme-registry rebuild && cp ../theme-registry/dist/ag-tokens.css ./docs/public/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css ./docs/public/ag-tokens-dark.css && cp ../lib/src/styles/table.css ./docs/public/table.css",
     "clear:cache": "rm -rf docs/.vitepress/cache",
     "reinstall:lib": "npm run clear:cache && npm i ../lib/agnosticui-core-0.0.1.tgz && npm run sync-tokens",
     "docs:dev": "vitepress dev docs",
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "agnosticui-core": "file:../lib/agnosticui-core-0.0.1.tgz",
-    "lucide-vue-next": "^0.545.0"
+    "lucide-vue-next": "^0.545.0",
+    "markdown-it-table": "^4.1.1"
   }
 }
