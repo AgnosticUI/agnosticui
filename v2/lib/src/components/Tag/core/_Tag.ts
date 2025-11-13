@@ -201,6 +201,14 @@ export class AgTag extends LitElement implements TagProps {
     }
   };
 
+  private _handleKeyDown = (e: KeyboardEvent) => {
+    // Support BACKSPACE, SPACE, and ENTER for removing tags
+    if (e.key === 'Backspace' || e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      this._handleRemove();
+    }
+  };
+
   render() {
     return html`
       <div class="tag-wrapper" part="ag-tag-wrapper">
@@ -212,6 +220,7 @@ export class AgTag extends LitElement implements TagProps {
             type="button"
             aria-label="Remove tag"
             @click=${this._handleRemove}
+            @keydown=${this._handleKeyDown}
           >
             ✕
           </button>
