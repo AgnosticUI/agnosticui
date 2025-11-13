@@ -18,6 +18,8 @@ import { LitElement, html, css, nothing } from 'lit';
 import { property, state, query } from 'lit/decorators.js';
 import { generateUniqueId } from '../../../utils/unique-id';
 import '../../shared/CloseButton/_CloseButton.js';
+import '../../Checkbox/core/_Checkbox.js';
+import '../../Tag/core/_Tag.js';
 
 // Event interfaces
 export interface ComboboxOption {
@@ -31,14 +33,14 @@ export interface ComboboxOption {
 }
 
 export interface ComboboxChangeEventDetail {
-  value: string;
+  value: string | string[];
   option: ComboboxOption | null;
 }
 export type ComboboxChangeEvent = CustomEvent<ComboboxChangeEventDetail>;
 
 export interface ComboboxSelectEventDetail {
   option: ComboboxOption;
-  value: string;
+  value: string | string[];
 }
 export type ComboboxSelectEvent = CustomEvent<ComboboxSelectEventDetail>;
 
@@ -64,8 +66,8 @@ export type ComboboxFilterMode = 'startsWith' | 'contains' | 'none';
 export interface ComboboxProps {
   // Data
   options: ComboboxOption[];
-  value?: string;
-  defaultValue?: string;
+  value?: string | string[];
+  defaultValue?: string | string[];
   placeholder?: string;
 
   // Label & Accessibility
@@ -262,6 +264,25 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       /* The close button itself has padding, so we might not need width/height here */
     }
 
+    .combobox-tags-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--ag-space-1);
+      padding-left: var(--ag-space-3); /* Align with input text */
+      padding-right: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3); /* Make space for buttons */
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      align-items: center;
+      pointer-events: none; /* Allow clicks to pass through to input */
+    }
+
+    .combobox-tags-wrapper ag-tag {
+      pointer-events: auto; /* Re-enable clicks for tags */
+    }
+
     .combobox-toggle-icon {
       width: var(--ag-space-4);
       height: var(--ag-space-4);
@@ -419,11 +440,25 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   @property({ type: Array })
   options: ComboboxOption[] = [];
 
-  @property({ type: String })
-  value?: string;
+  private _value: string | string[] = '';
 
-  @property({ type: String, attribute: 'default-value' })
-  defaultValue?: string;
+  @property({ type: [String, Array] })
+  get value(): string | string[] {
+    return this._value;
+  }
+
+  set value(val: string | string[]) {
+    const oldValue = this._value;
+    if (this.multiple) {
+      this._value = Array.isArray(val) ? val : (val ? val.split(' ') : []);
+    } else {
+      this._value = Array.isArray(val) ? val.join(' ') : val;
+    }
+    this.requestUpdate('value', oldValue);
+  }
+
+  @property({ type: [String, Array], attribute: 'default-value' })
+  defaultValue?: string | string[];
 
   @property({ type: String })
   placeholder = '';
@@ -479,8 +514,14 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   @property({ type: Number, attribute: 'max-visible-options' })
   maxVisibleOptions = 10;
 
-  @property({ type: Boolean, attribute: 'close-on-select' })
+  @property({ type: Boolean })
   closeOnSelect = true;
+
+  @property({ type: Boolean })
+  multiple = false;
+
+  @property({ type: Number, attribute: 'max-options-visible' })
+  maxOptionsVisible = 3;
 
   @property({ type: Boolean })
   loading = false;
@@ -527,7 +568,10 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   private _activeIndex = -1;
 
   @state()
-  private _selectedOption: ComboboxOption | null = null;
+  private _selectedOptions: ComboboxOption[] = [];
+
+  @state()
+  private _displayLabel = '';
 
   // Element queries
   @query('.combobox-input')
@@ -563,11 +607,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     // Initialize value
     const initialValue = this.value ?? this.defaultValue;
     if (initialValue) {
-      const option = this.options.find(opt => opt.value === initialValue);
-      if (option) {
-        this._selectedOption = option;
-        this._searchTerm = option.label;
-      }
+      const initialValuesArray = Array.isArray(initialValue) ? initialValue : [initialValue];
+      this._selectedOptions = this.options.filter(opt => initialValuesArray.includes(opt.value));
+      this._selectionChanged(); // This method will update value, displayLabel, searchTerm
     }
 
     // Setup click outside handler
@@ -596,14 +638,10 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     // Handle value property changes
     if (changedProperties.has('value')) {
-      const option = this.options.find(opt => opt.value === this.value);
-      if (option) {
-        this._selectedOption = option;
-        this._searchTerm = option.label;
-      } else if (!this.value) {
-        this._selectedOption = null;
-        this._searchTerm = '';
-      }
+      const newValue = this.value;
+      const newValuesArray = Array.isArray(newValue) ? newValue : (newValue ? [newValue] : []);
+      this._selectedOptions = this.options.filter(opt => newValuesArray.includes(opt.value));
+      this._selectionChanged();
     }
 
     // Sync invalid state from errorText
@@ -651,14 +689,19 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     // When closing, ensure the input value is valid.
     // If the user was typing a search, but closes without selecting, revert the input.
-    const isSearchTermAValidOptionLabel = this.options.some(opt => opt.label === this._searchTerm);
-
-    if (!isSearchTermAValidOptionLabel) {
-      if (this._selectedOption) {
-        this._searchTerm = this._selectedOption.label;
-      } else {
-        this._searchTerm = '';
+    if (!this.multiple) {
+      const isSearchTermAValidOptionLabel = this.options.some(opt => opt.label === this._searchTerm);
+      if (!isSearchTermAValidOptionLabel) {
+        const selectedOption = this._selectedOptions[0]; // For single select, there's only one
+        if (selectedOption) {
+          this._searchTerm = selectedOption.label;
+        } else {
+          this._searchTerm = '';
+        }
       }
+    } else {
+      // In multiple mode, searchTerm should always reflect the displayLabel (summary or tags)
+      this._searchTerm = this._displayLabel;
     }
 
     // Remove from host attribute
@@ -698,19 +741,37 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     if (option.disabled) return;
 
-    this._selectedOption = option;
-    this._searchTerm = option.label;
-    this.value = option.value;
+    if (this.multiple) {
+      const index = this._selectedOptions.findIndex(o => o.value === option.value);
+      if (index > -1) {
+        // Option is already selected, remove it
+        this._selectedOptions = this._selectedOptions.filter(o => o.value !== option.value);
+      } else {
+        // Option is not selected, add it
+        this._selectedOptions = [...this._selectedOptions, option];
+      }
+      this._selectionChanged(); // Update value, displayLabel, searchTerm
+      // In multiple mode, we don't close the listbox automatically
+    } else {
+      // Single select mode
+      this._selectedOptions = [option];
+      this._selectionChanged(); // Update value, displayLabel, searchTerm
+
+      // Close if configured
+      if (this.closeOnSelect) {
+        this.close();
+      }
+    }
 
     // Force-update the input value in the DOM to prevent race conditions
     if (this._inputElement) {
-      this._inputElement.value = option.label;
+      this._inputElement.value = this._searchTerm; // Use _searchTerm which is _displayLabel
     }
 
     // Dispatch select event
     const selectEvent = new CustomEvent<ComboboxSelectEventDetail>('select', {
       detail: {
-        option,
+        option: option,
         value: option.value
       },
       bubbles: true,
@@ -719,22 +780,17 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     this.dispatchEvent(selectEvent);
     this.onSelect?.(selectEvent);
 
-    // Dispatch change event
+    // Dispatch change event (value is already updated by _selectionChanged)
     const changeEvent = new CustomEvent<ComboboxChangeEventDetail>('change', {
       detail: {
-        value: option.value,
-        option
+        value: this.value, // Use the updated value
+        option: option
       },
       bubbles: true,
       composed: true
     });
     this.dispatchEvent(changeEvent);
     this.onChange?.(changeEvent);
-
-    // Close if configured
-    if (this.closeOnSelect) {
-      this.close();
-    }
 
     // Set flag to prevent reopening on focus
     this._justSelected = true;
@@ -758,15 +814,14 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   }
 
   clearSelection() {
-    this._selectedOption = null;
-    this._searchTerm = '';
+    this._selectedOptions = [];
+    this._selectionChanged();
     this._activeIndex = -1;
-    this.value = '';
 
     // Dispatch change event
     const changeEvent = new CustomEvent<ComboboxChangeEventDetail>('change', {
       detail: {
-        value: '',
+        value: this.value,
         option: null
       },
       bubbles: true,
@@ -777,14 +832,68 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   }
 
   // Private methods
+  private _selectionChanged() {
+    if (this.multiple) {
+      this.value = this._selectedOptions.map(opt => opt.value);
+      // For now, display a summary. We'll implement tags later.
+      this._displayLabel = this._selectedOptions.length > 0
+        ? `${this._selectedOptions.length} item${this._selectedOptions.length !== 1 ? 's' : ''} selected`
+        : '';
+    } else {
+      const selectedOption = this._selectedOptions[0];
+      this.value = selectedOption?.value ?? '';
+      this._displayLabel = selectedOption?.label ?? '';
+    }
+    this._searchTerm = this._displayLabel; // Keep searchTerm in sync with displayLabel for now
+  }
+
+  private _renderSelectedTags() {
+    if (!this.multiple || this._selectedOptions.length === 0) {
+      return nothing;
+    }
+
+    const tagsToRender = this._selectedOptions.slice(0, this.maxOptionsVisible);
+    const overflowCount = this._selectedOptions.length - this.maxOptionsVisible;
+
+    return html`
+      <div class="combobox-tags-wrapper" part="ag-combobox-tags-wrapper">
+        ${tagsToRender.map(option => html`
+          <ag-tag
+            removable
+            .value=${option.value}
+            @tag-remove=${() => this._handleTagRemove(option)}
+          >
+            ${option.label}
+          </ag-tag>
+        `)}
+        ${overflowCount > 0 ? html`
+          <ag-tag>+${overflowCount}</ag-tag>
+        ` : nothing}
+      </div>
+    `;
+  }
+
+  private _handleTagRemove(optionToRemove: ComboboxOption) {
+    this._selectedOptions = this._selectedOptions.filter(option => option.value !== optionToRemove.value);
+    this._selectionChanged();
+    // Re-focus the input after removing a tag
+    this._inputElement?.focus();
+  }
   private _filterOptions() {
     const term = this._searchTerm.trim();
 
     // If the search term is the label of the selected option, the user is not
     // actively searching. Show all options so they can pick a new one.
-    if (this._selectedOption && term === this._selectedOption.label) {
+    // For multi-select, if searchTerm matches displayLabel, it means no active search.
+    if (this.multiple && term === this._displayLabel) {
       this._filteredOptions = this.options.slice(0, this.maxVisibleOptions);
-      this._activeIndex = this.options.findIndex(opt => opt.value === this._selectedOption?.value);
+      // In multi-select, activeIndex doesn't make sense in this context, so reset it.
+      this._activeIndex = -1;
+      return;
+    } else if (!this.multiple && this._selectedOptions.length > 0 && term === this._selectedOptions[0].label) {
+      // Single select: if searchTerm matches selected option's label, show all.
+      this._filteredOptions = this.options.slice(0, this.maxVisibleOptions);
+      this._activeIndex = this.options.findIndex(opt => opt.value === this._selectedOptions[0]?.value);
       return;
     }
 
@@ -967,7 +1076,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
   }
 
-  private _handleOptionClick(option: ComboboxOption, event: MouseEvent) {
+  private _handleOptionClick(option: ComboboxOption, event: Event) {
     event.preventDefault();
     if (!option.disabled) {
       this.selectOption(option);
@@ -1097,6 +1206,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
         ` : nothing}
 
         <div class="combobox-input-wrapper" part="ag-combobox-input-wrapper">
+          ${this.multiple ? this._renderSelectedTags() : nothing}
           <input
             id=${this._comboboxId}
             class="combobox-input"
@@ -1113,7 +1223,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
             aria-describedby=${describedBy || nothing}
             aria-invalid=${this.invalid ? 'true' : 'false'}
             aria-required=${this.required ? 'true' : 'false'}
-            value=${this._searchTerm}
+            value=${this.multiple && this._selectedOptions.length > 0 ? '' : this._displayLabel}
             placeholder=${this.placeholder}
             ?disabled=${this.disabled}
             ?readonly=${this.readonly}
@@ -1124,7 +1234,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
             @click=${this._handleInputClick}
           />
 
-          ${this.clearable && this._selectedOption ? html`
+          ${this.clearable && this._selectedOptions.length > 0 ? html`
             <div
               class="combobox-clear-wrapper"
               part="ag-combobox-clear-wrapper"
@@ -1187,7 +1297,23 @@ export class AgCombobox extends LitElement implements ComboboxProps {
                 aria-disabled=${option.disabled ? 'true' : 'false'}
                 @click=${(e: MouseEvent) => this._handleOptionClick(option, e)}
               >
-                ${option.label}
+                ${this.multiple ? html`
+                  <ag-checkbox
+                    .checked=${this._selectedOptions.some(o => o.value === option.value)}
+                    .size=${this.size === 'default' ? 'medium' : this.size}
+                    .value=${option.value}
+                    .name=${this._comboboxId}
+                    .disabled=${option.disabled}
+                    @change=${(e: CustomEvent) => {
+                      e.stopPropagation(); // Prevent double-toggling from parent div click
+                      this._handleOptionClick(option, e);
+                    }}
+                  >
+                    ${option.label}
+                  </ag-checkbox>
+                ` : html`
+                  ${option.label}
+                `}
               </div>
             `)}
           `}
