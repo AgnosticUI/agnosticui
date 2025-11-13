@@ -15,9 +15,17 @@
     "value": "{neutral.700.value}",
     "description": "Primary text slightly muted - between primary and secondary emphasis"
   },
+  "text-primary-inverted": {
+    "value": "{white.value}",
+    "description": "Inverted primary text for high emphasis on dark backgrounds"
+  },
   "background-primary": {
     "value": "{white.value}",
     "description": "Background for primary"
+  },
+  "background-primary-inverted": {
+    "value": "{black.value}",
+    "description": "Inverted background for primary"
   },
   "background-secondary": {
     "value": "{neutral.100.value}",

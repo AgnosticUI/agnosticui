@@ -467,3 +467,30 @@ export const MultipleMaxVisible: Story = {
     ></ag-combobox>
   `,
 };
+
+// Multiple with monochrome variant
+export const MultipleMonochrome: Story = {
+  args: {
+    label: "Select States",
+    placeholder: "Choose one or more states...",
+    options: stateOptions,
+    multiple: true,
+    closeOnSelect: false,
+    defaultValue: ["ca", "fl"],
+    helpText: "Selected items use the monochrome variant.",
+    variant: "monochrome",
+  },
+  render: (args) => html`
+    <ag-combobox
+      .options=${args.options}
+      .defaultValue=${args.defaultValue}
+      label=${args.label}
+      placeholder=${args.placeholder}
+      ?multiple=${args.multiple}
+      ?close-on-select=${args.closeOnSelect}
+      variant=${args.variant}
+      help-text=${args.helpText}
+      @change=${args.onChange}
+    ></ag-combobox>
+  `,
+};

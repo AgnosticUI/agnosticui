@@ -346,6 +346,15 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       color: var(--ag-white);
     }
 
+    :host([variant="monochrome"]) .combobox-option[aria-selected="true"] {
+      background-color: var(--ag-background-primary-inverted);
+      color: var(--ag-text-primary-inverted);
+    }
+
+    :host([variant="monochrome"]) .combobox-option[aria-selected="true"] ag-checkbox {
+      color: var(--ag-white);
+      color: var(--ag-text-primary-inverted);
+    }
 
     .combobox-option[aria-disabled="true"] {
       opacity: var(--ag-opacity-disabled);
@@ -510,6 +519,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
   @property({ type: String, reflect: true })
   size: 'small' | 'default' | 'large' = 'default';
+
+  @property({ type: String, reflect: true })
+  variant: 'default' | 'monochrome' = 'default';
 
   @property({ type: Number, attribute: 'max-visible-options' })
   maxVisibleOptions = 10;
