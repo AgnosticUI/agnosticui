@@ -342,6 +342,11 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       color: var(--ag-white);
     }
 
+    .combobox-option[aria-selected="true"]:hover,
+    .combobox-option.option-active[aria-selected="true"] {
+      background-color: var(--ag-primary-dark);
+    }
+
     /* For multi-select, we want the checkbox to be visible even when the option is selected */
     .combobox-option[aria-selected="true"] ag-checkbox {
       color: var(--ag-white);

@@ -896,6 +896,14 @@ export class MenuItem extends LitElement implements MenuItemProps {
       color: var(--ag-white);
     }
 
+    :host([aria-checked='true']) button:focus:not([disabled]),
+    :host([aria-checked='true']) a:focus:not([disabled]),
+    :host([aria-checked='true']) button:hover:not([disabled]),
+    :host([aria-checked='true']) a:hover:not([disabled]) {
+      background-color: var(--ag-menu-item-selected-active-bg, var(--ag-primary-dark));
+    }
+
+
     :host([variant="monochrome"][aria-checked='true']) button:not([disabled]),
     :host([variant="monochrome"][aria-checked='true']) a:not([disabled]) {
       background-color: var(--ag-background-primary-inverted);
