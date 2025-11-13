@@ -1016,6 +1016,13 @@ export class AgCombobox extends LitElement implements ComboboxProps {
         e.preventDefault();
         if (!this._open) {
           this.open();
+          // Set to first option when opening with ArrowDown
+          if (this._filteredOptions.length > 0) {
+            this._activeIndex = 0;
+            this._updateAriaActivedescendant();
+            this._scrollOptionIntoView(this._activeIndex);
+            this._announceOption(this._filteredOptions[this._activeIndex]);
+          }
         } else {
           this._updateActiveIndex(1);
         }
