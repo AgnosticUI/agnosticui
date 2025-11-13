@@ -330,23 +330,22 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       position: relative;
     }
 
-    .combobox-option:hover:not([aria-disabled="true"]) {
+    .combobox-option:hover:not([aria-disabled="true"]):not([aria-selected="true"]),
+    .combobox-option.option-active:not([aria-disabled="true"]):not([aria-selected="true"]) {
       background-color: var(--combobox-option-hover-bg);
+      color: var(--ag-text-primary);
     }
 
     .combobox-option[aria-selected="true"] {
-      background-color: var(--combobox-option-focus-bg);
+      background-color: var(--ag-primary);
+      color: var(--ag-white);
     }
 
-    .combobox-option[aria-selected="true"]::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: var(--ag-space-1);
-      background-color: var(--ag-primary);
+    /* For multi-select, we want the checkbox to be visible even when the option is selected */
+    .combobox-option[aria-selected="true"] ag-checkbox {
+      color: var(--ag-white);
     }
+
 
     .combobox-option[aria-disabled="true"] {
       opacity: var(--ag-opacity-disabled);
@@ -844,16 +843,16 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   private _selectionChanged() {
     if (this.multiple) {
       this.value = this._selectedOptions.map(opt => opt.value);
-      // For now, display a summary. We'll implement tags later.
-      this._displayLabel = this._selectedOptions.length > 0
-        ? `${this._selectedOptions.length} item${this._selectedOptions.length !== 1 ? 's' : ''} selected`
-        : '';
+      // In multi-select, we clear the search term after each selection
+      // to allow for the next search.
+      this._searchTerm = '';
     } else {
       const selectedOption = this._selectedOptions[0];
       this.value = selectedOption?.value ?? '';
       this._displayLabel = selectedOption?.label ?? '';
+      // In single-select, the search term should reflect the selected item's label.
+      this._searchTerm = this._displayLabel;
     }
-    this._searchTerm = this._displayLabel; // Keep searchTerm in sync with displayLabel for now
   }
 
   private _renderSelectedTags() {
@@ -893,14 +892,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     // If the search term is the label of the selected option, the user is not
     // actively searching. Show all options so they can pick a new one.
-    // For multi-select, if searchTerm matches displayLabel, it means no active search.
-    if (this.multiple && term === this._displayLabel) {
-      this._filteredOptions = this.options.slice(0, this.maxVisibleOptions);
-      // In multi-select, activeIndex doesn't make sense in this context, so reset it.
-      this._activeIndex = -1;
-      return;
-    } else if (!this.multiple && this._selectedOptions.length > 0 && term === this._selectedOptions[0].label) {
-      // Single select: if searchTerm matches selected option's label, show all.
+    if (!this.multiple && this._selectedOptions.length > 0 && term === this._selectedOptions[0].label) {
       this._filteredOptions = this.options.slice(0, this.maxVisibleOptions);
       this._activeIndex = this.options.findIndex(opt => opt.value === this._selectedOptions[0]?.value);
       return;
@@ -970,6 +962,13 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
     
     this._searchTerm = newValue;
+
+    // When typing, we are no longer on a "selected" item, so clear selections
+    // This is for single-select mode where typing implies searching for a new item.
+    if (!this.multiple) {
+      this._selectedOptions = [];
+      this.value = '';
+    }
 
     // Open listbox if closed when user types
     if (!this._open) {
@@ -1236,8 +1235,8 @@ export class AgCombobox extends LitElement implements ComboboxProps {
             aria-describedby=${describedBy || nothing}
             aria-invalid=${this.invalid ? 'true' : 'false'}
             aria-required=${this.required ? 'true' : 'false'}
-            .value=${this.multiple ? this._searchTerm : this._displayLabel}
-            placeholder=${this._selectedOptions.length > 0 ? '' : this.placeholder}
+            .value=${this._searchTerm}
+            placeholder=${this._selectedOptions.length > 0 && !this.multiple ? '' : this.placeholder}
             ?disabled=${this.disabled}
             ?readonly=${this.readonly}
             @input=${this._handleInputChange}
@@ -1303,10 +1302,10 @@ export class AgCombobox extends LitElement implements ComboboxProps {
             ${this._filteredOptions.map((option, index) => html`
               <div
                 id=${this._getOptionId(index)}
-                class="combobox-option"
+                class="combobox-option ${index === this._activeIndex ? 'option-active' : ''}"
                 part="ag-combobox-option"
                 role="option"
-                aria-selected=${index === this._activeIndex ? 'true' : 'false'}
+                aria-selected=${this._selectedOptions.some(o => o.value === option.value) ? 'true' : 'false'}
                 aria-disabled=${option.disabled ? 'true' : 'false'}
                 @click=${(e: MouseEvent) => this._handleOptionClick(option, e)}
               >
