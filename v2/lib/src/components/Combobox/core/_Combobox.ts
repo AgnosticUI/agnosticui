@@ -176,11 +176,8 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       position: relative;
       display: flex;
       align-items: center;
-    }
-
-    /* Input */
-    .combobox-input {
-      flex: 1;
+      flex-wrap: wrap;
+      gap: var(--ag-space-1);
       padding: var(--ag-space-3) var(--ag-space-4);
       padding-right: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
       font-size: var(--ag-font-size-base);
@@ -190,17 +187,31 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       background-color: var(--ag-background-primary);
       border: var(--ag-border-width-1) solid var(--ag-border);
       border-radius: var(--ag-radius-md);
-      outline: none;
       transition: border-color var(--ag-motion-fast) ease-in-out;
+      cursor: text;
+    }
+
+    .combobox-input-wrapper:focus-within {
+      border-color: var(--ag-primary);
+      box-shadow: 0 0 0 var(--ag-focus-ring-width) var(--ag-focus-ring-color);
+    }
+
+    /* Input */
+    .combobox-input {
+      flex: 1;
+      min-width: 50px; /* Ensure input has a minimum width to be usable */
+      font-size: var(--ag-font-size-base);
+      font-family: var(--ag-font-family-base);
+      line-height: var(--ag-line-height-base);
+      color: var(--ag-text-primary);
+      background-color: transparent;
+      border: none;
+      outline: none;
+      padding: 0;
     }
 
     .combobox-input::placeholder {
       color: var(--ag-text-tertiary);
-    }
-
-    .combobox-input:focus {
-      border-color: var(--ag-primary);
-      box-shadow: 0 0 0 var(--ag-focus-ring-width) var(--ag-focus-ring-color);
     }
 
     .combobox-input:disabled {
@@ -210,11 +221,11 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
 
     /* Invalid state */
-    :host([invalid]) .combobox-input {
+    :host([invalid]) .combobox-input-wrapper {
       border-color: var(--ag-danger);
     }
 
-    :host([invalid]) .combobox-input:focus {
+    :host([invalid]) .combobox-input-wrapper:focus-within {
       box-shadow: 0 0 0 var(--ag-focus-ring-width) var(--ag-danger-light);
     }
 
@@ -264,19 +275,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       /* The close button itself has padding, so we might not need width/height here */
     }
 
+    /* This wrapper is no longer needed for positioning, but can be kept for semantics if we want */
     .combobox-tags-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--ag-space-1);
-      padding-left: var(--ag-space-3); /* Align with input text */
-      padding-right: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3); /* Make space for buttons */
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      align-items: center;
-      pointer-events: none; /* Allow clicks to pass through to input */
+      display: contents; /* This makes the wrapper have no effect on layout */
     }
 
     .combobox-tags-wrapper ag-tag {
@@ -1205,7 +1206,11 @@ export class AgCombobox extends LitElement implements ComboboxProps {
           </label>
         ` : nothing}
 
-        <div class="combobox-input-wrapper" part="ag-combobox-input-wrapper">
+        <div
+          class="combobox-input-wrapper"
+          part="ag-combobox-input-wrapper"
+          @click=${() => this._inputElement?.focus()}
+        >
           ${this.multiple ? this._renderSelectedTags() : nothing}
           <input
             id=${this._comboboxId}
@@ -1223,8 +1228,8 @@ export class AgCombobox extends LitElement implements ComboboxProps {
             aria-describedby=${describedBy || nothing}
             aria-invalid=${this.invalid ? 'true' : 'false'}
             aria-required=${this.required ? 'true' : 'false'}
-            value=${this.multiple && this._selectedOptions.length > 0 ? '' : this._displayLabel}
-            placeholder=${this.placeholder}
+            .value=${this.multiple ? this._searchTerm : this._displayLabel}
+            placeholder=${this._selectedOptions.length > 0 ? '' : this.placeholder}
             ?disabled=${this.disabled}
             ?readonly=${this.readonly}
             @input=${this._handleInputChange}

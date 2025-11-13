@@ -368,3 +368,102 @@ export const WithDisabledOptions: Story = {
     ></ag-combobox>
   `,
 };
+
+// Multiple select story
+export const Multiple: Story = {
+  args: {
+    label: "Select States",
+    placeholder: "Choose one or more states...",
+    options: stateOptions,
+    multiple: true,
+    closeOnSelect: false,
+  },
+  render: (args) => html`
+    <ag-combobox
+      .options=${args.options}
+      .value=${args.value}
+      label=${args.label}
+      placeholder=${args.placeholder}
+      ?multiple=${args.multiple}
+      ?close-on-select=${args.closeOnSelect}
+      @change=${args.onChange}
+    ></ag-combobox>
+  `,
+};
+
+// Multiple with default values
+export const MultipleWithDefaults: Story = {
+  args: {
+    label: "Select States",
+    placeholder: "Choose one or more states...",
+    options: stateOptions,
+    multiple: true,
+    closeOnSelect: false,
+    defaultValue: ["ca", "fl"],
+    helpText: "California and Florida are pre-selected.",
+  },
+  render: (args) => html`
+    <ag-combobox
+      .options=${args.options}
+      .defaultValue=${args.defaultValue}
+      label=${args.label}
+      placeholder=${args.placeholder}
+      ?multiple=${args.multiple}
+      ?close-on-select=${args.closeOnSelect}
+      help-text=${args.helpText}
+      @change=${args.onChange}
+    ></ag-combobox>
+  `,
+};
+
+// Multiple clearable
+export const MultipleClearable: Story = {
+  args: {
+    label: "Select States",
+    placeholder: "Choose one or more states...",
+    options: stateOptions,
+    multiple: true,
+    clearable: true,
+    closeOnSelect: false,
+    defaultValue: ["ny", "co", "az"],
+  },
+  render: (args) => html`
+    <ag-combobox
+      .options=${args.options}
+      .defaultValue=${args.defaultValue}
+      label=${args.label}
+      placeholder=${args.placeholder}
+      ?multiple=${args.multiple}
+      ?clearable=${args.clearable}
+      ?close-on-select=${args.closeOnSelect}
+      @change=${args.onChange}
+    ></ag-combobox>
+  `,
+};
+
+// Multiple with max visible options
+export const MultipleMaxVisible: Story = {
+  args: {
+    label: "Select States",
+    placeholder: "Choose one or more states...",
+    options: stateOptions,
+    multiple: true,
+    closeOnSelect: false,
+    defaultValue: ["al", "ak", "az", "ar", "ca"],
+    maxOptionsVisible: 2,
+    helpText: "Shows only 2 tags, with a +3 summary.",
+  },
+  render: (args) => html`
+    <ag-combobox
+      .options=${args.options}
+      .defaultValue=${args.defaultValue}
+      label=${args.label}
+      placeholder=${args.placeholder}
+      ?multiple=${args.multiple}
+      ?close-on-select=${args.closeOnSelect}
+      max-options-visible=${args.maxOptionsVisible}
+      help-text=${args.helpText}
+      @change=${args.onChange}
+    ></ag-combobox>
+  `,
+};
