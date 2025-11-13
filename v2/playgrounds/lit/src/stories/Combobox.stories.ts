@@ -369,6 +369,27 @@ export const WithDisabledOptions: Story = {
   `,
 };
 
+// Single monochrome variant
+export const SingleMonochrome: Story = {
+  args: {
+    label: "Select State",
+    placeholder: "Choose a state...",
+    options: stateOptions,
+    closeOnSelect: false,
+    variant: "monochrome",
+  },
+  render: (args) => html`
+    <ag-combobox
+      .options=${args.options}
+      label=${args.label}
+      placeholder=${args.placeholder}
+      ?close-on-select=${args.closeOnSelect}
+      variant=${args.variant}
+      @change=${args.onChange}
+    ></ag-combobox>
+  `,
+};
+
 // Multiple select story
 export const Multiple: Story = {
   args: {

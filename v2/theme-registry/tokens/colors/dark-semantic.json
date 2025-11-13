@@ -31,6 +31,10 @@
     "value": "{neutral.700.value}",
     "description": "Background for secondary (accordion backgrounds)"
   },
+  "background-secondary-inverted": {
+    "value": "{neutral.100.value}",
+    "description": "Inverted background for secondary"
+  },
   "background-tertiary": {
     "value": "{neutral.600.value}",
     "description": "Background for tertiary (neutral buttons)"

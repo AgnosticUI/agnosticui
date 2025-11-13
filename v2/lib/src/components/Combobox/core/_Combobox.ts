@@ -93,6 +93,7 @@ export interface ComboboxProps {
   size?: 'small' | 'default' | 'large';
   maxVisibleOptions?: number;
   closeOnSelect?: boolean;
+  variant?: 'default' | 'monochrome';
 
   // Loading
   loading?: boolean;
@@ -349,6 +350,12 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     :host([variant="monochrome"]) .combobox-option[aria-selected="true"] {
       background-color: var(--ag-background-primary-inverted);
       color: var(--ag-text-primary-inverted);
+    }
+
+    /* hover/active + selected gets --ag-background-secondary-inverted affordance */
+    :host([variant="monochrome"]) .combobox-option[aria-selected="true"]:hover,
+    :host([variant="monochrome"]) .combobox-option.option-active[aria-selected="true"] {
+      background-color: var(--ag-background-secondary-inverted);
     }
 
     :host([variant="monochrome"]) .combobox-option[aria-selected="true"] ag-checkbox {
