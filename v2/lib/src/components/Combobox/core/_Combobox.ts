@@ -17,6 +17,7 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state, query } from 'lit/decorators.js';
 import { generateUniqueId } from '../../../utils/unique-id';
+import '../../shared/CloseButton/_CloseButton.js';
 
 // Event interfaces
 export interface ComboboxOption {
@@ -250,7 +251,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       cursor: not-allowed;
     }
 
-    .ag-combobox__clear {
+    .combobox-clear-wrapper {
       position: absolute;
       right: calc(var(--ag-space-2) * 2 + var(--combobox-toggle-size));
       top: 50%;
@@ -258,25 +259,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: var(--combobox-toggle-size);
-      height: var(--combobox-toggle-size);
-      padding: 0;
-      background: transparent;
-      border: none;
-      border-radius: var(--ag-radius-sm);
-      cursor: pointer;
-      color: var(--ag-text-secondary);
-      transition: background-color var(--ag-motion-fast) ease-in-out;
-    }
-
-    .ag-combobox__clear:hover:not(:disabled) {
-      background-color: var(--ag-background-tertiary);
-      color: var(--ag-text-primary);
-    }
-
-    .ag-combobox__clear:focus {
-      outline: var(--ag-focus-ring-width) solid var(--ag-focus-ring-color);
-      outline-offset: var(--ag-focus-ring-offset);
+      /* The close button itself has padding, so we might not need width/height here */
     }
 
     .combobox-toggle-icon {
@@ -1142,29 +1125,15 @@ export class AgCombobox extends LitElement implements ComboboxProps {
           />
 
           ${this.clearable && this._selectedOption ? html`
-            <button
-              type="button"
-              class="ag-combobox__clear"
-              part="ag-combobox-clear-button"
-              aria-label="Clear selection"
-              tabindex="-1"
-              @click=${this._handleClearClick}
+            <div
+              class="combobox-clear-wrapper"
+              part="ag-combobox-clear-wrapper"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                width="16"
-                height="16"
-              >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
+              <ag-close-button
+                size="sm"
+                @close-button-click=${this._handleClearClick}
+              ></ag-close-button>
+            </div>
           ` : nothing}
 
           <button

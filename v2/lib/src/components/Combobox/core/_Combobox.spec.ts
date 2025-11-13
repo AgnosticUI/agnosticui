@@ -513,10 +513,13 @@ describe('AgCombobox - Phase 1 MVP', () => {
       element.value = 'ca';
       await element.updateComplete;
 
-      const clearButton = element.shadowRoot?.querySelector('.ag-combobox__clear') as HTMLElement;
+      const clearButton = element.shadowRoot?.querySelector('ag-close-button') as HTMLElement;
       expect(clearButton).toBeTruthy();
 
-      clearButton.click();
+      // The `ag-close-button` is a custom element. We need to click its internal button.
+      const internalButton = clearButton.shadowRoot?.querySelector('button');
+      expect(internalButton).toBeTruthy();
+      internalButton?.click();
       await element.updateComplete;
 
       expect(element.value).toBe('');
@@ -528,7 +531,7 @@ describe('AgCombobox - Phase 1 MVP', () => {
       element.clearable = true;
       await element.updateComplete;
 
-      const clearButton = element.shadowRoot?.querySelector('.ag-combobox__clear');
+      const clearButton = element.shadowRoot?.querySelector('ag-close-button');
       expect(clearButton).toBeNull();
     });
 
