@@ -137,6 +137,7 @@ export const TextPrimaryInverted = "#ffffff";
 export const BackgroundPrimary = "#ffffff";
 export const BackgroundPrimaryInverted = "#1f2328";
 export const BackgroundSecondary = "#f3f4f6";
+export const BackgroundSecondaryInverted = "#111827";
 export const BackgroundTertiary = "#e5e7eb";
 export const BackgroundDisabled = "#f3f4f6";
 export const PrimaryBackground = "#ddf4ff";
