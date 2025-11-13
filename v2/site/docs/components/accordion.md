@@ -13,6 +13,7 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
 ## Usage
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -40,10 +41,7 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
 
     <!-- With chevron indicator and styling -->
     <VueAccordion>
-      <VueAccordionItem
-        use-chevron
-        bordered
-      >
+      <VueAccordionItem use-chevron bordered>
         <VueAccordionHeader>Features</VueAccordionHeader>
         <VueAccordionContent>
           <ul>
@@ -53,11 +51,7 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
           </ul>
         </VueAccordionContent>
       </VueAccordionItem>
-      <VueAccordionItem
-        use-chevron
-        bordered
-        open
-      >
+      <VueAccordionItem use-chevron bordered open>
         <VueAccordionHeader>Open by Default</VueAccordionHeader>
         <VueAccordionContent>
           <p>This item starts in the open state.</p>
@@ -67,10 +61,7 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
 
     <!-- With X indicator -->
     <VueAccordion>
-      <VueAccordionItem
-        use-x
-        @toggle="handleToggle"
-      >
+      <VueAccordionItem use-x @toggle="handleToggle">
         <VueAccordionHeader>X Indicator</VueAccordionHeader>
         <VueAccordionContent>
           <p>Plus icon that transforms into an X when opened</p>
@@ -80,10 +71,7 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
 
     <!-- With plus/minus indicator -->
     <VueAccordion>
-      <VueAccordionItem
-        use-minus
-        @toggle="handleToggle"
-      >
+      <VueAccordionItem use-minus @toggle="handleToggle">
         <VueAccordionHeader>Plus/Minus Indicator</VueAccordionHeader>
         <VueAccordionContent>
           <p>Plus icon that changes to minus when opened</p>
@@ -94,7 +82,11 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
 </template>
 
 <script>
-import VueAccordion, { VueAccordionItem, VueAccordionHeader, VueAccordionContent } from "agnosticui-core/accordion/vue";
+import VueAccordion, {
+  VueAccordionItem,
+  VueAccordionHeader,
+  VueAccordionContent,
+} from "agnosticui-core/accordion/vue";
 
 export default {
   components: {
@@ -111,11 +103,18 @@ export default {
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactAccordion, AccordionItem, ItemHeader, ItemContent } from 'agnosticui-core/accordion/react';
+import {
+  ReactAccordion,
+  AccordionItem,
+  ItemHeader,
+  ItemContent,
+} from "agnosticui-core/accordion/react";
 
 export default function AccordionExample() {
   const handleToggle = (event: CustomEvent) => {
@@ -189,19 +188,21 @@ export default function AccordionExample() {
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
-  import 'agnosticui-core/accordion';
+  import "agnosticui-core/accordion";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const items = document.querySelectorAll('ag-accordion-item');
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll("ag-accordion-item");
 
-    items.forEach(item => {
-      item.addEventListener('toggle', (event) => {
-        console.log('Accordion toggled:', event.detail.open);
+    items.forEach((item) => {
+      item.addEventListener("toggle", (event) => {
+        console.log("Accordion toggled:", event.detail.open);
       });
     });
   });
@@ -271,6 +272,7 @@ export default function AccordionExample() {
   </ag-accordion>
 </section>
 ```
+
 :::
 
 ## Props
@@ -281,17 +283,19 @@ The `Accordion` component is a simple container with no specific props. It wraps
 
 ### AccordionItem
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `open` | `boolean` | `false` | Whether the accordion item is expanded |
-| `headingLevel` | `number` | `3` | Heading level for semantic HTML (1-6, renders as h1-h6) |
-| `disabled` | `boolean` | `false` | Whether the accordion item is disabled |
-| `useChevron` | `boolean` | `true` | Use chevron indicator (default) - rotates 180° when open |
-| `useX` | `boolean` | `false` | Use X indicator - plus rotated 180° initially, becomes X at 45° when open |
-| `useMinus` | `boolean` | `false` | Use plus/minus indicator - plus transitions to minus when open |
-| `noIndicator` | `boolean` | `false` | Hide the indicator completely |
-| `bordered` | `boolean` | `false` | Whether to apply border styling to the header |
-| `background` | `boolean` | `false` | Whether to apply background color to the header |
+| Prop           | Type      | Default | Description                                                               |
+| -------------- | --------- | ------- | ------------------------------------------------------------------------- |
+| `open`         | `boolean` | `false` | Whether the accordion item is expanded                                    |
+| `headingLevel` | `number`  | `3`     | Heading level for semantic HTML (1-6, renders as h1-h6)                   |
+| `disabled`     | `boolean` | `false` | Whether the accordion item is disabled                                    |
+| `useChevron`   | `boolean` | `true`  | Use chevron indicator (default) - rotates 180° when open                  |
+| `useX`         | `boolean` | `false` | Use X indicator - plus rotated 180° initially, becomes X at 45° when open |
+| `useMinus`     | `boolean` | `false` | Use plus/minus indicator - plus transitions to minus when open            |
+| `noIndicator`  | `boolean` | `false` | Hide the indicator completely                                             |
+| `bordered`     | `boolean` | `false` | Whether to apply border styling to the header                             |
+| `background`   | `boolean` | `false` | Whether to apply background color to the header                           |
+
+{.foo}
 
 **Note:** Indicator props are mutually exclusive with priority: `noIndicator` > `useX` > `useMinus` > `useChevron` (default)
 
@@ -299,13 +303,16 @@ The `Accordion` component is a simple container with no specific props. It wraps
 
 The AccordionItem component follows AgnosticUI v2 event conventions with **dual-dispatch** for the `toggle` custom event - you can use either `addEventListener` or callback props (e.g., `onToggle`).
 
-| Event | Framework | Detail | Description |
-| -------- | ----------------------------------------------------- | ------------------- | ------------------------------ |
+| Event    | Framework                                                            | Detail              | Description                                                              |
+| -------- | -------------------------------------------------------------------- | ------------------- | ------------------------------------------------------------------------ |
 | `toggle` | Vue: `@toggle`<br>React: `onToggle`<br>Lit: `@toggle` or `.onToggle` | `{ open: boolean }` | Fired when the accordion item is toggled between open and closed states. |
+
+{.foo}
 
 ### Event Handling Examples
 
 ::: details Vue
+
 ```vue
 <template>
   <!-- Using @toggle emit -->
@@ -321,39 +328,42 @@ The AccordionItem component follows AgnosticUI v2 event conventions with **dual-
   </VueAccordionItem>
 
   <!-- Both patterns together -->
-  <VueAccordionItem
-    v-model:open="isOpen"
-    @toggle="handleToggle"
-  >
+  <VueAccordionItem v-model:open="isOpen" @toggle="handleToggle">
     <template #header>Both patterns</template>
     <template #content>Content here</template>
   </VueAccordionItem>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { VueAccordionItem } from 'agnosticui-core/accordion/vue';
+import { ref } from "vue";
+import { VueAccordionItem } from "agnosticui-core/accordion/vue";
 
 const isOpen = ref(false);
 
 const handleToggle = (detail) => {
-  console.log('Toggle event:', detail);
+  console.log("Toggle event:", detail);
   // detail: { open: true/false }
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { useState } from 'react';
-import { AccordionItem, ItemHeader, ItemContent } from 'agnosticui-core/accordion/react';
+import { useState } from "react";
+import {
+  AccordionItem,
+  ItemHeader,
+  ItemContent,
+} from "agnosticui-core/accordion/react";
 
 export default function AccordionExample() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = (event) => {
-    console.log('Toggle event:', event.detail);
+    console.log("Toggle event:", event.detail);
     // event.detail: { open: true/false }
     setIsOpen(event.detail.open);
   };
@@ -366,24 +376,26 @@ export default function AccordionExample() {
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
-  import 'agnosticui-core/accordion';
+  import "agnosticui-core/accordion";
 
-  const item = document.querySelector('#my-accordion');
+  const item = document.querySelector("#my-accordion");
 
   // Pattern 1: Using addEventListener (standard Web Components)
-  item.addEventListener('toggle', (event) => {
-    console.log('Toggle event:', event.detail);
+  item.addEventListener("toggle", (event) => {
+    console.log("Toggle event:", event.detail);
     // event.detail: { open: true/false }
   });
 
   // Pattern 2: Using callback prop
   item.onToggle = (event) => {
-    console.log('Toggle event (callback):', event.detail);
+    console.log("Toggle event (callback):", event.detail);
   };
 
   // Both patterns work simultaneously (dual-dispatch)
@@ -394,20 +406,23 @@ export default function AccordionExample() {
   <div slot="content">Accordion content here</div>
 </ag-accordion-item>
 ```
+
 :::
 
 ## CSS Shadow Parts
 
 The Accordion exposes CSS Shadow Parts that allow you to customize internal elements without breaking encapsulation:
 
-| Part | Description | Element |
-|------|-------------|---------|
-| `ag-accordion-wrapper` | The main wrapper container | `<div>` |
-| `ag-accordion-header-wrapper` | The header wrapper containing the heading and button | `<div>` |
-| `ag-accordion-heading` | The semantic heading element (h1-h6) | `<h1>`-`<h6>` |
-| `ag-accordion-header` | The interactive button inside the heading | `<button>` |
-| `ag-accordion-indicator` | The expand/collapse indicator icon wrapper | `<span>` |
-| `ag-accordion-content` | The collapsible content region | `<div>` |
+| Part                          | Description                                          | Element       |
+| ----------------------------- | ---------------------------------------------------- | ------------- |
+| `ag-accordion-wrapper`        | The main wrapper container                           | `<div>`       |
+| `ag-accordion-header-wrapper` | The header wrapper containing the heading and button | `<div>`       |
+| `ag-accordion-heading`        | The semantic heading element (h1-h6)                 | `<h1>`-`<h6>` |
+| `ag-accordion-header`         | The interactive button inside the heading            | `<button>`    |
+| `ag-accordion-indicator`      | The expand/collapse indicator icon wrapper           | `<span>`      |
+| `ag-accordion-content`        | The collapsible content region                       | `<div>`       |
+
+{.foo}
 
 ### Example Usage
 
