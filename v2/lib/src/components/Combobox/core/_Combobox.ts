@@ -1109,6 +1109,28 @@ export class AgCombobox extends LitElement implements ComboboxProps {
         }
         break;
 
+      case 'Backspace':
+        // In multiple mode, if input is empty, remove the last selected tag
+        if (this.multiple && this._searchTerm === '' && this._selectedOptions.length > 0) {
+          e.preventDefault();
+          const lastOption = this._selectedOptions[this._selectedOptions.length - 1];
+          this._selectedOptions = this._selectedOptions.slice(0, -1);
+          this._selectionChanged();
+
+          // Dispatch change event
+          const changeEvent = new CustomEvent<ComboboxChangeEventDetail>('change', {
+            detail: {
+              value: this.value,
+              option: lastOption
+            },
+            bubbles: true,
+            composed: true
+          });
+          this.dispatchEvent(changeEvent);
+          this.onChange?.(changeEvent);
+        }
+        break;
+
       case 'Tab':
         // Close listbox on tab
         if (this._open) {
