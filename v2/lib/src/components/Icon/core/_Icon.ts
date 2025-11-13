@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 export type IconSize = '14' | '16' | '18' | '20' | '24' | '32' | '36' | '40' | '48' | '56' | '64' | '';
 export type IconType = 'info' | 'primary' | 'action' | 'success' | 'warning' | 'error' | '';
@@ -11,7 +11,6 @@ export interface IconProps {
   noFill?: boolean;
 }
 
-@customElement('ag-icon')
 export class Icon extends LitElement implements IconProps {
   static styles = css`
     .icon-base {

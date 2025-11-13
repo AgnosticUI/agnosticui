@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { hasSlotContent } from '../../../utils/slot';
 
 export type DividerJustify = 'center' | 'start' | 'end';
@@ -23,7 +23,6 @@ export interface DividerProps {
  * @element ag-divider
  * @slot default - Optional content to display within the divider (text, icons, etc.)
  */
-@customElement('ag-divider')
 export class Divider extends LitElement implements DividerProps {
   static styles = css`
     :host {

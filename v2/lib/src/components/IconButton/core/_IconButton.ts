@@ -24,7 +24,7 @@
  */
 
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 // Event detail interfaces
@@ -75,7 +75,6 @@ export interface IconButtonProps {
  * - Minimalist styling via design tokens
  * - APG-compliant keyboard interaction
  */
-@customElement('ag-icon-button')
 export class AgIconButton extends LitElement implements IconButtonProps {
   static styles = css`
     /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */

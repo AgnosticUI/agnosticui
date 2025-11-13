@@ -1,5 +1,5 @@
 import { LitElement, html, css, nothing } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import type { Position } from '../../../utils/positioning';
 import type { AlertType } from '../../Alert/core/_Alert';
 import '../../Alert/core/Alert';
@@ -48,7 +48,6 @@ export interface ToastProps {
  * @csspart ag-toast - The outer container
  * @csspart ag-toast-content - The content wrapper
  */
-@customElement('ag-toast')
 export class Toast extends LitElement implements ToastProps {
   @property({ type: Boolean, reflect: true })
   declare open: boolean;

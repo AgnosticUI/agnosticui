@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import '../../shared/CloseButton/CloseButton';
 
 export type AlertType = 'warning' | 'info' | 'success' | 'error' | 'danger' | 'primary' | 'default';
@@ -22,7 +22,6 @@ export interface AlertProps {
   onAlertDismiss?: (event: AlertDismissEvent) => void;
 }
 
-@customElement('ag-alert')
 export class Alert extends LitElement implements AlertProps {
   @property({ type: String })
   public type: AlertType = 'default';

@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 /**
  * Close button event
@@ -36,7 +36,6 @@ export interface CloseButtonProps {
  * <ag-close-button label="Close dialog"></ag-close-button>
  * ```
  */
-@customElement('ag-close-button')
 export class CloseButton extends LitElement implements CloseButtonProps {
   @property({ type: String })
   declare label: string;

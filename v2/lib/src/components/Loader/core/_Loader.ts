@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 export type LoaderSize = 'small' | 'default' | 'large';
 
@@ -18,7 +18,6 @@ export interface LoaderProps {
  * @element ag-loader
  * @slot default - Optional text to display instead of default aria label
  */
-@customElement('ag-loader')
 export class Loader extends LitElement implements LoaderProps {
   static styles = css`
     :host {

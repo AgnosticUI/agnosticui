@@ -1,5 +1,5 @@
 import { LitElement, html, css, nothing } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { createFocusTrap, type FocusTrap } from 'focus-trap';
 import { isBackdropClick } from '../../../utils/handleBackdropClick';
 import { isElementInContainer } from '../../../utils/isElementInContainer';
@@ -26,7 +26,6 @@ export interface DialogProps {
   onDialogCancel?: (event: DialogCancelEvent) => void;
 }
 
-@customElement('ag-dialog')
 export class AgnosticDialog extends LitElement implements DialogProps {
   @property({ type: Boolean, reflect: true })
   declare open: boolean;

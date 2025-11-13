@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import { generateUniqueId } from '../../../utils/unique-id.js';
 
 export type TabsActivation = 'manual' | 'automatic';
@@ -27,7 +27,6 @@ export interface TabsEventMap {
 
 
 // Child components defined inline
-@customElement('ag-tab')
 export class Tab extends LitElement {
   @property({ type: String })
   declare panel: string;
@@ -102,7 +101,6 @@ export class Tab extends LitElement {
   }
 }
 
-@customElement('ag-tab-panel')
 export class TabPanel extends LitElement {
   constructor() {
     super();
@@ -164,7 +162,6 @@ export interface TabsProps {
  * </ag-tabs>
  * ```
  */
-@customElement('ag-tabs')
 export class Tabs extends LitElement implements TabsProps {
   @property({ type: String })
   declare activation: TabsActivation;

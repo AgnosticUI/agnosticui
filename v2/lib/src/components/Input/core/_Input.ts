@@ -8,7 +8,7 @@
  */
 
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { generateUniqueId } from '../../../utils/unique-id';
 import { hasSlotContent } from '../../../utils/slot';
@@ -65,7 +65,6 @@ export interface InputProps {
  *
  * Starting with basic label + input functionality, will build up incrementally
  */
-@customElement('ag-input')
 export class AgInput extends LitElement implements InputProps {
   static styles = css`
     :host {

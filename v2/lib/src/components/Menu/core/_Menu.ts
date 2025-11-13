@@ -1,5 +1,5 @@
 import { LitElement, html, css, nothing } from 'lit';
-import { customElement, property, state, query } from 'lit/decorators.js';
+import { property, state, query } from 'lit/decorators.js';
 
 // Event type definitions
 export interface MenuOpenEventDetail {
@@ -55,7 +55,6 @@ export interface MenuProps {
   onKeyDown?: (event: KeyboardEvent) => void;
 }
 
-@customElement('ag-menu-button')
 export class MenuButton extends LitElement implements MenuButtonProps {
   @query('.menu-trigger')
   declare _trigger: HTMLElement;
@@ -595,7 +594,6 @@ export class MenuButton extends LitElement implements MenuButtonProps {
   }
 }
 
-@customElement('ag-menu')
 export class Menu extends LitElement implements MenuProps {
   @property({ type: Boolean })
   open = false;
@@ -813,7 +811,6 @@ export class Menu extends LitElement implements MenuProps {
   }
 }
 
-@customElement('ag-menu-item')
 export class MenuItem extends LitElement implements MenuItemProps {
   @property()
   value = '';
@@ -1006,7 +1003,6 @@ export class MenuItem extends LitElement implements MenuItemProps {
   }
 }
 
-@customElement('ag-menu-separator')
 export class MenuSeparator extends LitElement {
   static styles = css`
     :host {

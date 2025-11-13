@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 export type HeaderContentJustify = 'start' | 'end' | 'between' | 'around' | 'center';
 
@@ -17,7 +17,6 @@ export interface HeaderProps {
  * @csspart ag-header - The outer header element
  * @csspart ag-header-content - The inner content wrapper
  */
-@customElement('ag-header')
 export class Header extends LitElement implements HeaderProps {
   @property({ type: Boolean, reflect: true })
   public sticky = false;
