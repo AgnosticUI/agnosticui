@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 // Dialog is a self-Registering Custom Element that registers
 // itself in the global CustomElementRegistry
 import { AgnosticDialog } from "../../Dialog/core/_dialog";
@@ -24,7 +24,6 @@ export interface DrawerProps {
   onDrawerCancel?: (event: DrawerCancelEvent) => void;
 }
 
-@customElement('ag-drawer')
 export class AgnosticDrawer extends LitElement implements DrawerProps {
   @property({ type: Boolean, reflect: true })
   declare open: boolean;

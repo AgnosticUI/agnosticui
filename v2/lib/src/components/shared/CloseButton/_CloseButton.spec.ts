@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { CloseButton } from './_CloseButton';
+import { CloseButton } from './CloseButton';
 
 describe('CloseButton', () => {
   let element: CloseButton;

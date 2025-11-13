@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 export type SpinnerSize = 'small' | 'default' | 'large' | 'xlarge';
 
@@ -18,7 +18,6 @@ export interface SpinnerProps {
  * @element ag-spinner
  * @slot default - Optional text to display instead of default aria label
  */
-@customElement('ag-spinner')
 export class Spinner extends LitElement implements SpinnerProps {
   static styles = css`
     :host {

@@ -454,8 +454,18 @@ describe('AgnosticDialog', () => {
       element.open = true;
       await element.updateComplete;
 
-      // Wait for focus-trap to initialize and set focus (needs more time)
-      await new Promise(resolve => setTimeout(resolve, 50));
+      // Wait for focus-trap to initialize and set focus
+      // Use a more reliable polling approach instead of arbitrary timeout
+      let attempts = 0;
+      const maxAttempts = 10; // 10 attempts * 10ms = 100ms max
+      while (attempts < maxAttempts) {
+        await new Promise(resolve => setTimeout(resolve, 10));
+        const activeElement = document.activeElement;
+        if (activeElement === button || element.contains(activeElement)) {
+          break;
+        }
+        attempts++;
+      }
 
       // Focus should move to the first focusable element in the dialog
       // In some test environments, focus behavior can vary, so we check that

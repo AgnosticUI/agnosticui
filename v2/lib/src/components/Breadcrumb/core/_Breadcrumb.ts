@@ -25,7 +25,7 @@
  */
 
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 /**
  * Breadcrumb item interface
@@ -73,7 +73,6 @@ export interface BreadcrumbProps {
  * - Click event handling for navigation
  * - Form integration support
  */
-@customElement('ag-breadcrumb')
 export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
   static styles = css`
     /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */

@@ -9,3 +9,6 @@ declare global {
     'ag-close-button': CloseButton;
   }
 }
+
+// Export everything from implementation
+export * from './_CloseButton.js';

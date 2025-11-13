@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 export type TagVariant = 'info' | 'warning' | 'error' | 'success' | 'primary' | '';
 export type TagShape = 'pill' | 'round' | 'circle' | '';
@@ -27,7 +27,6 @@ export interface TagProps {
  * @csspart tag-wrapper - The main wrapper for the tag component.
  * @fires tag-remove - Fired when the remove button is clicked
  */
-@customElement('ag-tag')
 export class AgTag extends LitElement implements TagProps {
   static styles = css`
     :host {

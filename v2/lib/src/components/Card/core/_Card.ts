@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import { hasSlotContent } from '../../../utils/slot'; 
+import { property } from 'lit/decorators.js';
+import { hasSlotContent } from '../../../utils/slot';
 
 export type CardVariant = 'success' | 'info' | 'error' | 'warning' | '';
 export type CardRounded = 'sm' | 'md' | 'lg' | '';
@@ -13,7 +13,6 @@ export interface CardProps {
   variant?: CardVariant;
 }
 
-@customElement('ag-card')
 export class Card extends LitElement implements CardProps {
   @property({ type: Boolean, reflect: true }) stacked = false;
   @property({ type: Boolean, reflect: true }) shadow = false;

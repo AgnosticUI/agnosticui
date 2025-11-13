@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { property, customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 // Event types
 export type CollapsibleToggleEvent = CustomEvent<{ open: boolean }>;
@@ -17,7 +17,6 @@ export interface CollapsibleProps {
   onToggle?: (event: CollapsibleToggleEvent) => void;
 }
 
-@customElement('ag-collapsible')
 export class AgCollapsible extends LitElement implements CollapsibleProps {
   @property({ type: Boolean, reflect: true })
   public open = false;
