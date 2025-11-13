@@ -331,6 +331,24 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       position: relative;
     }
 
+    /* Checkmark for selected option in single-select mode - drawn with ::after */
+    .combobox-option[aria-selected="true"]::after {
+      content: '';
+      position: absolute;
+      right: var(--ag-space-6);
+      top: 50%;
+      display: block;
+      opacity: 1;
+      transform: rotate(40deg) translateY(-50%);
+      transform-origin: center center;
+      transition: all var(--ag-motion-fast) ease-in-out;
+    }
+
+    /* Hide checkmark in multi-select mode since we use checkboxes */
+    :host([multiple]) .combobox-option[aria-selected="true"]::after {
+      display: none;
+    }
+
     .combobox-option:hover:not([aria-disabled="true"]):not([aria-selected="true"]),
     .combobox-option.option-active:not([aria-disabled="true"]):not([aria-selected="true"]) {
       background-color: var(--combobox-option-hover-bg);
@@ -366,6 +384,12 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     :host([variant="monochrome"]) .combobox-option[aria-selected="true"] ag-checkbox {
       color: var(--ag-white);
       color: var(--ag-text-primary-inverted);
+    }
+
+    /* Checkmark color for monochrome variant */
+    :host([variant="monochrome"]) .combobox-option[aria-selected="true"]::after {
+      border-right-color: var(--ag-text-primary-inverted);
+      border-bottom-color: var(--ag-text-primary-inverted);
     }
 
     .combobox-option[aria-disabled="true"] {
@@ -422,6 +446,22 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       --combobox-toggle-size: var(--ag-space-5);
     }
 
+    /* Checkmark size for small */
+    :host([size="small"]) .combobox-option[aria-selected="true"]::after {
+      width: 4px;
+      height: 8px;
+      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+    }
+
+    /* Default/medium checkmark size */
+    .combobox-option[aria-selected="true"]::after {
+      width: 4px;
+      height: 9px;
+      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+    }
+
     :host([size="large"]) .combobox-input-wrapper {
       padding: var(--ag-space-4) var(--ag-space-5);
       padding-right: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
@@ -436,12 +476,21 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       --combobox-toggle-size: var(--ag-space-7);
     }
 
+    /* Checkmark size for large */
+    :host([size="large"]) .combobox-option[aria-selected="true"]::after {
+      width: 5px;
+      height: 10px;
+      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+    }
+
     /* Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       .combobox-input,
       .combobox-toggle-button,
       .combobox-toggle-icon,
       .combobox-option,
+      .combobox-option::after,
       .combobox-listbox {
         transition: none !important;
         animation: none !important;
