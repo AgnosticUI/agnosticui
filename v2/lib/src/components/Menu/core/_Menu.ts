@@ -830,6 +830,9 @@ export class MenuItem extends LitElement implements MenuItemProps {
   @property({ type: Boolean })
   checked = false;
 
+  @property({ type: String, reflect: true })
+  variant: 'default' | 'monochrome' = 'default';
+
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
 
@@ -891,6 +894,12 @@ export class MenuItem extends LitElement implements MenuItemProps {
     :host([aria-checked='true']) a:not([disabled]) {
       background-color: var(--ag-menu-item-selected-bg, var(--ag-primary));
       color: var(--ag-white);
+    }
+
+    :host([variant="monochrome"][aria-checked='true']) button:not([disabled]),
+    :host([variant="monochrome"][aria-checked='true']) a:not([disabled]) {
+      background-color: var(--ag-background-primary-inverted);
+      color: var(--ag-text-primary-inverted);
     }
 
     button[disabled],

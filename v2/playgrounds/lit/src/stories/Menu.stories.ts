@@ -974,3 +974,26 @@ export const CSSPartsCustomization: Story = {
     </div>
   `,
 };
+
+// Monochrome selected variant
+export const MonochromeSelected: Story = {
+  args: {
+    variant: 'chevron',
+    label: 'Monochrome Menu',
+  },
+  render: ({ variant, size, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .variant=${variant}
+        .size=${size}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${'Monochrome menu'} .type=${'single-select'} .selectedValue=${'option2'}>
+          <ag-menu-item .value=${'option1'} .variant=${'monochrome'}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${'option2'} .variant=${'monochrome'}>Option 2 (Selected)</ag-menu-item>
+          <ag-menu-item .value=${'option3'} .variant=${'monochrome'}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};

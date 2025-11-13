@@ -79,7 +79,9 @@
   --ag-text-secondary: #D1D7E0;
   --ag-text-muted: #9198A1;
   --ag-text-primary-muted: #D1D7E0;
+  --ag-text-primary-inverted: #010409;
   --ag-background-primary: #010409;
+  --ag-background-primary-inverted: #ffffff;
   --ag-background-secondary: #212730;
   --ag-background-tertiary: #3D444D;
   --ag-background-disabled: #656C76;
