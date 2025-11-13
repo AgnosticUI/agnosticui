@@ -408,8 +408,12 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
 
     /* Size variants */
-    :host([size="small"]) .combobox-input {
+    :host([size="small"]) .combobox-input-wrapper {
       padding: var(--ag-space-2) var(--ag-space-3);
+      padding-right: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
+    }
+
+    :host([size="small"]) .combobox-input {
       font-size: var(--ag-font-size-sm);
     }
 
@@ -418,8 +422,12 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       --combobox-toggle-size: var(--ag-space-5);
     }
 
-    :host([size="large"]) .combobox-input {
+    :host([size="large"]) .combobox-input-wrapper {
       padding: var(--ag-space-4) var(--ag-space-5);
+      padding-right: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
+    }
+
+    :host([size="large"]) .combobox-input {
       font-size: var(--ag-font-size-lg);
     }
 
