@@ -605,14 +605,6 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     this._helpTextId = `${this._comboboxId}-help`;
     this._errorTextId = `${this._comboboxId}-error`;
 
-    // Initialize value
-    const initialValue = this.value ?? this.defaultValue;
-    if (initialValue) {
-      const initialValuesArray = Array.isArray(initialValue) ? initialValue : [initialValue];
-      this._selectedOptions = this.options.filter(opt => initialValuesArray.includes(opt.value));
-      this._selectionChanged(); // This method will update value, displayLabel, searchTerm
-    }
-
     // Setup click outside handler
     this._clickOutsideHandler = (event: MouseEvent) => {
       if (!this._open) return;
@@ -634,15 +626,31 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
   }
 
+  private _isDefaultValueInitialized = false;
+
   willUpdate(changedProperties: Map<string, unknown>) {
     super.willUpdate(changedProperties);
 
-    // Handle value property changes
+    // Initialize from defaultValue when options are ready. This is crucial because
+    // `options` and `defaultValue` are often set after the component is connected.
+    if (!this._isDefaultValueInitialized && this.defaultValue && this.options.length > 0) {
+      const initialValues = Array.isArray(this.defaultValue) ? this.defaultValue : [this.defaultValue];
+      this._selectedOptions = this.options.filter(opt => initialValues.includes(opt.value));
+      this._selectionChanged(); // This updates `this.value`
+      this._isDefaultValueInitialized = true;
+      return; // Prevent the `changedProperties.has('value')` block from running in the same cycle
+    }
+
+    // Handle external changes to the `value` property
     if (changedProperties.has('value')) {
-      const newValue = this.value;
-      const newValuesArray = Array.isArray(newValue) ? newValue : (newValue ? [newValue] : []);
-      this._selectedOptions = this.options.filter(opt => newValuesArray.includes(opt.value));
-      this._selectionChanged();
+      // Ensure we don't overwrite the just-set default value in the same update cycle,
+      // or if the value is being cleared externally.
+      if (this._isDefaultValueInitialized || !this.defaultValue) {
+        const newValue = this.value;
+        const newValuesArray = Array.isArray(newValue) ? newValue : (newValue ? [newValue] : []);
+        this._selectedOptions = this.options.filter(opt => newValuesArray.includes(opt.value));
+        this._selectionChanged();
+      }
     }
 
     // Sync invalid state from errorText
