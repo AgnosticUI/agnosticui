@@ -1,6 +1,6 @@
 # Tables
 
-Tables are provided as CSS-only utilities. No JavaScript required.
+Table is provided as CSS-only utilities. No JavaScript required.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 # Icon
 
-Icons are used to visually represent actions, objects, or states within the UI.
+Icon is used to visually represent an action, object, or state within the UI.
 
 <IconExamples />
 

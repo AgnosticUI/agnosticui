@@ -1,4 +1,4 @@
-# Buttons
+# Button
 
 The Button component provides a versatile, accessible button foundation with multiple variants, sizes, and shapes.
 

@@ -1,6 +1,6 @@
 # Checkbox
 
-Checkboxes allow users to select one or more options from a set. They're ideal for forms, settings panels, and multi-select interfaces.
+Checkbox allows a user to select one or more options from a set. It's ideal for forms, settings panels, and multi-select interfaces.
 
 ## Examples
 

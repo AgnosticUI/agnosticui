@@ -1,6 +1,6 @@
 # Skeleton Loader
 
-Skeleton loaders provide visual placeholders while content is loading, improving perceived performance and user experience. They represent the approximate shape and size of the content that will appear.
+Skeleton loader provides a visual placeholders while content is loading, improving perceived performance and user experience. It represents the approximate shape and size of the content that will appear.
 
 <SkeletonLoaderExamples />
 

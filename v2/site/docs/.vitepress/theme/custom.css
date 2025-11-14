@@ -29,6 +29,8 @@
   --vp-c-brand-1: var(--ag-primary);
   --vp-c-brand-2: var(--ag-primary);
   --vp-c-brand-3: var(--ag-primary);
+  --vp-code-color: var(--ag-primary-text);
+  --vp-code-link-color: var(--ag-primary-text);
 }
 
 /* Logo */
@@ -301,7 +303,6 @@ h6.b0 {
 .vp-doc th {
   background-color: transparent; /* Remove VitePress header background */
 }
-
 
 /* Dark mode support for inline code in component examples */
 .vp-doc code {

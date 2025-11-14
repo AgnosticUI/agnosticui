@@ -1,6 +1,6 @@
 # Card
 
-Cards are versatile containers for grouping related content and actions. They provide a clean, visual structure for organizing information and can be customized with shadows, animations, color variants, and more.
+Card is a versatile container for grouping related content and actions. It provides a clean, visual structure for organizing information and can be customized with shadows, animations, color variants, and more.
 
 ## Examples
 

@@ -1,6 +1,6 @@
 # Radio
 
-Radio buttons allow users to select a single option from a set of mutually exclusive choices. They're ideal for forms where only one selection is permitted.
+Radio button allows a user to select a single option from a set of mutually exclusive choices. It's ideal for forms where only one selection is permitted.
 
 ## Examples
 
