@@ -481,6 +481,33 @@ export const CallbackPropsPattern: Story = {
   },
 };
 
+// Monochrome selected variant
+export const MonochromeSelected: Story = {
+  args: {
+    variant: 'chevron',
+    size: 'md',
+    label: 'Monochrome Menu',
+  },
+  render: (args) => (
+    <div style={{ padding: '50px' }}>
+      <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
+        {args.label || 'Monochrome Menu'}
+        <ReactMenu slot="menu" ariaLabel="Monochrome menu">
+          <ReactMenuItem value="option1" variant="monochrome" onMenuSelect={action('menu-select')}>
+            Option 1
+          </ReactMenuItem>
+          <ReactMenuItem value="option2" variant="monochrome" selected onMenuSelect={action('menu-select')}>
+            Option 2 (Selected)
+          </ReactMenuItem>
+          <ReactMenuItem value="option3" variant="monochrome" onMenuSelect={action('menu-select')}>
+            Option 3
+          </ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+    </div>
+  ),
+};
+
 // CSS Parts Customization with styling
 export const CSSPartsCustomization: Story = {
   render: () => (
