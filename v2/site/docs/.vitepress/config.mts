@@ -67,6 +67,7 @@ function getComponents() {
       { text: 'Card', link: '/components/card' },
       { text: 'Checkbox', link: '/components/checkbox' },
       { text: 'Collapsible', link: '/components/collapsible' },
+      { text: 'Combobox', link: '/components/combobox' },
       { text: 'Dialog', link: '/components/dialog' },
       { text: 'Divider', link: '/components/divider' },
       { text: 'Drawer', link: '/components/drawer' },
