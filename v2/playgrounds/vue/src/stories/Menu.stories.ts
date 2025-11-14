@@ -382,6 +382,30 @@ export const VueEventHandlers: Story = {
   }),
 };
 
+export const MonochromeSelected: Story = {
+  args: {
+    menuAriaLabel: 'Monochrome menu',
+  },
+  render: (args: VueMenuProps) => ({
+    components: { VueMenu, VueMenuItem },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="padding: 50px;">
+        <VueMenu v-bind="args">
+          Monochrome Menu
+          <template #menu>
+            <VueMenuItem value="option1" variant="monochrome">Option 1</VueMenuItem>
+            <VueMenuItem value="option2" variant="monochrome" :selected="true">Option 2 (Selected)</VueMenuItem>
+            <VueMenuItem value="option3" variant="monochrome">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    `,
+  }),
+};
+
 export const CSSPartsCustomization: Story = {
   render: (args: VueMenuProps) => ({
     components: { VueMenu, VueMenuItem, VueMenuSeparator },
