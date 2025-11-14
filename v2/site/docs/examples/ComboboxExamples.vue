@@ -180,7 +180,7 @@
         :options="stateOptions"
         label="Search States"
         placeholder="Type to search..."
-        no-results-text="😕 No states match your search"
+        no-results-text="No states match your search"
         help-text="Try typing 'xyz' to see custom no results message"
         class="mbe2"
       />

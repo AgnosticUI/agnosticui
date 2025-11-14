@@ -533,14 +533,14 @@ ag-combobox {
 
 The Combobox component follows [WCAG 2.1 Level AA](https://www.w3.org/WAI/WCAG21/quickref/) guidelines and implements the [W3C ARIA APG Combobox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/):
 
-- ✅ **ARIA attributes**: Proper `role`, `aria-expanded`, `aria-controls`, `aria-activedescendant`, `aria-autocomplete`
-- ✅ **Keyboard navigation**: Full keyboard support with arrow keys, Enter, Escape, Tab
-- ✅ **Focus management**: Uses `aria-activedescendant` pattern for predictable screen reader behavior
-- ✅ **Screen reader announcements**: Live regions announce options as user navigates
-- ✅ **Focus indicators**: Clear 2px outline with 3:1 contrast ratio
-- ✅ **High contrast mode**: Tested with Windows High Contrast Mode
-- ✅ **Reduced motion**: Respects `prefers-reduced-motion` setting
-- ✅ **Color independence**: Selection state indicated with visual markers beyond color
+- **ARIA attributes**: Proper `role`, `aria-expanded`, `aria-controls`, `aria-activedescendant`, `aria-autocomplete`
+- **Keyboard navigation**: Full keyboard support with arrow keys, Enter, Escape, Tab
+- **Focus management**: Uses `aria-activedescendant` pattern for predictable screen reader behavior
+- **Screen reader announcements**: Live regions announce options as user navigates
+- **Focus indicators**: Clear 2px outline with 3:1 contrast ratio
+- **High contrast mode**: Tested with Windows High Contrast Mode
+- **Reduced motion**: Respects `prefers-reduced-motion` setting
+- **Color independence**: Selection state indicated with visual markers beyond color
 
 ### Screen Reader Support
 
@@ -587,14 +587,14 @@ Disables client-side filtering. Useful for server-side filtering scenarios.
 
 ### When to Use
 
-✅ **Use Combobox when:**
+**Use Combobox when:**
 - Users need to search through many options (>10)
 - You want to provide typeahead/autocomplete functionality
 - Users might know the exact value they're looking for
 - You need accessible keyboard navigation
 - You want to allow filtering/searching
 
-❌ **Don't use Combobox when:**
+**Don't use Combobox when:**
 - You have fewer than 5 simple options (use Radio or Select)
 - Users need to compare options visually (use Radio group)
 - The selection is critical and requires user confirmation (use Select with explicit submit)
