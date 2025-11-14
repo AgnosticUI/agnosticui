@@ -216,9 +216,12 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
 
     .combobox-input:disabled {
-      opacity: var(--ag-opacity-disabled);
       cursor: not-allowed;
-      background-color: var(--ag-background-secondary);
+    }
+
+    .combobox-input-wrapper:has(.combobox-input:disabled) {
+      background-color: var(--ag-background-disabled);
+      cursor: not-allowed;
     }
 
     /* Invalid state */
@@ -393,8 +396,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
 
     .combobox-option[aria-disabled="true"] {
-      opacity: var(--ag-opacity-disabled);
+      background-color: var(--ag-background-disabled);
       cursor: not-allowed;
+      color: var(--ag-text-secondary);
     }
 
     /* Loading & Empty states */
