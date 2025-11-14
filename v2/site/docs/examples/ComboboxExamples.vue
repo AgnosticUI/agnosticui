@@ -200,6 +200,103 @@
         class="mbe2"
       />
     </div>
+
+    <div class="mbe4">
+      <h3>Monochrome Variant (Single Select)</h3>
+    </div>
+    <div class="stacked mbe4">
+      <VueCombobox
+        v-model:value="monochromeValue"
+        :options="stateOptions"
+        label="Select State"
+        variant="monochrome"
+        placeholder="Choose a state..."
+        help-text="Monochrome variant with inverted colors for selected items"
+        class="mbe2"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h3>Multiple Select</h3>
+    </div>
+    <div class="stacked mbe4">
+      <VueCombobox
+        v-model:value="multipleValue"
+        :options="stateOptions"
+        label="Select States"
+        :multiple="true"
+        :close-on-select="false"
+        placeholder="Choose one or more states..."
+        help-text="Select multiple states with checkboxes"
+        class="mbe2"
+      />
+      <p class="text-sm text-secondary">Selected: {{ Array.isArray(multipleValue) ? multipleValue.join(', ') : 'None' }}</p>
+    </div>
+
+    <div class="mbe4">
+      <h3>Multiple with Defaults</h3>
+    </div>
+    <div class="stacked mbe4">
+      <VueCombobox
+        :options="stateOptions"
+        label="Pre-selected States"
+        :multiple="true"
+        :close-on-select="false"
+        :default-value="['ca', 'fl']"
+        help-text="California and Florida are pre-selected"
+        class="mbe2"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h3>Multiple Clearable</h3>
+    </div>
+    <div class="stacked mbe4">
+      <VueCombobox
+        v-model:value="multipleClearable"
+        :options="stateOptions"
+        label="Select States"
+        :multiple="true"
+        :clearable="true"
+        :close-on-select="false"
+        placeholder="Select and clear multiple..."
+        help-text="Clear button removes all selections"
+        class="mbe2"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h3>Multiple with Max Visible Tags</h3>
+    </div>
+    <div class="stacked mbe4">
+      <VueCombobox
+        :options="stateOptions"
+        label="Select States"
+        :multiple="true"
+        :close-on-select="false"
+        :default-value="['al', 'ak', 'az', 'ar', 'ca']"
+        :max-options-visible="2"
+        help-text="Shows only 2 tags, with a +3 summary"
+        class="mbe2"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h3>Multiple Monochrome</h3>
+    </div>
+    <div class="stacked mbe4">
+      <VueCombobox
+        v-model:value="multipleMonochrome"
+        :options="stateOptions"
+        label="Select States"
+        :multiple="true"
+        variant="monochrome"
+        :close-on-select="false"
+        placeholder="Choose one or more states..."
+        help-text="Multiple select with monochrome variant"
+        class="mbe2"
+      />
+    </div>
   </section>
 </template>
 
@@ -268,6 +365,14 @@ const customNoResults = ref('');
 
 // Hidden label
 const hiddenLabelValue = ref('');
+
+// Monochrome
+const monochromeValue = ref('');
+
+// Multiple select
+const multipleValue = ref<string[]>([]);
+const multipleClearable = ref<string[]>(['ny', 'co']);
+const multipleMonochrome = ref<string[]>([]);
 
 // Event handler
 const handleStateChange = (event: CustomEvent<{ value: string; option: ComboboxOption | null }>) => {

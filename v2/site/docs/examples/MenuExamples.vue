@@ -134,6 +134,20 @@
     </div>
 
     <div class="mbe4">
+      <h3>Monochrome Variant</h3>
+    </div>
+    <div class="stacked mbe4">
+      <VueMenu menu-aria-label="Monochrome menu">
+        Monochrome Menu
+        <template #menu>
+          <VueMenuItem value="option1" variant="monochrome">Option 1</VueMenuItem>
+          <VueMenuItem value="option2" variant="monochrome" :selected="true">Option 2 (Selected)</VueMenuItem>
+          <VueMenuItem value="option3" variant="monochrome">Option 3</VueMenuItem>
+        </template>
+      </VueMenu>
+    </div>
+
+    <div class="mbe4">
       <h3>Event Handling</h3>
     </div>
     <div class="stacked mbe4">
