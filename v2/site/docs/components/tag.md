@@ -1,6 +1,6 @@
 # Tag
 
-Tags are used to label or categorize content, providing visual indicators for status, types, or metadata.
+Tag is used to label or categorize content, providing as a visual indicator for status, types, or metadata.
 
 <TagExamples />
 

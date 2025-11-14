@@ -1,6 +1,6 @@
 # Toast
 
-Toast notifications are non-modal elements that appear at viewport edges or corners to provide brief, contextual feedback to users. They can auto-dismiss after a duration and support pause-on-hover behavior.
+Toast notification is a non-modal element that appears at viewport edges or corners to provide brief, contextual feedback to a user. It can auto-dismiss after a duration and support pause-on-hover behavior.
 
 ## Examples
 

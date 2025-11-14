@@ -3,22 +3,22 @@
 layout: home
 
 hero:
-  name: "AgnosticUI"
-  text: "One theme…all frameworks!"
-  tagline: Lit. Vanilla. React. Vue. Svelte.
+  name: "AgnosticUI Local"
+  text: "The UI kit that lives in your project."
+  tagline: Local components. AI-friendly. React. Vue. Svelte.
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Quickstart
+      link: /getting-started
+    - theme: alt  
+      text: Show me the components!
+      link: /components/button
 
 features:
-  - title: Framework Agnostic
-    details: Single source of truth web components that can be used in Vanilla, React, Vue, and Svelte projects.
-  - title: Synchronized Theming
-    details: Design Token based CSS custom properties. Brand your UI components once, then use in all your polyglot projects.
-  - title: Rebrandable
-    details: Later, you can redesign your app via design tokens updates. NOT a full-on rewrite.
+  - title: Zero AI Bullshit
+    details: Your entire component library lives in your project. No more API error loops, token waste on docs, or broken MCP servers. AI sees everything instantly.
+  - title: AI-Native by Design  
+    details: Stop paying the "AI tax"! Components, docs, and design tokens are always available—dramatically reducing hallucinations and token limit pain.
+  - title: Incremental Adoption
+    details: Migrate from any UI library without a full rewrite. Gradually replace Shadcn, MUI, or Chakra UI components one by one. Adopt with confidence, not chaos.
 ---

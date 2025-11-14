@@ -1,6 +1,6 @@
 # Slider
 
-Sliders allow users to select a value or range of values by moving a thumb along a track. They're ideal for adjusting settings like volume, brightness, price ranges, and other numeric inputs.
+Slider allows a user to select a value or range of values by moving a thumb along a track. It's ideal for adjusting settings like volume, brightness, price ranges, and other numeric inputs.
 
 ## Examples
 
