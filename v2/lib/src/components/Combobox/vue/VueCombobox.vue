@@ -18,8 +18,8 @@ export interface VueComboboxProps
 // Define props with defaults
 const props = withDefaults(defineProps<VueComboboxProps>(), {
   options: () => [],
-  value: "",
-  defaultValue: "",
+  value: undefined,
+  defaultValue: undefined,
   placeholder: "",
   label: "",
   labelHidden: false,
@@ -36,7 +36,9 @@ const props = withDefaults(defineProps<VueComboboxProps>(), {
   required: false,
   invalid: false,
   size: "default",
-  maxVisibleOptions: undefined,
+  variant: "default",
+  multiple: false,
+  maxOptionsVisible: undefined,
   closeOnSelect: true,
   loading: false,
   loadingText: "Loading...",
@@ -104,6 +106,17 @@ watch(
   }
 );
 
+// Sync defaultValue to web component
+watch(
+  () => props.defaultValue,
+  (newDefaultValue) => {
+    if (comboboxRef.value && newDefaultValue !== undefined) {
+      (comboboxRef.value as any).defaultValue = newDefaultValue;
+    }
+  },
+  { immediate: true }
+);
+
 // Expose public methods
 defineExpose({
   focus: () => (comboboxRef.value as any)?.focus?.(),
@@ -120,8 +133,8 @@ defineExpose({
   <ag-combobox
     ref="comboboxRef"
     :options="options"
-    :value="value || undefined"
-    :default-value="defaultValue || undefined"
+    :value="value"
+    :default-value="defaultValue"
     :placeholder="placeholder || undefined"
     :label="label || undefined"
     :label-hidden="labelHidden || undefined"
@@ -138,7 +151,9 @@ defineExpose({
     :required="required || undefined"
     :invalid="invalid || undefined"
     :size="size"
-    :max-visible-options="maxVisibleOptions"
+    :variant="variant"
+    :multiple="multiple || undefined"
+    :max-options-visible="maxOptionsVisible"
     :close-on-select="closeOnSelect"
     :loading="loading || undefined"
     :loading-text="loadingText || undefined"
