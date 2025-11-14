@@ -975,7 +975,11 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     // actively searching. Show all options so they can pick a new one.
     if (!this.multiple && this._selectedOptions.length > 0 && term === this._selectedOptions[0].label) {
       this._filteredOptions = this.options.slice(0, this.maxVisibleOptions);
-      this._activeIndex = this.options.findIndex(opt => opt.value === this._selectedOptions[0]?.value);
+      // Only auto-focus the selected item if activeIndex is not explicitly -1
+      // (which happens when opening via mouse click for "fresh start" UX)
+      if (this._activeIndex !== -1) {
+        this._activeIndex = this.options.findIndex(opt => opt.value === this._selectedOptions[0]?.value);
+      }
       return;
     }
 
@@ -1190,6 +1194,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
   private _handleInputClick() {
     if (!this._open) {
+      // Reset active index for "fresh start" UX when opening via mouse
+      // User will need to Arrow Down to activate first item
+      this._activeIndex = -1;
       this.open();
     }
   }
