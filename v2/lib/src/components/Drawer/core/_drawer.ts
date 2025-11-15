@@ -1,8 +1,7 @@
 import { LitElement, html } from "lit";
 import { property } from "lit/decorators.js";
-// Dialog is a self-Registering Custom Element that registers
-// itself in the global CustomElementRegistry
-import { AgnosticDialog } from "../../Dialog/core/_dialog";
+// Import from barrel file to ensure Dialog custom element is registered
+import { AgnosticDialog } from "../../Dialog/core/Dialog";
 
 // Event types
 export type DrawerOpenEvent = CustomEvent<void>;
