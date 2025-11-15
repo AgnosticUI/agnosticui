@@ -17,7 +17,7 @@ export interface CloseButtonProps {
   /** Position variant for absolute positioning */
   position?: 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end';
   /** Color variant to match parent component type */
-  variant?: 'default' | 'primary' | 'success' | 'info' | 'danger' | 'warning' | 'error';
+  variant?: 'default' | 'primary' | 'success' | 'info' | 'danger' | 'warning' | 'error' | 'monochrome';
   /** Event handler */
   onCloseButtonClick?: (event: CloseButtonClickEvent) => void;
 }
@@ -47,7 +47,7 @@ export class CloseButton extends LitElement implements CloseButtonProps {
   declare position: 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | undefined;
 
   @property({ type: String, reflect: true })
-  declare variant: 'default' | 'primary' | 'success' | 'info' | 'danger' | 'warning' | 'error';
+  declare variant: 'default' | 'primary' | 'success' | 'info' | 'danger' | 'warning' | 'error' | 'monochrome';
 
   constructor() {
     super();
@@ -131,6 +131,15 @@ export class CloseButton extends LitElement implements CloseButtonProps {
 
     :host([variant="warning"]) .close-button {
       color: var(--ag-warning-dark);
+    }
+
+    :host([variant="monochrome"]) .close-button {
+      color: var(--ag-text-primary);
+    }
+
+    :host([variant="monochrome"]:hover) .close-button {
+      background: var(--ag-background-secondary);
+      color: var(--ag-text-primary);
     }
 
     /* Position variants - for absolute positioning within parent */

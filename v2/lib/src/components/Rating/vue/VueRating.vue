@@ -15,7 +15,7 @@ export interface VueRatingProps {
   precision?: 'whole' | 'half';
   readonly?: boolean;
   allowClear?: boolean;
-  variant?: '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+  variant?: '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'monochrome';
   size?: 'sm' | 'md' | 'lg';
 }
 

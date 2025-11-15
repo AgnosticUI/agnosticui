@@ -95,6 +95,13 @@
         >
           <Star />
         </VueIcon>
+        <VueIcon
+          noFill
+          type="monochrome"
+          size="20"
+        >
+          <Star />
+        </VueIcon>
       </div>
     </div>
 

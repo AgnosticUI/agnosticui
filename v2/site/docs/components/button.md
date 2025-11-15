@@ -23,6 +23,7 @@ import ButtonExamples from '../examples/ButtonExamples.vue'
     <VueButton variant="primary">Primary</VueButton>
     <VueButton variant="success">Success</VueButton>
     <VueButton variant="danger">Danger</VueButton>
+    <VueButton variant="monochrome">Monochrome</VueButton>
 
     <!-- Sizes -->
     <VueButton size="sm">Small</VueButton>
@@ -98,6 +99,7 @@ export default function ButtonExample() {
       <ReactButton variant="primary">Primary</ReactButton>
       <ReactButton variant="success">Success</ReactButton>
       <ReactButton variant="danger">Danger</ReactButton>
+      <ReactButton variant="monochrome">Monochrome</ReactButton>
 
       {/* Sizes */}
       <ReactButton size="sm">Small</ReactButton>
@@ -159,6 +161,7 @@ export default function ButtonExample() {
   <ag-button variant="primary">Primary</ag-button>
   <ag-button variant="success">Success</ag-button>
   <ag-button variant="danger">Danger</ag-button>
+  <ag-button variant="monochrome">Monochrome</ag-button>
 
   <!-- Sizes -->
   <ag-button size="sm">Small</ag-button>

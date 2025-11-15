@@ -50,7 +50,7 @@ export interface IconButtonProps {
   icon?: string;
   unicode?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost' | 'monochrome';
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   pressed?: boolean;
@@ -300,6 +300,15 @@ export class AgIconButton extends LitElement implements IconButtonProps {
     :host([variant="danger"]) button:hover {
       background: var(--ag-danger-dark);
     }
+
+    /* Monochrome variant - adapts to light/dark themes */
+    :host([variant="monochrome"]) button {
+      background: var(--ag-background-primary-inverted);
+      color: var(--ag-text-primary-inverted);
+    }
+    :host([variant="monochrome"]) button:hover {
+      background: var(--ag-background-secondary-inverted);
+    }
   `;
 
   /**
@@ -331,7 +340,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
    * Visual variant
    */
   @property({ type: String, reflect: true })
-  declare variant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost';
+  declare variant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost' | 'monochrome';
 
   /**
    * Disabled state

@@ -98,6 +98,12 @@
       >
         <Trash2 :size="18" />
       </VueIconButton>
+      <VueIconButton
+        label="Monochrome"
+        variant="monochrome"
+      >
+        <Star :size="18" />
+      </VueIconButton>
     </div>
 
     <div class="mbe4">

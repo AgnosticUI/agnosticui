@@ -69,6 +69,11 @@
         variant="danger"
         :checked="true"
       />
+      <VueToggle
+        label="Monochrome"
+        variant="monochrome"
+        :checked="true"
+      />
     </div>
 
     <div class="mbe2">

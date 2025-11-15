@@ -146,6 +146,21 @@
           >⇧</VueKbd>
           <VueKbd variant="error">⌃</VueKbd>
         </div>
+        <div class="mbe2">
+          <VueKbd
+            variant="monochrome"
+            class="mie2"
+          >⌘</VueKbd>
+          <VueKbd
+            variant="monochrome"
+            class="mie2"
+          >⌥</VueKbd>
+          <VueKbd
+            variant="monochrome"
+            class="mie2"
+          >⇧</VueKbd>
+          <VueKbd variant="monochrome">⌃</VueKbd>
+        </div>
       </div>
     </div>
 
@@ -353,6 +368,27 @@
           <VueKbd
             :background="true"
             variant="error"
+          >⌃</VueKbd>
+        </div>
+        <div class="mbe2">
+          <VueKbd
+            :background="true"
+            variant="monochrome"
+            class="mie2"
+          >⌘</VueKbd>
+          <VueKbd
+            :background="true"
+            variant="monochrome"
+            class="mie2"
+          >⌥</VueKbd>
+          <VueKbd
+            :background="true"
+            variant="monochrome"
+            class="mie2"
+          >⇧</VueKbd>
+          <VueKbd
+            :background="true"
+            variant="monochrome"
           >⌃</VueKbd>
         </div>
       </div>

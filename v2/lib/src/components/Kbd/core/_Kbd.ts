@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
-export type KbdVariant = 'default' | 'primary' | 'secondary' | 'info' | 'warning' | 'success' | 'danger' | 'error';
+export type KbdVariant = 'default' | 'primary' | 'secondary' | 'info' | 'warning' | 'success' | 'danger' | 'error' | 'monochrome';
 export type KbdSize = 'sm' | 'md' | 'lg';
 
 export interface KbdProps {
@@ -122,6 +122,14 @@ export class Kbd extends LitElement implements KbdProps {
     }
     :host([variant='error'][background]) .kbd-wrapper {
       background-color: var(--ag-danger-background);
+    }
+    :host([variant='monochrome']) .kbd-wrapper {
+      color: var(--ag-text-primary);
+      border-color: var(--ag-text-primary);
+    }
+    :host([variant='monochrome'][background]) .kbd-wrapper {
+      background-color: var(--ag-background-primary-inverted);
+      color: var(--ag-text-primary-inverted);
     }
   `;
 

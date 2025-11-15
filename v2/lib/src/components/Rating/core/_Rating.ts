@@ -18,7 +18,7 @@ export type RatingHoverEvent = CustomEvent<RatingHoverEventDetail>;
 // Prop types
 export type RatingPrecision = 'whole' | 'half';
 export type RatingSize = 'sm' | 'md' | 'lg';
-export type RatingVariant = '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+export type RatingVariant = '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'monochrome';
 
 export interface RatingProps {
   value?: number;
@@ -154,6 +154,10 @@ export class AgRating extends LitElement {
     :host([variant="secondary"]) .star.filled > svg > path:last-of-type,
     :host([variant="secondary"]) .star.hover svg path {
       fill: var(--ag-rating-filled-secondary, var(--ag-secondary));
+    }
+    :host([variant="monochrome"]) .star.filled > svg > path:last-of-type,
+    :host([variant="monochrome"]) .star.hover svg path {
+      fill: var(--ag-text-primary);
     }
 
     .star-button {

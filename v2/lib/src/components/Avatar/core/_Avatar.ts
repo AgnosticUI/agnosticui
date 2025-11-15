@@ -12,7 +12,7 @@ import { property } from 'lit/decorators.js';
 
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type AvatarShape = 'circle' | 'square' | 'rounded';
-export type AvatarVariant = 'default' | 'info' | 'warning' | 'success' | 'error' | 'transparent';
+export type AvatarVariant = 'default' | 'info' | 'warning' | 'success' | 'error' | 'transparent' | 'monochrome';
 
 /**
  * Props interface for Avatar component
@@ -127,6 +127,11 @@ export class Avatar extends LitElement implements AvatarProps {
 
     :host([variant="transparent"]) .avatar {
       background: transparent;
+    }
+
+    :host([variant="monochrome"]) .avatar {
+      background: var(--ag-background-primary-inverted);
+      color: var(--ag-text-primary-inverted);
     }
 
     .avatar-image {

@@ -29,6 +29,10 @@
         shape="rounded"
         variant="danger"
       >Danger</VueButton>
+      <VueButton
+        shape="rounded"
+        variant="monochrome"
+      >Monochrome</VueButton>
     </div>
 
     <!-- Shapes -->
@@ -96,6 +100,11 @@
         shape="rounded"
         variant="danger"
       >Danger</VueButton>
+      <VueButton
+        :bordered="true"
+        shape="rounded"
+        variant="monochrome"
+      >Monochrome</VueButton>
     </div>
 
     <!-- Sizes -->
@@ -387,7 +396,65 @@
         shape="rounded"
       >Extra Large</VueButton>
     </div>
-
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        size="x-sm"
+        variant="monochrome"
+        shape="rounded"
+      >Extra Small</VueButton>
+      <VueButton
+        size="sm"
+        variant="monochrome"
+        shape="rounded"
+      >Small</VueButton>
+      <VueButton
+        size="md"
+        variant="monochrome"
+        shape="rounded"
+      >Medium</VueButton>
+      <VueButton
+        size="lg"
+        variant="monochrome"
+        shape="rounded"
+      >Large</VueButton>
+      <VueButton
+        size="xl"
+        variant="monochrome"
+        shape="rounded"
+      >Extra Large</VueButton>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        size="x-sm"
+        bordered
+        variant="monochrome"
+        shape="rounded"
+      >Extra Small</VueButton>
+      <VueButton
+        size="sm"
+        :bordered="true"
+        variant="monochrome"
+        shape="rounded"
+      >Small</VueButton>
+      <VueButton
+        size="md"
+        :bordered="true"
+        variant="monochrome"
+        shape="rounded"
+      >Medium</VueButton>
+      <VueButton
+        size="lg"
+        :bordered="true"
+        variant="monochrome"
+        shape="rounded"
+      >Large</VueButton>
+      <VueButton
+        size="xl"
+        :bordered="true"
+        variant="monochrome"
+        shape="rounded"
+      >Extra Large</VueButton>
+    </div>
     <!-- Icons -->
     <div class="mbe2">
       <h3>Icons Small</h3>
@@ -566,7 +633,34 @@
         >Lit</VueButton>
       </div>
     </div>
-
+    <div class="stacked-mobile mbe4">
+      <div
+        class="flex-inline"
+        role="group"
+        aria-label="Framework selection"
+      >
+        <VueButton
+          grouped
+          :bordered="true"
+          variant="monochrome"
+        >React</VueButton>
+        <VueButton
+          grouped
+          :bordered="true"
+          variant="monochrome"
+        >Vue</VueButton>
+        <VueButton
+          grouped
+          :bordered="true"
+          variant="monochrome"
+        >Svelte</VueButton>
+        <VueButton
+          grouped
+          :bordered="true"
+          variant="monochrome"
+        >Lit</VueButton>
+      </div>
+    </div>
     <!-- Misc -->
     <div class="mbe2">
       <h3>Miscellaneous</h3>

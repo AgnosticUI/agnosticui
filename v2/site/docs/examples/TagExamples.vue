@@ -29,6 +29,10 @@
           variant="error"
           class="mbe2"
         >Error Tag</VueTag>
+        <VueTag
+          variant="monochrome"
+          class="mbe2"
+        >Monochrome Tag</VueTag>
       </div>
     </div>
     <div class="mbe4">

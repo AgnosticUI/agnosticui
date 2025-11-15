@@ -4,7 +4,7 @@ import { hasSlotContent } from '../../../utils/slot';
 
 export type DividerJustify = 'center' | 'start' | 'end';
 export type DividerSize = 'default' | 'small' | 'large' | 'xlarge';
-export type DividerVariant = 'default' | 'success' | 'info' | 'warning' | 'error';
+export type DividerVariant = 'default' | 'success' | 'info' | 'warning' | 'error' | 'monochrome';
 
 /**
  * @csspart ag-divider - The main divider container element
@@ -150,6 +150,15 @@ export class Divider extends LitElement implements DividerProps {
 
     .divider-info .divider-content {
       color: var(--ag-info);
+    }
+
+    .divider-monochrome::before,
+    .divider-monochrome::after {
+      background-color: var(--ag-text-primary);
+    }
+
+    .divider-monochrome .divider-content {
+      color: var(--ag-text-primary);
     }
   `;
 

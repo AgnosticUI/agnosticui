@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 import { hasSlotContent } from '../../../utils/slot';
 
-export type CardVariant = 'success' | 'info' | 'error' | 'warning' | '';
+export type CardVariant = 'success' | 'info' | 'error' | 'warning' | 'monochrome' | '';
 export type CardRounded = 'sm' | 'md' | 'lg' | '';
 
 export interface CardProps {
@@ -126,6 +126,11 @@ export class Card extends LitElement implements CardProps {
     :host([variant="warning"]) {
       background-color: var(--ag-warning-background);
       color: var(--ag-warning-text);
+    }
+
+    :host([variant="monochrome"]) {
+      background-color: var(--ag-background-primary-inverted);
+      color: var(--ag-text-primary-inverted);
     }
 
     .card-header,

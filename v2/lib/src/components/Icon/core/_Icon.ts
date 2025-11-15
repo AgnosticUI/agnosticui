@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
 export type IconSize = '14' | '16' | '18' | '20' | '24' | '32' | '36' | '40' | '48' | '56' | '64' | '';
-export type IconType = 'info' | 'primary' | 'action' | 'success' | 'warning' | 'error' | '';
+export type IconType = 'info' | 'primary' | 'action' | 'success' | 'warning' | 'error' | 'monochrome' | '';
 
 export interface IconProps {
   size?: IconSize;
@@ -120,6 +120,10 @@ export class Icon extends LitElement implements IconProps {
 
     :host([type="error"]) {
       color: var(--ag-danger);
+    }
+
+    :host([type="monochrome"]) {
+      color: var(--ag-text-primary);
     }
   `;
 

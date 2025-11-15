@@ -131,6 +131,7 @@ export class AgnosticDrawer extends LitElement implements DrawerProps {
   render() {
     return html`
       <ag-dialog
+        .open=${this.open}
         .heading=${this.heading}
         .description=${this.description}
         .noCloseOnEscape=${this.noCloseOnEscape}

@@ -27,6 +27,7 @@ import AlertExamples from '../examples/AlertExamples.vue'
       <VueAlert class="mbe2" type="warning">Warning alert</VueAlert>
       <VueAlert class="mbe2" type="danger">Danger alert</VueAlert>
       <VueAlert class="mbe2" type="error">Error alert</VueAlert>
+      <VueAlert class="mbe2" type="monochrome">Monochrome alert</VueAlert>
     </div>
 
     <div class="mbe4">
@@ -39,6 +40,7 @@ import AlertExamples from '../examples/AlertExamples.vue'
       <VueAlert class="mbe2" bordered type="warning">Warning alert</VueAlert>
       <VueAlert class="mbe2" bordered type="danger">Danger alert</VueAlert>
       <VueAlert class="mbe2" bordered type="error">Error alert</VueAlert>
+      <VueAlert class="mbe2" bordered type="monochrome">Monochrome alert</VueAlert>
     </div>
     <div class="mbe4">
       <h3>Bordered Left with Icon</h3>
@@ -90,6 +92,7 @@ import AlertExamples from '../examples/AlertExamples.vue'
       <VueAlert class="mbe2" rounded type="warning">Warning alert</VueAlert>
       <VueAlert class="mbe2" rounded type="danger">Danger alert</VueAlert>
       <VueAlert class="mbe2" rounded type="error">Error alert</VueAlert>
+      <VueAlert class="mbe2" rounded type="monochrome">Monochrome alert</VueAlert>
     </div>
   </section>
 </template>

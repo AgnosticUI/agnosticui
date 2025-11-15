@@ -114,6 +114,13 @@
         <h4 class="m0">Warning</h4>
         <p>Please review this information carefully.</p>
       </VueCard>
+      <VueCard
+        variant="monochrome"
+        class="mbe2"
+      >
+        <h4 class="m0">Monochrome</h4>
+        <p>Clean and modern monochrome design.</p>
+      </VueCard>
     </div>
 
     <div class="mbe4">
