@@ -14,7 +14,7 @@ export async function list(): Promise<void> {
 
   if (!config) {
     logger.error('AgnosticUI is not initialized in this project.');
-    logger.info('Run ' + pc.cyan('ag init') + ' to get started.');
+    logger.info('Run ' + pc.cyan('npx ag init') + ' to get started.');
     process.exit(1);
   }
 
@@ -23,7 +23,7 @@ export async function list(): Promise<void> {
   // Validate reference library exists
   if (!pathExists(referencePath)) {
     logger.error(`Reference library not found at: ${referencePath}`);
-    logger.info('Please run ' + pc.cyan('ag init') + ' again.');
+    logger.info('Please run ' + pc.cyan('npx ag init') + ' again.');
     process.exit(1);
   }
 
@@ -72,10 +72,10 @@ export async function list(): Promise<void> {
     // Show usage hint
     logger.box('Add Components:', [
       pc.dim('Add a single component:'),
-      '  ' + logger.command('ag add button'),
+      '  ' + logger.command('npx ag add button'),
       '',
       pc.dim('Add multiple components:'),
-      '  ' + logger.command('ag add button input checkbox'),
+      '  ' + logger.command('npx ag add button input checkbox'),
     ]);
   } catch (error) {
     logger.error(`Failed to list components: ${error instanceof Error ? error.message : 'Unknown error'}`);

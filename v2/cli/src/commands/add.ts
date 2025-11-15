@@ -20,7 +20,7 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
   const config = await loadConfig();
   if (!config) {
     logger.error('AgnosticUI is not initialized in this project.');
-    logger.info('Run ' + pc.cyan('ag init') + ' to get started.');
+    logger.info('Run ' + pc.cyan('npx ag init') + ' to get started.');
     process.exit(1);
   }
 
@@ -30,7 +30,7 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
   // Validate reference library exists
   if (!pathExists(referencePath)) {
     logger.error(`Reference library not found at: ${referencePath}`);
-    logger.info('Please run ' + pc.cyan('ag init') + ' again.');
+    logger.info('Please run ' + pc.cyan('npx ag init') + ' again.');
     process.exit(1);
   }
 
@@ -43,7 +43,7 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
 
   if (invalidComponents.length > 0) {
     logger.error(`Invalid component(s): ${invalidComponents.join(', ')}`);
-    logger.info('Run ' + pc.cyan('ag list') + ' to see available components.');
+    logger.info('Run ' + pc.cyan('npx ag list') + ' to see available components.');
     process.exit(1);
   }
 
