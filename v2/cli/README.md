@@ -134,11 +134,48 @@ List all available components and show which ones are already added to your proj
 ag list
 ```
 
+### `ag sync`
+
+Update the reference library from a tarball (useful during local development).
+
+**Options:**
+- `-t, --tarball <path>` - Path to tarball (overrides path from config)
+
+**Examples:**
+```bash
+# Use tarball path from config
+ag sync
+
+# Override with specific tarball
+ag sync --tarball /path/to/new/agnosticui-local-v0.0.2.tar.gz
+```
+
+**What it does:**
+1. Reads tarball path from `agnosticui.config.json` (or uses `--tarball` flag)
+2. Shows confirmation with tarball path and version
+3. Extracts tarball to `./agnosticui/` (overwrites reference library)
+4. Updates CSS tokens in `{componentsPath}/styles/`
+5. Updates config with new tarball info and timestamp
+
+**Your components are never touched** - only the reference library is updated.
+
+**Typical workflow:**
+```bash
+# Rebuild the library
+cd v2
+./scripts/build-local-tarball.sh
+
+# Sync in your project
+cd ../your-project
+npx ag sync
+```
+
 ## How It Works
 
-1. **`ag init`** extracts the AgnosticUI reference library to `./agnosticui/` and creates a config file
+1. **`ag init`** extracts the AgnosticUI reference library to `./agnosticui/` and creates a config file (saves tarball path for sync)
 2. **`ag add`** copies both the `core/` and framework-specific directories (e.g., `react/`) from the reference library to your project
-3. Components are fully yours to customize - they're copied, not linked
+3. **`ag sync`** updates the reference library by re-extracting from the tarball (your components remain untouched)
+4. Components are fully yours to customize - they're copied, not linked
 
 ## Project Structure After Init
 
@@ -170,3 +207,37 @@ your-project/
 - All file operations preserve the structure: `core/` + `framework/`
 - `npm pack` is more reliable than `npm link` for local testing
 - Remember to rebuild (`npm run build`) and repack after making CLI changes
+
+# Status on 11/15/25
+
+  ✅ Completed (MVP for local dogfooding)
+
+  - ag init - Fully functional with interactive prompts, tarball extraction, config creation
+  - ag add - Component copying with --force flag support
+  - ag list - Display available components
+  - Build tooling - build-local-tarball.sh creates distributable tarballs
+  - Dependency management - Auto-detects package manager, installs required deps (lit, @lit/react)
+  - CSS tokens - Automatically copies to components/styles directory
+  - TypeScript warnings - Reminds about experimentalDecorators config
+
+  📝 Outstanding TODOs
+
+  1. Production Tarball Download (init.ts:158-160)
+  Currently hardcoded to look for local tarball in ../../dist/. Needs:
+  - Download from GitHub releases or CDN
+  - Version resolution (latest vs specific version)
+  - Progress indicator during download
+  - Caching mechanism
+
+  2. Dynamic Version Reading (components.ts:69)
+  Currently hardcoded to '2.0.0-alpha'. Should read from version.json in the extracted tarball.
+
+  📊 Current State
+
+  The CLI is production-ready for local development but not yet ready for npm publish because users can't download the component library - they'd need
+  the tarball manually.
+
+  For npm publication, you need:
+  1. Implement tarball downloading from GitHub releases
+  2. Publish both @agnosticui/cli and host tarball on GitHub releases
+  3. Optional: Add version flags (--version, specific version support)

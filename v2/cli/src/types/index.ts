@@ -13,6 +13,11 @@ export interface AgnosticUIConfig {
     components: string;
     styles?: string;
   };
+  tarball?: {
+    source: string;      // Path to tarball used during init
+    version: string;     // Version extracted from tarball
+    installed: string;   // ISO timestamp of when it was installed
+  };
   components: Record<string, ComponentEntry>;
   ai?: {
     includeReference?: boolean;

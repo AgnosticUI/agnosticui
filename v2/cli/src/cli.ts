@@ -7,6 +7,7 @@ import { Command } from 'commander';
 import { init } from './commands/init.js';
 import { add } from './commands/add.js';
 import { list } from './commands/list.js';
+import { sync } from './commands/sync.js';
 import type { Framework } from './types/index.js';
 
 const program = new Command();
@@ -48,6 +49,17 @@ program
   .description('List available components')
   .action(async () => {
     await list();
+  });
+
+// ag sync command
+program
+  .command('sync')
+  .description('Update reference library from tarball')
+  .option('-t, --tarball <path>', 'Path to tarball (overrides config)')
+  .action(async (options) => {
+    await sync({
+      tarball: options.tarball,
+    });
   });
 
 // Parse arguments

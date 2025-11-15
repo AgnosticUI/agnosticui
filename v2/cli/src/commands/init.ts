@@ -88,9 +88,30 @@ export async function init(options: InitOptions = {}): Promise<void> {
     await ensureDir(DEFAULT_REFERENCE_PATH);
     await extractTarball(tarballPath, DEFAULT_REFERENCE_PATH);
 
+    // Read version from extracted tarball
+    const versionJsonPath = path.join(DEFAULT_REFERENCE_PATH, 'version.json');
+    let tarballVersion = '2.0.0-alpha'; // fallback
+    if (pathExists(versionJsonPath)) {
+      try {
+        const { readFile } = await import('node:fs/promises');
+        const versionData = JSON.parse(await readFile(versionJsonPath, 'utf-8'));
+        tarballVersion = versionData.version || tarballVersion;
+      } catch {
+        // Use fallback version
+      }
+    }
+
     // Create config file
     spinner.message('Creating configuration...');
-    const config = createDefaultConfig(framework, componentsPath, '2.0.0-alpha');
+    const config = createDefaultConfig(framework, componentsPath, tarballVersion);
+
+    // Add tarball info to config
+    config.tarball = {
+      source: path.resolve(tarballPath),
+      version: tarballVersion,
+      installed: new Date().toISOString(),
+    };
+
     await saveConfig(config);
 
     // Create components directory
