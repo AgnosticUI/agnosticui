@@ -97,6 +97,23 @@ export async function init(options: InitOptions = {}): Promise<void> {
     spinner.message('Creating components directory...');
     await ensureDir(componentsPath);
 
+    // Copy CSS tokens to components/styles directory
+    spinner.message('Copying CSS tokens...');
+    const stylesPath = path.join(componentsPath, 'styles');
+    await ensureDir(stylesPath);
+
+    const tokensSourcePath = path.join(DEFAULT_REFERENCE_PATH, 'tokens');
+    const tokenFiles = ['ag-tokens.css', 'ag-tokens-dark.css'];
+
+    for (const tokenFile of tokenFiles) {
+      const srcFile = path.join(tokensSourcePath, tokenFile);
+      const destFile = path.join(stylesPath, tokenFile);
+      if (pathExists(srcFile)) {
+        const { copyFile } = await import('node:fs/promises');
+        await copyFile(srcFile, destFile);
+      }
+    }
+
     spinner.stop(pc.green('✓') + ' Initialized successfully!');
 
     // Check and install dependencies
@@ -108,8 +125,8 @@ export async function init(options: InitOptions = {}): Promise<void> {
     logger.newline();
     logger.box('Next Steps:', [
       pc.dim('1. Import CSS tokens in your app entry point (e.g., main.tsx):'),
-      '  ' + logger.command(`import './agnosticui/tokens/ag-tokens.css'`),
-      '  ' + logger.command(`import './agnosticui/tokens/ag-tokens-dark.css'`),
+      '  ' + logger.command(`import '${componentsPath}/styles/ag-tokens.css'`),
+      '  ' + logger.command(`import '${componentsPath}/styles/ag-tokens-dark.css'`),
       '',
       pc.dim('2. Add a component:'),
       '  ' + logger.command('npx ag add button'),
