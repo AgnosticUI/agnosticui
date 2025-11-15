@@ -100,6 +100,10 @@
         text="ER"
         variant="error"
       />
+      <VueAvatar
+        text="MC"
+        variant="monochrome"
+      />
     </div>
 
     <div class="mbe4">
@@ -291,6 +295,11 @@
         <VueAvatar
           text="ER"
           variant="error"
+          size="lg"
+        />
+        <VueAvatar
+          text="MC"
+          variant="monochrome"
           size="lg"
         />
       </VueAvatarGroup>

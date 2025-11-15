@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
-export type TagVariant = 'info' | 'warning' | 'error' | 'success' | 'primary' | '';
+export type TagVariant = 'info' | 'warning' | 'error' | 'success' | 'primary' | 'monochrome' | '';
 export type TagShape = 'pill' | 'round' | 'circle' | '';
 
 // Event detail interfaces
@@ -74,6 +74,11 @@ export class AgTag extends LitElement implements TagProps {
     :host([variant='primary']) {
       --tag-background-color: var(--ag-primary-background);
       --tag-color: var(--ag-primary-text);
+    }
+
+    :host([variant='monochrome']) {
+      --tag-background-color: var(--ag-background-primary-inverted);
+      --tag-color: var(--ag-text-primary-inverted);
     }
 
     /* Shapes */

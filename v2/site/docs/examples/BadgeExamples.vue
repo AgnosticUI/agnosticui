@@ -16,6 +16,7 @@
       <VueBadge variant="warning">Warning</VueBadge>
       <VueBadge variant="danger">Danger</VueBadge>
       <VueBadge variant="neutral">Neutral</VueBadge>
+      <VueBadge variant="monochrome">Monochrome</VueBadge>
     </div>
 
     <!-- Sizes -->
@@ -62,6 +63,10 @@
       <VueBadge
         dot
         variant="danger"
+      ></VueBadge>
+      <VueBadge
+        dot
+        variant="monochrome"
       ></VueBadge>
     </div>
 

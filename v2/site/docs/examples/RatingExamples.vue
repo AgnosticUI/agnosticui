@@ -43,6 +43,7 @@
         <VueRating variant="success" :value="3" />
         <VueRating variant="warning" :value="3" />
         <VueRating variant="danger" :value="3" />
+        <VueRating variant="monochrome" :value="3" />
       </div>
     </div>
 

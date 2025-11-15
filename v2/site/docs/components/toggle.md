@@ -41,6 +41,11 @@ import ToggleExamples from '../examples/ToggleExamples.vue'
       variant="danger"
       :checked="true"
     />
+    <VueToggle
+      label="Monochrome variant"
+      variant="monochrome"
+      :checked="true"
+    />
 
     <!-- Disabled state -->
     <VueToggle label="Disabled toggle" disabled />

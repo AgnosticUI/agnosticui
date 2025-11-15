@@ -29,6 +29,10 @@
         class="mbe2"
         type="danger"
       >Danger alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        type="monochrome"
+      >Monochrome alert</VueAlert>
     </div>
     <div class="mbe4">
       <h3>Bordered</h3>
@@ -68,6 +72,11 @@
         bordered
         type="danger"
       >Danger alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        bordered
+        type="monochrome"
+      >Monochrome alert</VueAlert>
     </div>
     <div class="mbe4">
       <h3>Bordered Left with Icon</h3>
@@ -164,6 +173,19 @@
           />Danger alert
         </div>
       </VueAlert>
+      <VueAlert
+        class="mbe2"
+        borderedLeft
+        type="monochrome"
+      >
+        <div class="flex-inline items-center justify-center">
+          <Info
+            color="var(--ag-monochrome)"
+            :size="18"
+            class="mie2"
+          />Monochrome alert
+        </div>
+      </VueAlert>
     </div>
     <div class="mbe4">
       <h3>Rounded</h3>
@@ -203,6 +225,11 @@
         rounded
         type="danger"
       >Danger alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        rounded
+        type="monochrome"
+      >Monochrome alert</VueAlert>
     </div>
     <div class="mbe4">
       <h3>CSS Parts Customization</h3>

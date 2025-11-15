@@ -4,7 +4,6 @@
     :heading="heading"
     :description="description"
     v-bind="{
-      ...(open ? { open: true } : {}),
       ...(noCloseOnEscape ? { 'no-close-on-escape': true } : {}),
       ...(noCloseOnBackdrop ? { 'no-close-on-backdrop': true } : {}),
       ...(showCloseButton ? { 'show-close-button': true } : {}),
@@ -81,7 +80,10 @@ onMounted(async () => {
 
   const drawerEl = drawerRef.value as any;
 
-  // Explicitly set boolean properties to ensure they're properly handled
+  // Explicitly set properties to ensure they're properly handled
+  if (props.open !== undefined) {
+    drawerEl.open = props.open;
+  }
   if (props.noCloseOnEscape !== undefined) {
     drawerEl.noCloseOnEscape = props.noCloseOnEscape;
   }
@@ -108,6 +110,7 @@ onUnmounted(() => {
 // Watch for prop changes and update web component properties
 watch(
   [
+    () => props.open,
     () => props.noCloseOnEscape,
     () => props.noCloseOnBackdrop,
     () => props.showCloseButton,
@@ -117,6 +120,10 @@ watch(
 
     const drawerEl = drawerRef.value as any;
 
+    // Update open property when it changes
+    if (props.open !== undefined) {
+      drawerEl.open = props.open;
+    }
     // Update boolean properties when props change
     if (props.noCloseOnEscape !== undefined) {
       drawerEl.noCloseOnEscape = props.noCloseOnEscape;

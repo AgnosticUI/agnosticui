@@ -36,7 +36,7 @@ export type ButtonToggleEvent = CustomEvent<ButtonToggleEventDetail>;
 
 // Props interface following INTERFACE_STANDARDS.md
 export interface ButtonProps {
-  variant?: 'success' | 'primary' | 'secondary' | 'warning' | 'danger' | '';
+  variant?: 'success' | 'primary' | 'secondary' | 'warning' | 'danger' | 'monochrome' | '';
   size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
   shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
   bordered?: boolean;
@@ -140,6 +140,15 @@ export class AgButton extends LitElement implements ButtonProps {
     }
     :host([variant="danger"]) button:hover {
       background: var(--ag-danger-dark);
+    }
+
+    /* Monochrome variant - adapts to light/dark themes */
+    :host([variant="monochrome"]) button {
+      background: var(--ag-background-primary-inverted);
+      color: var(--ag-text-primary-inverted);
+    }
+    :host([variant="monochrome"]) button:hover {
+      background: var(--ag-background-secondary-inverted);
     }
 
     /* Size variants */
@@ -349,6 +358,24 @@ export class AgButton extends LitElement implements ButtonProps {
       color: var(--ag-white);
     }
 
+    :host([bordered][variant="monochrome"]) button {
+      color: var(--ag-text-primary);
+      border-color: var(--ag-text-primary);
+    }
+
+    :host([bordered][variant="monochrome"]) button:hover {
+      background: var(--ag-background-primary-inverted);
+      color: var(--ag-text-primary-inverted);
+    }
+
+    :host([ghost][variant="monochrome"]) button {
+      color: var(--ag-text-primary);
+    }
+
+    :host([ghost][variant="monochrome"]) button:hover {
+      background: var(--ag-background-secondary);
+    }
+
     button:disabled {
       cursor: not-allowed;
       background: var(--ag-background-disabled);
@@ -367,7 +394,7 @@ export class AgButton extends LitElement implements ButtonProps {
    * Visual variant for styling hooks
    */
   @property({ type: String, reflect: true })
-  declare variant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | '';
+  declare variant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'monochrome' | '';
 
   /**
    * Size variant for styling hooks

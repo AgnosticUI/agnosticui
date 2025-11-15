@@ -90,6 +90,8 @@
       <VueDivider variant="warning">Warning</VueDivider>
       <div class="mbe2"></div>
       <VueDivider variant="error">Error</VueDivider>
+      <div class="mbe2"></div>
+      <VueDivider variant="monochrome">Monochrome</VueDivider>
     </div>
 
     <div class="mbe4">

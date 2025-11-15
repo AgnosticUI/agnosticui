@@ -41,7 +41,7 @@ export interface ToggleProps {
   label?: string;
   checked?: boolean;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'default' | 'success' | 'warning' | 'danger';
+  variant?: 'default' | 'success' | 'warning' | 'danger' | 'monochrome';
   disabled?: boolean;
   readonly?: boolean;
   labelledBy?: string;
@@ -200,6 +200,14 @@ export class AgToggle extends LitElement implements ToggleProps {
       background: var(--ag-danger);
     }
 
+    :host([checked][variant="monochrome"]) .ag-toggle__track {
+      background: var(--ag-background-primary-inverted);
+    }
+
+    :host([checked][variant="monochrome"]) .ag-toggle__handle {
+      background: var(--ag-text-primary-inverted);
+    }
+
     /* Readonly state */
     :host([readonly]) button {
       cursor: default;
@@ -242,7 +250,7 @@ export class AgToggle extends LitElement implements ToggleProps {
    * Visual variant
    */
   @property({ type: String, reflect: true })
-  declare variant: 'default' | 'success' | 'warning' | 'danger';
+  declare variant: 'default' | 'success' | 'warning' | 'danger' | 'monochrome';
 
   /**
    * Disabled state

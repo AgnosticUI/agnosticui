@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 import '../../shared/CloseButton/CloseButton';
 
-export type AlertType = 'warning' | 'info' | 'success' | 'error' | 'danger' | 'primary' | 'default';
+export type AlertType = 'warning' | 'info' | 'success' | 'error' | 'danger' | 'primary' | 'default' | 'monochrome';
 
 // Event detail interfaces
 export interface AlertDismissEventDetail {
@@ -107,6 +107,13 @@ export class Alert extends LitElement implements AlertProps {
     }
     .alert-border-left.alert-primary {
       border-left-color: var(--ag-primary);
+    }
+    .alert-monochrome {
+      background-color: var(--ag-background-primary-inverted);
+      color: var(--ag-text-primary-inverted);
+    }
+    .alert-border-left.alert-monochrome {
+      border-left-color: var(--ag-text-primary);
     }
   `;
 

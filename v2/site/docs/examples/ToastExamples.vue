@@ -126,6 +126,22 @@
           Critical error detected!
         </div>
       </VueToast>
+
+      <button
+        class="demo-button"
+        @click="showToast('showMonochrome')"
+      >
+        Show Monochrome Toast
+      </button>
+      <VueToast
+        v-model:open="showMonochrome"
+        type="monochrome"
+        @toast-close="showMonochrome = false"
+      >
+        <div class="flex-inline items-center">
+          Modern monochrome notification
+        </div>
+      </VueToast>
     </div>
 
     <div class="mbe4">
@@ -516,6 +532,7 @@ export default defineComponent({
     const showWarning = ref(false);
     const showError = ref(false);
     const showDanger = ref(false);
+    const showMonochrome = ref(false);
 
     const showTopStart = ref(false);
     const showTop = ref(false);
@@ -549,6 +566,7 @@ export default defineComponent({
       showWarning,
       showError,
       showDanger,
+      showMonochrome,
       showTopStart,
       showTop,
       showTopEnd,
@@ -592,6 +610,7 @@ export default defineComponent({
       showWarning,
       showError,
       showDanger,
+      showMonochrome,
       showTopStart,
       showTop,
       showTopEnd,
