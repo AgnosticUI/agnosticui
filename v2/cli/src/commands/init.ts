@@ -227,11 +227,11 @@ async function handleDependencies(framework: Framework): Promise<void> {
 function showTypeScriptNote(): void {
   if (pathExists('tsconfig.json')) {
     logger.newline();
-    logger.info(pc.yellow('TypeScript Note:') + ' Ensure your base ' + pc.cyan('tsconfig.json') + ' includes:');
+    logger.info(pc.yellow('TypeScript Note:') + ' Add to ' + pc.cyan('ALL') + ' tsconfig files:');
     console.log('  ' + pc.dim('"compilerOptions": {'));
     console.log('    ' + pc.cyan('"experimentalDecorators": true'));
     console.log('  ' + pc.dim('}'));
     logger.newline();
-    logger.info(pc.dim('(If using multiple tsconfig files, add to the base tsconfig.json that others extend from)'));
+    logger.info(pc.dim('(For Vite: add to both tsconfig.json AND tsconfig.app.json)'));
   }
 }
