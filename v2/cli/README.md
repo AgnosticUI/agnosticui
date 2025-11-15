@@ -7,8 +7,8 @@ CLI for AgnosticUI Local - The UI kit that lives in your codebase.
 ### Build the CLI
 
 ```bash
-npm install
-npm run build
+npm install       # Install dependencies (required first!)
+npm run build     # Build TypeScript to dist/
 ```
 
 ### Test Locally
