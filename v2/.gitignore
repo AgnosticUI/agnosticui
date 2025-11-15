@@ -48,6 +48,8 @@ coverage/
 
 # Ignore .tgz tarballs from package.json local references
 lib/*.tgz
+cli/*.tgz
+*.tgz
 
 # VitePress cache and temporary files
 site/docs/.vitepress/cache/
