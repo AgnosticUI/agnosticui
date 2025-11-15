@@ -1,0 +1,44 @@
+{
+  "name": "@agnosticui/cli",
+  "version": "2.0.0-alpha.1",
+  "description": "CLI for AgnosticUI Local - The UI kit that lives in your codebase",
+  "type": "module",
+  "bin": {
+    "ag": "./dist/cli.js"
+  },
+  "main": "./dist/cli.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "echo \"Tests coming soon\"",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "agnosticui",
+    "cli",
+    "components",
+    "ui-kit",
+    "local-first",
+    "ai-friendly"
+  ],
+  "author": "AgnosticUI",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@clack/prompts": "^0.8.2",
+    "commander": "^12.1.0",
+    "picocolors": "^1.1.1",
+    "tar": "^7.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/tar": "^6.1.13",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

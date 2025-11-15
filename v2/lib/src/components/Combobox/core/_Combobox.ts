@@ -94,6 +94,8 @@ export interface ComboboxProps {
   maxVisibleOptions?: number;
   closeOnSelect?: boolean;
   variant?: 'default' | 'monochrome';
+  multiple?: boolean;
+  maxOptionsVisible?: number;
 
   // Loading
   loading?: boolean;
