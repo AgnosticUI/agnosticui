@@ -216,10 +216,12 @@ async function handleDependencies(framework: Framework): Promise<void> {
     // Show TypeScript decorator warning if tsconfig.json exists
     if (pathExists('tsconfig.json')) {
       logger.newline();
-      logger.info(pc.yellow('TypeScript Note:') + ' Ensure your ' + pc.cyan('tsconfig.json') + ' includes:');
+      logger.info(pc.yellow('TypeScript Note:') + ' Ensure your base ' + pc.cyan('tsconfig.json') + ' includes:');
       console.log('  ' + pc.dim('"compilerOptions": {'));
       console.log('    ' + pc.cyan('"experimentalDecorators": true'));
       console.log('  ' + pc.dim('}'));
+      logger.newline();
+      logger.info(pc.dim('(If using multiple tsconfig files, add to the base tsconfig.json that others extend from)'));
     }
   } catch (error) {
     spinner.stop(pc.red('✖') + ' Failed to install dependencies');
