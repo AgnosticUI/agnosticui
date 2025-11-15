@@ -89,6 +89,9 @@ export class AgButton extends LitElement implements ButtonProps {
       font: inherit;
       color: inherit;
 
+      /* Explicit line-height to prevent extra vertical spacing */
+      line-height: 1;
+
       /* Basic interaction styling */
       cursor: pointer;
 
@@ -164,20 +167,22 @@ export class AgButton extends LitElement implements ButtonProps {
       min-height: var(--ag-space-8);
     }
 
+    /* Default size (md) - applies when no size attribute or size="md" */
+    button,
     :host([size="md"]) button {
-      font-size: var(--ag-font-size-base);
+      font-size: var(--ag-font-size-sm);
       padding: var(--ag-space-2) var(--ag-space-4);
       min-height: var(--ag-space-10);
     }
 
     :host([size="lg"]) button {
-      font-size: var(--ag-font-size-lg);
+      font-size: var(--ag-font-size-md);
       padding: var(--ag-space-2) var(--ag-space-6);
       min-height: var(--ag-space-12);
     }
 
     :host([size="xl"]) button {
-      font-size: var(--ag-font-size-xl);
+      font-size: var(--ag-font-size-lg);
       padding: var(--ag-space-3) var(--ag-space-8);
       min-height: var(--ag-space-14);
     }
