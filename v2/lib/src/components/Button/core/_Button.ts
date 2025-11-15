@@ -26,7 +26,6 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { styles } from './styles.js';
 
 // Event types
 export interface ButtonToggleEventDetail {
@@ -70,7 +69,7 @@ export interface ButtonProps {
  * - APG-compliant accessibility
  */
 export class AgButton extends LitElement implements ButtonProps {
-  static styles = [styles, css`
+  static styles = css`
     /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
       /* Inline-flex for perfect centering while maintaining inline behavior */
@@ -158,13 +157,11 @@ export class AgButton extends LitElement implements ButtonProps {
     :host([size="x-sm"]) button {
       font-size: calc(var(--ag-font-size-base) - 0.375rem);
       padding: var(--ag-space-1) var(--ag-space-2);
-      min-height: var(--ag-space-7);
     }
 
     :host([size="sm"]) button {
       font-size: var(--ag-font-size-xs);
       padding: var(--ag-space-1) var(--ag-space-3);
-      min-height: var(--ag-space-8);
     }
 
     /* Default size (md) - applies when no size attribute or size="md" */
@@ -172,19 +169,16 @@ export class AgButton extends LitElement implements ButtonProps {
     :host([size="md"]) button {
       font-size: var(--ag-font-size-sm);
       padding: var(--ag-space-2) var(--ag-space-4);
-      min-height: var(--ag-space-10);
     }
 
     :host([size="lg"]) button {
-      font-size: var(--ag-font-size-md);
+      font-size: var(--ag-font-size-base);
       padding: var(--ag-space-2) var(--ag-space-6);
-      min-height: var(--ag-space-12);
     }
 
     :host([size="xl"]) button {
-      font-size: var(--ag-font-size-lg);
+      font-size: var(--ag-font-size-md);
       padding: var(--ag-space-3) var(--ag-space-8);
-      min-height: var(--ag-space-14);
     }
 
     /* Shape variants */
@@ -393,7 +387,7 @@ export class AgButton extends LitElement implements ButtonProps {
       outline-offset: var(--ag-focus-offset);
       transition: outline var(--ag-motion-medium) ease;
     }
-  `];
+  `;
 
   /**
    * Visual variant for styling hooks
