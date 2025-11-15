@@ -147,6 +147,8 @@ npx ag init
 npx ag add button
 \`\`\`
 
+The CLI will prompt you to install required dependencies (`lit` and `@lit/react` for React projects).
+
 Visit https://agnosticui.com for full documentation.
 EOF
 

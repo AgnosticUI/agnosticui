@@ -8,6 +8,12 @@ import type { Framework, InitOptions } from '../types/index.js';
 import { logger } from '../utils/logger.js';
 import { loadConfig, saveConfig, createDefaultConfig } from '../utils/config.js';
 import { extractTarball, ensureDir, pathExists } from '../utils/files.js';
+import {
+  getFrameworkDependencies,
+  checkDependenciesInstalled,
+  installDependencies,
+  detectPackageManager,
+} from '../utils/dependencies.js';
 import pc from 'picocolors';
 
 const DEFAULT_COMPONENTS_PATH = './src/components/ag';
@@ -93,6 +99,9 @@ export async function init(options: InitOptions = {}): Promise<void> {
 
     spinner.stop(pc.green('✓') + ' Initialized successfully!');
 
+    // Check and install dependencies
+    await handleDependencies(framework);
+
     // Success message
     p.outro(pc.green('AgnosticUI Local is ready!'));
 
@@ -130,4 +139,61 @@ async function determineTarballPath(): Promise<string | null> {
   // return downloadedPath;
 
   return null;
+}
+
+/**
+ * Handle dependency installation for the selected framework
+ */
+async function handleDependencies(framework: Framework): Promise<void> {
+  const requiredDeps = getFrameworkDependencies(framework);
+
+  // Check if dependencies are already installed
+  if (checkDependenciesInstalled(requiredDeps)) {
+    logger.newline();
+    logger.info('Required dependencies already installed: ' + pc.dim(requiredDeps.join(', ')));
+    return;
+  }
+
+  // Detect package manager
+  const packageManager = detectPackageManager();
+
+  // Prompt user
+  logger.newline();
+  logger.info(`This framework requires the following dependencies:`);
+  requiredDeps.forEach(dep => {
+    console.log('  ' + pc.cyan(dep));
+  });
+  logger.newline();
+
+  const shouldInstall = await p.confirm({
+    message: `Install using ${pc.cyan(packageManager)}?`,
+    initialValue: true,
+  });
+
+  if (p.isCancel(shouldInstall)) {
+    logger.newline();
+    logger.warn('Skipped dependency installation.');
+    logger.info(`You can install manually later with: ${pc.cyan(`${packageManager} ${packageManager === 'npm' ? 'install' : 'add'} ${requiredDeps.join(' ')}`)}`);
+    return;
+  }
+
+  if (!shouldInstall) {
+    logger.newline();
+    logger.warn('Skipped dependency installation.');
+    logger.info(`You can install manually later with: ${pc.cyan(`${packageManager} ${packageManager === 'npm' ? 'install' : 'add'} ${requiredDeps.join(' ')}`)}`);
+    return;
+  }
+
+  // Install dependencies
+  const spinner = p.spinner();
+  spinner.start('Installing dependencies...');
+
+  try {
+    installDependencies(requiredDeps);
+    spinner.stop(pc.green('✓') + ' Dependencies installed successfully!');
+  } catch (error) {
+    spinner.stop(pc.red('✖') + ' Failed to install dependencies');
+    logger.error(`Installation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    logger.info(`You can install manually with: ${pc.cyan(`${packageManager} ${packageManager === 'npm' ? 'install' : 'add'} ${requiredDeps.join(' ')}`)}`);
+  }
 }
