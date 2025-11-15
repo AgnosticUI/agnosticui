@@ -239,16 +239,51 @@ consumer-project/
 **Command:**
 ```bash
 npx ag init
+npx ag init --framework react --components-path ./src/components/ag
 ```
 
 **What Happens:**
-1. CLI prompts for configuration (framework, path, starter components)
-2. Downloads tarball from GitHub releases or CDN
-3. Extracts `/agnosticui/` into project root
-4. Creates `agnosticui.config.json`
-5. Optionally generates starter components (e.g., Button)
-6. Updates `.gitignore` if needed
-7. Success message with next steps
+1. **Interactive prompts** (if flags not provided):
+   - Which framework? (React, Vue, Lit, Svelte)
+   - Where should components be generated? (default: `./src/components/ag`)
+
+2. **Extracts reference library**:
+   - Finds tarball (local path for development, GitHub releases for production)
+   - Extracts to `./agnosticui/` directory
+   - Reads version from `version.json`
+
+3. **Creates configuration**:
+   - Saves `agnosticui.config.json` with framework, paths, and **tarball info**
+   - Tarball source path stored for `npx ag sync` to use
+
+4. **Sets up styles**:
+   - Copies CSS tokens to `{componentsPath}/styles/`
+   - Creates `ag-tokens.css` and `ag-tokens-dark.css`
+
+5. **Checks dependencies**:
+   - Detects package manager (npm, yarn, pnpm)
+   - Checks if `lit` and `@lit/react` (for React) are installed
+   - **Prompts to install** if missing
+   - Shows TypeScript configuration reminder
+
+6. **Success message** with next steps
+
+**Required Dependencies:**
+- All frameworks: `lit` (Web Components runtime)
+- React: `@lit/react` (React wrapper utilities)
+- Vue/Lit/Svelte: No additional dependencies
+
+**TypeScript Configuration:**
+```json
+// tsconfig.json (ALL tsconfig files if using Vite)
+{
+  "compilerOptions": {
+    "experimentalDecorators": true
+  }
+}
+```
+
+**For Vite projects:** Add to BOTH `tsconfig.json` AND `tsconfig.app.json`
 
 **NOT:**
 - ❌ Git clone
@@ -263,24 +298,75 @@ npx ag init
 # Initialize (first time)
 npx ag init
 npx ag init --framework react
-npx ag init --framework vue --add button,input,checkbox
+npx ag init --framework react --components-path ./src/components/ag
+npx ag init --framework react --tarball /path/to/tarball.tgz
 
 # Add components
 npx ag add button
 npx ag add input checkbox
+npx ag add button --force  # Overwrite existing
 
 # List available components
 npx ag list
 
-# Update reference library
-npx ag sync
+# Update reference library (for local development)
+npx ag sync                              # Uses tarball path from config
+npx ag sync --tarball /path/to/new.tgz   # Override tarball path
 
-# Show customizations
-npx ag diff button
-
-# Remove reference (pure Shadcn mode)
-npx ag eject
+# Future commands (not yet implemented)
+# npx ag diff button       # Show customizations
+# npx ag eject             # Remove reference
 ```
+
+### The `npx ag sync` Command (Local Development)
+
+**Purpose:** Update the reference library when you rebuild the tarball during local development.
+
+**How it works:**
+
+1. **Reads config** → Gets `tarball.source` path
+2. **Shows confirmation**:
+   ```
+   Looking for tarball at:
+     /Users/you/agnosticui/v2/dist/agnosticui-local-v0.0.1.tar.gz
+
+   ✓ Found tarball (version 0.0.1)
+
+   ? Proceed with sync? (Y/n)
+   ```
+
+3. **Extracts tarball** → Overwrites `./agnosticui/` reference library
+4. **Updates CSS tokens** → Copies to `{componentsPath}/styles/`
+5. **Updates config** → Sets new `tarball.installed` timestamp
+6. **Success!** → Reference library is now up-to-date
+
+**Your components are NEVER touched** - only the reference library updates.
+
+**Usage:**
+
+```bash
+# During local development workflow:
+cd v2
+./scripts/build-local-tarball.sh        # Rebuild library tarball
+
+cd ../laschispas                        # Your project
+npx ag sync                             # Sync reference library
+
+# If tarball moved or you want a different one:
+npx ag sync --tarball /new/path/to/agnosticui-local-v0.0.2.tar.gz
+```
+
+**What gets updated:**
+- ✅ `./agnosticui/` reference library (all 40 components)
+- ✅ `{componentsPath}/styles/ag-tokens*.css` (design tokens)
+- ✅ `agnosticui.config.json` (tarball.installed timestamp)
+
+**What NEVER changes:**
+- ❌ Your customized components in `{componentsPath}/`
+- ❌ Your component imports or code
+- ❌ Framework or paths configuration
+
+**Later (production):** `sync` will download from GitHub releases, compare versions, and offer selective updates.
 
 ### Config File (`agnosticui.config.json`)
 
@@ -291,31 +377,42 @@ npx ag eject
   "framework": "react",
   "paths": {
     "reference": "./agnosticui",
-    "components": "./src/components/ui",
-    "styles": "./src/styles"
+    "components": "./src/components/ag"
+  },
+  "tarball": {
+    "source": "/Users/you/agnosticui/v2/dist/agnosticui-local-v0.0.1.tar.gz",
+    "version": "0.0.1",
+    "installed": "2025-01-15T10:30:00Z"
   },
   "components": {
     "button": {
       "added": "2025-01-15T10:30:00Z",
-      "version": "2.0.0",
-      "customized": false,
+      "version": "0.0.1",
+      "framework": "react",
       "files": [
-        "src/components/ui/button/Button.tsx",
-        "src/components/ui/button/button.css",
-        "src/components/ui/button/index.ts"
+        "src/components/ag/button/Button.tsx",
+        "src/components/ag/button/button.css",
+        "src/components/ag/button/index.ts"
       ]
     }
   },
   "ai": {
     "includeReference": true,
     "includeContext": true,
-    "contextPath": "./agnosticui/docs/ai-context"
+    "contextPath": "./agnosticui/docs"
   },
   "git": {
     "commitReference": true
   }
 }
 ```
+
+**Key Fields:**
+- `tarball.source` - Absolute path to tarball used during init (used by `npx ag sync`)
+- `tarball.version` - Version extracted from tarball
+- `tarball.installed` - When the reference library was last installed/synced
+- `paths.components` - Where components are generated (customizable)
+- `components.*` - Tracks which components have been added
 
 ### Distribution (How We Ship)
 
@@ -454,23 +551,34 @@ npx ag init  # Restores from config
 
 ### Update Strategy
 
-**When we release v2.1.0:**
+**Current (Local Development):**
 
-**User runs:**
+When you rebuild the component library:
+```bash
+npx ag sync  # Re-extracts tarball from saved path
+```
+- Updates reference library only
+- Your components untouched
+- Simple, fast, safe
+
+**Future (Production Releases):**
+
+When we release v2.1.0:
+
 ```bash
 npx ag sync
 ```
 
-**CLI:**
-1. Checks current version (2.0.0)
-2. Fetches latest (2.1.0)
-3. Shows diff for customized components
+**CLI will:**
+1. Check current version (2.0.0) from config
+2. Fetch latest (2.1.0) from GitHub releases
+3. Show diff for customized components
 4. User chooses:
    - "Keep mine" (no change)
    - "Take new" (overwrite)
    - "Show diff" (manual merge)
-5. Updates reference library
-6. Config updated
+5. Update reference library
+6. Update config with new version
 
 **User is ALWAYS in control.**
 
@@ -802,19 +910,31 @@ import 'agnosticui-core/button'
 
 **Goal:** Build `@agnosticui/cli`
 
-**Tasks:**
-- [ ] `npx ag init` command
-- [ ] `npx ag add <component>` command
-- [ ] `npx ag list` command
-- [ ] `npx ag sync` command
-- [ ] `npx ag diff <component>` command
-- [ ] Interactive prompts
-- [ ] Config file management
-- [ ] Template generation system
-- [ ] Error handling
-- [ ] Testing
+**Status: MVP Complete for Local Dogfooding! 🎉**
 
-**Deliverable:** Working CLI beta
+**Completed:**
+- ✅ `npx ag init` command with interactive prompts
+- ✅ `npx ag add <component>` command with `--force` flag
+- ✅ `npx ag list` command
+- ✅ Config file management (reads/writes `agnosticui.config.json`)
+- ✅ Template generation system (copies from reference library)
+- ✅ Dependency detection and installation (lit, @lit/react)
+- ✅ Package manager detection (npm, yarn, pnpm)
+- ✅ TypeScript configuration warnings
+- ✅ CSS tokens copying to custom paths
+- ✅ Tarball path storage in config
+
+**In Progress:**
+- ⏳ `npx ag sync` command (implementing now)
+
+**Future:**
+- [ ] `npx ag diff <component>` command
+- [ ] GitHub releases integration
+- [ ] Version comparison and selective updates
+- [ ] Error handling improvements
+- [ ] Unit tests
+
+**Deliverable:** Working CLI for local development ✅
 
 ### Phase 3: Release Preparation (Q3 2025)
 
@@ -1443,7 +1563,7 @@ npx ag init --framework react --components-path src/components/ag
 
 ```typescript
 interface AgnosticUIConfig {
-  $schema: string;
+  $schema?: string;
   version: string;
   framework: 'react' | 'vue' | 'lit' | 'svelte';
   paths: {
@@ -1451,12 +1571,17 @@ interface AgnosticUIConfig {
     components: string;     // Default output path for components
     styles?: string;        // Optional custom styles path
   };
+  tarball?: {
+    source: string;         // Path to tarball (for npx ag sync)
+    version: string;        // Version from tarball
+    installed: string;      // ISO timestamp of last sync
+  };
   components: {
     [name: string]: {
       added: string;        // ISO timestamp
       version: string;      // Component version from library
-      customized: boolean;  // Has user edited it?
-      outputPath: string;   // Actual path (may differ from default)
+      framework: string;    // Framework used
+      files: string[];      // List of generated files
     };
   };
   ai?: {
@@ -1474,24 +1599,32 @@ interface AgnosticUIConfig {
 ```json
 {
   "$schema": "https://agnosticui.com/schema.json",
-  "version": "2.0.0-alpha",
+  "version": "0.0.1",
   "framework": "react",
   "paths": {
     "reference": "./agnosticui",
-    "components": "./src/components/ag",
-    "styles": "./src/styles"
+    "components": "./src/components/ag"
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/dist/agnosticui-local-v0.0.1.tar.gz",
+    "version": "0.0.1",
+    "installed": "2025-01-20T10:30:00Z"
   },
   "components": {
     "button": {
       "added": "2025-01-20T10:30:00Z",
-      "version": "2.0.0-alpha",
-      "customized": false,
-      "outputPath": "./src/components/ag/button"
+      "version": "0.0.1",
+      "framework": "react",
+      "files": [
+        "src/components/ag/button/Button.tsx",
+        "src/components/ag/button/index.ts"
+      ]
     }
   },
   "ai": {
     "includeReference": true,
-    "includeContext": true
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
   },
   "git": {
     "commitReference": true
