@@ -107,13 +107,17 @@ export async function init(options: InitOptions = {}): Promise<void> {
 
     logger.newline();
     logger.box('Next Steps:', [
-      pc.dim('1. Add a component:'),
+      pc.dim('1. Import CSS tokens in your app entry point (e.g., main.tsx):'),
+      '  ' + logger.command(`import './agnosticui/tokens/ag-tokens.css'`),
+      '  ' + logger.command(`import './agnosticui/tokens/ag-tokens-dark.css'`),
+      '',
+      pc.dim('2. Add a component:'),
       '  ' + logger.command('npx ag add button'),
       '',
-      pc.dim('2. List available components:'),
+      pc.dim('3. List available components:'),
       '  ' + logger.command('npx ag list'),
       '',
-      pc.dim('3. Use in your app:'),
+      pc.dim('4. Use in your app:'),
       '  ' + logger.command(`import { ${framework === 'react' ? 'ReactButton' : 'Button'} } from '${componentsPath}/button'`),
     ]);
   } catch (error) {
@@ -191,6 +195,15 @@ async function handleDependencies(framework: Framework): Promise<void> {
   try {
     installDependencies(requiredDeps);
     spinner.stop(pc.green('✓') + ' Dependencies installed successfully!');
+
+    // Show TypeScript decorator warning if tsconfig.json exists
+    if (pathExists('tsconfig.json')) {
+      logger.newline();
+      logger.info(pc.yellow('TypeScript Note:') + ' Ensure your ' + pc.cyan('tsconfig.json') + ' includes:');
+      console.log('  ' + pc.dim('"compilerOptions": {'));
+      console.log('    ' + pc.cyan('"experimentalDecorators": true'));
+      console.log('  ' + pc.dim('}'));
+    }
   } catch (error) {
     spinner.stop(pc.red('✖') + ' Failed to install dependencies');
     logger.error(`Installation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
