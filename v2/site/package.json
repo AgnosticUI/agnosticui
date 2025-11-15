@@ -9,7 +9,7 @@
     "sync-tokens": "npm run --prefix ../theme-registry rebuild && cp ../theme-registry/dist/ag-tokens.css ./docs/public/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css ./docs/public/ag-tokens-dark.css && cp ../lib/src/styles/table.css ./docs/public/table.css",
     "clear:cache": "rm -rf docs/.vitepress/cache",
     "reinstall:lib": "npm run clear:cache && npm i ../lib/agnosticui-core-0.0.1.tgz && npm run sync-tokens",
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "vitepress dev docs --port 8000",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
