@@ -21,7 +21,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
   const existingConfig = await loadConfig();
   if (existingConfig) {
     logger.error('AgnosticUI is already initialized in this project.');
-    logger.info('Run ' + pc.cyan('ag add <component>') + ' to add components.');
+    logger.info('Run ' + pc.cyan('npx ag add <component>') + ' to add components.');
     process.exit(1);
   }
 
@@ -99,10 +99,10 @@ export async function init(options: InitOptions = {}): Promise<void> {
     logger.newline();
     logger.box('Next Steps:', [
       pc.dim('1. Add a component:'),
-      '  ' + logger.command('ag add button'),
+      '  ' + logger.command('npx ag add button'),
       '',
       pc.dim('2. List available components:'),
-      '  ' + logger.command('ag list'),
+      '  ' + logger.command('npx ag list'),
       '',
       pc.dim('3. Use in your app:'),
       '  ' + logger.command(`import { ${framework === 'react' ? 'ReactButton' : 'Button'} } from '${componentsPath}/button'`),
