@@ -27,15 +27,17 @@ The CLI is designed to work with a local tarball for development/dogfooding.
 
    **Option A: Using `npm pack` (Recommended - More Reliable)**
    ```bash
-   cd packages/cli
-   npm pack
+   cd cli
+   npm install        # Install dependencies (first time only)
+   npm run build      # Build TypeScript to dist/
+   npm pack           # Package it
    # This creates: agnosticui-cli-2.0.0-alpha.1.tgz
    ```
 
    Then in your test project:
    ```bash
    cd /path/to/your/test/project
-   npm install /path/to/agnosticui/v2/packages/cli/agnosticui-cli-2.0.0-alpha.1.tgz
+   npm install /path/to/agnosticui/v2/cli/agnosticui-cli-2.0.0-alpha.1.tgz
 
    # Now you can use the CLI
    # Note: Replace VERSION with the version from v2/lib/package.json (e.g., 0.0.1)
@@ -46,8 +48,10 @@ The CLI is designed to work with a local tarball for development/dogfooding.
 
    **Option B: Using `npm link` (Alternative)**
    ```bash
-   cd packages/cli
-   npm link
+   cd cli
+   npm install        # Install dependencies (first time only)
+   npm run build      # Build TypeScript to dist/
+   npm link           # Link globally
    ```
 
    Then in your test project:
@@ -76,11 +80,12 @@ The CLI is designed to work with a local tarball for development/dogfooding.
    # This creates: dist/agnosticui-local-v{VERSION}.tar.gz
 
    # Then build and pack the CLI
-   cd ../packages/cli
+   cd ../cli
+   npm install       # Install CLI dependencies (first time only)
    npm run build && npm pack
 
    # In test project
-   npm install /path/to/agnosticui/v2/packages/cli/agnosticui-cli-2.0.0-alpha.1.tgz --force
+   npm install /path/to/agnosticui/v2/cli/agnosticui-cli-2.0.0-alpha.1.tgz --force
    # Note: Replace VERSION with the version from v2/lib/package.json
    npx ag init --framework react --tarball /path/to/v2/dist/agnosticui-local-vVERSION.tar.gz
    ```
