@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
+import { action } from 'storybook/actions';
 import VueMenu, { VueMenuItem, VueMenuSeparator } from 'agnosticui-core/menu/vue';
 import type { VueMenuProps } from 'agnosticui-core/menu/vue';
 
@@ -299,17 +300,16 @@ export const VueEventHandlers: Story = {
   render: (args: VueMenuProps) => ({
     components: { VueMenu, VueMenuItem, VueMenuSeparator },
     setup() {
-      const logs = ref<string[]>([]);
-
-      const addLog = (message: string) => {
-        logs.value.push(`${new Date().toLocaleTimeString()}: ${message}`);
+      return {
+        args,
+        onMenuOpen: action('menu-open'),
+        onMenuClose: action('menu-close'),
+        onClick: action('click'),
+        onFocus: action('focus'),
+        onBlur: action('blur'),
+        onItemClick: action('item-click'),
+        onMenuSelect: action('menu-select'),
       };
-
-      const clearLogs = () => {
-        logs.value = [];
-      };
-
-      return { args, logs, addLog, clearLogs };
     },
     template: `
       <div style="padding: 50px;">
@@ -321,62 +321,42 @@ export const VueEventHandlers: Story = {
           Menu component emits: @menu-open, @menu-close, @click, @focus, @blur
           <br />
           MenuItem component emits: @menu-select, @click
+          <br />
+          Events are logged to the Actions panel below.
         </p>
         <VueMenu
           v-bind="args"
           menuAriaLabel="Interactive menu"
-          @menu-open="(detail) => addLog(\`Menu opened: open=\${detail.open}\`)"
-          @menu-close="(detail) => addLog(\`Menu closed: open=\${detail.open}\`)"
-          @click="() => addLog('Button clicked!')"
-          @focus="() => addLog('Button focused')"
-          @blur="() => addLog('Button blurred')"
+          @menu-open="onMenuOpen"
+          @menu-close="onMenuClose"
+          @click="onClick"
+          @focus="onFocus"
+          @blur="onBlur"
         >
           Interactive Menu
           <template #menu>
             <VueMenuItem
               value="item1"
-              @click="() => addLog('Item 1 clicked')"
-              @menu-select="(detail) => addLog(\`Item selected: \${detail.value}\`)"
+              @click="onItemClick"
+              @menu-select="onMenuSelect"
             >
               Item 1 (Select me!)
             </VueMenuItem>
             <VueMenuItem
               value="item2"
-              @menu-select="(detail) => addLog(\`Item selected: \${detail.value}\`)"
+              @menu-select="onMenuSelect"
             >
               Item 2
             </VueMenuItem>
             <VueMenuSeparator />
             <VueMenuItem
               value="item3"
-              @menu-select="(detail) => addLog(\`Item selected: \${detail.value}\`)"
+              @menu-select="onMenuSelect"
             >
               Item 3
             </VueMenuItem>
           </template>
         </VueMenu>
-
-        <div style="margin-top: 1.5rem; padding: 1rem; background-color: #f3f4f6; border-radius: 4px;">
-          <strong>Event Log:</strong>
-          <p v-if="logs.length === 0" style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">
-            Interact with the menu to see events...
-          </p>
-          <div v-else style="margin-top: 0.5rem; max-height: 200px; overflow: auto;">
-            <div
-              v-for="(log, i) in logs"
-              :key="i"
-              style="font-size: 0.75rem; font-family: monospace; padding: 0.25rem 0;"
-            >
-              {{ log }}
-            </div>
-          </div>
-          <button
-            @click="clearLogs"
-            style="margin-top: 0.5rem; padding: 0.25rem 0.5rem; font-size: 0.75rem;"
-          >
-            Clear Log
-          </button>
-        </div>
       </div>
     `,
   }),
