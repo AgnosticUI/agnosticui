@@ -1,27 +1,27 @@
-import { MenuButton, Menu, MenuItem, MenuSeparator } from './_Menu.js';
+import { AgMenuButton, AgMenu, AgMenuItem, AgMenuSeparator } from './_Menu.js';
 
 if (!customElements.get('ag-menu-button')) {
-  customElements.define('ag-menu-button', MenuButton);
+  customElements.define('ag-menu-button', AgMenuButton);
 }
 
 if (!customElements.get('ag-menu')) {
-  customElements.define('ag-menu', Menu);
+  customElements.define('ag-menu', AgMenu);
 }
 
 if (!customElements.get('ag-menu-item')) {
-  customElements.define('ag-menu-item', MenuItem);
+  customElements.define('ag-menu-item', AgMenuItem);
 }
 
 if (!customElements.get('ag-menu-separator')) {
-  customElements.define('ag-menu-separator', MenuSeparator);
+  customElements.define('ag-menu-separator', AgMenuSeparator);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ag-menu-button': MenuButton;
-    'ag-menu': Menu;
-    'ag-menu-item': MenuItem;
-    'ag-menu-separator': MenuSeparator;
+    'ag-menu-button': AgMenuButton;
+    'ag-menu': AgMenu;
+    'ag-menu-item': AgMenuItem;
+    'ag-menu-separator': AgMenuSeparator;
   }
 }
 
