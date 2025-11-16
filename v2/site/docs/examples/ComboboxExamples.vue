@@ -297,6 +297,30 @@
         class="mbe2"
       />
     </div>
+
+    <div class="mbe4">
+      <h3>Event Handling</h3>
+    </div>
+    <div class="stacked mbe4">
+      <div
+        class="flex-inline items-center"
+        :style="{gap: '10px'}"
+      >
+        <VueCombobox
+          v-model:value="eventTestValue"
+          :options="stateOptions"
+          label="Event Test"
+          placeholder="Type or select..."
+          @change="handleChange"
+          @select="handleSelect"
+          @search="handleSearch"
+          class="mbe2"
+        />
+        <p v-if="lastEvent">
+          Last event: <strong>{{ lastEvent }}</strong>
+        </p>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -374,9 +398,30 @@ const multipleValue = ref<string[]>([]);
 const multipleClearable = ref<string[]>(['ny', 'co']);
 const multipleMonochrome = ref<string[]>([]);
 
-// Event handler
-const handleStateChange = (event: CustomEvent<{ value: string; option: ComboboxOption | null }>) => {
-  console.log('State changed:', event.detail);
+// Event handling
+const eventTestValue = ref('');
+const lastEvent = ref<string | null>(null);
+const lastSelectedValue = ref<string | null>(null);
+
+const handleChange = (detail: { value: string; option: ComboboxOption | null }) => {
+  lastSelectedValue.value = detail.value;
+  const optionLabel = detail.option ? detail.option.label : 'cleared';
+  lastEvent.value = `change (value: ${detail.value || 'none'}, option: ${optionLabel})`;
+};
+
+const handleSelect = (detail: { option: ComboboxOption; value: string }) => {
+  lastSelectedValue.value = detail.value;
+  lastEvent.value = `select (value: ${detail.value}, label: ${detail.option.label})`;
+};
+
+const handleSearch = (detail: { searchTerm: string }) => {
+  const selectedInfo = lastSelectedValue.value ? `, selected: ${lastSelectedValue.value}` : '';
+  lastEvent.value = `search (searchTerm: "${detail.searchTerm}"${selectedInfo})`;
+};
+
+// Basic state change handler
+const handleStateChange = (detail: { value: string; option: ComboboxOption | null }) => {
+  console.log('State changed:', detail);
 };
 
 // Toggle loading
