@@ -1,15 +1,15 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { Alert, type AlertType } from './Alert';
+import { AgAlert, type AlertType } from './Alert';
 
 if (!customElements.get('ag-alert')) {
-  customElements.define('ag-alert', Alert);
+  customElements.define('ag-alert', AgAlert);
 }
 
-describe('Alert Component', () => {
-  let element: Alert;
+describe('AgAlert Component', () => {
+  let element: AgAlert;
 
   beforeEach(() => {
-    element = document.createElement('ag-alert') as Alert;
+    element = document.createElement('ag-alert') as AgAlert;
     document.body.appendChild(element);
   });
 

@@ -127,32 +127,45 @@ export class AgBadge extends LitElement implements BadgeProps {
   `;
 
   @property({ type: String, reflect: true })
-  public variant: 'default' | 'success' | 'warning' | 'danger' | 'info' | 'neutral' | 'monochrome' = 'default';
+  declare variant: 'default' | 'success' | 'warning' | 'danger' | 'info' | 'neutral' | 'monochrome';
 
   @property({ type: String, reflect: true })
-  public size: 'xs' | 'sm' | 'md' = 'md';
+  declare size: 'xs' | 'sm' | 'md';
 
   @property({ type: Boolean, reflect: true })
-  public dot = false;
+  declare dot: boolean;
 
   @property({ type: Number })
-  public value: number | null = null;
+  declare value: number | null;
 
   @property({ type: Number })
-  public max = 99;
+  declare max: number;
 
   @property({ type: Boolean, reflect: true })
-  public interactive = false;
+  declare interactive: boolean;
 
   @property({ type: String, attribute: 'status-label' })
-  public statusLabel: string | null = null;
+  declare statusLabel: string | null;
 
   @property({ type: String })
-  public live: 'off' | 'polite' | 'assertive' = 'off';
+  declare live: 'off' | 'polite' | 'assertive';
 
   // Hidden from assistive technologies
   @property({ type: Boolean, attribute: 'hidden-from-at' })
-  public hiddenFromAT = false;
+  declare hiddenFromAT: boolean;
+
+  constructor() {
+    super();
+    this.variant = 'default';
+    this.size = 'md';
+    this.dot = false;
+    this.value = null;
+    this.max = 99;
+    this.interactive = false;
+    this.statusLabel = null;
+    this.live = 'off';
+    this.hiddenFromAT = false;
+  }
 
   private get _displayValue() {
     if (this.value === null || this.value === undefined) {

@@ -36,7 +36,7 @@ export interface CheckboxProps {
   onChange?: (event: CheckboxChangeEvent) => void;
 }
 
-export class Checkbox extends LitElement implements CheckboxProps {
+export class AgCheckbox extends LitElement implements CheckboxProps {
   static override styles = css`
     :host {
       display: inline-block;
@@ -265,31 +265,31 @@ export class Checkbox extends LitElement implements CheckboxProps {
   `;
 
   @property({ type: String })
-  name = '';
+  declare name: string;
 
   @property({ type: String })
-  value = '';
+  declare value: string;
 
   @property({ type: Boolean, reflect: true })
-  checked = false;
+  declare checked: boolean;
 
   @property({ type: Boolean, reflect: true })
-  indeterminate = false;
+  declare indeterminate: boolean;
 
   @property({ type: Boolean, reflect: true })
-  disabled = false;
+  declare disabled: boolean;
 
   @property({ type: String })
-  size: CheckboxSize = 'medium';
+  declare size: CheckboxSize;
 
   @property({ type: String })
-  theme: CheckboxTheme = 'primary';
+  declare theme: CheckboxTheme;
 
   @property({ type: String })
-  labelText = '';
+  declare labelText: string;
 
   @property({ type: String })
-  labelPosition: 'end' | 'start' = 'end';
+  declare labelPosition: 'end' | 'start';
 
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
@@ -298,6 +298,19 @@ export class Checkbox extends LitElement implements CheckboxProps {
   declare onChange?: (event: CheckboxChangeEvent) => void;
 
   private inputRef?: HTMLInputElement;
+
+  constructor() {
+    super();
+    this.name = '';
+    this.value = '';
+    this.checked = false;
+    this.indeterminate = false;
+    this.disabled = false;
+    this.size = 'medium';
+    this.theme = 'primary';
+    this.labelText = '';
+    this.labelPosition = 'end';
+  }
 
   override updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
@@ -409,5 +422,5 @@ export class Checkbox extends LitElement implements CheckboxProps {
 }
 
 if (!customElements.get('ag-checkbox')) {
-  customElements.define('ag-checkbox', Checkbox);
+  customElements.define('ag-checkbox', AgCheckbox);
 }

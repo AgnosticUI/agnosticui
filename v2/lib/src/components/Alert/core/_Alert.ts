@@ -22,24 +22,33 @@ export interface AlertProps {
   onAlertDismiss?: (event: AlertDismissEvent) => void;
 }
 
-export class Alert extends LitElement implements AlertProps {
+export class AgAlert extends LitElement implements AlertProps {
   @property({ type: String })
-  public type: AlertType = 'default';
+  declare type: AlertType;
 
   @property({ type: Boolean })
-  public bordered = false;
+  declare bordered: boolean;
 
   @property({ type: Boolean })
-  public rounded = false;
+  declare rounded: boolean;
 
   @property({ type: Boolean })
-  public borderedLeft = false;
+  declare borderedLeft: boolean;
 
   @property({ type: Boolean })
-  public dismissible = false;
+  declare dismissible: boolean;
 
   @property({ attribute: false })
   declare onAlertDismiss?: (event: AlertDismissEvent) => void;
+
+  constructor() {
+    super();
+    this.type = 'default';
+    this.bordered = false;
+    this.rounded = false;
+    this.borderedLeft = false;
+    this.dismissible = false;
+  }
 
   static styles = css`
     .alert {

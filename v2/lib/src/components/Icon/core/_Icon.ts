@@ -11,7 +11,32 @@ export interface IconProps {
   noFill?: boolean;
 }
 
-export class Icon extends LitElement implements IconProps {
+export class AgIcon extends LitElement implements IconProps {
+  /**
+   * Size variant for the icon wrapper and SVG.
+   */
+  @property({ type: String, reflect: true })
+  declare size: IconSize;
+
+  /**
+   * Semantic type for color theming the icon.
+   */
+  @property({ type: String, reflect: true })
+  declare type: IconType;
+
+  /**
+   * When true, prevents the SVG from having fill: currentColor applied.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'no-fill' })
+  declare noFill: boolean;
+
+  constructor() {
+    super();
+    this.size = '16';
+    this.type = '';
+    this.noFill = false;
+  }
+
   static styles = css`
     .icon-base {
       display: inline-flex;
@@ -103,7 +128,7 @@ export class Icon extends LitElement implements IconProps {
     :host([type="info"]) {
       color: var(--ag-info);
     }
-    
+
     :host([type="primary"]) {
       color: var(--ag-primary);
     }
@@ -126,21 +151,6 @@ export class Icon extends LitElement implements IconProps {
       color: var(--ag-text-primary);
     }
   `;
-
-  /**
-   * Size variant for the icon wrapper and SVG.
-   */
-  @property({ type: String, reflect: true }) size: IconSize = '16';
-
-  /**
-   * Semantic type for color theming the icon.
-   */
-  @property({ type: String, reflect: true }) type: IconType = '';
-
-  /**
-   * When true, prevents the SVG from having fill: currentColor applied.
-   */
-  @property({ type: Boolean, reflect: true, attribute: 'no-fill' }) noFill: boolean = false;
 
   render() {
     return html`

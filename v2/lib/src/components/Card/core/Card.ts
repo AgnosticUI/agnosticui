@@ -1,12 +1,12 @@
-import { Card } from './_Card.js';
+import { AgCard } from './_Card.js';
 
 if (!customElements.get('ag-card')) {
-  customElements.define('ag-card', Card);
+  customElements.define('ag-card', AgCard);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ag-card': Card;
+    'ag-card': AgCard;
   }
 }
 

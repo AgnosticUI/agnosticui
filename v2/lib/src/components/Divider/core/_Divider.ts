@@ -23,7 +23,7 @@ export interface DividerProps {
  * @element ag-divider
  * @slot default - Optional content to display within the divider (text, icons, etc.)
  */
-export class Divider extends LitElement implements DividerProps {
+export class AgDivider extends LitElement implements DividerProps {
   static styles = css`
     :host {
       display: block;
@@ -163,19 +163,28 @@ export class Divider extends LitElement implements DividerProps {
   `;
 
   @property({ type: Boolean, attribute: 'is-vertical', reflect: true })
-  vertical = false;
+  declare vertical: boolean;
 
   @property({ type: String, reflect: true })
-  justify: DividerJustify = 'center';
+  declare justify: DividerJustify;
 
   @property({ type: String, reflect: true })
-  size: DividerSize = 'default';
+  declare size: DividerSize;
 
   @property({ type: String, reflect: true })
-  variant: DividerVariant = 'default';
+  declare variant: DividerVariant;
 
   @property({ type: Boolean, state: true })
-  private hasContent = false;
+  private declare hasContent: boolean;
+
+  constructor() {
+    super();
+    this.vertical = false;
+    this.justify = 'center';
+    this.size = 'default';
+    this.variant = 'default';
+    this.hasContent = false;
+  }
 
   private handleSlotChange(e: Event) {
     this.hasContent = hasSlotContent(e.target as HTMLSlotElement);
@@ -224,6 +233,6 @@ export class Divider extends LitElement implements DividerProps {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ag-divider': Divider;
+    'ag-divider': AgDivider;
   }
 }

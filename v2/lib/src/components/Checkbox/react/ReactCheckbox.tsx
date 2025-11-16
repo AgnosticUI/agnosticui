@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
 import {
-  Checkbox,
+  AgCheckbox,
   type CheckboxProps,
   type CheckboxChangeEvent,
 } from '../core/Checkbox';
@@ -22,7 +22,7 @@ export interface ReactCheckboxProps extends CheckboxProps {
 // Create component with @lit/react
 export const ReactCheckbox = createComponent({
   tagName: 'ag-checkbox',
-  elementClass: Checkbox,
+  elementClass: AgCheckbox,
   react: React,
   events: {
     onChange: 'change' as EventName<CheckboxChangeEvent>,

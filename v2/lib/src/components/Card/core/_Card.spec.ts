@@ -1,7 +1,11 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Card } from './Card';
+import { AgCard } from './Card';
 
-describe('Card', () => {
+// Type alias for backward compatibility
+type Card = AgCard;
+const Card = AgCard;
+
+describe('AgCard', () => {
   let host: HTMLElement;
 
   beforeEach(() => {
@@ -14,9 +18,9 @@ describe('Card', () => {
   });
 
   it('renders correctly and sets default properties', () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as AgCard;
     host.appendChild(el);
-    expect(el).toBeInstanceOf(Card);
+    expect(el).toBeInstanceOf(AgCard);
     expect(el.stacked).toBe(false);
     expect(el.shadow).toBe(false);
     expect(el.animated).toBe(false);
@@ -25,7 +29,7 @@ describe('Card', () => {
   });
 
   it('reflects properties as attributes', async () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as AgCard;
     el.stacked = true;
     el.shadow = true;
     host.appendChild(el);
@@ -37,13 +41,13 @@ describe('Card', () => {
   });
 
   it('has relative position for the pseudo-element trick', async () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as AgCard;
     host.appendChild(el);
     await el.updateComplete;
 
     // Verify that the component's styles include position: relative on :host
     // This is needed for the pseudo-element clickable card trick
-    const styleContent = Card.styles.toString();
+    const styleContent = AgCard.styles.toString();
     expect(styleContent).toContain(':host');
     expect(styleContent).toContain('position: relative');
   });
@@ -106,7 +110,7 @@ describe('Card', () => {
     expect(elLg.getAttribute('rounded')).toBe('lg');
 
     // Verify rounded styles are defined for all variants
-    const styleContent = Card.styles.toString();
+    const styleContent = AgCard.styles.toString();
     expect(styleContent).toContain('rounded="sm"');
     expect(styleContent).toContain('rounded="md"');
     expect(styleContent).toContain('rounded="lg"');
@@ -122,7 +126,7 @@ describe('Card', () => {
     expect(el.getAttribute('variant')).toBe('success');
 
     // Verify success variant styles are defined
-    const styleContent = Card.styles.toString();
+    const styleContent = AgCard.styles.toString();
     expect(styleContent).toContain('variant="success"');
   });
 
@@ -135,7 +139,7 @@ describe('Card', () => {
     expect(el.getAttribute('variant')).toBe('info');
 
     // Verify info variant styles are defined
-    const styleContent = Card.styles.toString();
+    const styleContent = AgCard.styles.toString();
     expect(styleContent).toContain('variant="info"');
   });
 
@@ -148,7 +152,7 @@ describe('Card', () => {
     expect(el.getAttribute('variant')).toBe('error');
 
     // Verify error variant styles are defined
-    const styleContent = Card.styles.toString();
+    const styleContent = AgCard.styles.toString();
     expect(styleContent).toContain('variant="error"');
   });
 
@@ -161,7 +165,7 @@ describe('Card', () => {
     expect(el.getAttribute('variant')).toBe('warning');
 
     // Verify warning variant styles are defined
-    const styleContent = Card.styles.toString();
+    const styleContent = AgCard.styles.toString();
     expect(styleContent).toContain('variant="warning"');
   });
 
@@ -172,7 +176,7 @@ describe('Card', () => {
     await el.updateComplete;
 
     // Verify prefers-reduced-motion media query is present
-    const styleContent = Card.styles.toString();
+    const styleContent = AgCard.styles.toString();
     expect(styleContent).toContain('prefers-reduced-motion');
   });
 
@@ -196,7 +200,7 @@ describe('Card', () => {
     host.appendChild(el);
     await el.updateComplete;
 
-    const styleContent = Card.styles.toString();
+    const styleContent = AgCard.styles.toString();
 
     // CRITICAL: Boolean attributes should use [attrname] not [attrname="true"]
     // Lit reflects boolean props as present/absent, not as ="true"/"false"

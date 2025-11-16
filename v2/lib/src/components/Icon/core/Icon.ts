@@ -1,12 +1,12 @@
-import { Icon } from './_Icon.js';
+import { AgIcon } from './_Icon.js';
 
 if (!customElements.get('ag-icon')) {
-  customElements.define('ag-icon', Icon);
+  customElements.define('ag-icon', AgIcon);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ag-icon': Icon;
+    'ag-icon': AgIcon;
   }
 }
 

@@ -11,11 +11,19 @@ export interface KbdProps {
   size?: KbdSize;
 }
 
-export class Kbd extends LitElement implements KbdProps {
-  @property({ type: String, reflect: true }) variant: KbdVariant = 'default';
-  @property({ type: Boolean, reflect: true }) bordered = true;
-  @property({ type: Boolean, reflect: true }) background = false;
-  @property({ type: String, reflect: true }) size: KbdSize = 'md';
+export class AgKbd extends LitElement implements KbdProps {
+  @property({ type: String, reflect: true }) declare variant: KbdVariant;
+  @property({ type: Boolean, reflect: true }) declare bordered: boolean;
+  @property({ type: Boolean, reflect: true }) declare background: boolean;
+  @property({ type: String, reflect: true }) declare size: KbdSize;
+
+  constructor() {
+    super();
+    this.variant = 'default';
+    this.bordered = true;
+    this.background = false;
+    this.size = 'md';
+  }
 
   static styles = css`
     :host {

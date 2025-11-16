@@ -1,14 +1,14 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import { Kbd, type KbdVariant, type KbdSize } from './_Kbd';
+import { AgKbd, type KbdVariant, type KbdSize } from './_Kbd';
 import './Kbd';
 
 // IMPORTANT: We need to include the component import here so that the custom element is defined.
 
 describe('Kbd Component', () => {
-  let element: Kbd;
+  let element: AgKbd;
 
-  const setup = async (props: Partial<Kbd> = {}) => {
-    element = document.createElement('ag-kbd') as Kbd;
+  const setup = async (props: Partial<AgKbd> = {}) => {
+    element = document.createElement('ag-kbd') as AgKbd;
     Object.assign(element, props);
     document.body.appendChild(element);
     await element.updateComplete;
@@ -21,7 +21,7 @@ describe('Kbd Component', () => {
 
   it('should create the component', async () => {
     element = await setup();
-    expect(element).toBeInstanceOf(Kbd);
+    expect(element).toBeInstanceOf(AgKbd);
   });
 
   it('should have correct default properties', async () => {
@@ -78,7 +78,7 @@ describe('Kbd Component', () => {
   });
 
   it('uses correct CSS attribute selectors for boolean props', () => {
-    const styleContent = Kbd.styles.toString();
+    const styleContent = AgKbd.styles.toString();
     expect(styleContent).toContain(':host([bordered])');
     expect(styleContent).not.toContain('[bordered="true"]');
     expect(styleContent).toContain(':host([background])');

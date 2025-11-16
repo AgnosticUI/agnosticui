@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Divider } from './Divider';
+import { AgDivider } from './Divider';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
@@ -16,8 +16,8 @@ describe('Divider', () => {
     container.innerHTML = '';
   });
 
-  const createDivider = async (props: Partial<Divider> = {}, slotContent?: string) => {
-    const divider = new Divider();
+  const createDivider = async (props: Partial<AgDivider> = {}, slotContent?: string) => {
+    const divider = new AgDivider();
     Object.assign(divider, props);
     if (slotContent) {
       divider.textContent = slotContent;
@@ -37,7 +37,7 @@ describe('Divider', () => {
 
   it('renders correctly with default props', async () => {
     const el = await createDivider();
-    expect(el).toBeInstanceOf(Divider);
+    expect(el).toBeInstanceOf(AgDivider);
     const dividerEl = el.shadowRoot?.querySelector('.divider');
     expect(dividerEl).toBeTruthy();
   });

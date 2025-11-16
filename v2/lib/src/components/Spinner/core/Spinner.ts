@@ -1,12 +1,12 @@
-import { Spinner } from './_Spinner';
+import { AgSpinner } from './_Spinner';
 
 if (!customElements.get('ag-spinner')) {
-  customElements.define('ag-spinner', Spinner);
+  customElements.define('ag-spinner', AgSpinner);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ag-spinner': Spinner;
+    'ag-spinner': AgSpinner;
   }
 }
 

@@ -13,15 +13,24 @@ export interface CardProps {
   variant?: CardVariant;
 }
 
-export class Card extends LitElement implements CardProps {
-  @property({ type: Boolean, reflect: true }) stacked = false;
-  @property({ type: Boolean, reflect: true }) shadow = false;
-  @property({ type: Boolean, reflect: true }) animated = false;
-  @property({ type: String, reflect: true }) rounded: CardRounded = '';
-  @property({ type: String, reflect: true }) variant: CardVariant = '';
+export class AgCard extends LitElement implements CardProps {
+  @property({ type: Boolean, reflect: true }) declare stacked: boolean;
+  @property({ type: Boolean, reflect: true }) declare shadow: boolean;
+  @property({ type: Boolean, reflect: true }) declare animated: boolean;
+  @property({ type: String, reflect: true }) declare rounded: CardRounded;
+  @property({ type: String, reflect: true }) declare variant: CardVariant;
 
   private _hasHeaderSlotContent = false;
   private _hasFooterSlotContent = false;
+
+  constructor() {
+    super();
+    this.stacked = false;
+    this.shadow = false;
+    this.animated = false;
+    this.rounded = '';
+    this.variant = '';
+  }
 
   /**
    * Handle slot changes to detect if header/footer are empty

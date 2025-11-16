@@ -1,13 +1,13 @@
 // _Icon.spec.ts
 import { expect, describe, it, beforeEach, afterEach } from 'vitest';
-import { Icon } from './Icon';
+import { AgIcon } from './Icon';
 import { axe } from 'jest-axe';
 
-describe('Icon', () => {
-  let element: Icon;
+describe('AgIcon', () => {
+  let element: AgIcon;
 
   beforeEach(async () => {
-    element = new Icon();
+    element = new AgIcon();
     document.body.appendChild(element);
     await element.updateComplete;
   });
@@ -17,7 +17,7 @@ describe('Icon', () => {
   });
 
   it('renders correctly with default props', async () => {
-    expect(element).toBeInstanceOf(Icon);
+    expect(element).toBeInstanceOf(AgIcon);
 
     const wrapper = element.shadowRoot!.querySelector('.icon-base');
     expect(wrapper).not.toBeNull();

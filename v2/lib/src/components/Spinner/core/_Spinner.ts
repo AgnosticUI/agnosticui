@@ -18,7 +18,7 @@ export interface SpinnerProps {
  * @element ag-spinner
  * @slot default - Optional text to display instead of default aria label
  */
-export class Spinner extends LitElement implements SpinnerProps {
+export class AgSpinner extends LitElement implements SpinnerProps {
   static styles = css`
     :host {
       display: inline-block;
@@ -127,10 +127,16 @@ export class Spinner extends LitElement implements SpinnerProps {
   `;
 
   @property({ type: String, reflect: true })
-  size: SpinnerSize = 'default';
+  declare size: SpinnerSize;
 
   @property({ type: String, reflect: true, attribute: 'aria-label' })
-  ariaLabel = 'Loading...';
+  declare ariaLabel: string;
+
+  constructor() {
+    super();
+    this.size = 'default';
+    this.ariaLabel = 'Loading...';
+  }
 
   render() {
     return html`
@@ -151,6 +157,6 @@ export class Spinner extends LitElement implements SpinnerProps {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ag-spinner': Spinner;
+    'ag-spinner': AgSpinner;
   }
 }

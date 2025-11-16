@@ -1,10 +1,10 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Spinner } from './Spinner';
+import { AgSpinner } from './Spinner';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
-describe('Spinner', () => {
+describe('AgSpinner', () => {
   let container: HTMLElement;
 
   beforeEach(() => {
@@ -16,8 +16,8 @@ describe('Spinner', () => {
     container.innerHTML = '';
   });
 
-  const createSpinner = async (props: Partial<Spinner> = {}) => {
-    const spinner = new Spinner();
+  const createSpinner = async (props: Partial<AgSpinner> = {}) => {
+    const spinner = new AgSpinner();
     Object.assign(spinner, props);
     container.appendChild(spinner);
     await spinner.updateComplete;
@@ -64,7 +64,7 @@ describe('Spinner', () => {
 
   it('renders correctly with default props', async () => {
     const el = await createSpinner();
-    expect(el).toBeInstanceOf(Spinner);
+    expect(el).toBeInstanceOf(AgSpinner);
     expect(el.size).toBe('default');
   });
 
@@ -117,27 +117,27 @@ describe('Spinner', () => {
 
   describe('CSS Structure', () => {
     it('uses correct CSS attribute selectors for size variants', () => {
-      const styleContent = Spinner.styles.toString();
+      const styleContent = AgSpinner.styles.toString();
       expect(styleContent).toContain(':host([size="small"])');
       expect(styleContent).toContain(':host([size="large"])');
       expect(styleContent).toContain(':host([size="xlarge"])');
     });
 
     it('uses grid layout for overlaying pseudo-elements', () => {
-      const styleContent = Spinner.styles.toString();
+      const styleContent = AgSpinner.styles.toString();
       expect(styleContent).toContain('display: grid');
       expect(styleContent).toContain('grid-area: content');
     });
 
     it('applies rotation animation', () => {
-      const styleContent = Spinner.styles.toString();
+      const styleContent = AgSpinner.styles.toString();
       expect(styleContent).toContain('@keyframes loading-circle');
       expect(styleContent).toContain('animation: loading-circle');
       expect(styleContent).toContain('rotate(360deg)');
     });
 
     it('respects prefers-reduced-motion', () => {
-      const styleContent = Spinner.styles.toString();
+      const styleContent = AgSpinner.styles.toString();
       expect(styleContent).toContain('@media (prefers-reduced-motion)');
       expect(styleContent).toContain('transition-duration: 0.001ms !important');
     });
