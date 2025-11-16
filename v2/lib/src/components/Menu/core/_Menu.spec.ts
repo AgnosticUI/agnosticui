@@ -1,16 +1,16 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { fireEvent } from '@testing-library/dom';
-import { MenuButton, Menu, MenuItem, MenuSeparator } from './Menu';
+import { AgMenuButton, AgMenu, AgMenuItem, AgMenuSeparator } from './Menu';
 
 // All components are automatically registered via @customElement decorators
 
-describe('Menu Components', () => {
-  describe('MenuButton', () => {
-    let menuButton: MenuButton;
+describe('AgMenu Components', () => {
+  describe('AgMenuButton', () => {
+    let menuButton: AgMenuButton;
 
     beforeEach(() => {
-      menuButton = document.createElement('ag-menu-button') as MenuButton;
-      menuButton.textContent = 'Menu Button';
+      menuButton = document.createElement('ag-menu-button') as AgMenuButton;
+      menuButton.textContent = 'AgMenu Button';
       document.body.appendChild(menuButton);
     });
 
@@ -68,7 +68,7 @@ describe('Menu Components', () => {
 
     it('should handle button clicks', async () => {
       // Add a menu child to the button for proper testing
-      const menu = document.createElement('ag-menu') as Menu;
+      const menu = document.createElement('ag-menu') as AgMenu;
       menu.setAttribute('slot', 'menu');
       menuButton.appendChild(menu);
 
@@ -101,11 +101,11 @@ describe('Menu Components', () => {
     });
   });
 
-  describe('Menu', () => {
-    let menu: Menu;
+  describe('AgMenu', () => {
+    let menu: AgMenu;
 
     beforeEach(() => {
-      menu = document.createElement('ag-menu') as Menu;
+      menu = document.createElement('ag-menu') as AgMenu;
       document.body.appendChild(menu);
     });
 
@@ -140,17 +140,17 @@ describe('Menu Components', () => {
     });
 
     it('should handle aria attributes', async () => {
-      menu.ariaLabel = 'Menu list';
+      menu.ariaLabel = 'AgMenu list';
       menu.ariaLabelledBy = 'button-id';
       await menu.updateComplete;
 
-      expect(menu.ariaLabel).toBe('Menu list');
+      expect(menu.ariaLabel).toBe('AgMenu list');
       expect(menu.ariaLabelledBy).toBe('button-id');
     });
 
     it('should manage menu items', () => {
-      const item1 = document.createElement('ag-menu-item') as MenuItem;
-      const item2 = document.createElement('ag-menu-item') as MenuItem;
+      const item1 = document.createElement('ag-menu-item') as AgMenuItem;
+      const item2 = document.createElement('ag-menu-item') as AgMenuItem;
 
       menu.appendChild(item1);
       menu.appendChild(item2);
@@ -162,9 +162,9 @@ describe('Menu Components', () => {
     });
 
     it('should handle focus management', () => {
-      const item1 = document.createElement('ag-menu-item') as MenuItem;
-      const item2 = document.createElement('ag-menu-item') as MenuItem;
-      const item3 = document.createElement('ag-menu-item') as MenuItem;
+      const item1 = document.createElement('ag-menu-item') as AgMenuItem;
+      const item2 = document.createElement('ag-menu-item') as AgMenuItem;
+      const item3 = document.createElement('ag-menu-item') as AgMenuItem;
 
       menu.appendChild(item1);
       menu.appendChild(item2);
@@ -191,11 +191,11 @@ describe('Menu Components', () => {
     });
   });
 
-  describe('MenuItem', () => {
-    let menuItem: MenuItem;
+  describe('AgMenuItem', () => {
+    let menuItem: AgMenuItem;
 
     beforeEach(() => {
-      menuItem = document.createElement('ag-menu-item') as MenuItem;
+      menuItem = document.createElement('ag-menu-item') as AgMenuItem;
       menuItem.textContent = 'Edit';
       document.body.appendChild(menuItem);
     });
@@ -222,7 +222,7 @@ describe('Menu Components', () => {
       await menuItem.updateComplete;
       const button = menuItem.shadowRoot?.querySelector('button');
       expect(button).toBeDefined();
-      // MenuItem content comes from slot, check that element has text
+      // AgMenuItem content comes from slot, check that element has text
       expect(menuItem.textContent?.trim()).toBe('Edit');
     });
 
@@ -273,11 +273,11 @@ describe('Menu Components', () => {
     });
   });
 
-  describe('MenuSeparator', () => {
-    let separator: MenuSeparator;
+  describe('AgMenuSeparator', () => {
+    let separator: AgMenuSeparator;
 
     beforeEach(() => {
-      separator = document.createElement('ag-menu-separator') as MenuSeparator;
+      separator = document.createElement('ag-menu-separator') as AgMenuSeparator;
       document.body.appendChild(separator);
     });
 
@@ -297,11 +297,11 @@ describe('Menu Components', () => {
   });
 
   describe('Event Handling', () => {
-    describe('MenuButton Events', () => {
-      let menuButton: MenuButton;
+    describe('AgMenuButton Events', () => {
+      let menuButton: AgMenuButton;
 
       beforeEach(() => {
-        menuButton = document.createElement('ag-menu-button') as MenuButton;
+        menuButton = document.createElement('ag-menu-button') as AgMenuButton;
         document.body.appendChild(menuButton);
       });
 
@@ -312,7 +312,7 @@ describe('Menu Components', () => {
       });
 
       it('should support addEventListener for menu-open event', async () => {
-        const menu = document.createElement('ag-menu') as Menu;
+        const menu = document.createElement('ag-menu') as AgMenu;
         menu.setAttribute('slot', 'menu');
         menuButton.appendChild(menu);
 
@@ -331,7 +331,7 @@ describe('Menu Components', () => {
       });
 
       it('should support addEventListener for menu-close event', async () => {
-        const menu = document.createElement('ag-menu') as Menu;
+        const menu = document.createElement('ag-menu') as AgMenu;
         menu.setAttribute('slot', 'menu');
         menuButton.appendChild(menu);
 
@@ -351,7 +351,7 @@ describe('Menu Components', () => {
       });
 
       it('should support callback prop for onMenuOpen', async () => {
-        const menu = document.createElement('ag-menu') as Menu;
+        const menu = document.createElement('ag-menu') as AgMenu;
         menu.setAttribute('slot', 'menu');
         menuButton.appendChild(menu);
 
@@ -370,7 +370,7 @@ describe('Menu Components', () => {
       });
 
       it('should support callback prop for onMenuClose', async () => {
-        const menu = document.createElement('ag-menu') as Menu;
+        const menu = document.createElement('ag-menu') as AgMenu;
         menu.setAttribute('slot', 'menu');
         menuButton.appendChild(menu);
 
@@ -450,11 +450,11 @@ describe('Menu Components', () => {
       });
     });
 
-    describe('MenuItem Events', () => {
-      let menuItem: MenuItem;
+    describe('AgMenuItem Events', () => {
+      let menuItem: AgMenuItem;
 
       beforeEach(() => {
-        menuItem = document.createElement('ag-menu-item') as MenuItem;
+        menuItem = document.createElement('ag-menu-item') as AgMenuItem;
         menuItem.value = 'test';
         document.body.appendChild(menuItem);
       });
@@ -513,16 +513,16 @@ describe('Menu Components', () => {
   });
 
   describe('Integration', () => {
-    let menuButton: MenuButton;
-    let menu: Menu;
-    let menuItem1: MenuItem;
-    let menuItem2: MenuItem;
+    let menuButton: AgMenuButton;
+    let menu: AgMenu;
+    let menuItem1: AgMenuItem;
+    let menuItem2: AgMenuItem;
 
     beforeEach(async () => {
-      menuButton = document.createElement('ag-menu-button') as MenuButton;
-      menu = document.createElement('ag-menu') as Menu;
-      menuItem1 = document.createElement('ag-menu-item') as MenuItem;
-      menuItem2 = document.createElement('ag-menu-item') as MenuItem;
+      menuButton = document.createElement('ag-menu-button') as AgMenuButton;
+      menu = document.createElement('ag-menu') as AgMenu;
+      menuItem1 = document.createElement('ag-menu-item') as AgMenuItem;
+      menuItem2 = document.createElement('ag-menu-item') as AgMenuItem;
 
       menuButton.textContent = 'Actions';
       menuItem1.textContent = 'Edit';

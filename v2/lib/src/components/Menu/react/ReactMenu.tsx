@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
 import {
-  MenuButton,
-  Menu,
-  MenuItem,
-  MenuSeparator,
+  AgMenuButton,
+  AgMenu,
+  AgMenuItem,
+  AgMenuSeparator,
   type MenuButtonProps,
   type MenuProps,
   type MenuItemProps,
@@ -64,39 +64,39 @@ export interface ReactMenuSeparatorProps {
 // Create MenuButton component with @lit/react
 export const ReactMenuButton = createComponent({
   tagName: 'ag-menu-button',
-  elementClass: MenuButton,
+  elementClass: AgMenuButton,
   react: React,
   events: {
     // Map custom events only (native events work automatically)
     onMenuOpen: 'menu-open' as EventName<MenuOpenEvent>,
     onMenuClose: 'menu-close' as EventName<MenuCloseEvent>,
   },
-}) as React.ForwardRefExoticComponent<ReactMenuButtonProps & React.RefAttributes<MenuButton>>;
+}) as React.ForwardRefExoticComponent<ReactMenuButtonProps & React.RefAttributes<AgMenuButton>>;
 
 // Create Menu component with @lit/react
 export const ReactMenu = createComponent({
   tagName: 'ag-menu',
-  elementClass: Menu,
+  elementClass: AgMenu,
   react: React,
-}) as React.ForwardRefExoticComponent<ReactMenuProps & React.RefAttributes<Menu>>;
+}) as React.ForwardRefExoticComponent<ReactMenuProps & React.RefAttributes<AgMenu>>;
 
 // Create MenuItem component with @lit/react
 export const ReactMenuItem = createComponent({
   tagName: 'ag-menu-item',
-  elementClass: MenuItem,
+  elementClass: AgMenuItem,
   react: React,
   events: {
     // Map custom events only (native events work automatically)
     onMenuSelect: 'menu-select' as EventName<MenuSelectEvent>,
   },
-}) as React.ForwardRefExoticComponent<ReactMenuItemProps & React.RefAttributes<MenuItem>>;
+}) as React.ForwardRefExoticComponent<ReactMenuItemProps & React.RefAttributes<AgMenuItem>>;
 
 // Create MenuSeparator component with @lit/react
 export const ReactMenuSeparator = createComponent({
   tagName: 'ag-menu-separator',
-  elementClass: MenuSeparator,
+  elementClass: AgMenuSeparator,
   react: React,
-}) as React.ForwardRefExoticComponent<ReactMenuSeparatorProps & React.RefAttributes<MenuSeparator>>;
+}) as React.ForwardRefExoticComponent<ReactMenuSeparatorProps & React.RefAttributes<AgMenuSeparator>>;
 
 // Re-export event types for consumer convenience
 export type {

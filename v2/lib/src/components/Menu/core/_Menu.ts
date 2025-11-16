@@ -55,36 +55,36 @@ export interface MenuProps {
   onKeyDown?: (event: KeyboardEvent) => void;
 }
 
-export class MenuButton extends LitElement implements MenuButtonProps {
+export class AgMenuButton extends LitElement implements MenuButtonProps {
   @query('.menu-trigger')
   declare _trigger: HTMLElement;
 
-  declare _menu: Menu | null;
+  declare _menu: AgMenu | null;
   declare _clickOutsideHandler: (event: Event) => void;
 
   @property({ type: String })
-  variant: 'chevron' | 'button' | 'icon' = 'chevron';
+  declare variant: 'chevron' | 'button' | 'icon';
 
   @property({ type: String, reflect: true })
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
+  declare size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
   @property({ type: String, attribute: 'button-variant', reflect: true })
-  buttonVariant: 'primary' | 'secondary' | 'ghost' | 'danger' = 'ghost';
+  declare buttonVariant: 'primary' | 'secondary' | 'ghost' | 'danger';
 
   @property({ type: Boolean })
-  disabled = false;
+  declare disabled: boolean;
 
   @property({ reflect: true, attribute: 'aria-label' })
-  ariaLabel = '';
+  declare ariaLabel: string;
 
   @property({ type: String })
-  icon = '';
+  declare icon: string;
 
   @property({ type: String })
-  unicode = '';
+  declare unicode: string;
 
   @property({ type: String })
-  label = '';
+  declare label: string;
 
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
@@ -105,10 +105,19 @@ export class MenuButton extends LitElement implements MenuButtonProps {
   declare onMenuClose?: (event: MenuCloseEvent) => void;
 
   @state()
-  _menuOpen = false;
+  declare _menuOpen: boolean;
 
   constructor() {
     super();
+    this.variant = 'chevron';
+    this.size = 'md';
+    this.buttonVariant = 'ghost';
+    this.disabled = false;
+    this.ariaLabel = '';
+    this.icon = '';
+    this.unicode = '';
+    this.label = '';
+    this._menuOpen = false;
     this._clickOutsideHandler = this._handleClickOutside.bind(this);
   }
 
@@ -392,7 +401,7 @@ export class MenuButton extends LitElement implements MenuButtonProps {
   }
 
   private _updateMenuReference() {
-    this._menu = this.querySelector('ag-menu') as Menu;
+    this._menu = this.querySelector('ag-menu') as AgMenu;
   }
 
   private _handleClickOutside(event: Event) {
@@ -594,36 +603,43 @@ export class MenuButton extends LitElement implements MenuButtonProps {
   }
 }
 
-export class Menu extends LitElement implements MenuProps {
+export class AgMenu extends LitElement implements MenuProps {
   @property({ type: Boolean })
-  open = false;
+  declare open: boolean;
 
   @property()
-  placement = 'bottom-start';
+  declare placement: string;
 
   @property({ reflect: true, attribute: 'aria-label' })
-  ariaLabel = '';
+  declare ariaLabel: string;
 
   @property({ reflect: true, attribute: 'aria-labelledby' })
-  ariaLabelledBy = '';
+  declare ariaLabelledBy: string;
 
   @property({ attribute: 'selected-value' })
-  selectedValue?: string;
+  declare selectedValue?: string;
 
   @property({ type: String })
-  type: 'default' | 'single-select' = 'default';
+  declare type: 'default' | 'single-select';
 
   @property({ attribute: false })
   declare onKeyDown?: (event: KeyboardEvent) => void;
 
   @state()
-  _focusedIndex = 0;
+  declare _focusedIndex: number;
 
   @state()
-  _menuItems: MenuItem[] = [];
+  declare _menuItems: AgMenuItem[];
 
   constructor() {
     super();
+    this.open = false;
+    this.placement = 'bottom-start';
+    this.ariaLabel = '';
+    this.ariaLabelledBy = '';
+    this.type = 'default';
+    this._focusedIndex = 0;
+    this._menuItems = [];
   }
 
   static styles = css`
@@ -692,7 +708,7 @@ export class Menu extends LitElement implements MenuProps {
     // Handle selection tracking for this menu
     // Note: We allow the event to bubble up to the menuButton
     // so it can also handle the selection event
-    const selectedItem = event.target as MenuItem;
+    const selectedItem = event.target as AgMenuItem;
     this.selectedValue = selectedItem.value;
   }
 
@@ -705,7 +721,7 @@ export class Menu extends LitElement implements MenuProps {
   }
 
   _updateMenuItems() {
-    this._menuItems = Array.from(this.querySelectorAll('ag-menu-item')) as MenuItem[];
+    this._menuItems = Array.from(this.querySelectorAll('ag-menu-item')) as AgMenuItem[];
     this._updateTabIndex();
     this._updateSelection();
   }
@@ -800,7 +816,7 @@ export class Menu extends LitElement implements MenuProps {
   }
 
   private _closeMenu() {
-    const menuButton = this.closest('ag-menu-button') as MenuButton;
+    const menuButton = this.closest('ag-menu-button') as AgMenuButton;
     if (menuButton) {
       menuButton._closeMenu();
     }
@@ -811,24 +827,24 @@ export class Menu extends LitElement implements MenuProps {
   }
 }
 
-export class MenuItem extends LitElement implements MenuItemProps {
+export class AgMenuItem extends LitElement implements MenuItemProps {
   @property()
-  value = '';
+  declare value: string;
 
   @property({ type: Boolean })
-  disabled = false;
+  declare disabled: boolean;
 
   @property()
-  href = '';
+  declare href: string;
 
   @property()
-  target = '';
+  declare target: string;
 
   @property({ type: Boolean })
-  checked = false;
+  declare checked: boolean;
 
   @property({ type: String, reflect: true })
-  variant: 'default' | 'monochrome' = 'default';
+  declare variant: 'default' | 'monochrome';
 
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
@@ -836,10 +852,16 @@ export class MenuItem extends LitElement implements MenuItemProps {
   @property({ attribute: false })
   declare onMenuSelect?: (event: MenuSelectEvent) => void;
 
-  private _menu: Menu | null = null;
+  private _menu: AgMenu | null = null;
 
   constructor() {
     super();
+    this.value = '';
+    this.disabled = false;
+    this.href = '';
+    this.target = '';
+    this.checked = false;
+    this.variant = 'default';
   }
 
   static styles = css`
@@ -956,7 +978,7 @@ export class MenuItem extends LitElement implements MenuItemProps {
       this.onClick(event);
     }
 
-    const menuButton = this.closest('ag-menu-button') as MenuButton;
+    const menuButton = this.closest('ag-menu-button') as AgMenuButton;
 
     // Dual-dispatch pattern for custom event
     const menuSelectEvent = new CustomEvent<MenuSelectEventDetail>('menu-select', {
@@ -1003,7 +1025,7 @@ export class MenuItem extends LitElement implements MenuItemProps {
   }
 }
 
-export class MenuSeparator extends LitElement {
+export class AgMenuSeparator extends LitElement {
   static styles = css`
     :host {
       display: block;
