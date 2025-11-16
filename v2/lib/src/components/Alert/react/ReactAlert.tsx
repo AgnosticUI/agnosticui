@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { Alert, type AlertProps, type AlertDismissEvent } from '../core/Alert';
+import { AgAlert, type AlertProps, type AlertDismissEvent } from '../core/Alert';
 
 /**
  * React-specific props interface derived from core AlertProps
@@ -13,7 +13,7 @@ export interface ReactAlertProps extends AlertProps {
 // Create component with @lit/react
 export const ReactAlert = createComponent({
   tagName: 'ag-alert',
-  elementClass: Alert,
+  elementClass: AgAlert,
   react: React,
   events: {
     onAlertDismiss: 'alert-dismiss' as EventName<AlertDismissEvent>,

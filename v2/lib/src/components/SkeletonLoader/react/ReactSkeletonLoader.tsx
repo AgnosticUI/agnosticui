@@ -1,7 +1,7 @@
 import { createComponent } from "@lit/react";
 import React from "react";
 import {
-  Skeleton,
+  AgSkeleton,
   type SkeletonProps,
   type SkeletonVariant,
   type SkeletonEffect,
@@ -12,7 +12,7 @@ export type { SkeletonProps, SkeletonVariant, SkeletonEffect, SkeletonIntensity 
 
 export const ReactSkeleton = createComponent({
   tagName: "ag-skeleton",
-  elementClass: Skeleton,
+  elementClass: AgSkeleton,
   react: React,
   events: {
     // No custom events for Skeleton component

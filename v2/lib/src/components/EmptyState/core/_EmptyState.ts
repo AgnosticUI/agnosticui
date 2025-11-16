@@ -12,19 +12,39 @@ export type EmptyStateProps = {
 };
 
 export class AgEmptyState extends LitElement implements EmptyStateProps {
-  @property({ type: String }) title = '';
-  @property({ type: String }) subtitle = '';
-  @property({ type: String, attribute: 'button-text' }) buttonText = '';
+  @property({ type: String })
+  declare title: string;
+
+  @property({ type: String })
+  declare subtitle: string;
+
+  @property({ type: String, attribute: 'button-text' })
+  declare buttonText: string;
+
   @property({ type: String, reflect: true })
-  size: 'sm' | 'md' | 'lg' = 'md';
-  @property({ type: Boolean }) bordered = false;
-  @property({ type: Boolean }) rounded = false;
+  declare size: 'sm' | 'md' | 'lg';
+
+  @property({ type: Boolean })
+  declare bordered: boolean;
+
+  @property({ type: Boolean })
+  declare rounded: boolean;
 
   @property({ type: Boolean, state: true })
   private _hasIconSlot = false;
 
   @property({ type: Boolean, state: true })
   private _hasActionsSlot = false;
+
+  constructor() {
+    super();
+    this.title = '';
+    this.subtitle = '';
+    this.buttonText = '';
+    this.size = 'md';
+    this.bordered = false;
+    this.rounded = false;
+  }
 
   private _handleSlotChange(e: Event) {
     const slot = e.target as HTMLSlotElement;

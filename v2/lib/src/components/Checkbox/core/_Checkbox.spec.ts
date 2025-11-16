@@ -1,6 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { Checkbox } from './Checkbox';
+import { AgCheckbox } from './Checkbox';
 import { axe, toHaveNoViolations } from 'jest-axe';
+
+// Type alias for backward compatibility
+const Checkbox = AgCheckbox;
 
 expect.extend(toHaveNoViolations);
 
@@ -16,8 +19,8 @@ describe('Checkbox - Comprehensive Tests', () => {
     container.innerHTML = '';
   });
 
-  const createCheckbox = async (props: Partial<Checkbox> = {}) => {
-    const checkbox = new Checkbox();
+  const createCheckbox = async (props: Partial<AgCheckbox> = {}) => {
+    const checkbox = new AgCheckbox();
     Object.assign(checkbox, props);
     container.appendChild(checkbox);
     await checkbox.updateComplete;

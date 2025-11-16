@@ -19,28 +19,39 @@ export interface CollapsibleProps {
 
 export class AgCollapsible extends LitElement implements CollapsibleProps {
   @property({ type: Boolean, reflect: true })
-  public open = false;
+  declare open: boolean;
 
   @property({ type: Boolean, reflect: true })
-  public bordered = false;
+  declare bordered: boolean;
 
   @property({ type: Boolean, reflect: true })
-  public shadow = false;
+  declare shadow: boolean;
 
   @property({ type: Boolean, reflect: true, attribute: 'use-chevron' })
-  public useChevron = true; // Default indicator
+  declare useChevron: boolean;
 
   @property({ type: Boolean, reflect: true, attribute: 'use-x' })
-  public useX = false;
+  declare useX: boolean;
 
   @property({ type: Boolean, reflect: true, attribute: 'use-minus' })
-  public useMinus = false;
+  declare useMinus: boolean;
 
   @property({ type: Boolean, reflect: true, attribute: 'no-indicator' })
-  public noIndicator = false;
+  declare noIndicator: boolean;
 
   @property({ attribute: false })
   declare onToggle?: (event: CollapsibleToggleEvent) => void;
+
+  constructor() {
+    super();
+    this.open = false;
+    this.bordered = false;
+    this.shadow = false;
+    this.useChevron = true; // Default indicator
+    this.useX = false;
+    this.useMinus = false;
+    this.noIndicator = false;
+  }
 
   static styles = css`
     :host {

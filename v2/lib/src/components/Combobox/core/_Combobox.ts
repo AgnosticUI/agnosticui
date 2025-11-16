@@ -522,7 +522,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
   // Props
   @property({ type: Array })
-  options: ComboboxOption[] = [];
+  declare options: ComboboxOption[];
 
   private _value: string | string[] = '';
 
@@ -542,104 +542,104 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   }
 
   @property({ type: [String, Array], attribute: 'default-value' })
-  defaultValue?: string | string[];
+  declare defaultValue?: string | string[];
 
   @property({ type: String })
-  placeholder = '';
+  declare placeholder: string;
 
   @property({ type: String })
-  label?: string;
+  declare label?: string;
 
   @property({ type: Boolean, attribute: 'label-hidden' })
-  labelHidden = false;
+  declare labelHidden: boolean;
 
   @property({ type: Boolean, attribute: 'no-label' })
-  noLabel = false;
+  declare noLabel: boolean;
 
   @property({ type: String, attribute: 'aria-label' })
-  ariaLabel: string | null = null;
+  declare ariaLabel: string | null;
 
   @property({ type: String, attribute: 'labelled-by' })
-  labelledBy?: string;
+  declare labelledBy?: string;
 
   @property({ type: String, attribute: 'help-text' })
-  helpText?: string;
+  declare helpText?: string;
 
   @property({ type: String, attribute: 'error-text' })
-  errorText?: string;
+  declare errorText?: string;
 
   @property({ type: String })
-  id = '';
+  declare id: string;
 
   @property({ type: String })
-  autocomplete: 'list' | 'none' = 'list';
+  declare autocomplete: 'list' | 'none';
 
   @property({ type: String, attribute: 'filter-mode' })
-  filterMode: 'startsWith' | 'contains' | 'none' = 'startsWith';
+  declare filterMode: 'startsWith' | 'contains' | 'none';
 
   @property({ type: Boolean })
-  clearable = false;
+  declare clearable: boolean;
 
   @property({ type: Boolean, reflect: true })
-  disabled = false;
+  declare disabled: boolean;
 
   @property({ type: Boolean })
-  readonly = false;
+  declare readonly: boolean;
 
   @property({ type: Boolean })
-  required = false;
+  declare required: boolean;
 
   @property({ type: Boolean, reflect: true })
-  invalid = false;
+  declare invalid: boolean;
 
   @property({ type: String, reflect: true })
-  size: 'small' | 'default' | 'large' = 'default';
+  declare size: 'small' | 'default' | 'large';
 
   @property({ type: String, reflect: true })
-  variant: 'default' | 'monochrome' = 'default';
+  declare variant: 'default' | 'monochrome';
 
   @property({ type: Number, attribute: 'max-visible-options' })
-  maxVisibleOptions = 10;
+  declare maxVisibleOptions: number;
 
   @property({ type: Boolean })
-  closeOnSelect = true;
+  declare closeOnSelect: boolean;
 
   @property({ type: Boolean })
-  multiple = false;
+  declare multiple: boolean;
 
   @property({ type: Number, attribute: 'max-options-visible' })
-  maxOptionsVisible = 3;
+  declare maxOptionsVisible: number;
 
   @property({ type: Boolean })
-  loading = false;
+  declare loading: boolean;
 
   @property({ type: String, attribute: 'loading-text' })
-  loadingText = 'Loading...';
+  declare loadingText: string;
 
   @property({ type: String, attribute: 'no-results-text' })
-  noResultsText = 'No results found';
+  declare noResultsText: string;
 
   // Event callbacks
   @property({ attribute: false })
-  onChange?: (event: ComboboxChangeEvent) => void;
+  declare onChange?: (event: ComboboxChangeEvent) => void;
 
   @property({ attribute: false })
-  onSelect?: (event: ComboboxSelectEvent) => void;
+  declare onSelect?: (event: ComboboxSelectEvent) => void;
 
   @property({ attribute: false })
-  onSearch?: (event: ComboboxSearchEvent) => void;
+  declare onSearch?: (event: ComboboxSearchEvent) => void;
 
   @property({ attribute: false })
-  onOpen?: (event: ComboboxOpenEvent) => void;
+  declare onOpen?: (event: ComboboxOpenEvent) => void;
 
   @property({ attribute: false })
-  onClose?: (event: ComboboxCloseEvent) => void;
+  declare onClose?: (event: ComboboxCloseEvent) => void;
 
   @property({ attribute: false })
-  onFocus?: (event: FocusEvent) => void;
+  declare onFocus?: (event: FocusEvent) => void;
 
   @property({ attribute: false })
-  onBlur?: (event: FocusEvent) => void;
+  declare onBlur?: (event: FocusEvent) => void;
 
   // Internal state
   @state()
@@ -682,6 +682,32 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
   // Flag to prevent reopening after selection
   private _justSelected = false;
+
+  constructor() {
+    super();
+    this.options = [];
+    this.placeholder = '';
+    this.labelHidden = false;
+    this.noLabel = false;
+    this.ariaLabel = null;
+    this.id = '';
+    this.autocomplete = 'list';
+    this.filterMode = 'startsWith';
+    this.clearable = false;
+    this.disabled = false;
+    this.readonly = false;
+    this.required = false;
+    this.invalid = false;
+    this.size = 'default';
+    this.variant = 'default';
+    this.maxVisibleOptions = 10;
+    this.closeOnSelect = true;
+    this.multiple = false;
+    this.maxOptionsVisible = 3;
+    this.loading = false;
+    this.loadingText = 'Loading...';
+    this.noResultsText = 'No results found';
+  }
 
   connectedCallback() {
     super.connectedCallback();

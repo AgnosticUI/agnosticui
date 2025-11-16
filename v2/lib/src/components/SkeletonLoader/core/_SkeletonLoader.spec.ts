@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Skeleton } from './_SkeletonLoader';
+import { AgSkeleton } from './_SkeletonLoader';
 import './SkeletonLoader';
 
-describe('Skeleton', () => {
-  let element: Skeleton;
+describe('AgSkeleton', () => {
+  let element: AgSkeleton;
   let host: HTMLElement;
 
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe('Skeleton', () => {
   });
 
   it('renders with default props', async () => {
-    element = document.createElement('ag-skeleton') as Skeleton;
+    element = document.createElement('ag-skeleton') as AgSkeleton;
     host.appendChild(element);
     await element.updateComplete;
 
@@ -26,7 +26,7 @@ describe('Skeleton', () => {
   });
 
   it('uses correct CSS attribute selectors for variant', () => {
-    const styleContent = Skeleton.styles.toString();
+    const styleContent = AgSkeleton.styles.toString();
     expect(styleContent).toContain(':host([variant=\'text\'])');
     expect(styleContent).toContain(':host([variant=\'circular\'])');
     expect(styleContent).toContain(':host([variant=\'rectangular\'])');
@@ -35,7 +35,7 @@ describe('Skeleton', () => {
   });
 
   it('uses correct CSS attribute selectors for effect', () => {
-    const styleContent = Skeleton.styles.toString();
+    const styleContent = AgSkeleton.styles.toString();
     expect(styleContent).toContain(':host([effect=\'pulse\'])');
     expect(styleContent).toContain(':host([effect=\'sheen\'])');
     expect(styleContent).toContain(':host([effect=\'none\'])');
@@ -43,7 +43,7 @@ describe('Skeleton', () => {
   });
 
   it('uses correct CSS attribute selectors for intensity', () => {
-    const styleContent = Skeleton.styles.toString();
+    const styleContent = AgSkeleton.styles.toString();
     expect(styleContent).toContain(':host([intensity=\'light\'])');
     expect(styleContent).toContain(':host([intensity=\'medium\'])');
     expect(styleContent).not.toContain('[intensity="light"]');
@@ -51,7 +51,7 @@ describe('Skeleton', () => {
 
   describe('Variants', () => {
     it('renders text variant', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.variant = 'text';
       host.appendChild(element);
       await element.updateComplete;
@@ -61,7 +61,7 @@ describe('Skeleton', () => {
     });
 
     it('renders circular variant', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.variant = 'circular';
       host.appendChild(element);
       await element.updateComplete;
@@ -71,7 +71,7 @@ describe('Skeleton', () => {
     });
 
     it('renders rectangular variant', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.variant = 'rectangular';
       host.appendChild(element);
       await element.updateComplete;
@@ -81,7 +81,7 @@ describe('Skeleton', () => {
     });
 
     it('renders rounded variant', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.variant = 'rounded';
       host.appendChild(element);
       await element.updateComplete;
@@ -93,7 +93,7 @@ describe('Skeleton', () => {
 
   describe('Effects', () => {
     it('renders pulse effect (default)', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       host.appendChild(element);
       await element.updateComplete;
 
@@ -102,7 +102,7 @@ describe('Skeleton', () => {
     });
 
     it('renders sheen effect', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.effect = 'sheen';
       host.appendChild(element);
       await element.updateComplete;
@@ -112,7 +112,7 @@ describe('Skeleton', () => {
     });
 
     it('renders no effect', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.effect = 'none';
       host.appendChild(element);
       await element.updateComplete;
@@ -124,7 +124,7 @@ describe('Skeleton', () => {
 
   describe('Intensity', () => {
     it('renders light intensity (default)', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       host.appendChild(element);
       await element.updateComplete;
 
@@ -133,7 +133,7 @@ describe('Skeleton', () => {
     });
 
     it('renders medium intensity', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.intensity = 'medium';
       host.appendChild(element);
       await element.updateComplete;
@@ -145,7 +145,7 @@ describe('Skeleton', () => {
 
   describe('Dimensions', () => {
     it('applies custom width', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.width = '200px';
       host.appendChild(element);
       await element.updateComplete;
@@ -155,7 +155,7 @@ describe('Skeleton', () => {
     });
 
     it('applies custom height', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.height = '50px';
       host.appendChild(element);
       await element.updateComplete;
@@ -165,7 +165,7 @@ describe('Skeleton', () => {
     });
 
     it('applies custom width and height', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.width = '200px';
       element.height = '50px';
       host.appendChild(element);
@@ -178,7 +178,7 @@ describe('Skeleton', () => {
     });
 
     it('ensures equal dimensions for circular variant when only width is provided', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.variant = 'circular';
       element.width = '100px';
       host.appendChild(element);
@@ -189,7 +189,7 @@ describe('Skeleton', () => {
     });
 
     it('ensures equal dimensions for circular variant when only height is provided', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.variant = 'circular';
       element.height = '100px';
       host.appendChild(element);
@@ -200,7 +200,7 @@ describe('Skeleton', () => {
     });
 
     it('uses provided dimensions for circular variant when both are specified', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       element.variant = 'circular';
       element.width = '120px';
       element.height = '120px';
@@ -214,7 +214,7 @@ describe('Skeleton', () => {
 
   describe('Shadow Parts', () => {
     it('exposes skeleton-wrapper part', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       host.appendChild(element);
       await element.updateComplete;
 
@@ -225,7 +225,7 @@ describe('Skeleton', () => {
 
   describe('Accessibility', () => {
     it('has aria-hidden attribute', async () => {
-      element = document.createElement('ag-skeleton') as Skeleton;
+      element = document.createElement('ag-skeleton') as AgSkeleton;
       host.appendChild(element);
       await element.updateComplete;
 
@@ -233,7 +233,7 @@ describe('Skeleton', () => {
     });
 
     it('respects prefers-reduced-motion', () => {
-      const styleContent = Skeleton.styles.toString();
+      const styleContent = AgSkeleton.styles.toString();
       expect(styleContent).toContain('prefers-reduced-motion');
     });
   });

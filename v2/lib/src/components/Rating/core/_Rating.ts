@@ -38,13 +38,26 @@ export class AgRating extends LitElement {
   private uniqueId = ++uniqueIdCounter; // Unique ID for clip paths in half-star rendering
 
   // Public properties
-  @property({ type: Number }) value = 0; // Current rating value (can be fractional for half precision)
-  @property({ type: Number }) max = 5; // Total number of stars
-  @property({ type: String }) precision: 'whole' | 'half' = 'whole'; // Precision mode: whole or half stars
-  @property({ type: Boolean, reflect: true }) readonly = false; // Disables interaction if true
-  @property({ type: Boolean }) allowClear = false; // Allows clearing rating by clicking the same value
-  @property({ type: String, reflect: true }) variant: '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' = ''; // Visual variant
-  @property({ type: String, reflect: true }) size: RatingSize = 'md'; // Size: small, medium, large
+  @property({ type: Number })
+  declare value: number; // Current rating value (can be fractional for half precision)
+
+  @property({ type: Number })
+  declare max: number; // Total number of stars
+
+  @property({ type: String })
+  declare precision: 'whole' | 'half'; // Precision mode: whole or half stars
+
+  @property({ type: Boolean, reflect: true })
+  declare readonly: boolean; // Disables interaction if true
+
+  @property({ type: Boolean })
+  declare allowClear: boolean; // Allows clearing rating by clicking the same value
+
+  @property({ type: String, reflect: true })
+  declare variant: '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'; // Visual variant
+
+  @property({ type: String, reflect: true })
+  declare size: RatingSize; // Size: small, medium, large
 
   // Event handlers
   @property({ attribute: false })
@@ -60,6 +73,13 @@ export class AgRating extends LitElement {
 
   constructor() {
     super();
+    this.value = 0;
+    this.max = 5;
+    this.precision = 'whole';
+    this.readonly = false;
+    this.allowClear = false;
+    this.variant = '';
+    this.size = 'md';
     this.handlePointerMove = this.handlePointerMove.bind(this);
     this.handlePointerUp = this.handlePointerUp.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);

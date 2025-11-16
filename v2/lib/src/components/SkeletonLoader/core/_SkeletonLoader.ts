@@ -13,12 +13,19 @@ export interface SkeletonProps {
   height?: string;
 }
 
-export class Skeleton extends LitElement implements SkeletonProps {
-  @property({ type: String, reflect: true }) variant: SkeletonVariant = 'text';
-  @property({ type: String, reflect: true }) effect: SkeletonEffect = 'pulse';
-  @property({ type: String, reflect: true }) intensity: SkeletonIntensity = 'light';
-  @property({ type: String, reflect: true }) width?: string;
-  @property({ type: String, reflect: true }) height?: string;
+export class AgSkeleton extends LitElement implements SkeletonProps {
+  @property({ type: String, reflect: true }) declare variant: SkeletonVariant;
+  @property({ type: String, reflect: true }) declare effect: SkeletonEffect;
+  @property({ type: String, reflect: true }) declare intensity: SkeletonIntensity;
+  @property({ type: String, reflect: true }) declare width?: string;
+  @property({ type: String, reflect: true }) declare height?: string;
+
+  constructor() {
+    super();
+    this.variant = 'text';
+    this.effect = 'pulse';
+    this.intensity = 'light';
+  }
 
   connectedCallback() {
     super.connectedCallback();

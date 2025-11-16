@@ -1,12 +1,12 @@
-import { Checkbox } from './_Checkbox.js';
+import { AgCheckbox } from './_Checkbox.js';
 
 if (!customElements.get('ag-checkbox')) {
-  customElements.define('ag-checkbox', Checkbox);
+  customElements.define('ag-checkbox', AgCheckbox);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ag-checkbox': Checkbox;
+    'ag-checkbox': AgCheckbox;
   }
 }
 

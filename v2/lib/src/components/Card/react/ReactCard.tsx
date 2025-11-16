@@ -1,12 +1,12 @@
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { Card, type CardProps } from '../core/Card';
+import { AgCard, type CardProps } from '../core/Card';
 
 export type ReactCardProps = CardProps;
 
 export const ReactCard = createComponent({
   tagName: 'ag-card',
-  elementClass: Card,
+  elementClass: AgCard,
   react: React,
   events: {
     // onEventName: 'event-name',

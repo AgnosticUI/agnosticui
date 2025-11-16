@@ -1,12 +1,12 @@
-import { Kbd, type KbdProps } from './_Kbd.js';
+import { AgKbd, type KbdProps } from './_Kbd.js';
 
 if (!customElements.get('ag-kbd')) {
-  customElements.define('ag-kbd', Kbd);
+  customElements.define('ag-kbd', AgKbd);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ag-kbd': Kbd;
+    'ag-kbd': AgKbd;
   }
 }
 
