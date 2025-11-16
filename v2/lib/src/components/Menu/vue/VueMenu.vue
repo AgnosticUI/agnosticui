@@ -9,6 +9,7 @@
     @keydown="handleKeyDown"
     @menu-open="handleMenuOpen"
     @menu-close="handleMenuClose"
+    @menu-select="handleMenuSelect"
     v-bind="$attrs"
   >
     <slot />
@@ -32,6 +33,7 @@ import type {
   MenuButtonProps,
   MenuOpenEventDetail,
   MenuCloseEventDetail,
+  MenuSelectEventDetail,
 } from "../core/Menu";
 import "../core/Menu"; // Registers the ag-menu web component
 
@@ -59,6 +61,7 @@ const emit = defineEmits<{
   "menu-keydown": [event: KeyboardEvent];
   "menu-open": [detail: MenuOpenEventDetail];
   "menu-close": [detail: MenuCloseEventDetail];
+  "menu-select": [detail: MenuSelectEventDetail];
   "update:open": [open: boolean];
 }>();
 
@@ -98,5 +101,10 @@ const handleMenuClose = (event: Event) => {
   const menuCloseEvent = event as CustomEvent<MenuCloseEventDetail>;
   emit("menu-close", menuCloseEvent.detail);
   emit("update:open", menuCloseEvent.detail.open);
+};
+
+const handleMenuSelect = (event: Event) => {
+  const menuSelectEvent = event as CustomEvent<MenuSelectEventDetail>;
+  emit("menu-select", menuSelectEvent.detail);
 };
 </script>
