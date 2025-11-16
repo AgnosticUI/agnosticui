@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { AgCard } from './Card';
 
-// Type alias for backward compatibility
-type Card = AgCard;
+// Alias for backward compatibility (both type and value needed)
+type CardType = AgCard;
 const Card = AgCard;
 
 describe('AgCard', () => {
@@ -60,7 +60,7 @@ describe('AgCard', () => {
         <div slot="footer">Footer</div>
       </ag-card>
     `;
-    const el = host.querySelector('ag-card')! as Card;
+    const el = host.querySelector('ag-card')! as CardType;
     await el.updateComplete;
 
     const headerSlot = el.querySelector('[slot="header"]');
@@ -76,7 +76,7 @@ describe('AgCard', () => {
   });
 
   it('applies animated attribute correctly', async () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as CardType;
     el.animated = true;
     host.appendChild(el);
     await el.updateComplete;
@@ -91,19 +91,19 @@ describe('AgCard', () => {
   });
 
   it('applies rounded attribute variants correctly', async () => {
-    const elSm = document.createElement('ag-card') as Card;
+    const elSm = document.createElement('ag-card') as CardType;
     elSm.rounded = 'sm';
     host.appendChild(elSm);
     await elSm.updateComplete;
     expect(elSm.getAttribute('rounded')).toBe('sm');
 
-    const elMd = document.createElement('ag-card') as Card;
+    const elMd = document.createElement('ag-card') as CardType;
     elMd.rounded = 'md';
     host.appendChild(elMd);
     await elMd.updateComplete;
     expect(elMd.getAttribute('rounded')).toBe('md');
 
-    const elLg = document.createElement('ag-card') as Card;
+    const elLg = document.createElement('ag-card') as CardType;
     elLg.rounded = 'lg';
     host.appendChild(elLg);
     await elLg.updateComplete;
@@ -118,7 +118,7 @@ describe('AgCard', () => {
   });
 
   it('supports success variant', async () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as CardType;
     el.variant = 'success';
     host.appendChild(el);
     await el.updateComplete;
@@ -131,7 +131,7 @@ describe('AgCard', () => {
   });
 
   it('supports info variant', async () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as CardType;
     el.variant = 'info';
     host.appendChild(el);
     await el.updateComplete;
@@ -144,7 +144,7 @@ describe('AgCard', () => {
   });
 
   it('supports error variant', async () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as CardType;
     el.variant = 'error';
     host.appendChild(el);
     await el.updateComplete;
@@ -157,7 +157,7 @@ describe('AgCard', () => {
   });
 
   it('supports warning variant', async () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as CardType;
     el.variant = 'warning';
     host.appendChild(el);
     await el.updateComplete;
@@ -170,7 +170,7 @@ describe('AgCard', () => {
   });
 
   it('respects reduced motion preferences for animations', async () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as CardType;
     el.animated = true;
     host.appendChild(el);
     await el.updateComplete;
@@ -181,7 +181,7 @@ describe('AgCard', () => {
   });
 
   it('combines multiple attributes correctly', async () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as CardType;
     el.shadow = true;
     el.animated = true;
     el.rounded = 'md';
@@ -196,7 +196,7 @@ describe('AgCard', () => {
   });
 
   it('uses correct CSS attribute selectors for boolean props (not ="true")', async () => {
-    const el = document.createElement('ag-card') as Card;
+    const el = document.createElement('ag-card') as CardType;
     host.appendChild(el);
     await el.updateComplete;
 

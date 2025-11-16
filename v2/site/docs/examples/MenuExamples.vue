@@ -140,9 +140,19 @@
       <VueMenu menu-aria-label="Monochrome menu">
         Monochrome Menu
         <template #menu>
-          <VueMenuItem value="option1" variant="monochrome">Option 1</VueMenuItem>
-          <VueMenuItem value="option2" variant="monochrome" :selected="true">Option 2 (Selected)</VueMenuItem>
-          <VueMenuItem value="option3" variant="monochrome">Option 3</VueMenuItem>
+          <VueMenuItem
+            value="option1"
+            variant="monochrome"
+          >Option 1</VueMenuItem>
+          <VueMenuItem
+            value="option2"
+            variant="monochrome"
+            :selected="true"
+          >Option 2 (Selected)</VueMenuItem>
+          <VueMenuItem
+            value="option3"
+            variant="monochrome"
+          >Option 3</VueMenuItem>
         </template>
       </VueMenu>
     </div>
@@ -151,23 +161,28 @@
       <h3>Event Handling</h3>
     </div>
     <div class="stacked mbe4">
-      <VueMenu
-        menu-aria-label="Event testing menu"
-        @menu-open="handleMenuOpen"
-        @menu-close="handleMenuClose"
-        @menu-select="handleMenuSelect"
+      <div
+        class="flex-inline items-center"
+        :style="{gap: '10px'}"
       >
-        Event Test
-        <template #menu>
-          <VueMenuItem value="option1">Option 1</VueMenuItem>
-          <VueMenuItem value="option2">Option 2</VueMenuItem>
-          <VueMenuSeparator />
-          <VueMenuItem value="option3">Option 3</VueMenuItem>
-        </template>
-      </VueMenu>
-      <p v-if="lastEvent">
-        Last event: <strong>{{ lastEvent }}</strong>
-      </p>
+        <VueMenu
+          menu-aria-label="Event testing menu"
+          @menu-open="handleMenuOpen"
+          @menu-close="handleMenuClose"
+          @menu-select="handleMenuSelect"
+        >
+          Event Test
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+        <p v-if="lastEvent">
+          Last event: <strong>{{ lastEvent }}</strong>
+        </p>
+      </div>
     </div>
     <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
@@ -208,6 +223,7 @@ export default {
   data() {
     return {
       lastEvent: null,
+      lastSelectedValue: null,
       customMenuStyles: `
         <style>
           .custom-menu-button::part(ag-menu-trigger-chevron-button) {
@@ -248,14 +264,21 @@ export default {
     };
   },
   methods: {
-    handleMenuOpen() {
-      this.lastEvent = "menu-open";
+    handleMenuOpen(detail) {
+      const selectedInfo = this.lastSelectedValue
+        ? `, selected: ${this.lastSelectedValue}`
+        : "";
+      this.lastEvent = `menu-open (open: ${detail.open}${selectedInfo})`;
     },
-    handleMenuClose() {
-      this.lastEvent = "menu-close";
+    handleMenuClose(detail) {
+      const selectedInfo = this.lastSelectedValue
+        ? `, selected: ${this.lastSelectedValue}`
+        : "";
+      this.lastEvent = `menu-close (open: ${detail.open}${selectedInfo})`;
     },
     handleMenuSelect(detail) {
-      this.lastEvent = `menu-select: ${detail.value}`;
+      this.lastSelectedValue = detail.value;
+      this.lastEvent = `menu-select (value: ${detail.value})`;
     },
   },
 };
