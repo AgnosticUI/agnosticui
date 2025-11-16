@@ -480,15 +480,28 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   }
 
   _openMenu(focusFirst = true) {
+    // Only open if not already open
+    if (this._menuOpen) {
+      return;
+    }
+
     this._menuOpen = true;
     this._updateMenuReference(); // Ensure we have the latest reference
+
     if (this._menu) {
       this._menu.open = true;
       this._menu._updateMenuItems();
+
       if (focusFirst) {
-        this._menu._focusFirstItem();
+        // Use requestAnimationFrame to ensure focus happens after render
+        requestAnimationFrame(() => {
+          this._menu?._focusFirstItem();
+        });
       } else {
-        this._menu._focusLastItem();
+        // Use requestAnimationFrame to ensure focus happens after render
+        requestAnimationFrame(() => {
+          this._menu?._focusLastItem();
+        });
       }
     }
 
@@ -1000,7 +1013,9 @@ export class AgMenuItem extends LitElement implements MenuItemProps {
 
   focus() {
     const element = this.shadowRoot?.querySelector('button, a') as HTMLElement;
-    element?.focus();
+    if (element) {
+      element.focus();
+    }
   }
 
   render() {
