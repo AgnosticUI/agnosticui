@@ -46,6 +46,10 @@ const meta: Meta<ReactMenuButtonProps> = {
       control: 'text',
       description: 'Unicode character for icon',
     },
+    additionalGutter: {
+      control: 'text',
+      description: 'Additional vertical spacing beyond the trigger button height when positioning the menu (e.g., "10px", "1rem")',
+    },
     onMenuOpen: {
       action: 'menu-open',
       description: 'Emitted when menu is opened',
@@ -636,5 +640,102 @@ export const CSSPartsCustomization: Story = {
       </ReactMenuButton>
     </>
   ),
+};
+
+// New Feature: Additional Gutter Example
+export const AdditionalGutter: Story = {
+  args: {
+    menuVariant: 'chevron',
+    size: 'sm',
+    additionalGutter: '20px',
+  },
+  render: (args) => (
+    <div style={{ padding: '100px 50px', background: '#f3f4f6' }}>
+      <p style={{ marginBottom: '1rem' }}>
+        This menu has <code>additionalGutter="20px"</code> which adds extra vertical spacing
+        beyond the button height when positioning the menu.
+      </p>
+      <ReactMenuButton {...args}>
+        Menu with Extra Gutter
+        <ReactMenu slot="menu" ariaLabel="Menu with additional gutter">
+          <ReactMenuItem value="option1">Option 1</ReactMenuItem>
+          <ReactMenuItem value="option2">Option 2</ReactMenuItem>
+          <ReactMenuItem value="option3">Option 3</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+    </div>
+  ),
+};
+
+// New Feature: Dynamic Icon Switching
+export const DynamicIconSwitching: Story = {
+  args: {
+    menuVariant: 'icon',
+    size: 'sm',
+    ghost: true,
+    ariaLabel: 'Toggle menu',
+  },
+  render: (args) => {
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    return (
+      <div style={{ padding: '100px 50px' }}>
+        <p style={{ marginBottom: '1rem' }}>
+          This example shows dynamic icon switching based on menu state.
+          The icon changes from a hamburger menu (☰) when closed to an X (✕) when open.
+        </p>
+        <style>
+          {`
+            .dynamic-icon-menu .icon-container {
+              position: relative;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 1.25rem;
+              height: 1.25rem;
+            }
+            .dynamic-icon-menu .menu-icon,
+            .dynamic-icon-menu .close-icon {
+              position: absolute;
+              transition: opacity var(--ag-motion-medium) ease-in-out;
+              font-size: 1.25rem;
+            }
+            .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+              opacity: 0;
+              pointer-events: none;
+            }
+            .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+              opacity: 0;
+              pointer-events: none;
+            }
+          `}
+        </style>
+        <ReactMenuButton
+          {...args}
+          className="dynamic-icon-menu"
+          onMenuOpen={() => {
+            setIsOpen(true);
+            action('menu-open')();
+          }}
+          onMenuClose={() => {
+            setIsOpen(false);
+            action('menu-close')();
+          }}
+        >
+          <span className="icon-container">
+            <span className="menu-icon" style={{fontSize: '1.25rem'}}>☰</span>
+            <span className="close-icon" style={{fontSize: '0.875rem'}}>✕</span>
+          </span>
+          <ReactMenu slot="menu" ariaLabel="Navigation menu">
+            <ReactMenuItem value="home">Home</ReactMenuItem>
+            <ReactMenuItem value="about">About</ReactMenuItem>
+            <ReactMenuItem value="contact">Contact</ReactMenuItem>
+            <ReactMenuSeparator />
+            <ReactMenuItem value="logout">Logout</ReactMenuItem>
+          </ReactMenu>
+        </ReactMenuButton>
+      </div>
+    );
+  },
 };
 

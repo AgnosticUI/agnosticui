@@ -15,6 +15,7 @@
     :ariaLabel="ariaLabel"
     :ariaDescribedby="ariaDescribedby"
     :unicode="unicode"
+    :additional-gutter="additionalGutter"
     @click="handleClick"
     @focus="handleFocus"
     @blur="handleBlur"

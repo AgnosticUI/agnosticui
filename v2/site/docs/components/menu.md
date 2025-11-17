@@ -385,6 +385,7 @@ export default function MenuExample() {
 | `ariaLabel` | `string` | `''` | ARIA label for the menu button |
 | `ariaDescribedby` | `string` | `''` | ARIA describedby for the menu button |
 | `unicode` | `string` | `''` | Unicode character for icon variant |
+| `additionalGutter` | `string` | `''` | Additional vertical spacing beyond the trigger button height when positioning the menu (e.g., `'10px'`, `'1rem'`) |
 
 ### Menu (Vue)
 
@@ -592,6 +593,200 @@ The menu popover can be positioned relative to the button:
 - `bottom-end`: Below button, aligned to end
 - `top-start`: Above button, aligned to start
 - `top-end`: Above button, aligned to end
+
+## Advanced Features
+
+### Additional Gutter
+
+The `additionalGutter` prop allows you to add extra vertical spacing beyond the trigger button's height when positioning the menu. This is useful when the menu button is within a taller container (like a header) and you need the menu to clear that container.
+
+::: details React
+```tsx
+import { ReactMenuButton, ReactMenu, ReactMenuItem } from 'agnosticui-core/menu/react';
+
+export default function HeaderMenu() {
+  return (
+    <header style={{ height: '60px', padding: '10px', background: '#f3f4f6' }}>
+      <ReactMenuButton
+        menuVariant="chevron"
+        additionalGutter="10px"
+        ariaLabel="Header menu"
+      >
+        Menu
+        <ReactMenu slot="menu" ariaLabel="Header menu options">
+          <ReactMenuItem value="option1">Option 1</ReactMenuItem>
+          <ReactMenuItem value="option2">Option 2</ReactMenuItem>
+          <ReactMenuItem value="option3">Option 3</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+    </header>
+  );
+}
+```
+:::
+
+::: details Vue
+```vue
+<template>
+  <header style="height: 60px; padding: 10px; background: #f3f4f6;">
+    <VueMenu
+      menu-variant="chevron"
+      additional-gutter="10px"
+      aria-label="Header menu"
+      menu-aria-label="Header menu options"
+    >
+      Menu
+      <template #menu>
+        <VueMenuItem value="option1">Option 1</VueMenuItem>
+        <VueMenuItem value="option2">Option 2</VueMenuItem>
+        <VueMenuItem value="option3">Option 3</VueMenuItem>
+      </template>
+    </VueMenu>
+  </header>
+</template>
+
+<script>
+import VueMenu, { VueMenuItem } from "agnosticui-core/menu/vue";
+
+export default {
+  components: { VueMenu, VueMenuItem }
+};
+</script>
+```
+:::
+
+### Dynamic Icon Switching
+
+The menu button exposes a `data-menu-open` attribute that changes based on the menu state. You can use this with CSS to dynamically switch icons when the menu opens/closes.
+
+::: details React
+```tsx
+import { ReactMenuButton, ReactMenu, ReactMenuItem } from 'agnosticui-core/menu/react';
+import React from 'react';
+
+export default function DynamicIconMenu() {
+  return (
+    <>
+      <style>
+        {`
+          .dynamic-icon-menu .menu-icon,
+          .dynamic-icon-menu .close-icon {
+            transition: opacity var(--ag-motion-medium) ease-in-out;
+          }
+          .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+          }
+          .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+          }
+        `}
+      </style>
+      <ReactMenuButton
+        menuVariant="icon"
+        ghost
+        className="dynamic-icon-menu"
+        ariaLabel="Toggle menu"
+      >
+        <span className="menu-icon">☰</span>
+        <span className="close-icon">✕</span>
+        <ReactMenu slot="menu" ariaLabel="Navigation">
+          <ReactMenuItem value="home">Home</ReactMenuItem>
+          <ReactMenuItem value="about">About</ReactMenuItem>
+          <ReactMenuItem value="contact">Contact</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+    </>
+  );
+}
+```
+:::
+
+::: details Vue
+```vue
+<template>
+  <VueMenu
+    menu-variant="icon"
+    ghost
+    class="dynamic-icon-menu"
+    aria-label="Toggle menu"
+    menu-aria-label="Navigation"
+  >
+    <span class="menu-icon">☰</span>
+    <span class="close-icon">✕</span>
+    <template #menu>
+      <VueMenuItem value="home">Home</VueMenuItem>
+      <VueMenuItem value="about">About</VueMenuItem>
+      <VueMenuItem value="contact">Contact</VueMenuItem>
+    </template>
+  </VueMenu>
+</template>
+
+<script>
+import VueMenu, { VueMenuItem } from "agnosticui-core/menu/vue";
+
+export default {
+  components: { VueMenu, VueMenuItem }
+};
+</script>
+
+<style scoped>
+.dynamic-icon-menu :deep(.menu-icon),
+.dynamic-icon-menu :deep(.close-icon) {
+  transition: opacity var(--ag-motion-medium) ease-in-out;
+}
+.dynamic-icon-menu[data-menu-open="false"] :deep(.close-icon) {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+.dynamic-icon-menu[data-menu-open="true"] :deep(.menu-icon) {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+</style>
+```
+:::
+
+::: details Lit
+```html
+<style>
+  .dynamic-icon-menu .menu-icon,
+  .dynamic-icon-menu .close-icon {
+    transition: opacity var(--ag-motion-medium) ease-in-out;
+  }
+  .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+  .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+</style>
+
+<ag-menu-button
+  menu-variant="icon"
+  ghost
+  class="dynamic-icon-menu"
+  aria-label="Toggle menu"
+>
+  <span class="menu-icon">☰</span>
+  <span class="close-icon">✕</span>
+  <ag-menu slot="menu" aria-label="Navigation">
+    <ag-menu-item value="home">Home</ag-menu-item>
+    <ag-menu-item value="about">About</ag-menu-item>
+    <ag-menu-item value="contact">Contact</ag-menu-item>
+  </ag-menu>
+</ag-menu-button>
+```
+:::
 
 ## CSS Shadow Parts
 

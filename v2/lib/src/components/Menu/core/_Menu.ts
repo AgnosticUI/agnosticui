@@ -30,6 +30,8 @@ export interface MenuButtonProps extends Omit<ButtonProps, 'variant'> {
   // Unicode character for icon variant
   unicode?: string;
   menuAlign?: 'left' | 'right';
+  // Additional vertical spacing beyond the trigger button's height when positioning the menu
+  additionalGutter?: string;
   // Menu-specific event handlers
   onMenuOpen?: (event: MenuOpenEvent) => void;
   onMenuClose?: (event: MenuCloseEvent) => void;
@@ -110,6 +112,9 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   @property({ type: String, reflect: true, attribute: 'menu-align' })
   declare menuAlign: 'left' | 'right';
 
+  @property({ type: String, reflect: true, attribute: 'additional-gutter' })
+  declare additionalGutter: string;
+
   @property({ attribute: false })
   declare onMenuOpen?: (event: MenuOpenEvent) => void;
 
@@ -147,6 +152,7 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
     this.unicode = '';
     this._menuOpen = false;
     this.menuAlign = 'left';
+    this.additionalGutter = '';
     this._clickOutsideHandler = this._handleClickOutside.bind(this);
   }
 
@@ -331,13 +337,18 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   // Add method to update menu position based on button height:
   private _updateMenuPosition() {
     if (!this._menu || !this._trigger) return;
-    
+
     const triggerButton = this._trigger.shadowRoot?.querySelector('button');
     if (!triggerButton) return;
-    
+
     const buttonHeight = triggerButton.offsetHeight;
-    // Position menu just below button (no extra gap needed - button already has margin-top)
-    this._menu.style.top = `${buttonHeight}px`;
+
+    // Position menu below button, optionally adding extra gutter
+    if (this.additionalGutter) {
+      this._menu.style.top = `calc(${buttonHeight}px + ${this.additionalGutter})`;
+    } else {
+      this._menu.style.top = `${buttonHeight}px`;
+    }
   }
 
   _openMenu(focusFirst = true) {
@@ -397,6 +408,10 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   }
 
   render() {
+    // For dynamic icon switching, we expose the menu state via a data attribute
+    // that consumers can use in their slot content
+    this.setAttribute('data-menu-open', this._menuOpen ? 'true' : 'false');
+
     const content = this.unicode
       ? html`<span class="unicode-icon" part="ag-menu-unicode-icon">${this.unicode}</span>`
       : html`<slot></slot>`;

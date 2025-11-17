@@ -578,5 +578,50 @@ describe('AgMenu Components', () => {
 
       expect(selectedValue).toBe('edit');
     });
+
+    it('should position menu with additionalGutter when provided', async () => {
+      // Set additionalGutter property
+      menuButton.additionalGutter = '20px';
+      await menuButton.updateComplete;
+
+      // Open the menu to trigger positioning
+      menuButton._openMenu();
+      await menuButton.updateComplete;
+
+      // Check that the menu's top style includes the calc with additionalGutter
+      const topStyle = menu.style.top;
+      expect(topStyle).toContain('calc(');
+      expect(topStyle).toContain('20px');
+    });
+
+    it('should position menu without additionalGutter when not provided', async () => {
+      // Ensure additionalGutter is empty (default)
+      menuButton.additionalGutter = '';
+      await menuButton.updateComplete;
+
+      // Open the menu to trigger positioning
+      menuButton._openMenu();
+      await menuButton.updateComplete;
+
+      // Check that the menu's top style is just the button height in pixels
+      const topStyle = menu.style.top;
+      expect(topStyle).toMatch(/^\d+px$/);
+      expect(topStyle).not.toContain('calc(');
+    });
+
+    it('should update data-menu-open attribute when menu state changes', async () => {
+      // Initially closed
+      expect(menuButton.getAttribute('data-menu-open')).toBe('false');
+
+      // Open menu
+      menuButton._openMenu();
+      await menuButton.updateComplete;
+      expect(menuButton.getAttribute('data-menu-open')).toBe('true');
+
+      // Close menu
+      menuButton._closeMenu();
+      await menuButton.updateComplete;
+      expect(menuButton.getAttribute('data-menu-open')).toBe('false');
+    });
   });
 });
