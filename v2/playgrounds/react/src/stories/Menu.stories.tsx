@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from 'storybook/test';
 import { ReactMenuButton, ReactMenu, ReactMenuItem, ReactMenuSeparator } from 'agnosticui-core/react';
 import { action } from 'storybook/actions';
-import type { ReactMenuButtonProps } from 'agnosticui-core/menu/react';
+import type { MenuButtonProps as ReactMenuButtonProps } from 'agnosticui-core/menu/react';
+import type { ButtonProps } from 'agnosticui-core/button/react';
 import React from 'react';
 
 const meta: Meta<ReactMenuButtonProps> = {
@@ -10,20 +11,28 @@ const meta: Meta<ReactMenuButtonProps> = {
   component: ReactMenuButton,
   tags: ['autodocs'],
   argTypes: {
-    variant: {
+    menuVariant: {
       control: 'select',
       options: ['chevron', 'button', 'icon'],
-      description: 'Visual style of the menu button',
+      description: 'The structural variant of the menu button.',
+    },
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'warning', 'danger', 'monochrome', ''] as ButtonProps['variant'][],
+      description: 'The color variant, inherited from AgnosticUI Button.',
     },
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      description: 'Size of the menu button',
+      options: ['x-sm', 'sm', 'md', 'lg', 'xl'] as ButtonProps['size'][],
+      description: 'The size of the button, inherited from AgnosticUI Button.',
     },
-    buttonVariant: {
-      control: 'select',
-      options: ['primary', 'secondary', 'ghost', 'danger'],
-      description: 'Button color variant',
+    bordered: {
+      control: 'boolean',
+      description: 'Use bordered button style. Inherited from AgnosticUI Button.',
+    },
+    ghost: {
+      control: 'boolean',
+      description: 'Use ghost button style. Inherited from AgnosticUI Button.',
     },
     disabled: {
       control: 'boolean',
@@ -33,17 +42,9 @@ const meta: Meta<ReactMenuButtonProps> = {
       control: 'text',
       description: 'ARIA label for accessibility',
     },
-    icon: {
-      control: 'text',
-      description: 'Icon to display',
-    },
     unicode: {
       control: 'text',
       description: 'Unicode character for icon',
-    },
-    label: {
-      control: 'text',
-      description: 'Label text for the button',
     },
     onMenuOpen: {
       action: 'menu-open',
@@ -80,14 +81,13 @@ export default meta;
 // Default menu with basic items
 export const Default: Story = {
   args: {
-    variant: 'chevron',
+    menuVariant: 'chevron',
     size: 'md',
-    label: 'Menu',
     disabled: false,
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
-      {args.label || 'Menu'}
+      Menu
       <ReactMenu slot="menu" ariaLabel="Menu options">
         <ReactMenuItem value="edit" onMenuSelect={action('menu-select')}>
           Edit
@@ -110,14 +110,13 @@ export const Default: Story = {
 // Button variant menu
 export const ButtonVariant: Story = {
   args: {
-    variant: 'button',
+    menuVariant: 'button',
     size: 'md',
-    buttonVariant: 'primary',
-    label: 'Actions',
+    variant: 'primary',
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
-      {args.label || 'Actions'}
+      Actions
       <ReactMenu slot="menu" ariaLabel="Action menu">
         <ReactMenuItem value="new" onMenuSelect={action('menu-select')}>
           New File
@@ -140,9 +139,9 @@ export const ButtonVariant: Story = {
 // Icon variant menu
 export const IconVariant: Story = {
   args: {
-    variant: 'icon',
+    menuVariant: 'icon',
     size: 'md',
-    buttonVariant: 'ghost',
+    ghost: true,
     unicode: '⋮',
     ariaLabel: 'More options',
   },
@@ -164,16 +163,119 @@ export const IconVariant: Story = {
   ),
 };
 
+// Icon button variant menu
+const HamburgerIcon = ({ size = 24 }: { size?: number }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="3" y1="12" x2="21" y2="12" />
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <line x1="3" y1="18" x2="21" y2="18" />
+  </svg>
+);
+
+export const IconButtonVariant: Story = {
+  args: {
+    menuVariant: 'icon',
+    size: 'md',
+    ariaLabel: 'More options',
+  },
+  render: (args) => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div>
+        <p>
+          Icon buttons with <code>ghost</code> (no border)
+        </p>
+        <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+          <ReactMenuButton {...args} ghost onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
+            <HamburgerIcon size={24} />
+            <ReactMenu slot="menu" ariaLabel="More options menu">
+              <ReactMenuItem value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator />
+              <ReactMenuItem value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+          </ReactMenuButton>
+          <ReactMenuButton {...args} ghost size="sm" ariaLabel="More options (small)">
+            <HamburgerIcon size={18} />
+            <ReactMenu slot="menu" ariaLabel="More options menu">
+              <ReactMenuItem value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator />
+              <ReactMenuItem value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+          </ReactMenuButton>
+          <ReactMenuButton {...args} ghost size="x-sm" ariaLabel="More options (extra small)">
+            <HamburgerIcon size={14} />
+            <ReactMenu slot="menu" ariaLabel="More options menu">
+              <ReactMenuItem value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator />
+              <ReactMenuItem value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+          </ReactMenuButton>
+        </div>
+      </div>
+      <div>
+        <p>
+          Icon buttons with <code>bordered</code>
+        </p>
+        <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+          <ReactMenuButton
+            {...args}
+            bordered
+            onMenuOpen={action('menu-open')}
+            onMenuClose={action('menu-close')}
+          >
+            <HamburgerIcon size={24} />
+            <ReactMenu slot="menu" ariaLabel="More options menu">
+              <ReactMenuItem value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator />
+              <ReactMenuItem value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+          </ReactMenuButton>
+          <ReactMenuButton {...args} bordered size="sm" ariaLabel="More options (small)">
+            <HamburgerIcon size={18} />
+            <ReactMenu slot="menu" ariaLabel="More options menu">
+              <ReactMenuItem value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator />
+              <ReactMenuItem value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+          </ReactMenuButton>
+          <ReactMenuButton {...args} bordered size="x-sm" ariaLabel="More options (extra small)">
+            <HamburgerIcon size={14} />
+            <ReactMenu slot="menu" ariaLabel="More options menu">
+              <ReactMenuItem value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator />
+              <ReactMenuItem value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+          </ReactMenuButton>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
 // Size variations
 export const SmallSize: Story = {
   args: {
-    variant: 'button',
+    menuVariant: 'button',
     size: 'sm',
-    label: 'Small Menu',
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
-      {args.label || 'Small Menu'}
+      Small Menu
       <ReactMenu slot="menu" ariaLabel="Small menu">
         <ReactMenuItem value="item1" onMenuSelect={action('menu-select')}>
           Item 1
@@ -188,13 +290,12 @@ export const SmallSize: Story = {
 
 export const LargeSize: Story = {
   args: {
-    variant: 'button',
+    menuVariant: 'button',
     size: 'lg',
-    label: 'Large Menu',
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
-      {args.label || 'Large Menu'}
+      Large Menu
       <ReactMenu slot="menu" ariaLabel="Large menu">
         <ReactMenuItem value="item1" onMenuSelect={action('menu-select')}>
           Item 1
@@ -210,14 +311,13 @@ export const LargeSize: Story = {
 // Button variants
 export const SecondaryButton: Story = {
   args: {
-    variant: 'button',
+    menuVariant: 'button',
     size: 'md',
-    buttonVariant: 'secondary',
-    label: 'Secondary Menu',
+    variant: 'secondary',
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
-      {args.label || 'Secondary Menu'}
+      Secondary Menu
       <ReactMenu slot="menu" ariaLabel="Secondary menu">
         <ReactMenuItem value="option1" onMenuSelect={action('menu-select')}>
           Option 1
@@ -235,14 +335,13 @@ export const SecondaryButton: Story = {
 
 export const DangerButton: Story = {
   args: {
-    variant: 'button',
+    menuVariant: 'button',
     size: 'md',
-    buttonVariant: 'danger',
-    label: 'Danger Actions',
+    variant: 'danger',
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
-      {args.label || 'Danger Actions'}
+      Danger Actions
       <ReactMenu slot="menu" ariaLabel="Danger actions menu">
         <ReactMenuItem value="clear" onMenuSelect={action('menu-select')}>
           Clear All
@@ -262,13 +361,12 @@ export const DangerButton: Story = {
 // Menu with links
 export const MenuWithLinks: Story = {
   args: {
-    variant: 'chevron',
+    menuVariant: 'chevron',
     size: 'md',
-    label: 'Navigation',
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
-      {args.label || 'Navigation'}
+      Navigation
       <ReactMenu slot="menu" ariaLabel="Navigation menu">
         <ReactMenuItem value="home" href="#home" onMenuSelect={action('menu-select')}>
           Home
@@ -291,14 +389,13 @@ export const MenuWithLinks: Story = {
 // Disabled state
 export const Disabled: Story = {
   args: {
-    variant: 'button',
+    menuVariant: 'button',
     size: 'md',
-    label: 'Disabled Menu',
     disabled: true,
   },
   render: (args) => (
     <ReactMenuButton {...args}>
-      {args.label || 'Disabled Menu'}
+      Disabled Menu
       <ReactMenu slot="menu" ariaLabel="Disabled menu">
         <ReactMenuItem value="item1">Item 1</ReactMenuItem>
         <ReactMenuItem value="item2">Item 2</ReactMenuItem>
@@ -310,13 +407,12 @@ export const Disabled: Story = {
 // Menu with disabled items
 export const DisabledItems: Story = {
   args: {
-    variant: 'button',
+    menuVariant: 'button',
     size: 'md',
-    label: 'Mixed States',
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
-      {args.label || 'Mixed States'}
+      Mixed States
       <ReactMenu slot="menu" ariaLabel="Menu with disabled items">
         <ReactMenuItem value="enabled1" onMenuSelect={action('menu-select')}>
           Enabled Item
@@ -339,9 +435,8 @@ export const DisabledItems: Story = {
 // Complex menu with multiple sections
 export const ComplexMenu: Story = {
   args: {
-    variant: 'button',
+    menuVariant: 'button',
     size: 'md',
-    label: 'File',
   },
   render: (args) => (
     <ReactMenuButton
@@ -349,7 +444,7 @@ export const ComplexMenu: Story = {
       onMenuOpen={action('menu-open')}
       onMenuClose={action('menu-close')}
     >
-      {args.label || 'File'}
+      File
       <ReactMenu slot="menu" ariaLabel="File menu">
         <ReactMenuItem value="new" onMenuSelect={action('menu-select')}>
           New
@@ -390,9 +485,8 @@ export const ComplexMenu: Story = {
 // Callback Props Pattern (React)
 export const CallbackPropsPattern: Story = {
   args: {
-    variant: 'chevron',
+    menuVariant: 'chevron',
     size: 'md',
-    label: 'Interactive Menu',
   },
   render: (args) => (
     <div style={{ padding: '50px' }}>
@@ -411,7 +505,7 @@ export const CallbackPropsPattern: Story = {
         onFocus={() => action('focus')('Button focused')}
         onBlur={() => action('blur')('Button blurred')}
       >
-        {args.label || 'Interactive Menu'}
+        Interactive Menu
         <ReactMenu slot="menu" ariaLabel="Interactive menu">
           <ReactMenuItem
             value="item1"
@@ -444,14 +538,13 @@ export const CallbackPropsPattern: Story = {
 // Monochrome selected variant
 export const MonochromeSelected: Story = {
   args: {
-    variant: 'chevron',
+    menuVariant: 'chevron',
     size: 'md',
-    label: 'Monochrome Menu',
   },
   render: (args) => (
     <div style={{ padding: '50px' }}>
       <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
-        {args.label || 'Monochrome Menu'}
+        Monochrome Menu
         <ReactMenu slot="menu" ariaLabel="Monochrome menu">
           <ReactMenuItem value="option1" variant="monochrome" onMenuSelect={action('menu-select')}>
             Option 1
@@ -474,16 +567,16 @@ export const CSSPartsCustomization: Story = {
     <>
       <style>
         {`
-          .custom-menu-button::part(ag-menu-trigger-chevron-button) {
+          .custom-menu-button ag-button::part(ag-button) {
             background-color: #4a5568;
             color: white;
             border: 2px solid #2d3748;
             border-radius: 8px;
           }
-          .custom-menu-button::part(ag-menu-label) {
+          .custom-menu-button .label {
             font-weight: bold;
           }
-          .custom-menu-button::part(ag-menu-chevron-icon) {
+          .custom-menu-button .chevron-icon {
             color: #a0aec0;
           }
           .custom-menu::part(ag-menu) {

@@ -119,7 +119,7 @@ export default function MenuExample() {
     <section>
       {/* Basic menu */}
       <ReactMenuButton
-        variant="chevron"
+        menuVariant="chevron"
         size="md"
         onMenuOpen={handleMenuOpen}
         onMenuClose={handleMenuClose}
@@ -144,7 +144,7 @@ export default function MenuExample() {
 
       {/* Button variant */}
       <ReactMenuButton
-        variant="button"
+        menuVariant="button"
         size="md"
         buttonVariant="primary"
       >
@@ -158,8 +158,9 @@ export default function MenuExample() {
 
       {/* Icon variant */}
       <ReactMenuButton
-        variant="icon"
+        menuVariant="icon"
         size="md"
+        ghost
         unicode="⋮"
         ariaLabel="More options"
       >
@@ -173,9 +174,8 @@ export default function MenuExample() {
 
       {/* Menu with links */}
       <ReactMenuButton
-        variant="chevron"
+        menuVariant="chevron"
         size="md"
-        label="Navigation"
       >
         Navigation
         <ReactMenu slot="menu" ariaLabel="Navigation menu">
@@ -187,7 +187,7 @@ export default function MenuExample() {
 
       {/* Disabled items */}
       <ReactMenuButton
-        variant="button"
+        menuVariant="button"
         size="md"
         buttonVariant="primary"
       >
@@ -243,7 +243,7 @@ export default function MenuExample() {
 
 <section>
   <!-- Basic menu -->
-  <ag-menu-button id="my-menu" variant="chevron" size="md">
+  <ag-menu-button id="my-menu" menu-variant="chevron" size="md">
     Menu
     <ag-menu slot="menu" aria-label="Menu options">
       <ag-menu-item value="edit">Edit</ag-menu-item>
@@ -255,7 +255,7 @@ export default function MenuExample() {
   </ag-menu-button>
 
   <!-- Button variant -->
-  <ag-menu-button variant="button" size="md" button-variant="primary">
+  <ag-menu-button menu-variant="button" size="md" button-variant="primary">
     Actions
     <ag-menu slot="menu" aria-label="Action menu">
       <ag-menu-item value="new">New File</ag-menu-item>
@@ -267,7 +267,7 @@ export default function MenuExample() {
   </ag-menu-button>
 
   <!-- Icon variant -->
-  <ag-menu-button variant="icon" size="md" unicode="⋮" aria-label="More options">
+  <ag-menu-button menu-variant="icon" size="md" ghost unicode="⋮" aria-label="More options">
     <ag-menu slot="menu" aria-label="More options menu">
       <ag-menu-item value="settings">Settings</ag-menu-item>
       <ag-menu-item value="profile">Profile</ag-menu-item>
@@ -277,7 +277,7 @@ export default function MenuExample() {
   </ag-menu-button>
 
   <!-- Menu with links -->
-  <ag-menu-button variant="chevron" size="md">
+  <ag-menu-button menu-variant="chevron" size="md">
     Navigation
     <ag-menu slot="menu" aria-label="Navigation menu">
       <ag-menu-item value="home" href="#home">Home</ag-menu-item>
@@ -287,7 +287,7 @@ export default function MenuExample() {
   </ag-menu-button>
 
   <!-- Disabled items -->
-  <ag-menu-button variant="button" size="md" button-variant="primary">
+  <ag-menu-button menu-variant="button" size="md" button-variant="primary">
     Mixed States
     <ag-menu slot="menu" aria-label="Menu with disabled items">
       <ag-menu-item value="enabled1">Enabled Item</ag-menu-item>
@@ -305,21 +305,26 @@ export default function MenuExample() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `'chevron' \| 'button' \| 'icon'` | `'chevron'` | Visual style of the menu button |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size of the menu button |
-| `buttonVariant` | `'primary' \| 'secondary' \| 'ghost' \| 'danger'` | `'ghost'` | Button color variant (for button/icon variants) |
+| `menuVariant` | `'chevron' \| 'button' \| 'icon'` | `'chevron'` | Structural variant of the menu button |
+| `buttonVariant` | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'monochrome' \| ''` | `''` | Color variant from AgButton |
+| `size` | `'x-sm' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size of the menu button (from AgButton) |
+| `shape` | `'capsule' \| 'rounded' \| 'circle' \| 'square' \| 'rounded-square' \| ''` | `'rounded'` | Shape of the button (from AgButton) |
+| `bordered` | `boolean` | `false` | Use bordered button style (from AgButton) |
+| `ghost` | `boolean` | `false` | Use ghost button style (from AgButton) |
+| `link` | `boolean` | `false` | Use link button style (from AgButton) |
+| `grouped` | `boolean` | `false` | Part of a button group (from AgButton) |
 | `disabled` | `boolean` | `false` | Disables the menu button |
+| `loading` | `boolean` | `false` | Show loading state (from AgButton) |
 | `ariaLabel` | `string` | `''` | ARIA label for the menu button |
-| `icon` | `string` | `''` | Icon to display |
+| `ariaDescribedby` | `string` | `''` | ARIA describedby for the menu button |
 | `unicode` | `string` | `''` | Unicode character for icon variant |
-| `label` | `string` | `''` | Label text for the button |
 
 ### Menu (Vue)
 
+VueMenu inherits all the properties from Menu Button above, plus:
+
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `disabled` | `boolean` | `false` | Disables the menu button |
-| `ariaLabel` | `string` | `''` | ARIA label for the menu button |
 | `open` | `boolean` | `false` | Whether the menu is open (controlled mode) |
 | `placement` | `'bottom-start' \| 'bottom-end' \| 'top-start' \| 'top-end'` | `'bottom-start'` | Placement of the menu popover |
 | `menuAriaLabel` | `string` | `''` | ARIA label for the menu |
@@ -457,14 +462,36 @@ The Menu component implements the [WAI-ARIA Menu Button Pattern](https://www.w3.
 
 ## Variants
 
-### Chevron Variant
+### Menu Variants (menuVariant)
+
+#### Chevron Variant (`menuVariant="chevron"`)
 The default variant shows text with a chevron indicator. Best for navigation menus or action lists.
 
-### Button Variant
-Styled as a button with optional color variants (`primary`, `secondary`, `ghost`, `danger`). Best for prominent actions.
+#### Button Variant (`menuVariant="button"`)
+Styled as a button without the chevron. Combine with `buttonVariant` for color variants. Best for prominent actions.
 
-### Icon Variant
-Displays only an icon (using `unicode` or `icon` prop). Best for compact UIs or toolbar menus. Always requires an `aria-label`.
+#### Icon Variant (`menuVariant="icon"`)
+Displays only an icon (using `unicode` prop or children). Best for compact UIs or toolbar menus. Always requires an `aria-label`.
+
+### Button Variants (buttonVariant)
+
+Since AgMenuButton wraps AgButton, you can use any button color variant:
+- `primary` - Primary action color
+- `secondary` - Secondary action color
+- `success` - Success/positive action
+- `warning` - Warning/caution action
+- `danger` - Destructive/dangerous action
+- `monochrome` - Neutral monochrome style
+- `''` (empty) - Default/unstyled
+
+### Button Styling Options
+
+All AgButton properties are available:
+- **size**: `x-sm`, `sm`, `md`, `lg`, `xl`
+- **shape**: `capsule`, `rounded`, `circle`, `square`, `rounded-square`
+- **bordered**: Add border to button
+- **ghost**: Transparent background with colored text/border
+- **link**: Style as a link
 
 ## Placement Options
 
