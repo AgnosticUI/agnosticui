@@ -9,13 +9,49 @@ const meta = {
   component: VueMenu,
   tags: ['autodocs'],
   argTypes: {
+    menuVariant: {
+      control: 'select',
+      options: ['chevron', 'button', 'icon'],
+      description: 'Structural variant of the menu button',
+    },
+    buttonVariant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'warning', 'danger', 'monochrome', ''],
+      description: 'Button color variant (from AgButton)',
+    },
+    size: {
+      control: 'select',
+      options: ['x-sm', 'sm', 'md', 'lg', 'xl'],
+      description: 'Size of the menu button',
+    },
+    shape: {
+      control: 'select',
+      options: ['capsule', 'rounded', 'circle', 'square', 'rounded-square', ''],
+      description: 'Shape of the button',
+    },
+    bordered: {
+      control: 'boolean',
+      description: 'Use bordered button style',
+    },
+    ghost: {
+      control: 'boolean',
+      description: 'Use ghost button style',
+    },
     disabled: {
       control: 'boolean',
       description: 'Disables the menu button',
     },
+    loading: {
+      control: 'boolean',
+      description: 'Show loading state',
+    },
     ariaLabel: {
       control: 'text',
       description: 'ARIA label for the menu button',
+    },
+    unicode: {
+      control: 'text',
+      description: 'Unicode character for icon variant',
     },
     open: {
       control: 'boolean',
@@ -36,7 +72,14 @@ const meta = {
     },
   },
   args: {
+    menuVariant: 'chevron',
+    buttonVariant: '',
+    size: 'md',
+    shape: 'rounded',
+    bordered: false,
+    ghost: false,
     disabled: false,
+    loading: false,
     open: false,
     placement: 'bottom-start',
   },
