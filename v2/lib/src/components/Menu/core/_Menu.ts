@@ -58,6 +58,7 @@ export interface MenuProps {
   ariaLabelledBy?: string;
   selectedValue?: string;
   type?: 'default' | 'single-select';
+  checkHiddenItems?: boolean;
   onKeyDown?: (event: KeyboardEvent) => void;
 }
 
@@ -215,10 +216,6 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
       background-color: var(--ag-background-primary);
       margin-top: var(--ag-space-1);
       z-index: var(--ag-z-index-dropdown);
-      /*
-      right: initial;
-      left: 0;
-      */
     }
     /* Left alignment - menu left aligns with button left */
     :host([menu-align="left"]) ::slotted(ag-menu) {
@@ -446,7 +443,6 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   }
 }
 
-// ... (AgMenu, AgMenuItem, AgMenuSeparator classes remain the same)
 export class AgMenu extends LitElement implements MenuProps {
   @property({ type: Boolean })
   declare open: boolean;
@@ -466,6 +462,18 @@ export class AgMenu extends LitElement implements MenuProps {
   @property({ type: String })
   declare type: 'default' | 'single-select';
 
+  /*
+  // Opt in checking for hidden items e.g. Tailwind responsive utilities
+  <AgMenu checkHiddenItems>
+    <div className="md:hidden">
+      <AgMenuItem>Mobile only</AgMenuItem>
+    </div>
+    <AgMenuItem>Always visible</AgMenuItem>
+  </AgMenu>
+  */
+  @property({ type: Boolean, attribute: 'check-hidden-items' })
+  declare checkHiddenItems: boolean;
+
   @property({ attribute: false })
   declare onKeyDown?: (event: KeyboardEvent) => void;
 
@@ -482,6 +490,7 @@ export class AgMenu extends LitElement implements MenuProps {
     this.ariaLabel = '';
     this.ariaLabelledBy = '';
     this.type = 'default';
+    this.checkHiddenItems = false;
     this._focusedIndex = 0;
     this._menuItems = [];
   }
@@ -498,10 +507,6 @@ export class AgMenu extends LitElement implements MenuProps {
       max-width: 16rem;
       width: max-content;
       z-index: var(--ag-z-index-dropdown);
-      /*
-      right: initial;
-      left: 0;
-      */
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -575,7 +580,62 @@ export class AgMenu extends LitElement implements MenuProps {
     });
   }
 
+  /**
+   * Check if a menu item is actually navigable based on its computed styles.
+   * This handles Tailwind's responsive utilities (sm:hidden, md:hidden, etc.)
+   * which are applied to wrapper divs around menu items.
+   * 
+   * Only called when checkHiddenItems prop is true.
+   */
+  private _isElementNavigable(element: AgMenuItem): boolean {
+    // Respect explicit disabled/aria-hidden attributes (always checked)
+    if (element.disabled || element.getAttribute('aria-hidden') === 'true') {
+      return false;
+    }
+    
+    // Skip visibility checks if not enabled
+    if (!this.checkHiddenItems) {
+      return true;
+    }
+    
+    // Check the element itself
+    const elementStyle = window.getComputedStyle(element);
+    if (elementStyle.display === 'none' || elementStyle.visibility === 'hidden') {
+      return false;
+    }
+    
+    // Check all parent elements up to (but not including) the menu
+    // This catches wrapper divs with Tailwind responsive utilities like sm:hidden
+    let parent = element.parentElement;
+    while (parent && parent !== this) {
+      const parentStyle = window.getComputedStyle(parent);
+      if (parentStyle.display === 'none' || parentStyle.visibility === 'hidden') {
+        return false;
+      }
+      parent = parent.parentElement;
+    }
+    
+    return true;
+  }
+
+  /**
+   * Get currently navigable items (filtered for visibility).
+   * When checkHiddenItems is true, recalculates on every call to handle dynamic viewport changes.
+   */
+  private _getNavigableItems(): AgMenuItem[] {
+    // Fast path: if not checking hidden items, return all items that aren't disabled/aria-hidden
+    if (!this.checkHiddenItems) {
+      return this._menuItems.filter(item => 
+        !item.disabled && item.getAttribute('aria-hidden') !== 'true'
+      );
+    }
+    
+    // When checking hidden items, always recalculate to handle viewport/style changes
+    return this._menuItems.filter(item => this._isElementNavigable(item));
+  }
+
   _updateMenuItems() {
+    // Store all menu items
     this._menuItems = Array.from(this.querySelectorAll('ag-menu-item')) as AgMenuItem[];
     this._updateTabIndex();
     this._updateSelection();
@@ -588,50 +648,65 @@ export class AgMenu extends LitElement implements MenuProps {
   }
 
   _focusFirstItem() {
-    for (let i = 0; i < this._menuItems.length; i++) {
-      if (!this._menuItems[i].disabled) {
-        this._focusedIndex = i;
-        this._updateTabIndex();
-        this._menuItems[i]?.focus();
-        return;
-      }
-    }
+    const navigableItems = this._getNavigableItems();
+    if (navigableItems.length === 0) return;
+
+    const firstItem = navigableItems[0];
+    this._focusedIndex = this._menuItems.indexOf(firstItem);
+    this._updateTabIndex();
+    firstItem?.focus();
   }
 
   _focusLastItem() {
-    for (let i = this._menuItems.length - 1; i >= 0; i--) {
-      if (!this._menuItems[i].disabled) {
-        this._focusedIndex = i;
-        this._updateTabIndex();
-        this._menuItems[i]?.focus();
-        return;
-      }
-    }
+    const navigableItems = this._getNavigableItems();
+    if (navigableItems.length === 0) return;
+
+    const lastItem = navigableItems[navigableItems.length - 1];
+    this._focusedIndex = this._menuItems.indexOf(lastItem);
+    this._updateTabIndex();
+    lastItem?.focus();
   }
 
   private _focusNextItem() {
-    if (this._menuItems.length === 0) return;
-    for (let i = 1; i <= this._menuItems.length; i++) {
-      const nextIndex = (this._focusedIndex + i) % this._menuItems.length;
-      if (!this._menuItems[nextIndex].disabled) {
-        this._focusedIndex = nextIndex;
-        this._updateTabIndex();
-        this._menuItems[this._focusedIndex]?.focus();
-        return;
-      }
+    const navigableItems = this._getNavigableItems();
+    if (navigableItems.length === 0) return;
+    
+    // Find current item in navigable list
+    const currentItem = this._menuItems[this._focusedIndex];
+    const currentNavIndex = navigableItems.indexOf(currentItem);
+    
+    // If current item is not navigable (e.g., became hidden), start from beginning
+    const startIndex = currentNavIndex >= 0 ? currentNavIndex : -1;
+    
+    // Find next navigable item (wraps around)
+    for (let i = 1; i <= navigableItems.length; i++) {
+      const nextIndex = (startIndex + i) % navigableItems.length;
+      const item = navigableItems[nextIndex];
+      this._focusedIndex = this._menuItems.indexOf(item);
+      this._updateTabIndex();
+      item?.focus();
+      return;
     }
   }
 
   private _focusPreviousItem() {
-    if (this._menuItems.length === 0) return;
-    for (let i = 1; i <= this._menuItems.length; i++) {
-      const prevIndex = (this._focusedIndex - i + this._menuItems.length) % this._menuItems.length;
-      if (!this._menuItems[prevIndex].disabled) {
-        this._focusedIndex = prevIndex;
-        this._updateTabIndex();
-        this._menuItems[this._focusedIndex]?.focus();
-        return;
-      }
+    const navigableItems = this._getNavigableItems();
+    if (navigableItems.length === 0) return;
+    
+    const currentItem = this._menuItems[this._focusedIndex];
+    const currentNavIndex = navigableItems.indexOf(currentItem);
+    
+    // If current item is not navigable, start from end
+    const startIndex = currentNavIndex >= 0 ? currentNavIndex : navigableItems.length;
+    
+    // Find previous navigable item (wraps around)
+    for (let i = 1; i <= navigableItems.length; i++) {
+      const prevIndex = (startIndex - i + navigableItems.length) % navigableItems.length;
+      const item = navigableItems[prevIndex];
+      this._focusedIndex = this._menuItems.indexOf(item);
+      this._updateTabIndex();
+      item?.focus();
+      return;
     }
   }
 
@@ -658,10 +733,16 @@ export class AgMenu extends LitElement implements MenuProps {
         event.preventDefault();
         this._focusLastItem();
         break;
-      case 'Enter':
+      case 'Enter': {
         event.preventDefault();
-        this._menuItems[this._focusedIndex]?.click();
+        // Get currently navigable items and activate the focused one if it's navigable
+        const navigableItems = this._getNavigableItems();
+        const currentItem = this._menuItems[this._focusedIndex];
+        if (navigableItems.includes(currentItem)) {
+          currentItem?.click();
+        }
         break;
+      }
       case 'Escape':
       case 'Tab':
         event.preventDefault();
