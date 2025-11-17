@@ -1076,6 +1076,54 @@ export const AdditionalGutter: Story = {
   `,
 };
 
+// Menu Types: Default (Navigation) vs Single-Select
+export const MenuTypes: Story = {
+  args: {
+    menuVariant: 'chevron',
+    size: 'md',
+  },
+  render: ({ menuVariant, size }) => html`
+    <div style="padding: 50px; display: flex; gap: 2rem; flex-wrap: wrap;">
+      <div>
+        <h3 style="margin-bottom: 0.5rem;">Navigation Menu (type="default")</h3>
+        <p style="margin-bottom: 1rem; font-size: 0.875rem; color: #6b7280; max-width: 300px;">
+          Selection clears when menu closes. Use for navigation and actions.
+        </p>
+        <ag-menu-button
+          .menuVariant=${menuVariant}
+          .size=${size}
+        >
+          User Menu
+          <ag-menu slot="menu" .ariaLabel=${'User navigation'}>
+            <ag-menu-item .value=${'profile'}>Profile</ag-menu-item>
+            <ag-menu-item .value=${'settings'}>Settings</ag-menu-item>
+            <ag-menu-separator></ag-menu-separator>
+            <ag-menu-item .value=${'logout'}>Logout</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: 0.5rem;">Selection Menu (type="single-select")</h3>
+        <p style="margin-bottom: 1rem; font-size: 0.875rem; color: #6b7280; max-width: 300px;">
+          Selection persists when menu closes. Use for filters, sorting, etc.
+        </p>
+        <ag-menu-button
+          .menuVariant=${menuVariant}
+          .size=${size}
+        >
+          Sort by
+          <ag-menu slot="menu" .type=${'single-select'} .selectedValue=${'date'} .ariaLabel=${'Sort options'}>
+            <ag-menu-item .value=${'date'}>Date</ag-menu-item>
+            <ag-menu-item .value=${'name'}>Name</ag-menu-item>
+            <ag-menu-item .value=${'size'}>Size</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+    </div>
+  `,
+};
+
 // New Feature: Dynamic Icon Switching
 export const DynamicIconSwitching: Story = {
   args: {

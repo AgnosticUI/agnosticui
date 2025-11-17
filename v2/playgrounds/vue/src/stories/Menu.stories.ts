@@ -548,6 +548,54 @@ export const AdditionalGutter: Story = {
   }),
 };
 
+// Menu Types: Default (Navigation) vs Single-Select
+export const MenuTypes: Story = {
+  args: {
+    menuVariant: 'chevron',
+    size: 'md',
+  },
+  render: (args: VueMenuProps) => ({
+    components: { VueMenu, VueMenuItem, VueMenuSeparator },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="padding: 50px; display: flex; gap: 2rem; flex-wrap: wrap;">
+        <div>
+          <h3 style="margin-bottom: 0.5rem;">Navigation Menu (type="default")</h3>
+          <p style="margin-bottom: 1rem; font-size: 0.875rem; color: #6b7280; max-width: 300px;">
+            Selection clears when menu closes. Use for navigation and actions.
+          </p>
+          <VueMenu v-bind="args" menuAriaLabel="User navigation">
+            User Menu
+            <template #menu>
+              <VueMenuItem value="profile">Profile</VueMenuItem>
+              <VueMenuItem value="settings">Settings</VueMenuItem>
+              <VueMenuSeparator />
+              <VueMenuItem value="logout">Logout</VueMenuItem>
+            </template>
+          </VueMenu>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom: 0.5rem;">Selection Menu (type="single-select")</h3>
+          <p style="margin-bottom: 1rem; font-size: 0.875rem; color: #6b7280; max-width: 300px;">
+            Selection persists when menu closes. Use for filters, sorting, etc.
+          </p>
+          <VueMenu v-bind="args" menuType="single-select" selectedValue="date" menuAriaLabel="Sort options">
+            Sort by
+            <template #menu>
+              <VueMenuItem value="date">Date</VueMenuItem>
+              <VueMenuItem value="name">Name</VueMenuItem>
+              <VueMenuItem value="size">Size</VueMenuItem>
+            </template>
+          </VueMenu>
+        </div>
+      </div>
+    `,
+  }),
+};
+
 // New Feature: Dynamic Icon Switching
 export const DynamicIconSwitching: Story = {
   args: {

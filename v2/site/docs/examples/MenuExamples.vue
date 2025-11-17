@@ -336,6 +336,54 @@
       </div>
     </div>
     <div class="mbe4">
+      <h3>Menu Types: Navigation vs Selection</h3>
+      <p class="mbe4">
+        The <code>type</code> prop controls selection behavior. Use <code>type="default"</code> (the default) for navigation menus where selection is transient, and <code>type="single-select"</code> for menus where selection should persist (like filters or sorting).
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div
+        class="flex items-start"
+        style="gap: 2rem; flex-wrap: wrap;"
+      >
+        <div>
+          <h4 class="mbe4">Navigation Menu (type="default")</h4>
+          <p class="mbe4" style="font-size: 0.875rem; color: #6b7280; max-width: 300px;">
+            Selection clears when menu closes. Use for navigation and actions.
+          </p>
+          <VueMenu menu-aria-label="User navigation">
+            User Menu
+            <template #menu>
+              <VueMenuItem value="profile">Profile</VueMenuItem>
+              <VueMenuItem value="settings">Settings</VueMenuItem>
+              <VueMenuSeparator />
+              <VueMenuItem value="logout">Logout</VueMenuItem>
+            </template>
+          </VueMenu>
+        </div>
+
+        <div>
+          <h4 class="mbe4">Selection Menu (type="single-select")</h4>
+          <p class="mbe4" style="font-size: 0.875rem; color: #6b7280; max-width: 300px;">
+            Selection persists when menu closes. Use for filters, sorting, etc.
+          </p>
+          <VueMenu
+            menu-type="single-select"
+            selected-value="date"
+            menu-aria-label="Sort options"
+          >
+            Sort by
+            <template #menu>
+              <VueMenuItem value="date">Date</VueMenuItem>
+              <VueMenuItem value="name">Name</VueMenuItem>
+              <VueMenuItem value="size">Size</VueMenuItem>
+            </template>
+          </VueMenu>
+        </div>
+      </div>
+    </div>
+
+    <div class="mbe4">
       <h3>Additional Gutter</h3>
       <p class="mbe4">
         The <code>additional-gutter</code> prop adds extra vertical spacing beyond the trigger button's height when positioning the menu. This is useful when the menu button is within a taller container (like a header) and you need the menu to clear that container.

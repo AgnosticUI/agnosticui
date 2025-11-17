@@ -667,6 +667,48 @@ export const AdditionalGutter: Story = {
   ),
 };
 
+// Menu Types: Default (Navigation) vs Single-Select
+export const MenuTypes: Story = {
+  args: {
+    menuVariant: 'chevron',
+    size: 'md',
+  },
+  render: (args) => (
+    <div style={{ padding: '50px', display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+      <div>
+        <h3 style={{ marginBottom: '0.5rem' }}>Navigation Menu (type="default")</h3>
+        <p style={{ marginBottom: '1rem', fontSize: '0.875rem', color: '#6b7280', maxWidth: '300px' }}>
+          Selection clears when menu closes. Use for navigation and actions.
+        </p>
+        <ReactMenuButton {...args}>
+          User Menu
+          <ReactMenu slot="menu" ariaLabel="User navigation">
+            <ReactMenuItem value="profile">Profile</ReactMenuItem>
+            <ReactMenuItem value="settings">Settings</ReactMenuItem>
+            <ReactMenuSeparator />
+            <ReactMenuItem value="logout">Logout</ReactMenuItem>
+          </ReactMenu>
+        </ReactMenuButton>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem' }}>Selection Menu (type="single-select")</h3>
+        <p style={{ marginBottom: '1rem', fontSize: '0.875rem', color: '#6b7280', maxWidth: '300px' }}>
+          Selection persists when menu closes. Use for filters, sorting, etc.
+        </p>
+        <ReactMenuButton {...args}>
+          Sort by
+          <ReactMenu slot="menu" type="single-select" selectedValue="date" ariaLabel="Sort options">
+            <ReactMenuItem value="date">Date</ReactMenuItem>
+            <ReactMenuItem value="name">Name</ReactMenuItem>
+            <ReactMenuItem value="size">Size</ReactMenuItem>
+          </ReactMenu>
+        </ReactMenuButton>
+      </div>
+    </div>
+  ),
+};
+
 // New Feature: Dynamic Icon Switching
 export const DynamicIconSwitching: Story = {
   args: {
