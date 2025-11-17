@@ -348,7 +348,10 @@
       >
         <div>
           <h4 class="mbe4">Navigation Menu (type="default")</h4>
-          <p class="mbe4" style="font-size: 0.875rem; color: #6b7280; max-width: 300px;">
+          <p
+            class="mbe4"
+            style="font-size: 0.875rem; color: #6b7280; max-width: 300px;"
+          >
             Selection clears when menu closes. Use for navigation and actions.
           </p>
           <VueMenu menu-aria-label="User navigation">
@@ -364,7 +367,10 @@
 
         <div>
           <h4 class="mbe4">Selection Menu (type="single-select")</h4>
-          <p class="mbe4" style="font-size: 0.875rem; color: #6b7280; max-width: 300px;">
+          <p
+            class="mbe4"
+            style="font-size: 0.875rem; color: #6b7280; max-width: 300px;"
+          >
             Selection persists when menu closes. Use for filters, sorting, etc.
           </p>
           <VueMenu
@@ -402,6 +408,122 @@
             <VueMenuItem value="option1">Option 1</VueMenuItem>
             <VueMenuItem value="option2">Option 2</VueMenuItem>
             <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h3>Responsive Hidden Items (checkHiddenItems)</h3>
+      <p class="mbe4">
+        The <code>check-hidden-items</code> prop enables the menu to skip items that are hidden via CSS (like responsive media queries). This is useful when you wrap menu items in responsive containers but want keyboard navigation to work correctly.
+      </p>
+      <p
+        class="mbe4"
+        style="font-size: 0.875rem; color: #dc2626; max-width: 600px;"
+      >
+        <strong>Performance Note:</strong> Enabling this feature checks computed styles on every keyboard navigation, which has a performance cost. Only enable it if you're using CSS-based hiding. For better performance, prefer conditional rendering (v-if) instead.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div v-html="responsiveStyles"></div>
+      <div style="background: #f3f4f6; padding: 20px; border-radius: 8px;">
+        <p class="mbe4">
+          <strong>Try resizing your browser:</strong> Desktop items are hidden on mobile (&lt;768px), mobile items are hidden on desktop. Keyboard navigation skips hidden items.
+        </p>
+        <VueMenu
+          check-hidden-items
+          menu-aria-label="Responsive menu"
+        >
+          Responsive Menu
+          <template #menu>
+            <div class="desktop-only-items">
+              <VueMenuItem value="desktop1">
+                <Monitor
+                  :size="16"
+                  class="mie2"
+                />Desktop Item 1
+              </VueMenuItem>
+              <VueMenuItem value="desktop2">
+                <Monitor
+                  :size="16"
+                  class="mie2"
+                />Desktop Item 2
+              </VueMenuItem>
+            </div>
+            <div class="mobile-only-items">
+              <VueMenuItem value="mobile1">
+                <Smartphone
+                  :size="16"
+                  class="mie2"
+                />Mobile Item 1
+              </VueMenuItem>
+              <VueMenuItem value="mobile2">
+                <Smartphone
+                  :size="16"
+                  class="mie2"
+                />Mobile Item 2
+              </VueMenuItem>
+            </div>
+            <VueMenuSeparator />
+            <VueMenuItem value="always">Always Visible</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h3>Recommended: Conditional Rendering (Better Performance)</h3>
+      <p class="mbe4">
+        Instead of using <code>check-hidden-items</code>, you can achieve the same result with better performance by using Vue's conditional rendering (v-if). This removes hidden items from the DOM entirely.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div style="background: #f3f4f6; padding: 20px; border-radius: 8px;">
+        <p class="mbe4">
+          <strong>Current viewport:</strong> {{ isMobile ? 'Mobile' : 'Desktop' }}
+        </p>
+        <VueMenu menu-aria-label="Conditional menu">
+          Conditional Menu
+          <template #menu>
+            <VueMenuItem
+              v-if="!isMobile"
+              value="desktop1"
+            >
+              <Monitor
+                :size="16"
+                class="mie2"
+              />Desktop Item 1
+            </VueMenuItem>
+            <VueMenuItem
+              v-if="!isMobile"
+              value="desktop2"
+            >
+              <Monitor
+                :size="16"
+                class="mie2"
+              />Desktop Item 2
+            </VueMenuItem>
+            <VueMenuItem
+              v-if="isMobile"
+              value="mobile1"
+            >
+              <Smartphone
+                :size="16"
+                class="mie2"
+              />Mobile Item 1
+            </VueMenuItem>
+            <VueMenuItem
+              v-if="isMobile"
+              value="mobile2"
+            >
+              <Smartphone
+                :size="16"
+                class="mie2"
+              />Mobile Item 2
+            </VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="always">Always Visible</VueMenuItem>
           </template>
         </VueMenu>
       </div>
@@ -471,11 +593,12 @@
 </template>
 
 <script>
+import { ref, onMounted, onUnmounted } from "vue";
 import VueMenu, {
   VueMenuItem,
   VueMenuSeparator,
 } from "agnosticui-core/menu/vue";
-import { User, Menu, X } from "lucide-vue-next";
+import { User, Menu, X, Monitor, Smartphone } from "lucide-vue-next";
 
 export default {
   name: "MenuExamples",
@@ -486,85 +609,132 @@ export default {
     User,
     Menu,
     X,
+    Monitor,
+    Smartphone,
   },
-  data() {
-    return {
-      lastEvent: null,
-      lastSelectedValue: null,
-      dynamicIconStyles: `
-        <style>
-          .dynamic-icon-menu .menu-icon,
-          .dynamic-icon-menu .close-icon {
-            transition: opacity var(--ag-motion-medium) ease-in-out;
-          }
-          .dynamic-icon-menu[data-menu-open="false"] .close-icon {
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-          }
-          .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-          }
-        </style>
-      `,
-      customMenuStyles: `
-        <style>
-          .custom-menu-button ag-button::part(ag-button) {
-            background-color: #4a5568;
-            color: white;
-            border: 2px solid #2d3748;
-            border-radius: 8px;
-          }
-          .custom-menu-button .label {
-            font-weight: bold;
-          }
-          .custom-menu-button .chevron-icon {
-            color: #a0aec0;
-          }
-          .custom-menu-button ag-menu::part(ag-menu) {
-            background-color: #2d3748;
-            border: 1px solid #4a5568;
-            border-radius: 8px;
-          }
-          .custom-menu-button ag-menu::part(ag-menu-item) {
-            color: #e2e8f0;
-          }
-          .custom-menu-button ag-menu::part(ag-menu-item):hover {
-            background-color: #4a5568;
-          }
-          .custom-menu-button ag-menu::part(ag-menu-separator) {
-            background-color: #4a5568;
-          }
-          .custom-menu-button ag-menu-item::part(ag-menu-item-button) {
-            color: white;
-          }
-          .custom-menu-button ag-menu-item::part(ag-menu-item-button):focus,
-          .custom-menu-button ag-menu-item::part(ag-menu-item-button):hover {
-            color: black;
-          }
-        </style>
-      `,
+  setup() {
+    const lastEvent = ref(null);
+    const lastSelectedValue = ref(null);
+    const isMobile = ref(false);
+
+    const checkMobile = () => {
+      isMobile.value = window.innerWidth < 768;
     };
-  },
-  methods: {
-    handleMenuOpen(detail) {
-      const selectedInfo = this.lastSelectedValue
-        ? `, selected: ${this.lastSelectedValue}`
+
+    onMounted(() => {
+      checkMobile();
+      window.addEventListener("resize", checkMobile);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("resize", checkMobile);
+    });
+
+    const handleMenuOpen = (detail) => {
+      const selectedInfo = lastSelectedValue.value
+        ? `, selected: ${lastSelectedValue.value}`
         : "";
-      this.lastEvent = `menu-open (open: ${detail.open}${selectedInfo})`;
-    },
-    handleMenuClose(detail) {
-      const selectedInfo = this.lastSelectedValue
-        ? `, selected: ${this.lastSelectedValue}`
+      lastEvent.value = `menu-open (open: ${detail.open}${selectedInfo})`;
+    };
+
+    const handleMenuClose = (detail) => {
+      const selectedInfo = lastSelectedValue.value
+        ? `, selected: ${lastSelectedValue.value}`
         : "";
-      this.lastEvent = `menu-close (open: ${detail.open}${selectedInfo})`;
-    },
-    handleMenuSelect(detail) {
-      this.lastSelectedValue = detail.value;
-      this.lastEvent = `menu-select (value: ${detail.value})`;
-    },
+      lastEvent.value = `menu-close (open: ${detail.open}${selectedInfo})`;
+    };
+
+    const handleMenuSelect = (detail) => {
+      lastSelectedValue.value = detail.value;
+      lastEvent.value = `menu-select (value: ${detail.value})`;
+    };
+
+    const responsiveStyles = `
+      <style>
+        /* Hide desktop items on mobile (< 768px) */
+        @media (max-width: 767px) {
+          .desktop-only-items {
+            display: none;
+          }
+        }
+        
+        /* Hide mobile items on desktop (>= 768px) */
+        @media (min-width: 768px) {
+          .mobile-only-items {
+            display: none;
+          }
+        }
+      </style>
+    `;
+
+    const dynamicIconStyles = `
+      <style>
+        .dynamic-icon-menu .menu-icon,
+        .dynamic-icon-menu .close-icon {
+          transition: opacity var(--ag-motion-medium) ease-in-out;
+        }
+        .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+          opacity: 0;
+          pointer-events: none;
+          position: absolute;
+        }
+        .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+          opacity: 0;
+          pointer-events: none;
+          position: absolute;
+        }
+      </style>
+    `;
+
+    const customMenuStyles = `
+      <style>
+        .custom-menu-button ag-button::part(ag-button) {
+          background-color: #4a5568;
+          color: white;
+          border: 2px solid #2d3748;
+          border-radius: 8px;
+        }
+        .custom-menu-button .label {
+          font-weight: bold;
+        }
+        .custom-menu-button .chevron-icon {
+          color: #a0aec0;
+        }
+        .custom-menu-button ag-menu::part(ag-menu) {
+          background-color: #2d3748;
+          border: 1px solid #4a5568;
+          border-radius: 8px;
+        }
+        .custom-menu-button ag-menu::part(ag-menu-item) {
+          color: #e2e8f0;
+        }
+        .custom-menu-button ag-menu::part(ag-menu-item):hover {
+          background-color: #4a5568;
+        }
+        .custom-menu-button ag-menu::part(ag-menu-separator) {
+          background-color: #4a5568;
+        }
+        .custom-menu-button ag-menu-item::part(ag-menu-item-button) {
+          color: white;
+        }
+        .custom-menu-button ag-menu-item::part(ag-menu-item-button):focus,
+        .custom-menu-button ag-menu-item::part(ag-menu-item-button):hover {
+          color: black;
+        }
+      </style>
+    `;
+
+    return {
+      lastEvent,
+      lastSelectedValue,
+      isMobile,
+      handleMenuOpen,
+      handleMenuClose,
+      handleMenuSelect,
+      responsiveStyles,
+      dynamicIconStyles,
+      customMenuStyles,
+    };
   },
 };
 </script>

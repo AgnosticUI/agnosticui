@@ -33,6 +33,7 @@
       :placement="placement"
       :type="menuType"
       :selected-value="selectedValue"
+      :check-hidden-items="checkHiddenItems || undefined"
       :ariaLabel="menuAriaLabel"
       :ariaLabelledBy="menuAriaLabelledBy"
       @keydown="handleMenuKeyDown"
@@ -70,6 +71,7 @@ export interface VueMenuProps
   menuAlign?: "left" | "right";
   menuType?: "default" | "single-select";
   selectedValue?: string;
+  checkHiddenItems?: boolean;
 }
 
 // Define props with defaults
@@ -78,6 +80,7 @@ withDefaults(defineProps<VueMenuProps>(), {
   placement: "bottom-start",
   menuAlign: "left",
   menuType: "default",
+  checkHiddenItems: false,
 });
 
 // Define emits for all events (native + custom)
