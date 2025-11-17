@@ -134,10 +134,125 @@
     </div>
 
     <div class="mbe4">
+      <h3>Menu with Icon Button</h3>
+      <p class="mbe4">
+        The following examples show using an icon as the trigger. The <code>menu-variant="icon"</code> removes the chevron and provides a minimal button container for the icon. You can also use an
+        icon with the default chevron trigger as we see on the right.
+      </p>
+    </div>
+    <div class="mbe4">
+      <h4>Large</h4>
+      <div
+        class="flex-inline items-center"
+        style="gap: 1rem;"
+      >
+        <!-- Icon only -->
+        <VueMenu
+          menu-variant="icon"
+          ghost
+          menu-aria-label="More options menu"
+        >
+          <Menu :size="24" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+        <!-- Icon with chevron -->
+        <VueMenu menu-aria-label="More options menu">
+          <Menu :size="24" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+    <div class="mbe4">
+      <h4>Medium</h4>
+      <div
+        class="flex-inline items-center"
+        style="gap: 1rem;"
+      >
+        <!-- Icon only -->
+        <VueMenu
+          menu-variant="icon"
+          ghost
+          size="sm"
+          menu-aria-label="More options menu"
+        >
+          <Menu :size="18" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+        <!-- Icon with chevron -->
+        <VueMenu
+          size="sm"
+          menu-aria-label="More options menu"
+        >
+          <Menu :size="18" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+    <div class="mbe4">
+      <h4>Small</h4>
+      <div
+        class="flex-inline items-center"
+        style="gap: 1rem;"
+      >
+        <!-- Icon only -->
+        <VueMenu
+          menu-variant="icon"
+          ghost
+          size="x-sm"
+          menu-aria-label="More options menu"
+        >
+          <Menu :size="14" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+        <!-- Icon with chevron -->
+        <VueMenu
+          size="x-sm"
+          menu-aria-label="More options menu"
+        >
+          <Menu :size="14" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+
+    <div class="mbe4">
       <h3>Monochrome Variant</h3>
     </div>
     <div class="stacked mbe4">
-      <VueMenu menu-aria-label="Monochrome menu">
+      <VueMenu
+        menu-aria-label="Monochrome menu"
+        variant="monochrome"
+      >
         Monochrome Menu
         <template #menu>
           <VueMenuItem
@@ -210,7 +325,7 @@ import VueMenu, {
   VueMenuItem,
   VueMenuSeparator,
 } from "agnosticui-core/menu/vue";
-import { User } from "lucide-vue-next";
+import { User, Menu } from "lucide-vue-next";
 
 export default {
   name: "MenuExamples",
@@ -219,6 +334,7 @@ export default {
     VueMenuItem,
     VueMenuSeparator,
     User,
+    Menu,
   },
   data() {
     return {
@@ -226,16 +342,16 @@ export default {
       lastSelectedValue: null,
       customMenuStyles: `
         <style>
-          .custom-menu-button::part(ag-menu-trigger-chevron-button) {
+          .custom-menu-button ag-button::part(ag-button) {
             background-color: #4a5568;
             color: white;
             border: 2px solid #2d3748;
             border-radius: 8px;
           }
-          .custom-menu-button::part(ag-menu-label) {
+          .custom-menu-button .label {
             font-weight: bold;
           }
-          .custom-menu-button::part(ag-menu-chevron-icon) {
+          .custom-menu-button .chevron-icon {
             color: #a0aec0;
           }
           .custom-menu-button ag-menu::part(ag-menu) {

@@ -27,26 +27,26 @@ describe('AgMenu Components', () => {
       expect(menuButton.ariaLabel).toBe('');
 
       await menuButton.updateComplete;
-      const button = menuButton.shadowRoot?.querySelector('button');
-      expect(button).toBeDefined();
-      expect(button?.getAttribute('aria-haspopup')).toBe('menu');
-      expect(button?.getAttribute('aria-expanded')).toBe('false');
+      const agButton = menuButton.shadowRoot?.querySelector('ag-button');
+      expect(agButton).toBeDefined();
+      expect(agButton?.getAttribute('aria-haspopup')).toBe('menu');
+      expect(agButton?.getAttribute('aria-expanded')).toBe('false');
     });
 
     it('should handle disabled state', async () => {
       menuButton.disabled = true;
       await menuButton.updateComplete;
 
-      const button = menuButton.shadowRoot?.querySelector('button');
-      expect(button?.hasAttribute('disabled')).toBe(true);
+      const agButton = menuButton.shadowRoot?.querySelector('ag-button');
+      expect(agButton?.hasAttribute('disabled')).toBe(true);
     });
 
     it('should handle aria-label', async () => {
       menuButton.ariaLabel = 'Actions menu';
       await menuButton.updateComplete;
 
-      const button = menuButton.shadowRoot?.querySelector('button');
-      expect(button?.getAttribute('aria-label')).toBe('Actions menu');
+      const agButton = menuButton.shadowRoot?.querySelector('ag-button');
+      expect(agButton?.getAttribute('aria-label')).toBe('Actions menu');
     });
 
     it('should toggle menu open state', async () => {
@@ -56,14 +56,14 @@ describe('AgMenu Components', () => {
       expect(menuButton._menuOpen).toBe(true);
 
       await menuButton.updateComplete;
-      const button = menuButton.shadowRoot?.querySelector('button');
-      expect(button?.getAttribute('aria-expanded')).toBe('true');
+      const agButton = menuButton.shadowRoot?.querySelector('ag-button');
+      expect(agButton?.getAttribute('aria-expanded')).toBe('true');
 
       menuButton._closeMenu();
       expect(menuButton._menuOpen).toBe(false);
 
       await menuButton.updateComplete;
-      expect(button?.getAttribute('aria-expanded')).toBe('false');
+      expect(agButton?.getAttribute('aria-expanded')).toBe('false');
     });
 
     it('should handle button clicks', async () => {
@@ -87,16 +87,16 @@ describe('AgMenu Components', () => {
 
     it('should handle keyboard events', async () => {
       await menuButton.updateComplete;
-      const button = menuButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+      const agButton = menuButton.shadowRoot?.querySelector('ag-button');
 
       // Enter key should open menu
-      fireEvent.keyDown(button, { key: 'Enter' });
+      fireEvent.keyDown(agButton!, { key: 'Enter' });
       expect(menuButton._menuOpen).toBe(true);
 
       menuButton._closeMenu();
 
       // Space key should open menu
-      fireEvent.keyDown(button, { key: ' ' });
+      fireEvent.keyDown(agButton!, { key: ' ' });
       expect(menuButton._menuOpen).toBe(true);
     });
   });
@@ -396,8 +396,8 @@ describe('AgMenu Components', () => {
         };
 
         await menuButton.updateComplete;
-        const button = menuButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
-        button.click();
+        const agButton = menuButton.shadowRoot?.querySelector('ag-button');
+        agButton?.click();
 
         expect(callbackFired).toBe(true);
       });
@@ -414,12 +414,12 @@ describe('AgMenu Components', () => {
         };
 
         await menuButton.updateComplete;
-        const button = menuButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+        const agButton = menuButton.shadowRoot?.querySelector('ag-button');
 
-        button.dispatchEvent(new FocusEvent('focus'));
+        agButton?.dispatchEvent(new FocusEvent('focus'));
         expect(focusFired).toBe(true);
 
-        button.dispatchEvent(new FocusEvent('blur'));
+        agButton?.dispatchEvent(new FocusEvent('blur'));
         expect(blurFired).toBe(true);
       });
 
@@ -430,8 +430,8 @@ describe('AgMenu Components', () => {
         });
 
         await menuButton.updateComplete;
-        const button = menuButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
-        button.dispatchEvent(new FocusEvent('focus'));
+        const agButton = menuButton.shadowRoot?.querySelector('ag-button');
+        agButton?.dispatchEvent(new FocusEvent('focus'));
 
         expect(hostFocusFired).toBe(true);
       });
@@ -443,8 +443,8 @@ describe('AgMenu Components', () => {
         });
 
         await menuButton.updateComplete;
-        const button = menuButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
-        button.dispatchEvent(new FocusEvent('blur'));
+        const agButton = menuButton.shadowRoot?.querySelector('ag-button');
+        agButton?.dispatchEvent(new FocusEvent('blur'));
 
         expect(hostBlurFired).toBe(true);
       });

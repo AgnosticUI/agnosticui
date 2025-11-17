@@ -1,5 +1,7 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state, query } from 'lit/decorators.js';
+import { AgButton } from '../../Button/core/Button.js';
+import type { ButtonProps } from '../../Button/core/Button.js';
 
 // Event type definitions
 export interface MenuOpenEventDetail {
@@ -17,22 +19,21 @@ export interface MenuSelectEventDetail {
 }
 export type MenuSelectEvent = CustomEvent<MenuSelectEventDetail>;
 
-// Props interfaces
-export interface MenuButtonProps {
-  variant?: 'chevron' | 'button' | 'icon';
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  buttonVariant?: 'primary' | 'secondary' | 'ghost' | 'danger';
-  disabled?: boolean;
-  ariaLabel?: string;
-  icon?: string;
+// Extend ButtonProps and add menu-specific props.
+// We rename `variant` from ButtonProps to `buttonVariant` to avoid conflict
+// with the structural `variant` prop of the MenuButton.
+export interface MenuButtonProps extends Omit<ButtonProps, 'variant'> {
+  menuVariant?: 'chevron' | 'button' | 'icon';
+  // We bring back `variant` from ButtonProps but rename it to `buttonVariant`
+  // to clearly distinguish it as the color/style variant for the button part.
+  buttonVariant?: ButtonProps['variant'];
+  // Unicode character for icon variant
   unicode?: string;
-  label?: string;
-  onClick?: (event: MouseEvent) => void;
-  onFocus?: (event: FocusEvent) => void;
-  onBlur?: (event: FocusEvent) => void;
-  onKeyDown?: (event: KeyboardEvent) => void;
+  // Menu-specific event handlers
   onMenuOpen?: (event: MenuOpenEvent) => void;
   onMenuClose?: (event: MenuCloseEvent) => void;
+  // We omit some ButtonProps that are controlled by the menu logic
+  // e.g. `type`, `toggle`, `pressed`, `onClick` etc. are handled internally.
 }
 
 export interface MenuItemProps {
@@ -56,35 +57,58 @@ export interface MenuProps {
 }
 
 export class AgMenuButton extends LitElement implements MenuButtonProps {
-  @query('.menu-trigger')
-  declare _trigger: HTMLElement;
+  @query('ag-button')
+  declare _trigger: AgButton;
 
   declare _menu: AgMenu | null;
   declare _clickOutsideHandler: (event: Event) => void;
 
-  @property({ type: String })
-  declare variant: 'chevron' | 'button' | 'icon';
+  // PROPS FROM ButtonProps
+  @property({ type: String, reflect: true })
+  declare size: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
 
   @property({ type: String, reflect: true })
-  declare size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  declare shape: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
 
-  @property({ type: String, attribute: 'button-variant', reflect: true })
-  declare buttonVariant: 'primary' | 'secondary' | 'ghost' | 'danger';
+  @property({ type: Boolean, reflect: true })
+  declare bordered: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare ghost: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare link: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare grouped: boolean;
 
   @property({ type: Boolean })
   declare disabled: boolean;
 
-  @property({ reflect: true, attribute: 'aria-label' })
+  @property({ type: Boolean })
+  declare loading: boolean;
+
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
-  @property({ type: String })
-  declare icon: string;
+  @property({ type: String, reflect: true, attribute: 'aria-describedby' })
+  declare ariaDescribedby: string;
+
+  // MENU-SPECIFIC PROPS
+  @property({ type: String, reflect: true, attribute: 'menu-variant' })
+  declare menuVariant: 'chevron' | 'button' | 'icon';
+
+  @property({ type: String, reflect: true, attribute: 'button-variant' })
+  declare buttonVariant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'monochrome' | '';
 
   @property({ type: String })
   declare unicode: string;
 
-  @property({ type: String })
-  declare label: string;
+  @property({ attribute: false })
+  declare onMenuOpen?: (event: MenuOpenEvent) => void;
+
+  @property({ attribute: false })
+  declare onMenuClose?: (event: MenuCloseEvent) => void;
 
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
@@ -95,28 +119,26 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   @property({ attribute: false })
   declare onBlur?: (event: FocusEvent) => void;
 
-  @property({ attribute: false })
-  declare onKeyDown?: (event: KeyboardEvent) => void;
-
-  @property({ attribute: false })
-  declare onMenuOpen?: (event: MenuOpenEvent) => void;
-
-  @property({ attribute: false })
-  declare onMenuClose?: (event: MenuCloseEvent) => void;
-
   @state()
   declare _menuOpen: boolean;
 
   constructor() {
     super();
-    this.variant = 'chevron';
+    // Defaults from ButtonProps
     this.size = 'md';
-    this.buttonVariant = 'ghost';
+    this.shape = 'rounded';
+    this.bordered = false;
+    this.ghost = false;
+    this.link = false;
+    this.grouped = false;
     this.disabled = false;
+    this.loading = false;
     this.ariaLabel = '';
-    this.icon = '';
+    this.ariaDescribedby = '';
+    // Defaults for MenuButton
+    this.menuVariant = 'chevron';
+    this.buttonVariant = '';
     this.unicode = '';
-    this.label = '';
     this._menuOpen = false;
     this._clickOutsideHandler = this._handleClickOutside.bind(this);
   }
@@ -128,50 +150,6 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
       background-color: inherit;
     }
 
-    .menu-trigger {
-      background: none;
-      border: none;
-      padding: 0;
-      margin: 0;
-      cursor: pointer;
-    }
-
-    .menu-trigger:disabled {
-      cursor: not-allowed;
-      opacity: 0.6;
-    }
-
-    /* Chevron variant styles */
-    .chevron-button {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--ag-space-2);
-      background-color: var(--ag-background-primary);
-      color: var(--ag-text-primary);
-      border: 1px solid var(--ag-border-subtle);
-      border-radius: var(--ag-radius-sm);
-      padding: var(--ag-space-2) var(--ag-space-3);
-      font-size: inherit;
-      line-height: 1.25;
-      transition: all var(--ag-motion-fast) ease;
-    }
-
-    .chevron-button:hover:not(:disabled) {
-      background-color: var(--ag-background-secondary);
-      color: var(--ag-text-primary);
-    }
-
-    .chevron-button[aria-expanded="true"] {
-      background-color: var(--ag-background-tertiary);
-      color: var(--ag-text-primary);
-    }
-
-    .chevron-button:focus {
-      outline: var(--ag-focus-width) solid var(--ag-focus);
-      outline-offset: var(--ag-focus-offset);
-    }
-
     .chevron-icon {
       width: var(--ag-space-4);
       height: var(--ag-space-4);
@@ -180,192 +158,43 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
       flex-shrink: 0;
     }
 
-    .chevron-button[aria-expanded="true"] .chevron-icon {
-      transform: rotate(180deg);
-    }
-
-    /* Icon button variant styles */
-    .icon-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--ag-background-primary);
-      color: var(--ag-text-primary);
-      border: 1px solid var(--ag-border-subtle);
-      border-radius: var(--ag-radius-sm);
-      width: var(--ag-space-10);
-      height: var(--ag-space-10);
-      min-width: 44px;
-      min-height: 44px;
-      transition: all var(--ag-motion-fast) ease;
-    }
-
-    .icon-button:hover:not(:disabled) {
-      background-color: var(--ag-background-secondary);
-    }
-
-    .icon-button:focus {
-      outline: var(--ag-focus-width) solid var(--ag-focus);
-      outline-offset: var(--ag-focus-offset);
-    }
-
-    .icon-button[aria-expanded="true"] {
-      background-color: var(--ag-background-tertiary);
-    }
-
-    .unicode-icon {
-      font-size: var(--ag-space-6);
-      line-height: 1;
-    }
-
-    /* Regular button variant styles */
-    .regular-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--ag-space-2);
-      background-color: var(--ag-background-primary);
-      color: var(--ag-text-primary);
-      border: 1px solid var(--ag-border-subtle);
-      border-radius: var(--ag-radius-sm);
-      padding: var(--ag-space-2) var(--ag-space-3);
-      font-size: inherit;
-      line-height: 1.25;
-      transition: all var(--ag-motion-fast) ease;
-    }
-
-    .regular-button:hover:not(:disabled) {
-      background-color: var(--ag-background-secondary);
-    }
-
-    .regular-button:focus {
-      outline: var(--ag-focus-width) solid var(--ag-focus);
-      outline-offset: var(--ag-focus-offset);
-    }
-
-    .regular-button[aria-expanded="true"] {
-      background-color: var(--ag-background-tertiary);
-    }
-
-    /* Size variants for chevron */
-    :host([size="xs"]) .chevron-button {
-      padding: var(--ag-space-1) var(--ag-space-2);
-      font-size: 0.875rem;
-    }
-
-    :host([size="sm"]) .chevron-button {
-      padding: calc(var(--ag-space-1) + 2px) var(--ag-space-2);
-      font-size: 0.875rem;
-    }
-
-    :host([size="lg"]) .chevron-button {
-      padding: var(--ag-space-3) var(--ag-space-4);
-      font-size: 1.125rem;
-    }
-
-    :host([size="xl"]) .chevron-button {
-      padding: var(--ag-space-4) var(--ag-space-5);
-      font-size: 1.25rem;
-    }
-
-    /* Size variants for icon button */
-    :host([size="xs"]) .icon-button {
-      width: var(--ag-space-6);
-      height: var(--ag-space-6);
-    }
-
-    :host([size="sm"]) .icon-button {
-      width: var(--ag-space-8);
-      height: var(--ag-space-8);
-    }
-
-    :host([size="md"]) .icon-button {
-      width: var(--ag-space-10);
-      height: var(--ag-space-10);
-    }
-
-    :host([size="lg"]) .icon-button {
-      width: var(--ag-space-12);
-      height: var(--ag-space-12);
-    }
-
-    :host([size="xl"]) .icon-button {
-      width: var(--ag-space-14);
-      height: var(--ag-space-14);
-    }
-
-    /* Size variants for regular button */
-    :host([size="xs"]) .regular-button {
-      padding: var(--ag-space-1) var(--ag-space-2);
-      font-size: 0.875rem;
-    }
-
-    :host([size="sm"]) .regular-button {
-      padding: calc(var(--ag-space-1) + 2px) var(--ag-space-2);
-      font-size: 0.875rem;
-    }
-
-    :host([size="lg"]) .regular-button {
-      padding: var(--ag-space-3) var(--ag-space-4);
-      font-size: 1.125rem;
-    }
-
-    :host([size="xl"]) .regular-button {
-      padding: var(--ag-space-4) var(--ag-space-5);
-      font-size: 1.25rem;
-    }
-
-    /* ButtonVariant Styles */
-    :host([button-variant="primary"]) .chevron-button,
-    :host([button-variant="primary"]) .icon-button,
-    :host([button-variant="primary"]) .regular-button {
-      background-color: var(--ag-primary);
-      color: var(--ag-white);
-      border-color: var(--ag-primary);
-    }
-
-    :host([button-variant="primary"]) .chevron-button:hover:not(:disabled),
-    :host([button-variant="primary"]) .icon-button:hover:not(:disabled),
-    :host([button-variant="primary"]) .regular-button:hover:not(:disabled) {
-      background-color: var(--ag-primary-dark);
-      border-color: var(--ag-primary-dark);
-    }
-
-    :host([button-variant="secondary"]) .chevron-button,
-    :host([button-variant="secondary"]) .icon-button,
-    :host([button-variant="secondary"]) .regular-button {
-      background-color: var(--ag-secondary);
-      color: var(--ag-white);
-      border-color: var(--ag-secondary);
-    }
-
-    :host([button-variant="secondary"]) .chevron-button:hover:not(:disabled),
-    :host([button-variant="secondary"]) .icon-button:hover:not(:disabled),
-    :host([button-variant="secondary"]) .regular-button:hover:not(:disabled) {
-      background-color: var(--ag-secondary-dark);
-      border-color: var(--ag-secondary-dark);
-    }
-
-    :host([button-variant="danger"]) .chevron-button,
-    :host([button-variant="danger"]) .icon-button,
-    :host([button-variant="danger"]) .regular-button {
-      background-color: var(--ag-danger);
-      color: var(--ag-white);
-      border-color: var(--ag-danger);
-    }
-
-    :host([button-variant="danger"]) .chevron-button:hover:not(:disabled),
-    :host([button-variant="danger"]) .icon-button:hover:not(:disabled),
-    :host([button-variant="danger"]) .regular-button:hover:not(:disabled) {
-      background-color: var(--ag-danger-dark);
-      border-color: var(--ag-danger-dark);
-    }
-
-    /* The chevron icon should be white for solid button variants */
     :host([button-variant="primary"]) .chevron-icon,
     :host([button-variant="secondary"]) .chevron-icon,
-    :host([button-variant="danger"]) .chevron-icon {
+    :host([button-variant="success"]) .chevron-icon,
+    :host([button-variant="warning"]) .chevron-icon,
+    :host([button-variant="danger"]) .chevron-icon,
+    :host([button-variant="monochrome"]) .chevron-icon {
       color: var(--ag-white);
+    }
+
+    /* When a button is ghost, we want the chevron to be the variant color */
+    :host([ghost][button-variant="primary"]) .chevron-icon {
+      color: var(--ag-primary);
+    }
+    :host([ghost][button-variant="secondary"]) .chevron-icon {
+      color: var(--ag-secondary);
+    }
+    :host([ghost][button-variant="success"]) .chevron-icon {
+      color: var(--ag-success);
+    }
+    :host([ghost][button-variant="warning"]) .chevron-icon {
+      color: var(--ag-warning);
+    }
+    :host([ghost][button-variant="danger"]) .chevron-icon {
+      color: var(--ag-danger);
+    }
+    :host([ghost][button-variant="monochrome"]) .chevron-icon {
+      color: var(--ag-text-primary);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--ag-space-2);
+    }
+
+    ag-button[aria-expanded="true"] .chevron-icon {
+      transform: rotate(180deg);
     }
 
     ::slotted(ag-menu) {
@@ -394,7 +223,6 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
 
   updated(changedProperties: Map<PropertyKey, unknown>) {
     super.updated(changedProperties);
-    // Always update menu reference when menu open state changes
     if (changedProperties.has('_menuOpen')) {
       this._updateMenuReference();
     }
@@ -406,7 +234,6 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
 
   private _handleClickOutside(event: Event) {
     if (!this._menuOpen) return;
-
     const target = event.target as Element;
     if (!this.contains(target)) {
       this._closeMenu();
@@ -416,10 +243,18 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   private _handleClick(event: MouseEvent) {
     if (this.disabled) return;
 
-    // Invoke callback if provided (native composed event)
+    // Invoke onClick callback if provided
     if (this.onClick) {
       this.onClick(event);
     }
+
+    // Re-dispatch click event from host for addEventListener pattern
+    const clickEvent = new MouseEvent('click', {
+      bubbles: true,
+      composed: true,
+      cancelable: event.cancelable,
+    });
+    this.dispatchEvent(clickEvent);
 
     if (this._menuOpen) {
       this._closeMenu();
@@ -429,39 +264,34 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   }
 
   private _handleFocus(event: FocusEvent) {
-    // Re-dispatch from host for consumer access (non-bubbling event)
+    // Invoke onFocus callback if provided
+    if (this.onFocus) {
+      this.onFocus(event);
+    }
+
+    // Re-dispatch focus event from host for addEventListener pattern
     const focusEvent = new FocusEvent('focus', {
       bubbles: true,
       composed: true,
     });
     this.dispatchEvent(focusEvent);
-
-    // Invoke callback if provided
-    if (this.onFocus) {
-      this.onFocus(event);
-    }
   }
 
   private _handleBlur(event: FocusEvent) {
-    // Re-dispatch from host for consumer access (non-bubbling event)
+    // Invoke onBlur callback if provided
+    if (this.onBlur) {
+      this.onBlur(event);
+    }
+
+    // Re-dispatch blur event from host for addEventListener pattern
     const blurEvent = new FocusEvent('blur', {
       bubbles: true,
       composed: true,
     });
     this.dispatchEvent(blurEvent);
-
-    // Invoke callback if provided
-    if (this.onBlur) {
-      this.onBlur(event);
-    }
   }
 
   private _handleKeydown(event: KeyboardEvent) {
-    // Invoke callback if provided (native composed event)
-    if (this.onKeyDown) {
-      this.onKeyDown(event);
-    }
-
     switch (event.key) {
       case 'Enter':
       case ' ':
@@ -480,142 +310,96 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   }
 
   _openMenu(focusFirst = true) {
-    // Only open if not already open
-    if (this._menuOpen) {
-      return;
-    }
-
+    if (this._menuOpen) return;
     this._menuOpen = true;
-    this._updateMenuReference(); // Ensure we have the latest reference
+    this._updateMenuReference();
 
     if (this._menu) {
       this._menu.open = true;
       this._menu._updateMenuItems();
-
-      if (focusFirst) {
-        // Use requestAnimationFrame to ensure focus happens after render
-        requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (focusFirst) {
           this._menu?._focusFirstItem();
-        });
-      } else {
-        // Use requestAnimationFrame to ensure focus happens after render
-        requestAnimationFrame(() => {
+        } else {
           this._menu?._focusLastItem();
-        });
-      }
+        }
+      });
     }
 
-    // Dual-dispatch pattern for custom event
     const menuOpenEvent = new CustomEvent<MenuOpenEventDetail>('menu-open', {
       detail: { open: true },
       bubbles: true,
-      composed: true
+      composed: true,
     });
     this.dispatchEvent(menuOpenEvent);
-
-    // Invoke callback if provided
-    if (this.onMenuOpen) {
-      this.onMenuOpen(menuOpenEvent);
-    }
+    if (this.onMenuOpen) this.onMenuOpen(menuOpenEvent);
   }
 
   _closeMenu() {
+    if (!this._menuOpen) return;
     this._menuOpen = false;
-    this.requestUpdate(); // Force a re-render to update aria-expanded
     if (this._menu) {
       this._menu.open = false;
     }
     this._trigger?.focus();
 
-    // Dual-dispatch pattern for custom event
     const menuCloseEvent = new CustomEvent<MenuCloseEventDetail>('menu-close', {
       detail: { open: false },
       bubbles: true,
-      composed: true
+      composed: true,
     });
     this.dispatchEvent(menuCloseEvent);
-
-    // Invoke callback if provided
-    if (this.onMenuClose) {
-      this.onMenuClose(menuCloseEvent);
-    }
+    if (this.onMenuClose) this.onMenuClose(menuCloseEvent);
   }
 
   private _renderChevronIcon() {
     return html`
       <svg class="chevron-icon" part="ag-menu-chevron-icon" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        <path
+          fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        />
       </svg>
     `;
   }
 
   render() {
-    // Variant: Icon button
-    if (this.variant === 'icon') {
-      return html`
-        <button
-          class="menu-trigger icon-button"
-          part="ag-menu-trigger-icon-button"
-          aria-haspopup="menu"
-          aria-expanded="${this._menuOpen}"
-          ?disabled="${this.disabled}"
-          aria-label="${this.ariaLabel || this.label || 'Menu'}"
-          @click="${this._handleClick}"
-          @focus="${this._handleFocus}"
-          @blur="${this._handleBlur}"
-          @keydown="${this._handleKeydown}"
-        >
-          ${this.unicode ? html`<span class="unicode-icon" part="ag-menu-unicode-icon">${this.unicode}</span>` : html`<slot></slot>`}
-        </button>
-        <slot name="menu"></slot>
-      `;
-    }
+    const content = this.unicode
+      ? html`<span class="unicode-icon" part="ag-menu-unicode-icon">${this.unicode}</span>`
+      : html`<slot></slot>`;
 
-    // Variant: Regular button
-    if (this.variant === 'button') {
-      return html`
-        <button
-          class="menu-trigger regular-button"
-          part="ag-menu-trigger-regular-button"
-          aria-haspopup="menu"
-          aria-expanded="${this._menuOpen}"
-          ?disabled="${this.disabled}"
-          aria-label="${this.ariaLabel || nothing}"
-          @click="${this._handleClick}"
-          @focus="${this._handleFocus}"
-          @blur="${this._handleBlur}"
-          @keydown="${this._handleKeydown}"
-        >
-          <slot></slot>
-        </button>
-        <slot name="menu"></slot>
-      `;
-    }
+    const isIconOnly = this.menuVariant === 'icon';
 
-    // Variant: Chevron (default)
     return html`
-      <button
-        class="menu-trigger chevron-button"
-        part="ag-menu-trigger-chevron-button"
+      <ag-button
+        .variant=${this.buttonVariant}
+        .size=${this.size}
+        .shape=${isIconOnly ? this.shape || 'square' : this.shape}
+        ?bordered=${this.bordered}
+        ?ghost=${this.ghost}
+        ?link=${this.link}
+        ?grouped=${this.grouped}
+        ?disabled=${this.disabled}
+        ?loading=${this.loading}
         aria-haspopup="menu"
         aria-expanded="${this._menuOpen}"
-        ?disabled="${this.disabled}"
-        aria-label="${this.ariaLabel || nothing}"
-        @click="${this._handleClick}"
-        @focus="${this._handleFocus}"
-        @blur="${this._handleBlur}"
-        @keydown="${this._handleKeydown}"
+        .ariaLabel=${this.ariaLabel || 'Menu'}
+        @click=${this._handleClick}
+        @focus=${this._handleFocus}
+        @blur=${this._handleBlur}
+        @keydown=${this._handleKeydown}
       >
-        <span class="label" part="ag-menu-label">
-          <slot></slot>
-        </span>
-        ${this._renderChevronIcon()}
-      </button>
+        ${this.menuVariant === 'chevron'
+          ? html`<span class="label" part="ag-menu-label">${content}</span> ${this._renderChevronIcon()}`
+          : content}
+      </ag-button>
       <slot name="menu"></slot>
     `;
   }
 }
 
+// ... (AgMenu, AgMenuItem, AgMenuSeparator classes remain the same)
 export class AgMenu extends LitElement implements MenuProps {
   @property({ type: Boolean })
   declare open: boolean;

@@ -1,8 +1,19 @@
 <template>
   <ag-menu-button
     ref="menuButtonRef"
+    :menu-variant="menuVariant"
+    :button-variant="buttonVariant"
+    :size="size"
+    :shape="shape"
+    :bordered="bordered"
+    :ghost="ghost"
+    :link="link"
+    :grouped="grouped"
     :disabled="disabled || undefined"
+    :loading="loading"
     :ariaLabel="ariaLabel"
+    :ariaDescribedby="ariaDescribedby"
+    :unicode="unicode"
     @click="handleClick"
     @focus="handleFocus"
     @blur="handleBlur"
@@ -39,7 +50,15 @@ import "../core/Menu"; // Registers the ag-menu web component
 
 // Omit callback props (Vue uses emits instead)
 export interface VueMenuProps
-  extends Omit<MenuButtonProps, "onClick" | "onFocus" | "onBlur" | "onKeyDown" | "onMenuOpen" | "onMenuClose"> {
+  extends Omit<
+    MenuButtonProps,
+    | "onClick"
+    | "onFocus"
+    | "onBlur"
+    | "onKeyDown"
+    | "onMenuOpen"
+    | "onMenuClose"
+  > {
   open?: boolean;
   placement?: string;
   menuAriaLabel?: string;
