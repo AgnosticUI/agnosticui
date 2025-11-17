@@ -398,6 +398,17 @@ VueMenu inherits all the properties from Menu Button above, plus:
 | `menuAriaLabel` | `string` | `''` | ARIA label for the menu |
 | `menuAriaLabelledBy` | `string` | `''` | ARIA labelledby for the menu |
 
+### Menu (ag-menu element)
+
+These props apply to the `<ag-menu>` element itself (nested inside the button):
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `'default' \| 'single-select'` | `'default'` | Selection behavior: `'default'` for navigation (transient selection), `'single-select'` for persistent selection |
+| `selectedValue` | `string` | `undefined` | The currently selected item value (only applies to `type="single-select"`) |
+| `ariaLabel` | `string` | `''` | ARIA label for the menu |
+| `ariaLabelledBy` | `string` | `''` | ARIA labelledby for the menu |
+
 ### Menu Item
 
 | Prop | Type | Default | Description |
@@ -593,6 +604,52 @@ The menu popover can be positioned relative to the button:
 - `bottom-end`: Below button, aligned to end
 - `top-start`: Above button, aligned to start
 - `top-end`: Above button, aligned to end
+
+## Menu Types
+
+The `type` prop on the `<ag-menu>` element controls the selection behavior:
+
+### `type="default"` (Navigation Menus)
+**Use for**: Navigation, actions, commands (Profile, Logout, New File, etc.)
+
+- Selection is **transient** - items show selected state only while hovering/focused
+- Selection **clears automatically** when the menu closes
+- No persistent checked state
+- Follows WAI-ARIA `menuitem` pattern
+
+```vue
+<!-- Navigation menu - selections don't persist -->
+<VueMenu menu-aria-label="User menu">
+  User
+  <template #menu>
+    <VueMenuItem value="profile">Profile</VueMenuItem>
+    <VueMenuItem value="settings">Settings</VueMenuItem>
+    <VueMenuItem value="logout">Logout</VueMenuItem>
+  </template>
+</VueMenu>
+```
+
+### `type="single-select"` (Selection Menus)
+**Use for**: Persistent selections (Sort by, Filter by, Choose theme, etc.)
+
+- Selection is **persistent** - selected item shows checked state
+- Selection **remains** after menu closes
+- Use `selectedValue` prop to control which item is checked
+- Follows WAI-ARIA `menuitemradio` pattern
+
+```vue
+<!-- Selection menu - selections persist -->
+<VueMenu menu-aria-label="Sort options">
+  Sort by
+  <template #menu>
+    <ag-menu type="single-select" selected-value="date">
+      <VueMenuItem value="date">Date</VueMenuItem>
+      <VueMenuItem value="name">Name</VueMenuItem>
+      <VueMenuItem value="size">Size</VueMenuItem>
+    </ag-menu>
+  </template>
+</VueMenu>
+```
 
 ## Advanced Features
 

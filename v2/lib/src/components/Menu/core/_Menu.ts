@@ -543,6 +543,11 @@ export class AgMenu extends LitElement implements MenuProps {
       } else {
         // Always set hidden when open is false, regardless of how it was set
         this.setAttribute('hidden', '');
+        // Clear selection for default (navigation) menus when closing
+        if (this.type === 'default') {
+          this.selectedValue = undefined;
+          this._updateSelection();
+        }
       }
     }
     if (changedProperties.has('selectedValue')) {
@@ -555,15 +560,19 @@ export class AgMenu extends LitElement implements MenuProps {
     // Note: We allow the event to bubble up to the menuButton
     // so it can also handle the selection event
     const selectedItem = event.target as AgMenuItem;
-    this.selectedValue = selectedItem.value;
+    // Only persist selection for single-select menus
+    // For default (navigation) menus, selection is transient
+    if (this.type === 'single-select') {
+      this.selectedValue = selectedItem.value;
+    }
   }
 
   private _updateSelection() {
-    if (this.selectedValue !== undefined) {
-      this._menuItems.forEach(item => {
-        item.checked = item.value === this.selectedValue;
-      });
-    }
+    this._menuItems.forEach(item => {
+      // Clear all selections if selectedValue is undefined
+      // Otherwise, mark the matching item as checked
+      item.checked = this.selectedValue !== undefined && item.value === this.selectedValue;
+    });
   }
 
   _updateMenuItems() {

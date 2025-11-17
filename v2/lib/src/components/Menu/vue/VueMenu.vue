@@ -31,6 +31,8 @@
       slot="menu"
       v-bind="open === true ? { open: true } : {}"
       :placement="placement"
+      :type="menuType"
+      :selected-value="selectedValue"
       :ariaLabel="menuAriaLabel"
       :ariaLabelledBy="menuAriaLabelledBy"
       @keydown="handleMenuKeyDown"
@@ -66,6 +68,8 @@ export interface VueMenuProps
   menuAriaLabel?: string;
   menuAriaLabelledBy?: string;
   menuAlign?: "left" | "right";
+  menuType?: "default" | "single-select";
+  selectedValue?: string;
 }
 
 // Define props with defaults
@@ -73,6 +77,7 @@ withDefaults(defineProps<VueMenuProps>(), {
   disabled: false,
   placement: "bottom-start",
   menuAlign: "left",
+  menuType: "default",
 });
 
 // Define emits for all events (native + custom)
