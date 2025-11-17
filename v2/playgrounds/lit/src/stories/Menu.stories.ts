@@ -13,6 +13,7 @@ interface MenuButtonProps {
   disabled?: boolean;
   ariaLabel?: string;
   unicode?: string;
+  menuAlign?: "left" | "right";
   label?: string;
   onMenuOpen?: (e: Event) => void;
   onMenuClose?: (e: Event) => void;
@@ -33,6 +34,11 @@ const meta: Meta<MenuButtonProps> = {
       control: "select",
       options: ["x-sm", "sm", "md", "lg", "xl"],
       description: "Size of the menu button",
+    },
+    menuAlign: {
+      control: "select",
+      options: ["left", "right"],
+      description: "Alignment of the menu relative to the trigger button",
     },
     buttonVariant: {
       control: "select",
@@ -67,6 +73,7 @@ const meta: Meta<MenuButtonProps> = {
   args: {
     menuVariant: "chevron",
     size: "md",
+    menuAlign: "left",
     buttonVariant: "",
     bordered: false,
     ghost: false,
@@ -161,6 +168,31 @@ export const ChevronVariant: Story = {
     <div style="padding: 50px;">
       <ag-menu-button
         .menuVariant=${menuVariant}
+        .size=${size}
+        .buttonVariant=${buttonVariant}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Options menu"}>
+          <ag-menu-item .value=${"option1"}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${"option2"}>Option 2</ag-menu-item>
+          <ag-menu-item .value=${"option3"}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+export const MenuAlignRight: Story = {
+  args: {
+    menuVariant: "chevron",
+    menuAlign: "right",
+    label: "Options",
+  },
+  render: ({ menuVariant, menuAlign, size, buttonVariant, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .menuAlign=${menuAlign}
         .size=${size}
         .buttonVariant=${buttonVariant}
       >
