@@ -16,8 +16,11 @@ import MenuExamples from '../examples/MenuExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic menu -->
-    <VueMenu menu-aria-label="Menu options">
+    <!-- Basic menu (chevron variant) -->
+    <VueMenu
+      menu-variant="chevron"
+      menu-aria-label="Menu options"
+    >
       Menu
       <template #menu>
         <VueMenuItem value="edit">Edit</VueMenuItem>
@@ -25,6 +28,37 @@ import MenuExamples from '../examples/MenuExamples.vue'
         <VueMenuItem value="paste">Paste</VueMenuItem>
         <VueMenuSeparator />
         <VueMenuItem value="delete">Delete</VueMenuItem>
+      </template>
+    </VueMenu>
+
+    <!-- Button variant with color -->
+    <VueMenu
+      menu-variant="button"
+      button-variant="primary"
+      size="md"
+      menu-aria-label="Actions menu"
+    >
+      Actions
+      <template #menu>
+        <VueMenuItem value="new">New File</VueMenuItem>
+        <VueMenuItem value="open">Open File</VueMenuItem>
+        <VueMenuItem value="save">Save</VueMenuItem>
+      </template>
+    </VueMenu>
+
+    <!-- Icon variant -->
+    <VueMenu
+      menu-variant="icon"
+      ghost
+      unicode="⋮"
+      aria-label="More options"
+      menu-aria-label="More options menu"
+    >
+      <template #menu>
+        <VueMenuItem value="settings">Settings</VueMenuItem>
+        <VueMenuItem value="profile">Profile</VueMenuItem>
+        <VueMenuSeparator />
+        <VueMenuItem value="logout">Logout</VueMenuItem>
       </template>
     </VueMenu>
 
@@ -39,21 +73,16 @@ import MenuExamples from '../examples/MenuExamples.vue'
     </VueMenu>
 
     <!-- Menu with disabled items -->
-    <VueMenu menu-aria-label="Menu with disabled items">
+    <VueMenu
+      menu-variant="button"
+      button-variant="primary"
+      menu-aria-label="Menu with disabled items"
+    >
       Mixed States
       <template #menu>
         <VueMenuItem value="enabled1">Enabled Item</VueMenuItem>
         <VueMenuItem value="disabled1" :disabled="true">Disabled Item</VueMenuItem>
         <VueMenuItem value="enabled2">Another Enabled</VueMenuItem>
-      </template>
-    </VueMenu>
-
-    <!-- Menu placement -->
-    <VueMenu placement="bottom-end" menu-aria-label="Bottom end menu">
-      Bottom End
-      <template #menu>
-        <VueMenuItem value="item1">Item 1</VueMenuItem>
-        <VueMenuItem value="item2">Item 2</VueMenuItem>
       </template>
     </VueMenu>
 
