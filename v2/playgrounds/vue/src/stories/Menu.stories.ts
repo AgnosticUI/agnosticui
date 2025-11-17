@@ -184,6 +184,36 @@ export const DisabledItems: Story = {
   }),
 };
 
+export const MenuAlignRight: Story = {
+  args: {
+    menuVariant: 'chevron',
+    size: 'md',
+    menuAlign: 'right',
+    menuAriaLabel: 'Options menu',
+  },
+  render: (args: VueMenuProps) => ({
+    components: { VueMenu, VueMenuItem },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="padding: 50px;">
+        <p style="margin-bottom: 1rem;">
+          Menu is aligned to the right edge of the button
+        </p>
+        <VueMenu v-bind="args">
+          Options
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    `,
+  }),
+};
+
 export const ComplexMenu: Story = {
   args: {
     menuAriaLabel: 'File menu',
@@ -271,6 +301,7 @@ export const WithSections: Story = {
 export const PlacementBottomEnd: Story = {
   args: {
     placement: 'bottom-end',
+    menuAlign: 'right',
     menuAriaLabel: 'Bottom end menu',
   },
   render: (args: VueMenuProps) => ({

@@ -2,6 +2,7 @@
   <ag-menu-button
     ref="menuButtonRef"
     :menu-variant="menuVariant"
+    :menu-align="menuAlign"
     :button-variant="buttonVariant"
     :size="size"
     :shape="shape"
@@ -63,12 +64,14 @@ export interface VueMenuProps
   placement?: string;
   menuAriaLabel?: string;
   menuAriaLabelledBy?: string;
+  menuAlign?: "left" | "right";
 }
 
 // Define props with defaults
 withDefaults(defineProps<VueMenuProps>(), {
   disabled: false,
   placement: "bottom-start",
+  menuAlign: "left",
 });
 
 // Define emits for all events (native + custom)

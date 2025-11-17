@@ -29,6 +29,7 @@ export interface MenuButtonProps extends Omit<ButtonProps, 'variant'> {
   buttonVariant?: ButtonProps['variant'];
   // Unicode character for icon variant
   unicode?: string;
+  menuAlign?: 'left' | 'right';
   // Menu-specific event handlers
   onMenuOpen?: (event: MenuOpenEvent) => void;
   onMenuClose?: (event: MenuCloseEvent) => void;
@@ -36,12 +37,14 @@ export interface MenuButtonProps extends Omit<ButtonProps, 'variant'> {
   // e.g. `type`, `toggle`, `pressed`, `onClick` etc. are handled internally.
 }
 
+
 export interface MenuItemProps {
   value?: string;
   disabled?: boolean;
   href?: string;
   target?: string;
   checked?: boolean;
+  variant?: 'default' | 'monochrome';
   onClick?: (event: MouseEvent) => void;
   onMenuSelect?: (event: MenuSelectEvent) => void;
 }
@@ -104,6 +107,9 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   @property({ type: String })
   declare unicode: string;
 
+  @property({ type: String, reflect: true, attribute: 'menu-align' })
+  declare menuAlign: 'left' | 'right';
+
   @property({ attribute: false })
   declare onMenuOpen?: (event: MenuOpenEvent) => void;
 
@@ -140,6 +146,7 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
     this.buttonVariant = '';
     this.unicode = '';
     this._menuOpen = false;
+    this.menuAlign = 'left';
     this._clickOutsideHandler = this._handleClickOutside.bind(this);
   }
 
@@ -202,8 +209,21 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
       background-color: var(--ag-background-primary);
       margin-top: var(--ag-space-1);
       z-index: var(--ag-z-index-dropdown);
+      /*
       right: initial;
       left: 0;
+      */
+    }
+    /* Left alignment - menu left aligns with button left */
+    :host([menu-align="left"]) ::slotted(ag-menu) {
+      left: 0;
+      right: auto;
+    }
+
+    /* Right alignment - menu right aligns with button right */
+    :host([menu-align="right"]) ::slotted(ag-menu) {
+      right: 0;
+      left: auto;
     }
   `;
 
@@ -308,6 +328,17 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
         break;
     }
   }
+  // Add method to update menu position based on button height:
+  private _updateMenuPosition() {
+    if (!this._menu || !this._trigger) return;
+    
+    const triggerButton = this._trigger.shadowRoot?.querySelector('button');
+    if (!triggerButton) return;
+    
+    const buttonHeight = triggerButton.offsetHeight;
+    // Position menu just below button (no extra gap needed - button already has margin-top)
+    this._menu.style.top = `${buttonHeight}px`;
+  }
 
   _openMenu(focusFirst = true) {
     if (this._menuOpen) return;
@@ -316,6 +347,8 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
 
     if (this._menu) {
       this._menu.open = true;
+      // Update position before showing
+      this._updateMenuPosition();
       this._menu._updateMenuItems();
       requestAnimationFrame(() => {
         if (focusFirst) {
@@ -325,7 +358,6 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
         }
       });
     }
-
     const menuOpenEvent = new CustomEvent<MenuOpenEventDetail>('menu-open', {
       detail: { open: true },
       bubbles: true,
@@ -451,8 +483,10 @@ export class AgMenu extends LitElement implements MenuProps {
       max-width: 16rem;
       width: max-content;
       z-index: var(--ag-z-index-dropdown);
+      /*
       right: initial;
       left: 0;
+      */
       overflow: hidden;
       text-overflow: ellipsis;
     }

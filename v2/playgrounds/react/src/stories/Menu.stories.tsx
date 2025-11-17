@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from 'storybook/test';
 import { ReactMenuButton, ReactMenu, ReactMenuItem, ReactMenuSeparator } from 'agnosticui-core/react';
 import { action } from 'storybook/actions';
-import type { MenuButtonProps as ReactMenuButtonProps } from 'agnosticui-core/menu/react';
+import type { ReactMenuButtonProps } from 'agnosticui-core/menu/react';
 import type { ButtonProps } from 'agnosticui-core/button/react';
 import React from 'react';
 
@@ -16,7 +16,7 @@ const meta: Meta<ReactMenuButtonProps> = {
       options: ['chevron', 'button', 'icon'],
       description: 'The structural variant of the menu button.',
     },
-    variant: {
+    buttonVariant: {
       control: 'select',
       options: ['primary', 'secondary', 'success', 'warning', 'danger', 'monochrome', ''] as ButtonProps['variant'][],
       description: 'The color variant, inherited from AgnosticUI Button.',
@@ -112,7 +112,7 @@ export const ButtonVariant: Story = {
   args: {
     menuVariant: 'button',
     size: 'md',
-    variant: 'primary',
+    buttonVariant: 'primary',
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
@@ -313,7 +313,7 @@ export const SecondaryButton: Story = {
   args: {
     menuVariant: 'button',
     size: 'md',
-    variant: 'secondary',
+    buttonVariant: 'secondary',
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
@@ -337,7 +337,7 @@ export const DangerButton: Story = {
   args: {
     menuVariant: 'button',
     size: 'md',
-    variant: 'danger',
+    buttonVariant: 'danger',
   },
   render: (args) => (
     <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
@@ -383,6 +383,36 @@ export const MenuWithLinks: Story = {
         </ReactMenuItem>
       </ReactMenu>
     </ReactMenuButton>
+  ),
+};
+
+// Menu aligned to the right
+export const MenuAlignRight: Story = {
+  args: {
+    menuVariant: 'chevron',
+    size: 'md',
+    menuAlign: 'right',
+  },
+  render: (args) => (
+    <div style={{ padding: '50px' }}>
+      <p style={{ marginBottom: '1rem' }}>
+        Menu is aligned to the right edge of the button
+      </p>
+      <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
+        Options
+        <ReactMenu slot="menu" ariaLabel="Options menu">
+          <ReactMenuItem value="option1" onMenuSelect={action('menu-select')}>
+            Option 1
+          </ReactMenuItem>
+          <ReactMenuItem value="option2" onMenuSelect={action('menu-select')}>
+            Option 2
+          </ReactMenuItem>
+          <ReactMenuItem value="option3" onMenuSelect={action('menu-select')}>
+            Option 3
+          </ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+    </div>
   ),
 };
 
