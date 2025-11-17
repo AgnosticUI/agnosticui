@@ -62,6 +62,19 @@ import MenuExamples from '../examples/MenuExamples.vue'
       </template>
     </VueMenu>
 
+    <!-- Menu aligned to the right -->
+    <VueMenu
+      menu-align="right"
+      menu-aria-label="Right-aligned menu"
+    >
+      Options
+      <template #menu>
+        <VueMenuItem value="option1">Option 1</VueMenuItem>
+        <VueMenuItem value="option2">Option 2</VueMenuItem>
+        <VueMenuItem value="option3">Option 3</VueMenuItem>
+      </template>
+    </VueMenu>
+
     <!-- Menu with links -->
     <VueMenu menu-aria-label="Navigation menu">
       Navigation
@@ -201,6 +214,20 @@ export default function MenuExample() {
         </ReactMenu>
       </ReactMenuButton>
 
+      {/* Menu aligned to the right */}
+      <ReactMenuButton
+        menuVariant="chevron"
+        size="md"
+        menuAlign="right"
+      >
+        Options
+        <ReactMenu slot="menu" ariaLabel="Right-aligned menu">
+          <ReactMenuItem value="option1">Option 1</ReactMenuItem>
+          <ReactMenuItem value="option2">Option 2</ReactMenuItem>
+          <ReactMenuItem value="option3">Option 3</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+
       {/* Menu with links */}
       <ReactMenuButton
         menuVariant="chevron"
@@ -305,6 +332,16 @@ export default function MenuExample() {
     </ag-menu>
   </ag-menu-button>
 
+  <!-- Menu aligned to the right -->
+  <ag-menu-button menu-variant="chevron" size="md" menu-align="right">
+    Options
+    <ag-menu slot="menu" aria-label="Right-aligned menu">
+      <ag-menu-item value="option1">Option 1</ag-menu-item>
+      <ag-menu-item value="option2">Option 2</ag-menu-item>
+      <ag-menu-item value="option3">Option 3</ag-menu-item>
+    </ag-menu>
+  </ag-menu-button>
+
   <!-- Menu with links -->
   <ag-menu-button menu-variant="chevron" size="md">
     Navigation
@@ -335,6 +372,7 @@ export default function MenuExample() {
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `menuVariant` | `'chevron' \| 'button' \| 'icon'` | `'chevron'` | Structural variant of the menu button |
+| `menuAlign` | `'left' \| 'right'` | `'left'` | Horizontal alignment of the menu relative to the button |
 | `buttonVariant` | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'monochrome' \| ''` | `''` | Color variant from AgButton |
 | `size` | `'x-sm' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size of the menu button (from AgButton) |
 | `shape` | `'capsule' \| 'rounded' \| 'circle' \| 'square' \| 'rounded-square' \| ''` | `'rounded'` | Shape of the button (from AgButton) |
@@ -367,6 +405,8 @@ VueMenu inherits all the properties from Menu Button above, plus:
 | `disabled` | `boolean` | `false` | Disables the menu item |
 | `href` | `string` | `''` | URL for menu item link |
 | `target` | `string` | `''` | Target for menu item link (e.g., `_blank`) |
+| `checked` | `boolean` | `false` | Whether the menu item is checked (for single-select menus) |
+| `variant` | `'default' \| 'monochrome'` | `'default'` | Visual variant of the menu item |
 
 ## Events
 
@@ -513,6 +553,12 @@ Since AgMenuButton wraps AgButton, you can use any button color variant:
 - `monochrome` - Neutral monochrome style
 - `''` (empty) - Default/unstyled
 
+### Menu Item Variants
+
+Menu items support a `variant` prop for different visual styles:
+- `default` - Standard menu item with colored selection background
+- `monochrome` - Monochrome style with neutral selection colors
+
 ### Button Styling Options
 
 All AgButton properties are available:
@@ -521,6 +567,23 @@ All AgButton properties are available:
 - **bordered**: Add border to button
 - **ghost**: Transparent background with colored text/border
 - **link**: Style as a link
+
+## Menu Alignment
+
+The `menuAlign` prop controls the horizontal alignment of the menu relative to the trigger button:
+
+- `left` (default): Menu left edge aligns with button left edge
+- `right`: Menu right edge aligns with button right edge
+
+This is particularly useful when the menu button is positioned near the right edge of the viewport, ensuring the menu stays within view.
+
+```vue
+<!-- Left-aligned (default) -->
+<VueMenu menu-align="left">Options</VueMenu>
+
+<!-- Right-aligned -->
+<VueMenu menu-align="right">Options</VueMenu>
+```
 
 ## Placement Options
 

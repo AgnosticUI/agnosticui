@@ -17,6 +17,42 @@
     </div>
 
     <div class="mbe4">
+      <h3>Menu Alignment</h3>
+      <p class="mbe4">
+        The <code>menu-align</code> prop controls horizontal alignment. Use <code>menu-align="right"</code> when the menu button is near the right edge of the viewport.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div
+        class="flex items-center"
+        style="gap: 1rem; justify-content: space-between;"
+      >
+        <VueMenu
+          menu-align="left"
+          menu-aria-label="Left-aligned menu"
+        >
+          Left Aligned
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+        <VueMenu
+          menu-align="right"
+          menu-aria-label="Right-aligned menu"
+        >
+          Right Aligned
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+
+    <div class="mbe4">
       <h3>Menu with Links</h3>
     </div>
     <div class="stacked mbe4">
@@ -251,7 +287,7 @@
     <div class="stacked mbe4">
       <VueMenu
         menu-aria-label="Monochrome menu"
-        variant="monochrome"
+        button-variant="monochrome"
       >
         Monochrome Menu
         <template #menu>
