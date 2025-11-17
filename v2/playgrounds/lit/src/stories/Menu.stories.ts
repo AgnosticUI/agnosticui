@@ -14,6 +14,7 @@ interface MenuButtonProps {
   ariaLabel?: string;
   unicode?: string;
   menuAlign?: "left" | "right";
+  additionalGutter?: string;
   label?: string;
   onMenuOpen?: (e: Event) => void;
   onMenuClose?: (e: Event) => void;
@@ -64,6 +65,10 @@ const meta: Meta<MenuButtonProps> = {
     unicode: {
       control: "text",
       description: "Unicode character for icon",
+    },
+    additionalGutter: {
+      control: "text",
+      description: "Additional vertical spacing beyond the trigger button height when positioning the menu (e.g., '10px', '1rem')",
     },
     label: {
       control: "text",
@@ -1041,3 +1046,93 @@ export const MonochromeSelected: Story = {
     </div>
   `,
 };
+
+// New Feature: Additional Gutter Example
+export const AdditionalGutter: Story = {
+  args: {
+    menuVariant: 'chevron',
+    size: 'sm',
+    additionalGutter: '20px',
+  },
+  render: ({ menuVariant, size, additionalGutter }) => html`
+    <div style="padding: 100px 50px; background: #f3f4f6;">
+      <p style="margin-bottom: 1rem;">
+        This menu has <code>additionalGutter="20px"</code> which adds extra vertical spacing
+        beyond the button height when positioning the menu.
+      </p>
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        .additionalGutter=${additionalGutter}
+      >
+        Menu with Extra Gutter
+        <ag-menu slot="menu" .ariaLabel=${'Menu with additional gutter'}>
+          <ag-menu-item .value=${'option1'}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${'option2'}>Option 2</ag-menu-item>
+          <ag-menu-item .value=${'option3'}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// New Feature: Dynamic Icon Switching
+export const DynamicIconSwitching: Story = {
+  args: {
+    menuVariant: 'icon',
+    size: 'sm',
+    ghost: true,
+    ariaLabel: 'Toggle menu',
+  },
+  render: ({ menuVariant, size, ghost, ariaLabel }) => html`
+    <style>
+      .dynamic-icon-menu .icon-container {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+      .dynamic-icon-menu .menu-icon,
+      .dynamic-icon-menu .close-icon {
+        position: absolute;
+        transition: opacity var(--ag-motion-medium) ease-in-out;
+      }
+      .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+    <div style="padding: 100px 50px;">
+      <p style="margin-bottom: 1rem;">
+        This example shows dynamic icon switching based on menu state.
+        The icon changes from a hamburger menu (☰) when closed to an X (✕) when open.
+      </p>
+      <ag-menu-button
+        class="dynamic-icon-menu"
+        .menuVariant=${menuVariant}
+        .size=${size}
+        ?ghost=${ghost}
+        .ariaLabel=${ariaLabel}
+      >
+        <span class="icon-container">
+          <span class="menu-icon" style="font-size: 1.25rem;">☰</span>
+          <span class="close-icon" style="font-size: 0.875rem;">✕</span>
+        </span>
+        <ag-menu slot="menu" .ariaLabel=${'Navigation menu'}>
+          <ag-menu-item .value=${'home'}>Home</ag-menu-item>
+          <ag-menu-item .value=${'about'}>About</ag-menu-item>
+          <ag-menu-item .value=${'contact'}>Contact</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${'logout'}>Logout</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+

@@ -336,6 +336,72 @@
       </div>
     </div>
     <div class="mbe4">
+      <h3>Additional Gutter</h3>
+      <p class="mbe4">
+        The <code>additional-gutter</code> prop adds extra vertical spacing beyond the trigger button's height when positioning the menu. This is useful when the menu button is within a taller container (like a header) and you need the menu to clear that container.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div style="background: #f3f4f6; padding: 20px; border-radius: 8px;">
+        <p class="mbe4">This menu has <code>additional-gutter="20px"</code></p>
+        <VueMenu
+          menu-variant="chevron"
+          additional-gutter="20px"
+          menu-aria-label="Menu with additional gutter"
+        >
+          Menu with Extra Gutter
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h3>Dynamic Icon Switching</h3>
+      <p class="mbe4">
+        The menu button exposes a <code>data-menu-open</code> attribute that changes based on the menu state. You can use this with CSS to dynamically switch icons when the menu opens/closes.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div v-html="dynamicIconStyles"></div>
+      <div
+        class="flex-inline items-center"
+        style="gap: 1rem;"
+      >
+        <VueMenu
+          menu-variant="icon"
+          ghost
+          size="sm"
+          class="dynamic-icon-menu"
+          aria-label="Toggle menu"
+          menu-aria-label="Navigation menu"
+        >
+          <Menu
+            :size="14"
+            class="menu-icon"
+          />
+          <X
+            :size="14"
+            class="close-icon"
+          />
+          <template #menu>
+            <VueMenuItem value="home">Home</VueMenuItem>
+            <VueMenuItem value="about">About</VueMenuItem>
+            <VueMenuItem value="contact">Contact</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+        <p style="font-size: 0.875rem; color: #6b7280;">
+          Click the icon to see it change from ☰ to ✕
+        </p>
+      </div>
+    </div>
+
+    <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
     </div>
     <div class="stacked mbe4">
@@ -361,7 +427,7 @@ import VueMenu, {
   VueMenuItem,
   VueMenuSeparator,
 } from "agnosticui-core/menu/vue";
-import { User, Menu } from "lucide-vue-next";
+import { User, Menu, X } from "lucide-vue-next";
 
 export default {
   name: "MenuExamples",
@@ -371,11 +437,30 @@ export default {
     VueMenuSeparator,
     User,
     Menu,
+    X,
   },
   data() {
     return {
       lastEvent: null,
       lastSelectedValue: null,
+      dynamicIconStyles: `
+        <style>
+          .dynamic-icon-menu .menu-icon,
+          .dynamic-icon-menu .close-icon {
+            transition: opacity var(--ag-motion-medium) ease-in-out;
+          }
+          .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+          }
+          .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+          }
+        </style>
+      `,
       customMenuStyles: `
         <style>
           .custom-menu-button ag-button::part(ag-button) {

@@ -53,6 +53,10 @@ const meta = {
       control: 'text',
       description: 'Unicode character for icon variant',
     },
+    additionalGutter: {
+      control: 'text',
+      description: 'Additional vertical spacing beyond the trigger button height when positioning the menu (e.g., "10px", "1rem")',
+    },
     open: {
       control: 'boolean',
       description: 'Whether the menu is open',
@@ -512,3 +516,102 @@ export const CSSPartsCustomization: Story = {
     `,
   }),
 };
+
+// New Feature: Additional Gutter Example
+export const AdditionalGutter: Story = {
+  args: {
+    menuVariant: 'chevron',
+    size: 'sm',
+    additionalGutter: '20px',
+  },
+  render: (args: VueMenuProps) => ({
+    components: { VueMenu, VueMenuItem },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="padding: 100px 50px; background: #f3f4f6;">
+        <p style="margin-bottom: 1rem;">
+          This menu has <code>additionalGutter="20px"</code> which adds extra vertical spacing
+          beyond the button height when positioning the menu.
+        </p>
+        <VueMenu v-bind="args" menuAriaLabel="Menu with additional gutter">
+          Menu with Extra Gutter
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    `,
+  }),
+};
+
+// New Feature: Dynamic Icon Switching
+export const DynamicIconSwitching: Story = {
+  args: {
+    menuVariant: 'icon',
+    size: 'sm',
+    ghost: true,
+    ariaLabel: 'Toggle menu',
+  },
+  render: (args: VueMenuProps) => ({
+    components: { VueMenu, VueMenuItem, VueMenuSeparator },
+    setup() {
+      const styles = `
+        <style>
+          .dynamic-icon-menu .icon-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.25rem;
+            height: 1.25rem;
+          }
+          .dynamic-icon-menu .menu-icon,
+          .dynamic-icon-menu .close-icon {
+            position: absolute;
+            transition: opacity var(--ag-motion-medium) ease-in-out;
+          }
+          .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+            opacity: 0;
+            pointer-events: none;
+          }
+          .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+            opacity: 0;
+            pointer-events: none;
+          }
+        </style>
+      `;
+      return { args, styles };
+    },
+    template: `
+      <div style="padding: 100px 50px;">
+        <div v-html="styles"></div>
+        <p style="margin-bottom: 1rem;">
+          This example shows dynamic icon switching based on menu state.
+          The icon changes from a hamburger menu (☰) when closed to an X (✕) when open.
+        </p>
+        <VueMenu
+          v-bind="args"
+          class="dynamic-icon-menu"
+          menuAriaLabel="Navigation menu"
+        >
+          <span class="icon-container">
+            <span class="menu-icon" style="font-size: 1.25rem;">☰</span>
+            <span class="close-icon" style="font-size: 0.875rem;">✕</span>
+          </span>
+          <template #menu>
+            <VueMenuItem value="home">Home</VueMenuItem>
+            <VueMenuItem value="about">About</VueMenuItem>
+            <VueMenuItem value="contact">Contact</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    `,
+  }),
+};
+
