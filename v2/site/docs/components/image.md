@@ -4,7 +4,9 @@ title: Image
 
 # Image
 
-The AgnosticUI Image component is a powerful, performant replacement for the native `<img>` tag. It provides built-in solutions for common image-handling challenges, including responsive sizing, preventing layout shift, lazy loading, and graceful error handling.
+The AgnosticUI Image component is a powerful, performant replacement for the native `<img>` tag. It intelligently adapts to your needs: provide a simple `src` to render an `<img>`, or add a `sources` prop to automatically generate a responsive `<picture>` element.
+
+Beyond its flexibility, it provides built-in solutions for common image-handling challenges, including responsive sizing, preventing layout shift, lazy loading, and graceful error handling.
 
 <ImageExamples />
 
