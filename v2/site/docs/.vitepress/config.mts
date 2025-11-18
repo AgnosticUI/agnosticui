@@ -75,6 +75,7 @@ function getComponents() {
       { text: 'Header', link: '/components/header' },
       { text: 'Icon Button', link: '/components/icon-button' },
       { text: 'Icon', link: '/components/icon' },
+      { text: 'Image', link: '/components/image' },
       { text: 'Input', link: '/components/input' },
       { text: 'Kbd', link: '/components/kbd' },
       { text: 'Link', link: '/components/link' },
