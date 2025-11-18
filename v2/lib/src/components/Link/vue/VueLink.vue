@@ -1,4 +1,3 @@
-
 <template>
   <ag-link ref="agComponent">
     <slot />
@@ -6,21 +5,45 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watchEffect } from 'vue';
-import type { LinkProps } from '../core/_Link';
+import { defineComponent, onMounted, ref, watchEffect } from "vue";
+import type { LinkProps } from "../core/_Link";
 
 export default defineComponent({
-  name: 'VueLink',
+  name: "VueLink",
   props: {
     href: {
       type: String,
-      default: '',
+      default: "",
     },
     variant: {
-      type: String as () => 'success' | 'warning' | 'danger' | '',
-      default: '',
+      type: String as () =>
+        | "primary"
+        | "success"
+        | "warning"
+        | "danger"
+        | "monochrome"
+        | "",
+      default: "",
     },
     isButton: {
+      type: Boolean,
+      default: false,
+    },
+    buttonSize: {
+      type: String as () => "x-sm" | "sm" | "md" | "lg" | "xl",
+      default: "md",
+    },
+    buttonShape: {
+      type: String as () =>
+        | "capsule"
+        | "rounded"
+        | "circle"
+        | "square"
+        | "rounded-square"
+        | "",
+      default: "",
+    },
+    buttonBordered: {
       type: Boolean,
       default: false,
     },
@@ -34,19 +57,19 @@ export default defineComponent({
     },
     ariaLabel: {
       type: String,
-      default: '',
+      default: "",
     },
   },
-  emits: ['click', 'focus', 'blur'],
+  emits: ["click", "focus", "blur"],
   setup(props, { emit }) {
-    const agComponent = ref<HTMLElement & LinkProps | null>(null);
+    const agComponent = ref<(HTMLElement & LinkProps) | null>(null);
 
     onMounted(() => {
       if (agComponent.value) {
         // Set up event listeners to emit Vue events
-        agComponent.value.addEventListener('click', (e) => emit('click', e));
-        agComponent.value.addEventListener('focus', (e) => emit('focus', e));
-        agComponent.value.addEventListener('blur', (e) => emit('blur', e));
+        agComponent.value.addEventListener("click", (e) => emit("click", e));
+        agComponent.value.addEventListener("focus", (e) => emit("focus", e));
+        agComponent.value.addEventListener("blur", (e) => emit("blur", e));
       }
     });
 
@@ -56,6 +79,9 @@ export default defineComponent({
         agComponent.value.href = props.href;
         agComponent.value.variant = props.variant;
         agComponent.value.isButton = props.isButton;
+        agComponent.value.buttonSize = props.buttonSize;
+        agComponent.value.buttonShape = props.buttonShape;
+        agComponent.value.buttonBordered = props.buttonBordered;
         agComponent.value.external = props.external;
         agComponent.value.disabled = props.disabled;
         agComponent.value.ariaLabel = props.ariaLabel;
