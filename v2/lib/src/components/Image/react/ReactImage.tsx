@@ -14,6 +14,7 @@ export interface ReactImageProps extends AgImageProps {
   children?: React.ReactNode;
   className?: string;
   id?: string;
+  style?: React.CSSProperties;
   // Explicitly include event handler types
   onLoad?: (event: Event) => void;
   onError?: (event: Event) => void;

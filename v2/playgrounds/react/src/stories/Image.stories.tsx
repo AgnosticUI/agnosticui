@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ReactImage, type ReactImageProps } from "agnosticui-core/image/react";
 import { fn } from "storybook/test";
+import { ReactImage, type ReactImageProps } from "agnosticui-core/image/react";
 
 const meta: Meta<ReactImageProps> = {
   title: "AgnosticUI React/Image",
@@ -64,8 +64,8 @@ const meta: Meta<ReactImageProps> = {
     loading: "lazy",
     fade: false,
     duration: 200,
-    onLoad: fn(),
-    onError: fn(),
+    onAgLoad: fn(),
+    onAgError: fn(),
   },
 };
 
@@ -104,7 +104,9 @@ export const WithAspectRatio: Story = {
     fit: "cover",
   },
   render: (args) => (
-    <ReactImage {...args} style={{ width: "100%", maxWidth: "800px" }} />
+    <div style={{ width: "100%", maxWidth: "800px" }}>
+      <ReactImage {...args} />
+    </div>
   ),
 };
 
@@ -159,8 +161,11 @@ export const CustomPlaceholder: Story = {
     width: 800,
     height: 600,
     fade: true,
-    placeholder: (
+  },
+  render: (args) => (
+    <ReactImage {...args}>
       <div
+        slot="placeholder"
         style={{
           display: "flex",
           alignItems: "center",
@@ -175,8 +180,8 @@ export const CustomPlaceholder: Story = {
           <div>Loading image...</div>
         </div>
       </div>
-    ),
-  },
+    </ReactImage>
+  ),
 };
 
 // Custom Error
@@ -186,8 +191,11 @@ export const CustomError: Story = {
     alt: "Broken image",
     width: 800,
     height: 600,
-    error: (
+  },
+  render: (args) => (
+    <ReactImage {...args}>
       <div
+        slot="error"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -205,8 +213,8 @@ export const CustomError: Story = {
           Please try again later
         </div>
       </div>
-    ),
-  },
+    </ReactImage>
+  ),
 };
 
 // Eager Loading
@@ -241,8 +249,18 @@ export const ResponsiveWithSources: Story = {
       },
     ],
   },
-  render: (args) => (
-    <ReactImage {...args} style={{ width: "100%", maxWidth: "1200px" }} />
+  render: ({ src, alt, aspectRatio, fade, sources }) => (
+    <ReactImage
+      src={src}
+      alt={alt}
+      aspectRatio={aspectRatio}
+      fade={fade}
+      sources={sources}
+      style={{
+        width: "100%",
+        maxWidth: "1200px",
+      }}
+    />
   ),
 };
 
