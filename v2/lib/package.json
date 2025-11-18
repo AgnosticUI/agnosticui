@@ -364,6 +364,18 @@
       "types": "./dist/components/Icon/vue/index.d.ts",
       "import": "./dist/components/Icon/vue/index.js"
     },
+    "./image": {
+      "types": "./dist/components/Image/core/Image.d.ts",
+      "import": "./dist/components/Image/core/Image.js"
+    },
+    "./image/react": {
+      "types": "./dist/components/Image/react/index.d.ts",
+      "import": "./dist/components/Image/react/index.js"
+    },
+    "./image/vue": {
+      "types": "./dist/components/Image/vue/index.d.ts",
+      "import": "./dist/components/Image/vue/index.js"
+    },
     "./table": {
       "types": "./dist/components/Table/core/_Table.d.ts",
       "import": "./dist/components/Table/core/_Table.js"
