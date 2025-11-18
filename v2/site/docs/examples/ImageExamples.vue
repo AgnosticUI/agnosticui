@@ -1,68 +1,79 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import VueImage from "agnosticui-core/image/vue";
+import { VueIcon } from "agnosticui-core/icon/vue";
+import { TriangleAlert } from "lucide-vue-next";
 
 // Basic Image
-const basicImageUrl = 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=650&h=487&fit=crop&q=80';
+const basicImageUrl =
+  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=650&h=487&fit=crop&q=80";
 const basicImageSrc = ref(basicImageUrl);
 const reloadBasicImage = () => {
   basicImageSrc.value = `${basicImageUrl}&t=${new Date().getTime()}`;
 };
 
 // Responsive Image
-const responsiveImageUrl = 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=800&fit=crop&q=80';
+const responsiveImageUrl =
+  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=800&fit=crop&q=80";
 const responsiveImageSrc = ref(responsiveImageUrl);
 const reloadResponsiveImage = () => {
   responsiveImageSrc.value = `${responsiveImageUrl}&t=${new Date().getTime()}`;
 };
 
 // Object Fit Image
-const objectFitImageUrl = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=650&h=487&fit=crop&q=80';
+const objectFitImageUrl =
+  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=650&h=487&fit=crop&q=80";
 const objectFitImageSrc = ref(objectFitImageUrl);
 const reloadObjectFitImage = () => {
   objectFitImageSrc.value = `${objectFitImageUrl}&t=${new Date().getTime()}`;
 };
 
 // Responsive Sources Image
-const responsiveSourcesImageUrl = 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=650&h=487&fit=crop&q=80';
+const responsiveSourcesImageUrl =
+  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=650&h=487&fit=crop&q=80";
 const responsiveSourcesImageSrc = ref(responsiveSourcesImageUrl);
 const reloadResponsiveSourcesImage = () => {
   responsiveSourcesImageSrc.value = `${responsiveSourcesImageUrl}&t=${new Date().getTime()}`;
 };
 const responsiveSources = [
   {
-    srcset: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1400&h=787&fit=crop&q=80',
-    media: '(min-width: 1024px)',
+    srcset:
+      "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1400&h=787&fit=crop&q=80",
+    media: "(min-width: 1024px)",
   },
   {
-    srcset: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1000&h=562&fit=crop&q=80',
-    media: '(min-width: 768px)',
+    srcset:
+      "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1000&h=562&fit=crop&q=80",
+    media: "(min-width: 768px)",
   },
 ];
 
 // Fallback Image
-const fallbackImageUrl = 'https://thissourcedoesnotexist.com/image.jpg';
+const fallbackImageUrl = "https://thissourcedoesnotexist.com/image.jpg";
 const fallbackImageSrc = ref(fallbackImageUrl);
 const reloadFallbackImage = () => {
   fallbackImageSrc.value = `${fallbackImageUrl}?t=${new Date().getTime()}`;
 };
 
 // Placeholder Image
-const placeholderImageUrl = 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=650&h=487&fit=crop&q=80&auto=format&ps=50';
+const placeholderImageUrl =
+  "https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=650&h=487&fit=crop&q=80&auto=format&ps=50";
 const placeholderImageSrc = ref(placeholderImageUrl);
 const reloadPlaceholderImage = () => {
   placeholderImageSrc.value = `${placeholderImageUrl}&t=${new Date().getTime()}`;
 };
 
 // Error Image
-const errorImageUrl = 'https://thissourcedoesnotexist.com/another-broken-image.jpg';
+const errorImageUrl =
+  "https://thissourcedoesnotexist.com/another-broken-image.jpg";
 const errorImageSrc = ref(errorImageUrl);
 const reloadErrorImage = () => {
   errorImageSrc.value = `${errorImageUrl}?t=${new Date().getTime()}`;
 };
 
 // Styled Image
-const styledImageUrl = 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=650&h=487&fit=crop&q=80';
+const styledImageUrl =
+  "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=650&h=487&fit=crop&q=80";
 const styledImageSrc = ref(styledImageUrl);
 const reloadStyledImage = () => {
   styledImageSrc.value = `${styledImageUrl}&t=${new Date().getTime()}`;
@@ -80,7 +91,10 @@ const reloadStyledImage = () => {
       :height="487"
       :fade="true"
     />
-    <button @click="reloadBasicImage" class="reload-button">Reload Image</button>
+    <button
+      @click="reloadBasicImage"
+      class="reload-button"
+    >Reload Image</button>
     <hr />
 
     <h2>Responsive Image (No Layout Shift)</h2>
@@ -95,7 +109,10 @@ const reloadStyledImage = () => {
         :fade="true"
       ></VueImage>
     </div>
-    <button @click="reloadResponsiveImage" class="reload-button">Reload Image</button>
+    <button
+      @click="reloadResponsiveImage"
+      class="reload-button"
+    >Reload Image</button>
     <hr />
 
     <h2>Object Fit: Contain</h2>
@@ -109,7 +126,10 @@ const reloadStyledImage = () => {
         :fade="true"
       ></VueImage>
     </div>
-    <button @click="reloadObjectFitImage" class="reload-button">Reload Image</button>
+    <button
+      @click="reloadObjectFitImage"
+      class="reload-button"
+    >Reload Image</button>
     <hr />
 
     <h2>Responsive Sources with &lt;picture&gt;</h2>
@@ -123,7 +143,10 @@ const reloadStyledImage = () => {
         :fade="true"
       ></VueImage>
     </div>
-    <button @click="reloadResponsiveSourcesImage" class="reload-button">Reload Image</button>
+    <button
+      @click="reloadResponsiveSourcesImage"
+      class="reload-button"
+    >Reload Image</button>
     <hr />
 
     <h2>Fallback Source</h2>
@@ -136,7 +159,10 @@ const reloadStyledImage = () => {
       :height="487"
       :fade="true"
     />
-    <button @click="reloadFallbackImage" class="reload-button">Reload Image</button>
+    <button
+      @click="reloadFallbackImage"
+      class="reload-button"
+    >Reload Image</button>
     <hr />
 
     <h2>Custom Placeholder Slot</h2>
@@ -155,7 +181,10 @@ const reloadStyledImage = () => {
         <div>Loading beautiful scenery...</div>
       </div>
     </VueImage>
-    <button @click="reloadPlaceholderImage" class="reload-button">Reload Image</button>
+    <button
+      @click="reloadPlaceholderImage"
+      class="reload-button"
+    >Reload Image</button>
     <hr />
 
     <h2>Custom Error Slot</h2>
@@ -171,12 +200,23 @@ const reloadStyledImage = () => {
           slot="error"
           class="custom-error"
         >
-          <div class="error-icon">⚠️</div>
-          <div>Oops! The image could not be loaded.</div>
+          <div class="error-icon">
+            <VueIcon
+              size="64"
+              type="error"
+              :noFill="true"
+            >
+              <TriangleAlert />
+            </VueIcon>
+          </div>
+          <h3 style="margin-top: 0;">Oops! The image could not be loaded.</h3>
         </div>
       </VueImage>
     </div>
-    <button @click="reloadErrorImage" class="reload-button">Reload Image</button>
+    <button
+      @click="reloadErrorImage"
+      class="reload-button"
+    >Reload Image</button>
     <hr />
 
     <h2>Styled with CSS Class and Parts</h2>
@@ -190,7 +230,10 @@ const reloadStyledImage = () => {
         :fade="true"
       />
     </div>
-    <button @click="reloadStyledImage" class="reload-button">Reload Image</button>
+    <button
+      @click="reloadStyledImage"
+      class="reload-button"
+    >Reload Image</button>
   </div>
 </template>
 
@@ -255,7 +298,7 @@ const reloadStyledImage = () => {
 
 .custom-error {
   background: var(--ag-danger-background);
-  color: var(--ag-danger-text);
+  color: var(--ag-text-primary);
 }
 
 .custom-styled-image::part(ag-img) {
