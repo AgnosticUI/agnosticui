@@ -103,7 +103,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       height: var(--ag-space-10);
 
       /* Default color */
-      color: var(--ag-text-locked);
+      color: var(--ag-text-primary);
       border-radius: var(--ag-radius-sm);
 
       /* Touch target accessibility */
