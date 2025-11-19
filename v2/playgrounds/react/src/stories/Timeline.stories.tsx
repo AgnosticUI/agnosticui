@@ -103,3 +103,121 @@ export const Vertical: Story = {
     variant: 'primary',
   },
 };
+
+const cardStyle = {
+  border: '1px solid var(--ag-border)',
+  padding: 'var(--ag-space-2)',
+  borderRadius: 'var(--ag-radius)',
+  backgroundColor: 'var(--ag-background)',
+  marginBottom: 'var(--ag-space-4)',
+};
+
+export const VerticalCardEnd: Story = {
+  render: (args) => (
+    <ReactTimeline {...args} orientation="vertical" style={{ '--ag-timeline-end-align': 'center' } as React.CSSProperties}>
+      <ReactTimelineItem>
+        <div slot="ag-start">09:00 AM</div>
+        <div slot="ag-marker">
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+        </div>
+        <div slot="ag-end" style={cardStyle}>
+          <strong>Breakfast</strong>
+          <p style={{ margin: 0 }}>Oatmeal and coffee</p>
+        </div>
+      </ReactTimelineItem>
+      <ReactTimelineItem>
+        <div slot="ag-start">10:00 AM</div>
+        <div slot="ag-marker">
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+        </div>
+        <div slot="ag-end" style={cardStyle}>
+          <strong>Meeting</strong>
+          <p style={{ margin: 0 }}>Daily standup</p>
+        </div>
+      </ReactTimelineItem>
+    </ReactTimeline>
+  ),
+  args: {
+    variant: 'primary',
+  },
+};
+
+export const VerticalCardStart: Story = {
+  render: (args) => (
+    <ReactTimeline {...args} orientation="vertical" style={{ '--ag-timeline-start-align': 'center' } as React.CSSProperties}>
+      <ReactTimelineItem>
+        <div slot="ag-start" style={cardStyle}>
+          <strong>Breakfast</strong>
+          <p style={{ margin: 0 }}>Oatmeal and coffee</p>
+        </div>
+        <div slot="ag-marker">
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+        </div>
+        <div slot="ag-end">09:00 AM</div>
+      </ReactTimelineItem>
+      <ReactTimelineItem>
+        <div slot="ag-start" style={cardStyle}>
+          <strong>Meeting</strong>
+          <p style={{ margin: 0 }}>Daily standup</p>
+        </div>
+        <div slot="ag-marker">
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+        </div>
+        <div slot="ag-end">10:00 AM</div>
+      </ReactTimelineItem>
+    </ReactTimeline>
+  ),
+  args: {
+    variant: 'primary',
+  },
+};
+
+export const VerticalAlternating: Story = {
+  render: (args) => (
+    <ReactTimeline {...args} orientation="vertical" style={{ '--ag-timeline-start-align': 'center', '--ag-timeline-end-align': 'center' } as React.CSSProperties}>
+      <ReactTimelineItem>
+        <div slot="ag-start" style={cardStyle}>
+          <strong>Step 1</strong>
+          <p style={{ margin: 0 }}>Start with a card</p>
+        </div>
+        <div slot="ag-marker">
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+        </div>
+        <div slot="ag-end">09:00 AM</div>
+      </ReactTimelineItem>
+      <ReactTimelineItem>
+        <div slot="ag-start">10:00 AM</div>
+        <div slot="ag-marker">
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+        </div>
+        <div slot="ag-end" style={cardStyle}>
+          <strong>Step 2</strong>
+          <p style={{ margin: 0 }}>End has the card</p>
+        </div>
+      </ReactTimelineItem>
+      <ReactTimelineItem>
+        <div slot="ag-start" style={cardStyle}>
+          <strong>Step 3</strong>
+          <p style={{ margin: 0 }}>Back to start card</p>
+        </div>
+        <div slot="ag-marker">
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+        </div>
+        <div slot="ag-end">11:00 AM</div>
+      </ReactTimelineItem>
+      <ReactTimelineItem>
+        <div slot="ag-start">12:00 PM</div>
+        <div slot="ag-marker">
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+        </div>
+        <div slot="ag-end" style={cardStyle}>
+          <strong>Step 4</strong>
+          <p style={{ margin: 0 }}>End has the card</p>
+        </div>
+      </ReactTimelineItem>
+    </ReactTimeline>
+  ),
+  args: {
+    variant: 'primary',
+  },
+};

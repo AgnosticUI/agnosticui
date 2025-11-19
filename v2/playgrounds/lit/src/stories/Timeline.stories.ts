@@ -112,3 +112,133 @@ export const Vertical: Story = {
     variant: 'primary',
   },
 };
+
+const cardStyle = 'border: 1px solid var(--ag-border); padding: var(--ag-space-2); border-radius: var(--ag-radius); background-color: var(--ag-background); margin-block-end: var(--ag-space-4);';
+
+export const VerticalCardEnd: Story = {
+  render: (args) => html`
+    <ag-timeline
+      orientation="vertical"
+      variant="${args.variant || ''}"
+      ?compact="${args.compact}"
+      ?responsive="${args.responsive}"
+      style="--ag-timeline-end-align: center"
+    >
+      <ag-timeline-item>
+        <div slot="ag-start">09:00 AM</div>
+        <div slot="ag-marker">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+        </div>
+        <div slot="ag-end" style="${cardStyle}">
+          <strong>Breakfast</strong>
+          <p style="margin: 0">Oatmeal and coffee</p>
+        </div>
+      </ag-timeline-item>
+      <ag-timeline-item>
+        <div slot="ag-start">10:00 AM</div>
+        <div slot="ag-marker">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+        </div>
+        <div slot="ag-end" style="${cardStyle}">
+          <strong>Meeting</strong>
+          <p style="margin: 0">Daily standup</p>
+        </div>
+      </ag-timeline-item>
+    </ag-timeline>
+  `,
+  args: {
+    variant: 'primary',
+  },
+};
+
+export const VerticalCardStart: Story = {
+  render: (args) => html`
+    <ag-timeline
+      orientation="vertical"
+      variant="${args.variant || ''}"
+      ?compact="${args.compact}"
+      ?responsive="${args.responsive}"
+      style="--ag-timeline-start-align: center"
+    >
+      <ag-timeline-item>
+        <div slot="ag-start" style="${cardStyle}">
+          <strong>Breakfast</strong>
+          <p style="margin: 0">Oatmeal and coffee</p>
+        </div>
+        <div slot="ag-marker">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+        </div>
+        <div slot="ag-end">09:00 AM</div>
+      </ag-timeline-item>
+      <ag-timeline-item>
+        <div slot="ag-start" style="${cardStyle}">
+          <strong>Meeting</strong>
+          <p style="margin: 0">Daily standup</p>
+        </div>
+        <div slot="ag-marker">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+        </div>
+        <div slot="ag-end">10:00 AM</div>
+      </ag-timeline-item>
+    </ag-timeline>
+  `,
+  args: {
+    variant: 'primary',
+  },
+};
+
+export const VerticalAlternating: Story = {
+  render: (args) => html`
+    <ag-timeline
+      orientation="vertical"
+      variant="${args.variant || ''}"
+      ?compact="${args.compact}"
+      ?responsive="${args.responsive}"
+      style="--ag-timeline-start-align: center; --ag-timeline-end-align: center"
+    >
+      <ag-timeline-item>
+        <div slot="ag-start" style="${cardStyle}">
+          <strong>Step 1</strong>
+          <p style="margin: 0">Start with a card</p>
+        </div>
+        <div slot="ag-marker">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+        </div>
+        <div slot="ag-end">09:00 AM</div>
+      </ag-timeline-item>
+      <ag-timeline-item>
+        <div slot="ag-start">10:00 AM</div>
+        <div slot="ag-marker">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+        </div>
+        <div slot="ag-end" style="${cardStyle}">
+          <strong>Step 2</strong>
+          <p style="margin: 0">End has the card</p>
+        </div>
+      </ag-timeline-item>
+      <ag-timeline-item>
+        <div slot="ag-start" style="${cardStyle}">
+          <strong>Step 3</strong>
+          <p style="margin: 0">Back to start card</p>
+        </div>
+        <div slot="ag-marker">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+        </div>
+        <div slot="ag-end">11:00 AM</div>
+      </ag-timeline-item>
+      <ag-timeline-item>
+        <div slot="ag-start">12:00 PM</div>
+        <div slot="ag-marker">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+        </div>
+        <div slot="ag-end" style="${cardStyle}">
+          <strong>Step 4</strong>
+          <p style="margin: 0">End has the card</p>
+        </div>
+      </ag-timeline-item>
+    </ag-timeline>
+  `,
+  args: {
+    variant: 'primary',
+  },
+};

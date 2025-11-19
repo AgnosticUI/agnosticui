@@ -189,6 +189,9 @@ export interface AgTimelineItemProps {
  * @csspart ag-marker - The marker wrapper
  * @csspart ag-end - The end content wrapper
  * @csspart ag-connector - The connector line element
+ * 
+ * @cssprop --ag-timeline-start-align - Vertical alignment of start content (default: start)
+ * @cssprop --ag-timeline-end-align - Vertical alignment of end content (default: start)
  */
 export class AgTimelineItem extends LitElement {
   // ──────────────────────────────────────────────────────────────
@@ -290,7 +293,7 @@ export class AgTimelineItem extends LitElement {
     :host([orientation="vertical"]) .ag-start {
       grid-column: 1 / 2;
       grid-row: 2 / 4;
-      align-self: start;
+      align-self: var(--ag-timeline-start-align, start);
       justify-self: end;
       margin: 0 var(--ag-space-2) 0 0;
     }
@@ -334,7 +337,7 @@ export class AgTimelineItem extends LitElement {
     :host([orientation="vertical"]) .ag-end {
       grid-column: 3 / 4;
       grid-row: 2 / 4;
-      align-self: start;
+      align-self: var(--ag-timeline-end-align, start);
       justify-self: start;
       margin: 0 0 0 var(--ag-space-2);
     }
