@@ -1,0 +1,6 @@
+{
+  "responsive-mobile-breakpoint": {
+    "value": "640px",
+    "description": "Breakpoint for responsive behavior, e.g. switching from horizontal to vertical layouts."
+  }
+}
