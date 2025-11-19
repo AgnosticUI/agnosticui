@@ -37,3 +37,4 @@ export * from '../Tag/react';
 export * from '../Toast/react';
 export * from '../Toggle/react';
 export * from '../Tooltip/react';
+export * from '../Timeline/react/Timeline';

@@ -527,6 +527,18 @@
     "./rating/vue": {
       "types": "./dist/components/Rating/vue/index.d.ts",
       "import": "./dist/components/Rating/vue/index.js"
+    },
+    "./timeline": {
+      "types": "./dist/components/Timeline/core/Timeline.d.ts",
+      "import": "./dist/components/Timeline/core/Timeline.js"
+    },
+    "./timeline/react": {
+      "types": "./dist/components/Timeline/react/Timeline.d.ts",
+      "import": "./dist/components/Timeline/react/Timeline.js"
+    },
+    "./timeline/vue": {
+      "types": "./dist/components/Timeline/vue/index.d.ts",
+      "import": "./dist/components/Timeline/vue/index.js"
     }
   },
   "scripts": {
