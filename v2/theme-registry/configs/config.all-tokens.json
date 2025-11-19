@@ -3,6 +3,7 @@
     "tokens/drawer.json",
     "tokens/sizes.json",
     "tokens/radii.json",
+    "tokens/responsive.json",
     "tokens/motion.json",
     "tokens/focus.json",
     "tokens/shadow.json",
