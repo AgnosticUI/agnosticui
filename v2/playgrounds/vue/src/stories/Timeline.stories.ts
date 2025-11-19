@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { VueTimeline as AgTimeline, VueTimelineItem as AgTimelineItem } from 'agnosticui-core/timeline/vue';
 import { VueIcon as AgIcon } from 'agnosticui-core/icon/vue';
+import { VueCard as AgCard } from 'agnosticui-core/card/vue';
+import VueButton from 'agnosticui-core/button/vue';
+import { VueBadge as AgBadge } from 'agnosticui-core/badge/vue';
+import { VueIconButton as AgIconButton } from 'agnosticui-core/icon-button/vue';
 
 const meta: Meta<typeof AgTimeline> = {
   title: 'AgnosticUI Vue/Timeline',
@@ -251,6 +255,76 @@ export const VerticalAlternating: Story = {
               <strong>Step 4</strong>
               <p style="margin: 0">End has the card</p>
             </div>
+          </template>
+        </AgTimelineItem>
+      </AgTimeline>
+    `,
+  }),
+  args: {
+    variant: 'primary',
+  },
+};
+
+export const VerticalRich: Story = {
+  render: (args) => ({
+    components: { AgTimeline, AgTimelineItem, AgIcon, AgCard, VueButton, AgBadge, AgIconButton },
+    setup() {
+      return { args };
+    },
+    template: `
+      <AgTimeline v-bind="args" orientation="vertical" style="--ag-timeline-end-align: center; --ag-timeline-start-align: center">
+        <AgTimelineItem>
+          <template #ag-start>09:00 AM</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+          </template>
+          <template #ag-end>
+            <AgCard animated rounded="md">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: var(--ag-space-2);">
+                <strong>Project Kickoff</strong>
+                <AgBadge variant="success">New</AgBadge>
+              </div>
+              <p style="margin: 0 0 var(--ag-space-2) 0;">Initial meeting with the stakeholders to define the project scope.</p>
+              <VueButton variant="primary" shape="rounded" size="sm">View Details</VueButton>
+            </AgCard>
+          </template>
+        </AgTimelineItem>
+        <AgTimelineItem>
+          <template #ag-start>
+            <AgCard animated rounded="md">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: var(--ag-space-2);">
+                <strong>Design Review</strong>
+                <AgBadge variant="info">In Progress</AgBadge>
+              </div>
+              <p style="margin: 0 0 var(--ag-space-2) 0;">Reviewing the initial mockups with the design team.</p>
+              <div style="display: flex; gap: var(--ag-space-1);">
+                <VueButton variant="primary" shape="rounded" size="sm">Approve</VueButton>
+                <VueButton variant="primary" shape="rounded" size="sm" bordered>Reject</VueButton>
+              </div>
+            </AgCard>
+          </template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+          </template>
+          <template #ag-end>11:00 AM</template>
+        </AgTimelineItem>
+        <AgTimelineItem>
+          <template #ag-start>02:00 PM</template>
+          <template #ag-marker>
+            <AgIcon type="warning" size="24">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+            </AgIcon>
+          </template>
+          <template #ag-end>
+            <AgCard animated rounded="md">
+              <div style="display: flex; align-items: center; gap: var(--ag-space-2); margin-block-end: var(--ag-space-2);">
+                <strong>Client Call</strong>
+                <AgIconButton size="sm" label="Call Client">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.26.36-.65.25-1.01A11.36 11.36 0 019.64 4.44c.09-.5-.3-1.04-.8-1.04H4.4c-.56 0-1.06.48-1.07 1.05-.03 9.3 7.5 16.83 16.8 16.8.57-.01 1.05-.51 1.05-1.07v-4.4c0-.5-.54-.89-1.04-.8z"/></svg>
+                </AgIconButton>
+              </div>
+              <p style="margin: 0;">Discuss feedback on the latest release.</p>
+            </AgCard>
           </template>
         </AgTimelineItem>
       </AgTimeline>
