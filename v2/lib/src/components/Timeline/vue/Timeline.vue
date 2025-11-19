@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // v2/lib/src/components/Timeline/vue/Timeline.vue
+import { ref } from "vue";
 import "../core/Timeline.js"; // Import to register web components
 
 interface Props {
@@ -17,10 +18,13 @@ const props = withDefaults(defineProps<Props>(), {
   responsive: false,
   ariaLabel: undefined,
 });
+
+const timelineRef = ref<HTMLElement>();
 </script>
 
 <template>
   <ag-timeline
+    ref="timelineRef"
     :orientation="orientation"
     :variant="variant"
     :compact="compact"
