@@ -114,3 +114,149 @@ export const Vertical: Story = {
     variant: 'primary',
   },
 };
+
+const cardStyle = 'border: 1px solid var(--ag-border); padding: var(--ag-space-2); border-radius: var(--ag-radius); background-color: var(--ag-background); margin-block-end: var(--ag-space-4);';
+
+export const VerticalCardEnd: Story = {
+  render: (args) => ({
+    components: { AgTimeline, AgTimelineItem },
+    setup() {
+      return { args, cardStyle };
+    },
+    template: `
+      <AgTimeline v-bind="args" orientation="vertical" style="--ag-timeline-end-align: center">
+        <AgTimelineItem>
+          <template #ag-start>09:00 AM</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+          </template>
+          <template #ag-end>
+            <div :style="cardStyle">
+              <strong>Breakfast</strong>
+              <p style="margin: 0">Oatmeal and coffee</p>
+            </div>
+          </template>
+        </AgTimelineItem>
+        <AgTimelineItem>
+          <template #ag-start>10:00 AM</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+          </template>
+          <template #ag-end>
+            <div :style="cardStyle">
+              <strong>Meeting</strong>
+              <p style="margin: 0">Daily standup</p>
+            </div>
+          </template>
+        </AgTimelineItem>
+      </AgTimeline>
+    `,
+  }),
+  args: {
+    variant: 'primary',
+  },
+};
+
+export const VerticalCardStart: Story = {
+  render: (args) => ({
+    components: { AgTimeline, AgTimelineItem },
+    setup() {
+      return { args, cardStyle };
+    },
+    template: `
+      <AgTimeline v-bind="args" orientation="vertical" style="--ag-timeline-start-align: center">
+        <AgTimelineItem>
+          <template #ag-start>
+            <div :style="cardStyle">
+              <strong>Breakfast</strong>
+              <p style="margin: 0">Oatmeal and coffee</p>
+            </div>
+          </template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+          </template>
+          <template #ag-end>09:00 AM</template>
+        </AgTimelineItem>
+        <AgTimelineItem>
+          <template #ag-start>
+            <div :style="cardStyle">
+              <strong>Meeting</strong>
+              <p style="margin: 0">Daily standup</p>
+            </div>
+          </template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+          </template>
+          <template #ag-end>10:00 AM</template>
+        </AgTimelineItem>
+      </AgTimeline>
+    `,
+  }),
+  args: {
+    variant: 'primary',
+  },
+};
+
+export const VerticalAlternating: Story = {
+  render: (args) => ({
+    components: { AgTimeline, AgTimelineItem },
+    setup() {
+      return { args, cardStyle };
+    },
+    template: `
+      <AgTimeline v-bind="args" orientation="vertical" style="--ag-timeline-start-align: center; --ag-timeline-end-align: center">
+        <AgTimelineItem>
+          <template #ag-start>
+            <div :style="cardStyle">
+              <strong>Step 1</strong>
+              <p style="margin: 0">Start with a card</p>
+            </div>
+          </template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+          </template>
+          <template #ag-end>09:00 AM</template>
+        </AgTimelineItem>
+        <AgTimelineItem>
+          <template #ag-start>10:00 AM</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+          </template>
+          <template #ag-end>
+            <div :style="cardStyle">
+              <strong>Step 2</strong>
+              <p style="margin: 0">End has the card</p>
+            </div>
+          </template>
+        </AgTimelineItem>
+        <AgTimelineItem>
+          <template #ag-start>
+            <div :style="cardStyle">
+              <strong>Step 3</strong>
+              <p style="margin: 0">Back to start card</p>
+            </div>
+          </template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+          </template>
+          <template #ag-end>11:00 AM</template>
+        </AgTimelineItem>
+        <AgTimelineItem>
+          <template #ag-start>12:00 PM</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+          </template>
+          <template #ag-end>
+            <div :style="cardStyle">
+              <strong>Step 4</strong>
+              <p style="margin: 0">End has the card</p>
+            </div>
+          </template>
+        </AgTimelineItem>
+      </AgTimeline>
+    `,
+  }),
+  args: {
+    variant: 'primary',
+  },
+};
