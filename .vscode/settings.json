@@ -30,5 +30,6 @@
   "[vue]": {
     "editor.defaultFormatter": "octref.vetur"
   },
-  "claudeCode.useTerminal": true
+  "claudeCode.useTerminal": true,
+  "vim.enabled": true
 }
