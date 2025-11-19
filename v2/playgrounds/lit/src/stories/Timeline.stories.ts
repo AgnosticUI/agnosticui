@@ -2,6 +2,10 @@ import { html } from 'lit';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import 'agnosticui-core/timeline';
 import 'agnosticui-core/icon';
+import 'agnosticui-core/card';
+import 'agnosticui-core/button';
+import 'agnosticui-core/badge';
+import 'agnosticui-core/icon-button';
 
 const meta: Meta = {
   title: 'AgnosticUI Lit/Timeline',
@@ -234,6 +238,76 @@ export const VerticalAlternating: Story = {
         <div slot="ag-end" style="${cardStyle}">
           <strong>Step 4</strong>
           <p style="margin: 0">End has the card</p>
+        </div>
+      </ag-timeline-item>
+    </ag-timeline>
+  `,
+  args: {
+    variant: 'primary',
+  },
+};
+
+export const VerticalRich: Story = {
+  render: (args) => html`
+    <ag-timeline
+      orientation="vertical"
+      variant="${args.variant || ''}"
+      ?compact="${args.compact}"
+      ?responsive="${args.responsive}"
+      style="--ag-timeline-end-align: center; --ag-timeline-start-align: center"
+    >
+      <ag-timeline-item>
+        <div slot="ag-start">09:00 AM</div>
+        <div slot="ag-marker">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+        </div>
+        <div slot="ag-end">
+          <ag-card animated rounded="md">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: var(--ag-space-2);">
+              <strong>Project Kickoff</strong>
+              <ag-badge variant="success">New</ag-badge>
+            </div>
+            <p style="margin: 0 0 var(--ag-space-2) 0;">Initial meeting with the stakeholders to define the project scope.</p>
+            <ag-button variant="primary" shape="rounded" size="sm">View Details</ag-button>
+          </ag-card>
+        </div>
+      </ag-timeline-item>
+      <ag-timeline-item>
+        <div slot="ag-start">
+          <ag-card animated rounded="md">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: var(--ag-space-2);">
+              <strong>Design Review</strong>
+              <ag-badge variant="info">In Progress</ag-badge>
+            </div>
+            <p style="margin: 0 0 var(--ag-space-2) 0;">Reviewing the initial mockups with the design team.</p>
+            <div style="display: flex; gap: var(--ag-space-1);">
+              <ag-button variant="primary" shape="rounded" size="sm">Approve</ag-button>
+              <ag-button variant="primary" shape="rounded" size="sm" bordered>Reject</ag-button>
+            </div>
+          </ag-card>
+        </div>
+        <div slot="ag-marker">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary)"></div>
+        </div>
+        <div slot="ag-end">11:00 AM</div>
+      </ag-timeline-item>
+      <ag-timeline-item>
+        <div slot="ag-start">02:00 PM</div>
+        <div slot="ag-marker">
+          <ag-icon type="warning" size="24">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+          </ag-icon>
+        </div>
+        <div slot="ag-end">
+          <ag-card animated rounded="md">
+            <div style="display: flex; align-items: center; gap: var(--ag-space-2); margin-block-end: var(--ag-space-2);">
+              <strong>Client Call</strong>
+              <ag-icon-button size="sm" label="Call Client">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.26.36-.65.25-1.01A11.36 11.36 0 019.64 4.44c.09-.5-.3-1.04-.8-1.04H4.4c-.56 0-1.06.48-1.07 1.05-.03 9.3 7.5 16.83 16.8 16.8.57-.01 1.05-.51 1.05-1.07v-4.4c0-.5-.54-.89-1.04-.8z"/></svg>
+              </ag-icon-button>
+            </div>
+            <p style="margin: 0;">Discuss feedback on the latest release.</p>
+          </ag-card>
         </div>
       </ag-timeline-item>
     </ag-timeline>
