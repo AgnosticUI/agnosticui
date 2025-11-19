@@ -64,6 +64,10 @@
       "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
       "import": "./dist/components/Button/vue/VueButton.js"
     },
+    "./copy-button": {
+      "types": "./dist/components/CopyButton/core/CopyButton.d.ts",
+      "import": "./dist/components/CopyButton/core/CopyButton.js"
+    },
     "./accordion/vue": {
       "types": "./dist/components/Accordion/vue/index.d.ts",
       "import": "./dist/components/Accordion/vue/index.js"
