@@ -36,10 +36,10 @@ export class AgTimeline extends LitElement implements AgTimelineProps {
   // ──────────────────────────────────────────────────────────────
   // Public Properties
   // ──────────────────────────────────────────────────────────────
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare orientation: 'horizontal' | 'vertical';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare variant: 'primary' | 'success' | 'warning' | 'danger' | 'monochrome' | '';
 
   @property({ type: Boolean })
@@ -83,6 +83,10 @@ export class AgTimeline extends LitElement implements AgTimelineProps {
       position: relative;
     }
 
+    slot {
+      display: contents;
+    }
+
     /* Horizontal orientation (default) */
     :host([orientation="horizontal"]) .timeline-container {
       flex-direction: row;
@@ -103,14 +107,7 @@ export class AgTimeline extends LitElement implements AgTimelineProps {
       }
     }
 
-    /* Compact variant reduces spacing */
-    :host([compact]) .timeline-container {
-      gap: var(--ag-space-2);
-    }
 
-    :host(:not([compact])) .timeline-container {
-      gap: var(--ag-space-4);
-    }
   `;
 
   // ──────────────────────────────────────────────────────────────
@@ -123,7 +120,7 @@ export class AgTimeline extends LitElement implements AgTimelineProps {
 
   override updated(changedProperties: Map<PropertyKey, unknown>) {
     super.updated(changedProperties);
-    
+
     if (changedProperties.has('orientation') || changedProperties.has('variant')) {
       this._updateChildItems();
     }
@@ -236,6 +233,10 @@ export class AgTimelineItem extends LitElement {
       position: relative;
     }
 
+    :host([orientation="horizontal"]) {
+      flex: 1;
+    }
+
     /* Enable container queries when responsive parent */
     :host([responsive]) {
       container-type: inline-size;
@@ -255,10 +256,12 @@ export class AgTimelineItem extends LitElement {
     }
 
     /* Vertical layout - 3x3 grid */
+    /* Vertical layout - Flush alignment */
     :host([orientation="vertical"]) .item-container {
       grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-      grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
-      align-items: center;
+      grid-template-rows: 0 auto 1fr;
+      align-items: start;
+      justify-items: center;
     }
 
     /* Responsive: Apply vertical layout on narrow containers */
@@ -286,9 +289,10 @@ export class AgTimelineItem extends LitElement {
 
     :host([orientation="vertical"]) .ag-start {
       grid-column: 1 / 2;
-      grid-row: 1 / 4;
-      align-self: center;
+      grid-row: 2 / 4;
+      align-self: start;
       justify-self: end;
+      margin: 0 var(--ag-space-2) 0 0;
     }
 
     /* Responsive: Use vertical positioning */
@@ -329,9 +333,10 @@ export class AgTimelineItem extends LitElement {
 
     :host([orientation="vertical"]) .ag-end {
       grid-column: 3 / 4;
-      grid-row: 1 / 4;
-      align-self: center;
+      grid-row: 2 / 4;
+      align-self: start;
       justify-self: start;
+      margin: 0 0 0 var(--ag-space-2);
     }
 
     /* Responsive: Use vertical positioning */
@@ -388,7 +393,8 @@ export class AgTimelineItem extends LitElement {
 
     :host([orientation="vertical"]) .connector-after {
       grid-column: 2 / 3;
-      grid-row: 3 / 4;
+      grid-row: 2 / 4;
+      z-index: 0;
     }
 
     :host([orientation="vertical"][first]) .connector-before {
