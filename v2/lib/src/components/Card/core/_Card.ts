@@ -65,7 +65,7 @@ export class AgCard extends LitElement implements CardProps {
       box-sizing: border-box;
       width: 100%;
       /* Use the global token directly for padding */
-      --card-padding: var(--ag-space-8);
+      --card-padding: var(--ag-space-6, --ag-card-padding);
       background-color: var(--ag-background-primary);
       border: var(--ag-border-width-1) solid var(--ag-border);
     }
