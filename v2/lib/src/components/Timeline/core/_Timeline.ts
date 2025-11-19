@@ -12,25 +12,22 @@ export interface AgTimelineProps {
   variant?: 'primary' | 'success' | 'warning' | 'danger' | 'monochrome' | '';
   /** Whether to use compact spacing */
   compact?: boolean;
-  /** Enable responsive behavior - automatically switches to vertical on narrow containers */
-  responsive?: boolean;
   /** ARIA label for the timeline */
   ariaLabel?: string | null;
 }
 
 /**
  * AgTimeline - A semantic timeline component for displaying chronological events
- * 
+ *
  * @element ag-timeline
- * 
+ *
  * @slot - Default slot for ag-timeline-item elements
- * 
+ *
  * @csspart ag-timeline-container - The main timeline container (ul element)
- * 
+ *
  * @cssprop --ag-timeline-connector-color - Color of connector lines (default: var(--ag-border))
  * @cssprop --ag-timeline-connector-width - Width of connector lines (default: 2px)
  * @cssprop --ag-timeline-spacing - Spacing between timeline items (default: var(--ag-space-4))
- * @cssprop --ag-responsive-mobile-breakpoint - Breakpoint for responsive behavior (default: 640px)
  */
 export class AgTimeline extends LitElement implements AgTimelineProps {
   // ──────────────────────────────────────────────────────────────
@@ -45,9 +42,6 @@ export class AgTimeline extends LitElement implements AgTimelineProps {
   @property({ type: Boolean })
   declare compact: boolean;
 
-  @property({ type: Boolean, reflect: true })
-  declare responsive: boolean;
-
   @property({ type: String, attribute: 'aria-label' })
   declare ariaLabel: string | null;
 
@@ -59,7 +53,6 @@ export class AgTimeline extends LitElement implements AgTimelineProps {
     this.orientation = 'horizontal';
     this.variant = '';
     this.compact = false;
-    this.responsive = false;
   }
 
   // ──────────────────────────────────────────────────────────────
@@ -68,11 +61,6 @@ export class AgTimeline extends LitElement implements AgTimelineProps {
   static styles = css`
     :host {
       display: block;
-    }
-
-    /* Enable container queries when responsive is true */
-    :host([responsive]) {
-      container-type: inline-size;
     }
 
     .timeline-container {
@@ -98,29 +86,15 @@ export class AgTimeline extends LitElement implements AgTimelineProps {
       flex-direction: column;
       align-items: stretch;
     }
-
-    /* Responsive: Switch to vertical on narrow containers */
-    @container (max-width: var(--ag-responsive-mobile-breakpoint, 640px)) {
-      :host([responsive][orientation="horizontal"]) .timeline-container {
-        flex-direction: column;
-        align-items: stretch;
-      }
-    }
-
-
   `;
 
   // ──────────────────────────────────────────────────────────────
   // Lifecycle
   // ──────────────────────────────────────────────────────────────
-  override firstUpdated() {
-    // Pass orientation and variant down to child timeline items
-    this._updateChildItems();
-  }
-
   override updated(changedProperties: Map<PropertyKey, unknown>) {
     super.updated(changedProperties);
 
+    // Update child items when properties change
     if (changedProperties.has('orientation') || changedProperties.has('variant')) {
       this._updateChildItems();
     }
@@ -134,12 +108,11 @@ export class AgTimeline extends LitElement implements AgTimelineProps {
       .filter(el => el.tagName.toLowerCase() === 'ag-timeline-item') as AgTimelineItem[];
 
     items.forEach((item, index) => {
+      // Pass orientation down to children
       item.setAttribute('orientation', this.orientation);
       if (this.variant) {
         item.setAttribute('variant', this.variant);
       }
-      // Pass responsive attribute down to children
-      item.toggleAttribute('responsive', this.responsive);
       // Mark first and last items for styling
       item.toggleAttribute('first', index === 0);
       item.toggleAttribute('last', index === items.length - 1);
@@ -212,9 +185,6 @@ export class AgTimelineItem extends LitElement {
   @property({ type: Boolean, reflect: true })
   declare last: boolean;
 
-  @property({ type: Boolean, reflect: true })
-  declare responsive: boolean;
-
   // ──────────────────────────────────────────────────────────────
   // Constructor
   // ──────────────────────────────────────────────────────────────
@@ -224,7 +194,6 @@ export class AgTimelineItem extends LitElement {
     this.variant = '';
     this.first = false;
     this.last = false;
-    this.responsive = false;
   }
 
   // ──────────────────────────────────────────────────────────────
@@ -238,11 +207,6 @@ export class AgTimelineItem extends LitElement {
 
     :host([orientation="horizontal"]) {
       flex: 1;
-    }
-
-    /* Enable container queries when responsive parent */
-    :host([responsive]) {
-      container-type: inline-size;
     }
 
     .item-container {
@@ -267,15 +231,6 @@ export class AgTimelineItem extends LitElement {
       justify-items: center;
     }
 
-    /* Responsive: Apply vertical layout on narrow containers */
-    @container (max-width: var(--ag-responsive-mobile-breakpoint, 640px)) {
-      :host([responsive][orientation="horizontal"]) .item-container {
-        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-        grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
-        align-items: center;
-      }
-    }
-
     /* Start slot positioning */
     .ag-start {
       margin: var(--ag-space-1);
@@ -296,16 +251,6 @@ export class AgTimelineItem extends LitElement {
       align-self: var(--ag-timeline-start-align, start);
       justify-self: end;
       margin: 0 var(--ag-space-2) 0 0;
-    }
-
-    /* Responsive: Use vertical positioning */
-    @container (max-width: var(--ag-responsive-mobile-breakpoint, 640px)) {
-      :host([responsive][orientation="horizontal"]) .ag-start {
-        grid-column: 1 / 2;
-        grid-row: 1 / 4;
-        align-self: center;
-        justify-self: end;
-      }
     }
 
     /* Marker slot positioning */
@@ -340,16 +285,6 @@ export class AgTimelineItem extends LitElement {
       align-self: var(--ag-timeline-end-align, start);
       justify-self: start;
       margin: 0 0 0 var(--ag-space-2);
-    }
-
-    /* Responsive: Use vertical positioning */
-    @container (max-width: var(--ag-responsive-mobile-breakpoint, 640px)) {
-      :host([responsive][orientation="horizontal"]) .ag-end {
-        grid-column: 3 / 4;
-        grid-row: 1 / 4;
-        align-self: center;
-        justify-self: start;
-      }
     }
 
     /* Connector lines */
@@ -406,32 +341,6 @@ export class AgTimelineItem extends LitElement {
 
     :host([orientation="vertical"][last]) .connector-after {
       border-radius: 0 0 var(--ag-radius-full) var(--ag-radius-full);
-    }
-
-    /* Responsive: Use vertical connector positioning */
-    @container (max-width: var(--ag-responsive-mobile-breakpoint, 640px)) {
-      :host([responsive][orientation="horizontal"]) .connector {
-        height: 100%;
-        width: var(--ag-timeline-connector-width, 2px);
-      }
-
-      :host([responsive][orientation="horizontal"]) .connector-before {
-        grid-column: 2 / 3;
-        grid-row: 1 / 2;
-      }
-
-      :host([responsive][orientation="horizontal"]) .connector-after {
-        grid-column: 2 / 3;
-        grid-row: 3 / 4;
-      }
-
-      :host([responsive][orientation="horizontal"][first]) .connector-before {
-        border-radius: var(--ag-radius-full) var(--ag-radius-full) 0 0;
-      }
-
-      :host([responsive][orientation="horizontal"][last]) .connector-after {
-        border-radius: 0 0 var(--ag-radius-full) var(--ag-radius-full);
-      }
     }
 
     /* Hide first connector on first item */

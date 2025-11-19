@@ -141,7 +141,6 @@ export interface TabsProps {
   activation?: TabsActivation;
   activeTab?: number;
   orientation?: TabsOrientation;
-  responsive?: boolean;
   ariaLabel?: string;
   ariaLabelledBy?: string;
   // Event callback prop
@@ -152,8 +151,6 @@ export interface TabsProps {
  * Tabs component for organizing content into multiple panels
  *
  * @fires {TabChangeEvent} tab-change - Fired when the active tab changes
- *
- * @cssprop --ag-responsive-mobile-breakpoint - Breakpoint for responsive behavior (default: 640px)
  *
  * @example
  * ```html
@@ -174,9 +171,6 @@ export class Tabs extends LitElement implements TabsProps {
 
   @property({ type: String })
   declare orientation: TabsOrientation;
-
-  @property({ type: Boolean, reflect: true })
-  declare responsive: boolean;
 
   @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
@@ -201,7 +195,6 @@ export class Tabs extends LitElement implements TabsProps {
     this.activation = 'manual';
     this.activeTab = 0;
     this.orientation = 'horizontal';
-    this.responsive = false;
     this.ariaLabel = '';
     this.ariaLabelledBy = '';
     this._tabs = [];
@@ -488,11 +481,6 @@ export class Tabs extends LitElement implements TabsProps {
       display: block;
     }
 
-    /* Enable container queries when responsive is true */
-    :host([responsive]) {
-      container-type: inline-size;
-    }
-
     .tabs-container {
       display: flex;
     }
@@ -503,20 +491,6 @@ export class Tabs extends LitElement implements TabsProps {
 
     .tabs-container[data-orientation="horizontal"] {
       flex-direction: column;
-    }
-
-    /* Responsive: Switch to vertical on narrow containers */
-    @container (max-width: var(--ag-responsive-mobile-breakpoint, 640px)) {
-      :host([responsive]) .tabs-container[data-orientation="horizontal"] {
-        flex-direction: row;
-      }
-
-      :host([responsive]) [role="tablist"][aria-orientation="horizontal"] {
-        flex-direction: column;
-        border-right: 1px solid var(--ag-border);
-        border-bottom: none;
-        min-width: 200px;
-      }
     }
 
     [role="tablist"] {

@@ -334,3 +334,4 @@ export const VerticalRich: Story = {
     variant: 'primary',
   },
 };
+
