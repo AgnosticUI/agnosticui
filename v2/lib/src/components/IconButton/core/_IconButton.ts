@@ -99,8 +99,8 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       justify-content: center;
 
       /* Size variants using CSS custom properties */
-      width: var(--ag-space-10);
-      height: var(--ag-space-10);
+      width: var(--ag-icon-button-base, --ag-space-10);
+      height: var(--ag-icon-button-base, --ag-space-10);
 
       /* Default color */
       color: var(--ag-text-primary);
@@ -116,33 +116,34 @@ export class AgIconButton extends LitElement implements IconButtonProps {
 
     /* Size variants */
     :host([size="xs"]) button {
-      width: var(--ag-space-6);
-      height: var(--ag-space-6);
+      width: var(--ag-icon-button-xs, var(--ag-space-6));
+      height: var(--ag-icon-button-xs, var(--ag-space-6));
       font-size: var(--ag-space-4);
+      font-size: var(--ag-icon-button-font-size-xs, var(--ag-space-4));
     }
 
     :host([size="sm"]) button {
-      width: var(--ag-space-8);
-      height: var(--ag-space-8);
-      font-size: var(--ag-space-5);
+      width: var(--ag-icon-button-sm, var(--ag-space-8));
+      height: var(--ag-icon-button-sm, var(--ag-space-8));
+      font-size: var(--ag-icon-button-font-size-sm, var(--ag-space-5));
     }
 
     :host([size="md"]) button {
-      width: var(--ag-space-10);
-      height: var(--ag-space-10);
-      font-size: var(--ag-space-6);
+      width: var(--ag-icon-button-base, var(--ag-space-10));
+      height: var(--ag-icon-button-base, var(--ag-space-10));
+      font-size: var(--ag-icon-button-font-size-md, var(--ag-space-6));
     }
 
     :host([size="lg"]) button {
-      width: var(--ag-space-12);
-      height: var(--ag-space-12);
-      font-size: var(--ag-space-7);
+      width: var(--ag-icon-button-lg, var(--ag-space-12));
+      height: var(--ag-icon-button-lg, var(--ag-space-12));
+      font-size: var(--ag-icon-button-font-size-lg, var(--ag-space-7));
     }
 
     :host([size="xl"]) button {
-      width: var(--ag-space-14);
-      height: var(--ag-space-14);
-      font-size: var(--ag-space-8);
+      width: var(--ag-icon-button-xl,var(--ag-space-14));
+      height: var(--ag-icon-button-xl, var(--ag-space-14));
+      font-size: var(--ag-icon-button-font-size-xl, var(--ag-space-8));
     }
 
     /* Default hover state (ghost variant) */
