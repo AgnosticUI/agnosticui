@@ -158,7 +158,7 @@ export const WithCustomSVG: Story = {
   render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button .label=${label} .size=${size} .variant=${variant}>
-        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%">
           <path
             d="M12 2L2 7v10c0 5.5 3.8 10.7 10 12 6.2-1.3 10-6.5 10-12V7l-10-5z"
           />
