@@ -5,7 +5,10 @@
     </div>
     <div class="stacked-mobile mbe4">
       <VueIconButton label="Settings">
-        <Settings :size="18" />
+        <Settings
+          :size="18"
+          class="expand"
+        />
       </VueIconButton>
       <VueIconButton label="Search">
         <Search :size="18" />
@@ -16,48 +19,88 @@
       <VueIconButton label="Delete">
         <Trash2 :size="18" />
       </VueIconButton>
-      <VueIconButton
-        label="Close"
-        unicode="×"
-      />
     </div>
-
     <div class="mbe4">
-      <h3>Sizes</h3>
+      <h3>Scaled Icons</h3>
+      <p>Place SVG element directly inside <code>AgIconButton/ag-icon-button</code>. Do not "wrap" in <code>AgIcon/ag-icon</code>.</p>
     </div>
-    <div class="stacked-mobile mbe4">
+    <div class="mbe4">
       <VueIconButton
         label="Extra Small"
         size="xs"
       >
-        <Heart :size="14" />
+        <Heart
+          :size="14"
+          class="expand"
+        />
       </VueIconButton>
       <VueIconButton
         label="Small"
         size="sm"
       >
-        <Heart :size="16" />
+        <Heart class="expand" />
       </VueIconButton>
       <VueIconButton
         label="Medium"
         size="md"
       >
-        <Heart :size="18" />
+        <Heart class="expand" />
       </VueIconButton>
       <VueIconButton
         label="Large"
         size="lg"
       >
-        <Heart :size="20" />
+        <Heart class="expand" />
       </VueIconButton>
       <VueIconButton
         label="Extra Large"
         size="xl"
       >
-        <Heart :size="24" />
+        <Heart class="expand" />
       </VueIconButton>
     </div>
 
+    <div class="mbe4">
+      <VueIconButton
+        label="Extra Small"
+        variant="monochrome"
+        size="xs"
+        class="mie4"
+      >
+        <Star class="expand" />
+      </VueIconButton>
+      <VueIconButton
+        label="Small"
+        variant="monochrome"
+        size="sm"
+        class="mie4"
+      >
+        <Star class="expand" />
+      </VueIconButton>
+      <VueIconButton
+        label="Medium"
+        variant="monochrome"
+        size="md"
+        class="mie4"
+      >
+        <Star class="expand" />
+      </VueIconButton>
+      <VueIconButton
+        label="Large"
+        variant="monochrome"
+        size="lg"
+        class="mie4"
+      >
+        <Star class="expand" />
+      </VueIconButton>
+      <VueIconButton
+        label="Extra Large"
+        variant="monochrome"
+        size="xl"
+      >
+        <Star class="expand" />
+      </VueIconButton>
+    </div>
     <div class="mbe4">
       <h3>Variants</h3>
     </div>
@@ -105,7 +148,6 @@
         <Star :size="18" />
       </VueIconButton>
     </div>
-
     <div class="mbe4">
       <h3>States</h3>
     </div>
@@ -225,6 +267,7 @@
 
 <script>
 import VueIconButton from "agnosticui-core/icon-button/vue";
+import { VueIcon } from "agnosticui-core/icon/vue";
 import {
   Settings,
   Search,
@@ -242,6 +285,7 @@ import {
 export default {
   name: "IconButtonExamples",
   components: {
+    VueIcon,
     VueIconButton,
     Settings,
     Search,
@@ -277,6 +321,14 @@ export default {
 </script>
 
 <style scoped>
+/* Ensure all SVGs expand to full width/height */
+.expand {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
 /* CSS Parts customization examples */
 
 /* Gradient button style */
