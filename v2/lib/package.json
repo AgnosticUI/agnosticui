@@ -68,6 +68,10 @@
       "types": "./dist/components/CopyButton/core/CopyButton.d.ts",
       "import": "./dist/components/CopyButton/core/CopyButton.js"
     },
+    "./copy-button/vue": {
+      "types": "./dist/components/CopyButton/vue/index.d.ts",
+      "import": "./dist/components/CopyButton/vue/index.js"
+    },
     "./copy-button/react": {
       "types": "./dist/components/CopyButton/react/ReactCopyButton.d.ts",
       "import": "./dist/components/CopyButton/react/ReactCopyButton.js"

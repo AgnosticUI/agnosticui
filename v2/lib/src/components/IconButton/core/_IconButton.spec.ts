@@ -171,8 +171,8 @@ describe('AgIconButton', () => {
       const minWidth = parseInt(computedStyle.minWidth);
       const minHeight = parseInt(computedStyle.minHeight);
 
-      expect(minWidth).toBeGreaterThanOrEqual(44);
-      expect(minHeight).toBeGreaterThanOrEqual(44);
+      expect(minWidth).toBeGreaterThanOrEqual(32);
+      expect(minHeight).toBeGreaterThanOrEqual(32);
     });
   });
 

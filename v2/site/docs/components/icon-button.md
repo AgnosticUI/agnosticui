@@ -2,6 +2,10 @@
 
 An accessible icon-only button component that displays a single icon with proper accessibility labeling. Icon buttons are ideal for toolbars, navigation, and actions where space is limited or the icon alone clearly conveys the action.
 
+::: tip
+If you don't want SVG scaling, consider placing SVG directly in an <code>ag-button</code> or other solution.
+:::
+
 ## Examples
 
 <IconButtonExamples />

@@ -107,8 +107,8 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       border-radius: var(--ag-radius-sm);
 
       /* Touch target accessibility */
-      min-width: 44px;
-      min-height: 44px;
+      min-width: 32px;
+      min-height: 32px;
 
       /* Transition for smooth state changes */
       transition: all var(--ag-motion-duration-fast) ease-in-out;
@@ -118,26 +118,31 @@ export class AgIconButton extends LitElement implements IconButtonProps {
     :host([size="xs"]) button {
       width: var(--ag-space-6);
       height: var(--ag-space-6);
+      font-size: var(--ag-space-4);
     }
 
     :host([size="sm"]) button {
       width: var(--ag-space-8);
       height: var(--ag-space-8);
+      font-size: var(--ag-space-5);
     }
 
     :host([size="md"]) button {
       width: var(--ag-space-10);
       height: var(--ag-space-10);
+      font-size: var(--ag-space-6);
     }
 
     :host([size="lg"]) button {
       width: var(--ag-space-12);
       height: var(--ag-space-12);
+      font-size: var(--ag-space-7);
     }
 
     :host([size="xl"]) button {
       width: var(--ag-space-14);
       height: var(--ag-space-14);
+      font-size: var(--ag-space-8);
     }
 
     /* Default hover state (ghost variant) */
@@ -172,8 +177,8 @@ export class AgIconButton extends LitElement implements IconButtonProps {
 
     /* Icon sizing and positioning */
     .icon {
-      width: var(--ag-space-6);
-      height: var(--ag-space-6);
+      width: 1em;
+      height: 1em;
       flex-shrink: 0;
 
       /* Flexbox for perfect icon centering */
@@ -182,58 +187,12 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       justify-content: center;
     }
 
-    /* Size-specific icon sizing */
-    :host([size="xs"]) .icon {
-      width: var(--ag-space-4);
-      height: var(--ag-space-4);
-    }
-
-    :host([size="sm"]) .icon {
-      width: var(--ag-space-5);
-      height: var(--ag-space-5);
-    }
-
-    :host([size="md"]) .icon {
-      width: var(--ag-space-6);
-      height: var(--ag-space-6);
-    }
-
-    :host([size="lg"]) .icon {
-      width: var(--ag-space-7);
-      height: var(--ag-space-7);
-    }
-
-    :host([size="xl"]) .icon {
-      width: var(--ag-space-8);
-      height: var(--ag-space-8);
-    }
-
-    /* Unicode icon styling */
-    .unicode-icon {
-      font-size: var(--ag-space-6);
-      line-height: 1;
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    :host([size="xs"]) .unicode-icon {
-      font-size: var(--ag-space-4);
-    }
-
-    :host([size="sm"]) .unicode-icon {
-      font-size: var(--ag-space-5);
-    }
-
-    :host([size="md"]) .unicode-icon {
-      font-size: var(--ag-space-6);
-    }
-
-    :host([size="lg"]) .unicode-icon {
-      font-size: var(--ag-space-7);
-    }
-
-    :host([size="xl"]) .unicode-icon {
-      font-size: var(--ag-space-8);
+    /* Make any SVG or direct child fill the icon container so it scales */
+    .icon svg,
+    .icon > * {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     /* Visually hidden text for accessibility */

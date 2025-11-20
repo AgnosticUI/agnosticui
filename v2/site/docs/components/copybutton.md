@@ -2,6 +2,14 @@
 
 An accessible button component that copies text to the clipboard with visual feedback. The CopyButton automatically toggles between copy and checkmark icons and provides customizable success messaging.
 
+## Examples
+
+<CopyButtonExamples />
+
+<script setup>
+import CopyButtonExamples from '../examples/CopyButtonExamples.vue'
+</script>
+
 ## Basic Usage
 
 ::: details Lit (Web Components)
@@ -23,33 +31,7 @@ An accessible button component that copies text to the clipboard with visual fee
   success-label="Code copied!"
 ></ag-copy-button>
 
-<!-- Different sizes -->
-<ag-copy-button
-  text="https://agnosticui.com"
-  label="Copy URL"
-  size="sm"
-></ag-copy-button>
-
-<ag-copy-button
-  text="API_KEY=abc123xyz"
-  label="Copy API key"
-  size="lg"
-></ag-copy-button>
-
-<!-- Different variants -->
-<ag-copy-button
-  text="Important message"
-  label="Copy message"
-  variant="primary"
-></ag-copy-button>
-
-<ag-copy-button
-  text="git clone https://github.com/..."
-  label="Copy git command"
-  variant="monochrome"
-></ag-copy-button>
-
-<!-- With event listener -->
+<!-- Event listener example -->
 <ag-copy-button
   id="copy-btn"
   text="Event handling example"
@@ -65,10 +47,67 @@ An accessible button component that copies text to the clipboard with visual fee
 ```
 :::
 
+::: details Vue
+```vue
+<template>
+  <section>
+    <!-- Basic copy button -->
+    <VueCopyButton
+      text="npm install agnosticui-core"
+      label="Copy install command"
+    />
+
+    <!-- With event listener -->
+    <VueCopyButton
+      id="vue-copy-btn"
+      text="Event handling example"
+      label="Copy with event"
+    />
+  </section>
+</template>
+
+<script>
+import VueCopyButton from 'agnosticui-core/copy-button/vue'
+
+export default {
+  components: { VueCopyButton },
+  mounted() {
+    const copyBtn = document.querySelector('#vue-copy-btn');
+    copyBtn?.addEventListener('copy', (e) => {
+      console.log('Copied to clipboard (Vue):', e.detail.text);
+    });
+  }
+}
+</script>
+```
+:::
+
+::: details React
+```tsx
+import React from 'react';
+import { ReactCopyButton } from 'agnosticui-core/copy-button/react';
+
+export default function Example() {
+  return (
+    <div>
+      <ReactCopyButton text="npm install agnosticui-core" label="Copy install command" />
+
+      {/* With event handler */}
+      <ReactCopyButton
+        text="Event handling example"
+        label="Copy with event"
+        // React wrappers emit DOM events from the underlying web component
+        onCopy={(e: any) => console.log('Copied to clipboard (React):', e.detail?.text)}
+      />
+    </div>
+  );
+}
+```
+:::
+
 ## Custom Icons
 
 The CopyButton allows you to provide custom SVG icons for both the copy and copied states while maintaining default fallbacks:
-
 ```html
 <!-- Default icons -->
 <ag-copy-button
@@ -76,40 +115,25 @@ The CopyButton allows you to provide custom SVG icons for both the copy and copi
   label="Copy with defaults"
 ></ag-copy-button>
 
-<!-- Custom copy icon, default checkmark -->
-<ag-copy-button
-  text="Custom copy icon"
-  label="Copy with custom icon"
->
-  <svg slot="icon-copy" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M7 7h10v2H7zm0 4h10v2H7zm0 4h7v2H7zM3 3v18h14V3H3zm16 16H5V5h12v14z"/>
-  </svg>
-</ag-copy-button>
-
-<!-- Custom checkmark icon, default copy -->
-<ag-copy-button
-  text="Custom checkmark"
-  label="Copy with custom checkmark"
->
-  <svg slot="icon-copied" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <circle cx="12" cy="12" r="10" fill="currentColor"/>
-    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="white"/>
-  </svg>
-</ag-copy-button>
+<!-- NOTE: If you provide custom icons, you MUST provide both `icon-copy` and `icon-copied` slots.
+     Providing only one will throw an error at runtime. The example below shows both slots.
+-->
 
 <!-- Both custom icons -->
 <ag-copy-button
   text="Both icons customized"
   label="Copy with custom icons"
 >
-  <svg slot="icon-copy" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+  <!-- visually-distinct custom icons: outline clipboard (copy) + filled green check (copied) -->
+  <svg slot="icon-copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1z" />
+    <rect x="8" y="5" width="11" height="14" rx="2" ry="2" stroke="currentColor" fill="none" />
+    <path d="M8 7h8" stroke="currentColor" />
   </svg>
-  <svg slot="icon-copied" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-    <polyline points="20 6 9 17 4 12"></polyline>
+
+  <svg slot="icon-copied" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="#16A34A" stroke="none">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M9 12.5l2 2 4-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 </ag-copy-button>
 ```
@@ -156,8 +180,10 @@ You can use any SVG icon library with the custom icon slots:
 
 | Slot | Description |
 |------|-------------|
-| `icon-copy` | Custom SVG icon for the default copy state. Falls back to Material Design copy icon if not provided. |
-| `icon-copied` | Custom SVG icon for the success/copied state. Falls back to Material Design checkmark icon if not provided. |
+| `icon-copy` | Custom SVG icon for the default copy state. Falls back to a copy icon if not provided. |
+| `icon-copied` | Custom SVG icon for the success/copied state. Falls back to checkmark icon if not provided. |
+
+> **Note:** If you provide custom icons, you must supply *both* the `icon-copy` and `icon-copied` slots together. Providing only one will throw a runtime error.
 
 ## Events
 
