@@ -35,6 +35,46 @@ export class AgCopyButton extends LitElement {
       white-space: nowrap;
       border-width: 0;
     }
+
+    /* Stacked icon slots for smooth cross-fade between states */
+    .ag-icon-stack {
+      position: relative;
+      /* Make this a block-level box so the parent IconButton's flex centering
+         can reliably center the stacked slots. Inline alignment can interfere
+         with flex layout in some browsers, causing the "pushed down" effect. */
+      display: block;
+      width: 1em;
+      height: 1em;
+    }
+
+    /* Each slot occupies the full stack and is centered */
+    .ag-icon-slot {
+      position: absolute;
+      inset: 0;
+      /* Use grid centering to avoid baseline/line-height shifts during transitions */
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      transition: opacity var(--ag-motion-fast, 150ms) ease-in-out;
+      will-change: opacity;
+      pointer-events: none;
+    }
+
+    .ag-icon-slot.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Ensure slotted SVGs and fallback svgs size consistently to the IconButton's em-based icon box
+       Use 1em so icons scale with the IconButton font-size and avoid layout shifts during cross-fade */
+    .ag-icon-slot::slotted(svg),
+    .ag-icon-slot svg {
+      width: 1em;
+      height: 1em;
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+    }
   `;
 
   /**
@@ -201,30 +241,31 @@ export class AgCopyButton extends LitElement {
   }
 
   private _renderIcon() {
-    if (this._hasError) {
-      return html`<slot name="icon-error" part="icon icon-error">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor">
-          <path d="M0 0h24v24H0z" fill="none"/>
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-        </svg>
-      </slot>`;
-    }
+    // Render all three named slots stacked and toggle visibility via CSS for a smooth cross-fade
+    return html`
+      <span class="ag-icon-stack" part="icon-stack">
+        <slot name="icon-error" part="icon icon-error" class="ag-icon-slot ${this._hasError ? 'visible' : ''}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
+        </slot>
 
-    if (this._isCopied) {
-      return html`<slot name="icon-copied" part="icon icon-copied">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor">
-          <path d="M0 0h24v24H0z" fill="none"/>
-          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-        </svg>
-      </slot>`;
-    }
+        <slot name="icon-copied" part="icon icon-copied" class="ag-icon-slot ${this._isCopied && !this._hasError ? 'visible' : ''}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+        </slot>
 
-    return html`<slot name="icon-copy" part="icon icon-copy">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor">
-        <path d="M0 0h24v24H0z" fill="none"/>
-        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-      </svg>
-    </slot>`;
+        <slot name="icon-copy" part="icon icon-copy" class="ag-icon-slot ${!this._isCopied && !this._hasError ? 'visible' : ''}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+          </svg>
+        </slot>
+      </span>
+    `;
   }
 
   render() {
