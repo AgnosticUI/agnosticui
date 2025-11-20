@@ -11,18 +11,94 @@
         />
       </VueIconButton>
       <VueIconButton label="Search">
-        <Search :size="18" />
+        <Search
+          :size="18"
+          class="expand"
+        />
       </VueIconButton>
       <VueIconButton label="Edit">
-        <Edit :size="18" />
+        <Edit
+          :size="18"
+          class="expand"
+        />
       </VueIconButton>
       <VueIconButton label="Delete">
-        <Trash2 :size="18" />
+        <Trash2
+          :size="18"
+          class="expand"
+        />
       </VueIconButton>
     </div>
+    <div class="flex-inline mbe4">
+      <h3>Variants</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueIconButton
+        label="Ghost (default)"
+        variant="ghost"
+      >
+        <Star
+          :size="18"
+          class="expand"
+        />
+      </VueIconButton>
+      <VueIconButton
+        label="Primary"
+        variant="primary"
+      >
+        <Star class="expand" />
+      </VueIconButton>
+      <VueIconButton
+        label="Secondary"
+        variant="secondary"
+      >
+        <Star class="expand" />
+      </VueIconButton>
+      <VueIconButton
+        label="Success"
+        variant="success"
+      >
+        <Check class="expand" />
+      </VueIconButton>
+      <VueIconButton
+        label="Warning"
+        variant="warning"
+      >
+        <AlertTriangle class="expand" />
+      </VueIconButton>
+      <VueIconButton
+        label="Danger"
+        variant="danger"
+      >
+        <Trash2 class="expand" />
+      </VueIconButton>
+      <VueIconButton
+        label="Monochrome"
+        variant="monochrome"
+      >
+        <Star class="expand" />
+      </VueIconButton>
+    </div>
+
     <div class="mbe4">
       <h3>Scaled Icons</h3>
-      <p>Place SVG element directly inside <code>AgIconButton/ag-icon-button</code>. Do not "wrap" in <code>AgIcon/ag-icon</code>.</p>
+      <p class="mbe1">Project raw SVGs directly into the button and prefer em-based sizing so icons scale with the button size.</p>
+      <ul>
+        <li>Place the SVG directly inside <code>&lt;ag-icon-button&gt;</code> (don't wrap it).</li>
+        <li>
+          Prefer one of two patterns for slotted SVGs:
+          <ul>
+            <li>em-based sizing so the SVG scales with the icon font-size: <code>ag-icon-button::slotted(svg) { width: 1em; height: 1em; }</code></li>
+            <li>or let the SVG fill its container: <code>width: 100%; height: 100%;</code></li>
+          </ul>
+        </li>
+        <li>Adjust per-size tokens when needed: <code>--ag-icon-button-font-size-*</code> (icon) and <code>--ag-icon-button-*</code> (button dimensions).</li>
+      </ul>
+      <details>
+        <summary>Advanced</summary>
+        <p>The icon container uses <code>1em</code> by default and follows the per-size token values. If a projected SVG sets explicit pixel <code>width/height</code>, the SVG will honor those values. Prefer passing a <code>size</code> prop to icon libraries (e.g. lucide) when available.</p>
+        <p>Example overrides: <code>ag-icon-button { --ag-icon-button-font-size-md: 1rem }</code> or <code>ag-icon-button[size="xl"] { --ag-icon-button-font-size-xl: 1.25rem; --ag-icon-button-xl: 3.5rem; }</code></p>
+      </details>
     </div>
     <div class="mbe4">
       <VueIconButton
@@ -102,77 +178,18 @@
       </VueIconButton>
     </div>
     <div class="mbe4">
-      <h3>Variants</h3>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <VueIconButton
-        label="Ghost (default)"
-        variant="ghost"
-      >
-        <Star :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Primary"
-        variant="primary"
-      >
-        <Star :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Secondary"
-        variant="secondary"
-      >
-        <Star :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Success"
-        variant="success"
-      >
-        <Check :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Warning"
-        variant="warning"
-      >
-        <AlertTriangle :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Danger"
-        variant="danger"
-      >
-        <Trash2 :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Monochrome"
-        variant="monochrome"
-      >
-        <Star :size="18" />
-      </VueIconButton>
-    </div>
-    <div class="mbe4">
-      <h3>States</h3>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <VueIconButton label="Normal">
-        <Bell :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Disabled"
-        disabled
-      >
-        <Bell :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Loading"
-        loading
-      >
-        <Bell :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Pressed"
-        :pressed="true"
-      >
-        <Bell :size="18" />
-      </VueIconButton>
+      <h3>Scaled Icons</h3>
+      <p class="mbe1">Project raw SVGs directly into the button and prefer em-based sizing so icons scale with the button size.</p>
+      <ul>
+        <li>Place the SVG directly inside <code>&lt;ag-icon-button&gt;</code> (don't wrap it).</li>
+        <li>Make slotted SVGs follow the icon font-size: <code>ag-icon-button::slotted(svg){width:1em;height:1em}</code> or ensure the SVG fills the icon container by setting <code>width:100%; height:100%</code> on the SVG (via attributes or CSS).</li>
+        <li>Adjust per-size tokens when needed: <code>--ag-icon-button-font-size-*</code> (icon) and <code>--ag-icon-button-*</code> (button dimensions).</li>
+      </ul>
+
+      <details>
+        <summary>Advanced</summary>
+        <p>Example overrides: <code>ag-icon-button { --ag-icon-button-font-size-md: 1rem }</code> or <code>ag-icon-button[size="xl"] { --ag-icon-button-font-size-xl: 1.25rem; --ag-icon-button-xl: 3.5rem; }</code></p>
+      </details>
     </div>
 
     <div class="mbe4">
@@ -185,8 +202,8 @@
         @click="toggleFavorite"
       >
         <Heart
-          :size="18"
           :fill="isFavorite ? 'currentColor' : 'none'"
+          class="expand"
         />
       </VueIconButton>
       <VueIconButton
@@ -195,7 +212,7 @@
         @click="toggleBookmark"
       >
         <Bookmark
-          :size="18"
+          class="expand"
           :fill="isBookmarked ? 'currentColor' : 'none'"
         />
       </VueIconButton>
@@ -205,7 +222,7 @@
         @click="toggleNotifications"
       >
         <Bell
-          :size="18"
+          class="expand"
           :fill="notificationsOn ? 'currentColor' : 'none'"
         />
       </VueIconButton>
@@ -225,43 +242,21 @@
         class="custom-gradient-button"
         label="Gradient button"
       >
-        <Heart :size="18" />
+        <Heart class="expand" />
       </VueIconButton>
       <VueIconButton
         class="custom-gradient-button"
         label="Gradient star"
       >
-        <Star :size="18" />
+        <Star class="expand" />
       </VueIconButton>
       <VueIconButton
         class="custom-gradient-button"
         label="Gradient bookmark"
       >
-        <Bookmark :size="18" />
+        <Bookmark class="expand" />
       </VueIconButton>
     </div>
-
-    <div class="stacked-mobile mbe4">
-      <VueIconButton
-        class="custom-outlined-button"
-        label="Outlined settings"
-      >
-        <Settings :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        class="custom-outlined-button"
-        label="Outlined search"
-      >
-        <Search :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        class="custom-outlined-button"
-        label="Outlined edit"
-      >
-        <Edit :size="18" />
-      </VueIconButton>
-    </div>
-
   </section>
 </template>
 
@@ -348,25 +343,5 @@ export default {
 .custom-gradient-button::part(ag-icon-button):active {
   transform: translateY(0);
   box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
-}
-
-/* Outlined style */
-.custom-outlined-button::part(ag-icon-button) {
-  background: transparent;
-  color: var(--ag-primary);
-  border: 2px solid var(--ag-primary);
-  border-radius: 50%;
-  padding: 10px;
-  transition: all 0.2s ease;
-}
-
-.custom-outlined-button::part(ag-icon-button):hover {
-  background: var(--ag-primary);
-  color: white;
-  transform: rotate(15deg);
-}
-
-.custom-outlined-button::part(ag-icon-button):active {
-  transform: rotate(0deg) scale(0.95);
 }
 </style>
