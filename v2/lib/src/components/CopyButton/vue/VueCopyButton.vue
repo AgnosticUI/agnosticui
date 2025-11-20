@@ -12,18 +12,24 @@
     @copy="$emit('copy', $event)"
     @copy-error="$emit('copy-error', $event)"
   >
-    <slot
-      name="icon-copy"
+    <span
+      v-if="$slots['icon-copy']"
       slot="icon-copy"
-    />
-    <slot
-      name="icon-copied"
+    >
+      <slot name="icon-copy" />
+    </span>
+    <span
+      v-if="$slots['icon-copied']"
       slot="icon-copied"
-    />
-    <slot
-      name="icon-error"
+    >
+      <slot name="icon-copied" />
+    </span>
+    <span
+      v-if="$slots['icon-error']"
       slot="icon-error"
-    />
+    >
+      <slot name="icon-error" />
+    </span>
   </ag-copy-button>
 </template>
 
