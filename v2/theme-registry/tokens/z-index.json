@@ -11,6 +11,10 @@
     "toast": {
       "value": "1100",
       "description": "Z-index for toast notifications (above modals)"
+    },
+    "sticky": {
+      "value": "900",
+      "description": "Z-index for sticky elements"
     }
   }
 }

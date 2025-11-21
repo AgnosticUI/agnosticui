@@ -1,0 +1,92 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { ReactMessageBubble } from 'agnosticui-core/message-bubble/react';
+
+const meta: Meta<typeof ReactMessageBubble> = {
+  title: 'AgnosticUI React/MessageBubble',
+  component: ReactMessageBubble,
+  tags: ['autodocs'],
+  argTypes: {
+    from: {
+      control: 'radio',
+      options: ['me', 'them'],
+      description: 'Sender of the message',
+    },
+    message: {
+      control: 'text',
+      description: 'Content of the message',
+    },
+    author: {
+      control: 'text',
+      description: 'Name of the author',
+    },
+    time: {
+      control: 'text',
+      description: 'Timestamp of the message',
+    },
+  },
+  args: {
+    from: 'them',
+    message: 'Hello, how are you?',
+    author: 'John Doe',
+    time: '10:00 AM',
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: (args) => <ReactMessageBubble {...args} />,
+};
+
+export const FromMe: Story = {
+  args: {
+    from: 'me',
+    message: 'I am doing great, thanks!',
+    author: 'Me',
+    time: '10:01 AM',
+  },
+  render: (args) => <ReactMessageBubble {...args} />,
+};
+
+export const Conversation: Story = {
+  render: () => (
+    <div style={{ maxWidth: '400px', border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
+      <ReactMessageBubble from="them" message="Hey, are we still on for lunch?" author="Sarah" time="11:30 AM" />
+      <ReactMessageBubble from="me" message="Yes! Where should we go?" author="Me" time="11:32 AM" />
+      <ReactMessageBubble from="them" message="How about that new Italian place?" author="Sarah" time="11:33 AM" />
+      <ReactMessageBubble from="me" message="Sounds perfect. See you there at 12:30." author="Me" time="11:35 AM" />
+    </div>
+  ),
+};
+
+export const CSSPartsCustomization: Story = {
+  render: (args) => (
+    <>
+      <style>
+        {`
+          .custom-bubble::part(ag-message-bubble) {
+            background-color: var(--ag-electric-blue);
+            color: var(--ag-white);
+            border-radius: var(--ag-radius-rounded);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            padding: var(--ag-space-24);
+          }
+        `}
+      </style>
+      <div style={{ maxWidth: '400px', border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
+        <ReactMessageBubble
+          className="custom-bubble"
+          {...args}
+        />
+        <ReactMessageBubble from="me" message="This is a normal message bubble from me." author="Me" time="10:05 AM" />
+      </div>
+    </>
+  ),
+  args: {
+    from: 'them',
+    message: 'This message bubble is custom styled using CSS Shadow Parts!',
+    author: 'CSS Wizard',
+    time: '10:00 AM',
+  },
+};
