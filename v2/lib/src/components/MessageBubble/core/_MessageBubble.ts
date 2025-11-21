@@ -8,6 +8,7 @@ export interface MessageBubbleProps {
   author?: string;
   avatarUrl?: string;
   footer?: string;
+  variant?: 'default' | 'success' | 'warning' | 'danger' | 'info' | 'neutral' | 'monochrome';
 }
 
 /**
@@ -82,10 +83,6 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       align-items: center;
     }
 
-    .chat-time {
-      opacity: 0.5;
-    }
-
     /* Bubble Styles */
     .chat-bubble {
       grid-row-end: 3;
@@ -94,6 +91,8 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       max-width: var(--ag-message-bubble-max-width, 90%);
       min-height: 2rem;
       padding: var(--ag-space-3) var(--ag-space-4);
+      display: inline-flex;
+      align-items: center;
       position: relative;
       width: fit-content;
       word-wrap: break-word;
@@ -119,7 +118,6 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       gap: var(--ag-space-2);
       font-size: var(--ag-font-size-xs);
       color: var(--ag-text-secondary);
-      opacity: 0.5;
       margin-top: var(--ag-space-1);
     }
 
@@ -177,6 +175,43 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       right: -0.5rem;
       clip-path: polygon(0 0, 0 100%, 100% 100%);
     }
+
+    /* Variant Styles */
+    /* Success variant */
+    :host([variant="success"]) .chat-bubble {
+      background-color: var(--ag-success-background, #d4edda);
+      color: var(--ag-success-text, #155724);
+    }
+
+    /* Warning variant */
+    :host([variant="warning"]) .chat-bubble {
+      background-color: var(--ag-warning-background, #fff3cd);
+      color: var(--ag-warning-text, #856404);
+    }
+
+    /* Danger variant */
+    :host([variant="danger"]) .chat-bubble {
+      background-color: var(--ag-danger-background, #f8d7da);
+      color: var(--ag-danger-text, #721c24);
+    }
+
+    /* Info variant */
+    :host([variant="info"]) .chat-bubble {
+      background-color: var(--ag-info-background, #d1ecf1);
+      color: var(--ag-info-text, #0c5460);
+    }
+
+    /* Neutral variant */
+    :host([variant="neutral"]) .chat-bubble {
+      background-color: var(--ag-neutral-background, #e2e3e5);
+      color: var(--ag-neutral-text, #383d41);
+    }
+
+    /* Monochrome variant */
+    :host([variant="monochrome"]) .chat-bubble {
+      background-color: var(--ag-monochrome-background, #6c757d);
+      color: var(--ag-monochrome-text, #ffffff);
+    }
   `;
 
   @property({ type: String, reflect: true })
@@ -191,11 +226,14 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
   @property({ type: String })
   declare author: string;
 
-  @property({ type: String })
+  @property({ type: String, attribute: 'avatar-url' })
   declare avatarUrl: string;
 
   @property({ type: String })
   declare footer: string;
+
+  @property({ type: String, reflect: true })
+  declare variant: 'default' | 'success' | 'warning' | 'danger' | 'info' | 'neutral' | 'monochrome';
 
   @state()
   private _avatarError = false;
@@ -208,6 +246,7 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
     this.author = '';
     this.avatarUrl = '';
     this.footer = '';
+    this.variant = 'default';
   }
 
   // Reset avatar error state when avatarUrl changes
