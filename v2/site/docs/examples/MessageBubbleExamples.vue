@@ -1,5 +1,84 @@
 <template>
   <section>
+    <!-- Interactive Chat Demo -->
+    <div class="mbe4">
+      <h3>Interactive Chat Demo</h3>
+      <p>Type a message and click Send to add it to the conversation. This demonstrates real-world integration with VueInput and VueButton.</p>
+    </div>
+    <div class="chat-demo-container mbe6">
+      <!-- Messages Container -->
+      <div class="messages-container">
+        <VueMessageBubble
+          v-for="message in messages"
+          :key="message.id"
+          :from="message.from"
+          :message="message.text"
+          :author="message.author"
+          :time="message.time"
+          :avatar-url="message.avatarUrl"
+          :footer="message.footer"
+        />
+
+        <div
+          v-if="messages.length === 0"
+          class="empty-state"
+        >
+          No messages yet. Start the conversation!
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-area">
+        <VueInput
+          rounded
+          v-model:value="newMessage"
+          placeholder="Type your message..."
+          @keyup.enter="sendMessage"
+        >
+          <template #addon-left>
+            <MessageCircle
+              :size="18"
+              color="var(--ag-primary)"
+            />
+          </template>
+        </VueInput>
+
+        <VueButton
+          variant="primary"
+          shape="rounded"
+          @click="sendMessage"
+          :disabled="!newMessage.trim()"
+          class="send-button"
+        >
+          <Send :size="18" />
+          <span class="mis1">Send</span>
+        </VueButton>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions">
+        <VueButton
+          shape="rounded"
+          :bordered="true"
+          @click="addBotResponse"
+          class="mie2"
+        >
+          <Bot :size="16" />
+          <span class="mis1">Add Bot Reply</span>
+        </VueButton>
+
+        <VueButton
+          shape="rounded"
+          variant="danger"
+          :bordered="true"
+          @click="clearMessages"
+        >
+          <Trash2 :size="16" />
+          <span class="mis1">Clear All</span>
+        </VueButton>
+      </div>
+    </div>
+
     <!-- Basic Example -->
     <div class="mbe4">
       <h3>Basic Message Bubbles</h3>
@@ -272,22 +351,195 @@
 import { defineComponent } from "vue";
 import { VueMessageBubble } from "agnosticui-core/message-bubble/vue";
 import { VueAvatar } from "agnosticui-core/avatar/vue";
+import VueInput from "agnosticui-core/input/vue";
+import VueButton from "agnosticui-core/button/vue";
+import { MessageCircle, Send, Bot, Trash2 } from "lucide-vue-next";
 
 export default defineComponent({
   name: "MessageBubbleExamples",
   components: {
     VueMessageBubble,
     VueAvatar,
+    VueInput,
+    VueButton,
+    MessageCircle,
+    Send,
+    Bot,
+    Trash2,
+  },
+  data() {
+    return {
+      newMessage: "",
+      messages: [] as Array<{
+        id: number;
+        from: "me" | "them";
+        text: string;
+        author: string;
+        time: string;
+        avatarUrl: string;
+        footer: string;
+      }>,
+      messageIdCounter: 1,
+      botResponses: [
+        "That's interesting! Tell me more.",
+        "I understand what you mean.",
+        "Thanks for sharing that!",
+        "Great point!",
+        "I appreciate your message.",
+        "That makes sense to me.",
+        "Interesting perspective!",
+      ],
+    };
+  },
+  methods: {
+    sendMessage() {
+      if (!this.newMessage.trim()) return;
+
+      const now = new Date();
+      const time = now.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+
+      this.messages.push({
+        id: this.messageIdCounter++,
+        from: "me",
+        text: this.newMessage,
+        author: "Me",
+        time: time,
+        avatarUrl: "https://i.pravatar.cc/150?img=8",
+        footer: "Sent",
+      });
+
+      // Clear input
+      this.newMessage = "";
+
+      // Auto-scroll to bottom
+      this.$nextTick(() => {
+        const container = this.$el.querySelector(".messages-container");
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
+      });
+    },
+
+    addBotResponse() {
+      const now = new Date();
+      const time = now.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+
+      const randomResponse =
+        this.botResponses[Math.floor(Math.random() * this.botResponses.length)];
+
+      this.messages.push({
+        id: this.messageIdCounter++,
+        from: "them",
+        text: randomResponse,
+        author: "AI Assistant",
+        time: time,
+        avatarUrl: "https://i.pravatar.cc/150?img=5",
+        footer: "Read",
+      });
+
+      // Auto-scroll to bottom
+      this.$nextTick(() => {
+        const container = this.$el.querySelector(".messages-container");
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
+      });
+    },
+
+    clearMessages() {
+      this.messages = [];
+      this.messageIdCounter = 1;
+    },
   },
 });
 </script>
 
 <style scoped>
+/* Chat Demo Styles */
+.chat-demo-container {
+  max-width: 700px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 20px;
+  background-color: var(--vp-c-bg);
+}
+
+.messages-container {
+  min-height: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 20px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 360px;
+  color: var(--vp-c-text-3);
+  font-style: italic;
+}
+
+.input-area {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  align-items: flex-end;
+}
+
+.input-area > :first-child {
+  flex: 1;
+}
+
+.send-button {
+  flex-shrink: 0;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Scrollbar styling */
+.messages-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: var(--vp-c-bg);
+  border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-text-3);
+}
+
+/* Standard Example Styles */
 .message-container {
   max-width: 600px;
   border: 1px solid var(--vp-c-divider);
   padding: 20px;
   border-radius: 8px;
+  background-color: var(--vp-c-bg-soft);
 }
 
 .variant-section {
@@ -303,19 +555,5 @@ export default defineComponent({
   font-size: 13px;
   font-weight: 600;
   color: var(--vp-c-text-2);
-}
-
-.mbe4 {
-  margin-bottom: 16px;
-}
-
-.mbe6 {
-  margin-bottom: 32px;
-}
-
-.mbe4 p {
-  margin: 8px 0 0 0;
-  color: var(--vp-c-text-2);
-  font-size: 14px;
 }
 </style>
