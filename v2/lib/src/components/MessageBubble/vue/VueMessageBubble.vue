@@ -7,9 +7,10 @@
     :author="author"
     :avatar-url="avatarUrl"
     :footer="footer"
+    :variant="variant"
     v-bind="$attrs"
   >
-    <slot />
+    <slot v-if="$slots.default" />
     <span
       v-if="$slots.header"
       slot="header"
@@ -44,6 +45,7 @@ const props = withDefaults(
     author?: string;
     avatarUrl?: string;
     footer?: string;
+    variant?: "default" | "success" | "warning" | "danger" | "info" | "neutral" | "monochrome";
   }>(),
   {
     from: "them",
@@ -52,6 +54,7 @@ const props = withDefaults(
     author: "",
     avatarUrl: "",
     footer: "",
+    variant: "default",
   }
 );
 
