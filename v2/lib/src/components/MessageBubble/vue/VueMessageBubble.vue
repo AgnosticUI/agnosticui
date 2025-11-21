@@ -5,64 +5,55 @@
     :message="message"
     :time="time"
     :author="author"
+    :avatar-url="avatarUrl"
+    :footer="footer"
+    v-bind="$attrs"
   >
     <slot />
+    <span
+      v-if="$slots.header"
+      slot="header"
+    >
+      <slot name="header" />
+    </span>
+    <span
+      v-if="$slots.footer"
+      slot="footer"
+    >
+      <slot name="footer" />
+    </span>
+    <span
+      v-if="$slots.avatar"
+      slot="avatar"
+    >
+      <slot name="avatar" />
+    </span>
   </ag-message-bubble>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref, watchEffect, nextTick, type PropType } from 'vue';
-import { MessageBubble, type MessageBubbleProps } from '../core/_MessageBubble';
-import '../core/MessageBubble'; // Registers the ag-message-bubble web component
+<script setup lang="ts">
+import { ref } from "vue";
+import type { MessageBubble } from "../core/MessageBubble";
+import "../core/MessageBubble"; // Registers <ag-message-bubble> on wrapper load
 
-export default defineComponent({
-  name: 'VueMessageBubble',
-  props: {
-    from: {
-      type: String as PropType<MessageBubbleProps['from']>,
-      default: 'them',
-    },
-    message: {
-      type: String,
-      default: '',
-    },
-    time: {
-      type: String,
-      default: '',
-    },
-    author: {
-      type: String,
-      default: '',
-    },
-  },
-  setup(props) {
-    const agComponent = ref<HTMLElement & MessageBubbleProps | null>(null);
+const props = withDefaults(
+  defineProps<{
+    from?: "me" | "them";
+    message?: string;
+    time?: string;
+    author?: string;
+    avatarUrl?: string;
+    footer?: string;
+  }>(),
+  {
+    from: "them",
+    message: "",
+    time: "",
+    author: "",
+    avatarUrl: "",
+    footer: "",
+  }
+);
 
-    const syncProps = () => {
-      const webComponent = agComponent.value;
-      if (!webComponent) return;
-
-      webComponent.from = props.from;
-      webComponent.message = props.message;
-      webComponent.time = props.time;
-      webComponent.author = props.author;
-    };
-
-    onMounted(async () => {
-      await customElements.whenDefined('ag-message-bubble');
-      await nextTick();
-      syncProps();
-    });
-
-    watchEffect(() => {
-      if (agComponent.value) {
-        syncProps();
-      }
-    });
-
-    return {
-      agComponent,
-    };
-  },
-});
+const agComponent = ref<InstanceType<typeof MessageBubble> | null>(null);
 </script>
