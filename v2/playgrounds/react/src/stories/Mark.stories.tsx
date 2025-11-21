@@ -38,6 +38,20 @@ export const Static: Story = {
   ),
 };
 
+export const AllVariants: Story = {
+  render: () => (
+    <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+      <p>Warning: <ReactMark variant="warning">Warning</ReactMark></p>
+      <p>Info: <ReactMark variant="info">Info</ReactMark></p>
+      <p>Success: <ReactMark variant="success">Success</ReactMark></p>
+      <p>Error: <ReactMark variant="error">Error</ReactMark></p>
+      <p>Primary: <ReactMark variant="primary">Primary</ReactMark></p>
+      <p>Secondary: <ReactMark variant="secondary">Secondary</ReactMark></p>
+      <p>Monochrome: <ReactMark variant="monochrome">Monochrome</ReactMark></p>
+    </div>
+  ),
+};
+
 export const ReactiveHighlighting: Story = {
   render: () => {
     const [search, setSearch] = useState('fox');
