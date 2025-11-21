@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "relink": "npm link agnosticui-core",
-    "storybook": "npm run relink && storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {

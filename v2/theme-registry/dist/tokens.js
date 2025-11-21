@@ -54,6 +54,7 @@ export const Shadow2xl = "0 25px 50px -12px rgba(0, 0, 0, 0.25)";
 export const ZIndexDropdown = "100";
 export const ZIndexModal = "1000";
 export const ZIndexToast = "1100";
+export const ZIndexSticky = "900";
 export const BorderWidth1 = "1px";
 export const BorderWidth2 = "2px";
 export const BorderWidth3 = "3px";

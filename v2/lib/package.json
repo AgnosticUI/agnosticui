@@ -551,6 +551,42 @@
     "./timeline/vue": {
       "types": "./dist/components/Timeline/vue/index.d.ts",
       "import": "./dist/components/Timeline/vue/index.js"
+    },
+    "./back-to-top": {
+      "types": "./dist/components/BackToTop/core/BackToTop.d.ts",
+      "import": "./dist/components/BackToTop/core/BackToTop.js"
+    },
+    "./back-to-top/react": {
+      "types": "./dist/components/BackToTop/react/ReactBackToTop.d.ts",
+      "import": "./dist/components/BackToTop/react/ReactBackToTop.js"
+    },
+    "./back-to-top/vue": {
+      "types": "./dist/components/BackToTop/vue/index.d.ts",
+      "import": "./dist/components/BackToTop/vue/index.js"
+    },
+    "./mark": {
+      "types": "./dist/components/Mark/core/Mark.d.ts",
+      "import": "./dist/components/Mark/core/Mark.js"
+    },
+    "./mark/react": {
+      "types": "./dist/components/Mark/react/ReactMark.d.ts",
+      "import": "./dist/components/Mark/react/ReactMark.js"
+    },
+    "./mark/vue": {
+      "types": "./dist/components/Mark/vue/index.d.ts",
+      "import": "./dist/components/Mark/vue/index.js"
+    },
+    "./message-bubble": {
+      "types": "./dist/components/MessageBubble/core/MessageBubble.d.ts",
+      "import": "./dist/components/MessageBubble/core/MessageBubble.js"
+    },
+    "./message-bubble/react": {
+      "types": "./dist/components/MessageBubble/react/ReactMessageBubble.d.ts",
+      "import": "./dist/components/MessageBubble/react/ReactMessageBubble.js"
+    },
+    "./message-bubble/vue": {
+      "types": "./dist/components/MessageBubble/vue/index.d.ts",
+      "import": "./dist/components/MessageBubble/vue/index.js"
     }
   },
   "scripts": {

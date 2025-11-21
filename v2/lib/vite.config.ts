@@ -11,7 +11,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: Object.fromEntries(
-        glob.sync('src/**/*.{ts,tsx,vue,svelte}').map(file => [
+        glob.sync('src/**/*.{ts,tsx,vue,svelte}', { ignore: ['**/*.spec.ts'] }).map(file => [
           // This remove `src/` as well as the file extension from each
           // file, so e.g. src/nested/foo.ts becomes nested/foo
           relative(

@@ -38,3 +38,6 @@ export * from '../Toast/react';
 export * from '../Toggle/react';
 export * from '../Tooltip/react';
 export * from '../Timeline/react/Timeline';
+export * from '../BackToTop/react/ReactBackToTop';
+export * from '../Mark/react/ReactMark';
+export * from '../MessageBubble/react/ReactMessageBubble';
