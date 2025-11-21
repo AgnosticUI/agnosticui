@@ -1,6 +1,7 @@
 import { createComponent } from '@lit/react';
 import React from 'react';
 import { MessageBubble, type MessageBubbleProps } from '../core/_MessageBubble';
+import '../core/MessageBubble'; // Ensures the custom element is defined
 
 export interface ReactMessageBubbleProps extends MessageBubbleProps {
   children?: React.ReactNode;

@@ -1,6 +1,7 @@
 import { createComponent } from '@lit/react';
 import React from 'react';
 import { Mark, type MarkProps } from '../core/_Mark';
+import '../core/Mark'; // Ensures the custom element is defined
 
 export interface ReactMarkProps extends MarkProps {
   children?: React.ReactNode;
