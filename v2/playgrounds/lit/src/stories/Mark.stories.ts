@@ -38,6 +38,20 @@ export const Static: Story = {
   `,
 };
 
+export const AllVariants: Story = {
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <p>Warning: <ag-mark variant="warning">Warning</ag-mark></p>
+      <p>Info: <ag-mark variant="info">Info</ag-mark></p>
+      <p>Success: <ag-mark variant="success">Success</ag-mark></p>
+      <p>Error: <ag-mark variant="error">Error</ag-mark></p>
+      <p>Primary: <ag-mark variant="primary">Primary</ag-mark></p>
+      <p>Secondary: <ag-mark variant="secondary">Secondary</ag-mark></p>
+      <p>Monochrome: <ag-mark variant="monochrome">Monochrome</ag-mark></p>
+    </div>
+  `,
+};
+
 export const ReactiveHighlighting: Story = {
   render: () => {
     const container = document.createElement('div');

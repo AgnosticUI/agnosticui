@@ -43,6 +43,23 @@ export const Static: Story = {
   }),
 };
 
+export const AllVariants: Story = {
+  render: () => ({
+    components: { VueMark },
+    template: `
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <p>Warning: <VueMark variant="warning">Warning</VueMark></p>
+      <p>Info: <VueMark variant="info">Info</VueMark></p>
+      <p>Success: <VueMark variant="success">Success</VueMark></p>
+      <p>Error: <VueMark variant="error">Error</VueMark></p>
+      <p>Primary: <VueMark variant="primary">Primary</VueMark></p>
+      <p>Secondary: <VueMark variant="secondary">Secondary</VueMark></p>
+      <p>Monochrome: <VueMark variant="monochrome">Monochrome</VueMark></p>
+    </div>
+    `,
+  }),
+};
+
 export const ReactiveHighlighting: Story = {
   render: () => ({
     components: { VueMark },
