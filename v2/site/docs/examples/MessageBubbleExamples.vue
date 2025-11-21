@@ -8,16 +8,19 @@
     <div class="chat-demo-container mbe6">
       <!-- Messages Container -->
       <div class="messages-container">
-        <VueMessageBubble
-          v-for="message in messages"
-          :key="message.id"
-          :from="message.from"
-          :message="message.text"
-          :author="message.author"
-          :time="message.time"
-          :avatar-url="message.avatarUrl"
-          :footer="message.footer"
-        />
+        <TransitionGroup name="message-fade">
+          <VueMessageBubble
+            v-for="message in messages"
+            :key="message.id"
+            :from="message.from"
+            :message="message.text"
+            :author="message.author"
+            :time="message.time"
+            :avatar-url="message.avatarUrl"
+            :footer="message.footer"
+            class="message-item"
+          />
+        </TransitionGroup>
 
         <div
           v-if="messages.length === 0"
@@ -30,9 +33,9 @@
       <!-- Input Area -->
       <div class="input-area">
         <VueInput
-          rounded
           v-model:value="newMessage"
           placeholder="Type your message..."
+          rounded
           @keyup.enter="sendMessage"
         >
           <template #addon-left>
@@ -58,6 +61,7 @@
       <!-- Quick Actions -->
       <div class="quick-actions">
         <VueButton
+          size="sm"
           shape="rounded"
           :bordered="true"
           @click="addBotResponse"
@@ -68,6 +72,7 @@
         </VueButton>
 
         <VueButton
+          size="sm"
           shape="rounded"
           variant="danger"
           :bordered="true"
@@ -455,8 +460,10 @@ export default defineComponent({
     },
 
     clearMessages() {
-      this.messages = [];
-      this.messageIdCounter = 1;
+      if (confirm("Are you sure you want to clear all messages?")) {
+        this.messages = [];
+        this.messageIdCounter = 1;
+      }
     },
   },
 });
@@ -491,6 +498,45 @@ export default defineComponent({
   min-height: 360px;
   color: var(--vp-c-text-3);
   font-style: italic;
+}
+
+/* Message fade transitions */
+.message-item {
+  display: block;
+}
+
+.message-fade-enter-active {
+  animation: message-fade-in var(--ag-motion-medium, 0.2s) ease-out;
+}
+
+.message-fade-leave-active {
+  animation: message-fade-out var(--ag-motion-fast, 0.15s) ease-in;
+}
+
+.message-fade-move {
+  transition: transform var(--ag-motion-medium, 0.2s) ease;
+}
+
+@keyframes message-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes message-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
 }
 
 .input-area {
