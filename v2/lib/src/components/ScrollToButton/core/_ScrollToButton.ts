@@ -12,6 +12,8 @@ export interface ScrollToButtonProps {
   direction?: 'up' | 'down' | 'auto';
   smoothScroll?: boolean;
   visible?: boolean;
+  size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
+  shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
 }
 
 /**
@@ -144,6 +146,12 @@ export class ScrollToButton extends LitElement implements ScrollToButtonProps {
   @property({ type: Boolean, reflect: true })
   declare visible: boolean;
 
+  @property({ type: String })
+  declare size: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
+
+  @property({ type: String })
+  declare shape: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
+
   // Private property to store HTMLElement target
   private _targetElement: HTMLElement | null = null;
 
@@ -157,6 +165,8 @@ export class ScrollToButton extends LitElement implements ScrollToButtonProps {
     this.direction = 'auto';
     this.smoothScroll = true;
     this.visible = false;
+    this.size = 'md';
+    this.shape = '';
   }
 
   private _handleScroll = () => {
@@ -291,13 +301,16 @@ export class ScrollToButton extends LitElement implements ScrollToButtonProps {
   }
 
   render() {
+    // Show label if explicitly enabled OR if icon is disabled (fallback)
+    const shouldShowLabel = this.showLabel || !this.icon;
     // Use isCircle only when there's no visible label text and only showing icon
-    const isIconOnly = this.icon && !this.showLabel;
+    const isIconOnly = this.icon && !shouldShowLabel;
     
     return html`
       <ag-button
         mode="primary"
-        ?isCircle="${isIconOnly}"
+        size="${this.size}"
+        shape="${this.shape || (isIconOnly ? 'circle' : '')}"
         @click="${this._scrollToTarget}"
         aria-label="${this.label}"
         part="ag-scrollto-button"
@@ -312,7 +325,7 @@ export class ScrollToButton extends LitElement implements ScrollToButtonProps {
               </slot>
             </span>
           ` : ''}
-          ${this.showLabel ? html`
+          ${shouldShowLabel ? html`
             <span class="label" part="ag-label">${this.label}</span>
           ` : ''}
         </div>

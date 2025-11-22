@@ -1,24 +1,25 @@
-import { createComponent } from "@lit/react";
 import React from "react";
-import { ScrollToButton } from "../core/ScrollToButton.js";
+import { createComponent } from "@lit/react";
+// Import from the registration file to ensure custom element is defined
+import { ScrollToButton as ScrollToButtonLit } from "../core/ScrollToButton.js";
 
-export interface ReactScrollToButtonProps {
+export interface ScrollToButtonProps {
   label?: string;
+  showLabel?: boolean;
   icon?: boolean;
   scrollThreshold?: number;
   target?: "top" | "bottom" | string;
   direction?: "up" | "down" | "auto";
   smoothScroll?: boolean;
+  visible?: boolean;
+  size?: "x-sm" | "sm" | "md" | "lg" | "xl";
+  shape?: "capsule" | "rounded" | "circle" | "square" | "rounded-square" | "";
   children?: React.ReactNode;
-  className?: string;
-  ref?: React.Ref<ScrollToButton>;
 }
 
 export const ReactScrollToButton = createComponent({
   tagName: "ag-scroll-to-button",
-  elementClass: ScrollToButton,
+  elementClass: ScrollToButtonLit,
   react: React,
-  events: {
-    // No custom events for ScrollToButton
-  },
+  events: {},
 });
