@@ -3,7 +3,6 @@
     ref="agComponent"
     .sticky="sticky"
     .contentJustify="contentJustify"
-    .isSkinned="isSkinned"
     v-bind="$attrs"
   >
     <span slot="logo"> <!-- eslint-disable-line vue/no-deprecated-slot-attribute -->
@@ -29,10 +28,6 @@ export default defineComponent({
       type: String as PropType<HeaderContentJustify>,
       default: "between" as HeaderContentJustify,
     },
-    isSkinned: {
-      type: Boolean,
-      default: true,
-    },
   },
   setup(props, { emit }) {
     const agComponent = ref<(HTMLElement & HeaderProps) | null>(null);
@@ -46,7 +41,6 @@ export default defineComponent({
       agComponent,
       sticky: props.sticky,
       contentJustify: props.contentJustify,
-      isSkinned: props.isSkinned,
     };
   },
 });

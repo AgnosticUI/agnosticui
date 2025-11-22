@@ -9,7 +9,7 @@
     :fit="fit"
     :position="position"
     :loading="loading"
-    :fade="fade || undefined"
+    .fade="fade"
     :duration="duration"
     :fallback-src="fallbackSrc"
     @ag-load="handleLoad"

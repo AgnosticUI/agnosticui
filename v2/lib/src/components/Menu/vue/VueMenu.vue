@@ -1,17 +1,17 @@
 <template>
   <ag-menu-button
     ref="menuButtonRef"
+    .disabled="disabled"
+    .loading="loading"
+    .bordered="bordered"
+    .ghost="ghost"
+    .link="link"
+    .grouped="grouped"
     :menu-variant="menuVariant"
     :menu-align="menuAlign"
     :button-variant="buttonVariant"
     :size="size"
     :shape="shape"
-    :bordered="bordered"
-    :ghost="ghost"
-    :link="link"
-    :grouped="grouped"
-    :disabled="disabled || undefined"
-    :loading="loading"
     :ariaLabel="ariaLabel"
     :ariaDescribedby="ariaDescribedby"
     :unicode="unicode"
@@ -29,11 +29,11 @@
     <ag-menu
       ref="menuRef"
       slot="menu"
-      v-bind="open === true ? { open: true } : {}"
+      .open="open"
+      .checkHiddenItems="checkHiddenItems"
       :placement="placement"
       :type="menuType"
       :selected-value="selectedValue"
-      :check-hidden-items="checkHiddenItems || undefined"
       :ariaLabel="menuAriaLabel"
       :ariaLabelledBy="menuAriaLabelledBy"
       @keydown="handleMenuKeyDown"
@@ -51,9 +51,8 @@ import type {
   MenuCloseEventDetail,
   MenuSelectEventDetail,
 } from "../core/Menu";
-import "../core/Menu"; // Registers the ag-menu web component
+import "../core/Menu";
 
-// Omit callback props (Vue uses emits instead)
 export interface VueMenuProps
   extends Omit<
     MenuButtonProps,
@@ -74,16 +73,15 @@ export interface VueMenuProps
   checkHiddenItems?: boolean;
 }
 
-// Define props with defaults
-withDefaults(defineProps<VueMenuProps>(), {
+const props = withDefaults(defineProps<VueMenuProps>(), {
   disabled: false,
   placement: "bottom-start",
   menuAlign: "left",
   menuType: "default",
   checkHiddenItems: false,
+  open: false,
 });
 
-// Define emits for all events (native + custom)
 const emit = defineEmits<{
   click: [event: MouseEvent];
   focus: [event: FocusEvent];
@@ -96,11 +94,9 @@ const emit = defineEmits<{
   "update:open": [open: boolean];
 }>();
 
-// Template refs
 const menuButtonRef = ref<HTMLElement>();
 const menuRef = ref<HTMLElement>();
 
-// Bridge handlers for native events
 const handleClick = (event: MouseEvent) => {
   emit("click", event);
 };
@@ -121,7 +117,6 @@ const handleMenuKeyDown = (event: KeyboardEvent) => {
   emit("menu-keydown", event);
 };
 
-// Bridge handlers for custom events
 const handleMenuOpen = (event: Event) => {
   const menuOpenEvent = event as CustomEvent<MenuOpenEventDetail>;
   emit("menu-open", menuOpenEvent.detail);

@@ -1,25 +1,26 @@
 <template>
   <ag-drawer
     ref="drawerRef"
+    .open="open"
+    .noCloseOnEscape="noCloseOnEscape"
+    .noCloseOnBackdrop="noCloseOnBackdrop"
+    .showCloseButton="showCloseButton"
+    .position="position"
     :heading="heading"
     :description="description"
-    v-bind="{
-      ...(noCloseOnEscape ? { 'no-close-on-escape': true } : {}),
-      ...(noCloseOnBackdrop ? { 'no-close-on-backdrop': true } : {}),
-      ...(showCloseButton ? { 'show-close-button': true } : {}),
-      ...(position ? { position } : {}),
-      ...$attrs
-    }"
+    @drawer-open="handleOpen"
+    @drawer-close="handleClose"
+    @drawer-cancel="handleCancel"
+    v-bind="$attrs"
   >
     <slot />
   </ag-drawer>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from "vue";
-import "../core/Drawer"; // Registers the ag-drawer web component
+import { ref } from "vue";
+import "../core/Drawer";
 
-// Define props interface
 export interface VueDrawerProps {
   open?: boolean;
   heading?: string;
@@ -30,7 +31,6 @@ export interface VueDrawerProps {
   position?: "start" | "end" | "top" | "bottom";
 }
 
-// Define props with defaults
 const props = withDefaults(defineProps<VueDrawerProps>(), {
   open: false,
   heading: "",
@@ -41,7 +41,6 @@ const props = withDefaults(defineProps<VueDrawerProps>(), {
   position: "bottom",
 });
 
-// Define emits
 const emit = defineEmits<{
   "drawer-open": [event: Event];
   "drawer-close": [event: Event];
@@ -49,91 +48,20 @@ const emit = defineEmits<{
   "update:open": [value: boolean];
 }>();
 
-// Template ref
 const drawerRef = ref<HTMLElement>();
 
-// Event handlers
 const handleOpen = (event: Event) => {
-  event.stopPropagation();
   emit("drawer-open", event);
   emit("update:open", true);
 };
 
 const handleClose = (event: Event) => {
-  event.stopPropagation();
   emit("drawer-close", event);
   emit("update:open", false);
 };
 
 const handleCancel = (event: Event) => {
-  event.stopPropagation();
   emit("drawer-cancel", event);
   emit("update:open", false);
 };
-
-// Setup event listeners
-onMounted(async () => {
-  // Wait for web components to be defined
-  await customElements.whenDefined("ag-drawer");
-
-  if (!drawerRef.value) return;
-
-  const drawerEl = drawerRef.value as any;
-
-  // Explicitly set properties to ensure they're properly handled
-  if (props.open !== undefined) {
-    drawerEl.open = props.open;
-  }
-  if (props.noCloseOnEscape !== undefined) {
-    drawerEl.noCloseOnEscape = props.noCloseOnEscape;
-  }
-  if (props.noCloseOnBackdrop !== undefined) {
-    drawerEl.noCloseOnBackdrop = props.noCloseOnBackdrop;
-  }
-  if (props.showCloseButton !== undefined) {
-    drawerEl.showCloseButton = props.showCloseButton;
-  }
-
-  drawerRef.value.addEventListener("drawer-open", handleOpen);
-  drawerRef.value.addEventListener("drawer-close", handleClose);
-  drawerRef.value.addEventListener("drawer-cancel", handleCancel);
-});
-
-onUnmounted(() => {
-  if (!drawerRef.value) return;
-
-  drawerRef.value.removeEventListener("drawer-open", handleOpen);
-  drawerRef.value.removeEventListener("drawer-close", handleClose);
-  drawerRef.value.removeEventListener("drawer-cancel", handleCancel);
-});
-
-// Watch for prop changes and update web component properties
-watch(
-  [
-    () => props.open,
-    () => props.noCloseOnEscape,
-    () => props.noCloseOnBackdrop,
-    () => props.showCloseButton,
-  ],
-  () => {
-    if (!drawerRef.value) return;
-
-    const drawerEl = drawerRef.value as any;
-
-    // Update open property when it changes
-    if (props.open !== undefined) {
-      drawerEl.open = props.open;
-    }
-    // Update boolean properties when props change
-    if (props.noCloseOnEscape !== undefined) {
-      drawerEl.noCloseOnEscape = props.noCloseOnEscape;
-    }
-    if (props.noCloseOnBackdrop !== undefined) {
-      drawerEl.noCloseOnBackdrop = props.noCloseOnBackdrop;
-    }
-    if (props.showCloseButton !== undefined) {
-      drawerEl.showCloseButton = props.showCloseButton;
-    }
-  }
-);
 </script>
