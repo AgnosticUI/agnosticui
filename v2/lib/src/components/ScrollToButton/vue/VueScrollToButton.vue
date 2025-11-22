@@ -1,18 +1,18 @@
 <template>
-  <ag-back-to-top
+  <ag-scroll-to-button
     .visible="visible"
     :threshold="threshold"
   >
     <slot />
-  </ag-back-to-top>
+  </ag-scroll-to-button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import "../core/BackToTop"; // Registers the ag-back-to-top web component
+import "../core/ScrollToButton"; // Registers the ag-scroll-to-button web component
 
 export default defineComponent({
-  name: "VueBackToTop",
+  name: "VueScrollToButton",
   props: {
     visible: {
       type: Boolean,

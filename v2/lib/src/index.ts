@@ -31,6 +31,6 @@ export * from './components/SkeletonLoader/core/_SkeletonLoader';
 export * from './components/Popover/core/_Popover';
 export * from './components/Flex/core/index';
 export * from './components/Timeline/core/Timeline';
-export * from './components/BackToTop/core/BackToTop';
+export * from './components/ScrollToButton/core/ScrollToButton';
 export * from './components/Mark/core/Mark';
 export * from './components/MessageBubble/core/MessageBubble';

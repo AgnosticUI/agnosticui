@@ -552,17 +552,17 @@
       "types": "./dist/components/Timeline/vue/index.d.ts",
       "import": "./dist/components/Timeline/vue/index.js"
     },
-    "./back-to-top": {
-      "types": "./dist/components/BackToTop/core/BackToTop.d.ts",
-      "import": "./dist/components/BackToTop/core/BackToTop.js"
+    "./scroll-to-button": {
+      "types": "./dist/components/ScrollToButton/core/ScrollToButton.d.ts",
+      "import": "./dist/components/ScrollToButton/core/ScrollToButton.js"
     },
-    "./back-to-top/react": {
-      "types": "./dist/components/BackToTop/react/ReactBackToTop.d.ts",
-      "import": "./dist/components/BackToTop/react/ReactBackToTop.js"
+    "./scroll-to-button/react": {
+      "types": "./dist/components/ScrollToButton/react/ReactScrollToButton.d.ts",
+      "import": "./dist/components/ScrollToButton/react/ReactScrollToButton.js"
     },
-    "./back-to-top/vue": {
-      "types": "./dist/components/BackToTop/vue/index.d.ts",
-      "import": "./dist/components/BackToTop/vue/index.js"
+    "./scroll-to-button/vue": {
+      "types": "./dist/components/ScrollToButton/vue/index.d.ts",
+      "import": "./dist/components/ScrollToButton/vue/index.js"
     },
     "./mark": {
       "types": "./dist/components/Mark/core/Mark.d.ts",
@@ -604,6 +604,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
     "@lit/react": "^1.0.8",
+    "agnosticui-core": "file:agnosticui-core-0.0.1.tgz",
     "focus-trap": "^7.6.5",
     "tabbable": "^6.2.0"
   },
@@ -626,6 +627,7 @@
     "glob": "^10.4.2",
     "happy-dom": "^18.0.1",
     "jest-axe": "^10.0.0",
+    "lit": "^3.3.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "svelte": "^5.39.3",
@@ -633,8 +635,7 @@
     "vite": "^7.1.5",
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^3.2.4",
-    "vue": "^3.5.21",
-    "lit": "^3.3.1"
+    "vue": "^3.5.21"
   },
   "peerDependencies": {
     "lit": "^3.3.1",
