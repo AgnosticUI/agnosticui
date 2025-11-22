@@ -28,7 +28,7 @@
   <section class="mbe4">
     <h2>Reactive Highlighting</h2>
     <div class="flex items-center mbe4">
-      <vue-input
+      <VueInput
         class="full-width"
         v-model:value="searchTerm"
         label="Enter text to highlight"
@@ -37,14 +37,14 @@
     </div>
     <div class="flex items-center mbe3">
       <VueToggle
-        v-model="caseSensitive"
+        v-model:checked="caseSensitive"
         label="Case sensitive"
       />
       <span class="mis2">Case sensitive</span>
     </div>
     <div class="flex items-center mbe3">
       <VueToggle
-        v-model="matchAll"
+        v-model:checked="matchAll"
         label="Match all"
       />
       <span class="mis2">Match all</span>
@@ -53,8 +53,8 @@
       <p>
         <VueMark
           :search="searchTerm"
-          :case-sensitive="caseSensitive"
-          :match-all="matchAll"
+          :caseSensitive="caseSensitive"
+          :matchAll="matchAll"
           variant="warning"
         >
           The quick brown fox jumps over the lazy dog. The lazy fox was not the same as the other fox.
@@ -68,7 +68,7 @@
 import { ref } from "vue";
 import { VueMark } from "agnosticui-core/mark/vue";
 import { VueInput } from "agnosticui-core/input/vue";
-import { VueToggle } from "agnosticui-core/toggle/vue"; // Corrected import
+import { VueToggle } from "agnosticui-core/toggle/vue";
 
 const searchTerm = ref("fox");
 const caseSensitive = ref(false);

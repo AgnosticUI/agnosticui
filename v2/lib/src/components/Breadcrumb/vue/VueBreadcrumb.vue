@@ -2,8 +2,8 @@
   <ag-breadcrumb
     ref="breadcrumbRef"
     :type="type"
-    :primary="primary || undefined"
-    :ariaLabel="ariaLabel"
+    .primary="primary"
+    .ariaLabel="ariaLabel"
     @breadcrumb-click="handleBreadcrumbClick"
     v-bind="$attrs"
   ></ag-breadcrumb>
@@ -15,11 +15,12 @@ import "../core/Breadcrumb"; // Registers the ag-breadcrumb web component
 import type {
   BreadcrumbItem,
   BreadcrumbProps,
-  BreadcrumbClickEventDetail
+  BreadcrumbClickEventDetail,
 } from "../core/Breadcrumb";
 
 // Omit callback props (Vue uses emits instead)
-export interface VueBreadcrumbProps extends Omit<BreadcrumbProps, "onBreadcrumbClick"> {}
+export interface VueBreadcrumbProps
+  extends Omit<BreadcrumbProps, "onBreadcrumbClick"> {}
 
 // Define props with defaults
 const props = withDefaults(defineProps<VueBreadcrumbProps>(), {

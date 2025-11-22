@@ -3,7 +3,9 @@
     ref="agComponent"
     :variant="variant"
     :size="size"
-    :dot="dot"
+    .dot="dot"
+    .interactive="interactive"
+    .hiddenFromAT="hiddenFromAT"
     v-bind="$attrs"
   >
     <slot />
@@ -12,13 +14,15 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { BadgeSize, BadgeVariant } from "../core/Badge";
+import type { BadgeSize, BadgeVariant, BadgeProps } from "../core/Badge";
 import type { AgBadge } from "../core/Badge"; // For stricter ref typing
 import "../core/Badge"; // Registers <ag-badge> on wrapper load
 
 const props = defineProps<{
   variant?: BadgeVariant;
   size?: BadgeSize;
+  interactive?: BadgeProps;
+  hiddenFromAT?: BadgeProps;
   dot?: boolean;
 }>();
 

@@ -1,16 +1,16 @@
 <template>
   <ag-popover
     ref="agComponent"
+    .arrow="arrow"
+    .disabled="disabled"
+    .matchTriggerWidth="matchTriggerWidth"
+    .showCloseButton="showCloseButton"
+    .trapFocus="trapFocus"
     :placement="placement"
     :distance="distance"
     :skidding="skidding"
-    :arrow="arrow"
-    :disabled="disabled"
-    :trigger-type="triggerType"
-    :match-trigger-width="matchTriggerWidth"
-    :show-close-button="showCloseButton"
-    :close-label="closeLabel"
-    :trap-focus="trapFocus"
+    :triggerType="triggerType"
+    :closeLabel="closeLabel"
     v-bind="$attrs"
   >
     <slot />
@@ -58,8 +58,8 @@ export default defineComponent({
       default: false,
     },
     triggerType: {
-      type: String as PropType<'click' | 'hover' | 'focus'>,
-      default: 'click',
+      type: String as PropType<"click" | "hover" | "focus">,
+      default: "click",
     },
     matchTriggerWidth: {
       type: Boolean,
@@ -71,14 +71,14 @@ export default defineComponent({
     },
     closeLabel: {
       type: String,
-      default: 'Close popover',
+      default: "Close popover",
     },
     trapFocus: {
       type: Boolean,
       default: false,
     },
   },
-  emits: ['show', 'hide'],
+  emits: ["show", "hide"],
   setup(props, { emit }) {
     const agComponent = ref<(HTMLElement & PopoverProps) | null>(null);
 
@@ -99,11 +99,11 @@ export default defineComponent({
     };
 
     const handleShow = (event: Event) => {
-      emit('show', event as PopoverShowEvent);
+      emit("show", event as PopoverShowEvent);
     };
 
     const handleHide = (event: Event) => {
-      emit('hide', event as PopoverHideEvent);
+      emit("hide", event as PopoverHideEvent);
     };
 
     onMounted(async () => {
@@ -114,8 +114,8 @@ export default defineComponent({
       // Add event listeners
       const webComponent = agComponent.value;
       if (webComponent) {
-        webComponent.addEventListener('show', handleShow);
-        webComponent.addEventListener('hide', handleHide);
+        webComponent.addEventListener("show", handleShow);
+        webComponent.addEventListener("hide", handleHide);
       }
     });
 

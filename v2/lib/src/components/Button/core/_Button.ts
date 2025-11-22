@@ -487,20 +487,20 @@ export class AgButton extends LitElement implements ButtonProps {
 
   constructor() {
     super();
-    this.type = 'button';
     this.disabled = false;
     this.loading = false;
     this.toggle = false;
     this.pressed = false;
+    this.bordered = false;
+    this.ghost = false;
+    this.link = false;
+    this.grouped = false;
+    this.type = 'button';
     this.ariaLabel = '';
     this.ariaDescribedby = '';
     this.variant = '';
     this.size = 'md';
     this.shape = '';
-    this.bordered = false;
-    this.ghost = false;
-    this.link = false;
-    this.grouped = false;
   }
 
   private _handleClick(event: MouseEvent) {

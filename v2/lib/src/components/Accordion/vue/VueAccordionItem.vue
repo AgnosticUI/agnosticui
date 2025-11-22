@@ -1,15 +1,15 @@
 <template>
   <ag-accordion-item
     ref="accordionItemRef"
+    .open="open"
+    .disabled="disabled"
+    .useChevron="useChevron"
+    .useX="useX"
+    .useMinus="useMinus"
+    .noIndicator="noIndicator"
+    .background="background"
+    .bordered="bordered"
     :headingLevel="headingLevel"
-    :open="open || undefined"
-    :disabled="disabled || undefined"
-    :useChevron="useChevron || undefined"
-    :useX="useX || undefined"
-    :useMinus="useMinus || undefined"
-    :noIndicator="noIndicator || undefined"
-    :background="background || undefined"
-    :bordered="bordered || undefined"
     v-bind="$attrs"
   >
     <slot />
@@ -21,7 +21,10 @@ import { ref, onMounted, onUnmounted } from "vue";
 import "../core/Accordion";
 
 // Re-export event types
-export type { AccordionItemToggleEvent, AccordionItemToggleEventDetail } from '../core/Accordion';
+export type {
+  AccordionItemToggleEvent,
+  AccordionItemToggleEventDetail,
+} from "../core/Accordion";
 
 // VueAccordionItem component
 export interface VueAccordionItemProps {
@@ -55,7 +58,7 @@ const emit = defineEmits<{
   // Custom event - emit detail payload
   toggle: [detail: { open: boolean }];
   // v-model support
-  'update:open': [value: boolean];
+  "update:open": [value: boolean];
 }>();
 
 // Template ref
