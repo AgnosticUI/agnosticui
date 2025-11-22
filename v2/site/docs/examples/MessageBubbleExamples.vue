@@ -500,11 +500,6 @@ export default defineComponent({
   font-style: italic;
 }
 
-/* Message fade transitions */
-.message-item {
-  display: block;
-}
-
 .message-fade-enter-active {
   animation: message-fade-in var(--ag-motion-medium, 0.2s) ease-out;
 }

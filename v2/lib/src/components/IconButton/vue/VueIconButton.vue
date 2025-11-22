@@ -1,15 +1,15 @@
 <template>
   <ag-icon-button
     ref="iconButtonRef"
+    .disabled="disabled"
+    .pressed="pressed"
+    .loading="loading"
     :label="ariaLabel || label"
     :icon="icon"
     :unicode="unicode"
     :size="size"
     :variant="variant"
     :type="type"
-    :disabled="disabled || undefined"
-    :pressed="pressed || undefined"
-    :loading="loading || undefined"
     :ariaDescribedby="ariaDescribedby"
     @icon-button-click="handleClick"
     @icon-button-activate="handleActivate"
@@ -29,7 +29,8 @@ import type {
 import "../core/IconButton"; // Registers the ag-icon-button web component
 
 // Omit callback props (Vue uses emits instead)
-export interface VueIconButtonProps extends Omit<IconButtonProps, "onIconButtonClick" | "onIconButtonActivate"> {
+export interface VueIconButtonProps
+  extends Omit<IconButtonProps, "onIconButtonClick" | "onIconButtonActivate"> {
   /** Additional ARIA label (will override label prop) */
   ariaLabel?: string;
 }
