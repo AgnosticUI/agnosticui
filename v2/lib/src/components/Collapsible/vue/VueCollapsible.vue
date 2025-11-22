@@ -1,14 +1,14 @@
 <template>
   <ag-collapsible
     ref="collapsibleRef"
-    :open="open || undefined"
-    :bordered="bordered || undefined"
-    :shadow="shadow || undefined"
-    :useChevron="useChevron || undefined"
-    :useX="useX || undefined"
-    :useMinus="useMinus || undefined"
-    :noIndicator="noIndicator || undefined"
-    :onToggle="internalOnToggle"
+    .open="open"
+    .bordered="bordered"
+    .shadow="shadow"
+    .useChevron="useChevron"
+    .useX="useX"
+    .useMinus="useMinus"
+    .noIndicator="noIndicator"
+    .onToggle="internalOnToggle"
     v-bind="$attrs"
   >
     <span slot="summary">

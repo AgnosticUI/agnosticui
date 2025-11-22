@@ -1,11 +1,11 @@
 <template>
   <ag-checkbox
     ref="checkboxRef"
+    .checked="checked"
+    .indeterminate="indeterminate"
+    .disabled="disabled"
     :name="name"
     :value="value"
-    :checked="checked || undefined"
-    :indeterminate="indeterminate || undefined"
-    :disabled="disabled || undefined"
     :size="size"
     :theme="theme"
     :labelText="labelText"

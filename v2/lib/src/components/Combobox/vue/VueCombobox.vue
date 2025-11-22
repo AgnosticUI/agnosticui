@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import type { ComboboxProps, ComboboxOption } from "../core/Combobox";
 import "../core/Combobox"; // Registers the ag-combobox web component
 
@@ -12,7 +12,13 @@ import "../core/Combobox"; // Registers the ag-combobox web component
 export interface VueComboboxProps
   extends Omit<
     ComboboxProps,
-    "onChange" | "onSelect" | "onSearch" | "onOpen" | "onClose" | "onFocus" | "onBlur"
+    | "onChange"
+    | "onSelect"
+    | "onSearch"
+    | "onOpen"
+    | "onClose"
+    | "onFocus"
+    | "onBlur"
   > {}
 
 // Define props with defaults
@@ -38,7 +44,7 @@ const props = withDefaults(defineProps<VueComboboxProps>(), {
   size: "default",
   variant: "default",
   multiple: false,
-  maxOptionsVisible: undefined,
+  maxOptionsVisible: 3,
   closeOnSelect: true,
   loading: false,
   loadingText: "Loading...",
@@ -62,14 +68,20 @@ const comboboxRef = ref<HTMLElement>();
 
 // Event handlers
 const handleChange = (event: Event) => {
-  const customEvent = event as CustomEvent<{ value: string; option: ComboboxOption | null }>;
+  const customEvent = event as CustomEvent<{
+    value: string;
+    option: ComboboxOption | null;
+  }>;
   emit("change", customEvent.detail);
   // Update v-model
   emit("update:value", customEvent.detail.value);
 };
 
 const handleSelect = (event: Event) => {
-  const customEvent = event as CustomEvent<{ option: ComboboxOption; value: string }>;
+  const customEvent = event as CustomEvent<{
+    option: ComboboxOption;
+    value: string;
+  }>;
   emit("select", customEvent.detail);
 };
 
@@ -96,27 +108,6 @@ const handleBlur = (event: FocusEvent) => {
   emit("blur", event);
 };
 
-// Keep web component and Vue value synced
-watch(
-  () => props.value,
-  (newValue) => {
-    if (comboboxRef.value && (comboboxRef.value as any).value !== newValue) {
-      (comboboxRef.value as any).value = newValue;
-    }
-  }
-);
-
-// Sync defaultValue to web component
-watch(
-  () => props.defaultValue,
-  (newDefaultValue) => {
-    if (comboboxRef.value && newDefaultValue !== undefined) {
-      (comboboxRef.value as any).defaultValue = newDefaultValue;
-    }
-  },
-  { immediate: true }
-);
-
 // Expose public methods
 defineExpose({
   focus: () => (comboboxRef.value as any)?.focus?.(),
@@ -124,7 +115,8 @@ defineExpose({
   open: () => (comboboxRef.value as any)?.open?.(),
   close: () => (comboboxRef.value as any)?.close?.(),
   toggle: () => (comboboxRef.value as any)?.toggle?.(),
-  selectOption: (optionOrValue: ComboboxOption | string) => (comboboxRef.value as any)?.selectOption?.(optionOrValue),
+  selectOption: (optionOrValue: ComboboxOption | string) =>
+    (comboboxRef.value as any)?.selectOption?.(optionOrValue),
   clearSelection: () => (comboboxRef.value as any)?.clearSelection?.(),
 });
 </script>
@@ -132,32 +124,32 @@ defineExpose({
 <template>
   <ag-combobox
     ref="comboboxRef"
-    :options="options"
-    :value="value"
-    :default-value="defaultValue"
-    :placeholder="placeholder || undefined"
-    :label="label || undefined"
-    :label-hidden="labelHidden || undefined"
-    :no-label="noLabel || undefined"
-    :aria-label="ariaLabel || undefined"
-    :labelled-by="labelledBy || undefined"
-    :help-text="helpText || undefined"
-    :error-text="errorText || undefined"
+    .labelHidden="labelHidden"
+    .noLabel="noLabel"
+    .disabled="disabled"
+    .invalid="invalid"
+    .clearable="clearable"
+    .readonly="readonly"
+    .required="required"
+    .loading="loading"
+    .multiple="multiple"
+    .closeOnSelect="closeOnSelect"
+    .options="options"
+    .value="value"
+    .defaultValue="defaultValue"
+    .maxOptionsVisible="maxOptionsVisible"
+    :placeholder="placeholder"
+    :label="label"
+    :ariaLabel="ariaLabel"
+    :labelledBy="labelledBy"
+    :helpText="helpText"
+    :errorText="errorText"
     :autocomplete="autocomplete"
-    :filter-mode="filterMode"
-    :clearable="clearable || undefined"
-    :disabled="disabled || undefined"
-    :readonly="readonly || undefined"
-    :required="required || undefined"
-    :invalid="invalid || undefined"
+    :filterMode="filterMode"
     :size="size"
     :variant="variant"
-    :multiple="multiple || undefined"
-    :max-options-visible="maxOptionsVisible"
-    :close-on-select="closeOnSelect"
-    :loading="loading || undefined"
-    :loading-text="loadingText || undefined"
-    :no-results-text="noResultsText || undefined"
+    :loadingText="loadingText"
+    :noResultsText="noResultsText"
     @change="handleChange"
     @select="handleSelect"
     @search="handleSearch"

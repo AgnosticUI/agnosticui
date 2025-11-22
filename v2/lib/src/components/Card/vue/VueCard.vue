@@ -1,10 +1,9 @@
 <template>
   <ag-card
     ref="agComponent"
-    :skinned="skinned || undefined"
-    :stacked="stacked || undefined"
-    :shadow="shadow || undefined"
-    :animated="animated || undefined"
+    .stacked="stacked"
+    .shadow="shadow"
+    .animated="animated"
     :rounded="rounded"
     :variant="variant"
     v-bind="$attrs"
@@ -29,10 +28,6 @@ import "../core/Card"; // Registers the ag-card web component
 export default defineComponent({
   name: "VueCard",
   props: {
-    skinned: {
-      type: Boolean,
-      default: true,
-    },
     stacked: {
       type: Boolean,
       default: false,
@@ -68,7 +63,6 @@ export default defineComponent({
 
     return {
       agComponent,
-      skinned: props.skinned,
       stacked: props.stacked,
       shadow: props.shadow,
       animated: props.animated,

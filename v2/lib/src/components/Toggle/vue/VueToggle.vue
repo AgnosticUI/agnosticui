@@ -2,11 +2,11 @@
   <ag-toggle
     ref="toggleRef"
     :label="label"
-    :checked="checked || undefined"
     :size="size"
     :variant="variant"
-    :disabled="disabled || undefined"
-    :readonly="readonly || undefined"
+    .checked="checked"
+    .disabled="disabled"
+    .readonly="readonly"
     :labelledBy="labelledBy"
     :describedBy="describedBy"
     :name="name"
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import type {
   ToggleProps,
   ToggleChangeEvent,
@@ -59,4 +59,14 @@ const handleToggleChange = (event: Event) => {
   emit("toggle-change", toggleEvent.detail);
   emit("update:checked", toggleEvent.detail.checked);
 };
+
+// Keep web component and Vue checked state synced
+watch(
+  () => props.checked,
+  (newValue) => {
+    if (toggleRef.value && (toggleRef.value as any).checked !== newValue) {
+      (toggleRef.value as any).checked = newValue;
+    }
+  }
+);
 </script>
