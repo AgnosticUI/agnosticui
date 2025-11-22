@@ -1,14 +1,16 @@
 <template>
   <ag-radio
     ref="radioRef"
+    .checked="checked"
+    .disabled="disabled"
     :name="name"
     :value="value"
-    :checked="checked || undefined"
-    :disabled="disabled || undefined"
     :size="size"
     :theme="theme"
     :labelText="labelText"
     :labelPosition="labelPosition"
+    @click="handleClick"
+    @change="handleChange"
     v-bind="$attrs"
   >
     <slot />
@@ -16,11 +18,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
 import type { RadioSize, RadioTheme } from "../core/Radio";
-import "../core/Radio"; // Registers the ag-radio web component
+import "../core/Radio";
 
-// Define props interface (Omit callback props - Vue uses emits)
 export interface VueRadioProps {
   name?: string;
   value?: string;
@@ -32,8 +33,7 @@ export interface VueRadioProps {
   labelPosition?: "end" | "start";
 }
 
-// Define props with defaults
-withDefaults(defineProps<VueRadioProps>(), {
+const props = withDefaults(defineProps<VueRadioProps>(), {
   name: "",
   value: "",
   checked: false,
@@ -44,19 +44,16 @@ withDefaults(defineProps<VueRadioProps>(), {
   labelPosition: "end",
 });
 
-// Define emits
 const emit = defineEmits<{
   click: [event: MouseEvent];
   change: [detail: { checked: boolean; value: string; name: string }];
   "update:checked": [checked: boolean];
 }>();
 
-// Template ref
 const radioRef = ref<HTMLElement>();
 
-// Event handlers
-const handleClick = (event: Event) => {
-  emit("click", event as MouseEvent);
+const handleClick = (event: MouseEvent) => {
+  emit("click", event);
 };
 
 const handleChange = (event: Event) => {
@@ -64,22 +61,4 @@ const handleChange = (event: Event) => {
   emit("change", detail);
   emit("update:checked", detail.checked);
 };
-
-// Setup event listeners
-onMounted(async () => {
-  // Wait for web components to be defined
-  await customElements.whenDefined("ag-radio");
-
-  if (!radioRef.value) return;
-
-  radioRef.value.addEventListener("click", handleClick);
-  radioRef.value.addEventListener("change", handleChange);
-});
-
-onUnmounted(() => {
-  if (!radioRef.value) return;
-
-  radioRef.value.removeEventListener("click", handleClick);
-  radioRef.value.removeEventListener("change", handleChange);
-});
 </script>

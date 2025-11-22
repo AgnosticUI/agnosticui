@@ -2,7 +2,7 @@
   <ag-content-pagination
     ref="contentPaginationRef"
     :aria-label="ariaLabel"
-    :bordered="bordered"
+    .bordered="bordered"
     @navigate="handleNavigate"
     v-bind="dynamicProps"
   >
