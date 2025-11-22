@@ -6,7 +6,7 @@
     :distance="distance"
     :skidding="skidding"
     :trigger="trigger"
-    :disabled="disabled || undefined"
+    .disabled="disabled"
     @show="handleShow"
     @hide="handleHide"
     v-bind="$attrs"
@@ -25,7 +25,8 @@ import type {
 import "../core/Tooltip"; // Registers the ag-tooltip web component
 
 // Omit callback props (Vue uses emits instead)
-export interface VueTooltipProps extends Omit<TooltipProps, "onShow" | "onHide"> {}
+export interface VueTooltipProps
+  extends Omit<TooltipProps, "onShow" | "onHide"> {}
 
 // Define props with defaults
 withDefaults(defineProps<VueTooltipProps>(), {

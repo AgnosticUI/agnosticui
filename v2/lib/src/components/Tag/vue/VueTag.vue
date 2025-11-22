@@ -3,8 +3,8 @@
     ref="agComponent"
     :variant="variant"
     :shape="shape"
-    :uppercase="uppercase || undefined"
-    :removable="removable || undefined"
+    .uppercase="uppercase"
+    .removable="removable"
     @tag-remove="handleRemove"
     v-bind="$attrs"
   >
@@ -15,10 +15,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type {
-  TagProps,
-  TagRemoveEventDetail
-} from "../core/Tag";
+import type { TagProps, TagRemoveEventDetail } from "../core/Tag";
 import type { AgTag } from "../core/Tag"; // For stricter ref typing
 import "../core/Tag"; // Registers <ag-tag> on wrapper load
 

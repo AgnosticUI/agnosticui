@@ -1,7 +1,24 @@
+<template>
+  <ag-rating
+    ref="ratingRef"
+    .value="value"
+    .readonly="readonly"
+    .allowClear="allowClear"
+    :max="max"
+    :precision="precision"
+    :variant="variant"
+    :size="size"
+    @rating-change="handleChange"
+    @rating-hover="handleHover"
+    v-bind="$attrs"
+  >
+    <slot />
+  </ag-rating>
+</template>
+
 <script setup lang="ts">
-import { ref, watch } from "vue";
-import type { AgRating } from "../core/_Rating";
-import "../core/Rating"; // Registers the ag-rating web component
+import { ref } from "vue";
+import "../core/Rating";
 
 /**
  * Vue Rating Props
@@ -12,67 +29,52 @@ import "../core/Rating"; // Registers the ag-rating web component
 export interface VueRatingProps {
   value?: number;
   max?: number;
-  precision?: 'whole' | 'half';
+  precision?: "whole" | "half";
   readonly?: boolean;
   allowClear?: boolean;
-  variant?: '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'monochrome';
-  size?: 'sm' | 'md' | 'lg';
+  variant?:
+    | ""
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "danger"
+    | "monochrome";
+  size?: "sm" | "md" | "lg";
 }
 
 const props = withDefaults(defineProps<VueRatingProps>(), {
   value: 0,
   max: 5,
-  precision: 'whole',
+  precision: "whole",
   readonly: false,
   allowClear: false,
-  variant: '',
-  size: 'md',
+  variant: "",
+  size: "md",
 });
 
 const emit = defineEmits<{
-  (e: 'update:value', value: number): void;
-  (e: 'change', detail: { oldValue: number, newValue: number }): void;
-  (e: 'hover', detail: { phase: 'start' | 'move' | 'end', value: number }): void;
+  "update:value": [value: number];
+  change: [detail: { oldValue: number; newValue: number }];
+  hover: [detail: { phase: "start" | "move" | "end"; value: number }];
 }>();
 
 const ratingRef = ref<HTMLElement>();
 
 const handleChange = (event: Event) => {
-  const customEvent = event as CustomEvent<{ oldValue: number, newValue: number }>;
-  emit('change', customEvent.detail);
-  emit('update:value', customEvent.detail.newValue);
+  const customEvent = event as CustomEvent<{
+    oldValue: number;
+    newValue: number;
+  }>;
+  emit("change", customEvent.detail);
+  emit("update:value", customEvent.detail.newValue);
 };
 
 const handleHover = (event: Event) => {
-  const customEvent = event as CustomEvent<{ phase: 'start' | 'move' | 'end', value: number }>;
-  emit('hover', customEvent.detail);
+  const customEvent = event as CustomEvent<{
+    phase: "start" | "move" | "end";
+    value: number;
+  }>;
+  emit("hover", customEvent.detail);
 };
-
-watch(
-  () => props.value,
-  (newValue) => {
-    if (ratingRef.value && (ratingRef.value as any).value !== newValue) {
-      (ratingRef.value as any).value = newValue;
-    }
-  }
-);
-
 </script>
-
-<template>
-  <ag-rating
-    ref="ratingRef"
-    :value="value"
-    :max="max"
-    :precision="precision"
-    :readonly="readonly || undefined"
-    :allow-clear="allowClear || undefined"
-    :variant="variant ? variant : undefined"
-    :size="size"
-    @rating-change="handleChange"
-    @rating-hover="handleHover"
-    v-bind="$attrs"
-  >
-    <slot />
-  </ag-rating>
-</template>

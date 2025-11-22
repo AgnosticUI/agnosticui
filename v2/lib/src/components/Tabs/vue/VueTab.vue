@@ -2,7 +2,7 @@
   <ag-tab
     slot="tab"
     :panel="panel"
-    :disabled="disabled || null"
+    .disabled="disabled"
     :aria-disabled="disabled ? 'true' : null"
     v-bind="$attrs"
   >
