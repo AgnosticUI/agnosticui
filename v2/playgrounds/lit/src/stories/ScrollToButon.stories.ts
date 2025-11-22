@@ -206,9 +206,7 @@ export const CustomIcon: Story = {
         .target="${args.target}"
         .smoothScroll="${args.smoothScroll}"
       >
-        <svg slot="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 19V5M5 12l7-7 7 7"/>
-        </svg>
+        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-arrow-up-icon lucide-circle-arrow-up"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4"/><path d="M12 16V8"/></svg>
       </ag-scroll-to-button>
     </div>
   `,
@@ -254,8 +252,7 @@ export const NoIcon: Story = {
   render: (args) => html`
     <div style="min-height: 200vh; padding: 20px;">
       <h1>No Icon (Disabled)</h1>
-      <p>The button can be rendered without any icon by setting <code>icon={false}</code>.</p>
-      <p>Note: This may not be recommended for UX, but the option exists.</p>
+      <p>The button can be rendered without any icon by setting <code>icon={false}</code>.In this case, the label will be rendered regardless to prevent an empty box from being displayed.</p>
       ${Array.from({ length: 25 }).map((_, i) => html`
         <p style="margin-bottom: 40px; line-height: 1.6;">
           Paragraph ${i + 1}: The button will appear without an icon.
@@ -423,7 +420,7 @@ export const CSSPartsCustomization: Story = {
         label="Gradient Back to Top"
         .scrollThreshold="${300}"
         target="top"
-        style="right: 20px; bottom: 260px;"
+        style="bottom: 160px;"
       ></ag-scroll-to-button>
 
       <ag-scroll-to-button
@@ -431,7 +428,7 @@ export const CSSPartsCustomization: Story = {
         label="Success Back to Top"
         .scrollThreshold="${300}"
         target="top"
-        style="right: 20px; bottom: 180px;"
+        style="bottom: 100px;"
       ></ag-scroll-to-button>
 
       <ag-scroll-to-button
@@ -439,26 +436,6 @@ export const CSSPartsCustomization: Story = {
         label="Danger Back to Top"
         .scrollThreshold="${300}"
         target="top"
-        style="right: 20px; bottom: 100px;"
-      ></ag-scroll-to-button>
-
-      <!-- Icon positioning examples with showLabel -->
-      <ag-scroll-to-button
-        class="icon-right"
-        label="Icon Right"
-        showLabel
-        .scrollThreshold="${300}"
-        target="top"
-        style="right: 120px; bottom: 20px;"
-      ></ag-scroll-to-button>
-
-      <ag-scroll-to-button
-        class="icon-above"
-        label="Icon Above"
-        showLabel
-        .scrollThreshold="${300}"
-        target="top"
-        style="right: 20px; bottom: 20px;"
       ></ag-scroll-to-button>
     </div>
   `,
@@ -554,9 +531,10 @@ export const IconPositioning: Story = {
       <ag-scroll-to-button
         label="Default Layout"
         showLabel
+        shape="rounded"
         .scrollThreshold="${300}"
         target="top"
-        style="right: 20px; bottom: 340px;"
+        style="right: 20px; bottom: 215px;"
       ></ag-scroll-to-button>
 
       <!-- Icon right -->
@@ -564,19 +542,21 @@ export const IconPositioning: Story = {
         class="pos-right"
         label="Icon Right"
         showLabel
+        shape="rounded"
         .scrollThreshold="${300}"
         target="top"
-        style="right: 20px; bottom: 260px;"
+        style="right: 20px; bottom: 155px;"
       ></ag-scroll-to-button>
 
       <!-- Icon above -->
       <ag-scroll-to-button
         class="pos-above"
         label="Icon Above"
+        shape="rounded"
         showLabel
         .scrollThreshold="${300}"
         target="top"
-        style="right: 180px; bottom: 20px;"
+        style="right: 280px; bottom: 20px;"
       ></ag-scroll-to-button>
 
       <!-- Icon below -->
@@ -584,9 +564,10 @@ export const IconPositioning: Story = {
         class="pos-below"
         label="Icon Below"
         showLabel
+        shape="rounded"
         .scrollThreshold="${300}"
         target="top"
-        style="right: 100px; bottom: 20px;"
+        style="right: 150px; bottom: 20px;"
       ></ag-scroll-to-button>
 
       <!-- Icon in circle above -->
@@ -594,6 +575,7 @@ export const IconPositioning: Story = {
         class="pos-circle"
         label="Circled"
         showLabel
+        shape="rounded"
         .scrollThreshold="${300}"
         target="top"
         style="right: 20px; bottom: 20px;"
@@ -606,35 +588,24 @@ export const IconPositioning: Story = {
 };
 
 // All Features Combined
-export const AllFeatures: Story = {
+export const ButtonShapes: Story = {
   render: (args) => html`
     <div style="min-height: 200vh; padding: 20px;">
-      <h1>All Features Demo</h1>
-      <p>This story demonstrates all configurable features:</p>
-      <ul style="line-height: 1.8;">
-        <li><strong>Label:</strong> ${args.label}</li>
-        <li><strong>Show Label:</strong> ${args.showLabel ? 'Enabled' : 'Disabled'}</li>
-        <li><strong>Icon:</strong> ${args.icon ? 'Enabled' : 'Disabled'}</li>
-        <li><strong>Scroll Threshold:</strong> ${args.scrollThreshold}px</li>
-        <li><strong>Target:</strong> ${args.target}</li>
-        <li><strong>Direction:</strong> ${args.direction}</li>
-        <li><strong>Smooth Scroll:</strong> ${args.smoothScroll ? 'Enabled' : 'Disabled'}</li>
-      </ul>
-      <p>Adjust the controls in the Storybook panel to test different configurations!</p>
-      ${Array.from({ length: 30 }).map((_, i) => html`
-        <p style="margin-bottom: 40px; line-height: 1.6;">
-          Paragraph ${i + 1}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-      `)}
-      <ag-scroll-to-button
-        .label="${args.label}"
-        .showLabel="${args.showLabel}"
-        .icon="${args.icon}"
-        .scrollThreshold="${args.scrollThreshold}"
-        .target="${args.target}"
-        .direction="${args.direction}"
-        .smoothScroll="${args.smoothScroll}"
+      <h1>Button Shapes</h1>
+      <p>This story showcases different button shapes available via the <code>shape</code> prop.</p>
+      <p>Scroll down to try out the various shapes: square, rounded, capsule, circle, and rounded-square on the lower right.</p>
+      <ag-scroll-to-button shape="square"
+        style="bottom: 170px;"
       ></ag-scroll-to-button>
+      <ag-scroll-to-button size="sm" shape="rounded-square" style="bottom: 125px;" ></ag-scroll-to-button>
+      <ag-scroll-to-button size="sm" shape="rounded" style="bottom: 80px;" ></ag-scroll-to-button>
+      <ag-scroll-to-button 
+        size="lg" 
+        shape="capsule" 
+        showLabel 
+        label="Scroll to Top"
+        >
+      </ag-scroll-to-button>
     </div>
   `,
 };
