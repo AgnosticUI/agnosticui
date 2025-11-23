@@ -55,28 +55,28 @@ export class Progress extends LitElement implements ProgressProps {
 
       progress {
         width: 100%;
-        height: 1rem;
+        height: var(--ag-space-4);
         appearance: none;
         border: none;
-        border-radius: var(--ag-radius-sm);
+        border-radius: var(--ag-radius-lg);
         background-color: var(--ag-background-secondary);
       }
 
       /* WebKit/Blink browsers (Chrome, Safari, Edge) */
       progress::-webkit-progress-bar {
         background-color: var(--ag-background-secondary);
-        border-radius: var(--ag-radius-sm);
+        border-radius: var(--ag-radius-lg);
       }
 
       progress::-webkit-progress-value {
         background-color: var(--ag-primary);
-        border-radius: var(--ag-radius-sm);
+        border-radius: var(--ag-radius-lg);
       }
 
       /* Firefox */
       progress::-moz-progress-bar {
         background-color: var(--ag-primary);
-        border-radius: var(--ag-radius-sm);
+        border-radius: var(--ag-radius-lg);
       }
 
       /* Indeterminate state animations */
