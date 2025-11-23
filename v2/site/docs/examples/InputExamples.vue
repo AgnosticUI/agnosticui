@@ -396,6 +396,47 @@
     </div>
 
     <div class="mbe4">
+      <h3>Label Positioning</h3>
+      <p style="margin-top: 0.5rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
+        Control label placement with the <code>labelPosition</code> prop: <code>top</code> (default), <code>start</code>, <code>end</code>, or <code>bottom</code>
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <VueInput
+        v-model:value="labelTop"
+        label="Top Position (Default)"
+        label-position="top"
+        placeholder="Label above input"
+        help-text="Default vertical layout - best for mobile"
+        class="mbe2"
+      />
+      <VueInput
+        v-model:value="labelStart"
+        label="Name:"
+        label-position="start"
+        placeholder="Enter name"
+        help-text="Horizontal layout - label before input"
+        class="mbe2"
+      />
+      <VueInput
+        v-model:value="labelEnd"
+        label="Email:"
+        label-position="end"
+        placeholder="you@example.com"
+        help-text="Horizontal layout - label after input"
+        class="mbe2"
+      />
+      <VueInput
+        v-model:value="labelBottom"
+        label="Bottom Position"
+        label-position="bottom"
+        placeholder="Enter value"
+        help-text="Vertical layout - label below input"
+        class="mbe2"
+      />
+    </div>
+
+    <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
       <p style="margin-top: 0.5rem; margin-bottom: 1rem; color: var(--vp-c-text-2);">
         Input can be customized using CSS Shadow Parts:
@@ -505,6 +546,12 @@ export default {
       customMaterial: "",
       customError: "",
       customTextarea: "",
+
+      // Label positioning
+      labelTop: "",
+      labelStart: "",
+      labelEnd: "",
+      labelBottom: "",
 
       // Interactive event handling
       interactiveEmail: "",
