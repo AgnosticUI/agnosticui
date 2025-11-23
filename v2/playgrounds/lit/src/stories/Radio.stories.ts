@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import "agnosticui-core/radio";
+import "agnosticui-core/fieldset";
 import type { AgRadio } from "agnosticui-core/radio";
 
 const meta: Meta<AgRadio> = {
@@ -114,12 +115,7 @@ export const RadioGroup: Story = {
     name: "framework",
   },
   render: (args) => html`
-    <fieldset
-      style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-    >
-      <legend style="padding: 0 0.5rem; font-weight: 600;">
-        Select Framework
-      </legend>
+    <ag-fieldset legend="Select Framework">
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <ag-radio
           .name=${args.name}
@@ -144,7 +140,7 @@ export const RadioGroup: Story = {
           >Angular</ag-radio
         >
       </div>
-    </fieldset>
+    </ag-fieldset>
   `,
 };
 
@@ -153,10 +149,7 @@ export const InlineGroup: Story = {
     name: "plan",
   },
   render: (args) => html`
-    <fieldset
-      style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-    >
-      <legend style="padding: 0 0.5rem; font-weight: 600;">Choose Plan</legend>
+    <ag-fieldset legend="Choose Plan">
       <div style="display: flex; gap: 1.5rem;">
         <ag-radio
           .name=${args.name}
@@ -181,7 +174,7 @@ export const InlineGroup: Story = {
           >Enterprise</ag-radio
         >
       </div>
-    </fieldset>
+    </ag-fieldset>
   `,
 };
 
@@ -351,12 +344,7 @@ export const AllThemes: Story = {
   },
   render: (args) => html`
     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-      <fieldset
-        style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-      >
-        <legend style="padding: 0 0.5rem; font-weight: 600;">
-          Default Theme (Primary)
-        </legend>
+      <ag-fieldset legend="Default Theme (Primary)">
         <div style="display: flex; gap: 1rem;">
           <ag-radio
             name="theme-default"
@@ -374,13 +362,8 @@ export const AllThemes: Story = {
             >Checked</ag-radio
           >
         </div>
-      </fieldset>
-<fieldset
-        style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-      >
-        <legend style="padding: 0 0.5rem; font-weight: 600;">
-          Primary Theme (Blue)
-        </legend>
+      </ag-fieldset>
+      <ag-fieldset legend="Primary Theme (Blue)">
         <div style="display: flex; gap: 1rem;">
           <ag-radio
             name="theme-primary"
@@ -398,13 +381,8 @@ export const AllThemes: Story = {
             >Checked</ag-radio
           >
         </div>
-      </fieldset>
-      <fieldset
-        style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-      >
-        <legend style="padding: 0 0.5rem; font-weight: 600;">
-          Success Theme (Green)
-        </legend>
+      </ag-fieldset>
+      <ag-fieldset legend="Success Theme (Green)">
         <div style="display: flex; gap: 1rem;">
           <ag-radio
             name="theme-success"
@@ -422,14 +400,9 @@ export const AllThemes: Story = {
             >Checked</ag-radio
           >
         </div>
-      </fieldset>
+      </ag-fieldset>
 
-      <fieldset
-        style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-      >
-        <legend style="padding: 0 0.5rem; font-weight: 600;">
-          Monochrome Theme (Black/White)
-        </legend>
+      <ag-fieldset legend="Monochrome Theme (Black/White)">
         <div style="display: flex; gap: 1rem;">
           <ag-radio
             name="theme-mono"
@@ -447,7 +420,7 @@ export const AllThemes: Story = {
             >Checked</ag-radio
           >
         </div>
-      </fieldset>
+      </ag-fieldset>
     </div>
   `,
 };

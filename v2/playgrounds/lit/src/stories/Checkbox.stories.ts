@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import "agnosticui-core/checkbox";
+import "agnosticui-core/fieldset";
 import type { Checkbox } from "agnosticui-core/checkbox";
 
 const meta: Meta<Checkbox> = {
@@ -85,12 +86,7 @@ export const CheckboxGroup: Story = {
     name: "features",
   },
   render: (args) => html`
-    <fieldset
-      style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-    >
-      <legend style="padding: 0 0.5rem; font-weight: 600;">
-        Select Features
-      </legend>
+    <ag-fieldset legend="Select Features">
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <ag-checkbox
           name="features"
@@ -116,7 +112,7 @@ export const CheckboxGroup: Story = {
           >Analytics</ag-checkbox
         >
       </div>
-    </fieldset>
+    </ag-fieldset>
   `,
 };
 
@@ -336,12 +332,7 @@ export const AllThemes: Story = {
   },
   render: (args) => html`
     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-      <fieldset
-        style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-      >
-        <legend style="padding: 0 0.5rem; font-weight: 600;">
-          Default Theme (Primary)
-        </legend>
+      <ag-fieldset legend="Default Theme (Primary)">
         <div style="display: flex; gap: 1rem;">
           <ag-checkbox
             name="theme-default"
@@ -367,14 +358,9 @@ export const AllThemes: Story = {
             .indeterminate=${true}
           ></ag-checkbox>
         </div>
-      </fieldset>
+      </ag-fieldset>
 
-      <fieldset
-        style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-      >
-        <legend style="padding: 0 0.5rem; font-weight: 600;">
-          Primary Theme (Blue)
-        </legend>
+      <ag-fieldset legend="Primary Theme (Blue)">
         <div style="display: flex; gap: 1rem;">
           <ag-checkbox
             name="theme-primary"
@@ -400,13 +386,8 @@ export const AllThemes: Story = {
             .indeterminate=${true}
           ></ag-checkbox>
         </div>
-      </fieldset>
-      <fieldset
-        style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-      >
-        <legend style="padding: 0 0.5rem; font-weight: 600;">
-          Success Theme (Green)
-        </legend>
+      </ag-fieldset>
+      <ag-fieldset legend="Success Theme (Green)">
         <div style="display: flex; gap: 1rem;">
           <ag-checkbox
             name="theme-success"
@@ -432,14 +413,9 @@ export const AllThemes: Story = {
             .indeterminate=${true}
           ></ag-checkbox>
         </div>
-      </fieldset>
+      </ag-fieldset>
 
-      <fieldset
-        style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;"
-      >
-        <legend style="padding: 0 0.5rem; font-weight: 600;">
-          Monochrome Theme (Black/White)
-        </legend>
+      <ag-fieldset legend="Monochrome Theme (Black/White)">
         <div style="display: flex; gap: 1rem;">
           <ag-checkbox
             name="theme-mono"
@@ -465,7 +441,7 @@ export const AllThemes: Story = {
             .indeterminate=${true}
           ></ag-checkbox>
         </div>
-      </fieldset>
+      </ag-fieldset>
     </div>
   `,
 };
