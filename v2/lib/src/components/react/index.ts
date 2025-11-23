@@ -26,6 +26,7 @@ export * from '../Menu/react';
 export * from '../Pagination/react';
 export * from '../Popover/react';
 export * from '../Progress/react';
+export * from '../ProgressRing/react/ReactProgressRing';
 export * from '../Radio/react';
 export * from '../Rating/react';
 export * from '../Select/react';

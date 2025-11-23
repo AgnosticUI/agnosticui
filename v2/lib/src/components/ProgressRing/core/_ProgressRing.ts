@@ -1,4 +1,3 @@
-// src/components/progress-ring/ag-progress-ring.ts
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
@@ -24,7 +23,7 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 export class AgProgressRing extends LitElement implements AgProgressRingProps {
   static styles = css`
     :host {
-      --ag-progress-ring-size: var(--ag-space-16, 4rem);
+      --ag-progress-ring-size: var(--ag-progress-ring-size-base, 6rem);
       --ag-progress-ring-track-color: var(--ag-border-subtle);
       --ag-progress-ring-indicator-color: var(--ag-primary);
       --ag-progress-ring-transition-duration: var(--ag-motion-medium);
@@ -36,8 +35,8 @@ export class AgProgressRing extends LitElement implements AgProgressRingProps {
     }
 
     /* Size variants */
-    :host([size="small"]) { --ag-progress-ring-size: var(--ag-space-12, 3rem); }
-    :host([size="large"])  { --ag-progress-ring-size: var(--ag-space-20, 5rem); }
+    :host([size="small"]) { --ag-progress-ring-size: var(--ag-progress-ring-size-small, 5rem); }
+    :host([size="large"])  { --ag-progress-ring-size: var(--ag-progress-ring-size-large, 7rem); }
 
     /* Color variants — fully token-driven */
     :host([variant="primary"]) { --ag-progress-ring-indicator-color: var(--ag-primary); }
@@ -66,8 +65,7 @@ export class AgProgressRing extends LitElement implements AgProgressRingProps {
       fill: none;
       cx: 50;
       cy: 50;
-      r: ${RADIUS};
-      stroke-width: ${STROKE_WIDTH};
+      stroke-width: 10;
     }
 
     .track {
@@ -78,7 +76,6 @@ export class AgProgressRing extends LitElement implements AgProgressRingProps {
       stroke: var(--ag-progress-ring-indicator-color);
       stroke-linecap: round;
       transition: stroke-dashoffset var(--ag-progress-ring-transition-duration) ease;
-      stroke-dasharray: ${CIRCUMFERENCE.toFixed(4)};
     }
 
     .label {
@@ -125,6 +122,7 @@ export class AgProgressRing extends LitElement implements AgProgressRingProps {
 
   render() {
     const offset = CIRCUMFERENCE - (this._value / 100) * CIRCUMFERENCE;
+    const circumferenceStr = CIRCUMFERENCE.toFixed(4);
 
     return html`
       <div
@@ -138,15 +136,16 @@ export class AgProgressRing extends LitElement implements AgProgressRingProps {
         aria-label=${this.label || 'Progress'}
       >
         <svg viewBox="0 0 ${VIEWBOX_SIZE} ${VIEWBOX_SIZE}">
-          <circle part="track" class="track"></circle>
+          <circle part="ag-track" class="track" r="${RADIUS}"></circle>
           <circle
-            part="indicator"
+            part="ag-indicator"
             class="indicator"
-            style="stroke-dashoffset: ${offset}px"
+            r="${RADIUS}"
+            style="stroke-dasharray: ${circumferenceStr}; stroke-dashoffset: ${offset}px"
           ></circle>
         </svg>
 
-        <div part="label" class="label">
+        <div part="ag-label" class="label">
           <slot>${this._value}%</slot>
         </div>
       </div>
