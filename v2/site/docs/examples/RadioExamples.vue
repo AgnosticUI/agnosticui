@@ -312,6 +312,54 @@
     </fieldset>
 
     <div class="mbe4">
+      <h3>External Label Support</h3>
+      <p class="mbs2 mbe3">
+        Radio buttons support optional external labels, helper text, and error messages for validation feedback.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <VueRadio
+        name="shipping-method"
+        value="standard"
+        label="Shipping Method"
+        label-text="Standard Shipping (5-7 days)"
+        :checked="true"
+        class="mbe2"
+      />
+
+      <VueRadio
+        name="payment-method"
+        value="credit"
+        label="Payment Method"
+        label-text="Credit Card"
+        help-text="We accept all major credit cards"
+        :checked="true"
+        class="mbe2"
+      />
+
+      <VueRadio
+        name="terms-agreement"
+        value="agreed"
+        label="Terms and Conditions"
+        label-text="I agree to the terms and conditions"
+        :required="true"
+        help-text="Please read and accept our terms to proceed"
+        class="mbe2"
+      />
+
+      <VueRadio
+        name="age-verify"
+        value="confirmed"
+        label="Age Verification"
+        label-text="I confirm I am 18 years or older"
+        :required="true"
+        :invalid="true"
+        error-message="You must confirm you are 18 or older to proceed"
+        class="mbe2"
+      />
+    </div>
+
+    <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the component's appearance.

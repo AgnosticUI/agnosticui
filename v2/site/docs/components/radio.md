@@ -255,6 +255,80 @@ export default function Example() {
 ```
 :::
 
+## External Label Support
+
+Radio buttons now support optional external labels, helper text, and error messages using the shared form control utilities. This is useful for:
+- Radio groups that need a descriptive label above them
+- Standalone radios that require validation feedback
+- Forms where consistent label/helper/error patterns are needed
+
+### Basic External Label
+
+```vue
+<VueRadio
+  name="shipping"
+  value="standard"
+  label="Shipping Method"
+  label-text="Standard Shipping (5-7 days)"
+  :checked="true"
+/>
+```
+
+### With Helper Text
+
+```vue
+<VueRadio
+  name="payment"
+  value="credit"
+  label="Payment Method"
+  label-text="Credit Card"
+  help-text="We accept all major credit cards"
+/>
+```
+
+### With Validation
+
+```vue
+<VueRadio
+  name="terms"
+  value="agreed"
+  label="Terms and Conditions"
+  label-text="I agree to the terms and conditions"
+  :required="true"
+  :invalid="!termsAccepted"
+  error-message="You must accept the terms to proceed"
+/>
+```
+
+### Radio Groups with External Label
+
+```vue
+<template>
+  <div>
+    <VueRadio
+      name="notifications"
+      value="email"
+      label="Notification Preferences"
+      label-text="Email notifications"
+      help-text="Choose how you'd like to be notified"
+      :checked="true"
+    />
+    <VueRadio
+      name="notifications"
+      value="sms"
+      label-text="SMS notifications"
+    />
+    <VueRadio
+      name="notifications"
+      value="push"
+      label-text="Push notifications"
+    />
+  </div>
+</template>
+```
+
+**Note:** The `label` prop creates an external label above the radio, while `labelText` is the internal label that wraps the radio itself. Most radios use only `labelText`, but external labels are useful for groups or when you need validation feedback.
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -265,8 +339,15 @@ export default function Example() {
 | `disabled` | `boolean` | `false` | Whether the radio is disabled |
 | `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Size of the radio button |
 | `theme` | `'default' \| 'primary' \| 'success' \| 'monochrome'` | `'primary'` | Color theme variant (default=blue alias to primary, primary=blue, success=green, monochrome=black/white) |
-| `labelText` | `string` | `''` | Label text for the radio button |
-| `labelPosition` | `'end' \| 'start'` | `'end'` | Position of label relative to radio button |
+| `labelText` | `string` | `''` | Label text for the radio button (internal label that wraps the radio) |
+| `labelPosition` | `'end' \| 'start'` | `'end'` | Position of labelText relative to radio button (`end` = after radio, `start` = before radio) |
+| `label` | `string` | `''` | Optional external label displayed above the radio (useful for groups or standalone with context) |
+| `labelHidden` | `boolean` | `false` | Visually hides the external label while keeping it accessible to screen readers |
+| `noLabel` | `boolean` | `false` | Completely removes the external label element |
+| `required` | `boolean` | `false` | Marks the radio as required. Displays an asterisk (*) after the external label |
+| `invalid` | `boolean` | `false` | Marks the radio as invalid. Sets aria-invalid and can display error message |
+| `errorMessage` | `string` | `''` | Error message displayed when invalid. Linked via aria-describedby |
+| `helpText` | `string` | `''` | Helper text displayed below the radio. Linked via aria-describedby |
 
 ## Events
 

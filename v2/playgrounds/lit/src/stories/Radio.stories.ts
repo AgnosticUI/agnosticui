@@ -43,6 +43,34 @@ const meta: Meta<AgRadio> = {
       options: ["end", "start"],
       description: "Position of label relative to radio",
     },
+    label: {
+      control: "text",
+      description: "Optional external label displayed above the radio",
+    },
+    labelHidden: {
+      control: "boolean",
+      description: "Visually hides the external label",
+    },
+    noLabel: {
+      control: "boolean",
+      description: "Removes the external label element",
+    },
+    required: {
+      control: "boolean",
+      description: "Marks the radio as required",
+    },
+    invalid: {
+      control: "boolean",
+      description: "Marks the radio as invalid",
+    },
+    errorMessage: {
+      control: "text",
+      description: "Error message displayed when invalid",
+    },
+    helpText: {
+      control: "text",
+      description: "Helper text displayed below the radio",
+    },
   },
   args: {
     name: "example",
@@ -53,6 +81,13 @@ const meta: Meta<AgRadio> = {
     theme: "primary",
     labelText: "Radio Option",
     labelPosition: "end",
+    label: "",
+    labelHidden: false,
+    noLabel: false,
+    required: false,
+    invalid: false,
+    errorMessage: "",
+    helpText: "",
   },
 };
 
@@ -436,6 +471,93 @@ export const AllSizes: Story = {
         <h3 style="margin-bottom: 0.5rem;">Large</h3>
         <ag-radio name="size-large" value="1" size="large" .checked=${true}
           >Large radio</ag-radio
+        >
+      </div>
+    </div>
+  `,
+};
+
+export const WithExternalLabel: Story = {
+  args: {
+    name: "external-label",
+  },
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <ag-radio
+        name="shipping-method"
+        value="standard"
+        label="Shipping Method"
+        .checked=${true}
+        >Standard Shipping (5-7 days)</ag-radio
+      >
+
+      <ag-radio
+        name="payment-method"
+        value="credit"
+        label="Payment Method"
+        help-text="We accept all major credit cards"
+        .checked=${true}
+        >Credit Card</ag-radio
+      >
+
+      <ag-radio
+        name="terms"
+        value="agreed"
+        label="Terms and Conditions"
+        .required=${true}
+        help-text="Please read and accept our terms"
+        >I agree to the terms and conditions</ag-radio
+      >
+
+      <ag-radio
+        name="age-verify"
+        value="confirmed"
+        label="Age Verification"
+        .required=${true}
+        .invalid=${true}
+        error-message="You must confirm you are 18 or older to proceed"
+        >I confirm I am 18 years or older</ag-radio
+      >
+    </div>
+  `,
+};
+
+export const ComparisonStandaloneVsExternal: Story = {
+  render: () => html`
+    <div style="display: flex; gap: 3rem;">
+      <div style="flex: 1;">
+        <h3 style="margin-bottom: 1rem;">Standard Radio (Internal Label)</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <ag-radio name="standard-plan" value="free" .checked=${true}
+            >Free Plan</ag-radio
+          >
+          <ag-radio name="standard-plan" value="pro">Pro Plan</ag-radio>
+          <ag-radio name="standard-plan" value="enterprise"
+            >Enterprise Plan</ag-radio
+          >
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <h3 style="margin-bottom: 1rem;">
+          Radio with External Label (Group Context)
+        </h3>
+        <ag-radio
+          name="plan-selection"
+          value="free"
+          label="Choose Your Plan"
+          help-text="Select the plan that best fits your needs"
+          .checked=${true}
+          >Free Plan</ag-radio
+        >
+        <ag-radio
+          name="plan-selection"
+          value="pro"
+          >Pro Plan</ag-radio
+        >
+        <ag-radio
+          name="plan-selection"
+          value="enterprise"
+          >Enterprise Plan</ag-radio
         >
       </div>
     </div>
