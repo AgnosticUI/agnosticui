@@ -22,11 +22,7 @@
       <h3>Checkbox Group</h3>
       <p class="mbs2 mbe3">Multiple checkboxes grouped together with a fieldset</p>
     </div>
-    <fieldset
-      class="mbe4"
-      style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);"
-    >
-      <legend style="padding: 0 0.5rem; font-weight: 600;">Select your interests</legend>
+    <VueFieldset legend="Select your interests" class="mbe4">
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <VueCheckbox
           name="interests"
@@ -51,7 +47,7 @@
           label-text="Science"
         />
       </div>
-    </fieldset>
+    </VueFieldset>
 
     <div class="mbe4">
       <h3>Indeterminate State</h3>
@@ -127,8 +123,7 @@
       class="mbe4"
       style="display: flex; flex-direction: column; gap: 1.5rem;"
     >
-      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Default Theme (Blue)</legend>
+      <VueFieldset legend="Default Theme (Blue)">
         <div style="display: flex; gap: 1rem;">
           <VueCheckbox
             name="theme-default"
@@ -151,9 +146,8 @@
             :indeterminate="true"
           />
         </div>
-      </fieldset>
-      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Primary Theme (Blue)</legend>
+      </VueFieldset>
+      <VueFieldset legend="Primary Theme (Blue)">
         <div style="display: flex; gap: 1rem;">
           <VueCheckbox
             name="theme-primary"
@@ -176,9 +170,8 @@
             :indeterminate="true"
           />
         </div>
-      </fieldset>
-      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Success Theme (Green)</legend>
+      </VueFieldset>
+      <VueFieldset legend="Success Theme (Green)">
         <div style="display: flex; gap: 1rem;">
           <VueCheckbox
             name="theme-success"
@@ -201,10 +194,9 @@
             :indeterminate="true"
           />
         </div>
-      </fieldset>
+      </VueFieldset>
 
-      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Monochrome Theme (Black/White)</legend>
+      <VueFieldset legend="Monochrome Theme (Black/White)">
         <div style="display: flex; gap: 1rem;">
           <VueCheckbox
             name="theme-mono"
@@ -227,7 +219,7 @@
             :indeterminate="true"
           />
         </div>
-      </fieldset>
+      </VueFieldset>
     </div>
 
     <div class="mbe4">
@@ -366,11 +358,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { VueCheckbox } from "agnosticui-core/checkbox/vue";
+import { VueFieldset } from "agnosticui-core/fieldset/vue";
 
 export default defineComponent({
   name: "CheckboxExamples",
   components: {
     VueCheckbox,
+    VueFieldset,
   },
 });
 </script>

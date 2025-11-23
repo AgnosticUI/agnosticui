@@ -24,8 +24,7 @@ import CheckboxExamples from '../examples/CheckboxExamples.vue'
     />
 
     <!-- Checkbox group -->
-    <fieldset>
-      <legend>Select your interests</legend>
+    <VueFieldset legend="Select your interests">
       <VueCheckbox
         name="interests"
         value="tech"
@@ -42,7 +41,7 @@ import CheckboxExamples from '../examples/CheckboxExamples.vue'
         value="business"
         label-text="Business"
       />
-    </fieldset>
+    </VueFieldset>
 
     <!-- Different themes -->
     <VueCheckbox
@@ -65,9 +64,10 @@ import CheckboxExamples from '../examples/CheckboxExamples.vue'
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
+import { VueFieldset } from 'agnosticui-core/fieldset/vue';
 
 export default defineComponent({
-  components: { VueCheckbox }
+  components: { VueCheckbox, VueFieldset }
 });
 </script>
 ```
@@ -76,6 +76,7 @@ export default defineComponent({
 ::: details React
 ```tsx
 import { ReactCheckbox } from 'agnosticui-core/checkbox/react';
+import { ReactFieldset } from 'agnosticui-core/fieldset/react';
 
 export default function Example() {
   return (
@@ -88,8 +89,7 @@ export default function Example() {
       />
 
       {/* Checkbox group */}
-      <fieldset>
-        <legend>Select your interests</legend>
+      <ReactFieldset legend="Select your interests">
         <ReactCheckbox
           name="interests"
           value="tech"
@@ -106,7 +106,7 @@ export default function Example() {
           value="business"
           labelText="Business"
         />
-      </fieldset>
+      </ReactFieldset>
 
       {/* Different themes */}
       <ReactCheckbox
@@ -133,6 +133,7 @@ export default function Example() {
 ```html
 <script type="module">
   import 'agnosticui-core/checkbox';
+  import 'agnosticui-core/fieldset';
 </script>
 
 <section>
@@ -144,8 +145,7 @@ export default function Example() {
   ></ag-checkbox>
 
   <!-- Checkbox group -->
-  <fieldset>
-    <legend>Select your interests</legend>
+  <ag-fieldset legend="Select your interests">
     <ag-checkbox
       name="interests"
       value="tech"
@@ -162,7 +162,7 @@ export default function Example() {
       value="business"
       label-text="Business"
     ></ag-checkbox>
-  </fieldset>
+  </ag-fieldset>
 
   <!-- Different themes -->
   <ag-checkbox
@@ -549,7 +549,7 @@ ag-checkbox::part(ag-checkbox-label) {
 - Proper `aria-checked` state for assistive technologies ("true", "false", or "mixed" for indeterminate)
 - Keyboard navigable (Tab to focus, Space to toggle)
 - Focus visible with customizable focus ring using design tokens
-- Always wrap checkbox groups in `<fieldset>` with a `<legend>` for screen readers
+- Always wrap checkbox groups with AgFieldset (ag-fieldset / ReactFieldset / VueFieldset) for proper semantic grouping and screen reader support
 - Disabled state prevents interaction and is communicated to assistive technologies
 
 ## Theme Support
