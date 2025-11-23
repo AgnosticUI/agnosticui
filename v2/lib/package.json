@@ -364,6 +364,18 @@
       "types": "./dist/components/Progress/vue/index.d.ts",
       "import": "./dist/components/Progress/vue/index.js"
     },
+    "./progress-ring": {
+      "types": "./dist/components/ProgressRing/core/ProgressRing.d.ts",
+      "import": "./dist/components/ProgressRing/core/ProgressRing.js"
+    },
+    "./progress-ring/react": {
+      "types": "./dist/components/ProgressRing/react/ReactProgressRing.d.ts",
+      "import": "./dist/components/ProgressRing/react/ReactProgressRing.js"
+    },
+    "./progress-ring/vue": {
+      "types": "./dist/components/ProgressRing/vue/index.d.ts",
+      "import": "./dist/components/ProgressRing/vue/index.js"
+    },
     "./tag": {
       "types": "./dist/components/Tag/core/Tag.d.ts",
       "import": "./dist/components/Tag/core/Tag.js"

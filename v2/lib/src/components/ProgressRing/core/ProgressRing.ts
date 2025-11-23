@@ -1,4 +1,4 @@
-import { AgProgressRing } from './_AgProgressRing.js';
+import { AgProgressRing } from './_ProgressRing.js';
 
 if (!customElements.get('ag-progress-ring')) {
   customElements.define('ag-progress-ring', AgProgressRing);
@@ -11,4 +11,6 @@ declare global {
 }
 
 // Re-export everything from the implementation file
-export * from './_AgProgressRing.js';
+export * from './_ProgressRing.js';
+
+export type { AgProgressRingProps } from './_ProgressRing.js';

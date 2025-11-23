@@ -89,6 +89,7 @@ function getComponents() {
       { text: 'Pagination', link: '/components/pagination' },
       { text: 'Popover', link: '/components/popover' },
       { text: 'Progress', link: '/components/progress' },
+      { text: 'ProgressRing', link: '/components/progress-ring' },
       { text: 'Radio', link: '/components/radio' },
       { text: 'Rating', link: '/components/rating' },
       { text: 'ScrollToButton', link: '/components/scroll-to-button' },
