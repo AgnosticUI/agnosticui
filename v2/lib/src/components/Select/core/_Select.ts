@@ -316,10 +316,12 @@ export class Select extends LitElement implements SelectProps {
 
   render() {
     const ids = createFormControlIds('select');
-    const ariaDescribedBy = buildAriaDescribedBy(
-      this.helpText ? ids.helpTextId : '',
-      this.invalid && this.errorMessage ? ids.errorId : ''
-    );
+    const ariaDescribedBy = buildAriaDescribedBy({
+      helperId: ids.helperId,
+      errorId: ids.errorId,
+      hasHelper: !!this.helpText && !this.invalid,
+      hasError: !!this.invalid && !!this.errorMessage,
+    });
 
     const isHorizontal = isHorizontalLabel(this.labelPosition);
 
@@ -345,7 +347,7 @@ export class Select extends LitElement implements SelectProps {
     `;
 
     const helperText = this.helpText && !this.invalid
-      ? html`<div id=${ids.helpTextId} class="ag-form-control-help-text">
+      ? html`<div id=${ids.helperId} class="ag-form-control-help-text">
           ${this.helpText}
         </div>`
       : '';
