@@ -1,5 +1,6 @@
 <template>
   <ag-intl-formatter
+    ref="formatterRef"
     :type="type"
     :value="value"
     :lang="lang"
@@ -15,7 +16,9 @@
     :timeZoneName="timeZoneName"
     :timeZone="timeZone"
     :hourFormat="hourFormat"
-    :noGrouping="noGrouping"
+    :dateStyle="dateStyle"
+    :timeStyle="timeStyle"
+    .noGrouping="noGrouping"
     :currency="currency"
     :currencyDisplay="currencyDisplay"
     :minimumIntegerDigits="minimumIntegerDigits"
@@ -23,112 +26,63 @@
     :maximumFractionDigits="maximumFractionDigits"
     :minimumSignificantDigits="minimumSignificantDigits"
     :maximumSignificantDigits="maximumSignificantDigits"
+    @format-error="handleFormatError"
+    v-bind="$attrs"
   />
 </template>
 
-<script lang="ts">
-import { defineComponent, type PropType } from "vue";
-import "../core/IntlFormatter.js";
+<script setup lang="ts">
+import { ref } from "vue";
+import type { IntlFormatterProps } from "../core/IntlFormatter";
+import "../core/IntlFormatter"; // Registers the ag-intl-formatter web component
 
-export default defineComponent({
-  name: "VueIntlFormatter",
-  props: {
-    type: {
-      type: String as PropType<"date" | "number" | "percent" | "currency">,
-      default: "date",
-    },
-    value: {
-      type: [Number, String, Date] as PropType<number | string | Date>,
-      default: () => new Date(),
-    },
-    lang: {
-      type: String,
-      default: undefined,
-    },
-    // Date-specific props
-    date: {
-      type: [String, Date] as PropType<Date | string>,
-      default: undefined,
-    },
-    weekday: {
-      type: String as PropType<"narrow" | "short" | "long">,
-      default: undefined,
-    },
-    era: {
-      type: String as PropType<"narrow" | "short" | "long">,
-      default: undefined,
-    },
-    year: {
-      type: String as PropType<"numeric" | "2-digit">,
-      default: undefined,
-    },
-    month: {
-      type: String as PropType<
-        "numeric" | "2-digit" | "narrow" | "short" | "long"
-      >,
-      default: undefined,
-    },
-    day: {
-      type: String as PropType<"numeric" | "2-digit">,
-      default: undefined,
-    },
-    hour: {
-      type: String as PropType<"numeric" | "2-digit">,
-      default: undefined,
-    },
-    minute: {
-      type: String as PropType<"numeric" | "2-digit">,
-      default: undefined,
-    },
-    second: {
-      type: String as PropType<"numeric" | "2-digit">,
-      default: undefined,
-    },
-    timeZoneName: {
-      type: String as PropType<"short" | "long">,
-      default: undefined,
-    },
-    timeZone: {
-      type: String,
-      default: undefined,
-    },
-    hourFormat: {
-      type: String as PropType<"auto" | "12" | "24">,
-      default: "auto",
-    },
-    // Number-specific props
-    noGrouping: {
-      type: Boolean,
-      default: false,
-    },
-    currency: {
-      type: String,
-      default: "USD",
-    },
-    currencyDisplay: {
-      type: String as PropType<"symbol" | "narrowSymbol" | "code" | "name">,
-      default: "symbol",
-    },
-    minimumIntegerDigits: {
-      type: Number,
-      default: undefined,
-    },
-    minimumFractionDigits: {
-      type: Number,
-      default: undefined,
-    },
-    maximumFractionDigits: {
-      type: Number,
-      default: undefined,
-    },
-    minimumSignificantDigits: {
-      type: Number,
-      default: undefined,
-    },
-    maximumSignificantDigits: {
-      type: Number,
-      default: undefined,
-    },
-  },
+/**
+ * Vue IntlFormatter Props
+ * Following AgnosticUI v2 event conventions:
+ * - Omit callback props (Vue uses emits)
+ */
+type VueIntlFormatterProps = Omit<IntlFormatterProps, "onFormatError">;
+
+// Define props with defaults
+const props = withDefaults(defineProps<VueIntlFormatterProps>(), {
+  type: "date",
+  lang: undefined,
+  value: undefined,
+  date: undefined,
+  weekday: undefined,
+  era: undefined,
+  year: undefined,
+  month: undefined,
+  day: undefined,
+  hour: undefined,
+  minute: undefined,
+  second: undefined,
+  timeZoneName: undefined,
+  timeZone: undefined,
+  hourFormat: "auto",
+  dateStyle: undefined,
+  timeStyle: undefined,
+  noGrouping: false,
+  currency: "USD",
+  currencyDisplay: "symbol",
+  minimumIntegerDigits: undefined,
+  minimumFractionDigits: undefined,
+  maximumFractionDigits: undefined,
+  minimumSignificantDigits: undefined,
+  maximumSignificantDigits: undefined,
 });
+
+// Define emits
+const emit = defineEmits<{
+  "format-error": [detail: { type: "date" | "number"; error: string }];
+}>();
+
+// Template ref
+const formatterRef = ref<HTMLElement>();
+
+// Event handlers
+const handleFormatError = (event: Event) => {
+  const customEvent = event as CustomEvent<{ type: "date" | "number"; error: string }>;
+  emit("format-error", customEvent.detail);
+};
 </script>
