@@ -64,6 +64,10 @@
       "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
       "import": "./dist/components/Button/vue/VueButton.js"
     },
+    "./intl-formatter": {
+      "types": "./dist/components/IntlFormatter/core/IntlFormatter.d.ts",
+      "import": "./dist/components/IntlFormatter/core/IntlFormatter.js"
+    },
     "./copy-button": {
       "types": "./dist/components/CopyButton/core/CopyButton.d.ts",
       "import": "./dist/components/CopyButton/core/CopyButton.js"
