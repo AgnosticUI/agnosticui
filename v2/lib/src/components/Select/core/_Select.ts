@@ -3,6 +3,8 @@ import { property, query } from 'lit/decorators.js';
 import {
   createFormControlIds,
   buildAriaDescribedBy,
+  isHorizontalLabel,
+  type LabelPosition,
 } from '../../../shared/form-control-utils';
 import { formControlStyles } from '../../../shared/form-control-styles';
 
@@ -22,6 +24,7 @@ export interface SelectProps {
   multipleSize?: number;
   // External label support
   label?: string;
+  labelPosition?: LabelPosition;
   labelHidden?: boolean;
   noLabel?: boolean;
   required?: boolean;
@@ -63,6 +66,9 @@ export class Select extends LitElement implements SelectProps {
   // External label properties
   @property({ type: String })
   public label = '';
+
+  @property({ type: String, attribute: 'label-position' })
+  public labelPosition: LabelPosition = 'top';
 
   @property({ type: Boolean, attribute: 'label-hidden' })
   public labelHidden = false;
@@ -284,6 +290,30 @@ export class Select extends LitElement implements SelectProps {
     }
   }
 
+  private renderLabel(ids: { inputId: string }) {
+    if (!this.label || this.noLabel) return '';
+
+    // Build position classes
+    const positionClasses: string[] = [];
+    if (isHorizontalLabel(this.labelPosition)) {
+      positionClasses.push('ag-form-control__label--horizontal');
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    } else if (this.labelPosition === 'bottom') {
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    }
+
+    return html`
+      <label
+        for=${ids.inputId}
+        class="ag-form-control__label ${this.labelHidden
+          ? 'ag-form-control__label--hidden'
+          : ''} ${this.required ? 'ag-form-control__label--required' : ''} ${positionClasses.join(' ')}"
+      >
+        ${this.label}
+      </label>
+    `;
+  }
+
   render() {
     const ids = createFormControlIds('select');
     const ariaDescribedBy = buildAriaDescribedBy(
@@ -291,19 +321,9 @@ export class Select extends LitElement implements SelectProps {
       this.invalid && this.errorMessage ? ids.errorId : ''
     );
 
-    return html`
-      ${!this.noLabel && this.label
-        ? html`
-            <label
-              for=${ids.inputId}
-              class="ag-form-control-label ${this.labelHidden
-                ? 'ag-visually-hidden'
-                : ''} ${this.required ? 'ag-form-control-label--required' : ''}"
-            >
-              ${this.label}
-            </label>
-          `
-        : ''}
+    const isHorizontal = isHorizontalLabel(this.labelPosition);
+
+    const selectElement = html`
       <select
         id=${ids.inputId}
         class="select"
@@ -322,16 +342,48 @@ export class Select extends LitElement implements SelectProps {
         aria-describedby=${ariaDescribedBy || undefined}
       ></select>
       <slot></slot>
-      ${this.helpText && !this.invalid
-        ? html`<div id=${ids.helpTextId} class="ag-form-control-help-text">
-            ${this.helpText}
-          </div>`
-        : ''}
-      ${this.invalid && this.errorMessage
-        ? html`<div id=${ids.errorId} class="ag-form-control-error-message">
-            ${this.errorMessage}
-          </div>`
-        : ''}
+    `;
+
+    const helperText = this.helpText && !this.invalid
+      ? html`<div id=${ids.helpTextId} class="ag-form-control-help-text">
+          ${this.helpText}
+        </div>`
+      : '';
+
+    const errorText = this.invalid && this.errorMessage
+      ? html`<div id=${ids.errorId} class="ag-form-control-error-message">
+          ${this.errorMessage}
+        </div>`
+      : '';
+
+    // For horizontal layout: [Label] [Select] structure with helper/error below
+    if (isHorizontal) {
+      return html`
+        <div class="ag-form-control--horizontal">
+          ${this.renderLabel(ids)}
+          ${selectElement}
+        </div>
+        ${helperText}
+        ${errorText}
+      `;
+    }
+
+    // For bottom label: Select first, then helper/error, then label
+    if (this.labelPosition === 'bottom') {
+      return html`
+        ${selectElement}
+        ${helperText}
+        ${errorText}
+        ${this.renderLabel(ids)}
+      `;
+    }
+
+    // Top label (default): Label first, then select, then helper/error
+    return html`
+      ${this.renderLabel(ids)}
+      ${selectElement}
+      ${helperText}
+      ${errorText}
     `;
   }
 }

@@ -259,11 +259,201 @@ export class SelectExamples extends LitElement {
 :::
 
 
+## External Label Support
+
+The Select component now supports external labels, helper text, validation states, and error messages - following the same pattern as Input, Checkbox, and Radio components.
+
+### With External Label
+
+::: details Vue
+```vue
+<template>
+  <!-- Basic external label -->
+  <VueSelect
+    label="Favorite Framework"
+    name="framework"
+    v-model:value="framework"
+  >
+    <option value="">Choose a framework</option>
+    <option value="react">React</option>
+    <option value="vue">Vue</option>
+    <option value="angular">Angular</option>
+  </VueSelect>
+
+  <!-- With helper text -->
+  <VueSelect
+    label="Country"
+    help-text="Select your country of residence"
+    name="country"
+  >
+    <option value="">Select a country</option>
+    <option value="us">United States</option>
+    <option value="uk">United Kingdom</option>
+  </VueSelect>
+
+  <!-- Required field -->
+  <VueSelect
+    label="Preferred Language"
+    :required="true"
+    help-text="This field is required"
+    name="language"
+  >
+    <option value="">Select a language</option>
+    <option value="en">English</option>
+    <option value="es">Spanish</option>
+  </VueSelect>
+
+  <!-- With validation error -->
+  <VueSelect
+    label="Payment Method"
+    :required="true"
+    :invalid="true"
+    error-message="Please select a payment method to continue"
+    name="payment"
+  >
+    <option value="">Select payment method</option>
+    <option value="credit">Credit Card</option>
+    <option value="debit">Debit Card</option>
+  </VueSelect>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { VueSelect } from 'agnosticui-core/select/vue';
+
+const framework = ref('');
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { ReactSelect } from 'agnosticui-core/select/react';
+
+export default function SelectWithLabels() {
+  return (
+    <>
+      {/* Basic external label */}
+      <ReactSelect
+        label="Favorite Framework"
+        name="framework"
+      >
+        <option value="">Choose a framework</option>
+        <option value="react">React</option>
+        <option value="vue">Vue</option>
+        <option value="angular">Angular</option>
+      </ReactSelect>
+
+      {/* With helper text */}
+      <ReactSelect
+        label="Country"
+        helpText="Select your country of residence"
+        name="country"
+      >
+        <option value="">Select a country</option>
+        <option value="us">United States</option>
+        <option value="uk">United Kingdom</option>
+      </ReactSelect>
+
+      {/* Required field */}
+      <ReactSelect
+        label="Preferred Language"
+        required
+        helpText="This field is required"
+        name="language"
+      >
+        <option value="">Select a language</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+      </ReactSelect>
+
+      {/* With validation error */}
+      <ReactSelect
+        label="Payment Method"
+        required
+        invalid
+        errorMessage="Please select a payment method to continue"
+        name="payment"
+      >
+        <option value="">Select payment method</option>
+        <option value="credit">Credit Card</option>
+        <option value="debit">Debit Card</option>
+      </ReactSelect>
+    </>
+  );
+}
+```
+:::
+
+::: details Lit
+```ts
+import 'agnosticui-core/select';
+import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
+
+@customElement('select-with-labels')
+export class SelectWithLabels extends LitElement {
+  render() {
+    return html`
+      <!-- Basic external label -->
+      <ag-select
+        .label=${"Favorite Framework"}
+        name="framework"
+      >
+        <option value="">Choose a framework</option>
+        <option value="react">React</option>
+        <option value="vue">Vue</option>
+        <option value="angular">Angular</option>
+      </ag-select>
+
+      <!-- With helper text -->
+      <ag-select
+        .label=${"Country"}
+        .helpText=${"Select your country of residence"}
+        name="country"
+      >
+        <option value="">Select a country</option>
+        <option value="us">United States</option>
+        <option value="uk">United Kingdom</option>
+      </ag-select>
+
+      <!-- Required field -->
+      <ag-select
+        .label=${"Preferred Language"}
+        .required=${true}
+        .helpText=${"This field is required"}
+        name="language"
+      >
+        <option value="">Select a language</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+      </ag-select>
+
+      <!-- With validation error -->
+      <ag-select
+        .label=${"Payment Method"}
+        .required=${true}
+        .invalid=${true}
+        .errorMessage=${"Please select a payment method to continue"}
+        name="payment"
+      >
+        <option value="">Select payment method</option>
+        <option value="credit">Credit Card</option>
+        <option value="debit">Debit Card</option>
+      </ag-select>
+    `;
+  }
+}
+```
+:::
+
 ## Features
 
 - **Native select element** - Uses browser's built-in `<select>` with custom styling
 - **Size variants** - Small, default, and large sizes
 - **Multiple selection** - Support for native multiple select with `size` attribute
+- **External label support** - Built-in label, helper text, and error messages
+- **Validation states** - Required and invalid states with accessible error messages
 - **Disabled state** - Proper disabled styling and accessibility
 - **Custom dropdown arrow** - SVG arrow icon for single select mode
 - **Accessibility** - Maintains all native select accessibility features
@@ -286,6 +476,14 @@ npm install agnosticui-core
 | `disabled` | `boolean` | `false` | Disable the select |
 | `name` | `string` | `''` | Form name attribute |
 | `multipleSize` | `number` | `undefined` | Number of visible options for multiple select |
+| `label` | `string` | `''` | External label text |
+| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'` | Position of the label relative to select. **Note:** `'bottom'` is not recommended as the dropdown menu may cover the label |
+| `labelHidden` | `boolean` | `false` | Visually hides the label (still accessible to screen readers) |
+| `noLabel` | `boolean` | `false` | Removes the label element entirely |
+| `required` | `boolean` | `false` | Marks the select as required (adds asterisk to label) |
+| `invalid` | `boolean` | `false` | Marks the select as invalid (shows error state) |
+| `errorMessage` | `string` | `''` | Error message displayed when `invalid` is true |
+| `helpText` | `string` | `''` | Helper text displayed below the select |
 
 ### Events
 
@@ -432,9 +630,12 @@ const handleChange = (detail) => {
 The Select component maintains all native select accessibility features:
 
 - **Semantic HTML** - Uses native `<select>` element
-- **Label association** - Supports proper `id`/`for` label relationships
+- **Label association** - Supports proper `id`/`for` label relationships (both external labels and manual labels)
+- **ARIA relationships** - Automatically links helper text and error messages via `aria-describedby`
+- **Required fields** - Visual asterisk indicator and proper `required` attribute
+- **Error states** - `aria-invalid` attribute and associated error messages
 - **Keyboard navigation** - Full keyboard support (arrow keys, Enter, Space, Escape)
-- **Screen reader support** - Native screen reader announcements
+- **Screen reader support** - Native screen reader announcements with enhanced context from helper/error text
 - **Focus management** - Clear focus indicator with high contrast mode support
 - **Disabled state** - Proper `disabled` and `aria-disabled` attributes
 

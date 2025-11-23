@@ -7,6 +7,7 @@
     .name="name"
     .multipleSize="multipleSize"
     .label="label"
+    .labelPosition="labelPosition"
     .labelHidden="labelHidden"
     .noLabel="noLabel"
     .required="required"
@@ -68,6 +69,10 @@ export default defineComponent({
     label: {
       type: String,
       default: "",
+    },
+    labelPosition: {
+      type: String as PropType<'top' | 'start' | 'end' | 'bottom'>,
+      default: "top",
     },
     labelHidden: {
       type: Boolean,
