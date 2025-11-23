@@ -1,5 +1,11 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
+import { formControlStyles } from '../../../shared/form-control-styles';
+import {
+  createFormControlIds,
+  buildAriaDescribedBy,
+  type LabelPosition,
+} from '../../../shared/form-control-utils';
 
 
 export type RadioSize = 'small' | 'medium' | 'large';
@@ -46,13 +52,41 @@ export interface RadioProps {
    */
   theme: RadioTheme;
   /**
-   * Label text for the radio button
+   * Label text for the radio button (internal label that wraps the radio)
    */
   labelText: string;
   /**
-   * Position of label relative to radio
+   * Position of labelText relative to radio (end = after radio, start = before radio)
    */
   labelPosition: 'end' | 'start';
+  /**
+   * Optional external label displayed above the radio (useful for groups or standalone with context)
+   */
+  label?: string;
+  /**
+   * Visually hides the external label while keeping it accessible to screen readers
+   */
+  labelHidden?: boolean;
+  /**
+   * Completely removes the external label element
+   */
+  noLabel?: boolean;
+  /**
+   * Marks the radio as required. Displays an asterisk (*) after the external label
+   */
+  required?: boolean;
+  /**
+   * Marks the radio as invalid. Sets aria-invalid and can display error message
+   */
+  invalid?: boolean;
+  /**
+   * Error message displayed when invalid. Linked via aria-describedby
+   */
+  errorMessage?: string;
+  /**
+   * Helper text displayed below the radio. Linked via aria-describedby
+   */
+  helpText?: string;
   /**
    * Callback for native click events
    */
@@ -64,10 +98,12 @@ export interface RadioProps {
 }
 
 export class AgRadio extends LitElement implements RadioProps {
-  static override styles = css`
-    :host {
-      display: inline-block;
-    }
+  static override styles = [
+    formControlStyles,
+    css`
+      :host {
+        display: inline-block;
+      }
 
     .radio-wrapper {
       display: inline-flex;
@@ -248,7 +284,8 @@ export class AgRadio extends LitElement implements RadioProps {
         outline: var(--ag-border-width-1) solid;
       }
     }
-  `;
+  `,
+  ];
 
   @property({ type: String, reflect: true })
   name = '';
@@ -273,6 +310,32 @@ export class AgRadio extends LitElement implements RadioProps {
 
   @property({ type: String })
   labelPosition: 'end' | 'start' = 'end';
+
+  // Optional external label (for groups or above radio)
+  @property({ type: String })
+  label = '';
+
+  @property({ type: Boolean, attribute: 'label-hidden' })
+  labelHidden = false;
+
+  @property({ type: Boolean, attribute: 'no-label' })
+  noLabel = false;
+
+  // Validation & hints
+  @property({ type: Boolean, reflect: true })
+  required = false;
+
+  @property({ type: Boolean, reflect: true })
+  invalid = false;
+
+  @property({ type: String, attribute: 'error-message' })
+  errorMessage = '';
+
+  @property({ type: String, attribute: 'help-text' })
+  helpText = '';
+
+  // Stable IDs for form control elements (created once)
+  private _ids = createFormControlIds('ag-radio');
 
   // Event callback props
   @property({ attribute: false })
@@ -433,6 +496,74 @@ export class AgRadio extends LitElement implements RadioProps {
     });
   }
 
+  /**
+   * Render optional external label (for groups or above radio)
+   */
+  private _renderExternalLabel() {
+    if (!this.label || this.noLabel) return nothing;
+
+    return html`
+      <label
+        id="${this._ids.labelId}"
+        for="${this._ids.inputId}"
+        class="ag-form-control__label ag-radio__external-label ${this.labelHidden ? 'ag-form-control__label--hidden' : ''}"
+        part="ag-radio-external-label"
+      >
+        ${this.label}
+        ${this.required
+          ? html`
+              <span class="ag-form-control__required" part="ag-required" aria-hidden="true">*</span>
+            `
+          : nothing}
+      </label>
+    `;
+  }
+
+  /**
+   * Render helper text
+   */
+  private _renderHelper() {
+    if (!this.helpText) return nothing;
+
+    return html`
+      <div
+        id="${this._ids.helperId}"
+        class="ag-form-control__helper ag-radio__helper"
+        part="ag-radio-helper"
+      >
+        ${this.helpText}
+      </div>
+    `;
+  }
+
+  /**
+   * Render error text
+   */
+  private _renderError() {
+    return html`
+      <div
+        id="${this._ids.errorId}"
+        class="ag-form-control__error ag-radio__error"
+        part="ag-radio-error"
+        ?hidden="${!this.invalid || !this.errorMessage}"
+      >
+        ${this.errorMessage || ''}
+      </div>
+    `;
+  }
+
+  /**
+   * Build ARIA describedby attribute
+   */
+  private _getAriaDescribedBy(): string | undefined {
+    return buildAriaDescribedBy({
+      helperId: this._ids.helperId,
+      errorId: this._ids.errorId,
+      hasHelper: !!this.helpText,
+      hasError: this.invalid && !!this.errorMessage,
+    });
+  }
+
   override render() {
     const wrapperClasses = `
       radio-wrapper
@@ -450,16 +581,25 @@ export class AgRadio extends LitElement implements RadioProps {
       radio-label--${this.size}
     `;
 
-    return html`
+    // Build aria-describedby
+    const describedBy = this._getAriaDescribedBy();
+
+    // The radio control (internal label wrapper + input + indicator + text)
+    const radioControl = html`
       <label class=${wrapperClasses.trim()} part="ag-radio-wrapper">
         <input
           type="radio"
+          id="${this._ids.inputId}"
           class="radio-input"
           part="ag-radio-input"
           name=${this.name}
           value=${this.value}
           .checked=${this.checked}
           ?disabled=${this.disabled}
+          ?required=${this.required}
+          aria-required="${this.required ? 'true' : 'false'}"
+          aria-invalid="${this.invalid ? 'true' : 'false'}"
+          aria-describedby="${describedBy || nothing}"
           @click=${this.handleClick}
           @change=${this.handleChange}
           @keydown=${this.handleKeyDown}
@@ -471,5 +611,20 @@ export class AgRadio extends LitElement implements RadioProps {
         </span>
       </label>
     `;
+
+    // If external label/helper/error are provided, wrap with them
+    if (this.label || this.helpText || this.errorMessage) {
+      return html`
+        <div class="ag-radio-wrapper-with-external">
+          ${this._renderExternalLabel()}
+          ${radioControl}
+          ${this._renderHelper()}
+          ${this._renderError()}
+        </div>
+      `;
+    }
+
+    // Otherwise just return the radio control
+    return radioControl;
   }
 }
