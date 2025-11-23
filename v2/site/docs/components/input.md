@@ -296,6 +296,7 @@ export default function InputExample() {
 | `underlined` | `boolean` | `false` | Shows only bottom border (underlined style) |
 | `underlinedWithBackground` | `boolean` | `false` | Underlined style with subtle background color |
 | `inline` | `boolean` | `false` | Changes display to inline-block for inline layouts |
+| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'` | Controls label placement. `top`/`bottom` for vertical layout, `start`/`end` for horizontal (respects RTL) |
 | `labelHidden` | `boolean` | `false` | Visually hides the label while keeping it accessible to screen readers |
 | `noLabel` | `boolean` | `false` | Completely removes the label element. Use with ariaLabel for accessibility |
 | `ariaLabel` | `string` | `''` | ARIA label for accessibility when label is not visible |
@@ -612,6 +613,53 @@ Customize the input appearance with shape variants:
   :underlined-with-background="true"
 />
 ```
+
+## Label Positioning
+
+Control label placement with the `labelPosition` prop. Supports four directional values that work across all form controls:
+
+```vue
+<!-- Top (default) - Label above input -->
+<VueInput
+  v-model:value="name"
+  label="Full Name"
+  label-position="top"
+  placeholder="Enter your name"
+/>
+
+<!-- Start - Label before input (horizontal, respects RTL) -->
+<VueInput
+  v-model:value="age"
+  label="Age:"
+  label-position="start"
+  placeholder="25"
+/>
+
+<!-- End - Label after input (horizontal, respects RTL) -->
+<VueInput
+  v-model:value="amount"
+  label="USD"
+  label-position="end"
+  placeholder="100"
+/>
+
+<!-- Bottom - Label below input -->
+<VueInput
+  v-model:value="code"
+  label="Verification Code"
+  label-position="bottom"
+  placeholder="Enter code"
+/>
+```
+
+**Use Cases:**
+- **`top` (default)**: Best for most forms - follows BBC GEL guidelines for mobile usability
+- **`start`**: Compact horizontal layouts, admin panels, settings forms
+- **`end`**: Less common, useful when label is a unit or suffix (e.g., "USD", "kg")
+- **`bottom`**: Rare, use sparingly for special design requirements
+
+**Progressive Enhancement:**
+Horizontal layouts (`start`/`end`) use modern CSS `field-sizing: content` in Chrome 123+ and Safari TP for responsive input widths, with graceful fallback to fixed width in other browsers.
 
 ## Validation
 
