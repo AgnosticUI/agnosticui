@@ -629,3 +629,157 @@ export const EventTesting: Story = {
     </div>
   `,
 };
+
+// External Label/Helper/Error Support
+export const WithExternalLabel: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 600px;">
+      <h3 style="margin-top: 0;">External Label/Helper/Error Support</h3>
+      <p style="margin-bottom: 1.5rem; color: #6b7280;">
+        Checkboxes can now have an optional external label, helper text, and error message
+        using the shared form control utilities. Useful for checkbox groups or standalone checkboxes.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <!-- Basic external label -->
+        <ag-checkbox
+          name="terms"
+          value="agreed"
+          .label=${"Terms and Conditions"}
+          .labelText=${"I agree to the terms and conditions"}
+        ></ag-checkbox>
+
+        <!-- With helper text -->
+        <ag-checkbox
+          name="newsletter"
+          value="subscribed"
+          .label=${"Newsletter Subscription"}
+          .labelText=${"Send me weekly updates"}
+          .helpText=${"You can unsubscribe at any time"}
+        ></ag-checkbox>
+
+        <!-- Required field -->
+        <ag-checkbox
+          name="required-checkbox"
+          value="yes"
+          .label=${"Required Agreement"}
+          .labelText=${"I acknowledge I have read the privacy policy"}
+          .required=${true}
+          .helpText=${"This field is required to proceed"}
+        ></ag-checkbox>
+
+        <!-- With error -->
+        <ag-checkbox
+          name="invalid-checkbox"
+          value="yes"
+          .label=${"Age Verification"}
+          .labelText=${"I confirm I am 18 years or older"}
+          .required=${true}
+          .invalid=${true}
+          .errorMessage=${"You must confirm you are 18 or older"}
+        ></ag-checkbox>
+
+        <!-- Checkbox group with external label -->
+        <div>
+          <ag-checkbox
+            name="features"
+            value="feature1"
+            .label=${"Select Features"}
+            .labelText=${"Email notifications"}
+            .helpText=${"Choose the features you want to enable"}
+          ></ag-checkbox>
+          <ag-checkbox
+            name="features"
+            value="feature2"
+            .labelText=${"SMS notifications"}
+            style="margin-top: 0.5rem;"
+          ></ag-checkbox>
+          <ag-checkbox
+            name="features"
+            value="feature3"
+            .labelText=${"Push notifications"}
+            style="margin-top: 0.5rem;"
+          ></ag-checkbox>
+        </div>
+      </div>
+    </div>
+  `,
+};
+
+// Comparison: Standalone vs With External Label
+export const ComparisonStandaloneVsExternal: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 900px;">
+      <h3 style="margin-top: 0;">Standalone vs External Label Comparison</h3>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 1.5rem;">
+        <!-- Standalone (traditional) -->
+        <div>
+          <h4 style="margin-top: 0;">Standalone Checkbox</h4>
+          <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">
+            Traditional checkbox with internal label text only
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <ag-checkbox
+              name="standalone1"
+              value="option1"
+              .labelText=${"Accept terms and conditions"}
+            ></ag-checkbox>
+
+            <ag-checkbox
+              name="standalone2"
+              value="option2"
+              .labelText=${"Subscribe to newsletter"}
+              .checked=${true}
+            ></ag-checkbox>
+
+            <ag-checkbox
+              name="standalone3"
+              value="option3"
+              .labelText=${"Enable notifications"}
+              .disabled=${true}
+            ></ag-checkbox>
+          </div>
+        </div>
+
+        <!-- With External Label -->
+        <div>
+          <h4 style="margin-top: 0;">With External Label</h4>
+          <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">
+            Checkbox with external label, helper text, and validation
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <ag-checkbox
+              name="external1"
+              value="option1"
+              .label=${"Agreement"}
+              .labelText=${"Accept terms and conditions"}
+              .helpText=${"Required to create an account"}
+              .required=${true}
+            ></ag-checkbox>
+
+            <ag-checkbox
+              name="external2"
+              value="option2"
+              .label=${"Communication Preferences"}
+              .labelText=${"Subscribe to newsletter"}
+              .helpText=${"Weekly updates about new features"}
+              .checked=${true}
+            ></ag-checkbox>
+
+            <ag-checkbox
+              name="external3"
+              value="option3"
+              .label=${"Notification Settings"}
+              .labelText=${"Enable notifications"}
+              .invalid=${true}
+              .errorMessage=${"This option is currently unavailable"}
+            ></ag-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+};

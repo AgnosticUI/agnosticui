@@ -1,5 +1,11 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
+import { formControlStyles } from '../../../shared/form-control-styles';
+import {
+  createFormControlIds,
+  buildAriaDescribedBy,
+  type LabelPosition,
+} from '../../../shared/form-control-utils';
 
 
 export type CheckboxSize = 'small' | 'medium' | 'large';
@@ -31,16 +37,27 @@ export interface CheckboxProps {
   theme: CheckboxTheme;
   labelText: string;
   labelPosition: 'end' | 'start';
+  // Optional external label (for groups or standalone use with external label)
+  label?: string;
+  labelHidden?: boolean;
+  noLabel?: boolean;
+  // Validation & hints
+  required?: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  helpText?: string;
   // Event callbacks
   onClick?: (event: MouseEvent) => void;
   onChange?: (event: CheckboxChangeEvent) => void;
 }
 
 export class AgCheckbox extends LitElement implements CheckboxProps {
-  static override styles = css`
-    :host {
-      display: inline-block;
-    }
+  static override styles = [
+    formControlStyles,
+    css`
+      :host {
+        display: inline-block;
+      }
 
     .checkbox-wrapper {
       display: inline-flex;
@@ -262,7 +279,8 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
         outline: var(--ag-border-width-1) solid;
       }
     }
-  `;
+  `,
+  ];
 
   @property({ type: String })
   declare name: string;
@@ -291,11 +309,37 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
   @property({ type: String })
   declare labelPosition: 'end' | 'start';
 
+  // Optional external label (for groups or above checkbox)
+  @property({ type: String })
+  declare label: string;
+
+  @property({ type: Boolean, attribute: 'label-hidden' })
+  declare labelHidden: boolean;
+
+  @property({ type: Boolean, attribute: 'no-label' })
+  declare noLabel: boolean;
+
+  // Validation & hints
+  @property({ type: Boolean, reflect: true })
+  declare required: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare invalid: boolean;
+
+  @property({ type: String, attribute: 'error-message' })
+  declare errorMessage: string;
+
+  @property({ type: String, attribute: 'help-text' })
+  declare helpText: string;
+
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
 
   @property({ attribute: false })
   declare onChange?: (event: CheckboxChangeEvent) => void;
+
+  // Stable IDs for form control elements (created once)
+  private _ids = createFormControlIds('ag-checkbox');
 
   private inputRef?: HTMLInputElement;
 
@@ -310,6 +354,21 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     this.theme = 'primary';
     this.labelText = '';
     this.labelPosition = 'end';
+    // Optional external label/hints
+    this.label = '';
+    this.labelHidden = false;
+    this.noLabel = false;
+    this.required = false;
+    this.invalid = false;
+    this.errorMessage = '';
+    this.helpText = '';
+  }
+
+  /**
+   * Expose the internal focusable element for FormControl ARIA wiring
+   */
+  get controlElement(): HTMLElement | null {
+    return this.inputRef || null;
   }
 
   override updated(changedProperties: Map<string, unknown>) {
@@ -363,6 +422,74 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     }
   }
 
+  /**
+   * Render optional external label (for groups or above checkbox)
+   */
+  private _renderExternalLabel() {
+    if (!this.label || this.noLabel) return nothing;
+
+    return html`
+      <label
+        id="${this._ids.labelId}"
+        for="${this._ids.inputId}"
+        class="ag-form-control__label ag-checkbox__external-label ${this.labelHidden ? 'ag-form-control__label--hidden' : ''}"
+        part="ag-checkbox-external-label"
+      >
+        ${this.label}
+        ${this.required
+          ? html`
+              <span class="ag-form-control__required" part="ag-required" aria-hidden="true">*</span>
+            `
+          : nothing}
+      </label>
+    `;
+  }
+
+  /**
+   * Render helper text
+   */
+  private _renderHelper() {
+    if (!this.helpText) return nothing;
+
+    return html`
+      <div
+        id="${this._ids.helperId}"
+        class="ag-form-control__helper ag-checkbox__helper"
+        part="ag-checkbox-helper"
+      >
+        ${this.helpText}
+      </div>
+    `;
+  }
+
+  /**
+   * Render error text
+   */
+  private _renderError() {
+    return html`
+      <div
+        id="${this._ids.errorId}"
+        class="ag-form-control__error ag-checkbox__error"
+        part="ag-checkbox-error"
+        ?hidden="${!this.invalid || !this.errorMessage}"
+      >
+        ${this.errorMessage || ''}
+      </div>
+    `;
+  }
+
+  /**
+   * Build ARIA describedby attribute
+   */
+  private _getAriaDescribedBy(): string | undefined {
+    return buildAriaDescribedBy({
+      helperId: this._ids.helperId,
+      errorId: this._ids.errorId,
+      hasHelper: !!this.helpText,
+      hasError: this.invalid && !!this.errorMessage,
+    });
+  }
+
   override render() {
     const wrapperClasses = `
       checkbox-wrapper
@@ -380,10 +507,15 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
       checkbox-label-copy--${this.size}
     `;
 
-    return html`
+    // Build aria-describedby
+    const describedBy = this._getAriaDescribedBy();
+
+    // The checkbox control (internal label wrapper + input + indicator + text)
+    const checkboxControl = html`
       <label class=${wrapperClasses.trim()} part="ag-checkbox-wrapper">
         <input
           type="checkbox"
+          id="${this._ids.inputId}"
           class="checkbox-input"
           part="ag-checkbox-input"
           name=${this.name}
@@ -391,6 +523,10 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
           .checked=${this.checked}
           .indeterminate=${this.indeterminate}
           ?disabled=${this.disabled}
+          ?required=${this.required}
+          aria-required="${this.required ? 'true' : 'false'}"
+          aria-invalid="${this.invalid ? 'true' : 'false'}"
+          aria-describedby="${describedBy || nothing}"
           @click=${this.handleClick}
           @change=${this.handleChange}
           aria-checked=${this.indeterminate
@@ -409,6 +545,21 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
         </span>
       </label>
     `;
+
+    // If external label/helper/error are provided, wrap with them
+    if (this.label || this.helpText || this.errorMessage) {
+      return html`
+        <div class="ag-checkbox-wrapper-with-external">
+          ${this._renderExternalLabel()}
+          ${checkboxControl}
+          ${this._renderHelper()}
+          ${this._renderError()}
+        </div>
+      `;
+    }
+
+    // Otherwise just return the checkbox control
+    return checkboxControl;
   }
 
   override firstUpdated() {
