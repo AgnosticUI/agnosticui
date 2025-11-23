@@ -224,6 +224,133 @@
     </div>
 
     <div class="mbe4">
+      <h3>External Label Support</h3>
+      <p class="mbs2 mbe3">
+        The Select component supports external labels with helper text, required fields, and validation states.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 400px;">
+      <div class="mbe3">
+        <VueSelect
+          label="Favorite Framework"
+          name="framework"
+        >
+          <option value="">Choose a framework</option>
+          <option value="react">React</option>
+          <option value="vue">Vue</option>
+          <option value="angular">Angular</option>
+          <option value="svelte">Svelte</option>
+        </VueSelect>
+      </div>
+
+      <div class="mbe3">
+        <VueSelect
+          label="Country"
+          help-text="Select your country of residence"
+          name="country"
+        >
+          <option value="">Select a country</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="ca">Canada</option>
+          <option value="au">Australia</option>
+        </VueSelect>
+      </div>
+
+      <div class="mbe3">
+        <VueSelect
+          label="Preferred Language"
+          :required="true"
+          help-text="This field is required"
+          name="language"
+        >
+          <option value="">Select a language</option>
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+        </VueSelect>
+      </div>
+
+      <div class="mbe3">
+        <VueSelect
+          label="Payment Method"
+          :required="true"
+          :invalid="true"
+          error-message="Please select a payment method to continue"
+          name="payment"
+        >
+          <option value="">Select payment method</option>
+          <option value="credit">Credit Card</option>
+          <option value="debit">Debit Card</option>
+          <option value="paypal">PayPal</option>
+        </VueSelect>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h3>Label Positioning</h3>
+      <p class="mbs2 mbe3">
+        Control label position with <code>label-position</code>: 'top' (default), 'start', 'end', or 'bottom'.
+        <strong>Note:</strong> 'bottom' is not recommended as the dropdown will cover the label.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 600px;">
+      <div class="mbe3">
+        <VueSelect
+          label="Top Label (Default)"
+          label-position="top"
+          name="pos-top"
+        >
+          <option value="">Select option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </VueSelect>
+      </div>
+
+      <div class="mbe3">
+        <VueSelect
+          label="Start Position"
+          label-position="start"
+          name="pos-start"
+        >
+          <option value="">Select option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </VueSelect>
+      </div>
+
+      <div class="mbe3">
+        <VueSelect
+          label="End Position"
+          label-position="end"
+          name="pos-end"
+        >
+          <option value="">Select option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </VueSelect>
+      </div>
+
+      <div class="mbe3">
+        <VueSelect
+          label="Bottom Position (Not Recommended)"
+          label-position="bottom"
+          name="pos-bottom"
+          help-text="The dropdown will cover this label when opened"
+        >
+          <option value="">Select option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </VueSelect>
+      </div>
+    </div>
+
+    <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the select's appearance.
