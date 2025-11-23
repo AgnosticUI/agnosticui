@@ -41,6 +41,34 @@ const meta: Meta<typeof ReactRadio> = {
       options: ["end", "start"],
       description: "Position of label relative to radio",
     },
+    label: {
+      control: "text",
+      description: "Optional external label displayed above the radio",
+    },
+    labelHidden: {
+      control: "boolean",
+      description: "Visually hides the external label",
+    },
+    noLabel: {
+      control: "boolean",
+      description: "Removes the external label element",
+    },
+    required: {
+      control: "boolean",
+      description: "Marks the radio as required",
+    },
+    invalid: {
+      control: "boolean",
+      description: "Marks the radio as invalid",
+    },
+    errorMessage: {
+      control: "text",
+      description: "Error message displayed when invalid",
+    },
+    helpText: {
+      control: "text",
+      description: "Helper text displayed below the radio",
+    },
   },
   args: {
     name: "example",
@@ -51,6 +79,13 @@ const meta: Meta<typeof ReactRadio> = {
     theme: "primary",
     labelText: "Radio Option",
     labelPosition: "end",
+    label: "",
+    labelHidden: false,
+    noLabel: false,
+    required: false,
+    invalid: false,
+    errorMessage: "",
+    helpText: "",
   },
 };
 
@@ -281,6 +316,99 @@ export const Disabled: Story = {
         checked
         labelText="Disabled Checked"
       />
+    </div>
+  ),
+};
+
+export const WithExternalLabel: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <ReactRadio
+        name="shipping-method"
+        value="standard"
+        label="Shipping Method"
+        labelText="Standard Shipping (5-7 days)"
+        checked
+      />
+
+      <ReactRadio
+        name="payment-method"
+        value="credit"
+        label="Payment Method"
+        labelText="Credit Card"
+        helpText="We accept all major credit cards"
+        checked
+      />
+
+      <ReactRadio
+        name="terms"
+        value="agreed"
+        label="Terms and Conditions"
+        labelText="I agree to the terms and conditions"
+        required={true}
+        helpText="Please read and accept our terms"
+      />
+
+      <ReactRadio
+        name="age-verify"
+        value="confirmed"
+        label="Age Verification"
+        labelText="I confirm I am 18 years or older"
+        required={true}
+        invalid={true}
+        errorMessage="You must confirm you are 18 or older to proceed"
+      />
+    </div>
+  ),
+};
+
+export const ComparisonStandaloneVsExternal: Story = {
+  render: () => (
+    <div style={{ display: "flex", gap: "3rem" }}>
+      <div style={{ flex: 1 }}>
+        <h3 style={{ marginBottom: "1rem" }}>Standard Radio (Internal Label)</h3>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          <ReactRadio
+            name="standard-plan"
+            value="free"
+            labelText="Free Plan"
+            checked
+          />
+          <ReactRadio
+            name="standard-plan"
+            value="pro"
+            labelText="Pro Plan"
+          />
+          <ReactRadio
+            name="standard-plan"
+            value="enterprise"
+            labelText="Enterprise Plan"
+          />
+        </div>
+      </div>
+      <div style={{ flex: 1 }}>
+        <h3 style={{ marginBottom: "1rem" }}>
+          Radio with External Label (Group Context)
+        </h3>
+        <ReactRadio
+          name="plan-selection"
+          value="free"
+          label="Choose Your Plan"
+          labelText="Free Plan"
+          helpText="Select the plan that best fits your needs"
+          checked
+        />
+        <ReactRadio
+          name="plan-selection"
+          value="pro"
+          labelText="Pro Plan"
+        />
+        <ReactRadio
+          name="plan-selection"
+          value="enterprise"
+          labelText="Enterprise Plan"
+        />
+      </div>
     </div>
   ),
 };

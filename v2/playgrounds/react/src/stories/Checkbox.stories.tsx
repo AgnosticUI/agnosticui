@@ -39,6 +39,34 @@ const meta: Meta<typeof ReactCheckbox> = {
       options: ["end", "start"],
       description: "Position of label",
     },
+    label: {
+      control: "text",
+      description: "Optional external label displayed above the checkbox",
+    },
+    labelHidden: {
+      control: "boolean",
+      description: "Visually hides the external label",
+    },
+    noLabel: {
+      control: "boolean",
+      description: "Removes the external label element",
+    },
+    required: {
+      control: "boolean",
+      description: "Marks the checkbox as required",
+    },
+    invalid: {
+      control: "boolean",
+      description: "Marks the checkbox as invalid",
+    },
+    errorMessage: {
+      control: "text",
+      description: "Error message displayed when invalid",
+    },
+    helpText: {
+      control: "text",
+      description: "Helper text displayed below the checkbox",
+    },
   },
   args: {
     name: "example",
@@ -50,6 +78,13 @@ const meta: Meta<typeof ReactCheckbox> = {
     theme: "primary",
     labelText: "Checkbox Option",
     labelPosition: "end",
+    label: "",
+    labelHidden: false,
+    noLabel: false,
+    required: false,
+    invalid: false,
+    errorMessage: "",
+    helpText: "",
   },
 };
 
@@ -552,4 +587,96 @@ export const EventHandling: Story = {
       </div>
     );
   },
+};
+
+export const WithExternalLabel: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <ReactCheckbox
+        name="terms"
+        value="agreed"
+        label="Terms and Conditions"
+        labelText="I agree to the terms and conditions"
+      />
+
+      <ReactCheckbox
+        name="newsletter"
+        value="subscribed"
+        label="Newsletter Subscription"
+        labelText="Send me weekly updates"
+        helpText="You can unsubscribe at any time"
+      />
+
+      <ReactCheckbox
+        name="required-check"
+        value="yes"
+        label="Required Agreement"
+        labelText="I acknowledge I have read the privacy policy"
+        required={true}
+        helpText="This field is required to proceed"
+      />
+
+      <ReactCheckbox
+        name="age-verify"
+        value="yes"
+        label="Age Verification"
+        labelText="I confirm I am 18 years or older"
+        required={true}
+        invalid={true}
+        errorMessage="You must confirm you are 18 or older"
+      />
+    </div>
+  ),
+};
+
+export const ComparisonStandaloneVsExternal: Story = {
+  render: () => (
+    <div style={{ display: "flex", gap: "3rem" }}>
+      <div style={{ flex: 1 }}>
+        <h3 style={{ marginBottom: "1rem" }}>Standard Checkbox (Internal Label)</h3>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          <ReactCheckbox
+            name="standard-features"
+            value="feature1"
+            labelText="Feature 1"
+            checked
+          />
+          <ReactCheckbox
+            name="standard-features"
+            value="feature2"
+            labelText="Feature 2"
+          />
+          <ReactCheckbox
+            name="standard-features"
+            value="feature3"
+            labelText="Feature 3"
+            checked
+          />
+        </div>
+      </div>
+      <div style={{ flex: 1 }}>
+        <h3 style={{ marginBottom: "1rem" }}>
+          Checkbox with External Label (Group Context)
+        </h3>
+        <ReactCheckbox
+          name="features"
+          value="email"
+          label="Select Features"
+          labelText="Email notifications"
+          helpText="Choose the features you want to enable"
+          checked
+        />
+        <ReactCheckbox
+          name="features"
+          value="sms"
+          labelText="SMS notifications"
+        />
+        <ReactCheckbox
+          name="features"
+          value="push"
+          labelText="Push notifications"
+        />
+      </div>
+    </div>
+  ),
 };

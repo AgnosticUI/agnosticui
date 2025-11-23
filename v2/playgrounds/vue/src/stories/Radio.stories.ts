@@ -14,6 +14,13 @@ const meta = {
     theme: { control: 'select', options: ['default', 'primary', 'success', 'monochrome'], description: 'Theme' },
     labelText: { control: 'text', description: 'Label text' },
     labelPosition: { control: 'select', options: ['end', 'start'], description: 'Label position' },
+    label: { control: 'text', description: 'Optional external label displayed above the radio' },
+    labelHidden: { control: 'boolean', description: 'Visually hides the external label' },
+    noLabel: { control: 'boolean', description: 'Removes the external label element' },
+    required: { control: 'boolean', description: 'Marks the radio as required' },
+    invalid: { control: 'boolean', description: 'Marks the radio as invalid' },
+    errorMessage: { control: 'text', description: 'Error message displayed when invalid' },
+    helpText: { control: 'text', description: 'Helper text displayed below the radio' },
   },
   args: {
     name: 'example',
@@ -24,6 +31,13 @@ const meta = {
     theme: 'primary',
     labelText: 'Radio Option',
     labelPosition: 'end',
+    label: '',
+    labelHidden: false,
+    noLabel: false,
+    required: false,
+    invalid: false,
+    errorMessage: '',
+    helpText: '',
   },
 } satisfies Meta<typeof VueRadio>;
 
@@ -117,6 +131,105 @@ export const AllSizes: Story = {
         <div>
           <h3 style="margin-bottom: 0.5rem;">Large</h3>
           <VueRadio name="size-large" value="1" size="large" label-text="Large radio" :checked="true" />
+        </div>
+      </div>
+    `,
+  }),
+};
+
+export const WithExternalLabel: Story = {
+  render: () => ({
+    components: { VueRadio },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <VueRadio
+          name="shipping-method"
+          value="standard"
+          label="Shipping Method"
+          label-text="Standard Shipping (5-7 days)"
+          :checked="true"
+        />
+
+        <VueRadio
+          name="payment-method"
+          value="credit"
+          label="Payment Method"
+          label-text="Credit Card"
+          help-text="We accept all major credit cards"
+          :checked="true"
+        />
+
+        <VueRadio
+          name="terms"
+          value="agreed"
+          label="Terms and Conditions"
+          label-text="I agree to the terms and conditions"
+          :required="true"
+          help-text="Please read and accept our terms"
+        />
+
+        <VueRadio
+          name="age-verify"
+          value="confirmed"
+          label="Age Verification"
+          label-text="I confirm I am 18 years or older"
+          :required="true"
+          :invalid="true"
+          error-message="You must confirm you are 18 or older to proceed"
+        />
+      </div>
+    `,
+  }),
+};
+
+export const ComparisonStandaloneVsExternal: Story = {
+  render: () => ({
+    components: { VueRadio },
+    template: `
+      <div style="display: flex; gap: 3rem;">
+        <div style="flex: 1;">
+          <h3 style="margin-bottom: 1rem;">Standard Radio (Internal Label)</h3>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <VueRadio
+              name="standard-plan"
+              value="free"
+              label-text="Free Plan"
+              :checked="true"
+            />
+            <VueRadio
+              name="standard-plan"
+              value="pro"
+              label-text="Pro Plan"
+            />
+            <VueRadio
+              name="standard-plan"
+              value="enterprise"
+              label-text="Enterprise Plan"
+            />
+          </div>
+        </div>
+        <div style="flex: 1;">
+          <h3 style="margin-bottom: 1rem;">
+            Radio with External Label (Group Context)
+          </h3>
+          <VueRadio
+            name="plan-selection"
+            value="free"
+            label="Choose Your Plan"
+            label-text="Free Plan"
+            help-text="Select the plan that best fits your needs"
+            :checked="true"
+          />
+          <VueRadio
+            name="plan-selection"
+            value="pro"
+            label-text="Pro Plan"
+          />
+          <VueRadio
+            name="plan-selection"
+            value="enterprise"
+            label-text="Enterprise Plan"
+          />
         </div>
       </div>
     `,
