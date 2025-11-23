@@ -447,6 +447,188 @@ export class SelectWithLabels extends LitElement {
 ```
 :::
 
+### Label Positioning
+
+The `labelPosition` prop controls where the label appears relative to the select. Supports `'top'` (default), `'start'`, `'end'`, and `'bottom'`.
+
+**Note:** The `'bottom'` position is not recommended for select elements because the dropdown menu will cover the label when opened.
+
+::: details Vue
+```vue
+<template>
+  <div style="display: flex; flex-direction: column; gap: 2rem;">
+    <!-- Top position (default) -->
+    <VueSelect
+      label="Top Label (Default)"
+      label-position="top"
+      name="top"
+    >
+      <option value="">Select option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+    </VueSelect>
+
+    <!-- Start position (label before select) -->
+    <VueSelect
+      label="Start Position"
+      label-position="start"
+      name="start"
+    >
+      <option value="">Select option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+    </VueSelect>
+
+    <!-- End position (label after select) -->
+    <VueSelect
+      label="End Position"
+      label-position="end"
+      name="end"
+    >
+      <option value="">Select option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+    </VueSelect>
+
+    <!-- Bottom position (not recommended - dropdown covers label) -->
+    <VueSelect
+      label="Bottom Position (Not Recommended)"
+      label-position="bottom"
+      name="bottom"
+      help-text="The dropdown will cover this label when opened"
+    >
+      <option value="">Select option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+    </VueSelect>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { VueSelect } from 'agnosticui-core/select/vue';
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { ReactSelect } from 'agnosticui-core/select/react';
+
+export default function LabelPositioningExamples() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      {/* Top position (default) */}
+      <ReactSelect
+        label="Top Label (Default)"
+        labelPosition="top"
+        name="top"
+      >
+        <option value="">Select option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </ReactSelect>
+
+      {/* Start position (label before select) */}
+      <ReactSelect
+        label="Start Position"
+        labelPosition="start"
+        name="start"
+      >
+        <option value="">Select option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </ReactSelect>
+
+      {/* End position (label after select) */}
+      <ReactSelect
+        label="End Position"
+        labelPosition="end"
+        name="end"
+      >
+        <option value="">Select option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </ReactSelect>
+
+      {/* Bottom position (not recommended - dropdown covers label) */}
+      <ReactSelect
+        label="Bottom Position (Not Recommended)"
+        labelPosition="bottom"
+        name="bottom"
+        helpText="The dropdown will cover this label when opened"
+      >
+        <option value="">Select option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </ReactSelect>
+    </div>
+  );
+}
+```
+:::
+
+::: details Lit
+```ts
+import 'agnosticui-core/select';
+import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
+
+@customElement('label-positioning-examples')
+export class LabelPositioningExamples extends LitElement {
+  render() {
+    return html`
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <!-- Top position (default) -->
+        <ag-select
+          .label=${"Top Label (Default)"}
+          .labelPosition=${"top"}
+          name="top"
+        >
+          <option value="">Select option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </ag-select>
+
+        <!-- Start position (label before select) -->
+        <ag-select
+          .label=${"Start Position"}
+          .labelPosition=${"start"}
+          name="start"
+        >
+          <option value="">Select option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </ag-select>
+
+        <!-- End position (label after select) -->
+        <ag-select
+          .label=${"End Position"}
+          .labelPosition=${"end"}
+          name="end"
+        >
+          <option value="">Select option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </ag-select>
+
+        <!-- Bottom position (not recommended - dropdown covers label) -->
+        <ag-select
+          .label=${"Bottom Position (Not Recommended)"}
+          .labelPosition=${"bottom"}
+          .helpText=${"The dropdown will cover this label when opened"}
+          name="bottom"
+        >
+          <option value="">Select option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </ag-select>
+      </div>
+    `;
+  }
+}
+```
+:::
+
 ## Features
 
 - **Native select element** - Uses browser's built-in `<select>` with custom styling
