@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
+import { VueFieldset } from 'agnosticui-core/fieldset/vue';
 
 const meta = {
   title: 'AgnosticUI Vue/Checkbox',
@@ -60,19 +61,18 @@ export const Default: Story = {
 
 export const CheckboxGroup: Story = {
   render: (args) => ({
-    components: { VueCheckbox },
+    components: { VueCheckbox, VueFieldset },
     setup() {
       return { args };
     },
     template: `
-      <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Select Features</legend>
+      <VueFieldset legend="Select Features">
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
           <VueCheckbox name="features" value="dark-mode" :size="args.size" :theme="args.theme" :checked="true">Dark Mode</VueCheckbox>
           <VueCheckbox name="features" value="notifications" :size="args.size" :theme="args.theme">Notifications</VueCheckbox>
           <VueCheckbox name="features" value="analytics" :size="args.size" :theme="args.theme" :checked="true">Analytics</VueCheckbox>
         </div>
-      </fieldset>
+      </VueFieldset>
     `,
   }),
 };
@@ -98,45 +98,41 @@ export const Indeterminate: Story = {
 
 export const AllThemes: Story = {
   render: (args) => ({
-    components: { VueCheckbox },
+    components: { VueCheckbox, VueFieldset },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-        <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-          <legend style="padding: 0 0.5rem; font-weight: 600;">Default Theme (Primary)</legend>
+        <VueFieldset legend="Default Theme (Primary)">
           <div style="display: flex; gap: 1rem;">
             <VueCheckbox name="theme-default" value="1" :size="args.size" theme="default" label-text="Unchecked" />
             <VueCheckbox name="theme-default" value="2" :size="args.size" theme="default" label-text="Checked" :checked="true" />
             <VueCheckbox name="theme-default" value="3" :size="args.size" theme="default" label-text="Indeterminate" :indeterminate="true" />
           </div>
-        </fieldset>
+        </VueFieldset>
 
-        <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-          <legend style="padding: 0 0.5rem; font-weight: 600;">Primary Theme (Blue)</legend>
+        <VueFieldset legend="Primary Theme (Blue)">
           <div style="display: flex; gap: 1rem;">
             <VueCheckbox name="theme-primary" value="1" :size="args.size" theme="primary" label-text="Unchecked" />
             <VueCheckbox name="theme-primary" value="2" :size="args.size" theme="primary" label-text="Checked" :checked="true" />
             <VueCheckbox name="theme-primary" value="3" :size="args.size" theme="primary" label-text="Indeterminate" :indeterminate="true" />
           </div>
-        </fieldset>
-        <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-          <legend style="padding: 0 0.5rem; font-weight: 600;">Success Theme (Green)</legend>
+        </VueFieldset>
+        <VueFieldset legend="Success Theme (Green)">
           <div style="display: flex; gap: 1rem;">
             <VueCheckbox name="theme-success" value="1" :size="args.size" theme="success" label-text="Unchecked" />
             <VueCheckbox name="theme-success" value="2" :size="args.size" theme="success" label-text="Checked" :checked="true" />
             <VueCheckbox name="theme-success" value="3" :size="args.size" theme="success" label-text="Indeterminate" :indeterminate="true" />
           </div>
-        </fieldset>
-        <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-          <legend style="padding: 0 0.5rem; font-weight: 600;">Monochrome Theme (Black/White)</legend>
+        </VueFieldset>
+        <VueFieldset legend="Monochrome Theme (Black/White)">
           <div style="display: flex; gap: 1rem;">
             <VueCheckbox name="theme-mono" value="1" :size="args.size" theme="monochrome" label-text="Unchecked" />
             <VueCheckbox name="theme-mono" value="2" :size="args.size" theme="monochrome" label-text="Checked" :checked="true" />
             <VueCheckbox name="theme-mono" value="3" :size="args.size" theme="monochrome" label-text="Indeterminate" :indeterminate="true" />
           </div>
-        </fieldset>
+        </VueFieldset>
       </div>
     `,
   }),
