@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ReactCheckbox } from "agnosticui-core/checkbox/react";
+import { ReactFieldset } from "agnosticui-core/fieldset/react";
 
 const meta: Meta<typeof ReactCheckbox> = {
   title: "AgnosticUI React/Checkbox",
@@ -97,16 +98,7 @@ export const Default: Story = {
 
 export const CheckboxGroup: Story = {
   render: (args) => (
-    <fieldset
-      style={{
-        border: "1px solid #e5e7eb",
-        padding: "1rem",
-        borderRadius: "0.5rem",
-      }}
-    >
-      <legend style={{ padding: "0 0.5rem", fontWeight: 600 }}>
-        Select Features
-      </legend>
+    <ReactFieldset legend="Select Features">
       <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         <ReactCheckbox
           name="features"
@@ -132,7 +124,7 @@ export const CheckboxGroup: Story = {
           checked
         />
       </div>
-    </fieldset>
+    </ReactFieldset>
   ),
 };
 
@@ -186,16 +178,7 @@ export const Indeterminate: Story = {
 export const AllThemes: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-      <fieldset
-        style={{
-          border: "1px solid #e5e7eb",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      >
-        <legend style={{ padding: "0 0.5rem", fontWeight: 600 }}>
-          Default Theme (primary)
-        </legend>
+      <ReactFieldset legend="Default Theme (primary)">
         <div style={{ display: "flex", gap: "1rem" }}>
           <ReactCheckbox
             name="theme-default"
@@ -221,18 +204,9 @@ export const AllThemes: Story = {
             indeterminate
           />
         </div>
-      </fieldset>
+      </ReactFieldset>
 
-      <fieldset
-        style={{
-          border: "1px solid #e5e7eb",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      >
-        <legend style={{ padding: "0 0.5rem", fontWeight: 600 }}>
-          Success Theme (Green)
-        </legend>
+      <ReactFieldset legend="Success Theme (Green)">
         <div style={{ display: "flex", gap: "1rem" }}>
           <ReactCheckbox
             name="theme-success"
@@ -258,18 +232,9 @@ export const AllThemes: Story = {
             indeterminate
           />
         </div>
-      </fieldset>
+      </ReactFieldset>
 
-      <fieldset
-        style={{
-          border: "1px solid #e5e7eb",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      >
-        <legend style={{ padding: "0 0.5rem", fontWeight: 600 }}>
-          Primary Theme (Blue)
-        </legend>
+      <ReactFieldset legend="Primary Theme (Blue)">
         <div style={{ display: "flex", gap: "1rem" }}>
           <ReactCheckbox
             name="theme-primary"
@@ -295,18 +260,9 @@ export const AllThemes: Story = {
             indeterminate
           />
         </div>
-      </fieldset>
+      </ReactFieldset>
 
-      <fieldset
-        style={{
-          border: "1px solid #e5e7eb",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      >
-        <legend style={{ padding: "0 0.5rem", fontWeight: 600 }}>
-          Monochrome Theme (Black/White)
-        </legend>
+      <ReactFieldset legend="Monochrome Theme (Black/White)">
         <div style={{ display: "flex", gap: "1rem" }}>
           <ReactCheckbox
             name="theme-mono"
@@ -332,7 +288,7 @@ export const AllThemes: Story = {
             indeterminate
           />
         </div>
-      </fieldset>
+      </ReactFieldset>
     </div>
   ),
 };
@@ -680,3 +636,4 @@ export const ComparisonStandaloneVsExternal: Story = {
     </div>
   ),
 };
+
