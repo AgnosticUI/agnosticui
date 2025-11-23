@@ -13,6 +13,15 @@ export interface ReactSelectProps {
   multipleSize?: number;
   children?: React.ReactNode;
 
+  // External label support
+  label?: string;
+  labelHidden?: boolean;
+  noLabel?: boolean;
+  required?: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  helpText?: string;
+
   // Event callbacks
   onChange?: (event: SelectChangeEvent) => void;
   onFocus?: (event: FocusEvent) => void;
