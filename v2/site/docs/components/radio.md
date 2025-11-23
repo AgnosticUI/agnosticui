@@ -255,6 +255,28 @@ export default function Example() {
 ```
 :::
 
+## Label Position
+
+The `labelPosition` prop controls where the internal label text appears relative to the radio button. This affects the `labelText` (the label that wraps the radio), not the external `label` prop.
+
+```vue
+<!-- Label after radio (default) -->
+<VueRadio
+  name="option"
+  value="1"
+  label-text="Label on end (default)"
+  label-position="end"
+/>
+
+<!-- Label before radio -->
+<VueRadio
+  name="option"
+  value="2"
+  label-text="Label on start"
+  label-position="start"
+/>
+```
+
 ## External Label Support
 
 Radio buttons now support optional external labels, helper text, and error messages using the shared form control utilities. This is useful for:

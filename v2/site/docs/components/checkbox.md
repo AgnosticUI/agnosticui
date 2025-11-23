@@ -183,6 +183,28 @@ export default function Example() {
 ```
 :::
 
+## Label Position
+
+The `labelPosition` prop controls where the internal label text appears relative to the checkbox. This affects the `labelText` (the label that wraps the checkbox), not the external `label` prop.
+
+```vue
+<!-- Label after checkbox (default) -->
+<VueCheckbox
+  name="option"
+  value="1"
+  label-text="Label on end (default)"
+  label-position="end"
+/>
+
+<!-- Label before checkbox -->
+<VueCheckbox
+  name="option"
+  value="2"
+  label-text="Label on start"
+  label-position="start"
+/>
+```
+
 ## External Label Support
 
 Checkboxes now support optional external labels, helper text, and error messages using the shared form control utilities. This is useful for:
