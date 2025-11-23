@@ -1726,68 +1726,80 @@ export const InvalidWithAddons: Story = {
 // Horizontal Label Position
 export const HorizontalLabelPosition: Story = {
   render: () => html`
-    <div style="padding: 50px; max-width: 800px;">
-      <h3 style="margin-top: 0;">Horizontal Label Position</h3>
+    <div style="padding: 50px; max-width: 900px;">
+      <h3 style="margin-top: 0;">Horizontal Label Position (start / end)</h3>
       <p style="margin-bottom: 1.5rem; color: #6b7280;">
         Labels can be positioned horizontally (beside the input) for compact layouts.
+        Use <code>start</code> for label before input, <code>end</code> for label after input.
         Input uses progressive enhancement with <code>field-sizing: content</code> (Chrome 123+, Safari TP).
       </p>
 
-      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-        <!-- Basic horizontal -->
-        <ag-input
-          .label=${"Name:"}
-          .labelPosition=${"horizontal"}
-          .type=${"text"}
-          .placeholder=${"John Doe"}
-        ></ag-input>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <!-- Start position (label before input) -->
+        <div>
+          <h4 style="margin-top: 0;">Start Position</h4>
+          <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem;">
+            Label appears before (to the start of) the input
+          </p>
 
-        <!-- With help text -->
-        <ag-input
-          .label=${"Age:"}
-          .labelPosition=${"horizontal"}
-          .type=${"number"}
-          .placeholder=${"25"}
-          .helpText=${"Must be 18 or older"}
-        ></ag-input>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <ag-input
+              .label=${"Name:"}
+              .labelPosition=${"start"}
+              .type=${"text"}
+              .placeholder=${"John Doe"}
+            ></ag-input>
 
-        <!-- Required field -->
-        <ag-input
-          .label=${"Email:"}
-          .labelPosition=${"horizontal"}
-          .type=${"email"}
-          .placeholder=${"you@example.com"}
-          .required=${true}
-        ></ag-input>
+            <ag-input
+              .label=${"Age:"}
+              .labelPosition=${"start"}
+              .type=${"number"}
+              .placeholder=${"25"}
+              .helpText=${"Must be 18 or older"}
+            ></ag-input>
 
-        <!-- With error -->
-        <ag-input
-          .label=${"Username:"}
-          .labelPosition=${"horizontal"}
-          .type=${"text"}
-          .value=${"ab"}
-          .invalid=${true}
-          .errorMessage=${"Must be at least 3 characters"}
-        ></ag-input>
+            <ag-input
+              .label=${"Email:"}
+              .labelPosition=${"start"}
+              .type=${"email"}
+              .placeholder=${"you@example.com"}
+              .required=${true}
+            ></ag-input>
+          </div>
+        </div>
 
-        <!-- Small size horizontal -->
-        <ag-input
-          .label=${"Code:"}
-          .labelPosition=${"horizontal"}
-          .type=${"text"}
-          .size=${"small"}
-          .placeholder=${"ABC123"}
-          .helpText=${"Enter verification code"}
-        ></ag-input>
+        <!-- End position (label after input) -->
+        <div>
+          <h4 style="margin-top: 0;">End Position</h4>
+          <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem;">
+            Label appears after (to the end of) the input
+          </p>
 
-        <!-- With rounded style -->
-        <ag-input
-          .label=${"Search:"}
-          .labelPosition=${"horizontal"}
-          .type=${"search"}
-          .rounded=${true}
-          .placeholder=${"Search..."}
-        ></ag-input>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <ag-input
+              .label=${"Name:"}
+              .labelPosition=${"end"}
+              .type=${"text"}
+              .placeholder=${"John Doe"}
+            ></ag-input>
+
+            <ag-input
+              .label=${"Age:"}
+              .labelPosition=${"end"}
+              .type=${"number"}
+              .placeholder=${"25"}
+              .helpText=${"Must be 18 or older"}
+            ></ag-input>
+
+            <ag-input
+              .label=${"Email:"}
+              .labelPosition=${"end"}
+              .type=${"email"}
+              .placeholder=${"you@example.com"}
+              .required=${true}
+            ></ag-input>
+          </div>
+        </div>
       </div>
 
       <div style="margin-top: 2rem; padding: 1rem; background: #f9fafb; border-radius: 6px;">
@@ -1802,72 +1814,116 @@ export const HorizontalLabelPosition: Story = {
   `,
 };
 
-// Horizontal vs Vertical Comparison
+// All Label Positions Comparison
 export const HorizontalVsVertical: Story = {
   render: () => html`
-    <div style="padding: 50px; max-width: 900px;">
+    <div style="padding: 50px; max-width: 1000px;">
       <h3 style="margin-top: 0;">Label Position Comparison</h3>
+      <p style="margin-bottom: 1.5rem; color: #6b7280;">
+        All four directional label positions: <code>top</code>, <code>end</code>, <code>bottom</code>, <code>start</code>
+      </p>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 1.5rem;">
-        <!-- Vertical (Default) -->
+        <!-- Top (Default) -->
         <div>
-          <h4>Vertical (Default)</h4>
+          <h4 style="margin-top: 0;">Top (Default)</h4>
           <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">
-            Label stacked above input - best for mobile, BBC GEL recommended
+            Vertical - label stacked above input<br>
+            Best for mobile, BBC GEL recommended
           </p>
 
           <div style="display: flex; flex-direction: column; gap: 1.5rem;">
             <ag-input
               .label=${"Full Name"}
+              .labelPosition=${"top"}
               .type=${"text"}
               .placeholder=${"Enter your full name"}
             ></ag-input>
 
             <ag-input
               .label=${"Email Address"}
+              .labelPosition=${"top"}
               .type=${"email"}
               .placeholder=${"you@example.com"}
               .required=${true}
             ></ag-input>
-
-            <ag-input
-              .label=${"Phone Number"}
-              .type=${"tel"}
-              .placeholder=${"+1 (555) 000-0000"}
-              .helpText=${"We'll never share your number"}
-            ></ag-input>
           </div>
         </div>
 
-        <!-- Horizontal -->
+        <!-- Start -->
         <div>
-          <h4>Horizontal</h4>
+          <h4 style="margin-top: 0;">Start</h4>
           <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">
-            Label beside input - good for compact layouts and short inputs
+            Horizontal - label before input<br>
+            Good for compact layouts, respects RTL
           </p>
 
           <div style="display: flex; flex-direction: column; gap: 1.5rem;">
             <ag-input
               .label=${"Name:"}
-              .labelPosition=${"horizontal"}
+              .labelPosition=${"start"}
               .type=${"text"}
-              .placeholder=${"Enter your name"}
+              .placeholder=${"Enter name"}
             ></ag-input>
 
             <ag-input
               .label=${"Email:"}
-              .labelPosition=${"horizontal"}
+              .labelPosition=${"start"}
               .type=${"email"}
               .placeholder=${"you@example.com"}
               .required=${true}
             ></ag-input>
+          </div>
+        </div>
+
+        <!-- Bottom -->
+        <div>
+          <h4 style="margin-top: 0;">Bottom</h4>
+          <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">
+            Vertical - label stacked below input<br>
+            Less common, use sparingly
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <ag-input
+              .label=${"Full Name"}
+              .labelPosition=${"bottom"}
+              .type=${"text"}
+              .placeholder=${"Enter your full name"}
+            ></ag-input>
 
             <ag-input
-              .label=${"Phone:"}
-              .labelPosition=${"horizontal"}
-              .type=${"tel"}
-              .placeholder=${"+1 (555) 000-0000"}
-              .helpText=${"We'll never share your number"}
+              .label=${"Email Address"}
+              .labelPosition=${"bottom"}
+              .type=${"email"}
+              .placeholder=${"you@example.com"}
+              .required=${true}
+            ></ag-input>
+          </div>
+        </div>
+
+        <!-- End -->
+        <div>
+          <h4 style="margin-top: 0;">End</h4>
+          <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">
+            Horizontal - label after input<br>
+            Common for checkboxes/radio, respects RTL
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <ag-input
+              .label=${"Name:"}
+              .labelPosition=${"end"}
+              .type=${"text"}
+              .placeholder=${"Enter name"}
+            ></ag-input>
+
+            <ag-input
+              .label=${"Email:"}
+              .labelPosition=${"end"}
+              .type=${"email"}
+              .placeholder=${"you@example.com"}
+              .required=${true}
             ></ag-input>
           </div>
         </div>
@@ -1888,7 +1944,7 @@ export const HorizontalCompactForm: Story = {
       <form style="display: flex; flex-direction: column; gap: 1.5rem;">
         <ag-input
           .label=${"First Name:"}
-          .labelPosition=${"horizontal"}
+          .labelPosition=${"start"}
           .type=${"text"}
           .placeholder=${"John"}
           .required=${true}
@@ -1896,7 +1952,7 @@ export const HorizontalCompactForm: Story = {
 
         <ag-input
           .label=${"Last Name:"}
-          .labelPosition=${"horizontal"}
+          .labelPosition=${"start"}
           .type=${"text"}
           .placeholder=${"Doe"}
           .required=${true}
@@ -1904,7 +1960,7 @@ export const HorizontalCompactForm: Story = {
 
         <ag-input
           .label=${"Age:"}
-          .labelPosition=${"horizontal"}
+          .labelPosition=${"start"}
           .type=${"number"}
           .size=${"small"}
           .placeholder=${"25"}
@@ -1912,14 +1968,14 @@ export const HorizontalCompactForm: Story = {
 
         <ag-input
           .label=${"Country:"}
-          .labelPosition=${"horizontal"}
+          .labelPosition=${"start"}
           .type=${"text"}
           .placeholder=${"United States"}
         ></ag-input>
 
         <ag-input
           .label=${"Postal Code:"}
-          .labelPosition=${"horizontal"}
+          .labelPosition=${"start"}
           .type=${"text"}
           .size=${"small"}
           .placeholder=${"12345"}
@@ -1927,7 +1983,7 @@ export const HorizontalCompactForm: Story = {
 
         <ag-input
           .label=${"Bio:"}
-          .labelPosition=${"horizontal"}
+          .labelPosition=${"start"}
           .type=${"textarea"}
           .rows=${3}
           .placeholder=${"Tell us about yourself..."}

@@ -13,6 +13,7 @@ import { formControlStyles } from '../../../shared/form-control-styles';
 import {
   createFormControlIds,
   buildAriaDescribedBy,
+  isHorizontalLabel,
   type LabelPosition,
 } from '../../../shared/form-control-utils';
 
@@ -408,7 +409,7 @@ export class AgInput extends LitElement implements InputProps {
     super();
     this.label = '';
     this.labelHidden = false;
-    this.labelPosition = 'vertical';
+    this.labelPosition = 'top';
     this.noLabel = false;
     this.ariaLabel = '';
     this.labelledBy = '';
@@ -666,15 +667,23 @@ export class AgInput extends LitElement implements InputProps {
   private _renderLabel() {
     if (!this.label || this.noLabel) return nothing;
 
-    const positionClass = this.labelPosition === 'horizontal'
-      ? 'ag-form-control__label--horizontal ag-input__label--horizontal'
-      : '';
+    // Build position classes based on directional value
+    const positionClasses: string[] = [];
+    if (isHorizontalLabel(this.labelPosition)) {
+      positionClasses.push('ag-form-control__label--horizontal');
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+      positionClasses.push('ag-input__label--horizontal');
+      positionClasses.push(`ag-input__label--${this.labelPosition}`);
+    } else if (this.labelPosition === 'bottom') {
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+      positionClasses.push(`ag-input__label--${this.labelPosition}`);
+    }
 
     return html`
       <label
         id="${this._ids.labelId}"
         for="${this._ids.inputId}"
-        class="ag-form-control__label ag-input__label ${this.labelHidden ? 'ag-form-control__label--hidden ag-input__label--hidden' : ''} ${positionClass}"
+        class="ag-form-control__label ag-input__label ${this.labelHidden ? 'ag-form-control__label--hidden ag-input__label--hidden' : ''} ${positionClasses.join(' ')}"
         part="ag-input-label"
       >
         ${this.label}
@@ -722,7 +731,7 @@ export class AgInput extends LitElement implements InputProps {
 
   render() {
     const hasAddons = this._hasLeftAddon || this._hasRightAddon;
-    const isHorizontal = this.labelPosition === 'horizontal';
+    const isHorizontal = isHorizontalLabel(this.labelPosition);
 
     // Build wrapper class list
     const wrapperClasses = ['ag-input'];
@@ -779,7 +788,20 @@ export class AgInput extends LitElement implements InputProps {
       `;
     }
 
-    // For vertical layout: Label, Input, Helper, Error stacked
+    // For vertical layout: Different order for top vs bottom labels
+    if (this.labelPosition === 'bottom') {
+      // Bottom label: Input first, then helper/error, then label
+      return html`
+        <div class="${wrapperClasses.join(' ')}" part="ag-input-wrapper">
+          ${inputField}
+          ${this.helpText ? this._renderHelper() : nothing}
+          ${this._renderError()}
+          ${this._renderLabel()}
+        </div>
+      `;
+    }
+
+    // Top label (default): Label first, then helper/error, then input
     return html`
       <div class="${wrapperClasses.join(' ')}" part="ag-input-wrapper">
         ${this._renderLabel()}
