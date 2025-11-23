@@ -15,6 +15,7 @@ export interface ReactSelectProps {
 
   // External label support
   label?: string;
+  labelPosition?: 'top' | 'start' | 'end' | 'bottom';
   labelHidden?: boolean;
   noLabel?: boolean;
   required?: boolean;

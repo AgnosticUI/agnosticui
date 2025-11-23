@@ -15,6 +15,13 @@ const meta = {
     disabled: { control: 'boolean', description: 'Disable the select' },
     name: { control: 'text', description: 'Form name attribute' },
     multipleSize: { control: 'number', description: 'Visible options for multiple select' },
+    label: { control: 'text', description: 'External label text' },
+    labelHidden: { control: 'boolean', description: 'Visually hide the label' },
+    noLabel: { control: 'boolean', description: 'Remove the label element' },
+    required: { control: 'boolean', description: 'Mark as required' },
+    invalid: { control: 'boolean', description: 'Mark as invalid' },
+    errorMessage: { control: 'text', description: 'Error message when invalid' },
+    helpText: { control: 'text', description: 'Helper text below the select' },
   },
   args: {
     size: '',
@@ -22,6 +29,13 @@ const meta = {
     disabled: false,
     name: 'tennis-players',
     multipleSize: undefined,
+    label: '',
+    labelHidden: false,
+    noLabel: false,
+    required: false,
+    invalid: false,
+    errorMessage: '',
+    helpText: '',
   },
 } satisfies Meta<typeof VueSelect>;
 
@@ -413,6 +427,105 @@ export const CombinedPatterns: Story = {
               <div v-if="log.length === 0">(no events yet)</div>
             </div>
           </div>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+export const WithExternalLabel: Story = {
+  render: () => ({
+    components: { VueSelect },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 400px;">
+        <VueSelect
+          label="Favorite Framework"
+          name="framework"
+        >
+          <option value="">Choose a framework</option>
+          <option value="react">React</option>
+          <option value="vue">Vue</option>
+          <option value="angular">Angular</option>
+          <option value="svelte">Svelte</option>
+        </VueSelect>
+
+        <VueSelect
+          label="Country"
+          help-text="Select your country of residence"
+          name="country"
+        >
+          <option value="">Select a country</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="ca">Canada</option>
+          <option value="au">Australia</option>
+        </VueSelect>
+
+        <VueSelect
+          label="Preferred Language"
+          :required="true"
+          help-text="This field is required"
+          name="language"
+        >
+          <option value="">Select a language</option>
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+        </VueSelect>
+
+        <VueSelect
+          label="Payment Method"
+          :required="true"
+          :invalid="true"
+          error-message="Please select a payment method to continue"
+          name="payment"
+        >
+          <option value="">Select payment method</option>
+          <option value="credit">Credit Card</option>
+          <option value="debit">Debit Card</option>
+          <option value="paypal">PayPal</option>
+        </VueSelect>
+      </div>
+    `,
+  }),
+};
+
+export const ComparisonStandaloneVsExternal: Story = {
+  render: () => ({
+    components: { VueSelect },
+    template: `
+      <div style="display: flex; gap: 3rem;">
+        <div style="flex: 1;">
+          <h3 style="margin-bottom: 1rem;">Standard Select (Manual Label)</h3>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div>
+              <label for="plan-1" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                Choose Plan
+              </label>
+              <VueSelect id="plan-1" name="plan-1">
+                <option value="">Select a plan</option>
+                <option value="free">Free Plan</option>
+                <option value="pro">Pro Plan</option>
+                <option value="enterprise">Enterprise Plan</option>
+              </VueSelect>
+            </div>
+          </div>
+        </div>
+        <div style="flex: 1;">
+          <h3 style="margin-bottom: 1rem;">
+            Select with External Label
+          </h3>
+          <VueSelect
+            label="Choose Plan"
+            help-text="Select the plan that best fits your needs"
+            name="plan-2"
+          >
+            <option value="">Select a plan</option>
+            <option value="free">Free Plan</option>
+            <option value="pro">Pro Plan</option>
+            <option value="enterprise">Enterprise Plan</option>
+          </VueSelect>
         </div>
       </div>
     `,

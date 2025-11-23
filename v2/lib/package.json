@@ -60,6 +60,14 @@
       "types": "./dist/components/Input/core/Input.d.ts",
       "import": "./dist/components/Input/core/Input.js"
     },
+    "./label": {
+      "types": "./dist/components/Label/core/Label.d.ts",
+      "import": "./dist/components/Label/core/Label.js"
+    },
+    "./form-control": {
+      "types": "./dist/components/FormControl/core/FormControl.d.ts",
+      "import": "./dist/components/FormControl/core/FormControl.js"
+    },
     "./button/vue": {
       "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
       "import": "./dist/components/Button/vue/VueButton.js"

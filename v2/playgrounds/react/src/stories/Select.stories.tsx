@@ -15,6 +15,13 @@ const meta = {
     disabled: { control: 'boolean', description: 'Disable the select' },
     name: { control: 'text', description: 'Form name attribute' },
     multipleSize: { control: 'number', description: 'Visible options for multiple select' },
+    label: { control: 'text', description: 'External label text' },
+    labelHidden: { control: 'boolean', description: 'Visually hide the label' },
+    noLabel: { control: 'boolean', description: 'Remove the label element' },
+    required: { control: 'boolean', description: 'Mark as required' },
+    invalid: { control: 'boolean', description: 'Mark as invalid' },
+    errorMessage: { control: 'text', description: 'Error message when invalid' },
+    helpText: { control: 'text', description: 'Helper text below the select' },
   },
   args: {
     size: '',
@@ -22,6 +29,13 @@ const meta = {
     disabled: false,
     name: 'tennis-players',
     multipleSize: undefined,
+    label: '',
+    labelHidden: false,
+    noLabel: false,
+    required: false,
+    invalid: false,
+    errorMessage: '',
+    helpText: '',
   },
 } satisfies Meta<typeof ReactSelect>;
 
@@ -332,4 +346,97 @@ export const MultipleWithState: Story = {
       </div>
     );
   },
+};
+
+export const WithExternalLabel: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '400px' }}>
+      <ReactSelect
+        label="Favorite Framework"
+        name="framework"
+      >
+        <option value="">Choose a framework</option>
+        <option value="react">React</option>
+        <option value="vue">Vue</option>
+        <option value="angular">Angular</option>
+        <option value="svelte">Svelte</option>
+      </ReactSelect>
+
+      <ReactSelect
+        label="Country"
+        helpText="Select your country of residence"
+        name="country"
+      >
+        <option value="">Select a country</option>
+        <option value="us">United States</option>
+        <option value="uk">United Kingdom</option>
+        <option value="ca">Canada</option>
+        <option value="au">Australia</option>
+      </ReactSelect>
+
+      <ReactSelect
+        label="Preferred Language"
+        required
+        helpText="This field is required"
+        name="language"
+      >
+        <option value="">Select a language</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+      </ReactSelect>
+
+      <ReactSelect
+        label="Payment Method"
+        required
+        invalid
+        errorMessage="Please select a payment method to continue"
+        name="payment"
+      >
+        <option value="">Select payment method</option>
+        <option value="credit">Credit Card</option>
+        <option value="debit">Debit Card</option>
+        <option value="paypal">PayPal</option>
+      </ReactSelect>
+    </div>
+  ),
+};
+
+export const ComparisonStandaloneVsExternal: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '3rem' }}>
+      <div style={{ flex: 1 }}>
+        <h3 style={{ marginBottom: '1rem' }}>Standard Select (Manual Label)</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <div>
+            <label htmlFor="plan-1" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>
+              Choose Plan
+            </label>
+            <ReactSelect id="plan-1" name="plan-1">
+              <option value="">Select a plan</option>
+              <option value="free">Free Plan</option>
+              <option value="pro">Pro Plan</option>
+              <option value="enterprise">Enterprise Plan</option>
+            </ReactSelect>
+          </div>
+        </div>
+      </div>
+      <div style={{ flex: 1 }}>
+        <h3 style={{ marginBottom: '1rem' }}>
+          Select with External Label
+        </h3>
+        <ReactSelect
+          label="Choose Plan"
+          helpText="Select the plan that best fits your needs"
+          name="plan-2"
+        >
+          <option value="">Select a plan</option>
+          <option value="free">Free Plan</option>
+          <option value="pro">Pro Plan</option>
+          <option value="enterprise">Enterprise Plan</option>
+        </ReactSelect>
+      </div>
+    </div>
+  ),
 };
