@@ -183,6 +183,78 @@ export default function Example() {
 ```
 :::
 
+## External Label Support
+
+Checkboxes now support optional external labels, helper text, and error messages using the shared form control utilities. This is useful for:
+- Checkbox groups that need a descriptive label above them
+- Standalone checkboxes that require validation feedback
+- Forms where consistent label/helper/error patterns are needed
+
+### Basic External Label
+
+```vue
+<VueCheckbox
+  name="terms"
+  value="agreed"
+  label="Terms and Conditions"
+  label-text="I agree to the terms and conditions"
+/>
+```
+
+### With Helper Text
+
+```vue
+<VueCheckbox
+  name="newsletter"
+  value="subscribed"
+  label="Newsletter Subscription"
+  label-text="Send me weekly updates"
+  help-text="You can unsubscribe at any time"
+/>
+```
+
+### With Validation
+
+```vue
+<VueCheckbox
+  name="age-verify"
+  value="confirmed"
+  label="Age Verification"
+  label-text="I confirm I am 18 years or older"
+  :required="true"
+  :invalid="!ageVerified"
+  error-message="You must confirm you are 18 or older"
+/>
+```
+
+### Checkbox Groups with External Label
+
+```vue
+<template>
+  <div>
+    <VueCheckbox
+      name="features"
+      value="email"
+      label="Select Features"
+      label-text="Email notifications"
+      help-text="Choose the features you want to enable"
+    />
+    <VueCheckbox
+      name="features"
+      value="sms"
+      label-text="SMS notifications"
+    />
+    <VueCheckbox
+      name="features"
+      value="push"
+      label-text="Push notifications"
+    />
+  </div>
+</template>
+```
+
+**Note:** The `label` prop creates an external label above the checkbox, while `labelText` is the internal label that wraps the checkbox itself. Most checkboxes use only `labelText`, but external labels are useful for groups or when you need validation feedback.
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -194,8 +266,15 @@ export default function Example() {
 | `disabled` | `boolean` | `false` | Whether the checkbox is disabled |
 | `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Size of the checkbox |
 | `theme` | `'default' \| 'primary' \| 'success' \| 'monochrome'` | `'primary'` | Color theme variant (default=blue alias to primary, primary=blue, success=green, monochrome=black/white) |
-| `labelText` | `string` | `''` | Label text for the checkbox |
-| `labelPosition` | `'end' \| 'start'` | `'end'` | Position of label relative to checkbox |
+| `labelText` | `string` | `''` | Label text for the checkbox (internal label that wraps the checkbox) |
+| `labelPosition` | `'end' \| 'start'` | `'end'` | Position of labelText relative to checkbox (`end` = after checkbox, `start` = before checkbox) |
+| `label` | `string` | `''` | Optional external label displayed above the checkbox (useful for groups or standalone with context) |
+| `labelHidden` | `boolean` | `false` | Visually hides the external label while keeping it accessible to screen readers |
+| `noLabel` | `boolean` | `false` | Completely removes the external label element |
+| `required` | `boolean` | `false` | Marks the checkbox as required. Displays an asterisk (*) after the external label |
+| `invalid` | `boolean` | `false` | Marks the checkbox as invalid. Sets aria-invalid and can display error message |
+| `errorMessage` | `string` | `''` | Error message displayed when invalid. Linked via aria-describedby |
+| `helpText` | `string` | `''` | Helper text displayed below the checkbox. Linked via aria-describedby |
 
 ## Events
 

@@ -285,6 +285,52 @@
     </div>
 
     <div class="mbe4">
+      <h3>External Label Support</h3>
+      <p class="mbs2 mbe3">
+        Checkboxes support optional external labels, helper text, and error messages for validation feedback.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <VueCheckbox
+        name="terms"
+        value="agreed"
+        label="Terms and Conditions"
+        label-text="I agree to the terms and conditions"
+        class="mbe2"
+      />
+
+      <VueCheckbox
+        name="newsletter"
+        value="subscribed"
+        label="Newsletter Subscription"
+        label-text="Send me weekly updates"
+        help-text="You can unsubscribe at any time"
+        class="mbe2"
+      />
+
+      <VueCheckbox
+        name="required-check"
+        value="yes"
+        label="Required Agreement"
+        label-text="I acknowledge I have read the privacy policy"
+        :required="true"
+        help-text="This field is required to proceed"
+        class="mbe2"
+      />
+
+      <VueCheckbox
+        name="age-verify"
+        value="yes"
+        label="Age Verification"
+        label-text="I confirm I am 18 years or older"
+        :required="true"
+        :invalid="true"
+        error-message="You must confirm you are 18 or older"
+        class="mbe2"
+      />
+    </div>
+
+    <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the component's appearance.
