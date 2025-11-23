@@ -55,8 +55,28 @@ export function buildAriaDescribedBy(options: {
 
 /**
  * Label position options for form controls
+ *
+ * Directional values that work for all form controls:
+ * - 'top': Label above control (default for Input, Select, etc.)
+ * - 'bottom': Label below control
+ * - 'start': Label to the start of control (respects RTL, default for Checkbox/Radio/Toggle)
+ * - 'end': Label to the end of control (respects RTL)
  */
-export type LabelPosition = 'vertical' | 'horizontal';
+export type LabelPosition = 'top' | 'end' | 'bottom' | 'start';
+
+/**
+ * Check if label position is horizontal (start or end)
+ */
+export function isHorizontalLabel(position: LabelPosition): boolean {
+  return position === 'start' || position === 'end';
+}
+
+/**
+ * Check if label position is vertical (top or bottom)
+ */
+export function isVerticalLabel(position: LabelPosition): boolean {
+  return position === 'top' || position === 'bottom';
+}
 
 /**
  * Render a form control label
@@ -75,15 +95,20 @@ export function renderFormLabel(options: {
 }): TemplateResult | typeof nothing {
   if (!options.label) return nothing;
 
-  const positionClass = options.position === 'horizontal'
-    ? 'ag-form-control__label--horizontal'
-    : '';
+  // Build position classes based on directional value
+  const positionClasses: string[] = [];
+  if (options.position && isHorizontalLabel(options.position)) {
+    positionClasses.push('ag-form-control__label--horizontal');
+    positionClasses.push(`ag-form-control__label--${options.position}`);
+  } else if (options.position === 'bottom') {
+    positionClasses.push(`ag-form-control__label--${options.position}`);
+  }
 
   return html`
     <label
       id="${options.labelId}"
       for="${options.inputId}"
-      class="ag-form-control__label ${options.hidden ? 'ag-form-control__label--hidden' : ''} ${positionClass}"
+      class="ag-form-control__label ${options.hidden ? 'ag-form-control__label--hidden' : ''} ${positionClasses.join(' ')}"
       part="ag-label"
     >
       ${options.label}

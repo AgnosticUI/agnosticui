@@ -8,14 +8,20 @@
 import { css } from 'lit';
 
 export const formControlStyles = css`
-  /* Label */
+  /* Label - Default (top position) */
   .ag-form-control__label {
     display: block;
     font-size: var(--ag-font-size-base);
     font-weight: 600;
     color: var(--ag-text-primary);
     line-height: var(--ag-line-height-base);
-    margin-bottom: var(--ag-space-2);
+    margin-block-end: var(--ag-space-2);
+  }
+
+  /* Label bottom position - label appears below control */
+  .ag-form-control__label--bottom {
+    margin-block-end: 0;
+    margin-block-start: var(--ag-space-2);
   }
 
   /* Visually hidden label (still accessible to screen readers) */
@@ -31,32 +37,31 @@ export const formControlStyles = css`
     border: 0 !important;
   }
 
-  /* Horizontal layout wrapper - MUST come before label horizontal to establish flex context */
+  /* Horizontal layout wrapper - for start/end label positions */
   .ag-form-control--horizontal {
     display: flex;
     align-items: baseline; /* Align text baselines for visual centering */
     gap: var(--ag-space-3);
   }
 
-  /* Horizontal label layout (class-based) - overrides display: block */
-  .ag-form-control__label--horizontal,
-  .ag-form-control--horizontal .ag-form-control__label {
+  /* Horizontal label layout (start or end) - overrides display: block */
+  .ag-form-control__label--horizontal {
     display: inline-block; /* Override display: block */
     min-width: 100px;
     max-width: 200px; /* Prevent super long labels */
-    margin-right: 0; /* Gap handles spacing */
-    margin-bottom: 0;
+    margin-inline-end: 0; /* Gap handles spacing */
+    margin-block-end: 0;
     flex-shrink: 0; /* Don't let label shrink */
   }
 
-  /* Horizontal label layout (host attribute-based for backwards compatibility) */
-  :host([label-position="horizontal"]) .ag-form-control__label {
-    display: inline-block;
-    min-width: 100px;
-    max-width: 200px;
-    margin-right: 0;
-    margin-bottom: 0;
-    flex-shrink: 0;
+  /* Label at start (before control) */
+  .ag-form-control__label--start {
+    order: -1; /* Ensure label comes first in flex layout */
+  }
+
+  /* Label at end (after control) */
+  .ag-form-control__label--end {
+    order: 1; /* Ensure label comes after in flex layout */
   }
 
   /* Input/control sizing for horizontal layout - progressive enhancement */
@@ -93,7 +98,8 @@ export const formControlStyles = css`
     display: block;
     font-size: var(--ag-font-size-sm);
     color: var(--ag-text-secondary);
-    margin-block-start: 2px; /* Smaller than --ag-space-1 (4px) for tighter spacing */
+    margin-block-start: var(--ag-space-1);
+    margin-block-end: var(--ag-space-1);
   }
 
   /* Error text */
@@ -101,7 +107,8 @@ export const formControlStyles = css`
     display: block;
     font-size: var(--ag-font-size-sm);
     color: var(--ag-danger);
-    margin-block-start: 2px; /* Smaller than --ag-space-1 (4px) for tighter spacing */
+    margin-block-start: var(--ag-space-1);
+    margin-block-end: var(--ag-space-1);
   }
 
   .ag-form-control__error[hidden] {
