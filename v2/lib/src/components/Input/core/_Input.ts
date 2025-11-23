@@ -1,58 +1,65 @@
 /**
- * AgnosticUI v2 Input - Canonical Implementation (Starting Simple)
+ * AgnosticUI Input Component
  *
- * ⚠️  IMMUTABLE CANONICAL VERSION ⚠️
- *
- * Version: 2.0.0-dev
- * Last Updated: 2025-10-06
+ * A flexible input component supporting various types, sizes, and styles.
+ * Handles labels, helper text, and error messages using shared form control utilities.
  */
 
-import { LitElement, html, css } from 'lit';
-import { property } from 'lit/decorators.js';
+import { LitElement, html, css, nothing } from 'lit';
+import { property, state, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { generateUniqueId } from '../../../utils/unique-id';
 import { hasSlotContent } from '../../../utils/slot';
+import { formControlStyles } from '../../../shared/form-control-styles';
+import {
+  createFormControlIds,
+  buildAriaDescribedBy,
+  type LabelPosition,
+} from '../../../shared/form-control-utils';
 
-// Props interface following INTERFACE_STANDARDS.md
+export type InputType =
+  | 'text'
+  | 'password'
+  | 'email'
+  | 'number'
+  | 'search'
+  | 'tel'
+  | 'url'
+  | 'date'
+  | 'datetime-local'
+  | 'month'
+  | 'time'
+  | 'week'
+  | 'textarea';
+
+export type InputSize = 'small' | 'default' | 'large';
+
+/**
+ * Input component properties for type safety
+ */
 export interface InputProps {
-  // Label properties
   label?: string;
   labelHidden?: boolean;
+  labelPosition?: LabelPosition;
   noLabel?: boolean;
   ariaLabel?: string;
   labelledBy?: string;
-
-  // Input properties
-  type?: string;
+  type?: InputType;
   value?: string;
   placeholder?: string;
-
-  // Textarea properties
   rows?: number;
   cols?: number;
-
-  // Size variants
-  size?: 'small' | 'default' | 'large';
-
-  // Styling variants
+  size?: InputSize;
   capsule?: boolean;
   rounded?: boolean;
   underlined?: boolean;
   underlinedWithBackground?: boolean;
   inline?: boolean;
-
-  // Addon support - REMOVED: hasLeftAddon and hasRightAddon props
-  // Slots are now auto-detected via slotchange events
-
-  // Validation & state
   required?: boolean;
   disabled?: boolean;
   readonly?: boolean;
   invalid?: boolean;
   errorMessage?: string;
   helpText?: string;
-
-  // Event callbacks (native events only - no custom events)
   onClick?: (event: MouseEvent) => void;
   onInput?: (event: InputEvent) => void;
   onChange?: (event: Event) => void;
@@ -60,298 +67,270 @@ export interface InputProps {
   onBlur?: (event: FocusEvent) => void;
 }
 
-/**
- * AgInput - Foundation input component (starting minimal)
- *
- * Starting with basic label + input functionality, will build up incrementally
- */
 export class AgInput extends LitElement implements InputProps {
-  static styles = css`
-    :host {
-      display: block;
-    }
+  static styles = [
+    formControlStyles,
+    css`
+      :host {
+        display: block;
+      }
 
-    /* Label Above Input - BBC GEL Best Practice
-     *
-     * Why Label Above (BBC GEL):
-     * - Mobile-friendly: Labels above work better on small screens
-     * - Accessibility standard: Clear visual hierarchy
-     * - Cognitive accessibility: Easier to scan and understand
-     * - International: Works with various text lengths/languages
-     *
-     * Note: Labels below inputs are possible via customization:
-     * Use noLabel prop + external <ag-label> or <label> for custom positioning
-     */
-    .ag-input__label {
-      display: block;
-      margin-bottom: var(--ag-space-2);
-      font-size: var(--ag-font-size-base);
-      color: var(--ag-text-primary);
-    }
+      :host([inline]) {
+        display: inline-block;
+      }
 
-    .ag-input__label--hidden {
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      padding: 0 !important;
-      margin: -1px !important;
-      overflow: hidden !important;
-      clip: rect(0, 0, 0, 0) !important;
-      white-space: nowrap !important;
-      border: 0 !important;
-    }
+      /* Wrapper with size classes */
+      .ag-input {
+        display: block;
+      }
 
-    .ag-input__input,
-    .ag-input__textarea {
-      box-sizing: border-box;
-      width: 100%;
-      padding: var(--ag-space-2) var(--ag-space-3);
-      font-size: var(--ag-font-size-base);
-      line-height: var(--ag-line-height-base);
-      color: var(--ag-text-primary);
-      background-color: var(--ag-background-primary);
-      border: 1px solid var(--ag-border-subtle);
-      border-radius: 0; /* Make it rectangular by default */
-      transition: all var(--ag-motion-medium);
-    }
+      .ag-input--small {
+        /* Size-specific wrapper styling if needed */
+      }
 
-    .ag-input__input::placeholder,
-    .ag-input__textarea::placeholder {
-      color: var(--ag-text-muted);
-      opacity: 1;
-    }
+      .ag-input--large {
+        /* Size-specific wrapper styling if needed */
+      }
 
-    .ag-input__input:focus-visible,
-    .ag-input__textarea:focus-visible {
-      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
-      outline-offset: var(--ag-focus-offset);
-      border-color: rgba(var(--ag-focus), 0.6);
-    }
+      .ag-input--rounded {
+        /* Rounded variant wrapper styling if needed */
+      }
 
-    .ag-input__textarea {
-      resize: vertical;
-    }
+      .ag-input--underlined {
+        /* Underlined variant wrapper styling if needed */
+      }
 
-    :host([inline]) {
-      display: inline-block;
-    }
+      .ag-input--underlined-with-background {
+        /* Underlined with background wrapper styling if needed */
+      }
 
-    /* Sizes */
-    :host([size="small"]) .ag-input__input,
-    :host([size="small"]) .ag-input__textarea {
-      padding: var(--ag-space-1) var(--ag-space-2);
-      font-size: var(--ag-font-size-sm);
-    }
+      /* Input & Textarea Base Styles */
+      .ag-input__input,
+      .ag-input__textarea {
+        box-sizing: border-box;
+        width: 100%;
+        padding: var(--ag-space-2) var(--ag-space-3);
+        font-size: var(--ag-font-size-base);
+        line-height: var(--ag-line-height-base);
+        color: var(--ag-text-primary);
+        background-color: var(--ag-background-primary);
+        border: 1px solid var(--ag-border-subtle);
+        border-radius: 0;
+        transition: all var(--ag-motion-medium);
+      }
 
-    :host([size="large"]) .ag-input__input,
-    :host([size="large"]) .ag-input__textarea {
-      padding: var(--ag-space-3) var(--ag-space-4);
-      font-size: var(--ag-font-size-lg);
-    }
+      .ag-input__input::placeholder,
+      .ag-input__textarea::placeholder {
+        color: var(--ag-text-muted);
+        opacity: 1;
+      }
 
-    /* Variants */
-    :host([capsule]) .ag-input__input,
-    :host([capsule]) .ag-input__textarea {
-      border-radius: var(--ag-radius-full);
-    }
+      .ag-input__input:focus-visible,
+      .ag-input__textarea:focus-visible {
+        outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+        outline-offset: var(--ag-focus-offset);
+        border-color: rgba(var(--ag-focus), 0.6);
+      }
 
-    :host([rounded]) .ag-input__input,
-    :host([rounded]) .ag-input__textarea {
-      border-radius: var(--ag-radius-md);
-    }
+      .ag-input__textarea {
+        resize: vertical;
+      }
 
-    :host([underlined]) .ag-input__input,
-    :host([underlined]) .ag-input__textarea {
-      border-radius: 0;
-      border-width: 0 0 1px 0;
-    }
+      /* Sizes */
+      :host([size="small"]) .ag-input__input,
+      :host([size="small"]) .ag-input__textarea {
+        padding: var(--ag-space-1) var(--ag-space-2);
+        font-size: var(--ag-font-size-sm);
+      }
 
-    :host([underlined-with-background]) .ag-input__input,
-    :host([underlined-with-background]) .ag-input__textarea {
-      border-radius: 0;
-      border-width: 0 0 1px 0;
-      background-color: var(--ag-background-secondary);
-    }
+      :host([size="large"]) .ag-input__input,
+      :host([size="large"]) .ag-input__textarea {
+        padding: var(--ag-space-3) var(--ag-space-4);
+        font-size: var(--ag-font-size-lg);
+      }
 
-    /* States */
-    :host([disabled]) .ag-input__input,
-    :host([disabled]) .ag-input__textarea {
-      background-color: var(--ag-background-disabled);
-      color: var(--ag-text-muted);
-      cursor: not-allowed;
-    }
+      /* Variants */
+      :host([capsule]) .ag-input__input,
+      :host([capsule]) .ag-input__textarea {
+        border-radius: var(--ag-radius-full);
+      }
 
-    :host([invalid]) .ag-input__input,
-    :host([invalid]) .ag-input__textarea {
-      border-color: var(--ag-danger);
-    }
+      :host([rounded]) .ag-input__input,
+      :host([rounded]) .ag-input__textarea {
+        border-radius: var(--ag-radius-md);
+      }
 
-    :host([invalid]) .ag-input__input:focus-visible,
-    :host([invalid]) .ag-input__textarea:focus-visible {
-      border-color: rgba(var(--ag-danger-rgb), 0.6);
-      outline-color: rgba(var(--ag-danger-rgb), 0.5);
-    }
+      :host([underlined]) .ag-input__input,
+      :host([underlined]) .ag-input__textarea {
+        border-radius: 0;
+        border-width: 0 0 1px 0;
+      }
 
-    /* Addons */
-    .ag-input__field {
-      display: flex;
-      align-items: stretch;
-    }
+      :host([underlined-with-background]) .ag-input__input,
+      :host([underlined-with-background]) .ag-input__textarea {
+        border-radius: 0;
+        border-width: 0 0 1px 0;
+        background-color: var(--ag-background-secondary);
+      }
 
-    .ag-input__addon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: var(--ag-space-2) var(--ag-space-3);
-      font-size: var(--ag-font-size-base);
-      line-height: var(--ag-line-height-base);
-      color: var(--ag-text-primary);
-      /* background-color: var(--ag-background-secondary); */
-      border: 1px solid var(--ag-border-subtle);
-    }
+      /* States */
+      :host([disabled]) .ag-input__input,
+      :host([disabled]) .ag-input__textarea {
+        background-color: var(--ag-background-disabled);
+        color: var(--ag-text-muted);
+        cursor: not-allowed;
+      }
 
-    .ag-input__addon--left {
-      border-right: 0;
-      border-radius: var(--ag-radius-md) 0 0 var(--ag-radius-md);
-    }
+      :host([invalid]) .ag-input__input,
+      :host([invalid]) .ag-input__textarea {
+        border-color: var(--ag-danger);
+      }
 
-    .ag-input__addon--right {
-      border-left: 0;
-      border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
-    }
+      :host([invalid]) .ag-input__input:focus-visible,
+      :host([invalid]) .ag-input__textarea:focus-visible {
+        border-color: rgba(var(--ag-danger-rgb), 0.6);
+        outline-color: rgba(var(--ag-danger-rgb), 0.5);
+      }
 
-    /* When left addon is present */
-    .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
-    .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
+      /* Addons */
+      .ag-input__field {
+        display: flex;
+        align-items: stretch;
+      }
 
-    /* When right addon is present */
-    .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
-    .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+      .ag-input__addon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--ag-space-2) var(--ag-space-3);
+        font-size: var(--ag-font-size-base);
+        line-height: var(--ag-line-height-base);
+        color: var(--ag-text-primary);
+        border: 1px solid var(--ag-border-subtle);
+      }
 
-    .ag-input__field .ag-input__input,
-    .ag-input__field .ag-input__textarea {
-      flex: 1;
-    }
+      .ag-input__addon--left {
+        border-right: 0;
+        border-radius: var(--ag-radius-md) 0 0 var(--ag-radius-md);
+      }
 
-    /* Capsule variant with addons */
-    :host([capsule]) .ag-input__addon--left {
-      border-radius: var(--ag-radius-full) 0 0 var(--ag-radius-full);
-      padding: var(--ag-space-2) var(--ag-space-4);
-    }
+      .ag-input__addon--right {
+        border-left: 0;
+        border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
+      }
 
-    :host([capsule]) .ag-input__addon--right {
-      border-radius: 0 var(--ag-radius-full) var(--ag-radius-full) 0;
-      padding: var(--ag-space-2) var(--ag-space-4);
-    }
+      /* When left addon is present */
+      .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
+      .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
 
-    /* Remove border on INPUT where it meets the addon for capsule */
-    :host([capsule]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
-    :host([capsule]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
-      border-left: 0;
-    }
+      /* When right addon is present */
+      .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
+      .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
 
-    :host([capsule]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
-    :host([capsule]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
-      border-right: 0;
-    }
+      .ag-input__field .ag-input__input,
+      .ag-input__field .ag-input__textarea {
+        flex: 1;
+      }
 
-    /* Underlined variant with addons */
-    :host([underlined]) .ag-input__addon,
-    :host([underlined-with-background]) .ag-input__addon {
-      border-top: 0;
-      border-radius: 0;
-      background: transparent;
-    }
+      /* Capsule variant with addons */
+      :host([capsule]) .ag-input__addon--left {
+        border-radius: var(--ag-radius-full) 0 0 var(--ag-radius-full);
+        padding: var(--ag-space-2) var(--ag-space-4);
+      }
 
-    :host([underlined]) .ag-input__addon--left,
-    :host([underlined-with-background]) .ag-input__addon--left {
-      border-left: 0;
-      border-right: 0;
-    }
+      :host([capsule]) .ag-input__addon--right {
+        border-radius: 0 var(--ag-radius-full) var(--ag-radius-full) 0;
+        padding: var(--ag-space-2) var(--ag-space-4);
+      }
 
-    :host([underlined]) .ag-input__addon--right,
-    :host([underlined-with-background]) .ag-input__addon--right {
-      border-right: 0;
-      border-left: 0;
-    }
+      /* Remove border on INPUT where it meets the addon for capsule */
+      :host([capsule]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
+      :host([capsule]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
+        border-left: 0;
+      }
 
-    /* Remove border on INPUT where it meets the addon for underlined */
-    :host([underlined]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
-    :host([underlined]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea,
-    :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
-    :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
-      border-left: 0;
-    }
+      :host([capsule]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
+      :host([capsule]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
+        border-right: 0;
+      }
 
-    :host([underlined]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
-    :host([underlined]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea,
-    :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
-    :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
-      border-right: 0;
-    }
+      /* Underlined variant with addons */
+      :host([underlined]) .ag-input__addon,
+      :host([underlined-with-background]) .ag-input__addon {
+        border-top: 0;
+        border-radius: 0;
+        background: transparent;
+      }
 
-    /* Underlined with background variant - add background to addon */
-    :host([underlined-with-background]) .ag-input__addon {
-      background-color: var(--ag-background-secondary);
-    }
+      :host([underlined]) .ag-input__addon--left,
+      :host([underlined-with-background]) .ag-input__addon--left {
+        border-left: 0;
+        border-right: 0;
+      }
 
-    /* Help & Error Text */
-    .ag-input__help,
-    .ag-input__error {
-      margin-top: var(--ag-space-2);
-      font-size: var(--ag-font-size-sm);
-    }
+      :host([underlined]) .ag-input__addon--right,
+      :host([underlined-with-background]) .ag-input__addon--right {
+        border-right: 0;
+        border-left: 0;
+      }
 
-    .ag-input__help {
-      color: var(--ag-text-secondary);
-    }
+      /* Remove border on INPUT where it meets the addon for underlined */
+      :host([underlined]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
+      :host([underlined]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea,
+      :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
+      :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
+        border-left: 0;
+      }
 
-    .ag-input__error {
-      color: var(--ag-danger);
-    }
+      :host([underlined]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
+      :host([underlined]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea,
+      :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
+      :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
+        border-right: 0;
+      }
 
-    .ag-input__error[hidden] {
-      display: none !important;
-    }
+      /* Underlined with background variant - add background to addon */
+      :host([underlined-with-background]) .ag-input__addon {
+        background-color: var(--ag-background-secondary);
+      }
+    `,
+  ];
 
-    .ag-input__required {
-      color: var(--ag-danger);
-      margin-left: var(--ag-space-1);
-    }
-  `;
+  // Stable IDs for form control elements (created once)
+  private _ids = createFormControlIds('ag-input');
 
-  // Core element ID for label association
-  private _inputId = generateUniqueId('ag-input');
+  // Reference to the actual input/textarea element
+  @query('input, textarea')
+  private _inputElement?: HTMLInputElement | HTMLTextAreaElement;
 
-  /**
-   * Label Architecture - Flexible but Accessible by Default
-   */
+  // Label properties
   @property({ type: String })
   declare label: string;
 
   @property({ type: Boolean, attribute: 'label-hidden' })
   declare labelHidden: boolean;
 
+  @property({ type: String, attribute: 'label-position' })
+  declare labelPosition: LabelPosition;
+
   @property({ type: Boolean, attribute: 'no-label' })
   declare noLabel: boolean;
 
-  @property({ type: String, reflect: true, attribute: 'aria-label' })
+  @property({ type: String, attribute: 'aria-label' })
   declare ariaLabel: string;
 
   @property({ type: String, attribute: 'labelled-by' })
   declare labelledBy: string;
 
-  /**
-   * Input properties
-   */
+  // Input properties
   @property({ type: String })
-  declare type: string;
+  declare type: InputType;
 
   @property({ type: String, reflect: true })
   declare value: string;
@@ -359,24 +338,17 @@ export class AgInput extends LitElement implements InputProps {
   @property({ type: String })
   declare placeholder: string;
 
-  /**
-   * Textarea-specific properties (when type="textarea")
-   */
+  // Textarea-specific properties
   @property({ type: Number })
   declare rows: number;
 
   @property({ type: Number })
   declare cols: number;
 
-  /**
-   * v1 Parity - Size Variants
-   */
+  // Size and style variants
   @property({ type: String, reflect: true })
-  declare size: 'small' | 'default' | 'large';
+  declare size: InputSize;
 
-  /**
-   * v1 Parity - Styling Variants
-   */
   @property({ type: Boolean, reflect: true })
   declare capsule: boolean;
 
@@ -392,16 +364,7 @@ export class AgInput extends LitElement implements InputProps {
   @property({ type: Boolean, reflect: true })
   declare inline: boolean;
 
-  /**
-   * v1 Parity - Addon Support
-   * REMOVED: hasLeftAddon and hasRightAddon props - now auto-detected
-   */
-  private _hasLeftAddon = false;
-  private _hasRightAddon = false;
-
-  /**
-   * Validation & State
-   */
+  // Validation and state
   @property({ type: Boolean, reflect: true })
   declare required: boolean;
 
@@ -414,16 +377,14 @@ export class AgInput extends LitElement implements InputProps {
   @property({ type: Boolean, reflect: true })
   declare invalid: boolean;
 
+  // Helper and error text
   @property({ type: String, attribute: 'error-message' })
   declare errorMessage: string;
 
   @property({ type: String, attribute: 'help-text' })
   declare helpText: string;
 
-  /**
-   * Event callback props (not reflected as attributes)
-   * Following AgnosticUI v2 event conventions for native events
-   */
+  // Event handlers
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
 
@@ -439,10 +400,15 @@ export class AgInput extends LitElement implements InputProps {
   @property({ attribute: false })
   declare onBlur?: (event: FocusEvent) => void;
 
+  // Addon slot tracking
+  @state() private _hasLeftAddon = false;
+  @state() private _hasRightAddon = false;
+
   constructor() {
     super();
     this.label = '';
     this.labelHidden = false;
+    this.labelPosition = 'vertical';
     this.noLabel = false;
     this.ariaLabel = '';
     this.labelledBy = '';
@@ -466,68 +432,52 @@ export class AgInput extends LitElement implements InputProps {
   }
 
   /**
-   * Event Handlers
-   * Following AgnosticUI v2 event conventions:
-   * - Native composed events (input, change, click) just invoke callbacks
-   * - Native non-bubbling events (focus, blur) re-dispatch from host + invoke callbacks
+   * Expose the internal input element for external access
    */
-  private _handleClick(e: MouseEvent) {
-    // Native click is composed - just invoke callback if provided
-    if (this.onClick) {
-      this.onClick(e);
-    }
+  get controlElement(): HTMLInputElement | HTMLTextAreaElement | undefined {
+    return this._inputElement;
   }
 
-  private _handleInput(e: Event) {
-    const target = e.target as HTMLInputElement;
-    this.value = target.value;
-
-    // Native input is composed - just invoke callback if provided
-    if (this.onInput) {
-      this.onInput(e as InputEvent);
-    }
+  /**
+   * Get the current value of the input
+   */
+  getValue(): string {
+    return this._inputElement?.value ?? '';
   }
 
-  private _handleChange(e: Event) {
-    const target = e.target as HTMLInputElement;
-    this.value = target.value;
-
-    // Native change is composed - just invoke callback if provided
-    if (this.onChange) {
-      this.onChange(e);
-    }
-  }
-
-  private _handleFocus(e: FocusEvent) {
-    // Focus doesn't bubble - re-dispatch from host so consumers can listen
-    this.dispatchEvent(new FocusEvent('focus', {
-      bubbles: true,
-      composed: true,
-      relatedTarget: e.relatedTarget,
-    }));
-
-    // Invoke callback if provided
-    if (this.onFocus) {
-      this.onFocus(e);
-    }
-  }
-
-  private _handleBlur(e: FocusEvent) {
-    // Blur doesn't bubble - re-dispatch from host so consumers can listen
-    this.dispatchEvent(new FocusEvent('blur', {
-      bubbles: true,
-      composed: true,
-      relatedTarget: e.relatedTarget,
-    }));
-
-    // Invoke callback if provided
-    if (this.onBlur) {
-      this.onBlur(e);
+  /**
+   * Set the value of the input
+   */
+  setValue(value: string): void {
+    if (this._inputElement) {
+      this._inputElement.value = value;
+      this.value = value;
     }
   }
 
   /**
-   * Handle slot changes to detect if addons are present
+   * Focus the input element
+   */
+  focus(): void {
+    this._inputElement?.focus();
+  }
+
+  /**
+   * Blur the input element
+   */
+  blur(): void {
+    this._inputElement?.blur();
+  }
+
+  /**
+   * Select the text in the input
+   */
+  select(): void {
+    this._inputElement?.select();
+  }
+
+  /**
+   * Handle slot changes to detect addons
    */
   private _handleSlotChange(e: Event) {
     const slot = e.target as HTMLSlotElement;
@@ -542,94 +492,134 @@ export class AgInput extends LitElement implements InputProps {
     this.requestUpdate();
   }
 
-  override firstUpdated() {
-    // Initial check for slot content
-    // We need to defer this check to avoid "change in update" warning
-    setTimeout(() => {
-      const leftAddonSlot = this.shadowRoot?.querySelector('slot[name="addon-left"]') as HTMLSlotElement;
-      const rightAddonSlot = this.shadowRoot?.querySelector('slot[name="addon-right"]') as HTMLSlotElement;
+  /**
+   * Handle input events
+   */
+  private _handleInput(e: Event) {
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+    this.value = target.value;
 
-      const hadLeftAddon = this._hasLeftAddon;
-      const hadRightAddon = this._hasRightAddon;
-
-      this._hasLeftAddon = hasSlotContent(leftAddonSlot);
-      this._hasRightAddon = hasSlotContent(rightAddonSlot);
-
-      // Only request update if something changed
-      if (hadLeftAddon !== this._hasLeftAddon || hadRightAddon !== this._hasRightAddon) {
-        this.requestUpdate();
-      }
-    }, 0);
+    if (this.onInput) {
+      this.onInput(e as InputEvent);
+    }
   }
 
-  render() {
+  /**
+   * Handle change events
+   */
+  private _handleChange(e: Event) {
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+    this.value = target.value;
+
+    if (this.onChange) {
+      this.onChange(e);
+    }
+  }
+
+  /**
+   * Handle focus events
+   */
+  private _handleFocus(e: FocusEvent) {
+    // Focus doesn't bubble - re-dispatch from host
+    this.dispatchEvent(
+      new FocusEvent('focus', {
+        bubbles: true,
+        composed: true,
+        relatedTarget: e.relatedTarget,
+      })
+    );
+
+    if (this.onFocus) {
+      this.onFocus(e);
+    }
+  }
+
+  /**
+   * Handle blur events
+   */
+  private _handleBlur(e: FocusEvent) {
+    // Blur doesn't bubble - re-dispatch from host
+    this.dispatchEvent(
+      new FocusEvent('blur', {
+        bubbles: true,
+        composed: true,
+        relatedTarget: e.relatedTarget,
+      })
+    );
+
+    if (this.onBlur) {
+      this.onBlur(e);
+    }
+  }
+
+  /**
+   * Handle click events
+   */
+  private _handleClick(e: MouseEvent) {
+    if (this.onClick) {
+      this.onClick(e);
+    }
+  }
+
+  /**
+   * Build ARIA describedby attribute
+   */
+  private _getAriaDescribedBy(): string | undefined {
+    return buildAriaDescribedBy({
+      helperId: this._ids.helperId,
+      errorId: this._ids.errorId,
+      hasHelper: !!this.helpText,
+      hasError: this.invalid && !!this.errorMessage,
+    });
+  }
+
+  /**
+   * Render the input or textarea element
+   */
+  private _renderInputElement() {
     const isTextarea = this.type === 'textarea';
-    const hasAddons = this._hasLeftAddon || this._hasRightAddon;
 
-    // Generate IDs for help and error text
-    const helpId = `${this._inputId}-help`;
-    const errorId = `${this._inputId}-error`;
-
-    // Build aria-describedby list
+    // Build aria-describedby including external labelledBy if present
+    const describedBy = this._getAriaDescribedBy();
     const describedByIds: string[] = [];
-    if (this.helpText) {
-      describedByIds.push(helpId);
+    if (describedBy) {
+      describedByIds.push(describedBy);
     }
-    if (this.errorMessage) {
-      describedByIds.push(errorId);
-    }
-    // Include any external labelledBy reference
     if (this.labelledBy) {
       describedByIds.push(this.labelledBy);
     }
 
-    // Build class list for wrapper
-    const classes = ['ag-input'];
-
-    // Size variant
-    if (this.size !== 'default') {
-      classes.push(`ag-input--${this.size}`);
+    if (isTextarea) {
+      return html`
+        <textarea
+          id="${this._ids.inputId}"
+          part="ag-textarea"
+          class="ag-input__textarea"
+          .value="${this.value}"
+          placeholder="${ifDefined(this.placeholder || undefined)}"
+          rows="${this.rows}"
+          cols="${this.cols}"
+          ?required="${this.required}"
+          ?disabled="${this.disabled}"
+          ?readonly="${this.readonly}"
+          aria-required="${this.required ? 'true' : 'false'}"
+          aria-invalid="${this.invalid ? 'true' : 'false'}"
+          aria-label="${ifDefined(this.ariaLabel || undefined)}"
+          aria-labelledby="${ifDefined(this.labelledBy || undefined)}"
+          aria-describedby="${describedByIds.length > 0 ? describedByIds.join(' ') : ifDefined(undefined)}"
+          @click=${this._handleClick}
+          @input=${this._handleInput}
+          @change=${this._handleChange}
+          @focus=${this._handleFocus}
+          @blur=${this._handleBlur}
+        ></textarea>
+      `;
     }
 
-    // Styling variants
-    if (this.rounded) {
-      classes.push('ag-input--rounded');
-    }
-    if (this.underlined) {
-      classes.push('ag-input--underlined');
-    }
-    if (this.underlinedWithBackground) {
-      classes.push('ag-input--underlined-with-background');
-    }
-
-    // Render the input/textarea element
-    const inputElement = isTextarea ? html`
-      <textarea
-        id="${this._inputId}"
-        part="ag-textarea"
-        class="ag-input__textarea"
-        .value="${this.value}"
-        placeholder="${ifDefined(this.placeholder || undefined)}"
-        rows="${this.rows}"
-        cols="${this.cols}"
-        ?required="${this.required}"
-        ?disabled="${this.disabled}"
-        ?readonly="${this.readonly}"
-        aria-required="${this.required ? 'true' : 'false'}"
-        aria-invalid="${this.invalid ? 'true' : 'false'}"
-        aria-label="${ifDefined(this.ariaLabel || undefined)}"
-        aria-labelledby="${ifDefined(this.labelledBy || undefined)}"
-        aria-describedby="${describedByIds.length > 0 ? describedByIds.join(' ') : ifDefined(undefined)}"
-        @click=${this._handleClick}
-        @input=${this._handleInput}
-        @change=${this._handleChange}
-        @focus=${this._handleFocus}
-        @blur=${this._handleBlur}
-      ></textarea>
-    ` : html`
+    return html`
       <input
         type="${this.type}"
-        id="${this._inputId}"
+        id="${this._ids.inputId}"
         part="ag-input"
         class="ag-input__input"
         .value="${this.value}"
@@ -649,61 +639,153 @@ export class AgInput extends LitElement implements InputProps {
         @blur=${this._handleBlur}
       />
     `;
+  }
+
+  override firstUpdated() {
+    // Initial check for slot content
+    setTimeout(() => {
+      const leftAddonSlot = this.shadowRoot?.querySelector('slot[name="addon-left"]') as HTMLSlotElement;
+      const rightAddonSlot = this.shadowRoot?.querySelector('slot[name="addon-right"]') as HTMLSlotElement;
+
+      const hadLeftAddon = this._hasLeftAddon;
+      const hadRightAddon = this._hasRightAddon;
+
+      this._hasLeftAddon = hasSlotContent(leftAddonSlot);
+      this._hasRightAddon = hasSlotContent(rightAddonSlot);
+
+      // Only request update if something changed
+      if (hadLeftAddon !== this._hasLeftAddon || hadRightAddon !== this._hasRightAddon) {
+        this.requestUpdate();
+      }
+    }, 0);
+  }
+
+  /**
+   * Render custom label for Input (using shared utility but customized for Input)
+   */
+  private _renderLabel() {
+    if (!this.label || this.noLabel) return nothing;
+
+    const positionClass = this.labelPosition === 'horizontal'
+      ? 'ag-form-control__label--horizontal ag-input__label--horizontal'
+      : '';
 
     return html`
-      <div class="${classes.join(' ')}" part="ag-input-wrapper">
-        ${!this.noLabel ? html`
-          <label
-            for="${this._inputId}"
-            part="ag-input-label"
-            class="ag-input__label ${this.labelHidden ? 'ag-input__label--hidden' : ''}"
-          >
-            ${this.label}
-            ${this.required ? html`
-              <span class="ag-input__required" part="ag-input-required" aria-hidden="true">*</span>
-            ` : ''}
-          </label>
-        ` : ''}
+      <label
+        id="${this._ids.labelId}"
+        for="${this._ids.inputId}"
+        class="ag-form-control__label ag-input__label ${this.labelHidden ? 'ag-form-control__label--hidden ag-input__label--hidden' : ''} ${positionClass}"
+        part="ag-input-label"
+      >
+        ${this.label}
+        ${this.required
+          ? html`
+              <span class="ag-form-control__required ag-input__required" part="ag-input-required" aria-hidden="true">*</span>
+            `
+          : nothing}
+      </label>
+    `;
+  }
 
-        ${this.helpText ? html`
-          <div class="ag-input__help" id="${helpId}" part="ag-input-help">
-            ${this.helpText}
-          </div>
-        ` : ''}
+  /**
+   * Render custom helper text for Input
+   */
+  private _renderHelper() {
+    if (!this.helpText) return nothing;
 
-        ${this.errorMessage ? html`
-          <div class="ag-input__error" id="${errorId}" part="ag-input-error">
-            ${this.errorMessage}
-          </div>
-        ` : html`
-          <div class="ag-input__error" id="${errorId}" part="ag-input-error" hidden></div>
-        `}
+    return html`
+      <div
+        id="${this._ids.helperId}"
+        class="ag-form-control__helper ag-input__help"
+        part="ag-input-help"
+      >
+        ${this.helpText}
+      </div>
+    `;
+  }
 
-        ${hasAddons ? html`
+  /**
+   * Render custom error message for Input
+   */
+  private _renderError() {
+    return html`
+      <div
+        id="${this._ids.errorId}"
+        class="ag-form-control__error ag-input__error"
+        part="ag-input-error"
+        ?hidden="${!this.invalid || !this.errorMessage}"
+      >
+        ${this.errorMessage || ''}
+      </div>
+    `;
+  }
+
+  render() {
+    const hasAddons = this._hasLeftAddon || this._hasRightAddon;
+    const isHorizontal = this.labelPosition === 'horizontal';
+
+    // Build wrapper class list
+    const wrapperClasses = ['ag-input'];
+    if (this.size === 'small') wrapperClasses.push('ag-input--small');
+    if (this.size === 'large') wrapperClasses.push('ag-input--large');
+    if (this.rounded) wrapperClasses.push('ag-input--rounded');
+    if (this.underlined) wrapperClasses.push('ag-input--underlined');
+    if (this.underlinedWithBackground) wrapperClasses.push('ag-input--underlined-with-background');
+
+    // Render input field (with or without addons)
+    const inputField = hasAddons
+      ? html`
           <div class="ag-input__field" part="ag-input-field-wrapper">
-            ${this._hasLeftAddon ? html`
-              <div class="ag-input__addon ag-input__addon--left" part="ag-input-addon-left">
-                <slot name="addon-left" @slotchange=${this._handleSlotChange}></slot>
-              </div>
-            ` : html`
-              <slot name="addon-left" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
-            `}
+            ${this._hasLeftAddon
+              ? html`
+                  <div class="ag-input__addon ag-input__addon--left" part="ag-input-addon-left">
+                    <slot name="addon-left" @slotchange=${this._handleSlotChange}></slot>
+                  </div>
+                `
+              : html`
+                  <slot name="addon-left" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
+                `}
 
-            ${inputElement}
+            ${this._renderInputElement()}
 
-            ${this._hasRightAddon ? html`
-              <div class="ag-input__addon ag-input__addon--right" part="ag-input-addon-right">
-                <slot name="addon-right" @slotchange=${this._handleSlotChange}></slot>
-              </div>
-            ` : html`
-              <slot name="addon-right" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
-            `}
+            ${this._hasRightAddon
+              ? html`
+                  <div class="ag-input__addon ag-input__addon--right" part="ag-input-addon-right">
+                    <slot name="addon-right" @slotchange=${this._handleSlotChange}></slot>
+                  </div>
+                `
+              : html`
+                  <slot name="addon-right" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
+                `}
           </div>
-        ` : html`
-          ${inputElement}
+        `
+      : html`
+          ${this._renderInputElement()}
           <slot name="addon-left" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
           <slot name="addon-right" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
-        `}
+        `;
+
+    // For horizontal layout: [Label] [Input] structure with helper/error below
+    if (isHorizontal) {
+      return html`
+        <div class="${wrapperClasses.join(' ')}" part="ag-input-wrapper">
+          <div class="ag-form-control--horizontal">
+            ${this._renderLabel()}
+            ${inputField}
+          </div>
+          ${this.helpText ? this._renderHelper() : nothing}
+          ${this._renderError()}
+        </div>
+      `;
+    }
+
+    // For vertical layout: Label, Input, Helper, Error stacked
+    return html`
+      <div class="${wrapperClasses.join(' ')}" part="ag-input-wrapper">
+        ${this._renderLabel()}
+        ${this.helpText ? this._renderHelper() : nothing}
+        ${this._renderError()}
+        ${inputField}
       </div>
     `;
   }
