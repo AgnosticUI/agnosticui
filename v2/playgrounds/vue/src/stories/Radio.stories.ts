@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { VueRadio } from 'agnosticui-core/radio/vue';
+import { VueFieldset } from 'agnosticui-core/fieldset/vue';
 
 const meta = {
   title: 'AgnosticUI Vue/Radio',
@@ -56,60 +57,55 @@ export const Default: Story = {
 
 export const RadioGroup: Story = {
   render: (args) => ({
-    components: { VueRadio },
+    components: { VueRadio, VueFieldset },
     setup() {
       return { args };
     },
     template: `
-      <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Select Framework</legend>
+      <VueFieldset legend="Select Framework">
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
           <VueRadio name="framework" value="react" :size="args.size" :theme="args.theme">React</VueRadio>
           <VueRadio name="framework" value="vue" :size="args.size" :theme="args.theme" :checked="true">Vue</VueRadio>
           <VueRadio name="framework" value="angular" :size="args.size" :theme="args.theme">Angular</VueRadio>
         </div>
-      </fieldset>
+      </VueFieldset>
     `,
   }),
 };
 
 export const AllThemes: Story = {
   render: (args) => ({
-    components: { VueRadio },
+    components: { VueRadio, VueFieldset },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-        <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-          <legend style="padding: 0 0.5rem; font-weight: 600;">Default Theme (Blue)</legend>
+        <VueFieldset legend="Default Theme (Blue)">
           <div style="display: flex; gap: 1rem;">
             <VueRadio name="theme-default" value="1" :size="args.size" theme="default" label-text="Unchecked" />
             <VueRadio name="theme-default" value="2" :size="args.size" theme="default" label-text="Checked" :checked="true" />
           </div>
-        </fieldset>
-        <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-          <legend style="padding: 0 0.5rem; font-weight: 600;">Primary Theme (Blue)</legend>
+        </VueFieldset>
+        <VueFieldset legend="Primary Theme (Blue)">
           <div style="display: flex; gap: 1rem;">
             <VueRadio name="theme-primary" value="1" :size="args.size" theme="primary" label-text="Unchecked" />
             <VueRadio name="theme-primary" value="2" :size="args.size" theme="primary" label-text="Checked" :checked="true" />
           </div>
-        </fieldset>
-        <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-          <legend style="padding: 0 0.5rem; font-weight: 600;">Success Theme (Green)</legend>
+        </VueFieldset>
+        <VueFieldset legend="Success Theme (Green)">
           <div style="display: flex; gap: 1rem;">
             <VueRadio name="theme-green" value="1" :size="args.size" theme="green" label-text="Unchecked" />
             <VueRadio name="theme-green" value="2" :size="args.size" theme="green" label-text="Checked" :checked="true" />
           </div>
-        </fieldset>
+        </VueFieldset>
 
-        <fieldset style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
-          <legend style="padding: 0 0.5rem; font-weight: 600;">Monochrome Theme (Black/White)</legend>
+        <VueFieldset legend="Monochrome Theme (Black/White)">
           <div style="display: flex; gap: 1rem;">
             <VueRadio name="theme-mono" value="1" :size="args.size" theme="monochrome" label-text="Unchecked" />
             <VueRadio name="theme-mono" value="2" :size="args.size" theme="monochrome" label-text="Checked" :checked="true" />
           </div>
-        </fieldset>
+        </VueFieldset>
       </div>
     `,
   }),

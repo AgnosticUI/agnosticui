@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ReactRadio } from "agnosticui-core/radio/react";
+import { ReactFieldset } from "agnosticui-core/fieldset/react";
 
 const meta: Meta<typeof ReactRadio> = {
   title: "AgnosticUI React/Radio",
@@ -101,16 +102,7 @@ export const RadioGroup: Story = {
     name: "framework",
   },
   render: (args) => (
-    <fieldset
-      style={{
-        border: "1px solid #e5e7eb",
-        padding: "1rem",
-        borderRadius: "0.5rem",
-      }}
-    >
-      <legend style={{ padding: "0 0.5rem", fontWeight: 600 }}>
-        Select Framework
-      </legend>
+    <ReactFieldset legend="Select Framework">
       <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         <ReactRadio
           name={args.name}
@@ -135,23 +127,14 @@ export const RadioGroup: Story = {
           labelText="Angular"
         />
       </div>
-    </fieldset>
+    </ReactFieldset>
   ),
 };
 
 export const AllThemes: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-      <fieldset
-        style={{
-          border: "1px solid #e5e7eb",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      >
-        <legend style={{ padding: "0 0.5rem", fontWeight: 600 }}>
-          Default Theme (Primary)
-        </legend>
+      <ReactFieldset legend="Default Theme (Primary)">
         <div style={{ display: "flex", gap: "1rem" }}>
           <ReactRadio
             name="theme-default"
@@ -169,17 +152,8 @@ export const AllThemes: Story = {
             checked
           />
         </div>
-      </fieldset>
-      <fieldset
-        style={{
-          border: "1px solid #e5e7eb",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      >
-        <legend style={{ padding: "0 0.5rem", fontWeight: 600 }}>
-          Primary Theme (Blue)
-        </legend>
+      </ReactFieldset>
+      <ReactFieldset legend="Primary Theme (Blue)">
         <div style={{ display: "flex", gap: "1rem" }}>
           <ReactRadio
             name="theme-primary"
@@ -197,17 +171,8 @@ export const AllThemes: Story = {
             checked
           />
         </div>
-      </fieldset>
-      <fieldset
-        style={{
-          border: "1px solid #e5e7eb",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      >
-        <legend style={{ padding: "0 0.5rem", fontWeight: 600 }}>
-          Success Theme (Green)
-        </legend>
+      </ReactFieldset>
+      <ReactFieldset legend="Success Theme (Green)">
         <div style={{ display: "flex", gap: "1rem" }}>
           <ReactRadio
             name="theme-success"
@@ -225,18 +190,9 @@ export const AllThemes: Story = {
             checked
           />
         </div>
-      </fieldset>
+      </ReactFieldset>
 
-      <fieldset
-        style={{
-          border: "1px solid #e5e7eb",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      >
-        <legend style={{ padding: "0 0.5rem", fontWeight: 600 }}>
-          Monochrome Theme (Black/White)
-        </legend>
+      <ReactFieldset legend="Monochrome Theme (Black/White)">
         <div style={{ display: "flex", gap: "1rem" }}>
           <ReactRadio
             name="theme-mono"
@@ -254,7 +210,7 @@ export const AllThemes: Story = {
             checked
           />
         </div>
-      </fieldset>
+      </ReactFieldset>
     </div>
   ),
 };
