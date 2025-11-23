@@ -17,6 +17,13 @@ const meta = {
     theme: { control: 'select', options: ['default', 'primary', 'success', 'monochrome'], description: 'Theme' },
     labelText: { control: 'text', description: 'Label text' },
     labelPosition: { control: 'select', options: ['end', 'start'], description: 'Label position' },
+    label: { control: 'text', description: 'Optional external label displayed above the checkbox' },
+    labelHidden: { control: 'boolean', description: 'Visually hides the external label' },
+    noLabel: { control: 'boolean', description: 'Removes the external label element' },
+    required: { control: 'boolean', description: 'Marks the checkbox as required' },
+    invalid: { control: 'boolean', description: 'Marks the checkbox as invalid' },
+    errorMessage: { control: 'text', description: 'Error message displayed when invalid' },
+    helpText: { control: 'text', description: 'Helper text displayed below the checkbox' },
   },
   args: {
     name: 'example',
@@ -28,6 +35,13 @@ const meta = {
     theme: 'primary',
     labelText: 'Checkbox Option',
     labelPosition: 'end',
+    label: '',
+    labelHidden: false,
+    noLabel: false,
+    required: false,
+    invalid: false,
+    errorMessage: '',
+    helpText: '',
   },
 } satisfies Meta<typeof VueCheckbox>;
 
@@ -364,6 +378,104 @@ export const CSSPartsCustomization: Story = {
       <div>
         <div v-html="styles"></div>
         <VueCheckbox v-bind="args" class="custom-checkbox" />
+      </div>
+    `,
+  }),
+};
+
+export const WithExternalLabel: Story = {
+  render: () => ({
+    components: { VueCheckbox },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <VueCheckbox
+          name="terms"
+          value="agreed"
+          label="Terms and Conditions"
+          label-text="I agree to the terms and conditions"
+        />
+
+        <VueCheckbox
+          name="newsletter"
+          value="subscribed"
+          label="Newsletter Subscription"
+          label-text="Send me weekly updates"
+          help-text="You can unsubscribe at any time"
+        />
+
+        <VueCheckbox
+          name="required-check"
+          value="yes"
+          label="Required Agreement"
+          label-text="I acknowledge I have read the privacy policy"
+          :required="true"
+          help-text="This field is required to proceed"
+        />
+
+        <VueCheckbox
+          name="age-verify"
+          value="yes"
+          label="Age Verification"
+          label-text="I confirm I am 18 years or older"
+          :required="true"
+          :invalid="true"
+          error-message="You must confirm you are 18 or older"
+        />
+      </div>
+    `,
+  }),
+};
+
+export const ComparisonStandaloneVsExternal: Story = {
+  render: () => ({
+    components: { VueCheckbox },
+    template: `
+      <div style="display: flex; gap: 3rem;">
+        <div style="flex: 1;">
+          <h3 style="margin-bottom: 1rem;">Standard Checkbox (Internal Label)</h3>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <VueCheckbox
+              name="standard-features"
+              value="feature1"
+              label-text="Feature 1"
+              :checked="true"
+            />
+            <VueCheckbox
+              name="standard-features"
+              value="feature2"
+              label-text="Feature 2"
+            />
+            <VueCheckbox
+              name="standard-features"
+              value="feature3"
+              label-text="Feature 3"
+              :checked="true"
+            />
+          </div>
+        </div>
+        <div style="flex: 1;">
+          <h3 style="margin-bottom: 1rem;">
+            Checkbox with External Label (Group Context)
+          </h3>
+          <VueCheckbox
+            name="features"
+            value="email"
+            label="Select Features"
+            label-text="Email notifications"
+            help-text="Choose the features you want to enable"
+            :checked="true"
+          />
+          <VueCheckbox
+            name="features"
+            value="sms"
+            label-text="SMS notifications"
+          />
+          <VueCheckbox
+            name="features"
+            value="push"
+            label-text="Push notifications"
+          />
+        </div>
       </div>
     `,
   }),

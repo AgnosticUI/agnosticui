@@ -4,7 +4,6 @@ import { formControlStyles } from '../../../shared/form-control-styles';
 import {
   createFormControlIds,
   buildAriaDescribedBy,
-  type LabelPosition,
 } from '../../../shared/form-control-utils';
 
 
