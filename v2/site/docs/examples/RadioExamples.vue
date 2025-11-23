@@ -4,11 +4,7 @@
       <h3>Default Radio</h3>
       <p class="mbs2 mbe3">Basic radio buttons with default theme (primary)</p>
     </div>
-    <fieldset
-      class="mbe4"
-      style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);"
-    >
-      <legend style="padding: 0 0.5rem; font-weight: 600;">Choose your plan</legend>
+    <VueFieldset legend="Choose your plan">
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <VueRadio
           name="plan"
@@ -27,7 +23,7 @@
           label-text="Enterprise Plan"
         />
       </div>
-    </fieldset>
+    </VueFieldset>
 
     <div class="mbe4">
       <h3>Radio Group</h3>
@@ -37,8 +33,7 @@
       class="mbe4"
       style="display: flex; flex-direction: column; gap: 1.5rem;"
     >
-      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Select Framework</legend>
+      <VueFieldset legend="Select Framework">
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
           <VueRadio
             name="framework"
@@ -62,10 +57,9 @@
             label-text="Svelte"
           />
         </div>
-      </fieldset>
+      </VueFieldset>
 
-      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Deployment Environment</legend>
+      <VueFieldset legend="Deployment Environment">
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
           <VueRadio
             name="environment"
@@ -84,7 +78,7 @@
             label-text="Production"
           />
         </div>
-      </fieldset>
+      </VueFieldset>
     </div>
 
     <div class="mbe4">
@@ -126,8 +120,7 @@
       class="mbe4"
       style="display: flex; flex-direction: column; gap: 1.5rem;"
     >
-      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Default Theme (Blue)</legend>
+      <VueFieldset legend="Default Theme (Blue)">
         <div style="display: flex; gap: 1rem;">
           <VueRadio
             name="theme-default"
@@ -143,9 +136,8 @@
             :checked="true"
           />
         </div>
-      </fieldset>
-      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Primary Theme (Blue)</legend>
+      </VueFieldset>
+      <VueFieldset legend="Primary Theme (Blue)">
         <div style="display: flex; gap: 1rem;">
           <VueRadio
             name="theme-primary"
@@ -161,9 +153,8 @@
             :checked="true"
           />
         </div>
-      </fieldset>
-      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Success Theme (Green)</legend>
+      </VueFieldset>
+      <VueFieldset legend="Success Theme (Green)">
         <div style="display: flex; gap: 1rem;">
           <VueRadio
             name="theme-success"
@@ -179,10 +170,9 @@
             :checked="true"
           />
         </div>
-      </fieldset>
+      </VueFieldset>
 
-      <fieldset style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);">
-        <legend style="padding: 0 0.5rem; font-weight: 600;">Monochrome Theme (Black/White)</legend>
+      <VueFieldset legend="Monochrome Theme (Black/White)">
         <div style="display: flex; gap: 1rem;">
           <VueRadio
             name="theme-mono"
@@ -198,7 +188,7 @@
             :checked="true"
           />
         </div>
-      </fieldset>
+      </VueFieldset>
     </div>
 
     <div class="mbe4">
@@ -232,11 +222,7 @@
         The disabled middle option will be skipped.
       </p>
     </div>
-    <fieldset
-      class="mbe4"
-      style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);"
-    >
-      <legend style="padding: 0 0.5rem; font-weight: 600;">Select Shipping Method</legend>
+    <VueFieldset legend="Select Shipping Method">
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <VueRadio
           name="keyboard-nav-demo"
@@ -256,7 +242,7 @@
           label-text="Overnight Shipping - $24.99"
         />
       </div>
-    </fieldset>
+    </VueFieldset>
 
     <div class="mbe4">
       <h3>Label Position</h3>
@@ -286,11 +272,7 @@
       <h3>Inline Layout</h3>
       <p class="mbs2 mbe3">Radio buttons can be laid out horizontally for compact forms</p>
     </div>
-    <fieldset
-      class="mbe4"
-      style="border: 1px solid var(--ag-border); padding: 1rem; border-radius: var(--ag-radius-md);"
-    >
-      <legend style="padding: 0 0.5rem; font-weight: 600;">Gender</legend>
+    <VueFieldset legend="Gender">
       <div style="display: flex; gap: 1.5rem;">
         <VueRadio
           name="gender"
@@ -309,7 +291,7 @@
           label-text="Other"
         />
       </div>
-    </fieldset>
+    </VueFieldset>
 
     <div class="mbe4">
       <h3>External Label Support</h3>
@@ -387,11 +369,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { VueRadio } from "agnosticui-core/radio/vue";
+import { VueFieldset } from "agnosticui-core/fieldset/vue";
 
 export default defineComponent({
   name: "RadioExamples",
   components: {
     VueRadio,
+    VueFieldset,
   },
 });
 </script>
@@ -414,3 +398,4 @@ export default defineComponent({
   color: var(--ag-primary);
 }
 </style>
+

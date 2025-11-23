@@ -17,8 +17,7 @@ import RadioExamples from '../examples/RadioExamples.vue'
 <template>
   <section>
     <!-- Basic radio group -->
-    <fieldset>
-      <legend>Choose your plan</legend>
+    <VueFieldset legend="Choose your plan">
       <VueRadio
         name="plan"
         value="free"
@@ -35,11 +34,10 @@ import RadioExamples from '../examples/RadioExamples.vue'
         value="enterprise"
         label-text="Enterprise Plan"
       />
-    </fieldset>
+    </VueFieldset>
 
     <!-- Different themes -->
-    <fieldset>
-      <legend>Select framework</legend>
+    <VueFieldset legend="Select framework">
       <VueRadio
         name="framework"
         value="react"
@@ -59,11 +57,10 @@ import RadioExamples from '../examples/RadioExamples.vue'
         theme="primary"
         label-text="Angular"
       />
-    </fieldset>
+    </VueFieldset>
 
     <!-- Inline layout -->
-    <fieldset>
-      <legend>Gender</legend>
+    <VueFieldset legend="Gender">
       <div style="display: flex; gap: 1.5rem;">
         <VueRadio
           name="gender"
@@ -82,16 +79,17 @@ import RadioExamples from '../examples/RadioExamples.vue'
           label-text="Other"
         />
       </div>
-    </fieldset>
+    </VueFieldset>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { VueRadio } from 'agnosticui-core/radio/vue';
+import { VueFieldset } from 'agnosticui-core/fieldset/vue';
 
 export default defineComponent({
-  components: { VueRadio }
+  components: { VueRadio, VueFieldset }
 });
 </script>
 ```
@@ -100,13 +98,13 @@ export default defineComponent({
 ::: details React
 ```tsx
 import { ReactRadio } from 'agnosticui-core/radio/react';
+import { ReactFieldset } from 'agnosticui-core/fieldset/react';
 
 export default function Example() {
   return (
     <section>
       {/* Basic radio group */}
-      <fieldset>
-        <legend>Choose your plan</legend>
+      <ReactFieldset legend="Choose your plan">
         <ReactRadio
           name="plan"
           value="free"
@@ -123,11 +121,10 @@ export default function Example() {
           value="enterprise"
           labelText="Enterprise Plan"
         />
-      </fieldset>
+      </ReactFieldset>
 
       {/* Different themes */}
-      <fieldset>
-        <legend>Select framework</legend>
+      <ReactFieldset legend="Select framework">
         <ReactRadio
           name="framework"
           value="react"
@@ -147,11 +144,10 @@ export default function Example() {
           theme="primary"
           labelText="Angular"
         />
-      </fieldset>
+      </ReactFieldset>
 
       {/* Inline layout */}
-      <fieldset>
-        <legend>Gender</legend>
+      <ReactFieldset legend="Gender">
         <div style={{ display: 'flex', gap: '1.5rem' }}>
           <ReactRadio
             name="gender"
@@ -170,7 +166,7 @@ export default function Example() {
             labelText="Other"
           />
         </div>
-      </fieldset>
+      </ReactFieldset>
     </section>
   );
 }
@@ -181,12 +177,12 @@ export default function Example() {
 ```html
 <script type="module">
   import 'agnosticui-core/radio';
+  import 'agnosticui-core/fieldset';
 </script>
 
 <section>
   <!-- Basic radio group -->
-  <fieldset>
-    <legend>Choose your plan</legend>
+  <ag-fieldset legend="Choose your plan">
     <ag-radio
       name="plan"
       value="free"
@@ -203,11 +199,10 @@ export default function Example() {
       value="enterprise"
       label-text="Enterprise Plan"
     ></ag-radio>
-  </fieldset>
+  </ag-fieldset>
 
   <!-- Different themes -->
-  <fieldset>
-    <legend>Select framework</legend>
+  <ag-fieldset legend="Select framework">
     <ag-radio
       name="framework"
       value="react"
@@ -227,11 +222,10 @@ export default function Example() {
       theme="primary"
       label-text="Angular"
     ></ag-radio>
-  </fieldset>
+  </ag-fieldset>
 
   <!-- Inline layout -->
-  <fieldset>
-    <legend>Gender</legend>
+  <ag-fieldset legend="Gender">
     <div style="display: flex; gap: 1.5rem;">
       <ag-radio
         name="gender"
@@ -250,7 +244,7 @@ export default function Example() {
         label-text="Other"
       ></ag-radio>
     </div>
-  </fieldset>
+  </ag-fieldset>
 </section>
 ```
 :::
@@ -648,7 +642,7 @@ ag-radio::part(ag-radio-label) {
 - Proper `aria-checked` state for assistive technologies
 - Keyboard navigable (Tab to focus, Arrow keys to move between radios in a group, Space to select)
 - Focus visible with customizable focus ring using design tokens
-- **Always wrap radio groups in `<fieldset>` with a `<legend>`** for screen readers to understand the grouping context
+- Always wrap radio groups with AgFieldset (ag-fieldset / ReactFieldset / VueFieldset) for proper semantic grouping and screen reader support
 - Disabled state prevents interaction and is communicated to assistive technologies
 
 ## Theme Support
@@ -663,7 +657,7 @@ All themes automatically support dark mode through CSS design tokens:
 ## Best Practices
 
 - **Use `name` attribute**: All radio buttons in a group must have the same `name` attribute to ensure mutual exclusivity
-- **Always use fieldsets**: Wrap radio groups in `<fieldset>` with a descriptive `<legend>` for accessibility
+- **Always use AgFieldset**: Wrap radio groups with AgFieldset (ag-fieldset / ReactFieldset / VueFieldset) with a descriptive legend for accessibility
 - **Pre-select a default**: For better UX, always have one radio pre-selected in a required group
 - **Use checkboxes for multiple selections**: If users can select multiple options, use checkboxes instead
 - **Inline vs. stacked**: Use inline layout (flex/horizontal) for 2-3 short options; use stacked (vertical) for longer labels or more options
