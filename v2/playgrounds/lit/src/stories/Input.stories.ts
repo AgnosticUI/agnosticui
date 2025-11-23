@@ -1722,3 +1722,224 @@ export const InvalidWithAddons: Story = {
     </div>
   `,
 };
+
+// Horizontal Label Position
+export const HorizontalLabelPosition: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 800px;">
+      <h3 style="margin-top: 0;">Horizontal Label Position</h3>
+      <p style="margin-bottom: 1.5rem; color: #6b7280;">
+        Labels can be positioned horizontally (beside the input) for compact layouts.
+        Input uses progressive enhancement with <code>field-sizing: content</code> (Chrome 123+, Safari TP).
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <!-- Basic horizontal -->
+        <ag-input
+          .label=${"Name:"}
+          .labelPosition=${"horizontal"}
+          .type=${"text"}
+          .placeholder=${"John Doe"}
+        ></ag-input>
+
+        <!-- With help text -->
+        <ag-input
+          .label=${"Age:"}
+          .labelPosition=${"horizontal"}
+          .type=${"number"}
+          .placeholder=${"25"}
+          .helpText=${"Must be 18 or older"}
+        ></ag-input>
+
+        <!-- Required field -->
+        <ag-input
+          .label=${"Email:"}
+          .labelPosition=${"horizontal"}
+          .type=${"email"}
+          .placeholder=${"you@example.com"}
+          .required=${true}
+        ></ag-input>
+
+        <!-- With error -->
+        <ag-input
+          .label=${"Username:"}
+          .labelPosition=${"horizontal"}
+          .type=${"text"}
+          .value=${"ab"}
+          .invalid=${true}
+          .errorMessage=${"Must be at least 3 characters"}
+        ></ag-input>
+
+        <!-- Small size horizontal -->
+        <ag-input
+          .label=${"Code:"}
+          .labelPosition=${"horizontal"}
+          .type=${"text"}
+          .size=${"small"}
+          .placeholder=${"ABC123"}
+          .helpText=${"Enter verification code"}
+        ></ag-input>
+
+        <!-- With rounded style -->
+        <ag-input
+          .label=${"Search:"}
+          .labelPosition=${"horizontal"}
+          .type=${"search"}
+          .rounded=${true}
+          .placeholder=${"Search..."}
+        ></ag-input>
+      </div>
+
+      <div style="margin-top: 2rem; padding: 1rem; background: #f9fafb; border-radius: 6px;">
+        <h4 style="margin-top: 0;">Progressive Enhancement</h4>
+        <p style="font-size: 0.875rem; color: #6b7280; margin: 0;">
+          <strong>Modern browsers (Chrome 123+, Safari TP):</strong> Input width adapts to content using <code>field-sizing: content</code>
+          <br>
+          <strong>All other browsers:</strong> Falls back to fixed 200px width
+        </p>
+      </div>
+    </div>
+  `,
+};
+
+// Horizontal vs Vertical Comparison
+export const HorizontalVsVertical: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 900px;">
+      <h3 style="margin-top: 0;">Label Position Comparison</h3>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 1.5rem;">
+        <!-- Vertical (Default) -->
+        <div>
+          <h4>Vertical (Default)</h4>
+          <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">
+            Label stacked above input - best for mobile, BBC GEL recommended
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <ag-input
+              .label=${"Full Name"}
+              .type=${"text"}
+              .placeholder=${"Enter your full name"}
+            ></ag-input>
+
+            <ag-input
+              .label=${"Email Address"}
+              .type=${"email"}
+              .placeholder=${"you@example.com"}
+              .required=${true}
+            ></ag-input>
+
+            <ag-input
+              .label=${"Phone Number"}
+              .type=${"tel"}
+              .placeholder=${"+1 (555) 000-0000"}
+              .helpText=${"We'll never share your number"}
+            ></ag-input>
+          </div>
+        </div>
+
+        <!-- Horizontal -->
+        <div>
+          <h4>Horizontal</h4>
+          <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">
+            Label beside input - good for compact layouts and short inputs
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <ag-input
+              .label=${"Name:"}
+              .labelPosition=${"horizontal"}
+              .type=${"text"}
+              .placeholder=${"Enter your name"}
+            ></ag-input>
+
+            <ag-input
+              .label=${"Email:"}
+              .labelPosition=${"horizontal"}
+              .type=${"email"}
+              .placeholder=${"you@example.com"}
+              .required=${true}
+            ></ag-input>
+
+            <ag-input
+              .label=${"Phone:"}
+              .labelPosition=${"horizontal"}
+              .type=${"tel"}
+              .placeholder=${"+1 (555) 000-0000"}
+              .helpText=${"We'll never share your number"}
+            ></ag-input>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+};
+
+// Horizontal Layout Compact Form Example
+export const HorizontalCompactForm: Story = {
+  render: () => html`
+    <div style="padding: 50px; max-width: 700px;">
+      <h3 style="margin-top: 0;">Compact Form with Horizontal Labels</h3>
+      <p style="margin-bottom: 1.5rem; color: #6b7280;">
+        Horizontal labels work great for compact admin panels or settings forms
+      </p>
+
+      <form style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <ag-input
+          .label=${"First Name:"}
+          .labelPosition=${"horizontal"}
+          .type=${"text"}
+          .placeholder=${"John"}
+          .required=${true}
+        ></ag-input>
+
+        <ag-input
+          .label=${"Last Name:"}
+          .labelPosition=${"horizontal"}
+          .type=${"text"}
+          .placeholder=${"Doe"}
+          .required=${true}
+        ></ag-input>
+
+        <ag-input
+          .label=${"Age:"}
+          .labelPosition=${"horizontal"}
+          .type=${"number"}
+          .size=${"small"}
+          .placeholder=${"25"}
+        ></ag-input>
+
+        <ag-input
+          .label=${"Country:"}
+          .labelPosition=${"horizontal"}
+          .type=${"text"}
+          .placeholder=${"United States"}
+        ></ag-input>
+
+        <ag-input
+          .label=${"Postal Code:"}
+          .labelPosition=${"horizontal"}
+          .type=${"text"}
+          .size=${"small"}
+          .placeholder=${"12345"}
+        ></ag-input>
+
+        <ag-input
+          .label=${"Bio:"}
+          .labelPosition=${"horizontal"}
+          .type=${"textarea"}
+          .rows=${3}
+          .placeholder=${"Tell us about yourself..."}
+          .helpText=${"Keep it brief"}
+        ></ag-input>
+
+        <div style="margin-top: 1rem;">
+          <button type="submit" style="padding: 0.5rem 1.5rem; cursor: pointer;">
+            Save Settings
+          </button>
+        </div>
+      </form>
+    </div>
+  `,
+};
