@@ -1,5 +1,10 @@
 import { LitElement, html, css } from 'lit';
 import { property, query } from 'lit/decorators.js';
+import {
+  createFormControlIds,
+  buildAriaDescribedBy,
+} from '../../../shared/form-control-utils';
+import { formControlStyles } from '../../../shared/form-control-styles';
 
 export type SelectSize = 'small' | 'large' | '';
 
@@ -15,6 +20,15 @@ export interface SelectProps {
   disabled?: boolean;
   name?: string;
   multipleSize?: number;
+  // External label support
+  label?: string;
+  labelHidden?: boolean;
+  noLabel?: boolean;
+  required?: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  helpText?: string;
+  // Event callbacks
   onClick?: (event: MouseEvent) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
@@ -45,6 +59,28 @@ export class Select extends LitElement implements SelectProps {
 
   @property({ type: Number, attribute: 'multiple-size' })
   public multipleSize?: number;
+
+  // External label properties
+  @property({ type: String })
+  public label = '';
+
+  @property({ type: Boolean, attribute: 'label-hidden' })
+  public labelHidden = false;
+
+  @property({ type: Boolean, attribute: 'no-label' })
+  public noLabel = false;
+
+  @property({ type: Boolean })
+  public required = false;
+
+  @property({ type: Boolean })
+  public invalid = false;
+
+  @property({ type: String, attribute: 'error-message' })
+  public errorMessage = '';
+
+  @property({ type: String, attribute: 'help-text' })
+  public helpText = '';
 
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
@@ -96,18 +132,20 @@ export class Select extends LitElement implements SelectProps {
     });
   }
 
-  static styles = css`
-    :host {
-      display: block;
-      width: 100%;
-    }
+  static styles = [
+    formControlStyles,
+    css`
+      :host {
+        display: block;
+        width: 100%;
+      }
 
-    /* Hide the slot since options are moved into select */
-    slot {
-      display: none;
-    }
+      /* Hide the slot since options are moved into select */
+      slot {
+        display: none;
+      }
 
-    .select {
+      .select {
       display: block;
       width: 100%;
       /* Remove default browser styling */
@@ -186,7 +224,8 @@ export class Select extends LitElement implements SelectProps {
         transition: none;
       }
     }
-  `;
+  `,
+  ];
 
   private handleClick(event: MouseEvent) {
     // Invoke callback if provided (native composed event)
@@ -246,12 +285,32 @@ export class Select extends LitElement implements SelectProps {
   }
 
   render() {
+    const ids = createFormControlIds('select');
+    const ariaDescribedBy = buildAriaDescribedBy(
+      this.helpText ? ids.helpTextId : '',
+      this.invalid && this.errorMessage ? ids.errorId : ''
+    );
+
     return html`
+      ${!this.noLabel && this.label
+        ? html`
+            <label
+              for=${ids.inputId}
+              class="ag-form-control-label ${this.labelHidden
+                ? 'ag-visually-hidden'
+                : ''} ${this.required ? 'ag-form-control-label--required' : ''}"
+            >
+              ${this.label}
+            </label>
+          `
+        : ''}
       <select
+        id=${ids.inputId}
         class="select"
         part="ag-select"
         ?multiple=${this.multiple}
         ?disabled=${this.disabled}
+        ?required=${this.required}
         .name=${this.name}
         .size=${this.multipleSize ?? (this.multiple ? 4 : 1)}
         @click=${this.handleClick}
@@ -259,8 +318,20 @@ export class Select extends LitElement implements SelectProps {
         @blur=${this.handleBlur}
         @change=${this.handleChange}
         aria-disabled=${this.disabled ? 'true' : 'false'}
+        aria-invalid=${this.invalid ? 'true' : 'false'}
+        aria-describedby=${ariaDescribedBy || undefined}
       ></select>
       <slot></slot>
+      ${this.helpText && !this.invalid
+        ? html`<div id=${ids.helpTextId} class="ag-form-control-help-text">
+            ${this.helpText}
+          </div>`
+        : ''}
+      ${this.invalid && this.errorMessage
+        ? html`<div id=${ids.errorId} class="ag-form-control-error-message">
+            ${this.errorMessage}
+          </div>`
+        : ''}
     `;
   }
 }

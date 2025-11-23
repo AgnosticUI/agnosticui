@@ -6,6 +6,13 @@
     .disabled="disabled"
     .name="name"
     .multipleSize="multipleSize"
+    .label="label"
+    .labelHidden="labelHidden"
+    .noLabel="noLabel"
+    .required="required"
+    .invalid="invalid"
+    .errorMessage="errorMessage"
+    .helpText="helpText"
     @change="handleChange"
     @focus="handleFocus"
     @blur="handleBlur"
@@ -56,6 +63,35 @@ export default defineComponent({
     value: {
       type: [String, Array] as PropType<string | string[]>,
       default: undefined,
+    },
+    // External label support
+    label: {
+      type: String,
+      default: "",
+    },
+    labelHidden: {
+      type: Boolean,
+      default: false,
+    },
+    noLabel: {
+      type: Boolean,
+      default: false,
+    },
+    required: {
+      type: Boolean,
+      default: false,
+    },
+    invalid: {
+      type: Boolean,
+      default: false,
+    },
+    errorMessage: {
+      type: String,
+      default: "",
+    },
+    helpText: {
+      type: String,
+      default: "",
     },
   },
   emits: {
