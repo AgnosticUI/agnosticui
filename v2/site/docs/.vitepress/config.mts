@@ -79,6 +79,7 @@ function getComponents() {
       { text: 'Icon', link: '/components/icon' },
       { text: 'Image', link: '/components/image' },
       { text: 'Input', link: '/components/input' },
+      { text: 'IntlFormatter', link: '/components/intl-formatter' },
       { text: 'Kbd', link: '/components/kbd' },
       { text: 'Link', link: '/components/link' },
       { text: 'Loader', link: '/components/loader' },
@@ -102,9 +103,6 @@ function getComponents() {
       { text: 'Toast', link: '/components/toast' },
       { text: 'Toggle', link: '/components/toggle' },
       { text: 'Tooltip', link: '/components/tooltip' },
-
-
-
 
     ]
   }

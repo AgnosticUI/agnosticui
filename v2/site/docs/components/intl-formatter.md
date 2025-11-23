@@ -1,6 +1,14 @@
-# IntlFormatter Web Component
+# IntlFormatter
 
 A comprehensive, framework-agnostic web component that wraps the browser's native `Intl.DateTimeFormat` and `Intl.NumberFormat` APIs for formatting dates, numbers, currencies, and percentages with full localization support.
+
+## Examples
+
+<IntlFormatterExamples />
+
+<script setup>
+import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue'
+</script>
 
 ## Features
 
@@ -13,19 +21,104 @@ A comprehensive, framework-agnostic web component that wraps the browser's nativ
 - ♿ **Accessible** - Semantic HTML with proper attributes
 - 📦 **Zero Dependencies** - Built on Lit Element
 
-## Installation
-
-```bash
-npm install @your-org/intl-formatter
-```
-
 ## Usage
 
-### Vanilla HTML/JavaScript
+::: details Vue
+```vue
+<template>
+  <section>
+    <!-- Date formatting -->
+    <VueIntlFormatter
+      type="date"
+      date="2024-01-15"
+      dateStyle="long"
+      lang="en-US"
+    />
 
+    <!-- Currency formatting -->
+    <VueIntlFormatter
+      type="currency"
+      :value="1234.56"
+      currency="USD"
+      lang="en-US"
+    />
+
+    <!-- Number formatting -->
+    <VueIntlFormatter
+      type="number"
+      :value="1234567.89"
+      :minimumFractionDigits="2"
+      lang="en-US"
+    />
+
+    <!-- Percentage formatting -->
+    <VueIntlFormatter
+      type="percent"
+      :value="0.75"
+      lang="en-US"
+    />
+  </section>
+</template>
+
+<script setup>
+import { VueIntlFormatter } from 'agnosticui-core/intl-formatter/vue';
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { ReactIntlFormatter } from 'agnosticui-core/intl-formatter/react';
+
+function App() {
+  const handleError = (event) => {
+    console.error('Formatting error:', event.detail);
+  };
+
+  return (
+    <div>
+      {/* Date with style shortcuts */}
+      <ReactIntlFormatter
+        type="date"
+        date="2024-01-15"
+        dateStyle="full"
+        timeStyle="short"
+      />
+
+      {/* Currency */}
+      <ReactIntlFormatter
+        type="currency"
+        value={1234.56}
+        currency="EUR"
+        lang="de-DE"
+        onFormatError={handleError}
+      />
+
+      {/* Number with custom formatting */}
+      <ReactIntlFormatter
+        type="number"
+        value={1234567.89}
+        minimumFractionDigits={2}
+        maximumFractionDigits={2}
+        noGrouping={false}
+      />
+
+      {/* Percentage */}
+      <ReactIntlFormatter
+        type="percent"
+        value={0.8532}
+        minimumFractionDigits={2}
+      />
+    </div>
+  );
+}
+```
+:::
+
+::: details Vanilla HTML/JavaScript
 ```html
 <script type="module">
-  import '@your-org/intl-formatter';
+  import 'agnosticui-core/intl-formatter';
 </script>
 
 <!-- Date formatting -->
@@ -53,109 +146,13 @@ npm install @your-org/intl-formatter
 </ag-intl-formatter>
 
 <!-- Percentage formatting -->
-<ag-intl-formatter 
-  type="percent" 
+<ag-intl-formatter
+  type="percent"
   value="0.75"
   lang="en-US">
 </ag-intl-formatter>
 ```
-
-### React
-
-```tsx
-import { ReactIntlFormatter } from '@your-org/intl-formatter/react';
-
-function App() {
-  const handleError = (event) => {
-    console.error('Formatting error:', event.detail);
-  };
-
-  return (
-    <div>
-      {/* Date with style shortcuts */}
-      <ReactIntlFormatter 
-        type="date"
-        date="2024-01-15"
-        dateStyle="full"
-        timeStyle="short"
-      />
-
-      {/* Currency */}
-      <ReactIntlFormatter 
-        type="currency"
-        value={1234.56}
-        currency="EUR"
-        lang="de-DE"
-        onFormatError={handleError}
-      />
-
-      {/* Number with custom formatting */}
-      <ReactIntlFormatter 
-        type="number"
-        value={1234567.89}
-        minimumFractionDigits={2}
-        maximumFractionDigits={2}
-        noGrouping={false}
-      />
-
-      {/* Percentage */}
-      <ReactIntlFormatter 
-        type="percent"
-        value={0.8532}
-        minimumFractionDigits={2}
-      />
-    </div>
-  );
-}
-```
-
-### Vue
-
-```vue
-<template>
-  <div>
-    <!-- Date with style shortcuts -->
-    <VueIntlFormatter 
-      type="date"
-      date="2024-01-15"
-      date-style="full"
-      time-style="short"
-    />
-
-    <!-- Currency -->
-    <VueIntlFormatter 
-      type="currency"
-      :value="1234.56"
-      currency="EUR"
-      lang="de-DE"
-      @format-error="handleError"
-    />
-
-    <!-- Number -->
-    <VueIntlFormatter 
-      type="number"
-      :value="1234567.89"
-      :minimum-fraction-digits="2"
-      :no-grouping="false"
-    />
-
-    <!-- Percentage -->
-    <VueIntlFormatter 
-      type="percent"
-      :value="0.8532"
-      :minimum-fraction-digits="2"
-    />
-  </div>
-</template>
-
-<script setup>
-import { VueIntlFormatter } from '@your-org/intl-formatter/vue';
-
-const handleError = (event) => {
-  console.error('Formatting error:', event.detail);
-};
-</script>
-```
+:::
 
 ## API Reference
 
@@ -438,7 +435,7 @@ For older browsers, consider using polyfills:
 Full TypeScript definitions are included. Import types as needed:
 
 ```typescript
-import type { IntlFormatterProps } from '@your-org/intl-formatter';
+import type { IntlFormatterProps } from 'agnosticui-core/intl-formatter';
 ```
 
 ## Testing

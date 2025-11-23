@@ -68,81 +68,81 @@ export interface IntlFormatterProps {
  * ```
  */
 export class IntlFormatter extends LitElement implements IntlFormatterProps {
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare type: 'date' | 'number' | 'percent' | 'currency';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare value: number | string | Date;
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare lang: string;
 
   // Date-specific properties
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare date: Date | string;
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare weekday: 'narrow' | 'short' | 'long';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare era: 'narrow' | 'short' | 'long';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare year: 'numeric' | '2-digit';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare month: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare day: 'numeric' | '2-digit';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare hour: 'numeric' | '2-digit';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare minute: 'numeric' | '2-digit';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare second: 'numeric' | '2-digit';
 
-  @property({ type: String, attribute: 'time-zone-name' })
+  @property({ type: String, reflect: true, attribute: 'time-zone-name' })
   declare timeZoneName: 'short' | 'long';
 
-  @property({ type: String, attribute: 'time-zone' })
+  @property({ type: String, reflect: true, attribute: 'time-zone' })
   declare timeZone: string;
 
-  @property({ type: String, attribute: 'hour-format' })
+  @property({ type: String, reflect: true, attribute: 'hour-format' })
   declare hourFormat: 'auto' | '12' | '24';
 
-  @property({ type: String, attribute: 'date-style' })
+  @property({ type: String, reflect: true, attribute: 'date-style' })
   declare dateStyle: 'full' | 'long' | 'medium' | 'short';
 
-  @property({ type: String, attribute: 'time-style' })
+  @property({ type: String, reflect: true, attribute: 'time-style' })
   declare timeStyle: 'full' | 'long' | 'medium' | 'short';
 
   // Number-specific properties
-  @property({ type: Boolean, attribute: 'no-grouping' })
+  @property({ type: Boolean, reflect: true, attribute: 'no-grouping' })
   declare noGrouping: boolean;
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare currency: string;
 
-  @property({ type: String, attribute: 'currency-display' })
+  @property({ type: String, reflect: true, attribute: 'currency-display' })
   declare currencyDisplay: 'symbol' | 'narrowSymbol' | 'code' | 'name';
 
-  @property({ type: Number, attribute: 'minimum-integer-digits' })
+  @property({ type: Number, reflect: true, attribute: 'minimum-integer-digits' })
   declare minimumIntegerDigits: number;
 
-  @property({ type: Number, attribute: 'minimum-fraction-digits' })
+  @property({ type: Number, reflect: true, attribute: 'minimum-fraction-digits' })
   declare minimumFractionDigits: number;
 
-  @property({ type: Number, attribute: 'maximum-fraction-digits' })
+  @property({ type: Number, reflect: true, attribute: 'maximum-fraction-digits' })
   declare maximumFractionDigits: number;
 
-  @property({ type: Number, attribute: 'minimum-significant-digits' })
+  @property({ type: Number, reflect: true, attribute: 'minimum-significant-digits' })
   declare minimumSignificantDigits: number;
 
-  @property({ type: Number, attribute: 'maximum-significant-digits' })
+  @property({ type: Number, reflect: true, attribute: 'maximum-significant-digits' })
   declare maximumSignificantDigits: number;
 
   // Formatter cache for performance

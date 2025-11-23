@@ -68,6 +68,14 @@
       "types": "./dist/components/IntlFormatter/core/IntlFormatter.d.ts",
       "import": "./dist/components/IntlFormatter/core/IntlFormatter.js"
     },
+    "./intl-formatter/react": {
+      "types": "./dist/components/IntlFormatter/react/ReactIntlFormatter.d.ts",
+      "import": "./dist/components/IntlFormatter/react/ReactIntlFormatter.js"
+    },
+    "./intl-formatter/vue": {
+      "types": "./dist/components/IntlFormatter/vue/index.d.ts",
+      "import": "./dist/components/IntlFormatter/vue/index.js"
+    },
     "./copy-button": {
       "types": "./dist/components/CopyButton/core/CopyButton.d.ts",
       "import": "./dist/components/CopyButton/core/CopyButton.js"
