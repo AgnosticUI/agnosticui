@@ -359,6 +359,105 @@
         help-text="Custom colors, sizing, and typography"
       />
     </div>
+
+    <div class="mbe4">
+      <h3>External Label Support</h3>
+      <p class="mbs2 mbe3">
+        The Slider component supports external labels with helper text, required fields, and validation states.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 600px;">
+      <div class="mbe3">
+        <VueSlider
+          label="Volume Level"
+          :min="0"
+          :max="100"
+          :value="75"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueSlider
+          label="Brightness"
+          help-text="Adjust screen brightness level (affects battery life)"
+          :min="0"
+          :max="100"
+          :value="50"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueSlider
+          label="Temperature"
+          :required="true"
+          help-text="This field is required"
+          :min="-20"
+          :max="40"
+          :value="20"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueSlider
+          label="Price Range"
+          :required="true"
+          :invalid="true"
+          error-message="Please select a valid price range"
+          :min="0"
+          :max="1000"
+          :value="50"
+        />
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h3>Label Positioning</h3>
+      <p class="mbs2 mbe3">
+        Control label position with <code>label-position</code>: 'top' (default), 'start', 'end', or 'bottom'.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 600px;">
+      <div class="mbe3">
+        <VueSlider
+          label="Top Label (Default)"
+          label-position="top"
+          :min="0"
+          :max="100"
+          :value="50"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueSlider
+          label="Start Position"
+          label-position="start"
+          :min="0"
+          :max="100"
+          :value="60"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueSlider
+          label="End Position"
+          label-position="end"
+          :min="0"
+          :max="100"
+          :value="70"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueSlider
+          label="Bottom Position"
+          label-position="bottom"
+          help-text="Bottom label position for alternative layouts"
+          :min="0"
+          :max="100"
+          :value="40"
+        />
+      </div>
+    </div>
   </section>
 </template>
 

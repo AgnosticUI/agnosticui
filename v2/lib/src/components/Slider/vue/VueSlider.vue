@@ -7,9 +7,11 @@
     .filled="filled"
     .monochrome="monochrome"
     .labelHidden="labelHidden"
+    .labelPosition="labelPosition"
     .noLabel="noLabel"
     .disabled="disabled"
     .readonly="readonly"
+    .required="required"
     .invalid="invalid"
     .showTooltip="showTooltip"
     .showTicks="showTicks"
@@ -48,6 +50,7 @@ export interface VueSliderProps
 
 const props = withDefaults(defineProps<VueSliderProps>(), {
   label: "",
+  labelPosition: "top",
   labelHidden: false,
   noLabel: false,
   ariaLabel: "",
@@ -63,6 +66,7 @@ const props = withDefaults(defineProps<VueSliderProps>(), {
   size: "default",
   disabled: false,
   readonly: false,
+  required: false,
   invalid: false,
   errorMessage: "",
   helpText: "",

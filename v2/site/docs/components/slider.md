@@ -185,6 +185,7 @@ export default function Example() {
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `label` | `string` | `''` | Label text for the slider |
+| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'` | Position of the label relative to the slider |
 | `labelHidden` | `boolean` | `false` | Visually hide the label (still accessible) |
 | `noLabel` | `boolean` | `false` | Remove label completely |
 | `ariaLabel` | `string` | `''` | ARIA label when label is hidden |
@@ -200,6 +201,7 @@ export default function Example() {
 | `size` | `'small' \| 'default' \| 'large'` | `'default'` | Size variant |
 | `disabled` | `boolean` | `false` | Disabled state prevents interaction |
 | `readonly` | `boolean` | `false` | Readonly state allows focus but prevents changes |
+| `required` | `boolean` | `false` | Required field indicator |
 | `invalid` | `boolean` | `false` | Invalid state for validation feedback |
 | `errorMessage` | `string` | `''` | Error message text displayed when invalid |
 | `helpText` | `string` | `''` | Helper text displayed below slider |
