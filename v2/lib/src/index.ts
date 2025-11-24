@@ -36,3 +36,4 @@ export * from './components/Timeline/core/Timeline';
 export * from './components/ScrollToButton/core/ScrollToButton';
 export * from './components/Mark/core/Mark';
 export * from './components/MessageBubble/core/MessageBubble';
+export * from './components/VisuallyHidden/core/_VisuallyHidden';

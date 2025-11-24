@@ -43,3 +43,4 @@ export * from '../ScrollToButton/react/ReactScrollToButton';
 export * from '../Mark/react/ReactMark';
 export * from '../MessageBubble/react/ReactMessageBubble';
 export * from '../IntlFormatter/react/ReactIntlFormatter';
+export * from '../VisuallyHidden/react/ReactVisuallyHidden';
