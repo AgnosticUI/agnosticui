@@ -10,12 +10,19 @@
 import { LitElement, html, css } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { generateUniqueId } from '../../../utils/unique-id';
+import {
+  createFormControlIds,
+  buildAriaDescribedBy,
+  isHorizontalLabel,
+  type LabelPosition,
+} from '../../../shared/form-control-utils';
+import { formControlStyles } from '../../../shared/form-control-styles';
 
 // Props interface following INTERFACE_STANDARDS.md
 export interface SliderProps {
   // Label properties
   label?: string;
+  labelPosition?: LabelPosition;
   labelHidden?: boolean;
   noLabel?: boolean;
   ariaLabel?: string;
@@ -43,6 +50,7 @@ export interface SliderProps {
   // States
   disabled?: boolean;
   readonly?: boolean;
+  required?: boolean;
   invalid?: boolean;
   errorMessage?: string;
   helpText?: string;
@@ -67,7 +75,9 @@ export interface SliderProps {
  */
 export class AgSlider extends LitElement implements SliderProps {
   static formAssociated = true;
-  static styles = css`
+  static styles = [
+    formControlStyles,
+    css`
     :host {
       display: block;
       --ag-slider-track-height: var(--ag-space-2);
@@ -80,26 +90,6 @@ export class AgSlider extends LitElement implements SliderProps {
 
     :host([vertical]) {
       display: inline-block;
-    }
-
-    /* Label */
-    .ag-slider__label {
-      display: block;
-      margin-bottom: var(--ag-space-2);
-      font-size: var(--ag-font-size-base);
-      color: var(--ag-text-primary);
-    }
-
-    .ag-slider__label--hidden {
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      padding: 0 !important;
-      margin: -1px !important;
-      overflow: hidden !important;
-      clip: rect(0, 0, 0, 0) !important;
-      white-space: nowrap !important;
-      border: 0 !important;
     }
 
     /* Container */
@@ -436,13 +426,17 @@ export class AgSlider extends LitElement implements SliderProps {
       padding: 0;
       border: 0;
     }
-  `;
+  `,
+  ];
 
   // Form association
   private _internals: ElementInternals;
 
-  // Core element ID for label association
-  private _sliderId = generateUniqueId('ag-slider');
+  // Form control IDs
+  private _sliderId: string;
+  private _labelId: string;
+  private _helperId: string;
+  private _errorId: string;
 
   // Drag state
   private _activeDrag: {
@@ -460,7 +454,14 @@ export class AgSlider extends LitElement implements SliderProps {
   constructor() {
     super();
     this._internals = this.attachInternals();
-    
+
+    // Initialize form control IDs
+    const ids = createFormControlIds('slider');
+    this._sliderId = this.id || ids.inputId;
+    this._labelId = ids.labelId;
+    this._helperId = ids.helperId;
+    this._errorId = ids.errorId;
+
     // Initialize properties
     this.label = '';
     this.labelHidden = false;
@@ -478,6 +479,7 @@ export class AgSlider extends LitElement implements SliderProps {
     this.size = 'default';
     this.disabled = false;
     this.readonly = false;
+    this.required = false;
     this.invalid = false;
     this.errorMessage = '';
     this.helpText = '';
@@ -496,6 +498,9 @@ export class AgSlider extends LitElement implements SliderProps {
    */
   @property({ type: String })
   declare label: string;
+
+  @property({ type: String, attribute: 'label-position' })
+  labelPosition: LabelPosition = 'top';
 
   @property({ type: Boolean, attribute: 'label-hidden' })
   declare labelHidden: boolean;
@@ -559,6 +564,9 @@ export class AgSlider extends LitElement implements SliderProps {
 
   @property({ type: Boolean, reflect: true })
   declare readonly: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare required: boolean;
 
   @property({ type: Boolean, reflect: true })
   declare invalid: boolean;
@@ -1167,24 +1175,42 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
     }
   }
 
+  private renderLabel() {
+    if (!this.label || this.noLabel || this.dual) return '';
+
+    // Build position classes
+    const positionClasses: string[] = [];
+    if (isHorizontalLabel(this.labelPosition)) {
+      positionClasses.push('ag-form-control__label--horizontal');
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    } else if (this.labelPosition === 'bottom') {
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    }
+
+    return html`
+      <label
+        id=${this._labelId}
+        for=${this._sliderId}
+        class="ag-form-control__label ${this.labelHidden
+          ? 'ag-form-control__label--hidden'
+          : ''} ${this.required ? 'ag-form-control__label--required' : ''} ${positionClasses.join(' ')}"
+        part="ag-slider-label"
+      >
+        ${this.label}
+      </label>
+    `;
+  }
+
   render() {
     const values = this._values;
-    const helpId = `${this._sliderId}-help`;
-    const errorId = `${this._sliderId}-error`;
 
-    // Build aria-describedby list
-    const describedByIds: string[] = [];
-    if (this.helpText) {
-      describedByIds.push(helpId);
-    }
-    if (this.errorMessage) {
-      describedByIds.push(errorId);
-    }
-    if (this.labelledBy) {
-      describedByIds.push(this.labelledBy);
-    }
-
-    const describedBy = describedByIds.length > 0 ? describedByIds.join(' ') : undefined;
+    // Use shared form control utilities for aria-describedby
+    const describedBy = buildAriaDescribedBy({
+      helperId: this._helperId,
+      errorId: this._errorId,
+      hasHelper: !!this.helpText && !this.invalid,
+      hasError: !!this.invalid && !!this.errorMessage,
+    });
 
     // Generate contextual labels for dual slider
     const minLabel = this.label ? `${this.label} - Minimum value` : 'Minimum value';
@@ -1211,13 +1237,13 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
         ` : ''}
 
         ${this.helpText ? html`
-          <div class="ag-slider__help" id="${helpId}" part="ag-slider-help">
+          <div class="ag-form-control-help-text" id="${this._helperId}">
             ${this.helpText}
           </div>
         ` : ''}
 
         ${this.errorMessage ? html`
-          <div class="ag-slider__error" id="${errorId}" part="ag-slider-error">
+          <div class="ag-form-control-error-message" id="${this._errorId}">
             ${this.errorMessage}
           </div>
         ` : ''}

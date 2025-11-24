@@ -855,22 +855,24 @@ describe('AgCombobox - Phase 1 MVP', () => {
       element.helpText = 'Choose your state';
       await element.updateComplete;
 
-      const helpText = element.shadowRoot?.querySelector('.ag-combobox__help-text');
+      const helpText = element.shadowRoot?.querySelector('.ag-form-control-help-text');
       expect(helpText).toBeTruthy();
       expect(helpText?.textContent?.trim()).toBe('Choose your state');
     });
 
     it('renders error text when provided', async () => {
-      element.errorText = 'State is required';
+      element.errorMessage = 'State is required';
+      element.invalid = true;
       await element.updateComplete;
 
-      const errorText = element.shadowRoot?.querySelector('.ag-combobox__error-text');
+      const errorText = element.shadowRoot?.querySelector('.ag-form-control-error-message');
       expect(errorText).toBeTruthy();
       expect(errorText?.textContent?.trim()).toBe('State is required');
     });
 
-    it('sets aria-invalid when errorText is present', async () => {
-      element.errorText = 'State is required';
+    it('sets aria-invalid when errorMessage is present', async () => {
+      element.errorMessage = 'State is required';
+      element.invalid = true;
       await element.updateComplete;
 
       const input = element.shadowRoot?.querySelector('input') as HTMLInputElement;
@@ -878,11 +880,12 @@ describe('AgCombobox - Phase 1 MVP', () => {
     });
 
     it('associates error text with input via aria-describedby', async () => {
-      element.errorText = 'State is required';
+      element.errorMessage = 'State is required';
+      element.invalid = true;
       await element.updateComplete;
 
       const input = element.shadowRoot?.querySelector('input') as HTMLInputElement;
-      const errorText = element.shadowRoot?.querySelector('.ag-combobox__error-text');
+      const errorText = element.shadowRoot?.querySelector('.ag-form-control-error-message');
 
       const describedBy = input.getAttribute('aria-describedby');
       expect(describedBy).toContain(errorText?.getAttribute('id'));
