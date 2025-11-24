@@ -1,5 +1,13 @@
 import { LitElement, html, css, svg } from 'lit';
 import { property, state } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import {
+  createFormControlIds,
+  buildAriaDescribedBy,
+  isHorizontalLabel,
+  type LabelPosition,
+} from '../../../shared/form-control-utils';
+import { formControlStyles } from '../../../shared/form-control-styles';
 
 // Event detail interfaces
 export interface RatingChangeEventDetail {
@@ -28,6 +36,17 @@ export interface RatingProps {
   allowClear?: boolean;
   variant?: RatingVariant;
   size?: RatingSize;
+  name?: string;
+  // Form control props
+  label?: string;
+  labelPosition?: LabelPosition;
+  labelHidden?: boolean;
+  noLabel?: boolean;
+  required?: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  helpText?: string;
+  // Event handlers
   onRatingChange?: (event: RatingChangeEvent) => void;
   onRatingHover?: (event: RatingHoverEvent) => void;
 }
@@ -36,6 +55,12 @@ let uniqueIdCounter = 0;
 
 export class AgRating extends LitElement {
   private uniqueId = ++uniqueIdCounter; // Unique ID for clip paths in half-star rendering
+
+  // Form control IDs
+  private _ratingId: string = '';
+  private _labelId: string = '';
+  private _helperId: string = '';
+  private _errorId: string = '';
 
   // Public properties
   @property({ type: Number })
@@ -59,6 +84,34 @@ export class AgRating extends LitElement {
   @property({ type: String, reflect: true })
   declare size: RatingSize; // Size: small, medium, large
 
+  @property({ type: String })
+  declare name: string; // Form integration name
+
+  // Form control properties
+  @property({ type: String })
+  declare label: string;
+
+  @property({ type: String, attribute: 'label-position' })
+  labelPosition: LabelPosition = 'top';
+
+  @property({ type: Boolean, attribute: 'label-hidden' })
+  declare labelHidden: boolean;
+
+  @property({ type: Boolean, attribute: 'no-label' })
+  declare noLabel: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare required: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare invalid: boolean;
+
+  @property({ type: String, attribute: 'error-message' })
+  declare errorMessage: string;
+
+  @property({ type: String, attribute: 'help-text' })
+  declare helpText: string;
+
   // Event handlers
   @property({ attribute: false })
   declare onRatingChange?: (event: RatingChangeEvent) => void;
@@ -73,6 +126,14 @@ export class AgRating extends LitElement {
 
   constructor() {
     super();
+
+    // Initialize form control IDs
+    const ids = createFormControlIds('rating');
+    this._ratingId = ids.inputId;
+    this._labelId = ids.labelId;
+    this._helperId = ids.helperId;
+    this._errorId = ids.errorId;
+
     this.value = 0;
     this.max = 5;
     this.precision = 'whole';
@@ -80,6 +141,14 @@ export class AgRating extends LitElement {
     this.allowClear = false;
     this.variant = '';
     this.size = 'md';
+    this.name = '';
+    this.label = '';
+    this.labelHidden = false;
+    this.noLabel = false;
+    this.required = false;
+    this.invalid = false;
+    this.errorMessage = '';
+    this.helpText = '';
     this.handlePointerMove = this.handlePointerMove.bind(this);
     this.handlePointerUp = this.handlePointerUp.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -96,12 +165,12 @@ export class AgRating extends LitElement {
     this.removeGlobalPointerListeners();
   }
 
-  static styles = css`
+  static styles = [
+    formControlStyles,
+    css`
     :host {
-      display: inline-block;
+      display: block;
       line-height: 1;
-      user-select: none;
-      outline: none;
     }
 
     .rating {
@@ -205,21 +274,75 @@ export class AgRating extends LitElement {
       white-space: nowrap;
       border: 0;
     }
-  `;
+  `,
+  ];
+
+  private renderLabel() {
+    if (!this.label || this.noLabel) return '';
+
+    const positionClasses: string[] = [];
+    if (isHorizontalLabel(this.labelPosition)) {
+      positionClasses.push('ag-form-control__label--horizontal');
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    } else if (this.labelPosition === 'bottom') {
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    }
+
+    return html`
+      <label
+        id=${this._labelId}
+        for=${this._ratingId}
+        class="ag-form-control__label ${this.labelHidden
+          ? 'ag-form-control__label--hidden'
+          : ''} ${this.required ? 'ag-form-control__label--required' : ''} ${positionClasses.join(' ')}"
+        part="ag-rating-label"
+      >
+        ${this.label}
+      </label>
+    `;
+  }
 
   render() {
     const displayValue = this.isHovering ? this.hoverValue : this.value;
     const stars = Array.from({ length: this.max }, (_, i) => i + 1);
 
-    return html`
+    // Build aria-describedby
+    const describedBy = buildAriaDescribedBy({
+      helperId: this._helperId,
+      errorId: this._errorId,
+      hasHelper: !!this.helpText && !this.invalid,
+      hasError: !!this.invalid && !!this.errorMessage,
+    });
+
+    // Helper text rendering
+    const helperText = this.helpText && !this.invalid
+      ? html`<div class="ag-form-control__helper" id="${this._helperId}">
+          ${this.helpText}
+        </div>`
+      : '';
+
+    // Error message rendering
+    const errorText = this.invalid && this.errorMessage
+      ? html`<div class="ag-form-control__error" id="${this._errorId}">
+          ${this.errorMessage}
+        </div>`
+      : '';
+
+    // Rating control
+    const ratingControl = html`
       <div
+        id="${this._ratingId}"
         class="rating"
         part="base"
         role="slider"
-        aria-label="Rating"
+        aria-label="${this.label || 'Rating'}"
+        aria-labelledby="${ifDefined(this.label && !this.noLabel ? this._labelId : undefined)}"
+        aria-describedby="${ifDefined(describedBy)}"
         aria-valuemin="0"
         aria-valuemax="${this.max}"
         aria-valuenow="${Number(this.value).toFixed(this.precision === 'half' ? 1 : 0)}"
+        aria-invalid="${this.invalid ? 'true' : 'false'}"
+        aria-required="${this.required ? 'true' : 'false'}"
         tabindex="${this.readonly ? -1 : 0}"
         @pointerdown="${this.handlePointerDown}"
         @pointermove="${this.handlePointerMoveHost}"
@@ -231,7 +354,39 @@ export class AgRating extends LitElement {
       <span class="visually-hidden" aria-live="polite">
         ${displayValue} of ${this.max}
       </span>
-      <slot name="label"></slot>
+    `;
+
+    // Check if label should be in horizontal layout
+    const isHorizontal = isHorizontalLabel(this.labelPosition);
+
+    // Horizontal layout (start/end positions)
+    if (isHorizontal) {
+      return html`
+        <div class="ag-form-control--horizontal">
+          ${this.renderLabel()}
+          ${ratingControl}
+        </div>
+        ${helperText}
+        ${errorText}
+      `;
+    }
+
+    // Bottom position layout
+    if (this.labelPosition === 'bottom') {
+      return html`
+        ${ratingControl}
+        ${helperText}
+        ${errorText}
+        ${this.renderLabel()}
+      `;
+    }
+
+    // Top position layout (default)
+    return html`
+      ${this.renderLabel()}
+      ${ratingControl}
+      ${helperText}
+      ${errorText}
     `;
   }
 

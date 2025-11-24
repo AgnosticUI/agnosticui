@@ -65,6 +65,57 @@
     </div>
 
     <div class="mbe4">
+      <h3>Form Control Features</h3>
+      <p class="mbs2 mbe3">
+        Rating supports labels, helper text, validation, and label positioning for form integration.
+      </p>
+      <div style="max-width: 600px; display: flex; flex-direction: column; gap: 1.5rem;">
+        <!-- Basic label -->
+        <VueRating
+          label="Product Rating"
+          :value="3"
+        />
+
+        <!-- With help text -->
+        <VueRating
+          label="Service Quality"
+          help-text="Rate the quality of service you received"
+          :value="4"
+        />
+
+        <!-- Required field -->
+        <VueRating
+          label="Overall Experience"
+          :required="true"
+          help-text="This rating is required to submit your feedback"
+          :value="0"
+        />
+
+        <!-- With error validation -->
+        <VueRating
+          label="Customer Support"
+          :required="true"
+          :invalid="true"
+          error-message="Please provide a rating before submitting"
+          :value="0"
+        />
+
+        <!-- Label positioning -->
+        <VueRating
+          label="Start Position"
+          label-position="start"
+          :value="3"
+        />
+
+        <VueRating
+          label="End Position"
+          label-position="end"
+          :value="3"
+        />
+      </div>
+    </div>
+
+    <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the component's appearance.

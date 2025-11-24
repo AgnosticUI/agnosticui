@@ -125,4 +125,74 @@ describe('AgRating (core)', () => {
     const results = await axe(instance);
     expect(results).toHaveNoViolations();
   });
+
+  describe('Form Control Features', () => {
+    it('renders label when provided', async () => {
+      instance.label = 'Rate this product';
+      await instance.updateComplete;
+
+      const label = instance.shadowRoot?.querySelector('label');
+      expect(label).toBeTruthy();
+      expect(label?.textContent?.trim()).toBe('Rate this product');
+    });
+
+    it('renders help text when provided', async () => {
+      instance.label = 'Rating';
+      instance.helpText = 'Select a rating from 1 to 5 stars';
+      await instance.updateComplete;
+
+      const helpText = instance.shadowRoot?.querySelector('.ag-form-control__helper');
+      expect(helpText).toBeTruthy();
+      expect(helpText?.textContent?.trim()).toBe('Select a rating from 1 to 5 stars');
+    });
+
+    it('renders error message when invalid', async () => {
+      instance.label = 'Rating';
+      instance.invalid = true;
+      instance.errorMessage = 'Rating is required';
+      await instance.updateComplete;
+
+      const errorText = instance.shadowRoot?.querySelector('.ag-form-control__error');
+      expect(errorText).toBeTruthy();
+      expect(errorText?.textContent?.trim()).toBe('Rating is required');
+    });
+
+    it('sets aria-invalid when invalid', async () => {
+      instance.invalid = true;
+      await instance.updateComplete;
+
+      const ratingDiv = instance.shadowRoot?.querySelector('.rating');
+      expect(ratingDiv?.getAttribute('aria-invalid')).toBe('true');
+    });
+
+    it('sets aria-required when required', async () => {
+      instance.required = true;
+      await instance.updateComplete;
+
+      const ratingDiv = instance.shadowRoot?.querySelector('.rating');
+      expect(ratingDiv?.getAttribute('aria-required')).toBe('true');
+    });
+
+    it('associates error text with rating via aria-describedby', async () => {
+      instance.label = 'Rating';
+      instance.invalid = true;
+      instance.errorMessage = 'Rating is required';
+      await instance.updateComplete;
+
+      const ratingDiv = instance.shadowRoot?.querySelector('.rating');
+      const errorText = instance.shadowRoot?.querySelector('.ag-form-control__error');
+
+      const describedBy = ratingDiv?.getAttribute('aria-describedby');
+      expect(describedBy).toContain(errorText?.getAttribute('id'));
+    });
+
+    it('supports label positioning', async () => {
+      instance.label = 'Rating';
+      instance.labelPosition = 'start';
+      await instance.updateComplete;
+
+      const horizontalContainer = instance.shadowRoot?.querySelector('.ag-form-control--horizontal');
+      expect(horizontalContainer).toBeTruthy();
+    });
+  });
 });
