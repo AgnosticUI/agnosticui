@@ -26,6 +26,11 @@ const meta = {
       control: 'text',
       description: 'Label text for the combobox',
     },
+    labelPosition: {
+      control: 'select',
+      options: ['top', 'start', 'end', 'bottom'],
+      description: 'Position of the label relative to the combobox',
+    },
     labelHidden: {
       control: 'boolean',
       description: 'Visually hides the label (still accessible to screen readers)',
@@ -106,7 +111,7 @@ const meta = {
       control: 'text',
       description: 'Help text to display',
     },
-    errorText: {
+    errorMessage: {
       control: 'text',
       description: 'Error message to display',
     },
@@ -121,6 +126,7 @@ const meta = {
   },
   args: {
     label: '',
+    labelPosition: 'top',
     labelHidden: false,
     noLabel: false,
     placeholder: '',
@@ -139,7 +145,7 @@ const meta = {
     loadingText: 'Loading...',
     noResultsText: 'No results found',
     helpText: '',
-    errorText: '',
+    errorMessage: '',
     multiple: false,
   },
 } satisfies Meta<typeof VueCombobox>;
@@ -191,7 +197,7 @@ export const WithError: Story = {
     label: 'Select State',
     placeholder: 'Choose a state...',
     options: stateOptions,
-    errorText: 'State is required',
+    errorMessage: 'State is required',
     invalid: true,
   },
   render: (args: VueComboboxProps) => ({

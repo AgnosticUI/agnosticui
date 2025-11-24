@@ -41,7 +41,7 @@ import ComboboxExamples from '../examples/ComboboxExamples.vue'
       label="Required State"
       :required="true"
       :invalid="isInvalid"
-      error-text="State is required"
+      error-message="State is required"
     />
 
     <!-- Clearable -->
@@ -220,7 +220,7 @@ export default function ComboboxExample() {
         label="Required State"
         required
         invalid={isInvalid}
-        errorText="State is required"
+        errorMessage="State is required"
         onChange={(e) => setRequiredState(e.detail.value)}
       />
 
@@ -355,7 +355,7 @@ export class ComboboxExample extends LitElement {
         label="Required State"
         ?required=${true}
         ?invalid=${false}
-        error-text="State is required"
+        error-message="State is required"
       ></ag-combobox>
 
       <!-- Clearable -->
@@ -423,10 +423,11 @@ export class ComboboxExample extends LitElement {
 | `label` | `string` | `''` | Label text for the combobox |
 | `labelHidden` | `boolean` | `false` | Visually hide the label (still accessible to screen readers) |
 | `noLabel` | `boolean` | `false` | Remove the label entirely |
+| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'` | Position of the label relative to the combobox |
 | `ariaLabel` | `string \| null` | `null` | ARIA label for accessibility |
 | `labelledBy` | `string` | `''` | ID of element that labels this combobox |
 | `helpText` | `string` | `''` | Help text displayed below the input |
-| `errorText` | `string` | `''` | Error message displayed below the input |
+| `errorMessage` | `string` | `''` | Error message displayed below the input |
 | `id` | `string` | (auto-generated) | Unique ID for the combobox |
 | `autocomplete` | `'list' \| 'none'` | `'list'` | Autocomplete behavior |
 | `filterMode` | `'startsWith' \| 'contains' \| 'none'` | `'startsWith'` | How to filter options based on input |
@@ -603,7 +604,7 @@ Disables client-side filtering. Useful for server-side filtering scenarios.
 
 1. **Always provide a label**: Use `label` prop or `aria-label` for screen readers
 2. **Use help text**: Provide guidance with `helpText` prop
-3. **Clear error messages**: Use `errorText` with specific, actionable messages
+3. **Clear error messages**: Use `errorMessage` with specific, actionable messages
 4. **Test keyboard navigation**: Ensure all features work without a mouse
 5. **Test with screen readers**: Verify announcements are clear and helpful
 

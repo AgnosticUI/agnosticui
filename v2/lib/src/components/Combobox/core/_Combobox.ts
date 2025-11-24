@@ -17,6 +17,13 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state, query } from 'lit/decorators.js';
 import { generateUniqueId } from '../../../utils/unique-id';
+import {
+  createFormControlIds,
+  buildAriaDescribedBy,
+  isHorizontalLabel,
+  type LabelPosition,
+} from '../../../shared/form-control-utils';
+import { formControlStyles } from '../../../shared/form-control-styles';
 import '../../shared/CloseButton/CloseButton.js';
 import '../../Checkbox/core/Checkbox.js';
 import '../../Tag/core/Tag.js';
@@ -72,12 +79,13 @@ export interface ComboboxProps {
 
   // Label & Accessibility
   label?: string;
+  labelPosition?: LabelPosition;
   labelHidden?: boolean;
   noLabel?: boolean;
   ariaLabel?: string | null;
   labelledBy?: string;
   helpText?: string;
-  errorText?: string;
+  errorMessage?: string;
   id?: string;
 
   // Behavior
@@ -133,7 +141,9 @@ export interface ComboboxProps {
  * @csspart ag-combobox-error-message - Error message element
  */
 export class AgCombobox extends LitElement implements ComboboxProps {
-  static styles = css`
+  static styles = [
+    formControlStyles,
+    css`
     :host {
       display: block;
       position: relative;
@@ -152,28 +162,6 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       flex-direction: column;
       gap: var(--ag-space-2);
     }
-
-    /* Label */
-    .combobox-label {
-      display: block;
-      font-size: var(--ag-font-size-base);
-      font-weight: var(--ag-font-weight-medium);
-      color: var(--ag-text-primary);
-      margin-bottom: var(--ag-space-1);
-    }
-
-    .combobox-label--hidden {
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      padding: 0 !important;
-      margin: -1px !important;
-      overflow: hidden !important;
-      clip: rect(0, 0, 0, 0) !important;
-      white-space: nowrap !important;
-      border: 0 !important;
-    }
-
     /* Input wrapper */
     .combobox-input-wrapper {
       position: relative;
@@ -412,18 +400,6 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       font-size: var(--ag-font-size-sm);
     }
 
-    /* Help text */
-    .combobox-help-text {
-      font-size: var(--ag-font-size-sm);
-      color: var(--ag-text-secondary);
-    }
-
-    /* Error message */
-    .combobox-error-message {
-      font-size: var(--ag-font-size-sm);
-      color: var(--ag-danger);
-    }
-
     /* Screen reader only announcer */
     .combobox-sr-announcer {
       position: absolute !important;
@@ -518,7 +494,8 @@ export class AgCombobox extends LitElement implements ComboboxProps {
         border: 1px solid ButtonText;
       }
     }
-  `;
+  `,
+  ];
 
   // Props
   @property({ type: Array })
@@ -550,6 +527,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   @property({ type: String })
   declare label?: string;
 
+  @property({ type: String, attribute: 'label-position' })
+  labelPosition: LabelPosition = 'top';
+
   @property({ type: Boolean, attribute: 'label-hidden' })
   declare labelHidden: boolean;
 
@@ -565,8 +545,8 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   @property({ type: String, attribute: 'help-text' })
   declare helpText?: string;
 
-  @property({ type: String, attribute: 'error-text' })
-  declare errorText?: string;
+  @property({ type: String, attribute: 'error-message' })
+  declare errorMessage?: string;
 
   @property({ type: String })
   declare id: string;
@@ -711,11 +691,12 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
   connectedCallback() {
     super.connectedCallback();
-    this._comboboxId = this.id || generateUniqueId('combobox');
+    const ids = createFormControlIds('combobox');
+    this._comboboxId = this.id || ids.inputId;
     this._listboxId = `${this._comboboxId}-listbox`;
-    this._labelId = `${this._comboboxId}-label`;
-    this._helpTextId = `${this._comboboxId}-help`;
-    this._errorTextId = `${this._comboboxId}-error`;
+    this._labelId = ids.labelId;
+    this._helpTextId = ids.helperId;
+    this._errorTextId = ids.errorId;
 
     // Setup click outside handler
     this._clickOutsideHandler = (event: MouseEvent) => {
@@ -765,9 +746,9 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       }
     }
 
-    // Sync invalid state from errorText
-    if (changedProperties.has('errorText')) {
-      this.invalid = !!this.errorText;
+    // Sync invalid state from errorMessage
+    if (changedProperties.has('errorMessage')) {
+      this.invalid = !!this.errorMessage;
     }
   }
 
@@ -1339,28 +1320,47 @@ export class AgCombobox extends LitElement implements ComboboxProps {
   }
 
   private _getDescribedBy(): string | undefined {
-    const ids: string[] = [];
-    if (this.helpText) ids.push(this._helpTextId);
-    if (this.errorText) ids.push(this._errorTextId);
-    return ids.length > 0 ? ids.join(' ') : undefined;
+    return buildAriaDescribedBy({
+      helperId: this._helpTextId,
+      errorId: this._errorTextId,
+      hasHelper: !!this.helpText && !this.invalid,
+      hasError: !!this.invalid && !!this.errorMessage,
+    });
+  }
+
+  private renderLabel() {
+    if (!this.label || this.noLabel) return '';
+
+    // Build position classes
+    const positionClasses: string[] = [];
+    if (isHorizontalLabel(this.labelPosition)) {
+      positionClasses.push('ag-form-control__label--horizontal');
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    } else if (this.labelPosition === 'bottom') {
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    }
+
+    return html`
+      <label
+        id=${this._labelId}
+        for=${this._comboboxId}
+        class="ag-form-control__label ${this.labelHidden
+          ? 'ag-form-control__label--hidden'
+          : ''} ${this.required ? 'ag-form-control__label--required' : ''} ${positionClasses.join(' ')}"
+        part="ag-combobox-label"
+      >
+        ${this.label}
+      </label>
+    `;
   }
 
   render() {
     const showLabel = !this.noLabel && this.label;
     const describedBy = this._getDescribedBy();
+    const isHorizontal = isHorizontalLabel(this.labelPosition);
 
-    return html`
-      <div class="combobox-wrapper" part="ag-combobox-wrapper">
-        ${showLabel ? html`
-          <label
-            id=${this._labelId}
-            class="combobox-label ${this.labelHidden ? 'combobox-label--hidden' : ''}"
-            part="ag-combobox-label"
-            for=${this._comboboxId}
-          >
-            ${this.label}
-          </label>
-        ` : nothing}
+    // Main combobox input and dropdown element
+    const comboboxElement = html`
 
         <div
           class="combobox-input-wrapper"
@@ -1480,33 +1480,60 @@ export class AgCombobox extends LitElement implements ComboboxProps {
           `}
         </div>
 
-        ${this.helpText ? html`
-          <div
-            id=${this._helpTextId}
-            class="ag-combobox__help-text combobox-help-text"
-            part="ag-combobox-help-text"
-          >
-            ${this.helpText}
-          </div>
-        ` : nothing}
-
-        ${this.errorText ? html`
-          <div
-            id=${this._errorTextId}
-            class="ag-combobox__error-text combobox-error-message"
-            part="ag-combobox-error-message"
-          >
-            ${this.errorText}
-          </div>
-        ` : nothing}
-
         <div
           class="combobox-sr-announcer"
           role="status"
           aria-live="polite"
           aria-atomic="true"
         ></div>
+    `;
+
+    const helperText = this.helpText && !this.invalid
+      ? html`<div id=${this._helpTextId} class="ag-form-control-help-text">
+          ${this.helpText}
+        </div>`
+      : '';
+
+    const errorText = this.invalid && this.errorMessage
+      ? html`<div id=${this._errorTextId} class="ag-form-control-error-message">
+          ${this.errorMessage}
+        </div>`
+      : '';
+
+    // For horizontal layout: [Label] [Combobox] structure with helper/error below
+    if (isHorizontal) {
+      return html`
+        <div class="ag-form-control--horizontal">
+          ${this.renderLabel()}
+          <div class="combobox-wrapper" part="ag-combobox-wrapper">
+            ${comboboxElement}
+          </div>
+        </div>
+        ${helperText}
+        ${errorText}
+      `;
+    }
+
+    // For bottom label: Combobox first, then helper/error, then label
+    if (this.labelPosition === 'bottom') {
+      return html`
+        <div class="combobox-wrapper" part="ag-combobox-wrapper">
+          ${comboboxElement}
+        </div>
+        ${helperText}
+        ${errorText}
+        ${this.renderLabel()}
+      `;
+    }
+
+    // Top label (default): Label first, then combobox, then helper/error
+    return html`
+      ${this.renderLabel()}
+      <div class="combobox-wrapper" part="ag-combobox-wrapper">
+        ${comboboxElement}
       </div>
+      ${helperText}
+      ${errorText}
     `;
   }
 }
