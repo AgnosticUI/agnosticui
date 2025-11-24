@@ -11,7 +11,20 @@ const meta: Meta<ToggleProps> = {
   argTypes: {
     label: {
       control: "text",
-      description: "Required accessible name for the toggle",
+      description: "Label text for the toggle",
+    },
+    labelPosition: {
+      control: "select",
+      options: ["top", "start", "end", "bottom"],
+      description: "Position of the label relative to the toggle",
+    },
+    labelHidden: {
+      control: "boolean",
+      description: "Visually hide the label (still accessible to screen readers)",
+    },
+    noLabel: {
+      control: "boolean",
+      description: "Remove label completely",
     },
     checked: {
       control: "boolean",
@@ -24,7 +37,7 @@ const meta: Meta<ToggleProps> = {
     },
     variant: {
       control: "select",
-      options: ["default", "success", "warning", "danger"],
+      options: ["default", "success", "warning", "danger", "monochrome"],
       description: "Visual variant",
     },
     disabled: {
@@ -35,13 +48,21 @@ const meta: Meta<ToggleProps> = {
       control: "boolean",
       description: "Read-only state (visually interactive but does not change)",
     },
-    labelledBy: {
-      control: "text",
-      description: "External element ID that labels this toggle",
+    required: {
+      control: "boolean",
+      description: "Required field indicator",
     },
-    describedBy: {
+    invalid: {
+      control: "boolean",
+      description: "Invalid state for validation feedback",
+    },
+    errorMessage: {
       control: "text",
-      description: "External element ID that describes this toggle",
+      description: "Error message text",
+    },
+    helpText: {
+      control: "text",
+      description: "Helper text",
     },
     name: {
       control: "text",
@@ -54,11 +75,18 @@ const meta: Meta<ToggleProps> = {
   },
   args: {
     label: "Toggle",
+    labelPosition: "top",
+    labelHidden: false,
+    noLabel: false,
     checked: false,
     size: "md",
     variant: "default",
     disabled: false,
     readonly: false,
+    required: false,
+    invalid: false,
+    errorMessage: "",
+    helpText: "",
     onToggleChange: fn(),
   },
   parameters: {
@@ -79,32 +107,41 @@ export const Default: Story = {
   },
   render: ({
     label,
+    labelPosition,
+    labelHidden,
+    noLabel,
     checked,
     size,
     variant,
     disabled,
     readonly,
-    labelledBy,
-    describedBy,
+    required,
+    invalid,
+    errorMessage,
+    helpText,
     name,
     value,
     onToggleChange,
   }) => html`
-    <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
+    <div style="padding: 50px;">
       <ag-toggle
         .label=${label}
+        .labelPosition=${labelPosition}
+        .labelHidden=${labelHidden}
+        .noLabel=${noLabel}
         .checked=${checked}
         .size=${size}
         .variant=${variant}
         .disabled=${disabled}
         .readonly=${readonly}
-        .labelledBy=${labelledBy}
-        .describedBy=${describedBy}
+        .required=${required}
+        .invalid=${invalid}
+        .errorMessage=${errorMessage}
+        .helpText=${helpText}
         .name=${name}
         .value=${value}
         @toggle-change=${(e: CustomEvent) => onToggleChange(e.detail)}
       ></ag-toggle>
-      <span>${label}</span>
     </div>
   `,
 };

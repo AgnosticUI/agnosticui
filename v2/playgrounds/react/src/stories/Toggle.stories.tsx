@@ -11,6 +11,19 @@ const meta: Meta<ReactToggleProps> = {
       control: 'text',
       description: 'Label text for the toggle',
     },
+    labelPosition: {
+      control: 'select',
+      options: ['top', 'start', 'end', 'bottom'],
+      description: 'Label position',
+    },
+    labelHidden: {
+      control: 'boolean',
+      description: 'Hide label visually',
+    },
+    noLabel: {
+      control: 'boolean',
+      description: 'Remove label completely',
+    },
     checked: {
       control: 'boolean',
       description: 'Toggle checked state',
@@ -22,7 +35,7 @@ const meta: Meta<ReactToggleProps> = {
     },
     variant: {
       control: 'select',
-      options: ['default', 'success', 'warning', 'danger'],
+      options: ['default', 'success', 'warning', 'danger', 'monochrome'],
       description: 'Toggle color variant',
     },
     disabled: {
@@ -33,6 +46,22 @@ const meta: Meta<ReactToggleProps> = {
       control: 'boolean',
       description: 'Make toggle read-only',
     },
+    required: {
+      control: 'boolean',
+      description: 'Required field',
+    },
+    invalid: {
+      control: 'boolean',
+      description: 'Invalid state',
+    },
+    errorMessage: {
+      control: 'text',
+      description: 'Error message text',
+    },
+    helpText: {
+      control: 'text',
+      description: 'Helper text',
+    },
     onToggleChange: {
       action: 'toggle-change',
       description: 'Emitted when the toggle state changes',
@@ -40,11 +69,18 @@ const meta: Meta<ReactToggleProps> = {
   },
   args: {
     label: 'Toggle Label',
+    labelPosition: 'top',
+    labelHidden: false,
+    noLabel: false,
     checked: false,
     size: 'md',
     variant: 'default',
     disabled: false,
     readonly: false,
+    required: false,
+    invalid: false,
+    errorMessage: '',
+    helpText: '',
     onToggleChange: fn(),
   },
 } satisfies Meta<ReactToggleProps>;
