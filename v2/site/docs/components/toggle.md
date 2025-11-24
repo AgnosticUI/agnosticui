@@ -232,14 +232,19 @@ export default function ToggleExample() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `label` | `string` | `''` | **Required** - Accessible label for the toggle |
+| `label` | `string` | `''` | Label text for the toggle |
+| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'` | Position of the label relative to the toggle |
+| `labelHidden` | `boolean` | `false` | Visually hide the label (still accessible to screen readers) |
+| `noLabel` | `boolean` | `false` | Remove label completely |
 | `checked` | `boolean` | `false` | Whether the toggle is checked/on |
 | `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size of the toggle switch |
-| `variant` | `'default' \| 'success' \| 'warning' \| 'danger'` | `'default'` | Color variant when checked |
+| `variant` | `'default' \| 'success' \| 'warning' \| 'danger' \| 'monochrome'` | `'default'` | Color variant when checked |
 | `disabled` | `boolean` | `false` | Whether the toggle is disabled |
 | `readonly` | `boolean` | `false` | Toggle appears interactive but cannot be changed |
-| `labelledBy` | `string` | `''` | ID of external element that labels the toggle |
-| `describedBy` | `string` | `''` | ID of external element that describes the toggle |
+| `required` | `boolean` | `false` | Required field indicator |
+| `invalid` | `boolean` | `false` | Invalid state for validation feedback |
+| `errorMessage` | `string` | `''` | Error message text displayed when invalid |
+| `helpText` | `string` | `''` | Helper text displayed below toggle |
 | `name` | `string` | `''` | Name for form integration |
 | `value` | `string` | `''` | Value when toggle is checked (for forms) |
 

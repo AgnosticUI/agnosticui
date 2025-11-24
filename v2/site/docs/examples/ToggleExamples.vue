@@ -126,6 +126,82 @@
         </p>
       </div>
     </div>
+
+    <div class="mbe4">
+      <h3>External Label Support</h3>
+      <p class="mbs2 mbe3">
+        The Toggle component supports external labels with helper text, required fields, and validation states.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 600px;">
+      <div class="mbe3">
+        <VueToggle
+          label="Enable notifications"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueToggle
+          label="Dark mode"
+          help-text="Reduces eye strain in low-light environments"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueToggle
+          label="Two-factor authentication"
+          :required="true"
+          help-text="This setting is required for account security"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueToggle
+          label="Email notifications"
+          :required="true"
+          :invalid="true"
+          error-message="You must enable email notifications to continue"
+        />
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h3>Label Positioning</h3>
+      <p class="mbs2 mbe3">
+        Control label position with <code>label-position</code>: 'top' (default), 'start', 'end', or 'bottom'.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 600px;">
+      <div class="mbe3">
+        <VueToggle
+          label="Top Label (Default)"
+          label-position="top"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueToggle
+          label="Start Position"
+          label-position="start"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueToggle
+          label="End Position"
+          label-position="end"
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueToggle
+          label="Bottom Position"
+          label-position="bottom"
+          help-text="Bottom label position for alternative layouts"
+        />
+      </div>
+    </div>
+
     <div class="mbe2">
       <h3>CSS Shadow Parts Customization</h3>
     </div>
