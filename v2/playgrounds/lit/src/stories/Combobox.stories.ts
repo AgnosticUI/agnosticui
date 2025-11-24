@@ -27,6 +27,11 @@ const meta: Meta<ComboboxProps> = {
       control: "text",
       description: "Label text for the combobox",
     },
+    labelPosition: {
+      control: "select",
+      options: ["top", "start", "end", "bottom"],
+      description: "Position of the label relative to the combobox",
+    },
     labelHidden: {
       control: "boolean",
       description: "Visually hides the label (still accessible to screen readers)",
@@ -102,13 +107,14 @@ const meta: Meta<ComboboxProps> = {
       control: "text",
       description: "Help text to display",
     },
-    errorText: {
+    errorMessage: {
       control: "text",
       description: "Error message to display",
     },
   },
   args: {
     label: "",
+    labelPosition: "top",
     labelHidden: false,
     noLabel: false,
     placeholder: "",
@@ -126,7 +132,7 @@ const meta: Meta<ComboboxProps> = {
     loadingText: "Loading...",
     noResultsText: "No results found",
     helpText: "",
-    errorText: "",
+    errorMessage: "",
     onChange: fn(),
     onSelect: fn(),
     onSearch: fn(),
@@ -155,6 +161,7 @@ export const Default: Story = {
       .options=${args.options}
       .value=${args.value}
       label=${args.label}
+      label-position=${args.labelPosition}
       placeholder=${args.placeholder}
       ?label-hidden=${args.labelHidden}
       ?no-label=${args.noLabel}
@@ -171,7 +178,7 @@ export const Default: Story = {
       loading-text=${args.loadingText}
       no-results-text=${args.noResultsText}
       help-text=${args.helpText || ""}
-      error-text=${args.errorText || ""}
+      error-message=${args.errorMessage || ""}
       @change=${args.onChange}
       @select=${args.onSelect}
       @search=${args.onSearch}
@@ -206,7 +213,7 @@ export const WithError: Story = {
     label: "Select State",
     placeholder: "Choose a state...",
     options: stateOptions,
-    errorText: "State is required",
+    errorMessage: "State is required",
     invalid: true,
   },
   render: (args) => html`
@@ -214,7 +221,7 @@ export const WithError: Story = {
       .options=${args.options}
       label=${args.label}
       placeholder=${args.placeholder}
-      error-text=${args.errorText}
+      error-message=${args.errorMessage}
       ?invalid=${args.invalid}
       @change=${args.onChange}
     ></ag-combobox>

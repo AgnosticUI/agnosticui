@@ -50,6 +50,11 @@ const meta = {
       options: ['default', 'monochrome'],
       description: 'Visual variant of the combobox',
     },
+    labelPosition: {
+      control: 'select',
+      options: ['top', 'start', 'end', 'bottom'],
+      description: 'Position of the label relative to the combobox',
+    },
     filterMode: {
       control: 'select',
       options: ['startsWith', 'contains', 'none'],
@@ -67,6 +72,7 @@ const meta = {
   args: {
     size: 'default',
     variant: 'default',
+    labelPosition: 'top',
     filterMode: 'startsWith',
     disabled: false,
     readonly: false,
@@ -296,7 +302,7 @@ export const Invalid: Story = {
         placeholder="Type to search..."
         options={fruitOptions}
         invalid
-        errorText="Please select a valid option"
+        errorMessage="Please select a valid option"
       />
     </div>
   ),

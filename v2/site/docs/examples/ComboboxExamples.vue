@@ -119,7 +119,7 @@
         :options="stateOptions"
         label="Invalid Combobox"
         :invalid="true"
-        error-text="Please select a valid state"
+        error-message="Please select a valid state"
         placeholder="This has an error"
         class="mbe2"
       />
@@ -319,6 +319,106 @@
         <p v-if="lastEvent">
           Last event: <strong>{{ lastEvent }}</strong>
         </p>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h3>External Label Support</h3>
+      <p class="mbs2 mbe3">
+        The Combobox component supports external labels with helper text, required fields, and validation states.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 600px;">
+      <div class="mbe3">
+        <VueCombobox
+          :options="stateOptions"
+          label="Favorite State"
+          name="favorite"
+          placeholder="Choose a state..."
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueCombobox
+          :options="stateOptions"
+          label="Home State"
+          help-text="Select the state where you currently reside"
+          name="home"
+          placeholder="Choose your home state..."
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueCombobox
+          :options="stateOptions"
+          label="Required State"
+          :required="true"
+          help-text="This field is required"
+          name="required"
+          placeholder="Choose a state..."
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueCombobox
+          :options="stateOptions"
+          label="State Selection"
+          :required="true"
+          :invalid="true"
+          error-message="Please select a valid state to continue"
+          name="validation"
+          placeholder="Choose a state..."
+        />
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h3>Label Positioning</h3>
+      <p class="mbs2 mbe3">
+        Control label position with <code>label-position</code>: 'top' (default), 'start', 'end', or 'bottom'.
+        <strong>Note:</strong> 'bottom' is not recommended as the dropdown will cover the label when opened.
+      </p>
+    </div>
+    <div class="mbe4" style="max-width: 600px;">
+      <div class="mbe3">
+        <VueCombobox
+          :options="stateOptions"
+          label="Top Label (Default)"
+          label-position="top"
+          name="pos-top"
+          placeholder="Choose a state..."
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueCombobox
+          :options="stateOptions"
+          label="Start Position"
+          label-position="start"
+          name="pos-start"
+          placeholder="Choose a state..."
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueCombobox
+          :options="stateOptions"
+          label="End Position"
+          label-position="end"
+          name="pos-end"
+          placeholder="Choose a state..."
+        />
+      </div>
+
+      <div class="mbe3">
+        <VueCombobox
+          :options="stateOptions"
+          label="Bottom Position (Not Recommended)"
+          label-position="bottom"
+          name="pos-bottom"
+          help-text="The dropdown will cover this label when opened"
+          placeholder="Choose a state..."
+        />
       </div>
     </div>
   </section>

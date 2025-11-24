@@ -28,12 +28,13 @@ const props = withDefaults(defineProps<VueComboboxProps>(), {
   defaultValue: undefined,
   placeholder: "",
   label: "",
+  labelPosition: "top",
   labelHidden: false,
   noLabel: false,
   ariaLabel: null,
   labelledBy: "",
   helpText: "",
-  errorText: "",
+  errorMessage: "",
   autocomplete: "list",
   filterMode: "startsWith",
   clearable: false,
@@ -125,6 +126,7 @@ defineExpose({
   <ag-combobox
     ref="comboboxRef"
     .labelHidden="labelHidden"
+    .labelPosition="labelPosition"
     .noLabel="noLabel"
     .disabled="disabled"
     .invalid="invalid"
@@ -143,7 +145,7 @@ defineExpose({
     :ariaLabel="ariaLabel"
     :labelledBy="labelledBy"
     :helpText="helpText"
-    :errorText="errorText"
+    :errorMessage="errorMessage"
     :autocomplete="autocomplete"
     :filterMode="filterMode"
     :size="size"
