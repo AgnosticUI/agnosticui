@@ -611,6 +611,18 @@
     "./message-bubble/vue": {
       "types": "./dist/components/MessageBubble/vue/index.d.ts",
       "import": "./dist/components/MessageBubble/vue/index.js"
+    },
+    "./visually-hidden": {
+      "types": "./dist/components/VisuallyHidden/core/VisuallyHidden.d.ts",
+      "import": "./dist/components/VisuallyHidden/core/VisuallyHidden.js"
+    },
+    "./visually-hidden/react": {
+      "types": "./dist/components/VisuallyHidden/react/ReactVisuallyHidden.d.ts",
+      "import": "./dist/components/VisuallyHidden/react/ReactVisuallyHidden.js"
+    },
+    "./visually-hidden/vue": {
+      "types": "./dist/components/VisuallyHidden/vue/index.d.ts",
+      "import": "./dist/components/VisuallyHidden/vue/index.js"
     }
   },
   "scripts": {
