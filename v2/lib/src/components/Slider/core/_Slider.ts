@@ -1216,128 +1216,174 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
     const minLabel = this.label ? `${this.label} - Minimum value` : 'Minimum value';
     const maxLabel = this.label ? `${this.label} - Maximum value` : 'Maximum value';
 
+    // Helper text rendering
+    const helperText = this.helpText && !this.invalid
+      ? html`<div class="ag-form-control-help-text" id="${this._helperId}">
+          ${this.helpText}
+        </div>`
+      : '';
+
+    // Error message rendering
+    const errorText = this.invalid && this.errorMessage
+      ? html`<div class="ag-form-control-error-message" id="${this._errorId}">
+          ${this.errorMessage}
+        </div>`
+      : '';
+
+    // Slider control rendering
+    const sliderControl = html`
+      <div
+        class="ag-slider__container"
+        part="ag-slider-container"
+        role=${ifDefined(this.dual ? 'group' : undefined)}
+        aria-label=${ifDefined(this.dual ? this.label || this.ariaLabel : undefined)}
+      >
+        <!-- Hidden accessible inputs -->
+        ${this.dual ? html`
+          <input
+            id="minInput"
+            class="ag-slider__input"
+            type="range"
+            min="${this.min}"
+            max="${this.max}"
+            step="${ifDefined(this.step || undefined)}"
+            .value="${values[0].toString()}"
+            ?disabled="${this.disabled}"
+            ?readonly="${this.readonly}"
+            aria-valuemin="${this.min}"
+            aria-valuemax="${values[1]}"
+            aria-valuenow="${values[0]}"
+            aria-label="${ifDefined(this.dual ? minLabel : this.ariaLabel || undefined)}"
+            aria-describedby="${ifDefined(describedBy)}"
+            @input=${(e: Event) => this._handleInput(e, 'min')}
+            @change=${(e: Event) => this._handleChange(e, 'min')}
+            @focus=${(e: FocusEvent) => this._handleFocus(e, 'min')}
+            @blur=${(e: FocusEvent) => this._handleBlur(e, 'min')}
+          />
+          <input
+            id="maxInput"
+            class="ag-slider__input"
+            type="range"
+            min="${this.min}"
+            max="${this.max}"
+            step="${ifDefined(this.step || undefined)}"
+            .value="${values[1].toString()}"
+            ?disabled="${this.disabled}"
+            ?readonly="${this.readonly}"
+            aria-valuemin="${values[0]}"
+            aria-valuemax="${this.max}"
+            aria-valuenow="${values[1]}"
+            aria-label="${ifDefined(this.dual ? maxLabel : undefined)}"
+            aria-describedby="${ifDefined(describedBy)}"
+            @input=${(e: Event) => this._handleInput(e, 'max')}
+            @change=${(e: Event) => this._handleChange(e, 'max')}
+            @focus=${(e: FocusEvent) => this._handleFocus(e, 'max')}
+            @blur=${(e: FocusEvent) => this._handleBlur(e, 'max')}
+          />
+        ` : html`
+          <input
+            id="${this._sliderId}"
+            class="ag-slider__input"
+            type="range"
+            min="${this.min}"
+            max="${this.max}"
+            step="${ifDefined(this.step || undefined)}"
+            .value="${values[1].toString()}"
+            ?disabled="${this.disabled}"
+            ?readonly="${this.readonly}"
+            aria-valuemin="${this.min}"
+            aria-valuemax="${this.max}"
+            aria-valuenow="${values[1]}"
+            aria-label="${ifDefined(this.ariaLabel || undefined)}"
+            aria-describedby="${ifDefined(describedBy)}"
+            @input=${(e: Event) => this._handleInput(e, 'max')}
+            @change=${(e: Event) => this._handleChange(e, 'max')}
+            @focus=${(e: FocusEvent) => this._handleFocus(e, 'max')}
+            @blur=${(e: FocusEvent) => this._handleBlur(e, 'max')}
+          />
+        `}
+
+        <!-- Visual track -->
+        <div
+          class="ag-slider__track"
+          part="ag-slider-track"
+          @click=${this._handleTrackClick}
+        >
+          ${this._renderProgress()}
+          ${this._renderTicks()}
+
+          <!-- Thumbs -->
+          ${this.dual
+            ? html`
+                ${this._renderThumb(values[0], 'min')}
+                ${this._renderThumb(values[1], 'max')}
+              `
+            : this._renderThumb(values[1], 'single')
+          }
+        </div>
+      </div>
+    `;
+
+    // Check if label should be in horizontal layout
+    const isHorizontal = isHorizontalLabel(this.labelPosition);
+
+    // Horizontal layout (start/end positions)
+    if (isHorizontal) {
+      return html`
+        <div class="ag-slider" part="ag-slider-wrapper">
+          <!-- Live region for screen reader announcements -->
+          <div
+            class="ag-slider__live-region"
+            aria-live="polite"
+            aria-atomic="true"
+            part="ag-slider-live-region"
+          ></div>
+
+          <div class="ag-form-control--horizontal">
+            ${this.renderLabel()}
+            ${sliderControl}
+          </div>
+          ${helperText}
+          ${errorText}
+        </div>
+      `;
+    }
+
+    // Bottom position layout
+    if (this.labelPosition === 'bottom') {
+      return html`
+        <div class="ag-slider" part="ag-slider-wrapper">
+          <!-- Live region for screen reader announcements -->
+          <div
+            class="ag-slider__live-region"
+            aria-live="polite"
+            aria-atomic="true"
+            part="ag-slider-live-region"
+          ></div>
+
+          ${sliderControl}
+          ${helperText}
+          ${errorText}
+          ${this.renderLabel()}
+        </div>
+      `;
+    }
+
+    // Top position layout (default)
     return html`
       <div class="ag-slider" part="ag-slider-wrapper">
         <!-- Live region for screen reader announcements -->
-        <div 
-          class="ag-slider__live-region" 
-          aria-live="polite" 
+        <div
+          class="ag-slider__live-region"
+          aria-live="polite"
           aria-atomic="true"
           part="ag-slider-live-region"
         ></div>
 
-        ${!this.noLabel && !this.dual ? html`
-          <label
-            for="${this._sliderId}"
-            part="ag-slider-label"
-            class="ag-slider__label ${this.labelHidden ? 'ag-slider__label--hidden' : ''}"
-          >
-            ${this.label}
-          </label>
-        ` : ''}
-
-        ${this.helpText ? html`
-          <div class="ag-form-control-help-text" id="${this._helperId}">
-            ${this.helpText}
-          </div>
-        ` : ''}
-
-        ${this.errorMessage ? html`
-          <div class="ag-form-control-error-message" id="${this._errorId}">
-            ${this.errorMessage}
-          </div>
-        ` : ''}
-
-        <div 
-          class="ag-slider__container" 
-          part="ag-slider-container"
-          role=${ifDefined(this.dual ? 'group' : undefined)}
-          aria-label=${ifDefined(this.dual ? this.label || this.ariaLabel : undefined)}
-        >
-          <!-- Hidden accessible inputs -->
-          ${this.dual ? html`
-            <input
-              id="minInput"
-              class="ag-slider__input"
-              type="range"
-              min="${this.min}"
-              max="${this.max}"
-              step="${ifDefined(this.step || undefined)}"
-              .value="${values[0].toString()}"
-              ?disabled="${this.disabled}"
-              ?readonly="${this.readonly}"
-              aria-valuemin="${this.min}"
-              aria-valuemax="${values[1]}"
-              aria-valuenow="${values[0]}"
-              aria-label="${ifDefined(this.dual ? minLabel : this.ariaLabel || undefined)}"
-              aria-describedby="${ifDefined(describedBy)}"
-              @input=${(e: Event) => this._handleInput(e, 'min')}
-              @change=${(e: Event) => this._handleChange(e, 'min')}
-              @focus=${(e: FocusEvent) => this._handleFocus(e, 'min')}
-              @blur=${(e: FocusEvent) => this._handleBlur(e, 'min')}
-            />
-            <input
-              id="maxInput"
-              class="ag-slider__input"
-              type="range"
-              min="${this.min}"
-              max="${this.max}"
-              step="${ifDefined(this.step || undefined)}"
-              .value="${values[1].toString()}"
-              ?disabled="${this.disabled}"
-              ?readonly="${this.readonly}"
-              aria-valuemin="${values[0]}"
-              aria-valuemax="${this.max}"
-              aria-valuenow="${values[1]}"
-              aria-label="${ifDefined(this.dual ? maxLabel : undefined)}"
-              aria-describedby="${ifDefined(describedBy)}"
-              @input=${(e: Event) => this._handleInput(e, 'max')}
-              @change=${(e: Event) => this._handleChange(e, 'max')}
-              @focus=${(e: FocusEvent) => this._handleFocus(e, 'max')}
-              @blur=${(e: FocusEvent) => this._handleBlur(e, 'max')}
-            />
-          ` : html`
-            <input
-              id="${this._sliderId}"
-              class="ag-slider__input"
-              type="range"
-              min="${this.min}"
-              max="${this.max}"
-              step="${ifDefined(this.step || undefined)}"
-              .value="${values[1].toString()}"
-              ?disabled="${this.disabled}"
-              ?readonly="${this.readonly}"
-              aria-valuemin="${this.min}"
-              aria-valuemax="${this.max}"
-              aria-valuenow="${values[1]}"
-              aria-label="${ifDefined(this.ariaLabel || undefined)}"
-              aria-describedby="${ifDefined(describedBy)}"
-              @input=${(e: Event) => this._handleInput(e, 'max')}
-              @change=${(e: Event) => this._handleChange(e, 'max')}
-              @focus=${(e: FocusEvent) => this._handleFocus(e, 'max')}
-              @blur=${(e: FocusEvent) => this._handleBlur(e, 'max')}
-            />
-          `}
-
-          <!-- Visual track -->
-          <div 
-            class="ag-slider__track" 
-            part="ag-slider-track"
-            @click=${this._handleTrackClick}
-          >
-            ${this._renderProgress()}
-            ${this._renderTicks()}
-            
-            <!-- Thumbs -->
-            ${this.dual 
-              ? html`
-                  ${this._renderThumb(values[0], 'min')}
-                  ${this._renderThumb(values[1], 'max')}
-                `
-              : this._renderThumb(values[1], 'single')
-            }
-          </div>
-        </div>
+        ${this.renderLabel()}
+        ${sliderControl}
+        ${helperText}
+        ${errorText}
       </div>
     `;
   }
