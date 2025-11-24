@@ -347,13 +347,13 @@ export class Select extends LitElement implements SelectProps {
     `;
 
     const helperText = this.helpText && !this.invalid
-      ? html`<div id=${ids.helperId} class="ag-form-control-help-text">
+      ? html`<div id=${ids.helperId} class="ag-form-control__helper">
           ${this.helpText}
         </div>`
       : '';
 
     const errorText = this.invalid && this.errorMessage
-      ? html`<div id=${ids.errorId} class="ag-form-control-error-message">
+      ? html`<div id=${ids.errorId} class="ag-form-control__error">
           ${this.errorMessage}
         </div>`
       : '';

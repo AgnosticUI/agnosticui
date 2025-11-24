@@ -465,14 +465,14 @@ export class AgToggle extends LitElement implements ToggleProps {
 
     // Helper text rendering
     const helperText = this.helpText && !this.invalid
-      ? html`<div class="ag-form-control-help-text" id="${this._helperId}">
+      ? html`<div class="ag-form-control__helper" id="${this._helperId}">
           ${this.helpText}
         </div>`
       : '';
 
     // Error message rendering
     const errorText = this.invalid && this.errorMessage
-      ? html`<div class="ag-form-control-error-message" id="${this._errorId}">
+      ? html`<div class="ag-form-control__error" id="${this._errorId}">
           ${this.errorMessage}
         </div>`
       : '';

@@ -855,7 +855,7 @@ describe('AgCombobox - Phase 1 MVP', () => {
       element.helpText = 'Choose your state';
       await element.updateComplete;
 
-      const helpText = element.shadowRoot?.querySelector('.ag-form-control-help-text');
+      const helpText = element.shadowRoot?.querySelector('.ag-form-control__helper');
       expect(helpText).toBeTruthy();
       expect(helpText?.textContent?.trim()).toBe('Choose your state');
     });
@@ -865,7 +865,7 @@ describe('AgCombobox - Phase 1 MVP', () => {
       element.invalid = true;
       await element.updateComplete;
 
-      const errorText = element.shadowRoot?.querySelector('.ag-form-control-error-message');
+      const errorText = element.shadowRoot?.querySelector('.ag-form-control__error');
       expect(errorText).toBeTruthy();
       expect(errorText?.textContent?.trim()).toBe('State is required');
     });
@@ -885,7 +885,7 @@ describe('AgCombobox - Phase 1 MVP', () => {
       await element.updateComplete;
 
       const input = element.shadowRoot?.querySelector('input') as HTMLInputElement;
-      const errorText = element.shadowRoot?.querySelector('.ag-form-control-error-message');
+      const errorText = element.shadowRoot?.querySelector('.ag-form-control__error');
 
       const describedBy = input.getAttribute('aria-describedby');
       expect(describedBy).toContain(errorText?.getAttribute('id'));

@@ -1488,13 +1488,13 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     `;
 
     const helperText = this.helpText && !this.invalid
-      ? html`<div id=${this._helpTextId} class="ag-form-control-help-text">
+      ? html`<div id=${this._helpTextId} class="ag-form-control__helper">
           ${this.helpText}
         </div>`
       : '';
 
     const errorText = this.invalid && this.errorMessage
-      ? html`<div id=${this._errorTextId} class="ag-form-control-error-message">
+      ? html`<div id=${this._errorTextId} class="ag-form-control__error">
           ${this.errorMessage}
         </div>`
       : '';

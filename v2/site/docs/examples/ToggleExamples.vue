@@ -104,14 +104,6 @@
         <p style="margin-top: 0.5rem">
           Dark mode: <strong>{{ darkModeEnabled ? 'On' : 'Off' }}</strong>
         </p>
-        <VueButton
-          @click="darkModeEnabled = !darkModeEnabled"
-          mode="primary"
-          size="small"
-          style="margin-top: 0.5rem;"
-        >
-          Toggle programmatically
-        </VueButton>
       </div>
 
       <!-- Pattern 3: Form integration with event detail -->
@@ -128,6 +120,15 @@
         </p>
       </div>
     </div>
+    <div class="mbe4 flex justify-center">
+      <VueButton
+        @click="darkModeEnabled = !darkModeEnabled"
+        mode="primary"
+        size="small"
+      >
+        Toggle above programmatically
+      </VueButton>
+    </div>
 
     <div class="mbe4">
       <h3>Labels, Helper Text, and Validation</h3>
@@ -135,11 +136,12 @@
         The Toggle component supports labels, helper text, required fields, and validation states.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 600px;">
+    <div
+      class="mbe4"
+      style="max-width: 600px;"
+    >
       <div class="mbe3">
-        <VueToggle
-          label="Enable notifications"
-        />
+        <VueToggle label="Enable notifications" />
       </div>
 
       <div class="mbe3">
@@ -173,7 +175,10 @@
         Control label position with <code>label-position</code>: 'top' (default), 'start', 'end', or 'bottom'.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 600px;">
+    <div
+      class="mbe4"
+      style="max-width: 600px;"
+    >
       <div class="mbe3">
         <VueToggle
           label="Top Label (Default)"
