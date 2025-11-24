@@ -16,7 +16,6 @@
 
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state, query } from 'lit/decorators.js';
-import { generateUniqueId } from '../../../utils/unique-id';
 import {
   createFormControlIds,
   buildAriaDescribedBy,
