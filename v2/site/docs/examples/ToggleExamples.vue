@@ -104,12 +104,14 @@
         <p style="margin-top: 0.5rem">
           Dark mode: <strong>{{ darkModeEnabled ? 'On' : 'Off' }}</strong>
         </p>
-        <button
+        <VueButton
           @click="darkModeEnabled = !darkModeEnabled"
-          style="margin-top: 0.5rem; padding: 0.25rem 0.75rem; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-sm); cursor: pointer;"
+          mode="primary"
+          size="small"
+          style="margin-top: 0.5rem;"
         >
           Toggle programmatically
-        </button>
+        </VueButton>
       </div>
 
       <!-- Pattern 3: Form integration with event detail -->
@@ -128,9 +130,9 @@
     </div>
 
     <div class="mbe4">
-      <h3>External Label Support</h3>
+      <h3>Labels, Helper Text, and Validation</h3>
       <p class="mbs2 mbe3">
-        The Toggle component supports external labels with helper text, required fields, and validation states.
+        The Toggle component supports labels, helper text, required fields, and validation states.
       </p>
     </div>
     <div class="mbe4" style="max-width: 600px;">
@@ -218,10 +220,11 @@
 
 <script>
 import VueToggle from "agnosticui-core/toggle/vue";
+import VueButton from "agnosticui-core/button/vue";
 
 export default {
   name: "ToggleExamples",
-  components: { VueToggle },
+  components: { VueToggle, VueButton },
   data() {
     return {
       notificationsEnabled: false,
