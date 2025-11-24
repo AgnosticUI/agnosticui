@@ -4,12 +4,19 @@
     .checked="checked"
     .indeterminate="indeterminate"
     .disabled="disabled"
+    .required="required"
+    .invalid="invalid"
     :name="name"
     :value="value"
     :size="size"
     :theme="theme"
     :labelText="labelText"
     :labelPosition="labelPosition"
+    :label="label"
+    :labelHidden="labelHidden"
+    :noLabel="noLabel"
+    :errorMessage="errorMessage"
+    :helpText="helpText"
     @click="handleClick"
     @change="handleChange"
     v-bind="$attrs"
@@ -44,6 +51,13 @@ withDefaults(defineProps<VueCheckboxProps>(), {
   theme: "default",
   labelText: "",
   labelPosition: "end",
+  label: "",
+  labelHidden: false,
+  noLabel: false,
+  required: false,
+  invalid: false,
+  errorMessage: "",
+  helpText: "",
 });
 
 // Define emits for all events (native + custom)
