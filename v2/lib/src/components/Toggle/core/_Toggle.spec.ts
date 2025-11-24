@@ -110,7 +110,7 @@ describe('AgToggle', () => {
       await element.updateComplete;
 
       const button = element.shadowRoot!.querySelector('button');
-      const helpText = element.shadowRoot!.querySelector('.ag-form-control-help-text');
+      const helpText = element.shadowRoot!.querySelector('.ag-form-control__helper');
 
       expect(helpText).toBeTruthy();
       expect(helpText!.textContent?.trim()).toBe('This toggle controls the feature');
@@ -124,7 +124,7 @@ describe('AgToggle', () => {
       await element.updateComplete;
 
       const button = element.shadowRoot!.querySelector('button');
-      const errorText = element.shadowRoot!.querySelector('.ag-form-control-error-message');
+      const errorText = element.shadowRoot!.querySelector('.ag-form-control__error');
 
       expect(errorText).toBeTruthy();
       expect(errorText!.textContent?.trim()).toBe('This field is required');
@@ -175,7 +175,7 @@ describe('AgToggle', () => {
       await element.updateComplete;
 
       const button = element.shadowRoot!.querySelector('button');
-      const helpText = element.shadowRoot!.querySelector('.ag-form-control-help-text');
+      const helpText = element.shadowRoot!.querySelector('.ag-form-control__helper');
 
       expect(button!.getAttribute('aria-describedby')).toBeTruthy();
       expect(helpText).toBeTruthy();
