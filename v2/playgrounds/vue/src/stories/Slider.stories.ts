@@ -7,6 +7,11 @@ const meta = {
   component: VueSlider,
   argTypes: {
     label: { control: 'text', description: 'Label text' },
+    labelPosition: {
+      control: 'select',
+      options: ['top', 'start', 'end', 'bottom'],
+      description: 'Label position',
+    },
     labelHidden: { control: 'boolean', description: 'Hide label visually' },
     noLabel: { control: 'boolean', description: 'Remove label completely' },
     ariaLabel: { control: 'text', description: 'ARIA label' },
@@ -26,6 +31,7 @@ const meta = {
     },
     disabled: { control: 'boolean', description: 'Disabled state' },
     readonly: { control: 'boolean', description: 'Readonly state' },
+    required: { control: 'boolean', description: 'Required field' },
     invalid: { control: 'boolean', description: 'Invalid state' },
     errorMessage: { control: 'text', description: 'Error message text' },
     helpText: { control: 'text', description: 'Help text' },
@@ -36,6 +42,7 @@ const meta = {
   },
   args: {
     label: 'Slider Label',
+    labelPosition: 'top',
     labelHidden: false,
     noLabel: false,
     ariaLabel: '',
@@ -51,6 +58,7 @@ const meta = {
     size: 'default',
     disabled: false,
     readonly: false,
+    required: false,
     invalid: false,
     errorMessage: '',
     helpText: '',
