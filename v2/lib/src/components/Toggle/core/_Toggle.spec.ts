@@ -92,30 +92,43 @@ describe('AgToggle', () => {
       document.body.removeChild(testElement);
     });
 
-    it('should use provided label as aria-label', async () => {
+    it('should render label element and associate with toggle', async () => {
       element.label = 'Enable dark mode';
       await element.updateComplete;
 
+      const label = element.shadowRoot!.querySelector('label');
       const button = element.shadowRoot!.querySelector('button');
-      expect(button!.getAttribute('aria-label')).toBe('Enable dark mode');
+
+      expect(label).toBeTruthy();
+      expect(label!.textContent?.trim()).toBe('Enable dark mode');
+      expect(button!.getAttribute('aria-labelledby')).toBeTruthy();
     });
 
-    it('should support labelledBy for external labeling', async () => {
-      element.labelledBy = 'external-label';
-      await element.updateComplete;
-
-      const button = element.shadowRoot!.querySelector('button');
-      expect(button!.getAttribute('aria-labelledby')).toBe('external-label');
-      expect(button!.hasAttribute('aria-label')).toBe(false);
-    });
-
-    it('should support describedBy for additional description', async () => {
+    it('should support helpText with aria-describedby', async () => {
       element.label = 'Test toggle';
-      element.describedBy = 'toggle-description';
+      element.helpText = 'This toggle controls the feature';
       await element.updateComplete;
 
       const button = element.shadowRoot!.querySelector('button');
-      expect(button!.getAttribute('aria-describedby')).toBe('toggle-description');
+      const helpText = element.shadowRoot!.querySelector('.ag-form-control-help-text');
+
+      expect(helpText).toBeTruthy();
+      expect(helpText!.textContent?.trim()).toBe('This toggle controls the feature');
+      expect(button!.getAttribute('aria-describedby')).toBeTruthy();
+    });
+
+    it('should support errorMessage with aria-describedby when invalid', async () => {
+      element.label = 'Test toggle';
+      element.invalid = true;
+      element.errorMessage = 'This field is required';
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      const errorText = element.shadowRoot!.querySelector('.ag-form-control-error-message');
+
+      expect(errorText).toBeTruthy();
+      expect(errorText!.textContent?.trim()).toBe('This field is required');
+      expect(button!.getAttribute('aria-describedby')).toBeTruthy();
     });
   });
 
@@ -135,31 +148,37 @@ describe('AgToggle', () => {
       expect(button!.getAttribute('aria-checked')).toBe('true');
     });
 
-    it('should provide proper accessible name via aria-label', async () => {
+    it('should provide proper accessible name via aria-labelledby', async () => {
       element.label = 'Enable dark mode';
       await element.updateComplete;
 
       const button = element.shadowRoot!.querySelector('button');
-      expect(button!.getAttribute('aria-label')).toBe('Enable dark mode');
-      expect(button!.hasAttribute('aria-labelledby')).toBe(false);
+      const label = element.shadowRoot!.querySelector('label');
+
+      expect(button!.hasAttribute('aria-labelledby')).toBe(true);
+      expect(label).toBeTruthy();
+      expect(label!.textContent?.trim()).toBe('Enable dark mode');
     });
 
-    it('should use aria-labelledby when labelledBy is provided', async () => {
-      element.labelledBy = 'toggle-label-id';
-      await element.updateComplete;
-
-      const button = element.shadowRoot!.querySelector('button');
-      expect(button!.getAttribute('aria-labelledby')).toBe('toggle-label-id');
-      expect(button!.hasAttribute('aria-label')).toBe(false);
-    });
-
-    it('should support aria-describedby for additional description', async () => {
+    it('should support labelPosition prop', async () => {
       element.label = 'Test toggle';
-      element.describedBy = 'toggle-description-id';
+      element.labelPosition = 'start';
+      await element.updateComplete;
+
+      const wrapper = element.shadowRoot!.querySelector('.ag-form-control--horizontal');
+      expect(wrapper).toBeTruthy();
+    });
+
+    it('should support aria-describedby with helpText', async () => {
+      element.label = 'Test toggle';
+      element.helpText = 'Additional information';
       await element.updateComplete;
 
       const button = element.shadowRoot!.querySelector('button');
-      expect(button!.getAttribute('aria-describedby')).toBe('toggle-description-id');
+      const helpText = element.shadowRoot!.querySelector('.ag-form-control-help-text');
+
+      expect(button!.getAttribute('aria-describedby')).toBeTruthy();
+      expect(helpText).toBeTruthy();
     });
 
     it('should have correct tabindex for keyboard navigation', async () => {

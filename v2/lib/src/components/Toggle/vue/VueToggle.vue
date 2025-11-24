@@ -2,13 +2,18 @@
   <ag-toggle
     ref="toggleRef"
     :label="label"
+    .labelPosition="labelPosition"
+    .labelHidden="labelHidden"
+    .noLabel="noLabel"
     :size="size"
     :variant="variant"
     .checked="checked"
     .disabled="disabled"
     .readonly="readonly"
-    :labelledBy="labelledBy"
-    :describedBy="describedBy"
+    .required="required"
+    .invalid="invalid"
+    :errorMessage="errorMessage"
+    :helpText="helpText"
     :name="name"
     :value="value"
     @click="handleClick"
@@ -33,10 +38,17 @@ export interface VueToggleProps
 // Define props with defaults
 const props = withDefaults(defineProps<VueToggleProps>(), {
   checked: false,
+  labelPosition: "top",
+  labelHidden: false,
+  noLabel: false,
   size: "md",
   variant: "default",
   disabled: false,
   readonly: false,
+  required: false,
+  invalid: false,
+  errorMessage: "",
+  helpText: "",
 });
 
 // Define emits for all events (native + custom)

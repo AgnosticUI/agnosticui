@@ -27,6 +27,13 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import {
+  createFormControlIds,
+  buildAriaDescribedBy,
+  isHorizontalLabel,
+  type LabelPosition,
+} from '../../../shared/form-control-utils';
+import { formControlStyles } from '../../../shared/form-control-styles';
 
 // Event types
 export interface ToggleChangeEventDetail {
@@ -39,13 +46,18 @@ export type ToggleChangeEvent = CustomEvent<ToggleChangeEventDetail>;
 
 export interface ToggleProps {
   label?: string;
+  labelPosition?: LabelPosition;
+  labelHidden?: boolean;
+  noLabel?: boolean;
   checked?: boolean;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'default' | 'success' | 'warning' | 'danger' | 'monochrome';
   disabled?: boolean;
   readonly?: boolean;
-  labelledBy?: string;
-  describedBy?: string;
+  required?: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  helpText?: string;
   name?: string;
   value?: string;
   // Event callbacks
@@ -69,12 +81,13 @@ export interface ToggleProps {
  * - Form integration support
  */
 export class AgToggle extends LitElement implements ToggleProps {
-  static styles = css`
+  static styles = [
+    formControlStyles,
+    css`
     /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
-      /* Inline-flex for integration with other form elements */
-      display: inline-flex;
-      align-items: center;
+      /* Block for label positioning support */
+      display: block;
     }
 
     button {
@@ -225,14 +238,38 @@ export class AgToggle extends LitElement implements ToggleProps {
       white-space: nowrap !important;
       border: 0 !important;
     }
-  `;
+  `,
+  ];
+
+  // Form control IDs
+  private _toggleId: string = '';
+  private _labelId: string = '';
+  private _helperId: string = '';
+  private _errorId: string = '';
 
   /**
-   * Required accessible name for the toggle
-   * This is critical for screen reader users
+   * Label text for the toggle
    */
   @property({ type: String })
   declare label: string;
+
+  /**
+   * Position of the label relative to the toggle
+   */
+  @property({ type: String, attribute: 'label-position' })
+  labelPosition: LabelPosition = 'top';
+
+  /**
+   * Visually hide the label (still accessible to screen readers)
+   */
+  @property({ type: Boolean, attribute: 'label-hidden' })
+  declare labelHidden: boolean;
+
+  /**
+   * Remove label completely
+   */
+  @property({ type: Boolean, attribute: 'no-label' })
+  declare noLabel: boolean;
 
   /**
    * Current checked state of the toggle
@@ -265,16 +302,28 @@ export class AgToggle extends LitElement implements ToggleProps {
   declare readonly: boolean;
 
   /**
-   * External element ID that labels this toggle
+   * Required field indicator
    */
-  @property({ type: String })
-  declare labelledBy: string;
+  @property({ type: Boolean, reflect: true })
+  declare required: boolean;
 
   /**
-   * External element ID that describes this toggle
+   * Invalid state for validation feedback
    */
-  @property({ type: String })
-  declare describedBy: string;
+  @property({ type: Boolean, reflect: true })
+  declare invalid: boolean;
+
+  /**
+   * Error message text displayed when invalid
+   */
+  @property({ type: String, attribute: 'error-message' })
+  declare errorMessage: string;
+
+  /**
+   * Helper text displayed below toggle
+   */
+  @property({ type: String, attribute: 'help-text' })
+  declare helpText: string;
 
   /**
    * Form integration - name attribute
@@ -303,25 +352,61 @@ export class AgToggle extends LitElement implements ToggleProps {
   constructor() {
     super();
 
+    // Initialize form control IDs
+    const ids = createFormControlIds('toggle');
+    this._toggleId = ids.inputId;
+    this._labelId = ids.labelId;
+    this._helperId = ids.helperId;
+    this._errorId = ids.errorId;
+
     // Default values
     this.label = '';
+    this.labelHidden = false;
+    this.noLabel = false;
     this.checked = false;
     this.size = 'md';
     this.variant = 'default';
     this.disabled = false;
     this.readonly = false;
-    this.labelledBy = '';
-    this.describedBy = '';
+    this.required = false;
+    this.invalid = false;
+    this.errorMessage = '';
+    this.helpText = '';
     this.name = '';
     this.value = '';
   }
 
   protected firstUpdated() {
     // Developer experience: warn about missing label
-    if (!this.label && !this.labelledBy) {
+    if (!this.label && !this.noLabel) {
       // eslint-disable-next-line no-console
-      console.warn('AgToggle: label property is required for accessibility. Use either "label" or "labelledBy" prop.');
+      console.warn('AgToggle: label property is required for accessibility.');
     }
+  }
+
+  private renderLabel() {
+    if (!this.label || this.noLabel) return '';
+
+    const positionClasses: string[] = [];
+    if (isHorizontalLabel(this.labelPosition)) {
+      positionClasses.push('ag-form-control__label--horizontal');
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    } else if (this.labelPosition === 'bottom') {
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    }
+
+    return html`
+      <label
+        id=${this._labelId}
+        for=${this._toggleId}
+        class="ag-form-control__label ${this.labelHidden
+          ? 'ag-form-control__label--hidden'
+          : ''} ${this.required ? 'ag-form-control__label--required' : ''} ${positionClasses.join(' ')}"
+        part="ag-toggle-label"
+      >
+        ${this.label}
+      </label>
+    `;
   }
 
   private _handleClick = (event: MouseEvent) => {
@@ -370,13 +455,36 @@ export class AgToggle extends LitElement implements ToggleProps {
   };
 
   render() {
-    return html`
+    // Build aria-describedby
+    const describedBy = buildAriaDescribedBy({
+      helperId: this._helperId,
+      errorId: this._errorId,
+      hasHelper: !!this.helpText && !this.invalid,
+      hasError: !!this.invalid && !!this.errorMessage,
+    });
+
+    // Helper text rendering
+    const helperText = this.helpText && !this.invalid
+      ? html`<div class="ag-form-control-help-text" id="${this._helperId}">
+          ${this.helpText}
+        </div>`
+      : '';
+
+    // Error message rendering
+    const errorText = this.invalid && this.errorMessage
+      ? html`<div class="ag-form-control-error-message" id="${this._errorId}">
+          ${this.errorMessage}
+        </div>`
+      : '';
+
+    // Toggle button rendering
+    const toggleButton = html`
       <button
+        id="${this._toggleId}"
         role="switch"
         aria-checked="${this.checked}"
-        aria-label="${ifDefined(this.labelledBy ? undefined : this.label)}"
-        aria-labelledby="${ifDefined(this.labelledBy || undefined)}"
-        aria-describedby="${ifDefined(this.describedBy || undefined)}"
+        aria-labelledby="${ifDefined(this.label && !this.noLabel ? this._labelId : undefined)}"
+        aria-describedby="${ifDefined(describedBy)}"
         ?disabled="${this.disabled}"
         class="ag-toggle ag-toggle--${this.size} ag-toggle--${this.variant}"
         part="ag-toggle-button"
@@ -392,6 +500,39 @@ export class AgToggle extends LitElement implements ToggleProps {
           ${this.checked ? 'On' : 'Off'}
         </span>
       </button>
+    `;
+
+    // Check if label should be in horizontal layout
+    const isHorizontal = isHorizontalLabel(this.labelPosition);
+
+    // Horizontal layout (start/end positions)
+    if (isHorizontal) {
+      return html`
+        <div class="ag-form-control--horizontal">
+          ${this.renderLabel()}
+          ${toggleButton}
+        </div>
+        ${helperText}
+        ${errorText}
+      `;
+    }
+
+    // Bottom position layout
+    if (this.labelPosition === 'bottom') {
+      return html`
+        ${toggleButton}
+        ${helperText}
+        ${errorText}
+        ${this.renderLabel()}
+      `;
+    }
+
+    // Top position layout (default)
+    return html`
+      ${this.renderLabel()}
+      ${toggleButton}
+      ${helperText}
+      ${errorText}
     `;
   }
 }
