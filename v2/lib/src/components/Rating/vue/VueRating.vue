@@ -4,10 +4,19 @@
     .value="value"
     .readonly="readonly"
     .allowClear="allowClear"
+    .required="required"
+    .invalid="invalid"
     :max="max"
     :precision="precision"
     :variant="variant"
     :size="size"
+    :name="name"
+    :label="label"
+    :labelPosition="labelPosition"
+    :labelHidden="labelHidden"
+    :noLabel="noLabel"
+    :errorMessage="errorMessage"
+    :helpText="helpText"
     @rating-change="handleChange"
     @rating-hover="handleHover"
     v-bind="$attrs"
@@ -41,6 +50,15 @@ export interface VueRatingProps {
     | "danger"
     | "monochrome";
   size?: "sm" | "md" | "lg";
+  name?: string;
+  label?: string;
+  labelPosition?: "top" | "start" | "end" | "bottom";
+  labelHidden?: boolean;
+  noLabel?: boolean;
+  required?: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  helpText?: string;
 }
 
 const props = withDefaults(defineProps<VueRatingProps>(), {
@@ -51,6 +69,15 @@ const props = withDefaults(defineProps<VueRatingProps>(), {
   allowClear: false,
   variant: "",
   size: "md",
+  name: "",
+  label: "",
+  labelPosition: "top",
+  labelHidden: false,
+  noLabel: false,
+  required: false,
+  invalid: false,
+  errorMessage: "",
+  helpText: "",
 });
 
 const emit = defineEmits<{
