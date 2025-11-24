@@ -59,7 +59,6 @@ function getComponents() {
       { text: 'Accordion', link: '/components/accordion' },
       { text: 'Alerts', link: '/components/alert' },
       { text: 'Avatar', link: '/components/avatar' },
-      { text: 'BackToTop', link: '/components/back-to-top' },
       { text: 'Badge', link: '/components/badge' },
       { text: 'Breadcrumb', link: '/components/breadcrumb' },
       { text: 'Button', link: '/components/button' },
