@@ -21,6 +21,11 @@ const meta: Meta<SliderProps> = {
       control: "text",
       description: "Label for the slider",
     },
+    labelPosition: {
+      control: "select",
+      options: ["top", "start", "end", "bottom"],
+      description: "Position of the label relative to the slider",
+    },
     labelHidden: {
       control: "boolean",
       description: "Visually hide the label (still accessible to screen readers)",
@@ -78,6 +83,10 @@ const meta: Meta<SliderProps> = {
       control: "boolean",
       description: "Make the slider read-only",
     },
+    required: {
+      control: "boolean",
+      description: "Mark as required field",
+    },
     invalid: {
       control: "boolean",
       description: "Mark as invalid/error state",
@@ -105,6 +114,7 @@ const meta: Meta<SliderProps> = {
   },
   args: {
     label: "Volume",
+    labelPosition: "top",
     labelHidden: false,
     noLabel: false,
     ariaLabel: "",
@@ -119,6 +129,7 @@ const meta: Meta<SliderProps> = {
     size: "default",
     disabled: false,
     readonly: false,
+    required: false,
     invalid: false,
     errorMessage: "",
     helpText: "",
@@ -146,6 +157,7 @@ export const Default: Story = {
   args: {},
   render: ({
     label,
+    labelPosition,
     labelHidden,
     noLabel,
     ariaLabel,
@@ -160,6 +172,7 @@ export const Default: Story = {
     size,
     disabled,
     readonly,
+    required,
     invalid,
     errorMessage,
     helpText,
@@ -173,6 +186,7 @@ export const Default: Story = {
   }) => html`
     <ag-slider
       .label=${label}
+      .labelPosition=${labelPosition}
       .labelHidden=${labelHidden}
       .noLabel=${noLabel}
       .ariaLabel=${ariaLabel}
@@ -187,6 +201,7 @@ export const Default: Story = {
       .size=${size}
       .disabled=${disabled}
       .readonly=${readonly}
+      .required=${required}
       .invalid=${invalid}
       .errorMessage=${errorMessage}
       .helpText=${helpText}
