@@ -1,0 +1,60 @@
+{
+  "fx": {
+    "duration": {
+      "xs": {
+        "value": "{motion.fast.value}",
+        "description": "Extra small FX duration for subtle, quick animations"
+      },
+      "sm": {
+        "value": "{motion.medium-fast.value}",
+        "description": "Small FX duration for fast micro-interactions"
+      },
+      "md": {
+        "value": "{motion.medium.value}",
+        "description": "Medium FX duration for standard animations (default)"
+      },
+      "lg": {
+        "value": "{motion.medium-slow.value}",
+        "description": "Large FX duration for prominent animations"
+      },
+      "xl": {
+        "value": "{motion.slow.value}",
+        "description": "Extra large FX duration for dramatic effects"
+      }
+    },
+    "ease": {
+      "ease": {
+        "value": "ease",
+        "description": "Standard CSS ease timing function"
+      },
+      "ease-in": {
+        "value": "ease-in",
+        "description": "Standard CSS ease-in timing function"
+      },
+      "ease-out": {
+        "value": "ease-out",
+        "description": "Standard CSS ease-out timing function"
+      },
+      "ease-in-out": {
+        "value": "ease-in-out",
+        "description": "Standard CSS ease-in-out timing function"
+      },
+      "bounce": {
+        "value": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        "description": "Bounce easing with overshoot for playful effects"
+      },
+      "spring-sm": {
+        "value": "cubic-bezier(0.5, 1.5, 0.5, 1)",
+        "description": "Small spring easing with subtle bounce"
+      },
+      "spring-md": {
+        "value": "cubic-bezier(0.5, 1.8, 0.5, 1)",
+        "description": "Medium spring easing with moderate bounce"
+      },
+      "spring-lg": {
+        "value": "cubic-bezier(0.5, 2.5, 0.5, 1)",
+        "description": "Large spring easing with dramatic bounce"
+      }
+    }
+  }
+}
