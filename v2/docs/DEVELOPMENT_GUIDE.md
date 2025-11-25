@@ -664,30 +664,59 @@ errorMessage = '';
 
 ### Unit Tests
 
+AgnosticUI v2 uses **Vitest** for unit testing with **jest-axe** for accessibility testing.
+
+**Test Setup Pattern:**
+
 ```typescript
-// Test both addEventListener and callback patterns
-it('dispatches toggle event (addEventListener)', async () => {
-  const el = await fixture<AgToggle>(html`<ag-toggle></ag-toggle>`);
-  const spy = vi.fn();
-  el.addEventListener('toggle', spy);
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { MyComponent } from './MyComponent';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
-  el.click();
-  await el.updateComplete;
+expect.extend(toHaveNoViolations);
 
-  expect(spy).toHaveBeenCalledOnce();
-  expect(spy.mock.calls[0][0].detail).toEqual({ checked: true });
-});
+describe('MyComponent', () => {
+  let container: HTMLElement;
+  let component: MyComponent;
 
-it('invokes onToggle callback (prop pattern)', async () => {
-  const spy = vi.fn();
-  const el = await fixture<AgToggle>(
-    html`<ag-toggle .onToggle=${spy}></ag-toggle>`
-  );
+  beforeEach(() => {
+    container = document.createElement('div');
+    document.body.appendChild(container);
+    component = document.createElement('ag-mycomponent') as MyComponent;
+    container.appendChild(component);
+  });
 
-  el.click();
-  await el.updateComplete;
+  afterEach(() => {
+    container.remove();
+  });
 
-  expect(spy).toHaveBeenCalledOnce();
+  // Test both addEventListener and callback patterns
+  it('dispatches toggle event (addEventListener)', async () => {
+    const spy = vi.fn();
+    component.addEventListener('toggle', spy);
+
+    component.click();
+    await component.updateComplete;
+
+    expect(spy).toHaveBeenCalledOnce();
+    expect(spy.mock.calls[0][0].detail).toEqual({ checked: true });
+  });
+
+  it('invokes onToggle callback (prop pattern)', async () => {
+    const spy = vi.fn();
+    component.onToggle = spy;
+
+    component.click();
+    await component.updateComplete;
+
+    expect(spy).toHaveBeenCalledOnce();
+  });
+
+  it('should have no accessibility violations', async () => {
+    await component.updateComplete;
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
 });
 ```
 
