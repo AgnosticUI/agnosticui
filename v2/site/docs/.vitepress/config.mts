@@ -56,6 +56,7 @@ function getComponents() {
   return {
     text: 'Components',
     items: [
+      { text: 'Accordion', link: '/components/accordion' },
       { text: 'Alerts', link: '/components/alert' },
       { text: 'AspectRatio', link: '/components/aspect-ratio' },
       { text: 'Avatar', link: '/components/avatar' },
@@ -91,6 +92,7 @@ function getComponents() {
       { text: 'ProgressRing', link: '/components/progress-ring' },
       { text: 'Radio', link: '/components/radio' },
       { text: 'Rating', link: '/components/rating' },
+      { text: 'ScrollProgress', link: '/components/scroll-progress' },
       { text: 'ScrollToButton', link: '/components/scroll-to-button' },
       { text: 'Select', link: '/components/select' },
       { text: 'Skeleton Loader', link: '/components/skeleton-loader' },
@@ -104,9 +106,6 @@ function getComponents() {
       { text: 'Toggle', link: '/components/toggle' },
       { text: 'Tooltip', link: '/components/tooltip' },
       { text: 'VisuallyHidden', link: '/components/visually-hidden' },
-{ text: 'Accordion', link: '/components/accordion' },
-
-
     ]
   }
 }

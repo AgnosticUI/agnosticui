@@ -72,4 +72,31 @@ describe('Progress Component', () => {
     expect(label).not.toBeNull();
     expect(progressBar).not.toBeNull();
   });
+
+  it('should default to medium size', async () => {
+    element = document.createElement('ag-progress') as Progress;
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    expect(element.size).toBe('medium');
+    expect(element.getAttribute('size')).toBe('medium');
+  });
+
+  it('should apply small size', async () => {
+    element = document.createElement('ag-progress') as Progress;
+    element.size = 'small';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    expect(element.getAttribute('size')).toBe('small');
+  });
+
+  it('should apply large size', async () => {
+    element = document.createElement('ag-progress') as Progress;
+    element.size = 'large';
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    expect(element.getAttribute('size')).toBe('large');
+  });
 });
