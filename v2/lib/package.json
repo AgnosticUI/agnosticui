@@ -647,6 +647,18 @@
     "./scroll-progress/vue": {
       "types": "./dist/components/ScrollProgress/vue/index.d.ts",
       "import": "./dist/components/ScrollProgress/vue/index.js"
+    },
+    "./button-fx": {
+      "types": "./dist/components/ButtonFx/core/_ButtonFx.d.ts",
+      "import": "./dist/components/ButtonFx/core/_ButtonFx.js"
+    },
+    "./button-fx/react": {
+      "types": "./dist/components/ButtonFx/react/ReactButtonFx.d.ts",
+      "import": "./dist/components/ButtonFx/react/ReactButtonFx.js"
+    },
+    "./button-fx/vue": {
+      "types": "./dist/components/ButtonFx/vue/index.d.ts",
+      "import": "./dist/components/ButtonFx/vue/index.js"
     }
   },
   "scripts": {
