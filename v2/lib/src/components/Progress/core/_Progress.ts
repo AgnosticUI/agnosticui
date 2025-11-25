@@ -16,6 +16,11 @@ export interface ProgressProps {
    * An accessible label for the progress bar. This label is visually hidden but announced by screen readers.
    */
   label?: string;
+  /**
+   * Size of the progress bar
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
 }
 
 /**
@@ -33,6 +38,9 @@ export class Progress extends LitElement implements ProgressProps {
 
   @property({ type: String })
   label = '';
+
+  @property({ type: String, reflect: true })
+  size: 'small' | 'medium' | 'large' = 'medium';
 
   static get styles(): CSSResultGroup {
     return css`
@@ -55,11 +63,23 @@ export class Progress extends LitElement implements ProgressProps {
 
       progress {
         width: 100%;
-        height: var(--ag-space-4);
+        height: var(--ag-progress-height, var(--ag-space-3));
         appearance: none;
         border: none;
         border-radius: var(--ag-radius-lg);
         background-color: var(--ag-background-secondary);
+      }
+
+      :host([size="small"]) progress {
+        --ag-progress-height: var(--ag-space-2);
+      }
+
+      :host([size="medium"]) progress {
+        --ag-progress-height: var(--ag-space-3);
+      }
+
+      :host([size="large"]) progress {
+        --ag-progress-height: var(--ag-space-4);
       }
 
       /* WebKit/Blink browsers (Chrome, Safari, Edge) */

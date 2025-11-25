@@ -60,14 +60,6 @@
       "types": "./dist/components/Input/core/Input.d.ts",
       "import": "./dist/components/Input/core/Input.js"
     },
-    "./label": {
-      "types": "./dist/components/Label/core/Label.d.ts",
-      "import": "./dist/components/Label/core/Label.js"
-    },
-    "./form-control": {
-      "types": "./dist/components/FormControl/core/FormControl.d.ts",
-      "import": "./dist/components/FormControl/core/FormControl.js"
-    },
     "./button/vue": {
       "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
       "import": "./dist/components/Button/vue/VueButton.js"
@@ -643,6 +635,18 @@
     "./visually-hidden/vue": {
       "types": "./dist/components/VisuallyHidden/vue/index.d.ts",
       "import": "./dist/components/VisuallyHidden/vue/index.js"
+    },
+    "./scroll-progress": {
+      "types": "./dist/components/ScrollProgress/core/ScrollProgress.d.ts",
+      "import": "./dist/components/ScrollProgress/core/ScrollProgress.js"
+    },
+    "./scroll-progress/react": {
+      "types": "./dist/components/ScrollProgress/react/ReactScrollProgress.d.ts",
+      "import": "./dist/components/ScrollProgress/react/ReactScrollProgress.js"
+    },
+    "./scroll-progress/vue": {
+      "types": "./dist/components/ScrollProgress/vue/index.d.ts",
+      "import": "./dist/components/ScrollProgress/vue/index.js"
     }
   },
   "scripts": {
