@@ -156,6 +156,18 @@
       "types": "./dist/components/Header/vue/index.d.ts",
       "import": "./dist/components/Header/vue/index.js"
     },
+    "./aspect-ratio": {
+      "types": "./dist/components/AspectRatio/core/AspectRatio.d.ts",
+      "import": "./dist/components/AspectRatio/core/AspectRatio.js"
+    },
+    "./aspect-ratio/react": {
+      "types": "./dist/components/AspectRatio/react/ReactAspectRatio.d.ts",
+      "import": "./dist/components/AspectRatio/react/ReactAspectRatio.js"
+    },
+    "./aspect-ratio/vue": {
+      "types": "./dist/components/AspectRatio/vue/index.d.ts",
+      "import": "./dist/components/AspectRatio/vue/index.js"
+    },
     "./dialog/react": {
       "types": "./dist/components/Dialog/react/ReactDialog.d.ts",
       "import": "./dist/components/Dialog/react/ReactDialog.js"

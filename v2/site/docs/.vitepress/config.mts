@@ -57,6 +57,7 @@ function getComponents() {
     text: 'Components',
     items: [
       { text: 'Alerts', link: '/components/alert' },
+      { text: 'AspectRatio', link: '/components/aspect-ratio' },
       { text: 'Avatar', link: '/components/avatar' },
       { text: 'Badge', link: '/components/badge' },
       { text: 'Breadcrumb', link: '/components/breadcrumb' },
