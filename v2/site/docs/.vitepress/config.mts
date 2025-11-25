@@ -56,13 +56,13 @@ function getComponents() {
   return {
     text: 'Components',
     items: [
-      { text: 'Accordion', link: '/components/accordion' },
       { text: 'Alerts', link: '/components/alert' },
       { text: 'AspectRatio', link: '/components/aspect-ratio' },
       { text: 'Avatar', link: '/components/avatar' },
       { text: 'Badge', link: '/components/badge' },
       { text: 'Breadcrumb', link: '/components/breadcrumb' },
       { text: 'Button', link: '/components/button' },
+      { text: 'ButtonFx', link: '/components/button-fx' },
       { text: 'Card', link: '/components/card' },
       { text: 'Checkbox', link: '/components/checkbox' },
       { text: 'Collapsible', link: '/components/collapsible' },
@@ -106,6 +106,8 @@ function getComponents() {
       { text: 'Toggle', link: '/components/toggle' },
       { text: 'Tooltip', link: '/components/tooltip' },
       { text: 'VisuallyHidden', link: '/components/visually-hidden' },
+{ text: 'Accordion', link: '/components/accordion' },
+
     ]
   }
 }

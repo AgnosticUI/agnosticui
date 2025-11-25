@@ -38,3 +38,4 @@ export * from './components/Mark/core/Mark';
 export * from './components/MessageBubble/core/MessageBubble';
 export * from './components/VisuallyHidden/core/_VisuallyHidden';
 export * from './components/ScrollProgress/core/_ScrollProgress';
+export * from './components/ButtonFx/core/_ButtonFx';
