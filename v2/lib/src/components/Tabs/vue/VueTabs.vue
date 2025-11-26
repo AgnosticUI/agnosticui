@@ -5,7 +5,6 @@
     :activeTab="activeTab"
     :orientation="orientation"
     :ariaLabel="ariaLabel"
-    :ariaLabelledBy="ariaLabelledBy"
     @tab-change="handleTabChange"
     v-bind="$attrs"
   >
@@ -16,15 +15,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import "../core/Tabs"; // Registers the ag-tabs web component
-import type { TabsProps, TabChangeEventDetail } from "../core/Tabs";
+import type { TabChangeEventDetail } from "../core/Tabs";
+import type { VueTabsProps } from "./index";
 
 // Re-export event types
 export type { TabChangeEvent, TabChangeEventDetail } from "../core/Tabs";
-
-// Define props interface, omit callback props for Vue
-export interface VueTabsProps extends Omit<TabsProps, 'onTabChange'> {
-  activeTab?: number;
-}
 
 // Define props with defaults
 const props = withDefaults(defineProps<VueTabsProps>(), {
@@ -36,9 +31,9 @@ const props = withDefaults(defineProps<VueTabsProps>(), {
 // Define emits
 const emit = defineEmits<{
   // Custom event - emit detail payload
-  'tab-change': [detail: TabChangeEventDetail];
+  "tab-change": [detail: TabChangeEventDetail];
   // v-model support
-  'update:activeTab': [value: number];
+  "update:activeTab": [value: number];
 }>();
 
 // Template ref

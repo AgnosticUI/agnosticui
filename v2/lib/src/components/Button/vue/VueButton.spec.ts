@@ -176,8 +176,7 @@ describe('VueButton Wrapper', () => {
     it('should pass ARIA attributes to web component', async () => {
       const wrapper = mount(VueButton, {
         props: {
-          ariaLabel: 'Custom button label',
-          ariaDescribedby: 'help-text'
+          ariaLabel: 'Custom button label'
         },
         slots: {
           default: 'Accessible Button'
@@ -196,10 +195,9 @@ describe('VueButton Wrapper', () => {
       const agButton = wrapper.find('ag-button');
       expect(agButton.exists()).toBe(true);
 
-      // Check the JavaScript properties on the DOM element
+      // Check the JavaScript property on the DOM element
       const agButtonElement = agButton.element as any;
       expect(agButtonElement.ariaLabel).toBe('Custom button label');
-      expect(agButtonElement.ariaDescribedby).toBe('help-text');
     });
   });
 

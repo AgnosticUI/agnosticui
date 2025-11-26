@@ -10,7 +10,6 @@
     .link="link"
     .grouped="grouped"
     .ariaLabel="ariaLabel"
-    .ariaDescribedby="ariaDescribedby"
     :type="type"
     :variant="variant"
     :size="size"
@@ -52,6 +51,7 @@ const props = withDefaults(defineProps<VueButtonProps>(), {
   ghost: false,
   link: false,
   grouped: false,
+  ariaLabel: "",
 });
 
 // Define emits

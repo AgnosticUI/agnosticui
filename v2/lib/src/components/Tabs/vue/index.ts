@@ -4,17 +4,16 @@ export { default as VueTab } from './VueTab.vue';
 export { default as VueTabPanel } from './VueTabPanel.vue';
 
 // Re-export types from core for convenience
-export type { TabChangeEventDetail, TabChangeEvent } from '../core/Tabs';
+export type { TabChangeEventDetail, TabChangeEvent, TabsProps } from '../core/Tabs';
+
+// Import TabsProps to extend it
+import type { TabsProps } from '../core/Tabs';
 
 /**
  * Props for VueTabs component
  */
-export interface VueTabsProps {
+export interface VueTabsProps extends Omit<TabsProps, 'onTabChange'> {
   activeTab?: number;
-  activation?: 'manual' | 'automatic';
-  orientation?: 'horizontal' | 'vertical';
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
 }
 
 /**
@@ -33,3 +32,4 @@ export interface VueTabProps {
 export interface VueTabPanelProps {
   hidden?: boolean;
 }
+

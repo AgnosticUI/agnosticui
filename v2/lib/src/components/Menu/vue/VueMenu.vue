@@ -13,7 +13,6 @@
     :size="size"
     :shape="shape"
     :ariaLabel="ariaLabel"
-    :ariaDescribedby="ariaDescribedby"
     :unicode="unicode"
     :additional-gutter="additionalGutter"
     @click="handleClick"
@@ -35,7 +34,6 @@
       :type="menuType"
       :selected-value="selectedValue"
       :ariaLabel="menuAriaLabel"
-      :ariaLabelledBy="menuAriaLabelledBy"
       @keydown="handleMenuKeyDown"
     >
       <slot name="menu" />
@@ -46,32 +44,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type {
-  MenuButtonProps,
   MenuOpenEventDetail,
   MenuCloseEventDetail,
   MenuSelectEventDetail,
 } from "../core/Menu";
+import type { VueMenuProps } from "./index";
 import "../core/Menu";
-
-export interface VueMenuProps
-  extends Omit<
-    MenuButtonProps,
-    | "onClick"
-    | "onFocus"
-    | "onBlur"
-    | "onKeyDown"
-    | "onMenuOpen"
-    | "onMenuClose"
-  > {
-  open?: boolean;
-  placement?: string;
-  menuAriaLabel?: string;
-  menuAriaLabelledBy?: string;
-  menuAlign?: "left" | "right";
-  menuType?: "default" | "single-select";
-  selectedValue?: string;
-  checkHiddenItems?: boolean;
-}
 
 const props = withDefaults(defineProps<VueMenuProps>(), {
   disabled: false,
