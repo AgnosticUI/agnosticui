@@ -287,6 +287,12 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     .footer {
       margin-top: auto;
     }
+
+    :host([collapsed]) .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   `;
 
   /**
