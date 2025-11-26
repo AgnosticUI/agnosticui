@@ -224,7 +224,6 @@ All three patterns work identically thanks to the **dual-dispatch** system.
 The Tooltip component implements the [WAI-ARIA Tooltip Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/):
 
 - Uses `role="tooltip"` for proper screen reader identification
-- Automatically sets `aria-describedby` on the trigger element
 - Keyboard support: Focus shows tooltip, Escape dismisses it
 - Always include `aria-label` on icon-only buttons
 - Keep content brief (one sentence or less)

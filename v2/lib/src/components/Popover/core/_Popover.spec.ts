@@ -72,7 +72,8 @@ describe('Popover', () => {
 
     it('should set ARIA attributes on trigger element', () => {
       expect(trigger.getAttribute('aria-expanded')).toBe('false');
-      expect(trigger.getAttribute('aria-controls')).toBe('popover');
+      // aria-controls is no longer set on the trigger, as it cannot reference an element inside the shadow DOM
+      expect(trigger.getAttribute('aria-controls')).toBeNull();
       expect(trigger.getAttribute('aria-haspopup')).toBe('dialog');
     });
 

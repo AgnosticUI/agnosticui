@@ -41,7 +41,8 @@ describe('Tooltip - Comprehensive Tests', () => {
       const { tooltip, trigger } = await createTooltip({ content: 'Hello' });
       const tooltipElement = tooltip.shadowRoot?.querySelector('#tooltip');
       expect(tooltipElement?.getAttribute('role')).toBe('tooltip');
-      expect(trigger.getAttribute('aria-describedby')).toBe('tooltip');
+      // aria-describedby is no longer set on the trigger, as it cannot reference an element inside the shadow DOM
+      expect(trigger.getAttribute('aria-describedby')).toBeNull();
     });
 
     it('should be hidden from assistive technology when closed', async () => {
