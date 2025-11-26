@@ -72,10 +72,6 @@ const meta: Meta<ButtonProps> = {
       control: "text",
       description: "ARIA label for accessibility",
     },
-    ariaDescribedby: {
-      control: "text",
-      description: "ARIA described-by for accessibility",
-    },
   },
   args: {
     variant: "",
@@ -91,7 +87,6 @@ const meta: Meta<ButtonProps> = {
     toggle: false,
     pressed: false,
     ariaLabel: "",
-    ariaDescribedby: "",
     onToggle: fn(),
     onFocus: fn(),
     onBlur: fn(),
@@ -124,7 +119,6 @@ export const Default: Story = {
     toggle,
     pressed,
     ariaLabel,
-    ariaDescribedby,
     onToggle,
     onFocus,
     onBlur,
@@ -143,7 +137,6 @@ export const Default: Story = {
       .toggle=${toggle}
       .pressed=${pressed}
       .ariaLabel=${ariaLabel}
-      .ariaDescribedby=${ariaDescribedby}
       @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
       @focus=${() => onFocus?.({ type: "focus" })}
       @blur=${() => onBlur?.({ type: "blur" })}
@@ -477,15 +470,12 @@ export const Accessible: Story = {
   args: {
     variant: "primary",
     ariaLabel: "Custom button label",
-    ariaDescribedby: "description-id",
   },
-  render: ({ variant, ariaLabel, ariaDescribedby }) => html`
+  render: ({ variant, ariaLabel }) => html`
     <div>
-      <p id="description-id">This button performs an action</p>
       <ag-button
         .variant=${variant}
         .ariaLabel=${ariaLabel}
-        .ariaDescribedby=${ariaDescribedby}
       >
         Accessible Button
       </ag-button>

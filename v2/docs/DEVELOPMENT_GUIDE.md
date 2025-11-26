@@ -850,5 +850,79 @@ After creating a new component, update `v2/lib/package.json`:
 
 ---
 
-**Last Updated**: 2024-11-24
+## ARIA Attributes in Shadow DOM
+
+### ✅ Supported ARIA Patterns
+
+**Self-Contained Attributes (Always Work):**
+
+- `aria-label` - Direct text label
+- `aria-pressed` - Toggle state
+- `aria-disabled` - Disabled state
+- `aria-busy` - Loading state
+- `aria-expanded` - Expansion state
+- `aria-hidden` - Visibility state
+- `aria-required` - Required field
+- `aria-invalid` - Validation state
+- `aria-checked` - Checkbox/radio state
+- `aria-selected` - Selection state
+
+### ❌ Unsupported ARIA Patterns
+
+**ID-Based References (Shadow DOM Limitation):**
+
+AgnosticUI components **cannot** accept these props because Shadow DOM encapsulation prevents ID references from crossing component boundaries:
+
+- `aria-describedby` - Cannot reference external elements
+- `aria-labelledby` - Cannot reference external elements (when referencing light DOM)
+- `aria-controls` - Cannot reference external elements
+- `aria-owns` - Cannot reference external elements
+- `for` attribute on `<label>` - Cannot reference elements inside shadow DOM
+
+**Why This Matters:**
+
+```html
+<!-- ❌ DOESN'T WORK - External reference -->
+<p id="external-desc">Button description</p>
+<ag-button aria-describedby="external-desc">Click</ag-button>
+<!-- The button's shadow root cannot find #external-desc in light DOM -->
+```
+
+### ✅ Internal ID References (Works)
+
+Components CAN use ID references to elements **within their own shadow root**:
+
+```typescript
+// ✅ CORRECT - Internal reference
+render() {
+  return html`
+    <div
+      role="dialog"
+      aria-labelledby="internal-heading"
+      aria-describedby="internal-description"
+    >
+      <h2 id="internal-heading">Dialog Title</h2>
+      <p id="internal-description">Dialog description</p>
+    </div>
+  `;
+}
+```
+
+**Examples of components using internal references correctly:**
+- `Dialog` - Uses `aria-labelledby="dialog-heading"` (internal to shadow root)
+- `Combobox` - Uses `aria-labelledby=${this._labelId}` (internal to shadow root)
+- `Toggle` - Uses `aria-describedby` for internal helper/error text
+
+### Development Guidelines
+
+**When creating new components:**
+
+1. **DO NOT** add props for `aria-describedby`, `aria-labelledby`, `aria-controls` unless the IDs are generated internally
+2. **DO** use `aria-label` for allowing users to provide accessible names
+3. **DO** generate internal IDs for elements within your shadow DOM and connect them with ARIA attributes
+4. **DO** document clearly which ARIA patterns are supported and why
+
+---
+
+**Last Updated**: 2024-11-25
 **Maintainers**: Update this document when discovering new patterns or best practices
