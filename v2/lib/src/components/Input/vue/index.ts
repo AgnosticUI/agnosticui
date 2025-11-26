@@ -8,7 +8,6 @@ export interface VueInputProps {
   labelHidden?: boolean;
   noLabel?: boolean;
   ariaLabel?: string;
-  labelledBy?: string;
   type?: string;
   value?: string;
   placeholder?: string;

@@ -21,7 +21,6 @@
     :size="size"
     :label="label"
     :ariaLabel="ariaLabel"
-    :labelledBy="labelledBy"
     :errorMessage="errorMessage"
     :helpText="helpText"
     :name="name"
@@ -54,7 +53,6 @@ const props = withDefaults(defineProps<VueSliderProps>(), {
   labelHidden: false,
   noLabel: false,
   ariaLabel: "",
-  labelledBy: "",
   min: 0,
   max: 100,
   step: 1,

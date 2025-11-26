@@ -26,7 +26,6 @@ export interface SliderProps {
   labelHidden?: boolean;
   noLabel?: boolean;
   ariaLabel?: string;
-  labelledBy?: string;
 
   // Range properties
   min?: number;
@@ -467,7 +466,6 @@ export class AgSlider extends LitElement implements SliderProps {
     this.labelHidden = false;
     this.noLabel = false;
     this.ariaLabel = '';
-    this.labelledBy = '';
     this.min = 0;
     this.max = 100;
     this.step = 1;
@@ -511,8 +509,6 @@ export class AgSlider extends LitElement implements SliderProps {
   @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
-  @property({ type: String, attribute: 'labelled-by' })
-  declare labelledBy: string;
 
   /**
    * Range properties

@@ -535,32 +535,6 @@ export const FormIntegration: Story = {
   `,
 };
 
-// Accessibility story with external label
-export const LabelledBy: Story = {
-  args: {
-    labelledBy: "toggle-label",
-    describedBy: "toggle-description",
-  },
-  render: ({ labelledBy, describedBy, size, variant }) => html`
-    <div
-      style="display: flex; flex-direction: column; gap: 1rem; padding: 50px;"
-    >
-      <h3 id="${labelledBy}" style="margin: 0;">Enable notifications</h3>
-      <p
-        id="${describedBy}"
-        style="margin: 0; font-size: 0.875rem; color: #6b7280;"
-      >
-        You will receive notifications when new messages arrive
-      </p>
-      <ag-toggle
-        .labelledBy=${labelledBy}
-        .describedBy=${describedBy}
-        .size=${size}
-        .variant=${variant}
-      ></ag-toggle>
-    </div>
-  `,
-};
 
 // All sizes comparison
 export const AllSizes: Story = {

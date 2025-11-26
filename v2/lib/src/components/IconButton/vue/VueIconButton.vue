@@ -10,7 +10,6 @@
     :size="size"
     :variant="variant"
     :type="type"
-    :ariaDescribedby="ariaDescribedby"
     @icon-button-click="handleClick"
     @icon-button-activate="handleActivate"
     v-bind="$attrs"

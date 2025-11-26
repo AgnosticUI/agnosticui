@@ -7,7 +7,6 @@ export interface VueSliderProps {
   labelHidden?: boolean;
   noLabel?: boolean;
   ariaLabel?: string;
-  labelledBy?: string;
   min?: number;
   max?: number;
   step?: number;

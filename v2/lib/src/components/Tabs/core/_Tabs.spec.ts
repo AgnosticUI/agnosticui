@@ -238,11 +238,6 @@ describe('Tabs - ARIA Compliance', () => {
 
     const tablist = element.shadowRoot?.querySelector('[role="tablist"]');
     expect(tablist?.getAttribute('aria-label')).toBe('Main navigation');
-
-    element.ariaLabel = '';
-    element.ariaLabelledBy = 'nav-heading';
-    await element.updateComplete;
-    expect(tablist?.getAttribute('aria-labelledby')).toBe('nav-heading');
   });
 });
 

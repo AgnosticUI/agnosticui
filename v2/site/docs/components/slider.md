@@ -189,7 +189,6 @@ export default function Example() {
 | `labelHidden` | `boolean` | `false` | Visually hide the label (still accessible) |
 | `noLabel` | `boolean` | `false` | Remove label completely |
 | `ariaLabel` | `string` | `''` | ARIA label when label is hidden |
-| `labelledBy` | `string` | `''` | ID of element that labels this slider |
 | `min` | `number` | `0` | Minimum value |
 | `max` | `number` | `100` | Maximum value |
 | `step` | `number` | `1` | Step increment for value changes |
