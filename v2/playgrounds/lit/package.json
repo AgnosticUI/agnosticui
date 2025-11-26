@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "agnosticui-core": "file:../../lib/agnosticui-core-0.0.1.tgz",
-    "lit": "^3.3.1"
+    "lit": "^3.3.1",
+    "lucide": "^0.555.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.1",
