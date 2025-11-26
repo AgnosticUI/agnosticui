@@ -39,3 +39,4 @@ export * from './components/MessageBubble/core/MessageBubble';
 export * from './components/VisuallyHidden/core/_VisuallyHidden';
 export * from './components/ScrollProgress/core/_ScrollProgress';
 export * from './components/ButtonFx/core/_ButtonFx';
+export * from './components/Sidebar/core/_Sidebar';
