@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { AgSidebar } from './_Sidebar.js';
+import { AgSidebar } from './Sidebar.js';
 import type {
   AgSidebarToggleEvent,
   AgSidebarCollapseEvent,
   AgSidebarBreakpointChangeEvent,
-} from './_Sidebar.js';
+} from './Sidebar.js';
 
 expect.extend(toHaveNoViolations);
 
@@ -153,17 +153,18 @@ describe('AgSidebar', () => {
       expect(slot).toBeTruthy();
     });
 
-    it('should allow custom toggle button via ag-toggle-button slot', async () => {
-      const customButton = document.createElement('button');
-      customButton.setAttribute('slot', 'ag-toggle-button');
-      customButton.textContent = 'Custom Toggle';
-      sidebar.appendChild(customButton);
+    it('should allow custom toggle icon via ag-toggle-icon slot', async () => {
+      const customIcon = document.createElement('div');
+      customIcon.setAttribute('slot', 'ag-toggle-icon');
+      customIcon.textContent = 'X';
+      sidebar.appendChild(customIcon);
       await sidebar.updateComplete;
 
-      const slot = sidebar.shadowRoot!.querySelector('slot[name="ag-toggle-button"]');
+      const slot = sidebar.shadowRoot!.querySelector('slot[name="ag-toggle-icon"]');
       expect(slot).toBeTruthy();
       const assignedNodes = (slot as HTMLSlotElement).assignedNodes();
       expect(assignedNodes.length).toBeGreaterThan(0);
+      expect(assignedNodes[0]).toBe(customIcon);
     });
   });
 

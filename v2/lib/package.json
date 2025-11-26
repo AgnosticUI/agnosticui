@@ -76,6 +76,18 @@
       "types": "./dist/components/IntlFormatter/vue/index.d.ts",
       "import": "./dist/components/IntlFormatter/vue/index.js"
     },
+    "./sidebar": {
+      "types": "./dist/components/Sidebar/core/Sidebar.d.ts",
+      "import": "./dist/components/Sidebar/core/Sidebar.js"
+    },
+    "./sidebar/react": {
+      "types": "./dist/components/Sidebar/react/ReactSidebar.d.ts",
+      "import": "./dist/components/Sidebar/react/ReactSidebar.js"
+    },
+    "./sidebar/vue": {
+      "types": "./dist/components/Sidebar/vue/index.d.ts",
+      "import": "./dist/components/Sidebar/vue/index.js"
+    },
     "./copy-button": {
       "types": "./dist/components/CopyButton/core/CopyButton.d.ts",
       "import": "./dist/components/CopyButton/core/CopyButton.js"

@@ -1,7 +1,6 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { PropertyValues } from 'lit';
-import '../../Icon/core/Icon.js';
 
 /**
  * Event detail interfaces
@@ -19,12 +18,38 @@ export interface AgSidebarBreakpointChangeEventDetail {
   breakpoint: number;
 }
 
+export interface AgSidebarProps {
+  /** Controls sidebar visibility on mobile (below breakpoint) */
+  open?: boolean;
+  /** Controls collapsed/rail state (icon-only) */
+  collapsed?: boolean;
+  /** Sidebar position on the screen */
+  position?: 'left' | 'right';
+  /** Accessible label for the navigation landmark */
+  ariaLabel?: string;
+  /** Pixel width below which mobile overlay behavior activates */
+  breakpoint?: number;
+  /** Visual style variant */
+  variant?: 'default' | 'bordered' | 'elevated';
+  /** Disable animations (respects prefers-reduced-motion) */
+  noTransition?: boolean;
+  /** Custom width (writes to CSS variable) */
+  width?: string;
+  /** Callback fired when sidebar open state changes */
+  onToggle?: (event: AgSidebarToggleEvent) => void;
+  /** Callback fired when sidebar collapsed state changes */
+  onCollapse?: (event: AgSidebarCollapseEvent) => void;
+  /** Callback fired when breakpoint is crossed */
+  onBreakpointChange?: (event: AgSidebarBreakpointChangeEvent) => void;
+}
+
 /**
  * Event type aliases
  */
 export type AgSidebarToggleEvent = CustomEvent<AgSidebarToggleEventDetail>;
 export type AgSidebarCollapseEvent = CustomEvent<AgSidebarCollapseEventDetail>;
 export type AgSidebarBreakpointChangeEvent = CustomEvent<AgSidebarBreakpointChangeEventDetail>;
+
 
 /**
  * AgSidebar - Flexible, accessible sidebar navigation component
@@ -33,7 +58,7 @@ export type AgSidebarBreakpointChangeEvent = CustomEvent<AgSidebarBreakpointChan
  * 
  * @slot - Main navigation content
  * @slot ag-header - Optional header content (logo, title)
- * @slot ag-toggle-button - Override the built-in collapse toggle button
+ * @slot ag-toggle-icon - Override the built-in collapse toggle icon
  * @slot ag-footer - Optional footer content (user profile, settings)
  * 
  * @fires ag-sidebar-toggle - Dispatched when sidebar open state changes (mobile)
@@ -44,6 +69,7 @@ export type AgSidebarBreakpointChangeEvent = CustomEvent<AgSidebarBreakpointChan
  * @csspart ag-sidebar-nav - The navigation landmark
  * @csspart ag-sidebar-toggle-wrapper - Wrapper for toggle button slot
  * @csspart ag-sidebar-toggle-button - Built-in collapse toggle button
+ * @csspart ag-sidebar-toggle-icon - Wrapper for the toggle icon
  * @csspart ag-sidebar-header - Header slot wrapper
  * @csspart ag-sidebar-content - Main content slot wrapper
  * @csspart ag-sidebar-footer - Footer slot wrapper
@@ -57,7 +83,7 @@ export type AgSidebarBreakpointChangeEvent = CustomEvent<AgSidebarBreakpointChan
  * @cssprop --ag-sidebar-border - Border color (default: var(--ag-border))
  * @cssprop --ag-sidebar-z-index - Z-index for mobile overlay (default: 1000)
  */
-export class AgSidebar extends LitElement {
+export class AgSidebar extends LitElement implements AgSidebarProps {
   static styles = css`
     :host {
       display: block;
@@ -123,7 +149,8 @@ export class AgSidebar extends LitElement {
     /* Respect prefers-reduced-motion */
     @media (prefers-reduced-motion: reduce) {
       .sidebar-container,
-      .backdrop {
+      .backdrop,
+      .toggle-icon {
         transition: none;
       }
     }
@@ -230,6 +257,15 @@ export class AgSidebar extends LitElement {
       color: var(--ag-text-primary, #111827);
       cursor: pointer;
       transition: all var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+    }
+
+    .toggle-icon {
+      display: inline-flex;
+      transition: transform var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+    }
+
+    :host([collapsed]) .toggle-icon {
+      transform: rotate(180deg);
     }
 
     .toggle-button:hover {
@@ -563,6 +599,26 @@ export class AgSidebar extends LitElement {
     trigger?.focus();
   }
 
+  private _renderToggleIcon() {
+    return html`
+      <svg
+        class="toggle-icon"
+        part="ag-sidebar-toggle-icon"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m15 6-6 6 6 6"></path>
+      </svg>
+    `;
+  }
+
   override render() {
     const showBackdrop = this._isMobile && this.open;
 
@@ -581,21 +637,19 @@ export class AgSidebar extends LitElement {
       <aside part="ag-sidebar-container" class="sidebar-container" role="none">
         <nav part="ag-sidebar-nav" aria-label=${this.ariaLabel}>
           <div part="ag-sidebar-toggle-wrapper" class="toggle-wrapper">
-            <slot name="ag-toggle-button">
-              <button
-                part="ag-sidebar-toggle-button"
-                class="toggle-button"
-                aria-label=${this.collapsed
-                  ? 'Expand sidebar'
-                  : 'Collapse sidebar'}
-                aria-expanded=${!this.collapsed}
-                @click=${this._handleToggleCollapsed}
-              >
-                <ag-icon
-                  name=${this.collapsed ? 'chevron-right' : 'chevron-left'}
-                ></ag-icon>
-              </button>
-            </slot>
+            <button
+              part="ag-sidebar-toggle-button"
+              class="toggle-button"
+              aria-label=${this.collapsed
+                ? 'Expand sidebar'
+                : 'Collapse sidebar'}
+              aria-expanded=${!this.collapsed}
+              @click=${this._handleToggleCollapsed}
+            >
+              <slot name="ag-toggle-icon">
+                ${this._renderToggleIcon()}
+              </slot>
+            </button>
           </div>
 
           <div part="ag-sidebar-header" class="header">
@@ -612,16 +666,5 @@ export class AgSidebar extends LitElement {
         </nav>
       </aside>
     `;
-  }
-}
-
-// Manual registration (following DEVELOPMENT_GUIDE.md)
-if (!customElements.get('ag-sidebar')) {
-  customElements.define('ag-sidebar', AgSidebar);
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ag-sidebar': AgSidebar;
   }
 }
