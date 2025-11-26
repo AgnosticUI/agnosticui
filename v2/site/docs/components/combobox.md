@@ -425,7 +425,6 @@ export class ComboboxExample extends LitElement {
 | `noLabel` | `boolean` | `false` | Remove the label entirely |
 | `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'` | Position of the label relative to the combobox |
 | `ariaLabel` | `string \| null` | `null` | ARIA label for accessibility |
-| `labelledBy` | `string` | `''` | ID of element that labels this combobox |
 | `helpText` | `string` | `''` | Help text displayed below the input |
 | `errorMessage` | `string` | `''` | Error message displayed below the input |
 | `id` | `string` | (auto-generated) | Unique ID for the combobox |
