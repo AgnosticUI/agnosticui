@@ -110,9 +110,9 @@ Shadow DOM encapsulation prevents ID-based ARIA references (`aria-labelledby`, `
 
 | Component | Affected Props                     | Usage Pattern                    | Status         |
 | --------- | ---------------------------------- | -------------------------------- | -------------- |
-| Button    | `aria-describedby`                 | External ID references           | ❌ Broken      |
-| ButtonFx  | `aria-describedby`                 | Inherits from Button             | ❌ Broken      |
-| Combobox  | `labelledBy` (external)            | External ID references           | ❌ Broken      |
+| Button    | `aria-describedby`                 | External ID references           | ✅ Fixed       |
+| ButtonFx  | `aria-describedby`                 | Inherits from Button             | ✅ Fixed       |
+| Combobox  | `labelledBy` (external)            | External ID references           | ✅ Fixed       |
 | Input     | `aria-describedby` (if exists)     | External ID references           | ❌ Needs audit |
 | Checkbox  | `aria-describedby` (if exists)     | External ID references           | ❌ Needs audit |
 | Radio     | `aria-describedby` (if exists)     | External ID references           | ❌ Needs audit |

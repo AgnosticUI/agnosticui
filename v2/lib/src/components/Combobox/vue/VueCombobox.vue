@@ -32,7 +32,6 @@ const props = withDefaults(defineProps<VueComboboxProps>(), {
   labelHidden: false,
   noLabel: false,
   ariaLabel: null,
-  labelledBy: "",
   helpText: "",
   errorMessage: "",
   autocomplete: "list",
@@ -143,7 +142,6 @@ defineExpose({
     :placeholder="placeholder"
     :label="label"
     :ariaLabel="ariaLabel"
-    :labelledBy="labelledBy"
     :helpText="helpText"
     :errorMessage="errorMessage"
     :autocomplete="autocomplete"

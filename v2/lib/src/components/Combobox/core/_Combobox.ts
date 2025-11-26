@@ -82,7 +82,6 @@ export interface ComboboxProps {
   labelHidden?: boolean;
   noLabel?: boolean;
   ariaLabel?: string | null;
-  labelledBy?: string;
   helpText?: string;
   errorMessage?: string;
   id?: string;
@@ -537,9 +536,6 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
   @property({ type: String, attribute: 'aria-label' })
   declare ariaLabel: string | null;
-
-  @property({ type: String, attribute: 'labelled-by' })
-  declare labelledBy?: string;
 
   @property({ type: String, attribute: 'help-text' })
   declare helpText?: string;
@@ -1378,7 +1374,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
             aria-expanded=${this._open ? 'true' : 'false'}
             aria-haspopup="listbox"
             aria-disabled=${this.disabled ? 'true' : nothing}
-            aria-labelledby=${this.labelledBy || (showLabel ? this._labelId : nothing)}
+            aria-labelledby=${showLabel ? this._labelId : nothing}
             aria-label=${this.ariaLabel || nothing}
             aria-describedby=${describedBy || nothing}
             aria-invalid=${this.invalid ? 'true' : 'false'}
