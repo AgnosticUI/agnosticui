@@ -1,46 +1,29 @@
-
 <template>
-  <ag-button-fx ref="agComponent">
+  <ag-button-fx
+    ref="agComponent"
+    v-bind="$attrs"
+  >
     <slot />
   </ag-button-fx>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref, watch } from 'vue';
-import type { ButtonFxProps } from '../core/_ButtonFx';
+<script setup lang="ts">
+import { ref } from "vue";
+import type { ButtonFxProps } from "../core/_ButtonFx";
+import "../core/_ButtonFx";
 
-export default defineComponent({
-  name: 'VueButtonFx',
-  props: {
-    // Define props here
-  },
-  setup(props, { emit }) {
-    const agComponent = ref<HTMLElement & ButtonFxProps | null>(null);
+// Define props interface - if ButtonFx has specific props, add them here
+// For now, keeping it simple since the original was a TODO
+export interface VueButtonFxProps extends ButtonFxProps {}
 
-    onMounted(() => {
-      if (agComponent.value) {
-        // TODO: Set up event listeners to emit Vue events
-        // agComponent.value.addEventListener('event-name', (e) => emit('eventName', e.detail));
-        
-        // TODO: Sync props
-        Object.keys(props).forEach(prop => {
-          if (props[prop] !== undefined) {
-            agComponent.value[prop] = props[prop];
-          }
-        });
-      }
-    });
+// If there are specific props, define them here with defaults
+// const props = defineProps<VueButtonFxProps>();
 
-    // TODO: Watch props for changes and update the web component
-    // watch(() => props.someProp, (newValue) => {
-    //   if (agComponent.value) {
-    //     agComponent.value.someProp = newValue;
-    //   }
-    // });
+// Template ref
+const agComponent = ref<(HTMLElement & ButtonFxProps) | null>(null);
 
-    return {
-      agComponent,
-    };
-  },
-});
+// If there are events to emit, define them here
+// const emit = defineEmits<{
+//   'some-event': [detail: SomeEventDetail];
+// }>();
 </script>
