@@ -142,7 +142,6 @@ export interface TabsProps {
   activeTab?: number;
   orientation?: TabsOrientation;
   ariaLabel?: string;
-  ariaLabelledBy?: string;
   // Event callback prop
   onTabChange?: (event: TabChangeEvent) => void;
 }
@@ -175,8 +174,6 @@ export class Tabs extends LitElement implements TabsProps {
   @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
-  @property({ type: String, reflect: true, attribute: 'aria-labelledby' })
-  declare ariaLabelledBy: string;
 
   @property({ attribute: false })
   declare onTabChange?: (event: TabChangeEvent) => void;
@@ -196,7 +193,6 @@ export class Tabs extends LitElement implements TabsProps {
     this.activeTab = 0;
     this.orientation = 'horizontal';
     this.ariaLabel = '';
-    this.ariaLabelledBy = '';
     this._tabs = [];
     this._panels = [];
     this._focusedTab = 0;
@@ -526,7 +522,6 @@ export class Tabs extends LitElement implements TabsProps {
           part="ag-tabs-tablist"
           aria-orientation=${this.orientation}
           aria-label=${this.ariaLabel || ''}
-          aria-labelledby=${this.ariaLabelledBy || ''}
         >
           <slot name="tab"></slot>
         </div>

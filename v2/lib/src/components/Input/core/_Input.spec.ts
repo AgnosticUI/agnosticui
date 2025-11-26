@@ -134,26 +134,6 @@ describe('Label Architecture (Complete Flexibility)', () => {
       const label = element.shadowRoot?.querySelector('label');
       expect(label).toBeNull();
     });
-
-    it('supports external label via labelledBy', async () => {
-      // Create external label
-      const externalLabel = document.createElement('label');
-      externalLabel.id = 'external-label';
-      externalLabel.textContent = 'External Label';
-      document.body.appendChild(externalLabel);
-
-      const element = new AgInput();
-      element.noLabel = true;
-      element.labelledBy = 'external-label';
-      document.body.appendChild(element);
-      await element.updateComplete;
-
-      const input = element.shadowRoot?.querySelector('input');
-      expect(input?.getAttribute('aria-labelledby')).toBe('external-label');
-
-      // Cleanup
-      document.body.removeChild(externalLabel);
-    });
   });
 
   describe('aria-label Only (Icon-Only Scenarios)', () => {

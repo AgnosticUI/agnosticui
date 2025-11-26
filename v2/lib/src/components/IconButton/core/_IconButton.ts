@@ -55,7 +55,6 @@ export interface IconButtonProps {
   disabled?: boolean;
   pressed?: boolean;
   loading?: boolean;
-  ariaDescribedby?: string;
   onIconButtonClick?: (event: IconButtonClickEvent) => void;
   onIconButtonActivate?: (event: IconButtonActivateEvent) => void;
 }
@@ -329,8 +328,6 @@ export class AgIconButton extends LitElement implements IconButtonProps {
   /**
    * ARIA described by reference
    */
-  @property({ type: String, reflect: true, attribute: 'aria-describedby' })
-  declare ariaDescribedby: string;
 
   /**
    * Callback for icon button click events
@@ -355,7 +352,6 @@ export class AgIconButton extends LitElement implements IconButtonProps {
     this.pressed = false;
     this.loading = false;
     this.type = 'button';
-    this.ariaDescribedby = '';
   }
 
   private _handleClick = (event: MouseEvent) => {
@@ -472,7 +468,6 @@ export class AgIconButton extends LitElement implements IconButtonProps {
         part="ag-icon-button"
         type=${this.type}
         aria-label=${ifDefined(this.label || undefined)}
-        aria-describedby=${ifDefined(this.ariaDescribedby || undefined)}
         aria-pressed=${ifDefined(this.pressed !== undefined ? this.pressed.toString() : undefined)}
         ?disabled=${this.disabled}
         @click=${this._handleClick}

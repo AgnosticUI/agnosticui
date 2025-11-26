@@ -43,7 +43,6 @@ export interface InputProps {
   labelPosition?: LabelPosition;
   noLabel?: boolean;
   ariaLabel?: string;
-  labelledBy?: string;
   type?: InputType;
   value?: string;
   placeholder?: string;
@@ -326,9 +325,6 @@ export class AgInput extends LitElement implements InputProps {
   @property({ type: String, attribute: 'aria-label' })
   declare ariaLabel: string;
 
-  @property({ type: String, attribute: 'labelled-by' })
-  declare labelledBy: string;
-
   // Input properties
   @property({ type: String })
   declare type: InputType;
@@ -412,7 +408,6 @@ export class AgInput extends LitElement implements InputProps {
     this.labelPosition = 'top';
     this.noLabel = false;
     this.ariaLabel = '';
-    this.labelledBy = '';
     this.type = 'text';
     this.value = '';
     this.placeholder = '';
@@ -580,14 +575,11 @@ export class AgInput extends LitElement implements InputProps {
   private _renderInputElement() {
     const isTextarea = this.type === 'textarea';
 
-    // Build aria-describedby including external labelledBy if present
+    // Build aria-describedby
     const describedBy = this._getAriaDescribedBy();
     const describedByIds: string[] = [];
     if (describedBy) {
       describedByIds.push(describedBy);
-    }
-    if (this.labelledBy) {
-      describedByIds.push(this.labelledBy);
     }
 
     if (isTextarea) {
@@ -606,7 +598,6 @@ export class AgInput extends LitElement implements InputProps {
           aria-required="${this.required ? 'true' : 'false'}"
           aria-invalid="${this.invalid ? 'true' : 'false'}"
           aria-label="${ifDefined(this.ariaLabel || undefined)}"
-          aria-labelledby="${ifDefined(this.labelledBy || undefined)}"
           aria-describedby="${describedByIds.length > 0 ? describedByIds.join(' ') : ifDefined(undefined)}"
           @click=${this._handleClick}
           @input=${this._handleInput}
@@ -631,7 +622,6 @@ export class AgInput extends LitElement implements InputProps {
         aria-required="${this.required ? 'true' : 'false'}"
         aria-invalid="${this.invalid ? 'true' : 'false'}"
         aria-label="${ifDefined(this.ariaLabel || undefined)}"
-        aria-labelledby="${ifDefined(this.labelledBy || undefined)}"
         aria-describedby="${describedByIds.length > 0 ? describedByIds.join(' ') : ifDefined(undefined)}"
         @click=${this._handleClick}
         @input=${this._handleInput}

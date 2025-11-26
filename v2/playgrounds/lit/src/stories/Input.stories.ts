@@ -26,10 +26,6 @@ const meta: Meta<InputProps> = {
       control: "text",
       description: "ARIA label for accessibility",
     },
-    labelledBy: {
-      control: "text",
-      description: "ARIA labelledby for accessibility",
-    },
     type: {
       control: "select",
       options: [
@@ -156,7 +152,6 @@ export const Default: Story = {
     labelHidden,
     noLabel,
     ariaLabel,
-    labelledBy,
     type,
     value,
     placeholder,
@@ -183,7 +178,6 @@ export const Default: Story = {
         .labelHidden=${labelHidden}
         .noLabel=${noLabel}
         .ariaLabel=${ariaLabel}
-        .labelledBy=${labelledBy}
         .type=${type}
         .value=${value}
         .placeholder=${placeholder}
@@ -841,29 +835,6 @@ export const ComplexForm: Story = {
           Submit
         </button>
       </form>
-    </div>
-  `,
-};
-
-// Accessibility with labelledBy
-export const LabelledBy: Story = {
-  args: {
-    labelledBy: "custom-label",
-    noLabel: true,
-  },
-  render: ({ labelledBy, noLabel }) => html`
-    <div style="padding: 50px; max-width: 600px;">
-      <h3 id="${labelledBy}" style="margin-top: 0;">
-        Custom Label via labelledBy
-      </h3>
-      <p style="margin-bottom: 1rem; font-size: 0.875rem; color: #6b7280;">
-        The input below uses aria-labelledby to reference the heading above
-      </p>
-      <ag-input
-        .labelledBy=${labelledBy}
-        .noLabel=${noLabel}
-        .placeholder=${"Enter text here"}
-      ></ag-input>
     </div>
   `,
 };

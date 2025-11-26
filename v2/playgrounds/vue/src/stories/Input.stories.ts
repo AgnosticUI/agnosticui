@@ -24,10 +24,6 @@ const meta = {
       control: 'text',
       description: 'ARIA label for accessibility',
     },
-    labelledBy: {
-      control: 'text',
-      description: 'ARIA labelledby for accessibility',
-    },
     capsule: {
       control: 'boolean',
       description: 'Capsule styling (fully rounded corners)',

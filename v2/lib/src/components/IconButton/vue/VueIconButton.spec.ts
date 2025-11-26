@@ -180,30 +180,6 @@ describe('VueIconButton Wrapper', () => {
       expect(iconButton.exists()).toBe(true);
     });
 
-    it('should handle aria-describedby prop', async () => {
-      wrapper = mount(VueIconButton, {
-        props: {
-          label: 'Help',
-          ariaDescribedby: 'help-text'
-        },
-        global: {
-          config: {
-            compilerOptions: {
-              isCustomElement: (tag: string) => tag.startsWith('ag-')
-            }
-          }
-        }
-      });
-
-      await wrapper.vm.$nextTick();
-
-      const iconButton = wrapper.find('ag-icon-button');
-      expect(iconButton.exists()).toBe(true);
-
-      // Check the JavaScript property on the DOM element
-      const iconButtonElement = iconButton.element as any;
-      expect(iconButtonElement.ariaDescribedby).toBe('help-text');
-    });
   });
 
   describe('Slot Content', () => {

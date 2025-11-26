@@ -17,7 +17,6 @@
     :placeholder="placeholder"
     :label="label"
     :ariaLabel="ariaLabel"
-    :labelledBy="labelledBy"
     :helpText="helpText"
     :errorMessage="errorMessage"
     :size="size"
@@ -66,7 +65,6 @@ const props = withDefaults(defineProps<VueInputProps>(), {
   labelHidden: false,
   noLabel: false,
   ariaLabel: "",
-  labelledBy: "",
   type: "text",
   placeholder: "",
   rows: 4,

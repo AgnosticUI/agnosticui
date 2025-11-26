@@ -33,9 +33,6 @@ declare global {
         /** Loading state */
         loading?: boolean;
 
-        /** ARIA described by reference */
-        'aria-describedby'?: string;
-
         /** Additional HTML attributes */
         [key: `data-${string}`]: string;
         class?: string;

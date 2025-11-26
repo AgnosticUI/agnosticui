@@ -55,7 +55,6 @@ export interface MenuProps {
   open?: boolean;
   placement?: string;
   ariaLabel?: string;
-  ariaLabelledBy?: string;
   selectedValue?: string;
   type?: 'default' | 'single-select';
   checkHiddenItems?: boolean;
@@ -96,9 +95,6 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
 
   @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
-
-  @property({ type: String, reflect: true, attribute: 'aria-describedby' })
-  declare ariaDescribedby: string;
 
   // MENU-SPECIFIC PROPS
   @property({ type: String, reflect: true, attribute: 'menu-variant' })
@@ -146,7 +142,6 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
     this.disabled = false;
     this.loading = false;
     this.ariaLabel = '';
-    this.ariaDescribedby = '';
     // Defaults for MenuButton
     this.menuVariant = 'chevron';
     this.buttonVariant = '';
@@ -453,8 +448,6 @@ export class AgMenu extends LitElement implements MenuProps {
   @property({ reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
-  @property({ reflect: true, attribute: 'aria-labelledby' })
-  declare ariaLabelledBy: string;
 
   @property({ attribute: 'selected-value' })
   declare selectedValue?: string;
@@ -488,7 +481,6 @@ export class AgMenu extends LitElement implements MenuProps {
     this.open = false;
     this.placement = 'bottom-start';
     this.ariaLabel = '';
-    this.ariaLabelledBy = '';
     this.type = 'default';
     this.checkHiddenItems = false;
     this._focusedIndex = 0;

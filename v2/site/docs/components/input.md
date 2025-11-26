@@ -300,7 +300,6 @@ export default function InputExample() {
 | `labelHidden` | `boolean` | `false` | Visually hides the label while keeping it accessible to screen readers |
 | `noLabel` | `boolean` | `false` | Completely removes the label element. Use with ariaLabel for accessibility |
 | `ariaLabel` | `string` | `''` | ARIA label for accessibility when label is not visible |
-| `labelledBy` | `string` | `''` | ID of element that labels this input (aria-labelledby) |
 | ~~`hasLeftAddon`~~ | `boolean` | `false` | **Deprecated:** Addons are now automatically detected. Simply use the `addon-left` slot. |
 | ~~`hasRightAddon`~~ | `boolean` | `false` | **Deprecated:** Addons are now automatically detected. Simply use the `addon-right` slot. |
 | `rows` | `number` | `4` | Number of rows for textarea (only applies when type="textarea") |
@@ -403,16 +402,6 @@ Always provide a label for accessibility. The component supports multiple label 
   label="Search"
   :label-hidden="true"
   placeholder="Search..."
-/>
-```
-
-**Custom label positioning:**
-```vue
-<label for="custom-input">Custom Label</label>
-<VueInput
-  v-model:value="value"
-  :no-label="true"
-  labelled-by="custom-input"
 />
 ```
 

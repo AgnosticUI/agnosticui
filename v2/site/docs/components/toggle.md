@@ -374,7 +374,7 @@ The Toggle component implements the [WAI-ARIA Switch pattern](https://www.w3.org
 
 - Uses semantic `<button>` element with `role="switch"`
 - Communicates state via `aria-checked`
-- Requires accessible name via `label` or `labelledBy` prop
+- Requires accessible name via `label` or `aria-label` prop
 - Keyboard accessible (Space/Enter to toggle)
 - Screen reader announces "On"/"Off" state
 - Minimum 44px touch target for mobile accessibility
@@ -481,56 +481,6 @@ export default function Form() {
 ```
 :::
 
-## External Labeling
-
-Use `labelledBy` and `describedBy` for more complex label scenarios:
-
-::: details Vue
-```vue
-<template>
-  <div>
-    <h3 id="toggle-label">Enable notifications</h3>
-    <p id="toggle-description">
-      You will receive notifications when new messages arrive
-    </p>
-    <VueToggle
-      labelledBy="toggle-label"
-      describedBy="toggle-description"
-    />
-  </div>
-</template>
-```
-:::
-
-::: details React
-```tsx
-<div>
-  <h3 id="toggle-label">Enable notifications</h3>
-  <p id="toggle-description">
-    You will receive notifications when new messages arrive
-  </p>
-  <ReactToggle
-    labelledBy="toggle-label"
-    describedBy="toggle-description"
-  />
-</div>
-```
-:::
-
-::: details Lit (Web Components)
-```html
-<div>
-  <h3 id="toggle-label">Enable notifications</h3>
-  <p id="toggle-description">
-    You will receive notifications when new messages arrive
-  </p>
-  <ag-toggle
-    labelledBy="toggle-label"
-    describedBy="toggle-description"
-  ></ag-toggle>
-</div>
-```
-:::
 
 ## CSS Shadow Parts
 
