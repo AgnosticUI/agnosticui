@@ -439,9 +439,25 @@ Based on the PRD and your architecture documents, here's an efficient breakdown 
 
 ---
 
-## **Phase 2: React Wrapper** (2 steps)
+## **Phase 2: Lit Playground** (1 step)
 
-### Step 2.1: React Wrapper Core
+### Step 2.1: Lit Storybook Stories
+
+**Prompt Focus:** "Create Lit Storybook stories for ButtonFx with all 12 effects"
+
+**Deliverables:**
+
+- Create `playgrounds/lit/src/stories/ButtonFx.stories.ts`
+- Use `html` tagged templates
+- Same story structure as React/Vue
+
+**Context Needed:** `DEVELOPMENT_GUIDE.md` (Storybook section only)
+
+---
+
+## **Phase 3: React Wrapper** (2 steps)
+
+### Step 3.1: React Wrapper Core
 
 **Prompt Focus:** "Implement ReactButtonFx wrapper with @lit/react"
 
@@ -456,7 +472,7 @@ Based on the PRD and your architecture documents, here's an efficient breakdown 
 
 ---
 
-### Step 2.2: React Storybook Stories
+### Step 3.2: React Storybook Stories
 
 **Prompt Focus:** "Create React Storybook stories for ButtonFx with all 12 effects"
 
@@ -472,9 +488,9 @@ Based on the PRD and your architecture documents, here's an efficient breakdown 
 
 ---
 
-## **Phase 3: Vue Wrapper** (2 steps)
+## **Phase 4: Vue Wrapper** (2 steps)
 
-### Step 3.1: Vue Wrapper Core
+### Step 4.1: Vue Wrapper Core
 
 **Prompt Focus:** "Implement VueButtonFx wrapper with prop syncing"
 
@@ -493,7 +509,7 @@ Based on the PRD and your architecture documents, here's an efficient breakdown 
 
 ---
 
-### Step 3.2: Vue Storybook Stories
+### Step 4.2: Vue Storybook Stories
 
 **Prompt Focus:** "Create Vue Storybook stories for ButtonFx with all 12 effects"
 
@@ -504,22 +520,6 @@ Based on the PRD and your architecture documents, here's an efficient breakdown 
 - Use `v-html` pattern for CSS Parts customization story
 
 **Context Needed:** `DEVELOPMENT_GUIDE.md` (Storybook + Vue sections)
-
----
-
-## **Phase 4: Lit Playground** (1 step)
-
-### Step 4.1: Lit Storybook Stories
-
-**Prompt Focus:** "Create Lit Storybook stories for ButtonFx with all 12 effects"
-
-**Deliverables:**
-
-- Create `playgrounds/lit/src/stories/ButtonFx.stories.ts`
-- Use `html` tagged templates
-- Same story structure as React/Vue
-
-**Context Needed:** `DEVELOPMENT_GUIDE.md` (Storybook section only)
 
 ---
 

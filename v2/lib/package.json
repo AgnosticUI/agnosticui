@@ -661,8 +661,8 @@
       "import": "./dist/components/ScrollProgress/vue/index.js"
     },
     "./button-fx": {
-      "types": "./dist/components/ButtonFx/core/_ButtonFx.d.ts",
-      "import": "./dist/components/ButtonFx/core/_ButtonFx.js"
+      "types": "./dist/components/ButtonFx/core/ButtonFx.d.ts",
+      "import": "./dist/components/ButtonFx/core/ButtonFx.js"
     },
     "./button-fx/react": {
       "types": "./dist/components/ButtonFx/react/ReactButtonFx.d.ts",

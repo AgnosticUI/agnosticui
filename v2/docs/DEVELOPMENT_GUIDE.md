@@ -8,6 +8,31 @@ This is the comprehensive guide for developing components in AgnosticUI v2. It c
 
 ---
 
+## 🤖 AI Assistant Guidelines
+
+**CRITICAL**: When working with AI assistants (Claude Code, etc.):
+
+### What AI Should NOT Do
+- ❌ **NEVER run `npm run build`** - The developer will handle all builds
+- ❌ **NEVER run `npm run test`** - The developer will run tests
+- ❌ **NEVER run `npm run typecheck`** - The developer will run type checking
+- ❌ **NEVER run `npm run lint`** - The developer will run linting
+- ❌ **NEVER run `npm run pack`** - The developer will create tarballs
+- ❌ **NEVER run `npm install /path/to/tarball.tgz`** - The developer will install packages in playgrounds/vitepress
+- ❌ **NEVER run playground/storybook commands** - The developer controls when to start these
+
+### What AI Should Do
+- ✅ Write code, edit files, create components
+- ✅ Read files and search through code
+- ✅ Provide explanations and suggestions
+- ✅ Help debug issues by analyzing code
+- ✅ **Inform the developer when builds/tests are needed** (e.g., "Please run `npm run build` to test this")
+
+### Why This Matters
+The developer has their own workflow for building, testing, and iterating. AI interrupting with build commands breaks the flow and wastes time.
+
+---
+
 ## Table of Contents
 
 1. [Core Philosophy](#core-philosophy)
