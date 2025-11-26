@@ -207,7 +207,6 @@ export default function ButtonExample() {
 | `toggle` | `boolean` | `false` | Enable toggle button mode |
 | `pressed` | `boolean` | `false` | Pressed state for toggle buttons |
 | `ariaLabel` | `string` | `''` | Accessible label (use when button has no text) |
-| `ariaDescribedby` | `string` | `''` | ID of element describing the button |
 
 ## Events
 
@@ -233,7 +232,6 @@ The Button component implements the [WAI-ARIA Button pattern](https://www.w3.org
   - `aria-pressed` for toggle buttons
 - Focus management with clear visual indicators
 - Accessible name via button text content or `ariaLabel` prop
-- Additional context via `ariaDescribedby` prop
 
 ### Toggle Buttons
 

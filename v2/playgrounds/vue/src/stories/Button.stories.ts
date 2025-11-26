@@ -47,10 +47,6 @@ const meta = {
       control: 'text',
       description: 'ARIA label for accessibility',
     },
-    ariaDescribedby: {
-      control: 'text',
-      description: 'ARIA describedby for accessibility',
-    },
     shape: {
       control: 'select',
       options: ['', 'capsule', 'rounded', 'circle', 'square', 'rounded-square'],
@@ -209,18 +205,7 @@ export const Accessible: Story = {
   args: {
     label: 'Accessible Button',
     ariaLabel: 'Accessible button example',
-    ariaDescribedby: 'description-id',
   },
-  decorators: [
-    () => ({
-      template: `
-        <div>
-          <p id="description-id">This is an accessible button for screen readers.</p>
-          <story />
-        </div>
-      `,
-    }),
-  ],
 };
 
 export const Capsule: Story = {

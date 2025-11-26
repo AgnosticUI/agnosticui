@@ -48,7 +48,6 @@ export interface ButtonProps {
   toggle?: boolean;
   pressed?: boolean;
   ariaLabel?: string;
-  ariaDescribedby?: string;
   onClick?: (event: MouseEvent) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
@@ -467,12 +466,6 @@ export class AgButton extends LitElement implements ButtonProps {
   @property({ type: String, reflect: true, attribute: 'aria-label' })
   declare ariaLabel: string;
 
-  /**
-   * ARIA described-by for accessibility
-   */
-  @property({ type: String, reflect: true, attribute: 'aria-describedby' })
-  declare ariaDescribedby: string;
-
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
 
@@ -497,7 +490,6 @@ export class AgButton extends LitElement implements ButtonProps {
     this.grouped = false;
     this.type = 'button';
     this.ariaLabel = '';
-    this.ariaDescribedby = '';
     this.variant = '';
     this.size = 'md';
     this.shape = '';
@@ -587,7 +579,6 @@ export class AgButton extends LitElement implements ButtonProps {
         aria-busy=${ifDefined(this.loading ? 'true' : undefined)}
         aria-pressed=${ifDefined(this.toggle ? String(this.pressed) : undefined)}
         aria-label=${ifDefined(this.ariaLabel || undefined)}
-        aria-describedby=${ifDefined(this.ariaDescribedby || undefined)}
         @click=${this._handleClick}
         @focus=${this._handleFocus}
         @blur=${this._handleBlur}

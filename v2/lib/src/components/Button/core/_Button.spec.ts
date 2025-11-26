@@ -190,14 +190,6 @@ describe('AgButton', () => {
       expect(button?.getAttribute('aria-label')).to.equal('Custom Label');
     });
 
-    it('should support aria-describedby', async () => {
-      element.ariaDescribedby = 'description-id';
-      await element.updateComplete;
-
-      const button = element.shadowRoot?.querySelector('button');
-      expect(button?.getAttribute('aria-describedby')).to.equal('description-id');
-    });
-
     it('should have accessible name from text content', async () => {
       const button = element.shadowRoot?.querySelector('button');
       const slot = button?.querySelector('slot');

@@ -65,10 +65,6 @@ const meta: Meta<ReactButtonProps> = {
       control: 'text',
       description: 'ARIA label for accessibility',
     },
-    ariaDescribedby: {
-      control: 'text',
-      description: 'ARIA described-by for accessibility',
-    },
     className: {
       control: 'text',
       description: 'CSS class for additional styling',
@@ -122,7 +118,6 @@ export const Default: Story = {
     toggle: false,
     pressed: false,
     ariaLabel: '',
-    ariaDescribedby: '',
     className: '',
     id: '',
   },
@@ -325,8 +320,7 @@ export const Accessible: Story = {
   args: { variant: 'primary' },
   render: ({ variant }) => (
     <div>
-      <p id="description-id">This button performs an action</p>
-      <ReactButton variant={variant} aria-label="Custom button label" aria-describedby="description-id">
+      <ReactButton variant={variant} aria-label="Custom button label">
         Accessible Button
       </ReactButton>
     </div>

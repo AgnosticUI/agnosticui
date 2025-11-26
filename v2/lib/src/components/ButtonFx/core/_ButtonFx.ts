@@ -69,7 +69,7 @@ export class ButtonFx extends LitElement implements ButtonFxProps {
   declare fxEase: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
 
   @property({ type: Boolean, attribute: 'fx-disabled' })
-  fxDisabled = false;
+  declare fxDisabled: boolean;
 
   // ButtonProps - all forwarded to ag-button
   @property({ type: String, reflect: true })
@@ -109,10 +109,7 @@ export class ButtonFx extends LitElement implements ButtonFxProps {
   pressed?: ButtonProps['pressed'];
 
   @property({ type: String, attribute: 'aria-label' })
-  ariaLabel?: ButtonProps['ariaLabel'];
-
-  @property({ type: String, attribute: 'aria-describedby' })
-  ariaDescribedby?: ButtonProps['ariaDescribedby'];
+  declare ariaLabel: string;
 
   // Event callback props
   @property({ attribute: false })
@@ -131,7 +128,9 @@ export class ButtonFx extends LitElement implements ButtonFxProps {
     super();
     this.fxSpeed = 'md';
     this.fxEase = 'ease';
+    this.fxDisabled = false;
     this.type = 'button';
+    this.ariaLabel = '';
   }
 
   // Event handlers with dual-dispatch pattern
@@ -210,7 +209,6 @@ export class ButtonFx extends LitElement implements ButtonFxProps {
         ?toggle="${this.toggle}"
         ?pressed="${this.pressed}"
         aria-label="${this.ariaLabel || ''}"
-        aria-describedby="${this.ariaDescribedby || ''}"
         @click="${this._handleClick}"
         @focus="${this._handleFocus}"
         @blur="${this._handleBlur}"
