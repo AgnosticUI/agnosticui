@@ -488,7 +488,7 @@ ag-popover::part(ag-popover-close) {
 The Popover implements the [WAI-ARIA Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) for non-modal overlays:
 
 - Uses `role="dialog"` and `aria-modal="false"` for proper screen reader announcement
-- Trigger element has `aria-expanded`, `aria-controls`, and `aria-haspopup` attributes
+- Trigger element has `aria-expanded` and `aria-haspopup` attributes
 - Pressing **Escape** closes the popover
 - Clicking outside the popover closes it (unless using `triggerType="hover"`)
 - Returns focus to the trigger element when closed

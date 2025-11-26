@@ -871,10 +871,10 @@ After creating a new component, update `v2/lib/package.json`:
 
 **ID-Based References (Shadow DOM Limitation):**
 
-AgnosticUI components **cannot** accept these props because Shadow DOM encapsulation prevents ID references from crossing component boundaries:
+AgnosticUI components **cannot** accept these props as external IDs because Shadow DOM encapsulation prevents ID references from crossing component boundaries:
 
-- `aria-describedby` - Cannot reference external elements
-- `aria-labelledby` - Cannot reference external elements (when referencing light DOM)
+- `aria-describedby` - Cannot reference external elements (use internal IDs)
+- `aria-labelledby` - Cannot reference external elements (use internal IDs)
 - `aria-controls` - Cannot reference external elements
 - `aria-owns` - Cannot reference external elements
 - `for` attribute on `<label>` - Cannot reference elements inside shadow DOM
@@ -917,10 +917,10 @@ render() {
 
 **When creating new components:**
 
-1. **DO NOT** add props for `aria-describedby`, `aria-labelledby`, `aria-controls` unless the IDs are generated internally
-2. **DO** use `aria-label` for allowing users to provide accessible names
-3. **DO** generate internal IDs for elements within your shadow DOM and connect them with ARIA attributes
-4. **DO** document clearly which ARIA patterns are supported and why
+1.  **DO NOT** add props for `aria-describedby`, `aria-labelledby`, `aria-controls` if they are intended to reference external IDs.
+2.  **DO** use `aria-label` for allowing users to provide accessible names when no visible label is available.
+3.  **DO** generate internal IDs for elements within your shadow DOM and connect them with ARIA attributes.
+4.  **DO** document clearly which ARIA patterns are supported and why.
 
 ---
 

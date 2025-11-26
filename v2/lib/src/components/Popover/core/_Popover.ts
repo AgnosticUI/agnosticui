@@ -283,7 +283,6 @@ export class Popover extends LitElement implements PopoverProps {
     const triggerElement = this.triggerElement;
     if (triggerElement) {
       triggerElement.setAttribute('aria-expanded', 'false');
-      triggerElement.setAttribute('aria-controls', 'popover');
       triggerElement.setAttribute('aria-haspopup', 'dialog');
     }
   }

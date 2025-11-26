@@ -176,10 +176,8 @@ export class Tooltip extends LitElement implements TooltipProps {
   }
 
   private _setupARIA() {
-    const triggerElement = this.firstElementChild as HTMLElement;
-    if (triggerElement) {
-      triggerElement.setAttribute('aria-describedby', 'tooltip');
-    }
+    // No aria-describedby on trigger as it can't reference an ID in the Shadow DOM
+    // The tooltip's role="tooltip" and content itself provide accessibility.
   }
 
   private _removeEventListeners() {
