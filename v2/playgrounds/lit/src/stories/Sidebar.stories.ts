@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { useArgs } from "storybook/preview-api";
 import { html } from 'lit';
-import { createElement, Folder, User, Settings, Home } from 'lucide';
+import { createElement, Folder, User, Settings, Home, PanelLeftClose, PanelLeftOpen, PanelRightClose, PanelRightOpen } from 'lucide';
 import {type AgSidebarProps } from 'agnosticui-core/sidebar';
 import 'agnosticui-core/icon';
 import 'agnosticui-core/visually-hidden';
@@ -203,7 +203,20 @@ const createNavContent = () => html`
 `;
 
 export const Default: Story = {
-  render: (args) => html`
+  render: (args, { updateArgs }) => {
+    const getToggleIcon = (collapsed: boolean, position: 'left' | 'right') => {
+      if (position === 'left') {
+        return collapsed ? createElement(PanelLeftOpen) : createElement(PanelLeftClose);
+      } else {
+        return collapsed ? createElement(PanelRightOpen) : createElement(PanelRightClose);
+      }
+    };
+
+    const toggleCollapsed = () => {
+      updateArgs({ collapsed: !args.collapsed });
+    };
+
+    return html`
     <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
       <ag-sidebar
         ?open=${args.open}
@@ -215,12 +228,19 @@ export const Default: Story = {
         ?no-transition=${args['noTransition']}
         .width=${args.width}
       >
-        <div slot="header">
-          <h2>My App</h2>
+        <div slot="header" style="display: flex; align-items: center; justify-content: space-between; padding-inline: 1rem;">
+          <h2 style="font-size: 1.125rem; font-weight: 600; color: #1f2937;">My App</h2>
+          <button
+            @click=${toggleCollapsed}
+            aria-label=${args.collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            style="display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 1px solid #e5e7eb; border-radius: 0.375rem; background: #f9fafb; color: #374151; cursor: pointer;"
+          >
+            <ag-icon no-fill>${getToggleIcon(args.collapsed, args.position)}</ag-icon>
+          </button>
         </div>
         ${createNavContent()}
-        <div slot="footer">
-          <p>© 2024</p>
+        <div slot="footer" style="padding: 1rem; border-top: 1px solid #e5e7eb;">
+          <p style="font-size: 0.75rem; color: #6b7280;">© 2024</p>
         </div>
       </ag-sidebar>
       <main style="flex: 1; padding: 2rem;">
@@ -228,7 +248,7 @@ export const Default: Story = {
         <p>This is the main content area.</p>
       </main>
     </div>
-  `,
+  `},
 };
 
 export const Collapsed: Story = {
