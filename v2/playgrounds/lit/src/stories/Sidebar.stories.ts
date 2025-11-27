@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { useArgs } from "storybook/preview-api";
-import { html } from 'lit';
+import { html, nothing } from 'lit';
 import { createElement, Folder, User, Settings, Home, PanelLeftClose, PanelLeftOpen, PanelRightClose, PanelRightOpen } from 'lucide';
 import {type AgSidebarProps } from 'agnosticui-core/sidebar';
 import 'agnosticui-core/icon';
