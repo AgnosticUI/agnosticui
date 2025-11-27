@@ -103,29 +103,20 @@ describe('AgSidebar', () => {
       expect(button.getAttribute('aria-expanded')).toBe('false');
       expect(submenu.classList.contains('open')).toBe(false);
 
-      console.log('[TEST] Before handleSlotClick - button.outerHTML:', button.outerHTML);
-      console.log('[TEST] Before handleSlotClick - aria-expanded:', button.getAttribute('aria-expanded'));
-
       // Directly call _handleSlotClick with a mock event
       // @ts-ignore: Access private method for testing
       sidebar._handleSlotClick({ target: button } as Event);
       await sidebar.updateComplete;
 
-      console.log('[TEST] After first handleSlotClick - button.outerHTML:', button.outerHTML);
-      console.log('[TEST] After first handleSlotClick - aria-expanded:', button.getAttribute('aria-expanded'));
-
       expect(button.getAttribute('aria-expanded')).toBe('true');
       expect(submenu.classList.contains('open')).toBe(true);
-
-      console.log('[TEST] Before second handleSlotClick - button.outerHTML:', button.outerHTML);
-      console.log('[TEST] Before second handleSlotClick - aria-expanded:', button.getAttribute('aria-expanded'));
 
       // @ts-ignore: Access private method for testing
       sidebar._handleSlotClick({ target: button } as Event);
       await sidebar.updateComplete;
-
-      console.log('[TEST] After second handleSlotClick - button.outerHTML:', button.outerHTML);
-      console.log('[TEST] After second handleSlotClick - aria-expanded:', button.getAttribute('aria-expanded'));
+      
+      expect(button.getAttribute('aria-expanded')).toBe('false');
+      expect(submenu.classList.contains('open')).toBe(false);
       
       expect(button.getAttribute('aria-expanded')).toBe('false');
       expect(submenu.classList.contains('open')).toBe(false);

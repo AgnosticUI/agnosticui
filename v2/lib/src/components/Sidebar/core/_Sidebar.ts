@@ -330,11 +330,8 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     const target = event.target as HTMLElement;
     const button = target.closest('.nav-button');
     if (button && button.hasAttribute('aria-expanded')) {
-      console.log('[_handleSlotClick] Button found:', button);
-      console.log('[_handleSlotClick] Before setAttribute - aria-expanded:', button.getAttribute('aria-expanded'));
       const isExpanded = button.getAttribute('aria-expanded') === 'true';
       button.setAttribute('aria-expanded', String(!isExpanded));
-      console.log('[_handleSlotClick] After setAttribute - aria-expanded:', button.getAttribute('aria-expanded'));
       const submenu = button.nextElementSibling;
       if (submenu && submenu.classList.contains('nav-submenu')) {
         submenu.classList.toggle('open');
