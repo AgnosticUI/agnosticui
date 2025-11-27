@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { fn } from "storybook/test";
+import { createElement, Target, Sparkles, Palette, Flame, MousePointerClick, Check, Download, ArrowDown, Plus, Search, Minus, ChevronDown, ArrowUp, BarChart3, ArrowRight, ArrowRightCircle, RotateCw, Theater, AlertTriangle, X, Zap, Bomb } from "lucide";
 import "agnosticui-core/button-fx";
+import "agnosticui-core/icon";
 import type { ButtonFx } from "agnosticui-core/button-fx";
 
 // Extend ButtonFx with event handler props for Storybook
@@ -101,7 +103,7 @@ const meta: Meta<ButtonFxProps> = {
   args: {
     fx: "bounce",
     fxSpeed: "md",
-    fxEase: "ease",
+    fxEase: "spring-md",
     fxDisabled: false,
     variant: "primary",
     size: "md",
@@ -321,94 +323,200 @@ export const MultipleEffects: Story = {
 
 export const EffectsGallery: Story = {
   render: () => html`
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; padding: 1rem;">
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["bounce"]} .variant=${"primary"}>Bounce</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Vertical pop (hover)</p>
+    <div style="padding: 2rem; max-width: 1400px; margin: 0 auto;">
+      <!-- Bounce Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Bounce <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Vertical pop (hover)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["bounce"]} .fxEase=${"spring-md"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["bounce"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["bounce"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["bounce"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["bounce"]} .fxEase=${"spring-md"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["bounce"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["bounce"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Target)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["bounce"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Sparkles)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["pulse"]} .variant=${"primary"}>Pulse</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Scale grow (hover)</p>
+
+      <!-- Pulse Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Pulse <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Scale grow (hover)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["pulse"]} .fxEase=${"spring-md"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["pulse"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["pulse"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["pulse"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["pulse"]} .fxEase=${"spring-md"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["pulse"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["pulse"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Sparkles)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["pulse"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Zap)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["jelly"]} .variant=${"primary"}>Jelly</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Squash/stretch (hover)</p>
+
+      <!-- Jelly Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Jelly <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Squash/stretch (hover)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["jelly"]} .fxEase=${"spring-lg"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["jelly"]} .fxEase=${"spring-lg"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["jelly"]} .fxEase=${"spring-lg"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["jelly"]} .fxEase=${"spring-lg"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["jelly"]} .fxEase=${"spring-lg"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["jelly"]} .fxEase=${"spring-lg"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["jelly"]} .fxEase=${"spring-lg"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Palette)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["jelly"]} .fxEase=${"spring-lg"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Flame)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["press-pop"]} .variant=${"primary"}>Press Pop</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Quick press (click)</p>
+
+      <!-- Press Pop Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Press Pop <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Quick press (click)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["press-pop"]} .fxEase=${"spring-sm"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["press-pop"]} .fxEase=${"spring-sm"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["press-pop"]} .fxEase=${"spring-sm"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["press-pop"]} .fxEase=${"spring-sm"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["press-pop"]} .fxEase=${"spring-sm"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["press-pop"]} .fxEase=${"spring-sm"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["press-pop"]} .fxEase=${"spring-sm"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(MousePointerClick)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["press-pop"]} .fxEase=${"spring-sm"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Check)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["slide-in"]} .variant=${"primary"}>Slide In</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Entrance (mount)</p>
+
+      <!-- Slide In Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Slide In <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Entrance (mount)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["slide-in"]} .fxEase=${"spring-md"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["slide-in"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["slide-in"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["slide-in"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["slide-in"]} .fxEase=${"spring-md"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["slide-in"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["slide-in"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Download)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["slide-in"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(ArrowDown)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["grow"]} .variant=${"primary"}>Grow</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Scale up (hover)</p>
+
+      <!-- Grow Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Grow <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Scale up (hover)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["grow"]} .fxEase=${"spring-md"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["grow"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["grow"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["grow"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["grow"]} .fxEase=${"spring-md"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["grow"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["grow"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Plus)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["grow"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Search)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["shrink"]} .variant=${"primary"}>Shrink</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Scale down (hover)</p>
+
+      <!-- Shrink Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Shrink <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Scale down (hover)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["shrink"]} .fxEase=${"spring-md"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["shrink"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["shrink"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["shrink"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["shrink"]} .fxEase=${"spring-md"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["shrink"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["shrink"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Minus)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["shrink"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(ChevronDown)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["push"]} .variant=${"primary"}>Push</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Press down (hover)</p>
+
+      <!-- Push Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Push <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Press down (hover)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["push"]} .fxEase=${"spring-sm"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["push"]} .fxEase=${"spring-sm"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["push"]} .fxEase=${"spring-sm"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["push"]} .fxEase=${"spring-sm"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["push"]} .fxEase=${"spring-sm"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["push"]} .fxEase=${"spring-sm"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["push"]} .fxEase=${"spring-sm"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(ArrowDown)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["push"]} .fxEase=${"spring-sm"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Target)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["bg-slide"]} .variant=${"primary"}>BG Slide</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+
+      <!-- BG Slide Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">BG Slide <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Background slides up (hover)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["bg-slide"]} .fxSpeed=${"md"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["bg-slide"]} .fxSpeed=${"md"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["bg-slide"]} .fxSpeed=${"md"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["bg-slide"]} .fxSpeed=${"md"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["bg-slide"]} .fxSpeed=${"md"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["bg-slide"]} .fxSpeed=${"md"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["bg-slide"]} .fxSpeed=${"md"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(ArrowUp)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["bg-slide"]} .fxSpeed=${"md"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(BarChart3)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["bg-slide"]} .variant=${"primary"} .fxSpeed=${"xl"} bordered>Slide Bordered</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+
+      <!-- Side Slide Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Side Slide <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Wipe left to right (hover)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["side-slide"]} .fxSpeed=${"md"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["side-slide"]} .fxSpeed=${"md"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["side-slide"]} .fxSpeed=${"md"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["side-slide"]} .fxSpeed=${"md"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["side-slide"]} .fxSpeed=${"md"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["side-slide"]} .fxSpeed=${"md"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["side-slide"]} .fxSpeed=${"md"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(ArrowRight)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["side-slide"]} .fxSpeed=${"md"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(ArrowRightCircle)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["side-slide"]} .variant=${"primary"} .fxSpeed=${"xl"}>Side Slide Left Bordered</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+
+      <!-- Wobble Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Wobble <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Rotate wobble (hover)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(RotateCw)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Theater)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["side-slide"]} .variant=${"primary"} .fxSpeed=${"xl"} bordered>Side Slide Left Bordered</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+
+      <!-- Shake Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Shake <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Horizontal shake (hover)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(AlertTriangle)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(X)}</ag-icon></ag-button-fx>
+        </div>
       </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["side-slide"]} .variant=${"success"} .fxSpeed=${"xl"}>Side Slide Left Bordered</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
-      </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["side-slide"]} .variant=${"success"} .fxSpeed=${"xl"} bordered>Side Slide Left Bordered</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
-      </div>
-            <div style="text-align: center;">
-        <ag-button-fx .fx=${["side-slide"]} .variant=${"danger"} .fxSpeed=${"xl"}>Side Slide Left Bordered</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
-      </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["side-slide"]} .variant=${"danger"} .fxSpeed=${"xl"} bordered>Side Slide Left Bordered</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
-      </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["wobble"]} .variant=${"primary"}>Wobble</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Wobble effect (hover)</p>
-      </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["shake"]} .variant=${"primary"}>Shake</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shake/jitter (hover)</p>
-      </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["press-shadow"]} .variant=${"primary"}>Press Shadow</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shadow press (click)</p>
-      </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["press-shadow"]} .variant=${"success"}>Press Shadow</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shadow press (click)</p>
-      </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["press-shadow"]} .variant=${"warning"}>Press Shadow</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shadow press (click)</p>
-      </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["press-shadow"]} .variant=${"danger"}>Press Shadow</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shadow press (click)</p>
+
+      <!-- Press Shadow Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.25rem;">Press Shadow <span style="font-weight: normal; font-size: 0.875rem; color: #6b7280;">Shadow press (click)</span></h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx .fx=${["press-shadow"]} .variant=${"primary"} .shape=${"rounded"}>Primary</ag-button-fx>
+          <ag-button-fx .fx=${["press-shadow"]} .variant=${"success"} .shape=${"rounded"}>Success</ag-button-fx>
+          <ag-button-fx .fx=${["press-shadow"]} .variant=${"warning"} .shape=${"rounded"}>Warning</ag-button-fx>
+          <ag-button-fx .fx=${["press-shadow"]} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
+          <ag-button-fx .fx=${["press-shadow"]} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
+          <ag-button-fx .fx=${["press-shadow"]} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx .fx=${["press-shadow"]} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Zap)}</ag-icon></ag-button-fx>
+          <ag-button-fx .fx=${["press-shadow"]} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Bomb)}</ag-icon></ag-button-fx>
+        </div>
       </div>
     </div>
   `,

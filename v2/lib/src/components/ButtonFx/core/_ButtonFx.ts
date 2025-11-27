@@ -80,10 +80,10 @@ export class ButtonFx extends AgButton implements FxProps {
       /* 3. Jelly - squash/stretch */
       @keyframes ag-fx-jelly {
         30% {
-          transform: scale(1.15, 0.85);
+          transform: scale(1.08, 0.92);
         }
         60% {
-          transform: scale(0.9, 1.1);
+          transform: scale(0.95, 1.05);
         }
       }
 
