@@ -75,23 +75,22 @@ const createNavContent = () => html`
       padding: 8px;
       border: none;
       background: transparent;
-      border-radius: 6px;
+      border-radius: var(--ag-border-radius-sm);
       cursor: pointer;
       text-align: left;
-      font-size: 14px;
-      color: #374151;
+      font-size: var(--ag-font-size-sm);
+      color: var(--ag-text-primary);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: var(--ag-space-2);
       transition: background 0.15s;
     }
     .nav-button:hover {
-      background: #e5e7eb;
+      background: var(--ag-background-secondary);;
     }
     .nav-button.active {
-      background: #dbeafe;
-      color: #1e40af;
-      font-weight: 500;
+      background: var(--ag-primary-background);
+      color: var(--ag-text-primary);
     }
     /* Icon styling within nav-button */
     .nav-button ag-icon {
@@ -127,18 +126,20 @@ const createNavContent = () => html`
     .nav-sublink {
       display: block;
       padding: var(--ag-space-2);
-      border-radius: 6px;
+      border-radius: var(--ag-radius-md);
       text-decoration: none;
-      color: #374151;
-      font-size: 14px;
+      color: var(--ag-text-primary);
+      font-size: var(--ag-font-size-sm);
       transition: background 0.15s;
     }
     .nav-sublink:hover {
-      background: #e5e7eb;
+      background: var(--ag-background-tertiary);
+      color: var(--ag-text-primary);
     }
+    .nav-sublink:active,
     .nav-sublink.active {
-      background: #dbeafe;
-      color: #1e40af;
+      background: var(--ag-primary-background);
+      color: var(--ag-text-primary);
     }
 
     /* Collapsed state (rail mode) styles */
@@ -232,7 +233,7 @@ export const Default: Story = {
 };
 
 export const WithHeaderFooter: Story = {
-  render: (initialArgs) => {
+  render: () => {
     const [args, updateArgs] = useArgs(); // Correct usage
 
     const getToggleIcon = (collapsed: boolean, position: 'left' | 'right') => {
@@ -268,19 +269,19 @@ export const WithHeaderFooter: Story = {
         .width=${args.width}
       >
         <div slot="header" style="display: flex; align-items: center; justify-content: ${args.collapsed ? 'center' : 'space-between'};">
-          ${!args.collapsed ? html`<h2 style="font-size: 1.125rem; font-weight: 600; color: #1f2937;">My App</h2>` : nothing}
+          ${!args.collapsed ? html`<h2 style="font-size: 1.125rem; font-weight: 600; color: var(--ag-text-primary); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">My App</h2>` : nothing}
           <button
             @click=${toggleCollapsed}
             aria-label=${args.collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-            style="display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 1px solid #e5e7eb; border-radius: 0.375rem; background: #f9fafb; color: #374151; cursor: pointer;"
+            style="display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 1px solid var(--ag-border-subtle); border-radius: 0.375rem; background: var(--ag-background-tertiary); color: var(--text-primary); cursor: pointer;"
           >
             <ag-icon no-fill>${getToggleIcon(args.collapsed, args.position)}</ag-icon>
           </button>
         </div>
         ${createNavContent()}
-        <div slot="footer" style="padding: 1rem; border-top: 1px solid #e5e7eb;">
-          <p class="footer-text" style="font-size: 0.75rem; color: #6b7280;">
-            ${args.collapsed ? '©' : '© 2024'}
+        <div slot="footer" style="text-align: ${args.collapsed ? 'center' : 'left'};">
+          <p class="footer-text" style="color: var(--ag-text-secondary) margin: 0; font-size: 0.875rem;">
+            ${args.collapsed ? '©' : '© 2025'}
           </p>
         </div>
       </ag-sidebar>
