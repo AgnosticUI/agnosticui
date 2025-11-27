@@ -23,7 +23,7 @@
  * - extensions/: AI-safe behavioral extensions
  */
 
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -386,7 +386,7 @@ export class AgButton extends LitElement implements ButtonProps {
       outline-offset: var(--ag-focus-offset);
       transition: outline var(--ag-motion-medium) ease;
     }
-  `;
+  ` as CSSResultGroup;
 
   /**
    * Visual variant for styling hooks

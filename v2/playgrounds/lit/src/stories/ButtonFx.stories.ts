@@ -455,7 +455,7 @@ export const DarkMode: Story = {
         <ag-button-fx .fx=${["bounce"]} .variant=${"primary"}>Bounce</ag-button-fx>
         <ag-button-fx .fx=${["pulse"]} .variant=${"success"}>Pulse</ag-button-fx>
         <ag-button-fx .fx=${["glow"]} .variant=${"warning"}>Glow</ag-button-fx>
-        <ag-button-fx .fx=${["shimmer"]} .variant=${"danger"}>Shimmer</ag-button-fx>
+        <ag-button-fx .fx=${["highlight-sweep"]} .variant=${"danger"}>Highlight</ag-button-fx>
       </div>
     </div>
   `,
