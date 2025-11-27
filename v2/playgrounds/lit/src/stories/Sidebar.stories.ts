@@ -68,11 +68,11 @@ const createNavContent = () => html`
       margin: 0;
     }
     .nav-item {
-      margin-bottom: var(--ag-space-1);
+      margin-bottom: 4px;
     }
     .nav-button {
       width: 100%;
-      padding: var(--ag-space-2); /* 8px */
+      padding: 8px;
       border: none;
       background: transparent;
       border-radius: var(--ag-border-radius-sm);
@@ -86,12 +86,11 @@ const createNavContent = () => html`
       transition: background 0.15s;
     }
     .nav-button:hover {
-      background: var(--ag-background-secondary);
+      background: var(--ag-background-secondary);;
     }
     .nav-button.active {
       background: var(--ag-primary-background);
-      color: var(--ag-primary-text);
-      font-weight: 500;
+      color: var(--ag-text-primary);
     }
     /* Icon styling within nav-button */
     .nav-button ag-icon {
@@ -125,8 +124,8 @@ const createNavContent = () => html`
     }
     .nav-sublink {
       display: block;
-      padding: var(--ag-space-2); /* 8px */
-      border-radius: var(--ag-border-radius-sm);
+      padding: var(--ag-space-2);
+      border-radius: var(--ag-radius-sm);
       text-decoration: none;
       color: var(--ag-text-primary);
       font-size: var(--ag-font-size-sm);
