@@ -38,6 +38,11 @@ export class AgIcon extends LitElement implements IconProps {
   }
 
   static styles = css`
+    :host {
+      /* Ensure the custom element itself doesn't add extra space */
+      display: inline-flex;
+    }
+
     .icon-base {
       display: inline-flex;
       text-align: center;

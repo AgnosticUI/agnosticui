@@ -185,6 +185,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       display: flex;
       align-items: center;
       justify-content: center;
+      line-height: 1;
     }
 
     /* Make any SVG or direct child fill the icon container so it scales */
