@@ -255,17 +255,6 @@ export const WithHeaderFooter: Story = {
         justify-content: center;
         padding: var(--ag-space-2);
       }
-      ag-sidebar[collapsed] [slot="footer"] .footer-text {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-      }
     </style>
     <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
       <ag-sidebar
@@ -278,7 +267,7 @@ export const WithHeaderFooter: Story = {
         ?no-transition=${args['noTransition']}
         .width=${args.width}
       >
-        <div slot="header" style="display: flex; align-items: center; justify-content: space-between; padding-inline: 1rem;">
+        <div slot="header" style="display: flex; align-items: center; justify-content: space-between;">
           <h2 style="font-size: 1.125rem; font-weight: 600; color: #1f2937;">My App</h2>
           <button
             @click=${toggleCollapsed}
@@ -290,7 +279,9 @@ export const WithHeaderFooter: Story = {
         </div>
         ${createNavContent()}
         <div slot="footer" style="padding: 1rem; border-top: 1px solid #e5e7eb;">
-          <p class="footer-text" style="font-size: 0.75rem; color: #6b7280;">© 2024</p>
+          <p class="footer-text" style="font-size: 0.75rem; color: #6b7280;">
+            ${args.collapsed ? '©' : '© 2024'}
+          </p>
         </div>
       </ag-sidebar>
       <main style="flex: 1; padding: 2rem;">
