@@ -94,7 +94,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     }
 
     .sidebar-header, .sidebar-footer {
-      padding: 1rem;
+      padding: var(--ag-space-2) var(--ag-space-4);
       flex-shrink: 0;
     }
     .sidebar-header {
