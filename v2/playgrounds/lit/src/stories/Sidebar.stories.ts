@@ -126,7 +126,7 @@ const createNavContent = () => html`
     }
     .nav-sublink {
       display: block;
-      padding: 6px 8px;
+      padding: var(--ag-space-2);
       border-radius: 6px;
       text-decoration: none;
       color: #374151;
