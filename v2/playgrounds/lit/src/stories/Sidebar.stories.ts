@@ -254,7 +254,6 @@ export const WithHeaderFooter: Story = {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: var(--ag-space-2);
       }
     </style>
     <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
@@ -280,7 +279,7 @@ export const WithHeaderFooter: Story = {
         </div>
         ${createNavContent()}
         <div slot="footer" style="text-align: ${args.collapsed ? 'center' : 'left'};">
-          <p class="footer-text" style="color: var(--ag-text-secondary) margin: 0; font-size: 0.875rem;">
+          <p class="footer-text" style="color: var(--ag-text-secondary); margin: 0; padding: 0; font-size: 0.875rem;">
             ${args.collapsed ? '©' : '© 2025'}
           </p>
         </div>
