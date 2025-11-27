@@ -211,31 +211,6 @@ export const Jelly: Story = {
   `,
 };
 
-export const TiltPress: Story = {
-  args: {
-    fx: "tilt-press",
-    variant: "primary",
-  },
-  render: ({ fx, variant }) => html`
-    <ag-button-fx .fx=${[fx as string]} .variant=${variant}>
-      Click Me (Active)
-    </ag-button-fx>
-  `,
-};
-
-
-export const Glow: Story = {
-  args: {
-    fx: "glow",
-    variant: "primary",
-  },
-  render: ({ fx, variant }) => html`
-    <ag-button-fx .fx=${[fx as string]} .variant=${variant}>
-      Glow Effect
-    </ag-button-fx>
-  `,
-};
-
 export const PressPop: Story = {
   args: {
     fx: "press-pop",
@@ -261,30 +236,6 @@ export const SlideIn: Story = {
 };
 
 
-export const IconReveal: Story = {
-  args: {
-    fx: "icon-reveal",
-    variant: "primary",
-  },
-  render: ({ fx, variant }) => html`
-    <ag-button-fx .fx=${[fx as string]} .variant=${variant}>
-      Icon Reveal Effect
-    </ag-button-fx>
-  `,
-};
-
-
-export const HighlightSweep: Story = {
-  args: {
-    fx: "highlight-sweep",
-    variant: "primary",
-  },
-  render: ({ fx, variant }) => html`
-    <ag-button-fx .fx=${[fx as string]} .variant=${variant}>
-      Highlight Sweep
-    </ag-button-fx>
-  `,
-};
 
 // ========================================
 // FX Speed Variations
@@ -365,7 +316,7 @@ export const MultipleEffects: Story = {
 };
 
 // ========================================
-// Effects Gallery - All 12 Effects
+// Effects Gallery - All Effects
 // ========================================
 
 export const EffectsGallery: Story = {
@@ -384,14 +335,6 @@ export const EffectsGallery: Story = {
         <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Squash/stretch (hover)</p>
       </div>
       <div style="text-align: center;">
-        <ag-button-fx .fx=${["tilt-press"]} .variant=${"primary"}>Tilt Press</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">3D tilt (click)</p>
-      </div>
-      <div style="text-align: center;">
-        <ag-button-fx .fx=${["glow"]} .variant=${"primary"}>Glow</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shadow pulse (hover)</p>
-      </div>
-      <div style="text-align: center;">
         <ag-button-fx .fx=${["press-pop"]} .variant=${"primary"}>Press Pop</ag-button-fx>
         <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Quick press (click)</p>
       </div>
@@ -400,12 +343,32 @@ export const EffectsGallery: Story = {
         <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Entrance (mount)</p>
       </div>
       <div style="text-align: center;">
-        <ag-button-fx .fx=${["icon-reveal"]} .variant=${"primary"}>Icon Reveal</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Clip-path (hover)</p>
+        <ag-button-fx .fx=${["grow"]} .variant=${"primary"}>Grow</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Scale up (hover)</p>
       </div>
       <div style="text-align: center;">
-        <ag-button-fx .fx=${["highlight-sweep"]} .variant=${"primary"}>Highlight</ag-button-fx>
-        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Horizontal sweep (hover)</p>
+        <ag-button-fx .fx=${["shrink"]} .variant=${"primary"}>Shrink</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Scale down (hover)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["push"]} .variant=${"primary"}>Push</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Press down (hover)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["bg-slide"]} .variant=${"primary"}>BG Slide</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["wobble"]} .variant=${"primary"}>Wobble</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Wobble effect (hover)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["shake"]} .variant=${"primary"}>Shake</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shake/jitter (hover)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["press-shadow"]} .variant=${"primary"}>Press Shadow</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shadow press (click)</p>
       </div>
     </div>
   `,
@@ -480,3 +443,4 @@ export const ReducedMotion: Story = {
     </div>
   `,
 };
+
