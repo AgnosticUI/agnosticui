@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { fn } from "storybook/test";
+import { createElement, X, Menu, Check, Star, Shield, MoreVertical, ChevronDown, ArrowRight, RotateCw, Heart } from "lucide";
+import "agnosticui-core/icon";
 import "agnosticui-core/icon-button";
 import type { IconButtonProps } from "agnosticui-core/icon-button";
 
@@ -78,12 +80,9 @@ type Story = StoryObj<IconButtonProps>;
 export const Default: Story = {
   args: {
     label: "Close",
-    unicode: "×",
   },
   render: ({
     label,
-    icon,
-    unicode,
     size,
     variant,
     type,
@@ -97,8 +96,6 @@ export const Default: Story = {
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .icon=${icon}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
         .type=${type}
@@ -109,7 +106,9 @@ export const Default: Story = {
         @icon-button-click=${(e: CustomEvent) => onIconButtonClick(e.detail)}
         @icon-button-activate=${(e: CustomEvent) =>
           onIconButtonActivate(e.detail)}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -117,17 +116,17 @@ export const Default: Story = {
 // Icon identifier
 export const WithIcon: Story = {
   args: {
-    label: "Settings",
-    icon: "settings",
+    label: "Menu",
   },
-  render: ({ label, icon, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .icon=${icon}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(Menu)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -135,17 +134,17 @@ export const WithIcon: Story = {
 // Unicode symbol
 export const WithUnicode: Story = {
   args: {
-    label: "Menu",
-    unicode: "☰",
+    label: "Check",
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(Check)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -153,16 +152,12 @@ export const WithUnicode: Story = {
 // Custom SVG content
 export const WithCustomSVG: Story = {
   args: {
-    label: "Custom icon",
+    label: "Shield",
   },
   render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button .label=${label} .size=${size} .variant=${variant}>
-        <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%">
-          <path
-            d="M12 2L2 7v10c0 5.5 3.8 10.7 10 12 6.2-1.3 10-6.5 10-12V7l-10-5z"
-          />
-        </svg>
+        <ag-icon no-fill>${createElement(Shield)}</ag-icon>
       </ag-icon-button>
     </div>
   `,
@@ -172,17 +167,17 @@ export const WithCustomSVG: Story = {
 export const SizeXS: Story = {
   args: {
     label: "Extra small",
-    unicode: "×",
     size: "xs",
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -190,17 +185,17 @@ export const SizeXS: Story = {
 export const SizeSM: Story = {
   args: {
     label: "Small",
-    unicode: "×",
     size: "sm",
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -208,17 +203,17 @@ export const SizeSM: Story = {
 export const SizeMD: Story = {
   args: {
     label: "Medium",
-    unicode: "×",
     size: "md",
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -226,17 +221,17 @@ export const SizeMD: Story = {
 export const SizeLG: Story = {
   args: {
     label: "Large",
-    unicode: "×",
     size: "lg",
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -244,17 +239,17 @@ export const SizeLG: Story = {
 export const SizeXL: Story = {
   args: {
     label: "Extra large",
-    unicode: "×",
     size: "xl",
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -263,17 +258,17 @@ export const SizeXL: Story = {
 export const VariantPrimary: Story = {
   args: {
     label: "Primary action",
-    unicode: "✓",
     variant: "primary",
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(Check)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -281,17 +276,17 @@ export const VariantPrimary: Story = {
 export const VariantSecondary: Story = {
   args: {
     label: "Secondary action",
-    unicode: "☰",
     variant: "secondary",
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(Menu)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -299,17 +294,17 @@ export const VariantSecondary: Story = {
 export const VariantGhost: Story = {
   args: {
     label: "Ghost action",
-    unicode: "⋯",
     variant: "ghost",
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(MoreVertical)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -317,17 +312,17 @@ export const VariantGhost: Story = {
 export const VariantDanger: Story = {
   args: {
     label: "Delete",
-    unicode: "×",
     variant: "danger",
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, size, variant }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -336,18 +331,18 @@ export const VariantDanger: Story = {
 export const Disabled: Story = {
   args: {
     label: "Disabled button",
-    unicode: "×",
     disabled: true,
   },
-  render: ({ label, unicode, size, variant, disabled }) => html`
+  render: ({ label, size, variant, disabled }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
         .disabled=${disabled}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -355,18 +350,18 @@ export const Disabled: Story = {
 export const Pressed: Story = {
   args: {
     label: "Toggle button",
-    unicode: "★",
     pressed: true,
   },
-  render: ({ label, unicode, size, variant, pressed }) => html`
+  render: ({ label, size, variant, pressed }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
         .pressed=${pressed}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(Star)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -374,18 +369,18 @@ export const Pressed: Story = {
 export const Loading: Story = {
   args: {
     label: "Loading",
-    unicode: "↻",
     loading: true,
   },
-  render: ({ label, unicode, size, variant, loading }) => html`
+  render: ({ label, size, variant, loading }) => html`
     <div style="display: flex; justify-content: center; padding: 50px;">
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
         .loading=${loading}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(RotateCw)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -394,11 +389,9 @@ export const Loading: Story = {
 export const EventTesting: Story = {
   args: {
     label: "Click to test events",
-    unicode: "👆",
   },
   render: ({
     label,
-    unicode,
     size,
     variant,
     onIconButtonClick,
@@ -412,13 +405,14 @@ export const EventTesting: Story = {
       </p>
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
         @icon-button-click=${(e: CustomEvent) => onIconButtonClick(e.detail)}
         @icon-button-activate=${(e: CustomEvent) =>
           onIconButtonActivate(e.detail)}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(Star)}</ag-icon>
+      </ag-icon-button>
       <p style="font-size: 0.875rem; color: #6b7280; margin: 0;">
         Check the Actions panel below for event logs (shows button label and
         event details)
@@ -431,10 +425,9 @@ export const EventTesting: Story = {
 export const TypeButton: Story = {
   args: {
     label: "Button type",
-    unicode: "○",
     type: "button",
   },
-  render: ({ label, unicode, size, variant, type }) => html`
+  render: ({ label, size, variant, type }) => html`
     <form
       @submit=${(e: Event) => {
         e.preventDefault();
@@ -444,11 +437,12 @@ export const TypeButton: Story = {
       <div style="display: flex; justify-content: center; padding: 50px;">
         <ag-icon-button
           .label=${label}
-          .unicode=${unicode}
           .size=${size}
           .variant=${variant}
           .type=${type}
-        ></ag-icon-button>
+        >
+          <ag-icon no-fill>${createElement(ChevronDown)}</ag-icon>
+        </ag-icon-button>
       </div>
     </form>
   `,
@@ -457,11 +451,10 @@ export const TypeButton: Story = {
 export const TypeSubmit: Story = {
   args: {
     label: "Submit",
-    unicode: "→",
     type: "submit",
     variant: "primary",
   },
-  render: ({ label, unicode, size, variant, type }) => html`
+  render: ({ label, size, variant, type }) => html`
     <form
       @submit=${(e: Event) => {
         e.preventDefault();
@@ -474,11 +467,12 @@ export const TypeSubmit: Story = {
         <input type="text" placeholder="Enter text" />
         <ag-icon-button
           .label=${label}
-          .unicode=${unicode}
           .size=${size}
           .variant=${variant}
           .type=${type}
-        ></ag-icon-button>
+        >
+          <ag-icon no-fill>${createElement(ArrowRight)}</ag-icon>
+        </ag-icon-button>
       </div>
     </form>
   `,
@@ -487,11 +481,10 @@ export const TypeSubmit: Story = {
 export const TypeReset: Story = {
   args: {
     label: "Reset form",
-    unicode: "↻",
     type: "reset",
     variant: "danger",
   },
-  render: ({ label, unicode, size, variant, type }) => html`
+  render: ({ label, size, variant, type }) => html`
     <form
       @reset=${() => {
         console.log("Form reset");
@@ -504,11 +497,12 @@ export const TypeReset: Story = {
         <input type="text" value="Test value" />
         <ag-icon-button
           .label=${label}
-          .unicode=${unicode}
           .size=${size}
           .variant=${variant}
           .type=${type}
-        ></ag-icon-button>
+        >
+          <ag-icon no-fill>${createElement(RotateCw)}</ag-icon>
+        </ag-icon-button>
       </div>
     </form>
   `,
@@ -518,21 +512,21 @@ export const TypeReset: Story = {
 export const Accessible: Story = {
   args: {
     label: "Accessible icon button",
-    unicode: "★",
     ariaDescribedby: "description-id",
   },
-  render: ({ label, unicode, size, variant, ariaDescribedby }) => html`
+  render: ({ label, size, variant, ariaDescribedby }) => html`
     <div
       style="display: flex; flex-direction: column; align-items: center; padding: 50px; gap: 1rem;"
     >
       <p id="description-id">This button marks items as favorites</p>
       <ag-icon-button
         .label=${label}
-        .unicode=${unicode}
         .size=${size}
         .variant=${variant}
         .ariaDescribedby=${ariaDescribedby}
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(Star)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -545,17 +539,25 @@ export const AllSizes: Story = {
     >
       <ag-icon-button
         label="Extra small"
-        unicode="×"
         size="xs"
-      ></ag-icon-button>
-      <ag-icon-button label="Small" unicode="×" size="sm"></ag-icon-button>
-      <ag-icon-button label="Medium" unicode="×" size="md"></ag-icon-button>
-      <ag-icon-button label="Large" unicode="×" size="lg"></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
+      <ag-icon-button label="Small" size="sm">
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
+      <ag-icon-button label="Medium" size="md">
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
+      <ag-icon-button label="Large" size="lg">
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
       <ag-icon-button
         label="Extra large"
-        unicode="×"
         size="xl"
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -568,24 +570,28 @@ export const AllVariants: Story = {
     >
       <ag-icon-button
         label="Ghost"
-        unicode="○"
         variant="ghost"
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(MoreVertical)}</ag-icon>
+      </ag-icon-button>
       <ag-icon-button
         label="Primary"
-        unicode="✓"
         variant="primary"
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(Check)}</ag-icon>
+      </ag-icon-button>
       <ag-icon-button
         label="Secondary"
-        unicode="☰"
         variant="secondary"
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(Menu)}</ag-icon>
+      </ag-icon-button>
       <ag-icon-button
         label="Danger"
-        unicode="×"
         variant="danger"
-      ></ag-icon-button>
+      >
+        <ag-icon no-fill>${createElement(X)}</ag-icon>
+      </ag-icon-button>
     </div>
   `,
 };
@@ -631,37 +637,40 @@ export const CSSPartsCustomization: Story = {
       </p>
 
       <div
-        style="display: flex; gap: 2rem; align-items: center; margin-bottom: 2rem;"
+        style="display: flex; gap: 2rem; align-items: flex-end; margin-bottom: 2rem;"
       >
         <div>
-          <h4>Gradient Icon</h4>
+          <h4 style="margin-bottom: 0.5rem;">Gradient Icon</h4>
           <ag-icon-button
             class="custom-icon-btn"
             label="Gradient styled"
-            unicode="★"
             size="xl"
-          ></ag-icon-button>
+          >
+            <ag-icon no-fill>${createElement(Star)}</ag-icon>
+          </ag-icon-button>
         </div>
 
         <div>
-          <h4>Custom Border</h4>
+          <h4 style="margin-bottom: 0.5rem;">Custom Border</h4>
           <ag-icon-button
             class="custom-border-btn"
             label="Border styled"
-            unicode="♥"
             size="lg"
-          ></ag-icon-button>
+          >
+            <ag-icon no-fill>${createElement(Heart)}</ag-icon>
+          </ag-icon-button>
         </div>
 
         <div>
-          <h4>Custom Shadow</h4>
+          <h4 style="margin-bottom: 0.5rem;">Custom Shadow</h4>
           <ag-icon-button
             class="custom-shadow-btn"
             label="Shadow styled"
-            unicode="✓"
             size="lg"
             variant="primary"
-          ></ag-icon-button>
+          >
+            <ag-icon no-fill>${createElement(Check)}</ag-icon>
+          </ag-icon-button>
         </div>
       </div>
     </div>

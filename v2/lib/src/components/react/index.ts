@@ -1,6 +1,7 @@
 // Re-export all React components from AgnosticUI Core
 export * from '../Accordion/react';
 export * from '../Alert/react';
+export * from '../AspectRatio/react';
 export * from '../Avatar/react';
 export * from '../Badge/react';
 export * from '../Breadcrumb/react';

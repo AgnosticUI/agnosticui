@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
+import { X, Menu, Check, Star, Shield, MoreVertical, ChevronDown, ArrowRight, RotateCw, Heart } from 'lucide-vue-next';
 import VueIconButton from 'agnosticui-core/icon-button/vue';
 import type { VueIconButtonProps } from 'agnosticui-core/icon-button/vue';
+import { VueIcon } from 'agnosticui-core/icon/vue';
 import { ref } from 'vue';
 
 const meta = {
@@ -74,16 +76,17 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     label: 'Close',
-    unicode: '×',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, X },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><X /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -91,17 +94,18 @@ export const Default: Story = {
 
 export const WithIcon: Story = {
   args: {
-    label: 'Settings',
-    icon: 'settings',
+    label: 'Menu',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, Menu },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><Menu /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -109,17 +113,18 @@ export const WithIcon: Story = {
 
 export const WithUnicode: Story = {
   args: {
-    label: 'Menu',
-    unicode: '☰',
+    label: 'Check',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, Check },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><Check /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -127,19 +132,17 @@ export const WithUnicode: Story = {
 
 export const WithCustomSVG: Story = {
   args: {
-    label: 'Custom icon',
+    label: 'Shield',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, Shield },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
         <VueIconButton v-bind="args">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%">
-            <path d="M12 2L2 7v10c0 5.5 3.8 10.7 10 12 6.2-1.3 10-6.5 10-12V7l-10-5z" />
-          </svg>
+          <VueIcon no-fill><Shield /></VueIcon>
         </VueIconButton>
       </div>
     `,
@@ -150,17 +153,18 @@ export const WithCustomSVG: Story = {
 export const SizeXS: Story = {
   args: {
     label: 'Close',
-    unicode: '×',
     size: 'xs',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, X },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><X /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -169,17 +173,18 @@ export const SizeXS: Story = {
 export const SizeSM: Story = {
   args: {
     label: 'Close',
-    unicode: '×',
     size: 'sm',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, X },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><X /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -188,17 +193,18 @@ export const SizeSM: Story = {
 export const SizeMD: Story = {
   args: {
     label: 'Close',
-    unicode: '×',
     size: 'md',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, X },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><X /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -207,17 +213,18 @@ export const SizeMD: Story = {
 export const SizeLG: Story = {
   args: {
     label: 'Close',
-    unicode: '×',
     size: 'lg',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, X },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><X /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -226,17 +233,18 @@ export const SizeLG: Story = {
 export const SizeXL: Story = {
   args: {
     label: 'Close',
-    unicode: '×',
     size: 'xl',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, X },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><X /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -246,17 +254,18 @@ export const SizeXL: Story = {
 export const VariantPrimary: Story = {
   args: {
     label: 'Primary action',
-    unicode: '✓',
     variant: 'primary',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, Check },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><Check /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -265,17 +274,18 @@ export const VariantPrimary: Story = {
 export const VariantSecondary: Story = {
   args: {
     label: 'Secondary action',
-    unicode: '☰',
     variant: 'secondary',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, Menu },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><Menu /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -284,17 +294,18 @@ export const VariantSecondary: Story = {
 export const VariantGhost: Story = {
   args: {
     label: 'Ghost action',
-    unicode: '⋯',
     variant: 'ghost',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, MoreVertical },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><MoreVertical /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -303,17 +314,18 @@ export const VariantGhost: Story = {
 export const VariantDanger: Story = {
   args: {
     label: 'Delete',
-    unicode: '×',
     variant: 'danger',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, X },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><X /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -323,17 +335,18 @@ export const VariantDanger: Story = {
 export const Disabled: Story = {
   args: {
     label: 'Disabled button',
-    unicode: '×',
     disabled: true,
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, X },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><X /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -342,17 +355,18 @@ export const Disabled: Story = {
 export const Pressed: Story = {
   args: {
     label: 'Toggle button',
-    unicode: '★',
     pressed: true,
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, Star },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><Star /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -361,17 +375,18 @@ export const Pressed: Story = {
 export const Loading: Story = {
   args: {
     label: 'Loading',
-    unicode: '↻',
     loading: true,
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, RotateCw },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueIconButton v-bind="args" />
+        <VueIconButton v-bind="args">
+          <VueIcon no-fill><RotateCw /></VueIcon>
+        </VueIconButton>
       </div>
     `,
   }),
@@ -381,10 +396,9 @@ export const Loading: Story = {
 export const EventTesting: Story = {
   args: {
     label: 'Click to test events',
-    unicode: '👆',
   },
   render: (args: VueIconButtonProps) => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, Star },
     setup() {
       const clickCount = ref(0);
       const activateCount = ref(0);
@@ -409,7 +423,9 @@ export const EventTesting: Story = {
           v-bind="args"
           @click="handleClick"
           @activate="handleActivate"
-        />
+        >
+          <VueIcon no-fill><Star /></VueIcon>
+        </VueIconButton>
         <p style="font-size: 0.875rem; color: #6b7280;">
           Click the button or use Space/Enter to trigger events
         </p>
@@ -420,7 +436,7 @@ export const EventTesting: Story = {
 
 export const CSSPartsCustomization: Story = {
   render: () => ({
-    components: { VueIconButton },
+    components: { VueIconButton, VueIcon, Star, Heart, Check },
     setup() {
       // Inject global styles for CSS Shadow Parts
       const styleId = 'icon-button-css-parts-demo';
@@ -468,36 +484,39 @@ export const CSSPartsCustomization: Story = {
           <code>::part(ag-icon-empty-slot)</code>
         </p>
 
-        <div style="display: flex; gap: 2rem; align-items: center; margin-bottom: 2rem;">
+        <div style="display: flex; gap: 2rem; align-items: flex-end; margin-bottom: 2rem;">
           <div>
-            <h4>Gradient Icon</h4>
-            <VueIconButton 
-              class="custom-icon-btn" 
-              label="Gradient styled" 
-              unicode="★"
+            <h4 style="margin-bottom: 0.5rem;">Gradient Icon</h4>
+            <VueIconButton
+              class="custom-icon-btn"
+              label="Gradient styled"
               size="xl"
-            />
+            >
+              <VueIcon no-fill><Star /></VueIcon>
+            </VueIconButton>
           </div>
 
           <div>
-            <h4>Custom Border</h4>
-            <VueIconButton 
-              class="custom-border-btn" 
-              label="Border styled" 
-              unicode="♥"
+            <h4 style="margin-bottom: 0.5rem;">Custom Border</h4>
+            <VueIconButton
+              class="custom-border-btn"
+              label="Border styled"
               size="lg"
-            />
+            >
+              <VueIcon no-fill><Heart /></VueIcon>
+            </VueIconButton>
           </div>
 
           <div>
-            <h4>Custom Shadow</h4>
-            <VueIconButton 
-              class="custom-shadow-btn" 
-              label="Shadow styled" 
-              unicode="✓"
+            <h4 style="margin-bottom: 0.5rem;">Custom Shadow</h4>
+            <VueIconButton
+              class="custom-shadow-btn"
+              label="Shadow styled"
               size="lg"
               variant="primary"
-            />
+            >
+              <VueIcon no-fill><Check /></VueIcon>
+            </VueIconButton>
           </div>
         </div>
       </div>

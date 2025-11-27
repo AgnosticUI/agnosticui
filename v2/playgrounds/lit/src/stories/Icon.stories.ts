@@ -1,6 +1,7 @@
 // Icon.stories.ts
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+import { createElement, Star, Info, CheckCircle2, AlertTriangle, AlertCircle, Zap } from "lucide";
 import 'agnosticui-core/icon';
 import type { IconProps, IconSize, IconType } from 'agnosticui-core/icon';
 
@@ -31,11 +32,8 @@ type Story = StoryObj<IconProps>;
 
 export const Default: Story = {
   render: ({ size, type }) => html`
-    <ag-icon .size=${size} .type=${type}>
-      <!-- Slot for SVG or icon content -->
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-      </svg>
+    <ag-icon .size=${size} .type=${type} no-fill>
+      ${createElement(Star)}
     </ag-icon>
   `,
 };
@@ -43,35 +41,23 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: ({ size }) => html`
     <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; padding: 2rem;">
-      <ag-icon size="14">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon size="14" no-fill>
+        ${createElement(Star)}
       </ag-icon>
-      <ag-icon size="16">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon size="16" no-fill>
+        ${createElement(Star)}
       </ag-icon>
-      <ag-icon size="20">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon size="20" no-fill>
+        ${createElement(Star)}
       </ag-icon>
-      <ag-icon size="24">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon size="24" no-fill>
+        ${createElement(Star)}
       </ag-icon>
-      <ag-icon size="32">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon size="32" no-fill>
+        ${createElement(Star)}
       </ag-icon>
-      <ag-icon size="48">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon size="48" no-fill>
+        ${createElement(Star)}
       </ag-icon>
     </div>
   `,
@@ -80,30 +66,20 @@ export const Sizes: Story = {
 export const Types: Story = {
   render: ({ type }) => html`
     <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; padding: 2rem;">
-      <ag-icon type="info">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon type="info" no-fill>
+        ${createElement(Info)}
       </ag-icon>
-      <ag-icon type="success">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon type="success" no-fill>
+        ${createElement(CheckCircle2)}
       </ag-icon>
-      <ag-icon type="warning">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon type="warning" no-fill>
+        ${createElement(AlertTriangle)}
       </ag-icon>
-      <ag-icon type="error">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon type="error" no-fill>
+        ${createElement(AlertCircle)}
       </ag-icon>
-      <ag-icon type="action">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon type="action" no-fill>
+        ${createElement(Zap)}
       </ag-icon>
     </div>
   `,
@@ -112,15 +88,11 @@ export const Types: Story = {
 export const WithSlot: Story = {
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 1rem; padding: 2rem;">
-      <ag-icon size="20">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon size="20" no-fill>
+        ${createElement(Star)}
       </ag-icon>
-      <ag-icon size="24" type="error">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 001-1v-4a1 1 0 00-1-1H9z"/>
-        </svg>
+      <ag-icon size="24" type="error" no-fill>
+        ${createElement(AlertCircle)}
       </ag-icon>
     </div>
   `,
@@ -150,20 +122,14 @@ export const CustomizedWithCSSParts: Story = {
       }
     </style>
     <div style="display: flex; flex-direction: column; gap: 2rem; padding: 2rem;">
-      <ag-icon class="custom-icon-base" size="24">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon class="custom-icon-base" size="24" no-fill>
+        ${createElement(Star)}
       </ag-icon>
-      <ag-icon class="custom-glow" size="32" type="info">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 001-1v-4a1 1 0 00-1-1H9z"/>
-        </svg>
+      <ag-icon class="custom-glow" size="32" type="info" no-fill>
+        ${createElement(Info)}
       </ag-icon>
-      <ag-icon class="custom-minimal" size="20">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
+      <ag-icon class="custom-minimal" size="20" no-fill>
+        ${createElement(Star)}
       </ag-icon>
     </div>
   `,
