@@ -267,8 +267,8 @@ export const WithHeaderFooter: Story = {
         ?no-transition=${args['noTransition']}
         .width=${args.width}
       >
-        <div slot="header" style="display: flex; align-items: center; justify-content: space-between;">
-          <h2 style="font-size: 1.125rem; font-weight: 600; color: #1f2937;">My App</h2>
+        <div slot="header" style="display: flex; align-items: center; justify-content: ${args.collapsed ? 'center' : 'space-between'};">
+          ${!args.collapsed ? html`<h2 style="font-size: 1.125rem; font-weight: 600; color: #1f2937;">My App</h2>` : nothing}
           <button
             @click=${toggleCollapsed}
             aria-label=${args.collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
