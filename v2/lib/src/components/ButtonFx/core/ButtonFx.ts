@@ -10,3 +10,5 @@ declare global {
     'ag-button-fx': ButtonFx;
   }
 }
+
+export * from './_ButtonFx.js';

@@ -41,19 +41,19 @@
       },
       "bounce": {
         "value": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
-        "description": "Bounce easing with overshoot for playful effects"
+        "description": "Bounce easing with overshoot for playful effects. Avoid for position-based animations that must stay within bounds (e.g., slides, transforms to exact positions)."
       },
       "spring-sm": {
         "value": "cubic-bezier(0.5, 1.5, 0.5, 1)",
-        "description": "Small spring easing with subtle bounce"
+        "description": "Small spring easing with subtle bounce (~50% overshoot). Avoid for position-based animations that must stay within bounds (e.g., slides, transforms to exact positions)."
       },
       "spring-md": {
         "value": "cubic-bezier(0.5, 1.8, 0.5, 1)",
-        "description": "Medium spring easing with moderate bounce"
+        "description": "Medium spring easing with moderate bounce (~80% overshoot). Avoid for position-based animations that must stay within bounds (e.g., slides, transforms to exact positions)."
       },
       "spring-lg": {
         "value": "cubic-bezier(0.5, 2.5, 0.5, 1)",
-        "description": "Large spring easing with dramatic bounce"
+        "description": "Large spring easing with dramatic bounce (~150% overshoot). Avoid for position-based animations that must stay within bounds (e.g., slides, transforms to exact positions)."
       }
     }
   }

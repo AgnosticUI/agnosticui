@@ -4,7 +4,7 @@ import { AgButton, type ButtonProps } from '../../Button/core/_Button.js';
 
 // FxProps interface
 export interface FxProps {
-  fx?: string | string[];
+  fx?: string[];
   fxSpeed?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   fxEase?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
   fxDisabled?: boolean;
@@ -212,7 +212,8 @@ export class ButtonFx extends AgButton implements FxProps {
         width: 100%;
         height: 100%;
         background: rgba(255, 255, 255, 0.25);
-        transition: transform var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
+        /* Use ease-out for slides to prevent spring overshoot which causes visual glitches */
+        transition: transform var(--ag-fx-duration, 200ms) ease-out;
       }
       
       button.ag-fx-bg-slide::before {
@@ -341,13 +342,21 @@ export class ButtonFx extends AgButton implements FxProps {
   fx?: string[];
 
   @property({ type: String, attribute: 'fx-speed' })
-  fxSpeed: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
+  fxSpeed!: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
   @property({ type: String, attribute: 'fx-ease' })
-  fxEase: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg' = 'ease';
+  fxEase!: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
 
   @property({ type: Boolean, attribute: 'fx-disabled' })
-  fxDisabled = false;
+  fxDisabled!: boolean;
+
+  constructor() {
+    super();
+    // Initialize reactive properties in constructor to avoid class field shadowing
+    this.fxSpeed = 'md';
+    this.fxEase = 'ease';
+    this.fxDisabled = false;
+  }
 
   firstUpdated() {
     // Apply initial FX setup after first render
