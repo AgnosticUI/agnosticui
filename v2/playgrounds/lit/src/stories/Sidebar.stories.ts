@@ -64,6 +64,8 @@ const createNavContent = () => html`
     /* Light DOM styles for slotted content */
     .nav-menu {
       list-style: none;
+      padding: 0;
+      margin: 0;
     }
     .nav-item {
       margin-bottom: 4px;
@@ -112,11 +114,11 @@ const createNavContent = () => html`
     /* Sub-menu styles */
     .nav-submenu {
       list-style: none;
-      margin-left: 14px;
-      border-left: 1px solid #e5e7eb;
-      padding-left: 10px;
-      margin-top: 4px;
-      margin-bottom: 4px;
+      margin-left: 0.875rem;
+      border-left: 1px solid var(--ag-border-subtle);
+      padding-left: 0.625rem;
+      margin-block-start: var(--ag-space-1);
+      margin-block-end: var(--ag-space-1);
       display: none; /* Hidden by default */
     }
     .nav-submenu.open {
