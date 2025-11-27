@@ -232,8 +232,8 @@ export const Default: Story = {
 };
 
 export const WithHeaderFooter: Story = {
-  render: (initialArgs, { useArgs: storybookUseArgs }) => { // Correctly destructure useArgs
-    const [args, updateArgs] = storybookUseArgs(initialArgs); // Use args from Storybook and then useArgs
+  render: (initialArgs) => {
+    const [args, updateArgs] = useArgs(); // Correct usage
 
     const getToggleIcon = (collapsed: boolean, position: 'left' | 'right') => {
       if (position === 'left') {
