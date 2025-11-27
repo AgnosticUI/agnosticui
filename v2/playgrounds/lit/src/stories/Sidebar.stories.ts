@@ -273,7 +273,7 @@ export const WithHeaderFooter: Story = {
           <button
             @click=${toggleCollapsed}
             aria-label=${args.collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-            style="display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 1px solid var(--ag-border-subtle); border-radius: 0.375rem; background: var(--ag-background-tertiary); color: var(--text-primary); cursor: pointer;"
+            style="display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 1px solid var(--ag-border-subtle); border-radius: 0.375rem; background: var(--ag-background-secondary); color: var(--text-primary); cursor: pointer;"
           >
             <ag-icon no-fill>${getToggleIcon(args.collapsed, args.position)}</ag-icon>
           </button>
