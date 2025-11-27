@@ -87,37 +87,14 @@ export class ButtonFx extends AgButton implements FxProps {
         }
       }
 
-      /* 4. Tilt-press - 3D tilt on press */
-      @keyframes ag-fx-tilt-press {
-        0% {
-          transform: perspective(300px) rotateX(0deg);
-        }
-        50% {
-          transform: perspective(300px) rotateX(12deg) translateY(2px);
-        }
-        100% {
-          transform: perspective(300px) rotateX(0deg);
-        }
-      }
-
-      /* 5. Glow - box-shadow pulse */
-      @keyframes ag-fx-glow {
-        0%, 100% {
-          box-shadow: 0 0 0 0 transparent;
-        }
-        50% {
-          box-shadow: 0 0 20px 4px currentColor;
-        }
-      }
-
-      /* 6. Press-pop - quick press down/up */
+      /* 4. Press-pop - quick press down/up */
       @keyframes ag-fx-press-pop {
         50% {
           transform: scale(0.92);
         }
       }
 
-      /* 7. Slide-in - entrance from below */
+      /* 6. Slide-in - entrance from below */
       @keyframes ag-fx-slide-in {
         from {
           opacity: 0;
@@ -125,20 +102,63 @@ export class ButtonFx extends AgButton implements FxProps {
         }
       }
 
-      /* 8. Icon-reveal - clip-path reveal */
-      @keyframes ag-fx-icon-reveal {
-        from {
-          clip-path: inset(0 100% 0 0);
+
+      /* ========================================
+         EXPERIMENTAL EFFECTS - To be reviewed
+         ======================================== */
+
+      /* Grow - button increases in size */
+      @keyframes ag-fx-grow {
+        100% {
+          transform: scale(1.1);
         }
       }
 
-      /* 9. Highlight-sweep - horizontal highlight */
-      @keyframes ag-fx-highlight-sweep {
-        from {
-          left: -100%;
+      /* Shrink - button decreases in size */
+      @keyframes ag-fx-shrink {
+        100% {
+          transform: scale(0.9);
         }
-        to {
-          left: 100%;
+      }
+
+      /* Push - simulates physical press */
+      @keyframes ag-fx-push {
+        50% {
+          transform: translateY(4px);
+        }
+      }
+
+      /* Background slide in from bottom */
+      @keyframes ag-fx-bg-slide {
+        from {
+          transform: translateY(100%);
+        }
+      }
+
+
+      /* Shake/Jitter effect */
+      @keyframes ag-fx-shake {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-4px);
+        }
+        75% {
+          transform: translateX(4px);
+        }
+      }
+
+      /* Wobble effect */
+      @keyframes ag-fx-wobble {
+        0%, 100% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(-3deg);
+        }
+        75% {
+          transform: rotate(3deg);
         }
       }
 
@@ -160,20 +180,7 @@ export class ButtonFx extends AgButton implements FxProps {
         animation: ag-fx-jelly var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
-      button.ag-fx-glow:hover {
-        animation: ag-fx-glow var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
-      }
-
-      /* Icon reveal - clip-path on button */
-      button.ag-fx-icon-reveal:hover {
-        animation: ag-fx-icon-reveal var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
-      }
-
       /* Active/press-triggered effects */
-      button.ag-fx-tilt-press:active {
-        animation: ag-fx-tilt-press var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
-      }
-
       button.ag-fx-press-pop:active {
         animation: ag-fx-press-pop var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
@@ -183,31 +190,121 @@ export class ButtonFx extends AgButton implements FxProps {
         animation: ag-fx-slide-in var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
-      /* Highlight sweep - pseudo-element on button */
-      button.ag-fx-highlight-sweep {
+      /* ========================================
+         EXPERIMENTAL EFFECT CLASSES
+         ======================================== */
+
+      /* Grow */
+      button.ag-fx-grow:hover {
+        animation: ag-fx-grow var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease) forwards;
+      }
+
+      /* Shrink */
+      button.ag-fx-shrink:hover {
+        animation: ag-fx-shrink var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease) forwards;
+      }
+
+      /* Push */
+      button.ag-fx-push:hover {
+        animation: ag-fx-push var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
+      }
+
+      /* Background slide */
+      button.ag-fx-bg-slide {
         position: relative;
         overflow: hidden;
       }
 
-      button.ag-fx-highlight-sweep::after {
+      button.ag-fx-bg-slide::before {
         content: '';
         position: absolute;
         top: 0;
-        left: -100%;
+        left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          rgba(255, 255, 255, 0.95) 50%,
-          transparent 100%
-        );
-        pointer-events: none;
-        mix-blend-mode: screen;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(100%);
+        transition: transform var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
-      button.ag-fx-highlight-sweep:hover::after {
-        animation: ag-fx-highlight-sweep var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease) forwards;
+      button.ag-fx-bg-slide:hover::before {
+        transform: translateY(0);
+      }
+
+      /* Press shadow - animates shadow on active/press with variant colors */
+      :host([variant="primary"]) button.ag-fx-press-shadow {
+        box-shadow: 0 4px 0 rgba(5, 80, 174, 0.5);
+        position: relative;
+        top: 0;
+        transition: top 0.1s, box-shadow 0.1s;
+      }
+
+      :host([variant="primary"]) button.ag-fx-press-shadow:active {
+        top: 4px;
+        box-shadow: 0 0px 0 rgba(5, 80, 174, 0.5);
+      }
+
+      :host([variant="success"]) button.ag-fx-press-shadow {
+        box-shadow: 0 4px 0 rgba(var(--ag-success-rgb), 0.5);
+        position: relative;
+        top: 0;
+        transition: top 0.1s, box-shadow 0.1s;
+      }
+
+      :host([variant="success"]) button.ag-fx-press-shadow:active {
+        top: 4px;
+        box-shadow: 0 0px 0 rgba(var(--ag-success-rgb), 0.5);
+      }
+
+      :host([variant="warning"]) button.ag-fx-press-shadow {
+        box-shadow: 0 4px 0 rgba(var(--ag-warning-rgb), 0.5);
+        position: relative;
+        top: 0;
+        transition: top 0.1s, box-shadow 0.1s;
+      }
+
+      :host([variant="warning"]) button.ag-fx-press-shadow:active {
+        top: 4px;
+        box-shadow: 0 0px 0 rgba(var(--ag-warning-rgb), 0.5);
+      }
+
+      :host([variant="danger"]) button.ag-fx-press-shadow {
+        box-shadow: 0 4px 0 rgba(var(--ag-danger-rgb), 0.5);
+        position: relative;
+        top: 0;
+        transition: top 0.1s, box-shadow 0.1s;
+      }
+
+      :host([variant="danger"]) button.ag-fx-press-shadow:active {
+        top: 4px;
+        box-shadow: 0 0px 0 rgba(var(--ag-danger-rgb), 0.5);
+      }
+
+      /* Fallback for other variants without RGB tokens */
+      :host([variant="secondary"]) button.ag-fx-press-shadow,
+      :host([variant="monochrome"]) button.ag-fx-press-shadow,
+      :host(:not([variant])) button.ag-fx-press-shadow {
+        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+        position: relative;
+        top: 0;
+        transition: top 0.1s, box-shadow 0.1s;
+      }
+
+      :host([variant="secondary"]) button.ag-fx-press-shadow:active,
+      :host([variant="monochrome"]) button.ag-fx-press-shadow:active,
+      :host(:not([variant])) button.ag-fx-press-shadow:active {
+        top: 4px;
+        box-shadow: 0 0px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      /* Shake */
+      button.ag-fx-shake:hover {
+        animation: ag-fx-shake var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
+      }
+
+      /* Wobble */
+      button.ag-fx-wobble:hover {
+        animation: ag-fx-wobble var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
       /* Disabled FX */
@@ -224,18 +321,10 @@ export class ButtonFx extends AgButton implements FxProps {
         button.ag-fx-bounce,
         button.ag-fx-pulse,
         button.ag-fx-jelly,
-        button.ag-fx-tilt-press,
-        button.ag-fx-glow,
         button.ag-fx-press-pop,
-        button.ag-fx-slide-in,
-        button.ag-fx-icon-reveal,
-        button.ag-fx-highlight-sweep {
+        button.ag-fx-slide-in {
           animation-duration: 0.01ms !important;
           transition-duration: 0.01ms !important;
-        }
-
-        button.ag-fx-highlight-sweep::after {
-          animation-duration: 0.01ms !important;
         }
       }
     `
