@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { useArgs } from "storybook/preview-api";
 import { html, nothing } from 'lit';
-import { createElement, Folder, User, Settings, Home, PanelLeftClose, PanelLeftOpen, PanelRightClose, PanelRightOpen } from 'lucide';
+import { createElement, ChevronRight, Folder, User, Settings, Home, PanelLeftClose, PanelLeftOpen, PanelRightClose, PanelRightOpen } from 'lucide';
 import {type AgSidebarProps } from 'agnosticui-core/sidebar';
 import 'agnosticui-core/icon';
 import 'agnosticui-core/visually-hidden';
@@ -68,11 +68,11 @@ const createNavContent = () => html`
       margin: 0;
     }
     .nav-item {
-      margin-bottom: 4px;
+      margin-bottom: var(--ag-space-1);
     }
     .nav-button {
       width: 100%;
-      padding: 8px;
+      padding: var(--ag-space-2); /* 8px */
       border: none;
       background: transparent;
       border-radius: var(--ag-border-radius-sm);
@@ -86,11 +86,12 @@ const createNavContent = () => html`
       transition: background 0.15s;
     }
     .nav-button:hover {
-      background: var(--ag-background-secondary);;
+      background: var(--ag-background-secondary);
     }
     .nav-button.active {
       background: var(--ag-primary-background);
-      color: var(--ag-text-primary);
+      color: var(--ag-primary-text);
+      font-weight: 500;
     }
     /* Icon styling within nav-button */
     .nav-button ag-icon {
@@ -105,9 +106,8 @@ const createNavContent = () => html`
     .nav-button .chevron {
       margin-left: auto;
       transition: transform 0.2s;
-      font-size: 12px;
     }
-    .nav-button[aria-expanded="true"] .chevron {
+    .nav-button[aria-expanded="true"] .chevron ag-icon {
       transform: rotate(90deg);
     }
     /* Sub-menu styles */
@@ -125,27 +125,26 @@ const createNavContent = () => html`
     }
     .nav-sublink {
       display: block;
-      padding: var(--ag-space-2);
-      border-radius: var(--ag-radius-md);
+      padding: var(--ag-space-2); /* 8px */
+      border-radius: var(--ag-border-radius-sm);
       text-decoration: none;
       color: var(--ag-text-primary);
       font-size: var(--ag-font-size-sm);
       transition: background 0.15s;
     }
     .nav-sublink:hover {
-      background: var(--ag-background-tertiary);
-      color: var(--ag-text-primary);
+      background: var(--ag-background-secondary);
     }
-    .nav-sublink:active,
     .nav-sublink.active {
       background: var(--ag-primary-background);
-      color: var(--ag-text-primary);
+      color: var(--ag-primary-text);
+      font-weight: 500;
     }
 
     /* Collapsed state (rail mode) styles */
     ag-sidebar[collapsed] .nav-button {
       justify-content: center;
-      padding-inline: 8px; /* Adjust horizontal padding for collapsed state */
+      padding-inline: var(--ag-space-2); /* Adjust horizontal padding for collapsed state (8px) */
     }
     ag-sidebar[collapsed] .nav-button .nav-label,
     ag-sidebar[collapsed] .nav-button .chevron {
@@ -175,7 +174,7 @@ const createNavContent = () => html`
       <button class="nav-button" aria-expanded="false">
         <ag-icon no-fill>${createElement(Folder)}</ag-icon>
         <span class="nav-label">Projects</span>
-        <span class="chevron">›</span>
+        <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
       </button>
       <ul class="nav-submenu">
         <li class="nav-subitem"><a href="#" class="nav-sublink">Project Alpha</a></li>
@@ -192,7 +191,7 @@ const createNavContent = () => html`
       <button class="nav-button" aria-expanded="false">
         <ag-icon no-fill>${createElement(Settings)}</ag-icon>
         <span class="nav-label">Settings</span>
-        <span class="chevron">›</span>
+        <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
       </button>
       <ul class="nav-submenu">
         <li class="nav-subitem"><a href="#" class="nav-sublink">Profile</a></li>
