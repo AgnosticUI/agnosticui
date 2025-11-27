@@ -102,11 +102,6 @@ export class ButtonFx extends AgButton implements FxProps {
         }
       }
 
-
-      /* ========================================
-         EXPERIMENTAL EFFECTS - To be reviewed
-         ======================================== */
-
       /* Grow - button increases in size */
       @keyframes ag-fx-grow {
         100% {
@@ -127,14 +122,6 @@ export class ButtonFx extends AgButton implements FxProps {
           transform: translateY(4px);
         }
       }
-
-      /* Background slide in from bottom */
-      @keyframes ag-fx-bg-slide {
-        from {
-          transform: translateY(100%);
-        }
-      }
-
 
       /* Shake/Jitter effect */
       @keyframes ag-fx-shake {
@@ -215,6 +202,8 @@ export class ButtonFx extends AgButton implements FxProps {
         overflow: hidden;
       }
 
+      /* Background (bottom to top) and Side (left to right) slides share */
+      button.ag-fx-side-slide::before,
       button.ag-fx-bg-slide::before {
         content: '';
         position: absolute;
@@ -222,13 +211,30 @@ export class ButtonFx extends AgButton implements FxProps {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(100%);
+        background: rgba(255, 255, 255, 0.25);
         transition: transform var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
+      }
+      
+      button.ag-fx-bg-slide::before {
+        transform: translateY(100%);
       }
 
       button.ag-fx-bg-slide:hover::before {
         transform: translateY(0);
+      }
+
+      /* Side slide */
+      button.ag-fx-side-slide {
+        position: relative;
+        overflow: hidden;
+      }
+
+      button.ag-fx-side-slide::before {
+        transform: translateX(-100%);
+      }
+
+      button.ag-fx-side-slide:hover::before {
+        transform: translateX(0);
       }
 
       /* Press shadow - animates shadow on active/press with variant colors */

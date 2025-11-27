@@ -359,6 +359,34 @@ export const EffectsGallery: Story = {
         <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
       </div>
       <div style="text-align: center;">
+        <ag-button-fx .fx=${["bg-slide"]} .variant=${"primary"} .fxSpeed=${"xl"} bordered>Slide Bordered</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["side-slide"]} .variant=${"primary"} .fxSpeed=${"xl"}>Side Slide Left Bordered</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["side-slide"]} .variant=${"primary"} .fxSpeed=${"xl"} bordered>Side Slide Left Bordered</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["side-slide"]} .variant=${"success"} .fxSpeed=${"xl"}>Side Slide Left Bordered</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["side-slide"]} .variant=${"success"} .fxSpeed=${"xl"} bordered>Side Slide Left Bordered</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+      </div>
+            <div style="text-align: center;">
+        <ag-button-fx .fx=${["side-slide"]} .variant=${"danger"} .fxSpeed=${"xl"}>Side Slide Left Bordered</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["side-slide"]} .variant=${"danger"} .fxSpeed=${"xl"} bordered>Side Slide Left Bordered</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Background slide (hover)</p>
+      </div>
+      <div style="text-align: center;">
         <ag-button-fx .fx=${["wobble"]} .variant=${"primary"}>Wobble</ag-button-fx>
         <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Wobble effect (hover)</p>
       </div>
@@ -368,6 +396,18 @@ export const EffectsGallery: Story = {
       </div>
       <div style="text-align: center;">
         <ag-button-fx .fx=${["press-shadow"]} .variant=${"primary"}>Press Shadow</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shadow press (click)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["press-shadow"]} .variant=${"success"}>Press Shadow</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shadow press (click)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["press-shadow"]} .variant=${"warning"}>Press Shadow</ag-button-fx>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shadow press (click)</p>
+      </div>
+      <div style="text-align: center;">
+        <ag-button-fx .fx=${["press-shadow"]} .variant=${"danger"}>Press Shadow</ag-button-fx>
         <p style="margin-top: 0.5rem; font-size: 0.875rem; color: #666;">Shadow press (click)</p>
       </div>
     </div>
