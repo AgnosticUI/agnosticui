@@ -203,6 +203,35 @@ const createNavContent = () => html`
 `;
 
 export const Default: Story = {
+  render: (args) => html`
+    <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
+      <ag-sidebar
+        ?open=${args.open}
+        ?collapsed=${args.collapsed}
+        .position=${args.position}
+        aria-label=${args['ariaLabel']}
+        .breakpoint=${args.breakpoint}
+        .variant=${args.variant}
+        ?no-transition=${args['noTransition']}
+        .width=${args.width}
+      >
+        <div slot="header">
+          <h2>My App</h2>
+        </div>
+        ${createNavContent()}
+        <div slot="footer">
+          <p>© 2024</p>
+        </div>
+      </ag-sidebar>
+      <main style="flex: 1; padding: 2rem;">
+        <h1>Main Content</h1>
+        <p>This is the main content area.</p>
+      </main>
+    </div>
+  `,
+};
+
+export const WithHeaderFooter: Story = {
   render: (args, { updateArgs }) => {
     const getToggleIcon = (collapsed: boolean, position: 'left' | 'right') => {
       if (position === 'left') {
@@ -217,6 +246,25 @@ export const Default: Story = {
     };
 
     return html`
+    <style>
+      ag-sidebar[collapsed] [slot="footer"] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--ag-space-2);
+      }
+      ag-sidebar[collapsed] [slot="footer"] .footer-text {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+    </style>
     <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
       <ag-sidebar
         ?open=${args.open}
@@ -240,7 +288,7 @@ export const Default: Story = {
         </div>
         ${createNavContent()}
         <div slot="footer" style="padding: 1rem; border-top: 1px solid #e5e7eb;">
-          <p style="font-size: 0.75rem; color: #6b7280;">© 2024</p>
+          <p class="footer-text" style="font-size: 0.75rem; color: #6b7280;">© 2024</p>
         </div>
       </ag-sidebar>
       <main style="flex: 1; padding: 2rem;">
@@ -252,7 +300,7 @@ export const Default: Story = {
 };
 
 export const Collapsed: Story = {
-  ...Default,
+  ...WithHeaderFooter,
   args: {
     collapsed: true,
   },
