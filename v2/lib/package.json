@@ -76,6 +76,10 @@
       "types": "./dist/components/IntlFormatter/vue/index.d.ts",
       "import": "./dist/components/IntlFormatter/vue/index.js"
     },
+    "./sidebar-nav": {
+      "types": "./dist/components/SidebarNav/core/SidebarNav.d.ts",
+      "import": "./dist/components/SidebarNav/core/SidebarNav.js"
+    },
     "./sidebar": {
       "types": "./dist/components/Sidebar/core/Sidebar.d.ts",
       "import": "./dist/components/Sidebar/core/Sidebar.js"
