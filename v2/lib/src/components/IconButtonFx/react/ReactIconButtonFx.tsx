@@ -5,7 +5,7 @@ import {
   type IconButtonFxProps,
   type IconButtonClickEvent,
   type IconButtonActivateEvent,
-} from '../core/_IconButtonFx';
+} from '../core/IconButtonFx';
 
 export interface ReactIconButtonFxProps extends IconButtonFxProps {
   children?: React.ReactNode;
