@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "storybook/test";
 import { ReactButtonFx, type ReactButtonFxProps } from "agnosticui-core/button-fx/react";
-
+import { Bomb } from "lucide-react";
+import { ReactIcon } from "agnosticui-core/icon/react";
 const meta: Meta<ReactButtonFxProps> = {
   title: "AgnosticUI React/ButtonFx",
   component: ReactButtonFx,
@@ -94,7 +95,7 @@ const meta: Meta<ReactButtonFxProps> = {
     },
   },
   args: {
-    fx: ["bounce"],
+    fx: "bounce",
     fxSpeed: "md",
     fxEase: "spring-md",
     fxDisabled: false,
@@ -132,7 +133,7 @@ export const Default: Story = {
 
 export const Bounce: Story = {
   args: {
-    fx: ["bounce"],
+    fx: "bounce",
     variant: "primary",
   },
   render: (args) => (
@@ -144,7 +145,7 @@ export const Bounce: Story = {
 
 export const Pulse: Story = {
   args: {
-    fx: ["pulse"],
+    fx: "pulse",
     variant: "primary",
   },
   render: (args) => (
@@ -156,7 +157,7 @@ export const Pulse: Story = {
 
 export const Jelly: Story = {
   args: {
-    fx: ["jelly"],
+    fx: "jelly",
     variant: "primary",
   },
   render: (args) => (
@@ -168,7 +169,7 @@ export const Jelly: Story = {
 
 export const PressPop: Story = {
   args: {
-    fx: ["press-pop"],
+    fx: "press-pop",
     variant: "primary",
   },
   render: (args) => (
@@ -180,7 +181,7 @@ export const PressPop: Story = {
 
 export const SlideIn: Story = {
   args: {
-    fx: ["slide-in"],
+    fx: "slide-in",
     variant: "primary",
   },
   render: (args) => (
@@ -192,7 +193,7 @@ export const SlideIn: Story = {
 
 export const Grow: Story = {
   args: {
-    fx: ["grow"],
+    fx: "grow",
     variant: "success",
   },
   render: (args) => (
@@ -204,7 +205,7 @@ export const Grow: Story = {
 
 export const Shrink: Story = {
   args: {
-    fx: ["shrink"],
+    fx: "shrink",
     variant: "warning",
   },
   render: (args) => (
@@ -216,7 +217,7 @@ export const Shrink: Story = {
 
 export const Push: Story = {
   args: {
-    fx: ["push"],
+    fx: "push",
     variant: "primary",
   },
   render: (args) => (
@@ -228,7 +229,7 @@ export const Push: Story = {
 
 export const BackgroundSlide: Story = {
   args: {
-    fx: ["bg-slide"],
+    fx: "bg-slide",
     fxSpeed: "md",
     fxEase: "ease-out",
     variant: "primary",
@@ -243,7 +244,7 @@ export const BackgroundSlide: Story = {
 
 export const SideSlide: Story = {
   args: {
-    fx: ["side-slide"],
+    fx: "side-slide",
     fxSpeed: "md",
     fxEase: "ease-out",
     variant: "secondary",
@@ -258,7 +259,7 @@ export const SideSlide: Story = {
 
 export const PressShadow: Story = {
   args: {
-    fx: ["press-shadow"],
+    fx: "press-shadow",
     variant: "primary",
   },
   render: (args) => (
@@ -270,7 +271,7 @@ export const PressShadow: Story = {
 
 export const Shake: Story = {
   args: {
-    fx: ["shake"],
+    fx: "shake",
     variant: "danger",
   },
   render: (args) => (
@@ -282,7 +283,7 @@ export const Shake: Story = {
 
 export const Wobble: Story = {
   args: {
-    fx: ["wobble"],
+    fx: "wobble",
     variant: "warning",
   },
   render: (args) => (
@@ -307,19 +308,19 @@ export const SpeedComparison: Story = {
         padding: "50px",
       }}
     >
-      <ReactButtonFx fx={["pulse"]} fxSpeed="xs" variant="primary">
+      <ReactButtonFx fx="pulse" fxSpeed="xs" variant="primary">
         XS Speed
       </ReactButtonFx>
-      <ReactButtonFx fx={["pulse"]} fxSpeed="sm" variant="primary">
+      <ReactButtonFx fx="pulse" fxSpeed="sm" variant="primary">
         SM Speed
       </ReactButtonFx>
-      <ReactButtonFx fx={["pulse"]} fxSpeed="md" variant="primary">
+      <ReactButtonFx fx="pulse" fxSpeed="md" variant="primary">
         MD Speed (Default)
       </ReactButtonFx>
-      <ReactButtonFx fx={["pulse"]} fxSpeed="lg" variant="primary">
+      <ReactButtonFx fx="pulse" fxSpeed="lg" variant="primary">
         LG Speed
       </ReactButtonFx>
-      <ReactButtonFx fx={["pulse"]} fxSpeed="xl" variant="primary">
+      <ReactButtonFx fx="pulse" fxSpeed="xl" variant="primary">
         XL Speed
       </ReactButtonFx>
     </div>
@@ -341,25 +342,25 @@ export const EasingComparison: Story = {
         padding: "50px",
       }}
     >
-      <ReactButtonFx fx={["bounce"]} fxEase="ease" variant="primary">
+      <ReactButtonFx fx="bounce" fxEase="ease" variant="primary">
         Ease
       </ReactButtonFx>
-      <ReactButtonFx fx={["bounce"]} fxEase="ease-in" variant="primary">
+      <ReactButtonFx fx="bounce" fxEase="ease-in" variant="primary">
         Ease-In
       </ReactButtonFx>
-      <ReactButtonFx fx={["bounce"]} fxEase="ease-out" variant="primary">
+      <ReactButtonFx fx="bounce" fxEase="ease-out" variant="primary">
         Ease-Out
       </ReactButtonFx>
-      <ReactButtonFx fx={["bounce"]} fxEase="bounce" variant="primary">
+      <ReactButtonFx fx="bounce" fxEase="bounce" variant="primary">
         Bounce
       </ReactButtonFx>
-      <ReactButtonFx fx={["bounce"]} fxEase="spring-sm" variant="primary">
+      <ReactButtonFx fx="bounce" fxEase="spring-sm" variant="primary">
         Spring SM
       </ReactButtonFx>
-      <ReactButtonFx fx={["bounce"]} fxEase="spring-md" variant="primary">
+      <ReactButtonFx fx="bounce" fxEase="spring-md" variant="primary">
         Spring MD
       </ReactButtonFx>
-      <ReactButtonFx fx={["bounce"]} fxEase="spring-lg" variant="primary">
+      <ReactButtonFx fx="bounce" fxEase="spring-lg" variant="primary">
         Spring LG
       </ReactButtonFx>
     </div>
@@ -367,20 +368,10 @@ export const EasingComparison: Story = {
 };
 
 // ========================================
-// Multiple Effects Combined
+// Experimental: Testing Combined Effects
 // ========================================
-
-export const CombinedEffects: Story = {
-  args: {
-    fx: ["bounce", "pulse"],
-    variant: "primary",
-  },
-  render: (args) => (
-    <div style={{ display: "flex", justifyContent: "center", padding: "50px" }}>
-      <ReactButtonFx {...args}>Combined: Bounce + Pulse</ReactButtonFx>
-    </div>
-  ),
-};
+// Note: Currently fx only accepts a single effect name.
+// We'll create curated combo effects like "bounce-pulse" after experimentation.
 
 // ========================================
 // Button Variants with FX
@@ -397,22 +388,22 @@ export const VariantsShowcase: Story = {
         padding: "50px",
       }}
     >
-      <ReactButtonFx fx={["pulse"]} variant="primary">
+      <ReactButtonFx fx="pulse" variant="primary">
         Primary
       </ReactButtonFx>
-      <ReactButtonFx fx={["pulse"]} variant="secondary">
+      <ReactButtonFx fx="pulse" variant="secondary">
         Secondary
       </ReactButtonFx>
-      <ReactButtonFx fx={["pulse"]} variant="success">
+      <ReactButtonFx fx="pulse" variant="success">
         Success
       </ReactButtonFx>
-      <ReactButtonFx fx={["pulse"]} variant="warning">
+      <ReactButtonFx fx="pulse" variant="warning">
         Warning
       </ReactButtonFx>
-      <ReactButtonFx fx={["pulse"]} variant="danger">
+      <ReactButtonFx fx="pulse" variant="danger">
         Danger
       </ReactButtonFx>
-      <ReactButtonFx fx={["pulse"]} variant="monochrome">
+      <ReactButtonFx fx="pulse" variant="monochrome">
         Monochrome
       </ReactButtonFx>
     </div>
@@ -434,19 +425,19 @@ export const SizesShowcase: Story = {
         padding: "50px",
       }}
     >
-      <ReactButtonFx fx={["jelly"]} size="x-sm" variant="primary">
+      <ReactButtonFx fx="jelly" size="x-sm" variant="primary">
         X-Small
       </ReactButtonFx>
-      <ReactButtonFx fx={["jelly"]} size="sm" variant="primary">
+      <ReactButtonFx fx="jelly" size="sm" variant="primary">
         Small
       </ReactButtonFx>
-      <ReactButtonFx fx={["jelly"]} size="md" variant="primary">
+      <ReactButtonFx fx="jelly" size="md" variant="primary">
         Medium
       </ReactButtonFx>
-      <ReactButtonFx fx={["jelly"]} size="lg" variant="primary">
+      <ReactButtonFx fx="jelly" size="lg" variant="primary">
         Large
       </ReactButtonFx>
-      <ReactButtonFx fx={["jelly"]} size="xl" variant="primary">
+      <ReactButtonFx fx="jelly" size="xl" variant="primary">
         X-Large
       </ReactButtonFx>
     </div>
@@ -466,12 +457,12 @@ export const EffectsGallery: Story = {
           Bounce <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Vertical pop (hover)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["bounce"]} fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["bounce"]} fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["bounce"]} fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["bounce"]} fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["bounce"]} fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["bounce"]} fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="bounce" fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="bounce" fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="bounce" fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="bounce" fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="bounce" fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="bounce" fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -481,12 +472,12 @@ export const EffectsGallery: Story = {
           Pulse <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Scale grow (hover)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["pulse"]} fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["pulse"]} fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["pulse"]} fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["pulse"]} fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["pulse"]} fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["pulse"]} fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="pulse" fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="pulse" fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="pulse" fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="pulse" fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="pulse" fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="pulse" fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -496,12 +487,12 @@ export const EffectsGallery: Story = {
           Jelly <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Squash/stretch (hover)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["jelly"]} fxEase="spring-lg" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["jelly"]} fxEase="spring-lg" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["jelly"]} fxEase="spring-lg" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["jelly"]} fxEase="spring-lg" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["jelly"]} fxEase="spring-lg" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["jelly"]} fxEase="spring-lg" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="jelly" fxEase="spring-lg" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="jelly" fxEase="spring-lg" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="jelly" fxEase="spring-lg" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="jelly" fxEase="spring-lg" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="jelly" fxEase="spring-lg" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="jelly" fxEase="spring-lg" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -511,12 +502,12 @@ export const EffectsGallery: Story = {
           Press Pop <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Quick press (click)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["press-pop"]} fxEase="spring-sm" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["press-pop"]} fxEase="spring-sm" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["press-pop"]} fxEase="spring-sm" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["press-pop"]} fxEase="spring-sm" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["press-pop"]} fxEase="spring-sm" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["press-pop"]} fxEase="spring-sm" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="press-pop" fxEase="spring-sm" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="press-pop" fxEase="spring-sm" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="press-pop" fxEase="spring-sm" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="press-pop" fxEase="spring-sm" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="press-pop" fxEase="spring-sm" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="press-pop" fxEase="spring-sm" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -526,12 +517,12 @@ export const EffectsGallery: Story = {
           Slide In <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Entrance (mount)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["slide-in"]} fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["slide-in"]} fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["slide-in"]} fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["slide-in"]} fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["slide-in"]} fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["slide-in"]} fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="slide-in" fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="slide-in" fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="slide-in" fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="slide-in" fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="slide-in" fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="slide-in" fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -541,12 +532,12 @@ export const EffectsGallery: Story = {
           Grow <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Scale up (hover)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["grow"]} fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["grow"]} fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["grow"]} fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["grow"]} fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["grow"]} fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["grow"]} fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="grow" fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="grow" fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="grow" fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="grow" fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="grow" fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="grow" fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -556,12 +547,12 @@ export const EffectsGallery: Story = {
           Shrink <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Scale down (hover)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["shrink"]} fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["shrink"]} fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["shrink"]} fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["shrink"]} fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["shrink"]} fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["shrink"]} fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="shrink" fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="shrink" fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="shrink" fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="shrink" fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="shrink" fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="shrink" fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -571,12 +562,12 @@ export const EffectsGallery: Story = {
           Push <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Press down (hover)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["push"]} fxEase="spring-sm" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["push"]} fxEase="spring-sm" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["push"]} fxEase="spring-sm" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["push"]} fxEase="spring-sm" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["push"]} fxEase="spring-sm" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["push"]} fxEase="spring-sm" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="push" fxEase="spring-sm" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="push" fxEase="spring-sm" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="push" fxEase="spring-sm" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="push" fxEase="spring-sm" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="push" fxEase="spring-sm" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="push" fxEase="spring-sm" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -586,12 +577,12 @@ export const EffectsGallery: Story = {
           BG Slide <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Background slides up (hover)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["bg-slide"]} fxSpeed="md" fxEase="ease-out" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["bg-slide"]} fxSpeed="md" fxEase="ease-out" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["bg-slide"]} fxSpeed="md" fxEase="ease-out" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["bg-slide"]} fxSpeed="md" fxEase="ease-out" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["bg-slide"]} fxSpeed="md" fxEase="ease-out" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["bg-slide"]} fxSpeed="md" fxEase="ease-out" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="bg-slide" fxSpeed="md" fxEase="ease-out" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="bg-slide" fxSpeed="md" fxEase="ease-out" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="bg-slide" fxSpeed="md" fxEase="ease-out" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="bg-slide" fxSpeed="md" fxEase="ease-out" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="bg-slide" fxSpeed="md" fxEase="ease-out" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="bg-slide" fxSpeed="md" fxEase="ease-out" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -601,12 +592,12 @@ export const EffectsGallery: Story = {
           Side Slide <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Wipe left to right (hover)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["side-slide"]} fxSpeed="md" fxEase="ease-out" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["side-slide"]} fxSpeed="md" fxEase="ease-out" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["side-slide"]} fxSpeed="md" fxEase="ease-out" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["side-slide"]} fxSpeed="md" fxEase="ease-out" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["side-slide"]} fxSpeed="md" fxEase="ease-out" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["side-slide"]} fxSpeed="md" fxEase="ease-out" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="side-slide" fxSpeed="md" fxEase="ease-out" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="side-slide" fxSpeed="md" fxEase="ease-out" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="side-slide" fxSpeed="md" fxEase="ease-out" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="side-slide" fxSpeed="md" fxEase="ease-out" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="side-slide" fxSpeed="md" fxEase="ease-out" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="side-slide" fxSpeed="md" fxEase="ease-out" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -616,12 +607,12 @@ export const EffectsGallery: Story = {
           Wobble <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Rotate wobble (hover)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["wobble"]} fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["wobble"]} fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["wobble"]} fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["wobble"]} fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["wobble"]} fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["wobble"]} fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="wobble" fxEase="spring-md" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="wobble" fxEase="spring-md" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="wobble" fxEase="spring-md" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="wobble" fxEase="spring-md" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="wobble" fxEase="spring-md" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="wobble" fxEase="spring-md" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -631,12 +622,12 @@ export const EffectsGallery: Story = {
           Shake <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Horizontal shake (hover)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["shake"]} fxSpeed="sm" variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["shake"]} fxSpeed="sm" variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["shake"]} fxSpeed="sm" variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["shake"]} fxSpeed="sm" variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["shake"]} fxSpeed="sm" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["shake"]} fxSpeed="sm" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="shake" fxSpeed="sm" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="shake" fxSpeed="sm" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="shake" fxSpeed="sm" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="shake" fxSpeed="sm" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="shake" fxSpeed="sm" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="shake" fxSpeed="sm" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
         </div>
       </div>
 
@@ -646,12 +637,27 @@ export const EffectsGallery: Story = {
           Press Shadow <span style={{ fontWeight: "normal", fontSize: "0.875rem", color: "#6b7280" }}>Shadow press (click)</span>
         </h3>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-          <ReactButtonFx fx={["press-shadow"]} variant="primary" shape="rounded">Primary</ReactButtonFx>
-          <ReactButtonFx fx={["press-shadow"]} variant="success" shape="rounded">Success</ReactButtonFx>
-          <ReactButtonFx fx={["press-shadow"]} variant="warning" shape="rounded">Warning</ReactButtonFx>
-          <ReactButtonFx fx={["press-shadow"]} variant="danger" shape="rounded">Danger</ReactButtonFx>
-          <ReactButtonFx fx={["press-shadow"]} variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
-          <ReactButtonFx fx={["press-shadow"]} variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="press-shadow" variant="primary" shape="rounded">Primary</ReactButtonFx>
+          <ReactButtonFx fx="press-shadow" variant="success" shape="rounded">Success</ReactButtonFx>
+          <ReactButtonFx fx="press-shadow" variant="warning" shape="rounded">Warning</ReactButtonFx>
+          <ReactButtonFx fx="press-shadow" variant="danger" shape="rounded">Danger</ReactButtonFx>
+          <ReactButtonFx fx="press-shadow" variant="primary" bordered shape="rounded">Bordered</ReactButtonFx>
+          <ReactButtonFx fx="press-shadow" variant="success" shape="capsule" bordered>Capsule</ReactButtonFx>
+        </div>
+      </div>
+
+      <div style={{ marginBottom: "3rem" }}>
+        <h3 style={{ marginBottom: "1rem", color: "#1f2328", fontSize: "1.125rem" }}>
+          Pulse → Wobble
+        </h3>
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center"}}>
+          <ReactButtonFx fx="pulse-wobble" variant="primary" shape="rounded">Pulse → Wobble</ReactButtonFx>
+          <ReactButtonFx fx="pulse-wobble" variant="success" shape="rounded">Pulse → Wobble</ReactButtonFx>
+          <ReactButtonFx fx="pulse-wobble" variant="warning" shape="rounded">Pulse → Wobble</ReactButtonFx>
+          <ReactButtonFx fx="pulse-wobble" variant="danger" shape="rounded">Pulse → Wobble</ReactButtonFx>
+          <ReactButtonFx fx="pulse-wobble" variant="primary" shape="rounded" bordered={true}>Bordered</ReactButtonFx>
+          <ReactButtonFx fx="pulse-wobble" variant="success" shape="capsule" bordered={true}>Capsule</ReactButtonFx>
+          <ReactButtonFx fx="pulse-wobble" variant="danger" shape="rounded-square" size="lg" bordered={true}><ReactIcon noFill><Bomb /></ReactIcon></ReactButtonFx>
         </div>
       </div>
     </div>
@@ -664,7 +670,7 @@ export const EffectsGallery: Story = {
 
 export const FxDisabled: Story = {
   args: {
-    fx: ["bounce"],
+    fx: "bounce",
     fxDisabled: true,
     variant: "primary",
   },

@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
+import { Bomb } from "lucide-vue-next";
 import { VueButtonFx, type VueButtonFxProps } from 'agnosticui-core/button-fx/vue';
+import { VueIcon } from 'agnosticui-core/icon/vue';
 
 const meta = {
   title: 'AgnosticUI Vue/ButtonFx',
@@ -480,7 +482,7 @@ export const SizesShowcase: Story = {
 
 export const EffectsGallery: Story = {
   render: () => ({
-    components: { VueButtonFx },
+    components: { VueButtonFx, VueIcon, Bomb },
     template: `
       <div style="padding: 2rem; max-width: 1400px; margin: 0 auto;">
         <!-- Bounce Effect -->
@@ -675,6 +677,22 @@ export const EffectsGallery: Story = {
             <VueButtonFx :fx="['press-shadow']" variant="danger" shape="rounded">Danger</VueButtonFx>
             <VueButtonFx :fx="['press-shadow']" variant="primary" :bordered="true" shape="rounded">Bordered</VueButtonFx>
             <VueButtonFx :fx="['press-shadow']" variant="success" shape="capsule" :bordered="true">Capsule</VueButtonFx>
+          </div>
+        </div>
+
+        <!-- Pulse → Wobble Effect -->
+        <div style="margin-bottom: 3rem;">
+          <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.125rem;">
+            Pulse → Wobble
+          </h3>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+            <VueButtonFx :fx="['pulse-wobble']" variant="primary" shape="rounded">Pulse → Wobble</VueButtonFx>
+            <VueButtonFx :fx="['pulse-wobble']" variant="success" shape="rounded">Pulse → Wobble</VueButtonFx>
+            <VueButtonFx :fx="['pulse-wobble']" variant="warning" shape="rounded">Pulse → Wobble</VueButtonFx>
+            <VueButtonFx :fx="['pulse-wobble']" variant="danger" shape="rounded">Pulse → Wobble</VueButtonFx>
+            <VueButtonFx :fx="['pulse-wobble']" variant="primary" shape="rounded" :bordered="true">Bordered</VueButtonFx>
+            <VueButtonFx :fx="['pulse-wobble']" variant="success" shape="capsule" :bordered="true">Capsule</VueButtonFx>
+            <VueButtonFx :fx="['pulse-wobble']" variant="danger" shape="rounded-square" :size="lg" :bordered="true"><VueIcon no-fill><Bomb /></VueIcon></VueButtonFx>
           </div>
         </div>
       </div>
