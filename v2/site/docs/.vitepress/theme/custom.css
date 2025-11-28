@@ -33,6 +33,10 @@
   --vp-code-link-color: var(--ag-primary-text);
 }
 
+.vp-doc h4 {
+  margin-bottom: var(--ag-space-1);
+}
+
 /* Logo */
 .title span {
   color: var(--ag-primary);
@@ -61,6 +65,10 @@
 
 .full-width {
   width: 100%;
+}
+.full-w-h {
+  width: 100%;
+  height: 100%;
 }
 
 .m0,
