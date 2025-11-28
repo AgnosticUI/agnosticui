@@ -3,6 +3,10 @@ import { useArgs } from "storybook/preview-api";
 import { html, nothing } from 'lit';
 import { createElement, ChevronRight, Folder, User, Settings, Home, PanelLeftClose, PanelLeftOpen, PanelRightClose, PanelRightOpen } from 'lucide';
 import {type AgSidebarProps } from 'agnosticui-core/sidebar';
+
+// Brings in ag-sidebar-nav and ag-sidebar-nav-item definitions
+import 'agnosticui-core/sidebar-nav';
+
 import 'agnosticui-core/icon';
 import 'agnosticui-core/visually-hidden';
 
@@ -61,18 +65,9 @@ type Story = StoryObj<AgSidebarProps>;
 
 const createNavContent = () => html`
   <style>
-    /* Light DOM styles for slotted content */
-    .nav-menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .nav-item {
-      margin-bottom: 4px;
-    }
     .nav-button {
       width: 100%;
-      padding: 8px;
+      padding: var(--ag-space-2);
       border: none;
       background: transparent;
       border-radius: var(--ag-border-radius-sm);
@@ -104,7 +99,7 @@ const createNavContent = () => html`
     }
     .nav-button .chevron {
       margin-left: auto;
-      transition: transform 0.2s;
+      transition: transform var(--ag-fx-duration-md);
     }
     .nav-button[aria-expanded="true"] .chevron ag-icon {
       transform: rotate(90deg);
@@ -162,43 +157,43 @@ const createNavContent = () => html`
       display: none;
     }
   </style>
-  <ul class="nav-menu">
-    <li class="nav-item">
+  <ag-sidebar-nav>
+    <ag-sidebar-nav-item>
       <button class="nav-button active" aria-current="page">
         <ag-icon no-fill>${createElement(Home)}</ag-icon>
         <span class="nav-label">Dashboard</span>
       </button>
-    </li>
-    <li class="nav-item">
+    </ag-sidebar-nav-item>
+    <ag-sidebar-nav-item>
       <button class="nav-button" aria-expanded="false">
         <ag-icon no-fill>${createElement(Folder)}</ag-icon>
         <span class="nav-label">Projects</span>
         <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
       </button>
-      <ul class="nav-submenu">
-        <li class="nav-subitem"><a href="#" class="nav-sublink">Project Alpha</a></li>
-        <li class="nav-subitem"><a href="#" class="nav-sublink">Project Beta</a></li>
-      </ul>
-    </li>
-    <li class="nav-item">
+      <div role="list" class="nav-submenu">
+        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Alpha</a></div>
+        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Beta</a></div>
+      </div>
+    </ag-sidebar-nav-item>
+    <ag-sidebar-nav-item>
       <button class="nav-button">
         <ag-icon no-fill>${createElement(User)}</ag-icon>
         <span class="nav-label">Team</span>
       </button>
-    </li>
-    <li class="nav-item">
+    </ag-sidebar-nav-item>
+    <ag-sidebar-nav-item>
       <button class="nav-button" aria-expanded="false">
         <ag-icon no-fill>${createElement(Settings)}</ag-icon>
         <span class="nav-label">Settings</span>
         <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
       </button>
-      <ul class="nav-submenu">
-        <li class="nav-subitem"><a href="#" class="nav-sublink">Profile</a></li>
-        <li class="nav-subitem"><a href="#" class="nav-sublink">Billing</a></li>
-        <li class="nav-subitem"><a href="#" class="nav-sublink">Security</a></li>
-      </ul>
-    </li>
-  </ul>
+      <div role="list" class="nav-submenu">
+        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Profile</a></div>
+        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Billing</a></div>
+        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Security</a></div>
+      </div>
+    </ag-sidebar-nav-item>
+  </ag-sidebar-nav>
 `;
 
 export const Default: Story = {
