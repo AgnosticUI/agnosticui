@@ -307,36 +307,43 @@
       <VueButtonFx
         fx="bounce"
         fx-ease="ease"
+        size="sm"
         variant="primary"
       >Ease</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="ease-in"
+        size="sm"
         variant="primary"
       >Ease-In</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="ease-out"
+        size="sm"
         variant="primary"
       >Ease-Out</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="bounce"
+        size="sm"
         variant="primary"
       >Bounce</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="spring-sm"
+        size="sm"
         variant="primary"
       >Spring SM</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="spring-md"
+        size="sm"
         variant="primary"
       >Spring MD</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="spring-lg"
+        size="sm"
         variant="primary"
       >Spring LG</VueButtonFx>
     </div>
@@ -383,32 +390,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.stacked-mobile {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-}
-
-.mbe2 {
-  margin-block-end: 0.5rem;
-  color: #6b7280;
-  font-size: 0.875rem;
-}
-
-.mbe4 {
-  margin-block-end: 1rem;
-}
-
-.mbe6 {
-  margin-block-end: 2rem;
-}
-
-h3 {
-  color: #1f2328;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-</style>
