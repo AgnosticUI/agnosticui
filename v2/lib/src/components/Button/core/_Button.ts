@@ -107,6 +107,7 @@ export class AgButton extends LitElement implements ButtonProps {
     /* Secondary inherits font color */
     :host([variant="secondary"]) button {
       background: var(--ag-neutral-400);
+      color: var(--ag-text-primary);
     }
     :host([variant="secondary"]) button:hover {
       background: var(--ag-neutral-500);

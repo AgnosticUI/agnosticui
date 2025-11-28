@@ -36,19 +36,19 @@ export class ButtonFx extends AgButton implements FxProps {
          ======================================== */
 
       :host([variant="primary"]) button:hover {
-        background: var(--ag-primary);
+        background: var(--ag-primary-dark);
       }
 
       :host([variant="secondary"]) button:hover {
-        background: var(--ag-neutral-400);
+        background: var(--ag-neutral-500);
       }
 
       :host([variant="success"]) button:hover {
-        background: var(--ag-success);
+        background: var(--ag-success-dark);
       }
 
       :host([variant="warning"]) button:hover {
-        background: var(--ag-warning);
+         background: var(--ag-warning-dark);
       }
 
       :host([variant="danger"]) button:hover {
@@ -56,7 +56,7 @@ export class ButtonFx extends AgButton implements FxProps {
       }
 
       :host([variant="monochrome"]) button:hover {
-        background: var(--ag-background-inverted);
+        background: var(--ag-background-secondary-inverted);
       }
 
       /* ========================================
