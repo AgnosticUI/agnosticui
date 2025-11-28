@@ -542,34 +542,38 @@ export const SizeVariations: Story = {
   render: () => html`
     <div style="padding: 2rem;">
       <h3 style="margin-bottom: 1.5rem; color: #1f2328; font-size: 1.25rem;">Icon Button FX Sizes with Pulse Effect</h3>
+      <p style="margin-bottom: 1rem; color: #6b7280; font-size: 0.875rem;">
+        Note: For <code>xs</code> and <code>sm</code> sizes, ensure icons scale properly by setting <code>width: '100%', height: '100%'</code>
+        on the icon element so it fills the button's icon container.
+      </p>
       <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
         <div style="text-align: center;">
           <ag-icon-button-fx .fx=${"pulse"} .size=${"xs"} .variant=${"primary"} .label=${"Extra small"}>
-            ${createElement(Heart, { width: 18, height: 18 })}
+            ${createElement(Heart, { width: '100%', height: '100%' })}
           </ag-icon-button-fx>
           <div style="font-size: 0.75rem; margin-top: 0.5rem; color: #6b7280;">XS</div>
         </div>
         <div style="text-align: center;">
           <ag-icon-button-fx .fx=${"pulse"} .size=${"sm"} .variant=${"primary"} .label=${"Small"}>
-            ${createElement(Heart, { width: 20, height: 20 })}
+            ${createElement(Heart, { width: '100%', height: '100%' })}
           </ag-icon-button-fx>
           <div style="font-size: 0.75rem; margin-top: 0.5rem; color: #6b7280;">SM</div>
         </div>
         <div style="text-align: center;">
           <ag-icon-button-fx .fx=${"pulse"} .size=${"md"} .variant=${"primary"} .label=${"Medium"}>
-            ${createElement(Heart)}
+            ${createElement(Heart, { width: '100%', height: '100%' })}
           </ag-icon-button-fx>
           <div style="font-size: 0.75rem; margin-top: 0.5rem; color: #6b7280;">MD (Default)</div>
         </div>
         <div style="text-align: center;">
           <ag-icon-button-fx .fx=${"pulse"} .size=${"lg"} .variant=${"primary"} .label=${"Large"}>
-            ${createElement(Heart)}
+            ${createElement(Heart, { width: '100%', height: '100%' })}
           </ag-icon-button-fx>
           <div style="font-size: 0.75rem; margin-top: 0.5rem; color: #6b7280;">LG</div>
         </div>
         <div style="text-align: center;">
           <ag-icon-button-fx .fx=${"pulse"} .size=${"xl"} .variant=${"primary"} .label=${"Extra large"}>
-            ${createElement(Heart)}
+            ${createElement(Heart, { width: '100%', height: '100%' })}
           </ag-icon-button-fx>
           <div style="font-size: 0.75rem; margin-top: 0.5rem; color: #6b7280;">XL</div>
         </div>
