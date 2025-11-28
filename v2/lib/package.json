@@ -671,6 +671,18 @@
     "./button-fx/vue": {
       "types": "./dist/components/ButtonFx/vue/index.d.ts",
       "import": "./dist/components/ButtonFx/vue/index.js"
+    },
+    "./icon-button-fx": {
+      "types": "./dist/components/IconButtonFx/core/_IconButtonFx.d.ts",
+      "import": "./dist/components/IconButtonFx/core/_IconButtonFx.js"
+    },
+    "./icon-button-fx/react": {
+      "types": "./dist/components/IconButtonFx/react/ReactIconButtonFx.d.ts",
+      "import": "./dist/components/IconButtonFx/react/ReactIconButtonFx.js"
+    },
+    "./icon-button-fx/vue": {
+      "types": "./dist/components/IconButtonFx/vue/index.d.ts",
+      "import": "./dist/components/IconButtonFx/vue/index.js"
     }
   },
   "scripts": {

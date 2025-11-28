@@ -1,15 +1,16 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { toHaveNoViolations } from 'jest-axe';
-import { ButtonFx } from './ButtonFx';
+import { IconButtonFx } from './IconButtonFx';
 
 expect.extend(toHaveNoViolations);
 
-describe('ButtonFx', () => {
-  let element: ButtonFx;
+describe('IconButtonFx', () => {
+  let element: IconButtonFx;
 
   beforeEach(() => {
-    element = document.createElement('ag-button-fx') as ButtonFx;
-    element.textContent = 'Test Button FX';
+    element = document.createElement('ag-icon-button-fx') as IconButtonFx;
+    element.label = 'Test Icon Button';
+    element.unicode = '×';
     document.body.appendChild(element);
   });
 
@@ -22,19 +23,24 @@ describe('ButtonFx', () => {
   describe('Basic Functionality', () => {
     it('should render with default properties', async () => {
       expect(element).toBeDefined();
-      expect(element.tagName.toLowerCase()).toBe('ag-button-fx');
+      expect(element.tagName.toLowerCase()).toBe('ag-icon-button-fx');
 
       await element.updateComplete;
       const button = element.shadowRoot?.querySelector('button');
       expect(button).toBeDefined();
-      expect(element.textContent?.trim()).toBe('Test Button FX');
     });
 
-    it('should inherit Button functionality', async () => {
+    it('should inherit IconButton functionality', async () => {
       await element.updateComplete;
       const button = element.shadowRoot?.querySelector('button');
       expect(button?.getAttribute('type')).toBe('button');
-      expect(button?.tagName.toLowerCase()).toBe('button');
+      expect(button?.getAttribute('aria-label')).toBe('Test Icon Button');
+    });
+
+    it('should display icon content', async () => {
+      await element.updateComplete;
+      const icon = element.shadowRoot?.querySelector('.unicode-icon');
+      expect(icon?.textContent).toBe('×');
     });
   });
 
@@ -200,7 +206,7 @@ describe('ButtonFx', () => {
     });
   });
 
-  describe('Integration with Button Props', () => {
+  describe('Integration with IconButton Props', () => {
     it('should work with variant prop', async () => {
       element.variant = 'primary';
       element.fx = 'pulse';
@@ -230,20 +236,85 @@ describe('ButtonFx', () => {
       const button = element.shadowRoot?.querySelector('button');
       expect(button?.classList.contains('ag-fx-bounce')).toBe(true);
     });
+
+    it('should work with pressed prop', async () => {
+      element.pressed = true;
+      element.fx = 'pulse';
+      await element.updateComplete;
+
+      expect(element.pressed).toBe(true);
+      const button = element.shadowRoot?.querySelector('button');
+      expect(button?.getAttribute('aria-pressed')).toBe('true');
+    });
+
+    it('should work with loading prop', async () => {
+      element.loading = true;
+      element.fx = 'pulse';
+      await element.updateComplete;
+
+      expect(element.loading).toBe(true);
+    });
   });
 
   describe('Events', () => {
-    it('should dispatch toggle event when toggle button clicked', async () => {
-      element.toggle = true;
+    it('should dispatch icon-button-click event when clicked', async () => {
       await element.updateComplete;
 
-      const toggleSpy = vi.fn();
-      element.addEventListener('toggle', toggleSpy);
+      const clickSpy = vi.fn();
+      element.addEventListener('icon-button-click', clickSpy);
 
       const button = element.shadowRoot?.querySelector('button');
       button?.click();
 
-      expect(toggleSpy).toHaveBeenCalled();
+      expect(clickSpy).toHaveBeenCalled();
+    });
+
+    it('should include event detail in icon-button-click event', async () => {
+      await element.updateComplete;
+
+      let eventDetail: any;
+      element.addEventListener('icon-button-click', (e: Event) => {
+        eventDetail = (e as CustomEvent).detail;
+      });
+
+      const button = element.shadowRoot?.querySelector('button');
+      button?.click();
+
+      expect(eventDetail).toBeDefined();
+      expect(eventDetail.label).toBe('Test Icon Button');
+      expect(eventDetail.pressed).toBe(false);
+    });
+  });
+
+  describe('Accessibility', () => {
+    it('should require label prop for accessibility', async () => {
+      const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+      const elementWithoutLabel = document.createElement('ag-icon-button-fx') as IconButtonFx;
+      elementWithoutLabel.unicode = '×';
+      document.body.appendChild(elementWithoutLabel);
+
+      await elementWithoutLabel.updateComplete;
+
+      expect(consoleWarnSpy).toHaveBeenCalled();
+
+      elementWithoutLabel.remove();
+      consoleWarnSpy.mockRestore();
+    });
+
+    it('should set aria-label from label prop', async () => {
+      element.label = 'Close dialog';
+      await element.updateComplete;
+
+      const button = element.shadowRoot?.querySelector('button');
+      expect(button?.getAttribute('aria-label')).toBe('Close dialog');
+    });
+
+    it('should hide icon from screen readers with aria-hidden', async () => {
+      await element.updateComplete;
+
+      const icon = element.shadowRoot?.querySelector('.unicode-icon');
+      expect(icon?.getAttribute('aria-hidden')).toBe('true');
     });
   });
 });

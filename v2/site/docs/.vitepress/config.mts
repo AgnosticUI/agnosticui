@@ -56,7 +56,6 @@ function getComponents() {
   return {
     text: 'Components',
     items: [
-      { text: 'Alerts', link: '/components/alert' },
       { text: 'AspectRatio', link: '/components/aspect-ratio' },
       { text: 'Avatar', link: '/components/avatar' },
       { text: 'Badge', link: '/components/badge' },
@@ -77,6 +76,7 @@ function getComponents() {
       { text: 'Header', link: '/components/header' },
       { text: 'Icon Button', link: '/components/icon-button' },
       { text: 'Icon', link: '/components/icon' },
+      { text: 'IconButtonFx', link: '/components/icon-button-fx' },
       { text: 'Image', link: '/components/image' },
       { text: 'Input', link: '/components/input' },
       { text: 'IntlFormatter', link: '/components/intl-formatter' },
@@ -107,6 +107,8 @@ function getComponents() {
       { text: 'Tooltip', link: '/components/tooltip' },
       { text: 'VisuallyHidden', link: '/components/visually-hidden' },
 { text: 'Accordion', link: '/components/accordion' },
+{ text: 'Alerts', link: '/components/alert' },
+
 
     ]
   }

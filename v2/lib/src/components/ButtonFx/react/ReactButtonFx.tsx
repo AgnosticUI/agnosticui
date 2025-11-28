@@ -32,5 +32,6 @@ export const ReactButtonFx = createComponent({
 });
 
 // Re-export types
-export type { ButtonFxProps, FxProps } from "../core/ButtonFx";
+export type { ButtonFxProps } from "../core/ButtonFx";
+export type { FxProps } from "../../../types/fx";
 export type { ButtonToggleEvent } from "../../Button/core/Button";

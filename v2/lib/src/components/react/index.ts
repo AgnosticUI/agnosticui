@@ -47,3 +47,4 @@ export * from '../IntlFormatter/react/ReactIntlFormatter';
 export * from '../VisuallyHidden/react/ReactVisuallyHidden';
 export * from '../ScrollProgress/react/ReactScrollProgress';
 export * from '../ButtonFx/react/ReactButtonFx';
+export * from '../IconButtonFx/react/ReactIconButtonFx';

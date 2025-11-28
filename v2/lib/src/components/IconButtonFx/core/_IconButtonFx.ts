@@ -1,33 +1,40 @@
 import { css } from 'lit';
 import { property } from 'lit/decorators.js';
-import { AgButton, type ButtonProps } from '../../Button/core/_Button.js';
+import { AgIconButton, type IconButtonProps } from '../../IconButton/core/_IconButton.js';
+import type {
+  IconButtonClickEvent,
+  IconButtonActivateEvent,
+} from '../../IconButton/core/_IconButton.js';
 import { motionStyles } from '../../../styles/motion.styles.js';
 import type { FxProps } from '../../../types/fx.js';
 
-// Combined props for ButtonFx
-export interface ButtonFxProps extends ButtonProps, FxProps {}
+// Re-export event types for convenience
+export type { IconButtonClickEvent, IconButtonActivateEvent };
+
+// Combined props for IconButtonFx
+export interface IconButtonFxProps extends IconButtonProps, FxProps {}
 
 /**
- * ButtonFx - Button with CSS animation effects
+ * IconButtonFx - IconButton with CSS animation effects
  *
- * Extends AgButton to add optional CSS-only animation effects.
- * Inherits all Button functionality and styling.
+ * Extends AgIconButton to add optional CSS-only animation effects.
+ * Inherits all IconButton functionality and styling.
  *
  * Features:
- * - 9 CSS-only FX effects
+ * - CSS-only FX effects (reuses motionStyles keyframes)
  * - Full control over button hover states
  * - Automatic reduced-motion support
- * - Can override Button's default hover behaviors
+ * - Can override IconButton's default hover behaviors
  */
-export class ButtonFx extends AgButton implements FxProps {
+// @ts-ignore - TS2417: Lit supports arrays for static styles even when parent has single CSSResult
+export class IconButtonFx extends AgIconButton implements FxProps {
   static styles = [
+    AgIconButton.styles,
     motionStyles,
-    AgButton.styles,
     css`
       /* ========================================
          OVERRIDE PARENT HOVER BACKGROUNDS
-         These compete with FX effects like highlight-sweep, slide-in, etc.
-         We need to keep these using :host() for variant attribute selectors
+         These compete with FX effects
          ======================================== */
 
       :host([variant="primary"]) button:hover {
@@ -43,11 +50,11 @@ export class ButtonFx extends AgButton implements FxProps {
       }
 
       :host([variant="warning"]) button:hover {
-         background: var(--ag-warning-dark);
+        background: var(--ag-warning-dark);
       }
 
       :host([variant="danger"]) button:hover {
-        background: var(--ag-danger);
+        background: var(--ag-danger-dark);
       }
 
       :host([variant="monochrome"]) button:hover {
@@ -84,7 +91,7 @@ export class ButtonFx extends AgButton implements FxProps {
       }
 
       /* ========================================
-         EXPERIMENTAL EFFECT CLASSES
+         ADDITIONAL EFFECT CLASSES
          ======================================== */
 
       /* Grow */
@@ -102,114 +109,6 @@ export class ButtonFx extends AgButton implements FxProps {
         animation: ag-fx-push var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
-      /* Background slide */
-      button.ag-fx-bg-slide {
-        position: relative;
-        overflow: hidden;
-      }
-
-      /* Background (bottom to top) and Side (left to right) slides share */
-      button.ag-fx-side-slide::before,
-      button.ag-fx-bg-slide::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.25);
-        /* Use ease-out for slides to prevent spring overshoot which causes visual glitches */
-        transition: transform var(--ag-fx-duration, 200ms) ease-out;
-      }
-      
-      button.ag-fx-bg-slide::before {
-        transform: translateY(100%);
-      }
-
-      button.ag-fx-bg-slide:hover::before {
-        transform: translateY(0);
-      }
-
-      /* Side slide */
-      button.ag-fx-side-slide {
-        position: relative;
-        overflow: hidden;
-      }
-
-      button.ag-fx-side-slide::before {
-        transform: translateX(-100%);
-      }
-
-      button.ag-fx-side-slide:hover::before {
-        transform: translateX(0);
-      }
-
-      /* Press shadow - animates shadow on active/press with variant colors */
-      :host([variant="primary"]) button.ag-fx-press-shadow {
-        box-shadow: 0 4px 0 rgba(5, 80, 174, 0.5);
-        position: relative;
-        top: 0;
-        transition: top 0.1s, box-shadow 0.1s;
-      }
-
-      :host([variant="primary"]) button.ag-fx-press-shadow:active {
-        top: 4px;
-        box-shadow: 0 0px 0 rgba(5, 80, 174, 0.5);
-      }
-
-      :host([variant="success"]) button.ag-fx-press-shadow {
-        box-shadow: 0 4px 0 rgba(var(--ag-success-rgb), 0.5);
-        position: relative;
-        top: 0;
-        transition: top 0.1s, box-shadow 0.1s;
-      }
-
-      :host([variant="success"]) button.ag-fx-press-shadow:active {
-        top: 4px;
-        box-shadow: 0 0px 0 rgba(var(--ag-success-rgb), 0.5);
-      }
-
-      :host([variant="warning"]) button.ag-fx-press-shadow {
-        box-shadow: 0 4px 0 rgba(var(--ag-warning-rgb), 0.5);
-        position: relative;
-        top: 0;
-        transition: top 0.1s, box-shadow 0.1s;
-      }
-
-      :host([variant="warning"]) button.ag-fx-press-shadow:active {
-        top: 4px;
-        box-shadow: 0 0px 0 rgba(var(--ag-warning-rgb), 0.5);
-      }
-
-      :host([variant="danger"]) button.ag-fx-press-shadow {
-        box-shadow: 0 4px 0 rgba(var(--ag-danger-rgb), 0.5);
-        position: relative;
-        top: 0;
-        transition: top 0.1s, box-shadow 0.1s;
-      }
-
-      :host([variant="danger"]) button.ag-fx-press-shadow:active {
-        top: 4px;
-        box-shadow: 0 0px 0 rgba(var(--ag-danger-rgb), 0.5);
-      }
-
-      /* Fallback for other variants without RGB tokens */
-      :host([variant="secondary"]) button.ag-fx-press-shadow,
-      :host([variant="monochrome"]) button.ag-fx-press-shadow,
-      :host(:not([variant])) button.ag-fx-press-shadow {
-        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
-        position: relative;
-        top: 0;
-        transition: top 0.1s, box-shadow 0.1s;
-      }
-
-      :host([variant="secondary"]) button.ag-fx-press-shadow:active,
-      :host([variant="monochrome"]) button.ag-fx-press-shadow:active,
-      :host(:not([variant])) button.ag-fx-press-shadow:active {
-        top: 4px;
-        box-shadow: 0 0px 0 rgba(0, 0, 0, 0.2);
-      }
-
       /* Shake */
       button.ag-fx-shake:hover {
         animation: ag-fx-shake var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
@@ -219,8 +118,8 @@ export class ButtonFx extends AgButton implements FxProps {
       button.ag-fx-wobble:hover {
         animation: ag-fx-wobble var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
-      
-      /* Pulse + Wobble 200ms pulse (1.08 scale) + 200ms wobble */
+
+      /* Pulse-Wobble Sequential */
       button.ag-fx-pulse-wobble:hover {
         animation:
           ag-fx-grow 200ms var(--ag-fx-ease-spring-lg) 0ms,
@@ -242,7 +141,13 @@ export class ButtonFx extends AgButton implements FxProps {
         button.ag-fx-pulse,
         button.ag-fx-jelly,
         button.ag-fx-press-pop,
-        button.ag-fx-slide-in {
+        button.ag-fx-slide-in,
+        button.ag-fx-grow,
+        button.ag-fx-shrink,
+        button.ag-fx-push,
+        button.ag-fx-shake,
+        button.ag-fx-wobble,
+        button.ag-fx-pulse-wobble {
           animation-duration: 0.01ms !important;
           transition-duration: 0.01ms !important;
         }
@@ -271,13 +176,14 @@ export class ButtonFx extends AgButton implements FxProps {
     this.fxDisabled = false;
   }
 
-  firstUpdated() {
+  override firstUpdated(changedProperties: Map<PropertyKey, unknown>) {
+    super.firstUpdated?.(changedProperties);
     // Apply initial FX setup after first render
     this._applyFxClasses();
     this._applyFxCustomProperties();
   }
 
-  updated(changedProperties: Map<PropertyKey, unknown>) {
+  override updated(changedProperties: Map<PropertyKey, unknown>) {
     super.updated(changedProperties);
 
     // Apply FX classes to the button element when props change
