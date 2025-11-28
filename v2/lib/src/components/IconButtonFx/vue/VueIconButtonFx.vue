@@ -25,13 +25,13 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { IconButtonFxProps } from "../core/_IconButtonFx";
+import type { IconButtonFxProps } from "../core/IconButtonFx";
 import type {
   IconButtonClickEvent,
   IconButtonActivateEvent,
   IconButtonClickEventDetail,
   IconButtonActivateEventDetail,
-} from "../../IconButton/core/_IconButton";
+} from "../../IconButton/core/IconButton";
 import "../core/IconButtonFx"; // Registers the ag-icon-button-fx web component
 
 // Define props interface (omit function props since wrapper uses emits)

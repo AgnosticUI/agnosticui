@@ -673,8 +673,8 @@
       "import": "./dist/components/ButtonFx/vue/index.js"
     },
     "./icon-button-fx": {
-      "types": "./dist/components/IconButtonFx/core/_IconButtonFx.d.ts",
-      "import": "./dist/components/IconButtonFx/core/_IconButtonFx.js"
+      "types": "./dist/components/IconButtonFx/core/IconButtonFx.d.ts",
+      "import": "./dist/components/IconButtonFx/core/IconButtonFx.js"
     },
     "./icon-button-fx/react": {
       "types": "./dist/components/IconButtonFx/react/ReactIconButtonFx.d.ts",
