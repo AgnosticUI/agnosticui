@@ -1,3 +1,6 @@
+// Shared types
+export type { FxProps } from './types/fx';
+
 export * from './components/Alert/core/_Alert';
 export * from './components/Accordion/core/Accordion';
 export * from './components/AccordionGroup/AccordionGroup';
@@ -40,3 +43,4 @@ export * from './components/VisuallyHidden/core/_VisuallyHidden';
 export * from './components/ScrollProgress/core/_ScrollProgress';
 export * from './components/ButtonFx/core/_ButtonFx';
 export * from './components/Sidebar/core/_Sidebar';
+export * from './components/IconButtonFx/core/_IconButtonFx';
