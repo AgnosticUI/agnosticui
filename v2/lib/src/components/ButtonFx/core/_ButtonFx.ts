@@ -4,7 +4,7 @@ import { AgButton, type ButtonProps } from '../../Button/core/_Button.js';
 
 // FxProps interface
 export interface FxProps {
-  fx?: string[];
+  fx?: string;
   fxSpeed?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   fxEase?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
   fxDisabled?: boolean;
@@ -105,7 +105,7 @@ export class ButtonFx extends AgButton implements FxProps {
       /* Grow - button increases in size */
       @keyframes ag-fx-grow {
         100% {
-          transform: scale(1.1);
+          transform: scale(1.09);
         }
       }
 
@@ -313,6 +313,13 @@ export class ButtonFx extends AgButton implements FxProps {
       button.ag-fx-wobble:hover {
         animation: ag-fx-wobble var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
+      
+      /* Pulse + Wobble 200ms pulse (1.08 scale) + 200ms wobble */
+      button.ag-fx-pulse-wobble:hover {
+        animation:
+          ag-fx-grow 200ms var(--ag-fx-ease-spring-lg) 0ms,
+          ag-fx-wobble 200ms var(--ag-fx-ease-spring-md) 200ms;
+      }
 
       /* Disabled FX */
       button.ag-fx-disabled {
@@ -338,8 +345,8 @@ export class ButtonFx extends AgButton implements FxProps {
   ];
 
   // FX props
-  @property({ type: Array })
-  fx?: string[];
+  @property({ type: String })
+  fx?: string;
 
   @property({ type: String, attribute: 'fx-speed' })
   fxSpeed!: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -388,11 +395,10 @@ export class ButtonFx extends AgButton implements FxProps {
         }
       });
 
-      // Add new fx classes to button
-      const fxArray = Array.isArray(this.fx) ? this.fx : this.fx ? [this.fx] : [];
-      fxArray.forEach(effect => {
-        buttonEl.classList.add(`ag-fx-${effect}`);
-      });
+      // Add new fx class to button
+      if (this.fx) {
+        buttonEl.classList.add(`ag-fx-${this.fx}`);
+      }
 
       if (this.fxDisabled) {
         buttonEl.classList.add('ag-fx-disabled');

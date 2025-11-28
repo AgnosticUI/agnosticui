@@ -484,7 +484,6 @@ export const EffectsGallery: Story = {
           <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
           <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
           <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
-          <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(RotateCw)}</ag-icon></ag-button-fx>
           <ag-button-fx .fx=${["wobble"]} .fxEase=${"spring-md"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Theater)}</ag-icon></ag-button-fx>
         </div>
       </div>
@@ -499,7 +498,6 @@ export const EffectsGallery: Story = {
           <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"danger"} .shape=${"rounded"}>Danger</ag-button-fx>
           <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"primary"} .bordered=${true} .shape=${"rounded"}>Bordered</ag-button-fx>
           <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
-          <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(AlertTriangle)}</ag-icon></ag-button-fx>
           <ag-button-fx .fx=${["shake"]} .fxSpeed=${"sm"} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(X)}</ag-icon></ag-button-fx>
         </div>
       </div>
@@ -516,6 +514,23 @@ export const EffectsGallery: Story = {
           <ag-button-fx .fx=${["press-shadow"]} .variant=${"success"} .shape=${"capsule"} .bordered=${true}>Capsule</ag-button-fx>
           <ag-button-fx .fx=${["press-shadow"]} .variant=${"warning"} .shape=${"circle"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Zap)}</ag-icon></ag-button-fx>
           <ag-button-fx .fx=${["press-shadow"]} .variant=${"danger"} .shape=${"rounded-square"} .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Bomb)}</ag-icon></ag-button-fx>
+        </div>
+      </div>
+
+      <!-- Pulse + Wobble Effect -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="margin-bottom: 1rem; color: #1f2328; font-size: 1.125rem;">
+          Pulse → Wobble
+        </h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <ag-button-fx fx="pulse-wobble" .variant=${"primary"} shape="rounded">Pulse → Wobble</ag-button-fx>
+          <ag-button-fx fx="pulse-wobble" .variant=${"success"} shape="rounded">Pulse → Wobble</ag-button-fx>
+          <ag-button-fx fx="pulse-wobble" .variant=${"warning"} shape="rounded">Pulse → Wobble</ag-button-fx>
+          <ag-button-fx fx="pulse-wobble" .variant=${"danger"} shape="rounded">Pulse → Wobble</ag-button-fx>
+          <ag-button-fx fx="pulse-wobble" .variant=${"primary"} shape="rounded" .bordered=${true}>Bordered</ag-button-fx>
+          <ag-button-fx fx="pulse-wobble" .variant=${"success"} shape="capsule" .bordered=${true}>Capsule</ag-button-fx>
+          <ag-button-fx fx="pulse-wobble" .variant=${"danger"} shape="rounded-square" .size=${"lg"} .bordered=${true}><ag-icon no-fill>${createElement(Bomb)}</ag-icon></ag-button-fx>
+        </div>
         </div>
       </div>
     </div>
@@ -591,4 +606,3 @@ export const ReducedMotion: Story = {
     </div>
   `,
 };
-
