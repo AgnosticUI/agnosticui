@@ -210,7 +210,6 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     }
     if (changedProperties.has('breakpoint')) {
       if (this.breakpoint <= 0) {
-        console.warn('ag-sidebar: breakpoint must be a positive number');
         this.breakpoint = 1024;
       }
     }

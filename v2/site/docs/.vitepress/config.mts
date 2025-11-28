@@ -76,8 +76,8 @@ function getComponents() {
       { text: 'Fieldset', link: '/components/fieldset' },
       { text: 'Flex', link: '/components/flex' },
       { text: 'Header', link: '/components/header' },
-      { text: 'Icon', link: '/components/icon' },
       { text: 'Icon Button', link: '/components/icon-button' },
+      { text: 'Icon', link: '/components/icon' },
       { text: 'IconButtonFx', link: '/components/icon-button-fx' },
       { text: 'Image', link: '/components/image' },
       { text: 'Input', link: '/components/input' },
@@ -108,8 +108,6 @@ function getComponents() {
       { text: 'Toggle', link: '/components/toggle' },
       { text: 'Tooltip', link: '/components/tooltip' },
       { text: 'VisuallyHidden', link: '/components/visually-hidden' },
-
-
     ]
   }
 }
