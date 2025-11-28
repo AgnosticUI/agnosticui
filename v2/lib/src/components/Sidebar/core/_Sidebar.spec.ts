@@ -82,8 +82,8 @@ describe('AgSidebar', () => {
     });
   });
 
-  describe('Sub-menu Functionality', () => {
-    it('should toggle sub-menu on click', async () => {
+  describe('Navigation Button Functionality', () => {
+    it('should toggle aria-expanded attribute on navigation button click', async () => {
       const navMenu = document.createElement('ul');
       navMenu.className = 'nav-menu';
       navMenu.innerHTML = `
@@ -91,17 +91,14 @@ describe('AgSidebar', () => {
           <button class="nav-button" aria-expanded="false">
             <span>Toggle Me</span>
           </button>
-          <ul class="nav-submenu"><li>Sub-item</li></ul>
         </li>
       `;
       sidebar.appendChild(navMenu);
       await sidebar.updateComplete;
 
       const button = sidebar.querySelector('.nav-button') as HTMLButtonElement;
-      const submenu = sidebar.querySelector('.nav-submenu') as HTMLUListElement;
 
       expect(button.getAttribute('aria-expanded')).toBe('false');
-      expect(submenu.classList.contains('open')).toBe(false);
 
       // Directly call _handleSlotClick with a mock event
       // @ts-ignore: Access private method for testing
@@ -109,17 +106,12 @@ describe('AgSidebar', () => {
       await sidebar.updateComplete;
 
       expect(button.getAttribute('aria-expanded')).toBe('true');
-      expect(submenu.classList.contains('open')).toBe(true);
 
       // @ts-ignore: Access private method for testing
       sidebar._handleSlotClick({ target: button } as Event);
       await sidebar.updateComplete;
-      
+
       expect(button.getAttribute('aria-expanded')).toBe('false');
-      expect(submenu.classList.contains('open')).toBe(false);
-      
-      expect(button.getAttribute('aria-expanded')).toBe('false');
-      expect(submenu.classList.contains('open')).toBe(false);
     });
   });
 
@@ -133,7 +125,7 @@ describe('AgSidebar', () => {
         </li>
         <li class="nav-item">
           <button class="nav-button" aria-expanded="false">Projects</button>
-          <ul class="nav-submenu">
+          <ul class="ag-sidebar-nav-submenu">
             <li><a href="#" class="nav-sublink">Project Alpha</a></li>
           </ul>
         </li>

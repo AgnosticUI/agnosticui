@@ -4,7 +4,10 @@ import { html, nothing } from 'lit';
 import { createElement, ChevronRight, Folder, User, Settings, Home, PanelLeftClose, PanelLeftOpen, PanelRightClose, PanelRightOpen } from 'lucide';
 import {type AgSidebarProps } from 'agnosticui-core/sidebar';
 
-// Brings in ag-sidebar-nav and ag-sidebar-nav-item definitions
+// Brings in definitions for:
+// ag-sidebar-nav,
+// ag-sidebar-nav-item
+// ag-sidebar-nav-submenu
 import 'agnosticui-core/sidebar-nav';
 
 import 'agnosticui-core/icon';
@@ -104,19 +107,7 @@ const createNavContent = () => html`
     .nav-button[aria-expanded="true"] .chevron ag-icon {
       transform: rotate(90deg);
     }
-    /* Sub-menu styles */
-    .nav-submenu {
-      list-style: none;
-      margin-left: 0.875rem;
-      border-left: 1px solid var(--ag-border-subtle);
-      padding-left: 0.625rem;
-      margin-block-start: var(--ag-space-1);
-      margin-block-end: var(--ag-space-1);
-      display: none; /* Hidden by default */
-    }
-    .nav-submenu.open {
-      display: block;
-    }
+
     .nav-sublink {
       display: block;
       padding: var(--ag-space-2);
@@ -152,9 +143,11 @@ const createNavContent = () => html`
       white-space: nowrap;
       border-width: 0;
     }
-    ag-sidebar[collapsed] .nav-submenu {
+    
+    /* Sub-menu styles - visibility is now controlled by the component itself via the [open] attribute */
+    ag-sidebar[collapsed] ag-sidebar-nav-submenu {
       /* Ensure submenus are hidden when sidebar is collapsed */
-      display: none;
+      display: none !important;
     }
   </style>
   <ag-sidebar-nav>
@@ -170,10 +163,10 @@ const createNavContent = () => html`
         <span class="nav-label">Projects</span>
         <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
       </button>
-      <div role="list" class="nav-submenu">
+      <ag-sidebar-nav-submenu>
         <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Alpha</a></div>
         <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Beta</a></div>
-      </div>
+      </ag-sidebar-nav-submenu>
     </ag-sidebar-nav-item>
     <ag-sidebar-nav-item>
       <button class="nav-button">
@@ -187,11 +180,11 @@ const createNavContent = () => html`
         <span class="nav-label">Settings</span>
         <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
       </button>
-      <div role="list" class="nav-submenu">
+      <ag-sidebar-nav-submenu>
         <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Profile</a></div>
         <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Billing</a></div>
         <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Security</a></div>
-      </div>
+      </ag-sidebar-nav-submenu>
     </ag-sidebar-nav-item>
   </ag-sidebar-nav>
 `;

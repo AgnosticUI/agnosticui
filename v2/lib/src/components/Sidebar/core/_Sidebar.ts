@@ -332,9 +332,15 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     if (button && button.hasAttribute('aria-expanded')) {
       const isExpanded = button.getAttribute('aria-expanded') === 'true';
       button.setAttribute('aria-expanded', String(!isExpanded));
+
+      // Toggle the open attribute on the submenu custom element
       const submenu = button.nextElementSibling;
-      if (submenu && submenu.classList.contains('nav-submenu')) {
-        submenu.classList.toggle('open');
+      if (submenu && submenu.tagName === 'AG-SIDEBAR-NAV-SUBMENU') {
+        if (isExpanded) {
+          submenu.removeAttribute('open');
+        } else {
+          submenu.setAttribute('open', '');
+        }
       }
     }
   }
