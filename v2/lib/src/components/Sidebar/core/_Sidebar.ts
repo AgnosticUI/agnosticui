@@ -256,19 +256,34 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     }
   `;
 
-  @property({ type: Boolean, reflect: true }) open = false;
-  @property({ type: Boolean, reflect: true }) collapsed = false;
-  @property({ type: String, reflect: true }) position: 'left' | 'right' = 'left';
-  @property({ type: String, attribute: 'aria-label' }) ariaLabel = 'Navigation';
-  @property({ type: Number }) breakpoint = 1024;
-  @property({ type: String, reflect: true }) variant: 'default' | 'bordered' | 'elevated' = 'default';
-  @property({ type: Boolean, attribute: 'no-transition', reflect: true }) noTransition = false;
-  @property({ type: String }) width?: string;
-  @property({ type: Boolean, attribute: 'show-mobile-toggle', reflect: true }) showMobileToggle = true;
-  @property({ type: String, attribute: 'mobile-toggle-position' }) mobileTogglePosition: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'top-left';
-  @property({ type: Boolean, attribute: 'show-header-toggle', reflect: true }) showHeaderToggle = false;
-  @property({ attribute: false }) onToggle?: (event: AgSidebarToggleEvent) => void;
-  @property({ attribute: false }) onCollapse?: (event: AgSidebarCollapseEvent) => void;
+  @property({ type: Boolean, reflect: true }) declare open: boolean;
+  @property({ type: Boolean, reflect: true }) declare collapsed: boolean;
+  @property({ type: String, reflect: true }) declare position: 'left' | 'right';
+  @property({ type: String, attribute: 'aria-label' }) declare ariaLabel: string;
+  @property({ type: Number }) declare breakpoint: number;
+  @property({ type: String, reflect: true }) declare variant: 'default' | 'bordered' | 'elevated';
+  @property({ type: Boolean, attribute: 'no-transition', reflect: true }) declare noTransition: boolean;
+  @property({ type: String }) declare width?: string;
+  @property({ type: Boolean, attribute: 'show-mobile-toggle', reflect: true }) declare showMobileToggle: boolean;
+  @property({ type: String, attribute: 'mobile-toggle-position' }) declare mobileTogglePosition: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  @property({ type: Boolean, attribute: 'show-header-toggle', reflect: true }) declare showHeaderToggle: boolean;
+  @property({ attribute: false }) declare onToggle?: (event: AgSidebarToggleEvent) => void;
+  @property({ attribute: false }) declare onCollapse?: (event: AgSidebarCollapseEvent) => void;
+
+  constructor() {
+    super();
+    this.open = false;
+    this.collapsed = false;
+    this.position = 'left';
+    this.ariaLabel = 'Navigation';
+    this.breakpoint = 1024;
+    this.variant = 'default';
+    this.noTransition = false;
+    this.width = undefined;
+    this.showMobileToggle = true;
+    this.mobileTogglePosition = 'top-left';
+    this.showHeaderToggle = false;
+  }
 
   private _mainContentRef?: HTMLElement;
   
