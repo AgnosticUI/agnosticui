@@ -1,15 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { useArgs } from "storybook/preview-api";
 import { html, nothing } from 'lit';
-import { createElement, ChevronRight, Folder, User, Settings, Home, PanelLeftClose, PanelLeftOpen, PanelRightClose, PanelRightOpen } from 'lucide';
+import { createElement, ChevronRight, Folder, User, Settings, Home } from 'lucide';
 import {type AgSidebarProps } from 'agnosticui-core/sidebar';
 
-// Brings in definitions for:
-// ag-sidebar-nav,
-// ag-sidebar-nav-item
-// ag-sidebar-nav-submenu
 import 'agnosticui-core/sidebar-nav';
-
 import 'agnosticui-core/icon';
 import 'agnosticui-core/visually-hidden';
 
@@ -51,6 +46,15 @@ const meta: Meta<AgSidebarProps> = {
       control: 'text',
       description: 'Custom width (sets CSS variable)',
     },
+    showMobileToggle: {
+      control: 'boolean',
+      description: 'Show built-in floating toggle button on mobile',
+    },
+    mobileTogglePosition: {
+      control: 'select',
+      options: ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
+      description: 'Position of mobile toggle button',
+    },
   },
   args: {
     open: false,
@@ -60,11 +64,20 @@ const meta: Meta<AgSidebarProps> = {
     breakpoint: 1024,
     variant: 'default',
     noTransition: false,
+    showMobileToggle: true,
+    mobileTogglePosition: 'top-left',
   },
 };
 
 export default meta;
 type Story = StoryObj<AgSidebarProps>;
+
+// Custom panel icon component
+const PanelIcon = () => html`
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M13.7314 1.00488C16.109 1.11926 18 2.98393 18 5.2666V12.7334C18 15.0898 15.9853 17 13.5 17H4.5C2.09247 17 0.126505 15.2074 0.00585938 12.9531L0 12.7334V5.2666C3.72355e-05 2.91022 2.01474 1 4.5 1H13.5L13.7314 1.00488ZM4.5 2.33301C2.79139 2.33301 1.40629 3.6466 1.40625 5.2666V12.7334C1.40629 14.3534 2.79139 15.667 4.5 15.667H4.625V2.33301H4.5ZM6.03125 15.667H13.5C15.2086 15.667 16.5937 14.3534 16.5938 12.7334V5.2666C16.5937 3.6466 15.2086 2.33301 13.5 2.33301H6.03125V15.667Z" fill="currentColor"/>
+  </svg>
+`;
 
 const createNavContent = () => html`
   <style>
@@ -84,13 +97,12 @@ const createNavContent = () => html`
       transition: background 0.15s;
     }
     .nav-button:hover {
-      background: var(--ag-background-secondary);;
+      background: var(--ag-background-secondary);
     }
     .nav-button.active {
       background: var(--ag-primary-background);
       color: var(--ag-text-primary);
     }
-    /* Icon styling within nav-button */
     .nav-button ag-icon {
       flex-shrink: 0;
     }
@@ -129,7 +141,7 @@ const createNavContent = () => html`
     /* Collapsed state (rail mode) styles */
     ag-sidebar[collapsed] .nav-button {
       justify-content: center;
-      padding-inline: var(--ag-space-2); /* Adjust horizontal padding for collapsed state (8px) */
+      padding-inline: var(--ag-space-2);
     }
     ag-sidebar[collapsed] .nav-button .nav-label,
     ag-sidebar[collapsed] .nav-button .chevron {
@@ -144,9 +156,7 @@ const createNavContent = () => html`
       border-width: 0;
     }
     
-    /* Sub-menu styles - visibility is now controlled by the component itself via the [open] attribute */
     ag-sidebar[collapsed] ag-sidebar-nav-submenu {
-      /* Ensure submenus are hidden when sidebar is collapsed */
       display: none !important;
     }
   </style>
@@ -189,6 +199,7 @@ const createNavContent = () => html`
   </ag-sidebar-nav>
 `;
 
+// Basic example with mobile toggle built-in
 export const Default: Story = {
   render: (args) => html`
     <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
@@ -201,6 +212,8 @@ export const Default: Story = {
         .variant=${args.variant}
         ?no-transition=${args['noTransition']}
         .width=${args.width}
+        ?show-mobile-toggle=${args['showMobileToggle']}
+        .mobile-toggle-position=${args['mobileTogglePosition']}
       >
         <div slot="header">
           <h2>My App</h2>
@@ -212,23 +225,19 @@ export const Default: Story = {
       </ag-sidebar>
       <main style="flex: 1; padding: 2rem;">
         <h1>Main Content</h1>
-        <p>This is the main content area.</p>
+        <p>This is the main content area. Resize the window to see mobile behavior.</p>
+        <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+          On mobile, a floating toggle button will appear automatically with the custom panel icon.
+        </p>
       </main>
     </div>
   `,
 };
 
+// Desktop rail mode with consumer-controlled toggle using custom icon
 export const WithHeaderFooter: Story = {
   render: () => {
-    const [args, updateArgs] = useArgs(); // Correct usage
-
-    const getToggleIcon = (collapsed: boolean, position: 'left' | 'right') => {
-      if (position === 'left') {
-        return collapsed ? createElement(PanelLeftOpen) : createElement(PanelLeftClose);
-      } else {
-        return collapsed ? createElement(PanelRightOpen) : createElement(PanelRightClose);
-      }
-    };
+    const [args, updateArgs] = useArgs();
 
     const toggleCollapsed = () => {
       updateArgs({ collapsed: !args.collapsed });
@@ -241,6 +250,13 @@ export const WithHeaderFooter: Story = {
         align-items: center;
         justify-content: center;
       }
+      
+      /* Hide desktop collapse toggle on mobile */
+      @media (max-width: 1023px) {
+        .desktop-collapse-toggle {
+          display: none !important;
+        }
+      }
     </style>
     <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
       <ag-sidebar
@@ -252,15 +268,19 @@ export const WithHeaderFooter: Story = {
         .variant=${args.variant}
         ?no-transition=${args['noTransition']}
         .width=${args.width}
+        ?show-mobile-toggle=${args['showMobileToggle']}
+        .mobile-toggle-position=${args['mobileTogglePosition']}
       >
         <div slot="header" style="display: flex; align-items: center; justify-content: ${args.collapsed ? 'center' : 'space-between'};">
           ${!args.collapsed ? html`<h2 style="font-size: 1.125rem; font-weight: 600; color: var(--ag-text-primary); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">My App</h2>` : nothing}
+          <!-- Desktop collapse toggle with custom panel icon -->
           <button
+            class="desktop-collapse-toggle"
             @click=${toggleCollapsed}
             aria-label=${args.collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-            style="display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 1px solid var(--ag-border-subtle); border-radius: 0.375rem; background: var(--ag-background-secondary); color: var(--text-primary); cursor: pointer;"
+            style="display: flex; align-items: center; justify-content: center; width: var(--ag-space-7); height: var(--ag-space-7); border: 1px solid var(--ag-border-subtle); border-radius: 0.375rem; background: var(--ag-background-secondary); color: var(--text-primary); cursor: pointer;"
           >
-            <ag-icon no-fill>${getToggleIcon(args.collapsed, args.position)}</ag-icon>
+            ${PanelIcon()}
           </button>
         </div>
         ${createNavContent()}
@@ -272,7 +292,11 @@ export const WithHeaderFooter: Story = {
       </ag-sidebar>
       <main style="flex: 1; padding: 2rem;">
         <h1>Main Content</h1>
-        <p>This is the main content area.</p>
+        <p><strong>Desktop (≥1024px):</strong> Use the panel icon button in the sidebar header to collapse to rail mode (icon-only view).</p>
+        <p><strong>Mobile (&lt;1024px):</strong> A floating panel icon button appears automatically to open/close the drawer overlay.</p>
+        <p style="color: var(--ag-text-secondary); font-size: 0.875rem; margin-top: 1rem;">
+          Note: The component automatically preserves your collapsed state when switching between mobile and desktop viewports.
+        </p>
       </main>
     </div>
   `},
@@ -283,4 +307,75 @@ export const Collapsed: Story = {
   args: {
     collapsed: true,
   },
+};
+
+// Example with mobile toggle disabled (for custom implementations)
+export const CustomMobileControl: Story = {
+  render: () => {
+    const [args, updateArgs] = useArgs();
+
+    const toggleOpen = () => {
+      updateArgs({ open: !args.open });
+    };
+
+    return html`
+    <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; position: relative;">
+      <!-- Custom consumer toggle button with panel icon -->
+      <button
+        @click=${toggleOpen}
+        style="position: fixed; top: 1rem; right: 1rem; z-index: 1002; width: 40px; height: 40px; border-radius: 50%; background: white; border: 1px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; display: flex; align-items: center; justify-content: center;"
+        aria-label="Toggle menu"
+      >
+        ${PanelIcon()}
+      </button>
+
+      <ag-sidebar
+        ?open=${args.open}
+        ?collapsed=${args.collapsed}
+        .position=${args.position}
+        aria-label=${args['ariaLabel']}
+        .breakpoint=${args.breakpoint}
+        .variant=${args.variant}
+        ?no-transition=${args['noTransition']}
+        .width=${args.width}
+        show-mobile-toggle="false"
+      >
+        <div slot="header">
+          <h2>My App</h2>
+        </div>
+        ${createNavContent()}
+        <div slot="footer">
+          <p>© 2024</p>
+        </div>
+      </ag-sidebar>
+      <main style="flex: 1; padding: 2rem;">
+        <h1>Custom Mobile Toggle</h1>
+        <p>Built-in mobile toggle is disabled. Using a custom button in top-right instead with the same panel icon.</p>
+      </main>
+    </div>
+  `},
+};
+
+// Example showing different mobile toggle positions
+export const MobileTogglePositions: Story = {
+  render: () => html`
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+      ${['top-left', 'top-right', 'bottom-left', 'bottom-right'].map(position => html`
+        <div style="border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; height: 400px;">
+          <ag-sidebar
+            position="left"
+            show-mobile-toggle
+            mobile-toggle-position=${position}
+            breakpoint="768"
+          >
+            <div slot="header"><h3>${position}</h3></div>
+            ${createNavContent()}
+          </ag-sidebar>
+        </div>
+      `)}
+    </div>
+    <p style="margin-top: 1rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
+      Resize your browser to below 768px to see the custom panel icon toggle buttons in different positions.
+    </p>
+  `,
 };
