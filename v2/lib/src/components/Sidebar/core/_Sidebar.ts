@@ -1,5 +1,5 @@
-import { LitElement, html, css, nothing } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { LitElement, html, css } from 'lit';
+import { property } from 'lit/decorators.js';
 import type { PropertyValues } from 'lit';
 
 /**
@@ -11,11 +11,6 @@ export interface AgSidebarToggleEventDetail {
 
 export interface AgSidebarCollapseEventDetail {
   collapsed: boolean;
-}
-
-export interface AgSidebarBreakpointChangeEventDetail {
-  isMobile: boolean;
-  breakpoint: number;
 }
 
 /**
@@ -34,7 +29,6 @@ export interface AgSidebarProps {
   mobileTogglePosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   onToggle?: (event: AgSidebarToggleEvent) => void;
   onCollapse?: (event: AgSidebarCollapseEvent) => void;
-  onBreakpointChange?: (event: AgSidebarBreakpointChangeEvent) => void;
 }
 
 /**
@@ -42,33 +36,15 @@ export interface AgSidebarProps {
  */
 export type AgSidebarToggleEvent = CustomEvent<AgSidebarToggleEventDetail>;
 export type AgSidebarCollapseEvent = CustomEvent<AgSidebarCollapseEventDetail>;
-export type AgSidebarBreakpointChangeEvent = CustomEvent<AgSidebarBreakpointChangeEventDetail>;
 
 /**
  * AgSidebar - A self-contained, accessible sidebar navigation component.
- *
- * @element ag-sidebar
- * @slot header - Content for the sidebar's header section.
- * @slot - Default slot for the main navigation items (`.nav-menu`).
- * @slot footer - Content for the sidebar's footer section.
- *
- * @fires ag-sidebar-toggle - When the mobile drawer opens or closes.
- * @fires ag-sidebar-collapse - When the desktop rail mode is toggled.
- * @fires ag-sidebar-breakpoint-change - When the viewport crosses the breakpoint.
- *
- * @csspart ag-sidebar-container - The main `<aside>` container.
- * @csspart ag-sidebar-header - The header section wrapper.
- * @csspart ag-sidebar-content - The scrollable main content section.
- * @csspart ag-sidebar-footer - The footer section wrapper.
- * @csspart ag-sidebar-backdrop - The mobile overlay backdrop.
- * @csspart ag-sidebar-toggle-button - The floating toggle button.
  */
 export class AgSidebar extends LitElement implements AgSidebarProps {
   static styles = css`
     :host {
       display: block;
       position: relative;
-      /* CSS tokens - simplified to one width for expanded, one for collapsed */
       --ag-sidebar-width: var(--ag-sidebar-width-base, 18rem);
       --ag-sidebar-width-collapsed: var(--ag-sidebar-width-collapsed-base, 3rem);
       --ag-sidebar-padding: var(--ag-space-2, 0.5rem);
@@ -79,6 +55,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       --ag-sidebar-z-index: var(--ag-z-sidebar, 1000);
       --ag-sidebar-backdrop-z-index: var(--ag-z-sidebar-backdrop, 999);
       --ag-sidebar-toggle-z-index: var(--ag-z-sidebar-toggle, 1001);
+      --ag-sidebar-breakpoint: 1024px;
     }
 
     .sidebar-container {
@@ -113,113 +90,116 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
 
     .backdrop {
       display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: var(--ag-sidebar-backdrop-z-index);
-      opacity: 0;
-      transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
     }
 
-    :host([data-mobile][open]) .backdrop {
-      display: block;
-      opacity: 1;
-    }
-
-    /* Toggle Button Styles */
     .toggle-button {
       display: none;
-      position: fixed;
-      width: var(--ag-space-7);
-      height: var(--ag-space-7);
-      border-radius: 50%;
-      background: var(--ag-sidebar-background);
-      border: 1px solid var(--ag-sidebar-border);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      cursor: pointer;
-      z-index: var(--ag-sidebar-toggle-z-index);
-      align-items: center;
-      justify-content: center;
-      transition: transform var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing),
-                  opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-    }
-
-    .toggle-button:hover {
-      background: var(--ag-background-hover, #f3f4f6);
-    }
-
-    .toggle-button:active {
-      transform: scale(0.95);
-    }
-
-    .toggle-button svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
-
-    /* Position variants */
-    .toggle-button.top-left { top: var(--ag-space-4); left: var(--ag-space-4); }
-    .toggle-button.top-right { top: var(--ag-space-4); right: var(--ag-space-4); }
-    .toggle-button.bottom-left { bottom: var(--ag-space-4); left: var(--ag-space-4); }
-    .toggle-button.bottom-right { bottom: var(--ag-space-4); right: var(--ag-space-4); }
-
-    /* ===========================================
-       DESKTOP MODE (data-mobile NOT present)
-       Always 18rem or 4rem (collapsed)
-       =========================================== */
-    :host(:not([data-mobile])) .sidebar-container {
-      position: relative;
-      width: var(--ag-sidebar-width);
-      transition: width var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-    }
-    
-    :host(:not([data-mobile])[collapsed]) .sidebar-container {
-      width: var(--ag-sidebar-width-collapsed);
     }
 
     /* ===========================================
-       MOBILE MODE (data-mobile present)
-       Same 18rem width, just positioned as overlay
+       MOBILE: Below breakpoint
+       Overlay drawer that slides in/out
        =========================================== */
-    :host([data-mobile]) .sidebar-container {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      width: var(--ag-sidebar-width);
-      z-index: var(--ag-sidebar-z-index);
-      transition: transform var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-    }
-    
-    :host([data-mobile][position="left"]) .sidebar-container {
-      left: 0;
-      transform: translateX(-100%);
-    }
-    
-    :host([data-mobile][position="right"]) .sidebar-container {
-      right: 0;
-      left: auto;
-      transform: translateX(100%);
-    }
-    
-    :host([data-mobile][open]) .sidebar-container {
-      transform: translateX(0);
+    @media (max-width: 1023px) {
+      .sidebar-container {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: var(--ag-sidebar-width);
+        z-index: var(--ag-sidebar-z-index);
+        transition: transform var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+      }
+      
+      :host([position="left"]) .sidebar-container {
+        left: 0;
+        transform: translateX(-100%);
+      }
+      
+      :host([position="right"]) .sidebar-container {
+        right: 0;
+        transform: translateX(100%);
+      }
+      
+      :host([open]) .sidebar-container {
+        transform: translateX(0);
+      }
+
+      .backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: var(--ag-sidebar-backdrop-z-index);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+      }
+
+      :host([open]) .backdrop {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      :host([show-mobile-toggle]) .toggle-button {
+        display: flex;
+        position: fixed;
+        width: var(--ag-space-7);
+        height: var(--ag-space-7);
+        border-radius: 50%;
+        background: var(--ag-sidebar-background);
+        border: 1px solid var(--ag-sidebar-border);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        z-index: var(--ag-sidebar-toggle-z-index);
+        align-items: center;
+        justify-content: center;
+        transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+      }
+
+      :host([show-mobile-toggle][open]) .toggle-button {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .toggle-button:hover {
+        background: var(--ag-background-hover, #f3f4f6);
+      }
+
+      .toggle-button:active {
+        transform: scale(0.95);
+      }
+
+      .toggle-button svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+
+      .toggle-button.top-left { top: var(--ag-space-4); left: var(--ag-space-4); }
+      .toggle-button.top-right { top: var(--ag-space-4); right: var(--ag-space-4); }
+      .toggle-button.bottom-left { bottom: var(--ag-space-4); left: var(--ag-space-4); }
+      .toggle-button.bottom-right { bottom: var(--ag-space-4); right: var(--ag-space-4); }
     }
 
-    /* Show toggle button only on mobile when showMobileToggle is true */
-    :host([data-mobile][show-mobile-toggle]) .toggle-button {
-      display: flex;
-    }
-
-    /* Hide button when sidebar is open */
-    :host([data-mobile][show-mobile-toggle][open]) .toggle-button {
-      opacity: 0;
-      pointer-events: none;
+    /* ===========================================
+       DESKTOP: At/above breakpoint
+       Static sidebar with expand/collapse
+       =========================================== */
+    @media (min-width: 1024px) {
+      .sidebar-container {
+        position: relative;
+        width: var(--ag-sidebar-width);
+        transition: width var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+      }
+      
+      :host([collapsed]) .sidebar-container {
+        width: var(--ag-sidebar-width-collapsed);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .sidebar-container, .backdrop, .toggle-button {
-        transition: none;
+        transition: none !important;
       }
     }
   `;
@@ -236,16 +216,11 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   @property({ type: String, attribute: 'mobile-toggle-position' }) mobileTogglePosition: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'top-left';
   @property({ attribute: false }) onToggle?: (event: AgSidebarToggleEvent) => void;
   @property({ attribute: false }) onCollapse?: (event: AgSidebarCollapseEvent) => void;
-  @property({ attribute: false }) onBreakpointChange?: (event: AgSidebarBreakpointChangeEvent) => void;
 
-  @state() private _isMobile = false;
   private _mainContentRef?: HTMLElement;
-  private _resizeTimeout?: number;
-  private _lastDesktopCollapsedState = false;
   
   /**
    * Toggle the collapsed state (desktop rail mode)
-   * Exposed as a public method so consumers can call it from their own buttons
    */
   public toggleCollapse() {
     this.collapsed = !this.collapsed;
@@ -254,17 +229,11 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
 
   override connectedCallback() {
     super.connectedCallback();
-    this._updateMobileState();
-    window.addEventListener('resize', this._handleResize);
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener('resize', this._handleResize);
     document.removeEventListener('keydown', this._handleKeydown);
-    if (this._resizeTimeout) {
-      clearTimeout(this._resizeTimeout);
-    }
   }
 
   override willUpdate(changedProperties: PropertyValues) {
@@ -275,9 +244,10 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       if (this.breakpoint <= 0) {
         this.breakpoint = 1024;
       }
+      this.style.setProperty('--ag-sidebar-breakpoint', `${this.breakpoint}px`);
     }
     if (changedProperties.has('open')) {
-      if (this.open && this._isMobile) {
+      if (this.open) {
         document.addEventListener('keydown', this._handleKeydown);
         this.updateComplete.then(() => this._trapFocus());
       } else {
@@ -285,60 +255,11 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
         this._releaseFocus();
       }
     }
-    if (changedProperties.has('_isMobile')) {
-      if (this._isMobile) {
-        this.setAttribute('data-mobile', '');
-      } else {
-        this.removeAttribute('data-mobile');
-      }
-    }
-  }
-
-  private _updateMobileState(): boolean {
-    const wasMobile = this._isMobile;
-    this._isMobile = window.innerWidth < this.breakpoint;
-    return wasMobile !== this._isMobile;
-  }
-
-  private _handleResize = () => {
-    if (this._resizeTimeout) {
-      clearTimeout(this._resizeTimeout);
-    }
-    this._resizeTimeout = window.setTimeout(() => {
-      if (this._updateMobileState()) {
-        this._handleBreakpointTransition();
-        this._dispatchBreakpointChange();
-      }
-    }, 100);
-  };
-
-  private _handleBreakpointTransition() {
-    if (this._isMobile) {
-      // Entering mobile: save current collapsed state, then reset
-      this._lastDesktopCollapsedState = this.collapsed;
-      this.open = false;
-      this.collapsed = false;
-    } else {
-      // Entering desktop: restore last collapsed state
-      this.collapsed = this._lastDesktopCollapsedState;
-      this.open = false;
-    }
-  }
-
-  private _dispatchBreakpointChange() {
-    const event = new CustomEvent<AgSidebarBreakpointChangeEventDetail>('ag-sidebar-breakpoint-change', {
-      detail: { isMobile: this._isMobile, breakpoint: this.breakpoint },
-      bubbles: true, composed: true,
-    });
-    this.dispatchEvent(event);
-    this.onBreakpointChange?.(event);
   }
 
   private _handleBackdropClick = () => {
-    if (this._isMobile && this.open) {
-      this.open = false;
-      this._dispatchToggleEvent();
-    }
+    this.open = false;
+    this._dispatchToggleEvent();
   };
 
   private _handleToggleClick = () => {
@@ -347,7 +268,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   };
 
   private _handleKeydown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape' && this._isMobile && this.open) {
+    if (event.key === 'Escape' && this.open) {
       event.preventDefault();
       this.open = false;
       this._dispatchToggleEvent();
@@ -414,7 +335,6 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   }
 
   private _renderToggleIcon() {
-    // Custom panel icon for mobile toggle
     return html`
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M13.7314 1.00488C16.109 1.11926 18 2.98393 18 5.2666V12.7334C18 15.0898 15.9853 17 13.5 17H4.5C2.09247 17 0.126505 15.2074 0.00585938 12.9531L0 12.7334V5.2666C3.72355e-05 2.91022 2.01474 1 4.5 1H13.5L13.7314 1.00488ZM4.5 2.33301C2.79139 2.33301 1.40629 3.6466 1.40625 5.2666V12.7334C1.40629 14.3534 2.79139 15.667 4.5 15.667H4.625V2.33301H4.5ZM6.03125 15.667H13.5C15.2086 15.667 16.5937 14.3534 16.5938 12.7334V5.2666C16.5937 3.6466 15.2086 2.33301 13.5 2.33301H6.03125V15.667Z" fill="currentColor"/>
@@ -423,22 +343,18 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   }
 
   override render() {
-    const showBackdrop = this._isMobile && this.open;
-
     return html`
-      ${showBackdrop ? html`<div part="ag-sidebar-backdrop" class="backdrop" @click=${this._handleBackdropClick} aria-hidden="true"></div>` : nothing}
+      <div part="ag-sidebar-backdrop" class="backdrop" @click=${this._handleBackdropClick} aria-hidden="true"></div>
       
-      ${this.showMobileToggle ? html`
-        <button
-          part="ag-sidebar-toggle-button"
-          class="toggle-button ${this.mobileTogglePosition}"
-          @click=${this._handleToggleClick}
-          aria-label="${this.open ? 'Close sidebar' : 'Open sidebar'}"
-          aria-expanded="${this.open}"
-        >
-          ${this._renderToggleIcon()}
-        </button>
-      ` : nothing}
+      <button
+        part="ag-sidebar-toggle-button"
+        class="toggle-button ${this.mobileTogglePosition}"
+        @click=${this._handleToggleClick}
+        aria-label="${this.open ? 'Close sidebar' : 'Open sidebar'}"
+        aria-expanded="${this.open}"
+      >
+        ${this._renderToggleIcon()}
+      </button>
 
       <aside part="ag-sidebar-container" class="sidebar-container" aria-label=${this.ariaLabel}>
         <div part="ag-sidebar-header" class="sidebar-header">

@@ -10,7 +10,6 @@
     :width="width"
     @ag-sidebar-toggle="onToggle"
     @ag-sidebar-collapse="onCollapse"
-    @ag-sidebar-breakpoint-change="onBreakpointChange"
   >
     <slot />
     <slot name="ag-header" />
@@ -26,7 +25,6 @@ import { AgSidebar } from "../core/Sidebar.js";
 import type {
   AgSidebarToggleEvent,
   AgSidebarCollapseEvent,
-  AgSidebarBreakpointChangeEvent,
 } from "../core/_Sidebar.js";
 
 export default defineComponent({
@@ -54,14 +52,9 @@ export default defineComponent({
       emit("update:collapsed", event.detail.collapsed);
     };
 
-    const onBreakpointChange = (event: AgSidebarBreakpointChangeEvent) => {
-      emit("breakpointChange", event.detail);
-    };
-
     return {
       onToggle,
       onCollapse,
-      onBreakpointChange,
     };
   },
 });
