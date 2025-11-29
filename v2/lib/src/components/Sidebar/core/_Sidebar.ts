@@ -27,6 +27,7 @@ export interface AgSidebarProps {
   width?: string;
   showMobileToggle?: boolean;
   mobileTogglePosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  showHeaderToggle?: boolean;
   onToggle?: (event: AgSidebarToggleEvent) => void;
   onCollapse?: (event: AgSidebarCollapseEvent) => void;
 }
@@ -82,6 +83,36 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     }
     .sidebar-header {
       border-bottom: 1px solid var(--ag-sidebar-border);
+    }
+    
+    /* Built-in header toggle button styling */
+    .header-toggle-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--ag-space-7);
+      height: var(--ag-space-7);
+      border: 1px solid var(--ag-border-subtle);
+      border-radius: 0.375rem;
+      background: var(--ag-background-secondary);
+      color: var(--ag-text-primary);
+      cursor: pointer;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    
+    .header-toggle-button:hover {
+      background: var(--ag-background-tertiary);
+    }
+    
+    .header-toggle-button:active {
+      transform: scale(0.95);
+    }
+    
+    .header-toggle-button svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
     .sidebar-footer {
       border-top: 1px solid var(--ag-sidebar-border);
@@ -235,6 +266,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   @property({ type: String }) width?: string;
   @property({ type: Boolean, attribute: 'show-mobile-toggle', reflect: true }) showMobileToggle = true;
   @property({ type: String, attribute: 'mobile-toggle-position' }) mobileTogglePosition: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'top-left';
+  @property({ type: Boolean, attribute: 'show-header-toggle', reflect: true }) showHeaderToggle = false;
   @property({ attribute: false }) onToggle?: (event: AgSidebarToggleEvent) => void;
   @property({ attribute: false }) onCollapse?: (event: AgSidebarCollapseEvent) => void;
 
@@ -286,6 +318,18 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   private _handleToggleClick = () => {
     this.open = !this.open;
     this._dispatchToggleEvent();
+  };
+
+  private _handleHeaderToggleClick = () => {
+    // Dual-purpose: close in mobile, collapse in desktop
+    const isMobile = window.innerWidth < this.breakpoint;
+    if (isMobile && this.open) {
+      this.open = false;
+      this._dispatchToggleEvent();
+    } else {
+      this.collapsed = !this.collapsed;
+      this._dispatchCollapseEvent();
+    }
   };
 
   private _handleKeydown = (event: KeyboardEvent) => {
@@ -359,7 +403,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     // Provide a named slot so consumers can override the floating toggle icon.
     // Keep the existing SVG as the default fallback.
     return html`
-      <slot name="toggle-icon">
+      <slot name="ag-toggle-icon">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M13.7314 1.00488C16.109 1.11926 18 2.98393 18 5.2666V12.7334C18 15.0898 15.9853 17 13.5 17H4.5C2.09247 17 0.126505 15.2074 0.00585938 12.9531L0 12.7334V5.2666C3.72355e-05 2.91022 2.01474 1 4.5 1H13.5L13.7314 1.00488ZM4.5 2.33301C2.79139 2.33301 1.40629 3.6466 1.40625 5.2666V12.7334C1.40629 14.3534 2.79139 15.667 4.5 15.667H4.625V2.33301H4.5ZM6.03125 15.667H13.5C15.2086 15.667 16.5937 14.3534 16.5938 12.7334V5.2666C16.5937 3.6466 15.2086 2.33301 13.5 2.33301H6.03125V15.667Z" fill="currentColor"/>
         </svg>
@@ -383,7 +427,21 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
 
       <aside part="ag-sidebar-container" class="sidebar-container" aria-label=${this.ariaLabel}>
         <div part="ag-sidebar-header" class="sidebar-header">
-          <slot name="header"></slot>
+          ${this.showHeaderToggle ? html`
+            <div style="display: flex; align-items: center; justify-content: ${this.collapsed ? 'center' : 'space-between'}; width: 100%;">
+              <slot name="header" style="flex: 1; ${this.collapsed ? 'display: none;' : ''}"></slot>
+              <button
+                part="ag-sidebar-header-toggle"
+                class="header-toggle-button"
+                @click=${this._handleHeaderToggleClick}
+                aria-label="${this.collapsed ? 'Expand sidebar' : 'Close sidebar'}"
+              >
+                ${this._renderToggleIcon()}
+              </button>
+            </div>
+          ` : html`
+            <slot name="header"></slot>
+          `}
         </div>
         <div part="ag-sidebar-content" class="sidebar-content" @click=${this._handleSlotClick}>
           <slot></slot>
