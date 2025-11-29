@@ -47,7 +47,10 @@ export type AgSidebarCollapseEvent = CustomEvent<AgSidebarCollapseEventDetail>;
  * 
  * @element ag-sidebar
  * 
- * @slot header - Header content area for logo, title, or actions. When `collapsed` is true on desktop, content fades out but slot remains in DOM for accessibility.
+ * @slot header - Header content area for logo, title, or actions. When `collapsed` is true on desktop, content fades out but slot remains in DOM for accessibility. If provided, overrides composable header slots (header-start, header-end, header-toggle).
+ * @slot header-start - Left side of header for logo or title. Hidden when sidebar is collapsed. Ignored if `header` slot has content.
+ * @slot header-end - Right side of header for action buttons. Always visible, even when collapsed. Ignored if `header` slot has content.
+ * @slot header-toggle - Specific slot for custom toggle button in header. Auto-positioned at the end. Ignored if `header` slot has content.
  * @slot - Default slot for main navigation content. Use `<ag-sidebar-nav>` component for structured navigation with proper aria attributes.
  * @slot footer - Footer content area for copyright info, version numbers, or help links. Remains visible when sidebar is collapsed, content should be icon-only or very compact.
  * @slot ag-toggle-icon - Customizes the floating mobile toggle button icon and header toggle icon. Must be an SVG element sized 18x18px. Falls back to built-in panel icon if not provided.
@@ -90,6 +93,18 @@ export type AgSidebarCollapseEvent = CustomEvent<AgSidebarCollapseEventDetail>;
  *   <div slot="footer">
  *     <p>© 2024 Company</p>
  *   </div>
+ * </ag-sidebar>
+ * ```
+ * 
+ * @example
+ * ```html
+ * <!-- Composable header slots (automatic layout) -->
+ * <ag-sidebar>
+ *   <h2 slot="header-start">My App</h2>
+ *   <button slot="header-end">Settings</button>
+ *   <button slot="header-toggle" @click=${handleToggle}>
+ *     ${PanelIcon()}
+ *   </button>
  * </ag-sidebar>
  * ```
  * 
@@ -146,6 +161,37 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     }
     .sidebar-header {
       border-bottom: 1px solid var(--ag-sidebar-border);
+    }
+    
+    /* Composable header layout system */
+    .header-layout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--ag-space-2);
+      width: 100%;
+    }
+
+    .header-start {
+      flex: 1;
+      min-width: 0; /* Allow text truncation */
+      overflow: hidden;
+    }
+
+    .header-end {
+      display: flex;
+      align-items: center;
+      gap: var(--ag-space-2);
+      flex-shrink: 0;
+    }
+
+    /* Collapsed state: hide start content, center end content */
+    :host([collapsed]) .header-start {
+      display: none;
+    }
+
+    :host([collapsed]) .header-layout {
+      justify-content: center;
     }
     
     /* Header layout wrapper for showHeaderToggle. Base wrapper - no gap */
@@ -597,7 +643,18 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
           ${this.showHeaderToggle ? html`
             <div class="header-wrapper">
               <div class="header-content">
-                <slot name="header"></slot>
+                <slot name="header">
+                  <!-- Fallback: if no "header" slot, use composable parts -->
+                  <div class="header-layout">
+                    <div class="header-start">
+                      <slot name="header-start"></slot>
+                    </div>
+                    <div class="header-end">
+                      <slot name="header-end"></slot>
+                      <slot name="header-toggle"></slot>
+                    </div>
+                  </div>
+                </slot>
               </div>
               <button
                 part="ag-sidebar-header-toggle"
@@ -609,7 +666,18 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
               </button>
             </div>
           ` : html`
-            <slot name="header"></slot>
+            <slot name="header">
+              <!-- Fallback: if no "header" slot, use composable parts -->
+              <div class="header-layout">
+                <div class="header-start">
+                  <slot name="header-start"></slot>
+                </div>
+                <div class="header-end">
+                  <slot name="header-end"></slot>
+                  <slot name="header-toggle"></slot>
+                </div>
+              </div>
+            </slot>
           `}
         </div>
         <div part="ag-sidebar-content" class="sidebar-content" @click=${this._handleSlotClick}>
