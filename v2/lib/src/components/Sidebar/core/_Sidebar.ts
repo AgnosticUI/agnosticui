@@ -66,6 +66,11 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       border-right: 1px solid var(--ag-sidebar-border);
     }
     
+    /* Set collapsed width globally so it applies before media queries kick in */
+    :host([collapsed]) .sidebar-container {
+      width: var(--ag-sidebar-width-collapsed);
+    }
+    
     :host([position="right"]) .sidebar-container {
       border-right: none;
       border-left: 1px solid var(--ag-sidebar-border);
@@ -105,9 +110,13 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
         position: fixed;
         top: 0;
         bottom: 0;
-        width: var(--ag-sidebar-width);
         z-index: var(--ag-sidebar-z-index);
         transition: transform var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+      }
+      
+      /* Full width in mobile when NOT collapsed */
+      :host(:not([collapsed])) .sidebar-container {
+        width: var(--ag-sidebar-width);
       }
       
       :host([position="left"]) .sidebar-container {
@@ -188,12 +197,16 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     @media (min-width: 1024px) {
       .sidebar-container {
         position: relative;
+      }
+      
+      :host(:not([collapsed])) .sidebar-container {
         width: var(--ag-sidebar-width);
         transition: width var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
       }
       
       :host([collapsed]) .sidebar-container {
         width: var(--ag-sidebar-width-collapsed);
+        transition: width var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
       }
     }
 
