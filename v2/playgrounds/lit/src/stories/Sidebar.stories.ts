@@ -411,7 +411,7 @@ export const WithCustomToggleIconAndBuiltInHeader: Story = {
           </div>
         </ag-sidebar>
           <main style="flex: 1; padding: 2rem;">
-          <h1>Custom Toggle Icon (colored) + Built-in Header</h1>
+          <h1>Custom Floating Toggle Icon (colored) + Built-in Header</h1>
           <p>Consumer supplies a custom floating toggle icon (styled in blue) with a collapse/expand-only header button. The floating toggle controls mobile visibility; the header button toggles collapsed state.</p>
         </main>
       </div>
@@ -457,7 +457,7 @@ export const WithCustomToggleIcon: Story = {
           .mobile-toggle-position=${args['mobileTogglePosition']}
         >
           <!-- Consumer provided toggle icon via named slot -->
-          <svg slot="ag-toggle-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg style="color: #64748b;" slot="ag-toggle-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8817 1C12.188 1 13.2299 0.999865 14.0582 1.08522C14.9009 1.17206 15.6137 1.35458 16.2296 1.78011C16.5941 2.032 16.9148 2.33701 17.1797 2.68368C17.6271 3.2694 17.819 3.94735 17.9103 4.74869C18.0001 5.53653 17.9999 6.52733 17.9999 7.76972V10.2302C17.9999 11.4726 18.0001 12.4634 17.9103 13.2512C17.819 14.0526 17.6271 14.7306 17.1797 15.3163C16.9148 15.6629 16.5941 15.968 16.2296 16.2198C15.6137 16.6453 14.9009 16.8279 14.0582 16.9147C13.2299 17.0001 12.188 17 10.8817 17H7.1181C5.81177 17 4.76996 17.0001 3.94157 16.9147C3.09897 16.8279 2.38613 16.6453 1.77026 16.2198C1.40572 15.968 1.08501 15.6629 0.820163 15.3163C0.372724 14.7306 0.18081 14.0526 0.0895005 13.2512C-0.00025096 12.4634 -0.000109054 11.4726 -0.000109054 10.2302V7.76972C-0.000109054 6.52733 -0.00025096 5.53653 0.0895005 4.74869C0.18081 3.94735 0.372724 3.2694 0.820163 2.68368C1.08501 2.33701 1.40572 2.032 1.77026 1.78011C2.38613 1.35458 3.09897 1.17206 3.94157 1.08522C4.76996 0.999865 5.81177 1 7.1181 1H10.8817ZM6.78332 2.48593V15.5654C7.05707 15.5664 7.35039 15.5708 7.66562 15.5708L10.8817 15.5446C12.2218 15.5446 13.166 15.5441 13.8929 15.4693C14.6051 15.3959 15.0183 15.2584 15.33 15.0431C15.5647 14.8809 15.7718 14.6839 15.9424 14.4608C16.1687 14.1643 16.3132 13.7713 16.3904 13.0939C16.4691 12.4027 16.4697 11.5047 16.4697 10.2302V7.76972C16.4697 6.49525 16.4691 5.59726 16.3904 4.90603C16.3132 4.22864 16.1687 3.83566 15.9424 3.53919C15.7718 3.31599 15.5647 3.119 15.33 2.95684C15.0183 2.74158 14.6051 2.60411 13.8929 2.53073C13.166 2.45588 12.2218 2.45533 10.8817 2.45533L7.66562 2.48156C7.35039 2.48156 7.05707 2.4849 6.78332 2.48593ZM5.53892 2.48156C5.32343 2.49218 4.29154 2.51172 4.107 2.53073C3.39474 2.60411 2.98152 2.74158 2.6698 2.95684C2.4351 3.119 2.22798 3.31599 2.05746 3.53919C1.83112 3.83566 1.68658 4.22864 1.60942 4.90603C1.53072 5.59726 1.53015 6.49525 1.53015 7.76972V10.2302C1.53015 11.5047 1.53072 12.4027 1.60942 13.0939C1.68658 13.7713 1.83112 14.1643 2.05746 14.4608C2.22798 14.6839 2.4351 14.8809 2.6698 15.0431C2.98152 15.2584 3.39474 15.3959 4.107 15.4693C4.29152 15.4882 5.32345 15.5602 5.53892 15.5708V2.48156Z" fill="currentColor"/>
           </svg>
 
@@ -480,7 +480,7 @@ export const WithCustomToggleIcon: Story = {
           </div>
         </ag-sidebar>
           <main style="flex: 1; padding: 2rem;">
-          <h1>Custom Toggle Icon (colored) + Consumer Header</h1>
+          <h1>Custom Floating Toggle Icon (colored) + Consumer Header</h1>
           <p>This story demonstrates providing a custom SVG for the floating toggle via the <code>ag-toggle-icon</code> slot. The consumer header shows how you might wire your own collapse/close behavior.</p>
         </main>
       </div>
@@ -492,22 +492,65 @@ WithCustomToggleIcon.storyName = 'Custom Toggle (colored) + Consumer Header';
 // Removed redundant "Collapsed" variants — these were similar to the above stories and
 // could be derived using the Controls panel (collapsed=true). Keeping the examples concise.
 
-// Example with mobile toggle disabled (for custom implementations)
+// Custom mobile floating toggle (upper-right) + consumer header toggle
+// - Floating toggle: visible only on mobile, placed at upper-right to highlight customization; toggles open/close
+// - Header toggle: consumer-provided, maintains dual-purpose behavior (close on mobile when open, collapse on desktop)
 export const CustomMobileControl: Story = {
   render: () => {
     const [args, updateArgs] = useArgs();
 
-    const toggleOpen = () => {
-      updateArgs({ open: !args.open });
+    const handleHeaderButtonClick = () => {
+      // Always toggle collapsed state (expand/collapse). Do not treat header button
+      // as a mobile open/dismiss control in this story.
+      updateArgs({ collapsed: !args.collapsed });
     };
 
+    const toggleOpen = () => updateArgs({ open: !args.open });
+
     return html`
-    <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; position: relative;">
-      <!-- Custom consumer toggle button with panel icon -->
+    <style>
+      /* custom floating toggle sits upper-right on mobile only */
+      .custom-floating-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1002;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: white;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        color: #64748b; /* custom slate-blue for consumer-provided control */
+      }
+      /* show on mobile (below 1024px) */
+      @media (max-width: 1023px) {
+        .custom-floating-toggle { display: flex; }
+      }
+      .consumer-header-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--ag-space-7);
+        height: var(--ag-space-7);
+        border: 1px solid var(--ag-border-subtle);
+        border-radius: 0.375rem;
+        background: var(--ag-background-secondary);
+        color: var(--ag-text-primary);
+        cursor: pointer;
+      }
+    </style>
+
+    <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
+      <!-- custom floating toggle (consumer placement) -->
       <button
+        class="custom-floating-toggle"
         @click=${toggleOpen}
-        style="position: fixed; top: 1rem; right: 1rem; z-index: 1002; width: 40px; height: 40px; border-radius: 50%; background: white; border: 1px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; display: flex; align-items: center; justify-content: center;"
-        aria-label="Toggle menu"
+        aria-label="Toggle sidebar"
+        title="Custom mobile toggle"
       >
         ${PanelIcon()}
       </button>
@@ -521,19 +564,37 @@ export const CustomMobileControl: Story = {
         .variant=${args.variant}
         ?no-transition=${args['noTransition']}
         .width=${args.width}
-        show-mobile-toggle="false"
+        ?show-mobile-toggle=${false}
       >
-        <div slot="header">
-          <h2>My App</h2>
+        <!-- Hide the built-in floating toggle button (exposed as a part) for this story.
+             This avoids rendering an empty fallback circle while keeping header toggle and
+             our custom upper-right floating toggle. -->
+        <style>
+          ag-sidebar::part(ag-sidebar-toggle-button) {
+            display: none !important;
+          }
+        </style>
+        <div slot="header" style=${`display: flex; align-items: center; justify-content: ${args.collapsed ? 'center' : 'space-between'};`}>
+          ${!args.collapsed ? html`<h2 style="font-size: 1.125rem; font-weight: 600; color: var(--ag-text-primary); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">My App</h2>` : nothing}
+          <button
+            class="consumer-header-toggle"
+            @click=${handleHeaderButtonClick}
+            aria-label=${args.collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          >
+            ${PanelIcon()}
+          </button>
         </div>
+
         ${createNavContent()}
         <div slot="footer">
-          <p>© 2024</p>
+          <p style="color: var(--ag-text-secondary); margin: 0; padding: 0; font-size: 0.875rem;">© 2024</p>
         </div>
       </ag-sidebar>
       <main style="flex: 1; padding: 2rem;">
-        <h1>Custom Mobile Toggle</h1>
-        <p>Built-in mobile toggle is disabled. Using a custom button in top-right instead with the same panel icon.</p>
+        <h1>Custom Mobile Toggle (upper-right) + Consumer Header</h1>
+        <p><strong>Mobile (&lt;1024px):</strong> The floating custom toggle appears at the upper-right and opens/dismisses the sidebar overlay. It is styled with a slate-blue color to indicate consumer customization.</p>
+        <p><strong>Desktop (≥1024px):</strong> The header contains a consumer toggle button that collapses/expands the sidebar (desktop rail). The floating custom toggle is hidden on desktop.</p>
+        <p style="color: var(--ag-text-secondary); font-size: 0.875rem; margin-top: 1rem;">This clearly separates mobile open/dismiss (floating toggle) from desktop collapse/expand (header toggle).</p>
       </main>
     </div>
   `},
