@@ -239,8 +239,17 @@ export const WithHeaderFooter: Story = {
   render: () => {
     const [args, updateArgs] = useArgs();
 
-    const toggleCollapsed = () => {
-      updateArgs({ collapsed: !args.collapsed });
+    const handleHeaderButtonClick = () => {
+      // Check if we're in mobile by checking window width
+      const isMobile = window.innerWidth < (args.breakpoint || 1024);
+      
+      if (isMobile && args.open) {
+        // In mobile when open, close the sidebar
+        updateArgs({ open: false });
+      } else {
+        // In desktop, toggle collapsed state
+        updateArgs({ collapsed: !args.collapsed });
+      }
     };
 
     return html`
@@ -251,12 +260,6 @@ export const WithHeaderFooter: Story = {
         justify-content: center;
       }
       
-      /* Hide desktop collapse toggle on mobile */
-      @media (max-width: 1023px) {
-        .desktop-collapse-toggle {
-          display: none !important;
-        }
-      }
     </style>
     <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
       <ag-sidebar
@@ -273,11 +276,11 @@ export const WithHeaderFooter: Story = {
       >
         <div slot="header" style="display: flex; align-items: center; justify-content: ${args.collapsed ? 'center' : 'space-between'};">
           ${!args.collapsed ? html`<h2 style="font-size: 1.125rem; font-weight: 600; color: var(--ag-text-primary); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">My App</h2>` : nothing}
-          <!-- Desktop collapse toggle with custom panel icon -->
+          <!-- Dual-purpose toggle: close in mobile, collapse in desktop -->
           <button
             class="desktop-collapse-toggle"
-            @click=${toggleCollapsed}
-            aria-label=${args.collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            @click=${handleHeaderButtonClick}
+            aria-label=${args.collapsed ? 'Expand sidebar' : 'Close sidebar'}
             style="display: flex; align-items: center; justify-content: center; width: var(--ag-space-7); height: var(--ag-space-7); border: 1px solid var(--ag-border-subtle); border-radius: 0.375rem; background: var(--ag-background-secondary); color: var(--text-primary); cursor: pointer;"
           >
             ${PanelIcon()}
@@ -293,10 +296,7 @@ export const WithHeaderFooter: Story = {
       <main style="flex: 1; padding: 2rem;">
         <h1>Main Content</h1>
         <p><strong>Desktop (≥1024px):</strong> Use the panel icon button in the sidebar header to collapse to rail mode (icon-only view).</p>
-        <p><strong>Mobile (&lt;1024px):</strong> A floating panel icon button appears automatically to open/close the drawer overlay.</p>
-        <p style="color: var(--ag-text-secondary); font-size: 0.875rem; margin-top: 1rem;">
-          Note: The component automatically preserves your collapsed state when switching between mobile and desktop viewports.
-        </p>
+        <p><strong>Mobile (&lt;1024px):</strong> Tap the floating button to open. Once open, use the panel icon in the header to close or toggle width.</p>
       </main>
     </div>
   `},

@@ -165,6 +165,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
         transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
       }
 
+      /* Hide toggle when sidebar is open - consumer's header button takes over */
       :host([show-mobile-toggle][open]) .toggle-button {
         opacity: 0;
         pointer-events: none;
