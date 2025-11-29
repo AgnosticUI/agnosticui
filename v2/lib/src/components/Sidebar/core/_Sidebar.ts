@@ -184,6 +184,13 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
         height: 18px;
         fill: currentColor;
       }
+      /* Ensure consumer-provided slotted SVGs match the fallback sizing */
+      .toggle-button ::slotted(svg) {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+        display: block;
+      }
 
       .toggle-button.top-left { top: var(--ag-space-4); left: var(--ag-space-4); }
       .toggle-button.top-right { top: var(--ag-space-4); right: var(--ag-space-4); }
@@ -349,10 +356,14 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   }
 
   private _renderToggleIcon() {
+    // Provide a named slot so consumers can override the floating toggle icon.
+    // Keep the existing SVG as the default fallback.
     return html`
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M13.7314 1.00488C16.109 1.11926 18 2.98393 18 5.2666V12.7334C18 15.0898 15.9853 17 13.5 17H4.5C2.09247 17 0.126505 15.2074 0.00585938 12.9531L0 12.7334V5.2666C3.72355e-05 2.91022 2.01474 1 4.5 1H13.5L13.7314 1.00488ZM4.5 2.33301C2.79139 2.33301 1.40629 3.6466 1.40625 5.2666V12.7334C1.40629 14.3534 2.79139 15.667 4.5 15.667H4.625V2.33301H4.5ZM6.03125 15.667H13.5C15.2086 15.667 16.5937 14.3534 16.5938 12.7334V5.2666C16.5937 3.6466 15.2086 2.33301 13.5 2.33301H6.03125V15.667Z" fill="currentColor"/>
-      </svg>
+      <slot name="toggle-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.7314 1.00488C16.109 1.11926 18 2.98393 18 5.2666V12.7334C18 15.0898 15.9853 17 13.5 17H4.5C2.09247 17 0.126505 15.2074 0.00585938 12.9531L0 12.7334V5.2666C3.72355e-05 2.91022 2.01474 1 4.5 1H13.5L13.7314 1.00488ZM4.5 2.33301C2.79139 2.33301 1.40629 3.6466 1.40625 5.2666V12.7334C1.40629 14.3534 2.79139 15.667 4.5 15.667H4.625V2.33301H4.5ZM6.03125 15.667H13.5C15.2086 15.667 16.5937 14.3534 16.5938 12.7334V5.2666C16.5937 3.6466 15.2086 2.33301 13.5 2.33301H6.03125V15.667Z" fill="currentColor"/>
+        </svg>
+      </slot>
     `;
   }
 
