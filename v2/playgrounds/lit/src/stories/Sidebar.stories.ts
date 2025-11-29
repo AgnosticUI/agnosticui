@@ -235,7 +235,6 @@ export const Default: Story = {
 };
 
 // Built-in header toggle with fallback icon (showHeaderToggle enabled)
-// Built-in header toggle with fallback icon (showHeaderToggle enabled)
 export const WithHeaderToggleFallback: Story = {
   render: () => {
     const [args] = useArgs();
@@ -282,77 +281,107 @@ export const WithHeaderToggleFallback: Story = {
     `;
   }
 };
-WithHeaderToggleFallback.storyName = 'Built-in Header Toggle (fallback icon)';
 
-// Consumer-controlled header toggle (custom implementation)
-export const WithHeaderFooter: Story = {
+// Story demonstrating the public toggleSidebarState() method
+export const WithPublicToggleMethod: Story = {
   render: () => {
     const [args, updateArgs] = useArgs();
 
-    const handleHeaderButtonClick = () => {
-      // Check if we're in mobile by checking window width
+    const handleCustomToggle = () => {
       const isMobile = window.innerWidth < (args.breakpoint || 1024);
       
       if (isMobile && args.open) {
-        // In mobile when open, close the sidebar
+        // Mobile + open: close the overlay
         updateArgs({ open: false });
       } else {
-        // In desktop, toggle collapsed state
+        // Desktop or mobile closed: toggle collapsed state
         updateArgs({ collapsed: !args.collapsed });
       }
     };
 
     return html`
-    <style>
-      ag-sidebar[collapsed] [slot="footer"] {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-    </style>
-    <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
-      <ag-sidebar
-        ?open=${args.open}
-        ?collapsed=${args.collapsed}
-        .position=${args.position}
-        aria-label=${args['ariaLabel']}
-        .breakpoint=${args.breakpoint}
-        .variant=${args.variant}
-        ?no-transition=${args['noTransition']}
-        .width=${args.width}
-        ?show-mobile-toggle=${args['showMobileToggle']}
-        .mobile-toggle-position=${args['mobileTogglePosition']}
-      >
-        <div slot="header" style="display: flex; align-items: center; justify-content: ${args.collapsed ? 'center' : 'space-between'};">
-          ${!args.collapsed ? html`<h2 style="font-size: 1.125rem; font-weight: 600; color: var(--ag-text-primary); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">My App</h2>` : nothing}
-          <!-- Dual-purpose toggle: close in mobile, collapse in desktop -->
-          <button
-            class="desktop-collapse-toggle"
-            @click=${handleHeaderButtonClick}
-            aria-label=${args.collapsed ? 'Expand sidebar' : 'Close sidebar'}
-            style="display: flex; align-items: center; justify-content: center; width: var(--ag-space-7); height: var(--ag-space-7); border: 1px solid var(--ag-border-subtle); border-radius: 0.375rem; background: var(--ag-background-secondary); color: var(--text-primary); cursor: pointer;"
-          >
-            ${PanelIcon()}
-          </button>
-        </div>
-        ${createNavContent()}
-        <div slot="footer" style="text-align: ${args.collapsed ? 'center' : 'left'};">
-          <p class="footer-text" style="color: var(--ag-text-secondary); margin: 0; padding: 0; font-size: 0.875rem;">
-            ${args.collapsed ? '©' : '© 2025'}
-          </p>
-        </div>
-      </ag-sidebar>
+      <style>
+        ag-sidebar[collapsed] [slot="footer"] {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .custom-toggle-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: var(--ag-space-7);
+          height: var(--ag-space-7);
+          border: 1px solid var(--ag-border-subtle);
+          border-radius: 0.375rem;
+          background: var(--ag-background-secondary);
+          color: var(--ag-text-primary);
+          cursor: pointer;
+          transition: background 0.15s;
+          flex-shrink: 0;
+        }
+        .custom-toggle-btn:hover {
+          background: var(--ag-background-tertiary);
+        }
+        .custom-toggle-btn:active {
+          transform: scale(0.95);
+        }
+      </style>
+      <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
+        <ag-sidebar
+          id="demo-sidebar"
+          ?open=${args.open}
+          ?collapsed=${args.collapsed}
+          .position=${args.position}
+          aria-label=${args['ariaLabel']}
+          .breakpoint=${args.breakpoint}
+          .variant=${args.variant}
+          ?no-transition=${args['noTransition']}
+          .width=${args.width}
+          ?show-mobile-toggle=${args['showMobileToggle']}
+          .mobile-toggle-position=${args['mobileTogglePosition']}
+        >
+          <div slot="header" style="display: flex; align-items: center; justify-content: ${args.collapsed ? 'center' : 'space-between'}; gap: var(--ag-space-2);">
+            ${!args.collapsed ? html`<h2 style="flex: 1; min-width: 0; font-size: 1.125rem; font-weight: 600; color: var(--ag-text-primary); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">My App</h2>` : nothing}
+            <button
+              class="custom-toggle-btn"
+              @click=${handleCustomToggle}
+              aria-label="${args.collapsed ? 'Expand sidebar' : (args.open ? 'Close sidebar' : 'Collapse sidebar')}"
+            >
+              ${PanelIcon()}
+            </button>
+          </div>
+          ${createNavContent()}
+          <div slot="footer" style="text-align: ${args.collapsed ? 'center' : 'left'};">
+            <p class="footer-text" style="color: var(--ag-text-secondary); margin: 0; padding: 0; font-size: 0.875rem;">
+              ${args.collapsed ? '©' : '© 2025'}
+            </p>
+          </div>
+        </ag-sidebar>
         <main style="flex: 1; padding: 2rem;">
-        <h1>Consumer Header Toggle — consumer-provided header control</h1>
-        <p>Consumers fully control the header layout and button behavior in this example.</p>
-        <p><strong>Desktop (≥1024px):</strong> Use the panel icon button in the sidebar header to collapse to rail mode (icon-only view).</p>
-        <p><strong>Mobile (&lt;1024px):</strong> Tap the floating button to open. Once open, use the panel icon in the header to close or toggle width.</p>
-      </main>
-    </div>
-  `},
+          <h1>Public toggleSidebarState() Method</h1>
+          <p>This story demonstrates using the public <code>toggleSidebarState()</code> method for custom header buttons.</p>
+          <p><strong>Desktop (≥1024px):</strong> Click the header button to toggle collapsed state (rail mode).</p>
+          <p><strong>Mobile (&lt;1024px):</strong> Tap floating button to open. Once open, the header button closes the overlay.</p>
+          <p style="margin-top: 1.5rem; padding: 1rem; background: var(--ag-background-secondary); border-radius: 0.375rem;">
+            <strong>Usage Example:</strong><br/>
+            <code style="font-size: 0.875rem;">
+              const sidebar = document.getElementById('demo-sidebar');<br/>
+              sidebar.toggleSidebarState();
+            </code>
+          </p>
+          <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+            The method automatically detects mobile vs desktop and applies the correct behavior without requiring viewport detection in your code.
+          </p>
+          <p style="margin-top: 1rem; padding: 0.75rem; background: #fef3c7; border: 1px solid #fbbf24; border-radius: 0.375rem; font-size: 0.875rem;">
+            <strong>Note:</strong> In this Storybook example, we're directly updating args to demonstrate the behavior. In a real application, you would call <code>sidebar.toggleSidebarState()</code> and the component manages its own state internally.
+          </p>
+        </main>
+      </div>
+    `;
+  }
 };
-WithHeaderFooter.storyName = 'Consumer Header Toggle (consumer-controlled)';
+WithPublicToggleMethod.storyName = 'Public toggleSidebarState() Method';
 
 // Story demonstrating consumer-provided slotted toggle icon with collapse-only header toggle
 export const WithCustomToggleIconAndBuiltInHeader: Story = {
