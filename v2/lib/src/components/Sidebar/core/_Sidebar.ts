@@ -40,6 +40,69 @@ export type AgSidebarCollapseEvent = CustomEvent<AgSidebarCollapseEventDetail>;
 
 /**
  * AgSidebar - A self-contained, accessible sidebar navigation component.
+ * 
+ * Provides a responsive sidebar with mobile overlay and desktop rail/collapse modes.
+ * Supports customizable header, navigation content, and footer sections with full
+ * keyboard navigation and focus management.
+ * 
+ * @element ag-sidebar
+ * 
+ * @slot header - Header content area for logo, title, or actions. When `collapsed` is true on desktop, content fades out but slot remains in DOM for accessibility.
+ * @slot - Default slot for main navigation content. Use `<ag-sidebar-nav>` component for structured navigation with proper aria attributes.
+ * @slot footer - Footer content area for copyright info, version numbers, or help links. Remains visible when sidebar is collapsed, content should be icon-only or very compact.
+ * @slot ag-toggle-icon - Customizes the floating mobile toggle button icon and header toggle icon. Must be an SVG element sized 18x18px. Falls back to built-in panel icon if not provided.
+ * 
+ * @fires ag-sidebar-toggle - Fired when sidebar open/close state changes (mobile overlay). Detail: `{ open: boolean }`
+ * @fires ag-sidebar-collapse - Fired when sidebar expanded/collapsed state changes (desktop rail). Detail: `{ collapsed: boolean }`
+ * 
+ * @csspart ag-sidebar-backdrop - The backdrop overlay shown on mobile when sidebar is open
+ * @csspart ag-sidebar-toggle-button - The floating toggle button shown on mobile (when `show-mobile-toggle` is true)
+ * @csspart ag-sidebar-container - The main sidebar container element (aside)
+ * @csspart ag-sidebar-header - The header section wrapper
+ * @csspart ag-sidebar-header-toggle - The collapse/expand toggle button in header (when `show-header-toggle` is true)
+ * @csspart ag-sidebar-content - The main content scrollable area
+ * @csspart ag-sidebar-footer - The footer section wrapper
+ * 
+ * @cssprop --ag-sidebar-width - Width of expanded sidebar. Default: `18rem`
+ * @cssprop --ag-sidebar-width-collapsed - Width of collapsed sidebar (rail mode). Default: `3rem`
+ * @cssprop --ag-sidebar-padding - Internal padding for content area. Default: `0.5rem`
+ * @cssprop --ag-sidebar-background - Background color of sidebar. Default: `#ffffff`
+ * @cssprop --ag-sidebar-border - Border color. Default: `#e5e7eb`
+ * @cssprop --ag-sidebar-transition-duration - Animation duration for state changes. Default: `200ms`
+ * @cssprop --ag-sidebar-transition-easing - Animation easing function. Default: `ease-in-out`
+ * @cssprop --ag-sidebar-z-index - Z-index for sidebar container on mobile. Default: `1000`
+ * @cssprop --ag-sidebar-backdrop-z-index - Z-index for backdrop overlay on mobile. Default: `999`
+ * @cssprop --ag-sidebar-toggle-z-index - Z-index for floating toggle button. Default: `1001`
+ * @cssprop --ag-sidebar-breakpoint - Breakpoint for mobile/desktop behavior. Default: `1024px`
+ * 
+ * @example
+ * ```html
+ * <ag-sidebar>
+ *   <div slot="header">
+ *     <h1>My App</h1>
+ *   </div>
+ *   
+ *   <ag-sidebar-nav>
+ *     <ag-sidebar-nav-item href="/">Home</ag-sidebar-nav-item>
+ *     <ag-sidebar-nav-item href="/about">About</ag-sidebar-nav-item>
+ *   </ag-sidebar-nav>
+ *   
+ *   <div slot="footer">
+ *     <p>© 2024 Company</p>
+ *   </div>
+ * </ag-sidebar>
+ * ```
+ * 
+ * @example
+ * ```html
+ * <!-- Custom toggle icon -->
+ * <ag-sidebar show-header-toggle>
+ *   <svg slot="ag-toggle-icon" width="18" height="18" viewBox="0 0 18 18">
+ *     <path d="M3 9h12M3 5h12M3 13h12" stroke="currentColor"/>
+ *   </svg>
+ *   <div slot="header">Navigation</div>
+ * </ag-sidebar>
+ * ```
  */
 export class AgSidebar extends LitElement implements AgSidebarProps {
   static styles = css`
@@ -85,15 +148,19 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       border-bottom: 1px solid var(--ag-sidebar-border);
     }
     
-    /* Header layout wrapper for showHeaderToggle */
+    /* Header layout wrapper for showHeaderToggle. Base wrapper - no gap */
     .header-wrapper {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
+    }
+
+    /* Gap only when expanded */
+    :host(:not([collapsed])) .header-wrapper {
       gap: var(--ag-space-2);
     }
-    
+
     .header-content {
       flex: 1;
       min-width: 0;
@@ -323,6 +390,53 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     this._dispatchCollapseEvent();
   }
 
+  /**
+   * Intelligent toggle that handles both mobile and desktop contexts.
+   * 
+   * **Behavior:**
+   * - Mobile (< breakpoint) + sidebar open: closes the sidebar overlay
+   * - Desktop (>= breakpoint): toggles collapsed state (rail mode)
+   * - Mobile (< breakpoint) + sidebar closed: toggles collapsed state
+   * 
+   * **When to use:**
+   * Use this method in custom header buttons when you want the sidebar to close
+   * on mobile when it's already open (dismissing the overlay), but toggle
+   * collapsed state on desktop or when closed on mobile.
+   * 
+   * **Comparison with built-in toggle:**
+   * - Built-in `showHeaderToggle`: Always toggles collapsed state (never closes on mobile)
+   * - `toggleSidebarState()`: Closes overlay on mobile when open, otherwise toggles collapsed
+   * 
+   * @example
+   * ```html
+   * <ag-sidebar id="sidebar">
+   *   <button slot="header" @click=${() => document.getElementById('sidebar').toggleSidebarState()}>
+   *     Toggle
+   *   </button>
+   * </ag-sidebar>
+   * ```
+   * 
+   * @example
+   * ```typescript
+   * // In Lit component
+   * const sidebar = this.shadowRoot.querySelector('ag-sidebar');
+   * sidebar.toggleSidebarState();
+   * ```
+   */
+  public toggleSidebarState(): void {
+    const isMobile = window.innerWidth < this.breakpoint;
+    
+    if (isMobile && this.open) {
+      // Mobile + open: close the overlay
+      this.open = false;
+      this._dispatchToggleEvent();
+    } else {
+      // Desktop or mobile closed: toggle collapsed state
+      this.collapsed = !this.collapsed;
+      this._dispatchCollapseEvent();
+    }
+  }
+
   override connectedCallback() {
     super.connectedCallback();
   }
@@ -364,15 +478,10 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   };
 
   private _handleHeaderToggleClick = () => {
-    // Dual-purpose: close in mobile, collapse in desktop
-    const isMobile = window.innerWidth < this.breakpoint;
-    if (isMobile && this.open) {
-      this.open = false;
-      this._dispatchToggleEvent();
-    } else {
-      this.collapsed = !this.collapsed;
-      this._dispatchCollapseEvent();
-    }
+    // Built-in header toggle: always toggles collapsed state
+    // On mobile when open, this collapses to rail mode while keeping overlay open
+    this.collapsed = !this.collapsed;
+    this._dispatchCollapseEvent();
   };
 
   private _handleKeydown = (event: KeyboardEvent) => {
