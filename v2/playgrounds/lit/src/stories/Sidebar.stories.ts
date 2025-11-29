@@ -235,6 +235,7 @@ export const Default: Story = {
 };
 
 // Built-in header toggle with fallback icon (showHeaderToggle enabled)
+// Built-in header toggle with fallback icon (showHeaderToggle enabled)
 export const WithHeaderToggleFallback: Story = {
   render: () => {
     const [args] = useArgs();
@@ -261,8 +262,8 @@ export const WithHeaderToggleFallback: Story = {
           .mobile-toggle-position=${args['mobileTogglePosition']}
           show-header-toggle
         >
-          <div slot="header" style="display: flex; align-items: center;">
-            ${html`<h2 style="font-size: 1.125rem; font-weight: 600; color: var(--ag-text-primary); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">My App</h2>`}
+          <div slot="header">
+            <h2 style="font-size: 1.125rem; font-weight: 600; color: var(--ag-text-primary); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">My App</h2>
           </div>
           ${createNavContent()}
           <div slot="footer" style="text-align: left;">
@@ -272,7 +273,7 @@ export const WithHeaderToggleFallback: Story = {
           </div>
         </ag-sidebar>
         <main style="flex: 1; padding: 2rem;">
-            <h1>Built-in Header Toggle — component-provided (fallback icon)</h1>
+            <h1>Built-in Header Toggle – component-provided (fallback icon)</h1>
             <p>The Sidebar component provides a built-in header toggle. Use this when you want the component to render the toggle button for you.</p>
             <p><strong>Desktop (≥1024px):</strong> Click the button to collapse to rail mode (icon-only view).</p>
             <p><strong>Mobile (&lt;1024px):</strong> Tap the floating button to open. Once open, use the header toggle to close the sidebar.</p>
@@ -281,7 +282,7 @@ export const WithHeaderToggleFallback: Story = {
     `;
   }
 };
-  WithHeaderToggleFallback.storyName = 'Built-in Header Toggle (fallback icon)';
+WithHeaderToggleFallback.storyName = 'Built-in Header Toggle (fallback icon)';
 
 // Consumer-controlled header toggle (custom implementation)
 export const WithHeaderFooter: Story = {

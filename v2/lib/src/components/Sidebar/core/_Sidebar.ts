@@ -85,6 +85,33 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       border-bottom: 1px solid var(--ag-sidebar-border);
     }
     
+    /* Header layout wrapper for showHeaderToggle */
+    .header-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: var(--ag-space-2);
+    }
+    
+    .header-content {
+      flex: 1;
+      min-width: 0;
+      opacity: 1;
+      transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+    }
+    
+    /* Collapsed state: fade out header content */
+    :host([collapsed]) .header-content {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    /* Collapsed state: center the toggle button */
+    :host([collapsed]) .header-wrapper {
+      justify-content: center;
+    }
+    
     /* Built-in header toggle button styling */
     .header-toggle-button {
       display: flex;
@@ -114,6 +141,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       height: 18px;
       fill: currentColor;
     }
+    
     .sidebar-footer {
       border-top: 1px solid var(--ag-sidebar-border);
     }
@@ -250,7 +278,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .sidebar-container, .backdrop, .toggle-button {
+      .sidebar-container, .backdrop, .toggle-button, .header-content {
         transition: none !important;
       }
     }
@@ -443,8 +471,10 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       <aside part="ag-sidebar-container" class="sidebar-container" aria-label=${this.ariaLabel}>
         <div part="ag-sidebar-header" class="sidebar-header">
           ${this.showHeaderToggle ? html`
-            <div style="display: flex; align-items: center; justify-content: ${this.collapsed ? 'center' : 'space-between'}; width: 100%;">
-              <slot name="header" style="flex: 1; ${this.collapsed ? 'display: none;' : ''}"></slot>
+            <div class="header-wrapper">
+              <div class="header-content">
+                <slot name="header"></slot>
+              </div>
               <button
                 part="ag-sidebar-header-toggle"
                 class="header-toggle-button"
