@@ -383,6 +383,19 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   private _mainContentRef?: HTMLElement;
   
   /**
+   * Checks if the current viewport width is below the mobile breakpoint.
+   * 
+   * This helper ensures consistent viewport detection across the component.
+   * Called on-demand rather than using resize listeners to avoid memory overhead.
+   * 
+   * @returns true if viewport width is less than breakpoint, false otherwise
+   * @private
+   */
+  private _isMobileViewport(): boolean {
+    return window.innerWidth < this.breakpoint;
+  }
+  
+  /**
    * Toggle the collapsed state (desktop rail mode)
    */
   public toggleCollapse() {
@@ -407,6 +420,10 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
    * - Built-in `showHeaderToggle`: Always toggles collapsed state (never closes on mobile)
    * - `toggleSidebarState()`: Closes overlay on mobile when open, otherwise toggles collapsed
    * 
+   * **Resize awareness:**
+   * Checks viewport width on each invocation, ensuring correct behavior even
+   * after window resizes without requiring resize event listeners.
+   * 
    * @example
    * ```html
    * <ag-sidebar id="sidebar">
@@ -424,9 +441,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
    * ```
    */
   public toggleSidebarState(): void {
-    const isMobile = window.innerWidth < this.breakpoint;
-    
-    if (isMobile && this.open) {
+    if (this._isMobileViewport() && this.open) {
       // Mobile + open: close the overlay
       this.open = false;
       this._dispatchToggleEvent();
