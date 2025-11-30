@@ -43,9 +43,11 @@ export type PopoverHideEvent = CustomEvent<PopoverHideEventDetail>;
  * @fires {PopoverHideEvent} hide - Fired when the popover becomes hidden
  *
  * @csspart ag-popover - The main popover container element that displays the content
+ * @csspart ag-popover-header - The header element of the popover
+ * @csspart ag-popover-body - The body element containing the popover content
  * @csspart ag-popover-arrow - The arrow element that points to the trigger element
  * @csspart ag-popover-close - The close button element inside the popover
- * 
+ *
  * @cssproperty --ag-popover-min-width - Minimum width of the popover
  * @cssproperty --ag-popover-max-width - Maximum width of the popover
  * @cssproperty --ag-popover-arrow-size - Size of the arrow (width/height)
@@ -56,7 +58,7 @@ export interface PopoverProps {
   skidding?: number;
   arrow?: boolean;
   disabled?: boolean;
-  /** 
+  /**
    * Interaction type for triggering the popover
    * @default 'click'
    */
@@ -65,9 +67,14 @@ export interface PopoverProps {
   matchTriggerWidth?: boolean;
   /** Whether to show the close button in the header */
   showCloseButton?: boolean;
+  /**
+   * Whether to show the header section
+   * @default true
+   */
+  showHeader?: boolean;
   /** Accessible label for the close button */
   closeLabel?: string;
-  /** 
+  /**
    * Whether to trap focus within the popover when open
    * @default false
    */
@@ -201,40 +208,43 @@ export class Popover extends LitElement implements PopoverProps {
   `;
 
   @property({ type: String, reflect: true })
-  placement: Placement = 'bottom';
+  declare placement: Placement;
 
   @property({ type: Number })
-  distance: number = 8;
+  declare distance: number;
 
   @property({ type: Number })
-  skidding: number = 0;
+  declare skidding: number;
 
   @property({ type: Boolean })
-  arrow: boolean = true;
+  declare arrow: boolean;
 
   @property({ type: Boolean, reflect: true })
-  disabled: boolean = false;
+  declare disabled: boolean;
 
   @property({ type: String, attribute: 'trigger-type' })
-  triggerType: 'click' | 'hover' | 'focus' = 'click';
+  declare triggerType: 'click' | 'hover' | 'focus';
 
   @property({ type: Boolean, attribute: 'match-trigger-width' })
-  matchTriggerWidth: boolean = false;
+  declare matchTriggerWidth: boolean;
 
   @property({ type: Boolean, attribute: 'show-close-button' })
-  showCloseButton: boolean = true;
+  declare showCloseButton: boolean;
+
+  @property({ type: Boolean, attribute: 'show-header' })
+  declare showHeader: boolean;
 
   @property({ type: String, attribute: 'close-label' })
-  closeLabel: string = 'Close popover';
+  declare closeLabel: string;
 
   @property({ type: Boolean, attribute: 'trap-focus' })
-  trapFocus: boolean = false;
+  declare trapFocus: boolean;
 
   @property({ attribute: false })
-  onShow?: (event: PopoverShowEvent) => void;
+  declare onShow?: (event: PopoverShowEvent) => void;
 
   @property({ attribute: false })
-  onHide?: (event: PopoverHideEvent) => void;
+  declare onHide?: (event: PopoverHideEvent) => void;
 
   @state()
   private _open: boolean = false;
@@ -252,6 +262,22 @@ export class Popover extends LitElement implements PopoverProps {
   private _clickOutsideHandler?: (event: MouseEvent) => void;
   private _contentObserver: MutationObserver | undefined;
   private _hoverTimeout: number | undefined;
+
+  constructor() {
+    super();
+    // Initialize default values using constructor to avoid class field shadowing
+    this.placement = 'bottom';
+    this.distance = 8;
+    this.skidding = 0;
+    this.arrow = true;
+    this.disabled = false;
+    this.triggerType = 'click';
+    this.matchTriggerWidth = false;
+    this.showCloseButton = true;
+    this.showHeader = true;
+    this.closeLabel = 'Close popover';
+    this.trapFocus = false;
+  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -305,7 +331,7 @@ export class Popover extends LitElement implements PopoverProps {
   }
 
   private get _hasHeader(): boolean {
-    return this._hasTitleSlot || this.showCloseButton;
+    return this.showHeader && (this._hasTitleSlot || this.showCloseButton);
   }
 
   private _updateSlotStates() {
@@ -360,7 +386,7 @@ export class Popover extends LitElement implements PopoverProps {
     }
 
     // Update slot states when relevant properties change
-    if (changedProperties.has('showCloseButton')) {
+    if (changedProperties.has('showCloseButton') || changedProperties.has('showHeader')) {
       this._updateSlotStates();
     }
 
@@ -726,13 +752,13 @@ export class Popover extends LitElement implements PopoverProps {
         ?data-show=${this._open}
       >
         ${this._hasHeader ? html`
-          <header class="popover-header">
+          <header part="ag-popover-header" class="popover-header">
             ${this._hasTitleSlot ? html`
               <h3 id="popover-title" class="popover-title">
                 <slot name="title" @slotchange=${this._updateSlotStates}></slot>
               </h3>
             ` : html`<div class="popover-title"></div>`}
-            
+
             ${this.showCloseButton ? html`
               <div class="popover-close-wrapper">
                 <ag-close-button
@@ -744,9 +770,9 @@ export class Popover extends LitElement implements PopoverProps {
             ` : ''}
           </header>
         ` : ''}
-        
+
         ${this._hasContentSlot ? html`
-          <div class="popover-body">
+          <div part="ag-popover-body" class="popover-body">
             <slot name="content" @slotchange=${this._updateSlotStates}></slot>
           </div>
         ` : ''}
