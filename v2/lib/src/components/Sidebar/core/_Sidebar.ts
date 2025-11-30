@@ -281,8 +281,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     
     /* Collapsed state: fade out header content */
     :host([collapsed]) .header-content {
-      opacity: 0;
-      pointer-events: none;
+      display: none;
     }
     
     /* Collapsed state: center the toggle button */
