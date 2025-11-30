@@ -267,16 +267,16 @@ const createNavContent = () => html`
         class="nav-button nav-button-expanded"
         aria-expanded="false"
         @click=${(e: Event) => {
-          const button = e.currentTarget as HTMLElement;
-          const navItem = button.closest('ag-sidebar-nav-item');
-          const submenu = navItem?.querySelector('ag-sidebar-nav-submenu');
-          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    const button = e.currentTarget as HTMLElement;
+    const navItem = button.closest('ag-sidebar-nav-item');
+    const submenu = navItem?.querySelector('ag-sidebar-nav-submenu');
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
-          button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-          if (submenu) {
-            (submenu as HTMLElement).style.display = isExpanded ? 'none' : 'block';
-          }
-        }}
+    button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+    if (submenu) {
+      (submenu as HTMLElement).style.display = isExpanded ? 'none' : 'block';
+    }
+  }}
       >
         <ag-icon no-fill>${createElement(Folder)}</ag-icon>
         <span class="nav-label">Projects</span>
@@ -331,16 +331,16 @@ const createNavContent = () => html`
         class="nav-button nav-button-expanded"
         aria-expanded="false"
         @click=${(e: Event) => {
-          const button = e.currentTarget as HTMLElement;
-          const navItem = button.closest('ag-sidebar-nav-item');
-          const submenu = navItem?.querySelector('ag-sidebar-nav-submenu');
-          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    const button = e.currentTarget as HTMLElement;
+    const navItem = button.closest('ag-sidebar-nav-item');
+    const submenu = navItem?.querySelector('ag-sidebar-nav-submenu');
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
-          button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-          if (submenu) {
-            (submenu as HTMLElement).style.display = isExpanded ? 'none' : 'block';
-          }
-        }}
+    button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+    if (submenu) {
+      (submenu as HTMLElement).style.display = isExpanded ? 'none' : 'block';
+    }
+  }}
       >
         <ag-icon no-fill>${createElement(Settings)}</ag-icon>
         <span class="nav-label">Settings</span>
@@ -409,9 +409,9 @@ export const Default: Story = {
         <button 
           slot="header-toggle"
           @click=${(e: Event) => {
-            const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
-            sidebar?.toggleCollapse();
-          }}
+      const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
+      sidebar?.toggleCollapse();
+    }}
           style="background: none; border: none; padding: 8px; cursor: pointer; display: flex; align-items: center; color: inherit;"
           aria-label="Toggle sidebar"
         >
@@ -467,9 +467,9 @@ export const WithHeaderActions: Story = {
         <button 
           slot="header-toggle"
           @click=${(e: Event) => {
-            const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
-            sidebar?.toggleCollapse();
-          }}
+      const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
+      sidebar?.toggleCollapse();
+    }}
           style="background: none; border: none; padding: 8px; cursor: pointer; display: flex; align-items: center;"
           aria-label="Toggle sidebar"
         >
@@ -524,9 +524,9 @@ export const WithBuiltInToggle: Story = {
         <h1>Built-in Header Toggle</h1>
         <p>Using <code>show-header-toggle</code> adds a built-in collapse button automatically.</p>
         <p>The built-in toggle always uses <code>toggleCollapse()</code> internally for consistent behavior.</p>
-        <div style="background: #dcfce7; padding: 1rem; border-radius: 0.375rem; border: 1px solid #22c55e; margin-top: 1rem;">
+        <p>
           <strong>Note:</strong> Built-in toggle works correctly - it always toggles collapsed state. Hover over submenu items when collapsed!
-        </div>
+        </p>
       </main>
     </div>
   `,
@@ -547,9 +547,9 @@ export const LegacyHeaderSlot: Story = {
           <h2 style="margin: 0; font-size: 1.125rem; font-weight: 600;">Legacy Header</h2>
           <button 
             @click=${(e: Event) => {
-              const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
-              sidebar?.toggleCollapse();
-            }}
+      const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
+      sidebar?.toggleCollapse();
+    }}
             style="background: none; border: none; padding: 8px; cursor: pointer; display: flex; align-items: center;"
             aria-label="Toggle sidebar"
           >

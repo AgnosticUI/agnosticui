@@ -19,7 +19,7 @@ vi.mock('@floating-ui/dom', async () => {
         arrow: { x: 50, y: 0 }
       }
     }),
-    autoUpdate: vi.fn().mockReturnValue(() => {})
+    autoUpdate: vi.fn().mockReturnValue(() => { })
   };
 });
 
@@ -33,19 +33,19 @@ describe('Popover', () => {
     trigger = document.createElement('button');
     trigger.setAttribute('slot', 'trigger');
     trigger.textContent = 'Open Popover';
-    
+
     const title = document.createElement('span');
     title.setAttribute('slot', 'title');
     title.textContent = 'Test Title';
-    
+
     const content = document.createElement('div');
     content.setAttribute('slot', 'content');
     content.innerHTML = '<p>Test content</p>';
-    
+
     popover.appendChild(trigger);
     popover.appendChild(title);
     popover.appendChild(content);
-    
+
     document.body.appendChild(popover);
     await popover.updateComplete;
   });
@@ -144,7 +144,7 @@ describe('Popover', () => {
     it('should have no accessibility violations when open', async () => {
       popover.show();
       await popover.updateComplete;
-      
+
       const results = await axe(popover);
       expect(results).toHaveNoViolations();
     });
@@ -162,13 +162,31 @@ describe('Popover', () => {
 
     it('should return focus to trigger when closed', async () => {
       const focusSpy = vi.spyOn(trigger, 'focus');
-      
+
       popover.show();
       await popover.updateComplete;
       popover.hide();
       await popover.updateComplete;
-      
+
       expect(focusSpy).toHaveBeenCalledOnce();
+    });
+
+    it('should NOT return focus to trigger when closed if focus moved elsewhere', async () => {
+      const focusSpy = vi.spyOn(trigger, 'focus');
+
+      popover.show();
+      await popover.updateComplete;
+
+      // Simulate focus moving to another element (e.g. another button)
+      const otherButton = document.createElement('button');
+      document.body.appendChild(otherButton);
+      otherButton.focus();
+
+      popover.hide();
+      await popover.updateComplete;
+
+      expect(focusSpy).not.toHaveBeenCalled();
+      otherButton.remove();
     });
   });
 
