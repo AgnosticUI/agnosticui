@@ -235,17 +235,38 @@ const createNavContent = () => {
         justify-content: center;
         padding-inline: var(--ag-space-2);
       }
+      
+      /* Modern 2025 approach: Use will-change for performance hint */
+      .nav-button .nav-label,
+      .nav-button .chevron {
+        will-change: opacity, transform;
+        transition: opacity var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
+                    transform var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out);
+        transform-origin: left center;
+      }
+      
       ag-sidebar[collapsed] .nav-button .nav-label,
       ag-sidebar[collapsed] .nav-button .chevron {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
+        opacity: 0;
+        transform: scaleX(0);
         overflow: hidden;
-        clip: rect(0, 0, 0, 0);
         white-space: nowrap;
-        border-width: 0;
+        pointer-events: none;
+      }
+      
+      /* Progressive enhancement: Use display transitions for browsers that support it (Chrome 116+) */
+      @supports (transition-behavior: allow-discrete) {
+        .nav-button .nav-label,
+        .nav-button .chevron {
+          transition: opacity var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
+                      transform var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
+                      display var(--ag-sidebar-transition-duration, 200ms) allow-discrete;
+        }
+        
+        ag-sidebar[collapsed] .nav-button .nav-label,
+        ag-sidebar[collapsed] .nav-button .chevron {
+          display: none;
+        }
       }
       
       /* Show indicator for items with submenus when collapsed */
