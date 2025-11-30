@@ -84,306 +84,340 @@ const PanelIcon = () => html`
   </svg>
 `;
 
-const createNavContent = () => html`
-  <style>
-    /* Allow popovers to escape sidebar in collapsed mode */
-    ag-sidebar[collapsed] {
-      overflow: visible !important;
-    }
+// COMPLETE INTEGRATION - Replace createNavContent() in Sidebar.stories.ts
+// FULLY DEBUGGED VERSION
 
-    ag-sidebar[collapsed]::part(ag-sidebar-container) {
-      overflow: visible !important;
-    }
+const createNavContent = () => {
+  // Define the toggle handler outside the template for better debugging
+  const handleSubmenuToggle = (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-    ag-sidebar[collapsed]::part(ag-sidebar-content) {
-      overflow: visible !important;
-    }
-
-    .nav-button {
-      width: 100%;
-      padding: var(--ag-space-2);
-      border: none;
-      background: transparent;
-      border-radius: var(--ag-border-radius-sm);
-      cursor: pointer;
-      text-align: left;
-      font-size: var(--ag-font-size-sm);
-      color: var(--ag-text-primary);
-      display: flex;
-      align-items: center;
-      gap: var(--ag-space-2);
-      transition: background 0.15s;
-      position: relative;
-    }
-    .nav-button:hover {
-      background: var(--ag-background-secondary);
-    }
-    .nav-button.active {
-      background: var(--ag-primary-background);
-      color: var(--ag-text-primary);
-    }
-    .nav-button ag-icon {
-      flex-shrink: 0;
-    }
-    .nav-button .nav-label {
-      flex-grow: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .nav-button .chevron {
-      margin-left: auto;
-      transition: transform var(--ag-fx-duration-md);
-    }
-    .nav-button[aria-expanded="true"] .chevron ag-icon {
-      transform: rotate(90deg);
-    }
-
-    /* Collapsed state indicator - small corner arrow */
-    .nav-button .collapsed-indicator {
-      display: none;
-      position: absolute;
-      bottom: 1px;
-      right: -1px;
-      width: var(--ag-space-3);
-      height: var(--ag-space-3);
-      background: transparent;
-      border-radius: 2px;
-      pointer-events: none;
-    }
-    
-    .nav-button .collapsed-indicator svg {
-      width: var(--ag-space-3);
-      height: var(--ag-space-3);
-      color: var(--ag-text-muted);
-      transform: rotate(315deg)
-    }
-
-    .nav-sublink {
-      display: block;
-      padding: var(--ag-space-2);
-      border-radius: var(--ag-radius-sm);
-      text-decoration: none;
-      color: var(--ag-text-primary);
-      font-size: var(--ag-font-size-sm);
-      transition: background 0.15s;
-    }
-    .nav-sublink:hover {
-      background: var(--ag-background-secondary);
-    }
-    .nav-sublink.active {
-      background: var(--ag-primary-background);
-      color: var(--ag-primary-text);
-      font-weight: 500;
-    }
-
-    /* Collapsed state (rail mode) styles */
-    ag-sidebar[collapsed] .nav-button {
-      justify-content: center;
-      padding-inline: var(--ag-space-2);
-    }
-    ag-sidebar[collapsed] .nav-button .nav-label,
-    ag-sidebar[collapsed] .nav-button .chevron {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-    
-    /* Show indicator for items with submenus when collapsed */
-    ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    /* Hide inline submenus in collapsed mode */
-    ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu) {
-      display: none !important;
-    }
-
-    /* Popover submenu styles */
-    ag-popover::part(ag-popover) {
-      min-width: 200px;
-    }
-
-    ag-popover::part(ag-popover-body) {
-      padding: var(--ag-space-1);
-    }
-
-    .popover-submenu-content .nav-sublink {
-      display: block;
-      padding: var(--ag-space-2) var(--ag-space-3);
-      border-radius: var(--ag-radius-sm);
-      text-decoration: none;
-      color: var(--ag-text-primary);
-      font-size: var(--ag-font-size-sm);
-      transition: background 0.15s;
-      white-space: nowrap;
-    }
-
-    .popover-submenu-content .nav-sublink:hover {
-      background: var(--ag-background-secondary);
-    }
-
-    .popover-submenu-content .nav-sublink.active {
-      background: var(--ag-primary-background);
-      color: var(--ag-primary-text);
-      font-weight: 500;
-    }
-
-    /* Completely hide popover element when not collapsed */
-    ag-sidebar:not([collapsed]) ag-popover {
-      display: none !important;
-    }
-
-    /* Show the collapsed-mode button only when collapsed */
-    ag-sidebar[collapsed] .nav-button-expanded {
-      display: none !important;
-    }
-
-    /* Show the expanded-mode button only when not collapsed */
-    ag-sidebar:not([collapsed]) .nav-button-collapsed {
-      display: none !important;
-    }
-  </style>
-  <ag-sidebar-nav>
-    <ag-sidebar-nav-item>
-      <button class="nav-button active" aria-current="page">
-        <ag-icon no-fill>${createElement(Home)}</ag-icon>
-        <span class="nav-label">Dashboard</span>
-      </button>
-    </ag-sidebar-nav-item>
-
-    <!-- Projects with submenu - dual button approach -->
-    <ag-sidebar-nav-item>
-      <!-- Button for EXPANDED mode (with click handler for inline submenu) -->
-      <button
-        class="nav-button nav-button-expanded"
-        aria-expanded="false"
-        @click=${(e: Event) => {
     const button = e.currentTarget as HTMLElement;
     const navItem = button.closest('ag-sidebar-nav-item');
-    const submenu = navItem?.querySelector('ag-sidebar-nav-submenu');
-    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    const submenu = navItem?.querySelector('ag-sidebar-nav-submenu') as HTMLElement;
 
-    button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-    if (submenu) {
-      (submenu as HTMLElement).style.display = isExpanded ? 'none' : 'block';
+    if (!submenu) {
+      console.warn('No submenu found');
+      return;
     }
-  }}
-      >
-        <ag-icon no-fill>${createElement(Folder)}</ag-icon>
-        <span class="nav-label">Projects</span>
-        <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
-      </button>
 
-      <!-- Button for COLLAPSED mode (inside popover with click trigger) -->
-      <ag-popover
-        class="nav-button-collapsed"
-        placement="right-start"
-        trigger-type="click"
-        distance="8"
-        ?arrow=${true}
-        .showHeader=${false}
-      >
-        <button slot="trigger" class="nav-button">
+    // Check current state - be explicit about string comparison
+    const currentAriaExpanded = button.getAttribute('aria-expanded');
+    const isCurrentlyExpanded = currentAriaExpanded === 'true';
+
+    console.log('Current aria-expanded:', currentAriaExpanded);
+    console.log('Is currently expanded:', isCurrentlyExpanded);
+    console.log('Submenu has open attr:', submenu.hasAttribute('open'));
+
+    // Toggle to opposite state
+    if (isCurrentlyExpanded) {
+      // Currently expanded, so collapse it
+      button.setAttribute('aria-expanded', 'false');
+      submenu.removeAttribute('open');
+      console.log('→ Collapsing submenu');
+    } else {
+      // Currently collapsed, so expand it
+      button.setAttribute('aria-expanded', 'true');
+      submenu.setAttribute('open', '');
+      console.log('→ Expanding submenu');
+    }
+  };
+
+  return html`
+    <style>
+      /* Allow popovers to escape sidebar in collapsed mode */
+      ag-sidebar[collapsed] {
+        overflow: visible !important;
+      }
+
+      ag-sidebar[collapsed]::part(ag-sidebar-container) {
+        overflow: visible !important;
+      }
+
+      ag-sidebar[collapsed]::part(ag-sidebar-content) {
+        overflow: visible !important;
+      }
+
+      .nav-button {
+        width: 100%;
+        padding: var(--ag-space-2);
+        border: none;
+        background: transparent;
+        border-radius: var(--ag-border-radius-sm);
+        cursor: pointer;
+        text-align: left;
+        font-size: var(--ag-font-size-sm);
+        color: var(--ag-text-primary);
+        display: flex;
+        align-items: center;
+        gap: var(--ag-space-2);
+        transition: background 0.15s;
+        position: relative;
+      }
+      .nav-button:hover {
+        background: var(--ag-background-secondary);
+      }
+      .nav-button.active {
+        background: var(--ag-primary-background);
+        color: var(--ag-text-primary);
+      }
+      .nav-button ag-icon {
+        flex-shrink: 0;
+      }
+      .nav-button .nav-label {
+        flex-grow: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .nav-button .chevron {
+        margin-left: auto;
+        transition: transform var(--ag-fx-duration-md);
+      }
+      .nav-button[aria-expanded="true"] .chevron ag-icon {
+        transform: rotate(90deg);
+      }
+
+      /* Collapsed state indicator - small corner arrow */
+      .nav-button .collapsed-indicator {
+        display: none;
+        position: absolute;
+        bottom: 1px;
+        right: -1px;
+        width: var(--ag-space-3);
+        height: var(--ag-space-3);
+        background: transparent;
+        border-radius: 2px;
+        pointer-events: none;
+      }
+      
+      .nav-button .collapsed-indicator svg {
+        width: var(--ag-space-3);
+        height: var(--ag-space-3);
+        color: var(--ag-text-muted);
+        transform: rotate(315deg)
+      }
+
+      .nav-sublink {
+        display: block;
+        padding: var(--ag-space-2);
+        border-radius: var(--ag-radius-sm);
+        text-decoration: none;
+        color: var(--ag-text-primary);
+        font-size: var(--ag-font-size-sm);
+        transition: background 0.15s;
+      }
+      .nav-sublink:hover {
+        background: var(--ag-background-secondary);
+      }
+      .nav-sublink.active {
+        background: var(--ag-primary-background);
+        color: var(--ag-primary-text);
+        font-weight: 500;
+      }
+
+      /* ============================================
+         SUBMENU VISIBILITY - KEY FIX
+         ============================================ */
+      /* Hide submenus by default */
+      ag-sidebar-nav-submenu {
+        display: none;
+      }
+      
+      /* Show submenus when open attribute is present */
+      ag-sidebar-nav-submenu[open] {
+        display: block !important;
+      }
+
+      /* Collapsed state (rail mode) styles */
+      ag-sidebar[collapsed] .nav-button {
+        justify-content: center;
+        padding-inline: var(--ag-space-2);
+      }
+      ag-sidebar[collapsed] .nav-button .nav-label,
+      ag-sidebar[collapsed] .nav-button .chevron {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      
+      /* Show indicator for items with submenus when collapsed */
+      ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      /* Hide inline submenus in collapsed mode */
+      ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu) {
+        display: none !important;
+      }
+
+      /* Popover submenu styles */
+      ag-popover::part(ag-popover) {
+        min-width: 200px;
+      }
+
+      ag-popover::part(ag-popover-body) {
+        padding: var(--ag-space-1);
+      }
+
+      .popover-submenu-content .nav-sublink {
+        display: block;
+        padding: var(--ag-space-2) var(--ag-space-3);
+        border-radius: var(--ag-radius-sm);
+        text-decoration: none;
+        color: var(--ag-text-primary);
+        font-size: var(--ag-font-size-sm);
+        transition: background 0.15s;
+        white-space: nowrap;
+      }
+
+      .popover-submenu-content .nav-sublink:hover {
+        background: var(--ag-background-secondary);
+      }
+
+      .popover-submenu-content .nav-sublink.active {
+        background: var(--ag-primary-background);
+        color: var(--ag-primary-text);
+        font-weight: 500;
+      }
+
+      /* Completely hide popover element when not collapsed */
+      ag-sidebar:not([collapsed]) ag-popover {
+        display: none !important;
+      }
+
+      /* Show the collapsed-mode button only when collapsed */
+      ag-sidebar[collapsed] .nav-button-expanded {
+        display: none !important;
+      }
+
+      /* Show the expanded-mode button only when not collapsed */
+      ag-sidebar:not([collapsed]) .nav-button-collapsed {
+        display: none !important;
+      }
+    </style>
+    <ag-sidebar-nav>
+      <ag-sidebar-nav-item>
+        <button class="nav-button active" aria-current="page">
+          <ag-icon no-fill>${createElement(Home)}</ag-icon>
+          <span class="nav-label">Dashboard</span>
+        </button>
+      </ag-sidebar-nav-item>
+
+      <!-- Projects with submenu - FIXED TOGGLE LOGIC -->
+      <ag-sidebar-nav-item>
+        <!-- Button for EXPANDED mode -->
+        <button
+          class="nav-button nav-button-expanded"
+          aria-expanded="false"
+          @click=${handleSubmenuToggle}
+        >
           <ag-icon no-fill>${createElement(Folder)}</ag-icon>
           <span class="nav-label">Projects</span>
-          <span class="collapsed-indicator">
-            <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-            </svg>
-          </span>
+          <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
         </button>
 
-        <div slot="content" class="popover-submenu-content">
-          <a href="#" class="nav-sublink">Project Alpha</a>
-          <a href="#" class="nav-sublink">Project Beta</a>
-          <a href="#" class="nav-sublink">Project Gamma</a>
-        </div>
-      </ag-popover>
+        <!-- Button for COLLAPSED mode (inside popover with click trigger) -->
+        <ag-popover
+          class="nav-button-collapsed"
+          placement="right-start"
+          trigger-type="click"
+          distance="8"
+          ?arrow=${true}
+          .showHeader=${false}
+        >
+          <button slot="trigger" class="nav-button">
+            <ag-icon no-fill>${createElement(Folder)}</ag-icon>
+            <span class="nav-label">Projects</span>
+            <span class="collapsed-indicator">
+              <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </button>
 
-      <!-- Inline submenu for expanded mode -->
-      <ag-sidebar-nav-submenu style="display: none;">
-        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Alpha</a></div>
-        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Beta</a></div>
-        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Gamma</a></div>
-      </ag-sidebar-nav-submenu>
-    </ag-sidebar-nav-item>
+          <div slot="content" class="popover-submenu-content">
+            <a href="#" class="nav-sublink">Project Alpha</a>
+            <a href="#" class="nav-sublink">Project Beta</a>
+            <a href="#" class="nav-sublink">Project Gamma</a>
+          </div>
+        </ag-popover>
 
-    <ag-sidebar-nav-item>
-      <button class="nav-button">
-        <ag-icon no-fill>${createElement(User)}</ag-icon>
-        <span class="nav-label">Team</span>
-      </button>
-    </ag-sidebar-nav-item>
+        <!-- Inline submenu for expanded mode -->
+        <ag-sidebar-nav-submenu>
+          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Alpha</a></div>
+          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Beta</a></div>
+          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Gamma</a></div>
+        </ag-sidebar-nav-submenu>
+      </ag-sidebar-nav-item>
 
-    <!-- Settings with submenu - dual button approach -->
-    <ag-sidebar-nav-item>
-      <!-- Button for EXPANDED mode (with click handler for inline submenu) -->
-      <button
-        class="nav-button nav-button-expanded"
-        aria-expanded="false"
-        @click=${(e: Event) => {
-    const button = e.currentTarget as HTMLElement;
-    const navItem = button.closest('ag-sidebar-nav-item');
-    const submenu = navItem?.querySelector('ag-sidebar-nav-submenu');
-    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      <ag-sidebar-nav-item>
+        <button class="nav-button">
+          <ag-icon no-fill>${createElement(User)}</ag-icon>
+          <span class="nav-label">Team</span>
+        </button>
+      </ag-sidebar-nav-item>
 
-    button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-    if (submenu) {
-      (submenu as HTMLElement).style.display = isExpanded ? 'none' : 'block';
-    }
-  }}
-      >
-        <ag-icon no-fill>${createElement(Settings)}</ag-icon>
-        <span class="nav-label">Settings</span>
-        <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
-      </button>
-
-      <!-- Button for COLLAPSED mode (inside popover with click trigger) -->
-      <ag-popover
-        class="nav-button-collapsed"
-        placement="right-start"
-        trigger-type="click"
-        distance="8"
-        ?arrow=${true}
-        .showHeader=${false}
-      >
-        <button slot="trigger" class="nav-button">
+      <!-- Settings with submenu - FIXED TOGGLE LOGIC -->
+      <ag-sidebar-nav-item>
+        <!-- Button for EXPANDED mode -->
+        <button
+          class="nav-button nav-button-expanded"
+          aria-expanded="false"
+          @click=${handleSubmenuToggle}
+        >
           <ag-icon no-fill>${createElement(Settings)}</ag-icon>
           <span class="nav-label">Settings</span>
-          <span class="collapsed-indicator">
-            <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-            </svg>
-          </span>
+          <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
         </button>
 
-        <div slot="content" class="popover-submenu-content">
-          <a href="#" class="nav-sublink">Profile</a>
-          <a href="#" class="nav-sublink">Billing</a>
-          <a href="#" class="nav-sublink">Security</a>
-          <a href="#" class="nav-sublink">Preferences</a>
-        </div>
-      </ag-popover>
+        <!-- Button for COLLAPSED mode (inside popover with click trigger) -->
+        <ag-popover
+          class="nav-button-collapsed"
+          placement="right-start"
+          trigger-type="click"
+          distance="8"
+          ?arrow=${true}
+          .showHeader=${false}
+        >
+          <button slot="trigger" class="nav-button">
+            <ag-icon no-fill>${createElement(Settings)}</ag-icon>
+            <span class="nav-label">Settings</span>
+            <span class="collapsed-indicator">
+              <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </button>
 
-      <!-- Inline submenu for expanded mode -->
-      <ag-sidebar-nav-submenu style="display: none;">
-        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Profile</a></div>
-        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Billing</a></div>
-        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Security</a></div>
-        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Preferences</a></div>
-      </ag-sidebar-nav-submenu>
-    </ag-sidebar-nav-item>
-  </ag-sidebar-nav>
-`;
+          <div slot="content" class="popover-submenu-content">
+            <a href="#" class="nav-sublink">Profile</a>
+            <a href="#" class="nav-sublink">Billing</a>
+            <a href="#" class="nav-sublink">Security</a>
+            <a href="#" class="nav-sublink">Preferences</a>
+          </div>
+        </ag-popover>
+
+        <!-- Inline submenu for expanded mode -->
+        <ag-sidebar-nav-submenu>
+          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Profile</a></div>
+          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Billing</a></div>
+          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Security</a></div>
+          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Preferences</a></div>
+        </ag-sidebar-nav-submenu>
+      </ag-sidebar-nav-item>
+    </ag-sidebar-nav>
+  `;
+};
 
 /**
  * Default story - uses toggleCollapse() for consistent collapse behavior
