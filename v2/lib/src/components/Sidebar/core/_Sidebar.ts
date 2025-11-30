@@ -186,6 +186,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     }
 
     /* Collapsed state: hide start content, center end content */
+    :host([collapsed]) slot[name="header-end"],
     :host([collapsed]) .header-start {
       display: none;
     }
@@ -427,7 +428,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   }
 
   private _mainContentRef?: HTMLElement;
-  
+
   /**
    * Checks if the current viewport width is below the mobile breakpoint.
    * 
@@ -440,7 +441,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   private _isMobileViewport(): boolean {
     return window.innerWidth < this.breakpoint;
   }
-  
+
   /**
    * Toggle the collapsed state (desktop rail mode)
    */
