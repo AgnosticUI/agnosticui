@@ -42,6 +42,10 @@ const meta: Meta<AgSidebarProps> = {
       control: 'text',
       description: 'Custom width (sets CSS variable)',
     },
+    disableCompactMode: {
+      control: 'boolean',
+      description: 'Disable compact/rail mode. Sidebar is either full-width or hidden (AI Studio pattern)',
+    },
     showMobileToggle: {
       control: 'boolean',
       description: 'Show built-in floating toggle button on mobile',
@@ -752,5 +756,57 @@ export const MobileTogglePositions: Story = {
     <p style="margin-top: 1rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
       Resize your browser to below 768px to see the toggle buttons in different positions.
     </p>
+  `,
+};
+
+
+/**
+ * AI Studio Pattern - Disable Compact Mode
+ */
+export const DisableCompactMode: Story = {
+  render: (args) => html`
+    <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
+      <ag-sidebar
+        disable-compact-mode
+        ?open=${args.open !== undefined ? args.open : true}
+        ?show-mobile-toggle=${args['showMobileToggle']}
+      >
+        <h2 slot="header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
+          AI Studio
+        </h2>
+        <button 
+          slot="header-toggle"
+          @click=${(e: Event) => {
+      const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
+      sidebar?.toggleResponsive();
+    }}
+          style="background: none; border: none; padding: 8px 0; cursor: pointer; display: flex; align-items: center; color: inherit;"
+          aria-label="Toggle sidebar"
+        >
+          ${createElement(Command)}
+        </button>
+
+        ${createNavContent()}
+        
+        <div slot="footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); text-align: center;">
+          v2.0
+        </div>
+      </ag-sidebar>
+      <main style="flex: 1; padding: 2rem; overflow: auto;">
+        <h1>Disable Compact Mode</h1>
+        <p>This sidebar uses <code>disableCompactMode</code> to implement the AI Studio pattern.</p>
+        <ul>
+          <li><strong>Desktop:</strong> Sidebar is either full-width or completely hidden (no rail mode)</li>
+          <li><strong>Mobile:</strong> Same behavior - overlay or hidden</li>
+          <li><strong>Simpler UX:</strong> Only two states instead of three</li>
+        </ul>
+        <p style="background: #dbeafe; padding: 1rem; border-radius: 0.375rem; border: 1px solid #3b82f6; margin-top: 1rem;">
+          <strong>Use case:</strong> When your app doesn't need the compact/rail mode and prefers a simpler toggle pattern.
+        </p>
+        <p style="background: #fef3c7; padding: 1rem; border-radius: 0.375rem; border: 1px solid #fbbf24; margin-top: 1rem;">
+          <strong>Note:</strong> When <code>disableCompactMode</code> is true, the <code>collapsed</code> prop is ignored.
+        </p>
+      </main>
+    </div>
   `,
 };

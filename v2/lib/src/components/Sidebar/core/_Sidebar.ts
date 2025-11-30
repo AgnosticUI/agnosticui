@@ -35,6 +35,8 @@ export interface AgSidebarProps {
   noTransition?: boolean;
   /** Width of the sidebar */
   width?: string;
+  /** Whether to disable compact/rail mode. When true, sidebar is either full-width or hidden (no intermediate collapsed state) */
+  disableCompactMode?: boolean;
   /** Whether to show the mobile toggle button */
   showMobileToggle?: boolean;
   /** Position of the mobile toggle button. Default: top-left */
@@ -390,55 +392,79 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
         opacity: 1;
         pointer-events: auto;
       }
-
-      :host([show-mobile-toggle]) .toggle-button {
-        display: flex;
-        position: fixed;
-        width: var(--ag-space-7);
-        height: var(--ag-space-7);
-        border-radius: 50%;
-        background: var(--ag-sidebar-background);
-        border: 1px solid var(--ag-sidebar-border);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        cursor: pointer;
-        z-index: var(--ag-sidebar-toggle-z-index);
-        align-items: center;
-        justify-content: center;
-        transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-      }
-
-      /* Hide toggle when sidebar is open - consumer's header button takes over */
-      :host([show-mobile-toggle][open]) .toggle-button {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .toggle-button:hover {
-        background: var(--ag-background-hover, #f3f4f6);
-      }
-
-      .toggle-button:active {
-        transform: scale(0.95);
-      }
-
-      .toggle-button svg {
-        width: 18px;
-        height: 18px;
-        fill: currentColor;
-      }
-      /* Ensure consumer-provided slotted SVGs match the fallback sizing */
-      .toggle-button ::slotted(svg) {
-        width: 18px;
-        height: 18px;
-        fill: currentColor;
-        display: block;
-      }
-
-      .toggle-button.top-left { top: var(--ag-space-4); left: var(--ag-space-4); }
-      .toggle-button.top-right { top: var(--ag-space-4); right: var(--ag-space-4); }
-      .toggle-button.bottom-left { bottom: var(--ag-space-4); left: var(--ag-space-4); }
-      .toggle-button.bottom-right { bottom: var(--ag-space-4); right: var(--ag-space-4); }
     }
+
+    /* ===========================================
+       GLOBAL: Toggle Button Styles
+       Shared between mobile overlay and desktop disable-compact-mode
+       =========================================== */
+    :host([show-mobile-toggle]) .toggle-button {
+      display: flex;
+      position: fixed;
+      width: var(--ag-space-7);
+      height: var(--ag-space-7);
+      border-radius: 50%;
+      background: var(--ag-sidebar-background);
+      border: 1px solid var(--ag-sidebar-border);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      z-index: var(--ag-sidebar-toggle-z-index);
+      align-items: center;
+      justify-content: center;
+      transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+      
+      /* Default hidden on desktop unless disable-compact-mode is active */
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Show toggle on mobile */
+    @media (max-width: 1023px) {
+      :host([show-mobile-toggle]) .toggle-button {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    /* Show toggle on desktop ONLY if disable-compact-mode is active */
+    @media (min-width: 1024px) {
+      :host([disable-compact-mode][show-mobile-toggle]) .toggle-button {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    /* Always hide toggle when sidebar is open - consumer's header button takes over */
+    :host([show-mobile-toggle][open]) .toggle-button {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .toggle-button:hover {
+      background: var(--ag-background-hover, #f3f4f6);
+    }
+
+    .toggle-button:active {
+      transform: scale(0.95);
+    }
+
+    .toggle-button svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+    /* Ensure consumer-provided slotted SVGs match the fallback sizing */
+    .toggle-button ::slotted(svg) {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      display: block;
+    }
+
+    .toggle-button.top-left { top: var(--ag-space-4); left: var(--ag-space-4); }
+    .toggle-button.top-right { top: var(--ag-space-4); right: var(--ag-space-4); }
+    .toggle-button.bottom-left { bottom: var(--ag-space-4); left: var(--ag-space-4); }
+    .toggle-button.bottom-right { bottom: var(--ag-space-4); right: var(--ag-space-4); }
 
     /* ===========================================
        DESKTOP: At/above breakpoint
@@ -458,6 +484,28 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
         width: var(--ag-sidebar-width-collapsed);
         transition: width var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
       }
+      
+      /* When compact mode is disabled, ignore collapsed state on desktop */
+      :host([disable-compact-mode]) .sidebar-container,
+      :host([disable-compact-mode][collapsed]) .sidebar-container {
+        position: fixed;
+        inset-inline-start: 0;
+        top: 0;
+        height: 100%;
+        width: var(--ag-sidebar-width);
+        transform: translateX(0);
+        transition: transform var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+      }
+      
+      :host([disable-compact-mode]:not([open])) .sidebar-container,
+      :host([disable-compact-mode][collapsed]:not([open])) .sidebar-container {
+        transform: translateX(-100%);
+      }
+      
+      :host([disable-compact-mode][position="right"]:not([open])) .sidebar-container,
+      :host([disable-compact-mode][collapsed][position="right"]:not([open])) .sidebar-container {
+        transform: translateX(100%);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -475,6 +523,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   @property({ type: String, reflect: true }) declare variant: 'default' | 'bordered' | 'elevated';
   @property({ type: Boolean, attribute: 'no-transition', reflect: true }) declare noTransition: boolean;
   @property({ type: String }) declare width?: string;
+  @property({ type: Boolean, attribute: 'disable-compact-mode', reflect: true }) declare disableCompactMode: boolean;
   @property({ type: Boolean, attribute: 'show-mobile-toggle', reflect: true }) declare showMobileToggle: boolean;
   @property({ type: String, attribute: 'mobile-toggle-position' }) declare mobileTogglePosition: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   @property({ type: Boolean, attribute: 'show-header-toggle', reflect: true }) declare showHeaderToggle: boolean;
@@ -491,6 +540,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     this.variant = 'default';
     this.noTransition = false;
     this.width = undefined;
+    this.disableCompactMode = false;
     this.showMobileToggle = true;
     this.mobileTogglePosition = 'top-left';
     this.showHeaderToggle = false;
@@ -557,7 +607,11 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
    * ```
    */
   public toggleResponsive(): void {
-    if (this._isMobileViewport() && this.open) {
+    if (this.disableCompactMode) {
+      // When compact mode is disabled, only toggle open/close
+      this.open = !this.open;
+      this._dispatchToggleEvent();
+    } else if (this._isMobileViewport() && this.open) {
       // Mobile + open: close the overlay
       this.open = false;
       this._dispatchToggleEvent();
