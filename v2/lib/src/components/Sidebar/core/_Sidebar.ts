@@ -194,10 +194,16 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       padding-block: var(--ag-space-2);
       padding-inline: var(--ag-space-4);
       flex-shrink: 0;
-      transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+      transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing),
+                  padding var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
     }
     .sidebar-header {
       border-bottom: 1px solid var(--ag-sidebar-border);
+    }
+    
+    /* Reduce header padding when collapsed */
+    :host([collapsed]) .sidebar-header {
+      padding-block: var(--ag-space-1);
     }
     .sidebar-footer {
       border-top: 1px solid var(--ag-sidebar-border);
@@ -239,11 +245,14 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
     }
 
-    /* Collapsed state: fade out start and end content, but keep layout for toggle */
-    :host([collapsed]) .header-start,
-    :host([collapsed]) .header-end {
+    /* Collapsed state: hide start content, completely remove end content from layout */
+    :host([collapsed]) .header-start {
       opacity: 0;
       pointer-events: none;
+    }
+    
+    :host([collapsed]) .header-end {
+      display: none;
     }
 
     :host([collapsed]) .header-layout {
