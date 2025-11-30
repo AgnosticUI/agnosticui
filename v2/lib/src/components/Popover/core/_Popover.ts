@@ -1,14 +1,14 @@
 import { LitElement, html, css } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
-import { 
-  computePosition, 
-  autoUpdate, 
-  flip, 
-  shift, 
-  offset, 
-  arrow, 
+import {
+  computePosition,
+  autoUpdate,
+  flip,
+  shift,
+  offset,
+  arrow,
   size,
-  type Placement 
+  type Placement
 } from '@floating-ui/dom';
 import '../../shared/CloseButton/CloseButton';
 
@@ -134,6 +134,7 @@ export class Popover extends LitElement implements PopoverProps {
       height: var(--ag-popover-arrow-size);
       border: var(--ag-border-width-1) solid transparent;
       transform: rotate(45deg);
+      z-index: -1;
     }
 
     /* Placement-specific border colors for the arrow to match the popover border on the visible sides. */
@@ -706,14 +707,37 @@ export class Popover extends LitElement implements PopoverProps {
     this._open = true;
   }
 
+  /**
+   * Helper to get the active element, handling Shadow DOM boundaries.
+   */
+  private _getActiveElement(): Element | null {
+    let active = document.activeElement;
+    while (active?.shadowRoot) {
+      if (!active.shadowRoot.activeElement) break;
+      active = active.shadowRoot.activeElement;
+    }
+    return active;
+  }
+
   hide() {
     if (!this._open) return;
     this._open = false;
 
-    // Return focus to trigger when closing
-    const triggerElement = this.triggerElement;
-    if (triggerElement) {
-      triggerElement.focus();
+    // Return focus to trigger when closing, but ONLY if focus is currently:
+    // 1. On the body (lost focus)
+    // 2. Inside the popover itself (e.g. close button or content)
+    // 3. On the trigger itself
+    // We do NOT want to steal focus if the user has already moved it elsewhere
+    // (e.g. tabbing to the next menu item)
+    const activeElement = this._getActiveElement();
+    const popoverElement = this.shadowRoot?.getElementById('popover');
+
+    const isFocusOnBody = activeElement === document.body;
+    const isFocusInPopover = popoverElement?.contains(activeElement) || activeElement === popoverElement;
+    const isFocusOnTrigger = this.triggerElement === activeElement;
+
+    if (this.triggerElement && (isFocusOnBody || isFocusInPopover || isFocusOnTrigger)) {
+      this.triggerElement.focus();
     }
   }
 
