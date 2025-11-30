@@ -28,8 +28,7 @@ export interface AgSidebarProps {
   position?: 'left' | 'right';
   /** ARIA label for the sidebar */
   ariaLabel?: string;
-  /** Breakpoint for mobile/desktop behavior */
-  breakpoint?: number;
+
   /** Variant of the sidebar */
   variant?: 'default' | 'bordered' | 'elevated';
   /** Whether to disable transitions */
@@ -92,7 +91,7 @@ export type AgSidebarCollapseEvent = CustomEvent<AgSidebarCollapseEventDetail>;
  * @cssprop --ag-sidebar-z-index - Z-index for sidebar container on mobile. Default: `1000`
  * @cssprop --ag-sidebar-backdrop-z-index - Z-index for backdrop overlay on mobile. Default: `999`
  * @cssprop --ag-sidebar-toggle-z-index - Z-index for floating toggle button. Default: `1001`
- * @cssprop --ag-sidebar-breakpoint - Breakpoint for mobile/desktop behavior. Default: `1024px`
+
  * 
  * @example
  * ```html
@@ -140,8 +139,8 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     :host {
       display: block;
       position: relative;
-      --ag-sidebar-width: var(--ag-sidebar-width-base, 18rem);
-      --ag-sidebar-width-collapsed: var(--ag-sidebar-width-collapsed-base, 3rem);
+      --ag-sidebar-width: 18rem;
+      --ag-sidebar-width-collapsed: 3rem;
       --ag-sidebar-padding: var(--ag-space-2, 0.5rem);
       --ag-sidebar-background: var(--ag-background-primary, #ffffff);
       --ag-sidebar-border: var(--ag-border, #e5e7eb);
@@ -150,7 +149,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       --ag-sidebar-z-index: var(--ag-z-sidebar, 1000);
       --ag-sidebar-backdrop-z-index: var(--ag-z-sidebar-backdrop, 999);
       --ag-sidebar-toggle-z-index: var(--ag-z-sidebar-toggle, 1001);
-      --ag-sidebar-breakpoint: 1024px;
+
     }
 
     .sidebar-container {
@@ -158,25 +157,59 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       flex-direction: column;
       height: 100%;
       background: var(--ag-sidebar-background);
-      border-right: 1px solid var(--ag-sidebar-border);
     }
     
     /* Set collapsed width globally so it applies before media queries kick in */
     :host([collapsed]) .sidebar-container {
       width: var(--ag-sidebar-width-collapsed);
     }
+
+    /* Variant: Bordered */
+    :host([variant="bordered"]) .sidebar-container {
+      border-inline-end: 1px solid var(--ag-sidebar-border);
+    }
     
-    :host([position="right"]) .sidebar-container {
-      border-right: none;
-      border-left: 1px solid var(--ag-sidebar-border);
+    :host([variant="bordered"][position="right"]) .sidebar-container {
+      border-inline-end: none;
+      border-inline-start: 1px solid var(--ag-sidebar-border);
+    }
+
+    /* Variant: Elevated */
+    :host([variant="elevated"]) .sidebar-container {
+      box-shadow: var(--ag-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05));
+      z-index: 1;
+      border-inline-end: none;
+    }
+
+    /* No Transition */
+    :host([no-transition]) *,
+    :host([no-transition]) .sidebar-container,
+    :host([no-transition]) .backdrop,
+    :host([no-transition]) .header-content,
+    :host([no-transition]) .toggle-button {
+      transition: none !important;
     }
 
     .sidebar-header, .sidebar-footer {
-      padding: var(--ag-space-2) var(--ag-space-4);
+      padding-block: var(--ag-space-2);
+      padding-inline: var(--ag-space-4);
       flex-shrink: 0;
+      transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
     }
     .sidebar-header {
       border-bottom: 1px solid var(--ag-sidebar-border);
+    }
+    .sidebar-footer {
+      border-top: 1px solid var(--ag-sidebar-border);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    /* Collapsed state: fade out header content and footer */
+    :host([collapsed]) .header-content,
+    :host([collapsed]) .sidebar-footer {
+      opacity: 0;
+      pointer-events: none;
     }
     
     /* Composable header layout system */
@@ -187,11 +220,15 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       gap: var(--ag-space-2);
       width: 100%;
     }
+    :host([collapsed]) .header-layout {
+      gap: unset;
+    }
 
     .header-start {
       flex: 1;
       min-width: 0; /* Allow text truncation */
       overflow: hidden;
+      transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
     }
 
     .header-end {
@@ -199,12 +236,14 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       align-items: center;
       gap: var(--ag-space-2);
       flex-shrink: 0;
+      transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
     }
 
-    /* Collapsed state: hide start content, center end content */
-    :host([collapsed]) slot[name="header-end"],
-    :host([collapsed]) .header-start {
-      display: none;
+    /* Collapsed state: fade out start and end content, but keep layout for toggle */
+    :host([collapsed]) .header-start,
+    :host([collapsed]) .header-end {
+      opacity: 0;
+      pointer-events: none;
     }
 
     :host([collapsed]) .header-layout {
@@ -272,9 +311,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       fill: currentColor;
     }
     
-    .sidebar-footer {
-      border-top: 1px solid var(--ag-sidebar-border);
-    }
+
 
     .sidebar-content {
       flex: 1;
@@ -309,13 +346,21 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       }
       
       :host([position="left"]) .sidebar-container {
-        left: 0;
+        inset-inline-start: 0;
         transform: translateX(-100%);
       }
       
       :host([position="right"]) .sidebar-container {
-        right: 0;
+        inset-inline-end: 0;
         transform: translateX(100%);
+      }
+
+      /* RTL Support */
+      :host-context([dir="rtl"]):host([position="left"]) .sidebar-container {
+        transform: translateX(100%);
+      }
+      :host-context([dir="rtl"]):host([position="right"]) .sidebar-container {
+        transform: translateX(-100%);
       }
       
       :host([open]) .sidebar-container {
@@ -418,7 +463,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   @property({ type: Boolean, reflect: true }) declare collapsed: boolean;
   @property({ type: String, reflect: true }) declare position: 'left' | 'right';
   @property({ type: String, attribute: 'aria-label' }) declare ariaLabel: string;
-  @property({ type: Number }) declare breakpoint: number;
+
   @property({ type: String, reflect: true }) declare variant: 'default' | 'bordered' | 'elevated';
   @property({ type: Boolean, attribute: 'no-transition', reflect: true }) declare noTransition: boolean;
   @property({ type: String }) declare width?: string;
@@ -434,7 +479,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     this.collapsed = false;
     this.position = 'left';
     this.ariaLabel = 'Navigation';
-    this.breakpoint = 1024;
+
     this.variant = 'default';
     this.noTransition = false;
     this.width = undefined;
@@ -455,7 +500,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
    * @private
    */
   private _isMobileViewport(): boolean {
-    return window.innerWidth < this.breakpoint;
+    return window.innerWidth < 1024;
   }
 
   /**
@@ -481,7 +526,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
    * 
    * **Comparison with built-in toggle:**
    * - Built-in `showHeaderToggle`: Always toggles collapsed state (never closes on mobile)
-   * - `toggleSidebarState()`: Closes overlay on mobile when open, otherwise toggles collapsed
+   * - `toggleResponsive()`: Closes overlay on mobile when open, otherwise toggles collapsed
    * 
    * **Resize awareness:**
    * Checks viewport width on each invocation, ensuring correct behavior even
@@ -490,7 +535,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
    * @example
    * ```html
    * <ag-sidebar id="sidebar">
-   *   <button slot="header" @click=${() => document.getElementById('sidebar').toggleSidebarState()}>
+   *   <button slot="header" @click=${() => document.getElementById('sidebar').toggleResponsive()}>
    *     Toggle
    *   </button>
    * </ag-sidebar>
@@ -500,10 +545,10 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
    * ```typescript
    * // In Lit component
    * const sidebar = this.shadowRoot.querySelector('ag-sidebar');
-   * sidebar.toggleSidebarState();
+   * sidebar.toggleResponsive();
    * ```
    */
-  public toggleSidebarState(): void {
+  public toggleResponsive(): void {
     if (this._isMobileViewport() && this.open) {
       // Mobile + open: close the overlay
       this.open = false;
@@ -525,15 +570,14 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   }
 
   override willUpdate(changedProperties: PropertyValues) {
-    if (changedProperties.has('width') && this.width) {
-      this.style.setProperty('--ag-sidebar-width', this.width);
-    }
-    if (changedProperties.has('breakpoint')) {
-      if (this.breakpoint <= 0) {
-        this.breakpoint = 1024;
+    if (changedProperties.has('width')) {
+      if (this.width) {
+        this.style.setProperty('--ag-sidebar-width', this.width);
+      } else {
+        this.style.removeProperty('--ag-sidebar-width');
       }
-      this.style.setProperty('--ag-sidebar-breakpoint', `${this.breakpoint}px`);
     }
+
     if (changedProperties.has('open')) {
       if (this.open) {
         document.addEventListener('keydown', this._handleKeydown);
@@ -612,9 +656,10 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   }
 
   private _handleSlotClick(event: Event) {
-    const target = event.target as HTMLElement;
-    const button = target.closest('.nav-button');
-    if (button && button.hasAttribute('aria-expanded')) {
+    const path = event.composedPath();
+    const target = path[0] as HTMLElement;
+    const button = target.closest('[aria-expanded]');
+    if (button) {
       const isExpanded = button.getAttribute('aria-expanded') === 'true';
       button.setAttribute('aria-expanded', String(!isExpanded));
 
@@ -691,8 +736,8 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
                 </div>
                 <div class="header-end">
                   <slot name="header-end"></slot>
-                  <slot name="header-toggle"></slot>
                 </div>
+                <slot name="header-toggle"></slot>
               </div>
             </slot>
           `}

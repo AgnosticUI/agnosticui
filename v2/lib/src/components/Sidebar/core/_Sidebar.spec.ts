@@ -30,7 +30,6 @@ describe('AgSidebar', () => {
       expect(sidebar.collapsed).toBe(false);
       expect(sidebar.position).toBe('left');
       expect(sidebar.ariaLabel).toBe('Navigation');
-      expect(sidebar.breakpoint).toBe(1024);
       expect(sidebar.variant).toBe('default');
       expect(sidebar.noTransition).toBe(false);
     });
@@ -38,11 +37,20 @@ describe('AgSidebar', () => {
     it('should have correct shadow parts', async () => {
       await sidebar.updateComplete;
       const shadowRoot = sidebar.shadowRoot!;
-      
+
       expect(shadowRoot.querySelector('[part="ag-sidebar-container"]')).toBeTruthy();
       expect(shadowRoot.querySelector('[part="ag-sidebar-header"]')).toBeTruthy();
       expect(shadowRoot.querySelector('[part="ag-sidebar-content"]')).toBeTruthy();
       expect(shadowRoot.querySelector('[part="ag-sidebar-footer"]')).toBeTruthy();
+    });
+
+    it('should reflect properties to attributes', async () => {
+      sidebar.variant = 'bordered';
+      sidebar.noTransition = true;
+      await sidebar.updateComplete;
+
+      expect(sidebar.getAttribute('variant')).toBe('bordered');
+      expect(sidebar.hasAttribute('no-transition')).toBe(true);
     });
   });
 
@@ -100,18 +108,53 @@ describe('AgSidebar', () => {
 
       expect(button.getAttribute('aria-expanded')).toBe('false');
 
-      // Directly call _handleSlotClick with a mock event
+      // Create a mock event with composedPath
+      const mockEvent = {
+        composedPath: () => [button],
+        target: button,
+      } as unknown as Event;
+
+      // Directly call _handleSlotClick since happy-dom event bubbling from slots can be flaky
       // @ts-ignore: Access private method for testing
-      sidebar._handleSlotClick({ target: button } as Event);
+      sidebar._handleSlotClick(mockEvent);
       await sidebar.updateComplete;
 
       expect(button.getAttribute('aria-expanded')).toBe('true');
 
       // @ts-ignore: Access private method for testing
-      sidebar._handleSlotClick({ target: button } as Event);
+      sidebar._handleSlotClick(mockEvent);
       await sidebar.updateComplete;
 
       expect(button.getAttribute('aria-expanded')).toBe('false');
+    });
+
+    it('should handle toggleResponsive correctly based on viewport', async () => {
+      // Mock window.innerWidth
+      const originalInnerWidth = window.innerWidth;
+
+      // Case 1: Desktop (>= 1024) - should toggle collapsed
+      Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 1200 });
+      sidebar.collapsed = false;
+      sidebar.toggleResponsive();
+      expect(sidebar.collapsed).toBe(true);
+
+      sidebar.toggleResponsive();
+      expect(sidebar.collapsed).toBe(false);
+
+      // Case 2: Mobile (< 1024) + Open - should close overlay
+      Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 800 });
+      sidebar.open = true;
+      sidebar.toggleResponsive();
+      expect(sidebar.open).toBe(false);
+
+      // Case 3: Mobile (< 1024) + Closed - should toggle collapsed (rail mode)
+      sidebar.open = false;
+      sidebar.collapsed = false;
+      sidebar.toggleResponsive();
+      expect(sidebar.collapsed).toBe(true);
+
+      // Restore original innerWidth
+      Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: originalInnerWidth });
     });
   });
 

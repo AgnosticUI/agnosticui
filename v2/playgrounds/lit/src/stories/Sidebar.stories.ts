@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import { createElement, ChevronRight, Folder, User, Settings, Home } from 'lucide';
+import { createElement, ChevronRight, Folder, User, Settings, Home, Command } from 'lucide';
 import { type AgSidebarProps } from 'agnosticui-core/sidebar';
 
 import 'agnosticui-core/sidebar-nav';
@@ -14,7 +14,7 @@ const meta: Meta<AgSidebarProps> = {
   argTypes: {
     open: {
       control: 'boolean',
-      description: 'Controls sidebar visibility on mobile (below breakpoint)',
+      description: 'Controls sidebar visibility on mobile',
     },
     collapsed: {
       control: 'boolean',
@@ -28,10 +28,6 @@ const meta: Meta<AgSidebarProps> = {
     ariaLabel: {
       control: 'text',
       description: 'Accessible label for the navigation landmark',
-    },
-    breakpoint: {
-      control: { type: 'number', min: 320, max: 1920, step: 1 },
-      description: 'Pixel width below which mobile overlay behavior activates',
     },
     variant: {
       control: 'select',
@@ -65,7 +61,6 @@ const meta: Meta<AgSidebarProps> = {
     collapsed: false,
     position: 'left',
     ariaLabel: 'Main navigation',
-    breakpoint: 1024,
     variant: 'default',
     noTransition: false,
     showMobileToggle: true,
@@ -451,7 +446,6 @@ export const Default: Story = {
         ?collapsed=${args.collapsed}
         .position=${args.position}
         aria-label=${args['ariaLabel']}
-        .breakpoint=${args.breakpoint}
         .variant=${args.variant}
         ?no-transition=${args['noTransition']}
         .width=${args.width}
@@ -467,7 +461,7 @@ export const Default: Story = {
       const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
       sidebar?.toggleCollapse();
     }}
-          style="background: none; border: none; padding: 8px; cursor: pointer; display: flex; align-items: center; color: inherit;"
+          style="background: none; border: none; padding: 8px 0; cursor: pointer; display: flex; align-items: center; color: inherit;"
           aria-label="Toggle sidebar"
         >
           ${PanelIcon()}
@@ -475,7 +469,7 @@ export const Default: Story = {
 
         ${createNavContent()}
         
-        <div slot="footer" style="font-size: 0.875rem; color: var(--ag-text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+        <div slot="footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
           © 2024 Company
         </div>
       </ag-sidebar>
@@ -506,7 +500,9 @@ export const WithHeaderActions: Story = {
         ?show-mobile-toggle=${args['showMobileToggle']}
       >
         <div slot="header-start" style="display: flex; align-items: center; gap: 0.75rem; min-width: 0;">
-          <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; flex-shrink: 0;"></div>
+          <div style="width: 32px; height: 32px; background: var(--ag-primary-100); color: var(--ag-primary-600); border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+            <ag-icon no-fill>${createElement(Command)}</ag-icon>
+          </div>
           <h2 style="margin: 0; font-size: 1.125rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Dashboard</h2>
         </div>
 
@@ -533,7 +529,7 @@ export const WithHeaderActions: Story = {
 
         ${createNavContent()}
         
-        <div slot="footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); overflow: hidden; text-overflow: ellipsis; text-align: center;">
+        <div slot="footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); text-align: center;">
           v1.0
         </div>
       </ag-sidebar>
@@ -590,6 +586,11 @@ export const WithBuiltInToggle: Story = {
 /**
  * Legacy monolithic header slot approach
  */
+
+
+// TODO Legacy Header Control: Consumers using slot="header" have full control - no automatic fading is applied,
+// enabling custom patterns like logo-as-toggle. We should refactor this example to actually show the logo-as-toggle
+// pattern which might actually be a more useful example than the current one.
 export const LegacyHeaderSlot: Story = {
   render: (args) => html`
     <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
@@ -686,7 +687,6 @@ export const MobileTogglePositions: Story = {
             position="left"
             show-mobile-toggle
             mobile-toggle-position=${position}
-            breakpoint="768"
           >
             <h3 slot="header-start" style="margin: 0; font-size: 1rem;">${position}</h3>
             ${createNavContent()}
