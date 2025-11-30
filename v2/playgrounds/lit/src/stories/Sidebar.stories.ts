@@ -584,46 +584,101 @@ export const WithBuiltInToggle: Story = {
 };
 
 /**
- * Legacy monolithic header slot approach
+ * Legacy monolithic header slot approach - Logo as Toggle Pattern
+ * This demonstrates how consumers can use slot="header" for full control,
+ * enabling patterns like a logo that doubles as a toggle button.
  */
-
-
-// TODO Legacy Header Control: Consumers using slot="header" have full control - no automatic fading is applied,
-// enabling custom patterns like logo-as-toggle. We should refactor this example to actually show the logo-as-toggle
-// pattern which might actually be a more useful example than the current one.
 export const LegacyHeaderSlot: Story = {
   render: (args) => html`
+    <style>
+      .logo-toggle {
+        display: flex;
+        align-items: center;
+        gap: var(--ag-space-3);
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        width: 100%;
+        transition: all var(--ag-sidebar-transition-duration, 200ms);
+      }
+      
+      .logo-toggle:hover {
+        opacity: 0.8;
+      }
+      
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 8px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.25rem;
+      }
+      
+      .logo-text {
+        font-size: 1.125rem;
+        font-weight: 600;
+        white-space: nowrap;
+        transition: opacity var(--ag-sidebar-transition-duration, 200ms);
+      }
+      
+      /* Hide text when sidebar is collapsed */
+      ag-sidebar[collapsed] .logo-text {
+        opacity: 0;
+        width: 0;
+        overflow: hidden;
+      }
+      
+      /* Center logo when collapsed */
+      ag-sidebar[collapsed] .logo-toggle {
+        justify-content: center;
+        gap: unset;
+      }
+    </style>
     <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
       <ag-sidebar
         ?open=${args.open}
         ?collapsed=${args.collapsed}
         ?show-mobile-toggle=${args['showMobileToggle']}
       >
-        <div slot="header" style="display: flex; justify-content: space-between; align-items: center;">
-          <h2 style="margin: 0; font-size: 1.125rem; font-weight: 600;">Legacy Header</h2>
-          <button 
-            @click=${(e: Event) => {
+        <button 
+          slot="header" 
+          class="logo-toggle"
+          @click=${(e: Event) => {
       const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
       sidebar?.toggleCollapse();
     }}
-            style="background: none; border: none; padding: 8px; cursor: pointer; display: flex; align-items: center;"
-            aria-label="Toggle sidebar"
-          >
-            ${PanelIcon()}
-          </button>
-        </div>
+          aria-label="Toggle sidebar"
+        >
+          <div class="logo-icon">A</div>
+          <span class="logo-text">AgnosticUI</span>
+        </button>
 
         ${createNavContent()}
         
-        <div slot="footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
-          © 2024
+        <div slot="footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); text-align: center;">
+          v2.0
         </div>
       </ag-sidebar>
       <main style="flex: 1; padding: 2rem; overflow: auto;">
-        <h1>Legacy Approach</h1>
-        <p>This uses the legacy monolithic <code>header</code> slot with manual layout.</p>
-        <p style="background: #fef3c7; padding: 1rem; border-radius: 0.375rem; border: 1px solid #fbbf24;">
-          <strong>Note:</strong> While still supported, the composable slots approach is recommended.
+        <h1>Logo as Toggle Pattern</h1>
+        <p>This example demonstrates the <strong>logo-as-toggle pattern</strong> using the legacy <code>slot="header"</code>.</p>
+        <ul>
+          <li><strong>Expanded:</strong> Shows full branding (logo + text)</li>
+          <li><strong>Collapsed:</strong> Shows icon-only, centered</li>
+          <li><strong>Interactive:</strong> Entire header acts as toggle button</li>
+        </ul>
+        <p style="background: #dbeafe; padding: 1rem; border-radius: 0.375rem; border: 1px solid #3b82f6; margin-top: 1rem;">
+          <strong>Why use this pattern?</strong> When you need full control over header behavior in collapsed mode, such as keeping branding visible or creating custom interactive elements.
+        </p>
+        <p style="background: #fef3c7; padding: 1rem; border-radius: 0.375rem; border: 1px solid #fbbf24; margin-top: 1rem;">
+          <strong>Note:</strong> For simpler use cases, the composable slots approach (<code>header-start</code>, <code>header-end</code>, <code>header-toggle</code>) is recommended.
         </p>
       </main>
     </div>
@@ -697,68 +752,5 @@ export const MobileTogglePositions: Story = {
     <p style="margin-top: 1rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
       Resize your browser to below 768px to see the toggle buttons in different positions.
     </p>
-  `,
-};
-
-/**
- * Interactive demo showing both expanded and collapsed states side-by-side
- */
-export const ExpandedVsCollapsed: Story = {
-  render: () => html`
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; height: 600px;">
-      <div style="border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; display: flex; flex-direction: column;">
-        <div style="padding: 1rem; background: var(--ag-background-secondary); border-bottom: 1px solid #e5e7eb;">
-          <h3 style="margin: 0;">Expanded Mode</h3>
-          <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--ag-text-secondary);">
-            Full navigation with visible labels and inline submenus
-          </p>
-        </div>
-        <div style="flex: 1; display: flex; overflow: hidden;">
-          <ag-sidebar collapsed="false" show-header-toggle>
-            <h2 slot="header-start" style="margin: 0; font-size: 1rem; font-weight: 600;">Navigation</h2>
-            ${createNavContent()}
-          </ag-sidebar>
-        </div>
-      </div>
-
-      <div style="border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; display: flex; flex-direction: column;">
-        <div style="padding: 1rem; background: var(--ag-background-secondary); border-bottom: 1px solid #e5e7eb;">
-          <h3 style="margin: 0;">Collapsed Mode (Rail)</h3>
-          <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--ag-text-secondary);">
-            Icon-only view with popover submenus on hover
-          </p>
-        </div>
-        <div style="flex: 1; display: flex; overflow: hidden;">
-          <ag-sidebar collapsed="true" show-header-toggle>
-            <h2 slot="header-start" style="margin: 0; font-size: 1rem; font-weight: 600;">Navigation</h2>
-            ${createNavContent()}
-          </ag-sidebar>
-        </div>
-      </div>
-    </div>
-    
-    <div style="margin-top: 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 0.5rem; border: 1px solid #e5e7eb;">
-      <h3 style="margin: 0 0 1rem;">Key Features Demonstrated</h3>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-        <div>
-          <h4 style="margin: 0 0 0.5rem; color: var(--ag-primary);">Expanded Mode</h4>
-          <ul style="margin: 0; padding-left: 1.5rem; font-size: 0.875rem;">
-            <li>Full text labels visible</li>
-            <li>Expandable inline submenus</li>
-            <li>Click to expand/collapse submenus</li>
-            <li>Chevron icons indicate state</li>
-          </ul>
-        </div>
-        <div>
-          <h4 style="margin: 0 0 0.5rem; color: var(--ag-primary);">Collapsed Mode</h4>
-          <ul style="margin: 0; padding-left: 1.5rem; font-size: 0.875rem;">
-            <li>Icon-only compact view</li>
-            <li>Popover submenus on hover</li>
-            <li>Corner badges indicate submenus</li>
-            <li>Auto-positioned with Floating UI</li>
-          </ul>
-        </div>
-      </div>
-    </div>
   `,
 };
