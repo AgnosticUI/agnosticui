@@ -3,12 +3,15 @@ import { property } from 'lit/decorators.js';
 import type { PropertyValues } from 'lit';
 
 /**
- * Event detail interfaces
+ * Event to notify if the sidebar is open or closed
  */
 export interface AgSidebarToggleEventDetail {
   open: boolean;
 }
 
+/**
+ * Event to notify if the sidebar is collapsed (rail mode) or expanded (desktop mode)
+ */
 export interface AgSidebarCollapseEventDetail {
   collapsed: boolean;
 }
@@ -17,18 +20,31 @@ export interface AgSidebarCollapseEventDetail {
  * Prop definitions
  */
 export interface AgSidebarProps {
+  /** Whether the sidebar is open or closed */
   open?: boolean;
+  /** Whether the sidebar is collapsed (rail mode) or expanded (desktop mode) */
   collapsed?: boolean;
+  /** Whether the sidebar is on the left or right */
   position?: 'left' | 'right';
+  /** ARIA label for the sidebar */
   ariaLabel?: string;
+  /** Breakpoint for mobile/desktop behavior */
   breakpoint?: number;
+  /** Variant of the sidebar */
   variant?: 'default' | 'bordered' | 'elevated';
+  /** Whether to disable transitions */
   noTransition?: boolean;
+  /** Width of the sidebar */
   width?: string;
+  /** Whether to show the mobile toggle button */
   showMobileToggle?: boolean;
+  /** Position of the mobile toggle button. Default: top-left */
   mobileTogglePosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  /** Whether to show the header toggle button */
   showHeaderToggle?: boolean;
+  /** Callback function to handle toggle open/close events */
   onToggle?: (event: AgSidebarToggleEvent) => void;
+  /** Callback function to handle expanded/collapsed events */
   onCollapse?: (event: AgSidebarCollapseEvent) => void;
 }
 
