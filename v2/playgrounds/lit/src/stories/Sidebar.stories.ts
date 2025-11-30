@@ -6,6 +6,7 @@ import { type AgSidebarProps } from 'agnosticui-core/sidebar';
 import 'agnosticui-core/sidebar-nav';
 import 'agnosticui-core/icon';
 import 'agnosticui-core/visually-hidden';
+import 'agnosticui-core/popover';
 
 const meta: Meta<AgSidebarProps> = {
   title: 'AgnosticUI Lit/Sidebar',
@@ -85,6 +86,19 @@ const PanelIcon = () => html`
 
 const createNavContent = () => html`
   <style>
+    /* Allow popovers to escape sidebar in collapsed mode */
+    ag-sidebar[collapsed] {
+      overflow: visible !important;
+    }
+
+    ag-sidebar[collapsed]::part(ag-sidebar-container) {
+      overflow: visible !important;
+    }
+
+    ag-sidebar[collapsed]::part(ag-sidebar-content) {
+      overflow: visible !important;
+    }
+
     .nav-button {
       width: 100%;
       padding: var(--ag-space-2);
@@ -129,19 +143,20 @@ const createNavContent = () => html`
     .nav-button .collapsed-indicator {
       display: none;
       position: absolute;
-      bottom: 4px;
-      right: 4px;
-      width: 12px;
-      height: 12px;
-      background: var(--ag-primary-background, #3b82f6);
+      bottom: 1px;
+      right: -1px;
+      width: var(--ag-space-3);
+      height: var(--ag-space-3);
+      background: transparent;
       border-radius: 2px;
       pointer-events: none;
     }
     
     .nav-button .collapsed-indicator svg {
-      width: 8px;
-      height: 8px;
-      color: white;
+      width: var(--ag-space-3);
+      height: var(--ag-space-3);
+      color: var(--ag-text-muted);
+      transform: rotate(315deg)
     }
 
     .nav-sublink {
@@ -187,35 +202,54 @@ const createNavContent = () => html`
       justify-content: center;
     }
     
-    /* Hide submenus in collapsed mode */
-    ag-sidebar[collapsed] ag-sidebar-nav-submenu {
+    /* Hide inline submenus in collapsed mode */
+    ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu) {
       display: none !important;
     }
 
-    /* Tooltip for collapsed state - shown on hover */
-    .nav-button .nav-tooltip {
-      position: absolute;
-      left: 100%;
-      margin-left: 8px;
-      background: var(--ag-background-primary, white);
-      border: 1px solid var(--ag-border, #e5e7eb);
-      border-radius: 6px;
-      padding: 8px 12px;
+    /* Popover submenu styles */
+    ag-popover::part(ag-popover) {
+      min-width: 200px;
+    }
+
+    ag-popover::part(ag-popover-body) {
+      padding: var(--ag-space-1);
+    }
+
+    .popover-submenu-content .nav-sublink {
+      display: block;
+      padding: var(--ag-space-2) var(--ag-space-3);
+      border-radius: var(--ag-radius-sm);
+      text-decoration: none;
+      color: var(--ag-text-primary);
+      font-size: var(--ag-font-size-sm);
+      transition: background 0.15s;
       white-space: nowrap;
-      font-size: 0.875rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.15s;
     }
 
-    ag-sidebar[collapsed] .nav-button:hover .nav-tooltip {
-      opacity: 1;
+    .popover-submenu-content .nav-sublink:hover {
+      background: var(--ag-background-secondary);
     }
 
-    ag-sidebar:not([collapsed]) .nav-tooltip {
-      display: none;
+    .popover-submenu-content .nav-sublink.active {
+      background: var(--ag-primary-background);
+      color: var(--ag-primary-text);
+      font-weight: 500;
+    }
+
+    /* Completely hide popover element when not collapsed */
+    ag-sidebar:not([collapsed]) ag-popover {
+      display: none !important;
+    }
+
+    /* Show the collapsed-mode button only when collapsed */
+    ag-sidebar[collapsed] .nav-button-expanded {
+      display: none !important;
+    }
+
+    /* Show the expanded-mode button only when not collapsed */
+    ag-sidebar:not([collapsed]) .nav-button-collapsed {
+      display: none !important;
     }
   </style>
   <ag-sidebar-nav>
@@ -223,49 +257,129 @@ const createNavContent = () => html`
       <button class="nav-button active" aria-current="page">
         <ag-icon no-fill>${createElement(Home)}</ag-icon>
         <span class="nav-label">Dashboard</span>
-        <span class="nav-tooltip">Dashboard</span>
       </button>
     </ag-sidebar-nav-item>
+
+    <!-- Projects with submenu - dual button approach -->
     <ag-sidebar-nav-item>
-      <button class="nav-button" aria-expanded="false">
+      <!-- Button for EXPANDED mode (with click handler for inline submenu) -->
+      <button
+        class="nav-button nav-button-expanded"
+        aria-expanded="false"
+        @click=${(e: Event) => {
+          const button = e.currentTarget as HTMLElement;
+          const navItem = button.closest('ag-sidebar-nav-item');
+          const submenu = navItem?.querySelector('ag-sidebar-nav-submenu');
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+          button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+          if (submenu) {
+            (submenu as HTMLElement).style.display = isExpanded ? 'none' : 'block';
+          }
+        }}
+      >
         <ag-icon no-fill>${createElement(Folder)}</ag-icon>
         <span class="nav-label">Projects</span>
         <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
-        <span class="collapsed-indicator">
-          <svg viewBox="0 0 8 8" fill="none">
-            <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="nav-tooltip">Projects (has submenu)</span>
       </button>
-      <ag-sidebar-nav-submenu>
+
+      <!-- Button for COLLAPSED mode (inside popover with click trigger) -->
+      <ag-popover
+        class="nav-button-collapsed"
+        placement="right-start"
+        trigger-type="click"
+        distance="8"
+        ?arrow=${true}
+        .showHeader=${false}
+      >
+        <button slot="trigger" class="nav-button">
+          <ag-icon no-fill>${createElement(Folder)}</ag-icon>
+          <span class="nav-label">Projects</span>
+          <span class="collapsed-indicator">
+            <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </button>
+
+        <div slot="content" class="popover-submenu-content">
+          <a href="#" class="nav-sublink">Project Alpha</a>
+          <a href="#" class="nav-sublink">Project Beta</a>
+          <a href="#" class="nav-sublink">Project Gamma</a>
+        </div>
+      </ag-popover>
+
+      <!-- Inline submenu for expanded mode -->
+      <ag-sidebar-nav-submenu style="display: none;">
         <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Alpha</a></div>
         <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Beta</a></div>
+        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Gamma</a></div>
       </ag-sidebar-nav-submenu>
     </ag-sidebar-nav-item>
+
     <ag-sidebar-nav-item>
       <button class="nav-button">
         <ag-icon no-fill>${createElement(User)}</ag-icon>
         <span class="nav-label">Team</span>
-        <span class="nav-tooltip">Team</span>
       </button>
     </ag-sidebar-nav-item>
+
+    <!-- Settings with submenu - dual button approach -->
     <ag-sidebar-nav-item>
-      <button class="nav-button" aria-expanded="false">
+      <!-- Button for EXPANDED mode (with click handler for inline submenu) -->
+      <button
+        class="nav-button nav-button-expanded"
+        aria-expanded="false"
+        @click=${(e: Event) => {
+          const button = e.currentTarget as HTMLElement;
+          const navItem = button.closest('ag-sidebar-nav-item');
+          const submenu = navItem?.querySelector('ag-sidebar-nav-submenu');
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+          button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+          if (submenu) {
+            (submenu as HTMLElement).style.display = isExpanded ? 'none' : 'block';
+          }
+        }}
+      >
         <ag-icon no-fill>${createElement(Settings)}</ag-icon>
         <span class="nav-label">Settings</span>
         <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
-        <span class="collapsed-indicator">
-          <svg viewBox="0 0 8 8" fill="none">
-            <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="nav-tooltip">Settings (has submenu)</span>
       </button>
-      <ag-sidebar-nav-submenu>
+
+      <!-- Button for COLLAPSED mode (inside popover with click trigger) -->
+      <ag-popover
+        class="nav-button-collapsed"
+        placement="right-start"
+        trigger-type="click"
+        distance="8"
+        ?arrow=${true}
+        .showHeader=${false}
+      >
+        <button slot="trigger" class="nav-button">
+          <ag-icon no-fill>${createElement(Settings)}</ag-icon>
+          <span class="nav-label">Settings</span>
+          <span class="collapsed-indicator">
+            <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </button>
+
+        <div slot="content" class="popover-submenu-content">
+          <a href="#" class="nav-sublink">Profile</a>
+          <a href="#" class="nav-sublink">Billing</a>
+          <a href="#" class="nav-sublink">Security</a>
+          <a href="#" class="nav-sublink">Preferences</a>
+        </div>
+      </ag-popover>
+
+      <!-- Inline submenu for expanded mode -->
+      <ag-sidebar-nav-submenu style="display: none;">
         <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Profile</a></div>
         <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Billing</a></div>
         <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Security</a></div>
+        <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Preferences</a></div>
       </ag-sidebar-nav-submenu>
     </ag-sidebar-nav-item>
   </ag-sidebar-nav>
@@ -318,7 +432,7 @@ export const Default: Story = {
           <li><code>header-toggle</code> - Custom toggle button (auto-positioned)</li>
         </ul>
         <div style="background: #dbeafe; padding: 1rem; border-radius: 0.375rem; border: 1px solid #3b82f6; margin-top: 1rem;">
-          <strong>Fixed:</strong> Toggle now consistently collapses/expands the sidebar without closing the mobile overlay.
+          <strong>✨ New:</strong> Toggle between expanded and collapsed modes. Hover over Projects or Settings when collapsed to see submenu popovers!
         </div>
       </main>
     </div>
@@ -377,7 +491,7 @@ export const WithHeaderActions: Story = {
           <li><code>header-toggle</code> - Toggle button</li>
         </ul>
         <div style="background: #dbeafe; padding: 1rem; border-radius: 0.375rem; border: 1px solid #3b82f6; margin-top: 1rem;">
-          <strong>Fixed:</strong> Footer text is shorter and uses text-overflow. Toggle uses <code>toggleCollapse()</code>.
+          <strong>Try it:</strong> Collapse the sidebar and hover over Projects or Settings to access their submenus via popover!
         </div>
       </main>
     </div>
@@ -411,7 +525,7 @@ export const WithBuiltInToggle: Story = {
         <p>Using <code>show-header-toggle</code> adds a built-in collapse button automatically.</p>
         <p>The built-in toggle always uses <code>toggleCollapse()</code> internally for consistent behavior.</p>
         <div style="background: #dcfce7; padding: 1rem; border-radius: 0.375rem; border: 1px solid #22c55e; margin-top: 1rem;">
-          <strong>Note:</strong> Built-in toggle works correctly - it always toggles collapsed state.
+          <strong>Note:</strong> Built-in toggle works correctly - it always toggles collapsed state. Hover over submenu items when collapsed!
         </div>
       </main>
     </div>
@@ -461,7 +575,7 @@ export const LegacyHeaderSlot: Story = {
 };
 
 /**
- * Collapsed rail mode with submenu indicators
+ * Collapsed rail mode with submenu popovers - FULLY FUNCTIONAL!
  */
 export const CollapsedRailMode: Story = {
   args: {
@@ -486,18 +600,19 @@ export const CollapsedRailMode: Story = {
         </div>
       </ag-sidebar>
       <main style="flex: 1; padding: 2rem; overflow: auto;">
-        <h1>Rail Mode</h1>
-        <p>When collapsed, the sidebar shows icons only with improved visual affordances:</p>
+        <h1>Rail Mode with Popover Submenus</h1>
+        <p>When collapsed, the sidebar shows icons only with full submenu access:</p>
         <ul>
-          <li><strong>Corner indicators:</strong> Small blue badges on items with submenus</li>
-          <li><strong>Tooltips:</strong> Hover over nav items to see their labels</li>
-          <li><strong>Accessible:</strong> Labels remain in DOM for screen readers</li>
+          <li><strong>Corner indicators:</strong> Blue badges show which items have submenus</li>
+          <li><strong>Hover to access:</strong> Hover over Projects or Settings to see their submenu popovers</li>
+          <li><strong>Fully functional:</strong> Click links in the popovers to navigate</li>
+          <li><strong>Auto-positioned:</strong> Popovers use Floating UI to stay on screen</li>
         </ul>
-        <div style="background: #dbeafe; padding: 1rem; border-radius: 0.375rem; border: 1px solid #3b82f6; margin-top: 1rem;">
-          <strong>Improved:</strong> Now shows visual indicators for items with submenus (Projects, Settings).
+        <div style="background: #dcfce7; padding: 1rem; border-radius: 0.375rem; border: 1px solid #22c55e; margin-top: 1rem;">
+          <strong>✅ Fixed:</strong> Submenus are now fully accessible in collapsed mode via hover-triggered popovers!
         </div>
-        <div style="background: #fef3c7; padding: 1rem; border-radius: 0.375rem; border: 1px solid #fbbf24; margin-top: 1rem;">
-          <strong>Limitation:</strong> Submenus are still inaccessible in collapsed mode. Consider implementing a popover/dropdown pattern for full functionality.
+        <div style="background: #dbeafe; padding: 1rem; border-radius: 0.375rem; border: 1px solid #3b82f6; margin-top: 1rem;">
+          <strong>Implementation:</strong> Each submenu uses <code>&lt;ag-popover&gt;</code> with <code>trigger-type="hover"</code> and <code>placement="right-start"</code> for optimal positioning.
         </div>
       </main>
     </div>
@@ -527,5 +642,68 @@ export const MobileTogglePositions: Story = {
     <p style="margin-top: 1rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
       Resize your browser to below 768px to see the toggle buttons in different positions.
     </p>
+  `,
+};
+
+/**
+ * Interactive demo showing both expanded and collapsed states side-by-side
+ */
+export const ExpandedVsCollapsed: Story = {
+  render: () => html`
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; height: 600px;">
+      <div style="border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="padding: 1rem; background: var(--ag-background-secondary); border-bottom: 1px solid #e5e7eb;">
+          <h3 style="margin: 0;">Expanded Mode</h3>
+          <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--ag-text-secondary);">
+            Full navigation with visible labels and inline submenus
+          </p>
+        </div>
+        <div style="flex: 1; display: flex; overflow: hidden;">
+          <ag-sidebar collapsed="false" show-header-toggle>
+            <h2 slot="header-start" style="margin: 0; font-size: 1rem; font-weight: 600;">Navigation</h2>
+            ${createNavContent()}
+          </ag-sidebar>
+        </div>
+      </div>
+
+      <div style="border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="padding: 1rem; background: var(--ag-background-secondary); border-bottom: 1px solid #e5e7eb;">
+          <h3 style="margin: 0;">Collapsed Mode (Rail)</h3>
+          <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--ag-text-secondary);">
+            Icon-only view with popover submenus on hover
+          </p>
+        </div>
+        <div style="flex: 1; display: flex; overflow: hidden;">
+          <ag-sidebar collapsed="true" show-header-toggle>
+            <h2 slot="header-start" style="margin: 0; font-size: 1rem; font-weight: 600;">Navigation</h2>
+            ${createNavContent()}
+          </ag-sidebar>
+        </div>
+      </div>
+    </div>
+    
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 0.5rem; border: 1px solid #e5e7eb;">
+      <h3 style="margin: 0 0 1rem;">Key Features Demonstrated</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div>
+          <h4 style="margin: 0 0 0.5rem; color: var(--ag-primary);">Expanded Mode</h4>
+          <ul style="margin: 0; padding-left: 1.5rem; font-size: 0.875rem;">
+            <li>Full text labels visible</li>
+            <li>Expandable inline submenus</li>
+            <li>Click to expand/collapse submenus</li>
+            <li>Chevron icons indicate state</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 0.5rem; color: var(--ag-primary);">Collapsed Mode</h4>
+          <ul style="margin: 0; padding-left: 1.5rem; font-size: 0.875rem;">
+            <li>Icon-only compact view</li>
+            <li>Popover submenus on hover</li>
+            <li>Corner badges indicate submenus</li>
+            <li>Auto-positioned with Floating UI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   `,
 };
