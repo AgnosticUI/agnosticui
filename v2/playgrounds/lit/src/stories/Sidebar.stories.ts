@@ -121,19 +121,6 @@ const createNavContent = () => {
 
   return html`
     <style>
-      /* Allow popovers to escape sidebar in collapsed mode */
-      ag-sidebar[collapsed] {
-        overflow: visible !important;
-      }
-
-      ag-sidebar[collapsed]::part(ag-sidebar-container) {
-        overflow: visible !important;
-      }
-
-      ag-sidebar[collapsed]::part(ag-sidebar-content) {
-        overflow: visible !important;
-      }
-
       .nav-button ag-icon {
         flex-shrink: 0;
       }
@@ -155,8 +142,8 @@ const createNavContent = () => {
       .nav-button .collapsed-indicator {
         display: none;
         position: absolute;
-        bottom: 1px;
-        right: -1px;
+        bottom: -3px;
+        right: 0px;
         width: var(--ag-space-3);
         height: var(--ag-space-3);
         background: transparent;
