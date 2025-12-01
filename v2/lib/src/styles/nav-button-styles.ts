@@ -1,4 +1,3 @@
-// src/styles/nav-button-styles.ts
 import { css } from 'lit';
 
 export const NAV_BUTTON_STYLES = css`
