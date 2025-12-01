@@ -105,10 +105,6 @@ const createNavContent = () => {
     const currentAriaExpanded = button.getAttribute('aria-expanded');
     const isCurrentlyExpanded = currentAriaExpanded === 'true';
 
-    console.log('Current aria-expanded:', currentAriaExpanded);
-    console.log('Is currently expanded:', isCurrentlyExpanded);
-    console.log('Submenu has open attr:', submenu.hasAttribute('open'));
-
     // Toggle to opposite state
     if (isCurrentlyExpanded) {
       // Currently expanded, so collapse it
@@ -138,29 +134,6 @@ const createNavContent = () => {
         overflow: visible !important;
       }
 
-      .nav-button {
-        width: 100%;
-        padding: var(--ag-space-2);
-        border: none;
-        background: transparent;
-        border-radius: var(--ag-border-radius-sm);
-        cursor: pointer;
-        text-align: left;
-        font-size: var(--ag-font-size-sm);
-        color: var(--ag-text-primary);
-        display: flex;
-        align-items: center;
-        gap: var(--ag-space-2);
-        transition: background 0.15s;
-        position: relative;
-      }
-      .nav-button:hover {
-        background: var(--ag-background-secondary);
-      }
-      .nav-button.active {
-        background: var(--ag-primary-background);
-        color: var(--ag-text-primary);
-      }
       .nav-button ag-icon {
         flex-shrink: 0;
       }
@@ -197,25 +170,6 @@ const createNavContent = () => {
         color: var(--ag-text-muted);
         transform: rotate(315deg)
       }
-
-      .nav-sublink {
-        display: block;
-        padding: var(--ag-space-2);
-        border-radius: var(--ag-radius-sm);
-        text-decoration: none;
-        color: var(--ag-text-primary);
-        font-size: var(--ag-font-size-sm);
-        transition: background 0.15s;
-      }
-      .nav-sublink:hover {
-        background: var(--ag-background-secondary);
-      }
-      .nav-sublink.active {
-        background: var(--ag-primary-background);
-        color: var(--ag-primary-text);
-        font-weight: 500;
-      }
-
       /* ============================================
          SUBMENU VISIBILITY - KEY FIX
          ============================================ */
@@ -374,9 +328,9 @@ const createNavContent = () => {
 
         <!-- Inline submenu for expanded mode -->
         <ag-sidebar-nav-submenu>
-          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Alpha</a></div>
-          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Beta</a></div>
-          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Project Gamma</a></div>
+          <a class="nav-sublink" href="#">Project Alpha</a></div>
+          <a class="nav-sublink" href="#">Project Beta</a></div>
+          <a class="nav-sublink" href="#">Project Gamma</a></div>
         </ag-sidebar-nav-submenu>
       </ag-sidebar-nav-item>
 
@@ -429,10 +383,10 @@ const createNavContent = () => {
 
         <!-- Inline submenu for expanded mode -->
         <ag-sidebar-nav-submenu>
-          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Profile</a></div>
-          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Billing</a></div>
-          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Security</a></div>
-          <div role="listitem" class="nav-subitem"><a href="#" class="nav-sublink">Preferences</a></div>
+          <a class="nav-sublink" href="#">Profile</a></div>
+          <a class="nav-sublink" href="#">Billing</a></div>
+          <a class="nav-sublink" href="#">Security</a></div>
+          <a class="nav-sublink" href="#">Preferences</a></div>
         </ag-sidebar-nav-submenu>
       </ag-sidebar-nav-item>
     </ag-sidebar-nav>
