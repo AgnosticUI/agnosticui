@@ -16,6 +16,10 @@
     "./styles/tokens.css": "./dist/styles/ag-tokens.css",
     "./styles/tokens-dark.css": "./dist/styles/ag-tokens-dark.css",
     "./styles/table.css": "./dist/styles/table.css",
+    "./styles/nav-button-styles": {
+      "types": "./dist/styles/nav-button-styles.d.ts",
+      "import": "./dist/styles/nav-button-styles.js"
+    },
     "./accordion": {
       "types": "./dist/components/Accordion/core/Accordion.d.ts",
       "import": "./dist/components/Accordion/core/Accordion.js"

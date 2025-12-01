@@ -3,9 +3,6 @@ import { property } from 'lit/decorators.js';
 
 export class AgSidebarNavSubmenu extends LitElement {
   static hostAttributes = {
-    // aria: {
-    //   role: 'list',
-    // },
     class: 'ag-sidebar-nav-submenu',
     part: 'ag-sidebar-nav-submenu',
     'aria-label': "Sidebar Navigation Menu",
