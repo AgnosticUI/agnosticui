@@ -184,7 +184,6 @@ const createNavContent = () => {
         .nav-button .chevron {
           transition: opacity var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
                       transform var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
-                      display var(--ag-sidebar-transition-duration, 200ms) allow-discrete;
         }
         
         ag-sidebar[collapsed] .nav-button .nav-label,
@@ -290,11 +289,11 @@ const createNavContent = () => {
             </span>
           </button>
 
-          <div slot="content" class="popover-submenu-content">
+          <ag-sidebar-nav-popover-submenu slot="content">
             <a href="#" class="nav-sublink nav-sublink-popover">Project Alpha</a>
             <a href="#" class="nav-sublink nav-sublink-popover">Project Beta</a>
             <a href="#" class="nav-sublink nav-sublink-popover">Project Gamma</a>
-          </div>
+          </ag-sidebar-nav-popover-submenu slot="content">
         </ag-popover>
 
         <!-- Inline submenu for expanded mode -->
@@ -344,12 +343,12 @@ const createNavContent = () => {
             </span>
           </button>
 
-          <div slot="content" class="popover-submenu-content">
+          <ag-sidebar-nav-popover-submenu slot="content">
             <a href="#" class="nav-sublink">Profile</a>
             <a href="#" class="nav-sublink">Billing</a>
             <a href="#" class="nav-sublink">Security</a>
             <a href="#" class="nav-sublink">Preferences</a>
-          </div>
+          </ag-sidebar-nav-popover-submenu>
         </ag-popover>
 
         <ag-sidebar-nav-submenu>
@@ -614,77 +613,6 @@ export const LegacyHeaderSlot: Story = {
 };
 
 /**
- * Collapsed rail mode with submenu popovers - FULLY FUNCTIONAL!
- */
-export const CollapsedRailMode: Story = {
-  args: {
-    collapsed: true,
-    showHeaderToggle: true,
-  },
-  render: (args) => html`
-    <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
-      <ag-sidebar
-        ?collapsed=${args.collapsed}
-        ?show-header-toggle=${args.showHeaderToggle}
-        ?show-mobile-toggle=${args['showMobileToggle']}
-      >
-        <h2 slot="header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
-          Navigation
-        </h2>
-
-        ${createNavContent()}
-        
-        <div slot="footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); text-align: center;">
-          v1.0
-        </div>
-      </ag-sidebar>
-      <main style="flex: 1; padding: 2rem; overflow: auto;">
-        <h1>Rail Mode with Popover Submenus</h1>
-        <p>When collapsed, the sidebar shows icons only with full submenu access:</p>
-        <ul>
-          <li><strong>Corner indicators:</strong> Blue badges show which items have submenus</li>
-          <li><strong>Hover to access:</strong> Hover over Projects or Settings to see their submenu popovers</li>
-          <li><strong>Fully functional:</strong> Click links in the popovers to navigate</li>
-          <li><strong>Auto-positioned:</strong> Popovers use Floating UI to stay on screen</li>
-        </ul>
-        <div style="background: #dcfce7; padding: 1rem; border-radius: 0.375rem; border: 1px solid #22c55e; margin-top: 1rem;">
-          <strong>✅ Fixed:</strong> Submenus are now fully accessible in collapsed mode via hover-triggered popovers!
-        </div>
-        <div style="background: #dbeafe; padding: 1rem; border-radius: 0.375rem; border: 1px solid #3b82f6; margin-top: 1rem;">
-          <strong>Implementation:</strong> Each submenu uses <code>&lt;ag-popover&gt;</code> with <code>trigger-type="hover"</code> and <code>placement="right-start"</code> for optimal positioning.
-        </div>
-      </main>
-    </div>
-  `,
-};
-
-/**
- * Example showing different mobile toggle positions
- */
-export const MobileTogglePositions: Story = {
-  render: () => html`
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
-      ${['top-left', 'top-right', 'bottom-left', 'bottom-right'].map(position => html`
-        <div style="border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden; height: 400px;">
-          <ag-sidebar
-            position="left"
-            show-mobile-toggle
-            mobile-toggle-position=${position}
-          >
-            <h3 slot="header-start" style="margin: 0; font-size: 1rem;">${position}</h3>
-            ${createNavContent()}
-          </ag-sidebar>
-        </div>
-      `)}
-    </div>
-    <p style="margin-top: 1rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
-      Resize your browser to below 768px to see the toggle buttons in different positions.
-    </p>
-  `,
-};
-
-
-/**
  * AI Studio Pattern - Disable Compact Mode
  */
 export const DisableCompactMode: Story = {
@@ -896,11 +824,11 @@ export const WithActiveItemTracking: Story = {
                   </span>
                 </button>
 
-                <div slot="content" class="popover-submenu-content">
+                <ag-sidebar-nav-popover-submenu slot="content">
                   <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/profile" @click=${handleNavClick("/settings/profile")}>Profile</a>
                   <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/billing" @click=${handleNavClick("/settings/billing")}>Billing</a>
                   <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/security" @click=${handleNavClick("/settings/security")}>Security</a>
-                </div>
+                </ag-sidebar-nav-popover-submenu>
               </ag-popover>
 
               <!-- Inline Submenu -->

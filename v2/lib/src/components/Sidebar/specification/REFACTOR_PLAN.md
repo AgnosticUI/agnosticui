@@ -1,171 +1,159 @@
 # Sidebar Refactoring Plan
 
-1. [x] Rail Mode Naming: `disableCompactMode?: boolean`
+## Leverage new .nav-sublink-popover SMACSS modifier.
 
-Behavior when true:
-  * Sidebar is either full-width or hidden (no intermediate state)
-  * collapsed prop is ignored
-  * Desktop behaves like mobile: overlay pattern only
+- If we create a <ag-sidebar-nav-popover-submenu> (or similar) we could share
+  styles between v2/lib/src/components/SidebarNav/core/\_SidebarNavSubmenu.ts and
+  v2/lib/src/components/SidebarNav/core/\_SidebarNavPopoverSubmenu.ts as follows.
+
+- We could tease out these existing styles into v2/lib/src/styles/nav-sublink-styles.ts:
 
 ```ts
-<!-- AI Studio pattern: full or hidden only -->
-<ag-sidebar 
-  disableCompactMode
-  ?open=${isOpen}
->
-  ...
-</ag-sidebar>
+      ::slotted(.nav-sublink) {
+        display: block;
+        padding: var(--ag-space-2);
+        border-radius: var(--ag-radius-sm);
+        text-decoration: none;
+        color: var(--ag-text-primary);
+        font-size: var(--ag-font-size-sm);
+        transition: background 0.15s;
+      }
+      ::slotted(.nav-sublink:hover) {
+        background: var(--ag-background-secondary);
+      }
+      ::slotted(.nav-sublink.active) {
+        background: var(--ag-primary-background);
+        color: var(--ag-primary-text);
+        font-weight: 500;
+      }
 ```
 
-2. Active Item Styling: We should provide CSS hooks to ensure the consumer can simply apply an .active class or [aria-current="page"] selector, and then the component can apply  proper styling:
+- Simalarly to how we already do in v2/lib/src/styles/nav-button-styles.ts and add in our web components like:
+  `${NAV_SUBLINK_STYLES}` in both \_SidebarNavSubmenu.ts and \_SidebarNavPopoverSubmenu.
+
+  Then, in \_SidebarNavPopoverSubmenu.ts we could additionally use
+  `${NAV_SUBLINK_POPOVER_STYLES}` which would allow use to port styles over from the v2/playgrounds/lit/src/stories/Sidebar.stories.ts that look like:
+
 ```ts
-<ag-sidebar-nav-item>
-  <button class="nav-button ${isActive ? 'active' : ''}" aria-current="${isActive ? 'page' : undefined}">
-    Dashboard
-  </button>
-</ag-sidebar-nav-item>
-```
-Flexible: Consumer can use any class name or attribute they want
-Stylish: Component provides css active item styling affordance "for free":
-```css
-/* In the component's styles */
-.nav-button.active,
-.nav-button[aria-current="page"] {
-  background: var(--ag-primary-background);
-  color: var(--ag-primary-text);
-  font-weight: 500;
-}
-```
+/* THe following would get moved to NAV_SUBLINK_POPOVER_STYLES */
+      .nav-sublink-popover { /* <-- in NAV_SUBLINK_POPOVER_STYLES might need to become ::slotted(.nav-sublink-popover) */
+        display: block;
+        padding: var(--ag-space-2) var(--ag-space-3);
+        border-radius: var(--ag-radius-sm);
+        text-decoration: none;
+        color: var(--ag-text-primary);
+        font-size: var(--ag-font-size-sm);
+        transition: background 0.15s;
+        white-space: nowrap;
+      }
 
-## Lit Storybook Pattern for Active State
+      .nav-sublink-popover:hover {
+        background: var(--ag-background-secondary);
+      }
 
-Example:
-```ts
-export const WithActiveItemTracking: Story = {
-  render: (args) => {
-    // Simulated route state (in a real app, this would come from your router)
-    let activeRoute = '/dashboard';
-    
-    const handleNavClick = (route: string) => (e: Event) => {
-      e.preventDefault();
-      activeRoute = route;
-      
-      // Update all nav buttons
-      const sidebar = (e.target as HTMLElement).closest('ag-sidebar');
-      const buttons = sidebar?.querySelectorAll('.nav-button');
-      buttons?.forEach(btn => {
-        const isActive = btn.getAttribute('data-route') === route;
-        btn.classList.toggle('active', isActive);
-        if (isActive) {
-          btn.setAttribute('aria-current', 'page');
-        } else {
-          btn.removeAttribute('aria-current');
-        }
-      });
-    };
-    
-    return html`
-      <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
-        <ag-sidebar
-          ?open=${args.open}
-          ?collapsed=${args.collapsed}
-          ?show-mobile-toggle=${args['showMobileToggle']}
-        >
-          <h2 slot="header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
-            Navigation
-          </h2>
-          <button 
-            slot="header-toggle"
-            @click=${(e: Event) => {
-              const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
-              sidebar?.toggleCollapse();
-            }}
-            style="background: none; border: none; padding: 8px 0; cursor: pointer; display: flex; align-items: center; color: inherit;"
-            aria-label="Toggle sidebar"
-          >
-            ${PanelIcon()}
-          </button>
-
-          <ag-sidebar-nav>
-            <ag-sidebar-nav-item>
-              <button 
-                class="nav-button active" 
-                aria-current="page"
-                data-route="/dashboard"
-                @click=${handleNavClick('/dashboard')}
-              >
-                <ag-icon no-fill>${createElement(Home)}</ag-icon>
-                <span class="nav-label">Dashboard</span>
-              </button>
-            </ag-sidebar-nav-item>
-
-            <ag-sidebar-nav-item>
-              <button 
-                class="nav-button"
-                data-route="/projects"
-                @click=${handleNavClick('/projects')}
-              >
-                <ag-icon no-fill>${createElement(Folder)}</ag-icon>
-                <span class="nav-label">Projects</span>
-              </button>
-            </ag-sidebar-nav-item>
-
-            <ag-sidebar-nav-item>
-              <button 
-                class="nav-button"
-                data-route="/team"
-                @click=${handleNavClick('/team')}
-              >
-                <ag-icon no-fill>${createElement(User)}</ag-icon>
-                <span class="nav-label">Team</span>
-              </button>
-            </ag-sidebar-nav-item>
-
-            <ag-sidebar-nav-item>
-              <button 
-                class="nav-button"
-                data-route="/settings"
-                @click=${handleNavClick('/settings')}
-              >
-                <ag-icon no-fill>${createElement(Settings)}</ag-icon>
-                <span class="nav-label">Settings</span>
-              </button>
-            </ag-sidebar-nav-item>
-          </ag-sidebar-nav>
-        </ag-sidebar>
-        
-        <main style="flex: 1; padding: 2rem; overflow: auto;">
-          <h1>Active Item Tracking</h1>
-          <p>Click navigation items to see the active state change.</p>
-          <ul>
-            <li><strong>Active styling:</strong> Background color and font weight change</li>
-            <li><strong>Accessibility:</strong> <code>aria-current="page"</code> is set on active item</li>
-            <li><strong>Framework agnostic:</strong> Uses standard classes and attributes</li>
-          </ul>
-          <p style="background: #dbeafe; padding: 1rem; border-radius: 0.375rem; border: 1px solid #3b82f6; margin-top: 1rem;">
-            <strong>In a real app:</strong> Your router (React Router, Vue Router, etc.) would manage the active state. 
-            This example simulates that behavior with vanilla JavaScript.
-          </p>
-        </main>
-      </div>
-    `;
-  },
-};
+      .nav-sublink-popover.active {
+        background: var(--ag-primary-background);
+        color: var(--ag-primary-text);
+        font-weight: 500;
+      }
 ```
 
-### Key Points:
+So above chunk would then be available to be imported and used like ${NAV_SUBLINK_POPOVER_STYLES}. Again, I believe we'd need to convert these to use ::slotted convention.
 
-* State Management: Uses a closure variable activeRoute to track state
-* Event Handler: handleNavClick updates the DOM directly
-* Data Attribute: Uses data-route to identify which route each button represents
-* Class Toggle: Uses classList.toggle() to add/remove the active class
-* ARIA: Manages aria-current attribute for accessibility
+**Context:**
+Here's the diff of last refactoring which shows the .nav-sublink-popover now available for above idea:
 
-```css
-.nav-button.active,
-.nav-button[aria-current="page"] {
-  background: var(--ag-primary-background);
-  color: var(--ag-primary-text);
-  font-weight: 500;
-}
+```shell
+ const createNavContent = () => {
+   // Define the toggle handler outside the template for better debugging
+   const handleSubmenuToggle = (e: Event) => {
+@@ -131,7 +128,6 @@ const createNavContent = () => {
+         text-overflow: ellipsis;
+       }
+       .nav-button .chevron {
+-        margin-left: auto;
+         transition: transform var(--ag-fx-duration-md);
+       }
+       .nav-button[aria-expanded="true"] .chevron ag-icon {
+@@ -218,7 +214,7 @@ const createNavContent = () => {
+         padding: var(--ag-space-1);
+       }
+
+-      .popover-submenu-content .nav-sublink {
++      .nav-sublink-popover {
+         display: block;
+         padding: var(--ag-space-2) var(--ag-space-3);
+         border-radius: var(--ag-radius-sm);
+@@ -229,11 +225,11 @@ const createNavContent = () => {
+         white-space: nowrap;
+       }
+
+-      .popover-submenu-content .nav-sublink:hover {
++      .nav-sublink-popover:hover {
+         background: var(--ag-background-secondary);
+       }
+
+-      .popover-submenu-content .nav-sublink.active {
++      .nav-sublink-popover.active {
+         background: var(--ag-primary-background);
+         color: var(--ag-primary-text);
+         font-weight: 500;
+@@ -295,9 +291,9 @@ const createNavContent = () => {
+           </button>
+
+           <div slot="content" class="popover-submenu-content">
+-            <a href="#" class="nav-sublink">Project Alpha</a>
+-            <a href="#" class="nav-sublink">Project Beta</a>
+-            <a href="#" class="nav-sublink">Project Gamma</a>
++            <a href="#" class="nav-sublink nav-sublink-popover">Project Alpha</a>
++            <a href="#" class="nav-sublink nav-sublink-popover">Project Beta</a>
++            <a href="#" class="nav-sublink nav-sublink-popover">Project Gamma</a>
+           </div>
+         </ag-popover>
+
+@@ -356,7 +352,6 @@ const createNavContent = () => {
+           </div>
+         </ag-popover>
+
+-        <!-- Inline submenu for expanded mode -->
+         <ag-sidebar-nav-submenu>
+           <a class="nav-sublink" href="#">Profile</a></div>
+           <a class="nav-sublink" href="#">Billing</a></div>
+@@ -902,9 +897,9 @@ export const WithActiveItemTracking: Story = {
+                 </button>
+
+                 <div slot="content" class="popover-submenu-content">
+-                  <a href="#" class="nav-sublink" data-route="/settings/profile" @click=${handleNavClick("/settings/profile")}>Profile</a>
+-                  <a href="#" class="nav-sublink" data-route="/settings/billing" @click=${handleNavClick("/settings/billing")}>Billing</a>
+-                  <a href="#" class="nav-sublink" data-route="/settings/security" @click=${handleNavClick("/settings/security")}>Security</a>
++                  <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/profile" @click=${handleNavClick("/settings/profile")}>Profile</a>
++                  <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/billing" @click=${handleNavClick("/settings/billing")}>Billing</a>
++                  <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/security" @click=${handleNavClick("/settings/security")}>Security</a>
+                 </div>
+               </ag-popover>
+
+@@ -1042,7 +1037,7 @@ export const WithActiveItemTracking: Story = {
+         }
+
+         /* Ensure popover content is styled correctly */
+-        .popover-submenu-content .nav-sublink {
++        .nav-sublink-popover {
+           display: block;
+           padding: var(--ag-space-2) var(--ag-space-3);
+           border-radius: var(--ag-radius-sm);
+@@ -1053,12 +1048,12 @@ export const WithActiveItemTracking: Story = {
+           white-space: nowrap;
+         }
+
+-        .popover-submenu-content .nav-sublink:hover {
++        .nav-sublink-popover:hover {
+           background: var(--ag-background-secondary);
+         }
+
+         /* Re-apply active state for popover content specifically if needed due to specificity */
+-        .popover-submenu-content .nav-sublink.active {
++        .nav-sublink-popover.active {
+           background: var(--ag-primary-background);
+           color: var(--ag-primary-text);
+         }
 ```
