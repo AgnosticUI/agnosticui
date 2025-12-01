@@ -83,9 +83,6 @@ const PanelIcon = () => html`
   </svg>
 `;
 
-// COMPLETE INTEGRATION - Replace createNavContent() in Sidebar.stories.ts
-// FULLY DEBUGGED VERSION
-
 const createNavContent = () => {
   // Define the toggle handler outside the template for better debugging
   const handleSubmenuToggle = (e: Event) => {
@@ -131,7 +128,6 @@ const createNavContent = () => {
         text-overflow: ellipsis;
       }
       .nav-button .chevron {
-        margin-left: auto;
         transition: transform var(--ag-fx-duration-md);
       }
       .nav-button[aria-expanded="true"] .chevron ag-icon {
@@ -218,7 +214,7 @@ const createNavContent = () => {
         padding: var(--ag-space-1);
       }
 
-      .popover-submenu-content .nav-sublink {
+      .nav-sublink-popover {
         display: block;
         padding: var(--ag-space-2) var(--ag-space-3);
         border-radius: var(--ag-radius-sm);
@@ -229,11 +225,11 @@ const createNavContent = () => {
         white-space: nowrap;
       }
 
-      .popover-submenu-content .nav-sublink:hover {
+      .nav-sublink-popover:hover {
         background: var(--ag-background-secondary);
       }
 
-      .popover-submenu-content .nav-sublink.active {
+      .nav-sublink-popover.active {
         background: var(--ag-primary-background);
         color: var(--ag-primary-text);
         font-weight: 500;
@@ -295,9 +291,9 @@ const createNavContent = () => {
           </button>
 
           <div slot="content" class="popover-submenu-content">
-            <a href="#" class="nav-sublink">Project Alpha</a>
-            <a href="#" class="nav-sublink">Project Beta</a>
-            <a href="#" class="nav-sublink">Project Gamma</a>
+            <a href="#" class="nav-sublink nav-sublink-popover">Project Alpha</a>
+            <a href="#" class="nav-sublink nav-sublink-popover">Project Beta</a>
+            <a href="#" class="nav-sublink nav-sublink-popover">Project Gamma</a>
           </div>
         </ag-popover>
 
@@ -356,7 +352,6 @@ const createNavContent = () => {
           </div>
         </ag-popover>
 
-        <!-- Inline submenu for expanded mode -->
         <ag-sidebar-nav-submenu>
           <a class="nav-sublink" href="#">Profile</a></div>
           <a class="nav-sublink" href="#">Billing</a></div>
@@ -902,9 +897,9 @@ export const WithActiveItemTracking: Story = {
                 </button>
 
                 <div slot="content" class="popover-submenu-content">
-                  <a href="#" class="nav-sublink" data-route="/settings/profile" @click=${handleNavClick("/settings/profile")}>Profile</a>
-                  <a href="#" class="nav-sublink" data-route="/settings/billing" @click=${handleNavClick("/settings/billing")}>Billing</a>
-                  <a href="#" class="nav-sublink" data-route="/settings/security" @click=${handleNavClick("/settings/security")}>Security</a>
+                  <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/profile" @click=${handleNavClick("/settings/profile")}>Profile</a>
+                  <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/billing" @click=${handleNavClick("/settings/billing")}>Billing</a>
+                  <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/security" @click=${handleNavClick("/settings/security")}>Security</a>
                 </div>
               </ag-popover>
 
@@ -1042,7 +1037,7 @@ export const WithActiveItemTracking: Story = {
         }
         
         /* Ensure popover content is styled correctly */
-        .popover-submenu-content .nav-sublink {
+        .nav-sublink-popover {
           display: block;
           padding: var(--ag-space-2) var(--ag-space-3);
           border-radius: var(--ag-radius-sm);
@@ -1053,12 +1048,12 @@ export const WithActiveItemTracking: Story = {
           white-space: nowrap;
         }
         
-        .popover-submenu-content .nav-sublink:hover {
+        .nav-sublink-popover:hover {
           background: var(--ag-background-secondary);
         }
         
         /* Re-apply active state for popover content specifically if needed due to specificity */
-        .popover-submenu-content .nav-sublink.active {
+        .nav-sublink-popover.active {
           background: var(--ag-primary-background);
           color: var(--ag-primary-text);
         }
