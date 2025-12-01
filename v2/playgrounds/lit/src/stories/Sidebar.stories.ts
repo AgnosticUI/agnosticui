@@ -157,18 +157,6 @@ const createNavContent = () => {
         color: var(--ag-text-muted);
         transform: rotate(315deg)
       }
-      /* ============================================
-         SUBMENU VISIBILITY - KEY FIX
-         ============================================ */
-      /* Hide submenus by default */
-      ag-sidebar-nav-submenu {
-        display: none;
-      }
-      
-      /* Show submenus when open attribute is present */
-      ag-sidebar-nav-submenu[open] {
-        display: block !important;
-      }
 
       /* Collapsed state (rail mode) styles */
       ag-sidebar[collapsed] .nav-button {
