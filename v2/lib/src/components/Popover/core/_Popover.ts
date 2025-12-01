@@ -11,6 +11,7 @@ import {
   type Placement
 } from '@floating-ui/dom';
 import '../../shared/CloseButton/CloseButton';
+import { NAV_BUTTON_STYLES } from '../../../styles/nav-button-styles';
 
 /**
  * Event detail for show event
@@ -205,6 +206,20 @@ export class Popover extends LitElement implements PopoverProps {
     /* Ensure popover is hidden when not active */
     #popover:not([data-show]) {
       display: none;
+    }
+
+    /* For when Popover is used on Sidebar sub-menues */
+    ${NAV_BUTTON_STYLES}
+
+    /* Popover-specific additions (flat) */
+    ::slotted([slot="trigger"]) {
+      justify-content: center; /* Collapsed rail mode */
+      padding: var(--ag-space-1); /* Tighter fit */
+    }
+
+    /* Trigger-specific hover (flat) */
+    ::slotted([slot="trigger"]:hover) {
+      background: var(--ag-background-secondary);
     }
   `;
 
