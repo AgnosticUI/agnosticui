@@ -8,6 +8,7 @@ export class AgSidebarNavItem extends LitElement {
   };
 
   static styles = [
+    NAV_BUTTON_STYLES,
     css`
       :host {
         padding: 0;
@@ -15,7 +16,6 @@ export class AgSidebarNavItem extends LitElement {
         margin-bottom: var(--ag-space-1);
       }
         
-      ${NAV_BUTTON_STYLES}
       /* Nav-specific additions (flat for consistency) */
       ::slotted(.nav-button) {
         justify-content: space-between; /* For chevrons */
