@@ -739,3 +739,330 @@ export const DisableCompactMode: Story = {
     </div>
   `,
 };
+
+/**
+ * Active Item Tracking Example
+ * Demonstrates how to handle active state for navigation items, including submenus
+ */
+export const WithActiveItemTracking: Story = {
+  render: (args) => {
+    // Simulated route state (in a real app, this would come from your router)
+    let activeRoute = "/dashboard";
+
+    const handleNavClick = (route: string) => (e: Event) => {
+      e.preventDefault();
+      activeRoute = route;
+      console.log('Navigating to:', activeRoute);
+
+      const sidebar = (e.target as HTMLElement).closest("ag-sidebar");
+
+      // Update top-level nav buttons
+      const buttons = sidebar?.querySelectorAll(".nav-button");
+      buttons?.forEach((btn) => {
+        // For parent items of submenus, we might want to keep them active if a child is active
+        // But for this simple example, we'll just track exact matches
+        const isActive = btn.getAttribute("data-route") === route;
+        btn.classList.toggle("active", isActive);
+        if (isActive) {
+          btn.setAttribute("aria-current", "page");
+        } else {
+          btn.removeAttribute("aria-current");
+        }
+      });
+
+      // Update sublinks (both inline and in popovers)
+      // Note: In a real app, you might need to query popovers separately if they are ported to body
+      // But here they are in the DOM tree
+      const sublinks = sidebar?.querySelectorAll(".nav-sublink");
+      sublinks?.forEach((link) => {
+        const isActive = link.getAttribute("data-route") === route;
+        link.classList.toggle("active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    const handleSubmenuToggle = (e: Event) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const button = e.currentTarget as HTMLElement;
+      const navItem = button.closest('ag-sidebar-nav-item');
+      const submenu = navItem?.querySelector('ag-sidebar-nav-submenu') as HTMLElement;
+
+      if (!submenu) return;
+
+      const isCurrentlyExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      if (isCurrentlyExpanded) {
+        button.setAttribute('aria-expanded', 'false');
+        submenu.removeAttribute('open');
+      } else {
+        button.setAttribute('aria-expanded', 'true');
+        submenu.setAttribute('open', '');
+      }
+    };
+
+    return html`
+      <div
+        style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;"
+      >
+        <ag-sidebar
+          ?open=${args.open}
+          ?collapsed=${args.collapsed}
+          ?show-mobile-toggle=${args["showMobileToggle"]}
+        >
+          <h2
+            slot="header-start"
+            style="margin: 0; font-size: 1.125rem; font-weight: 600;"
+          >
+            Navigation
+          </h2>
+          <button
+            slot="header-toggle"
+            @click=${(e: Event) => {
+        const sidebar = (e.target as HTMLElement).closest(
+          "ag-sidebar"
+        ) as any;
+        sidebar?.toggleCollapse();
+      }}
+            style="background: none; border: none; padding: 8px 0; cursor: pointer; display: flex; align-items: center; color: inherit;"
+            aria-label="Toggle sidebar"
+          >
+            ${PanelIcon()}
+          </button>
+
+          <ag-sidebar-nav>
+            <ag-sidebar-nav-item>
+              <button
+                class="nav-button active"
+                aria-current="page"
+                data-route="/dashboard"
+                @click=${handleNavClick("/dashboard")}
+              >
+                <ag-icon no-fill>${createElement(Home)}</ag-icon>
+                <span class="nav-label">Dashboard</span>
+              </button>
+            </ag-sidebar-nav-item>
+
+            <ag-sidebar-nav-item>
+              <button
+                class="nav-button"
+                data-route="/projects"
+                @click=${handleNavClick("/projects")}
+              >
+                <ag-icon no-fill>${createElement(Folder)}</ag-icon>
+                <span class="nav-label">Projects</span>
+              </button>
+            </ag-sidebar-nav-item>
+
+            <ag-sidebar-nav-item>
+              <button
+                class="nav-button"
+                data-route="/team"
+                @click=${handleNavClick("/team")}
+              >
+                <ag-icon no-fill>${createElement(User)}</ag-icon>
+                <span class="nav-label">Team</span>
+              </button>
+            </ag-sidebar-nav-item>
+
+            <!-- Settings with Submenu -->
+            <ag-sidebar-nav-item>
+              <!-- Expanded Mode Trigger -->
+              <button
+                class="nav-button nav-button-expanded"
+                aria-expanded="false"
+                @click=${handleSubmenuToggle}
+              >
+                <ag-icon no-fill>${createElement(Settings)}</ag-icon>
+                <span class="nav-label">Settings</span>
+                <span class="chevron"><ag-icon no-fill>${createElement(ChevronRight)}</ag-icon></span>
+              </button>
+
+              <!-- Collapsed Mode Trigger (Popover) -->
+              <ag-popover
+                class="nav-button-collapsed"
+                placement="right-start"
+                trigger-type="click"
+                distance="8"
+                ?arrow=${true}
+                .showHeader=${false}
+              >
+                <button slot="trigger" class="nav-button">
+                  <ag-icon no-fill>${createElement(Settings)}</ag-icon>
+                  <span class="nav-label">Settings</span>
+                  <span class="collapsed-indicator">
+                    <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+
+                <div slot="content" class="popover-submenu-content">
+                  <a href="#" class="nav-sublink" data-route="/settings/profile" @click=${handleNavClick("/settings/profile")}>Profile</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/billing" @click=${handleNavClick("/settings/billing")}>Billing</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/security" @click=${handleNavClick("/settings/security")}>Security</a>
+                </div>
+              </ag-popover>
+
+              <!-- Inline Submenu -->
+              <ag-sidebar-nav-submenu>
+                <a class="nav-sublink" href="#" data-route="/settings/profile" @click=${handleNavClick("/settings/profile")}>Profile</a>
+                <a class="nav-sublink" href="#" data-route="/settings/billing" @click=${handleNavClick("/settings/billing")}>Billing</a>
+                <a class="nav-sublink" href="#" data-route="/settings/security" @click=${handleNavClick("/settings/security")}>Security</a>
+              </ag-sidebar-nav-submenu>
+            </ag-sidebar-nav-item>
+          </ag-sidebar-nav>
+        </ag-sidebar>
+
+        <main style="flex: 1; padding: 2rem; overflow: auto;">
+          <h1>Active Item Tracking</h1>
+          <p>Click navigation items to see the active state change.</p>
+          <ul>
+            <li>
+              <strong>Active styling:</strong> Background color and font weight
+              change
+            </li>
+            <li>
+              <strong>Submenus:</strong> Works for inline submenus and collapsed popover menus
+            </li>
+            <li>
+              <strong>Accessibility:</strong>
+              <code>aria-current="page"</code> is set on active item
+            </li>
+          </ul>
+          <p>
+            <strong>In a real app:</strong> Your router (React Router, Vue
+            Router, etc.) would manage the active state. This example simulates
+            that behavior with vanilla JavaScript.
+          </p>
+        </main>
+      </div>
+      <style>
+        /* Active State Styles */
+        .nav-button.active,
+        .nav-button[aria-current="page"],
+        .nav-sublink.active,
+        .nav-sublink[aria-current="page"] {
+          background: var(--ag-primary-background);
+          color: var(--ag-primary-text);
+          font-weight: 500;
+        }
+
+        /* Essential Sidebar Styles for Collapse Behavior */
+        .nav-button ag-icon {
+          flex-shrink: 0;
+        }
+        .nav-button .nav-label {
+          flex-grow: 1;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .nav-button .chevron {
+          margin-left: auto;
+          transition: transform var(--ag-fx-duration-md);
+        }
+        .nav-button[aria-expanded="true"] .chevron ag-icon {
+          transform: rotate(90deg);
+        }
+
+        /* Collapsed state indicator - small corner arrow */
+        .nav-button .collapsed-indicator {
+          display: none;
+          position: absolute;
+          bottom: -3px;
+          right: 0px;
+          width: var(--ag-space-3);
+          height: var(--ag-space-3);
+          background: transparent;
+          border-radius: 2px;
+          pointer-events: none;
+        }
+        
+        .nav-button .collapsed-indicator svg {
+          width: var(--ag-space-3);
+          height: var(--ag-space-3);
+          color: var(--ag-text-muted);
+          transform: rotate(315deg)
+        }
+
+        /* Collapsed state (rail mode) styles */
+        ag-sidebar[collapsed] .nav-button {
+          justify-content: center;
+          padding-inline: var(--ag-space-2);
+        }
+        
+        .nav-button .nav-label,
+        .nav-button .chevron {
+          will-change: opacity, transform;
+          transition: opacity var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
+                      transform var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out);
+          transform-origin: left center;
+        }
+        
+        ag-sidebar[collapsed] .nav-button .nav-label,
+        ag-sidebar[collapsed] .nav-button .chevron {
+          opacity: 0;
+          width: 0;
+          transform: scaleX(0);
+          overflow: hidden;
+          white-space: nowrap;
+          pointer-events: none;
+        }
+
+        /* Show indicator for items with submenus when collapsed */
+        ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        /* Hide inline submenus in collapsed mode */
+        ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu) {
+          display: none !important;
+        }
+
+        /* Completely hide popover element when not collapsed */
+        ag-sidebar:not([collapsed]) ag-popover {
+          display: none !important;
+        }
+
+        /* Show the collapsed-mode button only when collapsed */
+        ag-sidebar[collapsed] .nav-button-expanded {
+          display: none !important;
+        }
+
+        /* Show the expanded-mode button only when not collapsed */
+        ag-sidebar:not([collapsed]) .nav-button-collapsed {
+          display: none !important;
+        }
+        
+        /* Ensure popover content is styled correctly */
+        .popover-submenu-content .nav-sublink {
+          display: block;
+          padding: var(--ag-space-2) var(--ag-space-3);
+          border-radius: var(--ag-radius-sm);
+          text-decoration: none;
+          color: var(--ag-text-primary);
+          font-size: var(--ag-font-size-sm);
+          transition: background 0.15s;
+          white-space: nowrap;
+        }
+        
+        .popover-submenu-content .nav-sublink:hover {
+          background: var(--ag-background-secondary);
+        }
+        
+        /* Re-apply active state for popover content specifically if needed due to specificity */
+        .popover-submenu-content .nav-sublink.active {
+          background: var(--ag-primary-background);
+          color: var(--ag-primary-text);
+        }
+      </style>
+    `;
+  },
+};
