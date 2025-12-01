@@ -161,9 +161,19 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       background: var(--ag-sidebar-background);
     }
     
+    :host([collapsed]) {
+      overflow: visible;
+    }
+      
+    /* Allow popovers to escape sidebar in collapsed mode */
+    :host([collapsed]) .sidebar-content {
+      overflow: visible;
+    }
+
     /* Set collapsed width globally so it applies before media queries kick in */
     :host([collapsed]) .sidebar-container {
       width: var(--ag-sidebar-width-collapsed);
+      overflow: visible;
     }
 
     /* Variant: Bordered */
