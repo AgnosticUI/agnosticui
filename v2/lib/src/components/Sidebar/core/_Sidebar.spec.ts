@@ -69,23 +69,23 @@ describe('AgSidebar', () => {
 
     it('should render header slot content', async () => {
       const header = document.createElement('div');
-      header.setAttribute('slot', 'header');
+      header.setAttribute('slot', 'ag-header');
       header.textContent = 'Header';
       sidebar.appendChild(header);
       await sidebar.updateComplete;
 
-      const slot = sidebar.shadowRoot!.querySelector('slot[name="header"]');
+      const slot = sidebar.shadowRoot!.querySelector('slot[name="ag-header"]');
       expect(slot).toBeTruthy();
     });
 
     it('should render footer slot content', async () => {
       const footer = document.createElement('div');
-      footer.setAttribute('slot', 'footer');
+      footer.setAttribute('slot', 'ag-footer');
       footer.textContent = 'Footer';
       sidebar.appendChild(footer);
       await sidebar.updateComplete;
 
-      const slot = sidebar.shadowRoot!.querySelector('slot[name="footer"]');
+      const slot = sidebar.shadowRoot!.querySelector('slot[name="ag-footer"]');
       expect(slot).toBeTruthy();
     });
   });
