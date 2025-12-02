@@ -8,7 +8,7 @@ import {
   VueSidebarNavSubmenu,
   VueSidebarNavPopoverSubmenu,
 } from "agnosticui-core/sidebar-nav/vue";
-import VuePopover from "agnosticui-core/popover/vue";
+import { VuePopover } from "agnosticui-core/popover/vue";
 import {
   Home,
   Folder,
@@ -93,14 +93,14 @@ const navButtonStyles = `
 `;
 
 // Icon component helper for rendering Lucide icons
-const PanelIcon = () => ({
+const PanelIcon = {
   template: `
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <rect width="18" height="18" x="3" y="3" rx="2"/>
       <path d="M9 3v18"/>
     </svg>
   `,
-});
+};
 
 const meta = {
   title: "AgnosticUI Vue/Sidebar",
