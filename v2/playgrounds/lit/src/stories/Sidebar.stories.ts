@@ -615,6 +615,10 @@ export const DisableCompactMode: Story = {
  * Active Item Tracking Example
  * Demonstrates how to handle active state for navigation items, including submenus
  */
+/**
+ * Active Item Tracking Example
+ * Demonstrates how to handle active state for navigation items, including submenus
+ */
 export const WithActiveItemTracking: Story = {
   render: (args) => {
     // Simulated route state (in a real app, this would come from your router)
@@ -630,8 +634,6 @@ export const WithActiveItemTracking: Story = {
       // Update top-level nav buttons
       const buttons = sidebar?.querySelectorAll(".nav-button");
       buttons?.forEach((btn) => {
-        // For parent items of submenus, we might want to keep them active if a child is active
-        // But for this simple example, we'll just track exact matches
         const isActive = btn.getAttribute("data-route") === route;
         btn.classList.toggle("active", isActive);
         if (isActive) {
@@ -642,8 +644,6 @@ export const WithActiveItemTracking: Story = {
       });
 
       // Update sublinks (both inline and in popovers)
-      // Note: In a real app, you might need to query popovers separately if they are ported to body
-      // But here they are in the DOM tree
       const sublinks = sidebar?.querySelectorAll(".nav-sublink");
       sublinks?.forEach((link) => {
         const isActive = link.getAttribute("data-route") === route;
@@ -665,7 +665,8 @@ export const WithActiveItemTracking: Story = {
 
       if (!submenu) return;
 
-      const isCurrentlyExpanded = button.getAttribute('aria-expanded') === 'true';
+      const currentAriaExpanded = button.getAttribute('aria-expanded');
+      const isCurrentlyExpanded = currentAriaExpanded === 'true';
 
       if (isCurrentlyExpanded) {
         button.setAttribute('aria-expanded', 'false');
@@ -677,6 +678,96 @@ export const WithActiveItemTracking: Story = {
     };
 
     return html`
+      <style>
+        /* Active State Styles */
+        .nav-button.active,
+        .nav-button[aria-current="page"],
+        .nav-sublink.active,
+        .nav-sublink[aria-current="page"] {
+          background: var(--ag-primary-background);
+          color: var(--ag-primary-text);
+          font-weight: 500;
+        }
+
+        .nav-button ag-icon {
+          flex-shrink: 0;
+        }
+
+        .nav-button .chevron {
+          transition: transform var(--ag-fx-duration-md);
+        }
+        .nav-button[aria-expanded="true"] .chevron ag-icon {
+          transform: rotate(90deg);
+        }
+
+        /* Collapsed state indicator - small corner arrow */
+        .nav-button .collapsed-indicator {
+          display: none;
+          position: absolute;
+          bottom: -3px;
+          right: 0px;
+          width: var(--ag-space-3);
+          height: var(--ag-space-3);
+        }
+        
+        .nav-button .collapsed-indicator svg {
+          color: var(--ag-text-muted);
+          transform: rotate(315deg)
+        }
+
+        /* Collapsed state (rail mode) styles */
+        ag-sidebar[collapsed] .nav-button {
+          padding-inline: var(--ag-space-2);
+        }
+        
+        .nav-button .nav-label {
+          flex-grow: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .nav-button .nav-label,
+        .nav-button .chevron {
+          transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+          white-space: nowrap;
+        }
+        
+        ag-sidebar[collapsed] .nav-button .nav-label,
+        ag-sidebar[collapsed] .nav-button .chevron {
+          opacity: 0;
+          pointer-events: none;
+          display: none;
+        }
+
+        /* Show indicator for submenus when collapsed */
+        ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
+          display: block;
+        }
+
+        .nav-button-collapsed::part(ag-popover-body) {
+          padding: var(--ag-space-1);
+        }
+
+        /* Hide inline submenus in collapsed mode */
+        ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu) {
+          display: none !important;
+        }
+
+        /* Completely hide popover element when not collapsed */
+        ag-sidebar:not([collapsed]) ag-popover {
+          display: none !important;
+        }
+
+        /* Show the collapsed-mode button only when collapsed */
+        ag-sidebar[collapsed] .nav-button-expanded {
+          display: none !important;
+        }
+
+        /* Show the expanded-mode button only when not collapsed */
+        ag-sidebar:not([collapsed]) .nav-button-collapsed {
+          display: none !important;
+        }
+      </style>
       <div
         style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;"
       >
@@ -694,11 +785,9 @@ export const WithActiveItemTracking: Story = {
           <button
             slot="header-toggle"
             @click=${(e: Event) => {
-        const sidebar = (e.target as HTMLElement).closest(
-          "ag-sidebar"
-        ) as any;
-        sidebar?.toggleCollapse();
-      }}
+              const sidebar = (e.target as HTMLElement).closest("ag-sidebar") as any;
+              sidebar?.toggleCollapse();
+            }}
             style="background: none; border: none; padding: 8px 0; cursor: pointer; display: flex; align-items: center; color: inherit;"
             aria-label="Toggle sidebar"
           >
@@ -812,111 +901,6 @@ export const WithActiveItemTracking: Story = {
           </p>
         </main>
       </div>
-      <style>
-        /* Active State Styles */
-        .nav-button.active,
-        .nav-button[aria-current="page"],
-        .nav-sublink.active,
-        .nav-sublink[aria-current="page"] {
-          background: var(--ag-primary-background);
-          color: var(--ag-primary-text);
-          font-weight: 500;
-        }
-
-        /* Essential Sidebar Styles for Collapse Behavior */
-        .nav-button ag-icon {
-          flex-shrink: 0;
-        }
-        .nav-button .nav-label {
-          flex-grow: 1;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        .nav-button .chevron {
-          margin-left: auto;
-          transition: transform var(--ag-fx-duration-md);
-        }
-        .nav-button[aria-expanded="true"] .chevron ag-icon {
-          transform: rotate(90deg);
-        }
-
-        /* Collapsed state indicator - small corner arrow */
-        .nav-button .collapsed-indicator {
-          display: none;
-          position: absolute;
-          bottom: -3px;
-          right: 0px;
-          width: var(--ag-space-3);
-          height: var(--ag-space-3);
-          background: transparent;
-          border-radius: 2px;
-          pointer-events: none;
-        }
-        
-        .nav-button .collapsed-indicator svg {
-          width: var(--ag-space-3);
-          height: var(--ag-space-3);
-          color: var(--ag-text-muted);
-          transform: rotate(315deg)
-        }
-
-        /* Collapsed state (rail mode) styles */
-        ag-sidebar[collapsed] .nav-button {
-          justify-content: center;
-          padding-inline: var(--ag-space-2);
-          gap: unset;
-        }
-        
-        .nav-button .nav-label,
-        .nav-button .chevron {
-          will-change: opacity, transform;
-          transition: opacity var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
-                      transform var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out);
-          transform-origin: left center;
-        }
-        
-        ag-sidebar[collapsed] .nav-button .nav-label,
-        ag-sidebar[collapsed] .nav-button .chevron {
-          opacity: 0;
-          width: 0;
-          transform: scaleX(0);
-          overflow: hidden;
-          white-space: nowrap;
-          pointer-events: none;
-        }
-
-        /* Show indicator for items with submenus when collapsed */
-        ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        /* Hide inline submenus in collapsed mode */
-        ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu) {
-          display: none !important;
-        }
-
-        /* Completely hide popover element when not collapsed */
-        ag-sidebar:not([collapsed]) ag-popover {
-          display: none !important;
-        }
-
-        /* Show the collapsed-mode button only when collapsed */
-        ag-sidebar[collapsed] .nav-button-expanded {
-          display: none !important;
-        }
-
-        /* Show the expanded-mode button only when not collapsed */
-        ag-sidebar:not([collapsed]) .nav-button-collapsed {
-          display: none !important;
-        }
-        
-        .nav-button-collapsed::part(ag-popover-body) {
-          padding: var(--ag-space-1);
-        }
-      </style>
     `;
   },
 };
