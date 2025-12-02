@@ -998,6 +998,7 @@ export const DisableCompactMode: Story = {
       Folder,
       User,
       Settings,
+      Command,
     },
     setup() {
       // Inject styles on mount
@@ -1011,7 +1012,14 @@ export const DisableCompactMode: Story = {
         }
       });
 
-      return { args, PanelIcon };
+      const handleToggle = (e: Event) => {
+        const sidebar = (e.target as HTMLElement).closest('ag-sidebar');
+        if (sidebar && 'toggleResponsive' in sidebar) {
+          (sidebar as { toggleResponsive: () => void }).toggleResponsive();
+        }
+      };
+
+      return { args, PanelIcon, handleToggle };
     },
     template: `
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
@@ -1024,6 +1032,15 @@ export const DisableCompactMode: Story = {
           <h2 slot="ag-header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
             AI Studio
           </h2>
+          <button
+            type="button"
+            slot="ag-header-toggle"
+            @click="handleToggle"
+            style="background: none; border: none; padding: 8px 0; cursor: pointer; display: flex; align-items: center; color: inherit;"
+            aria-label="Toggle sidebar"
+          >
+            <Command :size="20" />
+          </button>
 
           <VueSidebarNav>
             <VueSidebarNavItem>
