@@ -1,4 +1,4 @@
-import { css, LitElement, html, type CSSResultGroup } from 'lit';
+import { LitElement, html, type CSSResultGroup } from 'lit';
 import { NAV_SUBLINK_STYLES } from '../../../styles/nav-sublink-styles';
 
 export class AgSidebarNavPopoverSubmenu extends LitElement {
