@@ -83,39 +83,35 @@ const PanelIcon = () => html`
   </svg>
 `;
 
+// Shared submenu toggle handler
+const handleSubmenuToggle = (e: Event) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  const button = e.currentTarget as HTMLElement;
+  const navItem = button.closest('ag-sidebar-nav-item');
+  const submenu = navItem?.querySelector('ag-sidebar-nav-submenu') as HTMLElement;
+
+  if (!submenu) {
+    console.warn('No submenu found');
+    return;
+  }
+
+  const currentAriaExpanded = button.getAttribute('aria-expanded');
+  const isCurrentlyExpanded = currentAriaExpanded === 'true';
+
+  if (isCurrentlyExpanded) {
+    button.setAttribute('aria-expanded', 'false');
+    submenu.removeAttribute('open');
+    console.log('→ Collapsing submenu');
+  } else {
+    button.setAttribute('aria-expanded', 'true');
+    submenu.setAttribute('open', '');
+    console.log('→ Expanding submenu');
+  }
+};
+
 const createNavContent = () => {
-  // Define the toggle handler outside the template for better debugging
-  const handleSubmenuToggle = (e: Event) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const button = e.currentTarget as HTMLElement;
-    const navItem = button.closest('ag-sidebar-nav-item');
-    const submenu = navItem?.querySelector('ag-sidebar-nav-submenu') as HTMLElement;
-
-    if (!submenu) {
-      console.warn('No submenu found');
-      return;
-    }
-
-    // Check current state - be explicit about string comparison
-    const currentAriaExpanded = button.getAttribute('aria-expanded');
-    const isCurrentlyExpanded = currentAriaExpanded === 'true';
-
-    // Toggle to opposite state
-    if (isCurrentlyExpanded) {
-      // Currently expanded, so collapse it
-      button.setAttribute('aria-expanded', 'false');
-      submenu.removeAttribute('open');
-      console.log('→ Collapsing submenu');
-    } else {
-      // Currently collapsed, so expand it
-      button.setAttribute('aria-expanded', 'true');
-      submenu.setAttribute('open', '');
-      console.log('→ Expanding submenu');
-    }
-  };
-
   return html`
     <style>
       .nav-button ag-icon {
@@ -134,14 +130,14 @@ const createNavContent = () => {
         display: none;
         position: absolute;
         bottom: -3px;
-        right: 0px;
+        right: 0;
         width: var(--ag-space-3);
         height: var(--ag-space-3);
       }
       
       .nav-button .collapsed-indicator svg {
         color: var(--ag-text-muted);
-        transform: rotate(315deg)
+        transform: rotate(315deg);
       }
 
       /* Collapsed state (rail mode) styles */
@@ -177,22 +173,10 @@ const createNavContent = () => {
         padding: var(--ag-space-1);
       }
 
-      /* Hide inline submenus in collapsed mode */
-      ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu) {
-        display: none !important;
-      }
-
-      /* Completely hide popover element when not collapsed */
-      ag-sidebar:not([collapsed]) ag-popover {
-        display: none !important;
-      }
-
-      /* Show the collapsed-mode button only when collapsed */
-      ag-sidebar[collapsed] .nav-button-expanded {
-        display: none !important;
-      }
-
-      /* Show the expanded-mode button only when not collapsed */
+      /* Hide/show patterns for collapsed/expanded modes */
+      ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
+      ag-sidebar:not([collapsed]) ag-popover,
+      ag-sidebar[collapsed] .nav-button-expanded,
       ag-sidebar:not([collapsed]) .nav-button-collapsed {
         display: none !important;
       }
@@ -205,7 +189,7 @@ const createNavContent = () => {
         </button>
       </ag-sidebar-nav-item>
 
-      <!-- Projects with submenu - FIXED TOGGLE LOGIC -->
+      <!-- Projects with submenu -->
       <ag-sidebar-nav-item>
         <!-- Button for EXPANDED mode -->
         <button
@@ -237,18 +221,18 @@ const createNavContent = () => {
             </span>
           </button>
 
-          <ag-sidebar-nav-popover-submenu slot="content">
+          <ag-sidebar-nav-popover-submenu slot="content" class="popover-submenu">
             <a href="#" class="nav-sublink">Project Alpha</a>
             <a href="#" class="nav-sublink">Project Beta</a>
             <a href="#" class="nav-sublink">Project Gamma</a>
-          </ag-sidebar-nav-popover-submenu slot="content">
+          </ag-sidebar-nav-popover-submenu>
         </ag-popover>
 
         <!-- Inline submenu for expanded mode -->
         <ag-sidebar-nav-submenu>
-          <a class="nav-sublink" href="#">Project Alpha</a></div>
-          <a class="nav-sublink" href="#">Project Beta</a></div>
-          <a class="nav-sublink" href="#">Project Gamma</a></div>
+          <a class="nav-sublink" href="#">Project Alpha</a>
+          <a class="nav-sublink" href="#">Project Beta</a>
+          <a class="nav-sublink" href="#">Project Gamma</a>
         </ag-sidebar-nav-submenu>
       </ag-sidebar-nav-item>
 
@@ -259,7 +243,7 @@ const createNavContent = () => {
         </button>
       </ag-sidebar-nav-item>
 
-      <!-- Settings with submenu - FIXED TOGGLE LOGIC -->
+      <!-- Settings with submenu -->
       <ag-sidebar-nav-item>
         <!-- Button for EXPANDED mode -->
         <button
@@ -291,7 +275,7 @@ const createNavContent = () => {
             </span>
           </button>
 
-          <ag-sidebar-nav-popover-submenu slot="content">
+          <ag-sidebar-nav-popover-submenu slot="content" class="popover-submenu">
             <a href="#" class="nav-sublink">Profile</a>
             <a href="#" class="nav-sublink">Billing</a>
             <a href="#" class="nav-sublink">Security</a>
@@ -300,10 +284,10 @@ const createNavContent = () => {
         </ag-popover>
 
         <ag-sidebar-nav-submenu>
-          <a class="nav-sublink" href="#">Profile</a></div>
-          <a class="nav-sublink" href="#">Billing</a></div>
-          <a class="nav-sublink" href="#">Security</a></div>
-          <a class="nav-sublink" href="#">Preferences</a></div>
+          <a class="nav-sublink" href="#">Profile</a>
+          <a class="nav-sublink" href="#">Billing</a>
+          <a class="nav-sublink" href="#">Security</a>
+          <a class="nav-sublink" href="#">Preferences</a>
         </ag-sidebar-nav-submenu>
       </ag-sidebar-nav-item>
     </ag-sidebar-nav>
@@ -320,12 +304,12 @@ export const Default: Story = {
         ?open=${args.open}
         ?collapsed=${args.collapsed}
         .position=${args.position}
-        aria-label=${args['ariaLabel']}
+        aria-label=${args.ariaLabel}
         .variant=${args.variant}
-        ?no-transition=${args['noTransition']}
+        ?no-transition=${args.noTransition}
         .width=${args.width}
-        ?show-mobile-toggle=${args['showMobileToggle']}
-        .mobile-toggle-position=${args['mobileTogglePosition']}
+        ?show-mobile-toggle=${args.showMobileToggle}
+        .mobile-toggle-position=${args.mobileTogglePosition}
       >
         <h2 slot="header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
           My Application
@@ -333,9 +317,9 @@ export const Default: Story = {
         <button 
           slot="header-toggle"
           @click=${(e: Event) => {
-      const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
-      sidebar?.toggleCollapse();
-    }}
+            const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
+            sidebar?.toggleCollapse();
+          }}
           style="background: none; border: none; padding: 8px 0; cursor: pointer; display: flex; align-items: center; color: inherit;"
           aria-label="Toggle sidebar"
         >
@@ -372,7 +356,7 @@ export const WithHeaderActions: Story = {
       <ag-sidebar
         ?open=${args.open}
         ?collapsed=${args.collapsed}
-        ?show-mobile-toggle=${args['showMobileToggle']}
+        ?show-mobile-toggle=${args.showMobileToggle}
       >
         <div slot="header-start" style="display: flex; align-items: center; gap: 0.75rem; min-width: 0;">
           <div style="width: 32px; height: 32px; background: var(--ag-primary-100); color: var(--ag-primary-600); border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
@@ -393,9 +377,9 @@ export const WithHeaderActions: Story = {
         <button 
           slot="header-toggle"
           @click=${(e: Event) => {
-      const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
-      sidebar?.toggleCollapse();
-    }}
+            const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
+            sidebar?.toggleCollapse();
+          }}
           style="background: none; border: none; padding: 8px; cursor: pointer; display: flex; align-items: center;"
           aria-label="Toggle sidebar"
         >
@@ -434,7 +418,7 @@ export const WithBuiltInToggle: Story = {
         ?open=${args.open}
         ?collapsed=${args.collapsed}
         ?show-header-toggle=${true}
-        ?show-mobile-toggle=${args['showMobileToggle']}
+        ?show-mobile-toggle=${args.showMobileToggle}
       >
         <h2 slot="header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
           Built-in Toggle
@@ -520,15 +504,15 @@ export const LegacyHeaderSlot: Story = {
       <ag-sidebar
         ?open=${args.open}
         ?collapsed=${args.collapsed}
-        ?show-mobile-toggle=${args['showMobileToggle']}
+        ?show-mobile-toggle=${args.showMobileToggle}
       >
         <button 
           slot="header" 
           class="logo-toggle"
           @click=${(e: Event) => {
-      const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
-      sidebar?.toggleCollapse();
-    }}
+            const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
+            sidebar?.toggleCollapse();
+          }}
           aria-label="Toggle sidebar"
         >
           <div class="logo-icon">A</div>
@@ -569,7 +553,7 @@ export const DisableCompactMode: Story = {
       <ag-sidebar
         disable-compact-mode
         ?open=${args.open !== undefined ? args.open : true}
-        ?show-mobile-toggle=${args['showMobileToggle']}
+        ?show-mobile-toggle=${args.showMobileToggle}
       >
         <h2 slot="header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
           AI Studio
@@ -577,9 +561,9 @@ export const DisableCompactMode: Story = {
         <button 
           slot="header-toggle"
           @click=${(e: Event) => {
-      const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
-      sidebar?.toggleResponsive();
-    }}
+            const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
+            sidebar?.toggleResponsive();
+          }}
           style="background: none; border: none; padding: 8px 0; cursor: pointer; display: flex; align-items: center; color: inherit;"
           aria-label="Toggle sidebar"
         >
@@ -610,11 +594,6 @@ export const DisableCompactMode: Story = {
     </div>
   `,
 };
-
-/**
- * Active Item Tracking Example
- * Demonstrates how to handle active state for navigation items, including submenus
- */
 /**
  * Active Item Tracking Example
  * Demonstrates how to handle active state for navigation items, including submenus
@@ -679,11 +658,8 @@ export const WithActiveItemTracking: Story = {
 
     return html`
       <style>
-        /* Active State Styles */
         .nav-button.active,
-        .nav-button[aria-current="page"],
-        .nav-sublink.active,
-        .nav-sublink[aria-current="page"] {
+        .nav-sublink.active {
           background: var(--ag-primary-background);
           color: var(--ag-primary-text);
           font-weight: 500;
@@ -700,22 +676,20 @@ export const WithActiveItemTracking: Story = {
           transform: rotate(90deg);
         }
 
-        /* Collapsed state indicator - small corner arrow */
         .nav-button .collapsed-indicator {
           display: none;
           position: absolute;
           bottom: -3px;
-          right: 0px;
+          right: 0;
           width: var(--ag-space-3);
           height: var(--ag-space-3);
         }
         
         .nav-button .collapsed-indicator svg {
           color: var(--ag-text-muted);
-          transform: rotate(315deg)
+          transform: rotate(315deg);
         }
 
-        /* Collapsed state (rail mode) styles */
         ag-sidebar[collapsed] .nav-button {
           padding-inline: var(--ag-space-2);
         }
@@ -739,7 +713,6 @@ export const WithActiveItemTracking: Story = {
           display: none;
         }
 
-        /* Show indicator for submenus when collapsed */
         ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
           display: block;
         }
@@ -748,22 +721,9 @@ export const WithActiveItemTracking: Story = {
           padding: var(--ag-space-1);
         }
 
-        /* Hide inline submenus in collapsed mode */
-        ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu) {
-          display: none !important;
-        }
-
-        /* Completely hide popover element when not collapsed */
-        ag-sidebar:not([collapsed]) ag-popover {
-          display: none !important;
-        }
-
-        /* Show the collapsed-mode button only when collapsed */
-        ag-sidebar[collapsed] .nav-button-expanded {
-          display: none !important;
-        }
-
-        /* Show the expanded-mode button only when not collapsed */
+        ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
+        ag-sidebar:not([collapsed]) ag-popover,
+        ag-sidebar[collapsed] .nav-button-expanded,
         ag-sidebar:not([collapsed]) .nav-button-collapsed {
           display: none !important;
         }
@@ -861,7 +821,7 @@ export const WithActiveItemTracking: Story = {
                   </span>
                 </button>
 
-                <ag-sidebar-nav-popover-submenu slot="content">
+                <ag-sidebar-nav-popover-submenu slot="content" class="popover-submenu">
                   <a href="#" class="nav-sublink" data-route="/settings/profile" @click=${handleNavClick("/settings/profile")}>Profile</a>
                   <a href="#" class="nav-sublink" data-route="/settings/billing" @click=${handleNavClick("/settings/billing")}>Billing</a>
                   <a href="#" class="nav-sublink" data-route="/settings/security" @click=${handleNavClick("/settings/security")}>Security</a>
