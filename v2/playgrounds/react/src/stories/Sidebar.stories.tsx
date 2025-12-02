@@ -8,11 +8,7 @@ import {
   ReactSidebarNavSubmenu,
   ReactSidebarNavPopoverSubmenu,
 } from 'agnosticui-core/react/sidebar-nav';
-import {
-  ReactPopover,
-  PopoverTrigger,
-  PopoverContent,
-} from 'agnosticui-core/popover/react';
+import { ReactPopover } from 'agnosticui-core/popover/react';
 import { Home, Folder, User, Settings, Command, ChevronRight } from 'lucide-react';
 
 const meta: Meta<ReactSidebarProps> = {
@@ -241,24 +237,20 @@ const createNavContent = () => {
             arrow={true}
             showHeader={false}
           >
-            <PopoverTrigger>
-              <button type="button" className="nav-button">
-                <Folder size={20} />
-                <span className="nav-label">Projects</span>
-                <span className="collapsed-indicator">
-                  <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 3l2 2 2-2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-                  </svg>
-                </span>
-              </button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <ReactSidebarNavPopoverSubmenu className="popover-submenu">
-                <a href="#" className="nav-sublink">Project Alpha</a>
-                <a href="#" className="nav-sublink">Project Beta</a>
-                <a href="#" className="nav-sublink">Project Gamma</a>
-              </ReactSidebarNavPopoverSubmenu>
-            </PopoverContent>
+            <button slot="trigger" type="button" className="nav-button">
+              <Folder size={20} />
+              <span className="nav-label">Projects</span>
+              <span className="collapsed-indicator">
+                <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 3l2 2 2-2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <ReactSidebarNavPopoverSubmenu slot="content" className="popover-submenu">
+              <a href="#" className="nav-sublink">Project Alpha</a>
+              <a href="#" className="nav-sublink">Project Beta</a>
+              <a href="#" className="nav-sublink">Project Gamma</a>
+            </ReactSidebarNavPopoverSubmenu>
           </ReactPopover>
 
           {/* Inline submenu for expanded mode */}
@@ -299,25 +291,21 @@ const createNavContent = () => {
             arrow={true}
             showHeader={false}
           >
-            <PopoverTrigger>
-              <button type="button" className="nav-button">
-                <Settings size={20} />
-                <span className="nav-label">Settings</span>
-                <span className="collapsed-indicator">
-                  <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 3l2 2 2-2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-                  </svg>
-                </span>
-              </button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <ReactSidebarNavPopoverSubmenu className="popover-submenu">
-                <a href="#" className="nav-sublink">Profile</a>
-                <a href="#" className="nav-sublink">Billing</a>
-                <a href="#" className="nav-sublink">Security</a>
-                <a href="#" className="nav-sublink">Preferences</a>
-              </ReactSidebarNavPopoverSubmenu>
-            </PopoverContent>
+            <button slot="trigger" type="button" className="nav-button">
+              <Settings size={20} />
+              <span className="nav-label">Settings</span>
+              <span className="collapsed-indicator">
+                <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 3l2 2 2-2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <ReactSidebarNavPopoverSubmenu slot="content" className="popover-submenu">
+              <a href="#" className="nav-sublink">Profile</a>
+              <a href="#" className="nav-sublink">Billing</a>
+              <a href="#" className="nav-sublink">Security</a>
+              <a href="#" className="nav-sublink">Preferences</a>
+            </ReactSidebarNavPopoverSubmenu>
           </ReactPopover>
 
           <ReactSidebarNavSubmenu>
@@ -878,24 +866,20 @@ const WithActiveItemTrackingComponent = (args: ReactSidebarProps) => {
                   arrow={true}
                   showHeader={false}
                 >
-                  <PopoverTrigger>
-                    <button type="button" className="nav-button">
-                      <Settings size={20} />
-                      <span className="nav-label">Settings</span>
-                      <span className="collapsed-indicator">
-                        <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M2 3l2 2 2-2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-                        </svg>
-                      </span>
-                    </button>
-                  </PopoverTrigger>
-                  <PopoverContent>
-                    <ReactSidebarNavPopoverSubmenu className="popover-submenu">
-                      <a href="#" className="nav-sublink" data-route="/settings/profile" onClick={handleNavClick('/settings/profile')}>Profile</a>
-                      <a href="#" className="nav-sublink" data-route="/settings/billing" onClick={handleNavClick('/settings/billing')}>Billing</a>
-                      <a href="#" className="nav-sublink" data-route="/settings/security" onClick={handleNavClick('/settings/security')}>Security</a>
-                    </ReactSidebarNavPopoverSubmenu>
-                  </PopoverContent>
+                  <button slot="trigger" type="button" className="nav-button">
+                    <Settings size={20} />
+                    <span className="nav-label">Settings</span>
+                    <span className="collapsed-indicator">
+                      <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3l2 2 2-2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                  <ReactSidebarNavPopoverSubmenu slot="content" className="popover-submenu">
+                    <a href="#" className="nav-sublink" data-route="/settings/profile" onClick={handleNavClick('/settings/profile')}>Profile</a>
+                    <a href="#" className="nav-sublink" data-route="/settings/billing" onClick={handleNavClick('/settings/billing')}>Billing</a>
+                    <a href="#" className="nav-sublink" data-route="/settings/security" onClick={handleNavClick('/settings/security')}>Security</a>
+                  </ReactSidebarNavPopoverSubmenu>
                 </ReactPopover>
 
                 {/* Inline Submenu */}
