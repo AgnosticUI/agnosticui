@@ -640,6 +640,7 @@ export const DisableCompactMode: Story = {
  */
 const WithActiveItemTrackingComponent = (args: ReactSidebarProps) => {
   const [activeRoute, setActiveRoute] = useState('/dashboard');
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleNavClick = (route: string) => (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     e.preventDefault();
@@ -781,10 +782,13 @@ const WithActiveItemTrackingComponent = (args: ReactSidebarProps) => {
         `}</style>
         <div style={{ display: 'flex', height: '500px', border: '1px solid #e5e7eb', borderRadius: '0.5rem', overflow: 'hidden' }}>
           <ReactSidebar
-            open={args.open}
+            open={isOpen}
             collapsed={args.collapsed}
-            showMobileToggle={args.showMobileToggle}
-            onToggle={args.onToggle}
+            showMobileToggle={true}
+            onToggle={(e) => {
+              setIsOpen(e.detail.open);
+              args.onToggle?.(e);
+            }}
             onCollapse={args.onCollapse}
           >
             <h2 slot="ag-header-start" style={{ margin: 0, fontSize: '1.125rem', fontWeight: 600 }}>
