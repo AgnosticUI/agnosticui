@@ -89,9 +89,11 @@ export class Popover extends LitElement implements PopoverProps {
     :host {
       display: inline-block;
       position: relative;
-      --ag-popover-min-width: 200px;
-      --ag-popover-max-width: 400px;
-      --ag-popover-arrow-size: var(--ag-space-2);
+
+      /* Define with fallback only — never hard-code the value */
+      --ag-popover-min-width: var(--ag-popover-min-width, 200px);
+      --ag-popover-max-width: var(--ag-popover-max-width, 400px);
+      --ag-popover-arrow-size: var(--ag-popover-arrow-size, var(--ag-space-2, 8px));
     }
 
     #popover {
