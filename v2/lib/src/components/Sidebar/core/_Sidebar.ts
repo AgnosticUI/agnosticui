@@ -777,15 +777,15 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
           ${this.showHeaderToggle ? html`
             <div class="header-wrapper">
               <div class="header-content">
-                <slot name="header">
+                <slot name="ag-header">
                   <!-- Fallback: if no "header" slot, use composable parts -->
                   <div class="header-layout">
                     <div class="header-start">
-                      <slot name="header-start"></slot>
+                      <slot name="ag-header-start"></slot>
                     </div>
                     <div class="header-end">
-                      <slot name="header-end"></slot>
-                      <slot name="header-toggle"></slot>
+                      <slot name="ag-header-end"></slot>
+                      <slot name="ag-header-toggle"></slot>
                     </div>
                   </div>
                 </slot>
@@ -800,16 +800,16 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
               </button>
             </div>
           ` : html`
-            <slot name="header">
+            <slot name="ag-header">
               <!-- Fallback: if no "header" slot, use composable parts -->
               <div class="header-layout">
                 <div class="header-start">
-                  <slot name="header-start"></slot>
+                  <slot name="ag-header-start"></slot>
                 </div>
                 <div class="header-end">
-                  <slot name="header-end"></slot>
+                  <slot name="ag-header-end"></slot>
                 </div>
-                <slot name="header-toggle"></slot>
+                <slot name="ag-header-toggle"></slot>
               </div>
             </slot>
           `}
@@ -818,7 +818,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
           <slot></slot>
         </div>
         <div part="ag-sidebar-footer" class="sidebar-footer">
-          <slot name="footer"></slot>
+          <slot name="ag-footer"></slot>
         </div>
       </aside>
     `;
