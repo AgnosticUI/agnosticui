@@ -785,7 +785,6 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
                     </div>
                     <div class="header-end">
                       <slot name="ag-header-end"></slot>
-                      <slot name="ag-header-toggle"></slot>
                     </div>
                   </div>
                 </slot>
@@ -808,8 +807,8 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
                 </div>
                 <div class="header-end">
                   <slot name="ag-header-end"></slot>
+                  <slot name="ag-header-toggle"></slot>
                 </div>
-                <slot name="ag-header-toggle"></slot>
               </div>
             </slot>
           `}
