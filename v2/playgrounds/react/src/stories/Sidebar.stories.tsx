@@ -7,7 +7,7 @@ import {
   ReactSidebarNavItem,
   ReactSidebarNavSubmenu,
   ReactSidebarNavPopoverSubmenu,
-} from 'agnosticui-core/react/sidebar-nav';
+} from 'agnosticui-core/sidebar-nav/react';
 import { ReactPopover } from 'agnosticui-core/popover/react';
 import { Home, Folder, User, Settings, Command, ChevronRight } from 'lucide-react';
 

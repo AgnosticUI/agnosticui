@@ -84,11 +84,11 @@
       "types": "./dist/components/SidebarNav/core/SidebarNav.d.ts",
       "import": "./dist/components/SidebarNav/core/SidebarNav.js"
     },
-    "./react/sidebar-nav": {
-      "types": "./dist/components/SidebarNav/react/ReactSidebarNav.d.ts",
-      "import": "./dist/components/SidebarNav/react/ReactSidebarNav.js"
+    "./sidebar-nav/react": {
+      "types": "./dist/components/SidebarNav/react/index.d.ts",
+      "import": "./dist/components/SidebarNav/react/index.js"
     },
-    "./vue/sidebar-nav": {
+    "./sidebar-nav/vue": {
       "types": "./dist/components/SidebarNav/vue/index.d.ts",
       "import": "./dist/components/SidebarNav/vue/index.js"
     },
