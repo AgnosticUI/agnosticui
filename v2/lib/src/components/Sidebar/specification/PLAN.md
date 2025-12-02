@@ -92,7 +92,7 @@ STOP! Once you've created the v2/playgrounds/react/src/stories/Sidebar.stories.t
 
 ## React Storybooks Issues
 
-### Critical Issues Identified (2025-12-01)
+### Critical Issues Identified (2025-12-01) - Status Update (2025-12-02)
 
 #### 1. **Submenu Toggle Not Working (Expanded Mode)**
 - **Issue**: Clicking on "Projects" or "Settings" nav buttons does NOT open the inline submenu
@@ -102,9 +102,10 @@ STOP! Once you've created the v2/playgrounds/react/src/stories/Sidebar.stories.t
 - **Root Cause**: The `handleSubmenuToggle` function is defined but may not be properly bound to React synthetic events, or the submenu component isn't responding to attribute changes
 - **Code Reference**: Lines 210-219, 268-277 in Sidebar.stories.tsx
 
-#### 2. **Header Slots Not Rendering**
+#### 2. **Header Slots Not Rendering** - ✅ **FIXED** (2025-12-02)
 - **Issue**: The sidebar header shows empty slots - no visible content renders in the header
 - **Location**: WithHeaderActions story
+- **Fix**: Updated all slot names in React and Lit stories to use `ag-` prefix (commits: 70a72952, 81df394b)
 - **DevTools Evidence**:
   ```html
   <div part="ag-sidebar-header" class="sidebar-header">
@@ -127,17 +128,19 @@ STOP! Once you've created the v2/playgrounds/react/src/stories/Sidebar.stories.t
 - **Potential Cause**: React's slot syntax may differ from Lit. In React with web components, slots might need `slot="ag-header-start"` instead of `slot="header-start"`
 - **Code Reference**: Lines 381-396 in Sidebar.stories.tsx (WithHeaderActions story)
 
-#### 3. **Built-in Toggle Renders But Missing Header Content**
+#### 3. **Built-in Toggle Renders But Missing Header Content** - ✅ **FIXED** (2025-12-02)
 - **Issue**: WithBuiltInToggle story shows the toggle button, but header-start (logo/title) is empty
 - **Location**: WithBuiltInToggle story
+- **Fix**: Fixed by Issue #2 resolution - slot names now use `ag-` prefix
 - **Current Behavior**: Only the built-in toggle renders, header-start slot is empty
 - **Expected Behavior**: Should show "Built-in Toggle" heading in header-start
 - **Related To**: Issue #2 (header slots not rendering)
 - **Code Reference**: Lines 445-449 in Sidebar.stories.tsx
 
-#### 4. **Collapsed Mode: Missing Collapsed Indicator and Chevron**
+#### 4. **Collapsed Mode: Missing Collapsed Indicator and Chevron** - ✅ **FIXED** (2025-12-02)
 - **Issue**: In collapsed (rail) mode, trigger buttons inside ReactPopover are unstyled and missing the collapsed-indicator arrow
 - **Location**: All stories when sidebar is collapsed
+- **Fix**: Removed PopoverTrigger/PopoverContent wrappers, use slot attributes directly on elements (commit: b2df776a)
 - **DevTools Evidence**:
   ```html
   <div slot="trigger" aria-expanded="false" aria-haspopup="dialog">
@@ -166,9 +169,10 @@ STOP! Once you've created the v2/playgrounds/react/src/stories/Sidebar.stories.t
   3. The styles might need to be in the web component's CSS, not in the React JSX
 - **Code Reference**: Lines 169-182 in Sidebar.stories.tsx (CSS rules)
 
-#### 5. **ReactPopover Structure Mismatch**
+#### 5. **ReactPopover Structure Mismatch** - ✅ **FIXED** (2025-12-02)
 - **Issue**: ReactPopover wraps content differently than Lit's `ag-popover` web component
-- **Current Implementation**:
+- **Fix**: Removed PopoverTrigger/PopoverContent helper components, use slot attributes directly (commit: b2df776a)
+- **Old (broken) Implementation**:
   ```tsx
   <ReactPopover>
     <PopoverTrigger>
