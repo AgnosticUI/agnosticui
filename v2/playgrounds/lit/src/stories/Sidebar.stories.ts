@@ -121,12 +121,7 @@ const createNavContent = () => {
       .nav-button ag-icon {
         flex-shrink: 0;
       }
-      .nav-button .nav-label {
-        flex-grow: 1;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+
       .nav-button .chevron {
         transition: transform var(--ag-fx-duration-md);
       }
@@ -142,67 +137,49 @@ const createNavContent = () => {
         right: 0px;
         width: var(--ag-space-3);
         height: var(--ag-space-3);
-        background: transparent;
-        border-radius: 2px;
-        pointer-events: none;
       }
       
       .nav-button .collapsed-indicator svg {
-        width: var(--ag-space-3);
-        height: var(--ag-space-3);
         color: var(--ag-text-muted);
         transform: rotate(315deg)
       }
 
       /* Collapsed state (rail mode) styles */
       ag-sidebar[collapsed] .nav-button {
-        justify-content: center;
         padding-inline: var(--ag-space-2);
       }
       
-      /* Modern 2025 approach: Use will-change for performance hint */
+      .nav-button .nav-label {
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
       .nav-button .nav-label,
       .nav-button .chevron {
-        will-change: opacity, transform;
-        transition: opacity var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
-                    transform var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out);
-        transform-origin: left center;
+        transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+        white-space: nowrap;
       }
       
       ag-sidebar[collapsed] .nav-button .nav-label,
       ag-sidebar[collapsed] .nav-button .chevron {
         opacity: 0;
-        transform: scaleX(0);
-        overflow: hidden;
-        white-space: nowrap;
         pointer-events: none;
-      }
-      
-      .nav-button .nav-label,
-      .nav-button .chevron {
-        transition: opacity var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
-                    transform var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
-      }
-      
-      ag-sidebar[collapsed] .nav-button .nav-label,
-      ag-sidebar[collapsed] .nav-button .chevron {
         display: none;
       }
       
-      /* Show indicator for items with submenus when collapsed */
+      /* Show indicator for submenus when collapsed */
       ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      /* Hide inline submenus in collapsed mode */
-      ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu) {
-        display: none !important;
+        display: block;
       }
 
       .nav-button-collapsed::part(ag-popover-body) {
         padding: var(--ag-space-1);
+      }
+
+      /* Hide inline submenus in collapsed mode */
+      ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu) {
+        display: none !important;
       }
 
       /* Completely hide popover element when not collapsed */
@@ -261,9 +238,9 @@ const createNavContent = () => {
           </button>
 
           <ag-sidebar-nav-popover-submenu slot="content">
-            <a href="#" class="nav-sublink nav-sublink-popover">Project Alpha</a>
-            <a href="#" class="nav-sublink nav-sublink-popover">Project Beta</a>
-            <a href="#" class="nav-sublink nav-sublink-popover">Project Gamma</a>
+            <a href="#" class="nav-sublink">Project Alpha</a>
+            <a href="#" class="nav-sublink">Project Beta</a>
+            <a href="#" class="nav-sublink">Project Gamma</a>
           </ag-sidebar-nav-popover-submenu slot="content">
         </ag-popover>
 
@@ -796,9 +773,9 @@ export const WithActiveItemTracking: Story = {
                 </button>
 
                 <ag-sidebar-nav-popover-submenu slot="content">
-                  <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/profile" @click=${handleNavClick("/settings/profile")}>Profile</a>
-                  <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/billing" @click=${handleNavClick("/settings/billing")}>Billing</a>
-                  <a href="#" class="nav-sublink nav-sublink-popover" data-route="/settings/security" @click=${handleNavClick("/settings/security")}>Security</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/profile" @click=${handleNavClick("/settings/profile")}>Profile</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/billing" @click=${handleNavClick("/settings/billing")}>Billing</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/security" @click=${handleNavClick("/settings/security")}>Security</a>
                 </ag-sidebar-nav-popover-submenu>
               </ag-popover>
 
@@ -936,28 +913,6 @@ export const WithActiveItemTracking: Story = {
           display: none !important;
         }
         
-        /* Ensure popover content is styled correctly */
-        .nav-sublink-popover {
-          display: block;
-          padding: var(--ag-space-2) var(--ag-space-3);
-          border-radius: var(--ag-radius-sm);
-          text-decoration: none;
-          color: var(--ag-text-primary);
-          font-size: var(--ag-font-size-sm);
-          transition: background 0.15s;
-          white-space: nowrap;
-        }
-        
-        .nav-sublink-popover:hover {
-          background: var(--ag-background-secondary);
-        }
-        
-        /* Re-apply active state for popover content specifically if needed due to specificity */
-        .nav-sublink-popover.active {
-          background: var(--ag-primary-background);
-          color: var(--ag-primary-text);
-        }
-
         .nav-button-collapsed::part(ag-popover-body) {
           padding: var(--ag-space-1);
         }
