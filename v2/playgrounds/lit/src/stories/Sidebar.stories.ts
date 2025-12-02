@@ -311,11 +311,11 @@ export const Default: Story = {
         ?show-mobile-toggle=${args.showMobileToggle}
         .mobile-toggle-position=${args.mobileTogglePosition}
       >
-        <h2 slot="header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
+        <h2 slot="ag-header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
           My Application
         </h2>
         <button 
-          slot="header-toggle"
+          slot="ag-header-toggle"
           @click=${(e: Event) => {
             const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
             sidebar?.toggleCollapse();
@@ -328,7 +328,7 @@ export const Default: Story = {
 
         ${createNavContent()}
         
-        <div slot="footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
+        <div slot="ag-footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
           © 2024 Company
         </div>
       </ag-sidebar>
@@ -358,7 +358,7 @@ export const WithHeaderActions: Story = {
         ?collapsed=${args.collapsed}
         ?show-mobile-toggle=${args.showMobileToggle}
       >
-        <div slot="header-start" style="display: flex; align-items: center; gap: 0.75rem; min-width: 0;">
+        <div slot="ag-header-start" style="display: flex; align-items: center; gap: 0.75rem; min-width: 0;">
           <div style="width: 32px; height: 32px; background: var(--ag-primary-100); color: var(--ag-primary-600); border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
             <ag-icon no-fill>${createElement(Command)}</ag-icon>
           </div>
@@ -366,7 +366,7 @@ export const WithHeaderActions: Story = {
         </div>
 
         <button 
-          slot="header-end"
+          slot="ag-header-end"
           style="background: none; border: none; padding: 8px; cursor: pointer; display: flex; align-items: center; flex-shrink: 0;"
           aria-label="Settings"
           title="Settings"
@@ -375,7 +375,7 @@ export const WithHeaderActions: Story = {
         </button>
 
         <button 
-          slot="header-toggle"
+          slot="ag-header-toggle"
           @click=${(e: Event) => {
             const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
             sidebar?.toggleCollapse();
@@ -388,7 +388,7 @@ export const WithHeaderActions: Story = {
 
         ${createNavContent()}
         
-        <div slot="footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); text-align: center;">
+        <div slot="ag-footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); text-align: center;">
           v1.0
         </div>
       </ag-sidebar>
@@ -420,13 +420,13 @@ export const WithBuiltInToggle: Story = {
         ?show-header-toggle=${true}
         ?show-mobile-toggle=${args.showMobileToggle}
       >
-        <h2 slot="header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
+        <h2 slot="ag-header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
           Built-in Toggle
         </h2>
 
         ${createNavContent()}
         
-        <div slot="footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
+        <div slot="ag-footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
           © 2024 Company
         </div>
       </ag-sidebar>
@@ -506,8 +506,8 @@ export const LegacyHeaderSlot: Story = {
         ?collapsed=${args.collapsed}
         ?show-mobile-toggle=${args.showMobileToggle}
       >
-        <button 
-          slot="header" 
+        <button
+          slot="ag-header"
           class="logo-toggle"
           @click=${(e: Event) => {
             const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
@@ -521,7 +521,7 @@ export const LegacyHeaderSlot: Story = {
 
         ${createNavContent()}
         
-        <div slot="footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); text-align: center;">
+        <div slot="ag-footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); text-align: center;">
           v2.0
         </div>
       </ag-sidebar>
@@ -555,11 +555,11 @@ export const DisableCompactMode: Story = {
         ?open=${args.open !== undefined ? args.open : true}
         ?show-mobile-toggle=${args.showMobileToggle}
       >
-        <h2 slot="header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
+        <h2 slot="ag-header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
           AI Studio
         </h2>
         <button 
-          slot="header-toggle"
+          slot="ag-header-toggle"
           @click=${(e: Event) => {
             const sidebar = (e.target as HTMLElement).closest('ag-sidebar') as any;
             sidebar?.toggleResponsive();
@@ -572,7 +572,7 @@ export const DisableCompactMode: Story = {
 
         ${createNavContent()}
         
-        <div slot="footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); text-align: center;">
+        <div slot="ag-footer" style="font-size: 0.75rem; color: var(--ag-text-secondary); text-align: center;">
           v2.0
         </div>
       </ag-sidebar>
@@ -737,13 +737,13 @@ export const WithActiveItemTracking: Story = {
           ?show-mobile-toggle=${args["showMobileToggle"]}
         >
           <h2
-            slot="header-start"
+            slot="ag-header-start"
             style="margin: 0; font-size: 1.125rem; font-weight: 600;"
           >
             Navigation
           </h2>
           <button
-            slot="header-toggle"
+            slot="ag-header-toggle"
             @click=${(e: Event) => {
               const sidebar = (e.target as HTMLElement).closest("ag-sidebar") as any;
               sidebar?.toggleCollapse();
