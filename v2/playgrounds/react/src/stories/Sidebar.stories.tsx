@@ -339,12 +339,12 @@ export const Default: Story = {
   render: (args: ReactSidebarProps) => (
     <div style={{ display: 'flex', height: '500px', border: '1px solid #e5e7eb', borderRadius: '0.5rem', overflow: 'hidden' }}>
       <ReactSidebar {...args}>
-        <h2 slot="header-start" style={{ margin: 0, fontSize: '1.125rem', fontWeight: 600 }}>
+        <h2 slot="ag-header-start" style={{ margin: 0, fontSize: '1.125rem', fontWeight: 600 }}>
           My Application
         </h2>
         <button
           type="button"
-          slot="header-toggle"
+          slot="ag-header-toggle"
           onClick={(e) => {
             const sidebar = (e.target as HTMLElement).closest('ag-sidebar');
             if (sidebar && 'toggleCollapse' in sidebar) {
@@ -359,7 +359,7 @@ export const Default: Story = {
 
         {createNavContent()}
 
-        <div slot="footer" style={{ fontSize: '0.875rem', color: 'var(--ag-text-secondary)' }}>
+        <div slot="ag-footer" style={{ fontSize: '0.875rem', color: 'var(--ag-text-secondary)' }}>
           © 2024 Company
         </div>
       </ReactSidebar>
@@ -367,8 +367,8 @@ export const Default: Story = {
         <h1>Composable Header Slots</h1>
         <p>This example uses <code>toggleCollapse()</code> which only toggles the collapsed state.</p>
         <ul>
-          <li><code>header-start</code> - Logo/title (hidden when collapsed)</li>
-          <li><code>header-toggle</code> - Custom toggle button (auto-positioned)</li>
+          <li><code>ag-header-start</code> - Logo/title (hidden when collapsed)</li>
+          <li><code>ag-header-toggle</code> - Custom toggle button (auto-positioned)</li>
         </ul>
         <div style={{ background: '#dbeafe', padding: '1rem', borderRadius: '0.375rem', border: '1px solid #3b82f6', marginTop: '1rem' }}>
           <strong>✨ New:</strong> Toggle between expanded and collapsed modes. Hover over Projects or Settings when collapsed to see submenu popovers!
@@ -391,7 +391,7 @@ export const WithHeaderActions: Story = {
         onToggle={args.onToggle}
         onCollapse={args.onCollapse}
       >
-        <div slot="header-start" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
+        <div slot="ag-header-start" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
           <div style={{ width: '32px', height: '32px', background: 'var(--ag-primary-100)', color: 'var(--ag-primary-600)', borderRadius: '8px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Command size={20} />
           </div>
@@ -400,7 +400,7 @@ export const WithHeaderActions: Story = {
 
         <button
           type="button"
-          slot="header-end"
+          slot="ag-header-end"
           style={{ background: 'none', border: 'none', padding: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', flexShrink: 0 }}
           aria-label="Settings"
           title="Settings"
@@ -410,7 +410,7 @@ export const WithHeaderActions: Story = {
 
         <button
           type="button"
-          slot="header-toggle"
+          slot="ag-header-toggle"
           onClick={(e) => {
             const sidebar = (e.target as HTMLElement).closest('ag-sidebar');
             if (sidebar && 'toggleCollapse' in sidebar) {
@@ -425,7 +425,7 @@ export const WithHeaderActions: Story = {
 
         {createNavContent()}
 
-        <div slot="footer" style={{ fontSize: '0.75rem', color: 'var(--ag-text-secondary)', textAlign: 'center' }}>
+        <div slot="ag-footer" style={{ fontSize: '0.75rem', color: 'var(--ag-text-secondary)', textAlign: 'center' }}>
           v1.0
         </div>
       </ReactSidebar>
@@ -433,9 +433,9 @@ export const WithHeaderActions: Story = {
         <h1>Header with Actions</h1>
         <p>This example shows proper overflow handling in collapsed mode.</p>
         <ul>
-          <li><code>header-start</code> - Logo and title (hidden when collapsed)</li>
-          <li><code>header-end</code> - Settings button (always visible, icon-only)</li>
-          <li><code>header-toggle</code> - Toggle button</li>
+          <li><code>ag-header-start</code> - Logo and title (hidden when collapsed)</li>
+          <li><code>ag-header-end</code> - Settings button (always visible, icon-only)</li>
+          <li><code>ag-header-toggle</code> - Toggle button</li>
         </ul>
         <div style={{ background: '#dbeafe', padding: '1rem', borderRadius: '0.375rem', border: '1px solid #3b82f6', marginTop: '1rem' }}>
           <strong>Try it:</strong> Collapse the sidebar and hover over Projects or Settings to access their submenus via popover!
@@ -459,13 +459,13 @@ export const WithBuiltInToggle: Story = {
         onToggle={args.onToggle}
         onCollapse={args.onCollapse}
       >
-        <h2 slot="header-start" style={{ margin: 0, fontSize: '1.125rem', fontWeight: 600 }}>
+        <h2 slot="ag-header-start" style={{ margin: 0, fontSize: '1.125rem', fontWeight: 600 }}>
           Built-in Toggle
         </h2>
 
         {createNavContent()}
 
-        <div slot="footer" style={{ fontSize: '0.875rem', color: 'var(--ag-text-secondary)' }}>
+        <div slot="ag-footer" style={{ fontSize: '0.875rem', color: 'var(--ag-text-secondary)' }}>
           © 2024 Company
         </div>
       </ReactSidebar>
@@ -550,7 +550,7 @@ export const LegacyHeaderSlot: Story = {
         >
           <button
             type="button"
-            slot="header"
+            slot="ag-header"
             className="logo-toggle"
             onClick={(e) => {
               const sidebar = (e.target as HTMLElement).closest('ag-sidebar');
@@ -566,13 +566,13 @@ export const LegacyHeaderSlot: Story = {
 
           {createNavContent()}
 
-          <div slot="footer" style={{ fontSize: '0.75rem', color: 'var(--ag-text-secondary)', textAlign: 'center' }}>
+          <div slot="ag-footer" style={{ fontSize: '0.75rem', color: 'var(--ag-text-secondary)', textAlign: 'center' }}>
             v2.0
           </div>
         </ReactSidebar>
         <main style={{ flex: 1, padding: '2rem', overflow: 'auto' }}>
           <h1>Logo as Toggle Pattern</h1>
-          <p>This example demonstrates the <strong>logo-as-toggle pattern</strong> using the legacy <code>slot="header"</code>.</p>
+          <p>This example demonstrates the <strong>logo-as-toggle pattern</strong> using the monolithic <code>slot="ag-header"</code>.</p>
           <ul>
             <li><strong>Expanded:</strong> Shows full branding (logo + text)</li>
             <li><strong>Collapsed:</strong> Shows icon-only, centered</li>
@@ -603,12 +603,12 @@ export const DisableCompactMode: Story = {
         onToggle={args.onToggle}
         onCollapse={args.onCollapse}
       >
-        <h2 slot="header-start" style={{ margin: 0, fontSize: '1.125rem', fontWeight: 600 }}>
+        <h2 slot="ag-header-start" style={{ margin: 0, fontSize: '1.125rem', fontWeight: 600 }}>
           AI Studio
         </h2>
         <button
           type="button"
-          slot="header-toggle"
+          slot="ag-header-toggle"
           onClick={(e) => {
             const sidebar = (e.target as HTMLElement).closest('ag-sidebar');
             if (sidebar && 'toggleResponsive' in sidebar) {
@@ -623,7 +623,7 @@ export const DisableCompactMode: Story = {
 
         {createNavContent()}
 
-        <div slot="footer" style={{ fontSize: '0.75rem', color: 'var(--ag-text-secondary)', textAlign: 'center' }}>
+        <div slot="ag-footer" style={{ fontSize: '0.75rem', color: 'var(--ag-text-secondary)', textAlign: 'center' }}>
           v2.0
         </div>
       </ReactSidebar>
@@ -799,12 +799,12 @@ const WithActiveItemTrackingComponent = (args: ReactSidebarProps) => {
             onToggle={args.onToggle}
             onCollapse={args.onCollapse}
           >
-            <h2 slot="header-start" style={{ margin: 0, fontSize: '1.125rem', fontWeight: 600 }}>
+            <h2 slot="ag-header-start" style={{ margin: 0, fontSize: '1.125rem', fontWeight: 600 }}>
               Navigation
             </h2>
             <button
               type="button"
-              slot="header-toggle"
+              slot="ag-header-toggle"
               onClick={(e) => {
                 const sidebar = (e.target as HTMLElement).closest('ag-sidebar');
                 if (sidebar && 'toggleCollapse' in sidebar) {
