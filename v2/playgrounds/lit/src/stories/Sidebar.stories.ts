@@ -178,18 +178,15 @@ const createNavContent = () => {
         pointer-events: none;
       }
       
-      /* Progressive enhancement: Use display transitions for browsers that support it (Chrome 116+) */
-      @supports (transition-behavior: allow-discrete) {
-        .nav-button .nav-label,
-        .nav-button .chevron {
-          transition: opacity var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
-                      transform var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
-        }
-        
-        ag-sidebar[collapsed] .nav-button .nav-label,
-        ag-sidebar[collapsed] .nav-button .chevron {
-          display: none;
-        }
+      .nav-button .nav-label,
+      .nav-button .chevron {
+        transition: opacity var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
+                    transform var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out),
+      }
+      
+      ag-sidebar[collapsed] .nav-button .nav-label,
+      ag-sidebar[collapsed] .nav-button .chevron {
+        display: none;
       }
       
       /* Show indicator for items with submenus when collapsed */
@@ -204,34 +201,8 @@ const createNavContent = () => {
         display: none !important;
       }
 
-      /* Popover submenu styles */
-      ag-popover::part(ag-popover) {
-        min-width: 200px;
-      }
-
-      ag-popover::part(ag-popover-body) {
+      .nav-button-collapsed::part(ag-popover-body) {
         padding: var(--ag-space-1);
-      }
-
-      .nav-sublink-popover {
-        display: block;
-        padding: var(--ag-space-2) var(--ag-space-3);
-        border-radius: var(--ag-radius-sm);
-        text-decoration: none;
-        color: var(--ag-text-primary);
-        font-size: var(--ag-font-size-sm);
-        transition: background 0.15s;
-        white-space: nowrap;
-      }
-
-      .nav-sublink-popover:hover {
-        background: var(--ag-background-secondary);
-      }
-
-      .nav-sublink-popover.active {
-        background: var(--ag-primary-background);
-        color: var(--ag-primary-text);
-        font-weight: 500;
       }
 
       /* Completely hide popover element when not collapsed */
@@ -917,6 +888,7 @@ export const WithActiveItemTracking: Story = {
         ag-sidebar[collapsed] .nav-button {
           justify-content: center;
           padding-inline: var(--ag-space-2);
+          gap: unset;
         }
         
         .nav-button .nav-label,
@@ -984,6 +956,10 @@ export const WithActiveItemTracking: Story = {
         .nav-sublink-popover.active {
           background: var(--ag-primary-background);
           color: var(--ag-primary-text);
+        }
+
+        .nav-button-collapsed::part(ag-popover-body) {
+          padding: var(--ag-space-1);
         }
       </style>
     `;
