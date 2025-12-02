@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { fn } from "storybook/test";
-import { ref } from "vue";
+import { ref, onMounted, h } from "vue";
 import VueSidebar from "agnosticui-core/sidebar/vue";
 import {
   VueSidebarNav,
@@ -17,6 +17,80 @@ import {
   Command,
   ChevronRight,
 } from "lucide-vue-next";
+
+// Shared styles for navigation buttons
+const navButtonStyles = `
+  .nav-button {
+    display: flex;
+    align-items: center;
+    gap: var(--ag-space-3);
+    position: relative;
+  }
+
+  .nav-button svg {
+    flex-shrink: 0;
+  }
+
+  .nav-button .chevron {
+    transition: transform var(--ag-fx-duration-md);
+    margin-left: auto;
+  }
+  .nav-button[aria-expanded="true"] .chevron {
+    transform: rotate(90deg);
+  }
+
+  .nav-button .collapsed-indicator {
+    display: none;
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    width: var(--ag-space-3);
+    height: var(--ag-space-3);
+  }
+
+  .nav-button .collapsed-indicator svg {
+    color: var(--ag-text-muted);
+    transform: rotate(315deg);
+  }
+
+  ag-sidebar[collapsed] .nav-button {
+    padding-inline: var(--ag-space-2);
+  }
+
+  .nav-button .nav-label {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-button .nav-label,
+  .nav-button .chevron {
+    transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+    white-space: nowrap;
+  }
+
+  ag-sidebar[collapsed] .nav-button .nav-label,
+  ag-sidebar[collapsed] .nav-button .chevron {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+  }
+
+  ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
+    display: block;
+  }
+
+  .nav-button-collapsed::part(ag-popover-body) {
+    padding: var(--ag-space-1);
+  }
+
+  ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
+  ag-sidebar:not([collapsed]) ag-popover,
+  ag-sidebar[collapsed] .nav-button-expanded,
+  ag-sidebar:not([collapsed]) .nav-button-collapsed {
+    display: none !important;
+  }
+`;
 
 // Icon component helper for rendering Lucide icons
 const PanelIcon = () => ({
@@ -120,6 +194,17 @@ export const Default: Story = {
       ChevronRight,
     },
     setup() {
+      // Inject styles on mount
+      onMounted(() => {
+        const styleId = 'sidebar-nav-styles';
+        if (!document.getElementById(styleId)) {
+          const style = document.createElement('style');
+          style.id = styleId;
+          style.textContent = navButtonStyles;
+          document.head.appendChild(style);
+        }
+      });
+
       const handleSubmenuToggle = (e: Event) => {
         e.preventDefault();
         e.stopPropagation();
@@ -146,80 +231,6 @@ export const Default: Story = {
       return { args, handleSubmenuToggle, PanelIcon };
     },
     template: `
-      <style>
-        .nav-button {
-          display: flex;
-          align-items: center;
-          gap: var(--ag-space-3);
-          position: relative;
-        }
-
-        .nav-button svg {
-          flex-shrink: 0;
-        }
-
-        .nav-button .chevron {
-          transition: transform var(--ag-fx-duration-md);
-          margin-left: auto;
-        }
-        .nav-button[aria-expanded="true"] .chevron {
-          transform: rotate(90deg);
-        }
-
-        .nav-button .collapsed-indicator {
-          display: none;
-          position: absolute;
-          bottom: -3px;
-          right: 0;
-          width: var(--ag-space-3);
-          height: var(--ag-space-3);
-        }
-
-        .nav-button .collapsed-indicator svg {
-          color: var(--ag-text-muted);
-          transform: rotate(315deg);
-        }
-
-        ag-sidebar[collapsed] .nav-button {
-          padding-inline: var(--ag-space-2);
-        }
-
-        .nav-button .nav-label {
-          flex-grow: 1;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .nav-button .nav-label,
-        .nav-button .chevron {
-          transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-          white-space: nowrap;
-        }
-
-        ag-sidebar[collapsed] .nav-button .nav-label,
-        ag-sidebar[collapsed] .nav-button .chevron {
-          opacity: 0;
-          pointer-events: none;
-          display: none;
-        }
-
-        /* Show indicator for submenus when collapsed */
-        ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
-          display: block;
-        }
-
-        .nav-button-collapsed::part(ag-popover-body) {
-          padding: var(--ag-space-1);
-        }
-
-        /* Hide/show patterns for collapsed/expanded modes */
-        ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
-        ag-sidebar:not([collapsed]) ag-popover,
-        ag-sidebar[collapsed] .nav-button-expanded,
-        ag-sidebar:not([collapsed]) .nav-button-collapsed {
-          display: none !important;
-        }
-      </style>
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="args.open"
@@ -394,6 +405,17 @@ export const WithHeaderActions: Story = {
       ChevronRight,
     },
     setup() {
+      // Inject styles on mount
+      onMounted(() => {
+        const styleId = 'sidebar-nav-styles';
+        if (!document.getElementById(styleId)) {
+          const style = document.createElement('style');
+          style.id = styleId;
+          style.textContent = navButtonStyles;
+          document.head.appendChild(style);
+        }
+      });
+
       const handleSubmenuToggle = (e: Event) => {
         e.preventDefault();
         e.stopPropagation();
@@ -420,78 +442,6 @@ export const WithHeaderActions: Story = {
       return { args, handleSubmenuToggle, PanelIcon };
     },
     template: `
-      <style>
-        .nav-button {
-          display: flex;
-          align-items: center;
-          gap: var(--ag-space-3);
-          position: relative;
-        }
-
-        .nav-button svg {
-          flex-shrink: 0;
-        }
-
-        .nav-button .chevron {
-          transition: transform var(--ag-fx-duration-md);
-          margin-left: auto;
-        }
-        .nav-button[aria-expanded="true"] .chevron {
-          transform: rotate(90deg);
-        }
-
-        .nav-button .collapsed-indicator {
-          display: none;
-          position: absolute;
-          bottom: -3px;
-          right: 0;
-          width: var(--ag-space-3);
-          height: var(--ag-space-3);
-        }
-
-        .nav-button .collapsed-indicator svg {
-          color: var(--ag-text-muted);
-          transform: rotate(315deg);
-        }
-
-        ag-sidebar[collapsed] .nav-button {
-          padding-inline: var(--ag-space-2);
-        }
-
-        .nav-button .nav-label {
-          flex-grow: 1;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .nav-button .nav-label,
-        .nav-button .chevron {
-          transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-          white-space: nowrap;
-        }
-
-        ag-sidebar[collapsed] .nav-button .nav-label,
-        ag-sidebar[collapsed] .nav-button .chevron {
-          opacity: 0;
-          pointer-events: none;
-          display: none;
-        }
-
-        ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
-          display: block;
-        }
-
-        .nav-button-collapsed::part(ag-popover-body) {
-          padding: var(--ag-space-1);
-        }
-
-        ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
-        ag-sidebar:not([collapsed]) ag-popover,
-        ag-sidebar[collapsed] .nav-button-expanded,
-        ag-sidebar:not([collapsed]) .nav-button-collapsed {
-          display: none !important;
-        }
-      </style>
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="args.open"
@@ -700,78 +650,6 @@ export const WithBuiltInToggle: Story = {
       return { args, handleSubmenuToggle };
     },
     template: `
-      <style>
-        .nav-button {
-          display: flex;
-          align-items: center;
-          gap: var(--ag-space-3);
-          position: relative;
-        }
-
-        .nav-button svg {
-          flex-shrink: 0;
-        }
-
-        .nav-button .chevron {
-          transition: transform var(--ag-fx-duration-md);
-          margin-left: auto;
-        }
-        .nav-button[aria-expanded="true"] .chevron {
-          transform: rotate(90deg);
-        }
-
-        .nav-button .collapsed-indicator {
-          display: none;
-          position: absolute;
-          bottom: -3px;
-          right: 0;
-          width: var(--ag-space-3);
-          height: var(--ag-space-3);
-        }
-
-        .nav-button .collapsed-indicator svg {
-          color: var(--ag-text-muted);
-          transform: rotate(315deg);
-        }
-
-        ag-sidebar[collapsed] .nav-button {
-          padding-inline: var(--ag-space-2);
-        }
-
-        .nav-button .nav-label {
-          flex-grow: 1;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .nav-button .nav-label,
-        .nav-button .chevron {
-          transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-          white-space: nowrap;
-        }
-
-        ag-sidebar[collapsed] .nav-button .nav-label,
-        ag-sidebar[collapsed] .nav-button .chevron {
-          opacity: 0;
-          pointer-events: none;
-          display: none;
-        }
-
-        ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
-          display: block;
-        }
-
-        .nav-button-collapsed::part(ag-popover-body) {
-          padding: var(--ag-space-1);
-        }
-
-        ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
-        ag-sidebar:not([collapsed]) ag-popover,
-        ag-sidebar[collapsed] .nav-button-expanded,
-        ag-sidebar:not([collapsed]) .nav-button-collapsed {
-          display: none !important;
-        }
-      </style>
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="args.open"
@@ -953,113 +831,6 @@ export const LegacyHeaderSlot: Story = {
       return { args, handleSubmenuToggle };
     },
     template: `
-      <style>
-        .logo-toggle {
-          width: 100%;
-          background: none;
-          border: none;
-          padding: var(--ag-space-3);
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: var(--ag-space-3);
-          color: inherit;
-          font-size: 1.25rem;
-          font-weight: 600;
-          transition: background-color var(--ag-fx-duration-sm);
-        }
-
-        .logo-toggle:hover {
-          background: var(--ag-interactive-background-hover);
-        }
-
-        .logo-toggle svg {
-          flex-shrink: 0;
-        }
-
-        .logo-toggle .logo-text {
-          flex: 1;
-          text-align: left;
-          transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-        }
-
-        ag-sidebar[collapsed] .logo-toggle .logo-text {
-          opacity: 0;
-          width: 0;
-          overflow: hidden;
-        }
-
-        .nav-button {
-          display: flex;
-          align-items: center;
-          gap: var(--ag-space-3);
-          position: relative;
-        }
-
-        .nav-button svg {
-          flex-shrink: 0;
-        }
-
-        .nav-button .chevron {
-          transition: transform var(--ag-fx-duration-md);
-          margin-left: auto;
-        }
-        .nav-button[aria-expanded="true"] .chevron {
-          transform: rotate(90deg);
-        }
-
-        .nav-button .collapsed-indicator {
-          display: none;
-          position: absolute;
-          bottom: -3px;
-          right: 0;
-          width: var(--ag-space-3);
-          height: var(--ag-space-3);
-        }
-
-        .nav-button .collapsed-indicator svg {
-          color: var(--ag-text-muted);
-          transform: rotate(315deg);
-        }
-
-        ag-sidebar[collapsed] .nav-button {
-          padding-inline: var(--ag-space-2);
-        }
-
-        .nav-button .nav-label {
-          flex-grow: 1;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .nav-button .nav-label,
-        .nav-button .chevron {
-          transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-          white-space: nowrap;
-        }
-
-        ag-sidebar[collapsed] .nav-button .nav-label,
-        ag-sidebar[collapsed] .nav-button .chevron {
-          opacity: 0;
-          pointer-events: none;
-          display: none;
-        }
-
-        ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
-          display: block;
-        }
-
-        .nav-button-collapsed::part(ag-popover-body) {
-          padding: var(--ag-space-1);
-        }
-
-        ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
-        ag-sidebar:not([collapsed]) ag-popover,
-        ag-sidebar[collapsed] .nav-button-expanded,
-        ag-sidebar:not([collapsed]) .nav-button-collapsed {
-          display: none !important;
-        }
-      </style>
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="args.open"
@@ -1229,6 +1000,17 @@ export const DisableCompactMode: Story = {
       Settings,
     },
     setup() {
+      // Inject styles on mount
+      onMounted(() => {
+        const styleId = 'sidebar-nav-styles';
+        if (!document.getElementById(styleId)) {
+          const style = document.createElement('style');
+          style.id = styleId;
+          style.textContent = navButtonStyles;
+          document.head.appendChild(style);
+        }
+      });
+
       return { args, PanelIcon };
     },
     template: `
@@ -1319,6 +1101,24 @@ export const WithActiveItemTracking: Story = {
       ChevronRight,
     },
     setup() {
+      // Inject styles on mount (including active state styles)
+      onMounted(() => {
+        const styleId = 'sidebar-nav-styles';
+        if (!document.getElementById(styleId)) {
+          const style = document.createElement('style');
+          style.id = styleId;
+          style.textContent = navButtonStyles + `
+            .nav-button.active,
+            .nav-sublink.active {
+              background: var(--ag-primary-background);
+              color: var(--ag-primary-text);
+              font-weight: 500;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      });
+
       const activeRoute = ref("/dashboard");
       const isOpen = ref(true);
 
@@ -1379,85 +1179,6 @@ export const WithActiveItemTracking: Story = {
       return { args, activeRoute, isOpen, handleNavClick, handleSubmenuToggle, PanelIcon };
     },
     template: `
-      <style>
-        .nav-button.active,
-        .nav-sublink.active {
-          background: var(--ag-primary-background);
-          color: var(--ag-primary-text);
-          font-weight: 500;
-        }
-
-        .nav-button {
-          display: flex;
-          align-items: center;
-          gap: var(--ag-space-3);
-          position: relative;
-        }
-
-        .nav-button svg {
-          flex-shrink: 0;
-        }
-
-        .nav-button .chevron {
-          transition: transform var(--ag-fx-duration-md);
-          margin-left: auto;
-        }
-        .nav-button[aria-expanded="true"] .chevron {
-          transform: rotate(90deg);
-        }
-
-        .nav-button .collapsed-indicator {
-          display: none;
-          position: absolute;
-          bottom: -3px;
-          right: 0;
-          width: var(--ag-space-3);
-          height: var(--ag-space-3);
-        }
-
-        .nav-button .collapsed-indicator svg {
-          color: var(--ag-text-muted);
-          transform: rotate(315deg);
-        }
-
-        ag-sidebar[collapsed] .nav-button {
-          padding-inline: var(--ag-space-2);
-        }
-
-        .nav-button .nav-label {
-          flex-grow: 1;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .nav-button .nav-label,
-        .nav-button .chevron {
-          transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-          white-space: nowrap;
-        }
-
-        ag-sidebar[collapsed] .nav-button .nav-label,
-        ag-sidebar[collapsed] .nav-button .chevron {
-          opacity: 0;
-          pointer-events: none;
-          display: none;
-        }
-
-        ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
-          display: block;
-        }
-
-        .nav-button-collapsed::part(ag-popover-body) {
-          padding: var(--ag-space-1);
-        }
-
-        ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
-        ag-sidebar:not([collapsed]) ag-popover,
-        ag-sidebar[collapsed] .nav-button-expanded,
-        ag-sidebar:not([collapsed]) .nav-button-collapsed {
-          display: none !important;
-        }
-      </style>
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="isOpen"
