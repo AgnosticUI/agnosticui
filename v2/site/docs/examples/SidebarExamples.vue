@@ -824,8 +824,8 @@ export default {
           padding-block: var(--ag-space-3);
         }
 
-        /* Center sidebar nav content in container */
-        ag-sidebar::part(ag-sidebar-container) {
+        /* Center sidebar nav content in container only when collapsed */
+        ag-sidebar[collapsed]::part(ag-sidebar-container) {
           align-items: center;
         }
 
