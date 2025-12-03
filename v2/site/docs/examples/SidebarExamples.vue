@@ -8,7 +8,7 @@
       </p>
     </div>
     <div class="mbe6">
-      <div style="display: flex; height: 500px; border: 1px solid var(--ag-border-color); border-radius: 0.5rem; overflow: hidden;">
+      <div style="position: relative; display: flex; height: 500px; border: 1px solid var(--ag-border-color); border-radius: 0.5rem; overflow: hidden; contain: layout;">
         <VueSidebar
           :open="sidebar1.isOpen"
           :collapsed="sidebar1.isCollapsed"
@@ -158,7 +158,7 @@
       </p>
     </div>
     <div class="mbe6">
-      <div style="display: flex; height: 500px; border: 1px solid var(--ag-border-color); border-radius: 0.5rem; overflow: hidden;">
+      <div style="position: relative; display: flex; height: 500px; border: 1px solid var(--ag-border-color); border-radius: 0.5rem; overflow: hidden; contain: layout;">
         <VueSidebar
           :open="sidebar2.isOpen"
           :collapsed="sidebar2.isCollapsed"
@@ -233,7 +233,7 @@
       </p>
     </div>
     <div class="mbe6">
-      <div style="display: flex; height: 500px; border: 1px solid var(--ag-border-color); border-radius: 0.5rem; overflow: hidden;">
+      <div style="position: relative; display: flex; height: 500px; border: 1px solid var(--ag-border-color); border-radius: 0.5rem; overflow: hidden; contain: layout;">
         <VueSidebar
           :open="sidebar3.isOpen"
           :collapsed="sidebar3.isCollapsed"
@@ -287,7 +287,7 @@
       </p>
     </div>
     <div class="mbe6">
-      <div style="display: flex; height: 500px; border: 1px solid var(--ag-border-color); border-radius: 0.5rem; overflow: hidden;">
+      <div style="position: relative; display: flex; height: 500px; border: 1px solid var(--ag-border-color); border-radius: 0.5rem; overflow: hidden; contain: layout;">
         <VueSidebar
           :open="sidebar4.isOpen"
           :disable-compact-mode="true"
@@ -427,6 +427,20 @@ export default {
         ag-sidebar[collapsed]::part(ag-sidebar-header),
         ag-sidebar:not([collapsed])::part(ag-sidebar-header) {
           padding-block: var(--ag-space-3);
+        }
+
+        /* Ensure sidebars start in expanded mode in examples */
+        ag-sidebar:not([collapsed]) {
+          width: var(--ag-sidebar-width, 280px);
+        }
+
+        /* Fix disable-compact-mode sidebar visibility */
+        ag-sidebar[disable-compact-mode][open] {
+          display: flex !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          width: var(--ag-sidebar-width, 280px) !important;
+          transform: none !important;
         }
 
         /* Overrides VitePress theme - resets .vp-doc a styles */
