@@ -672,10 +672,16 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
   };
 
   private _handleHeaderToggleClick = () => {
-    // Built-in header toggle: always toggles collapsed state
-    // On mobile when open, this collapses to rail mode while keeping overlay open
-    this.collapsed = !this.collapsed;
-    this._dispatchCollapseEvent();
+    if (this.disableCompactMode) {
+      // When compact mode is disabled, toggle open/close instead of collapsed state
+      this.open = !this.open;
+      this._dispatchToggleEvent();
+    } else {
+      // Normal mode: toggles collapsed state (rail mode)
+      // On mobile when open, this collapses to rail mode while keeping overlay open
+      this.collapsed = !this.collapsed;
+      this._dispatchCollapseEvent();
+    }
   };
 
   private _handleKeydown = (event: KeyboardEvent) => {

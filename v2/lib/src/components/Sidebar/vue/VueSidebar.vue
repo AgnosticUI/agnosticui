@@ -1,16 +1,16 @@
 <template>
   <ag-sidebar
-    :open="open"
-    :collapsed="collapsed"
+    .open="open"
+    .collapsed="collapsed"
     :position="position"
     :aria-label="ariaLabel"
     :variant="variant"
-    :no-transition="noTransition"
+    .noTransition="noTransition"
     :width="width"
-    :disable-compact-mode="disableCompactMode"
-    :show-mobile-toggle="showMobileToggle"
+    .disableCompactMode="disableCompactMode"
+    .showMobileToggle="showMobileToggle"
     :mobile-toggle-position="mobileTogglePosition"
-    :show-header-toggle="showHeaderToggle"
+    .showHeaderToggle="showHeaderToggle"
     @ag-sidebar-toggle="onToggle"
     @ag-sidebar-collapse="onCollapse"
   >
