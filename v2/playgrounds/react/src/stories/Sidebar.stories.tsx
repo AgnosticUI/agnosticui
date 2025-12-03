@@ -134,6 +134,7 @@ const createNavContent = () => {
         .nav-button {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: var(--ag-space-3);
           position: relative;
         }
