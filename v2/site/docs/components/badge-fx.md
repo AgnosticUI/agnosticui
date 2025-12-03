@@ -2,14 +2,9 @@
 
 BadgeFx extends the core Badge component with a handful of CSS-only micro-interaction effects.
 
-## Features
-
-- <Palette class="inline-icon" /> Pre-built micro-interaction effects
-- <Zap class="inline-icon" /> CSS-only animations (no JavaScript)
-- <Accessibility class="inline-icon" /> Automatic `prefers-reduced-motion` support
-- <Target class="inline-icon" /> Shadow DOM compatible
-- <Wrench class="inline-icon" /> Customizable timing and easing
-- <Package class="inline-icon" /> Available for Lit, React, and Vue
+::: info Opt-in Component
+BadgeFx adds a few hundred lines of CSS for animation effects. It's ideal for marketing sites, landing pages, or when visual polish is a priority. For standard applications, you may prefer the core [Badge component](/components/badge) without the animation overhead.
+:::
 
 ## Examples
 
