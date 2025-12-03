@@ -75,7 +75,7 @@ export const motionStyles = css`
   /* Glow - box-shadow pulse */
   @keyframes ag-fx-glow {
     0%, 100% { box-shadow: 0 0 0 0 rgba(var(--ag-primary-rgb), 0); }
-    50% { box-shadow: 0 0 14px 2px rgba(var(--ag-primary-rgb), 0.35); }
+    50% { box-shadow: 0 0 14px 2px rgba(var(--ag-primary-rgb), var(--ag-fx-shadow-opacity, 0.4)); }
   }
 
   /* Flip - 3D rotation */
@@ -92,19 +92,19 @@ export const motionStyles = css`
 
   /* Ripple - radial expansion */
   @keyframes ag-fx-ripple {
-    0% { box-shadow: 0 0 0 0 rgba(var(--ag-primary-rgb), 0.3); }
+    0% { box-shadow: 0 0 0 0 rgba(var(--ag-primary-rgb), var(--ag-fx-shadow-opacity, 0.4)); }
     100% { box-shadow: 0 0 1px 12px rgba(var(--ag-primary-rgb), 0); }
   }
 
   /* Highlight Sweep - background gradient sweep */
   @keyframes ag-fx-highlight-sweep {
-  0% {
-    transform: translateX(-100%);
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
   }
-  100% {
-    transform: translateX(100%);
-  }
-}
 
   /* Press-pop - quick press down/up */
   @keyframes ag-fx-press-pop {
