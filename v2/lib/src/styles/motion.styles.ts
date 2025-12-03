@@ -53,11 +53,11 @@ export const motionStyles = css`
   /* Jelly - squash/stretch */
   @keyframes ag-fx-jelly {
     0%, 100% { transform: scale(1, 1); }
-    30% { transform: scale(1.25, 0.75); }
-    40% { transform: scale(0.75, 1.25); }
-    50% { transform: scale(1.15, 0.85); }
-    65% { transform: scale(0.95, 1.05); }
-    75% { transform: scale(1.05, 0.95); }
+    30% { transform: scale(1.12, 0.88); }
+    40% { transform: scale(0.88, 1.12); }
+    50% { transform: scale(1.05, 0.95); }
+    65% { transform: scale(0.98, 1.02); }
+    75% { transform: scale(1.02, 0.98); }
   }
 
   /* Shimmer - light sweep (mask animation) */

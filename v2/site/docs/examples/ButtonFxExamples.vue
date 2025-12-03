@@ -66,7 +66,7 @@
         fx="press-pop"
         variant="monochrome"
         shape="rounded-square"
-        :size="lg"
+        size="lg"
       >
         <VueIcon no-fill>
           <Mail />
@@ -91,7 +91,7 @@
         fx="press-shadow"
         variant="primary"
         shape="rounded-square"
-        :size="lg"
+        size="lg"
       >
         <VueIcon no-fill>
           <ShoppingCart />
@@ -102,7 +102,7 @@
         fx="press-shadow"
         variant="danger"
         shape="rounded-square"
-        :size="lg"
+        size="lg"
       >
         <VueIcon no-fill>
           <Bomb />
