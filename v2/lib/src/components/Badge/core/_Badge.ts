@@ -3,7 +3,7 @@ import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 export interface BadgeProps {
-  variant?: 'default' | 'success' | 'warning' | 'danger' | 'info' | 'neutral' | 'monochrome';
+  variant?: 'default' | 'success' | 'warning' | 'danger' | 'primary' | 'info' | 'neutral' | 'monochrome';
   size?: 'xs' | 'sm' | 'md';
   dot?: boolean;
   value?: number | null;
@@ -72,6 +72,10 @@ export class AgBadge extends LitElement implements BadgeProps {
       background-color: var(--ag-background-tertiary);
       color: var(--ag-text-primary);
     }
+    :host([variant="primary"]) .badge {
+      background-color: var(--ag-primary);
+      color: var(--ag-white);
+    }
     :host([variant="success"]) .badge {
       background-color: var(--ag-success);
       color: var(--ag-white);
@@ -127,7 +131,7 @@ export class AgBadge extends LitElement implements BadgeProps {
   `;
 
   @property({ type: String, reflect: true })
-  declare variant: 'default' | 'success' | 'warning' | 'danger' | 'info' | 'neutral' | 'monochrome';
+  declare variant: 'default' | 'success' | 'warning' | 'primary' | 'danger' | 'info' | 'neutral' | 'monochrome';
 
   @property({ type: String, reflect: true })
   declare size: 'xs' | 'sm' | 'md';
