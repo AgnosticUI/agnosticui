@@ -1024,8 +1024,8 @@ export const DisableCompactMode: Story = {
     template: `
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
-          :open="args.open"
-          disable-compact-mode
+          :open="args.open !== undefined ? args.open : true"
+          :disable-compact-mode="true"
           :show-mobile-toggle="true"
           @update:open="args.onToggle"
         >
@@ -1092,6 +1092,102 @@ export const DisableCompactMode: Story = {
           </ul>
           <div style="background: #fef3c7; padding: 1rem; border-radius: 0.375rem; border: 1px solid #f59e0b; margin-top: 1rem;">
             <strong>Try it:</strong> Use the mobile toggle button to show/hide the sidebar. Notice there's no collapsed/rail mode.
+          </div>
+        </main>
+      </div>
+    `,
+  }),
+};
+
+/**
+ * Disable Compact Mode with Built-in Header Toggle
+ */
+export const DisableCompactModeWithBuiltInToggle: Story = {
+  render: (args) => ({
+    components: {
+      VueSidebar,
+      VueSidebarNav,
+      VueSidebarNavItem,
+      Home,
+      Folder,
+      User,
+      Settings,
+    },
+    setup() {
+      // Inject styles on mount
+      onMounted(() => {
+        const styleId = 'sidebar-nav-styles';
+        if (!document.getElementById(styleId)) {
+          const style = document.createElement('style');
+          style.id = styleId;
+          style.textContent = navButtonStyles;
+          document.head.appendChild(style);
+        }
+      });
+
+      return { args };
+    },
+    template: `
+      <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
+        <VueSidebar
+          :open="args.open !== undefined ? args.open : true"
+          :disable-compact-mode="true"
+          :show-header-toggle="true"
+          :show-mobile-toggle="true"
+          @update:open="args.onToggle"
+        >
+          <h2 slot="ag-header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
+            Built-in Toggle
+          </h2>
+
+          <VueSidebarNav>
+            <VueSidebarNavItem>
+              <button type="button" class="nav-button active" aria-current="page">
+                <Home :size="20" />
+                <span class="nav-label">Dashboard</span>
+              </button>
+            </VueSidebarNavItem>
+
+            <VueSidebarNavItem>
+              <button type="button" class="nav-button">
+                <Folder :size="20" />
+                <span class="nav-label">Projects</span>
+              </button>
+            </VueSidebarNavItem>
+
+            <VueSidebarNavItem>
+              <button type="button" class="nav-button">
+                <User :size="20" />
+                <span class="nav-label">Team</span>
+              </button>
+            </VueSidebarNavItem>
+
+            <VueSidebarNavItem>
+              <button type="button" class="nav-button">
+                <Settings :size="20" />
+                <span class="nav-label">Settings</span>
+              </button>
+            </VueSidebarNavItem>
+          </VueSidebarNav>
+
+          <div slot="ag-footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
+            © 2024 Company
+          </div>
+        </VueSidebar>
+
+        <main style="flex: 1; padding: 2rem; overflow: auto;">
+          <h1>Disable Compact Mode + Built-in Header Toggle</h1>
+          <p>
+            This demonstrates that <code>show-header-toggle</code> and <code>disable-compact-mode</code> work together correctly.
+          </p>
+          <p>The built-in header toggle button will toggle open/close instead of collapsed/expanded.</p>
+          <ul>
+            <li>Click the header toggle: sidebar fully hides or shows</li>
+            <li>No intermediate collapsed/rail state exists</li>
+            <li>Both features work together seamlessly</li>
+          </ul>
+          <div style="background: #dbeafe; padding: 1rem; border-radius: 0.375rem; border: 1px solid #3b82f6; margin-top: 1rem;">
+            <strong>Try it:</strong> Click the built-in header toggle button. Notice it shows/hides the entire sidebar without a collapsed state.
           </div>
         </main>
       </div>
