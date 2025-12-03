@@ -58,12 +58,12 @@ export const AllEffects: Story = {
     <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
       <ag-badge-fx fx="bounce" variant="success">Bounce</ag-badge-fx>
       <ag-badge-fx fx="pulse" variant="info">Pulse</ag-badge-fx>
-      <ag-badge-fx fx="jelly" variant="warning">Jelly</ag-badge-fx>
-      <ag-badge-fx fx="shimmer" variant="danger">Shimmer</ag-badge-fx>
-      <ag-badge-fx fx="glow" variant="neutral">Glow</ag-badge-fx>
-      <ag-badge-fx fx="flip" variant="success">Flip</ag-badge-fx>
+      <ag-badge-fx fx="jelly" fx-speed="lg" fx-ease="spring-sm" variant="monochrome">Jelly</ag-badge-fx>
+      <ag-badge-fx fx="shimmer" fx-speed="xl" variant="danger">Shimmer</ag-badge-fx>
+      <ag-badge-fx fx="glow" variant="primary">Glow</ag-badge-fx>
+      <ag-badge-fx fx="flip" fx-speed="lg" fx-ease="ease-in" variant="success">Flip</ag-badge-fx>
       <ag-badge-fx fx="ripple" variant="info">Ripple</ag-badge-fx>
-      <ag-badge-fx fx="highlight-sweep" variant="warning">Sweep</ag-badge-fx>
+      <ag-badge-fx fx="highlight-sweep" fx-speed="lg" fx-ease="ease-out" variant="monochrome">Sweep</ag-badge-fx>
     </div>
   `,
 };
