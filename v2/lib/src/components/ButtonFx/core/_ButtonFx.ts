@@ -60,16 +60,34 @@ export class ButtonFx extends AgButton implements FxProps {
          Note: Keyframes are imported from motionStyles
          ======================================== */
 
-      /* Hover-triggered effects */
-      button.ag-fx-bounce:hover {
+      /*
+        Prevent hover flicker:
+        - Use @host for hover detection (doesn't move with animation)
+        - Add animation-play-state to prevent retriggering
+      */
+      :host([fx="bounce"]) button,
+      :host([fx="jelly"]) button,
+      :host([fx="pulse"]) button,
+      :host([fx="grow"]) button,
+      :host([fx="shrink"]) button,
+      :host([fx="push"]) button,
+      :host([fx="shake"]) button,
+      :host([fx="wobble"]) button,
+      :host([fx="pulse-wobble"]) button {
+        /* Animation only plays once per hover */
+        animation-iteration-count: 1;
+      }
+
+      /* Hover-triggered effects - now triggered by :host instead of button */
+      :host([fx="bounce"]:hover) button {
         animation: ag-fx-bounce var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
-      button.ag-fx-pulse:hover {
+      :host([fx="pulse"]:hover) button {
         animation: ag-fx-pulse var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
-      button.ag-fx-jelly:hover {
+      :host([fx="jelly"]:hover) button {
         animation: ag-fx-jelly var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
@@ -88,17 +106,17 @@ export class ButtonFx extends AgButton implements FxProps {
          ======================================== */
 
       /* Grow */
-      button.ag-fx-grow:hover {
+      :host([fx="grow"]:hover) button {
         animation: ag-fx-grow var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease) forwards;
       }
 
       /* Shrink */
-      button.ag-fx-shrink:hover {
+      :host([fx="shrink"]:hover) button {
         animation: ag-fx-shrink var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease) forwards;
       }
 
       /* Push */
-      button.ag-fx-push:hover {
+      :host([fx="push"]:hover) button {
         animation: ag-fx-push var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
@@ -121,7 +139,7 @@ export class ButtonFx extends AgButton implements FxProps {
         /* Use ease-out for slides to prevent spring overshoot which causes visual glitches */
         transition: transform var(--ag-fx-duration, 200ms) ease-out;
       }
-      
+
       button.ag-fx-bg-slide::before {
         transform: translateY(100%);
       }
@@ -211,17 +229,17 @@ export class ButtonFx extends AgButton implements FxProps {
       }
 
       /* Shake */
-      button.ag-fx-shake:hover {
+      :host([fx="shake"]:hover) button {
         animation: ag-fx-shake var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
       /* Wobble */
-      button.ag-fx-wobble:hover {
+      :host([fx="wobble"]:hover) button {
         animation: ag-fx-wobble var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
-      
+
       /* Pulse + Wobble 200ms pulse (1.08 scale) + 200ms wobble */
-      button.ag-fx-pulse-wobble:hover {
+      :host([fx="pulse-wobble"]:hover) button {
         animation:
           ag-fx-grow 200ms var(--ag-fx-ease-spring-lg) 0ms,
           ag-fx-wobble 200ms var(--ag-fx-ease-spring-md) 200ms;
@@ -251,7 +269,7 @@ export class ButtonFx extends AgButton implements FxProps {
   ];
 
   // FX props
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   fx?: string;
 
   @property({ type: String, attribute: 'fx-speed' })
