@@ -805,6 +805,53 @@ export const LegacyHeaderSlot: Story = {
       Command,
     },
     setup() {
+      onMounted(() => {
+        const styleId = 'legacy-header-slot-styles';
+        if (!document.getElementById(styleId)) {
+          const style = document.createElement('style');
+          style.id = styleId;
+          style.textContent = `
+            ${navButtonStyles}
+            .logo-toggle {
+              display: flex;
+              align-items: center;
+              gap: var(--ag-space-3);
+              background: none;
+              border: none;
+              padding: 0;
+              cursor: pointer;
+              width: 100%;
+              transition: all var(--ag-sidebar-transition-duration, 200ms);
+            }
+
+            .logo-toggle:hover {
+              opacity: 0.8;
+            }
+
+            .logo-text {
+              font-size: 1.125rem;
+              font-weight: 600;
+              white-space: nowrap;
+              transition: opacity var(--ag-sidebar-transition-duration, 200ms);
+            }
+
+            /* Hide text when sidebar is collapsed */
+            ag-sidebar[collapsed] .logo-text {
+              opacity: 0;
+              width: 0;
+              overflow: hidden;
+            }
+
+            /* Center logo when collapsed */
+            ag-sidebar[collapsed] .logo-toggle {
+              justify-content: center;
+              gap: unset;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      });
+
       const handleSubmenuToggle = (e: Event) => {
         e.preventDefault();
         e.stopPropagation();
@@ -831,43 +878,6 @@ export const LegacyHeaderSlot: Story = {
       return { args, handleSubmenuToggle };
     },
     template: `
-      <style>
-        .logo-toggle {
-          display: flex;
-          align-items: center;
-          gap: var(--ag-space-3);
-          background: none;
-          border: none;
-          padding: 0;
-          cursor: pointer;
-          width: 100%;
-          transition: all var(--ag-sidebar-transition-duration, 200ms);
-        }
-
-        .logo-toggle:hover {
-          opacity: 0.8;
-        }
-
-        .logo-text {
-          font-size: 1.125rem;
-          font-weight: 600;
-          white-space: nowrap;
-          transition: opacity var(--ag-sidebar-transition-duration, 200ms);
-        }
-
-        /* Hide text when sidebar is collapsed */
-        ag-sidebar[collapsed] .logo-text {
-          opacity: 0;
-          width: 0;
-          overflow: hidden;
-        }
-
-        /* Center logo when collapsed */
-        ag-sidebar[collapsed] .logo-toggle {
-          justify-content: center;
-          gap: unset;
-        }
-      </style>
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="args.open"
@@ -888,7 +898,7 @@ export const LegacyHeaderSlot: Story = {
             }"
             aria-label="Toggle sidebar"
           >
-            <Command :size="28" />
+            <Command :size="16" />
             <span class="logo-text">Acme Corp</span>
           </button>
 
@@ -1062,7 +1072,7 @@ export const DisableCompactMode: Story = {
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="args.open !== undefined ? args.open : true"
-          .disableCompactMode="true"
+          :disable-compact-mode="true"
           :show-mobile-toggle="true"
           @update:open="args.onToggle"
         >
@@ -1168,7 +1178,7 @@ export const DisableCompactModeWithBuiltInToggle: Story = {
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="args.open !== undefined ? args.open : true"
-          .disableCompactMode="true"
+          :disable-compact-mode="true"
           :show-header-toggle="true"
           :show-mobile-toggle="true"
           @update:open="args.onToggle"
@@ -1362,7 +1372,7 @@ export const WithActiveItemTracking: Story = {
                 class="nav-button active"
                 aria-current="page"
                 data-route="/dashboard"
-                @click="(e) => handleNavClick('/dashboard')(e)"
+                @click="handleNavClick('/dashboard')($event)"
               >
                 <Home :size="20" />
                 <span class="nav-label">Dashboard</span>
@@ -1374,7 +1384,7 @@ export const WithActiveItemTracking: Story = {
                 type="button"
                 class="nav-button"
                 data-route="/projects"
-                @click="(e) => handleNavClick('/projects')(e)"
+                @click="handleNavClick('/projects')($event)"
               >
                 <Folder :size="20" />
                 <span class="nav-label">Projects</span>
@@ -1386,7 +1396,7 @@ export const WithActiveItemTracking: Story = {
                 type="button"
                 class="nav-button"
                 data-route="/team"
-                @click="(e) => handleNavClick('/team')(e)"
+                @click="handleNavClick('/team')($event)"
               >
                 <User :size="20" />
                 <span class="nav-label">Team</span>
@@ -1422,7 +1432,7 @@ export const WithActiveItemTracking: Story = {
                   type="button"
                   class="nav-button"
                   data-route="/settings"
-                  @click="(e) => handleNavClick('/settings')(e)"
+                  @click="handleNavClick('/settings')($event)"
                 >
                   <Settings :size="20" />
                   <span class="nav-label">Settings</span>
@@ -1433,16 +1443,16 @@ export const WithActiveItemTracking: Story = {
                   </span>
                 </button>
                 <VueSidebarNavPopoverSubmenu slot="content" class="popover-submenu">
-                  <a href="#" class="nav-sublink" data-route="/settings/profile" @click="(e) => handleNavClick('/settings/profile')(e)">Profile</a>
-                  <a href="#" class="nav-sublink" data-route="/settings/billing" @click="(e) => handleNavClick('/settings/billing')(e)">Billing</a>
-                  <a href="#" class="nav-sublink" data-route="/settings/security" @click="(e) => handleNavClick('/settings/security')(e)">Security</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/profile" @click="handleNavClick('/settings/profile')($event)">Profile</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/billing" @click="handleNavClick('/settings/billing')($event)">Billing</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/security" @click="handleNavClick('/settings/security')($event)">Security</a>
                 </VueSidebarNavPopoverSubmenu>
               </VuePopover>
 
               <VueSidebarNavSubmenu>
-                <a class="nav-sublink" href="#" data-route="/settings/profile" @click="(e) => handleNavClick('/settings/profile')(e)">Profile</a>
-                <a class="nav-sublink" href="#" data-route="/settings/billing" @click="(e) => handleNavClick('/settings/billing')(e)">Billing</a>
-                <a class="nav-sublink" href="#" data-route="/settings/security" @click="(e) => handleNavClick('/settings/security')(e)">Security</a>
+                <a class="nav-sublink" href="#" data-route="/settings/profile" @click="handleNavClick('/settings/profile')($event)">Profile</a>
+                <a class="nav-sublink" href="#" data-route="/settings/billing" @click="handleNavClick('/settings/billing')($event)">Billing</a>
+                <a class="nav-sublink" href="#" data-route="/settings/security" @click="handleNavClick('/settings/security')($event)">Security</a>
               </VueSidebarNavSubmenu>
             </VueSidebarNavItem>
           </VueSidebarNav>
