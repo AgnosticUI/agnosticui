@@ -169,6 +169,7 @@ export const DangerText = "#4c0014";
 export const Border = "#e5e7eb";
 export const BorderSubtle = "#d1d5db";
 export const Primary = "#0550ae";
+export const PrimaryRgb = "5, 80, 174";
 export const PrimaryBorder = "#d1d5db";
 export const PrimaryDark = "#0a3069";
 export const Secondary = "#6b7280";

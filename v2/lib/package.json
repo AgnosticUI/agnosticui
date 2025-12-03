@@ -496,6 +496,18 @@
       "types": "./dist/components/Badge/vue/index.d.ts",
       "import": "./dist/components/Badge/vue/index.js"
     },
+    "./badge-fx": {
+      "types": "./dist/components/BadgeFx/core/BadgeFx.d.ts",
+      "import": "./dist/components/BadgeFx/core/BadgeFx.js"
+    },
+    "./badge-fx/react": {
+      "types": "./dist/components/BadgeFx/react/ReactBadgeFx.d.ts",
+      "import": "./dist/components/BadgeFx/react/ReactBadgeFx.js"
+    },
+    "./badge-fx/vue": {
+      "types": "./dist/components/BadgeFx/vue/index.d.ts",
+      "import": "./dist/components/BadgeFx/vue/index.js"
+    },
     "./kbd": {
       "types": "./dist/components/Kbd/core/Kbd.d.ts",
       "import": "./dist/components/Kbd/core/Kbd.js"
