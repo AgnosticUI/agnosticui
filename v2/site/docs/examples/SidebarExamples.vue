@@ -26,7 +26,10 @@
             style="background: none; border: none; padding: 8px 0; cursor: pointer; display: flex; align-items: center; color: inherit;"
             aria-label="Toggle sidebar"
           >
-            <PanelIcon />
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2"/>
+              <path d="M9 3v18"/>
+            </svg>
           </button>
 
           <VueSidebarNav>
@@ -183,7 +186,10 @@
             style="background: none; border: none; padding: 8px 0; cursor: pointer; display: flex; align-items: center; color: inherit;"
             aria-label="Toggle sidebar"
           >
-            <PanelIcon />
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2"/>
+              <path d="M9 3v18"/>
+            </svg>
           </button>
 
           <VueSidebarNav>
@@ -361,16 +367,6 @@ import {
   Command,
 } from "lucide-vue-next";
 
-// Icon component helper for rendering panel icon
-const PanelIcon = {
-  template: `
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect width="18" height="18" x="3" y="3" rx="2"/>
-      <path d="M9 3v18"/>
-    </svg>
-  `,
-};
-
 export default {
   name: "SidebarExamples",
   components: {
@@ -386,7 +382,6 @@ export default {
     Settings,
     ChevronRight,
     Command,
-    PanelIcon,
   },
   data() {
     return {
@@ -407,7 +402,50 @@ export default {
       },
     };
   },
+  watch: {
+    'sidebar2.isCollapsed'(newVal) {
+      console.log('[Sidebar 2] Collapsed state changed to:', newVal);
+      setTimeout(() => {
+        const sidebar = document.querySelectorAll('ag-sidebar')[1]; // Second sidebar
+        if (!sidebar) return;
+
+        const header = sidebar.shadowRoot?.querySelector('.sidebar-header') || sidebar.querySelector('.sidebar-header');
+        const headerLayout = sidebar.shadowRoot?.querySelector('.header-layout') || sidebar.querySelector('.header-layout');
+        const h2 = sidebar.querySelector('h2[slot="ag-header-start"]');
+
+        console.log('[Sidebar 2 After Toggle] Collapsed attr:', sidebar.hasAttribute('collapsed'));
+        console.log('[Sidebar 2 After Toggle] Header height:', header?.offsetHeight);
+        console.log('[Sidebar 2 After Toggle] Header display:', header ? window.getComputedStyle(header).display : null);
+        console.log('[Sidebar 2 After Toggle] Header flexGrow:', header ? window.getComputedStyle(header).flexGrow : null);
+        console.log('[Sidebar 2 After Toggle] Header flexShrink:', header ? window.getComputedStyle(header).flexShrink : null);
+        console.log('[Sidebar 2 After Toggle] Header flexBasis:', header ? window.getComputedStyle(header).flexBasis : null);
+        console.log('[Sidebar 2 After Toggle] Header layout height:', headerLayout?.offsetHeight);
+        console.log('[Sidebar 2 After Toggle] H2 height:', h2?.offsetHeight);
+        console.log('[Sidebar 2 After Toggle] H2 marginTop:', h2 ? window.getComputedStyle(h2).marginTop : null);
+        console.log('[Sidebar 2 After Toggle] H2 marginBottom:', h2 ? window.getComputedStyle(h2).marginBottom : null);
+      }, 100);
+    }
+  },
   mounted() {
+    // Debug sidebar header heights
+    setTimeout(() => {
+      const sidebars = document.querySelectorAll('ag-sidebar');
+      sidebars.forEach((sidebar, index) => {
+        const header = sidebar.shadowRoot?.querySelector('.sidebar-header') || sidebar.querySelector('.sidebar-header');
+        const headerLayout = sidebar.shadowRoot?.querySelector('.header-layout') || sidebar.querySelector('.header-layout');
+        const h2 = sidebar.querySelector('h2[slot="ag-header-start"]');
+
+        console.log(`[Sidebar ${index}] Header:`, header);
+        console.log(`[Sidebar ${index}] Header computed styles:`, header ? window.getComputedStyle(header) : null);
+        console.log(`[Sidebar ${index}] Header height:`, header?.offsetHeight);
+        console.log(`[Sidebar ${index}] Header layout:`, headerLayout);
+        console.log(`[Sidebar ${index}] Header layout computed:`, headerLayout ? window.getComputedStyle(headerLayout) : null);
+        console.log(`[Sidebar ${index}] H2:`, h2);
+        console.log(`[Sidebar ${index}] H2 computed:`, h2 ? window.getComputedStyle(h2) : null);
+        console.log(`[Sidebar ${index}] H2 height:`, h2?.offsetHeight);
+      });
+    }, 500);
+
     // Inject nav button styles
     const styleId = 'sidebar-nav-styles';
     if (!document.getElementById(styleId)) {
@@ -418,7 +456,12 @@ export default {
         ag-sidebar h2[slot="ag-header-start"] {
           border-top: none !important;
           padding-top: 0 !important;
+          padding-bottom: 0 !important;
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
           letter-spacing: normal !important;
+          line-height: normal !important;
+          overflow-wrap: normal !important;
         }
 
         /* Overrides VitePress theme - resets .vp-doc a styles */
