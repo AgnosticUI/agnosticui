@@ -402,50 +402,7 @@ export default {
       },
     };
   },
-  watch: {
-    'sidebar2.isCollapsed'(newVal) {
-      console.log('[Sidebar 2] Collapsed state changed to:', newVal);
-      setTimeout(() => {
-        const sidebar = document.querySelectorAll('ag-sidebar')[1]; // Second sidebar
-        if (!sidebar) return;
-
-        const header = sidebar.shadowRoot?.querySelector('.sidebar-header') || sidebar.querySelector('.sidebar-header');
-        const headerLayout = sidebar.shadowRoot?.querySelector('.header-layout') || sidebar.querySelector('.header-layout');
-        const h2 = sidebar.querySelector('h2[slot="ag-header-start"]');
-
-        console.log('[Sidebar 2 After Toggle] Collapsed attr:', sidebar.hasAttribute('collapsed'));
-        console.log('[Sidebar 2 After Toggle] Header height:', header?.offsetHeight);
-        console.log('[Sidebar 2 After Toggle] Header display:', header ? window.getComputedStyle(header).display : null);
-        console.log('[Sidebar 2 After Toggle] Header flexGrow:', header ? window.getComputedStyle(header).flexGrow : null);
-        console.log('[Sidebar 2 After Toggle] Header flexShrink:', header ? window.getComputedStyle(header).flexShrink : null);
-        console.log('[Sidebar 2 After Toggle] Header flexBasis:', header ? window.getComputedStyle(header).flexBasis : null);
-        console.log('[Sidebar 2 After Toggle] Header layout height:', headerLayout?.offsetHeight);
-        console.log('[Sidebar 2 After Toggle] H2 height:', h2?.offsetHeight);
-        console.log('[Sidebar 2 After Toggle] H2 marginTop:', h2 ? window.getComputedStyle(h2).marginTop : null);
-        console.log('[Sidebar 2 After Toggle] H2 marginBottom:', h2 ? window.getComputedStyle(h2).marginBottom : null);
-      }, 100);
-    }
-  },
   mounted() {
-    // Debug sidebar header heights
-    setTimeout(() => {
-      const sidebars = document.querySelectorAll('ag-sidebar');
-      sidebars.forEach((sidebar, index) => {
-        const header = sidebar.shadowRoot?.querySelector('.sidebar-header') || sidebar.querySelector('.sidebar-header');
-        const headerLayout = sidebar.shadowRoot?.querySelector('.header-layout') || sidebar.querySelector('.header-layout');
-        const h2 = sidebar.querySelector('h2[slot="ag-header-start"]');
-
-        console.log(`[Sidebar ${index}] Header:`, header);
-        console.log(`[Sidebar ${index}] Header computed styles:`, header ? window.getComputedStyle(header) : null);
-        console.log(`[Sidebar ${index}] Header height:`, header?.offsetHeight);
-        console.log(`[Sidebar ${index}] Header layout:`, headerLayout);
-        console.log(`[Sidebar ${index}] Header layout computed:`, headerLayout ? window.getComputedStyle(headerLayout) : null);
-        console.log(`[Sidebar ${index}] H2:`, h2);
-        console.log(`[Sidebar ${index}] H2 computed:`, h2 ? window.getComputedStyle(h2) : null);
-        console.log(`[Sidebar ${index}] H2 height:`, h2?.offsetHeight);
-      });
-    }, 500);
-
     // Inject nav button styles
     const styleId = 'sidebar-nav-styles';
     if (!document.getElementById(styleId)) {
@@ -462,6 +419,14 @@ export default {
           letter-spacing: normal !important;
           line-height: normal !important;
           overflow-wrap: normal !important;
+          white-space: nowrap !important;
+        }
+
+        /* Ensure consistent header padding and height when collapsed/expanded */
+        ag-sidebar::part(ag-sidebar-header),
+        ag-sidebar[collapsed]::part(ag-sidebar-header),
+        ag-sidebar:not([collapsed])::part(ag-sidebar-header) {
+          padding-block: var(--ag-space-3);
         }
 
         /* Overrides VitePress theme - resets .vp-doc a styles */
