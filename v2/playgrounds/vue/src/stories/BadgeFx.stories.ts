@@ -55,12 +55,12 @@ export const AllEffects: Story = {
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
         <VueBadgeFx fx="bounce" variant="success">Bounce</VueBadgeFx>
         <VueBadgeFx fx="pulse" variant="info">Pulse</VueBadgeFx>
-        <VueBadgeFx fx="jelly" variant="warning">Jelly</VueBadgeFx>
-        <VueBadgeFx fx="shimmer" variant="danger">Shimmer</VueBadgeFx>
-        <VueBadgeFx fx="glow" variant="neutral">Glow</VueBadgeFx>
-        <VueBadgeFx fx="flip" variant="success">Flip</VueBadgeFx>
+        <VueBadgeFx fx="jelly" fx-speed="lg" fx-ease="spring-sm" variant="monochrome">Jelly</VueBadgeFx>
+        <VueBadgeFx fx="shimmer" fx-speed="xl" variant="danger">Shimmer</VueBadgeFx>
+        <VueBadgeFx fx="glow" variant="primary">Glow</VueBadgeFx>
+        <VueBadgeFx fx="flip" fx-speed="lg" fx-ease="ease-in" variant="success">Flip</VueBadgeFx>
         <VueBadgeFx fx="ripple" variant="info">Ripple</VueBadgeFx>
-        <VueBadgeFx fx="highlight-sweep" variant="warning">Sweep</VueBadgeFx>
+        <VueBadgeFx fx="highlight-sweep" fx-speed="lg" fx-ease="ease-out" variant="monochrome">Sweep</VueBadgeFx>
       </div>
     `,
   }),
