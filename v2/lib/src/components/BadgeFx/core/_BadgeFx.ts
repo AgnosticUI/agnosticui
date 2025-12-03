@@ -44,22 +44,23 @@ export class BadgeFx extends AgBadge implements BadgeFxProps {
         overflow: hidden;
         -webkit-mask-image: linear-gradient(
           to right,
-          rgba(0, 0, 0, 0) 0%,
-          rgba(0, 0, 0, 1) 25%,
-          rgba(0, 0, 0, 1) 75%,
-          rgba(0, 0, 0, 0) 100%
+        rgba(0, 0, 0, 0) 0%,      /* transparent left edge */
+        rgba(0, 0, 0, 0.9) 40%,     /* fade in complete at 40% */
+        rgba(0, 0, 0, 0.9) 60%,     /* fade out starts at 60% */
+        rgba(0, 0, 0, 0) 100%     /* transparent right edge */
         );
         mask-image: linear-gradient(
           to right,
-          rgba(0, 0, 0, 0) 0%,
-          rgba(0, 0, 0, 1) 25%,
-          rgba(0, 0, 0, 1) 75%,
-          rgba(0, 0, 0, 0) 100%
+        rgba(0, 0, 0, 0) 0%,      /* transparent left edge */
+        rgba(0, 0, 0, 1) 40%,     /* fade in complete at 40% */
+        rgba(0, 0, 0, 1) 60%,     /* fade out starts at 60% */
+        rgba(0, 0, 0, 0) 100%     /* transparent right edge */
         );
-        -webkit-mask-size: 200% 100%;
-        mask-size: 200% 100%;
-        -webkit-mask-position: 200% 0;
-        mask-position: 200% 0;
+        /* 40-60% above creates a 20% wide "visible window" with soft 40% fade zones on each side. */
+        -webkit-mask-size: 250% 100%;
+        mask-size: 250% 100%;
+        -webkit-mask-position: 215% 0;
+        mask-position: 215% 0;
       }
 
       /* Ripple needs overflow visible to show expanding ring */
@@ -78,16 +79,17 @@ export class BadgeFx extends AgBadge implements BadgeFxProps {
         position: absolute;
         top: 0;
         left: 0;
-        width: 200%;
-        height: 100%;
+        right: 0;
+        bottom: 0;
         background: linear-gradient(
-          to right,
+          90deg,
           transparent 0%,
-          rgba(255, 255, 255, 0.3) 50%,
+          transparent 30%,
+          rgba(255, 255, 255, 0.5) 50%,
+          transparent 70%,
           transparent 100%
         );
-        background-size: 200% 100%;
-        background-position: 100% 0;
+        transform: translateX(-100%);
         pointer-events: none;
       }
 

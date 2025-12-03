@@ -48,12 +48,12 @@ export const AllEffects: Story = {
     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
       <ReactBadgeFx fx="bounce" variant="success">Bounce</ReactBadgeFx>
       <ReactBadgeFx fx="pulse" variant="info">Pulse</ReactBadgeFx>
-      <ReactBadgeFx fx="jelly" variant="warning">Jelly</ReactBadgeFx>
-      <ReactBadgeFx fx="shimmer" variant="danger">Shimmer</ReactBadgeFx>
-      <ReactBadgeFx fx="glow" variant="neutral">Glow</ReactBadgeFx>
-      <ReactBadgeFx fx="flip" variant="success">Flip</ReactBadgeFx>
+      <ReactBadgeFx fx="jelly" fxSpeed='lg' fxEase='spring-sm' variant="monochrome">Jelly</ReactBadgeFx>
+      <ReactBadgeFx fx="shimmer" fxSpeed='xl' variant="danger">Shimmer</ReactBadgeFx>
+      <ReactBadgeFx fx="glow" variant="primary">Glow</ReactBadgeFx>
+      <ReactBadgeFx fx="flip" fxSpeed='lg' fxEase='ease-in' variant="success">Flip</ReactBadgeFx>
       <ReactBadgeFx fx="ripple" variant="info">Ripple</ReactBadgeFx>
-      <ReactBadgeFx fx="highlight-sweep" variant="warning">Sweep</ReactBadgeFx>
+      <ReactBadgeFx fx="highlight-sweep" fxSpeed='lg' fxEase='ease-out' variant="monochrome">Sweep</ReactBadgeFx>
     </div>
   ),
 };

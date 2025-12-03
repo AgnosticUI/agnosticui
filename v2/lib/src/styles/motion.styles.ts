@@ -63,19 +63,19 @@ export const motionStyles = css`
   /* Shimmer - light sweep (mask animation) */
   @keyframes ag-fx-shimmer {
     0% { 
-      -webkit-mask-position: 200% 0;
-      mask-position: 200% 0;
+      -webkit-mask-position: 50% 0;
+      mask-position: 50% 0;
     }
     100% { 
-      -webkit-mask-position: -200% 0;
-      mask-position: -200% 0;
+      -webkit-mask-position: -125% 0;
+      mask-position: -125% 0;
     }
   }
 
   /* Glow - box-shadow pulse */
   @keyframes ag-fx-glow {
     0%, 100% { box-shadow: 0 0 0 0 rgba(var(--ag-primary-rgb), 0); }
-    50% { box-shadow: 0 0 20px 5px rgba(var(--ag-primary-rgb), 0.6); }
+    50% { box-shadow: 0 0 14px 2px rgba(var(--ag-primary-rgb), 0.35); }
   }
 
   /* Flip - 3D rotation */
@@ -92,15 +92,19 @@ export const motionStyles = css`
 
   /* Ripple - radial expansion */
   @keyframes ag-fx-ripple {
-    0% { box-shadow: 0 0 0 0 rgba(var(--ag-primary-rgb), 0.4); }
-    100% { box-shadow: 0 0 0 15px rgba(var(--ag-primary-rgb), 0); }
+    0% { box-shadow: 0 0 0 0 rgba(var(--ag-primary-rgb), 0.3); }
+    100% { box-shadow: 0 0 1px 12px rgba(var(--ag-primary-rgb), 0); }
   }
 
   /* Highlight Sweep - background gradient sweep */
   @keyframes ag-fx-highlight-sweep {
-    0% { background-position: 100% 0; }
-    100% { background-position: -100% 0; }
+  0% {
+    transform: translateX(-100%);
   }
+  100% {
+    transform: translateX(100%);
+  }
+}
 
   /* Press-pop - quick press down/up */
   @keyframes ag-fx-press-pop {
