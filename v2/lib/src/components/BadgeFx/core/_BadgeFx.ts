@@ -85,7 +85,7 @@ export class BadgeFx extends AgBadge implements BadgeFxProps {
           90deg,
           transparent 0%,
           transparent 30%,
-          rgba(255, 255, 255, 0.5) 50%,
+          var(--ag-fx-sweep-color, rgba(255, 255, 255, 0.5)) 50%,
           transparent 70%,
           transparent 100%
         );
@@ -198,6 +198,8 @@ export class BadgeFx extends AgBadge implements BadgeFxProps {
   @property({ type: Boolean, attribute: 'fx-disabled', reflect: true })
   fxDisabled!: boolean;
 
+  private _observer: MutationObserver | null = null;
+
   constructor() {
     super();
     this.fxSpeed = 'md';
@@ -205,10 +207,54 @@ export class BadgeFx extends AgBadge implements BadgeFxProps {
     this.fxDisabled = false;
   }
 
+  override connectedCallback() {
+    super.connectedCallback();
+    this._updateTheme();
+
+    this._observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+          this._updateTheme();
+        }
+      });
+    });
+
+    this._observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+  }
+
+  override disconnectedCallback() {
+    super.disconnectedCallback();
+    if (this._observer) {
+      this._observer.disconnect();
+      this._observer = null;
+    }
+  }
+
+  private _updateTheme() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const targetEl = this.shadowRoot?.querySelector('.badge');
+    if (targetEl instanceof HTMLElement) {
+
+      // We have to do some custom property adjustments based on theme and variant for certain effects
+      targetEl.style.setProperty('--ag-fx-shadow-opacity', isDark ? '0.8' : '0.4');
+
+      // For monochrome variant in dark mode, we need a dark sweep because the background is white
+      if (isDark && this.variant === 'monochrome') {
+        targetEl.style.setProperty('--ag-fx-sweep-color', 'rgba(0, 0, 0, 0.6)');
+      } else {
+        targetEl.style.setProperty('--ag-fx-sweep-color', 'rgba(255, 255, 255, 0.5)');
+      }
+    }
+  }
+
   override firstUpdated(changedProperties: Map<PropertyKey, unknown>) {
     super.firstUpdated(changedProperties);
     this._applyFxClasses();
     this._applyFxCustomProperties();
+    this._updateTheme();
   }
 
   updated(changedProperties: Map<PropertyKey, unknown>) {
@@ -216,6 +262,10 @@ export class BadgeFx extends AgBadge implements BadgeFxProps {
 
     if (changedProperties.has('fx') || changedProperties.has('fxDisabled')) {
       this._applyFxClasses();
+    }
+
+    if (changedProperties.has('variant')) {
+      this._updateTheme();
     }
 
     if (changedProperties.has('fxSpeed') || changedProperties.has('fxEase')) {

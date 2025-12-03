@@ -65,6 +65,10 @@
     "value": "{blue.600.value}",
     "description": "Primary brand color brightened for dark backgrounds"
   },
+  "primary-rgb": {
+    "value": "17, 88, 199",
+    "description": "Primary brand color brightened (RGB format for alpha channel support)"
+  },
   "primary-border": {
     "value": "{blue.500.value}",
     "description": "Border color for primary elements on dark backgrounds"

@@ -61,6 +61,7 @@ function getComponents() {
       { text: 'AspectRatio', link: '/components/aspect-ratio' },
       { text: 'Avatar', link: '/components/avatar' },
       { text: 'Badge', link: '/components/badge' },
+      { text: 'BadgeFx', link: '/components/badge-fx' },
       { text: 'Breadcrumb', link: '/components/breadcrumb' },
       { text: 'Button', link: '/components/button' },
       { text: 'ButtonFx', link: '/components/button-fx' },
