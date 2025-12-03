@@ -1,5 +1,5 @@
 <template>
-  <ag-badge
+  <ag-badge-fx
     ref="agComponent"
     :variant="variant"
     :size="size"
@@ -10,20 +10,24 @@
     :max="max"
     :status-label="statusLabel"
     :live="live"
+    :fx="fx"
+    :fx-speed="fxSpeed"
+    :fx-ease="fxEase"
+    .fxDisabled="fxDisabled"
     v-bind="$attrs"
   >
     <slot />
-  </ag-badge>
+  </ag-badge-fx>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { BadgeSize, BadgeVariant } from "../core/Badge";
-import type { AgBadge } from "../core/Badge";
-import "../core/Badge";
+import type { BadgeSize, BadgeVariant } from "../../Badge/core/Badge";
+import type { BadgeFx } from "../core/BadgeFx";
+import "../core/BadgeFx";
 
 // Define props interface
-interface VueBadgeProps {
+interface VueBadgeFxProps {
   variant?: BadgeVariant;
   size?: BadgeSize;
   dot?: boolean;
@@ -33,10 +37,22 @@ interface VueBadgeProps {
   statusLabel?: string | null;
   live?: "off" | "polite" | "assertive";
   hiddenFromAT?: boolean;
+  fx?: string;
+  fxSpeed?: "xs" | "sm" | "md" | "lg" | "xl";
+  fxEase?:
+    | "ease"
+    | "ease-in"
+    | "ease-out"
+    | "ease-in-out"
+    | "bounce"
+    | "spring-sm"
+    | "spring-md"
+    | "spring-lg";
+  fxDisabled?: boolean;
 }
 
 // Define props with defaults matching core component
-const props = withDefaults(defineProps<VueBadgeProps>(), {
+const props = withDefaults(defineProps<VueBadgeFxProps>(), {
   variant: "default",
   size: "md",
   dot: false,
@@ -46,7 +62,10 @@ const props = withDefaults(defineProps<VueBadgeProps>(), {
   statusLabel: null,
   live: "off",
   hiddenFromAT: false,
+  fxSpeed: "md",
+  fxEase: "ease",
+  fxDisabled: false,
 });
 
-const agComponent = ref<InstanceType<typeof AgBadge> | null>(null);
+const agComponent = ref<InstanceType<typeof BadgeFx> | null>(null);
 </script>

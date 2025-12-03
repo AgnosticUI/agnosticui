@@ -65,6 +65,10 @@
     "value": "{blue.600.value}",
     "description": "Primary brand color for buttons, links, and key UI elements"
   },
+  "primary-rgb": {
+    "value": "5, 80, 174",
+    "description": "Primary brand color (RGB format for alpha channel support)"
+  },
   "primary-border": {
     "value": "{neutral.300.value}",
     "description": "Light border color that complements primary"
