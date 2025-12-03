@@ -284,7 +284,7 @@ export const Default: Story = {
                 trigger-type="click"
                 :distance="8"
                 :arrow="true"
-                :show-header="false"
+                .showHeader="false"
               >
                 <button slot="trigger" type="button" class="nav-button">
                   <Folder :size="20" />
@@ -336,7 +336,7 @@ export const Default: Story = {
                 trigger-type="click"
                 :distance="8"
                 :arrow="true"
-                :show-header="false"
+                .showHeader="false"
               >
                 <button slot="trigger" type="button" class="nav-button">
                   <Settings :size="20" />
@@ -504,7 +504,7 @@ export const WithHeaderActions: Story = {
                 trigger-type="click"
                 :distance="8"
                 :arrow="true"
-                :show-header="false"
+                .showHeader="false"
               >
                 <button slot="trigger" type="button" class="nav-button">
                   <Folder :size="20" />
@@ -554,7 +554,7 @@ export const WithHeaderActions: Story = {
                 trigger-type="click"
                 :distance="8"
                 :arrow="true"
-                :show-header="false"
+                .showHeader="false"
               >
                 <button slot="trigger" type="button" class="nav-button">
                   <Settings :size="20" />
@@ -689,7 +689,7 @@ export const WithBuiltInToggle: Story = {
                 trigger-type="click"
                 :distance="8"
                 :arrow="true"
-                :show-header="false"
+                .showHeader="false"
               >
                 <button slot="trigger" type="button" class="nav-button">
                   <Folder :size="20" />
@@ -739,7 +739,7 @@ export const WithBuiltInToggle: Story = {
                 trigger-type="click"
                 :distance="8"
                 :arrow="true"
-                :show-header="false"
+                .showHeader="false"
               >
                 <button slot="trigger" type="button" class="nav-button">
                   <Settings :size="20" />
@@ -831,6 +831,43 @@ export const LegacyHeaderSlot: Story = {
       return { args, handleSubmenuToggle };
     },
     template: `
+      <style>
+        .logo-toggle {
+          display: flex;
+          align-items: center;
+          gap: var(--ag-space-3);
+          background: none;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          width: 100%;
+          transition: all var(--ag-sidebar-transition-duration, 200ms);
+        }
+
+        .logo-toggle:hover {
+          opacity: 0.8;
+        }
+
+        .logo-text {
+          font-size: 1.125rem;
+          font-weight: 600;
+          white-space: nowrap;
+          transition: opacity var(--ag-sidebar-transition-duration, 200ms);
+        }
+
+        /* Hide text when sidebar is collapsed */
+        ag-sidebar[collapsed] .logo-text {
+          opacity: 0;
+          width: 0;
+          overflow: hidden;
+        }
+
+        /* Center logo when collapsed */
+        ag-sidebar[collapsed] .logo-toggle {
+          justify-content: center;
+          gap: unset;
+        }
+      </style>
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="args.open"
@@ -881,7 +918,7 @@ export const LegacyHeaderSlot: Story = {
                 trigger-type="click"
                 :distance="8"
                 :arrow="true"
-                :show-header="false"
+                .showHeader="false"
               >
                 <button slot="trigger" type="button" class="nav-button">
                   <Folder :size="20" />
@@ -931,7 +968,7 @@ export const LegacyHeaderSlot: Story = {
                 trigger-type="click"
                 :distance="8"
                 :arrow="true"
-                :show-header="false"
+                .showHeader="false"
               >
                 <button slot="trigger" type="button" class="nav-button">
                   <Settings :size="20" />
@@ -1025,7 +1062,7 @@ export const DisableCompactMode: Story = {
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="args.open !== undefined ? args.open : true"
-          :disable-compact-mode="true"
+          .disableCompactMode="true"
           :show-mobile-toggle="true"
           @update:open="args.onToggle"
         >
@@ -1131,7 +1168,7 @@ export const DisableCompactModeWithBuiltInToggle: Story = {
       <div style="display: flex; height: 500px; border: 1px solid #e5e7eb; border-radius: 0.5rem; overflow: hidden;">
         <VueSidebar
           :open="args.open !== undefined ? args.open : true"
-          :disable-compact-mode="true"
+          .disableCompactMode="true"
           :show-header-toggle="true"
           :show-mobile-toggle="true"
           @update:open="args.onToggle"
@@ -1325,7 +1362,7 @@ export const WithActiveItemTracking: Story = {
                 class="nav-button active"
                 aria-current="page"
                 data-route="/dashboard"
-                @click="handleNavClick('/dashboard')"
+                @click="(e) => handleNavClick('/dashboard')(e)"
               >
                 <Home :size="20" />
                 <span class="nav-label">Dashboard</span>
@@ -1337,7 +1374,7 @@ export const WithActiveItemTracking: Story = {
                 type="button"
                 class="nav-button"
                 data-route="/projects"
-                @click="handleNavClick('/projects')"
+                @click="(e) => handleNavClick('/projects')(e)"
               >
                 <Folder :size="20" />
                 <span class="nav-label">Projects</span>
@@ -1349,7 +1386,7 @@ export const WithActiveItemTracking: Story = {
                 type="button"
                 class="nav-button"
                 data-route="/team"
-                @click="handleNavClick('/team')"
+                @click="(e) => handleNavClick('/team')(e)"
               >
                 <User :size="20" />
                 <span class="nav-label">Team</span>
@@ -1378,14 +1415,14 @@ export const WithActiveItemTracking: Story = {
                 trigger-type="click"
                 :distance="8"
                 :arrow="true"
-                :show-header="false"
+                .showHeader="false"
               >
                 <button
                   slot="trigger"
                   type="button"
                   class="nav-button"
                   data-route="/settings"
-                  @click="handleNavClick('/settings')"
+                  @click="(e) => handleNavClick('/settings')(e)"
                 >
                   <Settings :size="20" />
                   <span class="nav-label">Settings</span>
@@ -1396,16 +1433,16 @@ export const WithActiveItemTracking: Story = {
                   </span>
                 </button>
                 <VueSidebarNavPopoverSubmenu slot="content" class="popover-submenu">
-                  <a href="#" class="nav-sublink" data-route="/settings/profile" @click="handleNavClick('/settings/profile')">Profile</a>
-                  <a href="#" class="nav-sublink" data-route="/settings/billing" @click="handleNavClick('/settings/billing')">Billing</a>
-                  <a href="#" class="nav-sublink" data-route="/settings/security" @click="handleNavClick('/settings/security')">Security</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/profile" @click="(e) => handleNavClick('/settings/profile')(e)">Profile</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/billing" @click="(e) => handleNavClick('/settings/billing')(e)">Billing</a>
+                  <a href="#" class="nav-sublink" data-route="/settings/security" @click="(e) => handleNavClick('/settings/security')(e)">Security</a>
                 </VueSidebarNavPopoverSubmenu>
               </VuePopover>
 
               <VueSidebarNavSubmenu>
-                <a class="nav-sublink" href="#" data-route="/settings/profile" @click="handleNavClick('/settings/profile')">Profile</a>
-                <a class="nav-sublink" href="#" data-route="/settings/billing" @click="handleNavClick('/settings/billing')">Billing</a>
-                <a class="nav-sublink" href="#" data-route="/settings/security" @click="handleNavClick('/settings/security')">Security</a>
+                <a class="nav-sublink" href="#" data-route="/settings/profile" @click="(e) => handleNavClick('/settings/profile')(e)">Profile</a>
+                <a class="nav-sublink" href="#" data-route="/settings/billing" @click="(e) => handleNavClick('/settings/billing')(e)">Billing</a>
+                <a class="nav-sublink" href="#" data-route="/settings/security" @click="(e) => handleNavClick('/settings/security')(e)">Security</a>
               </VueSidebarNavSubmenu>
             </VueSidebarNavItem>
           </VueSidebarNav>

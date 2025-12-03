@@ -257,13 +257,13 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
     }
 
-    /* Collapsed state: hide start content, completely remove end content from layout */
+    /* Collapsed state: hide start content and header-end-content, but keep ag-header-toggle visible */
     :host([collapsed]) .header-start {
       opacity: 0;
       pointer-events: none;
     }
-    
-    :host([collapsed]) .header-end {
+
+    :host([collapsed]) .header-end-content {
       display: none;
     }
 
@@ -812,7 +812,9 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
                   <slot name="ag-header-start"></slot>
                 </div>
                 <div class="header-end">
-                  <slot name="ag-header-end"></slot>
+                  <div class="header-end-content">
+                    <slot name="ag-header-end"></slot>
+                  </div>
                   <slot name="ag-header-toggle"></slot>
                 </div>
               </div>
