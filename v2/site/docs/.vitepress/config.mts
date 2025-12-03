@@ -97,6 +97,7 @@ function getComponents() {
       { text: 'ScrollProgress', link: '/components/scroll-progress' },
       { text: 'ScrollToButton', link: '/components/scroll-to-button' },
       { text: 'Select', link: '/components/select' },
+      { text: 'Sidebar', link: '/components/sidebar' },
       { text: 'Skeleton Loader', link: '/components/skeleton-loader' },
       { text: 'Slider', link: '/components/slider' },
       { text: 'Spinner', link: '/components/spinner' },
