@@ -941,6 +941,7 @@ export default {
         .nav-sublink {
           display: block;
           padding: var(--ag-space-2) var(--ag-space-3);
+          margin-block-end: var(--ag-space-1);
           color: inherit;
           text-decoration: none;
           border-radius: var(--ag-radius-sm);
