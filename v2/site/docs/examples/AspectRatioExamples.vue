@@ -1,22 +1,5 @@
 <template>
   <div>
-    <h3>Responsive 16:9 iframe</h3>
-    <ag-aspect-ratio
-      class="mbs4"
-      :width="16"
-      :height="9"
-      style="max-width: 800px;"
-      aria-label="16:9 iframe"
-    >
-      <iframe
-        title="16:9 iframe"
-        aria-label="16:9 iframe"
-        style="background:#f1f1f1;width:100%;height:100%;border:0;"
-        srcdoc="<!doctype html><html><head><meta charset='utf-8'><style>html,body{height:100%;margin:0}</style></head><body><div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:sans-serif;color:#111'>16:9 iframe</div></body></html>"
-        frameborder="0"
-      ></iframe>
-    </ag-aspect-ratio>
-
     <h3>Constrained max-width</h3>
     <ag-aspect-ratio
       class="mbs4"
@@ -24,7 +7,7 @@
       :height="3"
       :max-width="400"
     >
-      <div style="background:#eee;width:100%;height:100%;display:flex;align-items:center;justify-content:center">4:3 box</div>
+      <div style="background:var(--ag-background-tertiary);color:var(--vp-c-text-1);;width:100%;height:100%;display:flex;align-items:center;justify-content:center">4:3 box</div>
     </ag-aspect-ratio>
 
     <h3>Square (1:1)</h3>
@@ -35,7 +18,7 @@
         :height="1"
         style="width:200px; margin: 0 auto;"
       >
-        <div style="background:#ddd;width:100%;height:100%;display:flex;align-items:center;justify-content:center">1:1 box</div>
+        <div style="background:var(--ag-background-tertiary);color:var(--vp-c-text-1);;width:100%;height:100%;display:flex;align-items:center;justify-content:center">1:1 box</div>
       </ag-aspect-ratio>
     </div>
 
@@ -45,7 +28,7 @@
       <h3>CSS Shadow Parts Customization</h3>
     </div>
     <p class="mbe16">The aspect ratio component exposes the <code>::part(ag-aspect-ratio)</code> selector, allowing you to style the internal container with custom CSS:</p>
-    
+
     <div class="custom-example">
       <ag-aspect-ratio
         class="mbs4"
@@ -61,6 +44,23 @@
         />
       </ag-aspect-ratio>
     </div>
+
+    <h3>Responsive 16:9 iframe</h3>
+    <ag-aspect-ratio
+      class="mbs4"
+      :width="16"
+      :height="9"
+      style="max-width: 600px;"
+      aria-label="16:9 iframe"
+    >
+      <iframe
+        title="16:9 iframe"
+        aria-label="16:9 iframe"
+        style="width:100%;height:100%;border:0;"
+        srcdoc="<!doctype html><html><head><meta charset='utf-8'><style>html,body{height:100%;margin:0}</style></head><body><div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:sans-serif;'>16:9 iframe</div></body></html>"
+        frameborder="0"
+      ></iframe>
+    </ag-aspect-ratio>
   </div>
 </template>
 
