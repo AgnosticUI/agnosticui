@@ -411,8 +411,8 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     :host([show-mobile-toggle]) .toggle-button {
       display: flex;
       position: fixed;
-      width: var(--ag-space-7);
-      height: var(--ag-space-7);
+      width: var(--ag-space-8);
+      height: var(--ag-space-8);
       border-radius: 50%;
       background: var(--ag-sidebar-background);
       border: 1px solid var(--ag-sidebar-border);
