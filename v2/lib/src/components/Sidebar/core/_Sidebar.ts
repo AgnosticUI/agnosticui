@@ -216,11 +216,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     .sidebar-header {
       border-bottom: 1px solid var(--ag-sidebar-border);
     }
-    
-    /* Reduce header padding when collapsed */
-    :host([collapsed]) .sidebar-header {
-      padding-block: var(--ag-space-1);
-    }
+
     .sidebar-footer {
       border-top: 1px solid var(--ag-sidebar-border);
       overflow: hidden;
