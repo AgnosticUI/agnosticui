@@ -168,6 +168,10 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
     /* Allow popovers to escape sidebar in collapsed mode */
     :host([collapsed]) .sidebar-content {
       overflow: visible;
+      /* Center icon button items in the compact sidebar */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     /* Set collapsed width globally so it applies before media queries kick in */

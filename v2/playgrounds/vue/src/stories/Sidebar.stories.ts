@@ -43,8 +43,8 @@ const navButtonStyles = `
   .nav-button .collapsed-indicator {
     display: none;
     position: absolute;
-    bottom: -3px;
-    right: 0;
+    bottom: -1px;
+    right: -1px;
     width: var(--ag-space-3);
     height: var(--ag-space-3);
   }
