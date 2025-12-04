@@ -25,6 +25,7 @@
       <VueButtonFx
         fx="jelly"
         fx-ease="spring-lg"
+        fx-speed="lg"
         variant="warning"
         shape="rounded"
       >
@@ -177,6 +178,7 @@
       <VueButtonFx
         fx="jelly"
         fx-ease="spring-lg"
+        fx-speed="lg"
         variant="primary"
         :bordered="true"
         shape="rounded"
@@ -185,6 +187,7 @@
       </VueButtonFx>
       <VueButtonFx
         fx="jelly"
+        fx-speed="lg"
         fx-ease="spring-lg"
         variant="success"
         :bordered="true"
@@ -195,6 +198,7 @@
       <VueButtonFx
         fx="jelly"
         fx-ease="spring-lg"
+        fx-speed="lg"
         variant="monochrome"
         :bordered="true"
         shape="rounded-square"
@@ -205,6 +209,7 @@
       </VueButtonFx>
       <VueButtonFx
         fx="jelly"
+        fx-speed="lg"
         fx-ease="spring-lg"
         variant="danger"
         :bordered="true"
@@ -218,6 +223,7 @@
       <VueButtonFx
         fx="jelly"
         fx-ease="spring-lg"
+        fx-speed="lg"
         variant="warning"
         :bordered="true"
         shape="rounded-square"
