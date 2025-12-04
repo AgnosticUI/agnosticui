@@ -302,47 +302,58 @@
     <div class="mbe4">
       <h3>Easing Functions</h3>
       <p class="mbe2">Different easing functions create different animation feels</p>
+      <VueAlert :bordered-left="true">
+        Examples use <code>fx-speed="xl"</code> to make easing differences more visible.
+        For production, prefer <code>"sm"</code> or <code>"md"</code> speeds.
+      </VueAlert>
     </div>
     <div class="stacked-mobile mbe6">
       <VueButtonFx
         fx="bounce"
         fx-ease="ease"
+        fx-speed="xl"
         size="sm"
         variant="primary"
       >Ease</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="ease-in"
+        fx-speed="xl"
         size="sm"
         variant="primary"
       >Ease-In</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="ease-out"
+        fx-speed="xl"
         size="sm"
         variant="primary"
       >Ease-Out</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="bounce"
+        fx-speed="xl"
         size="sm"
         variant="primary"
       >Bounce</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="spring-sm"
+        fx-speed="xl"
         size="sm"
         variant="primary"
       >Spring SM</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="spring-md"
+        fx-speed="xl"
         size="sm"
         variant="primary"
       >Spring MD</VueButtonFx>
       <VueButtonFx
         fx="bounce"
         fx-ease="spring-lg"
+        fx-speed="xl"
         size="sm"
         variant="primary"
       >Spring LG</VueButtonFx>
@@ -350,7 +361,11 @@
 
     <!-- Disabled State -->
     <div class="mbe4">
-      <h3>FX Disabled</h3>
+      <h3>Disabling Effects</h3>
+      <p class="example-description">
+        These buttons have <code>fx="bounce"</code> but <code>:fx-disabled="true"</code>
+        prevents the animation from playing while keeping the buttons clickable
+      </p>
     </div>
     <div class="stacked-mobile mbe6">
       <VueButtonFx
@@ -375,6 +390,7 @@
 import { defineComponent } from "vue";
 import { VueButtonFx } from "agnosticui-core/button-fx/vue";
 import { VueIcon } from "agnosticui-core/icon/vue";
+import { VueAlert } from "agnosticui-core/alert/vue";
 import { Mail, Trash2, ShoppingCart, Database, Bomb } from "lucide-vue-next";
 
 export default defineComponent({
@@ -387,6 +403,7 @@ export default defineComponent({
     Database,
     VueButtonFx,
     VueIcon,
+    VueAlert,
   },
 });
 </script>

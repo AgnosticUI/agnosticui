@@ -504,38 +504,84 @@
     <section class="example-section">
       <div class="mbe4">
         <h3>Easing Functions</h3>
-        <p class="example-description">Customize the animation feel with different easing functions</p>
+        <p class="mbe2">Different easing functions create different animation feels</p>
+        <VueAlert :bordered-left="true">
+          Examples use <code>fx-speed="xl"</code> to make easing differences more visible.
+          For production, prefer <code>"sm"</code> or <code>"md"</code> speeds.
+        </VueAlert>
       </div>
-      <div class="stacked-mobile">
+      <div
+        class="stacked"
+        style="width: 40%;"
+      >
+        <span>Ease <code>(ease)</code></span>
         <VueIconButtonFx
           fx="bounce"
-          fx-ease="spring-sm"
+          fx-ease="ease"
+          fx-speed="xl"
           variant="primary"
-          label="Spring Small"
+          label="Ease"
         >
           <Heart />
         </VueIconButtonFx>
+        <span>Ease In <code>(ease-in)</code></span>
         <VueIconButtonFx
           fx="bounce"
-          fx-ease="spring-md"
+          fx-ease="ease-in"
+          fx-speed="xl"
           variant="primary"
-          label="Spring Medium"
+          label="Ease-In"
         >
           <Heart />
         </VueIconButtonFx>
+        <span>Ease Out <code>(ease-out)</code></span>
         <VueIconButtonFx
           fx="bounce"
-          fx-ease="spring-lg"
+          fx-ease="ease-out"
+          fx-speed="xl"
           variant="primary"
-          label="Spring Large"
+          label="Ease-Out"
         >
           <Heart />
         </VueIconButtonFx>
+
+        <span>Bounce<code>(bounce)</code></span>
         <VueIconButtonFx
           fx="bounce"
           fx-ease="bounce"
+          fx-speed="xl"
           variant="primary"
           label="Bounce"
+        >
+          <Heart />
+        </VueIconButtonFx>
+        <span>Spring Small <code>(spring-sm)</code></span>
+        <VueIconButtonFx
+          fx="bounce"
+          fx-ease="spring-sm"
+          fx-speed="xl"
+          variant="primary"
+          label="Spring SM"
+        >
+          <Heart />
+        </VueIconButtonFx>
+        <span>Spring Medium <code>(spring-md)</code></span>
+        <VueIconButtonFx
+          fx="bounce"
+          fx-ease="spring-md"
+          fx-speed="xl"
+          variant="primary"
+          label="Spring MD"
+        >
+          <Heart />
+        </VueIconButtonFx>
+        <span>Spring Large <code>(spring-lg)</code></span>
+        <VueIconButtonFx
+          fx="bounce"
+          fx-ease="spring-lg"
+          fx-speed="xl"
+          variant="primary"
+          label="Spring LG"
         >
           <Heart />
         </VueIconButtonFx>
@@ -705,7 +751,10 @@
     <section class="example-section">
       <div class="mbe4">
         <h3>Disabling Effects</h3>
-        <p class="example-description">Disable effects while keeping the button functional</p>
+        <p class="example-description">
+          This button has <code>fx="pulse"</code> but <code>:fx-disabled="true"</code>
+          prevents the animation from playing while keeping the button clickable
+        </p>
       </div>
       <div class="stacked-mobile">
         <VueIconButtonFx
@@ -724,6 +773,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { VueIconButtonFx } from "agnosticui-core/icon-button-fx/vue";
+import { VueAlert } from "agnosticui-core/alert/vue";
 import {
   Heart,
   Download,
@@ -748,6 +798,7 @@ export default defineComponent({
   name: "IconButtonFxExamples",
   components: {
     VueIconButtonFx,
+    VueAlert,
     Heart,
     Download,
     Bell,
