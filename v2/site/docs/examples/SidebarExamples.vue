@@ -817,18 +817,6 @@ export default {
           white-space: nowrap !important;
         }
 
-        /* Ensure consistent header padding and height when collapsed/expanded */
-        ag-sidebar::part(ag-sidebar-header),
-        ag-sidebar[collapsed]::part(ag-sidebar-header),
-        ag-sidebar:not([collapsed])::part(ag-sidebar-header) {
-          padding-block: var(--ag-space-3);
-        }
-
-        /* Center sidebar nav content in container only when collapsed */
-        ag-sidebar[collapsed]::part(ag-sidebar-container) {
-          align-items: center;
-        }
-
         /* Ensure sidebars start in expanded mode in examples */
         ag-sidebar:not([collapsed]) {
           width: var(--ag-sidebar-width, 280px);
@@ -858,6 +846,7 @@ export default {
           gap: var(--ag-space-3);
           position: relative;
           padding: var(--ag-space-2) var(--ag-space-3);
+          margin-block-end: var(--ag-space-1);
           border: none;
           background: none;
           cursor: pointer;
@@ -918,8 +907,8 @@ export default {
         }
 
         ag-sidebar[collapsed] .nav-button {
-          padding-inline: var(--ag-space-2);
-          margin-block-end: var(--ag-space-1);
+          width: auto;
+          padding: var(--ag-space-2);
         }
 
         ag-sidebar[collapsed] .nav-button .nav-label,
@@ -942,6 +931,11 @@ export default {
         ag-sidebar[collapsed] .nav-button-expanded,
         ag-sidebar:not([collapsed]) .nav-button-collapsed {
           display: none !important;
+        }
+
+        /* Fix popover centering in collapsed mode - ag-popover is inline-block by default */
+        ag-sidebar[collapsed] ag-popover.nav-button-collapsed {
+          display: block !important;
         }
 
         .nav-sublink {
