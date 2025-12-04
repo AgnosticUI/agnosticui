@@ -270,16 +270,16 @@ export class ButtonFx extends AgButton implements FxProps {
 
   // FX props
   @property({ type: String, reflect: true })
-  fx?: string;
+  declare fx?: string;
 
   @property({ type: String, attribute: 'fx-speed' })
-  fxSpeed!: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  declare fxSpeed: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
   @property({ type: String, attribute: 'fx-ease' })
-  fxEase!: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
+  declare fxEase: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
 
-  @property({ type: Boolean, attribute: 'fx-disabled' })
-  fxDisabled!: boolean;
+  @property({ type: Boolean, reflect: true, attribute: 'fx-disabled' })
+  declare fxDisabled: boolean;
 
   constructor() {
     super();

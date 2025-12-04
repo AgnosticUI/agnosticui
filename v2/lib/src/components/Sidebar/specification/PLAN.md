@@ -341,6 +341,6 @@ import type { VueSidebarProps } from "agnosticui-core/sidebar/vue";
    - Show how to update both top-level nav buttons and sublinks
    - Use querySelector to find elements and update classes/aria attributes
 
-Match the quality, completeness, and educational value of the Vue Tabs stories while adapting all patterns from the Lit Sidebar stories.
+Match the quality, completeness, and educational value of the Vue Tabs stories while adapting all patterns from the Lit and React Sidebar Storybook stories.
 
 STOP! Once you've created the v2/playgrounds/vue/src/stories/Sidebar.stories.ts prompt ME to build and install and verify.

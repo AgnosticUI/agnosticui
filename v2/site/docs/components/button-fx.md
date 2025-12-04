@@ -238,7 +238,7 @@ The special `pulse-wobble` effect creates a two-stage animation:
 
 ### Disabling Effects
 
-You can disable effects while keeping the button functional:
+You can disable effects while keeping the button functional applying <code>:fx-disabled="true"</code> which prevents the animation from playing while keeping the button clickable
 
 ::: details Vue
 
