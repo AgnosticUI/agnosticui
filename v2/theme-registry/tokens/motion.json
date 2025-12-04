@@ -1,19 +1,19 @@
 {
   "motion": {
     "fast": {
-      "value": "90ms",
+      "value": "100ms",
       "description": "Fast animations for micro-interactions"
     },
     "medium-fast": {
-      "value": "120ms",
+      "value": "150ms",
       "description": "Medium Fast animations"
     },
     "medium": {
-      "value": "200ms",
+      "value": "225ms",
       "description": "Medium animations for focus rings and hover states"
     },
     "medium-slow": {
-      "value": "320ms",
+      "value": "325ms",
       "description": "Medium slow animations"
     },
     "slow": {
