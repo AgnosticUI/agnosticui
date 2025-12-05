@@ -3,7 +3,7 @@
 An enhanced button component with customizable animation effects that trigger on hover, click, or mount. ButtonFx extends the base Button component with a rich set of visual effects to create engaging, interactive UI elements.
 
 ::: info Opt-in Component
-ButtonFx adds a few hundred lines of CSS for animation effects. It's ideal for marketing sites, landing pages, or when visual polish is a priority. For standard applications, you may prefer the core [Button component](/components/button) without the animation overhead.
+ButtonFx adds a few hundred lines of CSS for animation effects. It's ideal for marketing sites, landing pages, or when visual polish is a priority.
 :::
 
 <ButtonFxExamples />
@@ -98,7 +98,7 @@ export default function Example() {
 
 ### Composite Effects
 
-- **pulse-wobble** - Combines pulse and wobble effects sequentially
+- **pulse-wobble** - Combines pulse and wobble effects sequentially. For this effect it's recommended to use a slower `fx-speed`.
 
 ## Props
 

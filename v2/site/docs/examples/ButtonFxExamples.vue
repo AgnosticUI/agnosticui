@@ -242,6 +242,7 @@
     <div class="stacked-mobile mbe6">
       <VueButtonFx
         fx="pulse-wobble"
+        fx-speed="xl"
         variant="primary"
         shape="rounded"
       >
@@ -250,6 +251,7 @@
 
       <VueButtonFx
         fx="pulse-wobble"
+        fx-speed="xl"
         variant="success"
         shape="rounded"
       >
@@ -257,6 +259,7 @@
       </VueButtonFx>
       <VueButtonFx
         fx="pulse-wobble"
+        fx-speed="xl"
         variant="monochrome"
         shape="rounded"
       >
@@ -264,6 +267,7 @@
       </VueButtonFx>
       <VueButtonFx
         fx="pulse-wobble"
+        fx-speed="xl"
         variant="danger"
         shape="rounded"
       >

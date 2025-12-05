@@ -3,7 +3,7 @@
 An icon button component with customizable animation effects that trigger on hover, click, or mount. IconButtonFx extends the base IconButton component with a rich set of visual effects to create engaging, interactive UI elements.
 
 ::: info Opt-in Component
-IconButtonFx adds a few hundred lines of CSS for animation effects. It's ideal for marketing sites, landing pages, or when visual polish is a priority. For standard applications, you may prefer the core [IconButton component](/components/icon-button) without the animation overhead.
+IconButtonFx adds a few hundred lines of CSS for animation effects. It's ideal for marketing sites, landing pages, or when visual polish is a priority.
 :::
 
 <IconButtonFxExamples />
@@ -105,38 +105,38 @@ export default function Example() {
 
 ### Composite Effects
 
-- **pulse-wobble** - Combines pulse and wobble effects sequentially
+- **pulse-wobble** - Combines pulse and wobble effects sequentially. For this effect it's recommended to use a slower `fx-speed`.
 
 ## Props
 
 ### FX Props
 
-| Prop         | Type                                                                                                          | Default  | Description                                                         |
-| ------------ | ------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------- |
-| `fx`         | `string`                                                                                                      | `''`     | Effect name to apply                                                |
-| `fxSpeed`    | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                                        | `'md'`   | Animation duration speed                                            |
-| `fxEase`     | `'ease' \| 'ease-in' \| 'ease-out' \| 'ease-in-out' \| 'bounce' \| 'spring-sm' \| 'spring-md' \| 'spring-lg'` | `'ease'` | Animation easing function                                           |
-| `fxDisabled` | `boolean`                                                                                                     | `false`  | Disable FX effects entirely                                         |
+| Prop         | Type                                                                                                          | Default  | Description                 |
+| ------------ | ------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
+| `fx`         | `string`                                                                                                      | `''`     | Effect name to apply        |
+| `fxSpeed`    | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                                        | `'md'`   | Animation duration speed    |
+| `fxEase`     | `'ease' \| 'ease-in' \| 'ease-out' \| 'ease-in-out' \| 'bounce' \| 'spring-sm' \| 'spring-md' \| 'spring-lg'` | `'ease'` | Animation easing function   |
+| `fxDisabled` | `boolean`                                                                                                     | `false`  | Disable FX effects entirely |
 
 ### IconButton Props
 
-| Prop       | Type                                                                                     | Default    | Description                                     |
-| ---------- | ---------------------------------------------------------------------------------------- | ---------- | ----------------------------------------------- |
-| `label`    | `string`                                                                                 | `''`       | Accessible label for the icon button (required) |
+| Prop       | Type                                                                                        | Default    | Description                                     |
+| ---------- | ------------------------------------------------------------------------------------------- | ---------- | ----------------------------------------------- |
+| `label`    | `string`                                                                                    | `''`       | Accessible label for the icon button (required) |
 | `variant`  | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'monochrome' \| 'ghost'` | `'ghost'`  | Visual style variant                            |
-| `size`     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                   | `'md'`     | Size of the button                              |
-| `type`     | `'button' \| 'submit' \| 'reset'`                                                        | `'button'` | Button type for form behavior                   |
-| `disabled` | `boolean`                                                                                | `false`    | Disables the button                             |
-| `pressed`  | `boolean`                                                                                | `false`    | Toggles aria-pressed state                      |
-| `loading`  | `boolean`                                                                                | `false`    | Shows loading state                             |
-| `unicode`  | `string`                                                                                 | `''`       | Unicode character to display as icon            |
+| `size`     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                      | `'md'`     | Size of the button                              |
+| `type`     | `'button' \| 'submit' \| 'reset'`                                                           | `'button'` | Button type for form behavior                   |
+| `disabled` | `boolean`                                                                                   | `false`    | Disables the button                             |
+| `pressed`  | `boolean`                                                                                   | `false`    | Toggles aria-pressed state                      |
+| `loading`  | `boolean`                                                                                   | `false`    | Shows loading state                             |
+| `unicode`  | `string`                                                                                    | `''`       | Unicode character to display as icon            |
 
 ## Events
 
-| Event               | Payload                    | Description                              |
-| ------------------- | -------------------------- | ---------------------------------------- |
-| `icon-button-click` | `IconButtonClickEvent`     | Fired when icon button is clicked        |
-| `icon-button-activate` | `IconButtonActivateEvent` | Fired when icon button is activated      |
+| Event                  | Payload                   | Description                         |
+| ---------------------- | ------------------------- | ----------------------------------- |
+| `icon-button-click`    | `IconButtonClickEvent`    | Fired when icon button is clicked   |
+| `icon-button-activate` | `IconButtonActivateEvent` | Fired when icon button is activated |
 
 ## Examples
 
@@ -232,13 +232,28 @@ Customize the animation feel with different easing functions:
 ::: details Vue
 
 ```vue
-<VueIconButtonFx fx="bounce" fx-ease="spring-sm" variant="primary" label="Spring Small">
+<VueIconButtonFx
+  fx="bounce"
+  fx-ease="spring-sm"
+  variant="primary"
+  label="Spring Small"
+>
   <Heart />
 </VueIconButtonFx>
-<VueIconButtonFx fx="bounce" fx-ease="spring-md" variant="primary" label="Spring Medium">
+<VueIconButtonFx
+  fx="bounce"
+  fx-ease="spring-md"
+  variant="primary"
+  label="Spring Medium"
+>
   <Heart />
 </VueIconButtonFx>
-<VueIconButtonFx fx="bounce" fx-ease="spring-lg" variant="primary" label="Spring Large">
+<VueIconButtonFx
+  fx="bounce"
+  fx-ease="spring-lg"
+  variant="primary"
+  label="Spring Large"
+>
   <Heart />
 </VueIconButtonFx>
 <VueIconButtonFx fx="bounce" fx-ease="bounce" variant="primary" label="Bounce">
@@ -336,7 +351,12 @@ export default function Example() {
   return (
     <>
       {/* For xs and sm sizes, specify width and height props */}
-      <ReactIconButtonFx fx="pulse" size="xs" variant="primary" label="Extra small">
+      <ReactIconButtonFx
+        fx="pulse"
+        size="xs"
+        variant="primary"
+        label="Extra small"
+      >
         <Heart width="100%" height="100%" />
       </ReactIconButtonFx>
       <ReactIconButtonFx fx="pulse" size="sm" variant="primary" label="Small">
@@ -350,7 +370,12 @@ export default function Example() {
       <ReactIconButtonFx fx="pulse" size="lg" variant="primary" label="Large">
         <Heart />
       </ReactIconButtonFx>
-      <ReactIconButtonFx fx="pulse" size="xl" variant="primary" label="Extra large">
+      <ReactIconButtonFx
+        fx="pulse"
+        size="xl"
+        variant="primary"
+        label="Extra large"
+      >
         <Heart />
       </ReactIconButtonFx>
     </>
@@ -370,19 +395,37 @@ export default function Example() {
 
   // For xs and sm sizes, specify width and height
   const iconXs = document.querySelector("#icon-xs");
-  iconXs.icon = createElement(Heart, { width: '100%', height: '100%' });
+  iconXs.icon = createElement(Heart, { width: "100%", height: "100%" });
 
   const iconSm = document.querySelector("#icon-sm");
-  iconSm.icon = createElement(Heart, { width: '100%', height: '100%' });
+  iconSm.icon = createElement(Heart, { width: "100%", height: "100%" });
 
   // md, lg, xl sizes work with default
   const iconMd = document.querySelector("#icon-md");
   iconMd.icon = createElement(Heart);
 </script>
 
-<ag-icon-button-fx id="icon-xs" fx="pulse" size="xs" variant="primary" label="Extra small"></ag-icon-button-fx>
-<ag-icon-button-fx id="icon-sm" fx="pulse" size="sm" variant="primary" label="Small"></ag-icon-button-fx>
-<ag-icon-button-fx id="icon-md" fx="pulse" size="md" variant="primary" label="Medium"></ag-icon-button-fx>
+<ag-icon-button-fx
+  id="icon-xs"
+  fx="pulse"
+  size="xs"
+  variant="primary"
+  label="Extra small"
+></ag-icon-button-fx>
+<ag-icon-button-fx
+  id="icon-sm"
+  fx="pulse"
+  size="sm"
+  variant="primary"
+  label="Small"
+></ag-icon-button-fx>
+<ag-icon-button-fx
+  id="icon-md"
+  fx="pulse"
+  size="md"
+  variant="primary"
+  label="Medium"
+></ag-icon-button-fx>
 ```
 
 :::
@@ -419,7 +462,11 @@ export default function Example() {
   <VueIconButtonFx fx="wobble" variant="warning" label="Notifications">
     <Bell />
   </VueIconButtonFx>
-  <VueIconButtonFx fx="pulse-wobble" variant="danger" label="Important notification">
+  <VueIconButtonFx
+    fx="pulse-wobble"
+    variant="danger"
+    label="Important notification"
+  >
     <Bell />
   </VueIconButtonFx>
 
@@ -476,7 +523,12 @@ You can disable effects while keeping the button functional:
 ::: details Vue
 
 ```vue
-<VueIconButtonFx fx="pulse" :fx-disabled="true" variant="primary" label="No animation">
+<VueIconButtonFx
+  fx="pulse"
+  :fx-disabled="true"
+  variant="primary"
+  label="No animation"
+>
   <Heart />
 </VueIconButtonFx>
 ```
@@ -486,7 +538,12 @@ You can disable effects while keeping the button functional:
 ::: details React
 
 ```tsx
-<ReactIconButtonFx fx="pulse" fxDisabled={true} variant="primary" label="No animation">
+<ReactIconButtonFx
+  fx="pulse"
+  fxDisabled={true}
+  variant="primary"
+  label="No animation"
+>
   <Heart />
 </ReactIconButtonFx>
 ```

@@ -60,34 +60,16 @@ export class ButtonFx extends AgButton implements FxProps {
          Note: Keyframes are imported from motionStyles
          ======================================== */
 
-      /*
-        Prevent hover flicker:
-        - Use @host for hover detection (doesn't move with animation)
-        - Add animation-play-state to prevent retriggering
-      */
-      :host([fx="bounce"]) button,
-      :host([fx="jelly"]) button,
-      :host([fx="pulse"]) button,
-      :host([fx="grow"]) button,
-      :host([fx="shrink"]) button,
-      :host([fx="push"]) button,
-      :host([fx="shake"]) button,
-      :host([fx="wobble"]) button,
-      :host([fx="pulse-wobble"]) button {
-        /* Animation only plays once per hover */
-        animation-iteration-count: 1;
-      }
-
-      /* Hover-triggered effects - now triggered by :host instead of button */
-      :host([fx="bounce"]:hover) button {
+      /* Hover-triggered effects */
+      button.ag-fx-bounce:hover {
         animation: ag-fx-bounce var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
-      :host([fx="pulse"]:hover) button {
+      button.ag-fx-pulse:hover {
         animation: ag-fx-pulse var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
-      :host([fx="jelly"]:hover) button {
+      button.ag-fx-jelly:hover {
         animation: ag-fx-jelly var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
@@ -102,21 +84,21 @@ export class ButtonFx extends AgButton implements FxProps {
       }
 
       /* ========================================
-         EXPERIMENTAL EFFECT CLASSES
+         ADDITIONAL EFFECT CLASSES
          ======================================== */
 
       /* Grow */
-      :host([fx="grow"]:hover) button {
+      button.ag-fx-grow:hover {
         animation: ag-fx-grow var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease) forwards;
       }
 
       /* Shrink */
-      :host([fx="shrink"]:hover) button {
+      button.ag-fx-shrink:hover {
         animation: ag-fx-shrink var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease) forwards;
       }
 
       /* Push */
-      :host([fx="push"]:hover) button {
+      button.ag-fx-push:hover {
         animation: ag-fx-push var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
@@ -229,20 +211,18 @@ export class ButtonFx extends AgButton implements FxProps {
       }
 
       /* Shake */
-      :host([fx="shake"]:hover) button {
+      button.ag-fx-shake:hover {
         animation: ag-fx-shake var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
       /* Wobble */
-      :host([fx="wobble"]:hover) button {
+      button.ag-fx-wobble:hover {
         animation: ag-fx-wobble var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
-      /* Pulse + Wobble 200ms pulse (1.08 scale) + 200ms wobble */
-      :host([fx="pulse-wobble"]:hover) button {
-        animation:
-          ag-fx-grow 200ms var(--ag-fx-ease-spring-lg) 0ms,
-          ag-fx-wobble 200ms var(--ag-fx-ease-spring-md) 200ms;
+      /* Pulse-Wobble Sequential */
+      button.ag-fx-pulse-wobble:hover {
+        animation: ag-fx-pulse-wobble var(--ag-fx-duration, 400ms) var(--ag-fx-ease-spring-md);
       }
 
       /* Disabled FX */

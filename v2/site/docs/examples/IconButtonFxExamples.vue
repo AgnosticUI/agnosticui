@@ -210,6 +210,7 @@
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="pulse-wobble"
+            fx-speed="xl"
             variant="primary"
             label="Pulse-Wobble Primary"
           >
@@ -217,6 +218,7 @@
           </VueIconButtonFx>
           <VueIconButtonFx
             fx="pulse-wobble"
+            fx-speed="xl"
             variant="success"
             label="Pulse-Wobble Success"
           >
@@ -224,6 +226,7 @@
           </VueIconButtonFx>
           <VueIconButtonFx
             fx="pulse-wobble"
+            fx-speed="xl"
             variant="warning"
             label="Pulse-Wobble Warning"
           >
@@ -231,6 +234,7 @@
           </VueIconButtonFx>
           <VueIconButtonFx
             fx="pulse-wobble"
+            fx-speed="xl"
             variant="danger"
             label="Pulse-Wobble Danger"
           >
@@ -238,6 +242,7 @@
           </VueIconButtonFx>
           <VueIconButtonFx
             fx="pulse-wobble"
+            fx-speed="xl"
             variant="ghost"
             label="Pulse-Wobble Ghost"
           >
@@ -245,6 +250,7 @@
           </VueIconButtonFx>
           <VueIconButtonFx
             fx="pulse-wobble"
+            fx-speed="xl"
             variant="primary"
             label="Pulse-Wobble Large"
           >
