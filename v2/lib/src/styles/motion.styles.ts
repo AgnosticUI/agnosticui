@@ -176,4 +176,22 @@ export const motionStyles = css`
       transform: rotate(3deg);
     }
   }
+
+  @keyframes ag-fx-pulse-wobble {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.09) rotate(0deg);
+    }
+    62.5% {
+      transform: scale(1.05) rotate(-3deg);
+    }
+    87.5% {
+      transform: scale(1.02) rotate(3deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
 `;
