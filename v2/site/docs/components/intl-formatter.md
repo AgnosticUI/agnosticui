@@ -27,7 +27,6 @@ import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Date formatting -->
     <VueIntlFormatter
       type="date"
       date="2024-01-15"
@@ -35,7 +34,6 @@ import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue'
       lang="en-US"
     />
 
-    <!-- Currency formatting -->
     <VueIntlFormatter
       type="currency"
       :value="1234.56"
@@ -43,7 +41,6 @@ import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue'
       lang="en-US"
     />
 
-    <!-- Number formatting -->
     <VueIntlFormatter
       type="number"
       :value="1234567.89"
@@ -51,7 +48,6 @@ import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue'
       lang="en-US"
     />
 
-    <!-- Percentage formatting -->
     <VueIntlFormatter
       type="percent"
       :value="0.75"
@@ -61,14 +57,14 @@ import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue'
 </template>
 
 <script setup>
-import { VueIntlFormatter } from 'agnosticui-core/intl-formatter/vue';
+import { VueIntlFormatter } from "agnosticui-core/intl-formatter/vue";
 </script>
 ```
 :::
 
 ::: details React
 ```tsx
-import { ReactIntlFormatter } from 'agnosticui-core/intl-formatter/react';
+import { ReactIntlFormatter } from "agnosticui-core/intl-formatter/react";
 
 function App() {
   const handleError = (event) => {
@@ -77,7 +73,6 @@ function App() {
 
   return (
     <div>
-      {/* Date with style shortcuts */}
       <ReactIntlFormatter
         type="date"
         date="2024-01-15"
@@ -85,7 +80,6 @@ function App() {
         timeStyle="short"
       />
 
-      {/* Currency */}
       <ReactIntlFormatter
         type="currency"
         value={1234.56}
@@ -94,7 +88,6 @@ function App() {
         onFormatError={handleError}
       />
 
-      {/* Number with custom formatting */}
       <ReactIntlFormatter
         type="number"
         value={1234567.89}
@@ -103,7 +96,6 @@ function App() {
         noGrouping={false}
       />
 
-      {/* Percentage */}
       <ReactIntlFormatter
         type="percent"
         value={0.8532}
@@ -118,10 +110,9 @@ function App() {
 ::: details Vanilla HTML/JavaScript
 ```html
 <script type="module">
-  import 'agnosticui-core/intl-formatter';
+  import "agnosticui-core/intl-formatter";
 </script>
 
-<!-- Date formatting -->
 <ag-intl-formatter 
   type="date" 
   date="2024-01-15"
@@ -129,7 +120,6 @@ function App() {
   lang="en-US">
 </ag-intl-formatter>
 
-<!-- Currency formatting -->
 <ag-intl-formatter 
   type="currency" 
   value="1234.56"
@@ -137,7 +127,6 @@ function App() {
   lang="en-US">
 </ag-intl-formatter>
 
-<!-- Number formatting -->
 <ag-intl-formatter 
   type="number" 
   value="1234567.89"
@@ -145,7 +134,6 @@ function App() {
   lang="en-US">
 </ag-intl-formatter>
 
-<!-- Percentage formatting -->
 <ag-intl-formatter
   type="percent"
   value="0.75"
@@ -217,7 +205,7 @@ interface FormatErrorDetail {
 **Example:**
 
 ```javascript
-element.addEventListener('format-error', (event) => {
+element.addEventListener("format-error", (event) => {
   console.error(`${event.detail.type} formatting error:`, event.detail.error);
 });
 ```
@@ -227,28 +215,23 @@ element.addEventListener('format-error', (event) => {
 Style the component using CSS `::part()` selectors:
 
 ```css
-/* Style the date/time element */
 ag-intl-formatter::part(date-time) {
   color: blue;
   font-weight: bold;
 }
 
-/* Style number displays */
 ag-intl-formatter::part(number) {
   font-family: monospace;
 }
 
-/* Style currency displays */
 ag-intl-formatter::part(currency) {
   color: green;
 }
 
-/* Style percentage displays */
 ag-intl-formatter::part(percent) {
   font-weight: bold;
 }
 
-/* Style error states */
 ag-intl-formatter::part(error) {
   color: red;
 }
@@ -259,7 +242,6 @@ ag-intl-formatter::part(error) {
 ### Date Formatting
 
 ```html
-<!-- Full date with time -->
 <ag-intl-formatter 
   type="date"
   date="2024-01-15T14:30:00"
@@ -267,9 +249,7 @@ ag-intl-formatter::part(error) {
   time-style="short"
   lang="en-US">
 </ag-intl-formatter>
-<!-- Output: Monday, January 15, 2024 at 2:30 PM -->
 
-<!-- Custom date format -->
 <ag-intl-formatter 
   type="date"
   date="2024-01-15"
@@ -279,9 +259,7 @@ ag-intl-formatter::part(error) {
   day="numeric"
   lang="en-US">
 </ag-intl-formatter>
-<!-- Output: Monday, January 15, 2024 -->
 
-<!-- 24-hour time -->
 <ag-intl-formatter 
   type="date"
   date="2024-01-15T14:30:00"
@@ -290,30 +268,24 @@ ag-intl-formatter::part(error) {
   hour-format="24"
   lang="en-US">
 </ag-intl-formatter>
-<!-- Output: 14:30 -->
 ```
 
 ### Number Formatting
 
 ```html
-<!-- Standard number -->
 <ag-intl-formatter 
   type="number"
   value="1234567.89"
   lang="en-US">
 </ag-intl-formatter>
-<!-- Output: 1,234,567.89 -->
 
-<!-- No grouping -->
 <ag-intl-formatter 
   type="number"
   value="1234567.89"
   no-grouping
   lang="en-US">
 </ag-intl-formatter>
-<!-- Output: 1234567.89 -->
 
-<!-- Fixed decimals -->
 <ag-intl-formatter 
   type="number"
   value="100"
@@ -321,22 +293,18 @@ ag-intl-formatter::part(error) {
   maximum-fraction-digits="2"
   lang="en-US">
 </ag-intl-formatter>
-<!-- Output: 100.00 -->
 ```
 
 ### Currency Formatting
 
 ```html
-<!-- USD with symbol -->
 <ag-intl-formatter 
   type="currency"
   value="1234.56"
   currency="USD"
   lang="en-US">
 </ag-intl-formatter>
-<!-- Output: $1,234.56 -->
 
-<!-- EUR with code -->
 <ag-intl-formatter 
   type="currency"
   value="1234.56"
@@ -344,30 +312,24 @@ ag-intl-formatter::part(error) {
   currency-display="code"
   lang="en-US">
 </ag-intl-formatter>
-<!-- Output: EUR 1,234.56 -->
 
-<!-- Japanese Yen (no decimals) -->
 <ag-intl-formatter 
   type="currency"
   value="1234"
   currency="JPY"
   lang="ja-JP">
 </ag-intl-formatter>
-<!-- Output: ¥1,234 -->
 ```
 
 ### Percentage Formatting
 
 ```html
-<!-- Basic percentage -->
 <ag-intl-formatter 
   type="percent"
   value="0.75"
   lang="en-US">
 </ag-intl-formatter>
-<!-- Output: 75% -->
 
-<!-- Percentage with decimals -->
 <ag-intl-formatter 
   type="percent"
   value="0.8532"
@@ -375,37 +337,30 @@ ag-intl-formatter::part(error) {
   maximum-fraction-digits="2"
   lang="en-US">
 </ag-intl-formatter>
-<!-- Output: 85.32% -->
 ```
 
 ## Localization Examples
 
 ```html
-<!-- French number formatting -->
 <ag-intl-formatter 
   type="number"
   value="1234.56"
   lang="fr-FR">
 </ag-intl-formatter>
-<!-- Output: 1 234,56 (space separator, comma decimal) -->
 
-<!-- German currency -->
 <ag-intl-formatter 
   type="currency"
   value="1234.56"
   currency="EUR"
   lang="de-DE">
 </ag-intl-formatter>
-<!-- Output: 1.234,56 € -->
 
-<!-- Japanese date -->
 <ag-intl-formatter 
   type="date"
   date="2024-01-15"
   date-style="long"
   lang="ja-JP">
 </ag-intl-formatter>
-<!-- Output: 2024年1月15日 -->
 ```
 
 ## Performance
@@ -435,7 +390,7 @@ For older browsers, consider using polyfills:
 Full TypeScript definitions are included. Import types as needed:
 
 ```typescript
-import type { IntlFormatterProps } from 'agnosticui-core/intl-formatter';
+import type { IntlFormatterProps } from "agnosticui-core/intl-formatter";
 ```
 
 ## Testing

@@ -16,10 +16,8 @@ import BadgeExamples from '../examples/BadgeExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic badge -->
     <VueBadge>New</VueBadge>
 
-    <!-- Variants -->
     <VueBadge variant="default">Default</VueBadge>
     <VueBadge variant="success">Success</VueBadge>
     <VueBadge variant="info">Info</VueBadge>
@@ -28,36 +26,29 @@ import BadgeExamples from '../examples/BadgeExamples.vue'
     <VueBadge variant="neutral">Neutral</VueBadge>
     <VueBadge variant="monochrome">Monochrome</VueBadge>
 
-    <!-- Sizes -->
     <VueBadge size="xs">XS</VueBadge>
     <VueBadge size="sm">Small</VueBadge>
     <VueBadge size="md">Medium</VueBadge>
 
-    <!-- Count badges -->
     <VueBadge variant="danger">99+</VueBadge>
     <VueBadge variant="success">5</VueBadge>
 
-    <!-- Dot badges -->
     <VueBadge dot variant="success" />
     <VueBadge dot variant="warning" />
     <VueBadge dot variant="danger" />
 
-    <!-- Status indicators -->
     <div style="display: flex; align-items: center; gap: 0.5rem;">
       <VueBadge dot variant="success" />
       Online
     </div>
 
-    <!-- Badge on button -->
     <VueButton variant="primary">
       Notifications
       <VueBadge variant="danger" size="sm">99+</VueBadge>
     </VueButton>
 
-    <!-- Badge on icon -->
     <div style="position: relative; display: inline-block;">
       <VueIcon size="24">
-        <!-- icon content -->
       </VueIcon>
       <VueBadge
         variant="danger"
@@ -85,17 +76,15 @@ export default {
 
 ::: details React
 ```tsx
-import { ReactBadge } from 'agnosticui-core/badge/react';
-import { ReactButton } from 'agnosticui-core/button/react';
-import { ReactIcon } from 'agnosticui-core/icon/react';
+import { ReactBadge } from "agnosticui-core/badge/react";
+import { ReactButton } from "agnosticui-core/button/react";
+import { ReactIcon } from "agnosticui-core/icon/react";
 
 export default function BadgeExample() {
   return (
     <section>
-      {/* Basic badge */}
       <ReactBadge>New</ReactBadge>
 
-      {/* Variants */}
       <ReactBadge variant="default">Default</ReactBadge>
       <ReactBadge variant="success">Success</ReactBadge>
       <ReactBadge variant="info">Info</ReactBadge>
@@ -103,41 +92,34 @@ export default function BadgeExample() {
       <ReactBadge variant="danger">Danger</ReactBadge>
       <ReactBadge variant="neutral">Neutral</ReactBadge>
 
-      {/* Sizes */}
       <ReactBadge size="xs">XS</ReactBadge>
       <ReactBadge size="sm">Small</ReactBadge>
       <ReactBadge size="md">Medium</ReactBadge>
 
-      {/* Count badges */}
       <ReactBadge variant="danger">99+</ReactBadge>
       <ReactBadge variant="success">5</ReactBadge>
 
-      {/* Dot badges */}
       <ReactBadge dot variant="success" />
       <ReactBadge dot variant="warning" />
       <ReactBadge dot variant="danger" />
 
-      {/* Status indicators */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
         <ReactBadge dot variant="success" />
         Online
       </div>
 
-      {/* Badge on button */}
       <ReactButton variant="primary">
         Notifications
         <ReactBadge variant="danger" size="sm">99+</ReactBadge>
       </ReactButton>
 
-      {/* Badge on icon */}
-      <div style={{ position: 'relative', display: 'inline-block' }}>
+      <div style={{ position: "relative", display: "inline-block" }}>
         <ReactIcon size="24">
-          {/* icon content */}
         </ReactIcon>
         <ReactBadge
           variant="danger"
           size="xs"
-          style={{ position: 'absolute', top: '-6px', right: '-7px' }}
+          style={{ position: "absolute", top: "-6px", right: "-7px" }}
         >
           3
         </ReactBadge>
@@ -151,16 +133,14 @@ export default function BadgeExample() {
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/badge';
-  import 'agnosticui-core/button';
-  import 'agnosticui-core/icon';
+  import "agnosticui-core/badge";
+  import "agnosticui-core/button";
+  import "agnosticui-core/icon";
 </script>
 
 <section>
-  <!-- Basic badge -->
   <ag-badge>New</ag-badge>
 
-  <!-- Variants -->
   <ag-badge variant="default">Default</ag-badge>
   <ag-badge variant="success">Success</ag-badge>
   <ag-badge variant="info">Info</ag-badge>
@@ -168,36 +148,29 @@ export default function BadgeExample() {
   <ag-badge variant="danger">Danger</ag-badge>
   <ag-badge variant="neutral">Neutral</ag-badge>
 
-  <!-- Sizes -->
   <ag-badge size="xs">XS</ag-badge>
   <ag-badge size="sm">Small</ag-badge>
   <ag-badge size="md">Medium</ag-badge>
 
-  <!-- Count badges -->
   <ag-badge variant="danger">99+</ag-badge>
   <ag-badge variant="success">5</ag-badge>
 
-  <!-- Dot badges -->
   <ag-badge dot variant="success"></ag-badge>
   <ag-badge dot variant="warning"></ag-badge>
   <ag-badge dot variant="danger"></ag-badge>
 
-  <!-- Status indicators -->
   <div style="display: flex; align-items: center; gap: 0.5rem;">
     <ag-badge dot variant="success"></ag-badge>
     Online
   </div>
 
-  <!-- Badge on button -->
   <ag-button variant="primary">
     Notifications
     <ag-badge variant="danger" size="sm">99+</ag-badge>
   </ag-button>
 
-  <!-- Badge on icon -->
   <div style="position: relative; display: inline-block;">
     <ag-icon size="24">
-      <!-- icon content -->
     </ag-icon>
     <ag-badge
       variant="danger"
@@ -321,7 +294,6 @@ Dot badges are small circular indicators perfect for status:
 ```vue
 <div style="position: relative; display: inline-block;">
   <VueIcon size="24">
-    <!-- Bell icon SVG -->
   </VueIcon>
   <VueBadge
     variant="danger"
@@ -366,7 +338,6 @@ Shadow Parts allow you to style internal elements of the badge from outside the 
 ### Customization Example
 
 ```css
-/* Customize the badge element */
 .custom-gradient-badge::part(ag-badge) {
   background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -381,8 +352,8 @@ Shadow Parts allow you to style internal elements of the badge from outside the 
 }
 
 .custom-minimal-badge::part(ag-badge) {
-  background: var(--ag-background-subtle);
-  color: var(--ag-text-secondary);
+  background: #f9fafb;
+  color: #6b7280;
   border-radius: 6px;
   font-size: 0.85rem;
   padding: 0.25rem 0.75rem;

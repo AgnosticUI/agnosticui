@@ -14,21 +14,17 @@ import AvatarExamples from '../examples/AvatarExamples.vue'
 ```vue
 <template>
   <div>
-    <!-- Text initials -->
     <VueAvatar text="AB" />
 
-    <!-- With image -->
     <VueAvatar
       img-src="https://testingbot.com/free-online-tools/random-avatar/100"
       img-alt="User name"
     />
 
-    <!-- With icon -->
     <VueAvatar size="lg" variant="info">
       <UserIcon />
     </VueAvatar>
 
-    <!-- Avatar Group -->
     <VueAvatarGroup>
       <VueAvatar text="AB" variant="info" size="lg" />
       <VueAvatar text="CD" variant="info" size="lg" />
@@ -51,26 +47,22 @@ export default defineComponent({
 
 ::: details React
 ```tsx
-import { ReactAvatar, ReactAvatarGroup } from 'agnosticui-core/avatar/react';
+import { ReactAvatar, ReactAvatarGroup } from "agnosticui-core/avatar/react";
 
 export default function Example() {
   return (
     <div>
-      {/* Text initials */}
       <ReactAvatar text="AB" />
 
-      {/* With image */}
       <ReactAvatar
         imgSrc="https://testingbot.com/free-online-tools/random-avatar/100"
         imgAlt="User name"
       />
 
-      {/* With icon */}
       <ReactAvatar size="lg" variant="info">
         <UserIcon />
       </ReactAvatar>
 
-      {/* Avatar Group */}
       <ReactAvatarGroup>
         <ReactAvatar text="AB" variant="info" size="lg" />
         <ReactAvatar text="CD" variant="info" size="lg" />
@@ -86,24 +78,20 @@ export default function Example() {
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/avatar';
+  import "agnosticui-core/avatar";
 </script>
 
-<!-- Text initials -->
 <ag-avatar text="AB"></ag-avatar>
 
-<!-- With image -->
 <ag-avatar
   img-src="https://testingbot.com/free-online-tools/random-avatar/100"
   img-alt="User name"
 ></ag-avatar>
 
-<!-- With icon -->
 <ag-avatar size="lg" variant="info">
   <svg>...</svg>
 </ag-avatar>
 
-<!-- Avatar Group -->
 <ag-avatar-group>
   <ag-avatar text="AB" variant="info" size="lg"></ag-avatar>
   <ag-avatar text="CD" variant="info" size="lg"></ag-avatar>
@@ -154,7 +142,6 @@ The Avatar component does not emit any events. It is a presentational component.
 ### Customization Example
 
 ```css
-/* Individual Avatar styling */
 .custom-avatar::part(ag-avatar) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -169,16 +156,14 @@ The Avatar component does not emit any events. It is a presentational component.
 }
 
 .custom-avatar-text::part(ag-avatar-text) {
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   letter-spacing: 2px;
 }
 
-/* Avatar Group styling */
 ag-avatar-group ag-avatar::part(ag-avatar) {
   border: 2px solid white;
 }
 
-/* Custom spacing - no overlap */
 .custom-avatar-group::part(ag-avatar-group) {
   gap: 0.5rem;
 }
@@ -192,7 +177,6 @@ ag-avatar-group ag-avatar::part(ag-avatar) {
   margin-inline-start: 0;
 }
 
-/* Enhanced hover effects */
 .stacked-group ag-avatar::part(ag-avatar) {
   border: 3px solid #10b981;
 }
@@ -208,7 +192,6 @@ ag-avatar-group ag-avatar::part(ag-avatar) {
 ```
 
 ```html
-<!-- Vue -->
 <VueAvatar class="custom-avatar" text="AB" />
 <VueAvatar class="custom-avatar-image" img-src="..." img-alt="User" />
 
@@ -217,7 +200,6 @@ ag-avatar-group ag-avatar::part(ag-avatar) {
   <VueAvatar img-src="..." img-alt="User 2" size="lg" />
 </VueAvatarGroup>
 
-<!-- React -->
 <ReactAvatar className="custom-avatar" text="AB" />
 <ReactAvatar className="custom-avatar-image" imgSrc="..." imgAlt="User" />
 
@@ -226,7 +208,6 @@ ag-avatar-group ag-avatar::part(ag-avatar) {
   <ReactAvatar imgSrc="..." imgAlt="User 2" size="lg" />
 </ReactAvatarGroup>
 
-<!-- Lit (Web Components) -->
 <ag-avatar class="custom-avatar" text="AB"></ag-avatar>
 <ag-avatar class="custom-avatar-image" img-src="..." img-alt="User"></ag-avatar>
 
@@ -284,7 +265,6 @@ The Avatar component is designed to be accessible by default:
 Display multiple avatars together (e.g., for collaborators, team members, or participants):
 
 ```html
-<!-- Simple text avatars -->
 <ag-avatar-group>
   <ag-avatar text="AB" variant="info" size="lg"></ag-avatar>
   <ag-avatar text="CD" variant="info" size="lg"></ag-avatar>
@@ -292,14 +272,12 @@ Display multiple avatars together (e.g., for collaborators, team members, or par
   <ag-avatar text="GH" variant="info" size="lg"></ag-avatar>
 </ag-avatar-group>
 
-<!-- Image avatars -->
 <ag-avatar-group>
   <ag-avatar img-src="user1.jpg" img-alt="User 1" size="lg"></ag-avatar>
   <ag-avatar img-src="user2.jpg" img-alt="User 2" size="lg"></ag-avatar>
   <ag-avatar img-src="user3.jpg" img-alt="User 3" size="lg"></ag-avatar>
 </ag-avatar-group>
 
-<!-- Mixed content -->
 <ag-avatar-group>
   <ag-avatar text="AB" variant="info" size="lg"></ag-avatar>
   <ag-avatar text="RL" variant="info" size="lg"></ag-avatar>

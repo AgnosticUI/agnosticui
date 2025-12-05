@@ -17,25 +17,21 @@ import CardExamples from '../examples/CardExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic Card -->
     <VueCard>
       <h3>Card Title</h3>
       <p>Basic card content with default styling.</p>
     </VueCard>
 
-    <!-- Card with Shadow and Animation -->
     <VueCard :is-shadow="true" :is-animated="true">
       <h3>Animated Card</h3>
       <p>Hover to see the animation effect.</p>
     </VueCard>
 
-    <!-- Card with Variant -->
     <VueCard variant="success">
       <h3>Success</h3>
       <p>Operation completed successfully!</p>
     </VueCard>
 
-    <!-- Card with Slots -->
     <VueCard :is-shadow="true">
       <template #header>
         <h4 style="margin: 0;">Header Slot</h4>
@@ -72,25 +68,21 @@ import { ReactCard } from "agnosticui-core/card/react";
 export default function CardExamples() {
   return (
     <section>
-      {/* Basic Card */}
       <ReactCard>
         <h3>Card Title</h3>
         <p>Basic card content with default styling.</p>
       </ReactCard>
 
-      {/* Card with Shadow and Animation */}
       <ReactCard isShadow={true} isAnimated={true}>
         <h3>Animated Card</h3>
         <p>Hover to see the animation effect.</p>
       </ReactCard>
 
-      {/* Card with Variant */}
       <ReactCard variant="success">
         <h3>Success</h3>
         <p>Operation completed successfully!</p>
       </ReactCard>
 
-      {/* Card with Slots */}
       <ReactCard isShadow={true}>
         <h4 slot="header" style={{ margin: 0 }}>
           Header Slot
@@ -116,25 +108,21 @@ export default function CardExamples() {
   import "agnosticui-core/card";
 </script>
 
-<!-- Basic Card -->
 <ag-card>
   <h3>Card Title</h3>
   <p>Basic card content with default styling.</p>
 </ag-card>
 
-<!-- Card with Shadow and Animation -->
 <ag-card isshadow isanimated>
   <h3>Animated Card</h3>
   <p>Hover to see the animation effect.</p>
 </ag-card>
 
-<!-- Card with Variant -->
 <ag-card variant="success">
   <h3>Success</h3>
   <p>Operation completed successfully!</p>
 </ag-card>
 
-<!-- Card with Slots -->
 <ag-card isshadow>
   <h4 slot="header" style="margin: 0;">Header Slot</h4>
 
@@ -180,25 +168,21 @@ Shadow Parts allow you to style internal elements of the card from outside the s
 ### Customization Example
 
 ```css
-/* Customize the card wrapper */
 ag-card::part(ag-card-wrapper) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 2rem;
 }
 
-/* Style the header section */
 ag-card::part(ag-card-header) {
   border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   padding-bottom: 1rem;
 }
 
-/* Customize content styling */
 ag-card::part(ag-card-content) {
   color: white;
   font-size: 1.1rem;
 }
 
-/* Style the footer section */
 ag-card::part(ag-card-footer) {
   border-top: 2px solid rgba(255, 255, 255, 0.3);
   padding-top: 1rem;
@@ -246,7 +230,6 @@ Use variant colors to convey status or context:
 Use slots for clearly separated header/footer sections. The header and footer automatically get appropriate styling (borders, padding) and are hidden when empty:
 
 ```vue
-<!-- Card with header and footer -->
 <VueCard :is-shadow="true">
   <template #header>
     <h3 style="margin: 0;">Settings</h3>
@@ -262,7 +245,6 @@ Use slots for clearly separated header/footer sections. The header and footer au
   </template>
 </VueCard>
 
-<!-- Card with only header -->
 <VueCard :is-shadow="true">
   <template #header>
     <h3 style="margin: 0;">Product Details</h3>
@@ -271,7 +253,6 @@ Use slots for clearly separated header/footer sections. The header and footer au
   <p>Product information and description...</p>
 </VueCard>
 
-<!-- Card with only footer -->
 <VueCard>
   <p>Review the information below</p>
 

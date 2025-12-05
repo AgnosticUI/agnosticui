@@ -16,7 +16,6 @@ import FieldsetExamples from '../examples/FieldsetExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic fieldset -->
     <VueFieldset legend="Personal Information">
       <VueInput
         v-model:value="firstName"
@@ -30,7 +29,6 @@ import FieldsetExamples from '../examples/FieldsetExamples.vue'
       />
     </VueFieldset>
 
-    <!-- Bordered fieldset -->
     <VueFieldset
       legend="Shipping Address"
       :bordered="true"
@@ -47,7 +45,6 @@ import FieldsetExamples from '../examples/FieldsetExamples.vue'
       />
     </VueFieldset>
 
-    <!-- Radio group -->
     <VueFieldset
       legend="Preferred Contact Method"
       :bordered="true"
@@ -68,7 +65,6 @@ import FieldsetExamples from '../examples/FieldsetExamples.vue'
       />
     </VueFieldset>
 
-    <!-- Horizontal layout -->
     <VueFieldset
       legend="Date of Birth"
       layout="horizontal"
@@ -94,7 +90,6 @@ import FieldsetExamples from '../examples/FieldsetExamples.vue'
       />
     </VueFieldset>
 
-    <!-- Hidden legend (still accessible) -->
     <VueFieldset
       legend="Search Options"
       :legend-hidden="true"
@@ -147,26 +142,25 @@ export default {
 
 ::: details React
 ```tsx
-import { useState } from 'react';
-import { ReactFieldset } from 'agnosticui-core/react';
-import { ReactInput } from 'agnosticui-core/react';
-import { ReactRadio } from 'agnosticui-core/react';
-import { ReactCheckbox } from 'agnosticui-core/react';
+import { useState } from "react";
+import { ReactFieldset } from "agnosticui-core/react";
+import { ReactInput } from "agnosticui-core/react";
+import { ReactRadio } from "agnosticui-core/react";
+import { ReactCheckbox } from "agnosticui-core/react";
 
 export default function FieldsetExample() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [street, setStreet] = useState('');
-  const [city, setCity] = useState('');
-  const [contact, setContact] = useState('email');
-  const [month, setMonth] = useState('');
-  const [day, setDay] = useState('');
-  const [year, setYear] = useState('');
-  const [query, setQuery] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [contact, setContact] = useState("email");
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+  const [year, setYear] = useState("");
+  const [query, setQuery] = useState("");
 
   return (
     <section>
-      {/* Basic fieldset */}
       <ReactFieldset legend="Personal Information">
         <ReactInput
           value={firstName}
@@ -182,7 +176,6 @@ export default function FieldsetExample() {
         />
       </ReactFieldset>
 
-      {/* Bordered fieldset */}
       <ReactFieldset
         legend="Shipping Address"
         bordered
@@ -201,7 +194,6 @@ export default function FieldsetExample() {
         />
       </ReactFieldset>
 
-      {/* Radio group */}
       <ReactFieldset
         legend="Preferred Contact Method"
         bordered
@@ -210,19 +202,18 @@ export default function FieldsetExample() {
           name="contact"
           value="email"
           labelText="Email"
-          checked={contact === 'email'}
-          onChange={() => setContact('email')}
+          checked={contact === "email"}
+          onChange={() => setContact("email")}
         />
         <ReactRadio
           name="contact"
           value="phone"
           labelText="Phone"
-          checked={contact === 'phone'}
-          onChange={() => setContact('phone')}
+          checked={contact === "phone"}
+          onChange={() => setContact("phone")}
         />
       </ReactFieldset>
 
-      {/* Horizontal layout */}
       <ReactFieldset
         legend="Date of Birth"
         layout="horizontal"
@@ -251,7 +242,6 @@ export default function FieldsetExample() {
         />
       </ReactFieldset>
 
-      {/* Hidden legend (still accessible) */}
       <ReactFieldset
         legend="Search Options"
         legendHidden
@@ -278,32 +268,30 @@ export default function FieldsetExample() {
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/fieldset';
-  import 'agnosticui-core/input';
-  import 'agnosticui-core/radio';
-  import 'agnosticui-core/checkbox';
+  import "agnosticui-core/fieldset";
+  import "agnosticui-core/input";
+  import "agnosticui-core/radio";
+  import "agnosticui-core/checkbox";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // Event listeners for radio buttons
-    const emailRadio = document.querySelector('#contact-email');
-    const phoneRadio = document.querySelector('#contact-phone');
+  document.addEventListener("DOMContentLoaded", () => {
+    const emailRadio = document.querySelector("#contact-email");
+    const phoneRadio = document.querySelector("#contact-phone");
 
-    emailRadio?.addEventListener('change', (e) => {
+    emailRadio?.addEventListener("change", (e) => {
       if (e.target.checked) {
-        console.log('Email selected');
+        console.log("Email selected");
       }
     });
 
-    phoneRadio?.addEventListener('change', (e) => {
+    phoneRadio?.addEventListener("change", (e) => {
       if (e.target.checked) {
-        console.log('Phone selected');
+        console.log("Phone selected");
       }
     });
   });
 </script>
 
 <section>
-  <!-- Basic fieldset -->
   <ag-fieldset legend="Personal Information">
     <ag-input
       label="First Name"
@@ -315,7 +303,6 @@ export default function FieldsetExample() {
     ></ag-input>
   </ag-fieldset>
 
-  <!-- Bordered fieldset -->
   <ag-fieldset
     legend="Shipping Address"
     bordered
@@ -330,7 +317,6 @@ export default function FieldsetExample() {
     ></ag-input>
   </ag-fieldset>
 
-  <!-- Radio group -->
   <ag-fieldset
     legend="Preferred Contact Method"
     bordered
@@ -350,7 +336,6 @@ export default function FieldsetExample() {
     ></ag-radio>
   </ag-fieldset>
 
-  <!-- Horizontal layout -->
   <ag-fieldset
     legend="Date of Birth"
     layout="horizontal"
@@ -373,7 +358,6 @@ export default function FieldsetExample() {
     ></ag-input>
   </ag-fieldset>
 
-  <!-- Hidden legend (still accessible) -->
   <ag-fieldset
     legend="Search Options"
     legend-hidden
@@ -541,7 +525,6 @@ export default {
   },
   methods: {
     handleSubmit() {
-      // Validate and submit form
       this.validateForm();
       if (this.isFormValid()) {
         console.log("Form submitted:", this.form);
@@ -605,7 +588,6 @@ Add visual borders and padding for clearer visual grouping:
   legend="Account Settings"
   :bordered="true"
 >
-  <!-- Form controls -->
 </VueFieldset>
 ```
 
@@ -618,7 +600,6 @@ Keep the legend accessible to screen readers while hiding it visually:
   legend="Filter Options"
   :legend-hidden="true"
 >
-  <!-- When the visual design doesn't require a visible legend -->
 </VueFieldset>
 ```
 
@@ -673,7 +654,6 @@ The Fieldset component exposes the following CSS Shadow Parts for custom styling
 ### Customization Examples
 
 ```css
-/* Modern gradient border fieldset */
 ag-fieldset::part(ag-fieldset) {
   border: 2px solid transparent;
   background: linear-gradient(white, white) padding-box,
@@ -690,7 +670,7 @@ ag-fieldset::part(ag-legend) {
   letter-spacing: 0.05em;
 }
 
-/* Premium dark theme */
+
 ag-fieldset::part(ag-fieldset) {
   background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   border: 2px solid #475569;
@@ -709,14 +689,14 @@ ag-fieldset::part(ag-legend) {
 /* Minimalist style */
 ag-fieldset::part(ag-fieldset) {
   border: none;
-  border-left: 4px solid var(--ag-primary);
+  border-left: 4px solid #12623e;
   padding-left: 1.5rem;
-  background: var(--ag-background-secondary);
+  background: #f3f4f6;
 }
 
 ag-fieldset::part(ag-legend) {
   font-weight: 600;
-  color: var(--ag-primary);
+  color: #12623e;
   text-transform: uppercase;
   font-size: 0.875rem;
   letter-spacing: 0.1em;

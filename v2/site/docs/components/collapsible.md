@@ -16,7 +16,6 @@ import CollapsibleExamples from '../examples/CollapsibleExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic collapsible -->
     <VueCollapsible>
       <template #summary>
         <span>Click to expand</span>
@@ -24,7 +23,6 @@ import CollapsibleExamples from '../examples/CollapsibleExamples.vue'
       <p>This is the collapsible content that can be shown or hidden.</p>
     </VueCollapsible>
 
-    <!-- Open by default -->
     <VueCollapsible open>
       <template #summary>
         <span>Already expanded</span>
@@ -32,7 +30,6 @@ import CollapsibleExamples from '../examples/CollapsibleExamples.vue'
       <p>This collapsible starts in an open state.</p>
     </VueCollapsible>
 
-    <!-- With border and shadow -->
     <VueCollapsible
       bordered
       shadow
@@ -43,7 +40,6 @@ import CollapsibleExamples from '../examples/CollapsibleExamples.vue'
       <p>This collapsible has both border and shadow styling.</p>
     </VueCollapsible>
 
-    <!-- With X indicator -->
     <VueCollapsible
       use-x
       @toggle="handleToggle"
@@ -54,7 +50,6 @@ import CollapsibleExamples from '../examples/CollapsibleExamples.vue'
       <p>Plus icon that transforms into an X when opened</p>
     </VueCollapsible>
 
-    <!-- With plus/minus indicator -->
     <VueCollapsible
       use-minus
       @toggle="handleToggle"
@@ -65,7 +60,6 @@ import CollapsibleExamples from '../examples/CollapsibleExamples.vue'
       <p>Plus icon that changes to minus when opened</p>
     </VueCollapsible>
 
-    <!-- No indicator -->
     <VueCollapsible no-indicator>
       <template #summary>
         <span>No indicator</span>
@@ -95,7 +89,7 @@ export default {
 ::: details React
 
 ```tsx
-import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
+import { ReactCollapsible } from "agnosticui-core/collapsible/react";
 
 export default function CollapsibleExample() {
   const handleToggle = (event: CustomEvent<{ open: boolean }>) => {
@@ -104,37 +98,31 @@ export default function CollapsibleExample() {
 
   return (
     <section>
-      {/* Basic collapsible */}
       <ReactCollapsible>
         <span slot="summary">Click to expand</span>
         <p>This is the collapsible content that can be shown or hidden.</p>
       </ReactCollapsible>
 
-      {/* Open by default */}
       <ReactCollapsible open={true}>
         <span slot="summary">Already expanded</span>
         <p>This collapsible starts in an open state.</p>
       </ReactCollapsible>
 
-      {/* With border and shadow */}
       <ReactCollapsible bordered shadow>
         <span slot="summary">Bordered with shadow</span>
         <p>This collapsible has both border and shadow styling.</p>
       </ReactCollapsible>
 
-      {/* With X indicator */}
       <ReactCollapsible useX onToggle={handleToggle}>
         <span slot="summary">X Indicator</span>
         <p>Plus icon that transforms into an X when opened</p>
       </ReactCollapsible>
 
-      {/* With plus/minus indicator */}
       <ReactCollapsible useMinus onToggle={handleToggle}>
         <span slot="summary">Plus/Minus Indicator</span>
         <p>Plus icon that changes to minus when opened</p>
       </ReactCollapsible>
 
-      {/* No indicator */}
       <ReactCollapsible noIndicator>
         <span slot="summary">No indicator</span>
         <p>This collapsible has no indicator icon at all.</p>
@@ -150,49 +138,43 @@ export default function CollapsibleExample() {
 
 ```html
 <script type="module">
-  import 'agnosticui-core/collapsible';
+  import "agnosticui-core/collapsible";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('ag-collapsible').forEach(el => {
-      el.addEventListener('toggle', (event) => {
-        console.log('Collapsible toggled:', event.detail.open);
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("ag-collapsible").forEach(el => {
+      el.addEventListener("toggle", (event) => {
+        console.log("Collapsible toggled:", event.detail.open);
       });
     });
   });
 </script>
 
 <section>
-  <!-- Basic collapsible -->
   <ag-collapsible>
     <span slot="summary">Click to expand</span>
     <p>This is the collapsible content that can be shown or hidden.</p>
   </ag-collapsible>
 
-  <!-- Open by default -->
   <ag-collapsible open>
     <span slot="summary">Already expanded</span>
     <p>This collapsible starts in an open state.</p>
   </ag-collapsible>
 
-  <!-- With border and shadow -->
   <ag-collapsible bordered shadow>
     <span slot="summary">Bordered with shadow</span>
     <p>This collapsible has both border and shadow styling.</p>
   </ag-collapsible>
 
-  <!-- With X indicator -->
   <ag-collapsible use-x>
     <span slot="summary">X Indicator</span>
     <p>Plus icon that transforms into an X when opened</p>
   </ag-collapsible>
 
-  <!-- With plus/minus indicator -->
   <ag-collapsible use-minus>
     <span slot="summary">Plus/Minus Indicator</span>
     <p>Plus icon that changes to minus when opened</p>
   </ag-collapsible>
 
-  <!-- No indicator -->
   <ag-collapsible no-indicator>
     <span slot="summary">No indicator</span>
     <p>This collapsible has no indicator icon at all.</p>
@@ -240,14 +222,12 @@ export type CollapsibleToggleEvent = CustomEvent<{ open: boolean }>;
 ### Example Usage
 
 ```css
-/* Customize with gradient background */
 ag-collapsible::part(ag-collapsible-details) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 12px;
   overflow: hidden;
 }
 
-/* Style the summary/trigger */
 ag-collapsible::part(ag-collapsible-summary) {
   color: white;
   font-weight: 600;
@@ -255,19 +235,16 @@ ag-collapsible::part(ag-collapsible-summary) {
   cursor: pointer;
 }
 
-/* Customize the indicator */
 ag-collapsible::part(ag-collapsible-indicator) {
   filter: brightness(0) invert(1);
 }
 
-/* Style the content area */
 ag-collapsible::part(ag-collapsible-content) {
   color: white;
   background: rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
 }
 
-/* Minimal style with left accent */
 ag-collapsible.minimal::part(ag-collapsible-summary) {
   background: #f9fafb;
   border-left: 4px solid #3b82f6;

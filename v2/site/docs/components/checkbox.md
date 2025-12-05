@@ -16,14 +16,12 @@ import CheckboxExamples from '../examples/CheckboxExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic checkbox -->
     <VueCheckbox
       name="terms"
       value="agree"
       label-text="I agree to the terms and conditions"
     />
 
-    <!-- Checkbox group -->
     <VueFieldset legend="Select your interests">
       <VueCheckbox
         name="interests"
@@ -43,7 +41,6 @@ import CheckboxExamples from '../examples/CheckboxExamples.vue'
       />
     </VueFieldset>
 
-    <!-- Different themes -->
     <VueCheckbox
       name="example"
       value="1"
@@ -62,9 +59,9 @@ import CheckboxExamples from '../examples/CheckboxExamples.vue'
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
-import { VueFieldset } from 'agnosticui-core/fieldset/vue';
+import { defineComponent } from "vue";
+import { VueCheckbox } from "agnosticui-core/checkbox/vue";
+import { VueFieldset } from "agnosticui-core/fieldset/vue";
 
 export default defineComponent({
   components: { VueCheckbox, VueFieldset }
@@ -75,20 +72,18 @@ export default defineComponent({
 
 ::: details React
 ```tsx
-import { ReactCheckbox } from 'agnosticui-core/checkbox/react';
-import { ReactFieldset } from 'agnosticui-core/fieldset/react';
+import { ReactCheckbox } from "agnosticui-core/checkbox/react";
+import { ReactFieldset } from "agnosticui-core/fieldset/react";
 
 export default function Example() {
   return (
     <section>
-      {/* Basic checkbox */}
       <ReactCheckbox
         name="terms"
         value="agree"
         labelText="I agree to the terms and conditions"
       />
 
-      {/* Checkbox group */}
       <ReactFieldset legend="Select your interests">
         <ReactCheckbox
           name="interests"
@@ -108,7 +103,6 @@ export default function Example() {
         />
       </ReactFieldset>
 
-      {/* Different themes */}
       <ReactCheckbox
         name="example"
         value="1"
@@ -132,19 +126,17 @@ export default function Example() {
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/checkbox';
-  import 'agnosticui-core/fieldset';
+  import "agnosticui-core/checkbox";
+  import "agnosticui-core/fieldset";
 </script>
 
 <section>
-  <!-- Basic checkbox -->
   <ag-checkbox
     name="terms"
     value="agree"
     label-text="I agree to the terms and conditions"
   ></ag-checkbox>
 
-  <!-- Checkbox group -->
   <ag-fieldset legend="Select your interests">
     <ag-checkbox
       name="interests"
@@ -164,7 +156,6 @@ export default function Example() {
     ></ag-checkbox>
   </ag-fieldset>
 
-  <!-- Different themes -->
   <ag-checkbox
     name="example"
     value="1"
@@ -188,7 +179,6 @@ export default function Example() {
 The `labelPosition` prop controls where the internal label text appears relative to the checkbox. This affects the `labelText` (the label that wraps the checkbox), not the external `label` prop.
 
 ```vue
-<!-- Label after checkbox (default) -->
 <VueCheckbox
   name="option"
   value="1"
@@ -196,7 +186,6 @@ The `labelPosition` prop controls where the internal label text appears relative
   label-position="end"
 />
 
-<!-- Label before checkbox -->
 <VueCheckbox
   name="option"
   value="2"
@@ -313,7 +302,6 @@ Checkboxes now support optional external labels, helper text, and error messages
 ```vue
 <template>
   <section>
-    <!-- Event handler with @change -->
     <VueCheckbox
       name="terms"
       value="agree"
@@ -321,7 +309,6 @@ Checkboxes now support optional external labels, helper text, and error messages
       @change="handleChange"
     />
 
-    <!-- v-model:checked for two-way binding -->
     <VueCheckbox
       name="newsletter"
       value="subscribed"
@@ -329,7 +316,6 @@ Checkboxes now support optional external labels, helper text, and error messages
       v-model:checked="isSubscribed"
     />
 
-    <!-- v-model:indeterminate (unique to checkbox) -->
     <VueCheckbox
       name="select-all"
       value="all"
@@ -338,7 +324,6 @@ Checkboxes now support optional external labels, helper text, and error messages
       v-model:checked="allChecked"
     />
 
-    <!-- Both event and v-model together -->
     <VueCheckbox
       name="notifications"
       value="enabled"
@@ -350,8 +335,8 @@ Checkboxes now support optional external labels, helper text, and error messages
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
+import { ref } from "vue";
+import { VueCheckbox } from "agnosticui-core/checkbox/vue";
 
 const isSubscribed = ref(false);
 const isIndeterminate = ref(false);
@@ -359,12 +344,11 @@ const allChecked = ref(false);
 const notificationsEnabled = ref(false);
 
 const handleChange = (detail) => {
-  console.log('Checkbox changed:', detail);
-  // detail: { checked, value, name, indeterminate }
+  console.log("Checkbox changed:", detail);
 };
 
 const handleNotificationChange = (detail) => {
-  console.log('Notifications:', detail.checked ? 'enabled' : 'disabled');
+  console.log("Notifications:", detail.checked ? "enabled" : "disabled");
 };
 </script>
 ```
@@ -372,26 +356,23 @@ const handleNotificationChange = (detail) => {
 
 ::: details React
 ```tsx
-import { useState } from 'react';
-import { ReactCheckbox } from 'agnosticui-core/checkbox/react';
+import { useState } from "react";
+import { ReactCheckbox } from "agnosticui-core/checkbox/react";
 
 export default function Example() {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
     <section>
-      {/* Event handler with onChange */}
       <ReactCheckbox
         name="terms"
         value="agree"
         labelText="I agree to the terms"
         onChange={(e) => {
-          console.log('Checkbox changed:', e.detail);
-          // e.detail: { checked, value, name, indeterminate }
+          console.log("Checkbox changed:", e.detail);
         }}
       />
 
-      {/* Controlled checkbox with state */}
       <ReactCheckbox
         name="newsletter"
         value="subscribed"
@@ -402,23 +383,21 @@ export default function Example() {
         }}
       />
 
-      {/* With native click handler */}
       <ReactCheckbox
         name="notifications"
         value="enabled"
         labelText="Enable notifications"
-        onClick={(e) => console.log('Clicked:', e)}
-        onChange={(e) => console.log('Changed:', e.detail)}
+        onClick={(e) => console.log("Clicked:", e)}
+        onChange={(e) => console.log("Changed:", e.detail)}
       />
 
-      {/* Indeterminate state */}
       <ReactCheckbox
         name="select-all"
         value="all"
         labelText="Select All"
         indeterminate
         onChange={(e) => {
-          console.log('Indeterminate cleared on click:', e.detail);
+          console.log("Indeterminate cleared on click:", e.detail);
         }}
       />
     </section>
@@ -430,37 +409,32 @@ export default function Example() {
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/checkbox';
+  import "agnosticui-core/checkbox";
 
-  // Pattern 1: addEventListener (DOM events)
-  const checkbox1 = document.querySelector('#checkbox1');
-  checkbox1.addEventListener('change', (e) => {
-    console.log('Event listener:', e.detail);
-    // e.detail: { checked, value, name, indeterminate }
+  const checkbox1 = document.querySelector("#checkbox1");
+  checkbox1.addEventListener("change", (e) => {
+    console.log("Event listener:", e.detail);
   });
 
-  // Pattern 2: Callback prop
-  const checkbox2 = document.querySelector('#checkbox2');
+  const checkbox2 = document.querySelector("#checkbox2");
   checkbox2.onChange = (e) => {
-    console.log('Callback prop:', e.detail);
+    console.log("Callback prop:", e.detail);
   };
 
-  // Pattern 3: Both patterns work (dual-dispatch)
-  const checkbox3 = document.querySelector('#checkbox3');
-  checkbox3.addEventListener('change', (e) => {
-    console.log('DOM event:', e.detail);
+  const checkbox3 = document.querySelector("#checkbox3");
+  checkbox3.addEventListener("change", (e) => {
+    console.log("DOM event:", e.detail);
   });
   checkbox3.onChange = (e) => {
-    console.log('Callback also fired:', e.detail);
+    console.log("Callback also fired:", e.detail);
   };
 
-  // Native click events work too
-  const checkbox4 = document.querySelector('#checkbox4');
-  checkbox4.addEventListener('click', (e) => {
-    console.log('Click event:', e);
+  const checkbox4 = document.querySelector("#checkbox4");
+  checkbox4.addEventListener("click", (e) => {
+    console.log("Click event:", e);
   });
   checkbox4.onClick = (e) => {
-    console.log('Click callback:', e);
+    console.log("Click callback:", e);
   };
 </script>
 
@@ -502,10 +476,10 @@ export default function Example() {
 export type CheckboxChangeEvent = CustomEvent<CheckboxChangeEventDetail>;
 
 export interface CheckboxChangeEventDetail {
-  checked: boolean;      // New checked state
-  value: string;         // Form value (if provided)
-  name: string;          // Form name (if provided)
-  indeterminate: boolean; // Indeterminate state (false after user click)
+  checked: boolean;
+  value: string;
+  name: string;
+  indeterminate: boolean;
 }
 ```
 
@@ -523,23 +497,20 @@ Shadow Parts allow you to style internal elements of the checkbox from outside t
 ### Customization Examples
 
 ```css
-/* Make the checkbox indicator circular */
 ag-checkbox::part(ag-checkbox-indicator) {
   border-radius: 50%;
   border-width: 3px;
 }
 
-/* Customize the wrapper */
 ag-checkbox::part(ag-checkbox-wrapper) {
   padding: 0.5rem;
-  background: var(--ag-background-secondary);
-  border-radius: var(--ag-radius-md);
+  background: #6366f1;
+  border-radius: #6366f1;
 }
 
-/* Style the label */
 ag-checkbox::part(ag-checkbox-label) {
   font-weight: 600;
-  color: var(--ag-primary);
+  color: #12623e;
 }
 ```
 
