@@ -16,7 +16,6 @@ import DrawerExamples from '../examples/DrawerExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Drawer from start (left) -->
     <VueButton @click="showStartDrawer">Open Navigation</VueButton>
     <VueDrawer
       :open="isStartDrawerOpen"
@@ -34,7 +33,6 @@ import DrawerExamples from '../examples/DrawerExamples.vue'
       </nav>
     </VueDrawer>
 
-    <!-- Drawer from end (right) with footer -->
     <VueButton @click="showEndDrawer">Open Settings</VueButton>
     <VueDrawer
       :open="isEndDrawerOpen"
@@ -58,7 +56,6 @@ import DrawerExamples from '../examples/DrawerExamples.vue'
       </div>
     </VueDrawer>
 
-    <!-- Drawer from top -->
     <VueButton @click="showTopDrawer">Open Notifications</VueButton>
     <VueDrawer
       :open="isTopDrawerOpen"
@@ -68,14 +65,13 @@ import DrawerExamples from '../examples/DrawerExamples.vue'
       @drawer-close="isTopDrawerOpen = false"
     >
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="padding: 0.75rem; background: var(--ag-background-secondary);">
+        <div style="padding: 0.75rem; background: #f3f4f6;">
           <strong>New message</strong>
           <p style="margin: 0.25rem 0 0 0;">You have a new message</p>
         </div>
       </div>
     </VueDrawer>
 
-    <!-- Drawer from bottom -->
     <VueButton @click="showBottomDrawer">Open Quick Actions</VueButton>
     <VueDrawer
       :open="isBottomDrawerOpen"
@@ -131,8 +127,8 @@ export default {
 
 ::: details React
 ```tsx
-import { useState } from 'react';
-import { ReactDrawer, DrawerHeader, DrawerFooter } from 'agnosticui-core/drawer/react';
+import { useState } from "react";
+import { ReactDrawer, DrawerHeader, DrawerFooter } from "agnosticui-core/drawer/react";
 
 export default function DrawerExample() {
   const [isStartDrawerOpen, setIsStartDrawerOpen] = useState(false);
@@ -142,7 +138,6 @@ export default function DrawerExample() {
 
   return (
     <section>
-      {/* Drawer from start (left) */}
       <button onClick={() => setIsStartDrawerOpen(true)}>Open Navigation</button>
       <ReactDrawer
         open={isStartDrawerOpen}
@@ -152,15 +147,14 @@ export default function DrawerExample() {
         onDrawerClose={() => setIsStartDrawerOpen(false)}
       >
         <nav>
-          <ul style={{ listStyle: 'none', padding: 0 }}>
-            <li style={{ padding: '0.5rem 0' }}><a href="#">Dashboard</a></li>
-            <li style={{ padding: '0.5rem 0' }}><a href="#">Projects</a></li>
-            <li style={{ padding: '0.5rem 0' }}><a href="#">Settings</a></li>
+          <ul style={{ listStyle: "none", padding: 0 }}>
+            <li style={{ padding: "0.5rem 0" }}><a href="#">Dashboard</a></li>
+            <li style={{ padding: "0.5rem 0" }}><a href="#">Projects</a></li>
+            <li style={{ padding: "0.5rem 0" }}><a href="#">Settings</a></li>
           </ul>
         </nav>
       </ReactDrawer>
 
-      {/* Drawer from end (right) with footer */}
       <button onClick={() => setIsEndDrawerOpen(true)}>Open Settings</button>
       <ReactDrawer
         open={isEndDrawerOpen}
@@ -171,20 +165,19 @@ export default function DrawerExample() {
       >
         <div>
           <h4>Preferences</h4>
-          <label style={{ display: 'block', marginBottom: '1rem' }}>
-            <input type="checkbox" style={{ marginRight: '0.5rem' }} />
+          <label style={{ display: "block", marginBottom: "1rem" }}>
+            <input type="checkbox" style={{ marginRight: "0.5rem" }} />
             Enable notifications
           </label>
         </div>
         <DrawerFooter>
-          <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+          <div style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}>
             <button onClick={() => setIsEndDrawerOpen(false)}>Cancel</button>
             <button onClick={() => setIsEndDrawerOpen(false)}>Save</button>
           </div>
         </DrawerFooter>
       </ReactDrawer>
 
-      {/* Drawer from top */}
       <button onClick={() => setIsTopDrawerOpen(true)}>Open Notifications</button>
       <ReactDrawer
         open={isTopDrawerOpen}
@@ -193,15 +186,14 @@ export default function DrawerExample() {
         showCloseButton={true}
         onDrawerClose={() => setIsTopDrawerOpen(false)}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div style={{ padding: '0.75rem', background: 'var(--ag-background-secondary)' }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <div style={{ padding: "0.75rem", background: "#f3f4f6" }}>
             <strong>New message</strong>
-            <p style={{ margin: '0.25rem 0 0 0' }}>You have a new message</p>
+            <p style={{ margin: "0.25rem 0 0 0" }}>You have a new message</p>
           </div>
         </div>
       </ReactDrawer>
 
-      {/* Drawer from bottom */}
       <button onClick={() => setIsBottomDrawerOpen(true)}>Open Quick Actions</button>
       <ReactDrawer
         open={isBottomDrawerOpen}
@@ -210,7 +202,7 @@ export default function DrawerExample() {
         showCloseButton={true}
         onDrawerClose={() => setIsBottomDrawerOpen(false)}
       >
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           <button>New Item</button>
           <button>Upload</button>
           <button>Download</button>
@@ -227,36 +219,35 @@ export default function DrawerExample() {
 <script type="module">
   import 'agnosticui-core/drawer';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const startDrawer = document.querySelector('#start-drawer');
-    const endDrawer = document.querySelector('#end-drawer');
-    const topDrawer = document.querySelector('#top-drawer');
-    const bottomDrawer = document.querySelector('#bottom-drawer');
+  document.addEventListener("DOMContentLoaded", () => {
+    const startDrawer = document.querySelector("#start-drawer");
+    const endDrawer = document.querySelector("#end-drawer");
+    const topDrawer = document.querySelector("#top-drawer");
+    const bottomDrawer = document.querySelector("#bottom-drawer");
 
-    const openStartBtn = document.querySelector('#open-start');
-    const openEndBtn = document.querySelector('#open-end');
-    const openTopBtn = document.querySelector('#open-top');
-    const openBottomBtn = document.querySelector('#open-bottom');
+    const openStartBtn = document.querySelector("#open-start");
+    const openEndBtn = document.querySelector("#open-end");
+    const openTopBtn = document.querySelector("#open-top");
+    const openBottomBtn = document.querySelector("#open-bottom");
 
-    openStartBtn?.addEventListener('click', () => {
+    openStartBtn?.addEventListener("click", () => {
       if (startDrawer) startDrawer.open = true;
     });
 
-    openEndBtn?.addEventListener('click', () => {
+    openEndBtn?.addEventListener("click", () => {
       if (endDrawer) endDrawer.open = true;
     });
 
-    openTopBtn?.addEventListener('click', () => {
+    openTopBtn?.addEventListener("click", () => {
       if (topDrawer) topDrawer.open = true;
     });
 
-    openBottomBtn?.addEventListener('click', () => {
+    openBottomBtn?.addEventListener("click", () => {
       if (bottomDrawer) bottomDrawer.open = true;
     });
 
-    // Handle close events
     [startDrawer, endDrawer, topDrawer, bottomDrawer].forEach(drawer => {
-      drawer?.addEventListener('drawer-close', () => {
+      drawer?.addEventListener("drawer-close", () => {
         drawer.open = false;
       });
     });
@@ -264,7 +255,6 @@ export default function DrawerExample() {
 </script>
 
 <section>
-  <!-- Drawer from start (left) -->
   <button id="open-start">Open Navigation</button>
   <ag-drawer
     id="start-drawer"
@@ -281,7 +271,6 @@ export default function DrawerExample() {
     </nav>
   </ag-drawer>
 
-  <!-- Drawer from end (right) with footer -->
   <button id="open-end">Open Settings</button>
   <ag-drawer
     id="end-drawer"
@@ -302,7 +291,6 @@ export default function DrawerExample() {
     </div>
   </ag-drawer>
 
-  <!-- Drawer from top -->
   <button id="open-top">Open Notifications</button>
   <ag-drawer
     id="top-drawer"
@@ -311,14 +299,13 @@ export default function DrawerExample() {
     show-close-button
   >
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-      <div style="padding: 0.75rem; background: var(--ag-background-secondary);">
+      <div style="padding: 0.75rem; background: #f3f4f6;">
         <strong>New message</strong>
         <p style="margin: 0.25rem 0 0 0;">You have a new message</p>
       </div>
     </div>
   </ag-drawer>
 
-  <!-- Drawer from bottom -->
   <button id="open-bottom">Open Quick Actions</button>
   <ag-drawer
     id="bottom-drawer"

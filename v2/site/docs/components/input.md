@@ -16,7 +16,6 @@ import InputExamples from '../examples/InputExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic input -->
     <VueInput
       v-model:value="email"
       label="Email"
@@ -24,7 +23,6 @@ import InputExamples from '../examples/InputExamples.vue'
       placeholder="you@example.com"
     />
 
-    <!-- With validation -->
     <VueInput
       v-model:value="username"
       label="Username"
@@ -34,7 +32,6 @@ import InputExamples from '../examples/InputExamples.vue'
       help-text="Choose a unique username"
     />
 
-    <!-- Textarea -->
     <VueInput
       v-model:value="message"
       label="Message"
@@ -43,7 +40,6 @@ import InputExamples from '../examples/InputExamples.vue'
       placeholder="Enter your message..."
     />
 
-    <!-- With addons (automatically detected) -->
     <VueInput
       v-model:value="price"
       label="Price"
@@ -53,7 +49,6 @@ import InputExamples from '../examples/InputExamples.vue'
       </template>
     </VueInput>
 
-    <!-- Size variants -->
     <VueInput
       v-model:value="small"
       label="Small Input"
@@ -61,7 +56,6 @@ import InputExamples from '../examples/InputExamples.vue'
       placeholder="Small size"
     />
 
-    <!-- Shape variants -->
     <VueInput
       v-model="rounded"
       label="Rounded"
@@ -69,7 +63,6 @@ import InputExamples from '../examples/InputExamples.vue'
       placeholder="Rounded corners"
     />
 
-    <!-- States -->
     <VueInput
       v-model:value="disabled"
       label="Disabled"
@@ -107,21 +100,20 @@ export default {
 
 ::: details React
 ```tsx
-import { useState } from 'react';
-import { ReactInput } from 'agnosticui-core/react';
+import { useState } from "react";
+import { ReactInput } from "agnosticui-core/react";
 
 export default function InputExample() {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
-  const [message, setMessage] = useState('');
-  const [price, setPrice] = useState('');
-  const [small, setSmall] = useState('');
-  const [rounded, setRounded] = useState('');
+  const [message, setMessage] = useState("");
+  const [price, setPrice] = useState("");
+  const [small, setSmall] = useState("");
+  const [rounded, setRounded] = useState("");
 
   return (
     <section>
-      {/* Basic input */}
       <ReactInput
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -130,7 +122,6 @@ export default function InputExample() {
         placeholder="you@example.com"
       />
 
-      {/* With validation */}
       <ReactInput
         value={username}
         onChange={(e) => setUsername(e.target.value)}
@@ -141,7 +132,6 @@ export default function InputExample() {
         helpText="Choose a unique username"
       />
 
-      {/* Textarea */}
       <ReactInput
         value={message}
         onChange={(e) => setMessage(e.target.value)}
@@ -151,7 +141,6 @@ export default function InputExample() {
         placeholder="Enter your message..."
       />
 
-      {/* With addons (automatically detected) */}
       <ReactInput
         value={price}
         onChange={(e) => setPrice(e.target.value)}
@@ -160,7 +149,6 @@ export default function InputExample() {
         <span slot="addon-left">$</span>
       </ReactInput>
 
-      {/* Size variants */}
       <ReactInput
         value={small}
         onChange={(e) => setSmall(e.target.value)}
@@ -169,7 +157,6 @@ export default function InputExample() {
         placeholder="Small size"
       />
 
-      {/* Shape variants */}
       <ReactInput
         value={rounded}
         onChange={(e) => setRounded(e.target.value)}
@@ -178,7 +165,6 @@ export default function InputExample() {
         placeholder="Rounded corners"
       />
 
-      {/* States */}
       <ReactInput
         value="Cannot edit"
         label="Disabled"
@@ -193,20 +179,19 @@ export default function InputExample() {
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/input';
+  import "agnosticui-core/input";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const emailInput = document.querySelector('#email-input');
-    const usernameInput = document.querySelector('#username-input');
-    const messageInput = document.querySelector('#message-input');
-    const priceInput = document.querySelector('#price-input');
+  document.addEventListener("DOMContentLoaded", () => {
+    const emailInput = document.querySelector("#email-input");
+    const usernameInput = document.querySelector("#username-input");
+    const messageInput = document.querySelector("#message-input");
+    const priceInput = document.querySelector("#price-input");
 
-    // Add event listeners for inputs
-    emailInput?.addEventListener('input', (e) => {
-      console.log('Email:', e.target.value);
+    emailInput?.addEventListener("input", (e) => {
+      console.log("Email:", e.target.value);
     });
 
-    usernameInput?.addEventListener('blur', (e) => {
+    usernameInput?.addEventListener("blur", (e) => {
       if (!e.target.value) {
         usernameInput.invalid = true;
       } else {
@@ -217,7 +202,6 @@ export default function InputExample() {
 </script>
 
 <section>
-  <!-- Basic input -->
   <ag-input
     id="email-input"
     label="Email"
@@ -225,7 +209,6 @@ export default function InputExample() {
     placeholder="you@example.com"
   ></ag-input>
 
-  <!-- With validation -->
   <ag-input
     id="username-input"
     label="Username"
@@ -234,7 +217,6 @@ export default function InputExample() {
     help-text="Choose a unique username"
   ></ag-input>
 
-  <!-- Textarea -->
   <ag-input
     id="message-input"
     label="Message"
@@ -243,7 +225,6 @@ export default function InputExample() {
     placeholder="Enter your message..."
   ></ag-input>
 
-  <!-- With addons (automatically detected) -->
   <ag-input
     id="price-input"
     label="Price"
@@ -251,21 +232,18 @@ export default function InputExample() {
     <span slot="addon-left">$</span>
   </ag-input>
 
-  <!-- Size variants -->
   <ag-input
     label="Small Input"
     size="small"
     placeholder="Small size"
   ></ag-input>
 
-  <!-- Shape variants -->
   <ag-input
     label="Rounded"
     rounded
     placeholder="Rounded corners"
   ></ag-input>
 
-  <!-- States -->
   <ag-input
     label="Disabled"
     disabled
@@ -354,14 +332,12 @@ The Input component follows AgnosticUI v2 event conventions for native events. A
 - Focus and blur events bubble through shadow DOM
 
 ```js
-// addEventListener pattern
-const input = document.querySelector('ag-input');
-input.addEventListener('input', (e) => console.log(e.target.value));
-input.addEventListener('focus', (e) => console.log('focused'));
+const input = document.querySelector("ag-input");
+input.addEventListener("input", (e) => console.log(e.target.value));
+input.addEventListener("focus", (e) => console.log("focused"));
 
-// Or use callback props
 input.onInput = (e) => console.log(e.target.value);
-input.onFocus = (e) => console.log('focused');
+input.onFocus = (e) => console.log("focused");
 ```
 
 ## Slots
@@ -490,7 +466,6 @@ Add icons or text before or after the input using slots. Addons are **automatica
 
 ```vue
 <template>
-  <!-- Icon addon with color (left side) -->
   <VueInput
     v-model:value="url"
     label="Website URL"
@@ -499,12 +474,11 @@ Add icons or text before or after the input using slots. Addons are **automatica
     <template #addon-left>
       <Globe
         :size="18"
-        color="var(--ag-primary)"
+        color="#12623e"
       />
     </template>
   </VueInput>
 
-  <!-- Icon addon on right -->
   <VueInput
     v-model:value="price"
     label="Price"
@@ -513,12 +487,11 @@ Add icons or text before or after the input using slots. Addons are **automatica
     <template #addon-right>
       <DollarSign
         :size="18"
-        color="var(--ag-success)"
+        color="#14854f"
       />
     </template>
   </VueInput>
 
-  <!-- Both left and right addons -->
   <VueInput
     v-model:value="amount"
     label="Amount"
@@ -527,7 +500,7 @@ Add icons or text before or after the input using slots. Addons are **automatica
     <template #addon-left>
       <DollarSign
         :size="18"
-        color="var(--ag-success)"
+        color="#14854f"
       />
     </template>
     <template #addon-right>
@@ -535,7 +508,6 @@ Add icons or text before or after the input using slots. Addons are **automatica
     </template>
   </VueInput>
 
-  <!-- Text addons -->
   <VueInput
     v-model:value="discount"
     label="Discount"
@@ -717,7 +689,6 @@ The Input component exposes the following CSS Shadow Parts for custom styling:
 ### Customization Examples
 
 ```css
-/* Modern gradient border */
 ag-input::part(ag-input) {
   border: 2px solid transparent;
   background: linear-gradient(white, white) padding-box,
@@ -730,7 +701,6 @@ ag-input::part(ag-input):focus {
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-/* Custom label styling */
 ag-input::part(ag-input-label) {
   font-weight: 700;
   color: #667eea;
@@ -738,7 +708,6 @@ ag-input::part(ag-input-label) {
   font-size: 0.75rem;
 }
 
-/* Styled error messages */
 ag-input::part(ag-input-error) {
   color: #dc2626;
   font-weight: 600;
@@ -748,7 +717,6 @@ ag-input::part(ag-input-error) {
   border-radius: 4px;
 }
 
-/* Material Design underline style */
 ag-input::part(ag-input) {
   border: none;
   border-bottom: 2px solid #e5e7eb;

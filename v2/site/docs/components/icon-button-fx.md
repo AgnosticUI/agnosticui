@@ -318,7 +318,6 @@ For `xs` and `sm` button sizes, you need to ensure icons scale properly to fill 
 
 ```vue
 <template>
-  <!-- For xs and sm sizes, specify icon size explicitly -->
   <VueIconButtonFx fx="pulse" size="xs" variant="primary" label="Extra small">
     <Heart :size="12" />
   </VueIconButtonFx>
@@ -326,7 +325,6 @@ For `xs` and `sm` button sizes, you need to ensure icons scale properly to fill 
     <Heart :size="16" />
   </VueIconButtonFx>
 
-  <!-- md, lg, xl sizes work with default icon size -->
   <VueIconButtonFx fx="pulse" size="md" variant="primary" label="Medium">
     <Heart />
   </VueIconButtonFx>
@@ -350,7 +348,6 @@ import { Heart } from "lucide-react";
 export default function Example() {
   return (
     <>
-      {/* For xs and sm sizes, specify width and height props */}
       <ReactIconButtonFx
         fx="pulse"
         size="xs"
@@ -363,7 +360,6 @@ export default function Example() {
         <Heart width="100%" height="100%" />
       </ReactIconButtonFx>
 
-      {/* md, lg, xl sizes work with default icon size */}
       <ReactIconButtonFx fx="pulse" size="md" variant="primary" label="Medium">
         <Heart />
       </ReactIconButtonFx>
@@ -393,14 +389,12 @@ export default function Example() {
   import { createElement } from "lucide";
   import { Heart } from "lucide";
 
-  // For xs and sm sizes, specify width and height
   const iconXs = document.querySelector("#icon-xs");
   iconXs.icon = createElement(Heart, { width: "100%", height: "100%" });
 
   const iconSm = document.querySelector("#icon-sm");
   iconSm.icon = createElement(Heart, { width: "100%", height: "100%" });
 
-  // md, lg, xl sizes work with default
   const iconMd = document.querySelector("#icon-md");
   iconMd.icon = createElement(Heart);
 </script>
@@ -436,7 +430,6 @@ export default function Example() {
 
 ```vue
 <template>
-  <!-- Navigation -->
   <VueIconButtonFx fx="grow" variant="ghost" label="Menu">
     <Menu />
   </VueIconButtonFx>
@@ -447,7 +440,6 @@ export default function Example() {
     <Search />
   </VueIconButtonFx>
 
-  <!-- Actions -->
   <VueIconButtonFx fx="pulse" variant="primary" label="Edit">
     <Edit />
   </VueIconButtonFx>
@@ -458,7 +450,6 @@ export default function Example() {
     <Bookmark />
   </VueIconButtonFx>
 
-  <!-- Notifications -->
   <VueIconButtonFx fx="wobble" variant="warning" label="Notifications">
     <Bell />
   </VueIconButtonFx>
@@ -470,7 +461,6 @@ export default function Example() {
     <Bell />
   </VueIconButtonFx>
 
-  <!-- Social -->
   <VueIconButtonFx fx="pulse" variant="ghost" label="Like">
     <ThumbsUp />
   </VueIconButtonFx>

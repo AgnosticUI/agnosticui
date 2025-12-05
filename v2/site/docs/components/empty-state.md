@@ -17,20 +17,17 @@ import EmptyStateExamples from '../examples/EmptyStateExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic empty state -->
     <VueEmptyState
       title="No items found"
       subtitle="Get started by creating your first item"
     />
 
-    <!-- With action button -->
     <VueEmptyState
       title="No projects yet"
       subtitle="Create your first project to get started"
       buttonText="New Project"
     />
 
-    <!-- Different sizes -->
     <VueEmptyState
       title="No notifications"
       subtitle="You're all caught up!"
@@ -44,7 +41,6 @@ import EmptyStateExamples from '../examples/EmptyStateExamples.vue'
       size="lg"
     />
 
-    <!-- Bordered and rounded -->
     <VueEmptyState
       title="No messages"
       subtitle="Send your first message to start a conversation"
@@ -53,7 +49,6 @@ import EmptyStateExamples from '../examples/EmptyStateExamples.vue'
       :rounded="true"
     />
 
-    <!-- Custom icon -->
     <VueEmptyState
       title="No files"
       subtitle="Drag and drop files here to upload"
@@ -76,7 +71,6 @@ import EmptyStateExamples from '../examples/EmptyStateExamples.vue'
       </template>
     </VueEmptyState>
 
-    <!-- Custom actions -->
     <VueEmptyState
       title="No team members"
       subtitle="Invite people to collaborate on this project"
@@ -122,20 +116,17 @@ import { ReactButton } from "agnosticui-core/react";
 export default function EmptyStateExample() {
   return (
     <section>
-      {/* Basic empty state */}
       <ReactEmptyState
         title="No items found"
         subtitle="Get started by creating your first item"
       />
 
-      {/* With action button */}
       <ReactEmptyState
         title="No projects yet"
         subtitle="Create your first project to get started"
         buttonText="New Project"
       />
 
-      {/* Different sizes */}
       <ReactEmptyState
         title="No notifications"
         subtitle="You're all caught up!"
@@ -149,7 +140,6 @@ export default function EmptyStateExample() {
         size="lg"
       />
 
-      {/* Bordered and rounded */}
       <ReactEmptyState
         title="No messages"
         subtitle="Send your first message to start a conversation"
@@ -158,7 +148,6 @@ export default function EmptyStateExample() {
         rounded
       />
 
-      {/* Custom icon */}
       <ReactEmptyState
         title="No files"
         subtitle="Drag and drop files here to upload"
@@ -177,7 +166,6 @@ export default function EmptyStateExample() {
         </ReactIcon>
       </ReactEmptyState>
 
-      {/* Custom actions */}
       <ReactEmptyState
         title="No team members"
         subtitle="Invite people to collaborate on this project"
@@ -211,20 +199,17 @@ export default function EmptyStateExample() {
 </script>
 
 <section>
-  <!-- Basic empty state -->
   <ag-empty-state
     title="No items found"
     subtitle="Get started by creating your first item"
   ></ag-empty-state>
 
-  <!-- With action button -->
   <ag-empty-state
     title="No projects yet"
     subtitle="Create your first project to get started"
     button-text="New Project"
   ></ag-empty-state>
 
-  <!-- Different sizes -->
   <ag-empty-state
     title="No notifications"
     subtitle="You're all caught up!"
@@ -238,7 +223,6 @@ export default function EmptyStateExample() {
     size="lg"
   ></ag-empty-state>
 
-  <!-- Bordered and rounded -->
   <ag-empty-state
     title="No messages"
     subtitle="Send your first message to start a conversation"
@@ -247,7 +231,6 @@ export default function EmptyStateExample() {
     rounded
   ></ag-empty-state>
 
-  <!-- Custom icon -->
   <ag-empty-state
     title="No files"
     subtitle="Drag and drop files here to upload"
@@ -268,7 +251,6 @@ export default function EmptyStateExample() {
     </ag-icon>
   </ag-empty-state>
 
-  <!-- Custom actions -->
   <ag-empty-state
     title="No team members"
     subtitle="Invite people to collaborate on this project"
@@ -317,14 +299,12 @@ The EmptyState component supports three size variants:
 - **Large (`lg`)**: Spacious layout with larger text. Perfect for full-page empty states or prominent sections.
 
 ```vue
-<!-- Small - compact for cards or sidebars -->
 <VueEmptyState
   title="No notifications"
   subtitle="You're all caught up!"
   size="sm"
 />
 
-<!-- Medium - default, balanced spacing -->
 <VueEmptyState
   title="No projects yet"
   subtitle="Create your first project"
@@ -332,7 +312,6 @@ The EmptyState component supports three size variants:
   size="md"
 />
 
-<!-- Large - prominent, full-page contexts -->
 <VueEmptyState
   title="Welcome!"
   subtitle="Start your journey here"
@@ -562,14 +541,12 @@ The EmptyState component follows accessibility best practices:
 - Brief but descriptive
 
 ```vue
-<!-- Good: Clear, actionable -->
 <VueEmptyState
   title="No projects yet"
   subtitle="Create your first project to get started"
   buttonText="Create Project"
 />
 
-<!-- Avoid: Vague, unhelpful -->
 <VueEmptyState
   title="Nothing here"
   subtitle="There's nothing to show"
@@ -593,7 +570,6 @@ The EmptyState component exposes CSS Shadow Parts for custom styling:
 ### Customization Examples
 
 ```css
-/* Gradient border style */
 ag-empty-state::part(ag-empty-state) {
   border: 2px solid transparent;
   background: linear-gradient(white, white) padding-box, linear-gradient(
@@ -610,7 +586,6 @@ ag-empty-state::part(ag-title) {
   font-weight: 700;
 }
 
-/* Dark theme with glow */
 ag-empty-state::part(ag-empty-state) {
   background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   border: 2px solid #475569;
@@ -632,7 +607,6 @@ ag-empty-state::part(ag-subtitle) {
   color: #cbd5e1;
 }
 
-/* Colorful icon accent */
 ag-empty-state::part(ag-icon) {
   color: #f59e0b;
   background: rgba(245, 158, 11, 0.1);
@@ -640,7 +614,6 @@ ag-empty-state::part(ag-icon) {
   padding: 1rem;
 }
 
-/* Custom button styling */
 ag-empty-state::part(ag-actions-button) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -675,13 +648,11 @@ ag-empty-state::part(ag-actions-button):hover {
 ✅ **Match the tone to context** - Celebratory for achievements, helpful for empty lists
 
 ```vue
-<!-- Achievement -->
 <VueEmptyState
   title="Inbox Zero! 🎉"
   subtitle="Great job! You've cleared all your messages"
 />
 
-<!-- Empty list -->
 <VueEmptyState
   title="No contacts yet"
   subtitle="Add contacts to start connecting"
@@ -702,7 +673,6 @@ ag-empty-state::part(ag-actions-button):hover {
 ✅ **Use appropriate icons** - Choose icons that clearly represent the context
 
 ```vue
-<!-- Good: Search icon for no results -->
 <template #icon>
   <VueIcon size="40" v-html="searchIcon" />
 </template>
@@ -713,14 +683,12 @@ ag-empty-state::part(ag-actions-button):hover {
 ❌ **Don't be vague or unhelpful**
 
 ```vue
-<!-- Avoid -->
 <VueEmptyState title="Nothing here" subtitle="There's nothing to show" />
 ```
 
 ❌ **Don't overwhelm with too many actions**
 
 ```vue
-<!-- Avoid: Too many choices -->
 <template #actions>
   <VueButton>Action 1</VueButton>
   <VueButton>Action 2</VueButton>
@@ -733,7 +701,6 @@ ag-empty-state::part(ag-actions-button):hover {
 ❌ **Don't use negative or discouraging language**
 
 ```vue
-<!-- Avoid -->
 <VueEmptyState
   title="Oops! Nothing found"
   subtitle="You haven't done anything yet"
@@ -743,7 +710,6 @@ ag-empty-state::part(ag-actions-button):hover {
 ❌ **Don't forget the icon for prominent empty states**
 
 ```vue
-<!-- For large, prominent empty states, include an icon -->
 <VueEmptyState title="Welcome!" subtitle="Get started now" size="lg">
   <template #icon>
     <VueIcon size="56" v-html="welcomeIcon" />
@@ -827,7 +793,6 @@ Empty states work well within conditional rendering based on data state:
       />
     </div>
     <div v-else>
-      <!-- Render items -->
       <ItemList :items="items" />
     </div>
   </div>

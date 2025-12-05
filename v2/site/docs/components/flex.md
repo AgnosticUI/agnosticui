@@ -25,38 +25,32 @@ AgnosticUI provides four flex components plus two convenient aliases:
 ```vue
 <template>
   <div>
-    <!-- Basic row layout -->
     <VueFlexRow gap="1rem">
       <div>Item 1</div>
       <div>Item 2</div>
       <div>Item 3</div>
     </VueFlexRow>
 
-    <!-- Centered column -->
     <VueFlexCol gap="1rem" justify="center" align="center">
       <div>Centered Item 1</div>
       <div>Centered Item 2</div>
     </VueFlexCol>
 
-    <!-- Space between -->
     <VueFlexRow justify="space-between">
       <div>Start</div>
       <div>End</div>
     </VueFlexRow>
 
-    <!-- Stretch children to equal widths -->
     <VueFlexRow gap="1rem" :stretch-children="true">
       <div>Auto width 1</div>
       <div>Auto width 2</div>
       <div>Auto width 3</div>
     </VueFlexRow>
 
-    <!-- Wrapping layout -->
     <VueFlexRow gap="1rem" wrap="wrap">
       <div v-for="i in 10" :key="i">Item {{ i }}</div>
     </VueFlexRow>
 
-    <!-- Using Stack and Group aliases -->
     <VueStack gap="1rem">
       <div>Stacked Item 1</div>
       <div>Stacked Item 2</div>
@@ -102,40 +96,34 @@ import {
 export default function Example() {
   return (
     <div>
-      {/* Basic row layout */}
       <ReactFlexRow gap="1rem">
         <div>Item 1</div>
         <div>Item 2</div>
         <div>Item 3</div>
       </ReactFlexRow>
 
-      {/* Centered column */}
       <ReactFlexCol gap="1rem" justify="center" align="center">
         <div>Centered Item 1</div>
         <div>Centered Item 2</div>
       </ReactFlexCol>
 
-      {/* Space between */}
       <ReactFlexRow justify="space-between">
         <div>Start</div>
         <div>End</div>
       </ReactFlexRow>
 
-      {/* Stretch children to equal widths */}
       <ReactFlexRow gap="1rem" stretchChildren={true}>
         <div>Auto width 1</div>
         <div>Auto width 2</div>
         <div>Auto width 3</div>
       </ReactFlexRow>
 
-      {/* Wrapping layout */}
       <ReactFlexRow gap="1rem" wrap="wrap">
         {[...Array(10)].map((_, i) => (
           <div key={i}>Item {i + 1}</div>
         ))}
       </ReactFlexRow>
 
-      {/* Using Stack and Group aliases */}
       <ReactStack gap="1rem">
         <div>Stacked Item 1</div>
         <div>Stacked Item 2</div>
@@ -153,37 +141,32 @@ export default function Example() {
 
 ::: details Lit/Web Components
 ```typescript
-import { html } from 'lit';
-import 'agnosticui-core/flex';
+import { html } from "lit";
+import "agnosticui-core/flex";
 
 const template = html`
-  <!-- Basic row layout -->
   <ag-flex-row gap="1rem">
     <div>Item 1</div>
     <div>Item 2</div>
     <div>Item 3</div>
   </ag-flex-row>
 
-  <!-- Centered column -->
   <ag-flex-col gap="1rem" justify="center" align="center">
     <div>Centered Item 1</div>
     <div>Centered Item 2</div>
   </ag-flex-col>
 
-  <!-- Space between -->
   <ag-flex-row justify="space-between">
     <div>Start</div>
     <div>End</div>
   </ag-flex-row>
 
-  <!-- Stretch children to equal widths -->
   <ag-flex-row gap="1rem" stretch-children>
     <div>Auto width 1</div>
     <div>Auto width 2</div>
     <div>Auto width 3</div>
   </ag-flex-row>
 
-  <!-- Wrapping layout -->
   <ag-flex-row gap="1rem" wrap="wrap">
     ${[...Array(10)].map((_, i) => html`<div>Item ${i + 1}</div>`)}
   </ag-flex-row>
@@ -233,7 +216,6 @@ Flex components provide full responsive control through CSS custom properties co
 ::: details Vue
 ```vue
 <template>
-  <!-- Stack on mobile, row on desktop -->
   <VueFlexRow class="responsive-layout">
     <div>Item 1</div>
     <div>Item 2</div>
@@ -264,12 +246,11 @@ import { ReactFlexRow } from 'agnosticui-core/flex/react';
 export default function ResponsiveExample() {
   return (
     <>
-      {/* Stack on mobile, row on desktop */}
       <ReactFlexRow
         gap="1rem"
         style={{
-          '--flex-direction-mobile': 'column',
-          '--flex-direction-desktop': 'row'
+          "--flex-direction-mobile": "column",
+          "--flex-direction-desktop": "row"
         } as React.CSSProperties}
       >
         <div>Item 1</div>
@@ -277,12 +258,11 @@ export default function ResponsiveExample() {
         <div>Item 3</div>
       </ReactFlexRow>
 
-      {/* Different gaps per breakpoint */}
       <ReactFlexRow
         style={{
-          '--flex-gap-mobile': '0.5rem',
-          '--flex-gap-tablet': '1rem',
-          '--flex-gap-desktop': '2rem'
+          "--flex-gap-mobile": "0.5rem",
+          "--flex-gap-tablet": "1rem",
+          "--flex-gap-desktop": "2rem"
         } as React.CSSProperties}
       >
         <div>Item 1</div>
@@ -296,11 +276,10 @@ export default function ResponsiveExample() {
 
 ::: details Lit/Web Components
 ```typescript
-import { html } from 'lit';
-import 'agnosticui-core/flex';
+import { html } from "lit";
+import "agnosticui-core/flex";
 
 const template = html`
-  <!-- Stack on mobile, row on desktop -->
   <ag-flex-row
     gap="1rem"
     style="--flex-direction-mobile: column; --flex-direction-desktop: row;"
@@ -310,7 +289,6 @@ const template = html`
     <div>Item 3</div>
   </ag-flex-row>
 
-  <!-- Different gaps per breakpoint -->
   <ag-flex-row
     style="--flex-gap-mobile: 0.5rem; --flex-gap-tablet: 1rem; --flex-gap-desktop: 2rem;"
   >
@@ -338,9 +316,7 @@ All flex properties support responsive variants:
 For more complex responsive layouts, use CSS Shadow Parts to apply custom styles:
 
 ```css
-/* Custom responsive behavior using ::part */
 ag-flex-row::part(ag-flex-container) {
-  /* Desktop default */
   display: flex;
   flex-direction: row;
   gap: 2rem;
@@ -375,12 +351,10 @@ These values cannot be customized via CSS custom properties (media queries don't
 
 Flex components work seamlessly with AgnosticUI design tokens for spacing:
 
-```css
-/* Use design tokens for gap */
+```html
 <ag-flex-row gap="var(--ag-space-4)">...</ag-flex-row>
 <ag-flex-col gap="var(--ag-space-2)">...</ag-flex-col>
 
-/* Or use any valid CSS gap value */
 <ag-flex-row gap="1rem">...</ag-flex-row>
 <ag-flex-row gap="2rem 1rem">...</ag-flex-row>
 ```

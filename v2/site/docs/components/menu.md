@@ -16,7 +16,6 @@ import MenuExamples from '../examples/MenuExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic menu (chevron variant) -->
     <VueMenu
       menu-variant="chevron"
       menu-aria-label="Menu options"
@@ -31,7 +30,6 @@ import MenuExamples from '../examples/MenuExamples.vue'
       </template>
     </VueMenu>
 
-    <!-- Button variant with color -->
     <VueMenu
       menu-variant="button"
       button-variant="primary"
@@ -46,7 +44,6 @@ import MenuExamples from '../examples/MenuExamples.vue'
       </template>
     </VueMenu>
 
-    <!-- Icon variant -->
     <VueMenu
       menu-variant="icon"
       ghost
@@ -62,7 +59,6 @@ import MenuExamples from '../examples/MenuExamples.vue'
       </template>
     </VueMenu>
 
-    <!-- Menu aligned to the right -->
     <VueMenu
       menu-align="right"
       menu-aria-label="Right-aligned menu"
@@ -75,7 +71,6 @@ import MenuExamples from '../examples/MenuExamples.vue'
       </template>
     </VueMenu>
 
-    <!-- Menu with links -->
     <VueMenu menu-aria-label="Navigation menu">
       Navigation
       <template #menu>
@@ -85,7 +80,6 @@ import MenuExamples from '../examples/MenuExamples.vue'
       </template>
     </VueMenu>
 
-    <!-- Menu with disabled items -->
     <VueMenu
       menu-variant="button"
       button-variant="primary"
@@ -99,7 +93,6 @@ import MenuExamples from '../examples/MenuExamples.vue'
       </template>
     </VueMenu>
 
-    <!-- Event handling -->
     <VueMenu
       menu-aria-label="Event testing menu"
       @menu-open="handleMenuOpen"
@@ -159,7 +152,6 @@ export default function MenuExample() {
 
   return (
     <section>
-      {/* Basic menu */}
       <ReactMenuButton
         menuVariant="chevron"
         size="md"
@@ -184,7 +176,6 @@ export default function MenuExample() {
         </ReactMenu>
       </ReactMenuButton>
 
-      {/* Button variant */}
       <ReactMenuButton
         menuVariant="button"
         size="md"
@@ -198,7 +189,6 @@ export default function MenuExample() {
         </ReactMenu>
       </ReactMenuButton>
 
-      {/* Icon variant */}
       <ReactMenuButton
         menuVariant="icon"
         size="md"
@@ -214,7 +204,6 @@ export default function MenuExample() {
         </ReactMenu>
       </ReactMenuButton>
 
-      {/* Menu aligned to the right */}
       <ReactMenuButton
         menuVariant="chevron"
         size="md"
@@ -228,7 +217,6 @@ export default function MenuExample() {
         </ReactMenu>
       </ReactMenuButton>
 
-      {/* Menu with links */}
       <ReactMenuButton
         menuVariant="chevron"
         size="md"
@@ -241,7 +229,6 @@ export default function MenuExample() {
         </ReactMenu>
       </ReactMenuButton>
 
-      {/* Disabled items */}
       <ReactMenuButton
         menuVariant="button"
         size="md"
@@ -263,42 +250,39 @@ export default function MenuExample() {
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/menu';
+  import "agnosticui-core/menu";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.querySelector('#my-menu');
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.querySelector("#my-menu");
 
-    // Using addEventListener pattern
-    menuButton?.addEventListener('menu-open', (e) => {
-      console.log('Menu opened, open:', e.detail.open);
+    menuButton?.addEventListener("menu-open", (e) => {
+      console.log("Menu opened, open:", e.detail.open);
     });
 
-    menuButton?.addEventListener('menu-close', (e) => {
-      console.log('Menu closed, open:', e.detail.open);
+    menuButton?.addEventListener("menu-close", (e) => {
+      console.log("Menu closed, open:", e.detail.open);
     });
 
-    const menuItems = document.querySelectorAll('ag-menu-item');
+    const menuItems = document.querySelectorAll("ag-menu-item");
     menuItems.forEach(item => {
-      item.addEventListener('menu-select', (e) => {
-        console.log('Selected:', e.detail.value);
+      item.addEventListener("menu-select", (e) => {
+        console.log("Selected:", e.detail.value);
       });
     });
 
-    // Alternative: Using callback props pattern
-    const menuButton2 = document.querySelector('#callback-menu');
+    const menuButton2 = document.querySelector("#callback-menu");
     if (menuButton2) {
       menuButton2.onMenuOpen = (e) => {
-        console.log('Menu opened via callback, open:', e.detail.open);
+        console.log("Menu opened via callback, open:", e.detail.open);
       };
       menuButton2.onMenuClose = (e) => {
-        console.log('Menu closed via callback, open:', e.detail.open);
+        console.log("Menu closed via callback, open:", e.detail.open);
       };
     }
   });
 </script>
 
 <section>
-  <!-- Basic menu -->
   <ag-menu-button id="my-menu" menu-variant="chevron" size="md">
     Menu
     <ag-menu slot="menu" aria-label="Menu options">
@@ -310,7 +294,6 @@ export default function MenuExample() {
     </ag-menu>
   </ag-menu-button>
 
-  <!-- Button variant -->
   <ag-menu-button menu-variant="button" size="md" button-variant="primary">
     Actions
     <ag-menu slot="menu" aria-label="Action menu">
@@ -322,7 +305,6 @@ export default function MenuExample() {
     </ag-menu>
   </ag-menu-button>
 
-  <!-- Icon variant -->
   <ag-menu-button menu-variant="icon" size="md" ghost unicode="⋮" aria-label="More options">
     <ag-menu slot="menu" aria-label="More options menu">
       <ag-menu-item value="settings">Settings</ag-menu-item>
@@ -332,7 +314,6 @@ export default function MenuExample() {
     </ag-menu>
   </ag-menu-button>
 
-  <!-- Menu aligned to the right -->
   <ag-menu-button menu-variant="chevron" size="md" menu-align="right">
     Options
     <ag-menu slot="menu" aria-label="Right-aligned menu">
@@ -342,7 +323,6 @@ export default function MenuExample() {
     </ag-menu>
   </ag-menu-button>
 
-  <!-- Menu with links -->
   <ag-menu-button menu-variant="chevron" size="md">
     Navigation
     <ag-menu slot="menu" aria-label="Navigation menu">
@@ -352,7 +332,6 @@ export default function MenuExample() {
     </ag-menu>
   </ag-menu-button>
 
-  <!-- Disabled items -->
   <ag-menu-button menu-variant="button" size="md" button-variant="primary">
     Mixed States
     <ag-menu slot="menu" aria-label="Menu with disabled items">
@@ -452,27 +431,25 @@ AgnosticUI Menu supports **three event handling patterns**:
 
 1. **addEventListener** (Lit/Vanilla JS):
 ```javascript
-const menuButton = document.querySelector('ag-menu-button');
-menuButton.addEventListener('menu-open', (e) => {
-  console.log('Menu opened:', e.detail.open);
+const menuButton = document.querySelector("ag-menu-button");
+menuButton.addEventListener("menu-open", (e) => {
+  console.log("Menu opened:", e.detail.open);
 });
 ```
 
 2. **Callback props** (Lit/Vanilla JS):
 ```javascript
-const menuButton = document.querySelector('ag-menu-button');
+const menuButton = document.querySelector("ag-menu-button");
 menuButton.onMenuOpen = (e) => {
-  console.log('Menu opened:', e.detail.open);
+  console.log("Menu opened:", e.detail.open);
 };
 ```
 
 3. **Framework event handlers** (Vue/React):
 ```vue
-<!-- Vue -->
 <VueMenu @menu-open="handleMenuOpen" />
 ```
 ```tsx
-// React
 <ReactMenuButton onMenuOpen={handleMenuOpen} />
 ```
 
@@ -590,10 +567,8 @@ The `menuAlign` prop controls the horizontal alignment of the menu relative to t
 This is particularly useful when the menu button is positioned near the right edge of the viewport, ensuring the menu stays within view.
 
 ```vue
-<!-- Left-aligned (default) -->
 <VueMenu menu-align="left">Options</VueMenu>
 
-<!-- Right-aligned -->
 <VueMenu menu-align="right">Options</VueMenu>
 ```
 
@@ -618,7 +593,6 @@ The `type` prop on the `<ag-menu>` element controls the selection behavior:
 - Follows WAI-ARIA `menuitem` pattern
 
 ```vue
-<!-- Navigation menu - selections don't persist -->
 <VueMenu menu-aria-label="User menu">
   User
   <template #menu>
@@ -638,7 +612,6 @@ The `type` prop on the `<ag-menu>` element controls the selection behavior:
 - Follows WAI-ARIA `menuitemradio` pattern
 
 ```vue
-<!-- Selection menu - selections persist -->
 <VueMenu menu-aria-label="Sort options">
   Sort by
   <template #menu>
@@ -659,11 +632,11 @@ The `additionalGutter` prop allows you to add extra vertical spacing beyond the 
 
 ::: details React
 ```tsx
-import { ReactMenuButton, ReactMenu, ReactMenuItem } from 'agnosticui-core/menu/react';
+import { ReactMenuButton, ReactMenu, ReactMenuItem } from "agnosticui-core/menu/react";
 
 export default function HeaderMenu() {
   return (
-    <header style={{ height: '60px', padding: '10px', background: '#f3f4f6' }}>
+    <header style={{ height: "60px", padding: "10px", background: "#f3f4f6" }}>
       <ReactMenuButton
         menuVariant="chevron"
         additionalGutter="10px"
@@ -718,8 +691,8 @@ The menu button exposes a `data-menu-open` attribute that changes based on the m
 
 ::: details React
 ```tsx
-import { ReactMenuButton, ReactMenu, ReactMenuItem } from 'agnosticui-core/menu/react';
-import React from 'react';
+import { ReactMenuButton, ReactMenu, ReactMenuItem } from "agnosticui-core/menu/react";
+import React from "react";
 
 export default function DynamicIconMenu() {
   return (
@@ -728,7 +701,7 @@ export default function DynamicIconMenu() {
         {`
           .dynamic-icon-menu .menu-icon,
           .dynamic-icon-menu .close-icon {
-            transition: opacity var(--ag-motion-medium) ease-in-out;
+            transition: opacity #6366f1 ease-in-out;
           }
           .dynamic-icon-menu[data-menu-open="false"] .close-icon {
             opacity: 0;
@@ -793,7 +766,7 @@ export default {
 <style scoped>
 .dynamic-icon-menu :deep(.menu-icon),
 .dynamic-icon-menu :deep(.close-icon) {
-  transition: opacity var(--ag-motion-medium) ease-in-out;
+  transition: opacity #6366f1 ease-in-out;
 }
 .dynamic-icon-menu[data-menu-open="false"] :deep(.close-icon) {
   opacity: 0;
@@ -814,7 +787,7 @@ export default {
 <style>
   .dynamic-icon-menu .menu-icon,
   .dynamic-icon-menu .close-icon {
-    transition: opacity var(--ag-motion-medium) ease-in-out;
+    transition: opacity #6366f1 ease-in-out;
   }
   .dynamic-icon-menu[data-menu-open="false"] .close-icon {
     opacity: 0;

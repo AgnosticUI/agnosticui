@@ -56,8 +56,8 @@ When you follow this pattern, the browser reserves the correct vertical space fo
 
 You can control how the image fits within its container using the `fit` and `position` props, which correspond to the `object-fit` and `object-position` CSS properties.
 
--   `fit`: Can be `'cover'`, `'contain'`, `'fill'`, `'none'`, or `'scale-down'`. Defaults to `'cover'`.
--   `position`: Any valid CSS position value, like `'top'`, `'center'`, `'bottom left'`. Defaults to `'center'`.
+- `fit`: Can be `'cover'`, `'contain'`, `'fill'`, `'none'`, or `'scale-down'`. Defaults to `'cover'`.
+- `position`: Any valid CSS position value, like `'top'`, `'center'`, `'bottom left'`. Defaults to `'center'`.
 
 The "Contain" example below shows an image with `fit="contain"` inside a container with a background color to demonstrate how the image is contained without being cropped.
 
@@ -92,20 +92,16 @@ If the primary `src` fails to load, you can provide a `fallbackSrc`. The compone
 
 For a more tailored user experience, you can provide custom content to be displayed during loading or on error using named slots.
 
--   **`placeholder` slot**: Content in this slot is displayed while the image is loading. This is perfect for implementing custom skeleton loaders or low-quality image placeholders (LQIP) that match your site's design tokens.
--   **`error` slot**: Content in this slot is displayed if the image (and any fallback) fails to load.
+- **`placeholder` slot**: Content in this slot is displayed while the image is loading. This is perfect for implementing custom skeleton loaders or low-quality image placeholders (LQIP) that match your site's design tokens.
+- **`error` slot**: Content in this slot is displayed if the image (and any fallback) fails to load.
 
 ```html
 <ag-image src="..." alt="...">
-  <div slot="placeholder">
-    <!-- Your custom loading spinner or skeleton UI -->
-  </div>
+  <div slot="placeholder"></div>
 </ag-image>
 
 <ag-image src="broken-image.jpg" alt="...">
-  <div slot="error">
-    <!-- Your custom error message or icon -->
-  </div>
+  <div slot="error"></div>
 </ag-image>
 ```
 
@@ -117,9 +113,9 @@ While inline `style` is supported, the recommended approach for styling is to us
 
 For deeper customization, the Image component exposes several CSS Parts that allow you to style its internal elements from outside:
 
--   `::part(ag-img)`: The `<img>` element itself.
--   `::part(ag-placeholder)`: The container for the placeholder content.
--   `::part(ag-error)`: The container for the error content.
+- `::part(ag-img)`: The `<img>` element itself.
+- `::part(ag-placeholder)`: The container for the placeholder content.
+- `::part(ag-error)`: The container for the error content.
 
 ```css
 .custom-styled-image::part(ag-img) {
@@ -130,20 +126,20 @@ For deeper customization, the Image component exposes several CSS Parts that all
 
 ## Props
 
-| Prop          | Type                                                 | Default     | Description                                                                                             |
-|---------------|------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------------------|
-| `src`         | `string`                                             | `''`        | **Required.** The primary image source URL.                                                             |
-| `alt`         | `string`                                             | `''`        | **Required.** Alternative text for accessibility.                                                       |
-| `aspectRatio` | `string`                                             | `undefined` | The image's aspect ratio (e.g., "16/9"). Used to prevent layout shift on responsive images.             |
-| `sources`     | `AgImageSource[]`                                    | `[]`        | An array of source objects to create a `<picture>` element for responsive images.                       |
-| `width`       | `number`                                             | `undefined` | Sets a fixed width in pixels, opting out of responsiveness.                                             |
-| `height`      | `number`                                             | `undefined` | Sets a fixed height in pixels.                                                                          |
-| `fit`         | `'cover' \| 'contain' \| 'fill' \| 'none' \| 'scale-down'` | `'cover'`   | Defines how the image fits its container. Corresponds to `object-fit`.                                  |
-| `position`    | `string`                                             | `'center'`  | Defines the image's position within its container. Corresponds to `object-position`.                    |
-| `loading`     | `'lazy' \| 'eager'`                                  | `'lazy'`    | Sets the native browser loading strategy.                                                               |
-| `fade`        | `boolean`                                            | `false`     | If `true`, the image will fade in smoothly on load.                                                     |
-| `duration`    | `number`                                             | `200`       | The duration of the fade-in transition in milliseconds.                                                 |
-| `fallbackSrc` | `string`                                             | `undefined` | A backup image URL to load if the primary `src` fails.                                                  |
+| Prop          | Type                                                       | Default     | Description                                                                                 |
+| ------------- | ---------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------- |
+| `src`         | `string`                                                   | `''`        | **Required.** The primary image source URL.                                                 |
+| `alt`         | `string`                                                   | `''`        | **Required.** Alternative text for accessibility.                                           |
+| `aspectRatio` | `string`                                                   | `undefined` | The image's aspect ratio (e.g., "16/9"). Used to prevent layout shift on responsive images. |
+| `sources`     | `AgImageSource[]`                                          | `[]`        | An array of source objects to create a `<picture>` element for responsive images.           |
+| `width`       | `number`                                                   | `undefined` | Sets a fixed width in pixels, opting out of responsiveness.                                 |
+| `height`      | `number`                                                   | `undefined` | Sets a fixed height in pixels.                                                              |
+| `fit`         | `'cover' \| 'contain' \| 'fill' \| 'none' \| 'scale-down'` | `'cover'`   | Defines how the image fits its container. Corresponds to `object-fit`.                      |
+| `position`    | `string`                                                   | `'center'`  | Defines the image's position within its container. Corresponds to `object-position`.        |
+| `loading`     | `'lazy' \| 'eager'`                                        | `'lazy'`    | Sets the native browser loading strategy.                                                   |
+| `fade`        | `boolean`                                                  | `false`     | If `true`, the image will fade in smoothly on load.                                         |
+| `duration`    | `number`                                                   | `200`       | The duration of the fade-in transition in milliseconds.                                     |
+| `fallbackSrc` | `string`                                                   | `undefined` | A backup image URL to load if the primary `src` fails.                                      |
 
 ## Best Practices & Implementation Details
 

@@ -15,7 +15,6 @@ import HeaderExamples from '../examples/HeaderExamples.vue'
 ```vue
 <template>
   <div>
-    <!-- Basic header -->
     <VueHeader>
       <template #logo>
         <a
@@ -36,7 +35,6 @@ import HeaderExamples from '../examples/HeaderExamples.vue'
       </nav>
     </VueHeader>
 
-    <!-- Sticky header -->
     <VueHeader :sticky="true">
       <template #logo>
         <a href="/">Brand</a>
@@ -44,7 +42,6 @@ import HeaderExamples from '../examples/HeaderExamples.vue'
       <nav>Navigation</nav>
     </VueHeader>
 
-    <!-- Custom content justification -->
     <VueHeader contentJustify="start">
       <template #logo>
         <a href="/">Logo</a>
@@ -74,7 +71,6 @@ import { ReactHeader } from "agnosticui-core/header/react";
 export default function Example() {
   return (
     <div>
-      {/* Basic header */}
       <ReactHeader>
         <a
           href="/"
@@ -111,7 +107,6 @@ export default function Example() {
         </nav>
       </ReactHeader>
 
-      {/* Sticky header */}
       <ReactHeader sticky>
         <a href="/" slot="logo">
           Brand
@@ -119,7 +114,6 @@ export default function Example() {
         <nav>Navigation</nav>
       </ReactHeader>
 
-      {/* Custom content justification */}
       <ReactHeader contentJustify="start">
         <a href="/" slot="logo">
           Logo
@@ -140,7 +134,6 @@ export default function Example() {
   import "agnosticui-core/header";
 </script>
 
-<!-- Basic header -->
 <ag-header>
   <a
     href="/"
@@ -160,13 +153,11 @@ export default function Example() {
   </nav>
 </ag-header>
 
-<!-- Sticky header -->
 <ag-header sticky>
   <a href="/" slot="logo">Brand</a>
   <nav>Navigation</nav>
 </ag-header>
 
-<!-- Custom content justification -->
 <ag-header contentJustify="start">
   <a href="/" slot="logo">Logo</a>
   <nav>Menu</nav>
@@ -203,7 +194,6 @@ The Header component does not emit any custom events. It relies on standard DOM 
 ### Customization Example
 
 ```css
-/* Custom gradient background */
 .gradient-header::part(ag-header) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -211,14 +201,12 @@ The Header component does not emit any custom events. It relies on standard DOM 
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Custom border styling */
 .custom-border::part(ag-header) {
-  background: var(--ag-background-secondary);
-  border-bottom: 3px solid var(--ag-primary);
+  background: #f3f4f6;
+  border-bottom: 3px solid #12623e;
   box-shadow: none;
 }
 
-/* Custom content width and padding */
 .wide-header::part(ag-header-content) {
   max-width: 1200px;
   padding: 1.5rem 2rem;
@@ -244,7 +232,6 @@ The Header component is designed to be accessible by default:
 - For sticky headers, consider using [scroll-margin-top](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top) on jump link targets to prevent content from hiding under the header:
 
 ```css
-/* Adjust based on your header height */
 h1[id],
 h2[id],
 h3[id] {

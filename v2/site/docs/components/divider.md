@@ -14,24 +14,19 @@ import DividerExamples from '../examples/DividerExamples.vue'
 ```vue
 <template>
   <div>
-    <!-- Basic horizontal divider -->
     <VueDivider />
 
-    <!-- With content -->
     <VueDivider>Section Title</VueDivider>
 
-    <!-- Justified content -->
     <VueDivider justify="start">Left aligned</VueDivider>
     <VueDivider justify="end">Right aligned</VueDivider>
 
-    <!-- Vertical divider -->
     <div style="display: flex;">
       <p>Left content</p>
       <VueDivider vertical />
       <p>Right content</p>
     </div>
 
-    <!-- Sizes and variants -->
     <VueDivider size="large" variant="success">Success</VueDivider>
   </div>
 </template>
@@ -54,24 +49,19 @@ import { ReactDivider } from 'agnosticui-core/divider/react';
 export default function Example() {
   return (
     <div>
-      {/* Basic horizontal divider */}
       <ReactDivider />
 
-      {/* With content */}
       <ReactDivider>Section Title</ReactDivider>
 
-      {/* Justified content */}
       <ReactDivider justify="start">Left aligned</ReactDivider>
       <ReactDivider justify="end">Right aligned</ReactDivider>
 
-      {/* Vertical divider */}
       <div style={{ display: 'flex' }}>
         <p>Left content</p>
         <ReactDivider vertical />
         <p>Right content</p>
       </div>
 
-      {/* Sizes and variants */}
       <ReactDivider size="large" variant="success">Success</ReactDivider>
     </div>
   );
@@ -85,24 +75,19 @@ export default function Example() {
   import 'agnosticui-core/divider';
 </script>
 
-<!-- Basic horizontal divider -->
 <ag-divider></ag-divider>
 
-<!-- With content -->
 <ag-divider>Section Title</ag-divider>
 
-<!-- Justified content -->
 <ag-divider justify="start">Left aligned</ag-divider>
 <ag-divider justify="end">Right aligned</ag-divider>
 
-<!-- Vertical divider -->
 <div style="display: flex;">
   <p>Left content</p>
   <ag-divider vertical></ag-divider>
   <p>Right content</p>
 </div>
 
-<!-- Sizes and variants -->
 <ag-divider size="large" variant="success">Success</ag-divider>
 ```
 :::
@@ -162,17 +147,14 @@ The Divider component does not emit any events. It is a presentational component
 ```
 
 ```html
-<!-- Vue -->
 <VueDivider class="custom-divider">Gradient Divider</VueDivider>
 <VueDivider class="custom-dotted">Dotted Pattern</VueDivider>
 <VueDivider class="custom-vertical" vertical>Vertical</VueDivider>
 
-<!-- React -->
 <ReactDivider className="custom-divider">Gradient Divider</ReactDivider>
 <ReactDivider className="custom-dotted">Dotted Pattern</ReactDivider>
 <ReactDivider className="custom-vertical" vertical>Vertical</ReactDivider>
 
-<!-- Lit (Web Components) -->
 <ag-divider class="custom-divider">Gradient Divider</ag-divider>
 <ag-divider class="custom-dotted">Dotted Pattern</ag-divider>
 <ag-divider class="custom-vertical" vertical>Vertical</ag-divider>
@@ -198,21 +180,16 @@ The Divider component is designed to be accessible by default:
 ### Examples
 
 ```html
-<!-- Good: Separating distinct content sections -->
 <section>
   <h2>User Profile</h2>
-  <!-- profile content -->
 </section>
 <ag-divider></ag-divider>
 <section>
   <h2>Settings</h2>
-  <!-- settings content -->
 </section>
 
-<!-- Good: Labeled section divider -->
 <ag-divider>Account Information</ag-divider>
 
-<!-- Good: Vertical divider with adequate container height -->
 <div style="display: flex; min-height: 200px;">
   <div>Left panel content</div>
   <ag-divider vertical></ag-divider>
@@ -229,7 +206,6 @@ Use dividers with text to create section headers:
 ```html
 <ag-divider size="large">Personal Details</ag-divider>
 <form>
-  <!-- form fields -->
 </form>
 ```
 
@@ -254,11 +230,9 @@ Use vertical dividers in sidebar layouts:
 ```html
 <div style="display: flex; min-height: 100vh;">
   <aside style="width: 250px; padding: 1rem;">
-    <!-- sidebar navigation -->
   </aside>
   <ag-divider vertical></ag-divider>
   <main style="flex: 1; padding: 1rem;">
-    <!-- main content -->
   </main>
 </div>
 ```
@@ -271,13 +245,10 @@ Align divider text to create different visual effects:
 <template>
   <div>
     <VueDivider justify="start">Beginning</VueDivider>
-    <!-- left-weighted content -->
 
     <VueDivider>Centered Section</VueDivider>
-    <!-- balanced content -->
 
     <VueDivider justify="end">End</VueDivider>
-    <!-- right-weighted content -->
   </div>
 </template>
 ```

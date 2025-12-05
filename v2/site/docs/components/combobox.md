@@ -16,7 +16,6 @@ import ComboboxExamples from '../examples/ComboboxExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic combobox -->
     <VueCombobox
       v-model:value="selectedState"
       :options="stateOptions"
@@ -25,7 +24,6 @@ import ComboboxExamples from '../examples/ComboboxExamples.vue'
       @change="handleChange"
     />
 
-    <!-- With help text -->
     <VueCombobox
       v-model:value="state"
       :options="stateOptions"
@@ -34,7 +32,6 @@ import ComboboxExamples from '../examples/ComboboxExamples.vue'
       help-text="Choose the state where you currently reside"
     />
 
-    <!-- With validation -->
     <VueCombobox
       v-model:value="requiredState"
       :options="stateOptions"
@@ -44,7 +41,6 @@ import ComboboxExamples from '../examples/ComboboxExamples.vue'
       error-message="State is required"
     />
 
-    <!-- Clearable -->
     <VueCombobox
       v-model:value="clearableState"
       :options="stateOptions"
@@ -53,7 +49,6 @@ import ComboboxExamples from '../examples/ComboboxExamples.vue'
       placeholder="Select and clear..."
     />
 
-    <!-- Contains filter -->
     <VueCombobox
       v-model:value="searchState"
       :options="stateOptions"
@@ -63,7 +58,6 @@ import ComboboxExamples from '../examples/ComboboxExamples.vue'
       @search="handleSearch"
     />
 
-    <!-- Size variants -->
     <VueCombobox
       v-model:value="small"
       :options="stateOptions"
@@ -78,7 +72,6 @@ import ComboboxExamples from '../examples/ComboboxExamples.vue'
       size="large"
     />
 
-    <!-- With disabled options -->
     <VueCombobox
       v-model:value="value"
       :options="optionsWithDisabled"
@@ -86,7 +79,6 @@ import ComboboxExamples from '../examples/ComboboxExamples.vue'
       placeholder="Some options are disabled..."
     />
 
-    <!-- Loading state -->
     <VueCombobox
       v-model:value="asyncValue"
       :options="asyncOptions"
@@ -95,7 +87,6 @@ import ComboboxExamples from '../examples/ComboboxExamples.vue'
       loading-text="Fetching states..."
     />
 
-    <!-- Disabled -->
     <VueCombobox
       v-model:value="disabled"
       :options="stateOptions"
@@ -194,7 +185,6 @@ export default function ComboboxExample() {
 
   return (
     <section>
-      {/* Basic combobox */}
       <ReactCombobox
         value={selectedState}
         options={stateOptions}
@@ -203,7 +193,6 @@ export default function ComboboxExample() {
         onChange={handleChange}
       />
 
-      {/* With help text */}
       <ReactCombobox
         value={state}
         options={stateOptions}
@@ -213,7 +202,6 @@ export default function ComboboxExample() {
         onChange={(e) => setState(e.detail.value)}
       />
 
-      {/* With validation */}
       <ReactCombobox
         value={requiredState}
         options={stateOptions}
@@ -224,7 +212,6 @@ export default function ComboboxExample() {
         onChange={(e) => setRequiredState(e.detail.value)}
       />
 
-      {/* Clearable */}
       <ReactCombobox
         value={clearableState}
         options={stateOptions}
@@ -234,7 +221,6 @@ export default function ComboboxExample() {
         onChange={(e) => setClearableState(e.detail.value)}
       />
 
-      {/* Contains filter */}
       <ReactCombobox
         value={searchState}
         options={stateOptions}
@@ -245,7 +231,6 @@ export default function ComboboxExample() {
         onSearch={handleSearch}
       />
 
-      {/* Size variants */}
       <ReactCombobox
         value={small}
         options={stateOptions}
@@ -262,7 +247,6 @@ export default function ComboboxExample() {
         onChange={(e) => setLarge(e.detail.value)}
       />
 
-      {/* With disabled options */}
       <ReactCombobox
         value={value}
         options={optionsWithDisabled}
@@ -271,7 +255,6 @@ export default function ComboboxExample() {
         onChange={(e) => setValue(e.detail.value)}
       />
 
-      {/* Loading state */}
       <ReactCombobox
         value={asyncValue}
         options={asyncOptions}
@@ -281,7 +264,6 @@ export default function ComboboxExample() {
         onChange={(e) => setAsyncValue(e.detail.value)}
       />
 
-      {/* Disabled */}
       <ReactCombobox
         value="ca"
         options={stateOptions}
@@ -332,7 +314,6 @@ export class ComboboxExample extends LitElement {
 
   render() {
     return html`
-      <!-- Basic combobox -->
       <ag-combobox
         .options=${this.stateOptions}
         .value=${this.selectedState}
@@ -341,7 +322,6 @@ export class ComboboxExample extends LitElement {
         @change=${this.handleChange}
       ></ag-combobox>
 
-      <!-- With help text -->
       <ag-combobox
         .options=${this.stateOptions}
         label="State of Residence"
@@ -349,7 +329,6 @@ export class ComboboxExample extends LitElement {
         help-text="Choose the state where you currently reside"
       ></ag-combobox>
 
-      <!-- With validation -->
       <ag-combobox
         .options=${this.stateOptions}
         label="Required State"
@@ -358,7 +337,6 @@ export class ComboboxExample extends LitElement {
         error-message="State is required"
       ></ag-combobox>
 
-      <!-- Clearable -->
       <ag-combobox
         .options=${this.stateOptions}
         .value=${this.clearableState}
@@ -367,7 +345,6 @@ export class ComboboxExample extends LitElement {
         placeholder="Select and clear..."
       ></ag-combobox>
 
-      <!-- Contains filter -->
       <ag-combobox
         .options=${this.stateOptions}
         label="Search States"
@@ -376,7 +353,6 @@ export class ComboboxExample extends LitElement {
         @search=${this.handleSearch}
       ></ag-combobox>
 
-      <!-- Size variants -->
       <ag-combobox
         .options=${this.stateOptions}
         label="Small Combobox"
@@ -389,7 +365,6 @@ export class ComboboxExample extends LitElement {
         size="large"
       ></ag-combobox>
 
-      <!-- Loading state -->
       <ag-combobox
         .options=${[]}
         label="Select State"
@@ -397,7 +372,6 @@ export class ComboboxExample extends LitElement {
         loading-text="Fetching states..."
       ></ag-combobox>
 
-      <!-- Disabled -->
       <ag-combobox
         .options=${this.stateOptions}
         .value=${'ca'}
@@ -446,13 +420,13 @@ export class ComboboxExample extends LitElement {
 
 ```typescript
 interface ComboboxOption {
-  value: string;           // Unique value for this option
-  label: string;           // Display text
-  disabled?: boolean;      // Whether option is disabled
-  group?: string;          // Group name (Phase 2)
-  icon?: string;           // Icon identifier (Phase 2)
-  description?: string;    // Additional description (Phase 2)
-  metadata?: Record<string, unknown>; // Custom data
+  value: string;
+  label: string;
+  disabled?: boolean;
+  group?: string;
+  icon?: string;
+  description?: string;
+  metadata?: Record<string, unknown>;
 }
 ```
 
@@ -485,18 +459,18 @@ interface ComboboxOption {
 Use `::part()` to style component internals:
 
 ```css
-ag-combobox::part(ag-combobox-wrapper) { /* Wrapper container */ }
-ag-combobox::part(ag-combobox-label) { /* Label element */ }
-ag-combobox::part(ag-combobox-input-wrapper) { /* Input wrapper */ }
-ag-combobox::part(ag-combobox-input) { /* Input field */ }
-ag-combobox::part(ag-combobox-toggle-button) { /* Dropdown toggle button */ }
-ag-combobox::part(ag-combobox-clear-button) { /* Clear button */ }
-ag-combobox::part(ag-combobox-listbox) { /* Dropdown listbox */ }
-ag-combobox::part(ag-combobox-option) { /* Individual options */ }
-ag-combobox::part(ag-combobox-loading) { /* Loading indicator */ }
-ag-combobox::part(ag-combobox-no-results) { /* No results message */ }
-ag-combobox::part(ag-combobox-help-text) { /* Help text */ }
-ag-combobox::part(ag-combobox-error-message) { /* Error message */ }
+ag-combobox::part(ag-combobox-wrapper) { }
+ag-combobox::part(ag-combobox-label) { }
+ag-combobox::part(ag-combobox-input-wrapper) { }
+ag-combobox::part(ag-combobox-input) { }
+ag-combobox::part(ag-combobox-toggle-button) { }
+ag-combobox::part(ag-combobox-clear-button) { }
+ag-combobox::part(ag-combobox-listbox) { }
+ag-combobox::part(ag-combobox-option) { }
+ag-combobox::part(ag-combobox-loading) { }
+ag-combobox::part(ag-combobox-no-results) { }
+ag-combobox::part(ag-combobox-help-text) { }
+ag-combobox::part(ag-combobox-error-message) { }
 ```
 
 ### Design Tokens

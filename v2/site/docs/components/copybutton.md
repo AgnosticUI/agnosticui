@@ -18,20 +18,17 @@ import CopyButtonExamples from '../examples/CopyButtonExamples.vue'
   import 'agnosticui-core/copybutton';
 </script>
 
-<!-- Basic copy button -->
 <ag-copy-button
   text="npm install agnosticui-core"
   label="Copy install command"
 ></ag-copy-button>
 
-<!-- With custom success message -->
 <ag-copy-button
   text="console.log('Hello, AgnosticUI!');"
   label="Copy code snippet"
   success-label="Code copied!"
 ></ag-copy-button>
 
-<!-- Event listener example -->
 <ag-copy-button
   id="copy-btn"
   text="Event handling example"
@@ -51,13 +48,11 @@ import CopyButtonExamples from '../examples/CopyButtonExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic copy button -->
     <VueCopyButton
       text="npm install agnosticui-core"
       label="Copy install command"
     />
 
-    <!-- With event listener -->
     <VueCopyButton
       id="vue-copy-btn"
       text="Event handling example"
@@ -92,11 +87,9 @@ export default function Example() {
     <div>
       <ReactCopyButton text="npm install agnosticui-core" label="Copy install command" />
 
-      {/* With event handler */}
       <ReactCopyButton
         text="Event handling example"
         label="Copy with event"
-        // React wrappers emit DOM events from the underlying web component
         onCopy={(e: any) => console.log('Copied to clipboard (React):', e.detail?.text)}
       />
     </div>
@@ -109,22 +102,15 @@ export default function Example() {
 
 The CopyButton allows you to provide custom SVG icons for both the copy and copied states while maintaining default fallbacks:
 ```html
-<!-- Default icons -->
 <ag-copy-button
   text="Uses default Material Design icons"
   label="Copy with defaults"
 ></ag-copy-button>
 
-<!-- NOTE: If you provide custom icons, you MUST provide both `icon-copy` and `icon-copied` slots.
-     Providing only one will throw an error at runtime. The example below shows both slots.
--->
-
-<!-- Both custom icons -->
 <ag-copy-button
   text="Both icons customized"
   label="Copy with custom icons"
 >
-  <!-- visually-distinct custom icons: outline clipboard (copy) + filled green check (copied) -->
   <svg slot="icon-copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
     <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1z" />
     <rect x="8" y="5" width="11" height="14" rx="2" ry="2" stroke="currentColor" fill="none" />
@@ -143,7 +129,6 @@ The CopyButton allows you to provide custom SVG icons for both the copy and copi
 You can use any SVG icon library with the custom icon slots:
 
 ```html
-<!-- With Heroicons -->
 <ag-copy-button text="Heroicons example" label="Copy">
   <svg slot="icon-copy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
@@ -153,7 +138,6 @@ You can use any SVG icon library with the custom icon slots:
   </svg>
 </ag-copy-button>
 
-<!-- With Feather Icons -->
 <ag-copy-button text="Feather Icons example" label="Copy">
   <svg slot="icon-copy" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -194,29 +178,24 @@ You can use any SVG icon library with the custom icon slots:
 ### Event Handling Examples
 
 ```html
-<!-- Using addEventListener -->
 <ag-copy-button id="event-example" text="Event example"></ag-copy-button>
 
 <script>
   const btn = document.querySelector('#event-example');
   btn.addEventListener('copy', (e) => {
     console.log('Copied:', e.detail.text);
-    // Show toast notification
     showToast(`Copied: ${e.detail.text}`);
   });
 </script>
 
-<!-- Multiple handlers -->
 <script>
   const copyBtn = document.querySelector('#multi-handler');
 
   copyBtn.addEventListener('copy', (e) => {
-    // Analytics tracking
     trackEvent('copy_button', { text: e.detail.text });
   });
 
   copyBtn.addEventListener('copy', (e) => {
-    // Update UI
     updateCopyCount();
   });
 </script>
@@ -261,7 +240,7 @@ Use CopyButton alongside code blocks in documentation:
 <style>
   .code-example {
     position: relative;
-    background: var(--ag-background-secondary);
+    background: #f3f4f6;
     padding: var(--ag-space-4);
     border-radius: var(--ag-radius);
   }
@@ -293,7 +272,6 @@ Copy sensitive information with visual confirmation:
 <script>
   const copyBtn = document.querySelector('.token-display ag-copy-button');
   copyBtn.addEventListener('copy', () => {
-    // Log security event
     console.log('API token copied at:', new Date().toISOString());
   });
 </script>

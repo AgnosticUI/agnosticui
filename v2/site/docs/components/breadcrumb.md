@@ -153,13 +153,11 @@ export default function BreadcrumbExamples() {
     { label: 'Products', href: '#products' },
   ];
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // Set items on breadcrumb elements
-    document.querySelectorAll('ag-breadcrumb').forEach(breadcrumb => {
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("ag-breadcrumb").forEach(breadcrumb => {
       breadcrumb.items = items;
-      
-      // Add event listener
-      breadcrumb.addEventListener('breadcrumb-click', (event) => {
+
+      breadcrumb.addEventListener("breadcrumb-click", (event) => {
         console.log(
           `ag-breadcrumb -> breadcrumb-click -- label: ${event.detail.item.label}, href: ${event.detail.item.href}`
         );
@@ -201,9 +199,9 @@ export default function BreadcrumbExamples() {
 
 ```typescript
 interface BreadcrumbItem {
-  label: string;      // Display text for the breadcrumb
-  href?: string;      // Link URL (optional)
-  current?: boolean;  // Marks item as current page (optional)
+  label: string;
+  href?: string;
+  current?: boolean;
 }
 ```
 
@@ -219,34 +217,30 @@ AgnosticUI Breadcrumb supports **three event handling patterns**:
 
 1. **addEventListener** (Lit/Vanilla JS):
 ```javascript
-const breadcrumb = document.querySelector('ag-breadcrumb');
-breadcrumb.addEventListener('breadcrumb-click', (e) => {
-  console.log('Breadcrumb clicked:', e.detail.item.label);
-  console.log('Item index:', e.detail.index);
-  // Optionally prevent navigation
+const breadcrumb = document.querySelector("ag-breadcrumb");
+breadcrumb.addEventListener("breadcrumb-click", (e) => {
+  console.log("Breadcrumb clicked:", e.detail.item.label);
+  console.log("Item index:", e.detail.index);
   e.detail.event.preventDefault();
 });
 ```
 
 2. **Callback props** (Lit/Vanilla JS):
 ```javascript
-const breadcrumb = document.querySelector('ag-breadcrumb');
+const breadcrumb = document.querySelector("ag-breadcrumb");
 breadcrumb.onBreadcrumbClick = (e) => {
-  console.log('Breadcrumb clicked:', e.detail.item.label);
-  // Custom navigation logic
+  console.log("Breadcrumb clicked:", e.detail.item.label);
 };
 ```
 
 3. **Framework event handlers** (Vue/React):
 ```vue
-<!-- Vue -->
 <VueBreadcrumb
   :items="items"
   @breadcrumb-click="handleClick"
 />
 ```
 ```tsx
-// React
 <ReactBreadcrumb
   items={items}
   onBreadcrumbClick={handleClick}
@@ -270,7 +264,6 @@ The Breadcrumb component exposes the following CSS Shadow Parts for custom styli
 ### Customization Example
 
 ```css
-/* Customize breadcrumb links */
 ag-breadcrumb::part(ag-breadcrumb-item-link) {
   color: #667eea;
   font-weight: 600;
@@ -284,7 +277,6 @@ ag-breadcrumb::part(ag-breadcrumb-item-link):hover {
   color: white;
 }
 
-/* Customize current item */
 ag-breadcrumb::part(ag-breadcrumb-item-current) {
   color: #764ba2;
   font-weight: 700;

@@ -16,7 +16,6 @@ import DialogExamples from '../examples/DialogExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic dialog -->
     <VueButton @click="showDialog">Open Dialog</VueButton>
     <VueDialog
       v-model:open="isOpen"
@@ -27,7 +26,7 @@ import DialogExamples from '../examples/DialogExamples.vue'
       <p>This is the dialog content.</p>
     </VueDialog>
 
-    <!-- With header and footer -->
+
     <VueButton @click="showCustomDialog">Open Custom Dialog</VueButton>
     <VueDialog v-model:open="isCustomOpen">
       <VueDialogHeader>
@@ -42,7 +41,6 @@ import DialogExamples from '../examples/DialogExamples.vue'
       </VueDialogFooter>
     </VueDialog>
 
-    <!-- With close button -->
     <VueButton @click="showCloseButtonDialog">Open Dialog</VueButton>
     <VueDialog
       v-model:open="isCloseButtonOpen"
@@ -52,7 +50,6 @@ import DialogExamples from '../examples/DialogExamples.vue'
       <p>This dialog includes a close button.</p>
     </VueDialog>
 
-    <!-- Event handling -->
     <VueButton @click="showEventDialog">Open Dialog</VueButton>
     <VueDialog
       v-model:open="isEventOpen"
@@ -116,8 +113,8 @@ export default {
 
 ::: details React
 ```tsx
-import { useState } from 'react';
-import { ReactDialog, DialogHeader, DialogFooter } from 'agnosticui-core/dialog/react';
+import { useState } from "react";
+import { ReactDialog, DialogHeader, DialogFooter } from "agnosticui-core/dialog/react";
 
 export default function DialogExample() {
   const [isOpen, setIsOpen] = useState(false);
@@ -136,7 +133,6 @@ export default function DialogExample() {
 
   return (
     <section>
-      {/* Basic dialog */}
       <button onClick={() => setIsOpen(true)}>Open Dialog</button>
       <ReactDialog
         open={isOpen}
@@ -148,7 +144,6 @@ export default function DialogExample() {
         <p>This is the dialog content.</p>
       </ReactDialog>
 
-      {/* With header and footer */}
       <button onClick={() => setIsCustomOpen(true)}>Open Custom Dialog</button>
       <ReactDialog
         open={isCustomOpen}
@@ -160,14 +155,13 @@ export default function DialogExample() {
         </DialogHeader>
         <p>Dialog with custom header and footer.</p>
         <DialogFooter>
-          <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+          <div style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}>
             <button onClick={() => setIsCustomOpen(false)}>Cancel</button>
             <button onClick={() => setIsCustomOpen(false)}>Confirm</button>
           </div>
         </DialogFooter>
       </ReactDialog>
 
-      {/* With close button */}
       <button onClick={() => setIsCloseButtonOpen(true)}>Open Dialog</button>
       <ReactDialog
         open={isCloseButtonOpen}
@@ -199,20 +193,19 @@ export default function DialogExample() {
       }
     });
 
-    dialog?.addEventListener('dialog-close', () => {
+    dialog?.addEventListener("dialog-close", () => {
       dialog.open = false;
-      console.log('Dialog closed');
+      console.log("Dialog closed");
     });
 
-    dialog?.addEventListener('dialog-cancel', () => {
+    dialog?.addEventListener("dialog-cancel", () => {
       dialog.open = false;
-      console.log('Dialog cancelled');
+      console.log("Dialog cancelled");
     });
   });
 </script>
 
 <section>
-  <!-- Basic dialog -->
   <button id="open-dialog">Open Dialog</button>
   <ag-dialog
     id="my-dialog"
@@ -222,7 +215,6 @@ export default function DialogExample() {
     <p>This is the dialog content.</p>
   </ag-dialog>
 
-  <!-- With header and footer -->
   <ag-dialog id="custom-dialog">
     <div slot="header">
       <h2 style="margin: 0;">Custom Header</h2>
@@ -234,7 +226,6 @@ export default function DialogExample() {
     </div>
   </ag-dialog>
 
-  <!-- With close button -->
   <ag-dialog
     heading="Dialog with Close Button"
     show-close-button
@@ -292,23 +283,21 @@ export default function DialogExample() {
 
 **Lit:**
 ```html
-<!-- Using addEventListener -->
 <script>
-  const dialog = document.querySelector('ag-dialog');
-  dialog.addEventListener('dialog-open', (e) => {
-    console.log('Dialog opened', e);
+  const dialog = document.querySelector("ag-dialog");
+  dialog.addEventListener("dialog-open", (e) => {
+    console.log("Dialog opened", e);
   });
-  dialog.addEventListener('dialog-close', (e) => {
-    console.log('Dialog closed', e);
+  dialog.addEventListener("dialog-close", (e) => {
+    console.log("Dialog closed", e);
   });
 </script>
 
-<!-- Using callback props -->
 <ag-dialog id="my-dialog"></ag-dialog>
 <script>
-  const dialog = document.querySelector('#my-dialog');
-  dialog.onDialogOpen = (e) => console.log('Dialog opened', e);
-  dialog.onDialogClose = (e) => console.log('Dialog closed', e);
+  const dialog = document.querySelector("#my-dialog");
+  dialog.onDialogOpen = (e) => console.log("Dialog opened", e);
+  dialog.onDialogClose = (e) => console.log("Dialog closed", e);
 </script>
 ```
 
@@ -346,44 +335,37 @@ Shadow Parts allow you to style internal elements of the dialog from outside the
 ### Customization Example
 
 ```css
-/* Customize the backdrop */
 ag-dialog::part(ag-dialog-backdrop) {
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
 }
 
-/* Style the dialog container */
 ag-dialog::part(ag-dialog-container) {
   background: linear-gradient(to bottom, #ffffff, #f0f4ff);
   border: 3px solid #667eea;
   box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
 }
 
-/* Customize the header */
 ag-dialog::part(ag-dialog-header) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   padding: 1.5rem;
 }
 
-/* Style the heading */
 ag-dialog::part(ag-dialog-heading) {
   font-size: 1.5rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Customize the close button */
 ag-dialog::part(ag-dialog-close-button) {
   background: rgba(255, 255, 255, 0.2);
   color: white;
   border-radius: 50%;
 }
 
-/* Style the content section */
 ag-dialog::part(ag-dialog-content) {
   padding: 0 0.5rem;
 }
 
-/* Customize the footer */
 ag-dialog::part(ag-dialog-footer) {
   background: #f0f4ff;
   padding: 1rem;

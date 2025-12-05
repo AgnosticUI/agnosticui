@@ -16,41 +16,33 @@ import ButtonExamples from '../examples/ButtonExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic button -->
     <VueButton>Click me</VueButton>
 
-    <!-- Variants -->
     <VueButton variant="primary">Primary</VueButton>
     <VueButton variant="success">Success</VueButton>
     <VueButton variant="danger">Danger</VueButton>
     <VueButton variant="monochrome">Monochrome</VueButton>
 
-    <!-- Sizes -->
     <VueButton size="sm">Small</VueButton>
     <VueButton size="lg">Large</VueButton>
 
-    <!-- Shapes -->
     <VueButton shape="rounded">Rounded</VueButton>
     <VueButton shape="capsule">Capsule</VueButton>
     <VueButton shape="circle">C</VueButton>
 
-    <!-- Styles -->
     <VueButton bordered variant="primary">Bordered</VueButton>
     <VueButton ghost variant="primary">Ghost</VueButton>
     <VueButton link>Link Style</VueButton>
 
-    <!-- States -->
     <VueButton disabled>Disabled</VueButton>
     <VueButton loading>Loading</VueButton>
 
-    <!-- Toggle button -->
     <VueButton
       toggle
       :pressed="isPressed"
       @toggle="handleToggle"
     >Toggle Me</VueButton>
 
-    <!-- Form integration -->
     <VueButton type="submit" variant="primary">Submit</VueButton>
   </section>
 </template>
@@ -92,34 +84,27 @@ export default function ButtonExample() {
 
   return (
     <section>
-      {/* Basic button */}
       <ReactButton>Click me</ReactButton>
 
-      {/* Variants */}
       <ReactButton variant="primary">Primary</ReactButton>
       <ReactButton variant="success">Success</ReactButton>
       <ReactButton variant="danger">Danger</ReactButton>
       <ReactButton variant="monochrome">Monochrome</ReactButton>
 
-      {/* Sizes */}
       <ReactButton size="sm">Small</ReactButton>
       <ReactButton size="lg">Large</ReactButton>
 
-      {/* Shapes */}
       <ReactButton shape="rounded">Rounded</ReactButton>
       <ReactButton shape="capsule">Capsule</ReactButton>
       <ReactButton shape="circle">C</ReactButton>
 
-      {/* Styles */}
       <ReactButton bordered variant="primary">Bordered</ReactButton>
       <ReactButton ghost variant="primary">Ghost</ReactButton>
       <ReactButton link>Link Style</ReactButton>
 
-      {/* States */}
       <ReactButton disabled>Disabled</ReactButton>
       <ReactButton loading>Loading</ReactButton>
 
-      {/* Toggle button */}
       <ReactButton
         toggle
         pressed={isPressed}
@@ -128,7 +113,6 @@ export default function ButtonExample() {
         Toggle Me
       </ReactButton>
 
-      {/* Form integration */}
       <ReactButton type="submit" variant="primary">Submit</ReactButton>
     </section>
   );
@@ -139,52 +123,43 @@ export default function ButtonExample() {
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/button';
+  import "agnosticui-core/button";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // Toggle button example
-    const toggleButton = document.querySelector('#toggle-button');
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButton = document.querySelector("#toggle-button");
     let isPressed = false;
 
-    toggleButton?.addEventListener('toggle', (event) => {
+    toggleButton?.addEventListener("toggle", (event) => {
       isPressed = event.detail.pressed;
-      console.log('Button toggled:', isPressed);
+      console.log("Button toggled:", isPressed);
     });
   });
 </script>
 
 <section>
-  <!-- Basic button -->
   <ag-button>Click me</ag-button>
 
-  <!-- Variants -->
   <ag-button variant="primary">Primary</ag-button>
   <ag-button variant="success">Success</ag-button>
   <ag-button variant="danger">Danger</ag-button>
   <ag-button variant="monochrome">Monochrome</ag-button>
 
-  <!-- Sizes -->
   <ag-button size="sm">Small</ag-button>
   <ag-button size="lg">Large</ag-button>
 
-  <!-- Shapes -->
   <ag-button shape="rounded">Rounded</ag-button>
   <ag-button shape="capsule">Capsule</ag-button>
   <ag-button shape="circle">C</ag-button>
 
-  <!-- Styles -->
   <ag-button bordered variant="primary">Bordered</ag-button>
   <ag-button ghost variant="primary">Ghost</ag-button>
   <ag-button link>Link Style</ag-button>
 
-  <!-- States -->
   <ag-button disabled>Disabled</ag-button>
   <ag-button loading>Loading</ag-button>
 
-  <!-- Toggle button -->
   <ag-button id="toggle-button" toggle>Toggle Me</ag-button>
 
-  <!-- Form integration -->
   <ag-button type="submit" variant="primary">Submit</ag-button>
 </section>
 ```
@@ -328,12 +303,12 @@ Buttons integrate seamlessly with forms using the `type` prop:
 </form>
 
 <script type="module">
-  document.getElementById('myForm')?.addEventListener('submit', (e) => {
+  document.getElementById("myForm")?.addEventListener("submit", (e) => {
     e.preventDefault();
     handleSubmit();
   });
-  
-  document.getElementById('cancel-button')?.addEventListener('click', cancel);
+
+  document.getElementById("cancel-button")?.addEventListener("click", cancel);
 </script>
 ```
 :::
@@ -355,7 +330,6 @@ Shadow Parts allow you to style internal elements of the button from outside the
 ### Customization Example
 
 ```css
-/* Customize the button element */
 ag-button::part(ag-button) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;

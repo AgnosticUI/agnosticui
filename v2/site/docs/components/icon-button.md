@@ -20,12 +20,10 @@ import IconButtonExamples from '../examples/IconButtonExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic icon button with custom icon -->
     <VueIconButton label="Settings">
       <Settings :size="18" />
     </VueIconButton>
 
-    <!-- Variants -->
     <VueIconButton
       label="Delete"
       variant="danger"
@@ -39,7 +37,6 @@ import IconButtonExamples from '../examples/IconButtonExamples.vue'
       <Save :size="18" />
     </VueIconButton>
 
-    <!-- Sizes -->
     <VueIconButton
       label="Small"
       size="sm"
@@ -53,7 +50,6 @@ import IconButtonExamples from '../examples/IconButtonExamples.vue'
       <Heart :size="20" />
     </VueIconButton>
 
-    <!-- Toggle button with pressed state -->
     <VueIconButton
       label="Toggle favorite"
       :pressed="isFavorite"
@@ -65,13 +61,11 @@ import IconButtonExamples from '../examples/IconButtonExamples.vue'
       />
     </VueIconButton>
 
-    <!-- Unicode icon -->
     <VueIconButton
       label="Close"
       unicode="×"
     />
 
-    <!-- States -->
     <VueIconButton
       label="Disabled"
       disabled
@@ -85,7 +79,6 @@ import IconButtonExamples from '../examples/IconButtonExamples.vue'
       <Loader :size="18" />
     </VueIconButton>
 
-    <!-- With event handlers -->
     <VueIconButton
       label="Action button"
       @icon-button-click="handleClick"
@@ -120,10 +113,10 @@ export default {
       this.isFavorite = !this.isFavorite;
     },
     handleClick(event) {
-      console.log('Button clicked:', event.detail.label, event.detail.pressed);
+      console.log("Button clicked:", event.detail.label, event.detail.pressed);
     },
     handleActivate(event) {
-      console.log('Button activated via keyboard:', event.detail.label);
+      console.log("Button activated via keyboard:", event.detail.label);
     },
   },
 };
@@ -133,9 +126,9 @@ export default {
 
 ::: details React
 ```tsx
-import { useState } from 'react';
-import { ReactIconButton } from 'agnosticui-core/icon-button/react';
-import { Settings, Trash, Save, Heart, Loader, Zap } from 'lucide-react';
+import { useState } from "react";
+import { ReactIconButton } from "agnosticui-core/icon-button/react";
+import { Settings, Trash, Save, Heart, Loader, Zap } from "lucide-react";
 
 export default function IconButtonExample() {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -145,21 +138,19 @@ export default function IconButtonExample() {
   };
 
   const handleClick = (event) => {
-    console.log('Button clicked:', event.detail.label, event.detail.pressed);
+    console.log("Button clicked:", event.detail.label, event.detail.pressed);
   };
 
   const handleActivate = (event) => {
-    console.log('Button activated via keyboard:', event.detail.label);
+    console.log("Button activated via keyboard:", event.detail.label);
   };
 
   return (
     <section>
-      {/* Basic icon button with custom icon */}
       <ReactIconButton label="Settings">
         <Settings size={18} />
       </ReactIconButton>
 
-      {/* Variants */}
       <ReactIconButton label="Delete" variant="danger">
         <Trash size={18} />
       </ReactIconButton>
@@ -167,7 +158,6 @@ export default function IconButtonExample() {
         <Save size={18} />
       </ReactIconButton>
 
-      {/* Sizes */}
       <ReactIconButton label="Small" size="sm">
         <Heart size={16} />
       </ReactIconButton>
@@ -175,7 +165,6 @@ export default function IconButtonExample() {
         <Heart size={20} />
       </ReactIconButton>
 
-      {/* Toggle button with pressed state */}
       <ReactIconButton
         label="Toggle favorite"
         pressed={isFavorite}
@@ -183,14 +172,12 @@ export default function IconButtonExample() {
       >
         <Heart
           size={18}
-          fill={isFavorite ? 'currentColor' : 'none'}
+          fill={isFavorite ? "currentColor" : "none"}
         />
       </ReactIconButton>
 
-      {/* Unicode icon */}
       <ReactIconButton label="Close" unicode="×" />
 
-      {/* States */}
       <ReactIconButton label="Disabled" disabled>
         <Save size={18} />
       </ReactIconButton>
@@ -198,7 +185,6 @@ export default function IconButtonExample() {
         <Loader size={18} />
       </ReactIconButton>
 
-      {/* With event handlers */}
       <ReactIconButton
         label="Action button"
         onIconButtonClick={handleClick}
@@ -215,43 +201,40 @@ export default function IconButtonExample() {
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/icon-button';
+  import "agnosticui-core/icon-button";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const favoriteBtn = document.querySelector('#favorite-toggle');
+  document.addEventListener("DOMContentLoaded", () => {
+    const favoriteBtn = document.querySelector("#favorite-toggle");
     let isFavorite = false;
 
-    favoriteBtn?.addEventListener('click', () => {
+    favoriteBtn?.addEventListener("click", () => {
       isFavorite = !isFavorite;
       favoriteBtn.pressed = isFavorite;
 
-      const heartIcon = favoriteBtn.querySelector('svg');
+      const heartIcon = favoriteBtn.querySelector("svg");
       if (heartIcon) {
-        heartIcon.setAttribute('fill', isFavorite ? 'currentColor' : 'none');
+        heartIcon.setAttribute("fill", isFavorite ? "currentColor" : "none");
       }
     });
 
-    // Event handling with addEventListener
-    const actionBtn = document.querySelector('#action-btn');
-    actionBtn?.addEventListener('icon-button-click', (e) => {
-      console.log('Button clicked:', e.detail.label, e.detail.pressed);
+    const actionBtn = document.querySelector("#action-btn");
+    actionBtn?.addEventListener("icon-button-click", (e) => {
+      console.log("Button clicked:", e.detail.label, e.detail.pressed);
     });
-    actionBtn?.addEventListener('icon-button-activate', (e) => {
-      console.log('Button activated via keyboard:', e.detail.label);
+    actionBtn?.addEventListener("icon-button-activate", (e) => {
+      console.log("Button activated via keyboard:", e.detail.label);
     });
 
-    // Event handling with callback props
-    const callbackBtn = document.querySelector('#callback-btn');
+    const callbackBtn = document.querySelector("#callback-btn");
     if (callbackBtn) {
       callbackBtn.onIconButtonClick = (e) => {
-        console.log('Callback click:', e.detail.label);
+        console.log("Callback click:", e.detail.label);
       };
     }
   });
 </script>
 
 <section>
-  <!-- Basic icon button with custom icon -->
   <ag-icon-button label="Settings">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
       <circle cx="12" cy="12" r="3"></circle>
@@ -259,7 +242,6 @@ export default function IconButtonExample() {
     </svg>
   </ag-icon-button>
 
-  <!-- Variants -->
   <ag-icon-button label="Delete" variant="danger">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
       <path d="M3 6h18M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
@@ -271,7 +253,6 @@ export default function IconButtonExample() {
     </svg>
   </ag-icon-button>
 
-  <!-- Sizes -->
   <ag-icon-button label="Small" size="sm">
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
       <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
@@ -283,17 +264,14 @@ export default function IconButtonExample() {
     </svg>
   </ag-icon-button>
 
-  <!-- Toggle button with pressed state -->
   <ag-icon-button id="favorite-toggle" label="Toggle favorite">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
       <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
     </svg>
   </ag-icon-button>
 
-  <!-- Unicode icon -->
   <ag-icon-button label="Close" unicode="×"></ag-icon-button>
 
-  <!-- States -->
   <ag-icon-button label="Disabled" disabled>
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
       <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
@@ -305,14 +283,12 @@ export default function IconButtonExample() {
     </svg>
   </ag-icon-button>
 
-  <!-- With addEventListener -->
   <ag-icon-button id="action-btn" label="Action button">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
       <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
     </svg>
   </ag-icon-button>
 
-  <!-- With callback props -->
   <ag-icon-button id="callback-btn" label="Callback button">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
       <circle cx="12" cy="12" r="10"></circle>
@@ -352,30 +328,28 @@ AgnosticUI IconButton supports **three event handling patterns**:
 
 1. **addEventListener** (Lit/Vanilla JS):
 ```javascript
-const iconButton = document.querySelector('ag-icon-button');
-iconButton.addEventListener('icon-button-click', (e) => {
-  console.log('Button clicked:', e.detail.label, 'Pressed:', e.detail.pressed);
+const iconButton = document.querySelector("ag-icon-button");
+iconButton.addEventListener("icon-button-click", (e) => {
+  console.log("Button clicked:", e.detail.label, "Pressed:", e.detail.pressed);
 });
 ```
 
 2. **Callback props** (Lit/Vanilla JS):
 ```javascript
-const iconButton = document.querySelector('ag-icon-button');
+const iconButton = document.querySelector("ag-icon-button");
 iconButton.onIconButtonClick = (e) => {
-  console.log('Button clicked:', e.detail.label);
+  console.log("Button clicked:", e.detail.label);
 };
 ```
 
 3. **Framework event handlers** (Vue/React):
 ```vue
-<!-- Vue -->
 <VueIconButton
   @icon-button-click="handleClick"
   @icon-button-activate="handleActivate"
 />
 ```
 ```tsx
-// React
 <ReactIconButton
   onIconButtonClick={handleClick}
   onIconButtonActivate={handleActivate}
@@ -398,7 +372,6 @@ The IconButton exposes CSS Shadow Parts that allow you to customize internal ele
 ### Example Usage
 
 ```css
-/* Customize the icon color with gradient */
 ag-icon-button::part(ag-icon-unicode) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
@@ -406,14 +379,12 @@ ag-icon-button::part(ag-icon-unicode) {
   background-clip: text;
 }
 
-/* Style the button container */
 ag-icon-button button {
-  border: 2px solid var(--ag-primary);
+  border: 2px solid #12623e;
   border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover effect on the icon */
 ag-icon-button::part(ag-icon):hover {
   transform: scale(1.1);
   transition: transform 0.2s ease;
@@ -452,7 +423,6 @@ The `label` prop is **required** for accessibility. Icon-only buttons need an ac
 
 **Bad example:**
 ```vue
-<!-- Missing label - screen readers can't announce the purpose -->
 <VueIconButton>
   <Save :size="18" />
 </VueIconButton>
