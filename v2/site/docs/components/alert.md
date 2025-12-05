@@ -40,7 +40,9 @@ import AlertExamples from '../examples/AlertExamples.vue'
       <VueAlert class="mbe2" bordered type="warning">Warning alert</VueAlert>
       <VueAlert class="mbe2" bordered type="danger">Danger alert</VueAlert>
       <VueAlert class="mbe2" bordered type="error">Error alert</VueAlert>
-      <VueAlert class="mbe2" bordered type="monochrome">Monochrome alert</VueAlert>
+      <VueAlert class="mbe2" bordered type="monochrome"
+        >Monochrome alert</VueAlert
+      >
     </div>
     <div class="mbe4">
       <h3>Bordered Left with Icon</h3>
@@ -92,7 +94,9 @@ import AlertExamples from '../examples/AlertExamples.vue'
       <VueAlert class="mbe2" rounded type="warning">Warning alert</VueAlert>
       <VueAlert class="mbe2" rounded type="danger">Danger alert</VueAlert>
       <VueAlert class="mbe2" rounded type="error">Error alert</VueAlert>
-      <VueAlert class="mbe2" rounded type="monochrome">Monochrome alert</VueAlert>
+      <VueAlert class="mbe2" rounded type="monochrome"
+        >Monochrome alert</VueAlert
+      >
     </div>
   </section>
 </template>
@@ -336,7 +340,7 @@ export default {
   },
   methods: {
     handleWarningDismiss(event) {
-      console.log('Warning dismissed, type:', event.detail.type);
+      console.log("Warning dismissed, type:", event.detail.type);
       this.showWarning = false;
     },
   },
@@ -349,15 +353,15 @@ export default {
 ::: details React
 
 ```tsx
-import { useState } from 'react';
-import { ReactAlert } from 'agnosticui-core/alert/react';
+import { useState } from "react";
+import { ReactAlert } from "agnosticui-core/alert/react";
 
 export default function DismissibleAlertExample() {
   const [showAlert, setShowAlert] = useState(true);
   const [showWarning, setShowWarning] = useState(true);
 
   const handleWarningDismiss = (event) => {
-    console.log('Warning dismissed, type:', event.detail.type);
+    console.log("Warning dismissed, type:", event.detail.type);
     setShowWarning(false);
   };
 
@@ -387,14 +391,10 @@ export default function DismissibleAlertExample() {
       )}
 
       {!showAlert && (
-        <button onClick={() => setShowAlert(true)}>
-          Show Success Alert
-        </button>
+        <button onClick={() => setShowAlert(true)}>Show Success Alert</button>
       )}
       {!showWarning && (
-        <button onClick={() => setShowWarning(true)}>
-          Show Warning Alert
-        </button>
+        <button onClick={() => setShowWarning(true)}>Show Warning Alert</button>
       )}
     </div>
   );
@@ -409,66 +409,49 @@ export default function DismissibleAlertExample() {
 <script type="module">
   import "agnosticui-core/alert";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const successAlert = document.querySelector('#success-alert');
-    const warningAlert = document.querySelector('#warning-alert');
-    const showSuccessBtn = document.querySelector('#show-success');
-    const showWarningBtn = document.querySelector('#show-warning');
+  document.addEventListener("DOMContentLoaded", () => {
+    const successAlert = document.querySelector("#success-alert");
+    const warningAlert = document.querySelector("#warning-alert");
+    const showSuccessBtn = document.querySelector("#show-success");
+    const showWarningBtn = document.querySelector("#show-warning");
 
-    // Using addEventListener pattern
-    successAlert?.addEventListener('alert-dismiss', (e) => {
-      console.log('Success alert dismissed, type:', e.detail.type);
-      successAlert.style.display = 'none';
-      showSuccessBtn.style.display = 'inline-block';
+    successAlert?.addEventListener("alert-dismiss", (e) => {
+      console.log("Success alert dismissed, type:", e.detail.type);
+      successAlert.style.display = "none";
+      showSuccessBtn.style.display = "inline-block";
     });
 
-    // Using callback prop pattern
     if (warningAlert) {
       warningAlert.onAlertDismiss = (e) => {
-        console.log('Warning dismissed, type:', e.detail.type);
-        warningAlert.style.display = 'none';
-        showWarningBtn.style.display = 'inline-block';
+        console.log("Warning dismissed, type:", e.detail.type);
+        warningAlert.style.display = "none";
+        showWarningBtn.style.display = "inline-block";
       };
     }
 
-    showSuccessBtn?.addEventListener('click', () => {
-      successAlert.style.display = 'block';
-      showSuccessBtn.style.display = 'none';
+    showSuccessBtn?.addEventListener("click", () => {
+      successAlert.style.display = "block";
+      showSuccessBtn.style.display = "none";
     });
 
-    showWarningBtn?.addEventListener('click', () => {
-      warningAlert.style.display = 'block';
-      showWarningBtn.style.display = 'none';
+    showWarningBtn?.addEventListener("click", () => {
+      warningAlert.style.display = "block";
+      showWarningBtn.style.display = "none";
     });
   });
 </script>
 
 <div>
-  <ag-alert
-    id="success-alert"
-    type="success"
-    dismissible
-    class="mbe2"
-  >
+  <ag-alert id="success-alert" type="success" dismissible class="mbe2">
     This is a dismissible success alert. Click the × to dismiss.
   </ag-alert>
 
-  <ag-alert
-    id="warning-alert"
-    type="warning"
-    dismissible
-    rounded
-    class="mbe2"
-  >
+  <ag-alert id="warning-alert" type="warning" dismissible rounded class="mbe2">
     Warning: This action cannot be undone!
   </ag-alert>
 
-  <button id="show-success" style="display: none;">
-    Show Success Alert
-  </button>
-  <button id="show-warning" style="display: none;">
-    Show Warning Alert
-  </button>
+  <button id="show-success" style="display: none;">Show Success Alert</button>
+  <button id="show-warning" style="display: none;">Show Warning Alert</button>
 </div>
 ```
 
@@ -476,18 +459,18 @@ export default function DismissibleAlertExample() {
 
 ## Props
 
-| Prop           | Type                                                                                | Default     | Description                            |
-| -------------- | ----------------------------------------------------------------------------------- | ----------- | -------------------------------------- |
-| `type`         | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'danger' \| 'error'` | `'default'` | The alert variant type                 |
-| `bordered`     | `boolean`                                                                           | `false`     | Adds a border around the alert         |
-| `rounded`      | `boolean`                                                                           | `false`     | Applies rounded corners to the alert   |
-| `borderedLeft` | `boolean`                                                                           | `false`     | Adds a left border accent to the alert |
+| Prop           | Type                                                                                | Default     | Description                               |
+| -------------- | ----------------------------------------------------------------------------------- | ----------- | ----------------------------------------- |
+| `type`         | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'danger' \| 'error'` | `'default'` | The alert variant type                    |
+| `bordered`     | `boolean`                                                                           | `false`     | Adds a border around the alert            |
+| `rounded`      | `boolean`                                                                           | `false`     | Applies rounded corners to the alert      |
+| `borderedLeft` | `boolean`                                                                           | `false`     | Adds a left border accent to the alert    |
 | `dismissible`  | `boolean`                                                                           | `false`     | Shows a close button to dismiss the alert |
 
 ## Events
 
-| Event | Framework | Detail | Description |
-|-------|-----------|--------|-------------|
+| Event           | Framework                                                                                      | Detail                | Description                                                                            |
+| --------------- | ---------------------------------------------------------------------------------------------- | --------------------- | -------------------------------------------------------------------------------------- |
 | `alert-dismiss` | Vue: `@alert-dismiss`<br>React: `onAlertDismiss`<br>Lit: `@alert-dismiss` or `.onAlertDismiss` | `{ type: AlertType }` | Fired when the alert's close button is clicked. Provides the alert type in the detail. |
 
 ### Event Patterns
@@ -495,40 +478,35 @@ export default function DismissibleAlertExample() {
 AgnosticUI Alert supports **three event handling patterns**:
 
 1. **addEventListener** (Lit/Vanilla JS):
+
 ```javascript
-const alert = document.querySelector('ag-alert');
-alert.addEventListener('alert-dismiss', (e) => {
-  console.log('Alert dismissed, type:', e.detail.type);
-  // Remove the alert from the DOM
+const alert = document.querySelector("ag-alert");
+alert.addEventListener("alert-dismiss", (e) => {
+  console.log("Alert dismissed, type:", e.detail.type);
   alert.remove();
 });
 ```
 
 2. **Callback props** (Lit/Vanilla JS):
+
 ```javascript
-const alert = document.querySelector('ag-alert');
+const alert = document.querySelector("ag-alert");
 alert.onAlertDismiss = (e) => {
-  console.log('Alert dismissed, type:', e.detail.type);
+  console.log("Alert dismissed, type:", e.detail.type);
   alert.remove();
 };
 ```
 
 3. **Framework event handlers** (Vue/React):
+
 ```vue
-<!-- Vue -->
-<VueAlert
-  dismissible
-  @alert-dismiss="handleDismiss"
->
+<VueAlert dismissible @alert-dismiss="handleDismiss">
   Dismissible alert
 </VueAlert>
 ```
+
 ```tsx
-// React
-<ReactAlert
-  dismissible
-  onAlertDismiss={handleDismiss}
->
+<ReactAlert dismissible onAlertDismiss={handleDismiss}>
   Dismissible alert
 </ReactAlert>
 ```
@@ -546,7 +524,6 @@ Shadow Parts allow you to style internal elements of the alert from outside the 
 ### Customization Example
 
 ```css
-/* Customize the alert container */
 ag-alert::part(ag-alert) {
   background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
   color: white;

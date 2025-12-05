@@ -17,7 +17,6 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic accordion -->
     <VueAccordion>
       <VueAccordionItem>
         <VueAccordionHeader>Accordion Item 1</VueAccordionHeader>
@@ -39,7 +38,6 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
       </VueAccordionItem>
     </VueAccordion>
 
-    <!-- With chevron indicator and styling -->
     <VueAccordion>
       <VueAccordionItem use-chevron bordered>
         <VueAccordionHeader>Features</VueAccordionHeader>
@@ -59,7 +57,6 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
       </VueAccordionItem>
     </VueAccordion>
 
-    <!-- With X indicator -->
     <VueAccordion>
       <VueAccordionItem use-x @toggle="handleToggle">
         <VueAccordionHeader>X Indicator</VueAccordionHeader>
@@ -69,7 +66,6 @@ import AccordionExamples from '../examples/AccordionExamples.vue'
       </VueAccordionItem>
     </VueAccordion>
 
-    <!-- With plus/minus indicator -->
     <VueAccordion>
       <VueAccordionItem use-minus @toggle="handleToggle">
         <VueAccordionHeader>Plus/Minus Indicator</VueAccordionHeader>
@@ -123,7 +119,6 @@ export default function AccordionExample() {
 
   return (
     <section>
-      {/* Basic accordion */}
       <ReactAccordion>
         <AccordionItem>
           <ItemHeader>Accordion Item 1</ItemHeader>
@@ -145,7 +140,6 @@ export default function AccordionExample() {
         </AccordionItem>
       </ReactAccordion>
 
-      {/* With chevron indicator and styling */}
       <ReactAccordion>
         <AccordionItem useChevron bordered>
           <ItemHeader>Features</ItemHeader>
@@ -165,7 +159,6 @@ export default function AccordionExample() {
         </AccordionItem>
       </ReactAccordion>
 
-      {/* With X indicator */}
       <ReactAccordion>
         <AccordionItem useX onToggle={handleToggle}>
           <ItemHeader>X Indicator</ItemHeader>
@@ -175,7 +168,6 @@ export default function AccordionExample() {
         </AccordionItem>
       </ReactAccordion>
 
-      {/* With plus/minus indicator */}
       <ReactAccordion>
         <AccordionItem useMinus onToggle={handleToggle}>
           <ItemHeader>Plus/Minus Indicator</ItemHeader>
@@ -209,7 +201,6 @@ export default function AccordionExample() {
 </script>
 
 <section>
-  <!-- Basic accordion -->
   <ag-accordion>
     <ag-accordion-item>
       <span slot="header">Accordion Item 1</span>
@@ -231,7 +222,6 @@ export default function AccordionExample() {
     </ag-accordion-item>
   </ag-accordion>
 
-  <!-- With chevron indicator and styling -->
   <ag-accordion>
     <ag-accordion-item use-chevron bordered>
       <span slot="header">Features</span>
@@ -251,7 +241,6 @@ export default function AccordionExample() {
     </ag-accordion-item>
   </ag-accordion>
 
-  <!-- With X indicator -->
   <ag-accordion>
     <ag-accordion-item id="x-indicator-item" use-x>
       <span slot="header">X Indicator</span>
@@ -261,7 +250,6 @@ export default function AccordionExample() {
     </ag-accordion-item>
   </ag-accordion>
 
-  <!-- With plus/minus indicator -->
   <ag-accordion>
     <ag-accordion-item id="minus-indicator-item" use-minus>
       <span slot="header">Plus/Minus Indicator</span>
@@ -315,19 +303,16 @@ The AccordionItem component follows AgnosticUI v2 event conventions with **dual-
 
 ```vue
 <template>
-  <!-- Using @toggle emit -->
   <VueAccordionItem @toggle="handleToggle">
     <template #header>Toggle me</template>
     <template #content>Content here</template>
   </VueAccordionItem>
 
-  <!-- Using v-model:open for two-way binding -->
   <VueAccordionItem v-model:open="isOpen">
     <template #header>Controlled accordion</template>
     <template #content>Content here</template>
   </VueAccordionItem>
 
-  <!-- Both patterns together -->
   <VueAccordionItem v-model:open="isOpen" @toggle="handleToggle">
     <template #header>Both patterns</template>
     <template #content>Content here</template>
@@ -342,7 +327,6 @@ const isOpen = ref(false);
 
 const handleToggle = (detail) => {
   console.log("Toggle event:", detail);
-  // detail: { open: true/false }
 };
 </script>
 ```
@@ -364,7 +348,6 @@ export default function AccordionExample() {
 
   const handleToggle = (event) => {
     console.log("Toggle event:", event.detail);
-    // event.detail: { open: true/false }
     setIsOpen(event.detail.open);
   };
 
@@ -387,18 +370,13 @@ export default function AccordionExample() {
 
   const item = document.querySelector("#my-accordion");
 
-  // Pattern 1: Using addEventListener (standard Web Components)
   item.addEventListener("toggle", (event) => {
     console.log("Toggle event:", event.detail);
-    // event.detail: { open: true/false }
   });
 
-  // Pattern 2: Using callback prop
   item.onToggle = (event) => {
     console.log("Toggle event (callback):", event.detail);
   };
-
-  // Both patterns work simultaneously (dual-dispatch)
 </script>
 
 <ag-accordion-item id="my-accordion">
@@ -427,29 +405,25 @@ The Accordion exposes CSS Shadow Parts that allow you to customize internal elem
 ### Example Usage
 
 ```css
-/* Customize the header background */
 ag-accordion-item::part(ag-accordion-header-wrapper) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 8px;
   padding: 4px;
 }
 
-/* Style the button */
 ag-accordion-item::part(ag-accordion-header) {
   color: white;
   padding: 16px 20px;
 }
 
-/* Customize the content area */
 ag-accordion-item::part(ag-accordion-content) {
   background: #f9fafb;
   padding: 20px;
   border: 2px solid #e5e7eb;
 }
 
-/* Style the indicator */
 ag-accordion-item::part(ag-accordion-indicator) {
-  color: var(--ag-primary);
+  color: #12623e;
 }
 ```
 
