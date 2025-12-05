@@ -31,16 +31,33 @@
   --vp-c-brand-3: var(--ag-primary);
   --vp-code-color: var(--ag-primary-text);
   --vp-code-link-color: var(--ag-primary-text);
-}
-
-.vp-doc h4 {
-  margin-bottom: var(--ag-space-1);
+  --vp-code-lang-color: var(--ag-primary-text);
+  --vp-code-block-color: var(--ag-primary-text);
+  --vp-code-block-bg: var(--ag-background-primary);
 }
 
 /* Logo */
 .title span {
   color: var(--ag-primary);
 }
+
+/* In Dark Mode Vitepress we need to contrast --ag-primary more */
+html[data-theme=dark] {
+  --vp-c-brand-1: #ccdfff;
+  --vp-c-brand-2: #81a7e4;
+  --vp-c-brand-3: #81a7e4;
+  --vp-c-text-2: #81a7e4;
+}
+
+/* Logo */
+.title span {
+  color: var(--vp-c-brand-1);
+}
+
+.vp-doc h4 {
+  margin-bottom: var(--ag-space-1);
+}
+
 
 /* .vitepress/theme/custom.css */
 .flex {
@@ -235,50 +252,6 @@ h6.b0 {
   }
 }
 
-/* Table demo */
-/* Scoped table styling for AgnosticUI tables in VitePress docs */
-
-/*
-.vp-doc .ag-table {
-  all: unset; 
-  display: table;
-  width: 100%;
-  border-collapse: collapse;
-  font-family: inherit;
-  font-size: var(--ag-font-size-base);
-  color: var(--ag-text-primary);
-  background-color: var(--ag-background-primary);
-}
-
-.vp-doc .ag-table th,
-.vp-doc .ag-table td {
-  all: unset;
-  display: table-cell;
-  padding: var(--ag-space-3) var(--ag-space-4);
-  border-bottom: var(--ag-border-width-1) solid var(--ag-border-subtle);
-  line-height: var(--ag-line-height-base);
-  text-align: left;
-}
-
-.vp-doc .ag-table th {
-  font-weight: 600;
-  background-color: var(--ag-background-secondary);
-  color: var(--ag-text-primary);
-}
-
-.vp-doc .ag-table tr:nth-child(even) td {
-  background-color: var(--ag-background-primary);
-}
-
-.vp-doc .ag-table tr:hover td {
-  background-color: var(--ag-blue-50);
-}
-
-.vp-doc .ag-header-examples li + li {
-  margin-top: unset;
-}
-  */
-
 /* Reset VitePress's aggressive table styling */
 .vp-doc table {
   display: table !important; /* VitePress uses display: block */
@@ -308,12 +281,14 @@ h6.b0 {
   background-color: transparent;
 }
 
-.vp-doc th {
-  background-color: transparent; /* Remove VitePress header background */
+/* Lighthouse gave us contrast issues across the board. Removing the code
+block backgrounds supplied more contrast. Here we add a subtle border to
+make it a bit more aesthetically pleasing. */
+.vp-doc div[class*='language-'], .vp-block {
+  border: 1px solid var(--ag-border);
 }
-
-/* Dark mode support for inline code in component examples */
-.vp-doc code {
-  background-color: var(--ag-background-secondary);
-  color: var(--ag-text-primary);
+@media (min-width: 640px) {
+    .vp-doc div[class*='language-'], .vp-block {
+      border: 1px solid var(--ag-border);
+    }
 }
