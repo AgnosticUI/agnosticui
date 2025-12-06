@@ -457,7 +457,7 @@ describe('AccordionItem - Accessibility Compliance', () => {
 
     beforeEach(async () => {
       // Import AccordionGroup class
-      const { AccordionGroup } = await import('../../AccordionGroup/AccordionGroup');
+      const { AccordionGroup } = await import('./AccordionGroup');
       
       // Create accordion group
       group = new AccordionGroup();

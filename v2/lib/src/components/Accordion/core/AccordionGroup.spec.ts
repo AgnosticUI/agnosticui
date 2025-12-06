@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { AccordionGroup } from './AccordionGroup';
-import { AccordionItem } from '../Accordion/core/_Accordion';
+import { AccordionItem } from './_Accordion';
 
 describe('AccordionGroup', () => {
   let iframe: HTMLIFrameElement;

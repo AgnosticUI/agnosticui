@@ -113,3 +113,33 @@ export function normalizeComponentName(name: string): string {
   // Capitalize first letter
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
+
+/**
+ * Scan a file for shared component dependencies
+ * Looks for imports like: import ../../shared/CloseButton/...
+ */
+export async function scanForSharedDependencies(filePath: string): Promise<string[]> {
+  const { readFile } = await import('node:fs/promises');
+  
+  try {
+    const content = await readFile(filePath, 'utf-8');
+    const sharedRegex = /import\s+['"](?:\.\.\/)+shared\/([^/]+)/g;
+    const matches = [...content.matchAll(sharedRegex)];
+    return matches.map(match => match[1]);
+  } catch (error) {
+    return [];
+  }
+}
+
+/**
+ * Get the source paths for a shared component
+ */
+export function getSharedComponentSourcePaths(
+  referencePath: string,
+  componentName: string
+): { path: string } {
+  // Shared components are in lib/src/components/shared/<Name>
+  return {
+    path: path.join(referencePath, 'lib/src/components/shared', componentName),
+  };
+}

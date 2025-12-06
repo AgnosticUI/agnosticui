@@ -3,15 +3,18 @@
  */
 import * as p from '@clack/prompts';
 import path from 'node:path';
+import { stat, readdir, readFile, writeFile } from 'node:fs/promises';
 import type { AddOptions, Framework } from '../types/index.js';
 import { logger } from '../utils/logger.js';
 import { loadConfig, saveConfig, addComponentToConfig, hasComponent } from '../utils/config.js';
-import { copyDirectory, ensureDir, pathExists } from '../utils/files.js';
+import { ensureDir, pathExists } from '../utils/files.js';
 import {
   getAvailableComponents,
   componentExists,
   getComponentSourcePaths,
   normalizeComponentName,
+  scanForSharedDependencies,
+  getSharedComponentSourcePaths,
 } from '../utils/components.js';
 import pc from 'picocolors';
 
@@ -83,6 +86,14 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         config.framework
       );
 
+      // Process shared dependencies
+      const sharedFiles = await processSharedDependencies(
+        files,
+        referencePath,
+        componentsPath
+      );
+      files.push(...sharedFiles);
+
       results.push({ name: componentName, success: true, files });
       spinner.message(`Added ${componentName}`);
     } catch (error) {
@@ -124,11 +135,18 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
           process.cwd(),
           path.join(componentsPath, result.name)
         );
-        const componentExportName = getComponentExportName(result.name, config.framework);
+        let importStatement = '';
+        if (config.framework === 'lit') {
+          // Lit uses side-effect import to register custom element
+          importStatement = `import './${importPath}/core/${result.name}'`;
+        } else {
+          const componentExportName = getComponentExportName(result.name, config.framework);
+          importStatement = `import { ${componentExportName} } from './${importPath}'`;
+        }
 
         logger.box(`${result.name}:`, [
           pc.dim('Import in your app:'),
-          '  ' + logger.command(`import { ${componentExportName} } from './${importPath}'`),
+          '  ' + logger.command(importStatement),
           '',
           pc.dim('Files created:'),
           ...result.files.map(f => '  ' + pc.dim(f)),
@@ -169,7 +187,7 @@ async function addComponent(
   // Copy core directory (always needed)
   if (pathExists(sourcePaths.core)) {
     const destCore = path.join(destPath, 'core');
-    await copyDirectory(sourcePaths.core, destCore);
+    await copyAndTransform(sourcePaths.core, destCore);
 
     // Track files (relative to project root)
     copiedFiles.push(path.join(destPath, 'core'));
@@ -178,12 +196,15 @@ async function addComponent(
   // Copy framework-specific directory
   if (pathExists(sourcePaths.framework)) {
     const destFramework = path.join(destPath, framework);
-    await copyDirectory(sourcePaths.framework, destFramework);
+    await copyAndTransform(sourcePaths.framework, destFramework);
 
     // Track files (relative to project root)
     copiedFiles.push(path.join(destPath, framework));
   } else {
-    throw new Error(`${framework} implementation not found for ${componentName}`);
+    // For Lit, we use the core component directly, so it's okay if a specific 'lit' folder doesn't exist
+    if (framework !== 'lit') {
+      throw new Error(`${framework} implementation not found for ${componentName}`);
+    }
   }
 
   return copiedFiles;
@@ -199,5 +220,123 @@ function getComponentExportName(componentName: string, framework: Framework): st
     return `Vue${componentName}`;
   } else {
     return componentName;
+  }
+}
+
+/**
+ * Process shared dependencies for a list of files
+ */
+async function processSharedDependencies(
+  files: string[],
+  referencePath: string,
+  componentsPath: string,
+  processed: Set<string> = new Set()
+): Promise<string[]> {
+  const newFiles: string[] = [];
+  
+  for (const fileOrDir of files) {
+    const absPath = path.resolve(process.cwd(), fileOrDir);
+    let filesToScan: string[] = [];
+
+    try {
+      const stats = await stat(absPath);
+      if (stats.isDirectory()) {
+        const children = await readdir(absPath);
+        filesToScan = children
+          .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
+          .map(f => path.join(absPath, f));
+      } else {
+        if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
+          filesToScan = [absPath];
+        }
+      }
+    } catch {
+      continue;
+    }
+
+    for (const file of filesToScan) {
+      const deps = await scanForSharedDependencies(file);
+
+      for (const dep of deps) {
+        if (processed.has(dep)) continue;
+        processed.add(dep);
+
+        try {
+          // Add this shared component
+          const sharedFiles = await addSharedComponent(dep, referencePath, componentsPath);
+          newFiles.push(...sharedFiles);
+
+          // Recursively process its deps
+          const recursiveFiles = await processSharedDependencies(
+            sharedFiles, 
+            referencePath, 
+            componentsPath, 
+            processed
+          );
+          newFiles.push(...recursiveFiles);
+        } catch (error) {
+          logger.warn(`Failed to add shared dependency "${dep}": ${error instanceof Error ? error.message : 'Unknown error'}`);
+        }
+      }
+    }
+  }
+  return newFiles;
+}
+
+/**
+ * Add a shared component
+ */
+async function addSharedComponent(
+  componentName: string,
+  referencePath: string,
+  componentsPath: string
+): Promise<string[]> {
+  const sourcePaths = getSharedComponentSourcePaths(referencePath, componentName);
+  const destPath = path.join(componentsPath, 'shared', componentName); // src/components/ag/shared/Name
+  
+  await ensureDir(destPath);
+  
+  if (pathExists(sourcePaths.path)) {
+    await copyAndTransform(sourcePaths.path, destPath);
+    return [path.join(destPath)]; 
+  } else {
+    throw new Error(`Shared component "${componentName}" not found at ${sourcePaths.path}`);
+  }
+}
+
+/**
+ * Copy directory and transform extension from .js to empty in imports
+ */
+async function copyAndTransform(src: string, dest: string): Promise<void> {
+  await ensureDir(dest);
+
+  const entries = await readdir(src, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+
+    if (entry.isDirectory()) {
+      await copyAndTransform(srcPath, destPath);
+    } else {
+      // If it is a code file, we transform content
+      if (/\.(ts|tsx|js|jsx|vue|svelte)$/.test(entry.name)) {
+        let content = await readFile(srcPath, 'utf-8');
+        
+        // Transform imports: strip .js extension from relative imports
+        // 1. import ... from './something.js' -> import ... from './something'
+        // 2. export ... from './something.js' -> export ... from './something'
+        // 3. import './something.js' -> import './something'
+        
+        content = content.replace(/(from\s+['"]\..+?)\.js(['"])/g, '$1$2');
+        content = content.replace(/(import\s+['"]\..+?)\.js(['"])/g, '$1$2');
+
+        await writeFile(destPath, content, 'utf-8');
+      } else {
+        // Just copy binary or other files
+        const { copyFile } = await import('node:fs/promises');
+        await copyFile(srcPath, destPath);
+      }
+    }
   }
 }
