@@ -132,6 +132,24 @@ export async function scanForSharedDependencies(filePath: string): Promise<strin
 }
 
 /**
+ * Scan a file for utility dependencies
+ * Looks for imports like: import ... from '../../utils/slot'
+ */
+export async function scanForUtilsDependencies(filePath: string): Promise<string[]> {
+  const { readFile } = await import('node:fs/promises');
+  
+  try {
+    const content = await readFile(filePath, 'utf-8');
+    // Match ../utils/filename or ../../utils/filename
+    const utilsRegex = /import\s+.*?from\s+['"](?:\.\.\/)+utils\/([^/'"]+)['"]/g;
+    const matches = [...content.matchAll(utilsRegex)];
+    return matches.map(match => match[1]); // returns filename like 'slot'
+  } catch (error) {
+    return [];
+  }
+}
+
+/**
  * Get the source paths for a shared component
  */
 export function getSharedComponentSourcePaths(
@@ -142,4 +160,16 @@ export function getSharedComponentSourcePaths(
   return {
     path: path.join(referencePath, 'lib/src/components/shared', componentName),
   };
+}
+
+/**
+ * Get the source path for a utility
+ */
+export function getUtilSourcePath(
+  referencePath: string,
+  utilName: string
+): string {
+  // Utils are in lib/src/utils/<Name>.ts or similar
+  // We assume imports like 'utils/slot' map to 'lib/src/utils/slot.ts'
+  return path.join(referencePath, 'lib/src/utils', `${utilName}.ts`);
 }
