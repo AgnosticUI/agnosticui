@@ -99,10 +99,10 @@ These files serve as the canonical reference for the desired outcome.
 | ✅ | timeline.md | Batch 5 |
 | ✅ | toast.md | Batch 5 |
 | ✅ | toggle.md | Batch 5 |
-| ⬜ | tooltip.md | Batch 6 |
-| ⬜ | visually-hidden.md | Batch 6 |
+| ✅ | tooltip.md | Batch 6 |
+| ✅ | visually-hidden.md | Batch 6 |
 
-**Progress**: 52 of 54 files completed (96.3%)
+**Progress**: 54 of 54 files completed (100%) ✅
 
 ### Batch Status Summary
 
@@ -111,7 +111,7 @@ These files serve as the canonical reference for the desired outcome.
 - **Batch 3**: 10/10 completed ✅
 - **Batch 4**: 10/10 completed ✅
 - **Batch 5**: 10/10 completed ✅
-- **Batch 6**: 0/2 completed
+- **Batch 6**: 2/2 completed ✅
 
 ## Required Transformations
 
