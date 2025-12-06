@@ -33,7 +33,7 @@ export interface FlexContainerProps {
 export class FlexContainer extends LitElement implements FlexContainerProps {
   static styles = css`
     :host {
-      display: contents;
+      display: var(--host-display, contents);
     }
 
     .flex-container {
