@@ -297,20 +297,19 @@
     <!-- Responsive Layouts -->
     <div class="mbe4">
       <h3>Responsive Layouts</h3>
-      <p class="mbs2">Stack on mobile (≤640px), row on desktop (≥769px). <strong>Resize your browser to see the effect!</strong></p>
+      <p class="mbs2">Example using <code>.responsive-direction</code> CSS class to control <code>--flex-direction</code> via media queries. <strong>Resize your browser to see the effect!</strong></p>
     </div>
     <div class="mbe4">
       <ag-flex-row class="responsive-direction">
-        <div class="demo-box">Item 1 (class test)</div>
-        <div class="demo-box">Item 2 (class test)</div>
-        <div class="demo-box">Item 3 (class test)</div>
+        <div class="demo-box">Item 1</div>
+        <div class="demo-box">Item 2</div>
+        <div class="demo-box">Item 3</div>
       </ag-flex-row>
     </div>
 
-    <!-- Responsive Gap -->
     <div class="mbe4">
       <h3>Responsive Gap</h3>
-      <p class="mbs2">Different gap sizes per breakpoint: 0.5rem (mobile), 1rem (tablet), 2rem (desktop).</p>
+      <p class="mbs2">Example using <code>.responsive-gap</code> CSS class to control <code>--flex-gap</code> at different viewport widths.</p>
     </div>
     <div class="mbe4">
       <ag-flex-row class="responsive-gap">
@@ -320,10 +319,9 @@
       </ag-flex-row>
     </div>
 
-    <!-- Responsive Justify -->
     <div class="mbe4">
       <h3>Responsive Justify</h3>
-      <p class="mbs2">Center on mobile, space-between on desktop.</p>
+      <p class="mbs2">Example using <code>.responsive-justify</code> CSS class to control <code>--flex-justify</code> via media queries.</p>
     </div>
     <div class="mbe4">
       <ag-flex-row class="responsive-justify">
@@ -333,10 +331,9 @@
       </ag-flex-row>
     </div>
 
-    <!-- Responsive Card Grid -->
     <div class="mbe4">
       <h3>Responsive Card Grid</h3>
-      <p class="mbs2">Real-world example: column on mobile, wrapped row on desktop.</p>
+      <p class="mbs2">Example using <code>.responsive-cards</code> CSS class to create a responsive card grid with consumer-defined breakpoints.</p>
     </div>
     <div class="mbe4">
       <ag-flex-row class="responsive-cards">
