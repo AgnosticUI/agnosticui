@@ -1,0 +1,19 @@
+{
+  "name": "lit-test",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lit": "^3.3.1"
+  },
+  "devDependencies": {
+    "@agnosticui/cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.1.tgz",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4"
+  }
+}

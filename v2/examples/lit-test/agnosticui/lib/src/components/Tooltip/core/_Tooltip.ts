@@ -1,0 +1,385 @@
+/**
+ * AgnosticUI v2 Tooltip - Canonical Implementation
+ *
+ * ⚠️  IMMUTABLE CANONICAL VERSION ⚠️
+ *
+ * This file contains the canonical, upgrade-safe implementation of the Tooltip component.
+ * It is based on the WAI-ARIA Authoring Practices Guide (APG) for tooltips.
+ * https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/
+ */
+
+import { LitElement, html, css } from 'lit';
+import { property, query, state } from 'lit/decorators.js';
+import { computePosition, autoUpdate, flip, shift, offset, arrow, type Placement } from '@floating-ui/dom';
+
+/**
+ * Event detail for show event
+ */
+export interface TooltipShowEventDetail {
+  visible: boolean;
+}
+
+/**
+ * Event detail for hide event
+ */
+export interface TooltipHideEventDetail {
+  visible: boolean;
+}
+
+/**
+ * Custom event dispatched when the tooltip is shown
+ */
+export type TooltipShowEvent = CustomEvent<TooltipShowEventDetail>;
+
+/**
+ * Custom event dispatched when the tooltip is hidden
+ */
+export type TooltipHideEvent = CustomEvent<TooltipHideEventDetail>;
+
+/**
+ * Props interface for Tooltip component including event handlers
+ *
+ * This interface defines the complete public API of the Tooltip component.
+ * The component class implements this interface to enforce type safety between
+ * the interface contract and the actual implementation.
+ *
+ * Event handlers (onShow, onHide) are included directly in the base Props interface,
+ * making it simpler for consumers - there's just one interface to import and use.
+ *
+ * @fires {TooltipShowEvent} show - Fired when the tooltip becomes visible
+ * @fires {TooltipHideEvent} hide - Fired when the tooltip becomes hidden
+ *
+ * @csspart ag-tooltip - The main tooltip container element that displays the content
+ * @csspart ag-tooltip-arrow - The arrow element that points to the trigger element
+ */
+export interface TooltipProps {
+  content?: string;
+  placement?: Placement;
+  distance?: number;
+  skidding?: number;
+  trigger?: string;
+  disabled?: boolean;
+  onShow?: (event: TooltipShowEvent) => void;
+  onHide?: (event: TooltipHideEvent) => void;
+}
+
+export class Tooltip extends LitElement implements TooltipProps {
+  static styles = css`
+    :host {
+      display: inline-block;
+    }
+
+    #tooltip {
+      display: none;
+      position: absolute;
+      z-index: var(--ag-z-index-modal);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity var(--ag-motion-fast) ease-in-out;
+      background: var(--ag-neutral-900);
+      color: var(--ag-white);
+      padding: var(--ag-space-2) var(--ag-space-3);
+      border-radius: var(--ag-radius-md);
+      font-size: var(--ag-font-size-sm);
+      max-width: 300px;
+    }
+
+    #tooltip[data-show] {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #arrow {
+      position: absolute;
+      background: inherit;
+      width: var(--ag-space-2);
+      height: var(--ag-space-2);
+      transform: rotate(45deg);
+    }
+  `;
+
+  @property({ type: String })
+  declare content: string;
+
+  @property({ type: String, reflect: true })
+  declare placement: Placement;
+
+  @property({ type: Number })
+  declare distance: number;
+
+  @property({ type: Number })
+  declare skidding: number;
+
+  @property({ type: String })
+  declare trigger: string;
+
+  @property({ type: Boolean, reflect: true })
+  declare disabled: boolean;
+
+  @property({ attribute: false })
+  declare onShow?: (event: TooltipShowEvent) => void;
+
+  @property({ attribute: false })
+  declare onHide?: (event: TooltipHideEvent) => void;
+
+  @state()
+  private declare _open: boolean;
+
+  @query('#tooltip')
+  tooltipElement: HTMLElement | undefined;
+
+  @query('#arrow')
+  arrowElement: HTMLElement | undefined;
+
+  private _cleanup: (() => void) | undefined;
+  private _hideTimeout: number | undefined;
+
+  constructor() {
+    super();
+    this.content = '';
+    this.placement = 'top';
+    this.distance = 8;
+    this.skidding = 0;
+    this.trigger = 'hover focus';
+    this.disabled = false;
+    this._open = false;
+  }
+
+  firstUpdated() {
+    this._setupEventListeners();
+    this._setupARIA();
+  }
+
+  private _setupEventListeners() {
+    const triggerElement = this.firstElementChild as HTMLElement;
+    if (!triggerElement) return;
+
+    if (this.trigger.includes('hover')) {
+      this.addEventListener('mouseenter', this._handleMouseEnter);
+      this.addEventListener('mouseleave', this._handleMouseLeave);
+    }
+    if (this.trigger.includes('focus')) {
+      triggerElement.addEventListener('focus', this._handleFocus);
+      triggerElement.addEventListener('blur', this._handleBlur);
+    }
+    if (this.trigger.includes('click')) {
+      triggerElement.addEventListener('click', this._handleClick);
+    }
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this._cleanup?.();
+    this._removeEventListeners();
+    document.removeEventListener('keydown', this._handleDocumentKeyDown);
+  }
+
+  private _setupARIA() {
+    // No aria-describedby on trigger as it can't reference an ID in the Shadow DOM
+    // The tooltip's role="tooltip" and content itself provide accessibility.
+  }
+
+  private _removeEventListeners() {
+    const triggerElement = this.firstElementChild as HTMLElement;
+    if (triggerElement) {
+      this.removeEventListener('mouseenter', this._handleMouseEnter);
+      this.removeEventListener('mouseleave', this._handleMouseLeave);
+      triggerElement.removeEventListener('focus', this._handleFocus);
+      triggerElement.removeEventListener('blur', this._handleBlur);
+      triggerElement.removeEventListener('click', this._handleClick);
+    }
+  }
+
+  private _handleMouseEnter = () => {
+    if (!this.disabled) {
+      clearTimeout(this._hideTimeout);
+      this.show();
+    }
+  };
+
+  private _handleMouseLeave = () => {
+    if (!this.disabled) {
+      this._hideTimeout = window.setTimeout(() => {
+        this.hide();
+      }, 100);
+    }
+  };
+
+  private _handleFocus = () => {
+    if (!this.disabled) {
+      this.show();
+    }
+  };
+
+  private _handleBlur = () => {
+    if (!this.disabled) {
+      this.hide();
+    }
+  };
+
+  private _handleClick = () => {
+    if (!this.disabled) {
+      if (this._open) {
+        this.hide();
+      } else {
+        this.show();
+      }
+    }
+  };
+
+  private _handleDocumentKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' && this._open) {
+      this.hide();
+    }
+  };
+
+  updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+
+    if (changedProperties.has('_open')) {
+      if (this._open) {
+        document.addEventListener('keydown', this._handleDocumentKeyDown);
+        this.updateComplete.then(() => {
+          this._startPositioning();
+        });
+
+        // Dual-dispatch pattern for custom event
+        const showEvent = new CustomEvent<TooltipShowEventDetail>('show', {
+          detail: { visible: true },
+          bubbles: true,
+          composed: true
+        });
+        this.dispatchEvent(showEvent);
+
+        // Invoke callback if provided
+        if (this.onShow) {
+          this.onShow(showEvent);
+        }
+      } else {
+        this._stopPositioning();
+        document.removeEventListener('keydown', this._handleDocumentKeyDown);
+
+        // Dual-dispatch pattern for custom event
+        const hideEvent = new CustomEvent<TooltipHideEventDetail>('hide', {
+          detail: { visible: false },
+          bubbles: true,
+          composed: true
+        });
+        this.dispatchEvent(hideEvent);
+
+        // Invoke callback if provided
+        if (this.onHide) {
+          this.onHide(hideEvent);
+        }
+      }
+    }
+  }
+
+  private _startPositioning() {
+    const tooltipElement = this.shadowRoot?.querySelector('#tooltip') as HTMLElement;
+    const arrowElement = this.shadowRoot?.querySelector('#arrow') as HTMLElement;
+
+    if (!tooltipElement || !arrowElement) return;
+
+    const triggerElement = this.firstElementChild as HTMLElement;
+    if (!triggerElement) return;
+
+    this._updatePosition();
+
+    this._cleanup = autoUpdate(triggerElement, tooltipElement, () => {
+      this._updatePosition();
+    });
+  }
+
+  private _stopPositioning() {
+    this._cleanup?.();
+    this._cleanup = undefined;
+  }
+
+  private async _updatePosition() {
+    const tooltipElement = this.shadowRoot?.querySelector('#tooltip') as HTMLElement;
+    const arrowElement = this.shadowRoot?.querySelector('#arrow') as HTMLElement;
+
+    if (!tooltipElement || !arrowElement) return;
+
+    const triggerElement = this.firstElementChild as HTMLElement;
+    if (!triggerElement) return;
+
+    const { x, y, placement, middlewareData } = await computePosition(
+      triggerElement,
+      tooltipElement,
+      {
+        placement: this.placement,
+        middleware: [
+          offset({ mainAxis: this.distance, crossAxis: this.skidding }),
+          flip(),
+          shift({ padding: 8 }),
+          arrow({ element: arrowElement }),
+        ],
+      }
+    );
+
+    Object.assign(tooltipElement.style, {
+      left: `${x}px`,
+      top: `${y}px`,
+    });
+
+    const { x: arrowX, y: arrowY } = middlewareData.arrow ?? {};
+    const staticSide = {
+      top: 'bottom',
+      right: 'left',
+      bottom: 'top',
+      left: 'right'
+    }[placement.split('-')[0]];
+
+    // Calculate arrow offset based on arrow size
+    // The arrow is 8px (var(--ag-space-2)), so offset by half
+    const arrowSize = 8;
+    const arrowOffset = `-${arrowSize / 2}px`;
+
+    Object.assign(arrowElement.style, {
+      left: arrowX != null ? `${arrowX}px` : '',
+      top: arrowY != null ? `${arrowY}px` : '',
+      right: '',
+      bottom: '',
+      [staticSide as string]: arrowOffset,
+    });
+  }
+
+  show = () => {
+    if (this._open || this.disabled) return;
+    this._open = true;
+  }
+
+  hide = () => {
+    if (!this._open) return;
+    this._open = false;
+  }
+
+  toggle = () => {
+    this._open ? this.hide() : this.show();
+  }
+
+  render() {
+    return html`
+      <slot></slot>
+      <div
+        id="tooltip"
+        part="ag-tooltip"
+        role="tooltip"
+        class="tooltip"
+        ?data-show=${this._open}
+        @mouseenter="${() => clearTimeout(this._hideTimeout)}"
+        @mouseleave="${this.hide}"
+      >
+        <slot name="content">${this.content}</slot>
+        <div id="arrow" part="ag-tooltip-arrow"></div>
+      </div>
+    `;
+  }
+}
+
+if (!customElements.get('ag-tooltip')) {
+  customElements.define('ag-tooltip', Tooltip);
+}

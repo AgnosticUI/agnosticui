@@ -1,0 +1,434 @@
+/**
+ * AgnosticUI v2 Accordion - Canonical Implementation
+ * 
+ * ⚠️  IMMUTABLE CANONICAL VERSION ⚠️
+ * 
+ * This file contains the canonical, upgrade-safe implementation of the Accordion component.
+ * It should NEVER be modified directly by users or AI assistants.
+ * 
+ * Version: 2.0.0-stable
+ * Last Updated: 2025-09-08
+ * API Compatibility: 2.x
+ * 
+ * Stability Guarantees:
+ * - All public APIs remain backward compatible within major versions
+ * - All ARIA attributes and accessibility features are preserved
+ * - All CSS functional styling remains consistent
+ * - Component behavior is identical across patch and minor updates
+ * 
+ * For customization, use:
+ * - Accordion.ts: Experimental/AI-modifiable version
+ * - styled/: Pre-styled component variants
+ * - extensions/: AI-safe behavioral extensions
+ * - Design tokens: Override --ag-* CSS custom properties
+ */
+
+import { LitElement, html, css } from 'lit';
+
+import { generateUniqueId } from '../../../utils/unique-id';
+
+// Event types
+export interface AccordionItemToggleEventDetail {
+  open: boolean;
+}
+export type AccordionItemToggleEvent = CustomEvent<AccordionItemToggleEventDetail>;
+
+// Props interface following INTERFACE_STANDARDS.md
+export interface AccordionProps {
+  // Container has no props, just children
+}
+
+export interface AccordionItemProps {
+  open?: boolean;
+  headingLevel?: number;
+  disabled?: boolean;
+  bordered?: boolean;
+  background?: boolean;
+  // Indicator variants (mutually exclusive, priority: noIndicator > useX > useMinus > useChevron)
+  useChevron?: boolean;
+  useX?: boolean;
+  useMinus?: boolean;
+  noIndicator?: boolean;
+  // Event handlers
+  onToggle?: (event: AccordionItemToggleEvent) => void;
+}
+
+export class Accordion extends LitElement implements AccordionProps {
+  static styles = [css`
+    :host {
+      display: block;
+    }
+    /* Progressive enhancement: Hide only after web component is defined */
+    :host(:not(:defined)) {
+      visibility: visible; /* Content visible without JS */
+    }
+    :host(:defined) {
+      visibility: visible; /* Explicit visibility once defined */
+    }
+  `];
+
+  render() {
+    return html`
+      <slot></slot>
+    `;
+  }
+}
+
+export class AccordionItem extends LitElement implements AccordionItemProps {
+  static properties = {
+    open: { type: Boolean, reflect: true },
+    headingLevel: { type: Number, reflect: true, attribute: 'heading-level' },
+    disabled: { type: Boolean, reflect: true },
+    bordered: { type: Boolean, reflect: true },
+    background: { type: Boolean, reflect: true },
+    useChevron: { type: Boolean, reflect: true, attribute: 'use-chevron' },
+    useX: { type: Boolean, reflect: true, attribute: 'use-x' },
+    useMinus: { type: Boolean, reflect: true, attribute: 'use-minus' },
+    noIndicator: { type: Boolean, reflect: true, attribute: 'no-indicator' },
+    onToggle: { attribute: false }
+  };
+
+  declare open: boolean;
+  declare headingLevel: number;
+  declare disabled: boolean;
+  declare bordered: boolean;
+  declare background: boolean;
+  declare useChevron: boolean;
+  declare useX: boolean;
+  declare useMinus: boolean;
+  declare noIndicator: boolean;
+  declare onToggle?: (event: AccordionItemToggleEvent) => void;
+  private _id = generateUniqueId('accordion-item');
+
+  constructor() {
+    super();
+    this.open = false;
+    this.headingLevel = 3; // Default to h3
+    this.disabled = false;
+    this.bordered = false;
+    this.background = false;
+    this.useChevron = true; // Default indicator
+    this.useX = false;
+    this.useMinus = false;
+    this.noIndicator = false;
+
+    // Add keyboard event listener
+    this.addEventListener('keydown', this._handleKeydown.bind(this));
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // Mark as JavaScript-enhanced for progressive enhancement CSS
+    // This prevents FOUC by only applying hide/show logic after JS loads
+    this.setAttribute('data-enhanced', '');
+  }
+
+  static styles = [css`
+    :host {
+      display: block;
+    }
+    .header {
+      cursor: pointer;
+    }
+    :host([disabled]) .header {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    :host([background]) .header {
+      background-color: var(--ag-background-secondary);
+      color: var(--ag-text-primary);
+    }
+    .heading {
+      margin: 0;
+      padding: 0;
+    }
+
+    :host([background]) .heading {
+      margin-inline: var(--ag-space-3);
+    }
+      
+    :host([bordered]) .header button {
+      border-bottom: 1px solid var(--ag-border);
+    }
+
+    .header button {
+      background: none;
+      border: none;
+      padding-block: var(--ag-space-4);
+      margin-block-end: var(--ag-space-2);
+      font: inherit;
+      /* Ensure button inherits color as we've seen in dark mode issues with useragent keeping it color: buttontext black */
+      color: inherit;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header button:focus-visible {
+      /* Softer focus ring using alpha channel */
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+      outline-offset: var(--ag-focus-offset);
+      transition: outline var(--ag-motion-medium) ease;
+    }
+    :host([disabled]) .header button {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Indicator wrapper - visible by default unless noIndicator is set */
+    .indicator {
+      display: block;
+      flex-shrink: 0;
+      transition: transform var(--ag-motion-slow) ease;
+    }
+    :host([no-indicator]) .indicator {
+      display: none;
+    }
+
+    /* Chevron indicator (default): starts pointing down, rotates 180deg to point up when open */
+    :host([use-chevron][open]) .indicator {
+      transform: rotate(180deg);
+    }
+
+    /* X indicator: starts rotated 180deg (upside-down plus), rotates to 45deg (X) when open */
+    :host([use-x]) .indicator {
+      transform: rotate(180deg);
+    }
+    :host([use-x][open]) .indicator {
+      transform: rotate(45deg);
+    }
+
+    /* Minus indicator: Plus swaps to minus icon when open - no rotation needed */
+    :host([use-minus]) .indicator {
+      /* No rotation - the icon swap from plus to minus provides the visual feedback */
+      transform: none;
+    }
+
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .header button:focus-visible,
+      .indicator {
+        transition: none;
+      }
+    }
+
+    /* Progressive enhancement: Content visible until JS enhanced */
+    .content {
+      display: block;
+    }
+    /* After JS enhancement, respect open/closed state */
+    :host([data-enhanced]) .content {
+      display: none;
+    }
+    :host([data-enhanced][open]) .content {
+      display: block;
+      margin-block-end: var(--ag-space-2);
+    }
+    /* Ensure hidden attribute works in all environments */
+    .content[hidden] {
+      display: none !important;
+    }
+  `];
+
+  render() {
+    return html`
+      <div class="header" part="ag-accordion-header-wrapper" @click="${this.toggle}">
+        ${this._renderHeading()}
+      </div>
+      <div
+        class="content"
+        part="ag-accordion-content"
+        role="region"
+        aria-labelledby="${this._id}-button"
+        id="${this._id}-panel"
+        ?hidden="${this.hasAttribute('data-enhanced') && !this.open}"
+      >
+        <slot name="content"></slot>
+      </div>
+    `;
+  }
+
+  private _renderChevronIndicator() {
+    return html`
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m6 9 6 6 6-6"></path>
+      </svg>
+    `;
+  }
+
+  private _renderPlusIndicator() {
+    return html`
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 5v14"></path>
+        <path d="M5 12h14"></path>
+      </svg>
+    `;
+  }
+
+  private _renderMinusIndicator() {
+    return html`
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M5 12h14"></path>
+      </svg>
+    `;
+  }
+
+  private _renderIndicator() {
+    // Priority: noIndicator > useX > useMinus > useChevron (default)
+    if (this.noIndicator) {
+      return null;
+    }
+
+    if (this.useX) {
+      return this._renderPlusIndicator();
+    }
+
+    if (this.useMinus) {
+      // Render plus when closed, minus when open
+      return this.open ? this._renderMinusIndicator() : this._renderPlusIndicator();
+    }
+
+    // Default: chevron
+    return this._renderChevronIndicator();
+  }
+
+  private _renderHeading() {
+    const headingContent = html`
+      <button
+        part="ag-accordion-header"
+        aria-expanded="${this.open}"
+        aria-controls="${this._id}-panel"
+        id="${this._id}-button"
+        ?disabled="${this.disabled}"
+        aria-disabled="${this.disabled}"
+        @keydown="${this._handleKeydown}"
+      >
+        <slot name="header"></slot>
+        <span class="indicator" part="ag-accordion-indicator">
+          <slot name="indicator">
+            ${this._renderIndicator()}
+          </slot>
+        </span>
+      </button>
+    `;
+
+    const level = Math.max(1, Math.min(6, this.headingLevel || 3));
+
+    switch (level) {
+      case 1:
+        return html`<h1 class="heading" part="ag-accordion-heading">${headingContent}</h1>`;
+      case 2:
+        return html`<h2 class="heading" part="ag-accordion-heading">${headingContent}</h2>`;
+      case 3:
+        return html`<h3 class="heading" part="ag-accordion-heading">${headingContent}</h3>`;
+      case 4:
+        return html`<h4 class="heading" part="ag-accordion-heading">${headingContent}</h4>`;
+      case 5:
+        return html`<h5 class="heading" part="ag-accordion-heading">${headingContent}</h5>`;
+      case 6:
+        return html`<h6 class="heading" part="ag-accordion-heading">${headingContent}</h6>`;
+    }
+  }
+
+  toggle() {
+    if (this.disabled) return; // Don't toggle when disabled
+
+    this.open = !this.open;
+
+    // Dual-dispatch: dispatchEvent + callback
+    const toggleEvent = new CustomEvent<AccordionItemToggleEventDetail>('toggle', {
+      detail: { open: this.open },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(toggleEvent);
+
+    // Invoke callback if provided
+    if (this.onToggle) {
+      this.onToggle(toggleEvent);
+    }
+  }
+
+  /**
+   * Focus the accordion's button (for programmatic focus management)
+   */
+  focus() {
+    const button = this.shadowRoot?.querySelector('button');
+    button?.focus();
+  }
+
+  /**
+   * Get the button element (for external focus management)
+   */
+  get buttonElement() {
+    return this.shadowRoot?.querySelector('button') || null;
+  }
+
+  /**
+   * Handle keyboard interactions for individual accordion items
+   */
+  private _handleKeydown(event: KeyboardEvent) {
+    if (this.disabled) return;
+
+    const { key } = event;
+
+    // Handle keys that affect the current accordion
+    if (key === 'Enter' || key === ' ') {
+      // Only handle if focus is on our button
+      if (event.target === this.buttonElement) {
+        event.preventDefault();
+        this.toggle();
+      }
+    }
+
+    // Emit keyboard navigation events that can be handled by AccordionGroup
+    if (key === 'ArrowDown' || key === 'ArrowUp' || key === 'Home' || key === 'End') {
+      // Always emit navigation keys when accordion has focus
+      event.preventDefault();
+      this.dispatchEvent(new CustomEvent('accordion-keydown', {
+        detail: { key, accordionItem: this },
+        bubbles: true
+      }));
+    }
+  }
+}
+
+// Note: ag-accordion is defined in AccordionGroup component for keyboard navigation
+// Only register the individual item component here
+if (!customElements.get('ag-accordion-item')) {
+  customElements.define('ag-accordion-item', AccordionItem);
+}
