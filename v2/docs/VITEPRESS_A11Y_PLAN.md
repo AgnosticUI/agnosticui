@@ -79,38 +79,38 @@ These files serve as the canonical reference for the desired outcome.
 | ✅ | loader.md | Batch 3 |
 | ✅ | mark.md | Batch 3 |
 | ✅ | menu.md | Batch 3 |
-| ⬜ | message-bubble.md | Batch 4 |
-| ⬜ | pagination.md | Batch 4 |
-| ⬜ | popover.md | Batch 4 |
-| ⬜ | progress-ring.md | Batch 4 |
-| ⬜ | progress.md | Batch 4 |
-| ⬜ | radio.md | Batch 4 |
-| ⬜ | rating.md | Batch 4 |
-| ⬜ | scroll-progress.md | Batch 4 |
-| ⬜ | scroll-to-button.md | Batch 4 |
-| ⬜ | select.md | Batch 4 |
-| ⬜ | sidebar.md | Batch 5 |
-| ⬜ | skeleton-loader.md | Batch 5 |
-| ⬜ | slider.md | Batch 5 |
-| ⬜ | spinner.md | Batch 5 |
-| ⬜ | table.md | Batch 5 |
-| ⬜ | tabs.md | Batch 5 |
-| ⬜ | tag.md | Batch 5 |
-| ⬜ | timeline.md | Batch 5 |
-| ⬜ | toast.md | Batch 5 |
-| ⬜ | toggle.md | Batch 5 |
+| ✅ | message-bubble.md | Batch 4 |
+| ✅ | pagination.md | Batch 4 |
+| ✅ | popover.md | Batch 4 |
+| ✅ | progress-ring.md | Batch 4 |
+| ✅ | progress.md | Batch 4 |
+| ✅ | radio.md | Batch 4 |
+| ✅ | rating.md | Batch 4 |
+| ✅ | scroll-progress.md | Batch 4 |
+| ✅ | scroll-to-button.md | Batch 4 |
+| ✅ | select.md | Batch 4 |
+| ✅ | sidebar.md | Batch 5 |
+| ✅ | skeleton-loader.md | Batch 5 |
+| ✅ | slider.md | Batch 5 |
+| ✅ | spinner.md | Batch 5 |
+| ✅ | table.md | Batch 5 |
+| ✅ | tabs.md | Batch 5 |
+| ✅ | tag.md | Batch 5 |
+| ✅ | timeline.md | Batch 5 |
+| ✅ | toast.md | Batch 5 |
+| ✅ | toggle.md | Batch 5 |
 | ⬜ | tooltip.md | Batch 6 |
 | ⬜ | visually-hidden.md | Batch 6 |
 
-**Progress**: 32 of 54 files completed (59.3%)
+**Progress**: 52 of 54 files completed (96.3%)
 
 ### Batch Status Summary
 
 - **Batch 1**: 10/10 completed ✅
 - **Batch 2**: 10/10 completed ✅
 - **Batch 3**: 10/10 completed ✅
-- **Batch 4**: 0/10 completed
-- **Batch 5**: 0/10 completed
+- **Batch 4**: 10/10 completed ✅
+- **Batch 5**: 10/10 completed ✅
 - **Batch 6**: 0/2 completed
 
 ## Required Transformations

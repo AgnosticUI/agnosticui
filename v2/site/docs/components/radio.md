@@ -16,7 +16,6 @@ import RadioExamples from '../examples/RadioExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic radio group -->
     <VueFieldset legend="Choose your plan">
       <VueRadio
         name="plan"
@@ -36,7 +35,6 @@ import RadioExamples from '../examples/RadioExamples.vue'
       />
     </VueFieldset>
 
-    <!-- Different themes -->
     <VueFieldset legend="Select framework">
       <VueRadio
         name="framework"
@@ -59,7 +57,6 @@ import RadioExamples from '../examples/RadioExamples.vue'
       />
     </VueFieldset>
 
-    <!-- Inline layout -->
     <VueFieldset legend="Gender">
       <div style="display: flex; gap: 1.5rem;">
         <VueRadio
@@ -103,7 +100,6 @@ import { ReactFieldset } from 'agnosticui-core/fieldset/react';
 export default function Example() {
   return (
     <section>
-      {/* Basic radio group */}
       <ReactFieldset legend="Choose your plan">
         <ReactRadio
           name="plan"
@@ -123,7 +119,6 @@ export default function Example() {
         />
       </ReactFieldset>
 
-      {/* Different themes */}
       <ReactFieldset legend="Select framework">
         <ReactRadio
           name="framework"
@@ -146,7 +141,6 @@ export default function Example() {
         />
       </ReactFieldset>
 
-      {/* Inline layout */}
       <ReactFieldset legend="Gender">
         <div style={{ display: 'flex', gap: '1.5rem' }}>
           <ReactRadio
@@ -181,7 +175,6 @@ export default function Example() {
 </script>
 
 <section>
-  <!-- Basic radio group -->
   <ag-fieldset legend="Choose your plan">
     <ag-radio
       name="plan"
@@ -201,7 +194,6 @@ export default function Example() {
     ></ag-radio>
   </ag-fieldset>
 
-  <!-- Different themes -->
   <ag-fieldset legend="Select framework">
     <ag-radio
       name="framework"
@@ -224,7 +216,6 @@ export default function Example() {
     ></ag-radio>
   </ag-fieldset>
 
-  <!-- Inline layout -->
   <ag-fieldset legend="Gender">
     <div style="display: flex; gap: 1.5rem;">
       <ag-radio
@@ -254,15 +245,12 @@ export default function Example() {
 The `labelPosition` prop controls where the internal label text appears relative to the radio button. This affects the `labelText` (the label that wraps the radio), not the external `label` prop.
 
 ```vue
-<!-- Label after radio (default) -->
 <VueRadio
   name="option"
   value="1"
   label-text="Label on end (default)"
   label-position="end"
 />
-
-<!-- Label before radio -->
 <VueRadio
   name="option"
   value="2"
@@ -380,7 +368,6 @@ Radio buttons now support optional external labels, helper text, and error messa
 ```vue
 <template>
   <section>
-    <!-- Event handler with @change -->
     <VueRadio
       name="color"
       value="red"
@@ -388,7 +375,6 @@ Radio buttons now support optional external labels, helper text, and error messa
       @change="handleChange"
     />
 
-    <!-- v-model:checked for two-way binding -->
     <VueRadio
       name="color"
       value="blue"
@@ -396,7 +382,6 @@ Radio buttons now support optional external labels, helper text, and error messa
       v-model:checked="selectedColor"
     />
 
-    <!-- Both event and v-model together -->
     <VueRadio
       name="color"
       value="green"
@@ -405,7 +390,6 @@ Radio buttons now support optional external labels, helper text, and error messa
       @change="handleColorChange"
     />
 
-    <!-- Radio group with shared name -->
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
       <VueRadio
         v-for="option in options"
@@ -434,12 +418,11 @@ const options = [
 ];
 
 const handleChange = (detail) => {
-  console.log('Radio changed:', detail);
-  // detail: { checked, value, name }
+  console.log("Radio changed:", detail);
 };
 
 const handleColorChange = (detail) => {
-  console.log('Color selected:', detail.value);
+  console.log("Color selected:", detail.value);
 };
 </script>
 ```
@@ -447,58 +430,53 @@ const handleColorChange = (detail) => {
 
 ::: details React
 ```tsx
-import { useState } from 'react';
-import { ReactRadio } from 'agnosticui-core/radio/react';
+import { useState } from "react";
+import { ReactRadio } from "agnosticui-core/radio/react";
 
 export default function Example() {
-  const [selectedColor, setSelectedColor] = useState('red');
+  const [selectedColor, setSelectedColor] = useState("red");
 
   return (
     <section>
-      {/* Event handler with onChange */}
       <ReactRadio
         name="color"
         value="red"
         labelText="Red"
-        checked={selectedColor === 'red'}
+        checked={selectedColor === "red"}
         onChange={(e) => {
-          console.log('Radio changed:', e.detail);
+          console.log("Radio changed:", e.detail);
           setSelectedColor(e.detail.value);
         }}
       />
-
-      {/* Controlled radio group */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <ReactRadio
           name="color"
           value="red"
           labelText="Red"
-          checked={selectedColor === 'red'}
+          checked={selectedColor === "red"}
           onChange={(e) => setSelectedColor(e.detail.value)}
         />
         <ReactRadio
           name="color"
           value="blue"
           labelText="Blue"
-          checked={selectedColor === 'blue'}
+          checked={selectedColor === "blue"}
           onChange={(e) => setSelectedColor(e.detail.value)}
         />
         <ReactRadio
           name="color"
           value="green"
           labelText="Green"
-          checked={selectedColor === 'green'}
+          checked={selectedColor === "green"}
           onChange={(e) => setSelectedColor(e.detail.value)}
         />
       </div>
-
-      {/* With native click handler */}
       <ReactRadio
         name="notification"
         value="enabled"
         labelText="Enable notifications"
-        onClick={(e) => console.log('Clicked:', e)}
-        onChange={(e) => console.log('Changed:', e.detail)}
+        onClick={(e) => console.log("Clicked:", e)}
+        onChange={(e) => console.log("Changed:", e.detail)}
       />
     </section>
   );
@@ -509,44 +487,38 @@ export default function Example() {
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/radio';
+  import "agnosticui-core/radio";
 
-  // Pattern 1: addEventListener (DOM events)
-  const radio1 = document.querySelector('#radio1');
-  radio1.addEventListener('change', (e) => {
-    console.log('Event listener:', e.detail);
-    // e.detail: { checked, value, name }
+  const radio1 = document.querySelector("#radio1");
+  radio1.addEventListener("change", (e) => {
+    console.log("Event listener:", e.detail);
   });
 
-  // Pattern 2: Callback prop
-  const radio2 = document.querySelector('#radio2');
+  const radio2 = document.querySelector("#radio2");
   radio2.onChange = (e) => {
-    console.log('Callback prop:', e.detail);
+    console.log("Callback prop:", e.detail);
   };
 
-  // Pattern 3: Both patterns work (dual-dispatch)
-  const radio3 = document.querySelector('#radio3');
-  radio3.addEventListener('change', (e) => {
-    console.log('DOM event:', e.detail);
+  const radio3 = document.querySelector("#radio3");
+  radio3.addEventListener("change", (e) => {
+    console.log("DOM event:", e.detail);
   });
   radio3.onChange = (e) => {
-    console.log('Callback also fired:', e.detail);
+    console.log("Callback also fired:", e.detail);
   };
 
-  // Native click events work too
-  const radio4 = document.querySelector('#radio4');
-  radio4.addEventListener('click', (e) => {
-    console.log('Click event:', e);
+  const radio4 = document.querySelector("#radio4");
+  radio4.addEventListener("click", (e) => {
+    console.log("Click event:", e);
   });
   radio4.onClick = (e) => {
-    console.log('Click callback:', e);
+    console.log("Click callback:", e);
   };
 
-  // Radio group with shared name
-  const radios = document.querySelectorAll('ag-radio[name="group"]');
+  const radios = document.querySelectorAll("ag-radio[name=\"group\"]");
   radios.forEach(radio => {
-    radio.addEventListener('change', (e) => {
-      console.log('Selected:', e.detail.value);
+    radio.addEventListener("change", (e) => {
+      console.log("Selected:", e.detail.value);
     });
   });
 </script>
@@ -579,8 +551,6 @@ export default function Example() {
     value="4"
     label-text="With click handlers"
   ></ag-radio>
-
-  <!-- Radio group -->
   <div style="display: flex; flex-direction: column; gap: 0.5rem;">
     <ag-radio name="group" value="a" label-text="Option A"></ag-radio>
     <ag-radio name="group" value="b" label-text="Option B"></ag-radio>
@@ -596,9 +566,9 @@ export default function Example() {
 export type RadioChangeEvent = CustomEvent<RadioChangeEventDetail>;
 
 export interface RadioChangeEventDetail {
-  checked: boolean;  // Whether this radio is checked
-  value: string;     // Form value of the radio
-  name: string;      // Form name (shared by radio group)
+  checked: boolean;
+  value: string;
+  name: string;
 }
 ```
 
@@ -616,23 +586,20 @@ Shadow Parts allow you to style internal elements of the radio from outside the 
 ### Customization Examples
 
 ```css
-/* Make the radio indicator larger */
 ag-radio::part(ag-radio-indicator) {
   transform: scale(1.3);
   border-width: 3px;
 }
 
-/* Customize the wrapper */
 ag-radio::part(ag-radio-wrapper) {
   padding: 0.5rem;
-  background: var(--ag-background-secondary);
-  border-radius: var(--ag-radius-md);
+  background: #6366f1;
+  border-radius: #6366f1;
 }
 
-/* Style the label */
 ag-radio::part(ag-radio-label) {
   font-weight: 600;
-  color: var(--ag-primary);
+  color: #12623e;
 }
 ```
 

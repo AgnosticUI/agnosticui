@@ -18,30 +18,23 @@ import ContentPaginationExamples from '../examples/ContentPaginationExamples.vue
 ```vue
 <template>
   <section>
-    <!-- Basic pagination -->
     <VuePagination
       :current="currentPage"
       :total-pages="20"
       @page-change="handlePageChange"
     />
 
-    <!-- Bordered style -->
     <VuePagination :current="1" :total-pages="15" bordered />
 
-    <!-- With first/last navigation -->
     <VuePagination
       :current="5"
       :total-pages="10"
       :first-last-navigation="true"
     />
 
-    <!-- Different offset (1 instead of 2) -->
     <VuePagination :current="10" :total-pages="20" :offset="1" />
 
-    <!-- Custom alignment -->
     <VuePagination :current="1" :total-pages="10" justify="center" />
-
-    <!-- Custom navigation labels -->
     <VuePagination
       :current="1"
       :total-pages="10"
@@ -96,26 +89,19 @@ export default function PaginationExample() {
 
   return (
     <section>
-      {/* Basic pagination */}
       <ReactPagination
         current={currentPage}
         totalPages={20}
         onPageChange={handlePageChange}
       />
 
-      {/* Bordered style */}
       <ReactPagination current={1} totalPages={15} bordered />
 
-      {/* With first/last navigation */}
       <ReactPagination current={5} totalPages={10} firstLastNavigation={true} />
 
-      {/* Different offset (1 instead of 2) */}
       <ReactPagination current={10} totalPages={20} offset={1} />
 
-      {/* Custom alignment */}
       <ReactPagination current={1} totalPages={10} justify="center" />
-
-      {/* Custom navigation labels */}
       <ReactPagination
         current={1}
         totalPages={10}
@@ -150,27 +136,22 @@ export default function PaginationExample() {
 </script>
 
 <section>
-  <!-- Basic pagination -->
   <ag-pagination
     id="my-pagination"
     current="5"
     total-pages="20"
   ></ag-pagination>
 
-  <!-- Bordered style -->
   <ag-pagination current="1" total-pages="15" bordered></ag-pagination>
 
-  <!-- With first/last navigation -->
   <ag-pagination
     current="5"
     total-pages="10"
     first-last-navigation="true"
   ></ag-pagination>
 
-  <!-- Different offset (1 instead of 2) -->
   <ag-pagination current="10" total-pages="20" offset="1"></ag-pagination>
 
-  <!-- Custom alignment -->
   <ag-pagination current="1" total-pages="10" justify="center"></ag-pagination>
 </section>
 ```
@@ -194,10 +175,10 @@ export default function PaginationExample() {
 
 ```typescript
 interface NavigationLabels {
-  first: string; // Default: "First"
-  previous: string; // Default: "Previous"
-  next: string; // Default: "Next"
-  last: string; // Default: "Last"
+  first: string;
+  previous: string;
+  next: string;
+  last: string;
 }
 ```
 
@@ -215,7 +196,6 @@ The Pagination component follows AgnosticUI v2 event conventions with **dual-dis
 
 ```vue
 <template>
-  <!-- Using @page-change emit -->
   <VuePagination
     :current="currentPage"
     :total-pages="20"
@@ -231,7 +211,6 @@ const currentPage = ref(1);
 
 const handlePageChange = (detail) => {
   console.log("Page changed:", detail);
-  // detail: { page: 5, pages: [1, 2, 3, 4, 5, 6, 7, '...', 20] }
   currentPage.value = detail.page;
 };
 </script>
@@ -250,7 +229,6 @@ export default function PaginationEventExample() {
 
   const handlePageChange = (event) => {
     console.log("Page changed:", event.detail);
-    // event.detail: { page: 5, pages: [1, 2, 3, 4, 5, 6, 7, '...', 20] }
     setCurrentPage(event.detail.page);
   };
 
@@ -274,18 +252,13 @@ export default function PaginationEventExample() {
 
   const pagination = document.querySelector("#my-pagination");
 
-  // Pattern 1: Using addEventListener (standard Web Components)
   pagination.addEventListener("page-change", (event) => {
     console.log("Page changed:", event.detail);
-    // event.detail: { page: 5, pages: [1, 2, 3, 4, 5, 6, 7, '...', 20] }
   });
 
-  // Pattern 2: Using callback prop
   pagination.onPageChange = (event) => {
     console.log("Page changed (callback):", event.detail);
   };
-
-  // Both patterns work simultaneously (dual-dispatch)
 </script>
 
 <ag-pagination id="my-pagination" current="1" total-pages="20"></ag-pagination>
@@ -405,16 +378,12 @@ Customize navigation labels for different languages:
 />
 ```
 
-**Japanese:**
-
 ```javascript
-{ first: '最初', previous: '前', next: '次', last: '最後' }
+{ first: "最初", previous: "前", next: "次", last: "最後" }
 ```
 
-**Spanish:**
-
 ```javascript
-{ first: 'Primera', previous: 'Anterior', next: 'Siguiente', last: 'Última' }
+{ first: "Primera", previous: "Anterior", next: "Siguiente", last: "Última" }
 ```
 
 ---
@@ -434,7 +403,6 @@ Content Pagination provides navigation between sequential content items (like do
 ```vue
 <template>
   <section>
-    <!-- Basic content pagination -->
     <VueContentPagination
       :previous="{ title: 'Introduction', href: '/introduction' }"
       :next="{ title: 'Getting Started', href: '/getting-started' }"
@@ -442,20 +410,16 @@ Content Pagination provides navigation between sequential content items (like do
       @navigate="handleNavigate"
     />
 
-    <!-- Previous/Next only (no parent) -->
     <VueContentPagination
       :previous="{ title: 'Installation' }"
       :next="{ title: 'Configuration' }"
     />
 
-    <!-- Bordered style -->
     <VueContentPagination
       :previous="{ title: 'Chapter 1', href: '/chapter-1' }"
       :next="{ title: 'Chapter 3', href: '/chapter-3' }"
       bordered
     />
-
-    <!-- Custom icons -->
     <VueContentPagination
       :previous="{ title: 'Prev Page' }"
       :next="{ title: 'Next Page' }"
@@ -481,8 +445,6 @@ export default {
   methods: {
     handleNavigate(detail) {
       console.log("Navigate to:", detail);
-      // detail: { type: 'previous' | 'next' | 'parent', item: { title, href? } }
-      // Handle navigation (e.g., router.push, window.location, etc.)
     },
   },
 };
@@ -499,12 +461,10 @@ import { ReactContentPagination } from "agnosticui-core/content-pagination/react
 export default function ContentPaginationExample() {
   const handleNavigate = (event) => {
     console.log("Navigate to:", event.detail);
-    // event.detail: { type: 'previous' | 'next' | 'parent', item: { title, href? } }
   };
 
   return (
-
-      {/* Basic content pagination */}
+    <>
       <ReactContentPagination
         previous={{ title: "Introduction", href: "/introduction" }}
         next={{ title: "Getting Started", href: "/getting-started" }}
@@ -512,16 +472,12 @@ export default function ContentPaginationExample() {
         onNavigate={handleNavigate}
       />
 
-      {/* Previous/Next only */}
-
-
-      {/* Bordered style */}
       <ReactContentPagination
         previous={{ title: "Chapter 1", href: "/chapter-1" }}
         next={{ title: "Chapter 3", href: "/chapter-3" }}
         bordered
       />
-
+    </>
   );
 }
 ```
@@ -539,13 +495,11 @@ export default function ContentPaginationExample() {
 
     contentPagination?.addEventListener("navigate", (e) => {
       console.log("Navigate to:", e.detail);
-      // e.detail: { direction: 'previous' | 'next' | 'parent', title: string, href?: string }
     });
   });
 </script>
 
 <section>
-  <!-- Basic content pagination (uses default chevron icons) -->
   <ag-content-pagination
     id="my-content-pagination"
     previous='{"title": "Introduction", "href": "/introduction"}'
@@ -553,14 +507,11 @@ export default function ContentPaginationExample() {
     parent='{"title": "Documentation", "href": "/documentation"}'
   ></ag-content-pagination>
 
-  <!-- Bordered style -->
   <ag-content-pagination
     previous='{"title": "Chapter 1", "href": "/chapter-1"}'
     next='{"title": "Chapter 3", "href": "/chapter-3"}'
     bordered
   ></ag-content-pagination>
-
-  <!-- Custom icons using slots -->
   <ag-content-pagination
     previous='{"title": "Prev Page"}'
     next='{"title": "Next Page"}'
@@ -588,8 +539,8 @@ export default function ContentPaginationExample() {
 
 ```typescript
 interface ContentItem {
-  title: string; // Display title for the link
-  href?: string; // Optional URL (if omitted, navigate event still fires)
+  title: string;
+  href?: string;
 }
 ```
 
@@ -627,7 +578,6 @@ const parent = { title: "Documentation", href: "/docs" };
 
 const handleNavigate = (detail) => {
   console.log("Navigate:", detail);
-  // detail: { type: 'previous', item: { title: 'Introduction', href: '/docs/introduction' } }
 
   if (detail.item.href) {
     router.push(detail.item.href);
@@ -649,7 +599,6 @@ export default function ContentPaginationEventExample() {
 
   const handleNavigate = (event) => {
     console.log("Navigate:", event.detail);
-    // event.detail: { type: 'next', item: { title: 'Getting Started', href: '/docs/getting-started' } }
 
     if (event.detail.item.href) {
       navigate(event.detail.item.href);
@@ -677,17 +626,14 @@ import "agnosticui-core/content-pagination";
 
 const contentPagination = document.querySelector("#my-content-pagination");
 
-// Pattern 1: Using addEventListener
 contentPagination.addEventListener("navigate", (event) => {
   console.log("Navigate:", event.detail);
-  // event.detail: { direction: 'parent', title: 'Documentation', href: '/docs' }
 
   if (event.detail.href) {
     window.location.href = event.detail.href;
   }
 });
 
-// Pattern 2: Using callback prop
 contentPagination.onNavigate = (event) => {
   console.log("Navigate (callback):", event.detail);
 };
@@ -711,7 +657,7 @@ Content Pagination provides slots for customizing navigation icons:
 ```vue
 <template>
   <VueContentPagination :previous="previous" :next="next" :parent="parent">
-    <template #previous-icon>️<ChevronLeft :size="20" /></template>
+    <template #previous-icon><ChevronLeft :size="20" /></template>
     <template #next-icon><ChevronRight :size="20" /></template>
     <template #parent-icon><ChevronUp :size="20" /></template>
   </VueContentPagination>

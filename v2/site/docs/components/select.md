@@ -98,7 +98,6 @@ export default function SelectExamples() {
 
   return (
     <section>
-      {/* Basic Select */}
       <div>
         <label htmlFor="tennis">Greatest Tennis Player</label>
         <ReactSelect
@@ -114,7 +113,6 @@ export default function SelectExamples() {
         {selectedPlayer && <p>Selected: {selectedPlayer}</p>}
       </div>
 
-      {/* Small Select */}
       <div>
         <label htmlFor="small">Small Select</label>
         <ReactSelect id="small" size="small">
@@ -125,7 +123,6 @@ export default function SelectExamples() {
         </ReactSelect>
       </div>
 
-      {/* Large Select */}
       <div>
         <label htmlFor="large">Large Select</label>
         <ReactSelect id="large" size="large">
@@ -135,7 +132,6 @@ export default function SelectExamples() {
         </ReactSelect>
       </div>
 
-      {/* Multiple Select */}
       <div>
         <label htmlFor="multiple">Multiple Select</label>
         <ReactSelect
@@ -154,7 +150,6 @@ export default function SelectExamples() {
         )}
       </div>
 
-      {/* Disabled Select */}
       <div>
         <label htmlFor="disabled">Disabled Select</label>
         <ReactSelect id="disabled" disabled={true}>
@@ -182,7 +177,6 @@ export class SelectExamples extends LitElement {
   render() {
     return html`
       <section>
-        <!-- Basic Select -->
         <div>
           <label for="tennis">Greatest Tennis Player</label>
           <ag-select
@@ -200,7 +194,6 @@ export class SelectExamples extends LitElement {
           ${this.selectedPlayer ? html`<p>Selected: ${this.selectedPlayer}</p>` : ''}
         </div>
 
-        <!-- Small Select -->
         <div>
           <label for="small">Small Select</label>
           <ag-select id="small" size="small">
@@ -211,7 +204,6 @@ export class SelectExamples extends LitElement {
           </ag-select>
         </div>
 
-        <!-- Large Select -->
         <div>
           <label for="large">Large Select</label>
           <ag-select id="large" size="large">
@@ -221,7 +213,6 @@ export class SelectExamples extends LitElement {
           </ag-select>
         </div>
 
-        <!-- Multiple Select -->
         <div>
           <label for="multiple">Multiple Select</label>
           <ag-select
@@ -243,7 +234,6 @@ export class SelectExamples extends LitElement {
           }
         </div>
 
-        <!-- Disabled Select -->
         <div>
           <label for="disabled">Disabled Select</label>
           <ag-select id="disabled" disabled>
@@ -333,7 +323,6 @@ import { ReactSelect } from 'agnosticui-core/select/react';
 export default function SelectWithLabels() {
   return (
     <>
-      {/* Basic external label */}
       <ReactSelect
         label="Favorite Framework"
         name="framework"
@@ -344,7 +333,6 @@ export default function SelectWithLabels() {
         <option value="angular">Angular</option>
       </ReactSelect>
 
-      {/* With helper text */}
       <ReactSelect
         label="Country"
         helpText="Select your country of residence"
@@ -355,7 +343,6 @@ export default function SelectWithLabels() {
         <option value="uk">United Kingdom</option>
       </ReactSelect>
 
-      {/* Required field */}
       <ReactSelect
         label="Preferred Language"
         required
@@ -367,7 +354,6 @@ export default function SelectWithLabels() {
         <option value="es">Spanish</option>
       </ReactSelect>
 
-      {/* With validation error */}
       <ReactSelect
         label="Payment Method"
         required
@@ -395,7 +381,6 @@ import { customElement } from 'lit/decorators.js';
 export class SelectWithLabels extends LitElement {
   render() {
     return html`
-      <!-- Basic external label -->
       <ag-select
         .label=${"Favorite Framework"}
         name="framework"
@@ -406,7 +391,6 @@ export class SelectWithLabels extends LitElement {
         <option value="angular">Angular</option>
       </ag-select>
 
-      <!-- With helper text -->
       <ag-select
         .label=${"Country"}
         .helpText=${"Select your country of residence"}
@@ -417,7 +401,6 @@ export class SelectWithLabels extends LitElement {
         <option value="uk">United Kingdom</option>
       </ag-select>
 
-      <!-- Required field -->
       <ag-select
         .label=${"Preferred Language"}
         .required=${true}
@@ -429,7 +412,6 @@ export class SelectWithLabels extends LitElement {
         <option value="es">Spanish</option>
       </ag-select>
 
-      <!-- With validation error -->
       <ag-select
         .label=${"Payment Method"}
         .required=${true}
@@ -517,7 +499,6 @@ import { ReactSelect } from 'agnosticui-core/select/react';
 export default function LabelPositioningExamples() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      {/* Top position (default) */}
       <ReactSelect
         label="Top Label (Default)"
         labelPosition="top"
@@ -528,7 +509,6 @@ export default function LabelPositioningExamples() {
         <option value="2">Option 2</option>
       </ReactSelect>
 
-      {/* Start position (label before select) */}
       <ReactSelect
         label="Start Position"
         labelPosition="start"
@@ -539,7 +519,6 @@ export default function LabelPositioningExamples() {
         <option value="2">Option 2</option>
       </ReactSelect>
 
-      {/* End position (label after select) */}
       <ReactSelect
         label="End Position"
         labelPosition="end"
@@ -550,7 +529,6 @@ export default function LabelPositioningExamples() {
         <option value="2">Option 2</option>
       </ReactSelect>
 
-      {/* Bottom position (not recommended - dropdown covers label) */}
       <ReactSelect
         label="Bottom Position (Not Recommended)"
         labelPosition="bottom"
@@ -578,7 +556,6 @@ export class LabelPositioningExamples extends LitElement {
   render() {
     return html`
       <div style="display: flex; flex-direction: column; gap: 2rem;">
-        <!-- Top position (default) -->
         <ag-select
           .label=${"Top Label (Default)"}
           .labelPosition=${"top"}
@@ -589,7 +566,6 @@ export class LabelPositioningExamples extends LitElement {
           <option value="2">Option 2</option>
         </ag-select>
 
-        <!-- Start position (label before select) -->
         <ag-select
           .label=${"Start Position"}
           .labelPosition=${"start"}
@@ -600,7 +576,6 @@ export class LabelPositioningExamples extends LitElement {
           <option value="2">Option 2</option>
         </ag-select>
 
-        <!-- End position (label after select) -->
         <ag-select
           .label=${"End Position"}
           .labelPosition=${"end"}
@@ -611,7 +586,6 @@ export class LabelPositioningExamples extends LitElement {
           <option value="2">Option 2</option>
         </ag-select>
 
-        <!-- Bottom position (not recommended - dropdown covers label) -->
         <ag-select
           .label=${"Bottom Position (Not Recommended)"}
           .labelPosition=${"bottom"}
@@ -769,7 +743,6 @@ const handleChange = (detail) => {
     <option value="2">Option 2</option>
   </VueSelect>
 
-  <!-- Display current value and event log -->
   <p>Current: {{ selectedValue }}</p>
   <ul>
     <li v-for="(event, i) in eventLog" :key="i">{{ event }}</li>
@@ -826,14 +799,12 @@ The Select component maintains all native select accessibility features:
 You can customize the Select component using CSS Shadow Parts:
 
 ```css
-/* Custom select styling */
 ag-select::part(ag-select) {
   border: 2px solid blue;
   border-radius: 8px;
   font-size: 1.2rem;
 }
 
-/* Focus state */
 ag-select::part(ag-select):focus {
   border-color: darkblue;
   box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.3);
