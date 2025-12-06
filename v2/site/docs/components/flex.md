@@ -245,107 +245,116 @@ import { ReactFlexRow } from 'agnosticui-core/flex/react';
 
 export default function ResponsiveExample() {
   return (
-    <>
-      <ReactFlexRow
-        gap="1rem"
-        style={{
-          "--flex-direction-mobile": "column",
-          "--flex-direction-desktop": "row"
-        } as React.CSSProperties}
-      >
-        <div>Item 1</div>
-        <div>Item 2</div>
-        <div>Item 3</div>
-      </ReactFlexRow>
-
-      <ReactFlexRow
-        style={{
-          "--flex-gap-mobile": "0.5rem",
-          "--flex-gap-tablet": "1rem",
-          "--flex-gap-desktop": "2rem"
-        } as React.CSSProperties}
-      >
-        <div>Item 1</div>
-        <div>Item 2</div>
-      </ReactFlexRow>
-    </>
+    <ReactFlexRow className="responsive-layout" gap="1rem">
+      <div>Item 1</div>
+      <div>Item 2</div>
+      <div>Item 3</div>
+    </ReactFlexRow>
   );
 }
 ```
-:::
 
-::: details Lit/Web Components
-```typescript
-import { html } from "lit";
-import "agnosticui-core/flex";
+```css
+.responsive-layout {
+  --flex-direction: column;
+  --flex-gap: 0.5rem;
+}
 
-const template = html`
-  <ag-flex-row
-    gap="1rem"
-    style="--flex-direction-mobile: column; --flex-direction-desktop: row;"
-  >
-    <div>Item 1</div>
-    <div>Item 2</div>
-    <div>Item 3</div>
-  </ag-flex-row>
-
-  <ag-flex-row
-    style="--flex-gap-mobile: 0.5rem; --flex-gap-tablet: 1rem; --flex-gap-desktop: 2rem;"
-  >
-    <div>Item 1</div>
-    <div>Item 2</div>
-  </ag-flex-row>
-`;
+@media (min-width: 768px) {
+  .responsive-layout {
+    --flex-direction: row;
+    --flex-gap: 1.5rem;
+  }
+}
 ```
 :::
 
-### Available Responsive CSS Custom Properties
-
-All flex properties support responsive variants:
-
-| Property | Mobile | Tablet | Desktop |
-|----------|--------|--------|---------|
-| Direction | `--flex-direction-mobile` | `--flex-direction-tablet` | `--flex-direction-desktop` |
-| Wrap | `--flex-wrap-mobile` | `--flex-wrap-tablet` | `--flex-wrap-desktop` |
-| Justify | `--flex-justify-mobile` | `--flex-justify-tablet` | `--flex-justify-desktop` |
-| Align | `--flex-align-mobile` | `--flex-align-tablet` | `--flex-align-desktop` |
-| Gap | `--flex-gap-mobile` | `--flex-gap-tablet` | `--flex-gap-desktop` |
-
-### Using CSS Shadow Parts for Advanced Customization
-
-For more complex responsive layouts, use CSS Shadow Parts to apply custom styles:
+::: details Lit (Web Components)
+```html
+<ag-flex-row class="responsive-layout">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</ag-flex-row>
+```
 
 ```css
-ag-flex-row::part(ag-flex-container) {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
+.responsive-layout {
+  --flex-direction: column;
+  --flex-gap: 0.5rem;
 }
 
-@media (max-width: 640px) {
-  ag-flex-row::part(ag-flex-container) {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: stretch;
+@media (min-width: 768px) {
+  .responsive-layout {
+    --flex-direction: row;
+    --flex-gap: 1.5rem;
   }
+}
+```
+:::
+
+### Available CSS Custom Properties
+
+Control flex behavior using these CSS custom properties:
+
+| Property | Custom Property | Values |
+|----------|----------------|--------|
+| Direction | `--flex-direction` | `row`, `row-reverse`, `column`, `column-reverse` |
+| Wrap | `--flex-wrap` | `nowrap`, `wrap`, `wrap-reverse` |
+| Justify | `--flex-justify` | `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly` |
+| Align | `--flex-align` | `flex-start`, `flex-end`, `center`, `baseline`, `stretch` |
+| Gap | `--flex-gap` | Any valid CSS gap value (e.g., `1rem`, `20px`, `var(--ag-space-4)`) |
+
+### Responsive Patterns
+
+Use your own media queries to control flex properties at different breakpoints:
+
+**Stack on mobile, row on desktop:**
+```css
+.responsive-direction {
+  --flex-direction: column;
+  --flex-gap: 1rem;
+}
+
+@media (min-width: 769px) {
+  .responsive-direction {
+    --flex-direction: row;
+  }
+}
+```
+
+**Different gap sizes per breakpoint:**
+```css
+.responsive-gap {
+  --flex-gap: 0.5rem;
 }
 
 @media (min-width: 641px) and (max-width: 768px) {
-  ag-flex-row::part(ag-flex-container) {
-    gap: 1.5rem;
+  .responsive-gap {
+    --flex-gap: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .responsive-gap {
+    --flex-gap: 2rem;
   }
 }
 ```
 
-### Breakpoint Values
+**Center on mobile, space-between on desktop:**
+```css
+.responsive-justify {
+  --flex-justify: center;
+  --flex-gap: 1rem;
+}
 
-The component uses these fixed breakpoint values:
-
-- Mobile: `max-width: 640px`
-- Tablet: `min-width: 641px and max-width: 768px`
-- Desktop: `min-width: 769px`
-
-These values cannot be customized via CSS custom properties (media queries don't support custom properties). If you need different breakpoints, use CSS Shadow Parts with your own media queries.
+@media (min-width: 769px) {
+  .responsive-justify {
+    --flex-justify: space-between;
+  }
+}
+```
 
 ## Design Tokens
 
