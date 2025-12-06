@@ -20,7 +20,7 @@ Use the component to wrap any content you want to be available to screen readers
 ```vue
 <template>
   <button>
-    <svg><!-- icon --></svg>
+    <svg></svg>
     <VueVisuallyHidden>Close</VueVisuallyHidden>
   </button>
 </template>
@@ -37,7 +37,7 @@ import { ReactVisuallyHidden } from 'agnosticui-core/visually-hidden/react';
 export default function Example() {
   return (
     <button>
-      <svg>{/* icon */}</svg>
+      <svg></svg>
       <ReactVisuallyHidden>Close</ReactVisuallyHidden>
     </button>
   );
@@ -52,7 +52,7 @@ export default function Example() {
 </script>
 
 <button>
-  <svg><!-- icon --></svg>
+  <svg></svg>
   <ag-visually-hidden>Close</ag-visually-hidden>
 </button>
 ```

@@ -16,22 +16,18 @@ import TooltipExamples from '../examples/TooltipExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic tooltip -->
     <VueTooltip content="This is helpful information">
       <VueButton>Hover me</VueButton>
     </VueTooltip>
 
-    <!-- Different placements -->
     <VueTooltip content="Appears on the right" placement="right">
       <VueButton>Right tooltip</VueButton>
     </VueTooltip>
 
-    <!-- Click trigger -->
     <VueTooltip content="Click to toggle" trigger="click">
       <VueButton>Click trigger</VueButton>
     </VueTooltip>
 
-    <!-- With events -->
     <VueTooltip
       content="Event handling"
       @show="handleShow"
@@ -40,7 +36,6 @@ import TooltipExamples from '../examples/TooltipExamples.vue'
       <VueButton>With events</VueButton>
     </VueTooltip>
 
-    <!-- Icon-only button -->
     <VueTooltip content="Edit item">
       <VueButton aria-label="Edit">
         <Pencil :size="18" />
@@ -86,22 +81,18 @@ export default function TooltipExample() {
 
   return (
     <section>
-      {/* Basic tooltip */}
       <ReactTooltip content="This is helpful information">
         <ReactButton>Hover me</ReactButton>
       </ReactTooltip>
 
-      {/* Different placements */}
       <ReactTooltip content="Appears on the right" placement="right">
         <ReactButton>Right tooltip</ReactButton>
       </ReactTooltip>
 
-      {/* Click trigger */}
       <ReactTooltip content="Click to toggle" trigger="click">
         <ReactButton>Click trigger</ReactButton>
       </ReactTooltip>
 
-      {/* With events */}
       <ReactTooltip
         content="Event handling"
         onShow={handleShow}
@@ -110,7 +101,6 @@ export default function TooltipExample() {
         <ReactButton>With events</ReactButton>
       </ReactTooltip>
 
-      {/* Icon-only button */}
       <ReactTooltip content="Edit item">
         <ReactButton aria-label="Edit">
           <Pencil size={18} />
@@ -139,30 +129,25 @@ export default function TooltipExample() {
 </script>
 
 <section>
-  <!-- Basic tooltip -->
   <ag-tooltip content="This is helpful information">
     <button>Hover me</button>
   </ag-tooltip>
 
-  <!-- Different placements -->
   <ag-tooltip content="Appears on the right" placement="right">
     <button>Right tooltip</button>
   </ag-tooltip>
 
-  <!-- Click trigger -->
   <ag-tooltip content="Click to toggle" trigger="click">
     <button>Click trigger</button>
   </ag-tooltip>
 
-  <!-- With events -->
   <ag-tooltip id="event-tooltip" content="Event handling">
     <button>With events</button>
   </ag-tooltip>
 
-  <!-- Icon-only button -->
   <ag-tooltip content="Edit item">
     <button aria-label="Edit">
-      <svg width="18" height="18"><!-- icon --></svg>
+      <svg width="18" height="18"></svg>
     </button>
   </ag-tooltip>
 </section>
@@ -255,17 +240,14 @@ The Tooltip component implements the [WAI-ARIA Tooltip Pattern](https://www.w3.o
 ```
 
 ```html
-<!-- Vue -->
 <VueTooltip class="custom-tooltip" content="Customized tooltip">
   <VueButton>Hover me</VueButton>
 </VueTooltip>
 
-<!-- React -->
 <ReactTooltip className="custom-tooltip" content="Customized tooltip">
   <ReactButton>Hover me</ReactButton>
 </ReactTooltip>
 
-<!-- Lit (Web Components) -->
 <ag-tooltip class="custom-tooltip" content="Customized tooltip">
   <button>Hover me</button>
 </ag-tooltip>
