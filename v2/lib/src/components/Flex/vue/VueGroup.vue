@@ -17,25 +17,25 @@ import {
   type PropType,
 } from "vue";
 import type { GroupProps } from "../core/index";
-import "../FlexRow"; // Registers the ag-flex-row web component
+import "../core/FlexRow"; // Registers the ag-flex-row web component
 
 export default defineComponent({
   name: "VueGroup",
   props: {
     wrap: {
-      type: String as PropType<GroupProps['wrap']>,
+      type: String as PropType<GroupProps["wrap"]>,
       default: "nowrap",
     },
     justify: {
-      type: String as PropType<GroupProps['justify']>,
+      type: String as PropType<GroupProps["justify"]>,
       default: "flex-start",
     },
     align: {
-      type: String as PropType<GroupProps['align']>,
+      type: String as PropType<GroupProps["align"]>,
       default: "stretch",
     },
     alignContent: {
-      type: String as PropType<GroupProps['alignContent']>,
+      type: String as PropType<GroupProps["alignContent"]>,
       default: "stretch",
     },
     gap: {

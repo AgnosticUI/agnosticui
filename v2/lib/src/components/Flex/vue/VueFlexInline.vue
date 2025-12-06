@@ -17,29 +17,29 @@ import {
   type PropType,
 } from "vue";
 import type { FlexInlineProps } from "../core/index";
-import "../FlexInline"; // Registers the ag-flex-inline web component
+import "../core/FlexInline"; // Registers the ag-flex-inline web component
 
 export default defineComponent({
   name: "VueFlexInline",
   props: {
     direction: {
-      type: String as PropType<FlexInlineProps['direction']>,
+      type: String as PropType<FlexInlineProps["direction"]>,
       default: "row",
     },
     wrap: {
-      type: String as PropType<FlexInlineProps['wrap']>,
+      type: String as PropType<FlexInlineProps["wrap"]>,
       default: "nowrap",
     },
     justify: {
-      type: String as PropType<FlexInlineProps['justify']>,
+      type: String as PropType<FlexInlineProps["justify"]>,
       default: "flex-start",
     },
     align: {
-      type: String as PropType<FlexInlineProps['align']>,
+      type: String as PropType<FlexInlineProps["align"]>,
       default: "stretch",
     },
     alignContent: {
-      type: String as PropType<FlexInlineProps['alignContent']>,
+      type: String as PropType<FlexInlineProps["alignContent"]>,
       default: "stretch",
     },
     gap: {

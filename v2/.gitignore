@@ -53,3 +53,6 @@ cli/*.tgz
 
 # VitePress cache and temporary files
 site/docs/.vitepress/cache/
+
+# QA Workspace
+qa_workspace/

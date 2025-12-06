@@ -56,9 +56,11 @@ program
   .command('sync')
   .description('Update reference library from tarball')
   .option('-t, --tarball <path>', 'Path to tarball (overrides config)')
+  .option('--force', 'Bypass confirmation prompt')
   .action(async (options) => {
     await sync({
       tarball: options.tarball,
+      force: options.force,
     });
   });
 

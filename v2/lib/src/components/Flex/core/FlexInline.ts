@@ -1,4 +1,4 @@
-import { FlexContainer } from './core/_FlexContainer.js';
+import { FlexContainer } from './_FlexContainer.js';
 
 export class FlexInline extends FlexContainer {
   constructor() {
@@ -18,4 +18,4 @@ declare global {
 }
 
 // Re-export base types
-export * from './core/_FlexContainer.js';
+export * from './_FlexContainer.js';

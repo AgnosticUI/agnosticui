@@ -1,13 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { FlexContainer } from './_FlexContainer.js';
-import { FlexRow } from '../FlexRow.js';
-import { FlexCol } from '../FlexCol.js';
-import { FlexInline } from '../FlexInline.js';
-import './FlexContainer.js';
-import '../FlexRow.js';
-import '../FlexCol.js';
-import '../FlexInline.js';
+import { FlexContainer } from './FlexContainer.js';
+import { FlexRow } from './FlexRow.js';
+import { FlexCol } from './FlexCol.js';
+import { FlexInline } from './FlexInline.js';
 
 expect.extend(toHaveNoViolations);
 

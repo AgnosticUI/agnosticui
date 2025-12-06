@@ -13,6 +13,7 @@ const DEFAULT_REFERENCE_PATH = './agnosticui';
 
 export interface SyncOptions {
   tarball?: string;
+  force?: boolean;
 }
 
 export async function sync(options: SyncOptions = {}): Promise<void> {
@@ -81,15 +82,17 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
   logger.info(pc.green('✓') + ` Found tarball (version ${pc.cyan(tarballVersion)})`);
   logger.newline();
 
-  // Confirm with user
-  const shouldProceed = await p.confirm({
-    message: 'Proceed with sync?',
-    initialValue: true,
-  });
+  // Confirm with user (unless forced)
+  if (!options.force) {
+    const shouldProceed = await p.confirm({
+        message: 'Proceed with sync?',
+        initialValue: true,
+    });
 
-  if (p.isCancel(shouldProceed) || !shouldProceed) {
-    p.cancel('Operation cancelled.');
-    process.exit(0);
+    if (p.isCancel(shouldProceed) || !shouldProceed) {
+        p.cancel('Operation cancelled.');
+        process.exit(0);
+    }
   }
 
   // Start spinner
