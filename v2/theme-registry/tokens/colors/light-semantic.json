@@ -98,11 +98,11 @@
     "description": "Darker shade of danger for hover states"
   },
   "warning-rgb": {
-    "value": "191, 104, 4",
+    "value": "191, 135, 0",
     "description": "Warning state color (RGB format for alpha channel support)"
   },
   "warning": {
-    "value": "#BF6804",
+    "value": "{yellow.400.value}",
     "description": "Warning state color (hex format)"
   },
   "warning-dark": {

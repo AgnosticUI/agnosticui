@@ -112,17 +112,17 @@
       "value": "#2da44e",
       "description": "Medium green"
     },
-    "500": { 
+    "500": {
       "value": "#238636",
-      "description": "Primary green (RGB format for alpha channel support)"
+      "description": "Primary green lightened for better contrast"
     },
     "600": {
       "value": "#116329",
-      "description": "Dark green"
+      "description": "Primary green (RGB format for alpha channel support)"
     },
     "700": {
       "value": "#044f1e",
-      "description": "Darker green"
+      "description": "Dark green"
     },
     "800": {
       "value": "#003d16",
