@@ -107,12 +107,12 @@
   --ag-danger: #DC2626;
   --ag-danger-rgb: 220, 38, 38;
   --ag-danger-dark: #f85149;
-  --ag-warning: #D97706;
-  --ag-warning-rgb: 217, 119, 6;
-  --ag-warning-dark: #d29922;
-  --ag-success: #2EA043;
-  --ag-success-rgb: 46, 160, 67;
-  --ag-success-dark: #3fb950;
+  --ag-warning-rgb: 191, 135, 0;
+  --ag-warning: #bb8009;
+  --ag-warning-dark: #9e6a03;
+  --ag-success: #238636;
+  --ag-success-rgb: 26, 127, 55;
+  --ag-success-dark: #196c2e;
   --ag-info: #9198A1;
   --ag-info-dark: #9EA5AF;
   --ag-focus: 88, 166, 255;

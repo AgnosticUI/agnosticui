@@ -98,29 +98,29 @@
     "value": "{red.400.value}",
     "description": "Darker danger for hover states"
   },
-  "warning": {
-    "value": "#D97706",
-    "description": "Warning state color (hex format)"
-  },
   "warning-rgb": {
-    "value": "217, 119, 6",
+    "value": "191, 135, 0",
     "description": "Warning state color (RGB format for alpha channel support)"
   },
+  "warning": {
+    "value": "{yellow.400.value}",
+    "description": "Warning state color (hex format)"
+  },
   "warning-dark": {
-    "value": "{yellow.300.value}",
-    "description": "Darker warning for hover states"
+    "value": "{yellow.500.value}",
+    "description": "Darker shade of warning for hover states"
   },
   "success": {
-    "value": "#2EA043",
-    "description": "Success state color (hex format)"
+    "value": "{green.500.value}",
+    "description": "Success state color"
   },
   "success-rgb": {
-    "value": "46, 160, 67",
+    "value": "26, 127, 55",
     "description": "Success state color (RGB format for alpha channel support)"
   },
   "success-dark": {
-    "value": "{green.300.value}",
-    "description": "Brighter success for hover states on dark backgrounds"
+    "value": "{green.600.value}",
+    "description": "Darker shade of success for hover states"
   },
   "info": {
     "value": "{neutral.400.value}",

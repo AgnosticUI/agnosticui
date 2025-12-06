@@ -107,7 +107,8 @@ export class AgButton extends LitElement implements ButtonProps {
     /* Secondary inherits font color */
     :host([variant="secondary"]) button {
       background: var(--ag-neutral-400);
-      color: var(--ag-text-primary);
+      /* We lock the text color at neutral-900 for both light/dark modes */
+      color: var(--ag-neutral-900);
     }
     :host([variant="secondary"]) button:hover {
       background: var(--ag-neutral-500);
@@ -131,7 +132,7 @@ export class AgButton extends LitElement implements ButtonProps {
     }
     :host([variant="warning"]) button {
       background: var(--ag-warning);
-      color: var(--ag-white);
+      color: var(--ag-neutral-900);
     }
     :host([variant="warning"]) button:hover {
       background: var(--ag-warning-dark);
@@ -302,11 +303,11 @@ export class AgButton extends LitElement implements ButtonProps {
     /* Bordered variant - outline style */
     :host([bordered]) button {
       background: transparent;
-      border: 1px solid var(--ag-neutral-400);
+      border: 1px solid var(--ag-neutral-500);
     }
 
     :host([bordered][variant="primary"]) button {
-      color: var(--ag-primary);
+      color: var(--ag-primary-dark);
       border-color: var(--ag-primary);
     }
 
@@ -317,38 +318,34 @@ export class AgButton extends LitElement implements ButtonProps {
       color: var(--ag-white);
     }
 
-    :host([bordered][variant="secondary"]) button {
-      color: var(--ag-neutral-500);
+    :host([bordered][variant="secondary"]) button,
+    :host([bordered][variant="secondary"]) button:hover {
+      color: var(--ag-neutral-900);
       border-color: var(--ag-neutral-500);
     }
 
-    :host([bordered][variant="secondary"]) button:hover {
-      background: var(--ag-neutral-500);
-      color: var(--ag-white);
-    }
-
     :host([bordered][variant="success"]) button {
-      color: var(--ag-success);
+      color: var(--ag-success-dark);
       border-color: var(--ag-success);
     }
 
     :host([bordered][variant="success"]) button:hover {
-      background: var(--ag-success);
       color: var(--ag-white);
+      background: var(--ag-success);
     }
 
     :host([bordered][variant="warning"]) button {
-      color: var(--ag-warning);
+      color: var(--ag-warning-dark);
       border-color: var(--ag-warning);
     }
 
     :host([bordered][variant="warning"]) button:hover {
       background: var(--ag-warning);
-      color: var(--ag-white);
+      color: var(--ag-neutral-900);
     }
 
     :host([bordered][variant="danger"]) button {
-      color: var(--ag-danger);
+      color: var(--ag-danger-dark);
       border-color: var(--ag-danger);
     }
 
