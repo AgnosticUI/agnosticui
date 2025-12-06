@@ -359,9 +359,7 @@ import {
   VueFlexInline,
   VueStack,
   VueGroup,
-} from "../../../lib/src/components/Flex/vue";
-// Also import raw web components for responsive examples
-import "../../../lib/src/components/Flex/FlexRow";
+} from "agnosticui-core/flex/vue";
 </script>
 
 <style>
