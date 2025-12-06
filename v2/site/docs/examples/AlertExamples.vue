@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Alerts</h3>
+      <h2>Alerts</h2>
     </div>
     <div class="stacked">
       <VueAlert class="mbe2">Default alert</VueAlert>
@@ -35,7 +35,7 @@
       >Monochrome alert</VueAlert>
     </div>
     <div class="mbe4">
-      <h3>Bordered</h3>
+      <h2>Bordered</h2>
     </div>
     <div class="stacked">
       <VueAlert
@@ -79,7 +79,7 @@
       >Monochrome alert</VueAlert>
     </div>
     <div class="mbe4">
-      <h3>Bordered Left with Icon</h3>
+      <h2>Bordered Left with Icon</h2>
     </div>
     <div class="stacked">
       <VueAlert
@@ -188,7 +188,7 @@
       </VueAlert>
     </div>
     <div class="mbe4">
-      <h3>Rounded</h3>
+      <h2>Rounded</h2>
     </div>
     <div class="stacked">
       <VueAlert
@@ -232,7 +232,7 @@
       >Monochrome alert</VueAlert>
     </div>
     <div class="mbe4">
-      <h3>CSS Parts Customization</h3>
+      <h2>CSS Parts Customization</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"

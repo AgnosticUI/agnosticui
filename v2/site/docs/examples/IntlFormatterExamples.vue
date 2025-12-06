@@ -2,7 +2,7 @@
   <section>
     <!-- Date Formatting -->
     <div class="mbe2">
-      <h3>Date Formatting</h3>
+      <h2>Date Formatting</h2>
     </div>
     <div
       style="display: flex; flex-direction: column; gap: 1rem;"
@@ -54,7 +54,7 @@
 
     <!-- Date Localization -->
     <div class="mbe2">
-      <h3>Date Localization</h3>
+      <h2>Date Localization</h2>
     </div>
     <div
       style="display: flex; flex-direction: column; gap: 1rem;"
@@ -104,7 +104,7 @@
 
     <!-- Number Formatting -->
     <div class="mbe2">
-      <h3>Number Formatting</h3>
+      <h2>Number Formatting</h2>
     </div>
     <div
       style="display: flex; flex-direction: column; gap: 1rem;"
@@ -141,7 +141,7 @@
 
     <!-- Number Localization -->
     <div class="mbe2">
-      <h3>Number Localization</h3>
+      <h2>Number Localization</h2>
     </div>
     <div
       style="display: flex; flex-direction: column; gap: 1rem;"
@@ -183,7 +183,7 @@
 
     <!-- Currency Formatting -->
     <div class="mbe2">
-      <h3>Currency Formatting</h3>
+      <h2>Currency Formatting</h2>
     </div>
     <div
       style="display: flex; flex-direction: column; gap: 1rem;"
@@ -231,7 +231,7 @@
 
     <!-- Currency Localization -->
     <div class="mbe2">
-      <h3>Currency Localization</h3>
+      <h2>Currency Localization</h2>
     </div>
     <div
       style="display: flex; flex-direction: column; gap: 1rem;"
@@ -277,7 +277,7 @@
 
     <!-- Percentage Formatting -->
     <div class="mbe2">
-      <h3>Percentage Formatting</h3>
+      <h2>Percentage Formatting</h2>
     </div>
     <div
       style="display: flex; flex-direction: column; gap: 1rem;"
@@ -305,7 +305,7 @@
 
     <!-- Real-World Example: Dashboard Stats -->
     <div class="mbe2">
-      <h3>Real-World Example: Dashboard Stats</h3>
+      <h2>Real-World Example: Dashboard Stats</h2>
     </div>
     <div
       style="
@@ -381,7 +381,7 @@
 
     <!-- CSS Parts Customization -->
     <div class="mbe2">
-      <h3>CSS Parts Customization</h3>
+      <h2>CSS Parts Customization</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"

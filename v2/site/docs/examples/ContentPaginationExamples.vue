@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Content Pagination</h3>
+      <h2>Basic Content Pagination</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueContentPagination
@@ -19,7 +19,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Without hrefs (navigate event only)</h3>
+      <h2>Without hrefs (navigate event only)</h2>
     </div>
     <p>
       Links without href still fire navigate events:
@@ -40,7 +40,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Previous and Next Only</h3>
+      <h2>Previous and Next Only</h2>
     </div>
     <p>
       Omit parent link for simpler sequential navigation:
@@ -53,7 +53,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Parent Only</h3>
+      <h2>Parent Only</h2>
     </div>
     <p>
       Show only the parent/overview link:
@@ -63,7 +63,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Bordered Style</h3>
+      <h2>Bordered Style</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueContentPagination
@@ -75,7 +75,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Custom Icons</h3>
+      <h2>Custom Icons</h2>
     </div>
     <p>
       Override default icons using slots:
@@ -99,7 +99,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Only Next</h3>
+      <h2>Only Next</h2>
     </div>
     <p>
       First page scenario - only show next link:
@@ -112,7 +112,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Only Previous</h3>
+      <h2>Only Previous</h2>
     </div>
     <p>
       Last page scenario - only show previous link:
@@ -125,7 +125,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization (Blue Theme)</h3>
+      <h2>CSS Shadow Parts Customization (Blue Theme)</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <div v-html="customContentPaginationStyles"></div>
@@ -148,7 +148,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization (Monochrome)</h3>
+      <h2>CSS Shadow Parts Customization (Monochrome)</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <div v-html="monochromeCustomContentPaginationStyles"></div>

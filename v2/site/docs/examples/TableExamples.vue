@@ -2,7 +2,7 @@
   <section>
     <!-- Default Table -->
     <div class="mbe2">
-      <h3>Default Variant</h3>
+      <h2>Default Variant</h2>
       <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
         Clean, standard look with light header background and subtle borders.
       </p>
@@ -57,7 +57,7 @@
 
     <!-- Stacked Variant -->
     <div class="mbe2">
-      <h3>Stacked Variant</h3>
+      <h2>Stacked Variant</h2>
       <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
         Stronger hierarchy with darker header. Good for dense data or when you want clear separation.
       </p>
@@ -108,7 +108,7 @@
 
     <!-- Minimal Variant -->
     <div class="mbe2">
-      <h3>Minimal Variant</h3>
+      <h2>Minimal Variant</h2>
       <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
         Ultra-light, airy feel. No header background, just a strong border. Great for dashboards.
       </p>
@@ -151,7 +151,7 @@
 
     <!-- Monochrome Variant -->
     <div class="mbe2">
-      <h3>Monochrome Variant</h3>
+      <h2>Monochrome Variant</h2>
       <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
         High contrast, bold look. Inverted header colors for editorial/sophisticated feel.
       </p>
@@ -194,7 +194,7 @@
 
     <!-- Size Variants -->
     <div class="mbe2">
-      <h3>Size Variants</h3>
+      <h2>Size Variants</h2>
     </div>
 
     <div class="mbe2">
@@ -267,7 +267,7 @@
 
     <!-- Modifiers -->
     <div class="mbe2">
-      <h3>Modifiers</h3>
+      <h2>Modifiers</h2>
       <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
         All modifiers can be combined freely.
       </p>
@@ -441,7 +441,7 @@
 
     <!-- Complete Example -->
     <div class="mbe2">
-      <h3>Complete Example</h3>
+      <h2>Complete Example</h2>
       <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
         Stacked variant with all modifiers and a footer.
       </p>
@@ -503,7 +503,7 @@
 
     <!-- Visually Hidden Caption -->
     <div class="mbe2">
-      <h3>Visually Hidden Caption</h3>
+      <h2>Visually Hidden Caption</h2>
       <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
         Caption is accessible to screen readers but hidden visually.
       </p>

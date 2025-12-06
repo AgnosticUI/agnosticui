@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Popover</h3>
+      <h2>Basic Popover</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VuePopover>
@@ -89,7 +89,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Trigger Types</h3>
+      <h2>Trigger Types</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VuePopover trigger-type="click">
@@ -126,7 +126,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Placement Options</h3>
+      <h2>Placement Options</h2>
     </div>
     <div
       class="mbe4"
@@ -171,7 +171,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Rich Content</h3>
+      <h2>Rich Content</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VuePopover>
@@ -245,7 +245,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Without Close Button</h3>
+      <h2>Without Close Button</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VuePopover :show-close-button="false">
@@ -270,7 +270,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Event Handling</h3>
+      <h2>Event Handling</h2>
       <p class="mbs2 mbe3">
         Listen to show and hide events to track when the popover opens and closes.
       </p>
@@ -302,7 +302,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the popover's appearance without affecting the component's internal styling. One drawback is that the arrow part can be tricky to style due to its border-based implementation so we hide it in these examples.
       </p>

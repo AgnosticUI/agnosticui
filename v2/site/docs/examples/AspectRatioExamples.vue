@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Constrained max-width</h3>
+    <h2>Constrained max-width</h2>
     <ag-aspect-ratio
       class="mbs4"
       :width="4"
@@ -10,7 +10,7 @@
       <div style="background:var(--ag-background-tertiary);color:var(--vp-c-text-1);;width:100%;height:100%;display:flex;align-items:center;justify-content:center">4:3 box</div>
     </ag-aspect-ratio>
 
-    <h3>Square (1:1)</h3>
+    <h2>Square (1:1)</h2>
     <div class="full-width">
       <ag-aspect-ratio
         class="mbs4"
@@ -25,7 +25,7 @@
     <div class="mbe32"></div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
     </div>
     <p class="mbe16">The aspect ratio component exposes the <code>::part(ag-aspect-ratio)</code> selector, allowing you to style the internal container with custom CSS:</p>
 
@@ -45,7 +45,7 @@
       </ag-aspect-ratio>
     </div>
 
-    <h3>Responsive 16:9 iframe</h3>
+    <h2>Responsive 16:9 iframe</h2>
     <ag-aspect-ratio
       class="mbs4"
       :width="16"

@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Pagination</h3>
+      <h2>Basic Pagination</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VuePagination
@@ -18,7 +18,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>First Last Navigation Opt-In</h3>
+      <h2>First Last Navigation Opt-In</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VuePagination
@@ -36,7 +36,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Bordered Style</h3>
+      <h2>Bordered Style</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VuePagination
@@ -47,7 +47,7 @@
       />
     </div>
     <div class="mbe4">
-      <h3>Offset Comparison</h3>
+      <h2>Offset Comparison</h2>
     </div>
     <p>
       Offset 2 (default) - shows 2 buttons on each side:
@@ -73,7 +73,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Alignment Options</h3>
+      <h2>Alignment Options</h2>
     </div>
     <p>
       Justify 'start', 'center', and 'end' respectively:
@@ -101,7 +101,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Custom Navigation Labels (Spanish)</h3>
+      <h2>Custom Navigation Labels (Spanish)</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VuePagination
@@ -119,7 +119,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Small Page Count</h3>
+      <h2>Small Page Count</h2>
     </div>
     <p>
       When there are few pages, all page numbers are shown:
@@ -133,7 +133,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Large Page Count</h3>
+      <h2>Large Page Count</h2>
     </div>
     <p>
       With many pages, ellipsis (...) indicates skipped pages:
@@ -147,7 +147,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization (Gradient)</h3>
+      <h2>CSS Shadow Parts Customization (Gradient)</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <div v-html="customPaginationStyles"></div>
@@ -160,7 +160,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization (Monochrome)</h3>
+      <h2>CSS Shadow Parts Customization (Monochrome)</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <div v-html="monochromeCustomPaginationStyles"></div>

@@ -1,54 +1,96 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Default Rating</h3>
+      <h2>Default Rating</h2>
       <p class="mbs2 mbe3">A basic rating component.</p>
       <VueRating :value="3" />
     </div>
 
     <div class="mbe4">
-      <h3>Half Precision</h3>
+      <h2>Half Precision</h2>
       <p class="mbs2 mbe3">Allows for half-star ratings.</p>
-      <VueRating :value="2.5" precision="half" />
+      <VueRating
+        :value="2.5"
+        precision="half"
+      />
     </div>
 
     <div class="mbe4">
-      <h3>Readonly</h3>
+      <h2>Readonly</h2>
       <p class="mbs2 mbe3">A non-interactive rating display.</p>
-      <VueRating :value="4" :readonly="true" />
+      <VueRating
+        :value="4"
+        :readonly="true"
+      />
     </div>
 
     <div class="mbe4">
-      <h3>Allow Clear</h3>
+      <h2>Allow Clear</h2>
       <p class="mbs2 mbe3">Clicking the current rating will clear it to 0.</p>
-      <VueRating :value="3" :allow-clear="true" />
+      <VueRating
+        :value="3"
+        :allow-clear="true"
+      />
     </div>
 
     <div class="mbe4">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
       <p class="mbs2 mbe3">Three size options: small, medium (default), and large.</p>
-      <div class="mbe4" style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
-        <VueRating size="sm" :value="3" />
-        <VueRating size="md" :value="3" />
-        <VueRating size="lg" :value="3" />
+      <div
+        class="mbe4"
+        style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;"
+      >
+        <VueRating
+          size="sm"
+          :value="3"
+        />
+        <VueRating
+          size="md"
+          :value="3"
+        />
+        <VueRating
+          size="lg"
+          :value="3"
+        />
       </div>
     </div>
 
     <div class="mbe4">
-      <h3>Variants</h3>
+      <h2>Variants</h2>
       <p class="mbs2 mbe3">Color variants for different contexts.</p>
-      <div class="mbe4" style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
-        <VueRating variant="primary" :value="3" />
-        <VueRating variant="secondary" :value="3" />
-        <VueRating variant="success" :value="3" />
-        <VueRating variant="warning" :value="3" />
-        <VueRating variant="danger" :value="3" />
-        <VueRating variant="monochrome" :value="3" />
+      <div
+        class="mbe4"
+        style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;"
+      >
+        <VueRating
+          variant="primary"
+          :value="3"
+        />
+        <VueRating
+          variant="secondary"
+          :value="3"
+        />
+        <VueRating
+          variant="success"
+          :value="3"
+        />
+        <VueRating
+          variant="warning"
+          :value="3"
+        />
+        <VueRating
+          variant="danger"
+          :value="3"
+        />
+        <VueRating
+          variant="monochrome"
+          :value="3"
+        />
       </div>
     </div>
 
     <div class="mbe4">
-      <h3>Event Handling</h3>
+      <h2>Event Handling</h2>
       <p class="mbs2 mbe3">Listen for `rating-change` and `rating-hover` events.</p>
       <div>
         <VueRating
@@ -65,7 +107,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Form Control Features</h3>
+      <h2>Form Control Features</h2>
       <p class="mbs2 mbe3">
         Rating supports labels, helper text, validation, and label positioning for form integration.
       </p>
@@ -116,11 +158,14 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the component's appearance.
       </p>
-      <VueRating :value="4" class="custom-rating" />
+      <VueRating
+        :value="4"
+        class="custom-rating"
+      />
     </div>
   </section>
 </template>
@@ -128,7 +173,10 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { VueRating } from "agnosticui-core/rating/vue";
-import type { RatingChangeEvent, RatingHoverEvent } from "agnosticui-core/rating/vue";
+import type {
+  RatingChangeEvent,
+  RatingHoverEvent,
+} from "agnosticui-core/rating/vue";
 
 export default defineComponent({
   name: "RatingExamples",
@@ -138,7 +186,7 @@ export default defineComponent({
   setup() {
     const eventValue = ref(3);
     const hoverValue = ref(0);
-    const lastEvent = ref('');
+    const lastEvent = ref("");
 
     const handleRatingChange = (e: RatingChangeEvent) => {
       eventValue.value = e.detail.newValue;
@@ -157,7 +205,7 @@ export default defineComponent({
       handleRatingChange,
       handleRatingHover,
     };
-  }
+  },
 });
 </script>
 

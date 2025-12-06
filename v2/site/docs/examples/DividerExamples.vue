@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Horizontal Dividers</h3>
+      <h2>Horizontal Dividers</h2>
     </div>
     <div class="mbe4">
       <p>Content above the divider</p>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Horizontal with Content</h3>
+      <h2>Horizontal with Content</h2>
     </div>
     <div class="mbe4">
       <VueDivider>Centered (default)</VueDivider>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Vertical Dividers</h3>
+      <h2>Vertical Dividers</h2>
     </div>
     <div
       class="mbe4"
@@ -35,7 +35,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sizes - Horizontal</h3>
+      <h2>Sizes - Horizontal</h2>
     </div>
     <div class="mbe4">
       <VueDivider size="small">Small</VueDivider>
@@ -48,7 +48,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sizes - Vertical</h3>
+      <h2>Sizes - Vertical</h2>
     </div>
     <div
       class="mbe4"
@@ -78,7 +78,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Variants</h3>
+      <h2>Variants</h2>
     </div>
     <div class="mbe4">
       <VueDivider variant="default">Default</VueDivider>
@@ -95,7 +95,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the divider's appearance without affecting the component's internal styling.
       </p>

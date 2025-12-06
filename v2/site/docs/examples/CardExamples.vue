@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Default Card</h3>
+      <h2>Default Card</h2>
     </div>
     <div class="stacked-mobile">
       <VueCard>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Card with Header</h3>
+      <h2>Card with Header</h2>
     </div>
     <div class="stacked-mobile">
       <VueCard :shadow="true">
@@ -22,7 +22,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Shadow Card</h3>
+      <h2>Shadow Card</h2>
     </div>
     <div class="stacked-mobile">
       <VueCard :shadow="true">
@@ -32,7 +32,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Animated Card with Footer</h3>
+      <h2>Animated Card with Footer</h2>
     </div>
     <div class="stacked-mobile">
       <VueCard
@@ -52,7 +52,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Rounded Card Variants</h3>
+      <h2>Rounded Card Variants</h2>
       <p class="mbs2 mbe3">Cards can have different border radius sizes: small, medium, or large.</p>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
@@ -71,7 +71,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Stacked Content</h3>
+      <h2>Stacked Content</h2>
     </div>
     <div class="stacked-mobile">
       <VueCard :stacked="true">
@@ -83,7 +83,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Variant Cards</h3>
+      <h2>Variant Cards</h2>
     </div>
     <div class="stacked">
       <VueCard
@@ -124,7 +124,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Card with Slots (Header and Footer)</h3>
+      <h2>Card with Slots (Header and Footer)</h2>
     </div>
     <div class="stacked-mobile">
       <VueCard :shadow="true">
@@ -147,7 +147,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Combined Features</h3>
+      <h2>Combined Features</h2>
     </div>
     <div class="stacked-mobile">
       <VueCard
@@ -163,7 +163,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Card Gallery</h3>
+      <h2>Card Gallery</h2>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
       <VueCard
@@ -233,7 +233,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Customized with CSS Shadow Parts</h3>
+      <h2>Customized with CSS Shadow Parts</h2>
     </div>
     <div class="stacked-mobile">
       <VueCard

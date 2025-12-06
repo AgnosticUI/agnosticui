@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Accordion (Default)</h3>
+      <h2>Basic Accordion (Default)</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"
@@ -33,7 +33,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>X Indicator</h3>
+      <h2>X Indicator</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"
@@ -65,7 +65,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Plus/Minus Indicator</h3>
+      <h2>Plus/Minus Indicator</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"
@@ -97,7 +97,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>No Indicator</h3>
+      <h2>No Indicator</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"
@@ -129,7 +129,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Bordered</h3>
+      <h2>Bordered</h2>
     </div>
     <div class="stacked mbe4">
       <VueAccordion>
@@ -164,7 +164,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Background</h3>
+      <h2>With Background</h2>
     </div>
     <div class="stacked mbe4">
       <VueAccordion>
@@ -199,7 +199,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>One Item Open</h3>
+      <h2>One Item Open</h2>
     </div>
     <div class="stacked mbe4">
       <VueAccordion>
@@ -228,7 +228,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Disabled State</h3>
+      <h2>Disabled State</h2>
     </div>
     <div class="stacked mbe4">
       <VueAccordion>
@@ -257,7 +257,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Rich Content</h3>
+      <h2>Rich Content</h2>
     </div>
     <div class="stacked mbe4">
       <VueAccordion>
@@ -334,7 +334,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Parts Customization</h3>
+      <h2>CSS Parts Customization</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"

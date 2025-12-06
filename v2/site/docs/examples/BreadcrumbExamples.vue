@@ -2,7 +2,7 @@
   <section>
     <div class="mbe4">
       <div class="mbe2">
-        <h3>Default</h3>
+        <h2>Default</h2>
       </div>
       <VueBreadcrumb
         :items="items"
@@ -11,7 +11,7 @@
     </div>
     <div class="mbe4">
       <div class="mbe2">
-        <h3>Types</h3>
+        <h2>Types</h2>
       </div>
       <VueBreadcrumb
         class="mbe4"
@@ -41,7 +41,7 @@
 
     <div class="mbe4">
       <div class="mbe2">
-        <h3>CSS Shadow Parts Customization</h3>
+        <h2>CSS Shadow Parts Customization</h2>
         <p style="margin-top: 0.5rem; margin-bottom: 1rem; color: var(--vp-c-text-2);">
           Breadcrumb can be customized using CSS Shadow Parts:
           <code>::part(ag-breadcrumb-item)</code>,

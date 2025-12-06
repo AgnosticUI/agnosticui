@@ -11,7 +11,7 @@
 
     <!-- Rounded -->
     <div class="mbe2">
-      <h3>Rounded Variants</h3>
+      <h2>Rounded Variants</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueButton
@@ -52,7 +52,7 @@
 
     <!-- Shapes -->
     <div class="mbe2">
-      <h3>Shapes</h3>
+      <h2>Shapes</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueButton
@@ -92,7 +92,7 @@
 
     <!-- Bordered -->
     <div class="mbe2">
-      <h3>Bordered</h3>
+      <h2>Bordered</h2>
     </div>
 
     <div class="stacked-mobile mbe4">
@@ -146,7 +146,7 @@
     </div>
     <!-- Sizes -->
     <div class="mbe2">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
     </div>
 
     <div class="stacked-mobile mbe4">
@@ -568,7 +568,7 @@
     <!-- Icons -->
     <!-- Icons Small -->
     <div class="mbe2">
-      <h3>Icons Small</h3>
+      <h2>Icons Small</h2>
     </div>
 
     <div class="stacked-mobile mbe4">
@@ -614,7 +614,7 @@
 
     <!-- Icons Only -->
     <div class="mbe2">
-      <h3>Icons Only</h3>
+      <h2>Icons Only</h2>
       <p>To create an accessible icon-only button, wrap the icon component with a <code>&lt;ag-button&gt;</code> element and provide an accessible label using the <code>VisuallyHidden</code> component.</p>
       <p>This ensures screen reader users understand the button's action without a visible text label. Ensure you also provide a clear <code>title</code> attribute for mouse users who hover over the icon.</p>
     </div>
@@ -640,7 +640,7 @@
 
     <!-- Icons -->
     <div class="mbe2">
-      <h3>Icons</h3>
+      <h2>Icons</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <div
@@ -680,7 +680,7 @@
 
     <!-- Grouped -->
     <div class="mbe2">
-      <h3>Grouped</h3>
+      <h2>Grouped</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <div
@@ -780,7 +780,7 @@
     </div>
     <!-- Misc -->
     <div class="mbe2">
-      <h3>Miscellaneous</h3>
+      <h2>Miscellaneous</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueButton
@@ -815,7 +815,7 @@
 
     <!-- CSS Parts Customization -->
     <div class="mbe4">
-      <h3>CSS Parts Customization</h3>
+      <h2>CSS Parts Customization</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"

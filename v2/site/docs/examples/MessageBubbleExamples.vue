@@ -2,7 +2,7 @@
   <section>
     <!-- Interactive Chat Demo -->
     <div class="mbe4">
-      <h3>Interactive Chat Demo</h3>
+      <h2>Interactive Chat Demo</h2>
       <p>Type a message and click Send to add it to the conversation. This demonstrates real-world integration with VueInput and VueButton.</p>
     </div>
     <div class="chat-demo-container mbe6">
@@ -86,7 +86,7 @@
 
     <!-- Basic Example -->
     <div class="mbe4">
-      <h3>Basic Message Bubbles</h3>
+      <h2>Basic Message Bubbles</h2>
       <p>Messages can be sent from "me" or "them" with author, time, and optional footer.</p>
     </div>
     <div class="message-container mbe6">
@@ -118,7 +118,7 @@
 
     <!-- Delivery Status -->
     <div class="mbe4">
-      <h3>Delivery Status</h3>
+      <h2>Delivery Status</h2>
       <p>Use the footer prop to display delivery status indicators.</p>
     </div>
     <div class="message-container mbe6">
@@ -154,7 +154,7 @@
 
     <!-- Color Variants -->
     <div class="mbe4">
-      <h3>Color Variants</h3>
+      <h2>Color Variants</h2>
       <p>Different semantic variants for various message types.</p>
     </div>
     <div class="message-container mbe6">
@@ -255,7 +255,7 @@
 
     <!-- With Avatars -->
     <div class="mbe4">
-      <h3>With Avatar URLs</h3>
+      <h2>With Avatar URLs</h2>
       <p>Display user avatars using the avatarUrl prop.</p>
     </div>
     <div class="message-container mbe6">
@@ -277,7 +277,7 @@
 
     <!-- Custom Avatar Slot -->
     <div class="mbe4">
-      <h3>Custom Avatar Component</h3>
+      <h2>Custom Avatar Component</h2>
       <p>Use the avatar slot to provide custom avatar components with more control.</p>
     </div>
     <div class="message-container mbe6">
@@ -329,7 +329,7 @@
 
     <!-- Long Content -->
     <div class="mbe4">
-      <h3>Long Content</h3>
+      <h2>Long Content</h2>
       <p>Message bubbles adapt to longer content with proper text wrapping.</p>
     </div>
     <div class="message-container mbe6">

@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Dialog</h3>
+      <h2>Basic Dialog</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueButton @click="showBasicDialog">Open Basic Dialog</VueButton>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Header and Footer</h3>
+      <h2>With Header and Footer</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueButton @click="showHeaderFooterDialog">Open Dialog with Header/Footer</VueButton>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Close Button</h3>
+      <h2>With Close Button</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueButton @click="showCloseButtonDialog">Open Dialog with Close Button</VueButton>
@@ -52,7 +52,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>No Close on Escape</h3>
+      <h2>No Close on Escape</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueButton @click="showNoEscapeDialog">Open No Escape Dialog</VueButton>
@@ -69,7 +69,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>No Close on Backdrop</h3>
+      <h2>No Close on Backdrop</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueButton @click="showNoBackdropDialog">Open No Backdrop Close Dialog</VueButton>
@@ -86,7 +86,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Event Handling</h3>
+      <h2>Event Handling</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueButton @click="showEventDialog">Open Event Dialog</VueButton>
@@ -115,7 +115,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Customized with CSS Shadow Parts</h3>
+      <h2>Customized with CSS Shadow Parts</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueButton @click="showCustomDialog">Open Customized Dialog</VueButton>

@@ -2,7 +2,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Copy Button</h3>
+      <h2>Basic Copy Button</h2>
     </div>
 
     <div class="stacked-mobile mbe4">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Projected Icons</h3>
+      <h2>Projected Icons</h2>
     </div>
 
     <div class="stacked-mobile mbe4">
@@ -59,7 +59,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sizes & Variants</h3>
+      <h2>Sizes & Variants</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueCopyButton
@@ -108,7 +108,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Inline Code Example</h3>
+      <h2>Inline Code Example</h2>
     </div>
     <div class="code-example mbe4">
       <pre><code>npm install agnosticui-core</code></pre>
@@ -122,7 +122,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Copy From Input</h3>
+      <h2>Copy From Input</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"

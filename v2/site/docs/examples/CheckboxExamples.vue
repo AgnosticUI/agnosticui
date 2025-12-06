@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Default Checkbox</h3>
+      <h2>Default Checkbox</h2>
       <p class="mbs2 mbe3">Basic checkbox with default theme (primary)</p>
     </div>
     <div class="stacked-mobile mbe4">
@@ -19,10 +19,13 @@
     </div>
 
     <div class="mbe4">
-      <h3>Checkbox Group</h3>
+      <h2>Checkbox Group</h2>
       <p class="mbs2 mbe3">Multiple checkboxes grouped together with a fieldset</p>
     </div>
-    <VueFieldset legend="Select your interests" class="mbe4">
+    <VueFieldset
+      legend="Select your interests"
+      class="mbe4"
+    >
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <VueCheckbox
           name="interests"
@@ -50,7 +53,7 @@
     </VueFieldset>
 
     <div class="mbe4">
-      <h3>Indeterminate State</h3>
+      <h2>Indeterminate State</h2>
       <p class="mbs2 mbe3">Used for "select all" scenarios where some items are selected. Simply supply the <i>indeterminate</i> attribute to activate.</p>
     </div>
     <div
@@ -85,7 +88,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Size Variants</h3>
+      <h2>Size Variants</h2>
       <p class="mbs2 mbe3">Three size options: small, medium (default), and large</p>
     </div>
     <div
@@ -116,7 +119,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Theme Variants</h3>
+      <h2>Theme Variants</h2>
       <p class="mbs2 mbe3">Choose from default (green), primary (blue), or monochrome (black/white) themes</p>
     </div>
     <div
@@ -223,7 +226,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Disabled State</h3>
+      <h2>Disabled State</h2>
       <p class="mbs2 mbe3">Checkboxes can be disabled to prevent interaction</p>
     </div>
     <div
@@ -253,7 +256,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Label Position</h3>
+      <h2>Label Position</h2>
       <p class="mbs2 mbe3">Labels can be positioned at the end (default) or start of the checkbox</p>
     </div>
     <div
@@ -277,7 +280,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>External Label Support</h3>
+      <h2>External Label Support</h2>
       <p class="mbs2 mbe3">
         Checkboxes support optional external labels, helper text, and error messages for validation feedback.
       </p>
@@ -323,7 +326,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the component's appearance.
       </p>

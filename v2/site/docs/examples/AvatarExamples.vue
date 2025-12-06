@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Text Initials</h3>
+      <h2>Text Initials</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueAvatar text="AB" />
@@ -11,7 +11,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Images</h3>
+      <h2>With Images</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueAvatar
@@ -33,7 +33,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueAvatar
@@ -59,7 +59,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Shapes</h3>
+      <h2>Shapes</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueAvatar
@@ -77,7 +77,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Variants</h3>
+      <h2>Variants</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueAvatar
@@ -107,7 +107,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Icons</h3>
+      <h2>With Icons</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueAvatar>
@@ -125,14 +125,14 @@
     </div>
 
     <div class="mbe4">
-      <h3>Avatar Groups</h3>
+      <h2>Avatar Groups</h2>
       <p class="mbs2 mbe3">
         Group multiple avatars together to represent teams, collaborators, or participants.
       </p>
     </div>
 
     <div class="mbe4">
-      <h4 class="mbe2">Text Avatars</h4>
+      <h2 class="mbe2">Text Avatars</h2>
       <VueAvatarGroup class="avatar-group-bordered">
         <VueAvatar
           text="AB"
@@ -158,7 +158,7 @@
     </div>
 
     <div class="mbe4">
-      <h4 class="mbe2">Image Avatars</h4>
+      <h2 class="mbe2">Image Avatars</h2>
       <VueAvatarGroup class="avatar-group-bordered">
         <VueAvatar
           img-src="https://i.pravatar.cc/150?img=1"
@@ -189,7 +189,7 @@
     </div>
 
     <div class="mbe4">
-      <h4 class="mbe2">Mixed Content</h4>
+      <h2 class="mbe2">Mixed Content</h2>
       <VueAvatarGroup class="avatar-group-bordered">
         <VueAvatar
           text="AB"
@@ -218,7 +218,7 @@
     </div>
 
     <div class="mbe4">
-      <h4 class="mbe2">Different Sizes</h4>
+      <h2 class="mbe2">Different Sizes</h2>
       <div class="stacked-mobile mbe3">
         <VueAvatarGroup class="avatar-group-bordered">
           <VueAvatar
@@ -270,7 +270,7 @@
     </div>
 
     <div class="mbe4">
-      <h4 class="mbe2">With Variants</h4>
+      <h2 class="mbe2">With Variants</h2>
       <VueAvatarGroup class="avatar-group-bordered">
         <VueAvatar
           text="DF"
@@ -306,14 +306,14 @@
     </div>
 
     <div class="mbe4">
-      <h3>Avatar Group Custom Styling</h3>
+      <h2>Avatar Group Custom Styling</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize avatar group layouts and effects.
       </p>
     </div>
 
     <div class="mbe4">
-      <h4 class="mbe2">Custom Spacing (No Overlap)</h4>
+      <h2 class="mbe2">Custom Spacing (No Overlap)</h2>
       <VueAvatarGroup class="custom-avatar-group">
         <VueAvatar
           img-src="https://i.pravatar.cc/150?img=20"
@@ -339,7 +339,7 @@
     </div>
 
     <div class="mbe4">
-      <h4 class="mbe2">Enhanced Hover Effects</h4>
+      <h2 class="mbe2">Enhanced Hover Effects</h2>
       <VueAvatarGroup class="stacked-group">
         <VueAvatar
           text="AB"
@@ -365,7 +365,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the avatar's appearance without
         affecting the component's internal styling. The following are meant

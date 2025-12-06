@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Combobox</h3>
+      <h2>Basic Combobox</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -16,7 +16,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -46,7 +46,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Filter Modes</h3>
+      <h2>Filter Modes</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -70,7 +70,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Clearable</h3>
+      <h2>Clearable</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -86,7 +86,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>States</h3>
+      <h2>States</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -126,7 +126,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Help Text</h3>
+      <h2>With Help Text</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -140,7 +140,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Loading State</h3>
+      <h2>Loading State</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -152,13 +152,16 @@
         placeholder="Loading..."
         class="mbe2"
       />
-      <button @click="toggleLoading" class="btn btn-primary">
+      <button
+        @click="toggleLoading"
+        class="btn btn-primary"
+      >
         {{ isLoading ? 'Stop Loading' : 'Start Loading' }}
       </button>
     </div>
 
     <div class="mbe4">
-      <h3>With Disabled Options</h3>
+      <h2>With Disabled Options</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -172,7 +175,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Custom No Results Text</h3>
+      <h2>Custom No Results Text</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -187,7 +190,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Hidden Label</h3>
+      <h2>Hidden Label</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -202,7 +205,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Monochrome Variant (Single Select)</h3>
+      <h2>Monochrome Variant (Single Select)</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -217,7 +220,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Multiple Select</h3>
+      <h2>Multiple Select</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -234,7 +237,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Multiple with Defaults</h3>
+      <h2>Multiple with Defaults</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -249,7 +252,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Multiple Clearable</h3>
+      <h2>Multiple Clearable</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -266,7 +269,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Multiple with Max Visible Tags</h3>
+      <h2>Multiple with Max Visible Tags</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -282,7 +285,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Multiple Monochrome</h3>
+      <h2>Multiple Monochrome</h2>
     </div>
     <div class="stacked mbe4">
       <VueCombobox
@@ -299,7 +302,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Event Handling</h3>
+      <h2>Event Handling</h2>
     </div>
     <div class="stacked mbe4">
       <div
@@ -323,12 +326,15 @@
     </div>
 
     <div class="mbe4">
-      <h3>External Label Support</h3>
+      <h2>External Label Support</h2>
       <p class="mbs2 mbe3">
         The Combobox component supports external labels with helper text, required fields, and validation states.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 600px;">
+    <div
+      class="mbe4"
+      style="max-width: 600px;"
+    >
       <div class="mbe3">
         <VueCombobox
           :options="stateOptions"
@@ -373,13 +379,16 @@
     </div>
 
     <div class="mbe4">
-      <h3>Label Positioning</h3>
+      <h2>Label Positioning</h2>
       <p class="mbs2 mbe3">
         Control label position with <code>label-position</code>: 'top' (default), 'start', 'end', or 'bottom'.
         <strong>Note:</strong> 'bottom' is not recommended as the dropdown will cover the label when opened.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 600px;">
+    <div
+      class="mbe4"
+      style="max-width: 600px;"
+    >
       <div class="mbe3">
         <VueCombobox
           :options="stateOptions"
@@ -425,88 +434,93 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import VueCombobox from 'agnosticui-core/combobox/vue';
-import type { ComboboxOption } from 'agnosticui-core/combobox';
+import { ref } from "vue";
+import VueCombobox from "agnosticui-core/combobox/vue";
+import type { ComboboxOption } from "agnosticui-core/combobox";
 
 // State options
 const stateOptions: ComboboxOption[] = [
-  { value: 'al', label: 'Alabama' },
-  { value: 'ak', label: 'Alaska' },
-  { value: 'az', label: 'Arizona' },
-  { value: 'ar', label: 'Arkansas' },
-  { value: 'ca', label: 'California' },
-  { value: 'co', label: 'Colorado' },
-  { value: 'ct', label: 'Connecticut' },
-  { value: 'de', label: 'Delaware' },
-  { value: 'fl', label: 'Florida' },
-  { value: 'ga', label: 'Georgia' },
+  { value: "al", label: "Alabama" },
+  { value: "ak", label: "Alaska" },
+  { value: "az", label: "Arizona" },
+  { value: "ar", label: "Arkansas" },
+  { value: "ca", label: "California" },
+  { value: "co", label: "Colorado" },
+  { value: "ct", label: "Connecticut" },
+  { value: "de", label: "Delaware" },
+  { value: "fl", label: "Florida" },
+  { value: "ga", label: "Georgia" },
 ];
 
 // Options with some disabled
 const optionsWithDisabled: ComboboxOption[] = [
-  { value: 'ca', label: 'California' },
-  { value: 'co', label: 'Colorado', disabled: true },
-  { value: 'ct', label: 'Connecticut' },
-  { value: 'fl', label: 'Florida', disabled: true },
-  { value: 'ny', label: 'New York' },
+  { value: "ca", label: "California" },
+  { value: "co", label: "Colorado", disabled: true },
+  { value: "ct", label: "Connecticut" },
+  { value: "fl", label: "Florida", disabled: true },
+  { value: "ny", label: "New York" },
 ];
 
 // Basic
-const selectedState = ref('');
+const selectedState = ref("");
 
 // Sizes
-const sizeSmall = ref('');
-const sizeDefault = ref('');
-const sizeLarge = ref('');
+const sizeSmall = ref("");
+const sizeDefault = ref("");
+const sizeLarge = ref("");
 
 // Filter modes
-const filterStartsWith = ref('');
-const filterContains = ref('');
+const filterStartsWith = ref("");
+const filterContains = ref("");
 
 // Clearable
-const clearableValue = ref('ca');
+const clearableValue = ref("ca");
 
 // States
-const stateDisabled = ref('ca');
-const stateReadonly = ref('co');
-const stateRequired = ref('');
-const stateInvalid = ref('');
+const stateDisabled = ref("ca");
+const stateReadonly = ref("co");
+const stateRequired = ref("");
+const stateInvalid = ref("");
 
 // Help text
-const helpTextValue = ref('');
+const helpTextValue = ref("");
 
 // Loading
-const loadingValue = ref('');
+const loadingValue = ref("");
 const loadingOptions = ref<ComboboxOption[]>([]);
 const isLoading = ref(false);
 
 // Disabled options
-const disabledOptionsValue = ref('');
+const disabledOptionsValue = ref("");
 
 // Custom no results
-const customNoResults = ref('');
+const customNoResults = ref("");
 
 // Hidden label
-const hiddenLabelValue = ref('');
+const hiddenLabelValue = ref("");
 
 // Monochrome
-const monochromeValue = ref('');
+const monochromeValue = ref("");
 
 // Multiple select
 const multipleValue = ref<string[]>([]);
-const multipleClearable = ref<string[]>(['ny', 'co']);
+const multipleClearable = ref<string[]>(["ny", "co"]);
 const multipleMonochrome = ref<string[]>([]);
 
 // Event handling
-const eventTestValue = ref('');
+const eventTestValue = ref("");
 const lastEvent = ref<string | null>(null);
 const lastSelectedValue = ref<string | null>(null);
 
-const handleChange = (detail: { value: string; option: ComboboxOption | null }) => {
+const handleChange = (detail: {
+  value: string;
+  option: ComboboxOption | null;
+}) => {
   lastSelectedValue.value = detail.value;
-  const optionLabel = detail.option ? detail.option.label : 'cleared';
-  lastEvent.value = `change (value: ${detail.value || 'none'}, option: ${optionLabel})`;
+  const optionLabel = detail.option ? detail.option.label : "cleared";
+  lastEvent.value = `change (value: ${
+    detail.value || "none"
+  }, option: ${optionLabel})`;
 };
 
 const handleSelect = (detail: { option: ComboboxOption; value: string }) => {
@@ -515,13 +529,18 @@ const handleSelect = (detail: { option: ComboboxOption; value: string }) => {
 };
 
 const handleSearch = (detail: { searchTerm: string }) => {
-  const selectedInfo = lastSelectedValue.value ? `, selected: ${lastSelectedValue.value}` : '';
+  const selectedInfo = lastSelectedValue.value
+    ? `, selected: ${lastSelectedValue.value}`
+    : "";
   lastEvent.value = `search (searchTerm: "${detail.searchTerm}"${selectedInfo})`;
 };
 
 // Basic state change handler
-const handleStateChange = (detail: { value: string; option: ComboboxOption | null }) => {
-  console.log('State changed:', detail);
+const handleStateChange = (detail: {
+  value: string;
+  option: ComboboxOption | null;
+}) => {
+  console.log("State changed:", detail);
 };
 
 // Toggle loading
