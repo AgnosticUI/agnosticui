@@ -374,6 +374,34 @@ export default function ResponsiveExample() {
 
 :::
 
+### Understanding `display: contents` and its implications
+
+The `FlexContainer` component (and by extension, `FlexRow`, `FlexCol`, `Stack`, and `Group`) utilizes `display: contents` on its host element. This CSS property removes the container from the accessibility tree and the box tree, making its children appear as direct children of its parent.
+
+**Benefits (Layout Flexibility):**
+
+*   **Seamless integration with parent layouts:** Your flex component can be used directly within any parent CSS Grid or Flexbox layout (e.g., `display: grid; gap: 2rem;`) without creating invalid nesting or extra wrapper divs. The items inside your `FlexContainer` effectively become the items of the grid/flex parent. This offers powerful layout flexibility.
+
+**Inconveniences (Spacing Limitations):**
+
+*   **Host element spacing:** You cannot apply `margin`, `border`, `padding`, or `background` directly to the `FlexContainer` host element itself to space it from its siblings or define its own visual boundaries. These properties will not have an effect due to `display: contents`.
+*   **Workaround for spacing:** To add space between a `FlexContainer` and its siblings, you must use a parent wrapper with a `gap` property or apply margins directly to the `FlexContainer`'s siblings.
+
+**Best Practice for Consumers:**
+
+*   **Documented behavior:** This is an intentional design choice for maximum layout flexibility. Always refer to this documentation for understanding how to style and space `FlexContainer` components.
+*   **Wrapping for external spacing:** If you need to apply margins, borders, or backgrounds directly to the conceptual "box" of your `FlexContainer`, wrap it in a `div` and apply styles to the wrapper.
+*   **Overriding `display: contents` (Advanced):** For advanced use cases where you *must* have the host element generate its own box (e.g., to apply a background or margin directly), you can override the default `display` property using the `--host-display` CSS custom property:
+
+    ```css
+    /* Allows consumer to change display externally */
+    ag-flex-container {
+      --host-display: flex; /* Or block, grid, etc. */
+    }
+    ```
+
+    By setting `--host-display` to `flex` (or `block`, `grid`, etc.), the `FlexContainer` will behave like a regular flex item, and you will be able to apply properties like `margin`, `border`, and `background` directly to it. Be aware that this will alter its integration with parent grid/flex layouts.
+
 ### Available CSS Custom Properties
 
 Control flex behavior using these CSS custom properties:
