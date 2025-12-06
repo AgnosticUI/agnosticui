@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Slider</h3>
+      <h2>Basic Slider</h2>
       <p class="mbs2 mbe3">Single value slider with label</p>
     </div>
     <div class="mbe4">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Dual Range Slider</h3>
+      <h2>Dual Range Slider</h2>
       <p class="mbs2 mbe3">Select a range with two thumbs</p>
     </div>
     <div class="mbe4">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Size Variants</h3>
+      <h2>Size Variants</h2>
       <p class="mbs2 mbe3">Three size options: small, default, and large</p>
     </div>
     <div
@@ -51,7 +51,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Style Variants</h3>
+      <h2>Style Variants</h2>
       <p class="mbs2 mbe3">Choose from filled and monochrome variants</p>
     </div>
     <div
@@ -96,7 +96,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Ticks and Tooltip</h3>
+      <h2>With Ticks and Tooltip</h2>
       <p class="mbs2 mbe3">Display tick marks and value tooltip</p>
     </div>
     <div
@@ -124,7 +124,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Step Increments</h3>
+      <h2>Step Increments</h2>
       <p class="mbs2 mbe3">Control the granularity of value changes. Tick marks show the step intervals.</p>
     </div>
     <div
@@ -155,7 +155,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Custom Range</h3>
+      <h2>Custom Range</h2>
       <p class="mbs2 mbe3">Configure min, max, and step values</p>
     </div>
     <div
@@ -180,7 +180,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Vertical Orientation</h3>
+      <h2>Vertical Orientation</h2>
       <p class="mbs2 mbe3">Vertical sliders for compact layouts</p>
     </div>
     <div
@@ -213,7 +213,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>States</h3>
+      <h2>States</h2>
       <p class="mbs2 mbe3">Disabled, readonly, and invalid states</p>
     </div>
     <div
@@ -241,7 +241,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Help Text</h3>
+      <h2>With Help Text</h2>
       <p class="mbs2 mbe3">Provide additional guidance with help text</p>
     </div>
     <div class="mbe4">
@@ -253,7 +253,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Event Testing</h3>
+      <h2>Event Testing</h2>
       <p class="mbs2 mbe3">
         Demonstrates the dual-dispatch event pattern: both CustomEvents (via @input/@change)
         and native events work simultaneously. Drag the slider to see real-time events.
@@ -293,7 +293,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Dual Range Events</h3>
+      <h2>Dual Range Events</h2>
       <p class="mbs2 mbe3">Event handling with dual range sliders</p>
     </div>
     <div class="mbe4">
@@ -332,7 +332,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the component's appearance.
         These examples show customized track, thumb, and label styling.
@@ -361,12 +361,15 @@
     </div>
 
     <div class="mbe4">
-      <h3>External Label Support</h3>
+      <h2>External Label Support</h2>
       <p class="mbs2 mbe3">
         The Slider component supports external labels with helper text, required fields, and validation states.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 600px;">
+    <div
+      class="mbe4"
+      style="max-width: 600px;"
+    >
       <div class="mbe3">
         <VueSlider
           label="Volume Level"
@@ -411,12 +414,15 @@
     </div>
 
     <div class="mbe4">
-      <h3>Label Positioning</h3>
+      <h2>Label Positioning</h2>
       <p class="mbs2 mbe3">
         Control label position with <code>label-position</code>: 'top' (default), 'start', 'end', or 'bottom'.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 600px;">
+    <div
+      class="mbe4"
+      style="max-width: 600px;"
+    >
       <div class="mbe3">
         <VueSlider
           label="Top Label (Default)"

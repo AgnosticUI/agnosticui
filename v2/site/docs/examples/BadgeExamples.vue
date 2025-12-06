@@ -7,7 +7,7 @@
 
     <!-- Variants -->
     <div class="mbe2">
-      <h3>Variants</h3>
+      <h2>Variants</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueBadge variant="default">Default</VueBadge>
@@ -21,7 +21,7 @@
 
     <!-- Sizes -->
     <div class="mbe2">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueBadge size="xs">Extra Small</VueBadge>
@@ -31,7 +31,7 @@
 
     <!-- Count Badges -->
     <div class="mbe2">
-      <h3>Count Badges</h3>
+      <h2>Count Badges</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueBadge variant="success">1</VueBadge>
@@ -41,7 +41,7 @@
 
     <!-- Dot Badges -->
     <div class="mbe2">
-      <h3>Dot Badges</h3>
+      <h2>Dot Badges</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueBadge
@@ -72,7 +72,7 @@
 
     <!-- Status Indicators -->
     <div class="mbe2">
-      <h3>Status Indicators</h3>
+      <h2>Status Indicators</h2>
     </div>
     <div
       style="display: flex; flex-direction: column; gap: 1rem;"
@@ -109,7 +109,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Positioning Badges</h3>
+      <h2>Positioning Badges</h2>
     </div>
     <VueAlert
       class="mbe2"
@@ -157,7 +157,7 @@
     </div>
     <!-- Badge on Icon -->
     <div class="mbe4">
-      <h3>Badges with Icon</h3>
+      <h2>Badges with Icon</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <div style="position: relative; display: inline-block;">
@@ -305,7 +305,7 @@
       </div>
     </div>
     <div class="mbe4">
-      <h3>Button Icon with Badge</h3>
+      <h2>Button Icon with Badge</h2>
     </div>
     <div style="position: relative; display: inline-block;">
       <VueButton
@@ -379,7 +379,7 @@
     </div>
     <!-- CSS Parts Customization -->
     <div class="mbe4">
-      <h3>CSS Parts Customization</h3>
+      <h2>CSS Parts Customization</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"

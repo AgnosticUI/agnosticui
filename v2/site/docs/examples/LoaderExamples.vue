@@ -1,11 +1,11 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Default</h3>
+      <h2>Default</h2>
       <VueLoader />
     </div>
     <div class="mbe4">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
       <div
         class="flex flex-col items-center"
         style="gap: 24px"
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the loader's appearance.
       </p>

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Default (Icon Only)</h3>
+    <h2>Default (Icon Only)</h2>
     <p>The most common use case - a circular button with just an icon that appears when scrolling down.</p>
     <div class="example-container">
       <p
@@ -17,7 +17,7 @@
   </section>
 
   <section class="example-section">
-    <h3>With Visible Label</h3>
+    <h2>With Visible Label</h2>
     <p>Show both icon and text label for better clarity. The button becomes pill-shaped automatically.</p>
     <VueScrollToButton
       label="Back to Top"
@@ -27,7 +27,7 @@
   </section>
 
   <section class="example-section">
-    <h3>Low Scroll Threshold</h3>
+    <h2>Low Scroll Threshold</h2>
     <p>Control when the button appears by adjusting <code>scrollThreshold</code>. This one appears after just 100px.</p>
     <VueScrollToButton
       label="Quick Access"
@@ -39,7 +39,7 @@
   </section>
 
   <section class="example-section">
-    <h3>Scroll to Bottom</h3>
+    <h2>Scroll to Bottom</h2>
     <p>Navigate to the end of content. The arrow automatically points down based on the target.</p>
     <VueScrollToButton
       :style="{bottom: '160px'}"
@@ -50,7 +50,7 @@
   </section>
 
   <section class="example-section">
-    <h3>Custom Icon with Slot</h3>
+    <h2>Custom Icon with Slot</h2>
     <p>Replace the default arrow with any icon using Vue's slot system.</p>
     <VueScrollToButton
       label="Launch to Top!"
@@ -64,7 +64,7 @@
   </section>
 
   <section class="example-section">
-    <h3>Different Sizes</h3>
+    <h2>Different Sizes</h2>
     <p>Available sizes: <code>x-sm</code>, <code>sm</code>, <code>md</code> (default), <code>lg</code>, <code>xl</code></p>
     <div class="inline-examples">
       <div class="inline-example">
@@ -106,7 +106,7 @@
   </section>
 
   <section class="example-section">
-    <h3>Different Shapes</h3>
+    <h2>Different Shapes</h2>
     <p>Available shapes: <code>circle</code> (default), <code>square</code>, <code>rounded</code>, <code>rounded-square</code>, <code>capsule</code></p>
     <div class="inline-examples">
       <div class="inline-example">
@@ -155,7 +155,7 @@
   </section>
 
   <section class="example-section">
-    <h3>Custom Styling with CSS Shadow Parts</h3>
+    <h2>Custom Styling with CSS Shadow Parts</h2>
     <p>Style internal parts without breaking encapsulation using CSS Shadow Parts.</p>
     <VueScrollToButton
       class="custom-gradient"

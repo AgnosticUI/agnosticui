@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Input</h3>
+      <h2>Basic Input</h2>
     </div>
     <div class="stacked mbe4">
       <VueInput
@@ -28,7 +28,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
     </div>
     <div class="stacked mbe4">
       <VueInput
@@ -55,7 +55,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Shape Variants</h3>
+      <h2>Shape Variants</h2>
     </div>
     <div class="stacked mbe4">
       <VueInput
@@ -95,7 +95,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>States</h3>
+      <h2>States</h2>
     </div>
     <div class="stacked mbe4">
       <VueInput
@@ -137,7 +137,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Textarea</h3>
+      <h2>Textarea</h2>
     </div>
     <div class="stacked mbe4">
       <VueInput
@@ -161,7 +161,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Addons (Automatic Detection)</h3>
+      <h2>With Addons (Automatic Detection)</h2>
       <p style="margin-top: 0.5rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
         Addons are automatically detected when you provide slot content - no props needed!
       </p>
@@ -226,7 +226,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Addons with Style Variants</h3>
+      <h2>Addons with Style Variants</h2>
       <p style="margin-top: 0.5rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
         Addons work seamlessly with all input styling variants
       </p>
@@ -298,7 +298,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Interactive Event Handling</h3>
+      <h2>Interactive Event Handling</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"
@@ -396,7 +396,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Label Positioning</h3>
+      <h2>Label Positioning</h2>
       <p style="margin-top: 0.5rem; color: var(--ag-text-secondary); font-size: 0.875rem;">
         Control label placement with the <code>labelPosition</code> prop: <code>top</code> (default), <code>start</code>, <code>end</code>, or <code>bottom</code>
       </p>
@@ -437,7 +437,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p style="margin-top: 0.5rem; margin-bottom: 1rem; color: var(--vp-c-text-2);">
         Input can be customized using CSS Shadow Parts:
         <code>::part(ag-input)</code>,

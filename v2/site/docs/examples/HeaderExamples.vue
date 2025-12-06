@@ -1,7 +1,7 @@
 <template>
   <section class="ag-header-examples">
     <div class="mbe4">
-      <h3>Basic Header</h3>
+      <h2>Basic Header</h2>
       <p class="mbs2 mbe3">
         A simple header with logo and navigation. On mobile, content stacks vertically. On desktop (≥960px), it displays horizontally.
       </p>
@@ -36,7 +36,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Header with Logo Image</h3>
+      <h2>Header with Logo Image</h2>
     </div>
     <div class="mbe4">
       <VueHeader>
@@ -90,7 +90,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Content Justification</h3>
+      <h2>Content Justification</h2>
       <p class="mbs2 mbe3">
         Control how content is aligned within the header using the <code>contentJustify</code> prop.
       </p>
@@ -203,7 +203,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sticky Header</h3>
+      <h2>Sticky Header</h2>
       <p class="mbs2 mbe3">
         Sticky headers remain visible at the top of the viewport when scrolling. Scroll down in the demo below to see it in action.
       </p>
@@ -246,7 +246,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the header's appearance without affecting its internal structure.
       </p>

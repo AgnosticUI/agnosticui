@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Default</h3>
+      <h2>Default</h2>
       <p class="mbs2 mbe3">Basic keyboard key representation with default styling.</p>
       <div class="stacked-mobile">
         <VueKbd class="mie2">⌘</VueKbd>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Variants</h3>
+      <h2>Variants</h2>
       <p class="mbs2 mbe3">Semantic color variants for different contexts and visual emphasis.</p>
       <div class="stacked mbe3">
         <div class="mbe2">
@@ -165,7 +165,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
       <p class="mbs2 mbe3">Three size options to match different contexts and typography scales.</p>
       <div class="stacked">
         <div class="mbe2">
@@ -220,7 +220,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Background</h3>
+      <h2>With Background</h2>
       <p class="mbs2 mbe3">Add background colors to variants for increased visual emphasis.</p>
       <div class="stacked mbe3">
         <div class="mbe2">
@@ -395,7 +395,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Bordered</h3>
+      <h2>Bordered</h2>
       <p class="mbs2 mbe3">Toggle border styling for different visual treatments.</p>
       <div class="stacked-mobile mbe3">
         <div class="mbe2">
@@ -434,7 +434,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Combined Examples</h3>
+      <h2>Combined Examples</h2>
       <p class="mbs2 mbe3">Combining multiple properties for rich presentations.</p>
       <div class="stacked">
         <div class="mbe2">

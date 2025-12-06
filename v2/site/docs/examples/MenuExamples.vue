@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Menu</h3>
+      <h2>Basic Menu</h2>
     </div>
     <div class="stacked mbe4">
       <VueMenu menu-aria-label="Menu options">
@@ -17,7 +17,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Menu Alignment</h3>
+      <h2>Menu Alignment</h2>
       <p class="mbe4">
         The <code>menu-align</code> prop controls horizontal alignment. Use <code>menu-align="right"</code> when the menu button is near the right edge of the viewport.
       </p>
@@ -53,7 +53,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Menu with Links</h3>
+      <h2>Menu with Links</h2>
     </div>
     <div class="stacked mbe4">
       <VueMenu menu-aria-label="Navigation menu">
@@ -84,7 +84,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Disabled Button</h3>
+      <h2>Disabled Button</h2>
     </div>
     <div class="stacked mbe4">
       <VueMenu
@@ -100,7 +100,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Menu with Disabled Items</h3>
+      <h2>Menu with Disabled Items</h2>
     </div>
     <div class="stacked mbe4">
       <VueMenu menu-aria-label="Menu with disabled items">
@@ -122,7 +122,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Complex Menu (File Menu)</h3>
+      <h2>Complex Menu (File Menu)</h2>
     </div>
     <div class="stacked mbe4">
       <VueMenu menu-aria-label="File menu">
@@ -146,7 +146,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Menu with Sections</h3>
+      <h2>Menu with Sections</h2>
     </div>
     <div class="stacked mbe4">
       <VueMenu menu-aria-label="User menu">
@@ -170,7 +170,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Menu with Icon Button</h3>
+      <h2>Menu with Icon Button</h2>
       <p class="mbe4">
         The following examples show using an icon as the trigger. The <code>menu-variant="icon"</code> removes the chevron and provides a minimal button container for the icon. You can also use an
         icon with the default chevron trigger as we see on the right.
@@ -282,7 +282,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Monochrome Variant</h3>
+      <h2>Monochrome Variant</h2>
     </div>
     <div class="stacked mbe4">
       <VueMenu
@@ -309,7 +309,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Event Handling</h3>
+      <h2>Event Handling</h2>
     </div>
     <div class="stacked mbe4">
       <div
@@ -336,7 +336,7 @@
       </div>
     </div>
     <div class="mbe4">
-      <h3>Menu Types: Navigation vs Selection</h3>
+      <h2>Menu Types: Navigation vs Selection</h2>
       <p class="mbe4">
         The <code>type</code> prop controls selection behavior. Use <code>type="default"</code> (the default) for navigation menus where selection is transient, and <code>type="single-select"</code> for menus where selection should persist (like filters or sorting).
       </p>
@@ -390,7 +390,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Additional Gutter</h3>
+      <h2>Additional Gutter</h2>
       <p class="mbe4">
         The <code>additional-gutter</code> prop adds extra vertical spacing beyond the trigger button's height when positioning the menu. This is useful when the menu button is within a taller container (like a header) and you need the menu to clear that container.
       </p>
@@ -414,7 +414,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Responsive Hidden Items (checkHiddenItems)</h3>
+      <h2>Responsive Hidden Items (checkHiddenItems)</h2>
       <p class="mbe4">
         The <code>check-hidden-items</code> prop enables the menu to skip items that are hidden via CSS (like responsive media queries). This is useful when you wrap menu items in responsive containers but want keyboard navigation to work correctly.
       </p>
@@ -473,7 +473,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Recommended: Conditional Rendering (Better Performance)</h3>
+      <h2>Recommended: Conditional Rendering (Better Performance)</h2>
       <p class="mbe4">
         Instead of using <code>check-hidden-items</code>, you can achieve the same result with better performance by using Vue's conditional rendering (v-if). This removes hidden items from the DOM entirely.
       </p>
@@ -530,7 +530,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Dynamic Icon Switching</h3>
+      <h2>Dynamic Icon Switching</h2>
       <p class="mbe4">
         The menu button exposes a <code>data-menu-open</code> attribute that changes based on the menu state. You can use this with CSS to dynamically switch icons when the menu opens/closes.
       </p>
@@ -572,7 +572,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
     </div>
     <div class="stacked mbe4">
       <div v-html="customMenuStyles"></div>

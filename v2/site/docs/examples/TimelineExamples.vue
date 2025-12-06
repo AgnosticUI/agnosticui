@@ -2,7 +2,7 @@
   <section>
     <!-- Horizontal Timeline -->
     <div class="mbe4">
-      <h3>Horizontal Timeline</h3>
+      <h2>Horizontal Timeline</h2>
     </div>
     <div class="mbe4">
       <AgTimeline
@@ -21,13 +21,16 @@
                 height="18"
                 viewBox="0 0 24 24"
                 width="18"
-              ><path
-                d="M0 0h24v24H0z"
-                fill="none"
-              /><path
-                fill="currentColor"
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-              /></svg>
+              >
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+                <path
+                  fill="currentColor"
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                />
+              </svg>
             </AgIcon>
           </template>
           <template #ag-end>Step 1 Completed</template>
@@ -44,13 +47,16 @@
                 height="18"
                 viewBox="0 0 24 24"
                 width="18"
-              ><path
-                d="M0 0h24v24H0z"
-                fill="none"
-              /><path
-                fill="currentColor"
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-              /></svg>
+              >
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+                <path
+                  fill="currentColor"
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                />
+              </svg>
             </AgIcon>
           </template>
           <template #ag-end>Step 2 In Progress</template>
@@ -67,13 +73,16 @@
                 height="18"
                 viewBox="0 0 24 24"
                 width="18"
-              ><path
-                d="M0 0h24v24H0z"
-                fill="none"
-              /><path
-                fill="currentColor"
-                d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
-              /></svg>
+              >
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+                <path
+                  fill="currentColor"
+                  d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                />
+              </svg>
             </AgIcon>
           </template>
           <template #ag-end>Step 3 Pending</template>
@@ -83,7 +92,7 @@
 
     <!-- Vertical Timeline -->
     <div class="mbe4">
-      <h3>Vertical Timeline</h3>
+      <h2>Vertical Timeline</h2>
     </div>
     <div class="mbe4">
       <AgTimeline
@@ -125,7 +134,7 @@
 
     <!-- Vertical with Card at End -->
     <div class="mbe4">
-      <h3>Vertical with Card at End</h3>
+      <h2>Vertical with Card at End</h2>
     </div>
     <div class="mbe4">
       <AgTimeline
@@ -162,7 +171,7 @@
 
     <!-- Vertical with Card at Start -->
     <div class="mbe4">
-      <h3>Vertical with Card at Start</h3>
+      <h2>Vertical with Card at Start</h2>
     </div>
     <div class="mbe4">
       <AgTimeline
@@ -199,7 +208,7 @@
 
     <!-- Vertical Alternating -->
     <div class="mbe4">
-      <h3>Vertical Alternating</h3>
+      <h2>Vertical Alternating</h2>
     </div>
     <div class="mbe4">
       <AgTimeline
@@ -260,7 +269,7 @@
 
     <!-- Vertical Rich -->
     <div class="mbe4">
-      <h3>Vertical Rich</h3>
+      <h2>Vertical Rich</h2>
     </div>
     <div class="mbe4">
       <AgTimeline
@@ -334,12 +343,13 @@
                 height="24"
                 viewBox="0 0 24 24"
                 width="24"
-              ><path
-                d="M0 0h24v24H0z"
-                fill="none"
-              /><path
-                d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
-              /></svg>
+              >
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+              </svg>
             </AgIcon>
           </template>
           <template #ag-end>
@@ -358,10 +368,13 @@
                     height="24"
                     viewBox="0 0 24 24"
                     width="24"
-                  ><path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  /><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.26.36-.65.25-1.01A11.36 11.36 0 019.64 4.44c.09-.5-.3-1.04-.8-1.04H4.4c-.56 0-1.06.48-1.07 1.05-.03 9.3 7.5 16.83 16.8 16.8.57-.01 1.05-.51 1.05-1.07v-4.4c0-.5-.54-.89-1.04-.8z" /></svg>
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.26.36-.65.25-1.01A11.36 11.36 0 019.64 4.44c.09-.5-.3-1.04-.8-1.04H4.4c-.56 0-1.06.48-1.07 1.05-.03 9.3 7.5 16.83 16.8 16.8.57-.01 1.05-.51 1.05-1.07v-4.4c0-.5-.54-.89-1.04-.8z" />
+                  </svg>
                 </AgIconButton>
               </div>
               <p style="margin: 0;">Discuss feedback on the latest release.</p>
@@ -373,7 +386,7 @@
 
     <!-- Order Tracking Timeline -->
     <div class="mbe4">
-      <h3>Order Tracking Timeline</h3>
+      <h2>Order Tracking Timeline</h2>
       <p style="color: var(--ag-text-secondary); font-size: 0.875rem; margin-block-start: 0.5rem;">
         A real-world e-commerce order tracking timeline with custom bordered markers and integrated components.
       </p>
@@ -394,8 +407,18 @@
           </template>
           <template #ag-marker>
             <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--ag-background-primary); border: 2px solid var(--ag-background-primary-inverted); display: flex; align-items: center; justify-content: center;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor" style="color: var(--ag-background-primary-inverted);"/>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                  fill="currentColor"
+                  style="color: var(--ag-background-primary-inverted);"
+                />
               </svg>
             </div>
           </template>
@@ -437,8 +460,18 @@
           </template>
           <template #ag-marker>
             <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--ag-background-primary); border: 2px solid var(--ag-background-primary-inverted); display: flex; align-items: center; justify-content: center;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor" style="color: var(--ag-background-primary-inverted);"/>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                  fill="currentColor"
+                  style="color: var(--ag-background-primary-inverted);"
+                />
               </svg>
             </div>
           </template>
@@ -459,16 +492,28 @@
           </template>
           <template #ag-marker>
             <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--ag-background-primary); border: 2px solid var(--ag-background-primary-inverted); display: flex; align-items: center; justify-content: center;">
-              <AgSpinner size="small" style="--ag-spinner-color: var(--ag-background-primary-inverted); width: 14px; height: 14px;"></AgSpinner>
+              <AgSpinner
+                size="small"
+                style="--ag-spinner-color: var(--ag-background-primary-inverted); width: 14px; height: 14px;"
+              ></AgSpinner>
             </div>
           </template>
           <template #ag-end>
             <AgCard style="background: var(--ag-background-primary); border-color: var(--ag-background-primary-inverted); margin-bottom: var(--ag-space-4);">
               <div style="color: var(--ag-background-primary-inverted); font-weight: 500; margin-block-end: 0.5rem;">Your order is being prepared</div>
               <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <AgBadge type="info" style="--ag-badge-font-size: 0.75rem;">Wireless Headphones</AgBadge>
-                <AgBadge type="info" style="--ag-badge-font-size: 0.75rem;">USB-C Cable</AgBadge>
-                <AgBadge type="info" style="--ag-badge-font-size: 0.75rem;">Phone Case</AgBadge>
+                <AgBadge
+                  type="info"
+                  style="--ag-badge-font-size: 0.75rem;"
+                >Wireless Headphones</AgBadge>
+                <AgBadge
+                  type="info"
+                  style="--ag-badge-font-size: 0.75rem;"
+                >USB-C Cable</AgBadge>
+                <AgBadge
+                  type="info"
+                  style="--ag-badge-font-size: 0.75rem;"
+                >Phone Case</AgBadge>
               </div>
             </AgCard>
           </template>
@@ -553,14 +598,18 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { VueTimeline as AgTimeline, VueTimelineItem as AgTimelineItem } from "agnosticui-core/timeline/vue";
+import {
+  VueTimeline as AgTimeline,
+  VueTimelineItem as AgTimelineItem,
+} from "agnosticui-core/timeline/vue";
 import { VueIcon as AgIcon } from "agnosticui-core/icon/vue";
 import { VueCard as AgCard } from "agnosticui-core/card/vue";
 import VueButton from "agnosticui-core/button/vue";
 import { VueBadge as AgBadge } from "agnosticui-core/badge/vue";
 import { VueIconButton as AgIconButton } from "agnosticui-core/icon-button/vue";
 
-const cardStyle = 'border: 1px solid var(--ag-border); padding: var(--ag-space-2); border-radius: var(--ag-radius); background-color: var(--ag-background); margin-block-end: var(--ag-space-4);';
+const cardStyle =
+  "border: 1px solid var(--ag-border); padding: var(--ag-space-2); border-radius: var(--ag-radius); background-color: var(--ag-background); margin-block-end: var(--ag-space-4);";
 
 export default defineComponent({
   name: "TimelineExamples",

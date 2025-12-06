@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Default</h3>
+      <h2>Default</h2>
       <p class="mbs2 mbe3">Basic tag with neutral styling.</p>
       <div class="stacked-mobile">
         <VueTag>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="mbe4">
-      <h3>Variants</h3>
+      <h2>Variants</h2>
       <p class="mbs2 mbe3">Semantic color variants for status indication.</p>
       <div class="stacked">
         <VueTag
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="mbe4">
-      <h3>Shapes</h3>
+      <h2>Shapes</h2>
       <p class="mbs2 mbe3">Different border-radius options for visual variety.</p>
       <div class="stacked">
         <VueTag
@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="mbe4">
-      <h3>Uppercase Modifier</h3>
+      <h2>Uppercase Modifier</h2>
       <p class="mbs2 mbe3">Transforms text to uppercase with condensed typography.</p>
       <div class="stacked">
         <VueTag
@@ -73,7 +73,7 @@
       </div>
     </div>
     <div class="mbe4">
-      <h3>With Close Slot</h3>
+      <h2>With Close Slot</h2>
       <p class="mbs2 mbe3">Dismissible tags using the named close slot.</p>
       <div class="stacked">
         <VueTag
@@ -111,7 +111,7 @@
       </div>
     </div>
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">Use CSS Shadow Parts to customize the tag's appearance without breaking encapsulation.</p>
       <div class="mbe4">
         <VueTag class="custom-gradient-tag mie4">Gradient Tag</VueTag>

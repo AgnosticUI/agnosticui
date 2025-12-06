@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Default Icon</h3>
+      <h2>Default Icon</h2>
       <p class="mbs2 mbe3">Basic icon with default sizing and neutral styling.</p>
       <div class="stacked-mobile">
         <VueIcon
@@ -14,7 +14,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
       <p class="mbs2 mbe3">Different size variants for the icon wrapper and SVG.</p>
       <div class="stacked-mobile items-center mbe4">
         <VueIcon
@@ -57,7 +57,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Types</h3>
+      <h2>Types</h2>
       <p class="mbs2 mbe3">Semantic types for color theming the icon.</p>
       <div class="stacked-mobile mbe4">
         <VueIcon
@@ -106,7 +106,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Custom SVG</h3>
+      <h2>With Custom SVG</h2>
       <p class="mbs2 mbe3">Using the default slot to provide custom SVG content.</p>
       <div class="stacked-mobile mbe4">
         <VueIcon
@@ -134,7 +134,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the icon's appearance without breaking encapsulation. The following examples are meant solely to show how to utilize CSS shadow parts to create custom icon styles.
       </p>

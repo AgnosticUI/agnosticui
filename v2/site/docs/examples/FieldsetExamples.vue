@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Fieldset</h3>
+      <h2>Basic Fieldset</h2>
       <p class="mbs2 mbe3">Group related form controls with a descriptive legend</p>
     </div>
     <VueFieldset
@@ -64,7 +64,7 @@
     </VueFieldset>
 
     <div class="mbe4">
-      <h3>Bordered Fieldset</h3>
+      <h2>Bordered Fieldset</h2>
       <p class="mbs2 mbe3">Add visual borders and padding for better content grouping</p>
     </div>
     <VueFieldset
@@ -122,7 +122,7 @@
     </VueFieldset>
 
     <div class="mbe4">
-      <h3>Radio Button Group</h3>
+      <h2>Radio Button Group</h2>
       <p class="mbs2 mbe3">Use fieldset to group related radio button choices</p>
     </div>
     <VueFieldset
@@ -163,7 +163,7 @@
     </VueFieldset>
 
     <div class="mbe4">
-      <h3>Checkbox Group</h3>
+      <h2>Checkbox Group</h2>
       <p class="mbs2 mbe3">Group multiple checkboxes for selecting multiple options</p>
     </div>
     <VueFieldset
@@ -204,7 +204,7 @@
     </VueFieldset>
 
     <div class="mbe4">
-      <h3>Horizontal Layout</h3>
+      <h2>Horizontal Layout</h2>
       <p class="mbs2 mbe3">Arrange form controls horizontally with flexible wrapping</p>
     </div>
     <VueFieldset
@@ -237,7 +237,7 @@
     </VueFieldset>
 
     <div class="mbe4">
-      <h3>Visually Hidden Legend</h3>
+      <h2>Visually Hidden Legend</h2>
       <p class="mbs2 mbe3">Hide legend visually while keeping it accessible to screen readers</p>
     </div>
     <VueFieldset
@@ -280,7 +280,7 @@
     </VueFieldset>
 
     <div class="mbe4">
-      <h3>Nested Fieldsets</h3>
+      <h2>Nested Fieldsets</h2>
       <p class="mbs2 mbe3">Organize complex forms with nested groupings and action buttons</p>
     </div>
     <div class="mbe6">
@@ -393,7 +393,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Complete Checkout Form</h3>
+      <h2>Complete Checkout Form</h2>
       <p class="mbs2 mbe3">Realistic payment form with validation and action buttons</p>
     </div>
     <div class="mbe6">
@@ -499,7 +499,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Compact Forms with Small Components</h3>
+      <h2>Compact Forms with Small Components</h2>
       <p class="mbs2 mbe3">Create compact UIs with small inputs, buttons, and fieldsets</p>
     </div>
     <div
@@ -638,7 +638,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the component's appearance:
         <code>::part(ag-fieldset)</code>,

@@ -5,7 +5,7 @@
       class="mbe4"
       style="background: var(--ag-background-secondary); padding: var(--ag-space-4); border-radius: var(--ag-radius-md); position: sticky; top: 0; z-index: 1000;"
     >
-      <h3 style="margin-top: 0;">Active Scroll Indicators</h3>
+      <h2 style="margin-top: 0;">Active Scroll Indicators</h2>
       <p
         class="mbs2 mbe3"
         style="font-size: 0.875rem; color: var(--ag-text-secondary);"
@@ -73,7 +73,7 @@
 
     <!-- Individual Mode Explanations -->
     <div class="mbe4">
-      <h3>Bar Mode</h3>
+      <h2>Bar Mode</h2>
       <p class="mbs2 mbe3">
         The classic scroll progress bar. Positioned at the top (or bottom) of the viewport, it provides a clear,
         unobtrusive indication of scroll depth. Perfect for long-form content like articles and documentation.
@@ -88,7 +88,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Dot Trail Mode</h3>
+      <h2>Dot Trail Mode</h2>
       <p class="mbs2 mbe3">
         A minimalist approach using a trail of dots. As you scroll, dots fill from left to right.
         Great for presentations, multi-step forms, or when you want a less prominent indicator.
@@ -103,7 +103,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Badge Mode</h3>
+      <h2>Badge Mode</h2>
       <p class="mbs2 mbe3">
         Displays the exact scroll percentage in a badge. Useful when users need precise feedback
         about their position in the content. Can be positioned anywhere on the page.
@@ -118,7 +118,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Ring Mode</h3>
+      <h2>Ring Mode</h2>
       <p class="mbs2 mbe3">
         A circular progress ring that fills as you scroll. Often paired with floating action buttons
         or scroll-to-top functionality. Provides an elegant, space-efficient indicator.
@@ -135,7 +135,7 @@
 
     <!-- Size Variants (Bar Mode) -->
     <div class="mbe4">
-      <h3>Bar Size Variants</h3>
+      <h2>Bar Size Variants</h2>
       <p class="mbs2 mbe3">Progress bars support three sizes via the underlying Progress component.</p>
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
@@ -161,7 +161,7 @@
 
     <!-- Precision Control -->
     <div class="mbe4">
-      <h3>Precision Control</h3>
+      <h2>Precision Control</h2>
       <p class="mbs2 mbe3">Control decimal places in percentage display with the <code>precision</code> prop.</p>
       <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
         <div style="text-align: center;">
@@ -199,7 +199,7 @@
 
     <!-- Variants -->
     <div class="mbe4">
-      <h3>Color Variants</h3>
+      <h2>Color Variants</h2>
       <p class="mbs2 mbe3">Both badge and ring modes support color variants.</p>
 
       <h4 style="font-size: 1rem; margin-bottom: 1rem;">Badge Variants</h4>
@@ -283,7 +283,7 @@
 
     <!-- Scrollable content to demonstrate -->
     <div class="mbe4">
-      <h3>Keep Scrolling!</h3>
+      <h2>Keep Scrolling!</h2>
       <p class="mbs2 mbe3">Scroll down to see the active progress indicators update in real-time.</p>
       <div style="background: var(--ag-background-secondary); padding: var(--ag-space-4); border-radius: var(--ag-radius-md);">
         <p
@@ -301,7 +301,7 @@
       class="mbe4"
       style="text-align: center; padding: var(--ag-space-8) 0;"
     >
-      <h3>🎉 You've reached the end!</h3>
+      <h2>🎉 You've reached the end!</h2>
       <p style="color: var(--ag-text-secondary);">Notice how all active progress indicators show 100%</p>
     </div>
   </section>

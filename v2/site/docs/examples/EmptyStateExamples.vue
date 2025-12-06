@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Empty State</h3>
+      <h2>Basic Empty State</h2>
       <p class="mbs2 mbe3">Simple empty state with title and subtitle</p>
     </div>
     <VueEmptyState
@@ -11,7 +11,7 @@
     />
 
     <div class="mbe4">
-      <h3>With Action Button</h3>
+      <h2>With Action Button</h2>
       <p class="mbs2 mbe3">Include a primary action button using the buttonText prop</p>
     </div>
     <VueEmptyState
@@ -22,7 +22,7 @@
     />
 
     <div class="mbe4">
-      <h3>Size Variants</h3>
+      <h2>Size Variants</h2>
       <p class="mbs2 mbe3">Choose from small, medium, or large sizes to fit your layout</p>
     </div>
     <div class="mbe6">
@@ -48,7 +48,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Bordered & Rounded</h3>
+      <h2>Bordered & Rounded</h2>
       <p class="mbs2 mbe3">Add visual separation with borders and rounded corners</p>
     </div>
     <div class="mbe6">
@@ -77,7 +77,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Custom Icons</h3>
+      <h2>Custom Icons</h2>
       <p class="mbs2 mbe3">Provide custom icons that match your context using the icon slot</p>
     </div>
     <div class="mbe6">
@@ -128,7 +128,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Custom Actions</h3>
+      <h2>Custom Actions</h2>
       <p class="mbs2 mbe3">Use the actions slot for complete control over buttons and interactions</p>
     </div>
     <div class="mbe6">
@@ -209,7 +209,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Real-World Examples</h3>
+      <h2>Real-World Examples</h2>
       <p class="mbs2 mbe3">Common patterns for shopping cart, inbox, dashboard, and error states</p>
     </div>
     <div class="mbe6">
@@ -322,7 +322,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>State-Specific Variants</h3>
+      <h2>State-Specific Variants</h2>
       <p class="mbs2 mbe3">Empty states for different scenarios with appropriate icons and actions</p>
     </div>
     <div class="mbe6">
@@ -411,7 +411,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Compact Size Showcase</h3>
+      <h2>Compact Size Showcase</h2>
       <p class="mbs2 mbe3">Small empty states work great in sidebars, cards, or dense layouts</p>
     </div>
     <div
@@ -457,7 +457,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize appearance:
         <code>::part(ag-empty-state)</code>,
@@ -486,7 +486,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Minimal Empty States</h3>
+      <h2>Minimal Empty States</h2>
       <p class="mbs2 mbe3">Simple empty states without icons for clean, understated designs</p>
     </div>
     <div class="mbe6">
@@ -511,7 +511,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Large Welcome States</h3>
+      <h2>Large Welcome States</h2>
       <p class="mbs2 mbe3">Spacious layouts perfect for onboarding and full-page empty states</p>
     </div>
     <VueEmptyState
@@ -532,7 +532,7 @@
     </VueEmptyState>
 
     <div class="mbe4">
-      <h3>Multiple Button Variants</h3>
+      <h2>Multiple Button Variants</h2>
       <p class="mbs2 mbe3">Showcase different button styles in custom actions</p>
     </div>
     <VueEmptyState
@@ -578,7 +578,7 @@
     </VueEmptyState>
 
     <div class="mbe4">
-      <h3>Button Size Variations</h3>
+      <h2>Button Size Variations</h2>
       <p class="mbs2 mbe3">Match button sizes to your empty state size for visual harmony</p>
     </div>
     <VueEmptyState

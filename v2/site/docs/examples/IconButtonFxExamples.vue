@@ -4,7 +4,7 @@
     <!-- Basic Effects -->
     <section class="example-section">
       <div class="mbe4">
-        <h3>Basic Effects</h3>
+        <h2>Basic Effects</h2>
         <p class="example-description">All available effects</p>
       </div>
 
@@ -459,7 +459,7 @@
     <!-- Speed Variations -->
     <section class="example-section">
       <div class="mbe4">
-        <h3>Speed Variations</h3>
+        <h2>Speed Variations</h2>
         <p class="example-description">Control animation speed with the <code>fx-speed</code> prop</p>
       </div>
       <div class="stacked-mobile">
@@ -509,7 +509,7 @@
     <!-- Easing Functions -->
     <section class="example-section">
       <div class="mbe4">
-        <h3>Easing Functions</h3>
+        <h2>Easing Functions</h2>
         <p class="mbe2">Different easing functions create different animation feels</p>
         <VueAlert :bordered-left="true">
           Examples use <code>fx-speed="xl"</code> to make easing differences more visible.
@@ -597,7 +597,7 @@
     <!-- Size Variations -->
     <section class="example-section">
       <div class="mbe4">
-        <h3>Size Variations</h3>
+        <h2>Size Variations</h2>
         <p class="example-description">For <code>xs</code> and <code>sm</code> sizes, use an icon size <code>20px</code> or less, or, allow the icon to scale with: <code>width: 100%</code> and <code>height: 100%</code>.</p>
       </div>
       <div class="stacked-mobile">
@@ -648,7 +648,7 @@
     <!-- Common Use Cases -->
     <section class="example-section">
       <div class="mbe4">
-        <h3>Common Use Cases</h3>
+        <h2>Common Use Cases</h2>
       </div>
 
       <div class="use-case-group">
@@ -756,7 +756,7 @@
     <!-- Disabled Effects -->
     <section class="example-section">
       <div class="mbe4">
-        <h3>Disabling Effects</h3>
+        <h2>Disabling Effects</h2>
         <p class="example-description">
           This button has <code>fx="pulse"</code> but <code>:fx-disabled="true"</code>
           prevents the animation from playing while keeping the button clickable

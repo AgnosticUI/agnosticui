@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Icon Buttons</h3>
+      <h2>Basic Icon Buttons</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueIconButton label="Settings">
@@ -30,7 +30,7 @@
       </VueIconButton>
     </div>
     <div class="flex-inline mbe4">
-      <h3>Variants</h3>
+      <h2>Variants</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueIconButton
@@ -81,7 +81,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Scaled Icons</h3>
+      <h2>Scaled Icons</h2>
       <p class="mbe1">Project raw SVGs directly into the button and prefer em-based sizing so icons scale with the button size.</p>
       <ul>
         <li>Place the SVG directly inside <code>&lt;ag-icon-button&gt;</code> (don't wrap it).</li>
@@ -178,7 +178,7 @@
       </VueIconButton>
     </div>
     <div class="mbe4">
-      <h3>Scaled Icons</h3>
+      <h2>Scaled Icons</h2>
       <p class="mbe1">Project raw SVGs directly into the button and prefer em-based sizing so icons scale with the button size.</p>
       <ul>
         <li>Place the SVG directly inside <code>&lt;ag-icon-button&gt;</code> (don't wrap it).</li>
@@ -193,7 +193,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Toggle Buttons</h3>
+      <h2>Toggle Buttons</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueIconButton
@@ -229,7 +229,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Parts Customization</h3>
+      <h2>CSS Parts Customization</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"

@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Default Radio</h3>
+      <h2>Default Radio</h2>
       <p class="mbs2 mbe3">Basic radio buttons with default theme (primary)</p>
     </div>
     <VueFieldset legend="Choose your plan">
@@ -26,7 +26,7 @@
     </VueFieldset>
 
     <div class="mbe4">
-      <h3>Radio Group</h3>
+      <h2>Radio Group</h2>
       <p class="mbs2 mbe3">Multiple radio button groups</p>
     </div>
     <div
@@ -82,7 +82,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Size Variants</h3>
+      <h2>Size Variants</h2>
       <p class="mbs2 mbe3">Three size options: small, medium (default), and large</p>
     </div>
     <div
@@ -113,7 +113,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Theme Variants</h3>
+      <h2>Theme Variants</h2>
       <p class="mbs2 mbe3">Choose from default (green), primary (blue), or monochrome (black/white) themes</p>
     </div>
     <div
@@ -192,7 +192,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Disabled State</h3>
+      <h2>Disabled State</h2>
       <p class="mbs2 mbe3">Radio buttons can be disabled to prevent interaction</p>
     </div>
     <div
@@ -215,7 +215,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Keyboard Navigation with Disabled Radios</h3>
+      <h2>Keyboard Navigation with Disabled Radios</h2>
       <p class="mbs2 mbe3">
         Disabled radios are automatically skipped when navigating with arrow keys.
         Try using <kbd>↑</kbd> / <kbd>↓</kbd> or <kbd>←</kbd> / <kbd>→</kbd> arrow keys, or <kbd>HOME</kbd> and <kbd>END</kbd> (to jump to start and end respectively) to navigate between options.
@@ -245,7 +245,7 @@
     </VueFieldset>
 
     <div class="mbe4">
-      <h3>Label Position</h3>
+      <h2>Label Position</h2>
       <p class="mbs2 mbe3">Labels can be positioned at the end (default) or start of the radio button</p>
     </div>
     <div
@@ -269,7 +269,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Inline Layout</h3>
+      <h2>Inline Layout</h2>
       <p class="mbs2 mbe3">Radio buttons can be laid out horizontally for compact forms</p>
     </div>
     <VueFieldset legend="Gender">
@@ -294,7 +294,7 @@
     </VueFieldset>
 
     <div class="mbe4">
-      <h3>External Label Support</h3>
+      <h2>External Label Support</h2>
       <p class="mbs2 mbe3">
         Radio buttons support optional external labels, helper text, and error messages for validation feedback.
       </p>
@@ -342,7 +342,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the component's appearance.
       </p>

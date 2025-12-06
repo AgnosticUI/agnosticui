@@ -209,7 +209,7 @@ const reloadStyledImage = () => {
               <TriangleAlert />
             </VueIcon>
           </div>
-          <h3 style="margin-top: 0;">Oops! The image could not be loaded.</h3>
+          <h2 style="margin-top: 0;">Oops! The image could not be loaded.</h2>
         </div>
       </VueImage>
     </div>

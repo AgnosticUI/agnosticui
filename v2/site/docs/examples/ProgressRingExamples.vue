@@ -1,13 +1,13 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Default Progress Ring</h3>
+      <h2>Default Progress Ring</h2>
       <p class="mbs2 mbe3">A basic progress ring component.</p>
       <VueProgressRing :value="75" />
     </div>
 
     <div class="mbe4">
-      <h3>Different Progress Values</h3>
+      <h2>Different Progress Values</h2>
       <p class="mbs2 mbe3">Progress rings showing various completion levels.</p>
       <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
         <VueProgressRing :value="0" />
@@ -19,7 +19,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
       <p class="mbs2 mbe3">Three size options: small, medium (default), and large.</p>
       <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
         <VueProgressRing
@@ -38,7 +38,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Variants</h3>
+      <h2>Variants</h2>
       <p class="mbs2 mbe3">Color variants for different contexts.</p>
       <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
         <div style="text-align: center;">
@@ -80,7 +80,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Custom Labels</h3>
+      <h2>Custom Labels</h2>
       <p class="mbs2 mbe3">Override the default slot to display custom content.</p>
       <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
         <VueProgressRing :value="45">
@@ -102,7 +102,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>No Animation</h3>
+      <h2>No Animation</h2>
       <p class="mbs2 mbe3">Disable the fill animation with the <code>noAnimation</code> prop.</p>
       <VueProgressRing
         :value="65"
@@ -111,7 +111,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Animated Progress</h3>
+      <h2>Animated Progress</h2>
       <p class="mbs2 mbe3">Progress ring with dynamic value updates.</p>
       <div>
         <VueProgressRing
@@ -140,7 +140,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the component's appearance.
       </p>
@@ -151,7 +151,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Real-world Example</h3>
+      <h2>Real-world Example</h2>
       <p class="mbs2 mbe3">Progress rings in a dashboard-style layout.</p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;">
         <div style="padding: 1rem; border: 1px solid #e0e0e0; border-radius: 8px; text-align: center;">

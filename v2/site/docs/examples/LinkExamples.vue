@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Links</h3>
+      <h2>Basic Links</h2>
       <div class="stacked-mobile">
         <VueLink href="#link">Home</VueLink>
         <VueLink href="#link">About</VueLink>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Variant Links</h3>
+      <h2>Variant Links</h2>
       <div class="stacked-mobile">
         <VueLink
           href="#link"
@@ -36,7 +36,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Button-Style Links</h3>
+      <h2>Button-Style Links</h2>
       <div class="stacked-mobile">
         <VueLink
           href="#link"
@@ -71,7 +71,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Button Sizes</h3>
+      <h2>Button Sizes</h2>
       <div class="stacked-mobile">
         <VueLink
           href="#link"
@@ -117,7 +117,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Button Shapes</h3>
+      <h2>Button Shapes</h2>
       <div class="stacked-mobile">
         <VueLink
           href="#link"
@@ -173,7 +173,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Bordered Buttons</h3>
+      <h2>Bordered Buttons</h2>
       <div class="stacked-mobile">
         <VueLink
           href="#link"
@@ -219,7 +219,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Complex Button Combinations</h3>
+      <h2>Complex Button Combinations</h2>
       <div class="stacked-mobile">
         <VueLink
           href="#link"
@@ -254,7 +254,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>External Link</h3>
+      <h2>External Link</h2>
       <div class="stacked-mobile">
         <VueLink
           href="https://github.com"
@@ -274,7 +274,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Disabled Links</h3>
+      <h2>Disabled Links</h2>
       <div class="stacked-mobile">
         <VueLink
           href="#link"
@@ -301,7 +301,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Accessible Icon Links</h3>
+      <h2>Accessible Icon Links</h2>
       <div class="stacked-mobile">
         <VueLink
           href="#download"
@@ -340,7 +340,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Call-to-Action Pattern</h3>
+      <h2>Call-to-Action Pattern</h2>
       <div class="stacked-mobile">
         <VueLink
           href="#signup"
@@ -365,7 +365,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Action Bar Pattern</h3>
+      <h2>Action Bar Pattern</h2>
       <div class="stacked-mobile">
         <VueLink
           href="#edit"

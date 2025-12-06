@@ -9,7 +9,7 @@
       </p>
     </div>
     <div class="mbe4">
-      <h3>Toast Types</h3>
+      <h2>Toast Types</h2>
     </div>
     <div class="stacked mbe4">
       <button
@@ -145,7 +145,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Positions</h3>
+      <h2>Positions</h2>
     </div>
     <div class="stacked mbe4">
       <button
@@ -234,7 +234,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Border Styles</h3>
+      <h2>Border Styles</h2>
     </div>
     <div class="stacked mbe4">
       <button
@@ -290,7 +290,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Auto-Dismiss Options</h3>
+      <h2>Auto-Dismiss Options</h2>
     </div>
     <div class="stacked mbe4">
       <button
@@ -356,7 +356,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Close Button Options</h3>
+      <h2>Close Button Options</h2>
     </div>
     <div class="stacked mbe4">
       <button
@@ -377,7 +377,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Icons</h3>
+      <h2>With Icons</h2>
     </div>
     <div class="stacked mbe4">
       <button
@@ -422,7 +422,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p
         class="mbe2"
         style="color: var(--ag-text-secondary); font-size: 0.875rem;"
@@ -454,7 +454,7 @@
     </div>
     <!-- Implementation Guide -->
     <div class="mbe4 implementation-guide">
-      <h3>Implementation Patterns</h3>
+      <h2>Implementation Patterns</h2>
 
       <div class="guide-section">
         <h4>Single Toast (Recommended)</h4>

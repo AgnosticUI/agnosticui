@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Tooltip</h3>
+      <h2>Basic Tooltip</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueTooltip content="This is a tooltip">
@@ -16,7 +16,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Placement Options</h3>
+      <h2>Placement Options</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueTooltip
@@ -46,7 +46,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Trigger Options</h3>
+      <h2>Trigger Options</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueTooltip
@@ -70,7 +70,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Icon-Only Buttons</h3>
+      <h2>Icon-Only Buttons</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueTooltip content="Edit item">
@@ -117,7 +117,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the tooltip's appearance without affecting the component's internal styling. One drawback is that the arrow part can be tricky to style due to its border-based implementation so we hide it in this example.
       </p>

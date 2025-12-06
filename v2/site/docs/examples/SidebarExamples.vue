@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Default Sidebar with Navigation</h3>
+      <h2>Default Sidebar with Navigation</h2>
       <p>
         Demonstrates the sidebar with navigation items, submenus, and both expanded/collapsed states.
         Click the header toggle to collapse into rail mode (icon-only).
@@ -273,7 +273,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sidebar with Header Actions</h3>
+      <h2>Sidebar with Header Actions</h2>
       <p>
         Demonstrates using <code>ag-header-start</code>, <code>ag-header-end</code>, and <code>ag-header-toggle</code> slots
         for a composable header layout with action buttons.
@@ -380,7 +380,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Sidebar with Built-in Toggle</h3>
+      <h2>Sidebar with Built-in Toggle</h2>
       <p>
         Using <code>show-header-toggle</code> adds a built-in collapse button automatically.
       </p>
@@ -449,7 +449,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Disable Compact Mode</h3>
+      <h2>Disable Compact Mode</h2>
       <p>
         With <code>disable-compact-mode</code>, the sidebar has no intermediate collapsed/rail state.
         It's either fully open (expanded) or completely hidden. This pattern is used in applications like Claude AI Studio.
@@ -536,7 +536,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Active Item Tracking</h3>
+      <h2>Active Item Tracking</h2>
       <p>
         Click navigation items to see the active state change. This demonstrates how to track the current route
         and apply active styling to both top-level and submenu items.

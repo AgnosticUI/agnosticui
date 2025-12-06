@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="mbe2">
-      <h3>Default Toggles</h3>
+      <h2>Default Toggles</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueToggle label="Default toggle" />
@@ -21,7 +21,7 @@
     </div>
 
     <div class="mbe2">
-      <h3>Sizes</h3>
+      <h2>Sizes</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueToggle
@@ -47,7 +47,7 @@
     </div>
 
     <div class="mbe2">
-      <h3>Variants</h3>
+      <h2>Variants</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <VueToggle
@@ -77,7 +77,7 @@
     </div>
 
     <div class="mbe2">
-      <h3>Interactive Examples</h3>
+      <h2>Interactive Examples</h2>
       <p class="mbs2 mbe3">
         Demonstrates event handling with @toggle-change and v-model:checked
       </p>
@@ -131,7 +131,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Labels, Helper Text, and Validation</h3>
+      <h2>Labels, Helper Text, and Validation</h2>
       <p class="mbs2 mbe3">
         The Toggle component supports labels, helper text, required fields, and validation states.
       </p>
@@ -170,7 +170,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Label Positioning</h3>
+      <h2>Label Positioning</h2>
       <p class="mbs2 mbe3">
         Control label position with <code>label-position</code>: 'top' (default), 'start', 'end', or 'bottom'.
       </p>
@@ -210,7 +210,7 @@
     </div>
 
     <div class="mbe2">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
     </div>
     <div class="stacked-mobile mbe4">
       <div v-html="customToggleStyles"></div>

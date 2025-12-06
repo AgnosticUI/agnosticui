@@ -1,24 +1,35 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Indeterminate Progress</h3>
+      <h2>Indeterminate Progress</h2>
       <p class="mbs2 mbe3">When no <code>value</code> is provided, the progress bar is indeterminate.</p>
       <VueProgress label="Loading..." />
     </div>
     <div class="mbe4">
-      <h3>Progress with Value</h3>
+      <h2>Progress with Value</h2>
       <p class="mbs2 mbe3">Set the <code>value</code> prop to a number to show progress.</p>
-      <VueProgress :value="50" label="50% complete" />
+      <VueProgress
+        :value="50"
+        label="50% complete"
+      />
     </div>
     <div class="mbe4">
-      <h3>Progress with Custom Max</h3>
+      <h2>Progress with Custom Max</h2>
       <p class="mbs2 mbe3">Set the <code>max</code> prop to a number to define the maximum value.</p>
-      <VueProgress :value="150" :max="200" label="150 of 200" />
+      <VueProgress
+        :value="150"
+        :max="200"
+        label="150 of 200"
+      />
     </div>
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">Use CSS Shadow Parts to customize the component's appearance.</p>
-      <VueProgress :value="75" label="Customized progress" class="custom-progress" />
+      <VueProgress
+        :value="75"
+        label="Customized progress"
+        class="custom-progress"
+      />
     </div>
   </section>
 </template>

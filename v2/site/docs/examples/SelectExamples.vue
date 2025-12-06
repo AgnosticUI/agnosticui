@@ -1,16 +1,23 @@
 <template>
   <section>
     <div class="mbe4">
-      <h3>Basic Select</h3>
+      <h2>Basic Select</h2>
       <p class="mbs2 mbe3">
         A standard select dropdown with custom styling.
       </p>
     </div>
     <div class="mbe4">
-      <label for="tennis-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+      <label
+        for="tennis-select"
+        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+      >
         Greatest Tennis Player
       </label>
-      <VueSelect id="tennis-select" name="tennis" style="max-width: 400px;">
+      <VueSelect
+        id="tennis-select"
+        name="tennis"
+        style="max-width: 400px;"
+      >
         <option value="">- Select a player -</option>
         <option value="andre">Andre Agassi</option>
         <option value="serena">Serena Williams</option>
@@ -24,17 +31,27 @@
     </div>
 
     <div class="mbe4">
-      <h3>Size Variants</h3>
+      <h2>Size Variants</h2>
       <p class="mbs2 mbe3">
         The Select component comes in three sizes: small, default, and large.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 400px;">
+    <div
+      class="mbe4"
+      style="max-width: 400px;"
+    >
       <div class="mbe3">
-        <label for="small-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+        <label
+          for="small-select"
+          style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+        >
           Small Select
         </label>
-        <VueSelect id="small-select" size="small" name="small">
+        <VueSelect
+          id="small-select"
+          size="small"
+          name="small"
+        >
           <option value="">Select an option</option>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
@@ -43,10 +60,16 @@
       </div>
 
       <div class="mbe3">
-        <label for="default-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+        <label
+          for="default-select"
+          style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+        >
           Default Select
         </label>
-        <VueSelect id="default-select" name="default">
+        <VueSelect
+          id="default-select"
+          name="default"
+        >
           <option value="">Select an option</option>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
@@ -55,10 +78,17 @@
       </div>
 
       <div class="mbe3">
-        <label for="large-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+        <label
+          for="large-select"
+          style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+        >
           Large Select
         </label>
-        <VueSelect id="large-select" size="large" name="large">
+        <VueSelect
+          id="large-select"
+          size="large"
+          name="large"
+        >
           <option value="">Select an option</option>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
@@ -68,16 +98,26 @@
     </div>
 
     <div class="mbe4">
-      <h3>Disabled State</h3>
+      <h2>Disabled State</h2>
       <p class="mbs2 mbe3">
         Selects can be disabled to prevent user interaction.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 400px;">
-      <label for="disabled-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+    <div
+      class="mbe4"
+      style="max-width: 400px;"
+    >
+      <label
+        for="disabled-select"
+        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+      >
         Disabled Select
       </label>
-      <VueSelect id="disabled-select" :disabled="true" name="disabled">
+      <VueSelect
+        id="disabled-select"
+        :disabled="true"
+        name="disabled"
+      >
         <option value="">Cannot select</option>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
@@ -86,13 +126,19 @@
     </div>
 
     <div class="mbe4">
-      <h3>Multiple Selection</h3>
+      <h2>Multiple Selection</h2>
       <p class="mbs2 mbe3">
         Enable multiple selection mode with the <code>multiple</code> prop. Use Ctrl/Cmd + Click to select multiple options.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 400px;">
-      <label for="multiple-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+    <div
+      class="mbe4"
+      style="max-width: 400px;"
+    >
+      <label
+        for="multiple-select"
+        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+      >
         Favorite Tennis Players (Select Multiple)
       </label>
       <VueSelect
@@ -113,13 +159,19 @@
     </div>
 
     <div class="mbe4">
-      <h3>With Change Handler</h3>
+      <h2>With Change Handler</h2>
       <p class="mbs2 mbe3">
         Listen to selection changes with the <code>@change</code> event.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 400px;">
-      <label for="change-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+    <div
+      class="mbe4"
+      style="max-width: 400px;"
+    >
+      <label
+        for="change-select"
+        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+      >
         Select a Fruit
       </label>
       <VueSelect
@@ -133,19 +185,28 @@
         <option value="orange">Orange</option>
         <option value="grape">Grape</option>
       </VueSelect>
-      <p v-if="selectedFruit" style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
+      <p
+        v-if="selectedFruit"
+        style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);"
+      >
         You selected: <strong>{{ selectedFruit }}</strong>
       </p>
     </div>
 
     <div class="mbe4">
-      <h3>With v-model</h3>
+      <h2>With v-model</h2>
       <p class="mbs2 mbe3">
         Use <code>v-model:value</code> for two-way data binding.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 400px;">
-      <label for="vmodel-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+    <div
+      class="mbe4"
+      style="max-width: 400px;"
+    >
+      <label
+        for="vmodel-select"
+        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+      >
         Choose Your Favorite Color
       </label>
       <VueSelect
@@ -159,19 +220,28 @@
         <option value="green">Green</option>
         <option value="purple">Purple</option>
       </VueSelect>
-      <p v-if="selectedColor" style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
+      <p
+        v-if="selectedColor"
+        style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);"
+      >
         Your favorite color is: <strong>{{ selectedColor }}</strong>
       </p>
     </div>
 
     <div class="mbe4">
-      <h3>Multiple Selection with v-model</h3>
+      <h2>Multiple Selection with v-model</h2>
       <p class="mbs2 mbe3">
         Use <code>v-model:value</code> with <code>multiple</code> to manage an array of selected values.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 400px;">
-      <label for="vmodel-multiple-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+    <div
+      class="mbe4"
+      style="max-width: 400px;"
+    >
+      <label
+        for="vmodel-multiple-select"
+        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+      >
         Select Your Favorite Sports (Ctrl/Cmd + Click)
       </label>
       <VueSelect
@@ -187,19 +257,28 @@
         <option value="baseball">Baseball</option>
         <option value="soccer">Soccer</option>
       </VueSelect>
-      <p v-if="selectedSports.length > 0" style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
+      <p
+        v-if="selectedSports.length > 0"
+        style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);"
+      >
         You selected <strong>{{ selectedSports.length }}</strong> sport(s): {{ selectedSports.join(', ') }}
       </p>
     </div>
 
     <div class="mbe4">
-      <h3>Event Handling</h3>
+      <h2>Event Handling</h2>
       <p class="mbs2 mbe3">
         The Select component fires multiple events: <code>@change</code>, <code>@focus</code>, <code>@blur</code>, and <code>@click</code>.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 600px;">
-      <label for="event-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+    <div
+      class="mbe4"
+      style="max-width: 600px;"
+    >
+      <label
+        for="event-select"
+        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+      >
         Interact with this select to see events
       </label>
       <VueSelect
@@ -215,21 +294,30 @@
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
       </VueSelect>
-      <div v-if="eventLog.length > 0" style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);">
+      <div
+        v-if="eventLog.length > 0"
+        style="margin-top: 0.75rem; padding: 0.75rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md);"
+      >
         <strong>Event Log (most recent first):</strong>
         <div style="margin-top: 0.5rem; font-family: monospace; font-size: 0.875rem; line-height: 1.6;">
-          <div v-for="(event, index) in eventLog" :key="index">{{ event }}</div>
+          <div
+            v-for="(event, index) in eventLog"
+            :key="index"
+          >{{ event }}</div>
         </div>
       </div>
     </div>
 
     <div class="mbe4">
-      <h3>External Label Support</h3>
+      <h2>External Label Support</h2>
       <p class="mbs2 mbe3">
         The Select component supports external labels with helper text, required fields, and validation states.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 400px;">
+    <div
+      class="mbe4"
+      style="max-width: 400px;"
+    >
       <div class="mbe3">
         <VueSelect
           label="Favorite Framework"
@@ -289,13 +377,16 @@
     </div>
 
     <div class="mbe4">
-      <h3>Label Positioning</h3>
+      <h2>Label Positioning</h2>
       <p class="mbs2 mbe3">
         Control label position with <code>label-position</code>: 'top' (default), 'start', 'end', or 'bottom'.
         <strong>Note:</strong> 'bottom' is not recommended as the dropdown will cover the label.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 600px;">
+    <div
+      class="mbe4"
+      style="max-width: 600px;"
+    >
       <div class="mbe3">
         <VueSelect
           label="Top Label (Default)"
@@ -351,13 +442,19 @@
     </div>
 
     <div class="mbe4">
-      <h3>CSS Shadow Parts Customization</h3>
+      <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the select's appearance.
       </p>
     </div>
-    <div class="mbe4" style="max-width: 400px;">
-      <label for="custom-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+    <div
+      class="mbe4"
+      style="max-width: 400px;"
+    >
+      <label
+        for="custom-select"
+        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
+      >
         Custom Styled Select
       </label>
       <VueSelect
@@ -376,17 +473,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { VueSelect } from 'agnosticui-core/select/vue';
+import { defineComponent, ref } from "vue";
+import { VueSelect } from "agnosticui-core/select/vue";
 
 export default defineComponent({
-  name: 'SelectExamples',
+  name: "SelectExamples",
   components: {
     VueSelect,
   },
   setup() {
     // Basic @change example
-    const selectedFruit = ref('');
+    const selectedFruit = ref("");
 
     // Vue wrapper emits detail payload directly, not full CustomEvent
     const handleChange = (detail: { value: string | string[] }) => {
@@ -394,7 +491,7 @@ export default defineComponent({
     };
 
     // v-model examples
-    const selectedColor = ref('');
+    const selectedColor = ref("");
     const selectedSports = ref<string[]>([]);
 
     // Event logging example
@@ -410,15 +507,15 @@ export default defineComponent({
     };
 
     const handleFocus = () => {
-      logEvent('@focus');
+      logEvent("@focus");
     };
 
     const handleBlur = () => {
-      logEvent('@blur');
+      logEvent("@blur");
     };
 
     const handleClick = () => {
-      logEvent('@click');
+      logEvent("@click");
     };
 
     return {
