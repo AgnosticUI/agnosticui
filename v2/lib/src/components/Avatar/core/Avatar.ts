@@ -1,5 +1,5 @@
 import { Avatar } from './_Avatar.js';
-import { AvatarGroup } from '../../AvatarGroup/AvatarGroup.js';
+import { AvatarGroup } from './AvatarGroup.js';
 
 if (!customElements.get('ag-avatar')) {
   customElements.define('ag-avatar', Avatar);
@@ -18,4 +18,4 @@ declare global {
 
 // Export everything from implementation
 export * from './_Avatar.js';
-export { AvatarGroup } from '../../AvatarGroup/AvatarGroup.js';
+export { AvatarGroup } from './AvatarGroup.js';
