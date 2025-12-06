@@ -19,6 +19,28 @@ AgnosticUI provides four flex components plus two convenient aliases:
 - **Stack** - Alias for FlexCol (familiar to Mantine/Chakra users)
 - **Group** - Alias for FlexRow (familiar to Mantine users)
 
+## Responsive Control
+
+**Important:** Flex components have **no built-in breakpoints**. All responsive behavior is controlled by **you** using CSS custom properties and your own media queries.
+
+You control flex behavior at different breakpoints by setting CSS custom properties like `--flex-direction`, `--flex-gap`, `--flex-justify`, etc. in your own CSS with your own media queries:
+
+```css
+.my-responsive-layout {
+  --flex-direction: column;
+  --flex-gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .my-responsive-layout {
+    --flex-direction: row;
+    --flex-gap: 2rem;
+  }
+}
+```
+
+The component simply reads these CSS custom properties - you define when and how they change.
+
 ## Usage
 
 ::: details Vue
@@ -307,9 +329,9 @@ Control flex behavior using these CSS custom properties:
 
 ### Responsive Patterns
 
-Use your own media queries to control flex properties at different breakpoints:
+Use your own media queries to control flex properties at different breakpoints. Here are common patterns (you define your own breakpoints):
 
-**Stack on mobile, row on desktop:**
+**Example: Stack on small screens, row on larger screens**
 ```css
 .responsive-direction {
   --flex-direction: column;
@@ -323,7 +345,7 @@ Use your own media queries to control flex properties at different breakpoints:
 }
 ```
 
-**Different gap sizes per breakpoint:**
+**Example: Different gap sizes at different viewport widths**
 ```css
 .responsive-gap {
   --flex-gap: 0.5rem;
@@ -342,7 +364,7 @@ Use your own media queries to control flex properties at different breakpoints:
 }
 ```
 
-**Center on mobile, space-between on desktop:**
+**Example: Center content on small screens, space-between on larger screens**
 ```css
 .responsive-justify {
   --flex-justify: center;
@@ -355,6 +377,8 @@ Use your own media queries to control flex properties at different breakpoints:
   }
 }
 ```
+
+**Note:** The breakpoints shown (641px, 769px, etc.) are just examples. You can use any breakpoints that fit your design.
 
 ## Design Tokens
 
