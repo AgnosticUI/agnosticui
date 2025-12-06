@@ -14,7 +14,9 @@ import {
   getComponentSourcePaths,
   normalizeComponentName,
   scanForSharedDependencies,
+  scanForUtilsDependencies,
   getSharedComponentSourcePaths,
+  getUtilSourcePath,
 } from '../utils/components.js';
 import pc from 'picocolors';
 
@@ -94,6 +96,15 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
       );
       files.push(...sharedFiles);
 
+      // Process utility dependencies
+      const utilFiles = await processUtilsDependencies(
+        files,
+        referencePath,
+        process.cwd() // Project root
+      );
+      // We don't necessarily need to track utils in the component files list for config, 
+      // but we could if we want to version them. For now, let's just ensure they exist.
+      
       results.push({ name: componentName, success: true, files });
       spinner.message(`Added ${componentName}`);
     } catch (error) {
@@ -331,6 +342,11 @@ async function copyAndTransform(src: string, dest: string): Promise<void> {
         content = content.replace(/(from\s+['"]\..+?)\.js(['"])/g, '$1$2');
         content = content.replace(/(import\s+['"]\..+?)\.js(['"])/g, '$1$2');
 
+        // Adjust utility imports for deeper nesting (src/components/ag vs src/components)
+        // ../../../utils/ -> ../../../../utils/
+        content = content.replace(/(from\s+)(['"])(?:\.\.\/){3}utils\//g, '$1$2../../../../utils/');
+        content = content.replace(/(import\s+)(['"])(?:\.\.\/){3}utils\//g, '$1$2../../../../utils/');
+
         await writeFile(destPath, content, 'utf-8');
       } else {
         // Just copy binary or other files
@@ -338,5 +354,87 @@ async function copyAndTransform(src: string, dest: string): Promise<void> {
         await copyFile(srcPath, destPath);
       }
     }
+  }
+}
+
+/**
+ * Process utility dependencies for a list of files
+ */
+async function processUtilsDependencies(
+  files: string[],
+  referencePath: string,
+  projectRoot: string,
+  processed: Set<string> = new Set()
+): Promise<string[]> {
+  const newFiles: string[] = [];
+  
+  for (const fileOrDir of files) {
+    const absPath = path.resolve(process.cwd(), fileOrDir);
+    let filesToScan: string[] = [];
+
+    try {
+      const stats = await stat(absPath);
+      if (stats.isDirectory()) {
+        const children = await readdir(absPath);
+        filesToScan = children
+          .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
+          .map(f => path.join(absPath, f));
+      } else {
+        if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
+          filesToScan = [absPath];
+        }
+      }
+    } catch {
+      continue;
+    }
+
+    for (const file of filesToScan) {
+      const deps = await scanForUtilsDependencies(file);
+
+      for (const dep of deps) {
+        if (processed.has(dep)) continue;
+        processed.add(dep);
+
+        try {
+          const utilFiles = await addUtil(dep, referencePath, projectRoot);
+          newFiles.push(...utilFiles);
+        } catch (error) {
+          logger.warn(`Failed to add utility "${dep}": ${error instanceof Error ? error.message : 'Unknown error'}`);
+        }
+      }
+    }
+  }
+  return newFiles;
+}
+
+/**
+ * Add a utility file
+ */
+async function addUtil(
+  utilName: string,
+  referencePath: string,
+  projectRoot: string
+): Promise<string[]> {
+  const sourcePath = getUtilSourcePath(referencePath, utilName);
+  // specific to AgnosticUI structure: utils are in src/utils
+  const destPath = path.join(projectRoot, 'src/utils', `${utilName}.ts`); // assuming TS for now
+  
+  await ensureDir(path.dirname(destPath));
+  
+  // simple copy
+  const { copyFile } = await import('node:fs/promises');
+  
+  if (await pathExists(sourcePath)) {
+     await copyFile(sourcePath, destPath);
+     return [destPath];
+  } else {
+    // try .js if .ts not found?
+    const sourcePathJs = sourcePath.replace('.ts', '.js');
+    if (await pathExists(sourcePathJs)) {
+       const destPathJs = destPath.replace('.ts', '.js');
+       await copyFile(sourcePathJs, destPathJs);
+       return [destPathJs];
+    }
+    throw new Error(`Utility "${utilName}" not found at ${sourcePath}`);
   }
 }
