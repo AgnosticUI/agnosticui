@@ -47,23 +47,28 @@ The component simply reads these CSS custom properties - you define when and how
 
 **FlexRow, FlexCol, Stack, and Group are just convenience wrappers** - they set default directions but you can override them completely with CSS custom properties:
 
+Using FlexCol but overriding to row on large screens:
+
 ```html
-<!-- Using FlexCol but overriding to row on large screens -->
 <ag-flex-col class="responsive-column">
   <div>Item 1</div>
   <div>Item 2</div>
 </ag-flex-col>
 ```
 
+FlexCol defaults to column, but you can override it:
+
 ```css
 .responsive-column {
-  /* FlexCol defaults to column, but you can override it */
   --flex-direction: column;
 }
+```
 
+Override to row on ultra-wide screens:
+
+```css
 @media (min-width: 1920px) {
   .responsive-column {
-    /* Override to row on ultra-wide screens */
     --flex-direction: row;
   }
 }
@@ -74,6 +79,7 @@ You don't need to use `FlexContainer` for responsive layouts - **any flex compon
 ## Usage
 
 ::: details Vue
+
 ```vue
 <template>
   <div>
@@ -116,34 +122,36 @@ You don't need to use `FlexContainer` for responsive layouts - **any flex compon
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 import {
   VueFlexRow,
   VueFlexCol,
   VueStack,
-  VueGroup
-} from 'agnosticui-core/flex/vue';
+  VueGroup,
+} from "agnosticui-core/flex/vue";
 
 export default defineComponent({
   components: {
     VueFlexRow,
     VueFlexCol,
     VueStack,
-    VueGroup
-  }
+    VueGroup,
+  },
 });
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
 import {
   ReactFlexRow,
   ReactFlexCol,
   ReactStack,
-  ReactGroup
-} from 'agnosticui-core/flex/react';
+  ReactGroup,
+} from "agnosticui-core/flex/react";
 
 export default function Example() {
   return (
@@ -154,7 +162,11 @@ export default function Example() {
         <div>Item 3</div>
       </ReactFlexRow>
 
-      <ReactFlexCol style={{ "--flex-gap": "1rem" } as React.CSSProperties} justify="center" align="center">
+      <ReactFlexCol
+        style={{ "--flex-gap": "1rem" } as React.CSSProperties}
+        justify="center"
+        align="center"
+      >
         <div>Centered Item 1</div>
         <div>Centered Item 2</div>
       </ReactFlexCol>
@@ -164,13 +176,19 @@ export default function Example() {
         <div>End</div>
       </ReactFlexRow>
 
-      <ReactFlexRow style={{ "--flex-gap": "1rem" } as React.CSSProperties} stretchChildren={true}>
+      <ReactFlexRow
+        style={{ "--flex-gap": "1rem" } as React.CSSProperties}
+        stretchChildren={true}
+      >
         <div>Auto width 1</div>
         <div>Auto width 2</div>
         <div>Auto width 3</div>
       </ReactFlexRow>
 
-      <ReactFlexRow style={{ "--flex-gap": "1rem" } as React.CSSProperties} wrap="wrap">
+      <ReactFlexRow
+        style={{ "--flex-gap": "1rem" } as React.CSSProperties}
+        wrap="wrap"
+      >
         {[...Array(10)].map((_, i) => (
           <div key={i}>Item {i + 1}</div>
         ))}
@@ -189,9 +207,11 @@ export default function Example() {
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```typescript
 import { html } from "lit";
 import "agnosticui-core/flex";
@@ -224,22 +244,23 @@ const template = html`
   </ag-flex-row>
 `;
 ```
+
 :::
 
 ## Props
 
 All flex components share the same props from `FlexContainerProps`:
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `direction` | `'row' \| 'row-reverse' \| 'column' \| 'column-reverse'` | `'row'` | Flex direction |
-| `wrap` | `'nowrap' \| 'wrap' \| 'wrap-reverse'` | `'nowrap'` | Whether items wrap |
-| `justify` | `'flex-start' \| 'flex-end' \| 'center' \| 'space-between' \| 'space-around' \| 'space-evenly'` | `'flex-start'` | Main axis alignment |
-| `align` | `'flex-start' \| 'flex-end' \| 'center' \| 'baseline' \| 'stretch'` | `'stretch'` | Cross axis alignment |
-| `alignContent` | `'flex-start' \| 'flex-end' \| 'center' \| 'space-between' \| 'space-around' \| 'space-evenly' \| 'stretch'` | `'stretch'` | Multi-line alignment |
-| `inline` | `boolean` | `false` | Use inline-flex |
-| `reverse` | `boolean` | `false` | Reverse the direction |
-| `stretchChildren` | `boolean` | `false` | Apply flex: 1 1 auto to children |
+| Prop              | Type                                                                                                         | Default        | Description                      |
+| ----------------- | ------------------------------------------------------------------------------------------------------------ | -------------- | -------------------------------- |
+| `direction`       | `'row' \| 'row-reverse' \| 'column' \| 'column-reverse'`                                                     | `'row'`        | Flex direction                   |
+| `wrap`            | `'nowrap' \| 'wrap' \| 'wrap-reverse'`                                                                       | `'nowrap'`     | Whether items wrap               |
+| `justify`         | `'flex-start' \| 'flex-end' \| 'center' \| 'space-between' \| 'space-around' \| 'space-evenly'`              | `'flex-start'` | Main axis alignment              |
+| `align`           | `'flex-start' \| 'flex-end' \| 'center' \| 'baseline' \| 'stretch'`                                          | `'stretch'`    | Cross axis alignment             |
+| `alignContent`    | `'flex-start' \| 'flex-end' \| 'center' \| 'space-between' \| 'space-around' \| 'space-evenly' \| 'stretch'` | `'stretch'`    | Multi-line alignment             |
+| `inline`          | `boolean`                                                                                                    | `false`        | Use inline-flex                  |
+| `reverse`         | `boolean`                                                                                                    | `false`        | Reverse the direction            |
+| `stretchChildren` | `boolean`                                                                                                    | `false`        | Apply flex: 1 1 auto to children |
 
 **Note:** FlexRow defaults `direction` to `'row'`, FlexCol defaults to `'column'`, and FlexInline sets `inline` to `true`. These are just defaults - **you can override any property using CSS custom properties** like `--flex-direction`, `--flex-wrap`, `--flex-justify`, `--flex-align`, etc. (See [Responsive Control](#responsive-control)).
 
@@ -247,13 +268,14 @@ All flex components share the same props from `FlexContainerProps`:
 
 ## CSS Shadow Parts
 
-| Part | Description |
-|------|-------------|
+| Part                | Description              |
+| ------------------- | ------------------------ |
 | `ag-flex-container` | The slot wrapper element |
 
 ## Examples
 
 See the interactive examples above for common flexbox patterns including:
+
 - Basic row and column layouts
 - Centering content
 - Space distribution (between, around, evenly)
@@ -267,6 +289,7 @@ See the interactive examples above for common flexbox patterns including:
 Flex components provide full responsive control through CSS custom properties combined with your own media queries. Use CSS classes with media queries to define responsive behavior:
 
 ::: details Vue
+
 ```vue
 <template>
   <VueFlexRow class="responsive-layout">
@@ -290,11 +313,13 @@ Flex components provide full responsive control through CSS custom properties co
 }
 </style>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactFlexRow } from 'agnosticui-core/flex/react';
+import { ReactFlexRow } from "agnosticui-core/flex/react";
 
 export default function ResponsiveExample() {
   return (
@@ -320,9 +345,11 @@ export default function ResponsiveExample() {
   }
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <ag-flex-row class="responsive-layout">
   <div>Item 1</div>
@@ -344,25 +371,27 @@ export default function ResponsiveExample() {
   }
 }
 ```
+
 :::
 
 ### Available CSS Custom Properties
 
 Control flex behavior using these CSS custom properties:
 
-| Property | Custom Property | Values |
-|----------|----------------|--------|
-| Direction | `--flex-direction` | `row`, `row-reverse`, `column`, `column-reverse` |
-| Wrap | `--flex-wrap` | `nowrap`, `wrap`, `wrap-reverse` |
-| Justify | `--flex-justify` | `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly` |
-| Align | `--flex-align` | `flex-start`, `flex-end`, `center`, `baseline`, `stretch` |
-| Gap | `--flex-gap` | Any valid CSS gap value (e.g., `1rem`, `20px`, `var(--ag-space-4)`) |
+| Property  | Custom Property    | Values                                                                              |
+| --------- | ------------------ | ----------------------------------------------------------------------------------- |
+| Direction | `--flex-direction` | `row`, `row-reverse`, `column`, `column-reverse`                                    |
+| Wrap      | `--flex-wrap`      | `nowrap`, `wrap`, `wrap-reverse`                                                    |
+| Justify   | `--flex-justify`   | `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly` |
+| Align     | `--flex-align`     | `flex-start`, `flex-end`, `center`, `baseline`, `stretch`                           |
+| Gap       | `--flex-gap`       | Any valid CSS gap value (e.g., `1rem`, `20px`, `var(--ag-space-4)`)                 |
 
 ### Responsive Patterns
 
 Use your own media queries to control flex properties at different breakpoints. Here are common patterns (you define your own breakpoints):
 
 **Example: Stack on small screens, row on larger screens**
+
 ```css
 .responsive-direction {
   --flex-direction: column;
@@ -377,6 +406,7 @@ Use your own media queries to control flex properties at different breakpoints. 
 ```
 
 **Example: Different gap sizes at different viewport widths**
+
 ```css
 .responsive-gap {
   --flex-gap: 0.5rem;
@@ -396,6 +426,7 @@ Use your own media queries to control flex properties at different breakpoints. 
 ```
 
 **Example: Center content on small screens, space-between on larger screens**
+
 ```css
 .responsive-justify {
   --flex-justify: center;

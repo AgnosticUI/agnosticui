@@ -2,7 +2,7 @@
   <section>
     <!-- Basic Row Layouts -->
     <div class="mbe4">
-      <h3>Basic Row Layout</h3>
+      <h2>Basic Row Layout</h2>
       <p class="mbs2">Items arranged horizontally with default flex-start alignment.</p>
     </div>
     <div class="mbe4">
@@ -15,7 +15,7 @@
 
     <!-- Centered -->
     <div class="mbe4">
-      <h3>Centered Content</h3>
+      <h2>Centered Content</h2>
       <p class="mbs2">Items centered on both axes.</p>
     </div>
     <div class="mbe4">
@@ -32,7 +32,7 @@
 
     <!-- Space Between -->
     <div class="mbe4">
-      <h3>Space Between</h3>
+      <h2>Space Between</h2>
       <p class="mbs2">Items distributed with space between them.</p>
     </div>
     <div class="mbe4">
@@ -45,7 +45,7 @@
 
     <!-- Space Around -->
     <div class="mbe4">
-      <h3>Space Around</h3>
+      <h2>Space Around</h2>
       <p class="mbs2">Items with equal space around them.</p>
     </div>
     <div class="mbe4">
@@ -58,7 +58,7 @@
 
     <!-- Space Evenly -->
     <div class="mbe4">
-      <h3>Space Evenly</h3>
+      <h2>Space Evenly</h2>
       <p class="mbs2">Items with equal space between and around them.</p>
     </div>
     <div class="mbe4">
@@ -71,7 +71,7 @@
 
     <!-- Stretch Children -->
     <div class="mbe4">
-      <h3>Equal Width Children</h3>
+      <h2>Equal Width Children</h2>
       <p class="mbs2">Using <code>stretch-children</code> to make all items equal width.</p>
     </div>
     <div class="mbe4">
@@ -87,7 +87,7 @@
 
     <!-- Column Layout -->
     <div class="mbe4">
-      <h3>Column Layout</h3>
+      <h2>Column Layout</h2>
       <p class="mbs2">Items stacked vertically using FlexCol.</p>
     </div>
     <div class="mbe4">
@@ -100,7 +100,7 @@
 
     <!-- Wrap -->
     <div class="mbe4">
-      <h3>Wrapping Layout</h3>
+      <h2>Wrapping Layout</h2>
       <p class="mbs2">Items wrap to the next line when needed.</p>
     </div>
     <div class="mbe4">
@@ -122,7 +122,7 @@
 
     <!-- Reverse -->
     <div class="mbe4">
-      <h3>Reverse Direction</h3>
+      <h2>Reverse Direction</h2>
       <p class="mbs2">Reverse the order of items.</p>
     </div>
     <div class="mbe4">
@@ -138,7 +138,7 @@
 
     <!-- Align Items -->
     <div class="mbe4">
-      <h3>Align Items (Cross Axis)</h3>
+      <h2>Align Items (Cross Axis)</h2>
       <p class="mbs2">Different vertical alignments for items of varying heights.</p>
     </div>
     <div class="mbe4">
@@ -199,7 +199,7 @@
 
     <!-- Nested Layouts -->
     <div class="mbe4">
-      <h3>Nested Flex Containers</h3>
+      <h2>Nested Flex Containers</h2>
       <p class="mbs2">Combine flex containers to create complex layouts.</p>
     </div>
     <div class="mbe4">
@@ -238,7 +238,7 @@
 
     <!-- Stack and Group Aliases -->
     <div class="mbe4">
-      <h3>Stack and Group (Aliases)</h3>
+      <h2>Stack and Group (Aliases)</h2>
       <p class="mbs2">Convenient aliases familiar to Mantine and Chakra UI users.</p>
     </div>
     <div class="mbe4">
@@ -264,7 +264,7 @@
 
     <!-- Inline Flex -->
     <div class="mbe4">
-      <h3>Inline Flex</h3>
+      <h2>Inline Flex</h2>
       <p class="mbs2">Inline flex containers that only take up as much width as needed.</p>
     </div>
     <div class="mbe4">
@@ -296,7 +296,7 @@
 
     <!-- Responsive Layouts -->
     <div class="mbe4">
-      <h3>Responsive Layouts</h3>
+      <h2>Responsive Layouts</h2>
       <p class="mbs2">Example using <code>.responsive-direction</code> CSS class to control <code>--flex-direction</code> via media queries. <strong>Resize your browser to see the effect!</strong></p>
     </div>
     <div class="mbe4">
@@ -308,7 +308,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Responsive Gap</h3>
+      <h2>Responsive Gap</h2>
       <p class="mbs2">Example using <code>.responsive-gap</code> CSS class to control <code>--flex-gap</code> at different viewport widths.</p>
     </div>
     <div class="mbe4">
@@ -320,7 +320,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Responsive Justify</h3>
+      <h2>Responsive Justify</h2>
       <p class="mbs2">Example using <code>.responsive-justify</code> CSS class to control <code>--flex-justify</code> via media queries.</p>
     </div>
     <div class="mbe4">
@@ -332,7 +332,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Responsive Card Grid</h3>
+      <h2>Responsive Card Grid</h2>
       <p class="mbs2">Example using <code>.responsive-cards</code> CSS class to create a responsive card grid with consumer-defined breakpoints.</p>
     </div>
     <div class="mbe4">
@@ -406,14 +406,6 @@ import {
 
 .demo-button:hover {
   background: var(--ag-primary-dark);
-}
-
-code {
-  background: var(--ag-background-secondary);
-  color: var(--ag-text-primary);
-  padding: 0.125rem 0.375rem;
-  border-radius: 3px;
-  font-size: 0.875em;
 }
 
 /* Responsive layouts using CSS custom properties - no !important needed! */
