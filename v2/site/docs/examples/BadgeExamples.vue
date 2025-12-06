@@ -320,6 +320,7 @@
         >
           <ShoppingCart />
         </VueIcon>
+        <VueVisuallyHidden>Items in cart</VueVisuallyHidden>
         <VueBadge
           variant="danger"
           size="sm"
@@ -343,6 +344,7 @@
         >
           <ShoppingCart />
         </VueIcon>
+        <VueVisuallyHidden>Items in cart</VueVisuallyHidden>
         <VueBadge
           variant="default"
           size="sm"
@@ -366,6 +368,7 @@
         >
           <ShoppingCart />
         </VueIcon>
+        <VueVisuallyHidden>Items in cart</VueVisuallyHidden>
         <VueBadge
           variant="success"
           size="md"
@@ -398,11 +401,13 @@ import VueButton from "agnosticui-core/button/vue";
 import { VueIcon } from "agnosticui-core/icon/vue";
 import { Mail, Bell, Info, ShoppingCart } from "lucide-vue-next";
 import VueAlert from "agnosticui-core/alert/vue";
+import { VueVisuallyHidden } from "agnosticui-core/visually-hidden/vue";
 
 export default {
   name: "BadgeExamples",
   components: {
     VueBadge,
+    VueVisuallyHidden,
     VueButton,
     VueIcon,
     Bell,
