@@ -77,13 +77,13 @@ You don't need to use `FlexContainer` for responsive layouts - **any flex compon
 ```vue
 <template>
   <div>
-    <VueFlexRow gap="1rem">
+    <VueFlexRow style="--flex-gap: 1rem">
       <div>Item 1</div>
       <div>Item 2</div>
       <div>Item 3</div>
     </VueFlexRow>
 
-    <VueFlexCol gap="1rem" justify="center" align="center">
+    <VueFlexCol style="--flex-gap: 1rem" justify="center" align="center">
       <div>Centered Item 1</div>
       <div>Centered Item 2</div>
     </VueFlexCol>
@@ -93,22 +93,22 @@ You don't need to use `FlexContainer` for responsive layouts - **any flex compon
       <div>End</div>
     </VueFlexRow>
 
-    <VueFlexRow gap="1rem" :stretch-children="true">
+    <VueFlexRow style="--flex-gap: 1rem" :stretch-children="true">
       <div>Auto width 1</div>
       <div>Auto width 2</div>
       <div>Auto width 3</div>
     </VueFlexRow>
 
-    <VueFlexRow gap="1rem" wrap="wrap">
+    <VueFlexRow style="--flex-gap: 1rem" wrap="wrap">
       <div v-for="i in 10" :key="i">Item {{ i }}</div>
     </VueFlexRow>
 
-    <VueStack gap="1rem">
+    <VueStack style="--flex-gap: 1rem">
       <div>Stacked Item 1</div>
       <div>Stacked Item 2</div>
     </VueStack>
 
-    <VueGroup gap="0.5rem">
+    <VueGroup style="--flex-gap: 0.5rem">
       <button>Action 1</button>
       <button>Action 2</button>
     </VueGroup>
@@ -148,13 +148,13 @@ import {
 export default function Example() {
   return (
     <div>
-      <ReactFlexRow gap="1rem">
+      <ReactFlexRow style={{ "--flex-gap": "1rem" } as React.CSSProperties}>
         <div>Item 1</div>
         <div>Item 2</div>
         <div>Item 3</div>
       </ReactFlexRow>
 
-      <ReactFlexCol gap="1rem" justify="center" align="center">
+      <ReactFlexCol style={{ "--flex-gap": "1rem" } as React.CSSProperties} justify="center" align="center">
         <div>Centered Item 1</div>
         <div>Centered Item 2</div>
       </ReactFlexCol>
@@ -164,24 +164,24 @@ export default function Example() {
         <div>End</div>
       </ReactFlexRow>
 
-      <ReactFlexRow gap="1rem" stretchChildren={true}>
+      <ReactFlexRow style={{ "--flex-gap": "1rem" } as React.CSSProperties} stretchChildren={true}>
         <div>Auto width 1</div>
         <div>Auto width 2</div>
         <div>Auto width 3</div>
       </ReactFlexRow>
 
-      <ReactFlexRow gap="1rem" wrap="wrap">
+      <ReactFlexRow style={{ "--flex-gap": "1rem" } as React.CSSProperties} wrap="wrap">
         {[...Array(10)].map((_, i) => (
           <div key={i}>Item {i + 1}</div>
         ))}
       </ReactFlexRow>
 
-      <ReactStack gap="1rem">
+      <ReactStack style={{ "--flex-gap": "1rem" } as React.CSSProperties}>
         <div>Stacked Item 1</div>
         <div>Stacked Item 2</div>
       </ReactStack>
 
-      <ReactGroup gap="0.5rem">
+      <ReactGroup style={{ "--flex-gap": "0.5rem" } as React.CSSProperties}>
         <button>Action 1</button>
         <button>Action 2</button>
       </ReactGroup>
@@ -191,19 +191,19 @@ export default function Example() {
 ```
 :::
 
-::: details Lit/Web Components
+::: details Lit (Web Components)
 ```typescript
 import { html } from "lit";
 import "agnosticui-core/flex";
 
 const template = html`
-  <ag-flex-row gap="1rem">
+  <ag-flex-row style="--flex-gap: 1rem">
     <div>Item 1</div>
     <div>Item 2</div>
     <div>Item 3</div>
   </ag-flex-row>
 
-  <ag-flex-col gap="1rem" justify="center" align="center">
+  <ag-flex-col style="--flex-gap: 1rem" justify="center" align="center">
     <div>Centered Item 1</div>
     <div>Centered Item 2</div>
   </ag-flex-col>
@@ -213,13 +213,13 @@ const template = html`
     <div>End</div>
   </ag-flex-row>
 
-  <ag-flex-row gap="1rem" stretch-children>
+  <ag-flex-row style="--flex-gap: 1rem" stretch-children>
     <div>Auto width 1</div>
     <div>Auto width 2</div>
     <div>Auto width 3</div>
   </ag-flex-row>
 
-  <ag-flex-row gap="1rem" wrap="wrap">
+  <ag-flex-row style="--flex-gap: 1rem" wrap="wrap">
     ${[...Array(10)].map((_, i) => html`<div>Item ${i + 1}</div>`)}
   </ag-flex-row>
 `;
@@ -237,12 +237,13 @@ All flex components share the same props from `FlexContainerProps`:
 | `justify` | `'flex-start' \| 'flex-end' \| 'center' \| 'space-between' \| 'space-around' \| 'space-evenly'` | `'flex-start'` | Main axis alignment |
 | `align` | `'flex-start' \| 'flex-end' \| 'center' \| 'baseline' \| 'stretch'` | `'stretch'` | Cross axis alignment |
 | `alignContent` | `'flex-start' \| 'flex-end' \| 'center' \| 'space-between' \| 'space-around' \| 'space-evenly' \| 'stretch'` | `'stretch'` | Multi-line alignment |
-| `gap` | `string` | `'var(--ag-space-0, 0)'` | Gap between items (any CSS gap value) |
 | `inline` | `boolean` | `false` | Use inline-flex |
 | `reverse` | `boolean` | `false` | Reverse the direction |
 | `stretchChildren` | `boolean` | `false` | Apply flex: 1 1 auto to children |
 
-**Note:** FlexRow defaults `direction` to `'row'`, FlexCol defaults to `'column'`, and FlexInline sets `inline` to `true`. These are just defaults - **you can override any property using CSS custom properties** like `--flex-direction`, `--flex-gap`, etc. (See [Responsive Control](#responsive-control)).
+**Note:** FlexRow defaults `direction` to `'row'`, FlexCol defaults to `'column'`, and FlexInline sets `inline` to `true`. These are just defaults - **you can override any property using CSS custom properties** like `--flex-direction`, `--flex-wrap`, `--flex-justify`, `--flex-align`, etc. (See [Responsive Control](#responsive-control)).
+
+**Gap:** There is no `gap` prop. Control spacing using the `--flex-gap` CSS custom property (defaults to `var(--ag-space-0, 0)`). See the [Available CSS Custom Properties](#available-css-custom-properties) table below.
 
 ## CSS Shadow Parts
 
