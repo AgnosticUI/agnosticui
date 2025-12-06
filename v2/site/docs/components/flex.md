@@ -13,11 +13,13 @@ import FlexExamples from '../examples/FlexExamples.vue'
 AgnosticUI provides four flex components plus two convenient aliases:
 
 - **FlexContainer** - Base flex container with full control
-- **FlexRow** - Horizontal layout (direction: row)
-- **FlexCol** - Vertical layout (direction: column)
+- **FlexRow** - Horizontal layout (defaults to `direction: row`, but can be overridden)
+- **FlexCol** - Vertical layout (defaults to `direction: column`, but can be overridden)
 - **FlexInline** - Inline flex container
 - **Stack** - Alias for FlexCol (familiar to Mantine/Chakra users)
 - **Group** - Alias for FlexRow (familiar to Mantine users)
+
+**Note:** FlexRow, FlexCol, Stack, and Group are convenience components that set default directions. You can override any of their properties using CSS custom properties (see [Responsive Control](#responsive-control)).
 
 ## Responsive Control
 
@@ -40,6 +42,34 @@ You control flex behavior at different breakpoints by setting CSS custom propert
 ```
 
 The component simply reads these CSS custom properties - you define when and how they change.
+
+### Overriding Convenience Components
+
+**FlexRow, FlexCol, Stack, and Group are just convenience wrappers** - they set default directions but you can override them completely with CSS custom properties:
+
+```html
+<!-- Using FlexCol but overriding to row on large screens -->
+<ag-flex-col class="responsive-column">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</ag-flex-col>
+```
+
+```css
+.responsive-column {
+  /* FlexCol defaults to column, but you can override it */
+  --flex-direction: column;
+}
+
+@media (min-width: 1920px) {
+  .responsive-column {
+    /* Override to row on ultra-wide screens */
+    --flex-direction: row;
+  }
+}
+```
+
+You don't need to use `FlexContainer` for responsive layouts - **any flex component can be controlled with CSS custom properties**.
 
 ## Usage
 
@@ -212,7 +242,7 @@ All flex components share the same props from `FlexContainerProps`:
 | `reverse` | `boolean` | `false` | Reverse the direction |
 | `stretchChildren` | `boolean` | `false` | Apply flex: 1 1 auto to children |
 
-**Note:** FlexRow defaults `direction` to `'row'`, FlexCol defaults to `'column'`, and FlexInline sets `inline` to `true`.
+**Note:** FlexRow defaults `direction` to `'row'`, FlexCol defaults to `'column'`, and FlexInline sets `inline` to `true`. These are just defaults - **you can override any property using CSS custom properties** like `--flex-direction`, `--flex-gap`, etc. (See [Responsive Control](#responsive-control)).
 
 ## CSS Shadow Parts
 
