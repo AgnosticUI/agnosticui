@@ -16,7 +16,6 @@ import PopoverExamples from '../examples/PopoverExamples.vue'
 ```vue
 <template>
   <section>
-    <!-- Basic popover -->
     <VuePopover>
       <button slot="trigger">Open Popover</button>
       <span slot="title">Popover Title</span>
@@ -25,7 +24,6 @@ import PopoverExamples from '../examples/PopoverExamples.vue'
       </div>
     </VuePopover>
 
-    <!-- Different trigger types -->
     <VuePopover trigger-type="hover">
       <VueButton slot="trigger">Hover Me</VueButton>
       <span slot="title">Hover Popover</span>
@@ -34,7 +32,6 @@ import PopoverExamples from '../examples/PopoverExamples.vue'
       </div>
     </VuePopover>
 
-    <!-- Different placements -->
     <VuePopover placement="right">
       <VueButton slot="trigger">Right Placement</VueButton>
       <span slot="title">Positioned Right</span>
@@ -43,7 +40,6 @@ import PopoverExamples from '../examples/PopoverExamples.vue'
       </div>
     </VuePopover>
 
-    <!-- Rich content example -->
     <VuePopover>
       <VueButton slot="trigger">User Profile</VueButton>
       <span slot="title">John Doe</span>
@@ -55,7 +51,6 @@ import PopoverExamples from '../examples/PopoverExamples.vue'
       </div>
     </VuePopover>
 
-    <!-- Event handling -->
     <VuePopover
       @show="handleShow"
       @hide="handleHide"
@@ -66,8 +61,6 @@ import PopoverExamples from '../examples/PopoverExamples.vue'
         <p>Events fire when popover shows and hides.</p>
       </div>
     </VuePopover>
-
-    <!-- Without close button -->
     <VuePopover :show-close-button="false">
       <VueButton slot="trigger">No Close Button</VueButton>
       <span slot="title">Title Only</span>
@@ -116,7 +109,6 @@ export default function PopoverExample() {
 
   return (
     <section>
-      {/* Basic popover */}
       <ReactPopover>
         <PopoverTrigger>
           <button>Open Popover</button>
@@ -129,7 +121,6 @@ export default function PopoverExample() {
         </PopoverContent>
       </ReactPopover>
 
-      {/* Different trigger types */}
       <ReactPopover triggerType="hover">
         <PopoverTrigger>
           <ReactButton>Hover Me</ReactButton>
@@ -142,7 +133,6 @@ export default function PopoverExample() {
         </PopoverContent>
       </ReactPopover>
 
-      {/* Different placements */}
       <ReactPopover placement="right">
         <PopoverTrigger>
           <ReactButton>Right Placement</ReactButton>
@@ -155,7 +145,6 @@ export default function PopoverExample() {
         </PopoverContent>
       </ReactPopover>
 
-      {/* Rich content example */}
       <ReactPopover>
         <PopoverTrigger>
           <ReactButton>User Profile</ReactButton>
@@ -164,14 +153,13 @@ export default function PopoverExample() {
           <span>John Doe</span>
         </PopoverTitle>
         <PopoverContent>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             <div>User profile information...</div>
             <ReactButton variant="primary">View Profile</ReactButton>
           </div>
         </PopoverContent>
       </ReactPopover>
 
-      {/* Event handling */}
       <ReactPopover
         onShow={handleShow}
         onHide={handleHide}
@@ -186,8 +174,6 @@ export default function PopoverExample() {
           <p>Events fire when popover shows and hides.</p>
         </PopoverContent>
       </ReactPopover>
-
-      {/* Without close button */}
       <ReactPopover showCloseButton={false}>
         <PopoverTrigger>
           <ReactButton>No Close Button</ReactButton>
@@ -224,7 +210,6 @@ export default function PopoverExample() {
 </script>
 
 <section>
-  <!-- Basic popover -->
   <ag-popover>
     <button slot="trigger">Open Popover</button>
     <span slot="title">Popover Title</span>
@@ -233,7 +218,6 @@ export default function PopoverExample() {
     </div>
   </ag-popover>
 
-  <!-- Different trigger types -->
   <ag-popover trigger-type="hover">
     <button slot="trigger">Hover Me</button>
     <span slot="title">Hover Popover</span>
@@ -242,7 +226,6 @@ export default function PopoverExample() {
     </div>
   </ag-popover>
 
-  <!-- Different placements -->
   <ag-popover placement="right">
     <button slot="trigger">Right Placement</button>
     <span slot="title">Positioned Right</span>
@@ -251,7 +234,6 @@ export default function PopoverExample() {
     </div>
   </ag-popover>
 
-  <!-- Rich content example -->
   <ag-popover>
     <button slot="trigger">User Profile</button>
     <span slot="title">John Doe</span>
@@ -263,7 +245,6 @@ export default function PopoverExample() {
     </div>
   </ag-popover>
 
-  <!-- Event handling -->
   <ag-popover id="event-popover">
     <button slot="trigger">With Events</button>
     <span slot="title">Event Tracking</span>
@@ -271,8 +252,6 @@ export default function PopoverExample() {
       <p>Events fire when popover shows and hides.</p>
     </div>
   </ag-popover>
-
-  <!-- Without close button -->
   <ag-popover show-close-button="false">
     <button slot="trigger">No Close Button</button>
     <span slot="title">Title Only</span>
@@ -312,37 +291,33 @@ AgnosticUI Popover supports **three event handling patterns**:
 
 1. **addEventListener** (Lit/Vanilla JS):
 ```javascript
-const popover = document.querySelector('ag-popover');
-popover.addEventListener('show', (e) => {
-  console.log('Popover shown:', e.detail.visible);
+const popover = document.querySelector("ag-popover");
+popover.addEventListener("show", (e) => {
+  console.log("Popover shown:", e.detail.visible);
 });
-popover.addEventListener('hide', (e) => {
-  console.log('Popover hidden:', e.detail.visible);
+popover.addEventListener("hide", (e) => {
+  console.log("Popover hidden:", e.detail.visible);
 });
 ```
 
 2. **Callback properties** (Lit/Vanilla JS):
 ```javascript
-const popover = document.querySelector('ag-popover');
+const popover = document.querySelector("ag-popover");
 popover.onShow = (e) => {
-  console.log('Popover shown:', e.detail.visible);
+  console.log("Popover shown:", e.detail.visible);
 };
 popover.onHide = (e) => {
-  console.log('Popover hidden:', e.detail.visible);
+  console.log("Popover hidden:", e.detail.visible);
 };
 ```
 
 3. **Framework bindings** (Vue/React):
 ```vue
-<!-- Vue -->
 <VuePopover @show="handleShow" @hide="handleHide">
-  <!-- ... -->
 </VuePopover>
 ```
 ```tsx
-// React
 <ReactPopover onShow={handleShow} onHide={handleHide}>
-  {/* ... */}
 </ReactPopover>
 ```
 
@@ -365,10 +340,10 @@ popover.onHide = (e) => {
 export default {
   methods: {
     handleShow(event) {
-      console.log('Popover opened', event.detail.visible); // true
+      console.log("Popover opened", event.detail.visible);
     },
     handleHide(event) {
-      console.log('Popover closed', event.detail.visible); // false
+      console.log("Popover closed", event.detail.visible);
     },
   },
 };
@@ -378,8 +353,8 @@ export default {
 **React:**
 ```tsx
 <ReactPopover
-  onShow={(e) => console.log('Popover opened', e.detail.visible)}
-  onHide={(e) => console.log('Popover closed', e.detail.visible)}
+  onShow={(e) => console.log("Popover opened", e.detail.visible)}
+  onHide={(e) => console.log("Popover closed", e.detail.visible)}
 >
   <PopoverTrigger>
     <button>Toggle Popover</button>
@@ -395,23 +370,21 @@ export default {
 
 **Lit:**
 ```html
-<!-- Using addEventListener -->
 <script>
-  const popover = document.querySelector('ag-popover');
-  popover.addEventListener('show', (e) => {
-    console.log('Popover opened', e.detail.visible);
+  const popover = document.querySelector("ag-popover");
+  popover.addEventListener("show", (e) => {
+    console.log("Popover opened", e.detail.visible);
   });
-  popover.addEventListener('hide', (e) => {
-    console.log('Popover closed', e.detail.visible);
+  popover.addEventListener("hide", (e) => {
+    console.log("Popover closed", e.detail.visible);
   });
 </script>
 
-<!-- Using callback props -->
 <ag-popover id="my-popover"></ag-popover>
 <script>
-  const popover = document.querySelector('#my-popover');
-  popover.onShow = (e) => console.log('Popover opened', e.detail.visible);
-  popover.onHide = (e) => console.log('Popover closed', e.detail.visible);
+  const popover = document.querySelector("#my-popover");
+  popover.onShow = (e) => console.log("Popover opened", e.detail.visible);
+  popover.onHide = (e) => console.log("Popover closed", e.detail.visible);
 </script>
 ```
 
@@ -420,7 +393,7 @@ export default {
 ### Vue
 - **slot="trigger"**: The trigger element that opens the popover when interacted with
 - **slot="title"**: Optional title text displayed in the popover header
-- **slot="content"**: The main content of the popover (can contain any HTML/components)
+- **slot="content"**: The main content of the popover
 
 ### React
 - **PopoverTrigger**: Component wrapper for the trigger element
@@ -445,7 +418,6 @@ Shadow Parts allow you to style internal elements of the popover from outside th
 ### Customization Example
 
 ```css
-/* Customize the popover container */
 ag-popover::part(ag-popover) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -455,13 +427,11 @@ ag-popover::part(ag-popover) {
   padding: 1.5rem;
 }
 
-/* Style the arrow */
 ag-popover::part(ag-popover-arrow) {
   background: #667eea;
   border-color: #667eea;
 }
 
-/* Customize the close button */
 ag-popover::part(ag-popover-close) {
   background: rgba(255, 255, 255, 0.2);
   color: white;
@@ -469,17 +439,16 @@ ag-popover::part(ag-popover-close) {
   padding: 4px;
 }
 
-/* Success-themed popover */
 .success-popover::part(ag-popover) {
-  background: var(--ag-success);
+  background: #14854f;
   color: white;
-  border: 2px solid var(--ag-success-dark, #059669);
+  border: 2px solid #059669;
   box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
 }
 
 .success-popover::part(ag-popover-arrow) {
-  background: var(--ag-success);
-  border-color: var(--ag-success-dark, #059669);
+  background: #14854f;
+  border-color: #059669;
 }
 ```
 
@@ -540,8 +509,6 @@ The `placement` prop accepts these values:
 - **End aligned**: `top-end`, `right-end`, `bottom-end`, `left-end`
 
 ```vue
-<!-- Popover appears to the right, aligned with the top of trigger -->
 <VuePopover placement="right-start">
-  <!-- ... -->
 </VuePopover>
 ```

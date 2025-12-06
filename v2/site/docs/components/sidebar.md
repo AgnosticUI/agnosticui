@@ -82,7 +82,7 @@ import SidebarExamples from '../examples/SidebarExamples.vue'
         </VueSidebarNavItem>
       </VueSidebarNav>
 
-      <div slot="ag-footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
+      <div slot="ag-footer" style="font-size: 0.875rem; color: #6b7280;">
         © 2024 Company
       </div>
     </VueSidebar>

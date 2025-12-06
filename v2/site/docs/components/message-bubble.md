@@ -14,23 +14,20 @@ import MessageBubbleExamples from '../examples/MessageBubbleExamples.vue'
 ```vue
 <template>
   <div>
-    <!-- Basic message -->
     <VueMessageBubble
       from="them"
       message="Hello, how are you?"
       author="John Doe"
       time="10:00 AM"
     />
-    
-    <!-- Reply message -->
+
     <VueMessageBubble
       from="me"
       message="I'm doing great, thanks!"
       author="Me"
       time="10:01 AM"
     />
-    
-    <!-- With avatar -->
+
     <VueMessageBubble
       from="them"
       message="Check out this feature!"
@@ -38,8 +35,7 @@ import MessageBubbleExamples from '../examples/MessageBubbleExamples.vue'
       time="10:05 AM"
       avatar-url="https://i.pravatar.cc/150?img=1"
     />
-    
-    <!-- With delivery status -->
+
     <VueMessageBubble
       from="me"
       message="Message with status"
@@ -47,8 +43,7 @@ import MessageBubbleExamples from '../examples/MessageBubbleExamples.vue'
       time="10:10 AM"
       footer="Delivered ✓"
     />
-    
-    <!-- With color variant -->
+
     <VueMessageBubble
       from="them"
       message="Payment successful!"
@@ -56,8 +51,6 @@ import MessageBubbleExamples from '../examples/MessageBubbleExamples.vue'
       time="10:15 AM"
       variant="success"
     />
-    
-    <!-- Custom avatar slot -->
     <VueMessageBubble
       from="them"
       message="Using custom avatar component"
@@ -91,23 +84,20 @@ import { ReactAvatar } from 'agnosticui-core/avatar/react';
 export default function Example() {
   return (
     <div>
-      {/* Basic message */}
       <ReactMessageBubble
         from="them"
         message="Hello, how are you?"
         author="John Doe"
         time="10:00 AM"
       />
-      
-      {/* Reply message */}
+
       <ReactMessageBubble
         from="me"
         message="I'm doing great, thanks!"
         author="Me"
         time="10:01 AM"
       />
-      
-      {/* With avatar */}
+
       <ReactMessageBubble
         from="them"
         message="Check out this feature!"
@@ -115,8 +105,7 @@ export default function Example() {
         time="10:05 AM"
         avatarUrl="https://i.pravatar.cc/150?img=1"
       />
-      
-      {/* With delivery status */}
+
       <ReactMessageBubble
         from="me"
         message="Message with status"
@@ -124,8 +113,7 @@ export default function Example() {
         time="10:10 AM"
         footer="Delivered ✓"
       />
-      
-      {/* With color variant */}
+
       <ReactMessageBubble
         from="them"
         message="Payment successful!"
@@ -145,7 +133,6 @@ export default function Example() {
   import 'agnosticui-core/message-bubble';
 </script>
 
-<!-- Basic message -->
 <ag-message-bubble
   from="them"
   message="Hello, how are you?"
@@ -153,7 +140,6 @@ export default function Example() {
   time="10:00 AM"
 ></ag-message-bubble>
 
-<!-- Reply message -->
 <ag-message-bubble
   from="me"
   message="I'm doing great, thanks!"
@@ -161,7 +147,6 @@ export default function Example() {
   time="10:01 AM"
 ></ag-message-bubble>
 
-<!-- With avatar -->
 <ag-message-bubble
   from="them"
   message="Check out this feature!"
@@ -170,7 +155,6 @@ export default function Example() {
   avatar-url="https://i.pravatar.cc/150?img=1"
 ></ag-message-bubble>
 
-<!-- With delivery status -->
 <ag-message-bubble
   from="me"
   message="Message with status"
@@ -179,7 +163,6 @@ export default function Example() {
   footer="Delivered ✓"
 ></ag-message-bubble>
 
-<!-- With color variant -->
 <ag-message-bubble
   from="them"
   message="Payment successful!"
@@ -216,7 +199,6 @@ export default function Example() {
 The MessageBubble component can be styled using CSS custom properties (variables):
 
 ```css
-/* Example custom styling */
 ag-message-bubble {
   --ag-message-bubble-bg: #f0f0f0;
   --ag-message-bubble-color: #333;
@@ -265,34 +247,22 @@ For advanced customization, MessageBubble exposes CSS Shadow Parts that allow yo
 
 ::: details Available Shadow Parts
 ```css
-/* Main bubble container */
 ::part(ag-message-bubble) {
-  /* Customize the entire bubble */
 }
 
-/* Avatar container */
 ::part(ag-message-bubble-avatar) {
-  /* Customize avatar wrapper */
 }
 
-/* Message content area */
 ::part(ag-message-bubble-content) {
-  /* Customize message content */
 }
 
-/* Author name */
 ::part(ag-message-bubble-author) {
-  /* Customize author text */
 }
 
-/* Timestamp */
 ::part(ag-message-bubble-time) {
-  /* Customize timestamp */
 }
 
-/* Footer/status */
 ::part(ag-message-bubble-footer) {
-  /* Customize footer text */
 }
 ```
 :::
