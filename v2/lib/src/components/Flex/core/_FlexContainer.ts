@@ -10,7 +10,7 @@ import { property } from 'lit/decorators.js';
  * @cssproperty --flex-justify - Controls alignment along main axis
  * @cssproperty --flex-align - Controls alignment along cross axis
  * @cssproperty --flex-align-content - Controls space between lines in multi-line flex containers
- * @cssproperty --flex-gap - Controls spacing between flex items
+ * @cssproperty --flex-gap - Controls spacing between flex items (set via CSS, not via prop)
  */
 export interface FlexContainerProps {
   /** Main axis direction (defaults to 'row') */
@@ -23,8 +23,6 @@ export interface FlexContainerProps {
   align?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
   /** Space distribution between lines in multi-line containers (defaults to 'stretch') */
   alignContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
-  /** Spacing between flex items (can be set via gap attribute or --flex-gap CSS custom property) */
-  gap?: string;
   /** Use inline-flex instead of flex (defaults to false) */
   inline?: boolean;
   /** Reverse the direction (e.g., row becomes row-reverse, defaults to false) */
@@ -156,10 +154,10 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
       --flex-align-content: stretch;
     }
 
-    /* Gap - NOT handled via attribute selectors like other properties */
-    /* Gap values are freeform strings and CSS attr() doesn't work in custom properties */
-    /* The --flex-gap custom property can be overridden via classes, ::part(), or inline styles */
-    /* without any specificity issues. The fallback var(--ag-space-0, 0) provides the default. */
+    /* Gap - Controlled ONLY via --flex-gap CSS custom property (no attribute/prop) */
+    /* Gap values are freeform strings, so attribute selectors are not feasible */
+    /* (CSS attr() doesn't work in custom properties and we'd need infinite selectors) */
+    /* Set --flex-gap via classes, ::part(), or inline styles. Default: var(--ag-space-0, 0) */
   `;
   protected _direction: 'row' | 'row-reverse' | 'column' | 'column-reverse' = 'row';
   protected _wrap: 'nowrap' | 'wrap' | 'wrap-reverse' = 'nowrap';
@@ -211,8 +209,6 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
     this._alignContent = value && valid.includes(value) ? value : 'stretch';
     this.requestUpdate();
   }
-  @property({ type: String, reflect: true })
-  declare gap: string;
   @property({ type: Boolean, reflect: true })
   declare inline: boolean;
   @property({ type: Boolean, reflect: true })
@@ -221,8 +217,6 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
   declare stretchChildren: boolean;
   constructor() {
     super();
-    // Don't set gap here - let CSS handle the default via var(--flex-gap, var(--ag-space-0, 0))
-    // This prevents specificity issues when users override --flex-gap via classes
     this.inline = false;
     this.reverse = false;
     this.stretchChildren = false;
@@ -230,44 +224,11 @@ export class FlexContainer extends LitElement implements FlexContainerProps {
   updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
 
-    // Validate gap value (for developer feedback)
-    if (changedProperties.has('gap')) {
-      const gapValue = this.gap?.trim() ?? '';
-      if (gapValue && gapValue !== '0' && !this._isValidGapValue(gapValue)) {
-        // eslint-disable-next-line no-console
-        console.warn(`[FlexContainer] Potentially invalid gap value: '${gapValue}'. Use valid CSS units (px, rem, em, %, etc.).`);
-      }
-    }
-
-    // Note: Direction, wrap, justify, align, alignContent, and gap are handled via
+    // Note: Direction, wrap, justify, align, and alignContent are handled via
     // attribute selectors in the static styles. This keeps specificity low and
     // allows CSS custom properties to cascade naturally without specificity issues.
+    // Gap is controlled solely via --flex-gap CSS custom property (not via attribute).
     // Users can override via classes, ::part(), or inline styles without needing !important.
-  }
-
-  /**
-   * Validates gap values against common CSS units and keywords
-   * Uses simple checks instead of complex regex for maintainability
-   */
-  private _isValidGapValue(value: string): boolean {
-    // CSS keywords that are valid for gap
-    const keywords = ['0', 'auto', 'normal', 'unset', 'initial', 'inherit'];
-    if (keywords.includes(value)) return true;
-
-    // CSS functions (var, calc, etc.)
-    if (value.startsWith('var(') || value.startsWith('calc(')) return true;
-
-    // Common CSS units - check if value ends with a valid unit or has unit followed by space
-    const units = ['px', 'rem', 'em', '%', 'vw', 'vh', 'pt', 'cm', 'mm', 'in', 'pc', 'ex', 'ch', 'vmin', 'vmax'];
-
-    // Split multi-value gap (e.g., "1em 2em") and check each part
-    const parts = value.split(/\s+/);
-    const allPartsValid = parts.every(part => {
-      // Check if part ends with any valid unit
-      return units.some(unit => part.endsWith(unit));
-    });
-
-    return allPartsValid;
   }
   render() {
     return html`
