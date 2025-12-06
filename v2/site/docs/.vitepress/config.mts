@@ -75,7 +75,7 @@ function getComponents() {
       { text: 'Drawer', link: '/components/drawer' },
       { text: 'EmptyState', link: '/components/empty-state' },
       { text: 'Fieldset', link: '/components/fieldset' },
-      { text: 'Flex', link: '/components/flex' },
+      { text: 'Flex (Lab)', link: '/components/flex' },
       { text: 'Header', link: '/components/header' },
       { text: 'Icon', link: '/components/icon' },
       { text: 'Icon Button', link: '/components/icon-button' },
