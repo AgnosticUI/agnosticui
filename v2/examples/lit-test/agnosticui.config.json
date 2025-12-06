@@ -1,0 +1,121 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "0.0.1",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Avatar": {
+      "added": "2025-12-06T03:51:29.652Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Avatar/core"
+      ]
+    },
+    "Badge": {
+      "added": "2025-12-06T01:09:34.526Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Badge/core"
+      ]
+    },
+    "Button": {
+      "added": "2025-12-06T01:09:34.526Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Button/core"
+      ]
+    },
+    "Card": {
+      "added": "2025-12-06T04:25:55.994Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Card/core"
+      ]
+    },
+    "Divider": {
+      "added": "2025-12-06T04:25:49.331Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Divider/core"
+      ]
+    },
+    "Icon": {
+      "added": "2025-12-06T01:09:34.526Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Icon/core"
+      ]
+    },
+    "Image": {
+      "added": "2025-12-06T01:09:34.526Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Image/core"
+      ]
+    },
+    "Tag": {
+      "added": "2025-12-06T01:09:34.526Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Tag/core"
+      ]
+    },
+    "VisuallyHidden": {
+      "added": "2025-12-06T01:09:34.526Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/VisuallyHidden/core"
+      ]
+    },
+    "Flex": {
+      "added": "2025-12-06T04:56:52.288Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Flex/core"
+      ]
+    },
+    "Alert": {
+      "added": "2025-12-06T01:22:42.422Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Accordion": {
+      "added": "2025-12-06T03:51:26.087Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Accordion/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
+    "version": "unknown",
+    "installed": "2025-12-06T04:40:23.228Z"
+  }
+}

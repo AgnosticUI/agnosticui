@@ -1,0 +1,85 @@
+<template>
+  <ag-flex-col
+    ref="agComponent"
+    v-bind="$attrs"
+  >
+    <slot></slot>
+  </ag-flex-col>
+</template>
+
+<script lang="ts">
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  watchEffect,
+  nextTick,
+  type PropType,
+} from "vue";
+import type { StackProps } from "../core/index";
+import "../FlexCol"; // Registers the ag-flex-col web component
+
+export default defineComponent({
+  name: "VueStack",
+  props: {
+    wrap: {
+      type: String as PropType<StackProps['wrap']>,
+      default: "nowrap",
+    },
+    justify: {
+      type: String as PropType<StackProps['justify']>,
+      default: "flex-start",
+    },
+    align: {
+      type: String as PropType<StackProps['align']>,
+      default: "stretch",
+    },
+    alignContent: {
+      type: String as PropType<StackProps['alignContent']>,
+      default: "stretch",
+    },
+    gap: {
+      type: String,
+      default: "var(--ag-space-0, 0)",
+    },
+    reverse: {
+      type: Boolean,
+      default: false,
+    },
+    stretchChildren: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup(props) {
+    const agComponent = ref<(HTMLElement & StackProps) | null>(null);
+
+    const syncProps = () => {
+      const webComponent = agComponent.value;
+      if (!webComponent) return;
+
+      webComponent.wrap = props.wrap;
+      webComponent.justify = props.justify;
+      webComponent.align = props.align;
+      webComponent.alignContent = props.alignContent;
+      webComponent.gap = props.gap;
+      webComponent.reverse = props.reverse;
+      webComponent.stretchChildren = props.stretchChildren;
+    };
+
+    onMounted(async () => {
+      await customElements.whenDefined("ag-flex-col");
+      await nextTick();
+      syncProps();
+    });
+
+    watchEffect(() => {
+      if (agComponent.value) {
+        syncProps();
+      }
+    });
+
+    return { agComponent };
+  },
+});
+</script>

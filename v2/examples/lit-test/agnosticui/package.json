@@ -1,0 +1,773 @@
+{
+  "name": "agnosticui-core",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles/tokens.css": "./dist/styles/ag-tokens.css",
+    "./styles/tokens-dark.css": "./dist/styles/ag-tokens-dark.css",
+    "./styles/table.css": "./dist/styles/table.css",
+    "./styles/nav-button-styles": {
+      "types": "./dist/styles/nav-button-styles.d.ts",
+      "import": "./dist/styles/nav-button-styles.js"
+    },
+    "./accordion": {
+      "types": "./dist/components/Accordion/core/Accordion.d.ts",
+      "import": "./dist/components/Accordion/core/Accordion.js"
+    },
+    "./alert": {
+      "types": "./dist/components/Alert/core/Alert.d.ts",
+      "import": "./dist/components/Alert/core/Alert.js"
+    },
+    "./alert/react": {
+      "types": "./dist/components/Alert/react/index.d.ts",
+      "import": "./dist/components/Alert/react/index.js"
+    },
+    "./alert/vue": {
+      "types": "./dist/components/Alert/vue/index.d.ts",
+      "import": "./dist/components/Alert/vue/index.js"
+    },
+    "./react": {
+      "types": "./dist/components/react/index.d.ts",
+      "import": "./dist/components/react/index.js"
+    },
+    "./accordion/react": {
+      "types": "./dist/components/Accordion/react/ReactAccordion.d.ts",
+      "import": "./dist/components/Accordion/react/ReactAccordion.js"
+    },
+    "./tooltip/react": {
+      "types": "./dist/components/Tooltip/react/ReactTooltip.d.ts",
+      "import": "./dist/components/Tooltip/react/ReactTooltip.js"
+    },
+    "./button/react": {
+      "types": "./dist/components/Button/react/ReactButton.d.ts",
+      "import": "./dist/components/Button/react/ReactButton.js"
+    },
+    "./input/react": {
+      "types": "./dist/components/Input/react/ReactInput.d.ts",
+      "import": "./dist/components/Input/react/ReactInput.js"
+    },
+    "./button": {
+      "types": "./dist/components/Button/core/Button.d.ts",
+      "import": "./dist/components/Button/core/Button.js"
+    },
+    "./input": {
+      "types": "./dist/components/Input/core/Input.d.ts",
+      "import": "./dist/components/Input/core/Input.js"
+    },
+    "./button/vue": {
+      "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
+      "import": "./dist/components/Button/vue/VueButton.js"
+    },
+    "./intl-formatter": {
+      "types": "./dist/components/IntlFormatter/core/IntlFormatter.d.ts",
+      "import": "./dist/components/IntlFormatter/core/IntlFormatter.js"
+    },
+    "./intl-formatter/react": {
+      "types": "./dist/components/IntlFormatter/react/ReactIntlFormatter.d.ts",
+      "import": "./dist/components/IntlFormatter/react/ReactIntlFormatter.js"
+    },
+    "./intl-formatter/vue": {
+      "types": "./dist/components/IntlFormatter/vue/index.d.ts",
+      "import": "./dist/components/IntlFormatter/vue/index.js"
+    },
+    "./sidebar-nav": {
+      "types": "./dist/components/SidebarNav/core/SidebarNav.d.ts",
+      "import": "./dist/components/SidebarNav/core/SidebarNav.js"
+    },
+    "./sidebar-nav/react": {
+      "types": "./dist/components/SidebarNav/react/index.d.ts",
+      "import": "./dist/components/SidebarNav/react/index.js"
+    },
+    "./sidebar-nav/vue": {
+      "types": "./dist/components/SidebarNav/vue/index.d.ts",
+      "import": "./dist/components/SidebarNav/vue/index.js"
+    },
+    "./sidebar": {
+      "types": "./dist/components/Sidebar/core/Sidebar.d.ts",
+      "import": "./dist/components/Sidebar/core/Sidebar.js"
+    },
+    "./sidebar/react": {
+      "types": "./dist/components/Sidebar/react/ReactSidebar.d.ts",
+      "import": "./dist/components/Sidebar/react/ReactSidebar.js"
+    },
+    "./sidebar/vue": {
+      "types": "./dist/components/Sidebar/vue/index.d.ts",
+      "import": "./dist/components/Sidebar/vue/index.js"
+    },
+    "./copy-button": {
+      "types": "./dist/components/CopyButton/core/CopyButton.d.ts",
+      "import": "./dist/components/CopyButton/core/CopyButton.js"
+    },
+    "./copy-button/vue": {
+      "types": "./dist/components/CopyButton/vue/index.d.ts",
+      "import": "./dist/components/CopyButton/vue/index.js"
+    },
+    "./copy-button/react": {
+      "types": "./dist/components/CopyButton/react/ReactCopyButton.d.ts",
+      "import": "./dist/components/CopyButton/react/ReactCopyButton.js"
+    },
+    "./accordion/vue": {
+      "types": "./dist/components/Accordion/vue/index.d.ts",
+      "import": "./dist/components/Accordion/vue/index.js"
+    },
+    "./tooltip/vue": {
+      "types": "./dist/components/Tooltip/vue/index.d.ts",
+      "import": "./dist/components/Tooltip/vue/index.js"
+    },
+    "./input/vue": {
+      "types": "./dist/components/Input/vue/index.d.ts",
+      "import": "./dist/components/Input/vue/index.js"
+    },
+    "./icon-button": {
+      "types": "./dist/components/IconButton/core/IconButton.d.ts",
+      "import": "./dist/components/IconButton/core/IconButton.js"
+    },
+    "./icon-button/react": {
+      "types": "./dist/components/IconButton/react/ReactIconButton.d.ts",
+      "import": "./dist/components/IconButton/react/ReactIconButton.js"
+    },
+    "./icon-button/vue": {
+      "types": "./dist/components/IconButton/vue/index.d.ts",
+      "import": "./dist/components/IconButton/vue/index.js"
+    },
+    "./tooltip/styled/MinimalTooltip": {
+      "types": "./dist/components/Tooltip/styled/MinimalTooltip.d.ts",
+      "import": "./dist/components/Tooltip/styled/MinimalTooltip.js"
+    },
+    "./tooltip/styled": {
+      "types": "./dist/components/Tooltip/styled/index.d.ts",
+      "import": "./dist/components/Tooltip/styled/index.js"
+    },
+    "./tooltip": {
+      "types": "./dist/components/Tooltip/core/Tooltip.d.ts",
+      "import": "./dist/components/Tooltip/core/Tooltip.js"
+    },
+    "./drawer": {
+      "types": "./dist/components/Drawer/core/Drawer.d.ts",
+      "import": "./dist/components/Drawer/core/Drawer.js"
+    },
+    "./drawer/react": {
+      "types": "./dist/components/Drawer/react/ReactDrawer.d.ts",
+      "import": "./dist/components/Drawer/react/ReactDrawer.js"
+    },
+    "./drawer/vue": {
+      "types": "./dist/components/Drawer/vue/index.d.ts",
+      "import": "./dist/components/Drawer/vue/index.js"
+    },
+    "./header": {
+      "types": "./dist/components/Header/core/Header.d.ts",
+      "import": "./dist/components/Header/core/Header.js"
+    },
+    "./header/react": {
+      "types": "./dist/components/Header/react/index.d.ts",
+      "import": "./dist/components/Header/react/index.js"
+    },
+    "./header/vue": {
+      "types": "./dist/components/Header/vue/index.d.ts",
+      "import": "./dist/components/Header/vue/index.js"
+    },
+    "./aspect-ratio": {
+      "types": "./dist/components/AspectRatio/core/AspectRatio.d.ts",
+      "import": "./dist/components/AspectRatio/core/AspectRatio.js"
+    },
+    "./aspect-ratio/react": {
+      "types": "./dist/components/AspectRatio/react/ReactAspectRatio.d.ts",
+      "import": "./dist/components/AspectRatio/react/ReactAspectRatio.js"
+    },
+    "./aspect-ratio/vue": {
+      "types": "./dist/components/AspectRatio/vue/index.d.ts",
+      "import": "./dist/components/AspectRatio/vue/index.js"
+    },
+    "./dialog/react": {
+      "types": "./dist/components/Dialog/react/ReactDialog.d.ts",
+      "import": "./dist/components/Dialog/react/ReactDialog.js"
+    },
+    "./dialog/vue": {
+      "types": "./dist/components/Dialog/vue/index.d.ts",
+      "import": "./dist/components/Dialog/vue/index.js"
+    },
+    "./dialog": {
+      "types": "./dist/components/Dialog/core/Dialog.d.ts",
+      "import": "./dist/components/Dialog/core/Dialog.js"
+    },
+    "./empty-state": {
+      "types": "./dist/components/EmptyState/core/EmptyState.d.ts",
+      "import": "./dist/components/EmptyState/core/EmptyState.js"
+    },
+    "./empty-state/react": {
+      "types": "./dist/components/EmptyState/react/ReactEmptyState.d.ts",
+      "import": "./dist/components/EmptyState/react/ReactEmptyState.js"
+    },
+    "./empty-state/vue": {
+      "types": "./dist/components/EmptyState/react/index.d.ts",
+      "import": "./dist/components/EmptyState/vue/index.js"
+    },
+    "./toggle": {
+      "types": "./dist/components/Toggle/core/Toggle.d.ts",
+      "import": "./dist/components/Toggle/core/Toggle.js"
+    },
+    "./toggle/react": {
+      "types": "./dist/components/Toggle/react/ReactToggle.d.ts",
+      "import": "./dist/components/Toggle/react/ReactToggle.js"
+    },
+    "./toggle/vue": {
+      "types": "./dist/components/Toggle/vue/index.d.ts",
+      "import": "./dist/components/Toggle/vue/index.js"
+    },
+    "./breadcrumb": {
+      "types": "./dist/components/Breadcrumb/core/Breadcrumb.d.ts",
+      "import": "./dist/components/Breadcrumb/core/Breadcrumb.js"
+    },
+    "./breadcrumb/react": {
+      "types": "./dist/components/Breadcrumb/react/ReactBreadcrumb.d.ts",
+      "import": "./dist/components/Breadcrumb/react/ReactBreadcrumb.js"
+    },
+    "./breadcrumb/vue": {
+      "types": "./dist/components/Breadcrumb/vue/index.d.ts",
+      "import": "./dist/components/Breadcrumb/vue/index.js"
+    },
+    "./tabs": {
+      "types": "./dist/components/Tabs/core/Tabs.d.ts",
+      "import": "./dist/components/Tabs/core/Tabs.js"
+    },
+    "./tabs/vue": {
+      "types": "./dist/components/Tabs/vue/index.d.ts",
+      "import": "./dist/components/Tabs/vue/index.js"
+    },
+    "./tabs/react": {
+      "types": "./dist/components/Tabs/react/index.d.ts",
+      "import": "./dist/components/Tabs/react/index.js"
+    },
+    "./menu": {
+      "types": "./dist/components/Menu/core/Menu.d.ts",
+      "import": "./dist/components/Menu/core/Menu.js"
+    },
+    "./menu/react": {
+      "types": "./dist/components/Menu/react/index.d.ts",
+      "import": "./dist/components/Menu/react/index.js"
+    },
+    "./menu/vue": {
+      "types": "./dist/components/Menu/vue/index.d.ts",
+      "import": "./dist/components/Menu/vue/index.js"
+    },
+    "./card": {
+      "types": "./dist/components/Card/core/Card.d.ts",
+      "import": "./dist/components/Card/core/Card.js"
+    },
+    "./card/react": {
+      "types": "./dist/components/Card/react/ReactCard.d.ts",
+      "import": "./dist/components/Card/react/ReactCard.js"
+    },
+    "./card/vue": {
+      "types": "./dist/components/Card/vue/index.d.ts",
+      "import": "./dist/components/Card/vue/index.js"
+    },
+    "./combobox": {
+      "types": "./dist/components/Combobox/core/Combobox.d.ts",
+      "import": "./dist/components/Combobox/core/Combobox.js"
+    },
+    "./combobox/react": {
+      "types": "./dist/components/Combobox/react/ReactCombobox.d.ts",
+      "import": "./dist/components/Combobox/react/ReactCombobox.js"
+    },
+    "./combobox/vue": {
+      "types": "./dist/components/Combobox/vue/index.d.ts",
+      "import": "./dist/components/Combobox/vue/index.js"
+    },
+    "./avatar": {
+      "types": "./dist/components/Avatar/core/Avatar.d.ts",
+      "import": "./dist/components/Avatar/core/Avatar.js"
+    },
+    "./avatar/react": {
+      "types": "./dist/components/Avatar/react/ReactAvatar.d.ts",
+      "import": "./dist/components/Avatar/react/ReactAvatar.js"
+    },
+    "./avatar/vue": {
+      "types": "./dist/components/Avatar/vue/index.d.ts",
+      "import": "./dist/components/Avatar/vue/index.js"
+    },
+    "./divider": {
+      "types": "./dist/components/Divider/core/Divider.d.ts",
+      "import": "./dist/components/Divider/core/Divider.js"
+    },
+    "./divider/react": {
+      "types": "./dist/components/Divider/react/index.d.ts",
+      "import": "./dist/components/Divider/react/index.js"
+    },
+    "./divider/vue": {
+      "types": "./dist/components/Divider/vue/index.d.ts",
+      "import": "./dist/components/Divider/vue/index.js"
+    },
+    "./loader": {
+      "types": "./dist/components/Loader/core/Loader.d.ts",
+      "import": "./dist/components/Loader/core/Loader.js"
+    },
+    "./loader/react": {
+      "types": "./dist/components/Loader/react/ReactLoader.d.ts",
+      "import": "./dist/components/Loader/react/ReactLoader.js"
+    },
+    "./loader/vue": {
+      "types": "./dist/components/Loader/vue/index.d.ts",
+      "import": "./dist/components/Loader/vue/index.js"
+    },
+    "./spinner": {
+      "types": "./dist/components/Spinner/core/Spinner.d.ts",
+      "import": "./dist/components/Spinner/core/Spinner.js"
+    },
+    "./spinner/react": {
+      "types": "./dist/components/Spinner/react/ReactSpinner.d.ts",
+      "import": "./dist/components/Spinner/react/ReactSpinner.js"
+    },
+    "./spinner/vue": {
+      "types": "./dist/components/Spinner/vue/index.d.ts",
+      "import": "./dist/components/Spinner/vue/index.js"
+    },
+    "./radio": {
+      "types": "./dist/components/Radio/core/Radio.d.ts",
+      "import": "./dist/components/Radio/core/Radio.js"
+    },
+    "./radio/react": {
+      "types": "./dist/components/Radio/react/ReactRadio.d.ts",
+      "import": "./dist/components/Radio/react/ReactRadio.js"
+    },
+    "./radio/vue": {
+      "types": "./dist/components/Radio/vue/index.d.ts",
+      "import": "./dist/components/Radio/vue/index.js"
+    },
+    "./select": {
+      "types": "./dist/components/Select/core/Select.d.ts",
+      "import": "./dist/components/Select/core/Select.js"
+    },
+    "./select/react": {
+      "types": "./dist/components/Select/react/index.d.ts",
+      "import": "./dist/components/Select/react/index.js"
+    },
+    "./select/vue": {
+      "types": "./dist/components/Select/vue/index.d.ts",
+      "import": "./dist/components/Select/vue/index.js"
+    },
+    "./checkbox": {
+      "types": "./dist/components/Checkbox/core/Checkbox.d.ts",
+      "import": "./dist/components/Checkbox/core/Checkbox.js"
+    },
+    "./checkbox/react": {
+      "types": "./dist/components/Checkbox/react/ReactCheckbox.d.ts",
+      "import": "./dist/components/Checkbox/react/ReactCheckbox.js"
+    },
+    "./checkbox/vue": {
+      "types": "./dist/components/Checkbox/vue/index.d.ts",
+      "import": "./dist/components/Checkbox/vue/index.js"
+    },
+    "./content-pagination": {
+      "types": "./dist/components/Pagination/core/ContentPagination.d.ts",
+      "import": "./dist/components/Pagination/core/ContentPagination.js"
+    },
+    "./content-pagination/react": {
+      "types": "./dist/components/Pagination/react/ReactContentPagination.d.ts",
+      "import": "./dist/components/Pagination/react/ReactContentPagination.js"
+    },
+    "./content-pagination/vue": {
+      "types": "./dist/components/Pagination/vue/index.d.ts",
+      "import": "./dist/components/Pagination/vue/index.js"
+    },
+    "./pagination": {
+      "types": "./dist/components/Pagination/core/Pagination.d.ts",
+      "import": "./dist/components/Pagination/core/Pagination.js"
+    },
+    "./pagination/react": {
+      "types": "./dist/components/Pagination/react/index.d.ts",
+      "import": "./dist/components/Pagination/react/index.js"
+    },
+    "./pagination/vue": {
+      "types": "./dist/components/Pagination/vue/index.d.ts",
+      "import": "./dist/components/Pagination/vue/index.js"
+    },
+    "./progress": {
+      "types": "./dist/components/Progress/core/Progress.d.ts",
+      "import": "./dist/components/Progress/core/Progress.js"
+    },
+    "./progress/react": {
+      "types": "./dist/components/Progress/react/ReactProgress.d.ts",
+      "import": "./dist/components/Progress/react/ReactProgress.js"
+    },
+    "./progress/vue": {
+      "types": "./dist/components/Progress/vue/index.d.ts",
+      "import": "./dist/components/Progress/vue/index.js"
+    },
+    "./progress-ring": {
+      "types": "./dist/components/ProgressRing/core/ProgressRing.d.ts",
+      "import": "./dist/components/ProgressRing/core/ProgressRing.js"
+    },
+    "./progress-ring/react": {
+      "types": "./dist/components/ProgressRing/react/ReactProgressRing.d.ts",
+      "import": "./dist/components/ProgressRing/react/ReactProgressRing.js"
+    },
+    "./progress-ring/vue": {
+      "types": "./dist/components/ProgressRing/vue/index.d.ts",
+      "import": "./dist/components/ProgressRing/vue/index.js"
+    },
+    "./tag": {
+      "types": "./dist/components/Tag/core/Tag.d.ts",
+      "import": "./dist/components/Tag/core/Tag.js"
+    },
+    "./tag/react": {
+      "types": "./dist/components/Tag/react/ReactTag.d.ts",
+      "import": "./dist/components/Tag/react/ReactTag.js"
+    },
+    "./tag/vue": {
+      "types": "./dist/components/Tag/vue/index.d.ts",
+      "import": "./dist/components/Tag/vue/index.js"
+    },
+    "./icon": {
+      "types": "./dist/components/Icon/core/Icon.d.ts",
+      "import": "./dist/components/Icon/core/Icon.js"
+    },
+    "./icon/react": {
+      "types": "./dist/components/Icon/react/ReactIcon.d.ts",
+      "import": "./dist/components/Icon/react/ReactIcon.js"
+    },
+    "./icon/vue": {
+      "types": "./dist/components/Icon/vue/index.d.ts",
+      "import": "./dist/components/Icon/vue/index.js"
+    },
+    "./image": {
+      "types": "./dist/components/Image/core/Image.d.ts",
+      "import": "./dist/components/Image/core/Image.js"
+    },
+    "./image/react": {
+      "types": "./dist/components/Image/react/index.d.ts",
+      "import": "./dist/components/Image/react/index.js"
+    },
+    "./image/vue": {
+      "types": "./dist/components/Image/vue/index.d.ts",
+      "import": "./dist/components/Image/vue/index.js"
+    },
+    "./table": {
+      "types": "./dist/components/Table/core/_Table.d.ts",
+      "import": "./dist/components/Table/core/_Table.js"
+    },
+    "./table/react": {
+      "types": "./dist/components/Table/react/ReactTable.d.ts",
+      "import": "./dist/components/Table/react/ReactTable.js"
+    },
+    "./table/vue": {
+      "types": "./dist/components/Table/vue/index.d.ts",
+      "import": "./dist/components/Table/vue/index.js"
+    },
+    "./close-button": {
+      "types": "./dist/components/shared/CloseButton/_CloseButton.d.ts",
+      "import": "./dist/components/shared/CloseButton/_CloseButton.js"
+    },
+    "./utils/positioning": {
+      "types": "./dist/utils/positioning.d.ts",
+      "import": "./dist/utils/positioning.js"
+    },
+    "./toast": {
+      "types": "./dist/components/Toast/core/Toast.d.ts",
+      "import": "./dist/components/Toast/core/Toast.js"
+    },
+    "./toast/react": {
+      "types": "./dist/components/Toast/react/ReactToast.d.ts",
+      "import": "./dist/components/Toast/react/ReactToast.js"
+    },
+    "./toast/vue": {
+      "types": "./dist/components/Toast/vue/index.d.ts",
+      "import": "./dist/components/Toast/vue/index.js"
+    },
+    "./badge": {
+      "types": "./dist/components/Badge/core/Badge.d.ts",
+      "import": "./dist/components/Badge/core/Badge.js"
+    },
+    "./badge/react": {
+      "types": "./dist/components/Badge/react/ReactBadge.d.ts",
+      "import": "./dist/components/Badge/react/ReactBadge.js"
+    },
+    "./badge/vue": {
+      "types": "./dist/components/Badge/vue/index.d.ts",
+      "import": "./dist/components/Badge/vue/index.js"
+    },
+    "./badge-fx": {
+      "types": "./dist/components/BadgeFx/core/BadgeFx.d.ts",
+      "import": "./dist/components/BadgeFx/core/BadgeFx.js"
+    },
+    "./badge-fx/react": {
+      "types": "./dist/components/BadgeFx/react/ReactBadgeFx.d.ts",
+      "import": "./dist/components/BadgeFx/react/ReactBadgeFx.js"
+    },
+    "./badge-fx/vue": {
+      "types": "./dist/components/BadgeFx/vue/index.d.ts",
+      "import": "./dist/components/BadgeFx/vue/index.js"
+    },
+    "./kbd": {
+      "types": "./dist/components/Kbd/core/Kbd.d.ts",
+      "import": "./dist/components/Kbd/core/Kbd.js"
+    },
+    "./kbd/react": {
+      "types": "./dist/components/Kbd/react/ReactKbd.d.ts",
+      "import": "./dist/components/Kbd/react/ReactKbd.js"
+    },
+    "./kbd/vue": {
+      "types": "./dist/components/Kbd/vue/index.d.ts",
+      "import": "./dist/components/Kbd/vue/index.js"
+    },
+    "./collapsible": {
+      "types": "./dist/components/Collapsible/core/Collapsible.d.ts",
+      "import": "./dist/components/Collapsible/core/Collapsible.js"
+    },
+    "./collapsible/react": {
+      "types": "./dist/components/Collapsible/react/index.d.ts",
+      "import": "./dist/components/Collapsible/react/index.js"
+    },
+    "./collapsible/vue": {
+      "types": "./dist/components/Collapsible/vue/index.d.ts",
+      "import": "./dist/components/Collapsible/vue/index.js"
+    },
+    "./slider": {
+      "types": "./dist/components/Slider/core/Slider.d.ts",
+      "import": "./dist/components/Slider/core/Slider.js"
+    },
+    "./slider/react": {
+      "types": "./dist/components/Slider/react/ReactSlider.d.ts",
+      "import": "./dist/components/Slider/react/ReactSlider.js"
+    },
+    "./slider/vue": {
+      "types": "./dist/components/Slider/vue/index.d.ts",
+      "import": "./dist/components/Slider/vue/index.js"
+    },
+    "./link": {
+      "types": "./dist/components/Link/core/Link.d.ts",
+      "import": "./dist/components/Link/core/Link.js"
+    },
+    "./link/react": {
+      "types": "./dist/components/Link/react/ReactLink.d.ts",
+      "import": "./dist/components/Link/react/ReactLink.js"
+    },
+    "./link/vue": {
+      "types": "./dist/components/Link/vue/index.d.ts",
+      "import": "./dist/components/Link/vue/index.js"
+    },
+    "./skeleton": {
+      "types": "./dist/components/SkeletonLoader/core/SkeletonLoader.d.ts",
+      "import": "./dist/components/SkeletonLoader/core/SkeletonLoader.js"
+    },
+    "./skeleton/react": {
+      "types": "./dist/components/SkeletonLoader/react/index.d.ts",
+      "import": "./dist/components/SkeletonLoader/react/index.js"
+    },
+    "./skeleton/vue": {
+      "types": "./dist/components/SkeletonLoader/vue/index.d.ts",
+      "import": "./dist/components/SkeletonLoader/vue/index.js"
+    },
+    "./popover": {
+      "types": "./dist/components/Popover/core/Popover.d.ts",
+      "import": "./dist/components/Popover/core/Popover.js"
+    },
+    "./popover/react": {
+      "types": "./dist/components/Popover/react/index.d.ts",
+      "import": "./dist/components/Popover/react/index.js"
+    },
+    "./popover/vue": {
+      "types": "./dist/components/Popover/vue/index.d.ts",
+      "import": "./dist/components/Popover/vue/index.js"
+    },
+    "./flex": {
+      "types": "./dist/components/Flex/core/index.d.ts",
+      "import": "./dist/components/Flex/core/index.js"
+    },
+    "./flex/react": {
+      "types": "./dist/components/Flex/react/index.d.ts",
+      "import": "./dist/components/Flex/react/index.js"
+    },
+    "./flex/vue": {
+      "types": "./dist/components/Flex/vue/index.d.ts",
+      "import": "./dist/components/Flex/vue/index.js"
+    },
+    "./fieldset": {
+      "types": "./dist/components/Fieldset/Fieldset.d.ts",
+      "import": "./dist/components/Fieldset/Fieldset.js"
+    },
+    "./fieldset/react": {
+      "types": "./dist/components/Fieldset/react/ReactFieldset.d.ts",
+      "import": "./dist/components/Fieldset/react/ReactFieldset.js"
+    },
+    "./fieldset/vue": {
+      "types": "./dist/components/Fieldset/vue/index.d.ts",
+      "import": "./dist/components/Fieldset/vue/index.js"
+    },
+    "./rating": {
+      "types": "./dist/components/Rating/core/Rating.d.ts",
+      "import": "./dist/components/Rating/core/Rating.js"
+    },
+    "./rating/react": {
+      "types": "./dist/components/Rating/react/index.d.ts",
+      "import": "./dist/components/Rating/react/index.js"
+    },
+    "./rating/vue": {
+      "types": "./dist/components/Rating/vue/index.d.ts",
+      "import": "./dist/components/Rating/vue/index.js"
+    },
+    "./timeline": {
+      "types": "./dist/components/Timeline/core/Timeline.d.ts",
+      "import": "./dist/components/Timeline/core/Timeline.js"
+    },
+    "./timeline/react": {
+      "types": "./dist/components/Timeline/react/Timeline.d.ts",
+      "import": "./dist/components/Timeline/react/Timeline.js"
+    },
+    "./timeline/vue": {
+      "types": "./dist/components/Timeline/vue/index.d.ts",
+      "import": "./dist/components/Timeline/vue/index.js"
+    },
+    "./scroll-to-button": {
+      "types": "./dist/components/ScrollToButton/core/ScrollToButton.d.ts",
+      "import": "./dist/components/ScrollToButton/core/ScrollToButton.js"
+    },
+    "./scroll-to-button/react": {
+      "types": "./dist/components/ScrollToButton/react/ReactScrollToButton.d.ts",
+      "import": "./dist/components/ScrollToButton/react/ReactScrollToButton.js"
+    },
+    "./scroll-to-button/vue": {
+      "types": "./dist/components/ScrollToButton/vue/index.d.ts",
+      "import": "./dist/components/ScrollToButton/vue/index.js"
+    },
+    "./mark": {
+      "types": "./dist/components/Mark/core/Mark.d.ts",
+      "import": "./dist/components/Mark/core/Mark.js"
+    },
+    "./mark/react": {
+      "types": "./dist/components/Mark/react/ReactMark.d.ts",
+      "import": "./dist/components/Mark/react/ReactMark.js"
+    },
+    "./mark/vue": {
+      "types": "./dist/components/Mark/vue/index.d.ts",
+      "import": "./dist/components/Mark/vue/index.js"
+    },
+    "./message-bubble": {
+      "types": "./dist/components/MessageBubble/core/MessageBubble.d.ts",
+      "import": "./dist/components/MessageBubble/core/MessageBubble.js"
+    },
+    "./message-bubble/react": {
+      "types": "./dist/components/MessageBubble/react/ReactMessageBubble.d.ts",
+      "import": "./dist/components/MessageBubble/react/ReactMessageBubble.js"
+    },
+    "./message-bubble/vue": {
+      "types": "./dist/components/MessageBubble/vue/index.d.ts",
+      "import": "./dist/components/MessageBubble/vue/index.js"
+    },
+    "./visually-hidden": {
+      "types": "./dist/components/VisuallyHidden/core/VisuallyHidden.d.ts",
+      "import": "./dist/components/VisuallyHidden/core/VisuallyHidden.js"
+    },
+    "./visually-hidden/react": {
+      "types": "./dist/components/VisuallyHidden/react/ReactVisuallyHidden.d.ts",
+      "import": "./dist/components/VisuallyHidden/react/ReactVisuallyHidden.js"
+    },
+    "./visually-hidden/vue": {
+      "types": "./dist/components/VisuallyHidden/vue/index.d.ts",
+      "import": "./dist/components/VisuallyHidden/vue/index.js"
+    },
+    "./scroll-progress": {
+      "types": "./dist/components/ScrollProgress/core/ScrollProgress.d.ts",
+      "import": "./dist/components/ScrollProgress/core/ScrollProgress.js"
+    },
+    "./scroll-progress/react": {
+      "types": "./dist/components/ScrollProgress/react/ReactScrollProgress.d.ts",
+      "import": "./dist/components/ScrollProgress/react/ReactScrollProgress.js"
+    },
+    "./scroll-progress/vue": {
+      "types": "./dist/components/ScrollProgress/vue/index.d.ts",
+      "import": "./dist/components/ScrollProgress/vue/index.js"
+    },
+    "./button-fx": {
+      "types": "./dist/components/ButtonFx/core/ButtonFx.d.ts",
+      "import": "./dist/components/ButtonFx/core/ButtonFx.js"
+    },
+    "./button-fx/react": {
+      "types": "./dist/components/ButtonFx/react/ReactButtonFx.d.ts",
+      "import": "./dist/components/ButtonFx/react/ReactButtonFx.js"
+    },
+    "./button-fx/vue": {
+      "types": "./dist/components/ButtonFx/vue/index.d.ts",
+      "import": "./dist/components/ButtonFx/vue/index.js"
+    },
+    "./icon-button-fx": {
+      "types": "./dist/components/IconButtonFx/core/IconButtonFx.d.ts",
+      "import": "./dist/components/IconButtonFx/core/IconButtonFx.js"
+    },
+    "./icon-button-fx/react": {
+      "types": "./dist/components/IconButtonFx/react/ReactIconButtonFx.d.ts",
+      "import": "./dist/components/IconButtonFx/react/ReactIconButtonFx.js"
+    },
+    "./icon-button-fx/vue": {
+      "types": "./dist/components/IconButtonFx/vue/index.d.ts",
+      "import": "./dist/components/IconButtonFx/vue/index.js"
+    }
+  },
+  "scripts": {
+    "sync-tokens": "npm run --prefix ../theme-registry rebuild && mkdir -p src/styles && cp ../theme-registry/dist/ag-tokens.css src/styles/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css src/styles/ag-tokens-dark.css",
+    "copy-styles": "mkdir -p dist/styles && cp src/styles/ag-tokens.css dist/styles/ag-tokens.css && cp src/styles/ag-tokens-dark.css dist/styles/ag-tokens-dark.css",
+    "prebuild": "npm run sync-tokens",
+    "build": "vite build && npm run copy-styles",
+    "dev": "vite build",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "scaffold": "node ../scripts/scaffold-component.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
+    "@lit/react": "^1.0.8",
+    "agnosticui-core": "file:agnosticui-core-0.0.1.tgz",
+    "focus-trap": "^7.6.5",
+    "tabbable": "^6.2.0"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^6.2.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/svelte": "^5.2.4",
+    "@types/jest-axe": "^3.5.9",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.9",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/test-utils": "^2.4.6",
+    "axe-core": "^4.10.3",
+    "eslint": "^9.35.0",
+    "glob": "^10.4.2",
+    "happy-dom": "^18.0.1",
+    "jest-axe": "^10.0.0",
+    "lit": "^3.3.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "svelte": "^5.39.3",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5",
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^3.2.4",
+    "vue": "^3.5.21"
+  },
+  "peerDependencies": {
+    "lit": "^3.3.1",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "svelte": ">=4",
+    "vue": ">=3"
+  },
+  "customElements": "custom-elements.json"
+}
