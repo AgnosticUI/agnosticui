@@ -2,7 +2,28 @@
 
 CLI for AgnosticUI Local - The UI kit that lives in your codebase.
 
+
 ## Development Setup
+
+### Using the Script
+
+The process of creating a consumer test project is encapsulated in the `qa-verify.js` script for convenience which can be used as follows:
+
+Move the last run if you want to preserve it:
+```shell
+mv v2/qa_workspace/lit-test v2/qa_workspace/lit-test-v1
+```
+Or, if you'd prefer to just completely obliterate the workspace you can "clean" it:
+```shell
+rm -rf v2/qa_workspace/ # Optionally cleanup last run
+```
+
+Create new consumer test project (for Lit in this case):
+```shell
+./v2/cli/scripts/qa-verify.js --framework lit
+```
+
+The following goes into step by step details on this…
 
 ### Build the CLI
 
@@ -15,7 +36,7 @@ npm run build     # Build TypeScript to dist/
 
 The CLI is designed to work with a local tarball for development/dogfooding.
 
-1. **Build the tarball first:**
+1. **Build the v2/lib library tarball first:**
    ```bash
    cd ../../  # Go to v2 root
    ./scripts/build-local-tarball.sh
@@ -25,7 +46,7 @@ The CLI is designed to work with a local tarball for development/dogfooding.
 
 2. **Package the CLI for local testing:**
 
-   **Option A: Using `npm pack` (Recommended - More Reliable)**
+   **Using `npm pack`**
    ```bash
    cd cli
    npm install        # Install dependencies (first time only)
@@ -46,44 +67,10 @@ The CLI is designed to work with a local tarball for development/dogfooding.
    npx ag list
    ```
 
-   **Option B: Using `npm link` (Alternative)**
+   **T3. **Quick test workflow with pack:**
    ```bash
-   cd cli
-   npm install        # Install dependencies (first time only)
-   npm run build      # Build TypeScript to dist/
-   npm link           # Link globally
-   ```
-
-   Then in your test project:
-   ```bash
-   cd /path/to/your/test/project
-   npm link @agnosticui/cli
-
-   # Now you can use the CLI
-   # Note: Replace VERSION with the version from v2/lib/package.json (e.g., 0.0.1)
-   ag init --framework react --tarball /path/to/v2/dist/agnosticui-local-vVERSION.tar.gz
-   ag add button input
-   ag list
-   ```
-
-   **To unlink:**
-   ```bash
-   npm unlink @agnosticui/cli -g
-   ```
-
-3. **Quick test workflow with pack:**
-   ```bash
-   # PREREQUISITES: Build the component library tarball first
-   # From v2/lib directory:
-   cd ../../lib
-   npm run build
-   # This creates: dist/agnosticui-local-v{VERSION}.tar.gz
-
-   # Then build and pack the CLI
-   cd ../cli
-   npm install       # Install CLI dependencies (first time only)
-   npm run build && npm pack
-
+   # PREREQUISITES: Build component v2/lib and cli tarball first. See above.
+   
    # In test project
    npm install /path/to/agnosticui/v2/cli/agnosticui-cli-2.0.0-alpha.1.tgz --force
    # Note: Replace VERSION with the version from v2/lib/package.json
