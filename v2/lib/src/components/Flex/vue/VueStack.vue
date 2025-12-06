@@ -17,25 +17,25 @@ import {
   type PropType,
 } from "vue";
 import type { StackProps } from "../core/index";
-import "../FlexCol"; // Registers the ag-flex-col web component
+import "../core/FlexCol"; // Registers the ag-flex-col web component
 
 export default defineComponent({
   name: "VueStack",
   props: {
     wrap: {
-      type: String as PropType<StackProps['wrap']>,
+      type: String as PropType<StackProps["wrap"]>,
       default: "nowrap",
     },
     justify: {
-      type: String as PropType<StackProps['justify']>,
+      type: String as PropType<StackProps["justify"]>,
       default: "flex-start",
     },
     align: {
-      type: String as PropType<StackProps['align']>,
+      type: String as PropType<StackProps["align"]>,
       default: "stretch",
     },
     alignContent: {
-      type: String as PropType<StackProps['alignContent']>,
+      type: String as PropType<StackProps["alignContent"]>,
       default: "stretch",
     },
     gap: {

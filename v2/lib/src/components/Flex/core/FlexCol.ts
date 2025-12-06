@@ -1,4 +1,4 @@
-import { FlexContainer } from './core/_FlexContainer.js';
+import { FlexContainer } from './_FlexContainer.js';
 
 export class FlexCol extends FlexContainer {
   // Override default direction without setting in constructor
@@ -17,4 +17,4 @@ declare global {
 }
 
 // Re-export base types
-export * from './core/_FlexContainer.js';
+export * from './_FlexContainer.js';

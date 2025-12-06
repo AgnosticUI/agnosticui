@@ -10,7 +10,7 @@ import { pathExists, isDirectory } from './files.js';
  * Get list of available components from the reference library
  */
 export async function getAvailableComponents(referencePath: string): Promise<string[]> {
-  const componentsPath = path.join(referencePath, 'lib/src/components');
+  const componentsPath = path.join(referencePath, 'src/components');
 
   if (!pathExists(componentsPath)) {
     throw new Error(`Reference library not found at: ${referencePath}`);
@@ -37,7 +37,7 @@ export async function getAvailableComponents(referencePath: string): Promise<str
  * Check if a component exists in the reference library
  */
 export async function componentExists(referencePath: string, componentName: string): Promise<boolean> {
-  const componentPath = path.join(referencePath, 'lib/src/components', componentName);
+  const componentPath = path.join(referencePath, 'src/components', componentName);
   return pathExists(componentPath) && await isDirectory(componentPath);
 }
 
@@ -48,7 +48,7 @@ export async function getComponentMetadata(
   referencePath: string,
   componentName: string
 ): Promise<ComponentMetadata | null> {
-  const componentPath = path.join(referencePath, 'lib/src/components', componentName);
+  const componentPath = path.join(referencePath, 'src/components', componentName);
 
   if (!pathExists(componentPath)) {
     return null;
@@ -83,7 +83,7 @@ export function getComponentSourcePaths(
   componentName: string,
   framework: Framework
 ): { core: string; framework: string } {
-  const componentPath = path.join(referencePath, 'lib/src/components', componentName);
+  const componentPath = path.join(referencePath, 'src/components', componentName);
 
   return {
     core: path.join(componentPath, 'core'),
@@ -158,7 +158,7 @@ export function getSharedComponentSourcePaths(
 ): { path: string } {
   // Shared components are in lib/src/components/shared/<Name>
   return {
-    path: path.join(referencePath, 'lib/src/components/shared', componentName),
+    path: path.join(referencePath, 'src/components/shared', componentName),
   };
 }
 
@@ -171,5 +171,5 @@ export function getUtilSourcePath(
 ): string {
   // Utils are in lib/src/utils/<Name>.ts or similar
   // We assume imports like 'utils/slot' map to 'lib/src/utils/slot.ts'
-  return path.join(referencePath, 'lib/src/utils', `${utilName}.ts`);
+  return path.join(referencePath, 'src/utils', `${utilName}.ts`);
 }
