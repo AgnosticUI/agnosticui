@@ -18,6 +18,10 @@ export default defineConfig({
     },
   },
   markdown: {
+    theme: {
+      light: 'github-light-high-contrast',
+      dark: 'github-dark-high-contrast'
+    },
     config: (md) => {
       md.renderer.rules.table_open = function (tokens, idx, options, env, self) {
         const token = tokens[idx];
