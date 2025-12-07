@@ -231,3 +231,24 @@ export function getTypeSourcePath(
   // Types are in lib/src/types/<Name>.ts or similar
   return path.join(referencePath, 'src/types', `${typeName}.ts`);
 }
+
+/**
+ * Scan a file for component dependencies
+ * Looks for imports like: import "../../IconButton/core/IconButton"
+ * or: import { ... } from "../../ComponentName/..."
+ */
+export async function scanForComponentDependencies(filePath: string): Promise<string[]> {
+  const { readFile } = await import('node:fs/promises');
+
+  try {
+    const content = await readFile(filePath, 'utf-8');
+    // Match ../../ComponentName/ patterns in imports
+    const componentRegex = /import\s+(?:.*?from\s+)?['"](?:\.\.\/){2,}([A-Z][^/'"]+)\//g;
+    const matches = [...content.matchAll(componentRegex)];
+    const components = matches.map(match => match[1]); // Extract component name
+    // Remove duplicates and filter out 'shared' directory
+    return [...new Set(components)].filter(name => name !== 'shared');
+  } catch (error) {
+    return [];
+  }
+}
