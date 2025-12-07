@@ -52,14 +52,6 @@
 
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
-          <h3 class="mbe4">Gradient Style</h3>
-          <div class="mbe3"></div>
-          <VueBreadcrumb
-            class="custom-gradient-breadcrumb"
-            :items="items"
-          />
-        </div>
-        <div>
           <h3>Minimal with Underline</h3>
           <div class="mbe3"></div>
           <VueBreadcrumb
@@ -98,34 +90,6 @@ export default {
 </script>
 
 <style scoped>
-/* Gradient breadcrumb style */
-.custom-gradient-breadcrumb::part(ag-breadcrumb-item-link) {
-  color: #667eea;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  background: linear-gradient(
-    135deg,
-    transparent 0%,
-    rgba(102, 126, 234, 0.1) 100%
-  );
-}
-
-.custom-gradient-breadcrumb::part(ag-breadcrumb-item-link):hover {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
-}
-
-.custom-gradient-breadcrumb::part(ag-breadcrumb-item-current) {
-  color: #764ba2;
-  font-weight: 700;
-  padding: 0.5rem 1rem;
-}
-
 /* Minimalist breadcrumb */
 .custom-minimal-breadcrumb::part(ag-breadcrumb-item-link) {
   color: var(--vp-c-text-1);

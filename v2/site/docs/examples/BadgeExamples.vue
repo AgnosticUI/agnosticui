@@ -121,7 +121,7 @@
       </div>
     </VueAlert>
     <div class="mbe4">
-      <h4>Inside Buttons (as content)</h4>
+      <h3>Inside Buttons (as content)</h3>
     </div>
     <div class="mbe4">
       <VueButton
@@ -138,7 +138,7 @@
       </VueButton>
     </div>
     <div class="mbs4 mbe4">
-      <h4>Absolute Position</h4>
+      <h3>Absolute Position</h3>
     </div>
     <div class="mbe4">
       <VueButton
@@ -389,7 +389,6 @@
     </div>
     <div class="stacked-mobile mbe4">
       <VueBadge class="custom-gradient-badge">Gradient Badge</VueBadge>
-      <VueBadge class="custom-outline-badge">Outline Badge</VueBadge>
       <VueBadge class="custom-minimal-badge">Minimal Badge</VueBadge>
     </div>
   </section>
@@ -428,13 +427,6 @@ export default {
   color: white;
   font-weight: 600;
   padding: 0.5rem 1rem;
-}
-
-/* Outline badge */
-.custom-outline-badge::part(ag-badge) {
-  background: transparent;
-  color: #764ba2;
-  border: 2px solid #764ba2;
 }
 
 /* Minimal badge */
