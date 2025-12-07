@@ -1,8 +1,8 @@
 import { css, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
-import { AgBadge, type BadgeProps } from '../../Badge/core/_Badge.js';
-import { motionStyles } from '../../../styles/motion.styles.js';
-import type { FxProps } from '../../../types/fx.js';
+import { AgBadge, type BadgeProps } from '../../Badge/core/_Badge';
+import { motionStyles } from '../../../../styles/motion.styles';
+import type { FxProps } from '../../../../types/fx';
 
 // Combined props interface
 export interface BadgeFxProps extends BadgeProps, FxProps { }

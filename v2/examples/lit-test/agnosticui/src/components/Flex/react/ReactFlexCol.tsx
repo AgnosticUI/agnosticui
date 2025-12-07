@@ -1,6 +1,6 @@
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { FlexCol } from '../FlexCol';
+import { FlexCol } from '../core/FlexCol';
 import type { FlexColProps } from '../core/index';
 
 export type ReactFlexColProps = FlexColProps;

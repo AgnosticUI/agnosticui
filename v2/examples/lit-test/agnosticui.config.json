@@ -16,11 +16,11 @@
       ]
     },
     "Badge": {
-      "added": "2025-12-06T01:09:34.526Z",
+      "added": "2025-12-07T16:48:17.627Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Badge/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Badge/core"
       ]
     },
     "Button": {
@@ -103,6 +103,30 @@
       "files": [
         "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Accordion/core"
       ]
+    },
+    "AspectRatio": {
+      "added": "2025-12-07T15:58:44.682Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/AspectRatio/core"
+      ]
+    },
+    "Breadcrumb": {
+      "added": "2025-12-07T16:10:33.275Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Breadcrumb/core"
+      ]
+    },
+    "BadgeFx": {
+      "added": "2025-12-07T16:45:52.110Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/BadgeFx/core"
+      ]
     }
   },
   "ai": {
@@ -116,6 +140,6 @@
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
     "version": "unknown",
-    "installed": "2025-12-06T04:40:23.228Z"
+    "installed": "2025-12-07T16:45:35.227Z"
   }
 }

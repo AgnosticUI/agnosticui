@@ -51,10 +51,4 @@ The `ag-tag` component will be a presentational web component.
 <ag-tag variant="success" shape="pill">Success</ag-tag>
 ```
 
-**With Close Slot**
-```html
-<ag-tag variant="info">
-  Info Tag
-  <button slot="close" aria-label="Close">X</button>
-</ag-tag>
-```
+

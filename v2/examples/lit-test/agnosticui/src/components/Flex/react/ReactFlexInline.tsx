@@ -1,6 +1,6 @@
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { FlexInline } from '../FlexInline';
+import { FlexInline } from '../core/FlexInline';
 import type { FlexInlineProps } from '../core/index';
 
 export type ReactFlexInlineProps = FlexInlineProps;

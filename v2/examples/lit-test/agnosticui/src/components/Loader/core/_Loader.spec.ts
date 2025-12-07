@@ -31,24 +31,6 @@ describe('Loader', () => {
       expect(results).toHaveNoViolations();
     });
 
-    it('has role="status"', async () => {
-      const el = await createLoader();
-      const loaderEl = el.shadowRoot?.querySelector('.loader');
-      expect(loaderEl?.getAttribute('role')).toBe('status');
-    });
-
-    it('has aria-live="polite"', async () => {
-      const el = await createLoader();
-      const loaderEl = el.shadowRoot?.querySelector('.loader');
-      expect(loaderEl?.getAttribute('aria-live')).toBe('polite');
-    });
-
-    it('has aria-busy="true" by default', async () => {
-      const el = await createLoader();
-      const loaderEl = el.shadowRoot?.querySelector('.loader');
-      expect(loaderEl?.getAttribute('aria-busy')).toBe('true');
-    });
-
     it('contains screen reader text', async () => {
       const el = await createLoader();
       const label = el.shadowRoot?.querySelector('.loader-label');

@@ -323,7 +323,7 @@ export class Pagination extends LitElement implements PaginationProps {
     }
 
     .pagination-button {
-      color: var(--ag-primary);
+      color: var(--ag-primary-text);
       display: inline-block;
       line-height: var(--ag-line-height-4);
       padding-inline-start: var(--ag-space-2);
@@ -359,13 +359,13 @@ export class Pagination extends LitElement implements PaginationProps {
 
     .pagination-item-active .pagination-button {
       background-color: var(--ag-background-tertiary);
-      color: var(--ag-primary-dark);
+      color: var(--ag-primary-text);
     }
 
     :host([bordered]) .pagination-item-active .pagination-button {
       background-color: transparent;
-      border: var(--ag-border-width-1) solid var(--ag-primary);
-      color: var(--ag-primary);
+      border: var(--ag-border-width-1) solid var(--ag-primary-text);
+      color: var(--ag-primary-text);
     }
 
     .pagination-item:hover .pagination-button {

@@ -52,7 +52,7 @@ export class AgLink extends LitElement implements LinkProps {
 
     a {
       /* Base link styles */
-      color: var(--ag-primary);
+      color: var(--ag-primary-text);
       text-decoration: underline;
       cursor: pointer;
       transition-property: color, background-color, border-color, text-decoration-color;
@@ -60,7 +60,8 @@ export class AgLink extends LitElement implements LinkProps {
     }
 
     a:hover {
-      color: var(--ag-primary-dark);
+      color: var(--ag-primary-text);
+      opacity: 0.85;
     }
 
     a:focus-visible {
@@ -71,35 +72,43 @@ export class AgLink extends LitElement implements LinkProps {
 
     /* Variant styles for standard links */
     :host([variant="primary"]) a {
-      color: var(--ag-primary);
+      color: var(--ag-primary-text);
+      font-weight: 600;
     }
 
     :host([variant="primary"]) a:hover {
-      color: var(--ag-primary-dark);
+      color: var(--ag-primary-text);
+      opacity: 0.85;
     }
 
     :host([variant="success"]) a {
-      color: var(--ag-success);
+      color: var(--ag-success-text);
+      font-weight: 600;
     }
 
     :host([variant="success"]) a:hover {
-      color: var(--ag-success-dark);
+      color: var(--ag-success-text);
+      opacity: 0.85;
     }
 
     :host([variant="warning"]) a {
-      color: var(--ag-warning);
+      font-weight: 600;
+      color: var(--ag-warning-text);
     }
 
     :host([variant="warning"]) a:hover {
-      color: var(--ag-warning-dark);
+      color: var(--ag-warning-text);
+      opacity: 0.85;
     }
 
     :host([variant="danger"]) a {
-      color: var(--ag-danger);
+      font-weight: 600;
+      color: var(--ag-danger-text);
     }
 
     :host([variant="danger"]) a:hover {
-      color: var(--ag-danger-dark);
+      color: var(--ag-danger-text);
+      opacity: 0.85;
     }
 
     :host([variant="monochrome"]) a {
@@ -109,7 +118,7 @@ export class AgLink extends LitElement implements LinkProps {
 
     :host([variant="monochrome"]) a:hover {
       color: var(--ag-text-primary);
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     /* Button-style link base */
@@ -153,7 +162,7 @@ export class AgLink extends LitElement implements LinkProps {
 
     :host([isButton][variant="warning"]) a {
       background: var(--ag-warning);
-      color: var(--ag-white);
+      color: var(--ag-neutral-900);
     }
 
     :host([isButton][variant="warning"]) a:hover {
@@ -240,13 +249,13 @@ export class AgLink extends LitElement implements LinkProps {
     /* Button bordered variant */
     :host([isButton][buttonBordered]) a {
       background: transparent;
-      border: 1px solid var(--ag-neutral-400);
+      border: 1px solid var(--ag-neutral-500);
       color: inherit;
     }
 
     :host([isButton][buttonBordered][variant="primary"]) a {
-      color: var(--ag-primary);
-      border-color: var(--ag-primary);
+      color: var(--ag-primary-text);
+      border-color: var(--ag-primary-text);
       background: transparent;
     }
 
@@ -256,8 +265,8 @@ export class AgLink extends LitElement implements LinkProps {
     }
 
     :host([isButton][buttonBordered][variant="success"]) a {
-      color: var(--ag-success);
-      border-color: var(--ag-success);
+      color: var(--ag-success-text);
+      border-color: var(--ag-success-text);
       background: transparent;
     }
 
@@ -267,19 +276,19 @@ export class AgLink extends LitElement implements LinkProps {
     }
 
     :host([isButton][buttonBordered][variant="warning"]) a {
-      color: var(--ag-warning);
-      border-color: var(--ag-warning);
+      color: var(--ag-warning-text);
+      border-color: var(--ag-warning-text);
       background: transparent;
     }
 
     :host([isButton][buttonBordered][variant="warning"]) a:hover {
       background: var(--ag-warning);
-      color: var(--ag-white);
+      color: var(--ag-neutral-900);
     }
 
     :host([isButton][buttonBordered][variant="danger"]) a {
-      color: var(--ag-danger);
-      border-color: var(--ag-danger);
+      color: var(--ag-danger-text);
+      border-color: var(--ag-danger-text);
       background: transparent;
     }
 
