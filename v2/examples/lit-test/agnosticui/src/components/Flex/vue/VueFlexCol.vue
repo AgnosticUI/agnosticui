@@ -17,30 +17,26 @@ import {
   type PropType,
 } from "vue";
 import type { FlexColProps } from "../core/index";
-import "../FlexCol"; // Registers the ag-flex-col web component
+import "../core/FlexCol"; // Registers the ag-flex-col web component
 
 export default defineComponent({
   name: "VueFlexCol",
   props: {
     wrap: {
-      type: String as PropType<FlexColProps['wrap']>,
+      type: String as PropType<FlexColProps["wrap"]>,
       default: "nowrap",
     },
     justify: {
-      type: String as PropType<FlexColProps['justify']>,
+      type: String as PropType<FlexColProps["justify"]>,
       default: "flex-start",
     },
     align: {
-      type: String as PropType<FlexColProps['align']>,
+      type: String as PropType<FlexColProps["align"]>,
       default: "stretch",
     },
     alignContent: {
-      type: String as PropType<FlexColProps['alignContent']>,
+      type: String as PropType<FlexColProps["alignContent"]>,
       default: "stretch",
-    },
-    gap: {
-      type: String,
-      default: "var(--ag-space-0, 0)",
     },
     reverse: {
       type: Boolean,
@@ -62,7 +58,6 @@ export default defineComponent({
       webComponent.justify = props.justify;
       webComponent.align = props.align;
       webComponent.alignContent = props.alignContent;
-      webComponent.gap = props.gap;
       webComponent.reverse = props.reverse;
       webComponent.stretchChildren = props.stretchChildren;
     };

@@ -10,6 +10,9 @@ import './components/ag/Flex/core';
 import './components/ag/Image/core/Image';
 import './components/ag/Tag/core/Tag';
 import './components/ag/VisuallyHidden/core/VisuallyHidden';
+import './components/ag/AspectRatio/core/AspectRatio';
+import './components/ag/BadgeFx/core/BadgeFx';
+import './components/ag/Breadcrumb/core/Breadcrumb';
 
 /**
  * An example element.
@@ -19,6 +22,10 @@ import './components/ag/VisuallyHidden/core/VisuallyHidden';
  */
 @customElement('my-element')
 export class MyElement extends LitElement {
+  handleBreadcrumbClick(event: CustomEvent) {
+    console.log('Breadcrumb clicked:', event.detail);
+  }
+
   render() {
     return html`
       <h1>Kitchen Sink :-)</h1>
@@ -46,6 +53,18 @@ export class MyElement extends LitElement {
         <ag-badge variant="danger">Danger</ag-badge>
         <ag-badge variant="neutral">Neutral</ag-badge>
         <ag-badge variant="info">Info</ag-badge>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-badge-fx fx="bounce" fx-speed="md"> Badge Text </ag-badge-fx>
+        <ag-badge-fx fx="bounce" variant="success">Bounce</ag-badge-fx>
+        <ag-badge-fx fx="pulse" variant="info">Pulse</ag-badge-fx>
+        <ag-badge-fx fx="jelly" fx-speed="lg" fx-ease="spring-sm" variant="monochrome">Jelly</ag-badge-fx>
+        <ag-badge-fx fx="shimmer" fx-speed="xl" variant="danger">Shimmer</ag-badge-fx>
+        <ag-badge-fx fx="glow" variant="primary">Glow</ag-badge-fx>
+        <ag-badge-fx fx="flip" fx-speed="lg" fx-ease="ease-in" variant="success">Flip</ag-badge-fx>
+        <ag-badge-fx fx="ripple" variant="info">Ripple</ag-badge-fx>
+        <ag-badge-fx fx="highlight-sweep" fx-speed="lg" fx-ease="ease-out" variant="monochrome">Sweep</ag-badge-fx>
+        <ag-badge-fx fx="press-pop" variant="default" interactive>Press Pop</ag-badge-fx>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-alert type="primary" rounded borderedLeft>
@@ -91,12 +110,28 @@ export class MyElement extends LitElement {
         </ag-avatar-group>
       </ag-flex-row>
       <ag-flex-row class="responsive">
-        <ag-image
-          class="responsive-image-container"
-          src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=800"
-          alt="A beautiful landscape."
-          aspectRatio="16/9"
-        ></ag-image>
+        <ag-aspect-ratio width="16" height="9">
+          <ag-image
+            class="responsive-image-container"
+            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=800"
+            alt="A beautiful landscape."
+          ></ag-image>
+        </ag-aspect-ratio>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-breadcrumb
+          .items=${[
+            { label: 'Home', href: '/' },
+            { label: 'Library', href: '/library' },
+            { label: 'Data', href: '/data' },
+            { label: 'Files', href: '/files' },
+            { label: 'Current', current: true }
+          ]}
+          type="default"
+          primary
+          ariaLabel="Breadcrumb"
+          @breadcrumb-click="handleBreadcrumbClick"
+        ></ag-breadcrumb>
       </ag-flex-row>
       <slot></slot>
     `

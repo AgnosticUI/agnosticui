@@ -17,30 +17,26 @@ import {
   type PropType,
 } from "vue";
 import type { FlexRowProps } from "../core/index";
-import "../FlexRow"; // Registers the ag-flex-row web component
+import "../core/FlexRow"; // Registers the ag-flex-row web component
 
 export default defineComponent({
   name: "VueFlexRow",
   props: {
     wrap: {
-      type: String as PropType<FlexRowProps['wrap']>,
+      type: String as PropType<FlexRowProps["wrap"]>,
       default: "nowrap",
     },
     justify: {
-      type: String as PropType<FlexRowProps['justify']>,
+      type: String as PropType<FlexRowProps["justify"]>,
       default: "flex-start",
     },
     align: {
-      type: String as PropType<FlexRowProps['align']>,
+      type: String as PropType<FlexRowProps["align"]>,
       default: "stretch",
     },
     alignContent: {
-      type: String as PropType<FlexRowProps['alignContent']>,
+      type: String as PropType<FlexRowProps["alignContent"]>,
       default: "stretch",
-    },
-    gap: {
-      type: String,
-      default: "var(--ag-space-0, 0)",
     },
     reverse: {
       type: Boolean,
@@ -62,7 +58,6 @@ export default defineComponent({
       webComponent.justify = props.justify;
       webComponent.align = props.align;
       webComponent.alignContent = props.alignContent;
-      webComponent.gap = props.gap;
       webComponent.reverse = props.reverse;
       webComponent.stretchChildren = props.stretchChildren;
     };
