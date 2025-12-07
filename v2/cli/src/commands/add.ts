@@ -14,6 +14,7 @@ import {
   getComponentSourcePaths,
   normalizeComponentName,
   scanForSharedDependencies,
+  scanForComponentDependencies,
   scanForUtilsDependencies,
   scanForStyleDependencies,
   scanForTypeDependencies,
@@ -25,16 +26,29 @@ import {
 import pc from 'picocolors';
 
 export async function add(componentNames: string[], options: AddOptions = {}): Promise<void> {
-  // Load config
-  const config = await loadConfig();
-  if (!config) {
-    logger.error('AgnosticUI is not initialized in this project.');
-    logger.info('Run ' + pc.cyan('npx ag init') + ' to get started.');
-    process.exit(1);
-  }
+  // Setup signal handlers to allow Control-C to work
+  let spinner: ReturnType<typeof p.spinner> | null = null;
+  const handleExit = () => {
+    if (spinner) {
+      spinner.stop('Operation cancelled');
+    }
+    process.exit(130); // Standard exit code for SIGINT
+  };
 
-  const referencePath = path.resolve(config.paths.reference);
-  const componentsPath = path.resolve(config.paths.components);
+  process.on('SIGINT', handleExit);
+  process.on('SIGTERM', handleExit);
+
+  try {
+    // Load config
+    const config = await loadConfig();
+    if (!config) {
+      logger.error('AgnosticUI is not initialized in this project.');
+      logger.info('Run ' + pc.cyan('npx ag init') + ' to get started.');
+      process.exit(1);
+    }
+
+    const referencePath = path.resolve(config.paths.reference);
+    const componentsPath = path.resolve(config.paths.components);
 
   // Validate reference library exists
   if (!pathExists(referencePath)) {
@@ -77,66 +91,77 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
     componentNames = normalizedNames;
   }
 
-  // Process each component
-  const spinner = p.spinner();
-  const results: { name: string; success: boolean; files: string[] }[] = [];
+    // Process each component
+    spinner = p.spinner();
+    const results: { name: string; success: boolean; files: string[] }[] = [];
 
-  for (const componentName of componentNames) {
-    spinner.start(`Adding ${componentName}...`);
+    for (const componentName of componentNames) {
+      spinner.start(`Adding ${componentName}...`);
 
-    try {
-      const files = await addComponent(
-        componentName,
-        referencePath,
-        componentsPath,
-        config.framework,
-        config.paths.components
-      );
+      try {
+        const files = await addComponent(
+          componentName,
+          referencePath,
+          componentsPath,
+          config.framework,
+          config.paths.components
+        );
 
-      // Process shared dependencies
-      const sharedFiles = await processSharedDependencies(
-        files,
-        referencePath,
-        componentsPath,
-        config.paths.components
-      );
-      files.push(...sharedFiles);
+        // Process shared dependencies
+        const sharedFiles = await processSharedDependencies(
+          files,
+          referencePath,
+          componentsPath,
+          config.paths.components
+        );
+        files.push(...sharedFiles);
 
-      // Process utility dependencies
-      const utilFiles = await processUtilsDependencies(
-        files,
-        referencePath,
-        process.cwd() // Project root
-      );
-      // We don't necessarily need to track utils in the component files list for config,
-      // but we could if we want to version them. For now, let's just ensure they exist.
+        // Process component dependencies (e.g., CopyButton depends on IconButton)
+        const componentFiles = await processComponentDependencies(
+          files,
+          referencePath,
+          componentsPath,
+          config.framework,
+          config.paths.components,
+          config
+        );
+        files.push(...componentFiles);
 
-      // Process style dependencies
-      const styleFiles = await processStyleDependencies(
-        files,
-        referencePath,
-        process.cwd() // Project root
-      );
-      // Style files are shared across components, so we don't track them per component
+        // Process utility dependencies
+        const utilFiles = await processUtilsDependencies(
+          files,
+          referencePath,
+          process.cwd() // Project root
+        );
+        // We don't necessarily need to track utils in the component files list for config,
+        // but we could if we want to version them. For now, let's just ensure they exist.
 
-      // Process type dependencies
-      const typeFiles = await processTypeDependencies(
-        files,
-        referencePath,
-        process.cwd() // Project root
-      );
-      // Type files are shared across components, so we don't track them per component
+        // Process style dependencies
+        const styleFiles = await processStyleDependencies(
+          files,
+          referencePath,
+          process.cwd() // Project root
+        );
+        // Style files are shared across components, so we don't track them per component
 
-      results.push({ name: componentName, success: true, files });
-      spinner.message(`Added ${componentName}`);
-    } catch (error) {
-      results.push({ name: componentName, success: false, files: [] });
-      spinner.stop(pc.red('✖') + ` Failed to add ${componentName}`);
-      logger.error(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+        // Process type dependencies
+        const typeFiles = await processTypeDependencies(
+          files,
+          referencePath,
+          process.cwd() // Project root
+        );
+        // Type files are shared across components, so we don't track them per component
+
+        results.push({ name: componentName, success: true, files });
+        spinner.message(`Added ${componentName}`);
+      } catch (error) {
+        results.push({ name: componentName, success: false, files: [] });
+        logger.error(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+        // Don't stop spinner here, let it continue for next component
+      }
     }
-  }
 
-  spinner.stop();
+    spinner.stop();
 
   // Update config with successfully added components
   let updatedConfig = config;
@@ -196,9 +221,14 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
     }
   }
 
-  if (failureCount > 0) {
-    logger.error(`Failed to add ${failureCount} component(s).`);
-    process.exit(1);
+    if (failureCount > 0) {
+      logger.error(`Failed to add ${failureCount} component(s).`);
+      process.exit(1);
+    }
+  } finally {
+    // Clean up signal handlers
+    process.off('SIGINT', handleExit);
+    process.off('SIGTERM', handleExit);
   }
 }
 
@@ -273,8 +303,15 @@ async function processSharedDependencies(
   referencePath: string,
   componentsPath: string,
   configComponentsPath: string,
-  processed: Set<string> = new Set()
+  processed: Set<string> = new Set(),
+  depth: number = 0
 ): Promise<string[]> {
+  // Prevent infinite recursion - max depth of 10 levels
+  if (depth > 10) {
+    logger.warn('Maximum dependency depth reached (10 levels). Stopping recursive dependency scan.');
+    return [];
+  }
+
   const newFiles: string[] = [];
 
   for (const fileOrDir of files) {
@@ -287,13 +324,15 @@ async function processSharedDependencies(
         const children = await readdir(absPath);
         filesToScan = children
           .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
-          .map(f => path.join(absPath, f));
+          .map(f => path.join(absPath, f))
+          .slice(0, 100); // Limit to first 100 files to prevent hangs
       } else {
         if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
           filesToScan = [absPath];
         }
       }
-    } catch {
+    } catch (err) {
+      // Silently skip files that can't be accessed
       continue;
     }
 
@@ -315,7 +354,8 @@ async function processSharedDependencies(
             referencePath,
             componentsPath,
             configComponentsPath,
-            processed
+            processed,
+            depth + 1
           );
           newFiles.push(...recursiveFiles);
         } catch (error) {
@@ -347,6 +387,105 @@ async function addSharedComponent(
   } else {
     throw new Error(`Shared component "${componentName}" not found at ${sourcePaths.path}`);
   }
+}
+
+/**
+ * Process component dependencies for a list of files
+ * Handles cases like CopyButton depending on IconButton
+ */
+async function processComponentDependencies(
+  files: string[],
+  referencePath: string,
+  componentsPath: string,
+  framework: Framework,
+  configComponentsPath: string,
+  config: any,
+  processed: Set<string> = new Set(),
+  depth: number = 0
+): Promise<string[]> {
+  // Prevent infinite recursion
+  if (depth > 10) {
+    logger.warn('Maximum component dependency depth reached (10 levels).');
+    return [];
+  }
+
+  const newFiles: string[] = [];
+
+  for (const fileOrDir of files) {
+    const absPath = path.resolve(process.cwd(), fileOrDir);
+    let filesToScan: string[] = [];
+
+    try {
+      const stats = await stat(absPath);
+      if (stats.isDirectory()) {
+        const children = await readdir(absPath);
+        filesToScan = children
+          .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
+          .map(f => path.join(absPath, f))
+          .slice(0, 100);
+      } else {
+        if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
+          filesToScan = [absPath];
+        }
+      }
+    } catch (err) {
+      continue;
+    }
+
+    for (const file of filesToScan) {
+      const deps = await scanForComponentDependencies(file);
+
+      for (const dep of deps) {
+        if (processed.has(dep)) continue;
+
+        // Check if component is already added
+        if (hasComponent(config, dep)) {
+          processed.add(dep);
+          continue;
+        }
+
+        processed.add(dep);
+
+        try {
+          logger.info(`  → Detected dependency: ${dep}`);
+          // Add the component using the same logic as the main add
+          const componentFiles = await addComponent(
+            dep,
+            referencePath,
+            componentsPath,
+            framework,
+            configComponentsPath
+          );
+          newFiles.push(...componentFiles);
+
+          // Update config for this dependency
+          config = addComponentToConfig(
+            config,
+            dep,
+            '2.0.0-alpha',
+            componentFiles
+          );
+
+          // Recursively process dependencies of this component
+          const recursiveFiles = await processComponentDependencies(
+            componentFiles,
+            referencePath,
+            componentsPath,
+            framework,
+            configComponentsPath,
+            config,
+            processed,
+            depth + 1
+          );
+          newFiles.push(...recursiveFiles);
+        } catch (error) {
+          logger.warn(`Failed to add component dependency "${dep}": ${error instanceof Error ? error.message : 'Unknown error'}`);
+        }
+      }
+    }
+  }
+
+  return newFiles;
 }
 
 /**
@@ -456,13 +595,15 @@ async function processUtilsDependencies(
         const children = await readdir(absPath);
         filesToScan = children
           .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
-          .map(f => path.join(absPath, f));
+          .map(f => path.join(absPath, f))
+          .slice(0, 100); // Limit to first 100 files to prevent hangs
       } else {
         if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
           filesToScan = [absPath];
         }
       }
-    } catch {
+    } catch (err) {
+      // Silently skip files that can't be accessed
       continue;
     }
 
@@ -538,13 +679,15 @@ async function processStyleDependencies(
         const children = await readdir(absPath);
         filesToScan = children
           .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
-          .map(f => path.join(absPath, f));
+          .map(f => path.join(absPath, f))
+          .slice(0, 100); // Limit to first 100 files to prevent hangs
       } else {
         if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
           filesToScan = [absPath];
         }
       }
-    } catch {
+    } catch (err) {
+      // Silently skip files that can't be accessed
       continue;
     }
 
@@ -620,13 +763,15 @@ async function processTypeDependencies(
         const children = await readdir(absPath);
         filesToScan = children
           .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
-          .map(f => path.join(absPath, f));
+          .map(f => path.join(absPath, f))
+          .slice(0, 100); // Limit to first 100 files to prevent hangs
       } else {
         if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
           filesToScan = [absPath];
         }
       }
-    } catch {
+    } catch (err) {
+      // Silently skip files that can't be accessed
       continue;
     }
 
