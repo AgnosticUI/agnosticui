@@ -77,7 +77,7 @@
   --ag-coral-900: #460701;
   --ag-text-primary: #F0F6FC;
   --ag-text-secondary: #D1D7E0;
-  --ag-text-muted: #9198A1;
+  --ag-text-muted: #D1D7E0;
   --ag-text-primary-muted: #D1D7E0;
   --ag-text-primary-inverted: #010409;
   --ag-background-primary: #010409;
@@ -107,6 +107,7 @@
   --ag-danger: #DC2626;
   --ag-danger-rgb: 220, 38, 38;
   --ag-danger-dark: #f85149;
+  --ag-error-text: #ffa198;
   --ag-warning-rgb: 191, 135, 0;
   --ag-warning: #bb8009;
   --ag-warning-dark: #9e6a03;

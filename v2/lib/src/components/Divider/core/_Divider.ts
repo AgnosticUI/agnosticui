@@ -122,7 +122,7 @@ export class AgDivider extends LitElement implements DividerProps {
     }
 
     .divider-warning .divider-content {
-      color: var(--ag-warning);
+      color: var(--ag-text-primary);
     }
 
     .divider-error::before,
@@ -131,7 +131,7 @@ export class AgDivider extends LitElement implements DividerProps {
     }
 
     .divider-error .divider-content {
-      color: var(--ag-danger);
+      color: var(--ag-text-primary);
     }
 
     .divider-success::before,
@@ -140,7 +140,7 @@ export class AgDivider extends LitElement implements DividerProps {
     }
 
     .divider-success .divider-content {
-      color: var(--ag-success);
+      color: var(--ag-text-primary);
     }
 
     .divider-info::before,
@@ -149,7 +149,7 @@ export class AgDivider extends LitElement implements DividerProps {
     }
 
     .divider-info .divider-content {
-      color: var(--ag-info);
+      color: var(--ag-text-primary);
     }
 
     .divider-monochrome::before,

@@ -8,8 +8,8 @@
     "description": "Secondary text for less emphasis"
   },
   "text-muted": {
-    "value": "{neutral.500.value}",
-    "description": "Muted text for less emphasis"
+    "value": "{neutral.600.value}",
+    "description": "Deprecated: Use text-secondary instead. Muted text for low emphasis"
   },
   "text-primary-muted": {
     "value": "{neutral.700.value}",
@@ -44,15 +44,15 @@
     "description": "Background for secondary (accordion backgrounds)"
   },
   "primary-background": { "value": "{blue.50.value}" },
-  "primary-text": { "value": "{blue.900.value}" },
+  "primary-text": { "value": "{blue.600.value}" },
   "success-background": { "value": "{green.50.value}" },
-  "success-text": { "value": "{green.900.value}" },
+  "success-text": { "value": "{green.600.value}" },
   "info-background": { "value": "{neutral.100.value}" },
-  "info-text": { "value": "{neutral.900.value}" },
+  "info-text": { "value": "{neutral.600.value}" },
   "warning-background": { "value": "{yellow.50.value}" },
-  "warning-text": { "value": "{yellow.900.value}" },
+  "warning-text": { "value": "{yellow.600.value}" },
   "danger-background": { "value": "{red.50.value}" },
-  "danger-text": { "value": "{red.900.value}" },
+  "danger-text": { "value": "{red.600.value}" },
   "border": {
     "value": "{neutral.200.value}",
     "description": "Primary border for structural dividers and prominent elements"
@@ -96,6 +96,10 @@
   "danger-dark": {
     "value": "{red.600.value}",
     "description": "Darker shade of danger for hover states"
+  },
+  "error-text": {
+    "value": "{red.600.value}",
+    "description": "Error text that's setup for contrast in light and dark modes."
   },
   "warning-rgb": {
     "value": "191, 135, 0",

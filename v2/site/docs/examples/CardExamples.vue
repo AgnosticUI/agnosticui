@@ -15,7 +15,7 @@
     <div class="stacked-mobile">
       <VueCard :shadow="true">
         <template #header>
-          <h4 class="m0">Product Details</h4>
+          <h3 class="m0">Product Details</h3>
         </template>
         <p>This card demonstrates using the header slot to add a title section with visual separation.</p>
       </VueCard>
@@ -26,7 +26,7 @@
     </div>
     <div class="stacked-mobile">
       <VueCard :shadow="true">
-        <h4 class="m0">Card with Shadow</h4>
+        <h3 class="m0">Card with Shadow</h3>
         <p>Hover over this card to see the enhanced shadow effect.</p>
       </VueCard>
     </div>
@@ -40,12 +40,12 @@
         :animated="true"
       >
         <template #header>
-          <h4 class="m0">Animated Card</h4>
+          <h3 class="m0">Animated Card</h3>
         </template>
         <p>Hover to see smooth animation (translateY with shadow enhancement).</p>
         <template #footer>
           <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
-            <button style="padding: 0 1rem;">View Details</button>
+            <VueButton>View Details</VueButton>
           </div>
         </template>
       </VueCard>
@@ -57,15 +57,15 @@
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
       <VueCard rounded="sm">
-        <h4 class="m0">Small Rounded (sm)</h4>
+        <h3 class="m0">Small Rounded (sm)</h3>
         <p>Subtle rounded corners using --ag-radius-sm (0.25rem).</p>
       </VueCard>
       <VueCard rounded="md">
-        <h4 class="m0">Medium Rounded (md)</h4>
+        <h3 class="m0">Medium Rounded (md)</h3>
         <p>Moderate rounded corners using --ag-radius-md (0.375rem).</p>
       </VueCard>
       <VueCard rounded="lg">
-        <h4 class="m0">Large Rounded (lg)</h4>
+        <h3 class="m0">Large Rounded (lg)</h3>
         <p>Prominent rounded corners using --ag-radius-lg (1rem).</p>
       </VueCard>
     </div>
@@ -75,7 +75,7 @@
     </div>
     <div class="stacked-mobile">
       <VueCard :stacked="true">
-        <h4 class="m0">Stacked Content</h4>
+        <h3 class="m0">Stacked Content</h3>
         <p>First paragraph with automatic margin.</p>
         <p>Second paragraph with automatic margin.</p>
         <p>Third paragraph with automatic margin.</p>
@@ -90,35 +90,35 @@
         variant="success"
         class="mbe2"
       >
-        <h4 class="m0">Success</h4>
+        <h3 class="m0">Success</h3>
         <p>Operation completed successfully!</p>
       </VueCard>
       <VueCard
         variant="info"
         class="mbe2"
       >
-        <h4 class="m0">Information</h4>
+        <h3 class="m0">Information</h3>
         <p>Here's some helpful information for you.</p>
       </VueCard>
       <VueCard
         variant="error"
         class="mbe2"
       >
-        <h4 class="m0">Error</h4>
+        <h3 class="m0">Error</h3>
         <p>Something went wrong. Please try again.</p>
       </VueCard>
       <VueCard
         variant="warning"
         class="mbe2"
       >
-        <h4 class="m0">Warning</h4>
+        <h3 class="m0">Warning</h3>
         <p>Please review this information carefully.</p>
       </VueCard>
       <VueCard
         variant="monochrome"
         class="mbe2"
       >
-        <h4 class="m0">Monochrome</h4>
+        <h3 class="m0">Monochrome</h3>
         <p>Clean and modern monochrome design.</p>
       </VueCard>
     </div>
@@ -129,19 +129,22 @@
     <div class="stacked-mobile">
       <VueCard :shadow="true">
         <template #header>
-          <h4 class="m0">Card Header</h4>
+          <h3 class="m0">Card Header</h3>
         </template>
 
         <div>
-          <h5>Main Content</h5>
+          <h4>Main Content</h4>
           <p>This card demonstrates the header, default, and footer slots.</p>
         </div>
 
         <template #footer>
-          <button style="padding: 0.5rem 1rem;">Cancel</button>
-          <button style="padding: 0.5rem 1rem; background: #007bff; color: white; border: none; border-radius: 4px;">
+          <VueButton variant="secondary">Cancel</VueButton>
+          <VueButton
+            variant="primary"
+            style="margin-left: 0.5rem;"
+          >
             Confirm
-          </button>
+          </VueButton>
         </template>
       </VueCard>
     </div>
@@ -156,7 +159,7 @@
         rounded="md"
         variant="success"
       >
-        <h4 class="m0">Premium Card</h4>
+        <h3 class="m0">Premium Card</h3>
         <p>This card combines multiple features: shadow, animation, rounded corners, and success variant.</p>
         <p>Hover to see the smooth animation effect!</p>
       </VueCard>
@@ -171,7 +174,7 @@
         :animated="true"
       >
         <template #header>
-          <h5>Card 1</h5>
+          <h3>Card 1</h3>
         </template>
         <p>Standard card with header, shadow and animation.</p>
       </VueCard>
@@ -181,7 +184,7 @@
         :animated="true"
         variant="success"
       >
-        <h5>Card 2</h5>
+        <h4>Card 2</h4>
         <p>Success variant with shadow and animation.</p>
       </VueCard>
 
@@ -191,11 +194,14 @@
         variant="info"
       >
         <template #header>
-          <h5>Card 3</h5>
+          <h4>Card 3</h4>
         </template>
         <p>Info variant with header, shadow and animation.</p>
         <template #footer>
-          <button style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Learn More</button>
+          <VueButton
+            variant="monochrome"
+            :bordered="true"
+          >Learn More</VueButton>
         </template>
       </VueCard>
 
@@ -204,7 +210,7 @@
         :animated="true"
         variant="error"
       >
-        <h5>Card 4</h5>
+        <h4>Card 4</h4>
         <p>Error variant with shadow and animation.</p>
       </VueCard>
 
@@ -214,7 +220,7 @@
         variant="warning"
       >
         <template #header>
-          <h5>Card 5</h5>
+          <h4>Card 5</h4>
         </template>
         <p>Warning variant with header.</p>
       </VueCard>
@@ -224,10 +230,10 @@
         :animated="true"
         rounded="md"
       >
-        <h5>Card 6</h5>
+        <h4>Card 6</h4>
         <p>Rounded corners with shadow and animation.</p>
         <template #footer>
-          <button style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Action</button>
+          <VueButton variant="success">Action</VueButton>
         </template>
       </VueCard>
     </div>
@@ -241,16 +247,19 @@
         class="custom-parts-card"
       >
         <template #header>
-          <h4 style="margin: 0; color: white;">Customized with CSS Parts</h4>
+          <h3 style="margin: 0; color: white;">Customized with CSS Parts</h3>
         </template>
 
         <p>This card demonstrates CSS Shadow Parts customization.</p>
         <p>The wrapper, header, content, and footer are styled using ::part() selectors.</p>
 
         <template #footer>
-          <button style="padding: 0.5rem 1rem; background: white; color: #667eea; border: none; border-radius: 4px; cursor: pointer;">
+          <VueButton
+            variant="monochrome"
+            shape="rounded"
+          >
             Learn More
-          </button>
+          </VueButton>
         </template>
       </VueCard>
     </div>
@@ -260,10 +269,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { VueCard } from "agnosticui-core/card/vue";
+import VueButton from "agnosticui-core/button/vue";
 
 export default defineComponent({
   name: "CardExamples",
   components: {
+    VueButton,
     VueCard,
   },
 });

@@ -8,8 +8,8 @@
     "description": "Secondary text for less emphasis"
   },
   "text-muted": {
-    "value": "{neutral.400.value}",
-    "description": "Muted text for less emphasis"
+    "value": "{neutral.100.value}",
+    "description": "Deprecated: Use text-secondary instead. Muted text for low emphasis"
   },
   "text-primary-muted": {
     "value": "{neutral.100.value}",
@@ -97,6 +97,10 @@
   "danger-dark": {
     "value": "{red.400.value}",
     "description": "Darker danger for hover states"
+  },
+  "error-text": {
+    "value": "{red.200.value}",
+    "description": "Error text that's setup for contrast in light and dark modes."
   },
   "warning-rgb": {
     "value": "191, 135, 0",

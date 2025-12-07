@@ -273,7 +273,7 @@ export class AgButton extends LitElement implements ButtonProps {
 
     /* Link-specific - inline style with smooth underline transition */
     :host([link]) button {
-      color: var(--ag-primary);
+      color: var(--ag-primary-text);
       text-decoration: none;
       border-bottom: 1px solid transparent;
       padding: 0;
@@ -307,8 +307,8 @@ export class AgButton extends LitElement implements ButtonProps {
     }
 
     :host([bordered][variant="primary"]) button {
-      color: var(--ag-primary-dark);
-      border-color: var(--ag-primary);
+      color: var(--ag-primary-text);
+      border-color: var(--ag-primary-text);
     }
 
     /* Bordered Buttons on Hover have a filled background with white text.  The
@@ -320,13 +320,13 @@ export class AgButton extends LitElement implements ButtonProps {
 
     :host([bordered][variant="secondary"]) button,
     :host([bordered][variant="secondary"]) button:hover {
-      color: var(--ag-neutral-900);
-      border-color: var(--ag-neutral-500);
+      color: var(--ag-text-secondary);
+      border-color: var(--ag-text-secondary);
     }
 
     :host([bordered][variant="success"]) button {
-      color: var(--ag-success-dark);
-      border-color: var(--ag-success);
+      color: var(--ag-success-text);
+      border-color: var(--ag-success-text);
     }
 
     :host([bordered][variant="success"]) button:hover {
@@ -335,8 +335,8 @@ export class AgButton extends LitElement implements ButtonProps {
     }
 
     :host([bordered][variant="warning"]) button {
-      color: var(--ag-warning-dark);
-      border-color: var(--ag-warning);
+      color: var(--ag-warning-text);
+      border-color: var(--ag-warning-text);
     }
 
     :host([bordered][variant="warning"]) button:hover {
@@ -345,8 +345,8 @@ export class AgButton extends LitElement implements ButtonProps {
     }
 
     :host([bordered][variant="danger"]) button {
-      color: var(--ag-danger-dark);
-      border-color: var(--ag-danger);
+      color: var(--ag-danger-text);
+      border-color: var(--ag-danger-text);
     }
 
     :host([bordered][variant="danger"]) button:hover {

@@ -101,8 +101,6 @@
       </p>
     </div>
     <div class="mbe4">
-      <VueDivider class="custom-divider-gradient">Gradient Divider</VueDivider>
-      <div class="mbe4"></div>
       <VueDivider class="custom-divider-dotted">Dotted Pattern</VueDivider>
       <div class="mbe4"></div>
       <div style="display: flex; min-height: 150px;">
@@ -130,19 +128,6 @@ export default defineComponent({
 </script>
 
 <style>
-/* CSS Shadow Parts customization examples */
-.custom-divider-gradient::part(ag-divider)::before,
-.custom-divider-gradient::part(ag-divider)::after {
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-  height: var(--ag-space-1);
-}
-
-.custom-divider-gradient::part(ag-divider-content) {
-  color: #667eea;
-  font-weight: 700;
-  font-size: 1.125rem;
-}
-
 .custom-divider-dotted::part(ag-divider)::before,
 .custom-divider-dotted::part(ag-divider)::after {
   background: repeating-linear-gradient(
