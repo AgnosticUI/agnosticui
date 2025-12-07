@@ -7,19 +7,20 @@ A comprehensive, framework-agnostic web component that wraps the browser's nativ
 <IntlFormatterExamples />
 
 <script setup>
-import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue'
+import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue';
+import { Accessibility, Bell, Layers, Package, Globe, Palette, Target, Zap } from 'lucide-vue-next';
 </script>
 
 ## Features
 
-- 🌍 **Full Internationalization** - Uses browser's native Intl API
-- ⚡ **Performance Optimized** - Built-in formatter caching
-- 🎯 **Type Safe** - Complete TypeScript definitions
-- 🎨 **Styleable** - CSS parts for custom styling
-- 🔔 **Error Handling** - Custom events for validation errors
-- ⚛️ **Framework Support** - React and Vue wrappers included
-- ♿ **Accessible** - Semantic HTML with proper attributes
-- 📦 **Zero Dependencies** - Built on Lit Element
+- <Globe :size="16" class="flex-inline" /> **Full Internationalization** - Uses browser's native Intl API
+- <Zap :size="16" class="flex-inline" /> **Performance Optimized** - Built-in formatter caching
+- <Target :size="16" class="flex-inline" /> **Type Safe** - Complete TypeScript definitions
+- <Palette :size="16" class="flex-inline" /> **Styleable** - CSS parts for custom styling
+- <Bell :size="16" class="flex-inline" /> **Error Handling** - Custom events for validation errors
+- <Layers :size="16" class="flex-inline" /> **Framework Support** - React and Vue wrappers included
+- <Accessibility :size="16" class="flex-inline" /> **Accessible** - Semantic HTML with proper attributes
+- <Package :size="16" class="flex-inline" /> **Zero Dependencies** - Built on Lit Element
 
 ## Usage
 

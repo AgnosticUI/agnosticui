@@ -10,7 +10,7 @@
 
       <!-- Pulse Effect -->
       <div class="effect-group">
-        <h4>Pulse <span class="effect-type">Scale grow (hover)</span></h4>
+        <h3>Pulse <span class="effect-type">Scale grow (hover)</span></h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="pulse"
@@ -59,7 +59,7 @@
 
       <!-- Bounce Effect -->
       <div class="effect-group">
-        <h4>Bounce <span class="effect-type">Vertical pop (hover)</span></h4>
+        <h3>Bounce <span class="effect-type">Vertical pop (hover)</span></h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="bounce"
@@ -108,7 +108,7 @@
 
       <!-- Wobble Effect -->
       <div class="effect-group">
-        <h4>Wobble <span class="effect-type">Rotate wobble (hover)</span></h4>
+        <h3>Wobble <span class="effect-type">Rotate wobble (hover)</span></h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="wobble"
@@ -157,7 +157,7 @@
 
       <!-- Shake Effect -->
       <div class="effect-group">
-        <h4>Shake <span class="effect-type">Horizontal shake (hover)</span></h4>
+        <h3>Shake <span class="effect-type">Horizontal shake (hover)</span></h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="shake"
@@ -206,7 +206,7 @@
 
       <!-- Pulse-Wobble Effect -->
       <div class="effect-group">
-        <h4>Pulse-Wobble <span class="effect-type">Sequential animation (hover)</span></h4>
+        <h3>Pulse-Wobble <span class="effect-type">Sequential animation (hover)</span></h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="pulse-wobble"
@@ -261,7 +261,7 @@
 
       <!-- Jelly Effect -->
       <div class="effect-group">
-        <h4>Jelly <span class="effect-type">Squash/stretch (hover)</span></h4>
+        <h3>Jelly <span class="effect-type">Squash/stretch (hover)</span></h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="jelly"
@@ -310,7 +310,7 @@
 
       <!-- Press-Pop Effect -->
       <div class="effect-group">
-        <h4>Press-Pop <span class="effect-type">Quick press (click)</span></h4>
+        <h3>Press-Pop <span class="effect-type">Quick press (click)</span></h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="press-pop"
@@ -359,7 +359,7 @@
 
       <!-- Grow Effect -->
       <div class="effect-group">
-        <h4>Grow <span class="effect-type">Scale up (hover)</span></h4>
+        <h3>Grow <span class="effect-type">Scale up (hover)</span></h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="grow"
@@ -408,7 +408,7 @@
 
       <!-- Shrink Effect -->
       <div class="effect-group">
-        <h4>Shrink <span class="effect-type">Scale down (hover)</span></h4>
+        <h3>Shrink <span class="effect-type">Scale down (hover)</span></h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="shrink"
@@ -652,7 +652,7 @@
       </div>
 
       <div class="use-case-group">
-        <h4>Navigation</h4>
+        <h3>Navigation</h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="grow"
@@ -679,7 +679,7 @@
       </div>
 
       <div class="use-case-group">
-        <h4>Actions</h4>
+        <h3>Actions</h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="pulse"
@@ -706,7 +706,7 @@
       </div>
 
       <div class="use-case-group">
-        <h4>Notifications</h4>
+        <h3>Notifications</h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="wobble"
@@ -726,7 +726,7 @@
       </div>
 
       <div class="use-case-group">
-        <h4>Social</h4>
+        <h3>Social</h3>
         <div class="stacked-mobile">
           <VueIconButtonFx
             fx="pulse"

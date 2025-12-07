@@ -758,13 +758,13 @@ ag-empty-state::part(ag-icon) {
 }
 
 .custom-empty-state-3::part(ag-title) {
-  color: #f59e0b;
+  color: var(--ag-text-primary);
   font-weight: 700;
 }
 
 .custom-empty-state-3::part(ag-actions-button) {
   background: #f59e0b;
-  color: white;
+  color: var(--ag-neutral-900);
   border: none;
   border-radius: 8px;
   padding: 0.75rem 1.5rem;

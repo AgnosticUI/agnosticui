@@ -11,7 +11,7 @@
         <template #logo>
           <a
             href="#"
-            style="text-decoration: none; color: var(--ag-primary); font-weight: 700; font-size: 1.25rem;"
+            style="text-decoration: none; color: var(--vp-c-brand-1); font-weight: 700; font-size: 1.25rem;"
           >
             AgnosticUI
           </a>
@@ -50,7 +50,7 @@
               height="32"
               viewBox="0 0 32 32"
               fill="currentColor"
-              style="color: var(--ag-primary);"
+              style="color: var(--vp-c-brand-1);"
             >
               <circle
                 cx="16"
@@ -97,10 +97,10 @@
     </div>
     <div class="mbe4">
       <div class="mbe3">
-        <h4
+        <h3
           class="mbe2"
           style="font-size: 1rem; font-weight: 600;"
-        >Justify: Between (Default)</h4>
+        >Justify: Between (Default)</h3>
         <VueHeader contentJustify="between">
           <template #logo>
             <a
@@ -118,10 +118,10 @@
       </div>
 
       <div class="mbe3">
-        <h4
+        <h3
           class="mbe2"
           style="font-size: 1rem; font-weight: 600;"
-        >Justify: Start</h4>
+        >Justify: Start</h3>
         <VueHeader contentJustify="start">
           <template #logo>
             <a
@@ -139,10 +139,10 @@
       </div>
 
       <div class="mbe3">
-        <h4
+        <h3
           class="mbe2"
           style="font-size: 1rem; font-weight: 600;"
-        >Justify: End</h4>
+        >Justify: End</h3>
         <VueHeader contentJustify="end">
           <template #logo>
             <a
@@ -160,10 +160,10 @@
       </div>
 
       <div class="mbe3">
-        <h4
+        <h3
           class="mbe2"
           style="font-size: 1rem; font-weight: 600;"
-        >Justify: Center</h4>
+        >Justify: Center</h3>
         <VueHeader contentJustify="center">
           <template #logo>
             <a
@@ -181,10 +181,10 @@
       </div>
 
       <div class="mbe3">
-        <h4
+        <h3
           class="mbe2"
           style="font-size: 1rem; font-weight: 600;"
-        >Justify: Around</h4>
+        >Justify: Around</h3>
         <VueHeader contentJustify="around">
           <template #logo>
             <a
@@ -217,7 +217,7 @@
           <template #logo>
             <a
               href="#"
-              style="text-decoration: none; color: var(--ag-primary); font-weight: 700; font-size: 1.25rem;"
+              style="text-decoration: none; color: var(--vp-c-brand-1); font-weight: 700; font-size: 1.25rem;"
             >
               Sticky Header
             </a>
@@ -236,9 +236,9 @@
           </nav>
         </VueHeader>
         <div style="padding: 2rem;">
-          <h4 id="section1">Section 1</h4>
+          <h3 id="section1">Section 1</h3>
           <p style="margin-bottom: 200px;">Scroll down to see the sticky behavior. The header stays at the top.</p>
-          <h4 id="section2">Section 2</h4>
+          <h3 id="section2">Section 2</h3>
           <p style="margin-bottom: 200px;">The header remains visible as you scroll through content.</p>
           <p>End of scrollable content.</p>
         </div>
@@ -253,10 +253,10 @@
     </div>
     <div class="mbe4">
       <div class="mbe3">
-        <h4
+        <h3
           class="mbe2"
           style="font-size: 1rem; font-weight: 600;"
-        >Gradient Background</h4>
+        >Gradient Background</h3>
         <VueHeader class="custom-header-gradient">
           <template #logo>
             <a
@@ -282,15 +282,15 @@
       </div>
 
       <div class="mbe3">
-        <h4
+        <h3
           class="mbe2"
           style="font-size: 1rem; font-weight: 600;"
-        >Custom Border</h4>
+        >Custom Border</h3>
         <VueHeader class="custom-header-border">
           <template #logo>
             <a
               href="#"
-              style="text-decoration: none; color: var(--ag-primary); font-weight: 700; font-size: 1.25rem;"
+              style="text-decoration: none; color: var(--vp-c-brand-1); font-weight: 700; font-size: 1.25rem;"
             >
               Bordered Header
             </a>
@@ -338,5 +338,9 @@ export default defineComponent({
   background: var(--ag-background-secondary);
   border-bottom: 3px solid var(--ag-primary);
   box-shadow: none;
+}
+/* Vitepress override */
+.vp-doc li + li {
+  margin-top: 0;
 }
 </style>

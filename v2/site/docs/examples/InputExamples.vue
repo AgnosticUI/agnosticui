@@ -464,15 +464,6 @@
       />
 
       <VueInput
-        v-model:value="customError"
-        class="custom-error-input mbe2"
-        label="Custom Error Styling"
-        value="invalid-email"
-        :invalid="true"
-        error-message="Please enter a valid email address"
-      />
-
-      <VueInput
         v-model:value="customTextarea"
         class="custom-textarea mbe2"
         label="Styled Textarea"
@@ -630,7 +621,7 @@ export default {
 
 .custom-gradient-input::part(ag-input-label) {
   font-weight: 700;
-  color: #667eea;
+  color: var(--ag-text-secondary);
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
@@ -653,32 +644,9 @@ export default {
 
 .custom-material-input::part(ag-input-label) {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--ag-text-secondary);
   margin-bottom: 0.25rem;
 }
-
-/* Error state customization */
-.custom-error-input::part(ag-input-error) {
-  color: #dc2626;
-  font-weight: 600;
-  font-size: 0.875rem;
-  padding: 0.5rem;
-  background: #fee2e2;
-  border-left: 3px solid #dc2626;
-  border-radius: 4px;
-  margin-top: 0.5rem;
-}
-
-.custom-error-input::part(ag-input) {
-  border-color: #dc2626;
-  background: #fef2f2;
-}
-
-.custom-error-input::part(ag-input):focus {
-  outline-color: #dc2626;
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-}
-
 /* Textarea customization */
 .custom-textarea::part(ag-textarea) {
   border: 2px dashed #9ca3af;
@@ -699,6 +667,6 @@ export default {
 
 .custom-textarea::part(ag-input-label) {
   font-weight: 700;
-  color: #374151;
+  color: var(--ag-text-secondary);
 }
 </style>

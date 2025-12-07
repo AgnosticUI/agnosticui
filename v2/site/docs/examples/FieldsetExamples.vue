@@ -860,7 +860,7 @@ export default {
 
 .custom-fieldset-1::part(ag-legend) {
   font-weight: 600;
-  color: var(--ag-primary);
+  color: var(--ag-text-primary);
 }
 
 /* Custom Fieldset 2 - Subtle card with shadow */

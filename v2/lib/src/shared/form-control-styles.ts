@@ -89,7 +89,8 @@ export const formControlStyles = css`
 
   /* Required indicator (asterisk) */
   .ag-form-control__required {
-    color: var(--ag-danger);
+    /* COLOR: We use a CSS variable for error text color to more easily toggle light and dark modes */
+    color: var(--ag-error-text);
     margin-left: var(--ag-space-1);
   }
 
@@ -106,7 +107,8 @@ export const formControlStyles = css`
   .ag-form-control__error {
     display: block;
     font-size: var(--ag-font-size-sm);
-    color: var(--ag-danger);
+    /* COLOR: We use a CSS variable for error text color to more easily toggle light and dark modes */
+    color: var(--ag-error-text);
     margin-block-start: var(--ag-space-1);
     margin-block-end: var(--ag-space-1);
   }

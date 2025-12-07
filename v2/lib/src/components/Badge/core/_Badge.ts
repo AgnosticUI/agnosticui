@@ -90,7 +90,7 @@ export class AgBadge extends LitElement implements BadgeProps {
     }
     :host([variant="info"]) .badge {
       background-color: var(--ag-info);
-      color: var(--ag-white);
+      color: var(--ag-neutral-900);
     }
     :host([variant="neutral"]) .badge {
       background-color: var(--ag-neutral-200);

@@ -52,7 +52,7 @@
 
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
-          <h4 class="mbe4">Gradient Style</h4>
+          <h3 class="mbe4">Gradient Style</h3>
           <div class="mbe3"></div>
           <VueBreadcrumb
             class="custom-gradient-breadcrumb"
@@ -60,15 +60,7 @@
           />
         </div>
         <div>
-          <h4 class="pbe4">Neon Glow Effect</h4>
-          <div class="mbe3"></div>
-          <VueBreadcrumb
-            class="custom-neon-breadcrumb"
-            :items="items"
-          />
-        </div>
-        <div>
-          <h4>Minimal with Underline</h4>
+          <h3>Minimal with Underline</h3>
           <div class="mbe3"></div>
           <VueBreadcrumb
             class="custom-minimal-breadcrumb"
@@ -131,30 +123,6 @@ export default {
 .custom-gradient-breadcrumb::part(ag-breadcrumb-item-current) {
   color: #764ba2;
   font-weight: 700;
-  padding: 0.5rem 1rem;
-}
-
-/* Neon glow breadcrumb */
-.custom-neon-breadcrumb::part(ag-breadcrumb-item-link) {
-  color: #0ff;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.custom-neon-breadcrumb::part(ag-breadcrumb-item-link):hover {
-  border-color: #0ff;
-  box-shadow: 0 0 10px #0ff, inset 0 0 5px rgba(0, 255, 255, 0.2);
-  text-shadow: 0 0 5px #0ff;
-}
-
-.custom-neon-breadcrumb::part(ag-breadcrumb-item-current) {
-  color: #0ff;
-  font-weight: 700;
-  text-shadow: 0 0 8px #0ff;
   padding: 0.5rem 1rem;
 }
 

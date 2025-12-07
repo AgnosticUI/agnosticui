@@ -9,7 +9,7 @@
       class="mbe4"
     >
       <div>
-        <strong>Default:</strong>
+        <strong>Default: </strong>
         <VueIntlFormatter
           type="date"
           date="2024-01-15T14:30:00"
@@ -17,7 +17,7 @@
         />
       </div>
       <div>
-        <strong>Full Date with Short Time:</strong>
+        <strong>Full Date with Short Time: </strong>
         <VueIntlFormatter
           type="date"
           date="2024-01-15T14:30:00"
@@ -27,7 +27,7 @@
         />
       </div>
       <div>
-        <strong>Custom Format:</strong>
+        <strong>Custom Format: </strong>
         <VueIntlFormatter
           type="date"
           date="2024-01-15T14:30:00"
@@ -39,7 +39,7 @@
         />
       </div>
       <div>
-        <strong>24-Hour Format:</strong>
+        <strong>24-Hour Format: </strong>
         <VueIntlFormatter
           type="date"
           date="2024-01-15T14:30:00"
@@ -61,7 +61,7 @@
       class="mbe4"
     >
       <div>
-        <strong>English (US):</strong>
+        <strong>English (US): </strong>
         <VueIntlFormatter
           type="date"
           date="2024-01-15T14:30:00"
@@ -71,7 +71,7 @@
         />
       </div>
       <div>
-        <strong>French:</strong>
+        <strong>French: </strong>
         <VueIntlFormatter
           type="date"
           date="2024-01-15T14:30:00"
@@ -81,7 +81,7 @@
         />
       </div>
       <div>
-        <strong>German:</strong>
+        <strong>German: </strong>
         <VueIntlFormatter
           type="date"
           date="2024-01-15T14:30:00"
@@ -91,7 +91,7 @@
         />
       </div>
       <div>
-        <strong>Japanese:</strong>
+        <strong>Japanese: </strong>
         <VueIntlFormatter
           type="date"
           date="2024-01-15T14:30:00"
@@ -111,7 +111,7 @@
       class="mbe4"
     >
       <div>
-        <strong>Default:</strong>
+        <strong>Default: </strong>
         <VueIntlFormatter
           type="number"
           :value="1234567.89"
@@ -119,7 +119,7 @@
         />
       </div>
       <div>
-        <strong>No Grouping:</strong>
+        <strong>No Grouping: </strong>
         <VueIntlFormatter
           type="number"
           :value="1234567.89"
@@ -128,7 +128,7 @@
         />
       </div>
       <div>
-        <strong>Fixed Decimals (2):</strong>
+        <strong>Fixed Decimals (2): </strong>
         <VueIntlFormatter
           type="number"
           :value="100"
@@ -148,7 +148,7 @@
       class="mbe4"
     >
       <div>
-        <strong>English (US):</strong>
+        <strong>English (US): </strong>
         <VueIntlFormatter
           type="number"
           :value="1234567.89"
@@ -156,7 +156,7 @@
         />
       </div>
       <div>
-        <strong>French (space separator, comma decimal):</strong>
+        <strong>French (space separator, comma decimal): </strong>
         <VueIntlFormatter
           type="number"
           :value="1234567.89"
@@ -164,7 +164,7 @@
         />
       </div>
       <div>
-        <strong>German (dot separator, comma decimal):</strong>
+        <strong>German (dot separator, comma decimal): </strong>
         <VueIntlFormatter
           type="number"
           :value="1234567.89"
@@ -172,7 +172,7 @@
         />
       </div>
       <div>
-        <strong>Indian (lakh grouping):</strong>
+        <strong>Indian (lakh grouping): </strong>
         <VueIntlFormatter
           type="number"
           :value="1234567.89"
@@ -190,7 +190,7 @@
       class="mbe4"
     >
       <div>
-        <strong>USD (symbol):</strong>
+        <strong>USD (symbol): </strong>
         <VueIntlFormatter
           type="currency"
           :value="1234.56"
@@ -199,7 +199,7 @@
         />
       </div>
       <div>
-        <strong>EUR (symbol):</strong>
+        <strong>EUR (symbol): </strong>
         <VueIntlFormatter
           type="currency"
           :value="1234.56"
@@ -208,7 +208,7 @@
         />
       </div>
       <div>
-        <strong>Currency Code Display:</strong>
+        <strong>Currency Code Display: </strong>
         <VueIntlFormatter
           type="currency"
           :value="1234.56"
@@ -218,7 +218,7 @@
         />
       </div>
       <div>
-        <strong>Currency Name Display:</strong>
+        <strong>Currency Name Display: </strong>
         <VueIntlFormatter
           type="currency"
           :value="1234.56"
@@ -238,7 +238,7 @@
       class="mbe4"
     >
       <div>
-        <strong>USD in US:</strong>
+        <strong>USD in US: </strong>
         <VueIntlFormatter
           type="currency"
           :value="1234.56"
@@ -247,7 +247,7 @@
         />
       </div>
       <div>
-        <strong>EUR in Germany:</strong>
+        <strong>EUR in Germany: </strong>
         <VueIntlFormatter
           type="currency"
           :value="1234.56"
@@ -256,7 +256,7 @@
         />
       </div>
       <div>
-        <strong>GBP in UK:</strong>
+        <strong>GBP in UK: </strong>
         <VueIntlFormatter
           type="currency"
           :value="1234.56"
@@ -265,7 +265,7 @@
         />
       </div>
       <div>
-        <strong>JPY in Japan (no decimals):</strong>
+        <strong>JPY in Japan (no decimals): </strong>
         <VueIntlFormatter
           type="currency"
           :value="123456"
@@ -284,7 +284,7 @@
       class="mbe4"
     >
       <div>
-        <strong>Basic:</strong>
+        <strong>Basic: </strong>
         <VueIntlFormatter
           type="percent"
           :value="0.75"
@@ -292,7 +292,7 @@
         />
       </div>
       <div>
-        <strong>With Decimals:</strong>
+        <strong>With Decimals: </strong>
         <VueIntlFormatter
           type="percent"
           :value="0.8532"
@@ -394,7 +394,7 @@
       class="mbe4"
     >
       <div>
-        <strong>Styled Currency:</strong>
+        <strong>Styled Currency: </strong>
         <VueIntlFormatter
           type="currency"
           :value="1234.56"
@@ -404,7 +404,7 @@
         />
       </div>
       <div>
-        <strong>Styled Number:</strong>
+        <strong>Styled Number: </strong>
         <VueIntlFormatter
           type="number"
           :value="1234567.89"
@@ -413,7 +413,7 @@
         />
       </div>
       <div>
-        <strong>Styled Date:</strong>
+        <strong>Styled Date: </strong>
         <VueIntlFormatter
           type="date"
           date="2024-01-15T14:30:00"
@@ -424,7 +424,7 @@
         />
       </div>
       <div>
-        <strong>Styled Percent:</strong>
+        <strong>Styled Percent: </strong>
         <VueIntlFormatter
           type="percent"
           :value="0.75"
@@ -478,14 +478,14 @@ export default {
 }
 
 .stat-change.positive {
-  color: var(--ag-success);
+  color: var(--ag-success-text);
 }
 
 /* CSS Parts customization examples */
 
 /* Custom currency style */
 .custom-currency::part(currency) {
-  color: var(--ag-success);
+  color: var(--ag-success-text);
   font-weight: bold;
   font-size: 1.25rem;
 }
@@ -500,13 +500,13 @@ export default {
 
 /* Custom date style */
 .custom-date::part(date-time) {
-  color: var(--ag-primary);
+  color: var(--ag-primary-text);
   font-style: italic;
 }
 
 /* Custom percent style */
 .custom-percent::part(percent) {
-  color: var(--ag-danger);
+  color: var(--ag-danger-text);
   font-weight: 600;
 }
 </style>

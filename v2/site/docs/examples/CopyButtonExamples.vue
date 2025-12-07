@@ -132,6 +132,7 @@
       <div style="display:flex;gap:12px;align-items:center;flex:1;">
         <input
           v-model="inputValue"
+          aria-label="Copy input"
           style="padding:8px;flex:1;border-radius:6px;border:1px solid var(--ag-border)"
         />
         <VueCopyButton

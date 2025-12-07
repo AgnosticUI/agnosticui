@@ -183,7 +183,7 @@ export class AgInput extends LitElement implements InputProps {
 
       :host([invalid]) .ag-input__input,
       :host([invalid]) .ag-input__textarea {
-        border-color: var(--ag-danger);
+        border-color: var(--ag-error-text);
       }
 
       :host([invalid]) .ag-input__input:focus-visible,
