@@ -177,7 +177,7 @@
       </p>
     </div>
     <div class="mbe4">
-      <h4>Large</h4>
+      <h3>Large</h3>
       <div
         class="flex-inline items-center"
         style="gap: 1rem;"
@@ -209,7 +209,7 @@
       </div>
     </div>
     <div class="mbe4">
-      <h4>Medium</h4>
+      <h3>Medium</h3>
       <div
         class="flex-inline items-center"
         style="gap: 1rem;"
@@ -245,7 +245,7 @@
       </div>
     </div>
     <div class="mbe4">
-      <h4>Small</h4>
+      <h3>Small</h3>
       <div
         class="flex-inline items-center"
         style="gap: 1rem;"
@@ -347,11 +347,8 @@
         style="gap: 2rem; flex-wrap: wrap;"
       >
         <div>
-          <h4 class="mbe4">Navigation Menu (type="default")</h4>
-          <p
-            class="mbe4"
-            style="font-size: 0.875rem; color: #6b7280; max-width: 300px;"
-          >
+          <h3 class="mbe4">Navigation Menu (type="default")</h3>
+          <p class="mbe4">
             Selection clears when menu closes. Use for navigation and actions.
           </p>
           <VueMenu menu-aria-label="User navigation">
@@ -366,11 +363,8 @@
         </div>
 
         <div>
-          <h4 class="mbe4">Selection Menu (type="single-select")</h4>
-          <p
-            class="mbe4"
-            style="font-size: 0.875rem; color: #6b7280; max-width: 300px;"
-          >
+          <h3 class="mbe4">Selection Menu (type="single-select")</h3>
+          <p class="mbe4">
             Selection persists when menu closes. Use for filters, sorting, etc.
           </p>
           <VueMenu
@@ -396,7 +390,7 @@
       </p>
     </div>
     <div class="stacked mbe4">
-      <div style="background: #f3f4f6; padding: 20px; border-radius: 8px;">
+      <div>
         <p class="mbe4">This menu has <code>additional-gutter="20px"</code></p>
         <VueMenu
           menu-variant="chevron"
@@ -418,16 +412,13 @@
       <p class="mbe4">
         The <code>check-hidden-items</code> prop enables the menu to skip items that are hidden via CSS (like responsive media queries). This is useful when you wrap menu items in responsive containers but want keyboard navigation to work correctly.
       </p>
-      <p
-        class="mbe4"
-        style="font-size: 0.875rem; color: #dc2626; max-width: 600px;"
-      >
+      <p class="mbe4">
         <strong>Performance Note:</strong> Enabling this feature checks computed styles on every keyboard navigation, which has a performance cost. Only enable it if you're using CSS-based hiding. For better performance, prefer conditional rendering (v-if) instead.
       </p>
     </div>
     <div class="stacked mbe4">
       <div v-html="responsiveStyles"></div>
-      <div style="background: #f3f4f6; padding: 20px; border-radius: 8px;">
+      <div>
         <p class="mbe4">
           <strong>Try resizing your browser:</strong> Desktop items are hidden on mobile (&lt;768px), mobile items are hidden on desktop. Keyboard navigation skips hidden items.
         </p>
@@ -479,7 +470,7 @@
       </p>
     </div>
     <div class="stacked mbe4">
-      <div style="background: #f3f4f6; padding: 20px; border-radius: 8px;">
+      <div>
         <p class="mbe4">
           <strong>Current viewport:</strong> {{ isMobile ? 'Mobile' : 'Desktop' }}
         </p>
@@ -565,7 +556,7 @@
             <VueMenuItem value="logout">Logout</VueMenuItem>
           </template>
         </VueMenu>
-        <p style="font-size: 0.875rem; color: #6b7280;">
+        <p>
           Click the icon to see it change from ☰ to ✕
         </p>
       </div>

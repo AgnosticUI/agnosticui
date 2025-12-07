@@ -136,11 +136,11 @@ export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
 
     /* Primary variant - blue link styling (opt-in) */
     :host([primary]) .ag-breadcrumb__link {
-      color: var(--ag-primary);
+      color: var(--ag-primary-text);
     }
 
     :host([primary]) .ag-breadcrumb__link:hover {
-      color: var(--ag-primary-dark);
+      color: var(--ag-primary-text);
       text-decoration: underline;
     }
 

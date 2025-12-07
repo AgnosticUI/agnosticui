@@ -29,6 +29,9 @@
   --vp-c-brand-1: var(--ag-primary);
   --vp-c-brand-2: var(--ag-primary);
   --vp-c-brand-3: var(--ag-primary);
+  --vp-c-text-1: var(--ag-text-primary);
+  --vp-c-text-2: var(--ag-text-primary);
+  --vp-c-text-3: var(--ag-text-primary);
   --vp-code-color: var(--ag-primary-text);
   --vp-code-link-color: var(--ag-primary-text);
   --vp-code-lang-color: var(--ag-primary-text);
@@ -42,7 +45,7 @@
 }
 
 /* In Dark Mode Vitepress we need to contrast --ag-primary more */
-html[data-theme=dark] {
+html[data-theme="dark"] {
   --vp-c-brand-1: #ccdfff;
   --vp-c-brand-2: #81a7e4;
   --vp-c-brand-3: #81a7e4;
@@ -57,7 +60,6 @@ html[data-theme=dark] {
 .vp-doc h4 {
   margin-bottom: var(--ag-space-1);
 }
-
 
 /* .vitepress/theme/custom.css */
 .flex {
@@ -284,11 +286,13 @@ h6.b0 {
 /* Lighthouse gave us contrast issues across the board. Removing the code
 block backgrounds supplied more contrast. Here we add a subtle border to
 make it a bit more aesthetically pleasing. */
-.vp-doc div[class*='language-'], .vp-block {
+.vp-doc div[class*="language-"],
+.vp-block {
   border: 1px solid var(--ag-border);
 }
 @media (min-width: 640px) {
-    .vp-doc div[class*='language-'], .vp-block {
-      border: 1px solid var(--ag-border);
-    }
+  .vp-doc div[class*="language-"],
+  .vp-block {
+    border: 1px solid var(--ag-border);
+  }
 }

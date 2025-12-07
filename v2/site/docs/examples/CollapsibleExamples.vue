@@ -310,7 +310,7 @@
         </div>
       </VueCollapsible>
       <p style="margin-top: 1rem;">
-        Current state: <strong :style="{ color: isExpanded ? 'green' : 'red' }">{{ isExpanded ? 'Expanded' : 'Collapsed' }}</strong>
+        Current state: <strong>{{ isExpanded ? 'Expanded' : 'Collapsed' }}</strong>
       </p>
     </div>
 

@@ -159,7 +159,7 @@
     </div>
     <div class="message-container mbe6">
       <div class="variant-section">
-        <h4>Success</h4>
+        <h3>Success</h3>
         <VueMessageBubble
           from="them"
           message="Payment completed successfully!"
@@ -177,7 +177,7 @@
       </div>
 
       <div class="variant-section">
-        <h4>Warning</h4>
+        <h3>Warning</h3>
         <VueMessageBubble
           from="them"
           message="Your session will expire in 5 minutes"
@@ -195,7 +195,7 @@
       </div>
 
       <div class="variant-section">
-        <h4>Danger</h4>
+        <h3>Danger</h3>
         <VueMessageBubble
           from="them"
           message="Error: Unable to process your request"
@@ -213,7 +213,7 @@
       </div>
 
       <div class="variant-section">
-        <h4>Info</h4>
+        <h3>Info</h3>
         <VueMessageBubble
           from="them"
           message="New features available in version 2.0"
@@ -231,7 +231,7 @@
       </div>
 
       <div class="variant-section">
-        <h4>Neutral</h4>
+        <h3>Neutral</h3>
         <VueMessageBubble
           from="them"
           message="This is a neutral informational message"
@@ -242,7 +242,7 @@
       </div>
 
       <div class="variant-section">
-        <h4>Monochrome</h4>
+        <h3>Monochrome</h3>
         <VueMessageBubble
           from="them"
           message="Simple monochrome styling"

@@ -341,13 +341,6 @@
       />
       <VueCheckbox
         name="custom"
-        value="2"
-        label-text="Customized wrapper and label"
-        :checked="true"
-        class="custom-checkbox-2"
-      />
-      <VueCheckbox
-        name="custom"
         value="3"
         label-text="Fully customized"
         :checked="true"
@@ -377,17 +370,6 @@ export default defineComponent({
 .custom-checkbox-1::part(ag-checkbox-indicator) {
   border-radius: 50%;
   border-width: 3px;
-}
-
-.custom-checkbox-2::part(ag-checkbox-wrapper) {
-  padding: 0.5rem;
-  background: var(--ag-background-secondary);
-  border-radius: var(--ag-radius-md);
-}
-
-.custom-checkbox-2::part(ag-checkbox-label) {
-  font-weight: 600;
-  color: var(--ag-primary);
 }
 
 .custom-checkbox-3::part(ag-checkbox-indicator) {

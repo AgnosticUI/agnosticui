@@ -130,11 +130,8 @@ export class Loader extends LitElement implements LoaderProps {
       <div
         class="loader"
         part="ag-loader"
-        role="status"
-        aria-live="polite"
-        aria-busy="true"
       >
-        <span class="loader-label" part="ag-loader-label">
+        <span class="loader-label" role="progressbar" aria-label="Loading" part="ag-loader-label">
           <slot>${this.ariaLabel}</slot>
         </span>
       </div>

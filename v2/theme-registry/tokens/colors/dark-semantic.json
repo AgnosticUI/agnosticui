@@ -128,11 +128,11 @@
   },
   "info": {
     "value": "{neutral.400.value}",
-    "description": "Info state color for informational messages on dark backgrounds"
+    "description": "Info state color for informational messages"
   },
   "info-dark": {
-    "value": "{neutral.300.value}",
-    "description": "Brighter info for hover states on dark backgrounds"
+    "value": "{neutral.500.value}",
+    "description": "Darker shade of info for hover states"
   },
   "focus": {
     "value": "88, 166, 255",
