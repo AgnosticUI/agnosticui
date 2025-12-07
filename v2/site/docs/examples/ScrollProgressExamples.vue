@@ -79,7 +79,7 @@
         unobtrusive indication of scroll depth. Perfect for long-form content like articles and documentation.
       </p>
       <div style="background: var(--ag-background-secondary); padding: var(--ag-space-4); border-radius: var(--ag-radius-md);">
-        <h4 style="margin-top: 0; font-size: 0.875rem;">Props</h4>
+        <h3 style="margin-top: 0; font-size: 0.875rem;">Props</h3>
         <ul style="margin: 0; padding-left: 1.5rem; font-size: 0.875rem;">
           <li><code>orientation</code>: 'top' or 'bottom'</li>
           <li><code>size</code>: Uses small size for subtle appearance</li>
@@ -94,7 +94,7 @@
         Great for presentations, multi-step forms, or when you want a less prominent indicator.
       </p>
       <div style="background: var(--ag-background-secondary); padding: var(--ag-space-4); border-radius: var(--ag-radius-md);">
-        <h4 style="margin-top: 0; font-size: 0.875rem;">Props</h4>
+        <h3 style="margin-top: 0; font-size: 0.875rem;">Props</h3>
         <ul style="margin: 0; padding-left: 1.5rem; font-size: 0.875rem;">
           <li><code>dots</code>: Number of dots to display (default: 5)</li>
           <li><code>badgeVariant</code>: Color variant for filled dots</li>
@@ -109,7 +109,7 @@
         about their position in the content. Can be positioned anywhere on the page.
       </p>
       <div style="background: var(--ag-background-secondary); padding: var(--ag-space-4); border-radius: var(--ag-radius-md);">
-        <h4 style="margin-top: 0; font-size: 0.875rem;">Props</h4>
+        <h3 style="margin-top: 0; font-size: 0.875rem;">Props</h3>
         <ul style="margin: 0; padding-left: 1.5rem; font-size: 0.875rem;">
           <li><code>badgeVariant</code>: Badge color variant</li>
           <li><code>precision</code>: Decimal places (0 for integers like "47%")</li>
@@ -124,7 +124,7 @@
         or scroll-to-top functionality. Provides an elegant, space-efficient indicator.
       </p>
       <div style="background: var(--ag-background-secondary); padding: var(--ag-space-4); border-radius: var(--ag-radius-md);">
-        <h4 style="margin-top: 0; font-size: 0.875rem;">Props</h4>
+        <h3 style="margin-top: 0; font-size: 0.875rem;">Props</h3>
         <ul style="margin: 0; padding-left: 1.5rem; font-size: 0.875rem;">
           <li><code>ringSize</code>: Diameter in pixels (default: 32)</li>
           <li><code>ringStrokeWidth</code>: Thickness of the ring (default: 3)</li>
@@ -202,7 +202,7 @@
       <h2>Color Variants</h2>
       <p class="mbs2 mbe3">Both badge and ring modes support color variants.</p>
 
-      <h4 style="font-size: 1rem; margin-bottom: 1rem;">Badge Variants</h4>
+      <h3 style="font-size: 1rem; margin-bottom: 1rem;">Badge Variants</h3>
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
         <VueScrollProgress
           mode="badge"
@@ -231,7 +231,7 @@
         />
       </div>
 
-      <h4 style="font-size: 1rem; margin-bottom: 1rem;">Ring Variants</h4>
+      <h3 style="font-size: 1rem; margin-bottom: 1rem;">Ring Variants</h3>
       <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
         <div style="text-align: center;">
           <VueScrollProgress

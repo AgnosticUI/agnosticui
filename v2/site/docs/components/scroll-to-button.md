@@ -46,7 +46,7 @@ import { Eye, Zap, Palette, Accessibility, MapPin, Wrench, CheckCircle, XCircle 
   <div>
     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
       <CheckCircle :size="20" style="color: #10b981;" />
-      <strong style="color: #10b981;">Good for:</strong>
+      <strong>Good for:</strong>
     </div>
     <ul style="margin-left: 1.75rem;">
       <li>Long articles or documentation pages</li>
@@ -60,7 +60,7 @@ import { Eye, Zap, Palette, Accessibility, MapPin, Wrench, CheckCircle, XCircle 
   <div>
     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
       <XCircle :size="20" style="color: #ef4444;" />
-      <strong style="color: #ef4444;">Avoid when:</strong>
+      <strong>Avoid when:</strong>
     </div>
     <ul style="margin-left: 1.75rem;">
       <li>Content is short and fits on one screen</li>
@@ -75,9 +75,10 @@ import { Eye, Zap, Palette, Accessibility, MapPin, Wrench, CheckCircle, XCircle 
 ## Usage
 
 ::: details Vue 3
+
 ```vue
 <template>
-  <VueScrollToButton 
+  <VueScrollToButton
     label="Back to Top"
     :showLabel="true"
     :scrollThreshold="400"
@@ -85,18 +86,20 @@ import { Eye, Zap, Palette, Accessibility, MapPin, Wrench, CheckCircle, XCircle 
 </template>
 
 <script setup lang="ts">
-import { VueScrollToButton } from 'agnosticui-core/scroll-to-button/vue';
+import { VueScrollToButton } from "agnosticui-core/scroll-to-button/vue";
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactScrollToButton } from 'agnosticui-core/scroll-to-button/react';
+import { ReactScrollToButton } from "agnosticui-core/scroll-to-button/react";
 
 export default function Example() {
   return (
-    <ReactScrollToButton 
+    <ReactScrollToButton
       label="Back to Top"
       showLabel={true}
       scrollThreshold={400}
@@ -104,12 +107,14 @@ export default function Example() {
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
-  import 'agnosticui-core/scroll-to-button';
+  import "agnosticui-core/scroll-to-button";
 </script>
 
 <ag-scroll-to-button
@@ -118,30 +123,32 @@ export default function Example() {
   scrollThreshold="400"
 ></ag-scroll-to-button>
 ```
+
 :::
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | `'Back to Top'` | Accessible label for the button (always used for `aria-label`) |
-| `showLabel` | `boolean` | `false` | Whether to display the label text alongside the icon |
-| `icon` | `boolean` | `true` | Show/hide the default icon. If `false`, label is shown as fallback |
-| `scrollThreshold` | `number` | `400` | Scroll position (in pixels) before the button becomes visible |
-| `target` | `string` | `'top'` | Scroll target: `'top'`, `'bottom'`, or element ID/selector (e.g., `'section-3'`, `'.my-section'`) |
-| `direction` | `'up' \| 'down' \| 'auto'` | `'auto'` | Arrow icon direction. `'auto'` detects based on target |
-| `smoothScroll` | `boolean` | `true` | Enable smooth scrolling animation (respects `prefers-reduced-motion`) |
-| `size` | `'x-sm' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Button size |
-| `shape` | `'capsule' \| 'rounded' \| 'circle' \| 'square' \| 'rounded-square' \| ''` | `''` | Button shape (empty string uses default) |
-| `visible` | `boolean` | `false` | Manually control visibility (typically managed internally by scroll position) |
+| Prop              | Type                                                                       | Default         | Description                                                                                       |
+| ----------------- | -------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------- |
+| `label`           | `string`                                                                   | `'Back to Top'` | Accessible label for the button (always used for `aria-label`)                                    |
+| `showLabel`       | `boolean`                                                                  | `false`         | Whether to display the label text alongside the icon                                              |
+| `icon`            | `boolean`                                                                  | `true`          | Show/hide the default icon. If `false`, label is shown as fallback                                |
+| `scrollThreshold` | `number`                                                                   | `400`           | Scroll position (in pixels) before the button becomes visible                                     |
+| `target`          | `string`                                                                   | `'top'`         | Scroll target: `'top'`, `'bottom'`, or element ID/selector (e.g., `'section-3'`, `'.my-section'`) |
+| `direction`       | `'up' \| 'down' \| 'auto'`                                                 | `'auto'`        | Arrow icon direction. `'auto'` detects based on target                                            |
+| `smoothScroll`    | `boolean`                                                                  | `true`          | Enable smooth scrolling animation (respects `prefers-reduced-motion`)                             |
+| `size`            | `'x-sm' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                   | `'md'`          | Button size                                                                                       |
+| `shape`           | `'capsule' \| 'rounded' \| 'circle' \| 'square' \| 'rounded-square' \| ''` | `''`            | Button shape (empty string uses default)                                                          |
+| `visible`         | `boolean`                                                                  | `false`         | Manually control visibility (typically managed internally by scroll position)                     |
 
 ## Slots
 
-| Slot | Description |
-|------|-------------|
+| Slot   | Description                                                         |
+| ------ | ------------------------------------------------------------------- |
 | `icon` | Custom icon content. Overrides the default arrow icon when provided |
 
 **Vue Example:**
+
 ```vue
 <VueScrollToButton>
   <template #icon>
@@ -151,6 +158,7 @@ export default function Example() {
 ```
 
 **React Example:**
+
 ```tsx
 <ReactScrollToButton>
   <svg slot="icon">{/* custom icon */}</svg>
@@ -161,15 +169,16 @@ export default function Example() {
 
 Style internal elements without breaking encapsulation:
 
-| Part | Description |
-|------|-------------|
-| `ag-scrollto-button` | The button wrapper element |
-| `ag-button` | The inner `ag-button` element (exported from nested component) |
-| `ag-button-content` | The flex container holding icon and label |
-| `ag-icon-wrapper` | The wrapper around the icon slot |
-| `ag-label` | The label text span element |
+| Part                 | Description                                                    |
+| -------------------- | -------------------------------------------------------------- |
+| `ag-scrollto-button` | The button wrapper element                                     |
+| `ag-button`          | The inner `ag-button` element (exported from nested component) |
+| `ag-button-content`  | The flex container holding icon and label                      |
+| `ag-icon-wrapper`    | The wrapper around the icon slot                               |
+| `ag-label`           | The label text span element                                    |
 
 **Example - Custom Gradient:**
+
 ```css
 ag-scroll-to-button::part(ag-button) {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -179,6 +188,7 @@ ag-scroll-to-button::part(ag-button) {
 ```
 
 **Example - Icon Positioning:**
+
 ```css
 /* Icon on the right */
 ag-scroll-to-button::part(ag-button-content) {
@@ -196,7 +206,7 @@ ag-scroll-to-button::part(ag-button-content) {
 ### Jump to Specific Section
 
 ```vue
-<VueScrollToButton 
+<VueScrollToButton
   label="Jump to Comments"
   target="comments-section"
   :scrollThreshold="300"
@@ -211,7 +221,7 @@ ag-scroll-to-button::part(ag-button-content) {
 ### Chat Interface (Scroll to Bottom)
 
 ```vue
-<VueScrollToButton 
+<VueScrollToButton
   label="Latest Messages"
   target="bottom"
   direction="down"
@@ -223,8 +233,8 @@ ag-scroll-to-button::part(ag-button-content) {
 
 ```typescript
 // Get reference to the component
-const button = document.querySelector('ag-scroll-to-button');
-const targetElement = document.querySelector('.my-dynamic-section');
+const button = document.querySelector("ag-scroll-to-button");
+const targetElement = document.querySelector(".my-dynamic-section");
 
 // Set target programmatically
 button.setTargetElement(targetElement);
@@ -245,16 +255,19 @@ The ScrollToButton component follows accessibility best practices:
 ### Best Practices
 
 1. **Always provide descriptive labels**: Even if not showing the label visually, the `label` prop is used for `aria-label`
+
    ```vue
    <VueScrollToButton label="Return to page top" />
    ```
 
 2. **Consider showing labels**: For users with cognitive disabilities, visible text labels are clearer than icon-only buttons
+
    ```vue
    <VueScrollToButton label="Back to Top" :showLabel="true" />
    ```
 
 3. **Don't rely solely on color**: If using custom styling, ensure sufficient contrast
+
    ```css
    ag-scroll-to-button::part(ag-button) {
      /* Ensure 4.5:1 contrast ratio minimum */
@@ -274,14 +287,14 @@ The component uses AgnosticUI design tokens for consistency:
 ```css
 :host {
   /* Spacing */
-  --ag-space-8: 2rem;           /* Default position offset */
-  --ag-space-2: 0.5rem;         /* Icon/label gap */
-  
+  --ag-space-8: 2rem; /* Default position offset */
+  --ag-space-2: 0.5rem; /* Icon/label gap */
+
   /* Motion */
-  --ag-motion-slow: 0.4s;       /* Fade in/out duration */
-  
+  --ag-motion-slow: 0.4s; /* Fade in/out duration */
+
   /* Z-index */
-  --ag-z-index-sticky: 900;     /* Stacking context */
+  --ag-z-index-sticky: 900; /* Stacking context */
 }
 ```
 
@@ -289,27 +302,30 @@ Override these in your global CSS or via CSS custom properties:
 
 ```css
 ag-scroll-to-button {
-  --ag-motion-slow: 0.2s;       /* Faster transitions */
+  --ag-motion-slow: 0.2s; /* Faster transitions */
 }
 ```
-
 
 ## Troubleshooting
 
 **Button doesn't appear:**
+
 - Check that page content is tall enough to exceed `scrollThreshold`
 - Verify the component is not hidden by CSS
 - Ensure z-index is high enough (`--ag-z-index-sticky: 900` by default)
 
 **Smooth scroll doesn't work:**
+
 - Check browser support for `scroll-behavior: smooth`
 - Verify `smoothScroll` prop is `true`
 - Check if user has `prefers-reduced-motion` enabled
 
 **Custom icon not showing:**
+
 - Ensure slot content has the `slot="icon"` attribute (Lit/React) or uses `<template #icon>` (Vue)
 - Verify the icon has appropriate size styling
 
 **Button appears too early/late:**
+
 - Adjust the `scrollThreshold` prop (in pixels)
 - Default is `400`, try `200` for earlier or `600` for later

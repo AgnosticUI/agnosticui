@@ -73,7 +73,7 @@
         style="gap: 24px; flex-wrap: wrap"
       >
         <div>
-          <h4 class="mbe2">Pulse</h4>
+          <h3 class="mbe2">Pulse</h3>
           <VueSkeleton
             effect="pulse"
             width="200px"
@@ -82,7 +82,7 @@
           />
         </div>
         <div>
-          <h4 class="mbe2">Sheen</h4>
+          <h3 class="mbe2">Sheen</h3>
           <VueSkeleton
             effect="sheen"
             width="200px"
@@ -91,7 +91,7 @@
           />
         </div>
         <div>
-          <h4 class="mbe2">None</h4>
+          <h3 class="mbe2">None</h3>
           <VueSkeleton
             effect="none"
             width="200px"
@@ -112,7 +112,7 @@
         style="gap: 24px; flex-wrap: wrap"
       >
         <div>
-          <h4 class="mbe2">Light</h4>
+          <h3 class="mbe2">Light</h3>
           <VueSkeleton
             intensity="light"
             width="200px"
@@ -121,7 +121,7 @@
           />
         </div>
         <div>
-          <h4 class="mbe2">Medium</h4>
+          <h3 class="mbe2">Medium</h3>
           <VueSkeleton
             intensity="medium"
             width="200px"

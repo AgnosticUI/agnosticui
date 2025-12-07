@@ -125,7 +125,7 @@
           </div>
         </VueTab>
         <VueTabPanel panel="panel-r1">
-          <h4 style="margin-top: 0;">Overview</h4>
+          <h3 style="margin-top: 0;">Overview</h3>
           <p>Dashboard and statistics go here.</p>
           <ul>
             <li>Total users: 1,234</li>
@@ -134,7 +134,7 @@
           </ul>
         </VueTabPanel>
         <VueTabPanel panel="panel-r2">
-          <h4 style="margin-top: 0;">Settings</h4>
+          <h3 style="margin-top: 0;">Settings</h3>
           <p>Configure your application settings.</p>
           <label style="display: block; margin-bottom: 0.5rem;">
             <input
@@ -152,7 +152,7 @@
           </label>
         </VueTabPanel>
         <VueTabPanel panel="panel-r3">
-          <h4 style="margin-top: 0;">Profile</h4>
+          <h3 style="margin-top: 0;">Profile</h3>
           <p>Manage your profile information.</p>
           <div style="margin-top: 1rem;">
             <strong>Name:</strong> John Doe<br />
@@ -250,7 +250,7 @@ export default {
           }
           .custom-tabs ag-tab[aria-selected="true"]::part(ag-tab) {
             background-color: #bada55;
-            color: #fff;
+            color: var(--ag-neutral-900);
             border-bottom: 2px solid #bada55;
           }
           .custom-tabs::part(ag-tabs-panels) {

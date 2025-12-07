@@ -2,7 +2,7 @@
   <section>
     <!-- Guidance Note -->
     <div class="mbe4 guidance-note">
-      <h4>Demo Pattern: Single Toast Display</h4>
+      <h3>Demo Pattern: Single Toast Display</h3>
       <p>
         This demo automatically dismisses any visible toast before showing a new one. This prevents toast overlap and is the recommended pattern for most applications.
         See the documentation below for alternative approaches if you need multiple simultaneous toasts.
@@ -457,7 +457,7 @@
       <h2>Implementation Patterns</h2>
 
       <div class="guide-section">
-        <h4>Single Toast (Recommended)</h4>
+        <h3>Single Toast (Recommended)</h3>
         <p>
           Show one toast at a time to prevent information overload. This demo uses a registry pattern to automatically dismiss the active toast before showing a new one.
         </p>
@@ -473,7 +473,7 @@ const showToast = (toastKey) => {
       </div>
 
       <div class="guide-section">
-        <h4>Multiple Toasts (Advanced)</h4>
+        <h3>Multiple Toasts (Advanced)</h3>
         <p>
           For simultaneous toasts, implement a queue with unique IDs and render to document.body using your framework's approach:
         </p>
@@ -489,7 +489,7 @@ const showToast = (toastKey) => {
       </div>
 
       <div class="guide-section">
-        <h4>Best Practices</h4>
+        <h3>Best Practices</h3>
         <ul>
           <li>Limit frequency and keep messages brief</li>
           <li>Use appropriate types (error for critical, info for general)</li>

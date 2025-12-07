@@ -6,17 +6,10 @@
         A standard select dropdown with custom styling.
       </p>
     </div>
-    <div class="mbe4">
-      <label
-        for="tennis-select"
-        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-      >
-        Greatest Tennis Player
-      </label>
+    <div class="mbe4" style="max-width: 400px;">
       <VueSelect
-        id="tennis-select"
+        label="Greatest Tennis Player"
         name="tennis"
-        style="max-width: 400px;"
       >
         <option value="">- Select a player -</option>
         <option value="andre">Andre Agassi</option>
@@ -41,14 +34,8 @@
       style="max-width: 400px;"
     >
       <div class="mbe3">
-        <label
-          for="small-select"
-          style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-        >
-          Small Select
-        </label>
         <VueSelect
-          id="small-select"
+          label="Small Select"
           size="small"
           name="small"
         >
@@ -60,14 +47,8 @@
       </div>
 
       <div class="mbe3">
-        <label
-          for="default-select"
-          style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-        >
-          Default Select
-        </label>
         <VueSelect
-          id="default-select"
+          label="Default Select"
           name="default"
         >
           <option value="">Select an option</option>
@@ -78,14 +59,8 @@
       </div>
 
       <div class="mbe3">
-        <label
-          for="large-select"
-          style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-        >
-          Large Select
-        </label>
         <VueSelect
-          id="large-select"
+          label="Large Select"
           size="large"
           name="large"
         >
@@ -107,14 +82,8 @@
       class="mbe4"
       style="max-width: 400px;"
     >
-      <label
-        for="disabled-select"
-        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-      >
-        Disabled Select
-      </label>
       <VueSelect
-        id="disabled-select"
+        label="Disabled Select"
         :disabled="true"
         name="disabled"
       >
@@ -135,14 +104,8 @@
       class="mbe4"
       style="max-width: 400px;"
     >
-      <label
-        for="multiple-select"
-        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-      >
-        Favorite Tennis Players (Select Multiple)
-      </label>
       <VueSelect
-        id="multiple-select"
+        label="Favorite Tennis Players (Select Multiple)"
         :multiple="true"
         :multiple-size="6"
         name="multiple"
@@ -168,14 +131,8 @@
       class="mbe4"
       style="max-width: 400px;"
     >
-      <label
-        for="change-select"
-        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-      >
-        Select a Fruit
-      </label>
       <VueSelect
-        id="change-select"
+        label="Select a Fruit"
         name="fruit"
         @change="handleChange"
       >
@@ -203,14 +160,8 @@
       class="mbe4"
       style="max-width: 400px;"
     >
-      <label
-        for="vmodel-select"
-        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-      >
-        Choose Your Favorite Color
-      </label>
       <VueSelect
-        id="vmodel-select"
+        label="Choose Your Favorite Color"
         name="color"
         v-model:value="selectedColor"
       >
@@ -238,14 +189,8 @@
       class="mbe4"
       style="max-width: 400px;"
     >
-      <label
-        for="vmodel-multiple-select"
-        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-      >
-        Select Your Favorite Sports (Ctrl/Cmd + Click)
-      </label>
       <VueSelect
-        id="vmodel-multiple-select"
+        label="Select Your Favorite Sports (Ctrl/Cmd + Click)"
         name="sports"
         v-model:value="selectedSports"
         :multiple="true"
@@ -275,14 +220,8 @@
       class="mbe4"
       style="max-width: 600px;"
     >
-      <label
-        for="event-select"
-        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-      >
-        Interact with this select to see events
-      </label>
       <VueSelect
-        id="event-select"
+        label="Interact with this select to see events"
         name="events"
         @change="handleEventChange"
         @focus="handleFocus"
@@ -451,14 +390,8 @@
       class="mbe4"
       style="max-width: 400px;"
     >
-      <label
-        for="custom-select"
-        style="display: block; margin-bottom: 0.5rem; font-weight: 600;"
-      >
-        Custom Styled Select
-      </label>
       <VueSelect
-        id="custom-select"
+        label="Custom Styled Select"
         name="custom"
         class="custom-select"
       >

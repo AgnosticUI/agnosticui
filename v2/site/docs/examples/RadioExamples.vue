@@ -355,13 +355,6 @@
         :checked="true"
         class="custom-radio-1"
       />
-      <VueRadio
-        name="custom2"
-        value="2"
-        label-text="Customized wrapper and label"
-        :checked="true"
-        class="custom-radio-2"
-      />
     </div>
   </section>
 </template>
@@ -385,17 +378,6 @@ export default defineComponent({
 .custom-radio-1::part(ag-radio-indicator) {
   border-width: 3px;
   transform: scale(1.3);
-}
-
-.custom-radio-2::part(ag-radio-wrapper) {
-  padding: 0.5rem;
-  background: var(--ag-background-secondary);
-  border-radius: var(--ag-radius-md);
-}
-
-.custom-radio-2::part(ag-radio-label) {
-  font-weight: 600;
-  color: var(--ag-primary);
 }
 </style>
 

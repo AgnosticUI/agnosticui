@@ -155,7 +155,7 @@
       <p class="mbs2 mbe3">Progress rings in a dashboard-style layout.</p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;">
         <div style="padding: 1rem; border: 1px solid #e0e0e0; border-radius: 8px; text-align: center;">
-          <h4 style="margin: 0 0 1rem 0; font-size: 0.875rem; color: #666;">Tasks Complete</h4>
+          <h3 style="margin: 0 0 1rem 0; font-size: 0.875rem;">Tasks Complete</h3>
           <VueProgressRing
             :value="85"
             variant="success"
@@ -164,7 +164,7 @@
           </VueProgressRing>
         </div>
         <div style="padding: 1rem; border: 1px solid #e0e0e0; border-radius: 8px; text-align: center;">
-          <h4 style="margin: 0 0 1rem 0; font-size: 0.875rem; color: #666;">Storage Used</h4>
+          <h3 style="margin: 0 0 1rem 0; font-size: 0.875rem;">Storage Used</h3>
           <VueProgressRing
             :value="68"
             variant="warning"
@@ -173,7 +173,7 @@
           </VueProgressRing>
         </div>
         <div style="padding: 1rem; border: 1px solid #e0e0e0; border-radius: 8px; text-align: center;">
-          <h4 style="margin: 0 0 1rem 0; font-size: 0.875rem; color: #666;">CPU Usage</h4>
+          <h3 style="margin: 0 0 1rem 0; font-size: 0.875rem;">CPU Usage</h3>
           <VueProgressRing
             :value="42"
             variant="info"

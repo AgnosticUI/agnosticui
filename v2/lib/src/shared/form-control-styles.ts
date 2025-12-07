@@ -98,7 +98,7 @@ export const formControlStyles = css`
   .ag-form-control__helper {
     display: block;
     font-size: var(--ag-font-size-sm);
-    color: var(--ag-text-secondary);
+    color: var(--ag-text-primary);
     margin-block-start: var(--ag-space-1);
     margin-block-end: var(--ag-space-1);
   }

@@ -272,7 +272,7 @@
         class="event-log"
         style="margin-top: 1.5rem; padding: 1rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md); border: 1px solid var(--ag-border);"
       >
-        <h4 style="margin-top: 0; margin-bottom: 0.75rem; font-size: 0.95rem;">Event Log (last 10 events):</h4>
+        <h3 style="margin-top: 0; margin-bottom: 0.75rem; font-size: 0.95rem;">Event Log (last 10 events):</h3>
         <div
           v-if="events.length === 0"
           style="color: var(--ag-text-muted); font-size: 0.875rem; font-style: italic;"
@@ -311,7 +311,7 @@
         class="event-log"
         style="margin-top: 1.5rem; padding: 1rem; background: var(--ag-background-secondary); border-radius: var(--ag-radius-md); border: 1px solid var(--ag-border);"
       >
-        <h4 style="margin-top: 0; margin-bottom: 0.75rem; font-size: 0.95rem;">Range Event Log (last 10 events):</h4>
+        <h3 style="margin-top: 0; margin-bottom: 0.75rem; font-size: 0.95rem;">Range Event Log (last 10 events):</h3>
         <div
           v-if="rangeEvents.length === 0"
           style="color: var(--ag-text-muted); font-size: 0.875rem; font-style: italic;"
@@ -571,7 +571,6 @@ export default defineComponent({
 /* Custom slider 3: Fully customized */
 .custom-slider-3::part(ag-slider-label) {
   font-weight: 700;
-  color: var(--ag-primary);
   font-size: 1.1rem;
 }
 
