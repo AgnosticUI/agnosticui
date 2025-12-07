@@ -125,29 +125,6 @@
     </div>
 
     <div class="mbe4">
-      <h2>CSS Shadow Parts Customization (Blue Theme)</h2>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <div v-html="customContentPaginationStyles"></div>
-      <VueContentPagination
-        class="custom-content-pagination"
-        :previous="{ title: 'Introduction', href: '#examples-1' }"
-        :next="{ title: 'Getting Started', href: '#examples-1' }"
-        :parent="{ title: 'Documentation', href: '#examples-1' }"
-      >
-        <template #previous-icon>
-          <ChevronLeft :size="20" />
-        </template>
-        <template #next-icon>
-          <ChevronRight :size="20" />
-        </template>
-        <template #parent-icon>
-          <ChevronUp :size="20" />
-        </template>
-      </VueContentPagination>
-    </div>
-
-    <div class="mbe4">
       <h2>CSS Shadow Parts Customization (Monochrome)</h2>
     </div>
     <div class="stacked-mobile mbe4">
@@ -188,31 +165,6 @@ export default {
     return {
       navigationMessage: null,
       navigationMessageNoHref: null,
-      customContentPaginationStyles: `
-        <style>
-          .custom-content-pagination::part(ag-content-pagination-container) {
-            padding: 1rem;
-          }
-          .custom-content-pagination::part(ag-content-pagination-parent) {
-            border-radius: 6px;
-            transition: all 0.2s;
-          }
-          .custom-content-pagination::part(ag-content-pagination-parent):hover {
-            background-color: #bfdbfe;
-            transform: translateY(-1px);
-          }
-          .custom-content-pagination::part(ag-content-pagination-link) {
-            color: #1d4ed8;
-            border-color: #93c5fd;
-            border-radius: 8px;
-            transition: all 0.2s;
-          }
-          .custom-content-pagination::part(ag-content-pagination-link):hover {
-            border-color: #3b82f6;
-            transform: translateY(-2px);
-          }
-        </style>
-      `,
       monochromeCustomContentPaginationStyles: `
         <style>
           .monochrome-custom-content-pagination::part(ag-content-pagination-container) {

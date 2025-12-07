@@ -129,7 +129,7 @@ export class AgSpinner extends LitElement implements SpinnerProps {
   @property({ type: String, reflect: true })
   declare size: SpinnerSize;
 
-  @property({ type: String, reflect: true, attribute: 'aria-label' })
+  @property({ type: String, attribute: 'aria-label' })
   declare ariaLabel: string;
 
   constructor() {

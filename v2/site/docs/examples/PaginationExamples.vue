@@ -147,19 +147,6 @@
     </div>
 
     <div class="mbe4">
-      <h2>CSS Shadow Parts Customization (Gradient)</h2>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <div v-html="customPaginationStyles"></div>
-      <VuePagination
-        class="custom-pagination"
-        :current="customPage"
-        :total-pages="10"
-        @page-change="handleCustomPageChange"
-      />
-    </div>
-
-    <div class="mbe4">
       <h2>CSS Shadow Parts Customization (Monochrome)</h2>
     </div>
     <div class="stacked-mobile mbe4">
@@ -197,40 +184,6 @@ export default {
       largePage: 50,
       customPage: 5,
       monochromeCustomPage: 5,
-      customPaginationStyles: `
-        <style>
-          .custom-pagination::part(ag-pagination-container) {
-            padding: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 8px;
-          }
-          .custom-pagination::part(ag-pagination) {
-            gap: 0.5rem;
-          }
-          .custom-pagination::part(ag-pagination-button) {
-            min-width: 2.5rem;
-            height: 2.5rem;
-            font-weight: 600;
-            background: white;
-            color: #667eea;
-            border: 2px solid transparent;
-          }
-          .custom-pagination::part(ag-pagination-button):hover:not(:disabled) {
-            transform: scale(1.1);
-            transition: transform 0.2s;
-            border-color: white;
-          }
-          .custom-pagination .pagination-item-active .pagination-button {
-            background: white !important;
-            color: #764ba2 !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-          }
-          .custom-pagination::part(ag-pagination-button):disabled {
-            background: rgba(255, 255, 255, 0.3);
-            color: rgba(255, 255, 255, 0.6);
-          }
-        </style>
-      `,
       monochromeCustomPaginationStyles: `
         <style>
           .monochrome-custom-pagination::part(ag-pagination-container) {

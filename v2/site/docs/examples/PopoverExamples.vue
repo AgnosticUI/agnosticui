@@ -27,7 +27,7 @@
         <a
           href="#"
           slot="trigger"
-          style="color: var(--ag-primary); text-decoration: underline; cursor: pointer;"
+          style="text-decoration: underline; cursor: pointer;"
           @click.prevent
         >
           Link Trigger
@@ -185,7 +185,7 @@
         <div slot="content">
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--ag-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
                 JD
               </div>
               <div>

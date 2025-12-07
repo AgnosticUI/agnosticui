@@ -114,7 +114,6 @@
       <h2>CSS Shadow Parts Customization</h2>
       <p class="mbs2 mbe3">Use CSS Shadow Parts to customize the tag's appearance without breaking encapsulation.</p>
       <div class="mbe4">
-        <VueTag class="custom-gradient-tag mie4">Gradient Tag</VueTag>
         <VueTag class="custom-outline-tag">Outline Tag</VueTag>
       </div>
     </div>
@@ -126,20 +125,10 @@ import { VueTag } from "agnosticui-core/tag/vue";
 </script>
 
 <style scoped>
-/* CSS Parts customization examples */
-
-/* Gradient tag style */
-.custom-gradient-tag::part(ag-tag-wrapper) {
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-}
-
 /* Outline tag style */
 .custom-outline-tag::part(ag-tag-wrapper) {
   background: transparent;
-  color: #764ba2;
-  border: 2px solid #764ba2;
+  color: var(--ag-danger-text);
+  border: 2px solid var(--ag-danger-text);
 }
 </style>
