@@ -6,6 +6,7 @@
 import { Command } from 'commander';
 import { init } from './commands/init.js';
 import { add } from './commands/add.js';
+import { remove } from './commands/remove.js';
 import { list } from './commands/list.js';
 import { sync } from './commands/sync.js';
 import type { Framework } from './types/index.js';
@@ -39,6 +40,17 @@ program
   .option('--force', 'Overwrite existing components')
   .action(async (components: string[], options) => {
     await add(components, {
+      force: options.force,
+    });
+  });
+
+// ag remove command
+program
+  .command('remove <components...>')
+  .description('Remove component(s) from your project')
+  .option('--force', 'Skip confirmation prompt')
+  .action(async (components: string[], options) => {
+    await remove(components, {
       force: options.force,
     });
   });
