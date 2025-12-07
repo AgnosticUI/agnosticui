@@ -1,5 +1,5 @@
 import { LitElement, css, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import { customElement } from 'lit/decorators.js'
 import './components/ag/Alert/core/Alert';
 import './components/ag/Avatar/core/Avatar';
 import './components/ag/Badge/core/Badge';
@@ -29,7 +29,7 @@ export class MyElement extends LitElement {
         <div>Stacked Item 3.</div>
       </ag-stack>
       <ag-card class="card">Card</ag-card>
-      <ag-flex-row class="responsive" gap="1rem">
+      <ag-flex-row class="responsive">
         <ag-button variant="primary">Primary Button</ag-button>
         <ag-button variant="warning">Warning Button</ag-button>
         <ag-button variant="secondary">Secondary Button</ag-button>
@@ -39,7 +39,7 @@ export class MyElement extends LitElement {
         <ag-button variant="danger" bordered shape="rounded">Bordered Round</ag-button>
         <ag-button variant="danger" bordered shape="capsule">Capsule</ag-button>
       </ag-flex-row>
-      <ag-flex-row class="responsive" gap="1rem">
+      <ag-flex-row class="responsive">
         <ag-badge variant="primary">Primary</ag-badge>
         <ag-badge variant="success">Success</ag-badge>
         <ag-badge variant="warning">Warning</ag-badge>
@@ -47,31 +47,30 @@ export class MyElement extends LitElement {
         <ag-badge variant="neutral">Neutral</ag-badge>
         <ag-badge variant="info">Info</ag-badge>
       </ag-flex-row>
-      <ag-flex-row class="responsive" gap="1rem">
+      <ag-flex-row class="responsive">
         <ag-alert type="primary" rounded borderedLeft>
-          This is an primary alert with a close button
+          primary alert
         </ag-alert>
         <ag-alert type="info" rounded borderedLeft>
-          This is an info alert with a close button
+          info alert
         </ag-alert>
         <ag-alert type="success" rounded borderedLeft>
-          This is an success alert with a close button
-          <ag-close-button></ag-close-button>
+          success alert
         </ag-alert>
         <ag-alert type="warning" rounded borderedLeft>
-          This is an warning alert with a close button
+          warning alert
         </ag-alert>
         <ag-alert type="error" rounded borderedLeft>
-          This is an error alert with a close button
+          error alert
         </ag-alert>
         <ag-alert type="danger" rounded borderedLeft>
-          This is an danger alert with a close button
+          danger alert
         </ag-alert>
         <ag-alert type="monochrome" rounded borderedLeft>
-          This is an monochrome alert with a close button
+          monochrome alert
         </ag-alert>
       </ag-flex-row>
-      <ag-flex-row class="responsive" gap="1rem">
+      <ag-flex-row class="responsive">
         <ag-tag variant="primary" shape="pill">
           Primary Tag
         </ag-tag>
@@ -83,7 +82,7 @@ export class MyElement extends LitElement {
           Error
         </ag-tag>
       </ag-flex-row>
-      <ag-flex-row class="responsive" gap="1rem">
+      <ag-flex-row class="responsive">
         <ag-avatar-group>
           <ag-avatar text="AB" variant="info" size="lg"></ag-avatar>
           <ag-avatar text="DC" variant="info" size="lg"></ag-avatar>
@@ -91,7 +90,7 @@ export class MyElement extends LitElement {
           <ag-avatar text="GH" variant="info" size="lg"></ag-avatar>
         </ag-avatar-group>
       </ag-flex-row>
-      <ag-flex-row class="responsive" gap="1rem">
+      <ag-flex-row class="responsive">
         <ag-image
           class="responsive-image-container"
           src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=800"
@@ -105,8 +104,8 @@ export class MyElement extends LitElement {
 
   static styles = css`
     :host {
-      display: grid;
-      row-gap: var(--ag-space-4);
+      // display: grid;
+      // row-gap: var(--ag-space-4);
       max-width: 1280px;
       margin: 0 auto;
       padding: 2rem;
@@ -118,10 +117,6 @@ export class MyElement extends LitElement {
     .responsive {
       --flex-direction: column;
       --flex-gap: var(--ag-space-2);
-      margin-block-end: var(--ag-space-4);
-    }
-    .responsive + .responsive {
-      margin-block-start: 2rem;
     }
     @media (min-width: 768px) {
       .responsive {
