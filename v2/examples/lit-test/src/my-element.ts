@@ -13,6 +13,11 @@ import './components/ag/VisuallyHidden/core/VisuallyHidden';
 import './components/ag/AspectRatio/core/AspectRatio';
 import './components/ag/BadgeFx/core/BadgeFx';
 import './components/ag/Breadcrumb/core/Breadcrumb';
+import './components/ag/ButtonFx/core/ButtonFx';
+import './components/ag/Checkbox/core/Checkbox';
+import './components/ag/Collapsible/core/Collapsible';
+import './components/ag/Combobox/core/Combobox';
+import './components/ag/CopyButton/core/CopyButton';
 
 /**
  * An example element.
@@ -36,6 +41,70 @@ export class MyElement extends LitElement {
         <div>Stacked Item 3.</div>
       </ag-stack>
       <ag-card class="card">Card</ag-card>
+      <ag-flex-row class="responsive">
+        <ag-checkbox
+          name="example"
+          value="1"
+          label-text="I agree to the terms and conditions"
+        />
+        <ag-checkbox
+          name="example"
+          value="2"
+          label-text="Subscribe to newsletter"
+          checked
+        />
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-combobox
+          name="example"
+          label-text="Select an option"
+          placeholder="Select an option"
+          options="Option 1, Option 2, Option 3"
+        />
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-copy-button
+          text="Copy this text"
+          variant="primary"
+        />  
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-collapsible
+          title="Collapsible"
+          variant="primary"
+        >
+          Collapsible content
+        </ag-collapsible> 
+        <ag-collapsible
+        bordered
+        use-x
+      >
+          <template #summary>
+            <span>X Indicator - Rotates from upside-down plus to X</span>
+          </template>
+          <p>Starts as an upside-down plus sign and rotates 45° to form an X when open.</p>
+        </ag-collapsible>
+
+        <ag-collapsible
+          bordered
+          use-minus
+        >
+          <template #summary>
+            <span>Plus/Minus - Swaps icons</span>
+          </template>
+          <p>Shows a plus icon when closed and swaps to a minus icon when open.</p>
+        </ag-collapsible>
+
+        <ag-collapsible
+          bordered
+          no-indicator
+        >
+          <template #summary>
+            <span>No Indicator - Completely hidden</span>
+          </template>
+          <p>No indicator is shown at all.</p>
+        </ag-collapsible>
+      </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-button variant="primary">Primary Button</ag-button>
         <ag-button variant="warning">Warning Button</ag-button>
@@ -65,6 +134,73 @@ export class MyElement extends LitElement {
         <ag-badge-fx fx="ripple" variant="info">Ripple</ag-badge-fx>
         <ag-badge-fx fx="highlight-sweep" fx-speed="lg" fx-ease="ease-out" variant="monochrome">Sweep</ag-badge-fx>
         <ag-badge-fx fx="press-pop" variant="default" interactive>Press Pop</ag-badge-fx>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-button-fx
+          fx="bounce"
+          fx-ease="spring-md"
+          title="Bounce"
+          variant="primary"
+          shape="rounded"
+        >
+          Bounce
+        </ag-button-fx>
+        <ag-button-fx
+          fx="pulse"
+          fx-ease="spring-md"
+          title="Pulse"
+          variant="success"
+          shape="rounded"
+        >
+          Pulse
+        </ag-button-fx>
+        <ag-button-fx
+          fx="jelly"
+          fx-ease="spring-lg"
+          fx-speed="lg"
+          title="Jelly button"
+          variant="warning"
+          shape="rounded"
+        >
+          Jelly
+        </ag-button-fx>
+        <ag-button-fx
+          fx="grow"
+          fx-ease="spring-md"
+          title="Grow button"
+          variant="primary"
+          shape="rounded"
+        >
+          Grow
+        </ag-button-fx>
+        <ag-button-fx
+          fx="shrink"
+          fx-ease="spring-md"
+          title="Shrink button"
+          variant="secondary"
+          shape="rounded"
+        >
+          Shrink
+        </ag-button-fx>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-button-fx
+          fx="press-pop"
+          fx-ease="spring-sm"
+          title="Press Pop"
+          variant="primary"
+          shape="rounded"
+        >
+          Press Pop
+        </ag-button-fx>
+        <ag-button-fx
+          fx="press-shadow"
+          variant="warning"
+          title="Press Shadow"
+          shape="rounded"
+        >
+          Press Shadow
+        </ag-button-fx>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-alert type="primary" rounded borderedLeft>
