@@ -127,6 +127,48 @@
       "files": [
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/BadgeFx/core"
       ]
+    },
+    "ButtonFx": {
+      "added": "2025-12-07T16:58:12.954Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/ButtonFx/core"
+      ]
+    },
+    "Checkbox": {
+      "added": "2025-12-07T17:07:03.311Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Checkbox/core"
+      ]
+    },
+    "Collapsible": {
+      "added": "2025-12-07T17:07:03.312Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Collapsible/core"
+      ]
+    },
+    "Combobox": {
+      "added": "2025-12-07T17:07:03.312Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Combobox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "CopyButton": {
+      "added": "2025-12-07T17:24:27.913Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/CopyButton/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/IconButton/core"
+      ]
     }
   },
   "ai": {
@@ -140,6 +182,6 @@
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
     "version": "unknown",
-    "installed": "2025-12-07T16:45:35.227Z"
+    "installed": "2025-12-07T17:24:00.147Z"
   }
 }
