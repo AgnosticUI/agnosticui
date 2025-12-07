@@ -15,8 +15,12 @@ import {
   normalizeComponentName,
   scanForSharedDependencies,
   scanForUtilsDependencies,
+  scanForStyleDependencies,
+  scanForTypeDependencies,
   getSharedComponentSourcePaths,
   getUtilSourcePath,
+  getStyleSourcePath,
+  getTypeSourcePath,
 } from '../utils/components.js';
 import pc from 'picocolors';
 
@@ -85,14 +89,16 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         componentName,
         referencePath,
         componentsPath,
-        config.framework
+        config.framework,
+        config.paths.components
       );
 
       // Process shared dependencies
       const sharedFiles = await processSharedDependencies(
         files,
         referencePath,
-        componentsPath
+        componentsPath,
+        config.paths.components
       );
       files.push(...sharedFiles);
 
@@ -102,9 +108,25 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         referencePath,
         process.cwd() // Project root
       );
-      // We don't necessarily need to track utils in the component files list for config, 
+      // We don't necessarily need to track utils in the component files list for config,
       // but we could if we want to version them. For now, let's just ensure they exist.
-      
+
+      // Process style dependencies
+      const styleFiles = await processStyleDependencies(
+        files,
+        referencePath,
+        process.cwd() // Project root
+      );
+      // Style files are shared across components, so we don't track them per component
+
+      // Process type dependencies
+      const typeFiles = await processTypeDependencies(
+        files,
+        referencePath,
+        process.cwd() // Project root
+      );
+      // Type files are shared across components, so we don't track them per component
+
       results.push({ name: componentName, success: true, files });
       spinner.message(`Added ${componentName}`);
     } catch (error) {
@@ -142,10 +164,18 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
     // Show import examples for each added component
     for (const result of results) {
       if (result.success) {
-        const importPath = path.relative(
-          process.cwd(),
-          path.join(componentsPath, result.name)
-        );
+        // Calculate import path relative to src/ directory (where most app files are)
+        const fullComponentPath = path.join(componentsPath, result.name);
+        let importPath = path.relative(process.cwd(), fullComponentPath);
+
+        // If the path starts with 'src/', remove it since imports are typically
+        // from files already in src/
+        if (importPath.startsWith('src' + path.sep)) {
+          importPath = importPath.substring(4); // Remove 'src/'
+        } else if (importPath.startsWith('src/')) {
+          importPath = importPath.substring(4); // Remove 'src/' (forward slash)
+        }
+
         let importStatement = '';
         if (config.framework === 'lit') {
           // Lit uses side-effect import to register custom element
@@ -156,7 +186,7 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         }
 
         logger.box(`${result.name}:`, [
-          pc.dim('Import in your app:'),
+          pc.dim('Import in your app (assuming consuming script is in src/):'),
           '  ' + logger.command(importStatement),
           '',
           pc.dim('Files created:'),
@@ -179,7 +209,8 @@ async function addComponent(
   componentName: string,
   referencePath: string,
   componentsPath: string,
-  framework: Framework
+  framework: Framework,
+  configComponentsPath: string
 ): Promise<string[]> {
   // Verify component exists
   if (!(await componentExists(referencePath, componentName))) {
@@ -198,7 +229,7 @@ async function addComponent(
   // Copy core directory (always needed)
   if (pathExists(sourcePaths.core)) {
     const destCore = path.join(destPath, 'core');
-    await copyAndTransform(sourcePaths.core, destCore);
+    await copyAndTransform(sourcePaths.core, destCore, configComponentsPath);
 
     // Track files (relative to project root)
     copiedFiles.push(path.join(destPath, 'core'));
@@ -207,7 +238,7 @@ async function addComponent(
   // Copy framework-specific directory
   if (pathExists(sourcePaths.framework)) {
     const destFramework = path.join(destPath, framework);
-    await copyAndTransform(sourcePaths.framework, destFramework);
+    await copyAndTransform(sourcePaths.framework, destFramework, configComponentsPath);
 
     // Track files (relative to project root)
     copiedFiles.push(path.join(destPath, framework));
@@ -241,10 +272,11 @@ async function processSharedDependencies(
   files: string[],
   referencePath: string,
   componentsPath: string,
+  configComponentsPath: string,
   processed: Set<string> = new Set()
 ): Promise<string[]> {
   const newFiles: string[] = [];
-  
+
   for (const fileOrDir of files) {
     const absPath = path.resolve(process.cwd(), fileOrDir);
     let filesToScan: string[] = [];
@@ -274,14 +306,15 @@ async function processSharedDependencies(
 
         try {
           // Add this shared component
-          const sharedFiles = await addSharedComponent(dep, referencePath, componentsPath);
+          const sharedFiles = await addSharedComponent(dep, referencePath, componentsPath, configComponentsPath);
           newFiles.push(...sharedFiles);
 
           // Recursively process its deps
           const recursiveFiles = await processSharedDependencies(
-            sharedFiles, 
-            referencePath, 
-            componentsPath, 
+            sharedFiles,
+            referencePath,
+            componentsPath,
+            configComponentsPath,
             processed
           );
           newFiles.push(...recursiveFiles);
@@ -300,52 +333,97 @@ async function processSharedDependencies(
 async function addSharedComponent(
   componentName: string,
   referencePath: string,
-  componentsPath: string
+  componentsPath: string,
+  configComponentsPath: string
 ): Promise<string[]> {
   const sourcePaths = getSharedComponentSourcePaths(referencePath, componentName);
   const destPath = path.join(componentsPath, 'shared', componentName); // src/components/ag/shared/Name
-  
+
   await ensureDir(destPath);
-  
+
   if (pathExists(sourcePaths.path)) {
-    await copyAndTransform(sourcePaths.path, destPath);
-    return [path.join(destPath)]; 
+    await copyAndTransform(sourcePaths.path, destPath, configComponentsPath);
+    return [path.join(destPath)];
   } else {
     throw new Error(`Shared component "${componentName}" not found at ${sourcePaths.path}`);
   }
 }
 
 /**
+ * Calculate the number of '../' needed based on components path depth
+ * Reference library: src/components/BadgeFx/core/_File.ts uses ../../../ to reach src/
+ * User's project: src/components/ag/BadgeFx/core/_File.ts should use ../../../../ to reach src/
+ */
+function calculatePathDepth(componentsPath: string): number {
+  // Normalize the path and remove leading './'
+  const normalized = componentsPath.replace(/^\.\//, '');
+
+  // Find the position of 'src' in the path
+  const parts = normalized.split('/').filter(s => s.length > 0);
+  const srcIndex = parts.indexOf('src');
+
+  if (srcIndex === -1) {
+    // No 'src' directory, assume styles/types/utils are at project root
+    // Count all segments + ComponentName + core
+    return parts.length + 2;
+  }
+
+  // Count segments after 'src' (e.g., for 'src/components/ag' -> ['components', 'ag'] = 2)
+  const segmentsAfterSrc = parts.slice(srcIndex + 1);
+  // Add 2 for ComponentName/core/
+  return segmentsAfterSrc.length + 2;
+}
+
+/**
  * Copy directory and transform extension from .js to empty in imports
  */
-async function copyAndTransform(src: string, dest: string): Promise<void> {
+async function copyAndTransform(src: string, dest: string, componentsPath: string): Promise<void> {
   await ensureDir(dest);
 
   const entries = await readdir(src, { withFileTypes: true });
+
+  // Calculate how many '../' we need for the user's project structure
+  const userDepth = calculatePathDepth(componentsPath);
+  const referenceDepth = 3; // Reference library uses ../../../ for src/components/Component/core/
+  const extraLevels = userDepth - referenceDepth;
 
   for (const entry of entries) {
     const srcPath = path.join(src, entry.name);
     const destPath = path.join(dest, entry.name);
 
     if (entry.isDirectory()) {
-      await copyAndTransform(srcPath, destPath);
+      await copyAndTransform(srcPath, destPath, componentsPath);
     } else {
       // If it is a code file, we transform content
       if (/\.(ts|tsx|js|jsx|vue|svelte)$/.test(entry.name)) {
         let content = await readFile(srcPath, 'utf-8');
-        
+
         // Transform imports: strip .js extension from relative imports
         // 1. import ... from './something.js' -> import ... from './something'
         // 2. export ... from './something.js' -> export ... from './something'
         // 3. import './something.js' -> import './something'
-        
+
         content = content.replace(/(from\s+['"]\..+?)\.js(['"])/g, '$1$2');
         content = content.replace(/(import\s+['"]\..+?)\.js(['"])/g, '$1$2');
 
-        // Adjust utility imports for deeper nesting (src/components/ag vs src/components)
-        // ../../../utils/ -> ../../../../utils/
-        content = content.replace(/(from\s+)(['"])(?:\.\.\/){3}utils\//g, '$1$2../../../../utils/');
-        content = content.replace(/(import\s+)(['"])(?:\.\.\/){3}utils\//g, '$1$2../../../../utils/');
+        // Adjust imports for different nesting depth based on componentsPath
+        // Only adjust if we need extra levels
+        if (extraLevels > 0) {
+          const extraDots = '../'.repeat(extraLevels);
+
+          // ../../../utils/ -> ../../../../utils/ (or more based on depth)
+          content = content.replace(/(from\s+)(['"])(?:\.\.\/){3}(utils\/)/g, `$1$2../../../${extraDots}$3`);
+          content = content.replace(/(import\s+)(['"])(?:\.\.\/){3}(utils\/)/g, `$1$2../../../${extraDots}$3`);
+
+          // ../../../styles/ -> ../../../../styles/ (or more based on depth)
+          content = content.replace(/(from\s+)(['"])(?:\.\.\/){3}(styles\/)/g, `$1$2../../../${extraDots}$3`);
+          content = content.replace(/(import\s+)(['"])(?:\.\.\/){3}(styles\/)/g, `$1$2../../../${extraDots}$3`);
+
+          // ../../../types/ -> ../../../../types/ (or more based on depth)
+          content = content.replace(/(from\s+)(['"])(?:\.\.\/){3}(types\/)/g, `$1$2../../../${extraDots}$3`);
+          content = content.replace(/(import\s+)(['"])(?:\.\.\/){3}(types\/)/g, `$1$2../../../${extraDots}$3`);
+        }
+        // If extraLevels === 0, no transformation needed (same depth as reference)
 
         await writeFile(destPath, content, 'utf-8');
       } else {
@@ -418,23 +496,187 @@ async function addUtil(
   const sourcePath = getUtilSourcePath(referencePath, utilName);
   // specific to AgnosticUI structure: utils are in src/utils
   const destPath = path.join(projectRoot, 'src/utils', `${utilName}.ts`); // assuming TS for now
-  
+
   await ensureDir(path.dirname(destPath));
-  
+
   // simple copy
   const { copyFile } = await import('node:fs/promises');
-  
-  if (await pathExists(sourcePath)) {
+
+  if (pathExists(sourcePath)) {
      await copyFile(sourcePath, destPath);
      return [destPath];
   } else {
     // try .js if .ts not found?
     const sourcePathJs = sourcePath.replace('.ts', '.js');
-    if (await pathExists(sourcePathJs)) {
+    if (pathExists(sourcePathJs)) {
        const destPathJs = destPath.replace('.ts', '.js');
        await copyFile(sourcePathJs, destPathJs);
        return [destPathJs];
     }
     throw new Error(`Utility "${utilName}" not found at ${sourcePath}`);
+  }
+}
+
+/**
+ * Process style dependencies for a list of files
+ */
+async function processStyleDependencies(
+  files: string[],
+  referencePath: string,
+  projectRoot: string,
+  processed: Set<string> = new Set()
+): Promise<string[]> {
+  const newFiles: string[] = [];
+
+  for (const fileOrDir of files) {
+    const absPath = path.resolve(process.cwd(), fileOrDir);
+    let filesToScan: string[] = [];
+
+    try {
+      const stats = await stat(absPath);
+      if (stats.isDirectory()) {
+        const children = await readdir(absPath);
+        filesToScan = children
+          .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
+          .map(f => path.join(absPath, f));
+      } else {
+        if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
+          filesToScan = [absPath];
+        }
+      }
+    } catch {
+      continue;
+    }
+
+    for (const file of filesToScan) {
+      const deps = await scanForStyleDependencies(file);
+
+      for (const dep of deps) {
+        if (processed.has(dep)) continue;
+        processed.add(dep);
+
+        try {
+          const styleFiles = await addStyle(dep, referencePath, projectRoot);
+          newFiles.push(...styleFiles);
+        } catch (error) {
+          logger.warn(`Failed to add style "${dep}": ${error instanceof Error ? error.message : 'Unknown error'}`);
+        }
+      }
+    }
+  }
+  return newFiles;
+}
+
+/**
+ * Add a style file
+ */
+async function addStyle(
+  styleName: string,
+  referencePath: string,
+  projectRoot: string
+): Promise<string[]> {
+  const sourcePath = getStyleSourcePath(referencePath, styleName);
+  // Styles are in src/styles (parallel to src/components)
+  const destPath = path.join(projectRoot, 'src/styles', `${styleName}.ts`); // assuming TS for now
+
+  await ensureDir(path.dirname(destPath));
+
+  // simple copy
+  const { copyFile } = await import('node:fs/promises');
+
+  if (pathExists(sourcePath)) {
+     await copyFile(sourcePath, destPath);
+     return [destPath];
+  } else {
+    // try .js if .ts not found?
+    const sourcePathJs = sourcePath.replace('.ts', '.js');
+    if (pathExists(sourcePathJs)) {
+       const destPathJs = destPath.replace('.ts', '.js');
+       await copyFile(sourcePathJs, destPathJs);
+       return [destPathJs];
+    }
+    throw new Error(`Style "${styleName}" not found at ${sourcePath}`);
+  }
+}
+
+/**
+ * Process type dependencies for a list of files
+ */
+async function processTypeDependencies(
+  files: string[],
+  referencePath: string,
+  projectRoot: string,
+  processed: Set<string> = new Set()
+): Promise<string[]> {
+  const newFiles: string[] = [];
+
+  for (const fileOrDir of files) {
+    const absPath = path.resolve(process.cwd(), fileOrDir);
+    let filesToScan: string[] = [];
+
+    try {
+      const stats = await stat(absPath);
+      if (stats.isDirectory()) {
+        const children = await readdir(absPath);
+        filesToScan = children
+          .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
+          .map(f => path.join(absPath, f));
+      } else {
+        if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
+          filesToScan = [absPath];
+        }
+      }
+    } catch {
+      continue;
+    }
+
+    for (const file of filesToScan) {
+      const deps = await scanForTypeDependencies(file);
+
+      for (const dep of deps) {
+        if (processed.has(dep)) continue;
+        processed.add(dep);
+
+        try {
+          const typeFiles = await addType(dep, referencePath, projectRoot);
+          newFiles.push(...typeFiles);
+        } catch (error) {
+          logger.warn(`Failed to add type "${dep}": ${error instanceof Error ? error.message : 'Unknown error'}`);
+        }
+      }
+    }
+  }
+  return newFiles;
+}
+
+/**
+ * Add a type file
+ */
+async function addType(
+  typeName: string,
+  referencePath: string,
+  projectRoot: string
+): Promise<string[]> {
+  const sourcePath = getTypeSourcePath(referencePath, typeName);
+  // Types are in src/types (parallel to src/components)
+  const destPath = path.join(projectRoot, 'src/types', `${typeName}.ts`); // assuming TS for now
+
+  await ensureDir(path.dirname(destPath));
+
+  // simple copy
+  const { copyFile } = await import('node:fs/promises');
+
+  if (pathExists(sourcePath)) {
+     await copyFile(sourcePath, destPath);
+     return [destPath];
+  } else {
+    // try .js if .ts not found?
+    const sourcePathJs = sourcePath.replace('.ts', '.js');
+    if (pathExists(sourcePathJs)) {
+       const destPathJs = destPath.replace('.ts', '.js');
+       await copyFile(sourcePathJs, destPathJs);
+       return [destPathJs];
+    }
+    throw new Error(`Type "${typeName}" not found at ${sourcePath}`);
   }
 }

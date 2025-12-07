@@ -173,3 +173,61 @@ export function getUtilSourcePath(
   // We assume imports like 'utils/slot' map to 'lib/src/utils/slot.ts'
   return path.join(referencePath, 'src/utils', `${utilName}.ts`);
 }
+
+/**
+ * Scan a file for style dependencies
+ * Looks for imports like: import ... from '../../../styles/motion.styles'
+ */
+export async function scanForStyleDependencies(filePath: string): Promise<string[]> {
+  const { readFile } = await import('node:fs/promises');
+
+  try {
+    const content = await readFile(filePath, 'utf-8');
+    // Match ../styles/filename or ../../styles/filename or ../../../styles/filename
+    const stylesRegex = /import\s+.*?from\s+['"](?:\.\.\/)+styles\/([^'"]+)['"]/g;
+    const matches = [...content.matchAll(stylesRegex)];
+    return matches.map(match => match[1]); // returns filename like 'motion.styles'
+  } catch (error) {
+    return [];
+  }
+}
+
+/**
+ * Get the source path for a style file
+ */
+export function getStyleSourcePath(
+  referencePath: string,
+  styleName: string
+): string {
+  // Styles are in lib/src/styles/<Name>.ts or similar
+  return path.join(referencePath, 'src/styles', `${styleName}.ts`);
+}
+
+/**
+ * Scan a file for type dependencies
+ * Looks for imports like: import type ... from '../../../types/fx'
+ */
+export async function scanForTypeDependencies(filePath: string): Promise<string[]> {
+  const { readFile } = await import('node:fs/promises');
+
+  try {
+    const content = await readFile(filePath, 'utf-8');
+    // Match ../types/filename or ../../types/filename or ../../../types/filename
+    const typesRegex = /import\s+.*?from\s+['"](?:\.\.\/)+types\/([^'"]+)['"]/g;
+    const matches = [...content.matchAll(typesRegex)];
+    return matches.map(match => match[1]); // returns filename like 'fx'
+  } catch (error) {
+    return [];
+  }
+}
+
+/**
+ * Get the source path for a type file
+ */
+export function getTypeSourcePath(
+  referencePath: string,
+  typeName: string
+): string {
+  // Types are in lib/src/types/<Name>.ts or similar
+  return path.join(referencePath, 'src/types', `${typeName}.ts`);
+}

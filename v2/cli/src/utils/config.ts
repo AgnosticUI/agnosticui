@@ -83,3 +83,15 @@ export function hasComponent(config: AgnosticUIConfig, componentName: string): b
 export function getComponentEntry(config: AgnosticUIConfig, componentName: string): ComponentEntry | null {
   return config.components[componentName] || null;
 }
+
+export function removeComponentFromConfig(
+  config: AgnosticUIConfig,
+  componentName: string
+): AgnosticUIConfig {
+  const { [componentName]: _, ...remainingComponents } = config.components;
+
+  return {
+    ...config,
+    components: remainingComponents,
+  };
+}

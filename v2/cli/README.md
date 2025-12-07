@@ -2,7 +2,6 @@
 
 CLI for AgnosticUI Local - The UI kit that lives in your codebase.
 
-
 ## Development Setup
 
 ### Using the Script
@@ -10,15 +9,19 @@ CLI for AgnosticUI Local - The UI kit that lives in your codebase.
 The process of creating a consumer test project is encapsulated in the `qa-verify.js` script for convenience which can be used as follows:
 
 Move the last run if you want to preserve it:
+
 ```shell
 mv v2/qa_workspace/lit-test v2/qa_workspace/lit-test-v1
 ```
+
 Or, if you'd prefer to just completely obliterate the workspace you can "clean" it:
+
 ```shell
 rm -rf v2/qa_workspace/ # Optionally cleanup last run
 ```
 
 Create new consumer test project (for Lit in this case):
+
 ```shell
 ./v2/cli/scripts/qa-verify.js --framework lit
 ```
@@ -37,6 +40,7 @@ npm run build     # Build TypeScript to dist/
 The CLI is designed to work with a local tarball for development/dogfooding.
 
 1. **Build the v2/lib library tarball first:**
+
    ```bash
    cd ../../  # Go to v2 root
    ./scripts/build-local-tarball.sh
@@ -47,6 +51,7 @@ The CLI is designed to work with a local tarball for development/dogfooding.
 2. **Package the CLI for local testing:**
 
    **Using `npm pack`**
+
    ```bash
    cd cli
    npm install        # Install dependencies (first time only)
@@ -56,6 +61,7 @@ The CLI is designed to work with a local tarball for development/dogfooding.
    ```
 
    Then in your test project:
+
    ```bash
    cd /path/to/your/test/project
    npm install /path/to/agnosticui/v2/cli/agnosticui-cli-2.0.0-alpha.1.tgz
@@ -63,14 +69,17 @@ The CLI is designed to work with a local tarball for development/dogfooding.
    # Now you can use the CLI
    # Note: Replace VERSION with the version from v2/lib/package.json (e.g., 0.0.1)
    npx ag init --framework react --tarball /path/to/v2/dist/agnosticui-local-vVERSION.tar.gz
+   # Note: if already initialized, we can also use `sync` to update the reference library
+   # npx ag sync --tarball /path/to/v2/dist/agnosticui-local-vVERSION.tar.gz
    npx ag add button input
    npx ag list
    ```
 
-   **T3. **Quick test workflow with pack:**
+   **T3. **Quick test workflow with pack:\*\*
+
    ```bash
    # PREREQUISITES: Build component v2/lib and cli tarball first. See above.
-   
+
    # In test project
    npm install /path/to/agnosticui/v2/cli/agnosticui-cli-2.0.0-alpha.1.tgz --force
    # Note: Replace VERSION with the version from v2/lib/package.json
@@ -84,11 +93,13 @@ The CLI is designed to work with a local tarball for development/dogfooding.
 Initialize AgnosticUI Local in your project.
 
 **Options:**
+
 - `-f, --framework <framework>` - Framework to use (react, vue, lit, svelte)
 - `-p, --components-path <path>` - Path where components will be generated (default: `./src/components/ag`)
 - `-t, --tarball <path>` - Path to local tarball (for development)
 
 **Example:**
+
 ```bash
 ag init --framework react --components-path ./src/components/ag
 ```
@@ -98,9 +109,11 @@ ag init --framework react --components-path ./src/components/ag
 Add one or more components to your project.
 
 **Options:**
+
 - `--force` - Overwrite existing components
 
 **Examples:**
+
 ```bash
 # Add a single component
 ag add button
@@ -117,6 +130,7 @@ ag add button --force
 List all available components and show which ones are already added to your project.
 
 **Example:**
+
 ```bash
 ag list
 ```
@@ -126,9 +140,11 @@ ag list
 Update the reference library from a tarball (useful during local development).
 
 **Options:**
+
 - `-t, --tarball <path>` - Path to tarball (overrides path from config)
 
 **Examples:**
+
 ```bash
 # Use tarball path from config
 ag sync
@@ -138,6 +154,7 @@ ag sync --tarball /path/to/new/agnosticui-local-v0.0.2.tar.gz
 ```
 
 **What it does:**
+
 1. Reads tarball path from `agnosticui.config.json` (or uses `--tarball` flag)
 2. Shows confirmation with tarball path and version
 3. Extracts tarball to `./agnosticui/` (overwrites reference library)
@@ -147,6 +164,7 @@ ag sync --tarball /path/to/new/agnosticui-local-v0.0.2.tar.gz
 **Your components are never touched** - only the reference library is updated.
 
 **Typical workflow:**
+
 ```bash
 # Rebuild the library
 cd v2
@@ -197,34 +215,36 @@ your-project/
 
 # Status on 11/15/25
 
-  ✅ Completed (MVP for local dogfooding)
+✅ Completed (MVP for local dogfooding)
 
-  - ag init - Fully functional with interactive prompts, tarball extraction, config creation
-  - ag add - Component copying with --force flag support
-  - ag list - Display available components
-  - Build tooling - build-local-tarball.sh creates distributable tarballs
-  - Dependency management - Auto-detects package manager, installs required deps (lit, @lit/react)
-  - CSS tokens - Automatically copies to components/styles directory
-  - TypeScript warnings - Reminds about experimentalDecorators config
+- ag init - Fully functional with interactive prompts, tarball extraction, config creation
+- ag add - Component copying with --force flag support
+- ag list - Display available components
+- Build tooling - build-local-tarball.sh creates distributable tarballs
+- Dependency management - Auto-detects package manager, installs required deps (lit, @lit/react)
+- CSS tokens - Automatically copies to components/styles directory
+- TypeScript warnings - Reminds about experimentalDecorators config
 
-  📝 Outstanding TODOs
+📝 Outstanding TODOs
 
-  1. Production Tarball Download (init.ts:158-160)
-  Currently hardcoded to look for local tarball in ../../dist/. Needs:
-  - Download from GitHub releases or CDN
-  - Version resolution (latest vs specific version)
-  - Progress indicator during download
-  - Caching mechanism
+1. Production Tarball Download (init.ts:158-160)
+   Currently hardcoded to look for local tarball in ../../dist/. Needs:
 
-  2. Dynamic Version Reading (components.ts:69)
-  Currently hardcoded to '2.0.0-alpha'. Should read from version.json in the extracted tarball.
+- Download from GitHub releases or CDN
+- Version resolution (latest vs specific version)
+- Progress indicator during download
+- Caching mechanism
 
-  📊 Current State
+2. Dynamic Version Reading (components.ts:69)
+   Currently hardcoded to '2.0.0-alpha'. Should read from version.json in the extracted tarball.
 
-  The CLI is production-ready for local development but not yet ready for npm publish because users can't download the component library - they'd need
-  the tarball manually.
+📊 Current State
 
-  For npm publication, you need:
-  1. Implement tarball downloading from GitHub releases
-  2. Publish both @agnosticui/cli and host tarball on GitHub releases
-  3. Optional: Add version flags (--version, specific version support)
+The CLI is production-ready for local development but not yet ready for npm publish because users can't download the component library - they'd need
+the tarball manually.
+
+For npm publication, you need:
+
+1. Implement tarball downloading from GitHub releases
+2. Publish both @agnosticui/cli and host tarball on GitHub releases
+3. Optional: Add version flags (--version, specific version support)

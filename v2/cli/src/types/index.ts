@@ -61,3 +61,7 @@ export interface InitOptions {
 export interface AddOptions {
   force?: boolean;
 }
+
+export interface RemoveOptions {
+  force?: boolean;
+}
