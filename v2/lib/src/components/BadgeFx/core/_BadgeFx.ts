@@ -1,4 +1,4 @@
-import { css } from 'lit';
+import { css, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
 import { AgBadge, type BadgeProps } from '../../Badge/core/_Badge.js';
 import { motionStyles } from '../../../styles/motion.styles.js';
@@ -20,7 +20,7 @@ export interface BadgeFxProps extends BadgeProps, FxProps { }
  * - Can override Badge's default hover behaviors
  */
 export class BadgeFx extends AgBadge implements BadgeFxProps {
-  static override styles: any = [
+  static override styles: CSSResultGroup = [
     motionStyles,
     AgBadge.styles,
     css`

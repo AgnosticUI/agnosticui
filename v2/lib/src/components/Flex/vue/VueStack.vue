@@ -38,10 +38,6 @@ export default defineComponent({
       type: String as PropType<StackProps["alignContent"]>,
       default: "stretch",
     },
-    gap: {
-      type: String,
-      default: "var(--ag-space-0, 0)",
-    },
     reverse: {
       type: Boolean,
       default: false,
@@ -62,7 +58,6 @@ export default defineComponent({
       webComponent.justify = props.justify;
       webComponent.align = props.align;
       webComponent.alignContent = props.alignContent;
-      webComponent.gap = props.gap;
       webComponent.reverse = props.reverse;
       webComponent.stretchChildren = props.stretchChildren;
     };

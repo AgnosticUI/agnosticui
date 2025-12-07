@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -15,7 +15,7 @@ export interface BadgeProps {
 }
 
 export class AgBadge extends LitElement implements BadgeProps {
-  static styles = css`
+  static styles: CSSResultGroup = css`
     :host {
       display: inline-flex;
       align-items: center;
