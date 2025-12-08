@@ -1,6 +1,6 @@
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { AgFieldset, type FieldsetProps } from '../Fieldset';
+import { AgFieldset, type FieldsetProps } from '../core/_Fieldset';
 
 export interface ReactFieldsetProps extends FieldsetProps {
   children?: React.ReactNode;

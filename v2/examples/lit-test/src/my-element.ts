@@ -22,6 +22,11 @@ import './components/ag/CopyButton/core/CopyButton';
 import './components/ag/Dialog/core/Dialog';
 import './components/ag/Drawer/core/Drawer';
 import './components/ag/EmptyState/core/EmptyState';
+import './components/ag/IconButtonFx/core/IconButtonFx';
+import './components/ag/IconButton/core/IconButton';
+import './components/ag/Fieldset/core/Fieldset'
+import './components/ag/Header/core/Header'
+import './components/ag/Input/core/Input'
 
 /**
  * An example element.
@@ -81,6 +86,10 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
+      <ag-header sticky>
+        <a href="/" slot="logo" style="color: var(--ag-primary-text);">Brand</a>
+        <nav>Navigation</nav>
+      </ag-header>
       <h1>Kitchen Sink :-)</h1>
       <ag-stack gap="1rem">
         <h2>Stack</h2>
@@ -89,6 +98,61 @@ export class MyElement extends LitElement {
         <div>Stacked Item 3.</div>
       </ag-stack>
       <ag-card class="card">Card</ag-card>
+      <ag-flex-row class="responsive">
+        <ag-fieldset legend="Personal Information">
+          <ag-input
+            label="First Name"
+            placeholder="John"
+          ></ag-input>
+          <ag-input
+            label="Last Name"
+            placeholder="Doe"
+          ></ag-input>
+        </ag-fieldset>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-icon-button label="Settings">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 1v6m0 6v6M5.6 5.6l4.2 4.2m4.2 4.2l4.2 4.2M1 12h6m6 0h6M5.6 18.4l4.2-4.2m4.2-4.2l4.2-4.2"></path>
+          </svg>
+        </ag-icon-button>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-icon-button-fx
+          fx="pulse"
+          fx-ease="spring-md"
+          variant="primary"
+          label="Like"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </ag-icon-button-fx>
+
+        <ag-icon-button-fx
+          fx="glow"
+          fx-ease="spring-sm"
+          variant="secondary"
+          label="Star"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </ag-icon-button-fx>
+
+        <ag-icon-button-fx
+          fx="ripple"
+          fx-ease="spring-lg"
+          variant="tertiary"
+          label="Settings"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 1v6m0 6v6M5.6 5.6l4.2 4.2m4.2 4.2l4.2 4.2M1 12h6m6 0h6M5.6 18.4l4.2-4.2m4.2-4.2l4.2-4.2"></path>
+          </svg>
+        </ag-icon-button-fx>
+      </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-empty-state
           title="No team members"
