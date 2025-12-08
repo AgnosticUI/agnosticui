@@ -44,8 +44,14 @@ export class Progress extends LitElement implements ProgressProps {
 
   static get styles(): CSSResultGroup {
     return css`
+      :host {
+        display: block;
+        width: var(--ag-progress-width, 100%);
+      }
+
       .progress-wrapper {
         display: block;
+        width: 100%;
       }
 
       .progress-label {
@@ -153,8 +159,4 @@ export class Progress extends LitElement implements ProgressProps {
       </div>
     `;
   }
-}
-
-if (!customElements.get('ag-progress')) {
-  customElements.define('ag-progress', Progress);
 }

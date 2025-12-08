@@ -36,6 +36,9 @@ import './components/ag/Menu/core/Menu';
 import './components/ag/MessageBubble/core/MessageBubble';
 import './components/ag/Pagination/core/Pagination';
 import './components/ag/Popover/core/Popover';
+import './components/ag/Progress/core/Progress';
+
+
 
 /**
  * An example element.
@@ -123,44 +126,68 @@ export class MyElement extends LitElement {
 
 
     // Debug the menu
-    const menuButton = this.shadowRoot?.querySelector('#my-menu') as any;
-    console.log('Menu button found:', menuButton);
+    // const menuButton = this.shadowRoot?.querySelector('#my-menu') as any;
+    // console.log('Menu button found:', menuButton);
     
-    if (menuButton) {
-      const menu = menuButton.querySelector('ag-menu') as any;
-      console.log('Menu found:', menu);
+    // if (menuButton) {
+    //   const menu = menuButton.querySelector('ag-menu') as any;
+    //   console.log('Menu found:', menu);
       
-      if (menu) {
-        const items = menu.querySelectorAll('ag-menu-item');
-        console.log('MenuButton found menu element:', menuButton._menu);
-        console.log('Menu items found:', items.length);
+    //   if (menu) {
+    //     const items = menu.querySelectorAll('ag-menu-item');
+    //     console.log('MenuButton found menu element:', menuButton._menu);
+    //     console.log('Menu items found:', items.length);
         
-        // Watch for property changes on the menu
-        menuButton.addEventListener('menu-open', (e: any) => {
-          console.log('=== MENU OPEN EVENT ===');
-          console.log('Event detail:', e.detail);
+    //     // Watch for property changes on the menu
+    //     menuButton.addEventListener('menu-open', (e: any) => {
+    //       console.log('=== MENU OPEN EVENT ===');
+    //       console.log('Event detail:', e.detail);
           
-          // Check menu state after a brief delay
-          setTimeout(() => {
-            console.log('Menu.open property:', menu.open);
-            console.log('Menu has hidden attr:', menu.hasAttribute('hidden'));
-            console.log('Menu display style:', window.getComputedStyle(menu).display);
-            console.log('Menu visibility:', window.getComputedStyle(menu).visibility);
-            console.log('Menu position:', window.getComputedStyle(menu).position);
-            console.log('Menu z-index:', window.getComputedStyle(menu).zIndex);
+    //       // Check menu state after a brief delay
+    //       setTimeout(() => {
+    //         console.log('Menu.open property:', menu.open);
+    //         console.log('Menu has hidden attr:', menu.hasAttribute('hidden'));
+    //         console.log('Menu display style:', window.getComputedStyle(menu).display);
+    //         console.log('Menu visibility:', window.getComputedStyle(menu).visibility);
+    //         console.log('Menu position:', window.getComputedStyle(menu).position);
+    //         console.log('Menu z-index:', window.getComputedStyle(menu).zIndex);
             
-            // Check menu bounding box
-            const rect = menu.getBoundingClientRect();
-            console.log('Menu position (top, left):', rect.top, rect.left);
-            console.log('Menu size (width, height):', rect.width, rect.height);
+    //         // Check menu bounding box
+    //         const rect = menu.getBoundingClientRect();
+    //         console.log('Menu position (top, left):', rect.top, rect.left);
+    //         console.log('Menu size (width, height):', rect.width, rect.height);
             
-            // Check if menuButton has _menuOpen state
-            console.log('MenuButton._menuOpen:', menuButton._menuOpen);
-            console.log('MenuButton._menu:', menuButton._menu);
-          }, 100);
-        });
-      }
-    }
+    //         // Check if menuButton has _menuOpen state
+    //         console.log('MenuButton._menuOpen:', menuButton._menuOpen);
+    //         console.log('MenuButton._menu:', menuButton._menu);
+    //       }, 100);
+    //     });
+    //   }
+    // }
+    // const progress = this.shadowRoot?.querySelector('ag-progress') as any;
+    // console.log('Progress hasUpdated:', progress.hasUpdated);
+    // console.log('Progress isUpdatePending:', progress.isUpdatePending);
+    // console.log('Progress updateComplete:', progress.updateComplete);
+
+    // // Wait for the component to finish updating
+    // progress.updateComplete.then(() => {
+    //   const progressBar = progress.shadowRoot?.querySelector('progress');
+    //   const rect = progressBar.getBoundingClientRect();
+    //   console.log('Progress dimensions:', {
+    //     width: rect.width,
+    //     height: rect.height,
+    //     top: rect.top,
+    //     left: rect.left
+    //   });
+    //   const styles = window.getComputedStyle(progressBar);
+    //   console.log('Progress computed styles:', {
+    //     display: styles.display,
+    //     width: styles.width,
+    //     height: styles.height,
+    //     backgroundColor: styles.backgroundColor,
+    //     visibility: styles.visibility
+    //   });
+    // });
   }
 
 
@@ -179,7 +206,7 @@ export class MyElement extends LitElement {
       </ag-stack>
       <ag-card class="card">Card</ag-card>
       <ag-flex-row class="responsive">
-        <ag-pagination current="1" total-pages="10" bordered></ag-pagination>
+        <ag-progress .value=${50} .max=${100} .label=${"Loading..."}></ag-progress>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-popover trigger-type="hover">
@@ -192,9 +219,6 @@ export class MyElement extends LitElement {
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-pagination current="5" total-pages="10" first-last-navigation></ag-pagination>
-      </ag-flex-row>
-      <ag-flex-row class="responsive">
-        <ag-progress value="50" max="100" label="50%"></ag-progress>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-loader size="small"></ag-loader>
@@ -737,6 +761,7 @@ export class MyElement extends LitElement {
     .responsive {
       --flex-direction: column;
       --flex-gap: var(--ag-space-2);
+      width: 100%;
     }
     @media (min-width: 768px) {
       .responsive {
