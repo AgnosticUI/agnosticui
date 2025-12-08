@@ -251,11 +251,22 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   }
 
   private _handleClickOutside(event: Event) {
+    console.log('_handleClickOutside called, _menuOpen:', this._menuOpen);
+    
     if (!this._menuOpen) return;
-    const target = event.target as Element;
-    if (!this.contains(target)) {
-      this._closeMenu();
+    
+    const composedPath = event.composedPath();
+    console.log('Composed path includes this:', composedPath.includes(this));
+    console.log('Composed path:', composedPath);
+    
+    // Check if the click is within this component (including shadow DOM)
+    if (composedPath.includes(this)) {
+      console.log('Click is inside, ignoring');
+      return;
     }
+    
+    console.log('Click is outside, closing menu');
+    this._closeMenu();
   }
 
   private _handleClick(event: MouseEvent) {
@@ -344,8 +355,10 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   }
 
   _openMenu(focusFirst = true) {
+    console.log('_openMenu called');
     if (this._menuOpen) return;
     this._menuOpen = true;
+    console.log('Set _menuOpen to true');
     this._updateMenuReference();
 
     if (this._menu) {
@@ -361,6 +374,7 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
         }
       });
     }
+
     const menuOpenEvent = new CustomEvent<MenuOpenEventDetail>('menu-open', {
       detail: { open: true },
       bubbles: true,
@@ -371,8 +385,10 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   }
 
   _closeMenu() {
+    console.log('_closeMenu called');
     if (!this._menuOpen) return;
     this._menuOpen = false;
+    console.log('Set _menuOpen to false');
     if (this._menu) {
       this._menu.open = false;
     }
