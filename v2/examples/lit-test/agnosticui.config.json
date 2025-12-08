@@ -268,6 +268,22 @@
       "files": [
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Loader/core"
       ]
+    },
+    "Mark": {
+      "added": "2025-12-08T19:08:59.110Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Mark/core"
+      ]
+    },
+    "Menu": {
+      "added": "2025-12-08T20:36:50.952Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Menu/core"
+      ]
     }
   },
   "ai": {
@@ -281,6 +297,6 @@
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
     "version": "unknown",
-    "installed": "2025-12-08T17:09:43.715Z"
+    "installed": "2025-12-08T20:36:29.610Z"
   }
 }
