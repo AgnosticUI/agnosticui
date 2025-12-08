@@ -137,7 +137,7 @@
       ]
     },
     "Checkbox": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2025-12-08T16:20:45.355Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -230,7 +230,7 @@
       ]
     },
     "Input": {
-      "added": "2025-12-08T03:43:50.501Z",
+      "added": "2025-12-08T14:23:22.732Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -243,6 +243,30 @@
       "framework": "lit",
       "files": [
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/IntlFormatter/core"
+      ]
+    },
+    "Kbd": {
+      "added": "2025-12-08T14:40:31.555Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Kbd/core"
+      ]
+    },
+    "Link": {
+      "added": "2025-12-08T14:45:21.902Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Link/core"
+      ]
+    },
+    "Loader": {
+      "added": "2025-12-08T14:59:59.182Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Loader/core"
       ]
     }
   },
@@ -257,6 +281,6 @@
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
     "version": "unknown",
-    "installed": "2025-12-08T03:41:22.816Z"
+    "installed": "2025-12-08T17:09:43.715Z"
   }
 }

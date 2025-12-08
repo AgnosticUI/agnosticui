@@ -134,6 +134,7 @@ export class AgInput extends LitElement implements InputProps {
 
       .ag-input__textarea {
         resize: vertical;
+        font-family: inherit; /* Ensure textarea uses same font as input */
       }
 
       /* Sizes */

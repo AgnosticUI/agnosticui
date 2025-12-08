@@ -24,10 +24,13 @@ import './components/ag/Drawer/core/Drawer';
 import './components/ag/EmptyState/core/EmptyState';
 import './components/ag/IconButtonFx/core/IconButtonFx';
 import './components/ag/IconButton/core/IconButton';
-import './components/ag/Fieldset/core/Fieldset'
-import './components/ag/Header/core/Header'
-import './components/ag/Input/core/Input'
-import './components/ag/IntlFormatter/core/IntlFormatter'
+import './components/ag/Fieldset/core/Fieldset';
+import './components/ag/Header/core/Header';
+import './components/ag/Input/core/Input';
+import './components/ag/IntlFormatter/core/IntlFormatter';
+import './components/ag/Kbd/core/Kbd';
+import './components/ag/Link/core/Link';
+import './components/ag/Loader/core/Loader';
 
 /**
  * An example element.
@@ -129,6 +132,58 @@ export class MyElement extends LitElement {
         <div>Stacked Item 3.</div>
       </ag-stack>
       <ag-card class="card">Card</ag-card>
+      <ag-flex-row class="responsive">
+        <ag-loader size="small"></ag-loader>
+        <ag-loader></ag-loader>
+        <ag-loader size="large"></ag-loader>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-kbd>Ctrl</ag-kbd>
+        <ag-kbd>Alt</ag-kbd>
+        <ag-kbd>Shift</ag-kbd>
+        <ag-kbd>Cmd</ag-kbd>
+        <ag-kbd>Enter</ag-kbd>
+        <ag-kbd>⌘</ag-kbd>
+        <ag-kbd>⌥</ag-kbd>
+        <ag-kbd>⇧</ag-kbd>
+        <ag-kbd>⌃</ag-kbd>
+        <ag-kbd
+            size="sm"
+          >⌘</ag-kbd>
+          <ag-kbd
+            size="sm"
+          >⌥</ag-kbd>
+          <ag-kbd
+            size="sm"
+          >⇧</ag-kbd>
+          <ag-kbd size="sm">⌃</ag-kbd>
+          <ag-kbd
+            size="lg"
+          >⌘</ag-kbd>
+          <ag-kbd
+            size="lg"
+          >⌥</ag-kbd>
+          <ag-kbd
+            size="lg"
+          >⇧</ag-kbd>
+          <ag-kbd size="lg">⌃</ag-kbd>
+          <ag-kbd
+            background
+            variant="primary"
+          >⌘</ag-kbd>
+          <ag-kbd
+            background
+            variant="info"
+          >⌥</ag-kbd>
+          <ag-kbd
+            background
+            variant="warning"
+          >⇧</ag-kbd>
+          <ag-kbd
+            background
+            variant="success"
+          >⌃</ag-kbd>
+      </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-fieldset legend="Personal Information" style="width: 100%;">
           <ag-input
@@ -277,13 +332,15 @@ export class MyElement extends LitElement {
           name="example"
           value="1"
           label-text="I agree to the terms and conditions"
-        />
+        >
+        </ag-checkbox>
         <ag-checkbox
           name="example"
           value="2"
           label-text="Subscribe to newsletter"
           checked
-        />
+        >
+        </ag-checkbox>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-combobox
@@ -346,6 +403,15 @@ export class MyElement extends LitElement {
         <ag-button variant="danger" bordered>Bordered</ag-button>
         <ag-button variant="danger" bordered shape="rounded">Bordered Round</ag-button>
         <ag-button variant="danger" bordered shape="capsule">Capsule</ag-button>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-link href="/home">Go to Home</ag-link>
+        <ag-link href="/success" variant="success">Success Link</ag-link>
+        <ag-link href="https://example.com" external>External Link</ag-link>
+        <ag-link href="/action" isButton variant="primary">Button Link</ag-link>
+        <ag-link href="/action" isButton buttonSize="lg" buttonShape="capsule">
+        Large Capsule Button</ag-link>
+        <ag-link href="/action" isButton buttonBordered variant="primary">Bordered Button</ag-link>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-badge variant="primary">Primary</ag-badge>
