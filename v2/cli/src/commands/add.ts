@@ -276,7 +276,8 @@ async function processSharedDependencies(
   componentsPath: string,
   configComponentsPath: string,
   processed: Set<string> = new Set(),
-  depth: number = 0
+  depth: number = 0,
+  scannedFiles: Set<string> = new Set()
 ): Promise<string[]> {
   // Prevent infinite recursion - max depth of 10 levels
   if (depth > 10) {
@@ -288,6 +289,13 @@ async function processSharedDependencies(
 
   for (const fileOrDir of files) {
     const absPath = path.resolve(process.cwd(), fileOrDir);
+    
+    // Skip if we've already scanned this path
+    if (scannedFiles.has(absPath)) {
+      continue;
+    }
+    scannedFiles.add(absPath);
+    
     let filesToScan: string[] = [];
 
     try {
@@ -309,6 +317,12 @@ async function processSharedDependencies(
     }
 
     for (const file of filesToScan) {
+      // Skip if we've already scanned this file
+      if (scannedFiles.has(file)) {
+        continue;
+      }
+      scannedFiles.add(file);
+      
       const deps = await scanForSharedDependencies(file);
 
       for (const dep of deps) {
@@ -327,11 +341,12 @@ async function processSharedDependencies(
             componentsPath,
             configComponentsPath,
             processed,
-            depth + 1
+            depth + 1,
+            scannedFiles
           );
           newFiles.push(...recursiveFiles);
         } catch (error) {
-          logger.warn(`Failed to add shared dependency "${dep}": ${error instanceof Error ? error.message : 'Unknown error'}`);
+          logger.warn(`Failed to add shared component "${dep}": ${error instanceof Error ? error.message : 'Unknown error'}`);
         }
       }
     }
@@ -373,7 +388,8 @@ async function processComponentDependencies(
   configComponentsPath: string,
   config: any,
   processed: Set<string> = new Set(),
-  depth: number = 0
+  depth: number = 0,
+  scannedFiles: Set<string> = new Set()
 ): Promise<string[]> {
   // Prevent infinite recursion
   if (depth > 10) {
@@ -385,6 +401,13 @@ async function processComponentDependencies(
 
   for (const fileOrDir of files) {
     const absPath = path.resolve(process.cwd(), fileOrDir);
+    
+    // Skip if we've already scanned this path
+    if (scannedFiles.has(absPath)) {
+      continue;
+    }
+    scannedFiles.add(absPath);
+    
     let filesToScan: string[] = [];
 
     try {
@@ -405,6 +428,12 @@ async function processComponentDependencies(
     }
 
     for (const file of filesToScan) {
+      // Skip if we've already scanned this file
+      if (scannedFiles.has(file)) {
+        continue;
+      }
+      scannedFiles.add(file);
+      
       const deps = await scanForComponentDependencies(file);
 
       for (const dep of deps) {
@@ -447,7 +476,8 @@ async function processComponentDependencies(
             configComponentsPath,
             config,
             processed,
-            depth + 1
+            depth + 1,
+            scannedFiles
           );
           newFiles.push(...recursiveFiles);
         } catch (error) {
