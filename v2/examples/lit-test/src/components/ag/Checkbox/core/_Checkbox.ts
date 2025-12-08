@@ -1,10 +1,10 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
-import { formControlStyles } from '../../../shared/form-control-styles';
+import { formControlStyles } from '../../../../shared/form-control-styles';
 import {
   createFormControlIds,
   buildAriaDescribedBy,
-} from '../../../shared/form-control-utils';
+} from '../../../../shared/form-control-utils';
 
 
 export type CheckboxSize = 'small' | 'medium' | 'large';

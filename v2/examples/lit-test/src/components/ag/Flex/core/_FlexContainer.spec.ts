@@ -1,13 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { FlexContainer } from './_FlexContainer';
-import { FlexRow } from '../FlexRow';
-import { FlexCol } from '../FlexCol';
-import { FlexInline } from '../FlexInline';
-import './FlexContainer';
-import '../FlexRow';
-import '../FlexCol';
-import '../FlexInline';
+import { FlexContainer } from './FlexContainer';
+import { FlexRow } from './FlexRow';
+import { FlexCol } from './FlexCol';
+import { FlexInline } from './FlexInline';
 
 expect.extend(toHaveNoViolations);
 
@@ -34,7 +30,6 @@ describe('FlexContainer', () => {
       expect(container.justify).toBe('flex-start');
       expect(container.align).toBe('stretch');
       expect(container.alignContent).toBe('stretch');
-      expect(container.gap).toBeUndefined(); // gap is handled via CSS, not property default
       expect(container.inline).toBe(false);
       expect(container.reverse).toBe(false);
       expect(container.stretchChildren).toBe(false);
@@ -81,67 +76,6 @@ describe('FlexContainer', () => {
       container.wrap = 'invalid-value' as any;
       await container.updateComplete;
       expect(container.wrap).toBe('nowrap');
-    });
-  });
-  describe('Gap Validation', () => {
-    it('should accept valid gap values without warnings', async () => {
-      const consoleSpy = vi.spyOn(console, 'warn');
-     
-      container.gap = '16px';
-      await container.updateComplete;
-     
-      container.gap = '2rem';
-      await container.updateComplete;
-     
-      container.gap = '1em 2em';
-      await container.updateComplete;
-     
-      container.gap = 'var(--ag-space-4)';
-      await container.updateComplete;
-     
-      container.gap = 'calc(100% - 20px)';
-      await container.updateComplete;
-     
-      expect(consoleSpy).not.toHaveBeenCalled();
-    });
-    it('should warn on potentially invalid gap values', async () => {
-      const consoleSpy = vi.spyOn(console, 'warn');
-
-      container.gap = 'invalid-value';
-      await container.updateComplete;
-
-      expect(consoleSpy).toHaveBeenCalledWith(
-        expect.stringContaining('Potentially invalid gap value')
-      );
-      expect(consoleSpy).toHaveBeenCalledWith(
-        expect.stringContaining('invalid-value')
-      );
-
-      consoleSpy.mockClear();
-
-      container.gap = 'foo bar';
-      await container.updateComplete;
-
-      expect(consoleSpy).toHaveBeenCalledWith(
-        expect.stringContaining('Potentially invalid gap value')
-      );
-      expect(consoleSpy).toHaveBeenCalledWith(
-        expect.stringContaining('foo bar')
-      );
-    });
-    it('should handle empty and zero gap values gracefully', async () => {
-      const consoleSpy = vi.spyOn(console, 'warn');
-
-      container.gap = '';
-      await container.updateComplete;
-      // Gap is handled via CSS fallback, not inline styles
-      expect(container.gap).toBe('');
-
-      container.gap = '0';
-      await container.updateComplete;
-      expect(container.gap).toBe('0');
-
-      expect(consoleSpy).not.toHaveBeenCalled();
     });
   });
   describe('Reverse Prop Behavior', () => {
@@ -201,7 +135,7 @@ describe('FlexContainer', () => {
           <div>Left</div>
           <div>Right</div>
         </ag-flex-row>
-        <ag-flex-inline gap="var(--ag-space-2)">
+        <ag-flex-inline style="--flex-gap: var(--ag-space-2)">
           <button>Action 1</button>
           <button>Action 2</button>
         </ag-flex-inline>
@@ -225,11 +159,9 @@ describe('FlexContainer', () => {
     it('should handle multiple property changes in sequence', async () => {
       container.direction = 'column';
       container.justify = 'center';
-      container.gap = '8px';
       await container.updateComplete;
       expect(container.getAttribute('direction')).toBe('column');
       expect(container.getAttribute('justify')).toBe('center');
-      expect(container.gap).toBe('8px');
     });
     it('should handle reverse toggle with existing direction', async () => {
       container.direction = 'row';

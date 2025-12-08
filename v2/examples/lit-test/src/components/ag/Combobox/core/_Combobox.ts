@@ -21,8 +21,8 @@ import {
   buildAriaDescribedBy,
   isHorizontalLabel,
   type LabelPosition,
-} from '../../../shared/form-control-utils';
-import { formControlStyles } from '../../../shared/form-control-styles';
+} from '../../../../shared/form-control-utils';
+import { formControlStyles } from '../../../../shared/form-control-styles';
 import '../../shared/CloseButton/CloseButton';
 import '../../Checkbox/core/Checkbox';
 import '../../Tag/core/Tag';

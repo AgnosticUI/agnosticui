@@ -1,5 +1,5 @@
 import { LitElement, css, html } from 'lit'
-import { customElement } from 'lit/decorators.js'
+import { customElement, state } from 'lit/decorators.js'
 import './components/ag/Alert/core/Alert';
 import './components/ag/Avatar/core/Avatar';
 import './components/ag/Badge/core/Badge';
@@ -17,6 +17,7 @@ import './components/ag/ButtonFx/core/ButtonFx';
 import './components/ag/Checkbox/core/Checkbox';
 import './components/ag/Collapsible/core/Collapsible';
 import './components/ag/Combobox/core/Combobox';
+import type { ComboboxOption, ComboboxChangeEvent } from './components/ag/Combobox/core/Combobox';
 import './components/ag/CopyButton/core/CopyButton';
 
 /**
@@ -29,6 +30,22 @@ import './components/ag/CopyButton/core/CopyButton';
 export class MyElement extends LitElement {
   handleBreadcrumbClick(event: CustomEvent) {
     console.log('Breadcrumb clicked:', event.detail);
+  }
+  @state()
+  private stateOptions: ComboboxOption[] = [
+    { value: 'ca', label: 'California' },
+    { value: 'co', label: 'Colorado' },
+    { value: 'ct', label: 'Connecticut' },
+    { value: 'fl', label: 'Florida' },
+    { value: 'ny', label: 'New York' },
+  ];
+
+  @state()
+  private selectedState = '';
+
+  private handleChange(event: ComboboxChangeEvent) {
+    console.log('Selected:', event.detail.value);
+    this.selectedState = event.detail.value as string;
   }
 
   render() {
@@ -56,11 +73,12 @@ export class MyElement extends LitElement {
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-combobox
-          name="example"
-          label-text="Select an option"
-          placeholder="Select an option"
-          options="Option 1, Option 2, Option 3"
-        />
+          .options=${this.stateOptions}
+          .value=${this.selectedState}
+          label="Select State"
+          placeholder="Choose a state..."
+          @change=${this.handleChange}
+        ></ag-combobox>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-copy-button
