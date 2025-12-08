@@ -195,6 +195,47 @@
       "files": [
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/EmptyState/core"
       ]
+    },
+    "IconButtonFx": {
+      "added": "2025-12-08T02:49:59.056Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/IconButtonFx/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/IconButton/core"
+      ]
+    },
+    "IconButton": {
+      "added": "2025-12-08T02:51:35.655Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/IconButton/core"
+      ]
+    },
+    "Fieldset": {
+      "added": "2025-12-08T03:41:43.118Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Fieldset/core"
+      ]
+    },
+    "Header": {
+      "added": "2025-12-08T03:08:32.718Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Header/core"
+      ]
+    },
+    "Input": {
+      "added": "2025-12-08T03:43:50.501Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Input/core"
+      ]
     }
   },
   "ai": {
@@ -208,6 +249,6 @@
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
     "version": "unknown",
-    "installed": "2025-12-08T00:39:12.888Z"
+    "installed": "2025-12-08T03:41:22.816Z"
   }
 }
