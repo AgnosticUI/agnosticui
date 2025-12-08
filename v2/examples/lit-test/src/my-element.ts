@@ -27,6 +27,7 @@ import './components/ag/IconButton/core/IconButton';
 import './components/ag/Fieldset/core/Fieldset'
 import './components/ag/Header/core/Header'
 import './components/ag/Input/core/Input'
+import './components/ag/IntlFormatter/core/IntlFormatter'
 
 /**
  * An example element.
@@ -81,6 +82,36 @@ export class MyElement extends LitElement {
         drawer.open = true;
       }
     });
+
+    // Input event handlers
+    const emailInput = this.shadowRoot?.querySelector('#email-input') as any;
+    const usernameInput = this.shadowRoot?.querySelector('#username-input') as any;
+    const messageInput = this.shadowRoot?.querySelector('#message-input') as any;
+    const priceInput = this.shadowRoot?.querySelector('#price-input') as any;
+
+    emailInput?.addEventListener('input', (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      console.log('Email:', target.value);
+    });
+
+    usernameInput?.addEventListener('blur', (e: Event) => {
+      const target = e.target as any;
+      if (!target.value) {
+        usernameInput.invalid = true;
+      } else {
+        usernameInput.invalid = false;
+      }
+    });
+
+    messageInput?.addEventListener('input', (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      console.log('Message length:', target.value.length);
+    });
+
+    priceInput?.addEventListener('input', (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      console.log('Hourly rate: $', target.value);
+    });
   }
 
 
@@ -99,14 +130,44 @@ export class MyElement extends LitElement {
       </ag-stack>
       <ag-card class="card">Card</ag-card>
       <ag-flex-row class="responsive">
-        <ag-fieldset legend="Personal Information">
+        <ag-fieldset legend="Personal Information" style="width: 100%;">
           <ag-input
-            label="First Name"
-            placeholder="John"
+            id="email-input"
+            label="Email"
+            type="email"
+            placeholder="you@example.com"
+            help-text="We'll never share your email"
           ></ag-input>
+
           <ag-input
-            label="Last Name"
-            placeholder="Doe"
+            id="username-input"
+            label="Username"
+            required
+            error-message="Username is required"
+            help-text="Choose a unique username"
+          ></ag-input>
+
+          <ag-input
+            id="message-input"
+            label="Message"
+            type="textarea"
+            rows="4"
+            placeholder="Tell us about yourself..."
+          ></ag-input>
+
+          <ag-input
+            id="price-input"
+            label="Hourly Rate"
+            type="number"
+            placeholder="0.00"
+          >
+            <span slot="addon-left">$</span>
+          </ag-input>
+
+          <ag-input
+            label="Website"
+            rounded
+            placeholder="https://example.com"
           ></ag-input>
         </ag-fieldset>
       </ag-flex-row>
@@ -169,7 +230,7 @@ export class MyElement extends LitElement {
         </ag-empty-state>
       </ag-flex-row>
       <ag-flex-row class="responsive">
-        <button id="open-dialog">Open Dialog</button>
+        <ag-button shape="rounded" bordered variant="primary" id="open-dialog">Open Dialog</ag-button>
         <ag-dialog
           id="my-dialog"
           heading="Dialog Title"
@@ -184,8 +245,8 @@ export class MyElement extends LitElement {
           </div>
           <p>Dialog with custom header and footer.</p>
           <div slot="footer" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
-            <button>Cancel</button>
-            <button>Confirm</button>
+            <ag-button>Cancel</ag-button>
+            <ag-button>Confirm</ag-button>
           </div>
         </ag-dialog>
 
@@ -195,9 +256,7 @@ export class MyElement extends LitElement {
         >
           <p>This dialog includes a close button.</p>
         </ag-dialog>
-      </ag-flex-row>
-      <ag-flex-row class="responsive">
-        <button id="open-start">Open Navigation</button>
+        <ag-button variant="primary" shape="rounded" id="open-start">Open Navigation Drawer</ag-button>
         <ag-drawer
           id="start-drawer"
           position="start"
@@ -426,6 +485,48 @@ export class MyElement extends LitElement {
             alt="A beautiful landscape."
           ></ag-image>
         </ag-aspect-ratio>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-intl-formatter
+          type="currency"
+          value="1234.56"
+          currency="USD"
+          lang="en-US"
+        ></ag-intl-formatter>
+        <ag-intl-formatter
+          type="currency"
+          value="1234.56"
+          currency="USD"
+          lang="fr-FR"
+        ></ag-intl-formatter>
+        <ag-intl-formatter
+          type="currency"
+          value="1234.56"
+          currency="EUR"
+          lang="de-DE"
+        ></ag-intl-formatter>
+        <ag-intl-formatter
+          type="date"
+          value="2022-01-01"
+          dateStyle="long"
+          lang="en-US"
+        ></ag-intl-formatter>
+        <ag-intl-formatter
+          type="date"
+          value="2022-01-01"
+          dateStyle="long"
+          lang="de-DE"
+        ></ag-intl-formatter>
+        <ag-intl-formatter
+          type="percent"
+          value="0.75"
+          lang="en-US"
+        ></ag-intl-formatter>
+        <ag-intl-formatter
+          type="number"
+          value="1234.56"
+          lang="en-US"
+        ></ag-intl-formatter>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-breadcrumb
