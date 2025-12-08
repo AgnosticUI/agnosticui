@@ -31,6 +31,8 @@ import './components/ag/IntlFormatter/core/IntlFormatter';
 import './components/ag/Kbd/core/Kbd';
 import './components/ag/Link/core/Link';
 import './components/ag/Loader/core/Loader';
+import './components/ag/Mark/core/Mark';
+import './components/ag/Menu/core/Menu';
 
 /**
  * An example element.
@@ -60,7 +62,7 @@ export class MyElement extends LitElement {
     this.selectedState = event.detail.value as string;
   }
 
-    firstUpdated() {
+  firstUpdated() {
     // Query within the shadow DOM
     const dialog = this.shadowRoot?.querySelector('#my-dialog') as any;
     const openButton = this.shadowRoot?.querySelector('#open-dialog');
@@ -115,6 +117,47 @@ export class MyElement extends LitElement {
       const target = e.target as HTMLInputElement;
       console.log('Hourly rate: $', target.value);
     });
+
+
+    // Debug the menu
+    const menuButton = this.shadowRoot?.querySelector('#my-menu') as any;
+    console.log('Menu button found:', menuButton);
+    
+    if (menuButton) {
+      const menu = menuButton.querySelector('ag-menu') as any;
+      console.log('Menu found:', menu);
+      
+      if (menu) {
+        const items = menu.querySelectorAll('ag-menu-item');
+        console.log('MenuButton found menu element:', menuButton._menu);
+        console.log('Menu items found:', items.length);
+        
+        // Watch for property changes on the menu
+        menuButton.addEventListener('menu-open', (e: any) => {
+          console.log('=== MENU OPEN EVENT ===');
+          console.log('Event detail:', e.detail);
+          
+          // Check menu state after a brief delay
+          setTimeout(() => {
+            console.log('Menu.open property:', menu.open);
+            console.log('Menu has hidden attr:', menu.hasAttribute('hidden'));
+            console.log('Menu display style:', window.getComputedStyle(menu).display);
+            console.log('Menu visibility:', window.getComputedStyle(menu).visibility);
+            console.log('Menu position:', window.getComputedStyle(menu).position);
+            console.log('Menu z-index:', window.getComputedStyle(menu).zIndex);
+            
+            // Check menu bounding box
+            const rect = menu.getBoundingClientRect();
+            console.log('Menu position (top, left):', rect.top, rect.left);
+            console.log('Menu size (width, height):', rect.width, rect.height);
+            
+            // Check if menuButton has _menuOpen state
+            console.log('MenuButton._menuOpen:', menuButton._menuOpen);
+            console.log('MenuButton._menu:', menuButton._menu);
+          }, 100);
+        });
+      }
+    }
   }
 
 
@@ -137,7 +180,25 @@ export class MyElement extends LitElement {
         <ag-loader></ag-loader>
         <ag-loader size="large"></ag-loader>
       </ag-flex-row>
-      <ag-flex-row class="responsive">
+      <ag-flex-row class="responsive" wrap="wrap">
+        <p>This is <ag-mark variant="success">Success</ag-mark> and this is <ag-mark variant="error">Error</ag-mark></p>
+      </ag-flex-row>
+      <ag-flex-row class="responsive" wrap="wrap">
+        <div style="position: relative">
+          <ag-menu-button id="my-menu" menu-variant="chevron" size="md">
+            Menu
+            <ag-menu slot="menu" aria-label="Action menu">
+              <ag-menu-item value="edit">Edit</ag-menu-item>
+              <ag-menu-item value="copy">Copy</ag-menu-item>
+              <ag-menu-item value="move">Move</ag-menu-item>
+              <ag-menu-item value="share">Share</ag-menu-item>
+              <ag-menu-separator></ag-menu-separator>
+              <ag-menu-item value="delete">Delete</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
+        </div>
+      </ag-flex-row>
+      <ag-flex-row class="responsive" wrap="wrap">
         <ag-kbd>Ctrl</ag-kbd>
         <ag-kbd>Alt</ag-kbd>
         <ag-kbd>Shift</ag-kbd>
@@ -394,7 +455,7 @@ export class MyElement extends LitElement {
           <p>No indicator is shown at all.</p>
         </ag-collapsible>
       </ag-flex-row>
-      <ag-flex-row class="responsive">
+      <ag-flex-row class="responsive" wrap="wrap">
         <ag-button variant="primary">Primary Button</ag-button>
         <ag-button variant="warning">Warning Button</ag-button>
         <ag-button variant="secondary">Secondary Button</ag-button>
@@ -404,7 +465,7 @@ export class MyElement extends LitElement {
         <ag-button variant="danger" bordered shape="rounded">Bordered Round</ag-button>
         <ag-button variant="danger" bordered shape="capsule">Capsule</ag-button>
       </ag-flex-row>
-      <ag-flex-row class="responsive">
+      <ag-flex-row class="responsive" wrap="wrap">
         <ag-link href="/home">Go to Home</ag-link>
         <ag-link href="/success" variant="success">Success Link</ag-link>
         <ag-link href="https://example.com" external>External Link</ag-link>
@@ -413,7 +474,7 @@ export class MyElement extends LitElement {
         Large Capsule Button</ag-link>
         <ag-link href="/action" isButton buttonBordered variant="primary">Bordered Button</ag-link>
       </ag-flex-row>
-      <ag-flex-row class="responsive">
+      <ag-flex-row class="responsive" wrap="wrap">
         <ag-badge variant="primary">Primary</ag-badge>
         <ag-badge variant="success">Success</ag-badge>
         <ag-badge variant="warning">Warning</ag-badge>
@@ -421,7 +482,7 @@ export class MyElement extends LitElement {
         <ag-badge variant="neutral">Neutral</ag-badge>
         <ag-badge variant="info">Info</ag-badge>
       </ag-flex-row>
-      <ag-flex-row class="responsive">
+      <ag-flex-row class="responsive" wrap="wrap">
         <ag-badge-fx fx="bounce" fx-speed="md"> Badge Text </ag-badge-fx>
         <ag-badge-fx fx="bounce" variant="success">Bounce</ag-badge-fx>
         <ag-badge-fx fx="pulse" variant="info">Pulse</ag-badge-fx>
@@ -500,7 +561,7 @@ export class MyElement extends LitElement {
           Press Shadow
         </ag-button-fx>
       </ag-flex-row>
-      <ag-flex-row class="responsive">
+      <ag-flex-row class="responsive" wrap="wrap">
         <ag-alert type="primary" rounded borderedLeft>
           primary alert
         </ag-alert>
@@ -615,12 +676,13 @@ export class MyElement extends LitElement {
 
   static styles = css`
     :host {
-      display: grid;
-      row-gap: var(--ag-space-4);
-      max-width: 1280px;
+      display: flex;
+      gap: var(--ag-space-4);
+      max-width: 800px;
       margin: 0 auto;
       padding: 2rem;
       text-align: center;
+      flex-direction: column;
     }
     .card {
       margin-block: var(--ag-space-8);
