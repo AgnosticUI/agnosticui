@@ -15,13 +15,7 @@ import {
   normalizeComponentName,
   scanForSharedDependencies,
   scanForComponentDependencies,
-  scanForUtilsDependencies,
-  scanForStyleDependencies,
-  scanForTypeDependencies,
   getSharedComponentSourcePaths,
-  getUtilSourcePath,
-  getStyleSourcePath,
-  getTypeSourcePath,
 } from '../utils/components.js';
 import pc from 'picocolors';
 
@@ -107,7 +101,7 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
           config.paths.components
         );
 
-        // Process shared dependencies
+        // Process shared component dependencies (e.g., CloseButton)
         const sharedFiles = await processSharedDependencies(
           files,
           referencePath,
@@ -127,30 +121,8 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         );
         files.push(...componentFiles);
 
-        // Process utility dependencies
-        const utilFiles = await processUtilsDependencies(
-          files,
-          referencePath,
-          process.cwd() // Project root
-        );
-        // We don't necessarily need to track utils in the component files list for config,
-        // but we could if we want to version them. For now, let's just ensure they exist.
-
-        // Process style dependencies
-        const styleFiles = await processStyleDependencies(
-          files,
-          referencePath,
-          process.cwd() // Project root
-        );
-        // Style files are shared across components, so we don't track them per component
-
-        // Process type dependencies
-        const typeFiles = await processTypeDependencies(
-          files,
-          referencePath,
-          process.cwd() // Project root
-        );
-        // Type files are shared across components, so we don't track them per component
+        // Note: utils, styles, types, and shared files are now copied during 'npx ag init'
+        // so we don't need to scan for them here
 
         results.push({ name: componentName, success: true, files });
         spinner.message(`Added ${componentName}`);
@@ -550,17 +522,21 @@ async function copyAndTransform(src: string, dest: string, componentsPath: strin
         if (extraLevels > 0) {
           const extraDots = '../'.repeat(extraLevels);
 
+          // ../../../shared/file -> ../../../../shared/file (or more based on depth)
+          content = content.replace(/(from\s+['"])(?:\.\.\/){3}(shared\/)/g, `$1../../../${extraDots}$2`);
+          content = content.replace(/(import\s+['"])(?:\.\.\/){3}(shared\/)/g, `$1../../../${extraDots}$2`);
+
           // ../../../utils/ -> ../../../../utils/ (or more based on depth)
-          content = content.replace(/(from\s+)(['"])(?:\.\.\/){3}(utils\/)/g, `$1$2../../../${extraDots}$3`);
-          content = content.replace(/(import\s+)(['"])(?:\.\.\/){3}(utils\/)/g, `$1$2../../../${extraDots}$3`);
+          content = content.replace(/(from\s+['"])(?:\.\.\/){3}(utils\/)/g, `$1../../../${extraDots}$2`);
+          content = content.replace(/(import\s+['"])(?:\.\.\/){3}(utils\/)/g, `$1../../../${extraDots}$2`);
 
           // ../../../styles/ -> ../../../../styles/ (or more based on depth)
-          content = content.replace(/(from\s+)(['"])(?:\.\.\/){3}(styles\/)/g, `$1$2../../../${extraDots}$3`);
-          content = content.replace(/(import\s+)(['"])(?:\.\.\/){3}(styles\/)/g, `$1$2../../../${extraDots}$3`);
+          content = content.replace(/(from\s+['"])(?:\.\.\/){3}(styles\/)/g, `$1../../../${extraDots}$2`);
+          content = content.replace(/(import\s+['"])(?:\.\.\/){3}(styles\/)/g, `$1../../../${extraDots}$2`);
 
           // ../../../types/ -> ../../../../types/ (or more based on depth)
-          content = content.replace(/(from\s+)(['"])(?:\.\.\/){3}(types\/)/g, `$1$2../../../${extraDots}$3`);
-          content = content.replace(/(import\s+)(['"])(?:\.\.\/){3}(types\/)/g, `$1$2../../../${extraDots}$3`);
+          content = content.replace(/(from\s+['"])(?:\.\.\/){3}(types\/)/g, `$1../../../${extraDots}$2`);
+          content = content.replace(/(import\s+['"])(?:\.\.\/){3}(types\/)/g, `$1../../../${extraDots}$2`);
         }
         // If extraLevels === 0, no transformation needed (same depth as reference)
 
@@ -574,254 +550,4 @@ async function copyAndTransform(src: string, dest: string, componentsPath: strin
   }
 }
 
-/**
- * Process utility dependencies for a list of files
- */
-async function processUtilsDependencies(
-  files: string[],
-  referencePath: string,
-  projectRoot: string,
-  processed: Set<string> = new Set()
-): Promise<string[]> {
-  const newFiles: string[] = [];
-  
-  for (const fileOrDir of files) {
-    const absPath = path.resolve(process.cwd(), fileOrDir);
-    let filesToScan: string[] = [];
 
-    try {
-      const stats = await stat(absPath);
-      if (stats.isDirectory()) {
-        const children = await readdir(absPath);
-        filesToScan = children
-          .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
-          .map(f => path.join(absPath, f))
-          .slice(0, 100); // Limit to first 100 files to prevent hangs
-      } else {
-        if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
-          filesToScan = [absPath];
-        }
-      }
-    } catch (err) {
-      // Silently skip files that can't be accessed
-      continue;
-    }
-
-    for (const file of filesToScan) {
-      const deps = await scanForUtilsDependencies(file);
-
-      for (const dep of deps) {
-        if (processed.has(dep)) continue;
-        processed.add(dep);
-
-        try {
-          const utilFiles = await addUtil(dep, referencePath, projectRoot);
-          newFiles.push(...utilFiles);
-        } catch (error) {
-          logger.warn(`Failed to add utility "${dep}": ${error instanceof Error ? error.message : 'Unknown error'}`);
-        }
-      }
-    }
-  }
-  return newFiles;
-}
-
-/**
- * Add a utility file
- */
-async function addUtil(
-  utilName: string,
-  referencePath: string,
-  projectRoot: string
-): Promise<string[]> {
-  const sourcePath = getUtilSourcePath(referencePath, utilName);
-  // specific to AgnosticUI structure: utils are in src/utils
-  const destPath = path.join(projectRoot, 'src/utils', `${utilName}.ts`); // assuming TS for now
-
-  await ensureDir(path.dirname(destPath));
-
-  // simple copy
-  const { copyFile } = await import('node:fs/promises');
-
-  if (pathExists(sourcePath)) {
-     await copyFile(sourcePath, destPath);
-     return [destPath];
-  } else {
-    // try .js if .ts not found?
-    const sourcePathJs = sourcePath.replace('.ts', '.js');
-    if (pathExists(sourcePathJs)) {
-       const destPathJs = destPath.replace('.ts', '.js');
-       await copyFile(sourcePathJs, destPathJs);
-       return [destPathJs];
-    }
-    throw new Error(`Utility "${utilName}" not found at ${sourcePath}`);
-  }
-}
-
-/**
- * Process style dependencies for a list of files
- */
-async function processStyleDependencies(
-  files: string[],
-  referencePath: string,
-  projectRoot: string,
-  processed: Set<string> = new Set()
-): Promise<string[]> {
-  const newFiles: string[] = [];
-
-  for (const fileOrDir of files) {
-    const absPath = path.resolve(process.cwd(), fileOrDir);
-    let filesToScan: string[] = [];
-
-    try {
-      const stats = await stat(absPath);
-      if (stats.isDirectory()) {
-        const children = await readdir(absPath);
-        filesToScan = children
-          .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
-          .map(f => path.join(absPath, f))
-          .slice(0, 100); // Limit to first 100 files to prevent hangs
-      } else {
-        if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
-          filesToScan = [absPath];
-        }
-      }
-    } catch (err) {
-      // Silently skip files that can't be accessed
-      continue;
-    }
-
-    for (const file of filesToScan) {
-      const deps = await scanForStyleDependencies(file);
-
-      for (const dep of deps) {
-        if (processed.has(dep)) continue;
-        processed.add(dep);
-
-        try {
-          const styleFiles = await addStyle(dep, referencePath, projectRoot);
-          newFiles.push(...styleFiles);
-        } catch (error) {
-          logger.warn(`Failed to add style "${dep}": ${error instanceof Error ? error.message : 'Unknown error'}`);
-        }
-      }
-    }
-  }
-  return newFiles;
-}
-
-/**
- * Add a style file
- */
-async function addStyle(
-  styleName: string,
-  referencePath: string,
-  projectRoot: string
-): Promise<string[]> {
-  const sourcePath = getStyleSourcePath(referencePath, styleName);
-  // Styles are in src/styles (parallel to src/components)
-  const destPath = path.join(projectRoot, 'src/styles', `${styleName}.ts`); // assuming TS for now
-
-  await ensureDir(path.dirname(destPath));
-
-  // simple copy
-  const { copyFile } = await import('node:fs/promises');
-
-  if (pathExists(sourcePath)) {
-     await copyFile(sourcePath, destPath);
-     return [destPath];
-  } else {
-    // try .js if .ts not found?
-    const sourcePathJs = sourcePath.replace('.ts', '.js');
-    if (pathExists(sourcePathJs)) {
-       const destPathJs = destPath.replace('.ts', '.js');
-       await copyFile(sourcePathJs, destPathJs);
-       return [destPathJs];
-    }
-    throw new Error(`Style "${styleName}" not found at ${sourcePath}`);
-  }
-}
-
-/**
- * Process type dependencies for a list of files
- */
-async function processTypeDependencies(
-  files: string[],
-  referencePath: string,
-  projectRoot: string,
-  processed: Set<string> = new Set()
-): Promise<string[]> {
-  const newFiles: string[] = [];
-
-  for (const fileOrDir of files) {
-    const absPath = path.resolve(process.cwd(), fileOrDir);
-    let filesToScan: string[] = [];
-
-    try {
-      const stats = await stat(absPath);
-      if (stats.isDirectory()) {
-        const children = await readdir(absPath);
-        filesToScan = children
-          .filter(f => /\.(ts|js|tsx|jsx|vue|svelte)$/.test(f))
-          .map(f => path.join(absPath, f))
-          .slice(0, 100); // Limit to first 100 files to prevent hangs
-      } else {
-        if (/\.(ts|js|tsx|jsx|vue|svelte)$/.test(absPath)) {
-          filesToScan = [absPath];
-        }
-      }
-    } catch (err) {
-      // Silently skip files that can't be accessed
-      continue;
-    }
-
-    for (const file of filesToScan) {
-      const deps = await scanForTypeDependencies(file);
-
-      for (const dep of deps) {
-        if (processed.has(dep)) continue;
-        processed.add(dep);
-
-        try {
-          const typeFiles = await addType(dep, referencePath, projectRoot);
-          newFiles.push(...typeFiles);
-        } catch (error) {
-          logger.warn(`Failed to add type "${dep}": ${error instanceof Error ? error.message : 'Unknown error'}`);
-        }
-      }
-    }
-  }
-  return newFiles;
-}
-
-/**
- * Add a type file
- */
-async function addType(
-  typeName: string,
-  referencePath: string,
-  projectRoot: string
-): Promise<string[]> {
-  const sourcePath = getTypeSourcePath(referencePath, typeName);
-  // Types are in src/types (parallel to src/components)
-  const destPath = path.join(projectRoot, 'src/types', `${typeName}.ts`); // assuming TS for now
-
-  await ensureDir(path.dirname(destPath));
-
-  // simple copy
-  const { copyFile } = await import('node:fs/promises');
-
-  if (pathExists(sourcePath)) {
-     await copyFile(sourcePath, destPath);
-     return [destPath];
-  } else {
-    // try .js if .ts not found?
-    const sourcePathJs = sourcePath.replace('.ts', '.js');
-    if (pathExists(sourcePathJs)) {
-       const destPathJs = destPath.replace('.ts', '.js');
-       await copyFile(sourcePathJs, destPathJs);
-       return [destPathJs];
-    }
-    throw new Error(`Type "${typeName}" not found at ${sourcePath}`);
-  }
-}
