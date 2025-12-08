@@ -34,6 +34,8 @@ import './components/ag/Loader/core/Loader';
 import './components/ag/Mark/core/Mark';
 import './components/ag/Menu/core/Menu';
 import './components/ag/MessageBubble/core/MessageBubble';
+import './components/ag/Pagination/core/Pagination';
+import './components/ag/Popover/core/Popover';
 
 /**
  * An example element.
@@ -176,6 +178,24 @@ export class MyElement extends LitElement {
         <div>Stacked Item 3.</div>
       </ag-stack>
       <ag-card class="card">Card</ag-card>
+      <ag-flex-row class="responsive">
+        <ag-pagination current="1" total-pages="10" bordered></ag-pagination>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-popover trigger-type="hover">
+          <ag-button variant="primary" bordered slot="trigger">Hover Me</ag-button>
+          <span slot="title">Hover Popover</span>
+          <div slot="content">
+            <p>This popover opens on hover.</p>
+          </div>
+        </ag-popover>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-pagination current="5" total-pages="10" first-last-navigation></ag-pagination>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-progress value="50" max="100" label="50%"></ag-progress>
+      </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-loader size="small"></ag-loader>
         <ag-loader></ag-loader>
