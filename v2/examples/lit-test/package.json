@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "focus-trap": "^7.6.6",
     "lit": "^3.3.1"
   },
   "devDependencies": {

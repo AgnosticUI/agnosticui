@@ -19,6 +19,9 @@ import './components/ag/Collapsible/core/Collapsible';
 import './components/ag/Combobox/core/Combobox';
 import type { ComboboxOption, ComboboxChangeEvent } from './components/ag/Combobox/core/Combobox';
 import './components/ag/CopyButton/core/CopyButton';
+import './components/ag/Dialog/core/Dialog';
+import './components/ag/Drawer/core/Drawer';
+import './components/ag/EmptyState/core/EmptyState';
 
 /**
  * An example element.
@@ -48,6 +51,34 @@ export class MyElement extends LitElement {
     this.selectedState = event.detail.value as string;
   }
 
+    firstUpdated() {
+    // Query within the shadow DOM
+    const dialog = this.shadowRoot?.querySelector('#my-dialog') as any;
+    const openButton = this.shadowRoot?.querySelector('#open-dialog');
+    openButton?.addEventListener('click', () => {
+      if (dialog) {
+        dialog.open = true;
+      }
+    });
+    dialog?.addEventListener('dialog-close', () => {
+      dialog.open = false;
+      console.log('Dialog closed');
+    });
+    dialog?.addEventListener('dialog-cancel', () => {
+      dialog.open = false;
+      console.log('Dialog cancelled');
+    });
+    // Same for drawer
+    const drawer = this.shadowRoot?.querySelector('#start-drawer') as any;
+    const openDrawer = this.shadowRoot?.querySelector('#open-start');
+    openDrawer?.addEventListener('click', () => {
+      if (drawer) {
+        drawer.open = true;
+      }
+    });
+  }
+
+
   render() {
     return html`
       <h1>Kitchen Sink :-)</h1>
@@ -58,6 +89,66 @@ export class MyElement extends LitElement {
         <div>Stacked Item 3.</div>
       </ag-stack>
       <ag-card class="card">Card</ag-card>
+      <ag-flex-row class="responsive">
+        <ag-empty-state
+          title="No team members"
+          subtitle="Invite people to collaborate on this project"
+        >
+          <div slot="actions">
+            <ag-button variant="primary" size="sm" shape="rounded">
+              Invite Members
+            </ag-button>
+            <ag-button variant="secondary" size="sm" shape="rounded">
+              Learn More
+            </ag-button>
+          </div>
+        </ag-empty-state>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <button id="open-dialog">Open Dialog</button>
+        <ag-dialog
+          id="my-dialog"
+          heading="Dialog Title"
+          description="This is a dialog description"
+        >
+          <p>This is the dialog content.</p>
+        </ag-dialog>
+
+        <ag-dialog id="custom-dialog">
+          <div slot="header">
+            <h2 style="margin: 0;">Custom Header</h2>
+          </div>
+          <p>Dialog with custom header and footer.</p>
+          <div slot="footer" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+            <button>Cancel</button>
+            <button>Confirm</button>
+          </div>
+        </ag-dialog>
+
+        <ag-dialog
+          heading="Dialog with Close Button"
+          show-close-button
+        >
+          <p>This dialog includes a close button.</p>
+        </ag-dialog>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <button id="open-start">Open Navigation</button>
+        <ag-drawer
+          id="start-drawer"
+          position="start"
+          heading="Navigation"
+          show-close-button
+        >
+          <nav>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding: 0.5rem 0;"><a href="#">Dashboard</a></li>
+              <li style="padding: 0.5rem 0;"><a href="#">Projects</a></li>
+              <li style="padding: 0.5rem 0;"><a href="#">Settings</a></li>
+            </ul>
+          </nav>
+        </ag-drawer>
+      </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-checkbox
           name="example"
