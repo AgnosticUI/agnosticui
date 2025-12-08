@@ -123,6 +123,22 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
       }
     }
 
+    // Copy shared infrastructure (shared, utils, styles, types)
+    spinner.message('Updating shared infrastructure...');
+    const { copyDirectoryFiltered } = await import('../utils/files.js');
+    const infraDirs = ['shared', 'utils', 'styles', 'types'];
+
+    for (const dir of infraDirs) {
+      const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'src', dir);
+      const destDir = path.join(process.cwd(), 'src', dir);
+      
+      if (pathExists(srcDir)) {
+        await copyDirectoryFiltered(srcDir, destDir, {
+          exclude: ['*.spec.ts', '*.spec.js'] // Skip test files
+        });
+      }
+    }
+
     // Update config with new tarball info
     spinner.message('Updating configuration...');
     config.tarball = {
@@ -141,6 +157,7 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
     logger.info(pc.dim('Updated:'));
     console.log('  ' + pc.cyan('✓') + ' Reference library → ' + pc.dim('./agnosticui/'));
     console.log('  ' + pc.cyan('✓') + ' CSS tokens → ' + pc.dim(`${componentsPath}/styles/`));
+    console.log('  ' + pc.cyan('✓') + ' Shared infrastructure → ' + pc.dim('src/shared/, src/utils/, src/styles/, src/types/'));
     console.log('  ' + pc.cyan('✓') + ' Config → ' + pc.dim('agnosticui.config.json'));
     logger.newline();
     logger.info(pc.dim('Your components in ') + pc.cyan(componentsPath) + pc.dim(' were not modified.'));

@@ -135,6 +135,22 @@ export async function init(options: InitOptions = {}): Promise<void> {
       }
     }
 
+    // Copy shared infrastructure (shared, utils, styles, types)
+    spinner.message('Copying shared infrastructure...');
+    const { copyDirectoryFiltered } = await import('../utils/files.js');
+    const infraDirs = ['shared', 'utils', 'styles', 'types'];
+
+    for (const dir of infraDirs) {
+      const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'src', dir);
+      const destDir = path.join(process.cwd(), 'src', dir);
+      
+      if (pathExists(srcDir)) {
+        await copyDirectoryFiltered(srcDir, destDir, {
+          exclude: ['*.spec.ts', '*.spec.js'] // Skip test files
+        });
+      }
+    }
+
     spinner.stop(pc.green('✓') + ' Initialized successfully!');
 
     // Check and install dependencies

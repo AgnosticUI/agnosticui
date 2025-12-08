@@ -44,6 +44,46 @@ export async function copyDirectory(src: string, dest: string): Promise<void> {
 }
 
 /**
+ * Recursively copy a directory with file filtering
+ */
+export async function copyDirectoryFiltered(
+  src: string,
+  dest: string,
+  options: { exclude?: string[] } = {}
+): Promise<void> {
+  await ensureDir(dest);
+
+  const entries = await readdir(src, { withFileTypes: true });
+  const excludePatterns = options.exclude || [];
+
+  for (const entry of entries) {
+    // Check if file should be excluded
+    const shouldExclude = excludePatterns.some(pattern => {
+      if (pattern.startsWith('*.')) {
+        // Extension pattern like '*.spec.ts'
+        const ext = pattern.slice(1); // Remove the *
+        return entry.name.endsWith(ext);
+      }
+      // Exact match
+      return entry.name === pattern;
+    });
+
+    if (shouldExclude) {
+      continue;
+    }
+
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+
+    if (entry.isDirectory()) {
+      await copyDirectoryFiltered(srcPath, destPath, options);
+    } else {
+      await copyFile(srcPath, destPath);
+    }
+  }
+}
+
+/**
  * Extract a tarball to a destination directory
  */
 export async function extractTarball(tarballPath: string, destPath: string): Promise<void> {
