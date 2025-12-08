@@ -6,7 +6,6 @@ import {
   buildAriaDescribedBy,
 } from '../../../shared/form-control-utils';
 
-
 export type CheckboxSize = 'small' | 'medium' | 'large';
 export type CheckboxTheme = 'default' | 'primary' | 'success' | 'monochrome';
 
@@ -36,10 +35,6 @@ export interface CheckboxProps {
   theme: CheckboxTheme;
   labelText: string;
   labelPosition: 'end' | 'start';
-  // Optional external label (for groups or standalone use with external label)
-  label?: string;
-  labelHidden?: boolean;
-  noLabel?: boolean;
   // Validation & hints
   required?: boolean;
   invalid?: boolean;
@@ -82,6 +77,8 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
       opacity: 0;
       margin: 0;
       padding: 0;
+      clip: rect(0, 0, 0, 0);
+      overflow: hidden;
     }
 
     .checkbox-label {
@@ -308,16 +305,6 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
   @property({ type: String })
   declare labelPosition: 'end' | 'start';
 
-  // Optional external label (for groups or above checkbox)
-  @property({ type: String })
-  declare label: string;
-
-  @property({ type: Boolean, attribute: 'label-hidden' })
-  declare labelHidden: boolean;
-
-  @property({ type: Boolean, attribute: 'no-label' })
-  declare noLabel: boolean;
-
   // Validation & hints
   @property({ type: Boolean, reflect: true })
   declare required: boolean;
@@ -353,10 +340,6 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     this.theme = 'primary';
     this.labelText = '';
     this.labelPosition = 'end';
-    // Optional external label/hints
-    this.label = '';
-    this.labelHidden = false;
-    this.noLabel = false;
     this.required = false;
     this.invalid = false;
     this.errorMessage = '';
@@ -422,29 +405,6 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
   }
 
   /**
-   * Render optional external label (for groups or above checkbox)
-   */
-  private _renderExternalLabel() {
-    if (!this.label || this.noLabel) return nothing;
-
-    return html`
-      <label
-        id="${this._ids.labelId}"
-        for="${this._ids.inputId}"
-        class="ag-form-control__label ag-checkbox__external-label ${this.labelHidden ? 'ag-form-control__label--hidden' : ''}"
-        part="ag-checkbox-external-label"
-      >
-        ${this.label}
-        ${this.required
-          ? html`
-              <span class="ag-form-control__required" part="ag-required" aria-hidden="true">*</span>
-            `
-          : nothing}
-      </label>
-    `;
-  }
-
-  /**
    * Render helper text
    */
   private _renderHelper() {
@@ -465,14 +425,15 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
    * Render error text
    */
   private _renderError() {
+    if (!this.invalid || !this.errorMessage) return nothing;
+
     return html`
       <div
         id="${this._ids.errorId}"
         class="ag-form-control__error ag-checkbox__error"
         part="ag-checkbox-error"
-        ?hidden="${!this.invalid || !this.errorMessage}"
       >
-        ${this.errorMessage || ''}
+        ${this.errorMessage}
       </div>
     `;
   }
@@ -509,56 +470,53 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     // Build aria-describedby
     const describedBy = this._getAriaDescribedBy();
 
-    // The checkbox control (internal label wrapper + input + indicator + text)
-    const checkboxControl = html`
-      <label class=${wrapperClasses.trim()} part="ag-checkbox-wrapper">
-        <input
-          type="checkbox"
-          id="${this._ids.inputId}"
-          class="checkbox-input"
-          part="ag-checkbox-input"
-          name=${this.name}
-          value=${this.value}
-          .checked=${this.checked}
-          .indeterminate=${this.indeterminate}
-          ?disabled=${this.disabled}
-          ?required=${this.required}
-          aria-required="${this.required ? 'true' : 'false'}"
-          aria-invalid="${this.invalid ? 'true' : 'false'}"
-          aria-describedby="${describedBy || nothing}"
-          @click=${this.handleClick}
-          @change=${this.handleChange}
-          aria-checked=${this.indeterminate
-            ? 'mixed'
-            : this.checked
-            ? 'true'
-            : 'false'}
-        />
-        <span
-          class=${labelClasses.trim()}
-          part="ag-checkbox-indicator"
-          aria-hidden="true"
-        ></span>
-        <span class=${labelCopyClasses.trim()} part="ag-checkbox-label">
-          ${this.labelText ? this.labelText : html`<slot></slot>`}
-        </span>
-      </label>
+    // Main structure wraps everything
+    return html`
+      <div class="ag-checkbox-container">
+        <label 
+          for="${this._ids.inputId}"
+          class=${wrapperClasses.trim()} 
+          part="ag-checkbox-wrapper"
+        >
+          <input
+            type="checkbox"
+            id="${this._ids.inputId}"
+            class="checkbox-input"
+            part="ag-checkbox-input"
+            name=${this.name}
+            value=${this.value}
+            .checked=${this.checked}
+            .indeterminate=${this.indeterminate}
+            ?disabled=${this.disabled}
+            ?required=${this.required}
+            aria-label="${this.labelText || 'Checkbox'}"
+            aria-required="${this.required ? 'true' : 'false'}"
+            aria-invalid="${this.invalid ? 'true' : 'false'}"
+            aria-describedby="${describedBy || nothing}"
+            aria-checked=${this.indeterminate
+              ? 'mixed'
+              : this.checked
+              ? 'true'
+              : 'false'}
+            @click=${this.handleClick}
+            @change=${this.handleChange}
+          />
+          <span
+            class=${labelClasses.trim()}
+            part="ag-checkbox-indicator"
+            aria-hidden="true"
+          ></span>
+          <span class=${labelCopyClasses.trim()} part="ag-checkbox-label">
+            ${this.labelText || html`<slot></slot>`}
+            ${this.required
+              ? html`<span class="ag-form-control__required" aria-label="required">*</span>`
+              : nothing}
+          </span>
+        </label>
+        ${this._renderHelper()}
+        ${this._renderError()}
+      </div>
     `;
-
-    // If external label/helper/error are provided, wrap with them
-    if (this.label || this.helpText || this.errorMessage) {
-      return html`
-        <div class="ag-checkbox-wrapper-with-external">
-          ${this._renderExternalLabel()}
-          ${checkboxControl}
-          ${this._renderHelper()}
-          ${this._renderError()}
-        </div>
-      `;
-    }
-
-    // Otherwise just return the checkbox control
-    return checkboxControl;
   }
 
   override firstUpdated() {
@@ -569,8 +527,4 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
       this.inputRef.indeterminate = this.indeterminate;
     }
   }
-}
-
-if (!customElements.get('ag-checkbox')) {
-  customElements.define('ag-checkbox', AgCheckbox);
 }

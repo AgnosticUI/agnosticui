@@ -111,12 +111,13 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
     const stylesPath = path.join(componentsPath, 'styles');
     await ensureDir(stylesPath);
 
-    const tokensSourcePath = path.join(DEFAULT_REFERENCE_PATH, 'tokens');
+    const tokensSourcePath = path.join(DEFAULT_REFERENCE_PATH, 'dist', 'styles');
     const tokenFiles = ['ag-tokens.css', 'ag-tokens-dark.css'];
-
     for (const tokenFile of tokenFiles) {
       const srcFile = path.join(tokensSourcePath, tokenFile);
       const destFile = path.join(stylesPath, tokenFile);
+      // console.log('  ' + pc.cyan('✓') + ' srcFile → ' + pc.dim(srcFile));
+      // console.log('  ' + pc.cyan('✓') + ' destFile → ' + pc.dim(destFile));
       if (pathExists(srcFile)) {
         const { copyFile } = await import('node:fs/promises');
         await copyFile(srcFile, destFile);
@@ -132,7 +133,7 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
       const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'src', dir);
       const destDir = path.join(process.cwd(), 'src', dir);
       
-      if (pathExists(srcDir)) {
+      if (pathExists(srcDir))   {
         await copyDirectoryFiltered(srcDir, destDir, {
           exclude: ['*.spec.ts', '*.spec.js'] // Skip test files
         });

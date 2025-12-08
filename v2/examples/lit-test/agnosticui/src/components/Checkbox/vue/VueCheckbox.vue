@@ -12,9 +12,6 @@
     :theme="theme"
     :labelText="labelText"
     :labelPosition="labelPosition"
-    :label="label"
-    :labelHidden="labelHidden"
-    :noLabel="noLabel"
     :errorMessage="errorMessage"
     :helpText="helpText"
     @click="handleClick"
@@ -51,9 +48,6 @@ withDefaults(defineProps<VueCheckboxProps>(), {
   theme: "default",
   labelText: "",
   labelPosition: "end",
-  label: "",
-  labelHidden: false,
-  noLabel: false,
   required: false,
   invalid: false,
   errorMessage: "",
@@ -62,10 +56,10 @@ withDefaults(defineProps<VueCheckboxProps>(), {
 
 // Define emits for all events (native + custom)
 const emit = defineEmits<{
-  click: [event: MouseEvent];
-  change: [detail: CheckboxChangeEventDetail];
-  "update:checked": [checked: boolean];
-  "update:indeterminate": [indeterminate: boolean];
+  (e: "click", event: MouseEvent): void;
+  (e: "change", detail: CheckboxChangeEventDetail): void;
+  (e: "update:checked", checked: boolean): void;
+  (e: "update:indeterminate", indeterminate: boolean): void;
 }>();
 
 // Template ref

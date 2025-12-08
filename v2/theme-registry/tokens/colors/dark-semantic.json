@@ -103,11 +103,11 @@
     "description": "Error text that's setup for contrast in light and dark modes."
   },
   "warning-rgb": {
-    "value": "191, 135, 0",
+    "value": "212, 167, 44",
     "description": "Warning state color (RGB format for alpha channel support)"
   },
   "warning": {
-    "value": "{yellow.400.value}",
+    "value": "{yellow.300.value}",
     "description": "Warning state color (hex format)"
   },
   "warning-dark": {
