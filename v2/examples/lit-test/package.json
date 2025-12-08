@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
     "focus-trap": "^7.6.6",
     "lit": "^3.3.1"
   },
