@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { AgFieldset } from './_Fieldset';
-import '../Fieldset'; // Import barrel to register custom element
+import { AgFieldset } from './Fieldset';
+import './Fieldset'; // Import barrel to register custom element
 
 describe('AgFieldset', () => {
   let element: AgFieldset;

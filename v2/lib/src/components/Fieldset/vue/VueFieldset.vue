@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, type PropType } from "vue";
 import type { FieldsetProps } from "../core/_Fieldset";
-import "../Fieldset"; // Registers the ag-fieldset web component
+import "../core/Fieldset"; // Registers the ag-fieldset web component
 
 export default defineComponent({
   name: "VueFieldset",
