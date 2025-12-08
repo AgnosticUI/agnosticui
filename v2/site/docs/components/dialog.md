@@ -13,6 +13,7 @@ import DialogExamples from '../examples/DialogExamples.vue'
 ## Usage
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -26,7 +27,6 @@ import DialogExamples from '../examples/DialogExamples.vue'
       <p>This is the dialog content.</p>
     </VueDialog>
 
-
     <VueButton @click="showCustomDialog">Open Custom Dialog</VueButton>
     <VueDialog v-model:open="isCustomOpen">
       <VueDialogHeader>
@@ -36,7 +36,9 @@ import DialogExamples from '../examples/DialogExamples.vue'
       <VueDialogFooter>
         <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
           <VueButton @click="isCustomOpen = false">Cancel</VueButton>
-          <VueButton variant="primary" @click="isCustomOpen = false">Confirm</VueButton>
+          <VueButton variant="primary" @click="isCustomOpen = false"
+            >Confirm</VueButton
+          >
         </div>
       </VueDialogFooter>
     </VueDialog>
@@ -65,7 +67,10 @@ import DialogExamples from '../examples/DialogExamples.vue'
 </template>
 
 <script>
-import VueDialog, { VueDialogHeader, VueDialogFooter } from "agnosticui-core/dialog/vue";
+import VueDialog, {
+  VueDialogHeader,
+  VueDialogFooter,
+} from "agnosticui-core/dialog/vue";
 import VueButton from "agnosticui-core/button/vue";
 
 export default {
@@ -109,12 +114,18 @@ export default {
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
 import { useState } from "react";
-import { ReactDialog, DialogHeader, DialogFooter } from "agnosticui-core/dialog/react";
+import {
+  ReactDialog,
+  DialogHeader,
+  DialogFooter,
+} from "agnosticui-core/dialog/react";
 
 export default function DialogExample() {
   const [isOpen, setIsOpen] = useState(false);
@@ -155,7 +166,13 @@ export default function DialogExample() {
         </DialogHeader>
         <p>Dialog with custom header and footer.</p>
         <DialogFooter>
-          <div style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+              justifyContent: "flex-end",
+            }}
+          >
             <button onClick={() => setIsCustomOpen(false)}>Cancel</button>
             <button onClick={() => setIsCustomOpen(false)}>Confirm</button>
           </div>
@@ -176,33 +193,39 @@ export default function DialogExample() {
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
   import 'agnosticui-core/dialog';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const dialog = document.querySelector('#my-dialog');
-    const openButton = document.querySelector('#open-dialog');
+  @customElement('my-element')
+  export class MyElement extends LitElement {
+    firstUpdated() {
+      const dialog = this.shadowRoot?.querySelector('#my-dialog') as any;
+      const openButton = this.shadowRoot?.querySelector('#open-dialog');
 
-    openButton?.addEventListener('click', () => {
-      if (dialog) {
-        dialog.open = true;
-      }
-    });
+      openButton?.addEventListener('click', () => {
+        if (dialog) {
+          dialog.open = true;
+        }
+      });
 
-    dialog?.addEventListener("dialog-close", () => {
-      dialog.open = false;
-      console.log("Dialog closed");
-    });
+      dialog?.addEventListener('dialog-close', () => {
+        dialog.open = false;
+        console.log('Dialog closed');
+      });
 
-    dialog?.addEventListener("dialog-cancel", () => {
-      dialog.open = false;
-      console.log("Dialog cancelled");
-    });
-  });
+      dialog?.addEventListener('dialog-cancel', () => {
+        dialog.open = false;
+        console.log('Dialog cancelled');
+      });
+    }
+    // ... rest of your class ...
+  }
 </script>
 
 <section>
@@ -220,44 +243,46 @@ export default function DialogExample() {
       <h2 style="margin: 0;">Custom Header</h2>
     </div>
     <p>Dialog with custom header and footer.</p>
-    <div slot="footer" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+    <div
+      slot="footer"
+      style="display: flex; gap: 0.5rem; justify-content: flex-end;"
+    >
       <button>Cancel</button>
       <button>Confirm</button>
     </div>
   </ag-dialog>
 
-  <ag-dialog
-    heading="Dialog with Close Button"
-    show-close-button
-  >
+  <ag-dialog heading="Dialog with Close Button" show-close-button>
     <p>This dialog includes a close button.</p>
   </ag-dialog>
 </section>
 ```
+
 :::
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `open` | `boolean` | `false` | Whether the dialog is open |
-| `heading` | `string` | `''` | The heading text for the dialog |
-| `description` | `string` | `''` | The description text for the dialog |
-| `noCloseOnEscape` | `boolean` | `false` | Prevents closing the dialog when pressing the Escape key |
-| `noCloseOnBackdrop` | `boolean` | `false` | Prevents closing the dialog when clicking the backdrop |
-| `showCloseButton` | `boolean` | `false` | Shows a close button (×) in the top-right corner of the dialog |
+| Prop                | Type      | Default | Description                                                    |
+| ------------------- | --------- | ------- | -------------------------------------------------------------- |
+| `open`              | `boolean` | `false` | Whether the dialog is open                                     |
+| `heading`           | `string`  | `''`    | The heading text for the dialog                                |
+| `description`       | `string`  | `''`    | The description text for the dialog                            |
+| `noCloseOnEscape`   | `boolean` | `false` | Prevents closing the dialog when pressing the Escape key       |
+| `noCloseOnBackdrop` | `boolean` | `false` | Prevents closing the dialog when clicking the backdrop         |
+| `showCloseButton`   | `boolean` | `false` | Shows a close button (×) in the top-right corner of the dialog |
 
 ## Events
 
-| Event | Framework | Detail | Description |
-| -------- | ----------------------------------------------------- | ------------------- | ------------------------------ |
-| `dialog-open` | Vue: `@dialog-open`<br>React: `onDialogOpen`<br>Lit: `@dialog-open` | `void` | Fired when the dialog opens. |
-| `dialog-close` | Vue: `@dialog-close`<br>React: `onDialogClose`<br>Lit: `@dialog-close` | `void` | Fired when the dialog closes via the close button. |
+| Event           | Framework                                                                 | Detail | Description                                                        |
+| --------------- | ------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------ |
+| `dialog-open`   | Vue: `@dialog-open`<br>React: `onDialogOpen`<br>Lit: `@dialog-open`       | `void` | Fired when the dialog opens.                                       |
+| `dialog-close`  | Vue: `@dialog-close`<br>React: `onDialogClose`<br>Lit: `@dialog-close`    | `void` | Fired when the dialog closes via the close button.                 |
 | `dialog-cancel` | Vue: `@dialog-cancel`<br>React: `onDialogCancel`<br>Lit: `@dialog-cancel` | `void` | Fired when the dialog is cancelled (Escape key or backdrop click). |
 
 ### Event Handling Examples
 
 **Vue:**
+
 ```vue
 <VueDialog
   v-model:open="isOpen"
@@ -270,10 +295,11 @@ export default function DialogExample() {
 ```
 
 **React:**
+
 ```tsx
 <ReactDialog
   open={isOpen}
-  onDialogOpen={(e) => console.log('Dialog opened', e)}
+  onDialogOpen={(e) => console.log("Dialog opened", e)}
   onDialogClose={(e) => setIsOpen(false)}
   onDialogCancel={(e) => setIsOpen(false)}
 >
@@ -282,6 +308,7 @@ export default function DialogExample() {
 ```
 
 **Lit:**
+
 ```html
 <script>
   const dialog = document.querySelector("ag-dialog");
@@ -304,16 +331,19 @@ export default function DialogExample() {
 ## Slots
 
 ### Vue
+
 - **Default slot**: Main content of the dialog
 - **VueDialogHeader**: Custom header content (replaces `heading` prop when used)
 - **VueDialogFooter**: Footer content for action buttons
 
 ### React
+
 - **children**: Main content of the dialog
 - **DialogHeader**: Custom header content (replaces `heading` prop when used)
 - **DialogFooter**: Footer content for action buttons
 
 ### Lit
+
 - **Default slot**: Main content of the dialog
 - **slot="header"**: Custom header content (replaces `heading` prop when used)
 - **slot="footer"**: Footer content for action buttons
@@ -322,21 +352,25 @@ export default function DialogExample() {
 
 Shadow Parts allow you to style internal elements of the dialog from outside the shadow DOM using the `::part()` CSS selector.
 
-| Part | Description |
-|------|-------------|
-| `ag-dialog-backdrop` | The backdrop overlay element behind the dialog |
-| `ag-dialog-container` | The main dialog container that holds all dialog content |
-| `ag-dialog-header` | The header section wrapper |
-| `ag-dialog-heading` | The heading text element (when using `heading` prop) |
-| `ag-dialog-close-button` | The close button (when `showCloseButton` is true) |
-| `ag-dialog-content` | The main content section wrapper |
-| `ag-dialog-footer` | The footer section wrapper |
+| Part                     | Description                                             |
+| ------------------------ | ------------------------------------------------------- |
+| `ag-dialog-backdrop`     | The backdrop overlay element behind the dialog          |
+| `ag-dialog-container`    | The main dialog container that holds all dialog content |
+| `ag-dialog-header`       | The header section wrapper                              |
+| `ag-dialog-heading`      | The heading text element (when using `heading` prop)    |
+| `ag-dialog-close-button` | The close button (when `showCloseButton` is true)       |
+| `ag-dialog-content`      | The main content section wrapper                        |
+| `ag-dialog-footer`       | The footer section wrapper                              |
 
 ### Customization Example
 
 ```css
 ag-dialog::part(ag-dialog-backdrop) {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.8) 0%,
+    rgba(118, 75, 162, 0.8) 100%
+  );
 }
 
 ag-dialog::part(ag-dialog-container) {

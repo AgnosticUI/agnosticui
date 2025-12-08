@@ -13,6 +13,7 @@ import DrawerExamples from '../examples/DrawerExamples.vue'
 ## Usage
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -51,7 +52,9 @@ import DrawerExamples from '../examples/DrawerExamples.vue'
       <div slot="footer">
         <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
           <VueButton @click="isEndDrawerOpen = false">Cancel</VueButton>
-          <VueButton variant="primary" @click="isEndDrawerOpen = false">Save</VueButton>
+          <VueButton variant="primary" @click="isEndDrawerOpen = false"
+            >Save</VueButton
+          >
         </div>
       </div>
     </VueDrawer>
@@ -123,12 +126,18 @@ export default {
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
 import { useState } from "react";
-import { ReactDrawer, DrawerHeader, DrawerFooter } from "agnosticui-core/drawer/react";
+import {
+  ReactDrawer,
+  DrawerHeader,
+  DrawerFooter,
+} from "agnosticui-core/drawer/react";
 
 export default function DrawerExample() {
   const [isStartDrawerOpen, setIsStartDrawerOpen] = useState(false);
@@ -138,7 +147,9 @@ export default function DrawerExample() {
 
   return (
     <section>
-      <button onClick={() => setIsStartDrawerOpen(true)}>Open Navigation</button>
+      <button onClick={() => setIsStartDrawerOpen(true)}>
+        Open Navigation
+      </button>
       <ReactDrawer
         open={isStartDrawerOpen}
         position="start"
@@ -148,9 +159,15 @@ export default function DrawerExample() {
       >
         <nav>
           <ul style={{ listStyle: "none", padding: 0 }}>
-            <li style={{ padding: "0.5rem 0" }}><a href="#">Dashboard</a></li>
-            <li style={{ padding: "0.5rem 0" }}><a href="#">Projects</a></li>
-            <li style={{ padding: "0.5rem 0" }}><a href="#">Settings</a></li>
+            <li style={{ padding: "0.5rem 0" }}>
+              <a href="#">Dashboard</a>
+            </li>
+            <li style={{ padding: "0.5rem 0" }}>
+              <a href="#">Projects</a>
+            </li>
+            <li style={{ padding: "0.5rem 0" }}>
+              <a href="#">Settings</a>
+            </li>
           </ul>
         </nav>
       </ReactDrawer>
@@ -171,14 +188,22 @@ export default function DrawerExample() {
           </label>
         </div>
         <DrawerFooter>
-          <div style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+              justifyContent: "flex-end",
+            }}
+          >
             <button onClick={() => setIsEndDrawerOpen(false)}>Cancel</button>
             <button onClick={() => setIsEndDrawerOpen(false)}>Save</button>
           </div>
         </DrawerFooter>
       </ReactDrawer>
 
-      <button onClick={() => setIsTopDrawerOpen(true)}>Open Notifications</button>
+      <button onClick={() => setIsTopDrawerOpen(true)}>
+        Open Notifications
+      </button>
       <ReactDrawer
         open={isTopDrawerOpen}
         position="top"
@@ -194,7 +219,9 @@ export default function DrawerExample() {
         </div>
       </ReactDrawer>
 
-      <button onClick={() => setIsBottomDrawerOpen(true)}>Open Quick Actions</button>
+      <button onClick={() => setIsBottomDrawerOpen(true)}>
+        Open Quick Actions
+      </button>
       <ReactDrawer
         open={isBottomDrawerOpen}
         position="bottom"
@@ -212,46 +239,56 @@ export default function DrawerExample() {
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
   import 'agnosticui-core/drawer';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const startDrawer = document.querySelector("#start-drawer");
-    const endDrawer = document.querySelector("#end-drawer");
-    const topDrawer = document.querySelector("#top-drawer");
-    const bottomDrawer = document.querySelector("#bottom-drawer");
+  @customElement('my-element')
+  export class MyElement extends LitElement {
+    firstUpdated() {
+      // Query all drawers and buttons within the shadow DOM
+      const startDrawer = this.shadowRoot?.querySelector('#start-drawer') as any;
+      const endDrawer = this.shadowRoot?.querySelector('#end-drawer') as any;
+      const topDrawer = this.shadowRoot?.querySelector('#top-drawer') as any;
+      const bottomDrawer = this.shadowRoot?.querySelector('#bottom-drawer') as any;
 
-    const openStartBtn = document.querySelector("#open-start");
-    const openEndBtn = document.querySelector("#open-end");
-    const openTopBtn = document.querySelector("#open-top");
-    const openBottomBtn = document.querySelector("#open-bottom");
+      const openStartBtn = this.shadowRoot?.querySelector('#open-start');
+      const openEndBtn = this.shadowRoot?.querySelector('#open-end');
+      const openTopBtn = this.shadowRoot?.querySelector('#open-top');
+      const openBottomBtn = this.shadowRoot?.querySelector('#open-bottom');
 
-    openStartBtn?.addEventListener("click", () => {
-      if (startDrawer) startDrawer.open = true;
-    });
-
-    openEndBtn?.addEventListener("click", () => {
-      if (endDrawer) endDrawer.open = true;
-    });
-
-    openTopBtn?.addEventListener("click", () => {
-      if (topDrawer) topDrawer.open = true;
-    });
-
-    openBottomBtn?.addEventListener("click", () => {
-      if (bottomDrawer) bottomDrawer.open = true;
-    });
-
-    [startDrawer, endDrawer, topDrawer, bottomDrawer].forEach(drawer => {
-      drawer?.addEventListener("drawer-close", () => {
-        drawer.open = false;
+      // Add click handlers for each button
+      openStartBtn?.addEventListener('click', () => {
+        if (startDrawer) startDrawer.open = true;
       });
-    });
-  });
+
+      openEndBtn?.addEventListener('click', () => {
+        if (endDrawer) endDrawer.open = true;
+      });
+
+      openTopBtn?.addEventListener('click', () => {
+        if (topDrawer) topDrawer.open = true;
+      });
+
+      openBottomBtn?.addEventListener('click', () => {
+        if (bottomDrawer) bottomDrawer.open = true;
+      });
+
+      // Add close handlers for each drawer
+      [startDrawer, endDrawer, topDrawer, bottomDrawer].forEach(drawer => {
+        drawer?.addEventListener('drawer-close', () => {
+          drawer.open = false;
+          console.log('Drawer closed');
+        });
+      });
+    }
+    // ... rest of your class ...
+  }
 </script>
 
 <section>
@@ -285,7 +322,10 @@ export default function DrawerExample() {
         Enable notifications
       </label>
     </div>
-    <div slot="footer" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+    <div
+      slot="footer"
+      style="display: flex; gap: 0.5rem; justify-content: flex-end;"
+    >
       <button>Cancel</button>
       <button>Save</button>
     </div>
@@ -321,41 +361,45 @@ export default function DrawerExample() {
   </ag-drawer>
 </section>
 ```
+
 :::
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `open` | `boolean` | `false` | Whether the drawer is open |
-| `position` | `'start' \| 'end' \| 'top' \| 'bottom'` | `'bottom'` | The edge from which the drawer slides in. 'start' is left in LTR, 'end' is right in LTR |
-| `heading` | `string` | `''` | The heading text for the drawer |
-| `description` | `string` | `''` | The description text for the drawer |
-| `noCloseOnEscape` | `boolean` | `false` | Prevents closing the drawer when pressing the Escape key |
-| `noCloseOnBackdrop` | `boolean` | `false` | Prevents closing the drawer when clicking the backdrop |
-| `showCloseButton` | `boolean` | `false` | Shows a close button (×) in the top-right corner of the drawer |
+| Prop                | Type                                    | Default    | Description                                                                             |
+| ------------------- | --------------------------------------- | ---------- | --------------------------------------------------------------------------------------- |
+| `open`              | `boolean`                               | `false`    | Whether the drawer is open                                                              |
+| `position`          | `'start' \| 'end' \| 'top' \| 'bottom'` | `'bottom'` | The edge from which the drawer slides in. 'start' is left in LTR, 'end' is right in LTR |
+| `heading`           | `string`                                | `''`       | The heading text for the drawer                                                         |
+| `description`       | `string`                                | `''`       | The description text for the drawer                                                     |
+| `noCloseOnEscape`   | `boolean`                               | `false`    | Prevents closing the drawer when pressing the Escape key                                |
+| `noCloseOnBackdrop` | `boolean`                               | `false`    | Prevents closing the drawer when clicking the backdrop                                  |
+| `showCloseButton`   | `boolean`                               | `false`    | Shows a close button (×) in the top-right corner of the drawer                          |
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `@drawer-open` (Vue) / `onDrawerOpen` (React) / `drawer-open` (Lit) | `DrawerOpenEvent` | Emitted when the drawer is opened |
-| `@drawer-close` (Vue) / `onDrawerClose` (React) / `drawer-close` (Lit) | `DrawerCloseEvent` | Emitted when the drawer is closed (via close button, Escape key, or backdrop click) |
+| Event                                                                     | Payload             | Description                                                                                       |
+| ------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------- |
+| `@drawer-open` (Vue) / `onDrawerOpen` (React) / `drawer-open` (Lit)       | `DrawerOpenEvent`   | Emitted when the drawer is opened                                                                 |
+| `@drawer-close` (Vue) / `onDrawerClose` (React) / `drawer-close` (Lit)    | `DrawerCloseEvent`  | Emitted when the drawer is closed (via close button, Escape key, or backdrop click)               |
 | `@drawer-cancel` (Vue) / `onDrawerCancel` (React) / `drawer-cancel` (Lit) | `DrawerCancelEvent` | Emitted when the drawer is cancelled (via Escape key or backdrop click, but not via close button) |
 
 ## Slots
 
 ### Vue
+
 - **Default slot**: Main content of the drawer
 - **slot="header"**: Custom header content (replaces `heading` prop when used)
 - **slot="footer"**: Footer content for action buttons
 
 ### React
+
 - **children**: Main content of the drawer
 - **DrawerHeader**: Custom header content (replaces `heading` prop when used)
 - **DrawerFooter**: Footer content for action buttons
 
 ### Lit
+
 - **Default slot**: Main content of the drawer
 - **slot="header"**: Custom header content (replaces `heading` prop when used)
 - **slot="footer"**: Footer content for action buttons
