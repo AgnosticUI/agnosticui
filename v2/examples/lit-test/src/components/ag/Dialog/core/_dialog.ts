@@ -1,0 +1,442 @@
+import { LitElement, html, css, nothing } from 'lit';
+import { property } from 'lit/decorators.js';
+import { createFocusTrap, type FocusTrap } from 'focus-trap';
+import { isBackdropClick } from '../../../../utils/handleBackdropClick';
+import { isElementInContainer } from '../../../../utils/isElementInContainer';
+import type { EdgePosition } from '../../../../utils/positioning';
+import '../../shared/CloseButton/CloseButton';
+
+// Event types
+export type DialogOpenEvent = CustomEvent<void>;
+export type DialogCloseEvent = CustomEvent<void>;
+export type DialogCancelEvent = CustomEvent<void>;
+
+// Props interface following INTERFACE_STANDARDS.md
+export interface DialogProps {
+  open?: boolean;
+  heading?: string;
+  description?: string;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
+  showCloseButton?: boolean;
+  drawerPosition?: EdgePosition | undefined;
+  // Event handlers
+  onDialogOpen?: (event: DialogOpenEvent) => void;
+  onDialogClose?: (event: DialogCloseEvent) => void;
+  onDialogCancel?: (event: DialogCancelEvent) => void;
+}
+
+export class AgnosticDialog extends LitElement implements DialogProps {
+  @property({ type: Boolean, reflect: true })
+  declare open: boolean;
+
+  @property({ type: String })
+  declare heading: string;
+
+  @property({ type: String })
+  declare description: string;
+
+  @property({ type: Boolean })
+  declare noCloseOnEscape: boolean;
+
+  @property({ type: Boolean })
+  declare noCloseOnBackdrop: boolean;
+
+  @property({ type: Boolean })
+  declare showCloseButton: boolean;
+
+  @property({ type: String, reflect: true, attribute: 'drawer-position' })
+  declare drawerPosition: EdgePosition | undefined;
+
+  @property({ attribute: false })
+  declare onDialogOpen?: (event: DialogOpenEvent) => void;
+
+  @property({ attribute: false })
+  declare onDialogClose?: (event: DialogCloseEvent) => void;
+
+  @property({ attribute: false })
+  declare onDialogCancel?: (event: DialogCancelEvent) => void;
+
+  private _focusTrap: FocusTrap | null = null;
+
+  constructor() {
+    super();
+    this.open = false;
+    this.heading = '';
+    this.description = '';
+    this.noCloseOnEscape = false;
+    this.noCloseOnBackdrop = false;
+    this.showCloseButton = false;
+    this.drawerPosition = undefined;
+  }
+
+  private _handleKeydown = (event: KeyboardEvent) => {
+    // Note: This handler is only active when dialog is open (registered in willUpdate)
+
+    if (event.key === 'Escape' && !this.noCloseOnEscape) {
+      event.preventDefault();
+      const cancelEvent = new CustomEvent<void>('dialog-cancel', { bubbles: true, composed: true });
+      this.dispatchEvent(cancelEvent);
+      this.onDialogCancel?.(cancelEvent);
+      this.open = false;
+      return;
+    }
+
+    // Prevent arrow keys from bubbling up to other components (like tabs)
+    // when dialog is open to maintain proper focus trap
+    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
+      const currentElement = document.activeElement as HTMLElement;
+      if (currentElement && isElementInContainer(currentElement, this.shadowRoot, this)) {
+        // Allow arrow key events for radio buttons
+        if (currentElement.tagName === 'INPUT' && (currentElement as HTMLInputElement).type === 'radio') {
+          return;
+        }
+        event.stopPropagation();
+      }
+    }
+  };
+
+  private _handleBackdropClick = (event: MouseEvent) => {
+    if (this.noCloseOnBackdrop || !this.open) return;
+
+    if (isBackdropClick(event, this.shadowRoot, '.dialog-container')) {
+      const cancelEvent = new CustomEvent<void>('dialog-cancel', { bubbles: true, composed: true });
+      this.dispatchEvent(cancelEvent);
+      this.onDialogCancel?.(cancelEvent);
+      this.open = false;
+    }
+  };
+
+  private _handleCloseButtonClick = (event: MouseEvent) => {
+    event.stopPropagation();
+    const closeEvent = new CustomEvent<void>('dialog-close', { bubbles: true, composed: true });
+    this.dispatchEvent(closeEvent);
+    this.onDialogClose?.(closeEvent);
+    this.open = false;
+  };
+
+  connectedCallback() {
+    super.connectedCallback();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    // Remove keydown listener if component is removed while open
+    if (this.open) {
+      document.removeEventListener('keydown', this._handleKeydown);
+      this._restoreBackgroundScroll();
+    }
+    // Deactivate focus trap if active
+    if (this._focusTrap) {
+      this._focusTrap.deactivate();
+      this._focusTrap = null;
+    }
+  }
+
+  willUpdate(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('open')) {
+      const previousOpen = changedProperties.get('open');
+      if (this.open && !previousOpen) {
+        // Opening: Add keydown listener for this dialog only
+        document.addEventListener('keydown', this._handleKeydown);
+        this._preventBackgroundScroll();
+        const openEvent = new CustomEvent<void>('dialog-open', { bubbles: true, composed: true });
+        this.dispatchEvent(openEvent);
+        this.onDialogOpen?.(openEvent);
+      } else if (!this.open && previousOpen) {
+        // Closing: Remove keydown listener for this dialog
+        document.removeEventListener('keydown', this._handleKeydown);
+        const closeEvent = new CustomEvent<void>('dialog-close', { bubbles: true, composed: true });
+        this.dispatchEvent(closeEvent);
+        this.onDialogClose?.(closeEvent);
+        this._restoreBackgroundScroll();
+        // Deactivate focus trap when closing
+        if (this._focusTrap) {
+          this._focusTrap.deactivate();
+          this._focusTrap = null;
+        }
+      }
+    }
+  }
+
+  private _preventBackgroundScroll() {
+    // Count of open dialogs for proper multiple dialog handling
+    const currentCount = parseInt(document.body.getAttribute('data-dialog-count') || '0', 10);
+
+    if (currentCount === 0) {
+      // First dialog - store original overflow and lock scroll
+      document.body.setAttribute('data-dialog-original-overflow',
+        document.body.style.overflow || '');
+      document.body.style.overflow = 'hidden';
+      document.body.setAttribute('data-dialog-scroll-locked', '');
+    }
+
+    document.body.setAttribute('data-dialog-count', (currentCount + 1).toString());
+  }
+
+  private _restoreBackgroundScroll() {
+    const currentCount = parseInt(document.body.getAttribute('data-dialog-count') || '0', 10);
+    const newCount = Math.max(0, currentCount - 1);
+
+    document.body.setAttribute('data-dialog-count', newCount.toString());
+
+    if (newCount === 0) {
+      // Last dialog closing - restore original overflow
+      const originalOverflow = document.body.getAttribute('data-dialog-original-overflow');
+      document.body.style.overflow = originalOverflow || '';
+      document.body.removeAttribute('data-dialog-original-overflow');
+      document.body.removeAttribute('data-dialog-scroll-locked');
+      document.body.removeAttribute('data-dialog-count');
+    }
+  }
+
+  updated(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('open') && this.open) {
+      const dialogContainer = this.shadowRoot?.querySelector('.dialog-container') as HTMLElement;
+
+      const activateFocusTrap = () => {
+        if (!dialogContainer) return;
+
+        // Get the light DOM container for slotted content (important for Drawer)
+        const lightDomContainer = (this.getRootNode() as ShadowRoot).host as HTMLElement || this;
+
+        // Create focus trap that works with both Shadow DOM and Light DOM
+        this._focusTrap = createFocusTrap([dialogContainer, lightDomContainer], {
+          escapeDeactivates: false, // We handle Escape ourselves
+          clickOutsideDeactivates: false, // We handle backdrop clicks ourselves
+          returnFocusOnDeactivate: true, // Auto-restore focus when deactivated
+          allowOutsideClick: true, // Allow clicks outside (we handle backdrop)
+          fallbackFocus: dialogContainer as HTMLElement, // Focus container if no focusable elements
+          // Enable Shadow DOM support
+          tabbableOptions: {
+            getShadowRoot: true
+          }
+        });
+
+        // Activate the focus trap
+        this._focusTrap.activate();
+      };
+
+      if (dialogContainer) {
+        const style = getComputedStyle(dialogContainer);
+        const transitionDuration = parseFloat(style.transitionDuration);
+        const transitionProperty = style.transitionProperty;
+
+        // Only wait for transition if it will actually occur
+        if (transitionDuration > 0 && transitionProperty !== 'none') {
+          dialogContainer.addEventListener('transitionend', activateFocusTrap, { once: true });
+        } else {
+          // No transition, activate after a microtask to allow DOM to settle
+          setTimeout(activateFocusTrap, 0);
+        }
+      } else {
+        // Fallback if container not found
+        setTimeout(activateFocusTrap, 0);
+      }
+    }
+  }
+
+  static styles = css`
+    :host {
+      display: block;
+      visibility: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: var(--ag-z-index-modal);
+    }
+
+    :host([open]) {
+      visibility: visible;
+    }
+
+    .dialog-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(50 50 50 / 60%);
+      opacity: 0;
+      transition: opacity var(--ag-motion-fast) ease;
+    }
+
+    :host([open]) .dialog-backdrop {
+      opacity: 1;
+    }
+
+    .dialog-container {
+      overflow-y: auto;
+      max-width: 90vw;
+      max-height: 90vh;
+      position: relative;
+      background: var(--ag-background-primary);
+      border: 1px solid var(--ag-border);
+      border-radius: var(--ag-radius-lg);
+      padding: var(--ag-space-6);
+      margin: var(--ag-space-4);
+      opacity: 0;
+      transform: translateY(10%);
+      transition: opacity var(--ag-motion-fast) ease, transform var(--ag-motion-slow) ease var(--ag-motion-fast);
+    }
+
+    :host([open]) .dialog-container {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Drawer positioning styles */
+    :host([drawer-position]) {
+      /* Host sizing for edge positions */
+    }
+
+    :host([drawer-position="start"]),
+    :host([drawer-position="end"]) {
+      height: 100%;
+    }
+
+    :host([drawer-position="top"]),
+    :host([drawer-position="bottom"]) {
+      width: 100%;
+    }
+
+    /* Base drawer container setup */
+    :host([drawer-position]) .dialog-container {
+      box-sizing: border-box;
+      position: fixed;
+      margin: initial;
+      border-radius: 0;
+    }
+
+    /* Vertical edge positions (start/end) sizing */
+    :host([drawer-position="start"]) .dialog-container,
+    :host([drawer-position="end"]) .dialog-container {
+      height: 100%;
+      width: var(--ag-drawer-width);
+      max-height: initial;
+    }
+
+    /* Horizontal edge positions (top/bottom) sizing */
+    :host([drawer-position="top"]) .dialog-container,
+    :host([drawer-position="bottom"]) .dialog-container {
+      height: var(--ag-sheet-height);
+      width: 100%;
+      max-width: initial;
+    }
+
+    /* Top position - closed state */
+    :host([drawer-position="top"]) .dialog-container {
+      top: 0;
+      transform: translateY(-100%);
+    }
+
+    /* Bottom position - closed state */
+    :host([drawer-position="bottom"]) .dialog-container {
+      bottom: 0;
+      transform: translateY(100%);
+    }
+
+    /* Start position - closed state */
+    :host([drawer-position="start"]) .dialog-container {
+      left: 0;
+      transform: translateX(-100%);
+    }
+
+    /* End position - closed state */
+    :host([drawer-position="end"]) .dialog-container {
+      right: 0;
+      transform: translateX(100%);
+    }
+
+    /* Open state - remove transforms to slide into view */
+    :host([drawer-position="top"][open]) .dialog-container,
+    :host([drawer-position="bottom"][open]) .dialog-container,
+    :host([drawer-position="start"][open]) .dialog-container,
+    :host([drawer-position="end"][open]) .dialog-container {
+      transform: none;
+    }
+
+    .dialog-header {
+      margin-bottom: var(--ag-space-4);
+    }
+
+    .dialog-header h2 {
+      margin: 0;
+      font-size: var(--ag-font-size-lg);
+      font-weight: var(--ag-font-weight-semibold);
+      color: var(--ag-text-primary);
+    }
+
+    .dialog-content {
+      margin-bottom: var(--ag-space-4);
+    }
+
+    .dialog-content:last-child {
+      margin-bottom: 0;
+    }
+
+    .dialog-content p {
+      margin: 0 0 var(--ag-space-4) 0;
+      color: var(--ag-text-secondary);
+    }
+
+    .dialog-footer {
+      margin-top: var(--ag-space-4);
+    }
+
+    .dialog-footer:empty {
+      margin-top: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dialog-backdrop,
+      .dialog-container {
+        transition: none;
+      }
+    }
+  `;
+
+  render() {
+    return html`
+      <div
+        class="dialog-backdrop"
+        part="ag-dialog-backdrop"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby=${this.heading ? 'dialog-heading' : nothing}
+        aria-label=${!this.heading ? 'Dialog' : nothing}
+        aria-describedby=${this.description ? 'dialog-description' : nothing}
+        @click=${this._handleBackdropClick}
+      >
+        <div class="dialog-container" part="ag-dialog-container">
+          <div class="dialog-header" part="ag-dialog-header">
+            <slot name="header">
+              ${this.heading ? html`<h2 id="dialog-heading" part="ag-dialog-heading">${this.heading}</h2>` : ''}
+            </slot>
+            ${this.showCloseButton ? html`
+              <ag-close-button
+                position="top-end"
+                label="Close dialog"
+                @close-button-click=${this._handleCloseButtonClick}
+              ></ag-close-button>
+            ` : ''}
+          </div>
+          <div class="dialog-content" part="ag-dialog-content">
+            ${this.description ? html`<p id="dialog-description">${this.description}</p>` : ''}
+            <slot></slot>
+          </div>
+          <div class="dialog-footer" part="ag-dialog-footer">
+            <slot name="footer"></slot>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
