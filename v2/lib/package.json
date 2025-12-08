@@ -594,8 +594,8 @@
       "import": "./dist/components/Flex/vue/index.js"
     },
     "./fieldset": {
-      "types": "./dist/components/Fieldset/Fieldset.d.ts",
-      "import": "./dist/components/Fieldset/Fieldset.js"
+      "types": "./dist/components/Fieldset/core/Fieldset.d.ts",
+      "import": "./dist/components/Fieldset/core/Fieldset.js"
     },
     "./fieldset/react": {
       "types": "./dist/components/Fieldset/react/ReactFieldset.d.ts",
