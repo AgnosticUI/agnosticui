@@ -33,6 +33,7 @@ import './components/ag/Link/core/Link';
 import './components/ag/Loader/core/Loader';
 import './components/ag/Mark/core/Mark';
 import './components/ag/Menu/core/Menu';
+import './components/ag/MessageBubble/core/MessageBubble';
 
 /**
  * An example element.
@@ -197,6 +198,32 @@ export class MyElement extends LitElement {
             </ag-menu>
           </ag-menu-button>
         </div>
+      </ag-flex-row>
+      <ag-flex-row class="responsive" wrap="wrap">
+        <ag-message-bubble
+          from="them"
+          message="Hey, are we still on for lunch?"
+          author="Sarah"
+          time="11:30 AM"
+        ></ag-message-bubble>
+        <ag-message-bubble
+          from="me"
+          message="Yes! Where should we go?"
+          author="Me"
+          time="11:32 AM"
+        ></ag-message-bubble>
+        <ag-message-bubble
+          from="them"
+          message="How about that new Italian place?"
+          author="Sarah"
+          time="11:33 AM"
+        ></ag-message-bubble>
+        <ag-message-bubble
+          from="me"
+          message="Sounds perfect. See you there at 12:30."
+          author="Me"
+          time="11:35 AM"
+        ></ag-message-bubble>
       </ag-flex-row>
       <ag-flex-row class="responsive" wrap="wrap">
         <ag-kbd>Ctrl</ag-kbd>

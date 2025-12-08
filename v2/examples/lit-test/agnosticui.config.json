@@ -284,6 +284,14 @@
       "files": [
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Menu/core"
       ]
+    },
+    "MessageBubble": {
+      "added": "2025-12-08T21:43:04.700Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/MessageBubble/core"
+      ]
     }
   },
   "ai": {
