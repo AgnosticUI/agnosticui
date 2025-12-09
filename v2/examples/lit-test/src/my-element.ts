@@ -40,6 +40,8 @@ import './components/ag/Progress/core/Progress';
 import './components/ag/ProgressRing/core/ProgressRing';
 import './components/ag/Radio/core/Radio';
 import './components/ag/Rating/core/Rating';
+import './components/ag/ScrollProgress/core/ScrollProgress';
+import './components/ag/ScrollToButton/core/ScrollToButton'
 
 /**
  * An example element.
@@ -194,6 +196,10 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
+      <div style="position: fixed; bottom: 1rem; right: 1rem;">
+        <ag-scroll-progress mode="dot-trail" dots="5"></ag-scroll-progress>
+      </div>
+      <ag-scroll-to-button label="Back to Top" showLabel scrollThreshold="300"></ag-scroll-to-button>
       <ag-header sticky>
         <a href="/" slot="logo" style="color: var(--ag-primary-text);">Brand</a>
         <nav>Navigation</nav>
