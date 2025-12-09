@@ -37,8 +37,9 @@ import './components/ag/MessageBubble/core/MessageBubble';
 import './components/ag/Pagination/core/Pagination';
 import './components/ag/Popover/core/Popover';
 import './components/ag/Progress/core/Progress';
-
-
+import './components/ag/ProgressRing/core/ProgressRing';
+import './components/ag/Radio/core/Radio';
+import './components/ag/Rating/core/Rating';
 
 /**
  * An example element.
@@ -205,6 +206,23 @@ export class MyElement extends LitElement {
         <div>Stacked Item 3.</div>
       </ag-stack>
       <ag-card class="card">Card</ag-card>
+      <ag-flex-row class="responsive">
+        <ag-fieldset legend="Personal Information" style="width: 100%;">
+          <ag-radio name="gender" value="male">Male</ag-radio>
+          <ag-radio name="gender" value="female">Female</ag-radio>
+          <ag-radio name="gender" value="other">Other</ag-radio>
+        </ag-fieldset>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-progress-ring value=${75}></ag-progress-ring>
+        <ag-progress-ring value=${50} max=${100} variant="success"></ag-progress-ring>
+        <ag-progress-ring value=${25} max=${100} size="large" variant="danger"></ag-progress-ring>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-rating value="4"></ag-rating>
+        <ag-rating value="2.5" precision="half" size="large"></ag-rating>
+        <ag-rating value="4" size="small" variant="success"></ag-rating>
+      </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-progress .value=${50} .max=${100} .label=${"Loading..."}></ag-progress>
       </ag-flex-row>
