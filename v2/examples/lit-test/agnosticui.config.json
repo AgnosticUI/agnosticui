@@ -357,6 +357,30 @@
       "files": [
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/ScrollToButton/core"
       ]
+    },
+    "Select": {
+      "added": "2025-12-09T03:17:03.876Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Select/core"
+      ]
+    },
+    "Sidebar": {
+      "added": "2025-12-09T03:37:12.783Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Sidebar/core"
+      ]
+    },
+    "SidebarNav": {
+      "added": "2025-12-09T03:44:46.980Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/SidebarNav/core"
+      ]
     }
   },
   "ai": {
