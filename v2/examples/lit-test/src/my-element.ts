@@ -41,7 +41,10 @@ import './components/ag/ProgressRing/core/ProgressRing';
 import './components/ag/Radio/core/Radio';
 import './components/ag/Rating/core/Rating';
 import './components/ag/ScrollProgress/core/ScrollProgress';
-import './components/ag/ScrollToButton/core/ScrollToButton'
+import './components/ag/ScrollToButton/core/ScrollToButton';
+import './components/ag/Sidebar/core/Sidebar';
+import './components/ag/SidebarNav/core/SidebarNav';
+import './components/ag/Select/core/Select';
 
 /**
  * An example element.
@@ -205,6 +208,106 @@ export class MyElement extends LitElement {
         <nav>Navigation</nav>
       </ag-header>
       <h1>Kitchen Sink :-)</h1>
+      <ag-flex-row class="responsive">
+        <div style="position: relative; display: flex; height: 500px; border: 1px solid var(--ag-border); border-radius: 0.5rem; overflow: hidden; width: 100%;">
+          <ag-sidebar show-mobile-toggle show-header-toggle variant="bordered" collapsed>
+            <h2 slot="ag-header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
+              My App
+            </h2>
+
+            <ag-sidebar-nav>
+              <ag-sidebar-nav-item>
+                <button type="button" class="nav-button active" aria-current="page">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                  </svg>
+                  <span class="nav-label">Dashboard</span>
+                </button>
+              </ag-sidebar-nav-item>
+
+              <ag-sidebar-nav-item>
+                <button type="button" class="nav-button">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  <span class="nav-label">Projects</span>
+                </button>
+              </ag-sidebar-nav-item>
+
+              <ag-sidebar-nav-item>
+                <button type="button" class="nav-button">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                  <span class="nav-label">Team</span>
+                </button>
+              </ag-sidebar-nav-item>
+
+              <ag-sidebar-nav-item>
+                <button type="button" class="nav-button nav-button-expanded" aria-expanded="false">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <span class="nav-label">Settings</span>
+                  <span class="chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                  </span>
+                </button>
+
+                <!-- Popover for COLLAPSED mode -->
+                <ag-popover class="nav-button-collapsed" placement="right-start" trigger-type="click" distance="8" arrow .showHeader=${false}>
+                  <button slot="trigger" type="button" class="nav-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    <span class="nav-label">Settings</span>
+                    <span class="collapsed-indicator">
+                      <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                  <ag-sidebar-nav-popover-submenu slot="content" class="popover-submenu">
+                    <a href="#" class="nav-sublink">Profile</a>
+                    <a href="#" class="nav-sublink">Billing</a>
+                    <a href="#" class="nav-sublink">Security</a>
+                    <a href="#" class="nav-sublink">Preferences</a>
+                  </ag-sidebar-nav-popover-submenu>
+                </ag-popover>
+
+                <!-- Inline submenu for EXPANDED mode -->
+                <ag-sidebar-nav-submenu>
+                  <a href="#" class="nav-sublink">Profile</a>
+                  <a href="#" class="nav-sublink">Billing</a>
+                  <a href="#" class="nav-sublink">Security</a>
+                  <a href="#" class="nav-sublink">Preferences</a>
+                </ag-sidebar-nav-submenu>
+              </ag-sidebar-nav-item>
+            </ag-sidebar-nav>
+
+            <div slot="ag-footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
+              © 2024 Company
+            </div>
+          </ag-sidebar>
+
+          <main style="flex: 1; padding: 2rem; overflow: auto; background: var(--ag-background-primary);">
+            <h2 style="margin-top: 0;">Sidebar Demo</h2>
+            <p>Click the header toggle button to expand/collapse the sidebar.</p>
+            <ul style="text-align: left;">
+              <li><strong>Collapsed mode:</strong> Icon-only rail. Click Settings icon to see submenu in popover.</li>
+              <li><strong>Expanded mode:</strong> Full labels visible. Click Settings to see chevron rotate and inline submenu.</li>
+            </ul>
+          </main>
+        </div>
+      </ag-flex-row>
       <ag-stack gap="1rem">
         <h2>Stack</h2>
         <div>Stacked Item 1.</div>
@@ -212,6 +315,16 @@ export class MyElement extends LitElement {
         <div>Stacked Item 3.</div>
       </ag-stack>
       <ag-card class="card">Card</ag-card>
+      <ag-flex-row class="responsive">
+        <ag-select label="Greatest Tennis Player" name="Tennis players">
+          <option value="">- Select a player -</option>
+          <option value="andre">Andre Agassi</option>
+          <option value="serena">Serena Williams</option>
+          <option value="roger">Roger Federer</option>
+          <option value="novak">Novak Djokovic</option>
+          <option value="rafa">Rafael Nadal</option>
+        </ag-select>
+      </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-fieldset legend="Personal Information" style="width: 100%;">
           <ag-radio name="gender" value="male">Male</ag-radio>
@@ -792,6 +905,129 @@ export class MyElement extends LitElement {
         --flex-direction: row;
         --flex-gap: var(--ag-space-4);
       }
+    }
+
+    /* Sidebar nav button styles */
+    .nav-button {
+      display: flex;
+      align-items: center;
+      gap: var(--ag-space-3);
+      position: relative;
+      padding: var(--ag-space-2) var(--ag-space-3);
+      border: none;
+      background: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      border-radius: var(--ag-radius-sm);
+      transition: background var(--ag-fx-duration-sm);
+      color: inherit;
+    }
+
+    .nav-button svg {
+      flex-shrink: 0;
+    }
+
+    .nav-button:hover {
+      background: var(--ag-background-secondary);
+    }
+
+    .nav-button.active {
+      background: var(--ag-primary-background);
+      color: var(--ag-primary-text);
+      font-weight: 500;
+    }
+
+    .nav-button .nav-label {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transition: opacity var(--ag-sidebar-transition-duration, 200ms) var(--ag-sidebar-transition-easing, ease-in-out);
+    }
+
+    /* Chevron rotation */
+    .nav-button .chevron {
+      transition: transform var(--ag-fx-duration-md);
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-button[aria-expanded="true"] .chevron {
+      transform: rotate(90deg);
+    }
+
+    /* Collapsed indicator for collapsed mode submenus */
+    .nav-button .collapsed-indicator {
+      display: none;
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: var(--ag-space-3);
+      height: var(--ag-space-3);
+    }
+
+    .nav-button .collapsed-indicator svg {
+      color: var(--ag-text-secondary);
+      transform: rotate(315deg);
+    }
+
+    /* Collapsed state */
+    ag-sidebar[collapsed] .nav-button {
+      width: auto;
+      padding: var(--ag-space-2);
+      justify-content: center;
+    }
+
+    ag-sidebar[collapsed] .nav-button .nav-label,
+    ag-sidebar[collapsed] .nav-button .chevron {
+      opacity: 0;
+      pointer-events: none;
+      display: none;
+    }
+
+    ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
+      display: block;
+    }
+
+    /* Submenu styles */
+    .nav-sublink {
+      display: block;
+      padding: var(--ag-space-2) var(--ag-space-3);
+      margin-block-end: var(--ag-space-1);
+      color: inherit;
+      text-decoration: none;
+      border-radius: var(--ag-radius-sm);
+      transition: background var(--ag-fx-duration-sm);
+    }
+
+    .nav-sublink:hover {
+      background: var(--ag-background-secondary);
+    }
+
+    .nav-sublink.active {
+      background: var(--ag-primary-background);
+      color: var(--ag-primary-text);
+      font-weight: 500;
+    }
+
+    /* Visibility rules for expanded vs collapsed mode */
+    ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
+    ag-sidebar:not([collapsed]) ag-popover,
+    ag-sidebar[collapsed] .nav-button-expanded,
+    ag-sidebar:not([collapsed]) .nav-button-collapsed {
+      display: none !important;
+    }
+
+    /* Fix popover centering in collapsed mode */
+    ag-sidebar[collapsed] ag-popover.nav-button-collapsed {
+      display: block !important;
+    }
+
+    /* Popover content padding */
+    .nav-button-collapsed::part(ag-popover-body) {
+      padding: var(--ag-space-1);
     }
   `
 }
