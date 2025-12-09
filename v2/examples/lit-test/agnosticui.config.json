@@ -405,6 +405,22 @@
       "files": [
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Spinner/core"
       ]
+    },
+    "Tabs": {
+      "added": "2025-12-09T16:50:49.020Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Tabs/core"
+      ]
+    },
+    "Timeline": {
+      "added": "2025-12-09T22:33:39.841Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Timeline/core"
+      ]
     }
   },
   "ai": {
@@ -418,6 +434,6 @@
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
     "version": "unknown",
-    "installed": "2025-12-08T23:31:43.759Z"
+    "installed": "2025-12-09T22:27:26.896Z"
   }
 }

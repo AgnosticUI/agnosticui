@@ -48,6 +48,8 @@ import './components/ag/Select/core/Select';
 import './components/ag/SkeletonLoader/core/SkeletonLoader';
 import './components/ag/Slider/core/Slider';
 import './components/ag/Spinner/core/Spinner';
+import './components/ag/Tabs/core/Tabs';
+import './components/ag/Timeline/core/Timeline';
 
 /**
  * An example element.
@@ -333,6 +335,62 @@ export class MyElement extends LitElement {
           <option value="novak">Novak Djokovic</option>
           <option value="rafa">Rafael Nadal</option>
         </ag-select>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-timeline orientation="horizontal">
+          <ag-timeline-item>
+            <div slot="ag-start">2023-01-01</div>
+            <div slot="ag-marker">
+              <ag-icon type="success" size="18">
+                <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </ag-icon>
+            </div>
+            <div slot="ag-end">Step 1 Completed</div>
+          </ag-timeline-item>
+          <ag-timeline-item>
+            <div slot="ag-start">2023-02-01</div>
+            <div slot="ag-marker">
+              <ag-icon type="info" size="18">
+                <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+              </ag-icon>
+            </div>
+            <div slot="ag-end">Step 2 In Progress</div>
+          </ag-timeline-item>
+          <ag-timeline-item>
+            <div slot="ag-start">2023-03-01</div>
+            <div slot="ag-marker">
+              <ag-icon type="warning" size="18">
+                <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+              </ag-icon>
+            </div>
+            <div slot="ag-end">Step 3 Failed</div>
+          </ag-timeline-item>
+        </ag-timeline>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-tabs id="my-tabs" aria-label="Basic tabs example">
+          <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
+          <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
+          <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
+          <ag-tab-panel slot="panel" panel="panel-1">
+            <p>Content for Tab 1</p>
+          </ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-2">
+            <p>Content for Tab 2</p>
+          </ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-3">
+            <p>Content for Tab 3</p>
+    </ag-tab-panel>
+  </ag-tabs>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <div class="full-width">

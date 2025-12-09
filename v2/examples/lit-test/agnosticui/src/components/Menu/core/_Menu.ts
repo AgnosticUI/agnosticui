@@ -251,15 +251,21 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
   }
 
   private _handleClickOutside(event: Event) {
+    console.log('_handleClickOutside called, _menuOpen:', this._menuOpen);
+    
     if (!this._menuOpen) return;
     
     const composedPath = event.composedPath();
+    console.log('Composed path includes this:', composedPath.includes(this));
+    console.log('Composed path:', composedPath);
     
     // Check if the click is within this component (including shadow DOM)
     if (composedPath.includes(this)) {
+      console.log('Click is inside, ignoring');
       return;
     }
     
+    console.log('Click is outside, closing menu');
     this._closeMenu();
   }
 
