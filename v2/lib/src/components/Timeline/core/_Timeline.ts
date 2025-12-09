@@ -218,8 +218,9 @@ export class AgTimelineItem extends LitElement {
     /* Horizontal layout - 3x3 grid */
     :host([orientation="horizontal"]) .item-container {
       grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-      grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+      grid-template-rows: auto auto auto;
       justify-items: center;
+      align-items: center;
     }
 
     /* Vertical layout - 3x3 grid */
