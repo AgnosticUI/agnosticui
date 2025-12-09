@@ -341,6 +341,22 @@
       "files": [
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Rating/core"
       ]
+    },
+    "ScrollProgress": {
+      "added": "2025-12-09T02:27:03.236Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/ScrollProgress/core"
+      ]
+    },
+    "ScrollToButton": {
+      "added": "2025-12-09T03:11:54.550Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/ScrollToButton/core"
+      ]
     }
   },
   "ai": {
