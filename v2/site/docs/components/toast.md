@@ -165,6 +165,14 @@ export default function ToastExamples() {
   const [showError, setShowError] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [showTopStart, setShowTopStart] = useState(false);
+  const [showTopEnd, setShowTopEnd] = useState(false);
+  const [showBottomStart, setShowBottomStart] = useState(false);
+  const [showBottomEnd, setShowBottomEnd] = useState(false);
+  const [showBordered, setShowBordered] = useState(false);
+  const [showBorderedLeft, setShowBorderedLeft] = useState(false);
+  const [showAutoDismiss, setShowAutoDismiss] = useState(false);
+  const [showNoAutoDismiss, setShowNoAutoDismiss] = useState(false);
 
   return (
     <section>
@@ -178,8 +186,8 @@ export default function ToastExamples() {
         </ReactToast>
 
         <button onClick={() => setShowSuccess(true)}>Show Success Toast</button>
-        <ReactToast 
-          open={showSuccess} 
+        <ReactToast
+          open={showSuccess}
           type="success"
           onToastClose={() => setShowSuccess(false)}
         >
@@ -187,8 +195,8 @@ export default function ToastExamples() {
         </ReactToast>
 
         <button onClick={() => setShowError(true)}>Show Error Toast</button>
-        <ReactToast 
-          open={showError} 
+        <ReactToast
+          open={showError}
           type="error"
           onToastClose={() => setShowError(false)}
         >
@@ -196,8 +204,8 @@ export default function ToastExamples() {
         </ReactToast>
 
         <button onClick={() => setShowWarning(true)}>Show Warning Toast</button>
-        <ReactToast 
-          open={showWarning} 
+        <ReactToast
+          open={showWarning}
           type="warning"
           onToastClose={() => setShowWarning(false)}
         >
@@ -205,12 +213,103 @@ export default function ToastExamples() {
         </ReactToast>
 
         <button onClick={() => setShowInfo(true)}>Show Info Toast</button>
-        <ReactToast 
-          open={showInfo} 
+        <ReactToast
+          open={showInfo}
           type="info"
           onToastClose={() => setShowInfo(false)}
         >
           New message received!
+        </ReactToast>
+      </div>
+
+      <div className="mbe4">
+        <h3>Positions</h3>
+      </div>
+      <div className="stacked">
+        <button onClick={() => setShowTopStart(true)}>Top Start</button>
+        <ReactToast
+          open={showTopStart}
+          position="top-start"
+          onToastClose={() => setShowTopStart(false)}
+        >
+          Toast at top-start
+        </ReactToast>
+
+        <button onClick={() => setShowTopEnd(true)}>Top End</button>
+        <ReactToast
+          open={showTopEnd}
+          position="top-end"
+          onToastClose={() => setShowTopEnd(false)}
+        >
+          Toast at top-end (default)
+        </ReactToast>
+
+        <button onClick={() => setShowBottomStart(true)}>Bottom Start</button>
+        <ReactToast
+          open={showBottomStart}
+          position="bottom-start"
+          onToastClose={() => setShowBottomStart(false)}
+        >
+          Toast at bottom-start
+        </ReactToast>
+
+        <button onClick={() => setShowBottomEnd(true)}>Bottom End</button>
+        <ReactToast
+          open={showBottomEnd}
+          position="bottom-end"
+          onToastClose={() => setShowBottomEnd(false)}
+        >
+          Toast at bottom-end
+        </ReactToast>
+      </div>
+
+      <div className="mbe4">
+        <h3>With Border Styles</h3>
+      </div>
+      <div className="stacked">
+        <button onClick={() => setShowBordered(true)}>Bordered Toast</button>
+        <ReactToast
+          open={showBordered}
+          type="info"
+          bordered
+          onToastClose={() => setShowBordered(false)}
+        >
+          Toast with border
+        </ReactToast>
+
+        <button onClick={() => setShowBorderedLeft(true)}>Left Border Toast</button>
+        <ReactToast
+          open={showBorderedLeft}
+          type="success"
+          borderedLeft
+          onToastClose={() => setShowBorderedLeft(false)}
+        >
+          Toast with left border accent
+        </ReactToast>
+      </div>
+
+      <div className="mbe4">
+        <h3>Auto-Dismiss Options</h3>
+      </div>
+      <div className="stacked">
+        <button onClick={() => setShowAutoDismiss(true)}>Auto-Dismiss (3s)</button>
+        <ReactToast
+          open={showAutoDismiss}
+          duration={3000}
+          type="info"
+          onToastClose={() => setShowAutoDismiss(false)}
+        >
+          This toast will auto-dismiss in 3 seconds
+        </ReactToast>
+
+        <button onClick={() => setShowNoAutoDismiss(true)}>No Auto-Dismiss</button>
+        <ReactToast
+          open={showNoAutoDismiss}
+          autoDismiss={false}
+          type="info"
+          onToastClose={() => setShowNoAutoDismiss(false)}
+        >
+          This toast will not auto-dismiss. Click X to close.
         </ReactToast>
       </div>
     </section>
@@ -220,124 +319,150 @@ export default function ToastExamples() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import 'agnosticui-core/toast';
-</script>
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/toast';
 
-<section>
-  <div class="mbe4">
-    <h3>Toast Types</h3>
-  </div>
-  <div class="stacked">
-    <button onclick="document.querySelector('#toast-default').open = true">
-      Show Default Toast
-    </button>
-    <ag-toast id="toast-default">
-      Default toast notification
-    </ag-toast>
+@customElement('toast-example')
+export class ToastExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    .stacked {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mbe4 {
+      margin-block-end: 1rem;
+    }
+  `;
 
-    <button onclick="document.querySelector('#toast-success').open = true">
-      Show Success Toast
-    </button>
-    <ag-toast id="toast-success" type="success">
-      Operation completed successfully!
-    </ag-toast>
+  firstUpdated() {
+    // Set up event listeners for toast buttons in the shadow DOM
+    const toastButtons = [
+      { buttonId: 'btn-default', toastId: 'toast-default' },
+      { buttonId: 'btn-success', toastId: 'toast-success' },
+      { buttonId: 'btn-error', toastId: 'toast-error' },
+      { buttonId: 'btn-warning', toastId: 'toast-warning' },
+      { buttonId: 'btn-info', toastId: 'toast-info' },
+      { buttonId: 'btn-top-start', toastId: 'toast-top-start' },
+      { buttonId: 'btn-top-end', toastId: 'toast-top-end' },
+      { buttonId: 'btn-bottom-start', toastId: 'toast-bottom-start' },
+      { buttonId: 'btn-bottom-end', toastId: 'toast-bottom-end' },
+      { buttonId: 'btn-bordered', toastId: 'toast-bordered' },
+      { buttonId: 'btn-bordered-left', toastId: 'toast-bordered-left' },
+      { buttonId: 'btn-auto-dismiss', toastId: 'toast-auto-dismiss' },
+      { buttonId: 'btn-no-auto-dismiss', toastId: 'toast-no-auto-dismiss' },
+    ];
 
-    <button onclick="document.querySelector('#toast-error').open = true">
-      Show Error Toast
-    </button>
-    <ag-toast id="toast-error" type="error">
-      An error occurred. Please try again.
-    </ag-toast>
+    toastButtons.forEach(({ buttonId, toastId }) => {
+      const button = this.shadowRoot?.querySelector(`#${buttonId}`);
+      const toast = this.shadowRoot?.querySelector(`#${toastId}`) as any;
+      button?.addEventListener('click', () => {
+        if (toast) {
+          toast.open = true;
+        }
+      });
+    });
+  }
 
-    <button onclick="document.querySelector('#toast-warning').open = true">
-      Show Warning Toast
-    </button>
-    <ag-toast id="toast-warning" type="warning">
-      Warning: This action cannot be undone.
-    </ag-toast>
+  render() {
+    return html`
+      <section>
+        <div class="mbe4">
+          <h3>Toast Types</h3>
+        </div>
+        <div class="stacked">
+          <button id="btn-default">Show Default Toast</button>
+          <ag-toast id="toast-default">
+            Default toast notification
+          </ag-toast>
 
-    <button onclick="document.querySelector('#toast-info').open = true">
-      Show Info Toast
-    </button>
-    <ag-toast id="toast-info" type="info">
-      New message received!
-    </ag-toast>
-  </div>
+          <button id="btn-success">Show Success Toast</button>
+          <ag-toast id="toast-success" type="success">
+            Operation completed successfully!
+          </ag-toast>
 
-  <div class="mbe4">
-    <h3>Positions</h3>
-  </div>
-  <div class="stacked">
-    <button onclick="document.querySelector('#toast-top-start').open = true">
-      Top Start
-    </button>
-    <ag-toast id="toast-top-start" position="top-start">
-      Toast at top-start
-    </ag-toast>
+          <button id="btn-error">Show Error Toast</button>
+          <ag-toast id="toast-error" type="error">
+            An error occurred. Please try again.
+          </ag-toast>
 
-    <button onclick="document.querySelector('#toast-top-end').open = true">
-      Top End
-    </button>
-    <ag-toast id="toast-top-end" position="top-end">
-      Toast at top-end (default)
-    </ag-toast>
+          <button id="btn-warning">Show Warning Toast</button>
+          <ag-toast id="toast-warning" type="warning">
+            Warning: This action cannot be undone.
+          </ag-toast>
 
-    <button onclick="document.querySelector('#toast-bottom-start').open = true">
-      Bottom Start
-    </button>
-    <ag-toast id="toast-bottom-start" position="bottom-start">
-      Toast at bottom-start
-    </ag-toast>
+          <button id="btn-info">Show Info Toast</button>
+          <ag-toast id="toast-info" type="info">
+            New message received!
+          </ag-toast>
+        </div>
 
-    <button onclick="document.querySelector('#toast-bottom-end').open = true">
-      Bottom End
-    </button>
-    <ag-toast id="toast-bottom-end" position="bottom-end">
-      Toast at bottom-end
-    </ag-toast>
-  </div>
+        <div class="mbe4">
+          <h3>Positions</h3>
+        </div>
+        <div class="stacked">
+          <button id="btn-top-start">Top Start</button>
+          <ag-toast id="toast-top-start" position="top-start">
+            Toast at top-start
+          </ag-toast>
 
-  <div class="mbe4">
-    <h3>With Border Styles</h3>
-  </div>
-  <div class="stacked">
-    <button onclick="document.querySelector('#toast-bordered').open = true">
-      Bordered Toast
-    </button>
-    <ag-toast id="toast-bordered" type="info" bordered>
-      Toast with border
-    </ag-toast>
+          <button id="btn-top-end">Top End</button>
+          <ag-toast id="toast-top-end" position="top-end">
+            Toast at top-end (default)
+          </ag-toast>
 
-    <button onclick="document.querySelector('#toast-bordered-left').open = true">
-      Left Border Toast
-    </button>
-    <ag-toast id="toast-bordered-left" type="success" borderedLeft>
-      Toast with left border accent
-    </ag-toast>
-  </div>
+          <button id="btn-bottom-start">Bottom Start</button>
+          <ag-toast id="toast-bottom-start" position="bottom-start">
+            Toast at bottom-start
+          </ag-toast>
 
-  <div class="mbe4">
-    <h3>Auto-Dismiss Options</h3>
-  </div>
-  <div class="stacked">
-    <button onclick="document.querySelector('#toast-auto-dismiss').open = true">
-      Auto-Dismiss (3s)
-    </button>
-    <ag-toast id="toast-auto-dismiss" duration="3000" type="info">
-      This toast will auto-dismiss in 3 seconds
-    </ag-toast>
+          <button id="btn-bottom-end">Bottom End</button>
+          <ag-toast id="toast-bottom-end" position="bottom-end">
+            Toast at bottom-end
+          </ag-toast>
+        </div>
 
-    <button onclick="document.querySelector('#toast-no-auto-dismiss').open = true">
-      No Auto-Dismiss
-    </button>
-    <ag-toast id="toast-no-auto-dismiss" auto-dismiss="false" type="info">
-      This toast will not auto-dismiss. Click X to close.
-    </ag-toast>
-  </div>
-</section>
+        <div class="mbe4">
+          <h3>With Border Styles</h3>
+        </div>
+        <div class="stacked">
+          <button id="btn-bordered">Bordered Toast</button>
+          <ag-toast id="toast-bordered" type="info" bordered>
+            Toast with border
+          </ag-toast>
+
+          <button id="btn-bordered-left">Left Border Toast</button>
+          <ag-toast id="toast-bordered-left" type="success" borderedLeft>
+            Toast with left border accent
+          </ag-toast>
+        </div>
+
+        <div class="mbe4">
+          <h3>Auto-Dismiss Options</h3>
+        </div>
+        <div class="stacked">
+          <button id="btn-auto-dismiss">Auto-Dismiss (3s)</button>
+          <ag-toast id="toast-auto-dismiss" duration="3000" type="info">
+            This toast will auto-dismiss in 3 seconds
+          </ag-toast>
+
+          <button id="btn-no-auto-dismiss">No Auto-Dismiss</button>
+          <ag-toast id="toast-no-auto-dismiss" auto-dismiss="false" type="info">
+            This toast will not auto-dismiss. Click X to close.
+          </ag-toast>
+        </div>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using toast components within a custom element's shadow DOM, you must set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using inline `onclick` attributes, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props
