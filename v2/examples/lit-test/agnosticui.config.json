@@ -381,6 +381,30 @@
       "files": [
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/SidebarNav/core"
       ]
+    },
+    "SkeletonLoader": {
+      "added": "2025-12-09T16:10:32.857Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/SkeletonLoader/core"
+      ]
+    },
+    "Slider": {
+      "added": "2025-12-09T16:22:40.441Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Slider/core"
+      ]
+    },
+    "Spinner": {
+      "added": "2025-12-09T16:43:50.818Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Spinner/core"
+      ]
     }
   },
   "ai": {

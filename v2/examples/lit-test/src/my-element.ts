@@ -45,6 +45,9 @@ import './components/ag/ScrollToButton/core/ScrollToButton';
 import './components/ag/Sidebar/core/Sidebar';
 import './components/ag/SidebarNav/core/SidebarNav';
 import './components/ag/Select/core/Select';
+import './components/ag/SkeletonLoader/core/SkeletonLoader';
+import './components/ag/Slider/core/Slider';
+import './components/ag/Spinner/core/Spinner';
 
 /**
  * An example element.
@@ -315,6 +318,12 @@ export class MyElement extends LitElement {
         <div>Stacked Item 3.</div>
       </ag-stack>
       <ag-card class="card">Card</ag-card>
+      <div class="full-width">
+        <ag-spinner style="--spinner-color: var(--ag-primary);" size="small"></ag-spinner>
+        <ag-spinner></ag-spinner>
+        <ag-spinner style="--spinner-color: var(--ag-warning);" size="large"></ag-spinner>
+        <ag-spinner style="--spinner-color: var(--ag-danger);" size="xlarge"></ag-spinner>
+      </div>
       <ag-flex-row class="responsive">
         <ag-select label="Greatest Tennis Player" name="Tennis players">
           <option value="">- Select a player -</option>
@@ -326,11 +335,24 @@ export class MyElement extends LitElement {
         </ag-select>
       </ag-flex-row>
       <ag-flex-row class="responsive">
+        <div class="full-width">
+          <ag-slider id="slider1" label="Slider" min="0" max="100" step="1" value="50"></ag-slider>
+          <ag-slider id="slider2" dual label="Slider" min="0" max="1000" step="1" value="[200,800]"></ag-slider>
+        </div>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
         <ag-fieldset legend="Personal Information" style="width: 100%;">
           <ag-radio name="gender" value="male">Male</ag-radio>
           <ag-radio name="gender" value="female">Female</ag-radio>
           <ag-radio name="gender" value="other">Other</ag-radio>
         </ag-fieldset>
+      </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-skeleton variant="rectangular" width="100px" height="40px"></ag-skeleton>
+        <ag-skeleton variant="rounded" width="100px" height="40px"></ag-skeleton>
+        <ag-skeleton variant="circular" width="40px" height="40px"></ag-skeleton>
+        <ag-skeleton variant="circular" width="60px" height="60px"></ag-skeleton>
+        <ag-skeleton variant="text" width="200px"></ag-skeleton>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-progress-ring value=${75}></ag-progress-ring>
@@ -898,6 +920,9 @@ export class MyElement extends LitElement {
     .responsive {
       --flex-direction: column;
       --flex-gap: var(--ag-space-2);
+      width: 100%;
+    }
+    .full-width {
       width: 100%;
     }
     @media (min-width: 768px) {
