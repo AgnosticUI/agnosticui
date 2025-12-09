@@ -50,6 +50,7 @@ import './components/ag/Slider/core/Slider';
 import './components/ag/Spinner/core/Spinner';
 import './components/ag/Tabs/core/Tabs';
 import './components/ag/Timeline/core/Timeline';
+import './components/ag/Toast/core/Toast';
 
 /**
  * An example element.
@@ -135,6 +136,23 @@ export class MyElement extends LitElement {
       console.log('Hourly rate: $', target.value);
     });
 
+    // Toast button event handlers
+    const toastButtons = [
+      { buttonId: 'toast-top-start-btn', toastId: 'toast-top-start' },
+      { buttonId: 'toast-top-end-btn', toastId: 'toast-top-end' },
+      { buttonId: 'toast-bottom-start-btn', toastId: 'toast-bottom-start' },
+      { buttonId: 'toast-bottom-end-btn', toastId: 'toast-bottom-end' }
+    ];
+
+    toastButtons.forEach(({ buttonId, toastId }) => {
+      const button = this.shadowRoot?.querySelector(`#${buttonId}`);
+      const toast = this.shadowRoot?.querySelector(`#${toastId}`) as any;
+      button?.addEventListener('click', () => {
+        if (toast) {
+          toast.open = true;
+        }
+      });
+    });
 
     // Debug the menu
     // const menuButton = this.shadowRoot?.querySelector('#my-menu') as any;
@@ -318,6 +336,35 @@ export class MyElement extends LitElement {
         <div>Stacked Item 1.</div>
         <div>Stacked Item 2.</div>
         <div>Stacked Item 3.</div>
+      </ag-stack>
+      <ag-stack gap="1rem">
+        <ag-button id="toast-top-start-btn" variant="primary">
+          Top Start
+        </ag-button>
+        <ag-toast id="toast-top-start" position="top-start">
+          Toast at top-start
+        </ag-toast>
+
+        <ag-button id="toast-top-end-btn" variant="primary">
+          Top End
+        </ag-button>
+        <ag-toast id="toast-top-end" position="top-end">
+          Toast at top-end (default)
+        </ag-toast>
+
+        <ag-button id="toast-bottom-start-btn" variant="primary">
+          Bottom Start
+        </ag-button>
+        <ag-toast id="toast-bottom-start" position="bottom-start">
+          Toast at bottom-start
+        </ag-toast>
+
+        <ag-button id="toast-bottom-end-btn" variant="primary">
+          Bottom End
+        </ag-button>
+        <ag-toast id="toast-bottom-end" position="bottom-end">
+          Toast at bottom-end
+        </ag-toast>
       </ag-stack>
       <ag-card class="card">Card</ag-card>
       <div class="full-width">
