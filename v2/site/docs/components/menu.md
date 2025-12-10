@@ -248,100 +248,124 @@ export default function MenuExample() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import "agnosticui-core/menu";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/menu';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const menuButton = document.querySelector("#my-menu");
+@customElement('menu-example')
+export class MenuExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  `;
 
-    menuButton?.addEventListener("menu-open", (e) => {
-      console.log("Menu opened, open:", e.detail.open);
+  firstUpdated() {
+    // Set up event listeners for menu components in the shadow DOM
+    const menuButton = this.shadowRoot?.querySelector('#my-menu');
+
+    menuButton?.addEventListener('menu-open', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log('Menu opened, open:', customEvent.detail.open);
     });
 
-    menuButton?.addEventListener("menu-close", (e) => {
-      console.log("Menu closed, open:", e.detail.open);
+    menuButton?.addEventListener('menu-close', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log('Menu closed, open:', customEvent.detail.open);
     });
 
-    const menuItems = document.querySelectorAll("ag-menu-item");
-    menuItems.forEach(item => {
-      item.addEventListener("menu-select", (e) => {
-        console.log("Selected:", e.detail.value);
+    const menuItems = this.shadowRoot?.querySelectorAll('ag-menu-item');
+    menuItems?.forEach((item) => {
+      item.addEventListener('menu-select', (e: Event) => {
+        const customEvent = e as CustomEvent;
+        console.log('Selected:', customEvent.detail.value);
       });
     });
 
-    const menuButton2 = document.querySelector("#callback-menu");
+    const menuButton2 = this.shadowRoot?.querySelector('#callback-menu') as any;
     if (menuButton2) {
-      menuButton2.onMenuOpen = (e) => {
-        console.log("Menu opened via callback, open:", e.detail.open);
+      menuButton2.onMenuOpen = (e: CustomEvent) => {
+        console.log('Menu opened via callback, open:', e.detail.open);
       };
-      menuButton2.onMenuClose = (e) => {
-        console.log("Menu closed via callback, open:", e.detail.open);
+      menuButton2.onMenuClose = (e: CustomEvent) => {
+        console.log('Menu closed via callback, open:', e.detail.open);
       };
     }
-  });
-</script>
+  }
 
-<section>
-  <ag-menu-button id="my-menu" menu-variant="chevron" size="md">
-    Menu
-    <ag-menu slot="menu" aria-label="Menu options">
-      <ag-menu-item value="edit">Edit</ag-menu-item>
-      <ag-menu-item value="copy">Copy</ag-menu-item>
-      <ag-menu-item value="paste">Paste</ag-menu-item>
-      <ag-menu-separator></ag-menu-separator>
-      <ag-menu-item value="delete">Delete</ag-menu-item>
-    </ag-menu>
-  </ag-menu-button>
+  render() {
+    return html`
+      <section>
+        <ag-menu-button id="my-menu" menu-variant="chevron" size="md">
+          Menu
+          <ag-menu slot="menu" aria-label="Menu options">
+            <ag-menu-item value="edit">Edit</ag-menu-item>
+            <ag-menu-item value="copy">Copy</ag-menu-item>
+            <ag-menu-item value="paste">Paste</ag-menu-item>
+            <ag-menu-separator></ag-menu-separator>
+            <ag-menu-item value="delete">Delete</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
 
-  <ag-menu-button menu-variant="button" size="md" button-variant="primary">
-    Actions
-    <ag-menu slot="menu" aria-label="Action menu">
-      <ag-menu-item value="new">New File</ag-menu-item>
-      <ag-menu-item value="open">Open File</ag-menu-item>
-      <ag-menu-item value="save">Save</ag-menu-item>
-      <ag-menu-separator></ag-menu-separator>
-      <ag-menu-item value="exit">Exit</ag-menu-item>
-    </ag-menu>
-  </ag-menu-button>
+        <ag-menu-button menu-variant="button" size="md" button-variant="primary">
+          Actions
+          <ag-menu slot="menu" aria-label="Action menu">
+            <ag-menu-item value="new">New File</ag-menu-item>
+            <ag-menu-item value="open">Open File</ag-menu-item>
+            <ag-menu-item value="save">Save</ag-menu-item>
+            <ag-menu-separator></ag-menu-separator>
+            <ag-menu-item value="exit">Exit</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
 
-  <ag-menu-button menu-variant="icon" size="md" ghost unicode="⋮" aria-label="More options">
-    <ag-menu slot="menu" aria-label="More options menu">
-      <ag-menu-item value="settings">Settings</ag-menu-item>
-      <ag-menu-item value="profile">Profile</ag-menu-item>
-      <ag-menu-separator></ag-menu-separator>
-      <ag-menu-item value="logout">Logout</ag-menu-item>
-    </ag-menu>
-  </ag-menu-button>
+        <ag-menu-button menu-variant="icon" size="md" ghost unicode="⋮" aria-label="More options">
+          <ag-menu slot="menu" aria-label="More options menu">
+            <ag-menu-item value="settings">Settings</ag-menu-item>
+            <ag-menu-item value="profile">Profile</ag-menu-item>
+            <ag-menu-separator></ag-menu-separator>
+            <ag-menu-item value="logout">Logout</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
 
-  <ag-menu-button menu-variant="chevron" size="md" menu-align="right">
-    Options
-    <ag-menu slot="menu" aria-label="Right-aligned menu">
-      <ag-menu-item value="option1">Option 1</ag-menu-item>
-      <ag-menu-item value="option2">Option 2</ag-menu-item>
-      <ag-menu-item value="option3">Option 3</ag-menu-item>
-    </ag-menu>
-  </ag-menu-button>
+        <ag-menu-button menu-variant="chevron" size="md" menu-align="right">
+          Options
+          <ag-menu slot="menu" aria-label="Right-aligned menu">
+            <ag-menu-item value="option1">Option 1</ag-menu-item>
+            <ag-menu-item value="option2">Option 2</ag-menu-item>
+            <ag-menu-item value="option3">Option 3</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
 
-  <ag-menu-button menu-variant="chevron" size="md">
-    Navigation
-    <ag-menu slot="menu" aria-label="Navigation menu">
-      <ag-menu-item value="home" href="#home">Home</ag-menu-item>
-      <ag-menu-item value="about" href="#about">About</ag-menu-item>
-      <ag-menu-item value="contact" href="#contact">Contact</ag-menu-item>
-    </ag-menu>
-  </ag-menu-button>
+        <ag-menu-button menu-variant="chevron" size="md">
+          Navigation
+          <ag-menu slot="menu" aria-label="Navigation menu">
+            <ag-menu-item value="home" href="#home">Home</ag-menu-item>
+            <ag-menu-item value="about" href="#about">About</ag-menu-item>
+            <ag-menu-item value="contact" href="#contact">Contact</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
 
-  <ag-menu-button menu-variant="button" size="md" button-variant="primary">
-    Mixed States
-    <ag-menu slot="menu" aria-label="Menu with disabled items">
-      <ag-menu-item value="enabled1">Enabled Item</ag-menu-item>
-      <ag-menu-item value="disabled1" disabled>Disabled Item</ag-menu-item>
-      <ag-menu-item value="enabled2">Another Enabled</ag-menu-item>
-    </ag-menu>
-  </ag-menu-button>
-</section>
+        <ag-menu-button menu-variant="button" size="md" button-variant="primary">
+          Mixed States
+          <ag-menu slot="menu" aria-label="Menu with disabled items">
+            <ag-menu-item value="enabled1">Enabled Item</ag-menu-item>
+            <ag-menu-item value="disabled1" disabled>Disabled Item</ag-menu-item>
+            <ag-menu-item value="enabled2">Another Enabled</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using menu components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props

@@ -166,61 +166,85 @@ export default function RemovableTagExample() {
 
 ::: details Lit (Web Components)
 
-```html
-<script type="module">
-  import "agnosticui-core/tag";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement, state } from 'lit/decorators.js';
+import 'agnosticui-core/tag';
 
-  const tags = [
+interface TagItem {
+  id: number;
+  label: string;
+  variant: string;
+}
+
+@customElement('tag-example')
+export class TagExample extends LitElement {
+  @state() private tags: TagItem[] = [
     { id: 1, label: 'Design', variant: 'primary' },
     { id: 2, label: 'Development', variant: 'success' },
     { id: 3, label: 'Bug', variant: 'error' },
     { id: 4, label: 'Feature', variant: 'info' },
   ];
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.tag-list');
-
-    function renderTags() {
-      container.innerHTML = '';
-      tags.forEach(tag => {
-        const tagEl = document.createElement('ag-tag');
-        tagEl.variant = tag.variant;
-        tagEl.removable = true;
-        tagEl.textContent = tag.label;
-        tagEl.className = 'tag-item';
-
-        // Using addEventListener pattern
-        tagEl.addEventListener('tag-remove', (e) => {
-          console.log('Removing tag:', tag.label, 'variant:', e.detail.variant);
-          const index = tags.findIndex(t => t.id === tag.id);
-          if (index > -1) {
-            tags.splice(index, 1);
-            renderTags();
-          }
-        });
-
-        container.appendChild(tagEl);
-      });
+  static styles = css`
+    :host {
+      display: block;
     }
+    .tag-list {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tag-item {
+      margin: 0.25rem;
+    }
+  `;
 
-    renderTags();
-  });
-</script>
-
-<div class="tag-list"></div>
-
-<style>
-  .tag-list {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+  firstUpdated() {
+    // Set up event listeners for dynamically created tags in the shadow DOM
+    this.updateTagListeners();
   }
 
-  .tag-item {
-    margin: 0.25rem;
+  updated() {
+    // Update listeners after each re-render
+    this.updateTagListeners();
   }
-</style>
+
+  private updateTagListeners() {
+    const tagElements = this.shadowRoot?.querySelectorAll('ag-tag');
+    tagElements?.forEach((tagEl, index) => {
+      // Remove old listener before adding new one
+      const clonedTagEl = tagEl.cloneNode(true);
+      tagEl.replaceWith(clonedTagEl);
+
+      clonedTagEl.addEventListener('tag-remove', (e: Event) => {
+        const customEvent = e as CustomEvent;
+        const tag = this.tags[index];
+        console.log('Removing tag:', tag.label, 'variant:', customEvent.detail.variant);
+        this.tags = this.tags.filter(t => t.id !== tag.id);
+      });
+    });
+  }
+
+  render() {
+    return html`
+      <div class="tag-list">
+        ${this.tags.map((tag) => html`
+          <ag-tag
+            class="tag-item"
+            .variant=${tag.variant}
+            .removable=${true}
+          >
+            ${tag.label}
+          </ag-tag>
+        `)}
+      </div>
+    `;
+  }
+}
 ```
+
+**Note:** When using tag components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()` and `updated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead. For dynamically rendered components, you may need to update event listeners after each render.
 
 :::
 

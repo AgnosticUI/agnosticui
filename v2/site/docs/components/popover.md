@@ -192,75 +192,98 @@ export default function PopoverExample() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import 'agnosticui-core/popover';
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/popover';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const popover = document.querySelector('#event-popover');
+@customElement('popover-example')
+export class PopoverExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  `;
 
-    popover?.addEventListener('show', (e) => {
-      console.log('Popover shown', e.detail);
+  firstUpdated() {
+    // Set up event listeners for popover in the shadow DOM
+    const popover = this.shadowRoot?.querySelector('#event-popover');
+
+    popover?.addEventListener('show', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log('Popover shown', customEvent.detail);
     });
 
-    popover?.addEventListener('hide', (e) => {
-      console.log('Popover hidden', e.detail);
+    popover?.addEventListener('hide', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log('Popover hidden', customEvent.detail);
     });
-  });
-</script>
+  }
 
-<section>
-  <ag-popover>
-    <button slot="trigger">Open Popover</button>
-    <span slot="title">Popover Title</span>
-    <div slot="content">
-      <p>This is the popover content.</p>
-    </div>
-  </ag-popover>
+  render() {
+    return html`
+      <section>
+        <ag-popover>
+          <button slot="trigger">Open Popover</button>
+          <span slot="title">Popover Title</span>
+          <div slot="content">
+            <p>This is the popover content.</p>
+          </div>
+        </ag-popover>
 
-  <ag-popover trigger-type="hover">
-    <button slot="trigger">Hover Me</button>
-    <span slot="title">Hover Popover</span>
-    <div slot="content">
-      <p>This popover opens on hover.</p>
-    </div>
-  </ag-popover>
+        <ag-popover trigger-type="hover">
+          <button slot="trigger">Hover Me</button>
+          <span slot="title">Hover Popover</span>
+          <div slot="content">
+            <p>This popover opens on hover.</p>
+          </div>
+        </ag-popover>
 
-  <ag-popover placement="right">
-    <button slot="trigger">Right Placement</button>
-    <span slot="title">Positioned Right</span>
-    <div slot="content">
-      <p>This popover appears to the right of the trigger.</p>
-    </div>
-  </ag-popover>
+        <ag-popover placement="right">
+          <button slot="trigger">Right Placement</button>
+          <span slot="title">Positioned Right</span>
+          <div slot="content">
+            <p>This popover appears to the right of the trigger.</p>
+          </div>
+        </ag-popover>
 
-  <ag-popover>
-    <button slot="trigger">User Profile</button>
-    <span slot="title">John Doe</span>
-    <div slot="content">
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-        <div>User profile information...</div>
-        <button>View Profile</button>
-      </div>
-    </div>
-  </ag-popover>
+        <ag-popover>
+          <button slot="trigger">User Profile</button>
+          <span slot="title">John Doe</span>
+          <div slot="content">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div>User profile information...</div>
+              <button>View Profile</button>
+            </div>
+          </div>
+        </ag-popover>
 
-  <ag-popover id="event-popover">
-    <button slot="trigger">With Events</button>
-    <span slot="title">Event Tracking</span>
-    <div slot="content">
-      <p>Events fire when popover shows and hides.</p>
-    </div>
-  </ag-popover>
-  <ag-popover show-close-button="false">
-    <button slot="trigger">No Close Button</button>
-    <span slot="title">Title Only</span>
-    <div slot="content">
-      <p>Click outside to close this popover.</p>
-    </div>
-  </ag-popover>
-</section>
+        <ag-popover id="event-popover">
+          <button slot="trigger">With Events</button>
+          <span slot="title">Event Tracking</span>
+          <div slot="content">
+            <p>Events fire when popover shows and hides.</p>
+          </div>
+        </ag-popover>
+        <ag-popover show-close-button="false">
+          <button slot="trigger">No Close Button</button>
+          <span slot="title">Title Only</span>
+          <div slot="content">
+            <p>Click outside to close this popover.</p>
+          </div>
+        </ag-popover>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using popover components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props

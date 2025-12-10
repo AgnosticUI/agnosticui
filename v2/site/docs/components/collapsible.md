@@ -136,51 +136,74 @@ export default function CollapsibleExample() {
 
 ::: details Lit (Web Components)
 
-```html
-<script type="module">
-  import "agnosticui-core/collapsible";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/collapsible';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("ag-collapsible").forEach(el => {
-      el.addEventListener("toggle", (event) => {
-        console.log("Collapsible toggled:", event.detail.open);
+@customElement('collapsible-example')
+export class CollapsibleExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  `;
+
+  firstUpdated() {
+    // Set up event listeners for collapsible elements in the shadow DOM
+    const collapsibles = this.shadowRoot?.querySelectorAll('ag-collapsible');
+    collapsibles?.forEach((el) => {
+      el.addEventListener('toggle', (event: Event) => {
+        const customEvent = event as CustomEvent;
+        console.log('Collapsible toggled:', customEvent.detail.open);
       });
     });
-  });
-</script>
+  }
 
-<section>
-  <ag-collapsible>
-    <span slot="summary">Click to expand</span>
-    <p>This is the collapsible content that can be shown or hidden.</p>
-  </ag-collapsible>
+  render() {
+    return html`
+      <section>
+        <ag-collapsible>
+          <span slot="summary">Click to expand</span>
+          <p>This is the collapsible content that can be shown or hidden.</p>
+        </ag-collapsible>
 
-  <ag-collapsible open>
-    <span slot="summary">Already expanded</span>
-    <p>This collapsible starts in an open state.</p>
-  </ag-collapsible>
+        <ag-collapsible open>
+          <span slot="summary">Already expanded</span>
+          <p>This collapsible starts in an open state.</p>
+        </ag-collapsible>
 
-  <ag-collapsible bordered shadow>
-    <span slot="summary">Bordered with shadow</span>
-    <p>This collapsible has both border and shadow styling.</p>
-  </ag-collapsible>
+        <ag-collapsible bordered shadow>
+          <span slot="summary">Bordered with shadow</span>
+          <p>This collapsible has both border and shadow styling.</p>
+        </ag-collapsible>
 
-  <ag-collapsible use-x>
-    <span slot="summary">X Indicator</span>
-    <p>Plus icon that transforms into an X when opened</p>
-  </ag-collapsible>
+        <ag-collapsible use-x>
+          <span slot="summary">X Indicator</span>
+          <p>Plus icon that transforms into an X when opened</p>
+        </ag-collapsible>
 
-  <ag-collapsible use-minus>
-    <span slot="summary">Plus/Minus Indicator</span>
-    <p>Plus icon that changes to minus when opened</p>
-  </ag-collapsible>
+        <ag-collapsible use-minus>
+          <span slot="summary">Plus/Minus Indicator</span>
+          <p>Plus icon that changes to minus when opened</p>
+        </ag-collapsible>
 
-  <ag-collapsible no-indicator>
-    <span slot="summary">No indicator</span>
-    <p>This collapsible has no indicator icon at all.</p>
-  </ag-collapsible>
-</section>
+        <ag-collapsible no-indicator>
+          <span slot="summary">No indicator</span>
+          <p>This collapsible has no indicator icon at all.</p>
+        </ag-collapsible>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using collapsible components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 
 :::
 

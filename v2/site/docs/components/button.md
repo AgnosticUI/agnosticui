@@ -121,48 +121,70 @@ export default function ButtonExample() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import "agnosticui-core/button";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement, state } from 'lit/decorators.js';
+import 'agnosticui-core/button';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleButton = document.querySelector("#toggle-button");
-    let isPressed = false;
+@customElement('button-example')
+export class ButtonExample extends LitElement {
+  @state() private isPressed = false;
 
-    toggleButton?.addEventListener("toggle", (event) => {
-      isPressed = event.detail.pressed;
-      console.log("Button toggled:", isPressed);
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  `;
+
+  firstUpdated() {
+    // Set up event listener for toggle button in the shadow DOM
+    const toggleButton = this.shadowRoot?.querySelector('#toggle-button');
+    toggleButton?.addEventListener('toggle', (event: Event) => {
+      const customEvent = event as CustomEvent;
+      this.isPressed = customEvent.detail.pressed;
+      console.log('Button toggled:', this.isPressed);
     });
-  });
-</script>
+  }
 
-<section>
-  <ag-button>Click me</ag-button>
+  render() {
+    return html`
+      <section>
+        <ag-button>Click me</ag-button>
 
-  <ag-button variant="primary">Primary</ag-button>
-  <ag-button variant="success">Success</ag-button>
-  <ag-button variant="danger">Danger</ag-button>
-  <ag-button variant="monochrome">Monochrome</ag-button>
+        <ag-button variant="primary">Primary</ag-button>
+        <ag-button variant="success">Success</ag-button>
+        <ag-button variant="danger">Danger</ag-button>
+        <ag-button variant="monochrome">Monochrome</ag-button>
 
-  <ag-button size="sm">Small</ag-button>
-  <ag-button size="lg">Large</ag-button>
+        <ag-button size="sm">Small</ag-button>
+        <ag-button size="lg">Large</ag-button>
 
-  <ag-button shape="rounded">Rounded</ag-button>
-  <ag-button shape="capsule">Capsule</ag-button>
-  <ag-button shape="circle">C</ag-button>
+        <ag-button shape="rounded">Rounded</ag-button>
+        <ag-button shape="capsule">Capsule</ag-button>
+        <ag-button shape="circle">C</ag-button>
 
-  <ag-button bordered variant="primary">Bordered</ag-button>
-  <ag-button ghost variant="primary">Ghost</ag-button>
-  <ag-button link>Link Style</ag-button>
+        <ag-button bordered variant="primary">Bordered</ag-button>
+        <ag-button ghost variant="primary">Ghost</ag-button>
+        <ag-button link>Link Style</ag-button>
 
-  <ag-button disabled>Disabled</ag-button>
-  <ag-button loading>Loading</ag-button>
+        <ag-button disabled>Disabled</ag-button>
+        <ag-button loading>Loading</ag-button>
 
-  <ag-button id="toggle-button" toggle>Toggle Me</ag-button>
+        <ag-button id="toggle-button" toggle>Toggle Me</ag-button>
 
-  <ag-button type="submit" variant="primary">Submit</ag-button>
-</section>
+        <ag-button type="submit" variant="primary">Submit</ag-button>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using button components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props

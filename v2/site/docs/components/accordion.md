@@ -185,81 +185,102 @@ export default function AccordionExample() {
 
 ::: details Lit (Web Components)
 
-```html
-<script type="module">
-  import "agnosticui-core/accordion";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/accordion';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const items = document.querySelectorAll("ag-accordion-item");
+@customElement('accordion-example')
+export class AccordionExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  `;
 
-    items.forEach((item) => {
-      item.addEventListener("toggle", (event) => {
-        console.log("Accordion toggled:", event.detail.open);
+  firstUpdated() {
+    // Set up event listeners for accordion items in the shadow DOM
+    const items = this.shadowRoot?.querySelectorAll('ag-accordion-item');
+    items?.forEach((item) => {
+      item.addEventListener('toggle', (event: Event) => {
+        const customEvent = event as CustomEvent;
+        console.log('Accordion toggled:', customEvent.detail.open);
       });
     });
-  });
-</script>
+  }
 
-<section>
-  <ag-accordion>
-    <ag-accordion-item>
-      <span slot="header">Accordion Item 1</span>
-      <div slot="content">
-        <p>This is the content of the first accordion item.</p>
-      </div>
-    </ag-accordion-item>
-    <ag-accordion-item>
-      <span slot="header">Accordion Item 2</span>
-      <div slot="content">
-        <p>This is the content of the second accordion item.</p>
-      </div>
-    </ag-accordion-item>
-    <ag-accordion-item>
-      <span slot="header">Accordion Item 3</span>
-      <div slot="content">
-        <p>This is the content of the third accordion item.</p>
-      </div>
-    </ag-accordion-item>
-  </ag-accordion>
+  render() {
+    return html`
+      <section>
+        <ag-accordion>
+          <ag-accordion-item>
+            <span slot="header">Accordion Item 1</span>
+            <div slot="content">
+              <p>This is the content of the first accordion item.</p>
+            </div>
+          </ag-accordion-item>
+          <ag-accordion-item>
+            <span slot="header">Accordion Item 2</span>
+            <div slot="content">
+              <p>This is the content of the second accordion item.</p>
+            </div>
+          </ag-accordion-item>
+          <ag-accordion-item>
+            <span slot="header">Accordion Item 3</span>
+            <div slot="content">
+              <p>This is the content of the third accordion item.</p>
+            </div>
+          </ag-accordion-item>
+        </ag-accordion>
 
-  <ag-accordion>
-    <ag-accordion-item use-chevron bordered>
-      <span slot="header">Features</span>
-      <div slot="content">
-        <ul>
-          <li>Accessible by default</li>
-          <li>Keyboard navigation support</li>
-          <li>Customizable heading levels</li>
-        </ul>
-      </div>
-    </ag-accordion-item>
-    <ag-accordion-item use-chevron bordered open>
-      <span slot="header">Open by Default</span>
-      <div slot="content">
-        <p>This item starts in the open state.</p>
-      </div>
-    </ag-accordion-item>
-  </ag-accordion>
+        <ag-accordion>
+          <ag-accordion-item use-chevron bordered>
+            <span slot="header">Features</span>
+            <div slot="content">
+              <ul>
+                <li>Accessible by default</li>
+                <li>Keyboard navigation support</li>
+                <li>Customizable heading levels</li>
+              </ul>
+            </div>
+          </ag-accordion-item>
+          <ag-accordion-item use-chevron bordered open>
+            <span slot="header">Open by Default</span>
+            <div slot="content">
+              <p>This item starts in the open state.</p>
+            </div>
+          </ag-accordion-item>
+        </ag-accordion>
 
-  <ag-accordion>
-    <ag-accordion-item id="x-indicator-item" use-x>
-      <span slot="header">X Indicator</span>
-      <div slot="content">
-        <p>Plus icon that transforms into an X when opened</p>
-      </div>
-    </ag-accordion-item>
-  </ag-accordion>
+        <ag-accordion>
+          <ag-accordion-item id="x-indicator-item" use-x>
+            <span slot="header">X Indicator</span>
+            <div slot="content">
+              <p>Plus icon that transforms into an X when opened</p>
+            </div>
+          </ag-accordion-item>
+        </ag-accordion>
 
-  <ag-accordion>
-    <ag-accordion-item id="minus-indicator-item" use-minus>
-      <span slot="header">Plus/Minus Indicator</span>
-      <div slot="content">
-        <p>Plus icon that changes to minus when opened</p>
-      </div>
-    </ag-accordion-item>
-  </ag-accordion>
-</section>
+        <ag-accordion>
+          <ag-accordion-item id="minus-indicator-item" use-minus>
+            <span slot="header">Plus/Minus Indicator</span>
+            <div slot="content">
+              <p>Plus icon that changes to minus when opened</p>
+            </div>
+          </ag-accordion-item>
+        </ag-accordion>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using accordion components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) using `this.shadowRoot.querySelectorAll()` instead of `document.addEventListener('DOMContentLoaded', ...)`.
 
 :::
 

@@ -243,82 +243,96 @@ export default function SidebarExample() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import 'agnosticui-core/sidebar';
-  import 'agnosticui-core/sidebar-nav';
-  import 'agnosticui-core/popover';
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/sidebar';
+import 'agnosticui-core/sidebar-nav';
+import 'agnosticui-core/popover';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const sidebar = document.querySelector('#sidebar');
+@customElement('sidebar-example')
+export class SidebarExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+  `;
 
-    // Handle submenu toggle
-    document.querySelectorAll('.nav-button-expanded').forEach(button => {
-      button.addEventListener('click', (e) => {
-        const navItem = e.currentTarget.closest("ag-sidebar-nav-item");
-        const submenu = navItem?.querySelector("ag-sidebar-nav-submenu");
+  firstUpdated() {
+    // Set up event listeners for submenu toggles in the shadow DOM
+    const buttons = this.shadowRoot?.querySelectorAll('.nav-button-expanded');
+    buttons?.forEach((button) => {
+      button.addEventListener('click', (e: Event) => {
+        const navItem = (e.currentTarget as HTMLElement).closest('ag-sidebar-nav-item');
+        const submenu = navItem?.querySelector('ag-sidebar-nav-submenu');
 
         if (!submenu) return;
 
-        const isExpanded = button.getAttribute("aria-expanded") === "true";
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
         if (isExpanded) {
-          button.setAttribute("aria-expanded", "false");
-          submenu.removeAttribute("open");
+          button.setAttribute('aria-expanded', 'false');
+          submenu.removeAttribute('open');
         } else {
-          button.setAttribute("aria-expanded", "true");
-          submenu.setAttribute("open", "");
+          button.setAttribute('aria-expanded', 'true');
+          submenu.setAttribute('open', '');
         }
       });
     });
-  });
-</script>
+  }
 
-<div style="display: flex; height: 100vh;">
-  <ag-sidebar
-    id="sidebar"
-    show-mobile-toggle
-  >
-    <h2 slot="ag-header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
-      Dashboard
-    </h2>
-
-    <ag-sidebar-nav>
-      <ag-sidebar-nav-item>
-        <button type="button" class="nav-button active" aria-current="page">
-          <svg><!-- Home icon --></svg>
-          <span class="nav-label">Dashboard</span>
-        </button>
-      </ag-sidebar-nav-item>
-
-      <ag-sidebar-nav-item>
-        <button
-          type="button"
-          class="nav-button nav-button-expanded"
-          aria-expanded="false"
+  render() {
+    return html`
+      <div style="display: flex; height: 100vh;">
+        <ag-sidebar
+          id="sidebar"
+          show-mobile-toggle
         >
-          <svg><!-- Folder icon --></svg>
-          <span class="nav-label">Projects</span>
-          <span class="chevron"><!-- ChevronRight icon --></span>
-        </button>
+          <h2 slot="ag-header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
+            Dashboard
+          </h2>
 
-        <ag-sidebar-nav-submenu>
-          <a class="nav-sublink" href="#">Project Alpha</a>
-          <a class="nav-sublink" href="#">Project Beta</a>
-        </ag-sidebar-nav-submenu>
-      </ag-sidebar-nav-item>
-    </ag-sidebar-nav>
+          <ag-sidebar-nav>
+            <ag-sidebar-nav-item>
+              <button type="button" class="nav-button active" aria-current="page">
+                <svg><!-- Home icon --></svg>
+                <span class="nav-label">Dashboard</span>
+              </button>
+            </ag-sidebar-nav-item>
 
-    <div slot="ag-footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
-      © 2024 Company
-    </div>
-  </ag-sidebar>
+            <ag-sidebar-nav-item>
+              <button
+                type="button"
+                class="nav-button nav-button-expanded"
+                aria-expanded="false"
+              >
+                <svg><!-- Folder icon --></svg>
+                <span class="nav-label">Projects</span>
+                <span class="chevron"><!-- ChevronRight icon --></span>
+              </button>
 
-  <main style="flex: 1; padding: 2rem;">
-    <h1>Main Content</h1>
-  </main>
-</div>
+              <ag-sidebar-nav-submenu>
+                <a class="nav-sublink" href="#">Project Alpha</a>
+                <a class="nav-sublink" href="#">Project Beta</a>
+              </ag-sidebar-nav-submenu>
+            </ag-sidebar-nav-item>
+          </ag-sidebar-nav>
+
+          <div slot="ag-footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
+            © 2024 Company
+          </div>
+        </ag-sidebar>
+
+        <main style="flex: 1; padding: 2rem;">
+          <h1>Main Content</h1>
+        </main>
+      </div>
+    `;
+  }
+}
 ```
+
+**Note:** When using sidebar components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props

@@ -199,104 +199,128 @@ export default function IconButtonExample() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import "agnosticui-core/icon-button";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement, state } from 'lit/decorators.js';
+import 'agnosticui-core/icon-button';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const favoriteBtn = document.querySelector("#favorite-toggle");
-    let isFavorite = false;
+@customElement('icon-button-example')
+export class IconButtonExample extends LitElement {
+  @state() private isFavorite = false;
 
-    favoriteBtn?.addEventListener("click", () => {
-      isFavorite = !isFavorite;
-      favoriteBtn.pressed = isFavorite;
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  `;
 
-      const heartIcon = favoriteBtn.querySelector("svg");
+  firstUpdated() {
+    // Set up event listeners for icon buttons in the shadow DOM
+    const favoriteBtn = this.shadowRoot?.querySelector('#favorite-toggle') as any;
+
+    favoriteBtn?.addEventListener('click', () => {
+      this.isFavorite = !this.isFavorite;
+      favoriteBtn.pressed = this.isFavorite;
+
+      const heartIcon = favoriteBtn.querySelector('svg');
       if (heartIcon) {
-        heartIcon.setAttribute("fill", isFavorite ? "currentColor" : "none");
+        heartIcon.setAttribute('fill', this.isFavorite ? 'currentColor' : 'none');
       }
     });
 
-    const actionBtn = document.querySelector("#action-btn");
-    actionBtn?.addEventListener("icon-button-click", (e) => {
-      console.log("Button clicked:", e.detail.label, e.detail.pressed);
+    const actionBtn = this.shadowRoot?.querySelector('#action-btn');
+    actionBtn?.addEventListener('icon-button-click', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log('Button clicked:', customEvent.detail.label, customEvent.detail.pressed);
     });
-    actionBtn?.addEventListener("icon-button-activate", (e) => {
-      console.log("Button activated via keyboard:", e.detail.label);
+    actionBtn?.addEventListener('icon-button-activate', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log('Button activated via keyboard:', customEvent.detail.label);
     });
 
-    const callbackBtn = document.querySelector("#callback-btn");
+    const callbackBtn = this.shadowRoot?.querySelector('#callback-btn') as any;
     if (callbackBtn) {
-      callbackBtn.onIconButtonClick = (e) => {
-        console.log("Callback click:", e.detail.label);
+      callbackBtn.onIconButtonClick = (e: CustomEvent) => {
+        console.log('Callback click:', e.detail.label);
       };
     }
-  });
-</script>
+  }
 
-<section>
-  <ag-icon-button label="Settings">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-      <circle cx="12" cy="12" r="3"></circle>
-      <path d="M12 1v6m0 6v6M5.6 5.6l4.2 4.2m4.2 4.2l4.2 4.2M1 12h6m6 0h6M5.6 18.4l4.2-4.2m4.2-4.2l4.2-4.2"></path>
-    </svg>
-  </ag-icon-button>
+  render() {
+    return html`
+      <section>
+        <ag-icon-button label="Settings">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 1v6m0 6v6M5.6 5.6l4.2 4.2m4.2 4.2l4.2 4.2M1 12h6m6 0h6M5.6 18.4l4.2-4.2m4.2-4.2l4.2-4.2"></path>
+          </svg>
+        </ag-icon-button>
 
-  <ag-icon-button label="Delete" variant="danger">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-      <path d="M3 6h18M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-    </svg>
-  </ag-icon-button>
-  <ag-icon-button label="Save" variant="primary">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-      <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
-    </svg>
-  </ag-icon-button>
+        <ag-icon-button label="Delete" variant="danger">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+            <path d="M3 6h18M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+          </svg>
+        </ag-icon-button>
+        <ag-icon-button label="Save" variant="primary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+          </svg>
+        </ag-icon-button>
 
-  <ag-icon-button label="Small" size="sm">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
-      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-    </svg>
-  </ag-icon-button>
-  <ag-icon-button label="Large" size="lg">
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor">
-      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-    </svg>
-  </ag-icon-button>
+        <ag-icon-button label="Small" size="sm">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+          </svg>
+        </ag-icon-button>
+        <ag-icon-button label="Large" size="lg">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+          </svg>
+        </ag-icon-button>
 
-  <ag-icon-button id="favorite-toggle" label="Toggle favorite">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-    </svg>
-  </ag-icon-button>
+        <ag-icon-button id="favorite-toggle" label="Toggle favorite">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+          </svg>
+        </ag-icon-button>
 
-  <ag-icon-button label="Close" unicode="×"></ag-icon-button>
+        <ag-icon-button label="Close" unicode="×"></ag-icon-button>
 
-  <ag-icon-button label="Disabled" disabled>
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-      <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
-    </svg>
-  </ag-icon-button>
-  <ag-icon-button label="Loading" loading>
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-      <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
-    </svg>
-  </ag-icon-button>
+        <ag-icon-button label="Disabled" disabled>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+          </svg>
+        </ag-icon-button>
+        <ag-icon-button label="Loading" loading>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+            <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
+          </svg>
+        </ag-icon-button>
 
-  <ag-icon-button id="action-btn" label="Action button">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-    </svg>
-  </ag-icon-button>
+        <ag-icon-button id="action-btn" label="Action button">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+          </svg>
+        </ag-icon-button>
 
-  <ag-icon-button id="callback-btn" label="Callback button">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-      <circle cx="12" cy="12" r="10"></circle>
-      <path d="M12 8v8m-4-4h8"></path>
-    </svg>
-  </ag-icon-button>
-</section>
+        <ag-icon-button id="callback-btn" label="Callback button">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 8v8m-4-4h8"></path>
+          </svg>
+        </ag-icon-button>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using icon-button components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props

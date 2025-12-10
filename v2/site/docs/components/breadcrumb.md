@@ -142,48 +142,71 @@ export default function BreadcrumbExamples() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import 'agnosticui-core/breadcrumb';
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/breadcrumb';
 
-  const items = [
+@customElement('breadcrumb-example')
+export class BreadcrumbExample extends LitElement {
+  private items = [
     { label: 'Home', href: '#' },
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
     { label: 'Products', href: '#products' },
   ];
 
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("ag-breadcrumb").forEach(breadcrumb => {
-      breadcrumb.items = items;
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  `;
 
-      breadcrumb.addEventListener("breadcrumb-click", (event) => {
+  firstUpdated() {
+    // Set up event listeners for breadcrumb items in the shadow DOM
+    const breadcrumbs = this.shadowRoot?.querySelectorAll('ag-breadcrumb');
+    breadcrumbs?.forEach((breadcrumb: any) => {
+      breadcrumb.items = this.items;
+
+      breadcrumb.addEventListener('breadcrumb-click', (event: Event) => {
+        const customEvent = event as CustomEvent;
         console.log(
-          `ag-breadcrumb -> breadcrumb-click -- label: ${event.detail.item.label}, href: ${event.detail.item.href}`
+          `ag-breadcrumb -> breadcrumb-click -- label: ${customEvent.detail.item.label}, href: ${customEvent.detail.item.href}`
         );
       });
     });
-  });
-</script>
+  }
 
-<section>
-  <div class="mbe4">
-    <div class="mbe2">
-      <h3>Default</h3>
-    </div>
-    <ag-breadcrumb></ag-breadcrumb>
-  </div>
-  <div class="mbe4">
-    <div class="mbe2">
-      <h3>Types</h3>
-    </div>
-    <ag-breadcrumb type="slash"></ag-breadcrumb>
-    <ag-breadcrumb type="bullet"></ag-breadcrumb>
-    <ag-breadcrumb type="arrow"></ag-breadcrumb>
-    <ag-breadcrumb primary type="arrow"></ag-breadcrumb>
-  </div>
-</section>
+  render() {
+    return html`
+      <section>
+        <div class="mbe4">
+          <div class="mbe2">
+            <h3>Default</h3>
+          </div>
+          <ag-breadcrumb></ag-breadcrumb>
+        </div>
+        <div class="mbe4">
+          <div class="mbe2">
+            <h3>Types</h3>
+          </div>
+          <ag-breadcrumb type="slash"></ag-breadcrumb>
+          <ag-breadcrumb type="bullet"></ag-breadcrumb>
+          <ag-breadcrumb type="arrow"></ag-breadcrumb>
+          <ag-breadcrumb primary type="arrow"></ag-breadcrumb>
+        </div>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using breadcrumb components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props

@@ -184,67 +184,89 @@ export default function TabsExample() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import 'agnosticui-core/tabs';
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/tabs';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelector('#my-tabs');
+@customElement('tabs-example')
+export class TabsExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  `;
 
-    tabs?.addEventListener('tab-change', (e) => {
-      console.log(`Tab changed from ${e.detail.previousTab} to ${e.detail.activeTab}`);
+  firstUpdated() {
+    // Set up event listener for tabs in the shadow DOM
+    const tabs = this.shadowRoot?.querySelector('#my-tabs');
+
+    tabs?.addEventListener('tab-change', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log(`Tab changed from ${customEvent.detail.previousTab} to ${customEvent.detail.activeTab}`);
     });
-  });
-</script>
+  }
 
-<section>
-  <!-- Basic tabs -->
-  <ag-tabs id="my-tabs" aria-label="Basic tabs example">
-    <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
-    <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
-    <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
-    <ag-tab-panel slot="panel" panel="panel-1">
-      <p>Content for Tab 1</p>
-    </ag-tab-panel>
-    <ag-tab-panel slot="panel" panel="panel-2">
-      <p>Content for Tab 2</p>
-    </ag-tab-panel>
-    <ag-tab-panel slot="panel" panel="panel-3">
-      <p>Content for Tab 3</p>
-    </ag-tab-panel>
-  </ag-tabs>
+  render() {
+    return html`
+      <section>
+        <!-- Basic tabs -->
+        <ag-tabs id="my-tabs" aria-label="Basic tabs example">
+          <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
+          <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
+          <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
+          <ag-tab-panel slot="panel" panel="panel-1">
+            <p>Content for Tab 1</p>
+          </ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-2">
+            <p>Content for Tab 2</p>
+          </ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-3">
+            <p>Content for Tab 3</p>
+          </ag-tab-panel>
+        </ag-tabs>
 
-  <!-- Vertical orientation -->
-  <ag-tabs orientation="vertical" aria-label="Vertical tabs">
-    <ag-tab slot="tab" panel="panel-1">Profile</ag-tab>
-    <ag-tab slot="tab" panel="panel-2">Settings</ag-tab>
-    <ag-tab slot="tab" panel="panel-3">Notifications</ag-tab>
-    <ag-tab-panel slot="panel" panel="panel-1">Profile content</ag-tab-panel>
-    <ag-tab-panel slot="panel" panel="panel-2">Settings content</ag-tab-panel>
-    <ag-tab-panel slot="panel" panel="panel-3">Notifications content</ag-tab-panel>
-  </ag-tabs>
+        <!-- Vertical orientation -->
+        <ag-tabs orientation="vertical" aria-label="Vertical tabs">
+          <ag-tab slot="tab" panel="panel-1">Profile</ag-tab>
+          <ag-tab slot="tab" panel="panel-2">Settings</ag-tab>
+          <ag-tab slot="tab" panel="panel-3">Notifications</ag-tab>
+          <ag-tab-panel slot="panel" panel="panel-1">Profile content</ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-2">Settings content</ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-3">Notifications content</ag-tab-panel>
+        </ag-tabs>
 
-  <!-- Disabled tab -->
-  <ag-tabs aria-label="Tabs with disabled tab">
-    <ag-tab slot="tab" panel="panel-1">Available</ag-tab>
-    <ag-tab slot="tab" panel="panel-2" disabled>Disabled</ag-tab>
-    <ag-tab slot="tab" panel="panel-3">Also Available</ag-tab>
-    <ag-tab-panel slot="panel" panel="panel-1">Available content</ag-tab-panel>
-    <ag-tab-panel slot="panel" panel="panel-2">Disabled content</ag-tab-panel>
-    <ag-tab-panel slot="panel" panel="panel-3">Also available content</ag-tab-panel>
-  </ag-tabs>
+        <!-- Disabled tab -->
+        <ag-tabs aria-label="Tabs with disabled tab">
+          <ag-tab slot="tab" panel="panel-1">Available</ag-tab>
+          <ag-tab slot="tab" panel="panel-2" disabled>Disabled</ag-tab>
+          <ag-tab slot="tab" panel="panel-3">Also Available</ag-tab>
+          <ag-tab-panel slot="panel" panel="panel-1">Available content</ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-2">Disabled content</ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-3">Also available content</ag-tab-panel>
+        </ag-tabs>
 
-  <!-- Automatic activation -->
-  <ag-tabs activation="automatic" aria-label="Automatic tabs">
-    <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
-    <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
-    <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
-    <ag-tab-panel slot="panel" panel="panel-1">Content 1</ag-tab-panel>
-    <ag-tab-panel slot="panel" panel="panel-2">Content 2</ag-tab-panel>
-    <ag-tab-panel slot="panel" panel="panel-3">Content 3</ag-tab-panel>
-  </ag-tabs>
-</section>
+        <!-- Automatic activation -->
+        <ag-tabs activation="automatic" aria-label="Automatic tabs">
+          <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
+          <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
+          <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
+          <ag-tab-panel slot="panel" panel="panel-1">Content 1</ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-2">Content 2</ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-3">Content 3</ag-tab-panel>
+        </ag-tabs>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using tabs components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props
