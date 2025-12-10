@@ -51,6 +51,8 @@ import './components/ag/Spinner/core/Spinner';
 import './components/ag/Tabs/core/Tabs';
 import './components/ag/Timeline/core/Timeline';
 import './components/ag/Toast/core/Toast';
+import './components/ag/Toggle/core/Toggle';
+import './components/ag/Tooltip/core/Tooltip';
 
 /**
  * An example element.
@@ -152,6 +154,19 @@ export class MyElement extends LitElement {
           toast.open = true;
         }
       });
+    });
+
+    // Toggle event handlers
+    const notificationsToggle = this.shadowRoot?.querySelector('#toggle-notifications');
+    notificationsToggle?.addEventListener('toggle-change', (event: Event) => {
+      const customEvent = event as CustomEvent;
+      console.log('Notifications:', customEvent.detail.checked);
+    });
+
+    const darkModeToggle = this.shadowRoot?.querySelector('#toggle-dark-mode');
+    darkModeToggle?.addEventListener('toggle-change', (event: Event) => {
+      const customEvent = event as CustomEvent;
+      console.log('Dark mode:', customEvent.detail.checked);
     });
 
     // Debug the menu
@@ -469,6 +484,48 @@ export class MyElement extends LitElement {
         <ag-rating value="2.5" precision="half" size="large"></ag-rating>
         <ag-rating value="4" size="small" variant="success"></ag-rating>
       </ag-flex-row>
+      <ag-flex-row class="responsive">
+        <ag-toggle id="toggle-notifications" label="Enable notifications"></ag-toggle>
+        <ag-toggle id="toggle-dark-mode" label="Dark mode" size="lg"></ag-toggle>
+        <ag-toggle label="Success variant" variant="success" checked></ag-toggle>
+        <ag-toggle label="Danger variant" variant="danger" checked></ag-toggle>
+      </ag-flex-row>
+      <div class="full-width" style="display: flex; justify-content: center; align-items: center; min-height: 300px; position: relative;">
+        <div style="display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: 1fr auto 1fr; gap: 3rem; place-items: center;">
+          <!-- 12 o'clock - Top -->
+          <div style="grid-column: 2; grid-row: 1;">
+            <ag-tooltip content="12 o'clock - Top" placement="top">
+              <ag-button variant="primary">🕛 Top</ag-button>
+            </ag-tooltip>
+          </div>
+
+          <!-- 3 o'clock - Right -->
+          <div style="grid-column: 3; grid-row: 2;">
+            <ag-tooltip content="3 o'clock - Right" placement="right">
+              <ag-button variant="primary">🕒 Right</ag-button>
+            </ag-tooltip>
+          </div>
+
+          <!-- Center clock face -->
+          <div style="grid-column: 2; grid-row: 2; width: 120px; height: 120px; border: 3px solid var(--ag-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+            🕐
+          </div>
+
+          <!-- 6 o'clock - Bottom -->
+          <div style="grid-column: 2; grid-row: 3;">
+            <ag-tooltip content="6 o'clock - Bottom" placement="bottom">
+              <ag-button variant="primary">🕕 Bottom</ag-button>
+            </ag-tooltip>
+          </div>
+
+          <!-- 9 o'clock - Left -->
+          <div style="grid-column: 1; grid-row: 2;">
+            <ag-tooltip content="9 o'clock - Left" placement="left">
+              <ag-button variant="primary">🕘 Left</ag-button>
+            </ag-tooltip>
+          </div>
+        </div>
+      </div>
       <ag-flex-row class="responsive">
         <ag-progress .value=${50} .max=${100} .label=${"Loading..."}></ag-progress>
       </ag-flex-row>

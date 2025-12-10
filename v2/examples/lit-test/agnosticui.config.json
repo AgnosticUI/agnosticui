@@ -430,6 +430,22 @@
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Toast/core",
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/shared/CloseButton"
       ]
+    },
+    "Toggle": {
+      "added": "2025-12-09T23:19:00.264Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Toggle/core"
+      ]
+    },
+    "Tooltip": {
+      "added": "2025-12-09T23:19:37.946Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Tooltip/core"
+      ]
     }
   },
   "ai": {
