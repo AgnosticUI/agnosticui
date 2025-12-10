@@ -162,70 +162,93 @@ export default function ToggleExample() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import 'agnosticui-core/toggle';
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement, state } from 'lit/decorators.js';
+import 'agnosticui-core/toggle';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // Controlled toggle
-    const darkModeToggle = document.querySelector('#dark-mode-toggle');
-    let isDarkMode = false;
+@customElement('toggle-example')
+export class ToggleExample extends LitElement {
+  @state() private isDarkMode = false;
+  @state() private form = { newsletter: false };
 
-    darkModeToggle?.addEventListener('toggle-change', (event) => {
-      isDarkMode = event.detail.checked;
-      console.log('Checked:', isDarkMode);
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  `;
+
+  firstUpdated() {
+    // Set up event listeners for toggles in the shadow DOM
+    const darkModeToggle = this.shadowRoot?.querySelector('#dark-mode-toggle') as any;
+    darkModeToggle?.addEventListener('toggle-change', (event: CustomEvent) => {
+      this.isDarkMode = event.detail.checked;
+      console.log('Dark mode:', this.isDarkMode);
     });
 
-    // Form integration
-    const newsletterToggle = document.querySelector('#newsletter-toggle');
-    let form = { newsletter: false };
-
-    newsletterToggle?.addEventListener('toggle-change', (event) => {
-      form.newsletter = event.detail.checked;
+    const newsletterToggle = this.shadowRoot?.querySelector('#newsletter-toggle') as any;
+    newsletterToggle?.addEventListener('toggle-change', (event: CustomEvent) => {
+      this.form.newsletter = event.detail.checked;
       console.log('Form data:', {
         name: event.detail.name,
         value: event.detail.value,
         checked: event.detail.checked,
       });
     });
-  });
-</script>
+  }
 
-<section>
-  <!-- Basic toggle -->
-  <ag-toggle label="Enable notifications"></ag-toggle>
+  render() {
+    return html`
+      <section>
+        <!-- Basic toggle -->
+        <ag-toggle label="Enable notifications"></ag-toggle>
 
-  <!-- Controlled toggle -->
-  <ag-toggle id="dark-mode-toggle" label="Dark mode"></ag-toggle>
+        <!-- Controlled toggle -->
+        <ag-toggle id="dark-mode-toggle" label="Dark mode"></ag-toggle>
 
-  <!-- Different sizes -->
-  <ag-toggle label="Small toggle" size="sm"></ag-toggle>
-  <ag-toggle label="Large toggle" size="lg"></ag-toggle>
+        <!-- Different sizes -->
+        <ag-toggle label="Small toggle" size="sm"></ag-toggle>
+        <ag-toggle label="Large toggle" size="lg"></ag-toggle>
 
-  <!-- Variants -->
-  <ag-toggle
-    label="Success variant"
-    variant="success"
-    checked
-  ></ag-toggle>
-  <ag-toggle
-    label="Danger variant"
-    variant="danger"
-    checked
-  ></ag-toggle>
+        <!-- Variants -->
+        <ag-toggle
+          label="Success variant"
+          variant="success"
+          checked
+        ></ag-toggle>
+        <ag-toggle
+          label="Danger variant"
+          variant="danger"
+          checked
+        ></ag-toggle>
+        <ag-toggle
+          label="Monochrome variant"
+          variant="monochrome"
+          checked
+        ></ag-toggle>
 
-  <!-- Disabled state -->
-  <ag-toggle label="Disabled toggle" disabled></ag-toggle>
+        <!-- Disabled state -->
+        <ag-toggle label="Disabled toggle" disabled></ag-toggle>
 
-  <!-- Form integration -->
-  <ag-toggle
-    id="newsletter-toggle"
-    label="Subscribe to newsletter"
-    name="newsletter"
-    value="subscribed"
-  ></ag-toggle>
-</section>
+        <!-- Form integration -->
+        <ag-toggle
+          id="newsletter-toggle"
+          label="Subscribe to newsletter"
+          name="newsletter"
+          value="subscribed"
+        ></ag-toggle>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using toggle components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props

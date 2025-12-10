@@ -113,45 +113,69 @@ export default function TooltipExample() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import 'agnosticui-core/tooltip';
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/tooltip';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const eventTooltip = document.querySelector('#event-tooltip');
+@customElement('tooltip-example')
+export class TooltipExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  `;
+
+  firstUpdated() {
+    // Set up event listeners for tooltip events in the shadow DOM
+    const eventTooltip = this.shadowRoot?.querySelector('#event-tooltip');
     eventTooltip?.addEventListener('show', () => {
       console.log('Tooltip shown');
     });
     eventTooltip?.addEventListener('hide', () => {
       console.log('Tooltip hidden');
     });
-  });
-</script>
+  }
 
-<section>
-  <ag-tooltip content="This is helpful information">
-    <button>Hover me</button>
-  </ag-tooltip>
+  render() {
+    return html`
+      <section>
+        <ag-tooltip content="This is helpful information">
+          <button>Hover me</button>
+        </ag-tooltip>
 
-  <ag-tooltip content="Appears on the right" placement="right">
-    <button>Right tooltip</button>
-  </ag-tooltip>
+        <ag-tooltip content="Appears on the right" placement="right">
+          <button>Right tooltip</button>
+        </ag-tooltip>
 
-  <ag-tooltip content="Click to toggle" trigger="click">
-    <button>Click trigger</button>
-  </ag-tooltip>
+        <ag-tooltip content="Click to toggle" trigger="click">
+          <button>Click trigger</button>
+        </ag-tooltip>
 
-  <ag-tooltip id="event-tooltip" content="Event handling">
-    <button>With events</button>
-  </ag-tooltip>
+        <ag-tooltip id="event-tooltip" content="Event handling">
+          <button>With events</button>
+        </ag-tooltip>
 
-  <ag-tooltip content="Edit item">
-    <button aria-label="Edit">
-      <svg width="18" height="18"></svg>
-    </button>
-  </ag-tooltip>
-</section>
+        <ag-tooltip content="Edit item">
+          <button aria-label="Edit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+          </button>
+        </ag-tooltip>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using tooltip components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props
