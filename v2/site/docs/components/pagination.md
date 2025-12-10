@@ -122,39 +122,61 @@ export default function PaginationExample() {
 
 ::: details Lit (Web Components)
 
-```html
-<script type="module">
-  import "agnosticui-core/pagination";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/pagination';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const pagination = document.querySelector("#my-pagination");
+@customElement('pagination-example')
+export class PaginationExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  `;
 
-    pagination?.addEventListener("page-change", (e) => {
-      console.log(`Page changed to ${e.detail.page}`);
+  firstUpdated() {
+    // Set up event listener for pagination in the shadow DOM
+    const pagination = this.shadowRoot?.querySelector('#my-pagination');
+
+    pagination?.addEventListener('page-change', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log(`Page changed to ${customEvent.detail.page}`);
     });
-  });
-</script>
+  }
 
-<section>
-  <ag-pagination
-    id="my-pagination"
-    current="5"
-    total-pages="20"
-  ></ag-pagination>
+  render() {
+    return html`
+      <section>
+        <ag-pagination
+          id="my-pagination"
+          current="5"
+          total-pages="20"
+        ></ag-pagination>
 
-  <ag-pagination current="1" total-pages="15" bordered></ag-pagination>
+        <ag-pagination current="1" total-pages="15" bordered></ag-pagination>
 
-  <ag-pagination
-    current="5"
-    total-pages="10"
-    first-last-navigation="true"
-  ></ag-pagination>
+        <ag-pagination
+          current="5"
+          total-pages="10"
+          first-last-navigation="true"
+        ></ag-pagination>
 
-  <ag-pagination current="10" total-pages="20" offset="1"></ag-pagination>
+        <ag-pagination current="10" total-pages="20" offset="1"></ag-pagination>
 
-  <ag-pagination current="1" total-pages="10" justify="center"></ag-pagination>
-</section>
+        <ag-pagination current="1" total-pages="10" justify="center"></ag-pagination>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using pagination components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 
 :::
 
@@ -486,42 +508,64 @@ export default function ContentPaginationExample() {
 
 ::: details Lit (Web Components)
 
-```lit
-<script type="module">
-  import "agnosticui-core/content-pagination";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/content-pagination';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const contentPagination = document.querySelector("#my-content-pagination");
+@customElement('content-pagination-example')
+export class ContentPaginationExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  `;
 
-    contentPagination?.addEventListener("navigate", (e) => {
-      console.log("Navigate to:", e.detail);
+  firstUpdated() {
+    // Set up event listener for content pagination in the shadow DOM
+    const contentPagination = this.shadowRoot?.querySelector('#my-content-pagination');
+
+    contentPagination?.addEventListener('navigate', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log('Navigate to:', customEvent.detail);
     });
-  });
-</script>
+  }
 
-<section>
-  <ag-content-pagination
-    id="my-content-pagination"
-    previous='{"title": "Introduction", "href": "/introduction"}'
-    next='{"title": "Getting Started", "href": "/getting-started"}'
-    parent='{"title": "Documentation", "href": "/documentation"}'
-  ></ag-content-pagination>
+  render() {
+    return html`
+      <section>
+        <ag-content-pagination
+          id="my-content-pagination"
+          previous='{"title": "Introduction", "href": "/introduction"}'
+          next='{"title": "Getting Started", "href": "/getting-started"}'
+          parent='{"title": "Documentation", "href": "/documentation"}'
+        ></ag-content-pagination>
 
-  <ag-content-pagination
-    previous='{"title": "Chapter 1", "href": "/chapter-1"}'
-    next='{"title": "Chapter 3", "href": "/chapter-3"}'
-    bordered
-  ></ag-content-pagination>
-  <ag-content-pagination
-    previous='{"title": "Prev Page"}'
-    next='{"title": "Next Page"}'
-  >
-    <span slot="previous-icon">←</span>
-    <span slot="next-icon">→</span>
-    <span slot="parent-icon">↑</span>
-  </ag-content-pagination>
-</section>
+        <ag-content-pagination
+          previous='{"title": "Chapter 1", "href": "/chapter-1"}'
+          next='{"title": "Chapter 3", "href": "/chapter-3"}'
+          bordered
+        ></ag-content-pagination>
+        <ag-content-pagination
+          previous='{"title": "Prev Page"}'
+          next='{"title": "Next Page"}'
+        >
+          <span slot="previous-icon">←</span>
+          <span slot="next-icon">→</span>
+          <span slot="parent-icon">↑</span>
+        </ag-content-pagination>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using content-pagination components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 
 :::
 

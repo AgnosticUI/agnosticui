@@ -177,80 +177,101 @@ export default function InputExample() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import "agnosticui-core/input";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/input';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const emailInput = document.querySelector("#email-input");
-    const usernameInput = document.querySelector("#username-input");
-    const messageInput = document.querySelector("#message-input");
-    const priceInput = document.querySelector("#price-input");
+@customElement('input-example')
+export class InputExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  `;
 
-    emailInput?.addEventListener("input", (e) => {
-      console.log("Email:", e.target.value);
+  firstUpdated() {
+    // Set up event listeners for inputs in the shadow DOM
+    const emailInput = this.shadowRoot?.querySelector('#email-input');
+    const usernameInput = this.shadowRoot?.querySelector('#username-input') as any;
+
+    emailInput?.addEventListener('input', (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      console.log('Email:', target.value);
     });
 
-    usernameInput?.addEventListener("blur", (e) => {
-      if (!e.target.value) {
+    usernameInput?.addEventListener('blur', (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      if (!target.value) {
         usernameInput.invalid = true;
       } else {
         usernameInput.invalid = false;
       }
     });
-  });
-</script>
+  }
 
-<section>
-  <ag-input
-    id="email-input"
-    label="Email"
-    type="email"
-    placeholder="you@example.com"
-  ></ag-input>
+  render() {
+    return html`
+      <section>
+        <ag-input
+          id="email-input"
+          label="Email"
+          type="email"
+          placeholder="you@example.com"
+        ></ag-input>
 
-  <ag-input
-    id="username-input"
-    label="Username"
-    required
-    error-message="Username is required"
-    help-text="Choose a unique username"
-  ></ag-input>
+        <ag-input
+          id="username-input"
+          label="Username"
+          required
+          error-message="Username is required"
+          help-text="Choose a unique username"
+        ></ag-input>
 
-  <ag-input
-    id="message-input"
-    label="Message"
-    type="textarea"
-    rows="4"
-    placeholder="Enter your message..."
-  ></ag-input>
+        <ag-input
+          id="message-input"
+          label="Message"
+          type="textarea"
+          rows="4"
+          placeholder="Enter your message..."
+        ></ag-input>
 
-  <ag-input
-    id="price-input"
-    label="Price"
-  >
-    <span slot="addon-left">$</span>
-  </ag-input>
+        <ag-input
+          id="price-input"
+          label="Price"
+        >
+          <span slot="addon-left">$</span>
+        </ag-input>
 
-  <ag-input
-    label="Small Input"
-    size="small"
-    placeholder="Small size"
-  ></ag-input>
+        <ag-input
+          label="Small Input"
+          size="small"
+          placeholder="Small size"
+        ></ag-input>
 
-  <ag-input
-    label="Rounded"
-    rounded
-    placeholder="Rounded corners"
-  ></ag-input>
+        <ag-input
+          label="Rounded"
+          rounded
+          placeholder="Rounded corners"
+        ></ag-input>
 
-  <ag-input
-    label="Disabled"
-    disabled
-    value="Cannot edit"
-  ></ag-input>
-</section>
+        <ag-input
+          label="Disabled"
+          disabled
+          value="Cannot edit"
+        ></ag-input>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using input components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props

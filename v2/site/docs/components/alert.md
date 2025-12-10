@@ -405,55 +405,70 @@ export default function DismissibleAlertExample() {
 
 ::: details Lit (Web Components)
 
-```html
-<script type="module">
-  import "agnosticui-core/alert";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement, state } from 'lit/decorators.js';
+import 'agnosticui-core/alert';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const successAlert = document.querySelector("#success-alert");
-    const warningAlert = document.querySelector("#warning-alert");
-    const showSuccessBtn = document.querySelector("#show-success");
-    const showWarningBtn = document.querySelector("#show-warning");
+@customElement('alert-dismissible-example')
+export class AlertDismissibleExample extends LitElement {
+  @state() private showSuccess = true;
+  @state() private showWarning = true;
 
-    successAlert?.addEventListener("alert-dismiss", (e) => {
-      console.log("Success alert dismissed, type:", e.detail.type);
-      successAlert.style.display = "none";
-      showSuccessBtn.style.display = "inline-block";
+  static styles = css`
+    :host {
+      display: block;
+    }
+  `;
+
+  firstUpdated() {
+    // Set up event listeners for alerts in the shadow DOM
+    const successAlert = this.shadowRoot?.querySelector('#success-alert');
+    const warningAlert = this.shadowRoot?.querySelector('#warning-alert');
+
+    successAlert?.addEventListener('alert-dismiss', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log('Success alert dismissed, type:', customEvent.detail.type);
+      this.showSuccess = false;
     });
 
     if (warningAlert) {
-      warningAlert.onAlertDismiss = (e) => {
-        console.log("Warning dismissed, type:", e.detail.type);
-        warningAlert.style.display = "none";
-        showWarningBtn.style.display = "inline-block";
+      (warningAlert as any).onAlertDismiss = (e: CustomEvent) => {
+        console.log('Warning dismissed, type:', e.detail.type);
+        this.showWarning = false;
       };
     }
+  }
 
-    showSuccessBtn?.addEventListener("click", () => {
-      successAlert.style.display = "block";
-      showSuccessBtn.style.display = "none";
-    });
+  private handleShowSuccess() {
+    this.showSuccess = true;
+  }
 
-    showWarningBtn?.addEventListener("click", () => {
-      warningAlert.style.display = "block";
-      showWarningBtn.style.display = "none";
-    });
-  });
-</script>
+  private handleShowWarning() {
+    this.showWarning = true;
+  }
 
-<div>
-  <ag-alert id="success-alert" type="success" dismissible class="mbe2">
-    This is a dismissible success alert. Click the × to dismiss.
-  </ag-alert>
+  render() {
+    return html`
+      <div>
+        ${this.showSuccess
+          ? html`<ag-alert id="success-alert" type="success" dismissible class="mbe2">
+              This is a dismissible success alert. Click the × to dismiss.
+            </ag-alert>`
+          : html`<button @click=${this.handleShowSuccess}>Show Success Alert</button>`}
 
-  <ag-alert id="warning-alert" type="warning" dismissible rounded class="mbe2">
-    Warning: This action cannot be undone!
-  </ag-alert>
-
-  <button id="show-success" style="display: none;">Show Success Alert</button>
-  <button id="show-warning" style="display: none;">Show Warning Alert</button>
-</div>
+        ${this.showWarning
+          ? html`<ag-alert id="warning-alert" type="warning" dismissible rounded class="mbe2">
+              Warning: This action cannot be undone!
+            </ag-alert>`
+          : html`<button @click=${this.handleShowWarning}>Show Warning Alert</button>`}
+      </div>
+    `;
+  }
+}
 ```
+
+**Note:** When using alert components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 
 :::
 

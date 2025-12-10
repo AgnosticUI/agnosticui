@@ -266,115 +266,138 @@ export default function FieldsetExample() {
 :::
 
 ::: details Lit (Web Components)
-```html
-<script type="module">
-  import "agnosticui-core/fieldset";
-  import "agnosticui-core/input";
-  import "agnosticui-core/radio";
-  import "agnosticui-core/checkbox";
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/fieldset';
+import 'agnosticui-core/input';
+import 'agnosticui-core/radio';
+import 'agnosticui-core/checkbox';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const emailRadio = document.querySelector("#contact-email");
-    const phoneRadio = document.querySelector("#contact-phone");
+@customElement('fieldset-example')
+export class FieldsetExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  `;
 
-    emailRadio?.addEventListener("change", (e) => {
-      if (e.target.checked) {
-        console.log("Email selected");
+  firstUpdated() {
+    // Set up event listeners for radio buttons in the shadow DOM
+    const emailRadio = this.shadowRoot?.querySelector('#contact-email');
+    const phoneRadio = this.shadowRoot?.querySelector('#contact-phone');
+
+    emailRadio?.addEventListener('change', (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      if (target.checked) {
+        console.log('Email selected');
       }
     });
 
-    phoneRadio?.addEventListener("change", (e) => {
-      if (e.target.checked) {
-        console.log("Phone selected");
+    phoneRadio?.addEventListener('change', (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      if (target.checked) {
+        console.log('Phone selected');
       }
     });
-  });
-</script>
+  }
 
-<section>
-  <ag-fieldset legend="Personal Information">
-    <ag-input
-      label="First Name"
-      placeholder="John"
-    ></ag-input>
-    <ag-input
-      label="Last Name"
-      placeholder="Doe"
-    ></ag-input>
-  </ag-fieldset>
+  render() {
+    return html`
+      <section>
+        <ag-fieldset legend="Personal Information">
+          <ag-input
+            label="First Name"
+            placeholder="John"
+          ></ag-input>
+          <ag-input
+            label="Last Name"
+            placeholder="Doe"
+          ></ag-input>
+        </ag-fieldset>
 
-  <ag-fieldset
-    legend="Shipping Address"
-    bordered
-  >
-    <ag-input
-      label="Street Address"
-      placeholder="123 Main St"
-    ></ag-input>
-    <ag-input
-      label="City"
-      placeholder="San Francisco"
-    ></ag-input>
-  </ag-fieldset>
+        <ag-fieldset
+          legend="Shipping Address"
+          bordered
+        >
+          <ag-input
+            label="Street Address"
+            placeholder="123 Main St"
+          ></ag-input>
+          <ag-input
+            label="City"
+            placeholder="San Francisco"
+          ></ag-input>
+        </ag-fieldset>
 
-  <ag-fieldset
-    legend="Preferred Contact Method"
-    bordered
-  >
-    <ag-radio
-      id="contact-email"
-      name="contact"
-      value="email"
-      label-text="Email"
-      checked
-    ></ag-radio>
-    <ag-radio
-      id="contact-phone"
-      name="contact"
-      value="phone"
-      label-text="Phone"
-    ></ag-radio>
-  </ag-fieldset>
+        <ag-fieldset
+          legend="Preferred Contact Method"
+          bordered
+        >
+          <ag-radio
+            id="contact-email"
+            name="contact"
+            value="email"
+            label-text="Email"
+            checked
+          ></ag-radio>
+          <ag-radio
+            id="contact-phone"
+            name="contact"
+            value="phone"
+            label-text="Phone"
+          ></ag-radio>
+        </ag-fieldset>
 
-  <ag-fieldset
-    legend="Date of Birth"
-    layout="horizontal"
-    bordered
-  >
-    <ag-input
-      label="Month"
-      placeholder="MM"
-      size="small"
-    ></ag-input>
-    <ag-input
-      label="Day"
-      placeholder="DD"
-      size="small"
-    ></ag-input>
-    <ag-input
-      label="Year"
-      placeholder="YYYY"
-      size="small"
-    ></ag-input>
-  </ag-fieldset>
+        <ag-fieldset
+          legend="Date of Birth"
+          layout="horizontal"
+          bordered
+        >
+          <ag-input
+            label="Month"
+            placeholder="MM"
+            size="small"
+          ></ag-input>
+          <ag-input
+            label="Day"
+            placeholder="DD"
+            size="small"
+          ></ag-input>
+          <ag-input
+            label="Year"
+            placeholder="YYYY"
+            size="small"
+          ></ag-input>
+        </ag-fieldset>
 
-  <ag-fieldset
-    legend="Search Options"
-    legend-hidden
-    bordered
-  >
-    <ag-input
-      label="Search Query"
-      placeholder="Enter search terms..."
-    ></ag-input>
-    <ag-checkbox
-      name="options"
-      value="case-sensitive"
-      label-text="Case Sensitive"
-    ></ag-checkbox>
-  </ag-fieldset>
-</section>
+        <ag-fieldset
+          legend="Search Options"
+          legend-hidden
+          bordered
+        >
+          <ag-input
+            label="Search Query"
+            placeholder="Enter search terms..."
+          ></ag-input>
+          <ag-checkbox
+            name="options"
+            value="case-sensitive"
+            label-text="Case Sensitive"
+          ></ag-checkbox>
+        </ag-fieldset>
+      </section>
+    `;
+  }
+}
 ```
+
+**Note:** When using fieldset components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props
