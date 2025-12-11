@@ -27,7 +27,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import type { PropType } from "vue";
-import { AgSidebar } from "../core/Sidebar.js";
+// Import for side-effects to register the custom element
+import "../core/Sidebar.js";
+import type { AgSidebar } from "../core/Sidebar.js";
 import type {
   AgSidebarToggleEvent,
   AgSidebarCollapseEvent,
