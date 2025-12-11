@@ -78,7 +78,11 @@ mkdir -p "$TARBALL_DIR/lib/src"
 echo -e "${BLUE}   → Copying components (excluding v1, specifications, specification)...${NC}"
 rsync -av --exclude='v1' --exclude='specifications' --exclude='specification' lib/src/components/ "$TARBALL_DIR/lib/src/components/"
 
-# Copy styles
+# Copy infrastructure directories (shared, utils, types, styles)
+echo -e "${BLUE}   → Copying infrastructure directories...${NC}"
+cp -r lib/src/shared "$TARBALL_DIR/lib/src/" 2>/dev/null || echo "   No shared directory found"
+cp -r lib/src/utils "$TARBALL_DIR/lib/src/" 2>/dev/null || echo "   No utils directory found"
+cp -r lib/src/types "$TARBALL_DIR/lib/src/" 2>/dev/null || echo "   No types directory found"
 cp -r lib/src/styles "$TARBALL_DIR/lib/src/" 2>/dev/null || echo "   No styles directory found"
 
 # Copy design tokens

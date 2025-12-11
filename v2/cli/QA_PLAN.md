@@ -57,7 +57,7 @@ Verify that the `@agnosticui/cli` functions correctly across **Lit**, **React**,
 **Component Bundles**:
 _Total Components: 56_
 
-**Batch 1: Primitives & Layout** (10)
+**Batch 1: Primitives & Layout** (10) ✅
 `Avatar`, `Badge`, `Button`, `Card`, `Divider`, `Icon`, `Image`, `Tag`, `VisuallyHidden`, `Flex`
 
 **Batch 2: Inputs & Forms - Part 1** (10)

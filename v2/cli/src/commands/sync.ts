@@ -130,9 +130,9 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
     const infraDirs = ['shared', 'utils', 'styles', 'types'];
 
     for (const dir of infraDirs) {
-      const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'src', dir);
+      const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'lib', 'src', dir);
       const destDir = path.join(process.cwd(), 'src', dir);
-      
+
       if (pathExists(srcDir))   {
         await copyDirectoryFiltered(srcDir, destDir, {
           exclude: ['*.spec.ts', '*.spec.js'] // Skip test files

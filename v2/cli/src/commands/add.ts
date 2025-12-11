@@ -89,8 +89,15 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
     spinner = p.spinner();
     const results: { name: string; success: boolean; files: string[] }[] = [];
 
-    for (const componentName of componentNames) {
-      spinner.start(`Adding ${componentName}...`);
+    // Start spinner once before the loop
+    spinner.start('Processing components...');
+
+    for (let i = 0; i < componentNames.length; i++) {
+      const componentName = componentNames[i];
+      const progress = `[${i + 1}/${componentNames.length}]`;
+
+      // Update spinner message, don't call start() again
+      spinner.message(`${progress} Adding ${componentName}...`);
 
       try {
         const files = await addComponent(
@@ -102,22 +109,28 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         );
 
         // Process shared component dependencies (e.g., CloseButton)
+        spinner.message(`${progress} Processing shared dependencies for ${componentName}...`);
         const sharedFiles = await processSharedDependencies(
           files,
           referencePath,
           componentsPath,
-          config.paths.components
+          config.paths.components,
+          spinner,
+          progress
         );
         files.push(...sharedFiles);
 
         // Process component dependencies (e.g., CopyButton depends on IconButton)
+        spinner.message(`${progress} Processing component dependencies for ${componentName}...`);
         const componentFiles = await processComponentDependencies(
           files,
           referencePath,
           componentsPath,
           config.framework,
           config.paths.components,
-          config
+          config,
+          spinner,
+          progress
         );
         files.push(...componentFiles);
 
@@ -125,15 +138,23 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         // so we don't need to scan for them here
 
         results.push({ name: componentName, success: true, files });
-        spinner.message(`Added ${componentName}`);
+        spinner.message(`${progress} Added ${componentName}`);
       } catch (error) {
         results.push({ name: componentName, success: false, files: [] });
+        spinner.stop(`${progress} Failed to add ${componentName}`);
         logger.error(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
-        // Don't stop spinner here, let it continue for next component
+        // Restart spinner for next component only if there are more components
+        if (i < componentNames.length - 1) {
+          spinner = p.spinner();
+          spinner.start(`Processing remaining components...`);
+        }
       }
     }
 
-    spinner.stop();
+    // Stop spinner if it's still running (in case all components succeeded)
+    if (spinner) {
+      spinner.stop();
+    }
 
   // Update config with successfully added components
   let updatedConfig = config;
@@ -275,6 +296,8 @@ async function processSharedDependencies(
   referencePath: string,
   componentsPath: string,
   configComponentsPath: string,
+  spinner?: ReturnType<typeof p.spinner>,
+  progress?: string,
   processed: Set<string> = new Set(),
   depth: number = 0,
   scannedFiles: Set<string> = new Set()
@@ -334,12 +357,19 @@ async function processSharedDependencies(
           const sharedFiles = await addSharedComponent(dep, referencePath, componentsPath, configComponentsPath);
           newFiles.push(...sharedFiles);
 
+          // Update spinner with dependency info
+          if (spinner && progress) {
+            spinner.message(`${progress} Processing shared dependency: ${dep}...`);
+          }
+
           // Recursively process its deps
           const recursiveFiles = await processSharedDependencies(
             sharedFiles,
             referencePath,
             componentsPath,
             configComponentsPath,
+            spinner,
+            progress,
             processed,
             depth + 1,
             scannedFiles
@@ -387,6 +417,8 @@ async function processComponentDependencies(
   framework: Framework,
   configComponentsPath: string,
   config: any,
+  spinner?: ReturnType<typeof p.spinner>,
+  progress?: string,
   processed: Set<string> = new Set(),
   depth: number = 0,
   scannedFiles: Set<string> = new Set()
@@ -448,7 +480,13 @@ async function processComponentDependencies(
         processed.add(dep);
 
         try {
-          logger.info(`  → Detected dependency: ${dep}`);
+          // Update spinner with dependency info
+          if (spinner && progress) {
+            spinner.message(`${progress} Adding component dependency: ${dep}...`);
+          } else {
+            logger.info(`  → Detected dependency: ${dep}`);
+          }
+
           // Add the component using the same logic as the main add
           const componentFiles = await addComponent(
             dep,
@@ -475,6 +513,8 @@ async function processComponentDependencies(
             framework,
             configComponentsPath,
             config,
+            spinner,
+            progress,
             processed,
             depth + 1,
             scannedFiles

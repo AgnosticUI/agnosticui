@@ -39,7 +39,7 @@ export function createDefaultConfig(framework: Framework, componentsPath: string
     version,
     framework,
     paths: {
-      reference: './agnosticui',
+      reference: './agnosticui/lib',
       components: componentsPath,
     },
     components: {},
