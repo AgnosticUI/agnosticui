@@ -1,0 +1,207 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "0.0.1",
+  "framework": "vue",
+  "paths": {
+    "reference": "./agnosticui/lib",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Avatar": {
+      "added": "2025-12-10T19:49:26.842Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Avatar/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Avatar/vue"
+      ]
+    },
+    "Badge": {
+      "added": "2025-12-10T19:49:26.843Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Badge/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Badge/vue"
+      ]
+    },
+    "Button": {
+      "added": "2025-12-10T19:49:26.843Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Button/vue"
+      ]
+    },
+    "Card": {
+      "added": "2025-12-10T19:49:26.843Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Card/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Card/vue"
+      ]
+    },
+    "Divider": {
+      "added": "2025-12-10T19:49:26.843Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Divider/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Divider/vue"
+      ]
+    },
+    "Icon": {
+      "added": "2025-12-10T19:49:26.843Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Icon/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Icon/vue"
+      ]
+    },
+    "Image": {
+      "added": "2025-12-10T19:49:26.844Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Image/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Image/vue"
+      ]
+    },
+    "Tag": {
+      "added": "2025-12-10T19:49:26.844Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Tag/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Tag/vue"
+      ]
+    },
+    "VisuallyHidden": {
+      "added": "2025-12-10T19:49:26.844Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/VisuallyHidden/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/VisuallyHidden/vue"
+      ]
+    },
+    "Flex": {
+      "added": "2025-12-10T19:49:26.844Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Flex/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Flex/vue"
+      ]
+    },
+    "Checkbox": {
+      "added": "2025-12-10T19:49:36.015Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Checkbox/vue"
+      ]
+    },
+    "Input": {
+      "added": "2025-12-10T19:49:36.015Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Input/vue"
+      ]
+    },
+    "Radio": {
+      "added": "2025-12-10T19:49:36.015Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Radio/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Radio/vue"
+      ]
+    },
+    "Select": {
+      "added": "2025-12-10T19:49:36.015Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Select/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Select/vue"
+      ]
+    },
+    "Slider": {
+      "added": "2025-12-10T19:49:36.015Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Slider/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Slider/vue"
+      ]
+    },
+    "Toggle": {
+      "added": "2025-12-10T19:49:36.015Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Toggle/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Toggle/vue"
+      ]
+    },
+    "Fieldset": {
+      "added": "2025-12-10T19:49:36.015Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Fieldset/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Fieldset/vue"
+      ]
+    },
+    "Rating": {
+      "added": "2025-12-10T19:49:36.015Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Rating/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Rating/vue"
+      ]
+    },
+    "Combobox": {
+      "added": "2025-12-10T19:49:36.015Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Combobox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Combobox/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Checkbox/vue"
+      ]
+    },
+    "Mark": {
+      "added": "2025-12-10T19:49:36.015Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Mark/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Mark/vue"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/dist/agnosticui-local-v0.0.1.tar.gz",
+    "version": "0.0.1",
+    "installed": "2025-12-10T23:43:57.194Z"
+  }
+}
