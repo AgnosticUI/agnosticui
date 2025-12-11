@@ -9,7 +9,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { AgSidebarNavSubmenu } from "../core/SidebarNav.js";
+// Import for side-effects to register the custom element
+import "../core/SidebarNav.js";
 
 export default defineComponent({
   name: "VueSidebarNavSubmenu",
