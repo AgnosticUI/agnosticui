@@ -157,8 +157,20 @@ const showToast = ref(false);
 
 // MessageBubble state
 const messages = ref([
-  { id: 1, from: "them" as const, text: "Hey, how are you?", author: "Alice", time: "10:30 AM" },
-  { id: 2, from: "me" as const, text: "I'm doing great, thanks!", author: "Me", time: "10:31 AM" },
+  {
+    id: 1,
+    from: "them" as const,
+    text: "Hey, how are you?",
+    author: "Alice",
+    time: "10:30 AM",
+  },
+  {
+    id: 2,
+    from: "me" as const,
+    text: "I'm doing great, thanks!",
+    author: "Me",
+    time: "10:31 AM",
+  },
 ]);
 
 // Pagination state
@@ -466,7 +478,7 @@ const toggleSidebar = async (event: Event) => {
 
       <h3 class="subsection-title">Select</h3>
       <VueSelect
-        v-model:value="selectValue"
+        v-model="selectValue"
         label="Choose Framework"
         name="framework"
       >
@@ -1327,7 +1339,7 @@ const toggleSidebar = async (event: Event) => {
       <VueCollapsible
         use-chevron
         class="mbe2"
-        @toggle="collapsibleExpanded = $event.target.open"
+        @toggle="collapsibleExpanded = ($event.target as any).open"
       >
         <template #summary>
           <span>Click to expand</span>
@@ -1402,13 +1414,22 @@ const toggleSidebar = async (event: Event) => {
         <VueTab panel="panel-1">Tab 1</VueTab>
         <VueTab panel="panel-2">Tab 2</VueTab>
         <VueTab panel="panel-3">Tab 3</VueTab>
-        <VueTabPanel panel="panel-1">
+        <VueTabPanel
+          panel="panel-1"
+          id="panel-1"
+        >
           <p>Content for Tab 1</p>
         </VueTabPanel>
-        <VueTabPanel panel="panel-2">
+        <VueTabPanel
+          panel="panel-2"
+          id="panel-2"
+        >
           <p>Content for Tab 2</p>
         </VueTabPanel>
-        <VueTabPanel panel="panel-3">
+        <VueTabPanel
+          panel="panel-3"
+          id="panel-3"
+        >
           <p>Content for Tab 3</p>
         </VueTabPanel>
       </VueTabs>
@@ -1433,15 +1454,24 @@ const toggleSidebar = async (event: Event) => {
             Profile
           </div>
         </VueTab>
-        <VueTabPanel panel="panel-r1">
+        <VueTabPanel
+          panel="panel-r1"
+          id="panel-r1"
+        >
           <h3 style="margin-top: 0;">Overview</h3>
           <p>Dashboard and statistics go here.</p>
         </VueTabPanel>
-        <VueTabPanel panel="panel-r2">
+        <VueTabPanel
+          panel="panel-r2"
+          id="panel-r2"
+        >
           <h3 style="margin-top: 0;">Settings</h3>
           <p>Configure your application settings.</p>
         </VueTabPanel>
-        <VueTabPanel panel="panel-r3">
+        <VueTabPanel
+          panel="panel-r3"
+          id="panel-r3"
+        >
           <h3 style="margin-top: 0;">Profile</h3>
           <p>Manage your profile information.</p>
         </VueTabPanel>
@@ -1629,7 +1659,7 @@ const toggleSidebar = async (event: Event) => {
       </VueFlexRow>
 
       <VueDialog
-        v-model:open="isDialogOpen"
+        v-model="isDialogOpen"
         heading="Dialog Example"
         description="This is a basic dialog component."
         show-close-button
@@ -1688,7 +1718,7 @@ const toggleSidebar = async (event: Event) => {
       </VueFlexRow>
 
       <VueToast
-        v-model:open="showToast"
+        v-model="showToast"
         type="info"
         @toast-close="showToast = false"
       >
