@@ -7,7 +7,7 @@ import { existsSync } from 'node:fs';
 import type { Framework, InitOptions } from '../types/index.js';
 import { logger } from '../utils/logger.js';
 import { loadConfig, saveConfig, createDefaultConfig } from '../utils/config.js';
-import { extractTarball, ensureDir, pathExists, updateIgnoreFile } from '../utils/files.js';
+import { extractTarball, ensureDir, pathExists, updateIgnoreFile, updateEslintConfig } from '../utils/files.js';
 import {
   getFrameworkDependencies,
   checkDependenciesInstalled,
@@ -142,7 +142,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
 
     for (const dir of infraDirs) {
       const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'lib', 'src', dir);
-      const destDir = path.join(process.cwd(), 'src', dir);
+      const destDir = path.join(componentsPath, dir);
 
       if (pathExists(srcDir)) {
         await copyDirectoryFiltered(srcDir, destDir, {
@@ -157,15 +157,27 @@ export async function init(options: InitOptions = {}): Promise<void> {
     await handleDependencies(framework);
 
     // Update ignore files for the reference library
-    spinner.message('Updating ignore files...');
+    spinner.message('Updating .gitignore...');
     const referenceDirName = path.basename(DEFAULT_REFERENCE_PATH);
     const ignorePattern = `${referenceDirName}/`;
 
     // Update .gitignore
     await updateIgnoreFile(path.join(process.cwd(), '.gitignore'), ignorePattern);
     
-    // Update .eslintignore (if it exists or if we should create it)
-    await updateIgnoreFile(path.join(process.cwd(), '.eslintignore'), ignorePattern);
+    // Check for eslint.config.js and update or warn
+    const eslintConfigPath = path.join(process.cwd(), 'eslint.config.js');
+    if (pathExists(eslintConfigPath)) {
+      spinner.message('Updating eslint.config.js...');
+      const updated = await updateEslintConfig(eslintConfigPath, `${referenceDirName}/`);
+      
+      if (!updated) {
+        logger.newline();
+        logger.info(pc.yellow('ESLint Configuration:') + ' Please add the following to your ' + pc.cyan('eslint.config.js') + ':');
+        console.log('  ' + pc.dim('{'));
+        console.log('    ' + pc.cyan(`ignores: ["${referenceDirName}/"]`));
+        console.log('  ' + pc.dim('}'));
+      }
+    }
 
     spinner.stop(pc.green('✓') + ' Initialized successfully!');
 

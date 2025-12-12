@@ -34,6 +34,10 @@ export async function copyDirectory(src: string, dest: string): Promise<void> {
   for (const entry of entries) {
     const srcPath = path.join(src, entry.name);
     const destPath = path.join(dest, entry.name);
+    
+    if (entry.name.startsWith('._')) {
+      continue;
+    }
 
     if (entry.isDirectory()) {
       await copyDirectory(srcPath, destPath);
@@ -57,6 +61,10 @@ export async function copyDirectoryFiltered(
   const excludePatterns = options.exclude || [];
 
   for (const entry of entries) {
+    if (entry.name.startsWith('._')) {
+      continue;
+    }
+    
     // Check if file should be excluded
     const shouldExclude = excludePatterns.some(pattern => {
       if (pattern.startsWith('*.')) {
@@ -154,5 +162,37 @@ export async function updateIgnoreFile(filePath: string, pattern: string): Promi
     }
     
     await writeFile(filePath, `${defaultContent}${pattern}\n`);
+  }
+}
+
+/**
+ * Update eslint.config.js to include ignore patterns
+ */
+export async function updateEslintConfig(filePath: string, ignorePattern: string): Promise<boolean> {
+  if (!pathExists(filePath)) {
+    return false;
+  }
+
+  try {
+    let content = await readFile(filePath, 'utf-8');
+    
+    // Check if already ignored
+    if (content.includes(`ignores: ["${ignorePattern}"]`) || content.includes(`ignores: ['${ignorePattern}']`)) {
+      return true;
+    }
+
+    // Look for the start of the configuration array
+    // Matches: export default [ OR export default defineConfig([
+    const regex = /(export\s+default\s+(?:defineConfig\s*\(\s*)?\[)/;
+    
+    if (regex.test(content)) {
+      content = content.replace(regex, `$1\n  { ignores: ["${ignorePattern}"] },`);
+      await writeFile(filePath, content, 'utf-8');
+      return true;
+    }
+    
+    return false;
+  } catch (error) {
+    return false;
   }
 }

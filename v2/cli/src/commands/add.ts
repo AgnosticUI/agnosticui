@@ -572,6 +572,15 @@ async function copyAndTransform(src: string, dest: string, componentsPath: strin
     const srcPath = path.join(src, entry.name);
     const destPath = path.join(dest, entry.name);
 
+    if (entry.name.startsWith('._')) {
+      continue;
+    }
+
+    // Skip test files
+    if (/\.(spec|test)\.(ts|js|tsx|jsx)$/.test(entry.name)) {
+      continue;
+    }
+
     if (entry.isDirectory()) {
       await copyAndTransform(srcPath, destPath, componentsPath);
     } else {
@@ -588,25 +597,25 @@ async function copyAndTransform(src: string, dest: string, componentsPath: strin
         content = content.replace(/(import\s+['"]\..+?)\.js(['"])/g, '$1$2');
 
         // Adjust imports for different nesting depth based on componentsPath
-        // Only adjust if we need extra levels
-        if (extraLevels > 0) {
-          const extraDots = '../'.repeat(extraLevels);
+        // Rewrite imports for shared infrastructure
+        // Old Reference: ../../../utils/ -> src/utils (via ../../../)
+        // New User: ../../utils/ -> src/components/ag/utils (via ../../) assuming we are in src/components/ag/Comp/framework
+        
+        // We know that reference code uses:
+        // ../../../shared/
+        // ../../../utils/
+        // ../../../styles/
+        // ../../../types/
 
-          // ../../../shared/file -> ../../../../shared/file (or more based on depth)
-          content = content.replace(/(from\s+['"])(?:\.\.\/){3}(shared\/)/g, `$1../../../${extraDots}$2`);
-          content = content.replace(/(import\s+['"])(?:\.\.\/){3}(shared\/)/g, `$1../../../${extraDots}$2`);
+        // In the new layout, infrastructure is at `componentsPath/utils` etc.
+        // A component file is at `componentsPath/Component/framework/file.ts`
+        // So valid path is `../../utils/`
 
-          // ../../../utils/ -> ../../../../utils/ (or more based on depth)
-          content = content.replace(/(from\s+['"])(?:\.\.\/){3}(utils\/)/g, `$1../../../${extraDots}$2`);
-          content = content.replace(/(import\s+['"])(?:\.\.\/){3}(utils\/)/g, `$1../../../${extraDots}$2`);
-
-          // ../../../styles/ -> ../../../../styles/ (or more based on depth)
-          content = content.replace(/(from\s+['"])(?:\.\.\/){3}(styles\/)/g, `$1../../../${extraDots}$2`);
-          content = content.replace(/(import\s+['"])(?:\.\.\/){3}(styles\/)/g, `$1../../../${extraDots}$2`);
-
-          // ../../../types/ -> ../../../../types/ (or more based on depth)
-          content = content.replace(/(from\s+['"])(?:\.\.\/){3}(types\/)/g, `$1../../../${extraDots}$2`);
-          content = content.replace(/(import\s+['"])(?:\.\.\/){3}(types\/)/g, `$1../../../${extraDots}$2`);
+        // Replace exact pattern match from reference library styles
+        const patterns = ['shared', 'utils', 'styles', 'types'];
+        for (const dir of patterns) {
+           const regex = new RegExp(`(from\\s+['"]|import\\s+['"])(?:\\.\\.\\/){3}(${dir}\\/)`, 'g');
+           content = content.replace(regex, `$1../../$2`);
         }
         // If extraLevels === 0, no transformation needed (same depth as reference)
 
