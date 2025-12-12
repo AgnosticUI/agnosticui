@@ -730,8 +730,7 @@
     "@floating-ui/dom": "^1.7.4",
     "@lit/react": "^1.0.8",
     "agnosticui-core": "file:agnosticui-core-0.0.1.tgz",
-    "focus-trap": "^7.6.5",
-    "tabbable": "^6.2.0"
+    "focus-trap": "^7.6.5"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.0",
