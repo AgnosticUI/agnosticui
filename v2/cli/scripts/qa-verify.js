@@ -34,7 +34,7 @@ const BATCHES = {
   },
   5: {
     name: 'Advanced & Groups',
-    components: ['Accordion', 'AccordionGroup', 'AvatarGroup', 'Collapsible', 'MessageBubble', 'Progress', 'ProgressRing', 'ScrollProgress', 'ScrollToButton', 'Timeline']
+    components: ['Accordion', 'Collapsible', 'MessageBubble', 'Progress', 'ProgressRing', 'ScrollProgress', 'ScrollToButton', 'Timeline']
   },
   6: {
     name: 'Remaining',

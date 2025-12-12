@@ -60,13 +60,13 @@ _Total Components: 56_
 **Batch 1: Primitives & Layout** (10) ✅
 `Avatar`, `Badge`, `Button`, `Card`, `Divider`, `Icon`, `Image`, `Tag`, `VisuallyHidden`, `Flex`
 
-**Batch 2: Inputs & Forms - Part 1** (10)
+**Batch 2: Inputs & Forms - Part 1** (10) ✅
 `Checkbox`, `Input`, `Radio`, `Select`, `Slider`, `Toggle`, `Fieldset`, `Rating`, `Combobox`, `Mark`
 
-**Batch 3: Inputs & Forms - Part 2 & Overlays** (10)
+**Batch 3: Inputs & Forms - Part 2 & Overlays** (10) ✅
 `ButtonFx`, `CopyButton`, `IconButton`, `IconButtonFx`, `Dialog`, `Drawer`, `Header`, `Menu`, `Popover`, `Tooltip`
 
-**Batch 4: Navigation & Feedback** (10)
+**Batch 4: Navigation & Feedback** (10) ✅
 `Breadcrumb`, `Pagination`, `Sidebar`, `SidebarNav`, `Tabs`, `Alert`, `EmptyState`, `Loader`, `Spinner`, `Toast`
 
 **Batch 5: Advanced & Groups** (10)
