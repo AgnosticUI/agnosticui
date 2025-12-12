@@ -49,17 +49,23 @@ export function getInstallCommand(packageManager: PackageManager, packages: stri
  * Get required dependencies for a framework
  */
 export function getFrameworkDependencies(framework: Framework): string[] {
+  // Base dependencies required by all frameworks
+  // - lit: Core web components library
+  // - focus-trap: Used by Dialog component for accessibility
+  // - @floating-ui/dom: Used by Popover and Tooltip components for positioning
+  const baseDeps = ['lit', 'focus-trap', '@floating-ui/dom'];
+
   switch (framework) {
     case 'react':
-      return ['lit', '@lit/react'];
+      return [...baseDeps, '@lit/react'];
     case 'vue':
-      return ['lit'];
+      return baseDeps;
     case 'lit':
-      return ['lit'];
+      return baseDeps;
     case 'svelte':
-      return ['lit'];
+      return baseDeps;
     default:
-      return ['lit'];
+      return baseDeps;
   }
 }
 

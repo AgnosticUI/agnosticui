@@ -10,8 +10,13 @@ import { VueButton } from "./ag/Button/vue";
 import { VueButtonFx } from "./ag/ButtonFx/vue";
 import { VueCard } from "./ag/Card/vue";
 import { VueCheckbox } from "./ag/Checkbox/vue";
+import { VueCollapsible } from "./ag/Collapsible/vue";
 import { VueCombobox } from "./ag/Combobox/vue";
+import { VueCopyButton } from "./ag/CopyButton/vue";
+import VueDialog, { VueDialogHeader, VueDialogFooter } from "./ag/Dialog/vue";
 import { VueDivider } from "./ag/Divider/vue";
+import VueDrawer from "./ag/Drawer/vue";
+import { VueEmptyState } from "./ag/EmptyState/vue";
 import { VueFieldset } from "./ag/Fieldset/vue";
 import { VueFlexRow, VueFlexCol } from "./ag/Flex/vue";
 import { VueHeader } from "./ag/Header/vue";
@@ -23,7 +28,13 @@ import { VueInput } from "./ag/Input/vue";
 import { VueIntlFormatter } from "./ag/IntlFormatter/vue";
 import { VueKbd } from "./ag/Kbd/vue";
 import { VueLink } from "./ag/Link/vue";
+import { VueLoader } from "./ag/Loader/vue";
 import { VueMark } from "./ag/Mark/vue";
+import VueMenu, { VueMenuItem, VueMenuSeparator } from "./ag/Menu/vue";
+import { VueMessageBubble } from "./ag/MessageBubble/vue";
+import { VuePagination } from "./ag/Pagination/vue";
+import { VuePopover } from "./ag/Popover/vue";
+import { VueProgress } from "./ag/Progress/vue";
 import { VueProgressRing } from "./ag/ProgressRing/vue";
 import { VueRadio } from "./ag/Radio/vue";
 import { VueRating } from "./ag/Rating/vue";
@@ -35,8 +46,12 @@ import { VueSidebarNav, VueSidebarNavItem } from "./ag/SidebarNav/vue";
 import { VueSkeleton } from "./ag/SkeletonLoader/vue";
 import { VueSlider } from "./ag/Slider/vue";
 import { VueSpinner } from "./ag/Spinner/vue";
+import VueTabs, { VueTab, VueTabPanel } from "./ag/Tabs/vue";
 import { VueTag } from "./ag/Tag/vue";
+import { VueTimeline, VueTimelineItem } from "./ag/Timeline/vue";
+import { VueToast } from "./ag/Toast/vue";
 import { VueToggle } from "./ag/Toggle/vue";
+import VueTooltip from "./ag/Tooltip/vue";
 import {
   CheckCircle2,
   Info,
@@ -51,6 +66,26 @@ import {
   Download,
   Home,
   ChevronRight,
+  User,
+  Menu as MenuIcon,
+  MessageCircle,
+  Send,
+  AlertCircle,
+  Plus,
+  Upload,
+  Share2,
+  Filter,
+  MoreVertical,
+  Pencil,
+  Folder,
+  FileText,
+  ShoppingCart,
+  ArrowRight,
+  Inbox,
+  BarChart3,
+  Lock,
+  Sparkles,
+  Rocket,
 } from "lucide-vue-next";
 
 defineProps<{ msg: string }>();
@@ -98,6 +133,36 @@ const handleBreadcrumbClick = (event: {
 }) => {
   console.log(`Breadcrumb clicked: ${event.item.label}`);
 };
+
+// Collapsible state
+const collapsibleExpanded = ref(false);
+
+// CopyButton state
+const copyInputValue = ref("https://agnosticui.com");
+
+// Menu state
+const lastMenuEvent = ref("");
+
+// Tabs state
+const activeTab = ref(0);
+
+// Dialog state
+const isDialogOpen = ref(false);
+
+// Drawer state
+const isDrawerOpen = ref(false);
+
+// Toast state
+const showToast = ref(false);
+
+// MessageBubble state
+const messages = ref([
+  { id: 1, from: "them" as const, text: "Hey, how are you?", author: "Alice", time: "10:30 AM" },
+  { id: 2, from: "me" as const, text: "I'm doing great, thanks!", author: "Me", time: "10:31 AM" },
+]);
+
+// Pagination state
+const currentPage = ref(1);
 
 const toggleSidebar = async (event: Event) => {
   console.log("=== toggleSidebar CALLED ===");
@@ -1249,6 +1314,573 @@ const toggleSidebar = async (event: Event) => {
           variant="danger"
         >Danger Button Link</VueLink>
       </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- Collapsible -->
+    <section class="component-section">
+      <h2>Collapsible</h2>
+      <p class="mbe3">Expandable and collapsible content sections.</p>
+
+      <h3 class="subsection-title">Default (Chevron)</h3>
+      <VueCollapsible
+        use-chevron
+        class="mbe2"
+        @toggle="collapsibleExpanded = $event.target.open"
+      >
+        <template #summary>
+          <span>Click to expand</span>
+        </template>
+        <p>This is the collapsible content that can be shown or hidden. The default chevron indicator rotates smoothly when toggled.</p>
+      </VueCollapsible>
+
+      <h3 class="subsection-title">Plus/Minus Indicator</h3>
+      <VueCollapsible
+        use-minus
+        bordered
+        class="mbe2"
+      >
+        <template #summary>
+          <span>Plus/Minus Indicator</span>
+        </template>
+        <p>Plus changes to minus when opened. Classic expand/collapse indicator style.</p>
+      </VueCollapsible>
+
+      <h3 class="subsection-title">FAQ Example</h3>
+      <VueCollapsible bordered>
+        <template #summary>
+          <span>What is AgnosticUI?</span>
+        </template>
+        <p>
+          AgnosticUI is a framework-agnostic component library built with web
+          components. It works seamlessly with React, Vue, Svelte, Angular, and
+          vanilla JavaScript.
+        </p>
+      </VueCollapsible>
+    </section>
+
+    <VueDivider />
+
+    <!-- Loader -->
+    <section class="component-section">
+      <h2>Loader</h2>
+      <p class="mbe3">Loading indicators for async operations.</p>
+
+      <VueFlexRow
+        gap="lg"
+        wrap="wrap"
+        align="center"
+      >
+        <div>
+          <p class="mbe2">Small:</p>
+          <VueLoader size="small" />
+        </div>
+        <div>
+          <p class="mbe2">Default:</p>
+          <VueLoader />
+        </div>
+        <div>
+          <p class="mbe2">Large:</p>
+          <VueLoader size="large" />
+        </div>
+      </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- Tabs -->
+    <section class="component-section">
+      <h2>Tabs</h2>
+      <p class="mbe3">Organize content into tabbed panels.</p>
+
+      <h3 class="subsection-title">Basic Tabs</h3>
+      <VueTabs
+        aria-label="Basic tabs example"
+        class="mbe3"
+      >
+        <VueTab panel="panel-1">Tab 1</VueTab>
+        <VueTab panel="panel-2">Tab 2</VueTab>
+        <VueTab panel="panel-3">Tab 3</VueTab>
+        <VueTabPanel panel="panel-1">
+          <p>Content for Tab 1</p>
+        </VueTabPanel>
+        <VueTabPanel panel="panel-2">
+          <p>Content for Tab 2</p>
+        </VueTabPanel>
+        <VueTabPanel panel="panel-3">
+          <p>Content for Tab 3</p>
+        </VueTabPanel>
+      </VueTabs>
+
+      <h3 class="subsection-title">Tabs with Icons</h3>
+      <VueTabs aria-label="Tabs with rich content">
+        <VueTab panel="panel-r1">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <Info :size="16" />
+            Overview
+          </div>
+        </VueTab>
+        <VueTab panel="panel-r2">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <Settings :size="16" />
+            Settings
+          </div>
+        </VueTab>
+        <VueTab panel="panel-r3">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <User :size="16" />
+            Profile
+          </div>
+        </VueTab>
+        <VueTabPanel panel="panel-r1">
+          <h3 style="margin-top: 0;">Overview</h3>
+          <p>Dashboard and statistics go here.</p>
+        </VueTabPanel>
+        <VueTabPanel panel="panel-r2">
+          <h3 style="margin-top: 0;">Settings</h3>
+          <p>Configure your application settings.</p>
+        </VueTabPanel>
+        <VueTabPanel panel="panel-r3">
+          <h3 style="margin-top: 0;">Profile</h3>
+          <p>Manage your profile information.</p>
+        </VueTabPanel>
+      </VueTabs>
+    </section>
+
+    <VueDivider />
+
+    <!-- CopyButton -->
+    <section class="component-section">
+      <h2>Copy Button</h2>
+      <p class="mbe3">Buttons that copy text to clipboard.</p>
+
+      <h3 class="subsection-title">Basic</h3>
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VueCopyButton
+          text="https://agnosticui.com"
+          label="Copy URL"
+        />
+        <VueCopyButton
+          text="npm install agnosticui-core"
+          label="Copy install command"
+          variant="primary"
+        />
+      </VueFlexRow>
+
+      <h3 class="subsection-title">Copy From Input</h3>
+      <VueFlexRow
+        gap="md"
+        align="center"
+      >
+        <VueInput
+          v-model="copyInputValue"
+          placeholder="Enter text to copy"
+          style="flex: 1; max-width: 300px;"
+        />
+        <VueCopyButton
+          :text="copyInputValue"
+          label="Copy"
+        />
+      </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- Menu -->
+    <section class="component-section">
+      <h2>Menu</h2>
+      <p class="mbe3">Dropdown menus for navigation and actions.</p>
+
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VueMenu menu-aria-label="Menu options">
+          Basic Menu
+          <template #menu>
+            <VueMenuItem value="edit">Edit</VueMenuItem>
+            <VueMenuItem value="copy">Copy</VueMenuItem>
+            <VueMenuItem value="paste">Paste</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="delete">Delete</VueMenuItem>
+          </template>
+        </VueMenu>
+
+        <VueMenu
+          menu-aria-label="User menu"
+          button-variant="primary"
+        >
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <User :size="16" />
+            User Menu
+          </div>
+          <template #menu>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+
+        <VueMenu
+          menu-variant="icon"
+          ghost
+          menu-aria-label="More options"
+        >
+          <MenuIcon :size="20" />
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+      </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- Timeline -->
+    <section class="component-section">
+      <h2>Timeline</h2>
+      <p class="mbe3">Display chronological events and milestones.</p>
+
+      <h3 class="subsection-title">Horizontal Timeline</h3>
+      <VueTimeline
+        orientation="horizontal"
+        class="mbe4"
+      >
+        <VueTimelineItem>
+          <template #ag-start>2023-01</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary);"></div>
+          </template>
+          <template #ag-end>Step 1 Completed</template>
+        </VueTimelineItem>
+        <VueTimelineItem>
+          <template #ag-start>2023-02</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-info);"></div>
+          </template>
+          <template #ag-end>Step 2 In Progress</template>
+        </VueTimelineItem>
+        <VueTimelineItem>
+          <template #ag-start>2023-03</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-border);"></div>
+          </template>
+          <template #ag-end>Step 3 Pending</template>
+        </VueTimelineItem>
+      </VueTimeline>
+
+      <h3 class="subsection-title">Vertical Timeline</h3>
+      <VueTimeline
+        orientation="vertical"
+        variant="primary"
+      >
+        <VueTimelineItem>
+          <template #ag-start>09:00 AM</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary);"></div>
+          </template>
+          <template #ag-end>
+            <strong>Breakfast</strong>
+            <p style="margin: 0.25rem 0 0 0;">Oatmeal and coffee</p>
+          </template>
+        </VueTimelineItem>
+        <VueTimelineItem>
+          <template #ag-start>10:00 AM</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary);"></div>
+          </template>
+          <template #ag-end>
+            <strong>Meeting</strong>
+            <p style="margin: 0.25rem 0 0 0;">Daily standup</p>
+          </template>
+        </VueTimelineItem>
+        <VueTimelineItem>
+          <template #ag-start>11:00 AM</template>
+          <template #ag-marker>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary);"></div>
+          </template>
+          <template #ag-end>
+            <strong>Work</strong>
+            <p style="margin: 0.25rem 0 0 0;">Focus time</p>
+          </template>
+        </VueTimelineItem>
+      </VueTimeline>
+    </section>
+
+    <VueDivider />
+
+    <!-- Dialog -->
+    <section class="component-section">
+      <h2>Dialog (Modal)</h2>
+      <p class="mbe3">Modal dialogs for confirmations and forms.</p>
+
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VueButton @click="isDialogOpen = true">Open Dialog</VueButton>
+      </VueFlexRow>
+
+      <VueDialog
+        v-model:open="isDialogOpen"
+        heading="Dialog Example"
+        description="This is a basic dialog component."
+        show-close-button
+      >
+        <p>Dialog content goes here. You can add forms, messages, or any content.</p>
+        <VueDialogFooter>
+          <VueFlexRow
+            gap="md"
+            justify="flex-end"
+          >
+            <VueButton @click="isDialogOpen = false">Cancel</VueButton>
+            <VueButton
+              variant="primary"
+              @click="isDialogOpen = false"
+            >Confirm</VueButton>
+          </VueFlexRow>
+        </VueDialogFooter>
+      </VueDialog>
+    </section>
+
+    <VueDivider />
+
+    <!-- MessageBubble -->
+    <section class="component-section">
+      <h2>Message Bubble (Chat)</h2>
+      <p class="mbe3">Chat-style message bubbles for conversations.</p>
+
+      <div style="max-width: 600px; border: 1px solid var(--ag-border); padding: 1rem; border-radius: 8px; background: var(--ag-background-secondary);">
+        <VueMessageBubble
+          v-for="message in messages"
+          :key="message.id"
+          :from="message.from"
+          :message="message.text"
+          :author="message.author"
+          :time="message.time"
+        />
+      </div>
+    </section>
+
+    <VueDivider />
+
+    <!-- Toast -->
+    <section class="component-section">
+      <h2>Toast Notification</h2>
+      <p class="mbe3">Temporary notification messages.</p>
+
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VueButton @click="showToast = true">Show Toast</VueButton>
+        <VueButton
+          variant="success"
+          @click="showToast = true"
+        >Success Toast</VueButton>
+      </VueFlexRow>
+
+      <VueToast
+        v-model:open="showToast"
+        type="info"
+        @toast-close="showToast = false"
+      >
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <Info :size="20" />
+          This is a toast notification!
+        </div>
+      </VueToast>
+    </section>
+
+    <VueDivider />
+
+    <!-- Drawer -->
+    <section class="component-section">
+      <h2>Drawer (Slide Panel)</h2>
+      <p class="mbe3">Slide-in panels from screen edges.</p>
+
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VueButton @click="isDrawerOpen = true">Open Drawer</VueButton>
+      </VueFlexRow>
+
+      <VueDrawer
+        :open="isDrawerOpen"
+        position="end"
+        heading="Drawer Panel"
+        show-close-button
+        @drawer-close="isDrawerOpen = false"
+      >
+        <div>
+          <h4>Drawer Content</h4>
+          <p>This drawer slides in from the right side. You can add settings, navigation, or any content here.</p>
+        </div>
+        <div slot="footer">
+          <VueFlexRow
+            gap="md"
+            justify="flex-end"
+          >
+            <VueButton @click="isDrawerOpen = false">Close</VueButton>
+          </VueFlexRow>
+        </div>
+      </VueDrawer>
+    </section>
+
+    <VueDivider />
+
+    <!-- Popover -->
+    <section class="component-section">
+      <h2>Popover</h2>
+      <p class="mbe3">Contextual overlay panels triggered by user interaction.</p>
+
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VuePopover>
+          <VueButton slot="trigger">Hover me</VueButton>
+          <span slot="title">Popover Title</span>
+          <div slot="content">
+            <p>This is the popover content. It appears on hover or click.</p>
+          </div>
+        </VuePopover>
+
+        <VuePopover placement="top">
+          <VueButton
+            slot="trigger"
+            variant="primary"
+          >Top Placement</VueButton>
+          <span slot="title">Above</span>
+          <div slot="content">
+            <p>This popover appears above the trigger.</p>
+          </div>
+        </VuePopover>
+      </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- Pagination -->
+    <section class="component-section">
+      <h2>Pagination</h2>
+      <p class="mbe3">Navigate through pages of content.</p>
+
+      <VuePagination
+        :current="currentPage"
+        :total-pages="10"
+        @page-change="currentPage = $event.page"
+      />
+      <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
+        Current page: {{ currentPage }}
+      </p>
+    </section>
+
+    <VueDivider />
+
+    <!-- Tooltip -->
+    <section class="component-section">
+      <h2>Tooltip</h2>
+      <p class="mbe3">Helpful hints that appear on hover.</p>
+
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VueTooltip content="This is a tooltip">
+          <VueButton>Hover for tooltip</VueButton>
+        </VueTooltip>
+
+        <VueTooltip
+          content="Edit this item"
+          placement="top"
+        >
+          <VueButton variant="secondary">
+            <Edit :size="16" />
+          </VueButton>
+        </VueTooltip>
+
+        <VueTooltip
+          content="Delete this item"
+          placement="right"
+        >
+          <VueButton variant="danger">
+            <Trash2 :size="16" />
+          </VueButton>
+        </VueTooltip>
+      </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- Progress -->
+    <section class="component-section">
+      <h2>Progress Bar</h2>
+      <p class="mbe3">Visual indicators for task completion.</p>
+
+      <h3 class="subsection-title">Determinate Progress</h3>
+      <VueProgress
+        :value="50"
+        label="50% complete"
+        class="mbe3"
+      />
+
+      <VueProgress
+        :value="75"
+        label="75% complete"
+        class="mbe3"
+      />
+
+      <h3 class="subsection-title">Indeterminate Progress</h3>
+      <VueProgress label="Loading..." />
+    </section>
+
+    <VueDivider />
+
+    <!-- EmptyState -->
+    <section class="component-section">
+      <h2>Empty State</h2>
+      <p class="mbe3">Placeholders for empty content areas.</p>
+
+      <h3 class="subsection-title">Basic Empty State</h3>
+      <VueEmptyState
+        title="No items found"
+        subtitle="Get started by creating your first item"
+        class="mbe3"
+      />
+
+      <h3 class="subsection-title">With Action Button</h3>
+      <VueEmptyState
+        title="No projects yet"
+        subtitle="Create your first project to get started"
+        buttonText="New Project"
+        :bordered="true"
+        :rounded="true"
+      />
+
+      <h3 class="subsection-title">With Custom Icon</h3>
+      <VueEmptyState
+        title="No files"
+        subtitle="Upload files to see them here"
+        size="md"
+        :bordered="true"
+        :rounded="true"
+      >
+        <template #icon>
+          <Folder
+            :size="48"
+            color="#999"
+          />
+        </template>
+      </VueEmptyState>
     </section>
 
     <VueDivider />

@@ -38,6 +38,19 @@
     "@types/tar": "^6.1.13",
     "typescript": "^5.7.2"
   },
+  "peerDependencies": {
+    "lit": "^3.0.0",
+    "focus-trap": "^7.0.0",
+    "@floating-ui/dom": "^1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "focus-trap": {
+      "optional": true
+    },
+    "@floating-ui/dom": {
+      "optional": true
+    }
+  },
   "engines": {
     "node": ">=18.0.0"
   }

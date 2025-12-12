@@ -365,6 +365,146 @@
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Spinner/core",
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Spinner/vue"
       ]
+    },
+    "Collapsible": {
+      "added": "2025-12-12T00:59:23.730Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Collapsible/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Collapsible/vue"
+      ]
+    },
+    "Loader": {
+      "added": "2025-12-12T00:59:23.732Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Loader/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Loader/vue"
+      ]
+    },
+    "Tabs": {
+      "added": "2025-12-12T00:59:23.732Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Tabs/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Tabs/vue"
+      ]
+    },
+    "CopyButton": {
+      "added": "2025-12-12T00:59:23.732Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/CopyButton/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/CopyButton/vue"
+      ]
+    },
+    "Menu": {
+      "added": "2025-12-12T00:59:23.732Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Menu/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Menu/vue"
+      ]
+    },
+    "Timeline": {
+      "added": "2025-12-12T00:59:23.732Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Timeline/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Timeline/vue"
+      ]
+    },
+    "Dialog": {
+      "added": "2025-12-12T01:05:04.733Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Dialog/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Dialog/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "MessageBubble": {
+      "added": "2025-12-12T01:05:04.733Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/MessageBubble/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/MessageBubble/vue"
+      ]
+    },
+    "Toast": {
+      "added": "2025-12-12T01:05:04.733Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Toast/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Toast/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Drawer": {
+      "added": "2025-12-12T01:05:04.733Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Drawer/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Drawer/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Dialog/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Dialog/vue"
+      ]
+    },
+    "Popover": {
+      "added": "2025-12-12T01:05:04.733Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Popover/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Popover/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Pagination": {
+      "added": "2025-12-12T01:05:04.733Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Pagination/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Pagination/vue"
+      ]
+    },
+    "Tooltip": {
+      "added": "2025-12-12T01:05:04.733Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Tooltip/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Tooltip/vue"
+      ]
+    },
+    "Progress": {
+      "added": "2025-12-12T01:05:04.733Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Progress/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Progress/vue"
+      ]
+    },
+    "EmptyState": {
+      "added": "2025-12-12T01:05:04.733Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/EmptyState/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/EmptyState/vue"
+      ]
     }
   },
   "ai": {
