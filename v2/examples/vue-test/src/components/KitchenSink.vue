@@ -213,9 +213,13 @@ const toggleSidebar = async (event: Event) => {
     sidebar.toggleCollapse();
     console.log("After toggleCollapse - collapsed:", sidebar.collapsed);
   } else {
-    console.error("ERROR: Could not find sidebar or toggleCollapse method!");
     console.error("Available methods:", Object.keys(sidebar));
   }
+};
+
+const handleCollapsibleToggle = (event: Event) => {
+  const target = event.target as any;
+  collapsibleExpanded.value = target.open;
 };
 </script>
 
@@ -1339,7 +1343,7 @@ const toggleSidebar = async (event: Event) => {
       <VueCollapsible
         use-chevron
         class="mbe2"
-        @toggle="collapsibleExpanded = ($event.target as any).open"
+        @toggle="handleCollapsibleToggle"
       >
         <template #summary>
           <span>Click to expand</span>

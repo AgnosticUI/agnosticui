@@ -1,7 +1,7 @@
 /**
  * File system utilities
  */
-import { mkdir, readdir, copyFile, readFile, stat } from 'node:fs/promises';
+import { mkdir, readdir, copyFile, readFile, writeFile, stat, appendFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { extract } from 'tar';
@@ -130,5 +130,29 @@ export async function isDirectory(dirPath: string): Promise<boolean> {
     return stats.isDirectory();
   } catch {
     return false;
+  }
+}
+
+/**
+ * Add a pattern to an ignore file (e.g. .gitignore or .eslintignore)
+ * Creates the file if it doesn't exist
+ */
+export async function updateIgnoreFile(filePath: string, pattern: string): Promise<void> {
+  if (pathExists(filePath)) {
+    const content = await readFile(filePath, 'utf-8');
+    if (!content.includes(pattern)) {
+      const separator = content.endsWith('\n') ? '' : '\n';
+      await appendFile(filePath, `${separator}${pattern}\n`);
+    }
+  } else {
+    // Determine default content based on file type
+    let defaultContent = '';
+    const basename = path.basename(filePath);
+    
+    if (basename === '.gitignore') {
+      defaultContent = '# Logs\nlogs\n*.log\nnpm-debug.log*\n\n# Node\nnode_modules/\n\n# OS\n.DS_Store\n\n';
+    }
+    
+    await writeFile(filePath, `${defaultContent}${pattern}\n`);
   }
 }

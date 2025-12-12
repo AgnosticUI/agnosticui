@@ -7,7 +7,7 @@ import { existsSync } from 'node:fs';
 import type { Framework, InitOptions } from '../types/index.js';
 import { logger } from '../utils/logger.js';
 import { loadConfig, saveConfig, createDefaultConfig } from '../utils/config.js';
-import { extractTarball, ensureDir, pathExists } from '../utils/files.js';
+import { extractTarball, ensureDir, pathExists, updateIgnoreFile } from '../utils/files.js';
 import {
   getFrameworkDependencies,
   checkDependenciesInstalled,
@@ -156,8 +156,18 @@ export async function init(options: InitOptions = {}): Promise<void> {
     // Check and install dependencies
     await handleDependencies(framework);
 
-    // Success message
-    p.outro(pc.green('AgnosticUI Local is ready!'));
+    // Update ignore files for the reference library
+    spinner.message('Updating ignore files...');
+    const referenceDirName = path.basename(DEFAULT_REFERENCE_PATH);
+    const ignorePattern = `${referenceDirName}/`;
+
+    // Update .gitignore
+    await updateIgnoreFile(path.join(process.cwd(), '.gitignore'), ignorePattern);
+    
+    // Update .eslintignore (if it exists or if we should create it)
+    await updateIgnoreFile(path.join(process.cwd(), '.eslintignore'), ignorePattern);
+
+    spinner.stop(pc.green('✓') + ' Initialized successfully!');
 
     logger.newline();
     logger.box('Next Steps:', [
@@ -267,7 +277,11 @@ function showTypeScriptNote(): void {
     logger.info(pc.yellow('TypeScript Note:') + ' Add to ' + pc.cyan('ALL') + ' tsconfig files:');
     console.log('  ' + pc.dim('"compilerOptions": {'));
     console.log('    ' + pc.cyan('"experimentalDecorators": true'));
-    console.log('  ' + pc.dim('}'));
+    console.log('  ' + pc.dim('},'));
+    console.log('  ' + pc.dim('"exclude": ['));
+    console.log('    ' + pc.cyan('"agnosticui",'));
+    console.log('    ' + pc.cyan('"**/agnosticui/**"'));
+    console.log('  ' + pc.dim(']'));
     logger.newline();
     logger.info(pc.dim('(For Vite: add to both tsconfig.json AND tsconfig.app.json)'));
   }
