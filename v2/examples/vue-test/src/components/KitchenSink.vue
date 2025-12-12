@@ -7,6 +7,7 @@ import { VueBadge } from "./ag/Badge/vue";
 import { VueBadgeFx } from "./ag/BadgeFx/vue";
 import { VueBreadcrumb } from "./ag/Breadcrumb/vue";
 import { VueButton } from "./ag/Button/vue";
+import { VueButtonFx } from "./ag/ButtonFx/vue";
 import { VueCard } from "./ag/Card/vue";
 import { VueCheckbox } from "./ag/Checkbox/vue";
 import { VueCombobox } from "./ag/Combobox/vue";
@@ -19,6 +20,9 @@ import { VueIconButton } from "./ag/IconButton/vue";
 import { VueIconButtonFx } from "./ag/IconButtonFx/vue";
 import { VueImage } from "./ag/Image/vue";
 import { VueInput } from "./ag/Input/vue";
+import { VueIntlFormatter } from "./ag/IntlFormatter/vue";
+import { VueKbd } from "./ag/Kbd/vue";
+import { VueLink } from "./ag/Link/vue";
 import { VueMark } from "./ag/Mark/vue";
 import { VueProgressRing } from "./ag/ProgressRing/vue";
 import { VueRadio } from "./ag/Radio/vue";
@@ -28,10 +32,26 @@ import { VueScrollToButton } from "./ag/ScrollToButton/vue";
 import { VueSelect } from "./ag/Select/vue";
 import { VueSidebar } from "./ag/Sidebar/vue";
 import { VueSidebarNav, VueSidebarNavItem } from "./ag/SidebarNav/vue";
+import { VueSkeleton } from "./ag/SkeletonLoader/vue";
 import { VueSlider } from "./ag/Slider/vue";
+import { VueSpinner } from "./ag/Spinner/vue";
 import { VueTag } from "./ag/Tag/vue";
 import { VueToggle } from "./ag/Toggle/vue";
-import { CheckCircle2, Info, AlertTriangle, XCircle, Settings, Search, Edit, Trash2, Star, Heart, Download, Home, ChevronRight } from "lucide-vue-next";
+import {
+  CheckCircle2,
+  Info,
+  AlertTriangle,
+  XCircle,
+  Settings,
+  Search,
+  Edit,
+  Trash2,
+  Star,
+  Heart,
+  Download,
+  Home,
+  ChevronRight,
+} from "lucide-vue-next";
 
 defineProps<{ msg: string }>();
 
@@ -73,7 +93,9 @@ const breadcrumbItems = [
   { label: "Kitchen Sink", href: "#kitchen-sink" },
 ];
 
-const handleBreadcrumbClick = (event: { item: { label: string; href: string } }) => {
+const handleBreadcrumbClick = (event: {
+  item: { label: string; href: string };
+}) => {
   console.log(`Breadcrumb clicked: ${event.item.label}`);
 };
 
@@ -95,13 +117,19 @@ const toggleSidebar = async (event: Event) => {
   // Wait for custom element to be upgraded
   if (sidebar && !sidebar.toggleCollapse) {
     console.log("Waiting for customElements.whenDefined('ag-sidebar')...");
-    await customElements.whenDefined('ag-sidebar');
+    await customElements.whenDefined("ag-sidebar");
     console.log("ag-sidebar is now defined!");
   }
 
-  console.log("Sidebar has toggleCollapse after wait?", typeof sidebar?.toggleCollapse);
+  console.log(
+    "Sidebar has toggleCollapse after wait?",
+    typeof sidebar?.toggleCollapse
+  );
   console.log("All sidebar properties:", Object.getOwnPropertyNames(sidebar));
-  console.log("Sidebar methods from prototype:", Object.getOwnPropertyNames(Object.getPrototypeOf(sidebar)));
+  console.log(
+    "Sidebar methods from prototype:",
+    Object.getOwnPropertyNames(Object.getPrototypeOf(sidebar))
+  );
 
   if (sidebar && sidebar.toggleCollapse) {
     console.log("CALLING sidebar.toggleCollapse()");
@@ -434,7 +462,11 @@ const toggleSidebar = async (event: Event) => {
         >
           <CheckCircle2 />
         </VueIcon>
-        <VueIcon type="info" size="16" noFill>
+        <VueIcon
+          type="info"
+          size="16"
+          noFill
+        >
           <Info />
         </VueIcon>
         <VueIcon
@@ -588,10 +620,22 @@ const toggleSidebar = async (event: Event) => {
     <section class="component-section">
       <h2>Alerts</h2>
       <VueAlert class="mbe2">Default alert</VueAlert>
-      <VueAlert class="mbe2" type="success">Success alert</VueAlert>
-      <VueAlert class="mbe2" type="info">Info alert</VueAlert>
-      <VueAlert class="mbe2" type="warning">Warning alert</VueAlert>
-      <VueAlert class="mbe2" type="error">Error alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        type="success"
+      >Success alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        type="info"
+      >Info alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        type="warning"
+      >Warning alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        type="error"
+      >Error alert</VueAlert>
     </section>
 
     <VueDivider />
@@ -601,8 +645,8 @@ const toggleSidebar = async (event: Event) => {
       <h2>Aspect Ratio</h2>
       <h3 class="subsection-title">16:9 Responsive Container</h3>
       <VueAspectRatio
-        :width="16"
-        :height="9"
+        width="16"
+        height="9"
         style="max-width: 600px;"
       >
         <div style="background:var(--ag-background-tertiary);width:100%;height:100%;display:flex;align-items:center;justify-content:center">
@@ -618,15 +662,27 @@ const toggleSidebar = async (event: Event) => {
       <h2>Header</h2>
       <VueHeader>
         <template #logo>
-          <a href="#" style="text-decoration: none; color: var(--ag-primary); font-weight: 700; font-size: 1.25rem;">
+          <a
+            href="#"
+            style="text-decoration: none; color: var(--ag-primary); font-weight: 700; font-size: 1.25rem;"
+          >
             AgnosticUI
           </a>
         </template>
         <nav>
           <ul style="display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0;">
-            <li><a href="#home" style="text-decoration: none; color: inherit;">Home</a></li>
-            <li><a href="#about" style="text-decoration: none; color: inherit;">About</a></li>
-            <li><a href="#contact" style="text-decoration: none; color: inherit;">Contact</a></li>
+            <li><a
+                href="#home"
+                style="text-decoration: none; color: inherit;"
+              >Home</a></li>
+            <li><a
+                href="#about"
+                style="text-decoration: none; color: inherit;"
+              >About</a></li>
+            <li><a
+                href="#contact"
+                style="text-decoration: none; color: inherit;"
+              >Contact</a></li>
           </ul>
         </nav>
       </VueHeader>
@@ -637,24 +693,51 @@ const toggleSidebar = async (event: Event) => {
     <!-- Icon Buttons -->
     <section class="component-section">
       <h2>Icon Buttons</h2>
-      <VueFlexRow gap="md" wrap="wrap">
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
         <VueIconButton label="Settings">
-          <Settings :size="18" class="expand" />
+          <Settings
+            :size="18"
+            class="expand"
+          />
         </VueIconButton>
         <VueIconButton label="Search">
-          <Search :size="18" class="expand" />
+          <Search
+            :size="18"
+            class="expand"
+          />
         </VueIconButton>
         <VueIconButton label="Edit">
-          <Edit :size="18" class="expand" />
+          <Edit
+            :size="18"
+            class="expand"
+          />
         </VueIconButton>
         <VueIconButton label="Delete">
-          <Trash2 :size="18" class="expand" />
+          <Trash2
+            :size="18"
+            class="expand"
+          />
         </VueIconButton>
-        <VueIconButton label="Primary" variant="primary">
-          <Star :size="18" class="expand" />
+        <VueIconButton
+          label="Primary"
+          variant="primary"
+        >
+          <Star
+            :size="18"
+            class="expand"
+          />
         </VueIconButton>
-        <VueIconButton label="Success" variant="success">
-          <CheckCircle2 :size="18" class="expand" />
+        <VueIconButton
+          label="Success"
+          variant="success"
+        >
+          <CheckCircle2
+            :size="18"
+            class="expand"
+          />
         </VueIconButton>
       </VueFlexRow>
     </section>
@@ -664,11 +747,17 @@ const toggleSidebar = async (event: Event) => {
     <!-- Progress Ring -->
     <section class="component-section">
       <h2>Progress Ring</h2>
-      <VueFlexRow gap="lg" wrap="wrap">
+      <VueFlexRow
+        gap="lg"
+        wrap="wrap"
+      >
         <VueProgressRing :value="25" />
         <VueProgressRing :value="50" />
         <VueProgressRing :value="75" />
-        <VueProgressRing :value="100" variant="success" />
+        <VueProgressRing
+          :value="100"
+          variant="success"
+        />
       </VueFlexRow>
     </section>
 
@@ -677,13 +766,36 @@ const toggleSidebar = async (event: Event) => {
     <!-- BadgeFx (Animated Badges) -->
     <section class="component-section">
       <h2>Badge Effects (BadgeFx)</h2>
-      <VueFlexRow gap="md" wrap="wrap">
-        <VueBadgeFx fx="bounce" variant="success">Bounce</VueBadgeFx>
-        <VueBadgeFx fx="pulse" variant="info">Pulse</VueBadgeFx>
-        <VueBadgeFx fx="jelly" fx-speed="lg" variant="monochrome">Jelly</VueBadgeFx>
-        <VueBadgeFx fx="shimmer" fx-speed="xl" variant="danger">Shimmer</VueBadgeFx>
-        <VueBadgeFx fx="glow" variant="primary">Glow</VueBadgeFx>
-        <VueBadgeFx fx="ripple" variant="info">Ripple</VueBadgeFx>
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VueBadgeFx
+          fx="bounce"
+          variant="success"
+        >Bounce</VueBadgeFx>
+        <VueBadgeFx
+          fx="pulse"
+          variant="info"
+        >Pulse</VueBadgeFx>
+        <VueBadgeFx
+          fx="jelly"
+          fx-speed="lg"
+          variant="monochrome"
+        >Jelly</VueBadgeFx>
+        <VueBadgeFx
+          fx="shimmer"
+          fx-speed="xl"
+          variant="danger"
+        >Shimmer</VueBadgeFx>
+        <VueBadgeFx
+          fx="glow"
+          variant="primary"
+        >Glow</VueBadgeFx>
+        <VueBadgeFx
+          fx="ripple"
+          variant="info"
+        >Ripple</VueBadgeFx>
       </VueFlexRow>
     </section>
 
@@ -692,18 +804,49 @@ const toggleSidebar = async (event: Event) => {
     <!-- IconButtonFx (Animated Icon Buttons) -->
     <section class="component-section">
       <h2>Icon Button Effects (IconButtonFx)</h2>
-      <VueFlexRow gap="md" wrap="wrap">
-        <VueIconButtonFx fx="pulse" variant="primary" label="Pulse">
-          <Heart :size="18" class="expand" />
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VueIconButtonFx
+          fx="pulse"
+          variant="primary"
+          label="Pulse"
+        >
+          <Heart
+            :size="18"
+            class="expand"
+          />
         </VueIconButtonFx>
-        <VueIconButtonFx fx="bounce" variant="success" label="Bounce">
-          <Download :size="18" class="expand" />
+        <VueIconButtonFx
+          fx="bounce"
+          variant="success"
+          label="Bounce"
+        >
+          <Download
+            :size="18"
+            class="expand"
+          />
         </VueIconButtonFx>
-        <VueIconButtonFx fx="shake" variant="warning" label="Shake">
-          <AlertTriangle :size="18" class="expand" />
+        <VueIconButtonFx
+          fx="shake"
+          variant="warning"
+          label="Shake"
+        >
+          <AlertTriangle
+            :size="18"
+            class="expand"
+          />
         </VueIconButtonFx>
-        <VueIconButtonFx fx="spin" variant="ghost" label="Spin">
-          <Settings :size="18" class="expand" />
+        <VueIconButtonFx
+          fx="spin"
+          variant="ghost"
+          label="Spin"
+        >
+          <Settings
+            :size="18"
+            class="expand"
+          />
         </VueIconButtonFx>
       </VueFlexRow>
     </section>
@@ -716,7 +859,7 @@ const toggleSidebar = async (event: Event) => {
       <h3 class="subsection-title">Default (Chevron)</h3>
       <VueBreadcrumb
         :items="breadcrumbItems"
-        @breadcrumb-click="handleBreadcrumbClick"
+        @breadcrumbClick="handleBreadcrumbClick"
         class="mbe3"
       />
 
@@ -724,7 +867,7 @@ const toggleSidebar = async (event: Event) => {
       <VueBreadcrumb
         type="slash"
         :items="breadcrumbItems"
-        @breadcrumb-click="handleBreadcrumbClick"
+        @breadcrumbClick="handleBreadcrumbClick"
         class="mbe3"
       />
 
@@ -732,7 +875,7 @@ const toggleSidebar = async (event: Event) => {
       <VueBreadcrumb
         type="arrow"
         :items="breadcrumbItems"
-        @breadcrumb-click="handleBreadcrumbClick"
+        @breadcrumbClick="handleBreadcrumbClick"
       />
     </section>
 
@@ -841,6 +984,302 @@ const toggleSidebar = async (event: Event) => {
           <p>Click the header toggle to collapse the sidebar into rail mode (icon-only).</p>
         </main>
       </div>
+    </section>
+
+    <VueDivider />
+
+    <!-- ButtonFx (Button with Hover Effects) -->
+    <section class="component-section">
+      <h2>Button Effects (ButtonFx)</h2>
+      <p class="mbe3">Buttons with hover effects for enhanced interactivity.</p>
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VueButtonFx
+          fx="bounce"
+          variant="primary"
+        >Bounce</VueButtonFx>
+        <VueButtonFx
+          fx="pulse"
+          variant="success"
+        >Pulse</VueButtonFx>
+        <VueButtonFx
+          fx="jelly"
+          variant="secondary"
+        >Jelly</VueButtonFx>
+        <VueButtonFx
+          fx="grow"
+          variant="warning"
+        >Grow</VueButtonFx>
+        <VueButtonFx
+          fx="shrink"
+          variant="danger"
+        >Shrink</VueButtonFx>
+        <VueButtonFx
+          fx="ripple"
+          variant="monochrome"
+        >Ripple</VueButtonFx>
+      </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- IntlFormatter (Date/Number Formatting) -->
+    <section class="component-section">
+      <h2>Internationalization Formatter (IntlFormatter)</h2>
+      <p class="mbe3">Format dates, numbers, and currencies using Intl API.</p>
+
+      <h3 class="subsection-title">Date Formatting</h3>
+      <VueFlexRow
+        gap="md"
+        direction="column"
+        align="flex-start"
+      >
+        <div>
+          <strong>Short Date:</strong>
+          <VueIntlFormatter
+            type="date"
+            :value="new Date('2025-12-11')"
+            locale="en-US"
+            :options="{ dateStyle: 'short' }"
+          />
+        </div>
+        <div>
+          <strong>Long Date:</strong>
+          <VueIntlFormatter
+            type="date"
+            :value="new Date('2025-12-11')"
+            locale="en-US"
+            :options="{ dateStyle: 'long' }"
+          />
+        </div>
+        <div>
+          <strong>Full Date:</strong>
+          <VueIntlFormatter
+            type="date"
+            :value="new Date('2025-12-11')"
+            locale="en-US"
+            :options="{ dateStyle: 'full' }"
+          />
+        </div>
+      </VueFlexRow>
+
+      <h3 class="subsection-title">Number Formatting</h3>
+      <VueFlexRow
+        gap="md"
+        direction="column"
+        align="flex-start"
+      >
+        <div>
+          <strong>Standard Number:</strong>
+          <VueIntlFormatter
+            type="number"
+            :value="1234567.89"
+            locale="en-US"
+          />
+        </div>
+        <div>
+          <strong>Currency (USD):</strong>
+          <VueIntlFormatter
+            type="number"
+            :value="1234.56"
+            locale="en-US"
+            :options="{ style: 'currency', currency: 'USD' }"
+          />
+        </div>
+        <div>
+          <strong>Percentage:</strong>
+          <VueIntlFormatter
+            type="number"
+            :value="0.75"
+            locale="en-US"
+            :options="{ style: 'percent' }"
+          />
+        </div>
+      </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- SkeletonLoader (Loading Placeholders) -->
+    <section class="component-section">
+      <h2>Skeleton Loader</h2>
+      <p class="mbe3">Loading placeholders for improved perceived performance.</p>
+
+      <h3 class="subsection-title">Text Variants</h3>
+      <VueFlexRow
+        gap="md"
+        direction="column"
+      >
+        <VueSkeleton
+          variant="rectangular"
+          width="200px"
+          class="mbe2"
+        />
+        <VueSkeleton
+          variant="rectangular"
+          width="200px"
+          class="mbe2"
+        />
+        <VueSkeleton
+          variant="rectangular"
+          width="200px"
+          class="mbe2"
+        />
+      </VueFlexRow>
+
+      <h3 class="subsection-title">Shape Variants</h3>
+      <div class="mbe2">
+        <VueSkeleton
+          variant="circular"
+          width="64px"
+          height="64px"
+        />
+      </div>
+      <div>
+        <VueSkeleton
+          variant="rounded"
+          width="300px"
+          height="200px"
+        />
+      </div>
+    </section>
+
+    <VueDivider />
+
+    <!-- Kbd (Keyboard Keys) -->
+    <section class="component-section">
+      <h2>Keyboard (Kbd)</h2>
+      <p class="mbe3">Display keyboard shortcuts and key combinations.</p>
+
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+        align="center"
+      >
+        <div>
+          Press <VueKbd>Ctrl</VueKbd> + <VueKbd>C</VueKbd> to copy
+        </div>
+        <div class="mis4">
+          <VueKbd>⌘</VueKbd>
+          <VueKbd>⌥</VueKbd>
+          <VueKbd>⇧</VueKbd>
+          <VueKbd>⌃</VueKbd>
+        </div>
+        <div>
+          Press <VueKbd>Ctrl</VueKbd> + <VueKbd>V</VueKbd> to paste
+        </div>
+        <div>
+          Press <VueKbd>Enter</VueKbd> to submit
+        </div>
+        <div>
+          Press <VueKbd>Esc</VueKbd> to cancel
+        </div>
+      </VueFlexRow>
+
+      <h3 class="subsection-title">Common Shortcuts</h3>
+      <VueFlexRow
+        gap="md"
+        direction="column"
+        align="flex-start"
+      >
+        <div>
+          Save: <VueKbd>Ctrl</VueKbd> + <VueKbd>S</VueKbd>
+        </div>
+        <div>
+          Undo: <VueKbd>Ctrl</VueKbd> + <VueKbd>Z</VueKbd>
+        </div>
+        <div>
+          Redo: <VueKbd>Ctrl</VueKbd> + <VueKbd>Shift</VueKbd> + <VueKbd>Z</VueKbd>
+        </div>
+      </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- Link -->
+    <section class="component-section">
+      <h2>Links</h2>
+      <p class="mbe3">Styled links with various variants and configurations.</p>
+
+      <h3 class="subsection-title">Basic Links</h3>
+      <VueFlexRow
+        gap="md"
+        direction="column"
+        align="flex-start"
+      >
+        <VueLink href="#default">Default Link</VueLink>
+        <VueLink
+          href="#primary"
+          variant="primary"
+        >Primary Link</VueLink>
+        <VueLink
+          href="#success"
+          variant="success"
+        >Success Link</VueLink>
+        <VueLink
+          href="#warning"
+          variant="warning"
+        >Warning Link</VueLink>
+        <VueLink
+          href="#danger"
+          variant="danger"
+        >Danger Link</VueLink>
+      </VueFlexRow>
+
+      <h3 class="subsection-title">Button-Style Links</h3>
+      <VueFlexRow
+        gap="md"
+        wrap="wrap"
+      >
+        <VueLink
+          href="#button"
+          as-button
+          variant="primary"
+        >Primary Button Link</VueLink>
+        <VueLink
+          href="#button-success"
+          as-button
+          variant="success"
+        >Success Button Link</VueLink>
+        <VueLink
+          href="#button-danger"
+          as-button
+          variant="danger"
+        >Danger Button Link</VueLink>
+      </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- Spinner (Loading Indicators) -->
+    <section class="component-section">
+      <h2>Spinner</h2>
+      <p class="mbe3">Loading spinners in various sizes.</p>
+
+      <VueFlexRow
+        gap="lg"
+        wrap="wrap"
+        align="center"
+      >
+        <div>
+          <p class="mbe2">Small:</p>
+          <VueSpinner size="small" />
+        </div>
+        <div>
+          <p class="mbe2">Default:</p>
+          <VueSpinner />
+        </div>
+        <div>
+          <p class="mbe2">Large:</p>
+          <VueSpinner size="large" />
+        </div>
+        <div>
+          <p class="mbe2">XL:</p>
+          <VueSpinner size="xlarge" />
+        </div>
+      </VueFlexRow>
     </section>
 
     <VueDivider />
@@ -1023,11 +1462,13 @@ const toggleSidebar = async (event: Event) => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+  transition: opacity var(--ag-sidebar-transition-duration)
+    var(--ag-sidebar-transition-easing);
 }
 
 :global(.nav-button .chevron) {
-  transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
+  transition: opacity var(--ag-sidebar-transition-duration)
+    var(--ag-sidebar-transition-easing);
   white-space: nowrap;
 }
 
