@@ -1,9 +1,10 @@
 import './App.css'
+import { useState } from 'react';
 import { ReactButton } from './components/ag/Button/react/ReactButton';
 import { ReactBreadcrumb, type BreadcrumbItem } from './components/ag/Breadcrumb/react/ReactBreadcrumb';
 import { ReactBadge } from './components/ag/Badge/react/ReactBadge';
 import { ReactIcon } from './components/ag/Icon/react/ReactIcon';
-import { Mail, Heart, Download, Bell, Trash2, Settings, Save } from 'lucide-react';
+import { Mail, Heart, Download, Bell, Trash2, Settings, Save, Home, Folder, ChevronRight, Users, FileText, BarChart3, PanelLeftClose } from 'lucide-react';
 import { ReactTag } from './components/ag/Tag/react/ReactTag';
 import { ReactAlert } from './components/ag/Alert/react/ReactAlert';
 import { ReactAccordion, AccordionItem, ItemHeader, ItemContent } from './components/ag/Accordion/react/ReactAccordion';
@@ -22,6 +23,9 @@ import { ReactIconButton } from './components/ag/IconButton/react/ReactIconButto
 import { ReactScrollToButton } from './components/ag/ScrollToButton/react/ReactScrollToButton';
 import { ReactSelect } from './components/ag/Select/react/ReactSelect';
 import { ReactImage } from './components/ag/Image/react/ReactImage';
+import { ReactSidebar } from './components/ag/Sidebar/react/ReactSidebar';
+import { ReactSidebarNav, ReactSidebarNavItem, ReactSidebarNavSubmenu, ReactSidebarNavPopoverSubmenu } from './components/ag/SidebarNav/react/ReactSidebarNav';
+import { ReactPopover } from './components/ag/Popover/react/ReactPopover';
 
 function App() {
   const items: BreadcrumbItem[] = [
@@ -31,11 +35,57 @@ function App() {
     { label: 'Products', href: '#products' },
   ];
 
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
+  const [teamOpen, setTeamOpen] = useState(false);
+
   const handleBreadcrumbClick = (event: CustomEvent) => {
     console.log(
       `ReactBreadcrumb -> handleClick -- label: ${event.detail.item.label}, href: ${event.detail.item.href}`
     );
   };
+
+  const handleProjectsToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const button = e.currentTarget;
+    const navItem = button.closest("ag-sidebar-nav-item");
+    const submenu = navItem?.querySelector("ag-sidebar-nav-submenu");
+
+    if (!submenu) return;
+
+    const newState = !projectsOpen;
+    setProjectsOpen(newState);
+
+    // Manually sync the DOM for the web component
+    if (newState) {
+      submenu.setAttribute("open", "");
+    } else {
+      submenu.removeAttribute("open");
+    }
+
+    console.log('Projects submenu toggled:', newState);
+  };
+
+  const handleTeamToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const button = e.currentTarget;
+    const navItem = button.closest("ag-sidebar-nav-item");
+    const submenu = navItem?.querySelector("ag-sidebar-nav-submenu");
+
+    if (!submenu) return;
+
+    const newState = !teamOpen;
+    setTeamOpen(newState);
+
+    // Manually sync the DOM for the web component
+    if (newState) {
+      submenu.setAttribute("open", "");
+    } else {
+      submenu.removeAttribute("open");
+    }
+
+    console.log('Team submenu toggled:', newState);
+  };
+
   return (
     <>
       <h1>hello</h1>
@@ -341,8 +391,168 @@ function App() {
           src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=600"
           alt="A beautiful landscape"
           aspectRatio="4/3"
-          style={{ maxWidth: '400px', width: '100%' }}
+          style={{ maxWidth: '800px', width: '100%' }}
         />
+      </section>
+      <section className="mbe4">
+        <h2>Sidebar - Comprehensive Example</h2>
+        <p style={{ marginBottom: '1rem', color: 'var(--ag-text-secondary)' }}>
+          Features: Expanded/Collapsed modes, Submenus, Rotated chevron, Header slots, Popover for collapsed mode
+        </p>
+        <div className="sidebar-demo-container">
+          <ReactSidebar
+            open={sidebarOpen}
+            collapsed={sidebarCollapsed}
+            showMobileToggle={true}
+            onToggle={(open) => setSidebarOpen(open)}
+            onCollapse={(collapsed) => setSidebarCollapsed(collapsed)}
+          >
+            {/* Header with logo/title */}
+            <h2 slot="ag-header-start" className="sidebar-demo-header">
+              Dashboard
+            </h2>
+
+            {/* Custom collapse toggle button */}
+            <button
+              type="button"
+              slot="ag-header-toggle"
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+              className="sidebar-toggle-btn"
+              aria-label="Toggle sidebar"
+            >
+              <PanelLeftClose size={20} />
+            </button>
+
+            {/* Navigation items */}
+            <ReactSidebarNav>
+              {/* Simple navigation item - Active */}
+              <ReactSidebarNavItem>
+                <button type="button" className="nav-button active" aria-current="page">
+                  <Home size={20} />
+                  <span className="nav-label">Dashboard</span>
+                </button>
+              </ReactSidebarNavItem>
+
+              {/* Navigation item with submenu */}
+              <ReactSidebarNavItem>
+                {/* Button for expanded mode with rotating chevron */}
+                <button
+                  type="button"
+                  className="nav-button nav-button-expanded"
+                  aria-expanded={projectsOpen ? "true" : "false"}
+                  onClick={handleProjectsToggle}
+                >
+                  <Folder size={20} />
+                  <span className="nav-label">Projects</span>
+                  <span className="chevron"><ChevronRight size={16} /></span>
+                </button>
+
+                {/* Popover for collapsed mode - shows when sidebar is collapsed */}
+                <ReactPopover
+                  className="nav-button-collapsed"
+                  placement="right-start"
+                  triggerType="click"
+                  distance={8}
+                  arrow={true}
+                >
+                  <button slot="trigger" type="button" className="nav-button">
+                    <Folder size={20} />
+                    <span className="nav-label">Projects</span>
+                  </button>
+                  <ReactSidebarNavPopoverSubmenu slot="content" className="nav-popover-submenu">
+                    <a href="#project-alpha" className="nav-sublink">Project Alpha</a>
+                    <a href="#project-beta" className="nav-sublink">Project Beta</a>
+                    <a href="#project-gamma" className="nav-sublink">Project Gamma</a>
+                  </ReactSidebarNavPopoverSubmenu>
+                </ReactPopover>
+
+                {/* Inline submenu for expanded mode */}
+                <ReactSidebarNavSubmenu>
+                  <a className="nav-sublink" href="#project-alpha">Project Alpha</a>
+                  <a className="nav-sublink" href="#project-beta">Project Beta</a>
+                  <a className="nav-sublink" href="#project-gamma">Project Gamma</a>
+                </ReactSidebarNavSubmenu>
+              </ReactSidebarNavItem>
+
+              {/* Another navigation item with submenu */}
+              <ReactSidebarNavItem>
+                <button
+                  type="button"
+                  className="nav-button nav-button-expanded"
+                  aria-expanded={teamOpen ? "true" : "false"}
+                  onClick={handleTeamToggle}
+                >
+                  <Users size={20} />
+                  <span className="nav-label">Team</span>
+                  <span className="chevron"><ChevronRight size={16} /></span>
+                </button>
+
+                <ReactPopover
+                  className="nav-button-collapsed"
+                  placement="right-start"
+                  triggerType="click"
+                  distance={8}
+                  arrow={true}
+                >
+                  <button slot="trigger" type="button" className="nav-button">
+                    <Users size={20} />
+                    <span className="nav-label">Team</span>
+                  </button>
+                  <ReactSidebarNavPopoverSubmenu slot="content" className="nav-popover-submenu">
+                    <a href="#team-members" className="nav-sublink">Members</a>
+                    <a href="#team-roles" className="nav-sublink">Roles</a>
+                    <a href="#team-settings" className="nav-sublink">Settings</a>
+                  </ReactSidebarNavPopoverSubmenu>
+                </ReactPopover>
+
+                <ReactSidebarNavSubmenu>
+                  <a className="nav-sublink" href="#team-members">Members</a>
+                  <a className="nav-sublink" href="#team-roles">Roles</a>
+                  <a className="nav-sublink" href="#team-settings">Settings</a>
+                </ReactSidebarNavSubmenu>
+              </ReactSidebarNavItem>
+
+              {/* Simple navigation items */}
+              <ReactSidebarNavItem>
+                <button type="button" className="nav-button">
+                  <FileText size={20} />
+                  <span className="nav-label">Documents</span>
+                </button>
+              </ReactSidebarNavItem>
+
+              <ReactSidebarNavItem>
+                <button type="button" className="nav-button">
+                  <BarChart3 size={20} />
+                  <span className="nav-label">Analytics</span>
+                </button>
+              </ReactSidebarNavItem>
+
+              <ReactSidebarNavItem>
+                <button type="button" className="nav-button">
+                  <Settings size={20} />
+                  <span className="nav-label">Settings</span>
+                </button>
+              </ReactSidebarNavItem>
+            </ReactSidebarNav>
+
+            {/* Footer */}
+            <div slot="ag-footer" className="sidebar-demo-footer">
+              © 2024 AgnosticUI
+            </div>
+          </ReactSidebar>
+
+          {/* Main content area */}
+          <main className="sidebar-demo-main">
+            <h1>Main Content Area</h1>
+            <p>
+              Click the toggle button in the sidebar header to switch between expanded and collapsed modes.
+            </p>
+            <p>
+              <strong>Expanded mode:</strong> Shows labels and inline submenus with rotating chevrons.<br />
+              <strong>Collapsed mode:</strong> Icon-only rail with popover submenus on hover/click.
+            </p>
+          </main>
+        </div>
       </section>
     </>
   )
