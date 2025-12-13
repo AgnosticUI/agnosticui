@@ -121,3 +121,182 @@
 .mie8 {
   margin-inline-end: var(--ag-space-8);
 }
+
+/* Sidebar Navigation Styles */
+
+/* CRITICAL: Sidebar component width - must be defined! */
+ag-sidebar {
+  /* Expanded width */
+  width: 260px;
+  transition: width 0.3s ease;
+  overflow: visible; /* Allow popovers to show outside */
+}
+
+ag-sidebar[collapsed] {
+  /* Collapsed width - icon only */
+  width: 64px;
+}
+
+/* Navigation button base styles */
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-3);
+  padding: var(--ag-space-2) var(--ag-space-3);
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border-radius: var(--ag-radius-md);
+  transition: all var(--ag-fx-duration-sm);
+  color: var(--ag-text-primary);
+  font-size: var(--ag-font-size-base);
+}
+
+.nav-button:hover {
+  background: var(--ag-background-secondary);
+}
+
+.nav-button.active {
+  background: var(--ag-primary);
+  color: white;
+  font-weight: 500;
+}
+
+.nav-label {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: opacity var(--ag-fx-duration-sm);
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  transition: transform var(--ag-fx-duration-md), opacity var(--ag-fx-duration-sm);
+  margin-left: auto;
+}
+
+.nav-button[aria-expanded="true"] .chevron {
+  transform: rotate(90deg);
+}
+
+/* CRITICAL: Properly handle collapsed state */
+ag-sidebar[collapsed] .nav-label,
+ag-sidebar[collapsed] .chevron {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+/* Center icons in collapsed mode */
+ag-sidebar[collapsed] .nav-button {
+  justify-content: center;
+  padding: var(--ag-space-2);
+  gap: 0;
+}
+
+/* Show only expanded button in expanded mode */
+ag-sidebar:not([collapsed]) .nav-button-collapsed {
+  display: none;
+}
+
+/* Show only collapsed button (popover trigger) in collapsed mode */
+ag-sidebar[collapsed] .nav-button-expanded {
+  display: none;
+}
+
+/* CRITICAL: Submenu visibility - hidden by default, visible when open */
+ag-sidebar-nav-submenu {
+  display: none;
+  overflow: hidden;
+}
+
+ag-sidebar-nav-submenu[open] {
+  display: block;
+}
+
+/* Submenu link styles */
+.nav-sublink {
+  display: block;
+  padding: var(--ag-space-2) var(--ag-space-3);
+  padding-left: var(--ag-space-8);
+  color: var(--ag-text-secondary);
+  text-decoration: none;
+  border-radius: var(--ag-radius-md);
+  transition: background var(--ag-fx-duration-sm);
+}
+
+.nav-sublink:hover {
+  background: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
+}
+
+/* Popover submenu styles */
+.nav-popover-submenu .nav-sublink {
+  padding-left: var(--ag-space-3);
+}
+
+/* Toggle button in header */
+.sidebar-toggle-btn {
+  background: none;
+  border: none;
+  padding: var(--ag-space-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ag-radius-md);
+  transition: background var(--ag-fx-duration-sm);
+  color: var(--ag-text-primary);
+}
+
+.sidebar-toggle-btn:hover {
+  background: var(--ag-background-secondary);
+}
+
+/* Header and footer in collapsed mode */
+.sidebar-demo-header {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--ag-text-primary);
+  transition: opacity var(--ag-fx-duration-sm);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+ag-sidebar[collapsed] .sidebar-demo-header {
+  opacity: 0;
+  width: 0;
+}
+
+.sidebar-demo-footer {
+  font-size: 0.875rem;
+  color: var(--ag-text-secondary);
+  transition: opacity var(--ag-fx-duration-sm);
+  overflow: hidden;
+}
+
+ag-sidebar[collapsed] .sidebar-demo-footer {
+  opacity: 0;
+  height: 0;
+}
+
+/* Sidebar container for demo */
+.sidebar-demo-container {
+  display: flex;
+  height: 600px;
+  border: 1px solid var(--ag-border);
+  border-radius: var(--ag-radius-lg);
+  overflow: hidden;
+}
+
+.sidebar-demo-main {
+  flex: 1;
+  padding: var(--ag-space-6);
+  overflow-y: auto;
+  background: var(--ag-background);
+}

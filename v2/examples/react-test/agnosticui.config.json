@@ -211,6 +211,34 @@
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Image/core",
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Image/react"
       ]
+    },
+    "Sidebar": {
+      "added": "2025-12-13T17:16:11.322Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Sidebar/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Sidebar/react"
+      ]
+    },
+    "SidebarNav": {
+      "added": "2025-12-13T17:16:11.323Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/SidebarNav/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/SidebarNav/react"
+      ]
+    },
+    "Popover": {
+      "added": "2025-12-13T17:21:21.996Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Popover/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Popover/react",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/shared/CloseButton"
+      ]
     }
   },
   "ai": {
