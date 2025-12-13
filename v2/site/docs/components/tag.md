@@ -11,6 +11,7 @@ import TagExamples from '../examples/TagExamples.vue'
 ## Usage
 
 ::: details Vue
+
 ```vue
 <template>
   <VueTag variant="success" shape="pill" :uppercase="true">
@@ -19,38 +20,42 @@ import TagExamples from '../examples/TagExamples.vue'
   </VueTag>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { VueTag } from 'agnosticui-core/tag/vue';
+import { defineComponent } from "vue";
+import { VueTag } from "agnosticui-core/tag/vue";
 export default defineComponent({
   components: { VueTag },
   methods: {
     handleClose() {
       // Handle close logic
-    }
-  }
+    },
+  },
 });
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactTag } from 'agnosticui-core/tag/react';
+import { ReactTag } from "agnosticui-core/tag/react";
 
 export default function Example() {
   return (
-    <ReactTag variant="success" shape="pill" isUppercase>
+    <ReactTag variant="success" shape="pill" uppercase>
       Active Task
-      <button slot="close" onClick={() => console.log('Close')}>
+      <button slot="close" onClick={() => console.log("Close")}>
         ✕
       </button>
     </ReactTag>
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
   import 'agnosticui-core/tag';
@@ -60,6 +65,7 @@ export default function Example() {
   <button slot="close" @click=${() => console.log('Close')}>✕</button>
 </ag-tag>
 ```
+
 :::
 
 ## Removable Tags
@@ -92,16 +98,16 @@ export default {
   data() {
     return {
       tags: [
-        { id: 1, label: 'Design', variant: 'primary' },
-        { id: 2, label: 'Development', variant: 'success' },
-        { id: 3, label: 'Bug', variant: 'error' },
-        { id: 4, label: 'Feature', variant: 'info' },
+        { id: 1, label: "Design", variant: "primary" },
+        { id: 2, label: "Development", variant: "success" },
+        { id: 3, label: "Bug", variant: "error" },
+        { id: 4, label: "Feature", variant: "info" },
       ],
     };
   },
   methods: {
     removeTag(id) {
-      this.tags = this.tags.filter(tag => tag.id !== id);
+      this.tags = this.tags.filter((tag) => tag.id !== id);
     },
   },
 };
@@ -121,19 +127,19 @@ export default {
 ::: details React
 
 ```tsx
-import { useState } from 'react';
-import { ReactTag } from 'agnosticui-core/tag/react';
+import { useState } from "react";
+import { ReactTag } from "agnosticui-core/tag/react";
 
 export default function RemovableTagExample() {
   const [tags, setTags] = useState([
-    { id: 1, label: 'Design', variant: 'primary' },
-    { id: 2, label: 'Development', variant: 'success' },
-    { id: 3, label: 'Bug', variant: 'error' },
-    { id: 4, label: 'Feature', variant: 'info' },
+    { id: 1, label: "Design", variant: "primary" },
+    { id: 2, label: "Development", variant: "success" },
+    { id: 3, label: "Bug", variant: "error" },
+    { id: 4, label: "Feature", variant: "info" },
   ]);
 
   const removeTag = (id) => {
-    setTags(tags.filter(tag => tag.id !== id));
+    setTags(tags.filter((tag) => tag.id !== id));
   };
 
   return (
@@ -167,9 +173,9 @@ export default function RemovableTagExample() {
 ::: details Lit (Web Components)
 
 ```typescript
-import { LitElement, html, css } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
-import 'agnosticui-core/tag';
+import { LitElement, html, css } from "lit";
+import { customElement, state } from "lit/decorators.js";
+import "agnosticui-core/tag";
 
 interface TagItem {
   id: number;
@@ -177,13 +183,13 @@ interface TagItem {
   variant: string;
 }
 
-@customElement('tag-example')
+@customElement("tag-example")
 export class TagExample extends LitElement {
   @state() private tags: TagItem[] = [
-    { id: 1, label: 'Design', variant: 'primary' },
-    { id: 2, label: 'Development', variant: 'success' },
-    { id: 3, label: 'Bug', variant: 'error' },
-    { id: 4, label: 'Feature', variant: 'info' },
+    { id: 1, label: "Design", variant: "primary" },
+    { id: 2, label: "Development", variant: "success" },
+    { id: 3, label: "Bug", variant: "error" },
+    { id: 4, label: "Feature", variant: "info" },
   ];
 
   static styles = css`
@@ -211,17 +217,22 @@ export class TagExample extends LitElement {
   }
 
   private updateTagListeners() {
-    const tagElements = this.shadowRoot?.querySelectorAll('ag-tag');
+    const tagElements = this.shadowRoot?.querySelectorAll("ag-tag");
     tagElements?.forEach((tagEl, index) => {
       // Remove old listener before adding new one
       const clonedTagEl = tagEl.cloneNode(true);
       tagEl.replaceWith(clonedTagEl);
 
-      clonedTagEl.addEventListener('tag-remove', (e: Event) => {
+      clonedTagEl.addEventListener("tag-remove", (e: Event) => {
         const customEvent = e as CustomEvent;
         const tag = this.tags[index];
-        console.log('Removing tag:', tag.label, 'variant:', customEvent.detail.variant);
-        this.tags = this.tags.filter(t => t.id !== tag.id);
+        console.log(
+          "Removing tag:",
+          tag.label,
+          "variant:",
+          customEvent.detail.variant
+        );
+        this.tags = this.tags.filter((t) => t.id !== tag.id);
       });
     });
   }
@@ -229,15 +240,13 @@ export class TagExample extends LitElement {
   render() {
     return html`
       <div class="tag-list">
-        ${this.tags.map((tag) => html`
-          <ag-tag
-            class="tag-item"
-            .variant=${tag.variant}
-            .removable=${true}
-          >
-            ${tag.label}
-          </ag-tag>
-        `)}
+        ${this.tags.map(
+          (tag) => html`
+            <ag-tag class="tag-item" .variant=${tag.variant} .removable=${true}>
+              ${tag.label}
+            </ag-tag>
+          `
+        )}
       </div>
     `;
   }
@@ -250,17 +259,17 @@ export class TagExample extends LitElement {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'info' \| 'warning' \| 'error' \| 'success' \| 'primary' \| ''` | `''` | The visual variant of the tag (e.g., for color theming). |
-| `shape` | `'pill' \| 'round' \| 'circle' \| ''` | `''` | The border-radius shape of the tag. |
-| `isUppercase` | `boolean` | `false` | If `true`, transforms the tag text to uppercase with adjusted font sizing and letter spacing. |
-| `removable` | `boolean` | `false` | If `true`, shows a remove button (×) that fires the `tag-remove` event when clicked. |
+| Prop          | Type                                                             | Default | Description                                                                                   |
+| ------------- | ---------------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------- |
+| `variant`     | `'info' \| 'warning' \| 'error' \| 'success' \| 'primary' \| ''` | `''`    | The visual variant of the tag (e.g., for color theming).                                      |
+| `shape`       | `'pill' \| 'round' \| 'circle' \| ''`                            | `''`    | The border-radius shape of the tag.                                                           |
+| `isUppercase` | `boolean`                                                        | `false` | If `true`, transforms the tag text to uppercase with adjusted font sizing and letter spacing. |
+| `removable`   | `boolean`                                                        | `false` | If `true`, shows a remove button (×) that fires the `tag-remove` event when clicked.          |
 
 ## Events
 
-| Event | Framework | Detail | Description |
-|-------|-----------|--------|-------------|
+| Event        | Framework                                                                          | Detail                    | Description                                                                            |
+| ------------ | ---------------------------------------------------------------------------------- | ------------------------- | -------------------------------------------------------------------------------------- |
 | `tag-remove` | Vue: `@tag-remove`<br>React: `onTagRemove`<br>Lit: `@tag-remove` or `.onTagRemove` | `{ variant: TagVariant }` | Fired when the tag's remove button is clicked. Provides the tag variant in the detail. |
 
 ### Event Patterns
@@ -268,40 +277,38 @@ export class TagExample extends LitElement {
 AgnosticUI Tag supports **three event handling patterns**:
 
 1. **addEventListener** (Lit/Vanilla JS):
+
 ```javascript
-const tag = document.querySelector('ag-tag');
-tag.addEventListener('tag-remove', (e) => {
-  console.log('Tag removed, variant:', e.detail.variant);
+const tag = document.querySelector("ag-tag");
+tag.addEventListener("tag-remove", (e) => {
+  console.log("Tag removed, variant:", e.detail.variant);
   // Remove the tag from the DOM
   tag.remove();
 });
 ```
 
 2. **Callback props** (Lit/Vanilla JS):
+
 ```javascript
-const tag = document.querySelector('ag-tag');
+const tag = document.querySelector("ag-tag");
 tag.onTagRemove = (e) => {
-  console.log('Tag removed, variant:', e.detail.variant);
+  console.log("Tag removed, variant:", e.detail.variant);
   tag.remove();
 };
 ```
 
 3. **Framework event handlers** (Vue/React):
+
 ```vue
 <!-- Vue -->
-<VueTag
-  removable
-  @tag-remove="handleRemove"
->
+<VueTag removable @tag-remove="handleRemove">
   Removable tag
 </VueTag>
 ```
+
 ```tsx
 // React
-<ReactTag
-  removable
-  onTagRemove={handleRemove}
->
+<ReactTag removable onTagRemove={handleRemove}>
   Removable tag
 </ReactTag>
 ```
@@ -310,8 +317,8 @@ All three patterns work identically thanks to the **dual-dispatch** system.
 
 ## CSS Shadow Parts
 
-| Part | Description |
-|------|-------------|
+| Part             | Description                                                |
+| ---------------- | ---------------------------------------------------------- |
 | `ag-tag-wrapper` | The main wrapper div for the tag's content and close slot. |
 
 ### Customization Example
