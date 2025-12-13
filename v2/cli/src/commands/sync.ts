@@ -111,7 +111,7 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
     const stylesPath = path.join(componentsPath, 'styles');
     await ensureDir(stylesPath);
 
-    const tokensSourcePath = path.join(DEFAULT_REFERENCE_PATH, 'dist', 'styles');
+    const tokensSourcePath = path.join(DEFAULT_REFERENCE_PATH, 'src', 'styles');
     const tokenFiles = ['ag-tokens.css', 'ag-tokens-dark.css'];
     for (const tokenFile of tokenFiles) {
       const srcFile = path.join(tokensSourcePath, tokenFile);
@@ -130,7 +130,7 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
     const infraDirs = ['shared', 'utils', 'styles', 'types'];
 
     for (const dir of infraDirs) {
-      const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'lib', 'src', dir);
+      const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'src', dir);
       const destDir = path.join(process.cwd(), 'src', dir);
 
       if (pathExists(srcDir))   {
