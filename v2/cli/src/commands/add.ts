@@ -195,12 +195,14 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         }
 
         let importStatement = '';
-        if (config.framework === 'lit') {
-          // Lit uses side-effect import to register custom element
-          importStatement = `import './${importPath}/core/${result.name}'`;
+        const componentExportName = getComponentExportName(result.name, config.framework);
+
+        if (config.framework === 'react' || config.framework === 'vue') {
+          // React and Vue have framework-specific wrapper components
+          importStatement = `import { ${componentExportName} } from './${importPath}/${config.framework}/${componentExportName}'`;
         } else {
-          const componentExportName = getComponentExportName(result.name, config.framework);
-          importStatement = `import { ${componentExportName} } from './${importPath}'`;
+          // Lit, Svelte, etc. use web components from core directory (side-effect import)
+          importStatement = `import './${importPath}/core/${result.name}'`;
         }
 
         logger.box(`${result.name}:`, [
