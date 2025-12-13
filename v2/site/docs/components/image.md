@@ -16,6 +16,166 @@ import ImageExamples from '../examples/ImageExamples.vue'
 
 ## Usage
 
+::: details Vue
+
+```vue
+<template>
+  <section>
+    <!-- Basic responsive image -->
+    <VueImage
+      class="responsive-image"
+      src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=800"
+      alt="A beautiful landscape"
+      aspectRatio="16/9"
+    />
+
+    <!-- Image with fallback -->
+    <VueImage
+      src="primary-image.jpg"
+      fallbackSrc="fallback-image.jpg"
+      alt="Image with fallback"
+      aspectRatio="4/3"
+    />
+
+    <!-- Image with custom fit and position -->
+    <VueImage
+      src="portrait.jpg"
+      alt="Portrait"
+      aspectRatio="3/4"
+      fit="contain"
+      position="top"
+    />
+
+    <!-- Fixed size image (non-responsive) -->
+    <VueImage
+      src="icon.png"
+      alt="Icon"
+      :width="100"
+      :height="100"
+    />
+  </section>
+</template>
+
+<script setup lang="ts">
+import { VueImage } from 'agnosticui-core/image/vue';
+</script>
+
+<style scoped>
+.responsive-image {
+  width: 100%;
+  max-width: 800px;
+}
+</style>
+```
+
+:::
+
+::: details React
+
+```tsx
+import { ReactImage } from 'agnosticui-core/image/react';
+
+export default function Example() {
+  return (
+    <section>
+      {/* Basic responsive image */}
+      <ReactImage
+        className="responsive-image"
+        src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=800"
+        alt="A beautiful landscape"
+        aspectRatio="16/9"
+      />
+
+      {/* Image with fallback */}
+      <ReactImage
+        src="primary-image.jpg"
+        fallbackSrc="fallback-image.jpg"
+        alt="Image with fallback"
+        aspectRatio="4/3"
+      />
+
+      {/* Image with custom fit and position */}
+      <ReactImage
+        src="portrait.jpg"
+        alt="Portrait"
+        aspectRatio="3/4"
+        fit="contain"
+        position="top"
+      />
+
+      {/* Fixed size image (non-responsive) */}
+      <ReactImage
+        src="icon.png"
+        alt="Icon"
+        width={100}
+        height={100}
+      />
+    </section>
+  );
+}
+```
+
+```css
+.responsive-image {
+  width: 100%;
+  max-width: 800px;
+}
+```
+
+:::
+
+::: details Lit (Web Components)
+
+```html
+<script type="module">
+  import 'agnosticui-core/image';
+</script>
+
+<style>
+  .responsive-image {
+    width: 100%;
+    max-width: 800px;
+  }
+</style>
+
+<section>
+  <!-- Basic responsive image -->
+  <ag-image
+    class="responsive-image"
+    src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=800"
+    alt="A beautiful landscape"
+    aspectRatio="16/9"
+  ></ag-image>
+
+  <!-- Image with fallback -->
+  <ag-image
+    src="primary-image.jpg"
+    fallbackSrc="fallback-image.jpg"
+    alt="Image with fallback"
+    aspectRatio="4/3"
+  ></ag-image>
+
+  <!-- Image with custom fit and position -->
+  <ag-image
+    src="portrait.jpg"
+    alt="Portrait"
+    aspectRatio="3/4"
+    fit="contain"
+    position="top"
+  ></ag-image>
+
+  <!-- Fixed size image (non-responsive) -->
+  <ag-image
+    src="icon.png"
+    alt="Icon"
+    .width="100"
+    .height="100"
+  ></ag-image>
+</section>
+```
+
+:::
+
 ### Fixed vs. Responsive Images
 
 Some examples on this page use the `width` and `height` props to set a fixed size for the image. This is intentional to demonstrate how to opt-out of responsive behavior. When you provide these props, the image will always render at that specific size. To make an image responsive, you must omit these props and follow the pattern described in the "Preventing Layout Shift" section below.
