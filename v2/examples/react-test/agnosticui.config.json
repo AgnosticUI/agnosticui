@@ -1,0 +1,229 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "react",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2025-12-13T03:22:51.540Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Button/react"
+      ]
+    },
+    "Breadcrumb": {
+      "added": "2025-12-13T03:32:58.459Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Breadcrumb/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Breadcrumb/react"
+      ]
+    },
+    "Badge": {
+      "added": "2025-12-13T15:23:23.071Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Badge/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Badge/react"
+      ]
+    },
+    "Icon": {
+      "added": "2025-12-13T15:24:08.558Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Icon/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Icon/react"
+      ]
+    },
+    "Alert": {
+      "added": "2025-12-13T15:40:12.682Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Alert/react",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Tag": {
+      "added": "2025-12-13T15:40:12.683Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Tag/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Tag/react"
+      ]
+    },
+    "Accordion": {
+      "added": "2025-12-13T15:58:19.828Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Accordion/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Accordion/react"
+      ]
+    },
+    "Fieldset": {
+      "added": "2025-12-13T15:58:19.828Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Fieldset/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Fieldset/react"
+      ]
+    },
+    "ProgressRing": {
+      "added": "2025-12-13T15:58:19.828Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/ProgressRing/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/ProgressRing/react"
+      ]
+    },
+    "Flex": {
+      "added": "2025-12-13T15:58:19.828Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Flex/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Flex/react"
+      ]
+    },
+    "Radio": {
+      "added": "2025-12-13T15:58:19.828Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Radio/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Radio/react"
+      ]
+    },
+    "AspectRatio": {
+      "added": "2025-12-13T15:58:19.828Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/AspectRatio/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/AspectRatio/react"
+      ]
+    },
+    "Header": {
+      "added": "2025-12-13T15:58:19.828Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Header/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Header/react"
+      ]
+    },
+    "Rating": {
+      "added": "2025-12-13T15:58:19.828Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Rating/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Rating/react"
+      ]
+    },
+    "Avatar": {
+      "added": "2025-12-13T15:58:19.828Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Avatar/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Avatar/react"
+      ]
+    },
+    "ScrollProgress": {
+      "added": "2025-12-13T15:58:19.828Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/ScrollProgress/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/ScrollProgress/react",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Progress/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Progress/react",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/ProgressRing/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/ProgressRing/react"
+      ]
+    },
+    "BadgeFx": {
+      "added": "2025-12-13T16:22:54.791Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/BadgeFx/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/BadgeFx/react"
+      ]
+    },
+    "IconButtonFx": {
+      "added": "2025-12-13T16:22:54.791Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/IconButtonFx/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/IconButtonFx/react",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/IconButton/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/IconButton/react"
+      ]
+    },
+    "IconButton": {
+      "added": "2025-12-13T17:02:55.355Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/IconButton/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/IconButton/react"
+      ]
+    },
+    "ScrollToButton": {
+      "added": "2025-12-13T17:02:55.356Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/ScrollToButton/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/ScrollToButton/react"
+      ]
+    },
+    "Select": {
+      "added": "2025-12-13T17:02:55.356Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Select/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Select/react"
+      ]
+    },
+    "Image": {
+      "added": "2025-12-13T17:02:55.356Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Image/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Image/react"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2025-12-13T03:22:30.074Z"
+  }
+}
