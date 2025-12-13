@@ -4,6 +4,7 @@
 import * as p from '@clack/prompts';
 import path from 'node:path';
 import { existsSync } from 'node:fs';
+import { readFile, writeFile, copyFile } from 'node:fs/promises';
 import type { Framework, InitOptions } from '../types/index.js';
 import { logger } from '../utils/logger.js';
 import { loadConfig, saveConfig, createDefaultConfig } from '../utils/config.js';
@@ -93,7 +94,6 @@ export async function init(options: InitOptions = {}): Promise<void> {
     let tarballVersion = '2.0.0-alpha'; // fallback
     if (pathExists(versionJsonPath)) {
       try {
-        const { readFile } = await import('node:fs/promises');
         const versionData = JSON.parse(await readFile(versionJsonPath, 'utf-8'));
         tarballVersion = versionData.version || tarballVersion;
       } catch {
@@ -123,14 +123,13 @@ export async function init(options: InitOptions = {}): Promise<void> {
     const stylesPath = path.join(componentsPath, 'styles');
     await ensureDir(stylesPath);
 
-    const tokensSourcePath = path.join(DEFAULT_REFERENCE_PATH, 'tokens');
+    const tokensSourcePath = path.join(DEFAULT_REFERENCE_PATH, 'src', 'styles');
     const tokenFiles = ['ag-tokens.css', 'ag-tokens-dark.css'];
 
     for (const tokenFile of tokenFiles) {
       const srcFile = path.join(tokensSourcePath, tokenFile);
       const destFile = path.join(stylesPath, tokenFile);
       if (pathExists(srcFile)) {
-        const { copyFile } = await import('node:fs/promises');
         await copyFile(srcFile, destFile);
       }
     }
@@ -141,7 +140,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
     const infraDirs = ['shared', 'utils', 'styles', 'types'];
 
     for (const dir of infraDirs) {
-      const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'lib', 'src', dir);
+      const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'src', dir);
       const destDir = path.join(componentsPath, dir);
 
       if (pathExists(srcDir)) {
@@ -179,9 +178,25 @@ export async function init(options: InitOptions = {}): Promise<void> {
       }
     }
 
+    // Update TS Configs
+    spinner.message('Configuring TypeScript...');
+    await updateTsConfigs();
+
     spinner.stop(pc.green('✓') + ' Initialized successfully!');
 
     logger.newline();
+
+    // Generate example import statement based on framework
+    let exampleImport = '';
+    if (framework === 'react') {
+      exampleImport = `import { ReactButton } from '${componentsPath}/Button/react/ReactButton'`;
+    } else if (framework === 'vue') {
+      exampleImport = `import { VueButton } from '${componentsPath}/Button/vue/VueButton'`;
+    } else {
+      // Lit, Svelte, etc. use web components from core
+      exampleImport = `import '${componentsPath}/Button/core/Button'`;
+    }
+
     logger.box('Next Steps:', [
       pc.dim('1. Import CSS tokens in your app entry point (e.g., main.tsx):'),
       '  ' + logger.command(`import '${componentsPath}/styles/ag-tokens.css'`),
@@ -194,13 +209,89 @@ export async function init(options: InitOptions = {}): Promise<void> {
       '  ' + logger.command('npx ag list'),
       '',
       pc.dim('4. Use in your app:'),
-      '  ' + logger.command(`import { ${framework === 'react' ? 'ReactButton' : 'Button'} } from '${componentsPath}/button'`),
+      '  ' + logger.command(exampleImport),
     ]);
   } catch (error) {
     spinner.stop(pc.red('✖') + ' Failed to initialize');
     logger.error(`Initialization failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     process.exit(1);
   }
+}
+
+/**
+ * Update tsconfig files with required options
+ */
+async function updateTsConfigs(): Promise<void> {
+  const tsconfigFiles = ['tsconfig.json', 'tsconfig.app.json', 'tsconfig.node.json'];
+  const cwd = process.cwd();
+
+  for (const file of tsconfigFiles) {
+    const filePath = path.join(cwd, file);
+    if (pathExists(filePath)) {
+      try {
+        const content = await readFile(filePath, 'utf-8');
+        
+        // Try to parse JSON (support comments by stripping them)
+        let json;
+        try {
+          const jsonContent = stripJsonComments(content);
+          json = JSON.parse(jsonContent);
+        } catch {
+          // If parsing still fails
+          continue;
+        }
+
+        let modified = false;
+
+        // Ensure compilerOptions exists
+        if (!json.compilerOptions) {
+          json.compilerOptions = {};
+          modified = true;
+        }
+
+        // Set experimentalDecorators
+        if (json.compilerOptions.experimentalDecorators !== true) {
+          json.compilerOptions.experimentalDecorators = true;
+          modified = true;
+        }
+
+        // Set useDefineForClassFields
+        if (json.compilerOptions.useDefineForClassFields !== false) {
+          json.compilerOptions.useDefineForClassFields = false;
+          modified = true;
+        }
+
+        // Disable erasableSyntaxOnly if present (as it conflicts with decorators)
+        if (json.compilerOptions.erasableSyntaxOnly === true) {
+          json.compilerOptions.erasableSyntaxOnly = false;
+          modified = true;
+        }
+
+        // Add exclude pattern if not present
+        if (!json.exclude) {
+          json.exclude = [];
+        }
+        
+        const excludePatterns = ['agnosticui', '**/agnosticui/**'];
+        for (const pattern of excludePatterns) {
+          if (!json.exclude.includes(pattern)) {
+            json.exclude.push(pattern);
+            modified = true;
+          }
+        }
+
+        if (modified) {
+          await writeFile(filePath, JSON.stringify(json, null, 2));
+          logger.info(`Updated ${file} with required configuration.`);
+        }
+      } catch (error) {
+        // Ignore errors, user will see the note
+      }
+    }
+  }
+  
+  // Always show the note as a reminder or in case we missed something (like comments preventing parse)
+  showTypeScriptNote();
 }
 
 /**
@@ -297,4 +388,11 @@ function showTypeScriptNote(): void {
     logger.newline();
     logger.info(pc.dim('(For Vite: add to both tsconfig.json AND tsconfig.app.json)'));
   }
+}
+
+/**
+ * Strip comments from JSON content
+ */
+function stripJsonComments(json: string): string {
+  return json.replace(/\"|"(?:\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
 }
