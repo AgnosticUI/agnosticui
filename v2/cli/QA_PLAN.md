@@ -72,7 +72,7 @@ _Total Components: 56_
 **Batch 5: Advanced & Groups** (10) ✅
 `Accordion`, `AccordionGroup`, `AvatarGroup`, `Collapsible`, `MessageBubble`, `Progress`, `ProgressRing`, `ScrollProgress`, `ScrollToButton`, `Timeline`
 
-**Batch 6: Remaining** (6)
+**Batch 6: Remaining** (6) ✅
 `BadgeFx`, `IntlFormatter`, `Kbd`, `Link`, `SkeletonLoader`, `BadgeFx`
 
 **Execution Steps (Per Framework)**:

@@ -155,6 +155,7 @@ async function main() {
     .option('-b, --batch <number>', 'Batch number to test')
     .option('--skip-build', 'Skip building the CLI and tarball', false)
     .option('--skip-scaffold', 'Skip scaffolding test projects', false)
+    .option('-y, --yes', 'Skip confirmations (non-interactive mode)', false)
     .parse();
 
   const options = program.opts();
@@ -169,7 +170,7 @@ async function main() {
     try {
         run('npm run lint', LIB_ROOT);
         run('npm run typecheck', LIB_ROOT);
-        // run('npm run test', LIB_ROOT); // Uncomment to enable tests if environment supports it
+        // run('npm run test', LIB_ROOT); 
     } catch (e) {
         s.stop('Library checks failed', 1);
         process.exit(1);
@@ -181,8 +182,6 @@ async function main() {
     
     // 3. Build Local Tarball
     s.message('Building Local Reference Tarball...');
-    // Ensure we skip internal checks in the script since we ran them above (or let them run)
-    // The script builds to v2/dist
     run('./scripts/build-local-tarball.sh', REPO_ROOT);
     
     // 4. Pack CLI
@@ -237,8 +236,7 @@ async function main() {
         fs.rmSync(projectDir, { recursive: true, force: true });
       }
 
-      // Scaffold using Vite (this might prompt, so we need to pass args to suppress prompts)
-      // npm create vite@latest <project-name> -- --template <template>
+      // Scaffold using Vite
       run(`npx -y create-vite@latest ${fw}-test -- --template ${fw}`, WORKSPACE_DIR);
       
       // Install dependencies
@@ -255,9 +253,8 @@ async function main() {
     // Verify INIT
     const sInit = spinner();
     sInit.start(`Verifying 'ag init' for ${fw}...`);
-    // npx ag init --framework <fw> --tarball <path>
-    // We can run it via the installed binary
-    run(`npx ag init --framework ${fw} --tarball ${libTarballPath}`, projectDir);
+    // Pass components-path to avoid prompts
+    run(`npx ag init --framework ${fw} --tarball ${libTarballPath} --components-path src/components/ag`, projectDir);
     
     sInit.stop(`'ag init' passed for ${fw}`);
 
@@ -269,7 +266,6 @@ async function main() {
     sList.start(`Verifying 'ag list' for ${fw}...`);
     try {
       const listOutput = execSync(`npx ag list`, { cwd: projectDir, encoding: 'utf-8' });
-      // rudimentary check: check for a few key components
       if (!listOutput.includes('Button') || !listOutput.includes('Card')) {
         throw new Error('Output missing expected components');
       }
@@ -303,13 +299,9 @@ async function main() {
     let isAlreadyVerified = false;
     if (fs.existsSync(QA_PLAN_PATH)) {
       const planContent = fs.readFileSync(QA_PLAN_PATH, 'utf-8');
-      // Regex to match "**Batch X: Name** ... ✅"
-      // We look for the batch header.
-      // The format in QA_PLAN.md is "**Batch 1: Primitives & Layout**"
       const batchHeaderRegex = new RegExp(`\\*\\*Batch ${batchKey}:.*?\\*\\*`);
       const match = planContent.match(batchHeaderRegex);
       if (match) {
-        // Check if the line containing the match has a checkmark
         const line = planContent.split('\n').find(l => l.includes(match[0]));
         if (line && line.includes('✅')) {
             isAlreadyVerified = true;
@@ -318,6 +310,10 @@ async function main() {
     }
 
     if (isAlreadyVerified) {
+        if (options.yes) {
+            console.log(color.dim(`Skipping verified Batch ${batchKey}...`));
+            continue;
+        }
         const shouldRetest = await confirm({
             message: `Batch ${batchKey} is already marked as verified (✅). Retest?`,
             initialValue: false
@@ -340,19 +336,10 @@ async function main() {
       try {
         run(`npx ag add ${components}`, projectDir);
         
-        // Check file existence for each component (basic check)
-        // Note: Paths differ internally: src/components/ag/Component/Component.tsx or .vue etc.
-        // We just check if the directory exists for checking success.
+        // Check file existence
         for (const comp of batch.components) {
-          // React/Lit: src/components/ag/Component
-          // Vue: src/components/ag/Component
-          // The structure is generally maintained.
           const compDir = path.join(projectDir, 'src', 'components', 'ag', comp);
           if (!fs.existsSync(compDir)) {
-             // Try checking simple structure if "ag" isn't used or configured differently?
-             // Standard scaffolding puts it in src/components/ag usually.
-             // If not found, warn but don't exit hard maybe? Or exit hard?
-             // Let's assume strict verification.
              throw new Error(`Component directory not found: ${compDir}`);
           }
         }
@@ -367,13 +354,17 @@ async function main() {
     }
 
     // 2. Human Verification
-    const shouldContinue = await confirm({
-      message: `Batch ${batchKey} installed. Please verify in a browser. Ready to proceed?`,
-    });
+    if (options.yes) {
+        console.log(color.green(`Batch ${batchKey} installed.`));
+    } else {
+        const shouldContinue = await confirm({
+          message: `Batch ${batchKey} installed. Please verify in a browser. Ready to proceed?`,
+        });
 
-    if (!shouldContinue) {
-      outro('Verification paused or cancelled by user.');
-      process.exit(0);
+        if (!shouldContinue) {
+          outro('Verification paused or cancelled by user.');
+          process.exit(0);
+        }
     }
 
     // Mark as verified in QA_PLAN.md
@@ -384,7 +375,6 @@ async function main() {
         const match = planContent.match(batchHeaderRegex);
         
         if (match) {
-            // Retrieve the full line to check if we already have it
             const lines = planContent.split('\n');
             const lineIdx = lines.findIndex(l => l.includes(match[0]));
             if (lineIdx !== -1 && !lines[lineIdx].includes('✅')) {
