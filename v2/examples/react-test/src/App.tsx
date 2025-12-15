@@ -31,6 +31,7 @@ import { ReactPopover } from './components/ag/Popover/react/ReactPopover';
 import { ReactInput } from './components/ag/Input/react/ReactInput';
 import { ReactIntlFormatter } from './components/ag/IntlFormatter/react/ReactIntlFormatter';
 import { ReactSkeleton } from './components/ag/SkeletonLoader/react/ReactSkeletonLoader';
+import { ReactKbd } from './components/ag/Kbd/react/ReactKbd';
 
 function App() {
   const items: BreadcrumbItem[] = [
@@ -109,6 +110,12 @@ function App() {
           <ReactSkeleton className='mie2' effect='sheen' variant="rounded" width="300px" height="200px" />
           <ReactSkeleton className='mie2' effect='sheen' variant="rounded" width="300px" height="200px" />
         </ReactFlexRow>
+      </section>
+      <section className="mbe4">
+        <ReactKbd className='mis2' variant="monochrome" size="lg" bordered background>⌘</ReactKbd>
+        <ReactKbd className='mis2' variant="monochrome" size="lg" bordered background>⌥</ReactKbd>
+        <ReactKbd className='mis2' variant="monochrome" size="lg" bordered background>⇧</ReactKbd>
+        <ReactKbd className='mis2' variant="monochrome" size="lg" bordered background>⇧</ReactKbd>
       </section>
       <section className="mbe4">
         <ReactIntlFormatter
