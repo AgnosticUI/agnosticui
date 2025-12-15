@@ -257,6 +257,15 @@
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/ButtonFx/core",
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/ButtonFx/react"
       ]
+    },
+    "IntlFormatter": {
+      "added": "2025-12-15T17:21:33.606Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/IntlFormatter/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/IntlFormatter/react"
+      ]
     }
   },
   "ai": {
