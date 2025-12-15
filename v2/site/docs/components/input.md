@@ -13,6 +13,7 @@ import InputExamples from '../examples/InputExamples.vue'
 ## Usage
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -40,10 +41,7 @@ import InputExamples from '../examples/InputExamples.vue'
       placeholder="Enter your message..."
     />
 
-    <VueInput
-      v-model:value="price"
-      label="Price"
-    >
+    <VueInput v-model:value="price" label="Price">
       <template #addon-left>
         <DollarSign :size="18" />
       </template>
@@ -96,12 +94,15 @@ export default {
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
 import { useState } from "react";
-import { ReactInput } from "agnosticui-core/react";
+import { ReactInput } from "agnosticui-core/input/react";
+import { ReactButton } from "agnosticui-core/button/react";
 
 export default function InputExample() {
   const [email, setEmail] = useState("");
@@ -116,7 +117,7 @@ export default function InputExample() {
     <section>
       <ReactInput
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => setEmail((e.target as HTMLInputElement).value)}
         label="Email"
         type="email"
         placeholder="you@example.com"
@@ -124,17 +125,26 @@ export default function InputExample() {
 
       <ReactInput
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => setUsername((e.target as HTMLInputElement).value)}
         label="Username"
+        rounded
         required
         invalid={isInvalid}
         errorMessage="Username is required"
         helpText="Choose a unique username"
       />
+      <ReactButton
+        size="xl"
+        shape="rounded"
+        variant="monochrome"
+        onClick={() => setIsInvalid(!isInvalid)}
+      >
+        Toggle Invalid
+      </ReactButton>
 
       <ReactInput
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={(e) => setMessage(e.target as HTMLInputElement).value)}
         label="Message"
         type="textarea"
         rows={4}
@@ -143,7 +153,7 @@ export default function InputExample() {
 
       <ReactInput
         value={price}
-        onChange={(e) => setPrice(e.target.value)}
+        onChange={(e) => setPrice(e.target as HTMLInputElement).value)}
         label="Price"
       >
         <span slot="addon-left">$</span>
@@ -151,7 +161,7 @@ export default function InputExample() {
 
       <ReactInput
         value={small}
-        onChange={(e) => setSmall(e.target.value)}
+        onChange={(e) => setSmall(e.target as HTMLInputElement).value)}
         label="Small Input"
         size="small"
         placeholder="Small size"
@@ -159,30 +169,28 @@ export default function InputExample() {
 
       <ReactInput
         value={rounded}
-        onChange={(e) => setRounded(e.target.value)}
+        onChange={(e) => setRounded(e.target as HTMLInputElement).value)}
         label="Rounded"
         rounded
         placeholder="Rounded corners"
       />
 
-      <ReactInput
-        value="Cannot edit"
-        label="Disabled"
-        disabled
-      />
+      <ReactInput value="Cannot edit" label="Disabled" disabled />
     </section>
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
-```typescript
-import { LitElement, html, css } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import 'agnosticui-core/input';
 
-@customElement('input-example')
+```typescript
+import { LitElement, html, css } from "lit";
+import { customElement } from "lit/decorators.js";
+import "agnosticui-core/input";
+
+@customElement("input-example")
 export class InputExample extends LitElement {
   static styles = css`
     :host {
@@ -197,15 +205,17 @@ export class InputExample extends LitElement {
 
   firstUpdated() {
     // Set up event listeners for inputs in the shadow DOM
-    const emailInput = this.shadowRoot?.querySelector('#email-input');
-    const usernameInput = this.shadowRoot?.querySelector('#username-input') as any;
+    const emailInput = this.shadowRoot?.querySelector("#email-input");
+    const usernameInput = this.shadowRoot?.querySelector(
+      "#username-input"
+    ) as any;
 
-    emailInput?.addEventListener('input', (e: Event) => {
+    emailInput?.addEventListener("input", (e: Event) => {
       const target = e.target as HTMLInputElement;
-      console.log('Email:', target.value);
+      console.log("Email:", target.value);
     });
 
-    usernameInput?.addEventListener('blur', (e: Event) => {
+    usernameInput?.addEventListener("blur", (e: Event) => {
       const target = e.target as HTMLInputElement;
       if (!target.value) {
         usernameInput.invalid = true;
@@ -241,10 +251,7 @@ export class InputExample extends LitElement {
           placeholder="Enter your message..."
         ></ag-input>
 
-        <ag-input
-          id="price-input"
-          label="Price"
-        >
+        <ag-input id="price-input" label="Price">
           <span slot="addon-left">$</span>
         </ag-input>
 
@@ -260,11 +267,7 @@ export class InputExample extends LitElement {
           placeholder="Rounded corners"
         ></ag-input>
 
-        <ag-input
-          label="Disabled"
-          disabled
-          value="Cannot edit"
-        ></ag-input>
+        <ag-input label="Disabled" disabled value="Cannot edit"></ag-input>
       </section>
     `;
   }
@@ -276,49 +279,50 @@ export class InputExample extends LitElement {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `modelValue` | `string` | `''` | The input value (use with v-model for two-way binding) |
-| `label` | `string` | `''` | Label text for the input. Best practice is to always provide a visible label. |
-| `type` | `string` | `'text'` | Input type (text, email, password, search, tel, url, number, date, time, color, or 'textarea' for textarea element) |
-| `placeholder` | `string` | `''` | Placeholder text shown when input is empty |
-| `size` | `'small' \| 'default' \| 'large'` | `'default'` | Size variant of the input |
-| `name` | `string` | `''` | Name attribute for form submission |
-| `required` | `boolean` | `false` | Marks the field as required. Displays an asterisk (*) after the label |
-| `disabled` | `boolean` | `false` | Disables the input, preventing interaction |
-| `readonly` | `boolean` | `false` | Makes the input read-only but still focusable |
-| `invalid` | `boolean` | `false` | Marks the input as invalid. Changes border color to red and sets aria-invalid |
-| `helpText` | `string` | `''` | Helper text displayed below the input |
-| `errorMessage` | `string` | `''` | Error message displayed when invalid. Linked via aria-describedby |
-| `rounded` | `boolean` | `false` | Applies rounded corners (border-radius: md) |
-| `capsule` | `boolean` | `false` | Applies capsule shape (fully rounded ends) |
-| `underlined` | `boolean` | `false` | Shows only bottom border (underlined style) |
-| `underlinedWithBackground` | `boolean` | `false` | Underlined style with subtle background color |
-| `inline` | `boolean` | `false` | Changes display to inline-block for inline layouts |
-| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'` | Controls label placement. `top`/`bottom` for vertical layout, `start`/`end` for horizontal (respects RTL) |
-| `labelHidden` | `boolean` | `false` | Visually hides the label while keeping it accessible to screen readers |
-| `noLabel` | `boolean` | `false` | Completely removes the label element. Use with ariaLabel for accessibility |
-| `ariaLabel` | `string` | `''` | ARIA label for accessibility when label is not visible |
-| ~~`hasLeftAddon`~~ | `boolean` | `false` | **Deprecated:** Addons are now automatically detected. Simply use the `addon-left` slot. |
-| ~~`hasRightAddon`~~ | `boolean` | `false` | **Deprecated:** Addons are now automatically detected. Simply use the `addon-right` slot. |
-| `rows` | `number` | `4` | Number of rows for textarea (only applies when type="textarea") |
-| `cols` | `number` | `50` | Number of columns for textarea (only applies when type="textarea") |
+| Prop                       | Type                                    | Default     | Description                                                                                                         |
+| -------------------------- | --------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------- |
+| `modelValue`               | `string`                                | `''`        | The input value (use with v-model for two-way binding)                                                              |
+| `label`                    | `string`                                | `''`        | Label text for the input. Best practice is to always provide a visible label.                                       |
+| `type`                     | `string`                                | `'text'`    | Input type (text, email, password, search, tel, url, number, date, time, color, or 'textarea' for textarea element) |
+| `placeholder`              | `string`                                | `''`        | Placeholder text shown when input is empty                                                                          |
+| `size`                     | `'small' \| 'default' \| 'large'`       | `'default'` | Size variant of the input                                                                                           |
+| `name`                     | `string`                                | `''`        | Name attribute for form submission                                                                                  |
+| `required`                 | `boolean`                               | `false`     | Marks the field as required. Displays an asterisk (\*) after the label                                              |
+| `disabled`                 | `boolean`                               | `false`     | Disables the input, preventing interaction                                                                          |
+| `readonly`                 | `boolean`                               | `false`     | Makes the input read-only but still focusable                                                                       |
+| `invalid`                  | `boolean`                               | `false`     | Marks the input as invalid. Changes border color to red and sets aria-invalid                                       |
+| `helpText`                 | `string`                                | `''`        | Helper text displayed below the input                                                                               |
+| `errorMessage`             | `string`                                | `''`        | Error message displayed when invalid. Linked via aria-describedby                                                   |
+| `rounded`                  | `boolean`                               | `false`     | Applies rounded corners (border-radius: md)                                                                         |
+| `capsule`                  | `boolean`                               | `false`     | Applies capsule shape (fully rounded ends)                                                                          |
+| `underlined`               | `boolean`                               | `false`     | Shows only bottom border (underlined style)                                                                         |
+| `underlinedWithBackground` | `boolean`                               | `false`     | Underlined style with subtle background color                                                                       |
+| `inline`                   | `boolean`                               | `false`     | Changes display to inline-block for inline layouts                                                                  |
+| `labelPosition`            | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'`     | Controls label placement. `top`/`bottom` for vertical layout, `start`/`end` for horizontal (respects RTL)           |
+| `labelHidden`              | `boolean`                               | `false`     | Visually hides the label while keeping it accessible to screen readers                                              |
+| `noLabel`                  | `boolean`                               | `false`     | Completely removes the label element. Use with ariaLabel for accessibility                                          |
+| `ariaLabel`                | `string`                                | `''`        | ARIA label for accessibility when label is not visible                                                              |
+| ~~`hasLeftAddon`~~         | `boolean`                               | `false`     | **Deprecated:** Addons are now automatically detected. Simply use the `addon-left` slot.                            |
+| ~~`hasRightAddon`~~        | `boolean`                               | `false`     | **Deprecated:** Addons are now automatically detected. Simply use the `addon-right` slot.                           |
+| `rows`                     | `number`                                | `4`         | Number of rows for textarea (only applies when type="textarea")                                                     |
+| `cols`                     | `number`                                | `50`        | Number of columns for textarea (only applies when type="textarea")                                                  |
 
 ## Events
 
 The Input component follows AgnosticUI v2 event conventions for native events. All events work consistently across Lit, React, and Vue:
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `click` | `MouseEvent` | Native click event on the input |
-| `input` | `InputEvent` | Native input event, fired on every keystroke |
-| `change` | `Event` | Native change event, fired when input loses focus after value changed |
-| `focus` | `FocusEvent` | Fired when input receives focus (re-dispatched from host for cross-shadow-DOM access) |
-| `blur` | `FocusEvent` | Fired when input loses focus (re-dispatched from host for cross-shadow-DOM access) |
+| Event    | Payload      | Description                                                                           |
+| -------- | ------------ | ------------------------------------------------------------------------------------- |
+| `click`  | `MouseEvent` | Native click event on the input                                                       |
+| `input`  | `InputEvent` | Native input event, fired on every keystroke                                          |
+| `change` | `Event`      | Native change event, fired when input loses focus after value changed                 |
+| `focus`  | `FocusEvent` | Fired when input receives focus (re-dispatched from host for cross-shadow-DOM access) |
+| `blur`   | `FocusEvent` | Fired when input loses focus (re-dispatched from host for cross-shadow-DOM access)    |
 
 ### Framework-Specific Event Usage
 
 **Vue:**
+
 - Use `v-model:value` for two-way binding
 - Listen to events with `@event-name` syntax (e.g., `@input`, `@change`, `@focus`, `@blur`)
 - The `update:value` emit is automatically fired on input for v-model support
@@ -335,20 +339,22 @@ The Input component follows AgnosticUI v2 event conventions for native events. A
 ```
 
 **React:**
+
 - All native events work automatically through callback props
 - Use `onInput`, `onChange`, `onFocus`, `onBlur`, `onClick`
 
 ```tsx
 <ReactInput
   label="Email"
-  onInput={(e) => console.log('input:', e.target.value)}
-  onChange={(e) => console.log('change:', e.target.value)}
-  onFocus={(e) => console.log('focused')}
-  onBlur={(e) => console.log('blurred')}
+  onInput={(e) => console.log("input:", e.target.value)}
+  onChange={(e) => console.log("change:", e.target.value)}
+  onFocus={(e) => console.log("focused")}
+  onBlur={(e) => console.log("blurred")}
 />
 ```
 
 **Lit/Web Components:**
+
 - Use both `addEventListener` and callback properties
 - Focus and blur events bubble through shadow DOM
 
@@ -363,9 +369,9 @@ input.onFocus = (e) => console.log("focused");
 
 ## Slots
 
-| Slot | Description |
-|------|-------------|
-| `addon-left` | Content to display on the left side of the input (automatically detected when provided) |
+| Slot          | Description                                                                              |
+| ------------- | ---------------------------------------------------------------------------------------- |
+| `addon-left`  | Content to display on the left side of the input (automatically detected when provided)  |
 | `addon-right` | Content to display on the right side of the input (automatically detected when provided) |
 
 ## Accessibility
@@ -377,7 +383,7 @@ The Input component follows [BBC GEL Form Guidelines](https://www.bbc.co.uk/gel/
 - **ARIA Support**: Implements `aria-invalid`, `aria-required`, `aria-describedby` for validation states
 - **Error Messaging**: Error messages are properly linked via `aria-describedby` for screen reader announcement
 - **Focus Management**: Clear focus indicators using design system tokens
-- **Required Fields**: Visual asterisk (*) indicator with proper ARIA markup
+- **Required Fields**: Visual asterisk (\*) indicator with proper ARIA markup
 - **Help Text**: Associated with input via `aria-describedby` for context
 
 ### Label Requirements
@@ -385,14 +391,13 @@ The Input component follows [BBC GEL Form Guidelines](https://www.bbc.co.uk/gel/
 Always provide a label for accessibility. The component supports multiple label patterns:
 
 **Visible label (recommended):**
+
 ```vue
-<VueInput
-  v-model:value="email"
-  label="Email Address"
-/>
+<VueInput v-model:value="email" label="Email Address" />
 ```
 
 **Visually hidden label (when design requires it):**
+
 ```vue
 <VueInput
   v-model:value="search"
@@ -468,7 +473,9 @@ export default {
     },
     handleSubmit() {
       // Validate all fields
-      this.errors.firstName = this.form.firstName ? "" : "First name is required";
+      this.errors.firstName = this.form.firstName
+        ? ""
+        : "First name is required";
       this.validateEmail();
 
       if (!this.errors.firstName && !this.errors.email) {
@@ -487,42 +494,21 @@ Add icons or text before or after the input using slots. Addons are **automatica
 
 ```vue
 <template>
-  <VueInput
-    v-model:value="url"
-    label="Website URL"
-    placeholder="example.com"
-  >
+  <VueInput v-model:value="url" label="Website URL" placeholder="example.com">
     <template #addon-left>
-      <Globe
-        :size="18"
-        color="#12623e"
-      />
+      <Globe :size="18" color="#12623e" />
     </template>
   </VueInput>
 
-  <VueInput
-    v-model:value="price"
-    label="Price"
-    placeholder="0.00"
-  >
+  <VueInput v-model:value="price" label="Price" placeholder="0.00">
     <template #addon-right>
-      <DollarSign
-        :size="18"
-        color="#14854f"
-      />
+      <DollarSign :size="18" color="#14854f" />
     </template>
   </VueInput>
 
-  <VueInput
-    v-model:value="amount"
-    label="Amount"
-    placeholder="100"
-  >
+  <VueInput v-model:value="amount" label="Amount" placeholder="100">
     <template #addon-left>
-      <DollarSign
-        :size="18"
-        color="#14854f"
-      />
+      <DollarSign :size="18" color="#14854f" />
     </template>
     <template #addon-right>
       <span>.00</span>
@@ -635,6 +621,7 @@ Control label placement with the `labelPosition` prop. Supports four directional
 ```
 
 **Use Cases:**
+
 - **`top` (default)**: Best for most forms - follows BBC GEL guidelines for mobile usability
 - **`start`**: Compact horizontal layouts, admin panels, settings forms
 - **`end`**: Less common, useful when label is a unit or suffix (e.g., "USD", "kg")
@@ -694,26 +681,29 @@ export default {
 
 The Input component exposes the following CSS Shadow Parts for custom styling:
 
-| Part | Description |
-|------|-------------|
-| `ag-input` | The input element itself |
-| `ag-textarea` | The textarea element (when type="textarea") |
-| `ag-input-wrapper` | Main wrapper div around all elements |
-| `ag-input-label` | The label element |
-| `ag-input-required` | Required indicator asterisk (*) |
-| `ag-input-help` | Help text div below the input |
-| `ag-input-error` | Error message div |
-| `ag-input-field-wrapper` | Wrapper div for input with addons |
-| `ag-input-addon-left` | Left addon container |
-| `ag-input-addon-right` | Right addon container |
+| Part                     | Description                                 |
+| ------------------------ | ------------------------------------------- |
+| `ag-input`               | The input element itself                    |
+| `ag-textarea`            | The textarea element (when type="textarea") |
+| `ag-input-wrapper`       | Main wrapper div around all elements        |
+| `ag-input-label`         | The label element                           |
+| `ag-input-required`      | Required indicator asterisk (\*)            |
+| `ag-input-help`          | Help text div below the input               |
+| `ag-input-error`         | Error message div                           |
+| `ag-input-field-wrapper` | Wrapper div for input with addons           |
+| `ag-input-addon-left`    | Left addon container                        |
+| `ag-input-addon-right`   | Right addon container                       |
 
 ### Customization Examples
 
 ```css
 ag-input::part(ag-input) {
   border: 2px solid transparent;
-  background: linear-gradient(white, white) padding-box,
-              linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
+  background: linear-gradient(white, white) padding-box, linear-gradient(
+        135deg,
+        #667eea 0%,
+        #764ba2 100%
+      ) border-box;
   border-radius: 12px;
   padding: 0.75rem 1rem;
 }
@@ -756,16 +746,19 @@ See the **CSS Shadow Parts Customization** section in the examples above for mor
 ## When to Use
 
 **Use Input when:**
+
 - Collecting short, single-line text data (name, email, etc.)
 - Building forms for data entry
 - You need validation and error messaging
 - You need different input types (email, password, date, etc.)
 
 **Use Textarea (type="textarea") when:**
+
 - Collecting longer, multi-line text (comments, descriptions, etc.)
 - User needs to see multiple lines of their input at once
 
 **Consider alternatives when:**
+
 - You have a fixed set of options - use Select or Radio buttons instead
 - You need yes/no or on/off - use Toggle or Checkbox instead
 - You need date/time selection with a calendar - consider a DatePicker component

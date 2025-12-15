@@ -11,6 +11,7 @@ import { ReactAccordion, AccordionItem, ItemHeader, ItemContent } from './compon
 import { ReactFieldset } from './components/ag/Fieldset/react/ReactFieldset';
 import { ReactProgressRing } from './components/ag/ProgressRing/react/ReactProgressRing';
 import { ReactFlexRow } from './components/ag/Flex/react/ReactFlexRow';
+import { ReactFlexCol } from './components/ag/Flex/react/ReactFlexCol';
 import { ReactRadio } from './components/ag/Radio/react/ReactRadio';
 import { ReactAspectRatio } from './components/ag/AspectRatio/react/ReactAspectRatio';
 import { ReactHeader } from './components/ag/Header/react/ReactHeader';
@@ -26,6 +27,8 @@ import { ReactImage } from './components/ag/Image/react/ReactImage';
 import { ReactSidebar } from './components/ag/Sidebar/react/ReactSidebar';
 import { ReactSidebarNav, ReactSidebarNavItem, ReactSidebarNavSubmenu, ReactSidebarNavPopoverSubmenu } from './components/ag/SidebarNav/react/ReactSidebarNav';
 import { ReactPopover } from './components/ag/Popover/react/ReactPopover';
+import { ReactInput } from './components/ag/Input/react/ReactInput';
+
 
 function App() {
   const items: BreadcrumbItem[] = [
@@ -35,6 +38,9 @@ function App() {
     { label: 'Products', href: '#products' },
   ];
 
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [isInvalid, setIsInvalid] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
@@ -92,6 +98,43 @@ function App() {
       <section className="mbe4">
         <ReactButton variant='primary'>Let's Go1</ReactButton>
       </section>
+      <section className="mbe4">
+        <ReactInput
+          className='mbe8'
+          value={email}
+          onChange={(e) => setEmail((e.target as HTMLInputElement).value)}
+          label="Email"
+          type="email"
+          placeholder="you@example.com"
+        />
+        <ReactFlexRow
+          style={{ "--flex-gap": "var(--ag-space-2)", textAlign: "left" } as React.CSSProperties}
+          justify="flex-start"
+          align="flex-end"
+        >
+          <ReactInput
+            value={username}
+            onChange={(e) => setUsername((e.target as HTMLInputElement).value)}
+            label="Username"
+            rounded
+            required
+            invalid={isInvalid}
+            errorMessage="Username is required"
+            helpText="Choose a unique username"
+          />
+          <ReactButton size='xl' shape='rounded' variant='monochrome' onClick={() => setIsInvalid(!isInvalid)}>Toggle Invalid</ReactButton>
+        </ReactFlexRow>
+        <ReactFlexCol
+          style={{ "--flex-gap": "1rem" } as React.CSSProperties}
+          justify="center"
+          align="center"
+        >
+          <h2>Centered Items</h2>
+          <ReactButton>Centered Item 1</ReactButton>
+          <ReactButton>Centered Item 2</ReactButton>
+        </ReactFlexCol>
+      </section>
+
       <section className="mbe4">
         <ReactBreadcrumb items={items} onBreadcrumbClick={handleBreadcrumbClick} />
       </section>
