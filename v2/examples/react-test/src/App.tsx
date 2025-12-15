@@ -33,6 +33,7 @@ import { ReactIntlFormatter } from './components/ag/IntlFormatter/react/ReactInt
 import { ReactSkeleton } from './components/ag/SkeletonLoader/react/ReactSkeletonLoader';
 import { ReactKbd } from './components/ag/Kbd/react/ReactKbd';
 import { ReactCard } from './components/ag/Card/react/ReactCard';
+import { ReactSlider } from './components/ag/Slider/react/ReactSlider';
 
 function App() {
   const items: BreadcrumbItem[] = [
@@ -49,6 +50,8 @@ function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [teamOpen, setTeamOpen] = useState(false);
+  const [value, setValue] = useState(50);
+  const [range, setRange] = useState<number | [number, number] | undefined>([200, 800]);
 
   const handleBreadcrumbClick = (event: CustomEvent) => {
     console.log(
@@ -104,6 +107,88 @@ function App() {
   return (
     <>
       <h1>Kitchen Sink (React)</h1>
+      <section className="mbe4">
+        {/* Basic slider */}
+        <ReactSlider
+          label="Volume"
+          min={0}
+          max={100}
+          value={value}
+          onInput={(e) => setValue(e.detail.value as number)}
+        />
+
+        {/* Dual range slider */}
+        <ReactSlider
+          label="Price Range"
+          dual
+          min={0}
+          max={1000}
+          value={range}
+          onInput={(e) => setRange(e.detail.value as [number, number])}
+        />
+
+        {/* With ticks and tooltip */}
+        <ReactSlider
+          label="Brightness"
+          min={0}
+          max={100}
+          step={25}
+          value={50}
+          showTicks
+          showTooltip
+          tickStep={25}
+        />
+
+        {/* Filled and monochrome variants */}
+        <ReactSlider
+          label="Filled Variant"
+          filled
+          value={60}
+        />
+        <ReactSlider
+          label="Monochrome"
+          monochrome
+          value={70}
+        />
+
+        {/* Dual range slider */}
+        <ReactSlider
+          label="Price Range"
+          dual
+          min={0}
+          max={1000}
+          value={range}
+          onInput={(e) => setRange(e.detail.value as [number, number])}
+        />
+
+        {/* With ticks and tooltip */}
+
+
+
+        {/* TODO FIX OPEN SHADOW ROOT CORE ISSUES */}
+        <ReactSlider
+          label="Brightness"
+          min={0}
+          max={100}
+          step={25}
+          value={50}
+          showTicks
+          showTooltip
+          tickStep={25}
+        />
+
+        {/* Filled and monochrome variants */}
+        <ReactSlider
+          label="Filled Variant"
+          filled
+          value={60}
+        />
+        <ReactSlider
+          label="Monochrome"
+          monochrome
+          value={70}
+        />
+      </section>
       <section className="mbe4">
         <ReactCard>
           <h3>Card Title</h3>
