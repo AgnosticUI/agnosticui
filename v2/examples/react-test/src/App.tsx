@@ -1,6 +1,7 @@
 import './App.css'
 import { useState } from 'react';
 import { ReactButton } from './components/ag/Button/react/ReactButton';
+import { ReactButtonFx } from './components/ag/ButtonFx/react/ReactButtonFx';
 import { ReactBreadcrumb, type BreadcrumbItem } from './components/ag/Breadcrumb/react/ReactBreadcrumb';
 import { ReactBadge } from './components/ag/Badge/react/ReactBadge';
 import { ReactIcon } from './components/ag/Icon/react/ReactIcon';
@@ -94,9 +95,11 @@ function App() {
 
   return (
     <>
-      <h1>hello</h1>
+      <h1>Kitchen Sink (React)</h1>
       <section className="mbe4">
-        <ReactButton variant='primary'>Let's Go1</ReactButton>
+        <ReactButton variant='primary' shape='rounded'>Button</ReactButton>
+        <ReactButtonFx className='mis4' fx='bounce' fxEase='spring-md' fxSpeed='xl' variant='primary' shape='rounded'>Bounce Button</ReactButtonFx>
+        <ReactButtonFx className='mis4' fx='pulse' fxEase='ease-in-out' fxSpeed='lg' variant='primary' shape='rounded'>Pulse Button</ReactButtonFx>
       </section>
       <section className="mbe4">
         <ReactInput
