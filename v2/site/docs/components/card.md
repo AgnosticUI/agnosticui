@@ -22,7 +22,7 @@ import CardExamples from '../examples/CardExamples.vue'
       <p>Basic card content with default styling.</p>
     </VueCard>
 
-    <VueCard :is-shadow="true" :is-animated="true">
+    <VueCard :shadow="true" :animated="true">
       <h3>Animated Card</h3>
       <p>Hover to see the animation effect.</p>
     </VueCard>
@@ -32,7 +32,7 @@ import CardExamples from '../examples/CardExamples.vue'
       <p>Operation completed successfully!</p>
     </VueCard>
 
-    <VueCard :is-shadow="true">
+    <VueCard :shadow="true">
       <template #header>
         <h4 style="margin: 0;">Header Slot</h4>
       </template>
@@ -42,7 +42,7 @@ import CardExamples from '../examples/CardExamples.vue'
       </div>
 
       <template #footer>
-        <button>Action</button>
+        <VueButton variant="primary" shape="rounded">Action</VueButton>
       </template>
     </VueCard>
   </section>
@@ -51,9 +51,10 @@ import CardExamples from '../examples/CardExamples.vue'
 <script lang="ts">
 import { defineComponent } from "vue";
 import { VueCard } from "agnosticui-core/card/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 
 export default defineComponent({
-  components: { VueCard },
+  components: { VueCard, VueButton },
 });
 </script>
 ```
@@ -64,6 +65,7 @@ export default defineComponent({
 
 ```tsx
 import { ReactCard } from "agnosticui-core/card/react";
+import { ReactButton } from "agnosticui-core/button/react";
 
 export default function CardExamples() {
   return (
@@ -73,7 +75,7 @@ export default function CardExamples() {
         <p>Basic card content with default styling.</p>
       </ReactCard>
 
-      <ReactCard isShadow={true} isAnimated={true}>
+      <ReactCard shadow animated>
         <h3>Animated Card</h3>
         <p>Hover to see the animation effect.</p>
       </ReactCard>
@@ -83,16 +85,18 @@ export default function CardExamples() {
         <p>Operation completed successfully!</p>
       </ReactCard>
 
-      <ReactCard isShadow={true}>
-        <h4 slot="header" style={{ margin: 0 }}>
+      <ReactCard shadow>
+        <h3 slot="header" style={{ margin: 0 }}>
           Header Slot
-        </h4>
+        </h3>
 
         <div>
           <p>Main content goes here.</p>
         </div>
 
-        <button slot="footer">Action</button>
+        <ReactButton variant="primary" shape="rounded" slot="footer">
+          Action
+        </ReactButton>
       </ReactCard>
     </section>
   );
@@ -106,6 +110,7 @@ export default function CardExamples() {
 ```html
 <script type="module">
   import "agnosticui-core/card";
+  import "agnosticui-core/button";
 </script>
 
 <ag-card>
@@ -113,7 +118,7 @@ export default function CardExamples() {
   <p>Basic card content with default styling.</p>
 </ag-card>
 
-<ag-card isshadow isanimated>
+<ag-card shadow animated>
   <h3>Animated Card</h3>
   <p>Hover to see the animation effect.</p>
 </ag-card>
@@ -123,14 +128,14 @@ export default function CardExamples() {
   <p>Operation completed successfully!</p>
 </ag-card>
 
-<ag-card isshadow>
+<ag-card shadow>
   <h4 slot="header" style="margin: 0;">Header Slot</h4>
 
   <div>
     <p>Main content goes here.</p>
   </div>
 
-  <button slot="footer">Action</button>
+  <ag-button variant="primary" shape="rounded" slot="footer">Action</ag-button>
 </ag-card>
 ```
 
@@ -208,7 +213,7 @@ Use for grouping related information with a simple border and background:
 Combine shadow and animation for engaging hover interactions:
 
 ```vue
-<VueCard :is-shadow="true" :is-animated="true">
+<VueCard :shadow="true" :animated="true">
   <h3>Featured Item</h3>
   <p>Hover to see the lift effect.</p>
 </VueCard>
@@ -230,7 +235,7 @@ Use variant colors to convey status or context:
 Use slots for clearly separated header/footer sections. The header and footer automatically get appropriate styling (borders, padding) and are hidden when empty:
 
 ```vue
-<VueCard :is-shadow="true">
+<VueCard :shadow="true">
   <template #header>
     <h3 style="margin: 0;">Settings</h3>
   </template>
@@ -245,7 +250,7 @@ Use slots for clearly separated header/footer sections. The header and footer au
   </template>
 </VueCard>
 
-<VueCard :is-shadow="true">
+<VueCard :shadow="true">
   <template #header>
     <h3 style="margin: 0;">Product Details</h3>
   </template>
@@ -267,7 +272,7 @@ Use slots for clearly separated header/footer sections. The header and footer au
 Create fully clickable cards while maintaining accessibility:
 
 ```html
-<ag-card isshadow isanimated>
+<ag-card shadow animated>
   <h4 slot="header" style="margin: 0;">
     <a
       href="/article"
@@ -296,7 +301,7 @@ The `card-primary-action` class creates a pseudo-element that covers the entire 
 
 ## Notes
 
-- **Combining Features**: Multiple props can be combined (e.g., `variant="success" :is-shadow="true" :is-animated="true"`)
+- **Combining Features**: Multiple props can be combined (e.g., `variant="success" :shadow="true" :animated="true"`)
 - **Responsive Design**: Cards are `width: 100%` by default and work well in grid layouts
 - **Lit Property Binding**: In Lit templates, use property bindings for boolean props
 - **Reduced Motion**: Animation transitions are automatically disabled for users who prefer reduced motion
