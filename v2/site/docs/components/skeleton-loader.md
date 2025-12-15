@@ -11,6 +11,7 @@ import SkeletonLoaderExamples from '../examples/SkeletonLoaderExamples.vue'
 ## Usage
 
 ::: details Vue
+
 ```vue
 <template>
   <VueSkeleton variant="text" />
@@ -18,50 +19,66 @@ import SkeletonLoaderExamples from '../examples/SkeletonLoaderExamples.vue'
   <VueSkeleton variant="rectangular" width="300px" height="200px" />
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { VueSkeleton } from 'agnosticui-core/skeleton/vue';
+import { defineComponent } from "vue";
+import { VueSkeleton } from "agnosticui-core/skeleton/vue";
 export default defineComponent({
-  components: { VueSkeleton }
+  components: { VueSkeleton },
 });
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactSkeleton } from 'agnosticui-core/skeleton/react';
+import { ReactSkeleton } from "agnosticui-core/skeleton/react";
 export default function Example() {
   return (
     <>
-      <ReactSkeleton variant="text" />
-      <ReactSkeleton variant="circular" width="60px" height="60px" />
-      <ReactSkeleton variant="rectangular" width="300px" height="200px" />
+      <ReactSkeleton variant="text" effect="pulse" intensity="light" />
+      <ReactSkeleton
+        variant="circular"
+        width="60px"
+        height="60px"
+        effect="pulse"
+        intensity="light"
+      />
+      <ReactSkeleton
+        effect="sheen"
+        variant="rectangular"
+        width="300px"
+        height="200px"
+      />
     </>
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
-  import 'agnosticui-core/skeleton';
+  import "agnosticui-core/skeleton";
 </script>
 <ag-skeleton variant="text"></ag-skeleton>
 <ag-skeleton variant="circular" width="60px" height="60px"></ag-skeleton>
 <ag-skeleton variant="rectangular" width="300px" height="200px"></ag-skeleton>
 ```
+
 :::
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `text` \| `circular` \| `rectangular` \| `rounded` | `text` | The shape variant of the skeleton. |
-| `effect` | `pulse` \| `sheen` \| `none` | `pulse` | The animation effect applied to the skeleton. |
-| `intensity` | `light` \| `medium` | `light` | The background intensity using design tokens. |
-| `width` | `string` | `100%` | The width of the skeleton (any CSS value). |
-| `height` | `string` | `1em` | The height of the skeleton (any CSS value). |
+| Prop        | Type                                               | Default | Description                                   |
+| ----------- | -------------------------------------------------- | ------- | --------------------------------------------- |
+| `variant`   | `text` \| `circular` \| `rectangular` \| `rounded` | `text`  | The shape variant of the skeleton.            |
+| `effect`    | `pulse` \| `sheen` \| `none`                       | `pulse` | The animation effect applied to the skeleton. |
+| `intensity` | `light` \| `medium`                                | `light` | The background intensity using design tokens. |
+| `width`     | `string`                                           | `100%`  | The width of the skeleton (any CSS value).    |
+| `height`    | `string`                                           | `1em`   | The height of the skeleton (any CSS value).   |
 
 ## Variants
 
@@ -85,14 +102,14 @@ export default function Example() {
 
 ## CSS Shadow Parts
 
-| Part | Description |
-|------|-------------|
+| Part                  | Description                        |
+| --------------------- | ---------------------------------- |
 | `ag-skeleton-wrapper` | The main skeleton wrapper element. |
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
+| Event | Payload | Description       |
+| ----- | ------- | ----------------- |
 |       |         | No custom events. |
 
 ## Accessibility
