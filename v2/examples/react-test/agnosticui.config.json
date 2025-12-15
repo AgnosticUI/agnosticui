@@ -275,6 +275,15 @@
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/SkeletonLoader/core",
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/SkeletonLoader/react"
       ]
+    },
+    "Kbd": {
+      "added": "2025-12-15T21:40:39.202Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Kbd/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Kbd/react"
+      ]
     }
   },
   "ai": {
