@@ -293,6 +293,15 @@
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Card/core",
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Card/react"
       ]
+    },
+    "Slider": {
+      "added": "2025-12-15T22:10:56.281Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Slider/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Slider/react"
+      ]
     }
   },
   "ai": {

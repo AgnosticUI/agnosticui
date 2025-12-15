@@ -13,16 +13,12 @@ import SliderExamples from '../examples/SliderExamples.vue'
 ## Usage
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
     <!-- Basic slider -->
-    <VueSlider
-      label="Volume"
-      :min="0"
-      :max="100"
-      :value="75"
-    />
+    <VueSlider label="Volume" :min="0" :max="100" :value="75" />
 
     <!-- Dual range slider -->
     <VueSlider
@@ -46,37 +42,33 @@ import SliderExamples from '../examples/SliderExamples.vue'
     />
 
     <!-- Filled and monochrome variants -->
-    <VueSlider
-      label="Filled Variant"
-      filled
-      :value="60"
-    />
-    <VueSlider
-      label="Monochrome"
-      monochrome
-      :value="70"
-    />
+    <VueSlider label="Filled Variant" filled :value="60" />
+    <VueSlider label="Monochrome" monochrome :value="70" />
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { VueSlider } from 'agnosticui-core/slider/vue';
+import { defineComponent } from "vue";
+import { VueSlider } from "agnosticui-core/slider/vue";
 
 export default defineComponent({
-  components: { VueSlider }
+  components: { VueSlider },
 });
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactSlider } from 'agnosticui-core/slider/react';
+import { ReactSlider } from "agnosticui-core/slider/react";
 
 export default function Example() {
   const [value, setValue] = useState(50);
-  const [range, setRange] = useState([200, 800]);
+  const [range, setRange] = useState<number | [number, number] | undefined>([
+    200, 800,
+  ]);
 
   return (
     <section>
@@ -112,36 +104,25 @@ export default function Example() {
       />
 
       {/* Filled and monochrome variants */}
-      <ReactSlider
-        label="Filled Variant"
-        filled
-        value={60}
-      />
-      <ReactSlider
-        label="Monochrome"
-        monochrome
-        value={70}
-      />
+      <ReactSlider label="Filled Variant" filled value={60} />
+      <ReactSlider label="Monochrome" monochrome value={70} />
     </section>
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
-  import 'agnosticui-core/slider';
+  import "agnosticui-core/slider";
 </script>
 
 <section>
   <!-- Basic slider -->
-  <ag-slider
-    label="Volume"
-    min="0"
-    max="100"
-    value="75"
-  ></ag-slider>
+  <ag-slider label="Volume" min="0" max="100" value="75"></ag-slider>
 
   <!-- Dual range slider -->
   <ag-slider
@@ -149,7 +130,8 @@ export default function Example() {
     dual
     min="0"
     max="1000"
-    .value=${[200, 800]}
+    .value="${[200,"
+    800]}
   ></ag-slider>
 
   <!-- With ticks and tooltip -->
@@ -165,64 +147,58 @@ export default function Example() {
   ></ag-slider>
 
   <!-- Filled and monochrome variants -->
-  <ag-slider
-    label="Filled Variant"
-    filled
-    value="60"
-  ></ag-slider>
+  <ag-slider label="Filled Variant" filled value="60"></ag-slider>
 
-  <ag-slider
-    label="Monochrome"
-    monochrome
-    value="70"
-  ></ag-slider>
+  <ag-slider label="Monochrome" monochrome value="70"></ag-slider>
 </section>
 ```
+
 :::
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | `''` | Label text for the slider |
-| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'` | Position of the label relative to the slider |
-| `labelHidden` | `boolean` | `false` | Visually hide the label (still accessible) |
-| `noLabel` | `boolean` | `false` | Remove label completely |
-| `ariaLabel` | `string` | `''` | ARIA label when label is hidden |
-| `min` | `number` | `0` | Minimum value |
-| `max` | `number` | `100` | Maximum value |
-| `step` | `number` | `1` | Step increment for value changes |
-| `value` | `number \| [number, number]` | `0` | Current value (single or dual range) |
-| `dual` | `boolean` | `false` | Enable dual range mode with two thumbs |
-| `vertical` | `boolean` | `false` | Vertical orientation |
-| `filled` | `boolean` | `false` | Filled thumb style (solid background) |
-| `monochrome` | `boolean` | `false` | Monochrome color scheme (adapts to dark mode) |
-| `size` | `'small' \| 'default' \| 'large'` | `'default'` | Size variant |
-| `disabled` | `boolean` | `false` | Disabled state prevents interaction |
-| `readonly` | `boolean` | `false` | Readonly state allows focus but prevents changes |
-| `required` | `boolean` | `false` | Required field indicator |
-| `invalid` | `boolean` | `false` | Invalid state for validation feedback |
-| `errorMessage` | `string` | `''` | Error message text displayed when invalid |
-| `helpText` | `string` | `''` | Helper text displayed below slider |
-| `name` | `string` | `''` | Form field name for submission |
-| `showTooltip` | `boolean` | `false` | Show current value in tooltip while dragging |
-| `showTicks` | `boolean` | `false` | Display tick marks along track |
-| `tickStep` | `number` | `25` | Interval for tick marks |
+| Prop            | Type                                    | Default     | Description                                      |
+| --------------- | --------------------------------------- | ----------- | ------------------------------------------------ |
+| `label`         | `string`                                | `''`        | Label text for the slider                        |
+| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'`     | Position of the label relative to the slider     |
+| `labelHidden`   | `boolean`                               | `false`     | Visually hide the label (still accessible)       |
+| `noLabel`       | `boolean`                               | `false`     | Remove label completely                          |
+| `ariaLabel`     | `string`                                | `''`        | ARIA label when label is hidden                  |
+| `min`           | `number`                                | `0`         | Minimum value                                    |
+| `max`           | `number`                                | `100`       | Maximum value                                    |
+| `step`          | `number`                                | `1`         | Step increment for value changes                 |
+| `value`         | `number \| [number, number]`            | `0`         | Current value (single or dual range)             |
+| `dual`          | `boolean`                               | `false`     | Enable dual range mode with two thumbs           |
+| `vertical`      | `boolean`                               | `false`     | Vertical orientation                             |
+| `filled`        | `boolean`                               | `false`     | Filled thumb style (solid background)            |
+| `monochrome`    | `boolean`                               | `false`     | Monochrome color scheme (adapts to dark mode)    |
+| `size`          | `'small' \| 'default' \| 'large'`       | `'default'` | Size variant                                     |
+| `disabled`      | `boolean`                               | `false`     | Disabled state prevents interaction              |
+| `readonly`      | `boolean`                               | `false`     | Readonly state allows focus but prevents changes |
+| `required`      | `boolean`                               | `false`     | Required field indicator                         |
+| `invalid`       | `boolean`                               | `false`     | Invalid state for validation feedback            |
+| `errorMessage`  | `string`                                | `''`        | Error message text displayed when invalid        |
+| `helpText`      | `string`                                | `''`        | Helper text displayed below slider               |
+| `name`          | `string`                                | `''`        | Form field name for submission                   |
+| `showTooltip`   | `boolean`                               | `false`     | Show current value in tooltip while dragging     |
+| `showTicks`     | `boolean`                               | `false`     | Display tick marks along track                   |
+| `tickStep`      | `number`                                | `25`        | Interval for tick marks                          |
 
 ## Events
 
-| Event    | Framework                                             | Detail                                                  | Description                                                                                |
-| -------- | ----------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `input`  | Vue: `@input`<br>React: `onInput`<br>Lit: `@input`   | `{ value: number \| [number, number] }`                 | Fired continuously while dragging the thumb. Use for real-time updates.                    |
-| `change` | Vue: `@change`<br>React: `onChange`<br>Lit: `@change`| `{ value: number \| [number, number] }`                 | Fired when the thumb is released after dragging. Use for final value updates.             |
-| `focus`  | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus`   | `FocusEvent`                                            | Fired when slider receives focus.                                                          |
-| `blur`   | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur`      | `FocusEvent`                                            | Fired when slider loses focus.                                                             |
+| Event    | Framework                                             | Detail                                  | Description                                                                   |
+| -------- | ----------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------------------------- |
+| `input`  | Vue: `@input`<br>React: `onInput`<br>Lit: `@input`    | `{ value: number \| [number, number] }` | Fired continuously while dragging the thumb. Use for real-time updates.       |
+| `change` | Vue: `@change`<br>React: `onChange`<br>Lit: `@change` | `{ value: number \| [number, number] }` | Fired when the thumb is released after dragging. Use for final value updates. |
+| `focus`  | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus`    | `FocusEvent`                            | Fired when slider receives focus.                                             |
+| `blur`   | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur`       | `FocusEvent`                            | Fired when slider loses focus.                                                |
 
 **Note:** The Slider component supports **dual-dispatch event propagation**: it dispatches both DOM CustomEvents (usable with `addEventListener`) and invokes callback props (`.onInput`, `.onChange`), giving you flexibility in how you handle events.
 
 ### Event Usage Examples
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -235,10 +211,7 @@ export default function Example() {
     />
 
     <!-- v-model:value for two-way binding -->
-    <VueSlider
-      label="Brightness"
-      v-model:value="brightness"
-    />
+    <VueSlider label="Brightness" v-model:value="brightness" />
 
     <!-- Dual range with events -->
     <VueSlider
@@ -255,8 +228,8 @@ export default function Example() {
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { VueSlider } from 'agnosticui-core/slider/vue';
+import { ref } from "vue";
+import { VueSlider } from "agnosticui-core/slider/vue";
 
 const volume = ref(50);
 const brightness = ref(75);
@@ -264,11 +237,11 @@ const priceRange = ref([200, 800]);
 
 const handleInput = (detail: { value: number | [number, number] }) => {
   volume.value = detail.value as number;
-  console.log('Input (dragging):', detail.value);
+  console.log("Input (dragging):", detail.value);
 };
 
 const handleChange = (detail: { value: number | [number, number] }) => {
-  console.log('Change (released):', detail.value);
+  console.log("Change (released):", detail.value);
 };
 
 const handleRangeInput = (detail: { value: number | [number, number] }) => {
@@ -276,16 +249,18 @@ const handleRangeInput = (detail: { value: number | [number, number] }) => {
 };
 
 const handleRangeChange = (detail: { value: number | [number, number] }) => {
-  console.log('Range finalized:', detail.value);
+  console.log("Range finalized:", detail.value);
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { useState } from 'react';
-import { ReactSlider } from 'agnosticui-core/slider/react';
+import { useState } from "react";
+import { ReactSlider } from "agnosticui-core/slider/react";
 
 export default function Example() {
   const [volume, setVolume] = useState(50);
@@ -299,10 +274,10 @@ export default function Example() {
         value={volume}
         onInput={(e) => {
           setVolume(e.detail.value as number);
-          console.log('Input (dragging):', e.detail.value);
+          console.log("Input (dragging):", e.detail.value);
         }}
         onChange={(e) => {
-          console.log('Change (released):', e.detail.value);
+          console.log("Change (released):", e.detail.value);
         }}
       />
 
@@ -315,7 +290,7 @@ export default function Example() {
           setPriceRange(e.detail.value as [number, number]);
         }}
         onChange={(e) => {
-          console.log('Range finalized:', e.detail.value);
+          console.log("Range finalized:", e.detail.value);
         }}
       />
 
@@ -323,58 +298,62 @@ export default function Example() {
       <ReactSlider
         label="Brightness"
         value={75}
-        onFocus={() => console.log('Slider focused')}
-        onBlur={() => console.log('Slider blurred')}
-        onInput={(e) => console.log('Value:', e.detail.value)}
+        onFocus={() => console.log("Slider focused")}
+        onBlur={() => console.log("Slider blurred")}
+        onInput={(e) => console.log("Value:", e.detail.value)}
       />
 
       <p>Current volume: {volume}</p>
-      <p>Price range: ${priceRange[0]} - ${priceRange[1]}</p>
+      <p>
+        Price range: ${priceRange[0]} - ${priceRange[1]}
+      </p>
     </section>
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
-  import 'agnosticui-core/slider';
+  import "agnosticui-core/slider";
 
   // Pattern 1: addEventListener (DOM events)
-  const slider1 = document.querySelector('#slider1');
-  slider1.addEventListener('input', (e) => {
-    console.log('Input event (dragging):', e.detail.value);
+  const slider1 = document.querySelector("#slider1");
+  slider1.addEventListener("input", (e) => {
+    console.log("Input event (dragging):", e.detail.value);
   });
-  slider1.addEventListener('change', (e) => {
-    console.log('Change event (released):', e.detail.value);
+  slider1.addEventListener("change", (e) => {
+    console.log("Change event (released):", e.detail.value);
   });
 
   // Pattern 2: Callback props
-  const slider2 = document.querySelector('#slider2');
+  const slider2 = document.querySelector("#slider2");
   slider2.onInput = (e) => {
-    console.log('Input callback:', e.detail.value);
+    console.log("Input callback:", e.detail.value);
   };
   slider2.onChange = (e) => {
-    console.log('Change callback:', e.detail.value);
+    console.log("Change callback:", e.detail.value);
   };
 
   // Pattern 3: Both patterns work (dual-dispatch)
-  const slider3 = document.querySelector('#slider3');
-  slider3.addEventListener('input', (e) => {
-    console.log('DOM event:', e.detail.value);
+  const slider3 = document.querySelector("#slider3");
+  slider3.addEventListener("input", (e) => {
+    console.log("DOM event:", e.detail.value);
   });
   slider3.onInput = (e) => {
-    console.log('Callback also fired:', e.detail.value);
+    console.log("Callback also fired:", e.detail.value);
   };
 
   // Focus and blur events
-  const slider4 = document.querySelector('#slider4');
-  slider4.addEventListener('focus', (e) => {
-    console.log('Slider focused');
+  const slider4 = document.querySelector("#slider4");
+  slider4.addEventListener("focus", (e) => {
+    console.log("Slider focused");
   });
-  slider4.addEventListener('blur', (e) => {
-    console.log('Slider blurred');
+  slider4.addEventListener("blur", (e) => {
+    console.log("Slider blurred");
   });
 </script>
 
@@ -385,11 +364,7 @@ export default function Example() {
     value="50"
   ></ag-slider>
 
-  <ag-slider
-    id="slider2"
-    label="Callback prop pattern"
-    value="50"
-  ></ag-slider>
+  <ag-slider id="slider2" label="Callback prop pattern" value="50"></ag-slider>
 
   <ag-slider
     id="slider3"
@@ -404,31 +379,36 @@ export default function Example() {
   ></ag-slider>
 </section>
 ```
+
 :::
 
 **Type:**
 
 ```ts
-export type SliderInputEvent = CustomEvent<{ value: number | [number, number] }>;
-export type SliderChangeEvent = CustomEvent<{ value: number | [number, number] }>;
+export type SliderInputEvent = CustomEvent<{
+  value: number | [number, number];
+}>;
+export type SliderChangeEvent = CustomEvent<{
+  value: number | [number, number];
+}>;
 ```
 
 ## CSS Shadow Parts
 
 Shadow Parts allow you to style internal elements of the slider from outside the shadow DOM using the `::part()` CSS selector.
 
-| Part | Description |
-|------|-------------|
-| `ag-slider-container` | The outer container wrapper |
-| `ag-slider-label` | The label element |
-| `ag-slider-track` | The slider track background |
-| `ag-slider-progress` | The progress/fill indicator |
-| `ag-slider-thumb` | The draggable thumb element |
-| `ag-slider-ticks` | Container for tick marks (when showTicks is true) |
-| `ag-slider-tick` | Individual tick mark |
-| `ag-slider-tooltip` | Tooltip showing current value (when showTooltip is true) |
-| `ag-slider-help-text` | Help text element |
-| `ag-slider-error` | Error message element |
+| Part                  | Description                                              |
+| --------------------- | -------------------------------------------------------- |
+| `ag-slider-container` | The outer container wrapper                              |
+| `ag-slider-label`     | The label element                                        |
+| `ag-slider-track`     | The slider track background                              |
+| `ag-slider-progress`  | The progress/fill indicator                              |
+| `ag-slider-thumb`     | The draggable thumb element                              |
+| `ag-slider-ticks`     | Container for tick marks (when showTicks is true)        |
+| `ag-slider-tick`      | Individual tick mark                                     |
+| `ag-slider-tooltip`   | Tooltip showing current value (when showTooltip is true) |
+| `ag-slider-help-text` | Help text element                                        |
+| `ag-slider-error`     | Error message element                                    |
 
 ### Customization Examples
 
