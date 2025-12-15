@@ -32,6 +32,7 @@ import { ReactInput } from './components/ag/Input/react/ReactInput';
 import { ReactIntlFormatter } from './components/ag/IntlFormatter/react/ReactIntlFormatter';
 import { ReactSkeleton } from './components/ag/SkeletonLoader/react/ReactSkeletonLoader';
 import { ReactKbd } from './components/ag/Kbd/react/ReactKbd';
+import { ReactCard } from './components/ag/Card/react/ReactCard';
 
 function App() {
   const items: BreadcrumbItem[] = [
@@ -103,6 +104,35 @@ function App() {
   return (
     <>
       <h1>Kitchen Sink (React)</h1>
+      <section className="mbe4">
+        <ReactCard>
+          <h3>Card Title</h3>
+          <p>Basic card content with default styling.</p>
+        </ReactCard>
+      </section>
+      <section className="mbe4">
+        <ReactCard shadow animated>
+          <h3>Animated Card</h3>
+          <p>Hover to see the animation effect.</p>
+        </ReactCard>
+      </section>
+      <section className="mbe4">      
+        <ReactCard variant="success">
+          <h3>Success</h3>
+          <p>Operation completed successfully!</p>
+        </ReactCard>
+      </section>
+      <section className="mbe4">                    
+        <ReactCard shadow animated>
+          <h3 slot="header" style={{ margin: 0 }}>
+            Header Slot
+          </h3>
+          <div>
+            <p>Main content goes here.</p>
+          </div>
+          <ReactButton variant="primary" shape="rounded" slot="footer">Action</ReactButton>
+        </ReactCard>
+      </section>
       <section className="mbe4">
         <ReactSkeleton className='mbe2' effect='pulse' variant="text" />
         <ReactSkeleton className='mbe2' effect='pulse' variant="circular" width="60px" height="60px" />
