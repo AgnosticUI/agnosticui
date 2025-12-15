@@ -29,7 +29,7 @@ import { ReactSidebar } from './components/ag/Sidebar/react/ReactSidebar';
 import { ReactSidebarNav, ReactSidebarNavItem, ReactSidebarNavSubmenu, ReactSidebarNavPopoverSubmenu } from './components/ag/SidebarNav/react/ReactSidebarNav';
 import { ReactPopover } from './components/ag/Popover/react/ReactPopover';
 import { ReactInput } from './components/ag/Input/react/ReactInput';
-
+import { ReactIntlFormatter } from './components/ag/IntlFormatter/react/ReactIntlFormatter';
 
 function App() {
   const items: BreadcrumbItem[] = [
@@ -92,10 +92,46 @@ function App() {
 
     console.log('Team submenu toggled:', newState);
   };
+  
+  const handleFormattingError = (event) => {
+    console.error('Formatting error:', event.detail);
+  };
 
   return (
     <>
       <h1>Kitchen Sink (React)</h1>
+      <section className="mbe4">
+        <ReactIntlFormatter
+          type="date"
+          date="2024-01-15"
+          dateStyle="full"
+          timeStyle="short"
+        />
+
+        <ReactIntlFormatter
+          className='mis4'
+          type="currency"
+          value={1234.56}
+          currency="EUR"
+          lang="de-DE"
+          onFormatError={handleFormattingError}
+        />
+
+        <ReactIntlFormatter
+          className='mis4'
+          type="number"
+          value={1234567.89}
+          minimumFractionDigits={2}
+          maximumFractionDigits={2}
+          noGrouping={false}
+        />
+        <ReactIntlFormatter
+          className='mis4'
+          type="percent"
+          value={0.8532}
+          minimumFractionDigits={2}
+        />
+      </section>
       <section className="mbe4">
         <ReactButton variant='primary' shape='rounded'>Button</ReactButton>
         <ReactButtonFx className='mis4' fx='bounce' fxEase='spring-md' fxSpeed='xl' variant='primary' shape='rounded'>Bounce Button</ReactButtonFx>
