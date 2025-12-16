@@ -468,11 +468,11 @@ export class MyElement extends LitElement {
         </ag-fieldset>
       </ag-flex-row>
       <ag-flex-row class="responsive">
-        <ag-skeleton variant="rectangular" width="100px" height="40px"></ag-skeleton>
-        <ag-skeleton variant="rounded" width="100px" height="40px"></ag-skeleton>
-        <ag-skeleton variant="circular" width="40px" height="40px"></ag-skeleton>
-        <ag-skeleton variant="circular" width="60px" height="60px"></ag-skeleton>
-        <ag-skeleton variant="text" width="200px"></ag-skeleton>
+        <ag-skeleton-loader variant="rectangular" width="100px" height="40px"></ag-skeleton-loader>
+        <ag-skeleton-loader variant="rounded" width="100px" height="40px"></ag-skeleton-loader>
+        <ag-skeleton-loader variant="circular" width="40px" height="40px"></ag-skeleton-loader>
+        <ag-skeleton-loader variant="circular" width="60px" height="60px"></ag-skeleton-loader>
+        <ag-skeleton-loader variant="text" width="200px"></ag-skeleton-loader>
       </ag-flex-row>
       <ag-flex-row class="responsive">
         <ag-progress-ring value=${75}></ag-progress-ring>

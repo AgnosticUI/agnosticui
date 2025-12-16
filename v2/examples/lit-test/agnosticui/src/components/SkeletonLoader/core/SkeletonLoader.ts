@@ -1,12 +1,12 @@
 import { AgSkeleton, type SkeletonProps } from './_SkeletonLoader.js';
 
-if (!customElements.get('ag-skeleton')) {
-  customElements.define('ag-skeleton', AgSkeleton);
+if (!customElements.get('ag-skeleton-loader')) {
+  customElements.define('ag-skeleton-loader', AgSkeleton);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ag-skeleton': AgSkeleton;
+    'ag-skeleton-loader': AgSkeleton;
   }
 }
 

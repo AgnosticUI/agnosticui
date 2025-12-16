@@ -43,7 +43,7 @@ import { VueScrollToButton } from "./ag/ScrollToButton/vue";
 import { VueSelect } from "./ag/Select/vue";
 import { VueSidebar } from "./ag/Sidebar/vue";
 import { VueSidebarNav, VueSidebarNavItem } from "./ag/SidebarNav/vue";
-import { VueSkeleton } from "./ag/SkeletonLoader/vue";
+import { VueSkeletonLoader } from "./ag/SkeletonLoader/vue";
 import { VueSlider } from "./ag/Slider/vue";
 import { VueSpinner } from "./ag/Spinner/vue";
 import VueTabs, { VueTab, VueTabPanel } from "./ag/Tabs/vue";
@@ -1193,17 +1193,17 @@ const handleCollapsibleToggle = (event: Event) => {
         gap="md"
         direction="column"
       >
-        <VueSkeleton
+        <VueSkeletonLoader
           variant="rectangular"
           width="200px"
           class="mbe2"
         />
-        <VueSkeleton
+        <VueSkeletonLoader
           variant="rectangular"
           width="200px"
           class="mbe2"
         />
-        <VueSkeleton
+        <VueSkeletonLoader
           variant="rectangular"
           width="200px"
           class="mbe2"
@@ -1212,14 +1212,14 @@ const handleCollapsibleToggle = (event: Event) => {
 
       <h3 class="subsection-title">Shape Variants</h3>
       <div class="mbe2">
-        <VueSkeleton
+        <VueSkeletonLoader
           variant="circular"
           width="64px"
           height="64px"
         />
       </div>
       <div>
-        <VueSkeleton
+        <VueSkeletonLoader
           variant="rounded"
           width="300px"
           height="200px"

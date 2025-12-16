@@ -6,9 +6,9 @@
         Default text skeleton with subtle border radius, perfect for text placeholders.
       </p>
       <div style="width: 300px">
-        <VueSkeleton />
-        <VueSkeleton style="margin-top: 8px" />
-        <VueSkeleton style="margin-top: 8px; width: 60%" />
+        <VueSkeletonLoader />
+        <VueSkeletonLoader style="margin-top: 8px" />
+        <VueSkeletonLoader style="margin-top: 8px; width: 60%" />
       </div>
     </div>
 
@@ -21,17 +21,17 @@
         class="flex items-center"
         style="gap: 16px"
       >
-        <VueSkeleton
+        <VueSkeletonLoader
           variant="circular"
           width="40px"
           height="40px"
         />
-        <VueSkeleton
+        <VueSkeletonLoader
           variant="circular"
           width="60px"
           height="60px"
         />
-        <VueSkeleton
+        <VueSkeletonLoader
           variant="circular"
           width="80px"
           height="80px"
@@ -44,7 +44,7 @@
       <p class="mbs2 mbe3">
         Rectangular variant with no border radius, perfect for images.
       </p>
-      <VueSkeleton
+      <VueSkeletonLoader
         variant="rectangular"
         width="300px"
         height="200px"
@@ -56,7 +56,7 @@
       <p class="mbs2 mbe3">
         Rounded variant with medium border radius, ideal for cards.
       </p>
-      <VueSkeleton
+      <VueSkeletonLoader
         variant="rounded"
         width="300px"
         height="200px"
@@ -74,7 +74,7 @@
       >
         <div>
           <h3 class="mbe2">Pulse</h3>
-          <VueSkeleton
+          <VueSkeletonLoader
             effect="pulse"
             width="200px"
             height="100px"
@@ -83,7 +83,7 @@
         </div>
         <div>
           <h3 class="mbe2">Sheen</h3>
-          <VueSkeleton
+          <VueSkeletonLoader
             effect="sheen"
             width="200px"
             height="100px"
@@ -92,7 +92,7 @@
         </div>
         <div>
           <h3 class="mbe2">None</h3>
-          <VueSkeleton
+          <VueSkeletonLoader
             effect="none"
             width="200px"
             height="100px"
@@ -113,7 +113,7 @@
       >
         <div>
           <h3 class="mbe2">Light</h3>
-          <VueSkeleton
+          <VueSkeletonLoader
             intensity="light"
             width="200px"
             height="100px"
@@ -122,7 +122,7 @@
         </div>
         <div>
           <h3 class="mbe2">Medium</h3>
-          <VueSkeleton
+          <VueSkeletonLoader
             intensity="medium"
             width="200px"
             height="100px"
@@ -141,22 +141,22 @@
         class="flex"
         style="gap: 16px; padding: 20px; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-md); max-width: 400px"
       >
-        <VueSkeleton
+        <VueSkeletonLoader
           variant="circular"
           width="60px"
           height="60px"
         />
         <div style="flex: 1">
-          <VueSkeleton
+          <VueSkeletonLoader
             width="40%"
             height="16px"
           />
-          <VueSkeleton
+          <VueSkeletonLoader
             width="60%"
             height="14px"
             style="margin-top: 8px"
           />
-          <VueSkeleton
+          <VueSkeletonLoader
             width="80%"
             height="14px"
             style="margin-top: 8px"
@@ -171,27 +171,27 @@
         Real-world example showing a loading article card.
       </p>
       <div style="border: 1px solid var(--ag-border); border-radius: var(--ag-radius-md); overflow: hidden; max-width: 350px">
-        <VueSkeleton
+        <VueSkeletonLoader
           variant="rectangular"
           width="100%"
           height="200px"
         />
         <div style="padding: 16px">
-          <VueSkeleton
+          <VueSkeletonLoader
             width="60%"
             height="20px"
           />
-          <VueSkeleton
+          <VueSkeletonLoader
             width="100%"
             height="14px"
             style="margin-top: 12px"
           />
-          <VueSkeleton
+          <VueSkeletonLoader
             width="100%"
             height="14px"
             style="margin-top: 8px"
           />
-          <VueSkeleton
+          <VueSkeletonLoader
             width="40%"
             height="14px"
             style="margin-top: 8px"
@@ -212,17 +212,17 @@
           class="flex items-center"
           style="gap: 12px; margin-bottom: 16px"
         >
-          <VueSkeleton
+          <VueSkeletonLoader
             variant="circular"
             width="40px"
             height="40px"
           />
           <div style="flex: 1">
-            <VueSkeleton
+            <VueSkeletonLoader
               width="60%"
               height="16px"
             />
-            <VueSkeleton
+            <VueSkeletonLoader
               width="40%"
               height="14px"
               style="margin-top: 8px"
@@ -237,7 +237,7 @@
       <p class="mbs2 mbe3">
         Use CSS Shadow Parts to customize the skeleton's appearance.
       </p>
-      <VueSkeleton
+      <VueSkeletonLoader
         class="custom-skeleton"
         width="300px"
         height="100px"
@@ -249,12 +249,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { VueSkeleton } from "agnosticui-core/skeleton/vue";
+import { VueSkeletonLoader } from "agnosticui-core/skeleton/vue";
 
 export default defineComponent({
   name: "SkeletonLoaderExamples",
   components: {
-    VueSkeleton,
+    VueSkeletonLoader,
   },
 });
 </script>

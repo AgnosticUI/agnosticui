@@ -268,7 +268,7 @@
       ]
     },
     "SkeletonLoader": {
-      "added": "2025-12-15T17:29:52.800Z",
+      "added": "2025-12-16T04:04:17.889Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -286,7 +286,7 @@
       ]
     },
     "Card": {
-      "added": "2025-12-15T21:46:13.955Z",
+      "added": "2025-12-16T03:45:11.897Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [

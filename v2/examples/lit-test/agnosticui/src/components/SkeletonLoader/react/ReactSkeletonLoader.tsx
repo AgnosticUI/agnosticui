@@ -10,8 +10,8 @@ import {
 
 export type { SkeletonProps, SkeletonVariant, SkeletonEffect, SkeletonIntensity };
 
-export const ReactSkeleton = createComponent({
-  tagName: "ag-skeleton",
+export const ReactSkeletonLoader = createComponent({
+  tagName: "ag-skeleton-loader",
   elementClass: AgSkeleton,
   react: React,
   events: {

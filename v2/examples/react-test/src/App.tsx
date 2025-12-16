@@ -30,7 +30,7 @@ import { ReactSidebarNav, ReactSidebarNavItem, ReactSidebarNavSubmenu, ReactSide
 import { ReactPopover } from './components/ag/Popover/react/ReactPopover';
 import { ReactInput } from './components/ag/Input/react/ReactInput';
 import { ReactIntlFormatter } from './components/ag/IntlFormatter/react/ReactIntlFormatter';
-import { ReactSkeleton } from './components/ag/SkeletonLoader/react/ReactSkeletonLoader';
+import { ReactSkeletonLoader } from './components/ag/SkeletonLoader/react/ReactSkeletonLoader';
 import { ReactKbd } from './components/ag/Kbd/react/ReactKbd';
 import { ReactCard } from './components/ag/Card/react/ReactCard';
 import { ReactSlider } from './components/ag/Slider/react/ReactSlider';
@@ -219,11 +219,11 @@ function App() {
         </ReactCard>
       </section>
       <section className="mbe4">
-        <ReactSkeleton className='mbe2' effect='pulse' variant="text" />
-        <ReactSkeleton className='mbe2' effect='pulse' variant="circular" width="60px" height="60px" />
+        <ReactSkeletonLoader className='mbe2' effect='pulse' variant="text" />
+        <ReactSkeletonLoader className='mbe2' effect='pulse' variant="circular" width="60px" height="60px" />
         <ReactFlexRow>
-          <ReactSkeleton className='mie2' effect='sheen' variant="rounded" width="300px" height="200px" />
-          <ReactSkeleton className='mie2' effect='sheen' variant="rounded" width="300px" height="200px" />
+          <ReactSkeletonLoader className='mie2' effect='sheen' variant="rounded" width="300px" height="200px" />
+          <ReactSkeletonLoader className='mie2' effect='sheen' variant="rounded" width="300px" height="200px" />
         </ReactFlexRow>
       </section>
       <section className="mbe4">

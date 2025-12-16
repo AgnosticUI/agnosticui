@@ -14,15 +14,15 @@ import SkeletonLoaderExamples from '../examples/SkeletonLoaderExamples.vue'
 
 ```vue
 <template>
-  <VueSkeleton variant="text" />
-  <VueSkeleton variant="circular" width="60px" height="60px" />
-  <VueSkeleton variant="rectangular" width="300px" height="200px" />
+  <VueSkeletonLoader variant="text" />
+  <VueSkeletonLoader variant="circular" width="60px" height="60px" />
+  <VueSkeletonLoader variant="rectangular" width="300px" height="200px" />
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { VueSkeleton } from "agnosticui-core/skeleton/vue";
+import { VueSkeletonLoader } from "agnosticui-core/skeleton/vue";
 export default defineComponent({
-  components: { VueSkeleton },
+  components: { VueSkeletonLoader },
 });
 </script>
 ```
@@ -32,19 +32,19 @@ export default defineComponent({
 ::: details React
 
 ```tsx
-import { ReactSkeleton } from "agnosticui-core/skeleton/react";
+import { ReactSkeletonLoader } from "agnosticui-core/skeleton/react";
 export default function Example() {
   return (
     <>
-      <ReactSkeleton variant="text" effect="pulse" intensity="light" />
-      <ReactSkeleton
+      <ReactSkeletonLoader variant="text" effect="pulse" intensity="light" />
+      <ReactSkeletonLoader
         variant="circular"
         width="60px"
         height="60px"
         effect="pulse"
         intensity="light"
       />
-      <ReactSkeleton
+      <ReactSkeletonLoader
         effect="sheen"
         variant="rectangular"
         width="300px"
@@ -63,9 +63,9 @@ export default function Example() {
 <script type="module">
   import "agnosticui-core/skeleton";
 </script>
-<ag-skeleton variant="text"></ag-skeleton>
-<ag-skeleton variant="circular" width="60px" height="60px"></ag-skeleton>
-<ag-skeleton variant="rectangular" width="300px" height="200px"></ag-skeleton>
+<ag-skeleton-loader variant="text"></ag-skeleton-loader>
+<ag-skeleton-loader variant="circular" width="60px" height="60px"></ag-skeleton-loader>
+<ag-skeleton-loader variant="rectangular" width="300px" height="200px"></ag-skeleton-loader>
 ```
 
 :::

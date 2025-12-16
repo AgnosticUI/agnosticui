@@ -1,11 +1,11 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ReactSkeleton } from "agnosticui-core/skeleton/react";
+import { ReactSkeletonLoader } from "agnosticui-core/skeleton/react";
 import type { SkeletonProps } from "agnosticui-core/skeleton/react";
 
 const meta: Meta<SkeletonProps> = {
   title: "AgnosticUI React/SkeletonLoader",
-  component: ReactSkeleton,
+  component: ReactSkeletonLoader,
   tags: ["autodocs"],
   argTypes: {
     variant: {
@@ -46,16 +46,16 @@ export const Default: Story = {
     width: "100%",
     height: "1em",
   },
-  render: (args) => <ReactSkeleton {...args} />,
+  render: (args) => <ReactSkeletonLoader {...args} />,
 };
 
 // Text Skeleton (default)
 export const Text: Story = {
   render: () => (
     <div style={{ width: "300px" }}>
-      <ReactSkeleton />
-      <ReactSkeleton style={{ marginTop: "8px" }} />
-      <ReactSkeleton style={{ marginTop: "8px", width: "60%" }} />
+      <ReactSkeletonLoader />
+      <ReactSkeletonLoader style={{ marginTop: "8px" }} />
+      <ReactSkeletonLoader style={{ marginTop: "8px", width: "60%" }} />
     </div>
   ),
 };
@@ -64,9 +64,9 @@ export const Text: Story = {
 export const Circular: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-      <ReactSkeleton variant="circular" width="40px" height="40px" />
-      <ReactSkeleton variant="circular" width="60px" height="60px" />
-      <ReactSkeleton variant="circular" width="80px" height="80px" />
+      <ReactSkeletonLoader variant="circular" width="40px" height="40px" />
+      <ReactSkeletonLoader variant="circular" width="60px" height="60px" />
+      <ReactSkeletonLoader variant="circular" width="80px" height="80px" />
     </div>
   ),
 };
@@ -74,14 +74,14 @@ export const Circular: Story = {
 // Rectangular Skeleton
 export const Rectangular: Story = {
   render: () => (
-    <ReactSkeleton variant="rectangular" width="300px" height="200px" />
+    <ReactSkeletonLoader variant="rectangular" width="300px" height="200px" />
   ),
 };
 
 // Rounded Skeleton (for cards/images)
 export const Rounded: Story = {
   render: () => (
-    <ReactSkeleton variant="rounded" width="300px" height="200px" />
+    <ReactSkeletonLoader variant="rounded" width="300px" height="200px" />
   ),
 };
 
@@ -89,9 +89,9 @@ export const Rounded: Story = {
 export const PulseEffect: Story = {
   render: () => (
     <div style={{ width: "300px" }}>
-      <ReactSkeleton effect="pulse" />
-      <ReactSkeleton effect="pulse" style={{ marginTop: "8px" }} />
-      <ReactSkeleton
+      <ReactSkeletonLoader effect="pulse" />
+      <ReactSkeletonLoader effect="pulse" style={{ marginTop: "8px" }} />
+      <ReactSkeletonLoader
         effect="pulse"
         style={{ marginTop: "8px", width: "60%" }}
       />
@@ -103,9 +103,9 @@ export const PulseEffect: Story = {
 export const SheenEffect: Story = {
   render: () => (
     <div style={{ width: "300px" }}>
-      <ReactSkeleton effect="sheen" />
-      <ReactSkeleton effect="sheen" style={{ marginTop: "8px" }} />
-      <ReactSkeleton
+      <ReactSkeletonLoader effect="sheen" />
+      <ReactSkeletonLoader effect="sheen" style={{ marginTop: "8px" }} />
+      <ReactSkeletonLoader
         effect="sheen"
         style={{ marginTop: "8px", width: "60%" }}
       />
@@ -117,9 +117,9 @@ export const SheenEffect: Story = {
 export const NoAnimation: Story = {
   render: () => (
     <div style={{ width: "300px" }}>
-      <ReactSkeleton effect="none" />
-      <ReactSkeleton effect="none" style={{ marginTop: "8px" }} />
-      <ReactSkeleton effect="none" style={{ marginTop: "8px", width: "60%" }} />
+      <ReactSkeletonLoader effect="none" />
+      <ReactSkeletonLoader effect="none" style={{ marginTop: "8px" }} />
+      <ReactSkeletonLoader effect="none" style={{ marginTop: "8px", width: "60%" }} />
     </div>
   ),
 };
@@ -137,11 +137,11 @@ export const UserProfileLoading: Story = {
         maxWidth: "400px",
       }}
     >
-      <ReactSkeleton variant="circular" width="60px" height="60px" />
+      <ReactSkeletonLoader variant="circular" width="60px" height="60px" />
       <div style={{ flex: 1 }}>
-        <ReactSkeleton width="40%" height="16px" />
-        <ReactSkeleton width="60%" height="14px" style={{ marginTop: "8px" }} />
-        <ReactSkeleton width="80%" height="14px" style={{ marginTop: "8px" }} />
+        <ReactSkeletonLoader width="40%" height="16px" />
+        <ReactSkeletonLoader width="60%" height="14px" style={{ marginTop: "8px" }} />
+        <ReactSkeletonLoader width="80%" height="14px" style={{ marginTop: "8px" }} />
       </div>
     </div>
   ),
@@ -158,20 +158,20 @@ export const ArticleCardLoading: Story = {
         maxWidth: "350px",
       }}
     >
-      <ReactSkeleton variant="rectangular" width="100%" height="200px" />
+      <ReactSkeletonLoader variant="rectangular" width="100%" height="200px" />
       <div style={{ padding: "16px" }}>
-        <ReactSkeleton width="60%" height="20px" />
-        <ReactSkeleton
+        <ReactSkeletonLoader width="60%" height="20px" />
+        <ReactSkeletonLoader
           width="100%"
           height="14px"
           style={{ marginTop: "12px" }}
         />
-        <ReactSkeleton
+        <ReactSkeletonLoader
           width="100%"
           height="14px"
           style={{ marginTop: "8px" }}
         />
-        <ReactSkeleton width="40%" height="14px" style={{ marginTop: "8px" }} />
+        <ReactSkeletonLoader width="40%" height="14px" style={{ marginTop: "8px" }} />
       </div>
     </div>
   ),
@@ -191,10 +191,10 @@ export const ListLoading: Story = {
             marginBottom: "16px",
           }}
         >
-          <ReactSkeleton variant="circular" width="40px" height="40px" />
+          <ReactSkeletonLoader variant="circular" width="40px" height="40px" />
           <div style={{ flex: 1 }}>
-            <ReactSkeleton width="60%" height="16px" />
-            <ReactSkeleton
+            <ReactSkeletonLoader width="60%" height="16px" />
+            <ReactSkeletonLoader
               width="40%"
               height="14px"
               style={{ marginTop: "8px" }}
@@ -223,9 +223,9 @@ export const TableLoading: Story = {
             borderRadius: "var(--ag-radius-sm)",
           }}
         >
-          <ReactSkeleton height="16px" />
-          <ReactSkeleton height="16px" />
-          <ReactSkeleton height="16px" />
+          <ReactSkeletonLoader height="16px" />
+          <ReactSkeletonLoader height="16px" />
+          <ReactSkeletonLoader height="16px" />
         </div>
       ))}
     </div>
@@ -236,10 +236,10 @@ export const TableLoading: Story = {
 export const CustomDimensions: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-      <ReactSkeleton width="100px" height="20px" />
-      <ReactSkeleton width="200px" height="30px" />
-      <ReactSkeleton width="300px" height="40px" />
-      <ReactSkeleton width="400px" height="50px" />
+      <ReactSkeletonLoader width="100px" height="20px" />
+      <ReactSkeletonLoader width="200px" height="30px" />
+      <ReactSkeletonLoader width="300px" height="40px" />
+      <ReactSkeletonLoader width="400px" height="50px" />
     </div>
   ),
 };
@@ -251,17 +251,17 @@ export const IntensityComparison: Story = {
       <div>
         <h4 style={{ marginBottom: "8px" }}>Light Intensity (default)</h4>
         <div style={{ width: "300px" }}>
-          <ReactSkeleton intensity="light" />
-          <ReactSkeleton intensity="light" style={{ marginTop: "8px" }} />
-          <ReactSkeleton intensity="light" style={{ marginTop: "8px", width: "60%" }} />
+          <ReactSkeletonLoader intensity="light" />
+          <ReactSkeletonLoader intensity="light" style={{ marginTop: "8px" }} />
+          <ReactSkeletonLoader intensity="light" style={{ marginTop: "8px", width: "60%" }} />
         </div>
       </div>
       <div>
         <h4 style={{ marginBottom: "8px" }}>Medium Intensity</h4>
         <div style={{ width: "300px" }}>
-          <ReactSkeleton intensity="medium" />
-          <ReactSkeleton intensity="medium" style={{ marginTop: "8px" }} />
-          <ReactSkeleton intensity="medium" style={{ marginTop: "8px", width: "60%" }} />
+          <ReactSkeletonLoader intensity="medium" />
+          <ReactSkeletonLoader intensity="medium" style={{ marginTop: "8px" }} />
+          <ReactSkeletonLoader intensity="medium" style={{ marginTop: "8px", width: "60%" }} />
         </div>
       </div>
       <div>
@@ -269,11 +269,11 @@ export const IntensityComparison: Story = {
         <div style={{ display: "flex", gap: "16px" }}>
           <div style={{ flex: 1 }}>
             <p style={{ marginBottom: "8px", fontSize: "12px" }}>Light</p>
-            <ReactSkeleton intensity="light" width="200px" height="100px" variant="rounded" />
+            <ReactSkeletonLoader intensity="light" width="200px" height="100px" variant="rounded" />
           </div>
           <div style={{ flex: 1 }}>
             <p style={{ marginBottom: "8px", fontSize: "12px" }}>Medium</p>
-            <ReactSkeleton intensity="medium" width="200px" height="100px" variant="rounded" />
+            <ReactSkeletonLoader intensity="medium" width="200px" height="100px" variant="rounded" />
           </div>
         </div>
       </div>
@@ -291,11 +291,11 @@ export const DarkModeTest: Story = {
       <div style={{ display: "flex", gap: "16px" }}>
         <div>
           <h4 style={{ marginBottom: "8px" }}>Pulse Effect</h4>
-          <ReactSkeleton effect="pulse" width="200px" />
+          <ReactSkeletonLoader effect="pulse" width="200px" />
         </div>
         <div>
           <h4 style={{ marginBottom: "8px" }}>Sheen Effect</h4>
-          <ReactSkeleton effect="sheen" width="200px" />
+          <ReactSkeletonLoader effect="sheen" width="200px" />
         </div>
       </div>
     </div>
@@ -333,18 +333,18 @@ const LoadingStateExample = () => {
       >
         {loading ? (
           <div>
-            <ReactSkeleton width="60%" height="20px" />
-            <ReactSkeleton
+            <ReactSkeletonLoader width="60%" height="20px" />
+            <ReactSkeletonLoader
               width="100%"
               height="14px"
               style={{ marginTop: "12px" }}
             />
-            <ReactSkeleton
+            <ReactSkeletonLoader
               width="100%"
               height="14px"
               style={{ marginTop: "8px" }}
             />
-            <ReactSkeleton
+            <ReactSkeletonLoader
               width="40%"
               height="14px"
               style={{ marginTop: "8px" }}
