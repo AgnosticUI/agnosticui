@@ -369,7 +369,7 @@ export default function Example() {
         value="agree"
         labelText="I agree to the terms"
         onChange={(e) => {
-          console.log("Checkbox changed:", e.detail);
+          console.log("Checkbox changed:", (e.target as HTMLInputElement).checked);
         }}
       />
 
@@ -379,7 +379,7 @@ export default function Example() {
         labelText="Subscribe to newsletter"
         checked={isChecked}
         onChange={(e) => {
-          setIsChecked(e.detail.checked);
+          setIsChecked((e.target as HTMLInputElement).checked);
         }}
       />
 
@@ -388,7 +388,7 @@ export default function Example() {
         value="enabled"
         labelText="Enable notifications"
         onClick={(e) => console.log("Clicked:", e)}
-        onChange={(e) => console.log("Changed:", e.detail)}
+        onChange={(e) => console.log("Changed:", (e.target as HTMLInputElement).checked)}
       />
 
       <ReactCheckbox
@@ -397,7 +397,7 @@ export default function Example() {
         labelText="Select All"
         indeterminate
         onChange={(e) => {
-          console.log("Indeterminate cleared on click:", e.detail);
+          console.log("Indeterminate cleared on click:", (e.target as HTMLInputElement).checked);
         }}
       />
     </section>
