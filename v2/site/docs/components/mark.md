@@ -102,7 +102,7 @@ export default function Example() {
         <ReactInput
           label="Enter text to highlight"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onInput={(e) => setSearchTerm((e.target as HTMLInputElement).value)}
         />
       </div>
       <p>

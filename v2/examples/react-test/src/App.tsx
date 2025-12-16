@@ -37,6 +37,12 @@ import { ReactSlider } from './components/ag/Slider/react/ReactSlider';
 import { ReactCheckbox } from './components/ag/Checkbox/react/ReactCheckbox';
 import { ReactLink } from './components/ag/Link/react/ReactLink';
 import { ReactSpinner } from './components/ag/Spinner/react/ReactSpinner';
+import { ReactCollapsible } from './components/ag/Collapsible/react/ReactCollapsible';
+import { ReactLoader } from './components/ag/Loader/react/ReactLoader';
+import { ReactTabs, ReactTab, ReactTabPanel } from './components/ag/Tabs/react/ReactTabs';
+import { ReactCombobox } from './components/ag/Combobox/react/ReactCombobox';
+import type { ComboboxOption } from './components/ag/Combobox/react/ReactCombobox';
+import { ReactMark } from './components/ag/Mark/react/ReactMark';
 
 function App() {
   const items: BreadcrumbItem[] = [
@@ -65,6 +71,21 @@ function App() {
   const [checkbox1, setCheckbox1] = useState(false);
   const [checkbox2, setCheckbox2] = useState(true);
   const [checkbox3, setCheckbox3] = useState(false);
+  const [collapsible1Open, setCollapsible1Open] = useState(false);
+  const [collapsible2Open, setCollapsible2Open] = useState(true);
+  const [activeTab, setActiveTab] = useState(0);
+  const [selectedState, setSelectedState] = useState('');
+  const [searchTerm, setSearchTerm] = useState('fox');
+  const [markMatchAll, setMarkMatchAll] = useState(true);
+  const [markCaseSensitive, setMarkCaseSensitive] = useState(false);
+
+  const stateOptions: ComboboxOption[] = [
+    { value: 'ca', label: 'California' },
+    { value: 'co', label: 'Colorado' },
+    { value: 'ct', label: 'Connecticut' },
+    { value: 'fl', label: 'Florida' },
+    { value: 'ny', label: 'New York' },
+  ];
 
   const handleBreadcrumbClick = (event: CustomEvent) => {
     console.log(
@@ -254,6 +275,28 @@ function App() {
         </ReactFlexRow>
       </section>
       <section className="mbe4">
+        <h2>Tabs</h2>
+        <ReactTabs
+          activeTab={activeTab}
+          ariaLabel="Basic tabs example"
+          onTabChange={(e) => setActiveTab(e.detail.activeTab)}
+        >
+          <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+          <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+          <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+          <ReactTabPanel slot="panel" id="panel-1">
+            <p>This is the content for Tab 1.</p>
+            <p>You can put any content here.</p>
+          </ReactTabPanel>
+          <ReactTabPanel slot="panel" id="panel-2">
+            <p>This is the content for Tab 2.</p>
+          </ReactTabPanel>
+          <ReactTabPanel slot="panel" id="panel-3">
+            <p>This is the content for Tab 3.</p>
+          </ReactTabPanel>
+        </ReactTabs>
+      </section>
+      <section className="mbe4">
         <h2>Spinner</h2>
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           <ReactSpinner className='mie2' size="small" />
@@ -263,6 +306,13 @@ function App() {
           <ReactSpinner className='mie2' size="xlarge" style={{ '--spinner-color': 'var(--ag-primary)' } as React.CSSProperties} />
           <ReactSpinner className='mie2' size="xlarge" style={{ '--spinner-color': 'var(--ag-success)' } as React.CSSProperties} />
           <ReactSpinner className='mie2' size="xlarge" style={{ '--spinner-color': 'var(--ag-danger)' } as React.CSSProperties} />
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>Loader</h2>
+        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+          <ReactLoader />
+          <ReactLoader ariaLabel="Loading content..." />
         </div>
       </section>
       <section className="mbe4">
@@ -463,6 +513,24 @@ function App() {
         </ReactAccordion>
       </section>
       <section className="mbe4">
+        <h2>Collapsible</h2>
+        <ReactCollapsible
+          open={collapsible1Open}
+          onToggle={(e) => setCollapsible1Open(e.detail.open)}
+        >
+          <span slot="summary">First Collapsible</span>
+          <p>This is the content of the first collapsible section.</p>
+          <p>You can put any content here.</p>
+        </ReactCollapsible>
+        <ReactCollapsible
+          open={collapsible2Open}
+          onToggle={(e) => setCollapsible2Open(e.detail.open)}
+        >
+          <span slot="summary">Second Collapsible (Initially Open)</span>
+          <p>This collapsible starts in the open state.</p>
+        </ReactCollapsible>
+      </section>
+      <section className="mbe4">
         <h2>Fieldset</h2>
         <ReactFieldset legend="Personal Information">
           <div className="mbe4">First Name: John</div>
@@ -533,6 +601,56 @@ function App() {
             onChange={(e) => setCheckbox3((e.target as HTMLInputElement).checked)}
           />
         </ReactFieldset>
+      </section>
+      <section className="mbe4">
+        <h2>Combobox</h2>
+        <ReactCombobox
+          value={selectedState}
+          options={stateOptions}
+          label="Select State"
+          placeholder="Choose a state..."
+          onChange={(e) => setSelectedState(e.detail.value)}
+        />
+      </section>
+      <section className="mbe4">
+        <h2>Mark</h2>
+        <div className="mbe4">
+          <p>
+            This is some text with a <ReactMark variant="success">statically highlighted part</ReactMark> inside it.
+          </p>
+        </div>
+        <div className="mbe4">
+          <ReactInput
+            value={searchTerm}
+            onInput={(e) => setSearchTerm((e.target as HTMLInputElement).value)}
+            label="Enter text to highlight"
+            type="text"
+          />
+        </div>
+        <div className="mbe4">
+          <ReactCheckbox
+            className="mie4"
+            labelText="Match all occurrences"
+            checked={markMatchAll}
+            onChange={(e) => setMarkMatchAll((e.target as HTMLInputElement).checked)}
+          />
+          <ReactCheckbox
+            className="mie4"
+            labelText="Case sensitive"
+            checked={markCaseSensitive}
+            onChange={(e) => setMarkCaseSensitive((e.target as HTMLInputElement).checked)}
+          />
+        </div>
+        <p>
+          <ReactMark
+            search={searchTerm}
+            matchAll={markMatchAll}
+            caseSensitive={markCaseSensitive}
+            variant="warning"
+          >
+            The quick brown fox jumps over the lazy dog. The lazy fox was not the same as the other fox. FOX appears in different cases.
+          </ReactMark>
+        </p>
       </section>
       <section className="mbe4">
         <h2>AspectRatio</h2>
