@@ -1,5 +1,5 @@
 <template>
-  <ag-skeleton
+  <ag-skeleton-loader
     ref="agComponent"
     :variant="variant"
     :effect="effect"
@@ -9,7 +9,7 @@
     v-bind="$attrs"
   >
     <slot />
-  </ag-skeleton>
+  </ag-skeleton-loader>
 </template>
 
 <script lang="ts">
@@ -27,10 +27,10 @@ import type {
   SkeletonEffect,
   SkeletonIntensity,
 } from "../core/SkeletonLoader";
-import "../core/SkeletonLoader"; // Registers the ag-skeleton web component
+import "../core/SkeletonLoader"; // Registers the ag-skeleton-loader web component
 
 export default defineComponent({
-  name: "VueSkeleton",
+  name: "VueSkeletonLoader",
   props: {
     variant: {
       type: String as PropType<SkeletonVariant>,
@@ -68,7 +68,7 @@ export default defineComponent({
     };
 
     onMounted(async () => {
-      await customElements.whenDefined("ag-skeleton");
+      await customElements.whenDefined("ag-skeleton-loader");
       await nextTick();
       syncProps();
     });

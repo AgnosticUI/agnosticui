@@ -47,13 +47,13 @@ export const Default: Story = {
     height: '1em',
   },
   render: (args) => html`
-    <ag-skeleton
+    <ag-skeleton-loader
       .variant=${args.variant}
       .effect=${args.effect}
       .intensity=${args.intensity}
       .width=${args.width}
       .height=${args.height}
-    ></ag-skeleton>
+    ></ag-skeleton-loader>
   `,
 };
 
@@ -61,9 +61,9 @@ export const Default: Story = {
 export const Text: Story = {
   render: () => html`
     <div style="width: 300px;">
-      <ag-skeleton></ag-skeleton>
-      <ag-skeleton style="margin-top: 8px;"></ag-skeleton>
-      <ag-skeleton style="margin-top: 8px; width: 60%;"></ag-skeleton>
+      <ag-skeleton-loader></ag-skeleton-loader>
+      <ag-skeleton-loader style="margin-top: 8px;"></ag-skeleton-loader>
+      <ag-skeleton-loader style="margin-top: 8px; width: 60%;"></ag-skeleton-loader>
     </div>
   `,
 };
@@ -72,9 +72,9 @@ export const Text: Story = {
 export const Circular: Story = {
   render: () => html`
     <div style="display: flex; gap: 16px; align-items: center;">
-      <ag-skeleton .variant=${'circular'} .width=${'40px'} .height=${'40px'}></ag-skeleton>
-      <ag-skeleton .variant=${'circular'} .width=${'60px'} .height=${'60px'}></ag-skeleton>
-      <ag-skeleton .variant=${'circular'} .width=${'80px'} .height=${'80px'}></ag-skeleton>
+      <ag-skeleton-loader .variant=${'circular'} .width=${'40px'} .height=${'40px'}></ag-skeleton-loader>
+      <ag-skeleton-loader .variant=${'circular'} .width=${'60px'} .height=${'60px'}></ag-skeleton-loader>
+      <ag-skeleton-loader .variant=${'circular'} .width=${'80px'} .height=${'80px'}></ag-skeleton-loader>
     </div>
   `,
 };
@@ -82,14 +82,14 @@ export const Circular: Story = {
 // Rectangular Skeleton
 export const Rectangular: Story = {
   render: () => html`
-    <ag-skeleton .variant=${'rectangular'} .width=${'300px'} .height=${'200px'}></ag-skeleton>
+    <ag-skeleton-loader .variant=${'rectangular'} .width=${'300px'} .height=${'200px'}></ag-skeleton-loader>
   `,
 };
 
 // Rounded Skeleton (for cards/images)
 export const Rounded: Story = {
   render: () => html`
-    <ag-skeleton .variant=${'rounded'} .width=${'300px'} .height=${'200px'}></ag-skeleton>
+    <ag-skeleton-loader .variant=${'rounded'} .width=${'300px'} .height=${'200px'}></ag-skeleton-loader>
   `,
 };
 
@@ -97,9 +97,9 @@ export const Rounded: Story = {
 export const PulseEffect: Story = {
   render: () => html`
     <div style="width: 300px;">
-      <ag-skeleton .effect=${'pulse'}></ag-skeleton>
-      <ag-skeleton .effect=${'pulse'} style="margin-top: 8px;"></ag-skeleton>
-      <ag-skeleton .effect=${'pulse'} style="margin-top: 8px; width: 60%;"></ag-skeleton>
+      <ag-skeleton-loader .effect=${'pulse'}></ag-skeleton-loader>
+      <ag-skeleton-loader .effect=${'pulse'} style="margin-top: 8px;"></ag-skeleton-loader>
+      <ag-skeleton-loader .effect=${'pulse'} style="margin-top: 8px; width: 60%;"></ag-skeleton-loader>
     </div>
   `,
 };
@@ -108,9 +108,9 @@ export const PulseEffect: Story = {
 export const SheenEffect: Story = {
   render: () => html`
     <div style="width: 300px;">
-      <ag-skeleton .effect=${'sheen'}></ag-skeleton>
-      <ag-skeleton .effect=${'sheen'} style="margin-top: 8px;"></ag-skeleton>
-      <ag-skeleton .effect=${'sheen'} style="margin-top: 8px; width: 60%;"></ag-skeleton>
+      <ag-skeleton-loader .effect=${'sheen'}></ag-skeleton-loader>
+      <ag-skeleton-loader .effect=${'sheen'} style="margin-top: 8px;"></ag-skeleton-loader>
+      <ag-skeleton-loader .effect=${'sheen'} style="margin-top: 8px; width: 60%;"></ag-skeleton-loader>
     </div>
   `,
 };
@@ -119,9 +119,9 @@ export const SheenEffect: Story = {
 export const NoAnimation: Story = {
   render: () => html`
     <div style="width: 300px;">
-      <ag-skeleton .effect=${'none'}></ag-skeleton>
-      <ag-skeleton .effect=${'none'} style="margin-top: 8px;"></ag-skeleton>
-      <ag-skeleton .effect=${'none'} style="margin-top: 8px; width: 60%;"></ag-skeleton>
+      <ag-skeleton-loader .effect=${'none'}></ag-skeleton-loader>
+      <ag-skeleton-loader .effect=${'none'} style="margin-top: 8px;"></ag-skeleton-loader>
+      <ag-skeleton-loader .effect=${'none'} style="margin-top: 8px; width: 60%;"></ag-skeleton-loader>
     </div>
   `,
 };
@@ -130,11 +130,11 @@ export const NoAnimation: Story = {
 export const UserProfileLoading: Story = {
   render: () => html`
     <div style="display: flex; gap: 16px; padding: 20px; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-md); max-width: 400px;">
-      <ag-skeleton .variant=${'circular'} .width=${'60px'} .height=${'60px'}></ag-skeleton>
+      <ag-skeleton-loader .variant=${'circular'} .width=${'60px'} .height=${'60px'}></ag-skeleton-loader>
       <div style="flex: 1;">
-        <ag-skeleton .width=${'40%'} .height=${'16px'}></ag-skeleton>
-        <ag-skeleton .width=${'60%'} .height=${'14px'} style="margin-top: 8px;"></ag-skeleton>
-        <ag-skeleton .width=${'80%'} .height=${'14px'} style="margin-top: 8px;"></ag-skeleton>
+        <ag-skeleton-loader .width=${'40%'} .height=${'16px'}></ag-skeleton-loader>
+        <ag-skeleton-loader .width=${'60%'} .height=${'14px'} style="margin-top: 8px;"></ag-skeleton-loader>
+        <ag-skeleton-loader .width=${'80%'} .height=${'14px'} style="margin-top: 8px;"></ag-skeleton-loader>
       </div>
     </div>
   `,
@@ -144,12 +144,12 @@ export const UserProfileLoading: Story = {
 export const ArticleCardLoading: Story = {
   render: () => html`
     <div style="border: 1px solid var(--ag-border); border-radius: var(--ag-radius-md); overflow: hidden; max-width: 350px;">
-      <ag-skeleton .variant=${'rectangular'} .width=${'100%'} .height=${'200px'}></ag-skeleton>
+      <ag-skeleton-loader .variant=${'rectangular'} .width=${'100%'} .height=${'200px'}></ag-skeleton-loader>
       <div style="padding: 16px;">
-        <ag-skeleton .width=${'60%'} .height=${'20px'}></ag-skeleton>
-        <ag-skeleton .width=${'100%'} .height=${'14px'} style="margin-top: 12px;"></ag-skeleton>
-        <ag-skeleton .width=${'100%'} .height=${'14px'} style="margin-top: 8px;"></ag-skeleton>
-        <ag-skeleton .width=${'40%'} .height=${'14px'} style="margin-top: 8px;"></ag-skeleton>
+        <ag-skeleton-loader .width=${'60%'} .height=${'20px'}></ag-skeleton-loader>
+        <ag-skeleton-loader .width=${'100%'} .height=${'14px'} style="margin-top: 12px;"></ag-skeleton-loader>
+        <ag-skeleton-loader .width=${'100%'} .height=${'14px'} style="margin-top: 8px;"></ag-skeleton-loader>
+        <ag-skeleton-loader .width=${'40%'} .height=${'14px'} style="margin-top: 8px;"></ag-skeleton-loader>
       </div>
     </div>
   `,
@@ -161,10 +161,10 @@ export const ListLoading: Story = {
     <div style="max-width: 500px;">
       ${[1, 2, 3, 4, 5].map(() => html`
         <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px;">
-          <ag-skeleton .variant=${'circular'} .width=${'40px'} .height=${'40px'}></ag-skeleton>
+          <ag-skeleton-loader .variant=${'circular'} .width=${'40px'} .height=${'40px'}></ag-skeleton-loader>
           <div style="flex: 1;">
-            <ag-skeleton .width=${'60%'} .height=${'16px'}></ag-skeleton>
-            <ag-skeleton .width=${'40%'} .height=${'14px'} style="margin-top: 8px;"></ag-skeleton>
+            <ag-skeleton-loader .width=${'60%'} .height=${'16px'}></ag-skeleton-loader>
+            <ag-skeleton-loader .width=${'40%'} .height=${'14px'} style="margin-top: 8px;"></ag-skeleton-loader>
           </div>
         </div>
       `)}
@@ -178,9 +178,9 @@ export const TableLoading: Story = {
     <div style="max-width: 600px;">
       ${[1, 2, 3, 4].map(() => html`
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 12px; padding: 12px; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-sm);">
-          <ag-skeleton .height=${'16px'}></ag-skeleton>
-          <ag-skeleton .height=${'16px'}></ag-skeleton>
-          <ag-skeleton .height=${'16px'}></ag-skeleton>
+          <ag-skeleton-loader .height=${'16px'}></ag-skeleton-loader>
+          <ag-skeleton-loader .height=${'16px'}></ag-skeleton-loader>
+          <ag-skeleton-loader .height=${'16px'}></ag-skeleton-loader>
         </div>
       `)}
     </div>
@@ -191,10 +191,10 @@ export const TableLoading: Story = {
 export const CustomDimensions: Story = {
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 16px;">
-      <ag-skeleton .width=${'100px'} .height=${'20px'}></ag-skeleton>
-      <ag-skeleton .width=${'200px'} .height=${'30px'}></ag-skeleton>
-      <ag-skeleton .width=${'300px'} .height=${'40px'}></ag-skeleton>
-      <ag-skeleton .width=${'400px'} .height=${'50px'}></ag-skeleton>
+      <ag-skeleton-loader .width=${'100px'} .height=${'20px'}></ag-skeleton-loader>
+      <ag-skeleton-loader .width=${'200px'} .height=${'30px'}></ag-skeleton-loader>
+      <ag-skeleton-loader .width=${'300px'} .height=${'40px'}></ag-skeleton-loader>
+      <ag-skeleton-loader .width=${'400px'} .height=${'50px'}></ag-skeleton-loader>
     </div>
   `,
 };
@@ -206,17 +206,17 @@ export const IntensityComparison: Story = {
       <div>
         <h4 style="margin-bottom: 8px;">Light Intensity (default)</h4>
         <div style="width: 300px;">
-          <ag-skeleton .intensity=${'light'}></ag-skeleton>
-          <ag-skeleton .intensity=${'light'} style="margin-top: 8px;"></ag-skeleton>
-          <ag-skeleton .intensity=${'light'} style="margin-top: 8px; width: 60%;"></ag-skeleton>
+          <ag-skeleton-loader .intensity=${'light'}></ag-skeleton-loader>
+          <ag-skeleton-loader .intensity=${'light'} style="margin-top: 8px;"></ag-skeleton-loader>
+          <ag-skeleton-loader .intensity=${'light'} style="margin-top: 8px; width: 60%;"></ag-skeleton-loader>
         </div>
       </div>
       <div>
         <h4 style="margin-bottom: 8px;">Medium Intensity</h4>
         <div style="width: 300px;">
-          <ag-skeleton .intensity=${'medium'}></ag-skeleton>
-          <ag-skeleton .intensity=${'medium'} style="margin-top: 8px;"></ag-skeleton>
-          <ag-skeleton .intensity=${'medium'} style="margin-top: 8px; width: 60%;"></ag-skeleton>
+          <ag-skeleton-loader .intensity=${'medium'}></ag-skeleton-loader>
+          <ag-skeleton-loader .intensity=${'medium'} style="margin-top: 8px;"></ag-skeleton-loader>
+          <ag-skeleton-loader .intensity=${'medium'} style="margin-top: 8px; width: 60%;"></ag-skeleton-loader>
         </div>
       </div>
       <div>
@@ -224,11 +224,11 @@ export const IntensityComparison: Story = {
         <div style="display: flex; gap: 16px;">
           <div style="flex: 1;">
             <p style="margin-bottom: 8px; font-size: 12px;">Light</p>
-            <ag-skeleton .intensity=${'light'} .width=${'200px'} .height=${'100px'} .variant=${'rounded'}></ag-skeleton>
+            <ag-skeleton-loader .intensity=${'light'} .width=${'200px'} .height=${'100px'} .variant=${'rounded'}></ag-skeleton-loader>
           </div>
           <div style="flex: 1;">
             <p style="margin-bottom: 8px; font-size: 12px;">Medium</p>
-            <ag-skeleton .intensity=${'medium'} .width=${'200px'} .height=${'100px'} .variant=${'rounded'}></ag-skeleton>
+            <ag-skeleton-loader .intensity=${'medium'} .width=${'200px'} .height=${'100px'} .variant=${'rounded'}></ag-skeleton-loader>
           </div>
         </div>
       </div>
@@ -244,11 +244,11 @@ export const DarkModeTest: Story = {
       <div style="display: flex; gap: 16px;">
         <div>
           <h4 style="margin-bottom: 8px;">Pulse Effect</h4>
-          <ag-skeleton .effect=${'pulse'} .width=${'200px'}></ag-skeleton>
+          <ag-skeleton-loader .effect=${'pulse'} .width=${'200px'}></ag-skeleton-loader>
         </div>
         <div>
           <h4 style="margin-bottom: 8px;">Sheen Effect</h4>
-          <ag-skeleton .effect=${'sheen'} .width=${'200px'}></ag-skeleton>
+          <ag-skeleton-loader .effect=${'sheen'} .width=${'200px'}></ag-skeleton-loader>
         </div>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
-import { VueSkeleton } from 'agnosticui-core/skeleton/vue';
+import { VueSkeletonLoader } from 'agnosticui-core/skeleton/vue';
 
 const meta = {
   title: 'AgnosticUI Vue/SkeletonLoader',
-  component: VueSkeleton,
+  component: VueSkeletonLoader,
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -31,7 +31,7 @@ const meta = {
       description: 'Height of the skeleton (CSS value)',
     },
   },
-} satisfies Meta<typeof VueSkeleton>;
+} satisfies Meta<typeof VueSkeletonLoader>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -46,23 +46,23 @@ export const Default: Story = {
     height: '1em',
   },
   render: (args) => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     setup() {
       return { args };
     },
-    template: `<VueSkeleton v-bind="args" />`,
+    template: `<VueSkeletonLoader v-bind="args" />`,
   }),
 };
 
 // Text Skeleton (default)
 export const Text: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="width: 300px;">
-        <VueSkeleton />
-        <VueSkeleton style="margin-top: 8px;" />
-        <VueSkeleton style="margin-top: 8px; width: 60%;" />
+        <VueSkeletonLoader />
+        <VueSkeletonLoader style="margin-top: 8px;" />
+        <VueSkeletonLoader style="margin-top: 8px; width: 60%;" />
       </div>
     `,
   }),
@@ -71,12 +71,12 @@ export const Text: Story = {
 // Circular Skeleton (for avatars)
 export const Circular: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="display: flex; gap: 16px; align-items: center;">
-        <VueSkeleton variant="circular" width="40px" height="40px" />
-        <VueSkeleton variant="circular" width="60px" height="60px" />
-        <VueSkeleton variant="circular" width="80px" height="80px" />
+        <VueSkeletonLoader variant="circular" width="40px" height="40px" />
+        <VueSkeletonLoader variant="circular" width="60px" height="60px" />
+        <VueSkeletonLoader variant="circular" width="80px" height="80px" />
       </div>
     `,
   }),
@@ -85,28 +85,28 @@ export const Circular: Story = {
 // Rectangular Skeleton
 export const Rectangular: Story = {
   render: () => ({
-    components: { VueSkeleton },
-    template: `<VueSkeleton variant="rectangular" width="300px" height="200px" />`,
+    components: { VueSkeletonLoader },
+    template: `<VueSkeletonLoader variant="rectangular" width="300px" height="200px" />`,
   }),
 };
 
 // Rounded Skeleton (for cards/images)
 export const Rounded: Story = {
   render: () => ({
-    components: { VueSkeleton },
-    template: `<VueSkeleton variant="rounded" width="300px" height="200px" />`,
+    components: { VueSkeletonLoader },
+    template: `<VueSkeletonLoader variant="rounded" width="300px" height="200px" />`,
   }),
 };
 
 // Pulse Effect (default)
 export const PulseEffect: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="width: 300px;">
-        <VueSkeleton effect="pulse" />
-        <VueSkeleton effect="pulse" style="margin-top: 8px;" />
-        <VueSkeleton effect="pulse" style="margin-top: 8px; width: 60%;" />
+        <VueSkeletonLoader effect="pulse" />
+        <VueSkeletonLoader effect="pulse" style="margin-top: 8px;" />
+        <VueSkeletonLoader effect="pulse" style="margin-top: 8px; width: 60%;" />
       </div>
     `,
   }),
@@ -115,12 +115,12 @@ export const PulseEffect: Story = {
 // Sheen Effect
 export const SheenEffect: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="width: 300px;">
-        <VueSkeleton effect="sheen" />
-        <VueSkeleton effect="sheen" style="margin-top: 8px;" />
-        <VueSkeleton effect="sheen" style="margin-top: 8px; width: 60%;" />
+        <VueSkeletonLoader effect="sheen" />
+        <VueSkeletonLoader effect="sheen" style="margin-top: 8px;" />
+        <VueSkeletonLoader effect="sheen" style="margin-top: 8px; width: 60%;" />
       </div>
     `,
   }),
@@ -129,12 +129,12 @@ export const SheenEffect: Story = {
 // No Animation
 export const NoAnimation: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="width: 300px;">
-        <VueSkeleton effect="none" />
-        <VueSkeleton effect="none" style="margin-top: 8px;" />
-        <VueSkeleton effect="none" style="margin-top: 8px; width: 60%;" />
+        <VueSkeletonLoader effect="none" />
+        <VueSkeletonLoader effect="none" style="margin-top: 8px;" />
+        <VueSkeletonLoader effect="none" style="margin-top: 8px; width: 60%;" />
       </div>
     `,
   }),
@@ -143,14 +143,14 @@ export const NoAnimation: Story = {
 // User Profile Card Loading
 export const UserProfileLoading: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="display: flex; gap: 16px; padding: 20px; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-md); max-width: 400px;">
-        <VueSkeleton variant="circular" width="60px" height="60px" />
+        <VueSkeletonLoader variant="circular" width="60px" height="60px" />
         <div style="flex: 1;">
-          <VueSkeleton width="40%" height="16px" />
-          <VueSkeleton width="60%" height="14px" style="margin-top: 8px;" />
-          <VueSkeleton width="80%" height="14px" style="margin-top: 8px;" />
+          <VueSkeletonLoader width="40%" height="16px" />
+          <VueSkeletonLoader width="60%" height="14px" style="margin-top: 8px;" />
+          <VueSkeletonLoader width="80%" height="14px" style="margin-top: 8px;" />
         </div>
       </div>
     `,
@@ -160,15 +160,15 @@ export const UserProfileLoading: Story = {
 // Article Card Loading
 export const ArticleCardLoading: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="border: 1px solid var(--ag-border); border-radius: var(--ag-radius-md); overflow: hidden; max-width: 350px;">
-        <VueSkeleton variant="rectangular" width="100%" height="200px" />
+        <VueSkeletonLoader variant="rectangular" width="100%" height="200px" />
         <div style="padding: 16px;">
-          <VueSkeleton width="60%" height="20px" />
-          <VueSkeleton width="100%" height="14px" style="margin-top: 12px;" />
-          <VueSkeleton width="100%" height="14px" style="margin-top: 8px;" />
-          <VueSkeleton width="40%" height="14px" style="margin-top: 8px;" />
+          <VueSkeletonLoader width="60%" height="20px" />
+          <VueSkeletonLoader width="100%" height="14px" style="margin-top: 12px;" />
+          <VueSkeletonLoader width="100%" height="14px" style="margin-top: 8px;" />
+          <VueSkeletonLoader width="40%" height="14px" style="margin-top: 8px;" />
         </div>
       </div>
     `,
@@ -178,14 +178,14 @@ export const ArticleCardLoading: Story = {
 // List Loading
 export const ListLoading: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="max-width: 500px;">
         <div v-for="i in 5" :key="i" style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px;">
-          <VueSkeleton variant="circular" width="40px" height="40px" />
+          <VueSkeletonLoader variant="circular" width="40px" height="40px" />
           <div style="flex: 1;">
-            <VueSkeleton width="60%" height="16px" />
-            <VueSkeleton width="40%" height="14px" style="margin-top: 8px;" />
+            <VueSkeletonLoader width="60%" height="16px" />
+            <VueSkeletonLoader width="40%" height="14px" style="margin-top: 8px;" />
           </div>
         </div>
       </div>
@@ -196,13 +196,13 @@ export const ListLoading: Story = {
 // Table Loading
 export const TableLoading: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="max-width: 600px;">
         <div v-for="i in 4" :key="i" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 12px; padding: 12px; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-sm);">
-          <VueSkeleton height="16px" />
-          <VueSkeleton height="16px" />
-          <VueSkeleton height="16px" />
+          <VueSkeletonLoader height="16px" />
+          <VueSkeletonLoader height="16px" />
+          <VueSkeletonLoader height="16px" />
         </div>
       </div>
     `,
@@ -212,13 +212,13 @@ export const TableLoading: Story = {
 // Custom Dimensions
 export const CustomDimensions: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="display: flex; flex-direction: column; gap: 16px;">
-        <VueSkeleton width="100px" height="20px" />
-        <VueSkeleton width="200px" height="30px" />
-        <VueSkeleton width="300px" height="40px" />
-        <VueSkeleton width="400px" height="50px" />
+        <VueSkeletonLoader width="100px" height="20px" />
+        <VueSkeletonLoader width="200px" height="30px" />
+        <VueSkeletonLoader width="300px" height="40px" />
+        <VueSkeletonLoader width="400px" height="50px" />
       </div>
     `,
   }),
@@ -227,23 +227,23 @@ export const CustomDimensions: Story = {
 // Intensity Comparison
 export const IntensityComparison: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div style="display: flex; flex-direction: column; gap: 24px;">
         <div>
           <h4 style="margin-bottom: 8px;">Light Intensity (default)</h4>
           <div style="width: 300px;">
-            <VueSkeleton intensity="light" />
-            <VueSkeleton intensity="light" style="margin-top: 8px;" />
-            <VueSkeleton intensity="light" style="margin-top: 8px; width: 60%;" />
+            <VueSkeletonLoader intensity="light" />
+            <VueSkeletonLoader intensity="light" style="margin-top: 8px;" />
+            <VueSkeletonLoader intensity="light" style="margin-top: 8px; width: 60%;" />
           </div>
         </div>
         <div>
           <h4 style="margin-bottom: 8px;">Medium Intensity</h4>
           <div style="width: 300px;">
-            <VueSkeleton intensity="medium" />
-            <VueSkeleton intensity="medium" style="margin-top: 8px;" />
-            <VueSkeleton intensity="medium" style="margin-top: 8px; width: 60%;" />
+            <VueSkeletonLoader intensity="medium" />
+            <VueSkeletonLoader intensity="medium" style="margin-top: 8px;" />
+            <VueSkeletonLoader intensity="medium" style="margin-top: 8px; width: 60%;" />
           </div>
         </div>
         <div>
@@ -251,11 +251,11 @@ export const IntensityComparison: Story = {
           <div style="display: flex; gap: 16px;">
             <div style="flex: 1;">
               <p style="margin-bottom: 8px; font-size: 12px;">Light</p>
-              <VueSkeleton intensity="light" width="200px" height="100px" variant="rounded" />
+              <VueSkeletonLoader intensity="light" width="200px" height="100px" variant="rounded" />
             </div>
             <div style="flex: 1;">
               <p style="margin-bottom: 8px; font-size: 12px;">Medium</p>
-              <VueSkeleton intensity="medium" width="200px" height="100px" variant="rounded" />
+              <VueSkeletonLoader intensity="medium" width="200px" height="100px" variant="rounded" />
             </div>
           </div>
         </div>
@@ -267,18 +267,18 @@ export const IntensityComparison: Story = {
 // Dark Mode Test
 export const DarkModeTest: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     template: `
       <div>
         <p style="margin-bottom: 16px;">Toggle dark mode in your browser to test:</p>
         <div style="display: flex; gap: 16px;">
           <div>
             <h4 style="margin-bottom: 8px;">Pulse Effect</h4>
-            <VueSkeleton effect="pulse" width="200px" />
+            <VueSkeletonLoader effect="pulse" width="200px" />
           </div>
           <div>
             <h4 style="margin-bottom: 8px;">Sheen Effect</h4>
-            <VueSkeleton effect="sheen" width="200px" />
+            <VueSkeletonLoader effect="sheen" width="200px" />
           </div>
         </div>
       </div>
@@ -289,7 +289,7 @@ export const DarkModeTest: Story = {
 // Loading State Container Example
 export const LoadingStateContainer: Story = {
   render: () => ({
-    components: { VueSkeleton },
+    components: { VueSkeletonLoader },
     setup() {
       const loading = ref(true);
 
@@ -309,10 +309,10 @@ export const LoadingStateContainer: Story = {
         </button>
         <div style="padding: 20px; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-md); max-width: 400px;">
           <div v-if="loading">
-            <VueSkeleton width="60%" height="20px" />
-            <VueSkeleton width="100%" height="14px" style="margin-top: 12px;" />
-            <VueSkeleton width="100%" height="14px" style="margin-top: 8px;" />
-            <VueSkeleton width="40%" height="14px" style="margin-top: 8px;" />
+            <VueSkeletonLoader width="60%" height="20px" />
+            <VueSkeletonLoader width="100%" height="14px" style="margin-top: 12px;" />
+            <VueSkeletonLoader width="100%" height="14px" style="margin-top: 8px;" />
+            <VueSkeletonLoader width="40%" height="14px" style="margin-top: 8px;" />
           </div>
           <div v-else>
             <h3>Article Title</h3>
