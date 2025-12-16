@@ -131,7 +131,7 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
 
     for (const dir of infraDirs) {
       const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'src', dir);
-      const destDir = path.join(process.cwd(), 'src', dir);
+      const destDir = path.join(componentsPath, dir);
 
       if (pathExists(srcDir))   {
         await copyDirectoryFiltered(srcDir, destDir, {
@@ -158,7 +158,7 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
     logger.info(pc.dim('Updated:'));
     console.log('  ' + pc.cyan('✓') + ' Reference library → ' + pc.dim('./agnosticui/'));
     console.log('  ' + pc.cyan('✓') + ' CSS tokens → ' + pc.dim(`${componentsPath}/styles/`));
-    console.log('  ' + pc.cyan('✓') + ' Shared infrastructure → ' + pc.dim('src/shared/, src/utils/, src/styles/, src/types/'));
+    console.log('  ' + pc.cyan('✓') + ' Shared infrastructure → ' + pc.dim(`${componentsPath}/shared/, ${componentsPath}/utils/, ${componentsPath}/styles/, ${componentsPath}/types/`));
     console.log('  ' + pc.cyan('✓') + ' Config → ' + pc.dim('agnosticui.config.json'));
     logger.newline();
     logger.info(pc.dim('Your components in ') + pc.cyan(componentsPath) + pc.dim(' were not modified.'));

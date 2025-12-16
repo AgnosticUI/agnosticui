@@ -51,7 +51,14 @@ function App() {
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [teamOpen, setTeamOpen] = useState(false);
   const [value, setValue] = useState(50);
-  const [range, setRange] = useState<number | [number, number] | undefined>([200, 800]);
+  const [range1, setRange1] = useState<number | [number, number] | undefined>([200, 800]);
+  const [range2, setRange2] = useState<number | [number, number] | undefined>([200, 800]);
+  const [brightness1, setBrightness1] = useState(50);
+  const [brightness2, setBrightness2] = useState(50);
+  const [filled1, setFilled1] = useState(60);
+  const [filled2, setFilled2] = useState(60);
+  const [mono1, setMono1] = useState(70);
+  const [mono2, setMono2] = useState(70);
 
   const handleBreadcrumbClick = (event: CustomEvent) => {
     console.log(
@@ -119,21 +126,24 @@ function App() {
 
         {/* Dual range slider */}
         <ReactSlider
+          key="price-range-1"
           label="Price Range"
           dual
           min={0}
           max={1000}
-          value={range}
-          onInput={(e) => setRange(e.detail.value as [number, number])}
+          value={range1}
+          onInput={(e) => setRange1(e.detail.value as [number, number])}
         />
 
         {/* With ticks and tooltip */}
         <ReactSlider
+          key="brightness-1"
           label="Brightness"
           min={0}
           max={100}
           step={25}
-          value={50}
+          value={brightness1}
+          onInput={(e) => setBrightness1(e.detail.value as number)}
           showTicks
           showTooltip
           tickStep={25}
@@ -141,24 +151,29 @@ function App() {
 
         {/* Filled and monochrome variants */}
         <ReactSlider
+          key="filled-1"
           label="Filled Variant"
           filled
-          value={60}
+          value={filled1}
+          onInput={(e) => setFilled1(e.detail.value as number)}
         />
         <ReactSlider
+          key="mono-1"
           label="Monochrome"
           monochrome
-          value={70}
+          value={mono1}
+          onInput={(e) => setMono1(e.detail.value as number)}
         />
 
         {/* Dual range slider */}
         <ReactSlider
-          label="Price Range"
+          key="price-range-2"
+          label="Price Range 2"
           dual
           min={0}
           max={1000}
-          value={range}
-          onInput={(e) => setRange(e.detail.value as [number, number])}
+          value={range2}
+          onInput={(e) => setRange2(e.detail.value as [number, number])}
         />
 
         {/* With ticks and tooltip */}
@@ -167,11 +182,13 @@ function App() {
 
         {/* TODO FIX OPEN SHADOW ROOT CORE ISSUES */}
         <ReactSlider
-          label="Brightness"
+          key="brightness-2"
+          label="Brightness 2"
           min={0}
           max={100}
           step={25}
-          value={50}
+          value={brightness2}
+          onInput={(e) => setBrightness2(e.detail.value as number)}
           showTicks
           showTooltip
           tickStep={25}
@@ -179,14 +196,18 @@ function App() {
 
         {/* Filled and monochrome variants */}
         <ReactSlider
-          label="Filled Variant"
+          key="filled-2"
+          label="Filled Variant 2"
           filled
-          value={60}
+          value={filled2}
+          onInput={(e) => setFilled2(e.detail.value as number)}
         />
         <ReactSlider
-          label="Monochrome"
+          key="mono-2"
+          label="Monochrome 2"
           monochrome
-          value={70}
+          value={mono2}
+          onInput={(e) => setMono2(e.detail.value as number)}
         />
       </section>
       <section className="mbe4">
