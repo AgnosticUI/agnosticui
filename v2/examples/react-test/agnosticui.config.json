@@ -329,6 +329,52 @@
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Spinner/core",
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Spinner/react"
       ]
+    },
+    "Collapsible": {
+      "added": "2025-12-16T21:56:17.341Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Collapsible/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Collapsible/react"
+      ]
+    },
+    "Loader": {
+      "added": "2025-12-16T21:56:17.342Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Loader/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Loader/react"
+      ]
+    },
+    "Tabs": {
+      "added": "2025-12-16T21:56:17.342Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Tabs/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Tabs/react"
+      ]
+    },
+    "Combobox": {
+      "added": "2025-12-16T22:51:56.816Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Combobox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Combobox/react",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Mark": {
+      "added": "2025-12-16T22:51:56.817Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Mark/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Mark/react"
+      ]
     }
   },
   "ai": {
