@@ -39,7 +39,7 @@ export * from '../Tag/react';
 export * from '../Toast/react';
 export * from '../Toggle/react';
 export * from '../Tooltip/react';
-export * from '../Timeline/react/Timeline';
+export * from '../Timeline/react';
 export * from '../ScrollToButton/react/ReactScrollToButton';
 export * from '../Mark/react/ReactMark';
 export * from '../MessageBubble/react/ReactMessageBubble';
