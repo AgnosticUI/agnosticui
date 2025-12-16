@@ -295,7 +295,7 @@
       ]
     },
     "Slider": {
-      "added": "2025-12-15T22:10:56.281Z",
+      "added": "2025-12-16T13:25:57.060Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -314,7 +314,7 @@
   },
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
-    "version": "2.0.0-alpha",
-    "installed": "2025-12-13T03:22:30.074Z"
+    "version": "unknown",
+    "installed": "2025-12-16T18:51:04.580Z"
   }
 }
