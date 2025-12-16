@@ -43,6 +43,9 @@ import { ReactTabs, ReactTab, ReactTabPanel } from './components/ag/Tabs/react/R
 import { ReactCombobox } from './components/ag/Combobox/react/ReactCombobox';
 import type { ComboboxOption } from './components/ag/Combobox/react/ReactCombobox';
 import { ReactMark } from './components/ag/Mark/react/ReactMark';
+import { ReactCopyButton } from './components/ag/CopyButton/react/ReactCopyButton';
+import { ReactMenuButton, ReactMenu, ReactMenuItem, ReactMenuSeparator } from './components/ag/Menu/react/ReactMenu';
+import { ReactTimeline, ReactTimelineItem } from './components/ag/Timeline/react/ReactTimeline'
 
 function App() {
   const items: BreadcrumbItem[] = [
@@ -651,6 +654,142 @@ function App() {
             The quick brown fox jumps over the lazy dog. The lazy fox was not the same as the other fox. FOX appears in different cases.
           </ReactMark>
         </p>
+      </section>
+      <section className="mbe4">
+        <h2>CopyButton</h2>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+          <ReactCopyButton
+            text="npm install agnosticui-core"
+            label="Copy install command"
+          />
+          <ReactCopyButton
+            text="console.log('Hello, AgnosticUI!');"
+            label="Copy code snippet"
+            successLabel="Code copied!"
+            onCopy={(e) => console.log('Copied:', e.detail?.text)}
+          />
+          <ReactCopyButton
+            text="https://agnosticui.com"
+            label="Copy URL"
+            variant="primary"
+          />
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>Menu</h2>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <ReactMenuButton
+            menuVariant="chevron"
+            size="md"
+            onMenuSelect={(e) => console.log('Selected:', e.detail.value)}
+          >
+            Menu
+            <ReactMenu slot="menu" ariaLabel="Menu options">
+              <ReactMenuItem value="edit" onMenuSelect={(e) => console.log('Edit selected')}>
+                Edit
+              </ReactMenuItem>
+              <ReactMenuItem value="copy" onMenuSelect={(e) => console.log('Copy selected')}>
+                Copy
+              </ReactMenuItem>
+              <ReactMenuItem value="paste" onMenuSelect={(e) => console.log('Paste selected')}>
+                Paste
+              </ReactMenuItem>
+              <ReactMenuSeparator />
+              <ReactMenuItem value="delete" onMenuSelect={(e) => console.log('Delete selected')}>
+                Delete
+              </ReactMenuItem>
+            </ReactMenu>
+          </ReactMenuButton>
+
+          <ReactMenuButton
+            menuVariant="button"
+            size="md"
+            buttonVariant="primary"
+          >
+            Actions
+            <ReactMenu slot="menu" ariaLabel="Action menu">
+              <ReactMenuItem value="new">New File</ReactMenuItem>
+              <ReactMenuItem value="open">Open File</ReactMenuItem>
+              <ReactMenuItem value="save">Save</ReactMenuItem>
+            </ReactMenu>
+          </ReactMenuButton>
+
+          <ReactMenuButton
+            menuVariant="icon"
+            size="md"
+            ghost
+            unicode="⋮"
+            ariaLabel="More options"
+          >
+            <ReactMenu slot="menu" ariaLabel="More options menu">
+              <ReactMenuItem value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator />
+              <ReactMenuItem value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+          </ReactMenuButton>
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>Timeline</h2>
+        <h3>Horizontal Timeline</h3>
+        <ReactTimeline orientation="horizontal">
+          <ReactTimelineItem>
+            <div slot="ag-start">2023-01-01</div>
+            <div slot="ag-marker">
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+            </div>
+            <div slot="ag-end">Step 1 Completed</div>
+          </ReactTimelineItem>
+          <ReactTimelineItem>
+            <div slot="ag-start">2023-02-01</div>
+            <div slot="ag-marker">
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+            </div>
+            <div slot="ag-end">Step 2 In Progress</div>
+          </ReactTimelineItem>
+          <ReactTimelineItem>
+            <div slot="ag-start">2023-03-01</div>
+            <div slot="ag-marker">
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-border)' }}></div>
+            </div>
+            <div slot="ag-end">Step 3 Planned</div>
+          </ReactTimelineItem>
+        </ReactTimeline>
+
+        <h3 className="mbs4">Vertical Timeline</h3>
+        <ReactTimeline orientation="vertical" variant="primary">
+          <ReactTimelineItem>
+            <div slot="ag-start">09:00 AM</div>
+            <div slot="ag-marker">
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+            </div>
+            <div slot="ag-end">
+              <strong>Breakfast</strong>
+              <p style={{ margin: 0 }}>Oatmeal and coffee</p>
+            </div>
+          </ReactTimelineItem>
+          <ReactTimelineItem>
+            <div slot="ag-start">10:00 AM</div>
+            <div slot="ag-marker">
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+            </div>
+            <div slot="ag-end">
+              <strong>Meeting</strong>
+              <p style={{ margin: 0 }}>Daily standup</p>
+            </div>
+          </ReactTimelineItem>
+          <ReactTimelineItem>
+            <div slot="ag-start">02:00 PM</div>
+            <div slot="ag-marker">
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--ag-primary)' }}></div>
+            </div>
+            <div slot="ag-end">
+              <strong>Code Review</strong>
+              <p style={{ margin: 0 }}>Review pending PRs</p>
+            </div>
+          </ReactTimelineItem>
+        </ReactTimeline>
       </section>
       <section className="mbe4">
         <h2>AspectRatio</h2>
