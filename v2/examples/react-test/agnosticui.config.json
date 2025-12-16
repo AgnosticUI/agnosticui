@@ -302,6 +302,33 @@
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Slider/core",
         "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Slider/react"
       ]
+    },
+    "Checkbox": {
+      "added": "2025-12-16T19:44:13.371Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Checkbox/react"
+      ]
+    },
+    "Link": {
+      "added": "2025-12-16T19:44:13.372Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Link/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Link/react"
+      ]
+    },
+    "Spinner": {
+      "added": "2025-12-16T19:44:13.372Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Spinner/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Spinner/react"
+      ]
     }
   },
   "ai": {

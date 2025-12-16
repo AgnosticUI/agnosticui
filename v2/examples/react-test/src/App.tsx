@@ -34,6 +34,9 @@ import { ReactSkeletonLoader } from './components/ag/SkeletonLoader/react/ReactS
 import { ReactKbd } from './components/ag/Kbd/react/ReactKbd';
 import { ReactCard } from './components/ag/Card/react/ReactCard';
 import { ReactSlider } from './components/ag/Slider/react/ReactSlider';
+import { ReactCheckbox } from './components/ag/Checkbox/react/ReactCheckbox';
+import { ReactLink } from './components/ag/Link/react/ReactLink';
+import { ReactSpinner } from './components/ag/Spinner/react/ReactSpinner';
 
 function App() {
   const items: BreadcrumbItem[] = [
@@ -59,6 +62,9 @@ function App() {
   const [filled2, setFilled2] = useState(60);
   const [mono1, setMono1] = useState(70);
   const [mono2, setMono2] = useState(70);
+  const [checkbox1, setCheckbox1] = useState(false);
+  const [checkbox2, setCheckbox2] = useState(true);
+  const [checkbox3, setCheckbox3] = useState(false);
 
   const handleBreadcrumbClick = (event: CustomEvent) => {
     console.log(
@@ -248,6 +254,18 @@ function App() {
         </ReactFlexRow>
       </section>
       <section className="mbe4">
+        <h2>Spinner</h2>
+        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+          <ReactSpinner className='mie2' size="small" />
+          <ReactSpinner className='mie2' size="default" />
+          <ReactSpinner className='mie2' size="large" />
+          <ReactSpinner className='mie2' size="xlarge" />
+          <ReactSpinner className='mie2' size="xlarge" style={{ '--spinner-color': 'var(--ag-primary)' } as React.CSSProperties} />
+          <ReactSpinner className='mie2' size="xlarge" style={{ '--spinner-color': 'var(--ag-success)' } as React.CSSProperties} />
+          <ReactSpinner className='mie2' size="xlarge" style={{ '--spinner-color': 'var(--ag-danger)' } as React.CSSProperties} />
+        </div>
+      </section>
+      <section className="mbe4">
         <ReactKbd className='mis2' variant="monochrome" size="lg" bordered background>⌘</ReactKbd>
         <ReactKbd className='mis2' variant="monochrome" size="lg" bordered background>⌥</ReactKbd>
         <ReactKbd className='mis2' variant="monochrome" size="lg" bordered background>⇧</ReactKbd>
@@ -329,6 +347,18 @@ function App() {
 
       <section className="mbe4">
         <ReactBreadcrumb items={items} onBreadcrumbClick={handleBreadcrumbClick} />
+      </section>
+      <section className="mbe4">
+        <h2>Link</h2>
+        <ReactLink className='mie4' href="#default">Default Link</ReactLink>
+        {' '}
+        <ReactLink className='mie4' href="#primary" variant="primary">Primary Link</ReactLink>
+        {' '}
+        <ReactLink className='mie4' href="#danger" variant="danger">Danger Link</ReactLink>
+        {' '}
+        <ReactLink href="#external" external>External Link</ReactLink>
+        {' '}
+        <ReactLink href="#disabled" disabled>Disabled Link</ReactLink>
       </section>
       <section className="mbe4">
         <ReactBadge className="mie4" variant="default">Default</ReactBadge>
@@ -445,9 +475,9 @@ function App() {
       </section>
       <section className="mbe4">
         <h2>ProgressRing</h2>
-        <ReactProgressRing value={75} />
-        <ReactProgressRing value={50} variant="success" />
-        <ReactProgressRing value={25} size="large" />
+        <ReactProgressRing className='mie2' value={75} />
+        <ReactProgressRing className='mie2' value={50} variant="success" />
+        <ReactProgressRing className='mie2' value={25} size="large" />
       </section>
       <section className="mbe4">
         <h2>Flex</h2>
@@ -461,20 +491,46 @@ function App() {
         <h2>Radio</h2>
         <ReactFieldset legend="Choose your plan">
           <ReactRadio
+            className='mie2'
             name="plan"
             value="free"
             labelText="Free Plan"
           />
           <ReactRadio
+            className='mie2'
             name="plan"
             value="pro"
             labelText="Pro Plan"
             checked
           />
           <ReactRadio
+            className='mie2'
             name="plan"
             value="enterprise"
             labelText="Enterprise Plan"
+          />
+        </ReactFieldset>
+      </section>
+      <section className="mbe4">
+        <h2>Checkbox</h2>
+        <ReactFieldset legend="Select your preferences">
+          <ReactCheckbox
+            className="mie4"
+            labelText="Receive newsletter"
+            checked={checkbox1}
+            onChange={(e) => setCheckbox1((e.target as HTMLInputElement).checked)}
+          />
+          <ReactCheckbox
+            className="mie4"
+            labelText="Enable notifications"
+            checked={checkbox2}
+            onChange={(e) => setCheckbox2((e.target as HTMLInputElement).checked)}
+          />
+          <ReactCheckbox
+            className="mie4"
+            labelText="Agree to terms"
+            checked={checkbox3}
+            onChange={(e) => setCheckbox3((e.target as HTMLInputElement).checked)}
           />
         </ReactFieldset>
       </section>
@@ -532,12 +588,12 @@ function App() {
       </section>
       <section className="mbe4" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
         <h2>Avatar</h2>
-        <ReactAvatar text="AB" />
-        <ReactAvatar
+        <ReactAvatar className='mie2' text="AB" />
+        <ReactAvatar className='mie2'
           imgSrc="https://testingbot.com/free-online-tools/random-avatar/100"
           imgAlt="User name"
         />
-        <ReactAvatar size="lg" variant="info" text="CD" />
+        <ReactAvatar className='mie2' size="lg" variant="info" text="CD" />
       </section>
       <section className="mbe4">
         <h2>ScrollProgress</h2>
