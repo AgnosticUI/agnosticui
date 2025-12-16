@@ -618,11 +618,6 @@ export class AgSlider extends LitElement implements SliderProps {
   @state()
   private _draggingThumb: 'min' | 'max' | 'single' | null = null;
 
-  @query('#minInput')
-  private _minInput?: HTMLInputElement;
-
-  @query('#maxInput')
-  private _maxInput?: HTMLInputElement;
 
   @query('.ag-slider__track')
   private _track?: HTMLElement;
@@ -1237,7 +1232,7 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
         <!-- Hidden accessible inputs -->
         ${this.dual ? html`
           <input
-            id="minInput"
+            id="${this._minInputId}"
             class="ag-slider__input"
             type="range"
             min="${this.min}"
@@ -1257,7 +1252,7 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
             @blur=${(e: FocusEvent) => this._handleBlur(e, 'min')}
           />
           <input
-            id="maxInput"
+            id="${this._maxInputId}"
             class="ag-slider__input"
             type="range"
             min="${this.min}"
