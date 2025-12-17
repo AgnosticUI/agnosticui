@@ -1,0 +1,31 @@
+title: Choice Inputs
+collated: true
+variants:
+  - name: default
+    context:
+      type: checkbox
+  - name: inline
+    context:
+      type: checkbox
+      title: Inline
+      labelWrapModifier: checkbox-label-wrap-inline
+  - name: small
+    context:
+      type: checkbox
+      title: Small
+      groupModifier: checkbox-group-small
+      inputModifier: checkbox-small
+      labelModifier: checkbox-label-small
+      labelCopyModifier: checkbox-label-copy-small
+  - name: large
+    context:
+      type: checkbox
+      title: Large
+      groupModifier: checkbox-group-large
+      inputModifier: checkbox-large
+      labelModifier: checkbox-label-large
+      labelCopyModifier: checkbox-label-copy-large
+  - name: fieldset hidden
+    context:
+      type: checkbox
+      groupModifier: checkbox-group-hidden

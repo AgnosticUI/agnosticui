@@ -1,0 +1,19 @@
+title: Breadcrumb
+collated: true
+context:
+  link1: Tennis
+  link2: Superstars
+  link3: Serena Williams
+variants:
+  - name: default
+    context:
+      modifiers: breadcrumb
+  - name: bullet
+    context:
+      modifiers: breadcrumb breadcrumb-bullet
+  - name: arrow
+    context:
+      modifiers: breadcrumb breadcrumb-arrow
+  - name: slash
+    context:
+      modifiers: breadcrumb breadcrumb-slash

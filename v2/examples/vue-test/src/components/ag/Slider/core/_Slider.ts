@@ -15,8 +15,8 @@ import {
   buildAriaDescribedBy,
   isHorizontalLabel,
   type LabelPosition,
-} from '../../../shared/form-control-utils';
-import { formControlStyles } from '../../../shared/form-control-styles';
+} from '../../../../shared/form-control-utils';
+import { formControlStyles } from '../../../../shared/form-control-styles';
 
 // Props interface following INTERFACE_STANDARDS.md
 export interface SliderProps {
@@ -433,8 +433,6 @@ export class AgSlider extends LitElement implements SliderProps {
 
   // Form control IDs
   private _sliderId: string;
-  private _minInputId: string;
-  private _maxInputId: string;
   private _labelId: string;
   private _helperId: string;
   private _errorId: string;
@@ -459,8 +457,6 @@ export class AgSlider extends LitElement implements SliderProps {
     // Initialize form control IDs
     const ids = createFormControlIds('slider');
     this._sliderId = this.id || ids.inputId;
-    this._minInputId = `${ids.inputId}-min`;
-    this._maxInputId = `${ids.inputId}-max`;
     this._labelId = ids.labelId;
     this._helperId = ids.helperId;
     this._errorId = ids.errorId;
@@ -621,6 +617,12 @@ export class AgSlider extends LitElement implements SliderProps {
 
   @state()
   private _draggingThumb: 'min' | 'max' | 'single' | null = null;
+
+  @query('#minInput')
+  private _minInput?: HTMLInputElement;
+
+  @query('#maxInput')
+  private _maxInput?: HTMLInputElement;
 
   @query('.ag-slider__track')
   private _track?: HTMLElement;
@@ -1235,7 +1237,7 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
         <!-- Hidden accessible inputs -->
         ${this.dual ? html`
           <input
-            id="${this._minInputId}"
+            id="minInput"
             class="ag-slider__input"
             type="range"
             min="${this.min}"
@@ -1255,7 +1257,7 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
             @blur=${(e: FocusEvent) => this._handleBlur(e, 'min')}
           />
           <input
-            id="${this._maxInputId}"
+            id="maxInput"
             class="ag-slider__input"
             type="range"
             min="${this.min}"

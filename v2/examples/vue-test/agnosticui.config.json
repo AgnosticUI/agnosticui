@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "framework": "vue",
   "paths": {
-    "reference": "./agnosticui/lib",
+    "reference": "./agnosticui",
     "components": "./src/components/ag"
   },
   "components": {
@@ -134,12 +134,12 @@
       ]
     },
     "Slider": {
-      "added": "2025-12-10T19:49:36.015Z",
+      "added": "2025-12-17T19:21:04.900Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Slider/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Slider/vue"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Slider/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Slider/vue"
       ]
     },
     "Toggle": {
@@ -331,7 +331,7 @@
       ]
     },
     "SkeletonLoader": {
-      "added": "2025-12-11T14:26:53.104Z",
+      "added": "2025-12-17T20:03:19.010Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
@@ -516,8 +516,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/dist/agnosticui-local-v0.0.1.tar.gz",
-    "version": "0.0.1",
-    "installed": "2025-12-10T23:43:57.194Z"
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
+    "version": "unknown",
+    "installed": "2025-12-17T20:03:15.536Z"
   }
 }

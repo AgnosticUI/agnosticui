@@ -1,0 +1,30 @@
+<p>These all have zero opacity and aria-busy set to false. When ready to show, we can use
+  JavaScript to toggle the attribute to aria-busy="true" which will kick in CSS to
+  set the corresponding opacity to 1.</p>
+  
+<p class="mbs16 mbe24">For manual testing, go ahead and devtools find one of the visually
+hidden spinners below, and change the aria-busy of the spinner to true to see it appear
+(there are 3 hidden spinners below; small, default, and large. Can you find 'em?)</p>
+
+<div class="spinner spinner-small" role="status" aria-live="polite" aria-busy="false">
+  <span class="screenreader-only">Loading...</span>
+</div>
+
+<div class="spinner" role="status" aria-live="polite" aria-busy="false">
+  <span class="screenreader-only">Loading...</span>
+</div>
+
+<div class="spinner spinner-large" role="status" aria-live="polite" aria-busy="false">
+  <span class="screenreader-only">Loading...</span>
+</div>
+
+<p class="mbs16 mbe24">I've set the next couple of spinners to <code>aria-busy="true"</code> for discoverability's sake :-)</p>
+<div class="spinner spinner-xlarge" role="status" aria-live="polite" aria-busy="true">
+  <span class="screenreader-only">Loading...</span>
+</div>
+
+<p class="mbs16 mbe24">You can override the spinner color by setting the <code>--agnostic-spinner-color</code>
+I've inlined it here for brevity but you can define it in your root definitions as well.</p>
+<div style="--agnostic-spinner-color: salmon;" class="spinner spinner-xlarge" role="status" aria-live="polite" aria-busy="true">
+  <span class="screenreader-only">Loading...</span>
+</div>
