@@ -45,7 +45,18 @@ import type { ComboboxOption } from './components/ag/Combobox/react/ReactCombobo
 import { ReactMark } from './components/ag/Mark/react/ReactMark';
 import { ReactCopyButton } from './components/ag/CopyButton/react/ReactCopyButton';
 import { ReactMenuButton, ReactMenu, ReactMenuItem, ReactMenuSeparator } from './components/ag/Menu/react/ReactMenu';
-import { ReactTimeline, ReactTimelineItem } from './components/ag/Timeline/react/ReactTimeline'
+import { ReactTimeline, ReactTimelineItem } from './components/ag/Timeline/react/ReactTimeline';
+import { ReactDialog } from './components/ag/Dialog/react/ReactDialog';
+import { ReactMessageBubble } from './components/ag/MessageBubble/react/ReactMessageBubble';
+import { ReactToast } from './components/ag/Toast/react/ReactToast';
+import { ReactDivider } from './components/ag/Divider/react/ReactDivider';
+import { ReactPagination } from './components/ag/Pagination/react/ReactPagination';
+import { ReactToggle } from './components/ag/Toggle/react/ReactToggle';
+import { ReactDrawer } from './components/ag/Drawer/react/ReactDrawer';
+import { ReactTooltip } from './components/ag/Tooltip/react/ReactTooltip';
+import { ReactEmptyState } from './components/ag/EmptyState/react/ReactEmptyState';
+import { ReactProgress } from './components/ag/Progress/react/ReactProgress';
+import { ReactVisuallyHidden } from './components/ag/VisuallyHidden/react/ReactVisuallyHidden';
 
 function App() {
   const items: BreadcrumbItem[] = [
@@ -81,6 +92,11 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('fox');
   const [markMatchAll, setMarkMatchAll] = useState(true);
   const [markCaseSensitive, setMarkCaseSensitive] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [toastOpen, setToastOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [toggleChecked, setToggleChecked] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const stateOptions: ComboboxOption[] = [
     { value: 'ca', label: 'California' },
@@ -790,6 +806,187 @@ function App() {
             </div>
           </ReactTimelineItem>
         </ReactTimeline>
+      </section>
+      <section className="mbe4">
+        <h2>Dialog</h2>
+        <ReactButton onClick={() => setDialogOpen(true)}>Open Dialog</ReactButton>
+        <ReactDialog
+          open={dialogOpen}
+          heading="Dialog Example"
+          description="This is a dialog with a heading and description"
+          showCloseButton
+          onDialogClose={() => setDialogOpen(false)}
+        >
+          <p>This is the dialog content. You can put any content here.</p>
+          <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end', marginTop: '1rem' }}>
+            <ReactButton onClick={() => setDialogOpen(false)}>Cancel</ReactButton>
+            <ReactButton variant="primary" onClick={() => setDialogOpen(false)}>Confirm</ReactButton>
+          </div>
+        </ReactDialog>
+      </section>
+      <section className="mbe4">
+        <h2>Toast</h2>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <ReactButton onClick={() => setToastOpen(true)}>Show Toast</ReactButton>
+          <ReactToast
+            open={toastOpen}
+            type="success"
+            duration={3000}
+            onToastClose={() => setToastOpen(false)}
+          >
+            Operation completed successfully!
+          </ReactToast>
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>MessageBubble</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '600px' }}>
+          <ReactMessageBubble
+            from="me"
+            message="Hello! This is a message from the user."
+            author="Me"
+            time="10:30 AM"
+          />
+          <ReactMessageBubble
+            from="them"
+            message="Hi there! This is a response message."
+            author="John Doe"
+            time="10:31 AM"
+          />
+          <ReactMessageBubble
+            from="me"
+            message="This is a longer message to demonstrate how the message bubble handles multiple lines of text. It should wrap nicely."
+            author="Me"
+            time="10:32 AM"
+          />
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>Divider</h2>
+        <div>
+          <p>Content above divider</p>
+          <ReactDivider />
+          <p>Content below divider</p>
+        </div>
+        <div className="mbs4">
+          <p>Divider with text</p>
+          <ReactDivider>OR</ReactDivider>
+          <p>More content</p>
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>Pagination</h2>
+        <ReactPagination
+          current={currentPage}
+          totalPages={10}
+          onPageChange={(e) => {
+            setCurrentPage(e.detail.page);
+            console.log('Page changed to:', e.detail.page);
+          }}
+        />
+        <div className="mbs4">
+          <ReactPagination
+            current={1}
+            totalPages={5}
+            bordered
+            firstLastNavigation
+          />
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>Toggle</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <ReactToggle
+            label="Enable notifications"
+            checked={toggleChecked}
+            onToggleChange={(e) => {
+              setToggleChecked(e.detail.checked);
+              console.log('Toggle changed:', e.detail.checked);
+            }}
+          />
+          <ReactToggle label="Success variant" variant="success" checked />
+          <ReactToggle label="Danger variant" variant="danger" checked />
+          <ReactToggle label="Small size" size="sm" />
+          <ReactToggle label="Large size" size="lg" />
+          <ReactToggle label="Disabled toggle" disabled />
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>Drawer</h2>
+        <ReactButton onClick={() => setDrawerOpen(true)}>Open Drawer</ReactButton>
+        <ReactDrawer
+          open={drawerOpen}
+          position="end"
+          heading="Settings Drawer"
+          showCloseButton
+          onDrawerClose={() => setDrawerOpen(false)}
+        >
+          <div>
+            <h4>Preferences</h4>
+            <p>This is drawer content. You can put any content here.</p>
+            <div style={{ marginTop: '1rem' }}>
+              <ReactToggle label="Enable dark mode" />
+              <ReactToggle label="Enable notifications" />
+            </div>
+          </div>
+        </ReactDrawer>
+      </section>
+      <section className="mbe4">
+        <h2>Tooltip</h2>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <ReactTooltip content="This is helpful information">
+            <ReactButton>Hover me</ReactButton>
+          </ReactTooltip>
+          <ReactTooltip content="Appears on the right" placement="right">
+            <ReactButton>Right tooltip</ReactButton>
+          </ReactTooltip>
+          <ReactTooltip content="Click to toggle" trigger="click">
+            <ReactButton>Click trigger</ReactButton>
+          </ReactTooltip>
+          <ReactTooltip content="Edit item">
+            <ReactIconButton label="Edit">
+              <Settings size={18} />
+            </ReactIconButton>
+          </ReactTooltip>
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>EmptyState</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <ReactEmptyState
+            title="No items found"
+            subtitle="Get started by creating your first item"
+          />
+          <ReactEmptyState
+            title="No projects yet"
+            subtitle="Create your first project to get started"
+            buttonText="New Project"
+          />
+          <ReactEmptyState
+            title="No notifications"
+            subtitle="You're all caught up!"
+            size="sm"
+          />
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>Progress</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <ReactProgress value={50} max={100} label="Loading..." />
+          <ReactProgress value={75} max={100} label="Uploading..." />
+          <ReactProgress label="Processing..." />
+          <ReactProgress value={30} max={100} label="Download progress" size="large" />
+        </div>
+      </section>
+      <section className="mbe4">
+        <h2>VisuallyHidden</h2>
+        <div>
+          <p>VisuallyHidden is used for accessibility - content is hidden visually but available to screen readers.</p>
+          <ReactButton>
+            <Settings size={18} />
+            <ReactVisuallyHidden>Settings</ReactVisuallyHidden>
+          </ReactButton>
+        </div>
       </section>
       <section className="mbe4">
         <h2>AspectRatio</h2>
