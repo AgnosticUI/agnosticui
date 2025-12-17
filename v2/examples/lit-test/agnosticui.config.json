@@ -383,7 +383,7 @@
       ]
     },
     "SkeletonLoader": {
-      "added": "2025-12-09T16:10:32.857Z",
+      "added": "2025-12-17T19:16:40.627Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -391,7 +391,7 @@
       ]
     },
     "Slider": {
-      "added": "2025-12-09T16:22:40.441Z",
+      "added": "2025-12-17T19:18:26.482Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -459,6 +459,6 @@
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
     "version": "unknown",
-    "installed": "2025-12-09T22:27:26.896Z"
+    "installed": "2025-12-17T19:16:17.725Z"
   }
 }

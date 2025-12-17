@@ -15,8 +15,8 @@ import {
   buildAriaDescribedBy,
   isHorizontalLabel,
   type LabelPosition,
-} from '../../../shared/form-control-utils';
-import { formControlStyles } from '../../../shared/form-control-styles';
+} from '../../../../shared/form-control-utils';
+import { formControlStyles } from '../../../../shared/form-control-styles';
 
 // Props interface following INTERFACE_STANDARDS.md
 export interface SliderProps {
@@ -804,25 +804,25 @@ export class AgSlider extends LitElement implements SliderProps {
    */
 private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'single') {
     if (this.disabled || this.readonly) return;
-    
+
     const track = this._track;
     if (!track) return; // Explicit type guard
-    
+
     e.preventDefault();
     e.stopPropagation();
 
     const thumb = e.currentTarget as HTMLElement;
     thumb.setPointerCapture(e.pointerId);
-    
+
     const trackRect = track.getBoundingClientRect(); // TypeScript knows track exists
     const currentValues = this._values;
-    
+
     this._activeDrag = {
       thumb: thumbType,
       startX: e.clientX,
       startY: e.clientY,
-      startValue: thumbType === 'min' ? currentValues[0] : 
-                 thumbType === 'max' ? currentValues[1] : 
+      startValue: thumbType === 'min' ? currentValues[0] :
+                 thumbType === 'max' ? currentValues[1] :
                  currentValues[1],
       trackRect
     };
@@ -965,6 +965,11 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
    * Handle input events from native range inputs
    */
   private _handleInput(e: Event, thumb: 'min' | 'max') {
+    // Ignore events from native inputs during active drag to prevent duplicate updates
+    if (this._activeDrag) {
+      return;
+    }
+
     if (this.readonly) {
       e.preventDefault();
       return;
@@ -975,7 +980,7 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
 
     if (this.dual) {
       const currentValues = this._values;
-      const newValues = thumb === 'min' 
+      const newValues = thumb === 'min'
         ? [value, currentValues[1]] as [number, number]
         : [currentValues[0], value] as [number, number];
       this._updateValue(newValues, 'input');
@@ -988,6 +993,11 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
    * Handle change events from native range inputs
    */
   private _handleChange(e: Event, thumb: 'min' | 'max') {
+    // Ignore events from native inputs during active drag to prevent duplicate updates
+    if (this._activeDrag) {
+      return;
+    }
+
     if (this.readonly) {
       e.preventDefault();
       return;
@@ -998,7 +1008,7 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
 
     if (this.dual) {
       const currentValues = this._values;
-      const newValues = thumb === 'min' 
+      const newValues = thumb === 'min'
         ? [value, currentValues[1]] as [number, number]
         : [currentValues[0], value] as [number, number];
       this._updateValue(newValues, 'change');

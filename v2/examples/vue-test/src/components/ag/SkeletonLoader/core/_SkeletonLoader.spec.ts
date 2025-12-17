@@ -16,7 +16,7 @@ describe('AgSkeleton', () => {
   });
 
   it('renders with default props', async () => {
-    element = document.createElement('ag-skeleton') as AgSkeleton;
+    element = document.createElement('ag-skeleton-loader') as AgSkeleton;
     host.appendChild(element);
     await element.updateComplete;
 
@@ -51,7 +51,7 @@ describe('AgSkeleton', () => {
 
   describe('Variants', () => {
     it('renders text variant', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.variant = 'text';
       host.appendChild(element);
       await element.updateComplete;
@@ -61,7 +61,7 @@ describe('AgSkeleton', () => {
     });
 
     it('renders circular variant', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.variant = 'circular';
       host.appendChild(element);
       await element.updateComplete;
@@ -71,7 +71,7 @@ describe('AgSkeleton', () => {
     });
 
     it('renders rectangular variant', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.variant = 'rectangular';
       host.appendChild(element);
       await element.updateComplete;
@@ -81,7 +81,7 @@ describe('AgSkeleton', () => {
     });
 
     it('renders rounded variant', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.variant = 'rounded';
       host.appendChild(element);
       await element.updateComplete;
@@ -93,7 +93,7 @@ describe('AgSkeleton', () => {
 
   describe('Effects', () => {
     it('renders pulse effect (default)', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       host.appendChild(element);
       await element.updateComplete;
 
@@ -102,7 +102,7 @@ describe('AgSkeleton', () => {
     });
 
     it('renders sheen effect', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.effect = 'sheen';
       host.appendChild(element);
       await element.updateComplete;
@@ -112,7 +112,7 @@ describe('AgSkeleton', () => {
     });
 
     it('renders no effect', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.effect = 'none';
       host.appendChild(element);
       await element.updateComplete;
@@ -124,7 +124,7 @@ describe('AgSkeleton', () => {
 
   describe('Intensity', () => {
     it('renders light intensity (default)', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       host.appendChild(element);
       await element.updateComplete;
 
@@ -133,7 +133,7 @@ describe('AgSkeleton', () => {
     });
 
     it('renders medium intensity', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.intensity = 'medium';
       host.appendChild(element);
       await element.updateComplete;
@@ -145,7 +145,7 @@ describe('AgSkeleton', () => {
 
   describe('Dimensions', () => {
     it('applies custom width', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.width = '200px';
       host.appendChild(element);
       await element.updateComplete;
@@ -155,7 +155,7 @@ describe('AgSkeleton', () => {
     });
 
     it('applies custom height', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.height = '50px';
       host.appendChild(element);
       await element.updateComplete;
@@ -165,7 +165,7 @@ describe('AgSkeleton', () => {
     });
 
     it('applies custom width and height', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.width = '200px';
       element.height = '50px';
       host.appendChild(element);
@@ -178,7 +178,7 @@ describe('AgSkeleton', () => {
     });
 
     it('ensures equal dimensions for circular variant when only width is provided', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.variant = 'circular';
       element.width = '100px';
       host.appendChild(element);
@@ -189,7 +189,7 @@ describe('AgSkeleton', () => {
     });
 
     it('ensures equal dimensions for circular variant when only height is provided', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.variant = 'circular';
       element.height = '100px';
       host.appendChild(element);
@@ -200,7 +200,7 @@ describe('AgSkeleton', () => {
     });
 
     it('uses provided dimensions for circular variant when both are specified', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       element.variant = 'circular';
       element.width = '120px';
       element.height = '120px';
@@ -214,7 +214,7 @@ describe('AgSkeleton', () => {
 
   describe('Shadow Parts', () => {
     it('exposes skeleton-wrapper part', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       host.appendChild(element);
       await element.updateComplete;
 
@@ -225,7 +225,7 @@ describe('AgSkeleton', () => {
 
   describe('Accessibility', () => {
     it('has aria-hidden attribute', async () => {
-      element = document.createElement('ag-skeleton') as AgSkeleton;
+      element = document.createElement('ag-skeleton-loader') as AgSkeleton;
       host.appendChild(element);
       await element.updateComplete;
 
