@@ -142,6 +142,7 @@ ag-sidebar[collapsed] {
   display: flex;
   align-items: center;
   gap: var(--ag-space-3);
+  position: relative;
   padding: var(--ag-space-2) var(--ag-space-3);
   border: none;
   background: none;
@@ -183,6 +184,26 @@ ag-sidebar[collapsed] {
   transform: rotate(90deg);
 }
 
+/* Collapsed indicator for collapsed mode submenus */
+.collapsed-indicator {
+  display: none;
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: var(--ag-space-3);
+  height: var(--ag-space-3);
+}
+
+.collapsed-indicator svg {
+  color: var(--ag-text-secondary);
+  transform: rotate(315deg);
+}
+
+/* Show collapsed indicator in collapsed mode for buttons with submenus */
+ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
+  display: block;
+}
+
 /* CRITICAL: Properly handle collapsed state */
 ag-sidebar[collapsed] .nav-label,
 ag-sidebar[collapsed] .chevron {
@@ -198,14 +219,17 @@ ag-sidebar[collapsed] .nav-button {
   gap: 0;
 }
 
-/* Show only expanded button in expanded mode */
+/* Visibility rules for expanded vs collapsed mode */
+ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
+ag-sidebar:not([collapsed]) ag-popover,
+ag-sidebar[collapsed] .nav-button-expanded,
 ag-sidebar:not([collapsed]) .nav-button-collapsed {
-  display: none;
+  display: none !important;
 }
 
-/* Show only collapsed button (popover trigger) in collapsed mode */
-ag-sidebar[collapsed] .nav-button-expanded {
-  display: none;
+/* Fix popover centering in collapsed mode */
+ag-sidebar[collapsed] ag-popover.nav-button-collapsed {
+  display: block !important;
 }
 
 /* CRITICAL: Submenu visibility - hidden by default, visible when open */
@@ -237,6 +261,16 @@ ag-sidebar-nav-submenu[open] {
 /* Popover submenu styles */
 .nav-popover-submenu .nav-sublink {
   padding-left: var(--ag-space-3);
+}
+
+/* Popover content padding for nav popovers in collapsed mode */
+.nav-button-collapsed::part(ag-popover-body) {
+  padding: var(--ag-space-1);
+}
+
+/* Hide popover header for nav popovers */
+.nav-button-collapsed::part(ag-popover-header) {
+  display: none;
 }
 
 /* Toggle button in header */

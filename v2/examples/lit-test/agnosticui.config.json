@@ -97,11 +97,11 @@
       ]
     },
     "Accordion": {
-      "added": "2025-12-06T03:51:26.087Z",
+      "added": "2025-12-18T16:03:06.091Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Accordion/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Accordion/core"
       ]
     },
     "AspectRatio": {
@@ -459,6 +459,6 @@
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
     "version": "unknown",
-    "installed": "2025-12-17T19:16:17.725Z"
+    "installed": "2025-12-18T16:02:52.752Z"
   }
 }

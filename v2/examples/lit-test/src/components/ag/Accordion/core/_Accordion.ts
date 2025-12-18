@@ -25,7 +25,7 @@
 
 import { LitElement, html, css } from 'lit';
 
-import { generateUniqueId } from '../../../utils/unique-id';
+import { generateUniqueId } from '../../../../utils/unique-id';
 
 // Event types
 export interface AccordionItemToggleEventDetail {
@@ -34,6 +34,7 @@ export interface AccordionItemToggleEventDetail {
 export type AccordionItemToggleEvent = CustomEvent<AccordionItemToggleEventDetail>;
 
 // Props interface following INTERFACE_STANDARDS.md
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface AccordionProps {
   // Container has no props, just children
 }

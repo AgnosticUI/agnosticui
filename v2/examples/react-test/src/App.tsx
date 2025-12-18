@@ -1200,9 +1200,14 @@ function App() {
                   distance={8}
                   arrow={true}
                 >
-                  <button slot="trigger" type="button" className="nav-button">
+                  <button slot="trigger" type="button" className="nav-button" aria-expanded="false">
                     <Folder size={20} />
                     <span className="nav-label">Projects</span>
+                    <span className="collapsed-indicator">
+                      <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3l2 2 2-2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                      </svg>
+                    </span>
                   </button>
                   <ReactSidebarNavPopoverSubmenu slot="content" className="nav-popover-submenu">
                     <a href="#project-alpha" className="nav-sublink">Project Alpha</a>
@@ -1239,9 +1244,14 @@ function App() {
                   distance={8}
                   arrow={true}
                 >
-                  <button slot="trigger" type="button" className="nav-button">
+                  <button slot="trigger" type="button" className="nav-button" aria-expanded="false">
                     <Users size={20} />
                     <span className="nav-label">Team</span>
+                    <span className="collapsed-indicator">
+                      <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3l2 2 2-2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                      </svg>
+                    </span>
                   </button>
                   <ReactSidebarNavPopoverSubmenu slot="content" className="nav-popover-submenu">
                     <a href="#team-members" className="nav-sublink">Members</a>

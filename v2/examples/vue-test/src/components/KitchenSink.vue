@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent } from "./ag/Accordion/vue";
 import { VueAlert } from "./ag/Alert/vue";
 import { VueAspectRatio } from "./ag/AspectRatio/vue";
 import { VueAvatar } from "./ag/Avatar/vue";
@@ -52,6 +53,7 @@ import { VueTimeline, VueTimelineItem } from "./ag/Timeline/vue";
 import { VueToast } from "./ag/Toast/vue";
 import { VueToggle } from "./ag/Toggle/vue";
 import VueTooltip from "./ag/Tooltip/vue";
+import { VueVisuallyHidden } from "./ag/VisuallyHidden/vue";
 import {
   CheckCircle2,
   Info,
@@ -717,6 +719,52 @@ const handleCollapsibleToggle = (event: Event) => {
         class="mbe2"
         type="error"
       >Error alert</VueAlert>
+    </section>
+
+    <VueDivider />
+
+    <!-- Accordion -->
+    <section class="component-section">
+      <h2>Accordion</h2>
+      <VueAccordion>
+        <VueAccordionItem>
+          <VueAccordionHeader>
+            <h3>What is AgnosticUI?</h3>
+          </VueAccordionHeader>
+          <VueAccordionContent>
+            <p>
+              AgnosticUI is a component library that works across React, Vue, and Lit frameworks.
+              It uses web components with open shadow DOM to provide framework-agnostic components.
+            </p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+
+        <VueAccordionItem>
+          <VueAccordionHeader>
+            <h3>How does it work?</h3>
+          </VueAccordionHeader>
+          <VueAccordionContent>
+            <p>
+              Components are built with Lit web components and then wrapped with framework-specific
+              wrappers for React and Vue. This allows you to use the same components across different
+              projects with different frameworks.
+            </p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+
+        <VueAccordionItem>
+          <VueAccordionHeader>
+            <h3>What are the benefits?</h3>
+          </VueAccordionHeader>
+          <VueAccordionContent>
+            <p>
+              Benefits include framework flexibility, consistent design across projects, reduced
+              maintenance burden, and the ability to share components between teams using different
+              frameworks.
+            </p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+      </VueAccordion>
     </section>
 
     <VueDivider />
@@ -1946,6 +1994,26 @@ const handleCollapsibleToggle = (event: Event) => {
           <VueSpinner size="xlarge" />
         </div>
       </VueFlexRow>
+    </section>
+
+    <VueDivider />
+
+    <!-- VisuallyHidden (Accessibility utility) -->
+    <section class="component-section">
+      <h2>Visually Hidden</h2>
+      <p class="mbe3">
+        Content that is visually hidden but accessible to screen readers.
+        Try using a screen reader to hear the hidden text below:
+      </p>
+
+      <VueButton>
+        <Settings :size="20" />
+        <VueVisuallyHidden>Open Settings</VueVisuallyHidden>
+      </VueButton>
+
+      <p class="mbs3" style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+        The button above has an icon and hidden text "Open Settings" for screen readers.
+      </p>
     </section>
 
     <VueDivider />

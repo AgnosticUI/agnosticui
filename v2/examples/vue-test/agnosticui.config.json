@@ -191,7 +191,7 @@
       ]
     },
     "Accordion": {
-      "added": "2025-12-11T04:23:11.637Z",
+      "added": "2025-12-18T16:05:26.825Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
@@ -518,6 +518,6 @@
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
     "version": "unknown",
-    "installed": "2025-12-17T20:03:15.536Z"
+    "installed": "2025-12-18T16:05:22.925Z"
   }
 }
