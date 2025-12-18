@@ -1,5 +1,8 @@
 # Input
 
+<AlphaWarning />
+
+
 A flexible, accessible form input component that supports text inputs, textareas, various styling variants, validation states, and input addons.
 
 ## Examples
@@ -7,6 +10,7 @@ A flexible, accessible form input component that supports text inputs, textareas
 <InputExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import InputExamples from '../examples/InputExamples.vue'
 </script>
 

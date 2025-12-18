@@ -4,11 +4,15 @@ title: VisuallyHidden
 
 # VisuallyHidden
 
+<AlphaWarning />
+
+
 A utility component to visually hide content while keeping it accessible to screen readers. This is a common pattern for accessibility, often implemented with a CSS class like `.sr-only` or `.visually-hidden`. This component provides a declarative way to achieve the same result.
 
 <VisuallyHiddenExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import VisuallyHiddenExamples from '../examples/VisuallyHiddenExamples.vue'
 </script>
 

@@ -1,10 +1,14 @@
 # Flex
 
+<AlphaWarning />
+
+
 Flex components provide a powerful and intuitive way to create flexible layouts using CSS Flexbox. They offer a declarative API with dedicated components for common patterns.
 
 <FlexExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import FlexExamples from '../examples/FlexExamples.vue'
 </script>
 

@@ -1,5 +1,8 @@
 # Timeline
 
+<AlphaWarning />
+
+
 Timeline is a semantic component for displaying chronological events, processes, or activities in either horizontal or vertical orientation. It provides flexible slots for dates, markers, and descriptions with support for rich content including cards, badges, and interactive elements.
 
 ## Examples
@@ -7,6 +10,7 @@ Timeline is a semantic component for displaying chronological events, processes,
 <TimelineExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import TimelineExamples from '../examples/TimelineExamples.vue'
 </script>
 

@@ -1,5 +1,8 @@
 # Kbd
 
+<AlphaWarning />
+
+
 Keyboard key components are used to represent keyboard shortcuts, hotkeys, or user input instructions in a visually distinct way. They mimic the appearance of physical keyboard keys.
 
 ::: tip
@@ -9,6 +12,7 @@ Note that single character content within an <i>&lt;ag-kbd&gt;</i> tag is bumped
 <KbdExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import KbdExamples from '../examples/KbdExamples.vue'
 </script>
 

@@ -1,5 +1,8 @@
 # Drawer
 
+<AlphaWarning />
+
+
 A drawer is a panel that slides in from the edge of the screen, typically used for navigation menus, filters, settings, or other supplementary content. Drawers can slide in from any of the four edges: start (left), end (right), top, or bottom.
 
 ## Examples
@@ -7,6 +10,7 @@ A drawer is a panel that slides in from the edge of the screen, typically used f
 <DrawerExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import DrawerExamples from '../examples/DrawerExamples.vue'
 </script>
 

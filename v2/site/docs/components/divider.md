@@ -1,10 +1,14 @@
 # Divider
 
+<AlphaWarning />
+
+
 Divider components visually separate content in your application. They support both horizontal and vertical orientations, optional text or icon content, and can be customized with different sizes and color variants.
 
 <DividerExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import DividerExamples from '../examples/DividerExamples.vue'
 </script>
 

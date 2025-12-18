@@ -1,5 +1,8 @@
 # Tables
 
+<AlphaWarning />
+
+
 Table is provided as CSS-only utilities. No JavaScript required.
 
 ## Installation

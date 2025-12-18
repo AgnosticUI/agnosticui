@@ -1,5 +1,8 @@
 # Toast
 
+<AlphaWarning />
+
+
 Toast notification is a non-modal element that appears at viewport edges or corners to provide brief, contextual feedback to a user. It can auto-dismiss after a duration and support pause-on-hover behavior.
 
 ## Examples
@@ -7,6 +10,7 @@ Toast notification is a non-modal element that appears at viewport edges or corn
 <ToastExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import ToastExamples from '../examples/ToastExamples.vue'
 </script>
 

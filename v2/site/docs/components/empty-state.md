@@ -1,5 +1,8 @@
 # Empty State
 
+<AlphaWarning />
+
+
 A versatile component for displaying empty states, placeholder content, and messaging when no data is available. Helps guide users toward meaningful actions and provides clear context about why content is missing.
 
 ## Examples
@@ -7,6 +10,7 @@ A versatile component for displaying empty states, placeholder content, and mess
 <EmptyStateExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import EmptyStateExamples from '../examples/EmptyStateExamples.vue'
 </script>
 

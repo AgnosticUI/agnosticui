@@ -1,5 +1,8 @@
 # Popover
 
+<AlphaWarning />
+
+
 A popover is a floating element that displays rich content in a panel anchored to a trigger element. Unlike tooltips which show brief hints, popovers can contain interactive content like forms, buttons, and complex layouts.
 
 ## Examples
@@ -7,6 +10,7 @@ A popover is a floating element that displays rich content in a panel anchored t
 <PopoverExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import PopoverExamples from '../examples/PopoverExamples.vue'
 </script>
 

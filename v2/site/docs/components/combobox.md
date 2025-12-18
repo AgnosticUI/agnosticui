@@ -1,5 +1,8 @@
 # Combobox
 
+<AlphaWarning />
+
+
 An accessible autocomplete widget that combines a text input with a filterable dropdown list. Perfect for searchable select inputs with keyboard navigation support.
 
 ## Examples
@@ -7,6 +10,7 @@ An accessible autocomplete widget that combines a text input with a filterable d
 <ComboboxExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import ComboboxExamples from '../examples/ComboboxExamples.vue'
 </script>
 

@@ -1,10 +1,14 @@
 # Skeleton Loader
 
+<AlphaWarning />
+
+
 Skeleton loader provides a visual placeholders while content is loading, improving perceived performance and user experience. It represents the approximate shape and size of the content that will appear.
 
 <SkeletonLoaderExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import SkeletonLoaderExamples from '../examples/SkeletonLoaderExamples.vue'
 </script>
 

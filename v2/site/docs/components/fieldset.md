@@ -1,5 +1,8 @@
 # Fieldset
 
+<AlphaWarning />
+
+
 A semantic fieldset component that groups related form controls with an optional legend. Follows WAI-ARIA best practices for accessible form grouping.
 
 ## Examples
@@ -7,6 +10,7 @@ A semantic fieldset component that groups related form controls with an optional
 <FieldsetExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import FieldsetExamples from '../examples/FieldsetExamples.vue'
 </script>
 

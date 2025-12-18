@@ -1,5 +1,8 @@
 # Rating
 
+<AlphaWarning />
+
+
 The Rating component provides a way for users to view and set a rating, typically represented by stars. It's highly customizable, supporting different sizes, colors, and precision.
 
 ## Examples
@@ -7,6 +10,7 @@ The Rating component provides a way for users to view and set a rating, typicall
 <RatingExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import RatingExamples from '../examples/RatingExamples.vue'
 </script>
 

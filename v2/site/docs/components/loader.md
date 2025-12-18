@@ -1,10 +1,14 @@
 # Loader
 
+<AlphaWarning />
+
+
 Brief description of what the component does and when to use it.
 
 <LoaderExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import LoaderExamples from '../examples/LoaderExamples.vue'
 </script>
 

@@ -1,5 +1,8 @@
 # Radio
 
+<AlphaWarning />
+
+
 Radio button allows a user to select a single option from a set of mutually exclusive choices. It's ideal for forms where only one selection is permitted.
 
 ## Examples
@@ -7,6 +10,7 @@ Radio button allows a user to select a single option from a set of mutually excl
 <RadioExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import RadioExamples from '../examples/RadioExamples.vue'
 </script>
 

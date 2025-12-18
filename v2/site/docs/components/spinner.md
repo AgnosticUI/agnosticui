@@ -1,5 +1,8 @@
 # Spinner
 
+<AlphaWarning />
+
+
 A spinner component displays a circular rotating animation to indicate loading state or ongoing activity. Use spinners to provide visual feedback when content is loading, processing, or waiting for a response.
 
 ## Examples
@@ -7,6 +10,7 @@ A spinner component displays a circular rotating animation to indicate loading s
 <SpinnerExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import SpinnerExamples from '../examples/SpinnerExamples.vue'
 </script>
 

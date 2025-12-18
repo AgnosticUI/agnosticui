@@ -1,10 +1,14 @@
 # Avatar
 
+<AlphaWarning />
+
+
 Avatar components are used to represent users or entities in your application. They can display profile images, initials, or icons, and support multiple sizes, shapes, and color variants.
 
 <AvatarExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import AvatarExamples from '../examples/AvatarExamples.vue'
 </script>
 

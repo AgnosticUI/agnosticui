@@ -1,10 +1,14 @@
 # Progress
 
+<AlphaWarning />
+
+
 A progress component is used to display the progress of a task. It can show determinate progress (with a specific value) or indeterminate progress (loading state without a known duration).
 
 <ProgressExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import ProgressExamples from '../examples/ProgressExamples.vue'
 </script>
 

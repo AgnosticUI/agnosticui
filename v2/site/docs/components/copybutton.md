@@ -1,5 +1,8 @@
 # Copy Button
 
+<AlphaWarning />
+
+
 An accessible button component that copies text to the clipboard with visual feedback. The CopyButton automatically toggles between copy and checkmark icons and provides customizable success messaging.
 
 ## Examples
@@ -7,6 +10,7 @@ An accessible button component that copies text to the clipboard with visual fee
 <CopyButtonExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import CopyButtonExamples from '../examples/CopyButtonExamples.vue'
 </script>
 

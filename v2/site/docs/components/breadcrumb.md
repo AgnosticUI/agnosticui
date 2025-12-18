@@ -1,5 +1,8 @@
 # Breadcrumb
 
+<AlphaWarning />
+
+
 The `Breadcrumb` component is a <span class="quoted">wayfinding</span> element that helps make users aware of their current location within an application or website.
 
 ## Examples
@@ -7,6 +10,7 @@ The `Breadcrumb` component is a <span class="quoted">wayfinding</span> element t
 <BreadcrumbExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import BreadcrumbExamples from '../examples/BreadcrumbExamples.vue'
 </script>
 

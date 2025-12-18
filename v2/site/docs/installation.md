@@ -1,5 +1,11 @@
 # Installation
 
+<AlphaWarning />
+
+<script setup>
+import AlphaWarning from './components/AlphaWarning.vue'
+</script>
+
 AgnosticUI can be installed in two ways: using the **AgnosticUI CLI** (recommended) or as an **npm package**. Choose the approach that best fits your workflow.
 
 ## AgnosticUI CLI (Recommended)

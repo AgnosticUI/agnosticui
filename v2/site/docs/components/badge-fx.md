@@ -1,5 +1,8 @@
 # BadgeFx
 
+<AlphaWarning />
+
+
 BadgeFx extends the core Badge component with a handful of CSS-only micro-interaction effects.
 
 ::: info Opt-in Component
@@ -11,6 +14,7 @@ BadgeFx adds a few hundred lines of CSS for animation effects. It's ideal for ma
 <BadgeFxExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import BadgeFxExamples from '../examples/BadgeFxExamples.vue'
 import { Palette, Zap, Accessibility, Target, Wrench, Package } from 'lucide-vue-next'
 </script>

@@ -1,5 +1,8 @@
 # IntlFormatter
 
+<AlphaWarning />
+
+
 A comprehensive, framework-agnostic web component that wraps the browser's native `Intl.DateTimeFormat` and `Intl.NumberFormat` APIs for formatting dates, numbers, currencies, and percentages with full localization support.
 
 ## Examples
@@ -7,6 +10,7 @@ A comprehensive, framework-agnostic web component that wraps the browser's nativ
 <IntlFormatterExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue';
 import { Accessibility, Bell, Layers, Package, Globe, Palette, Target, Zap } from 'lucide-vue-next';
 </script>

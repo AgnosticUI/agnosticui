@@ -1,5 +1,8 @@
 # Scroll Progress
 
+<AlphaWarning />
+
+
 The Scroll Progress component provides visual feedback about how far the user has scrolled through a document or scrollable container. It offers four distinct visual modes to fit different design contexts.
 
 ## Examples
@@ -7,6 +10,7 @@ The Scroll Progress component provides visual feedback about how far the user ha
 <ScrollProgressExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import ScrollProgressExamples from '../examples/ScrollProgressExamples.vue'
 </script>
 
