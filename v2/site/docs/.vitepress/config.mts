@@ -40,14 +40,13 @@ export default defineConfig({
     ],
 
     sidebar: [
-      getComponents(),
       {
-        text: 'Examples',
+        text: 'Quick Start',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Installation', link: '/installation' },
         ]
-      }
+      },
+      getComponents(),
     ],
 
     socialLinks: [
