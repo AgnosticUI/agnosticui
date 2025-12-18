@@ -45,6 +45,7 @@ import SidebarExamples from '../examples/SidebarExamples.vue'
         </VueSidebarNavItem>
 
         <VueSidebarNavItem>
+          <!-- Button for expanded mode with rotating chevron -->
           <button
             type="button"
             class="nav-button nav-button-expanded"
@@ -56,7 +57,7 @@ import SidebarExamples from '../examples/SidebarExamples.vue'
             <span class="chevron"><ChevronRight :size="16" /></span>
           </button>
 
-          <!-- Popover for collapsed mode -->
+          <!-- Popover for collapsed mode - shows when sidebar is collapsed -->
           <VuePopover
             class="nav-button-collapsed"
             placement="right-start"
@@ -64,11 +65,16 @@ import SidebarExamples from '../examples/SidebarExamples.vue'
             :distance="8"
             :arrow="true"
           >
-            <button slot="trigger" type="button" class="nav-button">
+            <button slot="trigger" type="button" class="nav-button" aria-expanded="false">
               <Folder :size="20" />
               <span class="nav-label">Projects</span>
+              <span class="collapsed-indicator">
+                <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                </svg>
+              </span>
             </button>
-            <VueSidebarNavPopoverSubmenu slot="content">
+            <VueSidebarNavPopoverSubmenu slot="content" class="nav-popover-submenu">
               <a href="#" class="nav-sublink">Project Alpha</a>
               <a href="#" class="nav-sublink">Project Beta</a>
             </VueSidebarNavPopoverSubmenu>
@@ -210,6 +216,7 @@ export default function SidebarExample() {
           </ReactSidebarNavItem>
 
           <ReactSidebarNavItem>
+            {/* Button for expanded mode with rotating chevron */}
             <button
               type="button"
               className="nav-button nav-button-expanded"
@@ -221,6 +228,30 @@ export default function SidebarExample() {
               <span className="chevron"><ChevronRight size={16} /></span>
             </button>
 
+            {/* Popover for collapsed mode - shows when sidebar is collapsed */}
+            <ReactPopover
+              className="nav-button-collapsed"
+              placement="right-start"
+              triggerType="click"
+              distance={8}
+              arrow={true}
+            >
+              <button slot="trigger" type="button" className="nav-button" aria-expanded="false">
+                <Folder size={20} />
+                <span className="nav-label">Projects</span>
+                <span className="collapsed-indicator">
+                  <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 3l2 2 2-2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                  </svg>
+                </span>
+              </button>
+              <ReactSidebarNavPopoverSubmenu slot="content" className="nav-popover-submenu">
+                <a href="#project-alpha" className="nav-sublink">Project Alpha</a>
+                <a href="#project-beta" className="nav-sublink">Project Beta</a>
+              </ReactSidebarNavPopoverSubmenu>
+            </ReactPopover>
+
+            {/* Inline submenu for expanded mode */}
             <ReactSidebarNavSubmenu>
               <a className="nav-sublink" href="#">Project Alpha</a>
               <a className="nav-sublink" href="#">Project Beta</a>
@@ -301,6 +332,7 @@ export class SidebarExample extends LitElement {
             </ag-sidebar-nav-item>
 
             <ag-sidebar-nav-item>
+              <!-- Button for expanded mode with rotating chevron -->
               <button
                 type="button"
                 class="nav-button nav-button-expanded"
@@ -311,6 +343,30 @@ export class SidebarExample extends LitElement {
                 <span class="chevron"><!-- ChevronRight icon --></span>
               </button>
 
+              <!-- Popover for collapsed mode - shows when sidebar is collapsed -->
+              <ag-popover
+                class="nav-button-collapsed"
+                placement="right-start"
+                trigger-type="click"
+                distance="8"
+                arrow
+              >
+                <button slot="trigger" type="button" class="nav-button" aria-expanded="false">
+                  <svg><!-- Folder icon --></svg>
+                  <span class="nav-label">Projects</span>
+                  <span class="collapsed-indicator">
+                    <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <ag-sidebar-nav-popover-submenu slot="content" class="nav-popover-submenu">
+                  <a class="nav-sublink" href="#">Project Alpha</a>
+                  <a class="nav-sublink" href="#">Project Beta</a>
+                </ag-sidebar-nav-popover-submenu>
+              </ag-popover>
+
+              <!-- Inline submenu for expanded mode -->
               <ag-sidebar-nav-submenu>
                 <a class="nav-sublink" href="#">Project Alpha</a>
                 <a class="nav-sublink" href="#">Project Beta</a>
@@ -472,21 +528,38 @@ With `disableCompactMode`, the sidebar has no intermediate collapsed state—it'
 
 ## Styling Navigation
 
-The Sidebar component provides the structure, but navigation button styling is typically handled in your application CSS. Here's a recommended starting point:
+The Sidebar component provides the structure, but navigation button styling is typically handled in your application CSS (global light DOM styles). Here's the complete CSS required for a fully functional sidebar with all features:
 
 ```css
+/* CRITICAL: Sidebar component width - must be defined! */
+ag-sidebar {
+  /* Expanded width */
+  width: 260px;
+  transition: width 0.3s ease;
+  overflow: visible; /* Allow popovers to show outside */
+}
+
+ag-sidebar[collapsed] {
+  /* Collapsed width - icon only */
+  width: 64px;
+}
+
+/* Navigation button base styles */
 .nav-button {
   display: flex;
   align-items: center;
   gap: var(--ag-space-3);
+  position: relative; /* Required for collapsed-indicator positioning */
   padding: var(--ag-space-2) var(--ag-space-3);
   border: none;
   background: none;
   cursor: pointer;
   width: 100%;
   text-align: left;
-  border-radius: var(--ag-border-radius);
-  transition: background var(--ag-fx-duration-sm);
+  border-radius: var(--ag-radius-md);
+  transition: all var(--ag-fx-duration-sm);
+  color: var(--ag-text-primary);
+  font-size: var(--ag-font-size-base);
 }
 
 .nav-button:hover {
@@ -494,8 +567,8 @@ The Sidebar component provides the structure, but navigation button styling is t
 }
 
 .nav-button.active {
-  background: var(--ag-primary-background);
-  color: var(--ag-primary-text);
+  background: var(--ag-primary);
+  color: white;
   font-weight: 500;
 }
 
@@ -504,20 +577,125 @@ The Sidebar component provides the structure, but navigation button styling is t
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: opacity var(--ag-fx-duration-sm);
 }
 
+/* Chevron rotation for expanded submenus */
 .chevron {
-  transition: transform var(--ag-fx-duration-md);
+  display: flex;
+  align-items: center;
+  transition: transform var(--ag-fx-duration-md), opacity var(--ag-fx-duration-sm);
+  margin-left: auto;
 }
 
 .nav-button[aria-expanded="true"] .chevron {
   transform: rotate(90deg);
 }
 
-/* Hide labels when collapsed */
+/* Collapsed indicator - small triangle at 4:30 position */
+.collapsed-indicator {
+  display: none;
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: var(--ag-space-3);
+  height: var(--ag-space-3);
+}
+
+.collapsed-indicator svg {
+  color: var(--ag-text-secondary);
+  transform: rotate(315deg);
+}
+
+/* Show collapsed indicator in collapsed mode for buttons with submenus */
+ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
+  display: block;
+}
+
+/* CRITICAL: Properly handle collapsed state */
 ag-sidebar[collapsed] .nav-label,
 ag-sidebar[collapsed] .chevron {
   opacity: 0;
-  pointer-events: none;
+  width: 0;
+  overflow: hidden;
+}
+
+/* Center icons in collapsed mode */
+ag-sidebar[collapsed] .nav-button {
+  justify-content: center;
+  padding: var(--ag-space-2);
+  gap: 0;
+}
+
+/* Visibility rules for expanded vs collapsed mode */
+ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
+ag-sidebar:not([collapsed]) ag-popover,
+ag-sidebar[collapsed] .nav-button-expanded,
+ag-sidebar:not([collapsed]) .nav-button-collapsed {
+  display: none !important;
+}
+
+/* Fix popover centering in collapsed mode */
+ag-sidebar[collapsed] ag-popover.nav-button-collapsed {
+  display: block !important;
+}
+
+/* CRITICAL: Submenu visibility - hidden by default, visible when open */
+ag-sidebar-nav-submenu {
+  display: none;
+  overflow: hidden;
+}
+
+ag-sidebar-nav-submenu[open] {
+  display: block;
+}
+
+/* Submenu link styles */
+.nav-sublink {
+  display: block;
+  padding: var(--ag-space-2) var(--ag-space-3);
+  padding-left: var(--ag-space-8);
+  color: var(--ag-text-secondary);
+  text-decoration: none;
+  border-radius: var(--ag-radius-md);
+  transition: background var(--ag-fx-duration-sm);
+}
+
+.nav-sublink:hover {
+  background: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
+}
+
+/* Popover submenu styles */
+.nav-popover-submenu .nav-sublink {
+  padding-left: var(--ag-space-3);
+}
+
+/* Popover content padding for nav popovers in collapsed mode */
+.nav-button-collapsed::part(ag-popover-body) {
+  padding: var(--ag-space-1);
+}
+
+/* Hide popover header for nav popovers */
+.nav-button-collapsed::part(ag-popover-header) {
+  display: none;
 }
 ```
+
+### Collapsed Indicator Markup
+
+When using popovers for collapsed mode submenus, add the collapsed indicator inside the trigger button:
+
+```html
+<button slot="trigger" type="button" class="nav-button" aria-expanded="false">
+  <FolderIcon />
+  <span class="nav-label">Projects</span>
+  <span class="collapsed-indicator">
+    <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+    </svg>
+  </span>
+</button>
+```
+
+This small triangular indicator appears at the bottom-right corner (4:30 clock position) when the sidebar is collapsed, helping users identify which navigation items have submenus.

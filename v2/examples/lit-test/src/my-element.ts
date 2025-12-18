@@ -1,5 +1,6 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
+import './components/ag/Accordion/core/Accordion';
 import './components/ag/Alert/core/Alert';
 import './components/ag/Avatar/core/Avatar';
 import './components/ag/Badge/core/Badge';
@@ -976,6 +977,43 @@ export class MyElement extends LitElement {
           monochrome alert
         </ag-alert>
       </ag-flex-row>
+
+      <!-- Accordion -->
+      <h2 style="margin-top: 2rem; margin-bottom: 1rem;">Accordion</h2>
+      <ag-accordion>
+        <ag-accordion-item>
+          <span slot="header">What is AgnosticUI?</span>
+          <div slot="content">
+            <p style="margin: 0.5rem 0;">
+              AgnosticUI is a component library that works across React, Vue, and Lit frameworks.
+              It uses web components with open shadow DOM to provide framework-agnostic components.
+            </p>
+          </div>
+        </ag-accordion-item>
+
+        <ag-accordion-item>
+          <span slot="header">How does it work?</span>
+          <div slot="content">
+            <p style="margin: 0.5rem 0;">
+              Components are built with Lit web components and then wrapped with framework-specific
+              wrappers for React and Vue. This allows you to use the same components across different
+              projects with different frameworks.
+            </p>
+          </div>
+        </ag-accordion-item>
+
+        <ag-accordion-item>
+          <span slot="header">What are the benefits?</span>
+          <div slot="content">
+            <p style="margin: 0.5rem 0;">
+              Benefits include framework flexibility, consistent design across projects, reduced
+              maintenance burden, and the ability to share components between teams using different
+              frameworks.
+            </p>
+          </div>
+        </ag-accordion-item>
+      </ag-accordion>
+
       <ag-flex-row class="responsive">
         <ag-tag variant="primary" shape="pill">
           Primary Tag

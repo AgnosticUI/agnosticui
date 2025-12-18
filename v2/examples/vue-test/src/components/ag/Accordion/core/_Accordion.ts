@@ -34,6 +34,7 @@ export interface AccordionItemToggleEventDetail {
 export type AccordionItemToggleEvent = CustomEvent<AccordionItemToggleEventDetail>;
 
 // Props interface following INTERFACE_STANDARDS.md
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface AccordionProps {
   // Container has no props, just children
 }
