@@ -1,10 +1,14 @@
 # MessageBubble
 
+<AlphaWarning />
+
+
 A versatile message bubble component for building chat interfaces and messaging UIs. MessageBubble supports different sender types, delivery statuses, avatars, color variants, and custom styling through CSS Shadow Parts.
 
 <MessageBubbleExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import MessageBubbleExamples from '../examples/MessageBubbleExamples.vue'
 </script>
 

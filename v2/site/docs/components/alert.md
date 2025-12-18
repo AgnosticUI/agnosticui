@@ -1,5 +1,8 @@
 # Alert
 
+<AlphaWarning />
+
+
 Alerts are used to provide timely feedback to the user.
 
 ## Examples
@@ -7,6 +10,7 @@ Alerts are used to provide timely feedback to the user.
 <AlertExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import AlertExamples from '../examples/AlertExamples.vue'
 </script>
 

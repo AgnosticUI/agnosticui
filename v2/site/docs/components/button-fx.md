@@ -1,5 +1,8 @@
 # ButtonFx
 
+<AlphaWarning />
+
+
 An enhanced button component with customizable animation effects that trigger on hover, click, or mount. ButtonFx extends the base Button component with a rich set of visual effects to create engaging, interactive UI elements.
 
 ::: info Opt-in Component
@@ -9,6 +12,7 @@ ButtonFx adds a few hundred lines of CSS for animation effects. It's ideal for m
 <ButtonFxExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import ButtonFxExamples from '../examples/ButtonFxExamples.vue'
 </script>
 

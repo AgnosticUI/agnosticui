@@ -1,5 +1,8 @@
 # Dialog
 
+<AlphaWarning />
+
+
 A dialog is a modal window that overlays the main content and requires user interaction before returning to the application. Dialogs are useful for confirmations, alerts, forms, and presenting focused content.
 
 ## Examples
@@ -7,6 +10,7 @@ A dialog is a modal window that overlays the main content and requires user inte
 <DialogExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import DialogExamples from '../examples/DialogExamples.vue'
 </script>
 

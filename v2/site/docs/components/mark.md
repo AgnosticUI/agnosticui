@@ -1,5 +1,8 @@
 # Mark
 
+<AlphaWarning />
+
+
 The `Mark` component is used to highlight or "mark" a portion of text. It can be used in two modes:
 
 1.  **Static Mode**: By default, it wraps its content in a `<mark>` tag, similar to the native HTML element, but styled with AgnosticUI design tokens.
@@ -8,6 +11,7 @@ The `Mark` component is used to highlight or "mark" a portion of text. It can be
 <MarkExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import MarkExamples from '../examples/MarkExamples.vue'
 </script>
 

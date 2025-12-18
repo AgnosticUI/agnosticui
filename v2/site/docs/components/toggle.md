@@ -1,5 +1,8 @@
 # Toggle
 
+<AlphaWarning />
+
+
 The Toggle component provides an accessible binary switch for on/off states, implementing the WAI-ARIA Switch pattern.
 
 ## Examples
@@ -7,6 +10,7 @@ The Toggle component provides an accessible binary switch for on/off states, imp
 <ToggleExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import ToggleExamples from '../examples/ToggleExamples.vue'
 </script>
 

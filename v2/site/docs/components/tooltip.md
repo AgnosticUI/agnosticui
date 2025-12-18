@@ -1,5 +1,8 @@
 # Tooltip
 
+<AlphaWarning />
+
+
 A flexible, accessible tooltip component that displays contextual information on hover, focus, or click.
 
 ## Examples
@@ -7,6 +10,7 @@ A flexible, accessible tooltip component that displays contextual information on
 <TooltipExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import TooltipExamples from '../examples/TooltipExamples.vue'
 </script>
 

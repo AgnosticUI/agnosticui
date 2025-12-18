@@ -1,5 +1,8 @@
 # Select
 
+<AlphaWarning />
+
+
 The Select component is a lightly styled native HTML select element that provides consistent styling across browsers while maintaining native functionality and accessibility.
 
 ## Examples
@@ -7,6 +10,7 @@ The Select component is a lightly styled native HTML select element that provide
 <SelectExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import SelectExamples from '../examples/SelectExamples.vue'
 </script>
 

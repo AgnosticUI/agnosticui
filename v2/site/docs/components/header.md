@@ -1,10 +1,14 @@
 # Header
 
+<AlphaWarning />
+
+
 The Header component provides a semantic, accessible, and responsive page header with support for branding/logo and navigation content. It features sticky positioning, flexible content alignment, and responsive behavior.
 
 <HeaderExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import HeaderExamples from '../examples/HeaderExamples.vue'
 </script>
 

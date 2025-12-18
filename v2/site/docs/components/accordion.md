@@ -1,5 +1,8 @@
 # Accordion
 
+<AlphaWarning />
+
+
 An accordion is a vertically stacked set of interactive headings that each reveal a section of content. Accordions are ideal for presenting FAQs, feature lists, and other content that benefits from progressive disclosure.
 
 ## Examples
@@ -7,6 +10,7 @@ An accordion is a vertically stacked set of interactive headings that each revea
 <AccordionExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import AccordionExamples from '../examples/AccordionExamples.vue'
 </script>
 

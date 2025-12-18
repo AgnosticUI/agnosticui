@@ -1,5 +1,8 @@
 # Button
 
+<AlphaWarning />
+
+
 The Button component provides a versatile, accessible button foundation with multiple variants, sizes, and shapes.
 
 ## Examples
@@ -7,6 +10,7 @@ The Button component provides a versatile, accessible button foundation with mul
 <ButtonExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import ButtonExamples from '../examples/ButtonExamples.vue'
 </script>
 

@@ -1,5 +1,8 @@
 # Checkbox
 
+<AlphaWarning />
+
+
 Checkbox allows a user to select one or more options from a set. It's ideal for forms, settings panels, and multi-select interfaces.
 
 ## Examples
@@ -7,6 +10,7 @@ Checkbox allows a user to select one or more options from a set. It's ideal for 
 <CheckboxExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import CheckboxExamples from '../examples/CheckboxExamples.vue'
 </script>
 

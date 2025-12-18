@@ -1,5 +1,8 @@
 # IconButtonFx
 
+<AlphaWarning />
+
+
 An icon button component with customizable animation effects that trigger on hover, click, or mount. IconButtonFx extends the base IconButton component with a rich set of visual effects to create engaging, interactive UI elements.
 
 ::: info Opt-in Component
@@ -9,6 +12,7 @@ IconButtonFx adds a few hundred lines of CSS for animation effects. It's ideal f
 <IconButtonFxExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import IconButtonFxExamples from '../examples/IconButtonFxExamples.vue'
 </script>
 

@@ -1,10 +1,14 @@
 # Tag
 
+<AlphaWarning />
+
+
 Tag is used to label or categorize content, providing as a visual indicator for status, types, or metadata.
 
 <TagExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import TagExamples from '../examples/TagExamples.vue'
 </script>
 

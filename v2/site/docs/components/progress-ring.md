@@ -1,5 +1,8 @@
 # Progress Ring
 
+<AlphaWarning />
+
+
 The Progress Ring component provides a circular progress indicator that can display determinate or indeterminate progress states. It's highly customizable with different sizes, colors, and animation options.
 
 ## Examples
@@ -7,6 +10,7 @@ The Progress Ring component provides a circular progress indicator that can disp
 <ProgressRingExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import ProgressRingExamples from '../examples/ProgressRingExamples.vue'
 </script>
 

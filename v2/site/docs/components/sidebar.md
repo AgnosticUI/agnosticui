@@ -1,5 +1,8 @@
 # Sidebar
 
+<AlphaWarning />
+
+
 A collapsible sidebar component for navigation with support for expanded/collapsed states, nested navigation, submenus, and responsive behavior. The Sidebar adapts seamlessly across desktop and mobile viewports with optional rail mode (icon-only) on desktop and overlay mode on mobile.
 
 ## Examples
@@ -7,6 +10,7 @@ A collapsible sidebar component for navigation with support for expanded/collaps
 <SidebarExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import SidebarExamples from '../examples/SidebarExamples.vue'
 </script>
 

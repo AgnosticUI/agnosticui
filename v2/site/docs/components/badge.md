@@ -1,5 +1,8 @@
 # Badge
 
+<AlphaWarning />
+
+
 The Badge component provides a versatile way to display counts, status indicators, and labels with multiple variants and sizes.
 
 ## Examples
@@ -7,6 +10,7 @@ The Badge component provides a versatile way to display counts, status indicator
 <BadgeExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import BadgeExamples from '../examples/BadgeExamples.vue'
 </script>
 

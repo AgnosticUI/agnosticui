@@ -1,10 +1,14 @@
 # Link
 
+<AlphaWarning />
+
+
 The Link component is a semantic, accessible wrapper around the native HTML `<a>` element that provides consistent styling, variants, and states while preserving native browser accessibility features.
 
 <LinkExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import LinkExamples from '../examples/LinkExamples.vue'
 </script>
 

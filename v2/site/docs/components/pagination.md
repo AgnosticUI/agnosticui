@@ -1,5 +1,8 @@
 # Pagination
 
+<AlphaWarning />
+
+
 Pagination allows users to navigate through pages of content. It displays page numbers and navigation controls, making it easy to move between large sets of data.
 
 ## Examples
@@ -7,6 +10,7 @@ Pagination allows users to navigate through pages of content. It displays page n
 <PaginationExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import PaginationExamples from '../examples/PaginationExamples.vue'
 import ContentPaginationExamples from '../examples/ContentPaginationExamples.vue'
 </script>

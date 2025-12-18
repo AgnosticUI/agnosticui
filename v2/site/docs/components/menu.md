@@ -1,5 +1,8 @@
 # Menu
 
+<AlphaWarning />
+
+
 A menu (dropdown menu or context menu) is a popover component that displays a list of actions or options when triggered. Menus provide a compact way to present choices without cluttering the interface.
 
 ## Examples
@@ -7,6 +10,7 @@ A menu (dropdown menu or context menu) is a popover component that displays a li
 <MenuExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import MenuExamples from '../examples/MenuExamples.vue'
 </script>
 

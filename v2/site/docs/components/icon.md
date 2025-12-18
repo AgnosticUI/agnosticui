@@ -1,10 +1,14 @@
 # Icon
 
+<AlphaWarning />
+
+
 Icon is used to visually represent an action, object, or state within the UI.
 
 <IconExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import IconExamples from '../examples/IconExamples.vue'
 </script>
 

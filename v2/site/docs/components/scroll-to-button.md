@@ -1,5 +1,8 @@
 # ScrollToButton
 
+<AlphaWarning />
+
+
 A floating action button that appears when scrolling, allowing users to quickly navigate to different parts of the page. Perfect for long-form content, documentation sites, and single-page applications.
 
 ::: tip Interactive Examples
@@ -9,6 +12,7 @@ The examples below show multiple scroll buttons to demonstrate different feature
 ## Features
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import ScrollToButtonExamples from '../examples/ScrollToButtonExamples.vue'
 import { Eye, Zap, Palette, Accessibility, MapPin, Wrench, CheckCircle, XCircle } from 'lucide-vue-next'
 </script>

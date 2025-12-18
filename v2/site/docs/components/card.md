@@ -1,5 +1,8 @@
 # Card
 
+<AlphaWarning />
+
+
 Card is a versatile container for grouping related content and actions. It provides a clean, visual structure for organizing information and can be customized with shadows, animations, color variants, and more.
 
 ## Examples
@@ -7,6 +10,7 @@ Card is a versatile container for grouping related content and actions. It provi
 <CardExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import CardExamples from '../examples/CardExamples.vue'
 </script>
 

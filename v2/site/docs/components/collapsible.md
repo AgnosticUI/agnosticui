@@ -1,5 +1,8 @@
 # Collapsible
 
+<AlphaWarning />
+
+
 A collapsible is a standalone component that allows users to show and hide a single section of content. Unlike accordions which manage multiple items, collapsibles work independently and are ideal for revealing optional information, FAQs, or additional details on demand.
 
 ## Examples
@@ -7,6 +10,7 @@ A collapsible is a standalone component that allows users to show and hide a sin
 <CollapsibleExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import CollapsibleExamples from '../examples/CollapsibleExamples.vue'
 </script>
 

@@ -1,5 +1,8 @@
 # Slider
 
+<AlphaWarning />
+
+
 Slider allows a user to select a value or range of values by moving a thumb along a track. It's ideal for adjusting settings like volume, brightness, price ranges, and other numeric inputs.
 
 ## Examples
@@ -7,6 +10,7 @@ Slider allows a user to select a value or range of values by moving a thumb alon
 <SliderExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import SliderExamples from '../examples/SliderExamples.vue'
 </script>
 

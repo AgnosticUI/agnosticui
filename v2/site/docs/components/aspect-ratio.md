@@ -4,11 +4,15 @@ title: Aspect Ratio
 
 # Aspect Ratio
 
+<AlphaWarning />
+
+
 The AgnosticUI AspectRatio component provides an easy, modern way to reserve space for embedded content (videos, iframes, third-party widgets) while preserving a given aspect ratio. It leverages the native CSS `aspect-ratio` property and exposes a simple API.
 
 <AspectRatioExamples />
 
 <script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
 import AspectRatioExamples from '../examples/AspectRatioExamples.vue'
 </script>
 
