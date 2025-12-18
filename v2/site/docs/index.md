@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Quickstart
-      link: /getting-started
+      link: /installation
     - theme: alt
       text: Show me the components!
       link: /components/button

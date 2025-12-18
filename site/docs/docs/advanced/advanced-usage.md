@@ -1,6 +1,6 @@
 # Advanced Usage
 
-This page will document some of the more advanced uses of AgnosticUI…
+This page documents some of the more advanced uses of AgnosticUI…
 
 ## Modular CSS Imports
 
