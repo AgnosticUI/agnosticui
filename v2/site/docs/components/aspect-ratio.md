@@ -129,6 +129,3 @@ export default function Example() {
 
 - `::part(ag-aspect-ratio)` - The ratio enforcement wrapper
 
-## Examples
-
-See the example below for common patterns: responsive iframe, constrained max width, and a 1:1 square.

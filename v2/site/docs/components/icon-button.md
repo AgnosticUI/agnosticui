@@ -419,8 +419,6 @@ ag-icon-button::part(ag-icon):hover {
 }
 ```
 
-See the [Storybook CSS Parts Customization story](https://github.com/AgnosticUI/agnosticui) for more examples.
-
 ## Accessibility
 
 The IconButton implements the [WAI-ARIA Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/):

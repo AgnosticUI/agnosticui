@@ -6,7 +6,7 @@ const meta = {
   component: VueAlert,
   tags: ['autodocs'],
   argTypes: {
-    type: {
+    variant: {
       control: 'select',
       options: ['default', 'primary', 'success', 'info', 'warning', 'error'],
       description: 'The alert variant type',
@@ -25,7 +25,7 @@ const meta = {
     },
   },
   args: {
-    type: 'info',
+    variant: 'info',
     bordered: false,
     rounded: false,
     borderedLeft: false,
@@ -41,72 +41,72 @@ export const Default: Story = {
     setup() {
       return { args };
     },
-    template: `<VueAlert :type="args.type" :bordered="args.bordered" :rounded="args.rounded" :borderedLeft="args.borderedLeft">This is a default alert.</VueAlert>`,
+    template: `<VueAlert :variant="args.variant" :bordered="args.bordered" :rounded="args.rounded" :borderedLeft="args.borderedLeft">This is a default alert.</VueAlert>`,
   }),
 };
 
 export const Info: Story = {
   args: {
-    type: 'info',
+    variant: 'info',
   },
   render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
     },
-    template: `<VueAlert :type="args.type">This is an info alert.</VueAlert>`,
+    template: `<VueAlert :variant="args.variant">This is an info alert.</VueAlert>`,
   }),
 };
 
 export const Success: Story = {
   args: {
-    type: 'success',
+    variant: 'success',
   },
   render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
     },
-    template: `<VueAlert :type="args.type">This is a success alert.</VueAlert>`,
+    template: `<VueAlert :variant="args.variant">This is a success alert.</VueAlert>`,
   }),
 };
 
 export const Warning: Story = {
   args: {
-    type: 'warning',
+    variant: 'warning',
   },
   render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
     },
-    template: `<VueAlert :type="args.type">This is a warning alert.</VueAlert>`,
+    template: `<VueAlert :variant="args.variant">This is a warning alert.</VueAlert>`,
   }),
 };
 
 export const Error: Story = {
   args: {
-    type: 'error',
+    variant: 'error',
   },
   render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
     },
-    template: `<VueAlert :type="args.type">This is an error alert.</VueAlert>`,
+    template: `<VueAlert :variant="args.variant">This is an error alert.</VueAlert>`,
   }),
 };
 
 export const Primary: Story = {
   args: {
-    type: 'primary',
+    variant: 'primary',
   },
   render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
     },
-    template: `<VueAlert :type="args.type">This is a primary alert.</VueAlert>`,
+    template: `<VueAlert :variant="args.variant">This is a primary alert.</VueAlert>`,
   }),
 };
 
@@ -139,20 +139,20 @@ export const Rounded: Story = {
 export const BorderedLeft: Story = {
   args: {
     borderedLeft: true,
-    type: 'warning',
+    variant: 'warning',
   },
   render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
     },
-    template: `<VueAlert :borderedLeft="args.borderedLeft" :type="args.type">This alert has a left border.</VueAlert>`,
+    template: `<VueAlert :borderedLeft="args.borderedLeft" :variant="args.variant">This alert has a left border.</VueAlert>`,
   }),
 };
 
 export const AllModifiers: Story = {
   args: {
-    type: 'success',
+    variant: 'success',
     bordered: true,
     rounded: true,
     borderedLeft: true,
@@ -162,7 +162,7 @@ export const AllModifiers: Story = {
     setup() {
       return { args };
     },
-    template: `<VueAlert :type="args.type" :bordered="args.bordered" :rounded="args.rounded" :borderedLeft="args.borderedLeft">This alert has all modifiers applied.</VueAlert>`,
+    template: `<VueAlert :variant="args.variant" :bordered="args.bordered" :rounded="args.rounded" :borderedLeft="args.borderedLeft">This alert has all modifiers applied.</VueAlert>`,
   }),
 };
 
