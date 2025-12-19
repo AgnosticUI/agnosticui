@@ -981,7 +981,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     // If the search term is the label of the selected option, the user is not
     // actively searching. Show all options so they can pick a new one.
-    if (!this.multiple && this._selectedOptions.length > 0 && term === this._selectedOptions[0]?.label) {
+    if (!this.multiple && this._selectedOptions.length > 0 && term === this._selectedOptions[0].label) {
       this._filteredOptions = this.options.slice(0, this.maxVisibleOptions);
       // Only auto-focus the selected item if activeIndex is not explicitly -1
       // (which happens when opening via mouse click for "fresh start" UX)
@@ -1015,10 +1015,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     if (this._filteredOptions.length > 0) {
       this._activeIndex = 0;
       this._updateAriaActivedescendant();
-      const option = this._filteredOptions[0];
-      if (option) {
-        this._announceOption(option);
-      }
+      this._announceOption(this._filteredOptions[0]);
     } else {
       this._activeIndex = -1;
       this._announceNoResults();

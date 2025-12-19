@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { AgAlert, type AlertType } from './Alert';
+import { AgAlert, type AlertVariant } from './Alert';
 
 if (!customElements.get('ag-alert')) {
   customElements.define('ag-alert', AgAlert);
@@ -25,7 +25,7 @@ describe('AgAlert Component', () => {
 
   it('should have default properties', async () => {
     await element.updateComplete;
-    expect(element.type).toBe('default');
+    expect(element.variant).toBe('default');
     expect(element.bordered).toBe(false);
     expect(element.rounded).toBe(false);
     expect(element.borderedLeft).toBe(false);
@@ -47,15 +47,15 @@ describe('AgAlert Component', () => {
     expect(element.innerHTML).toContain('My Alert');
   });
 
-  describe('Alert Types', () => {
-    const alertTypes: AlertType[] = ['warning', 'info', 'success', 'error', 'primary', 'default'];
-    alertTypes.forEach(type => {
-      it(`should apply the correct class for type="${type}"`, async () => {
-        element.type = type;
+  describe('Alert Variants', () => {
+    const alertVariants: AlertVariant[] = ['warning', 'info', 'success', 'error', 'primary', 'default'];
+    alertVariants.forEach(variant => {
+      it(`should apply the correct class for variant="${variant}"`, async () => {
+        element.variant = variant;
         await element.updateComplete;
         const div = element.shadowRoot!.querySelector('.alert');
         expect(div).not.toBeNull();
-        expect(div!.classList.contains(`alert-${type}`)).toBe(true);
+        expect(div!.classList.contains(`alert-${variant}`)).toBe(true);
       });
     });
   });
@@ -113,7 +113,7 @@ describe('AgAlert Component', () => {
     });
 
     it('should dispatch alert-dismiss event when close button is clicked', async () => {
-      element.type = 'success';
+      element.variant = 'success';
       element.dismissible = true;
       await element.updateComplete;
 
@@ -130,12 +130,12 @@ describe('AgAlert Component', () => {
       closeButton.click();
 
       expect(eventFired).toBe(true);
-      expect(eventDetail.type).toBe('success');
+      expect(eventDetail.variant).toBe('success');
     });
 
     it('should invoke onAlertDismiss callback when close button is clicked', async () => {
       const onDismissCallback = vi.fn();
-      element.type = 'warning';
+      element.variant = 'warning';
       element.dismissible = true;
       element.onAlertDismiss = onDismissCallback;
       await element.updateComplete;
@@ -144,14 +144,14 @@ describe('AgAlert Component', () => {
       closeButton.click();
 
       expect(onDismissCallback).toHaveBeenCalledTimes(1);
-      expect(onDismissCallback.mock.calls[0][0].detail.type).toBe('warning');
+      expect(onDismissCallback.mock.calls[0][0].detail.variant).toBe('warning');
     });
 
     it('should support both addEventListener and callback props simultaneously', async () => {
       const onDismissCallback = vi.fn();
       let addEventListenerCalled = false;
 
-      element.type = 'info';
+      element.variant = 'info';
       element.dismissible = true;
       element.onAlertDismiss = onDismissCallback;
       await element.updateComplete;
@@ -172,7 +172,7 @@ describe('AgAlert Component', () => {
   describe('Event Handling Patterns', () => {
     describe('addEventListener Pattern', () => {
       it('should dispatch alert-dismiss event with detail', async () => {
-        element.type = 'danger';
+        element.variant = 'danger';
         element.dismissible = true;
         await element.updateComplete;
 
@@ -188,14 +188,14 @@ describe('AgAlert Component', () => {
         closeButton.click();
 
         expect(eventFired).toBe(true);
-        expect(eventDetail.type).toBe('danger');
+        expect(eventDetail.variant).toBe('danger');
       });
     });
 
     describe('Callback Props Pattern', () => {
       it('should invoke onAlertDismiss callback with event detail', async () => {
         const onDismissCallback = vi.fn();
-        element.type = 'primary';
+        element.variant = 'primary';
         element.dismissible = true;
         element.onAlertDismiss = onDismissCallback;
         await element.updateComplete;
@@ -204,7 +204,7 @@ describe('AgAlert Component', () => {
         closeButton.click();
 
         expect(onDismissCallback).toHaveBeenCalledTimes(1);
-        expect(onDismissCallback.mock.calls[0][0].detail.type).toBe('primary');
+        expect(onDismissCallback.mock.calls[0][0].detail.variant).toBe('primary');
       });
     });
 

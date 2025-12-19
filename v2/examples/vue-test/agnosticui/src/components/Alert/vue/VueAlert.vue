@@ -1,7 +1,7 @@
 <template>
   <ag-alert
     ref="alertRef"
-    :type="type"
+    :variant="variant"
     :bordered="bordered || undefined"
     :rounded="rounded || undefined"
     :borderedLeft="borderedLeft || undefined"
@@ -17,7 +17,7 @@
 import { ref } from "vue";
 import type {
   AlertProps,
-  AlertType,
+  AlertVariant,
   AlertDismissEventDetail,
 } from "../core/Alert";
 import "../core/Alert"; // Registers the ag-alert web component
@@ -27,7 +27,7 @@ export interface VueAlertProps extends Omit<AlertProps, "onAlertDismiss"> {}
 
 // Define props with defaults
 withDefaults(defineProps<VueAlertProps>(), {
-  type: "default" as AlertType,
+  variant: "default" as AlertVariant,
   bordered: false,
   rounded: false,
   borderedLeft: false,
