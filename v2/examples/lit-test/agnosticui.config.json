@@ -8,7 +8,7 @@
   },
   "components": {
     "Avatar": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -24,7 +24,7 @@
       ]
     },
     "Button": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -88,7 +88,7 @@
       ]
     },
     "Alert": {
-      "added": "2025-12-08T00:41:27.093Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -97,7 +97,7 @@
       ]
     },
     "Accordion": {
-      "added": "2025-12-18T16:03:06.091Z",
+      "added": "2025-12-19T20:47:08.943Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -137,7 +137,7 @@
       ]
     },
     "Checkbox": {
-      "added": "2025-12-08T16:20:45.355Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -153,7 +153,7 @@
       ]
     },
     "Combobox": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -180,12 +180,11 @@
       ]
     },
     "Drawer": {
-      "added": "2025-12-08T02:07:03.377Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Drawer/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Dialog/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Drawer/core"
       ]
     },
     "EmptyState": {
@@ -206,7 +205,7 @@
       ]
     },
     "IconButton": {
-      "added": "2025-12-08T02:51:35.655Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -278,7 +277,7 @@
       ]
     },
     "Menu": {
-      "added": "2025-12-08T20:36:50.952Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -294,7 +293,7 @@
       ]
     },
     "Pagination": {
-      "added": "2025-12-08T22:11:19.072Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -302,7 +301,7 @@
       ]
     },
     "Popover": {
-      "added": "2025-12-08T22:23:44.186Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -343,7 +342,7 @@
       ]
     },
     "ScrollProgress": {
-      "added": "2025-12-09T02:27:03.236Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -351,7 +350,7 @@
       ]
     },
     "ScrollToButton": {
-      "added": "2025-12-09T03:11:54.550Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -383,7 +382,7 @@
       ]
     },
     "SkeletonLoader": {
-      "added": "2025-12-17T19:16:40.627Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -415,7 +414,7 @@
       ]
     },
     "Timeline": {
-      "added": "2025-12-09T22:33:39.841Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -423,7 +422,7 @@
       ]
     },
     "Toast": {
-      "added": "2025-12-09T22:34:49.928Z",
+      "added": "2025-12-19T20:47:08.944Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -457,8 +456,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.0.1.tgz",
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.1.0.tgz",
     "version": "unknown",
-    "installed": "2025-12-18T16:02:52.752Z"
+    "installed": "2025-12-19T20:45:03.001Z"
   }
 }
