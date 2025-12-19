@@ -27,7 +27,7 @@ export interface AgTimelineProps {
  *
  * @cssprop --ag-timeline-connector-color - Color of connector lines (default: var(--ag-border))
  * @cssprop --ag-timeline-connector-width - Width of connector lines (default: 2px)
- * @cssprop --ag-timeline-spacing - Spacing between timeline items (default: var(--ag-space-4))
+ * @cssprop --ag-timeline-vertical-spacing - Spacing between timeline items in vertical orientation (default: var(--ag-space-4))
  */
 export class AgTimeline extends LitElement implements AgTimelineProps {
   // ──────────────────────────────────────────────────────────────
@@ -227,7 +227,8 @@ export class AgTimelineItem extends LitElement {
     /* Vertical layout - Flush alignment */
     :host([orientation="vertical"]) .item-container {
       grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-      grid-template-rows: 0 auto 1fr;
+      /* Rows: connector-before (0), marker (auto), connector-after + spacing (minmax ensures minimum gap between items) */
+      grid-template-rows: 0 auto minmax(var(--ag-timeline-vertical-spacing, var(--ag-space-4)), 1fr);
       align-items: start;
       justify-items: center;
     }

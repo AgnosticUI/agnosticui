@@ -1,7 +1,7 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { Position } from '../../../utils/positioning';
-import type { AlertType } from '../../Alert/core/_Alert';
+import type { AlertVariant } from '../../Alert/core/_Alert';
 import '../../Alert/core/Alert';
 import '../../shared/CloseButton/CloseButton';
 
@@ -11,7 +11,7 @@ export type ToastCloseEvent = CustomEvent<void>;
 export type ToastDismissEvent = CustomEvent<void>;
 
 // Re-export AlertType as ToastType for convenience
-export type ToastType = AlertType;
+export type ToastType = AlertVariant;
 
 // Props interface following INTERFACE_STANDARDS.md
 export interface ToastProps {
@@ -382,7 +382,7 @@ export class Toast extends LitElement implements ToastProps {
       >
         <ag-alert
           part="ag-toast-content"
-          .type=${this.type}
+          .variant=${this.type}
           .bordered=${this.bordered}
           .rounded=${this.rounded}
           .borderedLeft=${this.borderedLeft}

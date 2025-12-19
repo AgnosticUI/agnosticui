@@ -80,8 +80,8 @@ describe('Toast', () => {
 
         const alert = element.shadowRoot?.querySelector('ag-alert');
         expect(alert).toBeTruthy();
-        // Check the property is set on the alert component
-        expect((alert as any).type).toBe(type);
+        // Check the property is set on the alert component (Alert uses 'variant')
+        expect((alert as any).variant).toBe(type);
       });
     });
   });
