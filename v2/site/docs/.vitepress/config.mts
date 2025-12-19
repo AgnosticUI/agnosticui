@@ -17,6 +17,17 @@ export default defineConfig({
       },
     },
   },
+  // Prevent VitePress from pre-bundling agnosticui-core and treat it as app source.
+  // Pre-bundling breaks Vue render context for Lit-based custom elements (slots/SSR),
+  // causing runtime errors and FOUC. This is a known VitePress issue/workaround.
+  vite: {
+    optimizeDeps: {
+      exclude: ['agnosticui-core'],
+    },
+    ssr: {
+      noExternal: ['agnosticui-core'],
+    },
+  },
   markdown: {
     theme: {
       light: 'github-light-high-contrast',
