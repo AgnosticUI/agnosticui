@@ -26,12 +26,12 @@ import AlertExamples from '../examples/AlertExamples.vue'
     </div>
     <div class="stacked">
       <VueAlert class="mbe2">Default alert</VueAlert>
-      <VueAlert class="mbe2" type="success">Success alert</VueAlert>
-      <VueAlert class="mbe2" type="info">Info alert</VueAlert>
-      <VueAlert class="mbe2" type="warning">Warning alert</VueAlert>
-      <VueAlert class="mbe2" type="danger">Danger alert</VueAlert>
-      <VueAlert class="mbe2" type="error">Error alert</VueAlert>
-      <VueAlert class="mbe2" type="monochrome">Monochrome alert</VueAlert>
+      <VueAlert class="mbe2" variant="success">Success alert</VueAlert>
+      <VueAlert class="mbe2" variant="info">Info alert</VueAlert>
+      <VueAlert class="mbe2" variant="warning">Warning alert</VueAlert>
+      <VueAlert class="mbe2" variant="danger">Danger alert</VueAlert>
+      <VueAlert class="mbe2" variant="error">Error alert</VueAlert>
+      <VueAlert class="mbe2" variant="monochrome">Monochrome alert</VueAlert>
     </div>
 
     <div class="mbe4">
@@ -39,12 +39,12 @@ import AlertExamples from '../examples/AlertExamples.vue'
     </div>
     <div class="stacked">
       <VueAlert class="mbe2" bordered>Default alert</VueAlert>
-      <VueAlert class="mbe2" bordered type="success">Success alert</VueAlert>
-      <VueAlert class="mbe2" bordered type="info">Info alert</VueAlert>
-      <VueAlert class="mbe2" bordered type="warning">Warning alert</VueAlert>
-      <VueAlert class="mbe2" bordered type="danger">Danger alert</VueAlert>
-      <VueAlert class="mbe2" bordered type="error">Error alert</VueAlert>
-      <VueAlert class="mbe2" bordered type="monochrome"
+      <VueAlert class="mbe2" bordered variant="success">Success alert</VueAlert>
+      <VueAlert class="mbe2" bordered variant="info">Info alert</VueAlert>
+      <VueAlert class="mbe2" bordered variant="warning">Warning alert</VueAlert>
+      <VueAlert class="mbe2" bordered variant="danger">Danger alert</VueAlert>
+      <VueAlert class="mbe2" bordered variant="error">Error alert</VueAlert>
+      <VueAlert class="mbe2" bordered variant="monochrome"
         >Monochrome alert</VueAlert
       >
     </div>
@@ -58,30 +58,30 @@ import AlertExamples from '../examples/AlertExamples.vue'
           Default alert
         </div>
       </VueAlert>
-      <VueAlert class="mbe2" borderedLeft type="success">
+      <VueAlert class="mbe2" borderedLeft variant="success">
         <div class="flex-inline items-center justify-center">
           <Info color="var(--ag-secondary)" :size="18" class="mie2" />Success
           alert
         </div>
       </VueAlert>
-      <VueAlert class="mbe2" borderedLeft type="info">
+      <VueAlert class="mbe2" borderedLeft variant="info">
         <div class="flex-inline items-center justify-center">
           <Info color="var(--ag-secondary)" :size="18" class="mie2" />Info alert
         </div>
       </VueAlert>
-      <VueAlert class="mbe2" borderedLeft type="warning">
+      <VueAlert class="mbe2" borderedLeft variant="warning">
         <div class="flex-inline items-center justify-center">
           <Info color="var(--ag-warning-dark)" :size="18" class="mie2" />Warning
           alert
         </div>
       </VueAlert>
-      <VueAlert class="mbe2" borderedLeft type="danger">
+      <VueAlert class="mbe2" borderedLeft variant="danger">
         <div class="flex-inline items-center justify-center">
           <Info color="var(--ag-danger-dark)" :size="18" class="mie2" />Danger
           alert
         </div>
       </VueAlert>
-      <VueAlert class="mbe2" borderedLeft type="error">
+      <VueAlert class="mbe2" borderedLeft variant="error">
         <div class="flex-inline items-center justify-center">
           <Info color="var(--ag-error-dark)" :size="18" class="mie2" />Error
           alert
@@ -93,12 +93,12 @@ import AlertExamples from '../examples/AlertExamples.vue'
     </div>
     <div class="stacked">
       <VueAlert class="mbe2" rounded>Default alert</VueAlert>
-      <VueAlert class="mbe2" rounded type="success">Success alert</VueAlert>
-      <VueAlert class="mbe2" rounded type="info">Info alert</VueAlert>
-      <VueAlert class="mbe2" rounded type="warning">Warning alert</VueAlert>
-      <VueAlert class="mbe2" rounded type="danger">Danger alert</VueAlert>
-      <VueAlert class="mbe2" rounded type="error">Error alert</VueAlert>
-      <VueAlert class="mbe2" rounded type="monochrome"
+      <VueAlert class="mbe2" rounded variant="success">Success alert</VueAlert>
+      <VueAlert class="mbe2" rounded variant="info">Info alert</VueAlert>
+      <VueAlert class="mbe2" rounded variant="warning">Warning alert</VueAlert>
+      <VueAlert class="mbe2" rounded variant="danger">Danger alert</VueAlert>
+      <VueAlert class="mbe2" rounded variant="error">Error alert</VueAlert>
+      <VueAlert class="mbe2" rounded variant="monochrome"
         >Monochrome alert</VueAlert
       >
     </div>
@@ -129,22 +129,22 @@ export default function AlertExamples() {
       </div>
       <div className="stacked">
         <ReactAlert className="mbe2">Default alert</ReactAlert>
-        <ReactAlert className="mbe2" type="success">
+        <ReactAlert className="mbe2" variant="success">
           Success alert
         </ReactAlert>
-        <ReactAlert className="mbe2" type="info">
+        <ReactAlert className="mbe2" variant="info">
           Info alert
         </ReactAlert>
-        <ReactAlert className="mbe2" type="primary">
+        <ReactAlert className="mbe2" variant="primary">
           Primary alert
         </ReactAlert>
-        <ReactAlert className="mbe2" type="warning">
+        <ReactAlert className="mbe2" variant="warning">
           Warning alert
         </ReactAlert>
-        <ReactAlert className="mbe2" type="danger">
+        <ReactAlert className="mbe2" variant="danger">
           Danger alert
         </ReactAlert>
-        <ReactAlert className="mbe2" type="error">
+        <ReactAlert className="mbe2" variant="error">
           Error alert
         </ReactAlert>
       </div>
@@ -156,22 +156,22 @@ export default function AlertExamples() {
         <ReactAlert className="mbe2" bordered>
           Default alert
         </ReactAlert>
-        <ReactAlert className="mbe2" bordered type="success">
+        <ReactAlert className="mbe2" bordered variant="success">
           Success alert
         </ReactAlert>
-        <ReactAlert className="mbe2" bordered type="info">
+        <ReactAlert className="mbe2" bordered variant="info">
           Info alert
         </ReactAlert>
-        <ReactAlert className="mbe2" bordered type="primary">
+        <ReactAlert className="mbe2" bordered variant="primary">
           Primary alert
         </ReactAlert>
-        <ReactAlert className="mbe2" bordered type="warning">
+        <ReactAlert className="mbe2" bordered variant="warning">
           Warning alert
         </ReactAlert>
-        <ReactAlert className="mbe2" bordered type="danger">
+        <ReactAlert className="mbe2" bordered variant="danger">
           Danger alert
         </ReactAlert>
-        <ReactAlert className="mbe2" bordered type="error">
+        <ReactAlert className="mbe2" bordered variant="error">
           Error alert
         </ReactAlert>
       </div>
@@ -183,22 +183,22 @@ export default function AlertExamples() {
         <ReactAlert className="mbe2" rounded>
           Default alert
         </ReactAlert>
-        <ReactAlert className="mbe2" rounded type="success">
+        <ReactAlert className="mbe2" rounded variant="success">
           Success alert
         </ReactAlert>
-        <ReactAlert className="mbe2" rounded type="info">
+        <ReactAlert className="mbe2" rounded variant="info">
           Info alert
         </ReactAlert>
-        <ReactAlert className="mbe2" rounded type="primary">
+        <ReactAlert className="mbe2" rounded variant="primary">
           Primary alert
         </ReactAlert>
-        <ReactAlert className="mbe2" rounded type="warning">
+        <ReactAlert className="mbe2" rounded variant="warning">
           Warning alert
         </ReactAlert>
-        <ReactAlert className="mbe2" rounded type="danger">
+        <ReactAlert className="mbe2" rounded variant="danger">
           Danger alert
         </ReactAlert>
-        <ReactAlert className="mbe2" rounded type="error">
+        <ReactAlert className="mbe2" rounded variant="error">
           Error alert
         </ReactAlert>
       </div>
@@ -210,16 +210,16 @@ export default function AlertExamples() {
         <ReactAlert className="mbe2" borderedLeft>
           Default alert
         </ReactAlert>
-        <ReactAlert className="mbe2" borderedLeft type="success">
+        <ReactAlert className="mbe2" borderedLeft variant="success">
           Success alert
         </ReactAlert>
-        <ReactAlert className="mbe2" borderedLeft type="warning">
+        <ReactAlert className="mbe2" borderedLeft variant="warning">
           Warning alert
         </ReactAlert>
-        <ReactAlert className="mbe2" borderedLeft type="danger">
+        <ReactAlert className="mbe2" borderedLeft variant="danger">
           Danger alert
         </ReactAlert>
-        <ReactAlert className="mbe2" borderedLeft type="error">
+        <ReactAlert className="mbe2" borderedLeft variant="error">
           Error alert
         </ReactAlert>
       </div>
@@ -243,12 +243,12 @@ export default function AlertExamples() {
   </div>
   <div class="stacked">
     <ag-alert class="mbe2">Default alert</ag-alert>
-    <ag-alert class="mbe2" type="success">Success alert</ag-alert>
-    <ag-alert class="mbe2" type="info">Info alert</ag-alert>
-    <ag-alert class="mbe2" type="primary">Primary alert</ag-alert>
-    <ag-alert class="mbe2" type="warning">Warning alert</ag-alert>
-    <ag-alert class="mbe2" type="danger">Danger alert</ag-alert>
-    <ag-alert class="mbe2" type="error">Error alert</ag-alert>
+    <ag-alert class="mbe2" variant="success">Success alert</ag-alert>
+    <ag-alert class="mbe2" variant="info">Info alert</ag-alert>
+    <ag-alert class="mbe2" variant="primary">Primary alert</ag-alert>
+    <ag-alert class="mbe2" variant="warning">Warning alert</ag-alert>
+    <ag-alert class="mbe2" variant="danger">Danger alert</ag-alert>
+    <ag-alert class="mbe2" variant="error">Error alert</ag-alert>
   </div>
 
   <div class="mbe4">
@@ -256,12 +256,12 @@ export default function AlertExamples() {
   </div>
   <div class="stacked">
     <ag-alert class="mbe2" bordered>Default alert</ag-alert>
-    <ag-alert class="mbe2" bordered type="success">Success alert</ag-alert>
-    <ag-alert class="mbe2" bordered type="info">Info alert</ag-alert>
-    <ag-alert class="mbe2" bordered type="primary">Primary alert</ag-alert>
-    <ag-alert class="mbe2" bordered type="warning">Warning alert</ag-alert>
-    <ag-alert class="mbe2" bordered type="danger">Danger alert</ag-alert>
-    <ag-alert class="mbe2" bordered type="error">Error alert</ag-alert>
+    <ag-alert class="mbe2" bordered variant="success">Success alert</ag-alert>
+    <ag-alert class="mbe2" bordered variant="info">Info alert</ag-alert>
+    <ag-alert class="mbe2" bordered variant="primary">Primary alert</ag-alert>
+    <ag-alert class="mbe2" bordered variant="warning">Warning alert</ag-alert>
+    <ag-alert class="mbe2" bordered variant="danger">Danger alert</ag-alert>
+    <ag-alert class="mbe2" bordered variant="error">Error alert</ag-alert>
   </div>
 
   <div class="mbe4">
@@ -269,12 +269,12 @@ export default function AlertExamples() {
   </div>
   <div class="stacked">
     <ag-alert class="mbe2" rounded>Default alert</ag-alert>
-    <ag-alert class="mbe2" rounded type="success">Success alert</ag-alert>
-    <ag-alert class="mbe2" rounded type="info">Info alert</ag-alert>
-    <ag-alert class="mbe2" rounded type="primary">Primary alert</ag-alert>
-    <ag-alert class="mbe2" rounded type="warning">Warning alert</ag-alert>
-    <ag-alert class="mbe2" rounded type="danger">Danger alert</ag-alert>
-    <ag-alert class="mbe2" rounded type="error">Error alert</ag-alert>
+    <ag-alert class="mbe2" rounded variant="success">Success alert</ag-alert>
+    <ag-alert class="mbe2" rounded variant="info">Info alert</ag-alert>
+    <ag-alert class="mbe2" rounded variant="primary">Primary alert</ag-alert>
+    <ag-alert class="mbe2" rounded variant="warning">Warning alert</ag-alert>
+    <ag-alert class="mbe2" rounded variant="danger">Danger alert</ag-alert>
+    <ag-alert class="mbe2" rounded variant="error">Error alert</ag-alert>
   </div>
 
   <div class="mbe4">
@@ -282,10 +282,10 @@ export default function AlertExamples() {
   </div>
   <div class="stacked">
     <ag-alert class="mbe2" borderedLeft>Default alert</ag-alert>
-    <ag-alert class="mbe2" borderedLeft type="success">Success alert</ag-alert>
-    <ag-alert class="mbe2" borderedLeft type="warning">Warning alert</ag-alert>
-    <ag-alert class="mbe2" borderedLeft type="danger">Danger alert</ag-alert>
-    <ag-alert class="mbe2" borderedLeft type="error">Error alert</ag-alert>
+    <ag-alert class="mbe2" borderedLeft variant="success">Success alert</ag-alert>
+    <ag-alert class="mbe2" borderedLeft variant="warning">Warning alert</ag-alert>
+    <ag-alert class="mbe2" borderedLeft variant="danger">Danger alert</ag-alert>
+    <ag-alert class="mbe2" borderedLeft variant="error">Error alert</ag-alert>
   </div>
 </section>
 ```
@@ -303,7 +303,7 @@ Alerts can be made dismissible by adding the `dismissible` prop. This displays a
   <div>
     <VueAlert
       v-if="showAlert"
-      type="success"
+      variant="success"
       dismissible
       @alert-dismiss="showAlert = false"
       class="mbe2"
@@ -313,7 +313,7 @@ Alerts can be made dismissible by adding the `dismissible` prop. This displays a
 
     <VueAlert
       v-if="showWarning"
-      type="warning"
+      variant="warning"
       dismissible
       rounded
       @alert-dismiss="handleWarningDismiss"
@@ -344,7 +344,7 @@ export default {
   },
   methods: {
     handleWarningDismiss(event) {
-      console.log("Warning dismissed, type:", event.detail.type);
+      console.log("Warning dismissed, variant:", event.detail.variant);
       this.showWarning = false;
     },
   },
@@ -365,7 +365,7 @@ export default function DismissibleAlertExample() {
   const [showWarning, setShowWarning] = useState(true);
 
   const handleWarningDismiss = (event) => {
-    console.log("Warning dismissed, type:", event.detail.type);
+    console.log("Warning dismissed, variant:", event.detail.variant);
     setShowWarning(false);
   };
 
@@ -373,7 +373,7 @@ export default function DismissibleAlertExample() {
     <div>
       {showAlert && (
         <ReactAlert
-          type="success"
+          variant="success"
           dismissible
           onAlertDismiss={() => setShowAlert(false)}
           className="mbe2"
@@ -384,7 +384,7 @@ export default function DismissibleAlertExample() {
 
       {showWarning && (
         <ReactAlert
-          type="warning"
+          variant="warning"
           dismissible
           rounded
           onAlertDismiss={handleWarningDismiss}
@@ -432,13 +432,13 @@ export class AlertDismissibleExample extends LitElement {
 
     successAlert?.addEventListener('alert-dismiss', (e: Event) => {
       const customEvent = e as CustomEvent;
-      console.log('Success alert dismissed, type:', customEvent.detail.type);
+      console.log('Success alert dismissed, variant:', customEvent.detail.variant);
       this.showSuccess = false;
     });
 
     if (warningAlert) {
       (warningAlert as any).onAlertDismiss = (e: CustomEvent) => {
-        console.log('Warning dismissed, type:', e.detail.type);
+        console.log('Warning dismissed, variant:', e.detail.variant);
         this.showWarning = false;
       };
     }
@@ -456,13 +456,13 @@ export class AlertDismissibleExample extends LitElement {
     return html`
       <div>
         ${this.showSuccess
-          ? html`<ag-alert id="success-alert" type="success" dismissible class="mbe2">
+          ? html`<ag-alert id="success-alert" variant="success" dismissible class="mbe2">
               This is a dismissible success alert. Click the × to dismiss.
             </ag-alert>`
           : html`<button @click=${this.handleShowSuccess}>Show Success Alert</button>`}
 
         ${this.showWarning
-          ? html`<ag-alert id="warning-alert" type="warning" dismissible rounded class="mbe2">
+          ? html`<ag-alert id="warning-alert" variant="warning" dismissible rounded class="mbe2">
               Warning: This action cannot be undone!
             </ag-alert>`
           : html`<button @click=${this.handleShowWarning}>Show Warning Alert</button>`}
@@ -480,7 +480,7 @@ export class AlertDismissibleExample extends LitElement {
 
 | Prop           | Type                                                                                | Default     | Description                               |
 | -------------- | ----------------------------------------------------------------------------------- | ----------- | ----------------------------------------- |
-| `type`         | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'danger' \| 'error'` | `'default'` | The alert variant type                    |
+| `variant`      | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'danger' \| 'error'` | `'default'` | The alert variant type                    |
 | `bordered`     | `boolean`                                                                           | `false`     | Adds a border around the alert            |
 | `rounded`      | `boolean`                                                                           | `false`     | Applies rounded corners to the alert      |
 | `borderedLeft` | `boolean`                                                                           | `false`     | Adds a left border accent to the alert    |
@@ -488,9 +488,9 @@ export class AlertDismissibleExample extends LitElement {
 
 ## Events
 
-| Event           | Framework                                                                                      | Detail                | Description                                                                            |
-| --------------- | ---------------------------------------------------------------------------------------------- | --------------------- | -------------------------------------------------------------------------------------- |
-| `alert-dismiss` | Vue: `@alert-dismiss`<br>React: `onAlertDismiss`<br>Lit: `@alert-dismiss` or `.onAlertDismiss` | `{ type: AlertType }` | Fired when the alert's close button is clicked. Provides the alert type in the detail. |
+| Event           | Framework                                                                                      | Detail                   | Description                                                                               |
+| --------------- | ---------------------------------------------------------------------------------------------- | ------------------------ | ----------------------------------------------------------------------------------------- |
+| `alert-dismiss` | Vue: `@alert-dismiss`<br>React: `onAlertDismiss`<br>Lit: `@alert-dismiss` or `.onAlertDismiss` | `{ variant: AlertVariant }` | Fired when the alert's close button is clicked. Provides the alert variant in the detail. |
 
 ### Event Patterns
 
@@ -501,7 +501,7 @@ AgnosticUI Alert supports **three event handling patterns**:
 ```javascript
 const alert = document.querySelector("ag-alert");
 alert.addEventListener("alert-dismiss", (e) => {
-  console.log("Alert dismissed, type:", e.detail.type);
+  console.log("Alert dismissed, variant:", e.detail.variant);
   alert.remove();
 });
 ```
@@ -511,7 +511,7 @@ alert.addEventListener("alert-dismiss", (e) => {
 ```javascript
 const alert = document.querySelector("ag-alert");
 alert.onAlertDismiss = (e) => {
-  console.log("Alert dismissed, type:", e.detail.type);
+  console.log("Alert dismissed, variant:", e.detail.variant);
   alert.remove();
 };
 ```
@@ -555,6 +555,6 @@ ag-alert::part(ag-alert) {
 
 ## Notes
 
-- **Type variants**: Both `type="error"` and `type="danger"` are supported and interchangeable (they render identically)
+- **Variant types**: Both `variant="error"` and `variant="danger"` are supported and interchangeable (they render identically)
 - **Lit**: Properties can be set via attributes (e.g., `<ag-alert bordered>`) or via property binding in Lit templates (e.g., `.bordered=${true}`)
 - All three implementations share the same underlying styles and behavior

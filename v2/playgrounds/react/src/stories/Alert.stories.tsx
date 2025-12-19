@@ -6,7 +6,7 @@ const meta: Meta<ReactAlertProps> = {
   component: ReactAlert,
   tags: ['autodocs'],
   argTypes: {
-    type: {
+    variant: {
       control: "select",
       options: [
         "default",
@@ -33,7 +33,7 @@ const meta: Meta<ReactAlertProps> = {
     },
   },
   args: {
-    type: "info",
+    variant: "info",
     bordered: false,
     rounded: false,
     borderedLeft: false,
@@ -50,7 +50,7 @@ export const Default: Story = {
 
 export const Info: Story = {
   args: {
-    type: "info",
+    variant: "info",
     children: "This is an info alert.",
   },
   render: (args) => <ReactAlert {...args} />,
@@ -58,7 +58,7 @@ export const Info: Story = {
 
 export const Success: Story = {
   args: {
-    type: "success",
+    variant: "success",
     children: "This is a success alert.",
   },
   render: (args) => <ReactAlert {...args} />,
@@ -66,7 +66,7 @@ export const Success: Story = {
 
 export const Warning: Story = {
   args: {
-    type: "warning",
+    variant: "warning",
     children: "This is a warning alert.",
   },
   render: (args) => <ReactAlert {...args} />,
@@ -74,7 +74,7 @@ export const Warning: Story = {
 
 export const Error: Story = {
   args: {
-    type: "error",
+    variant: "error",
     children: "This is an error alert.",
   },
   render: (args) => <ReactAlert {...args} />,
@@ -82,7 +82,7 @@ export const Error: Story = {
 
 export const Primary: Story = {
   args: {
-    type: "primary",
+    variant: "primary",
     children: "This is a primary alert.",
   },
   render: (args) => <ReactAlert {...args} />,
@@ -107,7 +107,7 @@ export const Rounded: Story = {
 export const BorderedLeft: Story = {
   args: {
     borderedLeft: true,
-    type: "warning",
+    variant: "warning",
     children: "This alert has a left border.",
   },
   render: (args) => <ReactAlert {...args} />,
@@ -115,7 +115,7 @@ export const BorderedLeft: Story = {
 
 export const AllModifiers: Story = {
   args: {
-    type: "success",
+    variant: "success",
     bordered: true,
     rounded: true,
     borderedLeft: true,

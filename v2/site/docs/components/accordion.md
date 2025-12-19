@@ -452,8 +452,6 @@ ag-accordion-item::part(ag-accordion-indicator) {
 }
 ```
 
-See the [Storybook CSS Parts Customization story](https://github.com/AgnosticUI/agnosticui) for more examples.
-
 ## Accessibility
 
 The Accordion implements the [WAI-ARIA Accordion Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/):
@@ -467,6 +465,7 @@ The Accordion implements the [WAI-ARIA Accordion Pattern](https://www.w3.org/WAI
   - **Arrow Up**: Move focus to previous accordion item
   - **Home**: Move focus to first accordion item
   - **End**: Move focus to last accordion item
+- Using **TAB** works as well
 - Screen readers announce the current state (expanded/collapsed)
 - Clear focus indicators for keyboard navigation
 - Disabled items cannot be interacted with and are communicated via `aria-disabled`

@@ -284,8 +284,6 @@ ag-collapsible.minimal::part(ag-collapsible-content) {
 }
 ```
 
-See the [Storybook CSS Parts Customization story](https://github.com/AgnosticUI/agnosticui) for more examples.
-
 ## Accessibility
 
 The Collapsible is built on the native HTML `<details>` and `<summary>` elements, providing excellent accessibility by default:

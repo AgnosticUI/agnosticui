@@ -7,31 +7,31 @@
       <VueAlert class="mbe2">Default alert</VueAlert>
       <VueAlert
         class="mbe2"
-        type="success"
+        variant="success"
       >Success alert</VueAlert>
       <VueAlert
         class="mbe2"
-        type="info"
+        variant="info"
       >Info alert</VueAlert>
       <VueAlert
         class="mbe2"
-        type="primary"
+        variant="primary"
       >Primary alert</VueAlert>
       <VueAlert
         class="mbe2"
-        type="warning"
+        variant="warning"
       >Warning alert</VueAlert>
       <VueAlert
         class="mbe2"
-        type="error"
+        variant="error"
       >Error alert</VueAlert>
       <VueAlert
         class="mbe2"
-        type="danger"
+        variant="danger"
       >Danger alert</VueAlert>
       <VueAlert
         class="mbe2"
-        type="monochrome"
+        variant="monochrome"
       >Monochrome alert</VueAlert>
     </div>
     <div class="mbe4">
@@ -45,37 +45,37 @@
       <VueAlert
         class="mbe2"
         bordered
-        type="success"
+        variant="success"
       >Success alert</VueAlert>
       <VueAlert
         class="mbe2"
         bordered
-        type="info"
+        variant="info"
       >Info alert</VueAlert>
       <VueAlert
         class="mbe2"
         bordered
-        type="primary"
+        variant="primary"
       >Primary alert</VueAlert>
       <VueAlert
         class="mbe2"
         bordered
-        type="warning"
+        variant="warning"
       >Warning alert</VueAlert>
       <VueAlert
         class="mbe2"
         bordered
-        type="error"
+        variant="error"
       >Error alert</VueAlert>
       <VueAlert
         class="mbe2"
         bordered
-        type="danger"
+        variant="danger"
       >Danger alert</VueAlert>
       <VueAlert
         class="mbe2"
         bordered
-        type="monochrome"
+        variant="monochrome"
       >Monochrome alert</VueAlert>
     </div>
     <div class="mbe4">
@@ -98,7 +98,7 @@
       <VueAlert
         class="mbe2"
         borderedLeft
-        type="success"
+        variant="success"
       >
         <div class="flex-inline items-center justify-center">
           <Info
@@ -111,7 +111,7 @@
       <VueAlert
         class="mbe2"
         borderedLeft
-        type="info"
+        variant="info"
       >
         <div class="flex-inline items-center justify-center">
           <Info
@@ -124,7 +124,7 @@
       <VueAlert
         class="mbe2"
         borderedLeft
-        type="primary"
+        variant="primary"
       >
         <div class="flex-inline items-center justify-center">
           <Info
@@ -137,7 +137,7 @@
       <VueAlert
         class="mbe2"
         borderedLeft
-        type="warning"
+        variant="warning"
       >
         <div class="flex-inline items-center justify-center">
           <Info
@@ -150,7 +150,7 @@
       <VueAlert
         class="mbe2"
         borderedLeft
-        type="error"
+        variant="error"
       >
         <div class="flex-inline items-center justify-center">
           <Info
@@ -163,7 +163,7 @@
       <VueAlert
         class="mbe2"
         borderedLeft
-        type="danger"
+        variant="danger"
       >
         <div class="flex-inline items-center justify-center">
           <Info
@@ -176,7 +176,7 @@
       <VueAlert
         class="mbe2"
         borderedLeft
-        type="monochrome"
+        variant="monochrome"
       >
         <div class="flex-inline items-center justify-center">
           <Info
@@ -198,38 +198,84 @@
       <VueAlert
         class="mbe2"
         rounded
-        type="success"
+        variant="success"
       >Success alert</VueAlert>
       <VueAlert
         class="mbe2"
         rounded
-        type="info"
+        variant="info"
       >Info alert</VueAlert>
       <VueAlert
         class="mbe2"
         rounded
-        type="primary"
+        variant="primary"
       >Primary alert</VueAlert>
       <VueAlert
         class="mbe2"
         rounded
-        type="warning"
+        variant="warning"
       >Warning alert</VueAlert>
       <VueAlert
         class="mbe2"
         rounded
-        type="error"
+        variant="error"
       >Error alert</VueAlert>
       <VueAlert
         class="mbe2"
         rounded
-        type="danger"
+        variant="danger"
       >Danger alert</VueAlert>
       <VueAlert
         class="mbe2"
         rounded
-        type="monochrome"
+        variant="monochrome"
       >Monochrome alert</VueAlert>
+    </div>
+    <div class="mbe4">
+      <h2>Dismissible</h2>
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
+        Alerts can be dismissed by the user with a close button.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <VueAlert
+        v-if="showSuccessAlert"
+        class="mbe2"
+        variant="success"
+        dismissible
+        @alert-dismiss="showSuccessAlert = false"
+      >
+        <strong>Success!</strong> Your changes have been saved. Click the × to dismiss.
+      </VueAlert>
+      <button
+        v-if="!showSuccessAlert"
+        @click="showSuccessAlert = true"
+        class="mbe2"
+        style="padding: 0.5rem 1rem; cursor: pointer;"
+      >
+        Show Success Alert
+      </button>
+
+      <VueAlert
+        v-if="showWarningAlert"
+        class="mbe2"
+        variant="warning"
+        dismissible
+        rounded
+        @alert-dismiss="handleWarningDismiss"
+      >
+        <strong>Warning!</strong> This action may have unintended consequences.
+      </VueAlert>
+      <button
+        v-if="!showWarningAlert"
+        @click="showWarningAlert = true"
+        style="padding: 0.5rem 1rem; cursor: pointer;"
+      >
+        Show Warning Alert
+      </button>
     </div>
     <div class="mbe4">
       <h2>CSS Parts Customization</h2>
@@ -256,6 +302,18 @@ import VueAlert from "agnosticui-core/alert/vue";
 export default {
   name: "AlertExamples",
   components: { VueAlert, Info },
+  data() {
+    return {
+      showSuccessAlert: true,
+      showWarningAlert: true,
+    };
+  },
+  methods: {
+    handleWarningDismiss(event) {
+      console.log("Warning dismissed, variant:", event.detail.variant);
+      this.showWarningAlert = false;
+    },
+  },
 };
 </script>
 

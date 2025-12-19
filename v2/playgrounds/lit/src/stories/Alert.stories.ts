@@ -8,7 +8,7 @@ const meta: Meta<AlertProps> = {
   component: "ag-alert",
   tags: ["autodocs"],
   argTypes: {
-    type: {
+    variant: {
       control: "select",
       options: [
         "default",
@@ -35,7 +35,7 @@ const meta: Meta<AlertProps> = {
     },
   },
   args: {
-    type: "info",
+    variant: "info",
     bordered: false,
     rounded: false,
     borderedLeft: false,
@@ -48,11 +48,11 @@ type Story = StoryObj<AlertProps>;
 
 export const Default: Story = {
   args: {
-    type: "info",
+    variant: "info",
   },
-  render: ({ type, bordered, rounded, borderedLeft }) => html`
+  render: ({ variant, bordered, rounded, borderedLeft }) => html`
     <ag-alert
-      .type=${type}
+      .variant=${variant}
       .bordered=${bordered}
       .rounded=${rounded}
       .borderedLeft=${borderedLeft}
@@ -64,42 +64,42 @@ export const Default: Story = {
 
 export const Info: Story = {
   args: {
-    type: "info",
+    variant: "info",
   },
-  render: ({ type }) =>
-    html`<ag-alert .type=${type}>This is an info alert.</ag-alert>`,
+  render: ({ variant }) =>
+    html`<ag-alert .variant=${variant}>This is an info alert.</ag-alert>`,
 };
 
 export const Success: Story = {
   args: {
-    type: "success",
+    variant: "success",
   },
-  render: ({ type }) =>
-    html`<ag-alert .type=${type}>This is a success alert.</ag-alert>`,
+  render: ({ variant }) =>
+    html`<ag-alert .variant=${variant}>This is a success alert.</ag-alert>`,
 };
 
 export const Warning: Story = {
   args: {
-    type: "warning",
+    variant: "warning",
   },
-  render: ({ type }) =>
-    html`<ag-alert .type=${type}>This is a warning alert.</ag-alert>`,
+  render: ({ variant }) =>
+    html`<ag-alert .variant=${variant}>This is a warning alert.</ag-alert>`,
 };
 
 export const Error: Story = {
   args: {
-    type: "error",
+    variant: "error",
   },
-  render: ({ type }) =>
-    html`<ag-alert .type=${type}>This is an error alert.</ag-alert>`,
+  render: ({ variant }) =>
+    html`<ag-alert .variant=${variant}>This is an error alert.</ag-alert>`,
 };
 
 export const Primary: Story = {
   args: {
-    type: "primary",
+    variant: "primary",
   },
-  render: ({ type }) =>
-    html`<ag-alert .type=${type}>This is a primary alert.</ag-alert>`,
+  render: ({ variant }) =>
+    html`<ag-alert .variant=${variant}>This is a primary alert.</ag-alert>`,
 };
 
 export const Bordered: Story = {
@@ -121,24 +121,24 @@ export const Rounded: Story = {
 export const BorderedLeft: Story = {
   args: {
     borderedLeft: true,
-    type: "warning", // To make the left border visible
+    variant: "warning", // To make the left border visible
   },
-  render: ({ borderedLeft, type }) =>
-    html`<ag-alert .borderedLeft=${borderedLeft} .type=${type}
+  render: ({ borderedLeft, variant }) =>
+    html`<ag-alert .borderedLeft=${borderedLeft} .variant=${variant}
       >This alert has a left border.</ag-alert
     >`,
 };
 
 export const AllModifiers: Story = {
   args: {
-    type: "success",
+    variant: "success",
     bordered: true,
     rounded: true,
     borderedLeft: true,
   },
-  render: ({ type, bordered, rounded, borderedLeft }) => html`
+  render: ({ variant, bordered, rounded, borderedLeft }) => html`
     <ag-alert
-      .type=${type}
+      .variant=${variant}
       .bordered=${bordered}
       .rounded=${rounded}
       .borderedLeft=${borderedLeft}
