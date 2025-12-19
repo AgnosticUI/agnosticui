@@ -1854,7 +1854,7 @@ const handleCollapsibleToggle = (event: Event) => {
 
       <h3 class="subsection-title">Vertical Timeline</h3>
       <VueTimeline
-        style="--ag-timeline-spacing: var(--ag-space-10)"
+        style="--ag-timeline-vertical-spacing: 5rem;"
         orientation="vertical"
         variant="primary"
       >
