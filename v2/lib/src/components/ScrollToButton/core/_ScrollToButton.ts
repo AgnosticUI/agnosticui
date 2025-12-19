@@ -204,6 +204,7 @@ export class ScrollToButton extends LitElement implements ScrollToButtonProps {
             return selected.offsetTop;
           }
           // Default to top if target not found
+          // eslint-disable-next-line no-console
           console.warn(`ScrollToButton: Target "${this.target}" not found, scrolling to top`);
           return 0;
         }
