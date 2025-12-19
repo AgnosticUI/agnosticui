@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent } from "./ag/Accordion/vue";
+import {
+  VueAccordion,
+  VueAccordionItem,
+  VueAccordionHeader,
+  VueAccordionContent,
+} from "./ag/Accordion/vue";
 import { VueAlert } from "./ag/Alert/vue";
 import { VueAspectRatio } from "./ag/AspectRatio/vue";
-import { VueAvatar } from "./ag/Avatar/vue";
+import { VueAvatar, VueAvatarGroup } from "./ag/Avatar/vue";
 import { VueBadge } from "./ag/Badge/vue";
 import { VueBadgeFx } from "./ag/BadgeFx/vue";
 import { VueBreadcrumb } from "./ag/Breadcrumb/vue";
@@ -275,9 +280,63 @@ const handleCollapsibleToggle = (event: Event) => {
           text="XX"
         />
       </VueFlexRow>
+      <VueFlexRow
+        gap="lg"
+        align="center"
+      >
+        <VueAvatarGroup>
+          <VueAvatar
+            text="AB"
+            variant="info"
+            size="lg"
+          />
+          <VueAvatar
+            text="CD"
+            variant="info"
+            size="lg"
+          />
+          <VueAvatar
+            text="EF"
+            variant="info"
+            size="lg"
+          />
+          <VueAvatar
+            text="GH"
+            variant="info"
+            size="lg"
+          />
+        </VueAvatarGroup>
+        <VueAvatarGroup class="avatar-group-bordered">
+          <VueAvatar
+            img-src="https://i.pravatar.cc/150?img=1"
+            img-alt="User 1"
+            size="lg"
+          />
+          <VueAvatar
+            img-src="https://i.pravatar.cc/150?img=2"
+            img-alt="User 2"
+            size="lg"
+          />
+          <VueAvatar
+            img-src="https://i.pravatar.cc/150?img=3"
+            img-alt="User 3"
+            size="lg"
+          />
+          <VueAvatar
+            img-src="https://i.pravatar.cc/150?img=4"
+            img-alt="User 4"
+            size="lg"
+          />
+          <VueAvatar
+            img-src="https://i.pravatar.cc/150?img=5"
+            img-alt="User 5"
+            size="lg"
+          />
+        </VueAvatarGroup>
+      </VueFlexRow>
     </section>
 
-    <VueDivider />
+    <VueDivider class="mbe4" />
 
     <section class="component-section">
       <VueFlexRow gap="1rem">
@@ -344,15 +403,40 @@ const handleCollapsibleToggle = (event: Event) => {
         wrap="wrap"
       >
         <VueButton>Default Button</VueButton>
-        <VueButton variant="primary">Primary</VueButton>
-        <VueButton variant="secondary">Secondary</VueButton>
-        <VueButton variant="success">Success</VueButton>
-        <VueButton variant="monochrome">Monochrome</VueButton>
-        <VueButton variant="warning">Warning</VueButton>
-        <VueButton variant="danger">Danger (Error)</VueButton>
-        <VueButton :disabled="true">Disabled</VueButton>
-        <VueButton shape="rounded">Rounded</VueButton>
         <VueButton
+          class="mis1"
+          variant="primary"
+        >Primary</VueButton>
+        <VueButton
+          class="mis1"
+          variant="secondary"
+        >Secondary</VueButton>
+        <VueButton
+          class="mis1"
+          variant="success"
+        >Success</VueButton>
+        <VueButton
+          class="mis1"
+          variant="monochrome"
+        >Monochrome</VueButton>
+        <VueButton
+          class="mis1"
+          variant="warning"
+        >Warning</VueButton>
+        <VueButton
+          class="mis1"
+          variant="danger"
+        >Danger (Error)</VueButton>
+        <VueButton
+          class="mis1"
+          :disabled="true"
+        >Disabled</VueButton>
+        <VueButton
+          class="mis1"
+          shape="rounded"
+        >Rounded</VueButton>
+        <VueButton
+          class="mis1"
           :bordered="true"
           shape="rounded"
           variant="primary"
@@ -364,9 +448,15 @@ const handleCollapsibleToggle = (event: Event) => {
         gap="md"
         align="center"
       >
-        <VueButton size="sm">Small</VueButton>
-        <VueButton>Default</VueButton>
-        <VueButton size="lg">Large</VueButton>
+        <VueButton
+          class="mis1"
+          size="sm"
+        >Small</VueButton>
+        <VueButton class="mis1">Default</VueButton>
+        <VueButton
+          class="mis1"
+          size="lg"
+        >Large</VueButton>
       </VueFlexRow>
     </section>
 
@@ -379,7 +469,10 @@ const handleCollapsibleToggle = (event: Event) => {
         gap="lg"
         wrap="wrap"
       >
-        <VueCard style="width: 300px">
+        <VueCard
+          class="mis1"
+          style="width: 300px"
+        >
           <template #header>
             <h3 class="card-header">Card Header</h3>
           </template>
@@ -399,6 +492,7 @@ const handleCollapsibleToggle = (event: Event) => {
         </VueCard>
 
         <VueCard
+          class="mis1"
           isBorder
           style="width: 300px"
         >
@@ -409,6 +503,7 @@ const handleCollapsibleToggle = (event: Event) => {
         </VueCard>
 
         <VueCard
+          class="mis1"
           isShadow
           style="width: 300px"
         >
@@ -539,6 +634,7 @@ const handleCollapsibleToggle = (event: Event) => {
         align="center"
       >
         <VueIcon
+          class="mis1"
           type="success"
           size="16"
           noFill
@@ -546,22 +642,25 @@ const handleCollapsibleToggle = (event: Event) => {
           <CheckCircle2 />
         </VueIcon>
         <VueIcon
+          class="mis1"
           type="info"
-          size="16"
+          size="18"
           noFill
         >
           <Info />
         </VueIcon>
         <VueIcon
+          class="mis1"
           type="warning"
-          size="18"
+          size="24"
           noFill
         >
           <AlertTriangle />
         </VueIcon>
         <VueIcon
+          class="mis1"
           type="error"
-          size="24"
+          size="32"
           noFill
         >
           <XCircle />
@@ -571,19 +670,22 @@ const handleCollapsibleToggle = (event: Event) => {
       <h3 class="subsection-title">Images</h3>
       <VueFlexRow gap="lg">
         <VueImage
-          src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=150&h=150&fit=crop&q=80"
+          src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=400&h=400&fit=crop&q=80"
           alt="Landscape"
-          :width="150"
-          :height="150"
+          :width="400"
+          :height="400"
           aspectRatio="1/1"
           :fade="true"
+          class="mbe4"
         />
+      </VueFlexRow>
+      <VueFlexRow gap="lg">
         <VueImage
-          src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=150&h=150&fit=crop&q=80"
+          src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=450&fit=crop&q=80"
           alt="Nature"
-          :width="150"
-          :height="150"
-          aspectRatio="1/1"
+          :width="800"
+          :height="450"
+          aspectRatio="16/9"
           :fade="true"
           isRounded
         />
@@ -599,13 +701,31 @@ const handleCollapsibleToggle = (event: Event) => {
         gap="md"
         wrap="wrap"
       >
-        <VueTag>Default Tag</VueTag>
-        <VueTag variant="success">Success</VueTag>
-        <VueTag variant="info">Info</VueTag>
-        <VueTag variant="warning">Warning</VueTag>
-        <VueTag variant="error">Error</VueTag>
-        <VueTag shape="round">Rounded</VueTag>
-        <VueTag shape="pill">Pill</VueTag>
+        <VueTag class="mis2">Default Tag</VueTag>
+        <VueTag
+          class="mis2"
+          variant="success"
+        >Success</VueTag>
+        <VueTag
+          class="mis2"
+          variant="info"
+        >Info</VueTag>
+        <VueTag
+          class="mis2"
+          variant="warning"
+        >Warning</VueTag>
+        <VueTag
+          class="mis2"
+          variant="error"
+        >Error</VueTag>
+        <VueTag
+          class="mis2"
+          shape="round"
+        >Rounded</VueTag>
+        <VueTag
+          class="mis2"
+          shape="pill"
+        >Pill</VueTag>
       </VueFlexRow>
     </section>
 
@@ -636,29 +756,39 @@ const handleCollapsibleToggle = (event: Event) => {
 
       <h3 class="subsection-title">Horizontal Layout</h3>
       <VueFlexRow gap="md">
-        <VueCard style="flex: 1">
+        <VueCard
+          class="mis2"
+          style="flex: 1"
+        >
           <p>Item 1</p>
         </VueCard>
-        <VueCard style="flex: 1">
+        <VueCard
+          class="mis2"
+          style="flex: 1"
+        >
           <p>Item 2</p>
         </VueCard>
-        <VueCard style="flex: 1">
+        <VueCard
+          class="mis2"
+          style="flex: 1"
+        >
           <p>Item 3</p>
         </VueCard>
       </VueFlexRow>
 
       <h3 class="subsection-title">Vertical Layout</h3>
+      <p>You can use <code>direction</code> which will change the flex-direction of the flex container regardless of if you're using FlexRow or FlexCol abstraction.</p>
       <VueFlexRow
         direction="column"
         gap="md"
       >
-        <VueCard>
+        <VueCard class="mis2">
           <p>Stacked Item 1</p>
         </VueCard>
-        <VueCard>
+        <VueCard class="mis2">
           <p>Stacked Item 2</p>
         </VueCard>
-        <VueCard>
+        <VueCard class="mis2">
           <p>Stacked Item 3</p>
         </VueCard>
       </VueFlexRow>
@@ -670,8 +800,14 @@ const handleCollapsibleToggle = (event: Event) => {
         gap="md"
         class="flex-demo-box"
       >
-        <VueBadge variant="info">Centered</VueBadge>
-        <VueBadge variant="info">Centered</VueBadge>
+        <VueBadge
+          class="mis2"
+          variant="info"
+        >Centered</VueBadge>
+        <VueBadge
+          class="mis2"
+          variant="info"
+        >Centered</VueBadge>
       </VueFlexRow>
 
       <VueFlexRow
@@ -679,9 +815,18 @@ const handleCollapsibleToggle = (event: Event) => {
         align="center"
         class="flex-demo-box"
       >
-        <VueBadge variant="info">Start</VueBadge>
-        <VueBadge variant="info">Space Between</VueBadge>
-        <VueBadge variant="info">End</VueBadge>
+        <VueBadge
+          class="mis2"
+          variant="info"
+        >Start</VueBadge>
+        <VueBadge
+          class="mis2"
+          variant="info"
+        >Space Between</VueBadge>
+        <VueBadge
+          class="mis2"
+          variant="info"
+        >End</VueBadge>
       </VueFlexRow>
     </section>
 
@@ -702,21 +847,21 @@ const handleCollapsibleToggle = (event: Event) => {
     <!-- Alerts -->
     <section class="component-section">
       <h2>Alerts</h2>
-      <VueAlert class="mbe2">Default alert</VueAlert>
+      <VueAlert class="mis2">Default alert</VueAlert>
       <VueAlert
-        class="mbe2"
+        class="mis2"
         type="success"
       >Success alert</VueAlert>
       <VueAlert
-        class="mbe2"
+        class="mis2"
         type="info"
       >Info alert</VueAlert>
       <VueAlert
-        class="mbe2"
+        class="mis2"
         type="warning"
       >Warning alert</VueAlert>
       <VueAlert
-        class="mbe2"
+        class="mis2"
         type="error"
       >Error alert</VueAlert>
     </section>
@@ -826,31 +971,44 @@ const handleCollapsibleToggle = (event: Event) => {
         gap="md"
         wrap="wrap"
       >
-        <VueIconButton label="Settings">
+        <VueIconButton
+          class="mis2"
+          label="Settings"
+        >
           <Settings
             :size="18"
             class="expand"
           />
         </VueIconButton>
-        <VueIconButton label="Search">
+        <VueIconButton
+          class="mis2"
+          label="Search"
+        >
           <Search
             :size="18"
             class="expand"
           />
         </VueIconButton>
-        <VueIconButton label="Edit">
+        <VueIconButton
+          class="mis2"
+          label="Edit"
+        >
           <Edit
             :size="18"
             class="expand"
           />
         </VueIconButton>
-        <VueIconButton label="Delete">
+        <VueIconButton
+          class="mis2"
+          label="Delete"
+        >
           <Trash2
             :size="18"
             class="expand"
           />
         </VueIconButton>
         <VueIconButton
+          class="mis2"
           label="Primary"
           variant="primary"
         >
@@ -860,6 +1018,7 @@ const handleCollapsibleToggle = (event: Event) => {
           />
         </VueIconButton>
         <VueIconButton
+          class="mis2"
           label="Success"
           variant="success"
         >
@@ -880,10 +1039,20 @@ const handleCollapsibleToggle = (event: Event) => {
         gap="lg"
         wrap="wrap"
       >
-        <VueProgressRing :value="25" />
-        <VueProgressRing :value="50" />
-        <VueProgressRing :value="75" />
         <VueProgressRing
+          class="mis2"
+          :value="25"
+        />
+        <VueProgressRing
+          class="mis2"
+          :value="50"
+        />
+        <VueProgressRing
+          class="mis2"
+          :value="75"
+        />
+        <VueProgressRing
+          class="mis2"
           :value="100"
           variant="success"
         />
@@ -900,28 +1069,34 @@ const handleCollapsibleToggle = (event: Event) => {
         wrap="wrap"
       >
         <VueBadgeFx
+          class="mis2"
           fx="bounce"
           variant="success"
         >Bounce</VueBadgeFx>
         <VueBadgeFx
+          class="mis2"
           fx="pulse"
           variant="info"
         >Pulse</VueBadgeFx>
         <VueBadgeFx
+          class="mis2"
           fx="jelly"
           fx-speed="lg"
           variant="monochrome"
         >Jelly</VueBadgeFx>
         <VueBadgeFx
+          class="mis2"
           fx="shimmer"
           fx-speed="xl"
           variant="danger"
         >Shimmer</VueBadgeFx>
         <VueBadgeFx
+          class="mis2"
           fx="glow"
           variant="primary"
         >Glow</VueBadgeFx>
         <VueBadgeFx
+          class="mis2"
           fx="ripple"
           variant="info"
         >Ripple</VueBadgeFx>
@@ -938,6 +1113,7 @@ const handleCollapsibleToggle = (event: Event) => {
         wrap="wrap"
       >
         <VueIconButtonFx
+          class="mis2"
           fx="pulse"
           variant="primary"
           label="Pulse"
@@ -948,6 +1124,7 @@ const handleCollapsibleToggle = (event: Event) => {
           />
         </VueIconButtonFx>
         <VueIconButtonFx
+          class="mis2"
           fx="bounce"
           variant="success"
           label="Bounce"
@@ -958,6 +1135,7 @@ const handleCollapsibleToggle = (event: Event) => {
           />
         </VueIconButtonFx>
         <VueIconButtonFx
+          class="mis2"
           fx="shake"
           variant="warning"
           label="Shake"
@@ -968,9 +1146,10 @@ const handleCollapsibleToggle = (event: Event) => {
           />
         </VueIconButtonFx>
         <VueIconButtonFx
-          fx="spin"
+          class="mis2"
+          fx="pulse-wobble"
           variant="ghost"
-          label="Spin"
+          label="Pulse Wobble"
         >
           <Settings
             :size="18"
@@ -1126,29 +1305,35 @@ const handleCollapsibleToggle = (event: Event) => {
         wrap="wrap"
       >
         <VueButtonFx
+          class="mis2"
           fx="bounce"
           variant="primary"
         >Bounce</VueButtonFx>
         <VueButtonFx
+          class="mis2"
           fx="pulse"
           variant="success"
         >Pulse</VueButtonFx>
         <VueButtonFx
+          class="mis2"
           fx="jelly"
           variant="secondary"
         >Jelly</VueButtonFx>
         <VueButtonFx
+          class="mis2"
           fx="grow"
           variant="warning"
         >Grow</VueButtonFx>
         <VueButtonFx
+          class="mis2"
           fx="shrink"
           variant="danger"
         >Shrink</VueButtonFx>
         <VueButtonFx
-          fx="ripple"
+          class="mis2"
+          fx="pulse-wobble"
           variant="monochrome"
-        >Ripple</VueButtonFx>
+        >Pulse Wobble</VueButtonFx>
       </VueFlexRow>
     </section>
 
@@ -1244,22 +1429,22 @@ const handleCollapsibleToggle = (event: Event) => {
         <VueSkeletonLoader
           variant="rectangular"
           width="200px"
-          class="mbe2"
+          class="mis2"
         />
         <VueSkeletonLoader
           variant="rectangular"
           width="200px"
-          class="mbe2"
+          class="mis2"
         />
         <VueSkeletonLoader
           variant="rectangular"
           width="200px"
-          class="mbe2"
+          class="mis2"
         />
       </VueFlexRow>
 
       <h3 class="subsection-title">Shape Variants</h3>
-      <div class="mbe2">
+      <div class="mis2">
         <VueSkeletonLoader
           variant="circular"
           width="64px"
@@ -1363,16 +1548,19 @@ const handleCollapsibleToggle = (event: Event) => {
         wrap="wrap"
       >
         <VueLink
+          class="mis2"
           href="#button"
           as-button
           variant="primary"
         >Primary Button Link</VueLink>
         <VueLink
+          class="mis2"
           href="#button-success"
           as-button
           variant="success"
         >Success Button Link</VueLink>
         <VueLink
+          class="mis2"
           href="#button-danger"
           as-button
           variant="danger"
@@ -1390,7 +1578,7 @@ const handleCollapsibleToggle = (event: Event) => {
       <h3 class="subsection-title">Default (Chevron)</h3>
       <VueCollapsible
         use-chevron
-        class="mbe2"
+        class="mis2"
         @toggle="handleCollapsibleToggle"
       >
         <template #summary>
@@ -1403,7 +1591,7 @@ const handleCollapsibleToggle = (event: Event) => {
       <VueCollapsible
         use-minus
         bordered
-        class="mbe2"
+        class="mis2"
       >
         <template #summary>
           <span>Plus/Minus Indicator</span>
@@ -1437,15 +1625,15 @@ const handleCollapsibleToggle = (event: Event) => {
         align="center"
       >
         <div>
-          <p class="mbe2">Small:</p>
+          <p class="mis2">Small:</p>
           <VueLoader size="small" />
         </div>
         <div>
-          <p class="mbe2">Default:</p>
+          <p class="mis2">Default:</p>
           <VueLoader />
         </div>
         <div>
-          <p class="mbe2">Large:</p>
+          <p class="mis2">Large:</p>
           <VueLoader size="large" />
         </div>
       </VueFlexRow>
@@ -1564,13 +1752,14 @@ const handleCollapsibleToggle = (event: Event) => {
           style="flex: 1; max-width: 300px;"
         />
         <VueCopyButton
+          class="mis2"
           :text="copyInputValue"
           label="Copy"
         />
       </VueFlexRow>
     </section>
 
-    <VueDivider />
+    <VueDivider class="mbe4" />
 
     <!-- Menu -->
     <section class="component-section">
@@ -1581,7 +1770,10 @@ const handleCollapsibleToggle = (event: Event) => {
         gap="md"
         wrap="wrap"
       >
-        <VueMenu menu-aria-label="Menu options">
+        <VueMenu
+          class="mis2"
+          menu-aria-label="Menu options"
+        >
           Basic Menu
           <template #menu>
             <VueMenuItem value="edit">Edit</VueMenuItem>
@@ -1593,6 +1785,7 @@ const handleCollapsibleToggle = (event: Event) => {
         </VueMenu>
 
         <VueMenu
+          class="mis2"
           menu-aria-label="User menu"
           button-variant="primary"
         >
@@ -1609,6 +1802,7 @@ const handleCollapsibleToggle = (event: Event) => {
         </VueMenu>
 
         <VueMenu
+          class="mis2"
           menu-variant="icon"
           ghost
           menu-aria-label="More options"
@@ -1660,6 +1854,7 @@ const handleCollapsibleToggle = (event: Event) => {
 
       <h3 class="subsection-title">Vertical Timeline</h3>
       <VueTimeline
+        style="--ag-timeline-spacing: var(--ag-space-10)"
         orientation="vertical"
         variant="primary"
       >
@@ -1711,7 +1906,7 @@ const handleCollapsibleToggle = (event: Event) => {
       </VueFlexRow>
 
       <VueDialog
-        v-model="isDialogOpen"
+        v-model:open="isDialogOpen"
         heading="Dialog Example"
         description="This is a basic dialog component."
         show-close-button
@@ -1762,16 +1957,13 @@ const handleCollapsibleToggle = (event: Event) => {
         gap="md"
         wrap="wrap"
       >
-        <VueButton @click="showToast = true">Show Toast</VueButton>
-        <VueButton
-          variant="success"
-          @click="showToast = true"
-        >Success Toast</VueButton>
+        <VueButton @click="showToast = true">Show Toast (at bottom start)</VueButton>
       </VueFlexRow>
 
       <VueToast
-        v-model="showToast"
+        v-model:open="showToast"
         type="info"
+        position="bottom-start"
         @toast-close="showToast = false"
       >
         <div style="display: flex; align-items: center; gap: 0.5rem;">
@@ -1882,6 +2074,7 @@ const handleCollapsibleToggle = (event: Event) => {
         </VueTooltip>
 
         <VueTooltip
+          class="mis2"
           content="Edit this item"
           placement="top"
         >
@@ -1891,6 +2084,7 @@ const handleCollapsibleToggle = (event: Event) => {
         </VueTooltip>
 
         <VueTooltip
+          class="mis2"
           content="Delete this item"
           placement="right"
         >
@@ -1973,24 +2167,24 @@ const handleCollapsibleToggle = (event: Event) => {
       <p class="mbe3">Loading spinners in various sizes.</p>
 
       <VueFlexRow
-        gap="lg"
+        style="--flex-gap: var(--ag-space-8);"
         wrap="wrap"
         align="center"
       >
         <div>
-          <p class="mbe2">Small:</p>
+          <p>Small:</p>
           <VueSpinner size="small" />
         </div>
         <div>
-          <p class="mbe2">Default:</p>
+          <p>Default:</p>
           <VueSpinner />
         </div>
         <div>
-          <p class="mbe2">Large:</p>
+          <p>Large:</p>
           <VueSpinner size="large" />
         </div>
         <div>
-          <p class="mbe2">XL:</p>
+          <p>XL:</p>
           <VueSpinner size="xlarge" />
         </div>
       </VueFlexRow>
@@ -2011,7 +2205,10 @@ const handleCollapsibleToggle = (event: Event) => {
         <VueVisuallyHidden>Open Settings</VueVisuallyHidden>
       </VueButton>
 
-      <p class="mbs3" style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+      <p
+        class="mbs3"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
         The button above has an icon and hidden text "Open Settings" for screen readers.
       </p>
     </section>
@@ -2057,7 +2254,7 @@ const handleCollapsibleToggle = (event: Event) => {
 .mbe1 {
   margin-block-end: var(--ag-space-1);
 }
-.mbe2 {
+.mis2 {
   margin-block-end: var(--ag-space-2);
 }
 .mbe3 {
