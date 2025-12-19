@@ -2,18 +2,18 @@ import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 import '../../shared/CloseButton/CloseButton';
 
-export type AlertType = 'warning' | 'info' | 'success' | 'error' | 'danger' | 'primary' | 'default' | 'monochrome';
+export type AlertVariant = 'warning' | 'info' | 'success' | 'error' | 'danger' | 'primary' | 'default' | 'monochrome';
 
 // Event detail interfaces
 export interface AlertDismissEventDetail {
-  type: AlertType;
+  variant: AlertVariant;
 }
 
 // Event type definitions
 export type AlertDismissEvent = CustomEvent<AlertDismissEventDetail>;
 
 export interface AlertProps {
-  type?: AlertType;
+  variant?: AlertVariant;
   bordered?: boolean;
   rounded?: boolean;
   borderedLeft?: boolean;
@@ -24,7 +24,7 @@ export interface AlertProps {
 
 export class AgAlert extends LitElement implements AlertProps {
   @property({ type: String })
-  declare type: AlertType;
+  declare variant: AlertVariant;
 
   @property({ type: Boolean })
   declare bordered: boolean;
@@ -43,7 +43,7 @@ export class AgAlert extends LitElement implements AlertProps {
 
   constructor() {
     super();
-    this.type = 'default';
+    this.variant = 'default';
     this.bordered = false;
     this.rounded = false;
     this.borderedLeft = false;
@@ -130,7 +130,7 @@ export class AgAlert extends LitElement implements AlertProps {
     // Dual-dispatch pattern for custom event
     const dismissEvent = new CustomEvent<AlertDismissEventDetail>('alert-dismiss', {
       detail: {
-        type: this.type
+        variant: this.variant
       },
       bubbles: true,
       composed: true
@@ -151,7 +151,7 @@ export class AgAlert extends LitElement implements AlertProps {
       this.rounded ? 'alert-rounded' : '',
       this.bordered ? 'alert-bordered' : '',
       this.borderedLeft ? 'alert-border-left' : '',
-      `alert-${this.type}`
+      `alert-${this.variant}`
     ].filter(Boolean).join(' ');
 
     return html`
