@@ -281,7 +281,7 @@ Timeline supports extensive customization through CSS custom properties:
 | ----------------- | ---------------------- | ------------------------------------- |
 | `--ag-timeline-connector-color` | `var(--ag-border)` | Color of the connecting lines |
 | `--ag-timeline-connector-width` | `2px` | Width of the connecting lines |
-| `--ag-timeline-spacing` | `var(--ag-space-4)` | Spacing between timeline items |
+| `--ag-timeline-vertical-spacing` | `var(--ag-space-4)` | Spacing between timeline items in vertical orientation |
 | `--ag-timeline-start-align` | `flex-start` | Vertical alignment for ag-start content |
 | `--ag-timeline-end-align` | `flex-start` | Vertical alignment for ag-end content |
 
@@ -292,7 +292,7 @@ Timeline supports extensive customization through CSS custom properties:
 ag-timeline {
   --ag-timeline-connector-color: #667eea;
   --ag-timeline-connector-width: 3px;
-  --ag-timeline-spacing: var(--ag-space-6);
+  --ag-timeline-vertical-spacing: var(--ag-space-10);
 }
 
 /* Center-align content against markers */

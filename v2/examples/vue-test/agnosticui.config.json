@@ -406,7 +406,7 @@
       ]
     },
     "Timeline": {
-      "added": "2025-12-19T20:48:20.138Z",
+      "added": "2025-12-19T22:29:43.812Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
@@ -510,6 +510,6 @@
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.1.0.tgz",
     "version": "unknown",
-    "installed": "2025-12-19T20:44:48.917Z"
+    "installed": "2025-12-19T22:29:30.436Z"
   }
 }
