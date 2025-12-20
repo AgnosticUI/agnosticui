@@ -18,6 +18,15 @@ import VisuallyHiddenExamples from '../examples/VisuallyHiddenExamples.vue'
 
 ## Usage
 
+::: tip
+The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+```bash
+npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
+npx ag add VisuallyHidden
+```
+The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
+:::
+
 Use the component to wrap any content you want to be available to screen readers but not visible on the screen.
 
 ::: details Vue

@@ -17,6 +17,15 @@ import MarkExamples from '../examples/MarkExamples.vue'
 
 ## Usage
 
+::: tip
+The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+```bash
+npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
+npx ag add Mark
+```
+The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
+:::
+
 ### Static Highlighting
 
 To highlight a static piece of text, simply wrap the text with the `Mark` component.
