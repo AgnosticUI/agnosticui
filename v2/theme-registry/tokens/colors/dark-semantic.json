@@ -1,0 +1,169 @@
+{
+  "text-primary": {
+    "value": "{neutral.50.value}",
+    "description": "Primary text for high emphasis"
+  },
+  "text-secondary": {
+    "value": "{neutral.100.value}",
+    "description": "Secondary text for less emphasis"
+  },
+  "text-muted": {
+    "value": "{neutral.100.value}",
+    "description": "Deprecated: Use text-secondary instead. Muted text for low emphasis"
+  },
+  "text-primary-muted": {
+    "value": "{neutral.100.value}",
+    "description": "Primary text slightly muted - between primary and secondary emphasis"
+  },
+  "text-primary-inverted": {
+    "value": "{black.value}",
+    "description": "Inverted primary text for high emphasis on light backgrounds"
+  },
+  "background-primary": {
+    "value": "{black.value}",
+    "description": "Background for primary"
+  },
+  "background-primary-inverted": {
+    "value": "{white.value}",
+    "description": "Inverted background for primary"
+  },
+  "background-secondary": {
+    "value": "{neutral.700.value}",
+    "description": "Background for secondary (accordion backgrounds)"
+  },
+  "background-secondary-inverted": {
+    "value": "{neutral.100.value}",
+    "description": "Inverted background for secondary"
+  },
+  "background-tertiary": {
+    "value": "{neutral.600.value}",
+    "description": "Background for tertiary (neutral buttons)"
+  },
+  "background-disabled": {
+    "value": "{neutral.500.value}",
+    "description": "Background for secondary (accordion backgrounds)"
+  },
+  "primary-background": { "value": "{blue.900.value}" },
+  "primary-text": { "value": "{blue.100.value}" },
+  "success-background": { "value": "{green.900.value}" },
+  "success-text": { "value": "{green.100.value}" },
+  "info-background": { "value": "{neutral.800.value}" },
+  "info-text": { "value": "{neutral.100.value}" },
+  "warning-background": { "value": "{yellow.900.value}" },
+  "warning-text": { "value": "{yellow.100.value}" },
+  "danger-background": { "value": "{red.900.value}" },
+  "danger-text": { "value": "{red.100.value}" },
+  "border": {
+    "value": "{neutral.600.value}",
+    "description": "Primary border for structural dividers and prominent elements"
+  },
+  "border-subtle": {
+    "value": "{neutral.500.value}",
+    "description": "Subtle border for interactive controls, form inputs, and secondary UI elements"
+  },
+  "primary": {
+    "value": "{blue.600.value}",
+    "description": "Primary brand color brightened for dark backgrounds"
+  },
+  "primary-rgb": {
+    "value": "17, 88, 199",
+    "description": "Primary brand color brightened (RGB format for alpha channel support)"
+  },
+  "primary-border": {
+    "value": "{blue.500.value}",
+    "description": "Border color for primary elements on dark backgrounds"
+  },
+  "primary-dark": {
+    "value": "{blue.700.value}",
+    "description": "Darker primary for hover states on dark backgrounds"
+  },
+  "secondary": {
+    "value": "{neutral.400.value}",
+    "description": "Secondary gray brightened for dark backgrounds"
+  },
+  "secondary-dark": {
+    "value": "{neutral.500.value}",
+    "description": "Darker secondary for hover states on dark backgrounds"
+  },
+
+  "danger": {
+    "value": "#DC2626",
+    "description": "Error and danger state color (hex format)"
+  },
+  "danger-rgb": {
+    "value": "220, 38, 38",
+    "description": "Error and danger state color (RGB format for alpha channel support)"
+  },
+  "danger-dark": {
+    "value": "{red.400.value}",
+    "description": "Darker danger for hover states"
+  },
+  "error-text": {
+    "value": "{red.200.value}",
+    "description": "Error text that's setup for contrast in light and dark modes."
+  },
+  "warning-rgb": {
+    "value": "212, 167, 44",
+    "description": "Warning state color (RGB format for alpha channel support)"
+  },
+  "warning": {
+    "value": "{yellow.300.value}",
+    "description": "Warning state color (hex format)"
+  },
+  "warning-dark": {
+    "value": "{yellow.500.value}",
+    "description": "Darker shade of warning for hover states"
+  },
+  "success": {
+    "value": "{green.500.value}",
+    "description": "Success state color"
+  },
+  "success-rgb": {
+    "value": "26, 127, 55",
+    "description": "Success state color (RGB format for alpha channel support)"
+  },
+  "success-dark": {
+    "value": "{green.600.value}",
+    "description": "Darker shade of success for hover states"
+  },
+  "info": {
+    "value": "{neutral.400.value}",
+    "description": "Info state color for informational messages"
+  },
+  "info-dark": {
+    "value": "{neutral.500.value}",
+    "description": "Darker shade of info for hover states"
+  },
+  "focus": {
+    "value": "88, 166, 255",
+    "description": "Blue focus ring brightened for accessibility on dark backgrounds (RGB format for alpha channel support)"
+  },
+  "focus-dark": {
+    "value": "{blue.400.value}",
+    "description": "Slightly darker focus ring for dark mode"
+  },
+  "rating-filled": {
+    "value": "{yellow.300.value}",
+    "description": "Filled star color in dark mode"
+  },
+  "rating-filled-primary": {
+    "value": "{blue.400.value}",
+    "description": "Primary variant filled star"
+  },
+  "rating-filled-success": {
+    "value": "{green.300.value}",
+    "description": "Success variant filled star"
+  },
+  "rating-filled-warning": {
+    "value": "{yellow.300.value}",
+    "description": "Warning variant filled star"
+  },
+  "rating-filled-danger": {
+    "value": "{red.400.value}",
+    "description": "Danger variant filled star"
+  },
+  "rating-filled-secondary": {
+    "value": "{neutral.50.value}",
+    "description": "Secondary variant filled star for dark mode"
+  }
+}

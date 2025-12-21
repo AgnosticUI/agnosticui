@@ -1,0 +1,178 @@
+{
+  "name": "style-dictionary",
+  "version": "4.4.0",
+  "description": "Style once, use everywhere. A build system for creating cross-platform styles.",
+  "keywords": [
+    "style dictionary",
+    "style",
+    "dictionary",
+    "amazon",
+    "css",
+    "design",
+    "tokens",
+    "sass",
+    "scss",
+    "iOS",
+    "Android",
+    "react",
+    "react native",
+    "style guide"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/StyleDictionary.js",
+    "./fs": {
+      "node": "./lib/fs-node.js",
+      "default": "./lib/fs.js"
+    },
+    "./utils": "./lib/utils/index.js",
+    "./enums": "./lib/enums/index.js",
+    "./types": "./types/index.d.ts"
+  },
+  "bin": {
+    "style-dictionary": "./bin/style-dictionary.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "types/**/*.d.ts",
+    "examples",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "build": "node scripts/inject-version.js && tsc --emitDeclarationOnly",
+    "docs:start": "astro dev --root ./docs",
+    "docs:build": "astro check  --root ./docs && astro build --root ./docs",
+    "docs:preview": "astro preview --root ./docs",
+    "format": "run-p format:*",
+    "format:eslint": "eslint --fix \"**/*.js\"",
+    "format:prettier": "prettier \"**/*.{js,md,mdx}\" \"package.json\" --write",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint \"**/*.js\"",
+    "lint:prettier": "prettier \"**/*.{js,md,mdx}\" \"package.json\" --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+    "lint:types": "tsc --noEmit",
+    "test": "web-test-runner --coverage",
+    "test:watch": "web-test-runner --watch",
+    "test:coverage": "cd coverage/lcov-report && npx http-server -o -c-1",
+    "test:update-snapshots": "web-test-runner --update-snapshots",
+    "test:node": "mocha -r mocha-hooks.mjs './__integration__/**/*.test.js' './__tests__/**/*.test.js' './__node_tests__/**/*.test.js'",
+    "test:perf": "mocha -r mocha-hooks.mjs './__perf_tests__/**/*.test.js'",
+    "test:perf:debug": "web-test-runner --config wtr-perf.config.mjs --watch",
+    "test:strip-types": "node --experimental-strip-types __tests__/strip-types-test.js",
+    "install-cli": "npm install -g $(npm pack)",
+    "release": "npm run build && changeset publish",
+    "prepare": "husky install",
+    "postinstall": "patch-package",
+    "version": "changeset version && npm install"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "prettier --list-different"
+    ],
+    "*.{md,mdx}": "prettier --list-different"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "always",
+    "trailingComma": "all",
+    "printWidth": 100,
+    "useTabs": false,
+    "overrides": [
+      {
+        "files": "examples/advanced/tailwind-preset/**/*",
+        "options": {
+          "useTabs": true
+        }
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/amzn/style-dictionary.git"
+  },
+  "author": "Amazon",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/amzn/style-dictionary/issues"
+  },
+  "contributors": [
+    "Yuliya Baran <baranyu@amazon.com>",
+    "Charles Dorner <dornerc@amazon.com>",
+    "Dustin Boudreau <boudrd@amazon.com>",
+    "Danny Banks <djb@amazon.com>",
+    "Joren Broekema <joren.broekema@gmail.com>"
+  ],
+  "homepage": "https://github.com/amzn/style-dictionary",
+  "dependencies": {
+    "@bundled-es-modules/deepmerge": "^4.3.1",
+    "@bundled-es-modules/glob": "^10.4.2",
+    "@bundled-es-modules/memfs": "^4.9.4",
+    "@zip.js/zip.js": "^2.7.44",
+    "chalk": "^5.3.0",
+    "change-case": "^5.3.0",
+    "commander": "^12.1.0",
+    "is-plain-obj": "^4.1.0",
+    "json5": "^2.2.2",
+    "patch-package": "^8.0.0",
+    "path-unified": "^0.2.0",
+    "prettier": "^3.3.3",
+    "tinycolor2": "^1.6.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/starlight": "^0.31.1",
+    "@changesets/cli": "^2.27.1",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@esm-bundle/chai-as-promised": "^7.1.1",
+    "@rollup/browser": "^4.13.1",
+    "@rollup/plugin-virtual": "^3.0.2",
+    "@shoelace-style/shoelace": "^2.15.0",
+    "@types/chai": "^4.3.9",
+    "@types/tinycolor2": "^1.4.6",
+    "@types/uuid": "^9.0.8",
+    "@typescript-eslint/parser": "^8.22.0",
+    "@web/test-runner": "^0.18.2",
+    "@web/test-runner-commands": "^0.9.0",
+    "@web/test-runner-playwright": "^0.11.0",
+    "acorn": "^8.11.3",
+    "astro": "^5.2.3",
+    "chai": "^5.0.0-alpha.2",
+    "eslint": "^9.19.0",
+    "eslint-plugin-mocha": "^10.5.0",
+    "eslint-plugin-react": "^7.37.4",
+    "estree-walker": "^3.0.3",
+    "fs-extra": "^10.0.0",
+    "hanbi": "^1.0.1",
+    "husky": "^8.0.3",
+    "jsdoc-escape-at": "^1.0.1",
+    "jsdoc-to-markdown": "^8.0.0",
+    "jsdoc-tsimport-plugin": "^1.0.5",
+    "less": "^4.1.2",
+    "lint-staged": "^12.3.1",
+    "lit": "^3.1.2",
+    "mdast": "^3.0.0",
+    "mermaid": "^10.9.1",
+    "mocha": "^10.2.0",
+    "monaco-editor": "^0.47.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.69.5",
+    "sharp": "^0.32.5",
+    "starlight-links-validator": "^0.14.2 ",
+    "stylus": "^0.56.0",
+    "typescript": "^5.7.2",
+    "unist-util-visit": "^5.0.0",
+    "uuid": "^9.0.1",
+    "yaml": "^2.3.4"
+  }
+}

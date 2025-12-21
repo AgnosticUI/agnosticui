@@ -1,0 +1,31 @@
+{
+  color: {
+    font: {
+      primary: { value: '{color.core.black}', type: 'color' },
+      secondary: {
+        value: '{color.font.primary}',
+        modify: [
+          {
+            type: 'lighten',
+            amount: 0.2,
+          },
+        ],
+        type: 'color',
+      },
+      tertiary: {
+        // transitive transforms allow you to modify a modified reference
+        // You can use references with or without `.value`
+        value: '{color.font.secondary}',
+        modify: [
+          {
+            // this will lighten the secondary value, which is a lightened version
+            // of primary
+            type: 'lighten',
+            amount: 0.2,
+          },
+        ],
+        type: 'color',
+      },
+    },
+  },
+}

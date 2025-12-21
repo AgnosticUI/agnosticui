@@ -1,0 +1,45 @@
+export const resolve: typeof winResolve;
+export const normalize: typeof winNormalize;
+export const isAbsolute: typeof winIsAbsolute;
+export const join: typeof winJoin;
+export const relative: typeof winRelative;
+export const toNamespacedPath: typeof winToNamespacedPath;
+export const dirname: typeof winDirname;
+export const basename: typeof winBasename;
+export const extname: typeof winExtname;
+export const format: (pathObject: {
+    dir?: string | undefined;
+    root?: string | undefined;
+    base?: string | undefined;
+    name?: string | undefined;
+    ext?: string | undefined;
+}) => string;
+export const parse: typeof winParse;
+export const sep: "\\";
+export const delimiter: ";";
+declare namespace _default {
+    export { resolve };
+    export { normalize };
+    export { isAbsolute };
+    export { join };
+    export { relative };
+    export { toNamespacedPath };
+    export { dirname };
+    export { basename };
+    export { extname };
+    export { format };
+    export { parse };
+    export { sep };
+    export { delimiter };
+}
+export default _default;
+import { winResolve } from './path.js';
+import { winNormalize } from './path.js';
+import { winIsAbsolute } from './path.js';
+import { winJoin } from './path.js';
+import { winRelative } from './path.js';
+import { winToNamespacedPath } from './path.js';
+import { winDirname } from './path.js';
+import { winBasename } from './path.js';
+import { winExtname } from './path.js';
+import { winParse } from './path.js';

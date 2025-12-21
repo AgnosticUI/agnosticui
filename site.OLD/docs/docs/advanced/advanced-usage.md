@@ -1,6 +1,6 @@
 # Advanced Usage
 
-This page will document some of the more advanced uses of AgnosticUI…
+This page documents some of the more advanced uses of AgnosticUI…
 
 ## Modular CSS Imports
 
@@ -58,7 +58,3 @@ If you are already using a standard `reset.css` ([Eric Meyer's reset.css](https:
 <div class="mbe24"></div>
 
 The CSS utilities are definitely <u>not</u> a requirement unless you want to use them (e.g. `mbe16`, `flex items-center justify-center`, `text-uppercase`, and so on). So, it's a performance win to use the modular approach described above if you don't plan to leverage those in the first place.
-
-## Experiments
-
-I've placed some additional `agnostic-svelte` experiments [here on my blog](https://developtodesign.com/agnosticui-examples). The blog itself is SvelteKit-based and so these may be helpful for those using the Svelte package.

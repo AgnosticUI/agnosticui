@@ -1,0 +1,34 @@
+{
+  "asset": {
+    "icon": {
+      "alert-circle": { "value": "assets/icons/alert-circle.svg", "type": "asset" },
+      "alert-octagon": { "value": "assets/icons/alert-octagon.svg", "type": "asset" },
+      "alert-triangle": { "value": "assets/icons/alert-triangle.svg", "type": "asset" },
+      "archive": { "value": "assets/icons/archive.svg", "type": "asset" },
+      "book-open": { "value": "assets/icons/book-open.svg", "type": "asset" },
+      "book": { "value": "assets/icons/book.svg", "type": "asset" },
+      "bookmark": { "value": "assets/icons/bookmark.svg", "type": "asset" },
+      "briefcase": { "value": "assets/icons/briefcase.svg", "type": "asset" },
+      "calendar": { "value": "assets/icons/calendar.svg", "type": "asset" },
+      "camera": { "value": "assets/icons/camera.svg", "type": "asset" },
+      "check-circle": { "value": "assets/icons/check-circle.svg", "type": "asset" },
+      "check-square": { "value": "assets/icons/check-square.svg", "type": "asset" },
+      "database": { "value": "assets/icons/database.svg", "type": "asset" },
+      "delete": { "value": "assets/icons/delete.svg", "type": "asset" },
+      "dollar-sign": { "value": "assets/icons/dollar-sign.svg", "type": "asset" },
+      "download-cloud": { "value": "assets/icons/download-cloud.svg", "type": "asset" },
+      "edit-1": { "value": "assets/icons/edit-1.svg", "type": "asset" },
+      "edit-2": { "value": "assets/icons/edit-2.svg", "type": "asset" },
+      "edit-3": { "value": "assets/icons/edit-3.svg", "type": "asset" },
+      "external-link": { "value": "assets/icons/external-link.svg", "type": "asset" },
+      "file-text": { "value": "assets/icons/file-text.svg", "type": "asset" },
+      "file": { "value": "assets/icons/file.svg", "type": "asset" },
+      "film": { "value": "assets/icons/film.svg", "type": "asset" },
+      "folder": { "value": "assets/icons/folder.svg", "type": "asset" },
+      "gift": { "value": "assets/icons/gift.svg", "type": "asset" },
+      "github": { "value": "assets/icons/github.svg", "type": "asset" },
+      "globe": { "value": "assets/icons/globe.svg", "type": "asset" },
+      "grid": { "value": "assets/icons/grid.svg", "type": "asset" }
+    }
+  }
+}

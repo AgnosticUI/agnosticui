@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon"
+        type="image/svg+xml"
+        href="/vite.svg" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>lit-test</title>
+  <link rel="stylesheet"
+        href="./src/index.css" />
+  <script type="module"
+          src="/src/my-element.ts"></script>
+
+  <!-- AgnosticUI Tokens -->
+  <link rel="stylesheet"
+        href="/src/components/ag/styles/ag-tokens.css">
+  <link rel="stylesheet"
+        href="/src/components/ag/styles/ag-tokens-dark.css">
+  <style>
+    body {
+      background: var(--ag-background-primary, #fff);
+      color: var(--ag-text-primary, #111827);
+      transition: background 0.2s ease, color 0.2s ease;
+      padding: 20px;
+    }
+
+    .theme-toggle-wrapper {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 10px;
+      background: var(--ag-background-secondary, #f0f0f0);
+      border: 1px solid var(--ag-border, #ccc);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <button id="theme-toggle">Light/Dark</button>
+  <my-element>
+  </my-element>
+
+  <script>
+    (function () {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const themeLabel = document.getElementById('current-theme');
+      const html = document.documentElement;
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const isDark = html.getAttribute('data-theme') === 'dark';
+          if (isDark) {
+            html.removeAttribute('data-theme');
+            if (themeLabel) themeLabel.textContent = 'Light Mode';
+          } else {
+            html.setAttribute('data-theme', 'dark');
+            if (themeLabel) themeLabel.textContent = 'Dark Mode';
+          }
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>

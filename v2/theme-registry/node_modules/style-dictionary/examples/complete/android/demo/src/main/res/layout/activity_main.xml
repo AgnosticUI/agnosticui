@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/size_padding_medium"
+    android:paddingRight="@dimen/size_padding_medium"
+    android:paddingTop="@dimen/size_padding_medium"
+    android:paddingBottom="@dimen/size_padding_medium"
+    tools:context="com.amazon.styledictionaryexample.MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_main_colors_button"
+            android:layout_marginBottom="@dimen/size_padding_base"
+            android:onClick="colorsButton"
+            android:text="@string/title_all_colors" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_main_icons_button"
+            android:onClick="iconsButton"
+            android:layout_marginBottom="@dimen/size_padding_base"
+            android:text="@string/title_icon_list" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_main_sizes_button"
+            android:layout_marginBottom="@dimen/size_padding_base"
+            android:text="@string/title_all_sizes"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_main_properties_button"
+            android:onClick="propertiesButton"
+            android:layout_marginBottom="@dimen/size_padding_base"
+            android:text="@string/title_all_properties" />
+
+    </LinearLayout>
+</RelativeLayout>

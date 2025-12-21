@@ -1,0 +1,21 @@
+{
+  "color": {
+    "base": {
+      "black": { "value": "#000000", "type": "color" },
+      "gray": {
+        "light": { "value": "#CCCCCC", "type": "color" },
+        "medium": { "value": "#999999", "type": "color" },
+        "dark": { "value": "#111111", "type": "color" }
+      },
+      "red": { "value": "#FF0000", "type": "color" },
+      "green": { "value": "#00FF00", "type": "color" }
+    },
+    "primary": { "value": "{color.brand.primary}", "type": "color" },
+    "secondary": { "value": "{color.brand.secondary}", "type": "color" },
+    "action": {
+      "primary": { "value": "{color.primary}", "type": "color" },
+      "secondary": { "value": "{color.secondary}", "type": "color" },
+      "tertiary": { "value": "{color.base.gray.medium}", "type": "color" }
+    }
+  }
+}

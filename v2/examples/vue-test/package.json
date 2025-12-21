@@ -1,0 +1,31 @@
+{
+  "name": "vue-test",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
+    "focus-trap": "^7.6.6",
+    "lit": "^3.3.1",
+    "lucide-vue-next": "^0.559.0",
+    "vue": "^3.5.24"
+  },
+  "devDependencies": {
+    "@agnosticui/cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.1.tgz",
+    "@types/node": "^24.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
+    "@typescript-eslint/parser": "^8.49.0",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.8.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-vue": "^10.6.2",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "vue-tsc": "^3.1.4"
+  }
+}

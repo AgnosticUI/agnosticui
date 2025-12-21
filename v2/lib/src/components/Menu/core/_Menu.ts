@@ -1,0 +1,983 @@
+import { LitElement, html, css, nothing } from 'lit';
+import { property, state, query } from 'lit/decorators.js';
+import { AgButton } from '../../Button/core/Button.js';
+import type { ButtonProps } from '../../Button/core/Button.js';
+
+// Event type definitions
+export interface MenuOpenEventDetail {
+  open: boolean;
+}
+export type MenuOpenEvent = CustomEvent<MenuOpenEventDetail>;
+
+export interface MenuCloseEventDetail {
+  open: boolean;
+}
+export type MenuCloseEvent = CustomEvent<MenuCloseEventDetail>;
+
+export interface MenuSelectEventDetail {
+  value: string;
+}
+export type MenuSelectEvent = CustomEvent<MenuSelectEventDetail>;
+
+// Extend ButtonProps and add menu-specific props.
+// We rename `variant` from ButtonProps to `buttonVariant` to avoid conflict
+// with the structural `variant` prop of the MenuButton.
+export interface MenuButtonProps extends Omit<ButtonProps, 'variant'> {
+  menuVariant?: 'chevron' | 'button' | 'icon';
+  // We bring back `variant` from ButtonProps but rename it to `buttonVariant`
+  // to clearly distinguish it as the color/style variant for the button part.
+  buttonVariant?: ButtonProps['variant'];
+  // Unicode character for icon variant
+  unicode?: string;
+  menuAlign?: 'left' | 'right';
+  // Additional vertical spacing beyond the trigger button's height when positioning the menu
+  additionalGutter?: string;
+  // Menu-specific event handlers
+  onMenuOpen?: (event: MenuOpenEvent) => void;
+  onMenuClose?: (event: MenuCloseEvent) => void;
+  // We omit some ButtonProps that are controlled by the menu logic
+  // e.g. `type`, `toggle`, `pressed`, `onClick` etc. are handled internally.
+}
+
+
+export interface MenuItemProps {
+  value?: string;
+  disabled?: boolean;
+  href?: string;
+  target?: string;
+  checked?: boolean;
+  variant?: 'default' | 'monochrome';
+  onClick?: (event: MouseEvent) => void;
+  onMenuSelect?: (event: MenuSelectEvent) => void;
+}
+
+export interface MenuProps {
+  open?: boolean;
+  placement?: string;
+  ariaLabel?: string;
+  selectedValue?: string;
+  type?: 'default' | 'single-select';
+  checkHiddenItems?: boolean;
+  onKeyDown?: (event: KeyboardEvent) => void;
+}
+
+export class AgMenuButton extends LitElement implements MenuButtonProps {
+  @query('ag-button')
+  declare _trigger: AgButton;
+
+  declare _menu: AgMenu | null;
+  declare _clickOutsideHandler: (event: Event) => void;
+
+  // PROPS FROM ButtonProps
+  @property({ type: String, reflect: true })
+  declare size: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
+
+  @property({ type: String, reflect: true })
+  declare shape: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
+
+  @property({ type: Boolean, reflect: true })
+  declare bordered: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare ghost: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare link: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare grouped: boolean;
+
+  @property({ type: Boolean })
+  declare disabled: boolean;
+
+  @property({ type: Boolean })
+  declare loading: boolean;
+
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
+  declare ariaLabel: string;
+
+  // MENU-SPECIFIC PROPS
+  @property({ type: String, reflect: true, attribute: 'menu-variant' })
+  declare menuVariant: 'chevron' | 'button' | 'icon';
+
+  @property({ type: String, reflect: true, attribute: 'button-variant' })
+  declare buttonVariant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'monochrome' | '';
+
+  @property({ type: String })
+  declare unicode: string;
+
+  @property({ type: String, reflect: true, attribute: 'menu-align' })
+  declare menuAlign: 'left' | 'right';
+
+  @property({ type: String, reflect: true, attribute: 'additional-gutter' })
+  declare additionalGutter: string;
+
+  @property({ attribute: false })
+  declare onMenuOpen?: (event: MenuOpenEvent) => void;
+
+  @property({ attribute: false })
+  declare onMenuClose?: (event: MenuCloseEvent) => void;
+
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  @property({ attribute: false })
+  declare onFocus?: (event: FocusEvent) => void;
+
+  @property({ attribute: false })
+  declare onBlur?: (event: FocusEvent) => void;
+
+  @state()
+  declare _menuOpen: boolean;
+
+  constructor() {
+    super();
+    // Defaults from ButtonProps
+    this.size = 'md';
+    this.shape = 'rounded';
+    this.bordered = false;
+    this.ghost = false;
+    this.link = false;
+    this.grouped = false;
+    this.disabled = false;
+    this.loading = false;
+    this.ariaLabel = '';
+    // Defaults for MenuButton
+    this.menuVariant = 'chevron';
+    this.buttonVariant = '';
+    this.unicode = '';
+    this._menuOpen = false;
+    this.menuAlign = 'left';
+    this.additionalGutter = '';
+    this._clickOutsideHandler = this._handleClickOutside.bind(this);
+  }
+
+  static styles = css`
+    :host {
+      display: inline-flex;
+      position: relative;
+      background-color: inherit;
+    }
+
+    .chevron-icon {
+      width: var(--ag-space-4);
+      height: var(--ag-space-4);
+      color: var(--ag-text-secondary);
+      transition: transform var(--ag-motion-fast) ease;
+      flex-shrink: 0;
+    }
+
+    :host([button-variant="primary"]) .chevron-icon,
+    :host([button-variant="secondary"]) .chevron-icon,
+    :host([button-variant="success"]) .chevron-icon,
+    :host([button-variant="warning"]) .chevron-icon,
+    :host([button-variant="danger"]) .chevron-icon,
+    :host([button-variant="monochrome"]) .chevron-icon {
+      color: var(--ag-white);
+    }
+
+    /* When a button is ghost, we want the chevron to be the variant color */
+    :host([ghost][button-variant="primary"]) .chevron-icon {
+      color: var(--ag-primary);
+    }
+    :host([ghost][button-variant="secondary"]) .chevron-icon {
+      color: var(--ag-secondary);
+    }
+    :host([ghost][button-variant="success"]) .chevron-icon {
+      color: var(--ag-success);
+    }
+    :host([ghost][button-variant="warning"]) .chevron-icon {
+      color: var(--ag-warning);
+    }
+    :host([ghost][button-variant="danger"]) .chevron-icon {
+      color: var(--ag-danger);
+    }
+    :host([ghost][button-variant="monochrome"]) .chevron-icon {
+      color: var(--ag-text-primary);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--ag-space-2);
+    }
+
+    ag-button[aria-expanded="true"] .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    ::slotted(ag-menu) {
+      position: absolute;
+      background-color: var(--ag-background-primary);
+      margin-top: var(--ag-space-1);
+      z-index: var(--ag-z-index-dropdown);
+    }
+    /* Left alignment - menu left aligns with button left */
+    :host([menu-align="left"]) ::slotted(ag-menu) {
+      left: 0;
+      right: auto;
+    }
+
+    /* Right alignment - menu right aligns with button right */
+    :host([menu-align="right"]) ::slotted(ag-menu) {
+      right: 0;
+      left: auto;
+    }
+  `;
+
+  connectedCallback() {
+    super.connectedCallback();
+    document.addEventListener('click', this._clickOutsideHandler);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    document.removeEventListener('click', this._clickOutsideHandler);
+  }
+
+  firstUpdated() {
+    this._updateMenuReference();
+  }
+
+  updated(changedProperties: Map<PropertyKey, unknown>) {
+    super.updated(changedProperties);
+    if (changedProperties.has('_menuOpen')) {
+      this._updateMenuReference();
+    }
+  }
+
+  private _updateMenuReference() {
+    this._menu = this.querySelector('ag-menu') as AgMenu;
+  }
+
+  private _handleClickOutside(event: Event) {
+    if (!this._menuOpen) return;
+    
+    const composedPath = event.composedPath();
+    
+    // Check if the click is within this component (including shadow DOM)
+    if (composedPath.includes(this)) {
+      return;
+    }
+    
+    this._closeMenu();
+  }
+
+  private _handleClick(event: MouseEvent) {
+    if (this.disabled) return;
+
+    // Invoke onClick callback if provided
+    if (this.onClick) {
+      this.onClick(event);
+    }
+
+    // Re-dispatch click event from host for addEventListener pattern
+    const clickEvent = new MouseEvent('click', {
+      bubbles: true,
+      composed: true,
+      cancelable: event.cancelable,
+    });
+    this.dispatchEvent(clickEvent);
+
+    if (this._menuOpen) {
+      this._closeMenu();
+    } else {
+      this._openMenu();
+    }
+  }
+
+  private _handleFocus(event: FocusEvent) {
+    // Invoke onFocus callback if provided
+    if (this.onFocus) {
+      this.onFocus(event);
+    }
+
+    // Re-dispatch focus event from host for addEventListener pattern
+    const focusEvent = new FocusEvent('focus', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(focusEvent);
+  }
+
+  private _handleBlur(event: FocusEvent) {
+    // Invoke onBlur callback if provided
+    if (this.onBlur) {
+      this.onBlur(event);
+    }
+
+    // Re-dispatch blur event from host for addEventListener pattern
+    const blurEvent = new FocusEvent('blur', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(blurEvent);
+  }
+
+  private _handleKeydown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        this._openMenu();
+        break;
+      case 'ArrowDown':
+        event.preventDefault();
+        this._openMenu(true);
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        this._openMenu(false);
+        break;
+    }
+  }
+  // Add method to update menu position based on button height:
+  private _updateMenuPosition() {
+    if (!this._menu || !this._trigger) return;
+
+    const triggerButton = this._trigger.shadowRoot?.querySelector('button');
+    if (!triggerButton) return;
+
+    const buttonHeight = triggerButton.offsetHeight;
+
+    // Position menu below button, optionally adding extra gutter
+    if (this.additionalGutter) {
+      this._menu.style.top = `calc(${buttonHeight}px + ${this.additionalGutter})`;
+    } else {
+      this._menu.style.top = `${buttonHeight}px`;
+    }
+  }
+
+  _openMenu(focusFirst = true) {
+    if (this._menuOpen) return;
+    this._menuOpen = true;
+    this._updateMenuReference();
+
+    if (this._menu) {
+      this._menu.open = true;
+      // Update position before showing
+      this._updateMenuPosition();
+      this._menu._updateMenuItems();
+      requestAnimationFrame(() => {
+        if (focusFirst) {
+          this._menu?._focusFirstItem();
+        } else {
+          this._menu?._focusLastItem();
+        }
+      });
+    }
+
+    const menuOpenEvent = new CustomEvent<MenuOpenEventDetail>('menu-open', {
+      detail: { open: true },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(menuOpenEvent);
+    if (this.onMenuOpen) this.onMenuOpen(menuOpenEvent);
+  }
+
+  _closeMenu() {
+    if (!this._menuOpen) return;
+    this._menuOpen = false;
+    if (this._menu) {
+      this._menu.open = false;
+    }
+    this._trigger?.focus();
+
+    const menuCloseEvent = new CustomEvent<MenuCloseEventDetail>('menu-close', {
+      detail: { open: false },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(menuCloseEvent);
+    if (this.onMenuClose) this.onMenuClose(menuCloseEvent);
+  }
+
+  private _renderChevronIcon() {
+    return html`
+      <svg class="chevron-icon" part="ag-menu-chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    `;
+  }
+
+  render() {
+    // For dynamic icon switching, we expose the menu state via a data attribute
+    // that consumers can use in their slot content
+    this.setAttribute('data-menu-open', this._menuOpen ? 'true' : 'false');
+
+    const content = this.unicode
+      ? html`<span class="unicode-icon" part="ag-menu-unicode-icon">${this.unicode}</span>`
+      : html`<slot></slot>`;
+
+    const isIconOnly = this.menuVariant === 'icon';
+
+    return html`
+      <ag-button
+        .variant=${this.buttonVariant}
+        .size=${this.size}
+        .shape=${isIconOnly ? this.shape || 'square' : this.shape}
+        ?bordered=${this.bordered}
+        ?ghost=${this.ghost}
+        ?link=${this.link}
+        ?grouped=${this.grouped}
+        ?disabled=${this.disabled}
+        ?loading=${this.loading}
+        aria-haspopup="menu"
+        aria-expanded="${this._menuOpen}"
+        .ariaLabel=${this.ariaLabel || 'Menu'}
+        @click=${this._handleClick}
+        @focus=${this._handleFocus}
+        @blur=${this._handleBlur}
+        @keydown=${this._handleKeydown}
+      >
+        ${this.menuVariant === 'chevron'
+          ? html`<span class="label" part="ag-menu-label">${content}</span> ${this._renderChevronIcon()}`
+          : content}
+      </ag-button>
+      <slot name="menu"></slot>
+    `;
+  }
+}
+
+export class AgMenu extends LitElement implements MenuProps {
+  @property({ type: Boolean })
+  declare open: boolean;
+
+  @property()
+  declare placement: string;
+
+  @property({ reflect: true, attribute: 'aria-label' })
+  declare ariaLabel: string;
+
+
+  @property({ attribute: 'selected-value' })
+  declare selectedValue?: string;
+
+  @property({ type: String })
+  declare type: 'default' | 'single-select';
+
+  /*
+  // Opt in checking for hidden items e.g. Tailwind responsive utilities
+  <AgMenu checkHiddenItems>
+    <div className="md:hidden">
+      <AgMenuItem>Mobile only</AgMenuItem>
+    </div>
+    <AgMenuItem>Always visible</AgMenuItem>
+  </AgMenu>
+  */
+  @property({ type: Boolean, attribute: 'check-hidden-items' })
+  declare checkHiddenItems: boolean;
+
+  @property({ attribute: false })
+  declare onKeyDown?: (event: KeyboardEvent) => void;
+
+  @state()
+  declare _focusedIndex: number;
+
+  @state()
+  declare _menuItems: AgMenuItem[];
+
+  constructor() {
+    super();
+    this.open = false;
+    this.placement = 'bottom-start';
+    this.ariaLabel = '';
+    this.type = 'default';
+    this.checkHiddenItems = false;
+    this._focusedIndex = 0;
+    this._menuItems = [];
+  }
+
+  static styles = css`
+    :host {
+      position: absolute;
+      background-color: var(--ag-background-primary);
+      border: 1px solid var(--ag-border-subtle);
+      border-radius: var(--ag-radius-md);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      margin-top: var(--ag-space-1);
+      min-width: 12rem;
+      max-width: 16rem;
+      width: max-content;
+      z-index: var(--ag-z-index-dropdown);
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .menu {
+      padding: var(--ag-space-2);
+    }
+
+    :host([hidden]) {
+      display: none;
+    }
+  `;
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.setAttribute('role', 'menu');
+    this.setAttribute('aria-orientation', 'vertical');
+    this.addEventListener('keydown', this._handleKeydown);
+    this.addEventListener('menu-select', this._handleMenuSelect as EventListener);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('keydown', this._handleKeydown);
+    this.removeEventListener('menu-select', this._handleMenuSelect as EventListener);
+  }
+
+  firstUpdated() {
+    // Ensure menu is hidden by default on first render
+    if (!this.open) {
+      this.setAttribute('hidden', '');
+    }
+  }
+
+  updated(changedProperties: Map<PropertyKey, unknown>) {
+    if (changedProperties.has('open')) {
+      if (this.open) {
+        this.removeAttribute('hidden');
+      } else {
+        // Always set hidden when open is false, regardless of how it was set
+        this.setAttribute('hidden', '');
+        // Clear selection for default (navigation) menus when closing
+        if (this.type === 'default') {
+          this.selectedValue = undefined;
+          this._updateSelection();
+        }
+      }
+    }
+    if (changedProperties.has('selectedValue')) {
+      this._updateSelection();
+    }
+  }
+
+  private _handleMenuSelect(event: CustomEvent) {
+    // Handle selection tracking for this menu
+    // Note: We allow the event to bubble up to the menuButton
+    // so it can also handle the selection event
+    const selectedItem = event.target as AgMenuItem;
+    // Only persist selection for single-select menus
+    // For default (navigation) menus, selection is transient
+    if (this.type === 'single-select') {
+      this.selectedValue = selectedItem.value;
+    }
+  }
+
+  private _updateSelection() {
+    this._menuItems.forEach(item => {
+      // Clear all selections if selectedValue is undefined
+      // Otherwise, mark the matching item as checked
+      item.checked = this.selectedValue !== undefined && item.value === this.selectedValue;
+    });
+  }
+
+  /**
+   * Check if a menu item is actually navigable based on its computed styles.
+   * This handles Tailwind's responsive utilities (sm:hidden, md:hidden, etc.)
+   * which are applied to wrapper divs around menu items.
+   * 
+   * Only called when checkHiddenItems prop is true.
+   */
+  private _isElementNavigable(element: AgMenuItem): boolean {
+    // Respect explicit disabled/aria-hidden attributes (always checked)
+    if (element.disabled || element.getAttribute('aria-hidden') === 'true') {
+      return false;
+    }
+    
+    // Skip visibility checks if not enabled
+    if (!this.checkHiddenItems) {
+      return true;
+    }
+    
+    // Check the element itself
+    const elementStyle = window.getComputedStyle(element);
+    if (elementStyle.display === 'none' || elementStyle.visibility === 'hidden') {
+      return false;
+    }
+    
+    // Check all parent elements up to (but not including) the menu
+    // This catches wrapper divs with Tailwind responsive utilities like sm:hidden
+    let parent = element.parentElement;
+    while (parent && parent !== this) {
+      const parentStyle = window.getComputedStyle(parent);
+      if (parentStyle.display === 'none' || parentStyle.visibility === 'hidden') {
+        return false;
+      }
+      parent = parent.parentElement;
+    }
+    
+    return true;
+  }
+
+  /**
+   * Get currently navigable items (filtered for visibility).
+   * When checkHiddenItems is true, recalculates on every call to handle dynamic viewport changes.
+   */
+  private _getNavigableItems(): AgMenuItem[] {
+    // Fast path: if not checking hidden items, return all items that aren't disabled/aria-hidden
+    if (!this.checkHiddenItems) {
+      return this._menuItems.filter(item => 
+        !item.disabled && item.getAttribute('aria-hidden') !== 'true'
+      );
+    }
+    
+    // When checking hidden items, always recalculate to handle viewport/style changes
+    return this._menuItems.filter(item => this._isElementNavigable(item));
+  }
+
+  _updateMenuItems() {
+    // Store all menu items
+    this._menuItems = Array.from(this.querySelectorAll('ag-menu-item')) as AgMenuItem[];
+    this._updateTabIndex();
+    this._updateSelection();
+  }
+
+  private _updateTabIndex() {
+    this._menuItems.forEach((item, index) => {
+      item.setAttribute('tabindex', index === this._focusedIndex ? '0' : '-1');
+    });
+  }
+
+  _focusFirstItem() {
+    const navigableItems = this._getNavigableItems();
+    if (navigableItems.length === 0) return;
+
+    const firstItem = navigableItems[0];
+    this._focusedIndex = this._menuItems.indexOf(firstItem);
+    this._updateTabIndex();
+    firstItem?.focus();
+  }
+
+  _focusLastItem() {
+    const navigableItems = this._getNavigableItems();
+    if (navigableItems.length === 0) return;
+
+    const lastItem = navigableItems[navigableItems.length - 1];
+    this._focusedIndex = this._menuItems.indexOf(lastItem);
+    this._updateTabIndex();
+    lastItem?.focus();
+  }
+
+  private _focusNextItem() {
+    const navigableItems = this._getNavigableItems();
+    if (navigableItems.length === 0) return;
+    
+    // Find current item in navigable list
+    const currentItem = this._menuItems[this._focusedIndex];
+    const currentNavIndex = navigableItems.indexOf(currentItem);
+    
+    // If current item is not navigable (e.g., became hidden), start from beginning
+    const startIndex = currentNavIndex >= 0 ? currentNavIndex : -1;
+    
+    // Find next navigable item (wraps around)
+    for (let i = 1; i <= navigableItems.length; i++) {
+      const nextIndex = (startIndex + i) % navigableItems.length;
+      const item = navigableItems[nextIndex];
+      this._focusedIndex = this._menuItems.indexOf(item);
+      this._updateTabIndex();
+      item?.focus();
+      return;
+    }
+  }
+
+  private _focusPreviousItem() {
+    const navigableItems = this._getNavigableItems();
+    if (navigableItems.length === 0) return;
+    
+    const currentItem = this._menuItems[this._focusedIndex];
+    const currentNavIndex = navigableItems.indexOf(currentItem);
+    
+    // If current item is not navigable, start from end
+    const startIndex = currentNavIndex >= 0 ? currentNavIndex : navigableItems.length;
+    
+    // Find previous navigable item (wraps around)
+    for (let i = 1; i <= navigableItems.length; i++) {
+      const prevIndex = (startIndex - i + navigableItems.length) % navigableItems.length;
+      const item = navigableItems[prevIndex];
+      this._focusedIndex = this._menuItems.indexOf(item);
+      this._updateTabIndex();
+      item?.focus();
+      return;
+    }
+  }
+
+  private _handleKeydown(event: KeyboardEvent) {
+    // Invoke callback if provided (native composed event)
+    if (this.onKeyDown) {
+      this.onKeyDown(event);
+    }
+
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        this._focusNextItem();
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        this._focusPreviousItem();
+        break;
+      case 'Home':
+        event.preventDefault();
+        this._focusFirstItem();
+        break;
+      case 'End':
+        event.preventDefault();
+        this._focusLastItem();
+        break;
+      case 'Enter': {
+        event.preventDefault();
+        // Get currently navigable items and activate the focused one if it's navigable
+        const navigableItems = this._getNavigableItems();
+        const currentItem = this._menuItems[this._focusedIndex];
+        if (navigableItems.includes(currentItem)) {
+          currentItem?.click();
+        }
+        break;
+      }
+      case 'Escape':
+      case 'Tab':
+        event.preventDefault();
+        this._closeMenu();
+        break;
+    }
+  }
+
+  private _closeMenu() {
+    const menuButton = this.closest('ag-menu-button') as AgMenuButton;
+    if (menuButton) {
+      menuButton._closeMenu();
+    }
+  }
+
+  render() {
+    return html`<div class="menu" part="ag-menu"><slot></slot></div>`;
+  }
+}
+
+export class AgMenuItem extends LitElement implements MenuItemProps {
+  @property()
+  declare value: string;
+
+  @property({ type: Boolean })
+  declare disabled: boolean;
+
+  @property()
+  declare href: string;
+
+  @property()
+  declare target: string;
+
+  @property({ type: Boolean })
+  declare checked: boolean;
+
+  @property({ type: String, reflect: true })
+  declare variant: 'default' | 'monochrome';
+
+  @property({ attribute: false })
+  declare onClick?: (event: MouseEvent) => void;
+
+  @property({ attribute: false })
+  declare onMenuSelect?: (event: MenuSelectEvent) => void;
+
+  private _menu: AgMenu | null = null;
+
+  constructor() {
+    super();
+    this.value = '';
+    this.disabled = false;
+    this.href = '';
+    this.target = '';
+    this.checked = false;
+    this.variant = 'default';
+  }
+
+  static styles = css`
+    :host {
+      display: block;
+    }
+
+    button {
+      width: 100%;
+    }
+    button,
+    a {
+      display: block;
+      background-color: transparent;
+      color: var(--ag-text-primary);
+      border: none;
+      border-radius: var(--ag-radius-sm);
+      padding: var(--ag-space-2) var(--ag-space-3);
+      text-align: left;
+      text-decoration: none;
+      font-size: inherit;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      transition: all var(--ag-motion-fast) ease;
+    }
+
+    button:hover:not([disabled]),
+    a:hover:not([disabled]) {
+      background-color: var(--ag-background-secondary);
+      color: var(--ag-text-primary);
+    }
+
+    button:focus,
+    a:focus {
+      background-color: var(--ag-background-secondary);
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: 0;
+    }
+
+    button:active:not([disabled]),
+    a:active:not([disabled]) {
+      background-color: var(--ag-background-tertiary);
+    }
+
+    :host([aria-checked='true']) button:not([disabled]),
+    :host([aria-checked='true']) a:not([disabled]) {
+      background-color: var(--ag-menu-item-selected-bg, var(--ag-primary));
+      color: var(--ag-white);
+    }
+
+    :host([aria-checked='true']) button:focus:not([disabled]),
+    :host([aria-checked='true']) a:focus:not([disabled]),
+    :host([aria-checked='true']) button:hover:not([disabled]),
+    :host([aria-checked='true']) a:hover:not([disabled]) {
+      background-color: var(--ag-menu-item-selected-active-bg, var(--ag-primary-dark));
+    }
+
+
+    :host([variant="monochrome"][aria-checked='true']) button:not([disabled]),
+    :host([variant="monochrome"][aria-checked='true']) a:not([disabled]) {
+      background-color: var(--ag-background-primary-inverted);
+      color: var(--ag-text-primary-inverted);
+    }
+
+    /* hover/active + selected gets --ag-background-secondary-inverted affordance */
+    :host([variant="monochrome"][aria-checked='true']) button:focus:not([disabled]),
+    :host([variant="monochrome"][aria-checked='true']) a:focus:not([disabled]),
+    :host([variant="monochrome"][aria-checked='true']) button:hover:not([disabled]),
+    :host([variant="monochrome"][aria-checked='true']) a:hover:not([disabled]) {
+      background-color: var(--ag-background-secondary-inverted);
+    }
+
+    button[disabled],
+    a[disabled] {
+      background-color: transparent;
+      color: var(--ag-text-muted);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  `;
+
+  connectedCallback() {
+    super.connectedCallback();
+    this._menu = this.closest('ag-menu');
+    const role = this._menu?.type === 'single-select' ? 'menuitemradio' : 'menuitem';
+    this.setAttribute('role', role);
+    this.setAttribute('tabindex', '-1');
+    this.addEventListener('click', this._handleClick);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('click', this._handleClick);
+  }
+
+  updated(changedProperties: Map<PropertyKey, unknown>) {
+    if (changedProperties.has('checked')) {
+      this.setAttribute('aria-checked', this.checked ? 'true' : 'false');
+    }
+  }
+
+  private _handleClick(event: Event) {
+    if (this.disabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    // Invoke onClick callback if provided (native composed event)
+    if (this.onClick && event instanceof MouseEvent) {
+      this.onClick(event);
+    }
+
+    const menuButton = this.closest('ag-menu-button') as AgMenuButton;
+
+    // Dual-dispatch pattern for custom event
+    const menuSelectEvent = new CustomEvent<MenuSelectEventDetail>('menu-select', {
+      detail: { value: this.value },
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(menuSelectEvent);
+
+    // Invoke callback if provided
+    if (this.onMenuSelect) {
+      this.onMenuSelect(menuSelectEvent);
+    }
+
+    if (menuButton && !this.href) {
+      menuButton._closeMenu();
+    }
+  }
+
+  focus() {
+    const element = this.shadowRoot?.querySelector('button, a') as HTMLElement;
+    if (element) {
+      element.focus();
+    }
+  }
+
+  render() {
+    if (this.href) {
+      return html`
+        <a
+          href="${this.href}"
+          target="${this.target || nothing}"
+          part="ag-menu-item-link ag-menu-item"
+          ?disabled="${this.disabled}"
+        >
+          <slot></slot>
+        </a>
+      `;
+    }
+
+    return html`
+      <button ?disabled="${this.disabled}" part="ag-menu-item-button ag-menu-item">
+        <slot></slot>
+      </button>
+    `;
+  }
+}
+
+export class AgMenuSeparator extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    .separator {
+      border-top: 1px solid var(--ag-border);
+      margin: var(--ag-space-2) 0;
+    }
+  `;
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.setAttribute('role', 'separator');
+  }
+
+  render() {
+    return html`<div class="separator" part="ag-menu-separator"></div>`;
+  }
+}

@@ -1,0 +1,542 @@
+import { LitElement, html, css } from 'lit';
+import { property, state } from 'lit/decorators.js';
+import { generateUniqueId } from '../../../../utils/unique-id';
+
+export type TabsActivation = 'manual' | 'automatic';
+export type TabsOrientation = 'horizontal' | 'vertical';
+
+/**
+ * Event detail for tab-change event
+ */
+export interface TabChangeEventDetail {
+  activeTab: number;
+  previousTab: number;
+}
+
+/**
+ * Custom event dispatched when the active tab changes
+ */
+export type TabChangeEvent = CustomEvent<TabChangeEventDetail>;
+
+/**
+ * Event map for Tabs component
+ */
+export interface TabsEventMap {
+  'tab-change': TabChangeEvent;
+}
+
+
+// Child components defined inline
+export class Tab extends LitElement {
+  @property({ type: String })
+  declare panel: string;
+
+  @property({ type: Boolean, reflect: true })
+  declare disabled: boolean;
+
+  constructor() {
+    super();
+    this.panel = '';
+    this.disabled = false;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // Set host element role
+    this.setAttribute('role', 'tab');
+  }
+
+  static styles = css`
+    :host {
+      display: inline-flex;
+    }
+
+    .tab {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: var(--ag-text-secondary);
+      cursor: pointer;
+      font: inherit;
+      padding: var(--ag-space-2) var(--ag-space-4);
+      border-radius: 0;
+      border-bottom: 2px solid transparent;
+      text-decoration: none;
+    }
+
+    :host([aria-selected="true"]) .tab {
+      color: var(--ag-text-primary);
+      border-bottom-color: var(--ag-primary);
+    }
+
+    .tab:focus-visible {
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+      outline-offset: var(--ag-focus-offset);
+    }
+
+    /* Disabled state styles */
+    :host([disabled]) .tab,
+    :host([aria-disabled="true"]) .tab {
+      opacity: var(--ag-opacity-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .tab:hover {
+      background: var(--ag-background-secondary);
+      color: var(--ag-text-primary);
+    }
+
+    :host([disabled]) .tab:hover,
+    :host([aria-disabled="true"]) .tab:hover {
+      background: transparent;
+      color: var(--ag-text-secondary);
+    }
+  `;
+
+  render() {
+    return html`<div class="tab" part="ag-tab"><slot></slot></div>`;
+  }
+}
+
+export class TabPanel extends LitElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // Set host element role and default attributes
+    this.setAttribute('role', 'tabpanel');
+    this.setAttribute('tabindex', '0');
+  }
+
+  static styles = css`
+    :host {
+      display: block;
+    }
+
+    .tab-panel {
+      display: block;
+      padding: var(--ag-tabs-panel-padding, 1rem);
+    }
+
+    :host([hidden]) {
+      display: none;
+    }
+  `;
+
+  render() {
+    return html`<div class="tab-panel" part="ag-tab-panel"><slot></slot></div>`;
+  }
+}
+
+/**
+ * Props interface for Tabs component including event handlers
+ * Use this type for framework integrations and Storybook
+ */
+export interface TabsProps {
+  activation?: TabsActivation;
+  activeTab?: number;
+  orientation?: TabsOrientation;
+  ariaLabel?: string;
+  // Event callback prop
+  onTabChange?: (event: TabChangeEvent) => void;
+}
+
+/**
+ * Tabs component for organizing content into multiple panels
+ *
+ * @fires {TabChangeEvent} tab-change - Fired when the active tab changes
+ *
+ * @example
+ * ```html
+ * <ag-tabs aria-label="My Tabs" @tab-change=${handleTabChange}>
+ *   <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
+ *   <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
+ *   <ag-tab-panel slot="panel" panel="panel-1">Content 1</ag-tab-panel>
+ *   <ag-tab-panel slot="panel" panel="panel-2">Content 2</ag-tab-panel>
+ * </ag-tabs>
+ * ```
+ */
+export class Tabs extends LitElement implements TabsProps {
+  @property({ type: String })
+  declare activation: TabsActivation;
+
+  @property({ type: Number, attribute: 'active-tab' })
+  declare activeTab: number;
+
+  @property({ type: String })
+  declare orientation: TabsOrientation;
+
+  @property({ type: String, reflect: true, attribute: 'aria-label' })
+  declare ariaLabel: string;
+
+
+  @property({ attribute: false })
+  declare onTabChange?: (event: TabChangeEvent) => void;
+
+  @state()
+  private declare _tabs: Tab[];
+
+  @state()
+  private declare _panels: TabPanel[];
+
+  @state()
+  private declare _focusedTab: number;
+
+  constructor() {
+    super();
+    this.activation = 'manual';
+    this.activeTab = 0;
+    this.orientation = 'horizontal';
+    this.ariaLabel = '';
+    this._tabs = [];
+    this._panels = [];
+    this._focusedTab = 0;
+  }
+
+  firstUpdated() {
+    // Use a microtask to ensure child elements are ready
+    Promise.resolve().then(() => {
+      this._updateTabsAndPanels();
+    });
+  }
+
+  updated(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('activeTab')) {
+      // Sync focused tab with active tab
+      this._focusedTab = this.activeTab;
+      // Use a microtask to ensure child elements are ready
+      Promise.resolve().then(() => {
+        this._updateTabsAndPanels();
+      });
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    // Listen for slot changes to update tabs when children are added
+    this.addEventListener('slotchange', () => {
+      Promise.resolve().then(() => {
+        this._updateTabsAndPanels();
+      });
+    });
+
+    // Add keyboard navigation event listeners
+    this.addEventListener('keydown', this._handleKeyDown.bind(this));
+    this.addEventListener('click', this._handleClick.bind(this));
+  }
+
+  private _updateTabsAndPanels() {
+    // Get all tabs and panels from slots
+    this._tabs = Array.from(this.querySelectorAll('ag-tab')) as Tab[];
+    this._panels = Array.from(this.querySelectorAll('ag-tab-panel')) as TabPanel[];
+
+    // Set up IDs and relationships
+    this._tabs.forEach((tab, index) => {
+      const tabId = tab.id || `tab-${generateUniqueId()}`;
+      const panelId = tab.panel || this._panels[index]?.id || `panel-${generateUniqueId()}`;
+
+      // Set tab attributes directly on the host element
+      tab.setAttribute('id', tabId);
+      tab.setAttribute('aria-controls', panelId);
+      tab.setAttribute('aria-selected', index === this.activeTab ? 'true' : 'false');
+      tab.setAttribute('tabindex', index === this._focusedTab ? '0' : '-1');
+
+      // Set corresponding panel attributes if it exists
+      if (this._panels[index]) {
+        this._panels[index].setAttribute('id', panelId);
+        this._panels[index].setAttribute('aria-labelledby', tabId);
+        if (index !== this.activeTab) {
+          this._panels[index].setAttribute('hidden', '');
+        } else {
+          this._panels[index].removeAttribute('hidden');
+        }
+      }
+    });
+  }
+
+  private _handleKeyDown(event: KeyboardEvent) {
+    if (!this._tabs.length) return;
+
+    // Only handle keyboard events when the target is a tab element
+    // This prevents interfering with content inside tab panels
+    const target = event.target as Element;
+    const isTargetTab = target && target.tagName === 'AG-TAB';
+
+    // Also check if the target is inside a tab panel - if so, don't handle it
+    const isInsideTabPanel = target && target.closest('ag-tab-panel');
+
+
+    // Don't handle if target is not a tab OR if target is inside a tab panel
+    if (!isTargetTab || isInsideTabPanel) {
+      return;
+    }
+
+    const { key } = event;
+    const isHorizontal = this.orientation === 'horizontal';
+
+    let newFocusedTab = this._focusedTab;
+    let shouldActivate = false;
+
+    switch (key) {
+      case 'ArrowRight':
+        if (isHorizontal) {
+          newFocusedTab = this._findNextEnabledTab(this._focusedTab, 1);
+          shouldActivate = this.activation === 'automatic';
+          event.preventDefault();
+        }
+        break;
+      case 'ArrowLeft':
+        if (isHorizontal) {
+          newFocusedTab = this._findNextEnabledTab(this._focusedTab, -1);
+          shouldActivate = this.activation === 'automatic';
+          event.preventDefault();
+        }
+        break;
+      case 'ArrowDown':
+        if (!isHorizontal) {
+          newFocusedTab = this._findNextEnabledTab(this._focusedTab, 1);
+          shouldActivate = this.activation === 'automatic';
+          event.preventDefault();
+        }
+        break;
+      case 'ArrowUp':
+        if (!isHorizontal) {
+          newFocusedTab = this._findNextEnabledTab(this._focusedTab, -1);
+          shouldActivate = this.activation === 'automatic';
+          event.preventDefault();
+        }
+        break;
+      case 'Home':
+        newFocusedTab = this._findFirstEnabledTab(true);
+        shouldActivate = this.activation === 'automatic';
+        event.preventDefault();
+        break;
+      case 'End':
+        newFocusedTab = this._findFirstEnabledTab(false);
+        shouldActivate = this.activation === 'automatic';
+        event.preventDefault();
+        break;
+      case ' ':
+      case 'Enter':
+        if (this.activation === 'manual') {
+          this._activateTab(this._focusedTab);
+          event.preventDefault();
+        }
+        break;
+    }
+
+    if (newFocusedTab !== this._focusedTab) {
+      this._setFocusedTab(newFocusedTab);
+      if (shouldActivate) {
+        this._activateTab(newFocusedTab);
+      }
+    }
+  }
+
+  private _handleClick(event: Event) {
+    // Find the actual ag-tab element, even if clicking on child elements
+    let clickedTab = event.target as Element;
+
+    // Traverse up the DOM tree to find the ag-tab element
+    while (clickedTab && clickedTab.tagName !== 'AG-TAB') {
+      clickedTab = clickedTab.parentElement as Element;
+      // Safety check to avoid infinite loop
+      if (clickedTab === this) break;
+    }
+
+    if (clickedTab && clickedTab.tagName === 'AG-TAB') {
+      const tab = clickedTab as Tab;
+
+      // Check if tab is disabled
+      if (tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true') {
+        return;
+      }
+
+      const tabIndex = this._tabs.indexOf(tab);
+      if (tabIndex >= 0) {
+        this._activateTab(tabIndex);
+      }
+    }
+  }
+
+  /**
+   * Helper method to find the next non-disabled tab in a given direction
+   * @param startIndex - The starting index
+   * @param direction - 1 for forward, -1 for backward
+   * @returns The index of the next non-disabled tab, or startIndex if none found
+   */
+  private _findNextEnabledTab(startIndex: number, direction: 1 | -1): number {
+    const length = this._tabs.length;
+    if (length === 0) return startIndex;
+
+    let index = startIndex;
+    let attempts = 0;
+
+    // Try to find a non-disabled tab, but don't loop forever
+    while (attempts < length) {
+      index = direction === 1
+        ? (index + 1) % length
+        : (index === 0 ? length - 1 : index - 1);
+
+      const tab = this._tabs[index];
+      const isDisabled = tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true';
+
+      if (!isDisabled) {
+        return index;
+      }
+
+      attempts++;
+    }
+
+    // If all tabs are disabled, return the start index
+    return startIndex;
+  }
+
+  /**
+   * Helper method to find the first non-disabled tab from start
+   * @param fromStart - If true, search from beginning; if false, search from end
+   * @returns The index of the first non-disabled tab, or 0 if none found
+   */
+  private _findFirstEnabledTab(fromStart: boolean): number {
+    const length = this._tabs.length;
+    if (length === 0) return 0;
+
+    if (fromStart) {
+      for (let i = 0; i < length; i++) {
+        const tab = this._tabs[i];
+        const isDisabled = tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true';
+        if (!isDisabled) return i;
+      }
+    } else {
+      for (let i = length - 1; i >= 0; i--) {
+        const tab = this._tabs[i];
+        const isDisabled = tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true';
+        if (!isDisabled) return i;
+      }
+    }
+
+    // If all tabs are disabled, return 0
+    return 0;
+  }
+
+  private _setFocusedTab(index: number) {
+    if (index >= 0 && index < this._tabs.length) {
+      this._focusedTab = index;
+      this._updateTabsAndPanels();
+      this._tabs[index].focus();
+    }
+  }
+
+  private _activateTab(index: number) {
+    if (index >= 0 && index < this._tabs.length) {
+      const previousTab = this.activeTab;
+
+      // Check if the tab is disabled
+      const tab = this._tabs[index];
+      if (tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true') {
+        return;
+      }
+
+      if (previousTab !== index) {
+        // Set active tab - this will trigger updated() which handles the rest
+        this.activeTab = index;
+
+        // Focus the newly activated tab
+        this._tabs[index].focus();
+
+        // Dual-dispatch: dispatchEvent + callback
+        const tabChangeEvent = new CustomEvent<TabChangeEventDetail>('tab-change', {
+          detail: {
+            activeTab: index,
+            previousTab: previousTab
+          },
+          bubbles: true,
+          composed: true,
+        });
+        this.dispatchEvent(tabChangeEvent);
+
+        // Invoke callback if provided
+        if (this.onTabChange) {
+          this.onTabChange(tabChangeEvent);
+        }
+      } else {
+        // If clicking the same tab, just ensure it has focus
+        this._tabs[index].focus();
+      }
+    }
+  }
+
+  static styles = css`
+    :host {
+      display: block;
+    }
+
+    .tabs-container {
+      display: flex;
+    }
+
+    .tabs-container[data-orientation="vertical"] {
+      flex-direction: row;
+    }
+
+    .tabs-container[data-orientation="horizontal"] {
+      flex-direction: column;
+    }
+
+    [role="tablist"] {
+      display: flex;
+      gap: var(--ag-space-2);
+    }
+
+    [role="tablist"][aria-orientation="horizontal"] {
+      flex-direction: row;
+      border-bottom: 1px solid var(--ag-border);
+    }
+
+    [role="tablist"][aria-orientation="vertical"] {
+      flex-direction: column;
+      border-right: 1px solid var(--ag-border);
+      min-width: 200px;
+    }
+
+    .tab-panels {
+      flex: 1;
+    }
+
+    ::slotted(ag-tab-panel[hidden]) {
+      display: none;
+    }
+  `;
+
+  render() {
+    return html`
+      <div class="tabs-container" part="ag-tabs-container" data-orientation=${this.orientation}>
+        <div
+          role="tablist"
+          part="ag-tabs-tablist"
+          aria-orientation=${this.orientation}
+          aria-label=${this.ariaLabel || ''}
+        >
+          <slot name="tab"></slot>
+        </div>
+        <div class="tab-panels" part="ag-tabs-panels">
+          <slot name="panel"></slot>
+        </div>
+      </div>
+    `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'ag-tabs': Tabs;
+    'ag-tab': Tab;
+    'ag-tab-panel': TabPanel;
+  }
+}
