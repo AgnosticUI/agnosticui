@@ -1,0 +1,731 @@
+<template>
+  <section>
+    <div class="mbe4">
+      <h2>Basic Menu</h2>
+    </div>
+    <div class="stacked mbe4">
+      <VueMenu menu-aria-label="Menu options">
+        Menu
+        <template #menu>
+          <VueMenuItem value="edit">Edit</VueMenuItem>
+          <VueMenuItem value="copy">Copy</VueMenuItem>
+          <VueMenuItem value="paste">Paste</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem value="delete">Delete</VueMenuItem>
+        </template>
+      </VueMenu>
+    </div>
+
+    <div class="mbe4">
+      <h2>Menu Alignment</h2>
+      <p class="mbe4">
+        The <code>menu-align</code> prop controls horizontal alignment. Use <code>menu-align="right"</code> when the menu button is near the right edge of the viewport.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div
+        class="flex items-center"
+        style="gap: 1rem; justify-content: space-between;"
+      >
+        <VueMenu
+          menu-align="left"
+          menu-aria-label="Left-aligned menu"
+        >
+          Left Aligned
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+        <VueMenu
+          menu-align="right"
+          menu-aria-label="Right-aligned menu"
+        >
+          Right Aligned
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h2>Menu with Links</h2>
+    </div>
+    <div class="stacked mbe4">
+      <VueMenu menu-aria-label="Navigation menu">
+        Navigation
+        <template #menu>
+          <VueMenuItem
+            value="home"
+            href="#home"
+          >Home</VueMenuItem>
+          <VueMenuItem
+            value="about"
+            href="#about"
+          >About</VueMenuItem>
+          <VueMenuItem
+            value="contact"
+            href="#contact"
+          >Contact</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem
+            value="external"
+            href="https://example.com"
+            target="_blank"
+          >
+            External Link
+          </VueMenuItem>
+        </template>
+      </VueMenu>
+    </div>
+
+    <div class="mbe4">
+      <h2>Disabled Button</h2>
+    </div>
+    <div class="stacked mbe4">
+      <VueMenu
+        disabled
+        menu-aria-label="Disabled menu"
+      >
+        Disabled Menu
+        <template #menu>
+          <VueMenuItem value="item1">Item 1</VueMenuItem>
+          <VueMenuItem value="item2">Item 2</VueMenuItem>
+        </template>
+      </VueMenu>
+    </div>
+
+    <div class="mbe4">
+      <h2>Menu with Disabled Items</h2>
+    </div>
+    <div class="stacked mbe4">
+      <VueMenu menu-aria-label="Menu with disabled items">
+        Mixed States
+        <template #menu>
+          <VueMenuItem value="enabled1">Enabled Item</VueMenuItem>
+          <VueMenuItem
+            value="disabled1"
+            :disabled="true"
+          >Disabled Item</VueMenuItem>
+          <VueMenuItem value="enabled2">Another Enabled</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem
+            value="disabled2"
+            :disabled="true"
+          >Another Disabled</VueMenuItem>
+        </template>
+      </VueMenu>
+    </div>
+
+    <div class="mbe4">
+      <h2>Complex Menu (File Menu)</h2>
+    </div>
+    <div class="stacked mbe4">
+      <VueMenu menu-aria-label="File menu">
+        File
+        <template #menu>
+          <VueMenuItem value="new">New</VueMenuItem>
+          <VueMenuItem value="open">Open...</VueMenuItem>
+          <VueMenuItem value="recent">Open Recent</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem value="save">Save</VueMenuItem>
+          <VueMenuItem value="save-as">Save As...</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem value="export">Export</VueMenuItem>
+          <VueMenuItem value="import">Import</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem value="print">Print</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem value="close">Close</VueMenuItem>
+        </template>
+      </VueMenu>
+    </div>
+
+    <div class="mbe4">
+      <h2>Menu with Sections</h2>
+    </div>
+    <div class="stacked mbe4">
+      <VueMenu menu-aria-label="User menu">
+        <div class="flex-inline items-center">
+          <User
+            :size="16"
+            class="mie2"
+          />
+          User Menu
+        </div>
+        <template #menu>
+          <VueMenuItem value="profile">Profile</VueMenuItem>
+          <VueMenuItem value="settings">Settings</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem value="help">Help</VueMenuItem>
+          <VueMenuItem value="feedback">Send Feedback</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem value="logout">Logout</VueMenuItem>
+        </template>
+      </VueMenu>
+    </div>
+
+    <div class="mbe4">
+      <h2>Menu with Icon Button</h2>
+      <p class="mbe4">
+        The following examples show using an icon as the trigger. The <code>menu-variant="icon"</code> removes the chevron and provides a minimal button container for the icon. You can also use an
+        icon with the default chevron trigger as we see on the right.
+      </p>
+    </div>
+    <div class="mbe4">
+      <h3>Large</h3>
+      <div
+        class="flex-inline items-center"
+        style="gap: 1rem;"
+      >
+        <!-- Icon only -->
+        <VueMenu
+          menu-variant="icon"
+          ghost
+          menu-aria-label="More options menu"
+        >
+          <Menu :size="24" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+        <!-- Icon with chevron -->
+        <VueMenu menu-aria-label="More options menu">
+          <Menu :size="24" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+    <div class="mbe4">
+      <h3>Medium</h3>
+      <div
+        class="flex-inline items-center"
+        style="gap: 1rem;"
+      >
+        <!-- Icon only -->
+        <VueMenu
+          menu-variant="icon"
+          ghost
+          size="sm"
+          menu-aria-label="More options menu"
+        >
+          <Menu :size="18" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+        <!-- Icon with chevron -->
+        <VueMenu
+          size="sm"
+          menu-aria-label="More options menu"
+        >
+          <Menu :size="18" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+    <div class="mbe4">
+      <h3>Small</h3>
+      <div
+        class="flex-inline items-center"
+        style="gap: 1rem;"
+      >
+        <!-- Icon only -->
+        <VueMenu
+          menu-variant="icon"
+          ghost
+          size="x-sm"
+          menu-aria-label="More options menu"
+        >
+          <Menu :size="14" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+        <!-- Icon with chevron -->
+        <VueMenu
+          size="x-sm"
+          menu-aria-label="More options menu"
+        >
+          <Menu :size="14" />
+          <template #menu>
+            <VueMenuItem value="settings">Settings</VueMenuItem>
+            <VueMenuItem value="profile">Profile</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h2>Monochrome Variant</h2>
+    </div>
+    <div class="stacked mbe4">
+      <VueMenu
+        menu-aria-label="Monochrome menu"
+        button-variant="monochrome"
+      >
+        Monochrome Menu
+        <template #menu>
+          <VueMenuItem
+            value="option1"
+            variant="monochrome"
+          >Option 1</VueMenuItem>
+          <VueMenuItem
+            value="option2"
+            variant="monochrome"
+            :selected="true"
+          >Option 2 (Selected)</VueMenuItem>
+          <VueMenuItem
+            value="option3"
+            variant="monochrome"
+          >Option 3</VueMenuItem>
+        </template>
+      </VueMenu>
+    </div>
+
+    <div class="mbe4">
+      <h2>Event Handling</h2>
+    </div>
+    <div class="stacked mbe4">
+      <div
+        class="flex-inline items-center"
+        :style="{gap: '10px'}"
+      >
+        <VueMenu
+          menu-aria-label="Event testing menu"
+          @menu-open="handleMenuOpen"
+          @menu-close="handleMenuClose"
+          @menu-select="handleMenuSelect"
+        >
+          Event Test
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+        <p v-if="lastEvent">
+          Last event: <strong>{{ lastEvent }}</strong>
+        </p>
+      </div>
+    </div>
+    <div class="mbe4">
+      <h2>Menu Types: Navigation vs Selection</h2>
+      <p class="mbe4">
+        The <code>type</code> prop controls selection behavior. Use <code>type="default"</code> (the default) for navigation menus where selection is transient, and <code>type="single-select"</code> for menus where selection should persist (like filters or sorting).
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div
+        class="flex items-start"
+        style="gap: 2rem; flex-wrap: wrap;"
+      >
+        <div>
+          <h3 class="mbe4">Navigation Menu (type="default")</h3>
+          <p class="mbe4">
+            Selection clears when menu closes. Use for navigation and actions.
+          </p>
+          <VueMenu menu-aria-label="User navigation">
+            User Menu
+            <template #menu>
+              <VueMenuItem value="profile">Profile</VueMenuItem>
+              <VueMenuItem value="settings">Settings</VueMenuItem>
+              <VueMenuSeparator />
+              <VueMenuItem value="logout">Logout</VueMenuItem>
+            </template>
+          </VueMenu>
+        </div>
+
+        <div>
+          <h3 class="mbe4">Selection Menu (type="single-select")</h3>
+          <p class="mbe4">
+            Selection persists when menu closes. Use for filters, sorting, etc.
+          </p>
+          <VueMenu
+            menu-type="single-select"
+            selected-value="date"
+            menu-aria-label="Sort options"
+          >
+            Sort by
+            <template #menu>
+              <VueMenuItem value="date">Date</VueMenuItem>
+              <VueMenuItem value="name">Name</VueMenuItem>
+              <VueMenuItem value="size">Size</VueMenuItem>
+            </template>
+          </VueMenu>
+        </div>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h2>Additional Gutter</h2>
+      <p class="mbe4">
+        The <code>additional-gutter</code> prop adds extra vertical spacing beyond the trigger button's height when positioning the menu. This is useful when the menu button is within a taller container (like a header) and you need the menu to clear that container.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div>
+        <p class="mbe4">This menu has <code>additional-gutter="20px"</code></p>
+        <VueMenu
+          menu-variant="chevron"
+          additional-gutter="20px"
+          menu-aria-label="Menu with additional gutter"
+        >
+          Menu with Extra Gutter
+          <template #menu>
+            <VueMenuItem value="option1">Option 1</VueMenuItem>
+            <VueMenuItem value="option2">Option 2</VueMenuItem>
+            <VueMenuItem value="option3">Option 3</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h2>Responsive Hidden Items (checkHiddenItems)</h2>
+      <p class="mbe4">
+        The <code>check-hidden-items</code> prop enables the menu to skip items that are hidden via CSS (like responsive media queries). This is useful when you wrap menu items in responsive containers but want keyboard navigation to work correctly.
+      </p>
+      <p class="mbe4">
+        <strong>Performance Note:</strong> Enabling this feature checks computed styles on every keyboard navigation, which has a performance cost. Only enable it if you're using CSS-based hiding. For better performance, prefer conditional rendering (v-if) instead.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div v-html="responsiveStyles"></div>
+      <div>
+        <p class="mbe4">
+          <strong>Try resizing your browser:</strong> Desktop items are hidden on mobile (&lt;768px), mobile items are hidden on desktop. Keyboard navigation skips hidden items.
+        </p>
+        <VueMenu
+          check-hidden-items
+          menu-aria-label="Responsive menu"
+        >
+          Responsive Menu
+          <template #menu>
+            <div class="desktop-only-items">
+              <VueMenuItem value="desktop1">
+                <Monitor
+                  :size="16"
+                  class="mie2"
+                />Desktop Item 1
+              </VueMenuItem>
+              <VueMenuItem value="desktop2">
+                <Monitor
+                  :size="16"
+                  class="mie2"
+                />Desktop Item 2
+              </VueMenuItem>
+            </div>
+            <div class="mobile-only-items">
+              <VueMenuItem value="mobile1">
+                <Smartphone
+                  :size="16"
+                  class="mie2"
+                />Mobile Item 1
+              </VueMenuItem>
+              <VueMenuItem value="mobile2">
+                <Smartphone
+                  :size="16"
+                  class="mie2"
+                />Mobile Item 2
+              </VueMenuItem>
+            </div>
+            <VueMenuSeparator />
+            <VueMenuItem value="always">Always Visible</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h2>Recommended: Conditional Rendering (Better Performance)</h2>
+      <p class="mbe4">
+        Instead of using <code>check-hidden-items</code>, you can achieve the same result with better performance by using Vue's conditional rendering (v-if). This removes hidden items from the DOM entirely.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div>
+        <p class="mbe4">
+          <strong>Current viewport:</strong> {{ isMobile ? 'Mobile' : 'Desktop' }}
+        </p>
+        <VueMenu menu-aria-label="Conditional menu">
+          Conditional Menu
+          <template #menu>
+            <VueMenuItem
+              v-if="!isMobile"
+              value="desktop1"
+            >
+              <Monitor
+                :size="16"
+                class="mie2"
+              />Desktop Item 1
+            </VueMenuItem>
+            <VueMenuItem
+              v-if="!isMobile"
+              value="desktop2"
+            >
+              <Monitor
+                :size="16"
+                class="mie2"
+              />Desktop Item 2
+            </VueMenuItem>
+            <VueMenuItem
+              v-if="isMobile"
+              value="mobile1"
+            >
+              <Smartphone
+                :size="16"
+                class="mie2"
+              />Mobile Item 1
+            </VueMenuItem>
+            <VueMenuItem
+              v-if="isMobile"
+              value="mobile2"
+            >
+              <Smartphone
+                :size="16"
+                class="mie2"
+              />Mobile Item 2
+            </VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="always">Always Visible</VueMenuItem>
+          </template>
+        </VueMenu>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h2>Dynamic Icon Switching</h2>
+      <p class="mbe4">
+        The menu button exposes a <code>data-menu-open</code> attribute that changes based on the menu state. You can use this with CSS to dynamically switch icons when the menu opens/closes.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <div v-html="dynamicIconStyles"></div>
+      <div
+        class="flex-inline items-center"
+        style="gap: 1rem;"
+      >
+        <VueMenu
+          menu-variant="icon"
+          ghost
+          size="sm"
+          class="dynamic-icon-menu"
+          aria-label="Toggle menu"
+          menu-aria-label="Navigation menu"
+        >
+          <Menu
+            :size="14"
+            class="menu-icon"
+          />
+          <X
+            :size="14"
+            class="close-icon"
+          />
+          <template #menu>
+            <VueMenuItem value="home">Home</VueMenuItem>
+            <VueMenuItem value="about">About</VueMenuItem>
+            <VueMenuItem value="contact">Contact</VueMenuItem>
+            <VueMenuSeparator />
+            <VueMenuItem value="logout">Logout</VueMenuItem>
+          </template>
+        </VueMenu>
+        <p>
+          Click the icon to see it change from ☰ to ✕
+        </p>
+      </div>
+    </div>
+
+    <div class="mbe4">
+      <h2>CSS Shadow Parts Customization</h2>
+    </div>
+    <div class="stacked mbe4">
+      <div v-html="customMenuStyles"></div>
+      <VueMenu
+        menu-aria-label="Custom menu"
+        class="custom-menu-button"
+      >
+        Custom Menu
+        <template #menu>
+          <VueMenuItem value="one">Option 1</VueMenuItem>
+          <VueMenuItem value="two">Option 2</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem value="three">Option 3</VueMenuItem>
+        </template>
+      </VueMenu>
+    </div>
+  </section>
+</template>
+
+<script>
+import { ref, onMounted, onUnmounted } from "vue";
+import VueMenu, {
+  VueMenuItem,
+  VueMenuSeparator,
+} from "agnosticui-core/menu/vue";
+import { User, Menu, X, Monitor, Smartphone } from "lucide-vue-next";
+
+export default {
+  name: "MenuExamples",
+  components: {
+    VueMenu,
+    VueMenuItem,
+    VueMenuSeparator,
+    User,
+    Menu,
+    X,
+    Monitor,
+    Smartphone,
+  },
+  setup() {
+    const lastEvent = ref(null);
+    const lastSelectedValue = ref(null);
+    const isMobile = ref(false);
+
+    const checkMobile = () => {
+      isMobile.value = window.innerWidth < 768;
+    };
+
+    onMounted(() => {
+      checkMobile();
+      window.addEventListener("resize", checkMobile);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("resize", checkMobile);
+    });
+
+    const handleMenuOpen = (detail) => {
+      const selectedInfo = lastSelectedValue.value
+        ? `, selected: ${lastSelectedValue.value}`
+        : "";
+      lastEvent.value = `menu-open (open: ${detail.open}${selectedInfo})`;
+    };
+
+    const handleMenuClose = (detail) => {
+      const selectedInfo = lastSelectedValue.value
+        ? `, selected: ${lastSelectedValue.value}`
+        : "";
+      lastEvent.value = `menu-close (open: ${detail.open}${selectedInfo})`;
+    };
+
+    const handleMenuSelect = (detail) => {
+      lastSelectedValue.value = detail.value;
+      lastEvent.value = `menu-select (value: ${detail.value})`;
+    };
+
+    const responsiveStyles = `
+      <style>
+        /* Hide desktop items on mobile (< 768px) */
+        @media (max-width: 767px) {
+          .desktop-only-items {
+            display: none;
+          }
+        }
+        
+        /* Hide mobile items on desktop (>= 768px) */
+        @media (min-width: 768px) {
+          .mobile-only-items {
+            display: none;
+          }
+        }
+      </style>
+    `;
+
+    const dynamicIconStyles = `
+      <style>
+        .dynamic-icon-menu .menu-icon,
+        .dynamic-icon-menu .close-icon {
+          transition: opacity var(--ag-motion-medium) ease-in-out;
+        }
+        .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+          opacity: 0;
+          pointer-events: none;
+          position: absolute;
+        }
+        .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+          opacity: 0;
+          pointer-events: none;
+          position: absolute;
+        }
+      </style>
+    `;
+
+    const customMenuStyles = `
+      <style>
+        .custom-menu-button ag-button::part(ag-button) {
+          background-color: #4a5568;
+          color: white;
+          border: 2px solid #2d3748;
+          border-radius: 8px;
+        }
+        .custom-menu-button .label {
+          font-weight: bold;
+        }
+        .custom-menu-button .chevron-icon {
+          color: #a0aec0;
+        }
+        .custom-menu-button ag-menu::part(ag-menu) {
+          background-color: #2d3748;
+          border: 1px solid #4a5568;
+          border-radius: 8px;
+        }
+        .custom-menu-button ag-menu::part(ag-menu-item) {
+          color: #e2e8f0;
+        }
+        .custom-menu-button ag-menu::part(ag-menu-item):hover {
+          background-color: #4a5568;
+        }
+        .custom-menu-button ag-menu::part(ag-menu-separator) {
+          background-color: #4a5568;
+        }
+        .custom-menu-button ag-menu-item::part(ag-menu-item-button) {
+          color: white;
+        }
+        .custom-menu-button ag-menu-item::part(ag-menu-item-button):focus,
+        .custom-menu-button ag-menu-item::part(ag-menu-item-button):hover {
+          color: black;
+        }
+      </style>
+    `;
+
+    return {
+      lastEvent,
+      lastSelectedValue,
+      isMobile,
+      handleMenuOpen,
+      handleMenuClose,
+      handleMenuSelect,
+      responsiveStyles,
+      dynamicIconStyles,
+      customMenuStyles,
+    };
+  },
+};
+</script>

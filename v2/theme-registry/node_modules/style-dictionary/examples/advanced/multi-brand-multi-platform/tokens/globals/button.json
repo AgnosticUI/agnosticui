@@ -1,0 +1,16 @@
+{
+  "button": {
+    "border": {
+      "radius": {
+        "value": "4px",
+        "type": "dimension"
+      }
+    },
+    "text": {
+      "size": {
+        "value": "{size.font.medium}",
+        "type": "fontSize"
+      }
+    }
+  }
+}

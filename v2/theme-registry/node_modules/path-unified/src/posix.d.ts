@@ -1,0 +1,45 @@
+export const resolve: typeof posResolve;
+export const normalize: typeof posNormalize;
+export const isAbsolute: typeof posIsAbsolute;
+export const join: typeof posJoin;
+export const relative: typeof posRelative;
+export const toNamespacedPath: typeof posToNamespacedPath;
+export const dirname: typeof posDirname;
+export const basename: typeof posBasename;
+export const extname: typeof posExtname;
+export const format: (pathObject: {
+    dir?: string | undefined;
+    root?: string | undefined;
+    base?: string | undefined;
+    name?: string | undefined;
+    ext?: string | undefined;
+}) => string;
+export const parse: typeof posParse;
+export const sep: "/";
+export const delimiter: ":";
+declare namespace _default {
+    export { resolve };
+    export { normalize };
+    export { isAbsolute };
+    export { join };
+    export { relative };
+    export { toNamespacedPath };
+    export { dirname };
+    export { basename };
+    export { extname };
+    export { format };
+    export { parse };
+    export { sep };
+    export { delimiter };
+}
+export default _default;
+import { posResolve } from './path.js';
+import { posNormalize } from './path.js';
+import { posIsAbsolute } from './path.js';
+import { posJoin } from './path.js';
+import { posRelative } from './path.js';
+import { posToNamespacedPath } from './path.js';
+import { posDirname } from './path.js';
+import { posBasename } from './path.js';
+import { posExtname } from './path.js';
+import { posParse } from './path.js';

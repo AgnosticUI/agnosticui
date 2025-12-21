@@ -1,0 +1,902 @@
+# Menu
+
+<AlphaWarning />
+
+
+A menu (dropdown menu or context menu) is a popover component that displays a list of actions or options when triggered. Menus provide a compact way to present choices without cluttering the interface.
+
+## Examples
+
+<MenuExamples />
+
+<script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
+import MenuExamples from '../examples/MenuExamples.vue'
+</script>
+
+## Usage
+
+::: tip
+The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+```bash
+npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
+npx ag add Menu
+```
+The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
+:::
+
+::: details Vue
+```vue
+<template>
+  <section>
+    <VueMenu
+      menu-variant="chevron"
+      menu-aria-label="Menu options"
+    >
+      Menu
+      <template #menu>
+        <VueMenuItem value="edit">Edit</VueMenuItem>
+        <VueMenuItem value="copy">Copy</VueMenuItem>
+        <VueMenuItem value="paste">Paste</VueMenuItem>
+        <VueMenuSeparator />
+        <VueMenuItem value="delete">Delete</VueMenuItem>
+      </template>
+    </VueMenu>
+
+    <VueMenu
+      menu-variant="button"
+      button-variant="primary"
+      size="md"
+      menu-aria-label="Actions menu"
+    >
+      Actions
+      <template #menu>
+        <VueMenuItem value="new">New File</VueMenuItem>
+        <VueMenuItem value="open">Open File</VueMenuItem>
+        <VueMenuItem value="save">Save</VueMenuItem>
+      </template>
+    </VueMenu>
+
+    <VueMenu
+      menu-variant="icon"
+      ghost
+      unicode="⋮"
+      aria-label="More options"
+      menu-aria-label="More options menu"
+    >
+      <template #menu>
+        <VueMenuItem value="settings">Settings</VueMenuItem>
+        <VueMenuItem value="profile">Profile</VueMenuItem>
+        <VueMenuSeparator />
+        <VueMenuItem value="logout">Logout</VueMenuItem>
+      </template>
+    </VueMenu>
+
+    <VueMenu
+      menu-align="right"
+      menu-aria-label="Right-aligned menu"
+    >
+      Options
+      <template #menu>
+        <VueMenuItem value="option1">Option 1</VueMenuItem>
+        <VueMenuItem value="option2">Option 2</VueMenuItem>
+        <VueMenuItem value="option3">Option 3</VueMenuItem>
+      </template>
+    </VueMenu>
+
+    <VueMenu menu-aria-label="Navigation menu">
+      Navigation
+      <template #menu>
+        <VueMenuItem value="home" href="#home">Home</VueMenuItem>
+        <VueMenuItem value="about" href="#about">About</VueMenuItem>
+        <VueMenuItem value="contact" href="#contact">Contact</VueMenuItem>
+      </template>
+    </VueMenu>
+
+    <VueMenu
+      menu-variant="button"
+      button-variant="primary"
+      menu-aria-label="Menu with disabled items"
+    >
+      Mixed States
+      <template #menu>
+        <VueMenuItem value="enabled1">Enabled Item</VueMenuItem>
+        <VueMenuItem value="disabled1" :disabled="true">Disabled Item</VueMenuItem>
+        <VueMenuItem value="enabled2">Another Enabled</VueMenuItem>
+      </template>
+    </VueMenu>
+
+    <VueMenu
+      menu-aria-label="Event testing menu"
+      @menu-open="handleMenuOpen"
+      @menu-close="handleMenuClose"
+      @menu-select="handleMenuSelect"
+    >
+      Event Test
+      <template #menu>
+        <VueMenuItem value="option1">Option 1</VueMenuItem>
+        <VueMenuItem value="option2">Option 2</VueMenuItem>
+      </template>
+    </VueMenu>
+  </section>
+</template>
+
+<script>
+import VueMenu, { VueMenuItem, VueMenuSeparator } from "agnosticui-core/menu/vue";
+
+export default {
+  components: {
+    VueMenu,
+    VueMenuItem,
+    VueMenuSeparator,
+  },
+  methods: {
+    handleMenuOpen(detail) {
+      console.log("Menu opened, open:", detail.open);
+    },
+    handleMenuClose(detail) {
+      console.log("Menu closed, open:", detail.open);
+    },
+    handleMenuSelect(detail) {
+      console.log("Selected:", detail.value);
+    },
+  },
+};
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { ReactMenuButton, ReactMenu, ReactMenuItem, ReactMenuSeparator } from 'agnosticui-core/menu/react';
+
+export default function MenuExample() {
+  const handleMenuOpen = (event) => {
+    console.log("Menu opened, open:", event.detail.open);
+  };
+
+  const handleMenuClose = (event) => {
+    console.log("Menu closed, open:", event.detail.open);
+  };
+
+  const handleMenuSelect = (event) => {
+    console.log("Selected:", event.detail.value);
+  };
+
+  return (
+    <section>
+      <ReactMenuButton
+        menuVariant="chevron"
+        size="md"
+        onMenuOpen={handleMenuOpen}
+        onMenuClose={handleMenuClose}
+      >
+        Menu
+        <ReactMenu slot="menu" ariaLabel="Menu options">
+          <ReactMenuItem value="edit" onMenuSelect={handleMenuSelect}>
+            Edit
+          </ReactMenuItem>
+          <ReactMenuItem value="copy" onMenuSelect={handleMenuSelect}>
+            Copy
+          </ReactMenuItem>
+          <ReactMenuItem value="paste" onMenuSelect={handleMenuSelect}>
+            Paste
+          </ReactMenuItem>
+          <ReactMenuSeparator />
+          <ReactMenuItem value="delete" onMenuSelect={handleMenuSelect}>
+            Delete
+          </ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+
+      <ReactMenuButton
+        menuVariant="button"
+        size="md"
+        buttonVariant="primary"
+      >
+        Actions
+        <ReactMenu slot="menu" ariaLabel="Action menu">
+          <ReactMenuItem value="new">New File</ReactMenuItem>
+          <ReactMenuItem value="open">Open File</ReactMenuItem>
+          <ReactMenuItem value="save">Save</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+
+      <ReactMenuButton
+        menuVariant="icon"
+        size="md"
+        ghost
+        unicode="⋮"
+        ariaLabel="More options"
+      >
+        <ReactMenu slot="menu" ariaLabel="More options menu">
+          <ReactMenuItem value="settings">Settings</ReactMenuItem>
+          <ReactMenuItem value="profile">Profile</ReactMenuItem>
+          <ReactMenuSeparator />
+          <ReactMenuItem value="logout">Logout</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+
+      <ReactMenuButton
+        menuVariant="chevron"
+        size="md"
+        menuAlign="right"
+      >
+        Options
+        <ReactMenu slot="menu" ariaLabel="Right-aligned menu">
+          <ReactMenuItem value="option1">Option 1</ReactMenuItem>
+          <ReactMenuItem value="option2">Option 2</ReactMenuItem>
+          <ReactMenuItem value="option3">Option 3</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+
+      <ReactMenuButton
+        menuVariant="chevron"
+        size="md"
+      >
+        Navigation
+        <ReactMenu slot="menu" ariaLabel="Navigation menu">
+          <ReactMenuItem value="home" href="#home">Home</ReactMenuItem>
+          <ReactMenuItem value="about" href="#about">About</ReactMenuItem>
+          <ReactMenuItem value="contact" href="#contact">Contact</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+
+      <ReactMenuButton
+        menuVariant="button"
+        size="md"
+        buttonVariant="primary"
+      >
+        Mixed States
+        <ReactMenu slot="menu" ariaLabel="Menu with disabled items">
+          <ReactMenuItem value="enabled1">Enabled Item</ReactMenuItem>
+          <ReactMenuItem value="disabled1" disabled>Disabled Item</ReactMenuItem>
+          <ReactMenuItem value="enabled2">Another Enabled</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+    </section>
+  );
+}
+```
+:::
+
+::: details Lit (Web Components)
+```typescript
+import { LitElement, html, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
+import 'agnosticui-core/menu';
+
+@customElement('menu-example')
+export class MenuExample extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  `;
+
+  firstUpdated() {
+    // Set up event listeners for menu components in the shadow DOM
+    const menuButton = this.shadowRoot?.querySelector('#my-menu');
+
+    menuButton?.addEventListener('menu-open', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log('Menu opened, open:', customEvent.detail.open);
+    });
+
+    menuButton?.addEventListener('menu-close', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      console.log('Menu closed, open:', customEvent.detail.open);
+    });
+
+    const menuItems = this.shadowRoot?.querySelectorAll('ag-menu-item');
+    menuItems?.forEach((item) => {
+      item.addEventListener('menu-select', (e: Event) => {
+        const customEvent = e as CustomEvent;
+        console.log('Selected:', customEvent.detail.value);
+      });
+    });
+
+    const menuButton2 = this.shadowRoot?.querySelector('#callback-menu') as any;
+    if (menuButton2) {
+      menuButton2.onMenuOpen = (e: CustomEvent) => {
+        console.log('Menu opened via callback, open:', e.detail.open);
+      };
+      menuButton2.onMenuClose = (e: CustomEvent) => {
+        console.log('Menu closed via callback, open:', e.detail.open);
+      };
+    }
+  }
+
+  render() {
+    return html`
+      <section>
+        <ag-menu-button id="my-menu" menu-variant="chevron" size="md">
+          Menu
+          <ag-menu slot="menu" aria-label="Menu options">
+            <ag-menu-item value="edit">Edit</ag-menu-item>
+            <ag-menu-item value="copy">Copy</ag-menu-item>
+            <ag-menu-item value="paste">Paste</ag-menu-item>
+            <ag-menu-separator></ag-menu-separator>
+            <ag-menu-item value="delete">Delete</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button menu-variant="button" size="md" button-variant="primary">
+          Actions
+          <ag-menu slot="menu" aria-label="Action menu">
+            <ag-menu-item value="new">New File</ag-menu-item>
+            <ag-menu-item value="open">Open File</ag-menu-item>
+            <ag-menu-item value="save">Save</ag-menu-item>
+            <ag-menu-separator></ag-menu-separator>
+            <ag-menu-item value="exit">Exit</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button menu-variant="icon" size="md" ghost unicode="⋮" aria-label="More options">
+          <ag-menu slot="menu" aria-label="More options menu">
+            <ag-menu-item value="settings">Settings</ag-menu-item>
+            <ag-menu-item value="profile">Profile</ag-menu-item>
+            <ag-menu-separator></ag-menu-separator>
+            <ag-menu-item value="logout">Logout</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button menu-variant="chevron" size="md" menu-align="right">
+          Options
+          <ag-menu slot="menu" aria-label="Right-aligned menu">
+            <ag-menu-item value="option1">Option 1</ag-menu-item>
+            <ag-menu-item value="option2">Option 2</ag-menu-item>
+            <ag-menu-item value="option3">Option 3</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button menu-variant="chevron" size="md">
+          Navigation
+          <ag-menu slot="menu" aria-label="Navigation menu">
+            <ag-menu-item value="home" href="#home">Home</ag-menu-item>
+            <ag-menu-item value="about" href="#about">About</ag-menu-item>
+            <ag-menu-item value="contact" href="#contact">Contact</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button menu-variant="button" size="md" button-variant="primary">
+          Mixed States
+          <ag-menu slot="menu" aria-label="Menu with disabled items">
+            <ag-menu-item value="enabled1">Enabled Item</ag-menu-item>
+            <ag-menu-item value="disabled1" disabled>Disabled Item</ag-menu-item>
+            <ag-menu-item value="enabled2">Another Enabled</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </section>
+    `;
+  }
+}
+```
+
+**Note:** When using menu components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
+:::
+
+## Props
+
+### Menu Button (React/Lit)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `menuVariant` | `'chevron' \| 'button' \| 'icon'` | `'chevron'` | Structural variant of the menu button |
+| `menuAlign` | `'left' \| 'right'` | `'left'` | Horizontal alignment of the menu relative to the button |
+| `buttonVariant` | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'monochrome' \| ''` | `''` | Color variant from AgButton |
+| `size` | `'x-sm' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size of the menu button (from AgButton) |
+| `shape` | `'capsule' \| 'rounded' \| 'circle' \| 'square' \| 'rounded-square' \| ''` | `'rounded'` | Shape of the button (from AgButton) |
+| `bordered` | `boolean` | `false` | Use bordered button style (from AgButton) |
+| `ghost` | `boolean` | `false` | Use ghost button style (from AgButton) |
+| `link` | `boolean` | `false` | Use link button style (from AgButton) |
+| `grouped` | `boolean` | `false` | Part of a button group (from AgButton) |
+| `disabled` | `boolean` | `false` | Disables the menu button |
+| `loading` | `boolean` | `false` | Show loading state (from AgButton) |
+| `ariaLabel` | `string` | `''` | ARIA label for the menu button |
+| `ariaDescribedby` | `string` | `''` | ARIA describedby for the menu button |
+| `unicode` | `string` | `''` | Unicode character for icon variant |
+| `additionalGutter` | `string` | `''` | Additional vertical spacing beyond the trigger button height when positioning the menu (e.g., `'10px'`, `'1rem'`) |
+
+### Menu (Vue)
+
+VueMenu inherits all the properties from Menu Button above, plus:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | `false` | Whether the menu is open (controlled mode) |
+| `placement` | `'bottom-start' \| 'bottom-end' \| 'top-start' \| 'top-end'` | `'bottom-start'` | Placement of the menu popover |
+| `menuAriaLabel` | `string` | `''` | ARIA label for the menu |
+| `menuAriaLabelledBy` | `string` | `''` | ARIA labelledby for the menu |
+
+### Menu (ag-menu element)
+
+These props apply to the `<ag-menu>` element itself (nested inside the button):
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `'default' \| 'single-select'` | `'default'` | Selection behavior: `'default'` for navigation (transient selection), `'single-select'` for persistent selection |
+| `selectedValue` | `string` | `undefined` | The currently selected item value (only applies to `type="single-select"`) |
+| `ariaLabel` | `string` | `''` | ARIA label for the menu |
+| `ariaLabelledBy` | `string` | `''` | ARIA labelledby for the menu |
+
+### Menu Item
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | `''` | Unique value for the menu item |
+| `disabled` | `boolean` | `false` | Disables the menu item |
+| `href` | `string` | `''` | URL for menu item link |
+| `target` | `string` | `''` | Target for menu item link (e.g., `_blank`) |
+| `checked` | `boolean` | `false` | Whether the menu item is checked (for single-select menus) |
+| `variant` | `'default' \| 'monochrome'` | `'default'` | Visual variant of the menu item |
+
+## Events
+
+### MenuButton Events
+
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `menu-open` | Vue: `@menu-open`<br>React: `onMenuOpen`<br>Lit: `@menu-open` or `.onMenuOpen` | `{ open: boolean }` | Fired when menu opens. The `open` property will be `true`. |
+| `menu-close` | Vue: `@menu-close`<br>React: `onMenuClose`<br>Lit: `@menu-close` or `.onMenuClose` | `{ open: boolean }` | Fired when menu closes. The `open` property will be `false`. |
+| `click` | Vue: `@click`<br>React: `onClick`<br>Lit: `@click` or `.onClick` | Native `MouseEvent` | Fired when the menu button is clicked (native composed event). |
+| `focus` | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus` or `.onFocus` | Native `FocusEvent` | Fired when the menu button receives focus (re-dispatched from host). |
+| `blur` | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur` or `.onBlur` | Native `FocusEvent` | Fired when the menu button loses focus (re-dispatched from host). |
+| `keydown` | Vue: `@keydown`<br>React: `onKeyDown`<br>Lit: `@keydown` or `.onKeyDown` | Native `KeyboardEvent` | Fired when a key is pressed on the menu button (native composed event). |
+
+### MenuItem Events
+
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `menu-select` | Vue: `@menu-select`<br>React: `onMenuSelect`<br>Lit: `@menu-select` or `.onMenuSelect` | `{ value: string }` | Fired when a menu item is selected. Contains the item's `value`. |
+| `click` | Vue: `@click`<br>React: `onClick`<br>Lit: `@click` or `.onClick` | Native `MouseEvent` | Fired when the menu item is clicked (native composed event). |
+
+### Menu Events
+
+| Event | Framework | Detail | Description |
+|-------|-----------|--------|-------------|
+| `keydown` | Vue: `@menu-keydown`<br>React: `onKeyDown` on menu<br>Lit: `@keydown` or `.onKeyDown` | Native `KeyboardEvent` | Fired when a key is pressed in the menu (native composed event). |
+
+### Event Patterns
+
+AgnosticUI Menu supports **three event handling patterns**:
+
+1. **addEventListener** (Lit/Vanilla JS):
+```javascript
+const menuButton = document.querySelector("ag-menu-button");
+menuButton.addEventListener("menu-open", (e) => {
+  console.log("Menu opened:", e.detail.open);
+});
+```
+
+2. **Callback props** (Lit/Vanilla JS):
+```javascript
+const menuButton = document.querySelector("ag-menu-button");
+menuButton.onMenuOpen = (e) => {
+  console.log("Menu opened:", e.detail.open);
+};
+```
+
+3. **Framework event handlers** (Vue/React):
+```vue
+<VueMenu @menu-open="handleMenuOpen" />
+```
+```tsx
+<ReactMenuButton onMenuOpen={handleMenuOpen} />
+```
+
+All three patterns work identically thanks to the **dual-dispatch** system.
+
+## Components
+
+### Vue
+- **VueMenu**: Main menu component with button and popover
+- **VueMenuItem**: Individual menu item (button or link)
+- **VueMenuSeparator**: Visual separator between menu items
+
+### React
+- **ReactMenuButton**: Menu trigger button
+- **ReactMenu**: Menu popover container
+- **ReactMenuItem**: Individual menu item (button or link)
+- **ReactMenuSeparator**: Visual separator between menu items
+
+### Lit
+- **ag-menu-button**: Menu trigger button
+- **ag-menu**: Menu popover container
+- **ag-menu-item**: Individual menu item (button or link)
+- **ag-menu-separator**: Visual separator between menu items
+
+## Slots
+
+### Vue
+- **Default slot**: Content for the menu button
+- **#menu template slot**: Menu items
+
+### React
+- **children**: Content for the menu button
+- **ReactMenu with slot="menu"**: Menu items
+
+### Lit
+- **Default slot**: Content for the menu button
+- **ag-menu with slot="menu"**: Menu items
+
+## Accessibility
+
+The Menu component implements the [WAI-ARIA Menu Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/):
+
+- Uses `role="button"` and `aria-haspopup="true"` for the menu trigger
+- Uses `role="menu"` for the menu container
+- Uses `role="menuitem"` for individual menu items
+- Implements keyboard navigation:
+  - **Enter/Space**: Opens the menu when focused on button
+  - **Arrow Up/Down**: Navigates between menu items
+  - **Home/End**: Jumps to first/last menu item
+  - **Enter**: Selects the focused menu item
+  - **Escape/Tab**: Closes the menu
+- Manages focus automatically:
+  - Focus moves to first item when menu opens
+  - Focus returns to button when menu closes
+  - Disabled items are skipped during navigation
+- Supports `aria-label` for accessibility
+- Menu items can be marked with `disabled` attribute
+
+### Best Practices
+
+- Always provide an `aria-label` or `menu-aria-label` for accessibility
+- Use semantic grouping with `MenuSeparator` to organize related items
+- Prefer menu items over buttons when presenting a list of actions
+- Use the `href` prop for navigation items instead of click handlers
+- Keep menu item labels concise and action-oriented
+- Use the `disabled` prop rather than hiding items when possible
+- For icon-only buttons, always provide an `aria-label`
+
+## Variants
+
+### Menu Variants (menuVariant)
+
+#### Chevron Variant (`menuVariant="chevron"`)
+The default variant shows text with a chevron indicator. Best for navigation menus or action lists.
+
+#### Button Variant (`menuVariant="button"`)
+Styled as a button without the chevron. Combine with `buttonVariant` for color variants. Best for prominent actions.
+
+#### Icon Variant (`menuVariant="icon"`)
+Displays only an icon (using `unicode` prop or children). Best for compact UIs or toolbar menus. Always requires an `aria-label`.
+
+### Button Variants (buttonVariant)
+
+Since AgMenuButton wraps AgButton, you can use any button color variant:
+- `primary` - Primary action color
+- `secondary` - Secondary action color
+- `success` - Success/positive action
+- `warning` - Warning/caution action
+- `danger` - Destructive/dangerous action
+- `monochrome` - Neutral monochrome style
+- `''` (empty) - Default/unstyled
+
+### Menu Item Variants
+
+Menu items support a `variant` prop for different visual styles:
+- `default` - Standard menu item with colored selection background
+- `monochrome` - Monochrome style with neutral selection colors
+
+### Button Styling Options
+
+All AgButton properties are available:
+- **size**: `x-sm`, `sm`, `md`, `lg`, `xl`
+- **shape**: `capsule`, `rounded`, `circle`, `square`, `rounded-square`
+- **bordered**: Add border to button
+- **ghost**: Transparent background with colored text/border
+- **link**: Style as a link
+
+## Menu Alignment
+
+The `menuAlign` prop controls the horizontal alignment of the menu relative to the trigger button:
+
+- `left` (default): Menu left edge aligns with button left edge
+- `right`: Menu right edge aligns with button right edge
+
+This is particularly useful when the menu button is positioned near the right edge of the viewport, ensuring the menu stays within view.
+
+```vue
+<VueMenu menu-align="left">Options</VueMenu>
+
+<VueMenu menu-align="right">Options</VueMenu>
+```
+
+## Placement Options
+
+The menu popover can be positioned relative to the button:
+- `bottom-start`: Below button, aligned to start (default)
+- `bottom-end`: Below button, aligned to end
+- `top-start`: Above button, aligned to start
+- `top-end`: Above button, aligned to end
+
+## Menu Types
+
+The `type` prop on the `<ag-menu>` element controls the selection behavior:
+
+### `type="default"` (Navigation Menus)
+**Use for**: Navigation, actions, commands (Profile, Logout, New File, etc.)
+
+- Selection is **transient** - items show selected state only while hovering/focused
+- Selection **clears automatically** when the menu closes
+- No persistent checked state
+- Follows WAI-ARIA `menuitem` pattern
+
+```vue
+<VueMenu menu-aria-label="User menu">
+  User
+  <template #menu>
+    <VueMenuItem value="profile">Profile</VueMenuItem>
+    <VueMenuItem value="settings">Settings</VueMenuItem>
+    <VueMenuItem value="logout">Logout</VueMenuItem>
+  </template>
+</VueMenu>
+```
+
+### `type="single-select"` (Selection Menus)
+**Use for**: Persistent selections (Sort by, Filter by, Choose theme, etc.)
+
+- Selection is **persistent** - selected item shows checked state
+- Selection **remains** after menu closes
+- Use `selectedValue` prop to control which item is checked
+- Follows WAI-ARIA `menuitemradio` pattern
+
+```vue
+<VueMenu menu-aria-label="Sort options">
+  Sort by
+  <template #menu>
+    <ag-menu type="single-select" selected-value="date">
+      <VueMenuItem value="date">Date</VueMenuItem>
+      <VueMenuItem value="name">Name</VueMenuItem>
+      <VueMenuItem value="size">Size</VueMenuItem>
+    </ag-menu>
+  </template>
+</VueMenu>
+```
+
+## Advanced Features
+
+### Additional Gutter
+
+The `additionalGutter` prop allows you to add extra vertical spacing beyond the trigger button's height when positioning the menu. This is useful when the menu button is within a taller container (like a header) and you need the menu to clear that container.
+
+::: details React
+```tsx
+import { ReactMenuButton, ReactMenu, ReactMenuItem } from "agnosticui-core/menu/react";
+
+export default function HeaderMenu() {
+  return (
+    <header style={{ height: "60px", padding: "10px", background: "#f3f4f6" }}>
+      <ReactMenuButton
+        menuVariant="chevron"
+        additionalGutter="10px"
+        ariaLabel="Header menu"
+      >
+        Menu
+        <ReactMenu slot="menu" ariaLabel="Header menu options">
+          <ReactMenuItem value="option1">Option 1</ReactMenuItem>
+          <ReactMenuItem value="option2">Option 2</ReactMenuItem>
+          <ReactMenuItem value="option3">Option 3</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+    </header>
+  );
+}
+```
+:::
+
+::: details Vue
+```vue
+<template>
+  <header style="height: 60px; padding: 10px; background: #f3f4f6;">
+    <VueMenu
+      menu-variant="chevron"
+      additional-gutter="10px"
+      aria-label="Header menu"
+      menu-aria-label="Header menu options"
+    >
+      Menu
+      <template #menu>
+        <VueMenuItem value="option1">Option 1</VueMenuItem>
+        <VueMenuItem value="option2">Option 2</VueMenuItem>
+        <VueMenuItem value="option3">Option 3</VueMenuItem>
+      </template>
+    </VueMenu>
+  </header>
+</template>
+
+<script>
+import VueMenu, { VueMenuItem } from "agnosticui-core/menu/vue";
+
+export default {
+  components: { VueMenu, VueMenuItem }
+};
+</script>
+```
+:::
+
+### Dynamic Icon Switching
+
+The menu button exposes a `data-menu-open` attribute that changes based on the menu state. You can use this with CSS to dynamically switch icons when the menu opens/closes.
+
+::: details React
+```tsx
+import { ReactMenuButton, ReactMenu, ReactMenuItem } from "agnosticui-core/menu/react";
+import React from "react";
+
+export default function DynamicIconMenu() {
+  return (
+    <>
+      <style>
+        {`
+          .dynamic-icon-menu .menu-icon,
+          .dynamic-icon-menu .close-icon {
+            transition: opacity #6366f1 ease-in-out;
+          }
+          .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+          }
+          .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+          }
+        `}
+      </style>
+      <ReactMenuButton
+        menuVariant="icon"
+        ghost
+        className="dynamic-icon-menu"
+        ariaLabel="Toggle menu"
+      >
+        <span className="menu-icon">☰</span>
+        <span className="close-icon">✕</span>
+        <ReactMenu slot="menu" ariaLabel="Navigation">
+          <ReactMenuItem value="home">Home</ReactMenuItem>
+          <ReactMenuItem value="about">About</ReactMenuItem>
+          <ReactMenuItem value="contact">Contact</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+    </>
+  );
+}
+```
+:::
+
+::: details Vue
+```vue
+<template>
+  <VueMenu
+    menu-variant="icon"
+    ghost
+    class="dynamic-icon-menu"
+    aria-label="Toggle menu"
+    menu-aria-label="Navigation"
+  >
+    <span class="menu-icon">☰</span>
+    <span class="close-icon">✕</span>
+    <template #menu>
+      <VueMenuItem value="home">Home</VueMenuItem>
+      <VueMenuItem value="about">About</VueMenuItem>
+      <VueMenuItem value="contact">Contact</VueMenuItem>
+    </template>
+  </VueMenu>
+</template>
+
+<script>
+import VueMenu, { VueMenuItem } from "agnosticui-core/menu/vue";
+
+export default {
+  components: { VueMenu, VueMenuItem }
+};
+</script>
+
+<style scoped>
+.dynamic-icon-menu :deep(.menu-icon),
+.dynamic-icon-menu :deep(.close-icon) {
+  transition: opacity #6366f1 ease-in-out;
+}
+.dynamic-icon-menu[data-menu-open="false"] :deep(.close-icon) {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+.dynamic-icon-menu[data-menu-open="true"] :deep(.menu-icon) {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+</style>
+```
+:::
+
+::: details Lit
+```html
+<style>
+  .dynamic-icon-menu .menu-icon,
+  .dynamic-icon-menu .close-icon {
+    transition: opacity #6366f1 ease-in-out;
+  }
+  .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+  .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+</style>
+
+<ag-menu-button
+  menu-variant="icon"
+  ghost
+  class="dynamic-icon-menu"
+  aria-label="Toggle menu"
+>
+  <span class="menu-icon">☰</span>
+  <span class="close-icon">✕</span>
+  <ag-menu slot="menu" aria-label="Navigation">
+    <ag-menu-item value="home">Home</ag-menu-item>
+    <ag-menu-item value="about">About</ag-menu-item>
+    <ag-menu-item value="contact">Contact</ag-menu-item>
+  </ag-menu>
+</ag-menu-button>
+```
+:::
+
+## CSS Shadow Parts
+
+| Part | Description |
+| --- | --- |
+| `ag-menu-trigger-chevron-button` | The menu button (chevron variant) |
+| `ag-menu-trigger-icon-button` | The menu button (icon variant) |
+| `ag-menu-trigger-regular-button` | The menu button (button variant) |
+| `ag-menu-label` | The label inside the chevron button |
+| `ag-menu-unicode-icon` | The unicode icon in the icon button |
+| `ag-menu-chevron-icon` | The chevron icon in the chevron button |
+| `ag-menu` | The menu container |
+| `ag-menu-item` | A menu item |
+| `ag-menu-item-button` | A menu item button |
+| `ag-menu-separator` | A separator between menu items |
+
+### Customization Example
+
+```css
+.custom-menu-button::part(ag-menu-trigger-chevron-button) {
+  background-color: #4a5568;
+  color: white;
+  border: 2px solid #2d3748;
+  border-radius: 8px;
+}
+.custom-menu-button::part(ag-menu-label) {
+  font-weight: bold;
+}
+.custom-menu-button::part(ag-menu-chevron-icon) {
+  color: #a0aec0;
+}
+.custom-menu::part(ag-menu) {
+  background-color: #2d3748;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+}
+.custom-menu::part(ag-menu-item) {
+  color: #e2e8f0;
+}
+.custom-menu::part(ag-menu-item):hover {
+  background-color: #4a5568;
+}
+.custom-menu::part(ag-menu-separator) {
+  background-color: #4a5568;
+}
+```

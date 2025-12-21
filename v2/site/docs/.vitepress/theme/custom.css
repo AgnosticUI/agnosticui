@@ -1,0 +1,298 @@
+/** Base Styles */
+
+:root {
+  /* Button Overrides */
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-bg: var(--ag-primary);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: var(--vp-c-white);
+  --vp-button-brand-hover-bg: var(--ag-primary-dark);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: var(--vp-c-white);
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    var(--ag-primary) 30%,
+    var(--ag-blue-200)
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    var(--ag-primary) 50%,
+    var(--ag-blue-200) 50%
+  );
+  --vp-home-hero-image-filter: blur(44px);
+
+  /* Brand Overrides */
+  --vp-c-brand-1: var(--ag-primary);
+  --vp-c-brand-2: var(--ag-primary);
+  --vp-c-brand-3: var(--ag-primary);
+  --vp-c-text-1: var(--ag-text-primary);
+  --vp-c-text-2: var(--ag-text-primary);
+  --vp-c-text-3: var(--ag-text-primary);
+  --vp-code-color: var(--ag-primary-text);
+  --vp-code-link-color: var(--ag-primary-text);
+  --vp-code-lang-color: var(--ag-primary-text);
+  --vp-code-block-color: var(--ag-primary-text);
+  --vp-code-block-bg: var(--ag-background-primary);
+}
+
+/* Logo */
+.title span {
+  color: var(--ag-primary);
+}
+
+/* In Dark Mode Vitepress we need to contrast --ag-primary more */
+html[data-theme="dark"] {
+  --vp-c-brand-1: #ccdfff;
+  --vp-c-brand-2: #81a7e4;
+  --vp-c-brand-3: #81a7e4;
+  --vp-c-text-2: #81a7e4;
+}
+
+/* Logo */
+.title span {
+  color: var(--vp-c-brand-1);
+}
+
+.vp-doc h4 {
+  margin-bottom: var(--ag-space-1);
+}
+
+/* .vitepress/theme/custom.css */
+.flex {
+  display: flex;
+}
+.flex-inline {
+  display: inline-flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+.full-w-h {
+  width: 100%;
+  height: 100%;
+}
+
+.m0,
+h1.m0,
+h2.m0,
+h3.m0,
+h4.m0,
+h5.m0,
+h6.m0 {
+  margin: 0;
+}
+
+.p0,
+h1.p0,
+h2.p0,
+h3.p0,
+h4.p0,
+h5.p0,
+h6.p0 {
+  padding: 0;
+}
+
+.b0,
+h1.b0,
+h2.b0,
+h3.b0,
+h4.b0,
+h5.b0,
+h6.b0 {
+  border: 0;
+}
+
+/*
+  Margin block start (mbs) utility classes
+  Maps to --ag-space-1 through --ag-space-8
+*/
+.mbs0 {
+  margin-block-start: var(--ag-space-0);
+}
+.mbs1 {
+  margin-block-start: var(--ag-space-1);
+}
+.mbs2 {
+  margin-block-start: var(--ag-space-2);
+}
+.mbs3 {
+  margin-block-start: var(--ag-space-3);
+}
+.mbs4 {
+  margin-block-start: var(--ag-space-4);
+}
+.mbs5 {
+  margin-block-start: var(--ag-space-5);
+}
+.mbs6 {
+  margin-block-start: var(--ag-space-6);
+}
+.mbs8 {
+  margin-block-start: var(--ag-space-8);
+}
+
+/*
+  Margin block end (mbe) utility classes
+  Maps to --ag-space-1 through --ag-space-8
+*/
+.mbe0 {
+  margin-block-end: var(--ag-space-0);
+}
+.mbe1 {
+  margin-block-end: var(--ag-space-1);
+}
+.mbe2 {
+  margin-block-end: var(--ag-space-2);
+}
+.mbe3 {
+  margin-block-end: var(--ag-space-3);
+}
+.mbe4 {
+  margin-block-end: var(--ag-space-4);
+}
+.mbe5 {
+  margin-block-end: var(--ag-space-5);
+}
+.mbe6 {
+  margin-block-end: var(--ag-space-6);
+}
+.mbe8 {
+  margin-block-end: var(--ag-space-8);
+}
+
+/*
+  Margin inline start (mis) utility classes
+  Maps to --ag-space-1 through --ag-space-8
+*/
+.mis0 {
+  margin-inline-start: var(--ag-space-0);
+}
+.mis1 {
+  margin-inline-start: var(--ag-space-1);
+}
+.mis2 {
+  margin-inline-start: var(--ag-space-2);
+}
+.mis3 {
+  margin-inline-start: var(--ag-space-3);
+}
+.mis4 {
+  margin-inline-start: var(--ag-space-4);
+}
+.mis5 {
+  margin-inline-start: var(--ag-space-5);
+}
+.mis6 {
+  margin-inline-start: var(--ag-space-6);
+}
+.mis8 {
+  margin-inline-start: var(--ag-space-8);
+}
+
+/*
+  Margin inline end (mie) utility classes
+  Maps to --ag-space-1 through --ag-space-8
+*/
+.mie0 {
+  margin-inline-end: var(--ag-space-0);
+}
+.mie1 {
+  margin-inline-end: var(--ag-space-1);
+}
+.mie2 {
+  margin-inline-end: var(--ag-space-2);
+}
+.mie3 {
+  margin-inline-end: var(--ag-space-3);
+}
+.mie4 {
+  margin-inline-end: var(--ag-space-4);
+}
+.mie5 {
+  margin-inline-end: var(--ag-space-5);
+}
+.mie6 {
+  margin-inline-end: var(--ag-space-6);
+}
+.mie8 {
+  margin-inline-end: var(--ag-space-8);
+}
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ag-space-4);
+}
+
+.stacked-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ag-space-4);
+}
+
+@media (min-width: 768px) {
+  .stacked-mobile {
+    flex-direction: row;
+  }
+}
+
+/* Reset VitePress's aggressive table styling */
+.vp-doc table {
+  display: table !important; /* VitePress uses display: block */
+  border-collapse: collapse;
+  margin: 0; /* Remove VitePress margin */
+  overflow-x: visible; /* Remove VitePress overflow */
+}
+
+.vp-doc tr {
+  background-color: transparent; /* Remove VitePress zebra striping */
+  border-top: none; /* Remove VitePress border */
+  transition: none;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: transparent; /* Remove VitePress even row coloring */
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: none; /* Remove all VitePress borders */
+  padding: 0; /* Reset padding */
+  text-align: left;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+/* Lighthouse gave us contrast issues across the board. Removing the code
+block backgrounds supplied more contrast. Here we add a subtle border to
+make it a bit more aesthetically pleasing. */
+.vp-doc div[class*="language-"],
+.vp-block {
+  border: 1px solid var(--ag-border);
+}
+@media (min-width: 640px) {
+  .vp-doc div[class*="language-"],
+  .vp-block {
+    border: 1px solid var(--ag-border);
+  }
+}

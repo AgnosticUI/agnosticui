@@ -1,0 +1,1186 @@
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import { fn } from "storybook/test";
+import "agnosticui-core/menu";
+
+// Define props interface for MenuButton
+interface MenuButtonProps {
+  menuVariant?: "chevron" | "button" | "icon";
+  size?: "x-sm" | "sm" | "md" | "lg" | "xl";
+  buttonVariant?: "primary" | "secondary" | "success" | "warning" | "danger" | "monochrome" | "";
+  bordered?: boolean;
+  ghost?: boolean;
+  disabled?: boolean;
+  ariaLabel?: string;
+  unicode?: string;
+  menuAlign?: "left" | "right";
+  additionalGutter?: string;
+  label?: string;
+  onMenuOpen?: (e: Event) => void;
+  onMenuClose?: (e: Event) => void;
+  onMenuSelect?: (e: CustomEvent) => void;
+}
+
+const meta: Meta<MenuButtonProps> = {
+  title: "AgnosticUI Lit/Menu",
+  component: "ag-menu-button",
+  tags: ["autodocs"],
+  argTypes: {
+    menuVariant: {
+      control: "select",
+      options: ["chevron", "button", "icon"],
+      description: "Structural variant of the menu button",
+    },
+    size: {
+      control: "select",
+      options: ["x-sm", "sm", "md", "lg", "xl"],
+      description: "Size of the menu button",
+    },
+    menuAlign: {
+      control: "select",
+      options: ["left", "right"],
+      description: "Alignment of the menu relative to the trigger button",
+    },
+    buttonVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "danger", "monochrome", ""],
+      description: "Button color variant (from AgButton)",
+    },
+    bordered: {
+      control: "boolean",
+      description: "Use bordered button style",
+    },
+    ghost: {
+      control: "boolean",
+      description: "Use ghost button style",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disables the menu button",
+    },
+    ariaLabel: {
+      control: "text",
+      description: "ARIA label for accessibility",
+    },
+    unicode: {
+      control: "text",
+      description: "Unicode character for icon",
+    },
+    additionalGutter: {
+      control: "text",
+      description: "Additional vertical spacing beyond the trigger button height when positioning the menu (e.g., '10px', '1rem')",
+    },
+    label: {
+      control: "text",
+      description: "Label text for the button",
+    },
+  },
+  args: {
+    menuVariant: "chevron",
+    size: "md",
+    menuAlign: "left",
+    buttonVariant: "",
+    bordered: false,
+    ghost: false,
+    disabled: false,
+    label: "Menu",
+    onMenuOpen: fn(),
+    onMenuClose: fn(),
+    onMenuSelect: fn(),
+  },
+  parameters: {
+    actions: {
+      handles: ["menu-open", "menu-close", "menu-select"],
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<MenuButtonProps>;
+
+// Default story with all controls
+export const Default: Story = {
+  args: {
+    menuVariant: "chevron",
+    size: "md",
+    label: "Menu",
+  },
+  render: ({
+    menuVariant,
+    size,
+    buttonVariant,
+    bordered,
+    ghost,
+    disabled,
+    ariaLabel,
+    label,
+    onMenuOpen,
+    onMenuClose,
+    onMenuSelect,
+  }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        .buttonVariant=${buttonVariant}
+        ?bordered=${bordered}
+        ?ghost=${ghost}
+        .disabled=${disabled}
+        .ariaLabel=${ariaLabel}
+        @menu-open=${(e: Event) => onMenuOpen(e)}
+        @menu-close=${(e: Event) => onMenuClose(e)}
+      >
+        ${label || "Menu"}
+        <ag-menu slot="menu" .ariaLabel=${"Menu options"}>
+          <ag-menu-item
+            .value=${"edit"}
+            @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}
+          >
+            Edit
+          </ag-menu-item>
+          <ag-menu-item
+            .value=${"copy"}
+            @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}
+          >
+            Copy
+          </ag-menu-item>
+          <ag-menu-item
+            .value=${"paste"}
+            @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}
+          >
+            Paste
+          </ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item
+            .value=${"delete"}
+            @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}
+          >
+            Delete
+          </ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Chevron variant (default)
+export const ChevronVariant: Story = {
+  args: {
+    menuVariant: "chevron",
+    label: "Options",
+  },
+  render: ({ menuVariant, size, buttonVariant, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        .buttonVariant=${buttonVariant}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Options menu"}>
+          <ag-menu-item .value=${"option1"}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${"option2"}>Option 2</ag-menu-item>
+          <ag-menu-item .value=${"option3"}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+export const MenuAlignRight: Story = {
+  args: {
+    menuVariant: "chevron",
+    menuAlign: "right",
+    label: "Options",
+  },
+  render: ({ menuVariant, menuAlign, size, buttonVariant, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .menuAlign=${menuAlign}
+        .size=${size}
+        .buttonVariant=${buttonVariant}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Options menu"}>
+          <ag-menu-item .value=${"option1"}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${"option2"}>Option 2</ag-menu-item>
+          <ag-menu-item .value=${"option3"}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Button variant
+export const ButtonVariant: Story = {
+  args: {
+    menuVariant: "button",
+    buttonVariant: "primary",
+    label: "Actions",
+  },
+  render: ({ menuVariant, buttonVariant, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .buttonVariant=${buttonVariant}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Action menu"}>
+          <ag-menu-item .value=${"new"}>New File</ag-menu-item>
+          <ag-menu-item .value=${"open"}>Open File</ag-menu-item>
+          <ag-menu-item .value=${"save"}>Save</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${"exit"}>Exit</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Icon variant
+export const IconVariant: Story = {
+  args: {
+    menuVariant: "icon",
+    size: "md",
+    ghost: true,
+    unicode: "⋮",
+    ariaLabel: "More options",
+  },
+  render: ({ menuVariant, size, buttonVariant, ghost, unicode, ariaLabel }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        .buttonVariant=${buttonVariant}
+        ?ghost=${ghost}
+        .unicode=${unicode}
+        .ariaLabel=${ariaLabel}
+      >
+        <ag-menu slot="menu" .ariaLabel=${"More options menu"}>
+          <ag-menu-item .value=${"settings"}>Settings</ag-menu-item>
+          <ag-menu-item .value=${"profile"}>Profile</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${"logout"}>Logout</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Size variants
+export const SizeXS: Story = {
+  args: {
+    menuVariant: "button",
+    size: "x-sm",
+    label: "XS Menu",
+  },
+  render: ({ menuVariant, size, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Extra small menu"}>
+          <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+          <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+export const SizeSM: Story = {
+  args: {
+    menuVariant: "button",
+    size: "sm",
+    label: "Small Menu",
+  },
+  render: ({ menuVariant, size, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Small menu"}>
+          <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+          <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+export const SizeMD: Story = {
+  args: {
+    menuVariant: "button",
+    size: "md",
+    label: "Medium Menu",
+  },
+  render: ({ menuVariant, size, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Medium menu"}>
+          <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+          <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+export const SizeLG: Story = {
+  args: {
+    menuVariant: "button",
+    size: "lg",
+    label: "Large Menu",
+  },
+  render: ({ menuVariant, size, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Large menu"}>
+          <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+          <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+export const SizeXL: Story = {
+  args: {
+    menuVariant: "button",
+    size: "xl",
+    label: "XL Menu",
+  },
+  render: ({ menuVariant, size, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Extra large menu"}>
+          <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+          <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Button variant styles
+export const PrimaryButton: Story = {
+  args: {
+    menuVariant: "button",
+    size: "md",
+    buttonVariant: "primary",
+    label: "Primary Menu",
+  },
+  render: ({ menuVariant, size, buttonVariant, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        .buttonVariant=${buttonVariant}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Primary menu"}>
+          <ag-menu-item .value=${"option1"}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${"option2"}>Option 2</ag-menu-item>
+          <ag-menu-item .value=${"option3"}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+export const SecondaryButton: Story = {
+  args: {
+    menuVariant: "button",
+    size: "md",
+    buttonVariant: "secondary",
+    label: "Secondary Menu",
+  },
+  render: ({ menuVariant, size, buttonVariant, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        .buttonVariant=${buttonVariant}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Secondary menu"}>
+          <ag-menu-item .value=${"option1"}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${"option2"}>Option 2</ag-menu-item>
+          <ag-menu-item .value=${"option3"}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+export const GhostButton: Story = {
+  args: {
+    menuVariant: "button",
+    size: "md",
+    ghost: true,
+    label: "Ghost Menu",
+  },
+  render: ({ menuVariant, size, ghost, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        ?ghost=${ghost}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Ghost menu"}>
+          <ag-menu-item .value=${"option1"}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${"option2"}>Option 2</ag-menu-item>
+          <ag-menu-item .value=${"option3"}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+export const DangerButton: Story = {
+  args: {
+    menuVariant: "button",
+    size: "md",
+    buttonVariant: "danger",
+    label: "Danger Actions",
+  },
+  render: ({ menuVariant, size, buttonVariant, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        .buttonVariant=${buttonVariant}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Danger actions menu"}>
+          <ag-menu-item .value=${"clear"}>Clear All</ag-menu-item>
+          <ag-menu-item .value=${"reset"}>Reset Settings</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${"delete-account"}>Delete Account</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Menu with links
+export const MenuWithLinks: Story = {
+  args: {
+    menuVariant: "chevron",
+    size: "md",
+    label: "Navigation",
+  },
+  render: ({ menuVariant, size, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Navigation menu"}>
+          <ag-menu-item .value=${"home"} .href=${"#home"}>Home</ag-menu-item>
+          <ag-menu-item .value=${"about"} .href=${"#about"}>About</ag-menu-item>
+          <ag-menu-item .value=${"contact"} .href=${"#contact"}
+            >Contact</ag-menu-item
+          >
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item
+            .value=${"external"}
+            .href=${"https://example.com"}
+            .target=${"_blank"}
+          >
+            External Link
+          </ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Disabled state
+export const Disabled: Story = {
+  args: {
+    menuVariant: "button",
+    size: "md",
+    label: "Disabled Menu",
+    disabled: true,
+  },
+  render: ({ menuVariant, size, label, disabled }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        .disabled=${disabled}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Disabled menu"}>
+          <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+          <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Menu with disabled items
+export const DisabledItems: Story = {
+  args: {
+    menuVariant: "button",
+    size: "md",
+    label: "Mixed States",
+  },
+  render: ({ menuVariant, size, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Menu with disabled items"}>
+          <ag-menu-item .value=${"enabled1"}>Enabled Item</ag-menu-item>
+          <ag-menu-item .value=${"disabled1"} .disabled=${true}
+            >Disabled Item</ag-menu-item
+          >
+          <ag-menu-item .value=${"enabled2"}>Another Enabled</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${"disabled2"} .disabled=${true}
+            >Another Disabled</ag-menu-item
+          >
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Complex menu with multiple sections
+export const ComplexMenu: Story = {
+  args: {
+    menuVariant: "button",
+    size: "md",
+    label: "File",
+  },
+  render: ({ menuVariant, size, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"File menu"}>
+          <ag-menu-item .value=${"new"}>New</ag-menu-item>
+          <ag-menu-item .value=${"open"}>Open...</ag-menu-item>
+          <ag-menu-item .value=${"recent"}>Open Recent</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${"save"}>Save</ag-menu-item>
+          <ag-menu-item .value=${"save-as"}>Save As...</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${"export"}>Export</ag-menu-item>
+          <ag-menu-item .value=${"import"}>Import</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${"print"}>Print</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${"close"}>Close</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Event testing
+export const EventTesting: Story = {
+  args: {
+    menuVariant: "chevron",
+    size: "md",
+    label: "Event Testing",
+  },
+  render: ({
+    menuVariant,
+    size,
+    label,
+    onMenuOpen,
+    onMenuClose,
+    onMenuSelect,
+  }) => html`
+    <div style="padding: 50px;">
+      <p style="margin-bottom: 1rem;">
+        Open the menu and select items to test events
+      </p>
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        @menu-open=${(e: Event) => onMenuOpen(e)}
+        @menu-close=${(e: Event) => onMenuClose(e)}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Event testing menu"}>
+          <ag-menu-item
+            .value=${"option1"}
+            @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}
+          >
+            Option 1
+          </ag-menu-item>
+          <ag-menu-item
+            .value=${"option2"}
+            @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}
+          >
+            Option 2
+          </ag-menu-item>
+          <ag-menu-item
+            .value=${"option3"}
+            @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}
+          >
+            Option 3
+          </ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+      <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1rem;">
+        Check the Actions panel below for event logs (shows selected item
+        details)
+      </p>
+    </div>
+  `,
+};
+
+// Keyboard navigation
+export const KeyboardNavigation: Story = {
+  args: {
+    menuVariant: "button",
+    size: "md",
+    buttonVariant: "primary",
+    label: "Keyboard Navigation",
+  },
+  render: ({ menuVariant, size, buttonVariant, label }) => html`
+    <div style="padding: 50px;">
+      <p style="margin-bottom: 1rem;">
+        <strong>Keyboard Navigation:</strong>
+        <br />• Click or press Enter/Space to open menu <br />• Arrow Up/Down:
+        Navigate menu items <br />• Home/End: Jump to first/last item <br />•
+        Enter: Select the focused item <br />• Escape/Tab: Close the menu
+      </p>
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        .buttonVariant=${buttonVariant}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${"Keyboard navigation menu"}>
+          <ag-menu-item .value=${"first"}>First Item</ag-menu-item>
+          <ag-menu-item .value=${"second"}>Second Item</ag-menu-item>
+          <ag-menu-item .value=${"third"}>Third Item</ag-menu-item>
+          <ag-menu-item .value=${"fourth"} .disabled=${true}
+            >Disabled Item (skipped)</ag-menu-item
+          >
+          <ag-menu-item .value=${"fifth"}>Fifth Item</ag-menu-item>
+          <ag-menu-item .value=${"sixth"}>Sixth Item (Last)</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// All variants comparison
+export const AllVariants: Story = {
+  render: () => html`
+    <div style="display: flex; gap: 2rem; padding: 50px; flex-wrap: wrap;">
+      <div>
+        <p style="margin-bottom: 0.5rem; font-weight: bold;">Chevron Variant</p>
+        <ag-menu-button .menuVariant=${"chevron"} .size=${"md"}>
+          Options
+          <ag-menu slot="menu" .ariaLabel=${"Options menu"}>
+            <ag-menu-item .value=${"edit"}>Edit</ag-menu-item>
+            <ag-menu-item .value=${"copy"}>Copy</ag-menu-item>
+            <ag-menu-item .value=${"paste"}>Paste</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div>
+        <p style="margin-bottom: 0.5rem; font-weight: bold;">Button Variant</p>
+        <ag-menu-button
+          .menuVariant=${"button"}
+          .size=${"md"}
+          .buttonVariant=${"primary"}
+        >
+          Actions
+          <ag-menu slot="menu" .ariaLabel=${"Actions menu"}>
+            <ag-menu-item .value=${"new"}>New</ag-menu-item>
+            <ag-menu-item .value=${"open"}>Open</ag-menu-item>
+            <ag-menu-item .value=${"save"}>Save</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div>
+        <p style="margin-bottom: 0.5rem; font-weight: bold;">Icon Variant</p>
+        <ag-menu-button
+          .menuVariant=${"icon"}
+          .size=${"md"}
+          .unicode=${"⋮"}
+          .ariaLabel=${"More options"}
+        >
+          <ag-menu slot="menu" .ariaLabel=${"More menu"}>
+            <ag-menu-item .value=${"settings"}>Settings</ag-menu-item>
+            <ag-menu-item .value=${"profile"}>Profile</ag-menu-item>
+            <ag-menu-item .value=${"logout"}>Logout</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+    </div>
+  `,
+};
+
+// All sizes comparison
+export const AllSizes: Story = {
+  render: () => html`
+    <div
+      style="display: flex; flex-direction: column; gap: 1.5rem; padding: 50px;"
+    >
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="width: 100px;">Extra Small:</span>
+        <ag-menu-button
+          .menuVariant=${"button"}
+          .size=${"x-sm"}
+          .buttonVariant=${"primary"}
+        >
+          XS Menu
+          <ag-menu slot="menu" .ariaLabel=${"XS menu"}>
+            <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+            <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="width: 100px;">Small:</span>
+        <ag-menu-button
+          .menuVariant=${"button"}
+          .size=${"sm"}
+          .buttonVariant=${"primary"}
+        >
+          SM Menu
+          <ag-menu slot="menu" .ariaLabel=${"SM menu"}>
+            <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+            <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="width: 100px;">Medium:</span>
+        <ag-menu-button
+          .menuVariant=${"button"}
+          .size=${"md"}
+          .buttonVariant=${"primary"}
+        >
+          MD Menu
+          <ag-menu slot="menu" .ariaLabel=${"MD menu"}>
+            <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+            <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="width: 100px;">Large:</span>
+        <ag-menu-button
+          .menuVariant=${"button"}
+          .size=${"lg"}
+          .buttonVariant=${"primary"}
+        >
+          LG Menu
+          <ag-menu slot="menu" .ariaLabel=${"LG menu"}>
+            <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+            <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="width: 100px;">Extra Large:</span>
+        <ag-menu-button
+          .menuVariant=${"button"}
+          .size=${"xl"}
+          .buttonVariant=${"primary"}
+        >
+          XL Menu
+          <ag-menu slot="menu" .ariaLabel=${"XL menu"}>
+            <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+            <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+    </div>
+  `,
+};
+
+// All button variants comparison
+export const AllButtonVariants: Story = {
+  render: () => html`
+    <div
+      style="display: flex; flex-direction: column; gap: 1.5rem; padding: 50px;"
+    >
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="width: 100px;">Primary:</span>
+        <ag-menu-button
+          .menuVariant=${"button"}
+          .size=${"md"}
+          .buttonVariant=${"primary"}
+        >
+          Primary
+          <ag-menu slot="menu" .ariaLabel=${"Primary menu"}>
+            <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+            <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="width: 100px;">Secondary:</span>
+        <ag-menu-button
+          .menuVariant=${"button"}
+          .size=${"md"}
+          .buttonVariant=${"secondary"}
+        >
+          Secondary
+          <ag-menu slot="menu" .ariaLabel=${"Secondary menu"}>
+            <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+            <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="width: 100px;">Ghost:</span>
+        <ag-menu-button
+          .menuVariant=${"button"}
+          .size=${"md"}
+          ?ghost=${true}
+        >
+          Ghost
+          <ag-menu slot="menu" .ariaLabel=${"Ghost menu"}>
+            <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+            <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="width: 100px;">Danger:</span>
+        <ag-menu-button
+          .menuVariant=${"button"}
+          .size=${"md"}
+          .buttonVariant=${"danger"}
+        >
+          Danger
+          <ag-menu slot="menu" .ariaLabel=${"Danger menu"}>
+            <ag-menu-item .value=${"item1"}>Item 1</ag-menu-item>
+            <ag-menu-item .value=${"item2"}>Item 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+    </div>
+  `,
+};
+
+// Callback Props Pattern (alternative to addEventListener)
+export const CallbackPropsPattern: Story = {
+  render: () => {
+    const menuButton = document.createElement('ag-menu-button');
+
+    // Using callback props instead of addEventListener
+    menuButton.onMenuOpen = (e) => {
+      console.log('onMenuOpen callback:', e.detail);
+      alert('Menu opened via callback prop!');
+    };
+    menuButton.onMenuClose = (e) => {
+      console.log('onMenuClose callback:', e.detail);
+    };
+    menuButton.onClick = (e) => {
+      console.log('onClick callback:', e);
+    };
+
+    return html`
+      <div style="padding: 50px;">
+        <p style="margin-bottom: 1rem;">
+          <strong>Using Callback Props:</strong>
+          <br />This example demonstrates using callback properties (onMenuOpen, onMenuClose, onClick)
+          <br />instead of addEventListener. Both patterns work identically.
+        </p>
+        <ag-menu-button
+          .menuVariant=${"chevron"}
+          .size=${"md"}
+          .onMenuOpen=${(e: CustomEvent) => {
+            console.log('Menu opened! Detail:', e.detail);
+            alert(`Menu opened! open=${e.detail.open}`);
+          }}
+          .onMenuClose=${(e: CustomEvent) => {
+            console.log('Menu closed! Detail:', e.detail);
+          }}
+          .onClick=${(e: MouseEvent) => {
+            console.log('Button clicked!', e);
+          }}
+        >
+          Callback Props Menu
+          <ag-menu slot="menu" .ariaLabel=${"Callback props menu"}>
+            <ag-menu-item
+              .value=${"option1"}
+              .onMenuSelect=${(e: CustomEvent) => {
+                console.log('Item selected via callback! Detail:', e.detail);
+                alert(`Selected: ${e.detail.value}`);
+              }}
+              .onClick=${(e: MouseEvent) => {
+                console.log('Menu item clicked!', e);
+              }}
+            >
+              Option 1 (click me!)
+            </ag-menu-item>
+            <ag-menu-item
+              .value=${"option2"}
+              .onMenuSelect=${(e: CustomEvent) => {
+                console.log('Option 2 selected:', e.detail);
+              }}
+            >
+              Option 2
+            </ag-menu-item>
+            <ag-menu-item
+              .value=${"option3"}
+              .onMenuSelect=${(e: CustomEvent) => {
+                console.log('Option 3 selected:', e.detail);
+              }}
+            >
+              Option 3
+            </ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+        <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1rem;">
+          Check the browser console for callback logs, and interact with the menu
+          to see alerts from callback props!
+        </p>
+      </div>
+    `;
+  },
+};
+
+// CSS Parts customization
+export const CSSPartsCustomization: Story = {
+  render: () => html`
+    <style>
+      .custom-menu-button::part(ag-menu-trigger-chevron-button) {
+        background-color: #4a5568;
+        color: white;
+        border: 2px solid #2d3748;
+        border-radius: 8px;
+      }
+      .custom-menu-button::part(ag-menu-label) {
+        font-weight: bold;
+      }
+      .custom-menu-button::part(ag-menu-chevron-icon) {
+        color: #a0aec0;
+      }
+      .custom-menu::part(ag-menu) {
+        background-color: #2d3748;
+        border: 1px solid #4a5568;
+        border-radius: 8px;
+      }
+      .custom-menu::part(ag-menu-item) {
+        color: #e2e8f0;
+      }
+      .custom-menu::part(ag-menu-item):hover {
+        background-color: #4a5568;
+      }
+      .custom-menu::part(ag-menu-separator) {
+        background-color: #4a5568;
+      }
+    </style>
+    <div style="padding: 50px;">
+      <ag-menu-button class="custom-menu-button">
+        Custom Menu
+        <ag-menu slot="menu" class="custom-menu">
+          <ag-menu-item .value=${"one"}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${"two"}>Option 2</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${"three"}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Monochrome selected variant
+export const MonochromeSelected: Story = {
+  args: {
+    menuVariant: 'chevron',
+    label: 'Monochrome Menu',
+  },
+  render: ({ menuVariant, size, label }) => html`
+    <div style="padding: 50px;">
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+      >
+        ${label}
+        <ag-menu slot="menu" .ariaLabel=${'Monochrome menu'} .type=${'single-select'} .selectedValue=${'option2'}>
+          <ag-menu-item .value=${'option1'} .variant=${'monochrome'}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${'option2'} .variant=${'monochrome'}>Option 2 (Selected)</ag-menu-item>
+          <ag-menu-item .value=${'option3'} .variant=${'monochrome'}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// New Feature: Additional Gutter Example
+export const AdditionalGutter: Story = {
+  args: {
+    menuVariant: 'chevron',
+    size: 'sm',
+    additionalGutter: '20px',
+  },
+  render: ({ menuVariant, size, additionalGutter }) => html`
+    <div style="padding: 100px 50px; background: #f3f4f6;">
+      <p style="margin-bottom: 1rem;">
+        This menu has <code>additionalGutter="20px"</code> which adds extra vertical spacing
+        beyond the button height when positioning the menu.
+      </p>
+      <ag-menu-button
+        .menuVariant=${menuVariant}
+        .size=${size}
+        .additionalGutter=${additionalGutter}
+      >
+        Menu with Extra Gutter
+        <ag-menu slot="menu" .ariaLabel=${'Menu with additional gutter'}>
+          <ag-menu-item .value=${'option1'}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${'option2'}>Option 2</ag-menu-item>
+          <ag-menu-item .value=${'option3'}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+
+// Menu Types: Default (Navigation) vs Single-Select
+export const MenuTypes: Story = {
+  args: {
+    menuVariant: 'chevron',
+    size: 'md',
+  },
+  render: ({ menuVariant, size }) => html`
+    <div style="padding: 50px; display: flex; gap: 2rem; flex-wrap: wrap;">
+      <div>
+        <h3 style="margin-bottom: 0.5rem;">Navigation Menu (type="default")</h3>
+        <p style="margin-bottom: 1rem; font-size: 0.875rem; color: #6b7280; max-width: 300px;">
+          Selection clears when menu closes. Use for navigation and actions.
+        </p>
+        <ag-menu-button
+          .menuVariant=${menuVariant}
+          .size=${size}
+        >
+          User Menu
+          <ag-menu slot="menu" .ariaLabel=${'User navigation'}>
+            <ag-menu-item .value=${'profile'}>Profile</ag-menu-item>
+            <ag-menu-item .value=${'settings'}>Settings</ag-menu-item>
+            <ag-menu-separator></ag-menu-separator>
+            <ag-menu-item .value=${'logout'}>Logout</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: 0.5rem;">Selection Menu (type="single-select")</h3>
+        <p style="margin-bottom: 1rem; font-size: 0.875rem; color: #6b7280; max-width: 300px;">
+          Selection persists when menu closes. Use for filters, sorting, etc.
+        </p>
+        <ag-menu-button
+          .menuVariant=${menuVariant}
+          .size=${size}
+        >
+          Sort by
+          <ag-menu slot="menu" .type=${'single-select'} .selectedValue=${'date'} .ariaLabel=${'Sort options'}>
+            <ag-menu-item .value=${'date'}>Date</ag-menu-item>
+            <ag-menu-item .value=${'name'}>Name</ag-menu-item>
+            <ag-menu-item .value=${'size'}>Size</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+    </div>
+  `,
+};
+
+// New Feature: Dynamic Icon Switching
+export const DynamicIconSwitching: Story = {
+  args: {
+    menuVariant: 'icon',
+    size: 'sm',
+    ghost: true,
+    ariaLabel: 'Toggle menu',
+  },
+  render: ({ menuVariant, size, ghost, ariaLabel }) => html`
+    <style>
+      .dynamic-icon-menu .icon-container {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+      .dynamic-icon-menu .menu-icon,
+      .dynamic-icon-menu .close-icon {
+        position: absolute;
+        transition: opacity var(--ag-motion-medium) ease-in-out;
+      }
+      .dynamic-icon-menu[data-menu-open="false"] .close-icon {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .dynamic-icon-menu[data-menu-open="true"] .menu-icon {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+    <div style="padding: 100px 50px;">
+      <p style="margin-bottom: 1rem;">
+        This example shows dynamic icon switching based on menu state.
+        The icon changes from a hamburger menu (☰) when closed to an X (✕) when open.
+      </p>
+      <ag-menu-button
+        class="dynamic-icon-menu"
+        .menuVariant=${menuVariant}
+        .size=${size}
+        ?ghost=${ghost}
+        .ariaLabel=${ariaLabel}
+      >
+        <span class="icon-container">
+          <span class="menu-icon" style="font-size: 1.25rem;">☰</span>
+          <span class="close-icon" style="font-size: 0.875rem;">✕</span>
+        </span>
+        <ag-menu slot="menu" .ariaLabel=${'Navigation menu'}>
+          <ag-menu-item .value=${'home'}>Home</ag-menu-item>
+          <ag-menu-item .value=${'about'}>About</ag-menu-item>
+          <ag-menu-item .value=${'contact'}>Contact</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${'logout'}>Logout</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+

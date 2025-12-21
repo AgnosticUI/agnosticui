@@ -48,7 +48,13 @@ export default {
       "/config/": getConfigSidebar(),
       "/": getDocsSidebar()
     }
-  }
+  },
+  markdown: {
+    theme: {
+      light: 'github-light-high-contrast',
+      dark: 'github-dark-high-contrast'
+    }
+  },
 };
 
 function getDocsSidebar() {

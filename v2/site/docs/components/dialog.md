@@ -1,0 +1,455 @@
+# Dialog
+
+<AlphaWarning />
+
+
+A dialog is a modal window that overlays the main content and requires user interaction before returning to the application. Dialogs are useful for confirmations, alerts, forms, and presenting focused content.
+
+## Examples
+
+<DialogExamples />
+
+<script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
+import DialogExamples from '../examples/DialogExamples.vue'
+</script>
+
+## Usage
+
+::: tip
+The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+```bash
+npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
+npx ag add Dialog
+```
+The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
+:::
+
+::: details Vue
+
+```vue
+<template>
+  <section>
+    <VueButton @click="showDialog">Open Dialog</VueButton>
+    <VueDialog
+      v-model:open="isOpen"
+      heading="Dialog Title"
+      description="This is a dialog description"
+      @dialog-close="handleClose"
+    >
+      <p>This is the dialog content.</p>
+    </VueDialog>
+
+    <VueButton @click="showCustomDialog">Open Custom Dialog</VueButton>
+    <VueDialog v-model:open="isCustomOpen">
+      <VueDialogHeader>
+        <h2 style="margin: 0;">Custom Header</h2>
+      </VueDialogHeader>
+      <p>Dialog with custom header and footer.</p>
+      <VueDialogFooter>
+        <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+          <VueButton @click="isCustomOpen = false">Cancel</VueButton>
+          <VueButton variant="primary" @click="isCustomOpen = false"
+            >Confirm</VueButton
+          >
+        </div>
+      </VueDialogFooter>
+    </VueDialog>
+
+    <VueButton @click="showCloseButtonDialog">Open Dialog</VueButton>
+    <VueDialog
+      v-model:open="isCloseButtonOpen"
+      heading="Dialog with Close Button"
+      show-close-button
+    >
+      <p>This dialog includes a close button.</p>
+    </VueDialog>
+
+    <VueButton @click="showEventDialog">Open Dialog</VueButton>
+    <VueDialog
+      v-model:open="isEventOpen"
+      heading="Event Testing"
+      show-close-button
+      @dialog-open="handleOpen"
+      @dialog-close="handleClose"
+      @dialog-cancel="handleCancel"
+    >
+      <p>Try closing this dialog different ways to see events.</p>
+    </VueDialog>
+  </section>
+</template>
+
+<script>
+import VueDialog, {
+  VueDialogHeader,
+  VueDialogFooter,
+} from "agnosticui-core/dialog/vue";
+import VueButton from "agnosticui-core/button/vue";
+
+export default {
+  components: {
+    VueDialog,
+    VueDialogHeader,
+    VueDialogFooter,
+    VueButton,
+  },
+  data() {
+    return {
+      isOpen: false,
+      isCustomOpen: false,
+      isCloseButtonOpen: false,
+      isEventOpen: false,
+    };
+  },
+  methods: {
+    showDialog() {
+      this.isOpen = true;
+    },
+    showCustomDialog() {
+      this.isCustomOpen = true;
+    },
+    showCloseButtonDialog() {
+      this.isCloseButtonOpen = true;
+    },
+    showEventDialog() {
+      this.isEventOpen = true;
+    },
+    handleOpen() {
+      console.log("Dialog opened");
+    },
+    handleClose() {
+      console.log("Dialog closed");
+    },
+    handleCancel() {
+      console.log("Dialog cancelled");
+    },
+  },
+};
+</script>
+```
+
+:::
+
+::: details React
+
+```tsx
+import { useState } from "react";
+import {
+  ReactDialog,
+  DialogHeader,
+  DialogFooter,
+} from "agnosticui-core/dialog/react";
+
+export default function DialogExample() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isCustomOpen, setIsCustomOpen] = useState(false);
+  const [isCloseButtonOpen, setIsCloseButtonOpen] = useState(false);
+
+  const handleClose = () => {
+    console.log("Dialog closed");
+    setIsOpen(false);
+  };
+
+  const handleCancel = () => {
+    console.log("Dialog cancelled");
+    setIsOpen(false);
+  };
+
+  return (
+    <section>
+      <button onClick={() => setIsOpen(true)}>Open Dialog</button>
+      <ReactDialog
+        open={isOpen}
+        heading="Dialog Title"
+        description="This is a dialog description"
+        onDialogClose={handleClose}
+        onDialogCancel={handleCancel}
+      >
+        <p>This is the dialog content.</p>
+      </ReactDialog>
+
+      <button onClick={() => setIsCustomOpen(true)}>Open Custom Dialog</button>
+      <ReactDialog
+        open={isCustomOpen}
+        onDialogClose={() => setIsCustomOpen(false)}
+        onDialogCancel={() => setIsCustomOpen(false)}
+      >
+        <DialogHeader>
+          <h2 style={{ margin: 0 }}>Custom Header</h2>
+        </DialogHeader>
+        <p>Dialog with custom header and footer.</p>
+        <DialogFooter>
+          <div
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+              justifyContent: "flex-end",
+            }}
+          >
+            <button onClick={() => setIsCustomOpen(false)}>Cancel</button>
+            <button onClick={() => setIsCustomOpen(false)}>Confirm</button>
+          </div>
+        </DialogFooter>
+      </ReactDialog>
+
+      <button onClick={() => setIsCloseButtonOpen(true)}>Open Dialog</button>
+      <ReactDialog
+        open={isCloseButtonOpen}
+        heading="Dialog with Close Button"
+        showCloseButton={true}
+        onDialogClose={() => setIsCloseButtonOpen(false)}
+        onDialogCancel={() => setIsCloseButtonOpen(false)}
+      >
+        <p>This dialog includes a close button.</p>
+      </ReactDialog>
+    </section>
+  );
+}
+```
+
+:::
+
+::: details Lit (Web Components)
+
+```html
+<script type="module">
+  import 'agnosticui-core/dialog';
+
+  @customElement('my-element')
+  export class MyElement extends LitElement {
+    firstUpdated() {
+      const dialog = this.shadowRoot?.querySelector('#my-dialog') as any;
+      const openButton = this.shadowRoot?.querySelector('#open-dialog');
+
+      openButton?.addEventListener('click', () => {
+        if (dialog) {
+          dialog.open = true;
+        }
+      });
+
+      dialog?.addEventListener('dialog-close', () => {
+        dialog.open = false;
+        console.log('Dialog closed');
+      });
+
+      dialog?.addEventListener('dialog-cancel', () => {
+        dialog.open = false;
+        console.log('Dialog cancelled');
+      });
+    }
+    // ... rest of your class ...
+  }
+</script>
+
+<section>
+  <button id="open-dialog">Open Dialog</button>
+  <ag-dialog
+    id="my-dialog"
+    heading="Dialog Title"
+    description="This is a dialog description"
+  >
+    <p>This is the dialog content.</p>
+  </ag-dialog>
+
+  <ag-dialog id="custom-dialog">
+    <div slot="header">
+      <h2 style="margin: 0;">Custom Header</h2>
+    </div>
+    <p>Dialog with custom header and footer.</p>
+    <div
+      slot="footer"
+      style="display: flex; gap: 0.5rem; justify-content: flex-end;"
+    >
+      <button>Cancel</button>
+      <button>Confirm</button>
+    </div>
+  </ag-dialog>
+
+  <ag-dialog heading="Dialog with Close Button" show-close-button>
+    <p>This dialog includes a close button.</p>
+  </ag-dialog>
+</section>
+```
+
+:::
+
+## Props
+
+| Prop                | Type      | Default | Description                                                    |
+| ------------------- | --------- | ------- | -------------------------------------------------------------- |
+| `open`              | `boolean` | `false` | Whether the dialog is open                                     |
+| `heading`           | `string`  | `''`    | The heading text for the dialog                                |
+| `description`       | `string`  | `''`    | The description text for the dialog                            |
+| `noCloseOnEscape`   | `boolean` | `false` | Prevents closing the dialog when pressing the Escape key       |
+| `noCloseOnBackdrop` | `boolean` | `false` | Prevents closing the dialog when clicking the backdrop         |
+| `showCloseButton`   | `boolean` | `false` | Shows a close button (×) in the top-right corner of the dialog |
+
+## Events
+
+| Event           | Framework                                                                 | Detail | Description                                                        |
+| --------------- | ------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------ |
+| `dialog-open`   | Vue: `@dialog-open`<br>React: `onDialogOpen`<br>Lit: `@dialog-open`       | `void` | Fired when the dialog opens.                                       |
+| `dialog-close`  | Vue: `@dialog-close`<br>React: `onDialogClose`<br>Lit: `@dialog-close`    | `void` | Fired when the dialog closes via the close button.                 |
+| `dialog-cancel` | Vue: `@dialog-cancel`<br>React: `onDialogCancel`<br>Lit: `@dialog-cancel` | `void` | Fired when the dialog is cancelled (Escape key or backdrop click). |
+
+### Event Handling Examples
+
+**Vue:**
+
+```vue
+<VueDialog
+  v-model:open="isOpen"
+  @dialog-open="handleOpen"
+  @dialog-close="handleClose"
+  @dialog-cancel="handleCancel"
+>
+  <p>Dialog content</p>
+</VueDialog>
+```
+
+**React:**
+
+```tsx
+<ReactDialog
+  open={isOpen}
+  onDialogOpen={(e) => console.log("Dialog opened", e)}
+  onDialogClose={(e) => setIsOpen(false)}
+  onDialogCancel={(e) => setIsOpen(false)}
+>
+  <p>Dialog content</p>
+</ReactDialog>
+```
+
+**Lit:**
+
+```html
+<script>
+  const dialog = document.querySelector("ag-dialog");
+  dialog.addEventListener("dialog-open", (e) => {
+    console.log("Dialog opened", e);
+  });
+  dialog.addEventListener("dialog-close", (e) => {
+    console.log("Dialog closed", e);
+  });
+</script>
+
+<ag-dialog id="my-dialog"></ag-dialog>
+<script>
+  const dialog = document.querySelector("#my-dialog");
+  dialog.onDialogOpen = (e) => console.log("Dialog opened", e);
+  dialog.onDialogClose = (e) => console.log("Dialog closed", e);
+</script>
+```
+
+## Slots
+
+### Vue
+
+- **Default slot**: Main content of the dialog
+- **VueDialogHeader**: Custom header content (replaces `heading` prop when used)
+- **VueDialogFooter**: Footer content for action buttons
+
+### React
+
+- **children**: Main content of the dialog
+- **DialogHeader**: Custom header content (replaces `heading` prop when used)
+- **DialogFooter**: Footer content for action buttons
+
+### Lit
+
+- **Default slot**: Main content of the dialog
+- **slot="header"**: Custom header content (replaces `heading` prop when used)
+- **slot="footer"**: Footer content for action buttons
+
+## CSS Shadow Parts
+
+Shadow Parts allow you to style internal elements of the dialog from outside the shadow DOM using the `::part()` CSS selector.
+
+| Part                     | Description                                             |
+| ------------------------ | ------------------------------------------------------- |
+| `ag-dialog-backdrop`     | The backdrop overlay element behind the dialog          |
+| `ag-dialog-container`    | The main dialog container that holds all dialog content |
+| `ag-dialog-header`       | The header section wrapper                              |
+| `ag-dialog-heading`      | The heading text element (when using `heading` prop)    |
+| `ag-dialog-close-button` | The close button (when `showCloseButton` is true)       |
+| `ag-dialog-content`      | The main content section wrapper                        |
+| `ag-dialog-footer`       | The footer section wrapper                              |
+
+### Customization Example
+
+```css
+ag-dialog::part(ag-dialog-backdrop) {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.8) 0%,
+    rgba(118, 75, 162, 0.8) 100%
+  );
+}
+
+ag-dialog::part(ag-dialog-container) {
+  background: linear-gradient(to bottom, #ffffff, #f0f4ff);
+  border: 3px solid #667eea;
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+}
+
+ag-dialog::part(ag-dialog-header) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+}
+
+ag-dialog::part(ag-dialog-heading) {
+  font-size: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+ag-dialog::part(ag-dialog-close-button) {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 50%;
+}
+
+ag-dialog::part(ag-dialog-content) {
+  padding: 0 0.5rem;
+}
+
+ag-dialog::part(ag-dialog-footer) {
+  background: #f0f4ff;
+  padding: 1rem;
+}
+```
+
+## Accessibility
+
+The Dialog implements the [WAI-ARIA Dialog (Modal) Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/):
+
+- Uses `role="dialog"` and `aria-modal="true"` for proper screen reader announcement
+- Implements focus trap to keep keyboard focus within the dialog
+- Pressing **Escape** closes the dialog (unless `noCloseOnEscape` is true)
+- Clicking the backdrop closes the dialog (unless `noCloseOnBackdrop` is true)
+- Returns focus to the triggering element when closed
+- Prevents background scroll when dialog is open
+- Close button has `aria-label="Close dialog"` for screen readers
+- Dialog can be labeled via `heading` prop or custom header with proper heading element
+- Keyboard navigation cycles through all focusable elements within the dialog
+- Supports **Tab** and **Shift+Tab** for navigation within the focus trap
+
+### Best Practices
+
+- Always provide a heading (via `heading` prop or custom header) for accessibility
+- Use `showCloseButton` or provide explicit close actions in footer
+- For critical actions, consider setting `noCloseOnBackdrop` and `noCloseOnEscape` to prevent accidental dismissal
+- Ensure focus is managed properly by using semantic buttons for triggers
+- Keep dialog content concise and focused on a single task
+
+## v-model Support (Vue)
+
+The Vue Dialog component supports `v-model:open` for two-way binding:
+
+```vue
+<VueDialog v-model:open="isDialogOpen">
+  <p>Dialog content</p>
+</VueDialog>
+```
+
+This automatically syncs the dialog's open state with your component's data.

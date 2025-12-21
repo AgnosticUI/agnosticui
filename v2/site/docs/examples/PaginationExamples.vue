@@ -1,0 +1,265 @@
+<template>
+  <section>
+    <div class="mbe4">
+      <h2>Basic Pagination</h2>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="basicPage"
+        :total-pages="20"
+        @page-change="handleBasicPageChange"
+      />
+      <p
+        v-if="basicPageMessage"
+        style="margin: 0; padding: 0; font-size: var(--ag-font-size-sm); color: var(--ag-text-secondary);"
+      >
+        {{ basicPageMessage }}
+      </p>
+    </div>
+
+    <div class="mbe4">
+      <h2>First Last Navigation Opt-In</h2>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="basicPageFirstLast"
+        :total-pages="20"
+        :first-last-navigation="true"
+        @page-change="handleBasicPageChangeFirstLast"
+      />
+      <p
+        v-if="basicPageMessageFirstLast"
+        style="margin: 0; padding: 0; font-size: var(--ag-font-size-sm); color: var(--ag-text-secondary);"
+      >
+        {{ basicPageMessageFirstLast }}
+      </p>
+    </div>
+
+    <div class="mbe4">
+      <h2>Bordered Style</h2>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="borderedPage"
+        :total-pages="15"
+        bordered
+        @page-change="handleBorderedPageChange"
+      />
+    </div>
+    <div class="mbe4">
+      <h2>Offset Comparison</h2>
+    </div>
+    <p>
+      Offset 2 (default) - shows 2 buttons on each side:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="offset2Page"
+        :total-pages="50"
+        :offset="2"
+        @page-change="handleOffset2PageChange"
+      />
+    </div>
+    <p style="margin: 1rem 0 0.5rem; font-size: 0.875rem; color: var(--ag-text-secondary);">
+      Offset 1 - shows 1 button on each side:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="offset1Page"
+        :total-pages="50"
+        :offset="1"
+        @page-change="handleOffset1PageChange"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h2>Alignment Options</h2>
+    </div>
+    <p>
+      Justify 'start', 'center', and 'end' respectively:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="1"
+        :total-pages="10"
+        justify="start"
+      />
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="1"
+        :total-pages="10"
+        justify="center"
+      />
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="1"
+        :total-pages="10"
+        justify="end"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h2>Custom Navigation Labels (Spanish)</h2>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="spanishPage"
+        :total-pages="10"
+        :first-last-navigation="true"
+        :navigation-labels="{
+          first: 'Primera',
+          previous: 'Anterior',
+          next: 'Siguiente',
+          last: 'Última'
+        }"
+        @page-change="handleSpanishPageChange"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h2>Small Page Count</h2>
+    </div>
+    <p>
+      When there are few pages, all page numbers are shown:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="smallPage"
+        :total-pages="5"
+        @page-change="handleSmallPageChange"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h2>Large Page Count</h2>
+    </div>
+    <p>
+      With many pages, ellipsis (...) indicates skipped pages:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VuePagination
+        :current="largePage"
+        :total-pages="100"
+        @page-change="handleLargePageChange"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h2>CSS Shadow Parts Customization (Monochrome)</h2>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <div v-html="monochromeCustomPaginationStyles"></div>
+      <VuePagination
+        class="monochrome-custom-pagination"
+        :current="monochromeCustomPage"
+        :total-pages="10"
+        @page-change="handleMonochromeCustomPageChange"
+      />
+    </div>
+  </section>
+</template>
+
+<script>
+import { VuePagination } from "agnosticui-core/pagination/vue";
+
+export default {
+  name: "PaginationExamples",
+  components: {
+    VuePagination,
+  },
+  data() {
+    return {
+      basicPageFirstLast: 5,
+      basicPage: 5,
+      basicPageMessage: null,
+      basicPageMessageFirstLast: null,
+      borderedPage: 3,
+      noFirstLastPage: 5,
+      offset2Page: 25,
+      offset1Page: 25,
+      spanishPage: 1,
+      smallPage: 3,
+      largePage: 50,
+      customPage: 5,
+      monochromeCustomPage: 5,
+      monochromeCustomPaginationStyles: `
+        <style>
+          .monochrome-custom-pagination::part(ag-pagination-container) {
+            padding: 1rem;
+            background: #000000;
+            border-radius: 12px;
+          }
+          .monochrome-custom-pagination::part(ag-pagination) {
+            gap: 0.25rem;
+          }
+          .monochrome-custom-pagination::part(ag-pagination-button) {
+            min-width: 2.5rem;
+            height: 2.5rem;
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #404040;
+            font-weight: 400;
+            transition: all 0.2s ease;
+          }
+          .monochrome-custom-pagination::part(ag-pagination-button):hover:not(:disabled) {
+            background: #1a1a1a;
+            border-color: #ffffff;
+            font-weight: 600;
+            transform: translateY(-1px);
+          }
+          .monochrome-custom-pagination .pagination-item-active .pagination-button {
+            background: #ffffff !important;
+            color: #000000 !important;
+            font-weight: 600;
+            border-color: #ffffff;
+          }
+          .monochrome-custom-pagination::part(ag-pagination-button):disabled {
+            background: transparent;
+            color: #404040;
+            border-color: #262626;
+          }
+        </style>
+      `,
+    };
+  },
+  methods: {
+    handleBasicPageChangeFirstLast(detail) {
+      this.basicPageFirstLast = detail.page;
+      this.basicPageMessageFirstLast = `Current page: ${detail.page} of 20`;
+    },
+    handleBasicPageChange(detail) {
+      this.basicPage = detail.page;
+      this.basicPageMessage = `Current page: ${detail.page} of 20`;
+    },
+    handleBorderedPageChange(detail) {
+      this.borderedPage = detail.page;
+    },
+    handleNoFirstLastPageChange(detail) {
+      this.noFirstLastPage = detail.page;
+    },
+    handleOffset2PageChange(detail) {
+      this.offset2Page = detail.page;
+    },
+    handleOffset1PageChange(detail) {
+      this.offset1Page = detail.page;
+    },
+    handleSpanishPageChange(detail) {
+      this.spanishPage = detail.page;
+    },
+    handleSmallPageChange(detail) {
+      this.smallPage = detail.page;
+    },
+    handleLargePageChange(detail) {
+      this.largePage = detail.page;
+    },
+    handleCustomPageChange(detail) {
+      this.customPage = detail.page;
+    },
+    handleMonochromeCustomPageChange(detail) {
+      this.monochromeCustomPage = detail.page;
+    },
+  },
+};
+</script>

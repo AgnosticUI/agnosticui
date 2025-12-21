@@ -1,0 +1,28 @@
+{
+  "name": "@agnosticui/theme-registry",
+  "version": "1.0.0",
+  "description": "Design token system and theme registry for AgnosticUI",
+  "main": "dist/colors.js",
+  "scripts": {
+    "transform": "style-dictionary build --config",
+    "build:base": "npm run transform ./configs/config.all-tokens.json",
+    "build:dark": "npm run transform ./configs/config.dark.json",
+    "build": "npm run build:base && npm run build:dark",
+    "clean": "rm -rf dist",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.2.0"
+  },
+  "files": [
+    "dist/",
+    "tokens/",
+    "configs/"
+  ],
+  "keywords": [
+    "design-tokens",
+    "theme",
+    "css-variables",
+    "agnosticui"
+  ]
+}

@@ -1,0 +1,99 @@
+.dialog,
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.dialog {
+  z-index: 1001;
+  display: flex;
+}
+
+.dialog[aria-hidden="true"] {
+  display: none;
+}
+
+.dialog-overlay {
+  background-color: rgb(50 50 50 / 60%);
+  animation: fade-in var(--agnostic-timing-fast) both;
+}
+
+.dialog-content {
+  background-color: var(--agnostic-light);
+  margin: auto;
+  z-index: 1001;
+  position: relative;
+  padding: var(--fluid-16);
+  max-width: 90%;
+  width: 600px;
+  border-radius: var(--agnostic-radius);
+}
+
+.dialog-fade-in {
+  animation: fade-in var(--agnostic-timing-fast) both;
+}
+
+.dialog-slide-up {
+  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+}
+
+/**
+ * Cannot use two separate CSS classes with animation: foo, bar
+ * as the later class will overwrite the first (so this combines)
+ */
+.dialog-slide-up-fade-in {
+  animation:
+    fade-in var(--agnostic-timing-fast) both,
+    slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+}
+
+@media screen and (min-width: 700px) {
+  .dialog-content {
+    padding: var(--fluid-32);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0%;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(10%);
+  }
+}
+
+/* Shared with AgnosticUI close buton so only need positioning and transition */
+.dialog-close {
+  position: absolute;
+  top: var(--fluid-8);
+  right: var(--fluid-8);
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .dialog-slide-up-fade-in,
+  .dialog-fade-in,
+  .dialog-slide-up,
+  .dialog-content {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .dialog-close {
+    top: var(--fluid-12);
+    right: var(--fluid-12);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dialog-close {
+    top: var(--fluid-16);
+    right: var(--fluid-16);
+  }
+}

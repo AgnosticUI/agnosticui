@@ -1,0 +1,23 @@
+{
+  "source": [
+    "tokens/colors/dark-primitives.json",
+    "tokens/colors/dark-semantic.json"
+  ],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/",
+      "prefix": "ag",
+      "files": [
+        {
+          "destination": "ag-tokens-dark.css",
+          "format": "css/variables",
+          "options": {
+            "selector": "[data-theme=\"dark\"]",
+            "outputReferences": false
+          }
+        }
+      ]
+    }
+  }
+}

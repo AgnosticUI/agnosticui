@@ -1,0 +1,54 @@
+{
+  "source": [
+    "tokens/drawer.json",
+    "tokens/sizes.json",
+    "tokens/radii.json",
+    "tokens/responsive.json",
+    "tokens/motion.json",
+    "tokens/fx-motion.json",
+    "tokens/focus.json",
+    "tokens/shadow.json",
+    "tokens/shared.json",
+    "tokens/z-index.json",
+    "tokens/component-tokens.json",
+    "tokens/colors/light-primitives.json",
+    "tokens/colors/light-semantic.json"
+  ],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/",
+      "prefix": "ag",
+      "files": [
+        {
+          "destination": "ag-tokens.css",
+          "format": "css/variables",
+          "options": {
+            "selector": ":where(html)",
+            "outputReferences": false
+          }
+        }
+      ]
+    },
+    "js": {
+      "transformGroup": "js",
+      "buildPath": "dist/",
+      "files": [
+        {
+          "destination": "tokens.js",
+          "format": "javascript/es6"
+        }
+      ]
+    },
+    "json": {
+      "transformGroup": "js",
+      "buildPath": "dist/",
+      "files": [
+        {
+          "destination": "tokens.json",
+          "format": "json/nested"
+        }
+      ]
+    }
+  }
+}

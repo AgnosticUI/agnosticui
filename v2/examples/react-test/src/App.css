@@ -1,0 +1,336 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+/*
+  Margin block start (mbs) utility classes
+  Maps to --ag-space-1 through --ag-space-8
+*/
+.mbs0 {
+  margin-block-start: var(--ag-space-0);
+}
+.mbs1 {
+  margin-block-start: var(--ag-space-1);
+}
+.mbs2 {
+  margin-block-start: var(--ag-space-2);
+}
+.mbs3 {
+  margin-block-start: var(--ag-space-3);
+}
+.mbs4 {
+  margin-block-start: var(--ag-space-4);
+}
+.mbs5 {
+  margin-block-start: var(--ag-space-5);
+}
+.mbs6 {
+  margin-block-start: var(--ag-space-6);
+}
+.mbs8 {
+  margin-block-start: var(--ag-space-8);
+}
+
+/*
+  Margin block end (mbe) utility classes
+  Maps to --ag-space-1 through --ag-space-8
+*/
+.mbe0 {
+  margin-block-end: var(--ag-space-0);
+}
+.mbe1 {
+  margin-block-end: var(--ag-space-1);
+}
+.mbe2 {
+  margin-block-end: var(--ag-space-2);
+}
+.mbe3 {
+  margin-block-end: var(--ag-space-3);
+}
+.mbe4 {
+  margin-block-end: var(--ag-space-4);
+}
+.mbe5 {
+  margin-block-end: var(--ag-space-5);
+}
+.mbe6 {
+  margin-block-end: var(--ag-space-6);
+}
+.mbe8 {
+  margin-block-end: var(--ag-space-8);
+}
+
+/*
+  Margin inline start (mis) utility classes
+  Maps to --ag-space-1 through --ag-space-8
+*/
+.mis0 {
+  margin-inline-start: var(--ag-space-0);
+}
+.mis1 {
+  margin-inline-start: var(--ag-space-1);
+}
+.mis2 {
+  margin-inline-start: var(--ag-space-2);
+}
+.mis3 {
+  margin-inline-start: var(--ag-space-3);
+}
+.mis4 {
+  margin-inline-start: var(--ag-space-4);
+}
+.mis5 {
+  margin-inline-start: var(--ag-space-5);
+}
+.mis6 {
+  margin-inline-start: var(--ag-space-6);
+}
+.mis8 {
+  margin-inline-start: var(--ag-space-8);
+}
+
+/*
+  Margin inline end (mie) utility classes
+  Maps to --ag-space-1 through --ag-space-8
+*/
+.mie0 {
+  margin-inline-end: var(--ag-space-0);
+}
+.mie1 {
+  margin-inline-end: var(--ag-space-1);
+}
+.mie2 {
+  margin-inline-end: var(--ag-space-2);
+}
+.mie3 {
+  margin-inline-end: var(--ag-space-3);
+}
+.mie4 {
+  margin-inline-end: var(--ag-space-4);
+}
+.mie5 {
+  margin-inline-end: var(--ag-space-5);
+}
+.mie6 {
+  margin-inline-end: var(--ag-space-6);
+}
+.mie8 {
+  margin-inline-end: var(--ag-space-8);
+}
+
+/* Sidebar Navigation Styles */
+
+/* CRITICAL: Sidebar component width - must be defined! */
+ag-sidebar {
+  /* Expanded width */
+  width: 260px;
+  transition: width 0.3s ease;
+  overflow: visible; /* Allow popovers to show outside */
+}
+
+ag-sidebar[collapsed] {
+  /* Collapsed width - icon only */
+  width: 64px;
+}
+
+/* Navigation button base styles */
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-3);
+  position: relative;
+  padding: var(--ag-space-2) var(--ag-space-3);
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border-radius: var(--ag-radius-md);
+  transition: all var(--ag-fx-duration-sm);
+  color: var(--ag-text-primary);
+  font-size: var(--ag-font-size-base);
+}
+
+.nav-button:hover {
+  background: var(--ag-background-secondary);
+}
+
+.nav-button.active {
+  background: var(--ag-primary);
+  color: white;
+  font-weight: 500;
+}
+
+.nav-label {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: opacity var(--ag-fx-duration-sm);
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  transition: transform var(--ag-fx-duration-md), opacity var(--ag-fx-duration-sm);
+  margin-left: auto;
+}
+
+.nav-button[aria-expanded="true"] .chevron {
+  transform: rotate(90deg);
+}
+
+/* Collapsed indicator for collapsed mode submenus */
+.collapsed-indicator {
+  display: none;
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: var(--ag-space-3);
+  height: var(--ag-space-3);
+}
+
+.collapsed-indicator svg {
+  color: var(--ag-text-secondary);
+  transform: rotate(315deg);
+}
+
+/* Show collapsed indicator in collapsed mode for buttons with submenus */
+ag-sidebar[collapsed] .nav-button[aria-expanded] .collapsed-indicator {
+  display: block;
+}
+
+/* CRITICAL: Properly handle collapsed state */
+ag-sidebar[collapsed] .nav-label,
+ag-sidebar[collapsed] .chevron {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+/* Center icons in collapsed mode */
+ag-sidebar[collapsed] .nav-button {
+  justify-content: center;
+  padding: var(--ag-space-2);
+  gap: 0;
+}
+
+/* Visibility rules for expanded vs collapsed mode */
+ag-sidebar[collapsed] ag-sidebar-nav-submenu:not(.popover-submenu),
+ag-sidebar:not([collapsed]) ag-popover,
+ag-sidebar[collapsed] .nav-button-expanded,
+ag-sidebar:not([collapsed]) .nav-button-collapsed {
+  display: none !important;
+}
+
+/* Fix popover centering in collapsed mode */
+ag-sidebar[collapsed] ag-popover.nav-button-collapsed {
+  display: block !important;
+}
+
+/* CRITICAL: Submenu visibility - hidden by default, visible when open */
+ag-sidebar-nav-submenu {
+  display: none;
+  overflow: hidden;
+}
+
+ag-sidebar-nav-submenu[open] {
+  display: block;
+}
+
+/* Submenu link styles */
+.nav-sublink {
+  display: block;
+  padding: var(--ag-space-2) var(--ag-space-3);
+  padding-left: var(--ag-space-8);
+  color: var(--ag-text-secondary);
+  text-decoration: none;
+  border-radius: var(--ag-radius-md);
+  transition: background var(--ag-fx-duration-sm);
+}
+
+.nav-sublink:hover {
+  background: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
+}
+
+/* Popover submenu styles */
+.nav-popover-submenu .nav-sublink {
+  padding-left: var(--ag-space-3);
+}
+
+/* Popover content padding for nav popovers in collapsed mode */
+.nav-button-collapsed::part(ag-popover-body) {
+  padding: var(--ag-space-1);
+}
+
+/* Hide popover header for nav popovers */
+.nav-button-collapsed::part(ag-popover-header) {
+  display: none;
+}
+
+/* Toggle button in header */
+.sidebar-toggle-btn {
+  background: none;
+  border: none;
+  padding: var(--ag-space-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ag-radius-md);
+  transition: background var(--ag-fx-duration-sm);
+  color: var(--ag-text-primary);
+}
+
+.sidebar-toggle-btn:hover {
+  background: var(--ag-background-secondary);
+}
+
+/* Header and footer in collapsed mode */
+.sidebar-demo-header {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--ag-text-primary);
+  transition: opacity var(--ag-fx-duration-sm);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+ag-sidebar[collapsed] .sidebar-demo-header {
+  opacity: 0;
+  width: 0;
+}
+
+.sidebar-demo-footer {
+  font-size: 0.875rem;
+  color: var(--ag-text-secondary);
+  transition: opacity var(--ag-fx-duration-sm);
+  overflow: hidden;
+}
+
+ag-sidebar[collapsed] .sidebar-demo-footer {
+  opacity: 0;
+  height: 0;
+}
+
+/* Sidebar container for demo */
+.sidebar-demo-container {
+  display: flex;
+  height: 600px;
+  border: 1px solid var(--ag-border);
+  border-radius: var(--ag-radius-lg);
+  overflow: hidden;
+}
+
+.sidebar-demo-main {
+  flex: 1;
+  padding: var(--ag-space-6);
+  overflow-y: auto;
+  background: var(--ag-background);
+}

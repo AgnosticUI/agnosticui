@@ -1,0 +1,220 @@
+<template>
+  <section>
+    <div class="mbe4">
+      <h2>Basic Content Pagination</h2>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueContentPagination
+        :previous="{ title: 'Introduction', href: '#examples-1' }"
+        :next="{ title: 'Getting Started', href: '#examples-1' }"
+        :parent="{ title: 'Documentation', href: '#examples-1' }"
+        @navigate="handleNavigate"
+      />
+      <p
+        v-if="navigationMessage"
+        style="margin: 0; padding: 0; font-size: var(--ag-font-size-sm); color: var(--ag-text-secondary);"
+      >
+        {{ navigationMessage }}
+      </p>
+    </div>
+
+    <div class="mbe4">
+      <h2>Without hrefs (navigate event only)</h2>
+    </div>
+    <p>
+      Links without href still fire navigate events:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VueContentPagination
+        :previous="{ title: 'Introduction' }"
+        :next="{ title: 'Getting Started' }"
+        :parent="{ title: 'Documentation' }"
+        @navigate="handleNavigateNoHref"
+      />
+      <p
+        v-if="navigationMessageNoHref"
+        style="margin: 0; padding: 0; font-size: var(--ag-font-size-sm); color: var(--ag-text-secondary);"
+      >
+        {{ navigationMessageNoHref }}
+      </p>
+    </div>
+
+    <div class="mbe4">
+      <h2>Previous and Next Only</h2>
+    </div>
+    <p>
+      Omit parent link for simpler sequential navigation:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VueContentPagination
+        :previous="{ title: 'Chapter 1: Basics', href: '#examples-1' }"
+        :next="{ title: 'Chapter 3: Advanced', href: '#examples-1' }"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h2>Parent Only</h2>
+    </div>
+    <p>
+      Show only the parent/overview link:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VueContentPagination :parent="{ title: 'Back to Documentation', href: '#examples-1' }" />
+    </div>
+
+    <div class="mbe4">
+      <h2>Bordered Style</h2>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueContentPagination
+        :previous="{ title: 'Installation', href: '#examples-1' }"
+        :next="{ title: 'Configuration', href: '#examples-1' }"
+        :parent="{ title: 'Guides', href: '#examples-1' }"
+        bordered
+      />
+    </div>
+
+    <div class="mbe4">
+      <h2>Custom Icons</h2>
+    </div>
+    <p>
+      Override default icons using slots:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VueContentPagination
+        :previous="{ title: 'Prev Page', href: '#examples-1' }"
+        :next="{ title: 'Next Page', href: '#examples-1' }"
+        :parent="{ title: 'Overview', href: '#examples-1' }"
+      >
+        <template #previous-icon>
+          <ChevronLeft :size="20" />
+        </template>
+        <template #next-icon>
+          <ChevronRight :size="20" />
+        </template>
+        <template #parent-icon>
+          <ChevronUp :size="20" />
+        </template>
+      </VueContentPagination>
+    </div>
+
+    <div class="mbe4">
+      <h2>Only Next</h2>
+    </div>
+    <p>
+      First page scenario - only show next link:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VueContentPagination
+        :next="{ title: 'Getting Started', href: '#examples-1' }"
+        :parent="{ title: 'Documentation', href: '#examples-1' }"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h2>Only Previous</h2>
+    </div>
+    <p>
+      Last page scenario - only show previous link:
+    </p>
+    <div class="stacked-mobile mbe4">
+      <VueContentPagination
+        :previous="{ title: 'Deployment', href: '#examples-1' }"
+        :parent="{ title: 'Documentation', href: '#examples-1' }"
+      />
+    </div>
+
+    <div class="mbe4">
+      <h2>CSS Shadow Parts Customization (Monochrome)</h2>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <div v-html="monochromeCustomContentPaginationStyles"></div>
+      <VueContentPagination
+        class="monochrome-custom-content-pagination"
+        :previous="{ title: 'Introduction', href: '#examples-1' }"
+        :next="{ title: 'Getting Started', href: '#examples-1' }"
+        :parent="{ title: 'Documentation', href: '#examples-1' }"
+      >
+        <template #previous-icon>
+          <ChevronLeft :size="20" />
+        </template>
+        <template #next-icon>
+          <ChevronRight :size="20" />
+        </template>
+        <template #parent-icon>
+          <ChevronUp :size="20" />
+        </template>
+      </VueContentPagination>
+    </div>
+  </section>
+</template>
+
+<script>
+import { VueContentPagination } from "agnosticui-core/content-pagination/vue";
+import { ChevronLeft, ChevronRight, ChevronUp } from "lucide-vue-next";
+
+export default {
+  name: "ContentPaginationExamples",
+  components: {
+    VueContentPagination,
+    ChevronLeft,
+    ChevronRight,
+    ChevronUp,
+  },
+  data() {
+    return {
+      navigationMessage: null,
+      navigationMessageNoHref: null,
+      monochromeCustomContentPaginationStyles: `
+        <style>
+          .monochrome-custom-content-pagination::part(ag-content-pagination-container) {
+            padding: 1.5rem;
+            background: #000000;
+            border-radius: 12px;
+          }
+          .monochrome-custom-content-pagination::part(ag-content-pagination-parent) {
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            padding: 0;
+          }
+          .monochrome-custom-content-pagination::part(ag-content-pagination-parent):hover {
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transform: translateY(-1px);
+          }
+          .monochrome-custom-content-pagination::part(ag-content-pagination-link) {
+            padding: var(--ag-space-3) var(--ag-space-4);
+            background: transparent;
+            color: #ffffff;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 400;
+          }
+          .monochrome-custom-content-pagination::part(ag-content-pagination-link):hover {
+            background: #1a1a1a;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transform: translateY(-2px);
+          }
+        </style>
+      `,
+    };
+  },
+  methods: {
+    handleNavigate(detail) {
+      this.navigationMessage = `Clicked ${detail.type}: "${detail.item.title}"${
+        detail.item.href ? ` → ${detail.item.href}` : " (no href)"
+      }`;
+      // In a real app, you might do: this.$router.push(detail.item.href)
+      console.log("Navigate:", detail);
+    },
+    handleNavigateNoHref(detail) {
+      this.navigationMessageNoHref = `Clicked ${detail.type}: "${detail.item.title}" (no href provided)`;
+      // Custom navigation logic here
+      console.log("Navigate (no href):", detail);
+    },
+  },
+};
+</script>
