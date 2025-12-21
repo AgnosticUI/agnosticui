@@ -736,6 +736,18 @@ git commit -m "chore: prepare v2.0.0-alpha.1 for npm publication
 git push origin master
 ```
 
+#### 3.4 Verify v2/examples/{lit|react|vue}-test
+
+Uninstall then reintall the CLI via local tarball then sync the core tarball:
+
+```shell
+npm uninstall @agnosticui/cli
+npm i ../../cli/agnosticui-cli-VERSION.tgz
+npx ag sync --tarball ../lib/agnosticui-core-VERSION.tgz
+# Test npx ag add COMPONENT(s) --force
+npm run dev
+```
+
 ---
 
 ### Phase 4: Publish to npm
