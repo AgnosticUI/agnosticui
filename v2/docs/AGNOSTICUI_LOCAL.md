@@ -908,7 +908,7 @@ import 'agnosticui-core/button'
 
 ### Phase 2: CLI Development (Q2 2025)
 
-**Goal:** Build `@agnosticui/cli`
+**Goal:** Build `agnosticui-cli`
 
 **Status: MVP Complete for Local Dogfooding! 🎉**
 
@@ -1369,7 +1369,7 @@ This isn't just for LasChispas - **it's a killer feature:**
 **Goal:** Get CLI working locally for LasChispas migration
 
 **Approach:**
-1. Build `@agnosticui/cli` package locally
+1. Build `agnosticui-cli` package locally
 2. Create tarball build system (local, not published)
 3. Test with `npx` pointing to local tarball
 4. Iterate based on real usage
@@ -1424,7 +1424,7 @@ npm link
 
 # In LasChispas
 cd laschispas
-npm link @agnosticui/cli
+npm link agnosticui-cli
 
 # Now use normally
 npx ag init --framework vue --components-path src/components/ag

@@ -658,7 +658,7 @@ export const CustomStyling: Story = {
 ```typescript
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import '@agnosticui/core/components/ComponentNameFx';
+import 'agnosticui-core/components/ComponentNameFx';
 
 const meta = {
   title: 'Components/ComponentNameFx',
@@ -752,11 +752,13 @@ ComponentNameFx extends the core ComponentName component with 12 CSS-only animat
 ## Installation
 
 ```bash
-npm install @agnosticui/core
-# or for React
-npm install @agnosticui/react
-# or for Vue
-npm install @agnosticui/vue
+# Install CLI
+npm install -g agnosticui-cli@alpha
+
+# Initialize your project
+ag init --framework react
+
+# FX components will be available in the reference library
 ```
 
 ## Usage
@@ -896,7 +898,7 @@ ComponentNameFx works in all modern browsers that support:
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import '@agnosticui/core/components/ComponentNameFx';
+import 'agnosticui-core/components/ComponentNameFx';
 
 const effects = ref([
   'bounce',
