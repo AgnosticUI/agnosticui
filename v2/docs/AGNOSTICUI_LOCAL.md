@@ -239,7 +239,7 @@ consumer-project/
 **Command:**
 ```bash
 npx ag init
-npx ag init --framework react --components-path ./src/components/ag
+npx ag init --framework vue --components-path ./src/components/ag
 ```
 
 **What Happens:**
@@ -297,9 +297,9 @@ npx ag init --framework react --components-path ./src/components/ag
 ```bash
 # Initialize (first time)
 npx ag init
-npx ag init --framework react
-npx ag init --framework react --components-path ./src/components/ag
-npx ag init --framework react --tarball /path/to/tarball.tgz
+npx ag init --framework vue
+npx ag init --framework vue --components-path ./src/components/ag
+npx ag init --framework vue --tarball /path/to/tarball.tgz
 
 # Add components
 npx ag add button
@@ -487,7 +487,7 @@ Team members run `npx ag init` to restore.
 
 **Step 1: Initialize**
 ```bash
-npx ag init --framework react
+npx ag init --framework vue
 ```
 
 **Result:**
@@ -1232,7 +1232,7 @@ npx ag add button
 **Step 1: Initialize with custom path**
 ```bash
 cd laschispas
-npx ag init --framework react --components-path src/components/ag
+npx ag init --framework vue --components-path src/components/ag
 ```
 
 **Step 2: Add first component (Button)**
@@ -1427,7 +1427,7 @@ cd laschispas
 npm link @agnosticui/cli
 
 # Now use normally
-npx ag init --framework react --components-path src/components/ag
+npx ag init --framework vue --components-path src/components/ag
 ```
 
 **Phase 2: Iterative Migration (Real-World Testing)**
