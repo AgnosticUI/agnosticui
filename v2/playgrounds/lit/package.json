@@ -12,7 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "agnosticui-core": "file:../../lib/agnosticui-core-0.0.1.tgz",
+    "agnosticui-core": "file:../../lib/agnosticui-core-2.0.0-alpha.1.tgz",
     "lit": "^3.3.1",
     "lucide": "^0.555.0"
   },

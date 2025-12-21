@@ -17,10 +17,10 @@ The AgnosticUI CLI provides a "local-first" approach where components are copied
 Initialize AgnosticUI in your project:
 
 ```bash
-npx ag init --framework react
+npx ag init --framework vue
 ```
 
-Replace `react` with your framework of choice: `vue`, `lit`, or `svelte`.
+Replace `vue` with your framework of choice: `react`, `lit`, or `svelte`.
 
 This command will:
 - Extract the AgnosticUI reference library to `./agnosticui/`
@@ -184,7 +184,7 @@ Customize the CLI behavior with command-line flags:
 
 ```bash
 # Specify a custom components path
-npx ag init --framework react --components-path ./src/ui/agnostic
+npx ag init --framework vue --components-path ./src/ui/agnostic
 
 # Use a local tarball (for development/testing)
 npx ag init --framework vue --tarball /path/to/agnosticui-local-v0.0.1.tar.gz
@@ -195,7 +195,7 @@ Your `agnosticui.config.json` will store these settings:
 ```json
 {
   "version": "2.0.0-alpha",
-  "framework": "react",
+  "framework": "vue",
   "paths": {
     "reference": "./agnosticui",
     "components": "./src/components/ag"

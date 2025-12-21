@@ -68,7 +68,7 @@ The CLI is designed to work with a local tarball for development/dogfooding.
 
    # Now you can use the CLI
    # Note: Replace VERSION with the version from v2/lib/package.json (e.g., 0.0.1)
-   npx ag init --framework react --tarball /path/to/v2/dist/agnosticui-local-vVERSION.tar.gz
+   npx ag init --framework vue --tarball /path/to/v2/dist/agnosticui-local-vVERSION.tar.gz
    # Note: if already initialized, we can also use `sync` to update the reference library
    # npx ag sync --tarball /path/to/v2/dist/agnosticui-local-vVERSION.tar.gz
    npx ag add button input
@@ -83,7 +83,7 @@ The CLI is designed to work with a local tarball for development/dogfooding.
    # In test project
    npm install /path/to/agnosticui/v2/cli/agnosticui-cli-2.0.0-alpha.1.tgz --force
    # Note: Replace VERSION with the version from v2/lib/package.json
-   npx ag init --framework react --tarball /path/to/v2/dist/agnosticui-local-vVERSION.tar.gz
+   npx ag init --framework vue --tarball /path/to/v2/dist/agnosticui-local-vVERSION.tar.gz
    ```
 
 ## Commands
@@ -213,38 +213,863 @@ your-project/
 - `npm pack` is more reliable than `npm link` for local testing
 - Remember to rebuild (`npm run build`) and repack after making CLI changes
 
-# Status on 11/15/25
+# AgnosticUI v2 - Publishing & Transition Guide
 
-✅ Completed (MVP for local dogfooding)
+## Package Naming Decision
 
-- ag init - Fully functional with interactive prompts, tarball extraction, config creation
-- ag add - Component copying with --force flag support
-- ag list - Display available components
-- Build tooling - build-local-tarball.sh creates distributable tarballs
-- Dependency management - Auto-detects package manager, installs required deps (lit, @lit/react)
-- CSS tokens - Automatically copies to components/styles directory
-- TypeScript warnings - Reminds about experimentalDecorators config
+Since `@agnosticui` organization is unavailable on npm, we'll use non-scoped packages matching your v1 pattern:
 
-📝 Outstanding TODOs
+- **v1 packages**: `agnostic-angular`, `agnostic-react`, `agnostic-vue`, `agnostic-svelte`
+- **v2 packages**: `agnosticui-core`, `agnosticui-cli`
 
-1. Production Tarball Download (init.ts:158-160)
-   Currently hardcoded to look for local tarball in ../../dist/. Needs:
+This maintains consistency and leverages your existing npm namespace.
 
-- Download from GitHub releases or CDN
-- Version resolution (latest vs specific version)
-- Progress indicator during download
-- Caching mechanism
+---
 
-2. Dynamic Version Reading (components.ts:69)
-   Currently hardcoded to '2.0.0-alpha'. Should read from version.json in the extracted tarball.
+## CORRECTED EXECUTION ORDER
 
-📊 Current State
+### Phase 1: Repository Restructuring (DO THIS FIRST!)
 
-The CLI is production-ready for local development but not yet ready for npm publish because users can't download the component library - they'd need
-the tarball manually.
+**Why first?** Clean up the repo structure before publishing. Publishing is the final validation step.
 
-For npm publication, you need:
+#### 1.1 Create Safety Backups
 
-1. Implement tarball downloading from GitHub releases
-2. Publish both @agnosticui/cli and host tarball on GitHub releases
-3. Optional: Add version flags (--version, specific version support)
+```bash
+# Ensure you're on the latest master
+git checkout master
+git pull origin master
+
+# Create backup branch
+git branch backup-before-v2-transition
+git push origin backup-before-v2-transition
+
+# Create v1-legacy branch for historical reference
+git checkout -b v1-legacy
+git push origin v1-legacy
+```
+
+#### 1.2 Protect v1-legacy Branch (GitHub Settings)
+
+- Go to: Settings → Branches → Add branch protection rule
+- Branch name: `v1-legacy`
+- Enable: "Lock branch" (read-only)
+- Save
+
+#### 1.3 Clean Master Branch
+
+```bash
+# Return to master
+git checkout master
+
+# Document what's being removed
+ls -la | grep -E "(agnostic-|site)" > v1-directories-removed.txt
+git add v1-directories-removed.txt
+git commit -m "docs: record v1 directories before removal"
+
+# Remove v1 directories
+git rm -rf agnostic-angular/
+git rm -rf agnostic-react/
+git rm -rf agnostic-vue/
+git rm -rf agnostic-svelte/
+git rm -rf site/
+git rm -rf agnostic-astro/  # if exists
+git rm -rf agnostic-preact/  # if exists
+# Remove any other v1-specific directories
+
+git commit -m "chore: remove v1 directories, preparing for v2 as primary"
+```
+
+#### 1.4 Merge v2 into Master
+
+```bash
+# Merge v2 feature branch
+git merge feature/agnosticui-v2-integration --no-ff -m "feat: merge AgnosticUI v2
+
+- Complete rewrite with CLI-first approach
+- Web Components architecture
+- Support for React, Vue, Lit, Svelte
+- Local component management
+- Zero runtime dependencies"
+
+# Push to master
+git push origin master
+```
+
+#### 1.5 Update Root Files
+
+**Root README.md:**
+
+```markdown
+# AgnosticUI v2
+
+> The UI component kit that lives in your codebase
+
+AgnosticUI v2 is a CLI-based UI component library that copies components directly into your project. You own the code, customize it freely, and avoid dependency lock-in.
+
+## Installation
+
+```bash
+# Install CLI globally
+npm install -g agnosticui-cli@alpha
+
+# Or use with npx
+npx agnosticui-cli@alpha init
+```
+
+## Quick Start
+
+```bash
+# Initialize in your project
+ag init --framework react
+
+# Add components
+ag add button input card
+
+# The components are now in your src/ - customize freely!
+```
+
+## Features
+
+- 🎯 **CLI-First**: Copy components directly to your project
+- 🔧 **You Own It**: Full control, no black boxes
+- 🌐 **Framework Agnostic**: React, Vue, Lit, Svelte support
+- 🎨 **Design Token System**: Consistent theming
+- 📦 **Zero Runtime Deps**: Components work standalone
+- ♿ **Accessible**: WCAG 2.1 AA compliant
+
+## Documentation
+
+Visit [your-docs-url] for full documentation.
+
+## Looking for v1?
+
+AgnosticUI v1 packages are available on the `v1-legacy` branch and still published on npm:
+- `agnostic-angular`
+- `agnostic-react`
+- `agnostic-vue`
+- `agnostic-svelte`
+
+[View v1 Documentation](link-to-v1-docs)
+
+## License
+
+MIT
+```
+
+**Root package.json:**
+
+```json
+{
+  "name": "agnosticui-monorepo",
+  "version": "2.0.0-alpha.1",
+  "private": true,
+  "description": "AgnosticUI v2 - The UI kit that lives in your codebase",
+  "workspaces": [
+    "v2/lib",
+    "v2/cli",
+    "v2/docs"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "docs:dev": "npm run dev --workspace=v2/docs",
+    "docs:build": "npm run build --workspace=v2/docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/agnosticui.git"
+  },
+  "keywords": ["ui", "components", "cli", "design-system", "web-components"],
+  "author": "Your Name",
+  "license": "MIT"
+}
+```
+
+#### 1.6 Delete Feature Branch (After Verification)
+
+```bash
+# Verify everything looks good on master
+git log --oneline -10
+git status
+
+# Delete local feature branch
+git branch -d feature/agnosticui-v2-integration
+
+# Delete remote feature branch
+git push origin --delete feature/agnosticui-v2-integration
+```
+
+---
+
+### Phase 2: Update Package Names for Non-Scoped Publishing
+
+#### 2.1 Update Core Library package.json
+
+**File: `v2/lib/package.json`**
+
+```json
+{
+  "name": "agnosticui-core",
+  "version": "2.0.0-alpha.1",
+  "description": "AgnosticUI v2 Core - Web Components and framework adapters",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "agnosticui",
+    "ui-components",
+    "web-components",
+    "design-system",
+    "react",
+    "vue",
+    "svelte",
+    "lit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/agnosticui.git",
+    "directory": "v2/lib"
+  },
+  "author": "Rob Levin <rlevin@example.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  }
+}
+```
+
+#### 2.2 Update CLI package.json
+
+**File: `v2/cli/package.json`**
+
+```json
+{
+  "name": "agnosticui-cli",
+  "version": "2.0.0-alpha.1",
+  "description": "AgnosticUI v2 CLI - Copy components directly to your project",
+  "bin": {
+    "ag": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "agnosticui",
+    "cli",
+    "ui-components",
+    "code-generator",
+    "component-library"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/agnosticui.git",
+    "directory": "v2/cli"
+  },
+  "author": "Rob Levin <rlevin@example.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.0.0",
+    "ora": "^8.0.0",
+    "chalk": "^5.3.0",
+    "prompts": "^2.4.2",
+    "tar": "^7.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  }
+}
+```
+
+#### 2.3 Update CLI to Reference New Package Name
+
+**File: `v2/cli/src/commands/init.ts`**
+
+Find and replace all references:
+- `@agnosticui/core` → `agnosticui-core`
+- `@agnosticui/cli` → `agnosticui-cli`
+
+```typescript
+// Example: Update determineTarballPath() function
+async function determineTarballPath(version: string = 'alpha'): Promise<string | null> {
+  try {
+    const { execSync } = await import('child_process');
+    const tmpDir = path.join(process.cwd(), '.tmp-ag-download');
+    await ensureDir(tmpDir);
+    
+    // Download package - UPDATED PACKAGE NAME
+    execSync(`npm pack agnosticui-core@${version}`, { 
+      cwd: tmpDir,
+      stdio: 'pipe' 
+    });
+    
+    const files = await readdir(tmpDir);
+    const tarball = files.find(f => f.startsWith('agnosticui-core-') && f.endsWith('.tgz'));
+    
+    if (tarball) {
+      return path.join(tmpDir, tarball);
+    }
+  } catch (error) {
+    logger.error('Failed to download agnosticui-core from npm');
+  }
+  
+  return null;
+}
+```
+
+#### 2.4 Update Documentation References
+
+Search and replace in all documentation files:
+- `@agnosticui/core` → `agnosticui-core`
+- `@agnosticui/cli` → `agnosticui-cli`
+
+---
+
+### Phase 3: Pre-Publishing Preparation
+
+#### 3.1 Build and Verify Both Packages
+
+```bash
+# Build core library
+cd v2/lib
+rm -rf dist/
+npm install
+npm run build
+ls -la dist/  # Verify output
+
+# Build CLI
+cd v2/cli
+rm -rf dist/
+npm install
+npm run build
+ls -la dist/  # Verify output
+node dist/cli.js --version  # Should show 2.0.0-alpha.1
+```
+
+#### 3.2 Test Locally with Pack
+
+```bash
+# Test core library
+cd v2/lib
+npm pack --dry-run  # Preview
+npm pack  # Creates: agnosticui-core-2.0.0-alpha.1.tgz
+tar -tzf agnosticui-core-2.0.0-alpha.1.tgz  # Inspect contents
+
+# Test CLI
+cd v2/cli
+npm pack --dry-run
+npm pack  # Creates: agnosticui-cli-2.0.0-alpha.1.tgz
+tar -tzf agnosticui-cli-2.0.0-alpha.1.tgz
+```
+
+#### 3.3 Commit All Changes
+
+```bash
+# From repo root
+git status
+git add .
+git commit -m "chore: prepare v2.0.0-alpha.1 for npm publication
+
+- Update package names to agnosticui-core and agnosticui-cli
+- Configure publishConfig for public access
+- Update CLI to reference new package names
+- Update all documentation"
+
+git push origin master
+```
+
+---
+
+### Phase 4: Publish to npm
+
+#### 4.1 Verify npm Login
+
+```bash
+npm whoami  # Should show: rlevin
+```
+
+#### 4.2 Publish Core Library First
+
+```bash
+cd v2/lib
+
+# Final dry-run check
+npm publish --dry-run --tag alpha
+
+# Publish!
+npm publish --tag alpha
+```
+
+**Expected output:**
+```
++ agnosticui-core@2.0.0-alpha.1
+```
+
+#### 4.3 Verify Core Publication
+
+```bash
+npm info agnosticui-core
+npm view agnosticui-core@alpha
+npm view agnosticui-core dist-tags
+
+# Visit on web
+open https://www.npmjs.com/package/agnosticui-core
+```
+
+#### 4.4 Publish CLI
+
+```bash
+cd v2/cli
+
+# Dry-run
+npm publish --dry-run --tag alpha
+
+# Publish!
+npm publish --tag alpha
+```
+
+**Expected output:**
+```
++ agnosticui-cli@2.0.0-alpha.1
+```
+
+#### 4.5 Verify CLI Publication
+
+```bash
+npm info agnosticui-cli
+npm view agnosticui-cli@alpha
+
+open https://www.npmjs.com/package/agnosticui-cli
+```
+
+---
+
+### Phase 5: End-to-End Testing
+
+#### 5.1 Test Installation Flow
+
+```bash
+# Create fresh test directory
+mkdir /tmp/test-agui-v2 && cd /tmp/test-agui-v2
+npm init -y
+
+# Install CLI globally
+npm install -g agnosticui-cli@alpha
+
+# Verify installation
+ag --version
+which ag
+
+# Initialize project
+ag init --framework vue
+
+# Verify core was downloaded
+ls -la agnosticui/
+
+# Add components
+ag add button
+ag add input
+
+# Verify components copied
+ls -la src/components/ag/Button/
+ls -la src/components/ag/Input/
+```
+
+#### 5.2 Test with npx (No Installation)
+
+```bash
+mkdir /tmp/test-npx && cd /tmp/test-npx
+npm init -y
+
+# Should work without global install
+npx agnosticui-cli@alpha init --framework react
+npx agnosticui-cli@alpha add button
+```
+
+#### 5.3 Test with Different Package Managers
+
+```bash
+# pnpm
+pnpm add -g agnosticui-cli@alpha
+ag init --framework svelte
+
+# yarn
+yarn global add agnosticui-cli@alpha
+ag init --framework lit
+
+# bun
+bun add -g agnosticui-cli@alpha
+ag init --framework react
+```
+
+---
+
+### Phase 6: Create Git Release
+
+#### 6.1 Tag the Release
+
+```bash
+# Create annotated tag
+git tag -a v2.0.0-alpha.1 -m "AgnosticUI v2.0.0-alpha.1
+
+First alpha release of AgnosticUI v2
+
+Breaking Changes:
+- Complete rewrite with CLI-first approach
+- Web Components architecture instead of framework-specific packages
+
+New Features:
+- CLI for local component management
+- Support for React, Vue, Lit, Svelte
+- Design token system
+- Zero runtime dependencies
+- You own the code - customize freely
+
+Published packages:
+- agnosticui-core@2.0.0-alpha.1
+- agnosticui-cli@2.0.0-alpha.1"
+
+# Push tag
+git push origin v2.0.0-alpha.1
+```
+
+#### 6.2 Create GitHub Release
+
+Go to: `https://github.com/yourusername/agnosticui/releases/new`
+
+- **Tag**: `v2.0.0-alpha.1`
+- **Title**: `AgnosticUI v2.0.0-alpha.1 - First Alpha Release 🎉`
+- **Description**:
+
+```markdown
+# AgnosticUI v2.0.0-alpha.1 🎉
+
+This is the first alpha release of AgnosticUI v2 - a complete rewrite with a CLI-first approach.
+
+## Installation
+
+```bash
+npm install -g agnosticui-cli@alpha
+ag init --framework react
+ag add button input card
+```
+
+## What's New in v2
+
+- **CLI-First Approach**: Components are copied directly to your project
+- **You Own the Code**: Full control, no black boxes
+- **Web Components Core**: Framework-agnostic architecture
+- **Multi-Framework Support**: React, Vue, Lit, Svelte
+- **Design Token System**: Consistent theming across components
+- **Zero Runtime Dependencies**: Components work standalone
+
+## Breaking Changes from v1
+
+AgnosticUI v2 is a complete rewrite and is not compatible with v1. If you need v1, it remains available:
+- Packages: `agnostic-angular`, `agnostic-react`, `agnostic-vue`, `agnostic-svelte`
+- Branch: `v1-legacy`
+
+## Alpha Status
+
+This is an **alpha release** for early testing and feedback. APIs may change before stable release.
+
+## Published Packages
+
+- [agnosticui-core@2.0.0-alpha.1](https://www.npmjs.com/package/agnosticui-core)
+- [agnosticui-cli@2.0.0-alpha.1](https://www.npmjs.com/package/agnosticui-cli)
+
+## Documentation
+
+[Link to your docs]
+
+## Feedback
+
+Please report issues or provide feedback in [GitHub Discussions](link) or [Issues](link).
+```
+
+- **Check**: "This is a pre-release"
+- Click "Publish release"
+
+---
+
+### Phase 7: Update Documentation
+
+#### 7.1 Update Installation Guide
+
+**File: `v2/docs/installation.md`**
+
+```markdown
+# Installation
+
+## Install the CLI
+
+AgnosticUI v2 uses a CLI to copy components directly into your project.
+
+### Global Installation (Recommended)
+
+```bash
+npm install -g agnosticui-cli@alpha
+```
+
+### Using npx (No Installation)
+
+```bash
+npx agnosticui-cli@alpha init
+```
+
+### Other Package Managers
+
+```bash
+# pnpm
+pnpm add -g agnosticui-cli@alpha
+
+# yarn
+yarn global add agnosticui-cli@alpha
+
+# bun
+bun add -g agnosticui-cli@alpha
+```
+
+## Initialize Your Project
+
+```bash
+# Interactive mode
+ag init
+
+# Specify framework
+ag init --framework react
+ag init --framework vue
+ag init --framework svelte
+ag init --framework lit
+```
+
+This downloads `agnosticui-core` and sets up the reference library in `./agnosticui/`.
+
+## Add Components
+
+```bash
+# Add individual components
+ag add button
+ag add input card
+
+# Add multiple at once
+ag add button input card dialog
+```
+
+Components are copied to `src/components/ag/` by default.
+
+## What Gets Installed?
+
+- **Reference Library**: `./agnosticui/` contains the source components
+- **Your Components**: `src/components/ag/` contains copies you can modify
+- **No Dependencies**: Components work standalone, no runtime deps
+
+## Next Steps
+
+- [Quick Start Guide](./quick-start.md)
+- [Component Customization](./customization.md)
+- [Design Tokens](./design-tokens.md)
+```
+
+#### 7.2 Create Migration Guide
+
+**File: `v2/docs/migration-v1-to-v2.md`**
+
+```markdown
+# Migrating from AgnosticUI v1 to v2
+
+AgnosticUI v2 is a complete rewrite with a fundamentally different approach.
+
+## Key Differences
+
+| Aspect | v1 | v2 |
+|--------|----|----|
+| **Installation** | `npm install agnostic-react` | `npm install -g agnosticui-cli` |
+| **Usage** | Import from package | Copy components to your project |
+| **Updates** | `npm update` | `ag sync` (opt-in) |
+| **Customization** | Limited | Full control - you own the code |
+| **Dependencies** | Runtime dependencies | Zero runtime deps |
+| **Architecture** | Framework-specific | Web Components + adapters |
+
+## Should You Migrate?
+
+**Stick with v1 if:**
+- You have a production app working fine
+- You prefer traditional npm packages
+- You don't need heavy customization
+
+**Consider v2 if:**
+- You want full control over components
+- You need extensive customization
+- You want to avoid dependency lock-in
+- You're starting a new project
+
+## Migration Steps
+
+There's no automatic migration path. You'll need to:
+
+1. Install v2 CLI: `npm install -g agnosticui-cli@alpha`
+2. Initialize in new directory: `ag init --framework [your-framework]`
+3. Add components: `ag add button input card`
+4. Port your customizations from v1 components
+5. Update imports in your application
+
+## v1 Support
+
+v1 packages remain available and supported:
+- Packages: `agnostic-angular`, `agnostic-react`, `agnostic-vue`, `agnostic-svelte`
+- Documentation: [v1 docs link]
+- Branch: `v1-legacy`
+```
+
+---
+
+### Phase 8: Announce and Monitor
+
+#### 8.1 Create GitHub Discussion
+
+Go to your repo's Discussions → Create new
+
+**Title**: "AgnosticUI v2.0.0-alpha.1 Released! 🎉"
+
+```markdown
+Hi everyone! 👋
+
+I'm excited to announce the first alpha release of AgnosticUI v2!
+
+## What is AgnosticUI v2?
+
+A CLI-based UI component library that copies components directly into your project. You own the code, customize it freely, and avoid dependency lock-in.
+
+## Try it out
+
+```bash
+npm install -g agnosticui-cli@alpha
+ag init --framework react
+ag add button input
+```
+
+## This is Alpha
+
+This is an early alpha for testing and feedback. APIs may change. Please:
+- Report bugs in [Issues](link)
+- Share feedback here in Discussions
+- Test with your favorite framework
+
+## Links
+
+- [Documentation](link)
+- [npm: agnosticui-cli](https://www.npmjs.com/package/agnosticui-cli)
+- [npm: agnosticui-core](https://www.npmjs.com/package/agnosticui-core)
+
+Thanks for your interest! Looking forward to your feedback. 🙏
+```
+
+#### 8.2 Monitor
+
+- Watch GitHub Issues for bugs
+- Check npm download stats: `npm info agnosticui-cli`
+- Respond to feedback promptly
+- Take notes for alpha.2 improvements
+
+---
+
+## Quick Reference: Commands
+
+```bash
+# Phase 1: Restructure repo
+git checkout master && git pull
+git branch backup-before-v2-transition
+git branch v1-legacy && git push origin v1-legacy
+git rm -rf agnostic-*/ site/
+git merge feature/agnosticui-v2-integration
+git push origin master
+
+# Phase 2 & 3: Update and build
+# (Edit package.json files manually)
+cd v2/lib && npm install && npm run build && npm pack
+cd v2/cli && npm install && npm run build && npm pack
+
+# Phase 4: Publish
+cd v2/lib && npm publish --tag alpha
+cd v2/cli && npm publish --tag alpha
+
+# Phase 5: Test
+mkdir /tmp/test && cd /tmp/test
+npm install -g agnosticui-cli@alpha
+ag init --framework vue
+ag add button
+
+# Phase 6: Release
+git tag -a v2.0.0-alpha.1 -m "Release v2.0.0-alpha.1"
+git push origin v2.0.0-alpha.1
+```
+
+---
+
+## Future Alpha Releases
+
+When ready for alpha.2:
+
+```bash
+# Increment versions
+cd v2/lib
+npm version prerelease --preid=alpha  # 2.0.0-alpha.1 → alpha.2
+
+cd v2/cli
+npm version prerelease --preid=alpha
+
+# Publish
+cd v2/lib && npm publish --tag alpha
+cd v2/cli && npm publish --tag alpha
+
+# Tag git
+git tag -a v2.0.0-alpha.2 -m "Release v2.0.0-alpha.2"
+git push --tags
+```
+
+---
+
+## Troubleshooting
+
+### "Package name already taken"
+
+Non-scoped packages (`agnosticui-core`, `agnosticui-cli`) should be available since you already use the `agnostic-*` namespace. If someone squatted them:
+
+1. Check: `npm info agnosticui-core` and `npm info agnosticui-cli`
+2. If truly taken, consider: `agnostic-ui-core`, `agnostic-ui-cli`
+3. Or use scoped: `@rlevin/agnosticui-core`, `@rlevin/agnosticui-cli`
+
+### CLI can't download core package
+
+```bash
+# Test manually
+npm pack agnosticui-core@alpha
+
+# If that works, check CLI code in init.ts
+```
+
+### Wrong package published
+
+```bash
+# Can unpublish within 72 hours
+npm unpublish agnosticui-core@2.0.0-alpha.1
+
+# Then fix and republish
+```
