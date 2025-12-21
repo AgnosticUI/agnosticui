@@ -1,0 +1,143 @@
+/*
+Probably it's worth re-mentioning that AgnosticUI targets A grade browsers and Edge+ support. See
+https://www.agnosticui.com/docs/setup.html#why-agnosticui-doesn-t-support-ie11
+
+This file has a bunch of opinions and sometimes half or undecided opinions :-) Only stuff
+I feel strongly about is uncommented. The other stuff are potentially good ideas that you can
+decide on. Certainly these two files should also be consulted for modern reset ideas:
+https://github.com/argyleink/open-props/blob/main/src/extra/normalize.css
+https://github.com/AustinGil/bedrocss/blob/master/src/base.css
+*/
+
+:where(html) {
+  /* MDN: Defines the horizontal or vertical size of an element's block, depending on its writing mode
+  block-size: 100%;
+  */
+
+  /* prevents shifting if certain pages have scrollbars and others do not
+  https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter */
+  scrollbar-gutter: stable both-edges;
+}
+
+/*
+If an image is wider than the screen, the image will overflow, causing a horizontal scrollbar to appear.
+https://web.dev/learn/design/responsive-images/#constrain-your-images
+*/
+:where(img, picture, canvas, video, iframe) {
+  max-inline-size: 100%;
+  block-size: auto;
+  vertical-align: middle; /* removes weird space below images */
+}
+
+/* This is a nice reset. However, if you can find the time to curate your images, you should consider using <picture> and/or srcset
+to more finely grained control images:
+https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#use_modern_image_formats_boldly
+The big idea is: even if we have an image that is responsive, if on a small device a large image is responsively scaled down we've used
+up more bandwidth that necessary (thus draining some battery life while we're at it. This is why it's helpful, if you can do it, to use
+srcset approach and support various viewport sizes with separate images.
+See also https://www.codeinwp.com/blog/responsive-images/ and https://web.dev/learn/design/responsive-images/#responsive-images-with-srcset
+*/
+
+/*
+AgnosticUI does not yet support dark mode but it's slated for next thing after MVP release:
+https://github.com/AgnosticUI/agnosticui/issues/14. When that comes we'll likely leverage:
+@media (prefers-color-scheme: dark) {}
+*/
+
+/*
+AgnosticUI applies focus per component but you may want to apply it globally
+The outline which is slightly obscured by these use of the css custom properties, at time of writing,
+provides a 3px but transparent color. This is needed so not to break Windows High Contrast mode
+See also :focus-visible
+:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+}
+*/
+
+/*
+AgnosticUI also tries to do this on a per component basis, but you may want to apply it globally.
+This is important for folks with vestibular motion disorders.
+See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+*/
+
+/* If you'd like all SVGs to utilize the current font color by default. If any particular
+SVG has it's own presentational attributes those will take precedence over what's defined here
+:where(svg) {
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+}
+*/
+
+/*
+SVGs in buttons are almost always decorative and we'd prefer the outside button to take the pointer
+event not the icon:
+button svg {
+  pointer-events: none;
+} */
+
+:where(body) {
+  font-family: var(--agnostic-font-family-body);
+  font-size: var(--agnostic-body);
+
+  /* This is a hotly debated line of CSS on the internets:
+https://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
+But also see this newer resource which supports its use:
+https://www.joshwcomeau.com/css/custom-css-reset/#digit-font-smoothing */
+  -webkit-font-smoothing: antialiased;
+
+  /* If you elect to set block-size on html element you may also want to do here:
+  min-block-size: 100%; */
+}
+
+/*
+Might as well use the CSS custom properties as specified for heading levels. Note, although
+it's becoming popular to use clamp to allow for fluid headings, I'm still researching the
+safety of using clamp for headings:
+https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/#accessibility-concerns
+Perhaps this is best saved for curated hero units and tested for a11y compliance when doing so.
+*/
+:where(h1) {
+  font-size: var(--agnostic-h1);
+}
+
+:where(h2) {
+  font-size: var(--agnostic-h2);
+}
+
+:where(h3) {
+  font-size: var(--agnostic-h3);
+}
+
+:where(h4) {
+  font-size: var(--agnostic-h4);
+}
+
+:where(h5) {
+  font-size: var(--agnostic-h5);
+}
+
+:where(h6) {
+  font-size: var(--agnostic-h6);
+}
+
+/* inline elements -- sets text overflows whether browser will break text within a string
+to prevent from overflowing its line box. Nuanced and not always what you'd want.
+:where(p, h1, h2, h3, h4, h5, h6) {
+  overflow-wrap: break-word;
+}
+*/
