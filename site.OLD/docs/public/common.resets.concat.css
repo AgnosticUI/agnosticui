@@ -1,0 +1,122 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+:where(body) {
+  /* It seems like 1.5 is a sensible choice. If font is 16px it makes it a nice 24px and is used
+  in many places:
+    -- Bootstrap: https://github.com/twbs/bootstrap/blob/e342142b61aacc187c776052bde93e414eb25db7/scss/_variables.scss#L563
+    -- Foundation: https://github.com/foundation/foundation-sites/blob/91a0f2a02977127696e49b40e435d15de1948442/scss/_global.scss#L23
+    -- Modern Reset: https://piccalil.li/blog/a-modern-css-reset/
+    -- Modern Reset2: https://www.joshwcomeau.com/css/custom-css-reset/
+    -- Modern Reset3: https://github.com/hankchizljaw/modern-css-reset/blob/master/src/reset.css#L37
+    MOST IMPORTANT: This is required for checkboxes / radios to line up correctly!
+  */
+  line-height: 1.5;
+}
+
+:where(ul) {
+  list-style: none;
+}
+
+:where(button, [role="button"]) {
+  cursor: pointer;
+}
+
+:where(input, button, select, optgroup, textarea) {
+  /* Remove the margin in Firefox and Safari. Safari was especially adding margin-top 2px
+  completely obliterating the icon addons centering */
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+
+:where(table) {
+  /* Prevents double borders */
+  border-collapse: collapse;
+}
+
+/* match-parent is for safari */
+:where(th) {
+  text-align: -webkit-match-parent;
+  text-align: match-parent;
+  text-align: inherit;
+}
+
+:where(thead, tbody, tfoot, tr, td, th) {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+:where(
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+/* Safari appears to be adding margin: 2px */
+button,
+pre,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6) {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * With trepidation I went ahead and elected to use classless styles for links.
+ * They really ought to match the UI styling of the entire app and especially
+ * the customized focus ring that we use. I was noticing how awful links were looking
+ * against the other AgnosticUI components when focused and elected to do this.
+ *
+ * To customize links, define CSS property below as you wish.
+ */
+a {
+  --agnostic-link-color: var(--agnostic-primary, #077acb);
+
+  color: var(--agnostic-link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  a:focus {
+    transition-duration: 0.001ms !important;
+  }
+}
