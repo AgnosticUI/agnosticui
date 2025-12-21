@@ -2,7 +2,7 @@
 
 ## Objective
 
-Verify that the `@agnosticui/cli` functions correctly across **Lit**, **React**, and **Vue** frameworks for all **56 components**.
+Verify that the `agnosticui-cli` functions correctly across **Lit**, **React**, and **Vue** frameworks for all **56 components**.
 
 ## Scope
 

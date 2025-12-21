@@ -1,4 +1,4 @@
-# @agnosticui/cli
+# agnosticui-cli
 
 CLI for AgnosticUI Local - The UI kit that lives in your codebase.
 
