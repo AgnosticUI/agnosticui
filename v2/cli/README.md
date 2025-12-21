@@ -205,13 +205,155 @@ your-project/
 └── agnosticui.config.json         # CLI configuration
 ```
 
+## How Package Resolution Works
+
+The CLI uses a **two-tier resolution strategy** to find the AgnosticUI core library:
+
+### 1. Local Development Mode (Priority)
+When developing locally, the CLI first checks for a tarball at:
+```
+../../dist/agnosticui-local-v2.0.0-alpha.tar.gz
+```
+
+This allows testing changes without publishing to NPM.
+
+### 2. Production Mode (NPM Registry)
+If no local tarball is found, the CLI downloads from NPM:
+```bash
+npm pack agnosticui-core@${version}
+```
+
+**Package Names:**
+- **Development tarball**: `agnosticui-local-v*.tar.gz` (built locally)
+- **NPM package**: `agnosticui-core` (published to registry)
+
+### Usage Examples
+
+**Local Development:**
+```bash
+# Build local tarball first
+cd v2
+./scripts/build-local-tarball.sh
+
+# Use in test project
+npx ag init --framework react --tarball /path/to/v2/dist/agnosticui-local-v2.0.0-alpha.tar.gz
+```
+
+**Production (After Publishing):**
+```bash
+# Downloads agnosticui-core@alpha from NPM
+npx ag init --framework react
+
+# Or specify a version
+npx ag init --framework react --version latest
+npx ag init --framework react --version 2.0.0
+```
+
+## Testing After NPM Publication
+
+**CRITICAL: Follow these steps to verify the published package works correctly**
+
+### 1. Publish to NPM (Covered in Phase 4 below)
+```bash
+cd v2/cli
+npm publish --tag alpha
+```
+
+### 2. Wait for NPM Propagation
+Wait 1-2 minutes for NPM to propagate the package globally.
+
+### 3. Verify in a Fresh Environment
+```bash
+# Create a completely fresh test directory
+mkdir /tmp/test-agui-npm-$(date +%s)
+cd /tmp/test-agui-npm-$(date +%s)
+
+# Initialize a basic project
+npm init -y
+
+# Test global installation
+npm install -g agnosticui-cli@alpha
+
+# Verify CLI is available
+ag --version  # Should show: 2.0.0-alpha.1
+
+# CRITICAL TEST: Initialize WITHOUT --tarball flag
+# This forces NPM download of agnosticui-core
+ag init --framework react
+
+# Verify the package was downloaded
+ls -la agnosticui/  # Should contain extracted library
+
+# Add a component
+ag add button
+
+# Verify component files exist
+ls -la src/components/ag/Button/
+```
+
+### 4. Test with npx (No Global Install)
+```bash
+# Create another fresh test directory
+mkdir /tmp/test-npx-$(date +%s)
+cd /tmp/test-npx-$(date +%s)
+npm init -y
+
+# CRITICAL: This should work without ANY prior installation
+npx agnosticui-cli@alpha init --framework vue
+npx agnosticui-cli@alpha add button input
+```
+
+### 5. Test Different Version Tags
+```bash
+# Test specific version
+ag init --framework react --version 2.0.0-alpha.1
+
+# Test 'latest' tag (after stable release)
+ag init --framework react --version latest
+```
+
+### 6. Verification Checklist
+
+After publishing, verify:
+- [ ] `npm info agnosticui-cli` shows correct version
+- [ ] `npm info agnosticui-core` shows correct version
+- [ ] `ag init` downloads from NPM (without --tarball flag)
+- [ ] Fresh install in `/tmp` directory works
+- [ ] `npx agnosticui-cli@alpha init` works without global install
+- [ ] Components are correctly copied to project
+- [ ] Config file is created properly
+
+### Troubleshooting Published Package
+
+**Problem: "Failed to download agnosticui-core from NPM"**
+```bash
+# Check if package is published
+npm info agnosticui-core@alpha
+
+# Check if you can manually download it
+npm pack agnosticui-core@alpha
+tar -tzf agnosticui-core-*.tgz  # Should show package contents
+```
+
+**Problem: CLI not found after global install**
+```bash
+# Check install location
+npm list -g agnosticui-cli
+
+# Verify bin path
+npm bin -g
+
+# Reinstall
+npm uninstall -g agnosticui-cli
+npm install -g agnosticui-cli@alpha
+```
+
 ## Development Notes
 
-- The CLI looks for tarballs in `../../dist/` relative to the CLI package for local development
-- In production, it will download from GitHub releases or CDN (TODO)
 - All file operations preserve the structure: `core/` + `framework/`
 - `npm pack` is more reliable than `npm link` for local testing
 - Remember to rebuild (`npm run build`) and repack after making CLI changes
+- The temp download directory `.tmp-ag-download` is automatically cleaned up after init
 
 # AgnosticUI v2 - Publishing & Transition Guide
 
