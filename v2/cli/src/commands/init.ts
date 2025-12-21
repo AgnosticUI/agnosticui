@@ -71,11 +71,12 @@ export async function init(options: InitOptions = {}): Promise<void> {
   }
 
   // Determine tarball path
-  const tarballPath = options.tarball || await determineTarballPath();
+  const version = options.version || 'alpha';
+  const tarballPath = options.tarball || await determineTarballPath(version);
 
   if (!tarballPath) {
     logger.error('Could not find AgnosticUI tarball.');
-    logger.info('Please specify a tarball path with --tarball option.');
+    logger.info('Please specify a tarball path with --tarball option or ensure agnosticui-core is published to NPM.');
     process.exit(1);
   }
 
@@ -211,9 +212,16 @@ export async function init(options: InitOptions = {}): Promise<void> {
       pc.dim('4. Use in your app:'),
       '  ' + logger.command(exampleImport),
     ]);
+
+    // Clean up temporary download directory if it exists
+    await cleanupTempDownload();
   } catch (error) {
     spinner.stop(pc.red('✖') + ' Failed to initialize');
     logger.error(`Initialization failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+
+    // Clean up on error too
+    await cleanupTempDownload();
+
     process.exit(1);
   }
 }
@@ -295,21 +303,65 @@ async function updateTsConfigs(): Promise<void> {
 }
 
 /**
- * Determine the tarball path (local or download)
+ * Determine the tarball path (local or download from NPM)
  */
-async function determineTarballPath(): Promise<string | null> {
+async function determineTarballPath(version: string = 'alpha'): Promise<string | null> {
   // For local development, look for the tarball in the dist folder
   const localTarballPath = path.resolve(process.cwd(), '../../dist/agnosticui-local-v2.0.0-alpha.tar.gz');
 
   if (existsSync(localTarballPath)) {
+    logger.info('Using local development tarball');
     return localTarballPath;
   }
 
-  // TODO: In production, download from GitHub releases or CDN
-  // const downloadedPath = await downloadTarball();
-  // return downloadedPath;
+  // In production, download from NPM registry
+  try {
+    const { execSync } = await import('child_process');
+    const { readdir, rm } = await import('node:fs/promises');
+    const tmpDir = path.join(process.cwd(), '.tmp-ag-download');
+
+    await ensureDir(tmpDir);
+
+    logger.info(`Downloading agnosticui-core@${version} from NPM...`);
+
+    // Download package using npm pack
+    execSync(`npm pack agnosticui-core@${version}`, {
+      cwd: tmpDir,
+      stdio: 'pipe'
+    });
+
+    // Find the downloaded tarball
+    const files = await readdir(tmpDir);
+    const tarball = files.find(f => f.startsWith('agnosticui-core-') && f.endsWith('.tgz'));
+
+    if (tarball) {
+      return path.join(tmpDir, tarball);
+    }
+
+    // Clean up if no tarball found
+    await rm(tmpDir, { recursive: true, force: true });
+  } catch (error) {
+    logger.error('Failed to download agnosticui-core from NPM');
+    logger.info(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+  }
 
   return null;
+}
+
+/**
+ * Clean up temporary download directory
+ */
+async function cleanupTempDownload(): Promise<void> {
+  try {
+    const { rm } = await import('node:fs/promises');
+    const tmpDir = path.join(process.cwd(), '.tmp-ag-download');
+
+    if (pathExists(tmpDir)) {
+      await rm(tmpDir, { recursive: true, force: true });
+    }
+  } catch (error) {
+    // Ignore cleanup errors - not critical
+  }
 }
 
 /**

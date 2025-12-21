@@ -56,6 +56,7 @@ export interface InitOptions {
   framework?: Framework;
   componentsPath?: string;
   tarball?: string;
+  version?: string; // NPM version tag (e.g., 'alpha', 'latest', '2.0.0')
 }
 
 export interface AddOptions {

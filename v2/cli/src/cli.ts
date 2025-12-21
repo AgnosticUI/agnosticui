@@ -2,6 +2,31 @@
 
 /**
  * AgnosticUI CLI - Main entry point
+ *
+ * Package Resolution Strategy:
+ * ============================
+ *
+ * The CLI uses a two-tier approach to locate the AgnosticUI core library:
+ *
+ * 1. Local Development (Priority):
+ *    - Checks for: ../../dist/agnosticui-local-v2.0.0-alpha.tar.gz
+ *    - Built via: ./scripts/build-local-tarball.sh
+ *    - Used for: Testing changes before publishing
+ *
+ * 2. Production (NPM Registry):
+ *    - Downloads: agnosticui-core@{version} from NPM
+ *    - Command: npm pack agnosticui-core@alpha (or latest, or specific version)
+ *    - Used for: Production installations after publishing
+ *
+ * Package Naming:
+ * - Local tarball:  agnosticui-local-v*.tar.gz
+ * - NPM package:    agnosticui-core
+ * - This CLI:       agnosticui-cli
+ *
+ * Note: The different naming prevents confusion between local dev builds
+ * and published NPM packages.
+ *
+ * See: v2/cli/README.md "Testing After NPM Publication" for verification steps.
  */
 import { Command } from 'commander';
 import { init } from './commands/init.js';
@@ -25,11 +50,13 @@ program
   .option('-f, --framework <framework>', 'Framework to use (react, vue, lit, svelte)')
   .option('-p, --components-path <path>', 'Path where components will be generated')
   .option('-t, --tarball <path>', 'Path to local tarball (for development)')
+  .option('-v, --version <version>', 'NPM version to download (e.g., alpha, latest, 2.0.0)', 'alpha')
   .action(async (options) => {
     await init({
       framework: options.framework as Framework | undefined,
       componentsPath: options.componentsPath,
       tarball: options.tarball,
+      version: options.version,
     });
   });
 
