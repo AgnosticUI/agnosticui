@@ -1,0 +1,25 @@
+# Exclude markdown documentation from source files
+# (but keep the root README.md which is automatically included by npm)
+src/**/*.md
+docs/
+
+# Exclude test files
+src/**/*.spec.ts
+src/**/*.spec.tsx
+src/**/*.test.ts
+src/**/*.test.tsx
+src/test-setup.ts
+
+# Exclude common development directories if they exist
+**/__tests__/
+**/coverage/
+
+# Exclude development and build config files
+*.tgz
+.DS_Store
+tsconfig.json
+tsconfig.*.json
+vite.config.*
+vitest.config.*
+.eslintrc*
+eslint.config.*
