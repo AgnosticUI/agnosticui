@@ -1,4 +1,4 @@
-import { hasSlotContent } from '../../../../utils/slot';
+import { hasSlotContent } from '../../utils/slot';
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 

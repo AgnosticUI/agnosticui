@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
+    "agnosticui-cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.1.tgz",
     "focus-trap": "^7.6.6",
     "lit": "^3.3.1"
   },
   "devDependencies": {
-    "@agnosticui/cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.1.tgz",
     "typescript": "~5.9.3",
     "vite": "^7.2.4"
   }

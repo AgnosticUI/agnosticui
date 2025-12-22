@@ -1,6 +1,7 @@
-import { createComponent } from '@lit/react';
-import React from 'react';
-import { AgFieldset, type FieldsetProps } from '../core/_Fieldset';
+import { createComponent } from "@lit/react";
+import React from "react";
+import { AgFieldset } from "../core/Fieldset";
+import { type FieldsetProps } from "../core/_Fieldset";
 
 export interface ReactFieldsetProps extends FieldsetProps {
   children?: React.ReactNode;
@@ -9,7 +10,7 @@ export interface ReactFieldsetProps extends FieldsetProps {
 }
 
 export const ReactFieldset = createComponent({
-  tagName: 'ag-fieldset',
+  tagName: "ag-fieldset",
   elementClass: AgFieldset,
   react: React,
   events: {

@@ -8,7 +8,7 @@
   },
   "components": {
     "Avatar": {
-      "added": "2025-12-19T20:48:20.138Z",
+      "added": "2025-12-22T13:52:07.464Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
@@ -134,7 +134,7 @@
       ]
     },
     "Slider": {
-      "added": "2025-12-17T19:21:04.900Z",
+      "added": "2025-12-22T13:52:07.464Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
@@ -152,12 +152,12 @@
       ]
     },
     "Fieldset": {
-      "added": "2025-12-10T19:49:36.015Z",
+      "added": "2025-12-22T13:52:07.464Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Fieldset/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/vue-test/src/components/ag/Fieldset/vue"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Fieldset/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/vue-test/src/components/ag/Fieldset/vue"
       ]
     },
     "Rating": {
@@ -189,7 +189,7 @@
       ]
     },
     "Accordion": {
-      "added": "2025-12-19T20:48:20.136Z",
+      "added": "2025-12-22T13:52:07.463Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
@@ -235,7 +235,7 @@
       ]
     },
     "ProgressRing": {
-      "added": "2025-12-11T04:23:29.908Z",
+      "added": "2025-12-22T13:52:07.464Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
@@ -325,7 +325,7 @@
       ]
     },
     "SkeletonLoader": {
-      "added": "2025-12-19T20:48:20.138Z",
+      "added": "2025-12-22T13:52:07.464Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
@@ -490,7 +490,7 @@
       ]
     },
     "EmptyState": {
-      "added": "2025-12-12T01:05:04.733Z",
+      "added": "2025-12-22T13:52:07.464Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
@@ -508,8 +508,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-0.1.0.tgz",
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.1.tgz",
     "version": "unknown",
-    "installed": "2025-12-19T22:29:30.436Z"
+    "installed": "2025-12-22T13:52:01.870Z"
   }
 }

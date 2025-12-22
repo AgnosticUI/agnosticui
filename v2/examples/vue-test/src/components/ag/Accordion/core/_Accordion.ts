@@ -25,7 +25,7 @@
 
 import { LitElement, html, css } from 'lit';
 
-import { generateUniqueId } from '../../../../utils/unique-id';
+import { generateUniqueId } from '../../utils/unique-id';
 
 // Event types
 export interface AccordionItemToggleEventDetail {

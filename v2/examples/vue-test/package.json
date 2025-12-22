@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
+    "agnosticui-cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.1.tgz",
     "focus-trap": "^7.6.6",
     "lit": "^3.3.1",
     "lucide-vue-next": "^0.559.0",
     "vue": "^3.5.24"
   },
   "devDependencies": {
-    "@agnosticui/cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.1.tgz",
     "@types/node": "^24.10.1",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.49.0",

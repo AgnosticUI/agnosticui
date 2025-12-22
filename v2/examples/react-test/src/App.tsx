@@ -479,32 +479,32 @@ function App() {
         <ReactAlert>Default alert</ReactAlert>
       </section>
       <section className="mbe4">
-        <ReactAlert type="success">
+        <ReactAlert variant="success">
           Success alert
         </ReactAlert>
       </section>
       <section className="mbe4">
-        <ReactAlert type="info">
+        <ReactAlert variant="info">
           Info alert
         </ReactAlert>
       </section>
       <section className="mbe4">
-        <ReactAlert type="primary">
+        <ReactAlert variant="primary">
           Primary alert
         </ReactAlert>
       </section>
       <section className="mbe4">
-        <ReactAlert type="warning">
+        <ReactAlert variant="warning">
           Warning alert
         </ReactAlert>
       </section>
       <section className="mbe4">
-        <ReactAlert type="danger">
+        <ReactAlert variant="danger">
           Danger alert
         </ReactAlert>
       </section>
       <section className="mbe4">
-        <ReactAlert type="error">
+        <ReactAlert variant="error">
           Error alert
         </ReactAlert>
       </section>

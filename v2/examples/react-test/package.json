@@ -10,9 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@agnosticui/cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.1.tgz",
     "@floating-ui/dom": "^1.7.4",
     "@lit/react": "^1.0.8",
+    "agnosticui-cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.1.tgz",
     "focus-trap": "^7.6.6",
     "lit": "^3.3.1",
     "lucide-react": "^0.561.0",
