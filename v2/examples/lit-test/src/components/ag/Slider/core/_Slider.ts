@@ -15,8 +15,8 @@ import {
   buildAriaDescribedBy,
   isHorizontalLabel,
   type LabelPosition,
-} from '../../../../shared/form-control-utils';
-import { formControlStyles } from '../../../../shared/form-control-styles';
+} from '../../shared/form-control-utils';
+import { formControlStyles } from '../../shared/form-control-styles';
 
 // Props interface following INTERFACE_STANDARDS.md
 export interface SliderProps {

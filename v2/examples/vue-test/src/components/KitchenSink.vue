@@ -850,19 +850,19 @@ const handleCollapsibleToggle = (event: Event) => {
       <VueAlert class="mis2">Default alert</VueAlert>
       <VueAlert
         class="mis2"
-        type="success"
+        variant="success"
       >Success alert</VueAlert>
       <VueAlert
         class="mis2"
-        type="info"
+        variant="info"
       >Info alert</VueAlert>
       <VueAlert
         class="mis2"
-        type="warning"
+        variant="warning"
       >Warning alert</VueAlert>
       <VueAlert
         class="mis2"
-        type="error"
+        variant="error"
       >Error alert</VueAlert>
     </section>
 

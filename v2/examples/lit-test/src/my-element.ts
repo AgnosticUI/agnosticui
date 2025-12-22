@@ -955,25 +955,25 @@ export class MyElement extends LitElement {
         </ag-button-fx>
       </ag-flex-row>
       <ag-flex-row class="responsive" wrap="wrap">
-        <ag-alert type="primary" rounded borderedLeft>
+        <ag-alert variant="primary" rounded borderedLeft>
           primary alert
         </ag-alert>
-        <ag-alert type="info" rounded borderedLeft>
+        <ag-alert variant="info" rounded borderedLeft>
           info alert
         </ag-alert>
-        <ag-alert type="success" rounded borderedLeft>
+        <ag-alert variant="success" rounded borderedLeft>
           success alert
         </ag-alert>
-        <ag-alert type="warning" rounded borderedLeft>
+        <ag-alert variant="warning" rounded borderedLeft>
           warning alert
         </ag-alert>
-        <ag-alert type="error" rounded borderedLeft>
+        <ag-alert variant="error" rounded borderedLeft>
           error alert
         </ag-alert>
-        <ag-alert type="danger" rounded borderedLeft>
+        <ag-alert variant="danger" rounded borderedLeft>
           danger alert
         </ag-alert>
-        <ag-alert type="monochrome" rounded borderedLeft>
+        <ag-alert variant="monochrome" rounded borderedLeft>
           monochrome alert
         </ag-alert>
       </ag-flex-row>

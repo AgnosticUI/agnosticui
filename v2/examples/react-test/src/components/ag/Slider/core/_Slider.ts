@@ -811,8 +811,6 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
     e.preventDefault();
     e.stopPropagation();
 
-    console.log(`[Slider] pointerDown on instance with label="${this.label}", id="${this.id}", thumbType=${thumbType}`);
-
     const thumb = e.currentTarget as HTMLElement;
     thumb.setPointerCapture(e.pointerId);
 
@@ -909,8 +907,6 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
    * Update value and dispatch events
    */
   private _updateValue(newValue: number | [number, number], type: 'input' | 'change' = 'change') {
-    console.log(`[Slider] _updateValue called on instance with label="${this.label}", id="${this.id}", newValue=`, newValue, `type=${type}`);
-
     if (this.readonly || this.disabled) {
       return; // Prevent value changes in readonly/disabled state
     }

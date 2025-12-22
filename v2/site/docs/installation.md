@@ -213,9 +213,9 @@ npx ag sync --tarball /path/to/agnosticui-local-v0.0.2.tar.gz
 
 This updates the reference library in `./agnosticui/` without touching your customized components.
 
-### TypeScript Configuration
+## TypeScript Configuration
 
-If using TypeScript with Lit web components, enable experimental decorators in your `tsconfig.json`:
+If using TypeScript with Lit web components, enable experimental decorators in your TypeScript configuration (e.g., `tsconfig.app.json` or `tsconfig.json`):
 
 ```json
 {
@@ -225,6 +225,31 @@ If using TypeScript with Lit web components, enable experimental decorators in y
   }
 }
 ```
+
+**Note:** If using Vite, these settings should only be in your TypeScript config, not in `vite.config.ts` under `esbuild.tsconfigRaw`. esbuild's implementation of experimental decorators is incomplete and can cause errors with Lit's `@property` decorator.
+
+### Vite Configuration
+
+When using AgnosticUI with Vue and Vite, configure Vite to recognize `<ag-*>` components as custom elements in your `vite.config.ts`:
+
+```typescript
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('ag-'),
+        }
+      }
+    })
+  ],
+})
+```
+
+This prevents Vue from treating AgnosticUI web components as Vue components.
 
 ## NPM Package (Alternative)
 

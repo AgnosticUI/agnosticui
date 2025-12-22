@@ -210,7 +210,9 @@ your-project/
 The CLI uses a **two-tier resolution strategy** to find the AgnosticUI core library:
 
 ### 1. Local Development Mode (Priority)
+
 When developing locally, the CLI first checks for a tarball at:
+
 ```
 ../../dist/agnosticui-local-v2.0.0-alpha.tar.gz
 ```
@@ -218,18 +220,22 @@ When developing locally, the CLI first checks for a tarball at:
 This allows testing changes without publishing to NPM.
 
 ### 2. Production Mode (NPM Registry)
+
 If no local tarball is found, the CLI downloads from NPM:
+
 ```bash
 npm pack agnosticui-core@${version}
 ```
 
 **Package Names:**
+
 - **Development tarball**: `agnosticui-local-v*.tar.gz` (built locally)
 - **NPM package**: `agnosticui-core` (published to registry)
 
 ### Usage Examples
 
 **Local Development:**
+
 ```bash
 # Build local tarball first
 cd v2
@@ -240,6 +246,7 @@ npx ag init --framework react --tarball /path/to/v2/dist/agnosticui-local-v2.0.0
 ```
 
 **Production (After Publishing):**
+
 ```bash
 # Downloads agnosticui-core@alpha from NPM
 npx ag init --framework react
@@ -254,15 +261,18 @@ npx ag init --framework react --version 2.0.0
 **CRITICAL: Follow these steps to verify the published package works correctly**
 
 ### 1. Publish to NPM (Covered in Phase 4 below)
+
 ```bash
 cd v2/cli
 npm publish --tag alpha
 ```
 
 ### 2. Wait for NPM Propagation
+
 Wait 1-2 minutes for NPM to propagate the package globally.
 
 ### 3. Verify in a Fresh Environment
+
 ```bash
 # Create a completely fresh test directory
 mkdir /tmp/test-agui-npm-$(date +%s)
@@ -292,6 +302,7 @@ ls -la src/components/ag/Button/
 ```
 
 ### 4. Test with npx (No Global Install)
+
 ```bash
 # Create another fresh test directory
 mkdir /tmp/test-npx-$(date +%s)
@@ -304,6 +315,7 @@ npx agnosticui-cli@alpha add button input
 ```
 
 ### 5. Test Different Version Tags
+
 ```bash
 # Test specific version
 ag init --framework react --version 2.0.0-alpha.1
@@ -315,6 +327,7 @@ ag init --framework react --version latest
 ### 6. Verification Checklist
 
 After publishing, verify:
+
 - [ ] `npm info agnosticui-cli` shows correct version
 - [ ] `npm info agnosticui-core` shows correct version
 - [ ] `ag init` downloads from NPM (without --tarball flag)
@@ -326,6 +339,7 @@ After publishing, verify:
 ### Troubleshooting Published Package
 
 **Problem: "Failed to download agnosticui-core from NPM"**
+
 ```bash
 # Check if package is published
 npm info agnosticui-core@alpha
@@ -336,6 +350,7 @@ tar -tzf agnosticui-core-*.tgz  # Should show package contents
 ```
 
 **Problem: CLI not found after global install**
+
 ```bash
 # Check install location
 npm list -g agnosticui-cli
@@ -441,7 +456,7 @@ git push origin master
 
 **Root README.md:**
 
-```markdown
+````markdown
 # AgnosticUI v2
 
 > The UI component kit that lives in your codebase
@@ -457,6 +472,7 @@ npm install -g agnosticui-cli@alpha
 # Or use with npx
 npx agnosticui-cli@alpha init
 ```
+````
 
 ## Quick Start
 
@@ -486,6 +502,7 @@ Visit [your-docs-url] for full documentation.
 ## Looking for v1?
 
 AgnosticUI v1 packages are available on the `v1-legacy` branch and still published on npm:
+
 - `agnostic-angular`
 - `agnostic-react`
 - `agnostic-vue`
@@ -496,7 +513,8 @@ AgnosticUI v1 packages are available on the `v1-legacy` branch and still publish
 ## License
 
 MIT
-```
+
+````
 
 **Root package.json:**
 
@@ -525,7 +543,7 @@ MIT
   "author": "Your Name",
   "license": "MIT"
 }
-```
+````
 
 #### 1.6 Delete Feature Branch (After Verification)
 
@@ -556,12 +574,7 @@ git push origin --delete feature/agnosticui-v2-integration
   "description": "AgnosticUI v2 Core - Web Components and framework adapters",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "src",
-    "README.md",
-    "LICENSE"
-  ],
+  "files": ["dist", "src", "README.md", "LICENSE"],
   "publishConfig": {
     "access": "public"
   },
@@ -603,11 +616,7 @@ git push origin --delete feature/agnosticui-v2-integration
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
+  "files": ["dist", "README.md", "LICENSE"],
   "publishConfig": {
     "access": "public"
   },
@@ -644,33 +653,38 @@ git push origin --delete feature/agnosticui-v2-integration
 **File: `v2/cli/src/commands/init.ts`**
 
 Find and replace all references:
+
 - `@agnosticui/core` → `agnosticui-core`
 - `@agnosticui/cli` → `agnosticui-cli`
 
 ```typescript
 // Example: Update determineTarballPath() function
-async function determineTarballPath(version: string = 'alpha'): Promise<string | null> {
+async function determineTarballPath(
+  version: string = "alpha"
+): Promise<string | null> {
   try {
-    const { execSync } = await import('child_process');
-    const tmpDir = path.join(process.cwd(), '.tmp-ag-download');
+    const { execSync } = await import("child_process");
+    const tmpDir = path.join(process.cwd(), ".tmp-ag-download");
     await ensureDir(tmpDir);
-    
+
     // Download package - UPDATED PACKAGE NAME
-    execSync(`npm pack agnosticui-core@${version}`, { 
+    execSync(`npm pack agnosticui-core@${version}`, {
       cwd: tmpDir,
-      stdio: 'pipe' 
+      stdio: "pipe",
     });
-    
+
     const files = await readdir(tmpDir);
-    const tarball = files.find(f => f.startsWith('agnosticui-core-') && f.endsWith('.tgz'));
-    
+    const tarball = files.find(
+      (f) => f.startsWith("agnosticui-core-") && f.endsWith(".tgz")
+    );
+
     if (tarball) {
       return path.join(tmpDir, tarball);
     }
   } catch (error) {
-    logger.error('Failed to download agnosticui-core from npm');
+    logger.error("Failed to download agnosticui-core from npm");
   }
-  
+
   return null;
 }
 ```
@@ -678,6 +692,7 @@ async function determineTarballPath(version: string = 'alpha'): Promise<string |
 #### 2.4 Update Documentation References
 
 Search and replace in all documentation files:
+
 - `@agnosticui/core` → `agnosticui-core`
 - `@agnosticui/cli` → `agnosticui-cli`
 
@@ -771,6 +786,7 @@ npm publish --tag alpha
 ```
 
 **Expected output:**
+
 ```
 + agnosticui-core@2.0.0-alpha.1
 ```
@@ -799,6 +815,7 @@ npm publish --tag alpha
 ```
 
 **Expected output:**
+
 ```
 + agnosticui-cli@2.0.0-alpha.1
 ```
@@ -911,7 +928,7 @@ Go to: `https://github.com/yourusername/agnosticui/releases/new`
 - **Title**: `AgnosticUI v2.0.0-alpha.1 - First Alpha Release 🎉`
 - **Description**:
 
-```markdown
+````markdown
 # AgnosticUI v2.0.0-alpha.1 🎉
 
 This is the first alpha release of AgnosticUI v2 - a complete rewrite with a CLI-first approach.
@@ -923,6 +940,7 @@ npm install -g agnosticui-cli@alpha
 ag init --framework react
 ag add button input card
 ```
+````
 
 ## What's New in v2
 
@@ -936,6 +954,7 @@ ag add button input card
 ## Breaking Changes from v1
 
 AgnosticUI v2 is a complete rewrite and is not compatible with v1. If you need v1, it remains available:
+
 - Packages: `agnostic-angular`, `agnostic-react`, `agnostic-vue`, `agnostic-svelte`
 - Branch: `v1-legacy`
 
@@ -955,7 +974,8 @@ This is an **alpha release** for early testing and feedback. APIs may change bef
 ## Feedback
 
 Please report issues or provide feedback in [GitHub Discussions](link) or [Issues](link).
-```
+
+````
 
 - **Check**: "This is a pre-release"
 - Click "Publish release"
@@ -979,7 +999,7 @@ AgnosticUI v2 uses a CLI to copy components directly into your project.
 
 ```bash
 npm install -g agnosticui-cli@alpha
-```
+````
 
 ### Using npx (No Installation)
 
@@ -1039,7 +1059,8 @@ Components are copied to `src/components/ag/` by default.
 - [Quick Start Guide](./quick-start.md)
 - [Component Customization](./customization.md)
 - [Design Tokens](./design-tokens.md)
-```
+
+````
 
 #### 7.2 Create Migration Guide
 
@@ -1090,7 +1111,7 @@ v1 packages remain available and supported:
 - Packages: `agnostic-angular`, `agnostic-react`, `agnostic-vue`, `agnostic-svelte`
 - Documentation: [v1 docs link]
 - Branch: `v1-legacy`
-```
+````
 
 ---
 
@@ -1102,7 +1123,7 @@ Go to your repo's Discussions → Create new
 
 **Title**: "AgnosticUI v2.0.0-alpha.1 Released! 🎉"
 
-```markdown
+````markdown
 Hi everyone! 👋
 
 I'm excited to announce the first alpha release of AgnosticUI v2!
@@ -1118,10 +1139,12 @@ npm install -g agnosticui-cli@alpha
 ag init --framework react
 ag add button input
 ```
+````
 
 ## This is Alpha
 
 This is an early alpha for testing and feedback. APIs may change. Please:
+
 - Report bugs in [Issues](link)
 - Share feedback here in Discussions
 - Test with your favorite framework
@@ -1133,7 +1156,8 @@ This is an early alpha for testing and feedback. APIs may change. Please:
 - [npm: agnosticui-core](https://www.npmjs.com/package/agnosticui-core)
 
 Thanks for your interest! Looking forward to your feedback. 🙏
-```
+
+````
 
 #### 8.2 Monitor
 
@@ -1173,7 +1197,7 @@ ag add button
 # Phase 6: Release
 git tag -a v2.0.0-alpha.1 -m "Release v2.0.0-alpha.1"
 git push origin v2.0.0-alpha.1
-```
+````
 
 ---
 
