@@ -791,11 +791,34 @@ npm publish --tag alpha
 + agnosticui-core@2.0.0-alpha.1
 ```
 
+#### 4.2b
+
+I noticed the README.md had junk in it so I unfortunately did: npm unpublish, then fixed that and then went to publish but NPM will not let you republish within 24 hours, and, according to AI will require version bump.
+
+TLDR:
+1) I learned my lesson about dangers of `unpublish`
+2) I'll just wait 24 hours
+3) Use `2.0.0-alpha.2` and continue to bump versions from there.
+
 #### 4.3 Verify Core Publication
 
 ```bash
 npm info agnosticui-core
 npm view agnosticui-core@alpha
+
+agnosticui-core@2.0.0-alpha.1 | Proprietary | deps: 3 | versions: 1
+AgnosticUI Core Library - Framework-agnostic, upgrade-safe web components built with Lit.
+
+dependencies:
+@floating-ui/dom: ^1.7.4 @lit/react: ^1.0.8       focus-trap: ^7.6.5       
+
+maintainers:
+- rlevin <roblevinillustration@gmail.com>
+
+dist-tags:
+alpha: 2.0.0-alpha.1   latest: 2.0.0-alpha.1  
+
+published 48 seconds ago by rlevin <roblevinillustration@gmail.com>
 npm view agnosticui-core dist-tags
 
 # Visit on web
@@ -1241,13 +1264,4 @@ Non-scoped packages (`agnosticui-core`, `agnosticui-cli`) should be available si
 npm pack agnosticui-core@alpha
 
 # If that works, check CLI code in init.ts
-```
-
-### Wrong package published
-
-```bash
-# Can unpublish within 72 hours
-npm unpublish agnosticui-core@2.0.0-alpha.1
-
-# Then fix and republish
 ```
