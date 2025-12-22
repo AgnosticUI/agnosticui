@@ -1,18 +1,12 @@
 {
-  "name": "agnosticui",
-  "version": "1.0.4",
+  "name": "agnosticui-monorepo",
+  "version": "2.0.0-alpha.2",
   "author": {
     "email": "roblevinillustration@gmail.com",
     "name": "Rob Levin",
-    "url": "https://developtodesign.com"
+    "url": "https://www.agnosticui.com/"
   },
-  "contributors": [
-    {
-      "name": "Nick McCormick",
-      "email": "nick@collective.gg"
-    }
-  ],
-  "description": "Component primitives first coded in semantic HTML and CSS, then copied over to React, Vue, Svelte, and Angular (experimental) implementations. CSS properties themable.",
+  "description": "AgnosticUI is a local-first UI kit that generates components directly into your project codebase, giving developers full ownership and making every component fully visible to AI tools. Built with Lit, AgnosticUI delivers accessible, framework-agnostic components for modern web applications.",
   "license": "Apache-2.0",
   "main": "index.js",
   "private": true,
@@ -48,6 +42,8 @@
     "ui components",
     "design system",
     "components",
+    "web components",
+    "lit",
     "component library"
   ],
   "bugs": {
