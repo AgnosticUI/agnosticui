@@ -120,7 +120,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
       top: 0px;
       width: 4px;
       height: 8px;
-      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
     }
 
@@ -134,7 +134,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
       top: 1px;
       width: 4px;
       height: 9px;
-      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
     }
 
@@ -148,7 +148,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
       top: 1px;
       width: 5px;
       height: 10px;
-      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
     }
 
@@ -156,13 +156,13 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     .checkbox-input:indeterminate + .checkbox-label::after {
       transform: rotate(0deg) scale(1) translate(-6px);
       opacity: 1;
-      border-right: none;
+      border-inline-end: none;
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
       width: 8px;
       height: 0;
       left: 50%;
       top: 50%;
-      margin-left: -4px;
+      margin-inline-start: -4px;
       margin-top: -1px;
     }
 

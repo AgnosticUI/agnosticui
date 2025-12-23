@@ -219,7 +219,7 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
 
     .content-pagination-item-next {
       justify-content: flex-end;
-      margin-left: auto;
+      margin-inline-start: auto;
     }
 
     .content-pagination-link {
@@ -291,7 +291,7 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
       }
 
       .content-pagination-item-next {
-        margin-left: 0;
+        margin-inline-start: 0;
       }
     }
 

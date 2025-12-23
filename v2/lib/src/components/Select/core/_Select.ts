@@ -211,7 +211,7 @@ export class Select extends LitElement implements SelectProps {
     :host([size="small"]) .select {
       padding-top: var(--ag-space-1);
       padding-bottom: var(--ag-space-1);
-      padding-left: var(--ag-space-2);
+      padding-inline-start: var(--ag-space-2);
       font-size: var(--ag-font-size-small);
     }
 
@@ -219,7 +219,7 @@ export class Select extends LitElement implements SelectProps {
     :host([size="large"]) .select {
       padding-top: var(--ag-space-2);
       padding-bottom: var(--ag-space-2);
-      padding-left: var(--ag-space-4);
+      padding-inline-start: var(--ag-space-4);
       font-size: var(--ag-font-size-large);
     }
 

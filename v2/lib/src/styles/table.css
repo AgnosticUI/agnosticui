@@ -179,7 +179,7 @@
     border: none;
     text-align: right;
     position: relative;
-    padding-left: 50%;
+    padding-inline-start: 50%;
   }
 
   .ag-table--responsive td::before {
@@ -187,7 +187,7 @@
     position: absolute;
     left: 0;
     width: 45%;
-    padding-right: var(--ag-space-2);
+    padding-inline-end: var(--ag-space-2);
     font-weight: 600;
     text-align: left;
     color: var(--ag-text-secondary);
