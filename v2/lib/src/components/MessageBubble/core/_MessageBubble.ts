@@ -144,7 +144,7 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
     }
 
     :host([from="them"]) .chat-bubble::before {
-      left: -0.5rem;
+      inset-inline-start: -0.5rem;
       clip-path: polygon(100% 0, 0 100%, 100% 100%);
     }
 
@@ -172,7 +172,7 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
     }
 
     :host([from="me"]) .chat-bubble::before {
-      right: -0.5rem;
+      inset-inline-end: -0.5rem;
       clip-path: polygon(0 0, 0 100%, 100% 100%);
     }
 

@@ -176,26 +176,26 @@ export function generatePositionCSS(
 
     /* Start positioning (closed state with transform) */
     ${hostSelector}${getPositionSelector('start', attributeName)} ${containerClass} {
-      left: 0;
+      inset-inline-start: 0;
       transform: translateX(-100%);
     }
 
     /* End positioning (closed state with transform) */
     ${hostSelector}${getPositionSelector('end', attributeName)} ${containerClass} {
-      right: 0;
+      inset-inline-end: 0;
       transform: translateX(100%);
     }
 
     /* Corner start (left) side positioning */
     ${hostSelector}${getPositionSelector('top-start', attributeName)} ${containerClass},
     ${hostSelector}${getPositionSelector('bottom-start', attributeName)} ${containerClass} {
-      left: 0;
+      inset-inline-start: 0;
     }
 
     /* Corner end (right) side positioning */
     ${hostSelector}${getPositionSelector('top-end', attributeName)} ${containerClass},
     ${hostSelector}${getPositionSelector('bottom-end', attributeName)} ${containerClass} {
-      right: 0;
+      inset-inline-end: 0;
     }
 
     /* Open state - remove transforms to slide into view */

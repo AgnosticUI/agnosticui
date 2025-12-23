@@ -75,12 +75,12 @@ export class Loader extends LitElement implements LoaderProps {
     }
 
     .loader::before {
-      left: calc(-1 * var(--loading-size));
+      inset-inline-start: calc(-1 * var(--loading-size));
       animation-delay: 0s;
     }
 
     .loader::after {
-      left: var(--loading-size);
+      inset-inline-start: var(--loading-size);
       animation-delay: 500ms;
     }
 

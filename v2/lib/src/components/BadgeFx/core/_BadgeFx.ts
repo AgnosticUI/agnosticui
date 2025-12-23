@@ -77,10 +77,7 @@ export class BadgeFx extends AgBadge implements BadgeFxProps {
       .badge.ag-fx-highlight-sweep::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         background: linear-gradient(
           90deg,
           transparent 0%,

@@ -241,10 +241,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
       display: block;
       visibility: hidden;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       z-index: var(--ag-z-index-modal);
@@ -257,7 +254,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     .dialog-backdrop {
       position: absolute;
       top: 0;
-      left: 0;
+      inset-inline-start: 0;
       width: 100%;
       height: 100%;
       display: flex;
@@ -345,13 +342,13 @@ export class AgnosticDialog extends LitElement implements DialogProps {
 
     /* Start position - closed state */
     :host([drawer-position="start"]) .dialog-container {
-      left: 0;
+      inset-inline-start: 0;
       transform: translateX(-100%);
     }
 
     /* End position - closed state */
     :host([drawer-position="end"]) .dialog-container {
-      right: 0;
+      inset-inline-end: 0;
       transform: translateX(100%);
     }
 

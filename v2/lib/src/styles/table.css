@@ -185,7 +185,7 @@
   .ag-table--responsive td::before {
     content: attr(data-label);
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     width: 45%;
     padding-inline-end: var(--ag-space-2);
     font-weight: 600;

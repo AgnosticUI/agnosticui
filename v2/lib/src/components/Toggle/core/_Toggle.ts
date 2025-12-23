@@ -146,7 +146,7 @@ export class AgToggle extends LitElement implements ToggleProps {
       /* Handle positioning and animation */
       position: absolute;
       top: 50%;
-      left: 2px;
+      inset-inline-start: 2px;
       transform: translateY(-50%);
       border-radius: 50%;
       transition: transform var(--ag-transition-duration) ease;

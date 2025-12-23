@@ -116,7 +116,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-label--small::after {
-      left: 4px;
+      inset-inline-start: 4px;
       top: 0px;
       width: 4px;
       height: 8px;
@@ -130,7 +130,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-label--medium::after {
-      left: 5px;
+      inset-inline-start: 5px;
       top: 1px;
       width: 4px;
       height: 9px;
@@ -144,7 +144,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-label--large::after {
-      left: 6px;
+      inset-inline-start: 6px;
       top: 1px;
       width: 5px;
       height: 10px;
@@ -160,7 +160,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
       width: 8px;
       height: 0;
-      left: 50%;
+      inset-inline-start: 50%;
       top: 50%;
       margin-inline-start: -4px;
       margin-top: -1px;

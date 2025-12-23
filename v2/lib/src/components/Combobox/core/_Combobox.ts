@@ -224,7 +224,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     /* Toggle button */
     .combobox-toggle-button {
       position: absolute;
-      right: var(--ag-space-2);
+      inset-inline-end: var(--ag-space-2);
       top: 50%;
       transform: translateY(-50%);
       display: flex;
@@ -258,7 +258,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     .combobox-clear-wrapper {
       position: absolute;
-      right: calc(var(--ag-space-2) * 2 + var(--combobox-toggle-size));
+      inset-inline-end: calc(var(--ag-space-2) * 2 + var(--combobox-toggle-size));
       top: 50%;
       transform: translateY(-50%);
       display: flex;
@@ -290,8 +290,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     .combobox-listbox {
       position: absolute;
       top: calc(100% + var(--ag-space-1));
-      left: 0;
-      right: 0;
+      inset-inline: 0;
       max-height: var(--combobox-listbox-max-height);
       overflow-y: auto;
       background-color: var(--ag-background-primary);
@@ -326,7 +325,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     .combobox-option[aria-selected="true"]::after {
       content: '';
       position: absolute;
-      right: var(--ag-space-6);
+      inset-inline-end: var(--ag-space-6);
       top: 50%;
       display: block;
       opacity: 1;
