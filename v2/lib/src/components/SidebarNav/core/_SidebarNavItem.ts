@@ -13,7 +13,7 @@ export class AgSidebarNavItem extends LitElement {
       :host {
         padding: 0;
         margin: 0;
-        margin-bottom: var(--ag-space-1);
+        margin-block-end: var(--ag-space-1);
       }
         
       /* Nav-specific additions (flat for consistency) */

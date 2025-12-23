@@ -163,7 +163,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
       inset-inline-start: 50%;
       top: 50%;
       margin-inline-start: -4px;
-      margin-top: -1px;
+      margin-block-start: -1px;
     }
 
     /* Checked state */
