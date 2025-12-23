@@ -315,6 +315,15 @@ export class Toast extends LitElement implements ToastProps {
       transform: translateX(100%);
     }
 
+    /* RTL Support - flip transform directions for start/end positions */
+    :host-context([dir="rtl"]):host([position="start"]) .toast-container {
+      transform: translateX(100%);
+    }
+
+    :host-context([dir="rtl"]):host([position="end"]) .toast-container {
+      transform: translateX(-100%);
+    }
+
     :host([position="bottom"][open]) .toast-container,
     :host([position="bottom-start"][open]) .toast-container,
     :host([position="bottom-end"][open]) .toast-container,

@@ -352,6 +352,15 @@ export class AgnosticDialog extends LitElement implements DialogProps {
       transform: translateX(100%);
     }
 
+    /* RTL Support - flip transform directions for start/end drawers */
+    :host-context([dir="rtl"]):host([drawer-position="start"]) .dialog-container {
+      transform: translateX(100%);
+    }
+
+    :host-context([dir="rtl"]):host([drawer-position="end"]) .dialog-container {
+      transform: translateX(-100%);
+    }
+
     /* Open state - remove transforms to slide into view */
     :host([drawer-position="top"][open]) .dialog-container,
     :host([drawer-position="bottom"][open]) .dialog-container,
