@@ -188,7 +188,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     /* Input */
     .combobox-input {
       flex: 1;
-      min-width: 50px; /* Ensure input has a minimum width to be usable */
+      min-inline-size: 50px; /* Ensure input has a minimum width to be usable */
       font-size: var(--ag-font-size-base);
       font-family: var(--ag-font-family-base);
       line-height: var(--ag-line-height-base);
@@ -291,7 +291,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       position: absolute;
       top: calc(100% + var(--ag-space-1));
       inset-inline: 0;
-      max-height: var(--combobox-listbox-max-height);
+      max-block-size: var(--combobox-listbox-max-height);
       overflow-y: auto;
       background-color: var(--ag-background-primary);
       border: var(--ag-border-width-1) solid var(--ag-border);

@@ -137,7 +137,7 @@ export function generatePositionCSS(
     ${hostSelector}${getPositionSelector('end', attributeName)} ${containerClass} {
       height: 100%;
       width: ${mergedConfig.edgeWidth};
-      max-height: initial;
+      max-block-size: initial;
     }
 
     /* Horizontal edge positions (top/bottom) setup */
@@ -145,7 +145,7 @@ export function generatePositionCSS(
     ${hostSelector}${getPositionSelector('bottom', attributeName)} ${containerClass} {
       height: ${mergedConfig.edgeHeight};
       width: 100%;
-      max-width: initial;
+      max-inline-size: initial;
     }
 
     /* Corner positions setup */
@@ -153,8 +153,8 @@ export function generatePositionCSS(
     ${hostSelector}${getPositionSelector('top-end', attributeName)} ${containerClass},
     ${hostSelector}${getPositionSelector('bottom-start', attributeName)} ${containerClass},
     ${hostSelector}${getPositionSelector('bottom-end', attributeName)} ${containerClass} {
-      max-width: ${mergedConfig.cornerMaxWidth};
-      max-height: ${mergedConfig.cornerMaxHeight};
+      max-inline-size: ${mergedConfig.cornerMaxWidth};
+      max-block-size: ${mergedConfig.cornerMaxHeight};
       border-radius: var(--ag-radius-lg);
     }
 

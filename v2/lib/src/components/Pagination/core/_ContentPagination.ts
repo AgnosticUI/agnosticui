@@ -209,8 +209,8 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
     .content-pagination-item {
       display: flex;
       flex: 0 1 auto;
-      min-width: 0;
-      max-width: 45%;
+      min-inline-size: 0;
+      max-inline-size: 45%;
     }
 
     .content-pagination-item-previous {
@@ -287,7 +287,7 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
       }
 
       .content-pagination-item {
-        max-width: 100%;
+        max-inline-size: 100%;
       }
 
       .content-pagination-item-next {

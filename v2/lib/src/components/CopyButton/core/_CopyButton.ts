@@ -71,8 +71,8 @@ export class AgCopyButton extends LitElement {
     .ag-icon-slot svg {
       width: 1em;
       height: 1em;
-      max-width: 100%;
-      max-height: 100%;
+      max-inline-size: 100%;
+      max-block-size: 100%;
       display: block;
     }
   `;

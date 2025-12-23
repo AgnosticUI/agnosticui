@@ -87,9 +87,9 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
     .chat-bubble {
       grid-row-end: 3;
       border-radius: var(--ag-radius-lg);
-      min-width: 2.5rem;
-      max-width: var(--ag-message-bubble-max-width, 90%);
-      min-height: 2rem;
+      min-inline-size: 2.5rem;
+      max-inline-size: var(--ag-message-bubble-max-width, 90%);
+      min-block-size: 2rem;
       padding: var(--ag-space-3) var(--ag-space-4);
       display: inline-flex;
       align-items: center;
