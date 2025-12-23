@@ -140,7 +140,7 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       grid-column-start: 2;
       background-color: var(--ag-background-secondary);
       color: var(--ag-text-primary);
-      border-bottom-left-radius: var(--ag-radius-sm);
+      border-end-start-radius: var(--ag-radius-sm);
     }
 
     :host([from="them"]) .chat-bubble::before {
@@ -168,7 +168,7 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       grid-column-start: 1;
       background-color: var(--ag-primary-background);
       color: var(--ag-primary-text);
-      border-bottom-right-radius: var(--ag-radius-sm);
+      border-end-end-radius: var(--ag-radius-sm);
     }
 
     :host([from="me"]) .chat-bubble::before {

@@ -91,7 +91,7 @@ export const formControlStyles = css`
   .ag-form-control__required {
     /* COLOR: We use a CSS variable for error text color to more easily toggle light and dark modes */
     color: var(--ag-error-text);
-    margin-left: var(--ag-space-1);
+    margin-inline-start: var(--ag-space-1);
   }
 
   /* Helper text */

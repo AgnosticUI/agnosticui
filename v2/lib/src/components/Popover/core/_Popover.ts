@@ -143,22 +143,22 @@ export class Popover extends LitElement implements PopoverProps {
     /* Placement-specific border colors for the arrow to match the popover border on the visible sides. */
     #popover[data-placement^="top"] #arrow {
       border-bottom-color: var(--ag-border);
-      border-right-color: var(--ag-border);
+      border-inline-end-color: var(--ag-border);
     }
 
     #popover[data-placement^="right"] #arrow {
       border-bottom-color: var(--ag-border);
-      border-left-color: var(--ag-border);
+      border-inline-start-color: var(--ag-border);
     }
 
     #popover[data-placement^="bottom"] #arrow {
-      border-left-color: var(--ag-border);
+      border-inline-start-color: var(--ag-border);
       border-top-color: var(--ag-border);
     }
 
     #popover[data-placement^="left"] #arrow {
       border-top-color: var(--ag-border);
-      border-right-color: var(--ag-border);
+      border-inline-end-color: var(--ag-border);
     }
 
     .popover-header {
