@@ -814,7 +814,7 @@ export class AgMenuItem extends LitElement implements MenuItemProps {
       border: none;
       border-radius: var(--ag-radius-sm);
       padding: var(--ag-space-2) var(--ag-space-3);
-      text-align: left;
+      text-align: start;
       text-decoration: none;
       font-size: inherit;
       line-height: 1.25;
