@@ -2,6 +2,11 @@
 
 <AlphaWarning />
 
+::: danger Experimental Component
+The Sidebar is an **experimental component** that departs from AgnosticUI's typical "primitives only" philosophy. Due to its complex nature and shadow DOM encapsulation, it requires some nuanced global CSS to function properly across all scenarios.
+
+**Use at your own risk.** If you're comfortable with these architectural tradeoffs, feel free to use the component. We welcome contributions to help improve its implementation and reduce external dependencies.
+:::
 
 A collapsible sidebar component for navigation with support for expanded/collapsed states, nested navigation, submenus, and responsive behavior. The Sidebar adapts seamlessly across desktop and mobile viewports with optional rail mode (icon-only) on desktop and overlay mode on mobile.
 
