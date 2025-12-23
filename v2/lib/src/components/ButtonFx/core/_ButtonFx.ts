@@ -144,6 +144,11 @@ export class ButtonFx extends AgButton implements FxProps {
         transform: translateX(0);
       }
 
+      /* RTL Support - flip side-slide direction */
+      :host-context([dir="rtl"]) button.ag-fx-side-slide::before {
+        transform: translateX(100%);
+      }
+
       /* Press shadow - animates shadow on active/press with variant colors */
       :host([variant="primary"]) button.ag-fx-press-shadow {
         box-shadow: 0 4px 0 rgba(5, 80, 174, 0.5);

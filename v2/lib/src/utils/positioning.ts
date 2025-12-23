@@ -186,6 +186,15 @@ export function generatePositionCSS(
       transform: translateX(100%);
     }
 
+    /* RTL Support - flip transform directions */
+    ${hostSelector}:host-context([dir="rtl"])${getPositionSelector('start', attributeName)} ${containerClass} {
+      transform: translateX(100%);
+    }
+
+    ${hostSelector}:host-context([dir="rtl"])${getPositionSelector('end', attributeName)} ${containerClass} {
+      transform: translateX(-100%);
+    }
+
     /* Corner start (left) side positioning */
     ${hostSelector}${getPositionSelector('top-start', attributeName)} ${containerClass},
     ${hostSelector}${getPositionSelector('bottom-start', attributeName)} ${containerClass} {

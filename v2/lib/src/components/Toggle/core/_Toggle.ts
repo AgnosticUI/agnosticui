@@ -165,6 +165,11 @@ export class AgToggle extends LitElement implements ToggleProps {
       transform: translateY(-50%) translateX(calc(var(--toggle-width) - var(--handle-size) - 4px));
     }
 
+    /* RTL Support - flip handle movement direction */
+    :host-context([dir="rtl"]):host([checked]) .ag-toggle__handle {
+      transform: translateY(-50%) translateX(calc(-1 * (var(--toggle-width) - var(--handle-size) - 4px)));
+    }
+
     /* Size variants with 2:1 width:height ratio */
     :host([size="xs"]) {
       --toggle-width: 28px;
