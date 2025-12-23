@@ -23,41 +23,75 @@ AgnosticUI uses a **Minimalist & Highly Themeable** architecture where component
 
 ```
 src/components/
-├── Accordion/
-│   ├── core/
-│   │   ├── _Accordion.ts          # Immutable core
-│   │   └── _Accordion.spec.ts     # Core tests
-│   ├── react/
-│   │   ├── ReactAccordion.tsx     # React wrapper
-│   │   └── useAccordion.ts        # React hooks
-│   ├── extensions/
-│   │   └── AnimatedAccordion.ts   # Enhanced version
-│   ├── styled/
-│   │   └── MinimalAccordion.ts    # Pre-styled variants
-│   ├── helpers/
-│   │   └── accordion-state.ts     # Shared utilities
-│   └── Accordion.ts               # Public exports
+└── Accordion/
+    ├── core/
+    │   ├── _Accordion.ts             # Core Lit Component
+    │   ├── Accordion.ts              # Public interface
+    │   ├── AccordionGroup.ts         # Group component
+    │   └── README.md                 # Documentation
+    ├── react/
+    │   ├── index.ts                  # React exports
+    │   └── ReactAccordion.tsx        # React wrapper
+    └── vue/
+        ├── index.ts                  # Vue exports
+        ├── VueAccordion.vue          # Main component
+        ├── VueAccordionContent.vue   # Content component
+        ├── VueAccordionHeader.vue    # Header component
+        └── VueAccordionItem.vue      # Item component
 ```
 
-## Key Principles
+## Why AgnosticUI?
 
-### Minimalist & Highly Themeable Philosophy
-- ✅ **Minimal Visual Styling**: Clean defaults via `--ag-*` design tokens
-- ✅ **Functional CSS**: Layout, positioning, component structure
-- 🎨 **Complete Customization**: Override any design token for white-labeling
-- 🎯 **Result**: Production-ready components with enterprise-grade theming
+### The Local UI Kit - A New Category
+**The UI kit that lives in your codebase, not node_modules.**
 
-### Upgrade Safety: Encapsulated Core with Adapter Pattern
-- **Immutable Core**: `_Component.ts` files are canonical and upgrade-safe
-- **Adapter Layer**: Framework wrappers absorb breaking changes between versions
-- **Isolated Customization**: Extensions and styled variants evolve independently
-- **Safe Overrides**: Customize via design tokens without touching core implementations
-- **Result**: Your customizations survive library upgrades seamlessly
+Traditional UI libraries live in `node_modules/` as black boxes. Copy/paste approaches give you code but no reference. AgnosticUI Local gives you **both**: a complete reference library in your project plus owned copies of components you use.
 
-### Framework Agnostic
-- Web Components work in any framework
-- Framework-specific wrappers provide optimal DX
-- Progressive enhancement from vanilla JS to framework-specific features
+```bash
+npx ag init                    # Full library in ./agnosticui/ (reference)
+npx ag add button              # Component in ./src/components/ag/ (yours to modify)
+npx ag sync                    # Update reference, preserve your customizations
+```
+
+### AI-First Development
+**The only UI kit designed for AI-assisted development.**
+
+- **Full Context**: AI tools (Cursor, Windsurf, Claude) see your entire component library
+- **Better Assistance**: "Make this button work like the Combobox" - AI sees both
+- **Reference + Customization**: AI understands the source AND your modifications
+- **Offline & Local**: No API calls, no rate limits, no black boxes
+
+### Complete Ownership
+**Copy, modify, and own your components.**
+
+- Components copied to your project - modify structure, behavior, styling
+- No vendor lock-in or "black box" frustration
+- You control the dependency graph and update schedule
+- Review diffs before accepting updates via `npx ag sync`
+
+### Zero Dependencies
+**Only Lit (5KB runtime) - nothing else.**
+
+- No bloated node_modules
+- Components work standalone
+- Production bundle includes only what you use
+- Framework wrappers via @lit/react and Vue 3 composition API
+
+### Minimalist & Themeable
+**Beautiful defaults, infinite customization.**
+
+- Production-ready styling out of the box
+- Everything customizable via `--ag-*` design tokens
+- Enterprise white-labeling capability
+- Light/dark mode built-in
+
+### Multi-Framework Support
+**React, Vue, Lit - one component library, all frameworks.**
+
+- Framework-specific wrappers for optimal developer experience
+- React wrapper via @lit/react makes props and events feel naturally "React-like"
+- Vue 3 components using composition API
+- Svelte works directly (excellent Web Components support)
 
 ## Usage
 
