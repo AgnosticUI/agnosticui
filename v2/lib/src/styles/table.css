@@ -13,7 +13,7 @@
 .ag-table caption {
   padding: var(--ag-space-3) 0;
   font-weight: 600;
-  text-align: left;
+  text-align: start;
   color: var(--ag-text-primary);
   caption-side: top;
 }
@@ -21,7 +21,7 @@
 .ag-table th,
 .ag-table td {
   padding: var(--ag-space-3) var(--ag-space-4);
-  text-align: left;
+  text-align: start;
   border-bottom: var(--ag-border-width-1) solid var(--ag-border-subtle);
   line-height: var(--ag-line-height-base);
 }
@@ -177,7 +177,7 @@
   .ag-table--responsive td {
     padding: var(--ag-space-2) 0;
     border: none;
-    text-align: right;
+    text-align: end;
     position: relative;
     padding-inline-start: 50%;
   }
@@ -189,7 +189,7 @@
     width: 45%;
     padding-inline-end: var(--ag-space-2);
     font-weight: 600;
-    text-align: left;
+    text-align: start;
     color: var(--ag-text-secondary);
   }
 }
