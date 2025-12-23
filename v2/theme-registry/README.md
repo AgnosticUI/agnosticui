@@ -26,9 +26,6 @@ theme-registry/
 ### Building Tokens
 
 ```bash
-# Build all color tokens
-npm run build:colors
-
 # Build all tokens
 npm run build
 
@@ -38,28 +35,31 @@ npm run rebuild
 
 ### Generated Files
 
-- **`dist/ag-colors.css`** - CSS custom properties with `--ag-` prefix
-- **`dist/colors.js`** - ES6 module exports for JavaScript usage
-- **`dist/colors.json`** - JSON format for tooling and other systems
+- **`dist/ag-tokens-dark.css`** - CSS custom properties with `--ag-` prefix
+- **`dist/ag-tokens.css`** - CSS custom properties with `--ag-` prefix
+- **`dist/tokens.js`** - ES6 module exports for JavaScript usage
+- **`dist/otkens.json`** - JSON format for tooling and other systems
 
 ### Example Output
 
 **CSS Variables:**
 ```css
 :root {
-  --ag-primary: #0063a8;
-  --ag-primary-dark: #063f69;
-  --ag-danger: #dc2626;
-  --ag-focus: #f59e0b;
+  --ag-primary: #0550ae;
+  --ag-primary-dark: #0a3069;
+  --ag-danger: #ca1d1d;
 }
 ```
 
 **JavaScript Exports:**
 ```javascript
-export const Primary = "#0063a8";
-export const PrimaryDark = "#063f69";
-export const Danger = "#dc2626";
-export const Focus = "#f59e0b";
+export const Primary = "#0550ae";
+export const PrimaryRgb = "5, 80, 174";
+export const PrimaryBorder = "#d1d5db";
+export const PrimaryDark = "#0a3069";
+export const DangerRgb = "202, 29, 29";
+export const Danger = "#ca1d1d";
+export const DangerDark = "#a40e26";
 ```
 
 ## Current Token System (52 tokens)

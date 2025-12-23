@@ -1,6 +1,6 @@
 {
   "name": "@agnosticui/theme-registry",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "Design token system and theme registry for AgnosticUI",
   "main": "dist/colors.js",
   "scripts": {
