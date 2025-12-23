@@ -168,7 +168,7 @@ export class AgCard extends LitElement implements CardProps {
     }
 
     :host([stacked]) .card-content > ::slotted(*:not(:last-child)) {
-      margin-bottom: var(--ag-space-8);
+      margin-block-end: var(--ag-space-8);
     }
 
     /* The accessible clickable card trick */

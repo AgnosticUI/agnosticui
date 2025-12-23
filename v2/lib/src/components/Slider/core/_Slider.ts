@@ -401,7 +401,7 @@ export class AgSlider extends LitElement implements SliderProps {
     /* Help & Error Text */
     .ag-slider__help,
     .ag-slider__error {
-      margin-top: var(--ag-space-2);
+      margin-block-start: var(--ag-space-2);
       font-size: var(--ag-font-size-sm);
     }
 

@@ -198,7 +198,7 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
       display: flex;
       justify-content: space-between;
       gap: var(--ag-space-4);
-      padding-top: var(--ag-space-2);
+      padding-block-start: var(--ag-space-2);
       border-top: 0px solid transparent;
     }
 

@@ -370,7 +370,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     }
 
     .dialog-header {
-      margin-bottom: var(--ag-space-4);
+      margin-block-end: var(--ag-space-4);
     }
 
     .dialog-header h2 {
@@ -381,11 +381,11 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     }
 
     .dialog-content {
-      margin-bottom: var(--ag-space-4);
+      margin-block-end: var(--ag-space-4);
     }
 
     .dialog-content:last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     .dialog-content p {
@@ -394,11 +394,11 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     }
 
     .dialog-footer {
-      margin-top: var(--ag-space-4);
+      margin-block-start: var(--ag-space-4);
     }
 
     .dialog-footer:empty {
-      margin-top: 0;
+      margin-block-start: 0;
     }
 
     @media (prefers-reduced-motion: reduce) {

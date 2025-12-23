@@ -84,7 +84,7 @@ export class AgInput extends LitElement implements InputProps {
      */
     .ag-input__label {
       display: block;
-      margin-bottom: var(--ag-space-2);
+      margin-block-end: var(--ag-space-2);
       font-size: var(--ag-font-size-base);
       color: var(--ag-text-primary);
     }
@@ -304,7 +304,7 @@ export class AgInput extends LitElement implements InputProps {
     /* Help & Error Text */
     .ag-input__help,
     .ag-input__error {
-      margin-top: var(--ag-space-2);
+      margin-block-start: var(--ag-space-2);
       font-size: var(--ag-font-size-sm);
     }
 

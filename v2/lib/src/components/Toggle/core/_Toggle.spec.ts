@@ -239,8 +239,8 @@ describe('AgToggle', () => {
       const computedStyle = window.getComputedStyle(button!);
 
       // Should have minimum 44px touch target (from CSS min-width/min-height)
-      expect(computedStyle.minWidth).toBe('44px');
-      expect(computedStyle.minHeight).toBe('44px');
+      expect(computedStyle.minInlineSize).toBe('44px');
+      expect(computedStyle.minBlockSize).toBe('44px');
     });
 
     it('should support high contrast mode with proper focus indicators', async () => {

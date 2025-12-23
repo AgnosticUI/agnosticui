@@ -209,7 +209,7 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
     ::slotted(ag-menu) {
       position: absolute;
       background-color: var(--ag-background-primary);
-      margin-top: var(--ag-space-1);
+      margin-block-start: var(--ag-space-1);
       z-index: var(--ag-z-index-dropdown);
     }
     /* Left alignment - menu left aligns with button left */

@@ -37,7 +37,7 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: var(--ag-space-2);
-      margin-bottom: var(--ag-space-4);
+      margin-block-end: var(--ag-space-4);
       width: 100%;
     }
 
@@ -118,7 +118,7 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       gap: var(--ag-space-2);
       font-size: var(--ag-font-size-xs);
       color: var(--ag-text-secondary);
-      margin-top: var(--ag-space-1);
+      margin-block-start: var(--ag-space-1);
     }
 
     /* From Them (Start) Layout */

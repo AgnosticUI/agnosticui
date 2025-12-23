@@ -104,7 +104,7 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
 
     /* Icon sizing and containment */
     .icon {
-      margin-bottom: var(--ag-space-1);
+      margin-block-end: var(--ag-space-1);
       color: var(--ag-neutral-400);
     }
 
@@ -158,12 +158,12 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
 
     :host([size="sm"]) .subtitle {
       font-size: var(--ag-font-size-sm);
-      margin-bottom: var(--ag-space-3);
+      margin-block-end: var(--ag-space-3);
     }
 
     :host([size="lg"]) .subtitle {
       font-size: var(--ag-font-size-md);
-      margin-bottom: var(--ag-space-6);
+      margin-block-end: var(--ag-space-6);
     }
 
     /* Actions */

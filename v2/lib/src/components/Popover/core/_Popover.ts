@@ -202,7 +202,7 @@ export class Popover extends LitElement implements PopoverProps {
     }
 
     .popover-body ::slotted(*:last-child) {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     /* Ensure popover is hidden when not active */
