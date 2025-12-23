@@ -718,6 +718,7 @@ npm run build
 ls -la dist/  # Verify output
 node dist/cli.js --version  # Should show 2.0.0-alpha.1
 ```
+And so we need to update src/cli.ts when version bumps.
 
 #### 3.2 Test Locally with Pack
 
