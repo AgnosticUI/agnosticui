@@ -103,8 +103,8 @@ export class Popover extends LitElement implements PopoverProps {
       border: var(--ag-border-width-1) solid var(--ag-border);
       border-radius: var(--ag-radius-md);
       box-shadow: var(--ag-shadow-lg);
-      min-width: var(--ag-popover-min-width);
-      max-width: var(--ag-popover-max-width);
+      min-inline-size: var(--ag-popover-min-width);
+      max-inline-size: var(--ag-popover-max-width);
       opacity: 0;
       transform: scale(0.95);
       transition:

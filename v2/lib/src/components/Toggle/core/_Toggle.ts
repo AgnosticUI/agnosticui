@@ -106,8 +106,8 @@ export class AgToggle extends LitElement implements ToggleProps {
       position: relative;
 
       /* Touch target accessibility - minimum 44px */
-      min-width: 44px;
-      min-height: 44px;
+      min-inline-size: 44px;
+      min-block-size: 44px;
 
       /* Focus management */
       border-radius: var(--ag-focus-border-radius);

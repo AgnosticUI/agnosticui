@@ -337,8 +337,8 @@ export class Toast extends LitElement implements ToastProps {
     :host([position="top-end"]) .toast-container,
     :host([position="bottom-start"]) .toast-container,
     :host([position="bottom-end"]) .toast-container {
-      max-width: 400px;
-      max-height: 200px;
+      max-inline-size: 400px;
+      max-block-size: 200px;
     }
 
     /* Inner layout for content and close button */

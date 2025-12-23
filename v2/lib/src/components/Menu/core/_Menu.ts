@@ -500,9 +500,9 @@ export class AgMenu extends LitElement implements MenuProps {
       border: 1px solid var(--ag-border-subtle);
       border-radius: var(--ag-radius-md);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      margin-top: var(--ag-space-1);
-      min-width: 12rem;
-      max-width: 16rem;
+      margin-block-start: var(--ag-space-1);
+      min-inline-size: 12rem;
+      max-inline-size: 16rem;
       width: max-content;
       z-index: var(--ag-z-index-dropdown);
       overflow: hidden;

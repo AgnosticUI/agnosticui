@@ -271,8 +271,8 @@ export class AgnosticDialog extends LitElement implements DialogProps {
 
     .dialog-container {
       overflow-y: auto;
-      max-width: 90vw;
-      max-height: 90vh;
+      max-inline-size: 90vw;
+      max-block-size: 90vh;
       position: relative;
       background: var(--ag-background-primary);
       border: 1px solid var(--ag-border);
@@ -317,7 +317,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     :host([drawer-position="end"]) .dialog-container {
       height: 100%;
       width: var(--ag-drawer-width);
-      max-height: initial;
+      max-block-size: initial;
     }
 
     /* Horizontal edge positions (top/bottom) sizing */
@@ -325,7 +325,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     :host([drawer-position="bottom"]) .dialog-container {
       height: var(--ag-sheet-height);
       width: 100%;
-      max-width: initial;
+      max-inline-size: initial;
     }
 
     /* Top position - closed state */

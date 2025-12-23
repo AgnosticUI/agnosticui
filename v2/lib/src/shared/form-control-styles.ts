@@ -47,8 +47,8 @@ export const formControlStyles = css`
   /* Horizontal label layout (start or end) - overrides display: block */
   .ag-form-control__label--horizontal {
     display: inline-block; /* Override display: block */
-    min-width: 100px;
-    max-width: 200px; /* Prevent super long labels */
+    min-inline-size: 100px;
+    max-inline-size: 200px; /* Prevent super long labels */
     margin-inline-end: 0; /* Gap handles spacing */
     margin-block-end: 0;
     flex-shrink: 0; /* Don't let label shrink */
@@ -70,8 +70,8 @@ export const formControlStyles = css`
   .ag-form-control--horizontal select {
     /* Progressive enhancement with field-sizing (Chrome/Safari TP) */
     field-sizing: content;
-    max-width: 100%;
-    min-width: 100px;
+    max-inline-size: 100%;
+    min-inline-size: 100px;
 
     /* Fallback for browsers without field-sizing support */
     width: 200px;
