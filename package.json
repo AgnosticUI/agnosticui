@@ -14,30 +14,7 @@
     "type": "git",
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
-  "scripts": {
-    "build:css": "npm run stylelint && pushd agnostic-css && npm run build && popd",
-    "sync:angular": "pushd agnostic-angular && npm run syncStyles && popd",
-    "sync:react": "pushd agnostic-react && npm run syncStyles && popd",
-    "sync:vue": "pushd agnostic-vue && npm run syncStyles && popd",
-    "sync:svelte": "pushd agnostic-svelte && npm run syncStyles && popd",
-    "sync": "npm run stylelint && npm run build:css && npm run sync:react && npm run sync:angular && npm run sync:vue && npm run sync:svelte",
-    "lint:angular": "pushd agnostic-angular && npm run lint && popd",
-    "lint:react": "pushd agnostic-react && npm run lint && popd",
-    "lint:svelte": "pushd agnostic-svelte && npm run lint && popd",
-    "lint:vue": "pushd agnostic-vue && npm run lint && popd",
-    "lint": "npm run lint:react && npm run lint:angular && npm run lint:svelte && npm run lint:vue && npm run stylelint",
-    "stylelint": "pushd agnostic-css && npm run stylelint && popd",
-    "test:angular": "pushd agnostic-angular && npm run test && popd",
-    "test:react": "pushd agnostic-react && npm run test && popd",
-    "test:vue": "pushd agnostic-vue && npm run test && popd",
-    "test": "npm run sync:react && npm run test:react",
-    "start:css": "pushd agnostic-css && npm run start && popd",
-    "start:angular": "npm run build:css && pushd agnostic-angular && npm run storybook && popd",
-    "start:react": "npm run build:css && pushd agnostic-react && npm run storybook && popd",
-    "start:vue": "npm run build:css && pushd agnostic-vue && npm run storybook && popd",
-    "start:svelte": "npm run build:css && pushd agnostic-svelte && npm run storybook && popd",
-    "start:site": "cd site && npm run docs:dev && popd"
-  },
+  "scripts": {},
   "keywords": [
     "ui components",
     "design system",
@@ -49,12 +26,5 @@
   "bugs": {
     "url": "https://github.com/roblevintennis/agnosticui/issues"
   },
-  "homepage": "https://github.com/roblevintennis/agnosticui#readme",
-  "dependencies": {
-    "lint-staged": "^11.1.2"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-eslint": "^4.5.13",
-    "eslint-plugin-react": "^7.29.4"
-  }
+  "homepage": "https://github.com/roblevintennis/agnosticui#readme"
 }
