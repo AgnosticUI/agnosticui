@@ -214,14 +214,14 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
     }
     /* Left alignment - menu left aligns with button left */
     :host([menu-align="left"]) ::slotted(ag-menu) {
-      left: 0;
-      right: auto;
+      inset-inline-start: 0;
+      inset-inline-end: auto;
     }
 
     /* Right alignment - menu right aligns with button right */
     :host([menu-align="right"]) ::slotted(ag-menu) {
-      right: 0;
-      left: auto;
+      inset-inline-end: 0;
+      inset-inline-start: auto;
     }
   `;
 

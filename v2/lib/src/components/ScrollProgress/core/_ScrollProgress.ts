@@ -123,8 +123,7 @@ export class ScrollProgress extends LitElement implements ScrollProgressProps {
       /* Bar mode positioning */
       :host([mode="bar"]) {
         position: fixed;
-        left: 0;
-        right: 0;
+        inset-inline: 0;
         z-index: var(--ag-z-index-sticky, 100);
       }
 
