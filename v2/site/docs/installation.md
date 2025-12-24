@@ -69,7 +69,7 @@ Follow the "Next Steps" printed by the CLI:
    ```js
    // Below depends on where you are importing from. You will need
    // to adjust the relative path based on your project structure.
-   import { VueButton } from "./src/components/ag/Button/vue/VueButton";
+   import VueButton from "./src/components/ag/Button/vue/VueButton.vue";
    ```
 
 Initialize AgnosticUI in your project:
@@ -179,8 +179,8 @@ function App() {
 
 ```vue
 <script setup>
-import { VueButton } from "./components/ag/Button/vue/VueButton.js";
-import { VueInput } from "./components/ag/Input/vue/VueInput.js";
+import VueButton from "./components/ag/Button/vue/VueButton.vue";
+import VueInput from "./components/ag/Input/vue/VueInput.vue";
 </script>
 
 <template>

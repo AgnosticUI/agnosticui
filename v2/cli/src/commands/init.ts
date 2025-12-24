@@ -192,7 +192,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
     if (framework === 'react') {
       exampleImport = `import { ReactButton } from '${componentsPath}/Button/react/ReactButton'`;
     } else if (framework === 'vue') {
-      exampleImport = `import { VueButton } from '${componentsPath}/Button/vue/VueButton'`;
+      exampleImport = `import VueButton from '${componentsPath}/Button/vue/VueButton.vue'`;
     } else {
       // Lit, Svelte, etc. use web components from core
       exampleImport = `import '${componentsPath}/Button/core/Button'`;
