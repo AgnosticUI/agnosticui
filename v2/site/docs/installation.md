@@ -54,7 +54,52 @@ Follow the "Next Steps" printed by the CLI:
    <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
    ```
 
-2. **Add Components**
+2. **Set Up Theming**
+
+   ::: warning Vite Default Dark Mode
+   Vite's default template uses a dark background (`#242424`). You'll need to override this to use AgnosticUI's theme system.
+   :::
+
+   AgnosticUI uses a `data-theme` attribute on the `<html>` element to control theming. Add this to your main CSS file or in a `<style>` tag:
+
+   ```css
+   body {
+     background: var(--ag-background-primary);
+     color: var(--ag-text-primary);
+     transition: background 0.2s ease, color 0.2s ease;
+   }
+   ```
+
+   **Enable Dark Mode:**
+
+   Add the `data-theme="dark"` attribute to your `<html>` element:
+
+   ```html
+   <html lang="en" data-theme="dark"></html>
+   ```
+
+   **Optional: Theme Toggle**
+
+   Add a theme toggle button to your app:
+
+   ```html
+   <button id="theme-toggle">Toggle Dark Mode</button>
+   <script>
+     const toggleBtn = document.getElementById("theme-toggle");
+     const html = document.documentElement;
+
+     toggleBtn?.addEventListener("click", () => {
+       const isDark = html.getAttribute("data-theme") === "dark";
+       if (isDark) {
+         html.removeAttribute("data-theme");
+       } else {
+         html.setAttribute("data-theme", "dark");
+       }
+     });
+   </script>
+   ```
+
+3. **Add Components**
 
    Use the CLI to add the components you need:
 
@@ -62,7 +107,7 @@ Follow the "Next Steps" printed by the CLI:
    npx agnosticui-cli add button input card
    ```
 
-3. **Use Components**
+4. **Use Components**
 
    Import and use them in your app:
 
