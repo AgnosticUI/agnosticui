@@ -197,9 +197,12 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         let importStatement = '';
         const componentExportName = getComponentExportName(result.name, config.framework);
 
-        if (config.framework === 'react' || config.framework === 'vue') {
-          // React and Vue have framework-specific wrapper components
+        if (config.framework === 'react') {
+          // React uses named exports
           importStatement = `import { ${componentExportName} } from './${importPath}/${config.framework}/${componentExportName}'`;
+        } else if (config.framework === 'vue') {
+          // Vue uses default exports and requires .vue extension
+          importStatement = `import ${componentExportName} from './${importPath}/${config.framework}/${componentExportName}.vue'`;
         } else {
           // Lit, Svelte, etc. use web components from core directory (side-effect import)
           importStatement = `import './${importPath}/core/${result.name}'`;
