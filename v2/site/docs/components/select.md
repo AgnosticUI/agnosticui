@@ -2,7 +2,6 @@
 
 <AlphaWarning />
 
-
 The Select component is a lightly styled native HTML select element that provides consistent styling across browsers while maintaining native functionality and accessibility.
 
 ## Examples
@@ -18,14 +17,17 @@ import SelectExamples from '../examples/SelectExamples.vue'
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add Select
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -76,7 +78,9 @@ The CLI copies source code directly into your project, giving you full visibilit
         <option value="rafa">Rafael Nadal</option>
         <option value="novak">Novak Djokovic</option>
       </VueSelect>
-      <p v-if="selectedPlayers.length">Selected: {{ selectedPlayers.join(', ') }}</p>
+      <p v-if="selectedPlayers.length">
+        Selected: {{ selectedPlayers.join(", ") }}
+      </p>
     </div>
 
     <!-- Disabled Select -->
@@ -91,22 +95,24 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { VueSelect } from 'agnosticui-core/select/vue';
+import { ref } from "vue";
+import { VueSelect } from "agnosticui-core/select/vue";
 
-const selectedPlayer = ref('');
+const selectedPlayer = ref("");
 const selectedPlayers = ref<string[]>([]);
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactSelect } from 'agnosticui-core/select/react';
-import { useState } from 'react';
+import { ReactSelect } from "agnosticui-core/select/react";
+import { useState } from "react";
 
 export default function SelectExamples() {
-  const [selectedPlayer, setSelectedPlayer] = useState('');
+  const [selectedPlayer, setSelectedPlayer] = useState("");
   const [selectedPlayers, setSelectedPlayers] = useState<string[]>([]);
 
   return (
@@ -159,7 +165,7 @@ export default function SelectExamples() {
           <option value="novak">Novak Djokovic</option>
         </ReactSelect>
         {selectedPlayers.length > 0 && (
-          <p>Selected: {selectedPlayers.join(', ')}</p>
+          <p>Selected: {selectedPlayers.join(", ")}</p>
         )}
       </div>
 
@@ -174,17 +180,19 @@ export default function SelectExamples() {
   );
 }
 ```
+
 :::
 
 ::: details Lit
-```ts
-import 'agnosticui-core/select';
-import { html, LitElement } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
 
-@customElement('select-examples')
+```ts
+import "agnosticui-core/select";
+import { html, LitElement } from "lit";
+import { customElement, state } from "lit/decorators.js";
+
+@customElement("select-examples")
 export class SelectExamples extends LitElement {
-  @state() private selectedPlayer = '';
+  @state() private selectedPlayer = "";
   @state() private selectedPlayers: string[] = [];
 
   render() {
@@ -204,7 +212,9 @@ export class SelectExamples extends LitElement {
             <option value="roger">Roger Federer</option>
             <option value="rafa">Rafael Nadal</option>
           </ag-select>
-          ${this.selectedPlayer ? html`<p>Selected: ${this.selectedPlayer}</p>` : ''}
+          ${this.selectedPlayer
+            ? html`<p>Selected: ${this.selectedPlayer}</p>`
+            : ""}
         </div>
 
         <div>
@@ -242,9 +252,8 @@ export class SelectExamples extends LitElement {
             <option value="novak">Novak Djokovic</option>
           </ag-select>
           ${this.selectedPlayers.length > 0
-            ? html`<p>Selected: ${this.selectedPlayers.join(', ')}</p>`
-            : ''
-          }
+            ? html`<p>Selected: ${this.selectedPlayers.join(", ")}</p>`
+            : ""}
         </div>
 
         <div>
@@ -259,8 +268,8 @@ export class SelectExamples extends LitElement {
   }
 }
 ```
-:::
 
+:::
 
 ## External Label Support
 
@@ -269,6 +278,7 @@ The Select component now supports external labels, helper text, validation state
 ### With External Label
 
 ::: details Vue
+
 ```vue
 <template>
   <!-- Basic external label -->
@@ -321,25 +331,24 @@ The Select component now supports external labels, helper text, validation state
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { VueSelect } from 'agnosticui-core/select/vue';
+import { ref } from "vue";
+import { VueSelect } from "agnosticui-core/select/vue";
 
-const framework = ref('');
+const framework = ref("");
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactSelect } from 'agnosticui-core/select/react';
+import { ReactSelect } from "agnosticui-core/select/react";
 
 export default function SelectWithLabels() {
   return (
     <>
-      <ReactSelect
-        label="Favorite Framework"
-        name="framework"
-      >
+      <ReactSelect label="Favorite Framework" name="framework">
         <option value="">Choose a framework</option>
         <option value="react">React</option>
         <option value="vue">Vue</option>
@@ -382,22 +391,21 @@ export default function SelectWithLabels() {
   );
 }
 ```
+
 :::
 
 ::: details Lit
-```ts
-import 'agnosticui-core/select';
-import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
 
-@customElement('select-with-labels')
+```ts
+import "agnosticui-core/select";
+import { html, LitElement } from "lit";
+import { customElement } from "lit/decorators.js";
+
+@customElement("select-with-labels")
 export class SelectWithLabels extends LitElement {
   render() {
     return html`
-      <ag-select
-        .label=${"Favorite Framework"}
-        name="framework"
-      >
+      <ag-select .label=${"Favorite Framework"} name="framework">
         <option value="">Choose a framework</option>
         <option value="react">React</option>
         <option value="vue">Vue</option>
@@ -440,6 +448,7 @@ export class SelectWithLabels extends LitElement {
   }
 }
 ```
+
 :::
 
 ### Label Positioning
@@ -449,37 +458,26 @@ The `labelPosition` prop controls where the label appears relative to the select
 **Note:** The `'bottom'` position is not recommended for select elements because the dropdown menu will cover the label when opened.
 
 ::: details Vue
+
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 2rem;">
     <!-- Top position (default) -->
-    <VueSelect
-      label="Top Label (Default)"
-      label-position="top"
-      name="top"
-    >
+    <VueSelect label="Top Label (Default)" label-position="top" name="top">
       <option value="">Select option</option>
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
     </VueSelect>
 
     <!-- Start position (label before select) -->
-    <VueSelect
-      label="Start Position"
-      label-position="start"
-      name="start"
-    >
+    <VueSelect label="Start Position" label-position="start" name="start">
       <option value="">Select option</option>
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
     </VueSelect>
 
     <!-- End position (label after select) -->
-    <VueSelect
-      label="End Position"
-      label-position="end"
-      name="end"
-    >
+    <VueSelect label="End Position" label-position="end" name="end">
       <option value="">Select option</option>
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
@@ -500,43 +498,33 @@ The `labelPosition` prop controls where the label appears relative to the select
 </template>
 
 <script setup lang="ts">
-import { VueSelect } from 'agnosticui-core/select/vue';
+import { VueSelect } from "agnosticui-core/select/vue";
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactSelect } from 'agnosticui-core/select/react';
+import { ReactSelect } from "agnosticui-core/select/react";
 
 export default function LabelPositioningExamples() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      <ReactSelect
-        label="Top Label (Default)"
-        labelPosition="top"
-        name="top"
-      >
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <ReactSelect label="Top Label (Default)" labelPosition="top" name="top">
         <option value="">Select option</option>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
       </ReactSelect>
 
-      <ReactSelect
-        label="Start Position"
-        labelPosition="start"
-        name="start"
-      >
+      <ReactSelect label="Start Position" labelPosition="start" name="start">
         <option value="">Select option</option>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
       </ReactSelect>
 
-      <ReactSelect
-        label="End Position"
-        labelPosition="end"
-        name="end"
-      >
+      <ReactSelect label="End Position" labelPosition="end" name="end">
         <option value="">Select option</option>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
@@ -556,15 +544,17 @@ export default function LabelPositioningExamples() {
   );
 }
 ```
+
 :::
 
 ::: details Lit
-```ts
-import 'agnosticui-core/select';
-import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
 
-@customElement('label-positioning-examples')
+```ts
+import "agnosticui-core/select";
+import { html, LitElement } from "lit";
+import { customElement } from "lit/decorators.js";
+
+@customElement("label-positioning-examples")
 export class LabelPositioningExamples extends LitElement {
   render() {
     return html`
@@ -589,11 +579,7 @@ export class LabelPositioningExamples extends LitElement {
           <option value="2">Option 2</option>
         </ag-select>
 
-        <ag-select
-          .label=${"End Position"}
-          .labelPosition=${"end"}
-          name="end"
-        >
+        <ag-select .label=${"End Position"} .labelPosition=${"end"} name="end">
           <option value="">Select option</option>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
@@ -614,6 +600,7 @@ export class LabelPositioningExamples extends LitElement {
   }
 }
 ```
+
 :::
 
 ## Features
@@ -638,43 +625,43 @@ npm install agnosticui-core
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `'small' \| 'large' \| ''` | `''` | Size variant of the select |
-| `multiple` | `boolean` | `false` | Enable multiple selection |
-| `disabled` | `boolean` | `false` | Disable the select |
-| `name` | `string` | `''` | Form name attribute |
-| `multipleSize` | `number` | `undefined` | Number of visible options for multiple select |
-| `label` | `string` | `''` | External label text |
-| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'` | Position of the label relative to select. **Note:** `'bottom'` is not recommended as the dropdown menu may cover the label |
-| `labelHidden` | `boolean` | `false` | Visually hides the label (still accessible to screen readers) |
-| `noLabel` | `boolean` | `false` | Removes the label element entirely |
-| `required` | `boolean` | `false` | Marks the select as required (adds asterisk to label) |
-| `invalid` | `boolean` | `false` | Marks the select as invalid (shows error state) |
-| `errorMessage` | `string` | `''` | Error message displayed when `invalid` is true |
-| `helpText` | `string` | `''` | Helper text displayed below the select |
+| Prop            | Type                                    | Default     | Description                                                                                                                |
+| --------------- | --------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `size`          | `'small' \| 'large' \| ''`              | `''`        | Size variant of the select                                                                                                 |
+| `multiple`      | `boolean`                               | `false`     | Enable multiple selection                                                                                                  |
+| `disabled`      | `boolean`                               | `false`     | Disable the select                                                                                                         |
+| `name`          | `string`                                | `''`        | Form name attribute                                                                                                        |
+| `multipleSize`  | `number`                                | `undefined` | Number of visible options for multiple select                                                                              |
+| `label`         | `string`                                | `''`        | External label text                                                                                                        |
+| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'`     | Position of the label relative to select. **Note:** `'bottom'` is not recommended as the dropdown menu may cover the label |
+| `labelHidden`   | `boolean`                               | `false`     | Visually hides the label (still accessible to screen readers)                                                              |
+| `noLabel`       | `boolean`                               | `false`     | Removes the label element entirely                                                                                         |
+| `required`      | `boolean`                               | `false`     | Marks the select as required (adds asterisk to label)                                                                      |
+| `invalid`       | `boolean`                               | `false`     | Marks the select as invalid (shows error state)                                                                            |
+| `errorMessage`  | `string`                                | `''`        | Error message displayed when `invalid` is true                                                                             |
+| `helpText`      | `string`                                | `''`        | Helper text displayed below the select                                                                                     |
 
 ### Events
 
-The Select component supports both custom and native events following the AgnosticUI v2 [event conventions](../EVENT_CONVENTIONS.md).
+The Select component supports both custom and native events following the AgnosticUI v2 event conventions.
 
-| Event | Framework | Detail | Description |
-|-------|-----------|--------|-------------|
+| Event    | Framework                                             | Detail                          | Description                                                                  |
+| -------- | ----------------------------------------------------- | ------------------------------- | ---------------------------------------------------------------------------- |
 | `change` | Vue: `@change`<br>React: `onChange`<br>Lit: `@change` | `{ value: string \| string[] }` | Fired when the selected value changes. **Custom event** with detail payload. |
-| `focus` | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus` | `FocusEvent` | Fired when select receives focus. **Native event**, re-dispatched from host. |
-| `blur` | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur` | `FocusEvent` | Fired when select loses focus. **Native event**, re-dispatched from host. |
-| `click` | Vue: `@click`<br>React: `onClick`<br>Lit: `@click` | `MouseEvent` | Fired when select is clicked. **Native event**. |
+| `focus`  | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus`    | `FocusEvent`                    | Fired when select receives focus. **Native event**, re-dispatched from host. |
+| `blur`   | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur`       | `FocusEvent`                    | Fired when select loses focus. **Native event**, re-dispatched from host.    |
+| `click`  | Vue: `@click`<br>React: `onClick`<br>Lit: `@click`    | `MouseEvent`                    | Fired when select is clicked. **Native event**.                              |
 
 ### Slots
 
-| Slot | Description |
-|------|-------------|
+| Slot    | Description     |
+| ------- | --------------- |
 | default | Option elements |
 
 ### CSS Shadow Parts
 
-| Part | Description |
-|------|-------------|
+| Part        | Description               |
+| ----------- | ------------------------- |
 | `ag-select` | The select element itself |
 
 ## Event Handling Examples
@@ -684,21 +671,21 @@ The Select component supports both **addEventListener** and **callback props** p
 ### Lit - Dual Dispatch Pattern
 
 ```ts
-import 'agnosticui-core/select';
-import { html } from 'lit';
+import "agnosticui-core/select";
+import { html } from "lit";
 
 // Pattern 1: addEventListener
-const select = document.querySelector('ag-select');
-select.addEventListener('change', (e) => {
-  console.log('Value changed:', e.detail.value);
+const select = document.querySelector("ag-select");
+select.addEventListener("change", (e) => {
+  console.log("Value changed:", e.detail.value);
 });
 
 // Pattern 2: Callback props
 const template = html`
   <ag-select
-    .onChange=${(e) => console.log('Callback:', e.detail.value)}
-    .onFocus=${() => console.log('Focused')}
-    .onBlur=${() => console.log('Blurred')}
+    .onChange=${(e) => console.log("Callback:", e.detail.value)}
+    .onFocus=${() => console.log("Focused")}
+    .onBlur=${() => console.log("Blurred")}
   >
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -709,17 +696,17 @@ const template = html`
 ### React - Event Props
 
 ```tsx
-import { ReactSelect } from 'agnosticui-core/select/react';
-import { useState } from 'react';
+import { ReactSelect } from "agnosticui-core/select/react";
+import { useState } from "react";
 
 function SelectExample() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
   return (
     <ReactSelect
       onChange={(e) => setValue(e.detail.value as string)}
-      onFocus={() => console.log('Focused')}
-      onBlur={() => console.log('Blurred')}
+      onFocus={() => console.log("Focused")}
+      onBlur={() => console.log("Blurred")}
     >
       <option value="">Choose...</option>
       <option value="1">Option 1</option>
@@ -733,10 +720,10 @@ function SelectExample() {
 
 ```vue
 <script setup>
-import { ref } from 'vue';
-import { VueSelect } from 'agnosticui-core/select/vue';
+import { ref } from "vue";
+import { VueSelect } from "agnosticui-core/select/vue";
 
-const selectedValue = ref('');
+const selectedValue = ref("");
 const eventLog = ref([]);
 
 const handleChange = (detail) => {
@@ -789,7 +776,7 @@ const handleChange = (detail) => {
     <option value="rafa">Rafael Nadal</option>
   </VueSelect>
 
-  <p>Selected: {{ selectedPlayers.join(', ') }}</p>
+  <p>Selected: {{ selectedPlayers.join(", ") }}</p>
 </template>
 ```
 

@@ -14,7 +14,7 @@ echo 'www.agnosticui.com' >CNAME
 
 git init
 git add -A
-git commit -m 'deploy v2 site
+git commit -m 'deploy v2 site'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 # https://agnosticui.github.io/agnosticui
