@@ -449,18 +449,6 @@
       "types": "./dist/components/Image/vue/index.d.ts",
       "import": "./dist/components/Image/vue/index.js"
     },
-    "./table": {
-      "types": "./dist/components/Table/core/_Table.d.ts",
-      "import": "./dist/components/Table/core/_Table.js"
-    },
-    "./table/react": {
-      "types": "./dist/components/Table/react/ReactTable.d.ts",
-      "import": "./dist/components/Table/react/ReactTable.js"
-    },
-    "./table/vue": {
-      "types": "./dist/components/Table/vue/index.d.ts",
-      "import": "./dist/components/Table/vue/index.js"
-    },
     "./close-button": {
       "types": "./dist/components/shared/CloseButton/_CloseButton.d.ts",
       "import": "./dist/components/shared/CloseButton/_CloseButton.js"
