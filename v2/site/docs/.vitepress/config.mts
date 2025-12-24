@@ -55,6 +55,7 @@ export default defineConfig({
         text: 'Quick Start',
         items: [
           { text: 'Installation', link: '/installation' },
+          { text: 'Theming', link: '/theming' },
         ]
       },
       getComponents(),
