@@ -14,15 +14,74 @@ The AgnosticUI CLI provides a "local-first" approach where components are copied
 
 ### Quick Start
 
+Initialize AgnosticUI in your project root:
+
+```bash
+# Initialize with the CLI
+npx agnosticui-cli init
+```
+
+The interactive CLI will guide you through:
+
+1. Selecting your framework (React, Vue, Lit, Svelte)
+2. Choosing where to generate components
+3. Installing required dependencies (`lit`, `@floating-ui/dom`, etc.)
+4. Configuring TypeScript (if detected)
+
+::: tip CLI Aliases
+If you have "The Silver Searcher" installed (command `ag`), avoid using `npx ag init` as it may conflict. Always use the full package name `npx agnosticui-cli init` or install globally.
+:::
+
+#### After Initialization
+
+Follow the "Next Steps" printed by the CLI:
+
+1. **Import CSS Tokens**
+
+   Add the following to your main entry file (e.g., `main.ts`, `main.jsx`):
+
+   ```js
+   import "./src/components/ag/styles/ag-tokens.css";
+   import "./src/components/ag/styles/ag-tokens-dark.css";
+   ```
+
+   **Alternative: Use HTML Link Tags**
+
+   You can also load the styles directly in your `index.html`:
+
+   ```html
+   <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css" />
+   <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
+   ```
+
+2. **Add Components**
+
+   Use the CLI to add the components you need:
+
+   ```bash
+   npx agnosticui-cli add button input card
+   ```
+
+3. **Use Components**
+
+   Import and use them in your app:
+
+   ```js
+   // Below depends on where you are importing from. You will need
+   // to adjust the relative path based on your project structure.
+   import { VueButton } from "./src/components/ag/Button/vue/VueButton";
+   ```
+
 Initialize AgnosticUI in your project:
 
 ```bash
-npx ag init --framework vue
+npx agnosticui-cli init --framework vue
 ```
 
 Replace `vue` with your framework of choice: `react`, `lit`, or `svelte`.
 
 This command will:
+
 - Extract the AgnosticUI reference library to `./agnosticui/`
 - Create an `agnosticui.config.json` configuration file
 - Set up design tokens in your components directory
@@ -33,14 +92,17 @@ This command will:
 The CLI automatically installs these dependencies based on your framework:
 
 **All frameworks require:**
+
 - `lit` - Core web components library
 - `focus-trap` - Used by Dialog and modal components for accessibility
 - `@floating-ui/dom` - Used by Popover and Tooltip for positioning
 
 **React also requires:**
+
 - `@lit/react` - Wrapper library for using Lit web components in React
 
 **Note on framework support:**
+
 - **React** and **Vue** have full framework-specific wrappers for all components
 - **Lit** uses web components directly (no wrappers needed)
 - **Svelte** and other frameworks use the Lit web components directly
@@ -51,13 +113,13 @@ Add components to your project:
 
 ```bash
 # Add a single component
-npx ag add button
+npx agnosticui-cli add button
 
 # Add multiple components
-npx ag add button input checkbox
+npx agnosticui-cli add button input checkbox
 
 # Overwrite existing components
-npx ag add button --force
+npx agnosticui-cli add button --force
 ```
 
 Components are copied to `./src/components/ag/` by default (customizable with `--components-path`).
@@ -67,7 +129,7 @@ Components are copied to `./src/components/ag/` by default (customizable with `-
 See all available components and which ones you've already added:
 
 ```bash
-npx ag list
+npx agnosticui-cli list
 ```
 
 ### Project Structure
@@ -100,8 +162,8 @@ Import components from your local components directory:
 #### React
 
 ```typescript
-import { ReactButton } from './components/ag/Button/react/ReactButton';
-import { ReactInput } from './components/ag/Input/react/ReactInput';
+import { ReactButton } from "./components/ag/Button/react/ReactButton";
+import { ReactInput } from "./components/ag/Input/react/ReactInput";
 
 function App() {
   return (
@@ -117,8 +179,8 @@ function App() {
 
 ```vue
 <script setup>
-import { VueButton } from './components/ag/Button/vue/VueButton.js';
-import { VueInput } from './components/ag/Input/vue/VueInput.js';
+import { VueButton } from "./components/ag/Button/vue/VueButton.js";
+import { VueInput } from "./components/ag/Input/vue/VueInput.js";
 </script>
 
 <template>
@@ -130,9 +192,9 @@ import { VueInput } from './components/ag/Input/vue/VueInput.js';
 #### Lit
 
 ```typescript
-import { html, LitElement } from 'lit';
-import './components/ag/Button/core/Button.js';
-import './components/ag/Input/core/Input.js';
+import { html, LitElement } from "lit";
+import "./components/ag/Button/core/Button.js";
+import "./components/ag/Input/core/Input.js";
 
 class MyApp extends LitElement {
   render() {
@@ -164,18 +226,18 @@ The CLI automatically copies design tokens to `./src/components/ag/styles/`. Imp
 
 ```css
 /* In your main CSS file */
-@import './components/ag/styles/ag-tokens.css';
+@import "./components/ag/styles/ag-tokens.css";
 
 /* Optional: Dark theme */
-@import './components/ag/styles/ag-tokens-dark.css';
+@import "./components/ag/styles/ag-tokens-dark.css";
 ```
 
 Or import in JavaScript:
 
 ```typescript
 // In your main entry file (e.g., main.tsx, main.ts)
-import './components/ag/styles/ag-tokens.css';
-import './components/ag/styles/ag-tokens-dark.css'; // Optional
+import "./components/ag/styles/ag-tokens.css";
+import "./components/ag/styles/ag-tokens-dark.css"; // Optional
 ```
 
 ### Configuration Options
@@ -184,10 +246,10 @@ Customize the CLI behavior with command-line flags:
 
 ```bash
 # Specify a custom components path
-npx ag init --framework vue --components-path ./src/ui/agnostic
+npx agnosticui-cli init --framework vue --components-path ./src/ui/agnostic
 
 # Use a local tarball (for development/testing)
-npx ag init --framework vue --tarball /path/to/agnosticui-local-v0.0.1.tar.gz
+npx agnosticui-cli init --framework vue --tarball /path/to/agnosticui-local-v0.0.1.tar.gz
 ```
 
 Your `agnosticui.config.json` will store these settings:
@@ -208,7 +270,7 @@ Your `agnosticui.config.json` will store these settings:
 During active development, you can sync the reference library with a new tarball:
 
 ```bash
-npx ag sync --tarball /path/to/agnosticui-local-v0.0.2.tar.gz
+npx agnosticui-cli sync --tarball /path/to/agnosticui-local-v0.0.2.tar.gz
 ```
 
 This updates the reference library in `./agnosticui/` without touching your customized components.
@@ -233,20 +295,20 @@ If using TypeScript with Lit web components, enable experimental decorators in y
 When using AgnosticUI with Vue and Vite, configure Vite to recognize `<ag-*>` components as custom elements in your `vite.config.ts`:
 
 ```typescript
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
   plugins: [
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.startsWith('ag-'),
-        }
-      }
-    })
+          isCustomElement: (tag) => tag.startsWith("ag-"),
+        },
+      },
+    }),
   ],
-})
+});
 ```
 
 This prevents Vue from treating AgnosticUI web components as Vue components.
@@ -284,8 +346,8 @@ Import components directly from the package:
 #### React
 
 ```typescript
-import { ReactButton } from 'agnosticui-core/button/react';
-import { ReactInput } from 'agnosticui-core/input/react';
+import { ReactButton } from "agnosticui-core/button/react";
+import { ReactInput } from "agnosticui-core/input/react";
 
 function App() {
   return (
@@ -301,8 +363,8 @@ function App() {
 
 ```vue
 <script setup>
-import { VueButton } from 'agnosticui-core/button/vue';
-import { VueInput } from 'agnosticui-core/input/vue';
+import { VueButton } from "agnosticui-core/button/vue";
+import { VueInput } from "agnosticui-core/input/vue";
 </script>
 
 <template>
@@ -314,9 +376,9 @@ import { VueInput } from 'agnosticui-core/input/vue';
 #### Lit
 
 ```typescript
-import 'agnosticui-core/button';
-import 'agnosticui-core/input';
-import { html, LitElement } from 'lit';
+import "agnosticui-core/button";
+import "agnosticui-core/input";
+import { html, LitElement } from "lit";
 
 class MyApp extends LitElement {
   render() {
@@ -346,15 +408,15 @@ Import design tokens in your application:
 
 ```typescript
 // In your main entry file
-import 'agnosticui-core/styles/tokens.css';
-import 'agnosticui-core/styles/tokens-dark.css'; // Optional: Dark theme
+import "agnosticui-core/styles/tokens.css";
+import "agnosticui-core/styles/tokens-dark.css"; // Optional: Dark theme
 ```
 
 Or in CSS:
 
 ```css
-@import 'agnosticui-core/styles/tokens.css';
-@import 'agnosticui-core/styles/tokens-dark.css'; /* Optional */
+@import "agnosticui-core/styles/tokens.css";
+@import "agnosticui-core/styles/tokens-dark.css"; /* Optional */
 ```
 
 ### Package Exports
@@ -363,46 +425,46 @@ The package provides granular exports for each component and framework:
 
 ```typescript
 // Core web components
-import 'agnosticui-core/button';
-import 'agnosticui-core/input';
+import "agnosticui-core/button";
+import "agnosticui-core/input";
 
 // React wrappers
-import { ReactButton } from 'agnosticui-core/button/react';
-import { ReactInput } from 'agnosticui-core/input/react';
+import { ReactButton } from "agnosticui-core/button/react";
+import { ReactInput } from "agnosticui-core/input/react";
 
 // Vue wrappers
-import { VueButton } from 'agnosticui-core/button/vue';
-import { VueInput } from 'agnosticui-core/input/vue';
+import { VueButton } from "agnosticui-core/button/vue";
+import { VueInput } from "agnosticui-core/input/vue";
 
 // CSS tokens
-import 'agnosticui-core/styles/tokens.css';
-import 'agnosticui-core/styles/tokens-dark.css';
+import "agnosticui-core/styles/tokens.css";
+import "agnosticui-core/styles/tokens-dark.css";
 ```
 
 ## Comparison: CLI vs NPM
 
-| Feature | CLI (Recommended) | NPM Package |
-|---------|-------------------|-------------|
-| **Setup** | `npx ag init` | `npm install agnosticui-core` |
-| **Component Location** | Local in your project | node_modules |
-| **Customization** | Full control - edit freely | Limited - must extend/wrap |
-| **Updates** | Manual - copy new versions | Automatic - npm update |
-| **Bundle Size** | Only components you use | Tree-shakeable |
-| **TypeScript** | Full type definitions | Full type definitions |
-| **Best For** | Projects needing customization | Quick prototyping, minimal changes |
+| Feature                | CLI (Recommended)              | NPM Package                        |
+| ---------------------- | ------------------------------ | ---------------------------------- |
+| **Setup**              | `npx agnosticui-cli init`      | `npm install agnosticui-core`      |
+| **Component Location** | Local in your project          | node_modules                       |
+| **Customization**      | Full control - edit freely     | Limited - must extend/wrap         |
+| **Updates**            | Manual - copy new versions     | Automatic - npm update             |
+| **Bundle Size**        | Only components you use        | Tree-shakeable                     |
+| **TypeScript**         | Full type definitions          | Full type definitions              |
+| **Best For**           | Projects needing customization | Quick prototyping, minimal changes |
 
 ## Framework Support
 
 AgnosticUI provides different levels of support for each framework:
 
-| Framework | Support Level | Implementation |
-|-----------|---------------|----------------|
-| **React** | Full | Framework-specific wrappers for all components |
-| **Vue** | Full | Framework-specific wrappers for all components |
-| **Lit** | Full | Direct web component usage |
-| **Svelte** | Basic | Direct web component usage |
-| **Angular** | Basic | Direct web component usage |
-| **Solid** | Basic | Direct web component usage |
-| **Other** | Basic | Direct web component usage |
+| Framework   | Support Level | Implementation                                 |
+| ----------- | ------------- | ---------------------------------------------- |
+| **React**   | Full          | Framework-specific wrappers for all components |
+| **Vue**     | Full          | Framework-specific wrappers for all components |
+| **Lit**     | Full          | Direct web component usage                     |
+| **Svelte**  | Basic         | Direct web component usage                     |
+| **Angular** | Basic         | Direct web component usage                     |
+| **Solid**   | Basic         | Direct web component usage                     |
+| **Other**   | Basic         | Direct web component usage                     |
 
 All frameworks can use the underlying Lit web components. React and Vue have additional framework-specific wrappers for a more native development experience.

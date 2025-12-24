@@ -202,12 +202,13 @@ export async function init(options: InitOptions = {}): Promise<void> {
       pc.dim('1. Import CSS tokens in your app entry point (e.g., main.tsx):'),
       '  ' + logger.command(`import '${componentsPath}/styles/ag-tokens.css'`),
       '  ' + logger.command(`import '${componentsPath}/styles/ag-tokens-dark.css'`),
+      pc.dim('  (Or use <link> tags in your index.html)'),
       '',
       pc.dim('2. Add a component:'),
-      '  ' + logger.command('npx ag add button'),
+      '  ' + logger.command('npx agnosticui-cli add button'),
       '',
       pc.dim('3. List available components:'),
-      '  ' + logger.command('npx ag list'),
+      '  ' + logger.command('npx agnosticui-cli list'),
       '',
       pc.dim('4. Use in your app:'),
       '  ' + logger.command(exampleImport),
@@ -232,6 +233,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
 async function updateTsConfigs(): Promise<void> {
   const tsconfigFiles = ['tsconfig.json', 'tsconfig.app.json', 'tsconfig.node.json'];
   const cwd = process.cwd();
+  let updatedAny = false;
 
   for (const file of tsconfigFiles) {
     const filePath = path.join(cwd, file);
@@ -291,6 +293,7 @@ async function updateTsConfigs(): Promise<void> {
         if (modified) {
           await writeFile(filePath, JSON.stringify(json, null, 2));
           logger.info(`Updated ${file} with required configuration.`);
+          updatedAny = true;
         }
       } catch (error) {
         // Ignore errors, user will see the note
@@ -298,8 +301,8 @@ async function updateTsConfigs(): Promise<void> {
     }
   }
   
-  // Always show the note as a reminder or in case we missed something (like comments preventing parse)
-  showTypeScriptNote();
+  // Show verify note instead of "Add to..." if we updated files
+  showTypeScriptNote(updatedAny);
 }
 
 /**
@@ -374,7 +377,6 @@ async function handleDependencies(framework: Framework): Promise<void> {
   if (checkDependenciesInstalled(requiredDeps)) {
     logger.newline();
     logger.info('Required dependencies already installed: ' + pc.dim(requiredDeps.join(', ')));
-    showTypeScriptNote();
     return;
   }
 
@@ -415,7 +417,6 @@ async function handleDependencies(framework: Framework): Promise<void> {
   try {
     installDependencies(requiredDeps);
     spinner.stop(pc.green('✓') + ' Dependencies installed successfully!');
-    showTypeScriptNote();
   } catch (error) {
     spinner.stop(pc.red('✖') + ' Failed to install dependencies');
     logger.error(`Installation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
@@ -426,10 +427,14 @@ async function handleDependencies(framework: Framework): Promise<void> {
 /**
  * Show TypeScript decorator configuration note
  */
-function showTypeScriptNote(): void {
+function showTypeScriptNote(wasUpdated: boolean = false): void {
   if (pathExists('tsconfig.json')) {
     logger.newline();
-    logger.info(pc.yellow('TypeScript Note:') + ' Add to ' + pc.cyan('ALL') + ' tsconfig files:');
+    if (wasUpdated) {
+      logger.info(pc.green('TypeScript Configuration Updated:') + ' verified the following settings:');
+    } else {
+      logger.info(pc.yellow('TypeScript Note:') + ' Add to ' + pc.cyan('ALL') + ' tsconfig files:');
+    }
     console.log('  ' + pc.dim('"compilerOptions": {'));
     console.log('    ' + pc.cyan('"experimentalDecorators": true'));
     console.log('  ' + pc.dim('},'));
@@ -438,7 +443,9 @@ function showTypeScriptNote(): void {
     console.log('    ' + pc.cyan('"**/agnosticui/**"'));
     console.log('  ' + pc.dim(']'));
     logger.newline();
-    logger.info(pc.dim('(For Vite: add to both tsconfig.json AND tsconfig.app.json)'));
+    if (!wasUpdated) {
+      logger.info(pc.dim('(For Vite: add to both tsconfig.json AND tsconfig.app.json)'));
+    }
   }
 }
 
