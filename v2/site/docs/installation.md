@@ -406,16 +406,3 @@ AgnosticUI provides different levels of support for each framework:
 | **Other** | Basic | Direct web component usage |
 
 All frameworks can use the underlying Lit web components. React and Vue have additional framework-specific wrappers for a more native development experience.
-
-## Next Steps
-
-- Browse available [components](/components/) and their documentation
-- Learn about [theming and customization](/theming/)
-- Explore [framework-specific guides](/guides/)
-- Check out [examples and demos](/examples/)
-
-## Support
-
-- Report issues: [GitHub Issues](https://github.com/AgnosticUI/agnosticui/issues)
-- Ask questions: [GitHub Discussions](https://github.com/AgnosticUI/agnosticui/discussions)
-- Read the docs: [agnosticui.com](https://agnosticui.com)
