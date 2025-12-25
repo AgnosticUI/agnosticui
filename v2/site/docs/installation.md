@@ -28,8 +28,16 @@ The interactive CLI will guide you through:
 3. Installing required dependencies (`lit`, `@floating-ui/dom`, etc.)
 4. Configuring TypeScript (if detected)
 
-::: tip CLI Aliases
-If you have "The Silver Searcher" installed (command `ag`), avoid using `npx ag init` as it may conflict. Always use the full package name `npx agnosticui-cli init` or install globally.
+::: tip CLI Command Variants
+We recommend using `npx agnosticui-cli` since it works without requiring a global install. However, if you prefer the shorter `npx ag` variant, first install the CLI globally:
+
+```bash
+npm install -g agnosticui-cli@alpha
+```
+
+After global installation, all `npx agnosticui-cli` commands can be replaced with `npx ag` (e.g., `npx ag init`, `npx ag add button`).
+
+**Note:** If you have "The Silver Searcher" tool installed (which also uses the `ag` command), you may experience conflicts. In that case, stick with the full `npx agnosticui-cli` variant.
 :::
 
 #### After Initialization

@@ -28,7 +28,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
   const existingConfig = await loadConfig();
   if (existingConfig) {
     logger.error('AgnosticUI is already initialized in this project.');
-    logger.info('Run ' + pc.cyan('npx ag add <component>') + ' to add components.');
+    logger.info('Run ' + pc.cyan('npx agnosticui-cli add <component>') + ' to add components.');
     process.exit(1);
   }
 
