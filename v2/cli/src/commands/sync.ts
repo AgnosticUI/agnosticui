@@ -24,7 +24,7 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
   const config = await loadConfig();
   if (!config) {
     logger.error('AgnosticUI is not initialized in this project.');
-    logger.info('Run ' + pc.cyan('npx ag init') + ' to initialize first.');
+    logger.info('Run ' + pc.cyan('npx agnosticui-cli init') + ' to initialize first.');
     process.exit(1);
   }
 
@@ -35,7 +35,7 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
     // Use tarball path from config
     if (!config.tarball?.source) {
       logger.error('No tarball path found in config.');
-      logger.info('Please specify a tarball path: ' + pc.cyan('npx ag sync --tarball /path/to/tarball.tgz'));
+      logger.info('Please specify a tarball path: ' + pc.cyan('npx agnosticui-cli sync --tarball /path/to/tarball.tgz'));
       process.exit(1);
     }
     tarballPath = config.tarball.source;
@@ -53,7 +53,7 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
   if (!existsSync(tarballPath)) {
     logger.error('Tarball not found at saved location!');
     logger.info('Please specify a new tarball path:');
-    logger.info('  ' + pc.cyan(`npx ag sync --tarball /path/to/tarball.tgz`));
+    logger.info('  ' + pc.cyan(`npx agnosticui-cli sync --tarball /path/to/tarball.tgz`));
     process.exit(1);
   }
 

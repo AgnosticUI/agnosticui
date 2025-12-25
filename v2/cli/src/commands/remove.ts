@@ -16,7 +16,7 @@ export async function remove(componentNames: string[], options: RemoveOptions = 
   const config = await loadConfig();
   if (!config) {
     logger.error('AgnosticUI is not initialized in this project.');
-    logger.info('Run ' + pc.cyan('npx ag init') + ' to get started.');
+    logger.info('Run ' + pc.cyan('npx agnosticui-cli init') + ' to get started.');
     process.exit(1);
   }
 
@@ -28,7 +28,7 @@ export async function remove(componentNames: string[], options: RemoveOptions = 
 
   if (notAdded.length > 0) {
     logger.error(`Component(s) not found: ${notAdded.join(', ')}`);
-    logger.info('Run ' + pc.cyan('npx ag list') + ' to see installed components.');
+    logger.info('Run ' + pc.cyan('npx agnosticui-cli list') + ' to see installed components.');
 
     // Filter out not added components
     const toRemove = normalizedNames.filter(name => hasComponent(config, name));
