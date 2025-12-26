@@ -3,7 +3,7 @@
 <AlphaWarning />
 
 <script setup>
-import AlphaWarning from './components/AlphaWarning.vue'
+import AlphaWarning from '../components/AlphaWarning.vue'
 </script>
 
 AgnosticUI can be installed in two ways: using the **AgnosticUI CLI** (recommended) or as an **npm package**. Choose the approach that best fits your workflow.
@@ -64,8 +64,8 @@ Follow the "Next Steps" printed by the CLI:
 
 2. **Set Up Theming**
 
-   ::: tip Override Default Styles
-   Many build tools (Vite, Create React App, etc.) include default background colors. You may need to override these to use AgnosticUI's theme system. See the [Theming Guide](./theming.md) for framework-specific details.
+   ::: warning Vite Default Dark Mode
+   Vite's default template uses a dark background (`#242424`). You'll need to override this to use AgnosticUI's theme system.
    :::
 
    AgnosticUI uses a `data-theme` attribute on the `<html>` element to control theming. Add this to your main CSS file or in a `<style>` tag:

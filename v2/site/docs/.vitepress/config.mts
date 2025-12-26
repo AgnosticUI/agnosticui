@@ -59,6 +59,16 @@ export default defineConfig({
         ]
       },
       getComponents(),
+      {
+        text: 'Documentation',
+        items: [
+          { text: 'Setup Guide', link: '/docs/setup' },
+          { text: 'Understanding AgnosticUI', link: '/docs/understand' },
+          { text: 'Advanced Usage', link: '/docs/advanced/advanced-usage' },
+          { text: 'CSS Utilities', link: '/docs/utilities' },
+          { text: 'FAQ', link: '/docs/faq' },
+        ]
+      },
     ],
 
     socialLinks: [
