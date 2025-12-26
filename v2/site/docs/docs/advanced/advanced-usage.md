@@ -805,6 +805,6 @@ diff src/components/ag/Button agnosticui/lib/src/components/Button
 ## What's Next?
 
 - [Understanding AgnosticUI](/docs/understand) - Core concepts and architecture
-- [Theming](/docs/theming) - Design token system
-- [Component Docs](/components/) - Individual component references
+- [Theming](/theming) - Design token system
+- [Component Docs](/components/button) - Individual component references
 - [FAQ](/docs/faq) - Common questions and answers
