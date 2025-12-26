@@ -2,6 +2,9 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  sitemap: {
+    hostname: 'https://www.agnosticui.com'
+  },
   head: [
     ['link', { rel: 'stylesheet', href: '/ag-tokens.css' }],
     ['link', { rel: 'stylesheet', href: '/ag-tokens-dark.css' }],
