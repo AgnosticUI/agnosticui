@@ -3,7 +3,7 @@
 <AlphaWarning />
 
 <script setup>
-import AlphaWarning from './components/AlphaWarning.vue'
+import AlphaWarning from '../components/AlphaWarning.vue'
 </script>
 
 AgnosticUI uses a `data-theme` attribute on the `<html>` element to control light/dark theming.
