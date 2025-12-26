@@ -604,6 +604,6 @@ Svelte has excellent web component support out of the box.
 ## What's Next?
 
 - [Installation Guide](/docs/setup) - Get started with AgnosticUI
-- [Theming](/docs/theming) - Customize the look and feel
-- [Advanced Usage](/docs/advanced-usage) - Deep customization techniques
-- [Component Docs](/components/) - Explore all available components
+- [Theming](/theming) - Customize the look and feel
+- [Advanced Usage](/docs/advanced/advanced-usage) - Deep customization techniques
+- [Component Docs](/components/button) - Explore all available components
