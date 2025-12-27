@@ -12,6 +12,10 @@ AgnosticUI can be installed in two ways: using the **AgnosticUI CLI** (recommend
 
 The AgnosticUI CLI provides a "local-first" approach where components are copied directly into your project. This gives you full ownership and control over the component code, making it easy to customize and extend components without worrying about breaking changes from upstream updates.
 
+::: warning TypeScript Required
+The CLI copies TypeScript (`.ts`) files containing decorators and type annotations. Your project **must** have a build tool that can compile TypeScript (e.g., Vite, webpack with ts-loader, or tsc). If your project uses plain JavaScript without TypeScript support, use the [NPM Package approach](#npm-package-alternative) instead.
+:::
+
 ### Quick Start
 
 Initialize AgnosticUI in your project root:
@@ -246,8 +250,8 @@ import VueInput from "./components/ag/Input/vue/VueInput.vue";
 
 ```typescript
 import { html, LitElement } from "lit";
-import "./components/ag/Button/core/Button.js";
-import "./components/ag/Input/core/Input.js";
+import "./components/ag/Button/core/Button";
+import "./components/ag/Input/core/Input";
 
 class MyApp extends LitElement {
   render() {
@@ -265,8 +269,8 @@ For Svelte, Angular, Solid, or other frameworks, use the Lit web components dire
 
 ```svelte
 <script>
-  import './components/ag/Button/core/Button.js';
-  import './components/ag/Input/core/Input.js';
+  import './components/ag/Button/core/Button';
+  import './components/ag/Input/core/Input';
 </script>
 
 <ag-button variant="primary">Click me</ag-button>
@@ -496,15 +500,16 @@ import "agnosticui-core/styles/tokens-dark.css";
 
 ## Comparison: CLI vs NPM
 
-| Feature                | CLI (Recommended)              | NPM Package                        |
-| ---------------------- | ------------------------------ | ---------------------------------- |
-| **Setup**              | `npx agnosticui-cli init`      | `npm install agnosticui-core`      |
-| **Component Location** | Local in your project          | node_modules                       |
-| **Customization**      | Full control - edit freely     | Limited - must extend/wrap         |
-| **Updates**            | Manual - copy new versions     | Automatic - npm update             |
-| **Bundle Size**        | Only components you use        | Tree-shakeable                     |
-| **TypeScript**         | Full type definitions          | Full type definitions              |
-| **Best For**           | Projects needing customization | Quick prototyping, minimal changes |
+| Feature                | CLI (Recommended)                    | NPM Package                        |
+| ---------------------- | ------------------------------------ | ---------------------------------- |
+| **Setup**              | `npx agnosticui-cli init`            | `npm install agnosticui-core`      |
+| **Component Location** | Local in your project                | node_modules                       |
+| **Customization**      | Full control - edit freely           | Limited - must extend/wrap         |
+| **Updates**            | Manual - copy new versions           | Automatic - npm update             |
+| **Bundle Size**        | Only components you use              | Tree-shakeable                     |
+| **TypeScript**         | Required (copies .ts files)          | Full type definitions              |
+| **Build Tool**         | Must support TS compilation          | Any modern bundler                 |
+| **Best For**           | TS projects needing customization    | Quick prototyping, JS projects     |
 
 ## Framework Support
 
