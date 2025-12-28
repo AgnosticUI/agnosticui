@@ -535,6 +535,10 @@ declare namespace preact.JSX {
 }
 ```
 
+::: tip Finding Component Props
+Each component exports a `Props` interface you can reference. For example, see `ButtonProps` in `src/components/ag/Button/core/_Button.ts` for all available button properties and their types.
+:::
+
 ## Comparison: CLI vs NPM
 
 | Feature                | CLI (Recommended)                    | NPM Package                        |
