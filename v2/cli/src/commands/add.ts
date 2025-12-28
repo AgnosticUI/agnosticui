@@ -204,7 +204,7 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
           // Vue uses default exports and requires .vue extension
           importStatement = `import ${componentExportName} from './${importPath}/${config.framework}/${componentExportName}.vue'`;
         } else {
-          // Lit, Svelte, etc. use web components from core directory (side-effect import)
+          // Lit, Svelte, and Other (Angular, Solid, etc.) use web components from core directory (side-effect import)
           importStatement = `import './${importPath}/core/${result.name}'`;
         }
 
@@ -272,7 +272,7 @@ async function addComponent(
     copiedFiles.push(path.join(destPath, framework));
   } else {
     // Only React and Vue require framework-specific implementations
-    // Other frameworks (Lit, Svelte, Angular, Solid, etc.) use the core web component directly
+    // Other frameworks (Lit, Svelte, or 'other' for Angular/Solid/etc.) use the core web component directly
     if (framework === 'react' || framework === 'vue') {
       throw new Error(`${framework} implementation not found for ${componentName}`);
     }
