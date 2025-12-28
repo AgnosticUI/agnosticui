@@ -498,6 +498,43 @@ import "agnosticui-core/styles/tokens.css";
 import "agnosticui-core/styles/tokens-dark.css";
 ```
 
+## Troubleshooting
+
+### Decorator Support (Preact, Solid, Babel-based frameworks)
+
+If using Preact, Solid, or other frameworks that rely on Babel for JSX transformation, you may encounter decorator errors. Fix by excluding AgnosticUI files from Babel and adding TypeScript declarations:
+
+**1. Update `vite.config.ts`:**
+
+```typescript
+import { defineConfig } from 'vite'
+import preact from '@preact/preset-vite' // or your framework plugin
+
+export default defineConfig({
+  plugins: [
+    preact({
+      exclude: [/\/components\/ag\//], // Let esbuild handle AgnosticUI files
+    })
+  ],
+})
+```
+
+**2. Create `src/components/ag/ag-elements.d.ts`:**
+
+```typescript
+declare namespace preact.JSX {
+  interface IntrinsicElements {
+    'ag-button': {
+      variant?: string;
+      size?: string;
+      onClick?: () => void;
+      children?: preact.ComponentChildren;
+    };
+    // Add other ag-* elements as needed
+  }
+}
+```
+
 ## Comparison: CLI vs NPM
 
 | Feature                | CLI (Recommended)                    | NPM Package                        |
