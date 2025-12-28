@@ -42,6 +42,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
         { value: 'vue', label: 'Vue' },
         { value: 'lit', label: 'Lit' },
         { value: 'svelte', label: 'Svelte' },
+        { value: 'other', label: 'Other (Angular, Solid, Preact, etc. - Uses web components)' },
       ],
     });
 
@@ -194,7 +195,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
     } else if (framework === 'vue') {
       exampleImport = `import VueButton from '${componentsPath}/Button/vue/VueButton.vue'`;
     } else {
-      // Lit, Svelte, etc. use web components from core
+      // Lit, Svelte, and Other (Angular, Solid, etc.) use web components from core
       exampleImport = `import '${componentsPath}/Button/core/Button'`;
     }
 

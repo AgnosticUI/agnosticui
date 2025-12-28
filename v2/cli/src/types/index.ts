@@ -2,7 +2,7 @@
  * AgnosticUI CLI Types
  */
 
-export type Framework = 'react' | 'vue' | 'lit' | 'svelte';
+export type Framework = 'react' | 'vue' | 'lit' | 'svelte' | 'other';
 
 export interface AgnosticUIConfig {
   $schema?: string;
