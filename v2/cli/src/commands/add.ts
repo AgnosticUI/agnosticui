@@ -271,8 +271,9 @@ async function addComponent(
     // Track files (relative to project root)
     copiedFiles.push(path.join(destPath, framework));
   } else {
-    // For Lit, we use the core component directly, so it's okay if a specific 'lit' folder doesn't exist
-    if (framework !== 'lit') {
+    // Only React and Vue require framework-specific implementations
+    // Other frameworks (Lit, Svelte, Angular, Solid, etc.) use the core web component directly
+    if (framework === 'react' || framework === 'vue') {
       throw new Error(`${framework} implementation not found for ${componentName}`);
     }
   }
@@ -536,42 +537,12 @@ async function processComponentDependencies(
 }
 
 /**
- * Calculate the number of '../' needed based on components path depth
- * Reference library: src/components/BadgeFx/core/_File.ts uses ../../../ to reach src/
- * User's project: src/components/ag/BadgeFx/core/_File.ts should use ../../../../ to reach src/
- */
-function calculatePathDepth(componentsPath: string): number {
-  // Normalize the path and remove leading './'
-  const normalized = componentsPath.replace(/^\.\//, '');
-
-  // Find the position of 'src' in the path
-  const parts = normalized.split('/').filter(s => s.length > 0);
-  const srcIndex = parts.indexOf('src');
-
-  if (srcIndex === -1) {
-    // No 'src' directory, assume styles/types/utils are at project root
-    // Count all segments + ComponentName + core
-    return parts.length + 2;
-  }
-
-  // Count segments after 'src' (e.g., for 'src/components/ag' -> ['components', 'ag'] = 2)
-  const segmentsAfterSrc = parts.slice(srcIndex + 1);
-  // Add 2 for ComponentName/core/
-  return segmentsAfterSrc.length + 2;
-}
-
-/**
  * Copy directory and transform extension from .js to empty in imports
  */
 async function copyAndTransform(src: string, dest: string, componentsPath: string): Promise<void> {
   await ensureDir(dest);
 
   const entries = await readdir(src, { withFileTypes: true });
-
-  // Calculate how many '../' we need for the user's project structure
-  const userDepth = calculatePathDepth(componentsPath);
-  const referenceDepth = 3; // Reference library uses ../../../ for src/components/Component/core/
-  const extraLevels = userDepth - referenceDepth;
 
   for (const entry of entries) {
     const srcPath = path.join(src, entry.name);
@@ -622,7 +593,6 @@ async function copyAndTransform(src: string, dest: string, componentsPath: strin
            const regex = new RegExp(`(from\\s+['"]|import\\s+['"])(?:\\.\\.\\/){3}(${dir}\\/)`, 'g');
            content = content.replace(regex, `$1../../$2`);
         }
-        // If extraLevels === 0, no transformation needed (same depth as reference)
 
         await writeFile(destPath, content, 'utf-8');
       } else {
