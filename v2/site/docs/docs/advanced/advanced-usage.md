@@ -666,10 +666,25 @@ function App() {
 
 Analyze your bundle to ensure only necessary code is included:
 
-```bash
-# With Vite
+::: code-group
+
+```sh [npm]
 npm install -D rollup-plugin-visualizer
 ```
+
+```sh [yarn]
+yarn add -D rollup-plugin-visualizer
+```
+
+```sh [pnpm]
+pnpm add -D rollup-plugin-visualizer
+```
+
+```sh [bun]
+bun add -D rollup-plugin-visualizer
+```
+
+:::
 
 ```typescript
 // vite.config.ts

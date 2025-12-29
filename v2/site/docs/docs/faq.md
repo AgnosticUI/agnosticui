@@ -226,7 +226,9 @@ This shows all 57+ available components and marks which ones you've already adde
 
 Yes! Install the CLI globally to use the `ag` shorthand:
 
-```bash
+::: code-group
+
+```sh [npm]
 npm install -g agnosticui-cli@alpha
 
 # Now you can use:
@@ -234,6 +236,35 @@ npx ag init
 npx ag add button
 npx ag list
 ```
+
+```sh [yarn]
+yarn global add agnosticui-cli@alpha
+
+# Now you can use:
+npx ag init
+npx ag add button
+npx ag list
+```
+
+```sh [pnpm]
+pnpm add -g agnosticui-cli@alpha
+
+# Now you can use:
+npx ag init
+npx ag add button
+npx ag list
+```
+
+```sh [bun]
+bun add -g agnosticui-cli@alpha
+
+# Now you can use:
+npx ag init
+npx ag add button
+npx ag list
+```
+
+:::
 
 **Note:** If you have "The Silver Searcher" tool installed (which also uses `ag`), stick with the full `npx agnosticui-cli` command to avoid conflicts.
 
