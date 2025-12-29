@@ -617,9 +617,25 @@ export class LabelPositioningExamples extends LitElement {
 
 ## Installation
 
-```bash
+::: code-group
+
+```sh [npm]
 npm install agnosticui-core
 ```
+
+```sh [yarn]
+yarn add agnosticui-core
+```
+
+```sh [pnpm]
+pnpm add agnosticui-core
+```
+
+```sh [bun]
+bun add agnosticui-core
+```
+
+:::
 
 ## Component API
 

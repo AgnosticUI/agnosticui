@@ -35,9 +35,25 @@ The interactive CLI will guide you through:
 ::: tip CLI Command Variants
 We recommend using `npx agnosticui-cli` since it works without requiring a global install. However, if you prefer the shorter `npx ag` variant, first install the CLI globally:
 
-```bash
+::: code-group
+
+```sh [npm]
 npm install -g agnosticui-cli@alpha
 ```
+
+```sh [yarn]
+yarn global add agnosticui-cli@alpha
+```
+
+```sh [pnpm]
+pnpm add -g agnosticui-cli@alpha
+```
+
+```sh [bun]
+bun add -g agnosticui-cli@alpha
+```
+
+:::
 
 After global installation, all `npx agnosticui-cli` commands can be replaced with `npx ag` (e.g., `npx ag init`, `npx ag add button`).
 
@@ -378,13 +394,31 @@ For a more traditional approach, install AgnosticUI as an npm package. This meth
 
 Install the core package:
 
-```bash
+::: code-group
+
+```sh [npm]
 npm install agnosticui-core
 ```
 
+```sh [yarn]
+yarn add agnosticui-core
+```
+
+```sh [pnpm]
+pnpm add agnosticui-core
+```
+
+```sh [bun]
+bun add agnosticui-core
+```
+
+:::
+
 Install required dependencies based on your framework:
 
-```bash
+::: code-group
+
+```sh [npm]
 # All frameworks need these base dependencies
 npm install lit focus-trap @floating-ui/dom
 
@@ -395,6 +429,44 @@ npm install @lit/react
 npm install react react-dom  # For React
 npm install vue              # For Vue
 ```
+
+```sh [yarn]
+# All frameworks need these base dependencies
+yarn add lit focus-trap @floating-ui/dom
+
+# React also needs
+yarn add @lit/react
+
+# Install your framework's runtime if not already installed
+yarn add react react-dom  # For React
+yarn add vue              # For Vue
+```
+
+```sh [pnpm]
+# All frameworks need these base dependencies
+pnpm add lit focus-trap @floating-ui/dom
+
+# React also needs
+pnpm add @lit/react
+
+# Install your framework's runtime if not already installed
+pnpm add react react-dom  # For React
+pnpm add vue              # For Vue
+```
+
+```sh [bun]
+# All frameworks need these base dependencies
+bun add lit focus-trap @floating-ui/dom
+
+# React also needs
+bun add @lit/react
+
+# Install your framework's runtime if not already installed
+bun add react react-dom  # For React
+bun add vue              # For Vue
+```
+
+:::
 
 ### Using Components
 

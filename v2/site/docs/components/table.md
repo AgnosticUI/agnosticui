@@ -7,9 +7,25 @@ Table is provided as CSS-only utilities. No JavaScript required.
 
 ## Installation
 
-```bash
+::: code-group
+
+```sh [npm]
 npm install agnosticui-core
 ```
+
+```sh [yarn]
+yarn add agnosticui-core
+```
+
+```sh [pnpm]
+pnpm add agnosticui-core
+```
+
+```sh [bun]
+bun add agnosticui-core
+```
+
+:::
 
 ## Import Styles
 
