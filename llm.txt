@@ -1,0 +1,73 @@
+# AgnosticUI v2 - LLM Context Guide
+
+## Project Overview
+AgnosticUI Local (v2) is a CLI-based UI component library that copies Lit web components directly into your project. Developers own the code, can customize it freely, and avoid dependency lock-in.
+
+## Key Architecture
+- **Framework**: Built with Lit for web components
+- **Approach**: CLI-first tool that copies components to your project
+- **Language**: Primarily TypeScript (86.8%)
+- **Structure**: Core components are located in `/v2/lib/src/components/`
+- **React/Vue Wrappers**: Core components are wrapped in React and Vue wrappers typically in `/v2/lib/src/components/[COMPONENT]/{react|vue}/` and use barrel files to export their API/interface.
+
+## CLI Usage
+The main entry point is `npx agnosticui-cli` (or `npx ag` if installed locally) which copies components directly into target projects. Run `npx agnosticui-cli --help` for available commands. The CLI is in `/v2/cli`.
+
+## Component Structure
+Each core component is in the `/v2/lib/` - `/v2/lib/src/components/[component-name]/` and contains:
+1. Lit web component implementation (.ts)
+2. Styles (.css)
+3. Tests
+4. Documentation (to be added)
+5. React and Vue wrappers
+6. Barrel files are used for both core and react/vue wrappers.
+
+## Theme System
+The project uses a systematic design token approach via Style Dictionary located in `/v2/theme-registry/`:
+- **52 production-ready tokens**: colors, spacing, border-radius, surfaces, borders, focus, motion, z-index
+- **Prefix**: All CSS variables use `--ag-` prefix (e.g., `--ag-primary`, `--ag-focus`)
+- **Output formats**: CSS custom properties, JavaScript exports, JSON
+- **Themes**: Light and dark theme variants with automatic token switching via `data-theme` attribute on the `<html>` element (e.g., `[data-theme="dark"]`)
+- **White-labeling**: Enterprise-ready theming capabilities
+- **Build**: Run `npm run build` in theme-registry to regenerate tokens
+- See `/v2/theme-registry/README.md` for complete token documentation
+
+## Project Structure
+
+### Core Library (`/v2/lib/`)
+- Component implementations, tests, and framework wrappers
+- Dependencies: Lit, TypeScript, @floating-ui/dom, @lit/react, focus-trap
+- Check `/v2/lib/package.json` for exact versions
+
+### CLI Tool (`/v2/cli/`)
+- Main entry point: `npx agnosticui-cli` command (or `npx ag` if installed locally)
+- Copies components directly into target projects
+- Run `npx agnosticui-cli --help` for available commands (see `/v2/site/docs/installation.md` for details)
+
+### Documentation (`/v2/site/`)
+- Built with Vitepress
+- Contains all user-facing documentation and guides
+- Component API documentation and usage examples
+
+### Development Playgrounds (`/v2/playgrounds/`)
+- Storybooks for React, Lit, and Vue
+- Used for local development and spot checks only
+- Not for production; for component isolation and testing
+
+### Test Examples (`/v2/examples/`)
+- `/v2/examples/lit-test/` - Lit consumption test artifacts
+- `/v2/examples/react-test/` - React consumption test artifacts
+- `/v2/examples/vue-test/` - Vue consumption test artifacts
+- Manual testing artifacts from CLI-based component consumption
+- Real-world integration validation
+
+## Development Setup
+- Node.js environment required
+- Main dependencies: Lit, TypeScript
+- Secondary dependencies for v2/lib are:
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
+    "@lit/react": "^1.0.8", <-- only needed for React
+    "focus-trap": "^7.6.5"
+  },
+- Check `/v2/package.json` for exact versions
