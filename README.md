@@ -37,7 +37,7 @@ AgnosticUI v2 is in **alpha** and represents a complete architectural rewrite:
 - CLI-first approach (copy components to your project)
 - 54+ production-ready components
 - Systematic design token system
-- Full React and Vue framework wrappers
+- Full React and Vue wrappers for native framework experience
 
 Development is ongoing in the `/v2` directory.
 
