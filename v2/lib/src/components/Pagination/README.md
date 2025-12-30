@@ -1,21 +1,37 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# Pagination
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+export interface ContentPaginationProps {
+  /**
+   * Previous content item
+   */
+  previous?: ContentNavigationItem;
+  /**
+   * Next content item
+   */
+  next?: ContentNavigationItem;
+  /**
+   * Parent/overview content item
+   */
+  parent?: ContentNavigationItem;
+  /**
+   * Alternative aria-label for the navigation
+   */
+  ariaLabel?: string;
+  /**
+   * Whether to display borders around navigation links
+   */
+  bordered?: boolean;
+  /**
+   * Event callback fired when navigation occurs (for SPA routing)
+   */
+  onNavigate?: (event: NavigateEvent) => void;
 }
 ```
 
@@ -24,16 +40,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-pagination
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-pagination>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-pagination');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });
