@@ -1,21 +1,21 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# Menu
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
+export interface MenuItemProps {
+  value?: string;
   disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+  href?: string;
+  target?: string;
+  checked?: boolean;
+  variant?: 'default' | 'monochrome';
+  onClick?: (event: MouseEvent) => void;
+  onMenuSelect?: (event: MenuSelectEvent) => void;
 }
 ```
 
@@ -24,16 +24,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-menu
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-menu>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-menu');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

@@ -1,21 +1,41 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# Popover
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
+export interface PopoverProps {
   placement?: Placement;
   distance?: number;
   skidding?: number;
-  trigger?: string;
+  arrow?: boolean;
   disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+  /**
+   * Interaction type for triggering the popover
+   * @default 'click'
+   */
+  triggerType?: 'click' | 'hover' | 'focus';
+  /** Match the popover's width to the trigger element */
+  matchTriggerWidth?: boolean;
+  /** Whether to show the close button in the header */
+  showCloseButton?: boolean;
+  /**
+   * Whether to show the header section
+   * @default true
+   */
+  showHeader?: boolean;
+  /** Accessible label for the close button */
+  closeLabel?: string;
+  /**
+   * Whether to trap focus within the popover when open
+   * @default false
+   */
+  trapFocus?: boolean;
+  onShow?: (event: PopoverShowEvent) => void;
+  onHide?: (event: PopoverHideEvent) => void;
 }
 ```
 
@@ -24,16 +44,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-popover
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-popover>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-popover');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

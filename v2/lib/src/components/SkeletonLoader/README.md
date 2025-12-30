@@ -1,21 +1,18 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# SkeletonLoader
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+export interface SkeletonProps {
+  variant?: SkeletonVariant;
+  effect?: SkeletonEffect;
+  intensity?: SkeletonIntensity;
+  width?: string;
+  height?: string;
 }
 ```
 
@@ -24,16 +21,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-skeletonloader
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-skeletonloader>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-skeletonloader');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

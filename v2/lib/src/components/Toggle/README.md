@@ -1,56 +1,31 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Input
+# Toggle
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface InputProps {
-  // Label properties
+export interface ToggleProps {
   label?: string;
+  labelPosition?: LabelPosition;
   labelHidden?: boolean;
   noLabel?: boolean;
-  ariaLabel?: string;
-  labelledBy?: string;
-
-  // Input properties
-  type?: string;
-  value?: string;
-  placeholder?: string;
-
-  // Textarea properties
-  rows?: number;
-  cols?: number;
-
-  // Size variants
-  size?: 'small' | 'default' | 'large';
-
-  // Styling variants
-  capsule?: boolean;
-  rounded?: boolean;
-  underlined?: boolean;
-  underlinedWithBackground?: boolean;
-  inline?: boolean;
-
-  // Addon support - REMOVED: hasLeftAddon and hasRightAddon props
-  // Slots are now auto-detected via slotchange events
-
-  // Validation & state
-  required?: boolean;
+  checked?: boolean;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  variant?: 'default' | 'success' | 'warning' | 'danger' | 'monochrome';
   disabled?: boolean;
   readonly?: boolean;
+  required?: boolean;
   invalid?: boolean;
   errorMessage?: string;
   helpText?: string;
-
-  // Event callbacks (native events only - no custom events)
+  name?: string;
+  value?: string;
+  // Event callbacks
   onClick?: (event: MouseEvent) => void;
-  onInput?: (event: InputEvent) => void;
-  onChange?: (event: Event) => void;
-  onFocus?: (event: FocusEvent) => void;
-  onBlur?: (event: FocusEvent) => void;
+  onToggleChange?: (event: ToggleChangeEvent) => void;
 }
 ```
 
@@ -59,16 +34,16 @@ export interface InputProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-input
+<ag-toggle
   required-prop="value"
   optional-prop="value">
-</ag-input>
+</ag-toggle>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-input');
+const component = document.querySelector('ag-toggle');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

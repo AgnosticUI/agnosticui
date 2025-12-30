@@ -1,21 +1,19 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# Tabs
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+export interface TabsProps {
+  activation?: TabsActivation;
+  activeTab?: number;
+  orientation?: TabsOrientation;
+  ariaLabel?: string;
+  // Event callback prop
+  onTabChange?: (event: TabChangeEvent) => void;
 }
 ```
 
@@ -24,16 +22,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-tabs
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-tabs>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-tabs');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

@@ -1,21 +1,22 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# Badge
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+export interface BadgeProps {
+  variant?: 'default' | 'success' | 'warning' | 'danger' | 'primary' | 'info' | 'neutral' | 'monochrome';
+  size?: 'xs' | 'sm' | 'md';
+  dot?: boolean;
+  value?: number | null;
+  max?: number;
+  interactive?: boolean;
+  statusLabel?: string | null;
+  live?: 'off' | 'polite' | 'assertive';
+  hiddenFromAT?: boolean;
 }
 ```
 
@@ -24,16 +25,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-badge
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-badge>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-badge');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });
