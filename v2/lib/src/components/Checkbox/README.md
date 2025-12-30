@@ -1,21 +1,30 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# Checkbox
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+export interface CheckboxProps {
+  name: string;
+  value: string;
+  checked: boolean;
+  indeterminate: boolean;
+  disabled: boolean;
+  size: CheckboxSize;
+  theme: CheckboxTheme;
+  labelText: string;
+  labelPosition: 'end' | 'start';
+  // Validation & hints
+  required?: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  helpText?: string;
+  // Event callbacks
+  onClick?: (event: MouseEvent) => void;
+  onChange?: (event: CheckboxChangeEvent) => void;
 }
 ```
 
@@ -24,16 +33,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-checkbox
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-checkbox>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-checkbox');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

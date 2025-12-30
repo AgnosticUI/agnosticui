@@ -1,21 +1,23 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# ProgressRing
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+export interface AgProgressRingProps {
+  /** Progress value (0–100) */
+  value?: number;
+  /** Size preset */
+  size?: 'small' | 'medium' | 'large';
+  /** Color variant */
+  variant?: 'primary' | 'success' | 'warning' | 'danger' | 'info';
+  /** Accessible label */
+  label?: string;
+  /** Disable animation (also respects prefers-reduced-motion) */
+  'no-animation'?: boolean;
 }
 ```
 
@@ -24,16 +26,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-progressring
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-progressring>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-progressring');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

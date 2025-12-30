@@ -1,21 +1,24 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# IconButton
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
+export interface IconButtonProps {
+  label?: string;
+  icon?: string;
+  unicode?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost' | 'monochrome';
+  type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+  pressed?: boolean;
+  loading?: boolean;
+  onIconButtonClick?: (event: IconButtonClickEvent) => void;
+  onIconButtonActivate?: (event: IconButtonActivateEvent) => void;
 }
 ```
 
@@ -24,16 +27,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-iconbutton
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-iconbutton>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-iconbutton');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

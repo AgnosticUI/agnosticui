@@ -1,21 +1,23 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# ScrollToButton
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+export interface ScrollToButtonProps {
+  label?: string;
+  showLabel?: boolean;
+  icon?: boolean;
+  scrollThreshold?: number;
+  target?: 'top' | 'bottom' | string | HTMLElement;
+  direction?: 'up' | 'down' | 'auto';
+  smoothScroll?: boolean;
+  visible?: boolean;
+  size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
+  shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
 }
 ```
 
@@ -24,16 +26,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-scrolltobutton
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-scrolltobutton>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-scrolltobutton');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

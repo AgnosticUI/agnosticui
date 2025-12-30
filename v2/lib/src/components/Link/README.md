@@ -1,54 +1,23 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Input
+# Link
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface InputProps {
-  // Label properties
-  label?: string;
-  labelHidden?: boolean;
-  noLabel?: boolean;
-  ariaLabel?: string;
-  labelledBy?: string;
-
-  // Input properties
-  type?: string;
-  value?: string;
-  placeholder?: string;
-
-  // Textarea properties
-  rows?: number;
-  cols?: number;
-
-  // Size variants
-  size?: 'small' | 'default' | 'large';
-
-  // Styling variants
-  capsule?: boolean;
-  rounded?: boolean;
-  underlined?: boolean;
-  underlinedWithBackground?: boolean;
-  inline?: boolean;
-
-  // Addon support - REMOVED: hasLeftAddon and hasRightAddon props
-  // Slots are now auto-detected via slotchange events
-
-  // Validation & state
-  required?: boolean;
+export interface LinkProps {
+  href?: string;
+  variant?: 'primary' | 'success' | 'warning' | 'danger' | 'monochrome' | '';
+  isButton?: boolean;
+  buttonSize?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
+  buttonShape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
+  buttonBordered?: boolean;
+  external?: boolean;
   disabled?: boolean;
-  readonly?: boolean;
-  invalid?: boolean;
-  errorMessage?: string;
-  helpText?: string;
-
-  // Event callbacks (native events only - no custom events)
+  ariaLabel?: string;
   onClick?: (event: MouseEvent) => void;
-  onInput?: (event: InputEvent) => void;
-  onChange?: (event: Event) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
 }
@@ -59,16 +28,16 @@ export interface InputProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-input
+<ag-link
   required-prop="value"
   optional-prop="value">
-</ag-input>
+</ag-link>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-input');
+const component = document.querySelector('ag-link');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });
