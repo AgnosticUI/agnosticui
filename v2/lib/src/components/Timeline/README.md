@@ -1,21 +1,21 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# Timeline
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+export interface AgTimelineProps {
+  /** Orientation of the timeline */
+  orientation?: 'horizontal' | 'vertical';
+  /** Visual variant for styling connectors and markers */
+  variant?: 'primary' | 'success' | 'warning' | 'danger' | 'monochrome' | '';
+  /** Whether to use compact spacing */
+  compact?: boolean;
+  /** ARIA label for the timeline */
+  ariaLabel?: string | null;
 }
 ```
 
@@ -24,16 +24,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-timeline
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-timeline>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-timeline');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

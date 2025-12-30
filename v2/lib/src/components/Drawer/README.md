@@ -1,21 +1,24 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# Drawer
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+export interface DrawerProps {
+  open?: boolean;
+  heading?: string;
+  description?: string;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
+  showCloseButton?: boolean;
+  position?: 'start' | 'end' | 'top' | 'bottom';
+  // Event handlers
+  onDrawerOpen?: (event: DrawerOpenEvent) => void;
+  onDrawerClose?: (event: DrawerCloseEvent) => void;
+  onDrawerCancel?: (event: DrawerCancelEvent) => void;
 }
 ```
 
@@ -24,16 +27,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-drawer
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-drawer>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-drawer');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

@@ -1,56 +1,33 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Input
+# Rating
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface InputProps {
-  // Label properties
+export interface RatingProps {
+  value?: number;
+  max?: number;
+  precision?: RatingPrecision;
+  readonly?: boolean;
+  allowClear?: boolean;
+  variant?: RatingVariant;
+  size?: RatingSize;
+  name?: string;
+  // Form control props
   label?: string;
+  labelPosition?: LabelPosition;
   labelHidden?: boolean;
   noLabel?: boolean;
-  ariaLabel?: string;
-  labelledBy?: string;
-
-  // Input properties
-  type?: string;
-  value?: string;
-  placeholder?: string;
-
-  // Textarea properties
-  rows?: number;
-  cols?: number;
-
-  // Size variants
-  size?: 'small' | 'default' | 'large';
-
-  // Styling variants
-  capsule?: boolean;
-  rounded?: boolean;
-  underlined?: boolean;
-  underlinedWithBackground?: boolean;
-  inline?: boolean;
-
-  // Addon support - REMOVED: hasLeftAddon and hasRightAddon props
-  // Slots are now auto-detected via slotchange events
-
-  // Validation & state
   required?: boolean;
-  disabled?: boolean;
-  readonly?: boolean;
   invalid?: boolean;
   errorMessage?: string;
   helpText?: string;
-
-  // Event callbacks (native events only - no custom events)
-  onClick?: (event: MouseEvent) => void;
-  onInput?: (event: InputEvent) => void;
-  onChange?: (event: Event) => void;
-  onFocus?: (event: FocusEvent) => void;
-  onBlur?: (event: FocusEvent) => void;
+  // Event handlers
+  onRatingChange?: (event: RatingChangeEvent) => void;
+  onRatingHover?: (event: RatingHoverEvent) => void;
 }
 ```
 
@@ -59,16 +36,16 @@ export interface InputProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-input
+<ag-rating
   required-prop="value"
   optional-prop="value">
-</ag-input>
+</ag-rating>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-input');
+const component = document.querySelector('ag-rating');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });

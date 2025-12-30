@@ -1,21 +1,17 @@
 <!-- Auto-generated from component-template.md - customize as needed -->
 
-# Tooltip
+# Kbd
 
 ## Overview
 [Brief 1-2 sentence description of the component's purpose]
 
 ## Interface
 ```typescript
-export interface TooltipProps {
-  content?: string;
-  placement?: Placement;
-  distance?: number;
-  skidding?: number;
-  trigger?: string;
-  disabled?: boolean;
-  onShow?: (event: TooltipShowEvent) => void;
-  onHide?: (event: TooltipHideEvent) => void;
+export interface KbdProps {
+  variant?: KbdVariant;
+  bordered?: boolean;
+  background?: boolean;
+  size?: KbdSize;
 }
 ```
 
@@ -24,16 +20,16 @@ export interface TooltipProps {
 ### Basic Usage
 ```html
 <!-- Lit/HTML Usage -->
-<ag-tooltip
+<ag-kbd
   required-prop="value"
   optional-prop="value">
-</ag-tooltip>
+</ag-kbd>
 ```
 
 ### With Event Handling
 ```javascript
 // JavaScript setup
-const component = document.querySelector('ag-tooltip');
+const component = document.querySelector('ag-kbd');
 component.addEventListener('click', (e) => {
   console.log('Component clicked', e.detail);
 });
