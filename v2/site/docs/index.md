@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "AgnosticUI Local"
   text: "The UI kit that lives in your project."
-  tagline: Local components. AI-friendly. React. Vue. Svelte.
+  tagline: Local components. AI-friendly. React. Vue. Svelte. Astro. Angular. Solid. Preact. And more.
   actions:
     - theme: brand
       text: Quickstart
