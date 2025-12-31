@@ -8,7 +8,7 @@ AgnosticUI Local (v2) is a CLI-based UI component library that copies Lit web co
 - **Approach**: CLI-first tool that copies components to your project
 - **Language**: Primarily TypeScript (86.8%)
 - **Structure**: Core components are located in `/v2/lib/src/components/`
-- **React/Vue Wrappers**: Core components are wrapped in React and Vue wrappers typically in `/v2/lib/src/components/[COMPONENT]/{react|vue}/` and use barrel files to export their API/interface.
+- **React/Vue Wrappers**: Core components are wrapped in React and Vue wrappers for native framework experience (props instead of attributes, proper event handling, full TypeScript support). Located in `/v2/lib/src/components/[COMPONENT]/{react|vue}/` and use barrel files to export their API/interface.
 
 ## CLI Usage
 The main entry point is `npx agnosticui-cli` (or `npx ag` if installed locally) which copies components directly into target projects. Run `npx agnosticui-cli --help` for available commands. The CLI is in `/v2/cli`.
