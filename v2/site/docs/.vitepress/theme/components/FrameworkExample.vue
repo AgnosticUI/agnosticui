@@ -28,7 +28,8 @@
         </details>
         <details v-if="vueCode" class="code-details" open>
           <summary>View Vue Code</summary>
-          <pre><code class="language-vue">{{ vueCode }}</code></pre>
+          <div v-if="highlightedVueCode" v-html="highlightedVueCode"></div>
+          <pre v-else><code class="language-vue">{{ vueCode }}</code></pre>
         </details>
       </VueTabPanel>
 
@@ -42,7 +43,8 @@
         </details>
         <details v-if="litCode" class="code-details" open>
           <summary>View Lit / Web Component Code</summary>
-          <pre><code class="language-javascript">{{ litCode }}</code></pre>
+          <div v-if="highlightedLitCode" v-html="highlightedLitCode"></div>
+          <pre v-else><code class="language-javascript">{{ litCode }}</code></pre>
         </details>
       </VueTabPanel>
     </VueTabs>
@@ -50,8 +52,9 @@
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import VueTabs, { VueTab, VueTabPanel } from "agnosticui-core/tabs/vue"
+import { codeToHtml } from 'shiki'
 
 export default {
   name: "FrameworkExample",
@@ -75,12 +78,45 @@ export default {
     },
   },
   setup(props) {
+    const highlightedVueCode = ref('')
+    const highlightedLitCode = ref('')
+
     onMounted(async () => {
       // Dynamically import the Lit component
       try {
         await import(/* @vite-ignore */ `agnosticui-core/${props.component}`)
       } catch (error) {
         console.warn(`Could not load Lit component: ${props.component}`, error)
+      }
+
+      // Highlight Vue code
+      if (props.vueCode) {
+        try {
+          highlightedVueCode.value = await codeToHtml(props.vueCode, {
+            lang: 'vue',
+            themes: {
+              light: 'github-light-high-contrast',
+              dark: 'github-dark-high-contrast',
+            },
+          })
+        } catch (error) {
+          console.error('Failed to highlight Vue code:', error)
+        }
+      }
+
+      // Highlight Lit code
+      if (props.litCode) {
+        try {
+          highlightedLitCode.value = await codeToHtml(props.litCode, {
+            lang: 'javascript',
+            themes: {
+              light: 'github-light-high-contrast',
+              dark: 'github-dark-high-contrast',
+            },
+          })
+        } catch (error) {
+          console.error('Failed to highlight Lit code:', error)
+        }
       }
     })
 
@@ -90,6 +126,8 @@ export default {
 
     return {
       handleTabChange,
+      highlightedVueCode,
+      highlightedLitCode,
     }
   },
 }
@@ -159,21 +197,31 @@ export default {
   transform: rotate(90deg);
 }
 
-.code-details pre {
+/* Shiki generated code blocks */
+.code-details :deep(pre) {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  overflow-x: auto;
+  max-width: 100%;
+  border-radius: 6px;
+  padding: 1rem !important;
+}
+
+.code-details :deep(code) {
+  font-size: 0.875rem;
+}
+
+/* Fallback for non-highlighted code */
+.code-details > pre {
   margin-top: 1rem;
   margin-bottom: 0;
   overflow-x: auto;
   max-width: 100%;
 }
 
-.code-details code {
+.code-details > pre code {
   font-size: 0.875rem;
   white-space: pre;
   display: block;
-}
-
-/* Override Vitepress defaults if needed */
-.code-details pre code {
-  background: transparent;
 }
 </style>
