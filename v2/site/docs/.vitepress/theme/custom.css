@@ -251,7 +251,27 @@ h6.b0 {
 @media (min-width: 768px) {
   .stacked-mobile {
     flex-direction: row;
+    flex-wrap: wrap;
   }
+}
+
+/* CSS Parts customization example for gradient button */
+.custom-gradient-button::part(ag-button) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.custom-gradient-button::part(ag-button):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.6);
 }
 
 /* Reset VitePress's aggressive table styling */

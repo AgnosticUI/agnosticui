@@ -7,11 +7,26 @@ The Button component provides a versatile, accessible button foundation with mul
 
 ## Examples
 
-<ButtonExamples />
+<FrameworkExample
+  component="button"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+>
+  <template #vue>
+    <ButtonExamples />
+  </template>
+  <template #lit>
+    <button-lit-examples></button-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import ButtonExamples from '../examples/ButtonExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/ButtonLitExamples.js'
+import vueCode from '../examples/button-vue-simple.vue?raw'
+import litCode from '../examples/ButtonLitExamples.js?raw'
 </script>
 
 ## Usage
