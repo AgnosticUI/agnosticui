@@ -584,7 +584,11 @@
           class="mie2"
           title="Invite Members"
         >
-          <Mail :size="16" />
+          <VueIcon size="16" :no-fill="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </VueIcon>
           <span class="mis1 mie2">Invite Members</span>
         </VueButton>
 
@@ -596,7 +600,11 @@
           class="mis1 mie2"
           title="Create New"
         >
-          <Plus :size="16" />
+          <VueIcon size="16" :no-fill="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 5v14m-7-7h14"/>
+            </svg>
+          </VueIcon>
           <span>Create New</span>
         </VueButton>
 
@@ -606,7 +614,11 @@
           shape="rounded"
           title="Record"
         >
-          <Mic :size="16" />
+          <VueIcon size="16" :no-fill="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 1a3 3 0 003 3v8a3 3 0 11-6 0V4a3 3 0 003-3zM19 10v2a7 7 0 01-14 0v-2M12 19v4m-4 0h8"/>
+            </svg>
+          </VueIcon>
           <span>Record</span>
         </VueButton>
       </div>
@@ -632,7 +644,11 @@
           title="Invite Members"
           class="mie2"
         >
-          <Mail :size="16" />
+          <VueIcon size="16" :no-fill="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </VueIcon>
           <VueVisuallyHidden>Invite Members</VueVisuallyHidden>
         </VueButton>
       </div>
@@ -654,7 +670,11 @@
           title="Invite Members"
           class="mie2"
         >
-          <Mail :size="18" />
+          <VueIcon size="18" :no-fill="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </VueIcon>
           <span class="mis1 mie2">Invite Members</span>
         </VueButton>
         <VueButton
@@ -664,7 +684,11 @@
           :bordered="true"
           class="mis1 mie2"
         >
-          <Plus :size="18" />
+          <VueIcon size="18" :no-fill="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 5v14m-7-7h14"/>
+            </svg>
+          </VueIcon>
           <span>Create New</span>
         </VueButton>
         <VueButton
@@ -672,7 +696,11 @@
           title="Record"
           shape="rounded"
         >
-          <Mic :size="18" />
+          <VueIcon size="18" :no-fill="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 1a3 3 0 003 3v8a3 3 0 11-6 0V4a3 3 0 003-3zM19 10v2a7 7 0 01-14 0v-2M12 19v4m-4 0h8"/>
+            </svg>
+          </VueIcon>
           <span>Record</span>
         </VueButton>
       </div>
@@ -836,17 +864,14 @@
 <script>
 import VueButton from "agnosticui-core/button/vue";
 import { VueVisuallyHidden } from "agnosticui-core/visually-hidden/vue";
-import { Mail, Plus, Send, Mic } from "lucide-vue-next";
+import { VueIcon } from "agnosticui-core/icon/vue";
 
 export default {
   name: "ButtonExamples",
   components: {
     VueButton,
     VueVisuallyHidden,
-    Mail,
-    Plus,
-    Send,
-    Mic,
+    VueIcon,
   },
 };
 </script>
