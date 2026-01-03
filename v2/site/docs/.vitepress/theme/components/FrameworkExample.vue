@@ -100,6 +100,11 @@ export default {
   margin: 2rem 0;
 }
 
+/* Override tab panel padding for better alignment */
+.framework-example ::v-deep(ag-tab-panel)::part(ag-tab-panel) {
+  padding: 0;
+}
+
 .framework-icon {
   font-weight: 600;
   font-size: 0.9rem;
@@ -113,11 +118,17 @@ export default {
   margin-top: 1rem;
 }
 
-.preview-details,
+.preview-details {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
 .code-details {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0 1rem;
   margin-bottom: 1rem;
 }
 
