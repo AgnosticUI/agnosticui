@@ -211,6 +211,19 @@ export default {
   font-size: 0.875rem;
 }
 
+/* Theme switching for Shiki dual-theme mode */
+.code-details :deep(.shiki),
+.code-details :deep(.shiki span) {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+}
+
+.dark .code-details :deep(.shiki),
+.dark .code-details :deep(.shiki span) {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
 /* Fallback for non-highlighted code */
 .code-details > pre {
   margin-top: 1rem;
