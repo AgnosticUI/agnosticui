@@ -20,12 +20,12 @@
 
       <!-- Vue Panel -->
       <VueTabPanel panel="panel-vue">
-        <div class="preview-section">
-          <div class="preview-label">Live Preview</div>
+        <details class="preview-details" open>
+          <summary>Live Preview</summary>
           <div class="preview">
             <slot name="vue" />
           </div>
-        </div>
+        </details>
         <details v-if="vueCode" class="code-details" open>
           <summary>View Vue Code</summary>
           <pre><code class="language-vue">{{ vueCode }}</code></pre>
@@ -34,12 +34,12 @@
 
       <!-- Lit Panel -->
       <VueTabPanel panel="panel-lit">
-        <div class="preview-section">
-          <div class="preview-label">Live Preview</div>
+        <details class="preview-details" open>
+          <summary>Live Preview</summary>
           <div class="preview">
             <slot name="lit" />
           </div>
-        </div>
+        </details>
         <details v-if="litCode" class="code-details" open>
           <summary>View Lit / Web Component Code</summary>
           <pre><code class="language-javascript">{{ litCode }}</code></pre>
@@ -105,33 +105,23 @@ export default {
   font-size: 0.9rem;
 }
 
-.preview-section {
-  margin-bottom: 1.5rem;
-}
-
-.preview-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--vp-c-text-2);
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
 .preview {
   padding: 2rem;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background-color: var(--vp-c-bg-soft);
+  margin-top: 1rem;
 }
 
+.preview-details,
 .code-details {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   padding: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
+.preview-details summary,
 .code-details summary {
   cursor: pointer;
   font-weight: 600;
@@ -140,10 +130,12 @@ export default {
   list-style: none;
 }
 
+.preview-details summary::-webkit-details-marker,
 .code-details summary::-webkit-details-marker {
   display: none;
 }
 
+.preview-details summary::before,
 .code-details summary::before {
   content: '▶';
   display: inline-block;
@@ -151,6 +143,7 @@ export default {
   transition: transform 0.2s ease;
 }
 
+.preview-details[open] summary::before,
 .code-details[open] summary::before {
   transform: rotate(90deg);
 }

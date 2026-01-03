@@ -25,7 +25,7 @@ import AlphaWarning from '../components/AlphaWarning.vue'
 import ButtonExamples from '../examples/ButtonExamples.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/ButtonLitExamples.js'
-import vueCode from '../examples/button-vue-simple.vue?raw'
+import vueCode from '../examples/ButtonExamples.vue?raw'
 import litCode from '../examples/ButtonLitExamples.js?raw'
 </script>
 
