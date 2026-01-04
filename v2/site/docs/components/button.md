@@ -11,6 +11,7 @@ The Button component provides a versatile, accessible button foundation with mul
   component="button"
   :vue-code="vueCode"
   :lit-code="litCode"
+  :react-code="reactCode"
 >
   <template #vue>
     <ButtonExamples />
@@ -27,6 +28,7 @@ import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vu
 import '../examples/ButtonLitExamples.js'
 import vueCode from '../examples/ButtonExamples.vue?raw'
 import litCode from '../examples/ButtonLitExamples.js?raw'
+import reactCode from '../examples/ButtonReactExamples.jsx?raw'
 </script>
 
 ## Usage

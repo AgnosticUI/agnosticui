@@ -14,10 +14,14 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "vitepress": "latest",
     "vue": "^3.5.22"
   },
   "dependencies": {
+    "@stackblitz/sdk": "^1.11.0",
     "agnosticui-core": "file:../lib/agnosticui-core-2.0.0-alpha.3.tgz",
     "lucide-vue-next": "^0.545.0",
     "markdown-it-table": "^4.1.1",
