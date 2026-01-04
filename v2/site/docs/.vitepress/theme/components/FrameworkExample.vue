@@ -393,7 +393,8 @@ export default {
               'lit': '^3.3.1',
               '@lit/react': '^1.0.8',
               '@floating-ui/dom': '^1.7.4',
-              'focus-trap': '^7.6.6'
+              'focus-trap': '^7.6.6',
+              'lucide-react': '^0.468.0'
             },
             devDependencies: {
               '@vitejs/plugin-react': '^5.1.1',
