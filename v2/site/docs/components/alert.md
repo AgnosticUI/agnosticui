@@ -7,11 +7,28 @@ Alerts are used to provide timely feedback to the user.
 
 ## Examples
 
-<AlertExamples />
+<FrameworkExample
+  component="alert"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <AlertExamples />
+  </template>
+  <template #lit>
+    <alert-lit-examples></alert-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import AlertExamples from '../examples/AlertExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/AlertLitExamples.js'
+import vueCode from '../examples/AlertExamples.vue?raw'
+import litCode from '../examples/AlertLitExamples.js?raw'
+import reactCode from '../examples/AlertReactExamples.jsx?raw'
 </script>
 
 ## Usage

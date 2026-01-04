@@ -2,6 +2,11 @@
 
 **Quick Start**: Add Vue/Lit/React examples to any AgnosticUI component in 2 steps.
 
+## Components Completed
+
+- ✅ Alert
+- ✅ Button
+
 ## Reference Implementation
 
 **See complete working example (Button component)**:
