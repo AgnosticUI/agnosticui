@@ -7,262 +7,31 @@ The Toggle component provides an accessible binary switch for on/off states, imp
 
 ## Examples
 
-<ToggleExamples />
+<FrameworkExample
+  component="toggle"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <ToggleExamples />
+  </template>
+  <template #lit>
+    <toggle-lit-examples></toggle-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import ToggleExamples from '../examples/ToggleExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/ToggleLitExamples.js'
+import vueCode from '../examples/ToggleExamples.vue?raw'
+import litCode from '../examples/ToggleLitExamples.js?raw'
+import reactCode from '../examples/ToggleReactExamples.jsx?raw'
 </script>
 
-## Usage
 
-::: tip
-The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
-```bash
-npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
-npx ag add Toggle
-```
-The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
-:::
-
-::: details Vue
-```vue
-<template>
-  <section>
-    <!-- Basic toggle -->
-    <VueToggle label="Enable notifications" />
-
-    <!-- Controlled toggle -->
-    <VueToggle
-      label="Dark mode"
-      :checked="isDarkMode"
-      @toggle-change="handleToggle"
-    />
-
-    <!-- Different sizes -->
-    <VueToggle label="Small toggle" size="sm" />
-    <VueToggle label="Large toggle" size="lg" />
-
-    <!-- Variants -->
-    <VueToggle
-      label="Success variant"
-      variant="success"
-      :checked="true"
-    />
-    <VueToggle
-      label="Danger variant"
-      variant="danger"
-      :checked="true"
-    />
-    <VueToggle
-      label="Monochrome variant"
-      variant="monochrome"
-      :checked="true"
-    />
-
-    <!-- Disabled state -->
-    <VueToggle label="Disabled toggle" disabled />
-
-    <!-- Form integration -->
-    <VueToggle
-      label="Subscribe to newsletter"
-      name="newsletter"
-      value="subscribed"
-      :checked="form.newsletter"
-      @toggle-change="handleFormChange"
-    />
-  </section>
-</template>
-
-<script>
-import VueToggle from "agnosticui-core/toggle/vue";
-
-export default {
-  components: { VueToggle },
-  data() {
-    return {
-      isDarkMode: false,
-      form: {
-        newsletter: false,
-      },
-    };
-  },
-  methods: {
-    handleToggle(event) {
-      this.isDarkMode = event.checked;
-      console.log("Checked:", event.checked);
-    },
-    handleFormChange(event) {
-      this.form.newsletter = event.checked;
-      console.log("Form data:", {
-        name: event.name,
-        value: event.value,
-        checked: event.checked,
-      });
-    },
-  },
-};
-</script>
-```
-:::
-
-::: details React
-```tsx
-import { useState } from 'react';
-import { ReactToggle } from 'agnosticui-core/toggle/react';
-
-export default function ToggleExample() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [form, setForm] = useState({ newsletter: false });
-
-  const handleToggle = (event: CustomEvent) => {
-    setIsDarkMode(event.detail.checked);
-    console.log("Checked:", event.detail.checked);
-  };
-
-  const handleFormChange = (event: CustomEvent) => {
-    setForm({ newsletter: event.detail.checked });
-    console.log("Form data:", {
-      name: event.detail.name,
-      value: event.detail.value,
-      checked: event.detail.checked,
-    });
-  };
-
-  return (
-    <section>
-      {/* Basic toggle */}
-      <ReactToggle label="Enable notifications" />
-
-      {/* Controlled toggle */}
-      <ReactToggle
-        label="Dark mode"
-        checked={isDarkMode}
-        onToggleChange={handleToggle}
-      />
-
-      {/* Different sizes */}
-      <ReactToggle label="Small toggle" size="sm" />
-      <ReactToggle label="Large toggle" size="lg" />
-
-      {/* Variants */}
-      <ReactToggle
-        label="Success variant"
-        variant="success"
-        checked={true}
-      />
-      <ReactToggle
-        label="Danger variant"
-        variant="danger"
-        checked={true}
-      />
-
-      {/* Disabled state */}
-      <ReactToggle label="Disabled toggle" disabled />
-
-      {/* Form integration */}
-      <ReactToggle
-        label="Subscribe to newsletter"
-        name="newsletter"
-        value="subscribed"
-        checked={form.newsletter}
-        onToggleChange={handleFormChange}
-      />
-    </section>
-  );
-}
-```
-:::
-
-::: details Lit (Web Components)
-```typescript
-import { LitElement, html, css } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
-import 'agnosticui-core/toggle';
-
-@customElement('toggle-example')
-export class ToggleExample extends LitElement {
-  @state() private isDarkMode = false;
-  @state() private form = { newsletter: false };
-
-  static styles = css`
-    :host {
-      display: block;
-    }
-    section {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-  `;
-
-  firstUpdated() {
-    // Set up event listeners for toggles in the shadow DOM
-    const darkModeToggle = this.shadowRoot?.querySelector('#dark-mode-toggle') as any;
-    darkModeToggle?.addEventListener('toggle-change', (event: CustomEvent) => {
-      this.isDarkMode = event.detail.checked;
-      console.log('Dark mode:', this.isDarkMode);
-    });
-
-    const newsletterToggle = this.shadowRoot?.querySelector('#newsletter-toggle') as any;
-    newsletterToggle?.addEventListener('toggle-change', (event: CustomEvent) => {
-      this.form.newsletter = event.detail.checked;
-      console.log('Form data:', {
-        name: event.detail.name,
-        value: event.detail.value,
-        checked: event.detail.checked,
-      });
-    });
-  }
-
-  render() {
-    return html`
-      <section>
-        <!-- Basic toggle -->
-        <ag-toggle label="Enable notifications"></ag-toggle>
-
-        <!-- Controlled toggle -->
-        <ag-toggle id="dark-mode-toggle" label="Dark mode"></ag-toggle>
-
-        <!-- Different sizes -->
-        <ag-toggle label="Small toggle" size="sm"></ag-toggle>
-        <ag-toggle label="Large toggle" size="lg"></ag-toggle>
-
-        <!-- Variants -->
-        <ag-toggle
-          label="Success variant"
-          variant="success"
-          checked
-        ></ag-toggle>
-        <ag-toggle
-          label="Danger variant"
-          variant="danger"
-          checked
-        ></ag-toggle>
-        <ag-toggle
-          label="Monochrome variant"
-          variant="monochrome"
-          checked
-        ></ag-toggle>
-
-        <!-- Disabled state -->
-        <ag-toggle label="Disabled toggle" disabled></ag-toggle>
-
-        <!-- Form integration -->
-        <ag-toggle
-          id="newsletter-toggle"
-          label="Subscribe to newsletter"
-          name="newsletter"
-          value="subscribed"
-        ></ag-toggle>
-      </section>
-    `;
-  }
-}
-```
-
-**Note:** When using toggle components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
-:::
 
 ## Props
 
