@@ -16,7 +16,7 @@ export default defineConfig({
   vue: {
     template: {
       compilerOptions: {
-        isCustomElement: (tag) => tag.startsWith('ag-'),
+        isCustomElement: (tag) => tag.startsWith('ag-') || tag.endsWith('-lit-examples'),
       },
     },
   },
