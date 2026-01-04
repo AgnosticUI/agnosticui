@@ -7,11 +7,28 @@ An accordion is a vertically stacked set of interactive headings that each revea
 
 ## Examples
 
-<AccordionExamples />
+<FrameworkExample
+  component="accordion"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <AccordionExamples />
+  </template>
+  <template #lit>
+    <accordion-lit-examples></accordion-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import AccordionExamples from '../examples/AccordionExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/AccordionLitExamples.js'
+import vueCode from '../examples/AccordionExamples.vue?raw'
+import litCode from '../examples/AccordionLitExamples.js?raw'
+import reactCode from '../examples/AccordionReactExamples.jsx?raw'
 </script>
 
 ## Usage

@@ -4,6 +4,7 @@
 
 ## Components Completed
 
+- ✅ Accordion
 - ✅ Alert
 - ✅ Button
 
