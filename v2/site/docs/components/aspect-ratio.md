@@ -9,11 +9,30 @@ title: Aspect Ratio
 
 The AgnosticUI AspectRatio component provides an easy, modern way to reserve space for embedded content (videos, iframes, third-party widgets) while preserving a given aspect ratio. It leverages the native CSS `aspect-ratio` property and exposes a simple API.
 
-<AspectRatioExamples />
+## Examples
+
+<FrameworkExample
+  component="aspect-ratio"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <AspectRatioExamples />
+  </template>
+  <template #lit>
+    <aspect-ratio-lit-examples></aspect-ratio-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import AspectRatioExamples from '../examples/AspectRatioExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/AspectRatioLitExamples.js'
+import vueCode from '../examples/AspectRatioExamples.vue?raw'
+import litCode from '../examples/AspectRatioLitExamples.js?raw'
+import reactCode from '../examples/AspectRatioReactExamples.jsx?raw'
 </script>
 
 ## Usage

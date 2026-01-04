@@ -6,6 +6,7 @@
 
 - ✅ Accordion
 - ✅ Alert
+- ✅ AspectRatio
 - ✅ Button
 
 ## Reference Implementation
