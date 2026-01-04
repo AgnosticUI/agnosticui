@@ -5,11 +5,30 @@
 
 Avatar components are used to represent users or entities in your application. They can display profile images, initials, or icons, and support multiple sizes, shapes, and color variants.
 
-<AvatarExamples />
+## Examples
+
+<FrameworkExample
+  component="avatar"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <AvatarExamples />
+  </template>
+  <template #lit>
+    <avatar-lit-examples></avatar-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import AvatarExamples from '../examples/AvatarExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/AvatarLitExamples.js'
+import vueCode from '../examples/AvatarExamples.vue?raw'
+import litCode from '../examples/AvatarLitExamples.js?raw'
+import reactCode from '../examples/AvatarReactExamples.jsx?raw'
 </script>
 
 ## Usage
