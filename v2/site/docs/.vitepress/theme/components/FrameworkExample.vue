@@ -91,6 +91,9 @@ import VueTabs, { VueTab, VueTabPanel } from "agnosticui-core/tabs/vue"
 import { codeToHtml } from 'shiki'
 import sdk from '@stackblitz/sdk'
 import { Zap } from 'lucide-vue-next'
+// Import web components for the StackBlitz button
+import 'agnosticui-core/button'
+import 'agnosticui-core/icon'
 
 export default {
   name: "FrameworkExample",
@@ -265,11 +268,13 @@ export default {
         "// Import web components for theme toggle button",
         "import 'agnosticui-core/button'",
         "import 'agnosticui-core/icon'",
+        `// Import web component for ${props.component} (if needed for React wrappers)`,
+        `import 'agnosticui-core/${props.component}'`,
         '',
         "ReactDOM.createRoot(document.getElementById('root')).render(",
         '  <React.StrictMode>',
         '    <App />',
-        '  </React.StrictMode>,',
+        '  </React.StrictMode>',
         ')'
       ].join('\n')
 
@@ -366,6 +371,9 @@ export default {
         '',
         'export default defineConfig({',
         '  plugins: [react()],',
+        '  optimizeDeps: {',
+        '    exclude: [\'agnosticui-core\', \'lit\', \'@lit/react\'],',
+        '  },',
         '})'
       ].join('\n')
 
@@ -379,13 +387,17 @@ export default {
             name: `agnosticui-${props.component}-react`,
             version: '1.0.0',
             dependencies: {
-              'react': '^18.2.0',
-              'react-dom': '^18.2.0',
+              'react': '^19.2.0',
+              'react-dom': '^19.2.0',
               'agnosticui-core': 'latest',
+              'lit': '^3.3.1',
+              '@lit/react': '^1.0.8',
+              '@floating-ui/dom': '^1.7.4',
+              'focus-trap': '^7.6.6'
             },
             devDependencies: {
-              '@vitejs/plugin-react': '^4.0.0',
-              'vite': '^5.0.0'
+              '@vitejs/plugin-react': '^5.1.1',
+              'vite': '^7.2.4'
             },
             scripts: {
               'dev': 'vite',
