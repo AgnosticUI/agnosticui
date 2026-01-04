@@ -7,189 +7,31 @@ A flexible, accessible tooltip component that displays contextual information on
 
 ## Examples
 
-<TooltipExamples />
+<FrameworkExample
+  component="tooltip"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <TooltipExamples />
+  </template>
+  <template #lit>
+    <tooltip-lit-examples></tooltip-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import TooltipExamples from '../examples/TooltipExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/TooltipLitExamples.js'
+import vueCode from '../examples/TooltipExamples.vue?raw'
+import litCode from '../examples/TooltipLitExamples.js?raw'
+import reactCode from '../examples/TooltipReactExamples.jsx?raw'
 </script>
 
-## Usage
 
-::: tip
-The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
-```bash
-npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
-npx ag add Tooltip
-```
-The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
-:::
-
-::: details Vue
-```vue
-<template>
-  <section>
-    <VueTooltip content="This is helpful information">
-      <VueButton>Hover me</VueButton>
-    </VueTooltip>
-
-    <VueTooltip content="Appears on the right" placement="right">
-      <VueButton>Right tooltip</VueButton>
-    </VueTooltip>
-
-    <VueTooltip content="Click to toggle" trigger="click">
-      <VueButton>Click trigger</VueButton>
-    </VueTooltip>
-
-    <VueTooltip
-      content="Event handling"
-      @show="handleShow"
-      @hide="handleHide"
-    >
-      <VueButton>With events</VueButton>
-    </VueTooltip>
-
-    <VueTooltip content="Edit item">
-      <VueButton aria-label="Edit">
-        <Pencil :size="18" />
-      </VueButton>
-    </VueTooltip>
-  </section>
-</template>
-
-<script>
-import VueTooltip from "agnosticui-core/tooltip/vue";
-import VueButton from "agnosticui-core/button/vue";
-import { Pencil } from "lucide-vue-next";
-
-export default {
-  components: { VueTooltip, VueButton, Pencil },
-  methods: {
-    handleShow() {
-      console.log("Tooltip shown");
-    },
-    handleHide() {
-      console.log("Tooltip hidden");
-    },
-  },
-};
-</script>
-```
-:::
-
-::: details React
-```tsx
-import { ReactTooltip } from 'agnosticui-core/tooltip/react';
-import { ReactButton } from 'agnosticui-core/button/react';
-import { Pencil } from 'lucide-react';
-
-export default function TooltipExample() {
-  const handleShow = () => {
-    console.log("Tooltip shown");
-  };
-
-  const handleHide = () => {
-    console.log("Tooltip hidden");
-  };
-
-  return (
-    <section>
-      <ReactTooltip content="This is helpful information">
-        <ReactButton>Hover me</ReactButton>
-      </ReactTooltip>
-
-      <ReactTooltip content="Appears on the right" placement="right">
-        <ReactButton>Right tooltip</ReactButton>
-      </ReactTooltip>
-
-      <ReactTooltip content="Click to toggle" trigger="click">
-        <ReactButton>Click trigger</ReactButton>
-      </ReactTooltip>
-
-      <ReactTooltip
-        content="Event handling"
-        onShow={handleShow}
-        onHide={handleHide}
-      >
-        <ReactButton>With events</ReactButton>
-      </ReactTooltip>
-
-      <ReactTooltip content="Edit item">
-        <ReactButton aria-label="Edit">
-          <Pencil size={18} />
-        </ReactButton>
-      </ReactTooltip>
-    </section>
-  );
-}
-```
-:::
-
-::: details Lit (Web Components)
-```typescript
-import { LitElement, html, css } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import 'agnosticui-core/tooltip';
-
-@customElement('tooltip-example')
-export class TooltipExample extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-    }
-    section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-  `;
-
-  firstUpdated() {
-    // Set up event listeners for tooltip events in the shadow DOM
-    const eventTooltip = this.shadowRoot?.querySelector('#event-tooltip');
-    eventTooltip?.addEventListener('show', () => {
-      console.log('Tooltip shown');
-    });
-    eventTooltip?.addEventListener('hide', () => {
-      console.log('Tooltip hidden');
-    });
-  }
-
-  render() {
-    return html`
-      <section>
-        <ag-tooltip content="This is helpful information">
-          <button>Hover me</button>
-        </ag-tooltip>
-
-        <ag-tooltip content="Appears on the right" placement="right">
-          <button>Right tooltip</button>
-        </ag-tooltip>
-
-        <ag-tooltip content="Click to toggle" trigger="click">
-          <button>Click trigger</button>
-        </ag-tooltip>
-
-        <ag-tooltip id="event-tooltip" content="Event handling">
-          <button>With events</button>
-        </ag-tooltip>
-
-        <ag-tooltip content="Edit item">
-          <button aria-label="Edit">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-            </svg>
-          </button>
-        </ag-tooltip>
-      </section>
-    `;
-  }
-}
-```
-
-**Note:** When using tooltip components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
-:::
 
 ## Props
 
