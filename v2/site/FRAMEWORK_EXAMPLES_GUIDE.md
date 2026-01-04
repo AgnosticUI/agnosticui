@@ -11,6 +11,8 @@
 - ✅ Badge
 - ✅ BadgeFx
 - ✅ Button
+- ✅ Tooltip
+- ✅ VisuallyHidden
 
 ## Reference Implementation
 
