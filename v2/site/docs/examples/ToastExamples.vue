@@ -11,13 +11,16 @@
     <div class="mbe4">
       <h2>Toast Types</h2>
     </div>
-    <div class="stacked mbe4">
-      <button
+    <div class="stacked flex-align-start mbe4">
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showDefault')"
       >
         Show Default Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showDefault"
         @toast-close="showDefault = false"
@@ -25,12 +28,15 @@
         Default toast notification
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showSuccess')"
       >
         Show Success Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showSuccess"
         type="success"
@@ -39,12 +45,15 @@
         Operation completed successfully!
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showInfo')"
       >
         Show Info Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showInfo"
         type="info"
@@ -53,12 +62,15 @@
         New message received!
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showPrimary')"
       >
         Show Primary Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showPrimary"
         type="primary"
@@ -67,12 +79,15 @@
         New feature available!
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showWarning')"
       >
         Show Warning Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showWarning"
         type="warning"
@@ -87,12 +102,15 @@
         </div>
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showError')"
       >
         Show Error Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showError"
         type="error"
@@ -107,12 +125,15 @@
         </div>
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showDanger')"
       >
         Show Danger Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showDanger"
         type="danger"
@@ -127,12 +148,15 @@
         </div>
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showMonochrome')"
       >
         Show Monochrome Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showMonochrome"
         type="monochrome"
@@ -147,13 +171,16 @@
     <div class="mbe4">
       <h2>Positions</h2>
     </div>
-    <div class="stacked mbe4">
-      <button
+    <div class="stacked flex-align-start mbe4">
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showTopStart')"
       >
         Top Start
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showTopStart"
         position="top-start"
@@ -162,12 +189,15 @@
         Toast at top-start
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showTop')"
       >
         Top (Full Width)
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showTop"
         position="top"
@@ -176,12 +206,15 @@
         Toast at top (full width)
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showTopEnd')"
       >
         Top End (Default)
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showTopEnd"
         position="top-end"
@@ -190,12 +223,15 @@
         Toast at top-end (default)
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showBottomStart')"
       >
         Bottom Start
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showBottomStart"
         position="bottom-start"
@@ -204,12 +240,15 @@
         Toast at bottom-start
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showBottom')"
       >
         Bottom (Full Width)
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showBottom"
         position="bottom"
@@ -218,12 +257,15 @@
         Toast at bottom (full width)
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showBottomEnd')"
       >
         Bottom End
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showBottomEnd"
         position="bottom-end"
@@ -236,13 +278,16 @@
     <div class="mbe4">
       <h2>Border Styles</h2>
     </div>
-    <div class="stacked mbe4">
-      <button
+    <div class="stacked flex-align-start mbe4">
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showBordered')"
       >
         Bordered Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showBordered"
         type="info"
@@ -252,12 +297,15 @@
         Toast with border
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showBorderedLeft')"
       >
         Left Border Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showBorderedLeft"
         type="success"
@@ -273,12 +321,15 @@
         </div>
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showNotRounded')"
       >
         Not Rounded Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showNotRounded"
         type="primary"
@@ -292,13 +343,16 @@
     <div class="mbe4">
       <h2>Auto-Dismiss Options</h2>
     </div>
-    <div class="stacked mbe4">
-      <button
+    <div class="stacked flex-align-start mbe4">
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showQuickDismiss')"
       >
         Quick Dismiss (2s)
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showQuickDismiss"
         :duration="2000"
@@ -308,12 +362,15 @@
         This toast will auto-dismiss in 2 seconds
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showAutoDismiss')"
       >
         Auto-Dismiss (5s)
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showAutoDismiss"
         :duration="5000"
@@ -323,12 +380,15 @@
         This toast will auto-dismiss in 5 seconds (default)
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showNoAutoDismiss')"
       >
         No Auto-Dismiss
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showNoAutoDismiss"
         :auto-dismiss="false"
@@ -338,12 +398,15 @@
         This toast will not auto-dismiss. Click X to close.
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showNoPause')"
       >
         No Pause on Hover
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showNoPause"
         :pause-on-hover="false"
@@ -358,13 +421,16 @@
     <div class="mbe4">
       <h2>Close Button Options</h2>
     </div>
-    <div class="stacked mbe4">
-      <button
+    <div class="stacked flex-align-start mbe4">
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showNoCloseButton')"
       >
         No Close Button
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showNoCloseButton"
         :show-close-button="false"
@@ -379,13 +445,16 @@
     <div class="mbe4">
       <h2>With Icons</h2>
     </div>
-    <div class="stacked mbe4">
-      <button
+    <div class="stacked flex-align-start mbe4">
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showIconSuccess')"
       >
         Success with Icon
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showIconSuccess"
         type="success"
@@ -400,12 +469,15 @@
         </div>
       </VueToast>
 
-      <button
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showIconInfo')"
       >
         Info with Icon
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showIconInfo"
         type="info"
@@ -430,13 +502,16 @@
         Customize toast appearance using CSS Shadow Parts without breaking encapsulation.
       </p>
     </div>
-    <div class="stacked mbe4">
-      <button
+    <div class="stacked flex-align-start mbe4">
+      <VueButton
         class="demo-button"
+        variant="primary"
+        size="md"
+        shape="rounded"
         @click="showToast('showCustomGradient')"
       >
         Custom Gradient Toast
-      </button>
+      </VueButton>
       <VueToast
         v-model:open="showCustomGradient"
         class="custom-gradient-toast"
@@ -504,6 +579,7 @@ const showToast = (toastKey) => {
 <script lang="ts">
 import { defineComponent, ref, type Ref } from "vue";
 import { VueToast } from "agnosticui-core/toast/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import {
   AlertTriangle,
   AlertCircle,
