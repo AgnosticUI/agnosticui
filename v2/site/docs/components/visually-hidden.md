@@ -9,67 +9,31 @@ title: VisuallyHidden
 
 A utility component to visually hide content while keeping it accessible to screen readers. This is a common pattern for accessibility, often implemented with a CSS class like `.sr-only` or `.visually-hidden`. This component provides a declarative way to achieve the same result.
 
-<VisuallyHiddenExamples />
+<FrameworkExample
+  component="visually-hidden"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <VisuallyHiddenExamples />
+  </template>
+  <template #lit>
+    <visually-hidden-lit-examples></visually-hidden-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import VisuallyHiddenExamples from '../examples/VisuallyHiddenExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/VisuallyHiddenLitExamples.js'
+import vueCode from '../examples/VisuallyHiddenExamples.vue?raw'
+import litCode from '../examples/VisuallyHiddenLitExamples.js?raw'
+import reactCode from '../examples/VisuallyHiddenReactExamples.jsx?raw'
 </script>
 
-## Usage
 
-::: tip
-The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
-```bash
-npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
-npx ag add VisuallyHidden
-```
-The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
-:::
-
-Use the component to wrap any content you want to be available to screen readers but not visible on the screen.
-
-::: details Vue
-```vue
-<template>
-  <button>
-    <svg></svg>
-    <VueVisuallyHidden>Close</VueVisuallyHidden>
-  </button>
-</template>
-<script lang="ts" setup>
-import { VueVisuallyHidden } from 'agnosticui-core/visually-hidden/vue';
-</script>
-```
-:::
-
-::: details React
-```tsx
-import { ReactVisuallyHidden } from 'agnosticui-core/visually-hidden/react';
-
-export default function Example() {
-  return (
-    <button>
-      <svg></svg>
-      <ReactVisuallyHidden>Close</ReactVisuallyHidden>
-    </button>
-  );
-}
-```
-:::
-
-::: details Lit (Web Components)
-```html
-<script type="module">
-  import 'agnosticui-core/visually-hidden';
-</script>
-
-<button>
-  <svg></svg>
-  <ag-visually-hidden>Close</ag-visually-hidden>
-</button>
-```
-:::
 
 ## Props
 

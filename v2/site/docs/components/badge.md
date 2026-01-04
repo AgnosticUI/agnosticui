@@ -7,11 +7,28 @@ The Badge component provides a versatile way to display counts, status indicator
 
 ## Examples
 
-<BadgeExamples />
+<FrameworkExample
+  component="badge"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <BadgeExamples />
+  </template>
+  <template #lit>
+    <badge-lit-examples></badge-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import BadgeExamples from '../examples/BadgeExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/BadgeLitExamples.js'
+import vueCode from '../examples/BadgeExamples.vue?raw'
+import litCode from '../examples/BadgeLitExamples.js?raw'
+import reactCode from '../examples/BadgeReactExamples.jsx?raw'
 </script>
 
 ## Usage

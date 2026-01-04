@@ -8,6 +8,8 @@
 - ✅ Alert
 - ✅ AspectRatio
 - ✅ Avatar
+- ✅ Badge
+- ✅ BadgeFx
 - ✅ Button
 
 ## Reference Implementation
@@ -115,6 +117,27 @@ No other files need modification. FrameworkExample.vue handles:
 - ✅ Theme toggle in StackBlitz
 - ✅ Utilities.css bundled in StackBlitz
 - ✅ AgnosticUI token CSS imports
+
+Re Shiki please note following for theme switching dual-theme modes:
+```shell
+ /* Theme switching for Shiki dual-theme mode */
+-.code-details :deep(.shiki),
+-.code-details :deep(.shiki span) {
+-  color: var(--shiki-light) !important;
+-  background-color: var(--shiki-light-bg) !important;
+-}
++/* Light mode uses inline color styles from Shiki (no override needed) */
+ 
+-.dark .code-details :deep(.shiki),
+-.dark .code-details :deep(.shiki span) {
++/* Dark mode: override with CSS variables */
++html[data-theme="dark"] .code-details :deep(.shiki),
++html[data-theme="dark"] .code-details :deep(.shiki span) {
+   color: var(--shiki-dark) !important;
+   background-color: var(--shiki-dark-bg) !important;
+ }
+```
+_Takeaway: is the part "Light mode uses inline color styles from Shiki (no override needed)" -- so please do not add those as it will break Shiki light mode._
 
 ## Testing Checklist
 
