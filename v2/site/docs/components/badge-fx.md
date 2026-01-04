@@ -11,11 +11,28 @@ BadgeFx adds a few hundred lines of CSS for animation effects. It's ideal for ma
 
 ## Examples
 
-<BadgeFxExamples />
+<FrameworkExample
+  component="badge-fx"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <BadgeFxExamples />
+  </template>
+  <template #lit>
+    <badgefx-lit-examples></badgefx-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import BadgeFxExamples from '../examples/BadgeFxExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/BadgeFxLitExamples.js'
+import vueCode from '../examples/BadgeFxExamples.vue?raw'
+import litCode from '../examples/BadgeFxLitExamples.js?raw'
+import reactCode from '../examples/BadgeFxReactExamples.jsx?raw'
 import { Palette, Zap, Accessibility, Target, Wrench, Package } from 'lucide-vue-next'
 </script>
 

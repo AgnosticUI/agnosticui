@@ -160,7 +160,7 @@
       <h2>Badges with Icon</h2>
     </div>
     <div class="stacked-mobile mbe4">
-      <div style="position: relative; display: inline-block;">
+      <div style="position: relative; display: inline-block; align-self: flex-start;">
         <VueIcon
           noFill
           size="16"
@@ -175,7 +175,7 @@
           3
         </VueBadge>
       </div>
-      <div style="position: relative; display: inline-block;">
+      <div style="position: relative; display: inline-block; align-self: flex-start;">
         <VueIcon
           noFill
           size="20"
@@ -190,7 +190,7 @@
           3
         </VueBadge>
       </div>
-      <div style="position: relative; display: inline-block;">
+      <div style="position: relative; display: inline-block; align-self: flex-start;">
         <VueIcon
           noFill
           size="24"
@@ -207,7 +207,7 @@
       </div>
       <div
         class="mis2"
-        style="position: relative; display: inline-block;"
+        style="position: relative; display: inline-block; align-self: flex-start;"
       >
         <VueIcon
           noFill
@@ -223,7 +223,7 @@
         >
         </VueBadge>
       </div>
-      <div style="position: relative; display: inline-block;">
+      <div style="position: relative; display: inline-block; align-self: flex-start;">
         <VueIcon
           noFill
           size="24"
@@ -238,7 +238,7 @@
         >
         </VueBadge>
       </div>
-      <div style="position: relative; display: inline-block;">
+      <div style="position: relative; display: inline-block; align-self: flex-start;">
         <VueIcon
           noFill
           size="24"
@@ -255,7 +255,7 @@
       </div>
       <div
         class="mis2"
-        style="position: relative; display: inline-block;"
+        style="position: relative; display: inline-block; align-self: flex-start;"
       >
         <VueIcon
           noFill
@@ -273,7 +273,7 @@
       </div>
       <div
         class="mis2"
-        style="position: relative; display: inline-block;"
+        style="position: relative; display: inline-block; align-self: flex-start;"
       >
         <VueIcon
           noFill
@@ -289,7 +289,7 @@
       </div>
       <div
         class="mis3"
-        style="position: relative; display: inline-block;"
+        style="position: relative; display: inline-block; align-self: flex-start;"
       >
         <VueIcon
           noFill
