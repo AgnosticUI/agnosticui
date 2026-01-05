@@ -7,11 +7,28 @@ Checkbox allows a user to select one or more options from a set. It's ideal for 
 
 ## Examples
 
-<CheckboxExamples />
+<FrameworkExample
+  component="checkbox"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <CheckboxExamples />
+  </template>
+  <template #lit>
+    <checkbox-lit-examples></checkbox-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import CheckboxExamples from '../examples/CheckboxExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/CheckboxLitExamples.js'
+import vueCode from '../examples/CheckboxExamples.vue?raw'
+import litCode from '../examples/CheckboxLitExamples.js?raw'
+import reactCode from '../examples/CheckboxReactExamples.jsx?raw'
 </script>
 
 ## Usage
