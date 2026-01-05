@@ -5,11 +5,30 @@
 
 The Header component provides a semantic, accessible, and responsive page header with support for branding/logo and navigation content. It features sticky positioning, flexible content alignment, and responsive behavior.
 
-<HeaderExamples />
+## Examples
+
+<FrameworkExample
+  component="header"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <HeaderExamples />
+  </template>
+  <template #lit>
+    <header-lit-examples></header-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import HeaderExamples from '../examples/HeaderExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/HeaderLitExamples.js'
+import vueCode from '../examples/HeaderExamples.vue?raw'
+import litCode from '../examples/HeaderLitExamples.js?raw'
+import reactCode from '../examples/HeaderReactExamples.jsx?raw'
 </script>
 
 ## Usage

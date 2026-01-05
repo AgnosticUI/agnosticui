@@ -5,11 +5,30 @@
 
 Flex components provide a powerful and intuitive way to create flexible layouts using CSS Flexbox. They offer a declarative API with dedicated components for common patterns.
 
-<FlexExamples />
+## Examples
+
+<FrameworkExample
+  component="flex"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <FlexExamples />
+  </template>
+  <template #lit>
+    <flex-lit-examples></flex-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import FlexExamples from '../examples/FlexExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/FlexLitExamples.js'
+import vueCode from '../examples/FlexExamples.vue?raw'
+import litCode from '../examples/FlexLitExamples.js?raw'
+import reactCode from '../examples/FlexReactExamples.jsx?raw'
 </script>
 
 ## Components
@@ -284,18 +303,6 @@ All flex components share the same props from `FlexContainerProps`:
 | Part                | Description              |
 | ------------------- | ------------------------ |
 | `ag-flex-container` | The slot wrapper element |
-
-## Examples
-
-See the interactive examples above for common flexbox patterns including:
-
-- Basic row and column layouts
-- Centering content
-- Space distribution (between, around, evenly)
-- Equal-width children
-- Wrapping layouts
-- Nested flex containers
-- Responsive patterns
 
 ## Responsive Design
 
