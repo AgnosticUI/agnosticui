@@ -11,11 +11,28 @@ If you don't want SVG scaling, consider placing SVG directly in an <code>ag-butt
 
 ## Examples
 
-<IconButtonExamples />
+<FrameworkExample
+  component="icon-button"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <IconButtonExamples />
+  </template>
+  <template #lit>
+    <icon-button-lit-examples></icon-button-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import IconButtonExamples from '../examples/IconButtonExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/IconButtonLitExamples.js'
+import vueCode from '../examples/IconButtonExamples.vue?raw'
+import litCode from '../examples/IconButtonLitExamples.js?raw'
+import reactCode from '../examples/IconButtonReactExamples.jsx?raw'
 </script>
 
 ## Usage

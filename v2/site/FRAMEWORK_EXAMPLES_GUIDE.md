@@ -21,6 +21,9 @@
 - ✅ Dialog
 - ✅ Divider
 - ✅ Drawer
+- ✅ Icon
+- ✅ IconButton
+- ✅ IconButtonFx
 - ✅ Tooltip
 - ✅ VisuallyHidden
 
