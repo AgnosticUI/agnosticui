@@ -5,11 +5,30 @@
 
 Tag is used to label or categorize content, providing as a visual indicator for status, types, or metadata.
 
-<TagExamples />
+## Examples
+
+<FrameworkExample
+  component="tag"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <TagExamples />
+  </template>
+  <template #lit>
+    <tag-lit-examples></tag-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import TagExamples from '../examples/TagExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/TagLitExamples.js'
+import vueCode from '../examples/TagExamples.vue?raw'
+import litCode from '../examples/TagLitExamples.js?raw'
+import reactCode from '../examples/TagReactExamples.jsx?raw'
 </script>
 
 ## Usage

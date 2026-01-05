@@ -7,11 +7,28 @@ A semantic fieldset component that groups related form controls with an optional
 
 ## Examples
 
-<FieldsetExamples />
+<FrameworkExample
+  component="fieldset"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <FieldsetExamples />
+  </template>
+  <template #lit>
+    <fieldset-lit-examples></fieldset-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import FieldsetExamples from '../examples/FieldsetExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/FieldsetLitExamples.js'
+import vueCode from '../examples/FieldsetExamples.vue?raw'
+import litCode from '../examples/FieldsetLitExamples.js?raw'
+import reactCode from '../examples/FieldsetReactExamples.jsx?raw'
 </script>
 
 ## Usage

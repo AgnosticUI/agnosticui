@@ -7,11 +7,28 @@ A versatile component for displaying empty states, placeholder content, and mess
 
 ## Examples
 
-<EmptyStateExamples />
+<FrameworkExample
+  component="EmptyState"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <EmptyStateExamples />
+  </template>
+  <template #lit>
+    <empty-state-lit-examples></empty-state-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import EmptyStateExamples from '../examples/EmptyStateExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/EmptyStateLitExamples.js'
+import vueCode from '../examples/EmptyStateExamples.vue?raw'
+import litCode from '../examples/EmptyStateLitExamples.js?raw'
+import reactCode from '../examples/EmptyStateReactExamples.jsx?raw'
 </script>
 
 ## Usage

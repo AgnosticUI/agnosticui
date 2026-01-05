@@ -5,13 +5,8 @@
 
 Tabs organize content into multiple sections that users can navigate between. Only one tab panel is visible at a time, making tabs ideal for organizing related content without overwhelming the user.
 
-## Examples
-
-<TabsExamples />
-
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
-import TabsExamples from '../examples/TabsExamples.vue'
 </script>
 
 ## Usage
