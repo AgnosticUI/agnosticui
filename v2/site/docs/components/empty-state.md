@@ -8,7 +8,7 @@ A versatile component for displaying empty states, placeholder content, and mess
 ## Examples
 
 <FrameworkExample
-  component="EmptyState"
+  component="empty-state"
   :vue-code="vueCode"
   :lit-code="litCode"
   :react-code="reactCode"
