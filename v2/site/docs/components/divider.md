@@ -5,11 +5,30 @@
 
 Divider components visually separate content in your application. They support both horizontal and vertical orientations, optional text or icon content, and can be customized with different sizes and color variants.
 
-<DividerExamples />
+## Examples
+
+<FrameworkExample
+  component="divider"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <DividerExamples />
+  </template>
+  <template #lit>
+    <divider-lit-examples></divider-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import DividerExamples from '../examples/DividerExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/DividerLitExamples.js'
+import vueCode from '../examples/DividerExamples.vue?raw'
+import litCode from '../examples/DividerLitExamples.js?raw'
+import reactCode from '../examples/DividerReactExamples.jsx?raw'
 </script>
 
 ## Usage
