@@ -19,6 +19,7 @@
 - ✅ Combobox
 - ✅ CopyButton
 - ✅ Dialog
+- ✅ Divider
 - ✅ Tooltip
 - ✅ VisuallyHidden
 
