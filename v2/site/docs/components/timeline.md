@@ -7,11 +7,28 @@ Timeline is a semantic component for displaying chronological events, processes,
 
 ## Examples
 
-<TimelineExamples />
+<FrameworkExample
+  component="timeline"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <TimelineExamples />
+  </template>
+  <template #lit>
+    <timeline-lit-examples></timeline-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import TimelineExamples from '../examples/TimelineExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/TimelineLitExamples.js'
+import vueCode from '../examples/TimelineExamples.vue?raw'
+import litCode from '../examples/TimelineLitExamples.js?raw'
+import reactCode from '../examples/TimelineReactExamples.jsx?raw'
 </script>
 
 ## Usage
