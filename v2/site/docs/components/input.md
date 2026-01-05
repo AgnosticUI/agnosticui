@@ -7,11 +7,28 @@ A flexible, accessible form input component that supports text inputs, textareas
 
 ## Examples
 
-<InputExamples />
+<FrameworkExample
+  component="input"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <InputExamples />
+  </template>
+  <template #lit>
+    <input-lit-examples></input-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import InputExamples from '../examples/InputExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/InputLitExamples.js'
+import vueCode from '../examples/InputExamples.vue?raw'
+import litCode from '../examples/InputLitExamples.js?raw'
+import reactCode from '../examples/InputReactExamples.jsx?raw'
 </script>
 
 ## Usage

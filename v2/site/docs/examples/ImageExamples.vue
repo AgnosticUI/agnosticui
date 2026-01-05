@@ -6,7 +6,7 @@ import { TriangleAlert } from "lucide-vue-next";
 
 // Basic Image
 const basicImageUrl =
-  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=650&h=487&fit=crop&q=80";
+  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=545&h=487&fit=crop&q=80";
 const basicImageSrc = ref(basicImageUrl);
 const reloadBasicImage = () => {
   basicImageSrc.value = `${basicImageUrl}&t=${new Date().getTime()}`;
@@ -22,7 +22,7 @@ const reloadResponsiveImage = () => {
 
 // Object Fit Image
 const objectFitImageUrl =
-  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=650&h=487&fit=crop&q=80";
+  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=545&h=487&fit=crop&q=80";
 const objectFitImageSrc = ref(objectFitImageUrl);
 const reloadObjectFitImage = () => {
   objectFitImageSrc.value = `${objectFitImageUrl}&t=${new Date().getTime()}`;
@@ -30,7 +30,7 @@ const reloadObjectFitImage = () => {
 
 // Responsive Sources Image
 const responsiveSourcesImageUrl =
-  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=650&h=487&fit=crop&q=80";
+  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=545&h=487&fit=crop&q=80";
 const responsiveSourcesImageSrc = ref(responsiveSourcesImageUrl);
 const reloadResponsiveSourcesImage = () => {
   responsiveSourcesImageSrc.value = `${responsiveSourcesImageUrl}&t=${new Date().getTime()}`;
@@ -57,7 +57,7 @@ const reloadFallbackImage = () => {
 
 // Placeholder Image
 const placeholderImageUrl =
-  "https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=650&h=487&fit=crop&q=80&auto=format&ps=50";
+  "https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=545&h=487&fit=crop&q=80&auto=format&ps=50";
 const placeholderImageSrc = ref(placeholderImageUrl);
 const reloadPlaceholderImage = () => {
   placeholderImageSrc.value = `${placeholderImageUrl}&t=${new Date().getTime()}`;
@@ -73,7 +73,7 @@ const reloadErrorImage = () => {
 
 // Styled Image
 const styledImageUrl =
-  "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=650&h=487&fit=crop&q=80";
+  "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=545&h=487&fit=crop&q=80";
 const styledImageSrc = ref(styledImageUrl);
 const reloadStyledImage = () => {
   styledImageSrc.value = `${styledImageUrl}&t=${new Date().getTime()}`;
@@ -87,9 +87,10 @@ const reloadStyledImage = () => {
     <VueImage
       :src="basicImageSrc"
       alt="A beautiful landscape with a river and mountains."
-      :width="650"
+      :width="545"
       :height="487"
       :fade="true"
+      style="max-width: 100%; height: auto;"
     />
     <button
       @click="reloadBasicImage"
@@ -153,11 +154,12 @@ const reloadStyledImage = () => {
     <p>If the primary `src` is broken, the `fallbackSrc` will be loaded instead. The fallback will also fade in.</p>
     <VueImage
       :src="fallbackImageSrc"
-      fallbackSrc="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=650&h=487&fit=crop&q=80"
+      fallbackSrc="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=545&h=487&fit=crop&q=80"
       alt="An image with a fallback source."
-      :width="650"
+      :width="545"
       :height="487"
       :fade="true"
+      style="max-width: 100%; height: auto;"
     />
     <button
       @click="reloadFallbackImage"
@@ -170,8 +172,9 @@ const reloadStyledImage = () => {
     <VueImage
       :src="placeholderImageSrc"
       alt="A nature scene with a custom placeholder."
-      :width="650"
+      :width="545"
       :height="487"
+      style="max-width: 100%; height: auto;"
     >
       <div
         slot="placeholder"
@@ -285,7 +288,7 @@ const reloadStyledImage = () => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  min-height: 100%;
   gap: 0.5rem;
   font-family: var(--ag-font-family-body);
 }
@@ -299,6 +302,7 @@ const reloadStyledImage = () => {
 .custom-error {
   background: var(--ag-danger-background);
   color: var(--ag-text-primary);
+  padding: 2rem 1rem;
 }
 
 .custom-styled-image::part(ag-img) {
