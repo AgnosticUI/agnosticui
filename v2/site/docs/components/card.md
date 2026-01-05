@@ -7,11 +7,28 @@ Card is a versatile container for grouping related content and actions. It provi
 
 ## Examples
 
-<CardExamples />
+<FrameworkExample
+  component="card"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <CardExamples />
+  </template>
+  <template #lit>
+    <card-lit-examples></card-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import CardExamples from '../examples/CardExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/CardLitExamples.js'
+import vueCode from '../examples/CardExamples.vue?raw'
+import litCode from '../examples/CardLitExamples.js?raw'
+import reactCode from '../examples/CardReactExamples.jsx?raw'
 </script>
 
 ## Usage

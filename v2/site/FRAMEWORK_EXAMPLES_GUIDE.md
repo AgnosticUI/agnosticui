@@ -12,6 +12,8 @@
 - ✅ BadgeFx
 - ✅ Breadcrumb
 - ✅ Button
+- ✅ ButtonFx
+- ✅ Card
 - ✅ Tooltip
 - ✅ VisuallyHidden
 
