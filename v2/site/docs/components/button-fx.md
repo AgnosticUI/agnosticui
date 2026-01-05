@@ -9,11 +9,28 @@ An enhanced button component with customizable animation effects that trigger on
 ButtonFx adds a few hundred lines of CSS for animation effects. It's ideal for marketing sites, landing pages, or when visual polish is a priority.
 :::
 
-<ButtonFxExamples />
+<FrameworkExample
+  component="button-fx"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <ButtonFxExamples />
+  </template>
+  <template #lit>
+    <buttonfx-lit-examples></buttonfx-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import ButtonFxExamples from '../examples/ButtonFxExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/ButtonFxLitExamples.js'
+import vueCode from '../examples/ButtonFxExamples.vue?raw'
+import litCode from '../examples/ButtonFxLitExamples.js?raw'
+import reactCode from '../examples/ButtonFxReactExamples.jsx?raw'
 </script>
 
 ## Usage
