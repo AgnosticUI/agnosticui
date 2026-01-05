@@ -20,6 +20,7 @@
 - ✅ CopyButton
 - ✅ Dialog
 - ✅ Divider
+- ✅ Drawer
 - ✅ Tooltip
 - ✅ VisuallyHidden
 

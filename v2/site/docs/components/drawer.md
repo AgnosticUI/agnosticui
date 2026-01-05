@@ -7,11 +7,28 @@ A drawer is a panel that slides in from the edge of the screen, typically used f
 
 ## Examples
 
-<DrawerExamples />
+<FrameworkExample
+  component="drawer"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <DrawerExamples />
+  </template>
+  <template #lit>
+    <drawer-lit-examples></drawer-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import DrawerExamples from '../examples/DrawerExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/DrawerLitExamples.js'
+import vueCode from '../examples/DrawerExamples.vue?raw'
+import litCode from '../examples/DrawerLitExamples.js?raw'
+import reactCode from '../examples/DrawerReactExamples.jsx?raw'
 </script>
 
 ## Usage
