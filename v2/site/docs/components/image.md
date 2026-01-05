@@ -11,11 +11,30 @@ The AgnosticUI Image component is a powerful, performant replacement for the nat
 
 Beyond its flexibility, it provides built-in solutions for common image-handling challenges, including responsive sizing, preventing layout shift, lazy loading, and graceful error handling.
 
-<ImageExamples />
+## Examples
+
+<FrameworkExample
+  component="image"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <ImageExamples />
+  </template>
+  <template #lit>
+    <image-lit-examples></image-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import ImageExamples from '../examples/ImageExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/ImageLitExamples.js'
+import vueCode from '../examples/ImageExamples.vue?raw'
+import litCode from '../examples/ImageLitExamples.js?raw'
+import reactCode from '../examples/ImageReactExamples.jsx?raw'
 </script>
 
 ## Usage

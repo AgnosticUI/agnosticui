@@ -24,6 +24,8 @@
 - ✅ Icon
 - ✅ IconButton
 - ✅ IconButtonFx
+- ✅ Image
+- ✅ Input
 - ✅ Tooltip
 - ✅ VisuallyHidden
 
