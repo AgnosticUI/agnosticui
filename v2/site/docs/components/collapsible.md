@@ -7,11 +7,28 @@ A collapsible is a standalone component that allows users to show and hide a sin
 
 ## Examples
 
-<CollapsibleExamples />
+<FrameworkExample
+  component="collapsible"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <CollapsibleExamples />
+  </template>
+  <template #lit>
+    <collapsible-lit-examples></collapsible-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import CollapsibleExamples from '../examples/CollapsibleExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/CollapsibleLitExamples.js'
+import vueCode from '../examples/CollapsibleExamples.vue?raw'
+import litCode from '../examples/CollapsibleLitExamples.js?raw'
+import reactCode from '../examples/CollapsibleReactExamples.jsx?raw'
 </script>
 
 ## Usage

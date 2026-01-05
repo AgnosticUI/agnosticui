@@ -14,6 +14,11 @@
 - ✅ Button
 - ✅ ButtonFx
 - ✅ Card
+- ✅ Checkbox
+- ✅ Collapsible
+- ✅ Combobox
+- ✅ CopyButton
+- ✅ Dialog
 - ✅ Tooltip
 - ✅ VisuallyHidden
 
@@ -37,6 +42,10 @@
 - ✅ Utilities.css exists at `v2/site/docs/.vitepress/theme/utilities.css`
 
 ## Implementation Pattern
+
+### Imports
+
+Please refer to `v2/lib/package.json` for exact naming for imports. For example, the following is wrong: `import "agnosticui-core/copybutton";` is it's exported as `"./copy-button":` so the correct import is: `import "agnosticui-core/copy-button"`
 
 ### Critical: Lit Decorator Issue
 

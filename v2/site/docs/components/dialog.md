@@ -7,11 +7,28 @@ A dialog is a modal window that overlays the main content and requires user inte
 
 ## Examples
 
-<DialogExamples />
+<FrameworkExample
+  component="dialog"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <DialogExamples />
+  </template>
+  <template #lit>
+    <dialog-lit-examples></dialog-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import DialogExamples from '../examples/DialogExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/DialogLitExamples.js'
+import vueCode from '../examples/DialogExamples.vue?raw'
+import litCode from '../examples/DialogLitExamples.js?raw'
+import reactCode from '../examples/DialogReactExamples.jsx?raw'
 </script>
 
 ## Usage

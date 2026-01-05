@@ -7,11 +7,28 @@ An accessible autocomplete widget that combines a text input with a filterable d
 
 ## Examples
 
-<ComboboxExamples />
+<FrameworkExample
+  component="combobox"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <ComboboxExamples />
+  </template>
+  <template #lit>
+    <combobox-lit-examples></combobox-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import ComboboxExamples from '../examples/ComboboxExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/ComboboxLitExamples.js'
+import vueCode from '../examples/ComboboxExamples.vue?raw'
+import litCode from '../examples/ComboboxLitExamples.js?raw'
+import reactCode from '../examples/ComboboxReactExamples.jsx?raw'
 </script>
 
 ## Usage

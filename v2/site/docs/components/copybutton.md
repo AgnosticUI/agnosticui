@@ -7,11 +7,28 @@ An accessible button component that copies text to the clipboard with visual fee
 
 ## Examples
 
-<CopyButtonExamples />
+<FrameworkExample
+  component="copy-button"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <CopyButtonExamples />
+  </template>
+  <template #lit>
+    <copybutton-lit-examples></copybutton-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import CopyButtonExamples from '../examples/CopyButtonExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/CopyButtonLitExamples.js'
+import vueCode from '../examples/CopyButtonExamples.vue?raw'
+import litCode from '../examples/CopyButtonLitExamples.js?raw'
+import reactCode from '../examples/CopyButtonReactExamples.jsx?raw'
 </script>
 
 ## Basic Usage
@@ -28,7 +45,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 ::: details Lit (Web Components)
 ```html
 <script type="module">
-  import 'agnosticui-core/copybutton';
+  import 'agnosticui-core/copy-button';
 </script>
 
 <ag-copy-button
