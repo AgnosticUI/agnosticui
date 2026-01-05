@@ -7,11 +7,28 @@ The `Breadcrumb` component is a <span class="quoted">wayfinding</span> element t
 
 ## Examples
 
-<BreadcrumbExamples />
+<FrameworkExample
+  component="breadcrumb"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <BreadcrumbExamples />
+  </template>
+  <template #lit>
+    <breadcrumb-lit-examples></breadcrumb-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import BreadcrumbExamples from '../examples/BreadcrumbExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/BreadcrumbLitExamples.js'
+import vueCode from '../examples/BreadcrumbExamples.vue?raw'
+import litCode from '../examples/BreadcrumbLitExamples.js?raw'
+import reactCode from '../examples/BreadcrumbReactExamples.jsx?raw'
 </script>
 
 ## Usage

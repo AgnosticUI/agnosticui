@@ -10,6 +10,7 @@
 - ✅ Avatar
 - ✅ Badge
 - ✅ BadgeFx
+- ✅ Breadcrumb
 - ✅ Button
 - ✅ Tooltip
 - ✅ VisuallyHidden
@@ -34,6 +35,16 @@
 - ✅ Utilities.css exists at `v2/site/docs/.vitepress/theme/utilities.css`
 
 ## Implementation Pattern
+
+### Critical: Lit Decorator Issue
+
+⚠️ **DO NOT use `@customElement` decorator** in Lit examples - it conflicts with VitePress/Vue. Use `customElements.define()` at the bottom instead:
+
+```javascript
+// ❌ WRONG: @customElement('[component]-lit-examples')
+// ✅ CORRECT:
+customElements.define('[component]-lit-examples', [Component]LitExamples);
+```
 
 ### Step 1: Create React Example File
 

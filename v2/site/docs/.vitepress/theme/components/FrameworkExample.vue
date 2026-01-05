@@ -558,3 +558,11 @@ html[data-theme="dark"] .code-details :deep(.shiki span) {
   border: 1px solid var(--vp-c-divider);
 }
 </style>
+
+<style>
+/* Override VitePress global h2 styles within framework examples (non-scoped for specificity) */
+.framework-example h2 {
+  margin-top: 0 !important;
+  border-top: none !important;
+}
+</style>
