@@ -9,11 +9,30 @@ An icon button component with customizable animation effects that trigger on hov
 IconButtonFx adds a few hundred lines of CSS for animation effects. It's ideal for marketing sites, landing pages, or when visual polish is a priority.
 :::
 
-<IconButtonFxExamples />
+## Examples
+
+<FrameworkExample
+  component="icon-button-fx"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <IconButtonFxExamples />
+  </template>
+  <template #lit>
+    <icon-button-fx-lit-examples></icon-button-fx-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import IconButtonFxExamples from '../examples/IconButtonFxExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/IconButtonFxLitExamples.js'
+import vueCode from '../examples/IconButtonFxExamples.vue?raw'
+import litCode from '../examples/IconButtonFxLitExamples.js?raw'
+import reactCode from '../examples/IconButtonFxReactExamples.jsx?raw'
 </script>
 
 ## Usage

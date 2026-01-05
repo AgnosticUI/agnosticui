@@ -5,11 +5,30 @@
 
 Icon is used to visually represent an action, object, or state within the UI.
 
-<IconExamples />
+## Examples
+
+<FrameworkExample
+  component="icon"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <IconExamples />
+  </template>
+  <template #lit>
+    <icon-lit-examples></icon-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import IconExamples from '../examples/IconExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/IconLitExamples.js'
+import vueCode from '../examples/IconExamples.vue?raw'
+import litCode from '../examples/IconLitExamples.js?raw'
+import reactCode from '../examples/IconReactExamples.jsx?raw'
 </script>
 
 ## Usage
