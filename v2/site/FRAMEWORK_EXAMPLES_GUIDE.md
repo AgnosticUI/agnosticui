@@ -28,6 +28,7 @@
 - ✅ Input
 - ✅ IntlFormatter
 - ✅ Kbd
+- ✅ Link
 - ✅ Tooltip
 - ✅ VisuallyHidden
 
