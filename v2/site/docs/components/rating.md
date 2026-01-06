@@ -7,11 +7,28 @@ The Rating component provides a way for users to view and set a rating, typicall
 
 ## Examples
 
-<RatingExamples />
+<FrameworkExample
+  component="rating"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <RatingExamples />
+  </template>
+  <template #lit>
+    <rating-lit-examples></rating-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import RatingExamples from '../examples/RatingExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/RatingLitExamples.js'
+import vueCode from '../examples/RatingExamples.vue?raw'
+import litCode from '../examples/RatingLitExamples.js?raw'
+import reactCode from '../examples/RatingReactExamples.jsx?raw'
 </script>
 
 ## Usage
