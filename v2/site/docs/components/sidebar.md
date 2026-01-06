@@ -12,25 +12,40 @@ A collapsible sidebar component for navigation with support for expanded/collaps
 
 ## Examples
 
-<SidebarExamples />
+<FrameworkExample component="sidebar" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode">
+  <template #vue>
+    <SidebarExamples />
+  </template>
+  <template #lit>
+    <sidebar-lit-examples></sidebar-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import SidebarExamples from '../examples/SidebarExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/SidebarLitExamples.js'
+import vueCode from '../examples/SidebarExamples.vue?raw'
+import litCode from '../examples/SidebarLitExamples.js?raw'
+import reactCode from '../examples/SidebarReactExamples.jsx?raw'
 </script>
 
 ## Usage
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add Sidebar
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
 ::: details Vue
+
 ```vue
 <template>
   <div style="display: flex; height: 100vh;">
@@ -41,7 +56,10 @@ The CLI copies source code directly into your project, giving you full visibilit
       @update:open="isOpen = $event"
       @update:collapsed="isCollapsed = $event"
     >
-      <h2 slot="ag-header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
+      <h2
+        slot="ag-header-start"
+        style="margin: 0; font-size: 1.125rem; font-weight: 600;"
+      >
         Dashboard
       </h2>
       <button
@@ -83,16 +101,33 @@ The CLI copies source code directly into your project, giving you full visibilit
             :distance="8"
             :arrow="true"
           >
-            <button slot="trigger" type="button" class="nav-button" aria-expanded="false">
+            <button
+              slot="trigger"
+              type="button"
+              class="nav-button"
+              aria-expanded="false"
+            >
               <Folder :size="20" />
               <span class="nav-label">Projects</span>
               <span class="collapsed-indicator">
-                <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                <svg
+                  viewBox="0 0 8 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 3l2 2 2-2"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    stroke-linecap="round"
+                  />
                 </svg>
               </span>
             </button>
-            <VueSidebarNavPopoverSubmenu slot="content" class="nav-popover-submenu">
+            <VueSidebarNavPopoverSubmenu
+              slot="content"
+              class="nav-popover-submenu"
+            >
               <a href="#" class="nav-sublink">Project Alpha</a>
               <a href="#" class="nav-sublink">Project Beta</a>
             </VueSidebarNavPopoverSubmenu>
@@ -149,7 +184,7 @@ export default {
   methods: {
     toggleCollapse() {
       // Access the sidebar element to call toggleCollapse
-      const sidebar = this.$el.querySelector('ag-sidebar');
+      const sidebar = this.$el.querySelector("ag-sidebar");
       if (sidebar && sidebar.toggleCollapse) {
         sidebar.toggleCollapse();
       }
@@ -175,20 +210,22 @@ export default {
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { useState } from 'react';
-import { ReactSidebar } from 'agnosticui-core/sidebar/react';
+import { useState } from "react";
+import { ReactSidebar } from "agnosticui-core/sidebar/react";
 import {
   ReactSidebarNav,
   ReactSidebarNavItem,
   ReactSidebarNavSubmenu,
   ReactSidebarNavPopoverSubmenu,
-} from 'agnosticui-core/sidebar-nav/react';
-import { ReactPopover } from 'agnosticui-core/popover/react';
-import { Home, Folder, ChevronRight } from 'lucide-react';
+} from "agnosticui-core/sidebar-nav/react";
+import { ReactPopover } from "agnosticui-core/popover/react";
+import { Home, Folder, ChevronRight } from "lucide-react";
 
 export default function SidebarExample() {
   const [isOpen, setIsOpen] = useState(true);
@@ -213,7 +250,7 @@ export default function SidebarExample() {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh' }}>
+    <div style={{ display: "flex", height: "100vh" }}>
       <ReactSidebar
         open={isOpen}
         collapsed={isCollapsed}
@@ -221,13 +258,20 @@ export default function SidebarExample() {
         onToggle={(open) => setIsOpen(open)}
         onCollapse={(collapsed) => setIsCollapsed(collapsed)}
       >
-        <h2 slot="ag-header-start" style={{ margin: 0, fontSize: '1.125rem', fontWeight: 600 }}>
+        <h2
+          slot="ag-header-start"
+          style={{ margin: 0, fontSize: "1.125rem", fontWeight: 600 }}
+        >
           Dashboard
         </h2>
 
         <ReactSidebarNav>
           <ReactSidebarNavItem>
-            <button type="button" className="nav-button active" aria-current="page">
+            <button
+              type="button"
+              className="nav-button active"
+              aria-current="page"
+            >
               <Home size={20} />
               <span className="nav-label">Dashboard</span>
             </button>
@@ -243,7 +287,9 @@ export default function SidebarExample() {
             >
               <Folder size={20} />
               <span className="nav-label">Projects</span>
-              <span className="chevron"><ChevronRight size={16} /></span>
+              <span className="chevron">
+                <ChevronRight size={16} />
+              </span>
             </button>
 
             {/* Popover for collapsed mode - shows when sidebar is collapsed */}
@@ -254,52 +300,82 @@ export default function SidebarExample() {
               distance={8}
               arrow={true}
             >
-              <button slot="trigger" type="button" className="nav-button" aria-expanded="false">
+              <button
+                slot="trigger"
+                type="button"
+                className="nav-button"
+                aria-expanded="false"
+              >
                 <Folder size={20} />
                 <span className="nav-label">Projects</span>
                 <span className="collapsed-indicator">
-                  <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 3l2 2 2-2" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                  <svg
+                    viewBox="0 0 8 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 3l2 2 2-2"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </span>
               </button>
-              <ReactSidebarNavPopoverSubmenu slot="content" className="nav-popover-submenu">
-                <a href="#project-alpha" className="nav-sublink">Project Alpha</a>
-                <a href="#project-beta" className="nav-sublink">Project Beta</a>
+              <ReactSidebarNavPopoverSubmenu
+                slot="content"
+                className="nav-popover-submenu"
+              >
+                <a href="#project-alpha" className="nav-sublink">
+                  Project Alpha
+                </a>
+                <a href="#project-beta" className="nav-sublink">
+                  Project Beta
+                </a>
               </ReactSidebarNavPopoverSubmenu>
             </ReactPopover>
 
             {/* Inline submenu for expanded mode */}
             <ReactSidebarNavSubmenu>
-              <a className="nav-sublink" href="#">Project Alpha</a>
-              <a className="nav-sublink" href="#">Project Beta</a>
+              <a className="nav-sublink" href="#">
+                Project Alpha
+              </a>
+              <a className="nav-sublink" href="#">
+                Project Beta
+              </a>
             </ReactSidebarNavSubmenu>
           </ReactSidebarNavItem>
         </ReactSidebarNav>
 
-        <div slot="ag-footer" style={{ fontSize: '0.875rem', color: 'var(--ag-text-secondary)' }}>
+        <div
+          slot="ag-footer"
+          style={{ fontSize: "0.875rem", color: "var(--ag-text-secondary)" }}
+        >
           © 2024 Company
         </div>
       </ReactSidebar>
 
-      <main style={{ flex: 1, padding: '2rem' }}>
+      <main style={{ flex: 1, padding: "2rem" }}>
         <h1>Main Content</h1>
       </main>
     </div>
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
-```typescript
-import { LitElement, html, css } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import 'agnosticui-core/sidebar';
-import 'agnosticui-core/sidebar-nav';
-import 'agnosticui-core/popover';
 
-@customElement('sidebar-example')
+```typescript
+import { LitElement, html, css } from "lit";
+import { customElement } from "lit/decorators.js";
+import "agnosticui-core/sidebar";
+import "agnosticui-core/sidebar-nav";
+import "agnosticui-core/popover";
+
+@customElement("sidebar-example")
 export class SidebarExample extends LitElement {
   static styles = css`
     :host {
@@ -309,22 +385,24 @@ export class SidebarExample extends LitElement {
 
   firstUpdated() {
     // Set up event listeners for submenu toggles in the shadow DOM
-    const buttons = this.shadowRoot?.querySelectorAll('.nav-button-expanded');
+    const buttons = this.shadowRoot?.querySelectorAll(".nav-button-expanded");
     buttons?.forEach((button) => {
-      button.addEventListener('click', (e: Event) => {
-        const navItem = (e.currentTarget as HTMLElement).closest('ag-sidebar-nav-item');
-        const submenu = navItem?.querySelector('ag-sidebar-nav-submenu');
+      button.addEventListener("click", (e: Event) => {
+        const navItem = (e.currentTarget as HTMLElement).closest(
+          "ag-sidebar-nav-item"
+        );
+        const submenu = navItem?.querySelector("ag-sidebar-nav-submenu");
 
         if (!submenu) return;
 
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
 
         if (isExpanded) {
-          button.setAttribute('aria-expanded', 'false');
-          submenu.removeAttribute('open');
+          button.setAttribute("aria-expanded", "false");
+          submenu.removeAttribute("open");
         } else {
-          button.setAttribute('aria-expanded', 'true');
-          submenu.setAttribute('open', '');
+          button.setAttribute("aria-expanded", "true");
+          submenu.setAttribute("open", "");
         }
       });
     });
@@ -333,17 +411,21 @@ export class SidebarExample extends LitElement {
   render() {
     return html`
       <div style="display: flex; height: 100vh;">
-        <ag-sidebar
-          id="sidebar"
-          show-mobile-toggle
-        >
-          <h2 slot="ag-header-start" style="margin: 0; font-size: 1.125rem; font-weight: 600;">
+        <ag-sidebar id="sidebar" show-mobile-toggle>
+          <h2
+            slot="ag-header-start"
+            style="margin: 0; font-size: 1.125rem; font-weight: 600;"
+          >
             Dashboard
           </h2>
 
           <ag-sidebar-nav>
             <ag-sidebar-nav-item>
-              <button type="button" class="nav-button active" aria-current="page">
+              <button
+                type="button"
+                class="nav-button active"
+                aria-current="page"
+              >
                 <svg><!-- Home icon --></svg>
                 <span class="nav-label">Dashboard</span>
               </button>
@@ -369,16 +451,33 @@ export class SidebarExample extends LitElement {
                 distance="8"
                 arrow
               >
-                <button slot="trigger" type="button" class="nav-button" aria-expanded="false">
+                <button
+                  slot="trigger"
+                  type="button"
+                  class="nav-button"
+                  aria-expanded="false"
+                >
                   <svg><!-- Folder icon --></svg>
                   <span class="nav-label">Projects</span>
                   <span class="collapsed-indicator">
-                    <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                    <svg
+                      viewBox="0 0 8 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 3l2 2 2-2"
+                        stroke="currentColor"
+                        stroke-width="1"
+                        stroke-linecap="round"
+                      />
                     </svg>
                   </span>
                 </button>
-                <ag-sidebar-nav-popover-submenu slot="content" class="nav-popover-submenu">
+                <ag-sidebar-nav-popover-submenu
+                  slot="content"
+                  class="nav-popover-submenu"
+                >
                   <a class="nav-sublink" href="#">Project Alpha</a>
                   <a class="nav-sublink" href="#">Project Beta</a>
                 </ag-sidebar-nav-popover-submenu>
@@ -392,7 +491,10 @@ export class SidebarExample extends LitElement {
             </ag-sidebar-nav-item>
           </ag-sidebar-nav>
 
-          <div slot="ag-footer" style="font-size: 0.875rem; color: var(--ag-text-secondary);">
+          <div
+            slot="ag-footer"
+            style="font-size: 0.875rem; color: var(--ag-text-secondary);"
+          >
             © 2024 Company
           </div>
         </ag-sidebar>
@@ -413,23 +515,24 @@ export class SidebarExample extends LitElement {
 
 ### Sidebar Component
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `open` | `boolean` | `false` | Controls sidebar visibility on mobile |
-| `collapsed` | `boolean` | `false` | Controls collapsed/rail state (icon-only) on desktop |
-| `position` | `'left' \| 'right'` | `'left'` | Position of the sidebar |
-| `ariaLabel` | `string` | `'Navigation'` | ARIA label for the sidebar |
-| `variant` | `'default' \| 'bordered' \| 'elevated'` | `'default'` | Visual variant of the sidebar |
-| `noTransition` | `boolean` | `false` | Disable transitions |
-| `width` | `string` | - | Custom width for the sidebar (e.g., '300px') |
-| `disableCompactMode` | `boolean` | `false` | Disable compact/rail mode (sidebar is either full-width or hidden) |
-| `showMobileToggle` | `boolean` | `false` | Show the mobile toggle button |
-| `mobileTogglePosition` | `'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'` | `'top-left'` | Position of the mobile toggle button |
-| `showHeaderToggle` | `boolean` | `false` | Show the built-in header toggle button |
+| Prop                   | Type                                                           | Default        | Description                                                        |
+| ---------------------- | -------------------------------------------------------------- | -------------- | ------------------------------------------------------------------ |
+| `open`                 | `boolean`                                                      | `false`        | Controls sidebar visibility on mobile                              |
+| `collapsed`            | `boolean`                                                      | `false`        | Controls collapsed/rail state (icon-only) on desktop               |
+| `position`             | `'left' \| 'right'`                                            | `'left'`       | Position of the sidebar                                            |
+| `ariaLabel`            | `string`                                                       | `'Navigation'` | ARIA label for the sidebar                                         |
+| `variant`              | `'default' \| 'bordered' \| 'elevated'`                        | `'default'`    | Visual variant of the sidebar                                      |
+| `noTransition`         | `boolean`                                                      | `false`        | Disable transitions                                                |
+| `width`                | `string`                                                       | -              | Custom width for the sidebar (e.g., '300px')                       |
+| `disableCompactMode`   | `boolean`                                                      | `false`        | Disable compact/rail mode (sidebar is either full-width or hidden) |
+| `showMobileToggle`     | `boolean`                                                      | `false`        | Show the mobile toggle button                                      |
+| `mobileTogglePosition` | `'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'` | `'top-left'`   | Position of the mobile toggle button                               |
+| `showHeaderToggle`     | `boolean`                                                      | `false`        | Show the built-in header toggle button                             |
 
 ### Navigation Components
 
 The Sidebar uses companion components for navigation:
+
 - `VueSidebarNav` / `ReactSidebarNav` / `ag-sidebar-nav` - Container for navigation items
 - `VueSidebarNavItem` / `ReactSidebarNavItem` / `ag-sidebar-nav-item` - Individual navigation item wrapper
 - `VueSidebarNavSubmenu` / `ReactSidebarNavSubmenu` / `ag-sidebar-nav-submenu` - Inline submenu for expanded mode
@@ -437,14 +540,15 @@ The Sidebar uses companion components for navigation:
 
 ## Events
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `@update:open` (Vue) / `onToggle` (React) / `toggle` (Lit) | `boolean` | Emitted when the sidebar open state changes |
+| Event                                                               | Payload   | Description                                      |
+| ------------------------------------------------------------------- | --------- | ------------------------------------------------ |
+| `@update:open` (Vue) / `onToggle` (React) / `toggle` (Lit)          | `boolean` | Emitted when the sidebar open state changes      |
 | `@update:collapsed` (Vue) / `onCollapse` (React) / `collapse` (Lit) | `boolean` | Emitted when the sidebar collapsed state changes |
 
 ## Slots
 
 ### Vue
+
 - **slot="ag-header-start"**: Left-aligned header content (logo or title)
 - **slot="ag-header-end"**: Right-aligned header content (actions, before toggle)
 - **slot="ag-header-toggle"**: Custom collapse toggle button (always rightmost)
@@ -453,6 +557,7 @@ The Sidebar uses companion components for navigation:
 - **slot="ag-footer"**: Footer content
 
 ### React
+
 - **slot="ag-header-start"**: Left-aligned header content
 - **slot="ag-header-end"**: Right-aligned header content
 - **slot="ag-header-toggle"**: Custom collapse toggle button
@@ -461,6 +566,7 @@ The Sidebar uses companion components for navigation:
 - **slot="ag-footer"**: Footer content
 
 ### Lit
+
 - **slot="ag-header-start"**: Left-aligned header content
 - **slot="ag-header-end"**: Right-aligned header content
 - **slot="ag-header-toggle"**: Custom collapse toggle button
@@ -470,9 +576,9 @@ The Sidebar uses companion components for navigation:
 
 ## Methods
 
-| Method | Description |
-|--------|-------------|
-| `toggleCollapse()` | Toggles the collapsed state of the sidebar |
+| Method               | Description                                                              |
+| -------------------- | ------------------------------------------------------------------------ |
+| `toggleCollapse()`   | Toggles the collapsed state of the sidebar                               |
 | `toggleResponsive()` | Toggles the responsive open/close state (used with `disableCompactMode`) |
 
 ## Accessibility
@@ -504,17 +610,21 @@ The Sidebar component follows accessibility best practices:
 ## Use Cases
 
 ### Expanded/Collapsed Mode (Default)
+
 The sidebar can toggle between full-width (expanded) and icon-only (rail/collapsed) modes on desktop. On mobile, it becomes an overlay that can be opened/closed.
 
 **Use for:**
+
 - Dashboard applications with complex navigation
 - Admin panels with multiple sections
 - Documentation sites with nested navigation
 
 ### Disable Compact Mode
+
 With `disableCompactMode`, the sidebar has no intermediate collapsed state—it's either fully open or completely hidden. This matches patterns like Claude AI Studio.
 
 **Use for:**
+
 - Applications where icon-only mode isn't needed
 - Simpler navigation structures
 - Mobile-first applications
@@ -522,16 +632,19 @@ With `disableCompactMode`, the sidebar has no intermediate collapsed state—it'
 ### Header Patterns
 
 **Composable Header** (`ag-header-start`, `ag-header-end`, `ag-header-toggle`):
+
 - Logo/title on the left
 - Actions (settings, notifications) in the middle
 - Toggle button on the right
 
 **Monolithic Header** (`ag-header`):
+
 - Full control over header layout
 - Logo-as-toggle pattern
 - Custom header interactions
 
 **Built-in Toggle** (`show-header-toggle`):
+
 - Automatic toggle button
 - No custom header slot needed
 - Consistent behavior
@@ -710,7 +823,12 @@ When using popovers for collapsed mode submenus, add the collapsed indicator ins
   <span class="nav-label">Projects</span>
   <span class="collapsed-indicator">
     <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+      <path
+        d="M2 3l2 2 2-2"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+      />
     </svg>
   </span>
 </button>
