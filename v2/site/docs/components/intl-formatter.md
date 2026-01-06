@@ -7,11 +7,28 @@ A comprehensive, framework-agnostic web component that wraps the browser's nativ
 
 ## Examples
 
-<IntlFormatterExamples />
+<FrameworkExample
+  component="intl-formatter"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <IntlFormatterExamples />
+  </template>
+  <template #lit>
+    <intl-formatter-lit-examples></intl-formatter-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
-import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue';
+import IntlFormatterExamples from '../examples/IntlFormatterExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/IntlFormatterLitExamples.js'
+import vueCode from '../examples/IntlFormatterExamples.vue?raw'
+import litCode from '../examples/IntlFormatterLitExamples.js?raw'
+import reactCode from '../examples/IntlFormatterReactExamples.jsx?raw'
 import { Accessibility, Bell, Layers, Package, Globe, Palette, Target, Zap } from 'lucide-vue-next';
 </script>
 
