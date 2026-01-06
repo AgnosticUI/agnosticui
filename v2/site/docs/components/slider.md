@@ -7,11 +7,28 @@ Slider allows a user to select a value or range of values by moving a thumb alon
 
 ## Examples
 
-<SliderExamples />
+<FrameworkExample
+  component="slider"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <SliderExamples />
+  </template>
+  <template #lit>
+    <slider-lit-examples></slider-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import SliderExamples from '../examples/SliderExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/SliderLitExamples.js'
+import vueCode from '../examples/SliderExamples.vue?raw'
+import litCode from '../examples/SliderLitExamples.js?raw'
+import reactCode from '../examples/SliderReactExamples.jsx?raw'
 </script>
 
 ## Usage
