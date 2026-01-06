@@ -29,6 +29,7 @@
 - ✅ IntlFormatter
 - ✅ Kbd
 - ✅ Link
+- ✅ Loader
 - ✅ Tooltip
 - ✅ VisuallyHidden
 
