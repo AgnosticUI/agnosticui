@@ -191,6 +191,122 @@ export default function MenuReactExamples() {
         </div>
 
         <div className="mbe4">
+          <h2>Menu with Sections</h2>
+        </div>
+        <div className="stacked mbe4">
+          <ReactMenu menuAriaLabel="User menu">
+            <div className="flex-inline items-center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" className="mie2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              User Menu
+            </div>
+            <ReactMenuItem slot="menu" value="profile">Profile</ReactMenuItem>
+            <ReactMenuItem slot="menu" value="settings">Settings</ReactMenuItem>
+            <ReactMenuSeparator slot="menu" />
+            <ReactMenuItem slot="menu" value="help">Help</ReactMenuItem>
+            <ReactMenuItem slot="menu" value="feedback">Send Feedback</ReactMenuItem>
+            <ReactMenuSeparator slot="menu" />
+            <ReactMenuItem slot="menu" value="logout">Logout</ReactMenuItem>
+          </ReactMenu>
+        </div>
+
+        <div className="mbe4">
+          <h2>Menu with Icon Button</h2>
+          <p className="mbe4">
+            The following examples show using an icon as the trigger. The <code>menu-variant="icon"</code> removes the chevron and provides a minimal button container for the icon. You can also use an icon with the default chevron trigger as we see on the right.
+          </p>
+        </div>
+        <div className="mbe4">
+          <h3>Large</h3>
+          <div className="flex-inline items-center" style={{ gap: "1rem" }}>
+            {/* Icon only */}
+            <ReactMenu menuVariant="icon" ghost menuAriaLabel="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="24" height="24">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ReactMenuItem slot="menu" value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem slot="menu" value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator slot="menu" />
+              <ReactMenuItem slot="menu" value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+            {/* Icon with chevron */}
+            <ReactMenu menuAriaLabel="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="24" height="24">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ReactMenuItem slot="menu" value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem slot="menu" value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator slot="menu" />
+              <ReactMenuItem slot="menu" value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+          </div>
+        </div>
+        <div className="mbe4">
+          <h3>Medium</h3>
+          <div className="flex-inline items-center" style={{ gap: "1rem" }}>
+            {/* Icon only */}
+            <ReactMenu menuVariant="icon" ghost size="sm" menuAriaLabel="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ReactMenuItem slot="menu" value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem slot="menu" value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator slot="menu" />
+              <ReactMenuItem slot="menu" value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+            {/* Icon with chevron */}
+            <ReactMenu size="sm" menuAriaLabel="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ReactMenuItem slot="menu" value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem slot="menu" value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator slot="menu" />
+              <ReactMenuItem slot="menu" value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+          </div>
+        </div>
+        <div className="mbe4">
+          <h3>Small</h3>
+          <div className="flex-inline items-center" style={{ gap: "1rem" }}>
+            {/* Icon only */}
+            <ReactMenu menuVariant="icon" ghost size="x-sm" menuAriaLabel="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ReactMenuItem slot="menu" value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem slot="menu" value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator slot="menu" />
+              <ReactMenuItem slot="menu" value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+            {/* Icon with chevron */}
+            <ReactMenu size="x-sm" menuAriaLabel="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ReactMenuItem slot="menu" value="settings">Settings</ReactMenuItem>
+              <ReactMenuItem slot="menu" value="profile">Profile</ReactMenuItem>
+              <ReactMenuSeparator slot="menu" />
+              <ReactMenuItem slot="menu" value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+          </div>
+        </div>
+
+        <div className="mbe4">
           <h2>Monochrome Variant</h2>
         </div>
         <div className="stacked mbe4">
@@ -275,6 +391,146 @@ export default function MenuReactExamples() {
               <ReactMenuItem slot="menu" value="option2">Option 2</ReactMenuItem>
               <ReactMenuItem slot="menu" value="option3">Option 3</ReactMenuItem>
             </ReactMenu>
+          </div>
+        </div>
+
+        <div className="mbe4">
+          <h2>Responsive Hidden Items (checkHiddenItems)</h2>
+          <p className="mbe4">
+            The <code>check-hidden-items</code> prop enables the menu to skip items that are hidden via CSS (like responsive media queries). This is useful when you wrap menu items in responsive containers but want keyboard navigation to work correctly.
+          </p>
+          <p className="mbe4">
+            <strong>Performance Note:</strong> Enabling this feature checks computed styles on every keyboard navigation, which has a performance cost. Only enable it if you're using CSS-based hiding. For better performance, prefer conditional rendering instead.
+          </p>
+        </div>
+        <div className="stacked mbe4">
+          <div>
+            <p className="mbe4">
+              <strong>Try resizing your browser:</strong> Desktop items are hidden on mobile (&lt;768px), mobile items are hidden on desktop. Keyboard navigation skips hidden items.
+            </p>
+            <ReactMenu checkHiddenItems menuAriaLabel="Responsive menu">
+              Responsive Menu
+              <div slot="menu" className="desktop-only-items">
+                <ReactMenuItem value="desktop1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" className="mie2" style={{ display: "inline-block", verticalAlign: "middle" }}>
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>Desktop Item 1
+                </ReactMenuItem>
+                <ReactMenuItem value="desktop2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" className="mie2" style={{ display: "inline-block", verticalAlign: "middle" }}>
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>Desktop Item 2
+                </ReactMenuItem>
+              </div>
+              <div slot="menu" className="mobile-only-items">
+                <ReactMenuItem value="mobile1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" className="mie2" style={{ display: "inline-block", verticalAlign: "middle" }}>
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>Mobile Item 1
+                </ReactMenuItem>
+                <ReactMenuItem value="mobile2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" className="mie2" style={{ display: "inline-block", verticalAlign: "middle" }}>
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>Mobile Item 2
+                </ReactMenuItem>
+              </div>
+              <ReactMenuSeparator slot="menu" />
+              <ReactMenuItem slot="menu" value="always">Always Visible</ReactMenuItem>
+            </ReactMenu>
+          </div>
+        </div>
+
+        <div className="mbe4">
+          <h2>Recommended: Conditional Rendering (Better Performance)</h2>
+          <p className="mbe4">
+            Instead of using <code>check-hidden-items</code>, you can achieve the same result with better performance by using conditional rendering. This removes hidden items from the DOM entirely.
+          </p>
+        </div>
+        <div className="stacked mbe4">
+          <div>
+            <p className="mbe4">
+              <strong>Current viewport:</strong> {isMobile ? 'Mobile' : 'Desktop'}
+            </p>
+            <ReactMenu menuAriaLabel="Conditional menu">
+              Conditional Menu
+              {!isMobile && (
+                <ReactMenuItem slot="menu" value="desktop1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" className="mie2" style={{ display: "inline-block", verticalAlign: "middle" }}>
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>Desktop Item 1
+                </ReactMenuItem>
+              )}
+              {!isMobile && (
+                <ReactMenuItem slot="menu" value="desktop2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" className="mie2" style={{ display: "inline-block", verticalAlign: "middle" }}>
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>Desktop Item 2
+                </ReactMenuItem>
+              )}
+              {isMobile && (
+                <ReactMenuItem slot="menu" value="mobile1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" className="mie2" style={{ display: "inline-block", verticalAlign: "middle" }}>
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>Mobile Item 1
+                </ReactMenuItem>
+              )}
+              {isMobile && (
+                <ReactMenuItem slot="menu" value="mobile2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" className="mie2" style={{ display: "inline-block", verticalAlign: "middle" }}>
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>Mobile Item 2
+                </ReactMenuItem>
+              )}
+              <ReactMenuSeparator slot="menu" />
+              <ReactMenuItem slot="menu" value="always">Always Visible</ReactMenuItem>
+            </ReactMenu>
+          </div>
+        </div>
+
+        <div className="mbe4">
+          <h2>Dynamic Icon Switching</h2>
+          <p className="mbe4">
+            The menu button exposes a <code>data-menu-open</code> attribute that changes based on the menu state. You can use this with CSS to dynamically switch icons when the menu opens/closes.
+          </p>
+        </div>
+        <div className="stacked mbe4">
+          <div className="flex-inline items-center" style={{ gap: "1rem" }}>
+            <ReactMenu
+              menuVariant="icon"
+              ghost
+              size="sm"
+              className="dynamic-icon-menu"
+              ariaLabel="Toggle menu"
+              menuAriaLabel="Navigation menu"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14" className="menu-icon">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14" className="close-icon">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              <ReactMenuItem slot="menu" value="home">Home</ReactMenuItem>
+              <ReactMenuItem slot="menu" value="about">About</ReactMenuItem>
+              <ReactMenuItem slot="menu" value="contact">Contact</ReactMenuItem>
+              <ReactMenuSeparator slot="menu" />
+              <ReactMenuItem slot="menu" value="logout">Logout</ReactMenuItem>
+            </ReactMenu>
+            <p>Click the icon to see it change from ☰ to ✕</p>
           </div>
         </div>
 
