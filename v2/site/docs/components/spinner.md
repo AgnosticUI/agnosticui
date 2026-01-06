@@ -7,11 +7,28 @@ A spinner component displays a circular rotating animation to indicate loading s
 
 ## Examples
 
-<SpinnerExamples />
+<FrameworkExample
+  component="spinner"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <SpinnerExamples />
+  </template>
+  <template #lit>
+    <spinner-lit-examples></spinner-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import SpinnerExamples from '../examples/SpinnerExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/SpinnerLitExamples.js'
+import vueCode from '../examples/SpinnerExamples.vue?raw'
+import litCode from '../examples/SpinnerLitExamples.js?raw'
+import reactCode from '../examples/SpinnerReactExamples.jsx?raw'
 </script>
 
 ## Usage
