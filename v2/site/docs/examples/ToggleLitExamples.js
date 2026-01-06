@@ -3,6 +3,10 @@ import 'agnosticui-core/toggle';
 import 'agnosticui-core/button';
 
 export class ToggleLitExamples extends LitElement {
+  createRenderRoot() {
+    return this;
+  }
+
   static get properties() {
     return {
       notificationsEnabled: { type: Boolean, state: true },

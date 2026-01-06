@@ -2,6 +2,10 @@ import { LitElement, html } from 'lit';
 import 'agnosticui-core/link';
 
 export class LinkLitExamples extends LitElement {
+  createRenderRoot() {
+    return this;
+  }
+
   render() {
     return html`
       <section>

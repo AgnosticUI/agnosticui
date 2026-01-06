@@ -2,6 +2,10 @@ import { LitElement, html, css } from 'lit';
 import 'agnosticui-core/intl-formatter';
 
 export class IntlFormatterLitExamples extends LitElement {
+  createRenderRoot() {
+    return this;
+  }
+
   static styles = css`
     /* Dashboard stats styling */
     .stat-card {

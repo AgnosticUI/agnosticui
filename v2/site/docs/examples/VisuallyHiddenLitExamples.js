@@ -2,6 +2,10 @@ import { LitElement, html } from 'lit';
 import 'agnosticui-core/visually-hidden';
 
 export class VisuallyHiddenLitExamples extends LitElement {
+  createRenderRoot() {
+    return this;
+  }
+
   render() {
     return html`
       <section>
