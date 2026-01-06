@@ -3,6 +3,10 @@ import 'agnosticui-core/tooltip';
 import 'agnosticui-core/button';
 
 export class TooltipLitExamples extends LitElement {
+  createRenderRoot() {
+    return this;
+  }
+
   render() {
     return html`
       <section>

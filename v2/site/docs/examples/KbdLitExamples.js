@@ -2,6 +2,10 @@ import { LitElement, html } from 'lit';
 import 'agnosticui-core/kbd';
 
 export class KbdLitExamples extends LitElement {
+  createRenderRoot() {
+    return this;
+  }
+
   render() {
     return html`
       <section>

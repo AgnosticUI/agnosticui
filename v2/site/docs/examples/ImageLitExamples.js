@@ -3,6 +3,10 @@ import 'agnosticui-core/image';
 import 'agnosticui-core/icon';
 
 export class ImageLitExamples extends LitElement {
+  createRenderRoot() {
+    return this;
+  }
+
   static properties = {
     basicImageSrc: { type: String },
     responsiveImageSrc: { type: String },
