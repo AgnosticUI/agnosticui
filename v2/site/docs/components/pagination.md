@@ -7,12 +7,33 @@ Pagination allows users to navigate through pages of content. It displays page n
 
 ## Examples
 
-<PaginationExamples />
+<FrameworkExample
+  component="pagination"
+  :vue-code="paginationVueCode"
+  :lit-code="paginationLitCode"
+  :react-code="paginationReactCode"
+>
+  <template #vue>
+    <PaginationExamples />
+  </template>
+  <template #lit>
+    <pagination-lit-examples></pagination-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import PaginationExamples from '../examples/PaginationExamples.vue'
 import ContentPaginationExamples from '../examples/ContentPaginationExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/PaginationLitExamples.js'
+import '../examples/ContentPaginationLitExamples.js'
+import paginationVueCode from '../examples/PaginationExamples.vue?raw'
+import paginationLitCode from '../examples/PaginationLitExamples.js?raw'
+import paginationReactCode from '../examples/PaginationReactExamples.jsx?raw'
+import contentPaginationVueCode from '../examples/ContentPaginationExamples.vue?raw'
+import contentPaginationLitCode from '../examples/ContentPaginationLitExamples.js?raw'
+import contentPaginationReactCode from '../examples/ContentPaginationReactExamples.jsx?raw'
 </script>
 
 ## Usage
@@ -429,7 +450,19 @@ Content Pagination provides navigation between sequential content items (like do
 
 ## Examples
 
-<ContentPaginationExamples />
+<FrameworkExample
+  component="content-pagination"
+  :vue-code="contentPaginationVueCode"
+  :lit-code="contentPaginationLitCode"
+  :react-code="contentPaginationReactCode"
+>
+  <template #vue>
+    <ContentPaginationExamples />
+  </template>
+  <template #lit>
+    <content-pagination-lit-examples></content-pagination-lit-examples>
+  </template>
+</FrameworkExample>
 
 ## Usage
 
