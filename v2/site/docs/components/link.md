@@ -5,11 +5,30 @@
 
 The Link component is a semantic, accessible wrapper around the native HTML `<a>` element that provides consistent styling, variants, and states while preserving native browser accessibility features.
 
-<LinkExamples />
+## Examples
+
+<FrameworkExample
+  component="link"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <LinkExamples />
+  </template>
+  <template #lit>
+    <link-lit-examples></link-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import LinkExamples from '../examples/LinkExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/LinkLitExamples.js'
+import vueCode from '../examples/LinkExamples.vue?raw'
+import litCode from '../examples/LinkLitExamples.js?raw'
+import reactCode from '../examples/LinkReactExamples.jsx?raw'
 </script>
 
 ## Usage
