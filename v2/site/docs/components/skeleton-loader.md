@@ -5,11 +5,30 @@
 
 Skeleton loader provides a visual placeholders while content is loading, improving perceived performance and user experience. It represents the approximate shape and size of the content that will appear.
 
-<SkeletonLoaderExamples />
+## Examples
+
+<FrameworkExample
+  component="skeleton"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <SkeletonLoaderExamples />
+  </template>
+  <template #lit>
+    <skeleton-loader-lit-examples></skeleton-loader-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import SkeletonLoaderExamples from '../examples/SkeletonLoaderExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/SkeletonLoaderLitExamples.js'
+import vueCode from '../examples/SkeletonLoaderExamples.vue?raw'
+import litCode from '../examples/SkeletonLoaderLitExamples.js?raw'
+import reactCode from '../examples/SkeletonLoaderReactExamples.jsx?raw'
 </script>
 
 ## Usage
