@@ -5,11 +5,30 @@
 
 Brief description of what the component does and when to use it.
 
-<LoaderExamples />
+## Examples
+
+<FrameworkExample
+  component="loader"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <LoaderExamples />
+  </template>
+  <template #lit>
+    <loader-lit-examples></loader-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import LoaderExamples from '../examples/LoaderExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/LoaderLitExamples.js'
+import vueCode from '../examples/LoaderExamples.vue?raw'
+import litCode from '../examples/LoaderLitExamples.js?raw'
+import reactCode from '../examples/LoaderReactExamples.jsx?raw'
 </script>
 
 ## Usage
