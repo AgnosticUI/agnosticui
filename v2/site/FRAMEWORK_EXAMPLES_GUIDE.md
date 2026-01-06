@@ -26,6 +26,8 @@
 - ✅ IconButtonFx
 - ✅ Image
 - ✅ Input
+- ✅ IntlFormatter
+- ✅ Kbd
 - ✅ Tooltip
 - ✅ VisuallyHidden
 

@@ -9,11 +9,30 @@ Keyboard key components are used to represent keyboard shortcuts, hotkeys, or us
 Note that single character content within an <i>&lt;ag-kbd&gt;</i> tag is bumped up by a single font size scale for readability.
 :::
 
-<KbdExamples />
+## Examples
+
+<FrameworkExample
+  component="kbd"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <KbdExamples />
+  </template>
+  <template #lit>
+    <kbd-lit-examples></kbd-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import KbdExamples from '../examples/KbdExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/KbdLitExamples.js'
+import vueCode from '../examples/KbdExamples.vue?raw'
+import litCode from '../examples/KbdLitExamples.js?raw'
+import reactCode from '../examples/KbdReactExamples.jsx?raw'
 </script>
 
 ## Usage
