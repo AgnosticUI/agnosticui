@@ -8,11 +8,30 @@ The `Mark` component is used to highlight or "mark" a portion of text. It can be
 1.  **Static Mode**: By default, it wraps its content in a `<mark>` tag, similar to the native HTML element, but styled with AgnosticUI design tokens.
 2.  **Reactive Mode**: When a `search` prop is provided, the component will dynamically find and highlight substrings within its content that match the search term.
 
-<MarkExamples />
+## Examples
+
+<FrameworkExample
+  component="mark"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <MarkExamples />
+  </template>
+  <template #lit>
+    <mark-lit-examples></mark-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import MarkExamples from '../examples/MarkExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/MarkLitExamples.js'
+import vueCode from '../examples/MarkExamples.vue?raw'
+import litCode from '../examples/MarkLitExamples.js?raw'
+import reactCode from '../examples/MarkReactExamples.jsx?raw'
 </script>
 
 ## Usage

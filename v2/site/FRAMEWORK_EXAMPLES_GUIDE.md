@@ -30,6 +30,7 @@
 - ✅ Kbd
 - ✅ Link
 - ✅ Loader
+- ✅ Mark
 - ✅ Tooltip
 - ✅ VisuallyHidden
 
