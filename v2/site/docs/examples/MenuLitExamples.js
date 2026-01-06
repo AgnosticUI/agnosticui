@@ -114,14 +114,16 @@ export class MenuLitExamples extends LitElement {
           <h2>Basic Menu</h2>
         </div>
         <div class="stacked mbe4">
-          <ag-menu menu-aria-label="Menu options">
+          <ag-menu-button menu-aria-label="Menu options">
             Menu
-            <ag-menu-item slot="menu" value="edit">Edit</ag-menu-item>
-            <ag-menu-item slot="menu" value="copy">Copy</ag-menu-item>
-            <ag-menu-item slot="menu" value="paste">Paste</ag-menu-item>
-            <ag-menu-separator slot="menu"></ag-menu-separator>
-            <ag-menu-item slot="menu" value="delete">Delete</ag-menu-item>
-          </ag-menu>
+            <ag-menu slot="menu">
+              <ag-menu-item value="edit">Edit</ag-menu-item>
+              <ag-menu-item value="copy">Copy</ag-menu-item>
+              <ag-menu-item value="paste">Paste</ag-menu-item>
+              <ag-menu-separator></ag-menu-separator>
+              <ag-menu-item value="delete">Delete</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
         </div>
 
         <div class="mbe4">
@@ -132,18 +134,22 @@ export class MenuLitExamples extends LitElement {
         </div>
         <div class="stacked mbe4">
           <div class="flex items-center" style="gap: 1rem; justify-content: space-between;">
-            <ag-menu menu-align="left" menu-aria-label="Left-aligned menu">
+            <ag-menu-button menu-align="left" menu-aria-label="Left-aligned menu">
               Left Aligned
-              <ag-menu-item slot="menu" value="option1">Option 1</ag-menu-item>
-              <ag-menu-item slot="menu" value="option2">Option 2</ag-menu-item>
-              <ag-menu-item slot="menu" value="option3">Option 3</ag-menu-item>
-            </ag-menu>
-            <ag-menu menu-align="right" menu-aria-label="Right-aligned menu">
+              <ag-menu slot="menu">
+                <ag-menu-item value="option1">Option 1</ag-menu-item>
+                <ag-menu-item value="option2">Option 2</ag-menu-item>
+                <ag-menu-item value="option3">Option 3</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
+            <ag-menu-button menu-align="right" menu-aria-label="Right-aligned menu">
               Right Aligned
-              <ag-menu-item slot="menu" value="option1">Option 1</ag-menu-item>
-              <ag-menu-item slot="menu" value="option2">Option 2</ag-menu-item>
-              <ag-menu-item slot="menu" value="option3">Option 3</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                <ag-menu-item value="option1">Option 1</ag-menu-item>
+                <ag-menu-item value="option2">Option 2</ag-menu-item>
+                <ag-menu-item value="option3">Option 3</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
           </div>
         </div>
 
@@ -151,70 +157,78 @@ export class MenuLitExamples extends LitElement {
           <h2>Menu with Links</h2>
         </div>
         <div class="stacked mbe4">
-          <ag-menu menu-aria-label="Navigation menu">
+          <ag-menu-button menu-aria-label="Navigation menu">
             Navigation
-            <ag-menu-item slot="menu" value="home" href="#home">Home</ag-menu-item>
-            <ag-menu-item slot="menu" value="about" href="#about">About</ag-menu-item>
-            <ag-menu-item slot="menu" value="contact" href="#contact">Contact</ag-menu-item>
-            <ag-menu-separator slot="menu"></ag-menu-separator>
-            <ag-menu-item slot="menu" value="external" href="https://example.com" target="_blank">
-              External Link
-            </ag-menu-item>
-          </ag-menu>
+            <ag-menu slot="menu">
+              <ag-menu-item value="home" href="#home">Home</ag-menu-item>
+              <ag-menu-item value="about" href="#about">About</ag-menu-item>
+              <ag-menu-item value="contact" href="#contact">Contact</ag-menu-item>
+              <ag-menu-separator></ag-menu-separator>
+              <ag-menu-item value="external" href="https://example.com" target="_blank">
+                External Link
+              </ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
         </div>
 
         <div class="mbe4">
           <h2>Disabled Button</h2>
         </div>
         <div class="stacked mbe4">
-          <ag-menu disabled menu-aria-label="Disabled menu">
+          <ag-menu-button disabled menu-aria-label="Disabled menu">
             Disabled Menu
-            <ag-menu-item slot="menu" value="item1">Item 1</ag-menu-item>
-            <ag-menu-item slot="menu" value="item2">Item 2</ag-menu-item>
-          </ag-menu>
+            <ag-menu slot="menu">
+              <ag-menu-item value="item1">Item 1</ag-menu-item>
+              <ag-menu-item value="item2">Item 2</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
         </div>
 
         <div class="mbe4">
           <h2>Menu with Disabled Items</h2>
         </div>
         <div class="stacked mbe4">
-          <ag-menu menu-aria-label="Menu with disabled items">
+          <ag-menu-button menu-aria-label="Menu with disabled items">
             Mixed States
-            <ag-menu-item slot="menu" value="enabled1">Enabled Item</ag-menu-item>
-            <ag-menu-item slot="menu" value="disabled1" disabled>Disabled Item</ag-menu-item>
-            <ag-menu-item slot="menu" value="enabled2">Another Enabled</ag-menu-item>
-            <ag-menu-separator slot="menu"></ag-menu-separator>
-            <ag-menu-item slot="menu" value="disabled2" disabled>Another Disabled</ag-menu-item>
-          </ag-menu>
+            <ag-menu slot="menu">
+              <ag-menu-item value="enabled1">Enabled Item</ag-menu-item>
+              <ag-menu-item value="disabled1" disabled>Disabled Item</ag-menu-item>
+              <ag-menu-item value="enabled2">Another Enabled</ag-menu-item>
+              <ag-menu-separator></ag-menu-separator>
+              <ag-menu-item value="disabled2" disabled>Another Disabled</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
         </div>
 
         <div class="mbe4">
           <h2>Complex Menu (File Menu)</h2>
         </div>
         <div class="stacked mbe4">
-          <ag-menu menu-aria-label="File menu">
+          <ag-menu-button menu-aria-label="File menu">
             File
-            <ag-menu-item slot="menu" value="new">New</ag-menu-item>
-            <ag-menu-item slot="menu" value="open">Open...</ag-menu-item>
-            <ag-menu-item slot="menu" value="recent">Open Recent</ag-menu-item>
-            <ag-menu-separator slot="menu"></ag-menu-separator>
-            <ag-menu-item slot="menu" value="save">Save</ag-menu-item>
-            <ag-menu-item slot="menu" value="save-as">Save As...</ag-menu-item>
-            <ag-menu-separator slot="menu"></ag-menu-separator>
-            <ag-menu-item slot="menu" value="export">Export</ag-menu-item>
-            <ag-menu-item slot="menu" value="import">Import</ag-menu-item>
-            <ag-menu-separator slot="menu"></ag-menu-separator>
-            <ag-menu-item slot="menu" value="print">Print</ag-menu-item>
-            <ag-menu-separator slot="menu"></ag-menu-separator>
-            <ag-menu-item slot="menu" value="close">Close</ag-menu-item>
-          </ag-menu>
+            <ag-menu slot="menu">
+              <ag-menu-item value="new">New</ag-menu-item>
+              <ag-menu-item value="open">Open...</ag-menu-item>
+              <ag-menu-item value="recent">Open Recent</ag-menu-item>
+              <ag-menu-separator></ag-menu-separator>
+              <ag-menu-item value="save">Save</ag-menu-item>
+              <ag-menu-item value="save-as">Save As...</ag-menu-item>
+              <ag-menu-separator></ag-menu-separator>
+              <ag-menu-item value="export">Export</ag-menu-item>
+              <ag-menu-item value="import">Import</ag-menu-item>
+              <ag-menu-separator></ag-menu-separator>
+              <ag-menu-item value="print">Print</ag-menu-item>
+              <ag-menu-separator></ag-menu-separator>
+              <ag-menu-item value="close">Close</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
         </div>
 
         <div class="mbe4">
           <h2>Menu with Sections</h2>
         </div>
         <div class="stacked mbe4">
-          <ag-menu menu-aria-label="User menu">
+          <ag-menu-button menu-aria-label="User menu">
             <div class="flex-inline items-center">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -222,14 +236,16 @@ export class MenuLitExamples extends LitElement {
               </svg>
               User Menu
             </div>
-            <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
-            <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
-            <ag-menu-separator slot="menu"></ag-menu-separator>
-            <ag-menu-item slot="menu" value="help">Help</ag-menu-item>
-            <ag-menu-item slot="menu" value="feedback">Send Feedback</ag-menu-item>
-            <ag-menu-separator slot="menu"></ag-menu-separator>
-            <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
-          </ag-menu>
+            <ag-menu slot="menu">
+              <ag-menu-item value="profile">Profile</ag-menu-item>
+              <ag-menu-item value="settings">Settings</ag-menu-item>
+              <ag-menu-separator></ag-menu-separator>
+              <ag-menu-item value="help">Help</ag-menu-item>
+              <ag-menu-item value="feedback">Send Feedback</ag-menu-item>
+              <ag-menu-separator></ag-menu-separator>
+              <ag-menu-item value="logout">Logout</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
         </div>
 
         <div class="mbe4">
@@ -242,87 +258,99 @@ export class MenuLitExamples extends LitElement {
           <h3>Large</h3>
           <div class="flex-inline items-center" style="gap: 1rem;">
             <!-- Icon only -->
-            <ag-menu menu-variant="icon" ghost menu-aria-label="More options menu">
+            <ag-menu-button menu-variant="icon" ghost menu-aria-label="More options menu">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
                 <line x1="3" y1="12" x2="21" y2="12"/>
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <line x1="3" y1="18" x2="21" y2="18"/>
               </svg>
-              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
-              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
-              <ag-menu-separator slot="menu"></ag-menu-separator>
-              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                <ag-menu-item value="settings">Settings</ag-menu-item>
+                <ag-menu-item value="profile">Profile</ag-menu-item>
+                <ag-menu-separator></ag-menu-separator>
+                <ag-menu-item value="logout">Logout</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
             <!-- Icon with chevron -->
-            <ag-menu menu-aria-label="More options menu">
+            <ag-menu-button menu-aria-label="More options menu">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
                 <line x1="3" y1="12" x2="21" y2="12"/>
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <line x1="3" y1="18" x2="21" y2="18"/>
               </svg>
-              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
-              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
-              <ag-menu-separator slot="menu"></ag-menu-separator>
-              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                <ag-menu-item value="settings">Settings</ag-menu-item>
+                <ag-menu-item value="profile">Profile</ag-menu-item>
+                <ag-menu-separator></ag-menu-separator>
+                <ag-menu-item value="logout">Logout</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
           </div>
         </div>
         <div class="mbe4">
           <h3>Medium</h3>
           <div class="flex-inline items-center" style="gap: 1rem;">
             <!-- Icon only -->
-            <ag-menu menu-variant="icon" ghost size="sm" menu-aria-label="More options menu">
+            <ag-menu-button menu-variant="icon" ghost size="sm" menu-aria-label="More options menu">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
                 <line x1="3" y1="12" x2="21" y2="12"/>
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <line x1="3" y1="18" x2="21" y2="18"/>
               </svg>
-              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
-              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
-              <ag-menu-separator slot="menu"></ag-menu-separator>
-              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                <ag-menu-item value="settings">Settings</ag-menu-item>
+                <ag-menu-item value="profile">Profile</ag-menu-item>
+                <ag-menu-separator></ag-menu-separator>
+                <ag-menu-item value="logout">Logout</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
             <!-- Icon with chevron -->
-            <ag-menu size="sm" menu-aria-label="More options menu">
+            <ag-menu-button size="sm" menu-aria-label="More options menu">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
                 <line x1="3" y1="12" x2="21" y2="12"/>
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <line x1="3" y1="18" x2="21" y2="18"/>
               </svg>
-              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
-              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
-              <ag-menu-separator slot="menu"></ag-menu-separator>
-              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                <ag-menu-item value="settings">Settings</ag-menu-item>
+                <ag-menu-item value="profile">Profile</ag-menu-item>
+                <ag-menu-separator></ag-menu-separator>
+                <ag-menu-item value="logout">Logout</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
           </div>
         </div>
         <div class="mbe4">
           <h3>Small</h3>
           <div class="flex-inline items-center" style="gap: 1rem;">
             <!-- Icon only -->
-            <ag-menu menu-variant="icon" ghost size="x-sm" menu-aria-label="More options menu">
+            <ag-menu-button menu-variant="icon" ghost size="x-sm" menu-aria-label="More options menu">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
                 <line x1="3" y1="12" x2="21" y2="12"/>
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <line x1="3" y1="18" x2="21" y2="18"/>
               </svg>
-              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
-              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
-              <ag-menu-separator slot="menu"></ag-menu-separator>
-              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                <ag-menu-item value="settings">Settings</ag-menu-item>
+                <ag-menu-item value="profile">Profile</ag-menu-item>
+                <ag-menu-separator></ag-menu-separator>
+                <ag-menu-item value="logout">Logout</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
             <!-- Icon with chevron -->
-            <ag-menu size="x-sm" menu-aria-label="More options menu">
+            <ag-menu-button size="x-sm" menu-aria-label="More options menu">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
                 <line x1="3" y1="12" x2="21" y2="12"/>
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <line x1="3" y1="18" x2="21" y2="18"/>
               </svg>
-              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
-              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
-              <ag-menu-separator slot="menu"></ag-menu-separator>
-              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                <ag-menu-item value="settings">Settings</ag-menu-item>
+                <ag-menu-item value="profile">Profile</ag-menu-item>
+                <ag-menu-separator></ag-menu-separator>
+                <ag-menu-item value="logout">Logout</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
           </div>
         </div>
 
@@ -330,12 +358,14 @@ export class MenuLitExamples extends LitElement {
           <h2>Monochrome Variant</h2>
         </div>
         <div class="stacked mbe4">
-          <ag-menu menu-aria-label="Monochrome menu" button-variant="monochrome">
+          <ag-menu-button menu-aria-label="Monochrome menu" button-variant="monochrome">
             Monochrome Menu
-            <ag-menu-item slot="menu" value="option1" variant="monochrome">Option 1</ag-menu-item>
-            <ag-menu-item slot="menu" value="option2" variant="monochrome" selected>Option 2 (Selected)</ag-menu-item>
-            <ag-menu-item slot="menu" value="option3" variant="monochrome">Option 3</ag-menu-item>
-          </ag-menu>
+            <ag-menu slot="menu">
+              <ag-menu-item value="option1" variant="monochrome">Option 1</ag-menu-item>
+              <ag-menu-item value="option2" variant="monochrome" selected>Option 2 (Selected)</ag-menu-item>
+              <ag-menu-item value="option3" variant="monochrome">Option 3</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
         </div>
 
         <div class="mbe4">
@@ -343,18 +373,20 @@ export class MenuLitExamples extends LitElement {
         </div>
         <div class="stacked mbe4">
           <div class="flex-inline items-center" style="gap: 10px;">
-            <ag-menu
+            <ag-menu-button
               menu-aria-label="Event testing menu"
               @menu-open=${this.handleMenuOpen}
               @menu-close=${this.handleMenuClose}
               @menu-select=${this.handleMenuSelect}
             >
               Event Test
-              <ag-menu-item slot="menu" value="option1">Option 1</ag-menu-item>
-              <ag-menu-item slot="menu" value="option2">Option 2</ag-menu-item>
-              <ag-menu-separator slot="menu"></ag-menu-separator>
-              <ag-menu-item slot="menu" value="option3">Option 3</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                <ag-menu-item value="option1">Option 1</ag-menu-item>
+                <ag-menu-item value="option2">Option 2</ag-menu-item>
+                <ag-menu-separator></ag-menu-separator>
+                <ag-menu-item value="option3">Option 3</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
             ${this.lastEvent ? html`<p>Last event: <strong>${this.lastEvent}</strong></p>` : ''}
           </div>
         </div>
@@ -372,13 +404,15 @@ export class MenuLitExamples extends LitElement {
               <p class="mbe4">
                 Selection clears when menu closes. Use for navigation and actions.
               </p>
-              <ag-menu menu-aria-label="User navigation">
+              <ag-menu-button menu-aria-label="User navigation">
                 User Menu
-                <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
-                <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
-                <ag-menu-separator slot="menu"></ag-menu-separator>
-                <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
-              </ag-menu>
+                <ag-menu slot="menu">
+                  <ag-menu-item value="profile">Profile</ag-menu-item>
+                  <ag-menu-item value="settings">Settings</ag-menu-item>
+                  <ag-menu-separator></ag-menu-separator>
+                  <ag-menu-item value="logout">Logout</ag-menu-item>
+                </ag-menu>
+              </ag-menu-button>
             </div>
 
             <div>
@@ -386,12 +420,14 @@ export class MenuLitExamples extends LitElement {
               <p class="mbe4">
                 Selection persists when menu closes. Use for filters, sorting, etc.
               </p>
-              <ag-menu menu-type="single-select" selected-value="date" menu-aria-label="Sort options">
+              <ag-menu-button menu-type="single-select" selected-value="date" menu-aria-label="Sort options">
                 Sort by
-                <ag-menu-item slot="menu" value="date">Date</ag-menu-item>
-                <ag-menu-item slot="menu" value="name">Name</ag-menu-item>
-                <ag-menu-item slot="menu" value="size">Size</ag-menu-item>
-              </ag-menu>
+                <ag-menu slot="menu">
+                  <ag-menu-item value="date">Date</ag-menu-item>
+                  <ag-menu-item value="name">Name</ag-menu-item>
+                  <ag-menu-item value="size">Size</ag-menu-item>
+                </ag-menu>
+              </ag-menu-button>
             </div>
           </div>
         </div>
@@ -405,12 +441,14 @@ export class MenuLitExamples extends LitElement {
         <div class="stacked mbe4">
           <div>
             <p class="mbe4">This menu has <code>additional-gutter="20px"</code></p>
-            <ag-menu menu-variant="chevron" additional-gutter="20px" menu-aria-label="Menu with additional gutter">
+            <ag-menu-button menu-variant="chevron" additional-gutter="20px" menu-aria-label="Menu with additional gutter">
               Menu with Extra Gutter
-              <ag-menu-item slot="menu" value="option1">Option 1</ag-menu-item>
-              <ag-menu-item slot="menu" value="option2">Option 2</ag-menu-item>
-              <ag-menu-item slot="menu" value="option3">Option 3</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                <ag-menu-item value="option1">Option 1</ag-menu-item>
+                <ag-menu-item value="option2">Option 2</ag-menu-item>
+                <ag-menu-item value="option3">Option 3</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
           </div>
         </div>
 
@@ -428,41 +466,43 @@ export class MenuLitExamples extends LitElement {
             <p class="mbe4">
               <strong>Try resizing your browser:</strong> Desktop items are hidden on mobile (&lt;768px), mobile items are hidden on desktop. Keyboard navigation skips hidden items.
             </p>
-            <ag-menu check-hidden-items menu-aria-label="Responsive menu">
+            <ag-menu-button check-hidden-items menu-aria-label="Responsive menu">
               Responsive Menu
-              <div slot="menu" class="desktop-only-items">
-                <ag-menu-item value="desktop1">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                    <line x1="8" y1="21" x2="16" y2="21"/>
-                    <line x1="12" y1="17" x2="12" y2="21"/>
-                  </svg>Desktop Item 1
-                </ag-menu-item>
-                <ag-menu-item value="desktop2">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                    <line x1="8" y1="21" x2="16" y2="21"/>
-                    <line x1="12" y1="17" x2="12" y2="21"/>
-                  </svg>Desktop Item 2
-                </ag-menu-item>
-              </div>
-              <div slot="menu" class="mobile-only-items">
-                <ag-menu-item value="mobile1">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                    <line x1="12" y1="18" x2="12.01" y2="18"/>
-                  </svg>Mobile Item 1
-                </ag-menu-item>
-                <ag-menu-item value="mobile2">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                    <line x1="12" y1="18" x2="12.01" y2="18"/>
-                  </svg>Mobile Item 2
-                </ag-menu-item>
-              </div>
-              <ag-menu-separator slot="menu"></ag-menu-separator>
-              <ag-menu-item slot="menu" value="always">Always Visible</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                <div class="desktop-only-items">
+                  <ag-menu-item value="desktop1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                      <line x1="8" y1="21" x2="16" y2="21"/>
+                      <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>Desktop Item 1
+                  </ag-menu-item>
+                  <ag-menu-item value="desktop2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                      <line x1="8" y1="21" x2="16" y2="21"/>
+                      <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>Desktop Item 2
+                  </ag-menu-item>
+                </div>
+                <div class="mobile-only-items">
+                  <ag-menu-item value="mobile1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                      <line x1="12" y1="18" x2="12.01" y2="18"/>
+                    </svg>Mobile Item 1
+                  </ag-menu-item>
+                  <ag-menu-item value="mobile2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                      <line x1="12" y1="18" x2="12.01" y2="18"/>
+                    </svg>Mobile Item 2
+                  </ag-menu-item>
+                </div>
+                <ag-menu-separator></ag-menu-separator>
+                <ag-menu-item value="always">Always Visible</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
           </div>
         </div>
 
@@ -477,90 +517,44 @@ export class MenuLitExamples extends LitElement {
             <p class="mbe4">
               <strong>Current viewport:</strong> ${this.isMobile ? 'Mobile' : 'Desktop'}
             </p>
-            <ag-menu menu-aria-label="Conditional menu">
+            <ag-menu-button menu-aria-label="Conditional menu">
               Conditional Menu
-              ${!this.isMobile ? html`
-                <ag-menu-item slot="menu" value="desktop1">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                    <line x1="8" y1="21" x2="16" y2="21"/>
-                    <line x1="12" y1="17" x2="12" y2="21"/>
-                  </svg>Desktop Item 1
-                </ag-menu-item>
-                <ag-menu-item slot="menu" value="desktop2">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                    <line x1="8" y1="21" x2="16" y2="21"/>
-                    <line x1="12" y1="17" x2="12" y2="21"/>
-                  </svg>Desktop Item 2
-                </ag-menu-item>
-              ` : ''}
-              ${this.isMobile ? html`
-                <ag-menu-item slot="menu" value="mobile1">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                    <line x1="12" y1="18" x2="12.01" y2="18"/>
-                  </svg>Mobile Item 1
-                </ag-menu-item>
-                <ag-menu-item slot="menu" value="mobile2">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                    <line x1="12" y1="18" x2="12.01" y2="18"/>
-                  </svg>Mobile Item 2
-                </ag-menu-item>
-              ` : ''}
-              <ag-menu-separator slot="menu"></ag-menu-separator>
-              <ag-menu-item slot="menu" value="always">Always Visible</ag-menu-item>
-            </ag-menu>
+              <ag-menu slot="menu">
+                ${!this.isMobile ? html`
+                  <ag-menu-item value="desktop1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                      <line x1="8" y1="21" x2="16" y2="21"/>
+                      <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>Desktop Item 1
+                  </ag-menu-item>
+                  <ag-menu-item value="desktop2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                      <line x1="8" y1="21" x2="16" y2="21"/>
+                      <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>Desktop Item 2
+                  </ag-menu-item>
+                ` : ''}
+                ${this.isMobile ? html`
+                  <ag-menu-item value="mobile1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                      <line x1="12" y1="18" x2="12.01" y2="18"/>
+                    </svg>Mobile Item 1
+                  </ag-menu-item>
+                  <ag-menu-item value="mobile2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                      <line x1="12" y1="18" x2="12.01" y2="18"/>
+                    </svg>Mobile Item 2
+                  </ag-menu-item>
+                ` : ''}
+                <ag-menu-separator></ag-menu-separator>
+                <ag-menu-item value="always">Always Visible</ag-menu-item>
+              </ag-menu>
+            </ag-menu-button>
           </div>
-        </div>
-
-        <div class="mbe4">
-          <h2>Dynamic Icon Switching</h2>
-          <p class="mbe4">
-            The menu button exposes a <code>data-menu-open</code> attribute that changes based on the menu state. You can use this with CSS to dynamically switch icons when the menu opens/closes.
-          </p>
-        </div>
-        <div class="stacked mbe4">
-          <div class="flex-inline items-center" style="gap: 1rem;">
-            <ag-menu
-              menu-variant="icon"
-              ghost
-              size="sm"
-              class="dynamic-icon-menu"
-              aria-label="Toggle menu"
-              menu-aria-label="Navigation menu"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" class="menu-icon">
-                <line x1="3" y1="12" x2="21" y2="12"/>
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <line x1="3" y1="18" x2="21" y2="18"/>
-              </svg>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" class="close-icon">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-              <ag-menu-item slot="menu" value="home">Home</ag-menu-item>
-              <ag-menu-item slot="menu" value="about">About</ag-menu-item>
-              <ag-menu-item slot="menu" value="contact">Contact</ag-menu-item>
-              <ag-menu-separator slot="menu"></ag-menu-separator>
-              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
-            </ag-menu>
-            <p>Click the icon to see it change from ☰ to ✕</p>
-          </div>
-        </div>
-
-        <div class="mbe4">
-          <h2>CSS Shadow Parts Customization</h2>
-        </div>
-        <div class="stacked mbe4">
-          <ag-menu menu-aria-label="Custom menu" class="custom-menu-button">
-            Custom Menu
-            <ag-menu-item slot="menu" value="one">Option 1</ag-menu-item>
-            <ag-menu-item slot="menu" value="two">Option 2</ag-menu-item>
-            <ag-menu-separator slot="menu"></ag-menu-separator>
-            <ag-menu-item slot="menu" value="three">Option 3</ag-menu-item>
-          </ag-menu>
         </div>
       </section>
     `;
