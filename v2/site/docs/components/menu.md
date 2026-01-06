@@ -7,11 +7,28 @@ A menu (dropdown menu or context menu) is a popover component that displays a li
 
 ## Examples
 
-<MenuExamples />
+<FrameworkExample
+  component="menu"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <MenuExamples />
+  </template>
+  <template #lit>
+    <menu-lit-examples></menu-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import MenuExamples from '../examples/MenuExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/MenuLitExamples.js'
+import vueCode from '../examples/MenuExamples.vue?raw'
+import litCode from '../examples/MenuLitExamples.js?raw'
+import reactCode from '../examples/MenuReactExamples.jsx?raw'
 </script>
 
 ## Usage
