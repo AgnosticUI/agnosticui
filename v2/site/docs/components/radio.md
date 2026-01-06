@@ -7,11 +7,28 @@ Radio button allows a user to select a single option from a set of mutually excl
 
 ## Examples
 
-<RadioExamples />
+<FrameworkExample
+  component="radio"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <RadioExamples />
+  </template>
+  <template #lit>
+    <radio-lit-examples></radio-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import RadioExamples from '../examples/RadioExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/RadioLitExamples.js'
+import vueCode from '../examples/RadioExamples.vue?raw'
+import litCode from '../examples/RadioLitExamples.js?raw'
+import reactCode from '../examples/RadioReactExamples.jsx?raw'
 </script>
 
 ## Usage
