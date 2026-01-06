@@ -7,11 +7,28 @@ A popover is a floating element that displays rich content in a panel anchored t
 
 ## Examples
 
-<PopoverExamples />
+<FrameworkExample
+  component="popover"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <PopoverExamples />
+  </template>
+  <template #lit>
+    <popover-lit-examples></popover-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import PopoverExamples from '../examples/PopoverExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/PopoverLitExamples.js'
+import vueCode from '../examples/PopoverExamples.vue?raw'
+import litCode from '../examples/PopoverLitExamples.js?raw'
+import reactCode from '../examples/PopoverReactExamples.jsx?raw'
 </script>
 
 ## Usage

@@ -5,11 +5,30 @@
 
 A versatile message bubble component for building chat interfaces and messaging UIs. MessageBubble supports different sender types, delivery statuses, avatars, color variants, and custom styling through CSS Shadow Parts.
 
-<MessageBubbleExamples />
+## Examples
+
+<FrameworkExample
+  component="message-bubble"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <MessageBubbleExamples />
+  </template>
+  <template #lit>
+    <message-bubble-lit-examples></message-bubble-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import MessageBubbleExamples from '../examples/MessageBubbleExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/MessageBubbleLitExamples.js'
+import vueCode from '../examples/MessageBubbleExamples.vue?raw'
+import litCode from '../examples/MessageBubbleLitExamples.js?raw'
+import reactCode from '../examples/MessageBubbleReactExamples.jsx?raw'
 </script>
 
 ## Usage
