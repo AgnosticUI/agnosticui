@@ -31,6 +31,7 @@
 - ✅ Link
 - ✅ Loader
 - ✅ Mark
+- ✅ Menu
 - ✅ Tooltip
 - ✅ VisuallyHidden
 
