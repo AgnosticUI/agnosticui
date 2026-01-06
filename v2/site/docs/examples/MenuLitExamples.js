@@ -211,6 +211,122 @@ export class MenuLitExamples extends LitElement {
         </div>
 
         <div class="mbe4">
+          <h2>Menu with Sections</h2>
+        </div>
+        <div class="stacked mbe4">
+          <ag-menu menu-aria-label="User menu">
+            <div class="flex-inline items-center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              User Menu
+            </div>
+            <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
+            <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
+            <ag-menu-separator slot="menu"></ag-menu-separator>
+            <ag-menu-item slot="menu" value="help">Help</ag-menu-item>
+            <ag-menu-item slot="menu" value="feedback">Send Feedback</ag-menu-item>
+            <ag-menu-separator slot="menu"></ag-menu-separator>
+            <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
+          </ag-menu>
+        </div>
+
+        <div class="mbe4">
+          <h2>Menu with Icon Button</h2>
+          <p class="mbe4">
+            The following examples show using an icon as the trigger. The <code>menu-variant="icon"</code> removes the chevron and provides a minimal button container for the icon. You can also use an icon with the default chevron trigger as we see on the right.
+          </p>
+        </div>
+        <div class="mbe4">
+          <h3>Large</h3>
+          <div class="flex-inline items-center" style="gap: 1rem;">
+            <!-- Icon only -->
+            <ag-menu menu-variant="icon" ghost menu-aria-label="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
+              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
+              <ag-menu-separator slot="menu"></ag-menu-separator>
+              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
+            </ag-menu>
+            <!-- Icon with chevron -->
+            <ag-menu menu-aria-label="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
+              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
+              <ag-menu-separator slot="menu"></ag-menu-separator>
+              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
+            </ag-menu>
+          </div>
+        </div>
+        <div class="mbe4">
+          <h3>Medium</h3>
+          <div class="flex-inline items-center" style="gap: 1rem;">
+            <!-- Icon only -->
+            <ag-menu menu-variant="icon" ghost size="sm" menu-aria-label="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
+              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
+              <ag-menu-separator slot="menu"></ag-menu-separator>
+              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
+            </ag-menu>
+            <!-- Icon with chevron -->
+            <ag-menu size="sm" menu-aria-label="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
+              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
+              <ag-menu-separator slot="menu"></ag-menu-separator>
+              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
+            </ag-menu>
+          </div>
+        </div>
+        <div class="mbe4">
+          <h3>Small</h3>
+          <div class="flex-inline items-center" style="gap: 1rem;">
+            <!-- Icon only -->
+            <ag-menu menu-variant="icon" ghost size="x-sm" menu-aria-label="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
+              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
+              <ag-menu-separator slot="menu"></ag-menu-separator>
+              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
+            </ag-menu>
+            <!-- Icon with chevron -->
+            <ag-menu size="x-sm" menu-aria-label="More options menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <ag-menu-item slot="menu" value="settings">Settings</ag-menu-item>
+              <ag-menu-item slot="menu" value="profile">Profile</ag-menu-item>
+              <ag-menu-separator slot="menu"></ag-menu-separator>
+              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
+            </ag-menu>
+          </div>
+        </div>
+
+        <div class="mbe4">
           <h2>Monochrome Variant</h2>
         </div>
         <div class="stacked mbe4">
@@ -295,6 +411,142 @@ export class MenuLitExamples extends LitElement {
               <ag-menu-item slot="menu" value="option2">Option 2</ag-menu-item>
               <ag-menu-item slot="menu" value="option3">Option 3</ag-menu-item>
             </ag-menu>
+          </div>
+        </div>
+
+        <div class="mbe4">
+          <h2>Responsive Hidden Items (checkHiddenItems)</h2>
+          <p class="mbe4">
+            The <code>check-hidden-items</code> prop enables the menu to skip items that are hidden via CSS (like responsive media queries). This is useful when you wrap menu items in responsive containers but want keyboard navigation to work correctly.
+          </p>
+          <p class="mbe4">
+            <strong>Performance Note:</strong> Enabling this feature checks computed styles on every keyboard navigation, which has a performance cost. Only enable it if you're using CSS-based hiding. For better performance, prefer conditional rendering instead.
+          </p>
+        </div>
+        <div class="stacked mbe4">
+          <div>
+            <p class="mbe4">
+              <strong>Try resizing your browser:</strong> Desktop items are hidden on mobile (&lt;768px), mobile items are hidden on desktop. Keyboard navigation skips hidden items.
+            </p>
+            <ag-menu check-hidden-items menu-aria-label="Responsive menu">
+              Responsive Menu
+              <div slot="menu" class="desktop-only-items">
+                <ag-menu-item value="desktop1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>Desktop Item 1
+                </ag-menu-item>
+                <ag-menu-item value="desktop2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>Desktop Item 2
+                </ag-menu-item>
+              </div>
+              <div slot="menu" class="mobile-only-items">
+                <ag-menu-item value="mobile1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>Mobile Item 1
+                </ag-menu-item>
+                <ag-menu-item value="mobile2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>Mobile Item 2
+                </ag-menu-item>
+              </div>
+              <ag-menu-separator slot="menu"></ag-menu-separator>
+              <ag-menu-item slot="menu" value="always">Always Visible</ag-menu-item>
+            </ag-menu>
+          </div>
+        </div>
+
+        <div class="mbe4">
+          <h2>Recommended: Conditional Rendering (Better Performance)</h2>
+          <p class="mbe4">
+            Instead of using <code>check-hidden-items</code>, you can achieve the same result with better performance by using conditional rendering. This removes hidden items from the DOM entirely.
+          </p>
+        </div>
+        <div class="stacked mbe4">
+          <div>
+            <p class="mbe4">
+              <strong>Current viewport:</strong> ${this.isMobile ? 'Mobile' : 'Desktop'}
+            </p>
+            <ag-menu menu-aria-label="Conditional menu">
+              Conditional Menu
+              ${!this.isMobile ? html`
+                <ag-menu-item slot="menu" value="desktop1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>Desktop Item 1
+                </ag-menu-item>
+                <ag-menu-item slot="menu" value="desktop2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>Desktop Item 2
+                </ag-menu-item>
+              ` : ''}
+              ${this.isMobile ? html`
+                <ag-menu-item slot="menu" value="mobile1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>Mobile Item 1
+                </ag-menu-item>
+                <ag-menu-item slot="menu" value="mobile2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="mie2" style="display: inline-block; vertical-align: middle;">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>Mobile Item 2
+                </ag-menu-item>
+              ` : ''}
+              <ag-menu-separator slot="menu"></ag-menu-separator>
+              <ag-menu-item slot="menu" value="always">Always Visible</ag-menu-item>
+            </ag-menu>
+          </div>
+        </div>
+
+        <div class="mbe4">
+          <h2>Dynamic Icon Switching</h2>
+          <p class="mbe4">
+            The menu button exposes a <code>data-menu-open</code> attribute that changes based on the menu state. You can use this with CSS to dynamically switch icons when the menu opens/closes.
+          </p>
+        </div>
+        <div class="stacked mbe4">
+          <div class="flex-inline items-center" style="gap: 1rem;">
+            <ag-menu
+              menu-variant="icon"
+              ghost
+              size="sm"
+              class="dynamic-icon-menu"
+              aria-label="Toggle menu"
+              menu-aria-label="Navigation menu"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" class="menu-icon">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" class="close-icon">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              <ag-menu-item slot="menu" value="home">Home</ag-menu-item>
+              <ag-menu-item slot="menu" value="about">About</ag-menu-item>
+              <ag-menu-item slot="menu" value="contact">Contact</ag-menu-item>
+              <ag-menu-separator slot="menu"></ag-menu-separator>
+              <ag-menu-item slot="menu" value="logout">Logout</ag-menu-item>
+            </ag-menu>
+            <p>Click the icon to see it change from ☰ to ✕</p>
           </div>
         </div>
 
