@@ -1,6 +1,6 @@
 # Framework Examples Implementation Guide
 
-**Quick Start**: Add Vue/Lit/React examples to any AgnosticUI component in 2 steps.
+**Quick Start**: Add Vue/Lit/React examples to any AgnosticUI component in 3 steps.
 
 ## Components Completed
 
@@ -67,7 +67,51 @@ Please refer to `v2/lib/package.json` for exact naming for imports. For example,
 customElements.define('[component]-lit-examples', [Component]LitExamples);
 ```
 
-### Step 1: Create React Example File
+### Step 1: Create Lit Example File
+
+**Location**: `v2/site/docs/examples/[Component]LitExamples.js`
+
+**Template**:
+```javascript
+import { LitElement, html } from 'lit';
+import 'agnosticui-core/[component]';
+
+export class [Component]LitExamples extends LitElement {
+  // ⚠️ CRITICAL: Must include createRenderRoot() to use light DOM
+  // Without this, global CSS utility classes won't work!
+  createRenderRoot() {
+    return this;
+  }
+
+  render() {
+    return html`
+      <section>
+        {/* Mirror Vue examples structure exactly */}
+        {/* Use utility classes: mbe4, mie2, stacked-mobile, etc. */}
+        <div class="mbe4">
+          <ag-[component]>Default</ag-[component]>
+        </div>
+      </section>
+    `;
+  }
+}
+
+// Register the custom element (at the bottom, NOT with decorator)
+customElements.define('[component]-lit-examples', [Component]LitExamples);
+```
+
+**Critical Rules**:
+- ⚠️ **MUST include `createRenderRoot() { return this; }`** - This ensures light DOM rendering so global CSS utility classes penetrate
+- Mirror `[Component]Examples.vue` structure exactly
+- Import web component from `agnosticui-core/[component]`
+- Use `customElements.define()` at bottom (NOT `@customElement` decorator)
+- Use Lit's property binding syntax:
+  - Boolean attributes: `?disabled=${true}` or just `disabled` for true
+  - Properties: `.value=${someValue}`
+  - Regular attributes: `attribute="value"`
+- Use utility classes from utilities.css: `mbe4`, `mie2`, `stacked-mobile`, etc.
+
+### Step 2: Create React Example File
 
 **Location**: `v2/site/docs/examples/[Component]ReactExamples.jsx`
 
@@ -102,7 +146,7 @@ export default function [Component]ReactExamples() {
 - Wrap icons with `<ReactIcon size="18" noFill>`
 - Use `ReactVisuallyHidden` for icon-only buttons
 
-### Step 2: Update Component Documentation
+### Step 3: Update Component Documentation
 
 **Location**: `v2/site/docs/components/[component].md`
 
