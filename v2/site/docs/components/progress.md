@@ -5,11 +5,30 @@
 
 A progress component is used to display the progress of a task. It can show determinate progress (with a specific value) or indeterminate progress (loading state without a known duration).
 
-<ProgressExamples />
+## Examples
+
+<FrameworkExample
+  component="progress"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <ProgressExamples />
+  </template>
+  <template #lit>
+    <progress-lit-examples></progress-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import ProgressExamples from '../examples/ProgressExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/ProgressLitExamples.js'
+import vueCode from '../examples/ProgressExamples.vue?raw'
+import litCode from '../examples/ProgressLitExamples.js?raw'
+import reactCode from '../examples/ProgressReactExamples.jsx?raw'
 </script>
 
 ## Usage

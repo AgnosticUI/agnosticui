@@ -7,11 +7,28 @@ The Progress Ring component provides a circular progress indicator that can disp
 
 ## Examples
 
-<ProgressRingExamples />
+<FrameworkExample
+  component="progress-ring"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <ProgressRingExamples />
+  </template>
+  <template #lit>
+    <progress-ring-lit-examples></progress-ring-lit-examples>
+  </template>
+</FrameworkExample>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import ProgressRingExamples from '../examples/ProgressRingExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/ProgressRingLitExamples.js'
+import vueCode from '../examples/ProgressRingExamples.vue?raw'
+import litCode from '../examples/ProgressRingLitExamples.js?raw'
+import reactCode from '../examples/ProgressRingReactExamples.jsx?raw'
 </script>
 
 ## Usage
