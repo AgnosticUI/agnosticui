@@ -2,7 +2,6 @@
 
 <AlphaWarning />
 
-
 A floating action button that appears when scrolling, allowing users to quickly navigate to different parts of the page. Perfect for long-form content, documentation sites, and single-page applications.
 
 ::: tip Interactive Examples
@@ -14,6 +13,11 @@ The examples below show multiple scroll buttons to demonstrate different feature
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import ScrollToButtonExamples from '../examples/ScrollToButtonExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/ScrollToButtonLitExamples.js'
+import vueCode from '../examples/ScrollToButtonExamples.vue?raw'
+import litCode from '../examples/ScrollToButtonLitExamples.js?raw'
+import reactCode from '../examples/ScrollToButtonReactExamples.jsx?raw'
 import { Eye, Zap, Palette, Accessibility, MapPin, Wrench, CheckCircle, XCircle } from 'lucide-vue-next'
 </script>
 
@@ -74,69 +78,28 @@ import { Eye, Zap, Palette, Accessibility, MapPin, Wrench, CheckCircle, XCircle 
   </div>
 </div>
 
-<ScrollToButtonExamples />
+## Examples
+
+<FrameworkExample component="scroll-to-button" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode">
+<template #vue>
+  <ScrollToButtonExamples />
+</template>
+<template #lit>
+  <scroll-to-button-lit-examples></scroll-to-button-lit-examples>
+</template>
+</FrameworkExample>
 
 ## Usage
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add ScrollToButton
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
-:::
-
-::: details Vue 3
-
-```vue
-<template>
-  <VueScrollToButton
-    label="Back to Top"
-    :showLabel="true"
-    :scrollThreshold="400"
-  />
-</template>
-
-<script setup lang="ts">
-import { VueScrollToButton } from "agnosticui-core/scroll-to-button/vue";
-</script>
-```
-
-:::
-
-::: details React
-
-```tsx
-import { ReactScrollToButton } from "agnosticui-core/scroll-to-button/react";
-
-export default function Example() {
-  return (
-    <ReactScrollToButton
-      label="Back to Top"
-      showLabel={true}
-      scrollThreshold={400}
-    />
-  );
-}
-```
-
-:::
-
-::: details Lit (Web Components)
-
-```html
-<script type="module">
-  import "agnosticui-core/scroll-to-button";
-</script>
-
-<ag-scroll-to-button
-  label="Back to Top"
-  showLabel
-  scrollThreshold="400"
-></ag-scroll-to-button>
-```
-
 :::
 
 ## Props
