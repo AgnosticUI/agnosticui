@@ -2,7 +2,7 @@
   <div class="cli-preview-section">
     <div class="cli-preview-container">
       <h2>Get Started in Seconds</h2>
-      <p class="subtitle">One command installs everything you need</p>
+      <p class="subtitle">No more hallucinated UIs. One command sets you up.</p>
 
       <div class="cli-terminal">
         <div class="terminal-header">
@@ -50,7 +50,7 @@ import { ArrowRight } from 'lucide-vue-next'
 const fullCommand = 'npx agnosticui-cli init'
 const typedCommand = ref('')
 
-onMounted(() => {
+const typeCommand = () => {
   let i = 0
   const interval = setInterval(() => {
     if (i < fullCommand.length) {
@@ -58,14 +58,23 @@ onMounted(() => {
       i++
     } else {
       clearInterval(interval)
+      // Pause for 5 seconds before resetting and typing again
+      setTimeout(() => {
+        typedCommand.value = ''
+        setTimeout(typeCommand, 500)
+      }, 5000)
     }
   }, 80)
+}
+
+onMounted(() => {
+  typeCommand()
 })
 </script>
 
 <style scoped>
 .cli-preview-section {
-  padding: 6rem 2rem;
+  padding: 4rem 2rem;
   text-align: center;
   background: var(--vp-c-bg);
   position: relative;

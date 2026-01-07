@@ -61,6 +61,12 @@ html[data-theme="dark"] {
   margin-bottom: var(--ag-space-1);
 }
 
+/* Remove border-top from h2 in landing page sections */
+.cli-preview-section h2,
+.code-preview-section h2 {
+  border-top: none !important;
+}
+
 .m0,
 h1.m0,
 h2.m0,
@@ -419,28 +425,6 @@ make it a bit more aesthetically pleasing. */
   z-index: 1;
 }
 
-/* Add icons to feature titles with emojis */
-.VPHome .VPFeature:nth-child(1) .title::before {
-  content: "📁 ";
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.VPHome .VPFeature:nth-child(2) .title::before {
-  content: "🤖 ";
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.VPHome .VPFeature:nth-child(3) .title::before {
-  content: "🔄 ";
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 1rem;
-}
-
 @keyframes bounce {
   0%,
   100% {
@@ -454,9 +438,10 @@ make it a bit more aesthetically pleasing. */
 /* Scroll indicator for hero */
 .VPHome .VPHero {
   position: relative;
-  min-height: 80vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
+  padding-bottom: 4rem;
 }
 
 /* Framework badges (if you add them to the markdown) */
@@ -494,6 +479,75 @@ make it a bit more aesthetically pleasing. */
   box-shadow: 0 10px 25px rgba(20, 184, 166, 0.2);
 }
 
+/* Custom Feature Cards */
+.custom-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.custom-feature {
+  background: rgba(20, 184, 166, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(20, 184, 166, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .custom-feature {
+  background: rgba(20, 184, 166, 0.05);
+  border: 1px solid rgba(20, 184, 166, 0.15);
+}
+
+.custom-feature::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(20, 184, 166, 0.1) 0%,
+    rgba(6, 182, 212, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.custom-feature:hover {
+  transform: translateY(-10px);
+  border-color: rgba(20, 184, 166, 0.3);
+  box-shadow: 0 20px 50px rgba(20, 184, 166, 0.2);
+}
+
+.custom-feature:hover::before {
+  opacity: 1;
+}
+
+.custom-feature h3 {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+  color: var(--vp-c-text-1);
+}
+
+.custom-feature p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
 /* Hero Buttons with VueButtonFx */
 .hero-buttons {
   display: flex;
@@ -526,33 +580,10 @@ make it a bit more aesthetically pleasing. */
   padding-block: var(--ag-space-5);
   font-size: 1.1rem;
   font-weight: 700;
-  animation: pulseGlow 3s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3),
-                0 0 30px rgba(20, 184, 166, 0.2);
-  }
-  50% {
-    box-shadow: 0 15px 40px rgba(20, 184, 166, 0.5),
-                0 0 50px rgba(20, 184, 166, 0.4);
-  }
 }
 
 .jumbo-button::part(ag-button):hover {
-  animation: pulseGlowHover 1.5s ease-in-out infinite;
-}
-
-@keyframes pulseGlowHover {
-  0%, 100% {
-    box-shadow: 0 15px 40px rgba(20, 184, 166, 0.5),
-                0 0 50px rgba(20, 184, 166, 0.4);
-  }
-  50% {
-    box-shadow: 0 20px 50px rgba(20, 184, 166, 0.7),
-                0 0 70px rgba(20, 184, 166, 0.6);
-  }
+  box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
 }
 
 /* Responsive adjustments */
