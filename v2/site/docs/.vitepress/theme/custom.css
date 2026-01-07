@@ -86,19 +86,19 @@ h1.b0,
 h2.b0,
 h3.b0,
 h4.b0,
-h5.b0,
+h5.p0,
 h6.b0 {
   border: 0;
 }
 
 /* CSS Parts customization example for gradient button */
 .custom-gradient-button::part(ag-button) {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
   color: white;
   padding: 1rem 2rem;
   border-radius: 50px;
   border: none;
-  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 16px rgba(20, 184, 166, 0.4);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -107,7 +107,7 @@ h6.b0 {
 
 .custom-gradient-button::part(ag-button):hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.6);
+  box-shadow: 0 10px 20px rgba(20, 184, 166, 0.6);
 }
 
 /* Reset VitePress's aggressive table styling */
@@ -150,5 +150,431 @@ make it a bit more aesthetically pleasing. */
   .vp-doc div[class*="language-"],
   .vp-block {
     border: 1px solid var(--ag-border);
+  }
+}
+
+/* ============================================
+   ENHANCED LANDING PAGE STYLES - TEAL/CYAN THEME
+   ============================================ */
+
+/* Animated gradient background for hero */
+.VPHome .VPHero {
+  position: relative;
+  overflow: hidden;
+}
+
+.VPHome .VPHero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    #06b6d4 0%,
+    #14b8a6 25%,
+    #38bdf8 50%,
+    #0ea5e9 75%,
+    #06b6d4 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 12s ease-in-out infinite;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Subtle dot pattern overlay */
+.VPHome .VPHero {
+  background-image: radial-gradient(circle, rgba(20, 184, 166, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.dark .VPHome .VPHero::before {
+  opacity: 0.25;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    background-position: 50% 50%;
+    filter: hue-rotate(40deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(0deg);
+  }
+  75% {
+    background-position: 50% 50%;
+    filter: hue-rotate(40deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* Floating particles */
+.VPHome .VPHero::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(20, 184, 166, 0.1);
+  top: 10%;
+  left: 10%;
+  pointer-events: none;
+  animation: float 20s infinite;
+  z-index: 0;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-100px) translateX(50px);
+  }
+  50% {
+    transform: translateY(-50px) translateX(-50px);
+  }
+  75% {
+    transform: translateY(-80px) translateX(30px);
+  }
+}
+
+/* Additional particles using pseudo-elements on container */
+.VPHome .container {
+  position: relative;
+}
+
+.VPHome .container::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(6, 182, 212, 0.08);
+  top: 60%;
+  right: 10%;
+  pointer-events: none;
+  animation: float 20s infinite 3s;
+  z-index: 0;
+}
+
+.VPHome .container::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(45, 212, 191, 0.08);
+  top: 40%;
+  right: 20%;
+  pointer-events: none;
+  animation: float 20s infinite 6s;
+  z-index: 0;
+}
+
+/* Hero content animations */
+.VPHome .name,
+.VPHome .text,
+.VPHome .tagline,
+.VPHome .actions {
+  animation: fadeInUp 1s ease-out both;
+  position: relative;
+  z-index: 1;
+}
+
+.VPHome .text {
+  animation-delay: 0.2s;
+}
+
+.VPHome .tagline {
+  animation-delay: 0.4s;
+}
+
+.VPHome .actions {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Enhanced hero name with better gradient */
+.VPHome .name .clip {
+  font-weight: 900 !important;
+  text-shadow: 0 4px 30px rgba(20, 184, 166, 0.3);
+}
+
+/* Enhanced buttons */
+.VPHome .VPButton.brand {
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
+  transition: all 0.3s ease;
+}
+
+.VPHome .VPButton.brand:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(20, 184, 166, 0.4);
+}
+
+.VPHome .VPButton.alt {
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border-width: 2px;
+}
+
+.VPHome .VPButton.alt:hover {
+  transform: translateY(-3px);
+  background: rgba(20, 184, 166, 0.1);
+}
+
+/* Enhanced feature cards */
+.VPHome .VPFeatures {
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.VPHome .VPFeature {
+  background: rgba(20, 184, 166, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(20, 184, 166, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem !important;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .VPHome .VPFeature {
+  background: rgba(20, 184, 166, 0.05);
+  border: 1px solid rgba(20, 184, 166, 0.15);
+}
+
+.VPHome .VPFeature::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(20, 184, 166, 0.1) 0%,
+    rgba(6, 182, 212, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.VPHome .VPFeature:hover {
+  transform: translateY(-10px);
+  border-color: rgba(20, 184, 166, 0.3);
+  box-shadow: 0 20px 50px rgba(20, 184, 166, 0.2);
+}
+
+.VPHome .VPFeature:hover::before {
+  opacity: 1;
+}
+
+.VPHome .VPFeature .title {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+}
+
+.VPHome .VPFeature .details {
+  position: relative;
+  z-index: 1;
+}
+
+/* Add icons to feature titles with emojis */
+.VPHome .VPFeature:nth-child(1) .title::before {
+  content: "📁 ";
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.VPHome .VPFeature:nth-child(2) .title::before {
+  content: "🤖 ";
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.VPHome .VPFeature:nth-child(3) .title::before {
+  content: "🔄 ";
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Scroll indicator for hero */
+.VPHome .VPHero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Framework badges (if you add them to the markdown) */
+.framework-badges {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  animation: fadeInUp 1s ease-out 0.8s both;
+  position: relative;
+  z-index: 1;
+}
+
+.framework-badge {
+  background: rgba(20, 184, 166, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.dark .framework-badge {
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.framework-badge:hover {
+  background: rgba(20, 184, 166, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(20, 184, 166, 0.2);
+}
+
+/* Hero Buttons with VueButtonFx */
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto 4rem;
+  padding: 0 2rem;
+  animation: fadeInUp 1s ease-out 0.6s both;
+  position: relative;
+  z-index: 10;
+  flex-wrap: wrap;
+}
+
+.hero-buttons button {
+  box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-buttons button:hover {
+  box-shadow: 0 15px 40px rgba(20, 184, 166, 0.4);
+}
+
+/* Jumbo button styling using ::part */
+.jumbo-button::part(ag-button) {
+  padding-inline-start: var(--ag-space-6);
+  padding-inline-end: var(--ag-space-6);
+  padding-block: var(--ag-space-5);
+  font-size: 1.1rem;
+  font-weight: 700;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3),
+                0 0 30px rgba(20, 184, 166, 0.2);
+  }
+  50% {
+    box-shadow: 0 15px 40px rgba(20, 184, 166, 0.5),
+                0 0 50px rgba(20, 184, 166, 0.4);
+  }
+}
+
+.jumbo-button::part(ag-button):hover {
+  animation: pulseGlowHover 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlowHover {
+  0%, 100% {
+    box-shadow: 0 15px 40px rgba(20, 184, 166, 0.5),
+                0 0 50px rgba(20, 184, 166, 0.4);
+  }
+  50% {
+    box-shadow: 0 20px 50px rgba(20, 184, 166, 0.7),
+                0 0 70px rgba(20, 184, 166, 0.6);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .VPHome .VPButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  .VPHome .actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem auto 3rem;
+  }
+
+  .hero-buttons button {
+    width: 100%;
+    max-width: 400px;
   }
 }
