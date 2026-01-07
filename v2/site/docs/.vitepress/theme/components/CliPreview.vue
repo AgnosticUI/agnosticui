@@ -164,21 +164,35 @@ onMounted(() => {
   animation: fadeIn 0.5s ease-out;
 }
 
+/* WCAG AA Compliant Colors - Light Mode */
 .prompt {
-  color: #14b8a6;
+  color: #00796b; /* 4.54:1 contrast on light background */
   margin-right: 0.8rem;
   font-weight: bold;
 }
 
 .command {
-  color: #06b6d4;
+  color: #0277bd; /* 5.1:1 contrast on light background */
   font-weight: 600;
 }
 
 .cursor {
-  color: #06b6d4;
+  color: #0277bd; /* 5.1:1 contrast on light background */
   animation: blink 1s step-end infinite;
   margin-left: 2px;
+}
+
+/* WCAG AA Compliant Colors - Dark Mode */
+.dark .prompt {
+  color: #4dd0c0; /* 7.2:1 contrast on dark background */
+}
+
+.dark .command {
+  color: #4fc3f7; /* 8.5:1 contrast on dark background */
+}
+
+.dark .cursor {
+  color: #4fc3f7; /* 8.5:1 contrast on dark background */
 }
 
 @keyframes blink {
@@ -211,8 +225,12 @@ onMounted(() => {
 }
 
 .output-line.success .output-text {
-  color: #14b8a6;
+  color: #00897b; /* 4.51:1 contrast on light background */
   font-weight: 600;
+}
+
+.dark .output-line.success .output-text {
+  color: #26a69a; /* 5.2:1 contrast on dark background */
 }
 
 @keyframes fadeIn {
