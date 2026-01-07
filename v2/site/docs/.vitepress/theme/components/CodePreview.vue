@@ -19,22 +19,23 @@
           </div>
           <div class="code-line">
             <span class="code-keyword">src/components/ag/</span>
+            <span class="code-comment">&nbsp;← .vue, .tsx, or .ts (framework-specific)</span>
           </div>
           <div class="code-line indent">
-            <span class="code-tag">Button.jsx</span>
-            <span class="code-comment">← Fully customizable</span>
+            <span class="code-tag">Button.vue</span>
+            <span class="code-comment">&nbsp;← Fully customizable</span>
           </div>
           <div class="code-line indent">
-            <span class="code-tag">Card.jsx</span>
-            <span class="code-comment">← AI can read it</span>
+            <span class="code-tag">Card.vue</span>
+            <span class="code-comment">&nbsp;← AI can read it</span>
           </div>
           <div class="code-line indent">
-            <span class="code-tag">Input.jsx</span>
-            <span class="code-comment">← No black box</span>
+            <span class="code-tag">Input.vue</span>
+            <span class="code-comment">&nbsp;← No black box</span>
           </div>
           <div class="code-line">
             <span class="code-keyword">agnosticui/</span>
-            <span class="code-comment">← Source templates</span>
+            <span class="code-comment">&nbsp;← Source templates</span>
           </div>
           <div class="code-line">
             <span class="code-keyword">pages/</span>
