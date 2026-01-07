@@ -1,44 +1,39 @@
+# Code of Conduct
 
+## The Spirit
 
-# Contributor Covenant Code of Conduct
-## Our Pledge
+AgnosticUI is built on the idea that good UI components should be accessible, transparent, and genuinely helpful. That same philosophy extends to our community—we're here to build something useful together, not to gatekeep or create drama.
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
+## What We're About
 
-## Our Standards
+**Be kind.** Assume good intent. Help people level up. We all started somewhere, and nobody has all the answers.
 
-Examples of behavior that contributes to creating a positive environment include:
+**Be constructive.** Disagreements happen—that's how we improve things. Critique ideas, not people. If you're pointing out a problem, bonus points for suggesting a solution.
 
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other community members
+**Be inclusive.** Different perspectives make better software. We welcome people regardless of experience level, background, identity, or which framework they prefer (yes, even if it's not the one you like).
 
-Examples of unacceptable behavior by participants include:
+**Be respectful.** Don't be a jerk. If someone asks you to stop doing something that's bothering them, stop. It's that simple.
 
-- The use of sexualized language or imagery and unwelcome sexual attention or advances
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others' private information, such as a physical or electronic address, without explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
+## What We're Not About
 
-## Our Responsibilities
+- Harassment, threats, or personal attacks
+- Discrimination based on identity, experience level, or technical choices
+- Sharing someone's private info without permission
+- Trolling, derailing, or intentionally making spaces unwelcoming
+- Being creepy or making people uncomfortable
 
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+## If Something's Wrong
 
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+If someone's behavior is making the community worse, let us know. Reach out to **roblevinillustration@gmail.com** and we'll handle it. We'll keep it confidential and take it seriously.
 
-## Scope
+We're not going to hand-wring over every minor disagreement, but we will act on patterns of behavior that make people feel unwelcome.
 
-This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers.
+## The Practical Bit
 
-## Enforcement
+This applies to GitHub issues, PRs, discussions, and anywhere else you're representing the project. If you're wearing the AgnosticUI hat in public, keep it professional.
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at roblevinillustration@gmail.com. The project team will review and investigate all complaints, and will respond in a way that it deems appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+Maintainers can remove comments, reject contributions, or ban people who are making the community worse. We'll try to be fair and communicate clearly, but ultimately we're here to build something useful—not to referee endless drama.
 
-Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+---
 
-## Attribution
-
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 1.4, available at <https://www.contributor-covenant.org/version/1/4/code-of-conduct/>
+*This is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), but with less legalese and more humanity. We reserve the right to update this as needed.*
