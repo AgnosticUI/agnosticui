@@ -78,11 +78,13 @@ Follow the "Next Steps" printed by the CLI:
    You can also load the styles directly in your `index.html`:
 
    ```html
-   <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css" />
-   <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
-   ```
-
-2. **Set Up Theming**
+      <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css" />
+      <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
+      ```
+   
+      You can view the full list of theme tokens available in <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a>.
+   
+   2. **Set Up Theming**
 
    ::: warning Vite Default Dark Mode
    Vite's default template uses a dark background (`#242424`). You'll need to override this to use AgnosticUI's theme system.

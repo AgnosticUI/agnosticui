@@ -82,6 +82,8 @@ Follow the "Next Steps" printed by the CLI:
    <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
    ```
 
+   You can view the full list of theme tokens available in <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a>.
+
 2. **Set Up Theming**
 
    ::: tip Override Default Styles
