@@ -101,4 +101,4 @@ AgnosticUI provides semantic color tokens that automatically adapt to the theme:
 - `--ag-border` - Border color
 - And many more...
 
-See the full list in `src/components/ag/styles/ag-tokens.css`.
+See the full list of available CSS custom properties in the theme tokens files: <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> (light mode) and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a> (dark mode).
