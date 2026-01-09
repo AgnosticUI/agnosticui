@@ -502,7 +502,10 @@ const themes = {
   forest: {
     "--ag-primary": "#2b6b55",
     "--ag-primary-text": "#2b6b55",
+    "--ag-primary-border": "#d8e0da",
+    "--ag-primary-dark": "#1e382c",
     "--ag-secondary": "#63786d",
+    "--ag-secondary-dark": "#4b5563",
     "--ag-background-primary": "#f0f4f1",
     "--ag-background-secondary": "#e6ece8",
     "--ag-text-primary": "#1e382c",
@@ -511,7 +514,10 @@ const themes = {
   sunset: {
     "--ag-primary": "#ea580c",
     "--ag-primary-text": "#ea580c",
+    "--ag-primary-border": "#fed7aa",
+    "--ag-primary-dark": "#9a3412",
     "--ag-secondary": "#f97316",
+    "--ag-secondary-dark": "#c2410c",
     "--ag-background-primary": "#fff7ed",
     "--ag-background-secondary": "#ffedd5",
     "--ag-text-primary": "#7c2d12",
@@ -520,7 +526,10 @@ const themes = {
   forestDark: {
     "--ag-primary": "#3fb950",
     "--ag-primary-text": "#7ee787",
+    "--ag-primary-border": "#238636",
+    "--ag-primary-dark": "#0f5323",
     "--ag-secondary": "#56d364",
+    "--ag-secondary-dark": "#238636",
     "--ag-background-primary": "#0D1117",
     "--ag-background-secondary": "#171c24",
     "--ag-text-primary": "#aff5b4",
@@ -529,7 +538,10 @@ const themes = {
   sunsetDark: {
     "--ag-primary": "#fb923c",
     "--ag-primary-text": "#fdba74",
+    "--ag-primary-border": "#ea580c",
+    "--ag-primary-dark": "#c2410c",
     "--ag-secondary": "#fdba74",
+    "--ag-secondary-dark": "#ea580c",
     "--ag-background-primary": "#0D1117",
     "--ag-background-secondary": "#171c24",
     "--ag-text-primary": "#fed7aa",
