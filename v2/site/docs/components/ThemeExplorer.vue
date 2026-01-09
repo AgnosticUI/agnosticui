@@ -116,7 +116,10 @@
     <div class="example-ui">
       <h3>Live Example</h3>
       <div class="pricing-table">
-        <VueCard :shadow="true">
+        <VueCard
+          :shadow="true"
+          rounded="sm"
+        >
           <h4>Basic</h4>
           <div class="price">$10<span>/mo</span></div>
           <ul>
@@ -124,10 +127,15 @@
             <li>1 User</li>
             <li>24/7 Support</li>
           </ul>
-          <VueButton mode="primary">Choose Plan</VueButton>
+          <VueButton
+            variant="primary"
+            :bordered="true"
+            shape="rounded"
+          >Choose Plan</VueButton>
         </VueCard>
         <VueCard
           :shadow="true"
+          rounded="sm"
           class="featured"
         >
           <h4>Pro</h4>
@@ -137,9 +145,16 @@
             <li>5 Users</li>
             <li>24/7 Support</li>
           </ul>
-          <VueButton mode="secondary">Choose Plan</VueButton>
+          <VueButton
+            variant="secondary"
+            :bordered="true"
+            shape="rounded"
+          >Choose Plan</VueButton>
         </VueCard>
-        <VueCard :shadow="true">
+        <VueCard
+          :shadow="true"
+          rounded="sm"
+        >
           <h4>Enterprise</h4>
           <div class="price">$50<span>/mo</span></div>
           <ul>
@@ -147,7 +162,11 @@
             <li>Unlimited Users</li>
             <li>24/7 Support</li>
           </ul>
-          <VueButton mode="primary">Choose Plan</VueButton>
+          <VueButton
+            variant="primary"
+            :bordered="true"
+            shape="rounded"
+          >Choose Plan</VueButton>
         </VueCard>
       </div>
     </div>
