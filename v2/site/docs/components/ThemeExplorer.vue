@@ -118,7 +118,7 @@
       <div class="pricing-table">
         <VueCard
           :shadow="true"
-          rounded="sm"
+          rounded="md"
         >
           <h4>Basic</h4>
           <div class="price">$10<span>/mo</span></div>
@@ -135,7 +135,7 @@
         </VueCard>
         <VueCard
           :shadow="true"
-          rounded="sm"
+          rounded="md"
           class="featured"
         >
           <h4>Pro</h4>
@@ -153,7 +153,7 @@
         </VueCard>
         <VueCard
           :shadow="true"
-          rounded="sm"
+          rounded="md"
         >
           <h4>Enterprise</h4>
           <div class="price">$50<span>/mo</span></div>
