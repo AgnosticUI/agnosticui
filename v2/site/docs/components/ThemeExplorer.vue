@@ -45,7 +45,7 @@
           <div
             v-for="token in tokens"
             :key="token.name"
-            class="token-item"
+            class="token-item mbe2"
           >
             <div
               class="token-name"
