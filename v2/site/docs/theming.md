@@ -4,6 +4,7 @@
 
 <script setup>
 import AlphaWarning from './components/AlphaWarning.vue'
+import ThemeExplorer from './components/ThemeExplorer.vue'
 </script>
 
 AgnosticUI uses a `data-theme` attribute on the `<html>` element to control light/dark theming.
@@ -82,6 +83,8 @@ Add this to your `index.html` before the closing `</body>` tag:
   })();
 </script>
 ```
+
+<ThemeExplorer />
 
 ## How It Works
 
