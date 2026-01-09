@@ -3,11 +3,35 @@
     <div class="controls">
       <h3>Theme Controls</h3>
       <div class="theme-buttons">
-        <button @click="setTheme('forest')">Forest Theme</button>
-        <button @click="setTheme('ocean')">Ocean Theme</button>
-        <button @click="resetTheme">Default</button>
+        <VueButton
+          shape="rounded"
+          :bordered="true"
+          variant="monochrome"
+          size="sm"
+          @click="setTheme('forest')"
+        >Forest Theme</VueButton>
+        <VueButton
+          shape="rounded"
+          :bordered="true"
+          variant="monochrome"
+          size="sm"
+          @click="setTheme('ocean')"
+        >Ocean Theme</VueButton>
+        <VueButton
+          shape="rounded"
+          :bordered="true"
+          variant="monochrome"
+          size="sm"
+          @click="resetTheme"
+        >Default</VueButton>
       </div>
-      <button @click="copyCss">Copy Modified CSS</button>
+      <VueButton
+        shape="rounded"
+        :bordered="true"
+        variant="monochrome"
+        size="sm"
+        @click="copyCss"
+      >Copy Modified CSS</VueButton>
     </div>
 
     <div class="token-grid">
@@ -28,12 +52,23 @@
               :title="token.name"
             >{{ token.name }}</div>
             <div class="token-value">
-              <input
+              <div
                 v-if="isColor(token.name)"
-                type="color"
-                v-model="token.value"
-                @input="updateCss"
-              />
+                class="flex items-center"
+              >
+                <input
+                  type="color"
+                  v-model="token.value"
+                  @input="updateCss"
+                />
+                <VueIcon
+                  class="color-pencil"
+                  :size="14"
+                  :no-fill="true"
+                >
+                  <Pencil />
+                </VueIcon>
+              </div>
               <input
                 v-else
                 type="text"
@@ -81,7 +116,7 @@
     <div class="example-ui">
       <h3>Live Example</h3>
       <div class="pricing-table">
-        <div class="pricing-card">
+        <VueCard :shadow="true">
           <h4>Basic</h4>
           <div class="price">$10<span>/mo</span></div>
           <ul>
@@ -89,9 +124,12 @@
             <li>1 User</li>
             <li>24/7 Support</li>
           </ul>
-          <button class="btn btn-primary">Choose Plan</button>
-        </div>
-        <div class="pricing-card featured">
+          <VueButton mode="primary">Choose Plan</VueButton>
+        </VueCard>
+        <VueCard
+          :shadow="true"
+          class="featured"
+        >
           <h4>Pro</h4>
           <div class="price">$25<span>/mo</span></div>
           <ul>
@@ -99,9 +137,9 @@
             <li>5 Users</li>
             <li>24/7 Support</li>
           </ul>
-          <button class="btn btn-secondary">Choose Plan</button>
-        </div>
-        <div class="pricing-card">
+          <VueButton mode="secondary">Choose Plan</VueButton>
+        </VueCard>
+        <VueCard :shadow="true">
           <h4>Enterprise</h4>
           <div class="price">$50<span>/mo</span></div>
           <ul>
@@ -109,8 +147,8 @@
             <li>Unlimited Users</li>
             <li>24/7 Support</li>
           </ul>
-          <button class="btn btn-primary">Choose Plan</button>
-        </div>
+          <VueButton mode="primary">Choose Plan</VueButton>
+        </VueCard>
       </div>
     </div>
   </div>
@@ -118,6 +156,10 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { VueCard } from "agnosticui-core/card/vue";
+import VueButton from "agnosticui-core/button/vue";
+import { VueIcon } from "agnosticui-core/icon/vue";
+import { Pencil } from "lucide-vue-next";
 
 const originalTokens = ref({});
 const tokensByCategory = ref({});
@@ -473,7 +515,8 @@ const themes = {
 };
 
 function parseTokens(css) {
-  const isDarkMode = document.documentElement.getAttribute("data-theme") === "dark";
+  const isDarkMode =
+    document.documentElement.getAttribute("data-theme") === "dark";
 
   const tokensByCategory = {
     Colors: [],
@@ -590,7 +633,8 @@ function isColor(name) {
 }
 
 function updateCss() {
-  const isDarkMode = document.documentElement.getAttribute("data-theme") === "dark";
+  const isDarkMode =
+    document.documentElement.getAttribute("data-theme") === "dark";
   const lightLines = [":where(html) {"];
   const darkLines = ['[data-theme="dark"] {'];
 
@@ -719,8 +763,9 @@ onMounted(() => {
   color: var(--ag-text-primary);
 }
 
-.theme-buttons button {
-  margin-right: var(--ag-space-2);
+.theme-buttons {
+  display: flex;
+  gap: var(--ag-space-2);
 }
 
 .token-grid {
@@ -760,6 +805,9 @@ onMounted(() => {
 .text-input {
   width: 100%;
   font-size: var(--ag-font-size-sm);
+  border-bottom: 1px solid var(--ag-border-subtle);
+  background-color: transparent;
+  color: var(--ag-text-primary);
 }
 
 .token-preview {
@@ -820,24 +868,10 @@ onMounted(() => {
   grid-template-columns: repeat(3, 1fr);
   gap: var(--ag-space-4);
   margin-top: var(--ag-space-4);
-}
-
-.pricing-card {
-  background-color: var(--ag-background-primary);
-  border: 1px solid var(--ag-border);
-  border-radius: var(--ag-radius-lg);
-  padding: var(--ag-space-4);
   text-align: center;
-  box-shadow: var(--ag-shadow-md);
-  transition: all var(--ag-motion-medium) ease;
-  color: var(--ag-text-primary);
 }
 
-.pricing-card h4 {
-  color: var(--ag-text-primary);
-}
-
-.pricing-card.featured {
+.featured::part(ag-card-wrapper) {
   border-color: var(--ag-primary);
   transform: scale(1.05);
 }
@@ -854,41 +888,25 @@ onMounted(() => {
   color: var(--ag-text-secondary);
 }
 
-.pricing-card ul {
+.pricing-table ul {
   list-style: none;
   padding: 0;
   margin: var(--ag-space-4) 0;
 }
 
-.pricing-card li {
+.pricing-table li {
   margin-bottom: var(--ag-space-2);
   color: var(--ag-text-secondary);
 }
 
-.btn {
-  padding: var(--ag-space-2) var(--ag-space-4);
-  border-radius: var(--ag-radius-md);
-  border: 1px solid transparent;
-  cursor: pointer;
-  font-size: var(--ag-font-size-base);
-  transition: all var(--ag-motion-fast) ease;
+.flex.items-center {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.btn-primary {
-  background-color: var(--ag-primary);
-  color: var(--ag-text-primary-inverted);
-}
-
-.btn-primary:hover {
-  background-color: var(--ag-primary-dark);
-}
-
-.btn-secondary {
-  background-color: var(--ag-secondary);
-  color: var(--ag-text-primary-inverted);
-}
-
-.btn-secondary:hover {
-  background-color: var(--ag-secondary-dark);
+.color-pencil {
+  color: var(--ag-text-secondary);
+  cursor: help;
 }
 </style>
