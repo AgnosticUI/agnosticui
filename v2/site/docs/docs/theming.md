@@ -83,6 +83,8 @@ Add this to your `index.html` before the closing `</body>` tag:
 </script>
 ```
 
+<ThemeExplorer />
+
 ## How It Works
 
 - **Light Mode (default)**: No `data-theme` attribute on `<html>`
