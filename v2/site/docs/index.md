@@ -10,11 +10,14 @@ hero:
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vitepress'
 import CliPreview from './.vitepress/theme/components/CliPreview.vue'
 import CodePreview from './.vitepress/theme/components/CodePreview.vue'
 import { VueButtonFx } from 'agnosticui-core/button-fx/vue'
 import { VueScrollProgress } from 'agnosticui-core/scroll-progress/vue'
 import { VueScrollToButton } from 'agnosticui-core/scroll-to-button/vue'
+
+const router = useRouter()
 
 const showDotTrail = ref(false)
 
@@ -63,7 +66,7 @@ onUnmounted(() => {
     shape="capsule"
     size="xl"
     class="jumbo-button"
-    @click="() => window.location.href = '/components/button'"
+    @click="() => router.go('/components/button')"
   >
     Show me the components!
   </VueButtonFx>
@@ -74,7 +77,7 @@ onUnmounted(() => {
     shape="capsule"
     size="xl"
     class="jumbo-button"
-    @click="() => window.location.href = '/installation'"
+    @click="() => router.go('/installation')"
   >
     View Full Installation Guide →
   </VueButtonFx>
