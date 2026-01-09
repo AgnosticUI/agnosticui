@@ -15,8 +15,8 @@
           :bordered="true"
           variant="monochrome"
           size="sm"
-          @click="setTheme('ocean')"
-        >Ocean Theme</VueButton>
+          @click="setTheme('sunset')"
+        >Sunset Theme</VueButton>
         <VueButton
           shape="rounded"
           :bordered="true"
@@ -501,34 +501,38 @@ const agTokensCss = [
 const themes = {
   forest: {
     "--ag-primary": "#2b6b55",
+    "--ag-primary-text": "#2b6b55",
     "--ag-secondary": "#63786d",
     "--ag-background-primary": "#f0f4f1",
     "--ag-background-secondary": "#e6ece8",
     "--ag-text-primary": "#1e382c",
     "--ag-border": "#d8e0da",
   },
-  ocean: {
-    "--ag-primary": "#3b82f6",
-    "--ag-secondary": "#60a5fa",
-    "--ag-background-primary": "#f0f9ff",
-    "--ag-background-secondary": "#e0f2fe",
-    "--ag-text-primary": "#0c4a6e",
-    "--ag-border": "#bae6fd",
+  sunset: {
+    "--ag-primary": "#ea580c",
+    "--ag-primary-text": "#ea580c",
+    "--ag-secondary": "#f97316",
+    "--ag-background-primary": "#fff7ed",
+    "--ag-background-secondary": "#ffedd5",
+    "--ag-text-primary": "#7c2d12",
+    "--ag-border": "#fed7aa",
   },
   forestDark: {
     "--ag-primary": "#3fb950",
+    "--ag-primary-text": "#7ee787",
     "--ag-secondary": "#56d364",
     "--ag-background-primary": "#0D1117",
     "--ag-background-secondary": "#171c24",
     "--ag-text-primary": "#aff5b4",
     "--ag-border": "#3D444D",
   },
-  oceanDark: {
-    "--ag-primary": "#58a6ff",
-    "--ag-secondary": "#79c0ff",
+  sunsetDark: {
+    "--ag-primary": "#fb923c",
+    "--ag-primary-text": "#fdba74",
+    "--ag-secondary": "#fdba74",
     "--ag-background-primary": "#0D1117",
     "--ag-background-secondary": "#171c24",
-    "--ag-text-primary": "#cae8ff",
+    "--ag-text-primary": "#fed7aa",
     "--ag-border": "#3D444D",
   },
 };
