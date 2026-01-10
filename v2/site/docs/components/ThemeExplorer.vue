@@ -1,7 +1,7 @@
 <template>
   <div class="theme-explorer">
+    <h3 class="mbe4">Theme Controls</h3>
     <div class="controls">
-      <h3>Theme Controls</h3>
       <div class="theme-buttons">
         <VueButton
           shape="rounded"
@@ -787,15 +787,23 @@ onMounted(() => {
   background-color: var(--ag-background-secondary);
 }
 
+.theme-explorer > h3 {
+  color: var(--ag-text-primary);
+}
+
 .controls {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: var(--ag-space-4);
   margin-bottom: var(--ag-space-4);
 }
 
-.controls h3 {
-  color: var(--ag-text-primary);
+@media (width >= 40rem) {
+  .controls {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .theme-buttons {
