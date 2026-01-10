@@ -17,14 +17,13 @@
             <span class="command">{{ typedCommand }}</span>
             <span class="cursor">▋</span>
           </div>
-          <div class="output-line">
-            <span class="output-text">✓ Installing AgnosticUI components...</span>
-          </div>
-          <div class="output-line">
-            <span class="output-text">✓ Components ready in src/components/ag/</span>
-          </div>
-          <div class="output-line success">
-            <span class="output-text">🎉 Done! Start building with AI-friendly components.</span>
+          <div
+            v-for="(line, index) in currentOutput"
+            :key="`${currentCommandIndex}-${index}`"
+            class="output-line"
+            :class="{ success: index === currentOutput.length - 1 }"
+          >
+            <span class="output-text">{{ line }}</span>
           </div>
         </div>
       </div>
@@ -43,14 +42,36 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { VueLink } from 'agnosticui-core/link/vue'
 import { ArrowRight } from 'lucide-vue-next'
 
-const fullCommand = 'npx agnosticui-cli init'
+const commands = [
+  {
+    command: 'npx agnosticui-cli init',
+    output: [
+      '✓ Installing AgnosticUI components...',
+      '✓ Components ready in src/components/ag/',
+      '🎉 Done! Start building with AI-friendly components.'
+    ]
+  },
+  {
+    command: 'npx agnosticui-cli add button',
+    output: [
+      '✓ Adding button component...',
+      '✓ Button component ready in src/components/ag/button/',
+      '✨ Done! Import and use your button component.'
+    ]
+  }
+]
+
+const currentCommandIndex = ref(0)
 const typedCommand = ref('')
 
+const currentOutput = computed(() => commands[currentCommandIndex.value].output)
+
 const typeCommand = () => {
+  const fullCommand = commands[currentCommandIndex.value].command
   let i = 0
   const interval = setInterval(() => {
     if (i < fullCommand.length) {
@@ -58,9 +79,11 @@ const typeCommand = () => {
       i++
     } else {
       clearInterval(interval)
-      // Pause for 5 seconds before resetting and typing again
+      // Pause for 5 seconds before resetting and typing the next command
       setTimeout(() => {
         typedCommand.value = ''
+        // Switch to the next command
+        currentCommandIndex.value = (currentCommandIndex.value + 1) % commands.length
         setTimeout(typeCommand, 500)
       }, 5000)
     }
