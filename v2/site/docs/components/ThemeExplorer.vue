@@ -794,6 +794,7 @@ onMounted(() => {
 .controls {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: var(--ag-space-4);
   margin-bottom: var(--ag-space-4);
 }
@@ -813,8 +814,14 @@ onMounted(() => {
 
 .token-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: var(--ag-space-4);
+}
+
+@media (width >= 40rem) {
+  .token-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
 }
 
 .token-category h4 {
@@ -831,9 +838,15 @@ onMounted(() => {
 
 .token-item {
   display: grid;
-  grid-template-columns: 2fr 1fr 50px;
+  grid-template-columns: 2fr 1fr 40px;
   align-items: center;
   gap: var(--ag-space-2);
+}
+
+@media (width >= 40rem) {
+  .token-item {
+    grid-template-columns: 2fr 1fr 50px;
+  }
 }
 
 .token-name {
@@ -908,15 +921,26 @@ onMounted(() => {
 
 .pricing-table {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--ag-space-4);
   margin-top: var(--ag-space-4);
   text-align: center;
 }
 
+@media (width >= 40rem) {
+  .pricing-table {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .featured::part(ag-card-wrapper) {
   border-color: var(--ag-primary);
-  transform: scale(1.05);
+}
+
+@media (width >= 40rem) {
+  .featured::part(ag-card-wrapper) {
+    transform: scale(1.05);
+  }
 }
 
 .price {
