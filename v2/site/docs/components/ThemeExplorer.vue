@@ -1,6 +1,6 @@
 <template>
   <div class="theme-explorer">
-    <h3 class="mbe4">Theme Controls</h3>
+    <h3>Theme Controls</h3>
     <div class="controls">
       <div class="theme-buttons">
         <VueButton
@@ -38,7 +38,9 @@
       <div
         v-for="(tokens, category) in tokensByCategory"
         :key="category"
+        v-show="tokens.length > 0"
         class="token-category"
+        :class="{ 'token-category-wide': category === 'Easings' }"
       >
         <h4>{{ category }}</h4>
         <div class="token-items">
@@ -169,6 +171,32 @@
           >Choose Plan</VueButton>
         </VueCard>
       </div>
+
+      <div class="ratings-section">
+        <h4>Rating Variants</h4>
+        <div class="ratings-grid">
+          <div class="rating-example">
+            <span class="rating-label">Default</span>
+            <VueRating :value="4" />
+          </div>
+          <div class="rating-example">
+            <span class="rating-label">Primary</span>
+            <VueRating variant="primary" :value="4" />
+          </div>
+          <div class="rating-example">
+            <span class="rating-label">Success</span>
+            <VueRating variant="success" :value="4" />
+          </div>
+          <div class="rating-example">
+            <span class="rating-label">Warning</span>
+            <VueRating variant="warning" :value="4" />
+          </div>
+          <div class="rating-example">
+            <span class="rating-label">Danger</span>
+            <VueRating variant="danger" :value="4" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -178,6 +206,7 @@ import { ref, onMounted } from "vue";
 import { VueCard } from "agnosticui-core/card/vue";
 import VueButton from "agnosticui-core/button/vue";
 import { VueIcon } from "agnosticui-core/icon/vue";
+import { VueRating } from "agnosticui-core/rating/vue";
 import { Pencil } from "lucide-vue-next";
 
 const originalTokens = ref({});
@@ -561,6 +590,7 @@ function parseTokens(css) {
     Radii: [],
     Shadows: [],
     Borders: [],
+    Easings: [],
     Transitions: [],
     Other: [],
   };
@@ -634,6 +664,8 @@ function parseTokens(css) {
       category = "Shadows";
     } else if (tokenName.includes("border")) {
       category = "Borders";
+    } else if (tokenName.includes("ease")) {
+      category = "Easings";
     } else if (tokenName.includes("motion") || tokenName.includes("fx")) {
       category = "Transitions";
     }
@@ -654,6 +686,7 @@ function isColor(name) {
     name.includes("danger") ||
     name.includes("info") ||
     name.includes("neutral") ||
+    name.includes("rating") ||
     [
       "blue",
       "green",
@@ -789,6 +822,7 @@ onMounted(() => {
 
 .theme-explorer > h3 {
   color: var(--ag-text-primary);
+  margin-bottom: var(--ag-space-4) !important;
 }
 
 .controls {
@@ -797,14 +831,6 @@ onMounted(() => {
   align-items: flex-start;
   gap: var(--ag-space-4);
   margin-bottom: var(--ag-space-4);
-}
-
-@media (width >= 40rem) {
-  .controls {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
 }
 
 .theme-buttons {
@@ -818,17 +844,20 @@ onMounted(() => {
   gap: var(--ag-space-4);
 }
 
-@media (width >= 40rem) {
-  .token-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-}
-
 .token-category h4 {
   margin-bottom: var(--ag-space-3);
   border-bottom: 1px solid var(--ag-border);
   padding-bottom: var(--ag-space-2);
   color: var(--ag-text-primary);
+}
+
+.token-category-wide {
+  grid-column: span 2;
+}
+
+.token-category-wide .token-item {
+  grid-template-columns: 1fr 2fr 40px;
+  overflow: visible;
 }
 
 .token-items {
@@ -843,12 +872,6 @@ onMounted(() => {
   gap: var(--ag-space-2);
 }
 
-@media (width >= 40rem) {
-  .token-item {
-    grid-template-columns: 2fr 1fr 50px;
-  }
-}
-
 .token-name {
   font-family: monospace;
   font-size: var(--ag-font-size-sm);
@@ -858,12 +881,20 @@ onMounted(() => {
   color: var(--ag-text-primary);
 }
 
+.token-category-wide .token-name {
+  font-size: var(--ag-font-size-xs);
+}
+
 .text-input {
   width: 100%;
   font-size: var(--ag-font-size-sm);
   border-bottom: 1px solid var(--ag-border-subtle);
   background-color: transparent;
   color: var(--ag-text-primary);
+}
+
+.token-category-wide .text-input {
+  font-size: var(--ag-font-size-xs);
 }
 
 .token-preview {
@@ -927,20 +958,8 @@ onMounted(() => {
   text-align: center;
 }
 
-@media (width >= 40rem) {
-  .pricing-table {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 .featured::part(ag-card-wrapper) {
   border-color: var(--ag-primary);
-}
-
-@media (width >= 40rem) {
-  .featured::part(ag-card-wrapper) {
-    transform: scale(1.05);
-  }
 }
 
 .price {
@@ -975,5 +994,79 @@ onMounted(() => {
 .color-pencil {
   color: var(--ag-text-secondary);
   cursor: help;
+}
+
+.ratings-section {
+  margin-top: var(--ag-space-8);
+  padding-top: var(--ag-space-4);
+  border-top: 1px solid var(--ag-border);
+}
+
+.ratings-section h4 {
+  margin-bottom: var(--ag-space-4);
+  color: var(--ag-text-primary);
+}
+
+.ratings-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ag-space-4);
+}
+
+.rating-example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ag-space-2);
+  padding: var(--ag-space-3);
+  border: 1px solid var(--ag-border);
+  border-radius: var(--ag-radius-md);
+  background-color: var(--ag-background-primary);
+}
+
+.rating-label {
+  font-size: var(--ag-font-size-sm);
+  color: var(--ag-text-secondary);
+  font-weight: 500;
+}
+
+/* Consolidated media query for 40rem breakpoint */
+@media (width >= 40rem) {
+  .controls {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .token-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .token-item {
+    grid-template-columns: 2fr 1fr 50px;
+  }
+
+  .token-category-wide .token-item {
+    grid-template-columns: 1fr 3fr 50px;
+  }
+
+  .pricing-table {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .featured::part(ag-card-wrapper) {
+    transform: scale(1.05);
+  }
+
+  .ratings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Larger breakpoint for 3-column ratings */
+@media (width >= 60rem) {
+  .ratings-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 </style>
