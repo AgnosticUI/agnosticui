@@ -24,14 +24,14 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
+ - OS: [e.g. Mac, Windows, etc.]
+ - Browser [e.g. chrome, safari, firefox]
  - Version [e.g. 22]
 
 **Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
+ - Device: [e.g. iPhone14]
+ - OS: [e.g. iOS 14]
+ - Browser [e.g. safari, chrome]
  - Version [e.g. 22]
 
 **Issues with pull requests are deeply appreciated! But sometimes it's worth discussing first so the implementation works with AgnosticUI guidelines**
