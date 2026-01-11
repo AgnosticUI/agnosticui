@@ -160,5 +160,9 @@
   "rating-filled-danger": {
     "value": "{red.500.value}",
     "description": "Danger variant"
+  },
+  "rating-filled-secondary": {
+    "value": "{neutral.500.value}",
+    "description": "Secondary variant filled star for light mode"
   }
 }
