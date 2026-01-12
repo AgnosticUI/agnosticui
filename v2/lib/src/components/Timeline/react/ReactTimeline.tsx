@@ -3,6 +3,15 @@ import React from 'react';
 import { createComponent } from '@lit/react';
 import { AgTimeline as AgTimelineWC, AgTimelineItem as AgTimelineItemWC } from '../core/Timeline.js';
 
+// Extend React JSX IntrinsicElements to include custom timeline elements
+declare module 'react/jsx-runtime' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'ag-timeline-item': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+    }
+  }
+}
+
 // Define the props for the Timeline component
 export interface ReactTimelineProps {
   orientation?: 'horizontal' | 'vertical';
