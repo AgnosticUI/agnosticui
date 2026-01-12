@@ -193,3 +193,4 @@ export const RatingFilledPrimary = "#0969da";
 export const RatingFilledSuccess = "#238636";
 export const RatingFilledWarning = "#9a6700";
 export const RatingFilledDanger = "#cf222e";
+export const RatingFilledSecondary = "#6b7280";
