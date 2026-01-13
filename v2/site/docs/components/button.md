@@ -288,6 +288,19 @@ Toggle buttons follow the [WAI-ARIA Toggle Button pattern](https://www.w3.org/WA
 - **square** - Sharp corners, equal width/height
 - **rounded-square** - Rounded corners, equal width/height
 
+## Disabled States
+
+Disabled buttons maintain their color identity while providing clear visual affordance that they are inactive:
+
+- **Filled buttons** use lighter background and text tokens specific to each variant
+- **Bordered buttons** use opacity to dim both border and text
+- **Ghost/Link buttons** use opacity to indicate disabled state
+- All disabled buttons show a `not-allowed` cursor on hover
+
+Each color variant (primary, success, warning, danger, secondary, monochrome) maintains its tonal identity in the disabled state, making it easy to understand what action would be available when the button becomes enabled.
+
+**Accessibility:** Disabled buttons maintain appropriate contrast ratios between foreground and background colors by using design tokens specifically created for disabled states.
+
 ## Grouped Buttons
 
 Use the `grouped` prop to create connected button groups:
