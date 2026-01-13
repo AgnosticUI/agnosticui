@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Toast | AgnosticUI</title>
+    <meta name="description" content="One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.">
+    <meta name="generator" content="VitePress v1.6.4">
+    <link rel="preload stylesheet" href="/assets/style.B9q022JI.css" as="style">
+    <link rel="preload stylesheet" href="/vp-icons.css" as="style">
+    
+    <script type="module" src="/assets/app.Db9wLKOo.js"></script>
+    <link rel="preload" href="/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="modulepreload" href="/assets/chunks/theme.dNgCwI32.js">
+    <link rel="modulepreload" href="/assets/chunks/framework.NAAYCHZu.js">
+    <link rel="modulepreload" href="/assets/chunks/AlphaWarning.yC7ZufpQ.js">
+    <link rel="modulepreload" href="/assets/chunks/Button.Bujdzq23.js">
+    <link rel="modulepreload" href="/assets/chunks/Icon.odq14qpJ.js">
+    <link rel="modulepreload" href="/assets/chunks/Alert.D54RCgmw.js">
+    <link rel="modulepreload" href="/assets/chunks/CloseButton.yKDcmacg.js">
+    <link rel="modulepreload" href="/assets/chunks/sparkles.DTErT1ti.js">
+    <link rel="modulepreload" href="/assets/chunks/info.CjSjj6Py.js">
+    <link rel="modulepreload" href="/assets/chunks/circle-x.wfdRs8_1.js">
+    <link rel="modulepreload" href="/assets/chunks/triangle-alert.DhPqtk12.js">
+    <link rel="modulepreload" href="/assets/chunks/FrameworkExample.Vj5DwYx5.js">
+    <link rel="modulepreload" href="/assets/chunks/createLucideIcon.B61Wqv9x.js">
+    <link rel="modulepreload" href="/assets/components_toast.md.N7kNxAD2.lean.js">
+    <link rel="stylesheet" href="/ag-tokens.css">
+    <link rel="stylesheet" href="/ag-tokens-dark.css">
+    <link rel="stylesheet" href="/table.css">
+    <link rel="icon" href="/favicon.ico">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><div class="Layout" data-v-5d98c3a5><!--[--><!--]--><!--[--><span tabindex="-1" data-v-0b0ada53></span><a href="#VPContent" class="VPSkipLink visually-hidden" data-v-0b0ada53>Skip to content</a><!--]--><!----><header class="VPNav" data-v-5d98c3a5 data-v-ae24b3ad><div class="VPNavBar" data-v-ae24b3ad data-v-6aa21345><div class="wrapper" data-v-6aa21345><div class="container" data-v-6aa21345><div class="title" data-v-6aa21345><div class="VPNavBarTitle has-sidebar" data-v-6aa21345 data-v-1168a8e4><a class="title" href="/" data-v-1168a8e4><!--[--><!--]--><!----><span data-v-1168a8e4>AgnosticUI</span><!--[--><!--]--></a></div></div><div class="content" data-v-6aa21345><div class="content-body" data-v-6aa21345><!--[--><!--]--><div class="VPNavBarSearch search" data-v-6aa21345><!----></div><nav aria-labelledby="main-nav-aria-label" class="VPNavBarMenu menu" data-v-6aa21345 data-v-dc692963><span id="main-nav-aria-label" class="visually-hidden" data-v-dc692963> Main Navigation </span><!--[--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/components/button.html" tabindex="0" data-v-dc692963 data-v-e56f3d57><!--[--><span data-v-e56f3d57>Components</span><!--]--></a><!--]--><!--]--></nav><!----><div class="VPNavBarAppearance appearance" data-v-6aa21345 data-v-6c893767><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-6c893767 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div><div class="VPSocialLinks VPNavBarSocialLinks social-links" data-v-6aa21345 data-v-0394ad82 data-v-7bc22406><!--[--><a class="VPSocialLink no-icon" href="https://github.com/AgnosticUI/agnosticui" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406 data-v-bd121fe5><span class="vpi-social-github"></span></a><!--]--></div><div class="VPFlyout VPNavBarExtra extra" data-v-6aa21345 data-v-bb2aa2f0 data-v-cf11d7a2><button type="button" class="button" aria-haspopup="true" aria-expanded="false" aria-label="extra navigation" data-v-cf11d7a2><span class="vpi-more-horizontal icon" data-v-cf11d7a2></span></button><div class="menu" data-v-cf11d7a2><div class="VPMenu" data-v-cf11d7a2 data-v-b98bc113><!----><!--[--><!--[--><!----><div class="group" data-v-bb2aa2f0><div class="item appearance" data-v-bb2aa2f0><p class="label" data-v-bb2aa2f0>Appearance</p><div class="appearance-action" data-v-bb2aa2f0><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-bb2aa2f0 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div></div></div><div class="group" data-v-bb2aa2f0><div class="item social-links" data-v-bb2aa2f0><div class="VPSocialLinks social-links-list" data-v-bb2aa2f0 data-v-7bc22406><!--[--><a class="VPSocialLink no-icon" href="https://github.com/AgnosticUI/agnosticui" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406 data-v-bd121fe5><span class="vpi-social-github"></span></a><!--]--></div></div></div><!--]--><!--]--></div></div></div><!--[--><!--]--><button type="button" class="VPNavBarHamburger hamburger" aria-label="mobile navigation" aria-expanded="false" aria-controls="VPNavScreen" data-v-6aa21345 data-v-e5dd9c1c><span class="container" data-v-e5dd9c1c><span class="top" data-v-e5dd9c1c></span><span class="middle" data-v-e5dd9c1c></span><span class="bottom" data-v-e5dd9c1c></span></span></button></div></div></div></div><div class="divider" data-v-6aa21345><div class="divider-line" data-v-6aa21345></div></div></div><!----></header><div class="VPLocalNav has-sidebar empty" data-v-5d98c3a5 data-v-a6f0e41e><div class="container" data-v-a6f0e41e><button class="menu" aria-expanded="false" aria-controls="VPSidebarNav" data-v-a6f0e41e><span class="vpi-align-left menu-icon" data-v-a6f0e41e></span><span class="menu-text" data-v-a6f0e41e>Menu</span></button><div class="VPLocalNavOutlineDropdown" style="--vp-vh:0px;" data-v-a6f0e41e data-v-8a42e2b4><button data-v-8a42e2b4>Return to top</button><!----></div></div></div><aside class="VPSidebar" data-v-5d98c3a5 data-v-319d5ca6><div class="curtain" data-v-319d5ca6></div><nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1" data-v-319d5ca6><span class="visually-hidden" id="sidebar-aria-label" data-v-319d5ca6> Sidebar Navigation </span><!--[--><!--]--><!--[--><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Quick Start</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/installation.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Installation</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/theming.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Theming</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0 has-active" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Components</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/accordion.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Accordion</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/alert.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Alerts</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/aspect-ratio.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>AspectRatio</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/avatar.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Avatar</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/badge.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Badge</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/badge-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>BadgeFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/breadcrumb.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Breadcrumb</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/button-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ButtonFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/card.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Card</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/checkbox.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Checkbox</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/collapsible.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Collapsible</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/combobox.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Combobox</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/copybutton.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>CopyButton</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/dialog.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Dialog</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/divider.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Divider</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/drawer.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Drawer</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/empty-state.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>EmptyState</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/fieldset.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Fieldset</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/flex.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Flex (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/header.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Header</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Icon</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon-button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Icon Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon-button-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>IconButtonFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/image.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Image</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/input.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Input</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/intl-formatter.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>IntlFormatter</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/kbd.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Kbd</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/link.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Link</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/loader.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Loader</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/mark.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Mark</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/menu.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Menu</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/message-bubble.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>MessageBubble</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/pagination.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Pagination</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/popover.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Popover</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/progress.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Progress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/progress-ring.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ProgressRing</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/radio.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Radio</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/rating.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Rating</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/scroll-progress.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ScrollProgress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/scroll-to-button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ScrollToButton</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/select.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Select</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/sidebar.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Sidebar (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/skeleton-loader.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Skeleton Loader</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/slider.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Slider</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/spinner.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Spinner</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/table.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Table</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tabs.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tabs</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tag.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tag</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/timeline.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Timeline</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/toast.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Toast</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/toggle.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Toggle</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tooltip.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tooltip</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/visually-hidden.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>VisuallyHidden</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Documentation</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/setup.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Setup Guide</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/understand.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Understanding AgnosticUI</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/advanced/advanced-usage.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Advanced Usage</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/utilities.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>CSS Utilities</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/faq.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>FAQ</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><!--]--><!--[--><!--]--></nav></aside><div class="VPContent has-sidebar" id="VPContent" data-v-5d98c3a5 data-v-1428d186><div class="VPDoc has-sidebar has-aside" data-v-1428d186 data-v-39a288b8><!--[--><!--]--><div class="container" data-v-39a288b8><div class="aside" data-v-39a288b8><div class="aside-curtain" data-v-39a288b8></div><div class="aside-container" data-v-39a288b8><div class="aside-content" data-v-39a288b8><div class="VPDocAside" data-v-39a288b8 data-v-3f215769><!--[--><!--]--><!--[--><!--]--><nav aria-labelledby="doc-outline-aria-label" class="VPDocAsideOutline" data-v-3f215769 data-v-a5bbad30><div class="content" data-v-a5bbad30><div class="outline-marker" data-v-a5bbad30></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-a5bbad30>On this page</div><ul class="VPDocOutlineItem root" data-v-a5bbad30 data-v-b933a997><!--[--><!--]--></ul></div></nav><!--[--><!--]--><div class="spacer" data-v-3f215769></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-39a288b8><div class="content-container" data-v-39a288b8><!--[--><!--]--><main class="main" data-v-39a288b8><div style="position:relative;" class="vp-doc _components_toast" data-v-39a288b8><div><h1 id="toast" tabindex="-1">Toast <a class="header-anchor" href="#toast" aria-label="Permalink to &quot;Toast&quot;">​</a></h1><div class="alpha-warning" data-v-7d6f0b92><div class="alpha-warning-header" data-v-7d6f0b92><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert" data-v-7d6f0b92><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg><span class="alpha-warning-title" data-v-7d6f0b92>Experimental Alpha</span></div><p class="alpha-warning-text" data-v-7d6f0b92> This library is a work-in-progress. We are releasing it early to gather feedback, but it is not ready for production. </p></div><p>Toast notification is a non-modal element that appears at viewport edges or corners to provide brief, contextual feedback to a user. It can auto-dismiss after a duration and support pause-on-hover behavior.</p><h2 id="examples" tabindex="-1">Examples <a class="header-anchor" href="#examples" aria-label="Permalink to &quot;Examples&quot;">​</a></h2><div class="framework-example" data-v-9ebfb992><ag-tabs activation="manual" activeTab="0" orientation="horizontal" ariaLabel="Framework code examples" data-v-9ebfb992><!--[--><ag-tab slot="tab" panel="panel-vue" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>Vue</span></div><!--]--></ag-tab><ag-tab slot="tab" panel="panel-lit" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>Lit</span></div><!--]--></ag-tab><ag-tab slot="tab" panel="panel-react" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>React</span></div><!--]--></ag-tab><ag-tab-panel slot="panel" panel="panel-vue" data-v-9ebfb992><!--[--><details class="preview-details" open data-v-9ebfb992><summary data-v-9ebfb992>Live Preview</summary><div class="preview" data-v-9ebfb992><!--[--><section data-v-0ff4237b><div class="mbe4 guidance-note" data-v-0ff4237b><h3 data-v-0ff4237b>Demo Pattern: Single Toast Display</h3><p data-v-0ff4237b> This demo automatically dismisses any visible toast before showing a new one. This prevents toast overlap and is the recommended pattern for most applications. See the documentation below for alternative approaches if you need multiple simultaneous toasts. </p></div><div class="mbe4" data-v-0ff4237b><h2 data-v-0ff4237b>Toast Types</h2></div><div class="stacked flex-align-start mbe4" data-v-0ff4237b><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="default" position="top-end" duration="5000" data-v-0ff4237b><!--[--> Default toast notification <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="success" position="top-end" duration="5000" data-v-0ff4237b><!--[--> Operation completed successfully! <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="info" position="top-end" duration="5000" data-v-0ff4237b><!--[--> New message received! <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="primary" position="top-end" duration="5000" data-v-0ff4237b><!--[--> New feature available! <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="warning" position="top-end" duration="5000" data-v-0ff4237b><!--[--><div class="flex-inline items-center" data-v-0ff4237b><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide mie3 lucide-triangle-alert-icon lucide-triangle-alert mie3" data-v-0ff4237b><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg> Warning: This action cannot be undone. </div><!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="error" position="top-end" duration="5000" data-v-0ff4237b><!--[--><div class="flex-inline items-center" data-v-0ff4237b><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide mie3 lucide-circle-alert-icon lucide-circle-alert mie3" data-v-0ff4237b><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg> An error occurred. Please try again. </div><!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="danger" position="top-end" duration="5000" data-v-0ff4237b><!--[--><div class="flex-inline items-center" data-v-0ff4237b><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide mie3 lucide-circle-x-icon lucide-circle-x mie3" data-v-0ff4237b><circle cx="12" cy="12" r="10"></circle><path d="m15 9-6 6"></path><path d="m9 9 6 6"></path></svg> Critical error detected! </div><!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="monochrome" position="top-end" duration="5000" data-v-0ff4237b><!--[--><div class="flex-inline items-center" data-v-0ff4237b> Modern monochrome notification </div><!--]--></ag-toast></div><div class="mbe4" data-v-0ff4237b><h2 data-v-0ff4237b>Positions</h2></div><div class="stacked flex-align-start mbe4" data-v-0ff4237b><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="default" position="top-start" duration="5000" data-v-0ff4237b><!--[--> Toast at top-start <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="default" position="top" duration="5000" data-v-0ff4237b><!--[--> Toast at top (full width) <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="default" position="top-end" duration="5000" data-v-0ff4237b><!--[--> Toast at top-end (default) <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="default" position="bottom-start" duration="5000" data-v-0ff4237b><!--[--> Toast at bottom-start <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="default" position="bottom" duration="5000" data-v-0ff4237b><!--[--> Toast at bottom (full width) <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="default" position="bottom-end" duration="5000" data-v-0ff4237b><!--[--> Toast at bottom-end <!--]--></ag-toast></div><div class="mbe4" data-v-0ff4237b><h2 data-v-0ff4237b>Border Styles</h2></div><div class="stacked flex-align-start mbe4" data-v-0ff4237b><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="true" .rounded="true" .borderedLeft="false" type="info" position="top-end" duration="5000" data-v-0ff4237b><!--[--> Toast with border <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="true" type="success" position="top-end" duration="5000" data-v-0ff4237b><!--[--><div class="flex-inline items-center" data-v-0ff4237b><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide mie3 lucide-circle-check-big-icon lucide-circle-check-big mie3" data-v-0ff4237b><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg> Toast with left border accent </div><!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="false" .borderedLeft="false" type="primary" position="top-end" duration="5000" data-v-0ff4237b><!--[--> Toast without rounded corners <!--]--></ag-toast></div><div class="mbe4" data-v-0ff4237b><h2 data-v-0ff4237b>Auto-Dismiss Options</h2></div><div class="stacked flex-align-start mbe4" data-v-0ff4237b><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="info" position="top-end" duration="2000" data-v-0ff4237b><!--[--> This toast will auto-dismiss in 2 seconds <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="info" position="top-end" duration="5000" data-v-0ff4237b><!--[--> This toast will auto-dismiss in 5 seconds (default) <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="false" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="warning" position="top-end" duration="5000" data-v-0ff4237b><!--[--> This toast will not auto-dismiss. Click X to close. <!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="false" .bordered="false" .rounded="true" .borderedLeft="false" type="info" position="top-end" duration="3000" data-v-0ff4237b><!--[--> Hover won&#39;t pause this toast&#39;s timer <!--]--></ag-toast></div><div class="mbe4" data-v-0ff4237b><h2 data-v-0ff4237b>Close Button Options</h2></div><div class="stacked flex-align-start mbe4" data-v-0ff4237b><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="false" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="info" position="top-end" duration="3000" data-v-0ff4237b><!--[--> Toast without close button (auto-dismisses) <!--]--></ag-toast></div><div class="mbe4" data-v-0ff4237b><h2 data-v-0ff4237b>With Icons</h2></div><div class="stacked flex-align-start mbe4" data-v-0ff4237b><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="success" position="top-end" duration="5000" data-v-0ff4237b><!--[--><div class="flex-inline items-center" data-v-0ff4237b><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide mie3 lucide-circle-check-big-icon lucide-circle-check-big mie3" data-v-0ff4237b><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg> File uploaded successfully! </div><!--]--></ag-toast><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="info" position="top-end" duration="5000" data-v-0ff4237b><!--[--><div class="flex-inline items-center" data-v-0ff4237b><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide mie3 lucide-info-icon lucide-info mie3" data-v-0ff4237b><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg> You have 3 unread messages </div><!--]--></ag-toast></div><div class="mbe4" data-v-0ff4237b><h2 data-v-0ff4237b>CSS Shadow Parts Customization</h2><p class="mbe2" style="color:var(--ag-text-secondary);font-size:0.875rem;" data-v-0ff4237b> Customize toast appearance using CSS Shadow Parts without breaking encapsulation. </p></div><div class="stacked flex-align-start mbe4" data-v-0ff4237b><!----><ag-toast .open="false" .autoDismiss="true" .showCloseButton="true" .pauseOnHover="true" .bordered="false" .rounded="true" .borderedLeft="false" type="default" position="top-end" duration="5000" class="custom-gradient-toast" data-v-0ff4237b><!--[--><div class="flex-inline items-center" data-v-0ff4237b><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide mie3 lucide-sparkles-icon lucide-sparkles mie3" data-v-0ff4237b><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg> Custom styled toast with gradient </div><!--]--></ag-toast></div><div class="mbe4 implementation-guide" data-v-0ff4237b><h2 data-v-0ff4237b>Implementation Patterns</h2><div class="guide-section" data-v-0ff4237b><h3 data-v-0ff4237b>Single Toast (Recommended)</h3><p data-v-0ff4237b> Show one toast at a time to prevent information overload. This demo uses a registry pattern to automatically dismiss the active toast before showing a new one. </p><pre data-v-0ff4237b><code data-v-0ff4237b>// Create registry and track active toast
+const toastRefs = { showSuccess, showError /* ... */ };
+let activeToastKey = null;
+
+const showToast = (toastKey) =&gt; {
+  if (activeToastKey) toastRefs[activeToastKey].value = false;
+  toastRefs[toastKey].value = true;
+  activeToastKey = toastKey;
+};</code></pre></div><div class="guide-section" data-v-0ff4237b><h3 data-v-0ff4237b>Multiple Toasts (Advanced)</h3><p data-v-0ff4237b> For simultaneous toasts, implement a queue with unique IDs and render to document.body using your framework&#39;s approach: </p><ul data-v-0ff4237b><li data-v-0ff4237b><strong data-v-0ff4237b>Vue:</strong> <code data-v-0ff4237b>&lt;teleport to=&quot;body&quot;&gt;</code></li><li data-v-0ff4237b><strong data-v-0ff4237b>React:</strong> <code data-v-0ff4237b>ReactDOM.createPortal()</code></li><li data-v-0ff4237b><strong data-v-0ff4237b>Svelte:</strong> Custom action or <code data-v-0ff4237b>onMount</code></li><li data-v-0ff4237b><strong data-v-0ff4237b>Lit/Web Components:</strong> Append container to <code data-v-0ff4237b>document.body</code></li></ul><p style="color:var(--ag-text-secondary);font-size:0.875rem;margin-top:0.5rem;" data-v-0ff4237b> Key: Maintain toast queue, calculate offsets for stacking, handle enter/exit animations. </p></div><div class="guide-section" data-v-0ff4237b><h3 data-v-0ff4237b>Best Practices</h3><ul data-v-0ff4237b><li data-v-0ff4237b>Limit frequency and keep messages brief</li><li data-v-0ff4237b>Use appropriate types (error for critical, info for general)</li><li data-v-0ff4237b>Important messages need longer durations or manual dismissal</li><li data-v-0ff4237b>Test positioning on mobile to avoid obscuring content</li></ul></div></div></section><!--]--></div></details><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View Vue Code</summary><pre data-v-9ebfb992><code class="language-vue" data-v-9ebfb992>&lt;template&gt;
+  &lt;section&gt;
+    &lt;!-- Guidance Note --&gt;
+    &lt;div class=&quot;mbe4 guidance-note&quot;&gt;
+      &lt;h3&gt;Demo Pattern: Single Toast Display&lt;/h3&gt;
+      &lt;p&gt;
+        This demo automatically dismisses any visible toast before showing a new one. This prevents toast overlap and is the recommended pattern for most applications.
+        See the documentation below for alternative approaches if you need multiple simultaneous toasts.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Toast Types&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showDefault&#39;)&quot;
+      &gt;
+        Show Default Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showDefault&quot;
+        @toast-close=&quot;showDefault = false&quot;
+      &gt;
+        Default toast notification
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showSuccess&#39;)&quot;
+      &gt;
+        Show Success Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showSuccess&quot;
+        type=&quot;success&quot;
+        @toast-close=&quot;showSuccess = false&quot;
+      &gt;
+        Operation completed successfully!
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showInfo&#39;)&quot;
+      &gt;
+        Show Info Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showInfo&quot;
+        type=&quot;info&quot;
+        @toast-close=&quot;showInfo = false&quot;
+      &gt;
+        New message received!
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showPrimary&#39;)&quot;
+      &gt;
+        Show Primary Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showPrimary&quot;
+        type=&quot;primary&quot;
+        @toast-close=&quot;showPrimary = false&quot;
+      &gt;
+        New feature available!
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showWarning&#39;)&quot;
+      &gt;
+        Show Warning Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showWarning&quot;
+        type=&quot;warning&quot;
+        @toast-close=&quot;showWarning = false&quot;
+      &gt;
+        &lt;div class=&quot;flex-inline items-center&quot;&gt;
+          &lt;AlertTriangle
+            :size=&quot;20&quot;
+            class=&quot;mie3&quot;
+          /&gt;
+          Warning: This action cannot be undone.
+        &lt;/div&gt;
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showError&#39;)&quot;
+      &gt;
+        Show Error Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showError&quot;
+        type=&quot;error&quot;
+        @toast-close=&quot;showError = false&quot;
+      &gt;
+        &lt;div class=&quot;flex-inline items-center&quot;&gt;
+          &lt;AlertCircle
+            :size=&quot;20&quot;
+            class=&quot;mie3&quot;
+          /&gt;
+          An error occurred. Please try again.
+        &lt;/div&gt;
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showDanger&#39;)&quot;
+      &gt;
+        Show Danger Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showDanger&quot;
+        type=&quot;danger&quot;
+        @toast-close=&quot;showDanger = false&quot;
+      &gt;
+        &lt;div class=&quot;flex-inline items-center&quot;&gt;
+          &lt;XCircle
+            :size=&quot;20&quot;
+            class=&quot;mie3&quot;
+          /&gt;
+          Critical error detected!
+        &lt;/div&gt;
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showMonochrome&#39;)&quot;
+      &gt;
+        Show Monochrome Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showMonochrome&quot;
+        type=&quot;monochrome&quot;
+        @toast-close=&quot;showMonochrome = false&quot;
+      &gt;
+        &lt;div class=&quot;flex-inline items-center&quot;&gt;
+          Modern monochrome notification
+        &lt;/div&gt;
+      &lt;/VueToast&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Positions&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showTopStart&#39;)&quot;
+      &gt;
+        Top Start
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showTopStart&quot;
+        position=&quot;top-start&quot;
+        @toast-close=&quot;showTopStart = false&quot;
+      &gt;
+        Toast at top-start
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showTop&#39;)&quot;
+      &gt;
+        Top (Full Width)
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showTop&quot;
+        position=&quot;top&quot;
+        @toast-close=&quot;showTop = false&quot;
+      &gt;
+        Toast at top (full width)
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showTopEnd&#39;)&quot;
+      &gt;
+        Top End (Default)
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showTopEnd&quot;
+        position=&quot;top-end&quot;
+        @toast-close=&quot;showTopEnd = false&quot;
+      &gt;
+        Toast at top-end (default)
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showBottomStart&#39;)&quot;
+      &gt;
+        Bottom Start
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showBottomStart&quot;
+        position=&quot;bottom-start&quot;
+        @toast-close=&quot;showBottomStart = false&quot;
+      &gt;
+        Toast at bottom-start
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showBottom&#39;)&quot;
+      &gt;
+        Bottom (Full Width)
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showBottom&quot;
+        position=&quot;bottom&quot;
+        @toast-close=&quot;showBottom = false&quot;
+      &gt;
+        Toast at bottom (full width)
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showBottomEnd&#39;)&quot;
+      &gt;
+        Bottom End
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showBottomEnd&quot;
+        position=&quot;bottom-end&quot;
+        @toast-close=&quot;showBottomEnd = false&quot;
+      &gt;
+        Toast at bottom-end
+      &lt;/VueToast&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Border Styles&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showBordered&#39;)&quot;
+      &gt;
+        Bordered Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showBordered&quot;
+        type=&quot;info&quot;
+        bordered
+        @toast-close=&quot;showBordered = false&quot;
+      &gt;
+        Toast with border
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showBorderedLeft&#39;)&quot;
+      &gt;
+        Left Border Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showBorderedLeft&quot;
+        type=&quot;success&quot;
+        borderedLeft
+        @toast-close=&quot;showBorderedLeft = false&quot;
+      &gt;
+        &lt;div class=&quot;flex-inline items-center&quot;&gt;
+          &lt;CheckCircle
+            :size=&quot;20&quot;
+            class=&quot;mie3&quot;
+          /&gt;
+          Toast with left border accent
+        &lt;/div&gt;
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showNotRounded&#39;)&quot;
+      &gt;
+        Not Rounded Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showNotRounded&quot;
+        type=&quot;primary&quot;
+        :rounded=&quot;false&quot;
+        @toast-close=&quot;showNotRounded = false&quot;
+      &gt;
+        Toast without rounded corners
+      &lt;/VueToast&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Auto-Dismiss Options&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showQuickDismiss&#39;)&quot;
+      &gt;
+        Quick Dismiss (2s)
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showQuickDismiss&quot;
+        :duration=&quot;2000&quot;
+        type=&quot;info&quot;
+        @toast-close=&quot;showQuickDismiss = false&quot;
+      &gt;
+        This toast will auto-dismiss in 2 seconds
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showAutoDismiss&#39;)&quot;
+      &gt;
+        Auto-Dismiss (5s)
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showAutoDismiss&quot;
+        :duration=&quot;5000&quot;
+        type=&quot;info&quot;
+        @toast-close=&quot;showAutoDismiss = false&quot;
+      &gt;
+        This toast will auto-dismiss in 5 seconds (default)
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showNoAutoDismiss&#39;)&quot;
+      &gt;
+        No Auto-Dismiss
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showNoAutoDismiss&quot;
+        :auto-dismiss=&quot;false&quot;
+        type=&quot;warning&quot;
+        @toast-close=&quot;showNoAutoDismiss = false&quot;
+      &gt;
+        This toast will not auto-dismiss. Click X to close.
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showNoPause&#39;)&quot;
+      &gt;
+        No Pause on Hover
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showNoPause&quot;
+        :pause-on-hover=&quot;false&quot;
+        :duration=&quot;3000&quot;
+        type=&quot;info&quot;
+        @toast-close=&quot;showNoPause = false&quot;
+      &gt;
+        Hover won&#39;t pause this toast&#39;s timer
+      &lt;/VueToast&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Close Button Options&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showNoCloseButton&#39;)&quot;
+      &gt;
+        No Close Button
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showNoCloseButton&quot;
+        :show-close-button=&quot;false&quot;
+        type=&quot;info&quot;
+        :duration=&quot;3000&quot;
+        @toast-close=&quot;showNoCloseButton = false&quot;
+      &gt;
+        Toast without close button (auto-dismisses)
+      &lt;/VueToast&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;With Icons&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showIconSuccess&#39;)&quot;
+      &gt;
+        Success with Icon
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showIconSuccess&quot;
+        type=&quot;success&quot;
+        @toast-close=&quot;showIconSuccess = false&quot;
+      &gt;
+        &lt;div class=&quot;flex-inline items-center&quot;&gt;
+          &lt;CheckCircle
+            :size=&quot;20&quot;
+            class=&quot;mie3&quot;
+          /&gt;
+          File uploaded successfully!
+        &lt;/div&gt;
+      &lt;/VueToast&gt;
+
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showIconInfo&#39;)&quot;
+      &gt;
+        Info with Icon
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showIconInfo&quot;
+        type=&quot;info&quot;
+        @toast-close=&quot;showIconInfo = false&quot;
+      &gt;
+        &lt;div class=&quot;flex-inline items-center&quot;&gt;
+          &lt;Info
+            :size=&quot;20&quot;
+            class=&quot;mie3&quot;
+          /&gt;
+          You have 3 unread messages
+        &lt;/div&gt;
+      &lt;/VueToast&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;CSS Shadow Parts Customization&lt;/h2&gt;
+      &lt;p
+        class=&quot;mbe2&quot;
+        style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;
+      &gt;
+        Customize toast appearance using CSS Shadow Parts without breaking encapsulation.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+      &lt;VueButton
+        class=&quot;demo-button&quot;
+        variant=&quot;primary&quot;
+        size=&quot;md&quot;
+        shape=&quot;rounded&quot;
+        @click=&quot;showToast(&#39;showCustomGradient&#39;)&quot;
+      &gt;
+        Custom Gradient Toast
+      &lt;/VueButton&gt;
+      &lt;VueToast
+        v-model:open=&quot;showCustomGradient&quot;
+        class=&quot;custom-gradient-toast&quot;
+        position=&quot;top-end&quot;
+        @toast-close=&quot;showCustomGradient = false&quot;
+      &gt;
+        &lt;div class=&quot;flex-inline items-center&quot;&gt;
+          &lt;Sparkles
+            :size=&quot;20&quot;
+            class=&quot;mie3&quot;
+          /&gt;
+          Custom styled toast with gradient
+        &lt;/div&gt;
+      &lt;/VueToast&gt;
+    &lt;/div&gt;
+    &lt;!-- Implementation Guide --&gt;
+    &lt;div class=&quot;mbe4 implementation-guide&quot;&gt;
+      &lt;h2&gt;Implementation Patterns&lt;/h2&gt;
+
+      &lt;div class=&quot;guide-section&quot;&gt;
+        &lt;h3&gt;Single Toast (Recommended)&lt;/h3&gt;
+        &lt;p&gt;
+          Show one toast at a time to prevent information overload. This demo uses a registry pattern to automatically dismiss the active toast before showing a new one.
+        &lt;/p&gt;
+        &lt;pre&gt;&lt;code&gt;// Create registry and track active toast
+const toastRefs = { showSuccess, showError /* ... */ };
+let activeToastKey = null;
+
+const showToast = (toastKey) =&gt; {
+  if (activeToastKey) toastRefs[activeToastKey].value = false;
+  toastRefs[toastKey].value = true;
+  activeToastKey = toastKey;
+};&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;guide-section&quot;&gt;
+        &lt;h3&gt;Multiple Toasts (Advanced)&lt;/h3&gt;
+        &lt;p&gt;
+          For simultaneous toasts, implement a queue with unique IDs and render to document.body using your framework&#39;s approach:
+        &lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Vue:&lt;/strong&gt; &lt;code&gt;&amp;lt;teleport to=&quot;body&quot;&amp;gt;&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;React:&lt;/strong&gt; &lt;code&gt;ReactDOM.createPortal()&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Svelte:&lt;/strong&gt; Custom action or &lt;code&gt;onMount&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Lit/Web Components:&lt;/strong&gt; Append container to &lt;code&gt;document.body&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem; margin-top: 0.5rem;&quot;&gt;
+          Key: Maintain toast queue, calculate offsets for stacking, handle enter/exit animations.
+        &lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;guide-section&quot;&gt;
+        &lt;h3&gt;Best Practices&lt;/h3&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Limit frequency and keep messages brief&lt;/li&gt;
+          &lt;li&gt;Use appropriate types (error for critical, info for general)&lt;/li&gt;
+          &lt;li&gt;Important messages need longer durations or manual dismissal&lt;/li&gt;
+          &lt;li&gt;Test positioning on mobile to avoid obscuring content&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+
+&lt;script lang=&quot;ts&quot;&gt;
+import { defineComponent, ref, type Ref } from &quot;vue&quot;;
+import { VueToast } from &quot;agnosticui-core/toast/vue&quot;;
+import { VueButton } from &quot;agnosticui-core/button/vue&quot;;
+import {
+  AlertTriangle,
+  AlertCircle,
+  XCircle,
+  CheckCircle,
+  Info,
+  Sparkles,
+} from &quot;lucide-vue-next&quot;;
+
+export default defineComponent({
+  name: &quot;ToastExamples&quot;,
+  components: {
+    VueToast,
+    AlertTriangle,
+    AlertCircle,
+    XCircle,
+    CheckCircle,
+    Info,
+    Sparkles,
+  },
+  setup() {
+    const showDefault = ref(false);
+    const showSuccess = ref(false);
+    const showInfo = ref(false);
+    const showPrimary = ref(false);
+    const showWarning = ref(false);
+    const showError = ref(false);
+    const showDanger = ref(false);
+    const showMonochrome = ref(false);
+
+    const showTopStart = ref(false);
+    const showTop = ref(false);
+    const showTopEnd = ref(false);
+    const showBottomStart = ref(false);
+    const showBottom = ref(false);
+    const showBottomEnd = ref(false);
+
+    const showBordered = ref(false);
+    const showBorderedLeft = ref(false);
+    const showNotRounded = ref(false);
+
+    const showQuickDismiss = ref(false);
+    const showAutoDismiss = ref(false);
+    const showNoAutoDismiss = ref(false);
+    const showNoPause = ref(false);
+
+    const showNoCloseButton = ref(false);
+    const showIconSuccess = ref(false);
+    const showIconInfo = ref(false);
+    const showCustomGradient = ref(false);
+
+    //
+    // === TOAST REGISTRY FOR SINGLE ACTIVE TOAST TRACKING ===
+    //
+    const toastRefs: Record&lt;string, Ref&lt;boolean&gt;&gt; = {
+      showDefault,
+      showSuccess,
+      showInfo,
+      showPrimary,
+      showWarning,
+      showError,
+      showDanger,
+      showMonochrome,
+      showTopStart,
+      showTop,
+      showTopEnd,
+      showBottomStart,
+      showBottom,
+      showBottomEnd,
+      showBordered,
+      showBorderedLeft,
+      showNotRounded,
+      showQuickDismiss,
+      showAutoDismiss,
+      showNoAutoDismiss,
+      showNoPause,
+      showNoCloseButton,
+      showIconSuccess,
+      showIconInfo,
+      showCustomGradient,
+    };
+
+    let activeToastKey: string | null = null;
+
+    function showToast(toastKey: string) {
+      // If another toast is active and it&#39;s not the same one, close it
+      if (activeToastKey &amp;&amp; activeToastKey !== toastKey) {
+        toastRefs[activeToastKey].value = false;
+      }
+
+      // Show the new toast
+      toastRefs[toastKey].value = true;
+      activeToastKey = toastKey;
+    }
+
+    //
+    // === RETURN EVERYTHING TO TEMPLATE ===
+    //
+    return {
+      showDefault,
+      showSuccess,
+      showInfo,
+      showPrimary,
+      showWarning,
+      showError,
+      showDanger,
+      showMonochrome,
+      showTopStart,
+      showTop,
+      showTopEnd,
+      showBottomStart,
+      showBottom,
+      showBottomEnd,
+      showBordered,
+      showBorderedLeft,
+      showNotRounded,
+      showQuickDismiss,
+      showAutoDismiss,
+      showNoAutoDismiss,
+      showNoPause,
+      showNoCloseButton,
+      showIconSuccess,
+      showIconInfo,
+      showCustomGradient,
+      showToast,
+    };
+  },
+});
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+/* Demo button styling */
+.demo-button {
+  padding: 0.5rem 1rem;
+  background: var(--ag-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  width: fit-content;
+}
+
+.demo-button:hover {
+  background: var(--ag-primary-dark);
+}
+
+.demo-button:active {
+  transform: scale(0.98);
+}
+
+/* CSS Shadow Parts customization examples */
+.custom-gradient-toast::part(ag-toast) {
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+}
+
+.custom-gradient-toast::part(ag-toast-content) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+&lt;/style&gt;
+</code></pre></details><!--]--></ag-tab-panel><ag-tab-panel slot="panel" panel="panel-lit" data-v-9ebfb992><!--[--><details class="preview-details" open data-v-9ebfb992><summary data-v-9ebfb992>Live Preview</summary><div class="preview" data-v-9ebfb992><!--[--><toast-lit-examples></toast-lit-examples><!--]--></div></details><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View Lit / Web Component Code</summary><pre data-v-9ebfb992><code class="language-javascript" data-v-9ebfb992>import { LitElement, html } from &#39;lit&#39;;
+import &#39;agnosticui-core/toast&#39;;
+import &#39;agnosticui-core/button&#39;;
+import &#39;agnosticui-core/icon&#39;;
+
+const toastKeys = [
+  &quot;showDefault&quot;, &quot;showSuccess&quot;, &quot;showInfo&quot;, &quot;showPrimary&quot;, &quot;showWarning&quot;,
+  &quot;showError&quot;, &quot;showDanger&quot;, &quot;showMonochrome&quot;, &quot;showTopStart&quot;, &quot;showTop&quot;,
+  &quot;showTopEnd&quot;, &quot;showBottomStart&quot;, &quot;showBottom&quot;, &quot;showBottomEnd&quot;, &quot;showBordered&quot;,
+  &quot;showBorderedLeft&quot;, &quot;showNotRounded&quot;, &quot;showQuickDismiss&quot;, &quot;showAutoDismiss&quot;,
+  &quot;showNoAutoDismiss&quot;, &quot;showNoPause&quot;, &quot;showNoCloseButton&quot;, &quot;showIconSuccess&quot;,
+  &quot;showIconInfo&quot;, &quot;showCustomGradient&quot;,
+];
+
+const initialToastsState = toastKeys.reduce((acc, key) =&gt; ({ ...acc, [key]: false }), {});
+
+export class ToastLitExamples extends LitElement {
+  static get properties() {
+    return {
+      toasts: { type: Object, state: true },
+    };
+  }
+
+  constructor() {
+    super();
+    this.toasts = initialToastsState;
+    this.activeToastKey = null;
+  }
+  
+  // No shadow DOM
+  createRenderRoot() {
+    return this;
+  }
+
+  showToast(toastKey) {
+    let newToasts = { ...this.toasts };
+    if (this.activeToastKey &amp;&amp; this.activeToastKey !== toastKey) {
+      newToasts[this.activeToastKey] = false;
+    }
+    newToasts[toastKey] = true;
+    this.toasts = newToasts;
+    this.activeToastKey = toastKey;
+  }
+
+  closeToast(toastKey) {
+    this.toasts = { ...this.toasts, [toastKey]: false };
+    if (this.activeToastKey === toastKey) {
+      this.activeToastKey = null;
+    }
+  }
+
+  render() {
+    return html`
+      &lt;section&gt;
+        &lt;div class=&quot;mbe4 guidance-note&quot;&gt;
+          &lt;h3&gt;Demo Pattern: Single Toast Display&lt;/h3&gt;
+          &lt;p&gt;
+            This demo automatically dismisses any visible toast before showing a new one. This prevents toast overlap and is the recommended pattern for most applications.
+            See the documentation below for alternative approaches if you need multiple simultaneous toasts.
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Toast Types&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showDefault&#39;)}&gt;Show Default Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showDefault} @toast-close=${() =&gt; this.closeToast(&#39;showDefault&#39;)}&gt;Default toast notification&lt;/ag-toast&gt;
+          
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showSuccess&#39;)}&gt;Show Success Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showSuccess} type=&quot;success&quot; @toast-close=${() =&gt; this.closeToast(&#39;showSuccess&#39;)}&gt;Operation completed successfully!&lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showInfo&#39;)}&gt;Show Info Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showInfo} type=&quot;info&quot; @toast-close=${() =&gt; this.closeToast(&#39;showInfo&#39;)}&gt;New message received!&lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showPrimary&#39;)}&gt;Show Primary Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showPrimary} type=&quot;primary&quot; @toast-close=${() =&gt; this.closeToast(&#39;showPrimary&#39;)}&gt;New feature available!&lt;/ag-toast&gt;
+          
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showWarning&#39;)}&gt;Show Warning Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showWarning} type=&quot;warning&quot; @toast-close=${() =&gt; this.closeToast(&#39;showWarning&#39;)}&gt;
+            &lt;div class=&quot;flex-inline items-center&quot;&gt;&lt;ag-icon size=&quot;20&quot; class=&quot;mie3&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z&quot;&gt;&lt;/path&gt;&lt;line x1=&quot;12&quot; x2=&quot;12&quot; y1=&quot;9&quot; y2=&quot;13&quot;&gt;&lt;/line&gt;&lt;line x1=&quot;12&quot; x2=&quot;12.01&quot; y1=&quot;17&quot; y2=&quot;17&quot;&gt;&lt;/line&gt;&lt;/svg&gt;&lt;/ag-icon&gt;Warning: This action cannot be undone.&lt;/div&gt;
+          &lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showError&#39;)}&gt;Show Error Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showError} type=&quot;error&quot; @toast-close=${() =&gt; this.closeToast(&#39;showError&#39;)}&gt;
+            &lt;div class=&quot;flex-inline items-center&quot;&gt;&lt;ag-icon size=&quot;20&quot; class=&quot;mie3&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;10&quot;&gt;&lt;/circle&gt;&lt;line x1=&quot;12&quot; x2=&quot;12&quot; y1=&quot;8&quot; y2=&quot;12&quot;&gt;&lt;/line&gt;&lt;line x1=&quot;12&quot; x2=&quot;12.01&quot; y1=&quot;16&quot; y2=&quot;16&quot;&gt;&lt;/line&gt;&lt;/svg&gt;&lt;/ag-icon&gt;An error occurred. Please try again.&lt;/div&gt;
+          &lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showDanger&#39;)}&gt;Show Danger Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showDanger} type=&quot;danger&quot; @toast-close=${() =&gt; this.closeToast(&#39;showDanger&#39;)}&gt;
+            &lt;div class=&quot;flex-inline items-center&quot;&gt;&lt;ag-icon size=&quot;20&quot; class=&quot;mie3&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;10&quot;&gt;&lt;/circle&gt;&lt;line x1=&quot;15&quot; x2=&quot;9&quot; y1=&quot;9&quot; y2=&quot;15&quot;&gt;&lt;/line&gt;&lt;line x1=&quot;9&quot; x2=&quot;15&quot; y1=&quot;9&quot; y2=&quot;15&quot;&gt;&lt;/line&gt;&lt;/svg&gt;&lt;/ag-icon&gt;Critical error detected!&lt;/div&gt;
+          &lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showMonochrome&#39;)}&gt;Show Monochrome Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showMonochrome} type=&quot;monochrome&quot; @toast-close=${() =&gt; this.closeToast(&#39;showMonochrome&#39;)}&gt;
+            &lt;div class=&quot;flex-inline items-center&quot;&gt;Modern monochrome notification&lt;/div&gt;
+          &lt;/ag-toast&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Positions&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showTopStart&#39;)}&gt;Top Start&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showTopStart} position=&quot;top-start&quot; @toast-close=${() =&gt; this.closeToast(&#39;showTopStart&#39;)}&gt;Toast at top-start&lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showTop&#39;)}&gt;Top (Full Width)&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showTop} position=&quot;top&quot; @toast-close=${() =&gt; this.closeToast(&#39;showTop&#39;)}&gt;Toast at top (full width)&lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showTopEnd&#39;)}&gt;Top End (Default)&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showTopEnd} position=&quot;top-end&quot; @toast-close=${() =&gt; this.closeToast(&#39;showTopEnd&#39;)}&gt;Toast at top-end (default)&lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showBottomStart&#39;)}&gt;Bottom Start&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showBottomStart} position=&quot;bottom-start&quot; @toast-close=${() =&gt; this.closeToast(&#39;showBottomStart&#39;)}&gt;Toast at bottom-start&lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showBottom&#39;)}&gt;Bottom (Full Width)&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showBottom} position=&quot;bottom&quot; @toast-close=${() =&gt; this.closeToast(&#39;showBottom&#39;)}&gt;Toast at bottom (full width)&lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showBottomEnd&#39;)}&gt;Bottom End&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showBottomEnd} position=&quot;bottom-end&quot; @toast-close=${() =&gt; this.closeToast(&#39;showBottomEnd&#39;)}&gt;Toast at bottom-end&lt;/ag-toast&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Border Styles&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showBordered&#39;)}&gt;Bordered Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showBordered} type=&quot;info&quot; bordered @toast-close=${() =&gt; this.closeToast(&#39;showBordered&#39;)}&gt;Toast with border&lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showBorderedLeft&#39;)}&gt;Left Border Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showBorderedLeft} type=&quot;success&quot; borderedLeft @toast-close=${() =&gt; this.closeToast(&#39;showBorderedLeft&#39;)}&gt;
+            &lt;div class=&quot;flex-inline items-center&quot;&gt;&lt;ag-icon size=&quot;20&quot; class=&quot;mie3&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M22 11.08V12a10 10 0 1 1-5.93-9.14&quot;&gt;&lt;/path&gt;&lt;polyline points=&quot;22 4 12 14.01 9 11.01&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt;&lt;/ag-icon&gt;Toast with left border accent&lt;/div&gt;
+          &lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showNotRounded&#39;)}&gt;Not Rounded Toast&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showNotRounded} type=&quot;primary&quot; .rounded=${false} @toast-close=${() =&gt; this.closeToast(&#39;showNotRounded&#39;)}&gt;Toast without rounded corners&lt;/ag-toast&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Auto-Dismiss Options&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showQuickDismiss&#39;)}&gt;Quick Dismiss (2s)&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showQuickDismiss} .duration=${2000} type=&quot;info&quot; @toast-close=${() =&gt; this.closeToast(&#39;showQuickDismiss&#39;)}&gt;This toast will auto-dismiss in 2 seconds&lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showAutoDismiss&#39;)}&gt;Auto-Dismiss (5s)&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showAutoDismiss} .duration=${5000} type=&quot;info&quot; @toast-close=${() =&gt; this.closeToast(&#39;showAutoDismiss&#39;)}&gt;This toast will auto-dismiss in 5 seconds (default)&lt;/ag-toast&gt;
+          
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showNoAutoDismiss&#39;)}&gt;No Auto-Dismiss&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showNoAutoDismiss} .autoDismiss=${false} type=&quot;warning&quot; @toast-close=${() =&gt; this.closeToast(&#39;showNoAutoDismiss&#39;)}&gt;This toast will not auto-dismiss. Click X to close.&lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showNoPause&#39;)}&gt;No Pause on Hover&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showNoPause} .pauseOnHover=${false} .duration=${3000} type=&quot;info&quot; @toast-close=${() =&gt; this.closeToast(&#39;showNoPause&#39;)}&gt;Hover won&#39;t pause this toast&#39;s timer&lt;/ag-toast&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Close Button Options&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showNoCloseButton&#39;)}&gt;No Close Button&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showNoCloseButton} .showCloseButton=${false} type=&quot;info&quot; .duration=${3000} @toast-close=${() =&gt; this.closeToast(&#39;showNoCloseButton&#39;)}&gt;Toast without close button (auto-dismisses)&lt;/ag-toast&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;With Icons&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showIconSuccess&#39;)}&gt;Success with Icon&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showIconSuccess} type=&quot;success&quot; @toast-close=${() =&gt; this.closeToast(&#39;showIconSuccess&#39;)}&gt;
+            &lt;div class=&quot;flex-inline items-center&quot;&gt;&lt;ag-icon size=&quot;20&quot; class=&quot;mie3&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M22 11.08V12a10 10 0 1 1-5.93-9.14&quot;&gt;&lt;/path&gt;&lt;polyline points=&quot;22 4 12 14.01 9 11.01&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt;&lt;/ag-icon&gt;File uploaded successfully!&lt;/div&gt;
+          &lt;/ag-toast&gt;
+
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showIconInfo&#39;)}&gt;Info with Icon&lt;/ag-button&gt;
+          &lt;ag-toast .open=${this.toasts.showIconInfo} type=&quot;info&quot; @toast-close=${() =&gt; this.closeToast(&#39;showIconInfo&#39;)}&gt;
+            &lt;div class=&quot;flex-inline items-center&quot;&gt;&lt;ag-icon size=&quot;20&quot; class=&quot;mie3&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;10&quot;&gt;&lt;/circle&gt;&lt;line x1=&quot;12&quot; x2=&quot;12&quot; y1=&quot;16&quot; y2=&quot;12&quot;&gt;&lt;/line&gt;&lt;line x1=&quot;12&quot; x2=&quot;12.01&quot; y1=&quot;8&quot; y2=&quot;8&quot;&gt;&lt;/line&gt;&lt;/svg&gt;&lt;/ag-icon&gt;You have 3 unread messages&lt;/div&gt;
+          &lt;/ag-toast&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;CSS Shadow Parts Customization&lt;/h2&gt;
+          &lt;p class=&quot;mbe2&quot; style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;&gt;
+            Customize toast appearance using CSS Shadow Parts without breaking encapsulation.
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked flex-align-start mbe4&quot;&gt;
+          &lt;ag-button class=&quot;demo-button&quot; @click=${() =&gt; this.showToast(&#39;showCustomGradient&#39;)}&gt;Custom Gradient Toast&lt;/ag-button&gt;
+          &lt;ag-toast
+            .open=${this.toasts.showCustomGradient}
+            class=&quot;custom-gradient-toast&quot;
+            position=&quot;top-end&quot;
+            @toast-close=${() =&gt; this.closeToast(&#39;showCustomGradient&#39;)}
+          &gt;
+            &lt;div class=&quot;flex-inline items-center&quot;&gt;
+              &lt;ag-icon size=&quot;20&quot; class=&quot;mie3&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;m15.6 3.3-3.2 8.7-8.7 3.2 3.2 8.7 8.7-3.2-3.2-8.7-8.7-3.2z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/ag-icon&gt;
+              Custom styled toast with gradient
+            &lt;/div&gt;
+          &lt;/ag-toast&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    `;
+  }
+}
+customElements.define(&#39;toast-lit-examples&#39;, ToastLitExamples);
+</code></pre></details><!--]--></ag-tab-panel><ag-tab-panel slot="panel" panel="panel-react" data-v-9ebfb992><!--[--><div class="react-note" data-v-9ebfb992><p data-v-9ebfb992><strong data-v-9ebfb992>Interactive Preview:</strong> Click the &quot;Open in StackBlitz&quot; button below to see this example running live in an interactive playground. </p></div><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View React Code</summary><pre data-v-9ebfb992><code class="language-tsx" data-v-9ebfb992>import { useState } from &quot;react&quot;;
+import { ReactToast } from &quot;agnosticui-core/toast/react&quot;;
+import { ReactButton } from &quot;agnosticui-core/button/react&quot;;
+import {
+  AlertTriangle,
+  AlertCircle,
+  XCircle,
+  CheckCircle,
+  Info,
+  Sparkles,
+} from &quot;lucide-react&quot;;
+
+const toastKeys = [
+  &quot;showDefault&quot;, &quot;showSuccess&quot;, &quot;showInfo&quot;, &quot;showPrimary&quot;, &quot;showWarning&quot;,
+  &quot;showError&quot;, &quot;showDanger&quot;, &quot;showMonochrome&quot;, &quot;showTopStart&quot;, &quot;showTop&quot;,
+  &quot;showTopEnd&quot;, &quot;showBottomStart&quot;, &quot;showBottom&quot;, &quot;showBottomEnd&quot;, &quot;showBordered&quot;,
+  &quot;showBorderedLeft&quot;, &quot;showNotRounded&quot;, &quot;showQuickDismiss&quot;, &quot;showAutoDismiss&quot;,
+  &quot;showNoAutoDismiss&quot;, &quot;showNoPause&quot;, &quot;showNoCloseButton&quot;, &quot;showIconSuccess&quot;,
+  &quot;showIconInfo&quot;, &quot;showCustomGradient&quot;,
+];
+
+const initialToastsState = toastKeys.reduce((acc, key) =&gt; ({ ...acc, [key]: false }), {});
+
+export default function ToastReactExamples() {
+  const [toasts, setToasts] = useState(initialToastsState);
+  let activeToastKey = null;
+
+  const showToast = (toastKey) =&gt; {
+    if (activeToastKey &amp;&amp; activeToastKey !== toastKey) {
+      setToasts(prev =&gt; ({ ...prev, [activeToastKey]: false }));
+    }
+    setToasts(prev =&gt; ({ ...prev, [toastKey]: true }));
+    activeToastKey = toastKey;
+  };
+
+  const closeToast = (toastKey) =&gt; {
+    setToasts(prev =&gt; ({ ...prev, [toastKey]: false }));
+    if (activeToastKey === toastKey) {
+      activeToastKey = null;
+    }
+  };
+
+  return (
+    &lt;section&gt;
+    &lt;div class=&quot;mbe4 guidance-note&quot;&gt;
+      &lt;h3&gt;Demo Pattern: Single Toast Display&lt;/h3&gt;
+      &lt;p&gt;
+        This demo automatically dismisses any visible toast before showing a new one. This prevents toast overlap and is the recommended pattern for most applications.
+        See the documentation below for alternative approaches if you need multiple simultaneous toasts.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div className=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Toast Types&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div className=&quot;stacked flex-align-start mbe4&quot;&gt;
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showDefault&#39;)}&gt;Show Default Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showDefault} onToastClose={() =&gt; closeToast(&#39;showDefault&#39;)}&gt;Default toast notification&lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showSuccess&#39;)}&gt;Show Success Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showSuccess} type=&quot;success&quot; onToastClose={() =&gt; closeToast(&#39;showSuccess&#39;)}&gt;Operation completed successfully!&lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showInfo&#39;)}&gt;Show Info Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showInfo} type=&quot;info&quot; onToastClose={() =&gt; closeToast(&#39;showInfo&#39;)}&gt;New message received!&lt;/ReactToast&gt;
+        
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showPrimary&#39;)}&gt;Show Primary Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showPrimary} type=&quot;primary&quot; onToastClose={() =&gt; closeToast(&#39;showPrimary&#39;)}&gt;New feature available!&lt;/ReactToast&gt;
+        
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showWarning&#39;)}&gt;Show Warning Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showWarning} type=&quot;warning&quot; onToastClose={() =&gt; closeToast(&#39;showWarning&#39;)}&gt;
+          &lt;div className=&quot;flex-inline items-center&quot;&gt;&lt;AlertTriangle size={20} className=&quot;mie3&quot; /&gt;Warning: This action cannot be undone.&lt;/div&gt;
+        &lt;/ReactToast&gt;
+        
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showError&#39;)}&gt;Show Error Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showError} type=&quot;error&quot; onToastClose={() =&gt; closeToast(&#39;showError&#39;)}&gt;
+          &lt;div className=&quot;flex-inline items-center&quot;&gt;&lt;AlertCircle size={20} className=&quot;mie3&quot; /&gt;An error occurred. Please try again.&lt;/div&gt;
+        &lt;/ReactToast&gt;
+        
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showDanger&#39;)}&gt;Show Danger Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showDanger} type=&quot;danger&quot; onToastClose={() =&gt; closeToast(&#39;showDanger&#39;)}&gt;
+          &lt;div className=&quot;flex-inline items-center&quot;&gt;&lt;XCircle size={20} className=&quot;mie3&quot; /&gt;Critical error detected!&lt;/div&gt;
+        &lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showMonochrome&#39;)}&gt;Show Monochrome Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showMonochrome} type=&quot;monochrome&quot; onToastClose={() =&gt; closeToast(&#39;showMonochrome&#39;)}&gt;
+          &lt;div className=&quot;flex-inline items-center&quot;&gt;Modern monochrome notification&lt;/div&gt;
+        &lt;/ReactToast&gt;
+    &lt;/div&gt;
+
+    &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Positions&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div className=&quot;stacked flex-align-start mbe4&quot;&gt;
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showTopStart&#39;)}&gt;Top Start&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showTopStart} position=&quot;top-start&quot; onToastClose={() =&gt; closeToast(&#39;showTopStart&#39;)}&gt;Toast at top-start&lt;/ReactToast&gt;
+        
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showTop&#39;)}&gt;Top (Full Width)&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showTop} position=&quot;top&quot; onToastClose={() =&gt; closeToast(&#39;showTop&#39;)}&gt;Toast at top (full width)&lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showTopEnd&#39;)}&gt;Top End (Default)&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showTopEnd} position=&quot;top-end&quot; onToastClose={() =&gt; closeToast(&#39;showTopEnd&#39;)}&gt;Toast at top-end (default)&lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showBottomStart&#39;)}&gt;Bottom Start&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showBottomStart} position=&quot;bottom-start&quot; onToastClose={() =&gt; closeToast(&#39;showBottomStart&#39;)}&gt;Toast at bottom-start&lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showBottom&#39;)}&gt;Bottom (Full Width)&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showBottom} position=&quot;bottom&quot; onToastClose={() =&gt; closeToast(&#39;showBottom&#39;)}&gt;Toast at bottom (full width)&lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showBottomEnd&#39;)}&gt;Bottom End&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showBottomEnd} position=&quot;bottom-end&quot; onToastClose={() =&gt; closeToast(&#39;showBottomEnd&#39;)}&gt;Toast at bottom-end&lt;/ReactToast&gt;
+    &lt;/div&gt;
+    
+    &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Border Styles&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div className=&quot;stacked flex-align-start mbe4&quot;&gt;
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showBordered&#39;)}&gt;Bordered Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showBordered} type=&quot;info&quot; bordered onToastClose={() =&gt; closeToast(&#39;showBordered&#39;)}&gt;Toast with border&lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showBorderedLeft&#39;)}&gt;Left Border Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showBorderedLeft} type=&quot;success&quot; borderedLeft onToastClose={() =&gt; closeToast(&#39;showBorderedLeft&#39;)}&gt;
+            &lt;div className=&quot;flex-inline items-center&quot;&gt;&lt;CheckCircle size={20} className=&quot;mie3&quot; /&gt;Toast with left border accent&lt;/div&gt;
+        &lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showNotRounded&#39;)}&gt;Not Rounded Toast&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showNotRounded} type=&quot;primary&quot; rounded={false} onToastClose={() =&gt; closeToast(&#39;showNotRounded&#39;)}&gt;Toast without rounded corners&lt;/ReactToast&gt;
+    &lt;/div&gt;
+
+    &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Auto-Dismiss Options&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div className=&quot;stacked flex-align-start mbe4&quot;&gt;
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showQuickDismiss&#39;)}&gt;Quick Dismiss (2s)&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showQuickDismiss} duration={2000} type=&quot;info&quot; onToastClose={() =&gt; closeToast(&#39;showQuickDismiss&#39;)}&gt;This toast will auto-dismiss in 2 seconds&lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showAutoDismiss&#39;)}&gt;Auto-Dismiss (5s)&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showAutoDismiss} duration={5000} type=&quot;info&quot; onToastClose={() =&gt; closeToast(&#39;showAutoDismiss&#39;)}&gt;This toast will auto-dismiss in 5 seconds (default)&lt;/ReactToast&gt;
+    
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showNoAutoDismiss&#39;)}&gt;No Auto-Dismiss&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showNoAutoDismiss} autoDismiss={false} type=&quot;warning&quot; onToastClose={() =&gt; closeToast(&#39;showNoAutoDismiss&#39;)}&gt;This toast will not auto-dismiss. Click X to close.&lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showNoPause&#39;)}&gt;No Pause on Hover&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showNoPause} pauseOnHover={false} duration={3000} type=&quot;info&quot; onToastClose={() =&gt; closeToast(&#39;showNoPause&#39;)}&gt;Hover won&#39;t pause this toast&#39;s timer&lt;/ReactToast&gt;
+    &lt;/div&gt;
+
+    &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Close Button Options&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div className=&quot;stacked flex-align-start mbe4&quot;&gt;
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showNoCloseButton&#39;)}&gt;No Close Button&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showNoCloseButton} showCloseButton={false} type=&quot;info&quot; duration={3000} onToastClose={() =&gt; closeToast(&#39;showNoCloseButton&#39;)}&gt;Toast without close button (auto-dismisses)&lt;/ReactToast&gt;
+    &lt;/div&gt;
+
+    &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;With Icons&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div className=&quot;stacked flex-align-start mbe4&quot;&gt;
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showIconSuccess&#39;)}&gt;Success with Icon&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showIconSuccess} type=&quot;success&quot; onToastClose={() =&gt; closeToast(&#39;showIconSuccess&#39;)}&gt;
+            &lt;div className=&quot;flex-inline items-center&quot;&gt;&lt;CheckCircle size={20} className=&quot;mie3&quot; /&gt;File uploaded successfully!&lt;/div&gt;
+        &lt;/ReactToast&gt;
+
+        &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showIconInfo&#39;)}&gt;Info with Icon&lt;/ReactButton&gt;
+        &lt;ReactToast open={toasts.showIconInfo} type=&quot;info&quot; onToastClose={() =&gt; closeToast(&#39;showIconInfo&#39;)}&gt;
+            &lt;div className=&quot;flex-inline items-center&quot;&gt;&lt;Info size={20} className=&quot;mie3&quot; /&gt;You have 3 unread messages&lt;/div&gt;
+        &lt;/ReactToast&gt;
+    &lt;/div&gt;
+
+    &lt;div className=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;CSS Shadow Parts Customization&lt;/h2&gt;
+      &lt;p
+        className=&quot;mbe2&quot;
+        style={{ color: &quot;var(--ag-text-secondary)&quot;, fontSize: &quot;0.875rem&quot; }}
+      &gt;
+        Customize toast appearance using CSS Shadow Parts without breaking encapsulation.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div className=&quot;stacked flex-align-start mbe4&quot;&gt;
+      &lt;ReactButton className=&quot;demo-button&quot; onClick={() =&gt; showToast(&#39;showCustomGradient&#39;)}&gt;Custom Gradient Toast&lt;/ReactButton&gt;
+      &lt;ReactToast
+        open={toasts.showCustomGradient}
+        className=&quot;custom-gradient-toast&quot;
+        position=&quot;top-end&quot;
+        onToastClose={() =&gt; closeToast(&#39;showCustomGradient&#39;)}
+      &gt;
+        &lt;div className=&quot;flex-inline items-center&quot;&gt;&lt;Sparkles size={20} className=&quot;mie3&quot; /&gt;Custom styled toast with gradient&lt;/div&gt;
+      &lt;/ReactToast&gt;
+    &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}
+</code></pre></details><div class="stackblitz-section" data-v-9ebfb992><ag-button variant="primary" shape="rounded" title="Open interactive React playground in StackBlitz" data-v-9ebfb992><ag-icon size="18" no-fill data-v-9ebfb992><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap-icon lucide-zap" data-v-9ebfb992><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></ag-icon><span class="mis2" data-v-9ebfb992>Open in StackBlitz</span></ag-button></div><!--]--></ag-tab-panel><!--]--></ag-tabs></div><h2 id="props" tabindex="-1">Props <a class="header-anchor" href="#props" aria-label="Permalink to &quot;Props&quot;">​</a></h2><table class="ag-table ag-table--striped"><thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>open</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Controls visibility of the toast</td></tr><tr><td><code>type</code></td><td><code>&#39;default&#39; | &#39;primary&#39; | &#39;success&#39; | &#39;info&#39; | &#39;warning&#39; | &#39;danger&#39; | &#39;error&#39;</code></td><td><code>&#39;default&#39;</code></td><td>The toast variant type</td></tr><tr><td><code>position</code></td><td><code>&#39;top&#39; | &#39;top-start&#39; | &#39;top-end&#39; | &#39;bottom&#39; | &#39;bottom-start&#39; | &#39;bottom-end&#39; | &#39;start&#39; | &#39;end&#39;</code></td><td><code>&#39;top-end&#39;</code></td><td>Viewport position where the toast appears</td></tr><tr><td><code>duration</code></td><td><code>number</code></td><td><code>5000</code></td><td>Auto-dismiss duration in milliseconds</td></tr><tr><td><code>autoDismiss</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Enable auto-dismiss functionality</td></tr><tr><td><code>showCloseButton</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Show the close button</td></tr><tr><td><code>pauseOnHover</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Pause auto-dismiss timer when hovering</td></tr><tr><td><code>bordered</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Adds a border around the toast</td></tr><tr><td><code>rounded</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Applies rounded corners to the toast</td></tr><tr><td><code>borderedLeft</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Adds a left border accent to the toast</td></tr></tbody></table><h2 id="events" tabindex="-1">Events <a class="header-anchor" href="#events" aria-label="Permalink to &quot;Events&quot;">​</a></h2><table class="ag-table ag-table--striped"><thead><tr><th>Event</th><th>Framework</th><th>Detail</th><th>Description</th></tr></thead><tbody><tr><td><code>toast-open</code></td><td>Vue: <code>@toast-open</code><br>React: <code>onToastOpen</code><br>Lit: <code>@toast-open</code></td><td><code>void</code></td><td>Emitted when toast becomes visible</td></tr><tr><td><code>toast-close</code></td><td>Vue: <code>@toast-close</code><br>React: <code>onToastClose</code><br>Lit: <code>@toast-close</code></td><td><code>void</code></td><td>Emitted when toast is closed (manually or via auto-dismiss)</td></tr><tr><td><code>toast-dismiss</code></td><td>Vue: <code>@toast-dismiss</code><br>React: <code>onToastDismiss</code><br>Lit: <code>@toast-dismiss</code></td><td><code>void</code></td><td>Emitted specifically when auto-dismiss timer completes (not when closed manually)</td></tr></tbody></table><p><strong>Note:</strong> All events use the dual-dispatch pattern:</p><ul><li>Native web component events (<code>toast-open</code>, <code>toast-close</code>, <code>toast-dismiss</code>) are dispatched with <code>bubbles: true</code> and <code>composed: true</code></li><li>Callback props (<code>onToastOpen</code>, <code>onToastClose</code>, <code>onToastDismiss</code>) are also invoked when set</li></ul><h3 id="event-handling-examples" tabindex="-1">Event Handling Examples <a class="header-anchor" href="#event-handling-examples" aria-label="Permalink to &quot;Event Handling Examples&quot;">​</a></h3><details class="details custom-block"><summary>Vue</summary><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueToast</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">    v-model:open</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;showToast&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">    @toast-open</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;handleOpen&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">    @toast-close</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;handleClose&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">    @toast-dismiss</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;handleDismiss&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    Toast with event handlers</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueToast</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> setup</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { ref } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;vue&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { VueToast } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/toast/vue&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">const</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> showToast</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> ref</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">false</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">const</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> handleOpen</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> () </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Toast opened&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">const</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> handleClose</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> () </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Toast closed&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">const</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> handleDismiss</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> () </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Toast auto-dismissed&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">};</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><details class="details custom-block"><summary>React</summary><div class="language-tsx vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">tsx</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { useState } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;react&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { ReactToast } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/toast/react&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">export</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> default</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> function</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> Example</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">() </span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">{</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  const</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> [</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">showToast</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">setShowToast</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">] </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> useState</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">false</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  const</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> handleOpen</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> () </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Toast opened&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  const</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> handleClose</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> () </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Toast closed&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">    setShowToast</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">false</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  const</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> handleDismiss</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> () </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Toast auto-dismissed&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  return</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> (</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactToast</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      open</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">={</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">showToast</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">}</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      onToastOpen</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">={</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">handleOpen</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">}</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      onToastClose</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">={</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">handleClose</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">}</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      onToastDismiss</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">={</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">handleDismiss</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">}</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      Toast with event handlers</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactToast</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  );</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div></details><details class="details custom-block"><summary>Lit (Web Components)</summary><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> type</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;module&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  import</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/toast&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  const</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> toast</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> document.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">querySelector</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;#toast-with-events&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  </span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  toast.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">addEventListener</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;toast-open&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, () </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Toast opened&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  });</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  </span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  toast.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">addEventListener</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;toast-close&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, () </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Toast closed&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  });</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  </span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  toast.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">addEventListener</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;toast-dismiss&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, () </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Toast auto-dismissed&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  });</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-toast</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> id</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;toast-with-events&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  Toast with event handlers</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-toast</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><h2 id="css-shadow-parts" tabindex="-1">CSS Shadow Parts <a class="header-anchor" href="#css-shadow-parts" aria-label="Permalink to &quot;CSS Shadow Parts&quot;">​</a></h2><p>Shadow Parts allow you to style internal elements of the toast from outside the shadow DOM using the <code>::part()</code> CSS selector.</p><table class="ag-table ag-table--striped"><thead><tr><th>Part</th><th>Description</th></tr></thead><tbody><tr><td><code>ag-toast</code></td><td>The outer container element</td></tr><tr><td><code>ag-toast-content</code></td><td>The content wrapper (wraps the alert component)</td></tr></tbody></table><h3 id="customization-example" tabindex="-1">Customization Example <a class="header-anchor" href="#customization-example" aria-label="Permalink to &quot;Customization Example&quot;">​</a></h3><div class="language-css vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">css</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">/* Customize the toast container */</span></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-toast</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-toast</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  box-shadow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 10</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 40</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> rgba</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0.3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  backdrop-filter</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">blur</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">10</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">/* Customize the content wrapper */</span></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-toast</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-toast-content</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  background</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">linear-gradient</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">135</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">deg</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#667eea</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 0</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">%</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#764ba2</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 100</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">%</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  color</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">white</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  font-weight</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">600</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  border</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">none</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div><h2 id="accessibility" tabindex="-1">Accessibility <a class="header-anchor" href="#accessibility" aria-label="Permalink to &quot;Accessibility&quot;">​</a></h2><p>The Toast component is designed to be accessible by default:</p><ul><li><strong>ARIA Role</strong>: Uses <code>role=&quot;status&quot;</code> for informational toasts and <code>role=&quot;alert&quot;</code> for urgent types (error, danger, warning)</li><li><strong>ARIA Live Region</strong>: Automatically sets <code>aria-live=&quot;polite&quot;</code> for normal toasts and <code>aria-live=&quot;assertive&quot;</code> for urgent toasts</li><li><strong>ARIA Atomic</strong>: Uses <code>aria-atomic=&quot;true&quot;</code> to ensure the entire message is announced</li><li><strong>Keyboard Support</strong>: Press <code>Escape</code> to dismiss toast when close button is visible</li><li><strong>Focus Management</strong>: Toast appears without stealing focus, allowing users to continue their work</li><li><strong>Pause on Hover</strong>: Auto-dismiss pauses when hovering, giving users more time to read</li></ul><h3 id="best-practices" tabindex="-1">Best Practices <a class="header-anchor" href="#best-practices" aria-label="Permalink to &quot;Best Practices&quot;">​</a></h3><ul><li><strong>Keep Messages Brief</strong>: Toast messages should be concise and easily scannable</li><li><strong>Use Appropriate Types</strong>: Use <code>error</code>/<code>danger</code> for critical errors, <code>warning</code> for important cautions, <code>success</code> for confirmations, and <code>info</code> for general notifications</li><li><strong>Consider Auto-Dismiss</strong>: For non-critical messages, enable auto-dismiss. For important messages requiring action, disable auto-dismiss or use longer durations</li><li><strong>Position Thoughtfully</strong>: Place toasts where they won&#39;t obscure important content. Top-end is conventional for most applications</li><li><strong>Limit Frequency</strong>: Avoid overwhelming users with too many toast notifications</li></ul><h2 id="common-patterns" tabindex="-1">Common Patterns <a class="header-anchor" href="#common-patterns" aria-label="Permalink to &quot;Common Patterns&quot;">​</a></h2><h3 id="toast-with-icon" tabindex="-1">Toast with Icon <a class="header-anchor" href="#toast-with-icon" aria-label="Permalink to &quot;Toast with Icon&quot;">​</a></h3><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueToast</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> v-model:open</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;showToast&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> type</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;success&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> style</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;display: flex; align-items: center; gap: 0.5rem;&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">CheckCircle</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> :size</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;20&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Profile updated successfully!&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueToast</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> setup</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { CheckCircle } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;lucide-vue-next&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { VueToast } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/toast/vue&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div><h2 id="notes" tabindex="-1">Notes <a class="header-anchor" href="#notes" aria-label="Permalink to &quot;Notes&quot;">​</a></h2><ul><li><strong>Type variants</strong>: Both <code>type=&quot;error&quot;</code> and <code>type=&quot;danger&quot;</code> are supported and interchangeable (they render identically)</li><li><strong>Position behavior</strong>: Corner positions (e.g., <code>top-end</code>) have max-width constraints (400px) while edge positions (e.g., <code>top</code>) span the full width</li><li><strong>Animation</strong>: Toasts animate in from their position direction (top positions slide down, bottom positions slide up, etc.)</li><li><strong>Reduced motion</strong>: Respects <code>prefers-reduced-motion</code> and uses only opacity transitions when enabled</li><li><strong>Stacking</strong>: Multiple toasts at the same position will overlap. See the Implementation Guide in the Examples section above for patterns on managing multiple toasts.</li></ul></div></div></main><footer class="VPDocFooter" data-v-39a288b8 data-v-e257564d><!--[--><!--]--><!----><nav class="prev-next" aria-labelledby="doc-footer-aria-label" data-v-e257564d><span class="visually-hidden" id="doc-footer-aria-label" data-v-e257564d>Pager</span><div class="pager" data-v-e257564d><a class="VPLink link pager-link prev" href="/components/timeline.html" data-v-e257564d><!--[--><span class="desc" data-v-e257564d>Previous page</span><span class="title" data-v-e257564d>Timeline</span><!--]--></a></div><div class="pager" data-v-e257564d><a class="VPLink link pager-link next" href="/components/toggle.html" data-v-e257564d><!--[--><span class="desc" data-v-e257564d>Next page</span><span class="title" data-v-e257564d>Toggle</span><!--]--></a></div></nav></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><!----><!--[--><!--]--></div></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"components_accordion.md\":\"D124LQ2N\",\"components_alert.md\":\"DUzPffjv\",\"components_aspect-ratio.md\":\"B9LCG7IE\",\"components_avatar.md\":\"CBy4X4lC\",\"components_badge-fx.md\":\"Cjlw3Nr6\",\"components_badge.md\":\"DLyUyoDM\",\"components_breadcrumb.md\":\"5mPKE6w4\",\"components_button-fx.md\":\"BgxBCcJf\",\"components_button.md\":\"xaByEAaZ\",\"components_card.md\":\"BDXvxtrs\",\"components_checkbox.md\":\"Cwru_peQ\",\"components_collapsible.md\":\"BQWRhZn6\",\"components_combobox.md\":\"CkdFz6qL\",\"components_copybutton.md\":\"BicFdIOk\",\"components_dialog.md\":\"Wvih0cWD\",\"components_divider.md\":\"DVS5aGVO\",\"components_drawer.md\":\"ZlzJP1Zs\",\"components_empty-state.md\":\"CRY8H9KL\",\"components_fieldset.md\":\"Bo6NGhzj\",\"components_flex.md\":\"ViEYtYug\",\"components_header.md\":\"CzY751Xc\",\"components_icon-button-fx.md\":\"3jwqZqhg\",\"components_icon-button.md\":\"D4_S6D7i\",\"components_icon.md\":\"-89djCYd\",\"components_image.md\":\"Cu8otwUd\",\"components_input.md\":\"DosMDWvE\",\"components_intl-formatter.md\":\"DEZMib1v\",\"components_kbd.md\":\"BLor_025\",\"components_link.md\":\"B90H-PLT\",\"components_loader.md\":\"Cu31E7Oy\",\"components_mark.md\":\"0lFphVjr\",\"components_menu.md\":\"CR0h2mnz\",\"components_message-bubble.md\":\"z-1RaY82\",\"components_pagination.md\":\"DIPTDF7b\",\"components_popover.md\":\"IEiDGW-c\",\"components_progress-ring.md\":\"C4S6Z7Y1\",\"components_progress.md\":\"D6odJd83\",\"components_radio.md\":\"Cqq1BCVD\",\"components_rating.md\":\"BFYBA--y\",\"components_scroll-progress.md\":\"td8eEdZY\",\"components_scroll-to-button.md\":\"CPCi-JKZ\",\"components_select.md\":\"C8Ei8Ji-\",\"components_sidebar.md\":\"CobZ0WvN\",\"components_skeleton-loader.md\":\"D52GZHTp\",\"components_slider.md\":\"BYgr1Czg\",\"components_spinner.md\":\"C36VAblI\",\"components_table.md\":\"LOFdMREA\",\"components_tabs.md\":\"BEM1bv51\",\"components_tag.md\":\"C7aug7OF\",\"components_timeline.md\":\"Jz5s26zl\",\"components_toast.md\":\"N7kNxAD2\",\"components_toggle.md\":\"DKu1k6DE\",\"components_tooltip.md\":\"CsOsS_f4\",\"components_visually-hidden.md\":\"qDI1aGpt\",\"docs_advanced_advanced-usage.md\":\"C4HVbS5E\",\"docs_faq.md\":\"BtG1Lr41\",\"docs_setup.md\":\"BQZjnySZ\",\"docs_theming.md\":\"a7cpTIMK\",\"docs_understand.md\":\"AMQOq1C5\",\"docs_utilities.md\":\"DRVnpTXi\",\"index.md\":\"Czxm2aZ2\",\"installation.md\":\"9jU4ZVdv\",\"theming.md\":\"li9eyUfM\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"AgnosticUI\",\"description\":\"One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"nav\":[{\"text\":\"Components\",\"link\":\"/components/button\"}],\"sidebar\":[{\"text\":\"Quick Start\",\"items\":[{\"text\":\"Installation\",\"link\":\"/installation\"},{\"text\":\"Theming\",\"link\":\"/theming\"}]},{\"text\":\"Components\",\"items\":[{\"text\":\"Accordion\",\"link\":\"/components/accordion\"},{\"text\":\"Alerts\",\"link\":\"/components/alert\"},{\"text\":\"AspectRatio\",\"link\":\"/components/aspect-ratio\"},{\"text\":\"Avatar\",\"link\":\"/components/avatar\"},{\"text\":\"Badge\",\"link\":\"/components/badge\"},{\"text\":\"BadgeFx (Lab)\",\"link\":\"/components/badge-fx\"},{\"text\":\"Breadcrumb\",\"link\":\"/components/breadcrumb\"},{\"text\":\"Button\",\"link\":\"/components/button\"},{\"text\":\"ButtonFx (Lab)\",\"link\":\"/components/button-fx\"},{\"text\":\"Card\",\"link\":\"/components/card\"},{\"text\":\"Checkbox\",\"link\":\"/components/checkbox\"},{\"text\":\"Collapsible\",\"link\":\"/components/collapsible\"},{\"text\":\"Combobox\",\"link\":\"/components/combobox\"},{\"text\":\"CopyButton\",\"link\":\"/components/copybutton\"},{\"text\":\"Dialog\",\"link\":\"/components/dialog\"},{\"text\":\"Divider\",\"link\":\"/components/divider\"},{\"text\":\"Drawer\",\"link\":\"/components/drawer\"},{\"text\":\"EmptyState\",\"link\":\"/components/empty-state\"},{\"text\":\"Fieldset\",\"link\":\"/components/fieldset\"},{\"text\":\"Flex (Lab)\",\"link\":\"/components/flex\"},{\"text\":\"Header\",\"link\":\"/components/header\"},{\"text\":\"Icon\",\"link\":\"/components/icon\"},{\"text\":\"Icon Button\",\"link\":\"/components/icon-button\"},{\"text\":\"IconButtonFx (Lab)\",\"link\":\"/components/icon-button-fx\"},{\"text\":\"Image\",\"link\":\"/components/image\"},{\"text\":\"Input\",\"link\":\"/components/input\"},{\"text\":\"IntlFormatter\",\"link\":\"/components/intl-formatter\"},{\"text\":\"Kbd\",\"link\":\"/components/kbd\"},{\"text\":\"Link\",\"link\":\"/components/link\"},{\"text\":\"Loader\",\"link\":\"/components/loader\"},{\"text\":\"Mark\",\"link\":\"/components/mark\"},{\"text\":\"Menu\",\"link\":\"/components/menu\"},{\"text\":\"MessageBubble\",\"link\":\"/components/message-bubble\"},{\"text\":\"Pagination\",\"link\":\"/components/pagination\"},{\"text\":\"Popover\",\"link\":\"/components/popover\"},{\"text\":\"Progress\",\"link\":\"/components/progress\"},{\"text\":\"ProgressRing\",\"link\":\"/components/progress-ring\"},{\"text\":\"Radio\",\"link\":\"/components/radio\"},{\"text\":\"Rating\",\"link\":\"/components/rating\"},{\"text\":\"ScrollProgress\",\"link\":\"/components/scroll-progress\"},{\"text\":\"ScrollToButton\",\"link\":\"/components/scroll-to-button\"},{\"text\":\"Select\",\"link\":\"/components/select\"},{\"text\":\"Sidebar (Lab)\",\"link\":\"/components/sidebar\"},{\"text\":\"Skeleton Loader\",\"link\":\"/components/skeleton-loader\"},{\"text\":\"Slider\",\"link\":\"/components/slider\"},{\"text\":\"Spinner\",\"link\":\"/components/spinner\"},{\"text\":\"Table\",\"link\":\"/components/table\"},{\"text\":\"Tabs\",\"link\":\"/components/tabs\"},{\"text\":\"Tag\",\"link\":\"/components/tag\"},{\"text\":\"Timeline\",\"link\":\"/components/timeline\"},{\"text\":\"Toast\",\"link\":\"/components/toast\"},{\"text\":\"Toggle\",\"link\":\"/components/toggle\"},{\"text\":\"Tooltip\",\"link\":\"/components/tooltip\"},{\"text\":\"VisuallyHidden\",\"link\":\"/components/visually-hidden\"}]},{\"text\":\"Documentation\",\"items\":[{\"text\":\"Setup Guide\",\"link\":\"/docs/setup\"},{\"text\":\"Understanding AgnosticUI\",\"link\":\"/docs/understand\"},{\"text\":\"Advanced Usage\",\"link\":\"/docs/advanced/advanced-usage\"},{\"text\":\"CSS Utilities\",\"link\":\"/docs/utilities\"},{\"text\":\"FAQ\",\"link\":\"/docs/faq\"}]}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/AgnosticUI/agnosticui\"}]},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  </body>
+</html>

@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Card | AgnosticUI</title>
+    <meta name="description" content="One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.">
+    <meta name="generator" content="VitePress v1.6.4">
+    <link rel="preload stylesheet" href="/assets/style.B9q022JI.css" as="style">
+    <link rel="preload stylesheet" href="/vp-icons.css" as="style">
+    
+    <script type="module" src="/assets/app.Db9wLKOo.js"></script>
+    <link rel="preload" href="/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="modulepreload" href="/assets/chunks/theme.dNgCwI32.js">
+    <link rel="modulepreload" href="/assets/chunks/framework.NAAYCHZu.js">
+    <link rel="modulepreload" href="/assets/chunks/AlphaWarning.yC7ZufpQ.js">
+    <link rel="modulepreload" href="/assets/chunks/VueCard.B-l91Hjz.js">
+    <link rel="modulepreload" href="/assets/chunks/VueButton.vue_vue_type_script_setup_true_lang-Bq8IPXqd.CM5RJxDa.js">
+    <link rel="modulepreload" href="/assets/chunks/FrameworkExample.Vj5DwYx5.js">
+    <link rel="modulepreload" href="/assets/chunks/Button.Bujdzq23.js">
+    <link rel="modulepreload" href="/assets/chunks/createLucideIcon.B61Wqv9x.js">
+    <link rel="modulepreload" href="/assets/chunks/slot.B17U6J5C.js">
+    <link rel="modulepreload" href="/assets/chunks/plugin-vue_export-helper-CHgC5LLL.lGy7RumW.js">
+    <link rel="modulepreload" href="/assets/chunks/Icon.odq14qpJ.js">
+    <link rel="modulepreload" href="/assets/components_card.md.BDXvxtrs.lean.js">
+    <link rel="stylesheet" href="/ag-tokens.css">
+    <link rel="stylesheet" href="/ag-tokens-dark.css">
+    <link rel="stylesheet" href="/table.css">
+    <link rel="icon" href="/favicon.ico">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><div class="Layout" data-v-5d98c3a5><!--[--><!--]--><!--[--><span tabindex="-1" data-v-0b0ada53></span><a href="#VPContent" class="VPSkipLink visually-hidden" data-v-0b0ada53>Skip to content</a><!--]--><!----><header class="VPNav" data-v-5d98c3a5 data-v-ae24b3ad><div class="VPNavBar" data-v-ae24b3ad data-v-6aa21345><div class="wrapper" data-v-6aa21345><div class="container" data-v-6aa21345><div class="title" data-v-6aa21345><div class="VPNavBarTitle has-sidebar" data-v-6aa21345 data-v-1168a8e4><a class="title" href="/" data-v-1168a8e4><!--[--><!--]--><!----><span data-v-1168a8e4>AgnosticUI</span><!--[--><!--]--></a></div></div><div class="content" data-v-6aa21345><div class="content-body" data-v-6aa21345><!--[--><!--]--><div class="VPNavBarSearch search" data-v-6aa21345><!----></div><nav aria-labelledby="main-nav-aria-label" class="VPNavBarMenu menu" data-v-6aa21345 data-v-dc692963><span id="main-nav-aria-label" class="visually-hidden" data-v-dc692963> Main Navigation </span><!--[--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/components/button.html" tabindex="0" data-v-dc692963 data-v-e56f3d57><!--[--><span data-v-e56f3d57>Components</span><!--]--></a><!--]--><!--]--></nav><!----><div class="VPNavBarAppearance appearance" data-v-6aa21345 data-v-6c893767><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-6c893767 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div><div class="VPSocialLinks VPNavBarSocialLinks social-links" data-v-6aa21345 data-v-0394ad82 data-v-7bc22406><!--[--><a class="VPSocialLink no-icon" href="https://github.com/AgnosticUI/agnosticui" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406 data-v-bd121fe5><span class="vpi-social-github"></span></a><!--]--></div><div class="VPFlyout VPNavBarExtra extra" data-v-6aa21345 data-v-bb2aa2f0 data-v-cf11d7a2><button type="button" class="button" aria-haspopup="true" aria-expanded="false" aria-label="extra navigation" data-v-cf11d7a2><span class="vpi-more-horizontal icon" data-v-cf11d7a2></span></button><div class="menu" data-v-cf11d7a2><div class="VPMenu" data-v-cf11d7a2 data-v-b98bc113><!----><!--[--><!--[--><!----><div class="group" data-v-bb2aa2f0><div class="item appearance" data-v-bb2aa2f0><p class="label" data-v-bb2aa2f0>Appearance</p><div class="appearance-action" data-v-bb2aa2f0><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-bb2aa2f0 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div></div></div><div class="group" data-v-bb2aa2f0><div class="item social-links" data-v-bb2aa2f0><div class="VPSocialLinks social-links-list" data-v-bb2aa2f0 data-v-7bc22406><!--[--><a class="VPSocialLink no-icon" href="https://github.com/AgnosticUI/agnosticui" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406 data-v-bd121fe5><span class="vpi-social-github"></span></a><!--]--></div></div></div><!--]--><!--]--></div></div></div><!--[--><!--]--><button type="button" class="VPNavBarHamburger hamburger" aria-label="mobile navigation" aria-expanded="false" aria-controls="VPNavScreen" data-v-6aa21345 data-v-e5dd9c1c><span class="container" data-v-e5dd9c1c><span class="top" data-v-e5dd9c1c></span><span class="middle" data-v-e5dd9c1c></span><span class="bottom" data-v-e5dd9c1c></span></span></button></div></div></div></div><div class="divider" data-v-6aa21345><div class="divider-line" data-v-6aa21345></div></div></div><!----></header><div class="VPLocalNav has-sidebar empty" data-v-5d98c3a5 data-v-a6f0e41e><div class="container" data-v-a6f0e41e><button class="menu" aria-expanded="false" aria-controls="VPSidebarNav" data-v-a6f0e41e><span class="vpi-align-left menu-icon" data-v-a6f0e41e></span><span class="menu-text" data-v-a6f0e41e>Menu</span></button><div class="VPLocalNavOutlineDropdown" style="--vp-vh:0px;" data-v-a6f0e41e data-v-8a42e2b4><button data-v-8a42e2b4>Return to top</button><!----></div></div></div><aside class="VPSidebar" data-v-5d98c3a5 data-v-319d5ca6><div class="curtain" data-v-319d5ca6></div><nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1" data-v-319d5ca6><span class="visually-hidden" id="sidebar-aria-label" data-v-319d5ca6> Sidebar Navigation </span><!--[--><!--]--><!--[--><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Quick Start</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/installation.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Installation</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/theming.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Theming</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0 has-active" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Components</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/accordion.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Accordion</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/alert.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Alerts</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/aspect-ratio.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>AspectRatio</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/avatar.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Avatar</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/badge.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Badge</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/badge-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>BadgeFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/breadcrumb.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Breadcrumb</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/button-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ButtonFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/card.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Card</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/checkbox.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Checkbox</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/collapsible.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Collapsible</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/combobox.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Combobox</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/copybutton.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>CopyButton</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/dialog.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Dialog</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/divider.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Divider</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/drawer.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Drawer</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/empty-state.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>EmptyState</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/fieldset.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Fieldset</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/flex.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Flex (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/header.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Header</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Icon</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon-button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Icon Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon-button-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>IconButtonFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/image.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Image</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/input.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Input</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/intl-formatter.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>IntlFormatter</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/kbd.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Kbd</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/link.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Link</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/loader.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Loader</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/mark.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Mark</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/menu.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Menu</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/message-bubble.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>MessageBubble</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/pagination.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Pagination</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/popover.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Popover</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/progress.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Progress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/progress-ring.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ProgressRing</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/radio.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Radio</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/rating.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Rating</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/scroll-progress.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ScrollProgress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/scroll-to-button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ScrollToButton</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/select.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Select</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/sidebar.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Sidebar (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/skeleton-loader.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Skeleton Loader</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/slider.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Slider</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/spinner.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Spinner</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/table.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Table</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tabs.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tabs</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tag.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tag</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/timeline.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Timeline</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/toast.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Toast</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/toggle.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Toggle</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tooltip.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tooltip</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/visually-hidden.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>VisuallyHidden</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Documentation</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/setup.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Setup Guide</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/understand.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Understanding AgnosticUI</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/advanced/advanced-usage.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Advanced Usage</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/utilities.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>CSS Utilities</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/faq.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>FAQ</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><!--]--><!--[--><!--]--></nav></aside><div class="VPContent has-sidebar" id="VPContent" data-v-5d98c3a5 data-v-1428d186><div class="VPDoc has-sidebar has-aside" data-v-1428d186 data-v-39a288b8><!--[--><!--]--><div class="container" data-v-39a288b8><div class="aside" data-v-39a288b8><div class="aside-curtain" data-v-39a288b8></div><div class="aside-container" data-v-39a288b8><div class="aside-content" data-v-39a288b8><div class="VPDocAside" data-v-39a288b8 data-v-3f215769><!--[--><!--]--><!--[--><!--]--><nav aria-labelledby="doc-outline-aria-label" class="VPDocAsideOutline" data-v-3f215769 data-v-a5bbad30><div class="content" data-v-a5bbad30><div class="outline-marker" data-v-a5bbad30></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-a5bbad30>On this page</div><ul class="VPDocOutlineItem root" data-v-a5bbad30 data-v-b933a997><!--[--><!--]--></ul></div></nav><!--[--><!--]--><div class="spacer" data-v-3f215769></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-39a288b8><div class="content-container" data-v-39a288b8><!--[--><!--]--><main class="main" data-v-39a288b8><div style="position:relative;" class="vp-doc _components_card" data-v-39a288b8><div><h1 id="card" tabindex="-1">Card <a class="header-anchor" href="#card" aria-label="Permalink to &quot;Card&quot;">​</a></h1><div class="alpha-warning" data-v-7d6f0b92><div class="alpha-warning-header" data-v-7d6f0b92><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert" data-v-7d6f0b92><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg><span class="alpha-warning-title" data-v-7d6f0b92>Experimental Alpha</span></div><p class="alpha-warning-text" data-v-7d6f0b92> This library is a work-in-progress. We are releasing it early to gather feedback, but it is not ready for production. </p></div><p>Card is a versatile container for grouping related content and actions. It provides a clean, visual structure for organizing information and can be customized with shadows, animations, color variants, and more.</p><h2 id="examples" tabindex="-1">Examples <a class="header-anchor" href="#examples" aria-label="Permalink to &quot;Examples&quot;">​</a></h2><div class="framework-example" data-v-9ebfb992><ag-tabs activation="manual" activeTab="0" orientation="horizontal" ariaLabel="Framework code examples" data-v-9ebfb992><!--[--><ag-tab slot="tab" panel="panel-vue" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>Vue</span></div><!--]--></ag-tab><ag-tab slot="tab" panel="panel-lit" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>Lit</span></div><!--]--></ag-tab><ag-tab slot="tab" panel="panel-react" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>React</span></div><!--]--></ag-tab><ag-tab-panel slot="panel" panel="panel-vue" data-v-9ebfb992><!--[--><details class="preview-details" open data-v-9ebfb992><summary data-v-9ebfb992>Live Preview</summary><div class="preview" data-v-9ebfb992><!--[--><section data-v-60df859f><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Default Card</h2></div><div class="stacked-mobile" data-v-60df859f><ag-card .stacked="false" .shadow="false" .animated="false" rounded variant data-v-60df859f><!--[--><!--]--><!--[--><p data-v-60df859f>This is a basic card with default styling.</p><!--]--><!--[--><!--]--></ag-card></div><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Card with Header</h2></div><div class="stacked-mobile" data-v-60df859f><ag-card .stacked="false" .shadow="true" .animated="false" rounded variant data-v-60df859f><!--[--><h3 class="m0" data-v-60df859f>Product Details</h3><!--]--><!--[--><p data-v-60df859f>This card demonstrates using the header slot to add a title section with visual separation.</p><!--]--><!--[--><!--]--></ag-card></div><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Shadow Card</h2></div><div class="stacked-mobile" data-v-60df859f><ag-card .stacked="false" .shadow="true" .animated="false" rounded variant data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Card with Shadow</h3><p data-v-60df859f>Hover over this card to see the enhanced shadow effect.</p><!--]--><!--[--><!--]--></ag-card></div><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Animated Card with Footer</h2></div><div class="stacked-mobile" data-v-60df859f><ag-card .stacked="false" .shadow="true" .animated="true" rounded variant data-v-60df859f><!--[--><h3 class="m0" data-v-60df859f>Animated Card</h3><!--]--><!--[--><p data-v-60df859f>Hover to see smooth animation (translateY with shadow enhancement).</p><!--]--><!--[--><div style="display:flex;gap:0.5rem;justify-content:flex-end;" data-v-60df859f><ag-button .disabled="false" .loading="false" .toggle="false" .pressed="false" .bordered="false" .ghost="false" .link="false" .grouped="false" .ariaLabel type="button" variant size="md" shape data-v-60df859f><!--[-->View Details<!--]--></ag-button></div><!--]--></ag-card></div><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Rounded Card Variants</h2><p class="mbs2 mbe3" data-v-60df859f>Cards can have different border radius sizes: small, medium, or large.</p></div><div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:1rem;" data-v-60df859f><ag-card .stacked="false" .shadow="false" .animated="false" rounded="sm" variant data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Small Rounded (sm)</h3><p data-v-60df859f>Subtle rounded corners using --ag-radius-sm (0.25rem).</p><!--]--><!--[--><!--]--></ag-card><ag-card .stacked="false" .shadow="false" .animated="false" rounded="md" variant data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Medium Rounded (md)</h3><p data-v-60df859f>Moderate rounded corners using --ag-radius-md (0.375rem).</p><!--]--><!--[--><!--]--></ag-card><ag-card .stacked="false" .shadow="false" .animated="false" rounded="lg" variant data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Large Rounded (lg)</h3><p data-v-60df859f>Prominent rounded corners using --ag-radius-lg (1rem).</p><!--]--><!--[--><!--]--></ag-card></div><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Stacked Content</h2></div><div class="stacked-mobile" data-v-60df859f><ag-card .stacked="true" .shadow="false" .animated="false" rounded variant data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Stacked Content</h3><p data-v-60df859f>First paragraph with automatic margin.</p><p data-v-60df859f>Second paragraph with automatic margin.</p><p data-v-60df859f>Third paragraph with automatic margin.</p><!--]--><!--[--><!--]--></ag-card></div><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Variant Cards</h2></div><div class="stacked" data-v-60df859f><ag-card .stacked="false" .shadow="false" .animated="false" rounded variant="success" class="mbe2" data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Success</h3><p data-v-60df859f>Operation completed successfully!</p><!--]--><!--[--><!--]--></ag-card><ag-card .stacked="false" .shadow="false" .animated="false" rounded variant="info" class="mbe2" data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Information</h3><p data-v-60df859f>Here&#39;s some helpful information for you.</p><!--]--><!--[--><!--]--></ag-card><ag-card .stacked="false" .shadow="false" .animated="false" rounded variant="error" class="mbe2" data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Error</h3><p data-v-60df859f>Something went wrong. Please try again.</p><!--]--><!--[--><!--]--></ag-card><ag-card .stacked="false" .shadow="false" .animated="false" rounded variant="warning" class="mbe2" data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Warning</h3><p data-v-60df859f>Please review this information carefully.</p><!--]--><!--[--><!--]--></ag-card><ag-card .stacked="false" .shadow="false" .animated="false" rounded variant="monochrome" class="mbe2" data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Monochrome</h3><p data-v-60df859f>Clean and modern monochrome design.</p><!--]--><!--[--><!--]--></ag-card></div><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Card with Slots (Header and Footer)</h2></div><div class="stacked-mobile" data-v-60df859f><ag-card .stacked="false" .shadow="true" .animated="false" rounded variant data-v-60df859f><!--[--><h3 class="m0" data-v-60df859f>Card Header</h3><!--]--><!--[--><div data-v-60df859f><h4 data-v-60df859f>Main Content</h4><p data-v-60df859f>This card demonstrates the header, default, and footer slots.</p></div><!--]--><!--[--><ag-button .disabled="false" .loading="false" .toggle="false" .pressed="false" .bordered="false" .ghost="false" .link="false" .grouped="false" .ariaLabel type="button" variant="secondary" size="md" shape data-v-60df859f><!--[-->Cancel<!--]--></ag-button><ag-button .disabled="false" .loading="false" .toggle="false" .pressed="false" .bordered="false" .ghost="false" .link="false" .grouped="false" .ariaLabel type="button" variant="primary" size="md" shape style="margin-left:0.5rem;" data-v-60df859f><!--[--> Confirm <!--]--></ag-button><!--]--></ag-card></div><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Combined Features</h2></div><div class="stacked-mobile" data-v-60df859f><ag-card .stacked="false" .shadow="true" .animated="true" rounded="md" variant="success" data-v-60df859f><!--[--><!--]--><!--[--><h3 class="m0" data-v-60df859f>Premium Card</h3><p data-v-60df859f>This card combines multiple features: shadow, animation, rounded corners, and success variant.</p><p data-v-60df859f>Hover to see the smooth animation effect!</p><!--]--><!--[--><!--]--></ag-card></div><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Card Gallery</h2></div><div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.5rem;" data-v-60df859f><ag-card .stacked="false" .shadow="true" .animated="true" rounded variant data-v-60df859f><!--[--><h3 data-v-60df859f>Card 1</h3><!--]--><!--[--><p data-v-60df859f>Standard card with header, shadow and animation.</p><!--]--><!--[--><!--]--></ag-card><ag-card .stacked="false" .shadow="true" .animated="true" rounded variant="success" data-v-60df859f><!--[--><!--]--><!--[--><h4 data-v-60df859f>Card 2</h4><p data-v-60df859f>Success variant with shadow and animation.</p><!--]--><!--[--><!--]--></ag-card><ag-card .stacked="false" .shadow="true" .animated="true" rounded variant="info" data-v-60df859f><!--[--><h4 data-v-60df859f>Card 3</h4><!--]--><!--[--><p data-v-60df859f>Info variant with header, shadow and animation.</p><!--]--><!--[--><ag-button .disabled="false" .loading="false" .toggle="false" .pressed="false" .bordered="true" .ghost="false" .link="false" .grouped="false" .ariaLabel type="button" variant="monochrome" size="md" shape data-v-60df859f><!--[-->Learn More<!--]--></ag-button><!--]--></ag-card><ag-card .stacked="false" .shadow="true" .animated="true" rounded variant="error" data-v-60df859f><!--[--><!--]--><!--[--><h4 data-v-60df859f>Card 4</h4><p data-v-60df859f>Error variant with shadow and animation.</p><!--]--><!--[--><!--]--></ag-card><ag-card .stacked="false" .shadow="true" .animated="true" rounded variant="warning" data-v-60df859f><!--[--><h4 data-v-60df859f>Card 5</h4><!--]--><!--[--><p data-v-60df859f>Warning variant with header.</p><!--]--><!--[--><!--]--></ag-card><ag-card .stacked="false" .shadow="true" .animated="true" rounded="md" variant data-v-60df859f><!--[--><!--]--><!--[--><h4 data-v-60df859f>Card 6</h4><p data-v-60df859f>Rounded corners with shadow and animation.</p><!--]--><!--[--><ag-button .disabled="false" .loading="false" .toggle="false" .pressed="false" .bordered="false" .ghost="false" .link="false" .grouped="false" .ariaLabel type="button" variant="success" size="md" shape data-v-60df859f><!--[-->Action<!--]--></ag-button><!--]--></ag-card></div><div class="mbe4" data-v-60df859f><h2 data-v-60df859f>Customized with CSS Shadow Parts</h2></div><div class="stacked-mobile" data-v-60df859f><ag-card .stacked="false" .shadow="true" .animated="false" rounded variant class="custom-parts-card" data-v-60df859f><!--[--><h3 style="margin:0;color:white;" data-v-60df859f>Customized with CSS Parts</h3><!--]--><!--[--><p data-v-60df859f>This card demonstrates CSS Shadow Parts customization.</p><p data-v-60df859f>The wrapper, header, content, and footer are styled using ::part() selectors.</p><!--]--><!--[--><ag-button .disabled="false" .loading="false" .toggle="false" .pressed="false" .bordered="false" .ghost="false" .link="false" .grouped="false" .ariaLabel type="button" variant="monochrome" size="md" shape="rounded" data-v-60df859f><!--[--> Learn More <!--]--></ag-button><!--]--></ag-card></div></section><!--]--></div></details><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View Vue Code</summary><pre data-v-9ebfb992><code class="language-vue" data-v-9ebfb992>&lt;template&gt;
+  &lt;section&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Default Card&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked-mobile&quot;&gt;
+      &lt;VueCard&gt;
+        &lt;p&gt;This is a basic card with default styling.&lt;/p&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Card with Header&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked-mobile&quot;&gt;
+      &lt;VueCard :shadow=&quot;true&quot;&gt;
+        &lt;template #header&gt;
+          &lt;h3 class=&quot;m0&quot;&gt;Product Details&lt;/h3&gt;
+        &lt;/template&gt;
+        &lt;p&gt;This card demonstrates using the header slot to add a title section with visual separation.&lt;/p&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Shadow Card&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked-mobile&quot;&gt;
+      &lt;VueCard :shadow=&quot;true&quot;&gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Card with Shadow&lt;/h3&gt;
+        &lt;p&gt;Hover over this card to see the enhanced shadow effect.&lt;/p&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Animated Card with Footer&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked-mobile&quot;&gt;
+      &lt;VueCard
+        :shadow=&quot;true&quot;
+        :animated=&quot;true&quot;
+      &gt;
+        &lt;template #header&gt;
+          &lt;h3 class=&quot;m0&quot;&gt;Animated Card&lt;/h3&gt;
+        &lt;/template&gt;
+        &lt;p&gt;Hover to see smooth animation (translateY with shadow enhancement).&lt;/p&gt;
+        &lt;template #footer&gt;
+          &lt;div style=&quot;display: flex; gap: 0.5rem; justify-content: flex-end;&quot;&gt;
+            &lt;VueButton&gt;View Details&lt;/VueButton&gt;
+          &lt;/div&gt;
+        &lt;/template&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Rounded Card Variants&lt;/h2&gt;
+      &lt;p class=&quot;mbs2 mbe3&quot;&gt;Cards can have different border radius sizes: small, medium, or large.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;&quot;&gt;
+      &lt;VueCard rounded=&quot;sm&quot;&gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Small Rounded (sm)&lt;/h3&gt;
+        &lt;p&gt;Subtle rounded corners using --ag-radius-sm (0.25rem).&lt;/p&gt;
+      &lt;/VueCard&gt;
+      &lt;VueCard rounded=&quot;md&quot;&gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Medium Rounded (md)&lt;/h3&gt;
+        &lt;p&gt;Moderate rounded corners using --ag-radius-md (0.375rem).&lt;/p&gt;
+      &lt;/VueCard&gt;
+      &lt;VueCard rounded=&quot;lg&quot;&gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Large Rounded (lg)&lt;/h3&gt;
+        &lt;p&gt;Prominent rounded corners using --ag-radius-lg (1rem).&lt;/p&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Stacked Content&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked-mobile&quot;&gt;
+      &lt;VueCard :stacked=&quot;true&quot;&gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Stacked Content&lt;/h3&gt;
+        &lt;p&gt;First paragraph with automatic margin.&lt;/p&gt;
+        &lt;p&gt;Second paragraph with automatic margin.&lt;/p&gt;
+        &lt;p&gt;Third paragraph with automatic margin.&lt;/p&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Variant Cards&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked&quot;&gt;
+      &lt;VueCard
+        variant=&quot;success&quot;
+        class=&quot;mbe2&quot;
+      &gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Success&lt;/h3&gt;
+        &lt;p&gt;Operation completed successfully!&lt;/p&gt;
+      &lt;/VueCard&gt;
+      &lt;VueCard
+        variant=&quot;info&quot;
+        class=&quot;mbe2&quot;
+      &gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Information&lt;/h3&gt;
+        &lt;p&gt;Here&#39;s some helpful information for you.&lt;/p&gt;
+      &lt;/VueCard&gt;
+      &lt;VueCard
+        variant=&quot;error&quot;
+        class=&quot;mbe2&quot;
+      &gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Error&lt;/h3&gt;
+        &lt;p&gt;Something went wrong. Please try again.&lt;/p&gt;
+      &lt;/VueCard&gt;
+      &lt;VueCard
+        variant=&quot;warning&quot;
+        class=&quot;mbe2&quot;
+      &gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Warning&lt;/h3&gt;
+        &lt;p&gt;Please review this information carefully.&lt;/p&gt;
+      &lt;/VueCard&gt;
+      &lt;VueCard
+        variant=&quot;monochrome&quot;
+        class=&quot;mbe2&quot;
+      &gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Monochrome&lt;/h3&gt;
+        &lt;p&gt;Clean and modern monochrome design.&lt;/p&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Card with Slots (Header and Footer)&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked-mobile&quot;&gt;
+      &lt;VueCard :shadow=&quot;true&quot;&gt;
+        &lt;template #header&gt;
+          &lt;h3 class=&quot;m0&quot;&gt;Card Header&lt;/h3&gt;
+        &lt;/template&gt;
+
+        &lt;div&gt;
+          &lt;h4&gt;Main Content&lt;/h4&gt;
+          &lt;p&gt;This card demonstrates the header, default, and footer slots.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;template #footer&gt;
+          &lt;VueButton variant=&quot;secondary&quot;&gt;Cancel&lt;/VueButton&gt;
+          &lt;VueButton
+            variant=&quot;primary&quot;
+            style=&quot;margin-left: 0.5rem;&quot;
+          &gt;
+            Confirm
+          &lt;/VueButton&gt;
+        &lt;/template&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Combined Features&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked-mobile&quot;&gt;
+      &lt;VueCard
+        :shadow=&quot;true&quot;
+        :animated=&quot;true&quot;
+        rounded=&quot;md&quot;
+        variant=&quot;success&quot;
+      &gt;
+        &lt;h3 class=&quot;m0&quot;&gt;Premium Card&lt;/h3&gt;
+        &lt;p&gt;This card combines multiple features: shadow, animation, rounded corners, and success variant.&lt;/p&gt;
+        &lt;p&gt;Hover to see the smooth animation effect!&lt;/p&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Card Gallery&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;&quot;&gt;
+      &lt;VueCard
+        :shadow=&quot;true&quot;
+        :animated=&quot;true&quot;
+      &gt;
+        &lt;template #header&gt;
+          &lt;h3&gt;Card 1&lt;/h3&gt;
+        &lt;/template&gt;
+        &lt;p&gt;Standard card with header, shadow and animation.&lt;/p&gt;
+      &lt;/VueCard&gt;
+
+      &lt;VueCard
+        :shadow=&quot;true&quot;
+        :animated=&quot;true&quot;
+        variant=&quot;success&quot;
+      &gt;
+        &lt;h4&gt;Card 2&lt;/h4&gt;
+        &lt;p&gt;Success variant with shadow and animation.&lt;/p&gt;
+      &lt;/VueCard&gt;
+
+      &lt;VueCard
+        :shadow=&quot;true&quot;
+        :animated=&quot;true&quot;
+        variant=&quot;info&quot;
+      &gt;
+        &lt;template #header&gt;
+          &lt;h4&gt;Card 3&lt;/h4&gt;
+        &lt;/template&gt;
+        &lt;p&gt;Info variant with header, shadow and animation.&lt;/p&gt;
+        &lt;template #footer&gt;
+          &lt;VueButton
+            variant=&quot;monochrome&quot;
+            :bordered=&quot;true&quot;
+          &gt;Learn More&lt;/VueButton&gt;
+        &lt;/template&gt;
+      &lt;/VueCard&gt;
+
+      &lt;VueCard
+        :shadow=&quot;true&quot;
+        :animated=&quot;true&quot;
+        variant=&quot;error&quot;
+      &gt;
+        &lt;h4&gt;Card 4&lt;/h4&gt;
+        &lt;p&gt;Error variant with shadow and animation.&lt;/p&gt;
+      &lt;/VueCard&gt;
+
+      &lt;VueCard
+        :shadow=&quot;true&quot;
+        :animated=&quot;true&quot;
+        variant=&quot;warning&quot;
+      &gt;
+        &lt;template #header&gt;
+          &lt;h4&gt;Card 5&lt;/h4&gt;
+        &lt;/template&gt;
+        &lt;p&gt;Warning variant with header.&lt;/p&gt;
+      &lt;/VueCard&gt;
+
+      &lt;VueCard
+        :shadow=&quot;true&quot;
+        :animated=&quot;true&quot;
+        rounded=&quot;md&quot;
+      &gt;
+        &lt;h4&gt;Card 6&lt;/h4&gt;
+        &lt;p&gt;Rounded corners with shadow and animation.&lt;/p&gt;
+        &lt;template #footer&gt;
+          &lt;VueButton variant=&quot;success&quot;&gt;Action&lt;/VueButton&gt;
+        &lt;/template&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Customized with CSS Shadow Parts&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked-mobile&quot;&gt;
+      &lt;VueCard
+        :shadow=&quot;true&quot;
+        class=&quot;custom-parts-card&quot;
+      &gt;
+        &lt;template #header&gt;
+          &lt;h3 style=&quot;margin: 0; color: white;&quot;&gt;Customized with CSS Parts&lt;/h3&gt;
+        &lt;/template&gt;
+
+        &lt;p&gt;This card demonstrates CSS Shadow Parts customization.&lt;/p&gt;
+        &lt;p&gt;The wrapper, header, content, and footer are styled using ::part() selectors.&lt;/p&gt;
+
+        &lt;template #footer&gt;
+          &lt;VueButton
+            variant=&quot;monochrome&quot;
+            shape=&quot;rounded&quot;
+          &gt;
+            Learn More
+          &lt;/VueButton&gt;
+        &lt;/template&gt;
+      &lt;/VueCard&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+
+&lt;script lang=&quot;ts&quot;&gt;
+import { defineComponent } from &quot;vue&quot;;
+import { VueCard } from &quot;agnosticui-core/card/vue&quot;;
+import VueButton from &quot;agnosticui-core/button/vue&quot;;
+
+export default defineComponent({
+  name: &quot;CardExamples&quot;,
+  components: {
+    VueButton,
+    VueCard,
+  },
+});
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.custom-parts-card::part(ag-card-wrapper) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.custom-parts-card::part(ag-card-header) {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.custom-parts-card::part(ag-card-content) {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.custom-parts-card::part(ag-card-footer) {
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+&lt;/style&gt;
+</code></pre></details><!--]--></ag-tab-panel><ag-tab-panel slot="panel" panel="panel-lit" data-v-9ebfb992><!--[--><details class="preview-details" open data-v-9ebfb992><summary data-v-9ebfb992>Live Preview</summary><div class="preview" data-v-9ebfb992><!--[--><card-lit-examples></card-lit-examples><!--]--></div></details><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View Lit / Web Component Code</summary><pre data-v-9ebfb992><code class="language-javascript" data-v-9ebfb992>import { LitElement, html } from &#39;lit&#39;;
+import &#39;agnosticui-core/card&#39;;
+import &#39;agnosticui-core/button&#39;;
+
+export class CardLitExamples extends LitElement {
+  // Render in light DOM to access global utility classes
+  createRenderRoot() {
+    return this;
+  }
+
+  render() {
+    return html`
+      &lt;section&gt;
+        &lt;!-- Default Card --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Default Card&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked-mobile&quot;&gt;
+          &lt;ag-card&gt;
+            &lt;p&gt;This is a basic card with default styling.&lt;/p&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Card with Header --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Card with Header&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked-mobile&quot;&gt;
+          &lt;ag-card shadow&gt;
+            &lt;h3 slot=&quot;header&quot; class=&quot;m0&quot;&gt;Product Details&lt;/h3&gt;
+            &lt;p&gt;This card demonstrates using the header slot to add a title section with visual separation.&lt;/p&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Shadow Card --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Shadow Card&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked-mobile&quot;&gt;
+          &lt;ag-card shadow&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Card with Shadow&lt;/h3&gt;
+            &lt;p&gt;Hover over this card to see the enhanced shadow effect.&lt;/p&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Animated Card with Footer --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Animated Card with Footer&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked-mobile&quot;&gt;
+          &lt;ag-card shadow animated&gt;
+            &lt;h3 slot=&quot;header&quot; class=&quot;m0&quot;&gt;Animated Card&lt;/h3&gt;
+            &lt;p&gt;Hover to see smooth animation (translateY with shadow enhancement).&lt;/p&gt;
+            &lt;div slot=&quot;footer&quot; style=&quot;display: flex; gap: 0.5rem; justify-content: flex-end;&quot;&gt;
+              &lt;ag-button&gt;View Details&lt;/ag-button&gt;
+            &lt;/div&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Rounded Card Variants --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Rounded Card Variants&lt;/h2&gt;
+          &lt;p class=&quot;mbs2 mbe3&quot;&gt;Cards can have different border radius sizes: small, medium, or large.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;&quot;&gt;
+          &lt;ag-card rounded=&quot;sm&quot;&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Small Rounded (sm)&lt;/h3&gt;
+            &lt;p&gt;Subtle rounded corners using --ag-radius-sm (0.25rem).&lt;/p&gt;
+          &lt;/ag-card&gt;
+          &lt;ag-card rounded=&quot;md&quot;&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Medium Rounded (md)&lt;/h3&gt;
+            &lt;p&gt;Moderate rounded corners using --ag-radius-md (0.375rem).&lt;/p&gt;
+          &lt;/ag-card&gt;
+          &lt;ag-card rounded=&quot;lg&quot;&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Large Rounded (lg)&lt;/h3&gt;
+            &lt;p&gt;Prominent rounded corners using --ag-radius-lg (1rem).&lt;/p&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Stacked Content --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Stacked Content&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked-mobile&quot;&gt;
+          &lt;ag-card stacked&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Stacked Content&lt;/h3&gt;
+            &lt;p&gt;First paragraph with automatic margin.&lt;/p&gt;
+            &lt;p&gt;Second paragraph with automatic margin.&lt;/p&gt;
+            &lt;p&gt;Third paragraph with automatic margin.&lt;/p&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Variant Cards --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Variant Cards&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked&quot;&gt;
+          &lt;ag-card variant=&quot;success&quot; class=&quot;mbe2&quot;&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Success&lt;/h3&gt;
+            &lt;p&gt;Operation completed successfully!&lt;/p&gt;
+          &lt;/ag-card&gt;
+          &lt;ag-card variant=&quot;info&quot; class=&quot;mbe2&quot;&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Information&lt;/h3&gt;
+            &lt;p&gt;Here&#39;s some helpful information for you.&lt;/p&gt;
+          &lt;/ag-card&gt;
+          &lt;ag-card variant=&quot;error&quot; class=&quot;mbe2&quot;&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Error&lt;/h3&gt;
+            &lt;p&gt;Something went wrong. Please try again.&lt;/p&gt;
+          &lt;/ag-card&gt;
+          &lt;ag-card variant=&quot;warning&quot; class=&quot;mbe2&quot;&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Warning&lt;/h3&gt;
+            &lt;p&gt;Please review this information carefully.&lt;/p&gt;
+          &lt;/ag-card&gt;
+          &lt;ag-card variant=&quot;monochrome&quot; class=&quot;mbe2&quot;&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Monochrome&lt;/h3&gt;
+            &lt;p&gt;Clean and modern monochrome design.&lt;/p&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Card with Slots (Header and Footer) --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Card with Slots (Header and Footer)&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked-mobile&quot;&gt;
+          &lt;ag-card shadow&gt;
+            &lt;h3 slot=&quot;header&quot; class=&quot;m0&quot;&gt;Card Header&lt;/h3&gt;
+            &lt;div&gt;
+              &lt;h4&gt;Main Content&lt;/h4&gt;
+              &lt;p&gt;This card demonstrates the header, default, and footer slots.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div slot=&quot;footer&quot;&gt;
+              &lt;ag-button variant=&quot;secondary&quot;&gt;Cancel&lt;/ag-button&gt;
+              &lt;ag-button variant=&quot;primary&quot; style=&quot;margin-left: 0.5rem;&quot;&gt;Confirm&lt;/ag-button&gt;
+            &lt;/div&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Combined Features --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Combined Features&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked-mobile&quot;&gt;
+          &lt;ag-card shadow animated rounded=&quot;md&quot; variant=&quot;success&quot;&gt;
+            &lt;h3 class=&quot;m0&quot;&gt;Premium Card&lt;/h3&gt;
+            &lt;p&gt;This card combines multiple features: shadow, animation, rounded corners, and success variant.&lt;/p&gt;
+            &lt;p&gt;Hover to see the smooth animation effect!&lt;/p&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Card Gallery --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Card Gallery&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;&quot;&gt;
+          &lt;ag-card shadow animated&gt;
+            &lt;h3 slot=&quot;header&quot;&gt;Card 1&lt;/h3&gt;
+            &lt;p&gt;Standard card with header, shadow and animation.&lt;/p&gt;
+          &lt;/ag-card&gt;
+
+          &lt;ag-card shadow animated variant=&quot;success&quot;&gt;
+            &lt;h4&gt;Card 2&lt;/h4&gt;
+            &lt;p&gt;Success variant with shadow and animation.&lt;/p&gt;
+          &lt;/ag-card&gt;
+
+          &lt;ag-card shadow animated variant=&quot;info&quot;&gt;
+            &lt;h4 slot=&quot;header&quot;&gt;Card 3&lt;/h4&gt;
+            &lt;p&gt;Info variant with header, shadow and animation.&lt;/p&gt;
+            &lt;ag-button slot=&quot;footer&quot; variant=&quot;monochrome&quot; bordered&gt;Learn More&lt;/ag-button&gt;
+          &lt;/ag-card&gt;
+
+          &lt;ag-card shadow animated variant=&quot;error&quot;&gt;
+            &lt;h4&gt;Card 4&lt;/h4&gt;
+            &lt;p&gt;Error variant with shadow and animation.&lt;/p&gt;
+          &lt;/ag-card&gt;
+
+          &lt;ag-card shadow animated variant=&quot;warning&quot;&gt;
+            &lt;h4 slot=&quot;header&quot;&gt;Card 5&lt;/h4&gt;
+            &lt;p&gt;Warning variant with header.&lt;/p&gt;
+          &lt;/ag-card&gt;
+
+          &lt;ag-card shadow animated rounded=&quot;md&quot;&gt;
+            &lt;h4&gt;Card 6&lt;/h4&gt;
+            &lt;p&gt;Rounded corners with shadow and animation.&lt;/p&gt;
+            &lt;ag-button slot=&quot;footer&quot; variant=&quot;success&quot;&gt;Action&lt;/ag-button&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Customized with CSS Shadow Parts --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Customized with CSS Shadow Parts&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked-mobile&quot;&gt;
+          &lt;ag-card shadow class=&quot;custom-parts-card&quot;&gt;
+            &lt;h3 slot=&quot;header&quot; style=&quot;margin: 0; color: white;&quot;&gt;Customized with CSS Parts&lt;/h3&gt;
+            &lt;p&gt;This card demonstrates CSS Shadow Parts customization.&lt;/p&gt;
+            &lt;p&gt;The wrapper, header, content, and footer are styled using ::part() selectors.&lt;/p&gt;
+            &lt;ag-button slot=&quot;footer&quot; variant=&quot;monochrome&quot; shape=&quot;rounded&quot;&gt;Learn More&lt;/ag-button&gt;
+          &lt;/ag-card&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    `;
+  }
+}
+
+// Register the custom element
+customElements.define(&#39;card-lit-examples&#39;, CardLitExamples);
+</code></pre></details><!--]--></ag-tab-panel><ag-tab-panel slot="panel" panel="panel-react" data-v-9ebfb992><!--[--><div class="react-note" data-v-9ebfb992><p data-v-9ebfb992><strong data-v-9ebfb992>Interactive Preview:</strong> Click the &quot;Open in StackBlitz&quot; button below to see this example running live in an interactive playground. </p></div><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View React Code</summary><pre data-v-9ebfb992><code class="language-tsx" data-v-9ebfb992>import { ReactCard } from &quot;agnosticui-core/card/react&quot;;
+import { ReactButton } from &quot;agnosticui-core/button/react&quot;;
+
+export default function CardReactExamples() {
+  return (
+    &lt;section&gt;
+      {/* Default Card */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Default Card&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked-mobile&quot;&gt;
+        &lt;ReactCard&gt;
+          &lt;p&gt;This is a basic card with default styling.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+
+      {/* Card with Header */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Card with Header&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked-mobile&quot;&gt;
+        &lt;ReactCard shadow&gt;
+          &lt;h3 slot=&quot;header&quot; className=&quot;m0&quot;&gt;Product Details&lt;/h3&gt;
+          &lt;p&gt;This card demonstrates using the header slot to add a title section with visual separation.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+
+      {/* Shadow Card */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Shadow Card&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked-mobile&quot;&gt;
+        &lt;ReactCard shadow&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Card with Shadow&lt;/h3&gt;
+          &lt;p&gt;Hover over this card to see the enhanced shadow effect.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+
+      {/* Animated Card with Footer */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Animated Card with Footer&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked-mobile&quot;&gt;
+        &lt;ReactCard shadow animated&gt;
+          &lt;h3 slot=&quot;header&quot; className=&quot;m0&quot;&gt;Animated Card&lt;/h3&gt;
+          &lt;p&gt;Hover to see smooth animation (translateY with shadow enhancement).&lt;/p&gt;
+          &lt;div slot=&quot;footer&quot; style={{ display: &quot;flex&quot;, gap: &quot;0.5rem&quot;, justifyContent: &quot;flex-end&quot; }}&gt;
+            &lt;ReactButton&gt;View Details&lt;/ReactButton&gt;
+          &lt;/div&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+
+      {/* Rounded Card Variants */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Rounded Card Variants&lt;/h2&gt;
+        &lt;p className=&quot;mbs2 mbe3&quot;&gt;Cards can have different border radius sizes: small, medium, or large.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div style={{ display: &quot;grid&quot;, gridTemplateColumns: &quot;repeat(auto-fit, minmax(250px, 1fr))&quot;, gap: &quot;1rem&quot; }}&gt;
+        &lt;ReactCard rounded=&quot;sm&quot;&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Small Rounded (sm)&lt;/h3&gt;
+          &lt;p&gt;Subtle rounded corners using --ag-radius-sm (0.25rem).&lt;/p&gt;
+        &lt;/ReactCard&gt;
+        &lt;ReactCard rounded=&quot;md&quot;&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Medium Rounded (md)&lt;/h3&gt;
+          &lt;p&gt;Moderate rounded corners using --ag-radius-md (0.375rem).&lt;/p&gt;
+        &lt;/ReactCard&gt;
+        &lt;ReactCard rounded=&quot;lg&quot;&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Large Rounded (lg)&lt;/h3&gt;
+          &lt;p&gt;Prominent rounded corners using --ag-radius-lg (1rem).&lt;/p&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+
+      {/* Stacked Content */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Stacked Content&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked-mobile&quot;&gt;
+        &lt;ReactCard stacked&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Stacked Content&lt;/h3&gt;
+          &lt;p&gt;First paragraph with automatic margin.&lt;/p&gt;
+          &lt;p&gt;Second paragraph with automatic margin.&lt;/p&gt;
+          &lt;p&gt;Third paragraph with automatic margin.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+
+      {/* Variant Cards */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Variant Cards&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked&quot;&gt;
+        &lt;ReactCard variant=&quot;success&quot; className=&quot;mbe2&quot;&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Success&lt;/h3&gt;
+          &lt;p&gt;Operation completed successfully!&lt;/p&gt;
+        &lt;/ReactCard&gt;
+        &lt;ReactCard variant=&quot;info&quot; className=&quot;mbe2&quot;&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Information&lt;/h3&gt;
+          &lt;p&gt;Here&#39;s some helpful information for you.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+        &lt;ReactCard variant=&quot;error&quot; className=&quot;mbe2&quot;&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Error&lt;/h3&gt;
+          &lt;p&gt;Something went wrong. Please try again.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+        &lt;ReactCard variant=&quot;warning&quot; className=&quot;mbe2&quot;&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Warning&lt;/h3&gt;
+          &lt;p&gt;Please review this information carefully.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+        &lt;ReactCard variant=&quot;monochrome&quot; className=&quot;mbe2&quot;&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Monochrome&lt;/h3&gt;
+          &lt;p&gt;Clean and modern monochrome design.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+
+      {/* Card with Slots (Header and Footer) */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Card with Slots (Header and Footer)&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked-mobile&quot;&gt;
+        &lt;ReactCard shadow&gt;
+          &lt;h3 slot=&quot;header&quot; className=&quot;m0&quot;&gt;Card Header&lt;/h3&gt;
+          &lt;div&gt;
+            &lt;h4&gt;Main Content&lt;/h4&gt;
+            &lt;p&gt;This card demonstrates the header, default, and footer slots.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div slot=&quot;footer&quot;&gt;
+            &lt;ReactButton variant=&quot;secondary&quot;&gt;Cancel&lt;/ReactButton&gt;
+            &lt;ReactButton variant=&quot;primary&quot; style={{ marginLeft: &quot;0.5rem&quot; }}&gt;
+              Confirm
+            &lt;/ReactButton&gt;
+          &lt;/div&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+
+      {/* Combined Features */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Combined Features&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked-mobile&quot;&gt;
+        &lt;ReactCard shadow animated rounded=&quot;md&quot; variant=&quot;success&quot;&gt;
+          &lt;h3 className=&quot;m0&quot;&gt;Premium Card&lt;/h3&gt;
+          &lt;p&gt;This card combines multiple features: shadow, animation, rounded corners, and success variant.&lt;/p&gt;
+          &lt;p&gt;Hover to see the smooth animation effect!&lt;/p&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+
+      {/* Card Gallery */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Card Gallery&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div style={{ display: &quot;grid&quot;, gridTemplateColumns: &quot;repeat(auto-fill, minmax(280px, 1fr))&quot;, gap: &quot;1.5rem&quot; }}&gt;
+        &lt;ReactCard shadow animated&gt;
+          &lt;h3 slot=&quot;header&quot;&gt;Card 1&lt;/h3&gt;
+          &lt;p&gt;Standard card with header, shadow and animation.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+
+        &lt;ReactCard shadow animated variant=&quot;success&quot;&gt;
+          &lt;h4&gt;Card 2&lt;/h4&gt;
+          &lt;p&gt;Success variant with shadow and animation.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+
+        &lt;ReactCard shadow animated variant=&quot;info&quot;&gt;
+          &lt;h4 slot=&quot;header&quot;&gt;Card 3&lt;/h4&gt;
+          &lt;p&gt;Info variant with header, shadow and animation.&lt;/p&gt;
+          &lt;ReactButton slot=&quot;footer&quot; variant=&quot;monochrome&quot; bordered&gt;
+            Learn More
+          &lt;/ReactButton&gt;
+        &lt;/ReactCard&gt;
+
+        &lt;ReactCard shadow animated variant=&quot;error&quot;&gt;
+          &lt;h4&gt;Card 4&lt;/h4&gt;
+          &lt;p&gt;Error variant with shadow and animation.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+
+        &lt;ReactCard shadow animated variant=&quot;warning&quot;&gt;
+          &lt;h4 slot=&quot;header&quot;&gt;Card 5&lt;/h4&gt;
+          &lt;p&gt;Warning variant with header.&lt;/p&gt;
+        &lt;/ReactCard&gt;
+
+        &lt;ReactCard shadow animated rounded=&quot;md&quot;&gt;
+          &lt;h4&gt;Card 6&lt;/h4&gt;
+          &lt;p&gt;Rounded corners with shadow and animation.&lt;/p&gt;
+          &lt;ReactButton slot=&quot;footer&quot; variant=&quot;success&quot;&gt;
+            Action
+          &lt;/ReactButton&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+
+      {/* Customized with CSS Shadow Parts */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Customized with CSS Shadow Parts&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked-mobile&quot;&gt;
+        &lt;ReactCard shadow className=&quot;custom-parts-card&quot;&gt;
+          &lt;h3 slot=&quot;header&quot; style={{ margin: 0, color: &quot;white&quot; }}&gt;
+            Customized with CSS Parts
+          &lt;/h3&gt;
+          &lt;p&gt;This card demonstrates CSS Shadow Parts customization.&lt;/p&gt;
+          &lt;p&gt;The wrapper, header, content, and footer are styled using ::part() selectors.&lt;/p&gt;
+          &lt;ReactButton slot=&quot;footer&quot; variant=&quot;monochrome&quot; shape=&quot;rounded&quot;&gt;
+            Learn More
+          &lt;/ReactButton&gt;
+        &lt;/ReactCard&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}
+</code></pre></details><div class="stackblitz-section" data-v-9ebfb992><ag-button variant="primary" shape="rounded" title="Open interactive React playground in StackBlitz" data-v-9ebfb992><ag-icon size="18" no-fill data-v-9ebfb992><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap-icon lucide-zap" data-v-9ebfb992><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></ag-icon><span class="mis2" data-v-9ebfb992>Open in StackBlitz</span></ag-button></div><!--]--></ag-tab-panel><!--]--></ag-tabs></div><h2 id="usage" tabindex="-1">Usage <a class="header-anchor" href="#usage" aria-label="Permalink to &quot;Usage&quot;">​</a></h2><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>The framework examples below <code>import</code> AgnosticUI as an <code>npm</code> package. Alternatively, you can use the <strong>CLI for complete control, AI/LLM visibility, and full code ownership</strong>:</p><div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">npx</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> ag</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> init</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> --framework</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> FRAMEWORK</span><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;"> # react, vue, lit, svelte, etc.</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">npx</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> ag</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> add</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> Card</span></span></code></pre></div><p>The CLI copies source code directly into your project, giving you full visibility and control. After running <code>npx ag add</code>, you&#39;ll receive exact import instructions.</p></div><details class="details custom-block"><summary>Vue</summary><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">section</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Card Title&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Basic card content with default styling.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> :shadow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;true&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> :animated</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;true&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Animated Card&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Hover to see the animation effect.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;success&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Success&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Operation completed successfully!&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> :shadow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;true&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> #</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">header</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h4</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> style</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;margin: 0;&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Header Slot&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h4</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Main content goes here.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> #</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">footer</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueButton</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;primary&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> shape</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;rounded&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Action&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueButton</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">section</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> lang</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;ts&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { defineComponent } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;vue&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { VueCard } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/card/vue&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { VueButton } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/button/vue&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">export</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> default</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> defineComponent</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">({</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  components: { VueCard, VueButton }</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">,</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">})</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><details class="details custom-block"><summary>React</summary><div class="language-tsx vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">tsx</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { ReactCard } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/card/react&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { ReactButton } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/button/react&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">export</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> default</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> function</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> CardExamples</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">() </span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">{</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  return</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> (</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">section</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Card Title&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Basic card content with default styling.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> shadow</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> animated</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Animated Card&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Hover to see the animation effect.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> variant</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;success&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Success&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Operation completed successfully!&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> shadow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;header&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> style</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">={</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">{ margin: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> }</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">}</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">          Header Slot</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">          &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Main content goes here.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactButton</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> variant</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;primary&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> shape</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;rounded&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;footer&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">          Action</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactButton</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">section</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  );</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div></details><details class="details custom-block"><summary>Lit (Web Components)</summary><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> type</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;module&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  import</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/card&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  import</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/button&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Card Title&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Basic card content with default styling.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> shadow</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> animated</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Animated Card&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Hover to see the animation effect.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;success&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Success&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Operation completed successfully!&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> shadow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h4</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;header&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> style</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;margin: 0;&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Header Slot&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h4</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Main content goes here.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-button</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;primary&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> shape</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;rounded&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;footer&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Action&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-button</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><h2 id="props" tabindex="-1">Props <a class="header-anchor" href="#props" aria-label="Permalink to &quot;Props&quot;">​</a></h2><table class="ag-table ag-table--striped"><thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>isStacked</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Applies vertical spacing between slotted children</td></tr><tr><td><code>isShadow</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Adds box-shadow with enhanced hover effect</td></tr><tr><td><code>isAnimated</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Enables smooth transitions on hover (translateY + shadow)</td></tr><tr><td><code>isRounded</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Applies border-radius to corners</td></tr><tr><td><code>variant</code></td><td><code>&#39;success&#39; | &#39;info&#39; | &#39;error&#39; | &#39;warning&#39; | &#39;&#39;</code></td><td><code>&#39;&#39;</code></td><td>Color variant for semantic meaning</td></tr></tbody></table><h2 id="slots" tabindex="-1">Slots <a class="header-anchor" href="#slots" aria-label="Permalink to &quot;Slots&quot;">​</a></h2><table class="ag-table ag-table--striped"><thead><tr><th>Slot</th><th>Description</th></tr></thead><tbody><tr><td><code>header</code></td><td>Optional header content displayed at the top of the card</td></tr><tr><td><code>default</code></td><td>Main content of the card</td></tr><tr><td><code>footer</code></td><td>Optional footer content displayed at the bottom of the card</td></tr></tbody></table><h2 id="css-shadow-parts" tabindex="-1">CSS Shadow Parts <a class="header-anchor" href="#css-shadow-parts" aria-label="Permalink to &quot;CSS Shadow Parts&quot;">​</a></h2><p>Shadow Parts allow you to style internal elements of the card from outside the shadow DOM using the <code>::part()</code> CSS selector.</p><table class="ag-table ag-table--striped"><thead><tr><th>Part</th><th>Description</th></tr></thead><tbody><tr><td><code>ag-card-wrapper</code></td><td>The main wrapper element that contains all card content</td></tr><tr><td><code>ag-card-header</code></td><td>The header section wrapper (even when empty)</td></tr><tr><td><code>ag-card-content</code></td><td>The main content section wrapper</td></tr><tr><td><code>ag-card-footer</code></td><td>The footer section wrapper (even when empty)</td></tr></tbody></table><h3 id="customization-example" tabindex="-1">Customization Example <a class="header-anchor" href="#customization-example" aria-label="Permalink to &quot;Customization Example&quot;">​</a></h3><div class="language-css vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">css</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card-wrapper</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  background</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">linear-gradient</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">135</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">deg</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#667eea</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 0</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">%</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#764ba2</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 100</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">%</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  padding</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">2</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card-header</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  border-bottom</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">2</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> solid</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> rgba</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">255</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">255</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">255</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0.3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  padding-bottom</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card-content</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  color</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">white</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  font-size</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1.1</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card-footer</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  border-top</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">2</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> solid</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> rgba</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">255</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">255</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">255</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0.3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  padding-top</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div><h2 id="design-patterns" tabindex="-1">Design Patterns <a class="header-anchor" href="#design-patterns" aria-label="Permalink to &quot;Design Patterns&quot;">​</a></h2><h3 id="basic-content-card" tabindex="-1">Basic Content Card <a class="header-anchor" href="#basic-content-card" aria-label="Permalink to &quot;Basic Content Card&quot;">​</a></h3><p>Use for grouping related information with a simple border and background:</p><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;h3&gt;Product Title&lt;/h3&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;p&gt;Product description goes here.&lt;/p&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;span&gt;$49.99&lt;/span&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div><h3 id="interactive-card-with-hover-effects" tabindex="-1">Interactive Card with Hover Effects <a class="header-anchor" href="#interactive-card-with-hover-effects" aria-label="Permalink to &quot;Interactive Card with Hover Effects&quot;">​</a></h3><p>Combine shadow and animation for engaging hover interactions:</p><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> :</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">shadow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">true</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> :</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">animated</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">true</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;h3&gt;Featured Item&lt;/h3&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;p&gt;Hover to see the lift effect.&lt;/p&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div><h3 id="semantic-cards-with-variants" tabindex="-1">Semantic Cards with Variants <a class="header-anchor" href="#semantic-cards-with-variants" aria-label="Permalink to &quot;Semantic Cards with Variants&quot;">​</a></h3><p>Use variant colors to convey status or context:</p><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;success&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;h3&gt;Payment Successful&lt;/h3&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;p&gt;Your order has been confirmed.&lt;/p&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div><h3 id="structured-card-with-slots" tabindex="-1">Structured Card with Slots <a class="header-anchor" href="#structured-card-with-slots" aria-label="Permalink to &quot;Structured Card with Slots&quot;">​</a></h3><p>Use slots for clearly separated header/footer sections. The header and footer automatically get appropriate styling (borders, padding) and are hidden when empty:</p><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> :</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">shadow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">true</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;template #header&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;h3 style=&quot;margin: 0;&quot;&gt;Settings&lt;/h3&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/template&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;p&gt;Configure your preferences&lt;/p&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;template #footer&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;div style=&quot;display: flex; gap: 0.5rem; justify-content: flex-end;&quot;&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;button&gt;Cancel&lt;/button&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;button&gt;Save&lt;/button&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/div&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/template&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> :</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">shadow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">true</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;template #header&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;h3 style=&quot;margin: 0;&quot;&gt;Product Details&lt;/h3&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/template&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;p&gt;Product information and description...&lt;/p&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;p&gt;Review the information below&lt;/p&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;template #footer&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;button&gt;Learn More&lt;/button&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/template&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div><h3 id="clickable-card-pattern" tabindex="-1">Clickable Card Pattern <a class="header-anchor" href="#clickable-card-pattern" aria-label="Permalink to &quot;Clickable Card Pattern&quot;">​</a></h3><p>Create fully clickable cards while maintaining accessibility:</p><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> shadow</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> animated</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h4</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;header&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> style</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;margin: 0;&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">a</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      href</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;/article&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      class</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;card-primary-action&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      style</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;text-decoration: none; color: inherit;&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      Article Title</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">a</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">h4</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Article summary text...&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">button</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;footer&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> class</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;card-secondary-action&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Bookmark&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">button</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div><p>The <code>card-primary-action</code> class creates a pseudo-element that covers the entire card, making it fully clickable. Elements with <code>card-secondary-action</code> class maintain their own click handlers.</p><h2 id="accessibility" tabindex="-1">Accessibility <a class="header-anchor" href="#accessibility" aria-label="Permalink to &quot;Accessibility&quot;">​</a></h2><ul><li>Cards are semantic containers that help organize content visually</li><li>When using clickable cards, ensure the primary link is properly accessible</li><li>Use appropriate heading levels within cards to maintain document outline</li><li>Provide sufficient color contrast for variant cards</li><li>Animation effects respect <code>prefers-reduced-motion</code> user preferences</li></ul><h2 id="notes" tabindex="-1">Notes <a class="header-anchor" href="#notes" aria-label="Permalink to &quot;Notes&quot;">​</a></h2><ul><li><strong>Combining Features</strong>: Multiple props can be combined (e.g., <code>variant=&quot;success&quot; :shadow=&quot;true&quot; :animated=&quot;true&quot;</code>)</li><li><strong>Responsive Design</strong>: Cards are <code>width: 100%</code> by default and work well in grid layouts</li><li><strong>Lit Property Binding</strong>: In Lit templates, use property bindings for boolean props</li><li><strong>Reduced Motion</strong>: Animation transitions are automatically disabled for users who prefer reduced motion</li><li>All three framework implementations share the same underlying styles and behavior</li></ul></div></div></main><footer class="VPDocFooter" data-v-39a288b8 data-v-e257564d><!--[--><!--]--><!----><nav class="prev-next" aria-labelledby="doc-footer-aria-label" data-v-e257564d><span class="visually-hidden" id="doc-footer-aria-label" data-v-e257564d>Pager</span><div class="pager" data-v-e257564d><a class="VPLink link pager-link prev" href="/components/button-fx.html" data-v-e257564d><!--[--><span class="desc" data-v-e257564d>Previous page</span><span class="title" data-v-e257564d>ButtonFx (Lab)</span><!--]--></a></div><div class="pager" data-v-e257564d><a class="VPLink link pager-link next" href="/components/checkbox.html" data-v-e257564d><!--[--><span class="desc" data-v-e257564d>Next page</span><span class="title" data-v-e257564d>Checkbox</span><!--]--></a></div></nav></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><!----><!--[--><!--]--></div></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"components_accordion.md\":\"D124LQ2N\",\"components_alert.md\":\"DUzPffjv\",\"components_aspect-ratio.md\":\"B9LCG7IE\",\"components_avatar.md\":\"CBy4X4lC\",\"components_badge-fx.md\":\"Cjlw3Nr6\",\"components_badge.md\":\"DLyUyoDM\",\"components_breadcrumb.md\":\"5mPKE6w4\",\"components_button-fx.md\":\"BgxBCcJf\",\"components_button.md\":\"xaByEAaZ\",\"components_card.md\":\"BDXvxtrs\",\"components_checkbox.md\":\"Cwru_peQ\",\"components_collapsible.md\":\"BQWRhZn6\",\"components_combobox.md\":\"CkdFz6qL\",\"components_copybutton.md\":\"BicFdIOk\",\"components_dialog.md\":\"Wvih0cWD\",\"components_divider.md\":\"DVS5aGVO\",\"components_drawer.md\":\"ZlzJP1Zs\",\"components_empty-state.md\":\"CRY8H9KL\",\"components_fieldset.md\":\"Bo6NGhzj\",\"components_flex.md\":\"ViEYtYug\",\"components_header.md\":\"CzY751Xc\",\"components_icon-button-fx.md\":\"3jwqZqhg\",\"components_icon-button.md\":\"D4_S6D7i\",\"components_icon.md\":\"-89djCYd\",\"components_image.md\":\"Cu8otwUd\",\"components_input.md\":\"DosMDWvE\",\"components_intl-formatter.md\":\"DEZMib1v\",\"components_kbd.md\":\"BLor_025\",\"components_link.md\":\"B90H-PLT\",\"components_loader.md\":\"Cu31E7Oy\",\"components_mark.md\":\"0lFphVjr\",\"components_menu.md\":\"CR0h2mnz\",\"components_message-bubble.md\":\"z-1RaY82\",\"components_pagination.md\":\"DIPTDF7b\",\"components_popover.md\":\"IEiDGW-c\",\"components_progress-ring.md\":\"C4S6Z7Y1\",\"components_progress.md\":\"D6odJd83\",\"components_radio.md\":\"Cqq1BCVD\",\"components_rating.md\":\"BFYBA--y\",\"components_scroll-progress.md\":\"td8eEdZY\",\"components_scroll-to-button.md\":\"CPCi-JKZ\",\"components_select.md\":\"C8Ei8Ji-\",\"components_sidebar.md\":\"CobZ0WvN\",\"components_skeleton-loader.md\":\"D52GZHTp\",\"components_slider.md\":\"BYgr1Czg\",\"components_spinner.md\":\"C36VAblI\",\"components_table.md\":\"LOFdMREA\",\"components_tabs.md\":\"BEM1bv51\",\"components_tag.md\":\"C7aug7OF\",\"components_timeline.md\":\"Jz5s26zl\",\"components_toast.md\":\"N7kNxAD2\",\"components_toggle.md\":\"DKu1k6DE\",\"components_tooltip.md\":\"CsOsS_f4\",\"components_visually-hidden.md\":\"qDI1aGpt\",\"docs_advanced_advanced-usage.md\":\"C4HVbS5E\",\"docs_faq.md\":\"BtG1Lr41\",\"docs_setup.md\":\"BQZjnySZ\",\"docs_theming.md\":\"a7cpTIMK\",\"docs_understand.md\":\"AMQOq1C5\",\"docs_utilities.md\":\"DRVnpTXi\",\"index.md\":\"Czxm2aZ2\",\"installation.md\":\"9jU4ZVdv\",\"theming.md\":\"li9eyUfM\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"AgnosticUI\",\"description\":\"One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"nav\":[{\"text\":\"Components\",\"link\":\"/components/button\"}],\"sidebar\":[{\"text\":\"Quick Start\",\"items\":[{\"text\":\"Installation\",\"link\":\"/installation\"},{\"text\":\"Theming\",\"link\":\"/theming\"}]},{\"text\":\"Components\",\"items\":[{\"text\":\"Accordion\",\"link\":\"/components/accordion\"},{\"text\":\"Alerts\",\"link\":\"/components/alert\"},{\"text\":\"AspectRatio\",\"link\":\"/components/aspect-ratio\"},{\"text\":\"Avatar\",\"link\":\"/components/avatar\"},{\"text\":\"Badge\",\"link\":\"/components/badge\"},{\"text\":\"BadgeFx (Lab)\",\"link\":\"/components/badge-fx\"},{\"text\":\"Breadcrumb\",\"link\":\"/components/breadcrumb\"},{\"text\":\"Button\",\"link\":\"/components/button\"},{\"text\":\"ButtonFx (Lab)\",\"link\":\"/components/button-fx\"},{\"text\":\"Card\",\"link\":\"/components/card\"},{\"text\":\"Checkbox\",\"link\":\"/components/checkbox\"},{\"text\":\"Collapsible\",\"link\":\"/components/collapsible\"},{\"text\":\"Combobox\",\"link\":\"/components/combobox\"},{\"text\":\"CopyButton\",\"link\":\"/components/copybutton\"},{\"text\":\"Dialog\",\"link\":\"/components/dialog\"},{\"text\":\"Divider\",\"link\":\"/components/divider\"},{\"text\":\"Drawer\",\"link\":\"/components/drawer\"},{\"text\":\"EmptyState\",\"link\":\"/components/empty-state\"},{\"text\":\"Fieldset\",\"link\":\"/components/fieldset\"},{\"text\":\"Flex (Lab)\",\"link\":\"/components/flex\"},{\"text\":\"Header\",\"link\":\"/components/header\"},{\"text\":\"Icon\",\"link\":\"/components/icon\"},{\"text\":\"Icon Button\",\"link\":\"/components/icon-button\"},{\"text\":\"IconButtonFx (Lab)\",\"link\":\"/components/icon-button-fx\"},{\"text\":\"Image\",\"link\":\"/components/image\"},{\"text\":\"Input\",\"link\":\"/components/input\"},{\"text\":\"IntlFormatter\",\"link\":\"/components/intl-formatter\"},{\"text\":\"Kbd\",\"link\":\"/components/kbd\"},{\"text\":\"Link\",\"link\":\"/components/link\"},{\"text\":\"Loader\",\"link\":\"/components/loader\"},{\"text\":\"Mark\",\"link\":\"/components/mark\"},{\"text\":\"Menu\",\"link\":\"/components/menu\"},{\"text\":\"MessageBubble\",\"link\":\"/components/message-bubble\"},{\"text\":\"Pagination\",\"link\":\"/components/pagination\"},{\"text\":\"Popover\",\"link\":\"/components/popover\"},{\"text\":\"Progress\",\"link\":\"/components/progress\"},{\"text\":\"ProgressRing\",\"link\":\"/components/progress-ring\"},{\"text\":\"Radio\",\"link\":\"/components/radio\"},{\"text\":\"Rating\",\"link\":\"/components/rating\"},{\"text\":\"ScrollProgress\",\"link\":\"/components/scroll-progress\"},{\"text\":\"ScrollToButton\",\"link\":\"/components/scroll-to-button\"},{\"text\":\"Select\",\"link\":\"/components/select\"},{\"text\":\"Sidebar (Lab)\",\"link\":\"/components/sidebar\"},{\"text\":\"Skeleton Loader\",\"link\":\"/components/skeleton-loader\"},{\"text\":\"Slider\",\"link\":\"/components/slider\"},{\"text\":\"Spinner\",\"link\":\"/components/spinner\"},{\"text\":\"Table\",\"link\":\"/components/table\"},{\"text\":\"Tabs\",\"link\":\"/components/tabs\"},{\"text\":\"Tag\",\"link\":\"/components/tag\"},{\"text\":\"Timeline\",\"link\":\"/components/timeline\"},{\"text\":\"Toast\",\"link\":\"/components/toast\"},{\"text\":\"Toggle\",\"link\":\"/components/toggle\"},{\"text\":\"Tooltip\",\"link\":\"/components/tooltip\"},{\"text\":\"VisuallyHidden\",\"link\":\"/components/visually-hidden\"}]},{\"text\":\"Documentation\",\"items\":[{\"text\":\"Setup Guide\",\"link\":\"/docs/setup\"},{\"text\":\"Understanding AgnosticUI\",\"link\":\"/docs/understand\"},{\"text\":\"Advanced Usage\",\"link\":\"/docs/advanced/advanced-usage\"},{\"text\":\"CSS Utilities\",\"link\":\"/docs/utilities\"},{\"text\":\"FAQ\",\"link\":\"/docs/faq\"}]}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/AgnosticUI/agnosticui\"}]},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  </body>
+</html>

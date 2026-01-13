@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MessageBubble | AgnosticUI</title>
+    <meta name="description" content="One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.">
+    <meta name="generator" content="VitePress v1.6.4">
+    <link rel="preload stylesheet" href="/assets/style.B9q022JI.css" as="style">
+    <link rel="preload stylesheet" href="/vp-icons.css" as="style">
+    
+    <script type="module" src="/assets/app.Db9wLKOo.js"></script>
+    <link rel="preload" href="/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="modulepreload" href="/assets/chunks/theme.dNgCwI32.js">
+    <link rel="modulepreload" href="/assets/chunks/framework.NAAYCHZu.js">
+    <link rel="modulepreload" href="/assets/chunks/AlphaWarning.yC7ZufpQ.js">
+    <link rel="modulepreload" href="/assets/chunks/Button.Bujdzq23.js">
+    <link rel="modulepreload" href="/assets/chunks/Icon.odq14qpJ.js">
+    <link rel="modulepreload" href="/assets/chunks/VueAvatar.B7U3hCJk.js">
+    <link rel="modulepreload" href="/assets/chunks/VueInput.vue_vue_type_script_setup_true_lang-Dsxo7DuX.BU_KeN0p.js">
+    <link rel="modulepreload" href="/assets/chunks/VueButton.vue_vue_type_script_setup_true_lang-Bq8IPXqd.CM5RJxDa.js">
+    <link rel="modulepreload" href="/assets/chunks/trash-2.nw5yXCyH.js">
+    <link rel="modulepreload" href="/assets/chunks/createLucideIcon.B61Wqv9x.js">
+    <link rel="modulepreload" href="/assets/chunks/send.CyjvY3bo.js">
+    <link rel="modulepreload" href="/assets/chunks/message-circle.BqeLtm1M.js">
+    <link rel="modulepreload" href="/assets/chunks/FrameworkExample.Vj5DwYx5.js">
+    <link rel="modulepreload" href="/assets/chunks/plugin-vue_export-helper-CHgC5LLL.lGy7RumW.js">
+    <link rel="modulepreload" href="/assets/chunks/query-BykXNUlT.Pm7lu9c1.js">
+    <link rel="modulepreload" href="/assets/chunks/slot.B17U6J5C.js">
+    <link rel="modulepreload" href="/assets/chunks/form-control-utils.LZkauYsx.js">
+    <link rel="modulepreload" href="/assets/components_message-bubble.md.z-1RaY82.lean.js">
+    <link rel="stylesheet" href="/ag-tokens.css">
+    <link rel="stylesheet" href="/ag-tokens-dark.css">
+    <link rel="stylesheet" href="/table.css">
+    <link rel="icon" href="/favicon.ico">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><div class="Layout" data-v-5d98c3a5><!--[--><!--]--><!--[--><span tabindex="-1" data-v-0b0ada53></span><a href="#VPContent" class="VPSkipLink visually-hidden" data-v-0b0ada53>Skip to content</a><!--]--><!----><header class="VPNav" data-v-5d98c3a5 data-v-ae24b3ad><div class="VPNavBar" data-v-ae24b3ad data-v-6aa21345><div class="wrapper" data-v-6aa21345><div class="container" data-v-6aa21345><div class="title" data-v-6aa21345><div class="VPNavBarTitle has-sidebar" data-v-6aa21345 data-v-1168a8e4><a class="title" href="/" data-v-1168a8e4><!--[--><!--]--><!----><span data-v-1168a8e4>AgnosticUI</span><!--[--><!--]--></a></div></div><div class="content" data-v-6aa21345><div class="content-body" data-v-6aa21345><!--[--><!--]--><div class="VPNavBarSearch search" data-v-6aa21345><!----></div><nav aria-labelledby="main-nav-aria-label" class="VPNavBarMenu menu" data-v-6aa21345 data-v-dc692963><span id="main-nav-aria-label" class="visually-hidden" data-v-dc692963> Main Navigation </span><!--[--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/components/button.html" tabindex="0" data-v-dc692963 data-v-e56f3d57><!--[--><span data-v-e56f3d57>Components</span><!--]--></a><!--]--><!--]--></nav><!----><div class="VPNavBarAppearance appearance" data-v-6aa21345 data-v-6c893767><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-6c893767 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div><div class="VPSocialLinks VPNavBarSocialLinks social-links" data-v-6aa21345 data-v-0394ad82 data-v-7bc22406><!--[--><a class="VPSocialLink no-icon" href="https://github.com/AgnosticUI/agnosticui" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406 data-v-bd121fe5><span class="vpi-social-github"></span></a><!--]--></div><div class="VPFlyout VPNavBarExtra extra" data-v-6aa21345 data-v-bb2aa2f0 data-v-cf11d7a2><button type="button" class="button" aria-haspopup="true" aria-expanded="false" aria-label="extra navigation" data-v-cf11d7a2><span class="vpi-more-horizontal icon" data-v-cf11d7a2></span></button><div class="menu" data-v-cf11d7a2><div class="VPMenu" data-v-cf11d7a2 data-v-b98bc113><!----><!--[--><!--[--><!----><div class="group" data-v-bb2aa2f0><div class="item appearance" data-v-bb2aa2f0><p class="label" data-v-bb2aa2f0>Appearance</p><div class="appearance-action" data-v-bb2aa2f0><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-bb2aa2f0 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div></div></div><div class="group" data-v-bb2aa2f0><div class="item social-links" data-v-bb2aa2f0><div class="VPSocialLinks social-links-list" data-v-bb2aa2f0 data-v-7bc22406><!--[--><a class="VPSocialLink no-icon" href="https://github.com/AgnosticUI/agnosticui" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406 data-v-bd121fe5><span class="vpi-social-github"></span></a><!--]--></div></div></div><!--]--><!--]--></div></div></div><!--[--><!--]--><button type="button" class="VPNavBarHamburger hamburger" aria-label="mobile navigation" aria-expanded="false" aria-controls="VPNavScreen" data-v-6aa21345 data-v-e5dd9c1c><span class="container" data-v-e5dd9c1c><span class="top" data-v-e5dd9c1c></span><span class="middle" data-v-e5dd9c1c></span><span class="bottom" data-v-e5dd9c1c></span></span></button></div></div></div></div><div class="divider" data-v-6aa21345><div class="divider-line" data-v-6aa21345></div></div></div><!----></header><div class="VPLocalNav has-sidebar empty" data-v-5d98c3a5 data-v-a6f0e41e><div class="container" data-v-a6f0e41e><button class="menu" aria-expanded="false" aria-controls="VPSidebarNav" data-v-a6f0e41e><span class="vpi-align-left menu-icon" data-v-a6f0e41e></span><span class="menu-text" data-v-a6f0e41e>Menu</span></button><div class="VPLocalNavOutlineDropdown" style="--vp-vh:0px;" data-v-a6f0e41e data-v-8a42e2b4><button data-v-8a42e2b4>Return to top</button><!----></div></div></div><aside class="VPSidebar" data-v-5d98c3a5 data-v-319d5ca6><div class="curtain" data-v-319d5ca6></div><nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1" data-v-319d5ca6><span class="visually-hidden" id="sidebar-aria-label" data-v-319d5ca6> Sidebar Navigation </span><!--[--><!--]--><!--[--><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Quick Start</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/installation.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Installation</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/theming.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Theming</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0 has-active" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Components</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/accordion.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Accordion</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/alert.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Alerts</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/aspect-ratio.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>AspectRatio</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/avatar.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Avatar</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/badge.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Badge</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/badge-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>BadgeFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/breadcrumb.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Breadcrumb</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/button-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ButtonFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/card.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Card</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/checkbox.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Checkbox</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/collapsible.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Collapsible</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/combobox.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Combobox</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/copybutton.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>CopyButton</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/dialog.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Dialog</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/divider.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Divider</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/drawer.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Drawer</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/empty-state.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>EmptyState</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/fieldset.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Fieldset</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/flex.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Flex (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/header.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Header</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Icon</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon-button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Icon Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon-button-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>IconButtonFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/image.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Image</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/input.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Input</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/intl-formatter.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>IntlFormatter</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/kbd.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Kbd</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/link.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Link</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/loader.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Loader</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/mark.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Mark</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/menu.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Menu</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/message-bubble.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>MessageBubble</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/pagination.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Pagination</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/popover.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Popover</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/progress.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Progress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/progress-ring.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ProgressRing</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/radio.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Radio</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/rating.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Rating</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/scroll-progress.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ScrollProgress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/scroll-to-button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ScrollToButton</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/select.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Select</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/sidebar.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Sidebar (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/skeleton-loader.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Skeleton Loader</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/slider.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Slider</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/spinner.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Spinner</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/table.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Table</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tabs.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tabs</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tag.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tag</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/timeline.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Timeline</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/toast.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Toast</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/toggle.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Toggle</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tooltip.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tooltip</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/visually-hidden.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>VisuallyHidden</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Documentation</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/setup.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Setup Guide</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/understand.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Understanding AgnosticUI</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/advanced/advanced-usage.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Advanced Usage</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/utilities.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>CSS Utilities</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/faq.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>FAQ</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><!--]--><!--[--><!--]--></nav></aside><div class="VPContent has-sidebar" id="VPContent" data-v-5d98c3a5 data-v-1428d186><div class="VPDoc has-sidebar has-aside" data-v-1428d186 data-v-39a288b8><!--[--><!--]--><div class="container" data-v-39a288b8><div class="aside" data-v-39a288b8><div class="aside-curtain" data-v-39a288b8></div><div class="aside-container" data-v-39a288b8><div class="aside-content" data-v-39a288b8><div class="VPDocAside" data-v-39a288b8 data-v-3f215769><!--[--><!--]--><!--[--><!--]--><nav aria-labelledby="doc-outline-aria-label" class="VPDocAsideOutline" data-v-3f215769 data-v-a5bbad30><div class="content" data-v-a5bbad30><div class="outline-marker" data-v-a5bbad30></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-a5bbad30>On this page</div><ul class="VPDocOutlineItem root" data-v-a5bbad30 data-v-b933a997><!--[--><!--]--></ul></div></nav><!--[--><!--]--><div class="spacer" data-v-3f215769></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-39a288b8><div class="content-container" data-v-39a288b8><!--[--><!--]--><main class="main" data-v-39a288b8><div style="position:relative;" class="vp-doc _components_message-bubble" data-v-39a288b8><div><h1 id="messagebubble" tabindex="-1">MessageBubble <a class="header-anchor" href="#messagebubble" aria-label="Permalink to &quot;MessageBubble&quot;">​</a></h1><div class="alpha-warning" data-v-7d6f0b92><div class="alpha-warning-header" data-v-7d6f0b92><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert" data-v-7d6f0b92><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg><span class="alpha-warning-title" data-v-7d6f0b92>Experimental Alpha</span></div><p class="alpha-warning-text" data-v-7d6f0b92> This library is a work-in-progress. We are releasing it early to gather feedback, but it is not ready for production. </p></div><p>A versatile message bubble component for building chat interfaces and messaging UIs. MessageBubble supports different sender types, delivery statuses, avatars, color variants, and custom styling through CSS Shadow Parts.</p><h2 id="examples" tabindex="-1">Examples <a class="header-anchor" href="#examples" aria-label="Permalink to &quot;Examples&quot;">​</a></h2><div class="framework-example" data-v-9ebfb992><ag-tabs activation="manual" activeTab="0" orientation="horizontal" ariaLabel="Framework code examples" data-v-9ebfb992><!--[--><ag-tab slot="tab" panel="panel-vue" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>Vue</span></div><!--]--></ag-tab><ag-tab slot="tab" panel="panel-lit" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>Lit</span></div><!--]--></ag-tab><ag-tab slot="tab" panel="panel-react" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>React</span></div><!--]--></ag-tab><ag-tab-panel slot="panel" panel="panel-vue" data-v-9ebfb992><!--[--><details class="preview-details" open data-v-9ebfb992><summary data-v-9ebfb992>Live Preview</summary><div class="preview" data-v-9ebfb992><!--[--><section data-v-ca6e9108><div class="mbe4" data-v-ca6e9108><h2 data-v-ca6e9108>Interactive Chat Demo</h2><p data-v-ca6e9108>Type a message and click Send to add it to the conversation. This demonstrates real-world integration with VueInput and VueButton.</p></div><div class="chat-demo-container mbe6" data-v-ca6e9108><div class="messages-container" data-v-ca6e9108><!--[--><!--]--><div class="empty-state" data-v-ca6e9108> No messages yet. Start the conversation! </div></div><div class="input-area" data-v-ca6e9108><ag-input .value .labelHidden="false" .noLabel="false" .capsule="false" .rounded="true" .underlined="false" .underlinedWithBackground="false" .inline="false" .required="false" .disabled="false" .readonly="false" .invalid="false" type="text" placeholder="Type your message..." label ariaLabel helpText errorMessage size="default" rows="4" cols="50" data-v-ca6e9108><span slot="addon-left"><!--[--><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ag-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-icon lucide-message-circle" data-v-ca6e9108><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg><!--]--></span><!----></ag-input><ag-button .disabled="true" .loading="false" .toggle="false" .pressed="false" .bordered="false" .ghost="false" .link="false" .grouped="false" .ariaLabel type="button" variant="primary" size="md" shape="rounded" class="send-button" data-v-ca6e9108><!--[--><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-icon lucide-send" data-v-ca6e9108><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg><span class="mis1" data-v-ca6e9108>Send</span><!--]--></ag-button></div><div class="quick-actions" data-v-ca6e9108><ag-button .disabled="false" .loading="false" .toggle="false" .pressed="false" .bordered="true" .ghost="false" .link="false" .grouped="false" .ariaLabel type="button" variant size="sm" shape="rounded" class="mie2" data-v-ca6e9108><!--[--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot-icon lucide-bot" data-v-ca6e9108><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg><span class="mis1" data-v-ca6e9108>Add Bot Reply</span><!--]--></ag-button><ag-button .disabled="false" .loading="false" .toggle="false" .pressed="false" .bordered="true" .ghost="false" .link="false" .grouped="false" .ariaLabel type="button" variant="danger" size="sm" shape="rounded" data-v-ca6e9108><!--[--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2" data-v-ca6e9108><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span class="mis1" data-v-ca6e9108>Clear All</span><!--]--></ag-button></div></div><div class="mbe4" data-v-ca6e9108><h2 data-v-ca6e9108>Basic Message Bubbles</h2><p data-v-ca6e9108>Messages can be sent from &quot;me&quot; or &quot;them&quot; with author, time, and optional footer.</p></div><div class="message-container mbe6" data-v-ca6e9108><ag-message-bubble from="them" message="Hey, are we still on for lunch?" time="11:30 AM" author="Sarah" avatar-url footer variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="me" message="Yes! Where should we go?" time="11:32 AM" author="Me" avatar-url footer variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="them" message="How about that new Italian place?" time="11:33 AM" author="Sarah" avatar-url footer variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="me" message="Sounds perfect. See you there at 12:30." time="11:35 AM" author="Me" avatar-url footer variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble></div><div class="mbe4" data-v-ca6e9108><h2 data-v-ca6e9108>Delivery Status</h2><p data-v-ca6e9108>Use the footer prop to display delivery status indicators.</p></div><div class="message-container mbe6" data-v-ca6e9108><ag-message-bubble from="me" message="Hey, did you get my last message?" time="2:30 PM" author="Me" avatar-url footer="Delivered" variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="me" message="Just checking in!" time="2:31 PM" author="Me" avatar-url footer="Seen" variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="them" message="Yes, I saw it! Thanks for sending." time="2:32 PM" author="Sarah" avatar-url footer="Read" variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="me" message="Great! Let&#39;s catch up later." time="2:33 PM" author="Me" avatar-url footer="Sending..." variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble></div><div class="mbe4" data-v-ca6e9108><h2 data-v-ca6e9108>Color Variants</h2><p data-v-ca6e9108>Different semantic variants for various message types.</p></div><div class="message-container mbe6" data-v-ca6e9108><div class="variant-section" data-v-ca6e9108><h3 data-v-ca6e9108>Success</h3><ag-message-bubble from="them" message="Payment completed successfully!" time="10:02 AM" author="System" avatar-url footer variant="success" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="me" message="Great, thanks for confirming" time="10:03 AM" author="Me" avatar-url footer variant="success" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble></div><div class="variant-section" data-v-ca6e9108><h3 data-v-ca6e9108>Warning</h3><ag-message-bubble from="them" message="Your session will expire in 5 minutes" time="10:04 AM" author="System" avatar-url footer variant="warning" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="me" message="I&#39;ll save my work now" time="10:05 AM" author="Me" avatar-url footer variant="warning" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble></div><div class="variant-section" data-v-ca6e9108><h3 data-v-ca6e9108>Danger</h3><ag-message-bubble from="them" message="Error: Unable to process your request" time="10:06 AM" author="System" avatar-url footer variant="danger" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="me" message="Let me try again" time="10:07 AM" author="Me" avatar-url footer variant="danger" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble></div><div class="variant-section" data-v-ca6e9108><h3 data-v-ca6e9108>Info</h3><ag-message-bubble from="them" message="New features available in version 2.0" time="10:08 AM" author="System" avatar-url footer variant="info" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="me" message="Sounds interesting!" time="10:09 AM" author="Me" avatar-url footer variant="info" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble></div><div class="variant-section" data-v-ca6e9108><h3 data-v-ca6e9108>Neutral</h3><ag-message-bubble from="them" message="This is a neutral informational message" time="10:10 AM" author="System" avatar-url footer variant="neutral" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble></div><div class="variant-section" data-v-ca6e9108><h3 data-v-ca6e9108>Monochrome</h3><ag-message-bubble from="them" message="Simple monochrome styling" time="10:12 AM" author="System" avatar-url footer variant="monochrome" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble></div></div><div class="mbe4" data-v-ca6e9108><h2 data-v-ca6e9108>With Avatar URLs</h2><p data-v-ca6e9108>Display user avatars using the avatarUrl prop.</p></div><div class="message-container mbe6" data-v-ca6e9108><ag-message-bubble from="them" message="I have an avatar!" time="10:05 AM" author="Jane Smith" avatar-url="https://i.pravatar.cc/150?img=1" footer variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="me" message="Me too!" time="10:06 AM" author="Me" avatar-url="https://i.pravatar.cc/150?img=2" footer variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble></div><div class="mbe4" data-v-ca6e9108><h2 data-v-ca6e9108>Custom Avatar Component</h2><p data-v-ca6e9108>Use the avatar slot to provide custom avatar components with more control.</p></div><div class="message-container mbe6" data-v-ca6e9108><ag-message-bubble from="them" message="I&#39;m using a custom Avatar component with text initials!" time="10:00 AM" author="Jane Smith" avatar-url footer variant="default" data-v-ca6e9108><!----><!----><!----><span slot="avatar"><!--[--><ag-avatar data-v-ca6e9108><!--[--><!--]--></ag-avatar><!--]--></span></ag-message-bubble><ag-message-bubble from="me" message="And I&#39;m using an Avatar with an image and different styling!" time="10:01 AM" author="Me" avatar-url footer variant="default" data-v-ca6e9108><!----><!----><!----><span slot="avatar"><!--[--><ag-avatar data-v-ca6e9108><!--[--><!--]--></ag-avatar><!--]--></span></ag-message-bubble><ag-message-bubble from="them" message="Avatar components give you more control over styling and variants!" time="10:02 AM" author="Alex Chen" avatar-url footer variant="default" data-v-ca6e9108><!----><!----><!----><span slot="avatar"><!--[--><ag-avatar data-v-ca6e9108><!--[--><!--]--></ag-avatar><!--]--></span></ag-message-bubble></div><div class="mbe4" data-v-ca6e9108><h2 data-v-ca6e9108>Long Content</h2><p data-v-ca6e9108>Message bubbles adapt to longer content with proper text wrapping.</p></div><div class="message-container mbe6" data-v-ca6e9108><ag-message-bubble from="them" message="This is a much longer message that demonstrates how the message bubble handles extended content. It should wrap properly and maintain good readability across multiple lines of text." time="10:20 AM" author="Alex" avatar-url="https://i.pravatar.cc/150?img=4" footer variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble><ag-message-bubble from="me" message="I can write long messages too! Here&#39;s a detailed response that spans multiple lines and shows how the bubble adapts to different content lengths while maintaining its visual hierarchy." time="10:21 AM" author="Me" avatar-url="https://i.pravatar.cc/150?img=8" footer="Delivered" variant="default" data-v-ca6e9108><!----><!----><!----><!----></ag-message-bubble></div></section><!--]--></div></details><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View Vue Code</summary><pre data-v-9ebfb992><code class="language-vue" data-v-9ebfb992>&lt;template&gt;
+  &lt;section&gt;
+    &lt;!-- Interactive Chat Demo --&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Interactive Chat Demo&lt;/h2&gt;
+      &lt;p&gt;Type a message and click Send to add it to the conversation. This demonstrates real-world integration with VueInput and VueButton.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;chat-demo-container mbe6&quot;&gt;
+      &lt;!-- Messages Container --&gt;
+      &lt;div class=&quot;messages-container&quot;&gt;
+        &lt;TransitionGroup name=&quot;message-fade&quot;&gt;
+          &lt;VueMessageBubble
+            v-for=&quot;message in messages&quot;
+            :key=&quot;message.id&quot;
+            :from=&quot;message.from&quot;
+            :message=&quot;message.text&quot;
+            :author=&quot;message.author&quot;
+            :time=&quot;message.time&quot;
+            :avatar-url=&quot;message.avatarUrl&quot;
+            :footer=&quot;message.footer&quot;
+            class=&quot;message-item&quot;
+          /&gt;
+        &lt;/TransitionGroup&gt;
+
+        &lt;div
+          v-if=&quot;messages.length === 0&quot;
+          class=&quot;empty-state&quot;
+        &gt;
+          No messages yet. Start the conversation!
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Input Area --&gt;
+      &lt;div class=&quot;input-area&quot;&gt;
+        &lt;VueInput
+          v-model:value=&quot;newMessage&quot;
+          placeholder=&quot;Type your message...&quot;
+          rounded
+          @keyup.enter=&quot;sendMessage&quot;
+        &gt;
+          &lt;template #addon-left&gt;
+            &lt;MessageCircle
+              :size=&quot;18&quot;
+              color=&quot;var(--ag-primary)&quot;
+            /&gt;
+          &lt;/template&gt;
+        &lt;/VueInput&gt;
+
+        &lt;VueButton
+          variant=&quot;primary&quot;
+          shape=&quot;rounded&quot;
+          @click=&quot;sendMessage&quot;
+          :disabled=&quot;!newMessage.trim()&quot;
+          class=&quot;send-button&quot;
+        &gt;
+          &lt;Send :size=&quot;18&quot; /&gt;
+          &lt;span class=&quot;mis1&quot;&gt;Send&lt;/span&gt;
+        &lt;/VueButton&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Quick Actions --&gt;
+      &lt;div class=&quot;quick-actions&quot;&gt;
+        &lt;VueButton
+          size=&quot;sm&quot;
+          shape=&quot;rounded&quot;
+          :bordered=&quot;true&quot;
+          @click=&quot;addBotResponse&quot;
+          class=&quot;mie2&quot;
+        &gt;
+          &lt;Bot :size=&quot;16&quot; /&gt;
+          &lt;span class=&quot;mis1&quot;&gt;Add Bot Reply&lt;/span&gt;
+        &lt;/VueButton&gt;
+
+        &lt;VueButton
+          size=&quot;sm&quot;
+          shape=&quot;rounded&quot;
+          variant=&quot;danger&quot;
+          :bordered=&quot;true&quot;
+          @click=&quot;clearMessages&quot;
+        &gt;
+          &lt;Trash2 :size=&quot;16&quot; /&gt;
+          &lt;span class=&quot;mis1&quot;&gt;Clear All&lt;/span&gt;
+        &lt;/VueButton&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Basic Example --&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Basic Message Bubbles&lt;/h2&gt;
+      &lt;p&gt;Messages can be sent from &quot;me&quot; or &quot;them&quot; with author, time, and optional footer.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;message-container mbe6&quot;&gt;
+      &lt;VueMessageBubble
+        from=&quot;them&quot;
+        message=&quot;Hey, are we still on for lunch?&quot;
+        author=&quot;Sarah&quot;
+        time=&quot;11:30 AM&quot;
+      /&gt;
+      &lt;VueMessageBubble
+        from=&quot;me&quot;
+        message=&quot;Yes! Where should we go?&quot;
+        author=&quot;Me&quot;
+        time=&quot;11:32 AM&quot;
+      /&gt;
+      &lt;VueMessageBubble
+        from=&quot;them&quot;
+        message=&quot;How about that new Italian place?&quot;
+        author=&quot;Sarah&quot;
+        time=&quot;11:33 AM&quot;
+      /&gt;
+      &lt;VueMessageBubble
+        from=&quot;me&quot;
+        message=&quot;Sounds perfect. See you there at 12:30.&quot;
+        author=&quot;Me&quot;
+        time=&quot;11:35 AM&quot;
+      /&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Delivery Status --&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Delivery Status&lt;/h2&gt;
+      &lt;p&gt;Use the footer prop to display delivery status indicators.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;message-container mbe6&quot;&gt;
+      &lt;VueMessageBubble
+        from=&quot;me&quot;
+        message=&quot;Hey, did you get my last message?&quot;
+        author=&quot;Me&quot;
+        time=&quot;2:30 PM&quot;
+        footer=&quot;Delivered&quot;
+      /&gt;
+      &lt;VueMessageBubble
+        from=&quot;me&quot;
+        message=&quot;Just checking in!&quot;
+        author=&quot;Me&quot;
+        time=&quot;2:31 PM&quot;
+        footer=&quot;Seen&quot;
+      /&gt;
+      &lt;VueMessageBubble
+        from=&quot;them&quot;
+        message=&quot;Yes, I saw it! Thanks for sending.&quot;
+        author=&quot;Sarah&quot;
+        time=&quot;2:32 PM&quot;
+        footer=&quot;Read&quot;
+      /&gt;
+      &lt;VueMessageBubble
+        from=&quot;me&quot;
+        message=&quot;Great! Let&#39;s catch up later.&quot;
+        author=&quot;Me&quot;
+        time=&quot;2:33 PM&quot;
+        footer=&quot;Sending...&quot;
+      /&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Color Variants --&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Color Variants&lt;/h2&gt;
+      &lt;p&gt;Different semantic variants for various message types.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;message-container mbe6&quot;&gt;
+      &lt;div class=&quot;variant-section&quot;&gt;
+        &lt;h3&gt;Success&lt;/h3&gt;
+        &lt;VueMessageBubble
+          from=&quot;them&quot;
+          message=&quot;Payment completed successfully!&quot;
+          author=&quot;System&quot;
+          time=&quot;10:02 AM&quot;
+          variant=&quot;success&quot;
+        /&gt;
+        &lt;VueMessageBubble
+          from=&quot;me&quot;
+          message=&quot;Great, thanks for confirming&quot;
+          author=&quot;Me&quot;
+          time=&quot;10:03 AM&quot;
+          variant=&quot;success&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;variant-section&quot;&gt;
+        &lt;h3&gt;Warning&lt;/h3&gt;
+        &lt;VueMessageBubble
+          from=&quot;them&quot;
+          message=&quot;Your session will expire in 5 minutes&quot;
+          author=&quot;System&quot;
+          time=&quot;10:04 AM&quot;
+          variant=&quot;warning&quot;
+        /&gt;
+        &lt;VueMessageBubble
+          from=&quot;me&quot;
+          message=&quot;I&#39;ll save my work now&quot;
+          author=&quot;Me&quot;
+          time=&quot;10:05 AM&quot;
+          variant=&quot;warning&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;variant-section&quot;&gt;
+        &lt;h3&gt;Danger&lt;/h3&gt;
+        &lt;VueMessageBubble
+          from=&quot;them&quot;
+          message=&quot;Error: Unable to process your request&quot;
+          author=&quot;System&quot;
+          time=&quot;10:06 AM&quot;
+          variant=&quot;danger&quot;
+        /&gt;
+        &lt;VueMessageBubble
+          from=&quot;me&quot;
+          message=&quot;Let me try again&quot;
+          author=&quot;Me&quot;
+          time=&quot;10:07 AM&quot;
+          variant=&quot;danger&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;variant-section&quot;&gt;
+        &lt;h3&gt;Info&lt;/h3&gt;
+        &lt;VueMessageBubble
+          from=&quot;them&quot;
+          message=&quot;New features available in version 2.0&quot;
+          author=&quot;System&quot;
+          time=&quot;10:08 AM&quot;
+          variant=&quot;info&quot;
+        /&gt;
+        &lt;VueMessageBubble
+          from=&quot;me&quot;
+          message=&quot;Sounds interesting!&quot;
+          author=&quot;Me&quot;
+          time=&quot;10:09 AM&quot;
+          variant=&quot;info&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;variant-section&quot;&gt;
+        &lt;h3&gt;Neutral&lt;/h3&gt;
+        &lt;VueMessageBubble
+          from=&quot;them&quot;
+          message=&quot;This is a neutral informational message&quot;
+          author=&quot;System&quot;
+          time=&quot;10:10 AM&quot;
+          variant=&quot;neutral&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;variant-section&quot;&gt;
+        &lt;h3&gt;Monochrome&lt;/h3&gt;
+        &lt;VueMessageBubble
+          from=&quot;them&quot;
+          message=&quot;Simple monochrome styling&quot;
+          author=&quot;System&quot;
+          time=&quot;10:12 AM&quot;
+          variant=&quot;monochrome&quot;
+        /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- With Avatars --&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;With Avatar URLs&lt;/h2&gt;
+      &lt;p&gt;Display user avatars using the avatarUrl prop.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;message-container mbe6&quot;&gt;
+      &lt;VueMessageBubble
+        from=&quot;them&quot;
+        message=&quot;I have an avatar!&quot;
+        author=&quot;Jane Smith&quot;
+        time=&quot;10:05 AM&quot;
+        avatar-url=&quot;https://i.pravatar.cc/150?img=1&quot;
+      /&gt;
+      &lt;VueMessageBubble
+        from=&quot;me&quot;
+        message=&quot;Me too!&quot;
+        author=&quot;Me&quot;
+        time=&quot;10:06 AM&quot;
+        avatar-url=&quot;https://i.pravatar.cc/150?img=2&quot;
+      /&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Custom Avatar Slot --&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Custom Avatar Component&lt;/h2&gt;
+      &lt;p&gt;Use the avatar slot to provide custom avatar components with more control.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;message-container mbe6&quot;&gt;
+      &lt;VueMessageBubble
+        from=&quot;them&quot;
+        message=&quot;I&#39;m using a custom Avatar component with text initials!&quot;
+        author=&quot;Jane Smith&quot;
+        time=&quot;10:00 AM&quot;
+      &gt;
+        &lt;template #avatar&gt;
+          &lt;VueAvatar
+            text=&quot;JS&quot;
+            variant=&quot;info&quot;
+            size=&quot;sm&quot;
+          /&gt;
+        &lt;/template&gt;
+      &lt;/VueMessageBubble&gt;
+      &lt;VueMessageBubble
+        from=&quot;me&quot;
+        message=&quot;And I&#39;m using an Avatar with an image and different styling!&quot;
+        author=&quot;Me&quot;
+        time=&quot;10:01 AM&quot;
+      &gt;
+        &lt;template #avatar&gt;
+          &lt;VueAvatar
+            img-src=&quot;https://i.pravatar.cc/150?img=10&quot;
+            img-alt=&quot;User avatar&quot;
+            variant=&quot;success&quot;
+            size=&quot;sm&quot;
+          /&gt;
+        &lt;/template&gt;
+      &lt;/VueMessageBubble&gt;
+      &lt;VueMessageBubble
+        from=&quot;them&quot;
+        message=&quot;Avatar components give you more control over styling and variants!&quot;
+        author=&quot;Alex Chen&quot;
+        time=&quot;10:02 AM&quot;
+      &gt;
+        &lt;template #avatar&gt;
+          &lt;VueAvatar
+            text=&quot;AC&quot;
+            variant=&quot;warning&quot;
+            size=&quot;sm&quot;
+            shape=&quot;square&quot;
+          /&gt;
+        &lt;/template&gt;
+      &lt;/VueMessageBubble&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Long Content --&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Long Content&lt;/h2&gt;
+      &lt;p&gt;Message bubbles adapt to longer content with proper text wrapping.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;message-container mbe6&quot;&gt;
+      &lt;VueMessageBubble
+        from=&quot;them&quot;
+        message=&quot;This is a much longer message that demonstrates how the message bubble handles extended content. It should wrap properly and maintain good readability across multiple lines of text.&quot;
+        author=&quot;Alex&quot;
+        time=&quot;10:20 AM&quot;
+        avatar-url=&quot;https://i.pravatar.cc/150?img=4&quot;
+      /&gt;
+      &lt;VueMessageBubble
+        from=&quot;me&quot;
+        message=&quot;I can write long messages too! Here&#39;s a detailed response that spans multiple lines and shows how the bubble adapts to different content lengths while maintaining its visual hierarchy.&quot;
+        author=&quot;Me&quot;
+        time=&quot;10:21 AM&quot;
+        footer=&quot;Delivered&quot;
+        avatar-url=&quot;https://i.pravatar.cc/150?img=8&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+
+&lt;script lang=&quot;ts&quot;&gt;
+import { defineComponent } from &quot;vue&quot;;
+import { VueMessageBubble } from &quot;agnosticui-core/message-bubble/vue&quot;;
+import { VueAvatar } from &quot;agnosticui-core/avatar/vue&quot;;
+import VueInput from &quot;agnosticui-core/input/vue&quot;;
+import VueButton from &quot;agnosticui-core/button/vue&quot;;
+import { MessageCircle, Send, Bot, Trash2 } from &quot;lucide-vue-next&quot;;
+
+export default defineComponent({
+  name: &quot;MessageBubbleExamples&quot;,
+  components: {
+    VueMessageBubble,
+    VueAvatar,
+    VueInput,
+    VueButton,
+    MessageCircle,
+    Send,
+    Bot,
+    Trash2,
+  },
+  data() {
+    return {
+      newMessage: &quot;&quot;,
+      messages: [] as Array&lt;{
+        id: number;
+        from: &quot;me&quot; | &quot;them&quot;;
+        text: string;
+        author: string;
+        time: string;
+        avatarUrl: string;
+        footer: string;
+      }&gt;,
+      messageIdCounter: 1,
+      botResponses: [
+        &quot;That&#39;s interesting! Tell me more.&quot;,
+        &quot;I understand what you mean.&quot;,
+        &quot;Thanks for sharing that!&quot;,
+        &quot;Great point!&quot;,
+        &quot;I appreciate your message.&quot;,
+        &quot;That makes sense to me.&quot;,
+        &quot;Interesting perspective!&quot;,
+      ],
+    };
+  },
+  methods: {
+    sendMessage() {
+      if (!this.newMessage.trim()) return;
+
+      const now = new Date();
+      const time = now.toLocaleTimeString(&quot;en-US&quot;, {
+        hour: &quot;numeric&quot;,
+        minute: &quot;2-digit&quot;,
+        hour12: true,
+      });
+
+      this.messages.push({
+        id: this.messageIdCounter++,
+        from: &quot;me&quot;,
+        text: this.newMessage,
+        author: &quot;Me&quot;,
+        time: time,
+        avatarUrl: &quot;https://i.pravatar.cc/150?img=8&quot;,
+        footer: &quot;Sent&quot;,
+      });
+
+      // Clear input
+      this.newMessage = &quot;&quot;;
+
+      // Auto-scroll to bottom
+      this.$nextTick(() =&gt; {
+        const container = this.$el.querySelector(&quot;.messages-container&quot;);
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
+      });
+    },
+
+    addBotResponse() {
+      const now = new Date();
+      const time = now.toLocaleTimeString(&quot;en-US&quot;, {
+        hour: &quot;numeric&quot;,
+        minute: &quot;2-digit&quot;,
+        hour12: true,
+      });
+
+      const randomResponse =
+        this.botResponses[Math.floor(Math.random() * this.botResponses.length)];
+
+      this.messages.push({
+        id: this.messageIdCounter++,
+        from: &quot;them&quot;,
+        text: randomResponse,
+        author: &quot;AI Assistant&quot;,
+        time: time,
+        avatarUrl: &quot;https://i.pravatar.cc/150?img=5&quot;,
+        footer: &quot;Read&quot;,
+      });
+
+      // Auto-scroll to bottom
+      this.$nextTick(() =&gt; {
+        const container = this.$el.querySelector(&quot;.messages-container&quot;);
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
+      });
+    },
+
+    clearMessages() {
+      if (confirm(&quot;Are you sure you want to clear all messages?&quot;)) {
+        this.messages = [];
+        this.messageIdCounter = 1;
+      }
+    },
+  },
+});
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+/* Chat Demo Styles */
+.chat-demo-container {
+  max-width: 700px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 20px;
+  background-color: var(--vp-c-bg);
+}
+
+.messages-container {
+  min-height: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 20px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 360px;
+  color: var(--vp-c-text-3);
+  font-style: italic;
+}
+
+.message-fade-enter-active {
+  animation: message-fade-in var(--ag-motion-medium, 0.2s) ease-out;
+}
+
+.message-fade-leave-active {
+  animation: message-fade-out var(--ag-motion-fast, 0.15s) ease-in;
+}
+
+.message-fade-move {
+  transition: transform var(--ag-motion-medium, 0.2s) ease;
+}
+
+@keyframes message-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes message-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.input-area {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  align-items: flex-end;
+}
+
+.input-area &gt; :first-child {
+  flex: 1;
+}
+
+.send-button {
+  flex-shrink: 0;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Scrollbar styling */
+.messages-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: var(--vp-c-bg);
+  border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-text-3);
+}
+
+/* Standard Example Styles */
+.message-container {
+  max-width: 600px;
+  border: 1px solid var(--vp-c-divider);
+  padding: 20px;
+  border-radius: 8px;
+  background-color: var(--vp-c-bg-soft);
+}
+
+.variant-section {
+  margin-bottom: 24px;
+}
+
+.variant-section:last-child {
+  margin-bottom: 0;
+}
+
+.variant-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+}
+&lt;/style&gt;
+</code></pre></details><!--]--></ag-tab-panel><ag-tab-panel slot="panel" panel="panel-lit" data-v-9ebfb992><!--[--><details class="preview-details" open data-v-9ebfb992><summary data-v-9ebfb992>Live Preview</summary><div class="preview" data-v-9ebfb992><!--[--><message-bubble-lit-examples></message-bubble-lit-examples><!--]--></div></details><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View Lit / Web Component Code</summary><pre data-v-9ebfb992><code class="language-javascript" data-v-9ebfb992>import { LitElement, html } from &#39;lit&#39;;
+import &#39;agnosticui-core/message-bubble&#39;;
+import &#39;agnosticui-core/avatar&#39;;
+import &#39;agnosticui-core/input&#39;;
+import &#39;agnosticui-core/button&#39;;
+import &#39;agnosticui-core/icon&#39;;
+
+export class MessageBubbleLitExamples extends LitElement {
+  static properties = {
+    newMessage: { type: String },
+    messages: { type: Array },
+    messageIdCounter: { type: Number }
+  };
+
+  constructor() {
+    super();
+    this.newMessage = &#39;&#39;;
+    this.messages = [];
+    this.messageIdCounter = 1;
+    this.botResponses = [
+      &quot;That&#39;s interesting! Tell me more.&quot;,
+      &quot;I understand what you mean.&quot;,
+      &quot;Thanks for sharing that!&quot;,
+      &quot;Great point!&quot;,
+      &quot;I appreciate your message.&quot;,
+      &quot;That makes sense to me.&quot;,
+      &quot;Interesting perspective!&quot;,
+    ];
+  }
+
+  // Render in light DOM to access global utility classes
+  createRenderRoot() {
+    return this;
+  }
+
+  sendMessage() {
+    if (!this.newMessage.trim()) return;
+
+    const now = new Date();
+    const time = now.toLocaleTimeString(&quot;en-US&quot;, {
+      hour: &quot;numeric&quot;,
+      minute: &quot;2-digit&quot;,
+      hour12: true,
+    });
+
+    this.messages = [...this.messages, {
+      id: this.messageIdCounter++,
+      from: &quot;me&quot;,
+      text: this.newMessage,
+      author: &quot;Me&quot;,
+      time: time,
+      avatarUrl: &quot;https://i.pravatar.cc/150?img=8&quot;,
+      footer: &quot;Sent&quot;,
+    }];
+
+    this.newMessage = &#39;&#39;;
+
+    // Auto-scroll to bottom
+    setTimeout(() =&gt; {
+      const container = this.querySelector(&#39;.messages-container&#39;);
+      if (container) {
+        container.scrollTop = container.scrollHeight;
+      }
+    }, 0);
+  }
+
+  addBotResponse() {
+    const now = new Date();
+    const time = now.toLocaleTimeString(&quot;en-US&quot;, {
+      hour: &quot;numeric&quot;,
+      minute: &quot;2-digit&quot;,
+      hour12: true,
+    });
+
+    const randomResponse =
+      this.botResponses[Math.floor(Math.random() * this.botResponses.length)];
+
+    this.messages = [...this.messages, {
+      id: this.messageIdCounter++,
+      from: &quot;them&quot;,
+      text: randomResponse,
+      author: &quot;AI Assistant&quot;,
+      time: time,
+      avatarUrl: &quot;https://i.pravatar.cc/150?img=5&quot;,
+      footer: &quot;Read&quot;,
+    }];
+
+    // Auto-scroll to bottom
+    setTimeout(() =&gt; {
+      const container = this.querySelector(&#39;.messages-container&#39;);
+      if (container) {
+        container.scrollTop = container.scrollHeight;
+      }
+    }, 0);
+  }
+
+  clearMessages() {
+    if (confirm(&quot;Are you sure you want to clear all messages?&quot;)) {
+      this.messages = [];
+      this.messageIdCounter = 1;
+    }
+  }
+
+  handleKeyUp(e) {
+    if (e.key === &#39;Enter&#39;) {
+      this.sendMessage();
+    }
+  }
+
+  handleInput(e) {
+    this.newMessage = e.target.value;
+  }
+
+  render() {
+    return html`
+      &lt;section&gt;
+        &lt;!-- Interactive Chat Demo --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Interactive Chat Demo&lt;/h2&gt;
+          &lt;p&gt;Type a message and click Send to add it to the conversation. This demonstrates real-world integration with ag-input and ag-button.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chat-demo-container mbe6&quot;&gt;
+          &lt;!-- Messages Container --&gt;
+          &lt;div class=&quot;messages-container&quot;&gt;
+            ${this.messages.map(message =&gt; html`
+              &lt;ag-message-bubble
+                from=${message.from}
+                message=${message.text}
+                author=${message.author}
+                time=${message.time}
+                avatar-url=${message.avatarUrl}
+                footer=${message.footer}
+                class=&quot;message-item&quot;
+              &gt;&lt;/ag-message-bubble&gt;
+            `)}
+
+            ${this.messages.length === 0 ? html`
+              &lt;div class=&quot;empty-state&quot;&gt;
+                No messages yet. Start the conversation!
+              &lt;/div&gt;
+            ` : &#39;&#39;}
+          &lt;/div&gt;
+
+          &lt;!-- Input Area --&gt;
+          &lt;div class=&quot;input-area&quot;&gt;
+            &lt;ag-input
+              .value=${this.newMessage}
+              @input=${this.handleInput}
+              @keyup=${this.handleKeyUp}
+              placeholder=&quot;Type your message...&quot;
+              rounded
+            &gt;
+              &lt;ag-icon slot=&quot;addon-left&quot; size=&quot;18&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;var(--ag-primary)&quot; stroke-width=&quot;2&quot;&gt;
+                  &lt;path d=&quot;M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z&quot;/&gt;
+                &lt;/svg&gt;
+              &lt;/ag-icon&gt;
+            &lt;/ag-input&gt;
+
+            &lt;ag-button
+              variant=&quot;primary&quot;
+              shape=&quot;rounded&quot;
+              @click=${this.sendMessage}
+              ?disabled=${!this.newMessage.trim()}
+              class=&quot;send-button&quot;
+            &gt;
+              &lt;ag-icon size=&quot;18&quot; no-fill&gt;
+                &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;
+                  &lt;line x1=&quot;22&quot; y1=&quot;2&quot; x2=&quot;11&quot; y2=&quot;13&quot;&gt;&lt;/line&gt;
+                  &lt;polygon points=&quot;22 2 15 22 11 13 2 9 22 2&quot;&gt;&lt;/polygon&gt;
+                &lt;/svg&gt;
+              &lt;/ag-icon&gt;
+              &lt;span class=&quot;mis1&quot;&gt;Send&lt;/span&gt;
+            &lt;/ag-button&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Quick Actions --&gt;
+          &lt;div class=&quot;quick-actions&quot;&gt;
+            &lt;ag-button
+              size=&quot;sm&quot;
+              shape=&quot;rounded&quot;
+              bordered
+              @click=${this.addBotResponse}
+              class=&quot;mie2&quot;
+            &gt;
+              &lt;ag-icon size=&quot;16&quot; no-fill&gt;
+                &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;
+                  &lt;rect x=&quot;3&quot; y=&quot;11&quot; width=&quot;18&quot; height=&quot;11&quot; rx=&quot;2&quot; ry=&quot;2&quot;&gt;&lt;/rect&gt;
+                  &lt;path d=&quot;M7 11V7a5 5 0 0 1 10 0v4&quot;&gt;&lt;/path&gt;
+                &lt;/svg&gt;
+              &lt;/ag-icon&gt;
+              &lt;span class=&quot;mis1&quot;&gt;Add Bot Reply&lt;/span&gt;
+            &lt;/ag-button&gt;
+
+            &lt;ag-button
+              size=&quot;sm&quot;
+              shape=&quot;rounded&quot;
+              variant=&quot;danger&quot;
+              bordered
+              @click=${this.clearMessages}
+            &gt;
+              &lt;ag-icon size=&quot;16&quot; no-fill&gt;
+                &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;
+                  &lt;polyline points=&quot;3 6 5 6 21 6&quot;&gt;&lt;/polyline&gt;
+                  &lt;path d=&quot;M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2&quot;&gt;&lt;/path&gt;
+                &lt;/svg&gt;
+              &lt;/ag-icon&gt;
+              &lt;span class=&quot;mis1&quot;&gt;Clear All&lt;/span&gt;
+            &lt;/ag-button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Basic Example --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Basic Message Bubbles&lt;/h2&gt;
+          &lt;p&gt;Messages can be sent from &quot;me&quot; or &quot;them&quot; with author, time, and optional footer.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message-container mbe6&quot;&gt;
+          &lt;ag-message-bubble
+            from=&quot;them&quot;
+            message=&quot;Hey, are we still on for lunch?&quot;
+            author=&quot;Sarah&quot;
+            time=&quot;11:30 AM&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+          &lt;ag-message-bubble
+            from=&quot;me&quot;
+            message=&quot;Yes! Where should we go?&quot;
+            author=&quot;Me&quot;
+            time=&quot;11:32 AM&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+          &lt;ag-message-bubble
+            from=&quot;them&quot;
+            message=&quot;How about that new Italian place?&quot;
+            author=&quot;Sarah&quot;
+            time=&quot;11:33 AM&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+          &lt;ag-message-bubble
+            from=&quot;me&quot;
+            message=&quot;Sounds perfect. See you there at 12:30.&quot;
+            author=&quot;Me&quot;
+            time=&quot;11:35 AM&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Delivery Status --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Delivery Status&lt;/h2&gt;
+          &lt;p&gt;Use the footer prop to display delivery status indicators.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message-container mbe6&quot;&gt;
+          &lt;ag-message-bubble
+            from=&quot;me&quot;
+            message=&quot;Hey, did you get my last message?&quot;
+            author=&quot;Me&quot;
+            time=&quot;2:30 PM&quot;
+            footer=&quot;Delivered&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+          &lt;ag-message-bubble
+            from=&quot;me&quot;
+            message=&quot;Just checking in!&quot;
+            author=&quot;Me&quot;
+            time=&quot;2:31 PM&quot;
+            footer=&quot;Seen&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+          &lt;ag-message-bubble
+            from=&quot;them&quot;
+            message=&quot;Yes, I saw it! Thanks for sending.&quot;
+            author=&quot;Sarah&quot;
+            time=&quot;2:32 PM&quot;
+            footer=&quot;Read&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+          &lt;ag-message-bubble
+            from=&quot;me&quot;
+            message=&quot;Great! Let&#39;s catch up later.&quot;
+            author=&quot;Me&quot;
+            time=&quot;2:33 PM&quot;
+            footer=&quot;Sending...&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Color Variants --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Color Variants&lt;/h2&gt;
+          &lt;p&gt;Different semantic variants for various message types.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message-container mbe6&quot;&gt;
+          &lt;div class=&quot;variant-section&quot;&gt;
+            &lt;h3&gt;Success&lt;/h3&gt;
+            &lt;ag-message-bubble
+              from=&quot;them&quot;
+              message=&quot;Payment completed successfully!&quot;
+              author=&quot;System&quot;
+              time=&quot;10:02 AM&quot;
+              variant=&quot;success&quot;
+            &gt;&lt;/ag-message-bubble&gt;
+            &lt;ag-message-bubble
+              from=&quot;me&quot;
+              message=&quot;Great, thanks for confirming&quot;
+              author=&quot;Me&quot;
+              time=&quot;10:03 AM&quot;
+              variant=&quot;success&quot;
+            &gt;&lt;/ag-message-bubble&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;variant-section&quot;&gt;
+            &lt;h3&gt;Warning&lt;/h3&gt;
+            &lt;ag-message-bubble
+              from=&quot;them&quot;
+              message=&quot;Your session will expire in 5 minutes&quot;
+              author=&quot;System&quot;
+              time=&quot;10:04 AM&quot;
+              variant=&quot;warning&quot;
+            &gt;&lt;/ag-message-bubble&gt;
+            &lt;ag-message-bubble
+              from=&quot;me&quot;
+              message=&quot;I&#39;ll save my work now&quot;
+              author=&quot;Me&quot;
+              time=&quot;10:05 AM&quot;
+              variant=&quot;warning&quot;
+            &gt;&lt;/ag-message-bubble&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;variant-section&quot;&gt;
+            &lt;h3&gt;Danger&lt;/h3&gt;
+            &lt;ag-message-bubble
+              from=&quot;them&quot;
+              message=&quot;Error: Unable to process your request&quot;
+              author=&quot;System&quot;
+              time=&quot;10:06 AM&quot;
+              variant=&quot;danger&quot;
+            &gt;&lt;/ag-message-bubble&gt;
+            &lt;ag-message-bubble
+              from=&quot;me&quot;
+              message=&quot;Let me try again&quot;
+              author=&quot;Me&quot;
+              time=&quot;10:07 AM&quot;
+              variant=&quot;danger&quot;
+            &gt;&lt;/ag-message-bubble&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;variant-section&quot;&gt;
+            &lt;h3&gt;Info&lt;/h3&gt;
+            &lt;ag-message-bubble
+              from=&quot;them&quot;
+              message=&quot;New features available in version 2.0&quot;
+              author=&quot;System&quot;
+              time=&quot;10:08 AM&quot;
+              variant=&quot;info&quot;
+            &gt;&lt;/ag-message-bubble&gt;
+            &lt;ag-message-bubble
+              from=&quot;me&quot;
+              message=&quot;Sounds interesting!&quot;
+              author=&quot;Me&quot;
+              time=&quot;10:09 AM&quot;
+              variant=&quot;info&quot;
+            &gt;&lt;/ag-message-bubble&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;variant-section&quot;&gt;
+            &lt;h3&gt;Neutral&lt;/h3&gt;
+            &lt;ag-message-bubble
+              from=&quot;them&quot;
+              message=&quot;This is a neutral informational message&quot;
+              author=&quot;System&quot;
+              time=&quot;10:10 AM&quot;
+              variant=&quot;neutral&quot;
+            &gt;&lt;/ag-message-bubble&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;variant-section&quot;&gt;
+            &lt;h3&gt;Monochrome&lt;/h3&gt;
+            &lt;ag-message-bubble
+              from=&quot;them&quot;
+              message=&quot;Simple monochrome styling&quot;
+              author=&quot;System&quot;
+              time=&quot;10:12 AM&quot;
+              variant=&quot;monochrome&quot;
+            &gt;&lt;/ag-message-bubble&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- With Avatars --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;With Avatar URLs&lt;/h2&gt;
+          &lt;p&gt;Display user avatars using the avatarUrl prop.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message-container mbe6&quot;&gt;
+          &lt;ag-message-bubble
+            from=&quot;them&quot;
+            message=&quot;I have an avatar!&quot;
+            author=&quot;Jane Smith&quot;
+            time=&quot;10:05 AM&quot;
+            avatar-url=&quot;https://i.pravatar.cc/150?img=1&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+          &lt;ag-message-bubble
+            from=&quot;me&quot;
+            message=&quot;Me too!&quot;
+            author=&quot;Me&quot;
+            time=&quot;10:06 AM&quot;
+            avatar-url=&quot;https://i.pravatar.cc/150?img=2&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Custom Avatar Slot --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Custom Avatar Component&lt;/h2&gt;
+          &lt;p&gt;Use the avatar slot to provide custom avatar components with more control.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message-container mbe6&quot;&gt;
+          &lt;ag-message-bubble
+            from=&quot;them&quot;
+            message=&quot;I&#39;m using a custom Avatar component with text initials!&quot;
+            author=&quot;Jane Smith&quot;
+            time=&quot;10:00 AM&quot;
+          &gt;
+            &lt;ag-avatar slot=&quot;avatar&quot; text=&quot;JS&quot; variant=&quot;info&quot; size=&quot;sm&quot;&gt;&lt;/ag-avatar&gt;
+          &lt;/ag-message-bubble&gt;
+          &lt;ag-message-bubble
+            from=&quot;me&quot;
+            message=&quot;And I&#39;m using an Avatar with an image and different styling!&quot;
+            author=&quot;Me&quot;
+            time=&quot;10:01 AM&quot;
+          &gt;
+            &lt;ag-avatar
+              slot=&quot;avatar&quot;
+              img-src=&quot;https://i.pravatar.cc/150?img=10&quot;
+              img-alt=&quot;User avatar&quot;
+              variant=&quot;success&quot;
+              size=&quot;sm&quot;
+            &gt;&lt;/ag-avatar&gt;
+          &lt;/ag-message-bubble&gt;
+          &lt;ag-message-bubble
+            from=&quot;them&quot;
+            message=&quot;Avatar components give you more control over styling and variants!&quot;
+            author=&quot;Alex Chen&quot;
+            time=&quot;10:02 AM&quot;
+          &gt;
+            &lt;ag-avatar
+              slot=&quot;avatar&quot;
+              text=&quot;AC&quot;
+              variant=&quot;warning&quot;
+              size=&quot;sm&quot;
+              shape=&quot;square&quot;
+            &gt;&lt;/ag-avatar&gt;
+          &lt;/ag-message-bubble&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Long Content --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Long Content&lt;/h2&gt;
+          &lt;p&gt;Message bubbles adapt to longer content with proper text wrapping.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message-container mbe6&quot;&gt;
+          &lt;ag-message-bubble
+            from=&quot;them&quot;
+            message=&quot;This is a much longer message that demonstrates how the message bubble handles extended content. It should wrap properly and maintain good readability across multiple lines of text.&quot;
+            author=&quot;Alex&quot;
+            time=&quot;10:20 AM&quot;
+            avatar-url=&quot;https://i.pravatar.cc/150?img=4&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+          &lt;ag-message-bubble
+            from=&quot;me&quot;
+            message=&quot;I can write long messages too! Here&#39;s a detailed response that spans multiple lines and shows how the bubble adapts to different content lengths while maintaining its visual hierarchy.&quot;
+            author=&quot;Me&quot;
+            time=&quot;10:21 AM&quot;
+            footer=&quot;Delivered&quot;
+            avatar-url=&quot;https://i.pravatar.cc/150?img=8&quot;
+          &gt;&lt;/ag-message-bubble&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;style&gt;
+        /* Chat Demo Styles */
+        .chat-demo-container {
+          max-width: 700px;
+          border: 1px solid var(--vp-c-divider);
+          border-radius: 12px;
+          padding: 20px;
+          background-color: var(--vp-c-bg);
+        }
+
+        .messages-container {
+          min-height: 400px;
+          max-height: 500px;
+          overflow-y: auto;
+          padding: 20px;
+          background: var(--vp-c-bg-soft);
+          border: 1px solid var(--vp-c-divider);
+          border-radius: 12px;
+          margin-bottom: 16px;
+        }
+
+        .empty-state {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          min-height: 360px;
+          color: var(--vp-c-text-3);
+          font-style: italic;
+        }
+
+        .input-area {
+          display: flex;
+          gap: 12px;
+          margin-bottom: 16px;
+          align-items: flex-end;
+        }
+
+        .input-area &gt; :first-child {
+          flex: 1;
+        }
+
+        .send-button {
+          flex-shrink: 0;
+        }
+
+        .quick-actions {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+
+        /* Scrollbar styling */
+        .messages-container::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        .messages-container::-webkit-scrollbar-track {
+          background: var(--vp-c-bg);
+          border-radius: 4px;
+        }
+
+        .messages-container::-webkit-scrollbar-thumb {
+          background: var(--vp-c-divider);
+          border-radius: 4px;
+        }
+
+        .messages-container::-webkit-scrollbar-thumb:hover {
+          background: var(--vp-c-text-3);
+        }
+
+        /* Standard Example Styles */
+        .message-container {
+          max-width: 600px;
+          border: 1px solid var(--vp-c-divider);
+          padding: 20px;
+          border-radius: 8px;
+          background-color: var(--vp-c-bg-soft);
+        }
+
+        .variant-section {
+          margin-bottom: 24px;
+        }
+
+        .variant-section:last-child {
+          margin-bottom: 0;
+        }
+
+        .variant-section h4 {
+          margin: 0 0 12px 0;
+          font-size: 13px;
+          font-weight: 600;
+          color: var(--vp-c-text-2);
+        }
+      &lt;/style&gt;
+    `;
+  }
+}
+
+// Register the custom element
+customElements.define(&#39;message-bubble-lit-examples&#39;, MessageBubbleLitExamples);
+</code></pre></details><!--]--></ag-tab-panel><ag-tab-panel slot="panel" panel="panel-react" data-v-9ebfb992><!--[--><div class="react-note" data-v-9ebfb992><p data-v-9ebfb992><strong data-v-9ebfb992>Interactive Preview:</strong> Click the &quot;Open in StackBlitz&quot; button below to see this example running live in an interactive playground. </p></div><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View React Code</summary><pre data-v-9ebfb992><code class="language-tsx" data-v-9ebfb992>import { useState } from &quot;react&quot;;
+import { ReactMessageBubble } from &quot;agnosticui-core/message-bubble/react&quot;;
+import { ReactAvatar } from &quot;agnosticui-core/avatar/react&quot;;
+import { ReactInput } from &quot;agnosticui-core/input/react&quot;;
+import { ReactButton } from &quot;agnosticui-core/button/react&quot;;
+import { ReactIcon } from &quot;agnosticui-core/icon/react&quot;;
+
+export default function MessageBubbleReactExamples() {
+  const [newMessage, setNewMessage] = useState(&quot;&quot;);
+  const [messages, setMessages] = useState([]);
+  const [messageIdCounter, setMessageIdCounter] = useState(1);
+
+  const botResponses = [
+    &quot;That&#39;s interesting! Tell me more.&quot;,
+    &quot;I understand what you mean.&quot;,
+    &quot;Thanks for sharing that!&quot;,
+    &quot;Great point!&quot;,
+    &quot;I appreciate your message.&quot;,
+    &quot;That makes sense to me.&quot;,
+    &quot;Interesting perspective!&quot;,
+  ];
+
+  const sendMessage = () =&gt; {
+    if (!newMessage.trim()) return;
+
+    const now = new Date();
+    const time = now.toLocaleTimeString(&quot;en-US&quot;, {
+      hour: &quot;numeric&quot;,
+      minute: &quot;2-digit&quot;,
+      hour12: true,
+    });
+
+    setMessages([
+      ...messages,
+      {
+        id: messageIdCounter,
+        from: &quot;me&quot;,
+        text: newMessage,
+        author: &quot;Me&quot;,
+        time: time,
+        avatarUrl: &quot;https://i.pravatar.cc/150?img=8&quot;,
+        footer: &quot;Sent&quot;,
+      },
+    ]);
+
+    setMessageIdCounter(messageIdCounter + 1);
+    setNewMessage(&quot;&quot;);
+
+    // Auto-scroll to bottom
+    setTimeout(() =&gt; {
+      const container = document.querySelector(&quot;.messages-container&quot;);
+      if (container) {
+        container.scrollTop = container.scrollHeight;
+      }
+    }, 0);
+  };
+
+  const addBotResponse = () =&gt; {
+    const now = new Date();
+    const time = now.toLocaleTimeString(&quot;en-US&quot;, {
+      hour: &quot;numeric&quot;,
+      minute: &quot;2-digit&quot;,
+      hour12: true,
+    });
+
+    const randomResponse =
+      botResponses[Math.floor(Math.random() * botResponses.length)];
+
+    setMessages([
+      ...messages,
+      {
+        id: messageIdCounter,
+        from: &quot;them&quot;,
+        text: randomResponse,
+        author: &quot;AI Assistant&quot;,
+        time: time,
+        avatarUrl: &quot;https://i.pravatar.cc/150?img=5&quot;,
+        footer: &quot;Read&quot;,
+      },
+    ]);
+
+    setMessageIdCounter(messageIdCounter + 1);
+
+    // Auto-scroll to bottom
+    setTimeout(() =&gt; {
+      const container = document.querySelector(&quot;.messages-container&quot;);
+      if (container) {
+        container.scrollTop = container.scrollHeight;
+      }
+    }, 0);
+  };
+
+  const clearMessages = () =&gt; {
+    if (window.confirm(&quot;Are you sure you want to clear all messages?&quot;)) {
+      setMessages([]);
+      setMessageIdCounter(1);
+    }
+  };
+
+  const handleKeyUp = (e) =&gt; {
+    if (e.key === &quot;Enter&quot;) {
+      sendMessage();
+    }
+  };
+
+  return (
+    &lt;section&gt;
+      {/* Interactive Chat Demo */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Interactive Chat Demo&lt;/h2&gt;
+        &lt;p&gt;
+          Type a message and click Send to add it to the conversation. This
+          demonstrates real-world integration with ReactInput and ReactButton.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;chat-demo-container mbe6&quot;&gt;
+        {/* Messages Container */}
+        &lt;div className=&quot;messages-container&quot;&gt;
+          {messages.map((message) =&gt; (
+            &lt;ReactMessageBubble
+              key={message.id}
+              from={message.from}
+              message={message.text}
+              author={message.author}
+              time={message.time}
+              avatarUrl={message.avatarUrl}
+              footer={message.footer}
+              className=&quot;message-item&quot;
+            /&gt;
+          ))}
+
+          {messages.length === 0 &amp;&amp; (
+            &lt;div className=&quot;empty-state&quot;&gt;
+              No messages yet. Start the conversation!
+            &lt;/div&gt;
+          )}
+        &lt;/div&gt;
+
+        {/* Input Area */}
+        &lt;div className=&quot;input-area&quot;&gt;
+          &lt;ReactInput
+            value={newMessage}
+            onChange={(e) =&gt; setNewMessage(e.target.value)}
+            onKeyUp={handleKeyUp}
+            placeholder=&quot;Type your message...&quot;
+            rounded
+          &gt;
+            &lt;ReactIcon slot=&quot;addon-left&quot; size=&quot;18&quot;&gt;
+              &lt;svg
+                viewBox=&quot;0 0 24 24&quot;
+                fill=&quot;none&quot;
+                stroke=&quot;var(--ag-primary)&quot;
+                strokeWidth=&quot;2&quot;
+              &gt;
+                &lt;path d=&quot;M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z&quot; /&gt;
+              &lt;/svg&gt;
+            &lt;/ReactIcon&gt;
+          &lt;/ReactInput&gt;
+
+          &lt;ReactButton
+            variant=&quot;primary&quot;
+            shape=&quot;rounded&quot;
+            onClick={sendMessage}
+            disabled={!newMessage.trim()}
+            className=&quot;send-button&quot;
+          &gt;
+            &lt;ReactIcon size=&quot;18&quot; noFill&gt;
+              &lt;svg
+                viewBox=&quot;0 0 24 24&quot;
+                fill=&quot;none&quot;
+                stroke=&quot;currentColor&quot;
+                strokeWidth=&quot;2&quot;
+              &gt;
+                &lt;line x1=&quot;22&quot; y1=&quot;2&quot; x2=&quot;11&quot; y2=&quot;13&quot;&gt;&lt;/line&gt;
+                &lt;polygon points=&quot;22 2 15 22 11 13 2 9 22 2&quot;&gt;&lt;/polygon&gt;
+              &lt;/svg&gt;
+            &lt;/ReactIcon&gt;
+            &lt;span className=&quot;mis1&quot;&gt;Send&lt;/span&gt;
+          &lt;/ReactButton&gt;
+        &lt;/div&gt;
+
+        {/* Quick Actions */}
+        &lt;div className=&quot;quick-actions&quot;&gt;
+          &lt;ReactButton
+            size=&quot;sm&quot;
+            shape=&quot;rounded&quot;
+            bordered
+            onClick={addBotResponse}
+            className=&quot;mie2&quot;
+          &gt;
+            &lt;ReactIcon size=&quot;16&quot; noFill&gt;
+              &lt;svg
+                viewBox=&quot;0 0 24 24&quot;
+                fill=&quot;none&quot;
+                stroke=&quot;currentColor&quot;
+                strokeWidth=&quot;2&quot;
+              &gt;
+                &lt;rect x=&quot;3&quot; y=&quot;11&quot; width=&quot;18&quot; height=&quot;11&quot; rx=&quot;2&quot; ry=&quot;2&quot;&gt;&lt;/rect&gt;
+                &lt;path d=&quot;M7 11V7a5 5 0 0 1 10 0v4&quot;&gt;&lt;/path&gt;
+              &lt;/svg&gt;
+            &lt;/ReactIcon&gt;
+            &lt;span className=&quot;mis1&quot;&gt;Add Bot Reply&lt;/span&gt;
+          &lt;/ReactButton&gt;
+
+          &lt;ReactButton
+            size=&quot;sm&quot;
+            shape=&quot;rounded&quot;
+            variant=&quot;danger&quot;
+            bordered
+            onClick={clearMessages}
+          &gt;
+            &lt;ReactIcon size=&quot;16&quot; noFill&gt;
+              &lt;svg
+                viewBox=&quot;0 0 24 24&quot;
+                fill=&quot;none&quot;
+                stroke=&quot;currentColor&quot;
+                strokeWidth=&quot;2&quot;
+              &gt;
+                &lt;polyline points=&quot;3 6 5 6 21 6&quot;&gt;&lt;/polyline&gt;
+                &lt;path d=&quot;M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2&quot;&gt;&lt;/path&gt;
+              &lt;/svg&gt;
+            &lt;/ReactIcon&gt;
+            &lt;span className=&quot;mis1&quot;&gt;Clear All&lt;/span&gt;
+          &lt;/ReactButton&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      {/* Basic Example */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Basic Message Bubbles&lt;/h2&gt;
+        &lt;p&gt;
+          Messages can be sent from &quot;me&quot; or &quot;them&quot; with author, time, and
+          optional footer.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;message-container mbe6&quot;&gt;
+        &lt;ReactMessageBubble
+          from=&quot;them&quot;
+          message=&quot;Hey, are we still on for lunch?&quot;
+          author=&quot;Sarah&quot;
+          time=&quot;11:30 AM&quot;
+        /&gt;
+        &lt;ReactMessageBubble
+          from=&quot;me&quot;
+          message=&quot;Yes! Where should we go?&quot;
+          author=&quot;Me&quot;
+          time=&quot;11:32 AM&quot;
+        /&gt;
+        &lt;ReactMessageBubble
+          from=&quot;them&quot;
+          message=&quot;How about that new Italian place?&quot;
+          author=&quot;Sarah&quot;
+          time=&quot;11:33 AM&quot;
+        /&gt;
+        &lt;ReactMessageBubble
+          from=&quot;me&quot;
+          message=&quot;Sounds perfect. See you there at 12:30.&quot;
+          author=&quot;Me&quot;
+          time=&quot;11:35 AM&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      {/* Delivery Status */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Delivery Status&lt;/h2&gt;
+        &lt;p&gt;Use the footer prop to display delivery status indicators.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;message-container mbe6&quot;&gt;
+        &lt;ReactMessageBubble
+          from=&quot;me&quot;
+          message=&quot;Hey, did you get my last message?&quot;
+          author=&quot;Me&quot;
+          time=&quot;2:30 PM&quot;
+          footer=&quot;Delivered&quot;
+        /&gt;
+        &lt;ReactMessageBubble
+          from=&quot;me&quot;
+          message=&quot;Just checking in!&quot;
+          author=&quot;Me&quot;
+          time=&quot;2:31 PM&quot;
+          footer=&quot;Seen&quot;
+        /&gt;
+        &lt;ReactMessageBubble
+          from=&quot;them&quot;
+          message=&quot;Yes, I saw it! Thanks for sending.&quot;
+          author=&quot;Sarah&quot;
+          time=&quot;2:32 PM&quot;
+          footer=&quot;Read&quot;
+        /&gt;
+        &lt;ReactMessageBubble
+          from=&quot;me&quot;
+          message=&quot;Great! Let&#39;s catch up later.&quot;
+          author=&quot;Me&quot;
+          time=&quot;2:33 PM&quot;
+          footer=&quot;Sending...&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      {/* Color Variants */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Color Variants&lt;/h2&gt;
+        &lt;p&gt;Different semantic variants for various message types.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;message-container mbe6&quot;&gt;
+        &lt;div className=&quot;variant-section&quot;&gt;
+          &lt;h3&gt;Success&lt;/h3&gt;
+          &lt;ReactMessageBubble
+            from=&quot;them&quot;
+            message=&quot;Payment completed successfully!&quot;
+            author=&quot;System&quot;
+            time=&quot;10:02 AM&quot;
+            variant=&quot;success&quot;
+          /&gt;
+          &lt;ReactMessageBubble
+            from=&quot;me&quot;
+            message=&quot;Great, thanks for confirming&quot;
+            author=&quot;Me&quot;
+            time=&quot;10:03 AM&quot;
+            variant=&quot;success&quot;
+          /&gt;
+        &lt;/div&gt;
+
+        &lt;div className=&quot;variant-section&quot;&gt;
+          &lt;h3&gt;Warning&lt;/h3&gt;
+          &lt;ReactMessageBubble
+            from=&quot;them&quot;
+            message=&quot;Your session will expire in 5 minutes&quot;
+            author=&quot;System&quot;
+            time=&quot;10:04 AM&quot;
+            variant=&quot;warning&quot;
+          /&gt;
+          &lt;ReactMessageBubble
+            from=&quot;me&quot;
+            message=&quot;I&#39;ll save my work now&quot;
+            author=&quot;Me&quot;
+            time=&quot;10:05 AM&quot;
+            variant=&quot;warning&quot;
+          /&gt;
+        &lt;/div&gt;
+
+        &lt;div className=&quot;variant-section&quot;&gt;
+          &lt;h3&gt;Danger&lt;/h3&gt;
+          &lt;ReactMessageBubble
+            from=&quot;them&quot;
+            message=&quot;Error: Unable to process your request&quot;
+            author=&quot;System&quot;
+            time=&quot;10:06 AM&quot;
+            variant=&quot;danger&quot;
+          /&gt;
+          &lt;ReactMessageBubble
+            from=&quot;me&quot;
+            message=&quot;Let me try again&quot;
+            author=&quot;Me&quot;
+            time=&quot;10:07 AM&quot;
+            variant=&quot;danger&quot;
+          /&gt;
+        &lt;/div&gt;
+
+        &lt;div className=&quot;variant-section&quot;&gt;
+          &lt;h3&gt;Info&lt;/h3&gt;
+          &lt;ReactMessageBubble
+            from=&quot;them&quot;
+            message=&quot;New features available in version 2.0&quot;
+            author=&quot;System&quot;
+            time=&quot;10:08 AM&quot;
+            variant=&quot;info&quot;
+          /&gt;
+          &lt;ReactMessageBubble
+            from=&quot;me&quot;
+            message=&quot;Sounds interesting!&quot;
+            author=&quot;Me&quot;
+            time=&quot;10:09 AM&quot;
+            variant=&quot;info&quot;
+          /&gt;
+        &lt;/div&gt;
+
+        &lt;div className=&quot;variant-section&quot;&gt;
+          &lt;h3&gt;Neutral&lt;/h3&gt;
+          &lt;ReactMessageBubble
+            from=&quot;them&quot;
+            message=&quot;This is a neutral informational message&quot;
+            author=&quot;System&quot;
+            time=&quot;10:10 AM&quot;
+            variant=&quot;neutral&quot;
+          /&gt;
+        &lt;/div&gt;
+
+        &lt;div className=&quot;variant-section&quot;&gt;
+          &lt;h3&gt;Monochrome&lt;/h3&gt;
+          &lt;ReactMessageBubble
+            from=&quot;them&quot;
+            message=&quot;Simple monochrome styling&quot;
+            author=&quot;System&quot;
+            time=&quot;10:12 AM&quot;
+            variant=&quot;monochrome&quot;
+          /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      {/* With Avatars */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;With Avatar URLs&lt;/h2&gt;
+        &lt;p&gt;Display user avatars using the avatarUrl prop.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;message-container mbe6&quot;&gt;
+        &lt;ReactMessageBubble
+          from=&quot;them&quot;
+          message=&quot;I have an avatar!&quot;
+          author=&quot;Jane Smith&quot;
+          time=&quot;10:05 AM&quot;
+          avatarUrl=&quot;https://i.pravatar.cc/150?img=1&quot;
+        /&gt;
+        &lt;ReactMessageBubble
+          from=&quot;me&quot;
+          message=&quot;Me too!&quot;
+          author=&quot;Me&quot;
+          time=&quot;10:06 AM&quot;
+          avatarUrl=&quot;https://i.pravatar.cc/150?img=2&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      {/* Custom Avatar Slot */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Custom Avatar Component&lt;/h2&gt;
+        &lt;p&gt;
+          Use the avatar slot to provide custom avatar components with more
+          control.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;message-container mbe6&quot;&gt;
+        &lt;ReactMessageBubble
+          from=&quot;them&quot;
+          message=&quot;I&#39;m using a custom Avatar component with text initials!&quot;
+          author=&quot;Jane Smith&quot;
+          time=&quot;10:00 AM&quot;
+        &gt;
+          &lt;ReactAvatar slot=&quot;avatar&quot; text=&quot;JS&quot; variant=&quot;info&quot; size=&quot;sm&quot; /&gt;
+        &lt;/ReactMessageBubble&gt;
+        &lt;ReactMessageBubble
+          from=&quot;me&quot;
+          message=&quot;And I&#39;m using an Avatar with an image and different styling!&quot;
+          author=&quot;Me&quot;
+          time=&quot;10:01 AM&quot;
+        &gt;
+          &lt;ReactAvatar
+            slot=&quot;avatar&quot;
+            imgSrc=&quot;https://i.pravatar.cc/150?img=10&quot;
+            imgAlt=&quot;User avatar&quot;
+            variant=&quot;success&quot;
+            size=&quot;sm&quot;
+          /&gt;
+        &lt;/ReactMessageBubble&gt;
+        &lt;ReactMessageBubble
+          from=&quot;them&quot;
+          message=&quot;Avatar components give you more control over styling and variants!&quot;
+          author=&quot;Alex Chen&quot;
+          time=&quot;10:02 AM&quot;
+        &gt;
+          &lt;ReactAvatar
+            slot=&quot;avatar&quot;
+            text=&quot;AC&quot;
+            variant=&quot;warning&quot;
+            size=&quot;sm&quot;
+            shape=&quot;square&quot;
+          /&gt;
+        &lt;/ReactMessageBubble&gt;
+      &lt;/div&gt;
+
+      {/* Long Content */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Long Content&lt;/h2&gt;
+        &lt;p&gt;
+          Message bubbles adapt to longer content with proper text wrapping.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;message-container mbe6&quot;&gt;
+        &lt;ReactMessageBubble
+          from=&quot;them&quot;
+          message=&quot;This is a much longer message that demonstrates how the message bubble handles extended content. It should wrap properly and maintain good readability across multiple lines of text.&quot;
+          author=&quot;Alex&quot;
+          time=&quot;10:20 AM&quot;
+          avatarUrl=&quot;https://i.pravatar.cc/150?img=4&quot;
+        /&gt;
+        &lt;ReactMessageBubble
+          from=&quot;me&quot;
+          message=&quot;I can write long messages too! Here&#39;s a detailed response that spans multiple lines and shows how the bubble adapts to different content lengths while maintaining its visual hierarchy.&quot;
+          author=&quot;Me&quot;
+          time=&quot;10:21 AM&quot;
+          footer=&quot;Delivered&quot;
+          avatarUrl=&quot;https://i.pravatar.cc/150?img=8&quot;
+        /&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}
+</code></pre></details><div class="stackblitz-section" data-v-9ebfb992><ag-button variant="primary" shape="rounded" title="Open interactive React playground in StackBlitz" data-v-9ebfb992><ag-icon size="18" no-fill data-v-9ebfb992><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap-icon lucide-zap" data-v-9ebfb992><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></ag-icon><span class="mis2" data-v-9ebfb992>Open in StackBlitz</span></ag-button></div><!--]--></ag-tab-panel><!--]--></ag-tabs></div><h2 id="usage" tabindex="-1">Usage <a class="header-anchor" href="#usage" aria-label="Permalink to &quot;Usage&quot;">​</a></h2><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>The framework examples below <code>import</code> AgnosticUI as an <code>npm</code> package. Alternatively, you can use the <strong>CLI for complete control, AI/LLM visibility, and full code ownership</strong>:</p><div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">npx</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> ag</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> init</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> --framework</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> FRAMEWORK</span><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;"> # react, vue, lit, svelte, etc.</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">npx</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> ag</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> add</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> MessageBubble</span></span></code></pre></div><p>The CLI copies source code directly into your project, giving you full visibility and control. After running <code>npx ag add</code>, you&#39;ll receive exact import instructions.</p></div><details class="details custom-block"><summary>Vue</summary><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Hello, how are you?&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;John Doe&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:00 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;I&#39;m doing great, thanks!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:01 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Check out this feature!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Jane&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:05 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      avatar-url</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;https://i.pravatar.cc/150?img=1&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Message with status&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:10 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      footer</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Delivered ✓&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Payment successful!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;System&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:15 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;success&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Using custom avatar component&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Alex&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:20 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> #</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">avatar</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueAvatar</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> text</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;AC&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;info&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> size</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;sm&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> lang</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;ts&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { defineComponent } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;vue&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { VueMessageBubble } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/message-bubble/vue&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { VueAvatar } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/avatar/vue&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">export</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> default</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> defineComponent</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">({</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  components: { VueMessageBubble, VueAvatar }</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">})</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><details class="details custom-block"><summary>React</summary><div class="language-tsx vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">tsx</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { ReactMessageBubble } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/message-bubble/react&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { ReactAvatar } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/avatar/react&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">export</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> default</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> function</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> Example</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">() </span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">{</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  return</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> (</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        from</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        message</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Hello, how are you?&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        author</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;John Doe&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        time</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:00 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        from</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        message</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;I&#39;m doing great, thanks!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        author</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        time</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:01 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        from</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        message</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Check out this feature!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        author</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Jane&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        time</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:05 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        avatarUrl</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;https://i.pravatar.cc/150?img=1&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        from</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        message</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Message with status&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        author</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        time</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:10 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        footer</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Delivered ✓&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        from</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        message</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Payment successful!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        author</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;System&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        time</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:15 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">        variant</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;success&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  );</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div></details><details class="details custom-block"><summary>Lit (Web Components)</summary><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> type</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;module&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  import</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/message-bubble&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Hello, how are you?&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;John Doe&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:00 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;I&#39;m doing great, thanks!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:01 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Check out this feature!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Jane&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:05 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  avatar-url</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;https://i.pravatar.cc/150?img=1&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Message with status&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:10 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  footer</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Delivered ✓&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Payment successful!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;System&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:15 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;success&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><h2 id="props" tabindex="-1">Props <a class="header-anchor" href="#props" aria-label="Permalink to &quot;Props&quot;">​</a></h2><table class="ag-table ag-table--striped"><thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>from</code></td><td><code>&#39;me&#39; | &#39;them&#39;</code></td><td><code>&#39;them&#39;</code></td><td>Indicates the sender of the message. Affects bubble alignment and styling.</td></tr><tr><td><code>message</code></td><td><code>string</code></td><td><code>&#39;&#39;</code></td><td>The text content of the message.</td></tr><tr><td><code>time</code></td><td><code>string</code></td><td><code>&#39;&#39;</code></td><td>Timestamp to display with the message.</td></tr><tr><td><code>author</code></td><td><code>string</code></td><td><code>&#39;&#39;</code></td><td>Name of the message sender.</td></tr><tr><td><code>avatarUrl</code></td><td><code>string</code></td><td><code>&#39;&#39;</code></td><td>URL for the sender&#39;s avatar image.</td></tr><tr><td><code>footer</code></td><td><code>string</code></td><td><code>&#39;&#39;</code></td><td>Footer text, typically used for delivery status (e.g., &quot;Delivered&quot;, &quot;Seen&quot;).</td></tr><tr><td><code>variant</code></td><td><code>&#39;default&#39; | &#39;success&#39; | &#39;warning&#39; | &#39;danger&#39; | &#39;info&#39; | &#39;neutral&#39; | &#39;monochrome&#39;</code></td><td><code>&#39;default&#39;</code></td><td>Color variant for semantic styling.</td></tr></tbody></table><h2 id="slots" tabindex="-1">Slots <a class="header-anchor" href="#slots" aria-label="Permalink to &quot;Slots&quot;">​</a></h2><table class="ag-table ag-table--striped"><thead><tr><th>Slot</th><th>Description</th></tr></thead><tbody><tr><td><code>default</code></td><td>Main content slot for the message text (alternative to <code>message</code> prop).</td></tr><tr><td><code>header</code></td><td>Optional header content above the message.</td></tr><tr><td><code>footer</code></td><td>Optional footer content below the message (alternative to <code>footer</code> prop).</td></tr><tr><td><code>avatar</code></td><td>Custom avatar content, allowing use of Avatar components or custom elements.</td></tr></tbody></table><h2 id="css-custom-properties" tabindex="-1">CSS Custom Properties <a class="header-anchor" href="#css-custom-properties" aria-label="Permalink to &quot;CSS Custom Properties&quot;">​</a></h2><p>The MessageBubble component can be styled using CSS custom properties (variables):</p><div class="language-css vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">css</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">  --ag-message-bubble-bg</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#f0f0f0</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">  --ag-message-bubble-color</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#333</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">  --ag-message-bubble-padding</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">12</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 16</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">  --ag-message-bubble-border-radius</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">18</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">  --ag-message-bubble-max-width</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">70</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">%</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div><h2 id="css-shadow-parts" tabindex="-1">CSS Shadow Parts <a class="header-anchor" href="#css-shadow-parts" aria-label="Permalink to &quot;CSS Shadow Parts&quot;">​</a></h2><p>For advanced customization, MessageBubble exposes CSS Shadow Parts that allow you to style internal elements:</p><details class="details custom-block"><summary>Vue Example</summary><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      class</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;custom-bubble&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;This message bubble is custom styled using CSS Shadow Parts!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;CSS Wizard&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:00 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;This is a normal message bubble from me.&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;10:05 AM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">style</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">.custom-bubble</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  background-color</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#4a90e2</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  color</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">white</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  border-radius</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">20</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  font-family</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Comic Sans MS&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, cursive, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">sans-serif</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  padding</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">16</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 20</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  box-shadow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 4</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 12</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> rgba</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">74</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">144</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">226</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0.3</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">style</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><details class="details custom-block"><summary>Available Shadow Parts</summary><div class="language-css vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">css</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble-avatar</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble-content</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble-author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble-time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-message-bubble-footer</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div></details><h2 id="color-variants" tabindex="-1">Color Variants <a class="header-anchor" href="#color-variants" aria-label="Permalink to &quot;Color Variants&quot;">​</a></h2><p>MessageBubble includes semantic color variants for different message types:</p><ul><li><strong>default</strong> - Standard message styling</li><li><strong>success</strong> - For positive notifications (green)</li><li><strong>warning</strong> - For cautionary messages (yellow/orange)</li><li><strong>danger</strong> - For errors or critical alerts (red)</li><li><strong>info</strong> - For informational messages (blue)</li><li><strong>neutral</strong> - For neutral system messages (gray)</li><li><strong>monochrome</strong> - Minimal, monochrome styling</li></ul><h2 id="accessibility" tabindex="-1">Accessibility <a class="header-anchor" href="#accessibility" aria-label="Permalink to &quot;Accessibility&quot;">​</a></h2><p>The MessageBubble component is built with accessibility in mind:</p><ul><li>Uses semantic HTML structure for proper screen reader support</li><li>Supports keyboard navigation when interactive elements are included</li><li>Maintains appropriate color contrast ratios across all variants</li><li>Author and timestamp information is properly associated with messages</li><li>Avatar images include alt text support when using the <code>avatarUrl</code> prop</li></ul><h3 id="best-practices" tabindex="-1">Best Practices <a class="header-anchor" href="#best-practices" aria-label="Permalink to &quot;Best Practices&quot;">​</a></h3><ul><li>Always provide meaningful <code>author</code> information for screen reader users</li><li>Use <code>time</code> prop to give context about when messages were sent</li><li>Ensure custom avatar content includes appropriate alt text</li><li>Use semantic <code>variant</code> props to convey message importance visually and contextually</li><li>For delivery status, use clear text in the <code>footer</code> prop (e.g., &quot;Delivered&quot;, &quot;Read&quot;)</li></ul><h2 id="examples-1" tabindex="-1">Examples <a class="header-anchor" href="#examples-1" aria-label="Permalink to &quot;Examples&quot;">​</a></h2><h3 id="complete-chat-interface" tabindex="-1">Complete Chat Interface <a class="header-anchor" href="#complete-chat-interface" aria-label="Permalink to &quot;Complete Chat Interface&quot;">​</a></h3><details class="details custom-block"><summary>Full Example</summary><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> class</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;chat-container&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Hey! How&#39;s the project going?&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Sarah Johnson&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;2:30 PM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      avatar-url</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;https://i.pravatar.cc/150?img=5&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    </span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Great! Just finished the API integration.&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;2:32 PM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      footer</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Delivered ✓&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      avatar-url</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;https://i.pravatar.cc/150?img=8&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    </span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;That&#39;s awesome! Can you send me the documentation?&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Sarah Johnson&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;2:33 PM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      avatar-url</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;https://i.pravatar.cc/150?img=5&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    </span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Sure, I&#39;ll email it right now.&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Me&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;2:35 PM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      footer</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Seen ✓✓&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      avatar-url</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;https://i.pravatar.cc/150?img=8&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    </span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Perfect! Thanks so much! 🎉&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Sarah Johnson&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;2:36 PM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      avatar-url</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;https://i.pravatar.cc/150?img=5&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">style</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">.chat-container</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  max-width</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">600</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  margin</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> auto</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  padding</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">20</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  background</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#f9f9f9</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  border-radius</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">8</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">style</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><h3 id="system-notifications" tabindex="-1">System Notifications <a class="header-anchor" href="#system-notifications" aria-label="Permalink to &quot;System Notifications&quot;">​</a></h3><details class="details custom-block"><summary>Example</summary><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> class</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;notifications&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Your file has been uploaded successfully!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;System&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;3:00 PM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;success&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    </span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Warning: Your storage is almost full (90% used)&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;System&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;3:05 PM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;warning&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    </span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Error: Failed to sync with cloud storage&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;System&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;3:10 PM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;danger&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    </span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueMessageBubble</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      from</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;them&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      message</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;New feature: Dark mode is now available!&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      author</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;System&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      time</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;3:15 PM&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      variant</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;info&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">div</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details></div></div></main><footer class="VPDocFooter" data-v-39a288b8 data-v-e257564d><!--[--><!--]--><!----><nav class="prev-next" aria-labelledby="doc-footer-aria-label" data-v-e257564d><span class="visually-hidden" id="doc-footer-aria-label" data-v-e257564d>Pager</span><div class="pager" data-v-e257564d><a class="VPLink link pager-link prev" href="/components/menu.html" data-v-e257564d><!--[--><span class="desc" data-v-e257564d>Previous page</span><span class="title" data-v-e257564d>Menu</span><!--]--></a></div><div class="pager" data-v-e257564d><a class="VPLink link pager-link next" href="/components/pagination.html" data-v-e257564d><!--[--><span class="desc" data-v-e257564d>Next page</span><span class="title" data-v-e257564d>Pagination</span><!--]--></a></div></nav></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><!----><!--[--><!--]--></div></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"components_accordion.md\":\"D124LQ2N\",\"components_alert.md\":\"DUzPffjv\",\"components_aspect-ratio.md\":\"B9LCG7IE\",\"components_avatar.md\":\"CBy4X4lC\",\"components_badge-fx.md\":\"Cjlw3Nr6\",\"components_badge.md\":\"DLyUyoDM\",\"components_breadcrumb.md\":\"5mPKE6w4\",\"components_button-fx.md\":\"BgxBCcJf\",\"components_button.md\":\"xaByEAaZ\",\"components_card.md\":\"BDXvxtrs\",\"components_checkbox.md\":\"Cwru_peQ\",\"components_collapsible.md\":\"BQWRhZn6\",\"components_combobox.md\":\"CkdFz6qL\",\"components_copybutton.md\":\"BicFdIOk\",\"components_dialog.md\":\"Wvih0cWD\",\"components_divider.md\":\"DVS5aGVO\",\"components_drawer.md\":\"ZlzJP1Zs\",\"components_empty-state.md\":\"CRY8H9KL\",\"components_fieldset.md\":\"Bo6NGhzj\",\"components_flex.md\":\"ViEYtYug\",\"components_header.md\":\"CzY751Xc\",\"components_icon-button-fx.md\":\"3jwqZqhg\",\"components_icon-button.md\":\"D4_S6D7i\",\"components_icon.md\":\"-89djCYd\",\"components_image.md\":\"Cu8otwUd\",\"components_input.md\":\"DosMDWvE\",\"components_intl-formatter.md\":\"DEZMib1v\",\"components_kbd.md\":\"BLor_025\",\"components_link.md\":\"B90H-PLT\",\"components_loader.md\":\"Cu31E7Oy\",\"components_mark.md\":\"0lFphVjr\",\"components_menu.md\":\"CR0h2mnz\",\"components_message-bubble.md\":\"z-1RaY82\",\"components_pagination.md\":\"DIPTDF7b\",\"components_popover.md\":\"IEiDGW-c\",\"components_progress-ring.md\":\"C4S6Z7Y1\",\"components_progress.md\":\"D6odJd83\",\"components_radio.md\":\"Cqq1BCVD\",\"components_rating.md\":\"BFYBA--y\",\"components_scroll-progress.md\":\"td8eEdZY\",\"components_scroll-to-button.md\":\"CPCi-JKZ\",\"components_select.md\":\"C8Ei8Ji-\",\"components_sidebar.md\":\"CobZ0WvN\",\"components_skeleton-loader.md\":\"D52GZHTp\",\"components_slider.md\":\"BYgr1Czg\",\"components_spinner.md\":\"C36VAblI\",\"components_table.md\":\"LOFdMREA\",\"components_tabs.md\":\"BEM1bv51\",\"components_tag.md\":\"C7aug7OF\",\"components_timeline.md\":\"Jz5s26zl\",\"components_toast.md\":\"N7kNxAD2\",\"components_toggle.md\":\"DKu1k6DE\",\"components_tooltip.md\":\"CsOsS_f4\",\"components_visually-hidden.md\":\"qDI1aGpt\",\"docs_advanced_advanced-usage.md\":\"C4HVbS5E\",\"docs_faq.md\":\"BtG1Lr41\",\"docs_setup.md\":\"BQZjnySZ\",\"docs_theming.md\":\"a7cpTIMK\",\"docs_understand.md\":\"AMQOq1C5\",\"docs_utilities.md\":\"DRVnpTXi\",\"index.md\":\"Czxm2aZ2\",\"installation.md\":\"9jU4ZVdv\",\"theming.md\":\"li9eyUfM\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"AgnosticUI\",\"description\":\"One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"nav\":[{\"text\":\"Components\",\"link\":\"/components/button\"}],\"sidebar\":[{\"text\":\"Quick Start\",\"items\":[{\"text\":\"Installation\",\"link\":\"/installation\"},{\"text\":\"Theming\",\"link\":\"/theming\"}]},{\"text\":\"Components\",\"items\":[{\"text\":\"Accordion\",\"link\":\"/components/accordion\"},{\"text\":\"Alerts\",\"link\":\"/components/alert\"},{\"text\":\"AspectRatio\",\"link\":\"/components/aspect-ratio\"},{\"text\":\"Avatar\",\"link\":\"/components/avatar\"},{\"text\":\"Badge\",\"link\":\"/components/badge\"},{\"text\":\"BadgeFx (Lab)\",\"link\":\"/components/badge-fx\"},{\"text\":\"Breadcrumb\",\"link\":\"/components/breadcrumb\"},{\"text\":\"Button\",\"link\":\"/components/button\"},{\"text\":\"ButtonFx (Lab)\",\"link\":\"/components/button-fx\"},{\"text\":\"Card\",\"link\":\"/components/card\"},{\"text\":\"Checkbox\",\"link\":\"/components/checkbox\"},{\"text\":\"Collapsible\",\"link\":\"/components/collapsible\"},{\"text\":\"Combobox\",\"link\":\"/components/combobox\"},{\"text\":\"CopyButton\",\"link\":\"/components/copybutton\"},{\"text\":\"Dialog\",\"link\":\"/components/dialog\"},{\"text\":\"Divider\",\"link\":\"/components/divider\"},{\"text\":\"Drawer\",\"link\":\"/components/drawer\"},{\"text\":\"EmptyState\",\"link\":\"/components/empty-state\"},{\"text\":\"Fieldset\",\"link\":\"/components/fieldset\"},{\"text\":\"Flex (Lab)\",\"link\":\"/components/flex\"},{\"text\":\"Header\",\"link\":\"/components/header\"},{\"text\":\"Icon\",\"link\":\"/components/icon\"},{\"text\":\"Icon Button\",\"link\":\"/components/icon-button\"},{\"text\":\"IconButtonFx (Lab)\",\"link\":\"/components/icon-button-fx\"},{\"text\":\"Image\",\"link\":\"/components/image\"},{\"text\":\"Input\",\"link\":\"/components/input\"},{\"text\":\"IntlFormatter\",\"link\":\"/components/intl-formatter\"},{\"text\":\"Kbd\",\"link\":\"/components/kbd\"},{\"text\":\"Link\",\"link\":\"/components/link\"},{\"text\":\"Loader\",\"link\":\"/components/loader\"},{\"text\":\"Mark\",\"link\":\"/components/mark\"},{\"text\":\"Menu\",\"link\":\"/components/menu\"},{\"text\":\"MessageBubble\",\"link\":\"/components/message-bubble\"},{\"text\":\"Pagination\",\"link\":\"/components/pagination\"},{\"text\":\"Popover\",\"link\":\"/components/popover\"},{\"text\":\"Progress\",\"link\":\"/components/progress\"},{\"text\":\"ProgressRing\",\"link\":\"/components/progress-ring\"},{\"text\":\"Radio\",\"link\":\"/components/radio\"},{\"text\":\"Rating\",\"link\":\"/components/rating\"},{\"text\":\"ScrollProgress\",\"link\":\"/components/scroll-progress\"},{\"text\":\"ScrollToButton\",\"link\":\"/components/scroll-to-button\"},{\"text\":\"Select\",\"link\":\"/components/select\"},{\"text\":\"Sidebar (Lab)\",\"link\":\"/components/sidebar\"},{\"text\":\"Skeleton Loader\",\"link\":\"/components/skeleton-loader\"},{\"text\":\"Slider\",\"link\":\"/components/slider\"},{\"text\":\"Spinner\",\"link\":\"/components/spinner\"},{\"text\":\"Table\",\"link\":\"/components/table\"},{\"text\":\"Tabs\",\"link\":\"/components/tabs\"},{\"text\":\"Tag\",\"link\":\"/components/tag\"},{\"text\":\"Timeline\",\"link\":\"/components/timeline\"},{\"text\":\"Toast\",\"link\":\"/components/toast\"},{\"text\":\"Toggle\",\"link\":\"/components/toggle\"},{\"text\":\"Tooltip\",\"link\":\"/components/tooltip\"},{\"text\":\"VisuallyHidden\",\"link\":\"/components/visually-hidden\"}]},{\"text\":\"Documentation\",\"items\":[{\"text\":\"Setup Guide\",\"link\":\"/docs/setup\"},{\"text\":\"Understanding AgnosticUI\",\"link\":\"/docs/understand\"},{\"text\":\"Advanced Usage\",\"link\":\"/docs/advanced/advanced-usage\"},{\"text\":\"CSS Utilities\",\"link\":\"/docs/utilities\"},{\"text\":\"FAQ\",\"link\":\"/docs/faq\"}]}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/AgnosticUI/agnosticui\"}]},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  </body>
+</html>

@@ -1,0 +1,1 @@
+function d(n){if(!n)return!1;const o=n.assignedNodes({flatten:!0}),r=e=>{var t;return e.children.length>0||((t=e.textContent)==null?void 0:t.trim())!==""};return o.some(e=>{var t;return e.nodeType===Node.ELEMENT_NODE?r(e):e.nodeType===Node.TEXT_NODE?((t=e.textContent)==null?void 0:t.trim())!=="":!1})}export{d as o};

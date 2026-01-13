@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Collapsible | AgnosticUI</title>
+    <meta name="description" content="One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.">
+    <meta name="generator" content="VitePress v1.6.4">
+    <link rel="preload stylesheet" href="/assets/style.B9q022JI.css" as="style">
+    <link rel="preload stylesheet" href="/vp-icons.css" as="style">
+    
+    <script type="module" src="/assets/app.Db9wLKOo.js"></script>
+    <link rel="preload" href="/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="modulepreload" href="/assets/chunks/theme.dNgCwI32.js">
+    <link rel="modulepreload" href="/assets/chunks/framework.NAAYCHZu.js">
+    <link rel="modulepreload" href="/assets/chunks/AlphaWarning.yC7ZufpQ.js">
+    <link rel="modulepreload" href="/assets/chunks/Button.Bujdzq23.js">
+    <link rel="modulepreload" href="/assets/chunks/info.CjSjj6Py.js">
+    <link rel="modulepreload" href="/assets/chunks/FrameworkExample.Vj5DwYx5.js">
+    <link rel="modulepreload" href="/assets/chunks/createLucideIcon.B61Wqv9x.js">
+    <link rel="modulepreload" href="/assets/chunks/Icon.odq14qpJ.js">
+    <link rel="modulepreload" href="/assets/components_collapsible.md.BQWRhZn6.lean.js">
+    <link rel="stylesheet" href="/ag-tokens.css">
+    <link rel="stylesheet" href="/ag-tokens-dark.css">
+    <link rel="stylesheet" href="/table.css">
+    <link rel="icon" href="/favicon.ico">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><div class="Layout" data-v-5d98c3a5><!--[--><!--]--><!--[--><span tabindex="-1" data-v-0b0ada53></span><a href="#VPContent" class="VPSkipLink visually-hidden" data-v-0b0ada53>Skip to content</a><!--]--><!----><header class="VPNav" data-v-5d98c3a5 data-v-ae24b3ad><div class="VPNavBar" data-v-ae24b3ad data-v-6aa21345><div class="wrapper" data-v-6aa21345><div class="container" data-v-6aa21345><div class="title" data-v-6aa21345><div class="VPNavBarTitle has-sidebar" data-v-6aa21345 data-v-1168a8e4><a class="title" href="/" data-v-1168a8e4><!--[--><!--]--><!----><span data-v-1168a8e4>AgnosticUI</span><!--[--><!--]--></a></div></div><div class="content" data-v-6aa21345><div class="content-body" data-v-6aa21345><!--[--><!--]--><div class="VPNavBarSearch search" data-v-6aa21345><!----></div><nav aria-labelledby="main-nav-aria-label" class="VPNavBarMenu menu" data-v-6aa21345 data-v-dc692963><span id="main-nav-aria-label" class="visually-hidden" data-v-dc692963> Main Navigation </span><!--[--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/components/button.html" tabindex="0" data-v-dc692963 data-v-e56f3d57><!--[--><span data-v-e56f3d57>Components</span><!--]--></a><!--]--><!--]--></nav><!----><div class="VPNavBarAppearance appearance" data-v-6aa21345 data-v-6c893767><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-6c893767 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div><div class="VPSocialLinks VPNavBarSocialLinks social-links" data-v-6aa21345 data-v-0394ad82 data-v-7bc22406><!--[--><a class="VPSocialLink no-icon" href="https://github.com/AgnosticUI/agnosticui" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406 data-v-bd121fe5><span class="vpi-social-github"></span></a><!--]--></div><div class="VPFlyout VPNavBarExtra extra" data-v-6aa21345 data-v-bb2aa2f0 data-v-cf11d7a2><button type="button" class="button" aria-haspopup="true" aria-expanded="false" aria-label="extra navigation" data-v-cf11d7a2><span class="vpi-more-horizontal icon" data-v-cf11d7a2></span></button><div class="menu" data-v-cf11d7a2><div class="VPMenu" data-v-cf11d7a2 data-v-b98bc113><!----><!--[--><!--[--><!----><div class="group" data-v-bb2aa2f0><div class="item appearance" data-v-bb2aa2f0><p class="label" data-v-bb2aa2f0>Appearance</p><div class="appearance-action" data-v-bb2aa2f0><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-bb2aa2f0 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div></div></div><div class="group" data-v-bb2aa2f0><div class="item social-links" data-v-bb2aa2f0><div class="VPSocialLinks social-links-list" data-v-bb2aa2f0 data-v-7bc22406><!--[--><a class="VPSocialLink no-icon" href="https://github.com/AgnosticUI/agnosticui" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406 data-v-bd121fe5><span class="vpi-social-github"></span></a><!--]--></div></div></div><!--]--><!--]--></div></div></div><!--[--><!--]--><button type="button" class="VPNavBarHamburger hamburger" aria-label="mobile navigation" aria-expanded="false" aria-controls="VPNavScreen" data-v-6aa21345 data-v-e5dd9c1c><span class="container" data-v-e5dd9c1c><span class="top" data-v-e5dd9c1c></span><span class="middle" data-v-e5dd9c1c></span><span class="bottom" data-v-e5dd9c1c></span></span></button></div></div></div></div><div class="divider" data-v-6aa21345><div class="divider-line" data-v-6aa21345></div></div></div><!----></header><div class="VPLocalNav has-sidebar empty" data-v-5d98c3a5 data-v-a6f0e41e><div class="container" data-v-a6f0e41e><button class="menu" aria-expanded="false" aria-controls="VPSidebarNav" data-v-a6f0e41e><span class="vpi-align-left menu-icon" data-v-a6f0e41e></span><span class="menu-text" data-v-a6f0e41e>Menu</span></button><div class="VPLocalNavOutlineDropdown" style="--vp-vh:0px;" data-v-a6f0e41e data-v-8a42e2b4><button data-v-8a42e2b4>Return to top</button><!----></div></div></div><aside class="VPSidebar" data-v-5d98c3a5 data-v-319d5ca6><div class="curtain" data-v-319d5ca6></div><nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1" data-v-319d5ca6><span class="visually-hidden" id="sidebar-aria-label" data-v-319d5ca6> Sidebar Navigation </span><!--[--><!--]--><!--[--><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Quick Start</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/installation.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Installation</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/theming.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Theming</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0 has-active" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Components</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/accordion.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Accordion</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/alert.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Alerts</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/aspect-ratio.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>AspectRatio</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/avatar.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Avatar</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/badge.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Badge</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/badge-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>BadgeFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/breadcrumb.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Breadcrumb</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/button-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ButtonFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/card.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Card</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/checkbox.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Checkbox</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/collapsible.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Collapsible</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/combobox.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Combobox</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/copybutton.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>CopyButton</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/dialog.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Dialog</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/divider.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Divider</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/drawer.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Drawer</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/empty-state.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>EmptyState</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/fieldset.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Fieldset</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/flex.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Flex (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/header.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Header</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Icon</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon-button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Icon Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon-button-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>IconButtonFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/image.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Image</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/input.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Input</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/intl-formatter.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>IntlFormatter</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/kbd.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Kbd</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/link.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Link</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/loader.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Loader</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/mark.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Mark</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/menu.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Menu</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/message-bubble.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>MessageBubble</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/pagination.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Pagination</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/popover.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Popover</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/progress.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Progress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/progress-ring.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ProgressRing</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/radio.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Radio</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/rating.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Rating</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/scroll-progress.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ScrollProgress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/scroll-to-button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ScrollToButton</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/select.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Select</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/sidebar.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Sidebar (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/skeleton-loader.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Skeleton Loader</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/slider.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Slider</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/spinner.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Spinner</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/table.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Table</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tabs.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tabs</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tag.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tag</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/timeline.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Timeline</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/toast.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Toast</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/toggle.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Toggle</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tooltip.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tooltip</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/visually-hidden.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>VisuallyHidden</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Documentation</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/setup.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Setup Guide</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/understand.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Understanding AgnosticUI</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/advanced/advanced-usage.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Advanced Usage</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/utilities.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>CSS Utilities</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/faq.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>FAQ</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><!--]--><!--[--><!--]--></nav></aside><div class="VPContent has-sidebar" id="VPContent" data-v-5d98c3a5 data-v-1428d186><div class="VPDoc has-sidebar has-aside" data-v-1428d186 data-v-39a288b8><!--[--><!--]--><div class="container" data-v-39a288b8><div class="aside" data-v-39a288b8><div class="aside-curtain" data-v-39a288b8></div><div class="aside-container" data-v-39a288b8><div class="aside-content" data-v-39a288b8><div class="VPDocAside" data-v-39a288b8 data-v-3f215769><!--[--><!--]--><!--[--><!--]--><nav aria-labelledby="doc-outline-aria-label" class="VPDocAsideOutline" data-v-3f215769 data-v-a5bbad30><div class="content" data-v-a5bbad30><div class="outline-marker" data-v-a5bbad30></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-a5bbad30>On this page</div><ul class="VPDocOutlineItem root" data-v-a5bbad30 data-v-b933a997><!--[--><!--]--></ul></div></nav><!--[--><!--]--><div class="spacer" data-v-3f215769></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-39a288b8><div class="content-container" data-v-39a288b8><!--[--><!--]--><main class="main" data-v-39a288b8><div style="position:relative;" class="vp-doc _components_collapsible" data-v-39a288b8><div><h1 id="collapsible" tabindex="-1">Collapsible <a class="header-anchor" href="#collapsible" aria-label="Permalink to &quot;Collapsible&quot;">​</a></h1><div class="alpha-warning" data-v-7d6f0b92><div class="alpha-warning-header" data-v-7d6f0b92><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert" data-v-7d6f0b92><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg><span class="alpha-warning-title" data-v-7d6f0b92>Experimental Alpha</span></div><p class="alpha-warning-text" data-v-7d6f0b92> This library is a work-in-progress. We are releasing it early to gather feedback, but it is not ready for production. </p></div><p>A collapsible is a standalone component that allows users to show and hide a single section of content. Unlike accordions which manage multiple items, collapsibles work independently and are ideal for revealing optional information, FAQs, or additional details on demand.</p><h2 id="examples" tabindex="-1">Examples <a class="header-anchor" href="#examples" aria-label="Permalink to &quot;Examples&quot;">​</a></h2><div class="framework-example" data-v-9ebfb992><ag-tabs activation="manual" activeTab="0" orientation="horizontal" ariaLabel="Framework code examples" data-v-9ebfb992><!--[--><ag-tab slot="tab" panel="panel-vue" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>Vue</span></div><!--]--></ag-tab><ag-tab slot="tab" panel="panel-lit" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>Lit</span></div><!--]--></ag-tab><ag-tab slot="tab" panel="panel-react" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>React</span></div><!--]--></ag-tab><ag-tab-panel slot="panel" panel="panel-vue" data-v-9ebfb992><!--[--><details class="preview-details" open data-v-9ebfb992><summary data-v-9ebfb992>Live Preview</summary><div class="preview" data-v-9ebfb992><!--[--><section data-v-271432b0><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>Basic Collapsible (Default)</h2><p class="mbe2" style="color:var(--ag-text-secondary);font-size:0.875rem;" data-v-271432b0> By default, the Collapsible provides a chevron which points down when closed, then rotates 180° to point up when open. See below for how to opt out or use different indicators. </p></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="false" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Click to expand</span><!--]--></span><!--[--><p data-v-271432b0>This is the collapsible content that can be shown or hidden. The default chevron indicator rotates smoothly when toggled.</p><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>X Indicator</h2><p class="mbe2" style="color:var(--ag-text-secondary);font-size:0.875rem;" data-v-271432b0> Plus rotated 180° (upside down) when closed, rotates to 45° forming an X when open. </p></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="false" .shadow="false" .useChevron="true" .useX="true" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>X Indicator</span><!--]--></span><!--[--><p data-v-271432b0>Plus transforms into X when opened. This provides a modern, dynamic visual indicator.</p><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>Plus/Minus Indicator</h2><p class="mbe2" style="color:var(--ag-text-secondary);font-size:0.875rem;" data-v-271432b0> Plus transitions to minus when open with smooth animation. </p></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="false" .shadow="false" .useChevron="true" .useX="false" .useMinus="true" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Plus/Minus Indicator</span><!--]--></span><!--[--><p data-v-271432b0>Plus changes to minus when opened. Classic expand/collapse indicator style.</p><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>No Indicator</h2><p class="mbe2" style="color:var(--ag-text-secondary);font-size:0.875rem;" data-v-271432b0> Collapsible without any visual indicator. </p></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="false" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="true" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>No Indicator</span><!--]--></span><!--[--><p data-v-271432b0>Clean header without indicator icon. Minimal design focused on content.</p><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>Indicator Comparison</h2><p class="mbe2" style="color:var(--ag-text-secondary);font-size:0.875rem;" data-v-271432b0> Toggle each collapsible to see how the different indicators behave. </p></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Chevron (default) - Rotates 180°</span><!--]--></span><!--[--><p data-v-271432b0>The chevron points down when closed and up when open via rotation.</p><!--]--></ag-collapsible><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="true" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>X Indicator - Rotates from upside-down plus to X</span><!--]--></span><!--[--><p data-v-271432b0>Starts as an upside-down plus sign and rotates 45° to form an X when open.</p><!--]--></ag-collapsible><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="true" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Plus/Minus - Swaps icons</span><!--]--></span><!--[--><p data-v-271432b0>Shows a plus icon when closed and swaps to a minus icon when open.</p><!--]--></ag-collapsible><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="true" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>No Indicator - Completely hidden</span><!--]--></span><!--[--><p data-v-271432b0>No indicator is shown at all.</p><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>Bordered</h2></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Bordered collapsible</span><!--]--></span><!--[--><p data-v-271432b0>This collapsible has a border around it for visual separation.</p><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>With Shadow</h2></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="false" .shadow="true" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Collapsible with shadow</span><!--]--></span><!--[--><p data-v-271432b0>This collapsible has a box-shadow applied for depth.</p><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>Combined Features</h2></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="true" .shadow="true" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Bordered with shadow</span><!--]--></span><!--[--><p data-v-271432b0>This collapsible combines both border and shadow styling for maximum visual impact.</p><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>Open by Default</h2></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="true" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Already expanded</span><!--]--></span><!--[--><p data-v-271432b0>This collapsible starts in an open state using the <code data-v-271432b0>open</code> prop.</p><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>Rich Content</h2></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="true" .shadow="true" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><div class="flex-inline items-center" data-v-271432b0><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ag-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide mie2 lucide-info-icon lucide-info mie2" data-v-271432b0><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg><strong data-v-271432b0>Product Details</strong></div><!--]--></span><!--[--><div data-v-271432b0><h4 style="margin-top:0;" data-v-271432b0>Technical Specifications</h4><ul data-v-271432b0><li data-v-271432b0>Processor: Octa-core 2.8 GHz</li><li data-v-271432b0>Memory: 8GB RAM</li><li data-v-271432b0>Storage: 256GB SSD</li><li data-v-271432b0>Display: 15.6&quot; Full HD</li></ul><p data-v-271432b0><strong data-v-271432b0>Warranty:</strong> 2 years manufacturer warranty with optional extended coverage available. </p></div><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>FAQ Example</h2></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>What is AgnosticUI?</span><!--]--></span><!--[--><p data-v-271432b0> AgnosticUI is a framework-agnostic component library built with web components. It works seamlessly with React, Vue, Svelte, Angular, and vanilla JavaScript. </p><!--]--></ag-collapsible><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>How do I install it?</span><!--]--></span><!--[--><p data-v-271432b0>You can install AgnosticUI via npm:</p><pre style="background:var(--ag-background-secondary);padding:1rem;border-radius:4px;overflow-x:auto;" data-v-271432b0>npm install agnosticui-core</pre><!--]--></ag-collapsible><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Is it accessible?</span><!--]--></span><!--[--><p data-v-271432b0> Yes! All AgnosticUI components are built with accessibility in mind, following WAI-ARIA best practices and ensuring keyboard navigation and screen reader support. </p><!--]--></ag-collapsible><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Can I customize the styling?</span><!--]--></span><!--[--><p data-v-271432b0> Absolutely! AgnosticUI uses CSS Shadow Parts to allow deep customization of component internals while maintaining encapsulation. You can also use design tokens for consistent theming across your application. </p><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>Nested Collapsibles</h2></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Level 1 - Main Topic</span><!--]--></span><!--[--><div data-v-271432b0><p data-v-271432b0>This is the main content area.</p><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="true" .noIndicator="false" style="margin-top:1rem;" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Level 2 - Subtopic A</span><!--]--></span><!--[--><p data-v-271432b0>Nested collapsible content for subtopic A. Note the different indicator style.</p><!--]--></ag-collapsible><ag-collapsible .open="false" .bordered="true" .shadow="false" .useChevron="true" .useX="false" .useMinus="true" .noIndicator="false" style="margin-top:0.5rem;" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Level 2 - Subtopic B</span><!--]--></span><!--[--><p data-v-271432b0>Nested collapsible content for subtopic B.</p><!--]--></ag-collapsible></div><!--]--></ag-collapsible></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>Interactive with Event Handling</h2></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="true" .shadow="true" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Click to toggle (watch console)</span><!--]--></span><!--[--><div data-v-271432b0><p data-v-271432b0>The collapsible dispatches a <code data-v-271432b0>toggle</code> event when opened or closed.</p></div><!--]--></ag-collapsible><p style="margin-top:1rem;" data-v-271432b0> Current state: <strong data-v-271432b0>Collapsed</strong></p></div><div class="mbe4" data-v-271432b0><h2 data-v-271432b0>CSS Parts Customization</h2><p class="mbe2" style="color:var(--ag-text-secondary);font-size:0.875rem;" data-v-271432b0> Customize collapsible appearance using CSS Shadow Parts without breaking encapsulation. </p></div><div class="stacked mbe4" data-v-271432b0><ag-collapsible .open="false" .bordered="false" .shadow="false" .useChevron="true" .useX="false" .useMinus="false" .noIndicator="false" class="custom-gradient" data-v-271432b0><span slot="summary"><!--[--><span data-v-271432b0>Gaudy Gradient</span><!--]--></span><!--[--><p data-v-271432b0>This collapsible uses a gradient background with white text and custom styling.</p><!--]--></ag-collapsible></div></section><!--]--></div></details><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View Vue Code</summary><pre data-v-9ebfb992><code class="language-vue" data-v-9ebfb992>&lt;template&gt;
+  &lt;section&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Basic Collapsible (Default)&lt;/h2&gt;
+      &lt;p
+        class=&quot;mbe2&quot;
+        style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;
+      &gt;
+        By default, the Collapsible provides a chevron which points down when closed, then rotates 180° to point up when open. See below for how to opt out or use different indicators.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible use-chevron&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Click to expand&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;This is the collapsible content that can be shown or hidden. The default chevron indicator rotates smoothly when toggled.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;X Indicator&lt;/h2&gt;
+      &lt;p
+        class=&quot;mbe2&quot;
+        style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;
+      &gt;
+        Plus rotated 180° (upside down) when closed, rotates to 45° forming an X when open.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible use-x&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;X Indicator&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;Plus transforms into X when opened. This provides a modern, dynamic visual indicator.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Plus/Minus Indicator&lt;/h2&gt;
+      &lt;p
+        class=&quot;mbe2&quot;
+        style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;
+      &gt;
+        Plus transitions to minus when open with smooth animation.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible use-minus&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Plus/Minus Indicator&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;Plus changes to minus when opened. Classic expand/collapse indicator style.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;No Indicator&lt;/h2&gt;
+      &lt;p
+        class=&quot;mbe2&quot;
+        style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;
+      &gt;
+        Collapsible without any visual indicator.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible no-indicator&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;No Indicator&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;Clean header without indicator icon. Minimal design focused on content.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Indicator Comparison&lt;/h2&gt;
+      &lt;p
+        class=&quot;mbe2&quot;
+        style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;
+      &gt;
+        Toggle each collapsible to see how the different indicators behave.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible
+        bordered
+        use-chevron
+      &gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Chevron (default) - Rotates 180°&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;The chevron points down when closed and up when open via rotation.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+
+      &lt;VueCollapsible
+        bordered
+        use-x
+      &gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;X Indicator - Rotates from upside-down plus to X&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;Starts as an upside-down plus sign and rotates 45° to form an X when open.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+
+      &lt;VueCollapsible
+        bordered
+        use-minus
+      &gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Plus/Minus - Swaps icons&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;Shows a plus icon when closed and swaps to a minus icon when open.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+
+      &lt;VueCollapsible
+        bordered
+        no-indicator
+      &gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;No Indicator - Completely hidden&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;No indicator is shown at all.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Bordered&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible bordered&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Bordered collapsible&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;This collapsible has a border around it for visual separation.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;With Shadow&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible shadow&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Collapsible with shadow&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;This collapsible has a box-shadow applied for depth.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Combined Features&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible
+        bordered
+        shadow
+      &gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Bordered with shadow&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;This collapsible combines both border and shadow styling for maximum visual impact.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Open by Default&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible
+        bordered
+        open
+      &gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Already expanded&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;This collapsible starts in an open state using the &lt;code&gt;open&lt;/code&gt; prop.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Rich Content&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible
+        bordered
+        shadow
+      &gt;
+        &lt;template #summary&gt;
+          &lt;div class=&quot;flex-inline items-center&quot;&gt;
+            &lt;Info
+              color=&quot;var(--ag-primary)&quot;
+              :size=&quot;18&quot;
+              class=&quot;mie2&quot;
+            /&gt;
+            &lt;strong&gt;Product Details&lt;/strong&gt;
+          &lt;/div&gt;
+        &lt;/template&gt;
+        &lt;div&gt;
+          &lt;h4 style=&quot;margin-top: 0;&quot;&gt;Technical Specifications&lt;/h4&gt;
+          &lt;ul&gt;
+            &lt;li&gt;Processor: Octa-core 2.8 GHz&lt;/li&gt;
+            &lt;li&gt;Memory: 8GB RAM&lt;/li&gt;
+            &lt;li&gt;Storage: 256GB SSD&lt;/li&gt;
+            &lt;li&gt;Display: 15.6&quot; Full HD&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;p&gt;
+            &lt;strong&gt;Warranty:&lt;/strong&gt; 2 years manufacturer warranty with optional
+            extended coverage available.
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;FAQ Example&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible bordered&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;What is AgnosticUI?&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;
+          AgnosticUI is a framework-agnostic component library built with web
+          components. It works seamlessly with React, Vue, Svelte, Angular, and
+          vanilla JavaScript.
+        &lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+
+      &lt;VueCollapsible bordered&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;How do I install it?&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;You can install AgnosticUI via npm:&lt;/p&gt;
+        &lt;pre style=&quot;background: var(--ag-background-secondary); padding: 1rem; border-radius: 4px; overflow-x: auto;&quot;&gt;npm install agnosticui-core&lt;/pre&gt;
+      &lt;/VueCollapsible&gt;
+
+      &lt;VueCollapsible bordered&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Is it accessible?&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;
+          Yes! All AgnosticUI components are built with accessibility in mind,
+          following WAI-ARIA best practices and ensuring keyboard navigation and
+          screen reader support.
+        &lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+
+      &lt;VueCollapsible bordered&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Can I customize the styling?&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;
+          Absolutely! AgnosticUI uses CSS Shadow Parts to allow deep customization
+          of component internals while maintaining encapsulation. You can also use
+          design tokens for consistent theming across your application.
+        &lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Nested Collapsibles&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible bordered&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Level 1 - Main Topic&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;div&gt;
+          &lt;p&gt;This is the main content area.&lt;/p&gt;
+
+          &lt;VueCollapsible
+            :bordered=&quot;true&quot;
+            :use-minus=&quot;true&quot;
+            style=&quot;margin-top: 1rem;&quot;
+          &gt;
+            &lt;template #summary&gt;
+              &lt;span&gt;Level 2 - Subtopic A&lt;/span&gt;
+            &lt;/template&gt;
+            &lt;p&gt;Nested collapsible content for subtopic A. Note the different indicator style.&lt;/p&gt;
+          &lt;/VueCollapsible&gt;
+
+          &lt;VueCollapsible
+            :bordered=&quot;true&quot;
+            :use-minus=&quot;true&quot;
+            style=&quot;margin-top: 0.5rem;&quot;
+          &gt;
+            &lt;template #summary&gt;
+              &lt;span&gt;Level 2 - Subtopic B&lt;/span&gt;
+            &lt;/template&gt;
+            &lt;p&gt;Nested collapsible content for subtopic B.&lt;/p&gt;
+          &lt;/VueCollapsible&gt;
+        &lt;/div&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Interactive with Event Handling&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible
+        bordered
+        shadow
+        @toggle=&quot;handleToggle&quot;
+      &gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Click to toggle (watch console)&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;div&gt;
+          &lt;p&gt;The collapsible dispatches a &lt;code&gt;toggle&lt;/code&gt; event when opened or closed.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/VueCollapsible&gt;
+      &lt;p style=&quot;margin-top: 1rem;&quot;&gt;
+        Current state: &lt;strong&gt;{{ isExpanded ? &#39;Expanded&#39; : &#39;Collapsed&#39; }}&lt;/strong&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;CSS Parts Customization&lt;/h2&gt;
+      &lt;p
+        class=&quot;mbe2&quot;
+        style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;
+      &gt;
+        Customize collapsible appearance using CSS Shadow Parts without breaking encapsulation.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacked mbe4&quot;&gt;
+      &lt;VueCollapsible class=&quot;custom-gradient&quot;&gt;
+        &lt;template #summary&gt;
+          &lt;span&gt;Gaudy Gradient&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;p&gt;This collapsible uses a gradient background with white text and custom styling.&lt;/p&gt;
+      &lt;/VueCollapsible&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { VueCollapsible } from &quot;agnosticui-core/collapsible/vue&quot;;
+import { Info } from &quot;lucide-vue-next&quot;;
+
+export default {
+  name: &quot;CollapsibleExamples&quot;,
+  components: {
+    VueCollapsible,
+    Info,
+  },
+  data() {
+    return {
+      isExpanded: false,
+    };
+  },
+  methods: {
+    handleToggle(event) {
+      this.isExpanded = event.target.open;
+      console.log(&quot;Collapsible toggled. New state:&quot;, this.isExpanded);
+    },
+  },
+};
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+/* CSS Parts customization examples */
+.custom-gradient::part(ag-collapsible-details) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.custom-gradient::part(ag-collapsible-summary) {
+  color: white;
+  font-weight: 600;
+  padding: 1.5rem;
+}
+
+.custom-gradient::part(ag-collapsible-indicator) {
+  filter: brightness(0) invert(1);
+}
+
+.custom-gradient::part(ag-collapsible-content) {
+  color: white;
+  background: rgba(0, 0, 0, 0.1);
+}
+&lt;/style&gt;
+</code></pre></details><!--]--></ag-tab-panel><ag-tab-panel slot="panel" panel="panel-lit" data-v-9ebfb992><!--[--><details class="preview-details" open data-v-9ebfb992><summary data-v-9ebfb992>Live Preview</summary><div class="preview" data-v-9ebfb992><!--[--><collapsible-lit-examples></collapsible-lit-examples><!--]--></div></details><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View Lit / Web Component Code</summary><pre data-v-9ebfb992><code class="language-javascript" data-v-9ebfb992>import { LitElement, html } from &#39;lit&#39;;
+import &#39;agnosticui-core/collapsible&#39;;
+
+export class CollapsibleLitExamples extends LitElement {
+  // Render in light DOM to access global utility classes
+  createRenderRoot() {
+    return this;
+  }
+
+  constructor() {
+    super();
+    this.isExpanded = false;
+  }
+
+  handleToggle(event) {
+    this.isExpanded = event.target.open;
+    console.log(&#39;Collapsible toggled. New state:&#39;, this.isExpanded);
+    this.requestUpdate();
+  }
+
+  render() {
+    return html`
+      &lt;section&gt;
+        &lt;!-- Basic Collapsible (Default) --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Basic Collapsible (Default)&lt;/h2&gt;
+          &lt;p class=&quot;mbe2&quot; style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;&gt;
+            By default, the Collapsible provides a chevron which points down when closed, then rotates 180° to point up when open. See below for how to opt out or use different indicators.
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible use-chevron&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Click to expand&lt;/span&gt;
+            &lt;p&gt;This is the collapsible content that can be shown or hidden. The default chevron indicator rotates smoothly when toggled.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- X Indicator --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;X Indicator&lt;/h2&gt;
+          &lt;p class=&quot;mbe2&quot; style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;&gt;
+            Plus rotated 180° (upside down) when closed, rotates to 45° forming an X when open.
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible use-x&gt;
+            &lt;span slot=&quot;summary&quot;&gt;X Indicator&lt;/span&gt;
+            &lt;p&gt;Plus transforms into X when opened. This provides a modern, dynamic visual indicator.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Plus/Minus Indicator --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Plus/Minus Indicator&lt;/h2&gt;
+          &lt;p class=&quot;mbe2&quot; style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;&gt;
+            Plus transitions to minus when open with smooth animation.
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible use-minus&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Plus/Minus Indicator&lt;/span&gt;
+            &lt;p&gt;Plus changes to minus when opened. Classic expand/collapse indicator style.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- No Indicator --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;No Indicator&lt;/h2&gt;
+          &lt;p class=&quot;mbe2&quot; style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;&gt;
+            Collapsible without any visual indicator.
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible no-indicator&gt;
+            &lt;span slot=&quot;summary&quot;&gt;No Indicator&lt;/span&gt;
+            &lt;p&gt;Clean header without indicator icon. Minimal design focused on content.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Indicator Comparison --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Indicator Comparison&lt;/h2&gt;
+          &lt;p class=&quot;mbe2&quot; style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;&gt;
+            Toggle each collapsible to see how the different indicators behave.
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible bordered use-chevron&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Chevron (default) - Rotates 180°&lt;/span&gt;
+            &lt;p&gt;The chevron points down when closed and up when open via rotation.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+
+          &lt;ag-collapsible bordered use-x&gt;
+            &lt;span slot=&quot;summary&quot;&gt;X Indicator - Rotates from upside-down plus to X&lt;/span&gt;
+            &lt;p&gt;Starts as an upside-down plus sign and rotates 45° to form an X when open.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+
+          &lt;ag-collapsible bordered use-minus&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Plus/Minus - Swaps icons&lt;/span&gt;
+            &lt;p&gt;Shows a plus icon when closed and swaps to a minus icon when open.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+
+          &lt;ag-collapsible bordered no-indicator&gt;
+            &lt;span slot=&quot;summary&quot;&gt;No Indicator - Completely hidden&lt;/span&gt;
+            &lt;p&gt;No indicator is shown at all.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Bordered --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Bordered&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible bordered&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Bordered collapsible&lt;/span&gt;
+            &lt;p&gt;This collapsible has a border around it for visual separation.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- With Shadow --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;With Shadow&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible shadow&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Collapsible with shadow&lt;/span&gt;
+            &lt;p&gt;This collapsible has a box-shadow applied for depth.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Combined Features --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Combined Features&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible bordered shadow&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Bordered with shadow&lt;/span&gt;
+            &lt;p&gt;This collapsible combines both border and shadow styling for maximum visual impact.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Open by Default --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Open by Default&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible bordered open&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Already expanded&lt;/span&gt;
+            &lt;p&gt;This collapsible starts in an open state using the &lt;code&gt;open&lt;/code&gt; attribute.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Rich Content --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Rich Content&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible bordered shadow&gt;
+            &lt;div slot=&quot;summary&quot; class=&quot;flex-inline items-center&quot;&gt;
+              &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;var(--ag-primary)&quot; stroke-width=&quot;2&quot; width=&quot;18&quot; height=&quot;18&quot; class=&quot;mie2&quot; aria-hidden=&quot;true&quot;&gt;
+                &lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;10&quot;/&gt;
+                &lt;path d=&quot;M12 16v-4m0-4h.01&quot;/&gt;
+              &lt;/svg&gt;
+              &lt;strong&gt;Product Details&lt;/strong&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+              &lt;h4 style=&quot;margin-top: 0;&quot;&gt;Technical Specifications&lt;/h4&gt;
+              &lt;ul&gt;
+                &lt;li&gt;Processor: Octa-core 2.8 GHz&lt;/li&gt;
+                &lt;li&gt;Memory: 8GB RAM&lt;/li&gt;
+                &lt;li&gt;Storage: 256GB SSD&lt;/li&gt;
+                &lt;li&gt;Display: 15.6&quot; Full HD&lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;p&gt;
+                &lt;strong&gt;Warranty:&lt;/strong&gt; 2 years manufacturer warranty with optional
+                extended coverage available.
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- FAQ Example --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;FAQ Example&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible bordered&gt;
+            &lt;span slot=&quot;summary&quot;&gt;What is AgnosticUI?&lt;/span&gt;
+            &lt;p&gt;
+              AgnosticUI is a framework-agnostic component library built with web
+              components. It works seamlessly with React, Vue, Svelte, Angular, and
+              vanilla JavaScript.
+            &lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+
+          &lt;ag-collapsible bordered&gt;
+            &lt;span slot=&quot;summary&quot;&gt;How do I install it?&lt;/span&gt;
+            &lt;p&gt;You can install AgnosticUI via npm:&lt;/p&gt;
+            &lt;pre style=&quot;background: var(--ag-background-secondary); padding: 1rem; border-radius: 4px; overflow-x: auto;&quot;&gt;npm install agnosticui-core&lt;/pre&gt;
+          &lt;/ag-collapsible&gt;
+
+          &lt;ag-collapsible bordered&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Is it accessible?&lt;/span&gt;
+            &lt;p&gt;
+              Yes! All AgnosticUI components are built with accessibility in mind,
+              following WAI-ARIA best practices and ensuring keyboard navigation and
+              screen reader support.
+            &lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+
+          &lt;ag-collapsible bordered&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Can I customize the styling?&lt;/span&gt;
+            &lt;p&gt;
+              Absolutely! AgnosticUI uses CSS Shadow Parts to allow deep customization
+              of component internals while maintaining encapsulation. You can also use
+              design tokens for consistent theming across your application.
+            &lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Nested Collapsibles --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Nested Collapsibles&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible bordered&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Level 1 - Main Topic&lt;/span&gt;
+            &lt;div&gt;
+              &lt;p&gt;This is the main content area.&lt;/p&gt;
+
+              &lt;ag-collapsible bordered use-minus style=&quot;margin-top: 1rem;&quot;&gt;
+                &lt;span slot=&quot;summary&quot;&gt;Level 2 - Subtopic A&lt;/span&gt;
+                &lt;p&gt;Nested collapsible content for subtopic A. Note the different indicator style.&lt;/p&gt;
+              &lt;/ag-collapsible&gt;
+
+              &lt;ag-collapsible bordered use-minus style=&quot;margin-top: 0.5rem;&quot;&gt;
+                &lt;span slot=&quot;summary&quot;&gt;Level 2 - Subtopic B&lt;/span&gt;
+                &lt;p&gt;Nested collapsible content for subtopic B.&lt;/p&gt;
+              &lt;/ag-collapsible&gt;
+            &lt;/div&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Interactive with Event Handling --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Interactive with Event Handling&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible bordered shadow @toggle=${this.handleToggle}&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Click to toggle (watch console)&lt;/span&gt;
+            &lt;div&gt;
+              &lt;p&gt;The collapsible dispatches a &lt;code&gt;toggle&lt;/code&gt; event when opened or closed.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/ag-collapsible&gt;
+          &lt;p style=&quot;margin-top: 1rem;&quot;&gt;
+            Current state: &lt;strong&gt;${this.isExpanded ? &#39;Expanded&#39; : &#39;Collapsed&#39;}&lt;/strong&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- CSS Parts Customization --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;CSS Parts Customization&lt;/h2&gt;
+          &lt;p class=&quot;mbe2&quot; style=&quot;color: var(--ag-text-secondary); font-size: 0.875rem;&quot;&gt;
+            Customize collapsible appearance using CSS Shadow Parts without breaking encapsulation.
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stacked mbe4&quot;&gt;
+          &lt;ag-collapsible class=&quot;custom-gradient&quot;&gt;
+            &lt;span slot=&quot;summary&quot;&gt;Gaudy Gradient&lt;/span&gt;
+            &lt;p&gt;This collapsible uses a gradient background with white text and custom styling.&lt;/p&gt;
+          &lt;/ag-collapsible&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    `;
+  }
+}
+
+// Register the custom element
+customElements.define(&#39;collapsible-lit-examples&#39;, CollapsibleLitExamples);
+</code></pre></details><!--]--></ag-tab-panel><ag-tab-panel slot="panel" panel="panel-react" data-v-9ebfb992><!--[--><div class="react-note" data-v-9ebfb992><p data-v-9ebfb992><strong data-v-9ebfb992>Interactive Preview:</strong> Click the &quot;Open in StackBlitz&quot; button below to see this example running live in an interactive playground. </p></div><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View React Code</summary><pre data-v-9ebfb992><code class="language-tsx" data-v-9ebfb992>import { useState } from &quot;react&quot;;
+import { ReactCollapsible } from &quot;agnosticui-core/collapsible/react&quot;;
+import { Info } from &quot;lucide-react&quot;;
+
+export default function CollapsibleReactExamples() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleToggle = (event) =&gt; {
+    setIsExpanded(event.target.open);
+    console.log(&quot;Collapsible toggled. New state:&quot;, event.target.open);
+  };
+
+  return (
+    &lt;section&gt;
+      {/* Basic Collapsible (Default) */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Basic Collapsible (Default)&lt;/h2&gt;
+        &lt;p className=&quot;mbe2&quot; style={{ color: &quot;var(--ag-text-secondary)&quot;, fontSize: &quot;0.875rem&quot; }}&gt;
+          By default, the Collapsible provides a chevron which points down when closed, then rotates 180° to point up when open. See below for how to opt out or use different indicators.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible useChevron&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Click to expand&lt;/span&gt;
+          &lt;p&gt;This is the collapsible content that can be shown or hidden. The default chevron indicator rotates smoothly when toggled.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* X Indicator */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;X Indicator&lt;/h2&gt;
+        &lt;p className=&quot;mbe2&quot; style={{ color: &quot;var(--ag-text-secondary)&quot;, fontSize: &quot;0.875rem&quot; }}&gt;
+          Plus rotated 180° (upside down) when closed, rotates to 45° forming an X when open.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible useX&gt;
+          &lt;span slot=&quot;summary&quot;&gt;X Indicator&lt;/span&gt;
+          &lt;p&gt;Plus transforms into X when opened. This provides a modern, dynamic visual indicator.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* Plus/Minus Indicator */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Plus/Minus Indicator&lt;/h2&gt;
+        &lt;p className=&quot;mbe2&quot; style={{ color: &quot;var(--ag-text-secondary)&quot;, fontSize: &quot;0.875rem&quot; }}&gt;
+          Plus transitions to minus when open with smooth animation.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible useMinus&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Plus/Minus Indicator&lt;/span&gt;
+          &lt;p&gt;Plus changes to minus when opened. Classic expand/collapse indicator style.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* No Indicator */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;No Indicator&lt;/h2&gt;
+        &lt;p className=&quot;mbe2&quot; style={{ color: &quot;var(--ag-text-secondary)&quot;, fontSize: &quot;0.875rem&quot; }}&gt;
+          Collapsible without any visual indicator.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible noIndicator&gt;
+          &lt;span slot=&quot;summary&quot;&gt;No Indicator&lt;/span&gt;
+          &lt;p&gt;Clean header without indicator icon. Minimal design focused on content.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* Indicator Comparison */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Indicator Comparison&lt;/h2&gt;
+        &lt;p className=&quot;mbe2&quot; style={{ color: &quot;var(--ag-text-secondary)&quot;, fontSize: &quot;0.875rem&quot; }}&gt;
+          Toggle each collapsible to see how the different indicators behave.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible bordered useChevron&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Chevron (default) - Rotates 180°&lt;/span&gt;
+          &lt;p&gt;The chevron points down when closed and up when open via rotation.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+
+        &lt;ReactCollapsible bordered useX&gt;
+          &lt;span slot=&quot;summary&quot;&gt;X Indicator - Rotates from upside-down plus to X&lt;/span&gt;
+          &lt;p&gt;Starts as an upside-down plus sign and rotates 45° to form an X when open.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+
+        &lt;ReactCollapsible bordered useMinus&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Plus/Minus - Swaps icons&lt;/span&gt;
+          &lt;p&gt;Shows a plus icon when closed and swaps to a minus icon when open.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+
+        &lt;ReactCollapsible bordered noIndicator&gt;
+          &lt;span slot=&quot;summary&quot;&gt;No Indicator - Completely hidden&lt;/span&gt;
+          &lt;p&gt;No indicator is shown at all.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* Bordered */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Bordered&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible bordered&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Bordered collapsible&lt;/span&gt;
+          &lt;p&gt;This collapsible has a border around it for visual separation.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* With Shadow */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;With Shadow&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible shadow&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Collapsible with shadow&lt;/span&gt;
+          &lt;p&gt;This collapsible has a box-shadow applied for depth.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* Combined Features */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Combined Features&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible bordered shadow&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Bordered with shadow&lt;/span&gt;
+          &lt;p&gt;This collapsible combines both border and shadow styling for maximum visual impact.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* Open by Default */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Open by Default&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible bordered open&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Already expanded&lt;/span&gt;
+          &lt;p&gt;This collapsible starts in an open state using the &lt;code&gt;open&lt;/code&gt; prop.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* Rich Content */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Rich Content&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible bordered shadow&gt;
+          &lt;div slot=&quot;summary&quot; className=&quot;flex-inline items-center&quot;&gt;
+            &lt;Info color=&quot;var(--ag-primary)&quot; size={18} className=&quot;mie2&quot; /&gt;
+            &lt;strong&gt;Product Details&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;h4 style={{ marginTop: 0 }}&gt;Technical Specifications&lt;/h4&gt;
+            &lt;ul&gt;
+              &lt;li&gt;Processor: Octa-core 2.8 GHz&lt;/li&gt;
+              &lt;li&gt;Memory: 8GB RAM&lt;/li&gt;
+              &lt;li&gt;Storage: 256GB SSD&lt;/li&gt;
+              &lt;li&gt;Display: 15.6&quot; Full HD&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;
+              &lt;strong&gt;Warranty:&lt;/strong&gt; 2 years manufacturer warranty with optional
+              extended coverage available.
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* FAQ Example */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;FAQ Example&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible bordered&gt;
+          &lt;span slot=&quot;summary&quot;&gt;What is AgnosticUI?&lt;/span&gt;
+          &lt;p&gt;
+            AgnosticUI is a framework-agnostic component library built with web
+            components. It works seamlessly with React, Vue, Svelte, Angular, and
+            vanilla JavaScript.
+          &lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+
+        &lt;ReactCollapsible bordered&gt;
+          &lt;span slot=&quot;summary&quot;&gt;How do I install it?&lt;/span&gt;
+          &lt;p&gt;You can install AgnosticUI via npm:&lt;/p&gt;
+          &lt;pre style={{ background: &quot;var(--ag-background-secondary)&quot;, padding: &quot;1rem&quot;, borderRadius: &quot;4px&quot;, overflowX: &quot;auto&quot; }}&gt;npm install agnosticui-core&lt;/pre&gt;
+        &lt;/ReactCollapsible&gt;
+
+        &lt;ReactCollapsible bordered&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Is it accessible?&lt;/span&gt;
+          &lt;p&gt;
+            Yes! All AgnosticUI components are built with accessibility in mind,
+            following WAI-ARIA best practices and ensuring keyboard navigation and
+            screen reader support.
+          &lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+
+        &lt;ReactCollapsible bordered&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Can I customize the styling?&lt;/span&gt;
+          &lt;p&gt;
+            Absolutely! AgnosticUI uses CSS Shadow Parts to allow deep customization
+            of component internals while maintaining encapsulation. You can also use
+            design tokens for consistent theming across your application.
+          &lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* Nested Collapsibles */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Nested Collapsibles&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible bordered&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Level 1 - Main Topic&lt;/span&gt;
+          &lt;div&gt;
+            &lt;p&gt;This is the main content area.&lt;/p&gt;
+
+            &lt;ReactCollapsible bordered useMinus style={{ marginTop: &quot;1rem&quot; }}&gt;
+              &lt;span slot=&quot;summary&quot;&gt;Level 2 - Subtopic A&lt;/span&gt;
+              &lt;p&gt;Nested collapsible content for subtopic A. Note the different indicator style.&lt;/p&gt;
+            &lt;/ReactCollapsible&gt;
+
+            &lt;ReactCollapsible bordered useMinus style={{ marginTop: &quot;0.5rem&quot; }}&gt;
+              &lt;span slot=&quot;summary&quot;&gt;Level 2 - Subtopic B&lt;/span&gt;
+              &lt;p&gt;Nested collapsible content for subtopic B.&lt;/p&gt;
+            &lt;/ReactCollapsible&gt;
+          &lt;/div&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+
+      {/* Interactive with Event Handling */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Interactive with Event Handling&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible bordered shadow onToggle={handleToggle}&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Click to toggle (watch console)&lt;/span&gt;
+          &lt;div&gt;
+            &lt;p&gt;The collapsible dispatches a &lt;code&gt;toggle&lt;/code&gt; event when opened or closed.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/ReactCollapsible&gt;
+        &lt;p style={{ marginTop: &quot;1rem&quot; }}&gt;
+          Current state: &lt;strong&gt;{isExpanded ? &#39;Expanded&#39; : &#39;Collapsed&#39;}&lt;/strong&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+
+      {/* CSS Parts Customization */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;CSS Parts Customization&lt;/h2&gt;
+        &lt;p className=&quot;mbe2&quot; style={{ color: &quot;var(--ag-text-secondary)&quot;, fontSize: &quot;0.875rem&quot; }}&gt;
+          Customize collapsible appearance using CSS Shadow Parts without breaking encapsulation.
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;stacked mbe4&quot;&gt;
+        &lt;ReactCollapsible className=&quot;custom-gradient&quot;&gt;
+          &lt;span slot=&quot;summary&quot;&gt;Gaudy Gradient&lt;/span&gt;
+          &lt;p&gt;This collapsible uses a gradient background with white text and custom styling.&lt;/p&gt;
+        &lt;/ReactCollapsible&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}
+</code></pre></details><div class="stackblitz-section" data-v-9ebfb992><ag-button variant="primary" shape="rounded" title="Open interactive React playground in StackBlitz" data-v-9ebfb992><ag-icon size="18" no-fill data-v-9ebfb992><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap-icon lucide-zap" data-v-9ebfb992><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></ag-icon><span class="mis2" data-v-9ebfb992>Open in StackBlitz</span></ag-button></div><!--]--></ag-tab-panel><!--]--></ag-tabs></div><h2 id="usage" tabindex="-1">Usage <a class="header-anchor" href="#usage" aria-label="Permalink to &quot;Usage&quot;">​</a></h2><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>The framework examples below <code>import</code> AgnosticUI as an <code>npm</code> package. Alternatively, you can use the <strong>CLI for complete control, AI/LLM visibility, and full code ownership</strong>:</p><div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">npx</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> ag</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> init</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> --framework</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> FRAMEWORK</span><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;"> # react, vue, lit, svelte, etc.</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">npx</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> ag</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> add</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> Collapsible</span></span></code></pre></div><p>The CLI copies source code directly into your project, giving you full visibility and control. After running <code>npx ag add</code>, you&#39;ll receive exact import instructions.</p></div><details class="details custom-block"><summary>Vue</summary><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">section</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> #</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">summary</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Click to expand&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;This is the collapsible content that can be shown or hidden.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> open</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> #</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">summary</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Already expanded&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;This collapsible starts in an open state.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      bordered</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      shadow</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> #</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">summary</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Bordered with shadow&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;This collapsible has both border and shadow styling.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      use-x</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      @toggle</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;handleToggle&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> #</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">summary</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;X Indicator&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Plus icon that transforms into an X when opened&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      use-minus</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      @toggle</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;handleToggle&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> #</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">summary</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Plus/Minus Indicator&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Plus icon that changes to minus when opened&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> no-indicator</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> #</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">summary</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;No indicator&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;This collapsible has no indicator icon at all.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">section</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { VueCollapsible } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/collapsible/vue&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">export</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> default</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  components: { VueCollapsible }</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">,</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  methods: {</span></span>
+<span class="line"><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">    handleToggle</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">event</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">      const</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> newOpenState</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> event.detail.open;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Collapsible toggled:&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, newOpenState);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    },</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  }</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">,</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">}</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><details class="details custom-block"><summary>React</summary><div class="language-tsx vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">tsx</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { ReactCollapsible } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/collapsible/react&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">export</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> default</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> function</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> CollapsibleExample</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">() </span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">{</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  const</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> handleToggle</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> (</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">event</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">:</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;"> CustomEvent</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;{ </span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">open</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">:</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> boolean</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> }&gt;) </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Collapsible toggled:&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, event.detail.open);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  return</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> (</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">section</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;summary&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Click to expand&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;This is the collapsible content that can be shown or hidden.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> open</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">={</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">true</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">}</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;summary&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Already expanded&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;This collapsible starts in an open state.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> bordered</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> shadow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;summary&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Bordered with shadow&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;This collapsible has both border and shadow styling.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> useX</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> onToggle</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">={</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">handleToggle</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">}</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;summary&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;X Indicator&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Plus icon that transforms into an X when opened&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> useMinus</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> onToggle</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">={</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">handleToggle</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">}</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;summary&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Plus/Minus Indicator&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Plus icon that changes to minus when opened&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> noIndicator</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> slot</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;summary&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;No indicator&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;This collapsible has no indicator icon at all.&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">p</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactCollapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">section</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  );</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div></details><details class="details custom-block"><summary>Lit (Web Components)</summary><div class="language-typescript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">typescript</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { LitElement, html, css } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;lit&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { customElement } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;lit/decorators.js&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/collapsible&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">@</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">customElement</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;collapsible-example&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">)</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">export</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> class</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;"> CollapsibleExample</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> extends</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> LitElement</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  static</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;"> styles</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> css</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">`</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">    :host {</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">      display: block;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">    }</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">    section {</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">      display: flex;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">      flex-direction: column;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">      gap: 1rem;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">    }</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">  `</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">  firstUpdated</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">() {</span></span>
+<span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">    // Set up event listeners for collapsible elements in the shadow DOM</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">    const</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> collapsibles</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> this</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">.shadowRoot?.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">querySelectorAll</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;ag-collapsible&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    collapsibles?.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">forEach</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">((</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">el</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      el.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">addEventListener</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;toggle&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, (</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">event</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">:</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;"> Event</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">        const</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> customEvent</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> event </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">as</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;"> CustomEvent</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Collapsible toggled:&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, customEvent.detail.open);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      });</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    });</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">  render</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">() {</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">    return</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> html</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">`</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">      &lt;section&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;ag-collapsible&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;span slot=&quot;summary&quot;&gt;Click to expand&lt;/span&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;p&gt;This is the collapsible content that can be shown or hidden.&lt;/p&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;/ag-collapsible&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;ag-collapsible open&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;span slot=&quot;summary&quot;&gt;Already expanded&lt;/span&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;p&gt;This collapsible starts in an open state.&lt;/p&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;/ag-collapsible&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;ag-collapsible bordered shadow&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;span slot=&quot;summary&quot;&gt;Bordered with shadow&lt;/span&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;p&gt;This collapsible has both border and shadow styling.&lt;/p&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;/ag-collapsible&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;ag-collapsible use-x&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;span slot=&quot;summary&quot;&gt;X Indicator&lt;/span&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;p&gt;Plus icon that transforms into an X when opened&lt;/p&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;/ag-collapsible&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;ag-collapsible use-minus&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;span slot=&quot;summary&quot;&gt;Plus/Minus Indicator&lt;/span&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;p&gt;Plus icon that changes to minus when opened&lt;/p&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;/ag-collapsible&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;ag-collapsible no-indicator&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;span slot=&quot;summary&quot;&gt;No indicator&lt;/span&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">          &lt;p&gt;This collapsible has no indicator icon at all.&lt;/p&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">        &lt;/ag-collapsible&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">      &lt;/section&gt;</span></span>
+<span class="line"><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">    `</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  }</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div><p><strong>Note:</strong> When using collapsible components within a custom element&#39;s shadow DOM, set up event listeners in the component&#39;s lifecycle (e.g., <code>firstUpdated()</code>) rather than using <code>DOMContentLoaded</code>, as <code>document.querySelector()</code> cannot access elements inside shadow DOM. Use <code>this.shadowRoot.querySelector()</code> instead.</p></details><h2 id="props" tabindex="-1">Props <a class="header-anchor" href="#props" aria-label="Permalink to &quot;Props&quot;">​</a></h2><table class="ag-table ag-table--striped"><thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>open</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Whether the collapsible is expanded</td></tr><tr><td><code>bordered</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Whether to apply border styling</td></tr><tr><td><code>shadow</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Whether to apply box-shadow styling</td></tr><tr><td><code>useChevron</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Use chevron indicator (default) — rotates 180° when open</td></tr><tr><td><code>useX</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Use X indicator — plus rotates to form an X when open</td></tr><tr><td><code>useMinus</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Use plus/minus indicator — plus transitions to minus when open</td></tr><tr><td><code>noIndicator</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Hide the indicator completely</td></tr></tbody></table><p><strong>Note:</strong> Indicator props are mutually exclusive with priority: <code>noIndicator</code> &gt; <code>useX</code> &gt; <code>useMinus</code> &gt; <code>useChevron</code> (default)</p><h2 id="events" tabindex="-1">Events <a class="header-anchor" href="#events" aria-label="Permalink to &quot;Events&quot;">​</a></h2><table class="ag-table ag-table--striped"><thead><tr><th>Event</th><th>Framework</th><th>Detail</th><th>Description</th></tr></thead><tbody><tr><td><code>toggle</code></td><td>Vue: <code>@toggle</code><br>React: <code>onToggle</code><br>Lit: <code>@toggle</code></td><td><code>{ open: boolean }</code></td><td>Fired when the collapsible opens or closes. The event detail contains the new <code>open</code> state.</td></tr></tbody></table><p><strong>Type:</strong></p><div class="language-ts vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">ts</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">export</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> type</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;"> CollapsibleToggleEvent</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;"> CustomEvent</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;{ </span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">open</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">:</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> boolean</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> }&gt;;</span></span></code></pre></div><h2 id="css-shadow-parts" tabindex="-1">CSS Shadow Parts <a class="header-anchor" href="#css-shadow-parts" aria-label="Permalink to &quot;CSS Shadow Parts&quot;">​</a></h2><table class="ag-table ag-table--striped"><thead><tr><th>Part</th><th>Description</th><th>Element</th></tr></thead><tbody><tr><td><code>ag-collapsible-details</code></td><td>The main details element container</td><td><code>&lt;details&gt;</code></td></tr><tr><td><code>ag-collapsible-summary</code></td><td>The interactive summary/trigger element</td><td><code>&lt;summary&gt;</code></td></tr><tr><td><code>ag-collapsible-indicator</code></td><td>The expand/collapse indicator icon wrapper</td><td><code>&lt;span&gt;</code></td></tr><tr><td><code>ag-collapsible-content</code></td><td>The collapsible content region</td><td><code>&lt;div&gt;</code></td></tr></tbody></table><h3 id="example-usage" tabindex="-1">Example Usage <a class="header-anchor" href="#example-usage" aria-label="Permalink to &quot;Example Usage&quot;">​</a></h3><div class="language-css vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">css</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible-details</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  background</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">linear-gradient</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">135</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">deg</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#667eea</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 0</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">%</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#764ba2</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 100</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">%</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  border-radius</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">12</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  overflow</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">hidden</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible-summary</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  color</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">white</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  font-weight</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">600</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  padding</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1.5</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  cursor</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">pointer</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible-indicator</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  filter</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">brightness</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">invert</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible-content</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  color</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">white</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  background</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">rgba</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">0.1</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  padding</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1.5</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">.minimal</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible-summary</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  background</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#f9fafb</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  border-left</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">4</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> solid</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> #3b82f6</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  padding</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 1</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 1</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 1.5</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">.minimal</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-collapsible-content</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  background</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">#ffffff</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  padding</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 1</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 1</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> 1.5</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div><h2 id="accessibility" tabindex="-1">Accessibility <a class="header-anchor" href="#accessibility" aria-label="Permalink to &quot;Accessibility&quot;">​</a></h2><p>The Collapsible is built on the native HTML <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements, providing excellent accessibility by default:</p><ul><li><p>Uses semantic HTML <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements</p></li><li><p>Native keyboard support:</p><ul><li><strong>Space/Enter</strong>: Toggle the collapsible</li></ul></li><li><p>The <code>open</code> attribute communicates state to assistive technologies</p></li><li><p>Screen readers can interact with it naturally</p></li><li><p>Focus indicators are clearly visible for keyboard navigation</p></li><li><p>No additional ARIA attributes are needed due to native semantics</p></li></ul><h2 id="progressive-enhancement" tabindex="-1">Progressive Enhancement <a class="header-anchor" href="#progressive-enhancement" aria-label="Permalink to &quot;Progressive Enhancement&quot;">​</a></h2><p>The Collapsible is designed with progressive enhancement in mind:</p><ul><li>Built on native <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> HTML elements</li><li>Content is accessible even if JavaScript fails to load</li><li>Core expand/collapse functionality works without JavaScript</li><li>JavaScript enhancement adds custom indicators and smoother animations</li><li>Gracefully degrades to native browser behavior</li></ul></div></div></main><footer class="VPDocFooter" data-v-39a288b8 data-v-e257564d><!--[--><!--]--><!----><nav class="prev-next" aria-labelledby="doc-footer-aria-label" data-v-e257564d><span class="visually-hidden" id="doc-footer-aria-label" data-v-e257564d>Pager</span><div class="pager" data-v-e257564d><a class="VPLink link pager-link prev" href="/components/checkbox.html" data-v-e257564d><!--[--><span class="desc" data-v-e257564d>Previous page</span><span class="title" data-v-e257564d>Checkbox</span><!--]--></a></div><div class="pager" data-v-e257564d><a class="VPLink link pager-link next" href="/components/combobox.html" data-v-e257564d><!--[--><span class="desc" data-v-e257564d>Next page</span><span class="title" data-v-e257564d>Combobox</span><!--]--></a></div></nav></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><!----><!--[--><!--]--></div></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"components_accordion.md\":\"D124LQ2N\",\"components_alert.md\":\"DUzPffjv\",\"components_aspect-ratio.md\":\"B9LCG7IE\",\"components_avatar.md\":\"CBy4X4lC\",\"components_badge-fx.md\":\"Cjlw3Nr6\",\"components_badge.md\":\"DLyUyoDM\",\"components_breadcrumb.md\":\"5mPKE6w4\",\"components_button-fx.md\":\"BgxBCcJf\",\"components_button.md\":\"xaByEAaZ\",\"components_card.md\":\"BDXvxtrs\",\"components_checkbox.md\":\"Cwru_peQ\",\"components_collapsible.md\":\"BQWRhZn6\",\"components_combobox.md\":\"CkdFz6qL\",\"components_copybutton.md\":\"BicFdIOk\",\"components_dialog.md\":\"Wvih0cWD\",\"components_divider.md\":\"DVS5aGVO\",\"components_drawer.md\":\"ZlzJP1Zs\",\"components_empty-state.md\":\"CRY8H9KL\",\"components_fieldset.md\":\"Bo6NGhzj\",\"components_flex.md\":\"ViEYtYug\",\"components_header.md\":\"CzY751Xc\",\"components_icon-button-fx.md\":\"3jwqZqhg\",\"components_icon-button.md\":\"D4_S6D7i\",\"components_icon.md\":\"-89djCYd\",\"components_image.md\":\"Cu8otwUd\",\"components_input.md\":\"DosMDWvE\",\"components_intl-formatter.md\":\"DEZMib1v\",\"components_kbd.md\":\"BLor_025\",\"components_link.md\":\"B90H-PLT\",\"components_loader.md\":\"Cu31E7Oy\",\"components_mark.md\":\"0lFphVjr\",\"components_menu.md\":\"CR0h2mnz\",\"components_message-bubble.md\":\"z-1RaY82\",\"components_pagination.md\":\"DIPTDF7b\",\"components_popover.md\":\"IEiDGW-c\",\"components_progress-ring.md\":\"C4S6Z7Y1\",\"components_progress.md\":\"D6odJd83\",\"components_radio.md\":\"Cqq1BCVD\",\"components_rating.md\":\"BFYBA--y\",\"components_scroll-progress.md\":\"td8eEdZY\",\"components_scroll-to-button.md\":\"CPCi-JKZ\",\"components_select.md\":\"C8Ei8Ji-\",\"components_sidebar.md\":\"CobZ0WvN\",\"components_skeleton-loader.md\":\"D52GZHTp\",\"components_slider.md\":\"BYgr1Czg\",\"components_spinner.md\":\"C36VAblI\",\"components_table.md\":\"LOFdMREA\",\"components_tabs.md\":\"BEM1bv51\",\"components_tag.md\":\"C7aug7OF\",\"components_timeline.md\":\"Jz5s26zl\",\"components_toast.md\":\"N7kNxAD2\",\"components_toggle.md\":\"DKu1k6DE\",\"components_tooltip.md\":\"CsOsS_f4\",\"components_visually-hidden.md\":\"qDI1aGpt\",\"docs_advanced_advanced-usage.md\":\"C4HVbS5E\",\"docs_faq.md\":\"BtG1Lr41\",\"docs_setup.md\":\"BQZjnySZ\",\"docs_theming.md\":\"a7cpTIMK\",\"docs_understand.md\":\"AMQOq1C5\",\"docs_utilities.md\":\"DRVnpTXi\",\"index.md\":\"Czxm2aZ2\",\"installation.md\":\"9jU4ZVdv\",\"theming.md\":\"li9eyUfM\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"AgnosticUI\",\"description\":\"One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"nav\":[{\"text\":\"Components\",\"link\":\"/components/button\"}],\"sidebar\":[{\"text\":\"Quick Start\",\"items\":[{\"text\":\"Installation\",\"link\":\"/installation\"},{\"text\":\"Theming\",\"link\":\"/theming\"}]},{\"text\":\"Components\",\"items\":[{\"text\":\"Accordion\",\"link\":\"/components/accordion\"},{\"text\":\"Alerts\",\"link\":\"/components/alert\"},{\"text\":\"AspectRatio\",\"link\":\"/components/aspect-ratio\"},{\"text\":\"Avatar\",\"link\":\"/components/avatar\"},{\"text\":\"Badge\",\"link\":\"/components/badge\"},{\"text\":\"BadgeFx (Lab)\",\"link\":\"/components/badge-fx\"},{\"text\":\"Breadcrumb\",\"link\":\"/components/breadcrumb\"},{\"text\":\"Button\",\"link\":\"/components/button\"},{\"text\":\"ButtonFx (Lab)\",\"link\":\"/components/button-fx\"},{\"text\":\"Card\",\"link\":\"/components/card\"},{\"text\":\"Checkbox\",\"link\":\"/components/checkbox\"},{\"text\":\"Collapsible\",\"link\":\"/components/collapsible\"},{\"text\":\"Combobox\",\"link\":\"/components/combobox\"},{\"text\":\"CopyButton\",\"link\":\"/components/copybutton\"},{\"text\":\"Dialog\",\"link\":\"/components/dialog\"},{\"text\":\"Divider\",\"link\":\"/components/divider\"},{\"text\":\"Drawer\",\"link\":\"/components/drawer\"},{\"text\":\"EmptyState\",\"link\":\"/components/empty-state\"},{\"text\":\"Fieldset\",\"link\":\"/components/fieldset\"},{\"text\":\"Flex (Lab)\",\"link\":\"/components/flex\"},{\"text\":\"Header\",\"link\":\"/components/header\"},{\"text\":\"Icon\",\"link\":\"/components/icon\"},{\"text\":\"Icon Button\",\"link\":\"/components/icon-button\"},{\"text\":\"IconButtonFx (Lab)\",\"link\":\"/components/icon-button-fx\"},{\"text\":\"Image\",\"link\":\"/components/image\"},{\"text\":\"Input\",\"link\":\"/components/input\"},{\"text\":\"IntlFormatter\",\"link\":\"/components/intl-formatter\"},{\"text\":\"Kbd\",\"link\":\"/components/kbd\"},{\"text\":\"Link\",\"link\":\"/components/link\"},{\"text\":\"Loader\",\"link\":\"/components/loader\"},{\"text\":\"Mark\",\"link\":\"/components/mark\"},{\"text\":\"Menu\",\"link\":\"/components/menu\"},{\"text\":\"MessageBubble\",\"link\":\"/components/message-bubble\"},{\"text\":\"Pagination\",\"link\":\"/components/pagination\"},{\"text\":\"Popover\",\"link\":\"/components/popover\"},{\"text\":\"Progress\",\"link\":\"/components/progress\"},{\"text\":\"ProgressRing\",\"link\":\"/components/progress-ring\"},{\"text\":\"Radio\",\"link\":\"/components/radio\"},{\"text\":\"Rating\",\"link\":\"/components/rating\"},{\"text\":\"ScrollProgress\",\"link\":\"/components/scroll-progress\"},{\"text\":\"ScrollToButton\",\"link\":\"/components/scroll-to-button\"},{\"text\":\"Select\",\"link\":\"/components/select\"},{\"text\":\"Sidebar (Lab)\",\"link\":\"/components/sidebar\"},{\"text\":\"Skeleton Loader\",\"link\":\"/components/skeleton-loader\"},{\"text\":\"Slider\",\"link\":\"/components/slider\"},{\"text\":\"Spinner\",\"link\":\"/components/spinner\"},{\"text\":\"Table\",\"link\":\"/components/table\"},{\"text\":\"Tabs\",\"link\":\"/components/tabs\"},{\"text\":\"Tag\",\"link\":\"/components/tag\"},{\"text\":\"Timeline\",\"link\":\"/components/timeline\"},{\"text\":\"Toast\",\"link\":\"/components/toast\"},{\"text\":\"Toggle\",\"link\":\"/components/toggle\"},{\"text\":\"Tooltip\",\"link\":\"/components/tooltip\"},{\"text\":\"VisuallyHidden\",\"link\":\"/components/visually-hidden\"}]},{\"text\":\"Documentation\",\"items\":[{\"text\":\"Setup Guide\",\"link\":\"/docs/setup\"},{\"text\":\"Understanding AgnosticUI\",\"link\":\"/docs/understand\"},{\"text\":\"Advanced Usage\",\"link\":\"/docs/advanced/advanced-usage\"},{\"text\":\"CSS Utilities\",\"link\":\"/docs/utilities\"},{\"text\":\"FAQ\",\"link\":\"/docs/faq\"}]}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/AgnosticUI/agnosticui\"}]},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  </body>
+</html>
