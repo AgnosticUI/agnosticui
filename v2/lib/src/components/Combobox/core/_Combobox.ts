@@ -200,7 +200,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
 
     .combobox-input::placeholder {
-      color: var(--ag-text-tertiary);
+      color: var(--ag-text-secondary);
     }
 
     .combobox-input:disabled {
