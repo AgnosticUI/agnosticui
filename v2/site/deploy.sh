@@ -18,6 +18,6 @@ git commit -m 'deploy v2 site'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 # https://agnosticui.github.io/agnosticui
-git push -f git@github.com:AgnosticUI/agnosticui.git master:gh-pages
+git push -f git@github.com:AgnosticUI/agnosticui.git HEAD:gh-pages
 
 cd -
