@@ -372,9 +372,56 @@ export class AgButton extends LitElement implements ButtonProps {
       background: var(--ag-background-secondary);
     }
 
+    /* Disabled states - per-variant to maintain tonal identity */
+
+    /* Filled buttons - use lighter background tokens */
+    :host([variant="primary"]) button:disabled {
+      background: var(--ag-primary-background);
+      color: var(--ag-primary-text);
+    }
+
+    :host([variant="success"]) button:disabled {
+      background: var(--ag-success-background);
+      color: var(--ag-success-text);
+    }
+
+    :host([variant="warning"]) button:disabled {
+      background: var(--ag-warning-background);
+      color: var(--ag-warning-text);
+    }
+
+    :host([variant="danger"]) button:disabled {
+      background: var(--ag-danger-background);
+      color: var(--ag-danger-text);
+    }
+
+    :host([variant="secondary"]) button:disabled,
+    button:disabled {
+      background: var(--ag-background-disabled);
+      color: var(--ag-text-tertiary);
+    }
+
+    :host([variant="monochrome"]) button:disabled {
+      background: var(--ag-background-tertiary);
+      color: var(--ag-text-tertiary);
+    }
+
+    /* Bordered buttons - dim the border and text with opacity */
+    :host([bordered]) button:disabled {
+      opacity: 60%;
+      background: transparent;
+    }
+
+    /* Ghost and link buttons - dim with opacity */
+    :host([ghost]) button:disabled,
+    :host([link]) button:disabled {
+      opacity: 60%;
+      background: transparent;
+    }
+
+    /* All disabled buttons get not-allowed cursor */
     button:disabled {
       cursor: not-allowed;
-      background: var(--ag-background-disabled);
     }
 
     button:focus-visible,

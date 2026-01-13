@@ -841,6 +841,242 @@
       >Disabled</VueButton>
     </div>
 
+    <!-- Disabled States - Comprehensive -->
+    <div class="mbe2">
+      <h2>Disabled States - Filled Buttons</h2>
+      <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+        Disabled buttons maintain their color identity using lighter background and text tokens.
+        Each variant shows its tonal identity while clearly indicating the inactive state.
+      </p>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        shape="rounded"
+        title="Default Disabled"
+        disabled
+      >Default</VueButton>
+      <VueButton
+        shape="rounded"
+        variant="primary"
+        title="Primary Disabled"
+        disabled
+      >Primary</VueButton>
+      <VueButton
+        shape="rounded"
+        variant="secondary"
+        title="Secondary Disabled"
+        disabled
+      >Secondary</VueButton>
+      <VueButton
+        shape="rounded"
+        variant="success"
+        title="Success Disabled"
+        disabled
+      >Success</VueButton>
+      <VueButton
+        shape="rounded"
+        variant="warning"
+        title="Warning Disabled"
+        disabled
+      >Warning</VueButton>
+      <VueButton
+        shape="rounded"
+        variant="danger"
+        title="Danger Disabled"
+        disabled
+      >Danger</VueButton>
+      <VueButton
+        shape="rounded"
+        variant="monochrome"
+        title="Monochrome Disabled"
+        disabled
+      >Monochrome</VueButton>
+    </div>
+
+    <div class="mbe2">
+      <h2>Disabled States - Bordered Buttons</h2>
+      <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+        Bordered buttons use opacity when disabled, maintaining visual consistency.
+      </p>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton
+        :bordered="true"
+        shape="rounded"
+        title="Default Bordered Disabled"
+        disabled
+      >Default</VueButton>
+      <VueButton
+        :bordered="true"
+        shape="rounded"
+        variant="primary"
+        title="Primary Bordered Disabled"
+        disabled
+      >Primary</VueButton>
+      <VueButton
+        :bordered="true"
+        shape="rounded"
+        variant="secondary"
+        title="Secondary Bordered Disabled"
+        disabled
+      >Secondary</VueButton>
+      <VueButton
+        :bordered="true"
+        shape="rounded"
+        variant="success"
+        title="Success Bordered Disabled"
+        disabled
+      >Success</VueButton>
+      <VueButton
+        :bordered="true"
+        shape="rounded"
+        variant="warning"
+        title="Warning Bordered Disabled"
+        disabled
+      >Warning</VueButton>
+      <VueButton
+        :bordered="true"
+        shape="rounded"
+        variant="danger"
+        title="Danger Bordered Disabled"
+        disabled
+      >Danger</VueButton>
+      <VueButton
+        :bordered="true"
+        shape="rounded"
+        variant="monochrome"
+        title="Monochrome Bordered Disabled"
+        disabled
+      >Monochrome</VueButton>
+    </div>
+
+    <div class="mbe2">
+      <h2>State Comparison - Normal vs Disabled</h2>
+      <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+        Side-by-side comparison of normal and disabled states for each variant.
+      </p>
+    </div>
+    <div class="mbe4">
+      <div class="stacked-mobile mbe2">
+        <VueButton
+          shape="rounded"
+          variant="primary"
+          title="Primary Normal"
+        >Primary Normal</VueButton>
+        <VueButton
+          shape="rounded"
+          variant="primary"
+          title="Primary Disabled"
+          disabled
+        >Primary Disabled</VueButton>
+      </div>
+      <div class="stacked-mobile mbe2">
+        <VueButton
+          shape="rounded"
+          variant="success"
+          title="Success Normal"
+        >Success Normal</VueButton>
+        <VueButton
+          shape="rounded"
+          variant="success"
+          title="Success Disabled"
+          disabled
+        >Success Disabled</VueButton>
+      </div>
+      <div class="stacked-mobile mbe2">
+        <VueButton
+          shape="rounded"
+          variant="warning"
+          title="Warning Normal"
+        >Warning Normal</VueButton>
+        <VueButton
+          shape="rounded"
+          variant="warning"
+          title="Warning Disabled"
+          disabled
+        >Warning Disabled</VueButton>
+      </div>
+      <div class="stacked-mobile mbe2">
+        <VueButton
+          shape="rounded"
+          variant="danger"
+          title="Danger Normal"
+        >Danger Normal</VueButton>
+        <VueButton
+          shape="rounded"
+          variant="danger"
+          title="Danger Disabled"
+          disabled
+        >Danger Disabled</VueButton>
+      </div>
+    </div>
+
+    <div class="mbe2">
+      <h2>State Comparison - Bordered Normal vs Disabled</h2>
+    </div>
+    <div class="mbe4">
+      <div class="stacked-mobile mbe2">
+        <VueButton
+          :bordered="true"
+          shape="rounded"
+          variant="primary"
+          title="Primary Bordered Normal"
+        >Primary Normal</VueButton>
+        <VueButton
+          :bordered="true"
+          shape="rounded"
+          variant="primary"
+          title="Primary Bordered Disabled"
+          disabled
+        >Primary Disabled</VueButton>
+      </div>
+      <div class="stacked-mobile mbe2">
+        <VueButton
+          :bordered="true"
+          shape="rounded"
+          variant="success"
+          title="Success Bordered Normal"
+        >Success Normal</VueButton>
+        <VueButton
+          :bordered="true"
+          shape="rounded"
+          variant="success"
+          title="Success Bordered Disabled"
+          disabled
+        >Success Disabled</VueButton>
+      </div>
+      <div class="stacked-mobile mbe2">
+        <VueButton
+          :bordered="true"
+          shape="rounded"
+          variant="warning"
+          title="Warning Bordered Normal"
+        >Warning Normal</VueButton>
+        <VueButton
+          :bordered="true"
+          shape="rounded"
+          variant="warning"
+          title="Warning Bordered Disabled"
+          disabled
+        >Warning Disabled</VueButton>
+      </div>
+      <div class="stacked-mobile mbe2">
+        <VueButton
+          :bordered="true"
+          shape="rounded"
+          variant="danger"
+          title="Danger Bordered Normal"
+        >Danger Normal</VueButton>
+        <VueButton
+          :bordered="true"
+          shape="rounded"
+          variant="danger"
+          title="Danger Bordered Disabled"
+          disabled
+        >Danger Disabled</VueButton>
+      </div>
+    </div>
+
     <!-- CSS Parts Customization -->
     <div class="mbe4">
       <h2>CSS Parts Customization</h2>
