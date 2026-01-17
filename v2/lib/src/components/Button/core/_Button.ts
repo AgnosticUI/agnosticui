@@ -80,7 +80,7 @@ export class AgButton extends LitElement implements ButtonProps {
     button {
       /* Reset browser defaults */
       margin: 0;
-      border: none;
+      border: 1px solid transparent;
       background: var(--ag-background-tertiary);
 
       /* Inherit font styling from parent */
@@ -156,30 +156,45 @@ export class AgButton extends LitElement implements ButtonProps {
 
     /* Size variants */
     :host([size="x-sm"]) button {
+      height: var(--ag-space-8);
+      min-height: var(--ag-space-8);
       font-size: calc(var(--ag-font-size-base) - 0.375rem);
-      padding: var(--ag-space-1) var(--ag-space-2);
+      padding-inline: var(--ag-space-2);
+      padding-block: 0;
     }
 
     :host([size="sm"]) button {
+      height: var(--ag-space-9);
+      min-height: var(--ag-space-9);
       font-size: var(--ag-font-size-xs);
-      padding: var(--ag-space-2) var(--ag-space-3);
+      padding-inline: var(--ag-space-3);
+      padding-block: 0;
     }
 
     /* Default size (md) - applies when no size attribute or size="md" */
     button,
     :host([size="md"]) button {
+      height: var(--ag-space-10);
+      min-height: var(--ag-space-10);
       font-size: var(--ag-font-size-sm);
-      padding: var(--ag-space-3) var(--ag-space-4);
+      padding-inline: var(--ag-space-4);
+      padding-block: 0;
     }
 
     :host([size="lg"]) button {
+      height: var(--ag-space-12);
+      min-height: var(--ag-space-12);
       font-size: var(--ag-font-size-base);
-      padding: var(--ag-space-3) var(--ag-space-5);
+      padding-inline: var(--ag-space-5);
+      padding-block: 0;
     }
 
     :host([size="xl"]) button {
+      height: var(--ag-space-14);
+      min-height: var(--ag-space-14);
       font-size: var(--ag-font-size-md);
-      padding: var(--ag-space-3) var(--ag-space-6);
+      padding-inline: var(--ag-space-6);
+      padding-block: 0;
     }
 
     /* Shape variants */
@@ -222,7 +237,7 @@ export class AgButton extends LitElement implements ButtonProps {
     :host([ghost]) button,
     :host([link]) button {
       background: transparent;
-      border: none;
+      border-color: transparent;
       box-shadow: none;
     }
 
@@ -303,7 +318,7 @@ export class AgButton extends LitElement implements ButtonProps {
     /* Bordered variant - outline style */
     :host([bordered]) button {
       background: transparent;
-      border: 1px solid var(--ag-neutral-500);
+      border-color: var(--ag-neutral-500);
     }
 
     :host([bordered][variant="primary"]) button {
