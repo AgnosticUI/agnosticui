@@ -228,6 +228,7 @@ export class ButtonExample extends LitElement {
 | `ghost` | `boolean` | `false` | Minimal style with transparent background |
 | `link` | `boolean` | `false` | Text link style with underline on hover |
 | `grouped` | `boolean` | `false` | Style for buttons in a group (removes inner borders) |
+| `fullWidth` | `boolean` | `false` | Makes button take 100% width of container |
 | `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | HTML button type |
 | `disabled` | `boolean` | `false` | Disabled state |
 | `loading` | `boolean` | `false` | Loading/busy state (disables interaction) |
