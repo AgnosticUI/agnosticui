@@ -38,7 +38,7 @@ onUnmounted(() => {
 <div v-if="showDotTrail" style="position: fixed; top: 5rem; right: 2rem; z-index: 100; animation: fadeIn 0.3s ease-out;">
   <VueScrollProgress mode="dot-trail" :dots="7" badge-variant="primary" />
 </div>
-<VueScrollToButton :scrollThreshold="300" />
+<VueScrollToButton :scrollThreshold="300" shape="rounded" />
 
 <CliPreview />
 
