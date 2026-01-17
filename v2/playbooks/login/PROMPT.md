@@ -67,8 +67,8 @@ For each project, initialize AgnosticUI using the CLI and add required component
 
 ```bash
 cd react-example
-npx agnosticui-cli init
-# Select React when prompted
+npm install lit  # Install required dependency
+npx agnosticui-cli init --framework react --skip-prompts
 npx agnosticui-cli add button input card image link checkbox divider icon
 cd ..
 ```
@@ -77,8 +77,8 @@ cd ..
 
 ```bash
 cd vue-example
-npx agnosticui-cli init
-# Select Vue when prompted
+npm install lit  # Install required dependency
+npx agnosticui-cli init --framework vue --skip-prompts
 npx agnosticui-cli add button input card image link checkbox divider icon
 cd ..
 ```
@@ -87,8 +87,8 @@ cd ..
 
 ```bash
 cd lit-example
-npx agnosticui-cli init
-# Select Lit when prompted
+npm install lit  # Install required dependency
+npx agnosticui-cli init --framework lit --skip-prompts
 npx agnosticui-cli add button input card image link checkbox divider icon
 cd ..
 ```
@@ -258,63 +258,52 @@ The login form adapts across three breakpoints with distinct layouts:
 - Checkbox: Default variant for "Remember me"
 - Divider: With "or" text content
 
-**Critical CSS overrides for web component styling:**
+**Component Customization:**
 
-Web components use Shadow DOM. To style internal elements, use `::part()` selectors:
+Most styling is handled automatically by AgnosticUI components using design tokens. The following are now built into the components:
+
+- Input labels and text default to 14px (`font-size-sm`)
+- Checkbox labels default to 14px with no gap
+- Links default to 14px in form contexts
+- Input addon icons are automatically centered
+- Buttons support `full-width` attribute for 100% width
+
+**Full-width buttons:**
+
+Use the `full-width` attribute instead of CSS:
+
+```html
+<!-- Login button -->
+<ag-button full-width variant="monochrome" shape="rounded">Login</ag-button>
+
+<!-- Social buttons -->
+<ag-button full-width bordered shape="rounded">
+  <img src="/google-icon.svg" alt="" />
+  Google
+</ag-button>
+```
+
+**Icon styling:**
 
 ```css
-/* Override input label and placeholder to 14px */
-ag-input::part(ag-input-label),
-ag-input::part(ag-input) {
-  font-size: var(--ag-font-size-sm); /* 14px */
-}
-
-/* Override checkbox label font size and remove gap */
-ag-checkbox::part(ag-checkbox-label) {
-  font-size: var(--ag-font-size-sm); /* 14px */
-}
-
-ag-checkbox::part(ag-checkbox-wrapper) {
-  gap: 0;
-}
-
-/* Override link font size in auxiliary row */
-.auxiliary-row ag-link {
-  font-size: var(--ag-font-size-sm); /* 14px */
-}
-
-/* Input icon addon - center the icon */
-.input-icon {
-  display: flex;
-  align-items: center;
-}
-
+/* Icon size and color in input addons */
 .input-icon svg {
   width: var(--ag-space-4);
   height: var(--ag-space-4);
-}
-
-/* Full-width buttons - BOTH rules required */
-.login-button ag-button {
-  display: block;
-  width: 100%;
-}
-
-.login-button ag-button::part(ag-button) {
-  width: 100%;
+  color: var(--ag-text-secondary);
 }
 ```
 
 ## Input Addon Syntax
 
+Icons in addon slots are automatically centered - no wrapper needed.
+
 **Vue:**
 
 ```vue
-<VueInput v-model:value="email" label="Email" placeholder="Enter your email">
+<VueInput v-model:value="email" label="Email" placeholder="Enter your email" rounded>
   <template #addon-left>
-    <span class="input-icon">
-      <Mail :size="18" style="color: var(--ag-text-secondary)" />
-    </span>
+    <Mail :size="18" style="color: var(--ag-text-secondary)" />
   </template>
 </VueInput>
 ```
@@ -329,9 +318,7 @@ ag-checkbox::part(ag-checkbox-wrapper) {
   placeholder="Enter your email"
   rounded
 >
-  <span slot="addon-left" className="input-icon">
-    <Mail size={18} style={{ color: "var(--ag-text-secondary)" }} />
-  </span>
+  <Mail slot="addon-left" size={18} style={{ color: "var(--ag-text-secondary)" }} />
 </ReactInput>
 ```
 
@@ -339,9 +326,10 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 
 ```html
 <ag-input label="Email" placeholder="Enter your email" rounded>
-  <span slot="addon-left">
-    <!-- Render Lucide icon as SVG here -->
-  </span>
+  <!-- Render Lucide icon as SVG here - automatically centered -->
+  <svg slot="addon-left" xmlns="http://www.w3.org/2000/svg" width="18" height="18" ...>
+    ...
+  </svg>
 </ag-input>
 ```
 
@@ -567,18 +555,18 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 
 **Issues encountered:**
 
-1. **CLI TTY requirement**: The `agnosticui-cli` requires a TTY for interactive prompts even when options are provided. Workaround: use `expect` or run from an interactive terminal.
-2. **Asset path correction**: The relative path from `v2/playbooks/login` to `v2/graphics` is `../../graphics/` not `../graphics/`.
-3. **TypeScript decorators**: The CLI automatically updates tsconfig files with `experimentalDecorators: true` and `useDefineForClassFields: false`.
+1. **Asset path correction**: The relative path from `v2/playbooks/login` to `v2/graphics` is `../../graphics/` not `../graphics/`.
+2. **TypeScript decorators**: The CLI automatically updates tsconfig files with `experimentalDecorators: true` and `useDefineForClassFields: false`.
+3. **Non-interactive CLI**: Use `--skip-prompts` flag for automated/non-TTY environments. Dependencies must be installed manually before running init.
 
 **Key implementation notes:**
 
-- Input addons work via `<span slot="addon-left">` containing the icon component
+- Input addons work via slot attributes - icons are automatically centered
 - Button `variant="monochrome"` creates black background/white text button
 - Link `variant="monochrome"` for subtle links, `variant="primary"` for highlighted links
-- Checkbox uses `checked` prop and `onChange` event - core checkbox already has margin, no gap needed
+- Checkbox uses `checked` prop and `onChange` event
 - Responsive layout requires showing/hiding different containers per breakpoint (mobile-first approach)
-- **Full-width buttons**: Use `::part(ag-button)` selector to target the shadow DOM button element
+- **Full-width buttons**: Use `fullWidth` prop (React) or `:full-width="true"` (Vue) or `full-width` attribute (Lit)
 
 **CSS patterns for form styling:**
 
@@ -588,22 +576,6 @@ ag-checkbox::part(ag-checkbox-wrapper) {
   max-width: 375px;
   margin: 0 auto;
   padding: var(--ag-space-6);
-}
-
-/* Override input label and placeholder to 14px */
-ag-input::part(ag-input-label),
-ag-input::part(ag-input) {
-  font-size: var(--ag-font-size-sm); /* 14px */
-}
-
-/* Full-width login button - BOTH rules required */
-.login-button ag-button {
-  display: block;
-  width: 100%;
-}
-
-.login-button ag-button::part(ag-button) {
-  width: 100%;
 }
 
 /* Auxiliary row - wraps on narrow screens */
@@ -616,42 +588,12 @@ ag-input::part(ag-input) {
   margin-bottom: var(--ag-space-6);
 }
 
-/* Override checkbox label font size and remove gap */
-ag-checkbox::part(ag-checkbox-label) {
-  font-size: var(--ag-font-size-sm); /* 14px */
-}
-
-ag-checkbox::part(ag-checkbox-wrapper) {
-  gap: 0;
-}
-
-/* Override link font size in auxiliary row */
-.auxiliary-row ag-link {
-  font-size: var(--ag-font-size-sm); /* 14px */
-}
-
-/* Social buttons - stacked full-width */
+/* Social buttons - stacked with spacing */
 .social-buttons {
   display: flex;
   flex-direction: column;
+  gap: var(--ag-space-3);
   margin-bottom: var(--ag-space-14);
-}
-
-.social-button {
-  margin-block-end: var(--ag-space-3);
-}
-
-.social-button:last-child {
-  margin-block-end: 0;
-}
-
-.social-button ag-button {
-  display: block;
-  width: 100%;
-}
-
-.social-button ag-button::part(ag-button) {
-  width: 100%;
 }
 
 /* Logo - centered */
@@ -666,23 +608,23 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 }
 ```
 
+**Note:** CSS overrides for input/checkbox/link font sizes and button widths are no longer needed. Use `full-width` attribute on buttons instead.
+
 **Working JSX patterns:**
 
 ```tsx
-// Input with icon addon
+// Input with icon addon - icon automatically centered
 <ReactInput label="Email" type="email" placeholder="Enter your email" rounded>
-  <span slot="addon-left">
-    <Mail size={18} style={{ color: 'var(--ag-text-secondary)' }} />
-  </span>
+  <Mail slot="addon-left" size={18} style={{ color: 'var(--ag-text-secondary)' }} />
 </ReactInput>
 
 // Full-width monochrome button with rounded corners
-<ReactButton type="submit" variant="monochrome" shape="rounded">
+<ReactButton fullWidth type="submit" variant="monochrome" shape="rounded">
   Login
 </ReactButton>
 
-// Social button with icon and rounded corners
-<ReactButton bordered shape="rounded">
+// Full-width social button with icon and rounded corners
+<ReactButton fullWidth bordered shape="rounded">
   <img src="/google-icon.svg" alt="" className="social-icon" />
   Google
 </ReactButton>
@@ -704,7 +646,7 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 **Vue-specific patterns:**
 
 ```vue
-<!-- Input with icon addon using Vue slots -->
+<!-- Input with icon addon - icon automatically centered -->
 <VueInput
   v-model:value="email"
   label="Email"
@@ -722,12 +664,13 @@ ag-checkbox::part(ag-checkbox-wrapper) {
   Remember me
 </VueCheckbox>
 
-<!-- Button with rounded corners -->
-<VueButton type="submit" variant="monochrome" shape="rounded">
+<!-- Full-width button with rounded corners -->
+<VueButton :full-width="true" type="submit" variant="monochrome" shape="rounded">
   Login
 </VueButton>
 
-<VueButton bordered shape="rounded">
+<!-- Full-width social button -->
+<VueButton :full-width="true" bordered shape="rounded">
   <img src="/google-icon.svg" alt="" class="social-icon" />
   Google
 </VueButton>
@@ -767,11 +710,12 @@ render() {
       .value=${this.email}
       @input=${this.handleEmailInput}
     >
-      <span slot="addon-left" class="input-icon">${mailIcon}</span>
+      <!-- Icon automatically centered, no wrapper needed -->
+      ${mailIcon}
     </ag-input>
 
-    <ag-button variant="monochrome" shape="rounded">Login</ag-button>
-    <ag-button bordered shape="rounded">Social Button</ag-button>
+    <ag-button full-width variant="monochrome" shape="rounded">Login</ag-button>
+    <ag-button full-width bordered shape="rounded">Social Button</ag-button>
   `;
 }
 ```
@@ -787,15 +731,11 @@ render() {
 **Icon styling in Lit component styles:**
 
 ```css
-.input-icon {
-  display: flex;
-  align-items: center;
-  color: var(--ag-text-secondary);
-}
-
-.input-icon svg {
+/* Icons in addons are automatically centered */
+::slotted(svg) {
   width: var(--ag-space-4);
   height: var(--ag-space-4);
+  color: var(--ag-text-secondary);
 }
 ```
 
