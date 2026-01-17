@@ -41,7 +41,7 @@ export class LoginPage extends LitElement {
     }
 
     .login-logo img {
-      height: 32px;
+      height: var(--ag-space-12);
       width: auto;
     }
 
@@ -133,8 +133,8 @@ export class LoginPage extends LitElement {
     }
 
     .social-icon {
-      width: 16px;
-      height: 16px;
+      width: var(--ag-space-4);
+      height: var(--ag-space-4);
       margin-right: var(--ag-space-2);
       vertical-align: middle;
     }
@@ -174,8 +174,8 @@ export class LoginPage extends LitElement {
     }
 
     .input-icon svg {
-      width: 18px;
-      height: 18px;
+      width: var(--ag-space-4);
+      height: var(--ag-space-4);
     }
 
     /* Tablet Layout */
@@ -259,7 +259,10 @@ export class LoginPage extends LitElement {
 
       .login-column-right {
         display: block;
-      }
+          overflow: hidden;
+          height: 100vh;
+        }
+
 
       .login-column-right picture {
         display: block;
@@ -325,6 +328,7 @@ export class LoginPage extends LitElement {
           <ag-input
             label="Email"
             type="email"
+            rounded
             placeholder="Enter your email"
             .value=${this.email}
             @input=${this.handleEmailInput}
@@ -338,6 +342,7 @@ export class LoginPage extends LitElement {
           <ag-input
             label="Password"
             type="password"
+            rounded
             placeholder="Enter your password"
             .value=${this.password}
             @input=${this.handlePasswordInput}

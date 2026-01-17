@@ -101,6 +101,7 @@ The CLI will:
 - Configure styling and imports
 
 **Post-init verification:**
+
 - Ensure `ag-tokens.css` and `ag-tokens-dark.css` are in `src/components/ag/styles/`
 - Import these in your main entry file (e.g., `main.tsx`, `main.ts`)
 
@@ -109,9 +110,12 @@ The CLI will:
 Add Google Merriweather font to each project's `index.html` in the `<head>`:
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400&display=swap"
+  rel="stylesheet"
+/>
 ```
 
 ### Asset Setup
@@ -158,11 +162,37 @@ import { Mail, Lock } from "lucide-vue-next";
 
 ```typescript
 // Don't import lucide - use inline SVG instead (lucide export format doesn't work directly)
-const mailIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`;
-const lockIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+const mailIcon = html`<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="18"
+  height="18"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="16" x="2" y="4" rx="2" />
+  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+</svg>`;
+const lockIcon = html`<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="18"
+  height="18"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+</svg>`;
 
 // Use in templates:
-html`<span slot="addon-left" class="input-icon">${mailIcon}</span>`
+html`<span slot="addon-left" class="input-icon">${mailIcon}</span>`;
 ```
 
 ---
@@ -260,8 +290,8 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 }
 
 .input-icon svg {
-  width: 18px;
-  height: 18px;
+  width: var(--ag-space-4);
+  height: var(--ag-space-4);
 }
 
 /* Full-width buttons - BOTH rules required */
@@ -278,6 +308,7 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 ## Input Addon Syntax
 
 **Vue:**
+
 ```vue
 <VueInput v-model:value="email" label="Email" placeholder="Enter your email">
   <template #addon-left>
@@ -289,22 +320,25 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 ```
 
 **React:**
+
 ```tsx
 <ReactInput
   value={email}
   onChange={(e) => setEmail((e.target as HTMLInputElement).value)}
   label="Email"
   placeholder="Enter your email"
+  rounded
 >
   <span slot="addon-left" className="input-icon">
-    <Mail size={18} style={{ color: 'var(--ag-text-secondary)' }} />
+    <Mail size={18} style={{ color: "var(--ag-text-secondary)" }} />
   </span>
 </ReactInput>
 ```
 
 **Lit:**
+
 ```html
-<ag-input label="Email" placeholder="Enter your email">
+<ag-input label="Email" placeholder="Enter your email" rounded>
   <span slot="addon-left">
     <!-- Render Lucide icon as SVG here -->
   </span>
@@ -361,33 +395,33 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 │         max-width: 375px        │
 │  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  │
 │  ┃         Ag (logo)         ┃  │
-│  ┃          ↕ 32px           ┃  │
+│  ┃          ↕ --ag-space-12  ┃  │
 │  ┃      Welcome back!        ┃  │
-│  ┃          ↕ 24px           ┃  │
+│  ┃          ↕ --ag-space-6   ┃  │
 │  ┃  Email                    ┃  │
 │  ┃    ↕ 8px                  ┃  │
 │  ┃  ┌─────────────────────┐  ┃  │
 │  ┃  │ ✉ Enter your email  │  ┃  │
 │  ┃  └─────────────────────┘  ┃  │
-│  ┃          ↕ 24px           ┃  │
+│  ┃          ↕ --ag-space-6   ┃  │
 │  ┃  Password                 ┃  │
 │  ┃    ↕ 8px                  ┃  │
 │  ┃  ┌─────────────────────┐  ┃  │
 │  ┃  │ 🔒 Enter password   │  ┃  │
 │  ┃  └─────────────────────┘  ┃  │
-│  ┃          ↕ 24px           ┃  │
+│  ┃          ↕ --ag-space-6   ┃  │
 │  ┃  ☐ Remember  Forgot pwd?  ┃  │
-│  ┃          ↕ 24px           ┃  │
+│  ┃          ↕ --ag-space-6   ┃  │
 │  ┃  ┌─────────────────────┐  ┃  │
 │  ┃  │       Login         │  ┃  │
 │  ┃  └─────────────────────┘  ┃  │
-│  ┃          ↕ 24px           ┃  │
+│  ┃          ↕ --ag-space-6   ┃  │
 │  ┃  ───────── or ──────────  ┃  │
-│  ┃          ↕ 24px           ┃  │
+│  ┃          ↕ --ag-space-6   ┃  │
 │  ┃  ┌──────────┬──────────┐  ┃  │
 │  ┃  │ f  FB    │ G Google │  ┃  │
 │  ┃  └──────────┴──────────┘  ┃  │
-│  ┃          ↕ 56px           ┃  │
+│  ┃          ↕ --ag-space-12  ┃  │
 │  ┃  Don't have account?      ┃  │
 │  ┃  Sign up (link)           ┃  │
 │  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛  │
@@ -407,25 +441,25 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 │  ░░░░║  max-width: 375px           ║░░░░░░░░░░  │
 │  ░░░░║  ┏━━━━━━━━━━━━━━━━━━━━━━━┓  ║░░░░░░░░░░  │
 │  ░░░░║  ┃      Ag (logo)        ┃  ║░░░░░░░░░░  │
-│  ░░░░║  ┃       ↕ 32px          ┃  ║░░░░░░░░░░  │
+│  ░░░░║  ┃   ↕ --ag-space-12     ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┃   Welcome back!       ┃  ║░░░░░░░░░░  │
-│  ░░░░║  ┃       ↕ 24px          ┃  ║░░░░░░░░░░  │
+│  ░░░░║  ┃   ↕ --ag-space-6      ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┃   Email               ┃  ║░░░░░░░░░░  │
-│  ░░░░║  ┃     ↕ 8px             ┃  ║░░░░░░░░░░  │
+│  ░░░░║  ┃   ↕ --ag-space-2      ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┃   [✉ Enter email]     ┃  ║░░░░░░░░░░  │
-│  ░░░░║  ┃       ↕ 24px          ┃  ║░░░░░░░░░░  │
+│  ░░░░║  ┃   ↕ --ag-space-6      ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┃   Password            ┃  ║░░░░░░░░░░  │
-│  ░░░░║  ┃     ↕ 8px             ┃  ║░░░░░░░░░░  │
+│  ░░░░║  ┃   ↕ --ag-space-2      ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┃   [🔒 Enter password] ┃  ║░░░░░░░░░░  │
-│  ░░░░║  ┃       ↕ 24px          ┃  ║░░░░░░░░░░  │
+│  ░░░░║  ┃   ↕ --ag-space-6      ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┃   ☐ Remember  Forgot? ┃  ║░░░░░░░░░░  │
-│  ░░░░║  ┃       ↕ 24px          ┃  ║░░░░░░░░░░  │
+│  ░░░░║  ┃   ↕ --ag-space-6      ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┃   [Login Button]      ┃  ║░░░░░░░░░░  │
-│  ░░░░║  ┃       ↕ 24px          ┃  ║░░░░░░░░░░  │
+│  ░░░░║  ┃   ↕ --ag-space-6      ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┃   ───── or ─────      ┃  ║░░░░░░░░░░  │
-│  ░░░░║  ┃       ↕ 24px          ┃  ║░░░░░░░░░░  │
+│  ░░░░║  ┃   ↕ --ag-space-6      ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┃   [f FB] [G Google]   ┃  ║░░░░░░░░░░  │
-│  ░░░░║  ┃       ↕ 56px          ┃  ║░░░░░░░░░░  │
+│  ░░░░║  ┃   ↕ --ag-space-14     ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┃   No account? Sign up ┃  ║░░░░░░░░░░  │
 │  ░░░░║  ┗━━━━━━━━━━━━━━━━━━━━━━━┛  ║░░░░░░░░░░  │
 │  ░░░░╚═════════════════════════════╝░░░░░░░░░░  │
@@ -446,25 +480,25 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 │  │                         │   █████████████████████████    │  │
 │  │  ┏━━━━━━━━━━━━━━━━━┓    │   █████████████████████████    │  │
 │  │  ┃    Ag (logo)    ┃    │   ████  Mountain Scene ████    │  │
-│  │  ┃     ↕ 32px      ┃    │   ████  with Flowers   ████    │  │
+│  │  ┃ ↕ --ag-space-12 ┃    │   ████  with Flowers   ████    │  │
 │  │  ┃  Welcome back!  ┃    │   ████  (AgnosticUI    ████    │  │
-│  │  ┃     ↕ 24px      ┃    │   ████   Image comp)   ████    │  │
+│  │  ┃ ↕ --ag-space-6  ┃    │   ████   Image comp)   ████    │  │
 │  │  ┃  Email          ┃    │   █████████████████████████    │  │
-│  │  ┃    ↕ 8px        ┃    │   █████████████████████████    │  │
+│  │  ┃ ↕ --ag-space-2  ┃    │   █████████████████████████    │  │
 │  │  ┃  [✉ input]      ┃    │   █████████████████████████    │  │
-│  │  ┃     ↕ 24px      ┃    │   █████████████████████████    │  │
+│  │  ┃ ↕ --ag-space-6  ┃    │   █████████████████████████    │  │
 │  │  ┃  Password       ┃    │   █████████████████████████    │  │
-│  │  ┃    ↕ 8px        ┃    │   █████████████████████████    │  │
+│  │  ┃ ↕ --ag-space-2  ┃    │   █████████████████████████    │  │
 │  │  ┃  [🔒 input]     ┃    │   █████████████████████████    │  │
-│  │  ┃     ↕ 24px      ┃    │   █████████████████████████    │  │
+│  │  ┃ ↕ --ag-space-6  ┃    │   █████████████████████████    │  │
 │  │  ┃  ☐ Rem  Forgot? ┃    │   █████████████████████████    │  │
-│  │  ┃     ↕ 24px      ┃    │   █████████████████████████    │  │
+│  │  ┃ ↕ --ag-space-6  ┃    │   █████████████████████████    │  │
 │  │  ┃  [Login Button] ┃    │   █████████████████████████    │  │
-│  │  ┃     ↕ 24px      ┃    │   █████████████████████████    │  │
+│  │  ┃ ↕ --ag-space-6  ┃    │   █████████████████████████    │  │
 │  │  ┃  ──── or ────   ┃    │   █████████████████████████    │  │
-│  │  ┃     ↕ 24px      ┃    │   █████████████████████████    │  │
+│  │  ┃ ↕ --ag-space-6  ┃    │   █████████████████████████    │  │
 │  │  ┃  [f FB][G Goog] ┃    │   █████████████████████████    │  │
-│  │  ┃     ↕ 56px      ┃    │   █████████████████████████    │  │
+│  │  ┃ ↕ --ag-space-14 ┃    │   █████████████████████████    │  │
 │  │  ┃  No acct? Signup┃    │   █████████████████████████    │  │
 │  │  ┗━━━━━━━━━━━━━━━━━┛    │   █████████████████████████    │  │
 │  │                         │                                │  │
@@ -482,6 +516,7 @@ ag-checkbox::part(ag-checkbox-wrapper) {
    - Use the AgnosticUI Image component with responsive sources
    - This properly prevents HTTP requests on mobile by using `<picture>` element with media queries
    - Example implementation:
+
    ```html
    <ag-image>
      <source media="(min-width: 768px)" srcset="/login-bg.jpg" />
@@ -491,6 +526,7 @@ ag-checkbox::part(ag-checkbox-wrapper) {
      />
    </ag-image>
    ```
+
    - The background image loads on tablet (≥ 768px) and desktop (≥ 1200px)
    - Mobile gets no image at all (bandwidth optimization)
 
@@ -530,11 +566,13 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 **Status:** Build completed successfully
 
 **Issues encountered:**
+
 1. **CLI TTY requirement**: The `agnosticui-cli` requires a TTY for interactive prompts even when options are provided. Workaround: use `expect` or run from an interactive terminal.
 2. **Asset path correction**: The relative path from `v2/playbooks/login` to `v2/graphics` is `../../graphics/` not `../graphics/`.
 3. **TypeScript decorators**: The CLI automatically updates tsconfig files with `experimentalDecorators: true` and `useDefineForClassFields: false`.
 
 **Key implementation notes:**
+
 - Input addons work via `<span slot="addon-left">` containing the icon component
 - Button `variant="monochrome"` creates black background/white text button
 - Link `variant="monochrome"` for subtle links, `variant="primary"` for highlighted links
@@ -632,7 +670,7 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 
 ```tsx
 // Input with icon addon
-<ReactInput label="Email" type="email" placeholder="Enter your email">
+<ReactInput label="Email" type="email" placeholder="Enter your email" rounded>
   <span slot="addon-left">
     <Mail size={18} style={{ color: 'var(--ag-text-secondary)' }} />
   </span>
@@ -655,6 +693,7 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 **Status:** Build completed successfully
 
 **Issues encountered:**
+
 1. **tsconfig include paths**: CLI may mangle include patterns (e.g., `src*.ts` instead of `src/**/*.ts`). Fix manually if needed.
 2. **TypeScript strict mode**: Some component definitions have unused variable warnings. `vue-tsc` may fail but `vite build` succeeds.
 3. **VueLink component**: Must import the core Link component to register the web component. Add this line to `VueLink.vue`:
@@ -666,7 +705,13 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 
 ```vue
 <!-- Input with icon addon using Vue slots -->
-<VueInput v-model:value="email" label="Email" type="email" placeholder="Enter your email">
+<VueInput
+  v-model:value="email"
+  label="Email"
+  type="email"
+  rounded
+  placeholder="Enter your email"
+>
   <template #addon-left>
     <Mail :size="18" style="color: var(--ag-text-secondary)" />
   </template>
@@ -693,6 +738,7 @@ ag-checkbox::part(ag-checkbox-wrapper) {
 **Status:** Build completed successfully
 
 **Issues encountered:**
+
 1. **Lucide icons in Lit**: Lucide's export format doesn't work directly in Lit. Use inline SVG strings instead.
 2. **Shadow DOM styling**: All responsive styles must be in the component's `static styles`.
 3. **Form width**: Do NOT use `width: 100%` on `.login-form` - it causes tablet overflow.
@@ -731,13 +777,15 @@ render() {
 ```
 
 **CSS imports for Lit:**
+
 ```css
 /* In index.css (global) */
-@import './components/ag/styles/ag-tokens.css';
-@import './components/ag/styles/ag-tokens-dark.css';
+@import "./components/ag/styles/ag-tokens.css";
+@import "./components/ag/styles/ag-tokens-dark.css";
 ```
 
 **Icon styling in Lit component styles:**
+
 ```css
 .input-icon {
   display: flex;
@@ -746,8 +794,44 @@ render() {
 }
 
 .input-icon svg {
-  width: 18px;
-  height: 18px;
+  width: var(--ag-space-4);
+  height: var(--ag-space-4);
 }
 ```
 
+---
+
+## Common Issues & Fixes
+
+### Desktop Layout: Vertical Scroll & White Space Below Image
+
+**React & Vue:**
+
+```css
+@media (min-width: 1200px) {
+  .login-column-right {
+    display: block;
+    overflow: hidden;
+    height: 100vh;
+  }
+}
+```
+
+Right column needs explicit `height: 100vh` + `overflow: hidden` to prevent image from extending beyond viewport.
+
+**Lit (Additional Fix Required):**
+Remove `min-height: 100vh` from `.login-form-wrapper`:
+
+```css
+@media (min-width: 1200px) {
+  .login-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* NO min-height: 100vh here */
+    padding: var(--ag-space-6);
+  }
+}
+```
+
+**Why:** In Lit's Shadow DOM, `:host` already sets viewport height. Adding `min-height: 100vh` on `.login-form-wrapper` creates redundant constraint within shadow boundary, causing overflow. Rule: set viewport height once at `:host`, let descendants flow naturally.
