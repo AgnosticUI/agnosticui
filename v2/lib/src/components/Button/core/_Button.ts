@@ -42,6 +42,7 @@ export interface ButtonProps {
   ghost?: boolean;
   link?: boolean;
   grouped?: boolean;
+  fullWidth?: boolean;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   loading?: boolean;
@@ -75,6 +76,16 @@ export class AgButton extends LitElement implements ButtonProps {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+    }
+
+    /* Full-width variant */
+    :host([full-width]) {
+      display: block;
+      width: 100%;
+    }
+
+    :host([full-width]) button {
+      width: 100%;
     }
 
     button {
@@ -489,6 +500,12 @@ export class AgButton extends LitElement implements ButtonProps {
   declare grouped: boolean;
 
   /**
+   * Full-width style - button takes 100% width of container
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'full-width' })
+  declare fullWidth: boolean;
+
+  /**
    * Button type - determines behavior in forms
    */
   @property({ type: String })
@@ -546,6 +563,7 @@ export class AgButton extends LitElement implements ButtonProps {
     this.ghost = false;
     this.link = false;
     this.grouped = false;
+    this.fullWidth = false;
     this.type = 'button';
     this.ariaLabel = '';
     this.variant = '';

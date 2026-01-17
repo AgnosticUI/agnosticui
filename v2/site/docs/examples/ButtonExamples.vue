@@ -841,6 +841,39 @@
       >Disabled</VueButton>
     </div>
 
+    <!-- Full Width -->
+    <div class="mbe2">
+      <h2>Full Width</h2>
+      <p style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+        Use the <code>full-width</code> attribute to make buttons expand to 100% of their container width.
+      </p>
+    </div>
+    <div class="mbe4">
+      <VueButton
+        :full-width="true"
+        variant="primary"
+        shape="rounded"
+        title="Full Width Primary"
+      >Full Width Primary</VueButton>
+    </div>
+    <div class="mbe4">
+      <VueButton
+        :full-width="true"
+        variant="monochrome"
+        shape="rounded"
+        title="Full Width Monochrome"
+      >Full Width Monochrome</VueButton>
+    </div>
+    <div class="mbe4">
+      <VueButton
+        :full-width="true"
+        :bordered="true"
+        variant="success"
+        shape="rounded"
+        title="Full Width Bordered Success"
+      >Full Width Bordered Success</VueButton>
+    </div>
+
     <!-- Disabled States - Comprehensive -->
     <div class="mbe2">
       <h2>Disabled States - Filled Buttons</h2>
