@@ -163,3 +163,15 @@
     flex-wrap: wrap;
   }
 }
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.gap4 {
+  gap: var(--ag-space-4);
+}
