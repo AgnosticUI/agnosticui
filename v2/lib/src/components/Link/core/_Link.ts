@@ -52,6 +52,7 @@ export class AgLink extends LitElement implements LinkProps {
 
     a {
       /* Base link styles */
+      font-size: var(--ag-font-size-sm);
       color: var(--ag-primary-text);
       text-decoration: underline;
       cursor: pointer;
