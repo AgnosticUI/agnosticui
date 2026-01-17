@@ -6,20 +6,94 @@
 
 ## Core Library Issues (v2/lib)
 
-These are CSS overrides or workarounds discovered during playbook development that ideally should be addressed in the AgnosticUI core library.
+These are CSS overrides or workarounds discovered during playbook development that should be addressed in the AgnosticUI core library.
 
-| Issue                                                           | Current Workaround                                                                                | Suggested Core Fix                                                   |
-| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| Input label/placeholder font size defaults to var(--ag-space-4) | `ag-input::part(ag-input-label), ag-input::part(ag-input) { font-size: var(--ag-font-size-sm); }` | Consider 14px default or expose size prop                            |
-| Checkbox label font size                                        | `ag-checkbox::part(ag-checkbox-label) { font-size: var(--ag-font-size-sm); }`                     | Consider 14px default or expose size prop                            |
-| Checkbox wrapper has gap                                        | `ag-checkbox::part(ag-checkbox-wrapper) { gap: 0; }`                                              | Review if gap is needed in core                                      |
-| Full-width buttons need two selectors                           | Both `ag-button { display: block; width: 100%; }` AND `::part(ag-button) { width: 100%; }`        | Consider `fullWidth` prop                                            |
-| Icon addon slot content not centered                            | Wrap in `<span class="input-icon">` with flex centering                                           | Input component should center slot content                           |
-| Non-bordered buttons shorter than bordered (38px vs 40px)       | None currently                                                                                    | Add transparent border to non-bordered variant for consistent height |
-| Button height increases with icon content (40px → 42-44px)      | Use var(--ag-space-4) icons instead of 18px (brings to 42px)                                      | Constrain button content height or use flex alignment                |
-| Social icons expand button height                               | `.social-icon { width: var(--ag-space-4); height: var(--ag-space-4); vertical-align: middle; }`   | Button should constrain content height                               |
+| Issue                                                           | Current Workaround                                                                                | Proposed Core Fix                                                                                   |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Input label/placeholder font size defaults to var(--ag-space-4) | `ag-input::part(ag-input-label), ag-input::part(ag-input) { font-size: var(--ag-font-size-sm); }` | **BUG:** Use `--ag-font-size-sm` instead of `--ag-space-4`. Add `size` prop for variants (sm/md/lg) |
+| Checkbox label font size                                        | `ag-checkbox::part(ag-checkbox-label) { font-size: var(--ag-font-size-sm); }`                     | Match input label size (`--ag-font-size-sm`) for form consistency. Add `size` prop                  |
+| Checkbox wrapper has gap                                        | `ag-checkbox::part(ag-checkbox-wrapper) { gap: 0; }`                                              | Review if gap is needed in core                                                                     |
+| Full-width buttons need two selectors                           | Both `ag-button { display: block; width: 100%; }` AND `::part(ag-button) { width: 100%; }`        | Add `fullWidth` boolean prop that sets `width: 100%` on button                                      |
+| Icon addon slot content not centered                            | Wrap in `<span class="input-icon">` with flex centering                                           | Input component should center slot content with flex alignment                                      |
+| Non-bordered buttons shorter than bordered (38px vs 40px)       | None currently                                                                                    | **Use fixed height approach with transparent border for all variants**                              |
+| Button height increases with icon content (40px → 42-44px)      | Use var(--ag-space-4) icons instead of 18px                                                       | **Set explicit `height` and `min-height` to constrain button dimensions**                           |
+| Social icons expand button height                               | `.social-icon { width: var(--ag-space-4); height: var(--ag-space-4); vertical-align: middle; }`   | **Fixed height prevents content from expanding button**                                             |
 
----
+### Button Height Management Solution
+
+Replace padding-based height with explicit height values:
+
+```css
+/* Size variants with fixed heights */
+:host([size="x-sm"]) button {
+  height: var(--ag-space-8); /* 32px */
+  min-height: var(--ag-space-8);
+  font-size: calc(var(--ag-font-size-base) - 0.375rem);
+  padding-inline: var(--ag-space-2);
+  padding-block: 0;
+}
+
+:host([size="sm"]) button {
+  height: var(--ag-space-9); /* 36px */
+  min-height: var(--ag-space-9);
+  font-size: var(--ag-font-size-xs);
+  padding-inline: var(--ag-space-3);
+  padding-block: 0;
+}
+
+/* Default/md size */
+button,
+:host([size="md"]) button {
+  height: var(--ag-space-10); /* 40px */
+  min-height: var(--ag-space-10);
+  font-size: var(--ag-font-size-sm);
+  padding-inline: var(--ag-space-4);
+  padding-block: 0;
+}
+
+:host([size="lg"]) button {
+  height: var(--ag-space-12); /* 48px */
+  min-height: var(--ag-space-12);
+  font-size: var(--ag-font-size-base);
+  padding-inline: var(--ag-space-5);
+  padding-block: 0;
+}
+
+:host([size="xl"]) button {
+  height: var(--ag-space-14); /* 56px */
+  min-height: var(--ag-space-14);
+  font-size: var(--ag-font-size-md);
+  padding-inline: var(--ag-space-6);
+  padding-block: 0;
+}
+```
+
+**Key changes:**
+
+- Set explicit `height` and `min-height` on all size variants
+- Remove `padding-block` (set to 0) - height controls vertical dimension
+- Keep `padding-inline` for horizontal spacing
+- Use existing `--ag-space-*` tokens for height values
+- Add transparent border to all buttons for consistent box-sizing: `border: 1px solid transparent;`
+- Bordered variant overrides border color: `border-color: var(--ag-neutral-500);`
+
+**Benefits:**
+
+- ✅ All button variants have identical heights
+- ✅ Icons cannot expand button height
+- ✅ Bordered/non-bordered buttons align perfectly
+- ✅ Consistent click targets for accessibility
+- ✅ Aligns with industry standard (Shadcn, Chakra, Daisy, MUI)
+- ✅ Removes need for workarounds in playbooks
+
+## Playbook Backfill Updates
+
+Once we've updated the above AgnosticUI core library issues, we will further need to go back to the Playbook implementations and refactor those to reflect the core library updates in following:
+
+- `v2/playbooks/login/PROMPT.md`
+- `v2/playbooks/login/vue-example`
+- `v2/playbooks/login/lit-example`
+- `v2/playbooks/login/react-example`
 
 ## Development Changelog
 
