@@ -44,6 +44,7 @@ const handleSubmit = (e: Event) => {
                 v-model:value="email"
                 label="Email"
                 type="email"
+                rounded
                 placeholder="Enter your email"
               >
                 <template #addon-left>
@@ -60,6 +61,7 @@ const handleSubmit = (e: Event) => {
                 v-model:value="password"
                 label="Password"
                 type="password"
+                rounded
                 placeholder="Enter your password"
               >
                 <template #addon-left>
@@ -134,6 +136,7 @@ const handleSubmit = (e: Event) => {
               v-model:value="email"
               label="Email"
               type="email"
+              rounded
               placeholder="Enter your email"
             >
               <template #addon-left>
@@ -150,6 +153,7 @@ const handleSubmit = (e: Event) => {
               v-model:value="password"
               label="Password"
               type="password"
+              rounded
               placeholder="Enter your password"
             >
               <template #addon-left>

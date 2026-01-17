@@ -28,7 +28,7 @@
 }
 
 .login-logo img {
-  height: 32px;
+  height: var(--ag-space-12);
   width: auto;
 }
 
@@ -63,8 +63,8 @@ ag-input::part(ag-input) {
 }
 
 .input-icon svg {
-  width: 18px;
-  height: 18px;
+  width: var(--ag-space-4);
+  height: var(--ag-space-4);
 }
 
 /* Auxiliary Row - Remember me & Forgot password */
@@ -135,8 +135,8 @@ ag-divider {
 }
 
 .social-icon {
-  width: 16px;
-  height: 16px;
+  width: var(--ag-space-4);
+  height: var(--ag-space-4);
   margin-right: var(--ag-space-2);
   vertical-align: middle;
 }
@@ -271,6 +271,8 @@ ag-divider {
   /* Right column - background image */
   .login-column-right {
     display: block;
+    overflow: hidden;
+    height: 100vh;
   }
 
   .login-column-right picture {

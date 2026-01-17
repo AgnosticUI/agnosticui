@@ -33,6 +33,7 @@ function LoginForm() {
         <ReactInput
           label="Email"
           type="email"
+          rounded
           placeholder="Enter your email"
           value={email}
           onInput={(e: Event) => setEmail((e.target as HTMLInputElement).value)}
@@ -48,6 +49,7 @@ function LoginForm() {
         <ReactInput
           label="Password"
           type="password"
+          rounded
           placeholder="Enter your password"
           value={password}
           onInput={(e: Event) => setPassword((e.target as HTMLInputElement).value)}

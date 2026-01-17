@@ -8,28 +8,28 @@
 
 These are CSS overrides or workarounds discovered during playbook development that ideally should be addressed in the AgnosticUI core library.
 
-| Issue | Current Workaround | Suggested Core Fix |
-|-------|-------------------|-------------------|
-| Input label/placeholder font size defaults to 16px | `ag-input::part(ag-input-label), ag-input::part(ag-input) { font-size: var(--ag-font-size-sm); }` | Consider 14px default or expose size prop |
-| Checkbox label font size | `ag-checkbox::part(ag-checkbox-label) { font-size: var(--ag-font-size-sm); }` | Consider 14px default or expose size prop |
-| Checkbox wrapper has gap | `ag-checkbox::part(ag-checkbox-wrapper) { gap: 0; }` | Review if gap is needed in core |
-| Full-width buttons need two selectors | Both `ag-button { display: block; width: 100%; }` AND `::part(ag-button) { width: 100%; }` | Consider `fullWidth` prop |
-| Icon addon slot content not centered | Wrap in `<span class="input-icon">` with flex centering | Input component should center slot content |
-| Non-bordered buttons shorter than bordered (38px vs 40px) | None currently | Add transparent border to non-bordered variant for consistent height |
-| Button height increases with icon content (40px → 42-44px) | Use 16px icons instead of 18px (brings to 42px) | Constrain button content height or use flex alignment |
-| Social icons expand button height | `.social-icon { width: 16px; height: 16px; vertical-align: middle; }` | Button should constrain content height |
+| Issue                                                           | Current Workaround                                                                                | Suggested Core Fix                                                   |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Input label/placeholder font size defaults to var(--ag-space-4) | `ag-input::part(ag-input-label), ag-input::part(ag-input) { font-size: var(--ag-font-size-sm); }` | Consider 14px default or expose size prop                            |
+| Checkbox label font size                                        | `ag-checkbox::part(ag-checkbox-label) { font-size: var(--ag-font-size-sm); }`                     | Consider 14px default or expose size prop                            |
+| Checkbox wrapper has gap                                        | `ag-checkbox::part(ag-checkbox-wrapper) { gap: 0; }`                                              | Review if gap is needed in core                                      |
+| Full-width buttons need two selectors                           | Both `ag-button { display: block; width: 100%; }` AND `::part(ag-button) { width: 100%; }`        | Consider `fullWidth` prop                                            |
+| Icon addon slot content not centered                            | Wrap in `<span class="input-icon">` with flex centering                                           | Input component should center slot content                           |
+| Non-bordered buttons shorter than bordered (38px vs 40px)       | None currently                                                                                    | Add transparent border to non-bordered variant for consistent height |
+| Button height increases with icon content (40px → 42-44px)      | Use var(--ag-space-4) icons instead of 18px (brings to 42px)                                      | Constrain button content height or use flex alignment                |
+| Social icons expand button height                               | `.social-icon { width: var(--ag-space-4); height: var(--ag-space-4); vertical-align: middle; }`   | Button should constrain content height                               |
 
 ---
 
 ## Development Changelog
 
 - **Fourth fix** (button height normalization):
-  - Changed social icon size from 18px to 16px to reduce button height from 44px to 42px
+  - Changed social icon size from 18px to var(--ag-space-4) to reduce button height from 44px to 42px
   - Added `vertical-align: middle` to social icons
 
 - **Third visual review fixes** (icon centering, auxiliary row alignment):
   - **Icon addon**: Wrap icon in `<span class="input-icon">` with `display: flex; align-items: center` to center icons
-  - **Icon size**: Lucide icons render 18x24 without explicit sizing - add `.input-icon svg { width: 18px; height: 18px; }`
+  - **Icon size**: Lucide icons render 18x24 without explicit sizing - add `.input-icon svg {   width: var(--ag-space-4); height: var(--ag-space-4); }`
   - **Auxiliary row**: Remove `align-items: center` - it misaligns checkbox and link
 
 - **Second visual review fixes** (font sizes, button rounding, icons):
