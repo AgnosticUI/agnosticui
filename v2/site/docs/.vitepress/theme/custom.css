@@ -609,3 +609,57 @@ make it a bit more aesthetically pleasing. */
     max-width: 400px;
   }
 }
+
+/* ============================================
+   PLAYBOOKS
+   ============================================ */
+
+.playbook-screenshots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ag-space-4);
+}
+
+.playbook-screenshot-item {
+  text-align: center;
+}
+
+/* Mobile: constrain portrait images so they don't dominate */
+.playbook-screenshot {
+  width: auto;
+  height: auto;
+  max-height: 525px;
+  border-radius: var(--ag-radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  object-fit: contain;
+}
+
+.playbook-caption {
+  margin-block-start: var(--ag-space-2);
+  font-size: var(--ag-font-size-sm);
+}
+
+/* Tablet and up: side by side with larger max-height */
+@media (min-width: 768px) {
+  .playbook-screenshots {
+    flex-direction: row;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .playbook-screenshot-item {
+    flex: 0 1 auto;
+  }
+
+  .playbook-screenshot {
+    max-height: 450px;
+  }
+}
+
+/* Large screens: bigger max-height */
+@media (min-width: 1200px) {
+  .playbook-screenshot {
+    max-height: 554px;
+  }
+}

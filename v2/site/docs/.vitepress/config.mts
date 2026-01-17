@@ -63,6 +63,12 @@ export default defineConfig({
       },
       getComponents(),
       {
+        text: 'Playbooks',
+        items: [
+          { text: 'Login Form', link: '/playbooks/login' },
+        ]
+      },
+      {
         text: 'Documentation',
         items: [
           { text: 'Setup Guide', link: '/docs/setup' },
