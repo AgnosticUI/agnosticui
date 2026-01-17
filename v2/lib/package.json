@@ -1,6 +1,8 @@
 {
   "name": "agnosticui-core",
   "version": "2.0.0-alpha.5",
+  "author": "AgnosticUI",
+  "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
