@@ -211,6 +211,13 @@ export class AgInput extends LitElement implements InputProps {
         border: 1px solid var(--ag-border-subtle);
       }
 
+      /* Ensure nested content (icons, svgs) is also centered */
+      .ag-input__addon ::slotted(*) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .ag-input__addon--left {
         border-inline-end: 0;
         border-radius: var(--ag-radius-md) 0 0 var(--ag-radius-md);
