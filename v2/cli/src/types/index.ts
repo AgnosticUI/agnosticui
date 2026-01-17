@@ -57,6 +57,7 @@ export interface InitOptions {
   componentsPath?: string;
   tarball?: string;
   version?: string; // NPM version tag (e.g., 'alpha', 'latest', '2.0.0')
+  skipPrompts?: boolean; // Skip all interactive prompts (non-interactive mode)
 }
 
 export interface AddOptions {

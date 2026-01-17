@@ -51,12 +51,14 @@ program
   .option('-p, --components-path <path>', 'Path where components will be generated')
   .option('-t, --tarball <path>', 'Path to local tarball (for development)')
   .option('-v, --version <version>', 'NPM version to download (e.g., alpha, latest, 2.0.0)', 'alpha')
+  .option('--skip-prompts', 'Skip all interactive prompts (non-interactive mode)')
   .action(async (options) => {
     await init({
       framework: options.framework as Framework | undefined,
       componentsPath: options.componentsPath,
       tarball: options.tarball,
       version: options.version,
+      skipPrompts: options.skipPrompts,
     });
   });
 
