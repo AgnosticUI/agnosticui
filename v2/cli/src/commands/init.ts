@@ -35,6 +35,12 @@ export async function init(options: InitOptions = {}): Promise<void> {
   // Prompt for framework if not provided
   let framework = options.framework;
   if (!framework) {
+    if (options.skipPrompts) {
+      logger.error('Framework not specified. Use --framework option in non-interactive mode.');
+      logger.info('Example: ' + pc.cyan('npx agnosticui-cli init --framework react --skip-prompts'));
+      process.exit(1);
+    }
+
     const frameworkChoice = await p.select({
       message: 'Which framework are you using?',
       options: [
@@ -57,18 +63,22 @@ export async function init(options: InitOptions = {}): Promise<void> {
   // Prompt for components path if not provided
   let componentsPath = options.componentsPath;
   if (!componentsPath) {
-    const pathChoice = await p.text({
-      message: 'Where should components be generated?',
-      placeholder: DEFAULT_COMPONENTS_PATH,
-      defaultValue: DEFAULT_COMPONENTS_PATH,
-    });
+    if (options.skipPrompts) {
+      componentsPath = DEFAULT_COMPONENTS_PATH;
+    } else {
+      const pathChoice = await p.text({
+        message: 'Where should components be generated?',
+        placeholder: DEFAULT_COMPONENTS_PATH,
+        defaultValue: DEFAULT_COMPONENTS_PATH,
+      });
 
-    if (p.isCancel(pathChoice)) {
-      p.cancel('Operation cancelled.');
-      process.exit(0);
+      if (p.isCancel(pathChoice)) {
+        p.cancel('Operation cancelled.');
+        process.exit(0);
+      }
+
+      componentsPath = pathChoice as string;
     }
-
-    componentsPath = pathChoice as string;
   }
 
   // Determine tarball path
@@ -155,7 +165,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
     spinner.stop(pc.green('✓') + ' Initialized successfully!');
 
     // Check and install dependencies
-    await handleDependencies(framework);
+    await handleDependencies(framework, options.skipPrompts);
 
     // Update ignore files for the reference library
     spinner.message('Updating .gitignore...');
@@ -377,13 +387,26 @@ async function cleanupTempDownload(): Promise<void> {
 /**
  * Handle dependency installation for the selected framework
  */
-async function handleDependencies(framework: Framework): Promise<void> {
+async function handleDependencies(framework: Framework, skipPrompts: boolean = false): Promise<void> {
   const requiredDeps = getFrameworkDependencies(framework);
 
   // Check if dependencies are already installed
   if (checkDependenciesInstalled(requiredDeps)) {
     logger.newline();
     logger.info('Required dependencies already installed: ' + pc.dim(requiredDeps.join(', ')));
+    return;
+  }
+
+  // Skip installation in non-interactive mode
+  if (skipPrompts) {
+    logger.newline();
+    logger.info(`This framework requires the following dependencies:`);
+    requiredDeps.forEach(dep => {
+      console.log('  ' + pc.cyan(dep));
+    });
+    logger.newline();
+    const packageManager = detectPackageManager();
+    logger.info(`Install them with: ${pc.cyan(`${packageManager} ${packageManager === 'npm' ? 'install' : 'add'} ${requiredDeps.join(' ')}`)}`);
     return;
   }
 
