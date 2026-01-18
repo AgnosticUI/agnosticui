@@ -481,7 +481,29 @@ function showTypeScriptNote(wasUpdated: boolean = false): void {
 
 /**
  * Strip comments from JSON content
+ *
+ * The regex matches either:
+ * 1. Complete quoted strings (to preserve them, including glob patterns)
+ * 2. Single-line comments (// ...)
+ * 3. Multi-line comments (slash-star ... star-slash)
+ *
+ * Only captured comments (group g) are removed; strings are preserved.
+ *
+ * Example - Vue's tsconfig.app.json contains:
+ *   "include": ["src/STAR-STAR/STAR.ts", "src/STAR-STAR/STAR.tsx", "src/STAR-STAR/STAR.vue"]
+ *   (where STAR = asterisk, written this way to avoid closing this JSDoc comment)
+ *
+ * The glob pattern "src/STAR-STAR/STAR.ts" contains "/STAR-STAR/" which looks like
+ * a multi-line comment. The regex must match the ENTIRE quoted string first, so the
+ * glob is preserved:
+ *
+ *   Pattern: "(?:\\"|[^"])*"
+ *   Input:   "src/STAR-STAR/STAR.ts"
+ *   Match:   "src/STAR-STAR/STAR.ts" (entire string matched, preserved)
+ *
+ * Without the full string pattern matching first, the glob would incorrectly
+ * be treated as containing a comment and get stripped, corrupting it to "src*.ts".
  */
 function stripJsonComments(json: string): string {
-  return json.replace(/\"|"(?:\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
+  return json.replace(/"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
 }

@@ -391,7 +391,7 @@ npm whoami  # Should show: rlevin
 
 **Publish Core Library:**
 
-**Make sure you've first ran `npm run build` and latest in `dist/`**
+**Make sure you've first bump the VERSION and then rebuild with `npm run build` and have that latest build in corresponding `dist/`**
 
 ```bash
 cd v2/lib
@@ -412,7 +412,7 @@ npm dist-tag ls agnosticui-core
 
 **Publish CLI:**
 
-**Make sure you've first ran `npm run build` and latest in `dist/`**
+**Make sure you've first bump the VERSION and then rebuild with `npm run build` and have that latest build in corresponding `dist/`**
 
 ```bash
 cd v2/cli
