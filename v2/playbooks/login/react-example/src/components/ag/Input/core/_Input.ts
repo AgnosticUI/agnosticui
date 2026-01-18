@@ -110,7 +110,7 @@ export class AgInput extends LitElement implements InputProps {
         box-sizing: border-box;
         width: 100%;
         padding: var(--ag-space-2) var(--ag-space-3);
-        font-size: var(--ag-font-size-base);
+        font-size: var(--ag-font-size-sm);
         line-height: var(--ag-line-height-base);
         color: var(--ag-text-primary);
         background-color: var(--ag-background-primary);
@@ -121,6 +121,7 @@ export class AgInput extends LitElement implements InputProps {
 
       .ag-input__input::placeholder,
       .ag-input__textarea::placeholder {
+        font-size: var(--ag-font-size-sm);
         color: var(--ag-text-muted);
         opacity: 1;
       }
@@ -208,6 +209,13 @@ export class AgInput extends LitElement implements InputProps {
         line-height: var(--ag-line-height-base);
         color: var(--ag-text-primary);
         border: 1px solid var(--ag-border-subtle);
+      }
+
+      /* Ensure nested content (icons, svgs) is also centered */
+      .ag-input__addon ::slotted(*) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .ag-input__addon--left {

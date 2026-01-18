@@ -26,15 +26,15 @@ export type CheckboxChangeEvent = CustomEvent<CheckboxChangeEventDetail>;
  * @csspart ag-checkbox-label - The label text span
  */
 export interface CheckboxProps {
-  name: string;
-  value: string;
-  checked: boolean;
-  indeterminate: boolean;
-  disabled: boolean;
-  size: CheckboxSize;
-  theme: CheckboxTheme;
-  labelText: string;
-  labelPosition: 'end' | 'start';
+  name?: string;
+  value?: string;
+  checked?: boolean;
+  indeterminate?: boolean;
+  disabled?: boolean;
+  size?: CheckboxSize;
+  theme?: CheckboxTheme;
+  labelText?: string;
+  labelPosition?: 'end' | 'start';
   // Validation & hints
   required?: boolean;
   invalid?: boolean;
@@ -58,7 +58,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
       align-items: center;
       cursor: pointer;
       user-select: none;
-      gap: var(--ag-space-3);
+      gap: 0;
     }
 
     :host([disabled]) .checkbox-wrapper {
@@ -249,15 +249,15 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-label-copy--small {
-      font-size: 0.875rem;
+      font-size: var(--ag-font-size-sm);
     }
 
     .checkbox-label-copy--medium {
-      font-size: 1rem;
+      font-size: var(--ag-font-size-sm);
     }
 
     .checkbox-label-copy--large {
-      font-size: 1.125rem;
+      font-size: var(--ag-font-size-base);
     }
 
     /* Respect reduced motion preferences */

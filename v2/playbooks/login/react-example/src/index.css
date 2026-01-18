@@ -1,3 +1,7 @@
+/* Import AgnosticUI CSS Tokens */
+@import './components/ag/styles/ag-tokens.css';
+@import './components/ag/styles/ag-tokens-dark.css';
+
 /* Reset and base styles */
 *,
 *::before,

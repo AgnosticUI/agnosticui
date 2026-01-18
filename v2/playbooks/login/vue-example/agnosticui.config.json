@@ -8,75 +8,75 @@
   },
   "components": {
     "Button": {
-      "added": "2026-01-16T19:03:18.334Z",
+      "added": "2026-01-18T18:12:16.277Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Button/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Button/vue"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Button/vue"
       ]
     },
     "Input": {
-      "added": "2026-01-16T19:03:18.340Z",
+      "added": "2026-01-18T18:12:16.278Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Input/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Input/vue"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Input/vue"
       ]
     },
     "Card": {
-      "added": "2026-01-16T19:03:18.340Z",
+      "added": "2026-01-18T18:12:16.278Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Card/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Card/vue"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Card/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Card/vue"
       ]
     },
     "Image": {
-      "added": "2026-01-16T19:03:18.340Z",
+      "added": "2026-01-18T18:12:16.278Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Image/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Image/vue"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Image/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Image/vue"
       ]
     },
     "Link": {
-      "added": "2026-01-16T19:03:18.340Z",
+      "added": "2026-01-18T18:12:16.278Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Link/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Link/vue"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Link/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Link/vue"
       ]
     },
     "Checkbox": {
-      "added": "2026-01-16T19:03:18.340Z",
+      "added": "2026-01-18T18:12:16.278Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Checkbox/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Checkbox/vue"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Checkbox/vue"
       ]
     },
     "Divider": {
-      "added": "2026-01-16T19:03:18.340Z",
+      "added": "2026-01-18T18:12:16.278Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Divider/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Divider/vue"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Divider/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Divider/vue"
       ]
     },
     "Icon": {
-      "added": "2026-01-16T19:03:18.340Z",
+      "added": "2026-01-18T18:12:16.278Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Icon/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Icon/vue"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Icon/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/src/components/ag/Icon/vue"
       ]
     }
   },
@@ -89,8 +89,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.4.tgz",
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/vue-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.6.tgz",
     "version": "2.0.0-alpha",
-    "installed": "2026-01-16T18:56:38.633Z"
+    "installed": "2026-01-18T18:11:35.402Z"
   }
 }
