@@ -49,7 +49,7 @@ export default defineComponent({
       default: "" as CardVariant,
     },
   },
-  setup(props, { emit }) {
+  setup(props) {
     const agComponent = ref<(HTMLElement & CardProps) | null>(null);
 
     onMounted(async () => {
