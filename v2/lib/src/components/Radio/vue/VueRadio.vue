@@ -1,6 +1,5 @@
 <template>
   <ag-radio
-    ref="radioRef"
     .checked="checked"
     .disabled="disabled"
     .required="required"
@@ -25,7 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import type { RadioSize, RadioTheme } from "../core/Radio";
 import "../core/Radio";
 
@@ -47,7 +45,7 @@ export interface VueRadioProps {
   helpText?: string;
 }
 
-const props = withDefaults(defineProps<VueRadioProps>(), {
+withDefaults(defineProps<VueRadioProps>(), {
   name: "",
   value: "",
   checked: false,
@@ -70,8 +68,6 @@ const emit = defineEmits<{
   change: [detail: { checked: boolean; value: string; name: string }];
   "update:checked": [checked: boolean];
 }>();
-
-const radioRef = ref<HTMLElement>();
 
 const handleClick = (event: MouseEvent) => {
   emit("click", event);

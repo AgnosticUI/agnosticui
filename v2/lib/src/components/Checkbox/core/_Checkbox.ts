@@ -26,15 +26,15 @@ export type CheckboxChangeEvent = CustomEvent<CheckboxChangeEventDetail>;
  * @csspart ag-checkbox-label - The label text span
  */
 export interface CheckboxProps {
-  name: string;
-  value: string;
-  checked: boolean;
-  indeterminate: boolean;
-  disabled: boolean;
-  size: CheckboxSize;
-  theme: CheckboxTheme;
-  labelText: string;
-  labelPosition: 'end' | 'start';
+  name?: string;
+  value?: string;
+  checked?: boolean;
+  indeterminate?: boolean;
+  disabled?: boolean;
+  size?: CheckboxSize;
+  theme?: CheckboxTheme;
+  labelText?: string;
+  labelPosition?: 'end' | 'start';
   // Validation & hints
   required?: boolean;
   invalid?: boolean;

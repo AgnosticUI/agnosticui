@@ -1,6 +1,5 @@
 <template>
   <ag-image
-    ref="imageRef"
     :src="src"
     :alt="alt"
     :width="width"
@@ -29,13 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import type {
-  AgImageProps,
-  AgImageSource,
-  ImageLoadEvent,
-  ImageErrorEvent,
-} from "../core/Image";
+import type { AgImageProps, AgImageSource } from "../core/Image";
 import "../core/Image"; // Registers the ag-image web component
 
 // Define props interface (omit function props since wrapper uses emits)
@@ -44,7 +37,7 @@ export interface VueImageProps extends Omit<AgImageProps, "sources"> {
 }
 
 // Define props with defaults
-const props = withDefaults(defineProps<VueImageProps>(), {
+withDefaults(defineProps<VueImageProps>(), {
   src: "",
   alt: "",
   fit: "cover",
@@ -60,15 +53,12 @@ const emit = defineEmits<{
   "ag-error": [];
 }>();
 
-// Template ref
-const imageRef = ref<HTMLElement>();
-
 // Event handlers
-const handleLoad = (event: Event) => {
+const handleLoad = (_event: Event) => {
   emit("ag-load");
 };
 
-const handleError = (event: Event) => {
+const handleError = (_event: Event) => {
   emit("ag-error");
 };
 </script>
