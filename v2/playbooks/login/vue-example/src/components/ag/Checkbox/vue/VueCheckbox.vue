@@ -23,11 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import type {
   CheckboxProps,
-  CheckboxSize,
-  CheckboxTheme,
   CheckboxChangeEvent,
   CheckboxChangeEventDetail,
 } from "../core/Checkbox";
@@ -61,9 +58,6 @@ const emit = defineEmits<{
   (e: "update:checked", checked: boolean): void;
   (e: "update:indeterminate", indeterminate: boolean): void;
 }>();
-
-// Template ref
-const checkboxRef = ref<HTMLElement>();
 
 // Event handlers that bridge web component events to Vue emits
 const handleClick = (event: MouseEvent) => {

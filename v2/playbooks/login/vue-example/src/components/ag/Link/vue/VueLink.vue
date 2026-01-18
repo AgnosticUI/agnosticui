@@ -7,7 +7,6 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, watchEffect } from "vue";
 import type { LinkProps } from "../core/_Link";
-import "../core/Link"; // Register the ag-link web component
 
 export default defineComponent({
   name: "VueLink",

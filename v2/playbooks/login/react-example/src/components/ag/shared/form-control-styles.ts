@@ -11,7 +11,7 @@ export const formControlStyles = css`
   /* Label - Default (top position) */
   .ag-form-control__label {
     display: block;
-    font-size: var(--ag-font-size-base);
+    font-size: var(--ag-font-size-sm);
     font-weight: 600;
     color: var(--ag-text-primary);
     line-height: var(--ag-line-height-base);

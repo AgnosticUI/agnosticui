@@ -8,67 +8,67 @@
   },
   "components": {
     "Button": {
-      "added": "2026-01-16T19:10:22.203Z",
+      "added": "2026-01-18T18:12:25.375Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example/src/components/ag/Button/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/lit-example/src/components/ag/Button/core"
       ]
     },
     "Input": {
-      "added": "2026-01-16T19:10:22.204Z",
+      "added": "2026-01-18T18:12:25.376Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example/src/components/ag/Input/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/lit-example/src/components/ag/Input/core"
       ]
     },
     "Card": {
-      "added": "2026-01-16T19:10:22.204Z",
+      "added": "2026-01-18T18:12:25.376Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example/src/components/ag/Card/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/lit-example/src/components/ag/Card/core"
       ]
     },
     "Image": {
-      "added": "2026-01-16T19:10:22.204Z",
+      "added": "2026-01-18T18:12:25.376Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example/src/components/ag/Image/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/lit-example/src/components/ag/Image/core"
       ]
     },
     "Link": {
-      "added": "2026-01-16T19:10:22.204Z",
+      "added": "2026-01-18T18:12:25.376Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example/src/components/ag/Link/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/lit-example/src/components/ag/Link/core"
       ]
     },
     "Checkbox": {
-      "added": "2026-01-16T19:10:22.204Z",
+      "added": "2026-01-18T18:12:25.376Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example/src/components/ag/Checkbox/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/lit-example/src/components/ag/Checkbox/core"
       ]
     },
     "Divider": {
-      "added": "2026-01-16T19:10:22.204Z",
+      "added": "2026-01-18T18:12:25.376Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example/src/components/ag/Divider/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/lit-example/src/components/ag/Divider/core"
       ]
     },
     "Icon": {
-      "added": "2026-01-16T19:10:22.204Z",
+      "added": "2026-01-18T18:12:25.376Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example/src/components/ag/Icon/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/lit-example/src/components/ag/Icon/core"
       ]
     }
   },
@@ -81,8 +81,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.4.tgz",
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/login3/lit-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.6.tgz",
     "version": "2.0.0-alpha",
-    "installed": "2026-01-16T19:10:00.732Z"
+    "installed": "2026-01-18T18:11:54.555Z"
   }
 }
