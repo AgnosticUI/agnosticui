@@ -17,17 +17,19 @@ This guide creates three separate Vite projects demonstrating AgnosticUI's multi
 
 ### Create Three Vite Projects
 
+_Note: The Vite projects MUST all be Typescript enabled because the agnosticui-cli only works properly in a properly setup Typescript project._
+
 Run these commands from `v2/playbooks/login`:
 
 ```bash
 # Create React project
-npm create vite@latest react-example -- --template react
+npm create vite@latest react-example -- --template react-ts
 
 # Create Vue project
-npm create vite@latest vue-example -- --template vue
+npm create vite@latest vue-example -- --template vue-ts
 
 # Create Lit project
-npm create vite@latest lit-example -- --template lit
+npm create vite@latest lit-example -- --template lit-ts
 ```
 
 ### Install Dependencies
@@ -38,6 +40,7 @@ npm create vite@latest lit-example -- --template lit
 cd react-example
 npm install
 npm install lucide-react
+npm install lit  # Required before CLI init
 cd ..
 ```
 
@@ -47,6 +50,7 @@ cd ..
 cd vue-example
 npm install
 npm install lucide-vue-next
+npm install lit  # Required before CLI init
 cd ..
 ```
 
@@ -56,6 +60,7 @@ cd ..
 cd lit-example
 npm install
 npm install lucide
+npm install lit  # Required before CLI init
 cd ..
 ```
 
@@ -301,7 +306,12 @@ Icons in addon slots are automatically centered - no wrapper needed.
 **Vue:**
 
 ```vue
-<VueInput v-model:value="email" label="Email" placeholder="Enter your email" rounded>
+<VueInput
+  v-model:value="email"
+  label="Email"
+  placeholder="Enter your email"
+  rounded
+>
   <template #addon-left>
     <Mail :size="18" style="color: var(--ag-text-secondary)" />
   </template>
@@ -318,7 +328,11 @@ Icons in addon slots are automatically centered - no wrapper needed.
   placeholder="Enter your email"
   rounded
 >
-  <Mail slot="addon-left" size={18} style={{ color: "var(--ag-text-secondary)" }} />
+  <Mail
+    slot="addon-left"
+    size={18}
+    style={{ color: "var(--ag-text-secondary)" }}
+  />
 </ReactInput>
 ```
 
@@ -327,7 +341,13 @@ Icons in addon slots are automatically centered - no wrapper needed.
 ```html
 <ag-input label="Email" placeholder="Enter your email" rounded>
   <!-- Render Lucide icon as SVG here - automatically centered -->
-  <svg slot="addon-left" xmlns="http://www.w3.org/2000/svg" width="18" height="18" ...>
+  <svg
+    slot="addon-left"
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    ...
+  >
     ...
   </svg>
 </ag-input>
@@ -665,7 +685,12 @@ Icons in addon slots are automatically centered - no wrapper needed.
 </VueCheckbox>
 
 <!-- Full-width button with rounded corners -->
-<VueButton :full-width="true" type="submit" variant="monochrome" shape="rounded">
+<VueButton
+  :full-width="true"
+  type="submit"
+  variant="monochrome"
+  shape="rounded"
+>
   Login
 </VueButton>
 
