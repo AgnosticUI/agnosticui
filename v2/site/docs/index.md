@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: "AgnosticUI Local"
-  text: "The UI kit that lives in your project."
-  tagline: Local components. AI-friendly. React. Vue. Svelte. Astro. Angular. Solid. Preact. And more.
+  text: "The AI-native UI kit"
+  tagline: Lives in your codebase so AI can actually help. React. Vue. Lit. Svelte. Solid. And more.
 ---
 
 <script setup>
