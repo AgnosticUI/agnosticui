@@ -2,6 +2,16 @@
 
 A responsive login page implementation across React, Vue, and Lit.
 
+<script setup>
+import PlaybookStackBlitz from '../.vitepress/theme/components/PlaybookStackBlitz.vue'
+</script>
+
+## Try it Live
+
+Open any framework example directly in StackBlitz:
+
+<PlaybookStackBlitz playbook="login" />
+
 <div class="flex gap4 mbs4 mbe4">
   <a href="https://github.com/AgnosticUI/agnosticui/tree/master/v2/playbooks/login" target="_blank" rel="noopener">View on GitHub</a>
 </div>
