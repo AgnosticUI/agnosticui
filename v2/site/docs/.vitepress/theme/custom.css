@@ -574,6 +574,7 @@ make it a bit more aesthetically pleasing. */
 }
 
 /* Jumbo button styling using ::part */
+.jumbo-button::part(ag-link),
 .jumbo-button::part(ag-button) {
   padding-inline-start: var(--ag-space-6);
   padding-inline-end: var(--ag-space-6);
@@ -582,6 +583,7 @@ make it a bit more aesthetically pleasing. */
   font-weight: 700;
 }
 
+.jumbo-button::part(ag-link):hover,
 .jumbo-button::part(ag-button):hover {
   box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
 }

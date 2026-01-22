@@ -77,9 +77,9 @@ onUnmounted(() => {
     shape="capsule"
     size="xl"
     class="jumbo-button"
-    @click="() => router.go('/installation')"
+    @click="() => router.go('/playbooks/login')"
   >
-    View Full Installation Guide →
+    View Login Playbook →
   </VueButtonFx>
 </div>
 

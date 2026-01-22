@@ -27,16 +27,18 @@
           </div>
         </div>
       </div>
-
-      <div class="cta-row">
-        <VueLink
-          href="/installation"
-          class="cta-button"
-        >
-          View Full Installation Guide
-          <ArrowRight :size="20" style="display: inline-block; vertical-align: middle; margin-left: 0.5rem;" />
-        </VueLink>
-      </div>
+      <VueLink
+        href="/installation"
+        class="jumbo-button"
+        :isButton="true"
+        buttonShape="capsule"
+        buttonSize="xl"
+        variant="primary"
+        
+      >
+        View Full Installation Guide
+        <ArrowRight :size="20" style="display: inline-block; vertical-align: middle; margin-left: 0.5rem;" />
+      </VueLink>
     </div>
   </div>
 </template>
@@ -282,31 +284,6 @@ onMounted(() => {
   gap: 1rem;
 }
 
-.cta-button {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: rgba(20, 184, 166, 0.1);
-  border: 2px solid rgba(20, 184, 166, 0.3);
-  border-radius: 50px;
-  color: var(--vp-c-brand-1);
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.dark .cta-button {
-  background: rgba(20, 184, 166, 0.15);
-  border-color: rgba(20, 184, 166, 0.4);
-}
-
-.cta-button:hover {
-  transform: translateY(-3px);
-  background: rgba(20, 184, 166, 0.2);
-  border-color: rgba(20, 184, 166, 0.5);
-  box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
-}
-
 @media (max-width: 768px) {
   .cli-preview-section {
     padding: 4rem 1rem;
@@ -325,9 +302,5 @@ onMounted(() => {
     font-size: 0.9rem;
   }
 
-  .cta-button {
-    width: 100%;
-    text-align: center;
-  }
 }
 </style>
