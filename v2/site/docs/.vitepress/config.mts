@@ -75,13 +75,13 @@ export default defineConfig({
           { text: 'Theming', link: '/theming' },
         ]
       },
-      getComponents(),
       {
         text: 'Playbooks',
         items: [
           { text: 'Login Form', link: '/playbooks/login' },
         ]
       },
+      getComponents(),
       {
         text: 'Documentation',
         items: [
