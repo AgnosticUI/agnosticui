@@ -391,7 +391,7 @@ npm whoami  # Should show: rlevin
 
 **Publish Core Library:**
 
-**Make sure you've first bump the VERSION and then rebuild with `npm run build` and have that latest build in corresponding `dist/`**
+**Make sure you've first bump the VERSION (v2/lib/package.json and v2/site/package.json which refers to it), and then rebuild with `npm run build` and have that latest build in corresponding `dist/`**
 
 ```bash
 cd v2/lib
