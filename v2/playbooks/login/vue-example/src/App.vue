@@ -7,10 +7,19 @@ import VueCard from './components/ag/Card/vue/VueCard.vue';
 import VueLink from './components/ag/Link/vue/VueLink.vue';
 import VueCheckbox from './components/ag/Checkbox/vue/VueCheckbox.vue';
 import VueDivider from './components/ag/Divider/vue/VueDivider.vue';
+import VueImage from './components/ag/Image/vue/VueImage.vue';
 
 const email = ref('');
 const password = ref('');
 const rememberMe = ref(false);
+
+// Responsive background image sources - only load on tablet and desktop
+const bgImageSources = [
+  {
+    srcset: '/login-bg.jpg',
+    media: '(min-width: 768px)',
+  },
+];
 
 const handleSubmit = (e: Event) => {
   e.preventDefault();
@@ -213,19 +222,23 @@ const handleSubmit = (e: Event) => {
 
     <!-- Right Column - Background Image (desktop only) -->
     <div class="login-column-right">
-      <picture>
-        <source media="(min-width: 768px)" srcset="/login-bg.jpg" />
-        <img
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-          alt=""
-          class="login-bg-image"
-        />
-      </picture>
+      <VueImage
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        alt=""
+        :sources="bgImageSources"
+        class="login-bg-image"
+        fit="cover"
+      />
     </div>
 
     <!-- Full-screen background for tablet -->
     <div class="tablet-background">
-      <img src="/login-bg.jpg" alt="" />
+      <VueImage
+        src="/login-bg.jpg"
+        alt=""
+        class="tablet-bg-image"
+        fit="cover"
+      />
     </div>
   </div>
 </template>

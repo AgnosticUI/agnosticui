@@ -521,18 +521,53 @@ Icons in addon slots are automatically centered - no wrapper needed.
 ## Key Implementation Notes
 
 1. **Image optimization using AgnosticUI Image component:**
-   - Use the AgnosticUI Image component with responsive sources
+   - Use the AgnosticUI Image component with responsive sources via the `sources` prop
    - This properly prevents HTTP requests on mobile by using `<picture>` element with media queries
-   - Example implementation:
+   - The `sources` prop takes an array of objects with `srcset`, `media`, `type`, and `sizes` fields
+   - **Important:** The `sources` prop must be passed as a JavaScript property (not HTML attribute) since arrays cannot be serialized to attributes
 
-   ```html
-   <ag-image>
-     <source media="(min-width: 768px)" srcset="/login-bg.jpg" />
-     <img
+   **Lit/Web Component:**
+   ```typescript
+   const bgSources = [
+     { srcset: '/login-bg.jpg', media: '(min-width: 768px)' }
+   ];
+   // Set via property, not attribute
+   html`<ag-image
+     .sources=${bgSources}
+     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+     alt=""
+     fit="cover"
+   ></ag-image>`
+   ```
+
+   **Vue:**
+   ```vue
+   <script setup>
+   const bgImageSources = [
+     { srcset: '/login-bg.jpg', media: '(min-width: 768px)' }
+   ];
+   </script>
+   <template>
+     <VueImage
        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
        alt=""
+       :sources="bgImageSources"
+       fit="cover"
      />
-   </ag-image>
+   </template>
+   ```
+
+   **React:**
+   ```tsx
+   const bgSources = [
+     { srcset: '/login-bg.jpg', media: '(min-width: 768px)' }
+   ];
+   <ReactImage
+     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+     alt=""
+     sources={bgSources}
+     fit="cover"
+   />
    ```
 
    - The background image loads on tablet (≥ 768px) and desktop (≥ 1200px)
@@ -661,6 +696,16 @@ Icons in addon slots are automatically centered - no wrapper needed.
 3. **VueLink component**: Must import the core Link component to register the web component. Add this line to `VueLink.vue`:
    ```typescript
    import "../core/Link"; // Register the ag-link web component
+   ```
+4. **VueImage sources prop**: The VueImage wrapper syncs the `sources` array prop to the ag-image web component using `onMounted` + `watchEffect`. Arrays cannot be passed as HTML attributes and must be set as JavaScript properties. This pattern is used in the VueImage component:
+   ```typescript
+   onMounted(() => {
+     watchEffect(() => {
+       if (agImageRef.value && props.sources) {
+         agImageRef.value.sources = props.sources;
+       }
+     });
+   });
    ```
 
 **Vue-specific patterns:**

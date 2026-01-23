@@ -1,5 +1,6 @@
 <template>
   <ag-image
+    ref="agImageRef"
     :src="src"
     :alt="alt"
     :width="width"
@@ -28,7 +29,8 @@
 </template>
 
 <script setup lang="ts">
-import type { AgImageProps, AgImageSource } from "../core/Image";
+import { ref, watchEffect, onMounted } from "vue";
+import type { AgImage, AgImageProps, AgImageSource } from "../core/Image";
 import "../core/Image"; // Registers the ag-image web component
 
 // Define props interface (omit function props since wrapper uses emits)
@@ -37,7 +39,7 @@ export interface VueImageProps extends Omit<AgImageProps, "sources"> {
 }
 
 // Define props with defaults
-withDefaults(defineProps<VueImageProps>(), {
+const props = withDefaults(defineProps<VueImageProps>(), {
   src: "",
   alt: "",
   fit: "cover",
@@ -45,6 +47,18 @@ withDefaults(defineProps<VueImageProps>(), {
   loading: "lazy",
   fade: false,
   duration: 200,
+});
+
+// Template ref for ag-image element
+const agImageRef = ref<AgImage | null>(null);
+
+// Sync sources array prop to web component (arrays can't be passed via attributes)
+onMounted(() => {
+  watchEffect(() => {
+    if (agImageRef.value && props.sources) {
+      agImageRef.value.sources = props.sources;
+    }
+  });
 });
 
 // Define emits

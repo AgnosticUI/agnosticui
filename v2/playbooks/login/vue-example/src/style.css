@@ -212,10 +212,10 @@ ag-divider {
     z-index: 0;
   }
 
-  .tablet-background img {
+  .tablet-background ag-image,
+  .tablet-background .tablet-bg-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
   }
 
   .login-form-wrapper {
@@ -288,16 +288,14 @@ ag-divider {
     height: 100vh;
   }
 
-  .login-column-right picture {
+  .login-column-right ag-image,
+  .login-column-right .login-bg-image {
     display: block;
     width: 100%;
     height: 100%;
   }
 
-  .login-bg-image {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
+  .login-bg-image::part(ag-img) {
     object-position: center bottom;
   }
 }
