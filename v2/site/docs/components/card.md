@@ -173,13 +173,13 @@ export default function CardExamples() {
 
 ## Props
 
-| Prop         | Type                                                | Default | Description                                               |
-| ------------ | --------------------------------------------------- | ------- | --------------------------------------------------------- |
-| `isStacked`  | `boolean`                                           | `false` | Applies vertical spacing between slotted children         |
-| `isShadow`   | `boolean`                                           | `false` | Adds box-shadow with enhanced hover effect                |
-| `isAnimated` | `boolean`                                           | `false` | Enables smooth transitions on hover (translateY + shadow) |
-| `isRounded`  | `boolean`                                           | `false` | Applies border-radius to corners                          |
-| `variant`    | `'success' \| 'info' \| 'error' \| 'warning' \| ''` | `''`    | Color variant for semantic meaning                        |
+| Prop       | Type                                                | Default | Description                                                              |
+| ---------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------------ |
+| `stacked`  | `boolean`                                           | `false` | Applies vertical spacing between slotted children                        |
+| `shadow`   | `boolean`                                           | `false` | Adds box-shadow with enhanced hover effect                               |
+| `animated` | `boolean`                                           | `false` | Enables smooth transitions on hover (translateY + shadow)                |
+| `rounded`  | `'sm' \| 'md' \| 'lg' \| boolean`                   | `''`    | Border radius size. Use `true` for default 'md' or specify 'sm'/'lg'     |
+| `variant`  | `'success' \| 'info' \| 'error' \| 'warning' \| ''` | `''`    | Color variant for semantic meaning                                       |
 
 ## Slots
 

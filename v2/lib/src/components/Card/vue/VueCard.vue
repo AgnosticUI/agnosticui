@@ -41,7 +41,7 @@ export default defineComponent({
       default: false,
     },
     rounded: {
-      type: String as PropType<CardRounded>,
+      type: [String, Boolean] as PropType<CardRounded | boolean>,
       default: "" as CardRounded,
     },
     variant: {

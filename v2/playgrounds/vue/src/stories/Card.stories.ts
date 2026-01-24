@@ -22,8 +22,8 @@ const meta = {
       defaultValue: false,
     },
     rounded: {
-      control: 'boolean',
-      description: 'Applies border-radius',
+      control: 'select',
+      description: 'Border radius size (true defaults to "md")',
       options: ["", "sm", "md", "lg"],
       defaultValue: "",
     },
@@ -358,19 +358,19 @@ export const Gallery: Story = {
     components: { VueCard },
     template: `
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
-        <VueCard :is-shadow="true" :is-animated="true">
+        <VueCard :shadow="true" :animated="true">
           <template #header>
             <h4 style="margin: 0;">Card 1</h4>
           </template>
           <p>Standard card with header, shadow and animation.</p>
         </VueCard>
 
-        <VueCard :is-shadow="true" :is-animated="true" variant="success">
+        <VueCard :shadow="true" :animated="true" variant="success">
           <h4>Card 2</h4>
           <p>Success variant with shadow and animation.</p>
         </VueCard>
 
-        <VueCard :is-shadow="true" :is-animated="true" variant="info">
+        <VueCard :shadow="true" :animated="true" variant="info">
           <template #header>
             <h4 style="margin: 0;">Card 3</h4>
           </template>
@@ -380,19 +380,19 @@ export const Gallery: Story = {
           </template>
         </VueCard>
 
-        <VueCard :is-shadow="true" :is-animated="true" variant="error">
+        <VueCard :shadow="true" :animated="true" variant="error">
           <h4>Card 4</h4>
           <p>Error variant with shadow and animation.</p>
         </VueCard>
 
-        <VueCard :is-shadow="true" :is-animated="true" variant="warning">
+        <VueCard :shadow="true" :animated="true" variant="warning">
           <template #header>
             <h4 style="margin: 0;">Card 5</h4>
           </template>
           <p>Warning variant with header.</p>
         </VueCard>
 
-        <VueCard :is-shadow="true" :is-animated="true" :is-rounded="true">
+        <VueCard :shadow="true" :animated="true" rounded="md">
           <h4>Card 6</h4>
           <p>Rounded corners with shadow and animation.</p>
           <template #footer>
