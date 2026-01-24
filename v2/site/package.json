@@ -8,7 +8,7 @@
   "scripts": {
     "sync-tokens": "npm run --prefix ../theme-registry rebuild && cp ../theme-registry/dist/ag-tokens.css ./docs/public/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css ./docs/public/ag-tokens-dark.css && cp ../lib/src/styles/table.css ./docs/public/table.css",
     "clear:cache": "rm -rf docs/.vitepress/cache",
-    "reinstall:lib": "npm run clear:cache && npm i ../lib/agnosticui-core-2.0.0-alpha.8.tgz && npm run sync-tokens",
+    "reinstall:lib": "npm run clear:cache && npm i ../lib/agnosticui-core-2.0.0-alpha.9.tgz && npm run sync-tokens",
     "docs:dev": "vitepress dev docs --port 8000",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@stackblitz/sdk": "^1.11.0",
-    "agnosticui-core": "file:../lib/agnosticui-core-2.0.0-alpha.8.tgz",
+    "agnosticui-core": "file:../lib/agnosticui-core-2.0.0-alpha.9.tgz",
     "lucide-vue-next": "^0.545.0",
     "markdown-it-table": "^4.1.1",
     "shiki": "^3.20.0"
