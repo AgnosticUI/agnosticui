@@ -1,0 +1,87 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "vue",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2026-01-25T17:01:16.263Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Button/vue"
+      ]
+    },
+    "Input": {
+      "added": "2026-01-25T17:01:16.265Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Input/vue"
+      ]
+    },
+    "Card": {
+      "added": "2026-01-25T17:01:16.265Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Card/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Card/vue"
+      ]
+    },
+    "Image": {
+      "added": "2026-01-25T17:01:16.265Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Image/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Image/vue"
+      ]
+    },
+    "Link": {
+      "added": "2026-01-25T17:01:16.265Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Link/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Link/vue"
+      ]
+    },
+    "Checkbox": {
+      "added": "2026-01-25T17:01:16.265Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Checkbox/vue"
+      ]
+    },
+    "Divider": {
+      "added": "2026-01-25T17:01:16.265Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Divider/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/src/components/ag/Divider/vue"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/vue-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.10.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-01-25T17:01:13.407Z"
+  }
+}
