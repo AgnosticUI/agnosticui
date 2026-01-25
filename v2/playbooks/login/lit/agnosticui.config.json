@@ -1,0 +1,80 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2026-01-25T16:06:26.696Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit/src/components/ag/Button/core"
+      ]
+    },
+    "Input": {
+      "added": "2026-01-25T16:06:26.697Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit/src/components/ag/Input/core"
+      ]
+    },
+    "Card": {
+      "added": "2026-01-25T16:06:26.697Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit/src/components/ag/Card/core"
+      ]
+    },
+    "Image": {
+      "added": "2026-01-25T16:06:26.697Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit/src/components/ag/Image/core"
+      ]
+    },
+    "Link": {
+      "added": "2026-01-25T16:06:26.697Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit/src/components/ag/Link/core"
+      ]
+    },
+    "Checkbox": {
+      "added": "2026-01-25T16:06:26.697Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit/src/components/ag/Checkbox/core"
+      ]
+    },
+    "Divider": {
+      "added": "2026-01-25T16:06:26.697Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit/src/components/ag/Divider/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit/.tmp-ag-download/agnosticui-core-2.0.0-alpha.10.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-01-25T16:06:12.893Z"
+  }
+}
