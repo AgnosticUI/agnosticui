@@ -33,31 +33,36 @@ Open any framework example directly in StackBlitz:
 
 ## What's Included
 
+::: warning Experimental Feature: AI-Assisted UI Generation
+Generating UI components via LLM prompting is non-deterministic; different models (and even different versions of the same model) can produce drastically varying results from identical prompts.
+
+While these prompts have been tested using the Claude Code CLI (running Claude Sonnet 4.5), the output remains experimental. Always verify generated code for visual consistency, accessibility, and production readiness before deployment.
+:::
+
 - **Three framework examples**: React, Vue, and Lit implementations
 - **Responsive layouts**: Mobile, tablet (floating card), desktop (two-column)
-- **PROMPT-3-FRAMEWORKS.md**: Feed directly to your LLM for AI-assisted customization
-
-**Note: There are also individual prompts for each framework (e.g. `PROMPT-VUE.md`) so you can customize for your single-framework project.**
-
-## Quick Start
-
-```bash
-# Clone and navigate to a framework example
-git clone https://github.com/AgnosticUI/agnosticui.git
-cd agnosticui/v2/playbooks/login/react-example  # or vue-example, lit-example
-
-# Install and run
-npm install
-npm run dev
-```
+- [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-3-FRAMEWORKS.md): Feed directly to your LLM for AI-assisted customization
+- [`PROMPT-VUE.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-VUE.md): LLM prompt to generate Vue login page.
+- [`PROMPT-REACT.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-REACT.md): LLM prompt to generate React login page.
+- [`PROMPT-LIT.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-LIT.md)LLM prompt to generate Lit login page (web components so use this for other frameworks like Svelte, Angular, etc.).
 
 ## Using with an LLM
 
 The [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-3-FRAMEWORKS.md) file contains everything an AI assistant needs to understand and modify the login form:
 
-1. Copy the PROMPT-3-FRAMEWORKS.md contents
+1. Copy the [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-3-FRAMEWORKS.md) contents
 2. Paste into Claude, ChatGPT, or your preferred LLM
 3. Ask for customizations: "Change the social buttons to Apple and GitHub sign-in"
+
+::: tip Framework-Specific Prompts
+You can follow these same steps for the framework-specific prompts located in the [`<root>/v2/playbooks/login/`](https://github.com/AgnosticUI/agnosticui/tree/master/v2/playbooks/login) directory:
+
+- [`PROMPT-VUE.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-VUE.md)
+- [`PROMPT-REACT.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-REACT.md)
+- [`PROMPT-LIT.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-LIT.md)
+
+These versions use unique assets—such as different logos, background images, and Google fonts—to demonstrate how to customize the Login Playbook for your specific needs.
+:::
 
 ## Components Used
 
