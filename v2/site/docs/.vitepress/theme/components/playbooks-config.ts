@@ -10,6 +10,7 @@
 export const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/playbooks'
 
 // Shared component files used across frameworks (core implementations)
+// Note: We only include components that are actually used in the login playbook
 const SHARED_CORE_FILES = [
   'src/components/ag/Button/core/Button.ts',
   'src/components/ag/Button/core/_Button.ts',
@@ -20,12 +21,11 @@ const SHARED_CORE_FILES = [
   'src/components/ag/Divider/core/Divider.ts',
   'src/components/ag/Divider/core/_Divider.ts',
   'src/components/ag/Divider/core/index.ts',
-  'src/components/ag/Icon/core/Icon.ts',
-  'src/components/ag/Icon/core/_Icon.ts',
   'src/components/ag/Image/core/Image.ts',
   'src/components/ag/Image/core/_Image.ts',
   'src/components/ag/Input/core/Input.ts',
   'src/components/ag/Input/core/_Input.ts',
+  'src/components/ag/Input/core/_Input.BACKUP.ts',
   'src/components/ag/Link/core/Link.ts',
   'src/components/ag/Link/core/_Link.ts',
   'src/components/ag/shared/form-control-styles.ts',
@@ -37,6 +37,7 @@ const SHARED_CORE_FILES = [
   'src/components/ag/styles/nav-sublink-styles.ts',
   'src/components/ag/styles/table.css',
   'src/components/ag/types/fx.ts',
+  'src/components/ag/types/vue.d.ts',
   'src/components/ag/utils/handleBackdropClick.ts',
   'src/components/ag/utils/isElementInContainer.ts',
   'src/components/ag/utils/positioning.ts',
@@ -54,15 +55,12 @@ const REACT_WRAPPER_FILES = [
   'src/components/ag/Checkbox/react/index.ts',
   'src/components/ag/Divider/react/ReactDivider.tsx',
   'src/components/ag/Divider/react/index.ts',
-  'src/components/ag/Icon/react/ReactIcon.tsx',
-  'src/components/ag/Icon/react/index.ts',
   'src/components/ag/Image/react/ReactImage.tsx',
   'src/components/ag/Image/react/index.ts',
   'src/components/ag/Input/react/ReactInput.tsx',
   'src/components/ag/Input/react/index.ts',
   'src/components/ag/Link/react/ReactLink.tsx',
   'src/components/ag/Link/react/index.ts',
-  'src/components/ag/types/vue.d.ts',
 ]
 
 // Vue wrapper files
@@ -75,15 +73,12 @@ const VUE_WRAPPER_FILES = [
   'src/components/ag/Checkbox/vue/index.ts',
   'src/components/ag/Divider/vue/VueDivider.vue',
   'src/components/ag/Divider/vue/index.ts',
-  'src/components/ag/Icon/vue/VueIcon.vue',
-  'src/components/ag/Icon/vue/index.ts',
   'src/components/ag/Image/vue/VueImage.vue',
   'src/components/ag/Image/vue/index.ts',
   'src/components/ag/Input/vue/VueInput.vue',
   'src/components/ag/Input/vue/index.ts',
   'src/components/ag/Link/vue/VueLink.vue',
   'src/components/ag/Link/vue/index.ts',
-  'src/components/ag/types/vue.d.ts',
 ]
 
 export interface PlaybookConfig {
@@ -111,17 +106,15 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'tsconfig.json',
         'tsconfig.app.json',
         'tsconfig.node.json',
+        'eslint.config.js',
         // Public assets
         'public/facebook-icon.svg',
         'public/google-icon.svg',
         'public/logo.svg',
-        'public/vite.svg',
         // App files
-        'src/App.css',
         'src/App.tsx',
         'src/index.css',
         'src/main.tsx',
-        'src/assets/react.svg',
         // Component files
         ...SHARED_CORE_FILES,
         ...REACT_WRAPPER_FILES,
@@ -138,13 +131,10 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'public/facebook-icon.svg',
         'public/google-icon.svg',
         'public/logo.svg',
-        'public/vite.svg',
         // App files
         'src/App.vue',
         'src/style.css',
         'src/main.ts',
-        'src/assets/vue.svg',
-        'src/components/HelloWorld.vue',
         // Component files
         ...SHARED_CORE_FILES,
         ...VUE_WRAPPER_FILES,
@@ -158,12 +148,9 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'public/facebook-icon.svg',
         'public/google-icon.svg',
         'public/logo.svg',
-        'public/vite.svg',
         // App files
         'src/index.css',
         'src/login-page.ts',
-        'src/my-element.ts',
-        'src/assets/lit.svg',
         // Component files (Lit uses core directly, no wrappers)
         ...SHARED_CORE_FILES,
       ],
