@@ -118,8 +118,11 @@ export class AgAlert extends LitElement implements AlertProps {
       border-inline-start-color: var(--ag-primary);
     }
     .alert-monochrome {
-      background-color: var(--ag-background-primary-inverted);
-      color: var(--ag-text-primary-inverted);
+      background-color: var(--ag-info-background);
+      color: var(--ag-text-primary);
+    }
+    .alert-bordered.alert-monochrome {
+      border-color: var(--ag-text-primary);
     }
     .alert-border-left.alert-monochrome {
       border-inline-start-color: var(--ag-text-primary);
