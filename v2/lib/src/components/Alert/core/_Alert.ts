@@ -76,6 +76,22 @@ export class AgAlert extends LitElement implements AlertProps {
     .alert-bordered {
       border-color: var(--ag-border);
     }
+    .alert-bordered.alert-warning {
+      border-color: var(--ag-warning);
+    }
+    .alert-bordered.alert-info {
+      border-color: var(--ag-info);
+    }
+    .alert-bordered.alert-success {
+      border-color: var(--ag-success);
+    }
+    .alert-bordered.alert-danger,
+    .alert-bordered.alert-error {
+      border-color: var(--ag-danger);
+    }
+    .alert-bordered.alert-primary {
+      border-color: var(--ag-primary);
+    }
     .alert-border-left {
       border-inline-start-width: var(--ag-border-width-3);
       border-inline-start-color: var(--ag-border);
