@@ -1,9 +1,9 @@
-import{i as g,z as t,a as b,x as d}from"./Button.DkmThuAs.js";import"./CloseButton.otVweCM4.js";var v=Object.defineProperty,o=(l,r,s,u)=>{for(var a=void 0,i=l.length-1,n;i>=0;i--)(n=l[i])&&(a=n(r,s,a)||a);return a&&v(r,s,a),a};const c=class extends b{constructor(){super(),this._handleDismiss=()=>{const r=new CustomEvent("alert-dismiss",{detail:{variant:this.variant},bubbles:!0,composed:!0});this.dispatchEvent(r),this.onAlertDismiss&&this.onAlertDismiss(r)},this.variant="default",this.bordered=!1,this.rounded=!1,this.borderedLeft=!1,this.dismissible=!1}render(){const r=["alert",this.rounded?"alert-rounded":"",this.bordered?"alert-bordered":"",this.borderedLeft?"alert-border-left":"",`alert-${this.variant}`].filter(Boolean).join(" ");return d`
+import{i as g,z as o,a as b,x as n}from"./Button.DkmThuAs.js";import"./CloseButton.otVweCM4.js";var v=Object.defineProperty,t=(l,r,s,u)=>{for(var a=void 0,i=l.length-1,d;i>=0;i--)(d=l[i])&&(a=d(r,s,a)||a);return a&&v(r,s,a),a};const c=class extends b{constructor(){super(),this._handleDismiss=()=>{const r=new CustomEvent("alert-dismiss",{detail:{variant:this.variant},bubbles:!0,composed:!0});this.dispatchEvent(r),this.onAlertDismiss&&this.onAlertDismiss(r)},this.variant="default",this.bordered=!1,this.rounded=!1,this.borderedLeft=!1,this.dismissible=!1}render(){const r=["alert",this.rounded?"alert-rounded":"",this.bordered?"alert-bordered":"",this.borderedLeft?"alert-border-left":"",`alert-${this.variant}`].filter(Boolean).join(" ");return n`
       <div class="${r}" part="ag-alert" role="alert">
         <div class="alert-content">
           <slot></slot>
         </div>
-        ${this.dismissible?d`
+        ${this.dismissible?n`
           <div class="alert-close">
             <ag-close-button
               @click=${this._handleDismiss}
@@ -38,6 +38,22 @@ import{i as g,z as t,a as b,x as d}from"./Button.DkmThuAs.js";import"./CloseButt
     }
     .alert-bordered {
       border-color: var(--ag-border);
+    }
+    .alert-bordered.alert-warning {
+      border-color: var(--ag-warning);
+    }
+    .alert-bordered.alert-info {
+      border-color: var(--ag-info);
+    }
+    .alert-bordered.alert-success {
+      border-color: var(--ag-success);
+    }
+    .alert-bordered.alert-danger,
+    .alert-bordered.alert-error {
+      border-color: var(--ag-danger);
+    }
+    .alert-bordered.alert-primary {
+      border-color: var(--ag-primary);
     }
     .alert-border-left {
       border-inline-start-width: var(--ag-border-width-3);
@@ -81,10 +97,13 @@ import{i as g,z as t,a as b,x as d}from"./Button.DkmThuAs.js";import"./CloseButt
       border-inline-start-color: var(--ag-primary);
     }
     .alert-monochrome {
-      background-color: var(--ag-background-primary-inverted);
-      color: var(--ag-text-primary-inverted);
+      background-color: var(--ag-info-background);
+      color: var(--ag-text-primary);
+    }
+    .alert-bordered.alert-monochrome {
+      border-color: var(--ag-text-primary);
     }
     .alert-border-left.alert-monochrome {
       border-inline-start-color: var(--ag-text-primary);
     }
-  `;let e=c;o([t({type:String})],e.prototype,"variant");o([t({type:Boolean})],e.prototype,"bordered");o([t({type:Boolean})],e.prototype,"rounded");o([t({type:Boolean})],e.prototype,"borderedLeft");o([t({type:Boolean})],e.prototype,"dismissible");o([t({attribute:!1})],e.prototype,"onAlertDismiss");customElements.get("ag-alert")||customElements.define("ag-alert",e);
+  `;let e=c;t([o({type:String})],e.prototype,"variant");t([o({type:Boolean})],e.prototype,"bordered");t([o({type:Boolean})],e.prototype,"rounded");t([o({type:Boolean})],e.prototype,"borderedLeft");t([o({type:Boolean})],e.prototype,"dismissible");t([o({attribute:!1})],e.prototype,"onAlertDismiss");customElements.get("ag-alert")||customElements.define("ag-alert",e);
