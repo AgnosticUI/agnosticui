@@ -180,7 +180,7 @@
       >
         <div class="flex-inline items-center justify-center">
           <Info
-            color="var(--ag-monochrome)"
+            color="var(--ag-text-primary)"
             :size="18"
             class="mie2"
           />Monochrome alert

@@ -222,7 +222,7 @@ export default function AlertReactExamples() {
               height="18"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="var(--ag-monochrome)"
+              stroke="var(--ag-text-primary)"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"

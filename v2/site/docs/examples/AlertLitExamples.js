@@ -206,7 +206,7 @@ export class AlertLitExamples extends LitElement {
                 height="18"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="var(--ag-monochrome)"
+                stroke="var(--ag-text-primary)"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
