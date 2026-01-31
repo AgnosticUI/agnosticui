@@ -55,13 +55,21 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
       display: block;
       padding: var(--_selection-card-padding);
       background: var(--_selection-card-background);
-      border: var(--ag-border-width-1) solid var(--_selection-card-border-color);
+      /* Always use border-width-2 to prevent CLS when selected */
+      border: var(--ag-border-width-2) solid var(--_selection-card-border-color);
       border-radius: var(--_selection-card-border-radius);
       cursor: pointer;
       transition:
-        border-color var(--ag-motion-fast) ease-in-out,
-        background-color var(--ag-motion-fast) ease-in-out,
-        box-shadow var(--ag-motion-fast) ease-in-out;
+        border-color var(--ag-motion-fast) var(--ag-fx-ease-ease-out),
+        background-color var(--ag-motion-fast) var(--ag-fx-ease-ease-out),
+        box-shadow var(--ag-motion-fast) var(--ag-fx-ease-ease-out),
+        transform var(--ag-motion-fast) var(--ag-fx-ease-ease-out);
+    }
+
+    /* Subtle hover effect for all cards */
+    .selection-card:hover:not(.selection-card--disabled) {
+      transform: scale(1.02);
+      box-shadow: var(--ag-shadow-sm);
     }
 
     /* Theme: default/empty (primary blue) */
@@ -71,7 +79,6 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
     .selection-card--default.selection-card--checked {
       background: var(--ag-primary-background);
       border-color: var(--ag-primary);
-      border-width: var(--ag-border-width-2);
     }
     .selection-card--default .selection-card__indicator {
       background: var(--ag-primary);
@@ -84,7 +91,6 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
     .selection-card--success.selection-card--checked {
       background: var(--ag-success-background);
       border-color: var(--ag-success);
-      border-width: var(--ag-border-width-2);
       color: var(--ag-success-text);
     }
     .selection-card--success .selection-card__indicator {
@@ -98,7 +104,6 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
     .selection-card--info.selection-card--checked {
       background: var(--ag-info-background);
       border-color: var(--ag-info);
-      border-width: var(--ag-border-width-2);
       color: var(--ag-info-text);
     }
     .selection-card--info .selection-card__indicator {
@@ -112,7 +117,6 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
     .selection-card--warning.selection-card--checked {
       background: var(--ag-warning-background);
       border-color: var(--ag-warning);
-      border-width: var(--ag-border-width-2);
       color: var(--ag-warning-text);
     }
     .selection-card--warning .selection-card__indicator {
@@ -126,7 +130,6 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
     .selection-card--error.selection-card--checked {
       background: var(--ag-danger-background);
       border-color: var(--ag-danger);
-      border-width: var(--ag-border-width-2);
       color: var(--ag-danger-text);
     }
     .selection-card--error .selection-card__indicator {
@@ -140,7 +143,6 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
     .selection-card--monochrome.selection-card--checked {
       background: var(--ag-background-primary-inverted);
       border-color: var(--ag-black);
-      border-width: var(--ag-border-width-2);
       color: var(--ag-text-primary-inverted);
     }
     .selection-card--monochrome .selection-card__indicator {
