@@ -138,23 +138,23 @@ export const PricingTiers: Story = {
       @selection-change=${(e: CustomEvent) => selectionChangeAction(e.detail)}
     >
       <ag-selection-card value="free" label="Free Plan">
-        <div style="padding: 1.5rem; text-align: center;">
+        <div style="padding: 1rem; text-align: center;">
           <div style="font-size: 1.5rem; font-weight: 700;">Free</div>
           <div style="font-size: 2rem; font-weight: 700; margin: 0.5rem 0;">$0</div>
           <div style="color: #666; font-size: 0.875rem;">Perfect for getting started</div>
         </div>
       </ag-selection-card>
       <ag-selection-card value="pro" label="Pro Plan">
-        <div style="padding: 1.5rem; text-align: center;">
+        <div style="padding: 1rem; text-align: center;">
           <div style="font-size: 1.5rem; font-weight: 700;">Pro</div>
           <div style="font-size: 2rem; font-weight: 700; margin: 0.5rem 0;">$29</div>
           <div style="color: #666; font-size: 0.875rem;">For growing teams</div>
         </div>
       </ag-selection-card>
-      <ag-selection-card value="enterprise" label="Enterprise Plan">
-        <div style="padding: 1.5rem; text-align: center;">
-          <div style="font-size: 1.5rem; font-weight: 700;">Enterprise</div>
-          <div style="font-size: 2rem; font-weight: 700; margin: 0.5rem 0;">Custom</div>
+      <ag-selection-card value="premium" label="Premium Plan">
+        <div style="padding: 1rem; text-align: center;">
+          <div style="font-size: 1.5rem; font-weight: 700;">Premium</div>
+          <div style="font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0;">Custom</div>
           <div style="color: #666; font-size: 0.875rem;">For large organizations</div>
         </div>
       </ag-selection-card>

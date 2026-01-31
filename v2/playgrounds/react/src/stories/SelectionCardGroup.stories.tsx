@@ -138,23 +138,23 @@ export const PricingTiers: Story = {
       onSelectionChange={(e) => selectionChangeAction(e.detail)}
     >
       <ReactSelectionCard value="free" label="Free Plan">
-        <div style={{ padding: "1.5rem", textAlign: "center" }}>
+        <div style={{ padding: "1rem", textAlign: "center" }}>
           <div style={{ fontSize: "1.5rem", fontWeight: 700 }}>Free</div>
           <div style={{ fontSize: "2rem", fontWeight: 700, margin: "0.5rem 0" }}>$0</div>
           <div style={{ color: "#666", fontSize: "0.875rem" }}>Perfect for getting started</div>
         </div>
       </ReactSelectionCard>
       <ReactSelectionCard value="pro" label="Pro Plan">
-        <div style={{ padding: "1.5rem", textAlign: "center" }}>
+        <div style={{ padding: "1rem", textAlign: "center" }}>
           <div style={{ fontSize: "1.5rem", fontWeight: 700 }}>Pro</div>
           <div style={{ fontSize: "2rem", fontWeight: 700, margin: "0.5rem 0" }}>$29</div>
           <div style={{ color: "#666", fontSize: "0.875rem" }}>For growing teams</div>
         </div>
       </ReactSelectionCard>
-      <ReactSelectionCard value="enterprise" label="Enterprise Plan">
-        <div style={{ padding: "1.5rem", textAlign: "center" }}>
-          <div style={{ fontSize: "1.5rem", fontWeight: 700 }}>Enterprise</div>
-          <div style={{ fontSize: "2rem", fontWeight: 700, margin: "0.5rem 0" }}>Custom</div>
+      <ReactSelectionCard value="premium" label="Premium Plan">
+        <div style={{ padding: "1rem", textAlign: "center" }}>
+          <div style={{ fontSize: "1.5rem", fontWeight: 700 }}>Premium</div>
+          <div style={{ fontSize: "1.5rem", fontWeight: 700, margin: "0.5rem 0" }}>Custom</div>
           <div style={{ color: "#666", fontSize: "0.875rem" }}>For large organizations</div>
         </div>
       </ReactSelectionCard>
