@@ -292,6 +292,11 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
     this._theme = '';
   }
 
+  override focus() {
+    const label = this.shadowRoot?.querySelector('.selection-card') as HTMLElement | null;
+    label?.focus();
+  }
+
   private _handleClick(e: Event) {
     // Prevent label from forwarding click to input (we handle selection ourselves)
     e.preventDefault();
