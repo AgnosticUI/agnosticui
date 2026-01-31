@@ -84,6 +84,7 @@ const selected = ref('');
 | `name` | `string` | `''` | Input name attribute (required) |
 | `legend` | `string` | `''` | Accessible group label |
 | `legend-hidden` | `boolean` | `false` | Visually hide legend |
+| `theme` | `'' \| 'success' \| 'info' \| 'warning' \| 'error' \| 'monochrome'` | `''` | Theme variant (empty = primary/blue) |
 | `value` | `string` | `''` | Controlled value (radio) |
 | `values` | `string[]` | `[]` | Controlled values (checkbox) |
 | `disabled` | `boolean` | `false` | Disable all cards |
@@ -109,6 +110,26 @@ interface SelectionChangeEventDetail {
   checked: boolean;     // Whether the card is now selected
   selectedValues: string[]; // All currently selected values
 }
+```
+
+## Themes
+
+The `theme` prop controls the color scheme for selected cards:
+
+| Theme | Description |
+|-------|-------------|
+| `''` (default) | Primary blue - uses `--ag-primary-*` tokens |
+| `success` | Green - uses `--ag-success-*` tokens |
+| `info` | Cyan/blue - uses `--ag-info-*` tokens |
+| `warning` | Yellow/orange - uses `--ag-warning-*` tokens |
+| `error` | Red - uses `--ag-danger-*` tokens |
+| `monochrome` | Black/white - uses `--ag-black` and inverted tokens |
+
+```html
+<!-- Success theme -->
+<ag-selection-card-group type="radio" name="status" theme="success">
+  ...
+</ag-selection-card-group>
 ```
 
 ## Styling
@@ -151,7 +172,7 @@ interface SelectionChangeEventDetail {
 |------|-------------|
 | `container` | The outer clickable label |
 | `control` | The hidden input element |
-| `indicator` | The checkmark badge |
+| `indicator` | The selection indicator (filled circle for radio, checkmark for checkbox) |
 | `content` | The slotted content wrapper |
 
 ## Accessibility
