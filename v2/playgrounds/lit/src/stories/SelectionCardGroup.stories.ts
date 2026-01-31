@@ -1,8 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
+import { action } from "storybook/actions";
 import "agnosticui-core/selection-card-group";
 import "agnosticui-core/selection-card";
 import type { AgSelectionCardGroup } from "agnosticui-core/selection-card-group";
+
+const selectionChangeAction = action("selection-change");
 
 const meta: Meta<AgSelectionCardGroup> = {
   title: "AgnosticUI Lit/SelectionCardGroup",
@@ -26,6 +29,11 @@ const meta: Meta<AgSelectionCardGroup> = {
       control: "boolean",
       description: "Visually hide the legend while keeping it accessible",
     },
+    theme: {
+      control: "select",
+      options: ["", "success", "info", "warning", "error", "monochrome"],
+      description: "Theme variant for cards",
+    },
     disabled: {
       control: "boolean",
       description: "Disable all cards in the group",
@@ -36,6 +44,7 @@ const meta: Meta<AgSelectionCardGroup> = {
     name: "interests",
     legend: "Select your interests",
     legendHidden: false,
+    theme: "",
     disabled: false,
   },
 };
@@ -51,7 +60,7 @@ export const RadioGroup: Story = {
       legend=${args.legend}
       ?legend-hidden=${args.legendHidden}
       ?disabled=${args.disabled}
-      @selection-change=${(e: CustomEvent) => console.log('Selection changed:', e.detail)}
+      @selection-change=${(e: CustomEvent) => selectionChangeAction(e.detail)}
     >
       <ag-selection-card value="tech" label="Technology">
         <div style="text-align: center; padding: 1rem;">
@@ -88,7 +97,7 @@ export const CheckboxGroup: Story = {
       legend=${args.legend}
       ?legend-hidden=${args.legendHidden}
       ?disabled=${args.disabled}
-      @selection-change=${(e: CustomEvent) => console.log('Selection changed:', e.detail)}
+      @selection-change=${(e: CustomEvent) => selectionChangeAction(e.detail)}
     >
       <ag-selection-card value="analytics" label="Analytics">
         <div style="text-align: center; padding: 1rem;">
@@ -126,7 +135,7 @@ export const PricingTiers: Story = {
       type=${args.type}
       name=${args.name}
       legend=${args.legend}
-      @selection-change=${(e: CustomEvent) => console.log('Plan selected:', e.detail)}
+      @selection-change=${(e: CustomEvent) => selectionChangeAction(e.detail)}
     >
       <ag-selection-card value="free" label="Free Plan">
         <div style="padding: 1.5rem; text-align: center;">
@@ -198,5 +207,129 @@ export const HiddenLegend: Story = {
         <div style="padding: 1rem; text-align: center;">Option B</div>
       </ag-selection-card>
     </ag-selection-card-group>
+  `,
+};
+
+export const ThemeVariants: Story = {
+  args: {
+    type: "radio",
+    name: "theme-variants",
+    legend: "Theme Variants",
+  },
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      <!-- Default (Primary/Blue) -->
+      <div>
+        <h3 style="margin-bottom: 0.5rem;">Default (Primary)</h3>
+        <ag-selection-card-group
+          type="radio"
+          name="theme-default"
+          legend="Default theme"
+          legend-hidden
+        >
+          <ag-selection-card value="a" label="Option A">
+            <div style="padding: 1rem; text-align: center;">Option A</div>
+          </ag-selection-card>
+          <ag-selection-card value="b" label="Option B">
+            <div style="padding: 1rem; text-align: center;">Option B</div>
+          </ag-selection-card>
+        </ag-selection-card-group>
+      </div>
+
+      <!-- Success -->
+      <div>
+        <h3 style="margin-bottom: 0.5rem;">Success</h3>
+        <ag-selection-card-group
+          type="radio"
+          name="theme-success"
+          legend="Success theme"
+          legend-hidden
+          theme="success"
+        >
+          <ag-selection-card value="a" label="Option A">
+            <div style="padding: 1rem; text-align: center;">Option A</div>
+          </ag-selection-card>
+          <ag-selection-card value="b" label="Option B">
+            <div style="padding: 1rem; text-align: center;">Option B</div>
+          </ag-selection-card>
+        </ag-selection-card-group>
+      </div>
+
+      <!-- Info -->
+      <div>
+        <h3 style="margin-bottom: 0.5rem;">Info</h3>
+        <ag-selection-card-group
+          type="radio"
+          name="theme-info"
+          legend="Info theme"
+          legend-hidden
+          theme="info"
+        >
+          <ag-selection-card value="a" label="Option A">
+            <div style="padding: 1rem; text-align: center;">Option A</div>
+          </ag-selection-card>
+          <ag-selection-card value="b" label="Option B">
+            <div style="padding: 1rem; text-align: center;">Option B</div>
+          </ag-selection-card>
+        </ag-selection-card-group>
+      </div>
+
+      <!-- Warning -->
+      <div>
+        <h3 style="margin-bottom: 0.5rem;">Warning</h3>
+        <ag-selection-card-group
+          type="radio"
+          name="theme-warning"
+          legend="Warning theme"
+          legend-hidden
+          theme="warning"
+        >
+          <ag-selection-card value="a" label="Option A">
+            <div style="padding: 1rem; text-align: center;">Option A</div>
+          </ag-selection-card>
+          <ag-selection-card value="b" label="Option B">
+            <div style="padding: 1rem; text-align: center;">Option B</div>
+          </ag-selection-card>
+        </ag-selection-card-group>
+      </div>
+
+      <!-- Error -->
+      <div>
+        <h3 style="margin-bottom: 0.5rem;">Error</h3>
+        <ag-selection-card-group
+          type="radio"
+          name="theme-error"
+          legend="Error theme"
+          legend-hidden
+          theme="error"
+        >
+          <ag-selection-card value="a" label="Option A">
+            <div style="padding: 1rem; text-align: center;">Option A</div>
+          </ag-selection-card>
+          <ag-selection-card value="b" label="Option B">
+            <div style="padding: 1rem; text-align: center;">Option B</div>
+          </ag-selection-card>
+        </ag-selection-card-group>
+      </div>
+
+      <!-- Monochrome -->
+      <div>
+        <h3 style="margin-bottom: 0.5rem;">Monochrome</h3>
+        <ag-selection-card-group
+          type="radio"
+          name="theme-monochrome"
+          legend="Monochrome theme"
+          legend-hidden
+          theme="monochrome"
+        >
+          <ag-selection-card value="a" label="Option A">
+            <div style="padding: 1rem; text-align: center;">Option A</div>
+          </ag-selection-card>
+          <ag-selection-card value="b" label="Option B">
+            <div style="padding: 1rem; text-align: center;">Option B</div>
+          </ag-selection-card>
+        </ag-selection-card-group>
+      </div>
+    </div>
   `,
 };

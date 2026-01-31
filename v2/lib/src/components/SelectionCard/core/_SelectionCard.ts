@@ -291,8 +291,10 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
   }
 
   private _handleClick(e: Event) {
+    // Prevent label from forwarding click to input (we handle selection ourselves)
+    e.preventDefault();
+
     if (this.disabled) {
-      e.preventDefault();
       return;
     }
 
