@@ -237,6 +237,13 @@ ag-selection-card::part(indicator) {
 ag-selection-card::part(container) {
   border-radius: var(--ag-radius-lg);
 }
+
+/* Responsive: stack cards on mobile */
+@media (max-width: 640px) {
+  ag-selection-card-group::part(content) {
+    grid-template-columns: 1fr;
+  }
+}
 ```
 
 ## Accessibility
