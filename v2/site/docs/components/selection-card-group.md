@@ -1,29 +1,82 @@
 # SelectionCardGroup
 
+<AlphaWarning />
+
 A card-based selection UI for single (radio) or multiple (checkbox) selection. Ideal for onboarding flows, preferences, pricing tiers, and feature opt-ins.
+
+## Examples
+
+<FrameworkExample
+  component="selection-card-group"
+  :vue-code="vueCode"
+  :lit-code="litCode"
+  :react-code="reactCode"
+>
+  <template #vue>
+    <SelectionCardGroupExamples />
+  </template>
+  <template #lit>
+    <selection-card-group-lit-examples></selection-card-group-lit-examples>
+  </template>
+</FrameworkExample>
+
+<script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
+import SelectionCardGroupExamples from '../examples/SelectionCardGroupExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/SelectionCardGroupLitExamples.js'
+import vueCode from '../examples/SelectionCardGroupExamples.vue?raw'
+import litCode from '../examples/SelectionCardGroupLitExamples.js?raw'
+import reactCode from '../examples/SelectionCardGroupReactExamples.jsx?raw'
+</script>
 
 ## Usage
 
-### Web Component (Lit)
-
-```html
-<ag-selection-card-group type="radio" name="interests" legend="Select your interests">
-  <ag-selection-card value="tech" label="Technology">
-    <span>Technology</span>
-  </ag-selection-card>
-  <ag-selection-card value="art" label="Art & Design">
-    <span>Art & Design</span>
-  </ag-selection-card>
-</ag-selection-card-group>
+::: tip
+The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+```bash
+npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
+npx ag add SelectionCardGroup
+npx ag add SelectionCard
 ```
+The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
+:::
 
-### React
+::: details Vue
+```vue
+<template>
+  <VueSelectionCardGroup
+    type="radio"
+    name="interests"
+    legend="Select your interests"
+    @selection-change="handleChange"
+  >
+    <VueSelectionCard value="tech" label="Technology">
+      <span>Technology</span>
+    </VueSelectionCard>
+    <VueSelectionCard value="art" label="Art & Design">
+      <span>Art & Design</span>
+    </VueSelectionCard>
+  </VueSelectionCardGroup>
+</template>
 
-```jsx
-import { ReactSelectionCardGroup } from 'agnosticui-core/selection-card-group/react';
-import { ReactSelectionCard } from 'agnosticui-core/selection-card/react';
+<script setup>
+import { VueSelectionCardGroup } from 'agnosticui-core/selection-card-group/vue';
+import { VueSelectionCard } from 'agnosticui-core/selection-card/vue';
 
-function App() {
+const handleChange = (e) => {
+  console.log('Selected:', e.detail.selectedValues);
+};
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { ReactSelectionCardGroup } from "agnosticui-core/selection-card-group/react";
+import { ReactSelectionCard } from "agnosticui-core/selection-card/react";
+
+export default function Example() {
   const handleChange = (e) => {
     console.log('Selected:', e.detail.selectedValues);
   };
@@ -45,34 +98,30 @@ function App() {
   );
 }
 ```
+:::
 
-### Vue
+::: details Lit (Web Components)
+```html
+<script type="module">
+  import "agnosticui-core/selection-card-group";
+  import "agnosticui-core/selection-card";
 
-```vue
-<template>
-  <VueSelectionCardGroup
-    type="radio"
-    name="interests"
-    legend="Select your interests"
-    v-model:value="selected"
-  >
-    <VueSelectionCard value="tech" label="Technology">
-      <span>Technology</span>
-    </VueSelectionCard>
-    <VueSelectionCard value="art" label="Art & Design">
-      <span>Art & Design</span>
-    </VueSelectionCard>
-  </VueSelectionCardGroup>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { VueSelectionCardGroup } from 'agnosticui-core/selection-card-group/vue';
-import { VueSelectionCard } from 'agnosticui-core/selection-card/vue';
-
-const selected = ref('');
+  const group = document.querySelector('ag-selection-card-group');
+  group.addEventListener('selection-change', (e) => {
+    console.log('Selected:', e.detail.selectedValues);
+  });
 </script>
+
+<ag-selection-card-group type="radio" name="interests" legend="Select your interests">
+  <ag-selection-card value="tech" label="Technology">
+    <span>Technology</span>
+  </ag-selection-card>
+  <ag-selection-card value="art" label="Art & Design">
+    <span>Art & Design</span>
+  </ag-selection-card>
+</ag-selection-card-group>
 ```
+:::
 
 ## Props
 
