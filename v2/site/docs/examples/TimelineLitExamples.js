@@ -15,6 +15,11 @@ const cardStyle = `
   margin-block-end: var(--ag-space-4);
 `;
 
+const stepMarkerBase = "width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;";
+const stepMarkerCompleted = `${stepMarkerBase} background: var(--ag-success); color: white;`;
+const stepMarkerCurrent = `${stepMarkerBase} background: var(--ag-primary); color: white;`;
+const stepMarkerPending = `${stepMarkerBase} background: transparent; border: 1px solid var(--ag-border); color: var(--ag-text-secondary);`;
+
 class TimelineLitExamples extends LitElement {
   createRenderRoot() {
     return this;
@@ -82,6 +87,35 @@ class TimelineLitExamples extends LitElement {
                 </svg>
               </ag-icon>
               <span slot="ag-end">Step 3 Pending</span>
+            </ag-timeline-item>
+          </ag-timeline>
+        </div>
+
+        <!-- Numbered Steps Timeline -->
+        <div class="mbe4">
+          <h2>Numbered Steps Timeline</h2>
+          <p
+            style="color: var(--ag-text-secondary); font-size: 0.875rem; margin-block-start: 0.5rem;"
+          >
+            A horizontal stepper using numbered circles to indicate progress. Markers are fully customizable via slots.
+          </p>
+        </div>
+        <div class="mbe4">
+          <ag-timeline orientation="horizontal" .responsive=${false}>
+            <ag-timeline-item>
+              <span slot="ag-start">Step 1</span>
+              <div slot="ag-marker" style="${stepMarkerCompleted}">1</div>
+              <span slot="ag-end">Completed</span>
+            </ag-timeline-item>
+            <ag-timeline-item>
+              <span slot="ag-start">Step 2</span>
+              <div slot="ag-marker" style="${stepMarkerCurrent}">2</div>
+              <span slot="ag-end">Current</span>
+            </ag-timeline-item>
+            <ag-timeline-item>
+              <span slot="ag-start">Step 3</span>
+              <div slot="ag-marker" style="${stepMarkerPending}">3</div>
+              <span slot="ag-end">Pending</span>
             </ag-timeline-item>
           </ag-timeline>
         </div>

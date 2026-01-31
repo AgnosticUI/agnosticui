@@ -17,6 +17,35 @@ const cardStyle = {
   marginBottom: "var(--ag-space-4)",
 };
 
+const stepMarkerBase = {
+  width: "40px",
+  height: "40px",
+  borderRadius: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontWeight: 600,
+};
+
+const stepMarkerCompleted = {
+  ...stepMarkerBase,
+  background: "var(--ag-success)",
+  color: "white",
+};
+
+const stepMarkerCurrent = {
+  ...stepMarkerBase,
+  background: "var(--ag-primary)",
+  color: "white",
+};
+
+const stepMarkerPending = {
+  ...stepMarkerBase,
+  background: "transparent",
+  border: "1px solid var(--ag-border)",
+  color: "var(--ag-text-secondary)",
+};
+
 export default function TimelineReactExamples() {
   return (
     <section>
@@ -85,6 +114,45 @@ export default function TimelineReactExamples() {
               </ReactIcon>
             </div>
             <div slot="ag-end">Step 3 Pending</div>
+          </ReactTimelineItem>
+        </ReactTimeline>
+      </div>
+
+      {/* Numbered Steps Timeline */}
+      <div className="mbe4">
+        <h2>Numbered Steps Timeline</h2>
+        <p
+          style={{
+            color: "var(--ag-text-secondary)",
+            fontSize: "0.875rem",
+            marginTop: "0.5rem",
+          }}
+        >
+          A horizontal stepper using numbered circles to indicate progress. Markers are fully customizable via slots.
+        </p>
+      </div>
+      <div className="mbe4">
+        <ReactTimeline orientation="horizontal" responsive={false}>
+          <ReactTimelineItem>
+            <div slot="ag-start">Step 1</div>
+            <div slot="ag-marker">
+              <div style={stepMarkerCompleted}>1</div>
+            </div>
+            <div slot="ag-end">Completed</div>
+          </ReactTimelineItem>
+          <ReactTimelineItem>
+            <div slot="ag-start">Step 2</div>
+            <div slot="ag-marker">
+              <div style={stepMarkerCurrent}>2</div>
+            </div>
+            <div slot="ag-end">Current</div>
+          </ReactTimelineItem>
+          <ReactTimelineItem>
+            <div slot="ag-start">Step 3</div>
+            <div slot="ag-marker">
+              <div style={stepMarkerPending}>3</div>
+            </div>
+            <div slot="ag-end">Pending</div>
           </ReactTimelineItem>
         </ReactTimeline>
       </div>

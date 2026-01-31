@@ -90,6 +90,42 @@
       </AgTimeline>
     </div>
 
+    <!-- Numbered Steps Timeline -->
+    <div class="mbe4">
+      <h2>Numbered Steps Timeline</h2>
+      <p style="color: var(--ag-text-secondary); font-size: 0.875rem; margin-block-start: 0.5rem;">
+        A horizontal stepper using numbered circles to indicate progress. Markers are fully customizable via slots.
+      </p>
+    </div>
+    <div class="mbe4">
+      <AgTimeline
+        orientation="horizontal"
+        :responsive="false"
+      >
+        <AgTimelineItem>
+          <template #ag-start>Step 1</template>
+          <template #ag-marker>
+            <div :style="stepMarkerCompleted">1</div>
+          </template>
+          <template #ag-end>Completed</template>
+        </AgTimelineItem>
+        <AgTimelineItem>
+          <template #ag-start>Step 2</template>
+          <template #ag-marker>
+            <div :style="stepMarkerCurrent">2</div>
+          </template>
+          <template #ag-end>Current</template>
+        </AgTimelineItem>
+        <AgTimelineItem>
+          <template #ag-start>Step 3</template>
+          <template #ag-marker>
+            <div :style="stepMarkerPending">3</div>
+          </template>
+          <template #ag-end>Pending</template>
+        </AgTimelineItem>
+      </AgTimeline>
+    </div>
+
     <!-- Vertical Timeline -->
     <div class="mbe4">
       <h2>Vertical Timeline</h2>
@@ -611,6 +647,11 @@ import { VueIconButton as AgIconButton } from "agnosticui-core/icon-button/vue";
 const cardStyle =
   "border: 1px solid var(--ag-border); padding: var(--ag-space-2); border-radius: var(--ag-radius); background-color: var(--ag-background); margin-block-end: var(--ag-space-4);";
 
+const stepMarkerBase = "width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;";
+const stepMarkerCompleted = `${stepMarkerBase} background: var(--ag-success); color: white;`;
+const stepMarkerCurrent = `${stepMarkerBase} background: var(--ag-primary); color: white;`;
+const stepMarkerPending = `${stepMarkerBase} background: transparent; border: 1px solid var(--ag-border); color: var(--ag-text-secondary);`;
+
 export default defineComponent({
   name: "TimelineExamples",
   components: {
@@ -625,6 +666,9 @@ export default defineComponent({
   setup() {
     return {
       cardStyle,
+      stepMarkerCompleted,
+      stepMarkerCurrent,
+      stepMarkerPending,
     };
   },
 });
