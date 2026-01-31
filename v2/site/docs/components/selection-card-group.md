@@ -224,6 +224,21 @@ The `theme` prop controls the color scheme for selected cards:
 | `indicator` | The selection indicator (filled circle for radio, checkmark for checkbox) |
 | `content` | The slotted content wrapper |
 
+### CSS Parts Example
+
+```css
+/* Custom indicator size and shape */
+ag-selection-card::part(indicator) {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Custom container styling */
+ag-selection-card::part(container) {
+  border-radius: var(--ag-radius-lg);
+}
+```
+
 ## Accessibility
 
 - Uses `<fieldset>` and `<legend>` for proper group semantics
