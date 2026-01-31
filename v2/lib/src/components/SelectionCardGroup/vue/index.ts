@@ -1,2 +1,5 @@
-export { default as VueSelectionCardGroup } from './VueSelectionCardGroup.vue';
-export type { VueSelectionCardGroupProps } from './VueSelectionCardGroup.vue';
+import VueSelectionCardGroup from './VueSelectionCardGroup.vue';
+import type { SelectionCardGroupProps as VueSelectionCardGroupProps } from '../core/_SelectionCardGroup';
+
+export { VueSelectionCardGroup };
+export type { VueSelectionCardGroupProps };

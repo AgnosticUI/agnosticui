@@ -1,2 +1,5 @@
-export { default as VueSelectionCard } from './VueSelectionCard.vue';
-export type { VueSelectionCardProps } from './VueSelectionCard.vue';
+import VueSelectionCard from './VueSelectionCard.vue';
+import type { SelectionCardProps as VueSelectionCardProps } from '../core/_SelectionCard';
+
+export { VueSelectionCard };
+export type { VueSelectionCardProps };
