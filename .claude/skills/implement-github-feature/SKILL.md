@@ -2,24 +2,7 @@
 name: implement-github-feature
 description: Design and implement a new feature or component from a GitHub issue. Use for net-new functionality, not bug fixes.
 disable-model-invocation: true
-allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - Edit
-  - Write
-  - Bash(gh issue view *)
-  - Bash(gh pr view *)
-  - Bash(git status)
-  - Bash(git diff *)
-  - Bash(git log *)
-  - Bash(git branch *)
-  - Bash(git checkout *)
-  - Bash(git add *)
-  - Bash(git commit *)
-  - Bash(npm run build)
-  - Bash(npm run lint)
-  - Bash(ls *)
+allowed-tools: Read, Grep, Glob, Edit, Write, Bash(gh issue view *), Bash(gh pr view *), Bash(git status), Bash(git diff *), Bash(git log *), Bash(git branch *), Bash(git checkout *), Bash(git add *), Bash(git commit *), Bash(npm run build), Bash(npm run lint), Bash(ls *)
 ---
 
 **Usage:** `/implement-github-feature ISSUE_NUMBER`
