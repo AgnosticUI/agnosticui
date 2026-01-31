@@ -220,4 +220,30 @@ describe('SelectionCardGroup - Comprehensive Tests', () => {
       });
     });
   });
+
+  describe('Keyboard Navigation', () => {
+    it('should navigate through cards with arrow keys', async () => {
+      const group = await createGroup({ type: 'radio' });
+      const cards = Array.from(group.querySelectorAll('ag-selection-card')) as AgSelectionCard[];
+      await Promise.all(cards.map(c => c.updateComplete));
+
+      // Focus first card
+      cards[0].focus();
+
+      // Arrow right to second
+      group.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+      await group.updateComplete;
+      expect(cards[1].checked).toBe(true);
+
+      // Arrow right to third
+      group.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+      await group.updateComplete;
+      expect(cards[2].checked).toBe(true);
+
+      // Arrow left back to second
+      group.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }));
+      await group.updateComplete;
+      expect(cards[1].checked).toBe(true);
+    });
+  });
 });

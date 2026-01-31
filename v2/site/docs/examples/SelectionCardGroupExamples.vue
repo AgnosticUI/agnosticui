@@ -229,3 +229,13 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+/* Responsive: stack cards on mobile */
+@media (max-width: 640px) {
+  ag-selection-card-group::part(content) {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</script>

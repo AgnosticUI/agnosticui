@@ -235,3 +235,14 @@ export class SelectionCardGroupLitExamples extends LitElement {
 
 // Register the custom element
 customElements.define('selection-card-group-lit-examples', SelectionCardGroupLitExamples);
+
+// Add responsive styles
+const style = document.createElement('style');
+style.textContent = `
+  @media (max-width: 640px) {
+    ag-selection-card-group::part(content) {
+      grid-template-columns: 1fr;
+    }
+  }
+`;
+document.head.appendChild(style);
