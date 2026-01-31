@@ -8,12 +8,14 @@
  * @slot - Default slot for visual content (icons, text, etc.)
  * @csspart container - The outer clickable label
  * @csspart control - The hidden input element
- * @csspart indicator - The checkmark badge (top-right corner)
+ * @csspart indicator - The selection indicator (top-right corner)
  * @csspart content - The slotted content wrapper
  */
 
 import { LitElement, html, css, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
+
+export type SelectionCardTheme = 'success' | 'info' | 'error' | 'warning' | 'monochrome' | '';
 
 export interface SelectionCardProps {
   /** Unique value for this card (required) */
@@ -32,6 +34,8 @@ interface SelectionCardInternalProps {
   _type?: 'radio' | 'checkbox';
   /** Input name (set by parent group) */
   _name?: string;
+  /** Theme (set by parent group) */
+  _theme?: SelectionCardTheme;
 }
 
 export class AgSelectionCard extends LitElement implements SelectionCardProps, SelectionCardInternalProps {
@@ -44,9 +48,6 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
       --_selection-card-indicator-size: var(--ag-selection-card-indicator-size, var(--ag-space-5));
       --_selection-card-background: var(--ag-selection-card-background, var(--ag-background-primary));
       --_selection-card-border-color: var(--ag-selection-card-border-color, var(--ag-border));
-      --_selection-card-selected-background: var(--ag-selection-card-selected-background, var(--ag-primary-background));
-      --_selection-card-selected-border-color: var(--ag-selection-card-selected-border-color, var(--ag-primary));
-      --_selection-card-indicator-color: var(--ag-selection-card-indicator-color, var(--ag-primary));
     }
 
     .selection-card {
@@ -63,16 +64,87 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
         box-shadow var(--ag-motion-fast) ease-in-out;
     }
 
-    /* Hover state */
-    .selection-card:hover:not(.selection-card--disabled) {
-      border-color: var(--_selection-card-selected-border-color);
+    /* Theme: default/empty (primary blue) */
+    .selection-card--default:hover:not(.selection-card--disabled) {
+      border-color: var(--ag-primary);
+    }
+    .selection-card--default.selection-card--checked {
+      background: var(--ag-primary-background);
+      border-color: var(--ag-primary);
+      border-width: var(--ag-border-width-2);
+    }
+    .selection-card--default .selection-card__indicator {
+      background: var(--ag-primary);
     }
 
-    /* Selected state */
-    .selection-card--checked {
-      background: var(--_selection-card-selected-background);
-      border-color: var(--_selection-card-selected-border-color);
+    /* Theme: success (green) */
+    .selection-card--success:hover:not(.selection-card--disabled) {
+      border-color: var(--ag-success);
+    }
+    .selection-card--success.selection-card--checked {
+      background: var(--ag-success-background);
+      border-color: var(--ag-success);
       border-width: var(--ag-border-width-2);
+      color: var(--ag-success-text);
+    }
+    .selection-card--success .selection-card__indicator {
+      background: var(--ag-success);
+    }
+
+    /* Theme: info (blue/cyan) */
+    .selection-card--info:hover:not(.selection-card--disabled) {
+      border-color: var(--ag-info);
+    }
+    .selection-card--info.selection-card--checked {
+      background: var(--ag-info-background);
+      border-color: var(--ag-info);
+      border-width: var(--ag-border-width-2);
+      color: var(--ag-info-text);
+    }
+    .selection-card--info .selection-card__indicator {
+      background: var(--ag-info);
+    }
+
+    /* Theme: warning (yellow/orange) */
+    .selection-card--warning:hover:not(.selection-card--disabled) {
+      border-color: var(--ag-warning);
+    }
+    .selection-card--warning.selection-card--checked {
+      background: var(--ag-warning-background);
+      border-color: var(--ag-warning);
+      border-width: var(--ag-border-width-2);
+      color: var(--ag-warning-text);
+    }
+    .selection-card--warning .selection-card__indicator {
+      background: var(--ag-warning);
+    }
+
+    /* Theme: error (red) */
+    .selection-card--error:hover:not(.selection-card--disabled) {
+      border-color: var(--ag-danger);
+    }
+    .selection-card--error.selection-card--checked {
+      background: var(--ag-danger-background);
+      border-color: var(--ag-danger);
+      border-width: var(--ag-border-width-2);
+      color: var(--ag-danger-text);
+    }
+    .selection-card--error .selection-card__indicator {
+      background: var(--ag-danger);
+    }
+
+    /* Theme: monochrome (black/white) */
+    .selection-card--monochrome:hover:not(.selection-card--disabled) {
+      border-color: var(--ag-black);
+    }
+    .selection-card--monochrome.selection-card--checked {
+      background: var(--ag-background-primary-inverted);
+      border-color: var(--ag-black);
+      border-width: var(--ag-border-width-2);
+      color: var(--ag-text-primary-inverted);
+    }
+    .selection-card--monochrome .selection-card__indicator {
+      background: var(--ag-black);
     }
 
     /* Focus state */
@@ -100,7 +172,7 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
       border: 0;
     }
 
-    /* Indicator (checkmark badge) */
+    /* Indicator (badge in top-right corner) */
     .selection-card__indicator {
       position: absolute;
       top: var(--ag-space-2);
@@ -110,7 +182,6 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--_selection-card-indicator-color);
       border-radius: var(--ag-radius-full);
       opacity: 0;
       transform: scale(0.8);
@@ -124,7 +195,15 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
       transform: scale(1);
     }
 
-    /* Checkmark SVG */
+    /* Radio indicator - filled circle */
+    .selection-card__radio-dot {
+      width: 40%;
+      height: 40%;
+      background: var(--ag-white);
+      border-radius: var(--ag-radius-full);
+    }
+
+    /* Checkbox indicator - checkmark */
     .selection-card__checkmark {
       width: 60%;
       height: 60%;
@@ -172,6 +251,9 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
       .selection-card__checkmark {
         stroke: Canvas;
       }
+      .selection-card__radio-dot {
+        background: Canvas;
+      }
     }
   `;
 
@@ -194,6 +276,9 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
   @property({ type: String, attribute: false })
   declare _name: string;
 
+  @property({ type: String, attribute: false })
+  declare _theme: SelectionCardTheme;
+
   constructor() {
     super();
     this.value = '';
@@ -202,6 +287,7 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
     this.disabled = false;
     this._type = 'radio';
     this._name = '';
+    this._theme = '';
   }
 
   private _handleClick(e: Event) {
@@ -234,9 +320,25 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
     }
   }
 
+  private _renderIndicator() {
+    if (this._type === 'checkbox') {
+      // Checkmark for checkbox
+      return html`
+        <svg class="selection-card__checkmark" viewBox="0 0 24 24">
+          <polyline points="4 12 10 18 20 6"></polyline>
+        </svg>
+      `;
+    }
+    // Filled circle for radio
+    return html`<div class="selection-card__radio-dot"></div>`;
+  }
+
   override render() {
+    // Map empty theme to 'default' for CSS class
+    const themeClass = this._theme || 'default';
     const containerClasses = [
       'selection-card',
+      `selection-card--${themeClass}`,
       this.checked ? 'selection-card--checked' : '',
       this.disabled ? 'selection-card--disabled' : '',
     ].filter(Boolean).join(' ');
@@ -262,9 +364,7 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
         />
         <span class="selection-card__label-sr">${this.label}</span>
         <div class="selection-card__indicator" part="indicator" aria-hidden="true">
-          <svg class="selection-card__checkmark" viewBox="0 0 24 24">
-            <polyline points="4 12 10 18 20 6"></polyline>
-          </svg>
+          ${this._renderIndicator()}
         </div>
         <div class="selection-card__content" part="content">
           <slot></slot>

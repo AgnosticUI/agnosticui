@@ -16,6 +16,7 @@ import { property, state } from 'lit/decorators.js';
 import type { AgSelectionCard } from '../../SelectionCard/core/_SelectionCard.js';
 
 export type SelectionType = 'radio' | 'checkbox';
+export type SelectionCardGroupTheme = 'success' | 'info' | 'error' | 'warning' | 'monochrome' | '';
 
 export interface SelectionChangeEventDetail {
   /** The value of the card that triggered the change */
@@ -37,6 +38,8 @@ export interface SelectionCardGroupProps {
   legend?: string;
   /** Visually hide the legend while keeping it accessible */
   legendHidden?: boolean;
+  /** Theme variant for cards */
+  theme?: SelectionCardGroupTheme;
   /** Controlled value for radio mode */
   value?: string;
   /** Controlled values for checkbox mode */
@@ -99,6 +102,9 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
   @property({ type: Boolean, attribute: 'legend-hidden' })
   declare legendHidden: boolean;
 
+  @property({ type: String, reflect: true })
+  declare theme: SelectionCardGroupTheme;
+
   @property({ type: String })
   declare value: string;
 
@@ -109,26 +115,11 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
   declare disabled: boolean;
 
   @property({ attribute: false })
-  declare onSelectionChange?: (event: SelectionChangeEvent) => void;
+  declare onSelectionChange: ((event: SelectionChangeEvent) => void) | undefined;
 
   // Internal state for uncontrolled mode
   @state()
-  private _internalSelectedValues: string[] = [];
-
-  // Track if we're in controlled mode
-  private get _isControlled(): boolean {
-    return this.type === 'radio'
-      ? this.value !== undefined && this.value !== ''
-      : this.values !== undefined && this.values.length > 0;
-  }
-
-  // Get current selected values (controlled or uncontrolled)
-  private get _selectedValues(): string[] {
-    if (this.type === 'radio') {
-      return this.value ? [this.value] : this._internalSelectedValues;
-    }
-    return this.values && this.values.length > 0 ? this.values : this._internalSelectedValues;
-  }
+  declare _internalSelectedValues: string[];
 
   constructor() {
     super();
@@ -136,9 +127,27 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
     this.name = '';
     this.legend = '';
     this.legendHidden = false;
+    this.theme = '';
     this.value = '';
     this.values = [];
     this.disabled = false;
+    this._internalSelectedValues = [];
+  }
+
+  // Get current selected values (controlled or uncontrolled)
+  private _getSelectedValues(): string[] {
+    if (this.type === 'radio') {
+      // For radio: use controlled value if set, otherwise internal state
+      if (this.value) {
+        return [this.value];
+      }
+      return this._internalSelectedValues;
+    }
+    // For checkbox: use controlled values if set (non-empty), otherwise internal state
+    if (this.values && this.values.length > 0) {
+      return this.values;
+    }
+    return this._internalSelectedValues;
   }
 
   override connectedCallback() {
@@ -160,6 +169,7 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
     if (
       changedProperties.has('type') ||
       changedProperties.has('name') ||
+      changedProperties.has('theme') ||
       changedProperties.has('disabled') ||
       changedProperties.has('value') ||
       changedProperties.has('values') ||
@@ -184,11 +194,12 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
 
   private _syncChildCards() {
     const cards = this._getCards();
-    const selectedValues = this._selectedValues;
+    const selectedValues = this._getSelectedValues();
 
     cards.forEach((card) => {
       card._type = this.type;
       card._name = this.name;
+      card._theme = this.theme;
       card.checked = selectedValues.includes(card.value);
       if (this.disabled) {
         card.disabled = true;
@@ -206,8 +217,8 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
       // Radio: only one selected
       newSelectedValues = checked ? [value] : [];
     } else {
-      // Checkbox: toggle in list
-      const current = [...this._selectedValues];
+      // Checkbox: toggle in list - use current selected values
+      const current = [...this._getSelectedValues()];
       if (checked) {
         if (!current.includes(value)) {
           current.push(value);
@@ -240,9 +251,6 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
     if (this.onSelectionChange) {
       this.onSelectionChange(changeEvent);
     }
-
-    // Sync cards after state change
-    this._syncChildCards();
   };
 
   private _handleKeyDown = (e: KeyboardEvent) => {
