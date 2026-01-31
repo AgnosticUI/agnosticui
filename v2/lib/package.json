@@ -698,6 +698,30 @@
     "./icon-button-fx/vue": {
       "types": "./dist/components/IconButtonFx/vue/index.d.ts",
       "import": "./dist/components/IconButtonFx/vue/index.js"
+    },
+    "./selection-card": {
+      "types": "./dist/components/SelectionCard/core/SelectionCard.d.ts",
+      "import": "./dist/components/SelectionCard/core/SelectionCard.js"
+    },
+    "./selection-card/react": {
+      "types": "./dist/components/SelectionCard/react/index.d.ts",
+      "import": "./dist/components/SelectionCard/react/index.js"
+    },
+    "./selection-card/vue": {
+      "types": "./dist/components/SelectionCard/vue/index.d.ts",
+      "import": "./dist/components/SelectionCard/vue/index.js"
+    },
+    "./selection-card-group": {
+      "types": "./dist/components/SelectionCardGroup/core/SelectionCardGroup.d.ts",
+      "import": "./dist/components/SelectionCardGroup/core/SelectionCardGroup.js"
+    },
+    "./selection-card-group/react": {
+      "types": "./dist/components/SelectionCardGroup/react/index.d.ts",
+      "import": "./dist/components/SelectionCardGroup/react/index.js"
+    },
+    "./selection-card-group/vue": {
+      "types": "./dist/components/SelectionCardGroup/vue/index.d.ts",
+      "import": "./dist/components/SelectionCardGroup/vue/index.js"
     }
   },
   "scripts": {
