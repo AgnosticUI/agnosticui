@@ -240,7 +240,7 @@ customElements.define('selection-card-group-lit-examples', SelectionCardGroupLit
 const style = document.createElement('style');
 style.textContent = `
   @media (max-width: 640px) {
-    ag-selection-card-group::part(content) {
+    ag-selection-card-group::part(ag-selection-card-group-content) {
       grid-template-columns: 1fr;
     }
   }

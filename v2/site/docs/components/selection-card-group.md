@@ -211,36 +211,36 @@ The `theme` prop controls the color scheme for selected cards:
 
 | Part | Description |
 |------|-------------|
-| `fieldset` | The fieldset element |
-| `legend` | The legend element |
-| `content` | The content wrapper |
+| `ag-selection-card-group-fieldset` | The fieldset element |
+| `ag-selection-card-group-legend` | The legend element |
+| `ag-selection-card-group-content` | The content wrapper (grid) |
 
 #### SelectionCard
 
 | Part | Description |
 |------|-------------|
-| `container` | The outer clickable label |
-| `control` | The hidden input element |
-| `indicator` | The selection indicator (filled circle for radio, checkmark for checkbox) |
-| `content` | The slotted content wrapper |
+| `ag-selection-card-container` | The outer clickable label |
+| `ag-selection-card-control` | The hidden input element |
+| `ag-selection-card-indicator` | The selection indicator (filled circle for radio, checkmark for checkbox) |
+| `ag-selection-card-content` | The slotted content wrapper |
 
 ### CSS Parts Example
 
 ```css
 /* Custom indicator size and shape */
-ag-selection-card::part(indicator) {
+ag-selection-card::part(ag-selection-card-indicator) {
   width: 1.5rem;
   height: 1.5rem;
 }
 
 /* Custom container styling */
-ag-selection-card::part(container) {
+ag-selection-card::part(ag-selection-card-container) {
   border-radius: var(--ag-radius-lg);
 }
 
 /* Responsive: stack cards on mobile */
 @media (max-width: 640px) {
-  ag-selection-card-group::part(content) {
+  ag-selection-card-group::part(ag-selection-card-group-content) {
     grid-template-columns: 1fr;
   }
 }

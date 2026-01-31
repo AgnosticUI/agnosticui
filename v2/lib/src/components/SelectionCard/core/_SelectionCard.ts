@@ -355,7 +355,7 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
     return html`
       <label
         class="${containerClasses}"
-        part="container"
+        part="ag-selection-card-container"
         tabindex="${this.disabled ? -1 : 0}"
         @click="${this._handleClick}"
         @keydown="${this._handleKeyDown}"
@@ -363,7 +363,7 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
         <input
           type="${this._type}"
           class="selection-card__input"
-          part="control"
+          part="ag-selection-card-control"
           name="${this._name || nothing}"
           value="${this.value}"
           .checked="${this.checked}"
@@ -372,10 +372,10 @@ export class AgSelectionCard extends LitElement implements SelectionCardProps, S
           tabindex="-1"
         />
         <span class="selection-card__label-sr">${this.label}</span>
-        <div class="selection-card__indicator" part="indicator" aria-hidden="true">
+        <div class="selection-card__indicator" part="ag-selection-card-indicator" aria-hidden="true">
           ${this._renderIndicator()}
         </div>
-        <div class="selection-card__content" part="content">
+        <div class="selection-card__content" part="ag-selection-card-content">
           <slot></slot>
         </div>
       </label>

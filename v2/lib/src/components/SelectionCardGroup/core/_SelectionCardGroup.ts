@@ -312,14 +312,14 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
     return html`
       <fieldset
         class="selection-card-group"
-        part="fieldset"
+        part="ag-selection-card-group-fieldset"
         role="${this.type === 'radio' ? 'radiogroup' : 'group'}"
         aria-disabled="${this.disabled ? 'true' : 'false'}"
       >
         ${this.legend
-          ? html`<legend class="${legendClasses}" part="legend">${this.legend}</legend>`
+          ? html`<legend class="${legendClasses}" part="ag-selection-card-group-legend">${this.legend}</legend>`
           : nothing}
-        <div class="selection-card-group__content" part="content">
+        <div class="selection-card-group__content" part="ag-selection-card-group-content">
           <slot @slotchange="${this._handleSlotChange}"></slot>
         </div>
       </fieldset>

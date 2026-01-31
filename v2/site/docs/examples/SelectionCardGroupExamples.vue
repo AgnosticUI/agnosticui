@@ -233,7 +233,7 @@ export default defineComponent({
 <style>
 /* Responsive: stack cards on mobile */
 @media (max-width: 640px) {
-  ag-selection-card-group::part(content) {
+  ag-selection-card-group::part(ag-selection-card-group-content) {
     grid-template-columns: 1fr;
   }
 }
