@@ -258,9 +258,13 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
     if (cards.length === 0) return;
 
     // Find currently focused card (check shadowRoot for focus)
-    const focusedCard = cards.find(card =>
-      card.shadowRoot?.activeElement || card === document.activeElement
-    );
+    const focusedCard = cards.find(card => {
+      try {
+        return card.shadowRoot?.activeElement || card === document.activeElement;
+      } catch {
+        return card === document.activeElement;
+      }
+    });
     const currentIndex = focusedCard ? cards.indexOf(focusedCard) : -1;
 
     let nextIndex: number | null = null;
