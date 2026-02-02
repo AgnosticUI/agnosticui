@@ -71,7 +71,7 @@ For each project, initialize AgnosticUI using the CLI and add required component
 ```bash
 cd react-example
 npx agnosticui-cli init --framework react --skip-prompts
-npx agnosticui-cli add button alert timeline icon card
+npx agnosticui-cli add button alert timeline icon selectioncardgroup selectionbuttongroup
 cd ..
 ```
 
@@ -80,7 +80,7 @@ cd ..
 ```bash
 cd vue-example
 npx agnosticui-cli init --framework vue --skip-prompts
-npx agnosticui-cli add button alert timeline icon card
+npx agnosticui-cli add button alert timeline icon selectioncardgroup selectionbuttongroup
 cd ..
 ```
 
@@ -89,7 +89,7 @@ cd ..
 ```bash
 cd lit-example
 npx agnosticui-cli init --framework lit --skip-prompts
-npx agnosticui-cli add button alert timeline icon card
+npx agnosticui-cli add button alert timeline icon selectioncardgroup selectionbuttongroup
 cd ..
 ```
 
@@ -272,51 +272,66 @@ Use the AgnosticUI Timeline component with **Numbered Steps** style markers via 
 
 **Path Selection Cards:**
 
-Three selectable cards using AgnosticUI Card component:
+Use **SelectionCardGroup** with `type="radio"` for single selection. Three selectable cards:
 
 - **Personal Projects** - User icon, "Building side projects, portfolios, or learning"
 - **Team Development** - Users icon, "Collaborating with a small team on shared projects"
 - **Enterprise** - Building icon, "Large-scale applications with multiple teams"
 
-**Card States:**
+**SelectionCardGroup Props:**
+
+| Prop | Value | Description |
+|------|-------|-------------|
+| `type` | `"radio"` | Single selection mode |
+| `name` | `"path"` | Input group name |
+| `legend` | `"Choose your path"` | Accessible group label |
+| `legend-hidden` | `true` | Hide legend visually (shown in step title) |
+
+**SelectionCard Props (for each card):**
+
+| Prop | Description |
+|------|-------------|
+| `value` | Unique identifier: `"personal"`, `"team"`, or `"enterprise"` |
+| `label` | Accessible label matching the card title |
+
+**Card States (handled by component):**
 
 - **Unselected:** White background, subtle border
-- **Selected:** Light primary background (`var(--ag-primary-background)`), primary border
+- **Selected:** Light primary background, primary border, corner indicator badge
+
+**Implementation:**
 
 ```html
-<!-- Unselected card -->
-<ag-card class="path-card">
-  <div class="path-icon"><!-- User icon --></div>
-  <h3>Personal Projects</h3>
-  <p>Building side projects, portfolios, or learning</p>
-</ag-card>
-
-<!-- Selected card -->
-<ag-card class="path-card path-card-selected">
-  <div class="path-icon"><!-- Users icon --></div>
-  <h3>Team Development</h3>
-  <p>Collaborating with a small team on shared projects</p>
-</ag-card>
+<ag-selection-card-group type="radio" name="path" legend="Choose your path" legend-hidden>
+  <ag-selection-card value="personal" label="Personal Projects">
+    <div class="path-card-content">
+      <div class="path-icon"><!-- User icon (48x48) --></div>
+      <h3>Personal Projects</h3>
+      <p>Building side projects, portfolios, or learning</p>
+    </div>
+  </ag-selection-card>
+  <ag-selection-card value="team" label="Team Development">
+    <div class="path-card-content">
+      <div class="path-icon"><!-- Users icon (48x48) --></div>
+      <h3>Team Development</h3>
+      <p>Collaborating with a small team on shared projects</p>
+    </div>
+  </ag-selection-card>
+  <ag-selection-card value="enterprise" label="Enterprise">
+    <div class="path-card-content">
+      <div class="path-icon"><!-- Building icon (48x48) --></div>
+      <h3>Enterprise</h3>
+      <p>Large-scale applications with multiple teams</p>
+    </div>
+  </ag-selection-card>
+</ag-selection-card-group>
 ```
 
-**CSS for path cards:**
+**CSS for card content layout:**
 
 ```css
-.path-card {
-  cursor: pointer;
+.path-card-content {
   text-align: center;
-  padding: var(--ag-space-6);
-  border: 1px solid var(--ag-border);
-  transition: all 0.2s ease;
-}
-
-.path-card:hover {
-  border-color: var(--ag-primary);
-}
-
-.path-card-selected {
-  background: var(--ag-primary-background);
-  border-color: var(--ag-primary);
 }
 
 .path-icon {
@@ -330,14 +345,41 @@ Three selectable cards using AgnosticUI Card component:
 }
 ```
 
+**Event Handling:**
+
+Listen for `selection-change` event on the group:
+
+```typescript
+// Event detail: { value: string, checked: boolean, selectedValues: string[] }
+// For radio type, selectedValues will have 0 or 1 item
+```
+
 ### Step 2: Pick Your Interests (Interest Tag Cloud)
 
-Use AgnosticUI **Button** components as selectable tags:
+Use **SelectionButtonGroup** with `type="checkbox"` for multiple selection. Uses **capsule shape** at **medium size**.
 
-**Tag States:**
+**SelectionButtonGroup Props:**
 
-- **Unselected:** `bordered` variant (outline style, default text color)
-- **Selected:** `variant="primary"` (filled primary background, white text, with checkmark icon)
+| Prop | Value | Description |
+|------|-------|-------------|
+| `type` | `"checkbox"` | Multiple selection mode |
+| `name` | `"interests"` | Input group name |
+| `shape` | `"capsule"` | Pill-shaped buttons |
+| `size` | `"md"` | Medium size |
+| `legend` | `"Select your interests"` | Accessible group label |
+| `legend-hidden` | `true` | Hide legend visually (shown in step title) |
+
+**SelectionButton Props (for each tag):**
+
+| Prop | Description |
+|------|-------------|
+| `value` | Unique identifier matching the interest name (e.g., `"accessibility"`) |
+| `label` | Accessible label matching the display text |
+
+**Tag States (handled by component):**
+
+- **Unselected:** Bordered/outline style with primary color
+- **Selected:** Filled primary background with white text, corner badge indicator (circle with checkmark)
 
 **Interest Tags List:**
 
@@ -351,30 +393,78 @@ JavaScript, Testing, Theming, Design, Figma
 **Implementation:**
 
 ```html
-<!-- Unselected tag -->
-<ag-button bordered shape="rounded" size="sm">
-  Accessibility
-</ag-button>
-
-<!-- Selected tag -->
-<ag-button variant="primary" shape="rounded" size="sm">
-  <Check size={14} />
-  Design Systems
-</ag-button>
+<ag-selection-button-group
+  type="checkbox"
+  name="interests"
+  shape="capsule"
+  size="md"
+  legend="Select your interests"
+  legend-hidden
+>
+  <ag-selection-button value="accessibility" label="Accessibility">
+    Accessibility
+  </ag-selection-button>
+  <ag-selection-button value="component-libraries" label="Component Libraries">
+    Component Libraries
+  </ag-selection-button>
+  <ag-selection-button value="design-systems" label="Design Systems">
+    Design Systems
+  </ag-selection-button>
+  <ag-selection-button value="react" label="React">
+    React
+  </ag-selection-button>
+  <ag-selection-button value="vue" label="Vue">
+    Vue
+  </ag-selection-button>
+  <ag-selection-button value="web-components" label="Web Components">
+    Web Components
+  </ag-selection-button>
+  <ag-selection-button value="mobile-development" label="Mobile Development">
+    Mobile Development
+  </ag-selection-button>
+  <ag-selection-button value="svelte" label="Svelte">
+    Svelte
+  </ag-selection-button>
+  <ag-selection-button value="css-architecture" label="CSS Architecture">
+    CSS Architecture
+  </ag-selection-button>
+  <ag-selection-button value="responsive-design" label="Responsive Design">
+    Responsive Design
+  </ag-selection-button>
+  <ag-selection-button value="web-standards" label="Web Standards">
+    Web Standards
+  </ag-selection-button>
+  <ag-selection-button value="performance" label="Performance">
+    Performance
+  </ag-selection-button>
+  <ag-selection-button value="dev-tools" label="Dev Tools">
+    Dev Tools
+  </ag-selection-button>
+  <ag-selection-button value="javascript" label="JavaScript">
+    JavaScript
+  </ag-selection-button>
+  <ag-selection-button value="testing" label="Testing">
+    Testing
+  </ag-selection-button>
+  <ag-selection-button value="theming" label="Theming">
+    Theming
+  </ag-selection-button>
+  <ag-selection-button value="design" label="Design">
+    Design
+  </ag-selection-button>
+  <ag-selection-button value="figma" label="Figma">
+    Figma
+  </ag-selection-button>
+</ag-selection-button-group>
 ```
 
-**Tag Cloud CSS:**
+**Event Handling:**
 
-```css
-.interest-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ag-space-3);
-}
+Listen for `selection-change` event on the group:
 
-.interest-tags ag-button {
-  /* Tags should fit content, not stretch */
-}
+```typescript
+// Event detail: { value: string, checked: boolean, selectedValues: string[] }
+// selectedValues contains all currently selected interest values
 ```
 
 ### Navigation Buttons
@@ -443,6 +533,26 @@ interface OnboardingState {
   selectedPath: 'personal' | 'team' | 'enterprise' | null;
   selectedInterests: string[];
 }
+```
+
+**Handling Selection Events:**
+
+Both SelectionCardGroup and SelectionButtonGroup emit `selection-change` events:
+
+```typescript
+// Event listener for path selection (Step 1)
+const handlePathChange = (e: CustomEvent) => {
+  const { selectedValues } = e.detail;
+  // For radio type, selectedValues has 0 or 1 item
+  setSelectedPath(selectedValues[0] || null);
+};
+
+// Event listener for interest selection (Step 2)
+const handleInterestChange = (e: CustomEvent) => {
+  const { selectedValues } = e.detail;
+  // For checkbox type, selectedValues contains all selected items
+  setSelectedInterests(selectedValues);
+};
 ```
 
 **Step Navigation Logic:**
@@ -699,15 +809,17 @@ const canContinueStep2 = selectedInterests.length >= 3;
 
 1. **Timeline with numbered markers:** Use the Numbered Steps Timeline pattern (markers via slots, no changes to core component needed).
 
-2. **Interest tag toggle:** Toggle between `bordered` and `variant="primary"` based on selection state. Add checkmark icon when selected.
+2. **Path card selection (Step 1):** Use `ag-selection-card-group` with `type="radio"`. The component handles all selection states (border color, background, indicator badge) automatically.
 
-3. **Continue button disabled state:** Use `isDisabled` attribute/prop when conditions not met.
+3. **Interest tag selection (Step 2):** Use `ag-selection-button-group` with `type="checkbox"`, `shape="capsule"`, and `size="md"`. The component handles all selection states (bordered vs filled, corner badge indicator) automatically.
 
-4. **Alert component:** Use `variant="info"` for the "What's next?" info box in Step 3.
+4. **Continue button disabled state:** Use `isDisabled` attribute/prop when conditions not met.
 
-5. **Path card selection:** Apply selected styles via CSS class toggle, not component variant.
+5. **Alert component:** Use `variant="info"` for the "What's next?" info box in Step 3.
 
-6. **State persistence:** Consider storing state in localStorage for page refresh persistence (optional enhancement).
+6. **Event handling:** Both SelectionCardGroup and SelectionButtonGroup emit `selection-change` events with `{ value, checked, selectedValues }` detail. Use `selectedValues` to track current selections.
+
+7. **State persistence:** Consider storing state in localStorage for page refresh persistence (optional enhancement).
 
 ---
 
