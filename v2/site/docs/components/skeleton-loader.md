@@ -161,3 +161,13 @@ The component respects the `prefers-reduced-motion` media query. When users enab
 ### Color Contrast
 
 Skeleton loaders use semantic design tokens (`--ag-background-secondary` and `--ag-background-tertiary`) that maintain appropriate contrast in both light and dark modes. The contrast requirements are more lenient for loading placeholders due to their temporary nature and large size.
+
+<style>
+/* Fix contrast issue: skeleton loader background is same as preview background.
+   Remove preview background and add border for visibility (page-scoped fix). */
+.framework-example .preview {
+  background-color: transparent !important;
+  border: 1px solid var(--ag-border) !important;
+  border-radius: var(--ag-radius-md) !important;
+}
+</style>
