@@ -194,6 +194,34 @@ export class SelectionCardGroupLitExamples extends LitElement {
           </ag-selection-card>
         </ag-selection-card-group>
 
+        <!-- Disabled Individual Card State -->
+        <div class="mbe4">
+          <h2>Disabled Individual Card State</h2>
+          <p class="mbs2 mbe3">Individual cards can be disabled while others remain interactive</p>
+        </div>
+        <ag-selection-card-group
+          type="radio"
+          name="disabled-individual-example"
+          legend="Disabled individual cards"
+          class="mbe4"
+        >
+          <ag-selection-card value="a" label="Option A">
+            <div style="padding: 1rem; text-align: center;">Option A</div>
+          </ag-selection-card>
+          <ag-selection-card disabled value="b" label="Option B">
+            <div style="padding: 1rem; text-align: center;">Option B</div>
+          </ag-selection-card>
+          <ag-selection-card value="c" label="Option C">
+            <div style="padding: 1rem; text-align: center;">Option C</div>
+          </ag-selection-card>
+          <ag-selection-card disabled value="d" label="Option D">
+            <div style="padding: 1rem; text-align: center;">Option D</div>
+          </ag-selection-card>
+          <ag-selection-card value="e" label="Option E">
+            <div style="padding: 1rem; text-align: center;">Option E</div>
+          </ag-selection-card>
+        </ag-selection-card-group>
+
         <!-- Pricing Tiers Example -->
         <div class="mbe4">
           <h2>Pricing Tiers Example</h2>

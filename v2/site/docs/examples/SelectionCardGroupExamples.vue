@@ -176,6 +176,33 @@
     </VueSelectionCardGroup>
 
     <div class="mbe4">
+      <h2>Disabled Individual Card State</h2>
+      <p class="mbs2 mbe3">Individual cards can be disabled while others remain interactive</p>
+    </div>
+    <VueSelectionCardGroup
+      type="radio"
+      name="disabled-individual-example"
+      legend="Disabled individual cards"
+      class="mbe4"
+    >
+      <VueSelectionCard value="a" label="Option A">
+        <div style="padding: 1rem; text-align: center;">Option A</div>
+      </VueSelectionCard>
+      <VueSelectionCard disabled value="b" label="Option B">
+        <div style="padding: 1rem; text-align: center;">Option B</div>
+      </VueSelectionCard>
+      <VueSelectionCard value="c" label="Option C">
+        <div style="padding: 1rem; text-align: center;">Option C</div>
+      </VueSelectionCard>
+      <VueSelectionCard disabled value="d" label="Option D">
+        <div style="padding: 1rem; text-align: center;">Option D</div>
+      </VueSelectionCard>
+      <VueSelectionCard value="e" label="Option E">
+        <div style="padding: 1rem; text-align: center;">Option E</div>
+      </VueSelectionCard>
+    </VueSelectionCardGroup>
+
+    <div class="mbe4">
       <h2>Pricing Tiers Example</h2>
       <p class="mbs2 mbe3">Common use case for plan selection</p>
     </div>
