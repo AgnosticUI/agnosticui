@@ -523,3 +523,36 @@ export const RealWorldExample: Story = {
     </div>
   `,
 };
+
+export const RTLSupport: Story = {
+  args: {
+    type: "radio",
+    name: "rtl-example",
+    legend: "RTL Support Example",
+  },
+  render: () => html`
+    <div dir="rtl" style="font-family: system-ui, sans-serif;">
+      <h3 style="margin-bottom: 1rem;">Right-to-Left (RTL) Layout</h3>
+      <ag-selection-button-group
+        type="radio"
+        name="payment-rtl"
+        legend="בחר אמצעי תשלום"
+        shape="rounded"
+        @selection-change=${(e: CustomEvent) => selectionChangeAction(e.detail)}
+      >
+        <ag-selection-button value="card" label="כרטיס אשראי">
+          כרטיס אשראי
+        </ag-selection-button>
+        <ag-selection-button value="paypal" label="פייפאל">
+          פייפאל
+        </ag-selection-button>
+        <ag-selection-button value="bank" label="העברה בנקאית">
+          העברה בנקאית
+        </ag-selection-button>
+      </ag-selection-button-group>
+      <p style="margin-top: 1rem; color: #666; font-size: 0.875rem;">
+        The indicator badge appears on the top-left in RTL mode via <code>inset-inline-end</code>.
+      </p>
+    </div>
+  `,
+};

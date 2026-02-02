@@ -74,8 +74,9 @@ export class AgSelectionButton extends LitElement implements SelectionButtonProp
       height: var(--ag-space-9);
       min-height: var(--ag-space-9);
       font-size: var(--ag-font-size-xs);
-      padding-inline: var(--ag-space-3);
-      --_indicator-size: 1rem;
+      padding-inline: calc(var(--ag-space-3) + var(--ag-space-3));
+      --_indicator-size: 0.75rem;
+      --_indicator-offset: var(--ag-space-1);
     }
 
     /* Medium (default) */
@@ -83,8 +84,9 @@ export class AgSelectionButton extends LitElement implements SelectionButtonProp
       height: var(--ag-space-10);
       min-height: var(--ag-space-10);
       font-size: var(--ag-font-size-sm);
-      padding-inline: var(--ag-space-4);
-      --_indicator-size: 1.25rem;
+      padding-inline: calc(var(--ag-space-4) + var(--ag-space-4));
+      --_indicator-size: 0.875rem;
+      --_indicator-offset: var(--ag-space-1);
     }
 
     /* Large */
@@ -92,8 +94,9 @@ export class AgSelectionButton extends LitElement implements SelectionButtonProp
       height: var(--ag-space-12);
       min-height: var(--ag-space-12);
       font-size: var(--ag-font-size-base);
-      padding-inline: var(--ag-space-5);
-      --_indicator-size: 1.5rem;
+      padding-inline: calc(var(--ag-space-5) + var(--ag-space-5));
+      --_indicator-size: 1rem;
+      --_indicator-offset: var(--ag-space-1);
     }
 
     /* ========================================
@@ -110,8 +113,8 @@ export class AgSelectionButton extends LitElement implements SelectionButtonProp
 
     .selection-button--shape-capsule {
       border-radius: var(--ag-radius-full);
-      padding-inline-start: var(--ag-space-5);
-      padding-inline-end: var(--ag-space-5);
+      /* 0.375rem is between --ag-space-1 (0.25rem) and --ag-space-2 (0.5rem) */
+      --_indicator-offset: 0.375rem;
     }
 
     /* ========================================
@@ -325,23 +328,23 @@ export class AgSelectionButton extends LitElement implements SelectionButtonProp
     }
 
     /* ========================================
-       INDICATOR (inline, end side with RTL support)
+       INDICATOR (corner badge, top-right)
        ======================================== */
 
     .selection-button__indicator {
-      display: inline-flex;
+      position: absolute;
+      top: var(--_indicator-offset);
+      inset-inline-end: var(--_indicator-offset);
+      display: flex;
       align-items: center;
       justify-content: center;
       width: var(--_indicator-size);
       height: var(--_indicator-size);
-      flex-shrink: 0;
-      order: 1; /* Flexbox order ensures indicator at end */
-      margin-inline-start: var(--ag-space-1);
       opacity: 0;
-      transform: scale(0.8);
+      transform: scale(0.6);
       transition:
         opacity var(--ag-motion-fast) ease-in-out,
-        transform var(--ag-motion-fast) ease-in-out;
+        transform var(--ag-motion-fast) var(--ag-fx-ease-ease-out);
     }
 
     .selection-button--checked .selection-button__indicator {
@@ -358,7 +361,6 @@ export class AgSelectionButton extends LitElement implements SelectionButtonProp
     .selection-button__content {
       display: inline-flex;
       align-items: center;
-      order: 0; /* Content comes before indicator */
     }
 
     /* Visually hidden label for screen readers */

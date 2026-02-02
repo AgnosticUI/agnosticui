@@ -146,6 +146,7 @@ function getComponents() {
       { text: 'ScrollProgress', link: '/components/scroll-progress' },
       { text: 'ScrollToButton', link: '/components/scroll-to-button' },
       { text: 'Select', link: '/components/select' },
+      { text: 'SelectionButtonGroup', link: '/components/selection-button-group' },
       { text: 'SelectionCardGroup', link: '/components/selection-card-group' },
       { text: 'Sidebar (Lab)', link: '/components/sidebar' },
       { text: 'Skeleton Loader', link: '/components/skeleton-loader' },
