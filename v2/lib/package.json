@@ -722,6 +722,30 @@
     "./selection-card-group/vue": {
       "types": "./dist/components/SelectionCardGroup/vue/index.d.ts",
       "import": "./dist/components/SelectionCardGroup/vue/index.js"
+    },
+    "./selection-button": {
+      "types": "./dist/components/SelectionButton/core/SelectionButton.d.ts",
+      "import": "./dist/components/SelectionButton/core/SelectionButton.js"
+    },
+    "./selection-button/react": {
+      "types": "./dist/components/SelectionButton/react/index.d.ts",
+      "import": "./dist/components/SelectionButton/react/index.js"
+    },
+    "./selection-button/vue": {
+      "types": "./dist/components/SelectionButton/vue/index.d.ts",
+      "import": "./dist/components/SelectionButton/vue/index.js"
+    },
+    "./selection-button-group": {
+      "types": "./dist/components/SelectionButtonGroup/core/SelectionButtonGroup.d.ts",
+      "import": "./dist/components/SelectionButtonGroup/core/SelectionButtonGroup.js"
+    },
+    "./selection-button-group/react": {
+      "types": "./dist/components/SelectionButtonGroup/react/index.d.ts",
+      "import": "./dist/components/SelectionButtonGroup/react/index.js"
+    },
+    "./selection-button-group/vue": {
+      "types": "./dist/components/SelectionButtonGroup/vue/index.d.ts",
+      "import": "./dist/components/SelectionButtonGroup/vue/index.js"
     }
   },
   "scripts": {

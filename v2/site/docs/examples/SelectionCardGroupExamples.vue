@@ -223,8 +223,8 @@ export default defineComponent({
     VueSelectionCard,
   },
   methods: {
-    handleChange(e: CustomEvent) {
-      console.log("Selection changed:", e.detail);
+    handleChange(detail: { value: string; checked: boolean; selectedValues: string[] }) {
+      console.log("Selection changed:", detail);
     },
   },
 });
@@ -238,4 +238,3 @@ export default defineComponent({
   }
 }
 </style>
-</script>
