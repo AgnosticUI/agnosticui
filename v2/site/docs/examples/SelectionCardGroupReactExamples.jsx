@@ -153,6 +153,34 @@ export default function SelectionCardGroupExamples() {
         </ReactSelectionCard>
       </ReactSelectionCardGroup>
 
+      {/* Disabled Individual Card State */}
+      <div className="mbe4">
+        <h2>Disabled Individual Card State</h2>
+        <p className="mbs2 mbe3">Individual cards can be disabled while others remain interactive</p>
+      </div>
+      <ReactSelectionCardGroup
+        type="radio"
+        name="disabled-individual-example"
+        legend="Disabled individual cards"
+        className="mbe4"
+      >
+        <ReactSelectionCard value="a" label="Option A">
+          <div style={{ padding: "1rem", textAlign: "center" }}>Option A</div>
+        </ReactSelectionCard>
+        <ReactSelectionCard disabled value="b" label="Option B">
+          <div style={{ padding: "1rem", textAlign: "center" }}>Option B</div>
+        </ReactSelectionCard>
+        <ReactSelectionCard value="c" label="Option C">
+          <div style={{ padding: "1rem", textAlign: "center" }}>Option C</div>
+        </ReactSelectionCard>
+        <ReactSelectionCard disabled value="d" label="Option D">
+          <div style={{ padding: "1rem", textAlign: "center" }}>Option D</div>
+        </ReactSelectionCard>
+        <ReactSelectionCard value="e" label="Option E">
+          <div style={{ padding: "1rem", textAlign: "center" }}>Option E</div>
+        </ReactSelectionCard>
+      </ReactSelectionCardGroup>
+
       {/* Pricing Tiers Example */}
       <div className="mbe4">
         <h2>Pricing Tiers Example</h2>
