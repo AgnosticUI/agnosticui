@@ -119,8 +119,15 @@ mkdir -p v2/playbooks/[name]/design
 
 Place shared assets in the `design/` directory:
 
-- Design mockups (Desktop.png, Tablet.png, Phone.png)
-- Icons, logos, background images
+**Required:**
+- Design mockups (Desktop.png, Tablet.png, Phone.png, etc.)
+
+**Optional (varies by playbook):**
+- Icons (e.g., `google-icon.svg`, `apple-icon.svg`)
+- Logos (e.g., `logo.svg`, `logo-3-frameworks.svg`)
+- Background images (e.g., `login-bg.jpg`)
+
+Not all playbooks require icons, logos, or background images. For example, the `onboarding` playbook only uses mockups, while `login` includes social login icons and background images.
 
 ### 3. Create the Prompts
 

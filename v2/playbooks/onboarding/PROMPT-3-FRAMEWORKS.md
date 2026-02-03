@@ -71,7 +71,7 @@ For each project, initialize AgnosticUI using the CLI and add required component
 ```bash
 cd react-example
 npx agnosticui-cli init --framework react --skip-prompts
-npx agnosticui-cli add button alert timeline icon selectioncardgroup selectionbuttongroup
+npx agnosticui-cli add Button Alert Timeline Icon SelectionCardGroup SelectionButtonGroup
 cd ..
 ```
 
@@ -80,7 +80,7 @@ cd ..
 ```bash
 cd vue-example
 npx agnosticui-cli init --framework vue --skip-prompts
-npx agnosticui-cli add button alert timeline icon selectioncardgroup selectionbuttongroup
+npx agnosticui-cli add Button Alert Timeline Icon SelectionCardGroup SelectionButtonGroup
 cd ..
 ```
 
@@ -89,7 +89,7 @@ cd ..
 ```bash
 cd lit-example
 npx agnosticui-cli init --framework lit --skip-prompts
-npx agnosticui-cli add button alert timeline icon selectioncardgroup selectionbuttongroup
+npx agnosticui-cli add Button Alert Timeline Icon SelectionCardGroup SelectionButtonGroup
 cd ..
 ```
 
