@@ -1,0 +1,91 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2026-02-03T00:19:41.487Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/Button/core"
+      ]
+    },
+    "Alert": {
+      "added": "2026-02-03T00:19:41.487Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Timeline": {
+      "added": "2026-02-03T00:19:41.487Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/Timeline/core"
+      ]
+    },
+    "Icon": {
+      "added": "2026-02-03T00:19:41.487Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/Icon/core"
+      ]
+    },
+    "SelectionCardGroup": {
+      "added": "2026-02-03T00:19:41.487Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/SelectionCardGroup/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/SelectionCard/core"
+      ]
+    },
+    "SelectionButtonGroup": {
+      "added": "2026-02-03T00:19:41.487Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/SelectionButtonGroup/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/SelectionButton/core"
+      ]
+    },
+    "SelectionCard": {
+      "added": "2026-02-03T00:19:41.487Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/SelectionCard/core"
+      ]
+    },
+    "SelectionButton": {
+      "added": "2026-02-03T00:19:41.487Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/src/components/ag/SelectionButton/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/lit-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.12.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-03T00:19:34.347Z"
+  }
+}

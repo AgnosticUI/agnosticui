@@ -267,11 +267,6 @@ export class AgTimelineItem extends LitElement {
       line-height: normal;
     }
 
-    /* Ensure consistent sizing for slotted marker content */
-    .ag-marker ::slotted(*) {
-      box-sizing: border-box;
-    }
-
     /* End slot positioning */
     .ag-end {
       margin: var(--ag-space-1);

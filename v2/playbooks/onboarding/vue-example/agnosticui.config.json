@@ -1,0 +1,101 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "vue",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2026-02-03T00:19:30.620Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/Button/vue"
+      ]
+    },
+    "Alert": {
+      "added": "2026-02-03T00:19:30.620Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/Alert/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Timeline": {
+      "added": "2026-02-03T00:19:30.620Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/Timeline/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/Timeline/vue"
+      ]
+    },
+    "Icon": {
+      "added": "2026-02-03T00:19:30.620Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/Icon/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/Icon/vue"
+      ]
+    },
+    "SelectionCardGroup": {
+      "added": "2026-02-03T00:19:30.620Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionCardGroup/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionCardGroup/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionCard/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionCard/vue"
+      ]
+    },
+    "SelectionButtonGroup": {
+      "added": "2026-02-03T00:19:30.620Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionButtonGroup/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionButtonGroup/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionButton/vue"
+      ]
+    },
+    "SelectionCard": {
+      "added": "2026-02-03T00:19:30.620Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionCard/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionCard/vue"
+      ]
+    },
+    "SelectionButton": {
+      "added": "2026-02-03T00:19:30.620Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/src/components/ag/SelectionButton/vue"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/onboarding/vue-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.12.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-03T00:19:18.772Z"
+  }
+}
