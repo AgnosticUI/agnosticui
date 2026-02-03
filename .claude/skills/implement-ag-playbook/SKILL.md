@@ -95,8 +95,10 @@ v2/playbooks/[name]/
 
 ## Phase 2: Configuration
 
-6. **Copy design assets**
-   - Copy assets from `design/` to each project's `public/` folder
+6. **Copy design assets (if applicable)**
+   - Check `design/` folder for assets beyond mockups
+   - **Not all playbooks have assets to copy** - some only have mockups (e.g., `onboarding`)
+   - If assets exist (icons, logos, background images), copy to each project's `public/` folder
    - Follow asset instructions in the PROMPT file
 
 7. **Vue vite.config.ts**
