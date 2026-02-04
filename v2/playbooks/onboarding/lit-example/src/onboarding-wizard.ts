@@ -206,7 +206,6 @@ export class OnboardingWizard extends LitElement {
 
     .summary-section p {
       margin: 0;
-      font-size: var(--ag-font-size-lg);
     }
 
     .alert-wrapper {
