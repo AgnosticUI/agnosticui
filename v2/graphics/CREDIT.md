@@ -3,5 +3,14 @@ $ magick '/Users/roblevin/workspace/opensource/agnosticui/v2/graphics/joshua-bal
 
 Credit:
 Photo by Joshua Balsamo
-
+https://unsplash.com/@joshuabalsamo
 https://unsplash.com/photos/blue-petaled-flower-kZyWQj4JKq8
+
+---
+
+The airial view of tropical island photo was taken by Dillon Hunt
+
+Credit:
+Photo by Dillon Hunt
+https://unsplash.com/@dillon_hunt
+https://unsplash.com/photos/aerial-view-of-tropical-coastline-with-houses-and-clear-water-J7JiDC2VpHE
