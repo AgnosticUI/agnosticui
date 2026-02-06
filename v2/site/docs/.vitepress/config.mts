@@ -79,6 +79,7 @@ export default defineConfig({
         text: 'Playbooks',
         items: [
           { text: 'Login Form', link: '/playbooks/login' },
+          { text: 'Onboarding Wizard', link: '/playbooks/onboarding' },
         ]
       },
       getComponents(),
