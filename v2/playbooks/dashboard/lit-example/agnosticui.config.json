@@ -1,0 +1,171 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Header": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Header/core"
+      ]
+    },
+    "Sidebar": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Sidebar/core"
+      ]
+    },
+    "Breadcrumb": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Breadcrumb/core"
+      ]
+    },
+    "Avatar": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Avatar/core"
+      ]
+    },
+    "Badge": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Badge/core"
+      ]
+    },
+    "Flex": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Flex/core"
+      ]
+    },
+    "EmptyState": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/EmptyState/core"
+      ]
+    },
+    "SkeletonLoader": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/SkeletonLoader/core"
+      ]
+    },
+    "Button": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Button/core"
+      ]
+    },
+    "Tabs": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Tabs/core"
+      ]
+    },
+    "Card": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Card/core"
+      ]
+    },
+    "Tag": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Tag/core"
+      ]
+    },
+    "IconButton": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/IconButton/core"
+      ]
+    },
+    "Divider": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Divider/core"
+      ]
+    },
+    "Progress": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Progress/core"
+      ]
+    },
+    "Accordion": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Accordion/core"
+      ]
+    },
+    "Alert": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Toast": {
+      "added": "2026-02-15T19:48:36.565Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Toast/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Alert/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.12.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-15T19:48:27.273Z"
+  }
+}

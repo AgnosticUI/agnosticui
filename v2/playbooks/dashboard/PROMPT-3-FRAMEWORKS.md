@@ -1308,8 +1308,112 @@ const toggleTheme = () => {
 
 ### Vue Example
 
-**Status:** Not started
+**Status:** Build completed successfully
+
+**Issues encountered:**
+
+1. **Vue SFC `<script setup>` ordering:** Vue allows `<template>` before `<script setup>` — the template can reference identifiers declared in the script block regardless of order.
+2. **VueTabPanel requires `id` prop:** Unlike React's panel matching, the Vue wrapper for `ag-tab-panel` requires an explicit `id` prop (e.g., `id="curated"`) that matches the `panel` attribute on the corresponding `VueTab`.
+3. **Alert `borderedLeft` prop casing:** In Vue templates, use kebab-case `bordered-left` (not `borderedLeft`).
+4. **Alert content with HTML:** Use `v-html` directive on a `<span>` to render HTML content (e.g., `<strong>` tags) inside alerts.
+5. **Dynamic component icons in nav:** Use Vue's `<component :is="item.icon">` to dynamically render Lucide icon components from the nav items array.
+6. **No scoped styles:** Per spec, all layout CSS goes in global `style.css` — not in `<style scoped>` blocks.
+
+**Key implementation patterns:**
+
+```vue
+<!-- Tabs with VueTab/VueTabPanel -->
+<VueTabs aria-label="Content feed">
+  <VueTab panel="curated">Curated for You</VueTab>
+  <VueTab panel="all">All Resources</VueTab>
+  <VueTabPanel id="curated">...</VueTabPanel>
+  <VueTabPanel id="all">...</VueTabPanel>
+</VueTabs>
+
+<!-- Accordion with Header/Content slot wrappers -->
+<VueAccordion>
+  <VueAccordionItem bordered>
+    <VueAccordionHeader>Header text</VueAccordionHeader>
+    <VueAccordionContent>Body content</VueAccordionContent>
+  </VueAccordionItem>
+</VueAccordion>
+
+<!-- Breadcrumb with items prop -->
+<VueBreadcrumb :items="breadcrumbItems" type="slash" />
+
+<!-- IconButton event -->
+<VueIconButton label="Bookmark" variant="ghost" size="sm"
+  @icon-button-click="handleBookmark(id)">
+  <Bookmark :size="16" />
+</VueIconButton>
+
+<!-- Theme toggle -->
+const isDark = ref(false);
+function toggleTheme() {
+  const html = document.documentElement;
+  if (isDark.value) {
+    html.removeAttribute('data-theme');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+  }
+  isDark.value = !isDark.value;
+}
+```
 
 ### Lit Example
 
-**Status:** Not started
+**Status:** Build completed successfully
+
+**Issues encountered:**
+
+1. **No framework wrappers:** Lit uses the core `ag-*` web components directly — no wrapper imports needed. Just import the core component file to register the custom element (e.g., `import './components/ag/Button/core/Button'`).
+2. **Inline SVG icons:** Lucide doesn't work directly with Lit templates. All icons must be defined as `html` tagged template literals with inline SVG markup.
+3. **Breadcrumb items via property binding:** Use Lit's `.items` property binding syntax (dot prefix) to pass the array: `<ag-breadcrumb type="slash" .items=${items}>`.
+4. **Alert HTML content:** Use Lit's `.innerHTML` property binding to render HTML strings: `<span .innerHTML=${this._alert.content}></span>`.
+5. **Accordion slot pattern:** Use `slot="header"` and `slot="content"` attributes directly on slotted elements inside `<ag-accordion-item>`.
+6. **Tabs slot pattern:** Use `slot="tab"` on `<ag-tab>` and `slot="panel"` on `<ag-tab-panel>` — same as the core web component API.
+7. **Toast open property:** Use Lit's property binding `.open=${this._toastOpen}` (not attribute binding) for boolean reactivity.
+8. **CSS in static styles:** All layout CSS lives inside the Lit component's `static styles` block — Lit uses Shadow DOM so global styles don't apply.
+
+**Key implementation patterns:**
+
+```typescript
+// Import core components (self-registering)
+import './components/ag/Button/core/Button';
+import './components/ag/Tabs/core/Tabs';
+
+// Inline SVG icon
+const bookmarkIcon = html`<svg xmlns="..." width="16" height="16" ...>...</svg>`;
+
+// Breadcrumb with property binding
+html`<ag-breadcrumb type="slash" .items=${items}></ag-breadcrumb>`
+
+// Tabs with slots
+html`
+  <ag-tabs aria-label="Content feed">
+    <ag-tab slot="tab" panel="curated">Curated for You</ag-tab>
+    <ag-tab slot="tab" panel="all">All Resources</ag-tab>
+    <ag-tab-panel slot="panel">...</ag-tab-panel>
+    <ag-tab-panel slot="panel">...</ag-tab-panel>
+  </ag-tabs>
+`
+
+// Accordion with slots
+html`
+  <ag-accordion-item bordered>
+    <span slot="header">Header text</span>
+    <div slot="content">Body content</div>
+  </ag-accordion-item>
+`
+
+// Theme toggle
+private _toggleTheme() {
+  const htmlEl = document.documentElement;
+  if (this._isDark) {
+    htmlEl.removeAttribute('data-theme');
+  } else {
+    htmlEl.setAttribute('data-theme', 'dark');
+  }
+  this._isDark = !this._isDark;
+}
+```
