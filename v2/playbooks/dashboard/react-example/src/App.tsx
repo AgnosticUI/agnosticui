@@ -213,7 +213,6 @@ function ResourceCard({ resource, onBookmark }: {
         <ReactTag variant="info" uppercase>{resource.tag}</ReactTag>
         <h3 className="resource-title">{resource.title}</h3>
         <p className="resource-description">{resource.description}</p>
-        <ReactDivider />
         <div className="resource-actions">
           <div className="action-icons">
             <ReactIconButton label="Bookmark" variant="ghost" size="sm" onIconButtonClick={() => onBookmark(resource.id)}>

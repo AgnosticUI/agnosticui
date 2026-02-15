@@ -598,7 +598,6 @@ Each resource is displayed in a Card with tags and action buttons:
 - **Category Tag** (top) — colored Tag matching the interest
 - **Title** (h3) — Resource name
 - **Description** (p) — Brief description text
-- **Divider** — Separates content from actions
 - **Action Row** — Bookmark IconButton + Share IconButton + "View" Button
 
 **Implementation:**
@@ -611,7 +610,6 @@ Each resource is displayed in a Card with tags and action buttons:
     <p class="resource-description">
       Learn how to create ARIA-compliant components with AgnosticUI's built-in accessibility features.
     </p>
-    <ag-divider></ag-divider>
     <div class="resource-actions">
       <div class="action-icons">
         <ag-icon-button aria-label="Bookmark" variant="ghost" size="sm">
@@ -1075,7 +1073,7 @@ const simulateLoading = (callback: () => void) => {
 │            │  │[Bkmk][Shr][V]│  │[Bkmk][Shr][V]│  │[Bkmk][Shr][V]│          │
 │            │  └──────────────┘  └──────────────┘  └──────────────┘          │
 │            │                                                                 │
-│            │  ──────────────────────────────────────────── (Divider)         │
+│            │                                                                │
 │            │                                                                 │
 │            │  Suggested Workflows                                            │
 │            │  ┌──────────────────────────────────────────────────────────┐  │
@@ -1220,7 +1218,7 @@ const simulateLoading = (callback: () => void) => {
 
 3. **Tab content filtering:** The "Curated for You" tab filters the `allResources` array by matching `resource.category` against the user's `selectedInterests` array. The "All Resources" tab shows everything unfiltered.
 
-4. **Card rendering:** Map over filtered resources to render Card components. Each card includes a Tag (matching the resource category), title, description, Divider, and action row with IconButtons and a primary Button.
+4. **Card rendering:** Map over filtered resources to render Card components. Each card includes a Tag (matching the resource category), title, description, and action row with IconButtons and a primary Button.
 
 5. **Accordion content by path:** Conditionally render different accordion items based on `selectedPath`. See the workflow content table above.
 
