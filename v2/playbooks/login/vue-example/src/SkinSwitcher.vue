@@ -25,6 +25,17 @@
           <span class="skin-option-radio" />
           <span class="skin-option-label">{{ s.label }}</span>
           <span class="skin-option-swatch" :style="{ background: s.swatch }" />
+          <span
+            v-if="s.id"
+            class="skin-option-copy"
+            role="button"
+            tabindex="0"
+            title="Copy CSS"
+            @click.stop="handleCopy(s.id)"
+          >
+            <svg v-if="copiedId === s.id" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <svg v-else xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          </span>
         </button>
       </div>
     </div>
@@ -44,11 +55,13 @@ import {
   applySkin,
   applyTheme,
   restorePrefs,
+  copySkinCSS,
 } from '../../../../skins/skin-switcher-core.js';
 
 const open = ref(false);
 const skin = ref(localStorage.getItem('ag-skin') || '');
 const dark = ref(document.documentElement.getAttribute('data-theme') === 'dark');
+const copiedId = ref<string | null>(null);
 const wrapper = ref<HTMLElement | null>(null);
 
 function setSkin(id: string) {
@@ -59,6 +72,14 @@ function setSkin(id: string) {
 function setTheme(isDark: boolean) {
   dark.value = isDark;
   applyTheme(isDark);
+}
+
+async function handleCopy(skinId: string) {
+  const ok = await copySkinCSS(skinId);
+  if (ok) {
+    copiedId.value = skinId;
+    setTimeout(() => { copiedId.value = null; }, 1500);
+  }
 }
 
 // Restore prefs on load

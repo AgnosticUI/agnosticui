@@ -5,6 +5,8 @@
  * Contains the SKINS list, DOM helpers, and localStorage persistence.
  */
 
+import { SKINS_CSS } from './skins-css-data.js';
+
 export const SKINS = [
   { id: '', label: 'Default', swatch: '#297aff' },
   { id: 'deep-forest', label: 'Deep Forest', swatch: '#1f514c' },
@@ -40,6 +42,21 @@ export function applyTheme(dark) {
     document.documentElement.removeAttribute('data-theme');
   }
   localStorage.setItem('ag-theme', dark ? 'dark' : 'light');
+}
+
+/** Copy both light + dark CSS for a skin to clipboard. Returns true on success. */
+export async function copySkinCSS(skinId) {
+  const entry = SKINS_CSS[skinId];
+  if (!entry) return false;
+  const parts = [];
+  if (entry.light) parts.push(`/* ── Light mode ── */\n${entry.light}`);
+  if (entry.dark) parts.push(`/* ── Dark mode ── */\n${entry.dark}`);
+  try {
+    await navigator.clipboard.writeText(parts.join('\n\n'));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 /** Restore skin + theme preferences from localStorage. Call once on load. */

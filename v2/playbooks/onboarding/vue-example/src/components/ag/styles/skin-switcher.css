@@ -186,3 +186,31 @@
   flex-shrink: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+/* ===== Copy CSS Button ===== */
+.skin-option-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: var(--ag-radius-sm, 0.25rem);
+  background: transparent;
+  color: var(--ag-text-secondary, #999);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.15s, background 0.15s;
+}
+
+.skin-option-copy:hover {
+  color: var(--ag-text-primary, #1a1a1a);
+  background: var(--ag-background-secondary, #f0f0f0);
+}
+
+.skin-option-copy svg {
+  width: 13px;
+  height: 13px;
+  pointer-events: none;
+}

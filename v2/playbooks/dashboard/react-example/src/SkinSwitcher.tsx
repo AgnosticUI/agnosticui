@@ -4,6 +4,7 @@ import {
   applySkin,
   applyTheme,
   restorePrefs,
+  copySkinCSS,
 } from '../../../../skins/skin-switcher-core.js';
 
 const paletteIcon = (
@@ -25,6 +26,18 @@ const moonIcon = (
   </svg>
 );
 
+const copyIcon = (
+  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+  </svg>
+);
+
+const checkIcon = (
+  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 6 9 17l-5-5"/>
+  </svg>
+);
+
 // Restore on load
 restorePrefs();
 
@@ -34,6 +47,7 @@ export function SkinSwitcher() {
   const [dark, setDark] = useState(
     () => document.documentElement.getAttribute('data-theme') === 'dark'
   );
+  const [copiedId, setCopiedId] = useState<string | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
   const toggle = useCallback(() => setOpen(o => !o), []);
@@ -58,6 +72,15 @@ export function SkinSwitcher() {
   function handleTheme(isDark: boolean) {
     setDark(isDark);
     applyTheme(isDark);
+  }
+
+  async function handleCopy(e: React.MouseEvent, skinId: string) {
+    e.stopPropagation();
+    const ok = await copySkinCSS(skinId);
+    if (ok) {
+      setCopiedId(skinId);
+      setTimeout(() => setCopiedId(null), 1500);
+    }
   }
 
   return (
@@ -92,6 +115,17 @@ export function SkinSwitcher() {
                 <span className="skin-option-radio" />
                 <span className="skin-option-label">{s.label}</span>
                 <span className="skin-option-swatch" style={{ background: s.swatch }} />
+                {s.id && (
+                  <span
+                    className="skin-option-copy"
+                    role="button"
+                    tabIndex={0}
+                    title="Copy CSS"
+                    onClick={(e) => handleCopy(e, s.id)}
+                  >
+                    {copiedId === s.id ? checkIcon : copyIcon}
+                  </span>
+                )}
               </button>
             ))}
           </div>

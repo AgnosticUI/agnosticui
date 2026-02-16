@@ -5,6 +5,7 @@ import {
   applySkin,
   applyTheme,
   restorePrefs,
+  copySkinCSS,
 } from '../../../../skins/skin-switcher-core.js';
 
 // Restore on load
@@ -15,6 +16,7 @@ export class SkinSwitcher extends LitElement {
   @state() private _open = false;
   @state() private _skin = localStorage.getItem('ag-skin') || '';
   @state() private _dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  @state() private _copiedId: string | null = null;
 
   private _onClickOutside = (e: MouseEvent) => {
     if (!this._open) return;
@@ -46,6 +48,15 @@ export class SkinSwitcher extends LitElement {
     applyTheme(dark);
   }
 
+  private async _handleCopy(e: Event, skinId: string) {
+    e.stopPropagation();
+    const ok = await copySkinCSS(skinId);
+    if (ok) {
+      this._copiedId = skinId;
+      setTimeout(() => { this._copiedId = null; }, 1500);
+    }
+  }
+
   render() {
     return html`
       ${this._open ? html`
@@ -70,6 +81,13 @@ export class SkinSwitcher extends LitElement {
                 <span class="skin-option-radio"></span>
                 <span class="skin-option-label">${s.label}</span>
                 <span class="skin-option-swatch" style="background:${s.swatch}"></span>
+                ${s.id ? html`
+                  <span class="skin-option-copy" role="button" tabindex="0" title="Copy CSS" @click=${(e: Event) => this._handleCopy(e, s.id)}>
+                    ${this._copiedId === s.id
+                      ? html`<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`
+                      : html`<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`}
+                  </span>
+                ` : ''}
               </button>
             `)}
           </div>
@@ -258,6 +276,33 @@ export class SkinSwitcher extends LitElement {
       border-radius: 50%;
       flex-shrink: 0;
       border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .skin-option-copy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      border: none;
+      border-radius: var(--ag-radius-sm, 0.25rem);
+      background: transparent;
+      color: var(--ag-text-secondary, #999);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .skin-option-copy:hover {
+      color: var(--ag-text-primary, #1a1a1a);
+      background: var(--ag-background-secondary, #f0f0f0);
+    }
+
+    .skin-option-copy svg {
+      width: 13px;
+      height: 13px;
+      pointer-events: none;
     }
   `;
 }
