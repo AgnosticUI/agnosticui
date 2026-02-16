@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SelectionCardGroup | AgnosticUI</title>
+    <meta name="description" content="One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.">
+    <meta name="generator" content="VitePress v1.6.4">
+    <link rel="preload stylesheet" href="/assets/style.BuL22txt.css" as="style">
+    <link rel="preload stylesheet" href="/vp-icons.css" as="style">
+    
+    <script type="module" src="/assets/app.Db9wLKOo.js"></script>
+    <link rel="preload" href="/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="modulepreload" href="/assets/chunks/theme.dNgCwI32.js">
+    <link rel="modulepreload" href="/assets/chunks/framework.NAAYCHZu.js">
+    <link rel="modulepreload" href="/assets/chunks/AlphaWarning.yC7ZufpQ.js">
+    <link rel="modulepreload" href="/assets/chunks/Button.DkmThuAs.js">
+    <link rel="modulepreload" href="/assets/chunks/state-CovhUvdr.CfYrM0Q-.js">
+    <link rel="modulepreload" href="/assets/chunks/FrameworkExample.Z9eaTrCu.js">
+    <link rel="modulepreload" href="/assets/chunks/createLucideIcon.B61Wqv9x.js">
+    <link rel="modulepreload" href="/assets/chunks/sdk.m.DhOmSlC9.js">
+    <link rel="modulepreload" href="/assets/chunks/Icon.BC5ob6Nk.js">
+    <link rel="modulepreload" href="/assets/components_selection-card-group.md.DCjFCN7r.lean.js">
+    <link rel="stylesheet" href="/ag-tokens.css">
+    <link rel="stylesheet" href="/ag-tokens-dark.css">
+    <link rel="stylesheet" href="/table.css">
+    <link rel="icon" href="/favicon.ico">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AgnosticUI - Local Components for React, Vue, Svelte &amp; More">
+    <meta property="og:description" content="The UI kit that lives in your project. Local components. AI-friendly. React. Vue. Svelte. Astro. Angular. Solid. Preact.">
+    <meta property="og:url" content="https://www.agnosticui.com">
+    <meta property="og:site_name" content="AgnosticUI">
+    <meta property="og:image" content="https://www.agnosticui.com/AG-banner.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AgnosticUI - Local Components for React, Vue, Svelte &amp; More">
+    <meta name="twitter:description" content="The UI kit that lives in your project. Local components. AI-friendly. React. Vue. Svelte. Astro. Angular. Solid. Preact.">
+    <meta name="twitter:image" content="https://www.agnosticui.com/AG-banner.jpg">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><div class="Layout" data-v-5d98c3a5><!--[--><!--]--><!--[--><span tabindex="-1" data-v-0b0ada53></span><a href="#VPContent" class="VPSkipLink visually-hidden" data-v-0b0ada53>Skip to content</a><!--]--><!----><header class="VPNav" data-v-5d98c3a5 data-v-ae24b3ad><div class="VPNavBar" data-v-ae24b3ad data-v-6aa21345><div class="wrapper" data-v-6aa21345><div class="container" data-v-6aa21345><div class="title" data-v-6aa21345><div class="VPNavBarTitle has-sidebar" data-v-6aa21345 data-v-1168a8e4><a class="title" href="/" data-v-1168a8e4><!--[--><!--]--><!----><span data-v-1168a8e4>AgnosticUI</span><!--[--><!--]--></a></div></div><div class="content" data-v-6aa21345><div class="content-body" data-v-6aa21345><!--[--><!--]--><div class="VPNavBarSearch search" data-v-6aa21345><!----></div><nav aria-labelledby="main-nav-aria-label" class="VPNavBarMenu menu" data-v-6aa21345 data-v-dc692963><span id="main-nav-aria-label" class="visually-hidden" data-v-dc692963> Main Navigation </span><!--[--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/components/button.html" tabindex="0" data-v-dc692963 data-v-e56f3d57><!--[--><span data-v-e56f3d57>Components</span><!--]--></a><!--]--><!--]--></nav><!----><div class="VPNavBarAppearance appearance" data-v-6aa21345 data-v-6c893767><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-6c893767 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div><div class="VPSocialLinks VPNavBarSocialLinks social-links" data-v-6aa21345 data-v-0394ad82 data-v-7bc22406><!--[--><a class="VPSocialLink no-icon" href="https://github.com/AgnosticUI/agnosticui" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406 data-v-bd121fe5><span class="vpi-social-github"></span></a><!--]--></div><div class="VPFlyout VPNavBarExtra extra" data-v-6aa21345 data-v-bb2aa2f0 data-v-cf11d7a2><button type="button" class="button" aria-haspopup="true" aria-expanded="false" aria-label="extra navigation" data-v-cf11d7a2><span class="vpi-more-horizontal icon" data-v-cf11d7a2></span></button><div class="menu" data-v-cf11d7a2><div class="VPMenu" data-v-cf11d7a2 data-v-b98bc113><!----><!--[--><!--[--><!----><div class="group" data-v-bb2aa2f0><div class="item appearance" data-v-bb2aa2f0><p class="label" data-v-bb2aa2f0>Appearance</p><div class="appearance-action" data-v-bb2aa2f0><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title aria-checked="false" data-v-bb2aa2f0 data-v-5337faa4 data-v-1d5665e3><span class="check" data-v-1d5665e3><span class="icon" data-v-1d5665e3><!--[--><span class="vpi-sun sun" data-v-5337faa4></span><span class="vpi-moon moon" data-v-5337faa4></span><!--]--></span></span></button></div></div></div><div class="group" data-v-bb2aa2f0><div class="item social-links" data-v-bb2aa2f0><div class="VPSocialLinks social-links-list" data-v-bb2aa2f0 data-v-7bc22406><!--[--><a class="VPSocialLink no-icon" href="https://github.com/AgnosticUI/agnosticui" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406 data-v-bd121fe5><span class="vpi-social-github"></span></a><!--]--></div></div></div><!--]--><!--]--></div></div></div><!--[--><!--]--><button type="button" class="VPNavBarHamburger hamburger" aria-label="mobile navigation" aria-expanded="false" aria-controls="VPNavScreen" data-v-6aa21345 data-v-e5dd9c1c><span class="container" data-v-e5dd9c1c><span class="top" data-v-e5dd9c1c></span><span class="middle" data-v-e5dd9c1c></span><span class="bottom" data-v-e5dd9c1c></span></span></button></div></div></div></div><div class="divider" data-v-6aa21345><div class="divider-line" data-v-6aa21345></div></div></div><!----></header><div class="VPLocalNav has-sidebar empty" data-v-5d98c3a5 data-v-a6f0e41e><div class="container" data-v-a6f0e41e><button class="menu" aria-expanded="false" aria-controls="VPSidebarNav" data-v-a6f0e41e><span class="vpi-align-left menu-icon" data-v-a6f0e41e></span><span class="menu-text" data-v-a6f0e41e>Menu</span></button><div class="VPLocalNavOutlineDropdown" style="--vp-vh:0px;" data-v-a6f0e41e data-v-8a42e2b4><button data-v-8a42e2b4>Return to top</button><!----></div></div></div><aside class="VPSidebar" data-v-5d98c3a5 data-v-319d5ca6><div class="curtain" data-v-319d5ca6></div><nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1" data-v-319d5ca6><span class="visually-hidden" id="sidebar-aria-label" data-v-319d5ca6> Sidebar Navigation </span><!--[--><!--]--><!--[--><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Quick Start</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/installation.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Installation</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/theming.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Theming</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Playbooks</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/playbooks/login.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Login Form</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/playbooks/onboarding.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Onboarding Wizard</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/playbooks/dashboard.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Discovery Dashboard</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0 has-active" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Components</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/accordion.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Accordion</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/alert.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Alerts</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/aspect-ratio.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>AspectRatio</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/avatar.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Avatar</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/badge.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Badge</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/badge-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>BadgeFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/breadcrumb.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Breadcrumb</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/button-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ButtonFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/card.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Card</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/checkbox.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Checkbox</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/collapsible.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Collapsible</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/combobox.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Combobox</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/copybutton.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>CopyButton</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/dialog.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Dialog</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/divider.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Divider</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/drawer.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Drawer</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/empty-state.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>EmptyState</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/fieldset.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Fieldset</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/flex.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Flex (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/header.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Header</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Icon</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon-button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Icon Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/icon-button-fx.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>IconButtonFx (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/image.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Image</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/input.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Input</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/intl-formatter.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>IntlFormatter</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/kbd.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Kbd</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/link.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Link</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/loader.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Loader</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/mark.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Mark</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/menu.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Menu</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/message-bubble.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>MessageBubble</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/pagination.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Pagination</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/popover.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Popover</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/progress.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Progress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/progress-ring.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ProgressRing</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/radio.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Radio</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/rating.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Rating</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/scroll-progress.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ScrollProgress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/scroll-to-button.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>ScrollToButton</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/select.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Select</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/selection-button-group.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>SelectionButtonGroup</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/selection-card-group.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>SelectionCardGroup</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/sidebar.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Sidebar (Lab)</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/skeleton-loader.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Skeleton Loader</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/slider.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Slider</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/spinner.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Spinner</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/table.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Table</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tabs.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tabs</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tag.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tag</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/timeline.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Timeline</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/toast.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Toast</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/toggle.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Toggle</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/tooltip.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Tooltip</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/components/visually-hidden.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>VisuallyHidden</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="no-transition group" data-v-c40bc020><section class="VPSidebarItem level-0" data-v-c40bc020 data-v-b3fd67f8><div class="item" role="button" tabindex="0" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><h2 class="text" data-v-b3fd67f8>Documentation</h2><!----></div><div class="items" data-v-b3fd67f8><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/setup.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Setup Guide</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/understand.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Understanding AgnosticUI</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/advanced/advanced-usage.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>Advanced Usage</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/utilities.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>CSS Utilities</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8 data-v-b3fd67f8><div class="item" data-v-b3fd67f8><div class="indicator" data-v-b3fd67f8></div><a class="VPLink link link" href="/docs/faq.html" data-v-b3fd67f8><!--[--><p class="text" data-v-b3fd67f8>FAQ</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><!--]--><!--[--><!--]--></nav></aside><div class="VPContent has-sidebar" id="VPContent" data-v-5d98c3a5 data-v-1428d186><div class="VPDoc has-sidebar has-aside" data-v-1428d186 data-v-39a288b8><!--[--><!--]--><div class="container" data-v-39a288b8><div class="aside" data-v-39a288b8><div class="aside-curtain" data-v-39a288b8></div><div class="aside-container" data-v-39a288b8><div class="aside-content" data-v-39a288b8><div class="VPDocAside" data-v-39a288b8 data-v-3f215769><!--[--><!--]--><!--[--><!--]--><nav aria-labelledby="doc-outline-aria-label" class="VPDocAsideOutline" data-v-3f215769 data-v-a5bbad30><div class="content" data-v-a5bbad30><div class="outline-marker" data-v-a5bbad30></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-a5bbad30>On this page</div><ul class="VPDocOutlineItem root" data-v-a5bbad30 data-v-b933a997><!--[--><!--]--></ul></div></nav><!--[--><!--]--><div class="spacer" data-v-3f215769></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-39a288b8><div class="content-container" data-v-39a288b8><!--[--><!--]--><main class="main" data-v-39a288b8><div style="position:relative;" class="vp-doc _components_selection-card-group" data-v-39a288b8><div><h1 id="selectioncardgroup" tabindex="-1">SelectionCardGroup <a class="header-anchor" href="#selectioncardgroup" aria-label="Permalink to &quot;SelectionCardGroup&quot;">​</a></h1><div class="alpha-warning" data-v-7d6f0b92><div class="alpha-warning-header" data-v-7d6f0b92><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert" data-v-7d6f0b92><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg><span class="alpha-warning-title" data-v-7d6f0b92>Experimental Alpha</span></div><p class="alpha-warning-text" data-v-7d6f0b92> This library is a work-in-progress. We are releasing it early to gather feedback, but it is not ready for production. </p></div><p>A card-based selection UI for single (radio) or multiple (checkbox) selection. Ideal for onboarding flows, preferences, pricing tiers, and feature opt-ins.</p><h2 id="examples" tabindex="-1">Examples <a class="header-anchor" href="#examples" aria-label="Permalink to &quot;Examples&quot;">​</a></h2><div class="framework-example" data-v-9ebfb992><ag-tabs activation="manual" activeTab="0" orientation="horizontal" ariaLabel="Framework code examples" data-v-9ebfb992><!--[--><ag-tab slot="tab" panel="panel-vue" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>Vue</span></div><!--]--></ag-tab><ag-tab slot="tab" panel="panel-lit" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>Lit</span></div><!--]--></ag-tab><ag-tab slot="tab" panel="panel-react" .disabled="false" data-v-9ebfb992><!--[--><div class="flex-inline items-center" data-v-9ebfb992><span class="framework-icon" data-v-9ebfb992>React</span></div><!--]--></ag-tab><ag-tab-panel slot="panel" panel="panel-vue" data-v-9ebfb992><!--[--><details class="preview-details" open data-v-9ebfb992><summary data-v-9ebfb992>Live Preview</summary><div class="preview" data-v-9ebfb992><!--[--><section><div class="mbe4"><h2>Radio Selection (Single)</h2><p class="mbs2 mbe3">Select one option from a group of cards</p></div><ag-selection-card-group type="radio" name="interests" legend="Select your primary interest" legend-hidden="false" value .disabled="false" class="mbe4"><!--[--><ag-selection-card value="tech" label="Technology" .checked="false" .disabled="false"><!--[--><div style="text-align:center;padding:1rem;"><div style="font-size:2rem;">💻</div><div style="font-weight:600;">Technology</div></div><!--]--></ag-selection-card><ag-selection-card value="art" label="Art &amp; Design" .checked="false" .disabled="false"><!--[--><div style="text-align:center;padding:1rem;"><div style="font-size:2rem;">🎨</div><div style="font-weight:600;">Art &amp; Design</div></div><!--]--></ag-selection-card><ag-selection-card value="music" label="Music" .checked="false" .disabled="false"><!--[--><div style="text-align:center;padding:1rem;"><div style="font-size:2rem;">🎵</div><div style="font-weight:600;">Music</div></div><!--]--></ag-selection-card><!--]--></ag-selection-card-group><div class="mbe4"><h2>Checkbox Selection (Multiple)</h2><p class="mbs2 mbe3">Select multiple options from a group of cards</p></div><ag-selection-card-group type="checkbox" name="features" legend="Select features to enable" legend-hidden="false" value .disabled="false" class="mbe4"><!--[--><ag-selection-card value="analytics" label="Analytics" .checked="false" .disabled="false"><!--[--><div style="text-align:center;padding:1rem;"><div style="font-size:2rem;">📊</div><div style="font-weight:600;">Analytics</div><div style="font-size:0.875rem;color:#666;">Track user behavior</div></div><!--]--></ag-selection-card><ag-selection-card value="notifications" label="Notifications" .checked="false" .disabled="false"><!--[--><div style="text-align:center;padding:1rem;"><div style="font-size:2rem;">🔔</div><div style="font-weight:600;">Notifications</div><div style="font-size:0.875rem;color:#666;">Push &amp; email alerts</div></div><!--]--></ag-selection-card><ag-selection-card value="export" label="Export" .checked="false" .disabled="false"><!--[--><div style="text-align:center;padding:1rem;"><div style="font-size:2rem;">📤</div><div style="font-weight:600;">Export</div><div style="font-size:0.875rem;color:#666;">Download your data</div></div><!--]--></ag-selection-card><!--]--></ag-selection-card-group><div class="mbe4"><h2>Theme Variants</h2><p class="mbs2 mbe3">Different color themes for various contexts</p></div><div style="display:flex;flex-direction:column;gap:1.5rem;" class="mbe4"><div><h3 style="margin-bottom:0.5rem;font-size:0.875rem;">Default (Primary/Blue)</h3><ag-selection-card-group type="radio" name="theme-default" legend="Default theme" legend-hidden="true" value .disabled="false"><!--[--><ag-selection-card value="a" label="Option A" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option A</div><!--]--></ag-selection-card><ag-selection-card value="b" label="Option B" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option B</div><!--]--></ag-selection-card><!--]--></ag-selection-card-group></div><div><h3 style="margin-bottom:0.5rem;font-size:0.875rem;">Success</h3><ag-selection-card-group type="radio" name="theme-success" legend="Success theme" legend-hidden="true" value .disabled="false" theme="success"><!--[--><ag-selection-card value="a" label="Option A" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option A</div><!--]--></ag-selection-card><ag-selection-card value="b" label="Option B" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option B</div><!--]--></ag-selection-card><!--]--></ag-selection-card-group></div><div><h3 style="margin-bottom:0.5rem;font-size:0.875rem;">Warning</h3><ag-selection-card-group type="radio" name="theme-warning" legend="Warning theme" legend-hidden="true" value .disabled="false" theme="warning"><!--[--><ag-selection-card value="a" label="Option A" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option A</div><!--]--></ag-selection-card><ag-selection-card value="b" label="Option B" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option B</div><!--]--></ag-selection-card><!--]--></ag-selection-card-group></div><div><h3 style="margin-bottom:0.5rem;font-size:0.875rem;">Error</h3><ag-selection-card-group type="radio" name="theme-error" legend="Error theme" legend-hidden="true" value .disabled="false" theme="error"><!--[--><ag-selection-card value="a" label="Option A" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option A</div><!--]--></ag-selection-card><ag-selection-card value="b" label="Option B" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option B</div><!--]--></ag-selection-card><!--]--></ag-selection-card-group></div><div><h3 style="margin-bottom:0.5rem;font-size:0.875rem;">Monochrome</h3><ag-selection-card-group type="radio" name="theme-mono" legend="Monochrome theme" legend-hidden="true" value .disabled="false" theme="monochrome"><!--[--><ag-selection-card value="a" label="Option A" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option A</div><!--]--></ag-selection-card><ag-selection-card value="b" label="Option B" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option B</div><!--]--></ag-selection-card><!--]--></ag-selection-card-group></div></div><div class="mbe4"><h2>Disabled State</h2><p class="mbs2 mbe3">Entire group can be disabled</p></div><ag-selection-card-group type="radio" name="disabled-example" legend="Disabled group" legend-hidden="false" value .disabled="true" class="mbe4"><!--[--><ag-selection-card value="a" label="Option A" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option A</div><!--]--></ag-selection-card><ag-selection-card value="b" label="Option B" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option B</div><!--]--></ag-selection-card><!--]--></ag-selection-card-group><div class="mbe4"><h2>Disabled Individual Card State</h2><p class="mbs2 mbe3">Individual cards can be disabled while others remain interactive</p></div><ag-selection-card-group type="radio" name="disabled-individual-example" legend="Disabled individual cards" legend-hidden="false" value .disabled="false" class="mbe4"><!--[--><ag-selection-card value="a" label="Option A" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option A</div><!--]--></ag-selection-card><ag-selection-card value="b" label="Option B" .checked="false" .disabled="true"><!--[--><div style="padding:1rem;text-align:center;">Option B</div><!--]--></ag-selection-card><ag-selection-card value="c" label="Option C" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option C</div><!--]--></ag-selection-card><ag-selection-card value="d" label="Option D" .checked="false" .disabled="true"><!--[--><div style="padding:1rem;text-align:center;">Option D</div><!--]--></ag-selection-card><ag-selection-card value="e" label="Option E" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;">Option E</div><!--]--></ag-selection-card><!--]--></ag-selection-card-group><div class="mbe4"><h2>Pricing Tiers Example</h2><p class="mbs2 mbe3">Common use case for plan selection</p></div><ag-selection-card-group type="radio" name="pricing" legend="Choose your plan" legend-hidden="false" value .disabled="false" class="mbe4"><!--[--><ag-selection-card value="free" label="Free Plan" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;"><div style="font-size:1.5rem;font-weight:700;">Free</div><div style="font-size:2rem;font-weight:700;margin:0.5rem 0;">$0</div><div style="color:#666;font-size:0.875rem;">Perfect for getting started</div></div><!--]--></ag-selection-card><ag-selection-card value="pro" label="Pro Plan" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;"><div style="font-size:1.5rem;font-weight:700;">Pro</div><div style="font-size:2rem;font-weight:700;margin:0.5rem 0;">$29</div><div style="color:#666;font-size:0.875rem;">For growing teams</div></div><!--]--></ag-selection-card><ag-selection-card value="premium" label="Premium Plan" .checked="false" .disabled="false"><!--[--><div style="padding:1rem;text-align:center;"><div style="font-size:1.5rem;font-weight:700;">Premium</div><div style="font-size:1.5rem;font-weight:700;margin:0.5rem 0;">Custom</div><div style="color:#666;font-size:0.875rem;">For large organizations</div></div><!--]--></ag-selection-card><!--]--></ag-selection-card-group></section><!--]--></div></details><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View Vue Code</summary><pre data-v-9ebfb992><code class="language-vue" data-v-9ebfb992>&lt;template&gt;
+  &lt;section&gt;
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Radio Selection (Single)&lt;/h2&gt;
+      &lt;p class=&quot;mbs2 mbe3&quot;&gt;Select one option from a group of cards&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;VueSelectionCardGroup
+      type=&quot;radio&quot;
+      name=&quot;interests&quot;
+      legend=&quot;Select your primary interest&quot;
+      class=&quot;mbe4&quot;
+      @selection-change=&quot;handleChange&quot;
+    &gt;
+      &lt;VueSelectionCard value=&quot;tech&quot; label=&quot;Technology&quot;&gt;
+        &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+          &lt;div style=&quot;font-size: 2rem;&quot;&gt;💻&lt;/div&gt;
+          &lt;div style=&quot;font-weight: 600;&quot;&gt;Technology&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard value=&quot;art&quot; label=&quot;Art &amp; Design&quot;&gt;
+        &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+          &lt;div style=&quot;font-size: 2rem;&quot;&gt;🎨&lt;/div&gt;
+          &lt;div style=&quot;font-weight: 600;&quot;&gt;Art &amp; Design&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard value=&quot;music&quot; label=&quot;Music&quot;&gt;
+        &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+          &lt;div style=&quot;font-size: 2rem;&quot;&gt;🎵&lt;/div&gt;
+          &lt;div style=&quot;font-weight: 600;&quot;&gt;Music&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+    &lt;/VueSelectionCardGroup&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Checkbox Selection (Multiple)&lt;/h2&gt;
+      &lt;p class=&quot;mbs2 mbe3&quot;&gt;Select multiple options from a group of cards&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;VueSelectionCardGroup
+      type=&quot;checkbox&quot;
+      name=&quot;features&quot;
+      legend=&quot;Select features to enable&quot;
+      class=&quot;mbe4&quot;
+      @selection-change=&quot;handleChange&quot;
+    &gt;
+      &lt;VueSelectionCard value=&quot;analytics&quot; label=&quot;Analytics&quot;&gt;
+        &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+          &lt;div style=&quot;font-size: 2rem;&quot;&gt;📊&lt;/div&gt;
+          &lt;div style=&quot;font-weight: 600;&quot;&gt;Analytics&lt;/div&gt;
+          &lt;div style=&quot;font-size: 0.875rem; color: #666;&quot;&gt;Track user behavior&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard value=&quot;notifications&quot; label=&quot;Notifications&quot;&gt;
+        &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+          &lt;div style=&quot;font-size: 2rem;&quot;&gt;🔔&lt;/div&gt;
+          &lt;div style=&quot;font-weight: 600;&quot;&gt;Notifications&lt;/div&gt;
+          &lt;div style=&quot;font-size: 0.875rem; color: #666;&quot;&gt;Push &amp; email alerts&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard value=&quot;export&quot; label=&quot;Export&quot;&gt;
+        &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+          &lt;div style=&quot;font-size: 2rem;&quot;&gt;📤&lt;/div&gt;
+          &lt;div style=&quot;font-weight: 600;&quot;&gt;Export&lt;/div&gt;
+          &lt;div style=&quot;font-size: 0.875rem; color: #666;&quot;&gt;Download your data&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+    &lt;/VueSelectionCardGroup&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Theme Variants&lt;/h2&gt;
+      &lt;p class=&quot;mbs2 mbe3&quot;&gt;Different color themes for various contexts&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;display: flex; flex-direction: column; gap: 1.5rem;&quot; class=&quot;mbe4&quot;&gt;
+      &lt;div&gt;
+        &lt;h3 style=&quot;margin-bottom: 0.5rem; font-size: 0.875rem;&quot;&gt;Default (Primary/Blue)&lt;/h3&gt;
+        &lt;VueSelectionCardGroup
+          type=&quot;radio&quot;
+          name=&quot;theme-default&quot;
+          legend=&quot;Default theme&quot;
+          legend-hidden
+        &gt;
+          &lt;VueSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+          &lt;/VueSelectionCard&gt;
+          &lt;VueSelectionCard value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+          &lt;/VueSelectionCard&gt;
+        &lt;/VueSelectionCardGroup&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;h3 style=&quot;margin-bottom: 0.5rem; font-size: 0.875rem;&quot;&gt;Success&lt;/h3&gt;
+        &lt;VueSelectionCardGroup
+          type=&quot;radio&quot;
+          name=&quot;theme-success&quot;
+          legend=&quot;Success theme&quot;
+          legend-hidden
+          theme=&quot;success&quot;
+        &gt;
+          &lt;VueSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+          &lt;/VueSelectionCard&gt;
+          &lt;VueSelectionCard value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+          &lt;/VueSelectionCard&gt;
+        &lt;/VueSelectionCardGroup&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;h3 style=&quot;margin-bottom: 0.5rem; font-size: 0.875rem;&quot;&gt;Warning&lt;/h3&gt;
+        &lt;VueSelectionCardGroup
+          type=&quot;radio&quot;
+          name=&quot;theme-warning&quot;
+          legend=&quot;Warning theme&quot;
+          legend-hidden
+          theme=&quot;warning&quot;
+        &gt;
+          &lt;VueSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+          &lt;/VueSelectionCard&gt;
+          &lt;VueSelectionCard value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+          &lt;/VueSelectionCard&gt;
+        &lt;/VueSelectionCardGroup&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;h3 style=&quot;margin-bottom: 0.5rem; font-size: 0.875rem;&quot;&gt;Error&lt;/h3&gt;
+        &lt;VueSelectionCardGroup
+          type=&quot;radio&quot;
+          name=&quot;theme-error&quot;
+          legend=&quot;Error theme&quot;
+          legend-hidden
+          theme=&quot;error&quot;
+        &gt;
+          &lt;VueSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+          &lt;/VueSelectionCard&gt;
+          &lt;VueSelectionCard value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+          &lt;/VueSelectionCard&gt;
+        &lt;/VueSelectionCardGroup&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;h3 style=&quot;margin-bottom: 0.5rem; font-size: 0.875rem;&quot;&gt;Monochrome&lt;/h3&gt;
+        &lt;VueSelectionCardGroup
+          type=&quot;radio&quot;
+          name=&quot;theme-mono&quot;
+          legend=&quot;Monochrome theme&quot;
+          legend-hidden
+          theme=&quot;monochrome&quot;
+        &gt;
+          &lt;VueSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+          &lt;/VueSelectionCard&gt;
+          &lt;VueSelectionCard value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+          &lt;/VueSelectionCard&gt;
+        &lt;/VueSelectionCardGroup&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Disabled State&lt;/h2&gt;
+      &lt;p class=&quot;mbs2 mbe3&quot;&gt;Entire group can be disabled&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;VueSelectionCardGroup
+      type=&quot;radio&quot;
+      name=&quot;disabled-example&quot;
+      legend=&quot;Disabled group&quot;
+      :disabled=&quot;true&quot;
+      class=&quot;mbe4&quot;
+    &gt;
+      &lt;VueSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+        &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+        &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+    &lt;/VueSelectionCardGroup&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Disabled Individual Card State&lt;/h2&gt;
+      &lt;p class=&quot;mbs2 mbe3&quot;&gt;Individual cards can be disabled while others remain interactive&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;VueSelectionCardGroup
+      type=&quot;radio&quot;
+      name=&quot;disabled-individual-example&quot;
+      legend=&quot;Disabled individual cards&quot;
+      class=&quot;mbe4&quot;
+    &gt;
+      &lt;VueSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+        &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard disabled value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+        &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard value=&quot;c&quot; label=&quot;Option C&quot;&gt;
+        &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option C&lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard disabled value=&quot;d&quot; label=&quot;Option D&quot;&gt;
+        &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option D&lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard value=&quot;e&quot; label=&quot;Option E&quot;&gt;
+        &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option E&lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+    &lt;/VueSelectionCardGroup&gt;
+
+    &lt;div class=&quot;mbe4&quot;&gt;
+      &lt;h2&gt;Pricing Tiers Example&lt;/h2&gt;
+      &lt;p class=&quot;mbs2 mbe3&quot;&gt;Common use case for plan selection&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;VueSelectionCardGroup
+      type=&quot;radio&quot;
+      name=&quot;pricing&quot;
+      legend=&quot;Choose your plan&quot;
+      class=&quot;mbe4&quot;
+      @selection-change=&quot;handleChange&quot;
+    &gt;
+      &lt;VueSelectionCard value=&quot;free&quot; label=&quot;Free Plan&quot;&gt;
+        &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;
+          &lt;div style=&quot;font-size: 1.5rem; font-weight: 700;&quot;&gt;Free&lt;/div&gt;
+          &lt;div style=&quot;font-size: 2rem; font-weight: 700; margin: 0.5rem 0;&quot;&gt;$0&lt;/div&gt;
+          &lt;div style=&quot;color: #666; font-size: 0.875rem;&quot;&gt;Perfect for getting started&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard value=&quot;pro&quot; label=&quot;Pro Plan&quot;&gt;
+        &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;
+          &lt;div style=&quot;font-size: 1.5rem; font-weight: 700;&quot;&gt;Pro&lt;/div&gt;
+          &lt;div style=&quot;font-size: 2rem; font-weight: 700; margin: 0.5rem 0;&quot;&gt;$29&lt;/div&gt;
+          &lt;div style=&quot;color: #666; font-size: 0.875rem;&quot;&gt;For growing teams&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+      &lt;VueSelectionCard value=&quot;premium&quot; label=&quot;Premium Plan&quot;&gt;
+        &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;
+          &lt;div style=&quot;font-size: 1.5rem; font-weight: 700;&quot;&gt;Premium&lt;/div&gt;
+          &lt;div style=&quot;font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0;&quot;&gt;Custom&lt;/div&gt;
+          &lt;div style=&quot;color: #666; font-size: 0.875rem;&quot;&gt;For large organizations&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/VueSelectionCard&gt;
+    &lt;/VueSelectionCardGroup&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+
+&lt;script lang=&quot;ts&quot;&gt;
+import { defineComponent } from &quot;vue&quot;;
+import { VueSelectionCardGroup } from &quot;agnosticui-core/selection-card-group/vue&quot;;
+import { VueSelectionCard } from &quot;agnosticui-core/selection-card/vue&quot;;
+
+export default defineComponent({
+  name: &quot;SelectionCardGroupExamples&quot;,
+  components: {
+    VueSelectionCardGroup,
+    VueSelectionCard,
+  },
+  methods: {
+    handleChange(detail: { value: string; checked: boolean; selectedValues: string[] }) {
+      console.log(&quot;Selection changed:&quot;, detail);
+    },
+  },
+});
+&lt;/script&gt;
+
+&lt;style&gt;
+/* Responsive: stack cards on mobile */
+@media (max-width: 640px) {
+  ag-selection-card-group::part(ag-selection-card-group-content) {
+    grid-template-columns: 1fr;
+  }
+}
+&lt;/style&gt;
+</code></pre></details><!--]--></ag-tab-panel><ag-tab-panel slot="panel" panel="panel-lit" data-v-9ebfb992><!--[--><details class="preview-details" open data-v-9ebfb992><summary data-v-9ebfb992>Live Preview</summary><div class="preview" data-v-9ebfb992><!--[--><selection-card-group-lit-examples></selection-card-group-lit-examples><!--]--></div></details><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View Lit / Web Component Code</summary><pre data-v-9ebfb992><code class="language-javascript" data-v-9ebfb992>import { LitElement, html } from &#39;lit&#39;;
+import &#39;agnosticui-core/selection-card-group&#39;;
+import &#39;agnosticui-core/selection-card&#39;;
+
+export class SelectionCardGroupLitExamples extends LitElement {
+  // Render in light DOM to access global utility classes
+  createRenderRoot() {
+    return this;
+  }
+
+  handleChange(e) {
+    console.log(&#39;Selection changed:&#39;, e.detail);
+  }
+
+  render() {
+    return html`
+      &lt;section&gt;
+        &lt;!-- Radio Selection --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Radio Selection (Single)&lt;/h2&gt;
+          &lt;p class=&quot;mbs2 mbe3&quot;&gt;Select one option from a group of cards&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;ag-selection-card-group
+          type=&quot;radio&quot;
+          name=&quot;interests&quot;
+          legend=&quot;Select your primary interest&quot;
+          class=&quot;mbe4&quot;
+          @selection-change=${this.handleChange}
+        &gt;
+          &lt;ag-selection-card value=&quot;tech&quot; label=&quot;Technology&quot;&gt;
+            &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+              &lt;div style=&quot;font-size: 2rem;&quot;&gt;💻&lt;/div&gt;
+              &lt;div style=&quot;font-weight: 600;&quot;&gt;Technology&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card value=&quot;art&quot; label=&quot;Art &amp; Design&quot;&gt;
+            &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+              &lt;div style=&quot;font-size: 2rem;&quot;&gt;🎨&lt;/div&gt;
+              &lt;div style=&quot;font-weight: 600;&quot;&gt;Art &amp; Design&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card value=&quot;music&quot; label=&quot;Music&quot;&gt;
+            &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+              &lt;div style=&quot;font-size: 2rem;&quot;&gt;🎵&lt;/div&gt;
+              &lt;div style=&quot;font-weight: 600;&quot;&gt;Music&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+        &lt;/ag-selection-card-group&gt;
+
+        &lt;!-- Checkbox Selection --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Checkbox Selection (Multiple)&lt;/h2&gt;
+          &lt;p class=&quot;mbs2 mbe3&quot;&gt;Select multiple options from a group of cards&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;ag-selection-card-group
+          type=&quot;checkbox&quot;
+          name=&quot;features&quot;
+          legend=&quot;Select features to enable&quot;
+          class=&quot;mbe4&quot;
+          @selection-change=${this.handleChange}
+        &gt;
+          &lt;ag-selection-card value=&quot;analytics&quot; label=&quot;Analytics&quot;&gt;
+            &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+              &lt;div style=&quot;font-size: 2rem;&quot;&gt;📊&lt;/div&gt;
+              &lt;div style=&quot;font-weight: 600;&quot;&gt;Analytics&lt;/div&gt;
+              &lt;div style=&quot;font-size: 0.875rem; color: #666;&quot;&gt;Track user behavior&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card value=&quot;notifications&quot; label=&quot;Notifications&quot;&gt;
+            &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+              &lt;div style=&quot;font-size: 2rem;&quot;&gt;🔔&lt;/div&gt;
+              &lt;div style=&quot;font-weight: 600;&quot;&gt;Notifications&lt;/div&gt;
+              &lt;div style=&quot;font-size: 0.875rem; color: #666;&quot;&gt;Push &amp; email alerts&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card value=&quot;export&quot; label=&quot;Export&quot;&gt;
+            &lt;div style=&quot;text-align: center; padding: 1rem;&quot;&gt;
+              &lt;div style=&quot;font-size: 2rem;&quot;&gt;📤&lt;/div&gt;
+              &lt;div style=&quot;font-weight: 600;&quot;&gt;Export&lt;/div&gt;
+              &lt;div style=&quot;font-size: 0.875rem; color: #666;&quot;&gt;Download your data&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+        &lt;/ag-selection-card-group&gt;
+
+        &lt;!-- Theme Variants --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Theme Variants&lt;/h2&gt;
+          &lt;p class=&quot;mbs2 mbe3&quot;&gt;Different color themes for various contexts&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;display: flex; flex-direction: column; gap: 1.5rem;&quot; class=&quot;mbe4&quot;&gt;
+          &lt;div&gt;
+            &lt;h3 style=&quot;margin-bottom: 0.5rem; font-size: 0.875rem;&quot;&gt;Default (Primary/Blue)&lt;/h3&gt;
+            &lt;ag-selection-card-group
+              type=&quot;radio&quot;
+              name=&quot;theme-default&quot;
+              legend=&quot;Default theme&quot;
+              legend-hidden
+            &gt;
+              &lt;ag-selection-card value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+              &lt;/ag-selection-card&gt;
+              &lt;ag-selection-card value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+              &lt;/ag-selection-card&gt;
+            &lt;/ag-selection-card-group&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;h3 style=&quot;margin-bottom: 0.5rem; font-size: 0.875rem;&quot;&gt;Success&lt;/h3&gt;
+            &lt;ag-selection-card-group
+              type=&quot;radio&quot;
+              name=&quot;theme-success&quot;
+              legend=&quot;Success theme&quot;
+              legend-hidden
+              theme=&quot;success&quot;
+            &gt;
+              &lt;ag-selection-card value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+              &lt;/ag-selection-card&gt;
+              &lt;ag-selection-card value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+              &lt;/ag-selection-card&gt;
+            &lt;/ag-selection-card-group&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;h3 style=&quot;margin-bottom: 0.5rem; font-size: 0.875rem;&quot;&gt;Warning&lt;/h3&gt;
+            &lt;ag-selection-card-group
+              type=&quot;radio&quot;
+              name=&quot;theme-warning&quot;
+              legend=&quot;Warning theme&quot;
+              legend-hidden
+              theme=&quot;warning&quot;
+            &gt;
+              &lt;ag-selection-card value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+              &lt;/ag-selection-card&gt;
+              &lt;ag-selection-card value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+              &lt;/ag-selection-card&gt;
+            &lt;/ag-selection-card-group&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;h3 style=&quot;margin-bottom: 0.5rem; font-size: 0.875rem;&quot;&gt;Error&lt;/h3&gt;
+            &lt;ag-selection-card-group
+              type=&quot;radio&quot;
+              name=&quot;theme-error&quot;
+              legend=&quot;Error theme&quot;
+              legend-hidden
+              theme=&quot;error&quot;
+            &gt;
+              &lt;ag-selection-card value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+              &lt;/ag-selection-card&gt;
+              &lt;ag-selection-card value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+              &lt;/ag-selection-card&gt;
+            &lt;/ag-selection-card-group&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;h3 style=&quot;margin-bottom: 0.5rem; font-size: 0.875rem;&quot;&gt;Monochrome&lt;/h3&gt;
+            &lt;ag-selection-card-group
+              type=&quot;radio&quot;
+              name=&quot;theme-mono&quot;
+              legend=&quot;Monochrome theme&quot;
+              legend-hidden
+              theme=&quot;monochrome&quot;
+            &gt;
+              &lt;ag-selection-card value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+              &lt;/ag-selection-card&gt;
+              &lt;ag-selection-card value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+                &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+              &lt;/ag-selection-card&gt;
+            &lt;/ag-selection-card-group&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Disabled State --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Disabled State&lt;/h2&gt;
+          &lt;p class=&quot;mbs2 mbe3&quot;&gt;Entire group can be disabled&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;ag-selection-card-group
+          type=&quot;radio&quot;
+          name=&quot;disabled-example&quot;
+          legend=&quot;Disabled group&quot;
+          disabled
+          class=&quot;mbe4&quot;
+        &gt;
+          &lt;ag-selection-card value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+        &lt;/ag-selection-card-group&gt;
+
+        &lt;!-- Disabled Individual Card State --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Disabled Individual Card State&lt;/h2&gt;
+          &lt;p class=&quot;mbs2 mbe3&quot;&gt;Individual cards can be disabled while others remain interactive&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;ag-selection-card-group
+          type=&quot;radio&quot;
+          name=&quot;disabled-individual-example&quot;
+          legend=&quot;Disabled individual cards&quot;
+          class=&quot;mbe4&quot;
+        &gt;
+          &lt;ag-selection-card value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option A&lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card disabled value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option B&lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card value=&quot;c&quot; label=&quot;Option C&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option C&lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card disabled value=&quot;d&quot; label=&quot;Option D&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option D&lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card value=&quot;e&quot; label=&quot;Option E&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;Option E&lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+        &lt;/ag-selection-card-group&gt;
+
+        &lt;!-- Pricing Tiers Example --&gt;
+        &lt;div class=&quot;mbe4&quot;&gt;
+          &lt;h2&gt;Pricing Tiers Example&lt;/h2&gt;
+          &lt;p class=&quot;mbs2 mbe3&quot;&gt;Common use case for plan selection&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;ag-selection-card-group
+          type=&quot;radio&quot;
+          name=&quot;pricing&quot;
+          legend=&quot;Choose your plan&quot;
+          class=&quot;mbe4&quot;
+          @selection-change=${this.handleChange}
+        &gt;
+          &lt;ag-selection-card value=&quot;free&quot; label=&quot;Free Plan&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;
+              &lt;div style=&quot;font-size: 1.5rem; font-weight: 700;&quot;&gt;Free&lt;/div&gt;
+              &lt;div style=&quot;font-size: 2rem; font-weight: 700; margin: 0.5rem 0;&quot;&gt;$0&lt;/div&gt;
+              &lt;div style=&quot;color: #666; font-size: 0.875rem;&quot;&gt;Perfect for getting started&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card value=&quot;pro&quot; label=&quot;Pro Plan&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;
+              &lt;div style=&quot;font-size: 1.5rem; font-weight: 700;&quot;&gt;Pro&lt;/div&gt;
+              &lt;div style=&quot;font-size: 2rem; font-weight: 700; margin: 0.5rem 0;&quot;&gt;$29&lt;/div&gt;
+              &lt;div style=&quot;color: #666; font-size: 0.875rem;&quot;&gt;For growing teams&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+          &lt;ag-selection-card value=&quot;premium&quot; label=&quot;Premium Plan&quot;&gt;
+            &lt;div style=&quot;padding: 1rem; text-align: center;&quot;&gt;
+              &lt;div style=&quot;font-size: 1.5rem; font-weight: 700;&quot;&gt;Premium&lt;/div&gt;
+              &lt;div style=&quot;font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0;&quot;&gt;Custom&lt;/div&gt;
+              &lt;div style=&quot;color: #666; font-size: 0.875rem;&quot;&gt;For large organizations&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ag-selection-card&gt;
+        &lt;/ag-selection-card-group&gt;
+      &lt;/section&gt;
+    `;
+  }
+}
+
+// Register the custom element
+customElements.define(&#39;selection-card-group-lit-examples&#39;, SelectionCardGroupLitExamples);
+
+// Add responsive styles
+const style = document.createElement(&#39;style&#39;);
+style.textContent = `
+  @media (max-width: 640px) {
+    ag-selection-card-group::part(ag-selection-card-group-content) {
+      grid-template-columns: 1fr;
+    }
+  }
+`;
+document.head.appendChild(style);
+</code></pre></details><!--]--></ag-tab-panel><ag-tab-panel slot="panel" panel="panel-react" data-v-9ebfb992><!--[--><div class="react-note" data-v-9ebfb992><p data-v-9ebfb992><strong data-v-9ebfb992>Interactive Preview:</strong> Click the &quot;Open in StackBlitz&quot; button below to see this example running live in an interactive playground. </p></div><details class="code-details" open data-v-9ebfb992><summary data-v-9ebfb992>View React Code</summary><pre data-v-9ebfb992><code class="language-tsx" data-v-9ebfb992>import { ReactSelectionCardGroup } from &quot;agnosticui-core/selection-card-group/react&quot;;
+import { ReactSelectionCard } from &quot;agnosticui-core/selection-card/react&quot;;
+
+export default function SelectionCardGroupExamples() {
+  const handleChange = (e) =&gt; {
+    console.log(&quot;Selection changed:&quot;, e.detail);
+  };
+
+  return (
+    &lt;section&gt;
+      {/* Radio Selection */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Radio Selection (Single)&lt;/h2&gt;
+        &lt;p className=&quot;mbs2 mbe3&quot;&gt;Select one option from a group of cards&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;ReactSelectionCardGroup
+        type=&quot;radio&quot;
+        name=&quot;interests&quot;
+        legend=&quot;Select your primary interest&quot;
+        className=&quot;mbe4&quot;
+        onSelectionChange={handleChange}
+      &gt;
+        &lt;ReactSelectionCard value=&quot;tech&quot; label=&quot;Technology&quot;&gt;
+          &lt;div style={{ textAlign: &quot;center&quot;, padding: &quot;1rem&quot; }}&gt;
+            &lt;div style={{ fontSize: &quot;2rem&quot; }}&gt;💻&lt;/div&gt;
+            &lt;div style={{ fontWeight: 600 }}&gt;Technology&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard value=&quot;art&quot; label=&quot;Art &amp; Design&quot;&gt;
+          &lt;div style={{ textAlign: &quot;center&quot;, padding: &quot;1rem&quot; }}&gt;
+            &lt;div style={{ fontSize: &quot;2rem&quot; }}&gt;🎨&lt;/div&gt;
+            &lt;div style={{ fontWeight: 600 }}&gt;Art &amp; Design&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard value=&quot;music&quot; label=&quot;Music&quot;&gt;
+          &lt;div style={{ textAlign: &quot;center&quot;, padding: &quot;1rem&quot; }}&gt;
+            &lt;div style={{ fontSize: &quot;2rem&quot; }}&gt;🎵&lt;/div&gt;
+            &lt;div style={{ fontWeight: 600 }}&gt;Music&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+      &lt;/ReactSelectionCardGroup&gt;
+
+      {/* Checkbox Selection */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Checkbox Selection (Multiple)&lt;/h2&gt;
+        &lt;p className=&quot;mbs2 mbe3&quot;&gt;Select multiple options from a group of cards&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;ReactSelectionCardGroup
+        type=&quot;checkbox&quot;
+        name=&quot;features&quot;
+        legend=&quot;Select features to enable&quot;
+        className=&quot;mbe4&quot;
+        onSelectionChange={handleChange}
+      &gt;
+        &lt;ReactSelectionCard value=&quot;analytics&quot; label=&quot;Analytics&quot;&gt;
+          &lt;div style={{ textAlign: &quot;center&quot;, padding: &quot;1rem&quot; }}&gt;
+            &lt;div style={{ fontSize: &quot;2rem&quot; }}&gt;📊&lt;/div&gt;
+            &lt;div style={{ fontWeight: 600 }}&gt;Analytics&lt;/div&gt;
+            &lt;div style={{ fontSize: &quot;0.875rem&quot;, color: &quot;#666&quot; }}&gt;Track user behavior&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard value=&quot;notifications&quot; label=&quot;Notifications&quot;&gt;
+          &lt;div style={{ textAlign: &quot;center&quot;, padding: &quot;1rem&quot; }}&gt;
+            &lt;div style={{ fontSize: &quot;2rem&quot; }}&gt;🔔&lt;/div&gt;
+            &lt;div style={{ fontWeight: 600 }}&gt;Notifications&lt;/div&gt;
+            &lt;div style={{ fontSize: &quot;0.875rem&quot;, color: &quot;#666&quot; }}&gt;Push &amp; email alerts&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard value=&quot;export&quot; label=&quot;Export&quot;&gt;
+          &lt;div style={{ textAlign: &quot;center&quot;, padding: &quot;1rem&quot; }}&gt;
+            &lt;div style={{ fontSize: &quot;2rem&quot; }}&gt;📤&lt;/div&gt;
+            &lt;div style={{ fontWeight: 600 }}&gt;Export&lt;/div&gt;
+            &lt;div style={{ fontSize: &quot;0.875rem&quot;, color: &quot;#666&quot; }}&gt;Download your data&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+      &lt;/ReactSelectionCardGroup&gt;
+
+      {/* Theme Variants */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Theme Variants&lt;/h2&gt;
+        &lt;p className=&quot;mbs2 mbe3&quot;&gt;Different color themes for various contexts&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div style={{ display: &quot;flex&quot;, flexDirection: &quot;column&quot;, gap: &quot;1.5rem&quot; }} className=&quot;mbe4&quot;&gt;
+        &lt;div&gt;
+          &lt;h3 style={{ marginBottom: &quot;0.5rem&quot;, fontSize: &quot;0.875rem&quot; }}&gt;Default (Primary/Blue)&lt;/h3&gt;
+          &lt;ReactSelectionCardGroup
+            type=&quot;radio&quot;
+            name=&quot;theme-default&quot;
+            legend=&quot;Default theme&quot;
+            legendHidden
+          &gt;
+            &lt;ReactSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+              &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option A&lt;/div&gt;
+            &lt;/ReactSelectionCard&gt;
+            &lt;ReactSelectionCard value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+              &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option B&lt;/div&gt;
+            &lt;/ReactSelectionCard&gt;
+          &lt;/ReactSelectionCardGroup&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;h3 style={{ marginBottom: &quot;0.5rem&quot;, fontSize: &quot;0.875rem&quot; }}&gt;Success&lt;/h3&gt;
+          &lt;ReactSelectionCardGroup
+            type=&quot;radio&quot;
+            name=&quot;theme-success&quot;
+            legend=&quot;Success theme&quot;
+            legendHidden
+            theme=&quot;success&quot;
+          &gt;
+            &lt;ReactSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+              &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option A&lt;/div&gt;
+            &lt;/ReactSelectionCard&gt;
+            &lt;ReactSelectionCard value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+              &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option B&lt;/div&gt;
+            &lt;/ReactSelectionCard&gt;
+          &lt;/ReactSelectionCardGroup&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;h3 style={{ marginBottom: &quot;0.5rem&quot;, fontSize: &quot;0.875rem&quot; }}&gt;Monochrome&lt;/h3&gt;
+          &lt;ReactSelectionCardGroup
+            type=&quot;radio&quot;
+            name=&quot;theme-mono&quot;
+            legend=&quot;Monochrome theme&quot;
+            legendHidden
+            theme=&quot;monochrome&quot;
+          &gt;
+            &lt;ReactSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+              &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option A&lt;/div&gt;
+            &lt;/ReactSelectionCard&gt;
+            &lt;ReactSelectionCard value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+              &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option B&lt;/div&gt;
+            &lt;/ReactSelectionCard&gt;
+          &lt;/ReactSelectionCardGroup&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      {/* Disabled State */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Disabled State&lt;/h2&gt;
+        &lt;p className=&quot;mbs2 mbe3&quot;&gt;Entire group can be disabled&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;ReactSelectionCardGroup
+        type=&quot;radio&quot;
+        name=&quot;disabled-example&quot;
+        legend=&quot;Disabled group&quot;
+        disabled
+        className=&quot;mbe4&quot;
+      &gt;
+        &lt;ReactSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+          &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option A&lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+          &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option B&lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+      &lt;/ReactSelectionCardGroup&gt;
+
+      {/* Disabled Individual Card State */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Disabled Individual Card State&lt;/h2&gt;
+        &lt;p className=&quot;mbs2 mbe3&quot;&gt;Individual cards can be disabled while others remain interactive&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;ReactSelectionCardGroup
+        type=&quot;radio&quot;
+        name=&quot;disabled-individual-example&quot;
+        legend=&quot;Disabled individual cards&quot;
+        className=&quot;mbe4&quot;
+      &gt;
+        &lt;ReactSelectionCard value=&quot;a&quot; label=&quot;Option A&quot;&gt;
+          &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option A&lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard disabled value=&quot;b&quot; label=&quot;Option B&quot;&gt;
+          &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option B&lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard value=&quot;c&quot; label=&quot;Option C&quot;&gt;
+          &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option C&lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard disabled value=&quot;d&quot; label=&quot;Option D&quot;&gt;
+          &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option D&lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard value=&quot;e&quot; label=&quot;Option E&quot;&gt;
+          &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;Option E&lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+      &lt;/ReactSelectionCardGroup&gt;
+
+      {/* Pricing Tiers Example */}
+      &lt;div className=&quot;mbe4&quot;&gt;
+        &lt;h2&gt;Pricing Tiers Example&lt;/h2&gt;
+        &lt;p className=&quot;mbs2 mbe3&quot;&gt;Common use case for plan selection&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;ReactSelectionCardGroup
+        type=&quot;radio&quot;
+        name=&quot;pricing&quot;
+        legend=&quot;Choose your plan&quot;
+        className=&quot;mbe4&quot;
+        onSelectionChange={handleChange}
+      &gt;
+        &lt;ReactSelectionCard value=&quot;free&quot; label=&quot;Free Plan&quot;&gt;
+          &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;
+            &lt;div style={{ fontSize: &quot;1.5rem&quot;, fontWeight: 700 }}&gt;Free&lt;/div&gt;
+            &lt;div style={{ fontSize: &quot;2rem&quot;, fontWeight: 700, margin: &quot;0.5rem 0&quot; }}&gt;$0&lt;/div&gt;
+            &lt;div style={{ color: &quot;#666&quot;, fontSize: &quot;0.875rem&quot; }}&gt;Perfect for getting started&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard value=&quot;pro&quot; label=&quot;Pro Plan&quot;&gt;
+          &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;
+            &lt;div style={{ fontSize: &quot;1.5rem&quot;, fontWeight: 700 }}&gt;Pro&lt;/div&gt;
+            &lt;div style={{ fontSize: &quot;2rem&quot;, fontWeight: 700, margin: &quot;0.5rem 0&quot; }}&gt;$29&lt;/div&gt;
+            &lt;div style={{ color: &quot;#666&quot;, fontSize: &quot;0.875rem&quot; }}&gt;For growing teams&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+        &lt;ReactSelectionCard value=&quot;premium&quot; label=&quot;Premium Plan&quot;&gt;
+          &lt;div style={{ padding: &quot;1rem&quot;, textAlign: &quot;center&quot; }}&gt;
+            &lt;div style={{ fontSize: &quot;1.5rem&quot;, fontWeight: 700 }}&gt;Premium&lt;/div&gt;
+            &lt;div style={{ fontSize: &quot;1.5rem&quot;, fontWeight: 700, margin: &quot;0.5rem 0&quot; }}&gt;Custom&lt;/div&gt;
+            &lt;div style={{ color: &quot;#666&quot;, fontSize: &quot;0.875rem&quot; }}&gt;For large organizations&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ReactSelectionCard&gt;
+      &lt;/ReactSelectionCardGroup&gt;
+    &lt;/section&gt;
+  );
+}
+</code></pre></details><div class="stackblitz-section" data-v-9ebfb992><ag-button variant="primary" shape="rounded" title="Open interactive React playground in StackBlitz" data-v-9ebfb992><ag-icon size="18" no-fill data-v-9ebfb992><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap-icon lucide-zap" data-v-9ebfb992><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></ag-icon><span class="mis2" data-v-9ebfb992>Open in StackBlitz</span></ag-button></div><!--]--></ag-tab-panel><!--]--></ag-tabs></div><h2 id="usage" tabindex="-1">Usage <a class="header-anchor" href="#usage" aria-label="Permalink to &quot;Usage&quot;">​</a></h2><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>The framework examples below <code>import</code> AgnosticUI as an <code>npm</code> package. Alternatively, you can use the <strong>CLI for complete control, AI/LLM visibility, and full code ownership</strong>:</p><div class="language-bash vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">npx</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> ag</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> init</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> --framework</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> FRAMEWORK</span><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;"> # react, vue, lit, svelte, etc.</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">npx</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> ag</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> add</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> SelectionCardGroup</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">npx</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> ag</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> add</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> SelectionCard</span></span></code></pre></div><p>The CLI copies source code directly into your project, giving you full visibility and control. After running <code>npx ag add</code>, you&#39;ll receive exact import instructions.</p></div><details class="details custom-block"><summary>Vue</summary><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueSelectionCardGroup</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">    type</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;radio&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">    name</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;interests&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">    legend</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Select your interests&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">    @selection-change</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;handleChange&quot;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueSelectionCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> value</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;tech&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> label</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Technology&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Technology&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueSelectionCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueSelectionCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> value</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;art&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> label</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Art &amp; Design&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Art &amp; Design&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueSelectionCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">VueSelectionCardGroup</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">template</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> setup</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { VueSelectionCardGroup } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/selection-card-group/vue&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { VueSelectionCard } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &#39;agnosticui-core/selection-card/vue&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">const</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> handleChange</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> (</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">e</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Selected:&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, e.detail.selectedValues);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">};</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><details class="details custom-block"><summary>React</summary><div class="language-tsx vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">tsx</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { ReactSelectionCardGroup } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/selection-card-group/react&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">import</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> { ReactSelectionCard } </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">from</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/selection-card/react&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">export</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> default</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> function</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> Example</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">() </span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">{</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  const</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;"> handleChange</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> (</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">e</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Selected:&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, e.detail.selectedValues);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  return</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> (</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactSelectionCardGroup</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      type</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;radio&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      name</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;interests&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      legend</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Select your interests&quot;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">      onSelectionChange</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">={</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">handleChange</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">}</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactSelectionCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> value</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;tech&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> label</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Technology&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Technology&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactSelectionCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactSelectionCard</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> value</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;art&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> label</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Art &amp; Design&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">        &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Art &amp; Design&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">      &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactSelectionCard</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ReactSelectionCardGroup</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  );</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div></details><details class="details custom-block"><summary>Lit (Web Components)</summary><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> type</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;module&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  import</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/selection-card-group&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  import</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;"> &quot;agnosticui-core/selection-card&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">  const</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> group</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;"> =</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> document.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">querySelector</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;ag-selection-card-group&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  group.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">addEventListener</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;selection-change&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, (</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">e</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) </span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">=&gt;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    console.</span><span style="--shiki-light:#622CBC;--shiki-dark:#DBB7FF;">log</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&#39;Selected:&#39;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">, e.detail.selectedValues);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  });</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">script</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card-group</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> type</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;radio&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> name</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;interests&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> legend</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Select your interests&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> value</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;tech&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> label</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Technology&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Technology&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> value</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;art&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> label</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;Art &amp; Design&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">    &lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;Art &amp; Design&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">span</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  &lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card-group</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div></details><h2 id="props" tabindex="-1">Props <a class="header-anchor" href="#props" aria-label="Permalink to &quot;Props&quot;">​</a></h2><h3 id="selectioncardgroup-1" tabindex="-1">SelectionCardGroup <a class="header-anchor" href="#selectioncardgroup-1" aria-label="Permalink to &quot;SelectionCardGroup&quot;">​</a></h3><table class="ag-table ag-table--striped"><thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>type</code></td><td><code>&#39;radio&#39; | &#39;checkbox&#39;</code></td><td><code>&#39;radio&#39;</code></td><td>Selection mode</td></tr><tr><td><code>name</code></td><td><code>string</code></td><td><code>&#39;&#39;</code></td><td>Input name attribute (required)</td></tr><tr><td><code>legend</code></td><td><code>string</code></td><td><code>&#39;&#39;</code></td><td>Accessible group label</td></tr><tr><td><code>legend-hidden</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Visually hide legend</td></tr><tr><td><code>theme</code></td><td><code>&#39;&#39; | &#39;success&#39; | &#39;info&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;monochrome&#39;</code></td><td><code>&#39;&#39;</code></td><td>Theme variant (empty = primary/blue)</td></tr><tr><td><code>value</code></td><td><code>string</code></td><td><code>&#39;&#39;</code></td><td>Controlled value (radio)</td></tr><tr><td><code>values</code></td><td><code>string[]</code></td><td><code>[]</code></td><td>Controlled values (checkbox)</td></tr><tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Disable all cards</td></tr></tbody></table><h3 id="selectioncard" tabindex="-1">SelectionCard <a class="header-anchor" href="#selectioncard" aria-label="Permalink to &quot;SelectionCard&quot;">​</a></h3><table class="ag-table ag-table--striped"><thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>value</code></td><td><code>string</code></td><td><code>&#39;&#39;</code></td><td>Unique value (required)</td></tr><tr><td><code>label</code></td><td><code>string</code></td><td><code>&#39;&#39;</code></td><td>Accessible label (required)</td></tr><tr><td><code>checked</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Selection state (managed by group)</td></tr><tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Disable this card</td></tr></tbody></table><h2 id="events" tabindex="-1">Events <a class="header-anchor" href="#events" aria-label="Permalink to &quot;Events&quot;">​</a></h2><h3 id="selection-change" tabindex="-1">selection-change <a class="header-anchor" href="#selection-change" aria-label="Permalink to &quot;selection-change&quot;">​</a></h3><p>Fired when selection changes.</p><div class="language-typescript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">typescript</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">interface</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;"> SelectionChangeEventDetail</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> {</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">  value</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">:</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> string</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;        </span><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">// Value that triggered the change</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">  checked</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">:</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> boolean</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;     </span><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">// Whether the card is now selected</span></span>
+<span class="line"><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">  selectedValues</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">:</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> string</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">[]; </span><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">// All currently selected values</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div><h2 id="themes" tabindex="-1">Themes <a class="header-anchor" href="#themes" aria-label="Permalink to &quot;Themes&quot;">​</a></h2><p>The <code>theme</code> prop controls the color scheme for selected cards:</p><table class="ag-table ag-table--striped"><thead><tr><th>Theme</th><th>Description</th></tr></thead><tbody><tr><td><code>&#39;&#39;</code> (default)</td><td>Primary blue - uses <code>--ag-primary-*</code> tokens</td></tr><tr><td><code>success</code></td><td>Green - uses <code>--ag-success-*</code> tokens</td></tr><tr><td><code>info</code></td><td>Cyan/blue - uses <code>--ag-info-*</code> tokens</td></tr><tr><td><code>warning</code></td><td>Yellow/orange - uses <code>--ag-warning-*</code> tokens</td></tr><tr><td><code>error</code></td><td>Red - uses <code>--ag-danger-*</code> tokens</td></tr><tr><td><code>monochrome</code></td><td>Black/white - uses <code>--ag-black</code> and inverted tokens</td></tr></tbody></table><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">&lt;!-- Success theme --&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card-group</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> type</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;radio&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> name</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;status&quot;</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;"> theme</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">=</span><span style="--shiki-light:#032563;--shiki-dark:#ADDCFF;">&quot;success&quot;</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  ...</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&lt;/</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card-group</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">&gt;</span></span></code></pre></div><h2 id="styling" tabindex="-1">Styling <a class="header-anchor" href="#styling" aria-label="Permalink to &quot;Styling&quot;">​</a></h2><h3 id="css-custom-properties" tabindex="-1">CSS Custom Properties <a class="header-anchor" href="#css-custom-properties" aria-label="Permalink to &quot;CSS Custom Properties&quot;">​</a></h3><div class="language-css vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">css</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">/* Card sizing &amp; spacing */</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">--ag-selection-card-padding: var(--ag-space-4);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">--ag-selection-card-gap: var(--ag-space-3);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">--ag-selection-card-border-radius: var(--ag-radius-md);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">--ag-selection-card-indicator-size: var(--ag-space-5);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">/* Card colors - unselected */</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">--ag-selection-card-background: var(--ag-background-primary);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">--ag-selection-card-border-color: var(--ag-border);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">/* Card colors - selected */</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">--ag-selection-card-selected-background: var(--ag-primary-background);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">--ag-selection-card-selected-border-color: var(--ag-primary);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">--ag-selection-card-indicator-color: var(--ag-primary);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">/* Group layout */</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">--ag-selection-card-group-gap: var(--ag-space-4);</span></span></code></pre></div><h3 id="css-parts" tabindex="-1">CSS Parts <a class="header-anchor" href="#css-parts" aria-label="Permalink to &quot;CSS Parts&quot;">​</a></h3><h4 id="selectioncardgroup-2" tabindex="-1">SelectionCardGroup <a class="header-anchor" href="#selectioncardgroup-2" aria-label="Permalink to &quot;SelectionCardGroup&quot;">​</a></h4><table class="ag-table ag-table--striped"><thead><tr><th>Part</th><th>Description</th></tr></thead><tbody><tr><td><code>ag-selection-card-group-fieldset</code></td><td>The fieldset element</td></tr><tr><td><code>ag-selection-card-group-legend</code></td><td>The legend element</td></tr><tr><td><code>ag-selection-card-group-content</code></td><td>The content wrapper (grid)</td></tr></tbody></table><h4 id="selectioncard-1" tabindex="-1">SelectionCard <a class="header-anchor" href="#selectioncard-1" aria-label="Permalink to &quot;SelectionCard&quot;">​</a></h4><table class="ag-table ag-table--striped"><thead><tr><th>Part</th><th>Description</th></tr></thead><tbody><tr><td><code>ag-selection-card-container</code></td><td>The outer clickable label</td></tr><tr><td><code>ag-selection-card-control</code></td><td>The hidden input element</td></tr><tr><td><code>ag-selection-card-indicator</code></td><td>The selection indicator (filled circle for radio, checkmark for checkbox)</td></tr><tr><td><code>ag-selection-card-content</code></td><td>The slotted content wrapper</td></tr></tbody></table><h3 id="css-parts-example" tabindex="-1">CSS Parts Example <a class="header-anchor" href="#css-parts-example" aria-label="Permalink to &quot;CSS Parts Example&quot;">​</a></h3><div class="language-css vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">css</span><pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">/* Custom indicator size and shape */</span></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card-indicator</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  width</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1.5</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  height</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1.5</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">rem</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">/* Custom container styling */</span></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card-container</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">  border-radius</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">var</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">(</span><span style="--shiki-light:#702C00;--shiki-dark:#FFB757;">--ag-radius-lg</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">);</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#66707B;--shiki-dark:#BDC4CC;">/* Responsive: stack cards on mobile */</span></span>
+<span class="line"><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">@media</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;"> (</span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">max-width</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">640</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">px</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">  ag-selection-card-group</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">::part(</span><span style="--shiki-light:#024C1A;--shiki-dark:#72F088;">ag-selection-card-group-content</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">) {</span></span>
+<span class="line"><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">    grid-template-columns</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">: </span><span style="--shiki-light:#023B95;--shiki-dark:#91CBFF;">1</span><span style="--shiki-light:#A0111F;--shiki-dark:#FF9492;">fr</span><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">;</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">  }</span></span>
+<span class="line"><span style="--shiki-light:#0E1116;--shiki-dark:#F0F3F6;">}</span></span></code></pre></div><h2 id="accessibility" tabindex="-1">Accessibility <a class="header-anchor" href="#accessibility" aria-label="Permalink to &quot;Accessibility&quot;">​</a></h2><ul><li>Uses <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> for proper group semantics</li><li>Each card has a required <code>label</code> prop for screen readers</li><li>Keyboard navigation: <ul><li><strong>Arrow keys</strong>: Navigate between cards (selects in radio mode)</li><li><strong>Space/Enter</strong>: Toggle selection</li><li><strong>Home/End</strong>: Jump to first/last card</li></ul></li><li>Focus ring visible on keyboard navigation</li><li><code>role=&quot;radiogroup&quot;</code> for radio mode, <code>role=&quot;group&quot;</code> for checkbox mode</li></ul></div></div></main><footer class="VPDocFooter" data-v-39a288b8 data-v-e257564d><!--[--><!--]--><!----><nav class="prev-next" aria-labelledby="doc-footer-aria-label" data-v-e257564d><span class="visually-hidden" id="doc-footer-aria-label" data-v-e257564d>Pager</span><div class="pager" data-v-e257564d><a class="VPLink link pager-link prev" href="/components/selection-button-group.html" data-v-e257564d><!--[--><span class="desc" data-v-e257564d>Previous page</span><span class="title" data-v-e257564d>SelectionButtonGroup</span><!--]--></a></div><div class="pager" data-v-e257564d><a class="VPLink link pager-link next" href="/components/sidebar.html" data-v-e257564d><!--[--><span class="desc" data-v-e257564d>Next page</span><span class="title" data-v-e257564d>Sidebar (Lab)</span><!--]--></a></div></nav></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><!----><!--[--><!--]--></div></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"components_accordion.md\":\"U5aPCnAG\",\"components_alert.md\":\"2ceZAhSP\",\"components_aspect-ratio.md\":\"B9n81G3P\",\"components_avatar.md\":\"CNj0b-PH\",\"components_badge-fx.md\":\"C4twGPbP\",\"components_badge.md\":\"DluiJ_qR\",\"components_breadcrumb.md\":\"Doq7gJCV\",\"components_button-fx.md\":\"B57rHwU-\",\"components_button.md\":\"YtJiIiNZ\",\"components_card.md\":\"CvpSK57G\",\"components_checkbox.md\":\"DbAETIEj\",\"components_collapsible.md\":\"DPLt6BMN\",\"components_combobox.md\":\"Cd03Mi86\",\"components_copybutton.md\":\"BHkHeslq\",\"components_dialog.md\":\"D_K0R3Uj\",\"components_divider.md\":\"CkT1L2Xp\",\"components_drawer.md\":\"D-0TQqOv\",\"components_empty-state.md\":\"CPhokOum\",\"components_fieldset.md\":\"BGWDt_IX\",\"components_flex.md\":\"Cn-9nPXN\",\"components_header.md\":\"BPk53Gry\",\"components_icon-button-fx.md\":\"rYQ5nQof\",\"components_icon-button.md\":\"C5TnuNZ1\",\"components_icon.md\":\"BiPoWnMa\",\"components_image.md\":\"B_s2Wb3-\",\"components_input.md\":\"DMIOluKN\",\"components_intl-formatter.md\":\"DzJMwKqy\",\"components_kbd.md\":\"_W8CHRai\",\"components_link.md\":\"ORk-kxTB\",\"components_loader.md\":\"D00TlJfK\",\"components_mark.md\":\"fbpM45HT\",\"components_menu.md\":\"hkxN7oQm\",\"components_message-bubble.md\":\"knivxMmy\",\"components_pagination.md\":\"BPMi7lPL\",\"components_popover.md\":\"DXhfqimq\",\"components_progress-ring.md\":\"DG8npF0j\",\"components_progress.md\":\"CydihKRH\",\"components_radio.md\":\"C1agSqBA\",\"components_rating.md\":\"QMaS2jc3\",\"components_scroll-progress.md\":\"BVuD1UuL\",\"components_scroll-to-button.md\":\"DRAgV8uC\",\"components_select.md\":\"Dz6qEcRB\",\"components_selection-button-group.md\":\"DFb3XJhr\",\"components_selection-card-group.md\":\"DCjFCN7r\",\"components_sidebar.md\":\"B5vW36ya\",\"components_skeleton-loader.md\":\"U6zOBbK3\",\"components_slider.md\":\"BqJCuERA\",\"components_spinner.md\":\"Dm3l9wyy\",\"components_table.md\":\"CDSunrSb\",\"components_tabs.md\":\"BEM1bv51\",\"components_tag.md\":\"DjY-sjq3\",\"components_timeline.md\":\"BwB5neYH\",\"components_toast.md\":\"DO4Jx5p0\",\"components_toggle.md\":\"Bx68D-zw\",\"components_tooltip.md\":\"C8Emub0Q\",\"components_visually-hidden.md\":\"B0gjqW9N\",\"docs_advanced_advanced-usage.md\":\"NjUqbLKx\",\"docs_faq.md\":\"CW-6PZSg\",\"docs_setup.md\":\"D2ZTDyyN\",\"docs_theming.md\":\"a7cpTIMK\",\"docs_understand.md\":\"AMQOq1C5\",\"docs_utilities.md\":\"DRVnpTXi\",\"index.md\":\"DtxCt6Z9\",\"installation.md\":\"CjLG7Y9m\",\"playbooks_dashboard.md\":\"DOqRw9Ui\",\"playbooks_login.md\":\"DLnNOdGi\",\"playbooks_onboarding.md\":\"bSXJ-F4b\",\"theming.md\":\"qGYIrwXF\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"AgnosticUI\",\"description\":\"One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"nav\":[{\"text\":\"Components\",\"link\":\"/components/button\"}],\"sidebar\":[{\"text\":\"Quick Start\",\"items\":[{\"text\":\"Installation\",\"link\":\"/installation\"},{\"text\":\"Theming\",\"link\":\"/theming\"}]},{\"text\":\"Playbooks\",\"items\":[{\"text\":\"Login Form\",\"link\":\"/playbooks/login\"},{\"text\":\"Onboarding Wizard\",\"link\":\"/playbooks/onboarding\"},{\"text\":\"Discovery Dashboard\",\"link\":\"/playbooks/dashboard\"}]},{\"text\":\"Components\",\"items\":[{\"text\":\"Accordion\",\"link\":\"/components/accordion\"},{\"text\":\"Alerts\",\"link\":\"/components/alert\"},{\"text\":\"AspectRatio\",\"link\":\"/components/aspect-ratio\"},{\"text\":\"Avatar\",\"link\":\"/components/avatar\"},{\"text\":\"Badge\",\"link\":\"/components/badge\"},{\"text\":\"BadgeFx (Lab)\",\"link\":\"/components/badge-fx\"},{\"text\":\"Breadcrumb\",\"link\":\"/components/breadcrumb\"},{\"text\":\"Button\",\"link\":\"/components/button\"},{\"text\":\"ButtonFx (Lab)\",\"link\":\"/components/button-fx\"},{\"text\":\"Card\",\"link\":\"/components/card\"},{\"text\":\"Checkbox\",\"link\":\"/components/checkbox\"},{\"text\":\"Collapsible\",\"link\":\"/components/collapsible\"},{\"text\":\"Combobox\",\"link\":\"/components/combobox\"},{\"text\":\"CopyButton\",\"link\":\"/components/copybutton\"},{\"text\":\"Dialog\",\"link\":\"/components/dialog\"},{\"text\":\"Divider\",\"link\":\"/components/divider\"},{\"text\":\"Drawer\",\"link\":\"/components/drawer\"},{\"text\":\"EmptyState\",\"link\":\"/components/empty-state\"},{\"text\":\"Fieldset\",\"link\":\"/components/fieldset\"},{\"text\":\"Flex (Lab)\",\"link\":\"/components/flex\"},{\"text\":\"Header\",\"link\":\"/components/header\"},{\"text\":\"Icon\",\"link\":\"/components/icon\"},{\"text\":\"Icon Button\",\"link\":\"/components/icon-button\"},{\"text\":\"IconButtonFx (Lab)\",\"link\":\"/components/icon-button-fx\"},{\"text\":\"Image\",\"link\":\"/components/image\"},{\"text\":\"Input\",\"link\":\"/components/input\"},{\"text\":\"IntlFormatter\",\"link\":\"/components/intl-formatter\"},{\"text\":\"Kbd\",\"link\":\"/components/kbd\"},{\"text\":\"Link\",\"link\":\"/components/link\"},{\"text\":\"Loader\",\"link\":\"/components/loader\"},{\"text\":\"Mark\",\"link\":\"/components/mark\"},{\"text\":\"Menu\",\"link\":\"/components/menu\"},{\"text\":\"MessageBubble\",\"link\":\"/components/message-bubble\"},{\"text\":\"Pagination\",\"link\":\"/components/pagination\"},{\"text\":\"Popover\",\"link\":\"/components/popover\"},{\"text\":\"Progress\",\"link\":\"/components/progress\"},{\"text\":\"ProgressRing\",\"link\":\"/components/progress-ring\"},{\"text\":\"Radio\",\"link\":\"/components/radio\"},{\"text\":\"Rating\",\"link\":\"/components/rating\"},{\"text\":\"ScrollProgress\",\"link\":\"/components/scroll-progress\"},{\"text\":\"ScrollToButton\",\"link\":\"/components/scroll-to-button\"},{\"text\":\"Select\",\"link\":\"/components/select\"},{\"text\":\"SelectionButtonGroup\",\"link\":\"/components/selection-button-group\"},{\"text\":\"SelectionCardGroup\",\"link\":\"/components/selection-card-group\"},{\"text\":\"Sidebar (Lab)\",\"link\":\"/components/sidebar\"},{\"text\":\"Skeleton Loader\",\"link\":\"/components/skeleton-loader\"},{\"text\":\"Slider\",\"link\":\"/components/slider\"},{\"text\":\"Spinner\",\"link\":\"/components/spinner\"},{\"text\":\"Table\",\"link\":\"/components/table\"},{\"text\":\"Tabs\",\"link\":\"/components/tabs\"},{\"text\":\"Tag\",\"link\":\"/components/tag\"},{\"text\":\"Timeline\",\"link\":\"/components/timeline\"},{\"text\":\"Toast\",\"link\":\"/components/toast\"},{\"text\":\"Toggle\",\"link\":\"/components/toggle\"},{\"text\":\"Tooltip\",\"link\":\"/components/tooltip\"},{\"text\":\"VisuallyHidden\",\"link\":\"/components/visually-hidden\"}]},{\"text\":\"Documentation\",\"items\":[{\"text\":\"Setup Guide\",\"link\":\"/docs/setup\"},{\"text\":\"Understanding AgnosticUI\",\"link\":\"/docs/understand\"},{\"text\":\"Advanced Usage\",\"link\":\"/docs/advanced/advanced-usage\"},{\"text\":\"CSS Utilities\",\"link\":\"/docs/utilities\"},{\"text\":\"FAQ\",\"link\":\"/docs/faq\"}]}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/AgnosticUI/agnosticui\"}]},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  </body>
+</html>
