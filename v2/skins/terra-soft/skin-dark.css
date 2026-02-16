@@ -1,0 +1,58 @@
+/**
+ * Terra Soft Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Terra Soft warm orange-coral aesthetic.
+ *
+ * Activate by adding class="ag-skin-terra-soft" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-terra-soft {
+  /* ── Primary color family (brightened for dark backgrounds) ── */
+  --ag-primary: #ff8a62;
+  --ag-primary-dark: #ff6a3e;
+  --ag-primary-border: #ff8a62;
+  --ag-primary-background: #2e1a12;
+  --ag-primary-text: #ffd4c4;
+
+  /* ── Focus ring (orange-derived RGB, brightened) ── */
+  --ag-focus: 255, 138, 98;
+  --ag-focus-dark: #ffb89e;
+
+  /* ── Semantic text ── */
+  --ag-text-primary-muted: #e0cfc6;
+
+  /* ── Borders ── */
+  --ag-border: #3d2e26;
+  --ag-border-subtle: #5a4438;
+
+  /* ── Backgrounds ── */
+  --ag-background-secondary: #1a1210;
+  --ag-background-tertiary: #2e2420;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 1.25rem;
+
+  /* ── Shadows (warm-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(255, 106, 62, 0.08);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(255, 106, 62, 0.1);
+  --ag-shadow-md: 0 2px 10px 0 rgba(255, 106, 62, 0.1);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(255, 106, 62, 0.12);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(255, 106, 62, 0.14);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #ffba43;
+  --ag-rating-filled-primary: #ff8a62;
+
+  /* ── Orange palette (overrides blue palette for primary usage) ── */
+  --ag-blue-50: #ffd4c4;
+  --ag-blue-100: #ffb89e;
+  --ag-blue-200: #ff9a78;
+  --ag-blue-300: #ff8a62;
+  --ag-blue-400: #ff6a3e;
+  --ag-blue-500: #e55530;
+  --ag-blue-600: #c44425;
+  --ag-blue-700: #9e3318;
+  --ag-blue-800: #5a2210;
+  --ag-blue-900: #2e1a12;
+}

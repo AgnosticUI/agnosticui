@@ -1,0 +1,61 @@
+/**
+ * Terra Soft Skin — Light Mode
+ *
+ * A warm orange-coral and golden aesthetic with soft, rounded forms.
+ *
+ * Activate by adding class="ag-skin-terra-soft" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-terra-soft {
+  /* ── Primary color family ── */
+  --ag-primary: #ff6a3e;
+  --ag-primary-dark: #e55530;
+  --ag-primary-border: #ffd4c4;
+  --ag-primary-background: #fff4f0;
+  --ag-primary-text: #9e3318;
+
+  /* ── Focus ring (orange-derived RGB) ── */
+  --ag-focus: 255, 106, 62;
+  --ag-focus-dark: #e55530;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #1a1a1a;
+  --ag-text-secondary: #4e4b66;
+  --ag-text-muted: #4e4b66;
+  --ag-text-primary-muted: #4e4b66;
+
+  /* ── Borders ── */
+  --ag-border: #ede5df;
+  --ag-border-subtle: #e0d6ce;
+
+  /* ── Backgrounds ── */
+  --ag-background-secondary: #FBF5F1;
+  --ag-background-tertiary: #f3ebe5;
+
+  /* ── Border radius (rounder, matching CodeStitch's generous radii) ── */
+  --ag-radius-lg: 1.25rem;
+
+  /* ── Shadows (soft, warm) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(149, 157, 165, 0.12);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(149, 157, 165, 0.16);
+  --ag-shadow-md: 0 2px 10px 0 rgba(149, 157, 165, 0.16);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(149, 157, 165, 0.2);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(149, 157, 165, 0.2);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #ffba43;
+  --ag-rating-filled-primary: #ff6a3e;
+
+  /* ── Orange palette (overrides blue palette for primary usage) ── */
+  --ag-blue-50: #fff4f0;
+  --ag-blue-100: #ffd4c4;
+  --ag-blue-200: #ffb89e;
+  --ag-blue-300: #ff9a78;
+  --ag-blue-400: #ff6a3e;
+  --ag-blue-500: #e55530;
+  --ag-blue-600: #c44425;
+  --ag-blue-700: #9e3318;
+  --ag-blue-800: #7a2510;
+  --ag-blue-900: #571808;
+}

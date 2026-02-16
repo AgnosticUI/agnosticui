@@ -10,6 +10,9 @@ v2/skins/
 ├── deep-forest/
 │   ├── skin.css           ← light-mode overrides
 │   └── skin-dark.css      ← dark-mode overrides
+├── terra-soft/
+│   ├── skin.css           ← light-mode overrides
+│   └── skin-dark.css      ← dark-mode overrides
 ```
 
 Each skin lives in its own folder with up to two files: one for light mode, one for dark mode.
