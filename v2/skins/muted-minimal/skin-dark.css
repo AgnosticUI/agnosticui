@@ -1,0 +1,61 @@
+/**
+ * Muted Minimal Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Muted Minimal blue-gray aesthetic.
+ *
+ * Activate by adding class="ag-skin-muted-minimal" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-muted-minimal {
+  /* ── Primary color family (brightened muted blue) ── */
+  --ag-primary: #6fa8ba;
+  --ag-primary-dark: #5a95a8;
+  --ag-primary-border: #4a7a8a;
+  --ag-primary-background: #1a2830;
+  --ag-primary-text: #b8d7e0;
+
+  /* ── Focus ring (muted blue-derived RGB, brightened) ── */
+  --ag-focus: 111, 168, 186;
+  --ag-focus-dark: #9ac5d3;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #e5e5e5;
+  --ag-text-secondary: #c0c0c0;
+  --ag-text-muted: #9a9a9a;
+  --ag-text-primary-muted: #d0d0d0;
+
+  /* ── Borders ── */
+  --ag-border: #2a3a42;
+  --ag-border-subtle: #222e35;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #0f1518;
+  --ag-background-secondary: #161f24;
+  --ag-background-tertiary: #1f2b32;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.25rem;
+
+  /* ── Shadows (muted blue-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(111, 168, 186, 0.08);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(111, 168, 186, 0.1);
+  --ag-shadow-md: 0 2px 6px 0 rgba(111, 168, 186, 0.12);
+  --ag-shadow-lg: 0 3px 12px 0 rgba(111, 168, 186, 0.14);
+  --ag-shadow-xl: 0 5px 20px 0 rgba(111, 168, 186, 0.16);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #6fa8ba;
+
+  /* ── Muted blue-gray palette (overrides blue palette) ── */
+  --ag-blue-50: #d5e8ed;
+  --ag-blue-100: #b8d7e0;
+  --ag-blue-200: #9ac5d3;
+  --ag-blue-300: #7cb3c6;
+  --ag-blue-400: #6fa8ba;
+  --ag-blue-500: #5a95a8;
+  --ag-blue-600: #4a7a8a;
+  --ag-blue-700: #3a606e;
+  --ag-blue-800: #2a4652;
+  --ag-blue-900: #1a2830;
+}

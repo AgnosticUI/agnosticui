@@ -1,0 +1,63 @@
+/**
+ * Black Cream Skin — Light Mode
+ *
+ * Elegant black and cream color scheme with sophisticated contrast.
+ * Inspired by modern portfolio templates with refined aesthetics.
+ *
+ * Activate by adding class="ag-skin-black-cream" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-black-cream {
+  /* ── Primary color family (rich black) ── */
+  --ag-primary: #1a1a1a;
+  --ag-primary-dark: #0a0a0a;
+  --ag-primary-border: #3a3a3a;
+  --ag-primary-background: #faf8f5;
+  --ag-primary-text: #1a1a1a;
+
+  /* ── Focus ring (black-derived RGB) ── */
+  --ag-focus: 26, 26, 26;
+  --ag-focus-dark: #3a3a3a;
+
+  /* ── Semantic text (warm blacks) ── */
+  --ag-text-primary: #1a1a1a;
+  --ag-text-secondary: #4a4745;
+  --ag-text-muted: #6a6762;
+  --ag-text-primary-muted: #2a2826;
+
+  /* ── Borders (soft warm gray) ── */
+  --ag-border: #e0dcd5;
+  --ag-border-subtle: #ebe8e1;
+
+  /* ── Backgrounds (cream tones) ── */
+  --ag-background-primary: #fffcf7;
+  --ag-background-secondary: #faf8f5;
+  --ag-background-tertiary: #f0ede8;
+
+  /* ── Border radius (refined) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm, subtle) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(26, 26, 26, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(26, 26, 26, 0.06);
+  --ag-shadow-md: 0 2px 8px 0 rgba(26, 26, 26, 0.08);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(26, 26, 26, 0.1);
+  --ag-shadow-xl: 0 8px 24px 0 rgba(26, 26, 26, 0.12);
+
+  /* ── Rating (warm gold) ── */
+  --ag-rating-filled: #d4af37;
+  --ag-rating-filled-primary: #1a1a1a;
+
+  /* ── Warm neutral palette (overrides blue palette) ── */
+  --ag-blue-50: #faf8f5;
+  --ag-blue-100: #f0ede8;
+  --ag-blue-200: #e0dcd5;
+  --ag-blue-300: #ccc6bb;
+  --ag-blue-400: #b3aa9d;
+  --ag-blue-500: #8a8275;
+  --ag-blue-600: #6a6762;
+  --ag-blue-700: #4a4745;
+  --ag-blue-800: #2a2826;
+  --ag-blue-900: #1a1a1a;
+}

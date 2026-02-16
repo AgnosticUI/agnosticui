@@ -49,6 +49,12 @@ const skins = [
   { id: 'terra-soft', label: 'Terra Soft', swatch: '#ff6a3e' },
   { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
   { id: 'retro-brutalist', label: 'Retro Brutalist', swatch: '#ffdb33' },
+  { id: 'monochromatic', label: 'Monochromatic', swatch: '#000000' },
+  { id: 'muted-minimal', label: 'Muted Minimal', swatch: '#4a90a4' },
+  { id: 'autumn-slate', label: 'Autumn Slate', swatch: '#d2691e' },
+  { id: 'mo-neobrut', label: 'Mo-Neobrut', swatch: '#00bcd4' },
+  { id: 'black-cream', label: 'Black Cream', swatch: '#1a1a1a' },
+  { id: 'neons-on-black', label: 'Neons On Black', swatch: '#00ffff' },
 ];
 
 const isMac = typeof navigator !== 'undefined' && /Mac/i.test(navigator.userAgent);

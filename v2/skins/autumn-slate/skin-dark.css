@@ -1,0 +1,62 @@
+/**
+ * Autumn Slate Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Autumn Slate warm/cool aesthetic.
+ *
+ * Activate by adding class="ag-skin-autumn-slate" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-autumn-slate {
+  /* ── Primary color family (brightened burnt orange) ── */
+  --ag-primary: #e89148;
+  --ag-primary-dark: #d2691e;
+  --ag-primary-border: #c86828;
+  --ag-primary-background: #2a1a10;
+  --ag-primary-text: #f0cfb3;
+
+  /* ── Focus ring (brightened orange-derived RGB) ── */
+  --ag-focus: 232, 145, 72;
+  --ag-focus-dark: #f0a860;
+
+  /* ── Semantic text (lighter slate) ── */
+  --ag-text-primary: #d8dfe5;
+  --ag-text-secondary: #b0bec8;
+  --ag-text-muted: #8a9aa8;
+  --ag-text-primary-muted: #c0cbd5;
+
+  /* ── Borders (dark slate) ── */
+  --ag-border: #3a4a52;
+  --ag-border-subtle: #2f3e45;
+
+  /* ── Backgrounds (dark warm neutrals) ── */
+  --ag-background-primary: #1a1612;
+  --ag-background-secondary: #221e18;
+  --ag-background-tertiary: #2a2520;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (warm-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(232, 145, 72, 0.08);
+  --ag-shadow-sm: 0 1px 4px 0 rgba(232, 145, 72, 0.1);
+  --ag-shadow-md: 0 2px 8px 0 rgba(232, 145, 72, 0.12);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(232, 145, 72, 0.14);
+  --ag-shadow-xl: 0 6px 24px 0 rgba(232, 145, 72, 0.16);
+
+  /* ── Rating (amber) ── */
+  --ag-rating-filled: #f4a742;
+  --ag-rating-filled-primary: #e89148;
+
+  /* ── Autumn palette (overrides blue palette) ── */
+  --ag-blue-50: #f8e4d2;
+  --ag-blue-100: #f0cfb3;
+  --ag-blue-200: #e8b896;
+  --ag-blue-300: #e8a870;
+  --ag-blue-400: #e89148;
+  --ag-blue-500: #d2691e;
+  --ag-blue-600: #b8571a;
+  --ag-blue-700: #a0521a;
+  --ag-blue-800: #5a2d0f;
+  --ag-blue-900: #2a1a10;
+}

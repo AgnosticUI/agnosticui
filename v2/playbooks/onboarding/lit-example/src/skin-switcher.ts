@@ -7,6 +7,12 @@ const SKINS = [
   { id: 'terra-soft', label: 'Terra Soft', swatch: '#ff6a3e' },
   { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
   { id: 'retro-brutalist', label: 'Retro Brutalist', swatch: '#ffdb33' },
+  { id: 'monochromatic', label: 'Monochromatic', swatch: '#000000' },
+  { id: 'muted-minimal', label: 'Muted Minimal', swatch: '#4a90a4' },
+  { id: 'autumn-slate', label: 'Autumn Slate', swatch: '#d2691e' },
+  { id: 'mo-neobrut', label: 'Mo-Neobrut', swatch: '#00bcd4' },
+  { id: 'black-cream', label: 'Black Cream', swatch: '#1a1a1a' },
+  { id: 'neons-on-black', label: 'Neons On Black', swatch: '#00ffff' },
 ];
 
 function applySkin(skinId: string) {
@@ -49,7 +55,11 @@ export class SkinSwitcher extends LitElement {
   };
 
   private _onClickOutside = (e: MouseEvent) => {
-    if (this._open && !this.contains(e.target as Node)) {
+    if (!this._open) return;
+    
+    // Check if click is outside the component entirely
+    const path = e.composedPath();
+    if (!path.includes(this)) {
       this._open = false;
     }
   };

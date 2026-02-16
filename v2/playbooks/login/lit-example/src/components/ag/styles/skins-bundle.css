@@ -335,3 +335,819 @@
   --ag-blue-800: #463800;
   --ag-blue-900: #2e2a1a;
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Monochromatic — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Monochromatic Skin — Light Mode
+ *
+ * A clean, sophisticated black/white/gray aesthetic inspired by modern agency sites.
+ * Pure monochrome with subtle gray tones, no color accents.
+ *
+ * Activate by adding class="ag-skin-monochromatic" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-monochromatic {
+  /* ── Primary color family (pure black) ── */
+  --ag-primary: #000000;
+  --ag-primary-dark: #1a1a1a;
+  --ag-primary-border: #e0e0e0;
+  --ag-primary-background: #f8f8f8;
+  --ag-primary-text: #000000;
+
+  /* ── Focus ring (black-derived RGB) ── */
+  --ag-focus: 0, 0, 0;
+  --ag-focus-dark: #333333;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #000000;
+  --ag-text-secondary: #4a4a4a;
+  --ag-text-muted: #6b6b6b;
+  --ag-text-primary-muted: #333333;
+
+  /* ── Borders ── */
+  --ag-border: #e5e5e5;
+  --ag-border-subtle: #f0f0f0;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #fafafa;
+  --ag-background-tertiary: #f5f5f5;
+
+  /* ── Border radius (clean, moderate) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (very subtle) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  --ag-shadow-md: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  --ag-shadow-xl: 0 8px 24px 0 rgba(0, 0, 0, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #000000;
+
+  /* ── Grayscale palette (overrides blue palette) ── */
+  --ag-blue-50: #fafafa;
+  --ag-blue-100: #f5f5f5;
+  --ag-blue-200: #e5e5e5;
+  --ag-blue-300: #d4d4d4;
+  --ag-blue-400: #a3a3a3;
+  --ag-blue-500: #737373;
+  --ag-blue-600: #525252;
+  --ag-blue-700: #404040;
+  --ag-blue-800: #262626;
+  --ag-blue-900: #171717;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Monochromatic — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Monochromatic Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Monochromatic black/white/gray aesthetic.
+ *
+ * Activate by adding class="ag-skin-monochromatic" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-monochromatic {
+  /* ── Primary color family (white for dark backgrounds) ── */
+  --ag-primary: #ffffff;
+  --ag-primary-dark: #e5e5e5;
+  --ag-primary-border: #404040;
+  --ag-primary-background: #1a1a1a;
+  --ag-primary-text: #ffffff;
+
+  /* ── Focus ring (white-derived RGB) ── */
+  --ag-focus: 255, 255, 255;
+  --ag-focus-dark: #e5e5e5;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #ffffff;
+  --ag-text-secondary: #d4d4d4;
+  --ag-text-muted: #a3a3a3;
+  --ag-text-primary-muted: #e5e5e5;
+
+  /* ── Borders ── */
+  --ag-border: #2a2a2a;
+  --ag-border-subtle: #1f1f1f;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #0a0a0a;
+  --ag-background-secondary: #121212;
+  --ag-background-tertiary: #1a1a1a;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (very subtle, white-tinted) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(255, 255, 255, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(255, 255, 255, 0.06);
+  --ag-shadow-md: 0 2px 8px 0 rgba(255, 255, 255, 0.08);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(255, 255, 255, 0.1);
+  --ag-shadow-xl: 0 8px 24px 0 rgba(255, 255, 255, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #ffffff;
+
+  /* ── Grayscale palette (overrides blue palette) ── */
+  --ag-blue-50: #fafafa;
+  --ag-blue-100: #f5f5f5;
+  --ag-blue-200: #e5e5e5;
+  --ag-blue-300: #d4d4d4;
+  --ag-blue-400: #a3a3a3;
+  --ag-blue-500: #737373;
+  --ag-blue-600: #525252;
+  --ag-blue-700: #404040;
+  --ag-blue-800: #262626;
+  --ag-blue-900: #1a1a1a;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Muted Minimal — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Muted Minimal Skin — Light Mode
+ *
+ * A restrained blue-gray aesthetic inspired by HTML5UP's Read Only template.
+ * Soft, professional, with muted colors and understated elegance.
+ *
+ * Activate by adding class="ag-skin-muted-minimal" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-muted-minimal {
+  /* ── Primary color family (muted blue) ── */
+  --ag-primary: #4a90a4;
+  --ag-primary-dark: #3a7a8c;
+  --ag-primary-border: #c5dde5;
+  --ag-primary-background: #edf5f7;
+  --ag-primary-text: #2d5f6f;
+
+  /* ── Focus ring (muted blue-derived RGB) ── */
+  --ag-focus: 74, 144, 164;
+  --ag-focus-dark: #5fa8be;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #3a3a3a;
+  --ag-text-secondary: #5a5a5a;
+  --ag-text-muted: #7a7a7a;
+  --ag-text-primary-muted: #4a4a4a;
+
+  /* ── Borders ── */
+  --ag-border: #d8d8d8;
+  --ag-border-subtle: #e8e8e8;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #fefefe;
+  --ag-background-secondary: #f8f8f8;
+  --ag-background-tertiary: #f0f0f0;
+
+  /* ── Border radius (minimal) ── */
+  --ag-radius-lg: 0.25rem;
+
+  /* ── Shadows (very soft) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(74, 90, 100, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(74, 90, 100, 0.06);
+  --ag-shadow-md: 0 2px 6px 0 rgba(74, 90, 100, 0.08);
+  --ag-shadow-lg: 0 3px 12px 0 rgba(74, 90, 100, 0.1);
+  --ag-shadow-xl: 0 5px 20px 0 rgba(74, 90, 100, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #4a90a4;
+
+  /* ── Muted blue-gray palette (overrides blue palette) ── */
+  --ag-blue-50: #edf5f7;
+  --ag-blue-100: #d5e8ed;
+  --ag-blue-200: #b8d7e0;
+  --ag-blue-300: #9ac5d3;
+  --ag-blue-400: #6fa8ba;
+  --ag-blue-500: #4a90a4;
+  --ag-blue-600: #3a7a8c;
+  --ag-blue-700: #2d5f6f;
+  --ag-blue-800: #204552;
+  --ag-blue-900: #162f38;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Muted Minimal — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Muted Minimal Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Muted Minimal blue-gray aesthetic.
+ *
+ * Activate by adding class="ag-skin-muted-minimal" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-muted-minimal {
+  /* ── Primary color family (brightened muted blue) ── */
+  --ag-primary: #6fa8ba;
+  --ag-primary-dark: #5a95a8;
+  --ag-primary-border: #4a7a8a;
+  --ag-primary-background: #1a2830;
+  --ag-primary-text: #b8d7e0;
+
+  /* ── Focus ring (muted blue-derived RGB, brightened) ── */
+  --ag-focus: 111, 168, 186;
+  --ag-focus-dark: #9ac5d3;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #e5e5e5;
+  --ag-text-secondary: #c0c0c0;
+  --ag-text-muted: #9a9a9a;
+  --ag-text-primary-muted: #d0d0d0;
+
+  /* ── Borders ── */
+  --ag-border: #2a3a42;
+  --ag-border-subtle: #222e35;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #0f1518;
+  --ag-background-secondary: #161f24;
+  --ag-background-tertiary: #1f2b32;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.25rem;
+
+  /* ── Shadows (muted blue-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(111, 168, 186, 0.08);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(111, 168, 186, 0.1);
+  --ag-shadow-md: 0 2px 6px 0 rgba(111, 168, 186, 0.12);
+  --ag-shadow-lg: 0 3px 12px 0 rgba(111, 168, 186, 0.14);
+  --ag-shadow-xl: 0 5px 20px 0 rgba(111, 168, 186, 0.16);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #6fa8ba;
+
+  /* ── Muted blue-gray palette (overrides blue palette) ── */
+  --ag-blue-50: #d5e8ed;
+  --ag-blue-100: #b8d7e0;
+  --ag-blue-200: #9ac5d3;
+  --ag-blue-300: #7cb3c6;
+  --ag-blue-400: #6fa8ba;
+  --ag-blue-500: #5a95a8;
+  --ag-blue-600: #4a7a8a;
+  --ag-blue-700: #3a606e;
+  --ag-blue-800: #2a4652;
+  --ag-blue-900: #1a2830;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Autumn Slate — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Autumn Slate Skin — Light Mode
+ *
+ * Warm autumn tones (burnt orange, amber) with cool slate gray accents.
+ * Inspired by HTML5UP's Dopetrope magazine/blog aesthetic.
+ *
+ * Activate by adding class="ag-skin-autumn-slate" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-autumn-slate {
+  /* ── Primary color family (burnt orange) ── */
+  --ag-primary: #d2691e;
+  --ag-primary-dark: #b8571a;
+  --ag-primary-border: #e8b896;
+  --ag-primary-background: #fdf6f0;
+  --ag-primary-text: #a0521a;
+
+  /* ── Focus ring (burnt orange-derived RGB) ── */
+  --ag-focus: 210, 105, 30;
+  --ag-focus-dark: #e8761e;
+
+  /* ── Semantic text (slate gray) ── */
+  --ag-text-primary: #2f4f4f;
+  --ag-text-secondary: #536878;
+  --ag-text-muted: #708090;
+  --ag-text-primary-muted: #3d5a5f;
+
+  /* ── Borders (warm gray) ── */
+  --ag-border: #d5d0c8;
+  --ag-border-subtle: #e5e0d8;
+
+  /* ── Backgrounds (warm neutrals) ── */
+  --ag-background-primary: #fafaf8;
+  --ag-background-secondary: #f5f3f0;
+  --ag-background-tertiary: #ebe8e3;
+
+  /* ── Border radius (moderate) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (warm-tinted) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(47, 79, 79, 0.06);
+  --ag-shadow-sm: 0 1px 4px 0 rgba(47, 79, 79, 0.08);
+  --ag-shadow-md: 0 2px 8px 0 rgba(47, 79, 79, 0.1);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(47, 79, 79, 0.12);
+  --ag-shadow-xl: 0 6px 24px 0 rgba(47, 79, 79, 0.14);
+
+  /* ── Rating (amber) ── */
+  --ag-rating-filled: #f4a742;
+  --ag-rating-filled-primary: #d2691e;
+
+  /* ── Autumn palette (overrides blue palette) ── */
+  --ag-blue-50: #fdf6f0;
+  --ag-blue-100: #f8e4d2;
+  --ag-blue-200: #f0cfb3;
+  --ag-blue-300: #e8b896;
+  --ag-blue-400: #e89148;
+  --ag-blue-500: #d2691e;
+  --ag-blue-600: #b8571a;
+  --ag-blue-700: #a0521a;
+  --ag-blue-800: #7a3d14;
+  --ag-blue-900: #5a2d0f;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Autumn Slate — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Autumn Slate Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Autumn Slate warm/cool aesthetic.
+ *
+ * Activate by adding class="ag-skin-autumn-slate" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-autumn-slate {
+  /* ── Primary color family (brightened burnt orange) ── */
+  --ag-primary: #e89148;
+  --ag-primary-dark: #d2691e;
+  --ag-primary-border: #c86828;
+  --ag-primary-background: #2a1a10;
+  --ag-primary-text: #f0cfb3;
+
+  /* ── Focus ring (brightened orange-derived RGB) ── */
+  --ag-focus: 232, 145, 72;
+  --ag-focus-dark: #f0a860;
+
+  /* ── Semantic text (lighter slate) ── */
+  --ag-text-primary: #d8dfe5;
+  --ag-text-secondary: #b0bec8;
+  --ag-text-muted: #8a9aa8;
+  --ag-text-primary-muted: #c0cbd5;
+
+  /* ── Borders (dark slate) ── */
+  --ag-border: #3a4a52;
+  --ag-border-subtle: #2f3e45;
+
+  /* ── Backgrounds (dark warm neutrals) ── */
+  --ag-background-primary: #1a1612;
+  --ag-background-secondary: #221e18;
+  --ag-background-tertiary: #2a2520;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (warm-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(232, 145, 72, 0.08);
+  --ag-shadow-sm: 0 1px 4px 0 rgba(232, 145, 72, 0.1);
+  --ag-shadow-md: 0 2px 8px 0 rgba(232, 145, 72, 0.12);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(232, 145, 72, 0.14);
+  --ag-shadow-xl: 0 6px 24px 0 rgba(232, 145, 72, 0.16);
+
+  /* ── Rating (amber) ── */
+  --ag-rating-filled: #f4a742;
+  --ag-rating-filled-primary: #e89148;
+
+  /* ── Autumn palette (overrides blue palette) ── */
+  --ag-blue-50: #f8e4d2;
+  --ag-blue-100: #f0cfb3;
+  --ag-blue-200: #e8b896;
+  --ag-blue-300: #e8a870;
+  --ag-blue-400: #e89148;
+  --ag-blue-500: #d2691e;
+  --ag-blue-600: #b8571a;
+  --ag-blue-700: #a0521a;
+  --ag-blue-800: #5a2d0f;
+  --ag-blue-900: #2a1a10;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Mo-Neobrut — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Mo-Neobrut Skin — Light Mode
+ *
+ * Modern neo-brutalist aesthetic with vibrant accent colors, bold borders,
+ * and high-contrast design. Inspired by contemporary portfolio sites.
+ *
+ * Activate by adding class="ag-skin-mo-neobrut" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-mo-neobrut {
+  /* ── Primary color family (vibrant cyan/blue) ── */
+  --ag-primary: #00bcd4;
+  --ag-primary-dark: #0097a7;
+  --ag-primary-border: #000000;
+  --ag-primary-background: #e0f7fa;
+  --ag-primary-text: #006064;
+
+  /* ── Focus ring (cyan-derived RGB) ── */
+  --ag-focus: 0, 188, 212;
+  --ag-focus-dark: #00acc1;
+
+  /* ── Semantic text (high contrast) ── */
+  --ag-text-primary: #000000;
+  --ag-text-secondary: #212121;
+  --ag-text-muted: #424242;
+  --ag-text-primary-muted: #1a1a1a;
+
+  /* ── Borders (bold black) ── */
+  --ag-border: #000000;
+  --ag-border-subtle: #2a2a2a;
+  --ag-border-width-1: 2px;
+
+  /* ── Backgrounds (bright white/off-white) ── */
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #f9f9f9;
+  --ag-background-tertiary: #eeeeee;
+
+  /* ── Border radius (sharp, minimal) ── */
+  --ag-radius-sm: 0.125rem;
+  --ag-radius-md: 0.25rem;
+  --ag-radius-lg: 0.375rem;
+
+  /* ── Shadows (hard, flat) ── */
+  --ag-shadow-xs: 2px 2px 0 0 #000000;
+  --ag-shadow-sm: 3px 3px 0 0 #000000;
+  --ag-shadow-md: 4px 4px 0 0 #000000;
+  --ag-shadow-lg: 6px 6px 0 0 #000000;
+  --ag-shadow-xl: 8px 8px 0 0 #000000;
+  --ag-shadow-2xl: 12px 12px 0 0 #000000;
+
+  /* ── Rating (vibrant yellow) ── */
+  --ag-rating-filled: #ffc107;
+  --ag-rating-filled-primary: #00bcd4;
+
+  /* ── Vibrant cyan palette (overrides blue palette) ── */
+  --ag-blue-50: #e0f7fa;
+  --ag-blue-100: #b2ebf2;
+  --ag-blue-200: #80deea;
+  --ag-blue-300: #4dd0e1;
+  --ag-blue-400: #26c6da;
+  --ag-blue-500: #00bcd4;
+  --ag-blue-600: #00acc1;
+  --ag-blue-700: #0097a7;
+  --ag-blue-800: #00838f;
+  --ag-blue-900: #006064;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Mo-Neobrut — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Mo-Neobrut Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Mo-Neobrut neo-brutalist aesthetic.
+ *
+ * Activate by adding class="ag-skin-mo-neobrut" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-mo-neobrut {
+  /* ── Primary color family (brightened cyan) ── */
+  --ag-primary: #26c6da;
+  --ag-primary-dark: #00bcd4;
+  --ag-primary-border: #4dd0e1;
+  --ag-primary-background: #004d56;
+  --ag-primary-text: #b2ebf2;
+
+  /* ── Focus ring (brightened cyan-derived RGB) ── */
+  --ag-focus: 38, 198, 218;
+  --ag-focus-dark: #4dd0e1;
+
+  /* ── Semantic text (high contrast on dark) ── */
+  --ag-text-primary: #ffffff;
+  --ag-text-secondary: #e0e0e0;
+  --ag-text-muted: #bdbdbd;
+  --ag-text-primary-muted: #f5f5f5;
+
+  /* ── Borders (bright for visibility) ── */
+  --ag-border: #4a4a4a;
+  --ag-border-subtle: #3a3a3a;
+  --ag-border-width-1: 2px;
+
+  /* ── Backgrounds (dark) ── */
+  --ag-background-primary: #121212;
+  --ag-background-secondary: #1e1e1e;
+  --ag-background-tertiary: #2a2a2a;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-sm: 0.125rem;
+  --ag-radius-md: 0.25rem;
+  --ag-radius-lg: 0.375rem;
+
+  /* ── Shadows (hard, flat, visible on dark) ── */
+  --ag-shadow-xs: 2px 2px 0 0 #4a4a4a;
+  --ag-shadow-sm: 3px 3px 0 0 #4a4a4a;
+  --ag-shadow-md: 4px 4px 0 0 #4a4a4a;
+  --ag-shadow-lg: 6px 6px 0 0 #4a4a4a;
+  --ag-shadow-xl: 8px 8px 0 0 #4a4a4a;
+  --ag-shadow-2xl: 12px 12px 0 0 #4a4a4a;
+
+  /* ── Rating (vibrant yellow) ── */
+  --ag-rating-filled: #ffc107;
+  --ag-rating-filled-primary: #26c6da;
+
+  /* ── Vibrant cyan palette (overrides blue palette) ── */
+  --ag-blue-50: #b2ebf2;
+  --ag-blue-100: #80deea;
+  --ag-blue-200: #4dd0e1;
+  --ag-blue-300: #26c6da;
+  --ag-blue-400: #00bcd4;
+  --ag-blue-500: #00acc1;
+  --ag-blue-600: #0097a7;
+  --ag-blue-700: #00838f;
+  --ag-blue-800: #006064;
+  --ag-blue-900: #004d56;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Black Cream — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Black Cream Skin — Light Mode
+ *
+ * Elegant black and cream color scheme with sophisticated contrast.
+ * Inspired by modern portfolio templates with refined aesthetics.
+ *
+ * Activate by adding class="ag-skin-black-cream" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-black-cream {
+  /* ── Primary color family (rich black) ── */
+  --ag-primary: #1a1a1a;
+  --ag-primary-dark: #0a0a0a;
+  --ag-primary-border: #3a3a3a;
+  --ag-primary-background: #faf8f5;
+  --ag-primary-text: #1a1a1a;
+
+  /* ── Focus ring (black-derived RGB) ── */
+  --ag-focus: 26, 26, 26;
+  --ag-focus-dark: #3a3a3a;
+
+  /* ── Semantic text (warm blacks) ── */
+  --ag-text-primary: #1a1a1a;
+  --ag-text-secondary: #4a4745;
+  --ag-text-muted: #6a6762;
+  --ag-text-primary-muted: #2a2826;
+
+  /* ── Borders (soft warm gray) ── */
+  --ag-border: #e0dcd5;
+  --ag-border-subtle: #ebe8e1;
+
+  /* ── Backgrounds (cream tones) ── */
+  --ag-background-primary: #fffcf7;
+  --ag-background-secondary: #faf8f5;
+  --ag-background-tertiary: #f0ede8;
+
+  /* ── Border radius (refined) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm, subtle) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(26, 26, 26, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(26, 26, 26, 0.06);
+  --ag-shadow-md: 0 2px 8px 0 rgba(26, 26, 26, 0.08);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(26, 26, 26, 0.1);
+  --ag-shadow-xl: 0 8px 24px 0 rgba(26, 26, 26, 0.12);
+
+  /* ── Rating (warm gold) ── */
+  --ag-rating-filled: #d4af37;
+  --ag-rating-filled-primary: #1a1a1a;
+
+  /* ── Warm neutral palette (overrides blue palette) ── */
+  --ag-blue-50: #faf8f5;
+  --ag-blue-100: #f0ede8;
+  --ag-blue-200: #e0dcd5;
+  --ag-blue-300: #ccc6bb;
+  --ag-blue-400: #b3aa9d;
+  --ag-blue-500: #8a8275;
+  --ag-blue-600: #6a6762;
+  --ag-blue-700: #4a4745;
+  --ag-blue-800: #2a2826;
+  --ag-blue-900: #1a1a1a;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Black Cream — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Black Cream Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Black Cream sophisticated aesthetic.
+ *
+ * Activate by adding class="ag-skin-black-cream" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-black-cream {
+  /* ── Primary color family (warm cream) ── */
+  --ag-primary: #f0ede8;
+  --ag-primary-dark: #e0dcd5;
+  --ag-primary-border: #4a4745;
+  --ag-primary-background: #1a1816;
+  --ag-primary-text: #faf8f5;
+
+  /* ── Focus ring (cream-derived RGB) ── */
+  --ag-focus: 240, 237, 232;
+  --ag-focus-dark: #fffcf7;
+
+  /* ── Semantic text (warm lights) ── */
+  --ag-text-primary: #faf8f5;
+  --ag-text-secondary: #e0dcd5;
+  --ag-text-muted: #b3aa9d;
+  --ag-text-primary-muted: #ebe8e1;
+
+  /* ── Borders (dark warm) ── */
+  --ag-border: #3a3836;
+  --ag-border-subtle: #2a2826;
+
+  /* ── Backgrounds (dark warm neutrals) ── */
+  --ag-background-primary: #0a0a08;
+  --ag-background-secondary: #151412;
+  --ag-background-tertiary: #1f1e1c;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(240, 237, 232, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(240, 237, 232, 0.06);
+  --ag-shadow-md: 0 2px 8px 0 rgba(240, 237, 232, 0.08);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(240, 237, 232, 0.1);
+  --ag-shadow-xl: 0 8px 24px 0 rgba(240, 237, 232, 0.12);
+
+  /* ── Rating (warm gold) ── */
+  --ag-rating-filled: #d4af37;
+  --ag-rating-filled-primary: #f0ede8;
+
+  /* ── Warm neutral palette (overrides blue palette) ── */
+  --ag-blue-50: #faf8f5;
+  --ag-blue-100: #f0ede8;
+  --ag-blue-200: #e0dcd5;
+  --ag-blue-300: #ccc6bb;
+  --ag-blue-400: #b3aa9d;
+  --ag-blue-500: #8a8275;
+  --ag-blue-600: #6a6762;
+  --ag-blue-700: #4a4745;
+  --ag-blue-800: #2a2826;
+  --ag-blue-900: #1a1816;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Neons On Black — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Neons On Black Skin — Light Mode
+ *
+ * Vibrant neon colors on dark backgrounds inspired by cyberpunk aesthetics.
+ * Note: "Light mode" here is actually dark to maintain the neon-on-black aesthetic.
+ *
+ * Activate by adding class="ag-skin-neons-on-black" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-neons-on-black {
+  /* ── Primary color family (neon cyan) ── */
+  --ag-primary: #00ffff;
+  --ag-primary-dark: #00e5e5;
+  --ag-primary-border: #00cccc;
+  --ag-primary-background: #001a1a;
+  --ag-primary-text: #00ffff;
+
+  /* ── Focus ring (neon cyan-derived RGB) ── */
+  --ag-focus: 0, 255, 255;
+  --ag-focus-dark: #66ffff;
+
+  /* ── Semantic text (bright on dark) ── */
+  --ag-text-primary: #ffffff;
+  --ag-text-secondary: #e0e0e0;
+  --ag-text-muted: #a0a0a0;
+  --ag-text-primary-muted: #f0f0f0;
+
+  /* ── Borders (subtle neon glow) ── */
+  --ag-border: #1a1a2e;
+  --ag-border-subtle: #0f0f1e;
+
+  /* ── Backgrounds (deep black/near-black) ── */
+  --ag-background-primary: #000000;
+  --ag-background-secondary: #0a0a0a;
+  --ag-background-tertiary: #141414;
+
+  /* ── Border radius (sharp, modern) ── */
+  --ag-radius-lg: 0.25rem;
+
+  /* ── Shadows (neon glow effects) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(0, 255, 255, 0.3);
+  --ag-shadow-sm: 0 0 8px 0 rgba(0, 255, 255, 0.4);
+  --ag-shadow-md: 0 0 12px 0 rgba(0, 255, 255, 0.5);
+  --ag-shadow-lg: 0 0 20px 0 rgba(0, 255, 255, 0.6);
+  --ag-shadow-xl: 0 0 30px 0 rgba(0, 255, 255, 0.7);
+
+  /* ── Rating (neon magenta) ── */
+  --ag-rating-filled: #ff00ff;
+  --ag-rating-filled-primary: #00ffff;
+
+  /* ── Neon color palette (overrides blue palette) ── */
+  --ag-blue-50: #e6ffff;
+  --ag-blue-100: #ccffff;
+  --ag-blue-200: #99ffff;
+  --ag-blue-300: #66ffff;
+  --ag-blue-400: #33ffff;
+  --ag-blue-500: #00ffff;
+  --ag-blue-600: #00e5e5;
+  --ag-blue-700: #00cccc;
+  --ag-blue-800: #009999;
+  --ag-blue-900: #006666;
+
+  /* ── Accent colors (additional neons) ── */
+  --ag-success: #00ff00;
+  --ag-warning: #ffff00;
+  --ag-danger: #ff00ff;
+  --ag-info: #ff00cc;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Neons On Black — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Neons On Black Skin — Dark Mode
+ *
+ * Intensified neon effects for dark mode preference.
+ *
+ * Activate by adding class="ag-skin-neons-on-black" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-neons-on-black {
+  /* ── Primary color family (brighter neon cyan) ── */
+  --ag-primary: #33ffff;
+  --ag-primary-dark: #00ffff;
+  --ag-primary-border: #00e5e5;
+  --ag-primary-background: #002020;
+  --ag-primary-text: #ccffff;
+
+  /* ── Focus ring (brightened neon cyan-derived RGB) ── */
+  --ag-focus: 51, 255, 255;
+  --ag-focus-dark: #99ffff;
+
+  /* ── Semantic text (ultra bright on deep black) ── */
+  --ag-text-primary: #ffffff;
+  --ag-text-secondary: #f0f0f0;
+  --ag-text-muted: #b0b0b0;
+  --ag-text-primary-muted: #fafafa;
+
+  /* ── Borders (visible neon glow) ── */
+  --ag-border: #1a2a3a;
+  --ag-border-subtle: #0f1a2a;
+
+  /* ── Backgrounds (pure black) ── */
+  --ag-background-primary: #000000;
+  --ag-background-secondary: #050505;
+  --ag-background-tertiary: #0f0f0f;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.25rem;
+
+  /* ── Shadows (intensified neon glow) ── */
+  --ag-shadow-xs: 0 0 6px 0 rgba(51, 255, 255, 0.4);
+  --ag-shadow-sm: 0 0 12px 0 rgba(51, 255, 255, 0.5);
+  --ag-shadow-md: 0 0 18px 0 rgba(51, 255, 255, 0.6);
+  --ag-shadow-lg: 0 0 28px 0 rgba(51, 255, 255, 0.7);
+  --ag-shadow-xl: 0 0 40px 0 rgba(51, 255, 255, 0.8);
+
+  /* ── Rating (neon magenta) ── */
+  --ag-rating-filled: #ff33ff;
+  --ag-rating-filled-primary: #33ffff;
+
+  /* ── Neon color palette (overrides blue palette) ── */
+  --ag-blue-50: #e6ffff;
+  --ag-blue-100: #ccffff;
+  --ag-blue-200: #99ffff;
+  --ag-blue-300: #66ffff;
+  --ag-blue-400: #33ffff;
+  --ag-blue-500: #00ffff;
+  --ag-blue-600: #00e5e5;
+  --ag-blue-700: #00cccc;
+  --ag-blue-800: #009999;
+  --ag-blue-900: #006666;
+
+  /* ── Accent colors (brighter neons) ── */
+  --ag-success: #33ff33;
+  --ag-warning: #ffff33;
+  --ag-danger: #ff33ff;
+  --ag-info: #ff33cc;
+}

@@ -1,0 +1,62 @@
+/**
+ * Muted Minimal Skin — Light Mode
+ *
+ * A restrained blue-gray aesthetic inspired by HTML5UP's Read Only template.
+ * Soft, professional, with muted colors and understated elegance.
+ *
+ * Activate by adding class="ag-skin-muted-minimal" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-muted-minimal {
+  /* ── Primary color family (muted blue) ── */
+  --ag-primary: #4a90a4;
+  --ag-primary-dark: #3a7a8c;
+  --ag-primary-border: #c5dde5;
+  --ag-primary-background: #edf5f7;
+  --ag-primary-text: #2d5f6f;
+
+  /* ── Focus ring (muted blue-derived RGB) ── */
+  --ag-focus: 74, 144, 164;
+  --ag-focus-dark: #5fa8be;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #3a3a3a;
+  --ag-text-secondary: #5a5a5a;
+  --ag-text-muted: #7a7a7a;
+  --ag-text-primary-muted: #4a4a4a;
+
+  /* ── Borders ── */
+  --ag-border: #d8d8d8;
+  --ag-border-subtle: #e8e8e8;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #fefefe;
+  --ag-background-secondary: #f8f8f8;
+  --ag-background-tertiary: #f0f0f0;
+
+  /* ── Border radius (minimal) ── */
+  --ag-radius-lg: 0.25rem;
+
+  /* ── Shadows (very soft) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(74, 90, 100, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(74, 90, 100, 0.06);
+  --ag-shadow-md: 0 2px 6px 0 rgba(74, 90, 100, 0.08);
+  --ag-shadow-lg: 0 3px 12px 0 rgba(74, 90, 100, 0.1);
+  --ag-shadow-xl: 0 5px 20px 0 rgba(74, 90, 100, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #4a90a4;
+
+  /* ── Muted blue-gray palette (overrides blue palette) ── */
+  --ag-blue-50: #edf5f7;
+  --ag-blue-100: #d5e8ed;
+  --ag-blue-200: #b8d7e0;
+  --ag-blue-300: #9ac5d3;
+  --ag-blue-400: #6fa8ba;
+  --ag-blue-500: #4a90a4;
+  --ag-blue-600: #3a7a8c;
+  --ag-blue-700: #2d5f6f;
+  --ag-blue-800: #204552;
+  --ag-blue-900: #162f38;
+}

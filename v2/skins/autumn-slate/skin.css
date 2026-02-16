@@ -1,0 +1,63 @@
+/**
+ * Autumn Slate Skin — Light Mode
+ *
+ * Warm autumn tones (burnt orange, amber) with cool slate gray accents.
+ * Inspired by HTML5UP's Dopetrope magazine/blog aesthetic.
+ *
+ * Activate by adding class="ag-skin-autumn-slate" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-autumn-slate {
+  /* ── Primary color family (burnt orange) ── */
+  --ag-primary: #d2691e;
+  --ag-primary-dark: #b8571a;
+  --ag-primary-border: #e8b896;
+  --ag-primary-background: #fdf6f0;
+  --ag-primary-text: #a0521a;
+
+  /* ── Focus ring (burnt orange-derived RGB) ── */
+  --ag-focus: 210, 105, 30;
+  --ag-focus-dark: #e8761e;
+
+  /* ── Semantic text (slate gray) ── */
+  --ag-text-primary: #2f4f4f;
+  --ag-text-secondary: #536878;
+  --ag-text-muted: #708090;
+  --ag-text-primary-muted: #3d5a5f;
+
+  /* ── Borders (warm gray) ── */
+  --ag-border: #d5d0c8;
+  --ag-border-subtle: #e5e0d8;
+
+  /* ── Backgrounds (warm neutrals) ── */
+  --ag-background-primary: #fafaf8;
+  --ag-background-secondary: #f5f3f0;
+  --ag-background-tertiary: #ebe8e3;
+
+  /* ── Border radius (moderate) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (warm-tinted) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(47, 79, 79, 0.06);
+  --ag-shadow-sm: 0 1px 4px 0 rgba(47, 79, 79, 0.08);
+  --ag-shadow-md: 0 2px 8px 0 rgba(47, 79, 79, 0.1);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(47, 79, 79, 0.12);
+  --ag-shadow-xl: 0 6px 24px 0 rgba(47, 79, 79, 0.14);
+
+  /* ── Rating (amber) ── */
+  --ag-rating-filled: #f4a742;
+  --ag-rating-filled-primary: #d2691e;
+
+  /* ── Autumn palette (overrides blue palette) ── */
+  --ag-blue-50: #fdf6f0;
+  --ag-blue-100: #f8e4d2;
+  --ag-blue-200: #f0cfb3;
+  --ag-blue-300: #e8b896;
+  --ag-blue-400: #e89148;
+  --ag-blue-500: #d2691e;
+  --ag-blue-600: #b8571a;
+  --ag-blue-700: #a0521a;
+  --ag-blue-800: #7a3d14;
+  --ag-blue-900: #5a2d0f;
+}

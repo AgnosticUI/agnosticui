@@ -1,0 +1,69 @@
+/**
+ * Neons On Black Skin — Light Mode
+ *
+ * Vibrant neon colors on dark backgrounds inspired by cyberpunk aesthetics.
+ * Note: "Light mode" here is actually dark to maintain the neon-on-black aesthetic.
+ *
+ * Activate by adding class="ag-skin-neons-on-black" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-neons-on-black {
+  /* ── Primary color family (neon cyan) ── */
+  --ag-primary: #00ffff;
+  --ag-primary-dark: #00e5e5;
+  --ag-primary-border: #00cccc;
+  --ag-primary-background: #001a1a;
+  --ag-primary-text: #00ffff;
+
+  /* ── Focus ring (neon cyan-derived RGB) ── */
+  --ag-focus: 0, 255, 255;
+  --ag-focus-dark: #66ffff;
+
+  /* ── Semantic text (bright on dark) ── */
+  --ag-text-primary: #ffffff;
+  --ag-text-secondary: #e0e0e0;
+  --ag-text-muted: #a0a0a0;
+  --ag-text-primary-muted: #f0f0f0;
+
+  /* ── Borders (subtle neon glow) ── */
+  --ag-border: #1a1a2e;
+  --ag-border-subtle: #0f0f1e;
+
+  /* ── Backgrounds (deep black/near-black) ── */
+  --ag-background-primary: #000000;
+  --ag-background-secondary: #0a0a0a;
+  --ag-background-tertiary: #141414;
+
+  /* ── Border radius (sharp, modern) ── */
+  --ag-radius-lg: 0.25rem;
+
+  /* ── Shadows (neon glow effects) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(0, 255, 255, 0.3);
+  --ag-shadow-sm: 0 0 8px 0 rgba(0, 255, 255, 0.4);
+  --ag-shadow-md: 0 0 12px 0 rgba(0, 255, 255, 0.5);
+  --ag-shadow-lg: 0 0 20px 0 rgba(0, 255, 255, 0.6);
+  --ag-shadow-xl: 0 0 30px 0 rgba(0, 255, 255, 0.7);
+
+  /* ── Rating (neon magenta) ── */
+  --ag-rating-filled: #ff00ff;
+  --ag-rating-filled-primary: #00ffff;
+
+  /* ── Neon color palette (overrides blue palette) ── */
+  --ag-blue-50: #e6ffff;
+  --ag-blue-100: #ccffff;
+  --ag-blue-200: #99ffff;
+  --ag-blue-300: #66ffff;
+  --ag-blue-400: #33ffff;
+  --ag-blue-500: #00ffff;
+  --ag-blue-600: #00e5e5;
+  --ag-blue-700: #00cccc;
+  --ag-blue-800: #009999;
+  --ag-blue-900: #006666;
+
+  /* ── Accent colors (additional neons) ── */
+  --ag-success: #00ff00;
+  --ag-warning: #ffff00;
+  --ag-danger: #ff00ff;
+  --ag-info: #ff00cc;
+}

@@ -1,0 +1,68 @@
+/**
+ * Neons On Black Skin — Dark Mode
+ *
+ * Intensified neon effects for dark mode preference.
+ *
+ * Activate by adding class="ag-skin-neons-on-black" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-neons-on-black {
+  /* ── Primary color family (brighter neon cyan) ── */
+  --ag-primary: #33ffff;
+  --ag-primary-dark: #00ffff;
+  --ag-primary-border: #00e5e5;
+  --ag-primary-background: #002020;
+  --ag-primary-text: #ccffff;
+
+  /* ── Focus ring (brightened neon cyan-derived RGB) ── */
+  --ag-focus: 51, 255, 255;
+  --ag-focus-dark: #99ffff;
+
+  /* ── Semantic text (ultra bright on deep black) ── */
+  --ag-text-primary: #ffffff;
+  --ag-text-secondary: #f0f0f0;
+  --ag-text-muted: #b0b0b0;
+  --ag-text-primary-muted: #fafafa;
+
+  /* ── Borders (visible neon glow) ── */
+  --ag-border: #1a2a3a;
+  --ag-border-subtle: #0f1a2a;
+
+  /* ── Backgrounds (pure black) ── */
+  --ag-background-primary: #000000;
+  --ag-background-secondary: #050505;
+  --ag-background-tertiary: #0f0f0f;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.25rem;
+
+  /* ── Shadows (intensified neon glow) ── */
+  --ag-shadow-xs: 0 0 6px 0 rgba(51, 255, 255, 0.4);
+  --ag-shadow-sm: 0 0 12px 0 rgba(51, 255, 255, 0.5);
+  --ag-shadow-md: 0 0 18px 0 rgba(51, 255, 255, 0.6);
+  --ag-shadow-lg: 0 0 28px 0 rgba(51, 255, 255, 0.7);
+  --ag-shadow-xl: 0 0 40px 0 rgba(51, 255, 255, 0.8);
+
+  /* ── Rating (neon magenta) ── */
+  --ag-rating-filled: #ff33ff;
+  --ag-rating-filled-primary: #33ffff;
+
+  /* ── Neon color palette (overrides blue palette) ── */
+  --ag-blue-50: #e6ffff;
+  --ag-blue-100: #ccffff;
+  --ag-blue-200: #99ffff;
+  --ag-blue-300: #66ffff;
+  --ag-blue-400: #33ffff;
+  --ag-blue-500: #00ffff;
+  --ag-blue-600: #00e5e5;
+  --ag-blue-700: #00cccc;
+  --ag-blue-800: #009999;
+  --ag-blue-900: #006666;
+
+  /* ── Accent colors (brighter neons) ── */
+  --ag-success: #33ff33;
+  --ag-warning: #ffff33;
+  --ag-danger: #ff33ff;
+  --ag-info: #ff33cc;
+}
