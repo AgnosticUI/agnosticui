@@ -53,6 +53,22 @@
   "warning-text": { "value": "{yellow.600.value}" },
   "danger-background": { "value": "{red.50.value}" },
   "danger-text": { "value": "{red.600.value}" },
+  "primary-fg": {
+    "value": "{white.value}",
+    "description": "Foreground text color for primary variant buttons"
+  },
+  "success-fg": {
+    "value": "{white.value}",
+    "description": "Foreground text color for success variant buttons"
+  },
+  "warning-fg": {
+    "value": "{neutral.900.value}",
+    "description": "Foreground text color for warning variant buttons"
+  },
+  "danger-fg": {
+    "value": "{white.value}",
+    "description": "Foreground text color for danger variant buttons"
+  },
   "border": {
     "value": "{neutral.200.value}",
     "description": "Primary border for structural dividers and prominent elements"
