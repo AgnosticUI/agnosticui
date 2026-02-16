@@ -1,0 +1,62 @@
+/**
+ * Claymorphic Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Claymorphic terracotta/cream aesthetic.
+ * Inspired by Claude's aesthetic.
+ *
+ * Activate by adding class="ag-skin-claymorphic" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-claymorphic {
+  /* ── Primary color family (brightened for dark backgrounds) ── */
+  --ag-primary: #d97757;
+  --ag-primary-dark: #c96442;
+  --ag-primary-border: #d97757;
+  --ag-primary-background: #3a2218;
+  --ag-primary-text: #f5d5c7;
+
+  /* ── Focus ring (terracotta-derived RGB, brightened) ── */
+  --ag-focus: 217, 119, 87;
+  --ag-focus-dark: #e8b8a3;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #c3c0b6;
+  --ag-text-secondary: #a09d94;
+  --ag-text-muted: #83827d;
+  --ag-text-primary-muted: #a09d94;
+
+  /* ── Borders ── */
+  --ag-border: #3d3b36;
+  --ag-border-subtle: #524f48;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #262624;
+  --ag-background-secondary: #2e2c2a;
+  --ag-background-tertiary: #3a3836;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+  --ag-shadow-md: 0 2px 8px -1px rgba(0, 0, 0, 0.3);
+  --ag-shadow-lg: 0 4px 16px -2px rgba(0, 0, 0, 0.3);
+  --ag-shadow-xl: 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #d97757;
+
+  /* ── Terracotta palette (overrides blue palette for primary usage) ── */
+  --ag-blue-50: #f5d5c7;
+  --ag-blue-100: #e8b8a3;
+  --ag-blue-200: #db9a7e;
+  --ag-blue-300: #d97757;
+  --ag-blue-400: #c96442;
+  --ag-blue-500: #b05730;
+  --ag-blue-600: #8e4526;
+  --ag-blue-700: #6c341c;
+  --ag-blue-800: #4a2312;
+  --ag-blue-900: #3a2218;
+}

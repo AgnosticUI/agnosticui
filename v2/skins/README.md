@@ -13,6 +13,9 @@ v2/skins/
 ├── terra-soft/
 │   ├── skin.css           ← light-mode overrides
 │   └── skin-dark.css      ← dark-mode overrides
+├── claymorphic/
+│   ├── skin.css           ← light-mode overrides
+│   └── skin-dark.css      ← dark-mode overrides
 ```
 
 Each skin lives in its own folder with up to two files: one for light mode, one for dark mode.

@@ -1,0 +1,62 @@
+/**
+ * Claymorphic Skin — Light Mode
+ *
+ * A warm, earthy palette with terracotta primary on cream neutrals.
+ * Inspired by Claude's aesthetic.
+ *
+ * Activate by adding class="ag-skin-claymorphic" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-claymorphic {
+  /* ── Primary color family ── */
+  --ag-primary: #c96442;
+  --ag-primary-dark: #b05730;
+  --ag-primary-border: #e8c4b5;
+  --ag-primary-background: #fdf0eb;
+  --ag-primary-text: #b05730;
+
+  /* ── Focus ring (terracotta-derived RGB) ── */
+  --ag-focus: 201, 100, 66;
+  --ag-focus-dark: #b05730;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #3d3929;
+  --ag-text-secondary: #535146;
+  --ag-text-muted: #83827d;
+  --ag-text-primary-muted: #535146;
+
+  /* ── Borders ── */
+  --ag-border: #dad9d4;
+  --ag-border-subtle: #ede9de;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #faf9f5;
+  --ag-background-secondary: #f5f4ee;
+  --ag-background-tertiary: #ede9de;
+
+  /* ── Border radius (clean, moderate) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (soft, warm clay-like) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(61, 57, 41, 0.05);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(61, 57, 41, 0.08);
+  --ag-shadow-md: 0 2px 8px -1px rgba(61, 57, 41, 0.1);
+  --ag-shadow-lg: 0 4px 16px -2px rgba(61, 57, 41, 0.1);
+  --ag-shadow-xl: 0 8px 24px -4px rgba(61, 57, 41, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #c96442;
+
+  /* ── Terracotta palette (overrides blue palette for primary usage) ── */
+  --ag-blue-50: #fdf0eb;
+  --ag-blue-100: #f5d5c7;
+  --ag-blue-200: #e8b8a3;
+  --ag-blue-300: #db9a7e;
+  --ag-blue-400: #d97757;
+  --ag-blue-500: #c96442;
+  --ag-blue-600: #b05730;
+  --ag-blue-700: #8e4526;
+  --ag-blue-800: #6c341c;
+  --ag-blue-900: #4a2312;
+}
