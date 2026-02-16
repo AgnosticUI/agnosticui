@@ -11,6 +11,7 @@
 :where(html).ag-skin-muted-minimal {
   /* ── Primary color family (muted blue) ── */
   --ag-primary: #4a90a4;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #3a7a8c;
   --ag-primary-border: #c5dde5;
   --ag-primary-background: #edf5f7;

@@ -10,6 +10,7 @@
 [data-theme="dark"].ag-skin-autumn-slate {
   /* ── Primary color family (brightened burnt orange) ── */
   --ag-primary: #e89148;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #d2691e;
   --ag-primary-border: #c86828;
   --ag-primary-background: #2a1a10;

@@ -11,6 +11,7 @@
 :where(html).ag-skin-mo-neobrut {
   /* ── Primary color family (vibrant cyan/blue) ── */
   --ag-primary: #00bcd4;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #0097a7;
   --ag-primary-border: #000000;
   --ag-primary-background: #e0f7fa;

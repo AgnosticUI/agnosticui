@@ -10,6 +10,7 @@
 [data-theme="dark"].ag-skin-neons-on-black {
   /* ── Primary color family (brighter neon cyan) ── */
   --ag-primary: #33ffff;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #00ffff;
   --ag-primary-border: #00e5e5;
   --ag-primary-background: #002020;
@@ -62,7 +63,9 @@
 
   /* ── Accent colors (brighter neons) ── */
   --ag-success: #33ff33;
+  --ag-success-fg: #000000;
   --ag-warning: #ffff33;
   --ag-danger: #ff33ff;
+  --ag-danger-fg: #000000;
   --ag-info: #ff33cc;
 }

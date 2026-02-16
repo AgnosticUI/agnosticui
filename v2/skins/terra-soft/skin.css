@@ -10,6 +10,7 @@
 :where(html).ag-skin-terra-soft {
   /* ── Primary color family ── */
   --ag-primary: #ff6a3e;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #e55530;
   --ag-primary-border: #ffd4c4;
   --ag-primary-background: #fff4f0;

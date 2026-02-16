@@ -11,6 +11,7 @@
 [data-theme="dark"].ag-skin-coffee-espresso {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #c4a07c;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #a07850;
   --ag-primary-border: #6f4e37;
   --ag-primary-background: #221610;
