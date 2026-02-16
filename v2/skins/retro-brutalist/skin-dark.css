@@ -1,0 +1,72 @@
+/**
+ * Retro Brutalist Skin — Dark Mode
+ *
+ * Dark-mode overrides for the neo-brutalist hard-shadow aesthetic.
+ * Inspired by retroui.dev.
+ *
+ * Activate by adding class="ag-skin-retro-brutalist" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-retro-brutalist {
+  /* ── Primary color family ── */
+  --ag-primary: #ffdb33;
+  --ag-primary-dark: #ffcc00;
+  --ag-primary-border: #5c5c5c;
+  --ag-primary-background: #2e2a1a;
+  --ag-primary-text: #ffdb33;
+
+  /* ── Focus ring (yellow for visibility on dark) ── */
+  --ag-focus: 255, 219, 51;
+  --ag-focus-dark: #ffcc00;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #f5f5f5;
+  --ag-text-secondary: #d0d0d0;
+  --ag-text-muted: #a0a0a0;
+  --ag-text-primary-muted: #d0d0d0;
+
+  /* ── Borders (gray for dark mode visibility) ── */
+  --ag-border: #5c5c5c;
+  --ag-border-subtle: #3f3f46;
+  --ag-border-width-1: 2px;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #1a1a1a;
+  --ag-background-secondary: #242424;
+  --ag-background-tertiary: #3a3a3a;
+
+  /* ── Border radius (flat/none — brutalist) ── */
+  --ag-radius-sm: 0;
+  --ag-radius-md: 0;
+  --ag-radius-lg: 0;
+
+  /* ── Shadows (hard offset with gray border for dark mode) ── */
+  --ag-shadow-xs: 1px 1px 0 0 #5c5c5c;
+  --ag-shadow-sm: 2px 2px 0 0 #5c5c5c;
+  --ag-shadow-md: 3px 3px 0 0 #5c5c5c;
+  --ag-shadow-lg: 4px 4px 0 0 #5c5c5c;
+  --ag-shadow-xl: 6px 6px 0 0 #5c5c5c;
+  --ag-shadow-2xl: 10px 10px 0 1px #5c5c5c;
+
+  /* ── Danger ── */
+  --ag-danger: #e63946;
+  --ag-danger-rgb: 230, 57, 70;
+  --ag-danger-dark: #ff5a67;
+
+  /* ── Rating ── */
+  --ag-rating-filled: #ffcc00;
+  --ag-rating-filled-primary: #ffdb33;
+
+  /* ── Yellow palette (overrides blue palette for primary usage) ── */
+  --ag-blue-50: #fdf0c4;
+  --ag-blue-100: #fae583;
+  --ag-blue-200: #ffdb33;
+  --ag-blue-300: #ffcc00;
+  --ag-blue-400: #e6b800;
+  --ag-blue-500: #c49e00;
+  --ag-blue-600: #9a7c00;
+  --ag-blue-700: #705a00;
+  --ag-blue-800: #463800;
+  --ag-blue-900: #2e2a1a;
+}
