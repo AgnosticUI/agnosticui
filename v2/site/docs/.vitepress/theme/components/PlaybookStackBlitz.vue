@@ -90,15 +90,33 @@ export default {
           })
         )
 
+        // Fetch external files (files outside the example directory)
+        const externalFiles = config.value.externalFiles || {}
+        const externalContents = await Promise.all(
+          Object.entries(externalFiles).map(async ([destPath, url]) => {
+            const response = await fetch(url)
+            if (!response.ok) {
+              throw new Error(`Failed to fetch external file ${destPath}: ${response.status}`)
+            }
+            const content = await response.text()
+            return { path: destPath, content }
+          })
+        )
+
         // Build the files object for StackBlitz
         const projectFiles = {}
         const binaryFiles = config.value.binaryFiles || {}
+        const contentReplacements = config.value.contentReplacements || {}
 
-        for (const { path, content } of fileContents) {
-          // Replace binary file references with GitHub raw URLs
+        for (const { path, content } of [...fileContents, ...externalContents]) {
           let processedContent = content
+          // Replace binary file references with GitHub raw URLs
           for (const [localPath, url] of Object.entries(binaryFiles)) {
             processedContent = processedContent.replaceAll(localPath, url)
+          }
+          // Apply content replacements (e.g. import path rewrites)
+          for (const [oldStr, newStr] of Object.entries(contentReplacements)) {
+            processedContent = processedContent.replaceAll(oldStr, newStr)
           }
           projectFiles[path] = processedContent
         }

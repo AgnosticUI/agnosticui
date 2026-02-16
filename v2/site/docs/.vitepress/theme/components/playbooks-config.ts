@@ -94,6 +94,10 @@ export interface PlaybookConfig {
   }
   /** Binary files that need URL replacement (local path -> raw GitHub URL) */
   binaryFiles?: Record<string, string>
+  /** Files outside the example directory (StackBlitz dest path -> raw GitHub URL) */
+  externalFiles?: Record<string, string>
+  /** String replacements applied to all file contents (e.g. import path rewrites) */
+  contentReplacements?: Record<string, string>
 }
 
 // Shared component files used by the onboarding playbook
@@ -337,6 +341,19 @@ const DASHBOARD_VUE_WRAPPER_FILES = [
   'src/components/ag/Toast/vue/index.ts',
 ]
 
+// Base URL for raw GitHub content at the v2 root (for files outside playbooks/)
+const GITHUB_RAW_V2_BASE = 'https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2'
+
+// Shared skin-switcher external files and import rewrites used by all playbooks
+const SKIN_SWITCHER_EXTERNAL_FILES = {
+  'src/skins/skin-switcher-core.js': `${GITHUB_RAW_V2_BASE}/skins/skin-switcher-core.js`,
+  'src/skins/skins-css-data.js': `${GITHUB_RAW_V2_BASE}/skins/skins-css-data.js`,
+}
+
+const SKIN_SWITCHER_CONTENT_REPLACEMENTS = {
+  '../../../../skins/skin-switcher-core.js': './skins/skin-switcher-core.js',
+}
+
 export const playbooksConfig: Record<string, PlaybookConfig> = {
   login: {
     title: 'Login',
@@ -356,6 +373,7 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'public/logo.svg',
         // App files
         'src/App.tsx',
+        'src/SkinSwitcher.tsx',
         'src/index.css',
         'src/main.tsx',
         // Component files
@@ -376,6 +394,7 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'public/logo.svg',
         // App files
         'src/App.vue',
+        'src/SkinSwitcher.vue',
         'src/style.css',
         'src/main.ts',
         // Component files
@@ -394,6 +413,7 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         // App files
         'src/index.css',
         'src/login-page.ts',
+        'src/skin-switcher.ts',
         // Component files (Lit uses core directly, no wrappers)
         ...SHARED_CORE_FILES,
       ],
@@ -401,6 +421,8 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
     binaryFiles: {
       '/login-bg.jpg': `${GITHUB_RAW_BASE}/login/react-example/public/login-bg.jpg`,
     },
+    externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   onboarding: {
     title: 'Onboarding',
@@ -417,6 +439,7 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         // App files
         'src/App.tsx',
         'src/App.css',
+        'src/SkinSwitcher.tsx',
         'src/index.css',
         'src/main.tsx',
         // Component files
@@ -433,6 +456,7 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'tsconfig.node.json',
         // App files
         'src/App.vue',
+        'src/SkinSwitcher.vue',
         'src/style.css',
         'src/main.ts',
         // Component files
@@ -447,10 +471,13 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         // App files
         'src/index.css',
         'src/onboarding-wizard.ts',
+        'src/skin-switcher.ts',
         // Component files (Lit uses core directly, no wrappers)
         ...ONBOARDING_SHARED_CORE_FILES,
       ],
     },
+    externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   dashboard: {
     title: 'Dashboard',
@@ -470,6 +497,7 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'public/vite.svg',
         // App files
         'src/App.tsx',
+        'src/SkinSwitcher.tsx',
         'src/index.css',
         'src/main.tsx',
         // Component files
@@ -490,6 +518,7 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'public/vite.svg',
         // App files
         'src/App.vue',
+        'src/SkinSwitcher.vue',
         'src/style.css',
         'src/main.ts',
         // Component files
@@ -509,9 +538,12 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'src/index.css',
         'src/dashboard-app.ts',
         'src/my-element.ts',
+        'src/skin-switcher.ts',
         // Component files (Lit uses core directly, no wrappers)
         ...DASHBOARD_SHARED_CORE_FILES,
       ],
     },
+    externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
 }
