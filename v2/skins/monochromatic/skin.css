@@ -1,0 +1,62 @@
+/**
+ * Monochromatic Skin — Light Mode
+ *
+ * A clean, sophisticated black/white/gray aesthetic inspired by modern agency sites.
+ * Pure monochrome with subtle gray tones, no color accents.
+ *
+ * Activate by adding class="ag-skin-monochromatic" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-monochromatic {
+  /* ── Primary color family (pure black) ── */
+  --ag-primary: #000000;
+  --ag-primary-dark: #1a1a1a;
+  --ag-primary-border: #e0e0e0;
+  --ag-primary-background: #f8f8f8;
+  --ag-primary-text: #000000;
+
+  /* ── Focus ring (black-derived RGB) ── */
+  --ag-focus: 0, 0, 0;
+  --ag-focus-dark: #333333;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #000000;
+  --ag-text-secondary: #4a4a4a;
+  --ag-text-muted: #6b6b6b;
+  --ag-text-primary-muted: #333333;
+
+  /* ── Borders ── */
+  --ag-border: #e5e5e5;
+  --ag-border-subtle: #f0f0f0;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #fafafa;
+  --ag-background-tertiary: #f5f5f5;
+
+  /* ── Border radius (clean, moderate) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (very subtle) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  --ag-shadow-md: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  --ag-shadow-xl: 0 8px 24px 0 rgba(0, 0, 0, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #000000;
+
+  /* ── Grayscale palette (overrides blue palette) ── */
+  --ag-blue-50: #fafafa;
+  --ag-blue-100: #f5f5f5;
+  --ag-blue-200: #e5e5e5;
+  --ag-blue-300: #d4d4d4;
+  --ag-blue-400: #a3a3a3;
+  --ag-blue-500: #737373;
+  --ag-blue-600: #525252;
+  --ag-blue-700: #404040;
+  --ag-blue-800: #262626;
+  --ag-blue-900: #171717;
+}

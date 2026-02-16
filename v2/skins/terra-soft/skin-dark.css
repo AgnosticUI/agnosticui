@@ -20,6 +20,8 @@
   --ag-focus-dark: #ffb89e;
 
   /* ── Semantic text ── */
+  --ag-text-primary: #f5ebe4;
+  --ag-text-secondary: #d4c4b8;
   --ag-text-primary-muted: #e0cfc6;
 
   /* ── Borders ── */

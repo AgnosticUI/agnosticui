@@ -17,7 +17,7 @@
       <div class="skin-panel-section">
         <div class="skin-panel-label">Skin</div>
         <button
-          v-for="s in skins"
+          v-for="s in SKINS"
           :key="s.id"
           :class="['skin-option', { active: skin === s.id }]"
           @click="setSkin(s.id)"
@@ -26,9 +26,6 @@
           <span class="skin-option-label">{{ s.label }}</span>
           <span class="skin-option-swatch" :style="{ background: s.swatch }" />
         </button>
-      </div>
-      <div class="skin-panel-hint">
-        <kbd>{{ isMac ? '⌘' : 'Ctrl' }}</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> to toggle
       </div>
     </div>
     <button class="skin-fab" aria-label="Toggle skin switcher" @click="open = !open">
@@ -42,64 +39,30 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-
-const skins = [
-  { id: '', label: 'Default', swatch: '#297aff' },
-  { id: 'deep-forest', label: 'Deep Forest', swatch: '#1f514c' },
-  { id: 'terra-soft', label: 'Terra Soft', swatch: '#ff6a3e' },
-  { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
-  { id: 'retro-brutalist', label: 'Retro Brutalist', swatch: '#ffdb33' },
-  { id: 'monochromatic', label: 'Monochromatic', swatch: '#000000' },
-  { id: 'muted-minimal', label: 'Muted Minimal', swatch: '#4a90a4' },
-  { id: 'autumn-slate', label: 'Autumn Slate', swatch: '#d2691e' },
-  { id: 'mo-neobrut', label: 'Mo-Neobrut', swatch: '#00bcd4' },
-  { id: 'black-cream', label: 'Black Cream', swatch: '#1a1a1a' },
-  { id: 'neons-on-black', label: 'Neons On Black', swatch: '#00ffff' },
-];
-
-const isMac = typeof navigator !== 'undefined' && /Mac/i.test(navigator.userAgent);
+import {
+  SKINS,
+  applySkin,
+  applyTheme,
+  restorePrefs,
+} from '../../../../skins/skin-switcher-core.js';
 
 const open = ref(false);
 const skin = ref(localStorage.getItem('ag-skin') || '');
 const dark = ref(document.documentElement.getAttribute('data-theme') === 'dark');
 const wrapper = ref<HTMLElement | null>(null);
 
-function applySkinClass(skinId: string) {
-  const html = document.documentElement;
-  html.className = html.className.replace(/\bag-skin-[\w-]+\b/g, '').trim();
-  if (skinId) html.classList.add(`ag-skin-${skinId}`);
-  localStorage.setItem('ag-skin', skinId);
-}
-
-function applyThemeAttr(isDark: boolean) {
-  if (isDark) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  } else {
-    document.documentElement.removeAttribute('data-theme');
-  }
-  localStorage.setItem('ag-theme', isDark ? 'dark' : 'light');
-}
-
 function setSkin(id: string) {
   skin.value = id;
-  applySkinClass(id);
+  applySkin(id);
 }
 
 function setTheme(isDark: boolean) {
   dark.value = isDark;
-  applyThemeAttr(isDark);
+  applyTheme(isDark);
 }
 
 // Restore prefs on load
-applySkinClass(skin.value);
-if (localStorage.getItem('ag-theme') === 'dark') applyThemeAttr(true);
-
-function onKey(e: KeyboardEvent) {
-  if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === 'T') {
-    e.preventDefault();
-    open.value = !open.value;
-  }
-}
+restorePrefs();
 
 function onClickOutside(e: MouseEvent) {
   if (wrapper.value && !wrapper.value.contains(e.target as Node)) {
@@ -108,12 +71,10 @@ function onClickOutside(e: MouseEvent) {
 }
 
 onMounted(() => {
-  window.addEventListener('keydown', onKey);
   document.addEventListener('mousedown', onClickOutside);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('keydown', onKey);
   document.removeEventListener('mousedown', onClickOutside);
 });
 </script>

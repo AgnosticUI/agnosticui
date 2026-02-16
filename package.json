@@ -14,7 +14,9 @@
     "type": "git",
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
-  "scripts": {},
+  "scripts": {
+    "skins:bundle": "node v2/skins/build-bundle.js"
+  },
   "keywords": [
     "ui components",
     "design system",

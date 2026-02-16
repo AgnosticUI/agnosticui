@@ -1,0 +1,61 @@
+/**
+ * Monochromatic Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Monochromatic black/white/gray aesthetic.
+ *
+ * Activate by adding class="ag-skin-monochromatic" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-monochromatic {
+  /* ── Primary color family (white for dark backgrounds) ── */
+  --ag-primary: #ffffff;
+  --ag-primary-dark: #e5e5e5;
+  --ag-primary-border: #404040;
+  --ag-primary-background: #1a1a1a;
+  --ag-primary-text: #ffffff;
+
+  /* ── Focus ring (white-derived RGB) ── */
+  --ag-focus: 255, 255, 255;
+  --ag-focus-dark: #e5e5e5;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #ffffff;
+  --ag-text-secondary: #d4d4d4;
+  --ag-text-muted: #a3a3a3;
+  --ag-text-primary-muted: #e5e5e5;
+
+  /* ── Borders ── */
+  --ag-border: #2a2a2a;
+  --ag-border-subtle: #1f1f1f;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #0a0a0a;
+  --ag-background-secondary: #121212;
+  --ag-background-tertiary: #1a1a1a;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (very subtle, white-tinted) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(255, 255, 255, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(255, 255, 255, 0.06);
+  --ag-shadow-md: 0 2px 8px 0 rgba(255, 255, 255, 0.08);
+  --ag-shadow-lg: 0 4px 16px 0 rgba(255, 255, 255, 0.1);
+  --ag-shadow-xl: 0 8px 24px 0 rgba(255, 255, 255, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #ffffff;
+
+  /* ── Grayscale palette (overrides blue palette) ── */
+  --ag-blue-50: #fafafa;
+  --ag-blue-100: #f5f5f5;
+  --ag-blue-200: #e5e5e5;
+  --ag-blue-300: #d4d4d4;
+  --ag-blue-400: #a3a3a3;
+  --ag-blue-500: #737373;
+  --ag-blue-600: #525252;
+  --ag-blue-700: #404040;
+  --ag-blue-800: #262626;
+  --ag-blue-900: #1a1a1a;
+}

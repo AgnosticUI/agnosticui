@@ -1,43 +1,14 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
-
-const SKINS = [
-  { id: '', label: 'Default', swatch: '#297aff' },
-  { id: 'deep-forest', label: 'Deep Forest', swatch: '#1f514c' },
-  { id: 'terra-soft', label: 'Terra Soft', swatch: '#ff6a3e' },
-  { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
-  { id: 'retro-brutalist', label: 'Retro Brutalist', swatch: '#ffdb33' },
-  { id: 'monochromatic', label: 'Monochromatic', swatch: '#000000' },
-  { id: 'muted-minimal', label: 'Muted Minimal', swatch: '#4a90a4' },
-  { id: 'autumn-slate', label: 'Autumn Slate', swatch: '#d2691e' },
-  { id: 'mo-neobrut', label: 'Mo-Neobrut', swatch: '#00bcd4' },
-  { id: 'black-cream', label: 'Black Cream', swatch: '#1a1a1a' },
-  { id: 'neons-on-black', label: 'Neons On Black', swatch: '#00ffff' },
-];
-
-function applySkin(skinId: string) {
-  const htmlEl = document.documentElement;
-  htmlEl.className = htmlEl.className.replace(/\bag-skin-[\w-]+\b/g, '').trim();
-  if (skinId) htmlEl.classList.add(`ag-skin-${skinId}`);
-  localStorage.setItem('ag-skin', skinId);
-}
-
-function applyTheme(dark: boolean) {
-  if (dark) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  } else {
-    document.documentElement.removeAttribute('data-theme');
-  }
-  localStorage.setItem('ag-theme', dark ? 'dark' : 'light');
-}
+import {
+  SKINS,
+  applySkin,
+  applyTheme,
+  restorePrefs,
+} from '../../../../skins/skin-switcher-core.js';
 
 // Restore on load
-(function restorePrefs() {
-  const skin = localStorage.getItem('ag-skin');
-  if (skin) applySkin(skin);
-  const theme = localStorage.getItem('ag-theme');
-  if (theme === 'dark') applyTheme(true);
-})();
+restorePrefs();
 
 @customElement('skin-switcher')
 export class SkinSwitcher extends LitElement {
@@ -45,18 +16,9 @@ export class SkinSwitcher extends LitElement {
   @state() private _skin = localStorage.getItem('ag-skin') || '';
   @state() private _dark = document.documentElement.getAttribute('data-theme') === 'dark';
 
-  private _isMac = typeof navigator !== 'undefined' && /Mac/i.test(navigator.userAgent);
-
-  private _onKey = (e: KeyboardEvent) => {
-    if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === 'T') {
-      e.preventDefault();
-      this._open = !this._open;
-    }
-  };
-
   private _onClickOutside = (e: MouseEvent) => {
     if (!this._open) return;
-    
+
     // Check if click is outside the component entirely
     const path = e.composedPath();
     if (!path.includes(this)) {
@@ -66,13 +28,11 @@ export class SkinSwitcher extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener('keydown', this._onKey);
     document.addEventListener('mousedown', this._onClickOutside);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener('keydown', this._onKey);
     document.removeEventListener('mousedown', this._onClickOutside);
   }
 
@@ -112,9 +72,6 @@ export class SkinSwitcher extends LitElement {
                 <span class="skin-option-swatch" style="background:${s.swatch}"></span>
               </button>
             `)}
-          </div>
-          <div class="skin-panel-hint">
-            <kbd>${this._isMac ? '⌘' : 'Ctrl'}</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> to toggle
           </div>
         </div>
       ` : ''}
@@ -301,23 +258,6 @@ export class SkinSwitcher extends LitElement {
       border-radius: 50%;
       flex-shrink: 0;
       border: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .skin-panel-hint {
-      padding: 0.5rem 1rem;
-      border-top: 1px solid var(--ag-border, #e0e0e0);
-      font-size: 0.6875rem;
-      color: var(--ag-text-muted, var(--ag-text-secondary, #999));
-      text-align: center;
-    }
-
-    .skin-panel-hint kbd {
-      font-family: inherit;
-      font-size: 0.625rem;
-      padding: 0.125rem 0.3125rem;
-      border: 1px solid var(--ag-border, #ddd);
-      border-radius: 3px;
-      background: var(--ag-background-secondary, #f5f5f5);
     }
   `;
 }

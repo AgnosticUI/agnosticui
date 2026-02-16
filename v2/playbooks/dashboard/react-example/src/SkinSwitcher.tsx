@@ -1,18 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-
-const SKINS = [
-  { id: '', label: 'Default', swatch: '#297aff' },
-  { id: 'deep-forest', label: 'Deep Forest', swatch: '#1f514c' },
-  { id: 'terra-soft', label: 'Terra Soft', swatch: '#ff6a3e' },
-  { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
-  { id: 'retro-brutalist', label: 'Retro Brutalist', swatch: '#ffdb33' },
-  { id: 'monochromatic', label: 'Monochromatic', swatch: '#000000' },
-  { id: 'muted-minimal', label: 'Muted Minimal', swatch: '#4a90a4' },
-  { id: 'autumn-slate', label: 'Autumn Slate', swatch: '#d2691e' },
-  { id: 'mo-neobrut', label: 'Mo-Neobrut', swatch: '#00bcd4' },
-  { id: 'black-cream', label: 'Black Cream', swatch: '#1a1a1a' },
-  { id: 'neons-on-black', label: 'Neons On Black', swatch: '#00ffff' },
-];
+import {
+  SKINS,
+  applySkin,
+  applyTheme,
+  restorePrefs,
+} from '../../../../skins/skin-switcher-core.js';
 
 const paletteIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -33,32 +25,8 @@ const moonIcon = (
   </svg>
 );
 
-function applySkin(skinId: string) {
-  const html = document.documentElement;
-  // Remove all skin classes
-  html.className = html.className.replace(/\bag-skin-[\w-]+\b/g, '').trim();
-  if (skinId) {
-    html.classList.add(`ag-skin-${skinId}`);
-  }
-  localStorage.setItem('ag-skin', skinId);
-}
-
-function applyTheme(dark: boolean) {
-  if (dark) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  } else {
-    document.documentElement.removeAttribute('data-theme');
-  }
-  localStorage.setItem('ag-theme', dark ? 'dark' : 'light');
-}
-
 // Restore on load
-(function restorePrefs() {
-  const skin = localStorage.getItem('ag-skin');
-  if (skin) applySkin(skin);
-  const theme = localStorage.getItem('ag-theme');
-  if (theme === 'dark') applyTheme(true);
-})();
+restorePrefs();
 
 export function SkinSwitcher() {
   const [open, setOpen] = useState(false);
@@ -69,18 +37,6 @@ export function SkinSwitcher() {
   const panelRef = useRef<HTMLDivElement>(null);
 
   const toggle = useCallback(() => setOpen(o => !o), []);
-
-  // Keyboard shortcut
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === 'T') {
-        e.preventDefault();
-        toggle();
-      }
-    }
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [toggle]);
 
   // Close on outside click
   useEffect(() => {
@@ -103,8 +59,6 @@ export function SkinSwitcher() {
     setDark(isDark);
     applyTheme(isDark);
   }
-
-  const isMac = typeof navigator !== 'undefined' && /Mac/i.test(navigator.userAgent);
 
   return (
     <div ref={panelRef}>
@@ -140,9 +94,6 @@ export function SkinSwitcher() {
                 <span className="skin-option-swatch" style={{ background: s.swatch }} />
               </button>
             ))}
-          </div>
-          <div className="skin-panel-hint">
-            <kbd>{isMac ? '⌘' : 'Ctrl'}</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> to toggle
           </div>
         </div>
       )}
