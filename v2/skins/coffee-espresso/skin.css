@@ -1,0 +1,63 @@
+/**
+ * Coffee Espresso Skin — Light Mode
+ *
+ * Rich warm browns with cream accents. Cozy editorial feel
+ * inspired by artisan coffee shops and Notion-like warmth.
+ *
+ * Activate by adding class="ag-skin-coffee-espresso" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-coffee-espresso {
+  /* ── Primary color family (espresso brown) ── */
+  --ag-primary: #6f4e37;
+  --ag-primary-dark: #5a3e2b;
+  --ag-primary-border: #d4b89c;
+  --ag-primary-background: #faf3ed;
+  --ag-primary-text: #4a3322;
+
+  /* ── Focus ring (coffee-derived RGB) ── */
+  --ag-focus: 111, 78, 55;
+  --ag-focus-dark: #5a3e2b;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #2c1e12;
+  --ag-text-secondary: #5c4a3a;
+  --ag-text-muted: #8c7a6a;
+  --ag-text-primary-muted: #4a3828;
+
+  /* ── Borders ── */
+  --ag-border: #e6dbd0;
+  --ag-border-subtle: #efe6dc;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #fffcf8;
+  --ag-background-secondary: #f8f2eb;
+  --ag-background-tertiary: #f0e8df;
+
+  /* ── Border radius (warm, moderate) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm brown-tinted) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(111, 78, 55, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(111, 78, 55, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(111, 78, 55, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(111, 78, 55, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(111, 78, 55, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #d4a055;
+  --ag-rating-filled-primary: #6f4e37;
+
+  /* ── Coffee palette (overrides blue palette) ── */
+  --ag-blue-50: #faf3ed;
+  --ag-blue-100: #f0e0cc;
+  --ag-blue-200: #d4b89c;
+  --ag-blue-300: #c4a07c;
+  --ag-blue-400: #a07850;
+  --ag-blue-500: #6f4e37;
+  --ag-blue-600: #5a3e2b;
+  --ag-blue-700: #4a3322;
+  --ag-blue-800: #362418;
+  --ag-blue-900: #221610;
+}

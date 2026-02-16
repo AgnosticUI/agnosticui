@@ -1,0 +1,62 @@
+/**
+ * High Contrast Skin — Light Mode
+ *
+ * Accessibility-focused skin with WCAG AAA contrast ratios.
+ * Bold borders, strong text, no subtle grays. Clear visual hierarchy.
+ *
+ * Activate by adding class="ag-skin-high-contrast" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-high-contrast {
+  /* ── Primary color family (strong blue, high contrast) ── */
+  --ag-primary: #0050d8;
+  --ag-primary-dark: #003da5;
+  --ag-primary-border: #0050d8;
+  --ag-primary-background: #e8f0fe;
+  --ag-primary-text: #003078;
+
+  /* ── Focus ring (bold blue RGB, thick) ── */
+  --ag-focus: 0, 80, 216;
+  --ag-focus-dark: #003da5;
+
+  /* ── Semantic text (maximum contrast) ── */
+  --ag-text-primary: #000000;
+  --ag-text-secondary: #1a1a1a;
+  --ag-text-muted: #333333;
+  --ag-text-primary-muted: #0d0d0d;
+
+  /* ── Borders (strong, visible) ── */
+  --ag-border: #333333;
+  --ag-border-subtle: #666666;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #f5f5f5;
+  --ag-background-tertiary: #ebebeb;
+
+  /* ── Border radius (minimal for clarity) ── */
+  --ag-radius-lg: 0.375rem;
+
+  /* ── Shadows (sharp, defined) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  --ag-shadow-sm: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
+  --ag-shadow-md: 0 2px 8px 0 rgba(0, 0, 0, 0.18);
+  --ag-shadow-lg: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
+  --ag-shadow-xl: 0 8px 20px 0 rgba(0, 0, 0, 0.22);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #0050d8;
+
+  /* ── Blue palette (high-contrast blue ramp) ── */
+  --ag-blue-50: #e8f0fe;
+  --ag-blue-100: #b8d4fc;
+  --ag-blue-200: #88b8fa;
+  --ag-blue-300: #4890f0;
+  --ag-blue-400: #1a6ee6;
+  --ag-blue-500: #0050d8;
+  --ag-blue-600: #003da5;
+  --ag-blue-700: #003078;
+  --ag-blue-800: #002050;
+  --ag-blue-900: #001030;
+}

@@ -17,6 +17,11 @@ export const SKINS = [
   { id: 'mo-neobrut', label: 'Mo-Neobrut', swatch: '#00bcd4' },
   { id: 'black-cream', label: 'Black Cream', swatch: '#1a1a1a' },
   { id: 'neons-on-black', label: 'Neons On Black', swatch: '#00ffff' },
+  { id: 'glassmorphism', label: 'Glassmorphism', swatch: '#6366f1' },
+  { id: 'rose-blush', label: 'Rose Blush', swatch: '#e11d73' },
+  { id: 'high-contrast', label: 'High Contrast', swatch: '#0050d8' },
+  { id: 'coffee-espresso', label: 'Coffee Espresso', swatch: '#6f4e37' },
+  { id: 'sage', label: 'Sage', swatch: '#5f8a6e' },
 ];
 
 /** Apply a skin class to <html> and persist to localStorage. */

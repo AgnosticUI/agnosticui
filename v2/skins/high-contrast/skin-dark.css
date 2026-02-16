@@ -1,0 +1,62 @@
+/**
+ * High Contrast Skin — Dark Mode
+ *
+ * Dark-mode overrides with maximum contrast for accessibility.
+ * Bright text on pure dark backgrounds, strong borders.
+ *
+ * Activate by adding class="ag-skin-high-contrast" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-high-contrast {
+  /* ── Primary color family (bright for dark backgrounds) ── */
+  --ag-primary: #4890f0;
+  --ag-primary-dark: #1a6ee6;
+  --ag-primary-border: #4890f0;
+  --ag-primary-background: #001030;
+  --ag-primary-text: #b8d4fc;
+
+  /* ── Focus ring (bright blue RGB) ── */
+  --ag-focus: 72, 144, 240;
+  --ag-focus-dark: #88b8fa;
+
+  /* ── Semantic text (maximum contrast on dark) ── */
+  --ag-text-primary: #ffffff;
+  --ag-text-secondary: #f0f0f0;
+  --ag-text-muted: #cccccc;
+  --ag-text-primary-muted: #f5f5f5;
+
+  /* ── Borders (strong, visible on dark) ── */
+  --ag-border: #cccccc;
+  --ag-border-subtle: #888888;
+
+  /* ── Backgrounds (pure dark) ── */
+  --ag-background-primary: #000000;
+  --ag-background-secondary: #0a0a0a;
+  --ag-background-tertiary: #141414;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.375rem;
+
+  /* ── Shadows (bright edges for definition) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(255, 255, 255, 0.08);
+  --ag-shadow-sm: 0 1px 4px 0 rgba(255, 255, 255, 0.1);
+  --ag-shadow-md: 0 2px 8px 0 rgba(255, 255, 255, 0.1);
+  --ag-shadow-lg: 0 4px 12px 0 rgba(255, 255, 255, 0.12);
+  --ag-shadow-xl: 0 8px 20px 0 rgba(255, 255, 255, 0.14);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #4890f0;
+
+  /* ── Blue palette (high-contrast blue ramp) ── */
+  --ag-blue-50: #e8f0fe;
+  --ag-blue-100: #b8d4fc;
+  --ag-blue-200: #88b8fa;
+  --ag-blue-300: #4890f0;
+  --ag-blue-400: #1a6ee6;
+  --ag-blue-500: #0050d8;
+  --ag-blue-600: #003da5;
+  --ag-blue-700: #003078;
+  --ag-blue-800: #002050;
+  --ag-blue-900: #001030;
+}

@@ -1,0 +1,62 @@
+/**
+ * Sage Skin — Light Mode
+ *
+ * Soft, earthy sage green with muted natural tones. Calm and organic,
+ * inspired by botanical gardens and wellness design.
+ *
+ * Activate by adding class="ag-skin-sage" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-sage {
+  /* ── Primary color family (muted sage green) ── */
+  --ag-primary: #5f8a6e;
+  --ag-primary-dark: #4a7258;
+  --ag-primary-border: #b8d4c0;
+  --ag-primary-background: #f0f7f2;
+  --ag-primary-text: #3a5c44;
+
+  /* ── Focus ring (sage-derived RGB) ── */
+  --ag-focus: 95, 138, 110;
+  --ag-focus-dark: #4a7258;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #1a2e20;
+  --ag-text-secondary: #4a5c50;
+  --ag-text-muted: #7a8c80;
+  --ag-text-primary-muted: #344a3c;
+
+  /* ── Borders ── */
+  --ag-border: #d8e6dc;
+  --ag-border-subtle: #e4ede7;
+
+  /* ── Backgrounds ── */
+  --ag-background-secondary: #f6faf7;
+  --ag-background-tertiary: #edf4ef;
+
+  /* ── Border radius (organic, rounded) ── */
+  --ag-radius-lg: 1rem;
+
+  /* ── Shadows (green-tinted, soft) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(95, 138, 110, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(95, 138, 110, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(95, 138, 110, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(95, 138, 110, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(95, 138, 110, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #c4a04e;
+  --ag-rating-filled-primary: #5f8a6e;
+
+  /* ── Sage palette (overrides blue palette) ── */
+  --ag-blue-50: #f0f7f2;
+  --ag-blue-100: #d4e8da;
+  --ag-blue-200: #b8d4c0;
+  --ag-blue-300: #8fbc9c;
+  --ag-blue-400: #6ea07e;
+  --ag-blue-500: #5f8a6e;
+  --ag-blue-600: #4a7258;
+  --ag-blue-700: #3a5c44;
+  --ag-blue-800: #2a4432;
+  --ag-blue-900: #1a2e20;
+}

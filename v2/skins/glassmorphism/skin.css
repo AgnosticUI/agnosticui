@@ -1,0 +1,62 @@
+/**
+ * Glassmorphism Skin — Light Mode
+ *
+ * Frosted glass panels with blur, translucency, and subtle borders.
+ * Inspired by Apple's visionOS and modern glass-card designs.
+ *
+ * Activate by adding class="ag-skin-glassmorphism" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-glassmorphism {
+  /* ── Primary color family (soft violet-blue) ── */
+  --ag-primary: #6366f1;
+  --ag-primary-dark: #4f46e5;
+  --ag-primary-border: #c7d2fe;
+  --ag-primary-background: rgba(99, 102, 241, 0.08);
+  --ag-primary-text: #4338ca;
+
+  /* ── Focus ring (indigo-derived RGB) ── */
+  --ag-focus: 99, 102, 241;
+  --ag-focus-dark: #4f46e5;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #1e1b4b;
+  --ag-text-secondary: #4b5563;
+  --ag-text-muted: #9ca3af;
+  --ag-text-primary-muted: #374151;
+
+  /* ── Borders (subtle, translucent) ── */
+  --ag-border: rgba(255, 255, 255, 0.6);
+  --ag-border-subtle: rgba(255, 255, 255, 0.3);
+
+  /* ── Backgrounds (translucent for glass effect) ── */
+  --ag-background-primary: rgba(255, 255, 255, 0.72);
+  --ag-background-secondary: rgba(255, 255, 255, 0.48);
+  --ag-background-tertiary: rgba(245, 243, 255, 0.6);
+
+  /* ── Border radius (generous for glass cards) ── */
+  --ag-radius-lg: 1.25rem;
+
+  /* ── Shadows (colorful, diffused for glass depth) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(99, 102, 241, 0.06);
+  --ag-shadow-sm: 0 2px 8px 0 rgba(99, 102, 241, 0.08);
+  --ag-shadow-md: 0 4px 16px 0 rgba(99, 102, 241, 0.08);
+  --ag-shadow-lg: 0 8px 24px -4px rgba(99, 102, 241, 0.1);
+  --ag-shadow-xl: 0 12px 40px -8px rgba(99, 102, 241, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #6366f1;
+
+  /* ── Indigo palette (overrides blue palette) ── */
+  --ag-blue-50: #eef2ff;
+  --ag-blue-100: #e0e7ff;
+  --ag-blue-200: #c7d2fe;
+  --ag-blue-300: #a5b4fc;
+  --ag-blue-400: #818cf8;
+  --ag-blue-500: #6366f1;
+  --ag-blue-600: #4f46e5;
+  --ag-blue-700: #4338ca;
+  --ag-blue-800: #3730a3;
+  --ag-blue-900: #312e81;
+}

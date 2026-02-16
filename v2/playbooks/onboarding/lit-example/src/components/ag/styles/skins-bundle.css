@@ -413,6 +413,142 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   Coffee Espresso — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Coffee Espresso Skin — Light Mode
+ *
+ * Rich warm browns with cream accents. Cozy editorial feel
+ * inspired by artisan coffee shops and Notion-like warmth.
+ *
+ * Activate by adding class="ag-skin-coffee-espresso" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-coffee-espresso {
+  /* ── Primary color family (espresso brown) ── */
+  --ag-primary: #6f4e37;
+  --ag-primary-dark: #5a3e2b;
+  --ag-primary-border: #d4b89c;
+  --ag-primary-background: #faf3ed;
+  --ag-primary-text: #4a3322;
+
+  /* ── Focus ring (coffee-derived RGB) ── */
+  --ag-focus: 111, 78, 55;
+  --ag-focus-dark: #5a3e2b;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #2c1e12;
+  --ag-text-secondary: #5c4a3a;
+  --ag-text-muted: #8c7a6a;
+  --ag-text-primary-muted: #4a3828;
+
+  /* ── Borders ── */
+  --ag-border: #e6dbd0;
+  --ag-border-subtle: #efe6dc;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #fffcf8;
+  --ag-background-secondary: #f8f2eb;
+  --ag-background-tertiary: #f0e8df;
+
+  /* ── Border radius (warm, moderate) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm brown-tinted) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(111, 78, 55, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(111, 78, 55, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(111, 78, 55, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(111, 78, 55, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(111, 78, 55, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #d4a055;
+  --ag-rating-filled-primary: #6f4e37;
+
+  /* ── Coffee palette (overrides blue palette) ── */
+  --ag-blue-50: #faf3ed;
+  --ag-blue-100: #f0e0cc;
+  --ag-blue-200: #d4b89c;
+  --ag-blue-300: #c4a07c;
+  --ag-blue-400: #a07850;
+  --ag-blue-500: #6f4e37;
+  --ag-blue-600: #5a3e2b;
+  --ag-blue-700: #4a3322;
+  --ag-blue-800: #362418;
+  --ag-blue-900: #221610;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Coffee Espresso — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Coffee Espresso Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Coffee Espresso warm brown aesthetic.
+ * Deep espresso backgrounds with cream and mocha highlights.
+ *
+ * Activate by adding class="ag-skin-coffee-espresso" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-coffee-espresso {
+  /* ── Primary color family (brightened for dark backgrounds) ── */
+  --ag-primary: #c4a07c;
+  --ag-primary-dark: #a07850;
+  --ag-primary-border: #6f4e37;
+  --ag-primary-background: #221610;
+  --ag-primary-text: #d4b89c;
+
+  /* ── Focus ring (coffee-derived RGB, brightened) ── */
+  --ag-focus: 196, 160, 124;
+  --ag-focus-dark: #d4b89c;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #f5ece3;
+  --ag-text-secondary: #d4c4b4;
+  --ag-text-muted: #a0907e;
+  --ag-text-primary-muted: #e8ddd0;
+
+  /* ── Borders ── */
+  --ag-border: #3d2e22;
+  --ag-border-subtle: #5a4434;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #120c08;
+  --ag-background-secondary: #1a120c;
+  --ag-background-tertiary: #2e2218;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm brown-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(196, 160, 124, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(196, 160, 124, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(196, 160, 124, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(196, 160, 124, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(196, 160, 124, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #d4a055;
+  --ag-rating-filled-primary: #c4a07c;
+
+  /* ── Coffee palette (overrides blue palette) ── */
+  --ag-blue-50: #f0e0cc;
+  --ag-blue-100: #d4b89c;
+  --ag-blue-200: #c4a07c;
+  --ag-blue-300: #a07850;
+  --ag-blue-400: #6f4e37;
+  --ag-blue-500: #5a3e2b;
+  --ag-blue-600: #4a3322;
+  --ag-blue-700: #362418;
+  --ag-blue-800: #221610;
+  --ag-blue-900: #150e08;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    Deep Forest — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -534,6 +670,273 @@
   --ag-blue-700: #174f4a;
   --ag-blue-800: #0f3834;
   --ag-blue-900: #0d2926;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Glassmorphism — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Glassmorphism Skin — Light Mode
+ *
+ * Frosted glass panels with blur, translucency, and subtle borders.
+ * Inspired by Apple's visionOS and modern glass-card designs.
+ *
+ * Activate by adding class="ag-skin-glassmorphism" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-glassmorphism {
+  /* ── Primary color family (soft violet-blue) ── */
+  --ag-primary: #6366f1;
+  --ag-primary-dark: #4f46e5;
+  --ag-primary-border: #c7d2fe;
+  --ag-primary-background: rgba(99, 102, 241, 0.08);
+  --ag-primary-text: #4338ca;
+
+  /* ── Focus ring (indigo-derived RGB) ── */
+  --ag-focus: 99, 102, 241;
+  --ag-focus-dark: #4f46e5;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #1e1b4b;
+  --ag-text-secondary: #4b5563;
+  --ag-text-muted: #9ca3af;
+  --ag-text-primary-muted: #374151;
+
+  /* ── Borders (subtle, translucent) ── */
+  --ag-border: rgba(255, 255, 255, 0.6);
+  --ag-border-subtle: rgba(255, 255, 255, 0.3);
+
+  /* ── Backgrounds (translucent for glass effect) ── */
+  --ag-background-primary: rgba(255, 255, 255, 0.72);
+  --ag-background-secondary: rgba(255, 255, 255, 0.48);
+  --ag-background-tertiary: rgba(245, 243, 255, 0.6);
+
+  /* ── Border radius (generous for glass cards) ── */
+  --ag-radius-lg: 1.25rem;
+
+  /* ── Shadows (colorful, diffused for glass depth) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(99, 102, 241, 0.06);
+  --ag-shadow-sm: 0 2px 8px 0 rgba(99, 102, 241, 0.08);
+  --ag-shadow-md: 0 4px 16px 0 rgba(99, 102, 241, 0.08);
+  --ag-shadow-lg: 0 8px 24px -4px rgba(99, 102, 241, 0.1);
+  --ag-shadow-xl: 0 12px 40px -8px rgba(99, 102, 241, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #6366f1;
+
+  /* ── Indigo palette (overrides blue palette) ── */
+  --ag-blue-50: #eef2ff;
+  --ag-blue-100: #e0e7ff;
+  --ag-blue-200: #c7d2fe;
+  --ag-blue-300: #a5b4fc;
+  --ag-blue-400: #818cf8;
+  --ag-blue-500: #6366f1;
+  --ag-blue-600: #4f46e5;
+  --ag-blue-700: #4338ca;
+  --ag-blue-800: #3730a3;
+  --ag-blue-900: #312e81;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Glassmorphism — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Glassmorphism Skin — Dark Mode
+ *
+ * Dark frosted glass with luminous indigo accents and translucent panels.
+ *
+ * Activate by adding class="ag-skin-glassmorphism" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-glassmorphism {
+  /* ── Primary color family (brightened for dark backgrounds) ── */
+  --ag-primary: #818cf8;
+  --ag-primary-dark: #6366f1;
+  --ag-primary-border: #4f46e5;
+  --ag-primary-background: rgba(99, 102, 241, 0.12);
+  --ag-primary-text: #c7d2fe;
+
+  /* ── Focus ring (indigo-derived RGB, brightened) ── */
+  --ag-focus: 129, 140, 248;
+  --ag-focus-dark: #a5b4fc;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #f1f0ff;
+  --ag-text-secondary: #c4c1e0;
+  --ag-text-muted: #8b87a8;
+  --ag-text-primary-muted: #d8d5f0;
+
+  /* ── Borders (translucent light on dark) ── */
+  --ag-border: rgba(255, 255, 255, 0.1);
+  --ag-border-subtle: rgba(255, 255, 255, 0.06);
+
+  /* ── Backgrounds (translucent dark glass) ── */
+  --ag-background-primary: rgba(15, 15, 35, 0.8);
+  --ag-background-secondary: rgba(20, 20, 50, 0.6);
+  --ag-background-tertiary: rgba(30, 30, 70, 0.5);
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 1.25rem;
+
+  /* ── Shadows (indigo-tinted glow) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(99, 102, 241, 0.1);
+  --ag-shadow-sm: 0 2px 8px 0 rgba(99, 102, 241, 0.12);
+  --ag-shadow-md: 0 4px 16px 0 rgba(99, 102, 241, 0.1);
+  --ag-shadow-lg: 0 8px 24px -4px rgba(99, 102, 241, 0.14);
+  --ag-shadow-xl: 0 12px 40px -8px rgba(99, 102, 241, 0.18);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #818cf8;
+
+  /* ── Indigo palette (overrides blue palette) ── */
+  --ag-blue-50: #e0e7ff;
+  --ag-blue-100: #c7d2fe;
+  --ag-blue-200: #a5b4fc;
+  --ag-blue-300: #818cf8;
+  --ag-blue-400: #6366f1;
+  --ag-blue-500: #4f46e5;
+  --ag-blue-600: #4338ca;
+  --ag-blue-700: #3730a3;
+  --ag-blue-800: #312e81;
+  --ag-blue-900: #1e1b4b;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   High Contrast — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * High Contrast Skin — Light Mode
+ *
+ * Accessibility-focused skin with WCAG AAA contrast ratios.
+ * Bold borders, strong text, no subtle grays. Clear visual hierarchy.
+ *
+ * Activate by adding class="ag-skin-high-contrast" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-high-contrast {
+  /* ── Primary color family (strong blue, high contrast) ── */
+  --ag-primary: #0050d8;
+  --ag-primary-dark: #003da5;
+  --ag-primary-border: #0050d8;
+  --ag-primary-background: #e8f0fe;
+  --ag-primary-text: #003078;
+
+  /* ── Focus ring (bold blue RGB, thick) ── */
+  --ag-focus: 0, 80, 216;
+  --ag-focus-dark: #003da5;
+
+  /* ── Semantic text (maximum contrast) ── */
+  --ag-text-primary: #000000;
+  --ag-text-secondary: #1a1a1a;
+  --ag-text-muted: #333333;
+  --ag-text-primary-muted: #0d0d0d;
+
+  /* ── Borders (strong, visible) ── */
+  --ag-border: #333333;
+  --ag-border-subtle: #666666;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #f5f5f5;
+  --ag-background-tertiary: #ebebeb;
+
+  /* ── Border radius (minimal for clarity) ── */
+  --ag-radius-lg: 0.375rem;
+
+  /* ── Shadows (sharp, defined) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  --ag-shadow-sm: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
+  --ag-shadow-md: 0 2px 8px 0 rgba(0, 0, 0, 0.18);
+  --ag-shadow-lg: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
+  --ag-shadow-xl: 0 8px 20px 0 rgba(0, 0, 0, 0.22);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #0050d8;
+
+  /* ── Blue palette (high-contrast blue ramp) ── */
+  --ag-blue-50: #e8f0fe;
+  --ag-blue-100: #b8d4fc;
+  --ag-blue-200: #88b8fa;
+  --ag-blue-300: #4890f0;
+  --ag-blue-400: #1a6ee6;
+  --ag-blue-500: #0050d8;
+  --ag-blue-600: #003da5;
+  --ag-blue-700: #003078;
+  --ag-blue-800: #002050;
+  --ag-blue-900: #001030;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   High Contrast — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * High Contrast Skin — Dark Mode
+ *
+ * Dark-mode overrides with maximum contrast for accessibility.
+ * Bright text on pure dark backgrounds, strong borders.
+ *
+ * Activate by adding class="ag-skin-high-contrast" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-high-contrast {
+  /* ── Primary color family (bright for dark backgrounds) ── */
+  --ag-primary: #4890f0;
+  --ag-primary-dark: #1a6ee6;
+  --ag-primary-border: #4890f0;
+  --ag-primary-background: #001030;
+  --ag-primary-text: #b8d4fc;
+
+  /* ── Focus ring (bright blue RGB) ── */
+  --ag-focus: 72, 144, 240;
+  --ag-focus-dark: #88b8fa;
+
+  /* ── Semantic text (maximum contrast on dark) ── */
+  --ag-text-primary: #ffffff;
+  --ag-text-secondary: #f0f0f0;
+  --ag-text-muted: #cccccc;
+  --ag-text-primary-muted: #f5f5f5;
+
+  /* ── Borders (strong, visible on dark) ── */
+  --ag-border: #cccccc;
+  --ag-border-subtle: #888888;
+
+  /* ── Backgrounds (pure dark) ── */
+  --ag-background-primary: #000000;
+  --ag-background-secondary: #0a0a0a;
+  --ag-background-tertiary: #141414;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.375rem;
+
+  /* ── Shadows (bright edges for definition) ── */
+  --ag-shadow-xs: 0 1px 2px 0 rgba(255, 255, 255, 0.08);
+  --ag-shadow-sm: 0 1px 4px 0 rgba(255, 255, 255, 0.1);
+  --ag-shadow-md: 0 2px 8px 0 rgba(255, 255, 255, 0.1);
+  --ag-shadow-lg: 0 4px 12px 0 rgba(255, 255, 255, 0.12);
+  --ag-shadow-xl: 0 8px 20px 0 rgba(255, 255, 255, 0.14);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #4890f0;
+
+  /* ── Blue palette (high-contrast blue ramp) ── */
+  --ag-blue-50: #e8f0fe;
+  --ag-blue-100: #b8d4fc;
+  --ag-blue-200: #88b8fa;
+  --ag-blue-300: #4890f0;
+  --ag-blue-400: #1a6ee6;
+  --ag-blue-500: #0050d8;
+  --ag-blue-600: #003da5;
+  --ag-blue-700: #003078;
+  --ag-blue-800: #002050;
+  --ag-blue-900: #001030;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -1244,6 +1647,273 @@
   --ag-blue-700: #705a00;
   --ag-blue-800: #463800;
   --ag-blue-900: #2e2a1a;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Rose Blush — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Rose Blush Skin — Light Mode
+ *
+ * Soft pink-rose with warm undertones. Modern, elegant, and approachable.
+ * Inspired by rose quartz tones and contemporary SaaS design.
+ *
+ * Activate by adding class="ag-skin-rose-blush" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-rose-blush {
+  /* ── Primary color family ── */
+  --ag-primary: #e11d73;
+  --ag-primary-dark: #be185d;
+  --ag-primary-border: #fbb6ce;
+  --ag-primary-background: #fff1f5;
+  --ag-primary-text: #9d174d;
+
+  /* ── Focus ring (rose-derived RGB) ── */
+  --ag-focus: 225, 29, 115;
+  --ag-focus-dark: #be185d;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #1a1a2e;
+  --ag-text-secondary: #4a4560;
+  --ag-text-muted: #9091a4;
+  --ag-text-primary-muted: #3d3852;
+
+  /* ── Borders ── */
+  --ag-border: #f0e0e6;
+  --ag-border-subtle: #f5eaef;
+
+  /* ── Backgrounds ── */
+  --ag-background-secondary: #fdf6f8;
+  --ag-background-tertiary: #f9eff3;
+
+  /* ── Border radius (soft, rounded) ── */
+  --ag-radius-lg: 1rem;
+
+  /* ── Shadows (warm pink-tinted) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(225, 29, 115, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(225, 29, 115, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(225, 29, 115, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(225, 29, 115, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(225, 29, 115, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #f59e0b;
+  --ag-rating-filled-primary: #e11d73;
+
+  /* ── Rose palette (overrides blue palette) ── */
+  --ag-blue-50: #fff1f5;
+  --ag-blue-100: #ffe4ed;
+  --ag-blue-200: #fbb6ce;
+  --ag-blue-300: #f687a8;
+  --ag-blue-400: #ec4899;
+  --ag-blue-500: #e11d73;
+  --ag-blue-600: #be185d;
+  --ag-blue-700: #9d174d;
+  --ag-blue-800: #831843;
+  --ag-blue-900: #500724;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Rose Blush — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Rose Blush Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Rose Blush pink-rose aesthetic.
+ *
+ * Activate by adding class="ag-skin-rose-blush" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-rose-blush {
+  /* ── Primary color family (brightened for dark backgrounds) ── */
+  --ag-primary: #ec4899;
+  --ag-primary-dark: #e11d73;
+  --ag-primary-border: #ec4899;
+  --ag-primary-background: #2a0a1e;
+  --ag-primary-text: #fbb6ce;
+
+  /* ── Focus ring (rose-derived RGB, brightened) ── */
+  --ag-focus: 236, 72, 153;
+  --ag-focus-dark: #f687a8;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #fdf2f6;
+  --ag-text-secondary: #d4b8c8;
+  --ag-text-muted: #a08898;
+  --ag-text-primary-muted: #e8cede;
+
+  /* ── Borders ── */
+  --ag-border: #3d1a2e;
+  --ag-border-subtle: #5a2844;
+
+  /* ── Backgrounds ── */
+  --ag-background-secondary: #1a0a14;
+  --ag-background-tertiary: #2e1424;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 1rem;
+
+  /* ── Shadows (rose-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(236, 72, 153, 0.08);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(236, 72, 153, 0.1);
+  --ag-shadow-md: 0 2px 10px 0 rgba(236, 72, 153, 0.1);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(236, 72, 153, 0.12);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(236, 72, 153, 0.14);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #ec4899;
+
+  /* ── Rose palette (overrides blue palette) ── */
+  --ag-blue-50: #fbb6ce;
+  --ag-blue-100: #f687a8;
+  --ag-blue-200: #ec4899;
+  --ag-blue-300: #e11d73;
+  --ag-blue-400: #be185d;
+  --ag-blue-500: #9d174d;
+  --ag-blue-600: #831843;
+  --ag-blue-700: #6b1038;
+  --ag-blue-800: #500724;
+  --ag-blue-900: #2a0a1e;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Sage — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Sage Skin — Light Mode
+ *
+ * Soft, earthy sage green with muted natural tones. Calm and organic,
+ * inspired by botanical gardens and wellness design.
+ *
+ * Activate by adding class="ag-skin-sage" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-sage {
+  /* ── Primary color family (muted sage green) ── */
+  --ag-primary: #5f8a6e;
+  --ag-primary-dark: #4a7258;
+  --ag-primary-border: #b8d4c0;
+  --ag-primary-background: #f0f7f2;
+  --ag-primary-text: #3a5c44;
+
+  /* ── Focus ring (sage-derived RGB) ── */
+  --ag-focus: 95, 138, 110;
+  --ag-focus-dark: #4a7258;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #1a2e20;
+  --ag-text-secondary: #4a5c50;
+  --ag-text-muted: #7a8c80;
+  --ag-text-primary-muted: #344a3c;
+
+  /* ── Borders ── */
+  --ag-border: #d8e6dc;
+  --ag-border-subtle: #e4ede7;
+
+  /* ── Backgrounds ── */
+  --ag-background-secondary: #f6faf7;
+  --ag-background-tertiary: #edf4ef;
+
+  /* ── Border radius (organic, rounded) ── */
+  --ag-radius-lg: 1rem;
+
+  /* ── Shadows (green-tinted, soft) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(95, 138, 110, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(95, 138, 110, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(95, 138, 110, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(95, 138, 110, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(95, 138, 110, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #c4a04e;
+  --ag-rating-filled-primary: #5f8a6e;
+
+  /* ── Sage palette (overrides blue palette) ── */
+  --ag-blue-50: #f0f7f2;
+  --ag-blue-100: #d4e8da;
+  --ag-blue-200: #b8d4c0;
+  --ag-blue-300: #8fbc9c;
+  --ag-blue-400: #6ea07e;
+  --ag-blue-500: #5f8a6e;
+  --ag-blue-600: #4a7258;
+  --ag-blue-700: #3a5c44;
+  --ag-blue-800: #2a4432;
+  --ag-blue-900: #1a2e20;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Sage — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Sage Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Sage green aesthetic.
+ * Deep forest backgrounds with luminous sage highlights.
+ *
+ * Activate by adding class="ag-skin-sage" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-sage {
+  /* ── Primary color family (brightened for dark backgrounds) ── */
+  --ag-primary: #8fbc9c;
+  --ag-primary-dark: #6ea07e;
+  --ag-primary-border: #5f8a6e;
+  --ag-primary-background: #0e1e14;
+  --ag-primary-text: #b8d4c0;
+
+  /* ── Focus ring (sage-derived RGB, brightened) ── */
+  --ag-focus: 143, 188, 156;
+  --ag-focus-dark: #b8d4c0;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #eaf2ec;
+  --ag-text-secondary: #bccebe;
+  --ag-text-muted: #88a08c;
+  --ag-text-primary-muted: #d4e4d8;
+
+  /* ── Borders ── */
+  --ag-border: #253830;
+  --ag-border-subtle: #3a5444;
+
+  /* ── Backgrounds ── */
+  --ag-background-secondary: #0c1a12;
+  --ag-background-tertiary: #1e3228;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 1rem;
+
+  /* ── Shadows (sage-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(143, 188, 156, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(143, 188, 156, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(143, 188, 156, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(143, 188, 156, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(143, 188, 156, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #c4a04e;
+  --ag-rating-filled-primary: #8fbc9c;
+
+  /* ── Sage palette (overrides blue palette) ── */
+  --ag-blue-50: #d4e8da;
+  --ag-blue-100: #b8d4c0;
+  --ag-blue-200: #8fbc9c;
+  --ag-blue-300: #6ea07e;
+  --ag-blue-400: #5f8a6e;
+  --ag-blue-500: #4a7258;
+  --ag-blue-600: #3a5c44;
+  --ag-blue-700: #2a4432;
+  --ag-blue-800: #1a2e20;
+  --ag-blue-900: #0e1e14;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

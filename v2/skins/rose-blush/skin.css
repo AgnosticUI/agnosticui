@@ -1,0 +1,62 @@
+/**
+ * Rose Blush Skin — Light Mode
+ *
+ * Soft pink-rose with warm undertones. Modern, elegant, and approachable.
+ * Inspired by rose quartz tones and contemporary SaaS design.
+ *
+ * Activate by adding class="ag-skin-rose-blush" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-rose-blush {
+  /* ── Primary color family ── */
+  --ag-primary: #e11d73;
+  --ag-primary-dark: #be185d;
+  --ag-primary-border: #fbb6ce;
+  --ag-primary-background: #fff1f5;
+  --ag-primary-text: #9d174d;
+
+  /* ── Focus ring (rose-derived RGB) ── */
+  --ag-focus: 225, 29, 115;
+  --ag-focus-dark: #be185d;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #1a1a2e;
+  --ag-text-secondary: #4a4560;
+  --ag-text-muted: #9091a4;
+  --ag-text-primary-muted: #3d3852;
+
+  /* ── Borders ── */
+  --ag-border: #f0e0e6;
+  --ag-border-subtle: #f5eaef;
+
+  /* ── Backgrounds ── */
+  --ag-background-secondary: #fdf6f8;
+  --ag-background-tertiary: #f9eff3;
+
+  /* ── Border radius (soft, rounded) ── */
+  --ag-radius-lg: 1rem;
+
+  /* ── Shadows (warm pink-tinted) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(225, 29, 115, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(225, 29, 115, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(225, 29, 115, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(225, 29, 115, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(225, 29, 115, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #f59e0b;
+  --ag-rating-filled-primary: #e11d73;
+
+  /* ── Rose palette (overrides blue palette) ── */
+  --ag-blue-50: #fff1f5;
+  --ag-blue-100: #ffe4ed;
+  --ag-blue-200: #fbb6ce;
+  --ag-blue-300: #f687a8;
+  --ag-blue-400: #ec4899;
+  --ag-blue-500: #e11d73;
+  --ag-blue-600: #be185d;
+  --ag-blue-700: #9d174d;
+  --ag-blue-800: #831843;
+  --ag-blue-900: #500724;
+}

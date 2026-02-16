@@ -1,0 +1,61 @@
+/**
+ * Glassmorphism Skin — Dark Mode
+ *
+ * Dark frosted glass with luminous indigo accents and translucent panels.
+ *
+ * Activate by adding class="ag-skin-glassmorphism" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-glassmorphism {
+  /* ── Primary color family (brightened for dark backgrounds) ── */
+  --ag-primary: #818cf8;
+  --ag-primary-dark: #6366f1;
+  --ag-primary-border: #4f46e5;
+  --ag-primary-background: rgba(99, 102, 241, 0.12);
+  --ag-primary-text: #c7d2fe;
+
+  /* ── Focus ring (indigo-derived RGB, brightened) ── */
+  --ag-focus: 129, 140, 248;
+  --ag-focus-dark: #a5b4fc;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #f1f0ff;
+  --ag-text-secondary: #c4c1e0;
+  --ag-text-muted: #8b87a8;
+  --ag-text-primary-muted: #d8d5f0;
+
+  /* ── Borders (translucent light on dark) ── */
+  --ag-border: rgba(255, 255, 255, 0.1);
+  --ag-border-subtle: rgba(255, 255, 255, 0.06);
+
+  /* ── Backgrounds (translucent dark glass) ── */
+  --ag-background-primary: rgba(15, 15, 35, 0.8);
+  --ag-background-secondary: rgba(20, 20, 50, 0.6);
+  --ag-background-tertiary: rgba(30, 30, 70, 0.5);
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 1.25rem;
+
+  /* ── Shadows (indigo-tinted glow) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(99, 102, 241, 0.1);
+  --ag-shadow-sm: 0 2px 8px 0 rgba(99, 102, 241, 0.12);
+  --ag-shadow-md: 0 4px 16px 0 rgba(99, 102, 241, 0.1);
+  --ag-shadow-lg: 0 8px 24px -4px rgba(99, 102, 241, 0.14);
+  --ag-shadow-xl: 0 12px 40px -8px rgba(99, 102, 241, 0.18);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #818cf8;
+
+  /* ── Indigo palette (overrides blue palette) ── */
+  --ag-blue-50: #e0e7ff;
+  --ag-blue-100: #c7d2fe;
+  --ag-blue-200: #a5b4fc;
+  --ag-blue-300: #818cf8;
+  --ag-blue-400: #6366f1;
+  --ag-blue-500: #4f46e5;
+  --ag-blue-600: #4338ca;
+  --ag-blue-700: #3730a3;
+  --ag-blue-800: #312e81;
+  --ag-blue-900: #1e1b4b;
+}

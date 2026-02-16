@@ -1,0 +1,62 @@
+/**
+ * Sage Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Sage green aesthetic.
+ * Deep forest backgrounds with luminous sage highlights.
+ *
+ * Activate by adding class="ag-skin-sage" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-sage {
+  /* ── Primary color family (brightened for dark backgrounds) ── */
+  --ag-primary: #8fbc9c;
+  --ag-primary-dark: #6ea07e;
+  --ag-primary-border: #5f8a6e;
+  --ag-primary-background: #0e1e14;
+  --ag-primary-text: #b8d4c0;
+
+  /* ── Focus ring (sage-derived RGB, brightened) ── */
+  --ag-focus: 143, 188, 156;
+  --ag-focus-dark: #b8d4c0;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #eaf2ec;
+  --ag-text-secondary: #bccebe;
+  --ag-text-muted: #88a08c;
+  --ag-text-primary-muted: #d4e4d8;
+
+  /* ── Borders ── */
+  --ag-border: #253830;
+  --ag-border-subtle: #3a5444;
+
+  /* ── Backgrounds ── */
+  --ag-background-secondary: #0c1a12;
+  --ag-background-tertiary: #1e3228;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 1rem;
+
+  /* ── Shadows (sage-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(143, 188, 156, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(143, 188, 156, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(143, 188, 156, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(143, 188, 156, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(143, 188, 156, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #c4a04e;
+  --ag-rating-filled-primary: #8fbc9c;
+
+  /* ── Sage palette (overrides blue palette) ── */
+  --ag-blue-50: #d4e8da;
+  --ag-blue-100: #b8d4c0;
+  --ag-blue-200: #8fbc9c;
+  --ag-blue-300: #6ea07e;
+  --ag-blue-400: #5f8a6e;
+  --ag-blue-500: #4a7258;
+  --ag-blue-600: #3a5c44;
+  --ag-blue-700: #2a4432;
+  --ag-blue-800: #1a2e20;
+  --ag-blue-900: #0e1e14;
+}

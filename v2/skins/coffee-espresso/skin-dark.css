@@ -1,0 +1,63 @@
+/**
+ * Coffee Espresso Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Coffee Espresso warm brown aesthetic.
+ * Deep espresso backgrounds with cream and mocha highlights.
+ *
+ * Activate by adding class="ag-skin-coffee-espresso" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-coffee-espresso {
+  /* ── Primary color family (brightened for dark backgrounds) ── */
+  --ag-primary: #c4a07c;
+  --ag-primary-dark: #a07850;
+  --ag-primary-border: #6f4e37;
+  --ag-primary-background: #221610;
+  --ag-primary-text: #d4b89c;
+
+  /* ── Focus ring (coffee-derived RGB, brightened) ── */
+  --ag-focus: 196, 160, 124;
+  --ag-focus-dark: #d4b89c;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #f5ece3;
+  --ag-text-secondary: #d4c4b4;
+  --ag-text-muted: #a0907e;
+  --ag-text-primary-muted: #e8ddd0;
+
+  /* ── Borders ── */
+  --ag-border: #3d2e22;
+  --ag-border-subtle: #5a4434;
+
+  /* ── Backgrounds ── */
+  --ag-background-primary: #120c08;
+  --ag-background-secondary: #1a120c;
+  --ag-background-tertiary: #2e2218;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm brown-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(196, 160, 124, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(196, 160, 124, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(196, 160, 124, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(196, 160, 124, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(196, 160, 124, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #d4a055;
+  --ag-rating-filled-primary: #c4a07c;
+
+  /* ── Coffee palette (overrides blue palette) ── */
+  --ag-blue-50: #f0e0cc;
+  --ag-blue-100: #d4b89c;
+  --ag-blue-200: #c4a07c;
+  --ag-blue-300: #a07850;
+  --ag-blue-400: #6f4e37;
+  --ag-blue-500: #5a3e2b;
+  --ag-blue-600: #4a3322;
+  --ag-blue-700: #362418;
+  --ag-blue-800: #221610;
+  --ag-blue-900: #150e08;
+}
