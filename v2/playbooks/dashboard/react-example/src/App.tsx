@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import {
   Home, BookOpen, Star, Bell, Zap, Settings, Search, Menu, X,
-  Bookmark, Share2, ArrowRight, ChevronRight, Sun, Moon,
+  Bookmark, Share2, ArrowRight, ChevronRight,
 } from 'lucide-react';
+import { SkinSwitcher } from './SkinSwitcher';
 
 // AgnosticUI React wrappers
 import { ReactBreadcrumb, type BreadcrumbItem } from './components/ag/Breadcrumb/react/ReactBreadcrumb';
@@ -240,27 +241,15 @@ function App() {
   const [activeNav, setActiveNav] = useState('dashboard');
   const [toastOpen, setToastOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
-  const [isDark, setIsDark] = useState(
-    () => document.documentElement.getAttribute('data-theme') === 'dark'
-  );
 
   const { selectedPath, selectedInterests, userName } = onboardingData;
   const pathName = selectedPath ? capitalize(selectedPath) : 'Personal';
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
-
-  function toggleTheme() {
-    const html = document.documentElement;
-    if (isDark) {
-      html.removeAttribute('data-theme');
-    } else {
-      html.setAttribute('data-theme', 'dark');
-    }
-    setIsDark(!isDark);
-  }
 
   const curatedResources = allResources.filter((r) =>
     selectedInterests.includes(r.category)
@@ -340,13 +329,6 @@ function App() {
               <Bell size={20} style={{ color: 'var(--ag-text-secondary)' }} />
               <ReactBadge variant="info" size="xs">3</ReactBadge>
             </div>
-            <button
-              className="theme-toggle"
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              onClick={toggleTheme}
-            >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
             <ReactAvatar text="JD" size="sm" />
           </div>
         </div>
@@ -507,6 +489,8 @@ function App() {
       >
         {toastMessage}
       </ReactToast>
+
+      <SkinSwitcher />
     </div>
   );
 }

@@ -48,14 +48,6 @@
             <Bell :size="20" :style="{ color: 'var(--ag-text-secondary)' }" />
             <VueBadge variant="info" size="xs">3</VueBadge>
           </div>
-          <button
-            class="theme-toggle"
-            :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-            @click="toggleTheme"
-          >
-            <Sun v-if="isDark" :size="20" />
-            <Moon v-else :size="20" />
-          </button>
           <VueAvatar text="JD" size="sm" />
         </div>
       </div>
@@ -257,6 +249,8 @@
       </VueAccordion>
     </main>
 
+    <SkinSwitcher />
+
     <!-- Toast for bookmark feedback -->
     <VueToast
       :open="toastOpen"
@@ -275,8 +269,9 @@
 import { ref, computed, onMounted } from 'vue';
 import {
   Home, BookOpen, Star, Bell, Zap, Settings, Search, Menu, X,
-  Bookmark, Share2, ArrowRight, ChevronRight, Sun, Moon,
+  Bookmark, Share2, ArrowRight, ChevronRight,
 } from 'lucide-vue-next';
+import SkinSwitcher from './SkinSwitcher.vue';
 
 // AgnosticUI Vue wrappers
 import VueBreadcrumb from './components/ag/Breadcrumb/vue/VueBreadcrumb.vue';
@@ -459,23 +454,13 @@ const sidebarOpen = ref(false);
 const activeNav = ref('dashboard');
 const toastOpen = ref(false);
 const toastMessage = ref('');
-const isDark = ref(document.documentElement.getAttribute('data-theme') === 'dark');
+const isDark = computed(() => document.documentElement.getAttribute('data-theme') === 'dark');
 
 onMounted(() => {
   setTimeout(() => {
     isLoading.value = false;
   }, 1500);
 });
-
-function toggleTheme() {
-  const html = document.documentElement;
-  if (isDark.value) {
-    html.removeAttribute('data-theme');
-  } else {
-    html.setAttribute('data-theme', 'dark');
-  }
-  isDark.value = !isDark.value;
-}
 
 const curatedResources = computed(() =>
   allResources.filter((r) => selectedInterests.includes(r.category))

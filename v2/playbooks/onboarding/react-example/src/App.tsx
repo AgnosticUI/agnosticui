@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { User, Users, Building2, ArrowRight, Check } from 'lucide-react';
+import { SkinSwitcher } from './SkinSwitcher';
 
 // AgnosticUI Components
 import { ReactButton } from './components/ag/Button/react/ReactButton';
@@ -268,6 +269,8 @@ function App() {
           </ReactButton>
         )}
       </div>
+
+      <SkinSwitcher />
     </div>
   );
 }

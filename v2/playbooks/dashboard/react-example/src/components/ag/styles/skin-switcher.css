@@ -1,0 +1,206 @@
+/**
+ * Skin Switcher — FAB + Panel Styles
+ *
+ * Framework-agnostic CSS for the floating skin/theme switcher.
+ * Uses --ag-* tokens so it self-themes with the active skin.
+ */
+
+/* ===== FAB Button ===== */
+.skin-fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--ag-border, #e0e0e0);
+  background: var(--ag-background-primary, #ffffff);
+  color: var(--ag-text-secondary, #666);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--ag-shadow-lg, 0 4px 16px -2px rgba(0, 0, 0, 0.12));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skin-fab:hover {
+  transform: scale(1.08);
+  box-shadow: var(--ag-shadow-xl, 0 8px 24px -4px rgba(0, 0, 0, 0.16));
+}
+
+.skin-fab:active {
+  transform: scale(0.96);
+}
+
+.skin-fab svg {
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+/* ===== Panel ===== */
+.skin-panel {
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  width: 240px;
+  background: var(--ag-background-primary, #ffffff);
+  border: 1px solid var(--ag-border, #e0e0e0);
+  border-radius: var(--ag-radius-md, 0.5rem);
+  box-shadow: var(--ag-shadow-xl, 0 8px 24px -4px rgba(0, 0, 0, 0.16));
+  padding: 0;
+  overflow: hidden;
+  animation: skin-panel-in 0.15s ease-out;
+}
+
+@keyframes skin-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Panel Sections ===== */
+.skin-panel-section {
+  padding: 0.75rem 1rem;
+}
+
+.skin-panel-section + .skin-panel-section {
+  border-top: 1px solid var(--ag-border, #e0e0e0);
+}
+
+.skin-panel-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ag-text-secondary, #666);
+  margin: 0 0 0.5rem 0;
+}
+
+/* ===== Theme Toggle ===== */
+.skin-panel-themes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.skin-theme-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.5rem;
+  border: 1px solid var(--ag-border, #e0e0e0);
+  border-radius: var(--ag-radius-sm, 0.25rem);
+  background: transparent;
+  color: var(--ag-text-secondary, #666);
+  font-size: 0.8125rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.skin-theme-btn:hover {
+  background: var(--ag-background-secondary, #f5f5f5);
+}
+
+.skin-theme-btn.active {
+  background: var(--ag-primary-background, #e8f0fe);
+  border-color: var(--ag-primary, #297aff);
+  color: var(--ag-primary, #297aff);
+  font-weight: 600;
+}
+
+.skin-theme-btn svg {
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+/* ===== Skin Options ===== */
+.skin-option {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.4375rem 0.25rem;
+  border: none;
+  background: transparent;
+  color: var(--ag-text-primary, #1a1a1a);
+  font-size: 0.8125rem;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: var(--ag-radius-sm, 0.25rem);
+  transition: background 0.15s;
+}
+
+.skin-option:hover {
+  background: var(--ag-background-secondary, #f5f5f5);
+}
+
+.skin-option.active {
+  font-weight: 600;
+  color: var(--ag-primary, #297aff);
+}
+
+.skin-option-radio {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--ag-border, #ccc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.skin-option.active .skin-option-radio {
+  border-color: var(--ag-primary, #297aff);
+}
+
+.skin-option.active .skin-option-radio::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ag-primary, #297aff);
+}
+
+.skin-option-label {
+  flex: 1;
+  text-align: left;
+}
+
+.skin-option-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Keyboard Hint ===== */
+.skin-panel-hint {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--ag-border, #e0e0e0);
+  font-size: 0.6875rem;
+  color: var(--ag-text-muted, var(--ag-text-secondary, #999));
+  text-align: center;
+}
+
+.skin-panel-hint kbd {
+  font-family: inherit;
+  font-size: 0.625rem;
+  padding: 0.125rem 0.3125rem;
+  border: 1px solid var(--ag-border, #ddd);
+  border-radius: 3px;
+  background: var(--ag-background-secondary, #f5f5f5);
+}

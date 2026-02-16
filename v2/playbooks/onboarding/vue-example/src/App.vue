@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { User, Users, Building2, ArrowRight, Check } from 'lucide-vue-next';
+import SkinSwitcher from './SkinSwitcher.vue';
 
 // AgnosticUI Components
 import VueButton from './components/ag/Button/vue/VueButton.vue';
@@ -283,5 +284,7 @@ const toInterestValue = (interest: string) => {
         </span>
       </VueButton>
     </div>
+
+    <SkinSwitcher />
   </div>
 </template>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, Lock } from 'lucide-react';
+import { SkinSwitcher } from './SkinSwitcher';
 import { ReactButton } from './components/ag/Button/react/ReactButton';
 import { ReactInput } from './components/ag/Input/react/ReactInput';
 import { ReactCard } from './components/ag/Card/react/ReactCard';
@@ -134,6 +135,8 @@ function App() {
           fit="cover"
         />
       </div>
+
+      <SkinSwitcher />
     </div>
   );
 }

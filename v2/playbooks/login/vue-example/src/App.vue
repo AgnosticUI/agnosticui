@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Mail, Lock } from 'lucide-vue-next';
+import SkinSwitcher from './SkinSwitcher.vue';
 import VueButton from './components/ag/Button/vue/VueButton.vue';
 import VueInput from './components/ag/Input/vue/VueInput.vue';
 import VueCard from './components/ag/Card/vue/VueCard.vue';
@@ -204,5 +205,7 @@ const bgImageSources = [
         fit="cover"
       />
     </div>
+
+    <SkinSwitcher />
   </div>
 </template>

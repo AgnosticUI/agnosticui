@@ -4,6 +4,7 @@ import { customElement, state } from 'lit/decorators.js';
 // Import AgnosticUI token styles
 import './components/ag/styles/ag-tokens.css';
 import './components/ag/styles/ag-tokens-dark.css';
+import './components/ag/styles/skins-bundle.css';
 
 // Import AgnosticUI components
 import './components/ag/Button/core/Button';
@@ -13,6 +14,7 @@ import './components/ag/SelectionCardGroup/core/SelectionCardGroup';
 import './components/ag/SelectionCard/core/SelectionCard';
 import './components/ag/SelectionButtonGroup/core/SelectionButtonGroup';
 import './components/ag/SelectionButton/core/SelectionButton';
+import './skin-switcher';
 
 // Inline SVG icons
 const userIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
@@ -446,6 +448,8 @@ export class OnboardingWizard extends LitElement {
         ${this._currentStep === 2 ? this._renderStep2() : ''}
         ${this._currentStep === 3 ? this._renderStep3() : ''}
         ${this._renderNavButtons()}
+
+        <skin-switcher></skin-switcher>
       </div>
     `;
   }
