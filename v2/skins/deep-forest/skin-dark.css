@@ -1,0 +1,57 @@
+/**
+ * Deep Forest Skin — Dark Mode
+ *
+ * Dark-mode overrides for the Deep Forest teal/green aesthetic.
+ *
+ * Activate by adding class="ag-skin-deep-forest" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-deep-forest {
+  /* ── Primary color family (brightened for dark backgrounds) ── */
+  --ag-primary: #3a8a80;
+  --ag-primary-dark: #2d6e65;
+  --ag-primary-border: #3a8a80;
+  --ag-primary-background: #0d2926;
+  --ag-primary-text: #94d2ca;
+
+  /* ── Focus ring (teal-derived RGB, brightened) ── */
+  --ag-focus: 58, 138, 128;
+  --ag-focus-dark: #4db3a6;
+
+  /* ── Semantic text ── */
+  --ag-text-primary-muted: #c0e5e0;
+
+  /* ── Borders ── */
+  --ag-border: #1f3d3a;
+  --ag-border-subtle: #2d5a54;
+
+  /* ── Backgrounds ── */
+  --ag-background-secondary: #0a1f1d;
+  --ag-background-tertiary: #1a3936;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 1.25rem;
+
+  /* ── Shadows (teal-tinted for dark mode) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(58, 138, 128, 0.1);
+  --ag-shadow-sm: 0 0 8px 0 rgba(58, 138, 128, 0.12);
+  --ag-shadow-md: 0 0 15px 0 rgba(58, 138, 128, 0.1);
+  --ag-shadow-lg: 0 0 25px -2px rgba(58, 138, 128, 0.12);
+  --ag-shadow-xl: 0 0 35px -4px rgba(58, 138, 128, 0.15);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #3a8a80;
+
+  /* ── Teal palette (overrides blue palette for primary usage) ── */
+  --ag-blue-50: #c0e5e0;
+  --ag-blue-100: #94d2ca;
+  --ag-blue-200: #66bfb3;
+  --ag-blue-300: #4db3a6;
+  --ag-blue-400: #3a8a80;
+  --ag-blue-500: #287a70;
+  --ag-blue-600: #1f6660;
+  --ag-blue-700: #174f4a;
+  --ag-blue-800: #0f3834;
+  --ag-blue-900: #0d2926;
+}
