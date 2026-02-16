@@ -10,6 +10,7 @@
 [data-theme="dark"].ag-skin-monochromatic {
   /* ── Primary color family (white for dark backgrounds) ── */
   --ag-primary: #ffffff;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #e5e5e5;
   --ag-primary-border: #404040;
   --ag-primary-background: #1a1a1a;

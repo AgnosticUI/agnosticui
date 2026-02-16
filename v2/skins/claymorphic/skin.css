@@ -11,6 +11,7 @@
 :where(html).ag-skin-claymorphic {
   /* ── Primary color family ── */
   --ag-primary: #c96442;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #b05730;
   --ag-primary-border: #e8c4b5;
   --ag-primary-background: #fdf0eb;

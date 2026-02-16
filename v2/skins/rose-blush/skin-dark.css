@@ -10,6 +10,7 @@
 [data-theme="dark"].ag-skin-rose-blush {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #ec4899;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #e11d73;
   --ag-primary-border: #ec4899;
   --ag-primary-background: #2a0a1e;

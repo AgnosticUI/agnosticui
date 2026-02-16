@@ -11,6 +11,7 @@
 :where(html).ag-skin-neons-on-black {
   /* ── Primary color family (neon cyan) ── */
   --ag-primary: #00ffff;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #00e5e5;
   --ag-primary-border: #00cccc;
   --ag-primary-background: #001a1a;
@@ -63,7 +64,9 @@
 
   /* ── Accent colors (additional neons) ── */
   --ag-success: #00ff00;
+  --ag-success-fg: #000000;
   --ag-warning: #ffff00;
   --ag-danger: #ff00ff;
+  --ag-danger-fg: #000000;
   --ag-info: #ff00cc;
 }

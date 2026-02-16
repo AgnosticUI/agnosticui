@@ -10,6 +10,7 @@
 [data-theme="dark"].ag-skin-muted-minimal {
   /* ── Primary color family (brightened muted blue) ── */
   --ag-primary: #6fa8ba;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #5a95a8;
   --ag-primary-border: #4a7a8a;
   --ag-primary-background: #1a2830;

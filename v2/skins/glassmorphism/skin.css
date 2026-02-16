@@ -11,6 +11,7 @@
 :where(html).ag-skin-glassmorphism {
   /* ── Primary color family (soft violet-blue) ── */
   --ag-primary: #6366f1;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #4f46e5;
   --ag-primary-border: #c7d2fe;
   --ag-primary-background: rgba(99, 102, 241, 0.08);

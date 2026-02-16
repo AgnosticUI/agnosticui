@@ -11,6 +11,7 @@
 [data-theme="dark"].ag-skin-retro-brutalist {
   /* ── Primary color family ── */
   --ag-primary: #ffdb33;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #ffcc00;
   --ag-primary-border: #5c5c5c;
   --ag-primary-background: #2e2a1a;
@@ -51,6 +52,7 @@
 
   /* ── Danger ── */
   --ag-danger: #e63946;
+  --ag-danger-fg: #000000;
   --ag-danger-rgb: 230, 57, 70;
   --ag-danger-dark: #ff5a67;
 

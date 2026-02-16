@@ -14,6 +14,7 @@ export const SKINS_CSS = {
 :where(html).ag-skin-autumn-slate {
   /* ── Primary color family (burnt orange) ── */
   --ag-primary: #d2691e;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #b8571a;
   --ag-primary-border: #e8b896;
   --ag-primary-background: #fdf6f0;
@@ -76,6 +77,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-autumn-slate {
   /* ── Primary color family (brightened burnt orange) ── */
   --ag-primary: #e89148;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #d2691e;
   --ag-primary-border: #c86828;
   --ag-primary-background: #2a1a10;
@@ -203,6 +205,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-black-cream {
   /* ── Primary color family (warm cream) ── */
   --ag-primary: #f0ede8;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #e0dcd5;
   --ag-primary-border: #4a4745;
   --ag-primary-background: #1a1816;
@@ -268,6 +271,7 @@ export const SKINS_CSS = {
 :where(html).ag-skin-claymorphic {
   /* ── Primary color family ── */
   --ag-primary: #c96442;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #b05730;
   --ag-primary-border: #e8c4b5;
   --ag-primary-background: #fdf0eb;
@@ -330,6 +334,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-claymorphic {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #d97757;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #c96442;
   --ag-primary-border: #d97757;
   --ag-primary-background: #3a2218;
@@ -457,6 +462,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-coffee-espresso {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #c4a07c;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #a07850;
   --ag-primary-border: #6f4e37;
   --ag-primary-background: #221610;
@@ -578,6 +584,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-deep-forest {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #3a8a80;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #2d6e65;
   --ag-primary-border: #3a8a80;
   --ag-primary-background: #0d2926;
@@ -638,6 +645,7 @@ export const SKINS_CSS = {
 :where(html).ag-skin-glassmorphism {
   /* ── Primary color family (soft violet-blue) ── */
   --ag-primary: #6366f1;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #4f46e5;
   --ag-primary-border: #c7d2fe;
   --ag-primary-background: rgba(99, 102, 241, 0.08);
@@ -699,6 +707,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-glassmorphism {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #818cf8;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #6366f1;
   --ag-primary-border: #4f46e5;
   --ag-primary-background: rgba(99, 102, 241, 0.12);
@@ -825,6 +834,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-high-contrast {
   /* ── Primary color family (bright for dark backgrounds) ── */
   --ag-primary: #4890f0;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #1a6ee6;
   --ag-primary-border: #4890f0;
   --ag-primary-background: #001030;
@@ -889,6 +899,7 @@ export const SKINS_CSS = {
 :where(html).ag-skin-mo-neobrut {
   /* ── Primary color family (vibrant cyan/blue) ── */
   --ag-primary: #00bcd4;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #0097a7;
   --ag-primary-border: #000000;
   --ag-primary-background: #e0f7fa;
@@ -955,6 +966,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-mo-neobrut {
   /* ── Primary color family (brightened cyan) ── */
   --ag-primary: #26c6da;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #00bcd4;
   --ag-primary-border: #4dd0e1;
   --ag-primary-background: #004d56;
@@ -1085,6 +1097,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-monochromatic {
   /* ── Primary color family (white for dark backgrounds) ── */
   --ag-primary: #ffffff;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #e5e5e5;
   --ag-primary-border: #404040;
   --ag-primary-background: #1a1a1a;
@@ -1149,6 +1162,7 @@ export const SKINS_CSS = {
 :where(html).ag-skin-muted-minimal {
   /* ── Primary color family (muted blue) ── */
   --ag-primary: #4a90a4;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #3a7a8c;
   --ag-primary-border: #c5dde5;
   --ag-primary-background: #edf5f7;
@@ -1210,6 +1224,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-muted-minimal {
   /* ── Primary color family (brightened muted blue) ── */
   --ag-primary: #6fa8ba;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #5a95a8;
   --ag-primary-border: #4a7a8a;
   --ag-primary-background: #1a2830;
@@ -1274,6 +1289,7 @@ export const SKINS_CSS = {
 :where(html).ag-skin-neons-on-black {
   /* ── Primary color family (neon cyan) ── */
   --ag-primary: #00ffff;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #00e5e5;
   --ag-primary-border: #00cccc;
   --ag-primary-background: #001a1a;
@@ -1326,8 +1342,10 @@ export const SKINS_CSS = {
 
   /* ── Accent colors (additional neons) ── */
   --ag-success: #00ff00;
+  --ag-success-fg: #000000;
   --ag-warning: #ffff00;
   --ag-danger: #ff00ff;
+  --ag-danger-fg: #000000;
   --ag-info: #ff00cc;
 }`,
     dark: `/**
@@ -1342,6 +1360,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-neons-on-black {
   /* ── Primary color family (brighter neon cyan) ── */
   --ag-primary: #33ffff;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #00ffff;
   --ag-primary-border: #00e5e5;
   --ag-primary-background: #002020;
@@ -1394,8 +1413,10 @@ export const SKINS_CSS = {
 
   /* ── Accent colors (brighter neons) ── */
   --ag-success: #33ff33;
+  --ag-success-fg: #000000;
   --ag-warning: #ffff33;
   --ag-danger: #ff33ff;
+  --ag-danger-fg: #000000;
   --ag-info: #ff33cc;
 }`,
   },
@@ -1413,6 +1434,7 @@ export const SKINS_CSS = {
 :where(html).ag-skin-retro-brutalist {
   /* ── Primary color family ── */
   --ag-primary: #ffdb33;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #ffcc00;
   --ag-primary-border: #000000;
   --ag-primary-background: #fef9e7;
@@ -1453,6 +1475,7 @@ export const SKINS_CSS = {
 
   /* ── Danger (vivid red) ── */
   --ag-danger: #e63946;
+  --ag-danger-fg: #000000;
   --ag-danger-rgb: 230, 57, 70;
   --ag-danger-dark: #c5303f;
 
@@ -1485,6 +1508,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-retro-brutalist {
   /* ── Primary color family ── */
   --ag-primary: #ffdb33;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #ffcc00;
   --ag-primary-border: #5c5c5c;
   --ag-primary-background: #2e2a1a;
@@ -1525,6 +1549,7 @@ export const SKINS_CSS = {
 
   /* ── Danger ── */
   --ag-danger: #e63946;
+  --ag-danger-fg: #000000;
   --ag-danger-rgb: 230, 57, 70;
   --ag-danger-dark: #ff5a67;
 
@@ -1620,6 +1645,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-rose-blush {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #ec4899;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #e11d73;
   --ag-primary-border: #ec4899;
   --ag-primary-background: #2a0a1e;
@@ -1684,6 +1710,7 @@ export const SKINS_CSS = {
 :where(html).ag-skin-sage {
   /* ── Primary color family (muted sage green) ── */
   --ag-primary: #5f8a6e;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #4a7258;
   --ag-primary-border: #b8d4c0;
   --ag-primary-background: #f0f7f2;
@@ -1746,6 +1773,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-sage {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #8fbc9c;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #6ea07e;
   --ag-primary-border: #5f8a6e;
   --ag-primary-background: #0e1e14;
@@ -1809,6 +1837,7 @@ export const SKINS_CSS = {
 :where(html).ag-skin-terra-soft {
   /* ── Primary color family ── */
   --ag-primary: #ff6a3e;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #e55530;
   --ag-primary-border: #ffd4c4;
   --ag-primary-background: #fff4f0;
@@ -1870,6 +1899,7 @@ export const SKINS_CSS = {
 [data-theme="dark"].ag-skin-terra-soft {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #ff8a62;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #ff6a3e;
   --ag-primary-border: #ff8a62;
   --ag-primary-background: #2e1a12;

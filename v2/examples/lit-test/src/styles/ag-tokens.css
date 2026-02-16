@@ -163,6 +163,10 @@
   --ag-warning-text: #7d4e00;
   --ag-danger-background: #ffebe9;
   --ag-danger-text: #a40e26;
+  --ag-primary-fg: #ffffff;
+  --ag-success-fg: #ffffff;
+  --ag-warning-fg: #111827;
+  --ag-danger-fg: #ffffff;
   --ag-border: #e5e7eb;
   --ag-border-subtle: #d1d5db;
   --ag-primary: #0550ae;
@@ -190,4 +194,5 @@
   --ag-rating-filled-success: #238636;
   --ag-rating-filled-warning: #9a6700;
   --ag-rating-filled-danger: #cf222e;
+  --ag-rating-filled-secondary: #6b7280;
 }

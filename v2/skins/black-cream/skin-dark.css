@@ -10,6 +10,7 @@
 [data-theme="dark"].ag-skin-black-cream {
   /* ── Primary color family (warm cream) ── */
   --ag-primary: #f0ede8;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #e0dcd5;
   --ag-primary-border: #4a4745;
   --ag-primary-background: #1a1816;

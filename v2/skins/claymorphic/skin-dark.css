@@ -11,6 +11,7 @@
 [data-theme="dark"].ag-skin-claymorphic {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #d97757;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #c96442;
   --ag-primary-border: #d97757;
   --ag-primary-background: #3a2218;

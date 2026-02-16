@@ -10,6 +10,7 @@
 [data-theme="dark"].ag-skin-mo-neobrut {
   /* ── Primary color family (brightened cyan) ── */
   --ag-primary: #26c6da;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #00bcd4;
   --ag-primary-border: #4dd0e1;
   --ag-primary-background: #004d56;

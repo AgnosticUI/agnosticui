@@ -11,6 +11,7 @@
 :where(html).ag-skin-retro-brutalist {
   /* ── Primary color family ── */
   --ag-primary: #ffdb33;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #ffcc00;
   --ag-primary-border: #000000;
   --ag-primary-background: #fef9e7;
@@ -51,6 +52,7 @@
 
   /* ── Danger (vivid red) ── */
   --ag-danger: #e63946;
+  --ag-danger-fg: #000000;
   --ag-danger-rgb: 230, 57, 70;
   --ag-danger-dark: #c5303f;
 

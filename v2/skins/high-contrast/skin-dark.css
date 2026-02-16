@@ -11,6 +11,7 @@
 [data-theme="dark"].ag-skin-high-contrast {
   /* ── Primary color family (bright for dark backgrounds) ── */
   --ag-primary: #4890f0;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #1a6ee6;
   --ag-primary-border: #4890f0;
   --ag-primary-background: #001030;

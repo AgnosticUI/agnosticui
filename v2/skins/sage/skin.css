@@ -11,6 +11,7 @@
 :where(html).ag-skin-sage {
   /* ── Primary color family (muted sage green) ── */
   --ag-primary: #5f8a6e;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #4a7258;
   --ag-primary-border: #b8d4c0;
   --ag-primary-background: #f0f7f2;

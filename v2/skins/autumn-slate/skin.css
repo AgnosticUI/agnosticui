@@ -11,6 +11,7 @@
 :where(html).ag-skin-autumn-slate {
   /* ── Primary color family (burnt orange) ── */
   --ag-primary: #d2691e;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #b8571a;
   --ag-primary-border: #e8b896;
   --ag-primary-background: #fdf6f0;

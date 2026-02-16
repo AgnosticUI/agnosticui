@@ -125,32 +125,32 @@ export class AgButton extends LitElement implements ButtonProps {
       background: var(--ag-neutral-500);
     }
 
-    /* Primary, success, warning, and danger all have white text and get
-      darker on hover */
+    /* Primary, success, warning, and danger use variant-specific foreground
+      tokens (--ag-{variant}-fg) and get darker on hover */
     :host([variant="primary"]) button {
       background: var(--ag-primary);
-      color: var(--ag-white);
+      color: var(--ag-primary-fg);
     }
     :host([variant="primary"]) button:hover {
       background: var(--ag-primary-dark);
     }
     :host([variant="success"]) button {
       background: var(--ag-success);
-      color: var(--ag-white);
+      color: var(--ag-success-fg);
     }
     :host([variant="success"]) button:hover {
       background: var(--ag-success-dark);
     }
     :host([variant="warning"]) button {
       background: var(--ag-warning);
-      color: var(--ag-neutral-900);
+      color: var(--ag-warning-fg);
     }
     :host([variant="warning"]) button:hover {
       background: var(--ag-warning-dark);
     }
     :host([variant="danger"]) button {
       background: var(--ag-danger);
-      color: var(--ag-white);
+      color: var(--ag-danger-fg);
     }
     :host([variant="danger"]) button:hover {
       background: var(--ag-danger-dark);
@@ -337,11 +337,11 @@ export class AgButton extends LitElement implements ButtonProps {
       border-color: var(--ag-primary-text);
     }
 
-    /* Bordered Buttons on Hover have a filled background with white text.  The
-      Default Bordered is an exception to this rule. */
+    /* Bordered Buttons on Hover have a filled background with variant-specific
+      foreground text.  The Default Bordered is an exception to this rule. */
     :host([bordered][variant="primary"]) button:hover {
       background: var(--ag-primary);
-      color: var(--ag-white);
+      color: var(--ag-primary-fg);
     }
 
     :host([bordered][variant="secondary"]) button,
@@ -356,7 +356,7 @@ export class AgButton extends LitElement implements ButtonProps {
     }
 
     :host([bordered][variant="success"]) button:hover {
-      color: var(--ag-white);
+      color: var(--ag-success-fg);
       background: var(--ag-success);
     }
 
@@ -367,7 +367,7 @@ export class AgButton extends LitElement implements ButtonProps {
 
     :host([bordered][variant="warning"]) button:hover {
       background: var(--ag-warning);
-      color: var(--ag-neutral-900);
+      color: var(--ag-warning-fg);
     }
 
     :host([bordered][variant="danger"]) button {
@@ -377,7 +377,7 @@ export class AgButton extends LitElement implements ButtonProps {
 
     :host([bordered][variant="danger"]) button:hover {
       background: var(--ag-danger);
-      color: var(--ag-white);
+      color: var(--ag-danger-fg);
     }
 
     :host([bordered][variant="monochrome"]) button {

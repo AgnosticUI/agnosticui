@@ -10,6 +10,7 @@
 [data-theme="dark"].ag-skin-terra-soft {
   /* ── Primary color family (brightened for dark backgrounds) ── */
   --ag-primary: #ff8a62;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #ff6a3e;
   --ag-primary-border: #ff8a62;
   --ag-primary-background: #2e1a12;
