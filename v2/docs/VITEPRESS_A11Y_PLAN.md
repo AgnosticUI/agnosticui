@@ -16,6 +16,7 @@ These elements fail WCAG 2.1 Level AA contrast requirements (4.5:1 for normal te
 ## Reference Implementation
 
 Git commit `c802ce66` demonstrates the remediation approach applied to:
+
 - `v2/site/docs/components/alert.md`
 - `v2/site/docs/components/accordion.md`
 
@@ -24,12 +25,14 @@ These files serve as the canonical reference for the desired outcome.
 ## Scope
 
 ### In Scope
+
 - All markdown files in `v2/site/docs/components/` (54 total files)
 - Code snippets within `::: details Vue`, `::: details React`, and `::: details Lit/Vanilla JS` sections
 - CSS customization examples in "Shadow Parts" and "Customization" sections
 - JavaScript event handler examples
 
 ### Out of Scope
+
 - VitePress theme CSS modifications
 - Component source code files
 - Example Vue components (e.g., `AlertExamples.vue`)
@@ -45,62 +48,62 @@ These files serve as the canonical reference for the desired outcome.
 
 ### All Files Status
 
-| Status | File | Batch |
-|--------|------|-------|
-| ✅ | accordion.md | Pre-completed (c802ce66) |
-| ✅ | alert.md | Pre-completed (c802ce66) |
-| ✅ | aspect-ratio.md | Batch 1 |
-| ✅ | avatar.md | Batch 1 |
-| ✅ | badge-fx.md | Batch 1 |
-| ✅ | badge.md | Batch 1 |
-| ✅ | breadcrumb.md | Batch 1 |
-| ✅ | button-fx.md | Batch 1 |
-| ✅ | button.md | Batch 1 |
-| ✅ | card.md | Batch 1 |
-| ✅ | checkbox.md | Batch 1 |
-| ✅ | collapsible.md | Batch 1 |
-| ✅ | combobox.md | Batch 2 |
-| ✅ | copybutton.md | Batch 2 |
-| ✅ | dialog.md | Batch 2 |
-| ✅ | divider.md | Batch 2 |
-| ✅ | drawer.md | Batch 2 |
-| ✅ | empty-state.md | Batch 2 |
-| ✅ | fieldset.md | Batch 2 |
-| ✅ | flex.md | Batch 2 |
-| ✅ | header.md | Batch 2 |
-| ✅ | icon-button-fx.md | Batch 2 |
-| ✅ | icon-button.md | Batch 3 |
-| ✅ | icon.md | Batch 3 |
-| ✅ | image.md | Batch 3 |
-| ✅ | input.md | Batch 3 |
-| ✅ | intl-formatter.md | Batch 3 |
-| ✅ | kbd.md | Batch 3 |
-| ✅ | link.md | Batch 3 |
-| ✅ | loader.md | Batch 3 |
-| ✅ | mark.md | Batch 3 |
-| ✅ | menu.md | Batch 3 |
-| ✅ | message-bubble.md | Batch 4 |
-| ✅ | pagination.md | Batch 4 |
-| ✅ | popover.md | Batch 4 |
-| ✅ | progress-ring.md | Batch 4 |
-| ✅ | progress.md | Batch 4 |
-| ✅ | radio.md | Batch 4 |
-| ✅ | rating.md | Batch 4 |
-| ✅ | scroll-progress.md | Batch 4 |
-| ✅ | scroll-to-button.md | Batch 4 |
-| ✅ | select.md | Batch 4 |
-| ✅ | sidebar.md | Batch 5 |
-| ✅ | skeleton-loader.md | Batch 5 |
-| ✅ | slider.md | Batch 5 |
-| ✅ | spinner.md | Batch 5 |
-| ✅ | table.md | Batch 5 |
-| ✅ | tabs.md | Batch 5 |
-| ✅ | tag.md | Batch 5 |
-| ✅ | timeline.md | Batch 5 |
-| ✅ | toast.md | Batch 5 |
-| ✅ | toggle.md | Batch 5 |
-| ✅ | tooltip.md | Batch 6 |
-| ✅ | visually-hidden.md | Batch 6 |
+| Status | File                | Batch                    |
+| ------ | ------------------- | ------------------------ |
+| ✅     | accordion.md        | Pre-completed (c802ce66) |
+| ✅     | alert.md            | Pre-completed (c802ce66) |
+| ✅     | aspect-ratio.md     | Batch 1                  |
+| ✅     | avatar.md           | Batch 1                  |
+| ✅     | badge-fx.md         | Batch 1                  |
+| ✅     | badge.md            | Batch 1                  |
+| ✅     | breadcrumb.md       | Batch 1                  |
+| ✅     | button-fx.md        | Batch 1                  |
+| ✅     | button.md           | Batch 1                  |
+| ✅     | card.md             | Batch 1                  |
+| ✅     | checkbox.md         | Batch 1                  |
+| ✅     | collapsible.md      | Batch 1                  |
+| ✅     | combobox.md         | Batch 2                  |
+| ✅     | copybutton.md       | Batch 2                  |
+| ✅     | dialog.md           | Batch 2                  |
+| ✅     | divider.md          | Batch 2                  |
+| ✅     | drawer.md           | Batch 2                  |
+| ✅     | empty-state.md      | Batch 2                  |
+| ✅     | fieldset.md         | Batch 2                  |
+| ✅     | flex.md             | Batch 2                  |
+| ✅     | header.md           | Batch 2                  |
+| ✅     | icon-button-fx.md   | Batch 2                  |
+| ✅     | icon-button.md      | Batch 3                  |
+| ✅     | icon.md             | Batch 3                  |
+| ✅     | image.md            | Batch 3                  |
+| ✅     | input.md            | Batch 3                  |
+| ✅     | intl-formatter.md   | Batch 3                  |
+| ✅     | kbd.md              | Batch 3                  |
+| ✅     | link.md             | Batch 3                  |
+| ✅     | loader.md           | Batch 3                  |
+| ✅     | mark.md             | Batch 3                  |
+| ✅     | menu.md             | Batch 3                  |
+| ✅     | message-bubble.md   | Batch 4                  |
+| ✅     | pagination.md       | Batch 4                  |
+| ✅     | popover.md          | Batch 4                  |
+| ✅     | progress-ring.md    | Batch 4                  |
+| ✅     | progress.md         | Batch 4                  |
+| ✅     | radio.md            | Batch 4                  |
+| ✅     | rating.md           | Batch 4                  |
+| ✅     | scroll-progress.md  | Batch 4                  |
+| ✅     | scroll-to-button.md | Batch 4                  |
+| ✅     | select.md           | Batch 4                  |
+| ✅     | sidebar.md          | Batch 5                  |
+| ✅     | skeleton-loader.md  | Batch 5                  |
+| ✅     | slider.md           | Batch 5                  |
+| ✅     | spinner.md          | Batch 5                  |
+| ✅     | table.md            | Batch 5                  |
+| ✅     | tabs.md             | Batch 5                  |
+| ✅     | tag.md              | Batch 5                  |
+| ✅     | timeline.md         | Batch 5                  |
+| ✅     | toast.md            | Batch 5                  |
+| ✅     | toggle.md           | Batch 5                  |
+| ✅     | tooltip.md          | Batch 6                  |
+| ✅     | visually-hidden.md  | Batch 6                  |
 
 **Progress**: 54 of 54 files completed (100%) ✅
 
@@ -118,7 +121,9 @@ These files serve as the canonical reference for the desired outcome.
 ### 1. Remove All Code Comments
 
 #### HTML/Vue Template Comments
+
 **Remove:**
+
 ```vue
 <!-- Basic accordion -->
 <VueAccordion>
@@ -132,6 +137,7 @@ These files serve as the canonical reference for the desired outcome.
 ```
 
 **Result:**
+
 ```vue
 <VueAccordion>
   ...
@@ -143,16 +149,23 @@ These files serve as the canonical reference for the desired outcome.
 ```
 
 #### JSX/React Comments
-**Remove:**
-```tsx
-{/* Basic button */}
-<ReactButton>Click me</ReactButton>
 
-{/* Variants */}
-<ReactButton variant="primary">Primary</ReactButton>
+**Remove:**
+
+```tsx
+{
+  /* Basic button */
+}
+<ReactButton>Click me</ReactButton>;
+
+{
+  /* Variants */
+}
+<ReactButton variant="primary">Primary</ReactButton>;
 ```
 
 **Result:**
+
 ```tsx
 <ReactButton>Click me</ReactButton>
 
@@ -160,7 +173,9 @@ These files serve as the canonical reference for the desired outcome.
 ```
 
 #### JavaScript/TypeScript Comments
+
 **Remove all inline and block comments:**
+
 ```javascript
 // Pattern 1: Using addEventListener (standard Web Components)
 item.addEventListener("toggle", (event) => {
@@ -177,6 +192,7 @@ item.onToggle = (event) => {
 ```
 
 **Result:**
+
 ```javascript
 item.addEventListener("toggle", (event) => {
   console.log("Toggle event:", event.detail);
@@ -188,7 +204,9 @@ item.onToggle = (event) => {
 ```
 
 #### CSS Comments
+
 **Remove:**
+
 ```css
 /* Customize the alert container */
 ag-alert::part(ag-alert) {
@@ -204,6 +222,7 @@ ag-accordion-item::part(ag-accordion-header) {
 ```
 
 **Result:**
+
 ```css
 ag-alert::part(ag-alert) {
   background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
@@ -222,15 +241,15 @@ CSS variables (custom properties) have poor syntax highlighting contrast. Replac
 
 **Common Replacements:**
 
-| CSS Variable | Replacement Value | Context |
-|-------------|-------------------|---------|
-| `var(--ag-primary)` | `#12623e` | Primary brand color |
-| `var(--ag-primary-dark)` | `#0d4429` | Dark primary variant |
-| `var(--ag-success)` | `#14854f` | Success state color |
-| `var(--ag-danger)` | `#e03e3e` | Danger/error state color |
-| `var(--ag-warning)` | `#f59e0b` | Warning state color |
-| `var(--ag-neutral-500)` | `#6b7280` | Neutral gray |
-| `var(--ag-background-secondary-inverted)` | `#1f2937` | Dark background |
+| CSS Variable                              | Replacement Value | Context                  |
+| ----------------------------------------- | ----------------- | ------------------------ |
+| `var(--ag-primary)`                       | `#12623e`         | Primary brand color      |
+| `var(--ag-primary-dark)`                  | `#0d4429`         | Dark primary variant     |
+| `var(--ag-success)`                       | `#14854f`         | Success state color      |
+| `var(--ag-danger)`                        | `#e03e3e`         | Danger/error state color |
+| `var(--ag-warning)`                       | `#f59e0b`         | Warning state color      |
+| `var(--ag-neutral-500)`                   | `#6b7280`         | Neutral gray             |
+| `var(--ag-background-secondary-inverted)` | `#1f2937`         | Dark background          |
 
 **Fallback for Unknown Variables:**
 If you encounter a CSS variable not listed above, use `#6366f1` (indigo-500) as a fallback placeholder. Document the occurrence for later review.
@@ -238,6 +257,7 @@ If you encounter a CSS variable not listed above, use `#6366f1` (indigo-500) as 
 **Example:**
 
 **Before:**
+
 ```css
 ag-accordion-item::part(ag-accordion-indicator) {
   color: var(--ag-primary);
@@ -245,6 +265,7 @@ ag-accordion-item::part(ag-accordion-indicator) {
 ```
 
 **After:**
+
 ```css
 ag-accordion-item::part(ag-accordion-indicator) {
   color: #12623e;
@@ -256,15 +277,17 @@ ag-accordion-item::part(ag-accordion-indicator) {
 TypeScript interface definitions and type declarations often have inline comments that create contrast issues:
 
 **Remove:**
+
 ```typescript
 interface BreadcrumbItem {
-  label: string;      // Display text for the breadcrumb
-  href?: string;      // Link URL (optional)
-  current?: boolean;  // Marks item as current page (optional)
+  label: string; // Display text for the breadcrumb
+  href?: string; // Link URL (optional)
+  current?: boolean; // Marks item as current page (optional)
 }
 ```
 
 **Result:**
+
 ```typescript
 interface BreadcrumbItem {
   label: string;
@@ -274,16 +297,18 @@ interface BreadcrumbItem {
 ```
 
 **Remove:**
+
 ```typescript
 export interface CheckboxChangeEventDetail {
-  checked: boolean;      // New checked state
-  value: string;         // Form value (if provided)
-  name: string;          // Form name (if provided)
+  checked: boolean; // New checked state
+  value: string; // Form value (if provided)
+  name: string; // Form name (if provided)
   indeterminate: boolean; // Indeterminate state (false after user click)
 }
 ```
 
 **Result:**
+
 ```typescript
 export interface CheckboxChangeEventDetail {
   checked: boolean;
@@ -298,6 +323,7 @@ export interface CheckboxChangeEventDetail {
 Ensure headings follow sequential descending order (h1 → h2 → h3, never skipping levels):
 
 **Before:**
+
 ```markdown
 # Component Name
 
@@ -307,6 +333,7 @@ Ensure headings follow sequential descending order (h1 → h2 → h3, never skip
 ```
 
 **After:**
+
 ```markdown
 # Component Name
 
@@ -322,11 +349,13 @@ Ensure headings follow sequential descending order (h1 → h2 → h3, never skip
 For consistency with curated files, prefer double quotes in JavaScript/TypeScript:
 
 **Before:**
+
 ```javascript
-console.log('Warning dismissed, type:', event.detail.type);
+console.log("Warning dismissed, type:", event.detail.type);
 ```
 
 **After:**
+
 ```javascript
 console.log("Warning dismissed, type:", event.detail.type);
 ```
@@ -363,6 +392,7 @@ For each file processed:
 ### Special Cases
 
 #### Multi-line Comments
+
 Remove block comments spanning multiple lines:
 
 ```javascript
@@ -380,6 +410,7 @@ function example() {}
 ```
 
 #### Inline Comments After Code
+
 Remove comments on the same line as code:
 
 ```javascript
@@ -395,6 +426,7 @@ const foo = "bar";
 ## File Processing Batches
 
 **Batch 1** (Files 3-12):
+
 1. aspect-ratio.md
 2. avatar.md
 3. badge-fx.md
@@ -407,6 +439,7 @@ const foo = "bar";
 10. collapsible.md
 
 **Batch 2** (Files 13-22):
+
 1. combobox.md
 2. copybutton.md
 3. dialog.md
@@ -419,6 +452,7 @@ const foo = "bar";
 10. icon-button-fx.md
 
 **Batch 3** (Files 23-32):
+
 1. icon-button.md
 2. icon.md
 3. image.md
@@ -431,6 +465,7 @@ const foo = "bar";
 10. menu.md
 
 **Batch 4** (Files 33-42):
+
 1. message-bubble.md
 2. pagination.md
 3. popover.md
@@ -443,6 +478,7 @@ const foo = "bar";
 10. select.md
 
 **Batch 5** (Files 43-52):
+
 1. sidebar.md
 2. skeleton-loader.md
 3. slider.md
@@ -455,6 +491,7 @@ const foo = "bar";
 10. toggle.md
 
 **Batch 6** (Files 53-54):
+
 1. tooltip.md
 2. visually-hidden.md
 
@@ -469,7 +506,7 @@ After processing each batch:
 
 ## Success Criteria
 
-- All 54 component markdown files processed
+- All 56 component markdown files processed
 - Zero code comments remain in code snippets
 - Zero CSS custom properties remain in example CSS
 - All code examples render correctly in VitePress
@@ -534,19 +571,10 @@ Known AgnosticUI CSS variables and their explicit values:
 
 ```css
 /* Primary Colors */
---ag-primary: #12623e
---ag-primary-dark: #0d4429
-
-/* Semantic Colors */
---ag-success: #14854f
---ag-danger: #e03e3e
---ag-warning: #f59e0b
-
-/* Neutral Colors */
---ag-neutral-500: #6b7280
-
-/* Background Colors */
---ag-background-secondary-inverted: #1f2937
+--ag-primary: #12623e --ag-primary-dark: #0d4429 /* Semantic Colors */
+  --ag-success: #14854f --ag-danger: #e03e3e --ag-warning: #f59e0b
+  /* Neutral Colors */ --ag-neutral-500: #6b7280 /* Background Colors */
+  --ag-background-secondary-inverted: #1f2937;
 ```
 
 **Fallback**: Use `#6366f1` for unknown CSS variables and document them for review.
@@ -562,10 +590,12 @@ The following accessibility issues were discovered during QA testing and require
 ### 🔴 Critical - Button Component Issues
 
 #### 1. Buttons Missing Accessible Names
+
 **Location**: Badge documentation - "Button Icon with Badge" section
 **Issue**: Buttons do not have an accessible name
 **Impact**: Screen readers cannot identify button purpose
 **Action Required**:
+
 - Review `v2/lib/src/components/Button/core/_Button.ts`
 - Ensure `aria-label` or visible text is properly applied
 - Check if icon-only buttons have accessible names
@@ -574,10 +604,12 @@ The following accessibility issues were discovered during QA testing and require
 **Status**: ⬜ Not Started
 
 #### 2. Loader Component - Prohibited ARIA Attributes
+
 **Location**: Loader component
 **Issue**: Elements use prohibited ARIA attributes
 **Impact**: Using ARIA attributes in roles where they are prohibited can mean that important information is not communicated to users of assistive technologies
 **Action Required**:
+
 - Review `v2/lib/src/components/Loader/core/_Loader.ts`
 - Identify which ARIA attributes are being used
 - Verify the element's role and check if ARIA attributes are allowed for that role
@@ -591,10 +623,12 @@ The following accessibility issues were discovered during QA testing and require
 ### 🟡 High Priority - Color Contrast Issues
 
 #### 3. Warning Variant Button Contrast (Light Mode)
+
 **Location**: Button component - variant="warning"
 **Issue**: Background and foreground colors do not have sufficient contrast ratio (dark yellow on lighter yellow)
 **WCAG**: Fails Level AA (4.5:1 requirement)
 **Action Required**:
+
 - Review warning button colors in `v2/theme-registry` design tokens
 - Adjust either background or foreground to meet 4.5:1 contrast
 - Test in both light and dark modes
@@ -602,10 +636,12 @@ The following accessibility issues were discovered during QA testing and require
 **Status**: ⬜ Not Started
 
 #### 4. Success/Info Variants Dark Mode Contrast
+
 **Location**: Button component - variant="success" and variant="info" (Dark Mode)
 **Issue**: Multiple contrast violations in dark mode
 **WCAG**: Fails Level AA
 **Action Required**:
+
 - Review success and info colors in `ag-tokens-dark.css`
 - Increase contrast between background and text
 - Verify against WCAG AA standards
@@ -613,10 +649,12 @@ The following accessibility issues were discovered during QA testing and require
 **Status**: ⬜ Not Started
 
 #### 5. Primary Color Dark Mode Contrast
+
 **Location**: Breadcrumb component and others using `--ag-primary` in dark mode
 **Issue**: `:host([primary]) .ag-breadcrumb__link { color: var(--ag-primary); }` triggers contrast violations
 **WCAG**: Fails Level AA
 **Action Required**:
+
 - Update `--ag-primary` in `ag-tokens-dark.css` to be significantly lighter
 - Ensure primary color works across all components in dark mode
 - Test breadcrumb links, buttons, and other primary-colored elements
@@ -624,10 +662,12 @@ The following accessibility issues were discovered during QA testing and require
 **Status**: ⬜ Not Started
 
 #### 6. Bordered Button Variants Contrast
+
 **Location**: Button component - bordered style with variant="danger" and variant="secondary"
 **Issue**: Border and text colors have insufficient contrast
 **WCAG**: Fails Level AA
 **Action Required**:
+
 - Review bordered button styles for danger and secondary variants
 - Adjust border colors or text colors to meet contrast requirements
 - Test in both light and dark modes
@@ -639,11 +679,13 @@ The following accessibility issues were discovered during QA testing and require
 ### 🔵 Medium Priority - Hard-coded Inline Colors
 
 #### 7. Inline Style Colors Not Dark Mode Responsive
+
 **Location**: Various components (e.g., Collapsible examples)
 **Issue**: Hard-coded colors like `style="color: red;"` don't adapt to dark mode
 **Example**: `<strong style="color: red;">Collapsed</strong>`
 **WCAG**: May fail contrast in dark mode
 **Action Required**:
+
 - Search codebase for hard-coded inline style colors
 - Replace with CSS custom properties or CSS classes
 - Examples to fix:
@@ -658,12 +700,14 @@ The following accessibility issues were discovered during QA testing and require
 ## Tracking
 
 ### Status Legend
+
 - ⬜ Not Started
 - 🟡 In Progress
 - ✅ Completed
 - ❌ Blocked
 
 ### Progress
+
 - **Total Issues**: 7
 - **Completed**: 0
 - **In Progress**: 0
@@ -673,11 +717,11 @@ The following accessibility issues were discovered during QA testing and require
 
 ## Priority Matrix
 
-| Priority | Count | Issues |
-|----------|-------|--------|
-| 🔴 Critical | 2 | #1 (Accessible Names), #2 (Prohibited ARIA) |
-| 🟡 High | 4 | #3, #4, #5, #6 (Contrast) |
-| 🔵 Medium | 1 | #7 (Inline Colors) |
+| Priority    | Count | Issues                                      |
+| ----------- | ----- | ------------------------------------------- |
+| 🔴 Critical | 2     | #1 (Accessible Names), #2 (Prohibited ARIA) |
+| 🟡 High     | 4     | #3, #4, #5, #6 (Contrast)                   |
+| 🔵 Medium   | 1     | #7 (Inline Colors)                          |
 
 ---
 

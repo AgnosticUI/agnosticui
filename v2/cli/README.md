@@ -7,6 +7,7 @@ CLI for AgnosticUI Local - The UI kit that lives in your codebase.
 AgnosticUI Local is a new approach to UI libraries. Instead of installing components as a dependency in `node_modules/`, the entire library lives in your project as a **reference library**, and you copy components you need into your own source code.
 
 **Benefits:**
+
 - **AI-Friendly**: Your entire component library is visible to AI coding tools (Cursor, Windsurf, Claude)
 - **Complete Ownership**: Components are copied to your project - modify them however you want
 - **Zero Lock-in**: No black boxes, no vendor dependencies
@@ -54,6 +55,7 @@ Options:
 ```
 
 **Example:**
+
 ```bash
 ag init --framework react --components-path ./src/components/ag
 ```
@@ -97,7 +99,7 @@ After running `ag init`, your project structure looks like this:
 ```
 your-project/
 ├── agnosticui/                    # Reference library (all components)
-│   ├── lib/src/components/        # Source for all 54 components
+│   ├── lib/src/components/        # Source for all 56 components
 │   └── docs/                      # Documentation
 ├── src/components/ag/             # YOUR components (copied, customizable)
 │   ├── Button/                    # You own this code
@@ -106,6 +108,7 @@ your-project/
 ```
 
 **The workflow:**
+
 1. **Reference library** (`./agnosticui/`) - Full library for context, visible to AI tools
 2. **Your components** (`./src/components/ag/`) - Copied components you can customize
 3. **Update safely** - `ag sync` updates reference, never touches your code
