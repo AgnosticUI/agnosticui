@@ -1,0 +1,1 @@
+import"./Icon.DjToxxjJ.js";import{d as t,c as l,o as s,r as n,K as a}from"./framework.NAAYCHZu.js";const p=[".size",".type",".noFill"],c=t({__name:"VueIcon",props:{size:{default:"16"},type:{default:""},noFill:{type:Boolean}},setup(e){return(o,r)=>(s(),l("ag-icon",a({".size":e.size,".type":e.type,".noFill":e.noFill},o.$attrs),[n(o.$slots,"default")],48,p))}});export{c as m};
