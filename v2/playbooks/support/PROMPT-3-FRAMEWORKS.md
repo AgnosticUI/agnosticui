@@ -1297,6 +1297,10 @@ const settings: SupportSettings = {
 }
 
 @media (max-width: 767px) {
+  .header-center {
+    display: none;
+  }
+
   .settings-grid {
     grid-template-columns: 1fr;
   }
