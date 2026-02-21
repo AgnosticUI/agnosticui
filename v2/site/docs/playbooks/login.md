@@ -36,7 +36,7 @@ Open any framework example directly in StackBlitz:
 ::: warning Experimental Feature: AI-Assisted UI Generation
 Generating UI components via LLM prompting is non-deterministic; different models (and even different versions of the same model) can produce drastically varying results from identical prompts.
 
-While these prompts have been tested using the Claude Code CLI (running Claude Sonnet 4.5), the output remains experimental. Always verify generated code for visual consistency, accessibility, and production readiness before deployment.
+While these prompts have been tested using the Claude Code CLI (running Claude Sonnet 4.5 and Opus 4.5), the output remains experimental. Always verify generated code for visual consistency, accessibility, and production readiness before deployment.
 :::
 
 - **Three framework examples**: React, Vue, and Lit implementations
