@@ -2,6 +2,8 @@
 
 CLI for AgnosticUI Local - The UI kit that lives in your codebase.
 
+> **See also:** Developer guide (build, test, publish) at [`v2/docs/CLI.md`](../docs/CLI.md)
+
 ## What is AgnosticUI Local?
 
 AgnosticUI Local is a new approach to UI libraries. Instead of installing components as a dependency in `node_modules/`, the entire library lives in your project as a **reference library**, and you copy components you need into your own source code.

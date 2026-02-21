@@ -17,14 +17,25 @@ This directory contains the core architectural and development documentation for
      - Critical patterns & rules
    - **Use this as your primary reference for all development work**
 
-2. **[AGNOSTICUI_LOCAL.md](./AGNOSTICUI_LOCAL.md)** - Local development setup
-   - PRD for local development tooling
+2. **[AGNOSTICUI_LOCAL.md](./AGNOSTICUI_LOCAL.md)** - Strategic planning document (Jan 2025)
+   - PRD for "AgnosticUI Local" — the Local UI Kit concept
+   - CLI architecture, dogfooding strategy, marketing positioning
    - Independent from main development guide
-   - Covers workspace setup and local testing
 
-3. **[TODO.md](./TODO.md)** - Working document
-   - Temporary tracking document
-   - Can be safely ignored or deleted when no longer needed
+3. **[SIDEBAR_NAV_SPEC.md](./SIDEBAR_NAV_SPEC.md)** - NavigationRail component spec
+   - LLM-ready master spec for a sidebar/navigation rail primitive
+   - Covers slots, collapsed mode, keyboard navigation, token usage
+
+4. **[CLI.md](./CLI.md)** - CLI developer guide
+   - Build, test, publish, and troubleshoot the agnosticui-cli
+   - See also: [`v2/cli/README.md`](../cli/README.md) for user-facing docs
+
+5. **[FX_PLAN.md](./FX_PLAN.md)** - FX (animation/motion) plan
+   - Active spec for component animation variants (ButtonFx, BadgeFx, etc.)
+
+6. **[VITEPRESS_A11Y_PLAN.md](./VITEPRESS_A11Y_PLAN.md)** - VitePress a11y remediation (COMPLETED)
+   - Archived — all 54 doc files processed for WCAG contrast compliance
+   - Open component-level a11y issues extracted to [A11Y_OPEN_ISSUES.md](./A11Y_OPEN_ISSUES.md)
 
 ## For LLM Assistants
 

@@ -1,7 +1,7 @@
 # AgnosticUI Local: Strategy & Vision
 
 **Created:** 2025-01-13
-**Status:** Strategic Planning Document
+**Status:** Strategic Planning Document (Jan 2025 snapshot — CLI MVP is now built and published to npm as `agnosticui-cli`)
 
 ## TL;DR
 
@@ -1712,10 +1712,11 @@ Don't hedge with multiple distribution methods. Go all-in on Local UI Kit. Make 
 
 **Next immediate steps:**
 1. ✅ Strategy documented
-2. ⏳ Build CLI MVP for dogfooding
-3. ⏳ Test with LasChispas migration
-4. ⏳ Iterate based on real-world usage
-5. ⏳ Launch when battle-tested
+2. ✅ Build CLI MVP for dogfooding — `agnosticui-cli` published to npm (`init`, `add`, `list`, `sync`)
+3. ✅ 56+ components built and documented on VitePress site
+4. ⏳ Test with LasChispas migration
+5. ⏳ Iterate based on real-world usage
+6. ⏳ Launch when battle-tested
 
 ---
 

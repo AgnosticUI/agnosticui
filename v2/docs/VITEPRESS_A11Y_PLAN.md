@@ -1,5 +1,7 @@
 # VitePress Documentation Accessibility Remediation Plan
 
+> **STATUS: COMPLETED -- Archived.** All 54 component documentation files have been processed (100%). The 7 remaining component-level a11y issues (source code / design token changes) have been extracted to [A11Y_OPEN_ISSUES.md](./A11Y_OPEN_ISSUES.md).
+
 ## Executive Summary
 
 This document provides a comprehensive specification for fixing WCAG text contrast violations in AgnosticUI v2 component documentation. The violations occur in VitePress code snippets where syntax highlighting renders certain elements with insufficient contrast ratios, even when using GitHub's high-contrast themes.

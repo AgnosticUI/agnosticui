@@ -81,6 +81,7 @@ export default defineConfig({
           { text: 'Login Form', link: '/playbooks/login' },
           { text: 'Onboarding Wizard', link: '/playbooks/onboarding' },
           { text: 'Discovery Dashboard', link: '/playbooks/dashboard' },
+          { text: 'Support Center', link: '/playbooks/support' },
         ]
       },
       getComponents(),

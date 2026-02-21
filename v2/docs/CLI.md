@@ -2,6 +2,8 @@
 
 CLI for AgnosticUI Local - The UI kit that lives in your codebase.
 
+> **See also:** User-facing README at [`v2/cli/README.md`](../cli/README.md)
+
 ## Development Setup
 
 ### Using the QA Verification Script
