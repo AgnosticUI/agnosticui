@@ -345,6 +345,8 @@ const DASHBOARD_VUE_WRAPPER_FILES = [
 const SUPPORT_SHARED_CORE_FILES = [
   'src/components/ag/Button/core/Button.ts',
   'src/components/ag/Button/core/_Button.ts',
+  'src/components/ag/Checkbox/core/Checkbox.ts',
+  'src/components/ag/Checkbox/core/_Checkbox.ts',
   'src/components/ag/Combobox/core/Combobox.ts',
   'src/components/ag/Combobox/core/_Combobox.ts',
   'src/components/ag/Dialog/core/Dialog.ts',
@@ -371,6 +373,8 @@ const SUPPORT_SHARED_CORE_FILES = [
   'src/components/ag/Select/core/_Select.ts',
   'src/components/ag/Slider/core/Slider.ts',
   'src/components/ag/Slider/core/_Slider.ts',
+  'src/components/ag/Tag/core/Tag.ts',
+  'src/components/ag/Tag/core/_Tag.ts',
   'src/components/ag/Tabs/core/Tabs.ts',
   'src/components/ag/Tabs/core/_Tabs.ts',
   'src/components/ag/Toggle/core/Toggle.ts',
