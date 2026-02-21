@@ -110,7 +110,7 @@ h3 {
 .chat-input-bar {
   display: flex;
   gap: var(--ag-space-2);
-  padding: var(--ag-space-3);
+  padding: var(--ag-space-3) var(--ag-space-4);
   border-top: 1px solid var(--ag-border-subtle);
 }
 
@@ -129,6 +129,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--ag-space-3);
   padding: var(--ag-space-3) var(--ag-space-4);
   border-top: 1px solid var(--ag-border-subtle);
 }

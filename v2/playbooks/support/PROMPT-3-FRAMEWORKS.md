@@ -480,7 +480,7 @@ A simulated real-time chat interface between a user and a support agent.
 .chat-input-bar {
   display: flex;
   gap: var(--ag-space-2);
-  padding: var(--ag-space-3);
+  padding: var(--ag-space-3) var(--ag-space-4);
   border-top: 1px solid var(--ag-border-subtle);
 }
 
@@ -493,6 +493,28 @@ A simulated real-time chat interface between a user and a support agent.
   background: var(--ag-background-primary);
   color: var(--ag-text-primary);
 }
+
+.chat-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ag-space-3);
+  padding: var(--ag-space-3) var(--ag-space-4);
+  border-top: 1px solid var(--ag-border-subtle);
+}
+```
+
+**Chat input bar and footer buttons:**
+
+```html
+<div class="chat-input-bar">
+  <input type="text" placeholder="Type your message..." />
+  <ag-button variant="primary" shape="rounded">Send</ag-button>
+</div>
+<div class="chat-footer">
+  <div class="chat-rating">...</div>
+  <ag-button variant="secondary" shape="rounded" size="sm">End Chat</ag-button>
+</div>
 ```
 
 **Agent info Popover:**

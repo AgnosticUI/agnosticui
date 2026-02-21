@@ -323,7 +323,7 @@ onUnmounted(() => {
                   aria-label="Chat message"
                   @keydown.enter="sendMessage"
                 />
-                <VueButton variant="primary" @click="sendMessage">
+                <VueButton variant="primary" shape="rounded" @click="sendMessage">
                   <Send :size="16" />
                 </VueButton>
               </div>
@@ -337,7 +337,7 @@ onUnmounted(() => {
                     @change="(detail: { newValue: number }) => chatRating = detail.newValue"
                   />
                 </div>
-                <VueButton variant="secondary" size="sm" @click="endChatOpen = true">
+                <VueButton variant="secondary" shape="rounded" size="sm" @click="endChatOpen = true">
                   End Chat
                 </VueButton>
               </div>

@@ -301,7 +301,7 @@ export class SupportApp extends LitElement {
                     @keydown=${(e: KeyboardEvent) => e.key === 'Enter' && this._sendMessage()}
                     aria-label="Chat message"
                   />
-                  <ag-button variant="primary" @click=${() => this._sendMessage()}>
+                  <ag-button variant="primary" shape="rounded" @click=${() => this._sendMessage()}>
                     ${sendIcon}
                   </ag-button>
                 </div>
@@ -314,7 +314,7 @@ export class SupportApp extends LitElement {
                       @rating-change=${(e: CustomEvent) => this._chatRating = e.detail.newValue}
                     ></ag-rating>
                   </div>
-                  <ag-button variant="secondary" size="sm" @click=${() => this._endChatOpen = true}>
+                  <ag-button variant="secondary" shape="rounded" size="sm" @click=${() => this._endChatOpen = true}>
                     End Chat
                   </ag-button>
                 </div>
@@ -709,7 +709,7 @@ export class SupportApp extends LitElement {
     .chat-input-bar {
       display: flex;
       gap: var(--ag-space-2);
-      padding: var(--ag-space-3);
+      padding: var(--ag-space-3) var(--ag-space-4);
       border-top: 1px solid var(--ag-border-subtle);
     }
 
@@ -728,6 +728,7 @@ export class SupportApp extends LitElement {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: var(--ag-space-3);
       padding: var(--ag-space-3) var(--ag-space-4);
       border-top: 1px solid var(--ag-border-subtle);
     }

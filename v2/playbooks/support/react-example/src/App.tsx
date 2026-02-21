@@ -551,7 +551,7 @@ export default function App() {
                     onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                     aria-label="Chat message"
                   />
-                  <ReactButton variant="primary" onClick={sendMessage}>
+                  <ReactButton variant="primary" shape="rounded" onClick={sendMessage}>
                     <Send size={16} />
                   </ReactButton>
                 </div>
@@ -566,6 +566,7 @@ export default function App() {
                   </div>
                   <ReactButton
                     variant="secondary"
+                    shape="rounded"
                     size="sm"
                     onClick={() => setEndChatOpen(true)}
                   >
