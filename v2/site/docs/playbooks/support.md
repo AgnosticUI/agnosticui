@@ -16,6 +16,33 @@ Open any framework example directly in StackBlitz:
   <a href="https://github.com/AgnosticUI/agnosticui/tree/master/v2/playbooks/support" target="_blank" rel="noopener">View on GitHub</a>
 </div>
 
+<div class="playbook-screenshots mbs6 mbe6">
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/support/iphone.png" alt="Mobile layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/support/iphone_dark.png" alt="Mobile dark mode layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile - Dark</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/support/tablet.png" alt="Tablet layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Tablet</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/support/tablet_dark.png" alt="Tablet dark mode layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Tablet - Dark</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/support/desktop.png" alt="Desktop layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/support/desktop_dark.png" alt="Desktop dark mode layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop - Dark</p>
+  </div>
+</div>
+
 ## What's Included
 
 ::: warning Experimental Feature: AI-Assisted UI Generation
