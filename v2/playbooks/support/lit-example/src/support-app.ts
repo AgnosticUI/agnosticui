@@ -105,7 +105,7 @@ const TICKETS_PER_PAGE = 5;
 
 @customElement('support-app')
 export class SupportApp extends LitElement {
-  @state() private _isDark = false;
+  @state() private _isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
   // Chat
   @state() private _messages: ChatMessage[] = [...INITIAL_MESSAGES];
@@ -574,7 +574,7 @@ export class SupportApp extends LitElement {
     }
 
     .header-logo {
-      height: 32px;
+      height: var(--ag-space-6);
     }
 
     .header-center h1 {

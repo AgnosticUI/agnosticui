@@ -93,7 +93,7 @@ const TICKETS_PER_PAGE = 5;
 
 // ── State ──────────────────────────────────────────────────────────────────
 
-const isDark = ref(false);
+const isDark = ref(document.documentElement.getAttribute('data-theme') === 'dark');
 
 // Chat
 const messages = ref<ChatMessage[]>([...INITIAL_MESSAGES]);
