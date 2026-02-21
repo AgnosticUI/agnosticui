@@ -574,7 +574,7 @@ export class SupportApp extends LitElement {
     }
 
     .header-logo {
-      height: var(--ag-space-6);
+      height: var(--ag-space-5);
     }
 
     .header-center h1 {

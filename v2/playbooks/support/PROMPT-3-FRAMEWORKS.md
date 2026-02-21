@@ -285,7 +285,7 @@ Use a simple header bar (not the full `ag-header` component — keep it lightwei
 }
 
 .header-logo {
-  height: var(--ag-space-6);
+  height: var(--ag-space-5);
 }
 
 .header-center h1 {
