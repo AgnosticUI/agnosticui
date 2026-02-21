@@ -44,7 +44,7 @@ Open any framework example directly in StackBlitz:
 </div>
 
 ::: tip Skins & Customization
-Screenshots show the default skin. Each live example includes a **skin switcher** (bottom-right corner) to preview other themes instantly. Colors, spacing, and typography are fully customizable via [design tokens](/ag-tokens).
+Screenshots show the default skin. Each live example includes a **skin switcher** (bottom-right corner) to preview other themes instantly. Colors, spacing, and typography are fully customizable via [design tokens](/theming).
 :::
 
 ## What's Included
