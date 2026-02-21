@@ -1,0 +1,159 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Button/core"
+      ]
+    },
+    "Tabs": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Tabs/core"
+      ]
+    },
+    "Dialog": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Dialog/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Drawer": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Drawer/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Dialog/core"
+      ]
+    },
+    "MessageBubble": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/MessageBubble/core"
+      ]
+    },
+    "Combobox": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Combobox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Tag/core"
+      ]
+    },
+    "Toggle": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Toggle/core"
+      ]
+    },
+    "Radio": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Radio/core"
+      ]
+    },
+    "Rating": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Rating/core"
+      ]
+    },
+    "Select": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Select/core"
+      ]
+    },
+    "Pagination": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Pagination/core"
+      ]
+    },
+    "Tooltip": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Tooltip/core"
+      ]
+    },
+    "Slider": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Slider/core"
+      ]
+    },
+    "Popover": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Popover/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Menu": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Menu/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Button/core"
+      ]
+    },
+    "Kbd": {
+      "added": "2026-02-21T15:26:15.942Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/src/components/ag/Kbd/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/lit-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.14.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-21T15:25:53.705Z"
+  }
+}

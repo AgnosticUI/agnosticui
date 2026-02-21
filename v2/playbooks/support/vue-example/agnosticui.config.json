@@ -1,0 +1,179 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "vue",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Button/vue"
+      ]
+    },
+    "Tabs": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Tabs/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Tabs/vue"
+      ]
+    },
+    "Dialog": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Dialog/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Dialog/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Drawer": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Drawer/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Drawer/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Dialog/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Dialog/vue"
+      ]
+    },
+    "MessageBubble": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/MessageBubble/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/MessageBubble/vue"
+      ]
+    },
+    "Combobox": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Combobox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Combobox/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Checkbox/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Tag/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Tag/vue"
+      ]
+    },
+    "Toggle": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Toggle/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Toggle/vue"
+      ]
+    },
+    "Radio": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Radio/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Radio/vue"
+      ]
+    },
+    "Rating": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Rating/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Rating/vue"
+      ]
+    },
+    "Select": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Select/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Select/vue"
+      ]
+    },
+    "Pagination": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Pagination/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Pagination/vue"
+      ]
+    },
+    "Tooltip": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Tooltip/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Tooltip/vue"
+      ]
+    },
+    "Slider": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Slider/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Slider/vue"
+      ]
+    },
+    "Popover": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Popover/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Popover/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Menu": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Menu/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Menu/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Button/vue"
+      ]
+    },
+    "Kbd": {
+      "added": "2026-02-21T15:26:14.855Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Kbd/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/src/components/ag/Kbd/vue"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/support/vue-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.14.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-21T15:25:52.662Z"
+  }
+}

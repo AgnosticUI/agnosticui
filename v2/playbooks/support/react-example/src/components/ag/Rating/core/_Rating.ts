@@ -1,0 +1,583 @@
+import { LitElement, html, css, svg } from 'lit';
+import { property, state } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import {
+  createFormControlIds,
+  buildAriaDescribedBy,
+  isHorizontalLabel,
+  type LabelPosition,
+} from '../../shared/form-control-utils';
+import { formControlStyles } from '../../shared/form-control-styles';
+
+// Event detail interfaces
+export interface RatingChangeEventDetail {
+  oldValue: number;
+  newValue: number;
+}
+export interface RatingHoverEventDetail {
+  phase: 'start' | 'move' | 'end';
+  value: number;
+}
+
+// Event type definitions
+export type RatingChangeEvent = CustomEvent<RatingChangeEventDetail>;
+export type RatingHoverEvent = CustomEvent<RatingHoverEventDetail>;
+
+// Prop types
+export type RatingPrecision = 'whole' | 'half';
+export type RatingSize = 'sm' | 'md' | 'lg';
+export type RatingVariant = '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'monochrome';
+
+export interface RatingProps {
+  value?: number;
+  max?: number;
+  precision?: RatingPrecision;
+  readonly?: boolean;
+  allowClear?: boolean;
+  variant?: RatingVariant;
+  size?: RatingSize;
+  name?: string;
+  // Form control props
+  label?: string;
+  labelPosition?: LabelPosition;
+  labelHidden?: boolean;
+  noLabel?: boolean;
+  required?: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  helpText?: string;
+  // Event handlers
+  onRatingChange?: (event: RatingChangeEvent) => void;
+  onRatingHover?: (event: RatingHoverEvent) => void;
+}
+
+let uniqueIdCounter = 0;
+
+export class AgRating extends LitElement {
+  private uniqueId = ++uniqueIdCounter; // Unique ID for clip paths in half-star rendering
+
+  // Form control IDs
+  private _ratingId: string = '';
+  private _labelId: string = '';
+  private _helperId: string = '';
+  private _errorId: string = '';
+
+  // Public properties
+  @property({ type: Number })
+  declare value: number; // Current rating value (can be fractional for half precision)
+
+  @property({ type: Number })
+  declare max: number; // Total number of stars
+
+  @property({ type: String })
+  declare precision: 'whole' | 'half'; // Precision mode: whole or half stars
+
+  @property({ type: Boolean, reflect: true })
+  declare readonly: boolean; // Disables interaction if true
+
+  @property({ type: Boolean })
+  declare allowClear: boolean; // Allows clearing rating by clicking the same value
+
+  @property({ type: String, reflect: true })
+  declare variant: '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'; // Visual variant
+
+  @property({ type: String, reflect: true })
+  declare size: RatingSize; // Size: small, medium, large
+
+  @property({ type: String })
+  declare name: string; // Form integration name
+
+  // Form control properties
+  @property({ type: String })
+  declare label: string;
+
+  @property({ type: String, attribute: 'label-position' })
+  labelPosition: LabelPosition = 'top';
+
+  @property({ type: Boolean, attribute: 'label-hidden' })
+  declare labelHidden: boolean;
+
+  @property({ type: Boolean, attribute: 'no-label' })
+  declare noLabel: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare required: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare invalid: boolean;
+
+  @property({ type: String, attribute: 'error-message' })
+  declare errorMessage: string;
+
+  @property({ type: String, attribute: 'help-text' })
+  declare helpText: string;
+
+  // Event handlers
+  @property({ attribute: false })
+  declare onRatingChange?: (event: RatingChangeEvent) => void;
+
+  @property({ attribute: false })
+  declare onRatingHover?: (event: RatingHoverEvent) => void;
+
+  // Internal state
+  @state() private hoverValue = 0; // Value during hover or drag
+  @state() private isHovering = false; // Flag for hover state
+  @state() private isPointerDown = false; // Flag for pointer down state
+
+  constructor() {
+    super();
+
+    // Initialize form control IDs
+    const ids = createFormControlIds('rating');
+    this._ratingId = ids.inputId;
+    this._labelId = ids.labelId;
+    this._helperId = ids.helperId;
+    this._errorId = ids.errorId;
+
+    this.value = 0;
+    this.max = 5;
+    this.precision = 'whole';
+    this.readonly = false;
+    this.allowClear = false;
+    this.variant = '';
+    this.size = 'md';
+    this.name = '';
+    this.label = '';
+    this.labelHidden = false;
+    this.noLabel = false;
+    this.required = false;
+    this.invalid = false;
+    this.errorMessage = '';
+    this.helpText = '';
+    this.handlePointerMove = this.handlePointerMove.bind(this);
+    this.handlePointerUp = this.handlePointerUp.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('keydown', this.handleKeyDown);
+    this.removeGlobalPointerListeners();
+  }
+
+  static styles = [
+    formControlStyles,
+    css`
+    :host {
+      display: block;
+      line-height: 1;
+    }
+
+    .rating {
+      display: inline-flex;
+      gap: var(--ag-space-1);
+      align-items: center;
+      cursor: pointer;
+    }
+
+    :host([readonly]) .rating {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* Default (≈ Chakra UI “xs”) */
+    .star {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        transform var(--ag-motion-medium) ease,
+        opacity   var(--ag-motion-medium);
+      color: var(--ag-neutral-300);
+      width:  var(--ag-space-3);   /* 0.75rem  → xs */
+      height: var(--ag-space-3);
+    }
+
+    /* size="sm"  → Chakra UI “sm” ≈ 1rem */
+    :host([size="sm"]) .star {
+      width:  var(--ag-space-4);   /* 1rem */
+      height: var(--ag-space-4);
+    }
+
+    /* size="md"  → Chakra UI “md” ≈ 1.25rem */
+    :host([size="md"]) .star {
+      width:  var(--ag-space-5);   /* 1.25rem */
+      height: var(--ag-space-5);
+    }
+
+    /* size="lg"  → Chakra UI “lg” ≈ 1.5rem */
+    :host([size="lg"]) .star {
+      width:  var(--ag-space-6);   /* 1.5rem */
+      height: var(--ag-space-6);
+    }
+
+    .star svg path {
+      fill: var(--ag-neutral-300); /* Empty color */
+    }
+    .star.filled > svg > path:last-of-type,
+    .star.hover svg path {
+      fill: var(--ag-rating-filled, var(--ag-yellow-400));
+    }
+
+    :host([variant="primary"]) .star.filled > svg > path:last-of-type,
+    :host([variant="primary"]) .star.hover svg path {
+      fill: var(--ag-rating-filled-primary, var(--ag-primary));
+    }
+    :host([variant="success"]) .star.filled > svg > path:last-of-type,
+    :host([variant="success"]) .star.hover svg path {
+      fill: var(--ag-rating-filled-success, var(--ag-success));
+    }
+    :host([variant="warning"]) .star.filled > svg > path:last-of-type,
+    :host([variant="warning"]) .star.hover svg path {
+      fill: var(--ag-rating-filled-warning, var(--ag-warning));
+    }
+    :host([variant="danger"]) .star.filled > svg > path:last-of-type,
+    :host([variant="danger"]) .star.hover svg path {
+      fill: var(--ag-rating-filled-danger, var(--ag-danger));
+    }
+    :host([variant="secondary"]) .star.filled > svg > path:last-of-type,
+    :host([variant="secondary"]) .star.hover svg path {
+      fill: var(--ag-rating-filled-secondary, var(--ag-secondary));
+    }
+    :host([variant="monochrome"]) .star.filled > svg > path:last-of-type,
+    :host([variant="monochrome"]) .star.hover svg path {
+      fill: var(--ag-text-primary);
+    }
+
+    .star-button {
+      display: inline-block;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      line-height: 0;
+      cursor: inherit;
+    }
+
+    :host(:focus-visible) .rating {
+      box-shadow: 0 0 0 var(--ag-focus-offset) rgba(var(--ag-focus), 0.12);
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  `,
+  ];
+
+  private renderLabel() {
+    if (!this.label || this.noLabel) return '';
+
+    const positionClasses: string[] = [];
+    if (isHorizontalLabel(this.labelPosition)) {
+      positionClasses.push('ag-form-control__label--horizontal');
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    } else if (this.labelPosition === 'bottom') {
+      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+    }
+
+    return html`
+      <label
+        id=${this._labelId}
+        for=${this._ratingId}
+        class="ag-form-control__label ${this.labelHidden
+          ? 'ag-form-control__label--hidden'
+          : ''} ${this.required ? 'ag-form-control__label--required' : ''} ${positionClasses.join(' ')}"
+        part="ag-rating-label"
+      >
+        ${this.label}
+      </label>
+    `;
+  }
+
+  render() {
+    const displayValue = this.isHovering ? this.hoverValue : this.value;
+    const stars = Array.from({ length: this.max }, (_, i) => i + 1);
+
+    // Build aria-describedby
+    const describedBy = buildAriaDescribedBy({
+      helperId: this._helperId,
+      errorId: this._errorId,
+      hasHelper: !!this.helpText && !this.invalid,
+      hasError: !!this.invalid && !!this.errorMessage,
+    });
+
+    // Helper text rendering
+    const helperText = this.helpText && !this.invalid
+      ? html`<div class="ag-form-control__helper" id="${this._helperId}">
+          ${this.helpText}
+        </div>`
+      : '';
+
+    // Error message rendering
+    const errorText = this.invalid && this.errorMessage
+      ? html`<div class="ag-form-control__error" id="${this._errorId}">
+          ${this.errorMessage}
+        </div>`
+      : '';
+
+    // Rating control
+    const ratingControl = html`
+      <div
+        id="${this._ratingId}"
+        class="rating"
+        part="base"
+        role="slider"
+        aria-label="${this.label || 'Rating'}"
+        aria-labelledby="${ifDefined(this.label && !this.noLabel ? this._labelId : undefined)}"
+        aria-describedby="${ifDefined(describedBy)}"
+        aria-valuemin="0"
+        aria-valuemax="${this.max}"
+        aria-valuenow="${Number(this.value).toFixed(this.precision === 'half' ? 1 : 0)}"
+        aria-invalid="${this.invalid ? 'true' : 'false'}"
+        aria-required="${this.required ? 'true' : 'false'}"
+        tabindex="${this.readonly ? -1 : 0}"
+        @pointerdown="${this.handlePointerDown}"
+        @pointermove="${this.handlePointerMoveHost}"
+        @pointerleave="${this.handlePointerLeave}"
+        @pointerenter="${this.handlePointerEnter}"
+      >
+        ${stars.map((starIndex) => this.renderStar(starIndex, displayValue))}
+      </div>
+      <span class="visually-hidden" aria-live="polite">
+        ${displayValue} of ${this.max}
+      </span>
+    `;
+
+    // Check if label should be in horizontal layout
+    const isHorizontal = isHorizontalLabel(this.labelPosition);
+
+    // Horizontal layout (start/end positions)
+    if (isHorizontal) {
+      return html`
+        <div class="ag-form-control--horizontal">
+          ${this.renderLabel()}
+          ${ratingControl}
+        </div>
+        ${helperText}
+        ${errorText}
+      `;
+    }
+
+    // Bottom position layout
+    if (this.labelPosition === 'bottom') {
+      return html`
+        ${ratingControl}
+        ${helperText}
+        ${errorText}
+        ${this.renderLabel()}
+      `;
+    }
+
+    // Top position layout (default)
+    return html`
+      ${this.renderLabel()}
+      ${ratingControl}
+      ${helperText}
+      ${errorText}
+    `;
+  }
+
+  private renderStar(starIndex: number, displayValue: number) {
+    const full = displayValue >= starIndex;
+    const half = !full && displayValue >= starIndex - 0.5 && this.precision === 'half';
+    const filledClass = full || half ? 'filled' : '';
+    const hoverClass = this.isHovering && this.hoverValue >= starIndex ? 'hover' : '';
+    const clipId = `ag-rating-half-${this.uniqueId}-${starIndex}`;
+
+    return html`
+      <span
+        class="star-button"
+        part="star-button"
+        @click="${(e: MouseEvent) => this.handleClickStar(e, starIndex)}"
+        aria-label="${starIndex} star"
+        title="${starIndex} star"
+      >
+        <span class="star ${filledClass} ${hoverClass}" part="star" data-star="${starIndex}">
+          ${this.renderStarSvg(full, half, clipId)}
+        </span>
+      </span>
+    `;
+  }
+
+  private renderStarSvg(full: boolean, half: boolean, clipId: string) {
+    if (half) {
+      return svg`
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <defs>
+            <clipPath id="${clipId}">
+              <rect x="0" y="0" width="12" height="24"></rect>
+            </clipPath>
+          </defs>
+          <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.782 1.401 8.174L12 18.896l-7.335 3.86 1.401-8.174L.132 9.21l8.2-1.192z" />
+          <path clip-path="url(#${clipId})" d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.782 1.401 8.174L12 18.896l-7.335 3.86 1.401-8.174L.132 9.21l8.2-1.192z" />
+        </svg>
+      `;
+    }
+
+    return svg`
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.782 1.401 8.174L12 18.896l-7.335 3.86 1.401-8.174L.132 9.21l8.2-1.192z" />
+      </svg>
+    `;
+  }
+
+  private roundToPrecision(value: number): number {
+    if (this.precision === 'half') {
+      return Math.round(value * 2) / 2;
+    }
+    return Math.round(value);
+  }
+
+  private getValueFromClientX(clientX: number): number {
+    const ratingElement = this.shadowRoot?.querySelector('.rating') as HTMLElement;
+    if (!ratingElement) return 0;
+    const rect = ratingElement.getBoundingClientRect();
+    const relativeX = Math.max(0, Math.min(clientX - rect.left, rect.width));
+    const proportion = rect.width > 0 ? relativeX / rect.width : 0;
+    const rawValue = proportion * this.max;
+    return this.roundToPrecision(rawValue);
+  }
+
+  private handleClickStar(e: MouseEvent, starIndex: number) {
+    e.stopPropagation();
+    if (this.readonly) return;
+    const oldValue = this.value;
+    let newValue = this.precision === 'half' ? starIndex : starIndex;
+    if (this.allowClear && newValue === oldValue) {
+      newValue = 0;
+    }
+    this.commitValue(newValue, oldValue);
+  }
+
+  private handlePointerEnter(_e: PointerEvent) {
+    // Placeholder for future enhancements
+  }
+
+  private handlePointerLeave(_e: PointerEvent) {
+    if (this.isPointerDown) return;
+    this.isHovering = false;
+    this.hoverValue = 0;
+    this.emitHoverEvent('end', this.hoverValue);
+  }
+
+  private handlePointerDown(e: PointerEvent) {
+    if (this.readonly) return;
+    this.isPointerDown = true;
+    this.setPointerCapture(e.pointerId);
+    const clientX = e.clientX;
+    const value = this.getValueFromClientX(clientX);
+    this.hoverValue = value;
+    this.isHovering = true;
+    this.emitHoverEvent('start', value);
+    window.addEventListener('pointermove', this.handlePointerMove);
+    window.addEventListener('pointerup', this.handlePointerUp);
+  }
+
+  private handlePointerMoveHost(e: PointerEvent) {
+    if (!this.isPointerDown && !this.isHovering) return;
+    const clientX = e.clientX;
+    const value = this.getValueFromClientX(clientX);
+    this.hoverValue = value;
+    if (!this.isHovering) {
+      this.isHovering = true;
+      this.emitHoverEvent('start', value);
+    } else {
+      this.emitHoverEvent('move', value);
+    }
+  }
+
+  private handlePointerMove(e: PointerEvent) {
+    if (this.readonly) return;
+    const clientX = e.clientX;
+    const value = this.getValueFromClientX(clientX);
+    if (value !== this.hoverValue) {
+      this.hoverValue = value;
+      this.emitHoverEvent('move', value);
+    }
+  }
+
+  private handlePointerUp(e: PointerEvent) {
+    if (this.readonly) return;
+    const clientX = e.clientX;
+    const value = this.getValueFromClientX(clientX);
+    const oldValue = this.value;
+    let newValue = value;
+    if (this.allowClear && newValue === oldValue) {
+      newValue = 0;
+    }
+    this.commitValue(newValue, oldValue);
+    this.isPointerDown = false;
+    this.isHovering = false;
+    this.hoverValue = 0;
+    this.emitHoverEvent('end', value);
+    this.removeGlobalPointerListeners();
+  }
+
+  private removeGlobalPointerListeners() {
+    window.removeEventListener('pointermove', this.handlePointerMove);
+    window.removeEventListener('pointerup', this.handlePointerUp);
+  }
+
+  private handleKeyDown(e: KeyboardEvent) {
+    if (this.readonly) return;
+    const oldValue = this.value;
+    const step = this.precision === 'half' ? 0.5 : 1;
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      this.value = Math.min(this.max, this.value + step);
+      this.commitValue(this.value, oldValue);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      this.value = Math.max(0, this.value - step);
+      this.commitValue(this.value, oldValue);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      this.value = 0;
+      this.commitValue(this.value, oldValue);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      this.value = this.max;
+      this.commitValue(this.value, oldValue);
+    }
+  }
+
+  private commitValue(newValue: number, oldValue: number) {
+    const normalized = this.roundToPrecision(newValue);
+    this.value = normalized;
+    const changeEvent = new CustomEvent<RatingChangeEventDetail>('rating-change', {
+      detail: { oldValue, newValue: normalized },
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(changeEvent);
+    if (this.onRatingChange) {
+      this.onRatingChange(changeEvent);
+    }
+  }
+
+  private emitHoverEvent(phase: 'start' | 'move' | 'end', value: number) {
+    const hoverEvent = new CustomEvent<RatingHoverEventDetail>('rating-hover', {
+      detail: { phase, value },
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(hoverEvent);
+    if (this.onRatingHover) {
+      this.onRatingHover(hoverEvent);
+    }
+  }
+}

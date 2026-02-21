@@ -319,14 +319,22 @@ Use a simple header bar (not the full `ag-header` component — keep it lightwei
 
 ### Main Tabs
 
-Use the AgnosticUI Tabs component to organize the four support sections:
+Use the AgnosticUI Tabs component to organize the four support sections. Wrap each tab label in a `.tab-label` span with a nested `.tab-text` span for the text — this enables mobile-responsive icon-only tabs:
 
 ```html
 <ag-tabs aria-label="Support sections">
-  <ag-tab slot="tab" panel="chat">[MessageCircle] Live Chat</ag-tab>
-  <ag-tab slot="tab" panel="kb">[BookOpen] Knowledge Base</ag-tab>
-  <ag-tab slot="tab" panel="tickets">[Ticket] My Tickets</ag-tab>
-  <ag-tab slot="tab" panel="settings">[Settings] Settings</ag-tab>
+  <ag-tab slot="tab" panel="chat">
+    <span class="tab-label">[MessageCircle]<span class="tab-text">Live Chat</span></span>
+  </ag-tab>
+  <ag-tab slot="tab" panel="kb">
+    <span class="tab-label">[BookOpen]<span class="tab-text">Knowledge Base</span></span>
+  </ag-tab>
+  <ag-tab slot="tab" panel="tickets">
+    <span class="tab-label">[Ticket]<span class="tab-text">My Tickets</span></span>
+  </ag-tab>
+  <ag-tab slot="tab" panel="settings">
+    <span class="tab-label">[Settings]<span class="tab-text">Settings</span></span>
+  </ag-tab>
 
   <ag-tab-panel slot="panel" name="chat"><!-- Tab 1 content --></ag-tab-panel>
   <ag-tab-panel slot="panel" name="kb"><!-- Tab 2 content --></ag-tab-panel>
@@ -334,6 +342,62 @@ Use the AgnosticUI Tabs component to organize the four support sections:
   <ag-tab-panel slot="panel" name="settings"><!-- Tab 4 content --></ag-tab-panel>
 </ag-tabs>
 ```
+
+Tab labels use two text spans: `.tab-text` (full label, desktop) and `.tab-text-short` (abbreviated, mobile). At `≤480px` the layout switches to stacked (icon above, short label below):
+
+| Panel | Full label | Mobile label |
+|-------|-----------|--------------|
+| chat | Live Chat | Chat |
+| kb | Knowledge Base | Docs |
+| tickets | My Tickets | Tickets |
+| settings | Settings | Settings |
+
+**Required CSS** (add to global stylesheet for React/Vue; add to `static styles` for Lit):
+
+```css
+.tab-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.tab-text-short {
+  display: none;
+}
+
+/*
+ * On mobile (≤640px): stacked icon + short label, tabs spread full width.
+ * ag-tabs exposes part="ag-tabs-tablist" and ag-tab exposes part="ag-tab",
+ * allowing shadow DOM internals to be targeted via ::part() from outside.
+ */
+@media (max-width: 640px) {
+  ag-tabs::part(ag-tabs-tablist) {
+    justify-content: space-around;
+  }
+
+  ag-tab::part(ag-tab) {
+    padding: var(--ag-space-1) var(--ag-space-2);
+  }
+
+  .tab-label {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    white-space: nowrap;
+  }
+
+  .tab-text {
+    display: none;
+  }
+
+  .tab-text-short {
+    display: inline;
+  }
+}
+```
+
+> **Note:** For React, use `className="tab-label"`, `className="tab-text"`, `className="tab-text-short"`. For Vue and Lit, use `class=`. In Lit's Shadow DOM, these styles must live in `static styles = css\`...\`` — the global stylesheet does not apply.
 
 ---
 
@@ -771,7 +835,14 @@ const tickets: Ticket[] = [
 
 **Ticket row with Menu and Tooltip:**
 
+Use `ag-menu-button` (not `ag-menu`) for the context menu. The component only has two slots:
+- **Default slot** — becomes the button label (put your icon here)
+- **`slot="menu"`** — the `ag-menu` dropdown
+
+> **Critical:** There is NO `slot="trigger"` in `ag-menu-button`. Do not wrap the icon in `slot="trigger"` — it will not render. The icon must be direct default-slot content.
+
 ```html
+<!-- Lit -->
 <div class="ticket-row">
   <div class="ticket-info">
     <span class="ticket-id">#{ticket.id}</span>
@@ -781,16 +852,20 @@ const tickets: Ticket[] = [
     </ag-tooltip>
     <span class="priority-badge priority-{ticket.priority}">{ticket.priority}</span>
   </div>
-  <ag-menu>
-    <ag-button slot="trigger" variant="link" size="sm">
-      <MoreVertical size={16} />
-    </ag-button>
-    <ag-menu-item onclick="viewTicket(ticket)">View Details</ag-menu-item>
-    <ag-menu-item onclick="closeTicket(ticket)">Close Ticket</ag-menu-item>
-    <ag-menu-item onclick="reopenTicket(ticket)">Reopen</ag-menu-item>
-  </ag-menu>
+  <ag-menu-button ghost aria-label="Ticket actions">
+    [MoreVertical icon]                <!-- default slot → button label -->
+    <ag-menu slot="menu">              <!-- named slot → dropdown -->
+      <ag-menu-item value="view">View Details</ag-menu-item>
+      <ag-menu-item value="close">Close Ticket</ag-menu-item>
+      <ag-menu-item value="reopen">Reopen</ag-menu-item>
+    </ag-menu>
+  </ag-menu-button>
 </div>
 ```
+
+**React:** `<ReactMenuButton ghost>` — pass `<MoreVertical>` as a direct child (default slot), `<ReactMenu slot="menu">` for items.
+
+**Vue:** `<VueMenu ghost>` — pass `<MoreVertical>` as direct default slot content, menu items in `<template #menu>`.
 
 **Ticket row CSS:**
 
@@ -810,11 +885,19 @@ const tickets: Ticket[] = [
   background: var(--ag-background-secondary);
 }
 
+/* flex: 1 + min-width: 0 allows ticket-info to fill available space and shrink
+   without overflowing; flex-shrink: 0 on ag-menu-button anchors it to the right */
 .ticket-info {
   display: flex;
   align-items: center;
   gap: var(--ag-space-3);
   flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.ticket-row ag-menu-button {
+  flex-shrink: 0;
 }
 
 .ticket-id {
