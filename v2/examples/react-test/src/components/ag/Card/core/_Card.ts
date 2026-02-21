@@ -5,11 +5,28 @@ import { hasSlotContent } from '../../utils/slot';
 export type CardVariant = 'success' | 'info' | 'error' | 'warning' | 'monochrome' | '';
 export type CardRounded = 'sm' | 'md' | 'lg' | '';
 
+/**
+ * Converter for rounded prop: accepts boolean (true -> 'md') or string values
+ * See https://lit.dev/docs/v1/components/properties/#conversion-converter
+ */
+const roundedConverter = {
+  fromAttribute(value: string | null): CardRounded {
+    if (value === '' || value === 'true') return 'md';
+    if (value === 'false' || value === null) return '';
+    return (value as CardRounded) || '';
+  },
+  toAttribute(value: CardRounded | boolean): string | null {
+    if (typeof value === 'boolean') return value ? 'md' : null;
+    return value || null;
+  }
+};
+
 export interface CardProps {
   stacked?: boolean;
   shadow?: boolean;
   animated?: boolean;
-  rounded?: CardRounded;
+  /** Border radius size. Use 'sm', 'md', 'lg' or true (defaults to 'md') */
+  rounded?: CardRounded | boolean;
   variant?: CardVariant;
 }
 
@@ -17,7 +34,7 @@ export class AgCard extends LitElement implements CardProps {
   @property({ type: Boolean, reflect: true }) declare stacked: boolean;
   @property({ type: Boolean, reflect: true }) declare shadow: boolean;
   @property({ type: Boolean, reflect: true }) declare animated: boolean;
-  @property({ type: String, reflect: true }) declare rounded: CardRounded;
+  @property({ converter: roundedConverter, reflect: true }) declare rounded: CardRounded;
   @property({ type: String, reflect: true }) declare variant: CardVariant;
 
   private _hasHeaderSlotContent = false;
@@ -168,7 +185,7 @@ export class AgCard extends LitElement implements CardProps {
     }
 
     :host([stacked]) .card-content > ::slotted(*:not(:last-child)) {
-      margin-bottom: var(--ag-space-8);
+      margin-block-end: var(--ag-space-8);
     }
 
     /* The accessible clickable card trick */

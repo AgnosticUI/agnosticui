@@ -8,14 +8,14 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { hasSlotContent } from '../../../../utils/slot';
-import { formControlStyles } from '../../../../shared/form-control-styles';
+import { hasSlotContent } from '../../utils/slot';
+import { formControlStyles } from '../../shared/form-control-styles';
 import {
   createFormControlIds,
   buildAriaDescribedBy,
   isHorizontalLabel,
   type LabelPosition,
-} from '../../../../shared/form-control-utils';
+} from '../../shared/form-control-utils';
 
 export type InputType =
   | 'text'
@@ -110,7 +110,7 @@ export class AgInput extends LitElement implements InputProps {
         box-sizing: border-box;
         width: 100%;
         padding: var(--ag-space-2) var(--ag-space-3);
-        font-size: var(--ag-font-size-base);
+        font-size: var(--ag-font-size-sm);
         line-height: var(--ag-line-height-base);
         color: var(--ag-text-primary);
         background-color: var(--ag-background-primary);
@@ -121,6 +121,7 @@ export class AgInput extends LitElement implements InputProps {
 
       .ag-input__input::placeholder,
       .ag-input__textarea::placeholder {
+        font-size: var(--ag-font-size-sm);
         color: var(--ag-text-muted);
         opacity: 1;
       }
@@ -210,28 +211,35 @@ export class AgInput extends LitElement implements InputProps {
         border: 1px solid var(--ag-border-subtle);
       }
 
+      /* Ensure nested content (icons, svgs) is also centered */
+      .ag-input__addon ::slotted(*) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .ag-input__addon--left {
-        border-right: 0;
+        border-inline-end: 0;
         border-radius: var(--ag-radius-md) 0 0 var(--ag-radius-md);
       }
 
       .ag-input__addon--right {
-        border-left: 0;
+        border-inline-start: 0;
         border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
       }
 
       /* When left addon is present */
       .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
       .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
       }
 
       /* When right addon is present */
       .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
       .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
       }
 
       .ag-input__field .ag-input__input,
@@ -253,12 +261,12 @@ export class AgInput extends LitElement implements InputProps {
       /* Remove border on INPUT where it meets the addon for capsule */
       :host([capsule]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
       :host([capsule]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
-        border-left: 0;
+        border-inline-start: 0;
       }
 
       :host([capsule]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
       :host([capsule]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
-        border-right: 0;
+        border-inline-end: 0;
       }
 
       /* Underlined variant with addons */
@@ -271,14 +279,14 @@ export class AgInput extends LitElement implements InputProps {
 
       :host([underlined]) .ag-input__addon--left,
       :host([underlined-with-background]) .ag-input__addon--left {
-        border-left: 0;
-        border-right: 0;
+        border-inline-start: 0;
+        border-inline-end: 0;
       }
 
       :host([underlined]) .ag-input__addon--right,
       :host([underlined-with-background]) .ag-input__addon--right {
-        border-right: 0;
-        border-left: 0;
+        border-inline-end: 0;
+        border-inline-start: 0;
       }
 
       /* Remove border on INPUT where it meets the addon for underlined */
@@ -286,14 +294,14 @@ export class AgInput extends LitElement implements InputProps {
       :host([underlined]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea,
       :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
       :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
-        border-left: 0;
+        border-inline-start: 0;
       }
 
       :host([underlined]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
       :host([underlined]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea,
       :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
       :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
-        border-right: 0;
+        border-inline-end: 0;
       }
 
       /* Underlined with background variant - add background to addon */

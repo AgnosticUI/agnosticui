@@ -49,7 +49,7 @@ export class Header extends LitElement implements HeaderProps {
 
     /* Mobile-first: column layout */
     .header-content {
-      max-width: 100%;
+      max-inline-size: 100%;
       margin: 0 auto;
       display: flex;
       flex-direction: column;

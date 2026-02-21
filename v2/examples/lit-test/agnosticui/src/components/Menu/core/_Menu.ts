@@ -209,19 +209,19 @@ export class AgMenuButton extends LitElement implements MenuButtonProps {
     ::slotted(ag-menu) {
       position: absolute;
       background-color: var(--ag-background-primary);
-      margin-top: var(--ag-space-1);
+      margin-block-start: var(--ag-space-1);
       z-index: var(--ag-z-index-dropdown);
     }
     /* Left alignment - menu left aligns with button left */
     :host([menu-align="left"]) ::slotted(ag-menu) {
-      left: 0;
-      right: auto;
+      inset-inline-start: 0;
+      inset-inline-end: auto;
     }
 
     /* Right alignment - menu right aligns with button right */
     :host([menu-align="right"]) ::slotted(ag-menu) {
-      right: 0;
-      left: auto;
+      inset-inline-end: 0;
+      inset-inline-start: auto;
     }
   `;
 
@@ -500,9 +500,9 @@ export class AgMenu extends LitElement implements MenuProps {
       border: 1px solid var(--ag-border-subtle);
       border-radius: var(--ag-radius-md);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      margin-top: var(--ag-space-1);
-      min-width: 12rem;
-      max-width: 16rem;
+      margin-block-start: var(--ag-space-1);
+      min-inline-size: 12rem;
+      max-inline-size: 16rem;
       width: max-content;
       z-index: var(--ag-z-index-dropdown);
       overflow: hidden;
@@ -814,7 +814,7 @@ export class AgMenuItem extends LitElement implements MenuItemProps {
       border: none;
       border-radius: var(--ag-radius-sm);
       padding: var(--ag-space-2) var(--ag-space-3);
-      text-align: left;
+      text-align: start;
       text-decoration: none;
       font-size: inherit;
       line-height: 1.25;

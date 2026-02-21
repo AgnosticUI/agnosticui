@@ -88,10 +88,7 @@ export class AgSkeleton extends LitElement implements SkeletonProps {
     :host([effect='sheen'])::after {
       content: "";
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      inset: 0;
       transform: translateX(-100%);
       background-image: linear-gradient(
         90deg,

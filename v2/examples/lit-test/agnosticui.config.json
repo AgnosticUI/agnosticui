@@ -8,7 +8,7 @@
   },
   "components": {
     "Avatar": {
-      "added": "2025-12-22T14:13:15.279Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -16,7 +16,7 @@
       ]
     },
     "Badge": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -24,7 +24,7 @@
       ]
     },
     "Button": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -32,7 +32,7 @@
       ]
     },
     "Card": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -40,7 +40,7 @@
       ]
     },
     "Divider": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -48,15 +48,15 @@
       ]
     },
     "Icon": {
-      "added": "2025-12-06T01:09:34.526Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/lit-test/src/components/ag/Icon/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/Icon/core"
       ]
     },
     "Image": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -64,7 +64,7 @@
       ]
     },
     "Tag": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -72,7 +72,7 @@
       ]
     },
     "VisuallyHidden": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -80,7 +80,7 @@
       ]
     },
     "Flex": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -88,7 +88,7 @@
       ]
     },
     "Alert": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -97,7 +97,7 @@
       ]
     },
     "Accordion": {
-      "added": "2025-12-22T14:13:15.278Z",
+      "added": "2026-02-21T14:19:13.695Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -105,7 +105,7 @@
       ]
     },
     "AspectRatio": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -113,7 +113,7 @@
       ]
     },
     "Breadcrumb": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -121,7 +121,7 @@
       ]
     },
     "BadgeFx": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -129,7 +129,7 @@
       ]
     },
     "ButtonFx": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -137,7 +137,7 @@
       ]
     },
     "Checkbox": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -145,7 +145,7 @@
       ]
     },
     "Collapsible": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -153,7 +153,7 @@
       ]
     },
     "Combobox": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -162,16 +162,15 @@
       ]
     },
     "CopyButton": {
-      "added": "2025-12-08T00:41:27.108Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/CopyButton/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/IconButton/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/CopyButton/core"
       ]
     },
     "Dialog": {
-      "added": "2025-12-08T02:07:03.377Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -180,7 +179,7 @@
       ]
     },
     "Drawer": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -188,7 +187,7 @@
       ]
     },
     "EmptyState": {
-      "added": "2025-12-22T14:13:15.279Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -196,16 +195,15 @@
       ]
     },
     "IconButtonFx": {
-      "added": "2025-12-08T02:49:59.056Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/IconButtonFx/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/IconButton/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/lit-test/src/components/ag/IconButtonFx/core"
       ]
     },
     "IconButton": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -213,7 +211,7 @@
       ]
     },
     "Fieldset": {
-      "added": "2025-12-22T14:13:15.279Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -221,7 +219,7 @@
       ]
     },
     "Header": {
-      "added": "2025-12-08T03:08:32.718Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -229,7 +227,7 @@
       ]
     },
     "Input": {
-      "added": "2025-12-08T14:23:22.732Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -237,7 +235,7 @@
       ]
     },
     "IntlFormatter": {
-      "added": "2025-12-08T13:48:02.321Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -245,7 +243,7 @@
       ]
     },
     "Kbd": {
-      "added": "2025-12-08T14:40:31.555Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -253,7 +251,7 @@
       ]
     },
     "Link": {
-      "added": "2025-12-08T14:45:21.902Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -261,7 +259,7 @@
       ]
     },
     "Loader": {
-      "added": "2025-12-08T14:59:59.182Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -269,7 +267,7 @@
       ]
     },
     "Mark": {
-      "added": "2025-12-08T19:08:59.110Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -277,7 +275,7 @@
       ]
     },
     "Menu": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -285,7 +283,7 @@
       ]
     },
     "MessageBubble": {
-      "added": "2025-12-08T21:43:04.700Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -293,7 +291,7 @@
       ]
     },
     "Pagination": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -301,7 +299,7 @@
       ]
     },
     "Popover": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -310,7 +308,7 @@
       ]
     },
     "Progress": {
-      "added": "2025-12-08T23:31:48.285Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -318,7 +316,7 @@
       ]
     },
     "ProgressRing": {
-      "added": "2025-12-22T14:13:15.279Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -326,7 +324,7 @@
       ]
     },
     "Radio": {
-      "added": "2025-12-09T02:13:42.354Z",
+      "added": "2026-02-21T14:19:13.696Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -334,7 +332,7 @@
       ]
     },
     "Rating": {
-      "added": "2025-12-09T02:20:55.960Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -342,7 +340,7 @@
       ]
     },
     "ScrollProgress": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -350,7 +348,7 @@
       ]
     },
     "ScrollToButton": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -358,7 +356,7 @@
       ]
     },
     "Select": {
-      "added": "2025-12-09T03:17:03.876Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -366,7 +364,7 @@
       ]
     },
     "Sidebar": {
-      "added": "2025-12-09T03:37:12.783Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -374,7 +372,7 @@
       ]
     },
     "SidebarNav": {
-      "added": "2025-12-09T03:44:46.980Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -382,7 +380,7 @@
       ]
     },
     "SkeletonLoader": {
-      "added": "2025-12-22T14:13:15.279Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -390,7 +388,7 @@
       ]
     },
     "Slider": {
-      "added": "2025-12-22T14:13:15.279Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -398,7 +396,7 @@
       ]
     },
     "Spinner": {
-      "added": "2025-12-09T16:43:50.818Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -406,7 +404,7 @@
       ]
     },
     "Tabs": {
-      "added": "2025-12-09T16:50:49.020Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -414,7 +412,7 @@
       ]
     },
     "Timeline": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -422,7 +420,7 @@
       ]
     },
     "Toast": {
-      "added": "2025-12-19T20:47:08.944Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -431,7 +429,7 @@
       ]
     },
     "Toggle": {
-      "added": "2025-12-09T23:19:00.264Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -439,7 +437,7 @@
       ]
     },
     "Tooltip": {
-      "added": "2025-12-09T23:19:37.946Z",
+      "added": "2026-02-21T14:19:13.697Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
@@ -456,8 +454,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.1.tgz",
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.12.tgz",
     "version": "unknown",
-    "installed": "2025-12-22T14:13:04.520Z"
+    "installed": "2026-02-21T14:18:28.392Z"
   }
 }

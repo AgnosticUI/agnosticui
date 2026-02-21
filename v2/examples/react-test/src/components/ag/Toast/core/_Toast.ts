@@ -241,28 +241,26 @@ export class Toast extends LitElement implements ToastProps {
     /* Edge positions - full width/height */
     :host([position="top"]) {
       top: var(--ag-space-4);
-      left: 0;
-      right: 0;
+      inset-inline: 0;
       width: 100%;
     }
 
     :host([position="bottom"]) {
       bottom: var(--ag-space-4);
-      left: 0;
-      right: 0;
+      inset-inline: 0;
       width: 100%;
     }
 
     :host([position="start"]) {
       top: 0;
-      left: var(--ag-space-4);
+      inset-inline-start: var(--ag-space-4);
       bottom: 0;
       height: 100%;
     }
 
     :host([position="end"]) {
       top: 0;
-      right: var(--ag-space-4);
+      inset-inline-end: var(--ag-space-4);
       bottom: 0;
       height: 100%;
     }
@@ -270,22 +268,22 @@ export class Toast extends LitElement implements ToastProps {
     /* Corner positions - constrained size */
     :host([position="top-start"]) {
       top: var(--ag-space-4);
-      left: var(--ag-space-4);
+      inset-inline-start: var(--ag-space-4);
     }
 
     :host([position="top-end"]) {
       top: var(--ag-space-4);
-      right: var(--ag-space-4);
+      inset-inline-end: var(--ag-space-4);
     }
 
     :host([position="bottom-start"]) {
       bottom: var(--ag-space-4);
-      left: var(--ag-space-4);
+      inset-inline-start: var(--ag-space-4);
     }
 
     :host([position="bottom-end"]) {
       bottom: var(--ag-space-4);
-      right: var(--ag-space-4);
+      inset-inline-end: var(--ag-space-4);
     }
 
     /* Toast container with animations */
@@ -317,6 +315,15 @@ export class Toast extends LitElement implements ToastProps {
       transform: translateX(100%);
     }
 
+    /* RTL Support - flip transform directions for start/end positions */
+    :host-context([dir="rtl"]):host([position="start"]) .toast-container {
+      transform: translateX(100%);
+    }
+
+    :host-context([dir="rtl"]):host([position="end"]) .toast-container {
+      transform: translateX(-100%);
+    }
+
     :host([position="bottom"][open]) .toast-container,
     :host([position="bottom-start"][open]) .toast-container,
     :host([position="bottom-end"][open]) .toast-container,
@@ -330,8 +337,8 @@ export class Toast extends LitElement implements ToastProps {
     :host([position="top-end"]) .toast-container,
     :host([position="bottom-start"]) .toast-container,
     :host([position="bottom-end"]) .toast-container {
-      max-width: 400px;
-      max-height: 200px;
+      max-inline-size: 400px;
+      max-block-size: 200px;
     }
 
     /* Inner layout for content and close button */

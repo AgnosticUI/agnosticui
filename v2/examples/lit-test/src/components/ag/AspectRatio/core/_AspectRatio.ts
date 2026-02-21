@@ -62,8 +62,8 @@ export class AgAspectRatio extends LitElement implements AspectRatioProps {
     const styles: string[] = [];
     styles.push(`aspect-ratio: ${aspect};`);
     if (this.maxWidth !== undefined && this.maxWidth !== null) {
-      styles.push(`max-width: ${this.maxWidth}px;`);
-      styles.push(`margin-left: auto; margin-right: auto;`);
+      styles.push(`max-inline-size: ${this.maxWidth}px;`);
+      styles.push(`margin-inline-start: auto; margin-inline-end: auto;`);
     }
     return styles.join(' ');
   }

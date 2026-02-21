@@ -1,5 +1,5 @@
 import { css, LitElement, html, type CSSResultGroup } from 'lit';
-import { NAV_BUTTON_STYLES } from '../../../../styles/nav-button-styles';
+import { NAV_BUTTON_STYLES } from '../../styles/nav-button-styles';
 
 export class AgSidebarNavItem extends LitElement {
   static hostAttributes = {
@@ -13,7 +13,7 @@ export class AgSidebarNavItem extends LitElement {
       :host {
         padding: 0;
         margin: 0;
-        margin-bottom: var(--ag-space-1);
+        margin-block-end: var(--ag-space-1);
       }
         
       /* Nav-specific additions (flat for consistency) */

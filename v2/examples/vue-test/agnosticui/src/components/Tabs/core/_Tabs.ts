@@ -501,7 +501,7 @@ export class Tabs extends LitElement implements TabsProps {
 
     [role="tablist"][aria-orientation="vertical"] {
       flex-direction: column;
-      border-right: 1px solid var(--ag-border);
+      border-inline-end: 1px solid var(--ag-border);
       min-width: 200px;
     }
 

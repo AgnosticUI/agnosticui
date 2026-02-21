@@ -210,7 +210,7 @@ export class AgSlider extends LitElement implements SliderProps {
 
     :host([vertical]) .ag-slider__thumb {
       transform: translate(-50%, 50%);
-      left: 50%;
+      inset-inline-start: 50%;
       top: auto;
     }
 
@@ -265,7 +265,7 @@ export class AgSlider extends LitElement implements SliderProps {
       content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" /%3E%3Cpath d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /%3E%3Cpath d="M8 11v-4a4 4 0 1 1 8 0v4" /%3E%3C/svg%3E');
       position: absolute;
       top: -8px;
-      right: -8px;
+      inset-inline-end: -8px;
       filter: grayscale(1);
       opacity: 0.7;
     }
@@ -281,7 +281,7 @@ export class AgSlider extends LitElement implements SliderProps {
     .ag-slider__tooltip {
       position: absolute;
       bottom: var(--ag-slider-tooltip-offset);
-      left: 50%;
+      inset-inline-start: 50%;
       transform: translateX(-50%);
       background: var(--ag-neutral-800);
       color: var(--ag-white);
@@ -305,7 +305,7 @@ export class AgSlider extends LitElement implements SliderProps {
 
     :host([vertical]) .ag-slider__tooltip {
       bottom: auto;
-      left: var(--ag-slider-tooltip-offset);
+      inset-inline-start: var(--ag-slider-tooltip-offset);
       top: 50%;
       transform: translateY(-50%);
     }
@@ -314,8 +314,7 @@ export class AgSlider extends LitElement implements SliderProps {
     .ag-slider__ticks {
       position: absolute;
       top: 50%;
-      left: 0;
-      right: 0;
+      inset-inline: 0;
       height: var(--ag-space-2);
       pointer-events: none;
     }
@@ -323,7 +322,7 @@ export class AgSlider extends LitElement implements SliderProps {
     :host([vertical]) .ag-slider__ticks {
       top: 0;
       bottom: 0;
-      left: 50%;
+      inset-inline-start: 50%;
       width: var(--ag-space-2);
       height: auto;
     }
@@ -353,7 +352,7 @@ export class AgSlider extends LitElement implements SliderProps {
 
     :host([vertical]) .ag-slider__tick-label {
       top: auto;
-      left: var(--ag-space-3);
+      inset-inline-start: var(--ag-space-3);
       transform: translateY(-50%);
     }
 
@@ -361,7 +360,7 @@ export class AgSlider extends LitElement implements SliderProps {
     :host([vertical]) .ag-slider__tick-label {
       transform: translateY(-50%) rotate(-90deg);
       transform-origin: left center;
-      left: var(--ag-space-4);
+      inset-inline-start: var(--ag-space-4);
     }
 
     /* Sizes */
@@ -402,7 +401,7 @@ export class AgSlider extends LitElement implements SliderProps {
     /* Help & Error Text */
     .ag-slider__help,
     .ag-slider__error {
-      margin-top: var(--ag-space-2);
+      margin-block-start: var(--ag-space-2);
       font-size: var(--ag-font-size-sm);
     }
 
@@ -1103,7 +1102,7 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
 
       const style = this.vertical
         ? `bottom: ${percentage}%`
-        : `left: ${percentage}%`;
+        : `inset-inline-start: ${percentage}%`;
 
       ticks.push(html`
         <div class="ag-slider__tick" style="${style}">
@@ -1125,7 +1124,7 @@ private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'sin
 
     const style = this.vertical
       ? `bottom: ${percentage}%`
-      : `left: ${percentage}%`;
+      : `inset-inline-start: ${percentage}%`;
 
     const thumbClass = `ag-slider__thumb 
       ${isFocused ? 'ag-slider__thumb--focused' : ''} 

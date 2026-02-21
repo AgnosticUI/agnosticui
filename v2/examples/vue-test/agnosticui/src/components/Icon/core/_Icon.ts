@@ -47,7 +47,7 @@ export class AgIcon extends LitElement implements IconProps {
       display: inline-flex;
       text-align: center;
       /* Ensures no "stretching" of icons to reach 100% of container's width */
-      max-width: 100%;
+      max-inline-size: 100%;
       /* Ensure SVGs don't have click events -- typically we want enclosing button to handle */
       pointer-events: none;
       user-select: none;
@@ -114,16 +114,16 @@ export class AgIcon extends LitElement implements IconProps {
       width: 100%;
       height: 100%;
       fill: currentColor;
-      max-width: 100%; /* Prevent overflow */
-      max-height: 100%;
+      max-inline-size: 100%; /* Prevent overflow */
+      max-block-size: 100%;
     }
 
     /* Ensure slotted SVG still respects size when no-fill is set */
     :host([no-fill]) ::slotted(svg) {
       width: 100%;
       height: 100%;
-      max-width: 100%;
-      max-height: 100%;
+      max-inline-size: 100%;
+      max-block-size: 100%;
       /* Outline SVG so we need to remove the fill and apply currentColor to stroke */
       fill: none;
       stroke: currentColor;

@@ -32,8 +32,8 @@ import {
   buildAriaDescribedBy,
   isHorizontalLabel,
   type LabelPosition,
-} from '../../../../shared/form-control-utils';
-import { formControlStyles } from '../../../../shared/form-control-styles';
+} from '../../shared/form-control-utils';
+import { formControlStyles } from '../../shared/form-control-styles';
 
 // Event types
 export interface ToggleChangeEventDetail {
@@ -106,8 +106,8 @@ export class AgToggle extends LitElement implements ToggleProps {
       position: relative;
 
       /* Touch target accessibility - minimum 44px */
-      min-width: 44px;
-      min-height: 44px;
+      min-inline-size: 44px;
+      min-block-size: 44px;
 
       /* Focus management */
       border-radius: var(--ag-focus-border-radius);
@@ -146,7 +146,7 @@ export class AgToggle extends LitElement implements ToggleProps {
       /* Handle positioning and animation */
       position: absolute;
       top: 50%;
-      left: 2px;
+      inset-inline-start: 2px;
       transform: translateY(-50%);
       border-radius: 50%;
       transition: transform var(--ag-transition-duration) ease;
@@ -163,6 +163,11 @@ export class AgToggle extends LitElement implements ToggleProps {
     /* Checked state - handle moves to right */
     :host([checked]) .ag-toggle__handle {
       transform: translateY(-50%) translateX(calc(var(--toggle-width) - var(--handle-size) - 4px));
+    }
+
+    /* RTL Support - flip handle movement direction */
+    :host-context([dir="rtl"]):host([checked]) .ag-toggle__handle {
+      transform: translateY(-50%) translateX(calc(-1 * (var(--toggle-width) - var(--handle-size) - 4px)));
     }
 
     /* Size variants with 2:1 width:height ratio */

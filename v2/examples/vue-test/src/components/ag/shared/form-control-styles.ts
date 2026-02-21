@@ -11,7 +11,7 @@ export const formControlStyles = css`
   /* Label - Default (top position) */
   .ag-form-control__label {
     display: block;
-    font-size: var(--ag-font-size-base);
+    font-size: var(--ag-font-size-sm);
     font-weight: 600;
     color: var(--ag-text-primary);
     line-height: var(--ag-line-height-base);
@@ -47,8 +47,8 @@ export const formControlStyles = css`
   /* Horizontal label layout (start or end) - overrides display: block */
   .ag-form-control__label--horizontal {
     display: inline-block; /* Override display: block */
-    min-width: 100px;
-    max-width: 200px; /* Prevent super long labels */
+    min-inline-size: 100px;
+    max-inline-size: 200px; /* Prevent super long labels */
     margin-inline-end: 0; /* Gap handles spacing */
     margin-block-end: 0;
     flex-shrink: 0; /* Don't let label shrink */
@@ -70,8 +70,8 @@ export const formControlStyles = css`
   .ag-form-control--horizontal select {
     /* Progressive enhancement with field-sizing (Chrome/Safari TP) */
     field-sizing: content;
-    max-width: 100%;
-    min-width: 100px;
+    max-inline-size: 100%;
+    min-inline-size: 100px;
 
     /* Fallback for browsers without field-sizing support */
     width: 200px;
@@ -91,7 +91,7 @@ export const formControlStyles = css`
   .ag-form-control__required {
     /* COLOR: We use a CSS variable for error text color to more easily toggle light and dark modes */
     color: var(--ag-error-text);
-    margin-left: var(--ag-space-1);
+    margin-inline-start: var(--ag-space-1);
   }
 
   /* Helper text */

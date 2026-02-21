@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
-import { hasSlotContent } from '../../../../utils/slot';
+import { hasSlotContent } from '../../utils/slot';
 
 export type DividerJustify = 'center' | 'start' | 'end';
 export type DividerSize = 'default' | 'small' | 'large' | 'xlarge';

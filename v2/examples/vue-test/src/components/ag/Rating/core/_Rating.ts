@@ -6,8 +6,8 @@ import {
   buildAriaDescribedBy,
   isHorizontalLabel,
   type LabelPosition,
-} from '../../../../shared/form-control-utils';
-import { formControlStyles } from '../../../../shared/form-control-styles';
+} from '../../shared/form-control-utils';
+import { formControlStyles } from '../../shared/form-control-styles';
 
 // Event detail interfaces
 export interface RatingChangeEventDetail {

@@ -34,7 +34,7 @@ export class Loader extends LitElement implements LoaderProps {
       animation-delay: 250ms;
 
       /* Make up for negative positioning */
-      margin-left: var(--loading-size);
+      margin-inline-start: var(--loading-size);
 
       /* Initially set zero until aria-busy becomes true */
       opacity: 0%;
@@ -75,12 +75,12 @@ export class Loader extends LitElement implements LoaderProps {
     }
 
     .loader::before {
-      left: calc(-1 * var(--loading-size));
+      inset-inline-start: calc(-1 * var(--loading-size));
       animation-delay: 0s;
     }
 
     .loader::after {
-      left: var(--loading-size);
+      inset-inline-start: var(--loading-size);
       animation-delay: 500ms;
     }
 

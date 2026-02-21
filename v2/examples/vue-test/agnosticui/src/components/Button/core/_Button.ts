@@ -42,6 +42,7 @@ export interface ButtonProps {
   ghost?: boolean;
   link?: boolean;
   grouped?: boolean;
+  fullWidth?: boolean;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   loading?: boolean;
@@ -77,10 +78,20 @@ export class AgButton extends LitElement implements ButtonProps {
       justify-content: center;
     }
 
+    /* Full-width variant */
+    :host([full-width]) {
+      display: block;
+      width: 100%;
+    }
+
+    :host([full-width]) button {
+      width: 100%;
+    }
+
     button {
       /* Reset browser defaults */
       margin: 0;
-      border: none;
+      border: 1px solid transparent;
       background: var(--ag-background-tertiary);
 
       /* Inherit font styling from parent */
@@ -114,8 +125,8 @@ export class AgButton extends LitElement implements ButtonProps {
       background: var(--ag-neutral-500);
     }
 
-    /* Primary, success, warning, and danger all have white text and get
-      darker on hover */
+    /* Primary, success, warning, and danger use variant-specific foreground
+      tokens (--ag-{variant}-fg) and get darker on hover */
     :host([variant="primary"]) button {
       background: var(--ag-primary);
       color: var(--ag-primary-fg);
@@ -156,30 +167,45 @@ export class AgButton extends LitElement implements ButtonProps {
 
     /* Size variants */
     :host([size="x-sm"]) button {
+      height: var(--ag-space-8);
+      min-height: var(--ag-space-8);
       font-size: calc(var(--ag-font-size-base) - 0.375rem);
-      padding: var(--ag-space-1) var(--ag-space-2);
+      padding-inline: var(--ag-space-2);
+      padding-block: 0;
     }
 
     :host([size="sm"]) button {
+      height: var(--ag-space-9);
+      min-height: var(--ag-space-9);
       font-size: var(--ag-font-size-xs);
-      padding: var(--ag-space-2) var(--ag-space-3);
+      padding-inline: var(--ag-space-3);
+      padding-block: 0;
     }
 
     /* Default size (md) - applies when no size attribute or size="md" */
     button,
     :host([size="md"]) button {
+      height: var(--ag-space-10);
+      min-height: var(--ag-space-10);
       font-size: var(--ag-font-size-sm);
-      padding: var(--ag-space-3) var(--ag-space-4);
+      padding-inline: var(--ag-space-4);
+      padding-block: 0;
     }
 
     :host([size="lg"]) button {
+      height: var(--ag-space-12);
+      min-height: var(--ag-space-12);
       font-size: var(--ag-font-size-base);
-      padding: var(--ag-space-3) var(--ag-space-5);
+      padding-inline: var(--ag-space-5);
+      padding-block: 0;
     }
 
     :host([size="xl"]) button {
+      height: var(--ag-space-14);
+      min-height: var(--ag-space-14);
       font-size: var(--ag-font-size-md);
-      padding: var(--ag-space-3) var(--ag-space-6);
+      padding-inline: var(--ag-space-6);
+      padding-block: 0;
     }
 
     /* Shape variants */
@@ -222,7 +248,7 @@ export class AgButton extends LitElement implements ButtonProps {
     :host([ghost]) button,
     :host([link]) button {
       background: transparent;
-      border: none;
+      border-color: transparent;
       box-shadow: none;
     }
 
@@ -290,20 +316,20 @@ export class AgButton extends LitElement implements ButtonProps {
     }
 
     :host([grouped]:not(:last-child)) button {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
       margin-inline-end: -1px;
     }
 
     :host([grouped]:not(:first-child)) button {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
     }
 
     /* Bordered variant - outline style */
     :host([bordered]) button {
       background: transparent;
-      border: 1px solid var(--ag-neutral-500);
+      border-color: var(--ag-neutral-500);
     }
 
     :host([bordered][variant="primary"]) button {
@@ -311,8 +337,8 @@ export class AgButton extends LitElement implements ButtonProps {
       border-color: var(--ag-primary-text);
     }
 
-    /* Bordered Buttons on Hover have a filled background with white text.  The
-      Default Bordered is an exception to this rule. */
+    /* Bordered Buttons on Hover have a filled background with variant-specific
+      foreground text.  The Default Bordered is an exception to this rule. */
     :host([bordered][variant="primary"]) button:hover {
       background: var(--ag-primary);
       color: var(--ag-primary-fg);
@@ -372,9 +398,54 @@ export class AgButton extends LitElement implements ButtonProps {
       background: var(--ag-background-secondary);
     }
 
+    /* Disabled states - per-variant to maintain tonal identity */
+
+    /* Filled buttons - use lighter background tokens */
+    :host([variant="primary"]) button:disabled {
+      background: var(--ag-primary-background);
+      color: var(--ag-primary-text);
+    }
+
+    :host([variant="success"]) button:disabled {
+      background: var(--ag-success-background);
+      color: var(--ag-success-text);
+    }
+
+    :host([variant="warning"]) button:disabled {
+      background: var(--ag-warning-background);
+      color: var(--ag-warning-text);
+    }
+
+    :host([variant="danger"]) button:disabled {
+      background: var(--ag-danger-background);
+      color: var(--ag-danger-text);
+    }
+
+    :host([variant="secondary"]) button:disabled,
+    button:disabled {
+      background: var(--ag-background-disabled);
+    }
+
+    :host([variant="monochrome"]) button:disabled {
+      background: var(--ag-background-tertiary);
+    }
+
+    /* Bordered buttons - dim the border and text with opacity */
+    :host([bordered]) button:disabled {
+      opacity: 60%;
+      background: transparent;
+    }
+
+    /* Ghost and link buttons - dim with opacity */
+    :host([ghost]) button:disabled,
+    :host([link]) button:disabled {
+      opacity: 60%;
+      background: transparent;
+    }
+
+    /* All disabled buttons get not-allowed cursor */
     button:disabled {
       cursor: not-allowed;
-      background: var(--ag-background-disabled);
     }
 
     button:focus-visible,
@@ -427,6 +498,12 @@ export class AgButton extends LitElement implements ButtonProps {
    */
   @property({ type: Boolean, reflect: true })
   declare grouped: boolean;
+
+  /**
+   * Full-width style - button takes 100% width of container
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'full-width' })
+  declare fullWidth: boolean;
 
   /**
    * Button type - determines behavior in forms
@@ -486,6 +563,7 @@ export class AgButton extends LitElement implements ButtonProps {
     this.ghost = false;
     this.link = false;
     this.grouped = false;
+    this.fullWidth = false;
     this.type = 'button';
     this.ariaLabel = '';
     this.variant = '';

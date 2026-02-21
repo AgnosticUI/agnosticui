@@ -168,7 +168,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
       flex-wrap: wrap;
       gap: var(--ag-space-1);
       padding: var(--ag-space-3) var(--ag-space-4);
-      padding-right: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
+      padding-inline-end: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
       font-size: var(--ag-font-size-base);
       font-family: var(--ag-font-family-base);
       line-height: var(--ag-line-height-base);
@@ -188,7 +188,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     /* Input */
     .combobox-input {
       flex: 1;
-      min-width: 50px; /* Ensure input has a minimum width to be usable */
+      min-inline-size: 50px; /* Ensure input has a minimum width to be usable */
       font-size: var(--ag-font-size-base);
       font-family: var(--ag-font-family-base);
       line-height: var(--ag-line-height-base);
@@ -200,7 +200,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
 
     .combobox-input::placeholder {
-      color: var(--ag-text-tertiary);
+      color: var(--ag-text-secondary);
     }
 
     .combobox-input:disabled {
@@ -224,7 +224,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     /* Toggle button */
     .combobox-toggle-button {
       position: absolute;
-      right: var(--ag-space-2);
+      inset-inline-end: var(--ag-space-2);
       top: 50%;
       transform: translateY(-50%);
       display: flex;
@@ -258,7 +258,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     .combobox-clear-wrapper {
       position: absolute;
-      right: calc(var(--ag-space-2) * 2 + var(--combobox-toggle-size));
+      inset-inline-end: calc(var(--ag-space-2) * 2 + var(--combobox-toggle-size));
       top: 50%;
       transform: translateY(-50%);
       display: flex;
@@ -290,9 +290,8 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     .combobox-listbox {
       position: absolute;
       top: calc(100% + var(--ag-space-1));
-      left: 0;
-      right: 0;
-      max-height: var(--combobox-listbox-max-height);
+      inset-inline: 0;
+      max-block-size: var(--combobox-listbox-max-height);
       overflow-y: auto;
       background-color: var(--ag-background-primary);
       border: var(--ag-border-width-1) solid var(--ag-border);
@@ -326,7 +325,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     .combobox-option[aria-selected="true"]::after {
       content: '';
       position: absolute;
-      right: var(--ag-space-6);
+      inset-inline-end: var(--ag-space-6);
       top: 50%;
       display: block;
       opacity: 1;
@@ -379,7 +378,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
 
     /* Checkmark color for monochrome variant */
     :host([variant="monochrome"]) .combobox-option[aria-selected="true"]::after {
-      border-right-color: var(--ag-text-primary-inverted);
+      border-inline-end-color: var(--ag-text-primary-inverted);
       border-bottom-color: var(--ag-text-primary-inverted);
     }
 
@@ -414,7 +413,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     /* Size variants */
     :host([size="small"]) .combobox-input-wrapper {
       padding: var(--ag-space-2) var(--ag-space-3);
-      padding-right: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
+      padding-inline-end: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
     }
 
     :host([size="small"]) .combobox-input {
@@ -430,7 +429,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     :host([size="small"]) .combobox-option[aria-selected="true"]::after {
       width: 4px;
       height: 8px;
-      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
     }
 
@@ -438,13 +437,13 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     .combobox-option[aria-selected="true"]::after {
       width: 4px;
       height: 9px;
-      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
     }
 
     :host([size="large"]) .combobox-input-wrapper {
       padding: var(--ag-space-4) var(--ag-space-5);
-      padding-right: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
+      padding-inline-end: calc(var(--combobox-toggle-size) * 2 + var(--ag-space-2) * 3);
     }
 
     :host([size="large"]) .combobox-input {
@@ -460,7 +459,7 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     :host([size="large"]) .combobox-option[aria-selected="true"]::after {
       width: 5px;
       height: 10px;
-      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
     }
 

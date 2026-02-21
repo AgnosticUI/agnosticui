@@ -37,7 +37,7 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: var(--ag-space-2);
-      margin-bottom: var(--ag-space-4);
+      margin-block-end: var(--ag-space-4);
       width: 100%;
     }
 
@@ -87,9 +87,9 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
     .chat-bubble {
       grid-row-end: 3;
       border-radius: var(--ag-radius-lg);
-      min-width: 2.5rem;
-      max-width: var(--ag-message-bubble-max-width, 90%);
-      min-height: 2rem;
+      min-inline-size: 2.5rem;
+      max-inline-size: var(--ag-message-bubble-max-width, 90%);
+      min-block-size: 2rem;
       padding: var(--ag-space-3) var(--ag-space-4);
       display: inline-flex;
       align-items: center;
@@ -118,7 +118,7 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       gap: var(--ag-space-2);
       font-size: var(--ag-font-size-xs);
       color: var(--ag-text-secondary);
-      margin-top: var(--ag-space-1);
+      margin-block-start: var(--ag-space-1);
     }
 
     /* From Them (Start) Layout */
@@ -140,11 +140,11 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       grid-column-start: 2;
       background-color: var(--ag-background-secondary);
       color: var(--ag-text-primary);
-      border-bottom-left-radius: var(--ag-radius-sm);
+      border-end-start-radius: var(--ag-radius-sm);
     }
 
     :host([from="them"]) .chat-bubble::before {
-      left: -0.5rem;
+      inset-inline-start: -0.5rem;
       clip-path: polygon(100% 0, 0 100%, 100% 100%);
     }
 
@@ -168,11 +168,11 @@ export class MessageBubble extends LitElement implements MessageBubbleProps {
       grid-column-start: 1;
       background-color: var(--ag-primary-background);
       color: var(--ag-primary-text);
-      border-bottom-right-radius: var(--ag-radius-sm);
+      border-end-end-radius: var(--ag-radius-sm);
     }
 
     :host([from="me"]) .chat-bubble::before {
-      right: -0.5rem;
+      inset-inline-end: -0.5rem;
       clip-path: polygon(0 0, 0 100%, 100% 100%);
     }
 

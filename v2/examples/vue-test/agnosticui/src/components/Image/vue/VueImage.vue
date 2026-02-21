@@ -1,6 +1,6 @@
 <template>
   <ag-image
-    ref="imageRef"
+    ref="agImageRef"
     :src="src"
     :alt="alt"
     :width="width"
@@ -29,13 +29,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import type {
-  AgImageProps,
-  AgImageSource,
-  ImageLoadEvent,
-  ImageErrorEvent,
-} from "../core/Image";
+import { ref, watchEffect, onMounted } from "vue";
+import type { AgImage, AgImageProps, AgImageSource } from "../core/Image";
 import "../core/Image"; // Registers the ag-image web component
 
 // Define props interface (omit function props since wrapper uses emits)
@@ -54,21 +49,30 @@ const props = withDefaults(defineProps<VueImageProps>(), {
   duration: 200,
 });
 
+// Template ref for ag-image element
+const agImageRef = ref<AgImage | null>(null);
+
+// Sync sources array prop to web component (arrays can't be passed via attributes)
+onMounted(() => {
+  watchEffect(() => {
+    if (agImageRef.value && props.sources) {
+      agImageRef.value.sources = props.sources;
+    }
+  });
+});
+
 // Define emits
 const emit = defineEmits<{
   "ag-load": [];
   "ag-error": [];
 }>();
 
-// Template ref
-const imageRef = ref<HTMLElement>();
-
 // Event handlers
-const handleLoad = (event: Event) => {
+const handleLoad = (_event: Event) => {
   emit("ag-load");
 };
 
-const handleError = (event: Event) => {
+const handleError = (_event: Event) => {
   emit("ag-error");
 };
 </script>

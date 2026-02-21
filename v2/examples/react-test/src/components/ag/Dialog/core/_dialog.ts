@@ -241,10 +241,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
       display: block;
       visibility: hidden;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       z-index: var(--ag-z-index-modal);
@@ -257,7 +254,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     .dialog-backdrop {
       position: absolute;
       top: 0;
-      left: 0;
+      inset-inline-start: 0;
       width: 100%;
       height: 100%;
       display: flex;
@@ -274,8 +271,8 @@ export class AgnosticDialog extends LitElement implements DialogProps {
 
     .dialog-container {
       overflow-y: auto;
-      max-width: 90vw;
-      max-height: 90vh;
+      max-inline-size: 90vw;
+      max-block-size: 90vh;
       position: relative;
       background: var(--ag-background-primary);
       border: 1px solid var(--ag-border);
@@ -320,7 +317,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     :host([drawer-position="end"]) .dialog-container {
       height: 100%;
       width: var(--ag-drawer-width);
-      max-height: initial;
+      max-block-size: initial;
     }
 
     /* Horizontal edge positions (top/bottom) sizing */
@@ -328,7 +325,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     :host([drawer-position="bottom"]) .dialog-container {
       height: var(--ag-sheet-height);
       width: 100%;
-      max-width: initial;
+      max-inline-size: initial;
     }
 
     /* Top position - closed state */
@@ -345,14 +342,23 @@ export class AgnosticDialog extends LitElement implements DialogProps {
 
     /* Start position - closed state */
     :host([drawer-position="start"]) .dialog-container {
-      left: 0;
+      inset-inline-start: 0;
       transform: translateX(-100%);
     }
 
     /* End position - closed state */
     :host([drawer-position="end"]) .dialog-container {
-      right: 0;
+      inset-inline-end: 0;
       transform: translateX(100%);
+    }
+
+    /* RTL Support - flip transform directions for start/end drawers */
+    :host-context([dir="rtl"]):host([drawer-position="start"]) .dialog-container {
+      transform: translateX(100%);
+    }
+
+    :host-context([dir="rtl"]):host([drawer-position="end"]) .dialog-container {
+      transform: translateX(-100%);
     }
 
     /* Open state - remove transforms to slide into view */
@@ -364,7 +370,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     }
 
     .dialog-header {
-      margin-bottom: var(--ag-space-4);
+      margin-block-end: var(--ag-space-4);
     }
 
     .dialog-header h2 {
@@ -375,11 +381,11 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     }
 
     .dialog-content {
-      margin-bottom: var(--ag-space-4);
+      margin-block-end: var(--ag-space-4);
     }
 
     .dialog-content:last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     .dialog-content p {
@@ -388,11 +394,11 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     }
 
     .dialog-footer {
-      margin-top: var(--ag-space-4);
+      margin-block-start: var(--ag-space-4);
     }
 
     .dialog-footer:empty {
-      margin-top: 0;
+      margin-block-start: 0;
     }
 
     @media (prefers-reduced-motion: reduce) {

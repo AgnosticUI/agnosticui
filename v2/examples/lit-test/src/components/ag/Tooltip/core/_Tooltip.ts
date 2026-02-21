@@ -81,7 +81,7 @@ export class Tooltip extends LitElement implements TooltipProps {
       padding: var(--ag-space-2) var(--ag-space-3);
       border-radius: var(--ag-radius-md);
       font-size: var(--ag-font-size-sm);
-      max-width: 300px;
+      max-inline-size: 300px;
     }
 
     #tooltip[data-show] {

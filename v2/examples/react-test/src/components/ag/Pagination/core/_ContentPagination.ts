@@ -198,7 +198,7 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
       display: flex;
       justify-content: space-between;
       gap: var(--ag-space-4);
-      padding-top: var(--ag-space-2);
+      padding-block-start: var(--ag-space-2);
       border-top: 0px solid transparent;
     }
 
@@ -209,8 +209,8 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
     .content-pagination-item {
       display: flex;
       flex: 0 1 auto;
-      min-width: 0;
-      max-width: 45%;
+      min-inline-size: 0;
+      max-inline-size: 45%;
     }
 
     .content-pagination-item-previous {
@@ -219,7 +219,7 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
 
     .content-pagination-item-next {
       justify-content: flex-end;
-      margin-left: auto;
+      margin-inline-start: auto;
     }
 
     .content-pagination-link {
@@ -287,11 +287,11 @@ export class ContentPagination extends LitElement implements ContentPaginationPr
       }
 
       .content-pagination-item {
-        max-width: 100%;
+        max-inline-size: 100%;
       }
 
       .content-pagination-item-next {
-        margin-left: 0;
+        margin-inline-start: 0;
       }
     }
 

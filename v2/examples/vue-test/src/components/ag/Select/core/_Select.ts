@@ -5,8 +5,8 @@ import {
   buildAriaDescribedBy,
   isHorizontalLabel,
   type LabelPosition,
-} from '../../../../shared/form-control-utils';
-import { formControlStyles } from '../../../../shared/form-control-styles';
+} from '../../shared/form-control-utils';
+import { formControlStyles } from '../../shared/form-control-styles';
 
 export type SelectSize = 'small' | 'large' | '';
 
@@ -209,17 +209,17 @@ export class Select extends LitElement implements SelectProps {
 
     /* Small size variant */
     :host([size="small"]) .select {
-      padding-top: var(--ag-space-1);
-      padding-bottom: var(--ag-space-1);
-      padding-left: var(--ag-space-2);
+      padding-block-start: var(--ag-space-1);
+      padding-block-end: var(--ag-space-1);
+      padding-inline-start: var(--ag-space-2);
       font-size: var(--ag-font-size-small);
     }
 
     /* Large size variant */
     :host([size="large"]) .select {
-      padding-top: var(--ag-space-2);
-      padding-bottom: var(--ag-space-2);
-      padding-left: var(--ag-space-4);
+      padding-block-start: var(--ag-space-2);
+      padding-block-end: var(--ag-space-2);
+      padding-inline-start: var(--ag-space-4);
       font-size: var(--ag-font-size-large);
     }
 

@@ -24,7 +24,7 @@
 import { ref } from "vue";
 import "../core/Toast";
 import type { ToastProps, ToastType } from "../core/Toast";
-import type { Position } from "../../../../utils/positioning";
+import type { Position } from "../../utils/positioning";
 
 const props = withDefaults(defineProps<ToastProps>(), {
   open: false,

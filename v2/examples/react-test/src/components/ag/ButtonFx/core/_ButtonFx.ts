@@ -114,7 +114,7 @@ export class ButtonFx extends AgButton implements FxProps {
         content: '';
         position: absolute;
         top: 0;
-        left: 0;
+        inset-inline-start: 0;
         width: 100%;
         height: 100%;
         background: rgba(255, 255, 255, 0.25);
@@ -142,6 +142,11 @@ export class ButtonFx extends AgButton implements FxProps {
 
       button.ag-fx-side-slide:hover::before {
         transform: translateX(0);
+      }
+
+      /* RTL Support - flip side-slide direction */
+      :host-context([dir="rtl"]) button.ag-fx-side-slide::before {
+        transform: translateX(100%);
       }
 
       /* Press shadow - animates shadow on active/press with variant colors */

@@ -68,7 +68,7 @@ export class AgAlert extends LitElement implements AlertProps {
     }
     .alert-close {
       flex-shrink: 0;
-      margin-left: auto;
+      margin-inline-start: auto;
     }
     .alert-rounded {
       border-radius: var(--ag-radius-md);
@@ -76,30 +76,46 @@ export class AgAlert extends LitElement implements AlertProps {
     .alert-bordered {
       border-color: var(--ag-border);
     }
+    .alert-bordered.alert-warning {
+      border-color: var(--ag-warning);
+    }
+    .alert-bordered.alert-info {
+      border-color: var(--ag-info);
+    }
+    .alert-bordered.alert-success {
+      border-color: var(--ag-success);
+    }
+    .alert-bordered.alert-danger,
+    .alert-bordered.alert-error {
+      border-color: var(--ag-danger);
+    }
+    .alert-bordered.alert-primary {
+      border-color: var(--ag-primary);
+    }
     .alert-border-left {
-      border-left-width: var(--ag-border-width-3);
-      border-left-color: var(--ag-border);
+      border-inline-start-width: var(--ag-border-width-3);
+      border-inline-start-color: var(--ag-border);
     }
     .alert-warning {
       background-color: var(--ag-warning-background);
       color: var(--ag-warning-text);
     }
     .alert-border-left.alert-warning {
-      border-left-color: var(--ag-warning);
+      border-inline-start-color: var(--ag-warning);
     }
     .alert-info {
       background-color: var(--ag-info-background);
       color: var(--ag-info-text);
     }
     .alert-border-left.alert-info {
-      border-left-color: var(--ag-info);
+      border-inline-start-color: var(--ag-info);
     }
     .alert-success {
       background-color: var(--ag-success-background);
       color: var(--ag-success-text);
     }
     .alert-border-left.alert-success {
-      border-left-color: var(--ag-success);
+      border-inline-start-color: var(--ag-success);
     }
     .alert-danger,
     .alert-error {
@@ -108,21 +124,24 @@ export class AgAlert extends LitElement implements AlertProps {
     }
     .alert-border-left.alert-danger,
     .alert-border-left.alert-error {
-      border-left-color: var(--ag-danger);
+      border-inline-start-color: var(--ag-danger);
     }
     .alert-primary {
       background-color: var(--ag-primary-background);
       color: var(--ag-primary-text);
     }
     .alert-border-left.alert-primary {
-      border-left-color: var(--ag-primary);
+      border-inline-start-color: var(--ag-primary);
     }
     .alert-monochrome {
-      background-color: var(--ag-background-primary-inverted);
-      color: var(--ag-text-primary-inverted);
+      background-color: var(--ag-info-background);
+      color: var(--ag-text-primary);
+    }
+    .alert-bordered.alert-monochrome {
+      border-color: var(--ag-text-primary);
     }
     .alert-border-left.alert-monochrome {
-      border-left-color: var(--ag-text-primary);
+      border-inline-start-color: var(--ag-text-primary);
     }
   `;
 

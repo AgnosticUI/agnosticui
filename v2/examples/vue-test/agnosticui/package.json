@@ -1,6 +1,8 @@
 {
   "name": "agnosticui-core",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.12",
+  "author": "AgnosticUI",
+  "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -449,18 +451,6 @@
       "types": "./dist/components/Image/vue/index.d.ts",
       "import": "./dist/components/Image/vue/index.js"
     },
-    "./table": {
-      "types": "./dist/components/Table/core/_Table.d.ts",
-      "import": "./dist/components/Table/core/_Table.js"
-    },
-    "./table/react": {
-      "types": "./dist/components/Table/react/ReactTable.d.ts",
-      "import": "./dist/components/Table/react/ReactTable.js"
-    },
-    "./table/vue": {
-      "types": "./dist/components/Table/vue/index.d.ts",
-      "import": "./dist/components/Table/vue/index.js"
-    },
     "./close-button": {
       "types": "./dist/components/shared/CloseButton/_CloseButton.d.ts",
       "import": "./dist/components/shared/CloseButton/_CloseButton.js"
@@ -708,6 +698,54 @@
     "./icon-button-fx/vue": {
       "types": "./dist/components/IconButtonFx/vue/index.d.ts",
       "import": "./dist/components/IconButtonFx/vue/index.js"
+    },
+    "./selection-card": {
+      "types": "./dist/components/SelectionCard/core/SelectionCard.d.ts",
+      "import": "./dist/components/SelectionCard/core/SelectionCard.js"
+    },
+    "./selection-card/react": {
+      "types": "./dist/components/SelectionCard/react/index.d.ts",
+      "import": "./dist/components/SelectionCard/react/index.js"
+    },
+    "./selection-card/vue": {
+      "types": "./dist/components/SelectionCard/vue/index.d.ts",
+      "import": "./dist/components/SelectionCard/vue/index.js"
+    },
+    "./selection-card-group": {
+      "types": "./dist/components/SelectionCardGroup/core/SelectionCardGroup.d.ts",
+      "import": "./dist/components/SelectionCardGroup/core/SelectionCardGroup.js"
+    },
+    "./selection-card-group/react": {
+      "types": "./dist/components/SelectionCardGroup/react/index.d.ts",
+      "import": "./dist/components/SelectionCardGroup/react/index.js"
+    },
+    "./selection-card-group/vue": {
+      "types": "./dist/components/SelectionCardGroup/vue/index.d.ts",
+      "import": "./dist/components/SelectionCardGroup/vue/index.js"
+    },
+    "./selection-button": {
+      "types": "./dist/components/SelectionButton/core/SelectionButton.d.ts",
+      "import": "./dist/components/SelectionButton/core/SelectionButton.js"
+    },
+    "./selection-button/react": {
+      "types": "./dist/components/SelectionButton/react/index.d.ts",
+      "import": "./dist/components/SelectionButton/react/index.js"
+    },
+    "./selection-button/vue": {
+      "types": "./dist/components/SelectionButton/vue/index.d.ts",
+      "import": "./dist/components/SelectionButton/vue/index.js"
+    },
+    "./selection-button-group": {
+      "types": "./dist/components/SelectionButtonGroup/core/SelectionButtonGroup.d.ts",
+      "import": "./dist/components/SelectionButtonGroup/core/SelectionButtonGroup.js"
+    },
+    "./selection-button-group/react": {
+      "types": "./dist/components/SelectionButtonGroup/react/index.d.ts",
+      "import": "./dist/components/SelectionButtonGroup/react/index.js"
+    },
+    "./selection-button-group/vue": {
+      "types": "./dist/components/SelectionButtonGroup/vue/index.d.ts",
+      "import": "./dist/components/SelectionButtonGroup/vue/index.js"
     }
   },
   "scripts": {

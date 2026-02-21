@@ -471,10 +471,10 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       display: block;
     }
 
-    .toggle-button.top-left { top: var(--ag-space-4); left: var(--ag-space-4); }
-    .toggle-button.top-right { top: var(--ag-space-4); right: var(--ag-space-4); }
-    .toggle-button.bottom-left { bottom: var(--ag-space-4); left: var(--ag-space-4); }
-    .toggle-button.bottom-right { bottom: var(--ag-space-4); right: var(--ag-space-4); }
+    .toggle-button.top-left { top: var(--ag-space-4); inset-inline-start: var(--ag-space-4); }
+    .toggle-button.top-right { top: var(--ag-space-4); inset-inline-end: var(--ag-space-4); }
+    .toggle-button.bottom-left { bottom: var(--ag-space-4); inset-inline-start: var(--ag-space-4); }
+    .toggle-button.bottom-right { bottom: var(--ag-space-4); inset-inline-end: var(--ag-space-4); }
 
     /* ===========================================
        DESKTOP: At/above breakpoint

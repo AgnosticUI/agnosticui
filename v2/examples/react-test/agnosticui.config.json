@@ -8,7 +8,7 @@
   },
   "components": {
     "Button": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -17,34 +17,34 @@
       ]
     },
     "Breadcrumb": {
-      "added": "2025-12-13T03:32:58.459Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Breadcrumb/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Breadcrumb/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Breadcrumb/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Breadcrumb/react"
       ]
     },
     "Badge": {
-      "added": "2025-12-13T15:23:23.071Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Badge/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Badge/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Badge/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Badge/react"
       ]
     },
     "Icon": {
-      "added": "2025-12-13T15:24:08.558Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Icon/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Icon/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Icon/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Icon/react"
       ]
     },
     "Alert": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -54,16 +54,16 @@
       ]
     },
     "Tag": {
-      "added": "2025-12-13T15:40:12.683Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Tag/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Tag/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Tag/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Tag/react"
       ]
     },
     "Accordion": {
-      "added": "2025-12-22T13:47:10.970Z",
+      "added": "2026-02-21T14:10:34.663Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -72,7 +72,7 @@
       ]
     },
     "Fieldset": {
-      "added": "2025-12-22T13:47:10.971Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -81,7 +81,7 @@
       ]
     },
     "ProgressRing": {
-      "added": "2025-12-22T13:47:10.971Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -90,52 +90,52 @@
       ]
     },
     "Flex": {
-      "added": "2025-12-13T15:58:19.828Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Flex/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Flex/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Flex/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Flex/react"
       ]
     },
     "Radio": {
-      "added": "2025-12-13T15:58:19.828Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Radio/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Radio/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Radio/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Radio/react"
       ]
     },
     "AspectRatio": {
-      "added": "2025-12-13T15:58:19.828Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/AspectRatio/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/AspectRatio/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/AspectRatio/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/AspectRatio/react"
       ]
     },
     "Header": {
-      "added": "2025-12-13T15:58:19.828Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Header/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Header/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Header/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Header/react"
       ]
     },
     "Rating": {
-      "added": "2025-12-13T15:58:19.828Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Rating/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/Rating/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Rating/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/Rating/react"
       ]
     },
     "Avatar": {
-      "added": "2025-12-22T13:47:10.971Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -144,7 +144,7 @@
       ]
     },
     "ScrollProgress": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -153,27 +153,25 @@
       ]
     },
     "BadgeFx": {
-      "added": "2025-12-13T16:22:54.791Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/BadgeFx/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/BadgeFx/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/BadgeFx/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/BadgeFx/react"
       ]
     },
     "IconButtonFx": {
-      "added": "2025-12-13T16:22:54.791Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/IconButtonFx/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/IconButtonFx/react",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/IconButton/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/qa_workspace/react-test2/src/components/ag/IconButton/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/IconButtonFx/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/examples/react-test/src/components/ag/IconButtonFx/react"
       ]
     },
     "IconButton": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -182,7 +180,7 @@
       ]
     },
     "ScrollToButton": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -191,7 +189,7 @@
       ]
     },
     "Select": {
-      "added": "2025-12-13T17:02:55.356Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -200,7 +198,7 @@
       ]
     },
     "Image": {
-      "added": "2025-12-13T17:02:55.356Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -209,7 +207,7 @@
       ]
     },
     "Sidebar": {
-      "added": "2025-12-13T17:16:11.322Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -218,7 +216,7 @@
       ]
     },
     "SidebarNav": {
-      "added": "2025-12-13T17:16:11.323Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -227,7 +225,7 @@
       ]
     },
     "Popover": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -237,7 +235,7 @@
       ]
     },
     "Input": {
-      "added": "2025-12-15T16:04:44.054Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -246,7 +244,7 @@
       ]
     },
     "ButtonFx": {
-      "added": "2025-12-15T17:08:39.643Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -255,7 +253,7 @@
       ]
     },
     "IntlFormatter": {
-      "added": "2025-12-15T17:21:33.606Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -264,7 +262,7 @@
       ]
     },
     "SkeletonLoader": {
-      "added": "2025-12-22T13:47:10.971Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -273,7 +271,7 @@
       ]
     },
     "Kbd": {
-      "added": "2025-12-15T21:40:39.202Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -282,7 +280,7 @@
       ]
     },
     "Card": {
-      "added": "2025-12-16T03:45:11.897Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -291,7 +289,7 @@
       ]
     },
     "Slider": {
-      "added": "2025-12-22T13:47:10.971Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -300,7 +298,7 @@
       ]
     },
     "Checkbox": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -309,7 +307,7 @@
       ]
     },
     "Link": {
-      "added": "2025-12-16T19:44:13.372Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -318,7 +316,7 @@
       ]
     },
     "Spinner": {
-      "added": "2025-12-16T19:44:13.372Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -327,7 +325,7 @@
       ]
     },
     "Collapsible": {
-      "added": "2025-12-16T21:56:17.341Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -336,7 +334,7 @@
       ]
     },
     "Loader": {
-      "added": "2025-12-16T21:56:17.342Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -345,7 +343,7 @@
       ]
     },
     "Tabs": {
-      "added": "2025-12-16T21:56:17.342Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -354,7 +352,7 @@
       ]
     },
     "Combobox": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -364,7 +362,7 @@
       ]
     },
     "Mark": {
-      "added": "2025-12-16T22:51:56.817Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -373,7 +371,7 @@
       ]
     },
     "CopyButton": {
-      "added": "2025-12-16T23:04:58.491Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -382,7 +380,7 @@
       ]
     },
     "Menu": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -391,7 +389,7 @@
       ]
     },
     "Timeline": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -400,7 +398,7 @@
       ]
     },
     "Dialog": {
-      "added": "2025-12-17T16:14:40.280Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -410,7 +408,7 @@
       ]
     },
     "MessageBubble": {
-      "added": "2025-12-17T16:14:40.281Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -419,7 +417,7 @@
       ]
     },
     "Toast": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -429,7 +427,7 @@
       ]
     },
     "Divider": {
-      "added": "2025-12-17T16:14:40.281Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -438,7 +436,7 @@
       ]
     },
     "Pagination": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -447,7 +445,7 @@
       ]
     },
     "Toggle": {
-      "added": "2025-12-17T16:27:15.522Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -456,7 +454,7 @@
       ]
     },
     "Drawer": {
-      "added": "2025-12-19T20:48:10.595Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -465,7 +463,7 @@
       ]
     },
     "Tooltip": {
-      "added": "2025-12-17T16:55:11.432Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -474,7 +472,7 @@
       ]
     },
     "EmptyState": {
-      "added": "2025-12-22T13:47:10.971Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -483,7 +481,7 @@
       ]
     },
     "Progress": {
-      "added": "2025-12-17T16:55:11.433Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -492,7 +490,7 @@
       ]
     },
     "VisuallyHidden": {
-      "added": "2025-12-17T16:55:11.433Z",
+      "added": "2026-02-21T14:10:34.664Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -510,8 +508,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.1.tgz",
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.12.tgz",
     "version": "unknown",
-    "installed": "2025-12-22T13:45:16.609Z"
+    "installed": "2026-02-21T14:03:23.065Z"
   }
 }

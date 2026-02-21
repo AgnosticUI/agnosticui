@@ -149,22 +149,22 @@ export class CloseButton extends LitElement implements CloseButtonProps {
 
     :host([position="top-start"]) .close-button {
       top: var(--ag-space-4);
-      left: var(--ag-space-4);
+      inset-inline-start: var(--ag-space-4);
     }
 
     :host([position="top-end"]) .close-button {
       top: var(--ag-space-4);
-      right: var(--ag-space-4);
+      inset-inline-end: var(--ag-space-4);
     }
 
     :host([position="bottom-start"]) .close-button {
       bottom: var(--ag-space-4);
-      left: var(--ag-space-4);
+      inset-inline-start: var(--ag-space-4);
     }
 
     :host([position="bottom-end"]) .close-button {
       bottom: var(--ag-space-4);
-      right: var(--ag-space-4);
+      inset-inline-end: var(--ag-space-4);
     }
   `;
 

@@ -1,5 +1,5 @@
 import { LitElement, html, type CSSResultGroup } from 'lit';
-import { NAV_SUBLINK_STYLES } from '../../../../styles/nav-sublink-styles';
+import { NAV_SUBLINK_STYLES } from '../../styles/nav-sublink-styles';
 
 export class AgSidebarNavPopoverSubmenu extends LitElement {
   static hostAttributes = {

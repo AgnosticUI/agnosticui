@@ -103,8 +103,8 @@ export class Popover extends LitElement implements PopoverProps {
       border: var(--ag-border-width-1) solid var(--ag-border);
       border-radius: var(--ag-radius-md);
       box-shadow: var(--ag-shadow-lg);
-      min-width: var(--ag-popover-min-width);
-      max-width: var(--ag-popover-max-width);
+      min-inline-size: var(--ag-popover-min-width);
+      max-inline-size: var(--ag-popover-max-width);
       opacity: 0;
       transform: scale(0.95);
       transition:
@@ -143,22 +143,22 @@ export class Popover extends LitElement implements PopoverProps {
     /* Placement-specific border colors for the arrow to match the popover border on the visible sides. */
     #popover[data-placement^="top"] #arrow {
       border-bottom-color: var(--ag-border);
-      border-right-color: var(--ag-border);
+      border-inline-end-color: var(--ag-border);
     }
 
     #popover[data-placement^="right"] #arrow {
       border-bottom-color: var(--ag-border);
-      border-left-color: var(--ag-border);
+      border-inline-start-color: var(--ag-border);
     }
 
     #popover[data-placement^="bottom"] #arrow {
-      border-left-color: var(--ag-border);
+      border-inline-start-color: var(--ag-border);
       border-top-color: var(--ag-border);
     }
 
     #popover[data-placement^="left"] #arrow {
       border-top-color: var(--ag-border);
-      border-right-color: var(--ag-border);
+      border-inline-end-color: var(--ag-border);
     }
 
     .popover-header {
@@ -202,7 +202,7 @@ export class Popover extends LitElement implements PopoverProps {
     }
 
     .popover-body ::slotted(*:last-child) {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     /* Ensure popover is hidden when not active */

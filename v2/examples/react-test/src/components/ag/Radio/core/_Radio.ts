@@ -29,35 +29,35 @@ export interface RadioProps {
   /**
    * Name attribute for the radio input (required for grouping)
    */
-  name: string;
+  name?: string;
   /**
    * Value of the radio input
    */
-  value: string;
+  value?: string;
   /**
    * Whether the radio is checked
    */
-  checked: boolean;
+  checked?: boolean;
   /**
    * Whether the radio is disabled
    */
-  disabled: boolean;
+  disabled?: boolean;
   /**
    * Size of the radio button
    */
-  size: RadioSize;
+  size?: RadioSize;
   /**
    * Color theme variant
    */
-  theme: RadioTheme;
+  theme?: RadioTheme;
   /**
    * Label text for the radio button (internal label that wraps the radio)
    */
-  labelText: string;
+  labelText?: string;
   /**
    * Position of labelText relative to radio (end = after radio, start = before radio)
    */
-  labelPosition: 'end' | 'start';
+  labelPosition?: 'end' | 'start';
   /**
    * Optional external label displayed above the radio (useful for groups or standalone with context)
    */

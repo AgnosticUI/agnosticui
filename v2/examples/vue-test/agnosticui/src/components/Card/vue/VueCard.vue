@@ -41,7 +41,7 @@ export default defineComponent({
       default: false,
     },
     rounded: {
-      type: String as PropType<CardRounded>,
+      type: [String, Boolean] as PropType<CardRounded | boolean>,
       default: "" as CardRounded,
     },
     variant: {
@@ -49,7 +49,7 @@ export default defineComponent({
       default: "" as CardVariant,
     },
   },
-  setup(props, { emit }) {
+  setup(props) {
     const agComponent = ref<(HTMLElement & CardProps) | null>(null);
 
     onMounted(async () => {

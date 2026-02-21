@@ -5,8 +5,8 @@ import type {
   IconButtonClickEvent,
   IconButtonActivateEvent,
 } from '../../IconButton/core/_IconButton';
-import { motionStyles } from '../../../../styles/motion.styles';
-import type { FxProps } from '../../../../types/fx';
+import { motionStyles } from '../../styles/motion.styles';
+import type { FxProps } from '../../types/fx';
 
 // Re-export event types for convenience
 export type { IconButtonClickEvent, IconButtonActivateEvent };

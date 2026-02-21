@@ -1,6 +1,6 @@
 import { css, LitElement, html, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
-import { NAV_SUBLINK_STYLES } from '../../../../styles/nav-sublink-styles';
+import { NAV_SUBLINK_STYLES } from '../../styles/nav-sublink-styles';
 
 export class AgSidebarNavSubmenu extends LitElement {
   static hostAttributes = {
@@ -17,9 +17,9 @@ export class AgSidebarNavSubmenu extends LitElement {
     css`
       :host {
         display: none;
-        margin-left: 0.875rem;
-        border-left: 1px solid var(--ag-border-subtle);
-        padding-left: 0.625rem;
+        margin-inline-start: 0.875rem;
+        border-inline-start: 1px solid var(--ag-border-subtle);
+        padding-inline-start: 0.625rem;
         margin-block-start: var(--ag-space-1);
         margin-block-end: var(--ag-space-1);
       }

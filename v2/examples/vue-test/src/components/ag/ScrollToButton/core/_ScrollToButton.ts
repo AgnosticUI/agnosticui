@@ -70,7 +70,7 @@ export class ScrollToButton extends LitElement implements ScrollToButtonProps {
       display: inline-block;
       position: fixed;
       bottom: var(--ag-space-8, 2rem);
-      right: var(--ag-space-8, 2rem);
+      inset-inline-end: var(--ag-space-8, 2rem);
       z-index: var(--ag-z-index-sticky, 900);
       opacity: 0;
       visibility: hidden;

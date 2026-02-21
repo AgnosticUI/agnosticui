@@ -1,8 +1,8 @@
 import { css, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
 import { AgBadge, type BadgeProps } from '../../Badge/core/_Badge';
-import { motionStyles } from '../../../../styles/motion.styles';
-import type { FxProps } from '../../../../types/fx';
+import { motionStyles } from '../../styles/motion.styles';
+import type { FxProps } from '../../types/fx';
 
 // Combined props interface
 export interface BadgeFxProps extends BadgeProps, FxProps { }
@@ -77,10 +77,7 @@ export class BadgeFx extends AgBadge implements BadgeFxProps {
       .badge.ag-fx-highlight-sweep::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         background: linear-gradient(
           90deg,
           transparent 0%,

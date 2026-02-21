@@ -11,7 +11,7 @@ export const NAV_BUTTON_STYLES = css`
     display: flex;
     align-items: center;
     gap: var(--ag-space-2);
-    text-align: left;
+    text-align: start;
     cursor: pointer;
     border-radius: var(--ag-border-radius-sm);
     transition: background 0.15s;

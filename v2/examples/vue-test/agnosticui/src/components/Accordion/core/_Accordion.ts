@@ -161,7 +161,7 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
       color: inherit;
       cursor: pointer;
       width: 100%;
-      text-align: left;
+      text-align: start;
       display: flex;
       align-items: center;
       justify-content: space-between;

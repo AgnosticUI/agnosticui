@@ -26,15 +26,15 @@ export type CheckboxChangeEvent = CustomEvent<CheckboxChangeEventDetail>;
  * @csspart ag-checkbox-label - The label text span
  */
 export interface CheckboxProps {
-  name: string;
-  value: string;
-  checked: boolean;
-  indeterminate: boolean;
-  disabled: boolean;
-  size: CheckboxSize;
-  theme: CheckboxTheme;
-  labelText: string;
-  labelPosition: 'end' | 'start';
+  name?: string;
+  value?: string;
+  checked?: boolean;
+  indeterminate?: boolean;
+  disabled?: boolean;
+  size?: CheckboxSize;
+  theme?: CheckboxTheme;
+  labelText?: string;
+  labelPosition?: 'end' | 'start';
   // Validation & hints
   required?: boolean;
   invalid?: boolean;
@@ -58,7 +58,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
       align-items: center;
       cursor: pointer;
       user-select: none;
-      gap: var(--ag-space-3);
+      gap: 0;
     }
 
     :host([disabled]) .checkbox-wrapper {
@@ -116,11 +116,11 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-label--small::after {
-      left: 4px;
+      inset-inline-start: 4px;
       top: 0px;
       width: 4px;
       height: 8px;
-      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
     }
 
@@ -130,11 +130,11 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-label--medium::after {
-      left: 5px;
+      inset-inline-start: 5px;
       top: 1px;
       width: 4px;
       height: 9px;
-      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
     }
 
@@ -144,11 +144,11 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-label--large::after {
-      left: 6px;
+      inset-inline-start: 6px;
       top: 1px;
       width: 5px;
       height: 10px;
-      border-right: var(--ag-border-width-2) solid var(--ag-white);
+      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
     }
 
@@ -156,14 +156,14 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     .checkbox-input:indeterminate + .checkbox-label::after {
       transform: rotate(0deg) scale(1) translate(-6px);
       opacity: 1;
-      border-right: none;
+      border-inline-end: none;
       border-bottom: var(--ag-border-width-2) solid var(--ag-white);
       width: 8px;
       height: 0;
-      left: 50%;
+      inset-inline-start: 50%;
       top: 50%;
-      margin-left: -4px;
-      margin-top: -1px;
+      margin-inline-start: -4px;
+      margin-block-start: -1px;
     }
 
     /* Checked state */
@@ -249,15 +249,15 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     }
 
     .checkbox-label-copy--small {
-      font-size: 0.875rem;
+      font-size: var(--ag-font-size-sm);
     }
 
     .checkbox-label-copy--medium {
-      font-size: 1rem;
+      font-size: var(--ag-font-size-sm);
     }
 
     .checkbox-label-copy--large {
-      font-size: 1.125rem;
+      font-size: var(--ag-font-size-base);
     }
 
     /* Respect reduced motion preferences */

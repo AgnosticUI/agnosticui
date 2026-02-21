@@ -6,32 +6,6 @@ AgnosticUI Core Library - Framework-agnostic, upgrade-safe web components built 
 
 AgnosticUI uses a **Minimalist & Highly Themeable** architecture where components provide beautiful, minimal defaults that are fully customizable via design tokens (`--ag-*` CSS custom properties).
 
-```mermaid
-graph TB
-    subgraph "Component Architecture"
-        Core["Core Component<br/>(_Component.ts)"]
-        Wrapper["Framework Wrapper<br/>(ReactComponent.tsx)"]
-        Extension["Extensions<br/>(AnimatedComponent.ts)"]
-        Styled["Styled Variants<br/>(MinimalComponent.ts)"]
-
-        Core --> Wrapper
-        Core --> Extension
-        Core --> Styled
-    end
-    
-    subgraph "Consumer Applications"
-        React["React App"]
-        Vue["Vue App"] 
-        Svelte["Svelte App"]
-        Vanilla["Vanilla JS"]
-    end
-    
-    Wrapper --> React
-    Wrapper --> Vue
-    Wrapper --> Svelte
-    Core --> Vanilla
-```
-
 ## Component Layers
 
 ### 1. Core Layer (`_Component.ts`)
@@ -41,114 +15,83 @@ graph TB
 - Minimal visual styling via `--ag-*` design tokens
 
 ### 2. Framework Wrappers
-- **React/Vue/Svelte** specific adapters
+- **React/Vue** specific adapters
 - Handle framework-specific patterns (props, events, slots)
 - Maintain type safety and developer experience
-
-### 3. Extensions
-- **Optional** enhanced versions with additional features
-- Example: `AnimatedAccordion` adds smooth transitions
-- Built on top of core components
-
-### 4. Styled Variants
-- **Optional** pre-styled component versions
-- Theme-aware via design tokens
-- Examples in `styled/` directories (e.g., `MinimalAccordion.ts`)
-
-## Data Flow
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant Framework as Framework Wrapper
-    participant Core as Core Web Component
-    participant DOM
-    
-    User->>Framework: Render component with props
-    Framework->>Core: Set attributes/properties
-    Core->>DOM: Create shadow DOM with slots
-    Note over Core: Apply functional CSS only
-    
-    User->>Framework: Interact (click, keyboard)
-    Framework->>Core: Forward event listeners
-    Core->>Core: Handle accessibility & state
-    Core->>Framework: Emit custom events
-    Framework->>User: Trigger callbacks/updates
-```
-
-## Component Structure
-
-```mermaid
-classDiagram
-    class CoreComponent {
-        +properties: LitProperties
-        +render() LitTemplate
-        +handleInteraction() void
-        +updateA11yState() void
-        -functionalStyles: CSSResult
-    }
-    
-    class ReactWrapper {
-        +props: ComponentProps
-        +ref: RefObject
-        +useEffect() void
-        +setupEventListeners() void
-    }
-    
-    class Extension {
-        +additionalFeatures: Feature[]
-        +enhancedBehavior() void
-    }
-    
-    class StyledVariant {
-        +themeTokens: CSSVariables
-        +presetStyles: CSS
-    }
-
-    CoreComponent <|-- Extension
-    CoreComponent <-- ReactWrapper : wraps
-    Extension <-- StyledVariant : applies tokens
-```
 
 ## Directory Structure
 
 ```
 src/components/
-├── Accordion/
-│   ├── core/
-│   │   ├── _Accordion.ts          # Immutable core
-│   │   └── _Accordion.spec.ts     # Core tests
-│   ├── react/
-│   │   ├── ReactAccordion.tsx     # React wrapper
-│   │   └── useAccordion.ts        # React hooks
-│   ├── extensions/
-│   │   └── AnimatedAccordion.ts   # Enhanced version
-│   ├── styled/
-│   │   └── MinimalAccordion.ts    # Pre-styled variants
-│   ├── helpers/
-│   │   └── accordion-state.ts     # Shared utilities
-│   └── Accordion.ts               # Public exports
+└── Accordion/
+    ├── core/
+    │   ├── _Accordion.ts             # Core Lit Component
+    │   ├── Accordion.ts              # Public interface
+    │   ├── AccordionGroup.ts         # Group component
+    │   └── README.md                 # Documentation
+    ├── react/
+    │   ├── index.ts                  # React exports
+    │   └── ReactAccordion.tsx        # React wrapper
+    └── vue/
+        ├── index.ts                  # Vue exports
+        ├── VueAccordion.vue          # Main component
+        ├── VueAccordionContent.vue   # Content component
+        ├── VueAccordionHeader.vue    # Header component
+        └── VueAccordionItem.vue      # Item component
 ```
 
-## Key Principles
+## Why AgnosticUI?
 
-### Minimalist & Highly Themeable Philosophy
-- ✅ **Minimal Visual Styling**: Clean defaults via `--ag-*` design tokens
-- ✅ **Functional CSS**: Layout, positioning, component structure
-- 🎨 **Complete Customization**: Override any design token for white-labeling
-- 🎯 **Result**: Production-ready components with enterprise-grade theming
+### The Local UI Kit - A New Category
+**The UI kit that lives in your codebase, not node_modules.**
 
-### Upgrade Safety: Encapsulated Core with Adapter Pattern
-- **Immutable Core**: `_Component.ts` files are canonical and upgrade-safe
-- **Adapter Layer**: Framework wrappers absorb breaking changes between versions
-- **Isolated Customization**: Extensions and styled variants evolve independently
-- **Safe Overrides**: Customize via design tokens without touching core implementations
-- **Result**: Your customizations survive library upgrades seamlessly
+Traditional UI libraries live in `node_modules/` as black boxes. Copy/paste approaches give you code but no reference. AgnosticUI Local gives you **both**: a complete reference library in your project plus owned copies of components you use.
 
-### Framework Agnostic
-- Web Components work in any framework
-- Framework-specific wrappers provide optimal DX
-- Progressive enhancement from vanilla JS to framework-specific features
+```bash
+npx ag init                    # Full library in ./agnosticui/ (reference)
+npx ag add button              # Component in ./src/components/ag/ (yours to modify)
+npx ag sync                    # Update reference, preserve your customizations
+```
+
+### AI-First Development
+**The only UI kit designed for AI-assisted development.**
+
+- **Full Context**: AI tools (Cursor, Windsurf, Claude) see your entire component library
+- **Better Assistance**: "Make this button work like the Combobox" - AI sees both
+- **Reference + Customization**: AI understands the source AND your modifications
+- **Offline & Local**: No API calls, no rate limits, no black boxes
+
+### Complete Ownership
+**Copy, modify, and own your components.**
+
+- Components copied to your project - modify structure, behavior, styling
+- No vendor lock-in or "black box" frustration
+- You control the dependency graph and update schedule
+- Review diffs before accepting updates via `npx ag sync`
+
+### Zero Dependencies
+**Only Lit (5KB runtime) - nothing else.**
+
+- No bloated node_modules
+- Components work standalone
+- Production bundle includes only what you use
+- Framework wrappers via @lit/react and Vue 3 composition API
+
+### Minimalist & Themeable
+**Beautiful defaults, infinite customization.**
+
+- Production-ready styling out of the box
+- Everything customizable via `--ag-*` design tokens
+- Enterprise white-labeling capability
+- Light/dark mode built-in
+
+### Multi-Framework Support
+**React, Vue, Lit - one component library, all frameworks.**
+
+- Framework-specific wrappers for optimal developer experience
+- React wrapper via @lit/react makes props and events feel naturally "React-like"
+- Vue 3 components using composition API
+- Svelte works directly (excellent Web Components support)
 
 ## Usage
 
@@ -158,12 +101,6 @@ import 'agnosticui-core/accordion';
 
 // React wrapper
 import { ReactAccordion } from 'agnosticui-core/react';
-
-// Enhanced version with animations
-import { AnimatedAccordion } from 'agnosticui-core/extensions/animated-accordion';
-
-// Pre-styled variant
-import { MinimalAccordion } from 'agnosticui-core/accordion/styled';
 ```
 
 ## Development Workflow
@@ -171,6 +108,4 @@ import { MinimalAccordion } from 'agnosticui-core/accordion/styled';
 1. **Core First**: Implement behavior in `_Component.ts`
 2. **Test Thoroughly**: Ensure accessibility compliance
 3. **Wrap Frameworks**: Create framework-specific adapters
-4. **Extend Carefully**: Add optional enhancements
 5. **Theme via Tokens**: Customize using `--ag-*` design tokens
-6. **Create Variants**: Build pre-styled versions in `styled/` directories

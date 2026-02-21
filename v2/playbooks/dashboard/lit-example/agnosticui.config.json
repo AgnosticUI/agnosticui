@@ -8,150 +8,443 @@
   },
   "components": {
     "Header": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Header/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Header/core"
       ]
     },
     "Sidebar": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Sidebar/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Sidebar/core"
       ]
     },
     "Breadcrumb": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Breadcrumb/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Breadcrumb/core"
       ]
     },
     "Avatar": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Avatar/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Avatar/core"
       ]
     },
     "Badge": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Badge/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Badge/core"
       ]
     },
     "Flex": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Flex/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Flex/core"
       ]
     },
     "EmptyState": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/EmptyState/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/EmptyState/core"
       ]
     },
     "SkeletonLoader": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/SkeletonLoader/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/SkeletonLoader/core"
       ]
     },
     "Button": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Button/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Button/core"
       ]
     },
     "Tabs": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Tabs/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Tabs/core"
       ]
     },
     "Card": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Card/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Card/core"
       ]
     },
     "Tag": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Tag/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Tag/core"
       ]
     },
     "IconButton": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/IconButton/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/IconButton/core"
       ]
     },
     "Divider": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Divider/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Divider/core"
       ]
     },
     "Progress": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Progress/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Progress/core"
       ]
     },
     "Accordion": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Accordion/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Accordion/core"
       ]
     },
     "Alert": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Alert/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/shared/CloseButton"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/shared/CloseButton"
       ]
     },
     "Toast": {
-      "added": "2026-02-15T19:48:36.565Z",
+      "added": "2026-02-21T14:12:45.267Z",
       "version": "2.0.0-alpha",
       "framework": "lit",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Toast/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/shared/CloseButton",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Alert/core"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Toast/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "AspectRatio": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/AspectRatio/core"
+      ]
+    },
+    "BadgeFx": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/BadgeFx/core"
+      ]
+    },
+    "ButtonFx": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/ButtonFx/core"
+      ]
+    },
+    "Checkbox": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Checkbox/core"
+      ]
+    },
+    "Collapsible": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Collapsible/core"
+      ]
+    },
+    "Combobox": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Combobox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Checkbox/core"
+      ]
+    },
+    "CopyButton": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/CopyButton/core"
+      ]
+    },
+    "Dialog": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Dialog/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Drawer": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Drawer/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Dialog/core"
+      ]
+    },
+    "Fieldset": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Fieldset/core"
+      ]
+    },
+    "Icon": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Icon/core"
+      ]
+    },
+    "IconButtonFx": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/IconButtonFx/core"
+      ]
+    },
+    "Image": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Image/core"
+      ]
+    },
+    "Input": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Input/core"
+      ]
+    },
+    "IntlFormatter": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/IntlFormatter/core"
+      ]
+    },
+    "Kbd": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Kbd/core"
+      ]
+    },
+    "Link": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Link/core"
+      ]
+    },
+    "Loader": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Loader/core"
+      ]
+    },
+    "Mark": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Mark/core"
+      ]
+    },
+    "Menu": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Menu/core"
+      ]
+    },
+    "MessageBubble": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/MessageBubble/core"
+      ]
+    },
+    "Pagination": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Pagination/core"
+      ]
+    },
+    "Popover": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Popover/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "ProgressRing": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/ProgressRing/core"
+      ]
+    },
+    "Radio": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Radio/core"
+      ]
+    },
+    "Rating": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Rating/core"
+      ]
+    },
+    "ScrollProgress": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/ScrollProgress/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/ProgressRing/core"
+      ]
+    },
+    "ScrollToButton": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/ScrollToButton/core"
+      ]
+    },
+    "Select": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Select/core"
+      ]
+    },
+    "SidebarNav": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/SidebarNav/core"
+      ]
+    },
+    "Slider": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Slider/core"
+      ]
+    },
+    "Spinner": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Spinner/core"
+      ]
+    },
+    "Timeline": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Timeline/core"
+      ]
+    },
+    "Toggle": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Toggle/core"
+      ]
+    },
+    "Tooltip": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/Tooltip/core"
+      ]
+    },
+    "VisuallyHidden": {
+      "added": "2026-02-21T14:12:45.267Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/dashboard/lit-example/src/components/ag/VisuallyHidden/core"
       ]
     }
   },
@@ -164,8 +457,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/dashboard/lit-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.12.tgz",
-    "version": "2.0.0-alpha",
-    "installed": "2026-02-15T19:48:27.273Z"
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.12.tgz",
+    "version": "unknown",
+    "installed": "2026-02-21T14:11:21.173Z"
   }
 }

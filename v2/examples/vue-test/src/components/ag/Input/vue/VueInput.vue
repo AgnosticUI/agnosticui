@@ -1,6 +1,5 @@
 <template>
   <ag-input
-    ref="inputRef"
     .value="value"
     .labelHidden="labelHidden"
     .noLabel="noLabel"
@@ -43,7 +42,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import type { InputProps } from "../core/Input";
 import "../core/Input"; // Registers the ag-input web component
 
@@ -59,7 +57,7 @@ export interface VueInputProps
     "onClick" | "onInput" | "onChange" | "onFocus" | "onBlur"
   > {}
 // Define props with defaults
-const props = withDefaults(defineProps<VueInputProps>(), {
+withDefaults(defineProps<VueInputProps>(), {
   value: "",
   label: "",
   labelHidden: false,
@@ -92,9 +90,6 @@ const emit = defineEmits<{
   blur: [event: FocusEvent];
   "update:value": [value: string];
 }>();
-
-// Template ref
-const inputRef = ref<HTMLElement>();
 
 // Event handlers - native events emit full event object
 const handleClick = (event: MouseEvent) => {

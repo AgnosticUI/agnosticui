@@ -9,6 +9,7 @@
     .ghost="ghost"
     .link="link"
     .grouped="grouped"
+    .fullWidth="fullWidth"
     .ariaLabel="ariaLabel"
     :type="type"
     :variant="variant"
@@ -51,6 +52,7 @@ const props = withDefaults(defineProps<VueButtonProps>(), {
   ghost: false,
   link: false,
   grouped: false,
+  fullWidth: false,
   ariaLabel: "",
 });
 
