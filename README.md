@@ -24,28 +24,20 @@
 
 ---
 
-## The problem with every other component library
+## The problem with most component libraries
 
-Most component libraries make a quiet assumption: you'll stay in their ecosystem. You install the package, you import their components, and from that moment forward their versioning, their breaking changes, and their framework lock-in are your problem too.
-
-And when you reach for an AI coding tool? It hallucinates props that don't exist, invents APIs it has never seen, and leaves you debugging output that looked correct but wasn't.
-
-AgnosticUI is built on a different premise entirely.
+Your AI tools can't see their source — so they hallucinate props, invent APIs, and generate code that looks right but isn't. AgnosticUI works differently.
 
 ---
 
 ## You own the source
-
 ```bash
-npm install -g agnosticui-cli
-
-cd my-project
+cd your-project
 npx agnosticui-cli init --framework react
 npx agnosticui-cli add Button Card Input
 ```
 
-That's it. No `node_modules` rabbit hole to trace. No opaque black box. The component source lands **directly in your project** — readable, editable, yours.
-
+The component source lands **directly in your project** — readable, editable, yours.
 ```
 src/
   components/
@@ -56,17 +48,17 @@ src/
         Button.test.ts    ← your tests now
 ```
 
-Components land under `src/components/ag/` by default — a dedicated namespace that keeps AgnosticUI components cleanly separated from your own. The path is configurable if you prefer otherwise.
+Components land under `src/components/ag/` by default — a dedicated namespace that keeps AgnosticUI components separate from your own. Configurable if you prefer otherwise.
 
-Your AI coding tools — Cursor, Windsurf, Copilot — can see every line. No hallucinated props. No invented APIs. Just real, local source code that your LLM reads like any other file in your project.
+Cursor, Claude, Windsurf, Copilot — every tool sees the source. No hallucinated props. No invented APIs. Just local code your LLM reads like any other file.
 
-This is not a workaround. It is the architecture.
+This is the architecture.
 
 ---
 
 ## Built once. Runs everywhere.
 
-AgnosticUI's components are authored as **Lit Web Components** — a thin, standards-based layer over native Custom Elements. The CLI wraps them for your framework of choice at copy time.
+AgnosticUI's components are authored as **Lit Web Components** — a standards-based layer over native Custom Elements. The CLI wraps them for your framework at copy time.
 
 <p align="center">
   <picture>
@@ -75,8 +67,9 @@ AgnosticUI's components are authored as **Lit Web Components** — a thin, stand
   </picture>
 </p>
 
-The same `Button` you use in a React app is the same `Button` your Vue team uses. Same tokens. Same accessibility semantics. Same test coverage. Your design system doesn't fork when your tech stack does.
+Your design system doesn't fork when your tech stack does.
 
+...
 | | AgnosticUI | Typical component library |
 |---|---|---|
 | Source in your repo | ✅ | ❌ |
@@ -90,54 +83,44 @@ The same `Button` you use in a React app is the same `Button` your Vue team uses
 
 ## AI Playbooks: your LLM already knows how to build with AgnosticUI
 
-Playbooks are structured prompt recipes — one per UI pattern — that tell your AI coding tool exactly how AgnosticUI components compose, what props they accept, and how they should be assembled into real product UI.
+Playbooks are ready-made prompt recipes for your AI tool — one per UI pattern, built around AgnosticUI's components.
 
 | Playbook | What it builds |
 |---|---|
-| [Login Form](https://agnosticui.com/playbooks/login.html) | Responsive login page — mobile, tablet floating card, desktop two-column |
-| [Onboarding Wizard](https://agnosticui.com/playbooks/onboarding.html) | Multi-step onboarding flow with progress, validation, and skip logic |
+| [Login Form](https://agnosticui.com/playbooks/login.html) | Responsive login — mobile, floating card, two-column desktop |
+| [Onboarding Wizard](https://agnosticui.com/playbooks/onboarding.html) | Multi-step flow with progress, validation, and skip logic |
 | [Discovery Dashboard](https://agnosticui.com/playbooks/dashboard.html) | Dashboard shell with header, sidebar, and data regions |
-| [Support Center](https://agnosticui.com/playbooks/support.html) | Help center layout with search, categories, and article structure |
+| [Support Center](https://agnosticui.com/playbooks/support.html) | Help center with search, categories, and article layout |
 
 Each Playbook page on the docs site includes:
 
-- **Live StackBlitz examples** for React, Vue, and Lit — runnable directly in the browser
-- **`PROMPT-3-FRAMEWORKS.md`** — a ready-made LLM prompt to generate or customize the pattern across all three frameworks at once
-- **Per-framework prompt files** (`PROMPT-REACT.md`, `PROMPT-VUE.md`, etc.) for targeted generation
-- **Skin switcher** in every live example so you can preview your theme tokens instantly
+- **Live StackBlitz examples** for React, Vue, and Lit
+- **`PROMPT-3-FRAMEWORKS.md`** — one prompt to generate the pattern across all three frameworks
+- **Skin switcher** in every live example to preview your theme tokens instantly
 
-Drop a Playbook prompt into Cursor or Claude Code. Ask it to build a login page. Watch it assemble `Input`, `Button`, `Card`, and `FormGroup` correctly on the first try — because it has the full recipe, not just a component reference.
+Drop a Playbook prompt into Cursor or Claude Code and watch it assemble `Input`, `Button`, `Card`, and `FormGroup` correctly on the first try — because it has the full recipe, not just a component reference.
 
-No more prompt archaeology. No more correcting hallucinated props. The Playbook is the context your LLM was missing.
+The prompts are yours to adapt — feed one to your LLM as a crash course in AgnosticUI's patterns, fork it for your own stack, or use it as a blueprint for writing Playbooks around your own UI patterns.
 
 ---
 
 ## Theme skins via CSS custom properties
 
-AgnosticUI components expose their entire visual surface through CSS custom properties. Swap a skin file and every component in your project updates — no component code changes, no find-and-replace.
+AgnosticUI components expose their entire visual surface through CSS custom properties. Swap a skin and every component updates — no code changes, no find-and-replace.
 
 ```css
-/* Swap this file to change your entire product's look */
-@import 'agnosticui/skins/brutalist.css';
-
-/* Or author your own — every token is documented */
-:root {
-  --ag-primary: #your-brand;
-  --ag-radius-md: 0px;           /* sharp corners */
-  --ag-font-family-body: 'Your Font', sans-serif;
-  --ag-shadow-lg: none;          /* flat design */
-}
+/* Base tokens are required, then layer your skin on top */
+@import './components/ag/styles/ag-tokens.css';
+@import './components/ag/styles/ag-tokens-dark.css';
+@import './components/ag/styles/brutalist-light.css';
+@import './components/ag/styles/brutalist-dark.css';
 ```
 
-Ship your product with the default skin. Hand it to a designer. Get back a token file. Import it. Done — no component rewrites, no design handoff friction.
+Hand it to a designer. Get back a token file. Import it. Done.
 
 ---
 
 ## Quick Start
-
-```bash
-npm install -g agnosticui-cli
-```
 
 **React**
 ```bash
@@ -173,19 +156,11 @@ After running `add`, your terminal prints the exact import path for your project
 
 ## Accessibility first, not last
 
-Every AgnosticUI component ships with:
-
-- Correct ARIA roles, states, and properties out of the box
-- Keyboard navigation that follows WCAG 2.1 AA patterns
-- Focus management that works with screen readers
-- Reduced motion support via `prefers-reduced-motion`
-- Color contrast validated against AA minimums in the default skin
-
-Accessibility is not a checklist item applied at the end. It is part of the component contract that every skin and every framework wrapper must satisfy.
+Every component ships with correct ARIA roles, keyboard navigation, focus management, reduced motion support, and AA-validated color contrast. Not bolted on — part of the component contract every skin and framework wrapper must satisfy.
 
 ---
 
-## 56 components. Production-ready.
+## 55 components. Production-ready.
 
 **Core UI**
 `Accordion` · `Alerts` · `AspectRatio` · `Avatar` · `Badge` · `Breadcrumb` · `Button` · `Card` · `Checkbox` · `Collapsible` · `Combobox` · `CopyButton` · `Dialog` · `Divider` · `Drawer` · `EmptyState`
@@ -194,7 +169,7 @@ Accessibility is not a checklist item applied at the end. It is part of the comp
 `Fieldset` · `Input` · `Radio` · `Rating` · `Select` · `SelectionButtonGroup` · `SelectionCardGroup` · `Slider` · `Toggle`
 
 **Navigation & Layout**
-`Header` · `Menu` · `Pagination` · `Sidebar` · `Tabs`
+`Header` · `Menu` · `Pagination` · `Tabs`
 
 **Feedback & Status**
 `Loader` · `Progress` · `ProgressRing` · `ScrollProgress` · `Skeleton Loader` · `Spinner` · `Toast`
@@ -203,7 +178,7 @@ Accessibility is not a checklist item applied at the end. It is part of the comp
 `Icon` · `Icon Button` · `Image` · `IntlFormatter` · `Kbd` · `Link` · `Mark` · `MessageBubble` · `Popover` · `ScrollToButton` · `Table` · `Tag` · `Timeline` · `Tooltip` · `VisuallyHidden`
 
 **Lab** *(experimental)*
-`BadgeFx` · `ButtonFx` · `Flex` · `IconButtonFx` · `Sidebar`
+`BadgeFx` · `ButtonFx` · `Flex` · `IconButtonFx` 
 
 ---
 
