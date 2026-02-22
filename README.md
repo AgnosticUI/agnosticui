@@ -33,7 +33,7 @@ Your AI tools can't see their source — so they hallucinate props, invent APIs,
 ## You own the source
 ```bash
 cd your-project
-npx agnosticui-cli init --framework vue
+npx agnosticui-cli init --framework vue  # or react, lit, svelte
 npx agnosticui-cli add Button Card Input
 ```
 
@@ -43,7 +43,7 @@ src/
   components/
     ag/
       Button/
-        Button.tsx        ← your file now
+        Button.vue        ← your file now
         Button.css        ← your tokens now
         Button.test.ts    ← your tests now
 ```
