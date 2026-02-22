@@ -255,6 +255,43 @@ export const CombinedFeatures: Story = {
   ),
 };
 
+export const MediaTop: Story = {
+  args: {
+    rounded: 'md',
+  },
+  render: (args) => (
+    <ReactCard {...args} hasMedia mediaPosition="top">
+      <img
+        slot="media"
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+        alt="Mountain landscape"
+      />
+      <h3 slot="header" style={{ margin: 0 }}>Mountain Retreat</h3>
+      <p>A breathtaking mountain landscape captured at golden hour.</p>
+      <div slot="footer">
+        <button style={{ padding: '0.5rem 1rem' }}>View Gallery</button>
+      </div>
+    </ReactCard>
+  ),
+};
+
+export const MediaBottom: Story = {
+  args: {
+    rounded: 'md',
+  },
+  render: (args) => (
+    <ReactCard {...args} hasMedia mediaPosition="bottom">
+      <h3 slot="header" style={{ margin: 0 }}>Mountain Retreat</h3>
+      <p>A breathtaking mountain landscape captured at golden hour.</p>
+      <img
+        slot="media"
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+        alt="Mountain landscape"
+      />
+    </ReactCard>
+  ),
+};
+
 export const Gallery: Story = {
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>

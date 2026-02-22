@@ -239,6 +239,47 @@
     </div>
 
     <div class="mbe4">
+      <h2>Media Card (Top)</h2>
+      <p class="mbs2 mbe3">Use <code>:has-media="true"</code> with <code>media-position="top"</code> for edge-to-edge media above the card content.</p>
+    </div>
+    <div class="stacked-mobile">
+      <VueCard :has-media="true" media-position="top" rounded="md" :shadow="true" style="max-width: 400px;">
+        <template #media>
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+            alt="Mountain landscape"
+          />
+        </template>
+        <template #header>
+          <h3 class="m0">Mountain Retreat</h3>
+        </template>
+        <p>A breathtaking mountain landscape captured at golden hour.</p>
+        <template #footer>
+          <VueButton>View Gallery</VueButton>
+        </template>
+      </VueCard>
+    </div>
+
+    <div class="mbe4">
+      <h2>Media Card (Bottom)</h2>
+      <p class="mbs2 mbe3">Use <code>media-position="bottom"</code> to render media below the card content.</p>
+    </div>
+    <div class="stacked-mobile">
+      <VueCard :has-media="true" media-position="bottom" rounded="md" :shadow="true" style="max-width: 400px;">
+        <template #header>
+          <h3 class="m0">Mountain Retreat</h3>
+        </template>
+        <p>A breathtaking mountain landscape captured at golden hour.</p>
+        <template #media>
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+            alt="Mountain landscape"
+          />
+        </template>
+      </VueCard>
+    </div>
+
+    <div class="mbe4">
       <h2>Customized with CSS Shadow Parts</h2>
     </div>
     <div class="stacked-mobile">

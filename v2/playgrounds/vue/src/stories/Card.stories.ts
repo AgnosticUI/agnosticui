@@ -353,6 +353,49 @@ export const CombinedFeatures: Story = {
   }),
 };
 
+export const MediaTop: Story = {
+  render: () => ({
+    components: { VueCard },
+    template: `
+      <VueCard :hasMedia="true" :mediaPosition="'top'" rounded="md" :shadow="true">
+        <template #media>
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+            alt="Mountain landscape"
+          />
+        </template>
+        <template #header>
+          <h3 style="margin: 0;">Mountain Retreat</h3>
+        </template>
+        <p>A breathtaking mountain landscape captured at golden hour.</p>
+        <template #footer>
+          <button style="padding: 0.5rem 1rem;">View Gallery</button>
+        </template>
+      </VueCard>
+    `,
+  }),
+};
+
+export const MediaBottom: Story = {
+  render: () => ({
+    components: { VueCard },
+    template: `
+      <VueCard :hasMedia="true" :mediaPosition="'bottom'" rounded="md" :shadow="true">
+        <template #header>
+          <h3 style="margin: 0;">Mountain Retreat</h3>
+        </template>
+        <p>A breathtaking mountain landscape captured at golden hour.</p>
+        <template #media>
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+            alt="Mountain landscape"
+          />
+        </template>
+      </VueCard>
+    `,
+  }),
+};
+
 export const Gallery: Story = {
   render: () => ({
     components: { VueCard },
