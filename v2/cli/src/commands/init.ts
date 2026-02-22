@@ -32,6 +32,16 @@ export async function init(options: InitOptions = {}): Promise<void> {
     process.exit(1);
   }
 
+  // Validate we're inside a project directory
+  if (!existsSync(path.join(process.cwd(), 'package.json'))) {
+    logger.error("It looks like you haven't set up a project yet.");
+    logger.info('Please run ' + pc.cyan('npm create vite@latest') + ' before initializing AgnosticUI.');
+    process.exit(1);
+  }
+  const hasMainTs = existsSync(path.join(process.cwd(), 'src', 'main.ts'));
+  const hasMainTsx = existsSync(path.join(process.cwd(), 'src', 'main.tsx'));
+  const entryPoint = hasMainTsx ? 'main.tsx' : hasMainTs ? 'main.ts' : 'main.{ts|tsx}';
+
   // Prompt for framework if not provided
   let framework = options.framework;
   if (!framework) {
@@ -210,14 +220,14 @@ export async function init(options: InitOptions = {}): Promise<void> {
     }
 
     logger.box('Next Steps:', [
-      pc.dim('1. Import CSS tokens in your app entry point (e.g., main.tsx):'),
-      '  ' + logger.command(`import '${componentsPath}/styles/ag-tokens.css'`),
-      '  ' + logger.command(`import '${componentsPath}/styles/ag-tokens-dark.css'`),
+      pc.dim(`1. Import CSS tokens in your app entry point (${entryPoint}):`),
+      '  ' + logger.code(`import '${componentsPath}/styles/ag-tokens.css'`),
+      '  ' + logger.code(`import '${componentsPath}/styles/ag-tokens-dark.css'`),
       pc.dim('  (Or use <link> tags in your index.html)'),
       '',
       pc.dim('2. Set up theming (override Vite\'s default dark mode):'),
       '  ' + pc.dim('Add to your main CSS file or <style> tag:'),
-      '  ' + logger.command('body { background: var(--ag-background-primary); color: var(--ag-text-primary); }'),
+      '  ' + logger.code('body { background: var(--ag-background-primary); color: var(--ag-text-primary); }'),
       '  ' + pc.dim('For dark mode, add to <html>: data-theme="dark"'),
       '  ' + pc.dim('See: https://www.agnosticui.com/theming.html'),
       '',
@@ -228,7 +238,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
       '  ' + logger.command('npx agnosticui-cli list'),
       '',
       pc.dim('5. Use in your app:'),
-      '  ' + logger.command(exampleImport),
+      '  ' + logger.code(exampleImport),
     ]);
 
     // Clean up temporary download directory if it exists
