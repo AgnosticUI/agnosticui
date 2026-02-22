@@ -1,0 +1,80 @@
+<svg width="860" height="580" viewBox="0 0 860 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- ============================================================
+       OUTER DASHED ORBIT RING
+  ============================================================ -->
+  <circle cx="430" cy="295" r="175" stroke="#AC6B77" stroke-width="1.5" stroke-dasharray="8 4"/>
+
+  <!-- ============================================================
+       CONNECTING LINES (drawn before boxes so boxes sit on top)
+  ============================================================ -->
+
+  <!-- AI Playbooks → Lit Core -->
+  <line x1="430" y1="88" x2="430" y2="148" stroke="#AC6B77" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="424,144 430,156 436,144" fill="#AC6B77"/>
+
+  <!-- CLI Ejector → Lit Core (arrow from CLI box into circle) -->
+  <line x1="310" y1="230" x2="364" y2="262" stroke="#AC6B77" stroke-width="1.5" stroke-dasharray="5 3" stroke-linecap="round"/>
+  <polygon points="358,256 370,268 372,254" fill="#AC6B77"/>
+
+  <!-- Lit Core → React -->
+  <line x1="340" y1="340" x2="200" y2="420" stroke="#B1747F" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Lit Core → Vue -->
+  <line x1="430" y1="470" x2="430" y2="508" stroke="#B1747F" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Lit Core → Svelte -->
+  <line x1="520" y1="340" x2="660" y2="420" stroke="#B1747F" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- ============================================================
+       AI PLAYBOOKS BOX (top)
+  ============================================================ -->
+  <rect x="295" y="8" width="270" height="78" rx="8" fill="#FFE4E9" fill-opacity="0.7" stroke="#AC6B77" stroke-width="2"/>
+  <text x="430" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#AC6B77">AI PLAYBOOKS</text>
+  <text x="430" y="56" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#AC6B77">LLM Instruction Set · Framework Recipes</text>
+  <text x="430" y="74" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#AC6B77">Design Tokens · Component Patterns</text>
+
+  <!-- ============================================================
+       LIT CORE + TOKENS CIRCLE (center, darker fill for contrast)
+  ============================================================ -->
+  <circle cx="430" cy="295" r="120" fill="#F5E0E5" stroke="#AC6B77" stroke-width="2"/>
+  <text x="430" y="284" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#D94E6B">LIT CORE + TOKENS</text>
+  <text x="430" y="306" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#172D35">The Agnostic Source</text>
+  <text x="430" y="324" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280">Web Standards · Style Dictionary</text>
+
+  <!-- ============================================================
+       CLI EJECTOR BOX (left of orbit, with arrow into core)
+  ============================================================ -->
+  <rect x="120" y="208" width="178" height="44" rx="6" fill="#FFF1F4" stroke="#AC6B77" stroke-width="1.5"/>
+  <text x="209" y="226" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" fill="#AC6B77">CLI EJECTOR</text>
+  <text x="209" y="243" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280">Copy source · Own the code</text>
+
+  <!-- ============================================================
+       FRAMEWORK OUTPUT BOXES (bottom)
+  ============================================================ -->
+
+  <!-- React -->
+  <rect x="70" y="420" width="148" height="52" rx="6" fill="#F8F9FA" stroke="#61DAFB" stroke-width="2"/>
+  <text x="144" y="443" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="14" fill="#2093B2">React</text>
+  <text x="144" y="462" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280">+ Preact · Solid</text>
+
+  <!-- Vue -->
+  <rect x="356" y="508" width="148" height="52" rx="6" fill="#F8F9FA" stroke="#42B883" stroke-width="2"/>
+  <text x="430" y="531" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="14" fill="#42B883">Vue</text>
+  <text x="430" y="550" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280">+ Nuxt</text>
+
+  <!-- Svelte — pulled well inside viewBox -->
+  <rect x="642" y="420" width="148" height="52" rx="6" fill="#F8F9FA" stroke="#FF3E00" stroke-width="2"/>
+  <text x="716" y="443" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="14" fill="#FF3E00">Svelte</text>
+  <text x="716" y="462" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280">+ SvelteKit</text>
+
+  <!-- ============================================================
+       ARROWHEAD MARKERS (reusable defs)
+  ============================================================ -->
+  <defs>
+    <marker id="arrow-pink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#B1747F"/>
+    </marker>
+  </defs>
+
+</svg>
