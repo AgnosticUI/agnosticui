@@ -35,6 +35,10 @@ export const logger = {
     return pc.dim('  $ ' + cmd);
   },
 
+  code: (snippet: string) => {
+    return pc.dim('  ' + snippet);
+  },
+
   newline: () => {
     console.log('');
   }
