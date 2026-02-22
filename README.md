@@ -12,10 +12,12 @@
 </p>
 
 <p align="center">
-  <a href="https://agnosticui.com/docs">Documentation</a> ·
-  <a href="https://agnosticui.com/playbooks">AI Playbooks</a> ·
-  <a href="https://agnosticui.com/components">Components</a> ·
-  <a href="#quick-start">Quick Start</a>
+  <a href="https://agnosticui.com">Documentation</a> ·
+  <a href="https://www.agnosticui.com/playbooks/login.html">Login AI Playbook</a> ·
+  <a href="https://www.agnosticui.com/playbooks/onboarding.html">Onboarding AI Playbook</a> ·
+  <a href="https://www.agnosticui.com/playbooks/dashboard.html">Dashboard AI Playbook</a> ·
+  <a href="https://www.agnosticui.com/components/button.html">Components</a> ·
+  <a href="https://www.agnosticui.com/installation.html">Quick Start</a>
 </p>
 
 <br />
@@ -213,7 +215,7 @@ AgnosticUI is open source and welcomes contributions. See [CONTRIBUTING.md](./CO
 
 ## License
 
-Apache License 2.0 © [AgnosticUI](https://agnosticui.com)
+Apache License 2.0 © [AgnosticUI](https://github.com/AgnosticUI/agnosticui/blob/master/LICENSE)
 
 ## Where is v1?
 
