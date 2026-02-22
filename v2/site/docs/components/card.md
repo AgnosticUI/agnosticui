@@ -75,6 +75,16 @@ The CLI copies source code directly into your project, giving you full visibilit
         <VueButton variant="primary" shape="rounded">Action</VueButton>
       </template>
     </VueCard>
+
+    <VueCard :has-media="true" media-position="top" rounded="md" :shadow="true">
+      <template #media>
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop" alt="Mountain landscape" />
+      </template>
+      <template #header>
+        <h4 style="margin: 0;">Media Card</h4>
+      </template>
+      <p>Edge-to-edge image with rounded corners.</p>
+    </VueCard>
   </section>
 </template>
 
@@ -128,6 +138,16 @@ export default function CardExamples() {
           Action
         </ReactButton>
       </ReactCard>
+
+      <ReactCard hasMedia mediaPosition="top" rounded="md" shadow>
+        <img
+          slot="media"
+          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+          alt="Mountain landscape"
+        />
+        <h3 slot="header" style={{ margin: 0 }}>Media Card</h3>
+        <p>Edge-to-edge image with rounded corners.</p>
+      </ReactCard>
     </section>
   );
 }
@@ -167,27 +187,36 @@ export default function CardExamples() {
 
   <ag-button variant="primary" shape="rounded" slot="footer">Action</ag-button>
 </ag-card>
+
+<ag-card has-media media-position="top" rounded="md" shadow>
+  <img slot="media" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop" alt="Mountain landscape" />
+  <h4 slot="header" style="margin: 0;">Media Card</h4>
+  <p>Edge-to-edge image with rounded corners.</p>
+</ag-card>
 ```
 
 :::
 
 ## Props
 
-| Prop       | Type                                                | Default | Description                                                              |
-| ---------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------------ |
-| `stacked`  | `boolean`                                           | `false` | Applies vertical spacing between slotted children                        |
-| `shadow`   | `boolean`                                           | `false` | Adds box-shadow with enhanced hover effect                               |
-| `animated` | `boolean`                                           | `false` | Enables smooth transitions on hover (translateY + shadow)                |
-| `rounded`  | `'sm' \| 'md' \| 'lg' \| boolean`                   | `''`    | Border radius size. Use `true` for default 'md' or specify 'sm'/'lg'     |
-| `variant`  | `'success' \| 'info' \| 'error' \| 'warning' \| ''` | `''`    | Color variant for semantic meaning                                       |
+| Prop            | Type                                                | Default  | Description                                                              |
+| --------------- | --------------------------------------------------- | -------- | ------------------------------------------------------------------------ |
+| `stacked`       | `boolean`                                           | `false`  | Applies vertical spacing between slotted children                        |
+| `shadow`        | `boolean`                                           | `false`  | Adds box-shadow with enhanced hover effect                               |
+| `animated`      | `boolean`                                           | `false`  | Enables smooth transitions on hover (translateY + shadow)                |
+| `rounded`       | `'sm' \| 'md' \| 'lg' \| boolean`                   | `''`     | Border radius size. Use `true` for default 'md' or specify 'sm'/'lg'     |
+| `variant`       | `'success' \| 'info' \| 'error' \| 'warning' \| ''` | `''`     | Color variant for semantic meaning                                       |
+| `hasMedia`      | `boolean`                                           | `false`  | Enables the `media` slot for edge-to-edge image/video rendering          |
+| `mediaPosition` | `'top' \| 'bottom'`                                 | `'top'`  | Whether media renders above or below the header/content/footer           |
 
 ## Slots
 
-| Slot      | Description                                                 |
-| --------- | ----------------------------------------------------------- |
-| `header`  | Optional header content displayed at the top of the card    |
-| `default` | Main content of the card                                    |
-| `footer`  | Optional footer content displayed at the bottom of the card |
+| Slot      | Description                                                                          |
+| --------- | ------------------------------------------------------------------------------------ |
+| `media`   | Edge-to-edge media content (image/video). Requires `hasMedia` to be `true`           |
+| `header`  | Optional header content displayed at the top of the card                             |
+| `default` | Main content of the card                                                             |
+| `footer`  | Optional footer content displayed at the bottom of the card                          |
 
 ## CSS Shadow Parts
 
@@ -196,6 +225,7 @@ Shadow Parts allow you to style internal elements of the card from outside the s
 | Part              | Description                                             |
 | ----------------- | ------------------------------------------------------- |
 | `ag-card-wrapper` | The main wrapper element that contains all card content |
+| `ag-card-media`   | The media wrapper (present when `hasMedia` is `true`)   |
 | `ag-card-header`  | The header section wrapper (even when empty)            |
 | `ag-card-content` | The main content section wrapper                        |
 | `ag-card-footer`  | The footer section wrapper (even when empty)            |
@@ -297,6 +327,56 @@ Use slots for clearly separated header/footer sections. The header and footer au
 </VueCard>
 ```
 
+### Media Card
+
+Use `hasMedia` with the `media` slot to render images or video edge-to-edge inside the card. The media wrapper has no padding — it bleeds to the card's edges. Combined with `rounded`, the image corners clip correctly via `overflow: hidden`.
+
+```vue
+<!-- Media at the top (default) -->
+<VueCard :has-media="true" media-position="top" rounded="md" :shadow="true">
+  <template #media>
+    <img src="https://images.unsplash.com/photo-..." alt="Descriptive alt text" />
+  </template>
+  <template #header>
+    <h3 style="margin: 0;">Card Title</h3>
+  </template>
+  <p>Card body content goes here.</p>
+  <template #footer>
+    <VueButton>View Details</VueButton>
+  </template>
+</VueCard>
+
+<!-- Media at the bottom -->
+<VueCard :has-media="true" media-position="bottom" rounded="md">
+  <template #header>
+    <h3 style="margin: 0;">Card Title</h3>
+  </template>
+  <p>Card body content goes here.</p>
+  <template #media>
+    <img src="https://images.unsplash.com/photo-..." alt="Descriptive alt text" />
+  </template>
+</VueCard>
+```
+
+In Lit (Web Components):
+
+```html
+<ag-card has-media media-position="top" rounded="md" shadow>
+  <img slot="media" src="https://images.unsplash.com/photo-..." alt="Descriptive alt text" />
+  <h3 slot="header" style="margin: 0;">Card Title</h3>
+  <p>Card body content goes here.</p>
+  <ag-button slot="footer">View Details</ag-button>
+</ag-card>
+```
+
+::: tip Accessibility
+Always provide a meaningful `alt` attribute on `<img>` elements slotted into `media`. If the image is purely decorative, use `alt=""`.
+:::
+
+::: tip Styling media height
+By default, slotted images render at their natural aspect ratio (`height: auto`). To constrain height, target the `::part(ag-card-media)` shadow part or use a wrapping `<div>` with a fixed height and `overflow: hidden` inside the slot.
+:::
+
 ### Clickable Card Pattern
 
 Create fully clickable cards while maintaining accessibility:
@@ -335,4 +415,7 @@ The `card-primary-action` class creates a pseudo-element that covers the entire 
 - **Responsive Design**: Cards are `width: 100%` by default and work well in grid layouts
 - **Lit Property Binding**: In Lit templates, use property bindings for boolean props
 - **Reduced Motion**: Animation transitions are automatically disabled for users who prefer reduced motion
+- **Media + `rounded`**: When `hasMedia` is `true`, `overflow: hidden` is applied to the host so the image clips correctly to the card's border-radius. No extra CSS is needed.
+- **Media height**: Slotted `<img>` and `<video>` elements default to `width: 100%; height: auto; object-fit: cover`. Constrain the height via `::part(ag-card-media)` or by wrapping the image in a sized `<div>`.
+- **Horizontal layout**: Inline-start/inline-end media positions are out of scope and deferred to a future issue.
 - All three framework implementations share the same underlying styles and behavior

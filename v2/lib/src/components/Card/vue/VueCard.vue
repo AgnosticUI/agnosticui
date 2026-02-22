@@ -6,8 +6,14 @@
     .animated="animated"
     :rounded="rounded"
     :variant="variant"
+    .hasMedia="hasMedia"
+    .mediaPosition="mediaPosition"
     v-bind="$attrs"
   >
+    <slot
+      name="media"
+      slot="media"
+    />
     <slot
       name="header"
       slot="header"
@@ -22,7 +28,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, type PropType } from "vue";
-import type { CardProps, CardVariant, CardRounded } from "../core/Card";
+import type { CardProps, CardVariant, CardRounded, CardMediaPosition } from "../core/Card";
 import "../core/Card"; // Registers the ag-card web component
 
 export default defineComponent({
@@ -48,6 +54,14 @@ export default defineComponent({
       type: String as PropType<CardVariant>,
       default: "" as CardVariant,
     },
+    hasMedia: {
+      type: Boolean,
+      default: false,
+    },
+    mediaPosition: {
+      type: String as PropType<CardMediaPosition>,
+      default: "top" as CardMediaPosition,
+    },
   },
   setup(props) {
     const agComponent = ref<(HTMLElement & CardProps) | null>(null);
@@ -68,6 +82,8 @@ export default defineComponent({
       animated: props.animated,
       rounded: props.rounded,
       variant: props.variant,
+      hasMedia: props.hasMedia,
+      mediaPosition: props.mediaPosition,
     };
   },
 });

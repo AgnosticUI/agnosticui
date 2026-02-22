@@ -185,6 +185,43 @@ export class CardLitExamples extends LitElement {
           </ag-card>
         </div>
 
+        <!-- Media Card — Top -->
+        <div class="mbe4">
+          <h2>Media Card (Top)</h2>
+          <p class="mbs2 mbe3">Use the <code>has-media</code> attribute with <code>media-position="top"</code> for edge-to-edge media above the card content.</p>
+        </div>
+        <div class="stacked-mobile">
+          <ag-card has-media media-position="top" rounded="md" shadow style="max-width: 400px;">
+            <img
+              slot="media"
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+              alt="Mountain landscape"
+            />
+            <h3 slot="header" class="m0">Mountain Retreat</h3>
+            <p>A breathtaking mountain landscape captured at golden hour.</p>
+            <div slot="footer">
+              <ag-button>View Gallery</ag-button>
+            </div>
+          </ag-card>
+        </div>
+
+        <!-- Media Card — Bottom -->
+        <div class="mbe4">
+          <h2>Media Card (Bottom)</h2>
+          <p class="mbs2 mbe3">Use <code>media-position="bottom"</code> to render media below the card content.</p>
+        </div>
+        <div class="stacked-mobile">
+          <ag-card has-media media-position="bottom" rounded="md" shadow style="max-width: 400px;">
+            <h3 slot="header" class="m0">Mountain Retreat</h3>
+            <p>A breathtaking mountain landscape captured at golden hour.</p>
+            <img
+              slot="media"
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+              alt="Mountain landscape"
+            />
+          </ag-card>
+        </div>
+
         <!-- Customized with CSS Shadow Parts -->
         <div class="mbe4">
           <h2>Customized with CSS Shadow Parts</h2>

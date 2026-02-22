@@ -358,6 +358,55 @@ export const CombinedFeatures: Story = {
   `,
 };
 
+export const MediaTop: Story = {
+  args: {
+    rounded: "md",
+  },
+  render: (args) => html`
+    <ag-card
+      has-media
+      media-position="top"
+      rounded=${args.rounded || ""}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+    >
+      <img
+        slot="media"
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+        alt="Mountain landscape"
+      />
+      <h3 slot="header" style="margin: 0;">Mountain Retreat</h3>
+      <p>A breathtaking mountain landscape captured at golden hour.</p>
+      <div slot="footer">
+        <button style="padding: 0.5rem 1rem;">View Gallery</button>
+      </div>
+    </ag-card>
+  `,
+};
+
+export const MediaBottom: Story = {
+  args: {
+    rounded: "md",
+  },
+  render: (args) => html`
+    <ag-card
+      has-media
+      media-position="bottom"
+      rounded=${args.rounded || ""}
+      .shadow=${args.shadow}
+      .animated=${args.animated}
+    >
+      <h3 slot="header" style="margin: 0;">Mountain Retreat</h3>
+      <p>A breathtaking mountain landscape captured at golden hour.</p>
+      <img
+        slot="media"
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+        alt="Mountain landscape"
+      />
+    </ag-card>
+  `,
+};
+
 export const Gallery: Story = {
   render: () => html`
     <div

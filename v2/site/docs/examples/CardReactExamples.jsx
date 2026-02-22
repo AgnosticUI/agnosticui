@@ -184,6 +184,47 @@ export default function CardReactExamples() {
         </ReactCard>
       </div>
 
+      {/* Media Card — Top */}
+      <div className="mbe4">
+        <h2>Media Card (Top)</h2>
+        <p className="mbs2 mbe3">
+          Use <code>hasMedia</code> with <code>mediaPosition="top"</code> for edge-to-edge media above the card content.
+        </p>
+      </div>
+      <div className="stacked-mobile">
+        <ReactCard hasMedia mediaPosition="top" rounded="md" shadow style={{ maxWidth: "400px" }}>
+          <img
+            slot="media"
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+            alt="Mountain landscape"
+          />
+          <h3 slot="header" className="m0">Mountain Retreat</h3>
+          <p>A breathtaking mountain landscape captured at golden hour.</p>
+          <div slot="footer">
+            <ReactButton>View Gallery</ReactButton>
+          </div>
+        </ReactCard>
+      </div>
+
+      {/* Media Card — Bottom */}
+      <div className="mbe4">
+        <h2>Media Card (Bottom)</h2>
+        <p className="mbs2 mbe3">
+          Use <code>mediaPosition="bottom"</code> to render media below the card content.
+        </p>
+      </div>
+      <div className="stacked-mobile">
+        <ReactCard hasMedia mediaPosition="bottom" rounded="md" shadow style={{ maxWidth: "400px" }}>
+          <h3 slot="header" className="m0">Mountain Retreat</h3>
+          <p>A breathtaking mountain landscape captured at golden hour.</p>
+          <img
+            slot="media"
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+            alt="Mountain landscape"
+          />
+        </ReactCard>
+      </div>
+
       {/* Customized with CSS Shadow Parts */}
       <div className="mbe4">
         <h2>Customized with CSS Shadow Parts</h2>
