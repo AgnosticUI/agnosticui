@@ -33,7 +33,7 @@ Your AI tools can't see their source — so they hallucinate props, invent APIs,
 ## You own the source
 ```bash
 cd your-project
-npx agnosticui-cli init --framework react
+npx agnosticui-cli init --framework vue
 npx agnosticui-cli add Button Card Input
 ```
 
