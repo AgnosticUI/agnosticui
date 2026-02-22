@@ -1,0 +1,49 @@
+<svg width="860" height="580" viewBox="0 0 860 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- OUTER DASHED ORBIT RING -->
+  <circle cx="430" cy="295" r="175" stroke="#C084A0" stroke-width="1.5" stroke-dasharray="8 4"/>
+
+  <!-- CONNECTING LINES -->
+  <line x1="430" y1="88" x2="430" y2="148" stroke="#C084A0" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="424,144 430,156 436,144" fill="#C084A0"/>
+
+  <line x1="310" y1="230" x2="364" y2="262" stroke="#C084A0" stroke-width="1.5" stroke-dasharray="5 3" stroke-linecap="round"/>
+  <polygon points="358,256 370,268 372,254" fill="#C084A0"/>
+
+  <line x1="340" y1="340" x2="200" y2="420" stroke="#C084A0" stroke-width="2" stroke-linecap="round"/>
+  <line x1="430" y1="470" x2="430" y2="508" stroke="#C084A0" stroke-width="2" stroke-linecap="round"/>
+  <line x1="520" y1="340" x2="660" y2="420" stroke="#C084A0" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- AI PLAYBOOKS BOX -->
+  <rect x="295" y="8" width="270" height="78" rx="8" fill="#3D1A24" stroke="#E8829A" stroke-width="2"/>
+  <text x="430" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#F4A7B9">AI PLAYBOOKS</text>
+  <text x="430" y="56" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#D4849A">LLM Instruction Set · Framework Recipes</text>
+  <text x="430" y="74" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#D4849A">Design Tokens · Component Patterns</text>
+
+  <!-- LIT CORE + TOKENS CIRCLE -->
+  <circle cx="430" cy="295" r="120" fill="#2A1520" stroke="#C084A0" stroke-width="2"/>
+  <text x="430" y="284" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#F4718A">LIT CORE + TOKENS</text>
+  <text x="430" y="306" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#E8D0D8">The Agnostic Source</text>
+  <text x="430" y="324" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#9CA3AF">Web Standards · Style Dictionary</text>
+
+  <!-- CLI EJECTOR BOX -->
+  <rect x="120" y="208" width="178" height="44" rx="6" fill="#2A1520" stroke="#C084A0" stroke-width="1.5"/>
+  <text x="209" y="226" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" fill="#F4A7B9">CLI EJECTOR</text>
+  <text x="209" y="243" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#9CA3AF">Copy source · Own the code</text>
+
+  <!-- React -->
+  <rect x="70" y="420" width="148" height="52" rx="6" fill="#0D2030" stroke="#61DAFB" stroke-width="2"/>
+  <text x="144" y="443" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="14" fill="#61DAFB">React</text>
+  <text x="144" y="462" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#9CA3AF">+ Preact · Solid</text>
+
+  <!-- Vue -->
+  <rect x="356" y="508" width="148" height="52" rx="6" fill="#0D2218" stroke="#42B883" stroke-width="2"/>
+  <text x="430" y="531" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="14" fill="#42B883">Vue</text>
+  <text x="430" y="550" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#9CA3AF">+ Nuxt</text>
+
+  <!-- Svelte -->
+  <rect x="642" y="420" width="148" height="52" rx="6" fill="#2A1200" stroke="#FF6D3A" stroke-width="2"/>
+  <text x="716" y="443" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="14" fill="#FF6D3A">Svelte</text>
+  <text x="716" y="462" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#9CA3AF">+ SvelteKit</text>
+
+</svg>

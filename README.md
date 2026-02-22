@@ -1,8 +1,11 @@
 <p align="center">
-  <img src="./v2/graphics/hero.svg" alt="AgnosticUI — Built on Lit Web Components · Copy the source · Own the code · Works with AI" width="610" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./v2/graphics/hero-dark.svg">
+    <img src="./v2/graphics/hero-light.svg" alt="AgnosticUI" width="610" />
+  </picture>
 </p>
 
-<br />
+<p align="center">Built on Lit Web Components &nbsp;·&nbsp; Copy the source &nbsp;·&nbsp; Own the code &nbsp;·&nbsp; Works with AI</p>
 
 <p align="center">
   <strong>One component library. Every framework.</strong>
@@ -64,7 +67,10 @@ This is not a workaround. It is the architecture.
 AgnosticUI's components are authored as **Lit Web Components** — a thin, standards-based layer over native Custom Elements. The CLI wraps them for your framework of choice at copy time.
 
 <p align="center">
-  <img src="./v2/graphics/architecture.svg" alt="AgnosticUI Architecture: AI Playbooks direct the Lit Core, which the CLI ejects into React, Vue, and Svelte" width="860" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./v2/graphics/architecture-dark.svg">
+    <img src="./v2/graphics/architecture-light.svg" alt="AgnosticUI Architecture: AI Playbooks direct the Lit Core, which the CLI ejects into React, Vue, and Svelte" width="860" />
+  </picture>
 </p>
 
 The same `Button` you use in a React app is the same `Button` your Vue team uses. Same tokens. Same accessibility semantics. Same test coverage. Your design system doesn't fork when your tech stack does.
