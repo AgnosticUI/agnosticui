@@ -1,0 +1,1 @@
+Please implement the Data Grid Playbook. Start by reading v2/playbooks/grid/PROMPT-3-FRAMEWORKS.md in full — it contains the shell structure, dataset spec, build order, and shared conventions. It will direct you to v2/playbooks/grid/PROMPT-SIMPLE.md, v2/playbooks/grid/PROMPT-GRIDJS.md, and v2/playbooks/grid/PROMPT-TANSTACK.md for each panel's feature spec.

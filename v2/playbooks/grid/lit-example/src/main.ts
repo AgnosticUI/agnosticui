@@ -1,0 +1,5 @@
+import './components/ag/styles/ag-tokens.css'
+import './components/ag/styles/ag-tokens-dark.css'
+import 'gridjs/dist/theme/mermaid.min.css'
+import './app.css'
+import './inventory-app'

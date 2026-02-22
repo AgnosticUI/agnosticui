@@ -1,0 +1,177 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "vue",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Header": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Header/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Header/vue"
+      ]
+    },
+    "Breadcrumb": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Breadcrumb/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Breadcrumb/vue"
+      ]
+    },
+    "Avatar": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Avatar/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Avatar/vue"
+      ]
+    },
+    "Button": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Button/vue"
+      ]
+    },
+    "IconButton": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/IconButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/IconButton/vue"
+      ]
+    },
+    "Input": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Input/vue"
+      ]
+    },
+    "Select": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Select/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Select/vue"
+      ]
+    },
+    "Checkbox": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Checkbox/vue"
+      ]
+    },
+    "Dialog": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Dialog/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Dialog/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Pagination": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Pagination/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Pagination/vue"
+      ]
+    },
+    "Tag": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Tag/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Tag/vue"
+      ]
+    },
+    "Toast": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Toast/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Toast/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Alert/vue"
+      ]
+    },
+    "Alert": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Alert/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "EmptyState": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/EmptyState/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/EmptyState/vue"
+      ]
+    },
+    "Menu": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Menu/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Menu/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/Button/vue"
+      ]
+    },
+    "SelectionButtonGroup": {
+      "added": "2026-02-22T23:08:49.597Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/SelectionButtonGroup/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/SelectionButtonGroup/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/SelectionButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/src/components/ag/SelectionButton/vue"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/vue-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.14.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-22T23:08:34.861Z"
+  }
+}

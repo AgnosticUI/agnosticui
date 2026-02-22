@@ -1,0 +1,61 @@
+export type Product = {
+  id: number;
+  name: string;
+  category: "Electronics" | "Clothing" | "Food" | "Books" | "Tools";
+  price: number;
+  stock: number;
+  status: "active" | "low-stock" | "discontinued";
+};
+
+export const products: Product[] = [
+  { id: 1,  name: "Wireless Bluetooth Headphones",   category: "Electronics", price: 79.99,  stock: 143, status: "active" },
+  { id: 2,  name: "Men's Slim-Fit Chinos",           category: "Clothing",    price: 44.99,  stock: 5,   status: "low-stock" },
+  { id: 3,  name: "Organic Olive Oil 500ml",         category: "Food",        price: 12.49,  stock: 0,   status: "discontinued" },
+  { id: 4,  name: "JavaScript: The Good Parts",      category: "Books",       price: 29.99,  stock: 88,  status: "active" },
+  { id: 5,  name: "16-Piece Socket Set",             category: "Tools",       price: 54.95,  stock: 31,  status: "active" },
+  { id: 6,  name: "USB-C Hub 7-in-1",               category: "Electronics", price: 39.99,  stock: 7,   status: "low-stock" },
+  { id: 7,  name: "Women's Running Jacket",          category: "Clothing",    price: 89.00,  stock: 22,  status: "active" },
+  { id: 8,  name: "Sourdough Starter Kit",           category: "Food",        price: 18.75,  stock: 61,  status: "active" },
+  { id: 9,  name: "Clean Code",                      category: "Books",       price: 34.99,  stock: 0,   status: "discontinued" },
+  { id: 10, name: "Cordless Drill 20V",              category: "Tools",       price: 119.00, stock: 14,  status: "active" },
+  { id: 11, name: "4K Webcam 1080p",                 category: "Electronics", price: 64.99,  stock: 4,   status: "low-stock" },
+  { id: 12, name: "Unisex Hoodie — Navy",            category: "Clothing",    price: 59.99,  stock: 72,  status: "active" },
+  { id: 13, name: "Cold Brew Coffee Kit",            category: "Food",        price: 24.99,  stock: 0,   status: "discontinued" },
+  { id: 14, name: "Design Patterns (GoF)",           category: "Books",       price: 49.95,  stock: 33,  status: "active" },
+  { id: 15, name: "Adjustable Torque Wrench",        category: "Tools",       price: 78.50,  stock: 9,   status: "low-stock" },
+  { id: 16, name: "Mechanical Keyboard TKL",         category: "Electronics", price: 109.99, stock: 56,  status: "active" },
+  { id: 17, name: "Linen Shirt — Sand",              category: "Clothing",    price: 52.00,  stock: 3,   status: "low-stock" },
+  { id: 18, name: "Himalayan Pink Salt 1kg",         category: "Food",        price: 7.99,   stock: 200, status: "active" },
+  { id: 19, name: "The Pragmatic Programmer",        category: "Books",       price: 39.99,  stock: 45,  status: "active" },
+  { id: 20, name: "Random Orbital Sander",           category: "Tools",       price: 67.00,  stock: 0,   status: "discontinued" },
+  { id: 21, name: "Smart LED Desk Lamp",             category: "Electronics", price: 35.50,  stock: 88,  status: "active" },
+  { id: 22, name: "Merino Wool Socks 3-Pack",        category: "Clothing",    price: 27.00,  stock: 6,   status: "low-stock" },
+  { id: 23, name: "Specialty Coffee Beans 250g",     category: "Food",        price: 16.00,  stock: 115, status: "active" },
+  { id: 24, name: "You Don't Know JS",               category: "Books",       price: 24.99,  stock: 0,   status: "discontinued" },
+  { id: 25, name: "Hex Key Set 25-Piece",            category: "Tools",       price: 19.99,  stock: 44,  status: "active" },
+  { id: 26, name: "Noise-Cancelling Earbuds",        category: "Electronics", price: 129.99, stock: 5,   status: "low-stock" },
+  { id: 27, name: "Slim Leather Belt — Black",       category: "Clothing",    price: 38.00,  stock: 17,  status: "active" },
+  { id: 28, name: "Matcha Powder Premium 100g",      category: "Food",        price: 22.50,  stock: 78,  status: "active" },
+  { id: 29, name: "Refactoring (Fowler)",            category: "Books",       price: 44.99,  stock: 28,  status: "active" },
+  { id: 30, name: "Circular Saw 7.25-inch",          category: "Tools",       price: 149.95, stock: 2,   status: "low-stock" },
+  { id: 31, name: "Portable Power Bank 20000mAh",   category: "Electronics", price: 49.99,  stock: 92,  status: "active" },
+  { id: 32, name: "Yoga Leggings — Charcoal",       category: "Clothing",    price: 68.00,  stock: 0,   status: "discontinued" },
+  { id: 33, name: "Extra Virgin Coconut Oil 500ml",  category: "Food",        price: 14.25,  stock: 54,  status: "active" },
+  { id: 34, name: "Structure and Interpretation",    category: "Books",       price: 59.99,  stock: 11,  status: "active" },
+  { id: 35, name: "Digital Caliper 150mm",           category: "Tools",       price: 29.95,  stock: 37,  status: "active" },
+  { id: 36, name: "Smart Plug 4-Pack Wi-Fi",        category: "Electronics", price: 34.99,  stock: 5,   status: "low-stock" },
+  { id: 37, name: "Denim Jacket — Indigo",          category: "Clothing",    price: 99.00,  stock: 41,  status: "active" },
+  { id: 38, name: "Chia Seeds 500g",                 category: "Food",        price: 9.49,   stock: 0,   status: "discontinued" },
+  { id: 39, name: "Domain-Driven Design",            category: "Books",       price: 54.99,  stock: 19,  status: "active" },
+  { id: 40, name: "Laser Level 3D",                  category: "Tools",       price: 89.00,  stock: 8,   status: "low-stock" },
+  { id: 41, name: "Portable SSD 1TB",                category: "Electronics", price: 99.99,  stock: 67,  status: "active" },
+  { id: 42, name: "Bamboo Pyjama Set",               category: "Clothing",    price: 74.50,  stock: 0,   status: "discontinued" },
+  { id: 43, name: "Raw Honey 350g",                  category: "Food",        price: 11.99,  stock: 130, status: "active" },
+  { id: 44, name: "The Art of Computer Programming", category: "Books",       price: 149.00, stock: 6,   status: "low-stock" },
+  { id: 45, name: "Stud Finder with LCD",            category: "Tools",       price: 44.99,  stock: 25,  status: "active" },
+  { id: 46, name: "E-Reader 6-inch",                 category: "Electronics", price: 139.99, stock: 33,  status: "active" },
+  { id: 47, name: "Compression Running Tights",      category: "Clothing",    price: 55.00,  stock: 7,   status: "low-stock" },
+  { id: 48, name: "Almond Butter 500g",              category: "Food",        price: 13.75,  stock: 91,  status: "active" },
+  { id: 49, name: "Working Effectively w/ Legacy",   category: "Books",       price: 37.99,  stock: 0,   status: "discontinued" },
+  { id: 50, name: "Oscillating Multi-Tool Kit",      category: "Tools",       price: 134.00, stock: 18,  status: "active" },
+];
