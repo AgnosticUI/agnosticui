@@ -162,27 +162,27 @@ Every component ships with correct ARIA roles, keyboard navigation, focus manage
 
 ## 55 components. Production-ready.
 
-**Core UI**
+### Core UI
 
 `Accordion` · `Alerts` · `AspectRatio` · `Avatar` · `Badge` · `Breadcrumb` · `Button` · `Card` · `Checkbox` · `Collapsible` · `Combobox` · `CopyButton` · `Dialog` · `Divider` · `Drawer` · `EmptyState`
 
-**Forms & Inputs**
+### Forms & Inputs
 
 `Fieldset` · `Input` · `Radio` · `Rating` · `Select` · `SelectionButtonGroup` · `SelectionCardGroup` · `Slider` · `Toggle`
 
-**Navigation & Layout**
+### Navigation & Layout
 
 `Header` · `Menu` · `Pagination` · `Tabs`
 
-**Feedback & Status**
+### Feedback & Status
 
 `Loader` · `Progress` · `ProgressRing` · `ScrollProgress` · `Skeleton Loader` · `Spinner` · `Toast`
 
-**Content & Display**
+### Content & Display
 
 `Icon` · `Icon Button` · `Image` · `IntlFormatter` · `Kbd` · `Link` · `Mark` · `MessageBubble` · `Popover` · `ScrollToButton` · `Table` · `Tag` · `Timeline` · `Tooltip` · `VisuallyHidden`
 
-**Lab** *(experimental)*
+### Lab** (experimental)
 
 `BadgeFx` · `ButtonFx` · `Flex` · `IconButtonFx` 
 
