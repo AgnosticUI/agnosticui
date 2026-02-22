@@ -37,22 +37,54 @@
   },
   "background-tertiary": {
     "value": "{neutral.200.value}",
-    "description": "Background for tertiary (neutral buttons)"
+    "description": "Background for tertiary (neutral buttons)",
+    "comment": "Used by: Button default bg; also secondary button hover bg"
   },
   "background-disabled": {
     "value": "{neutral.100.value}",
-    "description": "Background for secondary (accordion backgrounds)"
+    "description": "Disabled state background",
+    "comment": "Used by: Button, Input, Checkbox, Radio, Select disabled states"
   },
-  "primary-background": { "value": "{blue.50.value}" },
-  "primary-text": { "value": "{blue.600.value}" },
-  "success-background": { "value": "{green.50.value}" },
-  "success-text": { "value": "{green.600.value}" },
-  "info-background": { "value": "{neutral.100.value}" },
-  "info-text": { "value": "{neutral.600.value}" },
-  "warning-background": { "value": "{yellow.50.value}" },
-  "warning-text": { "value": "{yellow.600.value}" },
-  "danger-background": { "value": "{red.50.value}" },
-  "danger-text": { "value": "{red.600.value}" },
+  "primary-background": {
+    "value": "{blue.50.value}",
+    "comment": "Used by: Alert primary variant bg, Button faint variant bg"
+  },
+  "primary-text": {
+    "value": "{blue.600.value}",
+    "comment": "Used by: Alert primary text, Button bordered/outlined text + border"
+  },
+  "success-background": {
+    "value": "{green.50.value}",
+    "comment": "Used by: Alert success variant bg, Badge success variant bg"
+  },
+  "success-text": {
+    "value": "{green.600.value}",
+    "comment": "Used by: Alert success variant text, Badge success variant text"
+  },
+  "info-background": {
+    "value": "{neutral.100.value}",
+    "comment": "Used by: Alert info variant bg, Badge info variant bg"
+  },
+  "info-text": {
+    "value": "{neutral.600.value}",
+    "comment": "Used by: Alert info variant text, Badge info variant text"
+  },
+  "warning-background": {
+    "value": "{yellow.50.value}",
+    "comment": "Used by: Alert warning variant bg, Badge warning variant bg"
+  },
+  "warning-text": {
+    "value": "{yellow.600.value}",
+    "comment": "Used by: Alert warning variant text, Badge warning variant text"
+  },
+  "danger-background": {
+    "value": "{red.50.value}",
+    "comment": "Used by: Alert danger variant bg, Badge danger variant bg"
+  },
+  "danger-text": {
+    "value": "{red.600.value}",
+    "comment": "Used by: Alert danger variant text, Badge danger variant text"
+  },
   "primary-fg": {
     "value": "{white.value}",
     "description": "Foreground text color for primary variant buttons"
@@ -87,7 +119,8 @@
   },
   "primary-border": {
     "value": "{neutral.300.value}",
-    "description": "Light border color that complements primary"
+    "description": "Light border color that complements primary",
+    "comment": "Used by: Button bordered variant border"
   },
   "primary-dark": {
     "value": "{blue.800.value}",
