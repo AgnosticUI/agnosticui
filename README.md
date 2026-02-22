@@ -182,7 +182,7 @@ Every component ships with correct ARIA roles, keyboard navigation, focus manage
 
 `Icon` · `Icon Button` · `Image` · `IntlFormatter` · `Kbd` · `Link` · `Mark` · `MessageBubble` · `Popover` · `ScrollToButton` · `Table` · `Tag` · `Timeline` · `Tooltip` · `VisuallyHidden`
 
-### Lab** (experimental)
+### Lab (experimental)
 
 `BadgeFx` · `ButtonFx` · `Flex` · `IconButtonFx` 
 
