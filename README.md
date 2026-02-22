@@ -81,7 +81,7 @@ Your design system doesn't fork when your tech stack does.
 
 ---
 
-## AI Playbooks: your LLM already knows how to build with AgnosticUI
+## AI Playbooks: give your LLM the full recipe
 
 Playbooks are ready-made prompt recipes for your AI tool — one per UI pattern, built around AgnosticUI's components.
 
@@ -92,11 +92,11 @@ Playbooks are ready-made prompt recipes for your AI tool — one per UI pattern,
 | [Discovery Dashboard](https://agnosticui.com/playbooks/dashboard.html) | Dashboard shell with header, sidebar, and data regions |
 | [Support Center](https://agnosticui.com/playbooks/support.html) | Help center with search, categories, and article layout |
 
-Each Playbook page on the docs site includes:
+Each Playbook on the docs site includes live StackBlitz examples for React, Vue, and Lit.
 
-- **Live StackBlitz examples** for React, Vue, and Lit
+Each Playbook also ships with:
 - **`PROMPT-3-FRAMEWORKS.md`** — one prompt to generate the pattern across all three frameworks
-- **Skin switcher** in every live example to preview your theme tokens instantly
+- **Skin switcher** to preview your theme tokens instantly
 
 Drop a Playbook prompt into Cursor or Claude Code and watch it assemble `Input`, `Button`, `Card`, and `FormGroup` correctly on the first try — because it has the full recipe, not just a component reference.
 
