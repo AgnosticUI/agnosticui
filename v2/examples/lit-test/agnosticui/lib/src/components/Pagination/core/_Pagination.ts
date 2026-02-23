@@ -139,24 +139,6 @@ export class Pagination extends LitElement implements PaginationProps {
     return this._generatePages();
   }
 
-  updated(changedProperties: Map<string, unknown>) {
-    if (
-      changedProperties.has('current') ||
-      changedProperties.has('totalPages') ||
-      changedProperties.has('offset')
-    ) {
-      // Focus current page button after update using querySelector
-      this.updateComplete.then(() => {
-        const currentButton = this.shadowRoot?.querySelector(
-          `button[data-page="${this.current}"]`
-        ) as HTMLButtonElement;
-        if (currentButton) {
-          currentButton.focus();
-        }
-      });
-    }
-  }
-
   private _generatePages(): PageArrayItem[] {
     if (this.totalPages <= 1) {
       return [1];
@@ -258,6 +240,16 @@ export class Pagination extends LitElement implements PaginationProps {
     if (this.onPageChange) {
       this.onPageChange(pageChangeEvent);
     }
+
+    // Focus the new current page button after re-render (only when user clicked)
+    this.updateComplete.then(() => {
+      const currentButton = this.shadowRoot?.querySelector(
+        `button[data-page="${this.current}"]`
+      ) as HTMLButtonElement;
+      if (currentButton) {
+        currentButton.focus();
+      }
+    });
   }
 
   private _getJustifyClass(): string {

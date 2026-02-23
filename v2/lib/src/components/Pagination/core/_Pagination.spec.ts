@@ -646,12 +646,28 @@ describe('Pagination - Focus Management', () => {
     expect(page3Button).toBeDefined();
     page3Button.click();
     await element.updateComplete;
-    
+
     // Wait for focus to be applied
     await new Promise(resolve => setTimeout(resolve, 10));
 
     // Current button should be page 3
     expect(element.current).toBe(3);
+  });
+
+  it('should not steal focus when totalPages changes externally', async () => {
+    element.totalPages = 10;
+    await element.updateComplete;
+
+    const input = document.createElement('input');
+    document.body.appendChild(input);
+    input.focus();
+
+    element.totalPages = 3; // simulate parent filtering data (e.g. search)
+    await element.updateComplete;
+    await new Promise(resolve => setTimeout(resolve, 10));
+
+    expect(document.activeElement).toBe(input);
+    document.body.removeChild(input);
   });
 });
 
