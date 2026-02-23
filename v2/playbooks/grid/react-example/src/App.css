@@ -137,6 +137,11 @@ body {
 .gridjs-pages button        { color: var(--ag-primary); }
 .gridjs-pages button:hover  { background-color: var(--ag-background-secondary); }
 .gridjs-pages button[disabled] { color: var(--ag-text-secondary); }
+/* Grid.js pagination replaced by ag-pagination; hide the built-in one (still in DOM for JS reading) */
+.gridjs-pagination { display: none; }
+/* Widen Grid.js search to match Simple panel's full-width search */
+.gridjs-search { width: 100%; }
+.gridjs-search-input { width: 100%; }
 
 /* TanStack panel table styles */
 .ts-th {
@@ -203,6 +208,12 @@ tr:last-child .ts-td {
 }
 .panel-toolbar-right {
   margin-left: auto;
+}
+
+/* ag-select in flex toolbars/pagination rows: shrink to content, don't stretch 100% */
+.panel-toolbar ag-select,
+.pagination-row ag-select {
+  width: auto;
 }
 
 /* Simple panel search area */
