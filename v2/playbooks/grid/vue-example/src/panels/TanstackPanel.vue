@@ -195,7 +195,7 @@ function handleDeleteConfirm() {
       </VueSelect>
 
       <div class="panel-toolbar-right">
-        <VueMenu menu-variant="chevron" button-variant="secondary">
+        <VueMenu menu-variant="chevron" button-variant="secondary" shape="rounded">
           Columns
           <template #menu>
             <VueMenuItem
