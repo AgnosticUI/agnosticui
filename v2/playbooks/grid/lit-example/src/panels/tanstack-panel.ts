@@ -41,7 +41,8 @@ const chevronsUpDown = html`<svg xmlns="http://www.w3.org/2000/svg" width="12" h
 const HIDEABLE_COLS = ['category', 'price', 'stock', 'status']
 
 export class TanstackPanel extends LitElement {
-  static override styles = css`:host { display: block; }`
+  // Light DOM so global app.css classes (.ts-th, .ts-td, .panel-toolbar, etc.) apply
+  override createRenderRoot() { return this }
 
   @property({ type: Array }) products: Product[] = []
 
@@ -210,9 +211,9 @@ export class TanstackPanel extends LitElement {
             @input="${(e: Event) => this.setNameFilter((e.target as HTMLInputElement).value)}"
           ></ag-input>
           <select
+            class="toolbar-select"
             .value="${this.categoryFilter}"
             @change="${(e: Event) => this.setCategoryFilter((e.target as HTMLSelectElement).value)}"
-            style="border:1px solid var(--ag-border);border-radius:var(--ag-radius-md);padding:0.375rem 0.75rem;background:var(--ag-background-primary);color:var(--ag-text-primary);font-size:var(--ag-font-size-base);font-family:inherit"
           >
             <option value="">All Categories</option>
             <option value="Electronics">Electronics</option>
@@ -264,7 +265,7 @@ export class TanstackPanel extends LitElement {
           ></ag-empty-state>
         ` : html`
           <div style="overflow-x: auto">
-            <table class="ag-table">
+            <table class="ag-table" style="width:100%">
               <caption class="visually-hidden">Product inventory (TanStack)</caption>
               <thead>
                 ${headerGroups.map(hg => html`
@@ -335,9 +336,9 @@ export class TanstackPanel extends LitElement {
         <!-- Pagination row -->
         <div class="pagination-row">
           <select
+            class="toolbar-select"
             .value="${String(pageSize)}"
             @change="${(e: Event) => { this.table!.setPageSize(Number((e.target as HTMLSelectElement).value)); this.table!.setPageIndex(0) }}"
-            style="border:1px solid var(--ag-border);border-radius:var(--ag-radius-md);padding:0.375rem 0.75rem;background:var(--ag-background-primary);color:var(--ag-text-primary);font-size:var(--ag-font-size-base);font-family:inherit"
           >
             <option value="10">10 / page</option>
             <option value="25">25 / page</option>

@@ -15,11 +15,8 @@ import type { SelectionButtonChangeEventDetail } from './components/ag/Selection
 type PanelView = 'simple' | 'gridjs' | 'tanstack'
 
 export class InventoryApp extends LitElement {
-  static override styles = css`
-    :host {
-      display: block;
-    }
-  `
+  // Light DOM so global app.css shell styles (.app-main, .page-title-row, etc.) apply
+  override createRenderRoot() { return this }
 
   @state() private activePanel: PanelView = 'simple'
 
@@ -55,9 +52,9 @@ export class InventoryApp extends LitElement {
               value="${this.activePanel}"
               @selection-change="${this.handlePanelChange}"
             >
-              <ag-selection-button value="simple" label="Simple"></ag-selection-button>
-              <ag-selection-button value="gridjs" label="Grid.js"></ag-selection-button>
-              <ag-selection-button value="tanstack" label="TanStack"></ag-selection-button>
+              <ag-selection-button value="simple" label="Simple">Simple</ag-selection-button>
+              <ag-selection-button value="gridjs" label="Grid.js">Grid.js</ag-selection-button>
+              <ag-selection-button value="tanstack" label="TanStack">TanStack</ag-selection-button>
             </ag-selection-button-group>
           </div>
         </div>

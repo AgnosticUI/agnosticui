@@ -47,9 +47,9 @@ export default function App() {
               value={activePanel}
               onSelectionChange={handlePanelChange}
             >
-              <ReactSelectionButton value="simple" label="Simple" />
-              <ReactSelectionButton value="gridjs" label="Grid.js" />
-              <ReactSelectionButton value="tanstack" label="TanStack" />
+              <ReactSelectionButton value="simple" label="Simple">Simple</ReactSelectionButton>
+              <ReactSelectionButton value="gridjs" label="Grid.js">Grid.js</ReactSelectionButton>
+              <ReactSelectionButton value="tanstack" label="TanStack">TanStack</ReactSelectionButton>
             </ReactSelectionButtonGroup>
           </div>
         </div>

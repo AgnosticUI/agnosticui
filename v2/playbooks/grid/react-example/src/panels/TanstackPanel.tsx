@@ -198,17 +198,9 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
           onInput={(e: Event) => setNameFilter((e.target as HTMLInputElement).value)}
         />
         <select
+          className="toolbar-select"
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          style={{
-            border: '1px solid var(--ag-border)',
-            borderRadius: 'var(--ag-radius-md)',
-            padding: '0.375rem 0.75rem',
-            background: 'var(--ag-background-primary)',
-            color: 'var(--ag-text-primary)',
-            fontSize: 'var(--ag-font-size-base)',
-            fontFamily: 'inherit',
-          }}
         >
           <option value="">All Categories</option>
           <option value="Electronics">Electronics</option>
@@ -263,7 +255,7 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
         />
       ) : (
         <div style={{ overflowX: 'auto' }}>
-          <table className="ag-table">
+          <table className="ag-table" style={{ width: '100%' }}>
             <caption className="visually-hidden">Product inventory (TanStack)</caption>
             <thead>
               {table.getHeaderGroups().map(hg => (
@@ -315,19 +307,11 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
       {/* Pagination row */}
       <div className="pagination-row">
         <select
+          className="toolbar-select"
           value={String(currentPageSize)}
           onChange={(e) => {
             table.setPageSize(Number(e.target.value))
             table.setPageIndex(0)
-          }}
-          style={{
-            border: '1px solid var(--ag-border)',
-            borderRadius: 'var(--ag-radius-md)',
-            padding: '0.375rem 0.75rem',
-            background: 'var(--ag-background-primary)',
-            color: 'var(--ag-text-primary)',
-            fontSize: 'var(--ag-font-size-base)',
-            fontFamily: 'inherit',
           }}
         >
           <option value="10">10 / page</option>

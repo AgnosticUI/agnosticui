@@ -100,7 +100,7 @@ export function SimplePanel({ products }: { products: Product[] }) {
         />
       ) : (
         <div style={{ overflowX: 'auto' }}>
-          <table className="ag-table ag-table--hoverable ag-table--striped">
+          <table className="ag-table ag-table--hoverable ag-table--striped" style={{ width: '100%' }}>
             <caption className="visually-hidden">Product inventory</caption>
             <thead>
               <tr>

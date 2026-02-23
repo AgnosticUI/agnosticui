@@ -180,17 +180,9 @@ function handleDeleteConfirm() {
         @input="(e: Event) => setNameFilter((e.target as HTMLInputElement).value)"
       />
       <select
+        class="toolbar-select"
         :value="categoryFilter"
         @change="(e: Event) => setCategoryFilter((e.target as HTMLSelectElement).value)"
-        :style="{
-          border: '1px solid var(--ag-border)',
-          borderRadius: 'var(--ag-radius-md)',
-          padding: '0.375rem 0.75rem',
-          background: 'var(--ag-background-primary)',
-          color: 'var(--ag-text-primary)',
-          fontSize: 'var(--ag-font-size-base)',
-          fontFamily: 'inherit',
-        }"
       >
         <option value="">All Categories</option>
         <option value="Electronics">Electronics</option>
@@ -237,7 +229,7 @@ function handleDeleteConfirm() {
     />
 
     <div v-else style="overflow-x: auto">
-      <table class="ag-table">
+      <table class="ag-table" style="width:100%">
         <caption class="visually-hidden">Product inventory (TanStack)</caption>
         <thead>
           <tr v-for="hg in headerGroups" :key="hg.id">
@@ -318,17 +310,9 @@ function handleDeleteConfirm() {
     <!-- Pagination row -->
     <div class="pagination-row">
       <select
+        class="toolbar-select"
         :value="String(pageSize)"
         @change="(e: Event) => { table.setPageSize(Number((e.target as HTMLSelectElement).value)); table.setPageIndex(0) }"
-        :style="{
-          border: '1px solid var(--ag-border)',
-          borderRadius: 'var(--ag-radius-md)',
-          padding: '0.375rem 0.75rem',
-          background: 'var(--ag-background-primary)',
-          color: 'var(--ag-text-primary)',
-          fontSize: 'var(--ag-font-size-base)',
-          fontFamily: 'inherit',
-        }"
       >
         <option value="10">10 / page</option>
         <option value="25">25 / page</option>

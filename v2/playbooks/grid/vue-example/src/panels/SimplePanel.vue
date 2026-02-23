@@ -98,7 +98,7 @@ const pageRows = computed(() => sorted.value.slice((page.value - 1) * PAGE_SIZE,
     />
 
     <div v-else style="overflow-x: auto">
-      <table class="ag-table ag-table--hoverable ag-table--striped">
+      <table class="ag-table ag-table--hoverable ag-table--striped" style="width:100%">
         <caption class="visually-hidden">Product inventory</caption>
         <thead>
           <tr>

@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { Grid as GridJs, html } from 'gridjs'
-import { Grid } from 'gridjs-vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
+import { Grid, html } from 'gridjs'
 import VueAlert from '../components/ag/Alert/vue/VueAlert.vue'
 import type { Product } from '../data/products'
 
 const props = defineProps<{ products: Product[] }>()
+
+const containerRef = ref<HTMLElement | null>(null)
+let grid: Grid | null = null
 
 const columns = [
   { name: 'Name' },
@@ -22,9 +24,30 @@ const columns = [
   },
 ]
 
-const data = computed(() =>
-  props.products.map(p => [p.name, p.category, p.price, p.stock, p.status])
-)
+function toData(products: Product[]) {
+  return products.map(p => [p.name, p.category, p.price, p.stock, p.status])
+}
+
+onMounted(() => {
+  if (!containerRef.value) return
+  grid = new Grid({
+    columns,
+    data: toData(props.products),
+    sort: true,
+    search: true,
+    pagination: { limit: 10 },
+  }).render(containerRef.value)
+})
+
+watch(() => props.products, (newProducts) => {
+  if (grid) {
+    grid.updateConfig({ data: toData(newProducts) }).forceRender()
+  }
+})
+
+onBeforeUnmount(() => {
+  if (grid) grid.destroy()
+})
 </script>
 
 <template>
@@ -36,13 +59,6 @@ const data = computed(() =>
         Grid.js's stylesheet via targeted CSS class overrides.
       </VueAlert>
     </div>
-
-    <Grid
-      :columns="columns"
-      :data="data"
-      :sort="true"
-      :search="true"
-      :pagination="{ limit: 10 }"
-    />
+    <div ref="containerRef"></div>
   </div>
 </template>

@@ -48,9 +48,9 @@ function handlePanelChange(detail: SelectionButtonChangeEventDetail) {
           :value="activePanel"
           @selection-change="handlePanelChange"
         >
-          <VueSelectionButton value="simple" label="Simple" />
-          <VueSelectionButton value="gridjs" label="Grid.js" />
-          <VueSelectionButton value="tanstack" label="TanStack" />
+          <VueSelectionButton value="simple" label="Simple">Simple</VueSelectionButton>
+          <VueSelectionButton value="gridjs" label="Grid.js">Grid.js</VueSelectionButton>
+          <VueSelectionButton value="tanstack" label="TanStack">TanStack</VueSelectionButton>
         </VueSelectionButtonGroup>
       </div>
     </div>

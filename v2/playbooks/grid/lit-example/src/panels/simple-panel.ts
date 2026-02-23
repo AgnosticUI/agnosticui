@@ -27,7 +27,8 @@ const chevronUp = html`<svg xmlns="http://www.w3.org/2000/svg" width="14" height
 const chevronDown = html`<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`
 
 export class SimplePanel extends LitElement {
-  static override styles = css`:host { display: block; }`
+  // Light DOM so global app.css classes (.ag-table, .search-bar, etc.) apply
+  override createRenderRoot() { return this }
 
   @property({ type: Array }) products: Product[] = []
 
@@ -120,7 +121,7 @@ export class SimplePanel extends LitElement {
           ></ag-empty-state>
         ` : html`
           <div style="overflow-x: auto">
-            <table class="ag-table ag-table--hoverable ag-table--striped">
+            <table class="ag-table ag-table--hoverable ag-table--striped" style="width:100%">
               <caption class="visually-hidden">Product inventory</caption>
               <thead>
                 <tr>
