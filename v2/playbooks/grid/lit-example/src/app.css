@@ -139,9 +139,8 @@ body {
 .gridjs-pages button[disabled] { color: var(--ag-text-secondary); }
 /* Grid.js pagination replaced by ag-pagination; hide the built-in one (still in DOM for JS reading) */
 .gridjs-pagination { display: none; }
-/* Widen Grid.js search to match Simple panel's full-width search */
-.gridjs-search { width: 100%; }
-.gridjs-search-input { width: 100%; }
+/* Grid.js native search is replaced by ag-input; hide the built-in one */
+.gridjs-search { display: none; }
 
 /* TanStack panel table styles */
 .ts-th {

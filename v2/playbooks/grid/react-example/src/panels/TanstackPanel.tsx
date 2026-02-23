@@ -187,7 +187,6 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
         <ReactInput
           type="search"
           placeholder="Search…"
-          value={globalFilter}
           rounded
           onInput={(e: Event) => {
             setGlobalFilter((e.target as HTMLInputElement).value)
@@ -196,7 +195,6 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
         />
         <ReactInput
           placeholder="Filter name…"
-          value={nameFilter}
           rounded
           onInput={(e: Event) => setNameFilter((e.target as HTMLInputElement).value)}
         />

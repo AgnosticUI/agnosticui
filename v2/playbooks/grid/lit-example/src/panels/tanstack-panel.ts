@@ -204,13 +204,11 @@ export class TanstackPanel extends LitElement {
             type="search"
             placeholder="Search…"
             rounded
-            .value="${this.globalFilter}"
             @input="${(e: Event) => this.setGlobalFilter((e.target as HTMLInputElement).value)}"
           ></ag-input>
           <ag-input
             placeholder="Filter name…"
             rounded
-            .value="${this.nameFilter}"
             @input="${(e: Event) => this.setNameFilter((e.target as HTMLInputElement).value)}"
           ></ag-input>
           <ag-select

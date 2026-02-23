@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Grid, html } from 'gridjs'
-import { ReactAlert } from '../components/ag/Alert/react/ReactAlert'
+import { ReactInput } from '../components/ag/Input/react/ReactInput'
 import { ReactPagination } from '../components/ag/Pagination/react/ReactPagination'
 import type { Product } from '../data/products'
 
@@ -80,6 +80,11 @@ export function GridJsPanel({ products }: { products: Product[] }) {
     }
   }, [products])
 
+  function handleSearch(e: Event) {
+    const val = (e.target as HTMLInputElement).value
+    gridRef.current?.updateConfig({ search: { keyword: val } }).forceRender()
+  }
+
   function handlePageChange(e: CustomEvent) {
     const page = e.detail.page as number
     gridRef.current?.updateConfig({
@@ -90,13 +95,13 @@ export function GridJsPanel({ products }: { products: Product[] }) {
 
   return (
     <div>
-      <div style={{ marginBottom: 'var(--ag-space-4)' }}>
-        <ReactAlert variant="info">
-          Grid.js renders its own search and sort controls. AgnosticUI provides the
-          application shell — <code>--ag-*</code> tokens are bridged to Grid.js's
-          stylesheet via targeted CSS class overrides. Pagination is handled by
-          AgnosticUI's <code>ag-pagination</code>.
-        </ReactAlert>
+      <div className="search-bar">
+        <ReactInput
+          type="search"
+          placeholder="Search…"
+          rounded
+          onInput={handleSearch}
+        />
       </div>
 
       <div ref={containerRef} />

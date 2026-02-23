@@ -172,13 +172,11 @@ function handleDeleteConfirm() {
       <VueInput
         type="search"
         placeholder="Search…"
-        :value="globalFilter"
         :rounded="true"
         @input="(e: Event) => { globalFilter = (e.target as HTMLInputElement).value; table.setPageIndex(0) }"
       />
       <VueInput
         placeholder="Filter name…"
-        :value="nameFilter"
         :rounded="true"
         @input="(e: Event) => setNameFilter((e.target as HTMLInputElement).value)"
       />

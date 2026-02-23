@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit'
 import { property, state } from 'lit/decorators.js'
 import { Grid, html as gridHtml } from 'gridjs'
-import '../components/ag/Alert/core/Alert'
+import '../components/ag/Input/core/Input'
 import '../components/ag/Pagination/core/Pagination'
 import type { Product } from '../data/products'
 
@@ -91,6 +91,11 @@ export class GridJsPanel extends LitElement {
     this.grid?.destroy()
   }
 
+  private handleSearch(e: Event) {
+    const val = (e.target as HTMLInputElement).value
+    this.grid?.updateConfig({ search: { keyword: val } }).forceRender()
+  }
+
   private handlePageChange(e: CustomEvent) {
     const page = e.detail.page as number
     this.grid?.updateConfig({
@@ -102,13 +107,13 @@ export class GridJsPanel extends LitElement {
   override render() {
     return html`
       <div>
-        <div style="margin-bottom: var(--ag-space-4)">
-          <ag-alert variant="info">
-            Grid.js renders its own search and sort controls. AgnosticUI provides the
-            application shell — <code>--ag-*</code> tokens are bridged to Grid.js's
-            stylesheet via targeted CSS class overrides. Pagination is handled by
-            AgnosticUI's <code>ag-pagination</code>.
-          </ag-alert>
+        <div class="search-bar" style="margin-bottom: var(--ag-space-4)">
+          <ag-input
+            type="search"
+            placeholder="Search…"
+            rounded
+            @input="${this.handleSearch}"
+          ></ag-input>
         </div>
 
         <div id="grid-container"></div>

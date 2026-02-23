@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 import { Grid, html } from 'gridjs'
-import VueAlert from '../components/ag/Alert/vue/VueAlert.vue'
+import VueInput from '../components/ag/Input/vue/VueInput.vue'
 import VuePagination from '../components/ag/Pagination/vue/VuePagination.vue'
 import type { Product } from '../data/products'
 
@@ -83,6 +83,11 @@ watch(() => props.products, (newProducts) => {
   }
 })
 
+function handleSearch(e: Event) {
+  const val = (e.target as HTMLInputElement).value
+  grid?.updateConfig({ search: { keyword: val } }).forceRender()
+}
+
 function handlePageChange(e: { page: number }) {
   grid?.updateConfig({
     pagination: { limit: PAGE_SIZE, page: e.page - 1 },
@@ -93,13 +98,13 @@ function handlePageChange(e: { page: number }) {
 
 <template>
   <div>
-    <div style="margin-bottom: var(--ag-space-4)">
-      <VueAlert variant="info">
-        Grid.js renders its own search and sort controls. AgnosticUI provides the
-        application shell — <code>--ag-*</code> tokens are bridged to Grid.js's
-        stylesheet via targeted CSS class overrides. Pagination is handled by
-        AgnosticUI's <code>ag-pagination</code>.
-      </VueAlert>
+    <div class="search-bar">
+      <VueInput
+        type="search"
+        placeholder="Search…"
+        :rounded="true"
+        @input="handleSearch"
+      />
     </div>
 
     <div ref="containerRef"></div>
