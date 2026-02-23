@@ -44,6 +44,7 @@ export default function App() {
               name="panel-view"
               legendHidden
               legend="View as"
+              shape="rounded"
               value={activePanel}
               onSelectionChange={handlePanelChange}
             >

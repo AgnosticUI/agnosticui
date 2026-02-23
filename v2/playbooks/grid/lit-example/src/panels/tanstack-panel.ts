@@ -25,6 +25,7 @@ import '../components/ag/Pagination/core/Pagination'
 import '../components/ag/Toast/core/Toast'
 import '../components/ag/EmptyState/core/EmptyState'
 import '../components/ag/Menu/core/Menu'
+import '../components/ag/Select/core/Select'
 import type { Product } from '../data/products'
 
 const pencilIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -202,18 +203,19 @@ export class TanstackPanel extends LitElement {
           <ag-input
             type="search"
             placeholder="Search…"
+            rounded
             .value="${this.globalFilter}"
             @input="${(e: Event) => this.setGlobalFilter((e.target as HTMLInputElement).value)}"
           ></ag-input>
           <ag-input
             placeholder="Filter name…"
+            rounded
             .value="${this.nameFilter}"
             @input="${(e: Event) => this.setNameFilter((e.target as HTMLInputElement).value)}"
           ></ag-input>
-          <select
-            class="toolbar-select"
-            .value="${this.categoryFilter}"
-            @change="${(e: Event) => this.setCategoryFilter((e.target as HTMLSelectElement).value)}"
+          <ag-select
+            no-label
+            @change="${(e: CustomEvent) => this.setCategoryFilter(e.detail.value as string)}"
           >
             <option value="">All Categories</option>
             <option value="Electronics">Electronics</option>
@@ -221,7 +223,7 @@ export class TanstackPanel extends LitElement {
             <option value="Food">Food</option>
             <option value="Books">Books</option>
             <option value="Tools">Tools</option>
-          </select>
+          </ag-select>
 
           <div class="panel-toolbar-right">
             <ag-menu-button menu-variant="chevron" button-variant="secondary">
@@ -251,7 +253,7 @@ export class TanstackPanel extends LitElement {
         <!-- Delete selected -->
         ${this.selectedCount > 0 ? html`
           <div class="delete-row">
-            <ag-button variant="danger" @click="${() => { this.dialogOpen = true }}">
+            <ag-button variant="danger" shape="rounded" @click="${() => { this.dialogOpen = true }}">
               Delete Selected (${this.selectedCount})
             </ag-button>
           </div>
@@ -335,15 +337,14 @@ export class TanstackPanel extends LitElement {
 
         <!-- Pagination row -->
         <div class="pagination-row">
-          <select
-            class="toolbar-select"
-            .value="${String(pageSize)}"
-            @change="${(e: Event) => { this.table!.setPageSize(Number((e.target as HTMLSelectElement).value)); this.table!.setPageIndex(0) }}"
+          <ag-select
+            no-label
+            @change="${(e: CustomEvent) => { this.table!.setPageSize(Number(e.detail.value)); this.table!.setPageIndex(0) }}"
           >
             <option value="10">10 / page</option>
             <option value="25">25 / page</option>
             <option value="50">50 / page</option>
-          </select>
+          </ag-select>
 
           <ag-pagination
             .current="${pageIndex + 1}"
@@ -361,8 +362,8 @@ export class TanstackPanel extends LitElement {
           @dialog-close="${() => { this.dialogOpen = false }}"
         >
           <div slot="footer" style="display:flex;gap:var(--ag-space-2);justify-content:flex-end">
-            <ag-button variant="secondary" @click="${() => { this.dialogOpen = false }}">Cancel</ag-button>
-            <ag-button variant="danger" @click="${this.handleDeleteConfirm}">Delete</ag-button>
+            <ag-button variant="secondary" shape="rounded" @click="${() => { this.dialogOpen = false }}">Cancel</ag-button>
+            <ag-button variant="danger" shape="rounded" @click="${this.handleDeleteConfirm}">Delete</ag-button>
           </div>
         </ag-dialog>
 

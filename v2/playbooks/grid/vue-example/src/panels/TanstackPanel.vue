@@ -24,6 +24,7 @@ import VuePagination from '../components/ag/Pagination/vue/VuePagination.vue'
 import VueToast from '../components/ag/Toast/vue/VueToast.vue'
 import VueEmptyState from '../components/ag/EmptyState/vue/VueEmptyState.vue'
 import { VueMenu, VueMenuItem } from '../components/ag/Menu/vue/index'
+import VueSelect from '../components/ag/Select/vue/VueSelect.vue'
 import type { TagVariant } from '../components/ag/Tag/core/_Tag'
 import type { Product } from '../data/products'
 
@@ -172,17 +173,18 @@ function handleDeleteConfirm() {
         type="search"
         placeholder="Search…"
         :value="globalFilter"
+        :rounded="true"
         @input="(e: Event) => { globalFilter = (e.target as HTMLInputElement).value; table.setPageIndex(0) }"
       />
       <VueInput
         placeholder="Filter name…"
         :value="nameFilter"
+        :rounded="true"
         @input="(e: Event) => setNameFilter((e.target as HTMLInputElement).value)"
       />
-      <select
-        class="toolbar-select"
-        :value="categoryFilter"
-        @change="(e: Event) => setCategoryFilter((e.target as HTMLSelectElement).value)"
+      <VueSelect
+        no-label
+        @change="(detail) => setCategoryFilter(detail.value as string)"
       >
         <option value="">All Categories</option>
         <option value="Electronics">Electronics</option>
@@ -190,7 +192,7 @@ function handleDeleteConfirm() {
         <option value="Food">Food</option>
         <option value="Books">Books</option>
         <option value="Tools">Tools</option>
-      </select>
+      </VueSelect>
 
       <div class="panel-toolbar-right">
         <VueMenu menu-variant="chevron" button-variant="secondary">
@@ -216,7 +218,7 @@ function handleDeleteConfirm() {
 
     <!-- Delete selected -->
     <div v-if="selectedCount > 0" class="delete-row">
-      <VueButton variant="danger" @click="dialogOpen = true">
+      <VueButton variant="danger" shape="rounded" @click="dialogOpen = true">
         Delete Selected ({{ selectedCount }})
       </VueButton>
     </div>
@@ -309,15 +311,14 @@ function handleDeleteConfirm() {
 
     <!-- Pagination row -->
     <div class="pagination-row">
-      <select
-        class="toolbar-select"
-        :value="String(pageSize)"
-        @change="(e: Event) => { table.setPageSize(Number((e.target as HTMLSelectElement).value)); table.setPageIndex(0) }"
+      <VueSelect
+        no-label
+        @change="(detail) => { table.setPageSize(Number(detail.value)); table.setPageIndex(0) }"
       >
         <option value="10">10 / page</option>
         <option value="25">25 / page</option>
         <option value="50">50 / page</option>
-      </select>
+      </VueSelect>
 
       <VuePagination
         :current="pageIndex + 1"
@@ -335,8 +336,8 @@ function handleDeleteConfirm() {
       @dialog-close="dialogOpen = false"
     >
       <div slot="footer" style="display:flex;gap:var(--ag-space-2);justify-content:flex-end">
-        <VueButton variant="secondary" @click="dialogOpen = false">Cancel</VueButton>
-        <VueButton variant="danger" @click="handleDeleteConfirm">Delete</VueButton>
+        <VueButton variant="secondary" shape="rounded" @click="dialogOpen = false">Cancel</VueButton>
+        <VueButton variant="danger" shape="rounded" @click="handleDeleteConfirm">Delete</VueButton>
       </div>
     </VueDialog>
 

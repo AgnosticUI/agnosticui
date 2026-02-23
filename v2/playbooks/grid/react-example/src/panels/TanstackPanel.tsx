@@ -23,6 +23,7 @@ import { ReactPagination } from '../components/ag/Pagination/react/ReactPaginati
 import { ReactToast } from '../components/ag/Toast/react/ReactToast'
 import { ReactEmptyState } from '../components/ag/EmptyState/react/ReactEmptyState'
 import { ReactMenuButton, ReactMenu, ReactMenuItem } from '../components/ag/Menu/react/ReactMenu'
+import { ReactSelect } from '../components/ag/Select/react/ReactSelect'
 import type { TagVariant } from '../components/ag/Tag/core/_Tag'
 import type { Product } from '../data/products'
 
@@ -187,6 +188,7 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
           type="search"
           placeholder="Search…"
           value={globalFilter}
+          rounded
           onInput={(e: Event) => {
             setGlobalFilter((e.target as HTMLInputElement).value)
             table.setPageIndex(0)
@@ -195,12 +197,12 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
         <ReactInput
           placeholder="Filter name…"
           value={nameFilter}
+          rounded
           onInput={(e: Event) => setNameFilter((e.target as HTMLInputElement).value)}
         />
-        <select
-          className="toolbar-select"
-          value={categoryFilter}
-          onChange={(e) => setCategoryFilter(e.target.value)}
+        <ReactSelect
+          noLabel
+          onChange={(e) => setCategoryFilter(e.detail.value as string)}
         >
           <option value="">All Categories</option>
           <option value="Electronics">Electronics</option>
@@ -208,7 +210,7 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
           <option value="Food">Food</option>
           <option value="Books">Books</option>
           <option value="Tools">Tools</option>
-        </select>
+        </ReactSelect>
 
         <div className="panel-toolbar-right">
           <ReactMenuButton menuVariant="chevron" buttonVariant="secondary">
@@ -240,6 +242,7 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
         <div className="delete-row">
           <ReactButton
             variant="danger"
+            shape="rounded"
             onClick={() => setDialogOpen(true)}
           >
             Delete Selected ({selectedCount})
@@ -306,18 +309,17 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
 
       {/* Pagination row */}
       <div className="pagination-row">
-        <select
-          className="toolbar-select"
-          value={String(currentPageSize)}
+        <ReactSelect
+          noLabel
           onChange={(e) => {
-            table.setPageSize(Number(e.target.value))
+            table.setPageSize(Number(e.detail.value))
             table.setPageIndex(0)
           }}
         >
           <option value="10">10 / page</option>
           <option value="25">25 / page</option>
           <option value="50">50 / page</option>
-        </select>
+        </ReactSelect>
 
         <ReactPagination
           current={pageIndex + 1}
@@ -335,10 +337,10 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
         onDialogClose={() => setDialogOpen(false)}
       >
         <div slot="footer" style={{ display: 'flex', gap: 'var(--ag-space-2)', justifyContent: 'flex-end' }}>
-          <ReactButton variant="secondary" onClick={() => setDialogOpen(false)}>
+          <ReactButton variant="secondary" shape="rounded" onClick={() => setDialogOpen(false)}>
             Cancel
           </ReactButton>
-          <ReactButton variant="danger" onClick={handleDeleteConfirm}>
+          <ReactButton variant="danger" shape="rounded" onClick={handleDeleteConfirm}>
             Delete
           </ReactButton>
         </div>

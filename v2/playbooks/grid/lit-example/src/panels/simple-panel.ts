@@ -109,6 +109,7 @@ export class SimplePanel extends LitElement {
           <ag-input
             type="search"
             placeholder="Search products…"
+            rounded
             .value="${this.search}"
             @input="${this.handleSearch}"
           ></ag-input>

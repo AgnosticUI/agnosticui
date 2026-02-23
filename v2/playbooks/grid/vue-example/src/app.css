@@ -216,34 +216,9 @@ tr:last-child .ts-td {
 }
 
 /* Header content width — match app-main max-width */
+/* !important needed: external ::part() specificity (0,0,1) loses to internal shadow .header-content (0,1,0) */
 @media (min-width: 960px) {
   ag-header::part(ag-header-content) {
-    width: min(1200px, 100%);
+    width: min(1200px, 100%) !important;
   }
-}
-
-/* Toolbar native select — matches ag-select height and styling */
-.toolbar-select {
-  appearance: none;
-  -webkit-appearance: none;
-  display: block;
-  border: 1px solid var(--ag-border);
-  border-radius: var(--ag-radius-md);
-  padding: var(--ag-space-2) var(--ag-space-8) var(--ag-space-2) var(--ag-space-3);
-  font-size: var(--ag-font-size-base);
-  font-weight: 400;
-  line-height: 1.5;
-  font-family: inherit;
-  color: var(--ag-text-primary);
-  background-color: var(--ag-background-primary);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333330' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right var(--ag-space-3) center;
-  background-size: 1rem 0.75rem;
-  cursor: pointer;
-}
-.toolbar-select:focus {
-  border-color: var(--ag-focus-ring-color);
-  box-shadow: 0 0 0 3px var(--ag-focus-ring-color);
-  outline: none;
 }

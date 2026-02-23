@@ -87,6 +87,7 @@ const pageRows = computed(() => sorted.value.slice((page.value - 1) * PAGE_SIZE,
         type="search"
         placeholder="Search products…"
         :value="search"
+        :rounded="true"
         @input="handleSearch"
       />
     </div>

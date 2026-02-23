@@ -49,6 +49,7 @@ export class InventoryApp extends LitElement {
               name="panel-view"
               .legendHidden="${true}"
               legend="View as"
+              shape="rounded"
               value="${this.activePanel}"
               @selection-change="${this.handlePanelChange}"
             >

@@ -197,7 +197,7 @@ npx agnosticui-cli add \
 npm create vite@latest vue-example -- --template vue-ts
 cd vue-example
 npm install
-npm install @tanstack/vue-table lucide-vue-next gridjs @gridjs/vue
+npm install @tanstack/vue-table lucide-vue-next gridjs
 npx agnosticui-cli init --framework vue --skip-prompts
 npx agnosticui-cli add \
   Header Breadcrumb Avatar \
@@ -351,6 +351,14 @@ body {
     display: none;
   }
 }
+
+/* Header content width — match app-main max-width */
+/* !important needed: external ::part() specificity (0,0,1) loses to internal shadow .header-content (0,1,0) */
+@media (min-width: 960px) {
+  ag-header::part(ag-header-content) {
+    width: min(1200px, 100%) !important;
+  }
+}
 ```
 
 ---
@@ -371,6 +379,38 @@ Use `--ag-*` throughout. Common tokens:
 --ag-warning-color    --ag-warning-bg
 ```
 
+### Button shape
+
+All `ag-button` / `ReactButton` / `VueButton` elements should use `shape="rounded"` for consistent minimal rounded corners. The `ag-menu-button` already defaults to `shape="rounded"`.
+
+### Input rounded corners
+
+All `ag-input` / `ReactInput` / `VueInput` elements use `border-radius: 0` by default. Pass the `rounded` boolean attribute/prop to add `var(--ag-radius-md)`.
+
+### Select component
+
+Use `ag-select` / `ReactSelect` / `VueSelect` for all dropdown selects in toolbars and filter bars — **never native `<select>`**. The AgnosticUI Select is already themed; no extra CSS class needed.
+
+- **React:** `<ReactSelect noLabel onChange={(e) => handler(e.detail.value as string)}><option>…</option></ReactSelect>`
+- **Vue:** `<VueSelect no-label @change="(detail) => handler(detail.value as string)"><option>…</option></VueSelect>`
+- **Lit:** `<ag-select no-label @change="${(e: CustomEvent) => handler(e.detail.value)}"><option>…</option></ag-select>`
+
+### SelectionButtonGroup shape
+
+Pass `shape="rounded"` to `ag-selection-button-group` / `ReactSelectionButtonGroup` / `VueSelectionButtonGroup` — it propagates automatically to all child buttons.
+
+### Header content width
+
+The `ag-header::part(ag-header-content)` override requires `!important` because external `::part()` specificity (0,0,1) is lower than the internal shadow DOM `.header-content` class (0,1,0):
+
+```css
+@media (min-width: 960px) {
+  ag-header::part(ag-header-content) {
+    width: min(1200px, 100%) !important;
+  }
+}
+```
+
 ### Button prop
 
 Use `disabled`, not `isDisabled`.
@@ -378,6 +418,28 @@ Use `disabled`, not `isDisabled`.
 ### Lit icons
 
 Lucide is not Lit-compatible. Use inline SVG templates.
+
+### Grid.js — use vanilla gridjs, not @gridjs/vue
+
+`@gridjs/vue` is a Vue 2 compat wrapper and fails in Vue 3/Vite with
+`Uncaught ReferenceError: Vue is not defined`. Install only `gridjs` (no wrapper)
+and mount imperatively in `onMounted`:
+
+```ts
+import { Grid, html } from 'gridjs'
+onMounted(() => {
+  grid = new Grid({ columns, data, sort: true, search: true, pagination: { limit: 10 } })
+    .render(containerRef.value)
+})
+```
+
+### Lit shadow DOM
+
+All Lit components in this playbook use **light DOM** to let global `app.css` reach inside:
+```ts
+override createRenderRoot() { return this }
+```
+Add this to every `LitElement` in the project.
 
 ### Vue TypeScript
 
@@ -436,9 +498,15 @@ work, and the shell remains stable during panel transitions.
 - [ ] Page-size Select (10/25/50) + Pagination
 - [ ] EmptyState on zero results
 - [ ] `--ag-*` tokens applied directly to markup — no bridge needed
+- [ ] Category filter and page-size use `ReactSelect`/`VueSelect`/`ag-select` (not native `<select>`)
 
 ### All
 
 - [ ] `npm run build` exits 0 for all three frameworks
 - [ ] Dark mode responds to system preference via `ag-tokens-dark.css`
 - [ ] Mobile card layout; tablet Category column hidden
+- [ ] All `Input` elements have `rounded` prop/attribute
+- [ ] All `Button` elements have `shape="rounded"`
+- [ ] `SelectionButtonGroup` has `shape="rounded"` (propagates to children)
+- [ ] Header `::part(ag-header-content)` width override uses `!important`
+- [ ] Lit: all panels use light DOM (`createRenderRoot() { return this }`)

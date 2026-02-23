@@ -53,12 +53,13 @@ simultaneously.
 ## Features
 
 ### Filtering
-- **Global search** — AgnosticUI `Input` (type `search`, placeholder "Search…").
+- **Global search** — AgnosticUI `Input` (type `search`, placeholder "Search…", `rounded` prop).
   Wired to TanStack's `globalFilter` state. Resets pagination to page 1 on change.
-- **Name filter** — AgnosticUI `Input` (placeholder "Filter name…").
+- **Name filter** — AgnosticUI `Input` (placeholder "Filter name…", `rounded` prop).
   Wired to the `name` column's `columnFilter`.
-- **Category filter** — AgnosticUI `Select` (All / Electronics / Clothing / Food /
+- **Category filter** — AgnosticUI `Select` (`noLabel`/`no-label` prop; options: All / Electronics / Clothing / Food /
   Books / Tools). Wired to the `category` column's `columnFilter`.
+  Use `ReactSelect` / `VueSelect` / `ag-select` — **not** a native `<select>`.
 
 ### Sorting
 - **Multi-sort** — Click header to sort asc, again for desc. Shift+click adds a
@@ -74,11 +75,11 @@ simultaneously.
 ### Row Selection
 - Leading `Checkbox` column. Header checkbox selects/deselects all visible rows.
 - When ≥ 1 row is selected, show "Delete Selected ([N])" AgnosticUI `Button`
-  (outlined, danger or secondary variant) above the table.
+  (`variant="danger"`, `shape="rounded"`) above the table.
 - Clicking opens AgnosticUI `Dialog`:
   - Title: "Confirm Delete"
   - Body: "Delete [N] selected product(s)? This cannot be undone."
-  - Buttons: "Cancel" (closes) | "Delete" (danger, confirms)
+  - Buttons: "Cancel" (`shape="rounded"`, closes) | "Delete" (danger, `shape="rounded"`, confirms)
   - On confirm: remove rows from local copy of data, close dialog,
     call `table.resetRowSelection()`, fire `Toast`: `"Deleted [N] product(s)"`
 
@@ -98,7 +99,8 @@ AgnosticUI `EmptyState`. Title: "No products found." Body: "Try adjusting your f
 
 ### Pagination
 - AgnosticUI `Pagination` below the table.
-- AgnosticUI `Select` for page size (10 / 25 / 50) left of the pagination.
+- AgnosticUI `Select` (`noLabel`/`no-label`) for page size (10 / 25 / 50) left of the pagination.
+  Use `ReactSelect` / `VueSelect` / `ag-select` — **not** a native `<select>`.
 - TanStack manages all pagination state; AgnosticUI renders the controls only.
 
 ---
@@ -177,6 +179,9 @@ tr:last-child .ts-td {
 }
 ```
 
+> **Note:** Do not use a native `<select>` styled with a `.toolbar-select` CSS class.
+> Use AgnosticUI `ReactSelect` / `VueSelect` / `ag-select` with `noLabel`/`no-label` prop — already themed, no extra CSS needed.
+
 Dark mode is automatic — all values reference `--ag-*` custom properties.
 
 TanStack Table docs: https://tanstack.com/table/latest
@@ -196,11 +201,15 @@ import {
   getPaginationRowModel,
   createColumnHelper,
 } from '@tanstack/react-table'
+import { ReactSelect } from '../components/ag/Select/react/ReactSelect'
 ```
 
 - Pass `enableRowSelection: true` and `enableMultiSort: true` to `useReactTable`.
 - Define column defs outside the component to avoid recreation on each render.
 - Use the `cell` property on column defs to render Tags, Checkboxes, IconButtons.
+- Category filter select: `<ReactSelect noLabel onChange={(e) => setCategoryFilter(e.detail.value as string)}>`
+  — `e.detail.value` is the selected value string.
+- Page size select: `<ReactSelect noLabel onChange={(e) => { table.setPageSize(Number(e.detail.value)); table.setPageIndex(0) }}>`
 
 ### Vue
 
@@ -212,11 +221,15 @@ import {
   getSortedRowModel,
   getPaginationRowModel,
 } from '@tanstack/vue-table'
+import VueSelect from '../components/ag/Select/vue/VueSelect.vue'
 ```
 
 - Wrap `table.getRowModel()` and `table.getHeaderGroups()` in `computed` for
   reactive template bindings.
 - Pass `enableMultiSort: true` in the table config object.
+- Category filter: `<VueSelect no-label @change="(detail) => setCategoryFilter(detail.value as string)">`
+  — Vue wrapper emits the `SelectChangeEventDetail` object directly (not a full Event).
+- Page size: `<VueSelect no-label @change="(detail) => { table.setPageSize(Number(detail.value)); table.setPageIndex(0) }">`
 
 ### Lit
 
@@ -264,6 +277,27 @@ connectedCallback() {
 When `products` property changes (e.g. after a delete), recreate the table or call
 `table.setOptions({ data: this.localProducts })` and `requestUpdate()`.
 
+- Import and use `ag-select` for category and page-size selects:
+  ```ts
+  import '../components/ag/Select/core/Select'
+  ```
+  ```html
+  <ag-select no-label @change="${(e: CustomEvent) => this.setCategoryFilter(e.detail.value as string)}">
+    <option value="">All Categories</option>
+    ...
+  </ag-select>
+
+  <ag-select no-label @change="${(e: CustomEvent) => { this.table!.setPageSize(Number(e.detail.value)); this.table!.setPageIndex(0) }}">
+    <option value="10">10 / page</option>
+    ...
+  </ag-select>
+  ```
+- Use **light DOM** on all panels so `app.css` classes reach inside:
+  ```ts
+  override createRenderRoot() { return this }
+  ```
+- Pass `rounded` on `ag-input` elements and `shape="rounded"` on `ag-button` elements.
+
 ---
 
 ## Common Pitfalls
@@ -276,6 +310,11 @@ When `products` property changes (e.g. after a delete), recreate the table or ca
 | Column filter clears global filter | Use `columnFilters` array state alongside `globalFilter` separately |
 | Vue `ag-*` warnings | Confirm `isCustomElement` in `vite.config.ts` |
 | Delete count shows 0 | Read selected rows before clearing selection state |
+| Toolbar select looks unstyled | Use `ReactSelect`/`VueSelect`/`ag-select` with `noLabel`, not native `<select>` |
+| Inputs have square corners | Pass `rounded` boolean prop/attribute to each `ag-input` |
+| Buttons have square corners | Pass `shape="rounded"` to each `ag-button` |
+| Header `::part()` width ignored | Add `!important` — external `::part()` specificity (0,0,1) loses to shadow `.header-content` (0,1,0) |
+| Lit CSS not reaching components | Use `override createRenderRoot() { return this }` for light DOM on all panels |
 
 ---
 
@@ -306,4 +345,9 @@ When `products` property changes (e.g. after a delete), recreate the table or ca
 - [ ] `--ag-*` tokens applied directly to markup — no bridge needed, dark mode automatic
 - [ ] `data-label` attributes on `<td>` elements for mobile card CSS
 - [ ] `.col-category` class for tablet CSS hide
+- [ ] Category filter and page-size use `ReactSelect`/`VueSelect`/`ag-select` (not native `<select>`)
+- [ ] All `Input` elements have `rounded` prop/attribute
+- [ ] All `Button` elements have `shape="rounded"`
+- [ ] `SelectionButtonGroup` has `shape="rounded"` (propagates to children)
+- [ ] Lit: all panels use `createRenderRoot() { return this }` (light DOM)
 - [ ] No TypeScript errors

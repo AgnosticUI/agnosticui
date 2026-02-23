@@ -43,7 +43,7 @@ the skin file and the table updates with everything else on the page.
 
 ## Features
 
-- **Search** — AgnosticUI `Input` (type `search`, placeholder "Search products…").
+- **Search** — AgnosticUI `Input` (type `search`, placeholder "Search products…", `rounded` prop).
   Filters rows by product name in real time. Resets to page 1 on each keystroke.
 - **Column sort** — Clicking any column header cycles asc → desc → unsorted.
   Show ▲ / ▼ next to the active column. One column sorted at a time.
@@ -119,4 +119,6 @@ const pencilIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
 - [ ] Pagination: 10 rows/page, navigates correctly, reflects filtered count
 - [ ] `data-label` attributes present on `<td>` elements (for mobile CSS card layout)
 - [ ] `.col-category` class on the Category column (for tablet CSS hide)
+- [ ] Search `Input` has `rounded` prop/attribute
+- [ ] Lit: panel uses `createRenderRoot() { return this }` (light DOM)
 - [ ] No TypeScript errors

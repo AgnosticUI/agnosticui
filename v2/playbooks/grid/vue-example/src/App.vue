@@ -45,6 +45,7 @@ function handlePanelChange(detail: SelectionButtonChangeEventDetail) {
           name="panel-view"
           :legend-hidden="true"
           legend="View as"
+          shape="rounded"
           :value="activePanel"
           @selection-change="handlePanelChange"
         >

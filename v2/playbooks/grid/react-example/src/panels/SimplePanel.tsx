@@ -89,6 +89,7 @@ export function SimplePanel({ products }: { products: Product[] }) {
           type="search"
           placeholder="Search products…"
           value={search}
+          rounded
           onInput={handleSearch}
         />
       </div>
