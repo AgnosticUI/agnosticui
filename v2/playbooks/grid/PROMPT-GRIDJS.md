@@ -76,9 +76,9 @@ AgnosticUI `Alert` (type `info`) above the grid:
 
 Status cell CSS (add to `app.css` — these are panel-agnostic utility classes):
 ```css
-.status-cell--active       { color: var(--ag-success-color); font-weight: 500; }
-.status-cell--low-stock    { color: var(--ag-warning-color); font-weight: 500; }
-.status-cell--discontinued { color: var(--ag-gray-mid);      font-weight: 500; }
+.status-cell--active       { color: var(--ag-success-text);   font-weight: 500; }
+.status-cell--low-stock    { color: var(--ag-warning-text);   font-weight: 500; }
+.status-cell--discontinued { color: var(--ag-text-secondary); font-weight: 500; }
 ```
 
 ---
@@ -103,14 +103,17 @@ Bridge rules (place in `app.css`):
 .gridjs-table {
   background-color: var(--ag-background-primary);
 }
-/* th/td.gridjs-* selectors needed to beat mermaid's th.gridjs-th / td.gridjs-td specificity (0,1,1) */
+/* th/td.gridjs-* selectors needed to beat mermaid's th.gridjs-th / td.gridjs-td specificity (0,1,1).
+   In practice app.css combines all three panel headers into one shared rule:
+     .ag-table thead th, th.gridjs-th, .ts-th { ... }
+   so that Simple, Grid.js, and TanStack headers are visually identical. */
 th.gridjs-th {
   background-color: var(--ag-background-secondary);
   color: var(--ag-text-primary);
-  font-weight: 600;
+  font-weight: 500;
   border: none;
   border-bottom: 2px solid var(--ag-border);
-  padding: var(--ag-space-3) var(--ag-space-4);
+  padding: var(--ag-space-1) var(--ag-space-2);
 }
 td.gridjs-td {
   border: none;
@@ -123,21 +126,21 @@ td.gridjs-td {
 /* Hide built-in Grid.js search (replaced by ag-input) */
 .gridjs-search { display: none; }
 .gridjs-search-input {
-  border: 1px solid var(--ag-gray-light);
-  border-radius: var(--ag-radius);
+  border: 1px solid var(--ag-border);
+  border-radius: var(--ag-radius-md);
   font-family: inherit;
   font-size: inherit;
   padding: 0.375rem 0.75rem;
-  background-color: var(--ag-body-bg);
-  color: var(--ag-body-color);
+  background-color: var(--ag-background-primary);
+  color: var(--ag-text-primary);
 }
 .gridjs-search-input:focus {
-  outline: 3px solid var(--ag-focus-ring-color, var(--ag-primary));
+  outline: 3px solid var(--ag-primary);
   outline-offset: 2px;
 }
 .gridjs-pages button        { color: var(--ag-primary); }
-.gridjs-pages button:hover  { background-color: var(--ag-gray-extra-light); }
-.gridjs-pages button[disabled] { color: var(--ag-gray-mid); }
+.gridjs-pages button:hover  { background-color: var(--ag-background-secondary); }
+.gridjs-pages button[disabled] { color: var(--ag-text-secondary); }
 ```
 
 **Coverage summary:**
@@ -175,22 +178,30 @@ export function GridJsPanel({ products }: { products: Product[] }) {
 }
 ```
 
-### Vue — `@gridjs/vue`
+### Vue — vanilla Grid.js (imperative mount)
+
+`@gridjs/vue` is a Vue 2 compat wrapper that fails in Vue 3/Vite. Use vanilla `gridjs`
+and mount imperatively in `onMounted` (same pattern as Lit):
 
 ```vue
 <script setup lang="ts">
-import { Grid, html } from '@gridjs/vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { Grid, html } from 'gridjs'
 import type { Product } from '../data/products'
 
 const props = defineProps<{ products: Product[] }>()
-const data = computed(() =>
-  props.products.map(p => [p.name, p.category, p.price, p.stock, p.status])
-)
+const containerRef = ref<HTMLElement | null>(null)
+let grid: Grid | null = null
+
+onMounted(() => {
+  grid = new Grid({ columns, data: props.products.map(p => [...]), sort: true,
+    search: true, pagination: { limit: 10 } }).render(containerRef.value!)
+})
+onBeforeUnmount(() => grid?.destroy())
 </script>
 <template>
   <!-- Alert -->
-  <Grid :columns="columns" :data="data" :sort="true"
-        :search="true" :pagination="{ limit: 10 }" />
+  <div ref="containerRef"></div>
 </template>
 ```
 

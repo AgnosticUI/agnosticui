@@ -111,11 +111,13 @@ Add these classes to `app.css`. They reference `--ag-*` tokens directly — no o
 of any third-party stylesheet required.
 
 ```css
-/* TanStack panel table styles — no padding (ag-table.css handles it), no .ts-td (ag-table handles td) */
+/* TanStack panel th — combined with ag-table and gridjs headers in one shared rule in app.css:
+     .ag-table thead th, th.gridjs-th, .ts-th { ... }
+   No padding override (ag-table.css handles it). No .ts-td (ag-table handles td). */
 .ts-th {
   background-color: var(--ag-background-secondary);
   color: var(--ag-text-primary);
-  font-weight: 600;
+  font-weight: 500;
   border-bottom: 2px solid var(--ag-border);
   cursor: pointer;
   user-select: none;
@@ -152,16 +154,16 @@ of any third-party stylesheet required.
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--ag-spacing-1);
-  margin-top: var(--ag-spacing-2);
+  gap: var(--ag-space-2);
+  margin-top: var(--ag-space-4);
 }
 
 /* Toolbar above table */
 .panel-toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ag-spacing-1);
-  margin-bottom: var(--ag-spacing-2);
+  gap: var(--ag-space-2);
+  margin-bottom: var(--ag-space-4);
   align-items: flex-end;
 }
 .panel-toolbar-right {

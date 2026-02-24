@@ -79,7 +79,7 @@ re-render when the active panel changes.
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │  HEADER                                                      │
-│  [AgnosticUI logo]   Inventory Manager        [Avatar: AB]   │
+│  [AgnosticUI logo]              [☀/🌙]  [Avatar: AB]         │
 ├──────────────────────────────────────────────────────────────┤
 │  Breadcrumb: Home / Inventory                                │
 ├──────────────────────────────────────────────────────────────┤
@@ -96,6 +96,10 @@ re-render when the active panel changes.
 The "View as:" control is an AgnosticUI `SelectionButtonGroup` (or three small
 `Button` elements in a toggle group if SelectionButtonGroup is unavailable). It sits
 inline with the page `<h1>`, right-aligned, styled small and unobtrusive.
+
+A `<SkinSwitcher />` floating action button sits at the top of the shell, enabling
+skin switching. A `<button class="theme-toggle">` in the header's default slot toggles
+light/dark mode (Sun/Moon icon), updating `data-theme="dark"` on `<html>`.
 
 Only one panel is mounted at a time — do not render all three simultaneously.
 
@@ -240,7 +244,9 @@ npx agnosticui-cli add \
 ```ts
 import "./components/ag/styles/ag-tokens.css";
 import "./components/ag/styles/ag-tokens-dark.css";
-import "gridjs/dist/theme/mermaid.min.css"; /* must come before app.css */
+import "./components/ag/styles/skins-bundle.css";   /* skin palette variables */
+import "./components/ag/styles/skin-switcher.css";  /* FAB + panel layout     */
+import "gridjs/dist/theme/mermaid.min.css";          /* must come before app.css */
 import "./app.css";
 ```
 
@@ -268,38 +274,60 @@ import "./app.css";
 
 body {
   margin: 0;
-  font-family: "Inter", var(--ag-font-family-body, sans-serif);
-  background-color: var(--ag-body-bg);
-  color: var(--ag-body-color);
+  font-family: "Inter", sans-serif;
+  background-color: var(--ag-background-primary);
+  color: var(--ag-text-primary);
 }
 
 /* Shell layout */
 .app-main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--ag-spacing-3, 1.5rem);
+  padding: var(--ag-space-6, 1.5rem);
 }
 
 .page-title-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--ag-spacing-2, 1rem);
+  margin-bottom: var(--ag-space-4, 1rem);
   flex-wrap: wrap;
-  gap: var(--ag-spacing-1, 0.5rem);
+  gap: var(--ag-space-2, 0.5rem);
 }
 
 .page-title {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0;
-  color: var(--ag-body-color);
+  color: var(--ag-text-primary);
+}
+
+.view-as-row {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-2);
 }
 
 .view-as-label {
   font-size: 0.8rem;
-  color: var(--ag-gray-mid);
-  margin-right: var(--ag-spacing-1);
+  color: var(--ag-text-secondary);
+  white-space: nowrap;
+}
+
+/* Theme toggle button in header */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ag-text-secondary);
+  padding: var(--ag-space-2);
+  border-radius: var(--ag-radius-sm);
+  display: flex;
+  align-items: center;
+  margin-inline-end: var(--ag-space-2);
+}
+.theme-toggle:hover {
+  background: var(--ag-background-secondary);
 }
 
 /* Responsive: stack title-row on mobile */
@@ -312,24 +340,13 @@ body {
 
 /* Mobile card layout for table panels */
 @media (max-width: 767px) {
-  table,
-  thead,
-  tbody,
-  th,
-  td,
+  table, thead, tbody, th, td, tr { display: block; }
+  thead tr { position: absolute; top: -9999px; left: -9999px; }
   tr {
-    display: block;
-  }
-  thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-  tr {
-    margin-bottom: var(--ag-spacing-2, 1rem);
-    border: 1px solid var(--ag-gray-light);
-    border-radius: var(--ag-radius);
-    padding: var(--ag-spacing-1);
+    margin-bottom: var(--ag-space-4, 1rem);
+    border: 1px solid var(--ag-border);
+    border-radius: var(--ag-radius-md);
+    padding: var(--ag-space-2);
   }
   td {
     border: none;
@@ -341,15 +358,35 @@ body {
     content: attr(data-label);
     font-weight: 600;
     min-width: 90px;
-    color: var(--ag-gray-mid);
+    color: var(--ag-text-secondary);
   }
 }
 
 /* Tablet: hide Category column */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .col-category {
-    display: none;
-  }
+  .col-category { display: none; }
+}
+
+/* Shared header styles — same visual treatment across all three panels.
+   Comma selector beats mermaid's th.gridjs-th (0,1,1) via cascade order. */
+.ag-table thead th,
+th.gridjs-th,
+.ts-th {
+  padding: var(--ag-space-1) var(--ag-space-2);
+  background-color: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
+  font-weight: 500;
+  border: none;
+  border-bottom: 2px solid var(--ag-border);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.ag-table tbody td {
+  border-bottom: 1px solid var(--ag-border);
+}
+.ts-th:hover {
+  background-color: var(--ag-border);
 }
 
 /* Header content width — match app-main max-width */
@@ -370,13 +407,12 @@ body {
 Use `--ag-*` throughout. Common tokens:
 
 ```
---ag-body-bg          --ag-body-color       --ag-primary
---ag-gray-light       --ag-gray-mid         --ag-gray-extra-light
---ag-radius           --ag-spacing-1/2/3    --ag-font-family-body
---ag-body-font-size   --ag-focus-ring-color
---ag-table-header-bg  --ag-table-border-color
---ag-success-color    --ag-success-bg
---ag-warning-color    --ag-warning-bg
+--ag-background-primary   --ag-background-secondary  --ag-primary
+--ag-text-primary         --ag-text-secondary
+--ag-border               --ag-radius-md             --ag-radius-sm
+--ag-space-1/2/3/4/6      --ag-font-size-sm          --ag-font-size-base
+--ag-success-text         --ag-success-bg
+--ag-warning-text         --ag-warning-bg
 ```
 
 ### Button shape
@@ -464,7 +500,9 @@ work, and the shell remains stable during panel transitions.
 
 ### Shell (all 3 frameworks)
 
-- [ ] Header renders with logo and Avatar
+- [ ] Header renders with logo, theme toggle (☀/🌙), and Avatar
+- [ ] Header theme toggle switches `data-theme="dark"` on `<html>` and swaps icon
+- [ ] SkinSwitcher floating button is present and functional
 - [ ] Breadcrumb: Home / Inventory
 - [ ] Page h1 "Inventory" with "View as:" toggle right-aligned
 - [ ] Switching panels mounts/unmounts correctly — no simultaneous rendering
