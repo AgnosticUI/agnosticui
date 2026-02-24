@@ -1,5 +1,7 @@
 import './components/ag/styles/ag-tokens.css'
 import './components/ag/styles/ag-tokens-dark.css'
+import './components/ag/styles/skins-bundle.css'
+import './components/ag/styles/skin-switcher.css'
 import 'gridjs/dist/theme/mermaid.min.css'
 import './app.css'
 import './inventory-app'

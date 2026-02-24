@@ -4,6 +4,7 @@ import { ReactBreadcrumb } from './components/ag/Breadcrumb/react/ReactBreadcrum
 import { ReactAvatar } from './components/ag/Avatar/react/ReactAvatar'
 import { ReactSelectionButtonGroup } from './components/ag/SelectionButtonGroup/react/ReactSelectionButtonGroup'
 import { ReactSelectionButton } from './components/ag/SelectionButton/react/ReactSelectionButton'
+import { SkinSwitcher } from './SkinSwitcher'
 import { products } from './data/products'
 import { SimplePanel } from './panels/SimplePanel'
 import { GridJsPanel } from './panels/GridJsPanel'
@@ -25,6 +26,7 @@ export default function App() {
 
   return (
     <>
+      <SkinSwitcher />
       <ReactHeader contentJustify="between">
         <span slot="logo" style={{ fontWeight: 700, fontSize: '1.125rem', color: 'var(--ag-primary)' }}>
           AgnosticUI

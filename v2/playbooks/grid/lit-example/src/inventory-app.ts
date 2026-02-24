@@ -8,6 +8,7 @@ import './components/ag/SelectionButton/core/SelectionButton'
 import './panels/simple-panel'
 import './panels/gridjs-panel'
 import './panels/tanstack-panel'
+import './skin-switcher'
 import { products } from './data/products'
 import type { BreadcrumbItem } from './components/ag/Breadcrumb/core/Breadcrumb'
 import type { SelectionButtonChangeEventDetail } from './components/ag/SelectionButtonGroup/core/SelectionButtonGroup'
@@ -32,6 +33,7 @@ export class InventoryApp extends LitElement {
 
   override render() {
     return html`
+      <skin-switcher></skin-switcher>
       <ag-header content-justify="between">
         <span slot="logo" style="font-weight:700;font-size:1.125rem;color:var(--ag-primary)">AgnosticUI</span>
         <ag-avatar text="AB" variant="info"></ag-avatar>

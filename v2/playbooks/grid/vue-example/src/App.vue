@@ -6,6 +6,7 @@ import VueAvatar from './components/ag/Avatar/vue/VueAvatar.vue'
 import VueSelectionButtonGroup from './components/ag/SelectionButtonGroup/vue/VueSelectionButtonGroup.vue'
 import VueSelectionButton from './components/ag/SelectionButton/vue/VueSelectionButton.vue'
 import type { SelectionButtonChangeEventDetail } from './components/ag/SelectionButtonGroup/core/SelectionButtonGroup'
+import SkinSwitcher from './SkinSwitcher.vue'
 import { products } from './data/products'
 import SimplePanel from './panels/SimplePanel.vue'
 import GridJsPanel from './panels/GridJsPanel.vue'
@@ -26,6 +27,7 @@ function handlePanelChange(detail: SelectionButtonChangeEventDetail) {
 </script>
 
 <template>
+  <SkinSwitcher />
   <VueHeader content-justify="between">
     <template #logo>
       <span style="font-weight: 700; font-size: 1.125rem; color: var(--ag-primary)">AgnosticUI</span>
