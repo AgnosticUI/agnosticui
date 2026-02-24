@@ -231,6 +231,7 @@ td.gridjs-td {
   border-radius: var(--ag-radius-sm);
   display: flex;
   align-items: center;
+  margin-inline-end: var(--ag-space-2);
 }
 .theme-toggle:hover {
   background: var(--ag-background-secondary);
