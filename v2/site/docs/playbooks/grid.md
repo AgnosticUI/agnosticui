@@ -18,27 +18,27 @@ Open any framework example directly in StackBlitz:
 
 <div class="playbook-screenshots mbs6 mbe6">
   <div class="playbook-screenshot-item">
-    <img src="/playbooks/grid/iphone.png" alt="Mobile layout" class="playbook-screenshot" />
+    <img src="/playbooks/grid/design/iphone.png" alt="Mobile layout" class="playbook-screenshot" />
     <p class="playbook-caption">Mobile</p>
   </div>
   <div class="playbook-screenshot-item">
-    <img src="/playbooks/grid/iphone_dark.png" alt="Mobile dark mode layout" class="playbook-screenshot" />
+    <img src="/playbooks/grid/design/iphone_dark.png" alt="Mobile dark mode layout" class="playbook-screenshot" />
     <p class="playbook-caption">Mobile - Dark</p>
   </div>
   <div class="playbook-screenshot-item">
-    <img src="/playbooks/grid/tablet.png" alt="Tablet layout" class="playbook-screenshot" />
+    <img src="/playbooks/grid/design/tablet.png" alt="Tablet layout" class="playbook-screenshot" />
     <p class="playbook-caption">Tablet</p>
   </div>
   <div class="playbook-screenshot-item">
-    <img src="/playbooks/grid/tablet_dark.png" alt="Tablet dark mode layout" class="playbook-screenshot" />
+    <img src="/playbooks/grid/design/tablet_dark.png" alt="Tablet dark mode layout" class="playbook-screenshot" />
     <p class="playbook-caption">Tablet - Dark</p>
   </div>
   <div class="playbook-screenshot-item">
-    <img src="/playbooks/grid/desktop.png" alt="Desktop layout" class="playbook-screenshot" />
+    <img src="/playbooks/grid/design/desktop.png" alt="Desktop layout" class="playbook-screenshot" />
     <p class="playbook-caption">Desktop</p>
   </div>
   <div class="playbook-screenshot-item">
-    <img src="/playbooks/grid/desktop_dark.png" alt="Desktop dark mode layout" class="playbook-screenshot" />
+    <img src="/playbooks/grid/design/desktop_dark.png" alt="Desktop dark mode layout" class="playbook-screenshot" />
     <p class="playbook-caption">Desktop - Dark</p>
   </div>
 </div>
@@ -59,13 +59,13 @@ While these prompts have been tested using the Claude Code CLI (running Claude S
 - **Simple Panel**: AgnosticUI Table with search, column sort, status Tags, edit Toast, EmptyState, and Pagination
 - **Grid.js Panel**: Drop-in grid with built-in search, sort, and pagination — bridged to `--ag-*` tokens via targeted CSS overrides
 - **TanStack Panel**: Headless table with global search, column filters, multi-sort, column visibility Menu, row selection, bulk delete Dialog, page-size Select, and Pagination
-- [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/grid/PROMPT-3-FRAMEWORKS.md): Feed directly to your LLM for AI‑assisted customization
+- [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/grid/design/PROMPT-3-FRAMEWORKS.md): Feed directly to your LLM for AI‑assisted customization
 
 ## Using with an LLM
 
-The [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/grid/PROMPT-3-FRAMEWORKS.md) file contains everything an AI assistant needs to understand and modify the grid:
+The [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/grid/design/PROMPT-3-FRAMEWORKS.md) file contains everything an AI assistant needs to understand and modify the grid:
 
-1. Copy the [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/grid/PROMPT-3-FRAMEWORKS.md) contents
+1. Copy the [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/grid/design/PROMPT-3-FRAMEWORKS.md) contents
 2. Paste into Claude, ChatGPT, or your preferred LLM
 3. Ask for customizations: "Add a bulk export button that downloads selected rows as CSV"
 
