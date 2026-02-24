@@ -1,6 +1,6 @@
 # Data Grid
 
-A realistic e‑commerce inventory admin screen with three swappable grid implementations — AgnosticUI Table, Grid.js, and TanStack Table — across React, Vue, and Lit.
+A realistic e‑commerce inventory admin screen with three swappable grid implementations: AgnosticUI Table, Grid.js, and TanStack Table — across React, Vue, and Lit.
 
 <script setup>
 import PlaybookStackBlitz from '../.vitepress/theme/components/PlaybookStackBlitz.vue'
