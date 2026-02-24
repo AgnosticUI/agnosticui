@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Sun, Moon } from 'lucide-vue-next'
 import VueHeader from './components/ag/Header/vue/VueHeader.vue'
 import VueBreadcrumb from './components/ag/Breadcrumb/vue/VueBreadcrumb.vue'
 import VueAvatar from './components/ag/Avatar/vue/VueAvatar.vue'
@@ -15,6 +16,14 @@ import TanstackPanel from './panels/TanstackPanel.vue'
 type PanelView = 'simple' | 'gridjs' | 'tanstack'
 
 const activePanel = ref<PanelView>('simple')
+const isDark = ref(document.documentElement.getAttribute('data-theme') === 'dark')
+
+function toggleTheme() {
+  const html = document.documentElement
+  const dark = html.getAttribute('data-theme') === 'dark'
+  if (dark) { html.removeAttribute('data-theme'); isDark.value = false }
+  else { html.setAttribute('data-theme', 'dark'); isDark.value = true }
+}
 
 const breadcrumbItems = [
   { label: 'Home', href: '/' },
@@ -32,6 +41,10 @@ function handlePanelChange(detail: SelectionButtonChangeEventDetail) {
     <template #logo>
       <span style="font-weight: 700; font-size: 1.125rem; color: var(--ag-primary)">AgnosticUI</span>
     </template>
+    <button class="theme-toggle" aria-label="Toggle theme" @click="toggleTheme">
+      <Sun v-if="isDark" :size="18" />
+      <Moon v-else :size="18" />
+    </button>
     <VueAvatar text="AB" variant="info" />
   </VueHeader>
 

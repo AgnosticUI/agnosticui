@@ -221,6 +221,21 @@ td.gridjs-td {
   margin-bottom: var(--ag-space-3);
 }
 
+/* Theme toggle button in header */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ag-text-secondary);
+  padding: var(--ag-space-2);
+  border-radius: var(--ag-radius-sm);
+  display: flex;
+  align-items: center;
+}
+.theme-toggle:hover {
+  background: var(--ag-background-secondary);
+}
+
 /* Header content width — match app-main max-width */
 /* !important needed: external ::part() specificity (0,0,1) loses to internal shadow .header-content (0,1,0) */
 @media (min-width: 960px) {

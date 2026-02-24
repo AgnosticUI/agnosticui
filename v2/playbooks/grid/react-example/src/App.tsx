@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Sun, Moon } from 'lucide-react'
 import { ReactHeader } from './components/ag/Header/react/ReactHeader'
 import { ReactBreadcrumb } from './components/ag/Breadcrumb/react/ReactBreadcrumb'
 import { ReactAvatar } from './components/ag/Avatar/react/ReactAvatar'
@@ -14,6 +15,16 @@ type PanelView = 'simple' | 'gridjs' | 'tanstack'
 
 export default function App() {
   const [activePanel, setActivePanel] = useState<PanelView>('simple')
+  const [isDark, setIsDark] = useState(
+    () => document.documentElement.getAttribute('data-theme') === 'dark'
+  )
+
+  function toggleTheme() {
+    const html = document.documentElement
+    const dark = html.getAttribute('data-theme') === 'dark'
+    if (dark) { html.removeAttribute('data-theme'); setIsDark(false) }
+    else { html.setAttribute('data-theme', 'dark'); setIsDark(true) }
+  }
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -31,6 +42,9 @@ export default function App() {
         <span slot="logo" style={{ fontWeight: 700, fontSize: '1.125rem', color: 'var(--ag-primary)' }}>
           AgnosticUI
         </span>
+        <button className="theme-toggle" aria-label="Toggle theme" onClick={toggleTheme}>
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
         <ReactAvatar text="AB" variant="info" />
       </ReactHeader>
 

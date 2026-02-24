@@ -1,5 +1,8 @@
 import { LitElement, html, css } from 'lit'
 import { state } from 'lit/decorators.js'
+
+const sunIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`
+const moonIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`
 import './components/ag/Header/core/Header'
 import './components/ag/Breadcrumb/core/Breadcrumb'
 import './components/ag/Avatar/core/Avatar'
@@ -20,6 +23,14 @@ export class InventoryApp extends LitElement {
   override createRenderRoot() { return this }
 
   @state() private activePanel: PanelView = 'simple'
+  @state() private _isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+
+  private _toggleTheme() {
+    const html = document.documentElement
+    const dark = html.getAttribute('data-theme') === 'dark'
+    if (dark) { html.removeAttribute('data-theme'); this._isDark = false }
+    else { html.setAttribute('data-theme', 'dark'); this._isDark = true }
+  }
 
   private readonly breadcrumbItems: BreadcrumbItem[] = [
     { label: 'Home', href: '/' },
@@ -36,6 +47,9 @@ export class InventoryApp extends LitElement {
       <skin-switcher></skin-switcher>
       <ag-header content-justify="between">
         <span slot="logo" style="font-weight:700;font-size:1.125rem;color:var(--ag-primary)">AgnosticUI</span>
+        <button class="theme-toggle" aria-label="Toggle theme" @click=${() => this._toggleTheme()}>
+          ${this._isDark ? sunIcon : moonIcon}
+        </button>
         <ag-avatar text="AB" variant="info"></ag-avatar>
       </ag-header>
 
