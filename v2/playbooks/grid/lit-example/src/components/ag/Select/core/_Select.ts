@@ -162,7 +162,7 @@ export class Select extends LitElement implements SelectProps {
       /* Base styling */
       padding: var(--ag-space-2) var(--ag-space-8) var(--ag-space-2) var(--ag-space-3);
       -moz-padding-start: calc(var(--ag-space-3) - 3px);
-      font-size: var(--ag-font-size-base);
+      font-size: var(--ag-font-size-sm);
       font-weight: 400;
       line-height: 1.5;
       font-family: inherit;
@@ -212,7 +212,7 @@ export class Select extends LitElement implements SelectProps {
       padding-block-start: var(--ag-space-1);
       padding-block-end: var(--ag-space-1);
       padding-inline-start: var(--ag-space-2);
-      font-size: var(--ag-font-size-small);
+      font-size: var(--ag-font-size-sm);
     }
 
     /* Large size variant */

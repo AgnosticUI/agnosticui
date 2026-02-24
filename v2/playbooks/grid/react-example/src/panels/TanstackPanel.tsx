@@ -12,7 +12,7 @@ import {
   type VisibilityState,
   type RowSelectionState,
 } from '@tanstack/react-table'
-import { Pencil, ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-react'
+import { Pencil, ChevronUp, ChevronDown } from 'lucide-react'
 import { ReactButton } from '../components/ag/Button/react/ReactButton'
 import { ReactIconButton } from '../components/ag/IconButton/react/ReactIconButton'
 import { ReactInput } from '../components/ag/Input/react/ReactInput'
@@ -274,7 +274,7 @@ export function TanstackPanel({ products: initialProducts }: { products: Product
                         {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                         {canSort && (
                           <span className="sort-icon">
-                            {sorted === 'asc' ? <ChevronUp size={14} /> : sorted === 'desc' ? <ChevronDown size={14} /> : <ChevronsUpDown size={12} />}
+                            {sorted === 'asc' ? <ChevronUp size={14} /> : sorted === 'desc' ? <ChevronDown size={14} /> : null}
                           </span>
                         )}
                         {sorted && sorting.length > 1 && (

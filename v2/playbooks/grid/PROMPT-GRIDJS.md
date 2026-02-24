@@ -93,25 +93,35 @@ import './app.css'                            // --ag-* bridge overrides come af
 
 Bridge rules (place in `app.css`):
 ```css
+/* No border/border-radius/box-shadow — horizontal-only row dividers */
 .gridjs-wrapper {
-  border: 1px solid var(--ag-gray-light);
-  border-radius: var(--ag-radius);
-  font-family: var(--ag-font-family-body);
-  font-size: var(--ag-body-font-size);
-  color: var(--ag-body-color);
+  font-family: "Inter", sans-serif;
+  font-size: var(--ag-font-size-base);
+  color: var(--ag-text-primary);
+  box-shadow: none;
 }
 .gridjs-table {
-  background-color: var(--ag-body-bg);
+  background-color: var(--ag-background-primary);
 }
-.gridjs-th {
-  background-color: var(--ag-table-header-bg, var(--ag-gray-extra-light));
-  color: var(--ag-body-color);
-  border-bottom: 2px solid var(--ag-gray-light);
+/* th/td.gridjs-* selectors needed to beat mermaid's th.gridjs-th / td.gridjs-td specificity (0,1,1) */
+th.gridjs-th {
+  background-color: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
+  font-weight: 600;
+  border: none;
+  border-bottom: 2px solid var(--ag-border);
+  padding: var(--ag-space-3) var(--ag-space-4);
 }
-.gridjs-td {
-  border-bottom: 1px solid var(--ag-gray-light);
-  background-color: var(--ag-body-bg);
+td.gridjs-td {
+  border: none;
+  border-bottom: 1px solid var(--ag-border);
+  padding: var(--ag-space-3) var(--ag-space-4);
+  background-color: var(--ag-background-primary);
 }
+/* Hide orphaned footer shell (pagination is replaced by ag-pagination) */
+.gridjs-footer { display: none; }
+/* Hide built-in Grid.js search (replaced by ag-input) */
+.gridjs-search { display: none; }
 .gridjs-search-input {
   border: 1px solid var(--ag-gray-light);
   border-radius: var(--ag-radius);

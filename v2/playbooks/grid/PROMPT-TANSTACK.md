@@ -111,28 +111,18 @@ Add these classes to `app.css`. They reference `--ag-*` tokens directly — no o
 of any third-party stylesheet required.
 
 ```css
-/* TanStack panel table styles */
+/* TanStack panel table styles — no padding (ag-table.css handles it), no .ts-td (ag-table handles td) */
 .ts-th {
-  background-color: var(--ag-table-header-bg, var(--ag-gray-extra-light));
-  color: var(--ag-body-color);
+  background-color: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
   font-weight: 600;
-  border-bottom: 2px solid var(--ag-table-border-color, var(--ag-gray-light));
-  padding: 0.625rem 1rem;
+  border-bottom: 2px solid var(--ag-border);
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
 }
 .ts-th:hover {
-  background-color: var(--ag-gray-light);
-}
-.ts-td {
-  border-bottom: 1px solid var(--ag-table-border-color, var(--ag-gray-light));
-  padding: 0.625rem 1rem;
-  color: var(--ag-body-color);
-  background-color: var(--ag-body-bg);
-}
-tr:last-child .ts-td {
-  border-bottom: none;
+  background-color: var(--ag-border);
 }
 
 /* Sort indicators */
@@ -320,8 +310,8 @@ When `products` property changes (e.g. after a delete), recreate the table or ca
 
 ## Icons
 
-- **React:** `import { Pencil, ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-react'`
-- **Vue:** `import { Pencil, ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-vue-next'`
+- **React:** `import { Pencil, ChevronUp, ChevronDown } from 'lucide-react'`
+- **Vue:** `import { Pencil, ChevronUp, ChevronDown } from 'lucide-vue-next'`
 - **Lit:** Inline SVG only.
 
 ---

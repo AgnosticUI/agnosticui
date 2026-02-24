@@ -13,7 +13,7 @@ import {
   type VisibilityState,
   type RowSelectionState,
 } from '@tanstack/vue-table'
-import { Pencil, ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-vue-next'
+import { Pencil, ChevronUp, ChevronDown } from 'lucide-vue-next'
 import VueButton from '../components/ag/Button/vue/VueButton.vue'
 import VueIconButton from '../components/ag/IconButton/vue/VueIconButton.vue'
 import VueInput from '../components/ag/Input/vue/VueInput.vue'
@@ -253,10 +253,9 @@ function handleDeleteConfirm() {
                   :render="header.column.columnDef.header"
                   :props="header.getContext()"
                 />
-                <span v-if="header.column.getCanSort()" class="sort-icon">
+                <span v-if="header.column.getCanSort() && header.column.getIsSorted()" class="sort-icon">
                   <ChevronUp v-if="header.column.getIsSorted() === 'asc'" :size="14" />
-                  <ChevronDown v-else-if="header.column.getIsSorted() === 'desc'" :size="14" />
-                  <ChevronsUpDown v-else :size="12" />
+                  <ChevronDown v-else :size="14" />
                 </span>
                 <span
                   v-if="header.column.getIsSorted() && sorting.length > 1"

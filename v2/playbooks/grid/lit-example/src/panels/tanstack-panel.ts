@@ -37,7 +37,6 @@ const pencilIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
 
 const chevronUp = html`<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>`
 const chevronDown = html`<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`
-const chevronsUpDown = html`<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="17 11 12 6 7 11"/><polyline points="7 13 12 18 17 13"/></svg>`
 
 const HIDEABLE_COLS = ['category', 'price', 'stock', 'status']
 
@@ -289,7 +288,7 @@ export class TanstackPanel extends LitElement {
                           ` : html`
                             ${header.column.columnDef.header as string || ''}
                             ${canSort ? html`<span class="sort-icon">
-                              ${sorted === 'asc' ? chevronUp : sorted === 'desc' ? chevronDown : chevronsUpDown}
+                              ${sorted === 'asc' ? chevronUp : sorted === 'desc' ? chevronDown : nothing}
                             </span>` : nothing}
                             ${sorted && this.sorting.length > 1 ? html`
                               <span class="sort-order">${sortIdx + 1}</span>

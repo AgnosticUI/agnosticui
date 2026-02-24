@@ -101,24 +101,38 @@ body {
 .status-cell--low-stock    { color: var(--ag-warning-text); font-weight: 500; }
 .status-cell--discontinued { color: var(--ag-text-secondary); font-weight: 500; }
 
+/* Shared header styles — same visual treatment across all three panels */
+.ag-table thead th,
+th.gridjs-th,
+.ts-th {
+  padding: var(--ag-space-1) var(--ag-space-2);
+  background-color: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
+  font-weight: 500;
+  border: none;
+  border-bottom: 2px solid var(--ag-border);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.ag-table tbody td {
+  border-bottom: 1px solid var(--ag-border);
+}
+
 /* Grid.js --ag-* token bridge */
 .gridjs-wrapper {
-  border: 1px solid var(--ag-border);
-  border-radius: var(--ag-radius-md);
   font-family: "Inter", sans-serif;
   font-size: var(--ag-font-size-base);
   color: var(--ag-text-primary);
+  box-shadow: none;
 }
 .gridjs-table {
   background-color: var(--ag-background-primary);
 }
-.gridjs-th {
-  background-color: var(--ag-background-secondary);
-  color: var(--ag-text-primary);
-  border-bottom: 2px solid var(--ag-border);
-}
-.gridjs-td {
+td.gridjs-td {
+  border: none;
   border-bottom: 1px solid var(--ag-border);
+  padding: var(--ag-space-3) var(--ag-space-4);
   background-color: var(--ag-background-primary);
 }
 .gridjs-search-input {
@@ -141,29 +155,11 @@ body {
 .gridjs-pagination { display: none; }
 /* Grid.js native search is replaced by ag-input; hide the built-in one */
 .gridjs-search { display: none; }
+.gridjs-footer { display: none; }
 
-/* TanStack panel table styles */
-.ts-th {
-  background-color: var(--ag-background-secondary);
-  color: var(--ag-text-primary);
-  font-weight: 600;
-  border-bottom: 2px solid var(--ag-border-subtle);
-  padding: 0.625rem 1rem;
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-}
+/* TanStack sort hover */
 .ts-th:hover {
   background-color: var(--ag-border);
-}
-.ts-td {
-  border-bottom: 1px solid var(--ag-border-subtle);
-  padding: 0.625rem 1rem;
-  color: var(--ag-text-primary);
-  background-color: var(--ag-background-primary);
-}
-tr:last-child .ts-td {
-  border-bottom: none;
 }
 
 /* Sort indicators */
