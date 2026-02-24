@@ -66,18 +66,20 @@ AgnosticUI `Table` is CSS-only and `--ag-*` native. Tokens that drive its appear
 
 ```css
 /* These are already wired in table.css — no overrides needed */
---ag-font-family-body       /* cell font                  */
---ag-body-font-size         /* base size                  */
---ag-body-color             /* cell text                  */
---ag-body-bg                /* cell and page background   */
---ag-table-header-bg        /* <th> background            */
---ag-table-border-color     /* cell borders               */
---ag-table-stripe-bg        /* alternate row              */
---ag-table-hover-bg         /* row hover                  */
+--ag-font-size-base         /* cell font size             */
+--ag-text-primary           /* cell and header text       */
+--ag-background-primary     /* cell and row background    */
+--ag-background-secondary   /* <thead th> background      */
+--ag-border-subtle          /* td bottom border           */
+--ag-border                 /* tfoot top border           */
+--ag-border-width-1         /* standard border width      */
+--ag-border-width-2         /* strong border width        */
+--ag-space-3 / --ag-space-4 /* th/td padding              */
+--ag-motion-fast            /* row hover transition       */
 
 /* Tag variants (Status column) */
---ag-success-color / --ag-success-bg
---ag-warning-color / --ag-warning-bg
+--ag-success-text / --ag-success-bg
+--ag-warning-text / --ag-warning-bg
 ```
 
 Add a comment in the source:
