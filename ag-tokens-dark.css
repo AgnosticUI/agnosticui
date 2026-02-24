@@ -96,6 +96,10 @@
   --ag-warning-text: #f2cc60;
   --ag-danger-background: #490202;
   --ag-danger-text: #ffc1ba;
+  --ag-primary-fg: #ffffff;
+  --ag-success-fg: #ffffff;
+  --ag-warning-fg: #0D1117;
+  --ag-danger-fg: #ffffff;
   --ag-border: #3D444D;
   --ag-border-subtle: #656C76;
   --ag-primary: #1158c7;
