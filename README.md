@@ -26,7 +26,7 @@
 
 ## The problem with most component libraries
 
-Your AI tools can't see their source — so they hallucinate props, invent APIs, and generate code that looks right but isn't. AgnosticUI works differently, enabling **prompt-driven, agent-friendly workflows**.
+Your AI tools can't see their source. So, they hallucinate props, invent APIs, and generate code that looks right but isn't. AgnosticUI works differently, enabling **prompt-driven, agent-friendly workflows**.
 
 ---
 
@@ -36,12 +36,11 @@ Your AI tools can't see their source — so they hallucinate props, invent APIs,
 cd your-project
 npx agnosticui-cli init --framework vue  # or react, lit, svelte
 npx agnosticui-cli add Button Card Input
-
-
-The component source lands **directly in your project** — readable, editable, yours.
-
 ```
 
+The component source lands **directly in your project**. Readable, editable, and yours.
+
+```shell
 src/
 components/
 ag/
@@ -49,10 +48,9 @@ Button/
 Button.vue ← your file now
 Button.css ← your tokens now
 Button.test.ts ← your tests now
+```
 
-````
-
-Components land under `src/components/ag/` by default — a dedicated namespace that keeps AgnosticUI components separate from your own. Configurable if you prefer otherwise.
+Components land under `src/components/ag/` by default: a dedicated namespace that keeps AgnosticUI components separate from your own. Configurable if you prefer otherwise.
 
 ### 🤖 AI-Native by Design
 
@@ -62,9 +60,9 @@ Because the code is local, it solves the "Black Box" problem of traditional libr
 
 Every tool sees the **raw source**. This creates a high-fidelity environment for **Generative UI** and **Agent-driven interfaces**:
 
-*   **Reduce Hallucination:** No more "invented" props or APIs. Since the LLM reads local files like any other code, it knows exactly what is possible.
-*   **Better Token Efficiency:** Using semantic HTML and standard CSS provides "clean context." Agents spend fewer tokens to understand the UI, leading to faster, more accurate generations.
-*   **Agent Skills:** Treat [AgnosticUI Playbooks](https://www.agnosticui.com/playbooks/login.html) as pre-defined skills. Use them to prompt an agent to scaffold complex, accessible workflows (Login, Onboarding, Discovery Dashboard, Support Center,  Data Grids) using the local components it already "sees."
+- **Reduce Hallucination:** No more "invented" props or APIs. Since the LLM reads local files like any other code, it knows exactly what is possible.
+- **Better Token Efficiency:** Using semantic HTML and standard CSS provides "clean context." Agents spend fewer tokens to understand the UI, leading to faster, more accurate generations.
+- **Agent Skills:** Treat [AgnosticUI Playbooks](https://www.agnosticui.com/playbooks/login.html) as pre-defined skills. Use them to prompt an agent to scaffold complex, accessible workflows (Login, Onboarding, Discovery Dashboard, Support Center, Data Grids) using the local components it already "sees."
 
 This is the architecture for the next era of development: **context-aware, framework-agnostic, and AI-ready.**
 
@@ -129,7 +127,7 @@ AgnosticUI components expose their entire visual surface through CSS custom prop
 @import "./components/ag/styles/ag-tokens-dark.css";
 @import "./components/ag/styles/brutalist-light.css";
 @import "./components/ag/styles/brutalist-dark.css";
-````
+```
 
 Hand it to a designer. Get back a token file. Import it. Done.
 
