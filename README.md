@@ -5,7 +5,11 @@
   </picture>
 </p>
 
+<<<<<<< HEAD
 <p align="center">Built on Lit Web Components &nbsp;·&nbsp; Copy the source &nbsp;·&nbsp; Own the code &nbsp;·&nbsp; Works with AI tools, agent-driven UIs, and prompt-ready workflows</p>
+=======
+<p align="center">Copy the source &nbsp;·&nbsp; Own the code &nbsp;·&nbsp; Framework-agnostic &nbsp;·&nbsp; Built for humans and AI agents</p>
+>>>>>>> f1d5f0913 (README clarifications)
 
 <p align="center">
   <strong>One component library. Every framework.</strong>
@@ -24,9 +28,19 @@
 
 ---
 
-## The problem with most component libraries
+## Source-first architecture
 
+<<<<<<< HEAD
 Your AI tools can't see their source. So, they hallucinate props, invent APIs, and generate code that looks right but isn't. AgnosticUI works differently, enabling **prompt-driven, agent-friendly workflows**.
+=======
+AgnosticUI components are copied into your project at install time.
+
+They live in your repo (not hidden inside `node_modules`):
+
+- Full control over the source
+- Native integration with your framework
+- AI-readable, high-fidelity context
+>>>>>>> f1d5f0913 (README clarifications)
 
 ---
 
@@ -82,6 +96,7 @@ AgnosticUI's components are authored as **Lit Web Components**, a standards-base
 Your design system doesn't fork when your tech stack does. Supports **agent-generated UI workflows directly from Playbooks**.
 
 ...
+<<<<<<< HEAD
 
 |                                      | AgnosticUI        | Typical component library |
 | ------------------------------------ | ----------------- | ------------------------- |
@@ -91,6 +106,16 @@ Your design system doesn't fork when your tech stack does. Supports **agent-gene
 | AI & agent-driven Playbooks included | ✅                | ❌                        |
 | Multiple theme skins                 | ✅                | Limited                   |
 | Zero runtime dependency              | ✅ after ejection | ❌                        |
+=======
+| | AgnosticUI | Typical component library |
+|---|---|---|
+| Source in your repo | ✅ | ❌ |
+| Framework-agnostic core | ✅ | ❌ |
+| LLM-readable locally | ✅ | ❌ |
+| AI Playbooks included | ✅ | ❌ |
+| Multiple theme skins | ✅ | Limited |
+| Zero runtime dependency | ✅ after ejection | ❌ |
+>>>>>>> f1d5f0913 (README clarifications)
 
 ---
 
@@ -111,7 +136,11 @@ Each Playbook on the docs site includes live StackBlitz examples for React, Vue,
 - **`PROMPT-3-FRAMEWORKS.md`**: one prompt to generate the pattern across all three frameworks
 - **Skin switcher** to preview your theme tokens instantly
 
+<<<<<<< HEAD
 **Fully prompt-ready for agent-driven UI generation**. Drop a Playbook prompt into Cursor or Claude Code and watch it assemble `Input`, `Button`, `Card`, and `FormGroup` correctly on the first try.
+=======
+Drop a Playbook prompt into Cursor, Claude Code, or Copilot and watch it assemble `Input`, `Button`, `Card`, and `FormGroup` correctly on the first try — because it has the full recipe, not just a component reference.
+>>>>>>> f1d5f0913 (README clarifications)
 
 The prompts are yours to adapt. Feed one to your LLM as a crash course in AgnosticUI's patterns, fork it for your own stack, or use it as a blueprint for writing Playbooks around your own UI patterns.
 
@@ -173,7 +202,16 @@ After running `add`, your terminal prints the exact import path for your project
 
 ## Accessibility first, not last
 
+<<<<<<< HEAD
 Every component ships with correct ARIA roles, keyboard navigation, focus management, reduced motion support, and AA-validated color contrast.
+=======
+- Semantic HTML
+- WAI-ARIA patterns validated
+- Keyboard navigation across all interactive components
+- AA-validated color contrast
+- Reduced motion support
+- Focus management built in
+>>>>>>> f1d5f0913 (README clarifications)
 
 ---
 
