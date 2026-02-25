@@ -10,6 +10,7 @@ Playbooks are complete, working example applications that demonstrate AgnosticUI
 | [Onboarding](onboarding/) | Alert, Button, Icon, SelectionButton, SelectionCard, Timeline | New user setup wizard |
 | [Dashboard](dashboard/) | Accordion, Alert, Avatar, Badge, Breadcrumb, Button, Card, Divider, EmptyState, Flex, Header, IconButton, Progress, Sidebar, SkeletonLoader, Tabs, Tag, Toast | User's home screen |
 | [Support](support/) | Button, Combobox, Dialog, Drawer, Kbd, Menu, MessageBubble, Pagination, Popover, Radio, Rating, Select, Slider, Tabs, Toggle, Tooltip | User needs help |
+| [Form Association](form-association/) | Button, Card, Divider, Input | Contact form demonstrating FACE — native FormData, form.reset(), constraint validation |
 
 ## Directory Structure
 
@@ -19,7 +20,8 @@ v2/playbooks/
 ├── login/                     # Login form playbook
 ├── onboarding/                # Onboarding wizard playbook
 ├── dashboard/                 # Discovery dashboard playbook
-└── support/                   # Support center playbook
+├── support/                   # Support center playbook
+└── form-association/          # FACE contact form playbook (PROMPT files only)
     │
     │ # PROMPTS (input — run these with Claude or another LLM)
     ├── PROMPT-3-FRAMEWORKS.md # Builds all 3 frameworks → react-example/, vue-example/, lit-example/
