@@ -92,6 +92,21 @@ export interface PlaybookConfig {
     vue?: string[]
     lit?: string[]
   }
+  /**
+   * Override the GitHub subdirectory used when fetching files.
+   * Defaults to the playbook key (e.g. "login"). Use when example
+   * directories live under a different parent (e.g. "login" for login-v2).
+   */
+  basePath?: string
+  /**
+   * Override the per-framework example directory name.
+   * Defaults to `${framework}-example`. Use for variants like "react-example-v2".
+   */
+  frameworkDirs?: {
+    react?: string
+    vue?: string
+    lit?: string
+  }
   /** Binary files that need URL replacement (local path -> raw GitHub URL) */
   binaryFiles?: Record<string, string>
   /** Files outside the example directory (StackBlitz dest path -> raw GitHub URL) */
@@ -560,6 +575,81 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
     },
     binaryFiles: {
       '/login-bg.jpg': `${GITHUB_RAW_BASE}/login/react-example/public/login-bg.jpg`,
+    },
+    externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
+  },
+  'login-v2': {
+    title: 'Login Variant II',
+    basePath: 'login',
+    frameworkDirs: {
+      react: 'react-example-v2',
+      vue: 'vue-example-v2',
+      lit: 'lit-example-v2',
+    },
+    frameworks: {
+      react: [
+        // Config files
+        'index.html',
+        'package.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.app.json',
+        'tsconfig.node.json',
+        'eslint.config.js',
+        // Public assets
+        'public/facebook-icon.svg',
+        'public/google-icon.svg',
+        'public/logo.svg',
+        'public/logo-dark-mode.svg',
+        // App files
+        'src/App.tsx',
+        'src/SkinSwitcher.tsx',
+        'src/index.css',
+        'src/main.tsx',
+        // Component files
+        ...SHARED_CORE_FILES,
+        ...REACT_WRAPPER_FILES,
+      ],
+      vue: [
+        // Config files
+        'index.html',
+        'package.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.app.json',
+        'tsconfig.node.json',
+        // Public assets
+        'public/facebook-icon.svg',
+        'public/google-icon.svg',
+        'public/logo.svg',
+        'public/logo-dark-mode.svg',
+        // App files
+        'src/App.vue',
+        'src/SkinSwitcher.vue',
+        'src/style.css',
+        'src/main.ts',
+        // Component files
+        ...SHARED_CORE_FILES,
+        ...VUE_WRAPPER_FILES,
+      ],
+      lit: [
+        // Config files
+        'index.html',
+        'package.json',
+        'tsconfig.json',
+        // Public assets
+        'public/facebook-icon.svg',
+        'public/google-icon.svg',
+        'public/logo.svg',
+        'public/logo-dark-mode.svg',
+        // App files
+        'src/index.css',
+        'src/login-page.ts',
+        'src/skin-switcher.ts',
+        // Component files (Lit uses core directly, no wrappers)
+        ...SHARED_CORE_FILES,
+      ],
     },
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
     contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,

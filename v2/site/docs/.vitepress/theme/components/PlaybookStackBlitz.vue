@@ -57,8 +57,8 @@ export default {
         .map(fw => ({ id: fw, label: FRAMEWORK_LABELS[fw] || fw }))
     })
 
-    async function fetchFile(filePath) {
-      const url = `${GITHUB_RAW_BASE}/${props.playbook}/${filePath}`
+    async function fetchFile(basePath, filePath) {
+      const url = `${GITHUB_RAW_BASE}/${basePath}/${filePath}`
       const response = await fetch(url)
       if (!response.ok) {
         throw new Error(`Failed to fetch ${filePath}: ${response.status}`)
@@ -81,11 +81,14 @@ export default {
       loading.value = framework
       error.value = null
 
+      const basePath = config.value.basePath ?? props.playbook
+      const exampleDir = config.value.frameworkDirs?.[framework] ?? `${framework}-example`
+
       try {
         // Fetch all files in parallel
         const fileContents = await Promise.all(
           files.map(async (filePath) => {
-            const content = await fetchFile(`${framework}-example/${filePath}`)
+            const content = await fetchFile(basePath, `${exampleDir}/${filePath}`)
             return { path: filePath, content }
           })
         )

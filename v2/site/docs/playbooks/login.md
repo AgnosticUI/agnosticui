@@ -1,14 +1,12 @@
 # Login Form
 
-A responsive login page implementation across React, Vue, and Lit.
+Two design variants — classic split-screen and gradient card — implemented across React, Vue, and Lit.
 
 <script setup>
 import PlaybookStackBlitz from '../.vitepress/theme/components/PlaybookStackBlitz.vue'
 </script>
 
-## Try it Live
-
-Open any framework example directly in StackBlitz:
+## Variant I — Split Screen
 
 <PlaybookStackBlitz playbook="login" />
 
@@ -31,6 +29,31 @@ Open any framework example directly in StackBlitz:
   </div>
 </div>
 
+## Variant II — Gradient Card
+
+SSO-first layout with a full-bleed gradient background and floating card on all breakpoints.
+
+<PlaybookStackBlitz playbook="login-v2" />
+
+<div class="flex gap4 mbs4 mbe4">
+  <a href="https://github.com/AgnosticUI/agnosticui/tree/master/v2/playbooks/login" target="_blank" rel="noopener">View on GitHub</a>
+</div>
+
+<div class="playbook-screenshots mbs6 mbe6">
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/Phone-v2.png" alt="Mobile layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/Tablet-v2.png" alt="Tablet layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Tablet</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/Desktop-v2.png" alt="Desktop layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop</p>
+  </div>
+</div>
+
 ::: tip Skins & Customization
 Screenshots show the default skin. Each live example includes a **skin switcher** (bottom-right corner) to preview other themes instantly. Colors, spacing, and typography are fully customizable via [design tokens](/theming).
 :::
@@ -43,12 +66,14 @@ Generating UI components via LLM prompting is non-deterministic; different model
 While these prompts have been tested using the Claude Code CLI (running Claude Sonnet 4.5 and Opus 4.5), the output remains experimental. Always verify generated code for visual consistency, accessibility, and production readiness before deployment.
 :::
 
-- **Three framework examples**: React, Vue, and Lit implementations
-- **Responsive layouts**: Mobile, tablet (floating card), desktop (two-column)
-- [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-3-FRAMEWORKS.md): Feed directly to your LLM for AI-assisted customization
+- **Two design variants** × **three frameworks**: six implementations in total
+- **Variant I** — classic split-screen (photo hero + form); mobile, tablet, desktop responsive layouts
+- **Variant II** — SSO-first gradient card; floating card visible on all breakpoints
+- [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-3-FRAMEWORKS.md): LLM prompt for Variant I (all three frameworks)
+- [`PROMPT-3-FRAMEWORKS-V2.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-3-FRAMEWORKS-V2.md): LLM prompt for Variant II (all three frameworks)
 - [`PROMPT-VUE.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-VUE.md): LLM prompt to generate Vue login page.
 - [`PROMPT-REACT.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-REACT.md): LLM prompt to generate React login page.
-- [`PROMPT-LIT.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-LIT.md)LLM prompt to generate Lit login page (web components so use this for other frameworks like Svelte, Angular, etc.).
+- [`PROMPT-LIT.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/login/PROMPT-LIT.md): LLM prompt to generate Lit login page (web components so use this for other frameworks like Svelte, Angular, etc.).
 
 ## Using with an LLM
 
@@ -81,8 +106,17 @@ These versions use unique assets—such as different logos, background images, a
 
 ## Responsive Behavior
 
+**Variant I**
+
 | Breakpoint          | Layout                                   |
 | ------------------- | ---------------------------------------- |
 | Mobile (<768px)     | Form only, white background              |
 | Tablet (768-1199px) | Floating card over full-bleed background |
 | Desktop (≥1200px)   | Two-column: 40% form / 60% hero image    |
+
+**Variant II**
+
+| Breakpoint              | Layout                                        |
+| ----------------------- | --------------------------------------------- |
+| Mobile (<640px)         | Floating card (375px) on gradient background  |
+| Tablet/Desktop (≥640px) | Floating card (425px) on gradient background  |
