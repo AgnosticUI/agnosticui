@@ -86,18 +86,13 @@ const progressRightLabel: Record<number, string> = {
   6: 'Review & Start',
 };
 
-const getCategoryValues = (categoryId: string): string[] => {
-  const cat = INTEREST_CATEGORIES.find(c => c.id === categoryId);
-  return cat ? cat.items.map(item => item.value) : [];
-};
-
 // ---------------------------------------------------------------------------
 // App Component
 // ---------------------------------------------------------------------------
 export default function App() {
   const [currentPosition, setCurrentPosition] = useState<number>(1);
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
-  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const [selectedByCategory, setSelectedByCategory] = useState<Record<string, string[]>>({});
   const [isDark, setIsDark] = useState(() => localStorage.getItem('ag-theme') === 'dark');
 
   // Derived state
@@ -112,8 +107,7 @@ export default function App() {
     if (currentPosition === INTERSTITIAL_POSITION) return true;
     // Interest steps (2, 4, 5): require at least 1 selection in this category
     if (currentCategory) {
-      const catValues = getCategoryValues(currentCategory.id);
-      return selectedInterests.some(v => catValues.includes(v));
+      return (selectedByCategory[currentCategory.id] ?? []).length > 0;
     }
     return true; // review step
   })();
@@ -144,22 +138,21 @@ export default function App() {
   const handleInterestChange = (e: Event, categoryId: string) => {
     const detail = (e as CustomEvent).detail;
     const selectedValues: string[] = detail?.selectedValues ?? [];
-    const categoryValues = getCategoryValues(categoryId);
-    const otherInterests = selectedInterests.filter(v => !categoryValues.includes(v));
-    setSelectedInterests([...otherInterests, ...selectedValues]);
+    setSelectedByCategory(prev => ({ ...prev, [categoryId]: selectedValues }));
   };
 
   const viewType = getViewType(currentPosition);
 
   return (
     <div className="page">
-      {/* Dark mode header toggle */}
       <header className="wizard-header">
+        <span className="wizard-logo">AgnosticUI</span>
         <button className="theme-toggle" onClick={toggleDark} aria-label="Toggle dark mode">
           {isDark ? <Sun size={18} /> : <Moon size={18} />}
         </button>
       </header>
 
+      <main className="wizard-main">
       <div className="wizard-container">
         {/* Progress indicator */}
         <div className="wizard-progress">
@@ -222,6 +215,7 @@ export default function App() {
                 name={`interests-${currentCategory.id}`}
                 legend={currentCategory.title}
                 legendHidden
+                values={selectedByCategory[currentCategory.id] ?? []}
                 onSelectionChange={(e) => handleInterestChange(e as unknown as Event, currentCategory.id)}
               >
                 {currentCategory.items.map(item => (
@@ -273,9 +267,10 @@ export default function App() {
               <div className="review-block">
                 <p className="review-label">Your Interests</p>
                 <p className="review-value">
-                  {selectedInterests.length > 0
-                    ? selectedInterests.join(', ')
-                    : 'None selected'}
+                  {(() => {
+                    const all = Object.values(selectedByCategory).flat();
+                    return all.length > 0 ? all.join(', ') : 'None selected';
+                  })()}
                 </p>
               </div>
             </div>
@@ -311,6 +306,7 @@ export default function App() {
           </div>
         )}
       </div>
+      </main>
 
       <SkinSwitcher />
     </div>

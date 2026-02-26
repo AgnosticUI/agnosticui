@@ -827,6 +827,7 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'package.json',
         'tsconfig.json',
         // App files
+        'src/main.ts',
         'src/index.css',
         'src/onboarding-wizard.ts',
         'src/skin-switcher.ts',

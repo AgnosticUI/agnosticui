@@ -86,17 +86,13 @@ const PROGRESS_RIGHT_LABEL: Record<number, string> = {
   6: 'Review & Start',
 };
 
-const getCategoryValues = (categoryId: string): string[] => {
-  const cat = INTEREST_CATEGORIES.find(c => c.id === categoryId);
-  return cat ? cat.items.map(item => item.value) : [];
-};
 
 // ---------------------------------------------------------------------------
 // State
 // ---------------------------------------------------------------------------
 const currentPosition = ref<number>(1);
 const selectedPath = ref<string | null>(null);
-const selectedInterests = ref<string[]>([]);
+const selectedByCategory = ref<Record<string, string[]>>({});
 const isDark = ref(localStorage.getItem('ag-theme') === 'dark');
 
 // ---------------------------------------------------------------------------
@@ -126,8 +122,7 @@ const canProceed = computed(() => {
   // Interest steps (2, 4, 5): require at least 1 selection in this category
   const cat = currentCategory.value;
   if (cat) {
-    const catValues = getCategoryValues(cat.id);
-    return selectedInterests.value.some(v => catValues.includes(v));
+    return (selectedByCategory.value[cat.id] ?? []).length > 0;
   }
   return true; // review step
 });
@@ -167,22 +162,21 @@ const handlePathChange = (detail: { selectedValues: string[] }) => {
 
 const handleInterestChange = (detail: { selectedValues: string[] }, categoryId: string) => {
   const newValues: string[] = detail?.selectedValues ?? [];
-  const categoryValues = getCategoryValues(categoryId);
-  const otherInterests = selectedInterests.value.filter(v => !categoryValues.includes(v));
-  selectedInterests.value = [...otherInterests, ...newValues];
+  selectedByCategory.value = { ...selectedByCategory.value, [categoryId]: newValues };
 };
 </script>
 
 <template>
   <div class="page">
-    <!-- Dark mode header toggle -->
     <header class="wizard-header">
+      <span class="wizard-logo">AgnosticUI</span>
       <button class="theme-toggle" @click="toggleDark" aria-label="Toggle dark mode">
         <Sun v-if="isDark" :size="18" />
         <Moon v-else :size="18" />
       </button>
     </header>
 
+    <main class="wizard-main">
     <div class="wizard-container">
       <!-- Progress indicator -->
       <div class="wizard-progress">
@@ -240,6 +234,7 @@ const handleInterestChange = (detail: { selectedValues: string[] }, categoryId: 
             :name="`interests-${currentCategory.id}`"
             :legend="currentCategory.title"
             :legend-hidden="true"
+            :values="selectedByCategory[currentCategory.id] ?? []"
             @selection-change="(detail) => handleInterestChange(detail, currentCategory!.id)"
           >
             <VueSelectionCard
@@ -285,7 +280,7 @@ const handleInterestChange = (detail: { selectedValues: string[] }, categoryId: 
           <div class="review-block">
             <p class="review-label">Your Interests</p>
             <p class="review-value">
-              {{ selectedInterests.length > 0 ? selectedInterests.join(', ') : 'None selected' }}
+              {{ Object.values(selectedByCategory).flat().join(', ') || 'None selected' }}
             </p>
           </div>
         </div>
@@ -318,6 +313,7 @@ const handleInterestChange = (detail: { selectedValues: string[] }, categoryId: 
         </VueButton>
       </div>
     </div>
+    </main>
 
     <SkinSwitcher />
   </div>

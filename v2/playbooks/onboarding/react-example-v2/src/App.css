@@ -3,15 +3,25 @@
   min-height: 100vh;
   background: var(--ag-background-primary);
   font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header dark mode toggle */
+/* Header */
 .wizard-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: var(--ag-space-3) var(--ag-space-4);
-  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ag-space-3) var(--ag-space-6);
+  border-bottom: 1px solid var(--ag-border);
+  background: var(--ag-background-primary);
+}
+
+.wizard-logo {
+  font-size: var(--ag-font-size-base);
+  font-weight: 700;
+  color: var(--ag-text-primary);
+  letter-spacing: -0.01em;
 }
 
 .theme-toggle {
@@ -32,11 +42,21 @@
   background: var(--ag-background-secondary);
 }
 
+/* Main — vertical centering wrapper */
+.wizard-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ag-space-6) var(--ag-space-4);
+}
+
 /* Wizard container */
 .wizard-container {
+  width: 100%;
   max-width: 640px;
-  margin: 0 auto;
-  padding: var(--ag-space-8) var(--ag-space-6);
+  min-height: 540px;
+  padding: 0 var(--ag-space-2);
 }
 
 /* Progress indicator */

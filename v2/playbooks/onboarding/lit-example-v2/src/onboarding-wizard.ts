@@ -96,11 +96,6 @@ const PROGRESS_RIGHT_LABEL: Record<number, string> = {
   6: 'Review & Start',
 };
 
-const getCategoryValues = (categoryId: string): string[] => {
-  const cat = INTEREST_CATEGORIES.find(c => c.id === categoryId);
-  return cat ? cat.items.map(item => item.value) : [];
-};
-
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
@@ -109,7 +104,8 @@ export class OnboardingWizard extends LitElement {
     *, *::before, *::after { box-sizing: border-box; }
 
     :host {
-      display: block;
+      display: flex;
+      flex-direction: column;
       font-family: 'Inter', sans-serif;
       min-height: 100vh;
       background: var(--ag-background-primary);
@@ -118,15 +114,25 @@ export class OnboardingWizard extends LitElement {
     .page {
       min-height: 100vh;
       background: var(--ag-background-primary);
+      display: flex;
+      flex-direction: column;
     }
 
     /* Header */
     .wizard-header {
-      position: fixed;
-      top: 0;
-      right: 0;
-      padding: var(--ag-space-3) var(--ag-space-4);
-      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--ag-space-3) var(--ag-space-6);
+      border-bottom: 1px solid var(--ag-border);
+      background: var(--ag-background-primary);
+    }
+
+    .wizard-logo {
+      font-size: var(--ag-font-size-base);
+      font-weight: 700;
+      color: var(--ag-text-primary);
+      letter-spacing: -0.01em;
     }
 
     .theme-toggle {
@@ -147,11 +153,21 @@ export class OnboardingWizard extends LitElement {
       background: var(--ag-background-secondary);
     }
 
+    /* Main — vertical centering wrapper */
+    .wizard-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--ag-space-6) var(--ag-space-4);
+    }
+
     /* Wizard container */
     .wizard-container {
+      width: 100%;
       max-width: 640px;
-      margin: 0 auto;
-      padding: var(--ag-space-8) var(--ag-space-6);
+      min-height: 540px;
+      padding: 0 var(--ag-space-2);
     }
 
     /* Progress */
@@ -353,7 +369,7 @@ export class OnboardingWizard extends LitElement {
   @property({ type: Number }) currentPosition = 1;
   @property({ type: Boolean }) isDark = localStorage.getItem('ag-theme') === 'dark';
   @state() private selectedPath: string | null = null;
-  @state() private selectedInterests: string[] = [];
+  @state() private selectedByCategory: Record<string, string[]> = {};
 
   // Derived getters
   private get progressValue() {
@@ -388,8 +404,7 @@ export class OnboardingWizard extends LitElement {
     // Interest steps (2, 4, 5): require at least 1 selection in this category
     const cat = this.currentCategory;
     if (cat) {
-      const catValues = getCategoryValues(cat.id);
-      return this.selectedInterests.some(v => catValues.includes(v));
+      return (this.selectedByCategory[cat.id] ?? []).length > 0;
     }
     return true; // review step
   }
@@ -433,9 +448,7 @@ export class OnboardingWizard extends LitElement {
   private handleInterestChange(e: Event, categoryId: string) {
     const detail = (e as CustomEvent).detail;
     const newValues: string[] = detail?.selectedValues ?? [];
-    const categoryValues = getCategoryValues(categoryId);
-    const otherInterests = this.selectedInterests.filter(v => !categoryValues.includes(v));
-    this.selectedInterests = [...otherInterests, ...newValues];
+    this.selectedByCategory = { ...this.selectedByCategory, [categoryId]: newValues };
   }
 
   // Render helpers
@@ -504,6 +517,7 @@ export class OnboardingWizard extends LitElement {
             name="interests-${cat.id}"
             legend=${cat.title}
             legend-hidden
+            .values=${this.selectedByCategory[cat.id] ?? []}
             @selection-change=${(e: Event) => this.handleInterestChange(e, cat.id)}
           >
             ${cat.items.map(item => html`
@@ -538,8 +552,9 @@ export class OnboardingWizard extends LitElement {
   }
 
   private renderReview() {
-    const interests = this.selectedInterests.length > 0
-      ? this.selectedInterests.join(', ')
+    const allInterests = Object.values(this.selectedByCategory).flat();
+    const interests = allInterests.length > 0
+      ? allInterests.join(', ')
       : 'None selected';
     return html`
       <div>
@@ -593,23 +608,25 @@ export class OnboardingWizard extends LitElement {
   render() {
     return html`
       <div class="page">
-        <!-- Dark mode header toggle -->
         <header class="wizard-header">
+          <span class="wizard-logo">AgnosticUI</span>
           <button class="theme-toggle" @click=${this.toggleDark} aria-label="Toggle dark mode">
             ${this.isDark ? sunIcon : moonIcon}
           </button>
         </header>
 
-        <div class="wizard-container">
-          ${this.renderProgress()}
+        <main class="wizard-main">
+          <div class="wizard-container">
+            ${this.renderProgress()}
 
-          ${this.viewType === 'path' ? this.renderPathStep() : ''}
-          ${this.viewType === 'interests' ? this.renderInterestsStep() : ''}
-          ${this.viewType === 'interstitial' ? this.renderInterstitial() : ''}
-          ${this.viewType === 'review' ? this.renderReview() : ''}
+            ${this.viewType === 'path' ? this.renderPathStep() : ''}
+            ${this.viewType === 'interests' ? this.renderInterestsStep() : ''}
+            ${this.viewType === 'interstitial' ? this.renderInterstitial() : ''}
+            ${this.viewType === 'review' ? this.renderReview() : ''}
 
-          ${this.renderNavButtons()}
-        </div>
+            ${this.renderNavButtons()}
+          </div>
+        </main>
 
         <skin-switcher></skin-switcher>
       </div>
