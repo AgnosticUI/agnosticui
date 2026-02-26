@@ -15,7 +15,7 @@
 | **Path selection (Step 1)** | SelectionCardGroup radio, 3 cards in 3-col grid | Same — minor layout adjustment for narrower container |
 | **Interest selection** | All 18 tags at once — SelectionButtonGroup checkbox tag cloud | 6 tags per slide × 3 category slides — SelectionCardGroup checkbox, 2-col grid |
 | **Interstitial** | None | Mini confirmation screen after first interest category: encouragement text, illustration, info notice, full-width Next |
-| **Interest minimum** | ≥ 3 required to proceed | None per slide (momentum-based — Continue always enabled) |
+| **Interest minimum** | ≥ 3 required to proceed | ≥ 1 per interest step (Next disabled until at least one card is checked) |
 | **Background treatment** | White | White (unchanged) |
 | **Assets needed** | None | None |
 | **Typography** | Inter | Inter (unchanged) |
@@ -287,17 +287,38 @@ const infoIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="14" height=
 
 ### Container
 
-The wizard lives in a centered container — white background, same page color as the body:
+The wizard is vertically centered in the viewport. A `.wizard-main` wrapper takes the remaining space between the header and the bottom of the viewport, then centers its single child:
 
 ```css
+/* Vertical centering wrapper — takes all remaining height after the header */
+.wizard-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ag-space-6) var(--ag-space-4);
+}
+
+/* Wizard content column */
 .wizard-container {
+  width: 100%;
   max-width: 640px;
-  margin: 0 auto;
-  padding: var(--ag-space-8) var(--ag-space-6);
+  min-height: 540px;   /* prevents height jitter when switching between steps */
+  padding: 0 var(--ag-space-2);
 }
 ```
 
-640px (vs V1's 800px) keeps each slide feeling focused. The narrower column also makes the 2-column interest card grid feel proportionally generous rather than cramped.
+640px (vs V1's 800px) keeps each slide feeling focused. The `min-height: 540px` is sized to the tallest step (the interest grid) so the container does not shrink and re-expand as the user navigates.
+
+In the template, wrap the `.wizard-container` in a `<main class="wizard-main">`:
+
+```html
+<main class="wizard-main">
+  <div class="wizard-container">
+    <!-- progress + step content + nav -->
+  </div>
+</main>
+```
 
 ### Progress Indicator
 
@@ -466,10 +487,11 @@ const INTEREST_CATEGORIES = [
 
 Two fixed-position elements sit outside the wizard container on every position:
 
-**1. Dark mode toggle header** — fixed top-right, a single circular sun/moon button:
+**1. Full-width page header** — spans the full viewport width, logo on the left, dark mode toggle on the right:
 
 ```html
 <header class="wizard-header">
+  <span class="wizard-logo">AgnosticUI</span>
   <button class="theme-toggle" aria-label="Toggle dark mode">
     <!-- Sun icon when dark mode active; Moon icon when light mode active -->
   </button>
@@ -477,12 +499,29 @@ Two fixed-position elements sit outside the wizard container on every position:
 ```
 
 ```css
+/* Page root — flex column so header + main fill the viewport */
+.page {
+  min-height: 100vh;
+  background: var(--ag-background-primary);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
 .wizard-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: var(--ag-space-3) var(--ag-space-4);
-  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ag-space-3) var(--ag-space-6);
+  border-bottom: 1px solid var(--ag-border);
+  background: var(--ag-background-primary);
+}
+
+.wizard-logo {
+  font-size: var(--ag-font-size-base);
+  font-weight: 700;
+  color: var(--ag-text-primary);
+  letter-spacing: -0.01em;
 }
 
 .theme-toggle {
@@ -504,29 +543,36 @@ Two fixed-position elements sit outside the wizard container on every position:
 }
 ```
 
-Because the onboarding wizard has a white background (unlike Login V2's gradient), the toggle uses standard AG tokens rather than semi-transparent white overrides.
-
 **React:**
 ```tsx
-<button className="theme-toggle" onClick={toggleDark} aria-label="Toggle dark mode">
-  {isDark ? <Sun size={18} /> : <Moon size={18} />}
-</button>
+<header className="wizard-header">
+  <span className="wizard-logo">AgnosticUI</span>
+  <button className="theme-toggle" onClick={toggleDark} aria-label="Toggle dark mode">
+    {isDark ? <Sun size={18} /> : <Moon size={18} />}
+  </button>
+</header>
 ```
 
 **Vue:**
 ```vue
-<button class="theme-toggle" @click="toggleDark" aria-label="Toggle dark mode">
-  <Sun v-if="isDark" :size="18" />
-  <Moon v-else :size="18" />
-</button>
+<header class="wizard-header">
+  <span class="wizard-logo">AgnosticUI</span>
+  <button class="theme-toggle" @click="toggleDark" aria-label="Toggle dark mode">
+    <Sun v-if="isDark" :size="18" />
+    <Moon v-else :size="18" />
+  </button>
+</header>
 ```
 
 **Lit:**
 ```typescript
 html`
-  <button class="theme-toggle" @click=${this.toggleDark} aria-label="Toggle dark mode">
-    ${this.isDark ? sunIcon : moonIcon}
-  </button>
+  <header class="wizard-header">
+    <span class="wizard-logo">AgnosticUI</span>
+    <button class="theme-toggle" @click=${this.toggleDark} aria-label="Toggle dark mode">
+      ${this.isDark ? sunIcon : moonIcon}
+    </button>
+  </header>
 `
 ```
 
@@ -816,7 +862,7 @@ Show the user's choices in two sections, followed by the info Alert:
 **Continue / Next Button:**
 
 - Positions 1–5 (except interstitial): labeled "Next" in the bottom nav row
-- **Enabled on all interest positions (2, 4, 5) regardless of selection count** — momentum-based UX
+- **Disabled on interest positions (2, 4, 5)** until at least one card is checked in the current category
 - **Disabled on Position 1** until a path is selected
 - **Interstitial (Position 3):** Next is full-width, no Back in the bottom row (Back is at top)
 
@@ -873,7 +919,7 @@ Use `nav-buttons--end` on Position 1 where Back is hidden, so Next aligns right.
 interface OnboardingState {
   currentPosition: 1 | 2 | 3 | 4 | 5 | 6;
   selectedPath: 'personal' | 'team' | 'enterprise' | null;
-  selectedInterests: string[]; // accumulates across positions 2, 4, 5
+  selectedByCategory: Record<string, string[]>; // keyed by category id: 'frontend' | 'design' | 'engineering'
   isDark: boolean;
 }
 ```
@@ -915,11 +961,17 @@ const isDark = ref(localStorage.getItem('ag-theme') === 'dark');
 ### Navigation Logic
 
 ```typescript
-// Position 1 → 2: requires path selected
+// Position 1: requires path selected
 // Position 3 (interstitial): always enabled — Next is the only action
-// Positions 2, 4, 5 (interest steps): always enabled — momentum-based
-const canProceed = (position: number): boolean =>
-  position === 1 ? selectedPath !== null : true;
+// Positions 2, 4, 5 (interest steps): requires ≥ 1 selection in the current category
+// Position 6 (review): always enabled
+const canProceed = (): boolean => {
+  if (currentPosition === 1) return selectedPath !== null;
+  if (currentPosition === INTERSTITIAL_POSITION) return true;
+  const cat = INTEREST_CATEGORIES.find(c => c.position === currentPosition) ?? null;
+  if (cat) return (selectedByCategory[cat.id] ?? []).length > 0;
+  return true; // review step
+};
 
 // handleNext / handleBack: simple position increment/decrement
 const handleNext = () => {
@@ -937,28 +989,68 @@ const showStandardNav = currentPosition !== INTERSTITIAL_POSITION;
 const showBottomBack = currentPosition > 1 && currentPosition !== INTERSTITIAL_POSITION;
 ```
 
-### Merging Per-Category Interests
+### Per-Category Interest State
 
-Because `selectedInterests` is a flat array spanning three category positions, the event handler must replace the previous selections for the *current* category rather than blindly appending:
+Store selections as a `Record<string, string[]>` keyed by category id. Each interest step writes only its own key, leaving other categories untouched. This avoids the filter-and-merge complexity of a flat array and eliminates duplicate-entry bugs when navigating back and forward.
 
 ```typescript
-// Helper: return all value strings for a given category id
-const getCategoryValues = (categoryId: string): string[] => {
-  const cat = INTEREST_CATEGORIES.find(c => c.id === categoryId);
-  return cat ? cat.items.map(item => item.value) : [];
-};
-
-// Category for the current position (null for path, interstitial, review)
-const categoryForPosition = (pos: number) =>
-  INTEREST_CATEGORIES.find(c => c.position === pos) ?? null;
+// React
+const [selectedByCategory, setSelectedByCategory] = useState<Record<string, string[]>>({});
 
 const handleInterestChange = (e: CustomEvent, categoryId: string) => {
-  const { selectedValues } = e.detail;
-  const categoryValues = getCategoryValues(categoryId);
-  // Keep interests from other categories, replace this category's selections
-  const otherInterests = selectedInterests.filter(v => !categoryValues.includes(v));
-  setSelectedInterests([...otherInterests, ...selectedValues]);
+  const selectedValues: string[] = e.detail?.selectedValues ?? [];
+  setSelectedByCategory(prev => ({ ...prev, [categoryId]: selectedValues }));
 };
+```
+
+```typescript
+// Vue
+const selectedByCategory = ref<Record<string, string[]>>({});
+
+const handleInterestChange = (detail: { selectedValues: string[] }, categoryId: string) => {
+  const newValues: string[] = detail?.selectedValues ?? [];
+  selectedByCategory.value = { ...selectedByCategory.value, [categoryId]: newValues };
+};
+```
+
+```typescript
+// Lit
+@state() private selectedByCategory: Record<string, string[]> = {};
+
+private handleInterestChange(e: Event, categoryId: string) {
+  const newValues: string[] = (e as CustomEvent).detail?.selectedValues ?? [];
+  this.selectedByCategory = { ...this.selectedByCategory, [categoryId]: newValues };
+}
+```
+
+On the review screen, flatten all categories to render the combined list:
+
+```typescript
+const allInterests = Object.values(selectedByCategory).flat();
+// → ['react', 'vue', 'design', 'figma', 'testing', ...]
+```
+
+Pass the `values` prop to put `SelectionCardGroup` in **controlled mode** so that previously selected cards are visually restored when the user presses Back:
+
+```html
+<!-- Web component (Lit) -->
+<ag-selection-card-group
+  type="checkbox"
+  .values=${this.selectedByCategory[cat.id] ?? []}
+  ...
+>
+
+<!-- React wrapper -->
+<ReactSelectionCardGroup
+  values={selectedByCategory[currentCategory.id] ?? []}
+  ...
+>
+
+<!-- Vue wrapper -->
+<VueSelectionCardGroup
+  :values="selectedByCategory[currentCategory.id] ?? []"
+  ...
+>
 ```
 
 ### Path Selection
@@ -1236,14 +1328,11 @@ const currentCategory = INTEREST_CATEGORIES.find(c => c.position === currentPosi
 
 Render the SelectionCardGroup conditionally only when `currentCategory` is not null (i.e., `currentPosition` is 2, 4, or 5). When `getViewType(currentPosition) === 'interstitial'`, render the interstitial instead.
 
-### 3. No Minimum Per Category Position — Always-Enabled Next
+### 3. At Least One Required Per Interest Step
 
-This is the defining UX difference from V1. The Continue / Next button on interest positions (and the interstitial) is **never disabled**. Users can skip an entire category if nothing resonates. The final review will simply show fewer interests, which is valid.
+The Next button is disabled until the user selects at least one card on each interest position (2, 4, 5). The interstitial and review step are always-enabled. This gives lightweight validation without forcing a minimum count.
 
-```typescript
-const canProceed =
-  currentPosition === 1 ? selectedPath !== null : true;
-```
+See the full `canProceed` logic in the **Navigation Logic** section above.
 
 ### 4. SelectionCardGroup Checkbox for Interest Steps
 
@@ -1264,11 +1353,19 @@ V1 uses `SelectionButtonGroup` (capsule tags) for interests. V2 uses `SelectionC
 
 The `name` attribute must be unique per category group (`interests-frontend`, `interests-design`, `interests-engineering`) to prevent radio-group conflicts when components are rendered in the same DOM tree.
 
-### 5. Back-Navigation State Limitation
+### 5. Back-Navigation — Controlled Mode Restores Visual State
 
-`ag-selection-card-group` manages its own checked state internally. When the user presses Back from position 4 to position 3 (interstitial) and then to position 2, the position 2 group re-mounts and **does not automatically re-check previously selected items**. This is a known limitation of the initial implementation.
+`ag-selection-card-group` starts in uncontrolled mode and manages its own internal checked state. When the component re-mounts (e.g., after navigating back), it resets to unchecked. To restore visual state, pass the stored selections via the `values` prop, which puts the component into **controlled mode**:
 
-**Optional enhancement** — persist selections per category step using a `key` prop to force remount with data, or by pre-checking cards via JavaScript after mount. For simplicity, the baseline implementation does not include this; the review step correctly shows accumulated interests regardless.
+```html
+<ag-selection-card-group
+  type="checkbox"
+  .values=${this.selectedByCategory[cat.id] ?? []}
+  ...
+>
+```
+
+This is why `selectedByCategory` is stored at the application level rather than left entirely inside the web component. The combination of per-category Record state + `values` prop is the correct pattern.
 
 ### 6. Slide-In Transition (Optional Enhancement)
 
@@ -1380,9 +1477,9 @@ This is already applied in the `INTEREST_CATEGORIES` constant above — the `val
 
 ## Common Issues & Fixes
 
-### Interest Selections Not Appearing in Review
+### Duplicate Interests or Stale Values on Review Screen
 
-Verify the category merge logic in `handleInterestChange`. If you're appending rather than replacing, duplicate entries or stale values appear. Always filter out the current category's values before merging the new `selectedValues`.
+Use `selectedByCategory: Record<string, string[]>` (keyed by category id) rather than a flat merged array. A flat array with filter-and-merge logic produces duplicates when the user navigates back and forward — each re-navigation re-runs the merge against already-accumulated state. The per-category Record completely avoids this: each category writes only its own key and the review screen flattens with `Object.values(selectedByCategory).flat()`.
 
 ### Progress Bar Not Updating
 
@@ -1407,74 +1504,35 @@ If the page briefly shows light mode before applying the stored dark theme, move
 
 ## Implementation Learnings
 
-> Update this section as each framework is built. Record V2-specific differences only; V1 implementation notes apply unless noted otherwise.
+> V2-specific notes confirmed during implementation. V1 patterns apply unless noted otherwise.
 
 ### React Example
 
-**Expected differences from V1:**
-- No `Timeline` import — replace with `Progress` from `src/components/ag/`
-- `INTEREST_CATEGORIES` + `categoryForPosition()` helper drive all three carousel positions from the same JSX template
-- `getViewType(currentPosition)` switch drives top-level render branching
-- `isDark` state initialized from `localStorage`; `toggleDark` wires both the header button and the SkinSwitcher
-- Import skin CSS files in `main.tsx`; copy `SkinSwitcher.tsx` from login example
-- Interstitial: conditionally suppress `.nav-buttons` row; render `← Back` button and full-width `Next` inside the interstitial `<div>`
-- Use `key={currentPosition}` on the step wrapper to trigger the optional slide animation class reset
+- `Progress` replaces `Timeline`; no `Timeline` import needed
+- `INTEREST_CATEGORIES` + `getViewType(currentPosition)` drive all carousel positions from the same JSX template
+- `isDark` initialized from `localStorage`; `toggleDark` wires both the header button and SkinSwitcher
+- Import skin CSS files in `main.tsx`; copy `SkinSwitcher.tsx` from the login example
+- Interstitial: suppress `.nav-buttons` row with `showStandardNav`; render `← Back` and full-width `Next` inside the interstitial `<div>`
 
 ### Vue Example
 
-**Expected differences from V1:**
-- Same `vite.config.ts` custom element config required
-- Same scoped-styles prohibition — all layout in `style.css`
-- Computed `progressValue`, `currentCategory`, `showStandardNav`, `questionStepNum`, `isDark` simplify template logic
-- Skin CSS imports added to `main.ts`; copy `SkinSwitcher.vue` from login example
-- Interstitial: use `v-if="getViewType(currentPosition) === 'interstitial'"` to swap in the interstitial template; `v-if="showStandardNav"` on the nav row div
+- `vite.config.ts` custom element config required (same as V1)
+- No `<style scoped>` — all layout in `style.css`
+- Computed refs (`progressValue`, `currentCategory`, `showStandardNav`, `questionStepNum`) keep the template clean
+- Skin CSS imports added to `main.ts`; copy `SkinSwitcher.vue` from the login example
+- Interstitial: `v-if="viewType === 'interstitial'"` on the interstitial block; `v-if="showStandardNav"` on the nav row
 
 ### Lit Example
 
-**Expected differences from V1:**
-- No `ag-timeline` component — use `ag-progress` instead
-- Define `@property({ type: Number }) currentPosition = 1` and `@property({ type: Boolean }) isDark` — derive `progressValue`, `currentCategory`, `viewType` as getters
-- `INTEREST_CATEGORIES` and constants defined at module scope (outside the class)
-- Skin CSS imports added to `main.ts`; copy `skin-switcher.ts` from login example
-- `sunIcon`, `moonIcon`, `infoIcon` inline SVGs added (see Icon Imports Reference)
-- Use `map()` inside `html\`...\`` template literals to render interest cards from the current category's `items` array
-- Interstitial: branch on `this.viewType === 'interstitial'` inside `render()` to return the interstitial template; omit the standard nav row conditional on `this.showStandardNav`
+- `ag-progress` replaces `ag-timeline`
+- `currentPosition` and `isDark` are `@state()` fields; `progressValue`, `currentCategory`, `viewType` are getters
+- `INTEREST_CATEGORIES` and all constants live at module scope (outside the class)
+- Skin CSS imports added to `main.ts`; copy `skin-switcher.ts` from the login example
+- `sunIcon`, `moonIcon`, `infoIcon` are inline SVG `html\`...\`` templates (see Icon Imports Reference)
+- Interest cards rendered with `map()` inside the template literal
 
 ---
 
 ## StackBlitz Integration Notes
 
-When adding Variant II to the docs site:
-
-1. Add an entry to `v2/site/docs/.vitepress/theme/components/playbooks-config.ts`:
-
-```typescript
-'onboarding-v2': {
-  title: 'Onboarding Carousel Wizard V2',
-  basePath: 'onboarding',
-  frameworkDirs: {
-    react: 'react-example-v2',
-    vue:   'vue-example-v2',
-    lit:   'lit-example-v2',
-  },
-  frameworks: {
-    react: [ /* same file list as onboarding V1 */ ],
-    vue:   [ /* same file list as onboarding V1 */ ],
-    lit:   [ /* same file list as onboarding V1 */ ],
-  },
-  externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
-},
-```
-
-2. No `binaryFiles` entry needed — this variant has no binary assets.
-3. Add a `## Variant II` section to `v2/site/docs/playbooks/onboarding.md`:
-
-```md
-## Variant II — Carousel Slider Wizard
-
-Spreads interest selection across three focused category steps with a momentum-based, one-question-per-screen carousel UX. Replaces the Timeline step indicator with a linear AG Progress bar.
-
-<PlaybookStackBlitz playbook="onboarding-v2" />
-```
-
-4. Add to sidebar in `v2/site/docs/.vitepress/config.mts`.
+Site integration is complete. The `onboarding-v2` entry lives in `v2/site/docs/.vitepress/theme/components/playbooks-config.ts` and the `## Variant II` section with screenshots is in `v2/site/docs/playbooks/onboarding.md`. No binary assets are needed for this variant.
