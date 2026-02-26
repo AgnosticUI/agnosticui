@@ -13,6 +13,7 @@
     "@floating-ui/dom": "^1.7.5",
     "@lit/react": "^1.0.8",
     "@tanstack/react-table": "^8.21.3",
+    "agnosticui-core": "file:../../../lib/agnosticui-core-2.0.0-alpha.15.tgz",
     "focus-trap": "^8.0.0",
     "gridjs": "^6.2.0",
     "gridjs-react": "^6.1.1",
