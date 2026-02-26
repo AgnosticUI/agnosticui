@@ -1,0 +1,256 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--ag-background-primary);
+  color: var(--ag-text-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* Page */
+.page {
+  min-height: 100vh;
+  background: var(--ag-background-primary);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header dark mode toggle */
+.wizard-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: var(--ag-space-3) var(--ag-space-4);
+  z-index: 10;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--ag-border);
+  background: var(--ag-background-primary);
+  color: var(--ag-text-primary);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--ag-background-secondary);
+}
+
+/* Wizard container */
+.wizard-container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--ag-space-8) var(--ag-space-6);
+}
+
+/* Progress indicator */
+.wizard-progress {
+  margin-bottom: var(--ag-space-8);
+}
+
+.wizard-progress-label {
+  font-size: var(--ag-font-size-sm);
+  color: var(--ag-text-secondary);
+  margin-bottom: var(--ag-space-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wizard-progress-label span:first-child {
+  font-weight: 500;
+  color: var(--ag-text-primary);
+}
+
+/* Step titles */
+.step-title {
+  font-size: var(--ag-font-size-2x);
+  font-weight: 600;
+  color: var(--ag-text-primary);
+  margin-bottom: var(--ag-space-2);
+  margin-top: 0;
+}
+
+.step-subtitle {
+  font-size: var(--ag-font-size-sm);
+  color: var(--ag-text-secondary);
+  margin-bottom: var(--ag-space-6);
+  margin-top: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Path cards — 1 column mobile, 3 columns desktop
+   Grid is applied via ::part() to override the component's internal layout
+   ------------------------------------------------------------------------- */
+.path-cards-wrapper {
+  margin-bottom: var(--ag-space-6);
+}
+
+.path-cards-wrapper ag-selection-card-group::part(ag-selection-card-group-content) {
+  display: grid;
+  gap: var(--ag-space-4);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .path-cards-wrapper ag-selection-card-group::part(ag-selection-card-group-content) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Equal-height path cards
+   Host → flex column so the shadow DOM label can fill it with flex: 1
+   Label part → flex column + justify-content: center to vertically center content
+   ------------------------------------------------------------------------- */
+.path-cards-wrapper ag-selection-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.path-cards-wrapper ag-selection-card::part(ag-selection-card-container) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Path card inner content */
+.path-card-content {
+  text-align: center;
+  padding: var(--ag-space-4) var(--ag-space-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.path-card-content h3 {
+  font-size: var(--ag-font-size-base);
+  font-weight: 600;
+  margin: var(--ag-space-2) 0;
+  color: var(--ag-text-primary);
+}
+
+.path-card-content p {
+  font-size: var(--ag-font-size-sm);
+  color: var(--ag-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.path-icon {
+  margin-bottom: var(--ag-space-3);
+  color: var(--ag-primary);
+}
+
+/* -------------------------------------------------------------------------
+   Interests — always 2-column grid
+   Grid is applied via ::part() to override the component's internal layout
+   ------------------------------------------------------------------------- */
+.interests-wrapper {
+  margin-bottom: var(--ag-space-6);
+}
+
+.interests-wrapper ag-selection-card-group::part(ag-selection-card-group-content) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--ag-space-3);
+}
+
+/* Interstitial */
+.interstitial {
+  padding-top: var(--ag-space-2);
+}
+
+.interstitial-back {
+  margin-bottom: var(--ag-space-6);
+}
+
+.interstitial-illustration {
+  display: flex;
+  justify-content: center;
+  margin: var(--ag-space-8) 0;
+}
+
+.interstitial-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 2px solid var(--ag-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ag-primary);
+}
+
+.interstitial-body {
+  font-size: var(--ag-font-size-base);
+  color: var(--ag-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--ag-space-8);
+}
+
+/* Review section */
+.review-section {
+  display: grid;
+  gap: var(--ag-space-6);
+  margin-bottom: var(--ag-space-6);
+}
+
+@media (min-width: 560px) {
+  .review-section {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.review-label {
+  font-size: var(--ag-font-size-sm);
+  font-weight: 600;
+  color: var(--ag-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--ag-space-2);
+  margin-top: 0;
+}
+
+.review-value {
+  font-size: var(--ag-font-size-base);
+  color: var(--ag-text-primary);
+  margin: 0;
+}
+
+/* Navigation buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--ag-space-6);
+}
+
+.nav-buttons--end {
+  justify-content: flex-end;
+}
+
+.inline-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+}

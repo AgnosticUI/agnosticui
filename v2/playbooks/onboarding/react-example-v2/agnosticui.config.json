@@ -1,0 +1,72 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "react",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2026-02-26T17:07:04.588Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/Button/react"
+      ]
+    },
+    "Alert": {
+      "added": "2026-02-26T17:07:04.588Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/Alert/react",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Progress": {
+      "added": "2026-02-26T17:07:04.588Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/Progress/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/Progress/react"
+      ]
+    },
+    "Icon": {
+      "added": "2026-02-26T17:07:04.588Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/Icon/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/Icon/react"
+      ]
+    },
+    "SelectionCardGroup": {
+      "added": "2026-02-26T17:07:04.588Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/SelectionCardGroup/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/SelectionCardGroup/react",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/SelectionCard/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/src/components/ag/SelectionCard/react"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/react-example-v2/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-26T17:06:57.488Z"
+  }
+}

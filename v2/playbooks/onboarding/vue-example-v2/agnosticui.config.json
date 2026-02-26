@@ -1,0 +1,72 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "vue",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2026-02-26T17:07:15.809Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/Button/vue"
+      ]
+    },
+    "Alert": {
+      "added": "2026-02-26T17:07:15.809Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/Alert/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Progress": {
+      "added": "2026-02-26T17:07:15.809Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/Progress/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/Progress/vue"
+      ]
+    },
+    "Icon": {
+      "added": "2026-02-26T17:07:15.809Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/Icon/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/Icon/vue"
+      ]
+    },
+    "SelectionCardGroup": {
+      "added": "2026-02-26T17:07:15.809Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/SelectionCardGroup/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/SelectionCardGroup/vue",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/SelectionCard/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/src/components/ag/SelectionCard/vue"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-26T17:07:13.180Z"
+  }
+}

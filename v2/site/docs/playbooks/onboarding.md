@@ -92,6 +92,24 @@ You can follow these same steps for the framework-specific prompts located in th
 These versions allow you to customize the onboarding wizard for your specific needs.
 :::
 
+---
+
+## Variant II — Carousel Slider Wizard
+
+Distributes interest selection across three focused category steps (6 items each) with a **momentum-based, one-question-per-screen** carousel UX. Replaces the Timeline step indicator with a linear AG Progress bar, inserts a mini confirmation interstitial at the halfway point, and adds a dark mode header toggle and SkinSwitcher FAB.
+
+<PlaybookStackBlitz playbook="onboarding-v2" />
+
+<div class="playbook-screenshots mbs6 mbe6">
+  <!-- Screenshots to be added after implementation -->
+</div>
+
+::: tip Variant II Prompt
+To generate or customize this variant with an LLM, use [`PROMPT-3-FRAMEWORKS-V2.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/onboarding/PROMPT-3-FRAMEWORKS-V2.md).
+:::
+
+---
+
 ## Components Used
 
 | Component                | Purpose                                        |

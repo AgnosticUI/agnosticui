@@ -195,6 +195,73 @@ const ONBOARDING_VUE_WRAPPER_FILES = [
   'src/components/ag/Timeline/vue/index.ts',
 ]
 
+// Shared component files used by the onboarding V2 playbook (Progress replaces Timeline; no SelectionButtonGroup)
+const ONBOARDING_V2_SHARED_CORE_FILES = [
+  'src/components/ag/Alert/core/Alert.ts',
+  'src/components/ag/Alert/core/_Alert.ts',
+  'src/components/ag/Button/core/Button.ts',
+  'src/components/ag/Button/core/_Button.ts',
+  'src/components/ag/Icon/core/Icon.ts',
+  'src/components/ag/Icon/core/_Icon.ts',
+  'src/components/ag/Progress/core/Progress.ts',
+  'src/components/ag/Progress/core/_Progress.ts',
+  'src/components/ag/SelectionCard/core/SelectionCard.ts',
+  'src/components/ag/SelectionCard/core/_SelectionCard.ts',
+  'src/components/ag/SelectionCardGroup/core/SelectionCardGroup.ts',
+  'src/components/ag/SelectionCardGroup/core/_SelectionCardGroup.ts',
+  'src/components/ag/shared/CloseButton/CloseButton.ts',
+  'src/components/ag/shared/CloseButton/_CloseButton.ts',
+  'src/components/ag/shared/form-control-styles.ts',
+  'src/components/ag/shared/form-control-utils.ts',
+  'src/components/ag/styles/ag-tokens.css',
+  'src/components/ag/styles/ag-tokens-dark.css',
+  'src/components/ag/styles/skins-bundle.css',
+  'src/components/ag/styles/skin-switcher.css',
+  'src/components/ag/styles/motion.styles.ts',
+  'src/components/ag/styles/nav-button-styles.ts',
+  'src/components/ag/styles/nav-sublink-styles.ts',
+  'src/components/ag/styles/table.css',
+  'src/components/ag/types/fx.ts',
+  'src/components/ag/types/vue.d.ts',
+  'src/components/ag/utils/handleBackdropClick.ts',
+  'src/components/ag/utils/isElementInContainer.ts',
+  'src/components/ag/utils/positioning.ts',
+  'src/components/ag/utils/slot.ts',
+  'src/components/ag/utils/unique-id.ts',
+]
+
+// React wrapper files for onboarding V2
+const ONBOARDING_V2_REACT_WRAPPER_FILES = [
+  'src/components/ag/Alert/react/ReactAlert.tsx',
+  'src/components/ag/Alert/react/index.ts',
+  'src/components/ag/Button/react/ReactButton.tsx',
+  'src/components/ag/Button/react/index.ts',
+  'src/components/ag/Icon/react/ReactIcon.tsx',
+  'src/components/ag/Icon/react/index.ts',
+  'src/components/ag/Progress/react/ReactProgress.tsx',
+  'src/components/ag/Progress/react/index.ts',
+  'src/components/ag/SelectionCard/react/ReactSelectionCard.tsx',
+  'src/components/ag/SelectionCard/react/index.ts',
+  'src/components/ag/SelectionCardGroup/react/ReactSelectionCardGroup.tsx',
+  'src/components/ag/SelectionCardGroup/react/index.ts',
+]
+
+// Vue wrapper files for onboarding V2
+const ONBOARDING_V2_VUE_WRAPPER_FILES = [
+  'src/components/ag/Alert/vue/VueAlert.vue',
+  'src/components/ag/Alert/vue/index.ts',
+  'src/components/ag/Button/vue/VueButton.vue',
+  'src/components/ag/Button/vue/index.ts',
+  'src/components/ag/Icon/vue/VueIcon.vue',
+  'src/components/ag/Icon/vue/index.ts',
+  'src/components/ag/Progress/vue/VueProgress.vue',
+  'src/components/ag/Progress/vue/index.ts',
+  'src/components/ag/SelectionCard/vue/VueSelectionCard.vue',
+  'src/components/ag/SelectionCard/vue/index.ts',
+  'src/components/ag/SelectionCardGroup/vue/VueSelectionCardGroup.vue',
+  'src/components/ag/SelectionCardGroup/vue/index.ts',
+]
+
 // Shared component files used by the dashboard playbook
 const DASHBOARD_SHARED_CORE_FILES = [
   'src/components/ag/Accordion/core/Accordion.ts',
@@ -704,6 +771,67 @@ export const playbooksConfig: Record<string, PlaybookConfig> = {
         'src/skin-switcher.ts',
         // Component files (Lit uses core directly, no wrappers)
         ...ONBOARDING_SHARED_CORE_FILES,
+      ],
+    },
+    externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
+  },
+  'onboarding-v2': {
+    title: 'Onboarding Carousel Wizard V2',
+    basePath: 'onboarding',
+    frameworkDirs: {
+      react: 'react-example-v2',
+      vue: 'vue-example-v2',
+      lit: 'lit-example-v2',
+    },
+    frameworks: {
+      react: [
+        // Config files
+        'index.html',
+        'package.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.app.json',
+        'tsconfig.node.json',
+        'eslint.config.js',
+        // App files
+        'src/App.tsx',
+        'src/App.css',
+        'src/SkinSwitcher.tsx',
+        'src/index.css',
+        'src/main.tsx',
+        // Component files
+        ...ONBOARDING_V2_SHARED_CORE_FILES,
+        ...ONBOARDING_V2_REACT_WRAPPER_FILES,
+      ],
+      vue: [
+        // Config files
+        'index.html',
+        'package.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.app.json',
+        'tsconfig.node.json',
+        // App files
+        'src/App.vue',
+        'src/SkinSwitcher.vue',
+        'src/style.css',
+        'src/main.ts',
+        // Component files
+        ...ONBOARDING_V2_SHARED_CORE_FILES,
+        ...ONBOARDING_V2_VUE_WRAPPER_FILES,
+      ],
+      lit: [
+        // Config files
+        'index.html',
+        'package.json',
+        'tsconfig.json',
+        // App files
+        'src/index.css',
+        'src/onboarding-wizard.ts',
+        'src/skin-switcher.ts',
+        // Component files (Lit uses core directly, no wrappers)
+        ...ONBOARDING_V2_SHARED_CORE_FILES,
       ],
     },
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
