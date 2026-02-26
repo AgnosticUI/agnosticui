@@ -1,0 +1,238 @@
+import { LitElement, html, css } from 'lit';
+import { property } from 'lit/decorators.js';
+import { hasSlotContent } from '../../utils/slot';
+
+export type DividerJustify = 'center' | 'start' | 'end';
+export type DividerSize = 'default' | 'small' | 'large' | 'xlarge';
+export type DividerVariant = 'default' | 'success' | 'info' | 'warning' | 'error' | 'monochrome';
+
+/**
+ * @csspart ag-divider - The main divider container element
+ * @csspart ag-divider-content - The content container (when slotted content is provided)
+ */
+export interface DividerProps {
+  vertical?: boolean;
+  justify?: DividerJustify;
+  size?: DividerSize;
+  variant?: DividerVariant;
+}
+
+/**
+ * Divider component for visually separating content
+ *
+ * @element ag-divider
+ * @slot default - Optional content to display within the divider (text, icons, etc.)
+ */
+export class AgDivider extends LitElement implements DividerProps {
+  static styles = css`
+    :host {
+      display: block;
+    }
+
+    :host([is-vertical]) {
+      align-self: stretch;
+    }
+
+    .divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      background-color: var(--ag-border);
+      height: var(--ag-border-width-2);
+      flex-grow: 1;
+    }
+
+    /* Sizes - Horizontal */
+    .divider-small::before,
+    .divider-small::after {
+      height: var(--ag-border-width-1);
+    }
+
+    .divider-large::before,
+    .divider-large::after {
+      height: var(--ag-border-width-3);
+    }
+
+    .divider-xlarge::before,
+    .divider-xlarge::after {
+      height: 4px;
+    }
+
+    /* Justify */
+    .divider-justify-end::after,
+    .divider-justify-start::before {
+      flex-grow: 0;
+      flex-basis: 3%;
+    }
+
+    /* Content */
+    .divider-has-content {
+      padding-inline-start: var(--ag-space-4);
+      padding-inline-end: var(--ag-space-4);
+    }
+
+    /* Vertical */
+    .divider-vertical {
+      height: 100%;
+      margin: 0 var(--ag-space-4);
+      width: var(--ag-space-4);
+      flex-direction: column;
+    }
+
+    .divider-vertical::before,
+    .divider-vertical::after {
+      width: var(--ag-border-width-2);
+      height: auto;  /* Override the fixed height for vertical growth */
+    }
+
+    /* Sizes - Vertical */
+    .divider-vertical.divider-small::before,
+    .divider-vertical.divider-small::after {
+      width: var(--ag-border-width-1);
+    }
+
+    .divider-vertical.divider-large::before,
+    .divider-vertical.divider-large::after {
+      width: var(--ag-border-width-3);
+    }
+
+    .divider-vertical.divider-xlarge::before,
+    .divider-vertical.divider-xlarge::after {
+      width: 4px;
+    }
+
+    .divider-vertical .divider-has-content {
+      padding-inline-start: var(--ag-space-6);
+      padding-inline-end: var(--ag-space-6);
+      padding-block-start: var(--ag-space-3);
+      padding-block-end: var(--ag-space-3);
+    }
+
+    /* Variants */
+    .divider-warning::before,
+    .divider-warning::after {
+      background-color: var(--ag-warning);
+    }
+
+    .divider-warning .divider-content {
+      color: var(--ag-text-primary);
+    }
+
+    .divider-error::before,
+    .divider-error::after {
+      background-color: var(--ag-danger);
+    }
+
+    .divider-error .divider-content {
+      color: var(--ag-text-primary);
+    }
+
+    .divider-success::before,
+    .divider-success::after {
+      background-color: var(--ag-success);
+    }
+
+    .divider-success .divider-content {
+      color: var(--ag-text-primary);
+    }
+
+    .divider-info::before,
+    .divider-info::after {
+      background-color: var(--ag-info);
+    }
+
+    .divider-info .divider-content {
+      color: var(--ag-text-primary);
+    }
+
+    .divider-monochrome::before,
+    .divider-monochrome::after {
+      background-color: var(--ag-text-primary);
+    }
+
+    .divider-monochrome .divider-content {
+      color: var(--ag-text-primary);
+    }
+  `;
+
+  @property({ type: Boolean, attribute: 'is-vertical', reflect: true })
+  declare vertical: boolean;
+
+  @property({ type: String, reflect: true })
+  declare justify: DividerJustify;
+
+  @property({ type: String, reflect: true })
+  declare size: DividerSize;
+
+  @property({ type: String, reflect: true })
+  declare variant: DividerVariant;
+
+  @property({ type: Boolean, state: true })
+  private declare hasContent: boolean;
+
+  constructor() {
+    super();
+    this.vertical = false;
+    this.justify = 'center';
+    this.size = 'default';
+    this.variant = 'default';
+    this.hasContent = false;
+  }
+
+  private handleSlotChange(e: Event) {
+    this.hasContent = hasSlotContent(e.target as HTMLSlotElement);
+  }
+
+  private getClasses() {
+    const classes = ['divider'];
+
+    if (this.vertical) {
+      classes.push('divider-vertical');
+    }
+
+    if (this.justify !== 'center' && !this.vertical) {
+      classes.push(`divider-justify-${this.justify}`);
+    }
+
+    if (this.size !== 'default') {
+      classes.push(`divider-${this.size}`);
+    }
+
+    if (this.variant !== 'default') {
+      classes.push(`divider-${this.variant}`);
+    }
+
+    return classes.join(' ');
+  }
+
+  render() {
+    const orientation = this.vertical ? 'vertical' : 'horizontal';
+    const contentClasses = this.hasContent ? 'divider-content divider-has-content' : 'divider-content';
+
+    return html`
+      <div
+        class="${this.getClasses()}"
+        part="ag-divider"
+        role="separator"
+        aria-orientation="${orientation}"
+      >
+        <span class="${contentClasses}" part="ag-divider-content">
+          <slot @slotchange=${this.handleSlotChange}></slot>
+        </span>
+      </div>
+    `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'ag-divider': AgDivider;
+  }
+}

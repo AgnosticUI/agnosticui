@@ -1,0 +1,224 @@
+/* Reset and base styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   Login Page — Gradient Background + Geometric Shapes
+   ========================================================================== */
+
+.login-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--ag-blue-500) 0%, var(--ag-primary) 55%, var(--ag-blue-800) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ag-space-4);
+}
+
+/* Geometric background shapes */
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  display: block;
+}
+.bg-shape--1 { width: 480px; height: 480px; top: -120px; left: -160px; }
+.bg-shape--2 { width: 320px; height: 320px; bottom: -80px; right: -100px; }
+.bg-shape--3 { width: 200px; height: 200px; top: 40%; right: 12%; }
+.bg-shape--4 { width: 140px; height: 140px; bottom: 20%; left: 8%; }
+
+/* ==========================================================================
+   Floating Login Card — visible on all breakpoints
+   ========================================================================== */
+
+.login-card {
+  background: var(--ag-background-primary);
+  border-radius: var(--ag-radius-md);
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.18),
+    0 10px 40px rgba(0, 0, 0, 0.14);
+  max-width: 375px;
+  width: 100%;
+  padding: var(--ag-space-8);
+  position: relative;
+  z-index: 1;
+  color: var(--ag-text-primary);
+}
+
+@media (min-width: 640px) {
+  .login-card {
+    max-width: 425px;
+  }
+}
+
+/* ==========================================================================
+   Logo — centered
+   ========================================================================== */
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--ag-space-6);
+}
+
+.login-logo img {
+  height: var(--ag-space-6);
+  width: auto;
+}
+
+/* ==========================================================================
+   Title & Subtitle
+   ========================================================================== */
+
+.login-title {
+  font-family: 'Merriweather', serif;
+  font-size: var(--ag-font-size-2x);
+  font-weight: 400;
+  margin: 0 0 var(--ag-space-2) 0;
+  color: var(--ag-text-primary);
+  text-align: center;
+}
+
+.login-subtitle {
+  font-size: var(--ag-font-size-sm);
+  color: var(--ag-text-secondary);
+  text-align: center;
+  margin: 0 0 var(--ag-space-6) 0;
+}
+
+/* ==========================================================================
+   SSO Buttons — side-by-side row ABOVE credential fields
+   ========================================================================== */
+
+.sso-buttons {
+  display: flex;
+  gap: var(--ag-space-3);
+  margin-bottom: var(--ag-space-6);
+}
+
+.sso-buttons > * {
+  flex: 1;
+}
+
+.social-icon {
+  width: var(--ag-space-4);
+  height: var(--ag-space-4);
+  margin-right: var(--ag-space-2);
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   Divider
+   ========================================================================== */
+
+ag-divider {
+  margin-bottom: var(--ag-space-6);
+}
+
+/* ==========================================================================
+   Form Fields
+   ========================================================================== */
+
+.form-field {
+  margin-bottom: var(--ag-space-6);
+}
+
+.input-icon {
+  display: flex;
+  align-items: center;
+  color: var(--ag-text-secondary);
+}
+
+/* ==========================================================================
+   Auxiliary Row
+   ========================================================================== */
+
+.auxiliary-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--ag-space-2);
+  margin-bottom: var(--ag-space-6);
+}
+
+/* ==========================================================================
+   Login Button
+   ========================================================================== */
+
+.login-button {
+  width: 100%;
+  margin-bottom: var(--ag-space-6);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.login-footer {
+  font-size: var(--ag-font-size-sm);
+  color: var(--ag-text-primary);
+  text-align: center;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Header — dark mode toggle
+   ========================================================================== */
+
+.login-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: var(--ag-space-3) var(--ag-space-4);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.theme-toggle svg {
+  pointer-events: none;
+}
