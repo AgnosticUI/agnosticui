@@ -76,7 +76,7 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Playbooks',
+        text: 'AI Playbooks',
         items: [
           { text: 'Login Form', link: '/playbooks/login' },
           { text: 'Onboarding Wizard', link: '/playbooks/onboarding' },

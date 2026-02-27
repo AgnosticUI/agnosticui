@@ -3,6 +3,15 @@
 ## Project Overview
 AgnosticUI Local (v2) is a CLI-based UI component library that copies Lit web components directly into your project. Developers own the code, can customize it freely, and avoid dependency lock-in.
 
+## AI Playbooks (Generative UI Patterns)
+The project provides structured **AI Playbooks** designed for agentic and generative UI workflows. Each playbook resides in the `/v2/playbooks/` directory and includes a `PROMPT.md` file that provides LLMs with the specific context needed to assemble AgnosticUI primitives into complex views.
+
+- **Login Form**: `/v2/playbooks/login/` - Strategic patterns for authentication interfaces.
+- **Onboarding Wizard**: `/v2/playbooks/onboarding/` - Multi-step state management and flow.
+- **Discovery Dashboard**: `/v2/playbooks/dashboard/` - Layout orchestration for data-heavy views.
+- **Support Center**: `/v2/playbooks/support/` - Knowledge base and help desk interaction patterns.
+- **Data Grid**: `/v2/playbooks/grid/` - Complex table structures with sorting and filtering logic.
+
 ## Key Architecture
 - **Framework**: Built with Lit for web components
 - **Approach**: CLI-first tool that copies components to your project
