@@ -1,15 +1,26 @@
-# AgnosticUI Playbooks
+# AgnosticUI AI Playbooks
 
-Playbooks are complete, working example applications that demonstrate AgnosticUI components in realistic scenarios. Each playbook provides LLM prompts that can be run with Claude (or similar LLM like gemini-cli, Codex, etc.) to generate implementations for React, Vue, and Lit.
+This directory contains **AI Playbooks** designed to help developers and AI agents build complex interfaces using AgnosticUI primitives. Each playbook is a collection of architectural patterns and specialized prompt engineering instructions.
 
-## Available Playbooks
+## Generative UI Strategy
 
-| Playbook | Components | Narrative |
-|----------|-----------|-----------|
-| [Login](login/) | Button, Card, Checkbox, Divider, Image, Input, Link | User signs in |
-| [Onboarding](onboarding/) | Alert, Button, Icon, SelectionButton, SelectionCard, Timeline | New user setup wizard |
-| [Dashboard](dashboard/) | Accordion, Alert, Avatar, Badge, Breadcrumb, Button, Card, Divider, EmptyState, Flex, Header, IconButton, Progress, Sidebar, SkeletonLoader, Tabs, Tag, Toast | User's home screen |
-| [Support](support/) | Button, Combobox, Dialog, Drawer, Kbd, Menu, MessageBubble, Pagination, Popover, Radio, Rating, Select, Slider, Tabs, Toggle, Tooltip | User needs help |
+Unlike static templates, these playbooks center around a `PROMPT.md` file. These files provide LLMs (Large Language Models) with the precise semantic context, component APIs, and design tokens required to generate high-quality, framework-agnostic code.
+
+## Available AI Playbooks
+
+| Playbook                  | Components                                                                                                                                                    | Narrative                 |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| [Login](login/)           | Button, Card, Checkbox, Divider, Image, Input, Link                                                                                                           | User signs in             |
+| [Onboarding](onboarding/) | Alert, Button, Icon, SelectionButton, SelectionCard, Timeline                                                                                                 | New user setup wizard     |
+| [Dashboard](dashboard/)   | Accordion, Alert, Avatar, Badge, Breadcrumb, Button, Card, Divider, EmptyState, Flex, Header, IconButton, Progress, Sidebar, SkeletonLoader, Tabs, Tag, Toast | User's home screen        |
+| [Support](support/)       | Button, Combobox, Dialog, Drawer, Kbd, Menu, MessageBubble, Pagination, Popover, Radio, Rating, Select, Slider, Tabs, Toggle, Tooltip                         | User needs help           |
+| [Data Grid](grid/)        | Button, Checkbox, EmptyState, Flex, Icon, IconButton, Input, Pagination, Select, Spinner, Tag                                                                 | Complex data manipulation |
+
+## How to Use with AI Agents
+
+1.  **Context Loading**: Direct your AI agent (e.g., Cursor, Claude, Gemini, Windsurf, or other LLM) to read the relevant `PROMPT*.md` file in the playbook's directory.
+2.  **Generation**: Ask the agent to "Apply the AgnosticUI [Playbook Name] patterns to my specific feature."
+3.  **Refinement**: Use the architectural guidelines within each playbook to ensure the generated code maintains theme consistency and follows AgnosticUI's "Local-First" philosophy.
 
 ## Directory Structure
 
@@ -59,12 +70,14 @@ Playbooks use a **prompt-driven approach**:
 There are two types of examples:
 
 **Single-Framework** (`PROMPT-REACT.md`, `PROMPT-VUE.md`, `PROMPT-LIT.md`):
+
 - Use Playfair Display font
 - Apple + Google social buttons
 - `logo.svg` and `login-bg.jpg` assets
 - Output to `react/`, `vue/`, `lit/`
 
 **3-Frameworks** (`PROMPT-3-FRAMEWORKS.md`):
+
 - Use Merriweather font
 - Facebook + Google social buttons
 - `logo-3-frameworks.svg` and `login-bg-3-frameworks.jpg` assets
@@ -128,9 +141,11 @@ mkdir -p v2/playbooks/[name]/design
 Place shared assets in the `design/` directory:
 
 **Required:**
+
 - Design mockups (Desktop.png, Tablet.png, Phone.png, etc.)
 
 **Optional (varies by playbook):**
+
 - Icons (e.g., `google-icon.svg`, `apple-icon.svg`)
 - Logos (e.g., `logo.svg`, `logo-3-frameworks.svg`)
 - Background images (e.g., `login-bg.jpg`)
