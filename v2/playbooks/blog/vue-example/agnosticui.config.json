@@ -1,0 +1,161 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "vue",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Header": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Header/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Header/vue"
+      ]
+    },
+    "Avatar": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Avatar/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Avatar/vue"
+      ]
+    },
+    "Badge": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Badge/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Badge/vue"
+      ]
+    },
+    "Button": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Button/vue"
+      ]
+    },
+    "Divider": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Divider/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Divider/vue"
+      ]
+    },
+    "Input": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Input/vue"
+      ]
+    },
+    "Tag": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Tag/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Tag/vue"
+      ]
+    },
+    "Tabs": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Tabs/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Tabs/vue"
+      ]
+    },
+    "Toast": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Toast/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Toast/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Alert/vue"
+      ]
+    },
+    "ScrollProgress": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/ScrollProgress/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/ScrollProgress/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Progress/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Progress/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/ProgressRing/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/ProgressRing/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Badge/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Badge/vue"
+      ]
+    },
+    "ScrollToButton": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/ScrollToButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/ScrollToButton/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Button/vue"
+      ]
+    },
+    "Mark": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Mark/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Mark/vue"
+      ]
+    },
+    "AspectRatio": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/AspectRatio/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/AspectRatio/vue"
+      ]
+    },
+    "Loader": {
+      "added": "2026-02-28T14:30:01.687Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Loader/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/src/components/ag/Loader/vue"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/vue-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-28T14:29:59.966Z"
+  }
+}

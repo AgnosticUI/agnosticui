@@ -1,0 +1,161 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "react",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Header": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Header/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Header/react"
+      ]
+    },
+    "Avatar": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Avatar/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Avatar/react"
+      ]
+    },
+    "Badge": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Badge/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Badge/react"
+      ]
+    },
+    "Button": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Button/react"
+      ]
+    },
+    "Divider": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Divider/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Divider/react"
+      ]
+    },
+    "Input": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Input/react"
+      ]
+    },
+    "Tag": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Tag/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Tag/react"
+      ]
+    },
+    "Tabs": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Tabs/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Tabs/react"
+      ]
+    },
+    "Toast": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Toast/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Toast/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Alert/react"
+      ]
+    },
+    "ScrollProgress": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/ScrollProgress/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/ScrollProgress/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Progress/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Progress/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/ProgressRing/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/ProgressRing/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Badge/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Badge/react"
+      ]
+    },
+    "ScrollToButton": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/ScrollToButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/ScrollToButton/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Button/react"
+      ]
+    },
+    "Mark": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Mark/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Mark/react"
+      ]
+    },
+    "AspectRatio": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/AspectRatio/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/AspectRatio/react"
+      ]
+    },
+    "Loader": {
+      "added": "2026-02-28T14:29:38.926Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Loader/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/src/components/ag/Loader/react"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/react-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-28T14:29:28.160Z"
+  }
+}

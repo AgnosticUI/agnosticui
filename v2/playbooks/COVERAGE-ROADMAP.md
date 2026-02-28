@@ -63,7 +63,7 @@ operations — all three components fit without any narrative stretch:
 - **ProgressRing** — shows bulk operation progress (e.g. "Deleting 12 rows…") in the TanStack panel
 - **IntlFormatter** — formats price columns (USD) and date columns in all three panels
 
-Output directories: `react-example-v2/`, `vue-example-v2/`, `lit-example-v2/`
+See: v2/playbooks/CREATING-VARIANTS.md for how to create a new variant.
 
 ---
 

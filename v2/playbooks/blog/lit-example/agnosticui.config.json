@@ -1,0 +1,142 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Header": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Header/core"
+      ]
+    },
+    "Avatar": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Avatar/core"
+      ]
+    },
+    "Badge": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Badge/core"
+      ]
+    },
+    "Button": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Button/core"
+      ]
+    },
+    "Divider": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Divider/core"
+      ]
+    },
+    "Input": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Input/core"
+      ]
+    },
+    "Tag": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Tag/core"
+      ]
+    },
+    "Tabs": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Tabs/core"
+      ]
+    },
+    "Toast": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Toast/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Alert/core"
+      ]
+    },
+    "ScrollProgress": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/ScrollProgress/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Progress/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/ProgressRing/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Badge/core"
+      ]
+    },
+    "ScrollToButton": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/ScrollToButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Button/core"
+      ]
+    },
+    "Mark": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Mark/core"
+      ]
+    },
+    "AspectRatio": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/AspectRatio/core"
+      ]
+    },
+    "Loader": {
+      "added": "2026-02-28T14:30:17.619Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/src/components/ag/Loader/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/blog/lit-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-28T14:30:15.929Z"
+  }
+}
