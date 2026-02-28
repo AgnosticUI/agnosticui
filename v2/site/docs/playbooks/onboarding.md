@@ -92,6 +92,74 @@ You can follow these same steps for the framework-specific prompts located in th
 These versions allow you to customize the onboarding wizard for your specific needs.
 :::
 
+---
+
+## Variant II — Carousel Slider Wizard
+
+Distributes interest selection across three focused category steps (6 items each) with a **momentum-based, one-question-per-screen** carousel UX. Replaces the Timeline step indicator with a linear AG Progress bar, inserts a mini confirmation interstitial at the halfway point, and adds a dark mode header toggle and SkinSwitcher FAB.
+
+<PlaybookStackBlitz playbook="onboarding-v2" />
+
+<div class="playbook-screenshots mbs6 mbe6">
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Mobile-Step1-v2.png" alt="Mobile - Choose your path" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile - Step 1: Choose Path</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Mobile-Step2a-v2.png" alt="Mobile - Front-end Frameworks" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile - Step 2: Frameworks</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Mobile-Step3-v2.png" alt="Mobile - Interstitial" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile - Step 3: Interstitial</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Mobile-Step4a-v2.png" alt="Mobile - Design & Styling" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile - Step 4: Design</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Mobile-Step5a-v2.png" alt="Mobile - Engineering & Quality" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile - Step 5: Engineering</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Mobile-Step6-v2.png" alt="Mobile - Review & Start" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile - Step 6: Review</p>
+  </div>
+</div>
+
+<div class="playbook-screenshots mbs6 mbe6">
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Desktop-Step1a-v2.png" alt="Desktop - Choose your path" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop - Step 1: Choose Path</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Desktop-Step2a-v2.png" alt="Desktop - Front-end Frameworks" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop - Step 2: Frameworks</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Desktop-Step3-v2.png" alt="Desktop - Interstitial" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop - Step 3: Interstitial</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Desktop-Step4a-v2.png" alt="Desktop - Design & Styling" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop - Step 4: Design</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Desktop-Step5a-v2.png" alt="Desktop - Engineering & Quality" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop - Step 5: Engineering</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/onboarding/Desktop-Step6-v2.png" alt="Desktop - Review & Start" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop - Step 6: Review</p>
+  </div>
+</div>
+
+::: tip Variant II Prompt
+To generate or customize this variant with an LLM, use [`PROMPT-3-FRAMEWORKS-V2.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/onboarding/PROMPT-3-FRAMEWORKS-V2.md).
+:::
+
+---
+
 ## Components Used
 
 | Component                | Purpose                                        |

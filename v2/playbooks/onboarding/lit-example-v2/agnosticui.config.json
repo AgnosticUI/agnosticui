@@ -1,0 +1,66 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2026-02-26T17:07:23.716Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/lit-example-v2/src/components/ag/Button/core"
+      ]
+    },
+    "Alert": {
+      "added": "2026-02-26T17:07:23.716Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/lit-example-v2/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/lit-example-v2/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Progress": {
+      "added": "2026-02-26T17:07:23.716Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/lit-example-v2/src/components/ag/Progress/core"
+      ]
+    },
+    "Icon": {
+      "added": "2026-02-26T17:07:23.716Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/lit-example-v2/src/components/ag/Icon/core"
+      ]
+    },
+    "SelectionCardGroup": {
+      "added": "2026-02-26T17:07:23.716Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/lit-example-v2/src/components/ag/SelectionCardGroup/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/lit-example-v2/src/components/ag/SelectionCard/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/lit-example-v2/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-26T17:07:20.862Z"
+  }
+}

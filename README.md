@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-<p align="center">Built on Lit Web Components &nbsp;·&nbsp; Copy the source &nbsp;·&nbsp; Own the code &nbsp;·&nbsp; Works with AI tools, agent-driven UIs, and prompt-ready workflows</p>
+<p align="center">Copy the source &nbsp;·&nbsp; Own the code &nbsp;·&nbsp; Framework-agnostic &nbsp;·&nbsp; Built for humans and AI agents</p>
 
 <p align="center">
   <strong>One component library. Every framework.</strong>
@@ -24,9 +24,15 @@
 
 ---
 
-## The problem with most component libraries
+## Source-first architecture
 
-Your AI tools can't see their source. So, they hallucinate props, invent APIs, and generate code that looks right but isn't. AgnosticUI works differently, enabling **prompt-driven, agent-friendly workflows**.
+AgnosticUI components are copied into your project at install time.
+
+They live in your repo (not hidden inside `node_modules`):
+
+- Full control over the source
+- Native integration with your framework
+- AI-readable, high-fidelity context
 
 ---
 
@@ -70,7 +76,7 @@ This is the architecture for the next era of development: **context-aware, frame
 
 ## Built once. Runs everywhere.
 
-AgnosticUI's components are authored as **Lit Web Components** — a standards-based layer over native Custom Elements. The CLI wraps them for your framework at copy time.
+AgnosticUI's components are authored as **Lit Web Components**, a standards-based layer over native Custom Elements. The CLI wraps them for your framework at copy time.
 
 <p align="center">
   <picture>
@@ -98,28 +104,28 @@ Your design system doesn't fork when your tech stack does. Supports **agent-gene
 
 Playbooks (Login Form, Onboarding Wizard, Discovery Dashboard, Support Center, Data Grid) demonstrate **modular, prompt-driven UI components**. Each Playbook can be used in **agent systems**, for **context-aware applications**, or to create **generative UI patterns**.
 
-| Playbook                                                               | What it builds                                                                                                               |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| [Login Form](https://agnosticui.com/playbooks/login.html)              | Responsive login — mobile, floating card, two-column desktop; works with AI prompt-driven generation                         |
-| [Onboarding Wizard](https://agnosticui.com/playbooks/onboarding.html)  | Multi-step flow with progress, validation, and skip logic; supports agent-assisted workflows                                 |
-| [Discovery Dashboard](https://agnosticui.com/playbooks/dashboard.html) | Dashboard shell with header, sidebar, and data regions — ideal for agent-generated interfaces                                |
-| [Support Center](https://agnosticui.com/playbooks/support.html)        | Help center with search, categories, and article layout; integrates with prompt-driven workflows                             |
-| [Data Grid](https://www.agnosticui.com/playbooks/grid.html)            | Responsive, interactive data grid with sorting, filtering, and multiple view modes — compatible with agent-driven interfaces |
+| Playbook                                                               | What it builds                                                                                                              |
+| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| [Login Form](https://agnosticui.com/playbooks/login.html)              | Responsive login: mobile, floating card, two-column desktop; works with AI prompt-driven generation                         |
+| [Onboarding Wizard](https://agnosticui.com/playbooks/onboarding.html)  | Multi-step flow with progress, validation, and skip logic; supports agent-assisted workflows                                |
+| [Discovery Dashboard](https://agnosticui.com/playbooks/dashboard.html) | Dashboard shell with header, sidebar, and data regions — ideal for agent-generated interfaces                               |
+| [Support Center](https://agnosticui.com/playbooks/support.html)        | Help center with search, categories, and article layout; integrates with prompt-driven workflows                            |
+| [Data Grid](https://www.agnosticui.com/playbooks/grid.html)            | Responsive, interactive data grid with sorting, filtering, and multiple view modes, compatible with agent-driven interfaces |
 
 Each Playbook on the docs site includes live StackBlitz examples for React, Vue, and Lit, and ships with:
 
-- **`PROMPT-3-FRAMEWORKS.md`** — one prompt to generate the pattern across all three frameworks
+- **`PROMPT-3-FRAMEWORKS.md`**: one prompt to generate the pattern across all three frameworks
 - **Skin switcher** to preview your theme tokens instantly
 
-Drop a Playbook prompt into Cursor or Claude Code and watch it assemble `Input`, `Button`, `Card`, and `FormGroup` correctly on the first try — **fully prompt-ready for agent-driven UI generation**.
+**Fully prompt-ready for agent-driven UI generation**. Drop a Playbook prompt into Cursor, Claude Code, or Copilot and watch it assemble `Input`, `Button`, `Card`, and `FormGroup` correctly on the first try — because it has the full recipe, not just a component reference.
 
-The prompts are yours to adapt — feed one to your LLM as a crash course in AgnosticUI's patterns, fork it for your own stack, or use it as a blueprint for writing Playbooks around your own UI patterns.
+The prompts are yours to adapt. Feed one to your LLM as a crash course in AgnosticUI's patterns, fork it for your own stack, or use it as a blueprint for writing Playbooks around your own UI patterns.
 
 ---
 
 ## Theme skins via CSS custom properties
 
-AgnosticUI components expose their entire visual surface through CSS custom properties. Swap a skin and every component updates — no code changes, no find-and-replace.
+AgnosticUI components expose their entire visual surface through CSS custom properties. Swap a skin and every component updates; no code changes, no find-and-replace.
 
 ```css
 /* Base tokens are required, then layer your skin on top */
@@ -173,7 +179,12 @@ After running `add`, your terminal prints the exact import path for your project
 
 ## Accessibility first, not last
 
-Every component ships with correct ARIA roles, keyboard navigation, focus management, reduced motion support, and AA-validated color contrast. Not bolted on — part of the component contract every skin and framework wrapper must satisfy.
+- Semantic HTML
+- WAI-ARIA patterns validated
+- Keyboard navigation across all interactive components
+- AA-validated color contrast
+- Reduced motion support
+- Focus management built in
 
 ---
 

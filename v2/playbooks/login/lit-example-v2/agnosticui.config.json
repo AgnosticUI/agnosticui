@@ -1,0 +1,88 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Button": {
+      "added": "2026-02-25T23:40:05.249Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example-v2/src/components/ag/Button/core"
+      ]
+    },
+    "Input": {
+      "added": "2026-02-25T23:40:05.250Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example-v2/src/components/ag/Input/core"
+      ]
+    },
+    "Card": {
+      "added": "2026-02-25T23:40:05.250Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example-v2/src/components/ag/Card/core"
+      ]
+    },
+    "Image": {
+      "added": "2026-02-25T23:40:05.250Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example-v2/src/components/ag/Image/core"
+      ]
+    },
+    "Link": {
+      "added": "2026-02-25T23:40:05.250Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example-v2/src/components/ag/Link/core"
+      ]
+    },
+    "Checkbox": {
+      "added": "2026-02-25T23:40:05.250Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example-v2/src/components/ag/Checkbox/core"
+      ]
+    },
+    "Divider": {
+      "added": "2026-02-25T23:40:05.250Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example-v2/src/components/ag/Divider/core"
+      ]
+    },
+    "Icon": {
+      "added": "2026-02-25T23:40:05.250Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example-v2/src/components/ag/Icon/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/login/lit-example-v2/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-25T23:40:03.470Z"
+  }
+}
