@@ -1,0 +1,164 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Header": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Header/core"
+      ]
+    },
+    "Breadcrumb": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Breadcrumb/core"
+      ]
+    },
+    "Avatar": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Avatar/core"
+      ]
+    },
+    "Button": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Button/core"
+      ]
+    },
+    "IconButton": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/IconButton/core"
+      ]
+    },
+    "Input": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Input/core"
+      ]
+    },
+    "Select": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Select/core"
+      ]
+    },
+    "Checkbox": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Checkbox/core"
+      ]
+    },
+    "Dialog": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Dialog/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Pagination": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Pagination/core"
+      ]
+    },
+    "Tag": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Tag/core"
+      ]
+    },
+    "Toast": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Toast/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Alert/core"
+      ]
+    },
+    "EmptyState": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/EmptyState/core"
+      ]
+    },
+    "Menu": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Menu/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Button/core"
+      ]
+    },
+    "Spinner": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/Spinner/core"
+      ]
+    },
+    "ProgressRing": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/ProgressRing/core"
+      ]
+    },
+    "IntlFormatter": {
+      "added": "2026-02-28T13:23:57.925Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/src/components/ag/IntlFormatter/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/lit-example-v2/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-28T13:23:56.226Z"
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "react",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Header": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Header/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Header/react"
+      ]
+    },
+    "Breadcrumb": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Breadcrumb/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Breadcrumb/react"
+      ]
+    },
+    "Avatar": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Avatar/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Avatar/react"
+      ]
+    },
+    "Button": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Button/react"
+      ]
+    },
+    "IconButton": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/IconButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/IconButton/react"
+      ]
+    },
+    "Input": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Input/react"
+      ]
+    },
+    "Select": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Select/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Select/react"
+      ]
+    },
+    "Checkbox": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Checkbox/react"
+      ]
+    },
+    "Dialog": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Dialog/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Dialog/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/shared/CloseButton"
+      ]
+    },
+    "Pagination": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Pagination/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Pagination/react"
+      ]
+    },
+    "Tag": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Tag/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Tag/react"
+      ]
+    },
+    "Toast": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Toast/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Toast/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/shared/CloseButton",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Alert/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Alert/react"
+      ]
+    },
+    "EmptyState": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/EmptyState/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/EmptyState/react"
+      ]
+    },
+    "Menu": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Menu/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Menu/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Button/react"
+      ]
+    },
+    "Spinner": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Spinner/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/Spinner/react"
+      ]
+    },
+    "ProgressRing": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/ProgressRing/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/ProgressRing/react"
+      ]
+    },
+    "IntlFormatter": {
+      "added": "2026-02-28T13:23:02.102Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/IntlFormatter/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/src/components/ag/IntlFormatter/react"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/grid/react-example-v2/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-02-28T13:22:46.428Z"
+  }
+}

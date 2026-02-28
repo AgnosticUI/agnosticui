@@ -1,0 +1,22 @@
+{
+  "name": "lit-example-v2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.5",
+    "@tanstack/table-core": "^8.21.3",
+    "agnosticui-core": "file:../../../lib/agnosticui-core-2.0.0-alpha.15.tgz",
+    "focus-trap": "^8.0.0",
+    "lit": "^3.3.1"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1"
+  }
+}
