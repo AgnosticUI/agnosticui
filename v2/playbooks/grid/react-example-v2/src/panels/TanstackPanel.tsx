@@ -51,6 +51,8 @@ function colClass(colId: string): string {
   if (colId === 'category') return ' col-category'
   if (colId === 'price') return ' col-price'
   if (colId === 'date') return ' col-added'
+  if (colId === 'status') return ' col-status'
+  if (colId === 'actions') return ' col-actions'
   return ''
 }
 

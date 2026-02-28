@@ -199,6 +199,19 @@ th.col-added {
   text-align: right;
 }
 
+/* V2: Reset right-align on mobile where layout switches to cards;
+   center-align status tag and actions button vertically */
+@media (max-width: 767px) {
+  td.col-price,
+  td.col-added {
+    text-align: left;
+  }
+  td.col-status,
+  td.col-actions {
+    align-items: center;
+  }
+}
+
 /* V2: Tabular numbers for price column */
 td.col-price ag-intl-formatter {
   font-variant-numeric: tabular-nums;
