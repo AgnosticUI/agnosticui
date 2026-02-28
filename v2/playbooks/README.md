@@ -2,10 +2,6 @@
 
 This directory contains **AI Playbooks** designed to help developers and AI agents build complex interfaces using AgnosticUI primitives. Each playbook is a collection of architectural patterns and specialized prompt engineering instructions.
 
-## Generative UI Strategy
-
-Unlike static templates, these playbooks center around a `PROMPT.md` file. These files provide LLMs (Large Language Models) with the precise semantic context, component APIs, and design tokens required to generate high-quality, framework-agnostic code.
-
 ## Available AI Playbooks
 
 | Playbook                  | Components                                                                                                                                                    | Narrative                 |
@@ -15,6 +11,8 @@ Unlike static templates, these playbooks center around a `PROMPT.md` file. These
 | [Dashboard](dashboard/)   | Accordion, Alert, Avatar, Badge, Breadcrumb, Button, Card, Divider, EmptyState, Flex, Header, IconButton, Progress, Sidebar, SkeletonLoader, Tabs, Tag, Toast | User's home screen        |
 | [Support](support/)       | Button, Combobox, Dialog, Drawer, Kbd, Menu, MessageBubble, Pagination, Popover, Radio, Rating, Select, Slider, Tabs, Toggle, Tooltip                         | User needs help           |
 | [Data Grid](grid/)        | Button, Checkbox, EmptyState, Flex, Icon, IconButton, Input, Pagination, Select, Spinner, Tag                                                                 | Complex data manipulation |
+| [Form Association](form-association/) | Button, Card, Divider, Input | Contact form demonstrating FACE — native FormData, form.reset(), constraint validation |
+Unlike static templates, these playbooks center around a `PROMPT.md` file. These files provide LLMs (Large Language Models) with the precise semantic context, component APIs, and design tokens required to generate high-quality, framework-agnostic code.
 
 ## How to Use with AI Agents
 
@@ -31,7 +29,8 @@ v2/playbooks/
 ├── login/                     # Login form playbook
 ├── onboarding/                # Onboarding wizard playbook
 ├── dashboard/                 # Discovery dashboard playbook
-└── support/                   # Support center playbook
+├── support/                   # Support center playbook
+└── form-association/          # FACE contact form playbook (PROMPT files only)
     │
     │ # PROMPTS (input — run these with Claude or another LLM)
     ├── PROMPT-3-FRAMEWORKS.md # Builds all 3 frameworks → react-example/, vue-example/, lit-example/
