@@ -100,5 +100,5 @@ claude  # or your LLM of choice
 
 ## Further Reading
 
-- [`FACE-NOTES.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/components/Input/FACE-NOTES.md) — Implementation notes for `ag-input`, IOC options for custom validation messages
+- [`FACE-NOTES.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/components/FACE-NOTES.md) — Implementation notes for `ag-input`, IOC options for custom validation messages
 - [`FACE-PLANNING.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/components/FACE-PLANNING.md) — Roadmap for applying FACE to `ag-checkbox`, `ag-select`, `ag-radio`, and others
