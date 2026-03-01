@@ -1,7 +1,7 @@
 export const hero = {
   badge: "v2.0 Now Available",
   headline: "Build Once,\nRun Everywhere",
-  subheadline: "AgnosticUI delivers production-ready components that work identically in React, Vue, and Lit — powered by a single CSS token system.",
+  subheadline: "AgnosticUI delivers production-ready components working identically in React, Vue, and Lit via a single CSS token system.",
   primaryCta: "Get Started Free",
   secondaryCta: "View Docs",
 }
