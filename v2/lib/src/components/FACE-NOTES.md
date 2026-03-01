@@ -444,6 +444,67 @@ restores both `checked` and `indeterminate` to false.
 
 ---
 
+## AgSelect: Multi-Value Submission and a Wider Helper
+
+AgSelect introduced two things the previous components hadn't needed.
+
+### The FormData Overload
+
+`setFormValue()` has three signatures. The one we've used so far takes a string (or null).
+For multi-select, a single string isn't enough — the user may have several options selected,
+all under the same key. `setFormValue()` also accepts a `FormData` object for exactly this:
+
+```typescript
+private _syncFormValue(): void {
+  if (!this.selectElement) return;
+  if (this.multiple) {
+    const formData = new FormData();
+    Array.from(this.selectElement.selectedOptions).forEach(opt => {
+      formData.append(this.name, opt.value);
+    });
+    this._internals.setFormValue(formData);
+  } else {
+    this._internals.setFormValue(this.selectElement.value || '');
+  }
+}
+```
+
+This matches how a native `<select multiple>` works: all selected values are submitted
+under the same `name` key, producing an array on the server side.
+
+It's also worth separating `_syncFormValue()` from `_syncValidity()` as distinct private
+methods. AgInput called them together in a single `_syncValidity()` call, but here the
+form value logic is substantive enough to merit its own name — and `formResetCallback`
+needs to call them independently anyway.
+
+### Widening syncInnerInputValidity
+
+The `syncInnerInputValidity` helper was typed for `HTMLInputElement | HTMLTextAreaElement`.
+An `HTMLSelectElement` has the same `.validity` and `.validationMessage` properties, so
+widening the type was a one-line change. The delegation strategy isn't tied to `<input>` —
+any native form element with a `ValidityState` can serve as the validation source.
+
+### Resetting to Default Selected
+
+`option.defaultSelected` reflects the `selected` attribute as originally parsed from HTML.
+It doesn't change when the user makes a selection. That makes it the correct anchor for
+`formResetCallback`:
+
+```typescript
+formResetCallback(): void {
+  if (this.selectElement) {
+    Array.from(this.selectElement.options).forEach(opt => (opt.selected = opt.defaultSelected));
+  }
+  this._syncFormValue();
+  this._internals.setValidity({});
+}
+```
+
+This matches native `<select>` behavior: form reset restores to however the HTML was
+originally written, not to "nothing selected."
+
+---
+
 ## What We Skipped and Why
 
 ### `formAssociatedCallback(form)`

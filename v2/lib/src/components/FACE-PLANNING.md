@@ -23,22 +23,15 @@ implementation pattern.
 | Component | Issue | Notes |
 |-----------|-------|-------|
 | `AgInput` | #274 | Includes textarea mode; value submission, reset, disabled, constraint validation |
+| `AgToggle` | #301 | Direct validity (no inner input); null when unchecked; matches native checkbox semantics |
+| `AgCheckbox` | #303 | Delegation via inner `<input type="checkbox">`; null when unchecked; indeterminate treated as unchecked |
+| `AgSelect` | #305 | Delegation via inner `<select>`; `FormData` overload for multi-select; `defaultSelected` reset |
 
 ---
 
 ### 🔲 Pending — Straightforward Lift
 
-These components follow the same basic FACE pattern as `AgInput`.
-
-#### `AgCheckbox` (`components/Checkbox/`)
-
-- **Form value:** `"on"` when checked (matching native checkbox), or the `value` attribute
-- **Additional FACE work:**
-  - `get checked()` / `set checked()` getter-setter pair
-  - `formResetCallback()` restores `defaultChecked` state
-  - `click()` method to toggle checked state programmatically
-  - `setFormValue(checked ? value : null)` — null excludes it from FormData (native behavior)
-- **Complexity:** Medium. Checkbox semantics (indeterminate, defaultChecked) add surface area.
+These components follow the same basic FACE pattern as established above.
 
 #### `AgRadio` (`components/Radio/`)
 
@@ -49,20 +42,6 @@ These components follow the same basic FACE pattern as `AgInput`.
   - Click handling must uncheck sibling radios with the same `name` in the same form
 - **Complexity:** High. Radio group coordination across elements requires careful
   event-based communication or a shared group registry.
-
-#### `AgToggle` (`components/Toggle/`)
-
-- Functionally similar to a checkbox (on/off)
-- **Form value:** `"on"` or `null` (same as checkbox)
-- **Complexity:** Low-Medium. Same pattern as AgCheckbox.
-
-#### `AgSelect` (`components/Select/`)
-
-- **Form value:** The selected option's `value`
-- **Additional FACE work:**
-  - Multi-select: `setFormValue(FormData)` — use `FormData` overload to submit multiple values
-  - `formResetCallback()` restores `defaultValue` / `defaultSelected`
-- **Complexity:** Medium. Multi-select adds complexity.
 
 ---
 

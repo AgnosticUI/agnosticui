@@ -40,11 +40,11 @@ type Constructor<T = {}> = new (...args: any[]) => T;
  * Call this on every `input` and `change` event, and once after `firstUpdated`.
  *
  * @param internals - The ElementInternals handle from attachInternals()
- * @param inputEl   - The inner native input or textarea element
+ * @param inputEl   - The inner native input, textarea, or select element
  */
 export function syncInnerInputValidity(
   internals: ElementInternals,
-  inputEl: HTMLInputElement | HTMLTextAreaElement | null | undefined
+  inputEl: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null | undefined
 ): void {
   if (!inputEl) return;
 
