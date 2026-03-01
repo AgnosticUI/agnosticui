@@ -12,6 +12,7 @@ FACE-enabled inputs for validation and submission.
 - Iterating `form.elements` to validate all fields programmatically
 - Native `form.reset()` restoring all inputs to their default state
 - `required` and `type="email"` constraint validation via FACE
+- `validationMessages` prop overriding built-in English fallback strings (i18n)
 - Accessible error messages announced by screen readers via `role="alert"`
 
 ---
@@ -41,7 +42,7 @@ cd ..
 ```bash
 cd lit-example
 npx agnosticui-cli init --framework lit --skip-prompts
-npx agnosticui-cli add button input card divider
+npx agnosticui-cli add button input card divider toggle selection-button-group selection-button
 cd ..
 ```
 
@@ -61,6 +62,44 @@ Build a `<contact-form>` Lit component containing a **Contact Form** with:
 | Email Address | `email` | `email` | `required` |
 | Phone | `phone` | `tel` | optional |
 | Message | `message` | `textarea` | `required` |
+| Newsletter Frequency | `frequency` | selection-button-group | `required` — uses `validationMessages` |
+| Terms & Conditions | `terms` | toggle | `required` — uses `validationMessages` |
+
+The "Newsletter Frequency" field uses `<ag-selection-button-group>` (type="radio") with three
+options. Set `.validationMessages` as a DOM property:
+
+```ts
+html`
+  <ag-selection-button-group
+    name="frequency"
+    legend="How often would you like to hear from us?"
+    .required=${true}
+    .validationMessages=${{ valueMissing: "Please select how often you'd like to hear from us." }}
+  >
+    <ag-selection-button value="weekly" label="Weekly">Weekly</ag-selection-button>
+    <ag-selection-button value="monthly" label="Monthly">Monthly</ag-selection-button>
+    <ag-selection-button value="major" label="Only major announcements">Only major announcements</ag-selection-button>
+  </ag-selection-button-group>
+`
+```
+
+The "Terms & Conditions" field uses `<ag-toggle>` (a direct-validity FACE component).
+Set `.validationMessages` as a property to override the built-in fallback:
+
+```ts
+// In Lit template
+html`
+  <ag-toggle
+    name="terms"
+    label="I agree to the terms and conditions"
+    .required=${true}
+    .validationMessages=${{ valueMissing: 'Please accept the terms and conditions to continue.' }}
+  ></ag-toggle>
+`
+```
+
+This demonstrates `validationMessages` in a real form context: the custom string replaces
+the generic `"Please check this field."` that the browser would otherwise show.
 
 The form has two actions:
 - **Send Message** — submits the form, validates all fields, shows collected data
@@ -103,10 +142,25 @@ private _validateAll(form: HTMLFormElement): boolean {
 }
 ```
 
-### 3. Native Form Reset
+### 3. `validationMessages` — Overriding Built-in Fallback Strings
 
-Call `form.reset()` on the clear button. `ag-input`'s `formResetCallback()` fires
-automatically, clearing all values:
+Five AgnosticUI FACE components (`ag-toggle`, `ag-rating`, `ag-selection-button-group`,
+`ag-selection-card-group`, `ag-combobox`) implement constraint validation directly via
+`this._internals.setValidity()`. They ship with English fallback strings like
+`"Please check this field."`. Set `.validationMessages` as a DOM property:
+
+```ts
+// Object keys match ValidityState flag names
+.validationMessages=${{ valueMissing: 'Please accept the terms and conditions to continue.' }}
+```
+
+`ag-input` does NOT use `validationMessages` — it delegates to the browser's inner
+`<input>` element, so native constraint messages appear automatically.
+
+### 4. Native Form Reset
+
+Call `form.reset()` on the clear button. Both `ag-input`'s and `ag-toggle`'s
+`formResetCallback()` fire automatically, clearing all values:
 
 ```ts
 private _handleReset() {
@@ -139,6 +193,11 @@ private _handleReset() {
 │  │  [________________________]        │  │
 │  │  [________________________]        │  │
 │  │  [________________________]        │  │
+│  │                                    │  │
+│  │  How often would you like to hear? *│  │
+│  │  [Weekly] [Monthly] [Major only]   │  │
+│  │                                    │  │
+│  │  [○] I agree to the terms *        │  │
 │  │                                    │  │
 │  │  [ Clear ]  [ Send Message → ]     │  │
 │  └────────────────────────────────────┘  │
@@ -188,7 +247,10 @@ Use `css` tagged template with design tokens:
 
 | Tag | Import | Usage |
 |-----|--------|-------|
-| `<ag-input>` | `../components/ag/Input/core/Input.js` | All form fields |
+| `<ag-input>` | `../components/ag/Input/core/Input.js` | Text, email, tel, textarea fields |
+| `<ag-selection-button-group>` | `../components/ag/SelectionButtonGroup/core/SelectionButtonGroup.js` | Newsletter frequency (radio, with `.validationMessages`) |
+| `<ag-selection-button>` | `../components/ag/SelectionButton/core/SelectionButton.js` | Individual frequency options |
+| `<ag-toggle>` | `../components/ag/Toggle/core/Toggle.js` | Terms & Conditions (with `.validationMessages`) |
 | `<ag-button>` | `../components/ag/Button/core/Button.js` | Submit and clear |
 | `<ag-card>` | `../components/ag/Card/core/Card.js` | Form container |
 | `<ag-divider>` | `../components/ag/Divider/core/Divider.js` | Separator |
@@ -199,8 +261,10 @@ Use `css` tagged template with design tokens:
 
 - [ ] Submitting with empty required fields shows browser validation tooltips
 - [ ] Submitting with valid data shows a result card with the collected `FormData` values
-- [ ] Clear button resets all fields to empty via `form.reset()`
+- [ ] Clear button resets all fields to empty via `form.reset()` (including the toggle)
 - [ ] Email field rejects non-email values using native `type="email"` FACE constraint
 - [ ] Phone field is optional — form submits without it
+- [ ] Newsletter frequency is required — submitting with no selection shows the custom `.validationMessages.valueMissing` string, not the generic built-in fallback
+- [ ] Terms toggle is required — submitting unchecked shows the custom `.validationMessages.valueMissing` string, not the generic built-in fallback
 - [ ] All labels are visible and associated with their inputs
 - [ ] Error messages are rendered with `role="alert"` for screen reader announcements

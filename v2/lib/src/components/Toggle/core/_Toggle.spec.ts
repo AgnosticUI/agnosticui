@@ -941,4 +941,27 @@ describe('AgToggle', () => {
       expect(element.checked).toBe(true);
     });
   });
+
+  describe('validationMessages', () => {
+    it('should use default validationMessage when validationMessages not set', async () => {
+      const el = document.createElement('ag-toggle') as AgToggle;
+      el.label = 'Test';
+      el.required = true;
+      document.body.appendChild(el);
+      await el.updateComplete;
+      expect(el.validationMessage).toBe('Please check this field.');
+      document.body.removeChild(el);
+    });
+
+    it('should use custom validationMessage when validationMessages.valueMissing is set', async () => {
+      const el = document.createElement('ag-toggle') as AgToggle;
+      el.label = 'Test';
+      el.required = true;
+      el.validationMessages = { valueMissing: 'Custom message' };
+      document.body.appendChild(el);
+      await el.updateComplete;
+      expect(el.validationMessage).toBe('Custom message');
+      document.body.removeChild(el);
+    });
+  });
 });

@@ -11,6 +11,7 @@
     :values="values"
     .disabled="disabled"
     .required="required"
+    .validationMessages="validationMessages"
     @selection-change="handleSelectionChange"
     v-bind="$attrs"
   >
@@ -27,6 +28,7 @@ import type {
   SelectionButtonGroupSize,
   SelectionButtonGroupShape,
 } from '../core/SelectionButtonGroup';
+import type { ValidationMessages } from '../../../shared/face-mixin';
 
 export interface VueSelectionButtonGroupProps {
   /** Selection mode: 'radio' (single) or 'checkbox' (multiple) */
@@ -51,6 +53,7 @@ export interface VueSelectionButtonGroupProps {
   disabled?: boolean;
   /** Require at least one selection before the form can be submitted */
   required?: boolean;
+  validationMessages?: ValidationMessages;
 }
 
 withDefaults(defineProps<VueSelectionButtonGroupProps>(), {

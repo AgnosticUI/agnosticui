@@ -8,6 +8,7 @@
     :values="values"
     .disabled="disabled"
     .required="required"
+    .validationMessages="validationMessages"
     @selection-change="handleSelectionChange"
     v-bind="$attrs"
   >
@@ -18,6 +19,7 @@
 <script setup lang="ts">
 import '../core/SelectionCardGroup';
 import type { SelectionType, SelectionChangeEventDetail } from '../core/SelectionCardGroup';
+import type { ValidationMessages } from '../../../shared/face-mixin';
 
 export interface VueSelectionCardGroupProps {
   /** Selection mode: 'radio' (single) or 'checkbox' (multiple) */
@@ -36,6 +38,7 @@ export interface VueSelectionCardGroupProps {
   disabled?: boolean;
   /** Require at least one selection before the form can be submitted */
   required?: boolean;
+  validationMessages?: ValidationMessages;
 }
 
 withDefaults(defineProps<VueSelectionCardGroupProps>(), {

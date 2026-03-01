@@ -34,7 +34,7 @@ import {
   type LabelPosition,
 } from '../../../shared/form-control-utils';
 import { formControlStyles } from '../../../shared/form-control-styles';
-import { FaceMixin } from '../../../shared/face-mixin';
+import { FaceMixin, type ValidationMessages } from '../../../shared/face-mixin';
 
 // Event types
 export interface ToggleChangeEventDetail {
@@ -61,6 +61,7 @@ export interface ToggleProps {
   helpText?: string;
   name?: string;
   value?: string;
+  validationMessages?: ValidationMessages;
   // Event callbacks
   onClick?: (event: MouseEvent) => void;
   onToggleChange?: (event: ToggleChangeEvent) => void;
@@ -344,6 +345,12 @@ export class AgToggle extends FaceMixin(LitElement) implements ToggleProps {
   declare onClick?: (event: MouseEvent) => void;
 
   /**
+   * Consumer-supplied validation messages (overrides built-in English fallbacks)
+   */
+  @property({ attribute: false })
+  declare validationMessages: ValidationMessages | undefined;
+
+  /**
    * Toggle change event callback
    */
   @property({ attribute: false })
@@ -373,6 +380,7 @@ export class AgToggle extends FaceMixin(LitElement) implements ToggleProps {
     this.errorMessage = '';
     this.helpText = '';
     this.value = '';
+    this.validationMessages = undefined;
   }
 
   // ─── FACE ─────────────────────────────────────────────────────────────────
@@ -394,7 +402,10 @@ export class AgToggle extends FaceMixin(LitElement) implements ToggleProps {
    */
   private _syncValidity(): void {
     if (this.required && !this.checked) {
-      this._internals.setValidity({ valueMissing: true }, 'Please check this field.');
+      this._internals.setValidity(
+        { valueMissing: true },
+        this.validationMessages?.valueMissing ?? 'Please check this field.'
+      );
     } else {
       this._internals.setValidity({});
     }

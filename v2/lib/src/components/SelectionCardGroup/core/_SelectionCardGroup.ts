@@ -14,7 +14,7 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { AgSelectionCard } from '../../SelectionCard/core/_SelectionCard.js';
-import { FaceMixin } from '../../../shared/face-mixin';
+import { FaceMixin, type ValidationMessages } from '../../../shared/face-mixin';
 
 export type SelectionType = 'radio' | 'checkbox';
 export type SelectionCardGroupTheme = 'success' | 'info' | 'error' | 'warning' | 'monochrome' | '';
@@ -49,6 +49,7 @@ export interface SelectionCardGroupProps {
   disabled?: boolean;
   /** Require at least one selection before the form can be submitted */
   required?: boolean;
+  validationMessages?: ValidationMessages;
   /** Callback for selection changes */
   onSelectionChange?: (event: SelectionChangeEvent) => void;
 }
@@ -118,6 +119,9 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
   declare required: boolean;
 
   @property({ attribute: false })
+  declare validationMessages: ValidationMessages | undefined;
+
+  @property({ attribute: false })
   declare onSelectionChange: ((event: SelectionChangeEvent) => void) | undefined;
 
   // Internal state for uncontrolled mode
@@ -135,6 +139,7 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
     this.disabled = false;
     this.required = false;
     this._internalSelectedValues = [];
+    this.validationMessages = undefined;
   }
 
   // Get current selected values (controlled or uncontrolled)
@@ -173,7 +178,10 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
   private _syncValidity(): void {
     const selected = this._getSelectedValues();
     if (this.required && selected.length === 0) {
-      this._internals.setValidity({ valueMissing: true }, 'Please select an option.');
+      this._internals.setValidity(
+        { valueMissing: true },
+        this.validationMessages?.valueMissing ?? 'Please select an option.'
+      );
     } else {
       this._internals.setValidity({});
     }

@@ -932,4 +932,29 @@ describe('AgCombobox - Phase 1 MVP', () => {
       expect(input.getAttribute('aria-expanded')).toBe('true');
     });
   });
+
+  describe('validationMessages', () => {
+    it('should use default validationMessage when validationMessages not set', async () => {
+      const el = document.createElement('ag-combobox') as AgCombobox;
+      el.options = mockOptions;
+      el.label = 'Select State';
+      el.required = true;
+      document.body.appendChild(el);
+      await el.updateComplete;
+      expect(el.validationMessage).toBe('Please select an option.');
+      document.body.removeChild(el);
+    });
+
+    it('should use custom validationMessage when validationMessages.valueMissing is set', async () => {
+      const el = document.createElement('ag-combobox') as AgCombobox;
+      el.options = mockOptions;
+      el.label = 'Select State';
+      el.required = true;
+      el.validationMessages = { valueMissing: 'Custom message' };
+      document.body.appendChild(el);
+      await el.updateComplete;
+      expect(el.validationMessage).toBe('Custom message');
+      document.body.removeChild(el);
+    });
+  });
 });

@@ -16,7 +16,7 @@
 
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state, query } from 'lit/decorators.js';
-import { FaceMixin } from '../../../shared/face-mixin';
+import { FaceMixin, type ValidationMessages } from '../../../shared/face-mixin';
 import {
   createFormControlIds,
   buildAriaDescribedBy,
@@ -117,6 +117,7 @@ export interface ComboboxProps {
   onClose?: (event: ComboboxCloseEvent) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
+  validationMessages?: ValidationMessages;
 }
 
 /**
@@ -616,6 +617,9 @@ export class AgCombobox extends FaceMixin(LitElement) implements ComboboxProps {
   @property({ attribute: false })
   declare onBlur?: (event: FocusEvent) => void;
 
+  @property({ attribute: false })
+  declare validationMessages: ValidationMessages | undefined;
+
   // Internal state
   @state()
   private _open = false;
@@ -682,6 +686,7 @@ export class AgCombobox extends FaceMixin(LitElement) implements ComboboxProps {
     this.loading = false;
     this.loadingText = 'Loading...';
     this.noResultsText = 'No results found';
+    this.validationMessages = undefined;
   }
 
   connectedCallback() {
@@ -977,7 +982,10 @@ export class AgCombobox extends FaceMixin(LitElement) implements ComboboxProps {
       ? (Array.isArray(this.value) && this.value.length > 0)
       : !!(typeof this.value === 'string' && this.value);
     if (this.required && !hasValue) {
-      this._internals.setValidity({ valueMissing: true }, 'Please select an option.');
+      this._internals.setValidity(
+        { valueMissing: true },
+        this.validationMessages?.valueMissing ?? 'Please select an option.'
+      );
     } else {
       this._internals.setValidity({});
     }

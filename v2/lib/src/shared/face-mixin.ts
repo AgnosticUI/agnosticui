@@ -31,6 +31,24 @@ import { property } from 'lit/decorators.js';
 type Constructor<T = {}> = new (...args: any[]) => T;
 
 /**
+ * Consumer-supplied validation messages for constraint validation.
+ * Each key maps to the corresponding ValidityState flag.
+ * Provided values override the built-in English fallback strings.
+ */
+export interface ValidationMessages {
+  valueMissing?: string;
+  typeMismatch?: string;
+  patternMismatch?: string;
+  tooLong?: string;
+  tooShort?: string;
+  rangeUnderflow?: string;
+  rangeOverflow?: string;
+  stepMismatch?: string;
+  badInput?: string;
+  customError?: string;
+}
+
+/**
  * Sync the validity state of an inner <input> or <textarea> to ElementInternals.
  *
  * This is the recommended delegation strategy: let the native input run its own

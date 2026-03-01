@@ -11,6 +11,7 @@ Each framework gets an identical form built in its idiomatic style.
 - Iterating `form.elements` to validate all fields programmatically
 - Native `form.reset()` restoring all inputs to their default state
 - `required` and `type="email"` constraint validation via FACE
+- `validationMessages` prop overriding built-in English fallback strings (i18n)
 - Accessible error messages announced by screen readers via `role="alert"`
 
 **Outputs:** `react-example/`, `vue-example/`, `lit-example/`
@@ -27,6 +28,22 @@ Build a single-page **Contact Form** with the following fields:
 | Email Address | `email` | `email` | `required` |
 | Phone | `phone` | `tel` | optional |
 | Message | `message` | `textarea` | `required` |
+| Newsletter Frequency | `frequency` | selection-button-group (radio) | `required` — uses `validationMessages` |
+| Terms & Conditions | `terms` | toggle | `required` — uses `validationMessages` |
+
+The "Newsletter Frequency" field uses `ag-selection-button-group` (type="radio") with three
+options: Weekly, Monthly, Only major announcements. This demonstrates `validationMessages`
+on a group-selection component — a distinct FACE pattern from the toggle.
+
+The "Terms & Conditions" field uses `ag-toggle` (a direct-validity FACE component).
+Its `validationMessages` prop overrides the built-in English fallback:
+
+- React: `validationMessages={{ valueMissing: "Please accept the terms and conditions to continue." }}`
+- Vue: `:validationMessages="{ valueMissing: 'Please accept the terms and conditions to continue.' }"`
+- Lit: `.validationMessages=${{ valueMissing: 'Please accept the terms and conditions to continue.' }}`
+
+This is the key i18n demonstration: consumers supply their own copy rather than seeing the
+generic `"Please check this field."` that would otherwise appear.
 
 **Two actions:**
 - **Send Message** — validates all fields, submits, shows collected data
@@ -65,11 +82,25 @@ function validateAll(form) {
 Calling `reportValidity()` on each element surfaces browser constraint validation
 tooltips (required, type=email, etc.) for the first failing field.
 
+### `validationMessages` Override
+
+Five AgnosticUI FACE components (`ag-toggle`, `ag-rating`, `ag-selection-button-group`,
+`ag-selection-card-group`, `ag-combobox`) call `_internals.setValidity()` directly with
+English fallback strings. Pass `validationMessages` to replace them — keys match
+`ValidityState` flag names:
+
+```js
+{ valueMissing: 'Please accept the terms and conditions to continue.' }
+```
+
+`ag-input` does NOT use `validationMessages` — it delegates validation to its inner
+`<input>` element, so the browser supplies constraint messages automatically.
+
 ### Form Reset
 
 ```js
 formElement.reset();
-// ag-input's formResetCallback() fires, clearing all values
+// ag-input and ag-toggle formResetCallback() fire, clearing all values
 ```
 
 ---
@@ -80,7 +111,7 @@ formElement.reset();
 npm create vite@latest react-example -- --template react-ts
 cd react-example && npm install && npm install lit && cd ..
 cd react-example && npx agnosticui-cli init --framework react --skip-prompts
-cd react-example && npx agnosticui-cli add button input card divider && cd ..
+cd react-example && npx agnosticui-cli add button input card divider toggle selection-button-group selection-button && cd ..
 ```
 
 ### React Implementation Notes
@@ -102,7 +133,7 @@ cd react-example && npx agnosticui-cli add button input card divider && cd ..
 npm create vite@latest vue-example -- --template vue-ts
 cd vue-example && npm install && npm install lit && cd ..
 cd vue-example && npx agnosticui-cli init --framework vue --skip-prompts
-cd vue-example && npx agnosticui-cli add button input card divider && cd ..
+cd vue-example && npx agnosticui-cli add button input card divider toggle selection-button-group selection-button && cd ..
 ```
 
 ### Vue Implementation Notes
@@ -123,7 +154,7 @@ cd vue-example && npx agnosticui-cli add button input card divider && cd ..
 npm create vite@latest lit-example -- --template vanilla-ts
 cd lit-example && npm install && npm install lit && cd ..
 cd lit-example && npx agnosticui-cli init --framework lit --skip-prompts
-cd lit-example && npx agnosticui-cli add button input card divider && cd ..
+cd lit-example && npx agnosticui-cli add button input card divider toggle selection-button-group selection-button && cd ..
 ```
 
 ### Lit Implementation Notes
@@ -182,6 +213,9 @@ cd lit-example && npx agnosticui-cli add button input card divider && cd ..
 | Component | React | Vue | Lit tag |
 |-----------|-------|-----|---------|
 | Input | `ReactInput` | `VueInput` | `<ag-input>` |
+| SelectionButtonGroup | `ReactSelectionButtonGroup` | `VueSelectionButtonGroup` | `<ag-selection-button-group>` |
+| SelectionButton | `ReactSelectionButton` | (slotted `<ag-selection-button>`) | `<ag-selection-button>` |
+| Toggle | `ReactToggle` | `VueToggle` | `<ag-toggle>` |
 | Button | `ReactButton` | `VueButton` | `<ag-button>` |
 | Card | `ReactCard` | `VueCard` | `<ag-card>` |
 | Divider | `ReactDivider` | `VueDivider` | `<ag-divider>` |
@@ -192,9 +226,11 @@ cd lit-example && npx agnosticui-cli add button input card divider && cd ..
 
 - [ ] Submitting with empty required fields shows browser validation tooltips
 - [ ] Submitting with valid data shows a result card with the collected `FormData` values
-- [ ] Clear button resets all fields to empty via `form.reset()`
+- [ ] Clear button resets all fields to empty via `form.reset()` (including the toggle)
 - [ ] Email field rejects non-email values using native `type="email"` FACE constraint
 - [ ] Phone field is optional — form submits without it
+- [ ] Newsletter frequency is required — submitting with no selection shows the custom `validationMessages.valueMissing` string, not the generic built-in fallback
+- [ ] Terms toggle is required — submitting unchecked shows the custom `validationMessages.valueMissing` string, not the generic built-in fallback
 - [ ] All labels are visible and associated with their inputs
 - [ ] Error messages are rendered with `role="alert"` for screen reader announcements
 - [ ] All three framework implementations are functionally identical

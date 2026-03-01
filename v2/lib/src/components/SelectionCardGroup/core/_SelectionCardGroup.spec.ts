@@ -337,4 +337,16 @@ describe('SelectionCardGroup - Comprehensive Tests', () => {
       expect(cards[1].checked).toBe(true);
     });
   });
+
+  describe('validationMessages', () => {
+    it('should use default validationMessage when validationMessages not set', async () => {
+      const group = await createGroup({ required: true }, []);
+      expect(group.validationMessage).toBe('Please select an option.');
+    });
+
+    it('should use custom validationMessage when validationMessages.valueMissing is set', async () => {
+      const group = await createGroup({ required: true, validationMessages: { valueMissing: 'Custom message' } }, []);
+      expect(group.validationMessage).toBe('Custom message');
+    });
+  });
 });

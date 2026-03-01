@@ -8,7 +8,7 @@ import {
   type LabelPosition,
 } from '../../../shared/form-control-utils';
 import { formControlStyles } from '../../../shared/form-control-styles';
-import { FaceMixin } from '../../../shared/face-mixin';
+import { FaceMixin, type ValidationMessages } from '../../../shared/face-mixin';
 
 // Event detail interfaces
 export interface RatingChangeEventDetail {
@@ -47,6 +47,7 @@ export interface RatingProps {
   invalid?: boolean;
   errorMessage?: string;
   helpText?: string;
+  validationMessages?: ValidationMessages;
   // Event handlers
   onRatingChange?: (event: RatingChangeEvent) => void;
   onRatingHover?: (event: RatingHoverEvent) => void;
@@ -110,6 +111,9 @@ export class AgRating extends FaceMixin(LitElement) {
   @property({ type: String, attribute: 'help-text' })
   declare helpText: string;
 
+  @property({ attribute: false })
+  declare validationMessages: ValidationMessages | undefined;
+
   // Event handlers
   @property({ attribute: false })
   declare onRatingChange?: (event: RatingChangeEvent) => void;
@@ -146,6 +150,7 @@ export class AgRating extends FaceMixin(LitElement) {
     this.invalid = false;
     this.errorMessage = '';
     this.helpText = '';
+    this.validationMessages = undefined;
     this.handlePointerMove = this.handlePointerMove.bind(this);
     this.handlePointerUp = this.handlePointerUp.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -167,7 +172,10 @@ export class AgRating extends FaceMixin(LitElement) {
    */
   private _syncValidity(): void {
     if (this.required && this.value === 0) {
-      this._internals.setValidity({ valueMissing: true }, 'Please select a rating.');
+      this._internals.setValidity(
+        { valueMissing: true },
+        this.validationMessages?.valueMissing ?? 'Please select a rating.'
+      );
     } else {
       this._internals.setValidity({});
     }

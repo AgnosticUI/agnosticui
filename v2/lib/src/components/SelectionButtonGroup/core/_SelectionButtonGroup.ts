@@ -13,7 +13,7 @@
 
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import { FaceMixin } from '../../../shared/face-mixin';
+import { FaceMixin, type ValidationMessages } from '../../../shared/face-mixin';
 import type { AgSelectionButton, SelectionButtonTheme, SelectionButtonSize, SelectionButtonShape } from '../../SelectionButton/core/_SelectionButton.js';
 
 export type SelectionButtonType = 'radio' | 'checkbox';
@@ -55,6 +55,7 @@ export interface SelectionButtonGroupProps {
   disabled?: boolean;
   /** Require at least one selection before the form can be submitted */
   required?: boolean;
+  validationMessages?: ValidationMessages;
   /** Callback for selection changes */
   onSelectionChange?: (event: SelectionButtonChangeEvent) => void;
 }
@@ -130,6 +131,9 @@ export class AgSelectionButtonGroup extends FaceMixin(LitElement) implements Sel
   declare required: boolean;
 
   @property({ attribute: false })
+  declare validationMessages: ValidationMessages | undefined;
+
+  @property({ attribute: false })
   declare onSelectionChange: ((event: SelectionButtonChangeEvent) => void) | undefined;
 
   // Internal state for uncontrolled mode
@@ -149,6 +153,7 @@ export class AgSelectionButtonGroup extends FaceMixin(LitElement) implements Sel
     this.disabled = false;
     this.required = false;
     this._internalSelectedValues = [];
+    this.validationMessages = undefined;
   }
 
   // Get current selected values (controlled or uncontrolled)
@@ -192,7 +197,10 @@ export class AgSelectionButtonGroup extends FaceMixin(LitElement) implements Sel
   private _syncValidity(): void {
     const selected = this._getSelectedValues();
     if (this.required && selected.length === 0) {
-      this._internals.setValidity({ valueMissing: true }, 'Please select an option.');
+      this._internals.setValidity(
+        { valueMissing: true },
+        this.validationMessages?.valueMissing ?? 'Please select an option.'
+      );
     } else {
       this._internals.setValidity({});
     }

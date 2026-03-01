@@ -195,4 +195,25 @@ describe('AgRating (core)', () => {
       expect(horizontalContainer).toBeTruthy();
     });
   });
+
+  describe('validationMessages', () => {
+    it('should use default validationMessage when validationMessages not set', async () => {
+      const el = new AgRating();
+      el.required = true;
+      document.body.appendChild(el);
+      await el.updateComplete;
+      expect(el.validationMessage).toBe('Please select a rating.');
+      el.remove();
+    });
+
+    it('should use custom validationMessage when validationMessages.valueMissing is set', async () => {
+      const el = new AgRating();
+      el.required = true;
+      el.validationMessages = { valueMissing: 'Custom message' };
+      document.body.appendChild(el);
+      await el.updateComplete;
+      expect(el.validationMessage).toBe('Custom message');
+      el.remove();
+    });
+  });
 });
