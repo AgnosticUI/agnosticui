@@ -577,6 +577,18 @@ export class AgButton extends LitElement implements ButtonProps {
       this.onClick(event);
     }
 
+    // Shadow DOM buttons cannot natively submit/reset their owner form.
+    // Walk up the light DOM from the host element to find the enclosing form.
+    if (!this.disabled && !this.loading && !event.defaultPrevented) {
+      if (this.type === 'submit') {
+        const form = this.closest('form');
+        if (form) form.requestSubmit();
+      } else if (this.type === 'reset') {
+        const form = this.closest('form');
+        if (form) form.reset();
+      }
+    }
+
     if (this.toggle && !this.disabled && !this.loading && !event.defaultPrevented) {
       this.pressed = !this.pressed;
 
