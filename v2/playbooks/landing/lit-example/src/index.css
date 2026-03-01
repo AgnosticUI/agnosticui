@@ -23,6 +23,7 @@ body {
   display: flex;
   align-items: center;
   gap: var(--ag-space-6, 1.5rem);
+  margin-inline-end: var(--ag-space-2);
 }
 
 .site-nav a {
