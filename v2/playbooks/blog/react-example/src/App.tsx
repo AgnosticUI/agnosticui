@@ -5,6 +5,8 @@ import { ReactAvatar } from './components/ag/Avatar/react/ReactAvatar'
 import { ReactBadge } from './components/ag/Badge/react/ReactBadge'
 import { ReactTag } from './components/ag/Tag/react/ReactTag'
 import { ReactTabs, ReactTab, ReactTabPanel } from './components/ag/Tabs/react/ReactTabs'
+import { ReactInput } from './components/ag/Input/react/ReactInput'
+import { ReactMark } from './components/ag/Mark/react/ReactMark'
 import { ReactDivider } from './components/ag/Divider/react/ReactDivider'
 import { ReactLoader } from './components/ag/Loader/react/ReactLoader'
 import { ReactScrollProgress } from './components/ag/ScrollProgress/react/ReactScrollProgress'
@@ -23,11 +25,21 @@ const moonIcon = (
   </svg>
 )
 
+function countMatches(term: string): number {
+  if (!term) return 0
+  const text = article.body.join(' ').toLowerCase()
+  const t = term.toLowerCase()
+  let count = 0, pos = 0
+  while ((pos = text.indexOf(t, pos)) !== -1) { count++; pos += t.length }
+  return count
+}
+
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [isDark, setIsDark] = useState(
     () => document.documentElement.getAttribute('data-theme') === 'dark'
   )
+  const [findTerm, setFindTerm] = useState('')
   const [showProgress, setShowProgress] = useState(false)
 
   useEffect(() => {
@@ -46,6 +58,8 @@ function App() {
     if (isDark) { html.removeAttribute('data-theme'); setIsDark(false) }
     else { html.setAttribute('data-theme', 'dark'); setIsDark(true) }
   }
+
+  const matchCount = countMatches(findTerm)
 
   return (
     <>
@@ -102,12 +116,32 @@ function App() {
 
               <ReactTabPanel slot="panel" id="article">
                 <div className="article-tab-content">
+                  {/* Find toolbar */}
+                  <div className="find-toolbar">
+                    <ReactInput
+                      type="search"
+                      placeholder="Find in article…"
+                      rounded
+                      value={findTerm}
+                      onInput={(e: Event) => setFindTerm((e.target as HTMLInputElement).value)}
+                    />
+                    <span className="find-count">
+                      {findTerm ? `${matchCount} match${matchCount !== 1 ? 'es' : ''}` : ''}
+                    </span>
+                  </div>
+
                   <h1 className="article-title">{article.title}</h1>
                   <p className="article-subtitle">{article.subtitle}</p>
 
                   <div className="reader-body">
                     {article.body.map((para, i) => (
-                      <p key={i}>{para}</p>
+                      findTerm ? (
+                        <ReactMark key={i} search={findTerm} matchAll variant="warning">
+                          <p>{para}</p>
+                        </ReactMark>
+                      ) : (
+                        <p key={i}>{para}</p>
+                      )
                     ))}
                   </div>
 

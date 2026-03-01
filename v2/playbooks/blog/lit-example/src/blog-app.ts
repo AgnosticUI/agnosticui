@@ -7,6 +7,8 @@ import './components/ag/Badge/core/Badge'
 import './components/ag/Tag/core/Tag'
 import './components/ag/Tabs/core/Tabs'
 import './components/ag/Divider/core/Divider'
+import './components/ag/Input/core/Input'
+import './components/ag/Mark/core/Mark'
 import './components/ag/Loader/core/Loader'
 import './components/ag/ScrollProgress/core/ScrollProgress'
 import './components/ag/ScrollToButton/core/ScrollToButton'
@@ -23,6 +25,7 @@ export class BlogApp extends LitElement {
 
   @state() private _isLoading = true
   @state() private _isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+  @state() private _findTerm = ''
   @state() private _showProgress = false
 
   private _loadTimer: ReturnType<typeof setTimeout> | null = null
@@ -40,6 +43,10 @@ export class BlogApp extends LitElement {
     window.removeEventListener('scroll', this._onScroll)
   }
 
+  private _onFindInput(e: Event) {
+    this._findTerm = (e.target as HTMLInputElement).value
+  }
+
   private _toggleTheme() {
     const root = document.documentElement
     const dark = root.getAttribute('data-theme') === 'dark'
@@ -48,6 +55,19 @@ export class BlogApp extends LitElement {
   }
 
   override render() {
+    const matchCount = this._findTerm
+      ? (() => {
+          const text = article.body.join(' ').toLowerCase()
+          const t = this._findTerm.toLowerCase()
+          let count = 0, pos = 0
+          while ((pos = text.indexOf(t, pos)) !== -1) { count++; pos += t.length }
+          return count
+        })()
+      : 0
+    const matchLabel = this._findTerm
+      ? `${matchCount} match${matchCount !== 1 ? 'es' : ''}`
+      : ''
+
     return html`
       <div class="scroll-progress-wrap ${this._showProgress ? 'visible' : ''}">
         <ag-scroll-progress></ag-scroll-progress>
@@ -99,11 +119,25 @@ export class BlogApp extends LitElement {
 
             <ag-tab-panel slot="panel" id="article">
               <div class="article-tab-content">
+                <!-- Find toolbar -->
+                <div class="find-toolbar">
+                  <ag-input
+                    type="search"
+                    placeholder="Find in article…"
+                    rounded
+                    .value="${this._findTerm}"
+                    @input="${this._onFindInput}"
+                  ></ag-input>
+                  <span class="find-count">${matchLabel}</span>
+                </div>
+
                 <h1 class="article-title">${article.title}</h1>
                 <p class="article-subtitle">${article.subtitle}</p>
 
                 <div class="reader-body">
-                  ${article.body.map(para => html`<p>${para}</p>`)}
+                  ${article.body.map(para => this._findTerm ? html`
+                    <ag-mark search="${this._findTerm}" ?match-all="${true}" variant="warning"><p>${para}</p></ag-mark>
+                  ` : html`<p>${para}</p>`)}
                 </div>
 
                 <ag-divider></ag-divider>

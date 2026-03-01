@@ -58,6 +58,7 @@ While these prompts have been tested using the Claude Code CLI (running Claude S
 - **Three framework examples**: React, Vue, and Lit implementations
 - **ScrollProgress** — fixed top bar showing read progress as the user scrolls
 - **ScrollToButton** — floating button (bottom-right) that appears after scrolling past ~30% of the article
+- **Mark** — "Find in article" feature that highlights matching search terms inline
 - **AspectRatio** — wraps the hero image to enforce a consistent 16:9 ratio across all breakpoints
 - **Loader** — shown on initial load before article content appears (simulated async fetch)
 - [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/blog/PROMPT-3-FRAMEWORKS.md): Feed directly to your LLM for AI‑assisted customization
@@ -76,11 +77,13 @@ The [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/mas
 | --------------------- | -------------------------------------------------------------- |
 | `ag-scroll-progress`  | Fixed top progress bar showing read depth                      |
 | `ag-scroll-to-button` | Floating back-to-top button, visible after 30% scroll          |
+| `ag-mark`             | Inline text highlighting for the "Find in article" search      |
 | `ag-aspect-ratio`     | Hero image wrapper enforcing a consistent 16:9 ratio           |
 | `ag-loader`           | Full-page loading state before article content renders         |
 | `ag-header`           | Top navigation bar with logo and theme toggle                  |
 | `ag-avatar`           | Author portrait in the article meta and author card            |
 | `ag-badge`            | Reading time estimate displayed in the article header          |
+| `ag-input`            | "Find in article" search field                                 |
 | `ag-divider`          | Section separators between article body, author card, and more |
 | `ag-tabs`             | Article / Comments tab panel below the article body            |
 | `ag-tag`              | Article category label in the header meta                      |

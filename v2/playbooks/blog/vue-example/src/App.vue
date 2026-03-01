@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import SkinSwitcher from './SkinSwitcher.vue'
 import { VueHeader } from './components/ag/Header/vue/index.ts'
 import { VueAvatar } from './components/ag/Avatar/vue/index.ts'
@@ -7,6 +7,8 @@ import { VueBadge } from './components/ag/Badge/vue/index.ts'
 import { VueTag } from './components/ag/Tag/vue/index.ts'
 import { VueTabs, VueTab, VueTabPanel } from './components/ag/Tabs/vue/index.ts'
 import { VueDivider } from './components/ag/Divider/vue/index.ts'
+import { VueInput } from './components/ag/Input/vue/index.ts'
+import { VueMark } from './components/ag/Mark/vue/index.ts'
 import { VueLoader } from './components/ag/Loader/vue/index.ts'
 import { VueScrollProgress } from './components/ag/ScrollProgress/vue/index.ts'
 import { VueScrollToButton } from './components/ag/ScrollToButton/vue/index.ts'
@@ -18,7 +20,18 @@ const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
 
 const isLoading = ref(true)
 const isDark = ref(false)
+const findTerm = ref('')
 const showProgress = ref(false)
+
+const matchCount = computed(() => {
+  const term = findTerm.value
+  if (!term) return 0
+  const text = article.body.join(' ').toLowerCase()
+  const t = term.toLowerCase()
+  let count = 0, pos = 0
+  while ((pos = text.indexOf(t, pos)) !== -1) { count++; pos += t.length }
+  return count
+})
 
 function onScroll() { showProgress.value = window.scrollY >= 58 }
 
@@ -97,11 +110,35 @@ function toggleTheme() {
 
         <VueTabPanel slot="panel" id="article">
           <div class="article-tab-content">
+            <!-- Find toolbar -->
+            <div class="find-toolbar">
+              <VueInput
+                type="search"
+                placeholder="Find in article…"
+                :rounded="true"
+                :value="findTerm"
+                @input="findTerm = ($event.target as HTMLInputElement).value"
+              />
+              <span class="find-count">
+                {{ findTerm ? `${matchCount} match${matchCount !== 1 ? 'es' : ''}` : '' }}
+              </span>
+            </div>
+
             <h1 class="article-title">{{ article.title }}</h1>
             <p class="article-subtitle">{{ article.subtitle }}</p>
 
             <div class="reader-body">
-              <p v-for="(para, i) in article.body" :key="i">{{ para }}</p>
+              <template v-for="(para, i) in article.body" :key="i">
+                <VueMark
+                  v-if="findTerm"
+                  :search="findTerm"
+                  :match-all="true"
+                  variant="warning"
+                >
+                  <p>{{ para }}</p>
+                </VueMark>
+                <p v-else>{{ para }}</p>
+              </template>
             </div>
 
             <VueDivider />
