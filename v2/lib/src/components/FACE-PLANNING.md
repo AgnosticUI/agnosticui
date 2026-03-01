@@ -28,6 +28,7 @@ implementation pattern.
 | `AgSelect` | #305 | Delegation via inner `<select>`; `FormData` overload for multi-select; `defaultSelected` reset |
 | `AgRadio` | #307 | Delegation via inner `<input type="radio">`; group FACE sync via Lit `updated()` reactive chain |
 | `AgSlider` | #310 | Migrated from hand-rolled FACE to FaceMixin; `firstUpdated` captures default; dual mode uses FormData overload |
+| `AgRating` | #312 | Direct validity (no inner input); null when value=0; positive values submit as string |
 
 ---
 
@@ -85,7 +86,7 @@ These components are not form controls and do not need FACE:
 3. ✅ `AgSelect` — medium complexity, high usage in forms
 4. ✅ `AgRadio` — group coordination via Lit reactive chain (simpler than anticipated)
 5. ✅ `AgSlider` — migrated hand-rolled FACE to FaceMixin; added firstUpdated + formResetCallback
-6. `AgRating` — medium complexity
+6. ✅ `AgRating` — direct validity; null when value=0
 7. `AgSelectionButton` / `AgSelectionCard` — depends on Radio/Checkbox patterns
 8. `AgCombobox` — high complexity, requires UX decision on free-text vs constrained
 
