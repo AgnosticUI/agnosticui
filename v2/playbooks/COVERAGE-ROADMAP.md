@@ -162,3 +162,36 @@ Accordion (FAQ section), Tabs (pricing tiers)
 1. **Data Grid V2** — lowest effort, closes 3 gaps, builds on existing learnings
 2. **Blog / Article Reader** — highest design value, closes 5 gaps, new context type
 3. **Landing / Marketing Page** — closes the Lab trio, completes the coverage story
+
+---
+
+## ⚠️ IMPORTANT — Next Session TODO: Add Actions 1–3 to v2/site Docs
+
+**Actions 1, 2, and 3 are code-complete** (playbooks built, PROMPT files written, all builds passing).
+**They have NOT yet been added to the documentation site** (`v2/site/`).
+
+The existing playbooks (Login, Onboarding, Dashboard, Data Grid, Support) each have a
+corresponding docs page in the site. Actions 1–3 need the same treatment.
+
+### What needs to be done
+
+For each of the three new playbooks:
+
+| Playbook | Directory | PROMPT file |
+|---|---|---|
+| Data Grid V2 variant | `v2/playbooks/grid/` | check for variant PROMPT |
+| Blog / Article Reader | `v2/playbooks/blog/` | `PROMPT-3-FRAMEWORKS.md` |
+| Landing / Marketing Page | `v2/playbooks/landing/` | `PROMPT-3-FRAMEWORKS.md` |
+
+**Steps (per playbook):**
+
+1. Find an existing playbook docs page in `v2/site/` for structural reference
+2. Create a new docs page for each playbook following the same pattern
+3. Link the new pages into the site navigation
+4. Verify the site builds cleanly
+
+### Reference — how existing playbooks are documented
+
+Look at how Login, Onboarding, Dashboard, Data Grid, and Support are represented
+in `v2/site/` to understand the expected page structure, frontmatter, and nav wiring
+before implementing the new pages.
