@@ -76,11 +76,11 @@ const year = new Date().getFullYear()
         <p class="section-sub">Production-ready components that adapt to your stack, your brand, and your workflow.</p>
       </div>
       <div class="features-grid">
-        <div v-for="f in features" :key="f.id" class="feature-card">
+        <VueCard v-for="f in features" :key="f.id" rounded="lg">
           <VueIconButtonFx :label="f.label" :icon="f.icon" :variant="(f.variant as any)" fx="bounce" fx-ease="spring-md" />
           <p class="feature-card-title">{{ f.title }}</p>
           <p class="feature-card-desc">{{ f.description }}</p>
-        </div>
+        </VueCard>
       </div>
     </div>
   </section>
@@ -128,7 +128,7 @@ const year = new Date().getFullYear()
         </VueTabs>
       </div>
       <div class="pricing-grid">
-        <div v-for="tier in pricing.tiers" :key="tier.id" :class="['pricing-card', { featured: tier.featured }]">
+        <VueCard v-for="tier in pricing.tiers" :key="tier.id" rounded="lg" :class="{ featured: tier.featured }">
           <div class="pricing-card-header">
             <p class="pricing-tier-name">{{ tier.name }}</p>
             <VueBadge :variant="tier.badgeVariant">{{ tier.badge }}</VueBadge>
@@ -140,7 +140,7 @@ const year = new Date().getFullYear()
             <li v-for="(feat, i) in tier.features" :key="i">{{ feat }}</li>
           </ul>
           <VueButton :variant="tier.ctaVariant || undefined" shape="rounded" :full-width="true">{{ tier.cta }}</VueButton>
-        </div>
+        </VueCard>
       </div>
     </div>
   </section>

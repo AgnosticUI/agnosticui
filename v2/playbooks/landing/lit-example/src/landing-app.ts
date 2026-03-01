@@ -75,7 +75,7 @@ export class LandingApp extends LitElement {
           </div>
           <div class="features-grid">
             ${features.map(f => html`
-              <div class="feature-card">
+              <ag-card rounded="lg">
                 <ag-icon-button-fx
                   label="${f.label}"
                   icon="${f.icon}"
@@ -85,7 +85,7 @@ export class LandingApp extends LitElement {
                 ></ag-icon-button-fx>
                 <p class="feature-card-title">${f.title}</p>
                 <p class="feature-card-desc">${f.description}</p>
-              </div>
+              </ag-card>
             `)}
           </div>
         </div>
@@ -137,7 +137,7 @@ export class LandingApp extends LitElement {
           </div>
           <div class="pricing-grid">
             ${pricing.tiers.map(tier => html`
-              <div class="pricing-card ${tier.featured ? 'featured' : ''}">
+              <ag-card rounded="lg" class="${tier.featured ? 'featured' : ''}">
                 <div class="pricing-card-header">
                   <p class="pricing-tier-name">${tier.name}</p>
                   <ag-badge variant="${tier.badgeVariant}">${tier.badge}</ag-badge>
@@ -149,7 +149,7 @@ export class LandingApp extends LitElement {
                   ${tier.features.map(f => html`<li>${f}</li>`)}
                 </ul>
                 <ag-button variant="${tier.ctaVariant}" shape="rounded" full-width>${tier.cta}</ag-button>
-              </div>
+              </ag-card>
             `)}
           </div>
         </div>

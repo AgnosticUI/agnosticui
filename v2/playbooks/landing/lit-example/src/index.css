@@ -132,19 +132,14 @@ body {
   gap: var(--ag-space-5, 1.25rem);
 }
 
-.feature-card {
-  background: var(--ag-background-secondary);
-  border-radius: var(--ag-radius-lg, 0.75rem);
-  padding: var(--ag-space-6, 1.5rem);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ag-space-3, 0.75rem);
+ag-icon-button-fx {
+  display: block;
 }
 
 .feature-card-title {
   font-size: 1rem;
   font-weight: 700;
-  margin: 0;
+  margin: var(--ag-space-3, 0.75rem) 0 0;
   color: var(--ag-text-primary);
 }
 
@@ -152,7 +147,7 @@ body {
   font-size: 0.9375rem;
   color: var(--ag-text-secondary);
   line-height: 1.6;
-  margin: 0;
+  margin: var(--ag-space-2, 0.5rem) 0 0;
 }
 
 /* ── Testimonials grid ── */
@@ -197,13 +192,7 @@ body {
   align-items: start;
 }
 
-.pricing-card {
-  background: var(--ag-background-secondary);
-  border-radius: var(--ag-radius-lg, 0.75rem);
-  padding: var(--ag-space-6, 1.5rem);
-}
-
-.pricing-card.featured {
+ag-card.featured::part(ag-card-wrapper) {
   background: var(--ag-primary-background, #e8f0fe);
   outline: 2px solid var(--ag-primary, #297aff);
 }

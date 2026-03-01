@@ -83,7 +83,7 @@ function App() {
           </div>
           <div className="features-grid">
             {features.map(f => (
-              <div className="feature-card" key={f.id}>
+              <ReactCard rounded="lg" key={f.id}>
                 <ReactIconButtonFx
                   label={f.label}
                   icon={f.icon}
@@ -93,7 +93,7 @@ function App() {
                 />
                 <p className="feature-card-title">{f.title}</p>
                 <p className="feature-card-desc">{f.description}</p>
-              </div>
+              </ReactCard>
             ))}
           </div>
         </div>
@@ -145,7 +145,7 @@ function App() {
           </div>
           <div className="pricing-grid">
             {pricing.tiers.map(tier => (
-              <div className={`pricing-card${tier.featured ? ' featured' : ''}`} key={tier.id}>
+              <ReactCard rounded="lg" className={tier.featured ? 'featured' : ''} key={tier.id}>
                 <div className="pricing-card-header">
                   <p className="pricing-tier-name">{tier.name}</p>
                   <ReactBadge variant={tier.badgeVariant}>{tier.badge}</ReactBadge>
@@ -157,7 +157,7 @@ function App() {
                   {tier.features.map((f, i) => <li key={i}>{f}</li>)}
                 </ul>
                 <ReactButton variant={tier.ctaVariant || undefined} shape="rounded" fullWidth>{tier.cta}</ReactButton>
-              </div>
+              </ReactCard>
             ))}
           </div>
         </div>
