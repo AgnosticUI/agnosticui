@@ -456,7 +456,9 @@ private _syncFormValue(): void {
 }
 ```
 
-`formResetCallback` clears `_internalSelectedValues`, sets form value to null, calls `_syncValidity()` (so a required group becomes invalid after reset), and syncs child elements so the UI reflects the cleared state immediately.
+Both groups support a `required` prop. When `required` is set and nothing is selected, `_syncValidity()` sets `{ valueMissing: true }` — the same pattern as AgToggle and AgRating.
+
+`formResetCallback` clears `_internalSelectedValues`, sets form value to null, calls `_syncValidity()` (so a required group correctly becomes invalid after reset), and syncs child elements so the UI reflects the cleared state immediately.
 
 ---
 
