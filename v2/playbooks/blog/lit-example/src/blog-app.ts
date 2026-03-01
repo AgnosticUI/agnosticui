@@ -7,11 +7,9 @@ import './components/ag/Badge/core/Badge'
 import './components/ag/Tag/core/Tag'
 import './components/ag/Tabs/core/Tabs'
 import './components/ag/Divider/core/Divider'
-import './components/ag/Input/core/Input'
 import './components/ag/Loader/core/Loader'
 import './components/ag/ScrollProgress/core/ScrollProgress'
 import './components/ag/ScrollToButton/core/ScrollToButton'
-import './components/ag/Mark/core/Mark'
 import './components/ag/AspectRatio/core/AspectRatio'
 import './skin-switcher'
 import { article } from './data/article'
@@ -19,22 +17,12 @@ import { article } from './data/article'
 const sunIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`
 const moonIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`
 
-function countMatches(term: string): number {
-  if (!term) return 0
-  const text = article.body.join(' ').toLowerCase()
-  const t = term.toLowerCase()
-  let count = 0, pos = 0
-  while ((pos = text.indexOf(t, pos)) !== -1) { count++; pos += t.length }
-  return count
-}
-
 export class BlogApp extends LitElement {
   // Light DOM so global index.css shell styles apply
   override createRenderRoot() { return this }
 
   @state() private _isLoading = true
   @state() private _isDark = document.documentElement.getAttribute('data-theme') === 'dark'
-  @state() private _findTerm = ''
   @state() private _showProgress = false
 
   private _loadTimer: ReturnType<typeof setTimeout> | null = null
@@ -59,16 +47,7 @@ export class BlogApp extends LitElement {
     else { root.setAttribute('data-theme', 'dark'); this._isDark = true }
   }
 
-  private _onFindInput(e: Event) {
-    this._findTerm = (e.target as HTMLInputElement).value
-  }
-
   override render() {
-    const matchCount = countMatches(this._findTerm)
-    const matchLabel = this._findTerm
-      ? `${matchCount} match${matchCount !== 1 ? 'es' : ''}`
-      : ''
-
     return html`
       <div class="scroll-progress-wrap ${this._showProgress ? 'visible' : ''}">
         <ag-scroll-progress></ag-scroll-progress>
@@ -120,30 +99,11 @@ export class BlogApp extends LitElement {
 
             <ag-tab-panel slot="panel" id="article">
               <div class="article-tab-content">
-                <!-- Find toolbar -->
-                <div class="find-toolbar">
-                  <ag-input
-                    type="search"
-                    placeholder="Find in article…"
-                    rounded
-                    .value="${this._findTerm}"
-                    @input="${this._onFindInput}"
-                  ></ag-input>
-                  <span class="find-count">${matchLabel}</span>
-                </div>
-
                 <h1 class="article-title">${article.title}</h1>
                 <p class="article-subtitle">${article.subtitle}</p>
 
-                <!-- Body with Mark highlighting — one ag-mark per paragraph -->
                 <div class="reader-body">
-                  ${article.body.map(para => html`
-                    <ag-mark
-                      search="${this._findTerm || ''}"
-                      ?match-all="${true}"
-                      variant="warning"
-                    ><p>${para}</p></ag-mark>
-                  `)}
+                  ${article.body.map(para => html`<p>${para}</p>`)}
                 </div>
 
                 <ag-divider></ag-divider>
