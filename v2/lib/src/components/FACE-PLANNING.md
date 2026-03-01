@@ -29,6 +29,8 @@ implementation pattern.
 | `AgRadio` | #307 | Delegation via inner `<input type="radio">`; group FACE sync via Lit `updated()` reactive chain |
 | `AgSlider` | #310 | Migrated from hand-rolled FACE to FaceMixin; `firstUpdated` captures default; dual mode uses FormData overload |
 | `AgRating` | #312 | Direct validity (no inner input); null when value=0; positive values submit as string |
+| `AgSelectionButtonGroup` | #314 | FACE on group (not items); radio=string, checkbox=FormData overload; formReset clears internal state |
+| `AgSelectionCardGroup` | #314 | Same pattern as AgSelectionButtonGroup |
 
 ---
 
@@ -42,22 +44,6 @@ implementation pattern.
   - Two modes (free-text vs constrained select) require different validity semantics
 - **Complexity:** High. The UX contract between free-text and option selection affects
   what "valid" means, which must be documented before implementing.
-
----
-
-### 🔲 Pending — Composite / Multi-Value Components
-
-These have multiple internal controls or submit multiple values.
-
-#### `AgRating` (`components/Rating/`)
-
-- **Form value:** The numeric rating (e.g. `"3"`)
-- **Complexity:** Low-Medium. Keyboard interaction (arrow keys) must update form value.
-
-#### `AgSelectionButton` / `AgSelectionCard` (`components/SelectionButton/`, `components/SelectionCard/`)
-
-- These function like radio buttons or checkboxes depending on configuration
-- **Complexity:** Medium. Must mirror the checked/unchecked pattern of AgCheckbox/AgRadio.
 
 ---
 
@@ -87,7 +73,7 @@ These components are not form controls and do not need FACE:
 4. ✅ `AgRadio` — group coordination via Lit reactive chain (simpler than anticipated)
 5. ✅ `AgSlider` — migrated hand-rolled FACE to FaceMixin; added firstUpdated + formResetCallback
 6. ✅ `AgRating` — direct validity; null when value=0
-7. `AgSelectionButton` / `AgSelectionCard` — depends on Radio/Checkbox patterns
+7. ✅ `AgSelectionButtonGroup` / `AgSelectionCardGroup` — FACE on group element; radio/checkbox via FormData overload
 8. `AgCombobox` — high complexity, requires UX decision on free-text vs constrained
 
 ---

@@ -13,6 +13,7 @@
 
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
+import { FaceMixin } from '../../../shared/face-mixin';
 import type { AgSelectionButton, SelectionButtonTheme, SelectionButtonSize, SelectionButtonShape } from '../../SelectionButton/core/_SelectionButton.js';
 
 export type SelectionButtonType = 'radio' | 'checkbox';
@@ -56,7 +57,7 @@ export interface SelectionButtonGroupProps {
   onSelectionChange?: (event: SelectionButtonChangeEvent) => void;
 }
 
-export class AgSelectionButtonGroup extends LitElement implements SelectionButtonGroupProps {
+export class AgSelectionButtonGroup extends FaceMixin(LitElement) implements SelectionButtonGroupProps {
   static override styles = css`
     :host {
       display: block;
@@ -99,9 +100,6 @@ export class AgSelectionButtonGroup extends LitElement implements SelectionButto
   @property({ type: String, reflect: true })
   declare type: SelectionButtonType;
 
-  @property({ type: String, reflect: true })
-  declare name: string;
-
   @property({ type: String })
   declare legend: string;
 
@@ -136,7 +134,6 @@ export class AgSelectionButtonGroup extends LitElement implements SelectionButto
   constructor() {
     super();
     this.type = 'radio';
-    this.name = '';
     this.legend = '';
     this.legendHidden = false;
     this.theme = '';
@@ -163,6 +160,50 @@ export class AgSelectionButtonGroup extends LitElement implements SelectionButto
     }
     return this._internalSelectedValues;
   }
+
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  /**
+   * Sync the form value to ElementInternals.
+   * Radio: submits the selected value as a string, or null if nothing selected.
+   * Checkbox: submits all selected values via FormData overload.
+   */
+  private _syncFormValue(): void {
+    const selected = this._getSelectedValues();
+    if (this.type === 'radio') {
+      this._internals.setFormValue(selected.length > 0 ? selected[0] : null);
+    } else {
+      if (selected.length === 0) {
+        this._internals.setFormValue(null);
+      } else {
+        const formData = new FormData();
+        selected.forEach(val => formData.append(this.name, val));
+        this._internals.setFormValue(formData);
+      }
+    }
+  }
+
+  /**
+   * Sync validity to ElementInternals. Always valid — selection groups
+   * do not currently expose a required constraint. Extend in a follow-up
+   * when a required prop is added to the group API.
+   */
+  private _syncValidity(): void {
+    this._internals.setValidity({});
+  }
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Clears all selections and re-syncs child buttons.
+   */
+  override formResetCallback(): void {
+    this._internalSelectedValues = [];
+    this._internals.setFormValue(null);
+    this._internals.setValidity({});
+    this._syncChildButtons();
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
 
   override connectedCallback() {
     super.connectedCallback();
@@ -193,10 +234,22 @@ export class AgSelectionButtonGroup extends LitElement implements SelectionButto
     ) {
       this._syncChildButtons();
     }
+
+    // FACE: sync for programmatic value/values changes
+    if (
+      changedProperties.has('value') ||
+      changedProperties.has('values') ||
+      changedProperties.has('_internalSelectedValues')
+    ) {
+      this._syncFormValue();
+      this._syncValidity();
+    }
   }
 
   override firstUpdated() {
     this._syncChildButtons();
+    this._syncFormValue();
+    this._syncValidity();
   }
 
   private _getButtons(): AgSelectionButton[] {
@@ -252,6 +305,10 @@ export class AgSelectionButtonGroup extends LitElement implements SelectionButto
 
     // Update internal state (for uncontrolled mode)
     this._internalSelectedValues = newSelectedValues;
+
+    // FACE: sync form value and validity on user interaction
+    this._syncFormValue();
+    this._syncValidity();
 
     // Dispatch event
     const changeEvent = new CustomEvent<SelectionButtonChangeEventDetail>('selection-change', {
