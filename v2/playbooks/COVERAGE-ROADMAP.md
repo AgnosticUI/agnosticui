@@ -165,33 +165,23 @@ Accordion (FAQ section), Tabs (pricing tiers)
 
 ---
 
-## ⚠️ IMPORTANT — Next Session TODO: Add Actions 1–3 to v2/site Docs
+## ✅ Actions 1–3 Added to v2/site Docs
 
-**Actions 1, 2, and 3 are code-complete** (playbooks built, PROMPT files written, all builds passing).
-**They have NOT yet been added to the documentation site** (`v2/site/`).
+All three new playbooks are documented in the site:
 
-The existing playbooks (Login, Onboarding, Dashboard, Data Grid, Support) each have a
-corresponding docs page in the site. Actions 1–3 need the same treatment.
-
-### What needs to be done
-
-For each of the three new playbooks:
-
-| Playbook | Directory | PROMPT file |
+| Playbook | Docs page | Nav entry |
 |---|---|---|
-| Data Grid V2 variant | `v2/playbooks/grid/` | check for variant PROMPT |
-| Blog / Article Reader | `v2/playbooks/blog/` | `PROMPT-3-FRAMEWORKS.md` |
-| Landing / Marketing Page | `v2/playbooks/landing/` | `PROMPT-3-FRAMEWORKS.md` |
+| Data Grid V2 variant | `v2/site/docs/playbooks/grid.md` (Variant II section) | Existing "Data Grid" entry |
+| Blog / Article Reader | `v2/site/docs/playbooks/blog.md` | "Blog / Article Reader" |
+| Landing / Marketing Page | `v2/site/docs/playbooks/landing.md` | "Landing / Marketing Page" |
 
-**Steps (per playbook):**
+StackBlitz config entries for `blog`, `landing`, and `grid-v2` added to `playbooks-config.ts`.
 
-1. Find an existing playbook docs page in `v2/site/` for structural reference
-2. Create a new docs page for each playbook following the same pattern
-3. Link the new pages into the site navigation
-4. Verify the site builds cleanly
+### Remaining: Screenshots
 
-### Reference — how existing playbooks are documented
+Blog and landing docs pages don't have screenshots yet (no `design/` folder exists for those playbooks).
+Take screenshots of the three breakpoints (mobile, tablet, desktop) for each playbook and place in:
+- `v2/site/docs/public/playbooks/blog/` — mobile, tablet, desktop (light + dark each)
+- `v2/site/docs/public/playbooks/landing/` — mobile, tablet, desktop (light + dark each)
 
-Look at how Login, Onboarding, Dashboard, Data Grid, and Support are represented
-in `v2/site/` to understand the expected page structure, frontmatter, and nav wiring
-before implementing the new pages.
+Then add the screenshot grid HTML to `blog.md` and `landing.md` following the pattern in `grid.md`.
