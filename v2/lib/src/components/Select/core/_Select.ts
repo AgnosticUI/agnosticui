@@ -7,6 +7,7 @@ import {
   type LabelPosition,
 } from '../../../shared/form-control-utils';
 import { formControlStyles } from '../../../shared/form-control-styles';
+import { FaceMixin, syncInnerInputValidity } from '../../../shared/face-mixin';
 
 export type SelectSize = 'small' | 'large' | '';
 
@@ -47,7 +48,7 @@ export interface SelectProps {
  *
  * @fires change - Emitted when selection changes
  */
-export class Select extends LitElement implements SelectProps {
+export class Select extends FaceMixin(LitElement) implements SelectProps {
   @property({ type: String, reflect: true })
   public size: SelectSize = '';
 
@@ -56,9 +57,6 @@ export class Select extends LitElement implements SelectProps {
 
   @property({ type: Boolean, reflect: true })
   public disabled = false;
-
-  @property({ type: String })
-  public name = '';
 
   @property({ type: Number, attribute: 'multiple-size' })
   public multipleSize?: number;
@@ -103,6 +101,49 @@ export class Select extends LitElement implements SelectProps {
   @query('select')
   private selectElement!: HTMLSelectElement;
 
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Restores each option to its defaultSelected state (the `selected`
+   * attribute from the original HTML), then re-syncs the form value.
+   */
+  override formResetCallback(): void {
+    if (this.selectElement) {
+      Array.from(this.selectElement.options).forEach(opt => (opt.selected = opt.defaultSelected));
+    }
+    this._syncFormValue();
+    this._internals.setValidity({});
+  }
+
+  /**
+   * Sync the form value to ElementInternals.
+   * Single select: submits the selected value as a string.
+   * Multi-select: uses the FormData overload to submit all selected values
+   * under the same key (matching native <select multiple> behavior).
+   */
+  private _syncFormValue(): void {
+    if (!this.selectElement) return;
+    if (this.multiple) {
+      const formData = new FormData();
+      Array.from(this.selectElement.selectedOptions).forEach(opt => {
+        formData.append(this.name, opt.value);
+      });
+      this._internals.setFormValue(formData);
+    } else {
+      this._internals.setFormValue(this.selectElement.value || '');
+    }
+  }
+
+  /**
+   * Sync validity to ElementInternals by delegating to the inner <select>.
+   */
+  private _syncValidity(): void {
+    syncInnerInputValidity(this._internals, this.selectElement);
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
+
   protected firstUpdated() {
     // Ensure options are moved after first render
     this.handleSlotChange();
@@ -112,6 +153,10 @@ export class Select extends LitElement implements SelectProps {
     if (slotElement) {
       slotElement.addEventListener('slotchange', () => this.handleSlotChange());
     }
+
+    // FACE: set initial form value and sync validity after options are in place
+    this._syncFormValue();
+    this._syncValidity();
   }
 
   private handleSlotChange() {
@@ -275,6 +320,10 @@ export class Select extends LitElement implements SelectProps {
     } else {
       value = select.value;
     }
+
+    // FACE: sync form value and validity on every selection change
+    this._syncFormValue();
+    this._syncValidity();
 
     // Dual-dispatch: dispatchEvent + callback
     const changeEvent = new CustomEvent<SelectChangeEventDetail>('change', {
