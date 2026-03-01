@@ -260,6 +260,9 @@ body {
   min-height: 60vh;
 }
 
+/* ── Scroll-to-button: offset above skin-fab ── */
+ag-scroll-to-button { bottom: 6rem; right: 1.75rem; }
+
 /* ── Theme toggle ── */
 .theme-toggle {
   background: none;
