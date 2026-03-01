@@ -5,6 +5,7 @@ import {
   createFormControlIds,
   buildAriaDescribedBy,
 } from '../../../shared/form-control-utils';
+import { FaceMixin, syncInnerInputValidity } from '../../../shared/face-mixin';
 
 
 export type RadioSize = 'small' | 'medium' | 'large';
@@ -96,7 +97,7 @@ export interface RadioProps {
   onChange?: (event: RadioChangeEvent) => void;
 }
 
-export class AgRadio extends LitElement implements RadioProps {
+export class AgRadio extends FaceMixin(LitElement) implements RadioProps {
   static override styles = [
     formControlStyles,
     css`
@@ -287,9 +288,6 @@ export class AgRadio extends LitElement implements RadioProps {
   ];
 
   @property({ type: String, reflect: true })
-  name = '';
-
-  @property({ type: String, reflect: true })
   value = '';
 
   @property({ type: Boolean, reflect: true })
@@ -336,12 +334,67 @@ export class AgRadio extends LitElement implements RadioProps {
   // Stable IDs for form control elements (created once)
   private _ids = createFormControlIds('ag-radio');
 
+  private inputRef?: HTMLInputElement;
+
   // Event callback props
   @property({ attribute: false })
   onClick?: (event: MouseEvent) => void;
 
   @property({ attribute: false })
   onChange?: (event: RadioChangeEvent) => void;
+
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  /**
+   * Sync the form value to ElementInternals.
+   * Submits this radio's value when checked, or null when unchecked.
+   * Each radio in the group reports independently; only the checked one
+   * contributes a value, matching native radio behavior.
+   */
+  private _syncFormValue(): void {
+    this._internals.setFormValue(this.checked ? this.value : null);
+  }
+
+  /**
+   * Sync validity to ElementInternals by delegating to the inner
+   * <input type="radio">. The required constraint is met when any radio
+   * in the group is checked; the browser handles this natively.
+   */
+  private _syncValidity(): void {
+    syncInnerInputValidity(this._internals, this.inputRef);
+  }
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Restores checked to false and clears the form value.
+   */
+  override formResetCallback(): void {
+    this.checked = false;
+    this._internals.setFormValue(null);
+    this._internals.setValidity({});
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
+
+  override firstUpdated() {
+    this.inputRef = this.shadowRoot?.querySelector('.radio-input') as HTMLInputElement;
+
+    // FACE: set initial form value and sync validity after first render
+    this._syncFormValue();
+    this._syncValidity();
+  }
+
+  override updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+
+    // FACE: sync form value and validity for programmatic changes to checked.
+    // This fires when uncheckOtherRadiosInGroup() sets sibling.checked = false,
+    // so group FACE state stays synchronized without any explicit coordination.
+    if (changedProperties.has('checked')) {
+      this._syncFormValue();
+      this._syncValidity();
+    }
+  }
 
   private handleClick(e: MouseEvent) {
     if (this.onClick) {
@@ -445,6 +498,10 @@ export class AgRadio extends LitElement implements RadioProps {
     const input = e.target as HTMLInputElement;
     const wasChecked = this.checked;
     this.checked = input.checked;
+
+    // FACE: sync form value and validity on user interaction
+    this._syncFormValue();
+    this._syncValidity();
 
     // Radio group coordination: When this radio is checked, uncheck all other radios with the same name
     // This is necessary because native radios in separate shadow DOMs don't coordinate automatically

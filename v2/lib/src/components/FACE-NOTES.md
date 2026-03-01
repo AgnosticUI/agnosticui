@@ -1,6 +1,6 @@
 # FACE Implementation Notes
 
-_Working notes captured during Issues #274 (AgInput) and #301 (AgToggle) and ongoing rollout._
+_Working notes captured during Issues #274 (AgInput), #301 (AgToggle), #303 (AgCheckbox), #305 (AgSelect), #307 (AgRadio), and ongoing rollout._
 _This file is the content source for a future article on implementing FACE in web components._
 
 ---
@@ -269,7 +269,7 @@ place visually.
 This gives us all of HTML5 constraint validation for free. New constraint types added to
 the spec later will also just work.
 
-### Direct Implementation (AgToggle, AgCheckbox, AgRadio, ...)
+### Direct Implementation (AgToggle, ...)
 
 `AgToggle` uses `<button role="switch">` internally. No inner `<input>` to delegate to.
 So we implement `_syncValidity()` directly against the component's own state:
@@ -596,6 +596,71 @@ Both are useful. Option A covers more ground (plain HTML, all frameworks, runtim
 messages). Option B is the nicer API in React/Vue. The cleanest path is probably Option B
 as the primary API with Option A available for cases that need runtime control. Decision
 deferred until the component rollout is complete.
+
+---
+
+## AgRadio: Group Coordination for Free
+
+AgRadio was listed as high complexity in the planning document. The concern was that radio
+groups require multiple elements to coordinate — when one is checked, the others must become
+unchecked and their FACE state updated accordingly. With native `<input type="radio">`, the
+browser handles this automatically. With elements in separate shadow DOM trees, it doesn't.
+
+The actual implementation was simpler than expected.
+
+### How Group Coordination Works
+
+AgRadio already had `uncheckOtherRadiosInGroup()`, which walks the DOM to find sibling
+`ag-radio` elements with the same `name` and sets `sibling.checked = false` on each.
+
+That's a Lit `@property` assignment. Lit detects the property change and calls `updated()`.
+We wire `_syncFormValue()` and `_syncValidity()` inside `updated()` whenever `checked`
+changes:
+
+```typescript
+override updated(changedProperties: Map<string, unknown>) {
+  super.updated(changedProperties);
+  if (changedProperties.has('checked')) {
+    this._syncFormValue();
+    this._syncValidity();
+  }
+}
+```
+
+When the checked radio calls `uncheckOtherRadiosInGroup()`, each sibling's `checked`
+property goes to `false`. Each sibling's `updated()` fires. Each sibling calls
+`_syncFormValue()` with `null`. Their FACE state is cleared automatically.
+
+No explicit "notify siblings to sync FACE" code needed anywhere. Lit's reactive property
+system is the coordination bus.
+
+### Keyboard Navigation Is Also Covered
+
+Arrow key navigation in `handleKeyDown` sets `nextRadio.checked = true` and then calls
+`nextRadio.uncheckOtherRadiosInGroup()`. Same chain: property change, `updated()` fires
+on the target, then on each sibling. FACE state follows the keyboard without any extra calls.
+
+### Delegation Works Here Too
+
+Because AgRadio renders an inner `<input type="radio">`, we use the delegation strategy
+for validity:
+
+```typescript
+private _syncValidity(): void {
+  syncInnerInputValidity(this._internals, this.inputRef);
+}
+```
+
+The browser's own required validation for radio groups (at least one radio with the name
+must be checked) applies through the inner input.
+
+### Form Value: One Contributor Per Group
+
+Each AgRadio element is form-associated independently. They all share a `name` but each
+calls `setFormValue()` on its own `_internals`. When a radio is checked, it submits
+`this.value`. When unchecked, it passes `null` — which excludes it from `FormData`. The
+result is exactly what a native radio group produces: only the checked radio's value
+appears in the submitted form data.
 
 ---
 

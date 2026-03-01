@@ -26,22 +26,7 @@ implementation pattern.
 | `AgToggle` | #301 | Direct validity (no inner input); null when unchecked; matches native checkbox semantics |
 | `AgCheckbox` | #303 | Delegation via inner `<input type="checkbox">`; null when unchecked; indeterminate treated as unchecked |
 | `AgSelect` | #305 | Delegation via inner `<select>`; `FormData` overload for multi-select; `defaultSelected` reset |
-
----
-
-### 🔲 Pending — Straightforward Lift
-
-These components follow the same basic FACE pattern as established above.
-
-#### `AgRadio` (`components/Radio/`)
-
-- **Form value:** The `value` attribute of the checked radio within a group
-- **Additional FACE work:**
-  - Radio groups share a `name` — only the checked radio submits its value
-  - `formResetCallback()` must restore `defaultChecked`
-  - Click handling must uncheck sibling radios with the same `name` in the same form
-- **Complexity:** High. Radio group coordination across elements requires careful
-  event-based communication or a shared group registry.
+| `AgRadio` | #307 | Delegation via inner `<input type="radio">`; group FACE sync via Lit `updated()` reactive chain |
 
 ---
 
@@ -102,29 +87,14 @@ These components are not form controls and do not need FACE:
 
 ## Implementation Order (Recommended)
 
-1. `AgToggle` — lowest complexity, establishes checkbox-like FACE pattern
-2. `AgCheckbox` — medium complexity, needed before AgRadio
-3. `AgSelect` — medium complexity, high usage in forms
-4. `AgRadio` — high complexity (group coordination), block on AgCheckbox
+1. ✅ `AgToggle` — lowest complexity, establishes checkbox-like FACE pattern
+2. ✅ `AgCheckbox` — medium complexity, needed before AgRadio
+3. ✅ `AgSelect` — medium complexity, high usage in forms
+4. ✅ `AgRadio` — group coordination via Lit reactive chain (simpler than anticipated)
 5. `AgSlider` — medium complexity, self-contained
 6. `AgRating` — medium complexity
 7. `AgSelectionButton` / `AgSelectionCard` — depends on Radio/Checkbox patterns
 8. `AgCombobox` — high complexity, requires UX decision on free-text vs constrained
-
----
-
-## Notes on Radio Group Coordination
-
-AgRadio groups require all radios with the same `name` in the same form to behave
-as a group — clicking one unchecks the others. Native `<input type="radio">` handles
-this automatically. With FACE:
-
-- Option 1: Walk the DOM on click to find siblings with matching `name` + `form`
-- Option 2: Use a shared `Map<string, Set<AgRadio>>` keyed on `[formId]:[name]`, updated
-  via `formAssociatedCallback` / `disconnectedCallback`
-
-Option 1 is simpler; Option 2 is more efficient for large forms. This decision should
-be documented in a `Radio/FACE-NOTES.md` as part of the AgRadio issue.
 
 ---
 
