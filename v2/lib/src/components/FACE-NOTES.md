@@ -1,6 +1,6 @@
 # FACE Implementation Notes
 
-_Working notes captured during Issues #274 (AgInput), #301 (AgToggle), #303 (AgCheckbox), #305 (AgSelect), #307 (AgRadio), #310 (AgSlider), #312 (AgRating), #314 (AgSelectionButtonGroup, AgSelectionCardGroup), and ongoing rollout._
+_Working notes captured during Issues #274 (AgInput), #301 (AgToggle), #303 (AgCheckbox), #305 (AgSelect), #307 (AgRadio), #310 (AgSlider), #312 (AgRating), #314 (AgSelectionButtonGroup, AgSelectionCardGroup), #316 (AgCombobox). FACE rollout complete.._
 _This file is the content source for a future article on implementing FACE in web components._
 
 ---
@@ -834,3 +834,45 @@ with selections, the FormData overload submits all values under the same `name` 
 Neither group currently has a `required` property in its public API. Constraint
 validation (`valueMissing`) can be added in a follow-up when `required` is added to
 the group's prop interface. For now, `_syncValidity()` always reports valid.
+
+---
+
+## AgCombobox: The "High Complexity" Component That Wasn't
+
+The planning doc flagged AgCombobox as high complexity with a note to defer until a UX
+decision was made: does typing into the input count as the form value, or only selecting?
+
+Reading the existing code answered it. There's no free-text mode. The component has two
+value-commit paths:
+
+1. `selectOption()` — user picks from the dropdown
+2. `clearSelection()` — user clicks the clear button
+
+Everything else (typing in the search input, arrow-keying through options) updates
+`_searchTerm` for filtering, but doesn't touch `this.value`. So the form value is
+unambiguously the selected option value(s), not whatever the user typed.
+
+### Implementation
+
+Single and multiple modes follow the same patterns as AgSelect and AgSelectionButtonGroup:
+
+- Single: `setFormValue(this.value || null)` — null if nothing selected
+- Multiple: FormData overload — all selected values under the same `name` key
+
+The `_syncFormValue()` and `_syncValidity()` calls go in both `selectOption()` and
+`clearSelection()`. The `updated()` hook handles programmatic changes to `this.value`.
+
+For `formResetCallback`, we call `clearSelection()` via its internals (`_selectedOptions = []`
+then `_selectionChanged()`), then explicitly null the form value and clear validity. The
+`_selectionChanged()` call also resets `_searchTerm` and `_displayLabel` so the input
+clears visually.
+
+### FACE Rollout Complete
+
+With AgCombobox, all form-capable components in AgnosticUI now participate natively in
+HTML forms. Every `ag-*` form control can be used inside a `<form>` tag and will:
+
+- Submit its value via `FormData` on form submit
+- Reset to default state on `form.reset()`
+- Reflect disabled state from `<fieldset disabled>` ancestors
+- Participate in constraint validation via `checkValidity()` / `reportValidity()`
