@@ -54,6 +54,7 @@ export class ContactForm extends LitElement {
       padding: var(--ag-space-4);
       background: var(--ag-background-secondary);
       border-radius: var(--ag-radius-md);
+      color: var(--ag-text-primary);
     }
     .result ul {
       margin: var(--ag-space-2) 0 0 0;
@@ -69,11 +70,29 @@ export class ContactForm extends LitElement {
 
   private _handleSubmit(e: Event) {
     e.preventDefault();
+    console.log('[handleSubmit] called');
     const form = this._form;
     if (!form) return;
-    if (!validateAll(form)) return;
+
+    const elements = Array.from(form.elements);
+    console.log('[handleSubmit] form.elements count:', elements.length);
+    elements.forEach((el) => {
+      const input = el as HTMLInputElement;
+      console.log(`  element: tag=${el.tagName} name="${input.name}" value="${input.value}"`);
+    });
+
+    const valid = validateAll(form);
+    console.log('[handleSubmit] validateAll result:', valid);
+    if (!valid) return;
+
     const data = new FormData(form);
-    this._submissionData = Object.fromEntries(data.entries()) as FormPayload;
+    const entries = [...data.entries()];
+    console.log('[handleSubmit] FormData entries:', entries);
+    this._submissionData = Object.fromEntries(entries) as FormPayload;
+
+    this.updateComplete.then(() => {
+      this.shadowRoot?.querySelector('.result')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   }
 
   private _handleReset() {

@@ -1,6 +1,7 @@
 <template>
   <ag-input
     .value="value"
+    :name="name"
     .labelHidden="labelHidden"
     .noLabel="noLabel"
     .capsule="capsule"

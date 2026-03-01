@@ -916,3 +916,60 @@ HTML forms. Every `ag-*` form control can be used inside a `<form>` tag and will
 - Reset to default state on `form.reset()`
 - Reflect disabled state from `<fieldset disabled>` ancestors
 - Participate in constraint validation via `checkValidity()` / `reportValidity()`
+
+---
+
+## Framework Integration Gotchas
+
+Discovered while building the `form-association` playbook (three-framework demo).
+
+### React: use native `addEventListener`, not the `onSubmit` prop
+
+When `ag-button` calls `this.closest('form').requestSubmit()` from inside its Lit shadow
+DOM, React's `onSubmit` prop may not call `preventDefault()` in time to stop native form
+navigation. React 18 delegates `submit` listeners to the root container; by the time the
+event reaches that listener during bubbling, some browsers have already committed to the
+submission, causing a full page reload that wipes React state before re-render.
+
+**Fix:** attach a native listener directly on the form element via `useEffect`:
+
+```tsx
+useEffect(() => {
+  const form = formRef.current
+  if (!form) return
+  function onSubmit(e: Event) {
+    e.preventDefault()
+    // read FormData, setSubmissionData, etc.
+  }
+  form.addEventListener('submit', onSubmit)
+  return () => form.removeEventListener('submit', onSubmit)
+}, [])
+```
+
+This matches what Vue's `@submit.prevent` does under the hood and guarantees
+`preventDefault()` fires before any browser navigation logic runs.
+
+### Vue wrappers: explicitly bind `:name="name"` — it won't flow through `$attrs`
+
+Vue 3's `$attrs` only contains attributes/props that are **not** declared in `defineProps`.
+If a wrapper component's props interface extends a core `InputProps` type that includes
+`name`, then `name` is a declared prop — and Vue will silently drop it from `$attrs`.
+
+This bit `VueInput`: all four text fields (`fullName`, `email`, `phone`, `message`) had
+`name=""` on the rendered `ag-input` because `name` was declared in the props type but
+never bound in the template. FACE elements with `name=""` are excluded from FormData.
+
+**Fix:** explicitly bind `:name="name"` in the wrapper template alongside the other props.
+
+```html
+<ag-input :name="name" ... v-bind="$attrs">
+```
+
+`VueToggle` and `VueSelectionButtonGroup` already had `:name="name"` explicitly — `VueInput`
+was the odd one out. Any Vue wrapper that exposes `name` as a prop must bind it explicitly.
+
+### Lit: no special handling needed
+
+Lit's own `@submit=${handler}` event binding on a shadow-DOM `<form>` is a direct
+`addEventListener` call. `e.preventDefault()` is always called before browser navigation.
+No extra ceremony required.

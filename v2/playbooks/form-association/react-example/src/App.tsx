@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { ReactInput } from './components/ag/Input/react'
 import { ReactSelectionButtonGroup } from './components/ag/SelectionButtonGroup/react'
 import { ReactSelectionButton } from './components/ag/SelectionButton/react'
@@ -21,15 +21,48 @@ type FormPayload = Record<string, string>
 
 export default function App() {
   const formRef = useRef<HTMLFormElement>(null)
+  const resultRef = useRef<HTMLDivElement>(null)
   const [submissionData, setSubmissionData] = useState<FormPayload | null>(null)
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    if (!formRef.current) return
-    if (!validateAll(formRef.current)) return
-    const data = new FormData(formRef.current)
-    setSubmissionData(Object.fromEntries(data.entries()) as FormPayload)
-  }
+  // Use a native addEventListener instead of React's onSubmit prop.
+  // When ag-button calls form.requestSubmit() from inside a Lit shadow DOM,
+  // React's synthetic event delegation may not call preventDefault() in time
+  // to stop native form navigation. A direct listener on the form element
+  // guarantees preventDefault() runs before the browser submits.
+  useEffect(() => {
+    const form = formRef.current
+    if (!form) return
+
+    function onSubmit(e: Event) {
+      e.preventDefault()
+      console.log('[handleSubmit] called')
+
+      const elements = Array.from(form!.elements)
+      console.log('[handleSubmit] form.elements count:', elements.length)
+      elements.forEach((el) => {
+        const input = el as HTMLInputElement
+        console.log(`  element: tag=${el.tagName} name="${input.name}" value="${input.value}"`)
+      })
+
+      const valid = validateAll(form!)
+      console.log('[handleSubmit] validateAll result:', valid)
+      if (!valid) return
+
+      const data = new FormData(form!)
+      const entries = [...data.entries()]
+      console.log('[handleSubmit] FormData entries:', entries)
+      setSubmissionData(Object.fromEntries(entries) as FormPayload)
+    }
+
+    form.addEventListener('submit', onSubmit)
+    return () => form.removeEventListener('submit', onSubmit)
+  }, [])
+
+  useEffect(() => {
+    if (submissionData) {
+      resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [submissionData])
 
   function handleReset() {
     formRef.current?.reset()
@@ -45,7 +78,6 @@ export default function App() {
             <ReactDivider />
             <form
               ref={formRef}
-              onSubmit={handleSubmit}
               noValidate
               style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ag-space-4)', marginTop: 'var(--ag-space-4)' }}
             >
@@ -92,12 +124,14 @@ export default function App() {
 
         {submissionData && (
           <div
+            ref={resultRef}
             role="alert"
             style={{
               marginTop: 'var(--ag-space-4)',
               padding: 'var(--ag-space-4)',
               background: 'var(--ag-background-secondary)',
               borderRadius: 'var(--ag-radius-md)',
+              color: 'var(--ag-text-primary)',
             }}
           >
             <strong>✓ Message sent!</strong>

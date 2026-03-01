@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, nextTick } from 'vue'
 import VueInput from './components/ag/Input/vue/VueInput.vue'
 import VueSelectionButtonGroup from './components/ag/SelectionButtonGroup/vue/VueSelectionButtonGroup.vue'
 import './components/ag/SelectionButton/core/SelectionButton'
@@ -11,7 +11,14 @@ import VueDivider from './components/ag/Divider/vue/VueDivider.vue'
 type FormPayload = Record<string, string>
 
 const formRef = ref<HTMLFormElement | null>(null)
+const resultRef = ref<HTMLDivElement | null>(null)
 const submissionData = ref<FormPayload | null>(null)
+
+watch(submissionData, (val) => {
+  if (val) {
+    nextTick(() => resultRef.value?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  }
+})
 
 function validateAll(form: HTMLFormElement): boolean {
   let valid = true
@@ -25,10 +32,24 @@ function validateAll(form: HTMLFormElement): boolean {
 
 function handleSubmit(e: Event) {
   e.preventDefault()
+  console.log('[handleSubmit] called')
   if (!formRef.value) return
-  if (!validateAll(formRef.value)) return
+
+  const elements = Array.from(formRef.value.elements)
+  console.log('[handleSubmit] form.elements count:', elements.length)
+  elements.forEach((el) => {
+    const input = el as HTMLInputElement
+    console.log(`  element: tag=${el.tagName} name="${input.name}" value="${input.value}"`)
+  })
+
+  const valid = validateAll(formRef.value)
+  console.log('[handleSubmit] validateAll result:', valid)
+  if (!valid) return
+
   const data = new FormData(formRef.value)
-  submissionData.value = Object.fromEntries(data.entries()) as FormPayload
+  const entries = [...data.entries()]
+  console.log('[handleSubmit] FormData entries:', entries)
+  submissionData.value = Object.fromEntries(entries) as FormPayload
 }
 
 function handleReset() {
@@ -93,8 +114,9 @@ function handleReset() {
 
       <div
         v-if="submissionData"
+        ref="resultRef"
         role="alert"
-        style="margin-top: var(--ag-space-4); padding: var(--ag-space-4); background: var(--ag-background-secondary); border-radius: var(--ag-radius-md)"
+        style="margin-top: var(--ag-space-4); padding: var(--ag-space-4); background: var(--ag-background-secondary); border-radius: var(--ag-radius-md); color: var(--ag-text-primary)"
       >
         <strong>✓ Message sent!</strong>
         <ul style="margin: var(--ag-space-2) 0 0 0; padding: 0 0 0 var(--ag-space-4)">

@@ -75,6 +75,7 @@ These were explicitly deferred during the FACE rollout and should each become a 
 | ~~`required` prop for `AgSelectionButtonGroup` / `AgSelectionCardGroup`~~ | ✅ Done | Added `required` property + `valueMissing` validity; `test-setup.ts` shim updated to track validity state |
 | ~~Custom validation messages~~ | ✅ Done | `validationMessages` prop on all 5 direct-validity components (Toggle, Rating, SelectionButtonGroup, SelectionCardGroup, Combobox). `ValidationMessages` interface exported from `face-mixin.ts`. Event-driven `ag-validate` left out of scope. |
 | ~~`AgButton` shadow DOM submit/reset bridge~~ | ✅ Done | `_handleClick` calls `this.closest('form').requestSubmit()` / `.reset()` for `type="submit"` / `type="reset"`. All 39 Button tests pass. |
+| ~~`form-association` playbook~~ | ✅ Done | Three-framework demo (React/Vue/Lit) verifying FACE end-to-end. Key findings: React needs native `addEventListener` (not `onSubmit` prop) when `requestSubmit()` comes from shadow DOM; Vue wrappers must explicitly bind `:name="name"` if `name` is a declared prop. |
 | `formStateRestoreCallback` | All FACE components | Called by browser on autofill/session restore; restores component to a saved state; each component needs its own restore logic |
 | `CustomStateSet` / `:state()` pseudo-class | All FACE components | Allows CSS to target internal states (e.g. `:state(checked)`); part of the ElementInternals API; useful for styling |
 
@@ -82,6 +83,7 @@ These were explicitly deferred during the FACE rollout and should each become a 
 
 ## References
 
-- `FACE-NOTES.md` — detailed implementation notes from Issue #274
+- `FACE-NOTES.md` — detailed implementation notes from Issue #274 + framework integration gotchas
+- `v2/playbooks/form-association/` — working 3-framework demo (React/Vue/Lit)
 - [WHATWG FACE Spec](https://html.spec.whatwg.org/dev/custom-elements.html#custom-elements-face-example)
 - [MDN: ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals)
