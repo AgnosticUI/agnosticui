@@ -151,6 +151,6 @@ be documented in a `Radio/FACE-NOTES.md` as part of the AgRadio issue.
 
 ## References
 
-- `Input/FACE-NOTES.md` — detailed implementation notes from Issue #274
+- `FACE-NOTES.md` — detailed implementation notes from Issue #274
 - [WHATWG FACE Spec](https://html.spec.whatwg.org/dev/custom-elements.html#custom-elements-face-example)
 - [MDN: ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals)
