@@ -5,6 +5,7 @@ import {
   createFormControlIds,
   buildAriaDescribedBy,
 } from '../../../shared/form-control-utils';
+import { FaceMixin, syncInnerInputValidity } from '../../../shared/face-mixin';
 
 export type CheckboxSize = 'small' | 'medium' | 'large';
 export type CheckboxTheme = 'default' | 'primary' | 'success' | 'monochrome';
@@ -45,7 +46,7 @@ export interface CheckboxProps {
   onChange?: (event: CheckboxChangeEvent) => void;
 }
 
-export class AgCheckbox extends LitElement implements CheckboxProps {
+export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
   static override styles = [
     formControlStyles,
     css`
@@ -279,9 +280,6 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
   ];
 
   @property({ type: String })
-  declare name: string;
-
-  @property({ type: String })
   declare value: string;
 
   @property({ type: Boolean, reflect: true })
@@ -331,8 +329,7 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
 
   constructor() {
     super();
-    this.name = '';
-    this.value = '';
+    this.value = 'on';
     this.checked = false;
     this.indeterminate = false;
     this.disabled = false;
@@ -353,12 +350,42 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     return this.inputRef || null;
   }
 
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Restores checked and indeterminate to their default states.
+   */
+  override formResetCallback(): void {
+    this.checked = false;
+    this.indeterminate = false;
+    this._internals.setFormValue(null);
+    this._internals.setValidity({});
+  }
+
+  /**
+   * Sync validity to ElementInternals by delegating to the inner
+   * <input type="checkbox">. Required validation is handled natively
+   * by the inner input; we just mirror its state.
+   */
+  private _syncValidity(): void {
+    syncInnerInputValidity(this._internals, this.inputRef);
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
+
   override updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
 
     // Sync indeterminate state to native input
     if (changedProperties.has('indeterminate') && this.inputRef) {
       this.inputRef.indeterminate = this.indeterminate;
+    }
+
+    // FACE: sync form value and validity for programmatic changes to checked/indeterminate
+    if (changedProperties.has('checked') || changedProperties.has('indeterminate')) {
+      this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+      this._syncValidity();
     }
   }
 
@@ -382,6 +409,10 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     if (this.indeterminate) {
       this.indeterminate = false;
     }
+
+    // FACE: sync form value and validity on user interaction
+    this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+    this._syncValidity();
 
     // Dispatch custom change event with dual-dispatch pattern
     const changeEvent = new CustomEvent<CheckboxChangeEventDetail>('change', {
@@ -526,5 +557,9 @@ export class AgCheckbox extends LitElement implements CheckboxProps {
     if (this.inputRef && this.indeterminate) {
       this.inputRef.indeterminate = this.indeterminate;
     }
+
+    // FACE: set initial form value and sync validity after first render
+    this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+    this._syncValidity();
   }
 }
