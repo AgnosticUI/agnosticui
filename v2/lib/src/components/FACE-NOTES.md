@@ -369,6 +369,81 @@ must always reflect current state.
 
 ---
 
+## AgCheckbox: Same Pattern, Two Strategies Meet
+
+AgCheckbox is the most instructive component in the rollout because it sits at the
+intersection of both validation strategies. It looks like a checkbox (checked/unchecked,
+`null` when unchecked) so the form value semantics match AgToggle — but internally it
+renders a real `<input type="checkbox">`, which means we can delegate validation to it
+just like AgInput.
+
+### Shadow DOM Inputs Don't Submit to Parent Forms
+
+This is worth spelling out because it's surprising the first time. `AgCheckbox` has an
+inner `<input type="checkbox">` in its shadow DOM with `name` and `value` set on it. You
+might expect that input to submit to the parent form. It doesn't. Shadow DOM inputs are
+isolated from the parent document's form. The inner checkbox was never submitting anything.
+Only `setFormValue()` connects the host element to the parent form.
+
+This is also why FACE is necessary for any component that renders inputs inside shadow DOM.
+The browser can't see them.
+
+### Delegation Still Applies
+
+Even though AgCheckbox is a checkbox-pattern component (null when unchecked), it still has
+an inner `<input type="checkbox">` that runs native constraint validation. So `_syncValidity()`
+can still delegate:
+
+```typescript
+private _syncValidity(): void {
+  syncInnerInputValidity(this._internals, this.inputRef);
+}
+```
+
+The inner `<input type="checkbox" required>` has `validity.valueMissing = true` when
+unchecked. We mirror that into `ElementInternals`. No custom flag logic needed.
+
+This is the delegation strategy working on a non-text input. The `syncInnerInputValidity`
+helper doesn't care what type of input it is — it just mirrors whatever validity state
+the native input has.
+
+### Programmatic Changes Need Syncing Too
+
+AgInput syncs on every keystroke. AgToggle syncs in `_performToggle`. AgCheckbox adds a
+wrinkle: `checked` can be changed programmatically (a "select all" button, test code, a
+parent component setting state). User interaction goes through `handleChange`. Programmatic
+changes go through Lit's `updated()` lifecycle. Both paths need to call `setFormValue` and
+`_syncValidity`:
+
+```typescript
+// User interaction
+handleChange(e: Event) {
+  this.checked = input.checked;
+  this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+  this._syncValidity();
+}
+
+// Programmatic assignment
+updated(changedProperties: Map<string, unknown>) {
+  if (changedProperties.has('checked') || changedProperties.has('indeterminate')) {
+    this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+    this._syncValidity();
+  }
+}
+```
+
+This is the right pattern for any component where state can change through user interaction
+OR programmatic property assignment. It's worth calling out in the article because it's easy
+to wire up the event handler path and forget the programmatic path.
+
+### Indeterminate State
+
+An indeterminate checkbox is visually neither checked nor unchecked. For form submission,
+indeterminate is treated as unchecked: the field is absent from `FormData`. `formResetCallback`
+restores both `checked` and `indeterminate` to false.
+
+---
+
 ## What We Skipped and Why
 
 ### `formAssociatedCallback(form)`
