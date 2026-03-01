@@ -40,10 +40,17 @@ function App() {
     () => document.documentElement.getAttribute('data-theme') === 'dark'
   )
   const [findTerm, setFindTerm] = useState('')
+  const [showProgress, setShowProgress] = useState(false)
 
   useEffect(() => {
     const t = setTimeout(() => setIsLoading(false), 1500)
     return () => clearTimeout(t)
+  }, [])
+
+  useEffect(() => {
+    function onScroll() { setShowProgress(window.scrollY >= 58) }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   function toggleTheme() {
@@ -56,7 +63,9 @@ function App() {
 
   return (
     <>
-      <ReactScrollProgress />
+      <div className={`scroll-progress-wrap${showProgress ? ' visible' : ''}`}>
+        <ReactScrollProgress />
+      </div>
       <SkinSwitcher />
       <ReactScrollToButton scrollThreshold={400} shape="circle" />
 
@@ -86,15 +95,18 @@ function App() {
 
             {/* Meta */}
             <div className="article-meta">
-              <ReactTag>{article.category}</ReactTag>
-              <div className="article-meta-author">
-                <ReactAvatar text={article.author.initials} size="sm" variant="info" />
-                <span className="article-meta-author-name">{article.author.name}</span>
+              <div className="article-meta-left">
+                <ReactTag>{article.category}</ReactTag>
+                <div className="article-meta-author">
+                  <ReactAvatar text={article.author.initials} size="sm" variant="info" />
+                  <span className="article-meta-author-name">{article.author.name}</span>
+                </div>
               </div>
-              <span className="article-meta-sep">·</span>
-              <span className="article-meta-date">{article.author.date}</span>
-              <span className="article-meta-sep">·</span>
-              <ReactBadge variant="info">{article.readTime}</ReactBadge>
+              <div className="article-meta-right">
+                <span className="article-meta-date">{article.author.date}</span>
+                <span className="article-meta-sep">·</span>
+                <ReactBadge variant="info">{article.readTime}</ReactBadge>
+              </div>
             </div>
 
             {/* Tabs */}

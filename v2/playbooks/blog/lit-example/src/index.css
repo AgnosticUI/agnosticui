@@ -63,13 +63,37 @@ body {
   display: block;
 }
 
+/* ── Scroll progress visibility ── */
+.scroll-progress-wrap {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.scroll-progress-wrap.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* ── Article meta row ── */
 .article-meta {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--ag-space-3, 0.75rem);
   flex-wrap: wrap;
   margin-bottom: var(--ag-space-4, 1rem);
+}
+
+.article-meta-left {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-3, 0.75rem);
+}
+
+.article-meta-right {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-3, 0.75rem);
 }
 
 .article-meta-author {

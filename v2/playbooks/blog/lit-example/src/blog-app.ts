@@ -35,17 +35,21 @@ export class BlogApp extends LitElement {
   @state() private _isLoading = true
   @state() private _isDark = document.documentElement.getAttribute('data-theme') === 'dark'
   @state() private _findTerm = ''
+  @state() private _showProgress = false
 
   private _loadTimer: ReturnType<typeof setTimeout> | null = null
+  private _onScroll = () => { this._showProgress = window.scrollY >= 58 }
 
   override connectedCallback() {
     super.connectedCallback()
     this._loadTimer = setTimeout(() => { this._isLoading = false }, 1500)
+    window.addEventListener('scroll', this._onScroll, { passive: true })
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback()
     if (this._loadTimer) clearTimeout(this._loadTimer)
+    window.removeEventListener('scroll', this._onScroll)
   }
 
   private _toggleTheme() {
@@ -66,7 +70,9 @@ export class BlogApp extends LitElement {
       : ''
 
     return html`
-      <ag-scroll-progress></ag-scroll-progress>
+      <div class="scroll-progress-wrap ${this._showProgress ? 'visible' : ''}">
+        <ag-scroll-progress></ag-scroll-progress>
+      </div>
       <skin-switcher></skin-switcher>
       <ag-scroll-to-button scroll-threshold="400" shape="circle"></ag-scroll-to-button>
 
@@ -93,15 +99,18 @@ export class BlogApp extends LitElement {
 
           <!-- Meta -->
           <div class="article-meta">
-            <ag-tag>${article.category}</ag-tag>
-            <div class="article-meta-author">
-              <ag-avatar text="${article.author.initials}" size="sm" variant="info"></ag-avatar>
-              <span class="article-meta-author-name">${article.author.name}</span>
+            <div class="article-meta-left">
+              <ag-tag>${article.category}</ag-tag>
+              <div class="article-meta-author">
+                <ag-avatar text="${article.author.initials}" size="sm" variant="info"></ag-avatar>
+                <span class="article-meta-author-name">${article.author.name}</span>
+              </div>
             </div>
-            <span class="article-meta-sep">·</span>
-            <span class="article-meta-date">${article.author.date}</span>
-            <span class="article-meta-sep">·</span>
-            <ag-badge variant="info">${article.readTime}</ag-badge>
+            <div class="article-meta-right">
+              <span class="article-meta-date">${article.author.date}</span>
+              <span class="article-meta-sep">·</span>
+              <ag-badge variant="info">${article.readTime}</ag-badge>
+            </div>
           </div>
 
           <!-- Tabs -->

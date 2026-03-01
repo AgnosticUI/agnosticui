@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import SkinSwitcher from './SkinSwitcher.vue'
 import { VueHeader } from './components/ag/Header/vue/index.ts'
 import { VueAvatar } from './components/ag/Avatar/vue/index.ts'
@@ -21,10 +21,18 @@ const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
 const isLoading = ref(true)
 const isDark = ref(false)
 const findTerm = ref('')
+const showProgress = ref(false)
+
+function onScroll() { showProgress.value = window.scrollY >= 58 }
 
 onMounted(() => {
   isDark.value = document.documentElement.getAttribute('data-theme') === 'dark'
   setTimeout(() => { isLoading.value = false }, 1500)
+  window.addEventListener('scroll', onScroll, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
 })
 
 function toggleTheme() {
@@ -49,7 +57,9 @@ const matchCount = computed(() => {
 </script>
 
 <template>
-  <VueScrollProgress />
+  <div :class="['scroll-progress-wrap', { visible: showProgress }]">
+    <VueScrollProgress />
+  </div>
   <SkinSwitcher />
   <VueScrollToButton :scroll-threshold="400" shape="circle" />
 
@@ -78,15 +88,18 @@ const matchCount = computed(() => {
 
       <!-- Meta -->
       <div class="article-meta">
-        <VueTag>{{ article.category }}</VueTag>
-        <div class="article-meta-author">
-          <VueAvatar :text="article.author.initials" size="sm" variant="info" />
-          <span class="article-meta-author-name">{{ article.author.name }}</span>
+        <div class="article-meta-left">
+          <VueTag>{{ article.category }}</VueTag>
+          <div class="article-meta-author">
+            <VueAvatar :text="article.author.initials" size="sm" variant="info" />
+            <span class="article-meta-author-name">{{ article.author.name }}</span>
+          </div>
         </div>
-        <span class="article-meta-sep">·</span>
-        <span class="article-meta-date">{{ article.author.date }}</span>
-        <span class="article-meta-sep">·</span>
-        <VueBadge variant="info">{{ article.readTime }}</VueBadge>
+        <div class="article-meta-right">
+          <span class="article-meta-date">{{ article.author.date }}</span>
+          <span class="article-meta-sep">·</span>
+          <VueBadge variant="info">{{ article.readTime }}</VueBadge>
+        </div>
       </div>
 
       <!-- Tabs -->
