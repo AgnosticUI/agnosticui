@@ -1,0 +1,89 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "react",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "SelectionButtonGroup": {
+      "added": "2026-03-01T20:59:08.353Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButtonGroup/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButtonGroup/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/react"
+      ]
+    },
+    "SelectionButton": {
+      "added": "2026-03-01T20:59:08.353Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/react"
+      ]
+    },
+    "Button": {
+      "added": "2026-03-01T20:59:49.463Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Button/react"
+      ]
+    },
+    "Input": {
+      "added": "2026-03-01T20:59:49.464Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Input/react"
+      ]
+    },
+    "Card": {
+      "added": "2026-03-01T20:59:49.464Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Card/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Card/react"
+      ]
+    },
+    "Divider": {
+      "added": "2026-03-01T20:59:49.464Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Divider/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Divider/react"
+      ]
+    },
+    "Toggle": {
+      "added": "2026-03-01T20:59:49.464Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Toggle/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Toggle/react"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-03-01T20:56:47.691Z"
+  }
+}

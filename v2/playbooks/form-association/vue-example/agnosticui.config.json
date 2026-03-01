@@ -1,0 +1,89 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "vue",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "SelectionButtonGroup": {
+      "added": "2026-03-01T20:59:11.008Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/SelectionButtonGroup/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/SelectionButtonGroup/vue",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/SelectionButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/SelectionButton/vue"
+      ]
+    },
+    "SelectionButton": {
+      "added": "2026-03-01T20:59:11.008Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/SelectionButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/SelectionButton/vue"
+      ]
+    },
+    "Button": {
+      "added": "2026-03-01T20:59:52.378Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Button/vue"
+      ]
+    },
+    "Input": {
+      "added": "2026-03-01T20:59:52.379Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Input/vue"
+      ]
+    },
+    "Card": {
+      "added": "2026-03-01T20:59:52.379Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Card/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Card/vue"
+      ]
+    },
+    "Divider": {
+      "added": "2026-03-01T20:59:52.379Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Divider/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Divider/vue"
+      ]
+    },
+    "Toggle": {
+      "added": "2026-03-01T20:59:52.379Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Toggle/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Toggle/vue"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-03-01T20:56:50.374Z"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "SelectionButtonGroup": {
+      "added": "2026-03-01T20:59:13.762Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButtonGroup/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButton/core"
+      ]
+    },
+    "SelectionButton": {
+      "added": "2026-03-01T20:59:13.762Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButton/core"
+      ]
+    },
+    "Button": {
+      "added": "2026-03-01T20:59:55.858Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Button/core"
+      ]
+    },
+    "Input": {
+      "added": "2026-03-01T20:59:55.859Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Input/core"
+      ]
+    },
+    "Card": {
+      "added": "2026-03-01T20:59:55.859Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Card/core"
+      ]
+    },
+    "Divider": {
+      "added": "2026-03-01T20:59:55.859Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Divider/core"
+      ]
+    },
+    "Toggle": {
+      "added": "2026-03-01T20:59:55.859Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Toggle/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-03-01T20:56:53.690Z"
+  }
+}
