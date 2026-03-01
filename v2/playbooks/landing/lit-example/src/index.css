@@ -201,6 +201,7 @@ ag-card.featured::part(ag-card-wrapper) {
   background: var(--ag-primary-background, #e8f0fe);
   outline: 2px solid var(--ag-primary, #297aff);
   border-radius: var(--ag-radius-lg, 0.75rem);
+  height: 100%;
 }
 
 .pricing-card-header {
