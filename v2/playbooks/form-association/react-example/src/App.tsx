@@ -50,35 +50,16 @@ export default function App() {
               style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ag-space-4)', marginTop: 'var(--ag-space-4)' }}
             >
               <div>
-                <ReactInput
-                  label="Full Name"
-                  name="fullName"
-                  type="text"
-                  required
-                />
+                <ReactInput label="Full Name" name="fullName" type="text" required />
               </div>
               <div>
-                <ReactInput
-                  label="Email Address"
-                  name="email"
-                  type="email"
-                  required
-                />
+                <ReactInput label="Email Address" name="email" type="email" required />
               </div>
               <div>
-                <ReactInput
-                  label="Phone"
-                  name="phone"
-                  type="tel"
-                />
+                <ReactInput label="Phone" name="phone" type="tel" />
               </div>
               <div>
-                <ReactInput
-                  label="Message"
-                  name="message"
-                  type="textarea"
-                  required
-                />
+                <ReactInput label="Message" name="message" type="textarea" required />
               </div>
               <div>
                 <ReactSelectionButtonGroup
@@ -111,13 +92,13 @@ export default function App() {
 
         {submissionData && (
           <div
+            role="alert"
             style={{
               marginTop: 'var(--ag-space-4)',
               padding: 'var(--ag-space-4)',
               background: 'var(--ag-background-secondary)',
               borderRadius: 'var(--ag-radius-md)',
             }}
-            role="alert"
           >
             <strong>✓ Message sent!</strong>
             <ul style={{ margin: 'var(--ag-space-2) 0 0 0', padding: '0 0 0 var(--ag-space-4)' }}>

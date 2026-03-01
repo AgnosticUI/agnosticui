@@ -95,7 +95,6 @@ export class ContactForm extends LitElement {
                   name="fullName"
                   type="text"
                   .required=${true}
-                  unique-id="fullName"
                 ></ag-input>
               </div>
               <div>
@@ -104,7 +103,6 @@ export class ContactForm extends LitElement {
                   name="email"
                   type="email"
                   .required=${true}
-                  unique-id="email"
                 ></ag-input>
               </div>
               <div>
@@ -112,7 +110,6 @@ export class ContactForm extends LitElement {
                   label="Phone"
                   name="phone"
                   type="tel"
-                  unique-id="phone"
                 ></ag-input>
               </div>
               <div>
@@ -121,7 +118,6 @@ export class ContactForm extends LitElement {
                   name="message"
                   type="textarea"
                   .required=${true}
-                  unique-id="message"
                 ></ag-input>
               </div>
               <div>
@@ -147,7 +143,7 @@ export class ContactForm extends LitElement {
               </div>
               <div class="actions">
                 <ag-button type="button" @click=${this._handleReset}>Clear</ag-button>
-                <ag-button type="submit" mode="primary">Send Message →</ag-button>
+                <ag-button type="submit" variant="primary">Send Message →</ag-button>
               </div>
             </form>
           </div>

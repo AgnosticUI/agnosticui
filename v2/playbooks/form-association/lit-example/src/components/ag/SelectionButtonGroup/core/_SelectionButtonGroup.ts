@@ -14,7 +14,7 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { FaceMixin, type ValidationMessages } from '../../shared/face-mixin';
-import type { AgSelectionButton, SelectionButtonTheme, SelectionButtonSize, SelectionButtonShape } from '../../SelectionButton/core/_SelectionButton.js';
+import type { AgSelectionButton, SelectionButtonTheme, SelectionButtonSize, SelectionButtonShape } from '../../SelectionButton/core/_SelectionButton';
 
 export type SelectionButtonType = 'radio' | 'checkbox';
 export type SelectionButtonGroupTheme = SelectionButtonTheme;

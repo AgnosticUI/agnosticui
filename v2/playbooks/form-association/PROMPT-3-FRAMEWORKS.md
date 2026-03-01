@@ -111,7 +111,8 @@ formElement.reset();
 npm create vite@latest react-example -- --template react-ts
 cd react-example && npm install && npm install lit && cd ..
 cd react-example && npx agnosticui-cli init --framework react --skip-prompts
-cd react-example && npx agnosticui-cli add button input card divider toggle selection-button-group selection-button && cd ..
+cd react-example && npm install @lit/react focus-trap @floating-ui/dom && cd ..
+cd react-example && npx agnosticui-cli add Button Input Card Divider Toggle SelectionButtonGroup SelectionButton && cd ..
 ```
 
 ### React Implementation Notes
@@ -124,6 +125,17 @@ cd react-example && npx agnosticui-cli add button input card divider toggle sele
   import './components/ag/styles/ag-tokens.css';
   import './components/ag/styles/ag-tokens-dark.css';
   ```
+- **tsconfig.app.json** — relax strict settings to avoid monorepo dual-`@types/react` resolution errors:
+  ```json
+  "strict": false,
+  "noUnusedLocals": false,
+  "noUnusedParameters": false
+  ```
+- **package.json** — change `build` script to skip `tsc -b` (Vite handles transpilation):
+  ```json
+  "build": "vite build"
+  ```
+- `ReactButton` uses `variant="primary"`, not `mode="primary"`
 
 ---
 
@@ -133,7 +145,7 @@ cd react-example && npx agnosticui-cli add button input card divider toggle sele
 npm create vite@latest vue-example -- --template vue-ts
 cd vue-example && npm install && npm install lit && cd ..
 cd vue-example && npx agnosticui-cli init --framework vue --skip-prompts
-cd vue-example && npx agnosticui-cli add button input card divider toggle selection-button-group selection-button && cd ..
+cd vue-example && npx agnosticui-cli add Button Input Card Divider Toggle SelectionButtonGroup SelectionButton && cd ..
 ```
 
 ### Vue Implementation Notes
@@ -145,6 +157,17 @@ cd vue-example && npx agnosticui-cli add button input card divider toggle select
   ```ts
   vue({ template: { compilerOptions: { isCustomElement: (tag) => tag.startsWith('ag-') } } })
   ```
+- **tsconfig.app.json** — relax strict settings:
+  ```json
+  "strict": false,
+  "noUnusedLocals": false,
+  "noUnusedParameters": false
+  ```
+- Slotted `<ag-selection-button>` elements need their element class registered — import in App.vue:
+  ```ts
+  import './components/ag/SelectionButton/core/SelectionButton'
+  ```
+- `VueButton` uses `variant="primary"`, not `mode="primary"`
 
 ---
 
@@ -154,7 +177,7 @@ cd vue-example && npx agnosticui-cli add button input card divider toggle select
 npm create vite@latest lit-example -- --template vanilla-ts
 cd lit-example && npm install && npm install lit && cd ..
 cd lit-example && npx agnosticui-cli init --framework lit --skip-prompts
-cd lit-example && npx agnosticui-cli add button input card divider toggle selection-button-group selection-button && cd ..
+cd lit-example && npx agnosticui-cli add Button Input Card Divider Toggle SelectionButtonGroup SelectionButton && cd ..
 ```
 
 ### Lit Implementation Notes

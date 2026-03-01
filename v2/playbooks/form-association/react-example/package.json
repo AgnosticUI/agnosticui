@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.7.5",
+    "@lit/react": "^1.0.8",
+    "focus-trap": "^8.0.0",
     "lit": "^3.3.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"

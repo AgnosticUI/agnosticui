@@ -51,39 +51,16 @@ function handleReset() {
             style="display: flex; flex-direction: column; gap: var(--ag-space-4); margin-top: var(--ag-space-4)"
           >
             <div>
-              <VueInput
-                label="Full Name"
-                name="fullName"
-                type="text"
-                :required="true"
-                uniqueId="fullName"
-              />
+              <VueInput label="Full Name" name="fullName" type="text" :required="true" />
             </div>
             <div>
-              <VueInput
-                label="Email Address"
-                name="email"
-                type="email"
-                :required="true"
-                uniqueId="email"
-              />
+              <VueInput label="Email Address" name="email" type="email" :required="true" />
             </div>
             <div>
-              <VueInput
-                label="Phone"
-                name="phone"
-                type="tel"
-                uniqueId="phone"
-              />
+              <VueInput label="Phone" name="phone" type="tel" />
             </div>
             <div>
-              <VueInput
-                label="Message"
-                name="message"
-                type="textarea"
-                :required="true"
-                uniqueId="message"
-              />
+              <VueInput label="Message" name="message" type="textarea" :required="true" />
             </div>
             <div>
               <VueSelectionButtonGroup
@@ -108,7 +85,7 @@ function handleReset() {
             </div>
             <div style="display: flex; gap: var(--ag-space-3); justify-content: flex-end; margin-top: var(--ag-space-2)">
               <VueButton type="button" @click="handleReset">Clear</VueButton>
-              <VueButton type="submit" mode="primary">Send Message →</VueButton>
+              <VueButton type="submit" variant="primary">Send Message →</VueButton>
             </div>
           </form>
         </div>
