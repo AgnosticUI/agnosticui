@@ -329,7 +329,7 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
 
   constructor() {
     super();
-    this.value = 'on';
+    this.value = '';
     this.checked = false;
     this.indeterminate = false;
     this.disabled = false;

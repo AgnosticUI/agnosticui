@@ -372,7 +372,7 @@ export class AgToggle extends FaceMixin(LitElement) implements ToggleProps {
     this.invalid = false;
     this.errorMessage = '';
     this.helpText = '';
-    this.value = 'on';
+    this.value = '';
   }
 
   // ─── FACE ─────────────────────────────────────────────────────────────────
