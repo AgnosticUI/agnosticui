@@ -191,12 +191,12 @@ ag-icon-button-fx {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--ag-space-5, 1.25rem);
-  align-items: start;
 }
 
 ag-card.featured::part(ag-card-wrapper) {
   background: var(--ag-primary-background, #e8f0fe);
   outline: 2px solid var(--ag-primary, #297aff);
+  border-radius: var(--ag-radius-lg, 0.75rem);
 }
 
 .pricing-card-header {
