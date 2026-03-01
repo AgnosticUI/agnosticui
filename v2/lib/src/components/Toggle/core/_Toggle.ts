@@ -34,6 +34,7 @@ import {
   type LabelPosition,
 } from '../../../shared/form-control-utils';
 import { formControlStyles } from '../../../shared/form-control-styles';
+import { FaceMixin } from '../../../shared/face-mixin';
 
 // Event types
 export interface ToggleChangeEventDetail {
@@ -80,7 +81,7 @@ export interface ToggleProps {
  * - Size variants with consistent proportions
  * - Form integration support
  */
-export class AgToggle extends LitElement implements ToggleProps {
+export class AgToggle extends FaceMixin(LitElement) implements ToggleProps {
   static styles = [
     formControlStyles,
     css`
@@ -331,13 +332,7 @@ export class AgToggle extends LitElement implements ToggleProps {
   declare helpText: string;
 
   /**
-   * Form integration - name attribute
-   */
-  @property({ type: String })
-  declare name: string;
-
-  /**
-   * Form integration - value when checked
+   * Form integration - value submitted when checked (defaults to 'on' like native checkbox)
    */
   @property({ type: String })
   declare value: string;
@@ -377,11 +372,41 @@ export class AgToggle extends LitElement implements ToggleProps {
     this.invalid = false;
     this.errorMessage = '';
     this.helpText = '';
-    this.name = '';
-    this.value = '';
+    this.value = 'on';
   }
 
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Restores checked to false and clears form value and validity.
+   */
+  override formResetCallback(): void {
+    this.checked = false;
+    this._internals.setFormValue(null);
+    this._internals.setValidity({});
+  }
+
+  /**
+   * Sync validity state to ElementInternals.
+   * Toggle has no inner <input> to delegate to, so required validation
+   * is implemented directly: unchecked + required = valueMissing.
+   */
+  private _syncValidity(): void {
+    if (this.required && !this.checked) {
+      this._internals.setValidity({ valueMissing: true }, 'Please check this field.');
+    } else {
+      this._internals.setValidity({});
+    }
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
+
   protected firstUpdated() {
+    // FACE: set initial form value and sync validity after first render
+    this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+    this._syncValidity();
+
     // Developer experience: warn about missing label
     if (!this.label && !this.noLabel) {
       // eslint-disable-next-line no-console
@@ -438,6 +463,10 @@ export class AgToggle extends LitElement implements ToggleProps {
     }
 
     this.checked = !this.checked;
+
+    // FACE: sync form value and validity on every toggle
+    this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+    this._syncValidity();
 
     // Dispatch custom event with form integration details
     const toggleChangeEvent = new CustomEvent<ToggleChangeEventDetail>('toggle-change', {
