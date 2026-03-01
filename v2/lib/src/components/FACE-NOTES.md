@@ -22,6 +22,82 @@ browser routes form lifecycle events (`reset`, `disabled`) to it.
 
 ---
 
+## Spot-Checking That FACE Actually Works
+
+Before getting into the details of the implementation, it's worth knowing how to verify
+that a component is properly form-associated. There are a few ways to do this without
+writing any tests.
+
+### 1. FormData on submit
+
+The simplest check. Build a small HTML page with a `<form>` containing your component
+and a submit button. Add a submit handler that logs the form data:
+
+```html
+<form id="test-form">
+  <ag-input name="email" label="Email" type="email"></ag-input>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  document.getElementById('test-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.target).entries());
+    console.log(data); // { email: "whatever you typed" }
+  });
+</script>
+```
+
+If the component's `name` and value show up in that object, form submission is working.
+If the key is missing entirely, `setFormValue()` isn't being called, or `formAssociated`
+isn't set, or the `name` attribute is missing.
+
+You can also set a breakpoint inside the submit handler and inspect the `FormData` object
+in the debugger if you prefer.
+
+### 2. DevTools console: `$0.form`
+
+Click on the component in the Chrome DevTools Elements panel so it becomes `$0`, then
+switch to the Console and type:
+
+```js
+$0.form       // should return the parent <form> element
+$0.name       // should return the name attribute value
+$0.willValidate // should return true
+```
+
+If `$0.form` returns `undefined` instead of a form element, the browser doesn't recognize
+the element as form-associated. That means either `formAssociated = true` is missing or
+`attachInternals()` wasn't called in the constructor.
+
+You can also check that the element appears in the form's element collection:
+
+```js
+Array.from(document.querySelector('form').elements)
+// your ag-* element should be in this list
+```
+
+Native inputs, selects, textareas, and FACE custom elements all show up here. Non-FACE
+custom elements don't.
+
+### 3. Constraint validation (defer until after IOC decisions)
+
+Verifying that `required`, `minlength`, etc. actually block form submission and show
+the right messages is worth testing, but it gets more involved once we add consumer
+control over validation messages. The basic check is:
+
+```js
+$0.validity.valid     // false if the field is in an invalid state
+$0.reportValidity()   // triggers browser validation UI, returns true/false
+```
+
+This is straightforward for components using the delegation strategy (AgInput). For
+components with direct validity implementation (AgToggle, AgCheckbox), it's worth
+confirming the right `ValidityState` flags are set. Leave the deeper validation spot
+checks until after the IOC work is done since the message behavior will change.
+
+---
+
 ## Why It Matters for Design Systems
 
 Without FACE, a custom form component is invisible to `<form>`. It can look like an
