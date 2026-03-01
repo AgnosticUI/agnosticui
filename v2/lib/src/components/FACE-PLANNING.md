@@ -27,6 +27,7 @@ implementation pattern.
 | `AgCheckbox` | #303 | Delegation via inner `<input type="checkbox">`; null when unchecked; indeterminate treated as unchecked |
 | `AgSelect` | #305 | Delegation via inner `<select>`; `FormData` overload for multi-select; `defaultSelected` reset |
 | `AgRadio` | #307 | Delegation via inner `<input type="radio">`; group FACE sync via Lit `updated()` reactive chain |
+| `AgSlider` | #310 | Migrated from hand-rolled FACE to FaceMixin; `firstUpdated` captures default; dual mode uses FormData overload |
 
 ---
 
@@ -40,14 +41,6 @@ implementation pattern.
   - Two modes (free-text vs constrained select) require different validity semantics
 - **Complexity:** High. The UX contract between free-text and option selection affects
   what "valid" means, which must be documented before implementing.
-
-#### `AgSlider` (`components/Slider/`)
-
-- **Form value:** Current numeric value as a string
-- **Additional FACE work:**
-  - `min` / `max` / `step` constraint validation via `setValidity({ rangeUnderflow: true })` etc.
-  - `formResetCallback()` restores `defaultValue`
-- **Complexity:** Medium.
 
 ---
 
@@ -91,7 +84,7 @@ These components are not form controls and do not need FACE:
 2. ✅ `AgCheckbox` — medium complexity, needed before AgRadio
 3. ✅ `AgSelect` — medium complexity, high usage in forms
 4. ✅ `AgRadio` — group coordination via Lit reactive chain (simpler than anticipated)
-5. `AgSlider` — medium complexity, self-contained
+5. ✅ `AgSlider` — migrated hand-rolled FACE to FaceMixin; added firstUpdated + formResetCallback
 6. `AgRating` — medium complexity
 7. `AgSelectionButton` / `AgSelectionCard` — depends on Radio/Checkbox patterns
 8. `AgCombobox` — high complexity, requires UX decision on free-text vs constrained
