@@ -664,6 +664,46 @@ appears in the submitted form data.
 
 ---
 
+## AgButton: Shadow DOM Buttons Cannot Submit Parent Forms
+
+`AgButton` renders its inner `<button>` element inside shadow DOM. A native
+`<button type="submit">` can only submit the form it belongs to — from inside shadow DOM,
+that inner button has no form owner. Clicking "Send Message →" simply fires a click event
+that goes nowhere; the parent `<form>`'s submit event never fires.
+
+This is the exact mirror image of the shadow DOM inputs discovery from AgCheckbox, but for
+*submit* (and *reset*) buttons rather than value submission.
+
+The fix lives in `_handleClick` on the host element. The host element IS in the light DOM
+and therefore IS a descendant of the ancestor form. `this.closest('form')` works correctly
+from there:
+
+```typescript
+if (!this.disabled && !this.loading && !event.defaultPrevented) {
+  if (this.type === 'submit') {
+    const form = this.closest('form');
+    if (form) form.requestSubmit();
+  } else if (this.type === 'reset') {
+    const form = this.closest('form');
+    if (form) form.reset();
+  }
+}
+```
+
+`requestSubmit()` triggers the form's built-in validation pipeline and fires the `submit`
+event — exactly what `onSubmit`/`@submit.prevent` handlers listen to. `reset()` is the
+natural counterpart for `type="reset"`. Both run through the form's normal lifecycle.
+
+This fix applies to all three framework bindings (React, Vue, Lit-native). There is no
+framework-specific workaround; the correction lives in core `_Button.ts` and is therefore
+available everywhere `ag-button` is used.
+
+AgButton is not FACE — it has no form value to submit and does not need `formAssociated`.
+But it does need to *interact* with the form its host element lives in, and that interaction
+requires explicit coordination across the shadow boundary.
+
+---
+
 ## Things That Surprised Us Along the Way
 
 - `formAssociated = true` does nothing by itself. Values don't appear in `FormData`
@@ -690,10 +730,10 @@ appears in the submitted form data.
 ## Future Work
 
 - [ ] `formStateRestoreCallback` for autofill and session history (separate issue)
-- [ ] IOC validation messages across all FACE components (separate issue, after rollout completes)
+- [x] `validationMessages` prop — done; all 5 direct-validity components (Toggle, Rating, SelectionButtonGroup, SelectionCardGroup, Combobox) accept `validationMessages?: ValidationMessages` to override hardcoded fallback strings
 - [ ] `CustomStateSet` via `_internals.states` for CSS pseudo-class support (`:--checked`, `:--invalid`, etc.)
 - [ ] `_parentDisabled` refinement for `formDisabledCallback` to avoid conflict with local disabled attribute
-- [ ] Apply FACE to remaining components per `FACE-PLANNING.md`
+- [x] `AgButton` shadow DOM submit/reset bridge — done; `_handleClick` calls `this.closest('form').requestSubmit()` / `.reset()` for `type="submit"` and `type="reset"`
 
 ---
 

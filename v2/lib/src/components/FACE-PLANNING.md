@@ -41,7 +41,7 @@ These components are not form controls and do not need FACE:
 
 | Component | Reason |
 |-----------|--------|
-| `AgButton` | Triggers actions; `type="submit"` is handled natively by the inner `<button>` |
+| `AgButton` | Not FACE (no form value). The inner `<button>` is in shadow DOM and cannot natively submit a parent form. Fixed in `_handleClick`: `this.closest('form').requestSubmit()` / `.reset()` for `type="submit"` / `type="reset"`. |
 | `AgAlert` | Display only |
 | `AgDialog` | Container, not a value |
 | `AgTabs` | Navigation, not a form field |
@@ -73,7 +73,8 @@ These were explicitly deferred during the FACE rollout and should each become a 
 | Item | Scope | Notes |
 |------|-------|-------|
 | ~~`required` prop for `AgSelectionButtonGroup` / `AgSelectionCardGroup`~~ | ✅ Done | Added `required` property + `valueMissing` validity; `test-setup.ts` shim updated to track validity state |
-| Custom validation messages | All components with direct validity | Approach decided: `validationMessages` prop (map of `ValidityState` flag → string). Event-driven (`ag-validate`) left out of scope — adds complexity without enough benefit for the typical use case |
+| ~~Custom validation messages~~ | ✅ Done | `validationMessages` prop on all 5 direct-validity components (Toggle, Rating, SelectionButtonGroup, SelectionCardGroup, Combobox). `ValidationMessages` interface exported from `face-mixin.ts`. Event-driven `ag-validate` left out of scope. |
+| ~~`AgButton` shadow DOM submit/reset bridge~~ | ✅ Done | `_handleClick` calls `this.closest('form').requestSubmit()` / `.reset()` for `type="submit"` / `type="reset"`. All 39 Button tests pass. |
 | `formStateRestoreCallback` | All FACE components | Called by browser on autofill/session restore; restores component to a saved state; each component needs its own restore logic |
 | `CustomStateSet` / `:state()` pseudo-class | All FACE components | Allows CSS to target internal states (e.g. `:state(checked)`); part of the ElementInternals API; useful for styling |
 

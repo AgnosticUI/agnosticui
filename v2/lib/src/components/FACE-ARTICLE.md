@@ -491,6 +491,25 @@ Single and multiple modes follow the same patterns as AgSelect and the selection
 
 **Shadow DOM inputs don't submit to parent forms.** Worth stating explicitly: a native `<input name="email">` inside a shadow root is invisible to the ancestor form. Only `setFormValue()` on the host element creates the form connection. This is the fundamental reason FACE exists for shadow DOM components.
 
+**Shadow DOM submit buttons can't submit parent forms either.** This is the exact mirror of the previous point, and it bit us in the form-association playbook. `ag-button` renders its inner `<button type="submit">` inside shadow DOM. From inside that shadow root, the button has no form owner — clicking it never triggers the parent `<form>`'s submit event, no matter how the framework wires up the `onSubmit` handler.
+
+The fix is not FACE (AgButton has no form value). It's a light-DOM traversal from the host element: `this.closest('form')` works correctly from `ag-button` itself because the host element IS in the ancestor form's DOM tree. The inner shadow-DOM button is not.
+
+```typescript
+// In AgButton._handleClick:
+if (this.type === 'submit') {
+  const form = this.closest('form');
+  if (form) form.requestSubmit(); // triggers submit event + native validation pipeline
+} else if (this.type === 'reset') {
+  const form = this.closest('form');
+  if (form) form.reset();
+}
+```
+
+`requestSubmit()` is preferred over `submit()` because it fires the `submit` event (which framework handlers listen to) and runs constraint validation. `submit()` skips both.
+
+The practical rule: **anything that needs to interact with a parent form must traverse from the host element, not from inside shadow DOM.** This applies to value submission (FACE), validation, and form actions like submit and reset.
+
 **Group coordination via Lit's reactive system was free.** We expected AgRadio's group sync to require explicit cross-element communication. It didn't — wiring `_syncFormValue()` inside `updated()` was enough. Lit's property change detection propagated FACE state through the group automatically.
 
 ---
@@ -553,7 +572,8 @@ An event-driven alternative (`ag-validate`) was considered but left out of scope
 
 With the rollout complete, every `ag-*` form control participates natively in HTML forms. The remaining work:
 
-- **Consumer-controlled validation messages** — expose a `validationMessages` prop so internationalized apps can replace the hardcoded strings
+- ~~**Consumer-controlled validation messages**~~ — **Done.** The `validationMessages` prop is live on all five direct-validity components (Toggle, Rating, SelectionButtonGroup, SelectionCardGroup, Combobox). Pass `{ valueMissing: 'Your copy here.' }` to override any hardcoded fallback string.
+- ~~**Shadow DOM submit/reset button bridge**~~ — **Done.** `ag-button` now calls `this.closest('form').requestSubmit()` / `.reset()` from its host-element click handler.
 - **`formStateRestoreCallback`** — autofill and back-button session restore, one issue per component
 - **`CustomStateSet`** — CSS-targetable internal states via `:state()` pseudo-class
 - **`_parentDisabled` refinement** — separate `formDisabledCallback` state from the element's own `disabled` attribute to avoid the two sources overwriting each other
