@@ -66,6 +66,19 @@ These components are not form controls and do not need FACE:
 
 ---
 
+## Follow-up Issues (Deferred During Rollout)
+
+These were explicitly deferred during the FACE rollout and should each become a separate GitHub issue.
+
+| Item | Scope | Notes |
+|------|-------|-------|
+| `required` prop for `AgSelectionButtonGroup` / `AgSelectionCardGroup` | API + FACE | `_syncValidity()` always passes `{}` today; add `required` property, then set `valueMissing` when no selection |
+| Custom validation messages | All components with direct validity | Hardcoded strings in `setValidity()` calls (e.g. `'Please select a rating.'`); expose a `validationMessage` prop |
+| `formStateRestoreCallback` | All FACE components | Called by browser on autofill/session restore; restores component to a saved state; each component needs its own restore logic |
+| `CustomStateSet` / `:state()` pseudo-class | All FACE components | Allows CSS to target internal states (e.g. `:state(checked)`); part of the ElementInternals API; useful for styling |
+
+---
+
 ## References
 
 - `FACE-NOTES.md` — detailed implementation notes from Issue #274
