@@ -29,9 +29,9 @@ if (typeof HTMLElement !== 'undefined' && !HTMLElement.prototype.attachInternals
       setFormValue: () => {},
       setValidity: (flags: ValidityStateFlags, message?: string) => {
         for (const key of validityFlags) {
-          (validity as Record<string, boolean>)[key] = !!(flags as Record<string, boolean>)[key];
+          (validity as unknown as Record<string, boolean>)[key] = !!(flags as unknown as Record<string, boolean>)[key];
         }
-        (validity as Record<string, boolean>).valid = validityFlags.every(k => !(validity as Record<string, boolean>)[k]);
+        (validity as unknown as Record<string, boolean>).valid = validityFlags.every(k => !(validity as unknown as Record<string, boolean>)[k]);
         validationMsg = message ?? '';
       },
       checkValidity: () => validity.valid,

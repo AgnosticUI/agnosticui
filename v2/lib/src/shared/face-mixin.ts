@@ -27,6 +27,7 @@ import { LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 
 // Standard Lit mixin type helper
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Constructor<T = {}> = new (...args: any[]) => T;
 
 /**
@@ -64,7 +65,6 @@ export function syncInnerInputValidity(
  *
  * Import this type when you need to declare a FACE-capable component in type position.
  */
-// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export declare class FaceMixinInterface {
   /** Registers this element as form-associated with the browser */
   static readonly formAssociated: boolean;
@@ -119,6 +119,7 @@ export const FaceMixin = <T extends Constructor<LitElement>>(superClass: T) => {
     @property({ type: String, reflect: true })
     name = '';
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(...args: any[]) {
       super(...args);
       // attachInternals() must be called in the constructor, before any other lifecycle
