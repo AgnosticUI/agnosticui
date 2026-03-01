@@ -16,6 +16,7 @@
 
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state, query } from 'lit/decorators.js';
+import { FaceMixin } from '../../../shared/face-mixin';
 import {
   createFormControlIds,
   buildAriaDescribedBy,
@@ -138,7 +139,7 @@ export interface ComboboxProps {
  * @csspart ag-combobox-help-text - Help text element
  * @csspart ag-combobox-error-message - Error message element
  */
-export class AgCombobox extends LitElement implements ComboboxProps {
+export class AgCombobox extends FaceMixin(LitElement) implements ComboboxProps {
   static styles = [
     formControlStyles,
     css`
@@ -746,6 +747,15 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     }
   }
 
+  override updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    // FACE: sync for programmatic value changes
+    if (changedProperties.has('value')) {
+      this._syncFormValue();
+      this._syncValidity();
+    }
+  }
+
   // Public methods
   focus() {
     this._inputElement?.focus();
@@ -876,6 +886,10 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     this.dispatchEvent(selectEvent);
     this.onSelect?.(selectEvent);
 
+    // FACE: sync form value and validity after selection
+    this._syncFormValue();
+    this._syncValidity();
+
     // Dispatch change event (value is already updated by _selectionChanged)
     const changeEvent = new CustomEvent<ComboboxChangeEventDetail>('change', {
       detail: {
@@ -914,6 +928,10 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     this._selectionChanged();
     this._activeIndex = -1;
 
+    // FACE: sync form value and validity on clear
+    this._syncFormValue();
+    this._syncValidity();
+
     // Dispatch change event
     const changeEvent = new CustomEvent<ComboboxChangeEventDetail>('change', {
       detail: {
@@ -926,6 +944,62 @@ export class AgCombobox extends LitElement implements ComboboxProps {
     this.dispatchEvent(changeEvent);
     this.onChange?.(changeEvent);
   }
+
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  /**
+   * Sync the form value to ElementInternals.
+   * Single: submits the selected value string, or null if nothing selected.
+   * Multiple: submits all selected values via FormData overload.
+   * Typed text that hasn't been committed via selectOption() is never submitted.
+   */
+  private _syncFormValue(): void {
+    if (this.multiple) {
+      const selected = Array.isArray(this.value) ? this.value : [];
+      if (selected.length === 0) {
+        this._internals.setFormValue(null);
+      } else {
+        const formData = new FormData();
+        selected.forEach(val => formData.append(this.name, val));
+        this._internals.setFormValue(formData);
+      }
+    } else {
+      const val = typeof this.value === 'string' ? this.value : '';
+      this._internals.setFormValue(val || null);
+    }
+  }
+
+  /**
+   * Sync validity. Required with no selection = valueMissing.
+   */
+  private _syncValidity(): void {
+    const hasValue = this.multiple
+      ? (Array.isArray(this.value) && this.value.length > 0)
+      : !!(typeof this.value === 'string' && this.value);
+    if (this.required && !hasValue) {
+      this._internals.setValidity({ valueMissing: true }, 'Please select an option.');
+    } else {
+      this._internals.setValidity({});
+    }
+  }
+
+  override firstUpdated() {
+    this._syncFormValue();
+    this._syncValidity();
+  }
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Clears selection and re-syncs form value.
+   */
+  override formResetCallback(): void {
+    this._selectedOptions = [];
+    this._selectionChanged();
+    this._internals.setFormValue(null);
+    this._internals.setValidity({});
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
 
   // Private methods
   private _selectionChanged() {

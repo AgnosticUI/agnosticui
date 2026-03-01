@@ -31,19 +31,7 @@ implementation pattern.
 | `AgRating` | #312 | Direct validity (no inner input); null when value=0; positive values submit as string |
 | `AgSelectionButtonGroup` | #314 | FACE on group (not items); radio=string, checkbox=FormData overload; formReset clears internal state |
 | `AgSelectionCardGroup` | #314 | Same pattern as AgSelectionButtonGroup |
-
----
-
-### 🔲 Pending — More Complex
-
-#### `AgCombobox` (`components/Combobox/`)
-
-- **Form value:** The committed input value or selected option value
-- **Additional FACE work:**
-  - Must decide: does typing into the input count as the form value, or only selecting?
-  - Two modes (free-text vs constrained select) require different validity semantics
-- **Complexity:** High. The UX contract between free-text and option selection affects
-  what "valid" means, which must be documented before implementing.
+| `AgCombobox` | #316 | Direct validity; no free-text mode — only `selectOption()`/`clearSelection()` commit values; single=string, multiple=FormData overload |
 
 ---
 
@@ -74,7 +62,7 @@ These components are not form controls and do not need FACE:
 5. ✅ `AgSlider` — migrated hand-rolled FACE to FaceMixin; added firstUpdated + formResetCallback
 6. ✅ `AgRating` — direct validity; null when value=0
 7. ✅ `AgSelectionButtonGroup` / `AgSelectionCardGroup` — FACE on group element; radio/checkbox via FormData overload
-8. `AgCombobox` — high complexity, requires UX decision on free-text vs constrained
+8. ✅ `AgCombobox` — no free-text mode exists; only `selectOption()`/`clearSelection()` commit values; simpler than anticipated
 
 ---
 
