@@ -1,6 +1,6 @@
 # FACE Implementation Notes
 
-_Working notes captured during Issues #274 (AgInput), #301 (AgToggle), #303 (AgCheckbox), #305 (AgSelect), #307 (AgRadio), #310 (AgSlider), and ongoing rollout._
+_Working notes captured during Issues #274 (AgInput), #301 (AgToggle), #303 (AgCheckbox), #305 (AgSelect), #307 (AgRadio), #310 (AgSlider), #312 (AgRating), and ongoing rollout._
 _This file is the content source for a future article on implementing FACE in web components._
 
 ---
@@ -756,3 +756,31 @@ The existing `_updateFormValue()` always calls `this._internals.setValidity({})`
 range input, this is correct in practice: the slider UI always clamps values between min
 and max, so the underlying constraints are never violated. Range constraint validation
 (`rangeUnderflow`, `rangeOverflow`, `stepMismatch`) can be added in a follow-up if needed.
+
+---
+
+## AgRating: Direct Validity Without an Inner Input
+
+AgRating uses a custom `role="slider"` div for its interactive star widget — no inner
+`<input>`. Like AgToggle, that means the direct validation approach: implement
+`_syncValidity()` against component state rather than delegating to a native element.
+
+A rating of `0` means nothing selected (the initial state, also reachable via `allowClear`).
+That's the only case where `required` fires:
+
+```typescript
+private _syncValidity(): void {
+  if (this.required && this.value === 0) {
+    this._internals.setValidity({ valueMissing: true }, 'Please select a rating.');
+  } else {
+    this._internals.setValidity({});
+  }
+}
+```
+
+For form value, `0` submits as `null` (absent from FormData) to match the convention
+established by checkbox/toggle — "nothing selected" means absent, not an empty string.
+Any positive value submits as a string (`"3"`, `"3.5"` for half-star precision).
+
+`commitValue()` is the single path all user interactions flow through (clicks, pointer up,
+keyboard). Wiring FACE sync there plus in `updated()` for programmatic changes covers both paths.
