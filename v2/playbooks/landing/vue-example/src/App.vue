@@ -49,7 +49,7 @@ const year = new Date().getFullYear()
     <button class="theme-toggle" aria-label="Toggle theme" @click="toggleTheme">
       <span v-html="isDark ? sunIcon : moonIcon" />
     </button>
-    <VueButton variant="primary" size="sm">Get Started</VueButton>
+    <VueButton variant="primary" size="sm" shape="rounded">Get Started</VueButton>
   </VueHeader>
 
   <!-- Hero -->
@@ -60,10 +60,10 @@ const year = new Date().getFullYear()
     <h1 class="hero-headline">{{ hero.headline }}</h1>
     <p class="hero-sub">{{ hero.subheadline }}</p>
     <div class="hero-actions">
-      <VueButtonFx variant="primary" size="lg" fx="pulse-wobble" fx-speed="lg" fx-ease="spring-md">
+      <VueButtonFx variant="primary" size="lg" shape="rounded" fx="pulse-wobble" fx-speed="lg" fx-ease="spring-md">
         {{ hero.primaryCta }}
       </VueButtonFx>
-      <VueButton size="lg" :bordered="true">{{ hero.secondaryCta }}</VueButton>
+      <VueButton size="lg" shape="rounded" :bordered="true">{{ hero.secondaryCta }}</VueButton>
     </div>
   </section>
 
@@ -139,7 +139,7 @@ const year = new Date().getFullYear()
           <ul class="pricing-features">
             <li v-for="(feat, i) in tier.features" :key="i">{{ feat }}</li>
           </ul>
-          <VueButton :variant="tier.ctaVariant || undefined" :full-width="true">{{ tier.cta }}</VueButton>
+          <VueButton :variant="tier.ctaVariant || undefined" shape="rounded" :full-width="true">{{ tier.cta }}</VueButton>
         </div>
       </div>
     </div>

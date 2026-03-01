@@ -53,7 +53,7 @@ function App() {
         <button className="theme-toggle" aria-label="Toggle theme" onClick={toggleTheme}>
           {isDark ? sunIcon : moonIcon}
         </button>
-        <ReactButton variant="primary" size="sm">Get Started</ReactButton>
+        <ReactButton variant="primary" size="sm" shape="rounded">Get Started</ReactButton>
       </ReactHeader>
 
       {/* Hero */}
@@ -66,10 +66,10 @@ function App() {
         <h1 className="hero-headline">{hero.headline}</h1>
         <p className="hero-sub">{hero.subheadline}</p>
         <div className="hero-actions">
-          <ReactButtonFx variant="primary" size="lg" fx="pulse-wobble" fxSpeed="lg" fxEase="spring-md">
+          <ReactButtonFx variant="primary" size="lg" shape="rounded" fx="pulse-wobble" fxSpeed="lg" fxEase="spring-md">
             {hero.primaryCta}
           </ReactButtonFx>
-          <ReactButton size="lg" bordered>{hero.secondaryCta}</ReactButton>
+          <ReactButton size="lg" shape="rounded" bordered>{hero.secondaryCta}</ReactButton>
         </div>
       </section>
 
@@ -156,7 +156,7 @@ function App() {
                 <ul className="pricing-features">
                   {tier.features.map((f, i) => <li key={i}>{f}</li>)}
                 </ul>
-                <ReactButton variant={tier.ctaVariant || undefined} fullWidth>{tier.cta}</ReactButton>
+                <ReactButton variant={tier.ctaVariant || undefined} shape="rounded" fullWidth>{tier.cta}</ReactButton>
               </div>
             ))}
           </div>

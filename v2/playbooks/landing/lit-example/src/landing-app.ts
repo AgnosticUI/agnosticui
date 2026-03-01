@@ -47,7 +47,7 @@ export class LandingApp extends LitElement {
         <button class="theme-toggle" aria-label="Toggle theme" @click=${() => this._toggleTheme()}>
           ${this._isDark ? sunIcon : moonIcon}
         </button>
-        <ag-button variant="primary" size="sm">Get Started</ag-button>
+        <ag-button variant="primary" size="sm" shape="rounded">Get Started</ag-button>
       </ag-header>
 
       <!-- Hero -->
@@ -58,10 +58,10 @@ export class LandingApp extends LitElement {
         <h1 class="hero-headline">${hero.headline}</h1>
         <p class="hero-sub">${hero.subheadline}</p>
         <div class="hero-actions">
-          <ag-button-fx variant="primary" size="lg" fx="pulse-wobble" fx-speed="lg" fx-ease="spring-md">
+          <ag-button-fx variant="primary" size="lg" shape="rounded" fx="pulse-wobble" fx-speed="lg" fx-ease="spring-md">
             ${hero.primaryCta}
           </ag-button-fx>
-          <ag-button size="lg" bordered>${hero.secondaryCta}</ag-button>
+          <ag-button size="lg" shape="rounded" bordered>${hero.secondaryCta}</ag-button>
         </div>
       </section>
 
@@ -148,7 +148,7 @@ export class LandingApp extends LitElement {
                 <ul class="pricing-features">
                   ${tier.features.map(f => html`<li>${f}</li>`)}
                 </ul>
-                <ag-button variant="${tier.ctaVariant}" full-width>${tier.cta}</ag-button>
+                <ag-button variant="${tier.ctaVariant}" shape="rounded" full-width>${tier.cta}</ag-button>
               </div>
             `)}
           </div>
