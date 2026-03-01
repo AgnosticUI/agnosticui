@@ -7,6 +7,7 @@
     :value="value"
     :values="values"
     .disabled="disabled"
+    .required="required"
     @selection-change="handleSelectionChange"
     v-bind="$attrs"
   >
@@ -33,6 +34,8 @@ export interface VueSelectionCardGroupProps {
   values?: string[];
   /** Disable all cards in the group */
   disabled?: boolean;
+  /** Require at least one selection before the form can be submitted */
+  required?: boolean;
 }
 
 withDefaults(defineProps<VueSelectionCardGroupProps>(), {
@@ -43,6 +46,7 @@ withDefaults(defineProps<VueSelectionCardGroupProps>(), {
   value: '',
   values: () => [],
   disabled: false,
+  required: false,
 });
 
 const emit = defineEmits<{

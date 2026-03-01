@@ -47,6 +47,8 @@ export interface SelectionCardGroupProps {
   values?: string[];
   /** Disable all cards in the group */
   disabled?: boolean;
+  /** Require at least one selection before the form can be submitted */
+  required?: boolean;
   /** Callback for selection changes */
   onSelectionChange?: (event: SelectionChangeEvent) => void;
 }
@@ -112,6 +114,9 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
   @property({ type: Boolean, reflect: true })
   declare disabled: boolean;
 
+  @property({ type: Boolean, reflect: true })
+  declare required: boolean;
+
   @property({ attribute: false })
   declare onSelectionChange: ((event: SelectionChangeEvent) => void) | undefined;
 
@@ -128,6 +133,7 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
     this.value = '';
     this.values = [];
     this.disabled = false;
+    this.required = false;
     this._internalSelectedValues = [];
   }
 
@@ -165,13 +171,18 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
   }
 
   private _syncValidity(): void {
-    this._internals.setValidity({});
+    const selected = this._getSelectedValues();
+    if (this.required && selected.length === 0) {
+      this._internals.setValidity({ valueMissing: true }, 'Please select an option.');
+    } else {
+      this._internals.setValidity({});
+    }
   }
 
   override formResetCallback(): void {
     this._internalSelectedValues = [];
     this._internals.setFormValue(null);
-    this._internals.setValidity({});
+    this._syncValidity();
     this._syncChildCards();
   }
 
@@ -212,6 +223,8 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
       changedProperties.has('_internalSelectedValues')
     ) {
       this._syncFormValue();
+      this._syncValidity();
+    } else if (changedProperties.has('required')) {
       this._syncValidity();
     }
   }

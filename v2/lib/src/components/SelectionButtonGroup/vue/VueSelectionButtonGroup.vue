@@ -10,6 +10,7 @@
     :value="value"
     :values="values"
     .disabled="disabled"
+    .required="required"
     @selection-change="handleSelectionChange"
     v-bind="$attrs"
   >
@@ -48,6 +49,8 @@ export interface VueSelectionButtonGroupProps {
   values?: string[];
   /** Disable all buttons in the group */
   disabled?: boolean;
+  /** Require at least one selection before the form can be submitted */
+  required?: boolean;
 }
 
 withDefaults(defineProps<VueSelectionButtonGroupProps>(), {
@@ -61,6 +64,7 @@ withDefaults(defineProps<VueSelectionButtonGroupProps>(), {
   value: '',
   values: () => [],
   disabled: false,
+  required: false,
 });
 
 const emit = defineEmits<{

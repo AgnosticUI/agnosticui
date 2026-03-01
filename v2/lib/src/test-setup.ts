@@ -7,6 +7,10 @@ import '@testing-library/jest-dom';
 // so we provide a minimal no-op shim so tests can instantiate FACE components.
 if (typeof HTMLElement !== 'undefined' && !HTMLElement.prototype.attachInternals) {
   HTMLElement.prototype.attachInternals = function () {
+    const validityFlags: Array<keyof ValidityStateFlags> = [
+      'valueMissing', 'typeMismatch', 'patternMismatch', 'tooLong', 'tooShort',
+      'rangeUnderflow', 'rangeOverflow', 'stepMismatch', 'badInput', 'customError',
+    ];
     const validity: ValidityState = {
       valid: true,
       valueMissing: false,
@@ -20,14 +24,21 @@ if (typeof HTMLElement !== 'undefined' && !HTMLElement.prototype.attachInternals
       badInput: false,
       customError: false,
     };
+    let validationMsg = '';
     return {
       setFormValue: () => {},
-      setValidity: (_flags: ValidityStateFlags, _message?: string) => {},
-      checkValidity: () => true,
-      reportValidity: () => true,
+      setValidity: (flags: ValidityStateFlags, message?: string) => {
+        for (const key of validityFlags) {
+          (validity as Record<string, boolean>)[key] = !!(flags as Record<string, boolean>)[key];
+        }
+        (validity as Record<string, boolean>).valid = validityFlags.every(k => !(validity as Record<string, boolean>)[k]);
+        validationMsg = message ?? '';
+      },
+      checkValidity: () => validity.valid,
+      reportValidity: () => validity.valid,
       form: null,
       validity,
-      validationMessage: '',
+      get validationMessage() { return validationMsg; },
       willValidate: false,
       labels: null as unknown as NodeList,
       states: new Set() as unknown as CustomStateSet,

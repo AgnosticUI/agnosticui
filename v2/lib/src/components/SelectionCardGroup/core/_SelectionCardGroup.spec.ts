@@ -221,6 +221,97 @@ describe('SelectionCardGroup - Comprehensive Tests', () => {
     });
   });
 
+  describe('FACE - required', () => {
+    it('should default required to false', async () => {
+      const group = await createGroup();
+      expect(group.required).toBe(false);
+    });
+
+    it('should be valid when required is false and nothing is selected', async () => {
+      const group = await createGroup({ required: false });
+      expect(group.checkValidity()).toBe(true);
+    });
+
+    it('should be invalid when required is true and nothing is selected', async () => {
+      const group = await createGroup({ required: true });
+      expect(group.checkValidity()).toBe(false);
+    });
+
+    it('should set valueMissing when required and nothing is selected', async () => {
+      const group = await createGroup({ required: true });
+      expect(group.validity.valueMissing).toBe(true);
+    });
+
+    it('should be valid when required and a selection is made', async () => {
+      const group = await createGroup({ required: true });
+      const cards = group.querySelectorAll('ag-selection-card');
+
+      cards[0].dispatchEvent(new CustomEvent('selection-card-change', {
+        detail: { value: 'a', checked: true },
+        bubbles: true,
+        composed: true,
+      }));
+      await group.updateComplete;
+
+      expect(group.checkValidity()).toBe(true);
+      expect(group.validity.valueMissing).toBe(false);
+    });
+
+    it('should become invalid again when required and selection is removed (checkbox)', async () => {
+      const group = await createGroup({ type: 'checkbox', required: true });
+      const cards = group.querySelectorAll('ag-selection-card');
+
+      // Select
+      cards[0].dispatchEvent(new CustomEvent('selection-card-change', {
+        detail: { value: 'a', checked: true },
+        bubbles: true,
+        composed: true,
+      }));
+      await group.updateComplete;
+      expect(group.checkValidity()).toBe(true);
+
+      // Deselect
+      cards[0].dispatchEvent(new CustomEvent('selection-card-change', {
+        detail: { value: 'a', checked: false },
+        bubbles: true,
+        composed: true,
+      }));
+      await group.updateComplete;
+      expect(group.checkValidity()).toBe(false);
+      expect(group.validity.valueMissing).toBe(true);
+    });
+
+    it('should become invalid after form reset when required', async () => {
+      const group = await createGroup({ required: true });
+      const cards = group.querySelectorAll('ag-selection-card');
+
+      // Make a selection via user interaction (sets _internalSelectedValues)
+      cards[0].dispatchEvent(new CustomEvent('selection-card-change', {
+        detail: { value: 'a', checked: true },
+        bubbles: true,
+        composed: true,
+      }));
+      await group.updateComplete;
+      expect(group.checkValidity()).toBe(true);
+
+      group.formResetCallback();
+      await group.updateComplete;
+
+      expect(group.checkValidity()).toBe(false);
+      expect(group.validity.valueMissing).toBe(true);
+    });
+
+    it('should update validity when required prop changes', async () => {
+      const group = await createGroup({ required: false });
+      expect(group.checkValidity()).toBe(true);
+
+      group.required = true;
+      await group.updateComplete;
+
+      expect(group.checkValidity()).toBe(false);
+    });
+  });
+
   describe('Keyboard Navigation', () => {
     it('should navigate through cards with arrow keys', async () => {
       const group = await createGroup({ type: 'radio' });

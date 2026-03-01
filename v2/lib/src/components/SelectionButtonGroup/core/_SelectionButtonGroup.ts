@@ -53,6 +53,8 @@ export interface SelectionButtonGroupProps {
   values?: string[];
   /** Disable all buttons in the group */
   disabled?: boolean;
+  /** Require at least one selection before the form can be submitted */
+  required?: boolean;
   /** Callback for selection changes */
   onSelectionChange?: (event: SelectionButtonChangeEvent) => void;
 }
@@ -124,6 +126,9 @@ export class AgSelectionButtonGroup extends FaceMixin(LitElement) implements Sel
   @property({ type: Boolean, reflect: true })
   declare disabled: boolean;
 
+  @property({ type: Boolean, reflect: true })
+  declare required: boolean;
+
   @property({ attribute: false })
   declare onSelectionChange: ((event: SelectionButtonChangeEvent) => void) | undefined;
 
@@ -142,6 +147,7 @@ export class AgSelectionButtonGroup extends FaceMixin(LitElement) implements Sel
     this.value = '';
     this.values = [];
     this.disabled = false;
+    this.required = false;
     this._internalSelectedValues = [];
   }
 
@@ -183,13 +189,13 @@ export class AgSelectionButtonGroup extends FaceMixin(LitElement) implements Sel
     }
   }
 
-  /**
-   * Sync validity to ElementInternals. Always valid — selection groups
-   * do not currently expose a required constraint. Extend in a follow-up
-   * when a required prop is added to the group API.
-   */
   private _syncValidity(): void {
-    this._internals.setValidity({});
+    const selected = this._getSelectedValues();
+    if (this.required && selected.length === 0) {
+      this._internals.setValidity({ valueMissing: true }, 'Please select an option.');
+    } else {
+      this._internals.setValidity({});
+    }
   }
 
   /**
@@ -199,7 +205,7 @@ export class AgSelectionButtonGroup extends FaceMixin(LitElement) implements Sel
   override formResetCallback(): void {
     this._internalSelectedValues = [];
     this._internals.setFormValue(null);
-    this._internals.setValidity({});
+    this._syncValidity();
     this._syncChildButtons();
   }
 
@@ -242,6 +248,8 @@ export class AgSelectionButtonGroup extends FaceMixin(LitElement) implements Sel
       changedProperties.has('_internalSelectedValues')
     ) {
       this._syncFormValue();
+      this._syncValidity();
+    } else if (changedProperties.has('required')) {
       this._syncValidity();
     }
   }
