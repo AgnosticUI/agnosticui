@@ -14,6 +14,7 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import type { AgSelectionCard } from '../../SelectionCard/core/_SelectionCard.js';
+import { FaceMixin } from '../../../shared/face-mixin';
 
 export type SelectionType = 'radio' | 'checkbox';
 export type SelectionCardGroupTheme = 'success' | 'info' | 'error' | 'warning' | 'monochrome' | '';
@@ -50,7 +51,7 @@ export interface SelectionCardGroupProps {
   onSelectionChange?: (event: SelectionChangeEvent) => void;
 }
 
-export class AgSelectionCardGroup extends LitElement implements SelectionCardGroupProps {
+export class AgSelectionCardGroup extends FaceMixin(LitElement) implements SelectionCardGroupProps {
   static override styles = css`
     :host {
       display: block;
@@ -93,9 +94,6 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
   @property({ type: String, reflect: true })
   declare type: SelectionType;
 
-  @property({ type: String, reflect: true })
-  declare name: string;
-
   @property({ type: String })
   declare legend: string;
 
@@ -124,7 +122,6 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
   constructor() {
     super();
     this.type = 'radio';
-    this.name = '';
     this.legend = '';
     this.legendHidden = false;
     this.theme = '';
@@ -149,6 +146,36 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
     }
     return this._internalSelectedValues;
   }
+
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  private _syncFormValue(): void {
+    const selected = this._getSelectedValues();
+    if (this.type === 'radio') {
+      this._internals.setFormValue(selected.length > 0 ? selected[0] : null);
+    } else {
+      if (selected.length === 0) {
+        this._internals.setFormValue(null);
+      } else {
+        const formData = new FormData();
+        selected.forEach(val => formData.append(this.name, val));
+        this._internals.setFormValue(formData);
+      }
+    }
+  }
+
+  private _syncValidity(): void {
+    this._internals.setValidity({});
+  }
+
+  override formResetCallback(): void {
+    this._internalSelectedValues = [];
+    this._internals.setFormValue(null);
+    this._internals.setValidity({});
+    this._syncChildCards();
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
 
   override connectedCallback() {
     super.connectedCallback();
@@ -177,10 +204,22 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
     ) {
       this._syncChildCards();
     }
+
+    // FACE: sync for programmatic value/values changes
+    if (
+      changedProperties.has('value') ||
+      changedProperties.has('values') ||
+      changedProperties.has('_internalSelectedValues')
+    ) {
+      this._syncFormValue();
+      this._syncValidity();
+    }
   }
 
   override firstUpdated() {
     this._syncChildCards();
+    this._syncFormValue();
+    this._syncValidity();
   }
 
   private _getCards(): AgSelectionCard[] {
@@ -234,6 +273,10 @@ export class AgSelectionCardGroup extends LitElement implements SelectionCardGro
 
     // Update internal state (for uncontrolled mode)
     this._internalSelectedValues = newSelectedValues;
+
+    // FACE: sync form value and validity on user interaction
+    this._syncFormValue();
+    this._syncValidity();
 
     // Dispatch event
     const changeEvent = new CustomEvent<SelectionChangeEventDetail>('selection-change', {

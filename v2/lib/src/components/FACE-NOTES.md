@@ -1,6 +1,6 @@
 # FACE Implementation Notes
 
-_Working notes captured during Issues #274 (AgInput), #301 (AgToggle), #303 (AgCheckbox), #305 (AgSelect), #307 (AgRadio), #310 (AgSlider), #312 (AgRating), and ongoing rollout._
+_Working notes captured during Issues #274 (AgInput), #301 (AgToggle), #303 (AgCheckbox), #305 (AgSelect), #307 (AgRadio), #310 (AgSlider), #312 (AgRating), #314 (AgSelectionButtonGroup, AgSelectionCardGroup), and ongoing rollout._
 _This file is the content source for a future article on implementing FACE in web components._
 
 ---
@@ -784,3 +784,53 @@ Any positive value submits as a string (`"3"`, `"3.5"` for half-star precision).
 
 `commitValue()` is the single path all user interactions flow through (clicks, pointer up,
 keyboard). Wiring FACE sync there plus in `updated()` for programmatic changes covers both paths.
+
+---
+
+## AgSelectionButtonGroup + AgSelectionCardGroup: FACE on the Coordinator
+
+SelectionButton and SelectionCard are composite widgets — individual items inside a
+coordinating group element. The question is which element should be form-associated.
+
+The answer is the **group**, not the individual items. The group is the element that knows
+the `name`, the `type` (radio vs checkbox), and the full set of selected values. Individual
+buttons/cards don't have names of their own — the group sets `_name` on them internally.
+
+This is the same model as a native `<select>`: one form control that contains many
+`<option>` elements. The options aren't form-associated; the select is.
+
+### Radio vs Checkbox Mode
+
+Both groups have a `type` property: `'radio'` or `'checkbox'`. This determines the
+form value semantics, just like AgSelect's `multiple` property:
+
+```typescript
+private _syncFormValue(): void {
+  const selected = this._getSelectedValues();
+  if (this.type === 'radio') {
+    this._internals.setFormValue(selected.length > 0 ? selected[0] : null);
+  } else {
+    if (selected.length === 0) {
+      this._internals.setFormValue(null);
+    } else {
+      const formData = new FormData();
+      selected.forEach(val => formData.append(this.name, val));
+      this._internals.setFormValue(formData);
+    }
+  }
+}
+```
+
+When nothing is selected, `null` keeps the field absent from FormData. For checkbox mode
+with selections, the FormData overload submits all values under the same `name` key.
+
+### Form Reset
+
+`formResetCallback` clears `_internalSelectedValues`, sets form value to null, and calls
+`_syncChildCards/Buttons()` so the UI reflects the cleared state immediately.
+
+### What Was Left Out
+
+Neither group currently has a `required` property in its public API. Constraint
+validation (`valueMissing`) can be added in a follow-up when `required` is added to
+the group's prop interface. For now, `_syncValidity()` always reports valid.
