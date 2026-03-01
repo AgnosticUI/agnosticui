@@ -1,0 +1,198 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:where(html) {
+  --ag-drawer-width: 25rem;
+  --ag-sheet-height: 25vh;
+  --ag-space-0: 0;
+  --ag-space-1: 0.25rem;
+  --ag-space-2: 0.5rem;
+  --ag-space-3: 0.75rem;
+  --ag-space-4: 1rem;
+  --ag-space-5: 1.25rem;
+  --ag-space-6: 1.5rem;
+  --ag-space-7: 1.75rem;
+  --ag-space-8: 2rem;
+  --ag-space-9: 2.25rem;
+  --ag-space-10: 2.5rem;
+  --ag-space-12: 3rem;
+  --ag-space-14: 3.5rem;
+  --ag-font-size-xs: 0.75rem;
+  --ag-font-size-sm: 0.875rem;
+  --ag-font-size-base: 1rem;
+  --ag-font-size-md: 1.125rem;
+  --ag-font-size-lg: 1.25rem;
+  --ag-font-size-xl: 1.5rem;
+  --ag-font-size-2x: 2rem;
+  --ag-font-size-3x: 2.25rem;
+  --ag-font-size-4x: 2.5rem;
+  --ag-font-size-5x: 3rem;
+  --ag-line-height-sm: 1.25rem;
+  --ag-line-height-base: 1.5rem;
+  --ag-line-height-lg: 1.75rem;
+  --ag-radius-none: 0;
+  --ag-radius-sm: 0.25rem;
+  --ag-radius-md: 0.375rem;
+  --ag-radius-lg: 1rem;
+  --ag-radius-full: 9999px;
+  --ag-motion-fast: 100ms;
+  --ag-motion-medium-fast: 150ms;
+  --ag-motion-medium: 225ms;
+  --ag-motion-medium-slow: 325ms;
+  --ag-motion-slow: 480ms;
+  --ag-fx-duration-xs: 100ms;
+  --ag-fx-duration-sm: 150ms;
+  --ag-fx-duration-md: 225ms;
+  --ag-fx-duration-lg: 325ms;
+  --ag-fx-duration-xl: 480ms;
+  --ag-fx-ease-ease: ease;
+  --ag-fx-ease-ease-in: ease-in;
+  --ag-fx-ease-ease-out: ease-out;
+  --ag-fx-ease-ease-in-out: ease-in-out;
+  --ag-fx-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ag-fx-ease-spring-sm: cubic-bezier(0.5, 1.5, 0.5, 1);
+  --ag-fx-ease-spring-md: cubic-bezier(0.5, 1.8, 0.5, 1);
+  --ag-fx-ease-spring-lg: cubic-bezier(0.5, 2.5, 0.5, 1);
+  --ag-focus-width: 2px;
+  --ag-focus-offset: 2px;
+  --ag-shadow-none: none;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --ag-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --ag-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --ag-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --ag-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --ag-z-index-dropdown: 100;
+  --ag-z-index-modal: 1000;
+  --ag-z-index-toast: 1100;
+  --ag-z-index-sticky: 900;
+  --ag-border-width-1: 1px;
+  --ag-border-width-2: 2px;
+  --ag-border-width-3: 3px;
+  --ag-black: #1f2328;
+  --ag-white: #ffffff;
+  --ag-neutral-50: #f9fafb;
+  --ag-neutral-100: #f3f4f6;
+  --ag-neutral-200: #e5e7eb;
+  --ag-neutral-300: #d1d5db;
+  --ag-neutral-400: #9ca3af;
+  --ag-neutral-500: #6b7280;
+  --ag-neutral-600: #4b5563;
+  --ag-neutral-700: #2e3745;
+  --ag-neutral-800: #202736;
+  --ag-neutral-900: #111827;
+  --ag-blue-50: #ddf4ff;
+  --ag-blue-100: #b6e3ff;
+  --ag-blue-200: #80ccff;
+  --ag-blue-300: #54aeff;
+  --ag-blue-400: #218bff;
+  --ag-blue-500: #0969da;
+  --ag-blue-600: #0550ae;
+  --ag-blue-700: #033d8b;
+  --ag-blue-800: #0a3069;
+  --ag-blue-900: #002155;
+  --ag-green-50: #dafbe1;
+  --ag-green-100: #aceebb;
+  --ag-green-200: #6fdd8b;
+  --ag-green-300: #4ac26b;
+  --ag-green-400: #2da44e;
+  --ag-green-500: #238636;
+  --ag-green-600: #116329;
+  --ag-green-700: #044f1e;
+  --ag-green-800: #003d16;
+  --ag-green-900: #002d11;
+  --ag-yellow-50: #fff8c5;
+  --ag-yellow-100: #fae17d;
+  --ag-yellow-200: #eac54f;
+  --ag-yellow-300: #d4a72c;
+  --ag-yellow-400: #bf8700;
+  --ag-yellow-500: #9a6700;
+  --ag-yellow-600: #7d4e00;
+  --ag-yellow-700: #633c01;
+  --ag-yellow-800: #4d2d00;
+  --ag-yellow-900: #3b2300;
+  --ag-red-50: #ffebe9;
+  --ag-red-100: #ffcecb;
+  --ag-red-200: #ffaba8;
+  --ag-red-300: #ff8182;
+  --ag-red-400: #fa4549;
+  --ag-red-500: #cf222e;
+  --ag-red-600: #a40e26;
+  --ag-red-700: #82071e;
+  --ag-red-800: #660018;
+  --ag-red-900: #4c0014;
+  --ag-purple-50: #fbefff;
+  --ag-purple-100: #ecd8ff;
+  --ag-purple-200: #d8b9ff;
+  --ag-purple-300: #c297ff;
+  --ag-purple-400: #a475f9;
+  --ag-purple-500: #8250df;
+  --ag-purple-600: #6639ba;
+  --ag-purple-700: #512a97;
+  --ag-purple-800: #3e1f79;
+  --ag-purple-900: #2e1461;
+  --ag-coral-50: #fff0eb;
+  --ag-coral-100: #ffd6cc;
+  --ag-coral-200: #ffb4a1;
+  --ag-coral-300: #fd8c73;
+  --ag-coral-400: #ec6547;
+  --ag-coral-500: #c4432b;
+  --ag-coral-600: #9e2f1c;
+  --ag-coral-700: #801f0f;
+  --ag-coral-800: #691105;
+  --ag-coral-900: #510901;
+  --ag-text-primary: #111827;
+  --ag-text-secondary: #4b5563;
+  --ag-text-muted: #4b5563;
+  --ag-text-primary-muted: #2e3745;
+  --ag-text-primary-inverted: #ffffff;
+  --ag-background-primary: #ffffff;
+  --ag-background-primary-inverted: #1f2328;
+  --ag-background-secondary: #f3f4f6;
+  --ag-background-secondary-inverted: #111827;
+  --ag-background-tertiary: #e5e7eb; /** Used by: Button default bg; also secondary button hover bg */
+  --ag-background-disabled: #f3f4f6; /** Used by: Button, Input, Checkbox, Radio, Select disabled states */
+  --ag-primary-background: #ddf4ff; /** Used by: Alert primary variant bg, Button faint variant bg */
+  --ag-primary-text: #0550ae; /** Used by: Alert primary text, Button bordered/outlined text + border */
+  --ag-success-background: #dafbe1; /** Used by: Alert success variant bg, Badge success variant bg */
+  --ag-success-text: #116329; /** Used by: Alert success variant text, Badge success variant text */
+  --ag-info-background: #f3f4f6; /** Used by: Alert info variant bg, Badge info variant bg */
+  --ag-info-text: #4b5563; /** Used by: Alert info variant text, Badge info variant text */
+  --ag-warning-background: #fff8c5; /** Used by: Alert warning variant bg, Badge warning variant bg */
+  --ag-warning-text: #7d4e00; /** Used by: Alert warning variant text, Badge warning variant text */
+  --ag-danger-background: #ffebe9; /** Used by: Alert danger variant bg, Badge danger variant bg */
+  --ag-danger-text: #a40e26; /** Used by: Alert danger variant text, Badge danger variant text */
+  --ag-primary-fg: #ffffff;
+  --ag-success-fg: #ffffff;
+  --ag-warning-fg: #111827;
+  --ag-danger-fg: #ffffff;
+  --ag-border: #e5e7eb;
+  --ag-border-subtle: #d1d5db;
+  --ag-primary: #0550ae;
+  --ag-primary-rgb: 5, 80, 174;
+  --ag-primary-border: #d1d5db; /** Used by: Button bordered variant border */
+  --ag-primary-dark: #0a3069;
+  --ag-secondary: #6b7280;
+  --ag-secondary-dark: #4b5563;
+  --ag-danger-rgb: 202, 29, 29;
+  --ag-danger: #CA1D1D;
+  --ag-danger-dark: #a40e26;
+  --ag-error-text: #a40e26;
+  --ag-warning-rgb: 212, 167, 44;
+  --ag-warning: #d4a72c;
+  --ag-warning-dark: #9a6700;
+  --ag-success: #238636;
+  --ag-success-rgb: 26, 127, 55;
+  --ag-success-dark: #116329;
+  --ag-info: #4b5563;
+  --ag-info-dark: #2e3745;
+  --ag-focus: 37, 99, 235;
+  --ag-focus-dark: #218bff;
+  --ag-rating-filled: #bf8700;
+  --ag-rating-filled-primary: #0969da;
+  --ag-rating-filled-success: #238636;
+  --ag-rating-filled-warning: #9a6700;
+  --ag-rating-filled-danger: #cf222e;
+  --ag-rating-filled-secondary: #6b7280;
+}

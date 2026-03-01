@@ -1,0 +1,138 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "react",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Header": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Header/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Header/react"
+      ]
+    },
+    "Button": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Button/react"
+      ]
+    },
+    "ButtonFx": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/ButtonFx/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/ButtonFx/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Button/react"
+      ]
+    },
+    "BadgeFx": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/BadgeFx/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/BadgeFx/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Badge/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Badge/react"
+      ]
+    },
+    "IconButtonFx": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/IconButtonFx/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/IconButtonFx/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/IconButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/IconButton/react"
+      ]
+    },
+    "Card": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Card/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Card/react"
+      ]
+    },
+    "Badge": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Badge/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Badge/react"
+      ]
+    },
+    "Tag": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Tag/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Tag/react"
+      ]
+    },
+    "Avatar": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Avatar/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Avatar/react"
+      ]
+    },
+    "Divider": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Divider/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Divider/react"
+      ]
+    },
+    "Accordion": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Accordion/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Accordion/react"
+      ]
+    },
+    "Tabs": {
+      "added": "2026-03-01T00:28:14.520Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Tabs/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/src/components/ag/Tabs/react"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/react-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-03-01T00:28:08.966Z"
+  }
+}

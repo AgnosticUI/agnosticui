@@ -1,0 +1,90 @@
+<template>
+  <ag-card
+    ref="agComponent"
+    .stacked="stacked"
+    .shadow="shadow"
+    .animated="animated"
+    :rounded="rounded"
+    :variant="variant"
+    .hasMedia="hasMedia"
+    .mediaPosition="mediaPosition"
+    v-bind="$attrs"
+  >
+    <slot
+      name="media"
+      slot="media"
+    />
+    <slot
+      name="header"
+      slot="header"
+    />
+    <slot />
+    <slot
+      name="footer"
+      slot="footer"
+    />
+  </ag-card>
+</template>
+
+<script lang="ts">
+import { defineComponent, onMounted, ref, type PropType } from "vue";
+import type { CardProps, CardVariant, CardRounded, CardMediaPosition } from "../core/Card";
+import "../core/Card"; // Registers the ag-card web component
+
+export default defineComponent({
+  name: "VueCard",
+  props: {
+    stacked: {
+      type: Boolean,
+      default: false,
+    },
+    shadow: {
+      type: Boolean,
+      default: false,
+    },
+    animated: {
+      type: Boolean,
+      default: false,
+    },
+    rounded: {
+      type: [String, Boolean] as PropType<CardRounded | boolean>,
+      default: "" as CardRounded,
+    },
+    variant: {
+      type: String as PropType<CardVariant>,
+      default: "" as CardVariant,
+    },
+    hasMedia: {
+      type: Boolean,
+      default: false,
+    },
+    mediaPosition: {
+      type: String as PropType<CardMediaPosition>,
+      default: "top" as CardMediaPosition,
+    },
+  },
+  setup(props) {
+    const agComponent = ref<(HTMLElement & CardProps) | null>(null);
+
+    onMounted(async () => {
+      // Ensure the web component is defined
+      await customElements.whenDefined("ag-card");
+      // TODO: Set up event listeners to emit Vue events if needed
+      // if (agComponent.value) {
+      //   agComponent.value.addEventListener('event-name', (e) => emit('eventName', e.detail));
+      // }
+    });
+
+    return {
+      agComponent,
+      stacked: props.stacked,
+      shadow: props.shadow,
+      animated: props.animated,
+      rounded: props.rounded,
+      variant: props.variant,
+      hasMedia: props.hasMedia,
+      mediaPosition: props.mediaPosition,
+    };
+  },
+});
+</script>

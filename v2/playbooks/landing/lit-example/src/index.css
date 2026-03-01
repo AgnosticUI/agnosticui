@@ -1,0 +1,330 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--ag-background-primary);
+  color: var(--ag-text-primary);
+}
+
+/* ── Utility ── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--ag-space-6, 1.5rem);
+}
+
+/* ── Header ── */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-6, 1.5rem);
+}
+
+.site-nav a {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--ag-text-secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.site-nav a:hover {
+  color: var(--ag-text-primary);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ag-text-secondary);
+  padding: var(--ag-space-2);
+  border-radius: var(--ag-radius-sm);
+  display: flex;
+  align-items: center;
+  margin-inline-end: var(--ag-space-2);
+}
+
+.theme-toggle:hover {
+  background: var(--ag-background-secondary);
+}
+
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  padding: 6rem var(--ag-space-6, 1.5rem) 5rem;
+}
+
+.hero-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: var(--ag-space-5, 1.25rem);
+}
+
+.hero-headline {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 0 0 var(--ag-space-5, 1.25rem);
+  color: var(--ag-text-primary);
+  white-space: pre-line;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--ag-text-secondary);
+  max-width: 640px;
+  margin: 0 auto var(--ag-space-8, 2rem);
+  line-height: 1.65;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--ag-space-3, 0.75rem);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Section chrome ── */
+.section {
+  padding: 5rem 0;
+}
+
+.section-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ag-primary, #297aff);
+  margin-bottom: var(--ag-space-3, 0.75rem);
+}
+
+.section-title {
+  font-size: clamp(1.625rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0 0 var(--ag-space-3, 0.75rem);
+  color: var(--ag-text-primary);
+}
+
+.section-sub {
+  font-size: 1.0625rem;
+  color: var(--ag-text-secondary);
+  max-width: 560px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.section-header {
+  margin-bottom: var(--ag-space-10, 2.5rem);
+}
+
+/* ── Features grid ── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ag-space-5, 1.25rem);
+}
+
+.feature-card {
+  background: var(--ag-background-secondary);
+  border-radius: var(--ag-radius-lg, 0.75rem);
+  padding: var(--ag-space-6, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ag-space-3, 0.75rem);
+}
+
+.feature-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ag-text-primary);
+}
+
+.feature-card-desc {
+  font-size: 0.9375rem;
+  color: var(--ag-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Testimonials grid ── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ag-space-5, 1.25rem);
+}
+
+.testimonial-quote {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ag-text-primary);
+  margin: 0 0 var(--ag-space-5, 1.25rem);
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-3, 0.75rem);
+}
+
+.testimonial-name {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  margin: 0;
+  color: var(--ag-text-primary);
+}
+
+.testimonial-role {
+  font-size: 0.8125rem;
+  color: var(--ag-text-secondary);
+  margin: 0;
+}
+
+/* ── Pricing ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ag-space-5, 1.25rem);
+  align-items: start;
+}
+
+.pricing-card {
+  background: var(--ag-background-secondary);
+  border-radius: var(--ag-radius-lg, 0.75rem);
+  padding: var(--ag-space-6, 1.5rem);
+}
+
+.pricing-card.featured {
+  background: var(--ag-primary-background, #e8f0fe);
+  outline: 2px solid var(--ag-primary, #297aff);
+}
+
+.pricing-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--ag-space-4, 1rem);
+}
+
+.pricing-tier-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ag-text-primary);
+}
+
+.pricing-price {
+  font-size: 2.25rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--ag-text-primary);
+  margin: 0 0 var(--ag-space-1, 0.25rem);
+}
+
+.pricing-period {
+  font-size: 0.8125rem;
+  color: var(--ag-text-secondary);
+  margin: 0 0 var(--ag-space-2, 0.5rem);
+}
+
+.pricing-desc {
+  font-size: 0.9375rem;
+  color: var(--ag-text-secondary);
+  margin: 0 0 var(--ag-space-5, 1.25rem);
+  line-height: 1.55;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--ag-space-6, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ag-space-2, 0.5rem);
+}
+
+.pricing-features li {
+  font-size: 0.9375rem;
+  color: var(--ag-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-2, 0.5rem);
+}
+
+.pricing-features li::before {
+  content: '✓';
+  color: var(--ag-success, #2da562);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── FAQ ── */
+.faq-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ── Footer ── */
+.footer {
+  padding: var(--ag-space-8, 2rem) 0;
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: 0.875rem;
+  color: var(--ag-text-secondary);
+  margin: var(--ag-space-4, 1rem) 0 0;
+}
+
+/* ── Header content width ── */
+@media (min-width: 960px) {
+  ag-header::part(ag-header-content) {
+    width: min(1200px, 100%) !important;
+  }
+}
+
+/* ── Responsive: tablet ── */
+@media (max-width: 1023px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .testimonials-grid > *:last-child {
+    display: none;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+/* ── Responsive: mobile ── */
+@media (max-width: 767px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  .testimonials-grid > *:last-child {
+    display: block;
+  }
+  .hero {
+    padding: 4rem var(--ag-space-4) 3.5rem;
+  }
+  .section {
+    padding: 3.5rem 0;
+  }
+}

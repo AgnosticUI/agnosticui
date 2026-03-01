@@ -1,0 +1,123 @@
+{
+  "$schema": "https://agnosticui.com/schema.json",
+  "version": "2.0.0-alpha",
+  "framework": "lit",
+  "paths": {
+    "reference": "./agnosticui",
+    "components": "./src/components/ag"
+  },
+  "components": {
+    "Header": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Header/core"
+      ]
+    },
+    "Button": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Button/core"
+      ]
+    },
+    "ButtonFx": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/ButtonFx/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Button/core"
+      ]
+    },
+    "BadgeFx": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/BadgeFx/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Badge/core"
+      ]
+    },
+    "IconButtonFx": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/IconButtonFx/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/IconButton/core"
+      ]
+    },
+    "Card": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Card/core"
+      ]
+    },
+    "Badge": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Badge/core"
+      ]
+    },
+    "Tag": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Tag/core"
+      ]
+    },
+    "Avatar": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Avatar/core"
+      ]
+    },
+    "Divider": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Divider/core"
+      ]
+    },
+    "Accordion": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Accordion/core"
+      ]
+    },
+    "Tabs": {
+      "added": "2026-03-01T00:28:30.021Z",
+      "version": "2.0.0-alpha",
+      "framework": "lit",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/src/components/ag/Tabs/core"
+      ]
+    }
+  },
+  "ai": {
+    "includeReference": true,
+    "includeContext": true,
+    "contextPath": "./agnosticui/docs"
+  },
+  "git": {
+    "commitReference": true
+  },
+  "tarball": {
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/landing/lit-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.15.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-03-01T00:28:28.334Z"
+  }
+}
