@@ -1,6 +1,6 @@
 # FACE Implementation Notes
 
-_Working notes captured during Issues #274 (AgInput), #301 (AgToggle), #303 (AgCheckbox), #305 (AgSelect), #307 (AgRadio), and ongoing rollout._
+_Working notes captured during Issues #274 (AgInput), #301 (AgToggle), #303 (AgCheckbox), #305 (AgSelect), #307 (AgRadio), #310 (AgSlider), and ongoing rollout._
 _This file is the content source for a future article on implementing FACE in web components._
 
 ---
@@ -694,3 +694,65 @@ appears in the submitted form data.
 - [ ] `CustomStateSet` via `_internals.states` for CSS pseudo-class support (`:--checked`, `:--invalid`, etc.)
 - [ ] `_parentDisabled` refinement for `formDisabledCallback` to avoid conflict with local disabled attribute
 - [ ] Apply FACE to remaining components per `FACE-PLANNING.md`
+
+---
+
+## AgSlider: Migrating Hand-Rolled FACE to FaceMixin
+
+AgSlider was different from the other components — it already had partial FACE
+infrastructure written by hand. `static formAssociated = true`, `attachInternals()`,
+`_updateFormValue()`, and the `form`/`validity` getters were all already there.
+
+The issue was that it didn't use FaceMixin, so it was missing `formDisabledCallback`
+(fieldset disabled propagation) and `formResetCallback` (form.reset() support), and it
+never set its initial form value at first render.
+
+### What the Migration Looked Like
+
+Most of the work was deleting code: `static formAssociated`, the private `_internals`
+field, `attachInternals()` from the constructor, the `name` property declaration, and
+all six hand-rolled FACE getters/methods. FaceMixin provides all of it.
+
+Then we added the two missing pieces:
+
+```typescript
+override firstUpdated() {
+  this._defaultValue = Array.isArray(this.value)
+    ? ([...this.value] as [number, number])
+    : this.value;
+  this._updateFormValue();
+}
+
+override formResetCallback(): void {
+  this.value = Array.isArray(this._defaultValue)
+    ? ([...this._defaultValue] as [number, number])
+    : this._defaultValue;
+  this._updateFormValue();
+}
+```
+
+`formDisabledCallback` comes free from FaceMixin — sets `this.disabled` from a `<fieldset
+disabled>` ancestor, same as every other FACE component.
+
+### Dual Slider Form Value
+
+The existing `_updateFormValue()` already handled dual mode correctly using the FormData
+overload — both min and max values submitted under the same `name` key. No changes needed
+to that logic.
+
+### Tracking Default Value
+
+Sliders can have an initial value set by the consumer (`value="75"` or `value="[25, 75]"`
+for dual). To restore the right value on form reset, we capture `this.value` at
+`firstUpdated` — after the component has processed its initial properties — and store it
+in `_defaultValue`.
+
+For dual mode, the array is shallow-copied to avoid aliasing bugs when the live `value`
+changes.
+
+### What We Left Alone
+
+The existing `_updateFormValue()` always calls `this._internals.setValidity({})`. For a
+range input, this is correct in practice: the slider UI always clamps values between min
+and max, so the underlying constraints are never violated. Range constraint validation
+(`rangeUnderflow`, `rangeOverflow`, `stepMismatch`) can be added in a follow-up if needed.

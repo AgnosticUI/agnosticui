@@ -17,6 +17,7 @@ import {
   type LabelPosition,
 } from '../../../shared/form-control-utils';
 import { formControlStyles } from '../../../shared/form-control-styles';
+import { FaceMixin } from '../../../shared/face-mixin';
 
 // Props interface following INTERFACE_STANDARDS.md
 export interface SliderProps {
@@ -72,9 +73,8 @@ export interface SliderProps {
 /**
  * AgSlider - Foundation slider component with single/dual range support
  */
-export class AgSlider extends LitElement implements SliderProps {
-  static formAssociated = true;
-  static styles = [
+export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
+  static override styles = [
     formControlStyles,
     css`
     :host {
@@ -427,8 +427,8 @@ export class AgSlider extends LitElement implements SliderProps {
   `,
   ];
 
-  // Form association
-  private _internals: ElementInternals;
+  // Default value captured at firstUpdated for formResetCallback
+  private _defaultValue: number | [number, number] = 0;
 
   // Form control IDs
   private _sliderId: string;
@@ -453,7 +453,6 @@ export class AgSlider extends LitElement implements SliderProps {
 
   constructor() {
     super();
-    this._internals = this.attachInternals();
 
     // Initialize form control IDs
     const ids = createFormControlIds('slider');
@@ -484,7 +483,6 @@ export class AgSlider extends LitElement implements SliderProps {
     this.invalid = false;
     this.errorMessage = '';
     this.helpText = '';
-    this.name = '';
     this.showTooltip = false;
     this.showTicks = false;
     this.tickStep = 25;
@@ -577,12 +575,6 @@ export class AgSlider extends LitElement implements SliderProps {
   declare helpText: string;
 
   /**
-   * Form association
-   */
-  @property({ type: String, reflect: true })
-  declare name: string;
-
-  /**
    * Display options
    */
   @property({ type: Boolean, attribute: 'show-tooltip' })
@@ -626,21 +618,6 @@ export class AgSlider extends LitElement implements SliderProps {
 
   @query('.ag-slider__live-region')
   private _liveRegion?: HTMLElement;
-
-  /**
-   * Form value handling
-   */
-  get form() { return this._internals.form; }
-  
-  get validity() { return this._internals.validity; }
-  
-  get validationMessage() { return this._internals.validationMessage; }
-  
-  get willValidate() { return this._internals.willValidate; }
-
-  checkValidity() { return this._internals.checkValidity(); }
-  
-  reportValidity() { return this._internals.reportValidity(); }
 
   /**
    * Property validation
@@ -691,6 +668,29 @@ export class AgSlider extends LitElement implements SliderProps {
       }
     }
   }
+
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  override firstUpdated() {
+    // Capture default value for formResetCallback, then set initial form value
+    this._defaultValue = Array.isArray(this.value)
+      ? ([...this.value] as [number, number])
+      : this.value;
+    this._updateFormValue();
+  }
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Restores the slider to the value it had on first render.
+   */
+  override formResetCallback(): void {
+    this.value = Array.isArray(this._defaultValue)
+      ? ([...this._defaultValue] as [number, number])
+      : this._defaultValue;
+    this._updateFormValue();
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
 
   /**
    * Update form value when component value changes
