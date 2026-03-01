@@ -16,6 +16,33 @@ Open any framework example directly in StackBlitz:
   <a href="https://github.com/AgnosticUI/agnosticui/tree/master/v2/playbooks/landing" target="_blank" rel="noopener">View on GitHub</a>
 </div>
 
+<div class="playbook-screenshots mbs6 mbe6">
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/landing/design/Mobile.png" alt="Mobile layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/landing/design/Mobile-dark.png" alt="Mobile dark mode layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Mobile - Dark</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/landing/design/Tablet.png" alt="Tablet layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Tablet</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/landing/design/Tablet-dark.png" alt="Tablet dark mode layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Tablet - Dark</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/landing/design/Desktop.png" alt="Desktop layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop</p>
+  </div>
+  <div class="playbook-screenshot-item">
+    <img src="/playbooks/landing/design/Desktop-dark.png" alt="Desktop dark mode layout" class="playbook-screenshot" />
+    <p class="playbook-caption">Desktop - Dark</p>
+  </div>
+</div>
+
 ::: tip Skins & Customization
 Each live example includes a **skin switcher** (bottom-right corner) to preview other themes instantly. Colors, spacing, and typography are fully customizable via [design tokens](/theming).
 :::
