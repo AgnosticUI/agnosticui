@@ -133,7 +133,8 @@ body {
 }
 
 ag-icon-button-fx {
-  display: block;
+  width: 100%;
+  display: inline-flex;
 }
 
 .feature-card-title {
