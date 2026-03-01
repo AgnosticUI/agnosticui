@@ -1,7 +1,7 @@
 # FACE Implementation Notes: AgInput
 
-*Captured during implementation of GitHub Issue #274.*
-*This file will be used to derive a future article on refactoring FACE into web components.*
+_Captured during implementation of GitHub Issue #274._
+_This file will be used to derive a future article on refactoring FACE into web components._
 
 ---
 
@@ -19,34 +19,45 @@ form lifecycle events to it and including its value in `FormData` on submit.
 
 **Browser support (as of Jan 2026):** ~95% global, including Safari 16.4+. No polyfill needed.
 
+- Why is it important to implement Form-Associated Custom Elements when building web components?
+  A. Implementing FACE is critical because it bridges the "capability gap" between standard HTML elements and custom Web Components. Without it, a custom input field (like a stylized slider or date picker) is essentially "invisible" to the browser's native <form> element
+
+Native elements like <input>, <select>, or <textarea> participate in standard HTML forms which means:
+
+- they will be included in the FormData object during a form submission. FACE is a means to
+- they can utilize native form validation APIs (like setValidity() and checkValidity()), allowing your component to show built-in browser error messages and block form submission when invalid.
+- they will be better understood by assistive technologies in terms of the role and state within the form
+- required for access to the ElementInternals API, which provides lifecycle hooks specifically for form states, such as when a form is reset or its state changes.
+
 ---
 
 ## What Was Implemented
 
 ### Core API
 
-| Added | Purpose |
-|-------|---------|
-| `static formAssociated = true` | Registers the element as form-associated |
-| `private _internals: ElementInternals` | Handle returned by `attachInternals()` |
-| `name` property (reflected) | Required for value to appear in `FormData` |
-| `get form()` | Returns the parent `<form>` or null |
-| `get validity()` | Current `ValidityState`, mirrored from inner input |
-| `get validationMessage()` | Browser-generated validation message |
-| `get willValidate()` | Whether the element participates in constraint validation |
-| `checkValidity()` | Silent validity check; fires `invalid` event if invalid |
-| `reportValidity()` | Shows browser validation UI if invalid |
+| Added                                  | Purpose                                                   |
+| -------------------------------------- | --------------------------------------------------------- |
+| `static formAssociated = true`         | Registers the element as form-associated                  |
+| `private _internals: ElementInternals` | Handle returned by `attachInternals()`                    |
+| `name` property (reflected)            | Required for value to appear in `FormData`                |
+| `get form()`                           | Returns the parent `<form>` or null                       |
+| `get validity()`                       | Current `ValidityState`, mirrored from inner input        |
+| `get validationMessage()`              | Browser-generated validation message                      |
+| `get willValidate()`                   | Whether the element participates in constraint validation |
+| `checkValidity()`                      | Silent validity check; fires `invalid` event if invalid   |
+| `reportValidity()`                     | Shows browser validation UI if invalid                    |
 
 ### Lifecycle Callbacks
 
-| Callback | Behavior |
-|----------|---------|
-| `formResetCallback()` | Clears `value`, resets `ElementInternals` value and validity |
-| `formDisabledCallback(disabled)` | Syncs `this.disabled` from parent `<fieldset disabled>` |
+| Callback                         | Behavior                                                     |
+| -------------------------------- | ------------------------------------------------------------ |
+| `formResetCallback()`            | Clears `value`, resets `ElementInternals` value and validity |
+| `formDisabledCallback(disabled)` | Syncs `this.disabled` from parent `<fieldset disabled>`      |
 
 ### Value Submission
 
 `_internals.setFormValue(this.value)` is called:
+
 - In `_handleInput` — on every keystroke
 - In `_handleChange` — on commit (blur/enter)
 - In `firstUpdated` — to set the initial value on render
@@ -112,10 +123,10 @@ internationalized apps or those with UX-specific copy need control over these st
 
 `ElementInternals.setValidity(flags, message, anchor)` accepts a custom `message` string.
 If we call it with a custom message, we override the browser's default. The question is:
-*who provides that message, and how?*
+_who provides that message, and how?_
 
-This is the Inversion of Control (IOC) problem: the component knows *when* something is
-invalid, but the consumer knows *what message to show* (locale, brand voice, UX copy).
+This is the Inversion of Control (IOC) problem: the component knows _when_ something is
+invalid, but the consumer knows _what message to show_ (locale, brand voice, UX copy).
 
 ---
 
@@ -128,7 +139,7 @@ handles the event and returns a message by setting `event.detail.message`.
 
 ```typescript
 // In _syncValidity():
-const validateEvent = new CustomEvent('ag-validate', {
+const validateEvent = new CustomEvent("ag-validate", {
   bubbles: true,
   composed: true,
   cancelable: false,
@@ -147,25 +158,21 @@ this._internals.setValidity(el.validity, customMessage, el);
 **Consumer usage:**
 
 ```html
-<ag-input
-  name="email"
-  type="email"
-  required
-  @ag-validate=${(e) => {
-    if (e.detail.validity.valueMissing) e.detail.message = t('errors.emailRequired');
-    if (e.detail.validity.typeMismatch) e.detail.message = t('errors.emailInvalid');
-  }}
-></ag-input>
+<ag-input name="email" type="email" required @ag-validate="${(e)" ="">
+  { if (e.detail.validity.valueMissing) e.detail.message =
+  t('errors.emailRequired'); if (e.detail.validity.typeMismatch)
+  e.detail.message = t('errors.emailInvalid'); }} ></ag-input
+>
 ```
 
 **Tradeoffs:**
 
-| Pro | Con |
-|-----|-----|
-| Pure IOC — consumer has full control per-instance | Event fires on every input (perf concern for large forms) |
-| Works with any i18n library | `CustomEvent` mutation pattern is unfamiliar to some devs |
-| No component API change needed | Message is synchronous only — no async validators |
-| Works across frameworks (vanilla, React, Vue) | `detail.message` mutation relies on object reference sharing |
+| Pro                                               | Con                                                          |
+| ------------------------------------------------- | ------------------------------------------------------------ |
+| Pure IOC — consumer has full control per-instance | Event fires on every input (perf concern for large forms)    |
+| Works with any i18n library                       | `CustomEvent` mutation pattern is unfamiliar to some devs    |
+| No component API change needed                    | Message is synchronous only — no async validators            |
+| Works across frameworks (vanilla, React, Vue)     | `detail.message` mutation relies on object reference sharing |
 
 ---
 
@@ -205,20 +212,20 @@ this._internals.setValidity(el.validity, message, el);
   type="email"
   required
   validationMessages={{
-    valueMissing: t('errors.emailRequired'),
-    typeMismatch: t('errors.emailInvalid'),
+    valueMissing: t("errors.emailRequired"),
+    typeMismatch: t("errors.emailInvalid"),
   }}
 />
 ```
 
 **Tradeoffs:**
 
-| Pro | Con |
-|-----|-----|
-| Declarative — easy to read and understand | Messages are evaluated at render time, not at validation time |
+| Pro                                                | Con                                                             |
+| -------------------------------------------------- | --------------------------------------------------------------- |
+| Declarative — easy to read and understand          | Messages are evaluated at render time, not at validation time   |
 | Familiar pattern (similar to React form libraries) | First-class support only in framework wrappers (not plain HTML) |
-| No events required | Consumer must know `ValidityState` key names |
-| Easy to type with TypeScript | Doesn't support dynamic/computed messages without re-render |
+| No events required                                 | Consumer must know `ValidityState` key names                    |
+| Easy to type with TypeScript                       | Doesn't support dynamic/computed messages without re-render     |
 
 ---
 
@@ -252,6 +259,18 @@ API and Option A as an escape hatch).
 ---
 
 ## Future Work
+
+### Suggestions for Improvement/Investigation
+
+1. The `disabled` Property Sync
+   In `formDisabledCallback`, you are forcefully setting `this.disabled`. However, if the component has its own `disabled` property via an attribute (e.g., `<ag-input disabled>`), and then the `<fieldset>` is enabled/disabled, you might create a conflict.
+
+_Refinement: Use a private boolean like \_parentDisabled and combine it with the local disabled state in your Lit render() method or a getter._
+
+2. Handling the "Value" Property
+   Standard HTML form elements usually have a `value` property that mirrors what is in the form. While the mixin shouldn't call `setFormValue`, it might be helpful to include a placeholder or a standard getter for value in the interface to ensure all your form components share that property name.
+
+### TODOs
 
 - [ ] Implement `formStateRestoreCallback` for autofill / session history (new issue)
 - [ ] Decide on IOC strategy for validation messages and implement (new issue)
