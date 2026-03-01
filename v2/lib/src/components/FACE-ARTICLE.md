@@ -509,11 +509,7 @@ Handles autofill and browser session history restore (back button). Deferred bec
 
 We use hardcoded strings in `setValidity()` calls (`'Please select a rating.'`, `'Please check this field.'`). The browser generates its own locale-aware messages for delegated components. Both are fine for most apps — internationalized apps need control over the copy.
 
-Two approaches were designed:
-
-**Event-driven (`ag-validate`):** The component fires a custom event when validity changes. The consumer handles it and overwrites the message in the event detail before the component calls `setValidity()`. Works everywhere — plain HTML, all frameworks, runtime values. Downside: fires on every input event; mutating `event.detail` is an unfamiliar pattern.
-
-**Validation map property:** Consumer passes an object mapping `ValidityState` flag names to strings:
+The chosen approach is a `validationMessages` prop: an object mapping `ValidityState` flag names to strings.
 
 ```tsx
 <AgInput
@@ -525,9 +521,9 @@ Two approaches were designed:
 />
 ```
 
-Declarative and familiar to React/Vue developers. Doesn't work in plain HTML; consumers need to know ValidityState flag names.
+Declarative, typed, and familiar from React form libraries. The trade-off is that messages must be configured at render time — there is no mechanism for replacing a message dynamically after the fact. That constraint is acceptable for the vast majority of use cases: most apps have fixed validation copy per locale, and the component re-renders whenever props change anyway.
 
-Both are useful. The event approach covers more ground; the map property is the nicer API in framework contexts. Decision deferred until it can be applied consistently across all components.
+An event-driven alternative (`ag-validate`) was considered but left out of scope. It would support runtime message injection (handy for async server-side errors), but at the cost of an unfamiliar `event.detail` mutation pattern and an extra event firing on every input. The added complexity isn't justified given how rarely that capability is needed.
 
 ### `CustomStateSet` / `:state()` pseudo-class
 
