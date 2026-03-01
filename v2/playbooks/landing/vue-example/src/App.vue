@@ -77,7 +77,9 @@ const year = new Date().getFullYear()
       </div>
       <div class="features-grid">
         <VueCard v-for="f in features" :key="f.id" rounded="lg">
-          <VueIconButtonFx :label="f.label" :icon="f.icon" :variant="(f.variant as any)" fx="bounce" fx-ease="spring-md" />
+          <VueIconButtonFx :label="f.label" :variant="(f.variant as any)" fx="bounce" fx-ease="spring-md">
+            <span v-html="f.icon"></span>
+          </VueIconButtonFx>
           <p class="feature-card-title">{{ f.title }}</p>
           <p class="feature-card-desc">{{ f.description }}</p>
         </VueCard>
