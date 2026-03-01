@@ -99,3 +99,40 @@ The [`PROMPT-3-FRAMEWORKS.md`](https://github.com/AgnosticUI/agnosticui/blob/mas
 | Mobile (<768px)     | Card layout — each row becomes a labeled card                 |
 | Tablet (768–1199px) | Table layout — Category column hidden to save space           |
 | Desktop (≥1200px)   | Full table with all columns visible                           |
+
+---
+
+## Variant II — Enhanced TanStack Panel
+
+Extends the Data Grid with three new components — **Spinner**, **ProgressRing**, and **IntlFormatter** — embedded directly into the TanStack panel. Price columns are formatted with `IntlFormatter` (USD locale), a `ProgressRing` shows bulk operation progress, and a `Spinner` replaces the skeleton loader during async data fetches.
+
+<PlaybookStackBlitz playbook="grid-v2" />
+
+<div class="flex gap4 mbs4 mbe4">
+  <a href="https://github.com/AgnosticUI/agnosticui/tree/master/v2/playbooks/grid" target="_blank" rel="noopener">View on GitHub</a>
+</div>
+
+::: tip Skins & Customization
+Screenshots show the default skin. Each live example includes a **skin switcher** (bottom-right corner) to preview other themes instantly. Colors, spacing, and typography are fully customizable via [design tokens](/theming).
+:::
+
+### What's New in V2
+
+::: warning Experimental Feature: AI-Assisted UI Generation
+Generating UI components via LLM prompting is non-deterministic; different models (and even different versions of the same model) can produce drastically varying results from identical prompts.
+
+While these prompts have been tested using the Claude Code CLI (running Claude Sonnet 4.5 and Opus 4.5), the output remains experimental. Always verify generated code for visual consistency, accessibility, and production readiness before deployment.
+:::
+
+- **Spinner** — replaces SkeletonLoader during async data fetch on panel mount
+- **ProgressRing** — shows bulk operation completion (e.g. "Deleting 12 rows…") as a ring indicator
+- **IntlFormatter** — formats the Price column as USD currency and dates to locale-appropriate strings
+- [`PROMPT-3-FRAMEWORKS-V2.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/playbooks/grid/PROMPT-3-FRAMEWORKS-V2.md): LLM prompt for the V2 variant (all three frameworks)
+
+### Components Added in V2
+
+| Component          | Purpose                                              |
+| ------------------ | ---------------------------------------------------- |
+| `ag-spinner`       | Loading indicator during async data fetch            |
+| `ag-progress-ring` | Bulk operation progress (e.g. deleting rows)         |
+| `ag-intl-formatter`| Locale-aware price (USD) and date column formatting  |

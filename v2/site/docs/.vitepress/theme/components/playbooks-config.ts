@@ -1113,6 +1113,285 @@ const GRID_VUE_WRAPPER_FILES = [
   'src/components/ag/Toast/vue/index.ts',
 ]
 
+// ── Blog / Article Reader Playbook ────────────────────────────────────────────
+
+const BLOG_SHARED_CORE_FILES = [
+  'src/components/ag/Alert/core/Alert.ts',
+  'src/components/ag/Alert/core/_Alert.ts',
+  'src/components/ag/AspectRatio/core/AspectRatio.ts',
+  'src/components/ag/AspectRatio/core/_AspectRatio.ts',
+  'src/components/ag/Avatar/core/Avatar.ts',
+  'src/components/ag/Avatar/core/_Avatar.ts',
+  'src/components/ag/Avatar/core/AvatarGroup.ts',
+  'src/components/ag/Badge/core/Badge.ts',
+  'src/components/ag/Badge/core/_Badge.ts',
+  'src/components/ag/Button/core/Button.ts',
+  'src/components/ag/Button/core/_Button.ts',
+  'src/components/ag/Divider/core/Divider.ts',
+  'src/components/ag/Divider/core/_Divider.ts',
+  'src/components/ag/Divider/core/index.ts',
+  'src/components/ag/Header/core/Header.ts',
+  'src/components/ag/Header/core/_Header.ts',
+  'src/components/ag/Input/core/Input.ts',
+  'src/components/ag/Input/core/_Input.ts',
+  'src/components/ag/Input/core/_Input.BACKUP.ts',
+  'src/components/ag/Loader/core/Loader.ts',
+  'src/components/ag/Loader/core/_Loader.ts',
+  'src/components/ag/Mark/core/Mark.ts',
+  'src/components/ag/Mark/core/_Mark.ts',
+  'src/components/ag/Progress/core/Progress.ts',
+  'src/components/ag/Progress/core/_Progress.ts',
+  'src/components/ag/ProgressRing/core/ProgressRing.ts',
+  'src/components/ag/ProgressRing/core/_ProgressRing.ts',
+  'src/components/ag/ScrollProgress/core/ScrollProgress.ts',
+  'src/components/ag/ScrollProgress/core/_ScrollProgress.ts',
+  'src/components/ag/ScrollToButton/core/ScrollToButton.ts',
+  'src/components/ag/ScrollToButton/core/_ScrollToButton.ts',
+  'src/components/ag/Tabs/core/Tabs.ts',
+  'src/components/ag/Tabs/core/_Tabs.ts',
+  'src/components/ag/Tag/core/Tag.ts',
+  'src/components/ag/Tag/core/_Tag.ts',
+  'src/components/ag/Toast/core/Toast.ts',
+  'src/components/ag/Toast/core/_Toast.ts',
+  'src/components/ag/shared/CloseButton/CloseButton.ts',
+  'src/components/ag/shared/CloseButton/_CloseButton.ts',
+  'src/components/ag/shared/form-control-styles.ts',
+  'src/components/ag/shared/form-control-utils.ts',
+  'src/components/ag/styles/ag-tokens.css',
+  'src/components/ag/styles/ag-tokens-dark.css',
+  'src/components/ag/styles/skins-bundle.css',
+  'src/components/ag/styles/skin-switcher.css',
+  'src/components/ag/styles/motion.styles.ts',
+  'src/components/ag/styles/nav-button-styles.ts',
+  'src/components/ag/styles/nav-sublink-styles.ts',
+  'src/components/ag/styles/table.css',
+  'src/components/ag/types/fx.ts',
+  'src/components/ag/types/vue.d.ts',
+  'src/components/ag/utils/handleBackdropClick.ts',
+  'src/components/ag/utils/isElementInContainer.ts',
+  'src/components/ag/utils/positioning.ts',
+  'src/components/ag/utils/slot.ts',
+  'src/components/ag/utils/unique-id.ts',
+]
+
+const BLOG_REACT_WRAPPER_FILES = [
+  'src/components/ag/Alert/react/ReactAlert.tsx',
+  'src/components/ag/Alert/react/index.ts',
+  'src/components/ag/AspectRatio/react/ReactAspectRatio.tsx',
+  'src/components/ag/AspectRatio/react/index.ts',
+  'src/components/ag/Avatar/react/ReactAvatar.tsx',
+  'src/components/ag/Avatar/react/index.ts',
+  'src/components/ag/Badge/react/ReactBadge.tsx',
+  'src/components/ag/Badge/react/index.ts',
+  'src/components/ag/Button/react/ReactButton.tsx',
+  'src/components/ag/Button/react/index.ts',
+  'src/components/ag/Divider/react/ReactDivider.tsx',
+  'src/components/ag/Divider/react/index.ts',
+  'src/components/ag/Header/react/ReactHeader.tsx',
+  'src/components/ag/Header/react/index.ts',
+  'src/components/ag/Input/react/ReactInput.tsx',
+  'src/components/ag/Input/react/index.ts',
+  'src/components/ag/Loader/react/ReactLoader.tsx',
+  'src/components/ag/Loader/react/index.ts',
+  'src/components/ag/Mark/react/ReactMark.tsx',
+  'src/components/ag/Progress/react/ReactProgress.tsx',
+  'src/components/ag/Progress/react/index.ts',
+  'src/components/ag/ProgressRing/react/ReactProgressRing.tsx',
+  'src/components/ag/ScrollProgress/react/ReactScrollProgress.tsx',
+  'src/components/ag/ScrollToButton/react/ReactScrollToButton.tsx',
+  'src/components/ag/Tabs/react/ReactTabs.tsx',
+  'src/components/ag/Tabs/react/index.ts',
+  'src/components/ag/Tag/react/ReactTag.tsx',
+  'src/components/ag/Tag/react/index.ts',
+  'src/components/ag/Toast/react/ReactToast.tsx',
+  'src/components/ag/Toast/react/index.ts',
+]
+
+const BLOG_VUE_WRAPPER_FILES = [
+  'src/components/ag/Alert/vue/VueAlert.vue',
+  'src/components/ag/Alert/vue/index.ts',
+  'src/components/ag/AspectRatio/vue/VueAspectRatio.vue',
+  'src/components/ag/AspectRatio/vue/index.ts',
+  'src/components/ag/Avatar/vue/VueAvatar.vue',
+  'src/components/ag/Avatar/vue/VueAvatarGroup.vue',
+  'src/components/ag/Avatar/vue/index.ts',
+  'src/components/ag/Badge/vue/VueBadge.vue',
+  'src/components/ag/Badge/vue/index.ts',
+  'src/components/ag/Button/vue/VueButton.vue',
+  'src/components/ag/Button/vue/index.ts',
+  'src/components/ag/Divider/vue/VueDivider.vue',
+  'src/components/ag/Divider/vue/index.ts',
+  'src/components/ag/Header/vue/VueHeader.vue',
+  'src/components/ag/Header/vue/index.ts',
+  'src/components/ag/Input/vue/VueInput.vue',
+  'src/components/ag/Input/vue/index.ts',
+  'src/components/ag/Loader/vue/VueLoader.vue',
+  'src/components/ag/Loader/vue/index.ts',
+  'src/components/ag/Mark/vue/VueMark.vue',
+  'src/components/ag/Mark/vue/index.ts',
+  'src/components/ag/Progress/vue/VueProgress.vue',
+  'src/components/ag/Progress/vue/index.ts',
+  'src/components/ag/ProgressRing/vue/VueProgressRing.vue',
+  'src/components/ag/ProgressRing/vue/index.ts',
+  'src/components/ag/ScrollProgress/vue/VueScrollProgress.vue',
+  'src/components/ag/ScrollProgress/vue/index.ts',
+  'src/components/ag/ScrollToButton/vue/VueScrollToButton.vue',
+  'src/components/ag/ScrollToButton/vue/index.ts',
+  'src/components/ag/Tabs/vue/VueTabs.vue',
+  'src/components/ag/Tabs/vue/VueTab.vue',
+  'src/components/ag/Tabs/vue/VueTabPanel.vue',
+  'src/components/ag/Tabs/vue/index.ts',
+  'src/components/ag/Tag/vue/VueTag.vue',
+  'src/components/ag/Tag/vue/index.ts',
+  'src/components/ag/Toast/vue/VueToast.vue',
+  'src/components/ag/Toast/vue/index.ts',
+]
+
+// ── Landing / Marketing Page Playbook ─────────────────────────────────────────
+
+const LANDING_SHARED_CORE_FILES = [
+  'src/components/ag/Accordion/core/Accordion.ts',
+  'src/components/ag/Accordion/core/_Accordion.ts',
+  'src/components/ag/Accordion/core/AccordionGroup.ts',
+  'src/components/ag/Avatar/core/Avatar.ts',
+  'src/components/ag/Avatar/core/_Avatar.ts',
+  'src/components/ag/Avatar/core/AvatarGroup.ts',
+  'src/components/ag/Badge/core/Badge.ts',
+  'src/components/ag/Badge/core/_Badge.ts',
+  'src/components/ag/BadgeFx/core/BadgeFx.ts',
+  'src/components/ag/BadgeFx/core/_BadgeFx.ts',
+  'src/components/ag/Button/core/Button.ts',
+  'src/components/ag/Button/core/_Button.ts',
+  'src/components/ag/ButtonFx/core/ButtonFx.ts',
+  'src/components/ag/ButtonFx/core/_ButtonFx.ts',
+  'src/components/ag/Card/core/Card.ts',
+  'src/components/ag/Card/core/_Card.ts',
+  'src/components/ag/Divider/core/Divider.ts',
+  'src/components/ag/Divider/core/_Divider.ts',
+  'src/components/ag/Divider/core/index.ts',
+  'src/components/ag/Header/core/Header.ts',
+  'src/components/ag/Header/core/_Header.ts',
+  'src/components/ag/IconButton/core/IconButton.ts',
+  'src/components/ag/IconButton/core/_IconButton.ts',
+  'src/components/ag/IconButtonFx/core/IconButtonFx.ts',
+  'src/components/ag/IconButtonFx/core/_IconButtonFx.ts',
+  'src/components/ag/Tabs/core/Tabs.ts',
+  'src/components/ag/Tabs/core/_Tabs.ts',
+  'src/components/ag/Tag/core/Tag.ts',
+  'src/components/ag/Tag/core/_Tag.ts',
+  'src/components/ag/shared/form-control-styles.ts',
+  'src/components/ag/shared/form-control-utils.ts',
+  'src/components/ag/styles/ag-tokens.css',
+  'src/components/ag/styles/ag-tokens-dark.css',
+  'src/components/ag/styles/skins-bundle.css',
+  'src/components/ag/styles/skin-switcher.css',
+  'src/components/ag/styles/motion.styles.ts',
+  'src/components/ag/styles/nav-button-styles.ts',
+  'src/components/ag/styles/nav-sublink-styles.ts',
+  'src/components/ag/styles/table.css',
+  'src/components/ag/types/fx.ts',
+  'src/components/ag/types/vue.d.ts',
+  'src/components/ag/utils/handleBackdropClick.ts',
+  'src/components/ag/utils/isElementInContainer.ts',
+  'src/components/ag/utils/positioning.ts',
+  'src/components/ag/utils/slot.ts',
+  'src/components/ag/utils/unique-id.ts',
+]
+
+const LANDING_REACT_WRAPPER_FILES = [
+  'src/components/ag/Accordion/react/ReactAccordion.tsx',
+  'src/components/ag/Accordion/react/index.ts',
+  'src/components/ag/Avatar/react/ReactAvatar.tsx',
+  'src/components/ag/Avatar/react/index.ts',
+  'src/components/ag/Badge/react/ReactBadge.tsx',
+  'src/components/ag/Badge/react/index.ts',
+  'src/components/ag/BadgeFx/react/ReactBadgeFx.tsx',
+  'src/components/ag/Button/react/ReactButton.tsx',
+  'src/components/ag/Button/react/index.ts',
+  'src/components/ag/ButtonFx/react/ReactButtonFx.tsx',
+  'src/components/ag/Card/react/ReactCard.tsx',
+  'src/components/ag/Card/react/index.ts',
+  'src/components/ag/Divider/react/ReactDivider.tsx',
+  'src/components/ag/Divider/react/index.ts',
+  'src/components/ag/Header/react/ReactHeader.tsx',
+  'src/components/ag/Header/react/index.ts',
+  'src/components/ag/IconButton/react/ReactIconButton.tsx',
+  'src/components/ag/IconButton/react/index.ts',
+  'src/components/ag/IconButtonFx/react/ReactIconButtonFx.tsx',
+  'src/components/ag/Tabs/react/ReactTabs.tsx',
+  'src/components/ag/Tabs/react/index.ts',
+  'src/components/ag/Tag/react/ReactTag.tsx',
+  'src/components/ag/Tag/react/index.ts',
+]
+
+const LANDING_VUE_WRAPPER_FILES = [
+  'src/components/ag/Accordion/vue/VueAccordion.vue',
+  'src/components/ag/Accordion/vue/VueAccordionContent.vue',
+  'src/components/ag/Accordion/vue/VueAccordionHeader.vue',
+  'src/components/ag/Accordion/vue/VueAccordionItem.vue',
+  'src/components/ag/Accordion/vue/index.ts',
+  'src/components/ag/Avatar/vue/VueAvatar.vue',
+  'src/components/ag/Avatar/vue/VueAvatarGroup.vue',
+  'src/components/ag/Avatar/vue/index.ts',
+  'src/components/ag/Badge/vue/VueBadge.vue',
+  'src/components/ag/Badge/vue/index.ts',
+  'src/components/ag/BadgeFx/vue/VueBadgeFx.vue',
+  'src/components/ag/BadgeFx/vue/index.ts',
+  'src/components/ag/Button/vue/VueButton.vue',
+  'src/components/ag/Button/vue/index.ts',
+  'src/components/ag/ButtonFx/vue/VueButtonFx.vue',
+  'src/components/ag/ButtonFx/vue/index.ts',
+  'src/components/ag/Card/vue/VueCard.vue',
+  'src/components/ag/Card/vue/index.ts',
+  'src/components/ag/Divider/vue/VueDivider.vue',
+  'src/components/ag/Divider/vue/index.ts',
+  'src/components/ag/Header/vue/VueHeader.vue',
+  'src/components/ag/Header/vue/index.ts',
+  'src/components/ag/IconButton/vue/VueIconButton.vue',
+  'src/components/ag/IconButton/vue/index.ts',
+  'src/components/ag/IconButtonFx/vue/VueIconButtonFx.vue',
+  'src/components/ag/IconButtonFx/vue/index.ts',
+  'src/components/ag/Tabs/vue/VueTabs.vue',
+  'src/components/ag/Tabs/vue/VueTab.vue',
+  'src/components/ag/Tabs/vue/VueTabPanel.vue',
+  'src/components/ag/Tabs/vue/index.ts',
+  'src/components/ag/Tag/vue/VueTag.vue',
+  'src/components/ag/Tag/vue/index.ts',
+]
+
+// ── Grid V2 additions ──────────────────────────────────────────────────────────
+// Grid V2 focuses on the TanStack panel with Spinner, ProgressRing, IntlFormatter.
+// Derived from the Grid V1 arrays but with SelectionButton/Group removed and new
+// components added.
+
+const GRID_V2_SHARED_CORE_FILES = [
+  ...GRID_SHARED_CORE_FILES.filter((f) => !f.includes('/SelectionButton')),
+  'src/components/ag/IntlFormatter/core/IntlFormatter.ts',
+  'src/components/ag/IntlFormatter/core/_IntlFormatter.ts',
+  'src/components/ag/ProgressRing/core/ProgressRing.ts',
+  'src/components/ag/ProgressRing/core/_ProgressRing.ts',
+  'src/components/ag/Spinner/core/Spinner.ts',
+  'src/components/ag/Spinner/core/_Spinner.ts',
+]
+
+const GRID_V2_REACT_WRAPPER_FILES = [
+  ...GRID_REACT_WRAPPER_FILES.filter((f) => !f.includes('/SelectionButton')),
+  'src/components/ag/IntlFormatter/react/ReactIntlFormatter.tsx',
+  'src/components/ag/ProgressRing/react/ReactProgressRing.tsx',
+  'src/components/ag/Spinner/react/ReactSpinner.tsx',
+  'src/components/ag/Spinner/react/index.ts',
+]
+
+const GRID_V2_VUE_WRAPPER_FILES = [
+  ...GRID_VUE_WRAPPER_FILES.filter((f) => !f.includes('/SelectionButton')),
+  'src/components/ag/IntlFormatter/vue/VueIntlFormatter.vue',
+  'src/components/ag/IntlFormatter/vue/index.ts',
+  'src/components/ag/ProgressRing/vue/VueProgressRing.vue',
+  'src/components/ag/ProgressRing/vue/index.ts',
+  'src/components/ag/Spinner/vue/VueSpinner.vue',
+  'src/components/ag/Spinner/vue/index.ts',
+]
+
 // Merge the grid entry into the exported config
 Object.assign(playbooksConfig, {
   grid: {
@@ -1185,6 +1464,215 @@ Object.assign(playbooksConfig, {
         'src/panels/tanstack-panel.ts',
         // Component files (Lit uses core directly, no wrappers)
         ...GRID_SHARED_CORE_FILES,
+      ],
+    },
+    externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
+  } satisfies PlaybookConfig,
+})
+
+// ── Grid V2 variant ────────────────────────────────────────────────────────────
+Object.assign(playbooksConfig, {
+  'grid-v2': {
+    title: 'Data Grid V2',
+    basePath: 'grid',
+    frameworkDirs: {
+      react: 'react-example-v2',
+      vue: 'vue-example-v2',
+      lit: 'lit-example-v2',
+    },
+    frameworks: {
+      react: [
+        // Config files
+        'index.html',
+        'package.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.app.json',
+        'tsconfig.node.json',
+        'eslint.config.js',
+        // App files
+        'src/App.tsx',
+        'src/App.css',
+        'src/SkinSwitcher.tsx',
+        'src/index.css',
+        'src/main.tsx',
+        // Data
+        'src/data/products.ts',
+        // Panels (V2 focuses on TanStack)
+        'src/panels/TanstackPanel.tsx',
+        // Component files
+        ...GRID_V2_SHARED_CORE_FILES,
+        ...GRID_V2_REACT_WRAPPER_FILES,
+      ],
+      vue: [
+        // Config files
+        'index.html',
+        'package.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.app.json',
+        'tsconfig.node.json',
+        // App files
+        'src/App.vue',
+        'src/SkinSwitcher.vue',
+        'src/app.css',
+        'src/style.css',
+        'src/main.ts',
+        // Data
+        'src/data/products.ts',
+        // Panels (V2 focuses on TanStack)
+        'src/panels/TanstackPanel.vue',
+        // Component files
+        ...GRID_V2_SHARED_CORE_FILES,
+        ...GRID_V2_VUE_WRAPPER_FILES,
+      ],
+      lit: [
+        // Config files
+        'index.html',
+        'package.json',
+        'tsconfig.json',
+        // App files
+        'src/inventory-app.ts',
+        'src/app.css',
+        'src/index.css',
+        'src/main.ts',
+        'src/my-element.ts',
+        'src/skin-switcher.ts',
+        // Data
+        'src/data/products.ts',
+        // Panels (V2 focuses on TanStack)
+        'src/panels/tanstack-panel.ts',
+        // Component files (Lit uses core directly, no wrappers)
+        ...GRID_V2_SHARED_CORE_FILES,
+      ],
+    },
+    externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
+  } satisfies PlaybookConfig,
+})
+
+// ── Blog / Article Reader Playbook ────────────────────────────────────────────
+Object.assign(playbooksConfig, {
+  blog: {
+    title: 'Blog / Article Reader',
+    frameworks: {
+      react: [
+        // Config files
+        'index.html',
+        'package.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.app.json',
+        'tsconfig.node.json',
+        'eslint.config.js',
+        // App files
+        'src/App.tsx',
+        'src/App.css',
+        'src/SkinSwitcher.tsx',
+        'src/index.css',
+        'src/main.tsx',
+        'src/data/article.ts',
+        // Component files
+        ...BLOG_SHARED_CORE_FILES,
+        ...BLOG_REACT_WRAPPER_FILES,
+      ],
+      vue: [
+        // Config files
+        'index.html',
+        'package.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.app.json',
+        'tsconfig.node.json',
+        // App files
+        'src/App.vue',
+        'src/SkinSwitcher.vue',
+        'src/style.css',
+        'src/main.ts',
+        'src/data/article.ts',
+        // Component files
+        ...BLOG_SHARED_CORE_FILES,
+        ...BLOG_VUE_WRAPPER_FILES,
+      ],
+      lit: [
+        // Config files
+        'index.html',
+        'package.json',
+        'tsconfig.json',
+        // App files
+        'src/index.css',
+        'src/blog-app.ts',
+        'src/skin-switcher.ts',
+        'src/main.ts',
+        'src/my-element.ts',
+        'src/data/article.ts',
+        // Component files (Lit uses core directly, no wrappers)
+        ...BLOG_SHARED_CORE_FILES,
+      ],
+    },
+    externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
+  } satisfies PlaybookConfig,
+})
+
+// ── Landing / Marketing Page Playbook ─────────────────────────────────────────
+Object.assign(playbooksConfig, {
+  landing: {
+    title: 'Landing / Marketing Page',
+    frameworks: {
+      react: [
+        // Config files
+        'index.html',
+        'package.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.app.json',
+        'tsconfig.node.json',
+        'eslint.config.js',
+        // App files
+        'src/App.tsx',
+        'src/App.css',
+        'src/SkinSwitcher.tsx',
+        'src/index.css',
+        'src/main.tsx',
+        'src/data/landing.ts',
+        // Component files
+        ...LANDING_SHARED_CORE_FILES,
+        ...LANDING_REACT_WRAPPER_FILES,
+      ],
+      vue: [
+        // Config files
+        'index.html',
+        'package.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.app.json',
+        'tsconfig.node.json',
+        // App files
+        'src/App.vue',
+        'src/SkinSwitcher.vue',
+        'src/style.css',
+        'src/main.ts',
+        'src/data/landing.ts',
+        // Component files
+        ...LANDING_SHARED_CORE_FILES,
+        ...LANDING_VUE_WRAPPER_FILES,
+      ],
+      lit: [
+        // Config files
+        'index.html',
+        'package.json',
+        'tsconfig.json',
+        // App files
+        'src/index.css',
+        'src/landing-app.ts',
+        'src/skin-switcher.ts',
+        'src/main.ts',
+        'src/my-element.ts',
+        'src/data/landing.ts',
+        // Component files (Lit uses core directly, no wrappers)
+        ...LANDING_SHARED_CORE_FILES,
       ],
     },
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,

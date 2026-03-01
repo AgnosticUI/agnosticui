@@ -83,6 +83,8 @@ export default defineConfig({
           { text: 'Discovery Dashboard', link: '/playbooks/dashboard' },
           { text: 'Support Center', link: '/playbooks/support' },
           { text: 'Data Grid', link: '/playbooks/grid' },
+          { text: 'Blog / Article Reader', link: '/playbooks/blog' },
+          { text: 'Landing / Marketing Page', link: '/playbooks/landing' },
         ]
       },
       getComponents(),
