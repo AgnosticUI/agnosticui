@@ -86,6 +86,7 @@ export default defineConfig({
           { text: 'Data Grid', link: '/playbooks/grid' },
           { text: 'Blog / Article Reader', link: '/playbooks/blog' },
           { text: 'Landing / Marketing Page', link: '/playbooks/landing' },
+          { text: 'Contact Form (FACE)', link: '/playbooks/form-association' },
         ]
       },
       getComponents(),

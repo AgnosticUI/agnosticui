@@ -163,6 +163,104 @@ Lit's `@submit=${handler}` binding is a direct `addEventListener` call.
 
 ---
 
+## Quick Start
+
+To use FACE components in your own project:
+
+**1. Add the components you need:**
+
+```bash
+npx agnosticui-cli add Input Radio Checkbox Toggle SelectionButtonGroup
+```
+
+**2. Wrap fields in a plain `<form>` — no special container needed:**
+
+::: code-group
+
+```tsx [React]
+// useEffect registers a native listener to avoid React 18's synthetic event timing issue
+useEffect(() => {
+  const form = formRef.current
+  if (!form) return
+  const onSubmit = (e: Event) => {
+    e.preventDefault()
+    if (!validateAll(form)) return
+    const payload = Object.fromEntries(new FormData(form).entries())
+    console.log(payload) // { email: "...", terms: "on", ... }
+  }
+  form.addEventListener('submit', onSubmit)
+  return () => form.removeEventListener('submit', onSubmit)
+}, [])
+
+return (
+  <form ref={formRef}>
+    <ReactInput name="email" type="email" label="Email" required />
+    <ReactToggle name="terms" label="I agree to the terms" required />
+    <ReactButton type="submit">Submit</ReactButton>
+  </form>
+)
+```
+
+```vue [Vue]
+<template>
+  <form @submit.prevent="onSubmit">
+    <VueInput name="email" type="email" label="Email" required />
+    <VueToggle name="terms" label="I agree to the terms" required />
+    <VueButton type="submit">Submit</VueButton>
+  </form>
+</template>
+
+<script setup lang="ts">
+function onSubmit(e: Event) {
+  const form = e.target as HTMLFormElement
+  if (!validateAll(form)) return
+  const payload = Object.fromEntries(new FormData(form).entries())
+  console.log(payload) // { email: "...", terms: "on", ... }
+}
+</script>
+```
+
+```ts [Lit]
+render() {
+  return html`
+    <form @submit=${this.onSubmit}>
+      <ag-input name="email" type="email" label="Email" required></ag-input>
+      <ag-toggle name="terms" label="I agree to the terms" required></ag-toggle>
+      <ag-button type="submit">Submit</ag-button>
+    </form>
+  `
+}
+
+private onSubmit(e: Event) {
+  e.preventDefault()
+  const form = e.target as HTMLFormElement
+  if (!validateAll(form)) return
+  const payload = Object.fromEntries(new FormData(form).entries())
+  console.log(payload) // { email: "...", terms: "on", ... }
+}
+```
+
+:::
+
+**3. Use `validateAll` to trigger browser validation UI on all fields at once:**
+
+```js
+function validateAll(form) {
+  let valid = true
+  for (const el of Array.from(form.elements)) {
+    if (typeof el.reportValidity === 'function') {
+      if (!el.reportValidity()) valid = false
+    }
+  }
+  return valid
+}
+```
+
+For complete three-framework implementations with `form.reset()`, `:state()` CSS demos,
+and console logging, see the [Contact Form (FACE) Playbook](/playbooks/form-association).
+
+---
+
 ## Working Examples
 
 The `form-association` playbook ships three complete working implementations — a Contact

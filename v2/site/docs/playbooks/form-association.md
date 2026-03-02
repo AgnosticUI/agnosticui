@@ -11,6 +11,18 @@ Read the [Form Association guide](/docs/form-association) first — it explains 
 concepts, framework-specific gotchas, and how to inspect FACE in action.
 :::
 
+<script setup>
+import PlaybookStackBlitz from '../.vitepress/theme/components/PlaybookStackBlitz.vue'
+</script>
+
+## Live Examples
+
+<PlaybookStackBlitz playbook="form-association" />
+
+<div class="flex gap4 mbs4 mbe4">
+  <a href="https://github.com/AgnosticUI/agnosticui/tree/master/v2/playbooks/form-association" target="_blank" rel="noopener">View on GitHub</a>
+</div>
+
 ## Working Examples
 
 Three complete implementations are available in the repository:
