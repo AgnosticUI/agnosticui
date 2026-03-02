@@ -102,15 +102,17 @@ Your design system doesn't fork when your tech stack does. Supports **agent-gene
 
 ## AI Playbooks: AI-Prompt-Driven UI Components
 
-Playbooks (Login Form, Onboarding Wizard, Discovery Dashboard, Support Center, Data Grid) demonstrate **modular, prompt-driven UI components**. Each Playbook can be used in **agent systems**, for **context-aware applications**, or to create **generative UI patterns**.
+Playbooks (Login Form, Onboarding Wizard, Discovery Dashboard, Support Center, Data Grid, Blog / Article Reader, Landing / Marketing Page) demonstrate **modular, prompt-driven UI components**. Each Playbook can be used in **agent systems**, for **context-aware applications**, or to create **generative UI patterns**.
 
-| Playbook                                                               | What it builds                                                                                                              |
-| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| [Login Form](https://agnosticui.com/playbooks/login.html)              | Responsive login: mobile, floating card, two-column desktop; works with AI prompt-driven generation                         |
-| [Onboarding Wizard](https://agnosticui.com/playbooks/onboarding.html)  | Multi-step flow with progress, validation, and skip logic; supports agent-assisted workflows                                |
-| [Discovery Dashboard](https://agnosticui.com/playbooks/dashboard.html) | Dashboard shell with header, sidebar, and data regions — ideal for agent-generated interfaces                               |
-| [Support Center](https://agnosticui.com/playbooks/support.html)        | Help center with search, categories, and article layout; integrates with prompt-driven workflows                            |
-| [Data Grid](https://www.agnosticui.com/playbooks/grid.html)            | Responsive, interactive data grid with sorting, filtering, and multiple view modes, compatible with agent-driven interfaces |
+| Playbook                                                                 | What it builds                                                                                                                                         |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Login Form](https://agnosticui.com/playbooks/login.html)                | Responsive login: mobile, floating card, two-column desktop; works with AI prompt-driven generation                                                   |
+| [Onboarding Wizard](https://agnosticui.com/playbooks/onboarding.html)    | Multi-step flow with progress, validation, and skip logic; supports agent-assisted workflows                                                          |
+| [Discovery Dashboard](https://agnosticui.com/playbooks/dashboard.html)   | Dashboard shell with header, sidebar, and data regions — ideal for agent-generated interfaces                                                         |
+| [Support Center](https://agnosticui.com/playbooks/support.html)          | Help center with search, categories, and article layout; integrates with prompt-driven workflows                                                      |
+| [Data Grid](https://www.agnosticui.com/playbooks/grid.html)              | Responsive, interactive data grid with sorting, filtering, and multiple view modes; compatible with agent-driven and context-aware interfaces        |
+| [Blog / Article Reader](https://www.agnosticui.com/playbooks/blog.html)  | Typography-first editorial layout with scroll-aware components and in-article search highlighting; theme switcher, dark/light mode, React/Vue/Lit demos |
+| [Landing / Marketing Page](https://www.agnosticui.com/playbooks/landing.html) | Polished product marketing page with hero, features, testimonials, pricing, and FAQ; animated components, theme switcher, dark/light mode, React/Vue/Lit demos |
 
 Each Playbook on the docs site includes live StackBlitz examples for React, Vue, and Lit, and ships with:
 
