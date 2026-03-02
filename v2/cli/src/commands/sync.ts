@@ -1,20 +1,16 @@
 /**
- * ag sync command - Update reference library from tarball
+ * ag sync command - Update reference library from NPM or a local tarball
  */
 import * as p from '@clack/prompts';
 import path from 'node:path';
-import { existsSync } from 'node:fs';
 import { logger } from '../utils/logger.js';
 import { loadConfig, saveConfig } from '../utils/config.js';
 import { extractTarball, ensureDir, pathExists } from '../utils/files.js';
+import { determineTarballPath, cleanupTempDownload } from '../utils/npm.js';
+import type { SyncOptions } from '../types/index.js';
 import pc from 'picocolors';
 
 const DEFAULT_REFERENCE_PATH = './agnosticui';
-
-export interface SyncOptions {
-  tarball?: string;
-  force?: boolean;
-}
 
 export async function sync(options: SyncOptions = {}): Promise<void> {
   console.log('');
@@ -28,54 +24,57 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
     process.exit(1);
   }
 
-  // Determine tarball path
-  let tarballPath = options.tarball;
+  // Resolve tarball path: explicit --tarball > NPM download
+  let tarballPath: string | null = options.tarball ?? null;
 
   if (!tarballPath) {
-    // Use tarball path from config
-    if (!config.tarball?.source) {
-      logger.error('No tarball path found in config.');
-      logger.info('Please specify a tarball path: ' + pc.cyan('npx agnosticui-cli sync --tarball /path/to/tarball.tgz'));
+    const version = options.tag ?? 'alpha';
+    tarballPath = await determineTarballPath(version);
+
+    if (!tarballPath) {
+      logger.error('Could not find AgnosticUI tarball.');
+      logger.info('Specify a version: ' + pc.cyan(`npx agnosticui-cli sync --version ${version}`));
+      logger.info('Or a local tarball: ' + pc.cyan('npx agnosticui-cli sync --tarball /path/to/tarball.tgz'));
       process.exit(1);
     }
-    tarballPath = config.tarball.source;
+  } else {
+    // Explicit --tarball: resolve to absolute path and verify it exists
+    tarballPath = path.resolve(tarballPath);
+    logger.newline();
+    logger.info('Using tarball at:');
+    console.log('  ' + pc.dim(tarballPath));
+    logger.newline();
+
+    if (!pathExists(tarballPath)) {
+      logger.error('Tarball not found at specified path!');
+      logger.info('Run without --tarball to download the latest from NPM:');
+      logger.info('  ' + pc.cyan('npx agnosticui-cli sync'));
+      process.exit(1);
+    }
   }
 
-  // Resolve to absolute path
-  tarballPath = path.resolve(tarballPath);
-
-  // Check if tarball exists
-  logger.newline();
-  logger.info('Looking for tarball at:');
-  console.log('  ' + pc.dim(tarballPath));
-  logger.newline();
-
-  if (!existsSync(tarballPath)) {
-    logger.error('Tarball not found at saved location!');
-    logger.info('Please specify a new tarball path:');
-    logger.info('  ' + pc.cyan(`npx agnosticui-cli sync --tarball /path/to/tarball.tgz`));
-    process.exit(1);
-  }
-
-  // Read version from tarball (extract to temp dir first to peek at version.json)
+  // Read version from tarball (extract to temp dir first)
   let tarballVersion = 'unknown';
   const tempExtractPath = path.join(DEFAULT_REFERENCE_PATH, '.temp-sync');
   try {
     await ensureDir(tempExtractPath);
     await extractTarball(tarballPath, tempExtractPath);
 
+    const { readFile } = await import('node:fs/promises');
     const versionJsonPath = path.join(tempExtractPath, 'version.json');
+    const packageJsonPath = path.join(tempExtractPath, 'package.json');
     if (pathExists(versionJsonPath)) {
-      const { readFile } = await import('node:fs/promises');
       const versionData = JSON.parse(await readFile(versionJsonPath, 'utf-8'));
       tarballVersion = versionData.version || tarballVersion;
+    } else if (pathExists(packageJsonPath)) {
+      const packageData = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
+      tarballVersion = packageData.version || tarballVersion;
     }
 
     // Clean up temp extraction
     const { rm } = await import('node:fs/promises');
     await rm(tempExtractPath, { recursive: true, force: true });
-  } catch (error) {
-    // If we can't read version, continue anyway
+  } catch {
     logger.warn('Could not read version from tarball, continuing...');
   }
 
@@ -85,13 +84,13 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
   // Confirm with user (unless forced)
   if (!options.force) {
     const shouldProceed = await p.confirm({
-        message: 'Proceed with sync?',
-        initialValue: true,
+      message: 'Proceed with sync?',
+      initialValue: true,
     });
 
     if (p.isCancel(shouldProceed) || !shouldProceed) {
-        p.cancel('Operation cancelled.');
-        process.exit(0);
+      p.cancel('Operation cancelled.');
+      process.exit(0);
     }
   }
 
@@ -116,8 +115,6 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
     for (const tokenFile of tokenFiles) {
       const srcFile = path.join(tokensSourcePath, tokenFile);
       const destFile = path.join(stylesPath, tokenFile);
-      // console.log('  ' + pc.cyan('✓') + ' srcFile → ' + pc.dim(srcFile));
-      // console.log('  ' + pc.cyan('✓') + ' destFile → ' + pc.dim(destFile));
       if (pathExists(srcFile)) {
         const { copyFile } = await import('node:fs/promises');
         await copyFile(srcFile, destFile);
@@ -133,17 +130,17 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
       const srcDir = path.join(DEFAULT_REFERENCE_PATH, 'src', dir);
       const destDir = path.join(componentsPath, dir);
 
-      if (pathExists(srcDir))   {
+      if (pathExists(srcDir)) {
         await copyDirectoryFiltered(srcDir, destDir, {
-          exclude: ['*.spec.ts', '*.spec.js'] // Skip test files
+          exclude: ['*.spec.ts', '*.spec.js'],
         });
       }
     }
 
-    // Update config with new tarball info
+    // Update config with new version info
     spinner.message('Updating configuration...');
     config.tarball = {
-      source: tarballPath,
+      source: options.tarball ? path.resolve(options.tarball) : 'npm',
       version: tarballVersion,
       installed: new Date().toISOString(),
     };
@@ -151,7 +148,6 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
 
     spinner.stop(pc.green('✓') + ' Sync completed successfully!');
 
-    // Success message
     p.outro(pc.green('Reference library updated!'));
 
     logger.newline();
@@ -161,10 +157,14 @@ export async function sync(options: SyncOptions = {}): Promise<void> {
     console.log('  ' + pc.cyan('✓') + ' Shared infrastructure → ' + pc.dim(`${componentsPath}/shared/, ${componentsPath}/utils/, ${componentsPath}/styles/, ${componentsPath}/types/`));
     console.log('  ' + pc.cyan('✓') + ' Config → ' + pc.dim('agnosticui.config.json'));
     logger.newline();
-    logger.info(pc.dim('Your components in ') + pc.cyan(componentsPath) + pc.dim(' were not modified.'));
+    logger.info(pc.dim('Your installed components were not modified.'));
+    logger.info(pc.dim('To update a component: ') + pc.cyan('npx agnosticui-cli add <component> --force'));
   } catch (error) {
     spinner.stop(pc.red('✖') + ' Failed to sync');
     logger.error(`Sync failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     process.exit(1);
+  } finally {
+    // Clean up any NPM temp download
+    await cleanupTempDownload();
   }
 }

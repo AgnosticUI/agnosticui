@@ -9,6 +9,7 @@ import type { Framework, InitOptions } from '../types/index.js';
 import { logger } from '../utils/logger.js';
 import { loadConfig, saveConfig, createDefaultConfig } from '../utils/config.js';
 import { extractTarball, ensureDir, pathExists, updateIgnoreFile, updateEslintConfig } from '../utils/files.js';
+import { determineTarballPath, cleanupTempDownload } from '../utils/npm.js';
 import {
   getFrameworkDependencies,
   checkDependenciesInstalled,
@@ -27,9 +28,16 @@ export async function init(options: InitOptions = {}): Promise<void> {
   // Check if already initialized
   const existingConfig = await loadConfig();
   if (existingConfig) {
-    logger.error('AgnosticUI is already initialized in this project.');
-    logger.info('Run ' + pc.cyan('npx agnosticui-cli add <component>') + ' to add components.');
-    process.exit(1);
+    if (!options.force) {
+      logger.error('AgnosticUI is already initialized in this project.');
+      logger.info('Run ' + pc.cyan('npx agnosticui-cli add <component>') + ' to add components.');
+      logger.info('To re-initialize, run: ' + pc.cyan('npx agnosticui-cli init --force'));
+      process.exit(1);
+    }
+    // --force: reuse existing framework and components path unless explicitly overridden
+    options.framework = options.framework ?? existingConfig.framework;
+    options.componentsPath = options.componentsPath ?? existingConfig.paths.components;
+    logger.info(pc.yellow('Re-initializing') + ' existing AgnosticUI project...');
   }
 
   // Validate we're inside a project directory
@@ -92,7 +100,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
   }
 
   // Determine tarball path
-  const version = options.version || 'alpha';
+  const version = options.tag || 'alpha';
   const tarballPath = options.tarball || await determineTarballPath(version);
 
   if (!tarballPath) {
@@ -103,7 +111,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
 
   // Start spinner
   const spinner = p.spinner();
-  spinner.start('Initializing AgnosticUI Local...');
+  spinner.start(existingConfig ? 'Re-initializing AgnosticUI Local...' : 'Initializing AgnosticUI Local...');
 
   try {
     // Extract tarball to reference path
@@ -172,43 +180,53 @@ export async function init(options: InitOptions = {}): Promise<void> {
       }
     }
 
-    spinner.stop(pc.green('✓') + ' Initialized successfully!');
+    spinner.stop(pc.green('✓') + (existingConfig ? ' Re-initialized successfully!' : ' Initialized successfully!'));
 
-    // Check and install dependencies
-    await handleDependencies(framework, options.skipPrompts);
+    if (!existingConfig) {
+      // First-time init only: install dependencies, update ignore/eslint/tsconfig files
+      await handleDependencies(framework, options.skipPrompts);
 
-    // Update ignore files for the reference library
-    spinner.message('Updating .gitignore...');
-    const referenceDirName = path.basename(DEFAULT_REFERENCE_PATH);
-    const ignorePattern = `${referenceDirName}/`;
+      spinner.message('Updating .gitignore...');
+      const referenceDirName = path.basename(DEFAULT_REFERENCE_PATH);
+      const ignorePattern = `${referenceDirName}/`;
 
-    // Update .gitignore
-    await updateIgnoreFile(path.join(process.cwd(), '.gitignore'), ignorePattern);
-    
-    // Check for eslint.config.js and update or warn
-    const eslintConfigPath = path.join(process.cwd(), 'eslint.config.js');
-    if (pathExists(eslintConfigPath)) {
-      spinner.message('Updating eslint.config.js...');
-      const updated = await updateEslintConfig(eslintConfigPath, `${referenceDirName}/`);
-      
-      if (!updated) {
-        logger.newline();
-        logger.info(pc.yellow('ESLint Configuration:') + ' Please add the following to your ' + pc.cyan('eslint.config.js') + ':');
-        console.log('  ' + pc.dim('{'));
-        console.log('    ' + pc.cyan(`ignores: ["${referenceDirName}/"]`));
-        console.log('  ' + pc.dim('}'));
+      await updateIgnoreFile(path.join(process.cwd(), '.gitignore'), ignorePattern);
+
+      const eslintConfigPath = path.join(process.cwd(), 'eslint.config.js');
+      if (pathExists(eslintConfigPath)) {
+        spinner.message('Updating eslint.config.js...');
+        const updated = await updateEslintConfig(eslintConfigPath, `${referenceDirName}/`);
+
+        if (!updated) {
+          logger.newline();
+          logger.info(pc.yellow('ESLint Configuration:') + ' Please add the following to your ' + pc.cyan('eslint.config.js') + ':');
+          console.log('  ' + pc.dim('{'));
+          console.log('    ' + pc.cyan(`ignores: ["${referenceDirName}/"]`));
+          console.log('  ' + pc.dim('}'));
+        }
       }
+
+      spinner.message('Configuring TypeScript...');
+      await updateTsConfigs();
     }
-
-    // Update TS Configs
-    spinner.message('Configuring TypeScript...');
-    await updateTsConfigs();
-
-    spinner.stop(pc.green('✓') + ' Initialized successfully!');
 
     logger.newline();
 
-    // Generate example import statement based on framework
+    if (existingConfig) {
+      // Force reinit: just confirm what was updated
+      logger.box('Re-initialization complete:', [
+        pc.dim('Updated:'),
+        '  ' + pc.cyan('✓') + ' Reference library → ' + pc.dim('./agnosticui/'),
+        '  ' + pc.cyan('✓') + ' CSS tokens → ' + pc.dim(`${componentsPath}/styles/`),
+        '  ' + pc.cyan('✓') + ' Shared infrastructure → ' + pc.dim(`${componentsPath}/shared/, ${componentsPath}/utils/`),
+        '',
+        pc.dim('Your installed components were not modified.'),
+        pc.dim('To update a component: ') + pc.cyan('npx agnosticui-cli add <component> --force'),
+      ]);
+      return;
+    }
+
+    // First-time init: show full next-steps guide
     let exampleImport = '';
     if (framework === 'react') {
       exampleImport = `import { ReactButton } from '${componentsPath}/Button/react/ReactButton'`;
@@ -330,68 +348,6 @@ async function updateTsConfigs(): Promise<void> {
   
   // Show verify note instead of "Add to..." if we updated files
   showTypeScriptNote(updatedAny);
-}
-
-/**
- * Determine the tarball path (local or download from NPM)
- */
-async function determineTarballPath(version: string = 'alpha'): Promise<string | null> {
-  // For local development, look for the tarball in the dist folder
-  const localTarballPath = path.resolve(process.cwd(), '../../dist/agnosticui-local-v2.0.0-alpha.tar.gz');
-
-  if (existsSync(localTarballPath)) {
-    logger.info('Using local development tarball');
-    return localTarballPath;
-  }
-
-  // In production, download from NPM registry
-  try {
-    const { execSync } = await import('child_process');
-    const { readdir, rm } = await import('node:fs/promises');
-    const tmpDir = path.join(process.cwd(), '.tmp-ag-download');
-
-    await ensureDir(tmpDir);
-
-    logger.info(`Downloading agnosticui-core@${version} from NPM...`);
-
-    // Download package using npm pack
-    execSync(`npm pack agnosticui-core@${version}`, {
-      cwd: tmpDir,
-      stdio: 'pipe'
-    });
-
-    // Find the downloaded tarball
-    const files = await readdir(tmpDir);
-    const tarball = files.find(f => f.startsWith('agnosticui-core-') && f.endsWith('.tgz'));
-
-    if (tarball) {
-      return path.join(tmpDir, tarball);
-    }
-
-    // Clean up if no tarball found
-    await rm(tmpDir, { recursive: true, force: true });
-  } catch (error) {
-    logger.error('Failed to download agnosticui-core from NPM');
-    logger.info(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
-  }
-
-  return null;
-}
-
-/**
- * Clean up temporary download directory
- */
-async function cleanupTempDownload(): Promise<void> {
-  try {
-    const { rm } = await import('node:fs/promises');
-    const tmpDir = path.join(process.cwd(), '.tmp-ag-download');
-
-    if (pathExists(tmpDir)) {
-      await rm(tmpDir, { recursive: true, force: true });
-    }
-  } catch (error) {
-    // Ignore cleanup errors - not critical
-  }
 }
 
 /**

@@ -34,14 +34,14 @@ import { add } from './commands/add.js';
 import { remove } from './commands/remove.js';
 import { list } from './commands/list.js';
 import { sync } from './commands/sync.js';
-import type { Framework } from './types/index.js';
+import type { Framework, SyncOptions } from './types/index.js';
 
 const program = new Command();
 
 program
   .name('ag')
   .description('AgnosticUI Local - The UI kit that lives in your codebase')
-  .version('2.0.0-alpha.9');
+  .version('2.0.0-alpha.12');
 
 // ag init command
 program
@@ -50,15 +50,17 @@ program
   .option('-f, --framework <framework>', 'Framework to use (react, vue, lit, svelte)')
   .option('-p, --components-path <path>', 'Path where components will be generated')
   .option('-t, --tarball <path>', 'Path to local tarball (for development)')
-  .option('-v, --version <version>', 'NPM version to download (e.g., alpha, latest, 2.0.0)', 'alpha')
+  .option('--tag <tag>', 'NPM dist-tag or version to download (e.g., alpha, latest, 2.0.0-alpha.21)', 'alpha')
   .option('--skip-prompts', 'Skip all interactive prompts (non-interactive mode)')
+  .option('--force', 'Re-initialize even if already initialized (reuses existing framework and path)')
   .action(async (options) => {
     await init({
       framework: options.framework as Framework | undefined,
       componentsPath: options.componentsPath,
       tarball: options.tarball,
-      version: options.version,
+      tag: options.tag,
       skipPrompts: options.skipPrompts,
+      force: options.force,
     });
   });
 
@@ -95,14 +97,16 @@ program
 // ag sync command
 program
   .command('sync')
-  .description('Update reference library from tarball')
-  .option('-t, --tarball <path>', 'Path to tarball (overrides config)')
+  .description('Update reference library from NPM or a local tarball')
+  .option('-t, --tarball <path>', 'Path to local tarball (skips NPM download)')
+  .option('--tag <tag>', 'NPM dist-tag or version to download (e.g., alpha, latest, 2.0.0-alpha.21)', 'alpha')
   .option('--force', 'Bypass confirmation prompt')
   .action(async (options) => {
     await sync({
       tarball: options.tarball,
+      tag: options.tag,
       force: options.force,
-    });
+    } as SyncOptions);
   });
 
 // Parse arguments
