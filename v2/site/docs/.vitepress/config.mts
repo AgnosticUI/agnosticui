@@ -73,6 +73,7 @@ export default defineConfig({
         items: [
           { text: 'Installation', link: '/installation' },
           { text: 'Theming', link: '/theming' },
+          { text: 'Form Association', link: '/docs/form-association' },
         ]
       },
       {
