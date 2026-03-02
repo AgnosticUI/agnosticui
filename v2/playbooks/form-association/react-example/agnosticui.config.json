@@ -44,12 +44,12 @@
       ]
     },
     "Toggle": {
-      "added": "2026-03-01T22:22:06.104Z",
+      "added": "2026-03-02T17:00:57.591Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Toggle/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Toggle/react"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Toggle/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Toggle/react"
       ]
     },
     "SelectionButtonGroup": {
@@ -71,6 +71,24 @@
         "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/core",
         "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/react"
       ]
+    },
+    "Radio": {
+      "added": "2026-03-02T17:48:02.647Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Radio/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Radio/react"
+      ]
+    },
+    "Checkbox": {
+      "added": "2026-03-02T17:00:57.591Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Checkbox/react"
+      ]
     }
   },
   "ai": {
@@ -82,8 +100,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.17.tgz",
-    "version": "2.0.0-alpha",
-    "installed": "2026-03-01T22:21:55.753Z"
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.20.tgz",
+    "version": "unknown",
+    "installed": "2026-03-02T17:47:59.910Z"
   }
 }

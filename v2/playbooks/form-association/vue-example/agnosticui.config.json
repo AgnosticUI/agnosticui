@@ -44,12 +44,12 @@
       ]
     },
     "Toggle": {
-      "added": "2026-03-01T22:22:22.740Z",
+      "added": "2026-03-02T17:01:01.845Z",
       "version": "2.0.0-alpha",
       "framework": "vue",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Toggle/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Toggle/vue"
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Toggle/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Toggle/vue"
       ]
     },
     "SelectionButtonGroup": {
@@ -71,6 +71,24 @@
         "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/SelectionButton/core",
         "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/SelectionButton/vue"
       ]
+    },
+    "Radio": {
+      "added": "2026-03-02T17:48:15.398Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Radio/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Radio/vue"
+      ]
+    },
+    "Checkbox": {
+      "added": "2026-03-02T17:01:01.846Z",
+      "version": "2.0.0-alpha",
+      "framework": "vue",
+      "files": [
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/vue-example/src/components/ag/Checkbox/vue"
+      ]
     }
   },
   "ai": {
@@ -82,8 +100,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/vue-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.17.tgz",
-    "version": "2.0.0-alpha",
-    "installed": "2026-03-01T22:22:17.691Z"
+    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.20.tgz",
+    "version": "unknown",
+    "installed": "2026-03-02T17:48:12.833Z"
   }
 }
