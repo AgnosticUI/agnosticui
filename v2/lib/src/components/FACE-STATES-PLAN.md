@@ -33,20 +33,20 @@ protected _setState(state: string, active: boolean): void;
 
 ### States
 
-* `checked`
-* `indeterminate`
-* `disabled`
-* `required`
-* `invalid`
+- `checked`
+- `indeterminate`
+- `disabled`
+- `required`
+- `invalid`
 
 ### Call `_syncStates()`:
 
-* After every `_syncValidity()` call site:
+- After every `_syncValidity()` call site:
+  - `firstUpdated`
+  - `handleChange`
+  - `updated`
 
-  * `firstUpdated`
-  * `handleChange`
-  * `updated`
-* In `formResetCallback`
+- In `formResetCallback`
 
 ---
 
@@ -54,19 +54,19 @@ protected _setState(state: string, active: boolean): void;
 
 ### States
 
-* `checked`
-* `disabled`
-* `required`
-* `invalid`
+- `checked`
+- `disabled`
+- `required`
+- `invalid`
 
 ### Call `_syncStates()`:
 
-* After every `_syncValidity()` call site:
+- After every `_syncValidity()` call site:
+  - `firstUpdated`
+  - `handleChange`
+  - `updated`
 
-  * `firstUpdated`
-  * `handleChange`
-  * `updated`
-* In `formResetCallback`
+- In `formResetCallback`
 
 **Note:**
 The sibling-uncheck chain via `updated()` ensures radios in a group automatically clear `checked` state — no extra code required. This is the same mechanism that already synchronizes FACE form values.
@@ -77,32 +77,31 @@ The sibling-uncheck chain via `updated()` ensures radios in a group automaticall
 
 ### States
 
-* `checked`
-* `disabled`
-* `readonly`
-* `required`
-* `invalid`
+- `checked`
+- `disabled`
+- `readonly`
+- `required`
+- `invalid`
 
 ### Required Changes
 
-* Add new `updated()` hook watching:
+- Add new `updated()` hook watching:
+  - `disabled`
+  - `readonly`
 
-  * `disabled`
-  * `readonly`
-* Call `_syncStates()` in:
-
-  * `firstUpdated`
-  * `_performToggle`
-  * `formResetCallback`
+- Call `_syncStates()` in:
+  - `firstUpdated`
+  - `_performToggle`
+  - `formResetCallback`
 
 ### Important Clarification
 
-* `invalid` reflects **FACE constraint validation**
+- `invalid` reflects **FACE constraint validation**
+  - `!this._internals.validity.valid`
+  - Same signal used by `form.checkValidity()`
 
-  * `!this._internals.validity.valid`
-  * Same signal used by `form.checkValidity()`
-* `[invalid]` attribute is a consumer-set flag
-* These are intentionally independent
+- `[invalid]` attribute is a consumer-set flag
+- These are intentionally independent
 
 ---
 
@@ -111,14 +110,14 @@ The sibling-uncheck chain via `updated()` ensures radios in a group automaticall
 Use:
 
 ```css
-:state(checked)
+:state(checked);
 ```
 
 Supported in:
 
-* Chrome 125+
-* Firefox 126+
-* Safari 17.4+
+- Chrome 125+
+- Firefox 126+
+- Safari 17.4+
 
 The legacy `:--checked` syntax is obsolete and will not be used.
 
@@ -149,7 +148,7 @@ npm publish --tag alpha
 This publishes:
 
 ```
-agnosticui-core@2.0.0-alpha.20
+agnosticui-core@2.0.0-alpha.21
 ```
 
 ---
@@ -158,9 +157,9 @@ agnosticui-core@2.0.0-alpha.20
 
 This phase verifies:
 
-* Updated components
-* New form controls
-* Visual + programmatic `:state()` proof
+- Updated components
+- New form controls
+- Visual + programmatic `:state()` proof
 
 ---
 
@@ -210,18 +209,17 @@ Update `PROMPT-3-FRAMEWORKS.md` to include these rows.
 
 ### Framework Usage
 
-* **React**
+- **React**
+  - `ReactRadio`
+  - `ReactCheckbox`
 
-  * `ReactRadio`
-  * `ReactCheckbox`
-* **Vue**
+- **Vue**
+  - `VueRadio`
+  - `VueCheckbox`
 
-  * `VueRadio`
-  * `VueCheckbox`
-* **Lit**
-
-  * `<ag-radio>`
-  * `<ag-checkbox>`
+- **Lit**
+  - `<ag-radio>`
+  - `<ag-checkbox>`
 
 ---
 
@@ -283,17 +281,19 @@ radios.forEach((r, i) =>
 
 ### Obtaining Element References
 
-* **Lit**
+- **Lit**
 
   ```ts
   this.shadowRoot?.querySelector(...)
   ```
-* **React**
+
+- **React**
 
   ```ts
   formRef.current?.querySelector(...)
   ```
-* **Vue**
+
+- **Vue**
 
   ```ts
   formRef.value?.querySelector(...)
@@ -305,13 +305,13 @@ radios.forEach((r, i) =>
 
 Add to `PROMPT-3-FRAMEWORKS.md`:
 
-* [ ] `ag-radio` group submits selected value in `FormData`
-* [ ] `ag-checkbox` submits `"on"` when checked
-* [ ] `ag-toggle:state(checked)` outline visible when on
-* [ ] `ag-radio:state(checked)` outline visible on selected radio
-* [ ] `ag-checkbox:state(checked)` outline visible when checked
-* [ ] Console shows `:state(checked) = true` correctly
-* [ ] Console shows `:state(invalid) = true` when validation fails
+- [ ] `ag-radio` group submits selected value in `FormData`
+- [ ] `ag-checkbox` submits `"on"` when checked
+- [ ] `ag-toggle:state(checked)` outline visible when on
+- [ ] `ag-radio:state(checked)` outline visible on selected radio
+- [ ] `ag-checkbox:state(checked)` outline visible when checked
+- [ ] Console shows `:state(checked) = true` correctly
+- [ ] Console shows `:state(invalid) = true` when validation fails
 
 ---
 
@@ -333,13 +333,13 @@ Add to `PROMPT-3-FRAMEWORKS.md`:
 
 Cover:
 
-* States exposed per component
-* `_setState()` helper
-* Feature guard rationale
-* Call-site pattern
-* `:state(checked)` vs `[checked]`
-* `indeterminate` state (Checkbox only)
-* `invalid` tracking FACE validity
+- States exposed per component
+- `_setState()` helper
+- Feature guard rationale
+- Call-site pattern
+- `:state(checked)` vs `[checked]`
+- `indeterminate` state (Checkbox only)
+- `invalid` tracking FACE validity
 
 Fix any legacy `:--checked` syntax.
 
@@ -349,26 +349,28 @@ Fix any legacy `:--checked` syntax.
 
 ### Updates
 
-* Replace deferred note under:
+- Replace deferred note under:
 
   ```
   ### CustomStateSet / :state() pseudo-class
   ```
-* Remove from:
+
+- Remove from:
 
   ```
   ## What's Next
   ```
-* Add new walkthrough section:
+
+- Add new walkthrough section:
 
 ### CustomStateSet: Exposing Checked, Invalid, and Disabled
 
 Cover:
 
-* `_setState()` helper
-* Feature guard
-* FACE validation vs `[invalid]`
-* Checkbox `indeterminate` state
+- `_setState()` helper
+- Feature guard
+- FACE validation vs `[invalid]`
+- Checkbox `indeterminate` state
 
 ---
 
@@ -380,14 +382,14 @@ Add:
 
 Explain:
 
-* Uses `ElementInternals.states`
-* No DOM attribute mutation required
+- Uses `ElementInternals.states`
+- No DOM attribute mutation required
 
 ### Browser Support
 
-* Chrome 125+
-* Firefox 126+
-* Safari 17.4+
+- Chrome 125+
+- Firefox 126+
+- Safari 17.4+
 
 ---
 
@@ -422,8 +424,8 @@ Provide `:state()` selector example.
 
 Clarify distinction between:
 
-* FACE validation state
-* Consumer-controlled attribute
+- FACE validation state
+- Consumer-controlled attribute
 
 ---
 
@@ -431,9 +433,9 @@ Clarify distinction between:
 
 Update:
 
-* Form Fields table
-* Components Used table
-* Add note about `:state()` CSS demo
+- Form Fields table
+- Components Used table
+- Add note about `:state()` CSS demo
 
 ---
 
