@@ -340,15 +340,52 @@ Your `agnosticui.config.json` will store these settings:
 }
 ```
 
-### Syncing Updates (Development)
+### Syncing Updates
 
-During active development, you can sync the reference library with a new tarball:
+The `sync` command updates the reference library in `./agnosticui/` and shared infrastructure files without touching your installed components. After syncing, re-add any components you want to update:
 
 ```bash
-npx agnosticui-cli sync --tarball /path/to/agnosticui-local-v0.0.2.tar.gz
+npx agnosticui-cli add input --force
 ```
 
-This updates the reference library in `./agnosticui/` without touching your customized components.
+#### Pull Latest from NPM
+
+Run without any flags to download and apply the latest published version:
+
+```bash
+npx agnosticui-cli sync
+```
+
+#### Pin a Specific Version or Tag
+
+Use `--tag` to target a dist-tag or exact semver:
+
+```bash
+# Latest alpha release
+npx agnosticui-cli sync --tag alpha
+
+# Specific version
+npx agnosticui-cli sync --tag 2.0.0-alpha.21
+```
+
+#### Use a Local Tarball
+
+Point to a locally built tarball with `--tarball`. Useful when testing unpublished changes:
+
+```bash
+npx agnosticui-cli sync --tarball /path/to/agnosticui-local-v2.0.0.tar.gz
+```
+
+#### Re-initialize with --force
+
+If the reference library or shared infrastructure gets out of sync, `init --force` re-runs initialization without prompts. Existing config values (framework, components path) are reused and installed components are not modified:
+
+```bash
+npx agnosticui-cli init --force
+
+# Or target a specific version
+npx agnosticui-cli init --force --tag 2.0.0-alpha.21
+```
 
 ## TypeScript Configuration
 
