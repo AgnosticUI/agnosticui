@@ -28,6 +28,28 @@ Removes the `/tmp/agnosticui-test` directory for a fresh start.
 ./scripts/cleanup-testing-playground.sh
 ```
 
+### verify-playbooks.mjs
+
+Audits every playbook example in `v2/playbooks/` for health issues that would break `npm i && npm run dev` on a fresh clone. New playbooks are picked up automatically -- the script discovers examples by finding any directory containing `agnosticui.config.json`, so no registration step is needed.
+
+```bash
+# From the v2/ directory:
+node scripts/verify-playbooks.mjs          # audit all playbooks
+node scripts/verify-playbooks.mjs --fix    # auto-fix what can be fixed safely
+```
+
+**Checks performed:**
+
+| Check | Severity | Notes |
+|-------|----------|-------|
+| `agnosticui-core` in `package.json` deps | Error | CLI-first projects must not depend on it directly |
+| `src/components/ag/` directory exists | Error | Missing means `init` was never run |
+| `scripts.dev` entry in `package.json` | Warning | Expected in all playbook examples |
+| VueInput.vue has `:name="name"` binding | Error | Required for FACE form values to appear in FormData |
+| Config version matches current lib | Warning | Suggests a `sync` is needed, but won't break the app |
+
+Exits non-zero when errors are found, suitable for CI. Run it after creating or modifying any playbook.
+
 ## Consumption Verification Workflow
 
 1. **Setup**: Run `./scripts/setup-testing-playground.sh`
