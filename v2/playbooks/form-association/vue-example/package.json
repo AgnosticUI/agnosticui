@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "agnosticui-core": "^2.0.0-alpha.17",
     "lit": "^3.3.2",
     "vue": "^3.5.25"
   },
