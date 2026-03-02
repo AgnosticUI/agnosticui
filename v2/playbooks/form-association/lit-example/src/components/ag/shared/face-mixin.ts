@@ -106,6 +106,12 @@ export declare class FaceMixinInterface {
   formDisabledCallback(disabled: boolean): void;
   /** FACE lifecycle — called on form reset; subclasses should override */
   formResetCallback(): void;
+  /**
+   * Toggle a custom state in ElementInternals.states (CustomStateSet).
+   * Enables :state() pseudo-class targeting from external CSS.
+   * Guards against environments where states is unavailable.
+   */
+  protected _setState(state: string, active: boolean): void;
 }
 
 /**
@@ -193,6 +199,30 @@ export const FaceMixin = <T extends Constructor<LitElement>>(superClass: T) => {
      */
     formResetCallback(): void {
       // no-op default — override in subclass
+    }
+
+    /**
+     * Toggle a custom state in ElementInternals.states (CustomStateSet).
+     *
+     * Exposes internal states as CSS :state() pseudo-classes targetable from
+     * outside the shadow root — e.g. ag-toggle:state(checked), ag-radio:state(invalid).
+     *
+     * Always call this AFTER _syncValidity() so that :state(invalid) reads
+     * the freshly-updated _internals.validity.valid value.
+     *
+     * Feature-guarded: _internals.states requires Chrome 90+, Firefox 126+,
+     * Safari 17.4+. The guard is here so call sites don't repeat it.
+     *
+     * @param state  State name, e.g. 'checked', 'disabled', 'invalid'
+     * @param active True to add the state, false to remove it
+     */
+    protected _setState(state: string, active: boolean): void {
+      if (!this._internals.states) return;
+      if (active) {
+        this._internals.states.add(state);
+      } else {
+        this._internals.states.delete(state);
+      }
     }
   }
 

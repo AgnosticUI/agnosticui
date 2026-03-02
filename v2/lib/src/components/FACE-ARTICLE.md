@@ -194,7 +194,9 @@ The third argument to `setValidity` — the anchor element — tells the browser
 
 This gives you all of HTML5 constraint validation for free. Any new constraint types added to the spec later will also just work.
 
-Components that use this: `AgInput`, `AgCheckbox`, `AgSelect`, `AgRadio`.
+Components that use this: `AgInput`, `AgCheckbox`, `AgSelect`.
+
+> **AgRadio caveat:** AgRadio renders an inner `<input type="radio">`, so delegation looks like the right strategy. It isn't — see the AgRadio walkthrough below for why shadow DOM isolation breaks the native required constraint for radio groups, and what the correct approach is.
 
 ### Strategy 2: Implement Directly Against Component State
 
@@ -350,13 +352,13 @@ This matches native `<select>` behavior: reset restores to however the HTML was 
 
 ---
 
-### AgRadio: Group Sync via Lit's Reactive Chain
+### AgRadio: Group Sync and a Shadow DOM Isolation Surprise
 
 AgRadio was flagged as high complexity in the planning document. Radio groups require coordination — when one is selected, the others must deselect and their FACE state must update. Native `<input type="radio">` gets this from the browser automatically. Elements in separate shadow DOM trees don't.
 
-The actual implementation was simpler than expected.
+The form value coordination turned out to be simpler than expected. The validity coordination surfaced a real bug.
 
-AgRadio already had `uncheckOtherRadiosInGroup()`, which walks the DOM to find sibling `ag-radio` elements with the same `name` and sets `sibling.checked = false` on each. That's a Lit `@property` assignment. Lit detects the change and calls `updated()` on each sibling. We wire FACE sync there:
+**Form value sync via Lit's reactive chain.** AgRadio already had `uncheckOtherRadiosInGroup()`, which walks the DOM to find sibling `ag-radio` elements with the same `name` and sets `sibling.checked = false` on each. That's a Lit `@property` assignment. Lit detects the change and calls `updated()` on each sibling. Wiring FACE sync there handles the group automatically:
 
 ```typescript
 override updated(changedProperties: Map<string, unknown>) {
@@ -368,11 +370,69 @@ override updated(changedProperties: Map<string, unknown>) {
 }
 ```
 
-When the checked radio calls `uncheckOtherRadiosInGroup()`, each sibling's `checked` property goes to `false`. Each sibling's `updated()` fires. Each sibling clears its form value. No explicit "notify siblings to sync FACE" code needed. Lit's reactive property system is the coordination bus.
-
-Arrow key navigation follows the same chain: `handleKeyDown` sets `nextRadio.checked = true` and calls `uncheckOtherRadiosInGroup()`. Same property change, same `updated()` chain, same FACE sync — keyboard navigation handled without any extra calls.
+When the checked radio calls `uncheckOtherRadiosInGroup()`, each sibling's `checked` goes to `false`. Each sibling's `updated()` fires. Each sibling clears its form value. Lit's reactive property system is the coordination bus — no explicit cross-element notification needed.
 
 **Form value semantics:** Each AgRadio is form-associated independently, all sharing a `name`. The checked radio submits `this.value`; unchecked radios pass `null`, excluding them from `FormData`. The result is exactly what a native radio group produces.
+
+**Shadow DOM isolation breaks the delegation strategy for `required`.** This was not obvious until we tried it. AgRadio renders an inner `<input type="radio">` — which suggests delegation via `syncInnerInputValidity()` would work. In a native HTML radio group, the browser knows that `required` is satisfied if *any* radio with the same name is checked. But each `ag-radio`'s inner input lives in its own isolated shadow root. The browser doesn't know about the other radios in other shadow trees. So each unchecked required radio independently reports `valueMissing: true` — even when another radio in the group is checked. `validateAll()` calls `reportValidity()` on each element; the unchecked ones fail with a spurious "Please select one of these options" tooltip.
+
+The fix is direct group-aware validation: query the DOM to check whether *any* `ag-radio[name="..."]` is checked. The key question is: what node should be the query root?
+
+Our first instinct was to walk all the way up to the document, traversing through any shadow roots:
+
+```typescript
+// First attempt — wrong for Lit components
+let root: Node = this.getRootNode();
+while (root && 'host' in root) {
+  const parent = (root as ShadowRoot).host?.getRootNode();
+  if (parent && parent !== root) { root = parent; } else { break; }
+}
+const doc = root instanceof Document ? root : document;
+return Array.from(doc.querySelectorAll(`ag-radio[name="${this.name}"]`))...
+```
+
+This worked in React and Vue (where `ag-radio` elements live in the document's light DOM), but failed in the Lit form-association example. In that example, the radios live inside `contact-form`'s shadow root — and `document.querySelectorAll()` cannot pierce shadow DOM. The traversal reached the document, the query found zero radios, and `_isGroupChecked()` always returned `false`.
+
+The correct query scope isn't the document — it's wherever the radios actually live. `this.getRootNode()` returns exactly that: the shadow root for Lit-hosted elements, or the document for light-DOM elements. Use it directly:
+
+```typescript
+private _isGroupChecked(): boolean {
+  if (this.checked) return true;
+  // For radios inside a Lit shadow root, getRootNode() returns that shadow root
+  // and querySelectorAll() reaches all radios within it.
+  // For radios in document light DOM (React/Vue), getRootNode() returns the document.
+  const root = this.getRootNode() as Document | ShadowRoot;
+  return Array.from(root.querySelectorAll(`ag-radio[name="${this.name}"]`))
+    .some((el) => (el as AgRadio).checked);
+}
+
+private _syncValidity(): void {
+  if (!this.required) { this._internals.setValidity({}); return; }
+  if (this._isGroupChecked()) {
+    this._internals.setValidity({});
+  } else {
+    this._internals.setValidity({ valueMissing: true }, 'Please select one of these options.');
+  }
+}
+```
+
+The same `getRootNode()` scope applies to `uncheckOtherRadiosInGroup()` and `getRadiosInGroup()` — any method that queries for sibling `ag-radio` elements must use `this.getRootNode()`, not `document`.
+
+**A second issue: siblings that were already unchecked don't re-sync.** When the user clicks radio B, `uncheckOtherRadiosInGroup()` sets `radio A.checked = false`. But radio A was *already* `false`. Lit sees no property change and never calls `updated()` on radio A. Its `_syncValidity()` is never triggered. Radio A stays invalid in `_internals` even though the group now has a checked member.
+
+The fix: `uncheckOtherRadiosInGroup()` explicitly calls `_syncValidity()` and `_syncStates()` on each sibling after setting `checked = false`. TypeScript allows this because both are instances of the same class, and TypeScript's `private` is class-level, not instance-level:
+
+```typescript
+allRadios.forEach((radio) => {
+  if (radio !== this && radio instanceof AgRadio) {
+    radio.checked = false;
+    radio._syncValidity(); // force re-eval even if checked didn't change
+    radio._syncStates();
+  }
+});
+```
+
+The lesson generalizes: whenever `uncheckOtherRadiosInGroup()` sets a property that was *already at its target value*, Lit won't fire `updated()`. Any FACE sync that depends on group state (not just this radio's own `checked`) must be explicitly triggered on siblings, not left to Lit's change detection.
 
 ---
 
@@ -544,9 +604,11 @@ Declarative, typed, and familiar from React form libraries. The trade-off is tha
 
 An event-driven alternative (`ag-validate`) was considered but left out of scope. It would support runtime message injection (handy for async server-side errors), but at the cost of an unfamiliar `event.detail` mutation pattern and an extra event firing on every input. The added complexity isn't justified given how rarely that capability is needed.
 
-### `CustomStateSet` / `:state()` pseudo-class
+### ~~`CustomStateSet` / `:state()` pseudo-class~~ — **Done**
 
-`ElementInternals.states` is a `CustomStateSet` that lets you expose internal states as CSS pseudo-classes — `:state(checked)`, `:state(invalid)`, `:state(loading)`. Useful for styling from outside the shadow root without adding attributes. Deferred as a low-risk additive enhancement.
+`ElementInternals.states` is a `CustomStateSet` that lets you expose internal states as CSS pseudo-classes — `:state(checked)`, `:state(invalid)`, `:state(loading)`. Useful for styling from outside the shadow root without adding attributes.
+
+Implemented across AgCheckbox, AgRadio, and AgToggle. Each component calls `_syncStates()` after `_syncValidity()` to keep `:state(checked)` and `:state(invalid)` in sync with the element's current state. The `_setState()` helper in `FaceMixin` guards for browser support and handles the `add`/`delete` pattern. See `FACE-NOTES.md` for the full walkthrough including the shadow DOM isolation bug discovered and fixed during AgRadio's implementation.
 
 ---
 
@@ -575,7 +637,7 @@ With the rollout complete, every `ag-*` form control participates natively in HT
 - ~~**Consumer-controlled validation messages**~~ — **Done.** The `validationMessages` prop is live on all five direct-validity components (Toggle, Rating, SelectionButtonGroup, SelectionCardGroup, Combobox). Pass `{ valueMissing: 'Your copy here.' }` to override any hardcoded fallback string.
 - ~~**Shadow DOM submit/reset button bridge**~~ — **Done.** `ag-button` now calls `this.closest('form').requestSubmit()` / `.reset()` from its host-element click handler.
 - **`formStateRestoreCallback`** — autofill and back-button session restore, one issue per component
-- **`CustomStateSet`** — CSS-targetable internal states via `:state()` pseudo-class
+- ~~**`CustomStateSet`**~~ — **Done.** AgCheckbox, AgRadio, and AgToggle expose `:state(checked)` and `:state(invalid)` via `ElementInternals.states`. The `_setState()` helper in `FaceMixin` and per-component `_syncStates()` keep states current. Chrome 125+/Firefox 126+/Safari 17.4+.
 - **`_parentDisabled` refinement** — separate `formDisabledCallback` state from the element's own `disabled` attribute to avoid the two sources overwriting each other
 
 ---

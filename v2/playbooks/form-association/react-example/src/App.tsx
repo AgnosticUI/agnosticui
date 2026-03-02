@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from 'react'
 import { ReactInput } from './components/ag/Input/react'
 import { ReactSelectionButtonGroup } from './components/ag/SelectionButtonGroup/react'
 import { ReactSelectionButton } from './components/ag/SelectionButton/react'
+import { ReactRadio } from './components/ag/Radio/react'
+import { ReactCheckbox } from './components/ag/Checkbox/react'
 import { ReactToggle } from './components/ag/Toggle/react'
 import { ReactButton } from './components/ag/Button/react'
 import { ReactCard } from './components/ag/Card/react'
@@ -42,6 +44,18 @@ export default function App() {
       elements.forEach((el) => {
         const input = el as HTMLInputElement
         console.log(`  element: tag=${el.tagName} name="${input.name}" value="${input.value}"`)
+      })
+
+      // :state() verification — confirms CustomStateSet is wired up correctly
+      ;['AG-RADIO', 'AG-CHECKBOX', 'AG-TOGGLE'].forEach((tag) => {
+        elements
+          .filter((el) => el.tagName === tag)
+          .forEach((el) => {
+            const e = el as HTMLElement & { name?: string }
+            console.log(
+              `  ${tag.toLowerCase()} name="${e.name}" :state(checked)=${e.matches(':state(checked)')} :state(invalid)=${e.matches(':state(invalid)')}`
+            )
+          })
       })
 
       const valid = validateAll(form!)
@@ -105,6 +119,17 @@ export default function App() {
                   <ReactSelectionButton value="monthly">Monthly</ReactSelectionButton>
                   <ReactSelectionButton value="major">Only major announcements</ReactSelectionButton>
                 </ReactSelectionButtonGroup>
+              </div>
+              <div>
+                <fieldset style={{ border: '1px solid var(--ag-border-color, #e2e8f0)', borderRadius: 'var(--ag-radius-md, 6px)', padding: 'var(--ag-space-3) var(--ag-space-4)', margin: 0 }}>
+                  <legend style={{ padding: '0 var(--ag-space-2)', fontSize: '0.875rem', fontWeight: 500, color: 'var(--ag-text-primary)' }}>Preferred contact method *</legend>
+                  <ReactRadio name="contactMethod" value="email" labelText="Email" required />
+                  <ReactRadio name="contactMethod" value="phone" labelText="Phone" required />
+                  <ReactRadio name="contactMethod" value="either" labelText="Either" required />
+                </fieldset>
+              </div>
+              <div>
+                <ReactCheckbox name="subscribe" value="yes" labelText="Subscribe to our newsletter" />
               </div>
               <div>
                 <ReactToggle

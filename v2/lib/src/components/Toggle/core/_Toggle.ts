@@ -393,6 +393,7 @@ export class AgToggle extends FaceMixin(LitElement) implements ToggleProps {
     this.checked = false;
     this._internals.setFormValue(null);
     this._internals.setValidity({});
+    this._syncStates();
   }
 
   /**
@@ -411,12 +412,44 @@ export class AgToggle extends FaceMixin(LitElement) implements ToggleProps {
     }
   }
 
+  /**
+   * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
+   *
+   * Must be called AFTER _syncValidity() so that :state(invalid) reads the
+   * freshly-updated _internals.validity.valid value.
+   *
+   * Exposed states:
+   *  :state(checked)  — toggle is on
+   *  :state(disabled) — toggle is disabled
+   *  :state(readonly) — toggle is read-only
+   *  :state(required) — toggle is required
+   *  :state(invalid)  — FACE constraint validation is failing
+   */
+  private _syncStates(): void {
+    this._setState('checked', this.checked);
+    this._setState('disabled', this.disabled);
+    this._setState('readonly', this.readonly);
+    this._setState('required', this.required);
+    this._setState('invalid', !this._internals.validity.valid);
+  }
+
   // ─── End FACE ─────────────────────────────────────────────────────────────
+
+  override updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    // FACE: sync states when disabled or readonly change programmatically.
+    // checked, required, and invalid are already handled via _performToggle
+    // and firstUpdated, but these two can change without going through toggle.
+    if (changedProperties.has('disabled') || changedProperties.has('readonly')) {
+      this._syncStates();
+    }
+  }
 
   protected firstUpdated() {
     // FACE: set initial form value and sync validity after first render
     this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
     this._syncValidity();
+    this._syncStates();
 
     // Developer experience: warn about missing label
     if (!this.label && !this.noLabel) {
@@ -478,6 +511,7 @@ export class AgToggle extends FaceMixin(LitElement) implements ToggleProps {
     // FACE: sync form value and validity on every toggle
     this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
     this._syncValidity();
+    this._syncStates();
 
     // Dispatch custom event with form integration details
     const toggleChangeEvent = new CustomEvent<ToggleChangeEventDetail>('toggle-change', {

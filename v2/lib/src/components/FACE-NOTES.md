@@ -731,7 +731,7 @@ requires explicit coordination across the shadow boundary.
 
 - [ ] `formStateRestoreCallback` for autofill and session history (separate issue)
 - [x] `validationMessages` prop — done; all 5 direct-validity components (Toggle, Rating, SelectionButtonGroup, SelectionCardGroup, Combobox) accept `validationMessages?: ValidationMessages` to override hardcoded fallback strings
-- [ ] `CustomStateSet` via `_internals.states` for CSS pseudo-class support (`:--checked`, `:--invalid`, etc.)
+- [x] `CustomStateSet` via `_internals.states` for CSS pseudo-class support — done; see `## CustomStateSet / :state() pseudo-class` section below
 - [ ] `_parentDisabled` refinement for `formDisabledCallback` to avoid conflict with local disabled attribute
 - [x] `AgButton` shadow DOM submit/reset bridge — done; `_handleClick` calls `this.closest('form').requestSubmit()` / `.reset()` for `type="submit"` and `type="reset"`
 
@@ -973,3 +973,165 @@ was the odd one out. Any Vue wrapper that exposes `name` as a prop must bind it 
 Lit's own `@submit=${handler}` event binding on a shadow-DOM `<form>` is a direct
 `addEventListener` call. `e.preventDefault()` is always called before browser navigation.
 No extra ceremony required.
+
+---
+
+## CustomStateSet / :state() pseudo-class
+
+`ElementInternals.states` exposes a `CustomStateSet` that lets FACE components publish
+named boolean flags as CSS pseudo-classes, targetable from outside the shadow DOM.
+
+**Browser support (as of early 2026):** Chrome 125+, Firefox 126+, Safari 17.4+. All 2024
+releases. No polyfill needed.
+
+### What it gives us
+
+```css
+/* From a global stylesheet or a wrapping component's styles */
+ag-toggle:state(checked)   { outline: 2px dashed green; }
+ag-radio:state(invalid)    { outline: 2px dashed red; }
+ag-checkbox:state(checked) { background: lightgreen; }
+```
+
+And from JS:
+```js
+element.matches(':state(checked)') // true / false
+```
+
+This is the CSS-native equivalent of what a `:checked` or `:invalid` pseudo-class does
+for native inputs — but on custom elements where we control what those states mean.
+
+### Implementation in FaceMixin
+
+A single `_setState()` helper lives on `FaceMixin` so no component repeats the
+feature-guard + add/delete pattern:
+
+```typescript
+// In face-mixin.ts
+protected _setState(state: string, active: boolean): void {
+  if (!this._internals.states) return; // feature guard for older browsers
+  if (active) {
+    this._internals.states.add(state);
+  } else {
+    this._internals.states.delete(state);
+  }
+}
+```
+
+The feature guard (`if (!this._internals.states) return`) is the only browser-compat
+shim needed. TypeScript 5.9 includes `ElementInternals.states` in its DOM lib, so no
+`as any` casts are required.
+
+### `_syncStates()` per component
+
+Each FACE component adds a private `_syncStates()` that mirrors its own reactive
+properties into the `CustomStateSet`. The rule: **call `_syncStates()` after every
+`_syncValidity()` call**, because `:state(invalid)` reads `!this._internals.validity.valid`
+which `_syncValidity()` just updated.
+
+**AgCheckbox** — checked, indeterminate, disabled, required, invalid:
+```typescript
+private _syncStates(): void {
+  this._setState('checked', this.checked);
+  this._setState('indeterminate', this.indeterminate);
+  this._setState('disabled', this.disabled);
+  this._setState('required', this.required);
+  this._setState('invalid', !this._internals.validity.valid);
+}
+```
+
+**AgRadio** — checked, disabled, required, invalid:
+```typescript
+private _syncStates(): void {
+  this._setState('checked', this.checked);
+  this._setState('disabled', this.disabled);
+  this._setState('required', this.required);
+  this._setState('invalid', !this._internals.validity.valid);
+}
+```
+
+**AgToggle** — checked, disabled, readonly, required, invalid:
+```typescript
+private _syncStates(): void {
+  this._setState('checked', this.checked);
+  this._setState('disabled', this.disabled);
+  this._setState('readonly', this.readonly);
+  this._setState('required', this.required);
+  this._setState('invalid', !this._internals.validity.valid);
+}
+```
+
+Toggle was the only one without an `updated()` hook. An override was added so programmatic
+changes to `disabled` and `readonly` still sync:
+
+```typescript
+override updated(changedProperties: Map<string, unknown>) {
+  super.updated(changedProperties);
+  if (changedProperties.has('disabled') || changedProperties.has('readonly')) {
+    this._syncStates();
+  }
+}
+```
+
+### The `invalid` state tracks FACE validity, not the `invalid` prop
+
+`ag-checkbox` and `ag-toggle` both have an `invalid` *prop* (consumer-set, cosmetic).
+`:state(invalid)` tracks `!this._internals.validity.valid` — the constraint validation
+result — which is what `form.checkValidity()` uses. The two can differ and are independent.
+
+### AgRadio: shadow DOM isolation broke native delegation
+
+When we added `:state()` support, we also discovered that the original `_syncValidity()`
+for AgRadio was broken for required radio groups. It delegated to the inner `<input type="radio">`,
+but each radio's inner input lives in its own isolated shadow root. The browser doesn't
+see them as the same radio group — so each unchecked required radio independently reported
+`valueMissing: true`, even when another radio in the group was checked.
+
+Two fixes were needed:
+
+1. **Replace delegation with group-aware direct validation** in `_syncValidity()`:
+```typescript
+private _isGroupChecked(): boolean {
+  if (this.checked) return true;
+  // traverse up through any shadow roots to reach the document
+  let root: Node = this.getRootNode();
+  while (root && 'host' in root) {
+    const parent = (root as ShadowRoot).host?.getRootNode();
+    if (parent && parent !== root) { root = parent; } else { break; }
+  }
+  const doc = root instanceof Document ? root : document;
+  return Array.from(doc.querySelectorAll(`ag-radio[name="${this.name}"]`))
+    .some((el) => (el as AgRadio).checked);
+}
+
+private _syncValidity(): void {
+  if (!this.required) { this._internals.setValidity({}); return; }
+  if (this._isGroupChecked()) {
+    this._internals.setValidity({});
+  } else {
+    this._internals.setValidity({ valueMissing: true }, 'Please select one of these options.');
+  }
+}
+```
+
+2. **Force-sync siblings in `uncheckOtherRadiosInGroup()`**: When a radio is clicked,
+siblings that were already `false` don't trigger Lit's `updated()` (no property change),
+so their `_syncValidity()` is never called. Explicitly re-syncing them fixes this:
+```typescript
+radio.checked = false;
+radio._syncValidity(); // TypeScript allows this — same class, different instance
+radio._syncStates();
+```
+
+### Syntax note: `:state()` not `:--state`
+
+The modern spec uses `:state(checked)`. The older double-dash form `:--checked` (Chrome
+< 90) is obsolete. All 2024+ browsers use the parenthesis form.
+
+### States exposed per component
+
+| Component | States |
+|-----------|--------|
+| `ag-checkbox` | `checked`, `indeterminate`, `disabled`, `required`, `invalid` |
+| `ag-radio` | `checked`, `disabled`, `required`, `invalid` |
+| `ag-toggle` | `checked`, `disabled`, `readonly`, `required`, `invalid` |

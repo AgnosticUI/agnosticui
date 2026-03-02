@@ -3,6 +3,8 @@ import { ref, watch, nextTick } from 'vue'
 import VueInput from './components/ag/Input/vue/VueInput.vue'
 import VueSelectionButtonGroup from './components/ag/SelectionButtonGroup/vue/VueSelectionButtonGroup.vue'
 import './components/ag/SelectionButton/core/SelectionButton'
+import VueRadio from './components/ag/Radio/vue/VueRadio.vue'
+import VueCheckbox from './components/ag/Checkbox/vue/VueCheckbox.vue'
 import VueToggle from './components/ag/Toggle/vue/VueToggle.vue'
 import VueButton from './components/ag/Button/vue/VueButton.vue'
 import VueCard from './components/ag/Card/vue/VueCard.vue'
@@ -40,6 +42,18 @@ function handleSubmit(e: Event) {
   elements.forEach((el) => {
     const input = el as HTMLInputElement
     console.log(`  element: tag=${el.tagName} name="${input.name}" value="${input.value}"`)
+  })
+
+  // :state() verification — confirms CustomStateSet is wired up correctly
+  ;['AG-RADIO', 'AG-CHECKBOX', 'AG-TOGGLE'].forEach((tag) => {
+    elements
+      .filter((el) => el.tagName === tag)
+      .forEach((el) => {
+        const e = el as HTMLElement & { name?: string }
+        console.log(
+          `  ${tag.toLowerCase()} name="${e.name}" :state(checked)=${e.matches(':state(checked)')} :state(invalid)=${e.matches(':state(invalid)')}`
+        )
+      })
   })
 
   const valid = validateAll(formRef.value)
@@ -97,6 +111,17 @@ function handleReset() {
               </VueSelectionButtonGroup>
             </div>
             <div>
+              <fieldset style="border: 1px solid var(--ag-border-color, #e2e8f0); border-radius: var(--ag-radius-md, 6px); padding: var(--ag-space-3) var(--ag-space-4); margin: 0">
+                <legend style="padding: 0 var(--ag-space-2); font-size: 0.875rem; font-weight: 500; color: var(--ag-text-primary)">Preferred contact method *</legend>
+                <VueRadio name="contactMethod" value="email" labelText="Email" :required="true" />
+                <VueRadio name="contactMethod" value="phone" labelText="Phone" :required="true" />
+                <VueRadio name="contactMethod" value="either" labelText="Either" :required="true" />
+              </fieldset>
+            </div>
+            <div>
+              <VueCheckbox name="subscribe" value="yes" labelText="Subscribe to our newsletter" />
+            </div>
+            <div>
               <VueToggle
                 label="I agree to the Terms & Conditions"
                 name="terms"
@@ -128,3 +153,21 @@ function handleReset() {
     </div>
   </div>
 </template>
+
+<style>
+/* :state() demo — visual proof that CustomStateSet is working */
+ag-radio:state(checked),
+ag-checkbox:state(checked),
+ag-toggle:state(checked) {
+  outline: 2px dashed #22c55e;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+ag-radio:state(invalid),
+ag-checkbox:state(invalid),
+ag-toggle:state(invalid) {
+  outline: 2px dashed #ef4444;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+</style>

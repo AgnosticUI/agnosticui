@@ -66,3 +66,19 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* :state() demo — visual proof that CustomStateSet is working */
+ag-radio:state(checked),
+ag-checkbox:state(checked),
+ag-toggle:state(checked) {
+  outline: 2px dashed #22c55e;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+ag-radio:state(invalid),
+ag-checkbox:state(invalid),
+ag-toggle:state(invalid) {
+  outline: 2px dashed #ef4444;
+  outline-offset: 3px;
+  border-radius: 4px;
+}

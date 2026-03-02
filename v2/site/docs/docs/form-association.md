@@ -30,6 +30,46 @@ All form controls in AgnosticUI are FACE-enabled:
 `ag-input` · `ag-textarea` · `ag-checkbox` · `ag-radio` · `ag-select` · `ag-toggle` ·
 `ag-slider` · `ag-rating` · `ag-selection-button-group` · `ag-selection-card-group` · `ag-combobox`
 
+### CSS-targetable states via `:state()`
+
+`ag-checkbox`, `ag-radio`, and `ag-toggle` expose internal states through
+[`ElementInternals.states`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/states)
+(`CustomStateSet`). You can style them from outside the shadow DOM using the `:state()` pseudo-class
+— no extra attributes or classes needed.
+
+| Component | `:state(checked)` | `:state(invalid)` |
+|-----------|:-----------------:|:-----------------:|
+| `ag-checkbox` | when checked | when required and unchecked |
+| `ag-radio` | when checked | when required and no radio in the group is checked |
+| `ag-toggle` | when on | when required and off |
+
+**Browser support:** Chrome 125+, Firefox 126+, Safari 17.4+.
+
+```css
+/* Green outline when checked */
+ag-checkbox:state(checked),
+ag-radio:state(checked),
+ag-toggle:state(checked) {
+  outline: 2px dashed #22c55e;
+  outline-offset: 3px;
+}
+
+/* Red outline when invalid */
+ag-checkbox:state(invalid),
+ag-radio:state(invalid),
+ag-toggle:state(invalid) {
+  outline: 2px dashed #ef4444;
+  outline-offset: 3px;
+}
+```
+
+::: tip Verifying `:state()` in the console
+```js
+document.querySelector('ag-radio[name="contactMethod"]').matches(':state(checked)') // true/false
+document.querySelector('ag-checkbox[name="terms"]').matches(':state(invalid)')       // true/false
+```
+:::
+
 ---
 
 ## Core Patterns
@@ -142,5 +182,7 @@ entries to the console so you can see FACE working in real time.
 ## Further Reading
 
 - [Form Association Playbook](/playbooks/form-association) — PROMPT files for generating your own FACE-based forms with an LLM
-- [`FACE-NOTES.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/components/FACE-NOTES.md) — deep implementation notes covering all FACE components and the `validationMessages` prop
+- [`FACE-NOTES.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/components/FACE-NOTES.md) — deep implementation notes covering all FACE components, `validationMessages`, and `CustomStateSet`
+- [`FACE-ARTICLE.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/components/FACE-ARTICLE.md) — full rollout story: mixin design, validation strategies, radio group shadow DOM isolation, and lessons learned
 - [MDN: ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) — browser API reference
+- [MDN: ElementInternals.states](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/states) — `CustomStateSet` and `:state()` pseudo-class

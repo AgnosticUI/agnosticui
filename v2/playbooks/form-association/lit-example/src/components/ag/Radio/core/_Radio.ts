@@ -1,11 +1,11 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
-import { formControlStyles } from '../../../shared/form-control-styles';
+import { formControlStyles } from '../../shared/form-control-styles';
 import {
   createFormControlIds,
   buildAriaDescribedBy,
-} from '../../../shared/form-control-utils';
-import { FaceMixin } from '../../../shared/face-mixin';
+} from '../../shared/form-control-utils';
+import { FaceMixin } from '../../shared/face-mixin';
 
 
 export type RadioSize = 'small' | 'medium' | 'large';

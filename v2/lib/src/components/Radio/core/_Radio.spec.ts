@@ -439,4 +439,46 @@ describe('Radio - Comprehensive Tests', () => {
       expect(input2.name).toBe('group');
     });
   });
+
+  describe('FACE validity (_syncValidity)', () => {
+    it('should be invalid when required and no radio in the group is checked', async () => {
+      const radio = await createRadio({ name: 'solo', value: 'a', required: true });
+      expect(radio.validity.valid).toBe(false);
+      expect(radio.validity.valueMissing).toBe(true);
+    });
+
+    it('should be valid when required and this radio is checked', async () => {
+      const radio = await createRadio({ name: 'solo2', value: 'a', required: true, checked: true });
+      expect(radio.validity.valid).toBe(true);
+    });
+
+    it('should be valid when not required regardless of checked state', async () => {
+      const radio = await createRadio({ name: 'optional', value: 'a' });
+      expect(radio.validity.valid).toBe(true);
+    });
+
+    it('should make all group members valid once one sibling is checked', async () => {
+      const radio1 = await createRadio({ name: 'grp', value: 'a', required: true, labelText: 'A' });
+      const radio2 = await createRadio({ name: 'grp', value: 'b', required: true, labelText: 'B' });
+      const radio3 = await createRadio({ name: 'grp', value: 'c', required: true, labelText: 'C' });
+
+      // Initially all unchecked and invalid
+      expect(radio1.validity.valid).toBe(false);
+      expect(radio2.validity.valid).toBe(false);
+      expect(radio3.validity.valid).toBe(false);
+
+      // User clicks radio2's inner input
+      const input2 = radio2.shadowRoot?.querySelector('input') as HTMLInputElement;
+      input2.click();
+      await radio2.updateComplete;
+      // uncheckOtherRadiosInGroup also force-syncs siblings
+      await radio1.updateComplete;
+      await radio3.updateComplete;
+
+      // radio2 is now checked — all three should be valid
+      expect(radio2.validity.valid).toBe(true);
+      expect(radio1.validity.valid).toBe(true);
+      expect(radio3.validity.valid).toBe(true);
+    });
+  });
 });

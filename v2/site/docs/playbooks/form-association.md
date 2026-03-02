@@ -1,9 +1,10 @@
 # Form Association (FACE) Playbook
 
 A Contact Form demonstrating **Form Associated Custom Elements (FACE)** across React, Vue,
-and Lit — `ag-input`, `ag-selection-button-group`, and `ag-toggle` submitting natively
-with the parent `<form>`, programmatic validation via `form.elements`, and `form.reset()`
-restoring all fields without manual state management.
+and Lit — `ag-input`, `ag-radio`, `ag-checkbox`, `ag-selection-button-group`, and `ag-toggle`
+submitting natively with the parent `<form>`, programmatic validation via `form.elements`,
+`form.reset()` restoring all fields without manual state management, and CSS `:state()`
+pseudo-classes for styling from outside the shadow DOM.
 
 ::: tip New to FACE?
 Read the [Form Association guide](/docs/form-association) first — it explains the core
@@ -31,6 +32,8 @@ the console so you can watch FACE work in real time.
 | Email Address | `email` | `ag-input` (email) | `required` |
 | Phone | `phone` | `ag-input` (tel) | optional |
 | Message | `message` | `ag-input` (textarea) | `required` |
+| Preferred contact method | `contactMethod` | `ag-radio` group (email/phone/either) | `required` |
+| Newsletter signup | `subscribe` | `ag-checkbox` | optional |
 | Newsletter frequency | `frequency` | `ag-selection-button-group` (radio) | `required` |
 | Terms & Conditions | `terms` | `ag-toggle` | `required` |
 
@@ -39,11 +42,22 @@ the console so you can watch FACE work in real time.
 | Component | Purpose |
 |-----------|---------|
 | `ag-input` | Text, email, tel, and textarea fields (FACE-enabled) |
+| `ag-radio` | Required radio group — preferred contact method (FACE-enabled) |
+| `ag-checkbox` | Optional newsletter signup (FACE-enabled) |
 | `ag-selection-button-group` | Radio group for newsletter frequency (FACE-enabled) |
-| `ag-toggle` | Terms acceptance checkbox (FACE-enabled) |
+| `ag-toggle` | Required terms acceptance (FACE-enabled) |
 | `ag-button` | Submit and Clear actions |
 | `ag-card` | Form and result containers |
 | `ag-divider` | Visual separator |
+
+::: tip `:state()` CSS Demo
+The form includes a live `:state()` demo — `ag-radio`, `ag-checkbox`, and `ag-toggle` get a
+**green dashed outline** when `:state(checked)` and a **red dashed outline** when `:state(invalid)`.
+The submit handler logs each element's `:state(checked)` and `:state(invalid)` values to the console.
+
+Supported in Chrome 125+, Firefox 126+, and Safari 17.4+. See the
+[Form Association guide](/docs/form-association#css-targetable-states-via-state) for details.
+:::
 
 ## Generate Your Own with an LLM
 

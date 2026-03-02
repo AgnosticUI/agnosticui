@@ -29,11 +29,20 @@ Build a single-page **Contact Form** with the following fields:
 | Phone | `phone` | `tel` | optional |
 | Message | `message` | `textarea` | `required` |
 | Newsletter Frequency | `frequency` | selection-button-group (radio) | `required` — uses `validationMessages` |
+| Preferred Contact Method | `contactMethod` | radio group (3× `ag-radio`) | `required` — demonstrates `ag-radio` FACE + `:state()` |
+| Subscribe to newsletter | `subscribe` | checkbox | optional — demonstrates `ag-checkbox` FACE + `:state()` |
 | Terms & Conditions | `terms` | toggle | `required` — uses `validationMessages` |
 
 The "Newsletter Frequency" field uses `ag-selection-button-group` (type="radio") with three
 options: Weekly, Monthly, Only major announcements. This demonstrates `validationMessages`
 on a group-selection component — a distinct FACE pattern from the toggle.
+
+The "Preferred Contact Method" field uses three `ag-radio` elements with the same `name="contactMethod"`
+and values `email`, `phone`, `either`. All three carry `required` so the group is required.
+Wrap them in a `<fieldset>` + `<legend>` for accessibility.
+
+The "Subscribe to newsletter" field uses a single `ag-checkbox` (`name="subscribe"`, `value="yes"`).
+It is optional — no `required` prop.
 
 The "Terms & Conditions" field uses `ag-toggle` (a direct-validity FACE component).
 Its `validationMessages` prop overrides the built-in English fallback:
@@ -44,6 +53,39 @@ Its `validationMessages` prop overrides the built-in English fallback:
 
 This is the key i18n demonstration: consumers supply their own copy rather than seeing the
 generic `"Please check this field."` that would otherwise appear.
+
+### `:state()` CSS Demo (CustomStateSet verification)
+
+All three examples include CSS that targets the `ElementInternals.states` / `CustomStateSet`
+pseudo-classes exposed by `ag-radio`, `ag-checkbox`, and `ag-toggle`:
+
+```css
+/* checked state — green dashed outline */
+ag-radio:state(checked),
+ag-checkbox:state(checked),
+ag-toggle:state(checked) {
+  outline: 2px dashed #22c55e;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+/* invalid state — red dashed outline */
+ag-radio:state(invalid),
+ag-checkbox:state(invalid),
+ag-toggle:state(invalid) {
+  outline: 2px dashed #ef4444;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+```
+
+In Lit, these go in the `ContactForm` static `styles` (they style elements inside the shadow root).
+In React and Vue, they go in the global stylesheet (`index.css` / unscoped `<style>`).
+
+The submit handler also logs `:state()` assertions to the console:
+```js
+element.matches(':state(checked)') // true when the field is checked
+element.matches(':state(invalid)') // true when FACE validity is failing
+```
 
 **Two actions:**
 - **Send Message** — validates all fields, submits, shows collected data
@@ -112,7 +154,7 @@ npm create vite@latest react-example -- --template react-ts
 cd react-example && npm install && npm install lit && cd ..
 cd react-example && npx agnosticui-cli init --framework react --skip-prompts
 cd react-example && npm install @lit/react focus-trap @floating-ui/dom && cd ..
-cd react-example && npx agnosticui-cli add Button Input Card Divider Toggle SelectionButtonGroup SelectionButton && cd ..
+cd react-example && npx agnosticui-cli add Button Input Card Divider Toggle Radio Checkbox SelectionButtonGroup SelectionButton && cd ..
 ```
 
 ### React Implementation Notes
@@ -145,7 +187,7 @@ cd react-example && npx agnosticui-cli add Button Input Card Divider Toggle Sele
 npm create vite@latest vue-example -- --template vue-ts
 cd vue-example && npm install && npm install lit && cd ..
 cd vue-example && npx agnosticui-cli init --framework vue --skip-prompts
-cd vue-example && npx agnosticui-cli add Button Input Card Divider Toggle SelectionButtonGroup SelectionButton && cd ..
+cd vue-example && npx agnosticui-cli add Button Input Card Divider Toggle Radio Checkbox SelectionButtonGroup SelectionButton && cd ..
 ```
 
 ### Vue Implementation Notes
@@ -177,7 +219,7 @@ cd vue-example && npx agnosticui-cli add Button Input Card Divider Toggle Select
 npm create vite@latest lit-example -- --template vanilla-ts
 cd lit-example && npm install && npm install lit && cd ..
 cd lit-example && npx agnosticui-cli init --framework lit --skip-prompts
-cd lit-example && npx agnosticui-cli add Button Input Card Divider Toggle SelectionButtonGroup SelectionButton && cd ..
+cd lit-example && npx agnosticui-cli add Button Input Card Divider Toggle Radio Checkbox SelectionButtonGroup SelectionButton && cd ..
 ```
 
 ### Lit Implementation Notes
@@ -238,6 +280,8 @@ cd lit-example && npx agnosticui-cli add Button Input Card Divider Toggle Select
 | Input | `ReactInput` | `VueInput` | `<ag-input>` |
 | SelectionButtonGroup | `ReactSelectionButtonGroup` | `VueSelectionButtonGroup` | `<ag-selection-button-group>` |
 | SelectionButton | `ReactSelectionButton` | (slotted `<ag-selection-button>`) | `<ag-selection-button>` |
+| Radio | `ReactRadio` | `VueRadio` | `<ag-radio>` |
+| Checkbox | `ReactCheckbox` | `VueCheckbox` | `<ag-checkbox>` |
 | Toggle | `ReactToggle` | `VueToggle` | `<ag-toggle>` |
 | Button | `ReactButton` | `VueButton` | `<ag-button>` |
 | Card | `ReactCard` | `VueCard` | `<ag-card>` |
@@ -253,7 +297,12 @@ cd lit-example && npx agnosticui-cli add Button Input Card Divider Toggle Select
 - [ ] Email field rejects non-email values using native `type="email"` FACE constraint
 - [ ] Phone field is optional — form submits without it
 - [ ] Newsletter frequency is required — submitting with no selection shows the custom `validationMessages.valueMissing` string, not the generic built-in fallback
+- [ ] Contact method radio group is required — submitting with no selection triggers validation
+- [ ] Subscribe checkbox is optional — form submits without it; value `"yes"` appears in `FormData` only when checked
 - [ ] Terms toggle is required — submitting unchecked shows the custom `validationMessages.valueMissing` string, not the generic built-in fallback
 - [ ] All labels are visible and associated with their inputs
 - [ ] Error messages are rendered with `role="alert"` for screen reader announcements
 - [ ] All three framework implementations are functionally identical
+- [ ] `:state(checked)` CSS — green dashed outline appears on any checked `ag-radio`, `ag-checkbox`, or `ag-toggle`
+- [ ] `:state(invalid)` CSS — red dashed outline appears on any invalid FACE field after attempted submit
+- [ ] Console log shows `element.matches(':state(checked)')` and `element.matches(':state(invalid)')` with correct boolean values on submit
