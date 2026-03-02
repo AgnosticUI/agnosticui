@@ -28,6 +28,19 @@ Removes the `/tmp/agnosticui-test` directory for a fresh start.
 ./scripts/cleanup-testing-playground.sh
 ```
 
+### bulk-sync.sh
+
+Syncs all 36 playbook examples to the latest `agnosticui-core` release in one shot. Downloads the tarball once from NPM and re-uses it for every example directory, which is much faster than letting each sync download independently.
+
+```bash
+# From the v2/ directory:
+./scripts/bulk-sync.sh              # sync to latest alpha
+./scripts/bulk-sync.sh 2.0.0-alpha.21   # sync to a specific version
+./scripts/bulk-sync.sh latest       # sync to stable latest
+```
+
+Run this after publishing a new version of `agnosticui-core` to keep all playbooks in sync. Follow with `node scripts/verify-playbooks.mjs` to confirm all examples are healthy.
+
 ### verify-playbooks.mjs
 
 Audits every playbook example in `v2/playbooks/` for health issues that would break `npm i && npm run dev` on a fresh clone. New playbooks are picked up automatically -- the script discovers examples by finding any directory containing `agnosticui.config.json`, so no registration step is needed.

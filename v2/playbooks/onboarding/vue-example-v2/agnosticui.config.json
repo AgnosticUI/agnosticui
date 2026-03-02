@@ -65,8 +65,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/onboarding/vue-example-v2/.tmp-ag-download/agnosticui-core-2.0.0-alpha.21.tgz",
-    "version": "2.0.0-alpha",
-    "installed": "2026-02-26T17:07:13.180Z"
+    "source": "/var/folders/0w/5lwjw0jd4lj7__z4cwtb8xt40000gn/T/tmp.hIXxWXdX9X/agnosticui-core-2.0.0-alpha.21.tgz",
+    "version": "2.0.0-alpha.21",
+    "installed": "2026-03-02T22:52:21.693Z"
   }
 }

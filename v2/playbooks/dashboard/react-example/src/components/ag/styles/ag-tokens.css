@@ -151,18 +151,18 @@
   --ag-background-primary-inverted: #1f2328;
   --ag-background-secondary: #f3f4f6;
   --ag-background-secondary-inverted: #111827;
-  --ag-background-tertiary: #e5e7eb;
-  --ag-background-disabled: #f3f4f6;
-  --ag-primary-background: #ddf4ff;
-  --ag-primary-text: #0550ae;
-  --ag-success-background: #dafbe1;
-  --ag-success-text: #116329;
-  --ag-info-background: #f3f4f6;
-  --ag-info-text: #4b5563;
-  --ag-warning-background: #fff8c5;
-  --ag-warning-text: #7d4e00;
-  --ag-danger-background: #ffebe9;
-  --ag-danger-text: #a40e26;
+  --ag-background-tertiary: #e5e7eb; /** Used by: Button default bg; also secondary button hover bg */
+  --ag-background-disabled: #f3f4f6; /** Used by: Button, Input, Checkbox, Radio, Select disabled states */
+  --ag-primary-background: #ddf4ff; /** Used by: Alert primary variant bg, Button faint variant bg */
+  --ag-primary-text: #0550ae; /** Used by: Alert primary text, Button bordered/outlined text + border */
+  --ag-success-background: #dafbe1; /** Used by: Alert success variant bg, Badge success variant bg */
+  --ag-success-text: #116329; /** Used by: Alert success variant text, Badge success variant text */
+  --ag-info-background: #f3f4f6; /** Used by: Alert info variant bg, Badge info variant bg */
+  --ag-info-text: #4b5563; /** Used by: Alert info variant text, Badge info variant text */
+  --ag-warning-background: #fff8c5; /** Used by: Alert warning variant bg, Badge warning variant bg */
+  --ag-warning-text: #7d4e00; /** Used by: Alert warning variant text, Badge warning variant text */
+  --ag-danger-background: #ffebe9; /** Used by: Alert danger variant bg, Badge danger variant bg */
+  --ag-danger-text: #a40e26; /** Used by: Alert danger variant text, Badge danger variant text */
   --ag-primary-fg: #ffffff;
   --ag-success-fg: #ffffff;
   --ag-warning-fg: #111827;
@@ -171,7 +171,7 @@
   --ag-border-subtle: #d1d5db;
   --ag-primary: #0550ae;
   --ag-primary-rgb: 5, 80, 174;
-  --ag-primary-border: #d1d5db;
+  --ag-primary-border: #d1d5db; /** Used by: Button bordered variant border */
   --ag-primary-dark: #0a3069;
   --ag-secondary: #6b7280;
   --ag-secondary-dark: #4b5563;
