@@ -8,7 +8,7 @@
   },
   "components": {
     "Button": {
-      "added": "2026-03-01T22:22:06.104Z",
+      "added": "2026-03-02T19:58:48.121Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -16,17 +16,8 @@
         "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Button/react"
       ]
     },
-    "Input": {
-      "added": "2026-03-01T22:22:06.104Z",
-      "version": "2.0.0-alpha",
-      "framework": "react",
-      "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Input/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Input/react"
-      ]
-    },
     "Card": {
-      "added": "2026-03-01T22:22:06.104Z",
+      "added": "2026-03-02T19:58:48.121Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -34,8 +25,17 @@
         "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Card/react"
       ]
     },
+    "Checkbox": {
+      "added": "2026-03-02T19:58:48.121Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Checkbox/react"
+      ]
+    },
     "Divider": {
-      "added": "2026-03-01T22:22:06.104Z",
+      "added": "2026-03-02T19:58:48.121Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -43,17 +43,35 @@
         "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Divider/react"
       ]
     },
-    "Toggle": {
-      "added": "2026-03-02T17:00:57.591Z",
+    "Input": {
+      "added": "2026-03-02T19:58:48.121Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Toggle/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Toggle/react"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Input/react"
+      ]
+    },
+    "Radio": {
+      "added": "2026-03-02T19:58:48.121Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Radio/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Radio/react"
+      ]
+    },
+    "SelectionButton": {
+      "added": "2026-03-02T19:58:48.121Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/react"
       ]
     },
     "SelectionButtonGroup": {
-      "added": "2026-03-01T22:22:06.104Z",
+      "added": "2026-03-02T19:58:48.121Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
@@ -63,31 +81,13 @@
         "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/react"
       ]
     },
-    "SelectionButton": {
-      "added": "2026-03-01T22:22:06.104Z",
+    "Toggle": {
+      "added": "2026-03-02T19:58:48.121Z",
       "version": "2.0.0-alpha",
       "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/SelectionButton/react"
-      ]
-    },
-    "Radio": {
-      "added": "2026-03-02T17:48:02.647Z",
-      "version": "2.0.0-alpha",
-      "framework": "react",
-      "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Radio/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Radio/react"
-      ]
-    },
-    "Checkbox": {
-      "added": "2026-03-02T17:00:57.591Z",
-      "version": "2.0.0-alpha",
-      "framework": "react",
-      "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Checkbox/core",
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Checkbox/react"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Toggle/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/src/components/ag/Toggle/react"
       ]
     }
   },
@@ -100,8 +100,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.20.tgz",
-    "version": "unknown",
-    "installed": "2026-03-02T17:47:59.910Z"
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/react-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.20.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-03-02T19:57:16.554Z"
   }
 }

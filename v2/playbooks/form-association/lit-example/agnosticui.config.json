@@ -1,83 +1,93 @@
 {
   "$schema": "https://agnosticui.com/schema.json",
   "version": "2.0.0-alpha",
-  "framework": "lit",
+  "framework": "react",
   "paths": {
     "reference": "./agnosticui",
     "components": "./src/components/ag"
   },
   "components": {
     "Button": {
-      "added": "2026-03-01T22:22:30.526Z",
+      "added": "2026-03-02T20:09:38.029Z",
       "version": "2.0.0-alpha",
-      "framework": "lit",
+      "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Button/core"
-      ]
-    },
-    "Input": {
-      "added": "2026-03-01T22:22:30.526Z",
-      "version": "2.0.0-alpha",
-      "framework": "lit",
-      "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Input/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Button/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Button/react"
       ]
     },
     "Card": {
-      "added": "2026-03-01T22:22:30.526Z",
+      "added": "2026-03-02T20:09:38.030Z",
       "version": "2.0.0-alpha",
-      "framework": "lit",
+      "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Card/core"
-      ]
-    },
-    "Divider": {
-      "added": "2026-03-01T22:22:30.526Z",
-      "version": "2.0.0-alpha",
-      "framework": "lit",
-      "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Divider/core"
-      ]
-    },
-    "Toggle": {
-      "added": "2026-03-02T17:01:05.154Z",
-      "version": "2.0.0-alpha",
-      "framework": "lit",
-      "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Toggle/core"
-      ]
-    },
-    "SelectionButtonGroup": {
-      "added": "2026-03-01T22:22:30.526Z",
-      "version": "2.0.0-alpha",
-      "framework": "lit",
-      "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButtonGroup/core",
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButton/core"
-      ]
-    },
-    "SelectionButton": {
-      "added": "2026-03-01T22:22:30.526Z",
-      "version": "2.0.0-alpha",
-      "framework": "lit",
-      "files": [
-        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButton/core"
-      ]
-    },
-    "Radio": {
-      "added": "2026-03-02T17:48:24.390Z",
-      "version": "2.0.0-alpha",
-      "framework": "lit",
-      "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Radio/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Card/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Card/react"
       ]
     },
     "Checkbox": {
-      "added": "2026-03-02T17:01:05.155Z",
+      "added": "2026-03-02T20:09:38.030Z",
       "version": "2.0.0-alpha",
-      "framework": "lit",
+      "framework": "react",
       "files": [
-        "/Users/roblevin/workspace/opensource/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Checkbox/core"
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Checkbox/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Checkbox/react"
+      ]
+    },
+    "Divider": {
+      "added": "2026-03-02T20:09:38.030Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Divider/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Divider/react"
+      ]
+    },
+    "Input": {
+      "added": "2026-03-02T20:09:38.030Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Input/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Input/react"
+      ]
+    },
+    "Radio": {
+      "added": "2026-03-02T20:09:38.030Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Radio/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Radio/react"
+      ]
+    },
+    "SelectionButton": {
+      "added": "2026-03-02T20:09:38.030Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButton/react"
+      ]
+    },
+    "SelectionButtonGroup": {
+      "added": "2026-03-02T20:09:38.030Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButtonGroup/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButtonGroup/react",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButton/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/SelectionButton/react"
+      ]
+    },
+    "Toggle": {
+      "added": "2026-03-02T20:09:38.030Z",
+      "version": "2.0.0-alpha",
+      "framework": "react",
+      "files": [
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Toggle/core",
+        "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/src/components/ag/Toggle/react"
       ]
     }
   },
@@ -90,8 +100,8 @@
     "commitReference": true
   },
   "tarball": {
-    "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.20.tgz",
-    "version": "unknown",
-    "installed": "2026-03-02T17:48:21.784Z"
+    "source": "/Users/roblevin/workspace/agnosticui/v2/playbooks/form-association/lit-example/.tmp-ag-download/agnosticui-core-2.0.0-alpha.20.tgz",
+    "version": "2.0.0-alpha",
+    "installed": "2026-03-02T20:09:31.385Z"
   }
 }
