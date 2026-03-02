@@ -11,7 +11,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.7.5",
     "@tanstack/table-core": "^8.21.3",
-    "agnosticui-core": "file:../../../lib/agnosticui-core-2.0.0-alpha.15.tgz",
+    "agnosticui-core": "file:../../../lib/agnosticui-core-2.0.0-alpha.17.tgz",
     "focus-trap": "^8.0.0",
     "lit": "^3.3.1"
   },
