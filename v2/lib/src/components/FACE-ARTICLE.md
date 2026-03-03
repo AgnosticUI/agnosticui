@@ -1,95 +1,102 @@
-# Form-Associated Custom Elements in Practice: A Complete Rollout Story
+# Form-Associated Custom Elements in Practice
 
-If you've built a design system with Web Components, you've probably hit the wall. Your `<ag-input>` looks great and fires all the right events — but wrap it in a `<form>` and submit, and it isn't there. The browser has no idea it exists as a form control. Your users' data never arrives. `form.reset()` does nothing. `<fieldset disabled>` is ignored.
+I was well over three quarters of the way through rewriting the AgnosticUI components in Lit when I realized I had a massive blind spot. My `<ag-input>` looked solid and fired events correctly, but it lacked Form-Associated Custom Element (FACE) support. This meant it was essentially invisible to native `<form>` submissions.
 
-Form-Associated Custom Elements (FACE) is the API that fixes this. We rolled it out across every form component in AgnosticUI — nine components, three months of implementation work, a shared mixin, and a pattern library for handling every variation the spec throws at you.
+I was completely unaware of this until a conversation with my friend [Marc van Neerven](https://www.linkedin.com/in/mvneerven/). We were discussing accessibility hurdles with `<label>` elements inside a Web Component’s Shadow DOM when Marc pointed out the importance of **form association**. 
 
-This is what we learned.
+Fueled by the mild embarrassment of having missed something so fundamental, I immediately started digging through MDN to understand how this Form-Associated Custom Element stuff worked. I understood that native HTML form controls have built-in submission logic and `FormData` support, but I had absolutely no idea the FACE API even existed. 
+
+It's a massive facepalm moment when you believe you're "code complete" on a dozen different form components only to realize they don't support the most basic functionality of a form. If you wrap a naively built custom element in a `<form>` and hit submit, the browser will have no idea the component is even there. Try setting a breakpoint on your submit handler; you'll see an empty `FormData` object staring back at you.
+
+That empty object is what eventually reaches your server. Additionally, if you call `form.reset()`, your custom fields remain filled, and even a `<fieldset disabled>` wrapper gets completely ignored.
+
+Fixing this meant retrofitting every single form component in AgnosticUI. It was a massive undertaking, but it forced me to distill the spec's complexities into a single, reusable Lit mixin. This helped encapsulate the boilerplate in one place, keeping the code DRY and ensuring my components finally became form-aware.
+
+The following is what I learned during that process.
 
 ---
 
 ## What FACE Actually Is
 
-FACE is two lines of code. Everything else follows from them.
+Enabling FACE starts with a deceptive bit of boilerplate. You tell the browser your element wants to participate in forms, and then you grab a handle to the `ElementInternals` API.
 
 ```typescript
 class MyInput extends HTMLElement {
-  static formAssociated = true;          // tells the browser: I'm a form control
+  static formAssociated = true; // The "I'm a form control" flag
 
   constructor() {
     super();
-    this._internals = this.attachInternals(); // gives you the ElementInternals handle
+    // This gives you the keys to the kingdom
+    this._internals = this.attachInternals(); 
   }
 }
+
 ```
 
-`ElementInternals` is your side of the contract with the browser's form system. Through it you can:
+If only it ended there. While those two steps "engage" the API, the actual work happens through `ElementInternals`. This is your side of the contract with the browser's form system. It isn't just a single property; it's a suite of methods that let your component finally talk to the parent `<form>`.
 
-- **Submit a value** via `setFormValue()` — your element shows up in `FormData`
-- **Report validity** via `setValidity()` — your element participates in `form.checkValidity()` and browser validation UI
-- **Read form metadata** via `.form`, `.willValidate`, `.validity`, `.validationMessage`
+Through `_internals`, you can:
 
-The browser's side: it calls lifecycle methods on your element when the parent form resets (`formResetCallback`), when a `<fieldset disabled>` ancestor changes (`formDisabledCallback`), and when the element is associated or disassociated from a form (`formAssociatedCallback`).
+* **Submit a value:** Use `setFormValue()` so your element actually shows up in `FormData`.
+* **Report validity:** Use `setValidity()` to participate in `form.checkValidity()` and trigger native browser validation UI.
+* **Manage state:** Use the `.states` property to toggle custom pseudo-classes like `:state(checked)`, which is a lifesaver for styling.
+* **Access metadata:** Read properties like `.form`, `.willValidate`, or `.validationMessage` directly from the instance.
 
-That's the whole API. ~95% global browser support as of early 2026. Safari 16.4+. No polyfill needed.
+On the flip side, the browser expects you to handle specific lifecycle callbacks. It'll call `formResetCallback` when the form clears, `formDisabledCallback` when a `<fieldset disabled>` ancestor changes, and `formStateRestoreCallback` when the browser tries to help the user autofill a form after a navigation.
+
+It's a lot of "stuff" to manage. As of early 2026, browser support is around 95% (Safari 16.4+), so we're finally at a point where we can use this without reaching for a clunky polyfill.
 
 ---
 
 ## Why It Matters for Design Systems
 
-Without FACE, a custom form component is invisible to `<form>`. It can look like an input, behave like one, and fire all the right events — but the browser doesn't know it exists as a form control.
+If you've built a design system with non-form-aware components, this is what happens:
 
-What that means for every team using your design system:
+* **Values don't appear in `FormData` on submit.** This forces teams to manually collect values in JavaScript before sending anything to the server. Not ideal.
+* **Standard attributes like `required` or `minlength` are ignored.** If a dev calls `form.checkValidity()`, the browser just skips over your custom elements entirely.
+* **Calling `form.reset()` does nothing.** Teams have to write extra "cleanup" code just to clear out the state of your custom fields.
+* **Wrapping components in a `<fieldset disabled>` is useless.** The components stay enabled because they aren't listening to the fieldset's state.
 
-- Values don't appear in `FormData` on submit. Teams have to collect them manually in JavaScript.
-- `required`, `minlength`, `type="email"` — none of it applies to the host element. `form.checkValidity()` skips it entirely.
-- `form.reset()` does nothing. Teams have to reset form state manually.
-- `<fieldset disabled>` doesn't propagate into the component.
-
-Every consumer has to write bespoke integration code. FACE removes all of that — once, at the component level, for every consumer at once.
+Every person consuming your library is forced to write custom integration code just to make a basic form work. By implementing FACE once at the component level, we remove that friction entirely. Let's fix that properly so our dev consumers get native form behavior for free.
 
 ---
 
 ## Sharing the Boilerplate: The Case for a Mixin
 
-The first decision when rolling FACE out across multiple components is where to put the shared code. The boilerplate is identical on every form component:
+The first decision when rolling FACE out across a dozen components is where to put the shared code. The boilerplate is identical every time: you need the `static` flag, the `attachInternals()` call, and about six different getters to proxy the internal state.
+
+In efforts to keep things DRY, a base class like `AgFormControl extends LitElement` seems like the obvious choice. But, JavaScript only allows single inheritance, so if a component already needs to extend something else, you’ll be stuck.
+
+### The Lit Mixin Pattern
+
+The solution is a mixin. It allows us to "plug in" form capabilities to any component while keeping the code DRY. To keep TypeScript happy with `protected` members, we use a companion `declare class`—this acts as a "blueprint" that tells the compiler exactly what the mixin is adding to the class.
 
 ```typescript
-static formAssociated = true;
-protected _internals!: ElementInternals;
-name = ''; // reflected property
-get form() { return this._internals.form; }
-get validity() { return this._internals.validity; }
-get validationMessage() { return this._internals.validationMessage; }
-get willValidate() { return this._internals.willValidate; }
-checkValidity() { return this._internals.checkValidity(); }
-reportValidity() { return this._internals.reportValidity(); }
-formDisabledCallback(disabled: boolean) { this.disabled = disabled; }
-```
+// 1. The "Blueprint" for TypeScript
+export declare class FaceMixinInterface {
+  static readonly formAssociated: boolean;
+  protected _internals: ElementInternals;
+  name: string;
+  readonly form: HTMLFormElement | null;
+  readonly validity: ValidityState;
+  readonly validationMessage: string;
+  readonly willValidate: boolean;
+  checkValidity(): boolean;
+  reportValidity(): boolean;
+  formDisabledCallback(disabled: boolean): void;
+  formResetCallback(): void;
+}
 
-That's 15-20 lines that have nothing to do with what any given component does. Copying it everywhere works, but any future fix lands in N files.
-
-### Why Not a Base Class?
-
-A shared `AgFormControl extends LitElement` base class is the obvious first instinct. TypeScript (and JavaScript) only allow single inheritance. Any component that needs to extend something else is stuck. Base classes also accumulate unrelated behavior over time.
-
-### What a Mixin Is
-
-A mixin is a function that takes a class and returns a new class extending it with additional behavior. Lit documents the pattern [in their composition docs](https://lit.dev/docs/composition/mixins/).
-
-```typescript
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Constructor<T = {}> = new (...args: any[]) => T;
 
+// 2. The Actual Mixin
 export const FaceMixin = <T extends Constructor<LitElement>>(superClass: T) => {
   class FaceElement extends superClass {
     static readonly formAssociated = true;
-    protected _internals!: ElementInternals;
+    protected _internals: ElementInternals;
 
-    @property({ type: String, reflect: true })
-    name = '';
+    @property({ type: String, reflect: true }) name = '';
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(...args: any[]) {
       super(...args);
       this._internals = this.attachInternals();
@@ -104,77 +111,39 @@ export const FaceMixin = <T extends Constructor<LitElement>>(superClass: T) => {
     reportValidity() { return this._internals.reportValidity(); }
 
     formDisabledCallback(disabled: boolean) {
-      (this as unknown as { disabled: boolean }).disabled = disabled;
+      (this as any).disabled = disabled;
     }
 
-    formResetCallback() { /* no-op; subclasses override */ }
+    formResetCallback() { /* Subclasses override this */ }
   }
+  // This cast merges the blueprint with the original class
   return FaceElement as unknown as Constructor<FaceMixinInterface> & T;
 };
+
 ```
 
-At the call site it reads cleanly:
+Using it is a one-liner: `export class AgInput extends FaceMixin(LitElement) { ... }`.
 
-```typescript
-export class AgInput extends FaceMixin(LitElement) { /* ... */ }
-export class AgToggle extends FaceMixin(LitElement) { /* ... */ }
-```
+### Dividing the Labor
 
-And it composes: `class MyElement extends MixinA(MixinB(LitElement))`.
+The mixin owns the **infrastructure**, but the component owns the **semantics**. Here is how I split the responsibilities:
 
-### The TypeScript Wrinkle
+* **The Mixin handles:** The `formAssociated` flag, `attachInternals`, the `name` property, and all proxy getters (like `validity` and `validationMessage`).
+* **The Component handles:** Deciding *when* to call `setFormValue()`, what actual value to submit, and the specific logic for `formResetCallback()`.
 
-Mixins with `protected` members hit a TypeScript declaration emit error (TS4094). The Lit-recommended fix is a companion `declare class` that describes the same shape:
-
-```typescript
-export declare class FaceMixinInterface {
-  static readonly formAssociated: boolean;
-  protected _internals: ElementInternals;
-  name: string;
-  readonly form: HTMLFormElement | null;
-  readonly validity: ValidityState;
-  readonly validationMessage: string;
-  readonly willValidate: boolean;
-  checkValidity(): boolean;
-  reportValidity(): boolean;
-  formDisabledCallback(disabled: boolean): void;
-  formResetCallback(): void;
-}
-```
-
-The mixin returns `FaceElement as unknown as Constructor<FaceMixinInterface> & T`. Subclasses get full TypeScript types. The double declaration is a bit surprising at first, but it's the established pattern for typed mixins in TypeScript.
-
-> **Note on `any[]`:** TypeScript mandates `any[]` for mixin constructors — the compiler rejects `unknown[]` with TS2545. These `any` uses are suppressed with targeted `eslint-disable-next-line` comments rather than a blanket config override.
-
----
-
-## What Goes in the Mixin vs. the Component
-
-The guiding principle: the mixin owns the FACE *infrastructure*; the component owns the *semantics*.
-
-| Mixin | Component |
-|-------|-----------|
-| `static formAssociated = true` | When to call `setFormValue()` |
-| `attachInternals()` in constructor | What value to submit |
-| `name` reflected property | `formResetCallback()` implementation |
-| All six `_internals` getters | `_syncValidity()` logic |
-| `checkValidity()` / `reportValidity()` | |
-| `formDisabledCallback()` | |
-| No-op `formResetCallback()` | |
-
-Each component knows what "value" means for it, what its default state is, and what validation constraints apply. The mixin doesn't know any of that.
+Each component knows what "value" means for itself. The mixin just provides the megaphone to tell the browser about it.
 
 ---
 
 ## Two Validation Strategies
 
-One of the more instructive things the rollout revealed is that constraint validation splits cleanly into two cases.
+One of the more instructive things the rollout revealed is that constraint validation splits cleanly into two strategies.
 
 ### Strategy 1: Delegate to an Inner Input
 
-If your component renders a native `<input>`, `<textarea>`, or `<select>` in its shadow DOM, that inner element already runs the browser's full constraint validation engine — `required`, `minlength`, `maxlength`, `type="email"`, `pattern`, the works. You don't need to reimplement any of it.
+If a component renders a native `<input>`, `<textarea>`, or `<select>` in its shadow DOM, that inner element already runs the browser's full constraint validation engine. We get `required`, `minlength`, `pattern`, and every other native attribute for free. There's no reason to reimplement any of it.
 
-Instead, mirror the inner element's validity state into `ElementInternals`:
+Instead, we just mirror the inner element's validity state into `ElementInternals`:
 
 ```typescript
 export function syncInnerInputValidity(
@@ -182,61 +151,90 @@ export function syncInnerInputValidity(
   inputEl: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null | undefined
 ): void {
   if (!inputEl) return;
+
   if (!inputEl.validity.valid) {
+    // We pass the inputEl as the "validation target" so the browser 
+    // knows where to point the validation bubble.
     internals.setValidity(inputEl.validity, inputEl.validationMessage, inputEl);
   } else {
     internals.setValidity({});
   }
 }
+
 ```
 
-The third argument to `setValidity` — the anchor element — tells the browser where to render its native validation tooltip. Passing the inner `<input>` puts it in the right place visually.
-
-This gives you all of HTML5 constraint validation for free. Any new constraint types added to the spec later will also just work.
+The third argument to `setValidity` is the **validation target**. This tells the browser exactly where to point the native validation bubble. By passing the inner `<input>`, we ensure the tooltip appears in the right place visually, rather than floating awkwardly over the custom element's host boundary.
 
 Components that use this: `AgInput`, `AgCheckbox`, `AgSelect`.
 
-> **AgRadio caveat:** AgRadio renders an inner `<input type="radio">`, so delegation looks like the right strategy. It isn't — see the AgRadio walkthrough below for why shadow DOM isolation breaks the native required constraint for radio groups, and what the correct approach is.
+> **The AgRadio Caveat:** Even though AgRadio renders an inner `<input type="radio">`, delegation isn't enough. Shadow DOM isolation actually breaks the native `required` constraint for radio groups. I'll explain how to handle that specifically in the AgRadio section below.
 
 ### Strategy 2: Implement Directly Against Component State
 
-If your component uses a custom widget (`<button role="switch">`, `<div role="slider">`, etc.) with no inner `<input>`, there's nothing to delegate to. Implement `_syncValidity()` directly:
+If a component uses a custom widget—like the `AgToggle` (which uses a `<button role="switch">`)—there is no native input to lean on. In these cases, we have to implement `_syncValidity()` directly against the component's reactive state.
+
+While we use the `required` attribute in our component's API, the browser's internal validation engine tracks this failure as `valueMissing`.
 
 ```typescript
-// AgToggle
+// AgToggle example
 private _syncValidity(): void {
   if (this.required && !this.checked) {
-    this._internals.setValidity({ valueMissing: true }, 'Please check this field.');
+    // Note: In a production library, 'validationMessage' should be a 
+    // localized property rather than a hard-coded string.
+    this._internals.setValidity({ valueMissing: true }, this.validationMessage);
   } else {
     this._internals.setValidity({});
   }
 }
+
 ```
 
-For toggle and checkbox-style components, `required` is the only constraint that applies, so this stays simple. More complex widgets could add `rangeUnderflow`/`rangeOverflow` (slider), `typeMismatch` (custom email input), or custom flags via `customError`.
+For a switch or a checkbox, `valueMissing` is typically the only constraint that applies. However, for more complex custom components like a range slider, you might account for other standard flags like `rangeUnderflow` or `stepMismatch`.
 
-**The rule:** If the component renders an inner `<input>`, delegate. If not, implement directly.
+**The rule:** If the component renders an inner native form control (like an `input`, `textarea`, or `select`), delegate. If it's a custom-built widget like `AgToggle`, we own the validation logic.
 
 ---
 
 ## How to Verify It's Working
 
-Before the tests, the fastest way to confirm FACE is wired up correctly is to check a few things in the browser.
+The fastest way to confirm your FACE implementation is wired up correctly is to run a few manual "smoke tests" directly in the browser.
 
-**FormData on submit:** A form that logs `Object.fromEntries(new FormData(e.target).entries())` on submit will show your component's name and value if submission is working. If the key is absent, `setFormValue()` isn't being called, or `formAssociated` isn't set, or `name` is missing.
+### 1. Check FormData on Submit
+The ultimate proof is in the payload. Hook into a form's submit event and log the entries:
 
-**DevTools console:** Click the component in the Elements panel to make it `$0`, then:
+```javascript
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target).entries());
+  console.log(data); 
+});
 
-```js
-$0.form          // should return the parent <form> element, not undefined
-$0.willValidate  // should return true
-$0.validity      // should reflect current validation state
-
-Array.from(document.querySelector('form').elements)
-// your ag-* element should appear in this list
 ```
 
-If `$0.form` returns `undefined`, the element isn't form-associated. Either `formAssociated = true` is missing or `attachInternals()` wasn't called in the constructor.
+If your component's `name` and `value` are missing from that object, one of three things happened: `setFormValue()` wasn't called, `formAssociated` is missing, or the component doesn't have a `name` attribute set.
+
+### 2. Inspect via the DevTools Console
+
+Select your component in the **Elements** panel so it becomes `$0` in the console, then run these checks:
+
+```javascript
+$0.form           // Should return the parent <form>, not undefined
+$0.willValidate   // Should return true
+$0.validity.valid // Should reflect the current validation state
+
+```
+
+If `$0.form` returns `undefined`, the element isn't form-associated. This usually means `static formAssociated = true` is missing or `attachInternals()` wasn't called in the constructor.
+
+### 3. Verify Form Participation
+
+Finally, check if the form itself "sees" your component as one of its controls:
+
+```javascript
+Array.from(document.querySelector('form').elements).map(el => el.tagName)
+// Your <ag-*> element should appear in this list alongside native inputs
+
+```
 
 ---
 
@@ -244,13 +242,15 @@ If `$0.form` returns `undefined`, the element isn't form-associated. Either `for
 
 ### AgInput: The Reference Implementation
 
-AgInput was the first component and established the patterns all others follow.
+`AgInput` established the pattern for the rest of the library. It is the textbook example of **Strategy 1: Delegation.**
 
-**Value submission:** `_internals.setFormValue(this.value)` is called in the input handler on every keystroke, in the change handler on commit, and in `firstUpdated` to register the initial value.
+**Value submission:** We call `_internals.setFormValue(this.value)` in three places: the `input` handler (every keystroke), the `change` handler (on commit), and during `firstUpdated`. Syncing on `firstUpdated` is vital—without it, the form doesn't know the initial value until the user clicks into the field.
 
-**Validation:** Uses `syncInnerInputValidity()`. The inner `<input type="email">` with `required` and `minlength` handles all native constraints automatically. Called on every input and change event, and after first render.
+**Validation (The Delegation Path):** Because `AgInput` renders a native `<input>`, we don't write custom logic for `required` or `minlength`. We simply point `ElementInternals` at the inner element’s state. 
 
-**Accessible error messages:** The error container uses `role="alert"` and `aria-atomic="true"` and is always in the DOM (never conditionally rendered). Only its *content* changes when `invalid && errorMessage`. This way screen readers register the alert region on page load and announce reliably when content changes, rather than announcing inconsistently when the element itself appears.
+> **Wait, what if I don't have a native input?** > If you were building a custom slider or a star-rating component (Strategy 2), you wouldn't "sync" from an inner element. Instead, you would manually call `this._internals.setValidity({ valueMissing: true }, "Message")` inside your own property setters (like `set value()`).
+
+**Accessible error messages:** The error container in `AgInput` uses `role="alert"` and `aria-atomic="true"`. Crucially, this container is **always** in the DOM; it isn't conditionally rendered. By only changing the *content* of the alert, we ensure screen readers register the region on page load. If you "show/hide" the whole element, screen reader announcements become inconsistent.
 
 ---
 
