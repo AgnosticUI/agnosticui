@@ -2,7 +2,7 @@
 
 I was well over three quarters of the way through rewriting the AgnosticUI components in Lit when I realized I had a massive blind spot. My `<ag-input>` looked solid and fired events correctly, but it lacked Form-Associated Custom Element (FACE) support. This meant it was essentially invisible to native `<form>` submissions.
 
-I was completely unaware of this until a conversation with my friend [Marc van Neerven](https://www.linkedin.com/in/mvneerven/). We were discussing accessibility hurdles with `<label>` elements inside a Web Component’s Shadow DOM when Marc pointed out the importance of **form association**.
+I was completely unaware of this until a conversation with my friend [Marc van Neerven](https://www.linkedin.com/in/mvneerven/). We were discussing the nuances of Web Component’s and Shadow DOM when Marc pointed out the importance of **form association**.
 
 Fueled by the mild embarrassment of having missed something so fundamental, I immediately started digging through MDN to understand how this Form-Associated Custom Element stuff worked. I understood that native HTML form controls have built-in submission logic and `FormData` support, but I had absolutely no idea the FACE API even existed.
 
@@ -44,19 +44,6 @@ Through `_internals`, you can:
 On the flip side, the browser expects you to handle specific lifecycle callbacks. It'll call `formResetCallback` when the form clears, `formDisabledCallback` when a `<fieldset disabled>` ancestor changes, and `formStateRestoreCallback` when the browser tries to help the user autofill a form after a navigation.
 
 It's a lot of "stuff" to manage. As of early 2026, browser support is around 95% (Safari 16.4+), so we're finally at a point where we can use this without reaching for a clunky polyfill.
-
----
-
-## Why It Matters for Design Systems
-
-If you've built a design system with non-form-aware components, this is what happens:
-
-- **Values don't appear in `FormData` on submit.** This forces teams to manually collect values in JavaScript before sending anything to the server. Not ideal.
-- **Standard attributes like `required` or `minlength` are ignored.** If a dev calls `form.checkValidity()`, the browser just skips over your custom elements entirely.
-- **Calling `form.reset()` does nothing.** Teams have to write extra "cleanup" code just to clear out the state of your custom fields.
-- **Wrapping components in a `<fieldset disabled>` is useless.** The components stay enabled because they aren't listening to the fieldset's state.
-
-Every person consuming your library is forced to write custom integration code just to make a basic form work. By implementing FACE once at the component level, we remove that friction entirely. Let's fix that properly so our dev consumers get native form behavior for free.
 
 ---
 
@@ -397,7 +384,7 @@ This is the biggest "gotcha." Normally, a browser knows a `required` radio group
 To understand why we need `this.getRootNode()`, we have to look at where our `<ag-radio>` tags are actually being placed. It isn't about the framework's internal engine; it's about whether the tags are sitting in the global document or inside a private "neighborhood":
 
 * **The Global Scope (React/Vue/Static HTML):** You are usually placing `<ag-radio>` tags directly into the main page. Here, `document.querySelectorAll` works fine because everything is "on the main street."
-* **The Encapsulated Scope (Svelte, Solid, Lit, or Vanilla WC):** If you build a component that uses its own Shadow DOM, any `ag-radio` you place inside it is hidden from the outside world. Even in Svelte or Solid, the **Web Component's Shadow Root** acts as a barrier that the global `document` cannot pierce.
+* **The Encapsulated Scope (Svelte, Solid, Lit, or Vanilla WC):** If you build a component that uses its own Shadow DOM, any `ag-radio` you place inside it is hidden from the outside world. Even in Svelte or Solid, the **Web Components Shadow Root** acts as a barrier that the global `document` cannot pierce.
 
 **The Fix: Group-Aware Validation with `getRootNode()`**
 
@@ -502,9 +489,7 @@ this._internals.setFormValue(data);
 
 ### AgRating: Direct Validity, No Native Element
 
-AgRating uses a custom `role="slider"` div: there's no inner `<input>` at all. Like AgToggle, this means we must implement `_syncValidity()` directly on the host element.
-
-A rating of `0` is treated as the "empty" state (the initial state, or reachable via `allowClear`). We explicitly map this to the browser's `valueMissing` state:
+AgRating uses a custom `role="slider"` div: there is no inner `<input>` at all. Like AgToggle, this means we must implement `_syncValidity()` directly on the host element. A rating of `0` is treated as the unselected state. We explicitly map this to the browser's `valueMissing` state so that `required` validation works as expected.
 
 ```typescript
 private _syncValidity(): void {
@@ -514,12 +499,13 @@ private _syncValidity(): void {
     this._internals.setValidity({});
   }
 }
+
 ```
 
-> **Note: Why treat 0 as "null"?**
-> In a 5-star system, `0` usually means "unselected" rather than a score of zero. By submitting `null` for a `0` value, we ensure the field is omitted from the form payload, allowing the server to distinguish between an intentional score and an skipped field.
+> **Note: Why treat 0 as null?**
+> In a 5-star system, `0` usually means "unselected" rather than a score of zero. By submitting `null` for a `0` value, we ensure the field is omitted from the form payload. This allows the server to distinguish between an intentional score and a skipped field.
 
-**The Single Source of Truth**
+**The Unified Update Path**
 
 In AgRating, all user interactions flow through the `commitValue()` method. This includes clicks, pointer events, and keyboard interactions. By wiring the FACE synchronization here, we ensure that every manual change is immediately reflected in the form state.
 
@@ -540,17 +526,14 @@ override updated(changedProperties: PropertyValues) {
   }
 }
 ```
+
 ---
 
 ### SelectionButtonGroup and SelectionCardGroup: FACE on the Coordinator
 
-Selection groups are composite widgets. They consist of individual buttons or cards inside a coordinating group element. A common architectural question is which element should be form-associated.
+Selection groups are composite widgets: they consist of individual buttons or cards inside a coordinating group element. The group is the brain, not the items. The group element manages the `name`, the `type` (`radio` vs. `checkbox`), and the full set of selected values.
 
-**The group is the brain, not the items.**
-
-The group element manages the `name`, the `type` (`radio` vs. `checkbox`), and the full set of selected values. Individual buttons and cards have no name of their own because the group sets a private `_name` on them internally. This follows the same mental model as the native `<select>` element. The options are not form-associated; the select is.
-
-Both groups use a `type` property to determine form value semantics. This is similar to how the `multiple` property works on a standard select:
+This follows the same model as the native `<select>` element. The options are not form-associated; the select is. Both groups use a `type` property to determine form value semantics:
 
 ```typescript
 private _syncFormValue(): void {
@@ -565,18 +548,15 @@ private _syncFormValue(): void {
     } else {
       const formData = new FormData();
       selected.forEach(val => formData.append(this.name, val));
-
+      
       // The browser merges these entries into the parent form's data
       this._internals.setFormValue(formData);
     }
   }
 }
-
 ```
 
-Both groups support a `required` property. When this is set and nothing is selected, `_syncValidity()` sets `{ valueMissing: true }`. This follows the same pattern used in AgToggle and AgRating.
-
-Finally, the `formResetCallback` (not shown) handles the cleanup. It clears internal values, resets the form value to null, and triggers `_syncValidity()`. This ensures a required group correctly reports as invalid after a reset while simultaneously updating child elements so the UI reflects the cleared state.
+The `formResetCallback` (not shown) handles the cleanup. It clears internal values, resets the form value to null, and triggers `_syncValidity()`. This ensures a required group correctly reports as invalid after a reset while updating child elements so the UI reflects the cleared state immediately.
 
 ---
 
@@ -606,10 +586,9 @@ clearSelection() {
   this._syncFormValue();
   this._syncValidity();
 }
-
 ```
 
-**The Unified Update Path**
+**The Update Override**
 
 Like our other complex components, we use the `updated()` lifecycle as a safety net for programmatic changes. If a developer sets something like `combobox.value = 'CSS'` via JavaScript, the component detects the property change and triggers the synchronization logic.
 
@@ -636,11 +615,11 @@ If there is one elephant in the room after this migration, it is this: implement
 ### Technical Gotchas
 
 * **`formAssociated = true` is just an invitation.** Setting this property only "opens the door." Values do not appear in `FormData` until you call `setFormValue()`. Validation does not work until you call `setValidity()`. Nothing happens automatically.
-* **Shadow DOM is invisible to Forms.** A native `<input>` inside a shadow root is invisible to an ancestor `<form>`. This is the fundamental reason FACE exists. Using `setFormValue()` on the host element is the only way to create that connection.
+* **Shadow DOM is invisible to Forms.** A native `<input>` inside a shadow root is invisible to an ancestor `<form>`. Using `setFormValue()` on the host element is the only way to create that connection.
 * **The Submit Button Bridge.** Discovered during consumer testing, this issue highlights a specific shadow DOM limitation. A button inside a shadow root cannot trigger a parent form submission. We implemented a light DOM traversal using `this.closest('form').requestSubmit()` to bridge that gap.
 * **Disabled states have two masters.** The `formDisabledCallback` only fires when an ancestor, such as a `<fieldset>`, is disabled. It does not fire when the element's own `disabled` attribute is toggled. You must manage both paths to ensure they do not overwrite each other.
 
-### Strategic Lessons for the Roadmap
+### Universal Rules for Every FACE Component
 
 These strategic lessons are universal rules for all FACE components. They apply whether you are delegating to a native input (Strategy 1) or managing state directly (Strategy 2).
 
@@ -648,3 +627,18 @@ These strategic lessons are universal rules for all FACE components. They apply 
 * **Cover programmatic changes in `updated()`.** While event handlers cover user input, the `updated()` lifecycle covers everything else. This includes test code, parent components, and controlled modes. In Strategy 1, this ensures property changes reach the inner native element. In Strategy 2, it keeps `ElementInternals` in sync.
 * **Null means "Absent," not "Empty."** For checkboxes and toggles, passing `null` to `setFormValue()` ensures the key is absent from the form payload. Passing an empty string `''` keeps the key present. Matching native checkbox behavior is critical for backend compatibility.
 * **Complexity is often a mirage.** We expected radio groups and selection groups to require complex coordination. In reality, Lit's reactive property system was already the right shape. Wiring FACE into existing change paths was enough to propagate state automatically.
+
+---
+
+A few items remain on the roadmap — `formStateRestoreCallback`, cleaner 
+disabled-state separation, and runtime validation injection — but the 
+core contract is fulfilled.
+
+The irony isn't lost on me. I spent months building form components and 
+missed the most fundamental thing a form component needs to do: 
+*participate in a form.*
+
+FACE humbled me, then saved me. Every `ag-*` control now submits its 
+value, respects resets, and responds to a disabled fieldset — without a 
+single line of consumer workaround code. Sometimes finishing the thing 
+properly is the whole point.
