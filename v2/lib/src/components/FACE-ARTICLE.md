@@ -257,33 +257,33 @@ Your `<ag-*>` elements should appear in this list alongside native inputs.
 
 ### AgInput: The Reference Implementation
 
-`AgInput` established the pattern for the rest of the library. It is the textbook example of **Strategy 1: Delegation.**
+`AgInput` established the pattern for the rest of the library. It's a textbook example of **Strategy 1: Delegation.**
 
-**Value submission:** We call `_internals.setFormValue(this.value)` in three places: the `input` handler (every keystroke), the `change` handler (on commit), and during `firstUpdated`. Syncing on `firstUpdated` is vital—without it, the form doesn't know the initial value until the user clicks into the field.
+**Value submission:** We call `_internals.setFormValue(this.value)` in three places: the `input` handler (every keystroke), the `change` handler (on commit), and during `firstUpdated`, Lit's lifecycle hook that runs after the component's first render. Syncing on `firstUpdated` is critical, as without it, the form doesn't know the initial value until the user clicks into the field.
 
-**Validation (The Delegation Path):** Because `AgInput` renders a native `<input>`, we don't write custom logic for `required` or `minlength`. We simply point `ElementInternals` at the inner element’s state.
+**Validation (The Delegation Path):** Because `AgInput` renders a native `<input>`, we don't need to write custom logic for `required` or `minlength`. We simply point `ElementInternals` at the inner element’s state.
 
 > **Wait, what if I don't have a native input?** > If you were building a custom slider or a star-rating component (Strategy 2), you wouldn't "sync" from an inner element. Instead, you would manually call `this._internals.setValidity({ valueMissing: true }, "Message")` inside your own property setters (like `set value()`).
 
-**Accessible error messages:** The error container in `AgInput` uses `role="alert"` and `aria-atomic="true"`. Crucially, this container is **always** in the DOM; it isn't conditionally rendered. By only changing the _content_ of the alert, we ensure screen readers register the region on page load. If you "show/hide" the whole element, screen reader announcements become inconsistent.
+**Accessible error messages:** The error container in `AgInput` uses `role="alert"` and `aria-atomic="true"`. The container is **always** in the DOM. We only swap out its text content when an error occurs. This matters because screen readers register the alert region on page load. If you show and hide the whole element instead, screen reader announcements become unreliable.
 
 ---
 
 ### AgToggle: The Checkbox-Pattern Component
 
-Toggle introduced two things that differ from text inputs.
+`AgToggle` differs from text inputs in two ways.
 
-**Null form value:** A native checkbox that is unchecked is simply absent from `FormData` — not an empty string. Passing `null` to `setFormValue` replicates this:
+**Null form value:** A native checkbox that is unchecked is simply absent from `FormData`, not an empty string. Passing `null` to `setFormValue` replicates this:
 
 ```typescript
 this._internals.setFormValue(this.checked ? this.value || "on" : null);
 ```
 
-The `'on'` default matches native checkbox behavior when no `value` attribute is set. This is a real distinction for any server that processes form submissions — a missing key and an empty-string key are handled differently.
+The `'on'` default matches native checkbox behavior when no `value` attribute is set and the checkbox is checked. For any server processing form submissions, a missing key and an empty-string key are handled differently.
 
-**Direct validity:** Only `required` applies. No inner `<input>` to delegate to, so we implement it directly against `this.checked`. Called in `_performToggle()` on every state change.
+**Direct validity:** Only `required` applies. There is no inner `<input>` to delegate to, so we implement validity directly against `this.checked` (called in `_performToggle()` on every state change).
 
-> **The `value` property default:** Internally the component uses `this.value || 'on'` so that `FormData` submission always produces `'on'` when no value is configured. The property itself defaults to `''` — meaning "no explicit value set." The fallback keeps form behavior correct while the property API remains clean.
+> **The `value` property default:** The component uses `this.value || 'on'` so that `FormData` always produces `'on'` when no explicit value is configured. The property itself defaults to `''`. This keeps form submission behavior correct while the property API stays clean.
 
 ---
 
