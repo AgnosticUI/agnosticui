@@ -317,7 +317,6 @@ It's important to note that `AgSelect` is a direct wrapper around the native `<s
 
 **Handling multiple values:** `setFormValue()` has three overloads. While a string works for most components, `multiple` select requires the `FormData` overload. By passing a `FormData` object to `setFormValue`, you're providing a list of entries that the browser will automatically "spread" into the parent form's master collection at submission time.
 
-
 ```typescript
 private _syncFormValue(): void {
   if (!this.selectElement) return;
@@ -357,16 +356,14 @@ Radio groups require coordination: when one is selected, others must deselect. W
 
 **The Strategy: Tapping into Lit's Reactive Loop**
 
-We don't need a complex messaging system. When an `AgRadio` is checked, it finds other `<ag-radio>` instances with the same `name` and sets `instance.checked = false`. 
+We don't need a complex messaging system. When an `AgRadio` is checked, it finds other `<ag-radio>` instances with the same `name` and sets `instance.checked = false`.
 
 Crucially, this isn't "magic." Because `checked` is a Lit `@property`, this manual assignment triggers the `updated()` lifecycle on every radio in the group. We then **tap into that lifecycle** to run our glue code, explicitly calling `setFormValue()` and `_syncValidity()` to push the new state into the `ElementInternals` engine:
-
-
 
 ```typescript
 override updated(changedProperties: PropertyValues) {
   super.updated(changedProperties);
-  // This is the "glue": Lit tells us something changed, 
+  // This is the "glue": Lit tells us something changed,
   // and we manually inform the browser's form engine.
   if (changedProperties.has('checked')) {
     this._internals.setFormValue(this.checked ? this.value : null);
@@ -377,21 +374,21 @@ override updated(changedProperties: PropertyValues) {
 
 **The Trap: `required` and Shadow Isolation**
 
-This is the biggest "gotcha." Normally, a browser knows a `required` radio group is valid if *any* radio is checked. But because our inner inputs are isolated in separate Shadow Roots, the browser can't see the group. Each unchecked radio will incorrectly report `valueMissing: true`.
+This is the biggest "gotcha." Normally, a browser knows a `required` radio group is valid if _any_ radio is checked. But because our inner inputs are isolated in separate Shadow Roots, the browser can't see the group. Each unchecked radio will incorrectly report `valueMissing: true`.
 
 **The "Where am I?" Problem: Global vs. Encapsulated Scopes**
 
 To understand why we need `this.getRootNode()`, we have to look at where our `<ag-radio>` tags are actually being placed. It isn't about the framework's internal engine; it's about whether the tags are sitting in the global document or inside a private "neighborhood":
 
-* **The Global Scope (React/Vue/Static HTML):** You are usually placing `<ag-radio>` tags directly into the main page. Here, `document.querySelectorAll` works fine because everything is "on the main street."
-* **The Encapsulated Scope (Svelte, Solid, Lit, or Vanilla WC):** If you build a component that uses its own Shadow DOM, any `ag-radio` you place inside it is hidden from the outside world. Even in Svelte or Solid, the **Web Components Shadow Root** acts as a barrier that the global `document` cannot pierce.
+- **The Global Scope (React/Vue/Static HTML):** You are usually placing `<ag-radio>` tags directly into the main page. Here, `document.querySelectorAll` works fine because everything is "on the main street."
+- **The Encapsulated Scope (Svelte, Solid, Lit, or Vanilla WC):** If you build a component that uses its own Shadow DOM, any `ag-radio` you place inside it is hidden from the outside world. Even in Svelte or Solid, the **Web Components Shadow Root** acts as a barrier that the global `document` cannot pierce.
 
 **The Fix: Group-Aware Validation with `getRootNode()`**
 
 We have to manually verify the group state. Instead of asking the global `document`, we ask the element: "What is the root of the neighborhood I live in?" We use [this.getRootNode()](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode) to find that root.
 
-* **In Global Scopes:** It returns the `document`.
-* **In Encapsulated Components:** It returns that parent's `ShadowRoot`.
+- **In Global Scopes:** It returns the `document`.
+- **In Encapsulated Components:** It returns that parent's `ShadowRoot`.
 
 By querying that local root, we find our siblings regardless of how many layers of nesting are involved.
 
@@ -409,7 +406,7 @@ private _isGroupChecked(): boolean {
 
 private _syncValidity(): void {
   if (!this.required) return this._internals.setValidity({});
-  
+
   if (this._isGroupChecked()) {
     this._internals.setValidity({});
   } else {
@@ -420,15 +417,15 @@ private _syncValidity(): void {
 
 **The Final Edge Case: Forcing Sync**
 
-If you set `radio.checked = false` on a sibling that was *already* false, Lit's `updated()` won't fire. But that sibling still needs to re-run `_syncValidity()` because the group state just changed. We have to force the sync manually:
+If you set `radio.checked = false` on a sibling that was _already_ false, Lit's `updated()` won't fire. But that sibling still needs to re-run `_syncValidity()` because the group state just changed. We have to force the sync manually:
 
 ```typescript
 allRadios.forEach((radio) => {
   if (radio !== this && radio instanceof AgRadio) {
     radio.checked = false;
-    // Force a re-sync because Lit won't trigger updated() 
+    // Force a re-sync because Lit won't trigger updated()
     // if the value was already false.
-    radio._syncValidity(); 
+    radio._syncValidity();
   }
 });
 ```
@@ -445,7 +442,7 @@ Because it didn't use our `FaceMixin`, it was missing critical browser integrati
 
 **The Migration: Deletion as a Feature**
 
-The refactor resulted in removing the manual `_internals` field, the constructor-based `attachInternals()`, and all six hand-rolled getters. `FaceMixin` now provides all of that out of the box. 
+The refactor resulted in removing the manual `_internals` field, the constructor-based `attachInternals()`, and all six hand-rolled getters. `FaceMixin` now provides all of that out of the box.
 
 We then added the "missing links" to handle initial state and resets:
 
@@ -455,7 +452,7 @@ override firstUpdated() {
   this._defaultValue = Array.isArray(this.value)
     ? ([...this.value] as [number, number])
     : this.value;
-    
+
   this._updateFormValue();
 }
 
@@ -464,7 +461,7 @@ override formResetCallback(): void {
   this.value = Array.isArray(this._defaultValue)
     ? ([...this._defaultValue] as [number, number])
     : this._defaultValue;
-    
+
   this._updateFormValue();
 }
 ```
@@ -548,7 +545,7 @@ private _syncFormValue(): void {
     } else {
       const formData = new FormData();
       selected.forEach(val => formData.append(this.name, val));
-      
+
       // The browser merges these entries into the parent form's data
       this._internals.setFormValue(formData);
     }
@@ -571,7 +568,7 @@ To bridge this with `ElementInternals`, we synchronized the state across the two
 selectOption(optionOrValue: ComboboxOption | string) {
   // ... logic to update _selectedOptions
   this._selectionChanged(); // This updates this.value
-  
+
   // FACE: sync form value and validity after selection
   this._syncFormValue();
   this._syncValidity();
@@ -581,7 +578,7 @@ selectOption(optionOrValue: ComboboxOption | string) {
 clearSelection() {
   this._selectedOptions = [];
   this._selectionChanged();
-  
+
   // FACE: sync form value and validity on clear
   this._syncFormValue();
   this._syncValidity();
@@ -614,31 +611,24 @@ If there is one elephant in the room after this migration, it is this: implement
 
 ### Technical Gotchas
 
-* **`formAssociated = true` is just an invitation.** Setting this property only "opens the door." Values do not appear in `FormData` until you call `setFormValue()`. Validation does not work until you call `setValidity()`. Nothing happens automatically.
-* **Shadow DOM is invisible to Forms.** A native `<input>` inside a shadow root is invisible to an ancestor `<form>`. Using `setFormValue()` on the host element is the only way to create that connection.
-* **The Submit Button Bridge.** Discovered during consumer testing, this issue highlights a specific shadow DOM limitation. A button inside a shadow root cannot trigger a parent form submission. We implemented a light DOM traversal using `this.closest('form').requestSubmit()` to bridge that gap.
-* **Disabled states have two masters.** The `formDisabledCallback` only fires when an ancestor, such as a `<fieldset>`, is disabled. It does not fire when the element's own `disabled` attribute is toggled. You must manage both paths to ensure they do not overwrite each other.
+- **`formAssociated = true` is just an invitation.** Setting this property only "opens the door." Values do not appear in `FormData` until you call `setFormValue()`. Validation does not work until you call `setValidity()`. Nothing happens automatically.
+- **Shadow DOM is invisible to Forms.** A native `<input>` inside a shadow root is invisible to an ancestor `<form>`. Using `setFormValue()` on the host element is the only way to create that connection.
+- **The Submit Button Bridge.** Discovered during consumer testing, this issue highlights a specific shadow DOM limitation. A button inside a shadow root cannot trigger a parent form submission. We implemented a light DOM traversal using `this.closest('form').requestSubmit()` to bridge that gap.
+- **Disabled states have two masters.** The `formDisabledCallback` only fires when an ancestor, such as a `<fieldset>`, is disabled. It does not fire when the element's own `disabled` attribute is toggled. You must manage both paths to ensure they do not overwrite each other.
 
 ### Universal Rules for Every FACE Component
 
 These strategic lessons are universal rules for all FACE components. They apply whether you are delegating to a native input (Strategy 1) or managing state directly (Strategy 2).
 
-* **The `firstUpdated` sync is non-negotiable.** Every component must call `setFormValue()` in `firstUpdated()`. Without this, a pre-filled form where the value is set via a property will not register its data until a user interacts with it.
-* **Cover programmatic changes in `updated()`.** While event handlers cover user input, the `updated()` lifecycle covers everything else. This includes test code, parent components, and controlled modes. In Strategy 1, this ensures property changes reach the inner native element. In Strategy 2, it keeps `ElementInternals` in sync.
-* **Null means "Absent," not "Empty."** For checkboxes and toggles, passing `null` to `setFormValue()` ensures the key is absent from the form payload. Passing an empty string `''` keeps the key present. Matching native checkbox behavior is critical for backend compatibility.
-* **Complexity is often a mirage.** We expected radio groups and selection groups to require complex coordination. In reality, Lit's reactive property system was already the right shape. Wiring FACE into existing change paths was enough to propagate state automatically.
+- **The `firstUpdated` sync is non-negotiable.** Every component must call `setFormValue()` in `firstUpdated()`. Without this, a pre-filled form where the value is set via a property will not register its data until a user interacts with it.
+- **Cover programmatic changes in `updated()`.** While event handlers cover user input, the `updated()` lifecycle covers everything else. This includes test code, parent components, and controlled modes. In Strategy 1, this ensures property changes reach the inner native element. In Strategy 2, it keeps `ElementInternals` in sync.
+- **Null means "Absent," not "Empty."** For checkboxes and toggles, passing `null` to `setFormValue()` ensures the key is absent from the form payload. Passing an empty string `''` keeps the key present. Matching native checkbox behavior is critical for backend compatibility.
+- **Complexity is often a mirage.** We expected radio groups and selection groups to require complex coordination. In reality, Lit's reactive property system was already the right shape. Wiring FACE into existing change paths was enough to propagate state automatically.
 
 ---
 
-A few items remain on the roadmap — `formStateRestoreCallback`, cleaner 
-disabled-state separation, and runtime validation injection — but the 
-core contract is fulfilled.
+A few items remain on the roadmap — `formStateRestoreCallback`, cleaner disabled-state separation, and runtime validation injection — but the core contract is fulfilled.
 
-The irony isn't lost on me. I spent months building form components and 
-missed the most fundamental thing a form component needs to do: 
-*participate in a form.*
+The irony isn't lost on me. I spent months building form components and missed the most fundamental thing a form component needs to do: _participate in a form._
 
-FACE humbled me, then saved me. Every `ag-*` control now submits its 
-value, respects resets, and responds to a disabled fieldset — without a 
-single line of consumer workaround code. Sometimes finishing the thing 
-properly is the whole point.
+FACE humbled me, then saved me. Every `ag-*` form control now submits its value, respects resets, and responds to a disabled fieldset. All without a single line of consumer workaround code. Sometimes finishing _the thing_ properly is the whole point.
