@@ -434,6 +434,14 @@ npm dist-tag ls agnosticui-cli
 
 ### 7. Tag Git Release — triggers CLI publish
 
+> **Prerequisites — must be done and pushed to master before tagging:**
+> - `v2/cli/package.json` version bumped to `2.0.0-alpha.X`
+> - `v2/cli/src/cli.ts` version string updated to match
+> - Commit pushed to master (see step 5)
+>
+> The workflow builds `dist/` itself in CI, so no local build is required before tagging.
+> However, the version validation step will fail fast if the tag doesn't match `package.json`.
+
 Pushing a `v2.*` tag triggers the `publish-cli.yml` GitHub Actions workflow, which:
 1. Validates the tag version matches `v2/cli/package.json`
 2. Runs `npm ci`, `npm run build`, `npm test`
