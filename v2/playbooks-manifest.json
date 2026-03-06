@@ -200,6 +200,9 @@
       "externalFiles": {
         "src/skins/skin-switcher-core.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skin-switcher-core.js",
         "src/skins/skins-css-data.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skins-css-data.js"
+      },
+      "contentReplacements": {
+        "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
       }
     },
     "login-v2": {
@@ -420,6 +423,9 @@
       "externalFiles": {
         "src/skins/skin-switcher-core.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skin-switcher-core.js",
         "src/skins/skins-css-data.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skins-css-data.js"
+      },
+      "contentReplacements": {
+        "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
       }
     },
     "onboarding": {
@@ -623,6 +629,9 @@
       "externalFiles": {
         "src/skins/skin-switcher-core.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skin-switcher-core.js",
         "src/skins/skins-css-data.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skins-css-data.js"
+      },
+      "contentReplacements": {
+        "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
       }
     },
     "onboarding-v2": {
@@ -812,6 +821,9 @@
       "externalFiles": {
         "src/skins/skin-switcher-core.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skin-switcher-core.js",
         "src/skins/skins-css-data.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skins-css-data.js"
+      },
+      "contentReplacements": {
+        "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
       }
     },
     "dashboard": {
@@ -1392,6 +1404,9 @@
       "externalFiles": {
         "src/skins/skin-switcher-core.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skin-switcher-core.js",
         "src/skins/skins-css-data.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skins-css-data.js"
+      },
+      "contentReplacements": {
+        "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
       }
     },
     "support": {
@@ -1714,6 +1729,9 @@
       "externalFiles": {
         "src/skins/skin-switcher-core.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skin-switcher-core.js",
         "src/skins/skins-css-data.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skins-css-data.js"
+      },
+      "contentReplacements": {
+        "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
       }
     },
     "grid": {
@@ -2040,6 +2058,9 @@
       "externalFiles": {
         "src/skins/skin-switcher-core.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skin-switcher-core.js",
         "src/skins/skins-css-data.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skins-css-data.js"
+      },
+      "contentReplacements": {
+        "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
       }
     },
     "grid-v2": {
@@ -2374,6 +2395,9 @@
       "externalFiles": {
         "src/skins/skin-switcher-core.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skin-switcher-core.js",
         "src/skins/skins-css-data.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skins-css-data.js"
+      },
+      "contentReplacements": {
+        "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
       }
     },
     "blog": {
@@ -2678,6 +2702,9 @@
       "externalFiles": {
         "src/skins/skin-switcher-core.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skin-switcher-core.js",
         "src/skins/skins-css-data.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skins-css-data.js"
+      },
+      "contentReplacements": {
+        "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
       }
     },
     "landing": {
@@ -2940,6 +2967,9 @@
       "externalFiles": {
         "src/skins/skin-switcher-core.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skin-switcher-core.js",
         "src/skins/skins-css-data.js": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/master/v2/skins/skins-css-data.js"
+      },
+      "contentReplacements": {
+        "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
       }
     },
     "form-association": {

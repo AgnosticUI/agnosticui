@@ -25,6 +25,15 @@ interface PlaybookEntry {
   frameworkDirs?: Record<string, string>;
   frameworks: Record<string, FrameworkEntry>;
   externalFiles?: Record<string, string>;
+  contentReplacements?: Record<string, string>;
+}
+
+function applyReplacements(text: string, replacements: Record<string, string> | undefined): string {
+  if (!replacements) return text;
+  for (const [from, to] of Object.entries(replacements)) {
+    text = text.split(from).join(to);
+  }
+  return text;
 }
 
 interface Manifest {
@@ -162,8 +171,9 @@ export async function playbook(slug: string | undefined, options: PlaybookOption
           logger.warn(`  Skipped (not found): ${file}`);
         }
       } else {
-        const text = await fetchText(url);
+        let text = await fetchText(url);
         if (text !== null) {
+          text = applyReplacements(text, playbookEntry.contentReplacements);
           await writeFile(dest, text, 'utf-8');
           written++;
         } else {
@@ -184,8 +194,9 @@ export async function playbook(slug: string | undefined, options: PlaybookOption
     const dest = path.join(destRoot, destRelPath);
     try {
       await mkdir(path.dirname(dest), { recursive: true });
-      const text = await fetchText(srcUrl);
+      let text = await fetchText(srcUrl);
       if (text !== null) {
+        text = applyReplacements(text, playbookEntry.contentReplacements);
         await writeFile(dest, text, 'utf-8');
         written++;
       } else {

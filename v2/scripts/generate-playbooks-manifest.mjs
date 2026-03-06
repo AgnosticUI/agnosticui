@@ -42,6 +42,10 @@ const SKIN_SWITCHER_EXTERNAL_FILES = {
   'src/skins/skins-css-data.js': `${GITHUB_RAW_V2_BASE}/skins/skins-css-data.js`,
 };
 
+const SKIN_SWITCHER_CONTENT_REPLACEMENTS = {
+  '../../../../skins/skin-switcher-core.js': './skins/skin-switcher-core.js',
+};
+
 /**
  * Metadata that cannot be derived from the filesystem.
  * File lists are scanned automatically; only add entries here for:
@@ -56,48 +60,58 @@ const PLAYBOOK_METADATA = {
   login: {
     title: 'Login',
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   'login-v2': {
     title: 'Login Variant II',
     basePath: 'login',
     frameworkDirs: { react: 'react-example-v2', vue: 'vue-example-v2', lit: 'lit-example-v2' },
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   onboarding: {
     title: 'Onboarding',
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   'onboarding-v2': {
     title: 'Onboarding Carousel Wizard V2',
     basePath: 'onboarding',
     frameworkDirs: { react: 'react-example-v2', vue: 'vue-example-v2', lit: 'lit-example-v2' },
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   dashboard: {
     title: 'Dashboard',
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   support: {
     title: 'Support Center',
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   grid: {
     title: 'Data Grid',
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   'grid-v2': {
     title: 'Data Grid V2',
     basePath: 'grid',
     frameworkDirs: { react: 'react-example-v2', vue: 'vue-example-v2', lit: 'lit-example-v2' },
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   blog: {
     title: 'Blog / Article Reader',
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   landing: {
     title: 'Landing / Marketing Page',
     externalFiles: SKIN_SWITCHER_EXTERNAL_FILES,
+    contentReplacements: SKIN_SWITCHER_CONTENT_REPLACEMENTS,
   },
   'form-association': {
     title: 'Contact Form (FACE)',
@@ -157,6 +171,7 @@ export function generateManifest() {
     if (meta.basePath) entry.basePath = meta.basePath;
     if (meta.frameworkDirs) entry.frameworkDirs = meta.frameworkDirs;
     if (meta.externalFiles) entry.externalFiles = meta.externalFiles;
+    if (meta.contentReplacements) entry.contentReplacements = meta.contentReplacements;
 
     playbooks[slug] = entry;
   }
