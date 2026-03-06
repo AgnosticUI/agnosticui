@@ -34,6 +34,7 @@ import { add } from './commands/add.js';
 import { remove } from './commands/remove.js';
 import { list } from './commands/list.js';
 import { sync } from './commands/sync.js';
+import { playbook } from './commands/playbook.js';
 import type { Framework, SyncOptions } from './types/index.js';
 
 const program = new Command();
@@ -107,6 +108,23 @@ program
       tag: options.tag,
       force: options.force,
     } as SyncOptions);
+  });
+
+// ag playbook command
+program
+  .command('playbook [slug]')
+  .description('Install a playbook (pre-built page template) into your project')
+  .option('-f, --framework <framework>', 'Framework to use (react, vue, lit)')
+  .option('-p, --path <path>', `Destination path (default: src/playbooks/<slug>)`)
+  .option('--list', 'List all available playbooks')
+  .option('--force', 'Overwrite existing destination without prompting')
+  .action(async (slug: string | undefined, options) => {
+    await playbook(slug, {
+      framework: options.framework,
+      path: options.path,
+      list: options.list,
+      force: options.force,
+    });
   });
 
 // Parse arguments

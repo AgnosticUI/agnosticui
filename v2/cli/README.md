@@ -94,6 +94,33 @@ Update the reference library to the latest version (your customized components a
 ag sync
 ```
 
+### `ag playbook [slug]`
+
+Install a pre-built page template (playbook) into your project. Files are fetched from GitHub
+and written to `src/playbooks/<slug>/` by default.
+
+```bash
+ag playbook [slug] [options]
+
+Options:
+  -f, --framework <framework>   Framework to use (react, vue, lit)
+  -p, --path <path>             Destination path (default: src/playbooks/<slug>)
+  --list                        List all available playbooks
+  --force                       Overwrite existing destination without prompting
+
+Examples:
+  ag playbook --list                          # Show all available playbooks
+  ag playbook login --framework react         # Install the Login playbook (React)
+  ag playbook dashboard --framework vue       # Install the Dashboard playbook (Vue)
+  ag playbook login --framework lit --path ./my-login  # Custom destination
+```
+
+Available playbooks include: `login`, `login-v2`, `onboarding`, `onboarding-v2`,
+`dashboard`, `support`, `grid`, `grid-v2`, `blog`, `landing`, `form-association`.
+
+Each playbook is a self-contained Vite project you can run directly (`npm install && npm run dev`)
+or use as a reference while copying the pieces you need into your own project.
+
 ## How It Works
 
 After running `ag init`, your project structure looks like this:

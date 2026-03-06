@@ -1,0 +1,32 @@
+name: Verify Playbooks
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'v2/playbooks/**'
+      - 'v2/playbooks-manifest.json'
+      - 'v2/scripts/verify-playbooks.mjs'
+      - 'v2/scripts/generate-playbooks-manifest.mjs'
+      - 'v2/site/docs/.vitepress/theme/components/playbooks-config.ts'
+  pull_request:
+    paths:
+      - 'v2/playbooks/**'
+      - 'v2/playbooks-manifest.json'
+      - 'v2/scripts/verify-playbooks.mjs'
+      - 'v2/scripts/generate-playbooks-manifest.mjs'
+      - 'v2/site/docs/.vitepress/theme/components/playbooks-config.ts'
+
+jobs:
+  verify:
+    name: Verify playbook health and manifest currency
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run playbook verifier
+        run: node v2/scripts/verify-playbooks.mjs
