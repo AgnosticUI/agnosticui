@@ -6,7 +6,6 @@ on:
       - 'v2.*'
 
 permissions:
-  id-token: write  # Required for OIDC trusted publishing
   contents: read
 
 jobs:
@@ -56,8 +55,10 @@ jobs:
           fi
 
       - name: Publish to NPM
-        run: npm publish --provenance --tag ${{ steps.dist-tag.outputs.tag }}
+        run: npm publish --tag ${{ steps.dist-tag.outputs.tag }}
         working-directory: v2/cli
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Point latest dist-tag to this release
         if: steps.dist-tag.outputs.tag == 'alpha'
@@ -65,3 +66,5 @@ jobs:
         run: |
           PKG_VERSION=$(node -p "require('./package.json').version")
           npm dist-tag add agnosticui-cli@${PKG_VERSION} latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
