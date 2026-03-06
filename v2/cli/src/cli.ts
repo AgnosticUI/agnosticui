@@ -43,7 +43,7 @@ const program = new Command();
 program
   .name("ag")
   .description("AgnosticUI Local - The UI kit that lives in your codebase")
-  .version("2.0.0-alpha.13");
+  .version("2.0.0-alpha.14");
 
 // ag init command
 program
