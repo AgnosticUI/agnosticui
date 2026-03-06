@@ -427,6 +427,36 @@ npm run dev
 
 Or copy only the pieces you need into your own project.
 
+### Generating AI Context
+
+Once you have components installed, generate an AI context file so your coding assistant knows their prop types and import paths:
+
+```bash
+npx agnosticui-cli context
+```
+
+AgnosticUI auto-detects configured tools (Claude Code, Cursor, Copilot, Windsurf, and others) and writes a formatted context block to the appropriate file. If multiple tools are detected, it prompts you to choose.
+
+Re-running the command after adding more components splices the updated content in place — it never duplicates or overwrites unrelated content.
+
+Use `--format` to target a specific tool explicitly:
+
+```bash
+npx agnosticui-cli context --format cursor    # .cursor/rules/agnosticui.mdc (MDC frontmatter added)
+npx agnosticui-cli context --format claude    # CLAUDE.md
+npx agnosticui-cli context --format copilot  # .github/copilot-instructions.md
+npx agnosticui-cli context --format windsurf # .windsurfrules
+npx agnosticui-cli context --format openai   # AGENTS.md
+npx agnosticui-cli context --format gemini   # GEMINI.md
+npx agnosticui-cli context --format generic  # llms.txt
+```
+
+Use `--output` to write to a custom path instead:
+
+```bash
+npx agnosticui-cli context --output ./docs/agnosticui-context.md
+```
+
 ## TypeScript Configuration
 
 If using TypeScript with Lit web components, enable experimental decorators in your TypeScript configuration (e.g., `tsconfig.app.json` or `tsconfig.json`):
