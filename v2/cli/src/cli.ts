@@ -35,6 +35,7 @@ import { remove } from "./commands/remove.js";
 import { list } from "./commands/list.js";
 import { sync } from "./commands/sync.js";
 import { playbook } from "./commands/playbook.js";
+import { context } from "./commands/context.js";
 import type { Framework, SyncOptions } from "./types/index.js";
 
 const program = new Command();
@@ -148,6 +149,22 @@ program
       list: options.list,
       force: options.force,
     });
+  });
+
+// ag context command
+program
+  .command("context")
+  .description("Generate an AI context file from your installed components")
+  .option(
+    "-o, --output <path>",
+    "Explicit output file path (overrides --format and auto-detect)",
+  )
+  .option(
+    "-f, --format <tool>",
+    "AI tool to target: claude, cursor, copilot, windsurf, openai, gemini, generic",
+  )
+  .action(async (options) => {
+    await context({ output: options.output, format: options.format });
   });
 
 // Parse arguments

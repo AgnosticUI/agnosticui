@@ -81,3 +81,8 @@ export interface PlaybookOptions {
   list?: boolean;
   force?: boolean;
 }
+
+export interface ContextOptions {
+  output?: string; // Explicit output file path (overrides format and auto-detect)
+  format?: string; // AI tool format: claude, cursor, copilot, windsurf, openai, gemini, generic
+}
