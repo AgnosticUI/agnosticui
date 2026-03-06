@@ -387,6 +387,46 @@ npx agnosticui-cli init --force
 npx agnosticui-cli init --force --tag 2.0.0-alpha.21
 ```
 
+### Installing Playbooks
+
+Playbooks are pre-built, self-contained page templates (login forms, dashboards, data grids, etc.) that you can install directly into your project as a starting point or reference.
+
+List all available playbooks:
+
+```bash
+npx agnosticui-cli playbook --list
+```
+
+Install a playbook into your project:
+
+```bash
+npx agnosticui-cli playbook <slug> --framework <react|vue|lit>
+```
+
+For example:
+
+```bash
+npx agnosticui-cli playbook login --framework react
+npx agnosticui-cli playbook dashboard --framework vue
+npx agnosticui-cli playbook grid --framework lit
+```
+
+Files are written to `src/playbooks/<slug>/` by default. Use `--path` to choose a different destination:
+
+```bash
+npx agnosticui-cli playbook login --framework react --path ./my-login
+```
+
+Each playbook is a self-contained Vite project. Once installed, run it directly to see it in the browser:
+
+```bash
+cd src/playbooks/login
+npm install
+npm run dev
+```
+
+Or copy only the pieces you need into your own project.
+
 ## TypeScript Configuration
 
 If using TypeScript with Lit web components, enable experimental decorators in your TypeScript configuration (e.g., `tsconfig.app.json` or `tsconfig.json`):
