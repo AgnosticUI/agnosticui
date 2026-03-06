@@ -385,13 +385,9 @@ git push origin master
 
 ### 6. Publish to npm
 
-**agnosticui-core** (lib) is still published manually — see the steps below.
-
-**agnosticui-cli is now published automatically** via GitHub Actions when you push a `v2.*` tag. See [step 7](#7-tag-git-release-triggers-cli-publish) — the tag push replaces the manual CLI publish step.
-
-**Publish Core Library (manual):**
-
 **Make sure you've first bumped the VERSION (v2/lib/package.json and v2/site/package.json which refers to it), and then rebuilt with `npm run build`.**
+
+**Publish Core Library:**
 
 ```bash
 cd v2/lib
@@ -410,11 +406,7 @@ npm dist-tag add agnosticui-core@VERSION latest
 npm dist-tag ls agnosticui-core
 ```
 
-**Publish CLI — DEPRECATED (automated via GitHub Actions):**
-
-> ⚠️ **Deprecated:** The steps below are preserved for reference only. CLI publishing is now
-> automated — pushing a `v2.*` git tag triggers the `publish-cli.yml` workflow which builds,
-> tests, and publishes automatically. See [step 7](#7-tag-git-release-triggers-cli-publish).
+**Publish CLI:**
 
 ```bash
 cd v2/cli
@@ -432,30 +424,7 @@ npm dist-tag add agnosticui-cli@VERSION latest
 npm dist-tag ls agnosticui-cli
 ```
 
-### 7. Tag Git Release — triggers CLI publish
-
-> **Prerequisites — must be done and pushed to master before tagging:**
-> - `v2/cli/package.json` version bumped to `2.0.0-alpha.X`
-> - `v2/cli/src/cli.ts` version string updated to match
-> - Commit pushed to master (see step 5)
->
-> The workflow builds `dist/` itself in CI, so no local build is required before tagging.
-> However, the version validation step will fail fast if the tag doesn't match `package.json`.
-
-Pushing a `v2.*` tag triggers the `publish-cli.yml` GitHub Actions workflow, which:
-1. Validates the tag version matches `v2/cli/package.json`
-2. Runs `npm ci`, `npm run build`, `npm test`
-3. Publishes with `--tag alpha` (pre-release) or `--tag latest` (stable)
-4. Points the `latest` dist-tag to the new version (for pre-release tags)
-
-```bash
-git tag -a v2.0.0-alpha.X -m "Release v2.0.0-alpha.X"
-git push origin v2.0.0-alpha.X
-```
-
-Watch the publish at: https://github.com/AgnosticUI/agnosticui/actions
-
-### 8. Verify Publications
+### 7. Verify Publications
 
 ```bash
 npm info agnosticui-core
@@ -466,7 +435,7 @@ open https://www.npmjs.com/package/agnosticui-core
 open https://www.npmjs.com/package/agnosticui-cli
 ```
 
-### 9. Test Published Packages
+### 8. Test Published Packages
 
 Follow the "Testing After NPM Publication" section above.
 
@@ -477,14 +446,13 @@ Follow the "Testing After NPM Publication" section above.
 cd v2/lib && npm install && npm run build && npm pack
 cd v2/cli && npm install && npm run build && npm pack
 
-# Publish core library (manual)
+# Publish core library
 cd v2/lib && npm publish --tag alpha
 npm dist-tag add agnosticui-core@VERSION latest
 
-# Publish CLI (automated — just push the tag)
-git tag -a v2.0.0-alpha.X -m "Release v2.0.0-alpha.X"
-git push origin v2.0.0-alpha.X
-# → GitHub Actions runs publish-cli.yml automatically
+# Publish CLI
+cd v2/cli && npm publish --tag alpha
+npm dist-tag add agnosticui-cli@VERSION latest
 
 # Test in fresh environment
 mkdir /tmp/test && cd /tmp/test && npm init -y
