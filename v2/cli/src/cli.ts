@@ -157,10 +157,14 @@ program
   .description("Generate an AI context file from your installed components")
   .option(
     "-o, --output <path>",
-    "Output file path (default: CLAUDE.md)",
+    "Explicit output file path (overrides --format and auto-detect)",
+  )
+  .option(
+    "-f, --format <tool>",
+    "AI tool to target: claude, cursor, copilot, windsurf, openai, gemini, generic",
   )
   .action(async (options) => {
-    await context({ output: options.output });
+    await context({ output: options.output, format: options.format });
   });
 
 // Parse arguments

@@ -83,5 +83,6 @@ export interface PlaybookOptions {
 }
 
 export interface ContextOptions {
-  output?: string; // Output file path (default: CLAUDE.md)
+  output?: string; // Explicit output file path (overrides format and auto-detect)
+  format?: string; // AI tool format: claude, cursor, copilot, windsurf, openai, gemini, generic
 }

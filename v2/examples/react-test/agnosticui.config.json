@@ -502,7 +502,7 @@
   "ai": {
     "includeReference": true,
     "includeContext": true,
-    "contextPath": "./CLAUDE.md"
+    "contextPath": "./.cursor/rules/agnosticui.mdc"
   },
   "git": {
     "commitReference": true

@@ -131,14 +131,23 @@ Copilot) automatically understand your local component library.
 ag context [options]
 
 Options:
-  -o, --output <path>   Output file path (default: CLAUDE.md)
+  -f, --format <tool>   AI tool to target: claude, cursor, copilot, windsurf, openai, gemini, generic
+  -o, --output <path>   Explicit output path (overrides --format and auto-detect)
 
 Examples:
-  npx agnosticui-cli context                       # Generate CLAUDE.md at project root
-  npx agnosticui-cli context --output AGENTS.md    # Target a different file
+  npx agnosticui-cli context                       # Auto-detect tool, default to CLAUDE.md
+  npx agnosticui-cli context --format cursor       # Write to .cursor/rules/agnosticui.mdc
+  npx agnosticui-cli context --format copilot      # Write to .github/copilot-instructions.md
+  npx agnosticui-cli context --format windsurf     # Write to .windsurfrules
+  npx agnosticui-cli context --format openai       # Write to AGENTS.md
+  npx agnosticui-cli context --output my-ai.md     # Custom path
 ```
 
-The output file uses sentinel markers so re-running the command only replaces the AgnosticUI
+When no `--format` or `--output` is given, the command auto-detects configured AI tools
+(by checking for `.claude/`, `.cursor/`, `.windsurfrules`, etc.) and picks the right file.
+If multiple tools are detected, an interactive prompt asks which to use.
+
+The output file uses HTML sentinel markers so re-running only replaces the AgnosticUI
 section — anything else in the file is preserved. Re-run after adding or updating components.
 
 ## How It Works

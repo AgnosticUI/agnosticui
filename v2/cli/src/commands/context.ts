@@ -4,7 +4,7 @@
 import * as p from '@clack/prompts';
 import path from 'node:path';
 import { existsSync } from 'node:fs';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import type { ContextOptions } from '../types/index.js';
 import { loadConfig, saveConfig } from '../utils/config.js';
 import { logger } from '../utils/logger.js';
@@ -13,7 +13,34 @@ import pc from 'picocolors';
 const SECTION_START = '<!-- agnosticui:context:start -->';
 const SECTION_END = '<!-- agnosticui:context:end -->';
 
-const DEFAULT_OUTPUT = 'CLAUDE.md';
+// Known AI tool formats and their default output paths.
+// Detection signals are files/dirs that indicate the tool is configured in this project.
+const AI_TOOLS = {
+  claude:   { label: 'Claude Code',      file: 'CLAUDE.md',                          detect: ['.claude', 'CLAUDE.md'] },
+  cursor:   { label: 'Cursor',           file: '.cursor/rules/agnosticui.mdc',        detect: ['.cursor', '.cursorrules'] },
+  copilot:  { label: 'GitHub Copilot',   file: '.github/copilot-instructions.md',     detect: ['.github/copilot-instructions.md'] },
+  windsurf: { label: 'Windsurf',         file: '.windsurfrules',                      detect: ['.windsurfrules', '.windsurf'] },
+  openai:   { label: 'OpenAI / Codex',   file: 'AGENTS.md',                          detect: ['AGENTS.md'] },
+  gemini:   { label: 'Gemini CLI',       file: 'GEMINI.md',                          detect: ['GEMINI.md'] },
+  generic:  { label: 'Generic (llms.txt)', file: 'llms.txt',                         detect: [] },
+} as const;
+
+type AiTool = keyof typeof AI_TOOLS;
+
+/** Detect which AI tools appear to be configured in the project */
+function detectTools(cwd: string): AiTool[] {
+  return (Object.keys(AI_TOOLS) as AiTool[]).filter(tool =>
+    AI_TOOLS[tool].detect.some(signal => existsSync(path.join(cwd, signal)))
+  );
+}
+
+/** Wrap section content with Cursor MDC frontmatter when needed */
+function wrapForTool(tool: AiTool, content: string): string {
+  if (tool === 'cursor') {
+    return `---\napplyTo: '**'\n---\n\n${content}`;
+  }
+  return content;
+}
 
 /** Convert PascalCase component name to ag-kebab-case web component tag */
 function toAgTag(name: string): string {
@@ -66,8 +93,8 @@ function findPropsFile(cwd: string, componentsPath: string, componentName: strin
   return null;
 }
 
-/** Generate the full AgnosticUI markdown section */
-async function generateSection(
+/** Generate the AgnosticUI markdown body (shared across all tool formats) */
+async function generateBody(
   config: Awaited<ReturnType<typeof loadConfig>> & object,
   cwd: string
 ): Promise<string> {
@@ -144,27 +171,80 @@ export async function context(options: ContextOptions = {}): Promise<void> {
     process.exit(0);
   }
 
-  // Only use config.ai.contextPath if it looks like a file (has an extension).
-  // The default config sets contextPath to './agnosticui/docs' (a directory reference)
-  // which is not a valid output target for this command.
-  const storedPath = config.ai?.contextPath;
-  const storedIsFile = storedPath ? path.extname(storedPath) !== '' : false;
-  const outputPath = options.output ?? (storedIsFile ? storedPath! : DEFAULT_OUTPUT);
-  const absOutputPath = path.resolve(process.cwd(), outputPath);
-  const relOutputPath = path.relative(process.cwd(), absOutputPath);
+  const cwd = process.cwd();
+
+  // Resolve the output path in priority order:
+  // 1. --output flag (explicit user override)
+  // 2. --format flag (use that tool's default file)
+  // 3. Previously persisted contextPath (set by a prior ag context run — identified by file extension)
+  // 4. Auto-detect configured AI tools in the project
+  // 5. Fall back to CLAUDE.md
+  let outputPath: string;
+
+  if (options.output) {
+    outputPath = options.output;
+  } else if (options.format) {
+    const tool = options.format as AiTool;
+    if (!AI_TOOLS[tool]) {
+      logger.error(`Unknown format "${options.format}". Valid formats: ${Object.keys(AI_TOOLS).join(', ')}`);
+      process.exit(1);
+    }
+    outputPath = AI_TOOLS[tool].file;
+  } else {
+    const storedPath = config.ai?.contextPath;
+    const storedIsFile = storedPath ? path.extname(storedPath) !== '' : false;
+
+    if (storedIsFile) {
+      outputPath = storedPath!;
+    } else {
+      const detected = detectTools(cwd);
+      if (detected.length === 1) {
+        outputPath = AI_TOOLS[detected[0]].file;
+        console.log(pc.dim(`  Detected ${AI_TOOLS[detected[0]].label} — writing to ${outputPath}`));
+      } else if (detected.length > 1) {
+        const choice = await p.select({
+          message: 'Multiple AI tools detected. Which should receive the context file?',
+          options: detected.map(tool => ({
+            value: tool,
+            label: `${AI_TOOLS[tool].label}  ${pc.dim(AI_TOOLS[tool].file)}`,
+          })),
+        });
+        if (p.isCancel(choice)) {
+          p.cancel('Operation cancelled.');
+          process.exit(0);
+        }
+        outputPath = AI_TOOLS[choice as AiTool].file;
+      } else {
+        // No tool detected — default to CLAUDE.md
+        outputPath = AI_TOOLS.claude.file;
+        console.log(pc.dim(`  No AI tool detected — defaulting to ${outputPath}`));
+      }
+    }
+  }
+
+  const absOutputPath = path.resolve(cwd, outputPath);
+  const relOutputPath = path.relative(cwd, absOutputPath);
+
+  // Determine which tool this output file belongs to (for format-specific wrapping)
+  const matchedTool = (Object.keys(AI_TOOLS) as AiTool[]).find(
+    t => AI_TOOLS[t].file === outputPath || AI_TOOLS[t].file === relOutputPath
+  ) ?? 'claude';
 
   const spinner = p.spinner();
   spinner.start(`Generating context for ${componentCount} component(s)...`);
 
   try {
-    const section = await generateSection(config, process.cwd());
+    const body = await generateBody(config, cwd);
+
+    // Ensure parent directory exists (e.g. .cursor/rules/)
+    await mkdir(path.dirname(absOutputPath), { recursive: true });
 
     let finalContent: string;
     if (existsSync(absOutputPath)) {
       const existing = await readFile(absOutputPath, 'utf-8');
-      finalContent = spliceSection(existing, section);
+      finalContent = spliceSection(existing, body);
     } else {
-      finalContent = section + '\n';
+      finalContent = wrapForTool(matchedTool, body) + '\n';
     }
 
     await writeFile(absOutputPath, finalContent, 'utf-8');
@@ -175,7 +255,7 @@ export async function context(options: ContextOptions = {}): Promise<void> {
     process.exit(1);
   }
 
-  // Persist the output path to agnosticui.config.json so re-runs use the same file
+  // Persist the output path so subsequent runs use the same file automatically
   const persistPath = `./${relOutputPath}`;
   if (config.ai?.contextPath !== persistPath) {
     config.ai = { ...config.ai, contextPath: persistPath };
