@@ -1,0 +1,12 @@
+node_modules/
+dist/
+
+# Compiled test artifacts (test/ is transpiled by Vitest, not tsc)
+test/**/*.js
+test/**/*.js.map
+test/**/*.d.ts
+test/**/*.d.ts.map
+vitest.config.js
+vitest.config.js.map
+vitest.config.d.ts
+vitest.config.d.ts.map
