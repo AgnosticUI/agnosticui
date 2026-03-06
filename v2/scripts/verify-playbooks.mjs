@@ -16,10 +16,12 @@
  *   3. agnosticui.config.json version should match the lib package.json version
  *   4. src/components/ag/ directory must exist
  *   5. package.json must exist and have a "scripts.dev" entry
+ *   6. playbooks-manifest.json is current (regenerated if --fix is passed)
  */
 
 import { readFileSync, existsSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join, relative, dirname } from 'node:path';
+import { generateManifest, writeManifest, isManifestCurrent } from './generate-playbooks-manifest.mjs';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -170,6 +172,26 @@ function checkExample(exampleDir) {
   return issues;
 }
 
+/**
+ * Check 6: playbooks-manifest.json currency
+ * Re-generates the manifest from disk and compares to the committed copy.
+ * Returns the number of issues found (0 or 1).
+ */
+function checkManifestCurrency() {
+  console.log(`\n${BOLD}playbooks-manifest.json${RESET}`);
+  if (isManifestCurrent()) {
+    pass('playbooks-manifest.json is current');
+    return 0;
+  }
+  if (FIX_MODE) {
+    writeManifest(generateManifest());
+    fixed('Regenerated playbooks-manifest.json');
+    return 0;
+  }
+  fail('playbooks-manifest.json is stale -- run: node v2/scripts/verify-playbooks.mjs --fix');
+  return 1;
+}
+
 // Main
 const examples = findExamples(PLAYBOOKS_DIR);
 
@@ -182,6 +204,8 @@ let totalIssues = 0;
 for (const example of examples.sort()) {
   totalIssues += checkExample(example);
 }
+
+totalIssues += checkManifestCurrency();
 
 console.log(`\n${BOLD}Summary:${RESET} ${totalIssues === 0
   ? `${GREEN}All ${examples.length} examples healthy${RESET}`

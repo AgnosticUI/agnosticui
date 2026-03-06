@@ -74,3 +74,10 @@ export interface AddOptions {
 export interface RemoveOptions {
   force?: boolean;
 }
+
+export interface PlaybookOptions {
+  framework?: string;
+  path?: string;
+  list?: boolean;
+  force?: boolean;
+}
