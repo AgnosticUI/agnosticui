@@ -28,32 +28,48 @@
  *
  * See: v2/cli/README.md "Testing After NPM Publication" for verification steps.
  */
-import { Command } from 'commander';
-import { init } from './commands/init.js';
-import { add } from './commands/add.js';
-import { remove } from './commands/remove.js';
-import { list } from './commands/list.js';
-import { sync } from './commands/sync.js';
-import { playbook } from './commands/playbook.js';
-import type { Framework, SyncOptions } from './types/index.js';
+import { Command } from "commander";
+import { init } from "./commands/init.js";
+import { add } from "./commands/add.js";
+import { remove } from "./commands/remove.js";
+import { list } from "./commands/list.js";
+import { sync } from "./commands/sync.js";
+import { playbook } from "./commands/playbook.js";
+import type { Framework, SyncOptions } from "./types/index.js";
 
 const program = new Command();
 
 program
-  .name('ag')
-  .description('AgnosticUI Local - The UI kit that lives in your codebase')
-  .version('2.0.0-alpha.12');
+  .name("ag")
+  .description("AgnosticUI Local - The UI kit that lives in your codebase")
+  .version("2.0.0-alpha.13");
 
 // ag init command
 program
-  .command('init')
-  .description('Initialize AgnosticUI Local in your project')
-  .option('-f, --framework <framework>', 'Framework to use (react, vue, lit, svelte)')
-  .option('-p, --components-path <path>', 'Path where components will be generated')
-  .option('-t, --tarball <path>', 'Path to local tarball (for development)')
-  .option('--tag <tag>', 'NPM dist-tag or version to download (e.g., alpha, latest, 2.0.0-alpha.21)', 'alpha')
-  .option('--skip-prompts', 'Skip all interactive prompts (non-interactive mode)')
-  .option('--force', 'Re-initialize even if already initialized (reuses existing framework and path)')
+  .command("init")
+  .description("Initialize AgnosticUI Local in your project")
+  .option(
+    "-f, --framework <framework>",
+    "Framework to use (react, vue, lit, svelte)",
+  )
+  .option(
+    "-p, --components-path <path>",
+    "Path where components will be generated",
+  )
+  .option("-t, --tarball <path>", "Path to local tarball (for development)")
+  .option(
+    "--tag <tag>",
+    "NPM dist-tag or version to download (e.g., alpha, latest, 2.0.0-alpha.21)",
+    "alpha",
+  )
+  .option(
+    "--skip-prompts",
+    "Skip all interactive prompts (non-interactive mode)",
+  )
+  .option(
+    "--force",
+    "Re-initialize even if already initialized (reuses existing framework and path)",
+  )
   .action(async (options) => {
     await init({
       framework: options.framework as Framework | undefined,
@@ -67,9 +83,9 @@ program
 
 // ag add command
 program
-  .command('add <components...>')
-  .description('Add component(s) to your project')
-  .option('--force', 'Overwrite existing components')
+  .command("add <components...>")
+  .description("Add component(s) to your project")
+  .option("--force", "Overwrite existing components")
   .action(async (components: string[], options) => {
     await add(components, {
       force: options.force,
@@ -78,9 +94,9 @@ program
 
 // ag remove command
 program
-  .command('remove <components...>')
-  .description('Remove component(s) from your project')
-  .option('--force', 'Skip confirmation prompt')
+  .command("remove <components...>")
+  .description("Remove component(s) from your project")
+  .option("--force", "Skip confirmation prompt")
   .action(async (components: string[], options) => {
     await remove(components, {
       force: options.force,
@@ -89,19 +105,23 @@ program
 
 // ag list command
 program
-  .command('list')
-  .description('List available components')
+  .command("list")
+  .description("List available components")
   .action(async () => {
     await list();
   });
 
 // ag sync command
 program
-  .command('sync')
-  .description('Update reference library from NPM or a local tarball')
-  .option('-t, --tarball <path>', 'Path to local tarball (skips NPM download)')
-  .option('--tag <tag>', 'NPM dist-tag or version to download (e.g., alpha, latest, 2.0.0-alpha.21)', 'alpha')
-  .option('--force', 'Bypass confirmation prompt')
+  .command("sync")
+  .description("Update reference library from NPM or a local tarball")
+  .option("-t, --tarball <path>", "Path to local tarball (skips NPM download)")
+  .option(
+    "--tag <tag>",
+    "NPM dist-tag or version to download (e.g., alpha, latest, 2.0.0-alpha.21)",
+    "alpha",
+  )
+  .option("--force", "Bypass confirmation prompt")
   .action(async (options) => {
     await sync({
       tarball: options.tarball,
@@ -112,12 +132,15 @@ program
 
 // ag playbook command
 program
-  .command('playbook [slug]')
-  .description('Install a playbook (pre-built page template) into your project')
-  .option('-f, --framework <framework>', 'Framework to use (react, vue, lit)')
-  .option('-p, --path <path>', `Destination path (default: src/playbooks/<slug>)`)
-  .option('--list', 'List all available playbooks')
-  .option('--force', 'Overwrite existing destination without prompting')
+  .command("playbook [slug]")
+  .description("Install a playbook (pre-built page template) into your project")
+  .option("-f, --framework <framework>", "Framework to use (react, vue, lit)")
+  .option(
+    "-p, --path <path>",
+    `Destination path (default: src/playbooks/<slug>)`,
+  )
+  .option("--list", "List all available playbooks")
+  .option("--force", "Overwrite existing destination without prompting")
   .action(async (slug: string | undefined, options) => {
     await playbook(slug, {
       framework: options.framework,
