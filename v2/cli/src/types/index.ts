@@ -81,3 +81,7 @@ export interface PlaybookOptions {
   list?: boolean;
   force?: boolean;
 }
+
+export interface ContextOptions {
+  output?: string; // Output file path (default: CLAUDE.md)
+}

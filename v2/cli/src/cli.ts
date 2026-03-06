@@ -35,6 +35,7 @@ import { remove } from "./commands/remove.js";
 import { list } from "./commands/list.js";
 import { sync } from "./commands/sync.js";
 import { playbook } from "./commands/playbook.js";
+import { context } from "./commands/context.js";
 import type { Framework, SyncOptions } from "./types/index.js";
 
 const program = new Command();
@@ -148,6 +149,18 @@ program
       list: options.list,
       force: options.force,
     });
+  });
+
+// ag context command
+program
+  .command("context")
+  .description("Generate an AI context file from your installed components")
+  .option(
+    "-o, --output <path>",
+    "Output file path (default: CLAUDE.md)",
+  )
+  .action(async (options) => {
+    await context({ output: options.output });
   });
 
 // Parse arguments

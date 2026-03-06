@@ -10,7 +10,7 @@ AgnosticUI Local is a new approach to UI libraries. Instead of installing compon
 
 **Benefits:**
 
-- **AI-Friendly**: Your entire component library is visible to AI coding tools (Cursor, Windsurf, Claude)
+- **AI-Friendly**: Run `ag context` to generate a `CLAUDE.md` that gives AI coding tools (Claude Code, Cursor, Windsurf) full awareness of your installed components and their props
 - **Complete Ownership**: Components are copied to your project - modify them however you want
 - **Zero Lock-in**: No black boxes, no vendor dependencies
 - **Upgrade Safety**: Reference library updates independently from your customized components
@@ -120,6 +120,26 @@ Available playbooks include: `login`, `login-v2`, `onboarding`, `onboarding-v2`,
 
 Each playbook is a self-contained Vite project you can run directly (`npm install && npm run dev`)
 or use as a reference while copying the pieces you need into your own project.
+
+### `ag context`
+
+Generate an AI context file from your installed components. The file describes every installed
+component — its import path, props, and types — so AI coding tools (Claude Code, Cursor, Windsurf,
+Copilot) automatically understand your local component library.
+
+```bash
+ag context [options]
+
+Options:
+  -o, --output <path>   Output file path (default: CLAUDE.md)
+
+Examples:
+  npx agnosticui-cli context                       # Generate CLAUDE.md at project root
+  npx agnosticui-cli context --output AGENTS.md    # Target a different file
+```
+
+The output file uses sentinel markers so re-running the command only replaces the AgnosticUI
+section — anything else in the file is preserved. Re-run after adding or updating components.
 
 ## How It Works
 
