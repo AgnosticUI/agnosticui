@@ -56,7 +56,7 @@ jobs:
           fi
 
       - name: Publish to NPM
-        run: npm publish --tag ${{ steps.dist-tag.outputs.tag }}
+        run: npm publish --provenance --tag ${{ steps.dist-tag.outputs.tag }}
         working-directory: v2/cli
 
       - name: Point latest dist-tag to this release
