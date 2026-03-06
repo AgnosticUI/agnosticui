@@ -42,13 +42,13 @@ export async function init(options: InitOptions = {}): Promise<void> {
 
   // Validate we're inside a project directory
   if (!existsSync(path.join(process.cwd(), 'package.json'))) {
-    logger.error("It looks like you haven't set up a project yet.");
-    logger.info('Please run ' + pc.cyan('npm create vite@latest') + ' before initializing AgnosticUI.');
+    logger.error("No package.json found. Please run this command from inside an existing project.");
     process.exit(1);
   }
   const hasMainTs = existsSync(path.join(process.cwd(), 'src', 'main.ts'));
   const hasMainTsx = existsSync(path.join(process.cwd(), 'src', 'main.tsx'));
-  const entryPoint = hasMainTsx ? 'main.tsx' : hasMainTs ? 'main.ts' : 'main.{ts|tsx}';
+  // entryPoint is null when no Vite-style entry exists (e.g. Next.js, Nuxt, SvelteKit)
+  const entryPoint: string | null = hasMainTsx ? 'main.tsx' : hasMainTs ? 'main.ts' : null;
 
   // Prompt for framework if not provided
   let framework = options.framework;
@@ -238,10 +238,10 @@ export async function init(options: InitOptions = {}): Promise<void> {
     }
 
     logger.box('Next Steps:', [
-      pc.dim(`1. Import CSS tokens in your app entry point (${entryPoint}):`),
+      pc.dim(`1. Import CSS tokens in your app entry point${entryPoint ? ` (${entryPoint})` : ' or global CSS file'}:`),
       '  ' + logger.code(`import '${componentsPath}/styles/ag-tokens.css'`),
       '  ' + logger.code(`import '${componentsPath}/styles/ag-tokens-dark.css'`),
-      pc.dim('  (Or use <link> tags in your index.html)'),
+      pc.dim(entryPoint ? '  (Or use <link> tags in your index.html)' : '  (e.g. globals.css, app.css, app/layout.tsx, nuxt.config.ts css array, etc.)'),
       '',
       pc.dim('2. Set up theming (override Vite\'s default dark mode):'),
       '  ' + pc.dim('Add to your main CSS file or <style> tag:'),
