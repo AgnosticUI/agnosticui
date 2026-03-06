@@ -137,7 +137,17 @@ Follow the "Next Steps" printed by the CLI:
    npx agnosticui-cli add button input card
    ```
 
-4. **Use Components**
+4. **Wire Up Your AI Coding Assistant**
+
+   Generate a context file so tools like Claude Code, Cursor, or Copilot know your installed components, their prop types, and import paths:
+
+   ```bash
+   npx agnosticui-cli context
+   ```
+
+   AgnosticUI auto-detects which AI tool you're using and writes to the right file. Re-run after adding more components to keep context current. See the [Generating AI Context](#generating-ai-context) section below for `--format` and `--output` options.
+
+5. **Use Components**
 
    Import and use them in your app:
 
