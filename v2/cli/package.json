@@ -16,7 +16,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "echo \"Tests coming soon\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
@@ -39,12 +40,13 @@
   "devDependencies": {
     "@types/node": "^22.10.1",
     "@types/tar": "^6.1.13",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.9"
   },
   "peerDependencies": {
-    "lit": "^3.0.0",
+    "@floating-ui/dom": "^1.0.0",
     "focus-trap": "^7.0.0",
-    "@floating-ui/dom": "^1.0.0"
+    "lit": "^3.0.0"
   },
   "peerDependenciesMeta": {
     "focus-trap": {
