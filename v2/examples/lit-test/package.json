@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
-    "agnosticui-cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.1.tgz",
+    "agnosticui-cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.12.tgz",
     "focus-trap": "^7.6.6",
     "lit": "^3.3.1"
   },
