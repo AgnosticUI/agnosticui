@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lit-test – Layout</title>
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css">
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css">
+</head>
+<body style="padding:20px;display:flex;flex-direction:column;gap:24px">
+  <h1>Layout</h1>
+  <ag-card>Card content</ag-card>
+  <ag-flex-row><span>Item 1</span><span>Item 2</span></ag-flex-row>
+  <ag-header>Header content</ag-header>
+  <ag-sidebar>Sidebar content</ag-sidebar>
+  <ag-sidebar-nav>Nav content</ag-sidebar-nav>
+  <ag-divider></ag-divider>
+  <ag-aspect-ratio width="16" height="9" max-width="320">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="placeholder" />
+  </ag-aspect-ratio>
+  <ag-fieldset legend="Demo Fieldset"><span>Field content</span></ag-fieldset>
+  <script type="module" src="/pages/layout.ts"></script>
+</body>
+</html>

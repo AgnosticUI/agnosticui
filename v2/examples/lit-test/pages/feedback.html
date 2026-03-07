@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lit-test – Feedback</title>
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css">
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css">
+</head>
+<body style="padding:20px;display:flex;flex-direction:column;gap:20px">
+  <h1>Feedback</h1>
+  <ag-alert variant="success">Success alert</ag-alert>
+  <ag-toast open type="success">Toast message</ag-toast>
+  <ag-badge value="5"></ag-badge>
+  <ag-badge-fx value="3"></ag-badge-fx>
+  <ag-progress value="60" label="Progress"></ag-progress>
+  <ag-progress-ring value="75" label="75%"></ag-progress-ring>
+  <ag-spinner aria-label="Loading"></ag-spinner>
+  <ag-loader aria-label="Loading content"></ag-loader>
+  <ag-skeleton-loader variant="text" width="200px" height="16px"></ag-skeleton-loader>
+  <script type="module" src="/pages/feedback.ts"></script>
+</body>
+</html>

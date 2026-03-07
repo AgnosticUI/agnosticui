@@ -1,0 +1,72 @@
+name: Verify Examples
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'v2/examples/**'
+      - 'v2/lib/**'
+      - 'v2/cli/**'
+      - 'v2/scripts/verify-examples.mjs'
+  pull_request:
+    paths:
+      - 'v2/examples/**'
+      - 'v2/lib/**'
+      - 'v2/cli/**'
+      - 'v2/scripts/verify-examples.mjs'
+
+jobs:
+  verify:
+    name: Verify example health
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+
+      - name: Run examples verifier
+        run: node v2/scripts/verify-examples.mjs
+
+  e2e:
+    name: Playwright smoke tests (${{ matrix.example }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        example: [react-test, vue-test, lit-test]
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+
+      - name: Install CLI dependencies
+        run: npm ci
+        working-directory: v2/cli
+
+      - name: Build and pack CLI tarball
+        run: npm run build && npm pack
+        working-directory: v2/cli
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: v2/examples/${{ matrix.example }}
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+        working-directory: v2/examples/${{ matrix.example }}
+
+      - name: Run smoke tests
+        run: npx playwright test --max-failures=1
+        working-directory: v2/examples/${{ matrix.example }}
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ matrix.example }}
+          path: v2/examples/${{ matrix.example }}/playwright-report/
+          retention-days: 30

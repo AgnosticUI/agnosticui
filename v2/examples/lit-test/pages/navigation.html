@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lit-test – Navigation</title>
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css">
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css">
+</head>
+<body style="padding:20px;display:flex;flex-direction:column;gap:24px">
+  <h1>Navigation</h1>
+  <ag-breadcrumb></ag-breadcrumb>
+  <ag-tabs aria-label="Demo tabs">
+    <ag-tab panel="tab1">Tab 1</ag-tab>
+    <ag-tab panel="tab2">Tab 2</ag-tab>
+    <ag-tab-panel>Panel 1</ag-tab-panel>
+    <ag-tab-panel>Panel 2</ag-tab-panel>
+  </ag-tabs>
+  <ag-pagination current="1" total-pages="10"></ag-pagination>
+  <ag-menu-button>
+    Options
+    <ag-menu slot="menu">
+      <ag-menu-item value="edit">Edit</ag-menu-item>
+      <ag-menu-item value="delete">Delete</ag-menu-item>
+    </ag-menu>
+  </ag-menu-button>
+  <script type="module" src="/pages/navigation.ts"></script>
+</body>
+</html>
