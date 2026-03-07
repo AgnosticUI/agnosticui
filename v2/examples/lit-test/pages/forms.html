@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lit-test – Forms</title>
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css">
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css">
+</head>
+<body style="padding:20px;display:flex;flex-direction:column;gap:20px">
+  <h1>Forms</h1>
+  <ag-input label="Name" placeholder="Enter name"></ag-input>
+  <ag-checkbox label-text="Accept terms"></ag-checkbox>
+  <ag-radio label-text="Option A" name="demo" value="a"></ag-radio>
+  <ag-select label="Choose"><option value="1">One</option><option value="2">Two</option></ag-select>
+  <ag-toggle label="Enable"></ag-toggle>
+  <ag-slider label="Volume" min="0" max="100" value="50"></ag-slider>
+  <ag-combobox label="Pick one"></ag-combobox>
+  <ag-rating label="Rating" value="3"></ag-rating>
+  <script type="module" src="/pages/forms.ts"></script>
+</body>
+</html>

@@ -1,18 +1,7 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    vue({
-      template: {
-        compilerOptions: {
-          isCustomElement: (tag) => tag.startsWith('ag-'),
-        }
-      }
-    })
-  ],
   build: {
     rollupOptions: {
       input: {
@@ -27,16 +16,4 @@ export default defineConfig({
       },
     },
   },
-  optimizeDeps: {
-    noDiscovery: true,
-    holdUntilCrawlEnd: false,
-    include: [
-      'vue',
-      'lit',
-      'lit/decorators.js',
-      'lit/directives/if-defined.js',
-      '@floating-ui/dom',
-      'focus-trap',
-    ],
-  },
-})
+});

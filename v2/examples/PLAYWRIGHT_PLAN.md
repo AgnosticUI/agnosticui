@@ -60,90 +60,90 @@ Basic "does the framework integration work?" check. One ag-button, one ag-alert.
 | Smoke     | ag-button   | ✅    | ✅  | ✅  |
 | Smoke     | ag-alert    | ✅    | ✅  | ✅  |
 
-### Milestone 2 – Full Coverage (IN PROGRESS)
+### Milestone 2 – Full Coverage (DONE)
 One page per category. MVP assertion: element attached to DOM.
 
 #### Actions (`pages/actions.html`)
 | Component        | ag-tag-name       | React | Vue | Lit |
 |-----------------|-------------------|-------|-----|-----|
-| Button          | ag-button         | ✅    | ⬜  | ⬜  |
-| ButtonFx        | ag-button-fx      | ✅    | ⬜  | ⬜  |
-| IconButton      | ag-icon-button    | ✅    | ⬜  | ⬜  |
-| IconButtonFx    | ag-icon-button-fx | ✅    | ⬜  | ⬜  |
-| CopyButton      | ag-copy-button    | ✅    | ⬜  | ⬜  |
-| Link            | ag-link           | ✅    | ⬜  | ⬜  |
+| Button          | ag-button         | ✅    | ✅  | ✅  |
+| ButtonFx        | ag-button-fx      | ✅    | ✅  | ✅  |
+| IconButton      | ag-icon-button    | ✅    | ✅  | ✅  |
+| IconButtonFx    | ag-icon-button-fx | ✅    | ✅  | ✅  |
+| CopyButton      | ag-copy-button    | ✅    | ✅  | ✅  |
+| Link            | ag-link           | ✅    | ✅  | ✅  |
 
 #### Forms (`pages/forms.html`)
 | Component   | ag-tag-name   | React | Vue | Lit |
 |-------------|---------------|-------|-----|-----|
-| Input       | ag-input      | ✅    | ⬜  | ⬜  |
-| Checkbox    | ag-checkbox   | ✅    | ⬜  | ⬜  |
-| Radio       | ag-radio      | ✅    | ⬜  | ⬜  |
-| Select      | ag-select     | ✅    | ⬜  | ⬜  |
-| Toggle      | ag-toggle     | ✅    | ⬜  | ⬜  |
-| Slider      | ag-slider     | ✅    | ⬜  | ⬜  |
-| Combobox    | ag-combobox   | ✅    | ⬜  | ⬜  |
-| Rating      | ag-rating     | ✅    | ⬜  | ⬜  |
+| Input       | ag-input      | ✅    | ✅  | ✅  |
+| Checkbox    | ag-checkbox   | ✅    | ✅  | ✅  |
+| Radio       | ag-radio      | ✅    | ✅  | ✅  |
+| Select      | ag-select     | ✅    | ✅  | ✅  |
+| Toggle      | ag-toggle     | ✅    | ✅  | ✅  |
+| Slider      | ag-slider     | ✅    | ✅  | ✅  |
+| Combobox    | ag-combobox   | ✅    | ✅  | ✅  |
+| Rating      | ag-rating     | ✅    | ✅  | ✅  |
 
 #### Feedback (`pages/feedback.html`)
 | Component     | ag-tag-name        | React | Vue | Lit |
 |--------------|---------------------|-------|-----|-----|
-| Alert        | ag-alert            | ✅    | ⬜  | ⬜  |
-| Toast        | ag-toast            | ✅    | ⬜  | ⬜  |
-| Badge        | ag-badge            | ✅    | ⬜  | ⬜  |
-| BadgeFx      | ag-badge-fx         | ✅    | ⬜  | ⬜  |
-| Progress     | ag-progress         | ✅    | ⬜  | ⬜  |
-| ProgressRing | ag-progress-ring    | ✅    | ⬜  | ⬜  |
-| Spinner      | ag-spinner          | ✅    | ⬜  | ⬜  |
-| Loader       | ag-loader           | ✅    | ⬜  | ⬜  |
-| SkeletonLoader | ag-skeleton-loader | ✅    | ⬜  | ⬜  |
+| Alert        | ag-alert            | ✅    | ✅  | ✅  |
+| Toast        | ag-toast            | ✅    | ✅  | ✅  |
+| Badge        | ag-badge            | ✅    | ✅  | ✅  |
+| BadgeFx      | ag-badge-fx         | ✅    | ✅  | ✅  |
+| Progress     | ag-progress         | ✅    | ✅  | ✅  |
+| ProgressRing | ag-progress-ring    | ✅    | ✅  | ✅  |
+| Spinner      | ag-spinner          | ✅    | ✅  | ✅  |
+| Loader       | ag-loader           | ✅    | ✅  | ✅  |
+| SkeletonLoader | ag-skeleton-loader | ✅    | ✅  | ✅  |
 
 #### Navigation (`pages/navigation.html`)
 | Component   | ag-tag-name    | React | Vue | Lit |
 |-------------|----------------|-------|-----|-----|
-| Breadcrumb  | ag-breadcrumb  | ✅    | ⬜  | ⬜  |
-| Tabs        | ag-tabs        | ✅    | ⬜  | ⬜  |
-| Pagination  | ag-pagination  | ✅    | ⬜  | ⬜  |
-| Menu        | ag-menu-button | ✅    | ⬜  | ⬜  |
+| Breadcrumb  | ag-breadcrumb  | ✅    | ✅  | ✅  |
+| Tabs        | ag-tabs        | ✅    | ✅  | ✅  |
+| Pagination  | ag-pagination  | ✅    | ✅  | ✅  |
+| Menu        | ag-menu-button | ✅    | ✅  | ✅  |
 
 #### Overlays (`pages/overlays.html`)
 | Component   | ag-tag-name    | React | Vue | Lit |
 |-------------|----------------|-------|-----|-----|
-| Dialog      | ag-dialog      | ✅    | ⬜  | ⬜  |
-| Drawer      | ag-drawer      | ✅    | ⬜  | ⬜  |
-| Popover     | ag-popover     | ✅    | ⬜  | ⬜  |
-| Tooltip     | ag-tooltip     | ✅    | ⬜  | ⬜  |
-| Accordion   | ag-accordion   | ✅    | ⬜  | ⬜  |
-| Collapsible | ag-collapsible | ✅    | ⬜  | ⬜  |
+| Dialog      | ag-dialog      | ✅    | ✅  | ✅  |
+| Drawer      | ag-drawer      | ✅    | ✅  | ✅  |
+| Popover     | ag-popover     | ✅    | ✅  | ✅  |
+| Tooltip     | ag-tooltip     | ✅    | ✅  | ✅  |
+| Accordion   | ag-accordion   | ✅    | ✅  | ✅  |
+| Collapsible | ag-collapsible | ✅    | ✅  | ✅  |
 
 #### Layout (`pages/layout.html`)
 | Component   | ag-tag-name       | React | Vue | Lit |
 |-------------|-------------------|-------|-----|-----|
-| Card        | ag-card           | ✅    | ⬜  | ⬜  |
-| Flex        | ag-flex-row       | ✅    | ⬜  | ⬜  |
-| Header      | ag-header         | ✅    | ⬜  | ⬜  |
-| Sidebar     | ag-sidebar        | ✅    | ⬜  | ⬜  |
-| SidebarNav  | ag-sidebar-nav    | ✅    | ⬜  | ⬜  |
-| Divider     | ag-divider        | ✅    | ⬜  | ⬜  |
-| AspectRatio | ag-aspect-ratio   | ✅    | ⬜  | ⬜  |
-| Fieldset    | ag-fieldset       | ✅    | ⬜  | ⬜  |
+| Card        | ag-card           | ✅    | ✅  | ✅  |
+| Flex        | ag-flex-row       | ✅    | ✅  | ✅  |
+| Header      | ag-header         | ✅    | ✅  | ✅  |
+| Sidebar     | ag-sidebar        | ✅    | ✅  | ✅  |
+| SidebarNav  | ag-sidebar-nav    | ✅    | ✅  | ✅  |
+| Divider     | ag-divider        | ✅    | ✅  | ✅  |
+| AspectRatio | ag-aspect-ratio   | ✅    | ✅  | ✅  |
+| Fieldset    | ag-fieldset       | ✅    | ✅  | ✅  |
 
 #### Display (`pages/display.html`)
 | Component       | ag-tag-name          | React | Vue | Lit |
 |----------------|----------------------|-------|-----|-----|
-| Avatar         | ag-avatar            | ✅    | ⬜  | ⬜  |
-| Image          | ag-image             | ✅    | ⬜  | ⬜  |
-| Icon           | ag-icon              | ✅    | ⬜  | ⬜  |
-| Tag            | ag-tag               | ✅    | ⬜  | ⬜  |
-| Mark           | ag-mark              | ✅    | ⬜  | ⬜  |
-| Kbd            | ag-kbd               | ✅    | ⬜  | ⬜  |
-| IntlFormatter  | ag-intl-formatter    | ✅    | ⬜  | ⬜  |
-| Timeline       | ag-timeline          | ✅    | ⬜  | ⬜  |
-| MessageBubble  | ag-message-bubble    | ✅    | ⬜  | ⬜  |
-| EmptyState     | ag-empty-state       | ✅    | ⬜  | ⬜  |
-| VisuallyHidden | ag-visually-hidden   | ✅    | ⬜  | ⬜  |
-| ScrollProgress | ag-scroll-progress   | ✅    | ⬜  | ⬜  |
-| ScrollToButton | ag-scroll-to-button  | ✅    | ⬜  | ⬜  |
+| Avatar         | ag-avatar            | ✅    | ✅  | ✅  |
+| Image          | ag-image             | ✅    | ✅  | ✅  |
+| Icon           | ag-icon              | ✅    | ✅  | ✅  |
+| Tag            | ag-tag               | ✅    | ✅  | ✅  |
+| Mark           | ag-mark              | ✅    | ✅  | ✅  |
+| Kbd            | ag-kbd               | ✅    | ✅  | ✅  |
+| IntlFormatter  | ag-intl-formatter    | ✅    | ✅  | ✅  |
+| Timeline       | ag-timeline          | ✅    | ✅  | ✅  |
+| MessageBubble  | ag-message-bubble    | ✅    | ✅  | ✅  |
+| EmptyState     | ag-empty-state       | ✅    | ✅  | ✅  |
+| VisuallyHidden | ag-visually-hidden   | ✅    | ✅  | ✅  |
+| ScrollProgress | ag-scroll-progress   | ✅    | ✅  | ✅  |
+| ScrollToButton | ag-scroll-to-button  | ✅    | ✅  | ✅  |
 
 ---
 

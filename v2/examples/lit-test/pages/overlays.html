@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lit-test – Overlays</title>
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css">
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css">
+</head>
+<body style="padding:20px;display:flex;flex-direction:column;gap:24px">
+  <h1>Overlays</h1>
+  <ag-dialog heading="Demo Dialog"></ag-dialog>
+  <ag-drawer heading="Demo Drawer"></ag-drawer>
+  <ag-popover>
+    <button slot="trigger">Open Popover</button>
+    <span slot="content">Popover content</span>
+  </ag-popover>
+  <ag-tooltip content="Tooltip text">
+    <button>Hover me</button>
+  </ag-tooltip>
+  <ag-accordion>
+    <ag-accordion-item>
+      <span slot="header">Section 1</span>
+      <div slot="content">Content for section 1</div>
+    </ag-accordion-item>
+  </ag-accordion>
+  <ag-collapsible>
+    <span slot="summary">Collapsible</span>
+    <div>Collapsed content</div>
+  </ag-collapsible>
+  <script type="module" src="/pages/overlays.ts"></script>
+</body>
+</html>

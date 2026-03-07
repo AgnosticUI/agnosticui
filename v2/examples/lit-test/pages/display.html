@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lit-test – Display</title>
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css">
+  <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css">
+</head>
+<body style="padding:20px;display:flex;flex-direction:column;gap:20px">
+  <h1>Display</h1>
+  <ag-avatar text="AB"></ag-avatar>
+  <ag-image
+    src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+    alt="placeholder"
+    width="200"
+    height="100"
+  ></ag-image>
+  <ag-icon size="md">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+      <circle cx="12" cy="12" r="10"/>
+    </svg>
+  </ag-icon>
+  <ag-tag variant="success">Tag</ag-tag>
+  <ag-mark>Highlighted text</ag-mark>
+  <ag-kbd>Ctrl</ag-kbd>
+  <ag-intl-formatter type="number" value="1234567"></ag-intl-formatter>
+  <ag-timeline aria-label="Demo timeline">
+    <ag-timeline-item>
+      <span slot="ag-start">Start</span>
+      <span slot="ag-marker">•</span>
+      <span slot="ag-end">End</span>
+    </ag-timeline-item>
+  </ag-timeline>
+  <ag-message-bubble from="me" message="Hello!" time="12:00" author="Alice"></ag-message-bubble>
+  <ag-empty-state></ag-empty-state>
+  <ag-visually-hidden>Screen reader only</ag-visually-hidden>
+  <ag-scroll-progress mode="bar"></ag-scroll-progress>
+  <ag-scroll-to-button label="Top"></ag-scroll-to-button>
+  <script type="module" src="/pages/display.ts"></script>
+</body>
+</html>
