@@ -7,6 +7,7 @@ export default defineConfig({
   retries: 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
+  expect: { timeout: 20000 },
   use: {
     baseURL: 'http://localhost:5173',
     trace: 'on',
@@ -18,9 +19,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    // CI: app is pre-built by the workflow; preview serves static files instantly.
-    // Local: reuse whatever dev server is already running.
-    command: 'npx vite preview --port 5173',
+    command: 'npm run dev -- --port 5173',
     url: 'http://localhost:5173',
     reuseExistingServer: !process.env.CI,
   },

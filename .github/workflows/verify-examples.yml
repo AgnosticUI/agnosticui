@@ -55,10 +55,6 @@ jobs:
         run: npm ci
         working-directory: v2/examples/${{ matrix.example }}
 
-      - name: Build example
-        run: npx vite build
-        working-directory: v2/examples/${{ matrix.example }}
-
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
         working-directory: v2/examples/${{ matrix.example }}
