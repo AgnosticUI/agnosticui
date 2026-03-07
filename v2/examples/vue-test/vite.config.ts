@@ -12,4 +12,14 @@ export default defineConfig({
       }
     })
   ],
+  optimizeDeps: {
+    include: [
+      'vue',
+      'lit',
+      'lit/decorators.js',
+      'lit/directives/if-defined.js',
+      '@floating-ui/dom',
+      'focus-trap',
+    ],
+  },
 })
