@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
     noDiscovery: true,
+    holdUntilCrawlEnd: false,
     include: [
       'react',
       'react/jsx-runtime',

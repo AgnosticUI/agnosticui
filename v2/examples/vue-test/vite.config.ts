@@ -14,6 +14,7 @@ export default defineConfig({
   ],
   optimizeDeps: {
     noDiscovery: true,
+    holdUntilCrawlEnd: false,
     include: [
       'vue',
       'lit',
