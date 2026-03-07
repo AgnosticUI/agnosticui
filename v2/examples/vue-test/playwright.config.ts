@@ -20,8 +20,11 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run dev -- --port 5174',
+    command: process.env.CI
+      ? 'npm run build && npx vite preview --port 5174'
+      : 'npm run dev -- --port 5174',
     url: 'http://localhost:5174',
-    reuseExistingServer: true,
+    reuseExistingServer: !process.env.CI,
+    timeout: 120000,
   },
 });
