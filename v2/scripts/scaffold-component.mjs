@@ -10,9 +10,6 @@ import { getSpecificationsTemplate } from './scaffold-templates/specifications.j
 import { getReactTemplate } from './scaffold-templates/react.js';
 import { getVueTemplate } from './scaffold-templates/vue.js';
 import { getVueIndexTemplate } from './scaffold-templates/vueIndex.js';
-import { getLitStoryTemplate } from './scaffold-templates/litStory.js';
-import { getReactStoryTemplate } from './scaffold-templates/reactStory.js';
-import { getVueStoryTemplate } from './scaffold-templates/vueStory.js';
 import { getSiteExamplesTemplate } from './scaffold-templates/siteExamples.js';
 import { getSiteDocsTemplate } from './scaffold-templates/siteDocs.js';
 
@@ -33,7 +30,6 @@ const names = { pascalCaseName, kebabCaseName };
 const libRoot = process.cwd();
 const v2Root = resolve(process.cwd(), '..');
 const siteRoot = resolve(v2Root, 'site');
-const playgroundsRoot = resolve(v2Root, 'playgrounds');
 
 console.log(`🚀 Scaffolding new component: ${pascalCaseName} (${kebabCaseName})`);
 
@@ -65,18 +61,6 @@ const templates = {
   vueIndex: {
     path: `${libRoot}/src/components/${pascalCaseName}/vue/index.ts`,
     content: getVueIndexTemplate(names)
-  },
-  litStory: {
-    path: `${playgroundsRoot}/lit/src/stories/${pascalCaseName}.stories.ts`,
-    content: getLitStoryTemplate(names)
-  },
-  reactStory: {
-    path: `${playgroundsRoot}/react/src/stories/${pascalCaseName}.stories.tsx`,
-    content: getReactStoryTemplate(names)
-  },
-  vueStory: {
-    path: `${playgroundsRoot}/vue/src/stories/${pascalCaseName}.stories.ts`,
-    content: getVueStoryTemplate(names)
   },
   siteExamples: {
     path: `${siteRoot}/docs/examples/${pascalCaseName}Examples.vue`,

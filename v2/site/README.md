@@ -74,10 +74,7 @@ AgnosticUI is a **framework-agnostic** component library. Each component documen
      "import": "./dist/components/{ComponentName}/lit/index.js"
    }
    ```
-3. Storybook stories should exist for reference:
-   - React: `/v2/playgrounds/react/src/stories/{ComponentName}.stories.tsx`
-   - Lit: `/v2/playgrounds/lit/src/stories/{ComponentName}.stories.ts`
-4. The lib must be built and packed: `cd v2/lib && npm run build && npm pack`
+3. The lib must be built and packed: `cd v2/lib && npm run build && npm pack`
 5. The site must have the latest package: `cd v2/site && npm run reinstall:lib`
 
 ### Step-by-Step Guide
@@ -292,8 +289,8 @@ export default function ComponentExample() {
 The **Usage section** must include all three frameworks using Vitepress `details` blocks. To create these examples:
 
 1. **Vue examples** - Based on your `{ComponentName}Examples.vue` file (live examples)
-2. **React examples** - Adapt from `/v2/playgrounds/react/src/stories/{ComponentName}.stories.tsx`
-3. **Lit examples** - Adapt from `/v2/playgrounds/lit/src/stories/{ComponentName}.stories.ts`
+2. **React examples** - Write idiomatic React using `React{ComponentName}` wrappers from `agnosticui-core/{name}/react`
+3. **Lit examples** - Write idiomatic Lit using `<ag-{name}>` tags after importing `agnosticui-core/{name}`
 
 **Key differences between frameworks:**
 
@@ -308,25 +305,15 @@ The **Usage section** must include all three frameworks using Vitepress `details
 - React: camelCase with `on` prefix (e.g., `onToggleChange`)
 - Lit: kebab-case with `addEventListener` (e.g., `'toggle-change'`)
 
-**Adapting from Storybook Stories:**
+**Writing React and Lit examples for documentation:**
 
-When creating React and Lit examples for documentation, reference the Storybook stories but simplify them:
+Keep examples simple and focused on the component API:
 
-1. **Find the story**: `/v2/playgrounds/{react|lit}/src/stories/{ComponentName}.stories.{tsx|ts}`
-2. **Extract the render function**: Look for the `Default` or basic story
-3. **Simplify**: Remove Storybook-specific code (args, decorators, meta)
-4. **Focus on essentials**: Show 3-5 core examples, not every variant
-5. **Keep it comparable**: Ensure React/Lit examples match the Vue examples in scope
+1. **Focus on essentials**: Show 3-5 core examples, not every variant
+2. **Keep it comparable**: Ensure React/Lit examples match the Vue examples in scope
+3. **Use real imports**: Import directly from `agnosticui-core/{name}/react` or `agnosticui-core/{name}`
 
-**Example - From Storybook to Docs:**
-
-Storybook story (React):
-\`\`\`tsx
-export const Default: Story = {
-  args: { variant: 'primary' },
-  render: (args) => <ReactButton {...args}>Click me</ReactButton>
-};
-\`\`\`
+**Example:**
 
 Documentation example (React):
 \`\`\`tsx
@@ -503,18 +490,17 @@ Visit `http://localhost:5173/components/{component-name}.html`
 
 Reference these existing examples:
 
-| Component | Vue Live Examples | Docs (Vue + React + Lit) | React Stories | Lit Stories |
-|-----------|-------------------|--------------------------|---------------|-------------|
-| Alert | `examples/AlertExamples.vue` | `components/alert.md` | `playgrounds/react/src/stories/Alert.stories.tsx` | `playgrounds/lit/src/stories/Alert.stories.ts` |
-| Breadcrumb | `examples/BreadcrumbExamples.vue` | `components/breadcrumbs.md` | `playgrounds/react/src/stories/Breadcrumb.stories.tsx` | `playgrounds/lit/src/stories/Breadcrumb.stories.ts` |
-| Button | `examples/ButtonExamples.vue` | `components/buttons.md` | `playgrounds/react/src/stories/Button.stories.tsx` | `playgrounds/lit/src/stories/Button.stories.ts` |
-| Toggle | `examples/ToggleExamples.vue` | `components/toggle.md` | `playgrounds/react/src/stories/Toggle.stories.tsx` | `playgrounds/lit/src/stories/Toggle.stories.ts` |
-| Tooltip | `examples/TooltipExamples.vue` | `components/tooltip.md` | `playgrounds/react/src/stories/Tooltip.stories.tsx` | `playgrounds/lit/src/stories/Tooltip.stories.ts` |
+| Component | Vue Live Examples | Docs (Vue + React + Lit) |
+|-----------|-------------------|--------------------------|
+| Alert | `examples/AlertExamples.vue` | `components/alert.md` |
+| Breadcrumb | `examples/BreadcrumbExamples.vue` | `components/breadcrumbs.md` |
+| Button | `examples/ButtonExamples.vue` | `components/buttons.md` |
+| Toggle | `examples/ToggleExamples.vue` | `components/toggle.md` |
+| Tooltip | `examples/TooltipExamples.vue` | `components/tooltip.md` |
 
 **Documentation architecture:**
 - **Live examples** (`examples/*.vue`) - Interactive Vue components shown at the top of each doc page
 - **Usage snippets** (in `components/*.md`) - Code examples for Vue, React, and Lit in collapsible sections
-- **Storybook stories** (`playgrounds/{react,lit}/src/stories/*.stories.{tsx,ts}`) - Comprehensive testing scenarios (source of truth for React/Lit examples)
 
 ### Available Components to Document
 
