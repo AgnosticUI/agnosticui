@@ -1210,6 +1210,108 @@ describe('AgnosticUI v2 Event Conventions', () => {
   });
 });
 
+describe('AgInput - FACE lifecycle (issue #336)', () => {
+  describe('formStateRestoreCallback', () => {
+    it('restores value from a string state', async () => {
+      const el = new AgInput();
+      el.label = 'Name';
+      el.name = 'username';
+      document.body.appendChild(el);
+      await el.updateComplete;
+      expect(el.value).toBe('');
+      el.formStateRestoreCallback('Jane', 'restore');
+      await el.updateComplete;
+      expect(el.value).toBe('Jane');
+      document.body.removeChild(el);
+    });
+
+    it('restores empty string from a null state', async () => {
+      const el = new AgInput();
+      el.label = 'Name';
+      el.name = 'username';
+      el.value = 'Bob';
+      document.body.appendChild(el);
+      await el.updateComplete;
+      el.formStateRestoreCallback(null, 'restore');
+      await el.updateComplete;
+      expect(el.value).toBe('');
+      document.body.removeChild(el);
+    });
+
+    it('restores value from autocomplete mode', async () => {
+      const el = new AgInput();
+      el.label = 'Email';
+      el.name = 'email';
+      document.body.appendChild(el);
+      await el.updateComplete;
+      el.formStateRestoreCallback('user@example.com', 'autocomplete');
+      await el.updateComplete;
+      expect(el.value).toBe('user@example.com');
+      document.body.removeChild(el);
+    });
+  });
+
+  describe('formDisabledCallback — _parentDisabled separation', () => {
+    it('does not re-enable a user-disabled input when fieldset is re-enabled', async () => {
+      const el = new AgInput();
+      el.label = 'Name';
+      el.disabled = true;
+      document.body.appendChild(el);
+      await el.updateComplete;
+      el.formDisabledCallback(true);
+      await el.updateComplete;
+      el.formDisabledCallback(false);
+      await el.updateComplete;
+      expect(el.disabled).toBe(true); // user's disabled state preserved
+      document.body.removeChild(el);
+    });
+
+    it('re-enables an input that was enabled before fieldset disabled it', async () => {
+      const el = new AgInput();
+      el.label = 'Name';
+      document.body.appendChild(el);
+      await el.updateComplete;
+      expect(el.disabled).toBe(false);
+      el.formDisabledCallback(true);
+      await el.updateComplete;
+      expect(el.disabled).toBe(true);
+      el.formDisabledCallback(false);
+      await el.updateComplete;
+      expect(el.disabled).toBe(false);
+      document.body.removeChild(el);
+    });
+  });
+
+  describe('_syncStates smoke test', () => {
+    // CustomStateSet (:state()) is not available in JSDOM, so we verify
+    // that toggling the relevant properties does not throw and the component
+    // remains in a valid, renderable state.
+    it('does not throw when disabled changes', async () => {
+      const el = new AgInput();
+      el.label = 'Name';
+      document.body.appendChild(el);
+      await el.updateComplete;
+      expect(() => { el.disabled = true; }).not.toThrow();
+      await el.updateComplete;
+      expect(() => { el.disabled = false; }).not.toThrow();
+      await el.updateComplete;
+      document.body.removeChild(el);
+    });
+
+    it('does not throw when required changes', async () => {
+      const el = new AgInput();
+      el.label = 'Name';
+      document.body.appendChild(el);
+      await el.updateComplete;
+      expect(() => { el.required = true; }).not.toThrow();
+      await el.updateComplete;
+      expect(() => { el.required = false; }).not.toThrow();
+      await el.updateComplete;
+      document.body.removeChild(el);
+    });
+  });
+});
+
 // Helper functions for creating addon content in tests
 const createSearchIcon = () => {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');

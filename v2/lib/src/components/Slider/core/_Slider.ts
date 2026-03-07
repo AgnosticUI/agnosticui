@@ -671,12 +671,25 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
 
   // ─── FACE ─────────────────────────────────────────────────────────────────
 
+  override updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    if (
+      changedProperties.has('disabled') ||
+      changedProperties.has('readonly') ||
+      changedProperties.has('required') ||
+      changedProperties.has('invalid')
+    ) {
+      this._syncStates();
+    }
+  }
+
   override firstUpdated() {
     // Capture default value for formResetCallback, then set initial form value
     this._defaultValue = Array.isArray(this.value)
       ? ([...this.value] as [number, number])
       : this.value;
     this._updateFormValue();
+    this._syncStates();
   }
 
   /**
@@ -688,6 +701,46 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
       ? ([...this._defaultValue] as [number, number])
       : this._defaultValue;
     this._updateFormValue();
+    this._syncStates();
+  }
+
+  /**
+   * FACE lifecycle: called on session restore or browser autofill.
+   * Restores the slider value from the previously saved FormData.
+   * Single mode: one entry (name, valueStr). Dual mode: two entries.
+   */
+  override formStateRestoreCallback(
+    state: File | string | FormData | null,
+    _mode: 'restore' | 'autocomplete'
+  ): void {
+    if (!(state instanceof FormData) || !this.name) return;
+    const entries = Array.from(state.getAll(this.name)) as string[];
+    if (this.dual && entries.length === 2) {
+      this.value = [parseFloat(entries[0]), parseFloat(entries[1])];
+    } else if (entries.length === 1) {
+      this.value = parseFloat(entries[0]);
+    }
+    this._updateFormValue();
+    this._syncStates();
+  }
+
+  /**
+   * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
+   *
+   * Must be called AFTER _updateFormValue() (which also calls setValidity) so
+   * that :state(invalid) reads the freshly-updated _internals.validity.valid value.
+   *
+   * Exposed states:
+   *  :state(disabled)  — slider is disabled
+   *  :state(readonly)  — slider is read-only
+   *  :state(required)  — slider is required
+   *  :state(invalid)   — FACE constraint validation is failing
+   */
+  private _syncStates(): void {
+    this._setState('disabled', this.disabled);
+    this._setState('readonly', this.readonly);
+    this._setState('required', this.required);
+    this._setState('invalid', !this._internals.validity.valid);
   }
 
   // ─── End FACE ─────────────────────────────────────────────────────────────

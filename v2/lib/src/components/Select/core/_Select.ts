@@ -114,6 +114,51 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
     }
     this._syncFormValue();
     this._internals.setValidity({});
+    this._syncStates();
+  }
+
+  /**
+   * FACE lifecycle: called on session restore or browser autofill.
+   * Restores the selected option(s) from the previously saved form state.
+   * Uses updateComplete to ensure options are in the DOM before restoring.
+   */
+  override formStateRestoreCallback(
+    state: File | string | FormData | null,
+    _mode: 'restore' | 'autocomplete'
+  ): void {
+    this.updateComplete.then(() => {
+      if (!this.selectElement) return;
+      if (this.multiple && state instanceof FormData) {
+        const restored = new Set(Array.from(state.values()) as string[]);
+        Array.from(this.selectElement.options).forEach(opt => {
+          opt.selected = restored.has(opt.value);
+        });
+      } else if (typeof state === 'string') {
+        Array.from(this.selectElement.options).forEach(opt => {
+          opt.selected = opt.value === state;
+        });
+      }
+      this._syncFormValue();
+      this._syncValidity();
+      this._syncStates();
+    });
+  }
+
+  /**
+   * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
+   *
+   * Must be called AFTER _syncValidity() so that :state(invalid) reads the
+   * freshly-updated _internals.validity.valid value.
+   *
+   * Exposed states:
+   *  :state(disabled) — select is disabled
+   *  :state(required) — select is required
+   *  :state(invalid)  — FACE constraint validation is failing
+   */
+  private _syncStates(): void {
+    this._setState('disabled', this.disabled);
+    this._setState('required', this.required);
+    this._setState('invalid', !this._internals.validity.valid);
   }
 
   /**
@@ -144,6 +189,17 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
 
   // ─── End FACE ─────────────────────────────────────────────────────────────
 
+  override updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    if (
+      changedProperties.has('disabled') ||
+      changedProperties.has('required') ||
+      changedProperties.has('invalid')
+    ) {
+      this._syncStates();
+    }
+  }
+
   protected firstUpdated() {
     // Ensure options are moved after first render
     this.handleSlotChange();
@@ -157,6 +213,7 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
     // FACE: set initial form value and sync validity after options are in place
     this._syncFormValue();
     this._syncValidity();
+    this._syncStates();
   }
 
   private handleSlotChange() {

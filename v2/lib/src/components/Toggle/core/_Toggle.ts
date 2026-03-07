@@ -397,6 +397,21 @@ export class AgToggle extends FaceMixin(LitElement) implements ToggleProps {
   }
 
   /**
+   * FACE lifecycle: called on session restore or browser autofill.
+   * Restores checked state from the previously saved form value.
+   * A non-null state means the toggle was on; null means it was off.
+   */
+  override formStateRestoreCallback(
+    state: File | string | FormData | null,
+    _mode: 'restore' | 'autocomplete'
+  ): void {
+    this.checked = state !== null;
+    this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+    this._syncValidity();
+    this._syncStates();
+  }
+
+  /**
    * Sync validity state to ElementInternals.
    * Toggle has no inner <input> to delegate to, so required validation
    * is implemented directly: unchecked + required = valueMissing.

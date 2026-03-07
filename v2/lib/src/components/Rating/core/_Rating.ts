@@ -184,6 +184,7 @@ export class AgRating extends FaceMixin(LitElement) {
   override firstUpdated() {
     this._syncFormValue();
     this._syncValidity();
+    this._syncStates();
   }
 
   override updated(changedProperties: Map<string, unknown>) {
@@ -191,6 +192,14 @@ export class AgRating extends FaceMixin(LitElement) {
     if (changedProperties.has('value')) {
       this._syncFormValue();
       this._syncValidity();
+    }
+    if (
+      changedProperties.has('value') ||
+      changedProperties.has('readonly') ||
+      changedProperties.has('required') ||
+      changedProperties.has('invalid')
+    ) {
+      this._syncStates();
     }
   }
 
@@ -202,6 +211,39 @@ export class AgRating extends FaceMixin(LitElement) {
     this.value = 0;
     this._internals.setFormValue(null);
     this._internals.setValidity({});
+    this._syncStates();
+  }
+
+  /**
+   * FACE lifecycle: called on session restore or browser autofill.
+   * Restores the rating value from the previously saved form state.
+   * The state is a numeric string (e.g. "3" or "3.5"), or null for no rating.
+   */
+  override formStateRestoreCallback(
+    state: File | string | FormData | null,
+    _mode: 'restore' | 'autocomplete'
+  ): void {
+    this.value = typeof state === 'string' ? parseFloat(state) : 0;
+    this._syncFormValue();
+    this._syncValidity();
+    this._syncStates();
+  }
+
+  /**
+   * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
+   *
+   * Must be called AFTER _syncValidity() so that :state(invalid) reads the
+   * freshly-updated _internals.validity.valid value.
+   *
+   * Exposed states:
+   *  :state(readonly) — rating is read-only
+   *  :state(required) — rating is required
+   *  :state(invalid)  — FACE constraint validation is failing
+   */
+  private _syncStates(): void {
+    this._setState('readonly', this.readonly);
+    this._setState('required', this.required);
+    this._setState('invalid', !this._internals.validity.valid);
   }
 
   // ─── End FACE ─────────────────────────────────────────────────────────────

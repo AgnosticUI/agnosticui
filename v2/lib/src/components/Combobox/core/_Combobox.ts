@@ -759,6 +759,14 @@ export class AgCombobox extends FaceMixin(LitElement) implements ComboboxProps {
       this._syncFormValue();
       this._syncValidity();
     }
+    if (
+      changedProperties.has('disabled') ||
+      changedProperties.has('readonly') ||
+      changedProperties.has('required') ||
+      changedProperties.has('value')
+    ) {
+      this._syncStates();
+    }
   }
 
   // Public methods
@@ -994,6 +1002,7 @@ export class AgCombobox extends FaceMixin(LitElement) implements ComboboxProps {
   override firstUpdated() {
     this._syncFormValue();
     this._syncValidity();
+    this._syncStates();
   }
 
   /**
@@ -1005,6 +1014,50 @@ export class AgCombobox extends FaceMixin(LitElement) implements ComboboxProps {
     this._selectionChanged();
     this._internals.setFormValue(null);
     this._internals.setValidity({});
+    this._syncStates();
+  }
+
+  /**
+   * FACE lifecycle: called on session restore or browser autofill.
+   * Restores the selected option(s) by matching saved values against this.options.
+   * Single: state is a string. Multiple: state is FormData.
+   */
+  override formStateRestoreCallback(
+    state: File | string | FormData | null,
+    _mode: 'restore' | 'autocomplete'
+  ): void {
+    if (state === null) {
+      this._selectedOptions = [];
+    } else if (state instanceof FormData) {
+      const values = new Set(Array.from(state.getAll(this.name)) as string[]);
+      this._selectedOptions = this.options.filter(opt => values.has(opt.value));
+    } else if (typeof state === 'string') {
+      const found = this.options.find(opt => opt.value === state);
+      this._selectedOptions = found ? [found] : [];
+    }
+    this._selectionChanged();
+    this._syncFormValue();
+    this._syncValidity();
+    this._syncStates();
+  }
+
+  /**
+   * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
+   *
+   * Must be called AFTER _syncValidity() so that :state(invalid) reads the
+   * freshly-updated _internals.validity.valid value.
+   *
+   * Exposed states:
+   *  :state(disabled) — combobox is disabled
+   *  :state(readonly) — combobox is read-only
+   *  :state(required) — combobox is required
+   *  :state(invalid)  — FACE constraint validation is failing
+   */
+  private _syncStates(): void {
+    this._setState('disabled', this.disabled);
+    this._setState('readonly', this.readonly);
+    this._setState('required', this.required);
+    this._setState('invalid', !this._internals.validity.valid);
   }
 
   // ─── End FACE ─────────────────────────────────────────────────────────────
