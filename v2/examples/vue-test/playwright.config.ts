@@ -18,11 +18,10 @@ export default defineConfig({
     },
   ],
   webServer: {
-    // In CI: build once then serve static files (fast, no on-demand compilation).
-    // Locally: reuse whatever dev server is already running.
-    command: 'npx vite build && npx vite preview --port 5174',
+    // CI: app is pre-built by the workflow; preview serves static files instantly.
+    // Local: reuse whatever dev server is already running.
+    command: 'npx vite preview --port 5174',
     url: 'http://localhost:5174',
     reuseExistingServer: !process.env.CI,
-    timeout: 120000,
   },
 });
