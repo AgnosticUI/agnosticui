@@ -1,6 +1,6 @@
 {
   "$schema": "https://agnosticui.com/schema.json",
-  "version": "0.0.1",
+  "version": "2.0.0-alpha.21",
   "framework": "lit",
   "paths": {
     "reference": "./agnosticui",
@@ -455,7 +455,7 @@
   },
   "tarball": {
     "source": "/Users/roblevin/workspace/opensource/agnosticui/v2/lib/agnosticui-core-2.0.0-alpha.21.tgz",
-    "version": "unknown",
+    "version": "2.0.0-alpha.21",
     "installed": "2026-02-21T14:18:28.392Z"
   }
 }
