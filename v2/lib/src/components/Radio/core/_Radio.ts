@@ -406,6 +406,20 @@ export class AgRadio extends FaceMixin(LitElement) implements RadioProps {
   }
 
   /**
+   * FACE lifecycle: called on session restore or browser autofill.
+   * Restores checked state: checked when the saved state matches this radio's value.
+   */
+  override formStateRestoreCallback(
+    state: File | string | FormData | null,
+    _mode: 'restore' | 'autocomplete'
+  ): void {
+    this.checked = state === this.value;
+    this._syncFormValue();
+    this._syncValidity();
+    this._syncStates();
+  }
+
+  /**
    * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
    *
    * Must be called AFTER _syncValidity() so that :state(invalid) reads the

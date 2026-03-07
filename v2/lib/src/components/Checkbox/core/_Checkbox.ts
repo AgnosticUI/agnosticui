@@ -365,6 +365,22 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
   }
 
   /**
+   * FACE lifecycle: called on session restore or browser autofill.
+   * Restores checked state from the previously saved form value.
+   * A non-null state means the checkbox was checked; null means unchecked.
+   */
+  override formStateRestoreCallback(
+    state: File | string | FormData | null,
+    _mode: 'restore' | 'autocomplete'
+  ): void {
+    this.checked = state !== null;
+    this.indeterminate = false;
+    this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+    this._syncValidity();
+    this._syncStates();
+  }
+
+  /**
    * Sync validity to ElementInternals by delegating to the inner
    * <input type="checkbox">. Required validation is handled natively
    * by the inner input; we just mirror its state.

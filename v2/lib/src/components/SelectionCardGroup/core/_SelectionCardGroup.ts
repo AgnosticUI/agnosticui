@@ -192,6 +192,46 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
     this._internals.setFormValue(null);
     this._syncValidity();
     this._syncChildCards();
+    this._syncStates();
+  }
+
+  /**
+   * FACE lifecycle: called on session restore or browser autofill.
+   * Restores selected value(s) from the previously saved form state.
+   * Radio mode: state is a single string. Checkbox mode: state is FormData.
+   */
+  override formStateRestoreCallback(
+    state: File | string | FormData | null,
+    _mode: 'restore' | 'autocomplete'
+  ): void {
+    if (state === null) {
+      this._internalSelectedValues = [];
+    } else if (state instanceof FormData) {
+      this._internalSelectedValues = Array.from(state.getAll(this.name)) as string[];
+    } else if (typeof state === 'string') {
+      this._internalSelectedValues = [state];
+    }
+    this._syncFormValue();
+    this._syncValidity();
+    this._syncChildCards();
+    this._syncStates();
+  }
+
+  /**
+   * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
+   *
+   * Must be called AFTER _syncValidity() so that :state(invalid) reads the
+   * freshly-updated _internals.validity.valid value.
+   *
+   * Exposed states:
+   *  :state(disabled) — group is disabled
+   *  :state(required) — group is required
+   *  :state(invalid)  — FACE constraint validation is failing
+   */
+  private _syncStates(): void {
+    this._setState('disabled', this.disabled);
+    this._setState('required', this.required);
+    this._setState('invalid', !this._internals.validity.valid);
   }
 
   // ─── End FACE ─────────────────────────────────────────────────────────────
@@ -235,12 +275,20 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
     } else if (changedProperties.has('required')) {
       this._syncValidity();
     }
+    if (
+      changedProperties.has('disabled') ||
+      changedProperties.has('required') ||
+      changedProperties.has('_internalSelectedValues')
+    ) {
+      this._syncStates();
+    }
   }
 
   override firstUpdated() {
     this._syncChildCards();
     this._syncFormValue();
     this._syncValidity();
+    this._syncStates();
   }
 
   private _getCards(): AgSelectionCard[] {

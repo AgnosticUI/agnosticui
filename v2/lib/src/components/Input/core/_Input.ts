@@ -496,6 +496,40 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
     this.value = '';
     this._internals.setFormValue('');
     this._internals.setValidity({});
+    this._syncStates();
+  }
+
+  /**
+   * FACE lifecycle: called on session restore or browser autofill.
+   * Restores the input value from the previously saved form state.
+   */
+  override formStateRestoreCallback(
+    state: File | string | FormData | null,
+    _mode: 'restore' | 'autocomplete'
+  ): void {
+    this.value = typeof state === 'string' ? state : '';
+    this._internals.setFormValue(this.value);
+    this._syncValidity();
+    this._syncStates();
+  }
+
+  /**
+   * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
+   *
+   * Must be called AFTER _syncValidity() so that :state(invalid) reads the
+   * freshly-updated _internals.validity.valid value.
+   *
+   * Exposed states:
+   *  :state(disabled)  — input is disabled
+   *  :state(readonly)  — input is read-only
+   *  :state(required)  — input is required
+   *  :state(invalid)   — FACE constraint validation is failing
+   */
+  private _syncStates(): void {
+    this._setState('disabled', this.disabled);
+    this._setState('readonly', this.readonly);
+    this._setState('required', this.required);
+    this._setState('invalid', !this._internals.validity.valid);
   }
 
   /**
@@ -678,10 +712,23 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
     `;
   }
 
+  override updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    if (
+      changedProperties.has('disabled') ||
+      changedProperties.has('readonly') ||
+      changedProperties.has('required') ||
+      changedProperties.has('invalid')
+    ) {
+      this._syncStates();
+    }
+  }
+
   override firstUpdated() {
     // FACE: set initial form value and sync validity after first render
     this._internals.setFormValue(this.value ?? '');
     this._syncValidity();
+    this._syncStates();
 
     // Initial check for slot content
     setTimeout(() => {

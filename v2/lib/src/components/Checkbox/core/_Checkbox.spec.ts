@@ -480,6 +480,55 @@ describe('Checkbox - Comprehensive Tests', () => {
     });
   });
 
+  describe('FACE lifecycle (issue #336)', () => {
+    describe('formStateRestoreCallback', () => {
+      it('restores checked=true from a non-null state', async () => {
+        const checkbox = await createCheckbox({ name: 'test', value: 'yes', labelText: 'Accept' });
+        expect(checkbox.checked).toBe(false);
+        checkbox.formStateRestoreCallback('yes', 'restore');
+        await checkbox.updateComplete;
+        expect(checkbox.checked).toBe(true);
+      });
+
+      it('restores checked=false from a null state', async () => {
+        const checkbox = await createCheckbox({ name: 'test', value: 'yes', checked: true, labelText: 'Accept' });
+        expect(checkbox.checked).toBe(true);
+        checkbox.formStateRestoreCallback(null, 'restore');
+        await checkbox.updateComplete;
+        expect(checkbox.checked).toBe(false);
+      });
+
+      it('clears indeterminate on restore', async () => {
+        const checkbox = await createCheckbox({ indeterminate: true, labelText: 'Test' });
+        checkbox.formStateRestoreCallback('yes', 'restore');
+        await checkbox.updateComplete;
+        expect(checkbox.indeterminate).toBe(false);
+      });
+    });
+
+    describe('formDisabledCallback — _parentDisabled separation', () => {
+      it('does not re-enable a user-disabled control when fieldset is re-enabled', async () => {
+        const checkbox = await createCheckbox({ disabled: true, labelText: 'Disabled' });
+        checkbox.formDisabledCallback(true);
+        await checkbox.updateComplete;
+        checkbox.formDisabledCallback(false);
+        await checkbox.updateComplete;
+        expect(checkbox.disabled).toBe(true); // user's disabled state preserved
+      });
+
+      it('re-enables a control that was enabled before fieldset disabled it', async () => {
+        const checkbox = await createCheckbox({ labelText: 'Test' });
+        expect(checkbox.disabled).toBe(false);
+        checkbox.formDisabledCallback(true);
+        await checkbox.updateComplete;
+        expect(checkbox.disabled).toBe(true);
+        checkbox.formDisabledCallback(false);
+        await checkbox.updateComplete;
+        expect(checkbox.disabled).toBe(false);
+      });
+    });
+  });
+
   describe('Toggle Behavior', () => {
     it('should toggle checked state on click', async () => {
       const checkbox = await createCheckbox({

@@ -964,4 +964,74 @@ describe('AgToggle', () => {
       document.body.removeChild(el);
     });
   });
+
+  describe('FACE lifecycle (issue #336)', () => {
+    describe('formStateRestoreCallback', () => {
+      it('restores checked=true from a non-null state', async () => {
+        const el = document.createElement('ag-toggle') as AgToggle;
+        el.label = 'Test';
+        document.body.appendChild(el);
+        await el.updateComplete;
+        expect(el.checked).toBe(false);
+        el.formStateRestoreCallback('on', 'restore');
+        await el.updateComplete;
+        expect(el.checked).toBe(true);
+        document.body.removeChild(el);
+      });
+
+      it('restores checked=false from a null state', async () => {
+        const el = document.createElement('ag-toggle') as AgToggle;
+        el.label = 'Test';
+        el.checked = true;
+        document.body.appendChild(el);
+        await el.updateComplete;
+        el.formStateRestoreCallback(null, 'restore');
+        await el.updateComplete;
+        expect(el.checked).toBe(false);
+        document.body.removeChild(el);
+      });
+
+      it('restores checked from autocomplete mode', async () => {
+        const el = document.createElement('ag-toggle') as AgToggle;
+        el.label = 'Test';
+        document.body.appendChild(el);
+        await el.updateComplete;
+        el.formStateRestoreCallback('on', 'autocomplete');
+        await el.updateComplete;
+        expect(el.checked).toBe(true);
+        document.body.removeChild(el);
+      });
+    });
+
+    describe('formDisabledCallback — _parentDisabled separation', () => {
+      it('does not re-enable a user-disabled control when fieldset is re-enabled', async () => {
+        const el = document.createElement('ag-toggle') as AgToggle;
+        el.label = 'Test';
+        el.disabled = true; // user explicitly disabled
+        document.body.appendChild(el);
+        await el.updateComplete;
+        el.formDisabledCallback(true);
+        await el.updateComplete;
+        el.formDisabledCallback(false);
+        await el.updateComplete;
+        expect(el.disabled).toBe(true); // user's disabled state preserved
+        document.body.removeChild(el);
+      });
+
+      it('re-enables a control that was enabled before fieldset disabled it', async () => {
+        const el = document.createElement('ag-toggle') as AgToggle;
+        el.label = 'Test';
+        document.body.appendChild(el);
+        await el.updateComplete;
+        expect(el.disabled).toBe(false);
+        el.formDisabledCallback(true);
+        await el.updateComplete;
+        expect(el.disabled).toBe(true);
+        el.formDisabledCallback(false);
+        await el.updateComplete;
+        expect(el.disabled).toBe(false); // restored to original enabled state
+        document.body.removeChild(el);
+      });
+    });
+  });
 });
