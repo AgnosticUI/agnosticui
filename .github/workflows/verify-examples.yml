@@ -43,6 +43,14 @@ jobs:
         with:
           node-version: lts/*
 
+      - name: Install CLI dependencies
+        run: npm ci
+        working-directory: v2/cli
+
+      - name: Build and pack CLI tarball
+        run: npm run build && npm pack
+        working-directory: v2/cli
+
       - name: Install dependencies
         run: npm ci
         working-directory: v2/examples/${{ matrix.example }}
