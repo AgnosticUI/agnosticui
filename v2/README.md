@@ -27,7 +27,7 @@ v2/
 │   ├── src/components/     # 56+ production-ready components
 │   └── dist/               # Built library files
 ├── playbooks/              # LLM prompt-driven example apps (Login, Onboarding, Dashboard, …)
-├── playgrounds/            # Interactive demo environments
+├── examples/               # Spot-check environment: react-test, vue-test, lit-test
 ├── skins/                  # Pre-built theme skins & SkinSwitcher
 ├── site/                   # VitePress documentation site
 ├── theme-registry/         # Design token system
@@ -57,11 +57,14 @@ Components are copied into your project — you own them, AI tools can read them
 ### Develop locally
 
 ```bash
-cd v2/lib && npm install && npm run build
-cd ../playgrounds && npm install && npm run dev
+cd v2/lib && npm install && npm run build && npm pack
+cd ../examples/react-test   # or vue-test / lit-test
+npm install /path/to/v2/lib/agnosticui-core-2.x.x-alpha.x.tgz
+npx agnosticui-cli sync && npx agnosticui-cli add <ComponentName> --force
+npm run dev
 ```
 
-Open [http://localhost:4322](http://localhost:4322) to see interactive demos.
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for the full component development workflow.
 
 ## Design Token System
 

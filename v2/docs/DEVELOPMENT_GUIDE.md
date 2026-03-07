@@ -18,8 +18,7 @@ This is the comprehensive guide for developing components in AgnosticUI v2. It c
 - ❌ **NEVER run `npm run typecheck`** - The developer will run type checking
 - ❌ **NEVER run `npm run lint`** - The developer will run linting
 - ❌ **NEVER run `npm run pack`** - The developer will create tarballs
-- ❌ **NEVER run `npm install /path/to/tarball.tgz`** - The developer will install packages in playgrounds/vitepress
-- ❌ **NEVER run playground/storybook commands** - The developer controls when to start these
+- ❌ **NEVER run `npm install /path/to/tarball.tgz`** - The developer will install packages in examples/vitepress
 
 ### What AI Should Do
 - ✅ Write code, edit files, create components
@@ -389,69 +388,19 @@ export default defineComponent({
 </script>
 ```
 
-### Phase 3: Storybook Stories
+### Phase 3: Spot-Check in v2/examples
 
-Create stories for all three frameworks with consistent structure:
+After implementing the component, verify it renders correctly in at least one example project:
 
-**Lit Stories** (`playgrounds/lit/src/stories/MyComponent.stories.ts`):
-```typescript
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit';
-import { fn } from '@storybook/test';
-import type { MyComponentProps } from 'agnosticui-core/mycomponent';
-import 'agnosticui-core/mycomponent';
-
-const meta: Meta<MyComponentProps> = {
-  title: 'AgnosticUI Lit/MyComponent',  // Note: "Lit" in title
-  component: 'ag-mycomponent',
-  argTypes: {
-    propOne: { control: 'boolean' },
-    propTwo: { control: 'text' },
-  },
-  args: {
-    propOne: false,
-    propTwo: '',
-    onMyEvent: fn(),
-  },
-};
-
-export default meta;
-
-export const Default: StoryObj<MyComponentProps> = {
-  render: (args) => html`
-    <ag-mycomponent
-      .propOne=${args.propOne}
-      .propTwo=${args.propTwo}
-      @my-event=${args.onMyEvent}
-    ></ag-mycomponent>
-  `,
-};
+```bash
+cd v2/lib && npm run build && npm pack
+cd ../examples/react-test   # or vue-test / lit-test
+npm install /path/to/v2/lib/agnosticui-core-2.x.x-alpha.x.tgz
+npx agnosticui-cli sync && npx agnosticui-cli add <ComponentName> --force
+npm run dev
 ```
 
-**Vue Stories** - Use `v-html` pattern for CSS Parts customization:
-```typescript
-export const CSSPartsCustomization: Story = {
-  render: (args) => ({
-    components: { VueMyComponent },
-    setup() {
-      const styles = `
-        <style>
-          .custom-component::part(ag-my-part) {
-            /* custom styles */
-          }
-        </style>
-      `;
-      return { args, styles };
-    },
-    template: `
-      <div>
-        <div v-html="styles"></div>
-        <VueMyComponent v-bind="args" class="custom-component" />
-      </div>
-    `,
-  }),
-};
-```
+See [CONTRIBUTING.md](../../CONTRIBUTING.md) for the full workflow.
 
 ---
 
@@ -752,23 +701,14 @@ describe('MyComponent', () => {
 cd v2/lib
 npm run lint && npm run typecheck && npm run test && npm run build
 
-# 2. Pack for playgrounds
+# 2. Pack and spot-check in v2/examples
 npm pack
+cd ../examples/react-test   # or vue-test / lit-test
+npm install /path/to/v2/lib/agnosticui-core-2.x.x-alpha.x.tgz
+npx agnosticui-cli sync && npx agnosticui-cli add <ComponentName> --force
+npm run dev
 
-# 3. Install in playgrounds
-cd ../playgrounds/react
-npm i ../../lib/agnosticui-<version>.tgz
-npm run storybook
-
-cd ../playgrounds/vue
-npm i ../../lib/agnosticui-<version>.tgz
-npm run storybook
-
-cd ../playgrounds/lit
-npm i ../../lib/agnosticui-<version>.tgz
-npm run storybook
-
-# 4. Verify documentation
+# 3. Verify documentation
 cd ../site
 npm run reinstall:lib
 npm run docs:dev
@@ -780,7 +720,7 @@ npm run docs:dev
 - [ ] No lint errors (`npm run lint`)
 - [ ] No TypeScript errors (`npm run typecheck`)
 - [ ] Library builds successfully (`npm run build`)
-- [ ] Component renders in all 3 Storybooks (Lit, React, Vue)
+- [ ] Component renders correctly in at least one `v2/examples` project
 - [ ] **Dark mode tested** (toggle `data-theme="dark"` in browser)
 - [ ] **Text contrast adequate in both modes**
 - [ ] **All visual elements visible in both modes**
