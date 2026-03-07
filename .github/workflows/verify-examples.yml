@@ -35,7 +35,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        example: [react-test, vue-test, lit-test]
+        include:
+          - example: react-test
+            port: 5173
+          - example: vue-test
+            port: 5174
+          - example: lit-test
+            port: 5175
     steps:
       - uses: actions/checkout@v5
 
@@ -57,6 +63,15 @@ jobs:
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
+        working-directory: v2/examples/${{ matrix.example }}
+
+      - name: Warm up Vite dep optimization
+        run: |
+          npx vite --port ${{ matrix.port }} &
+          VITE_PID=$!
+          until curl -sf http://localhost:${{ matrix.port }}/ > /dev/null 2>&1; do sleep 1; done
+          sleep 3
+          kill $VITE_PID 2>/dev/null || true
         working-directory: v2/examples/${{ matrix.example }}
 
       - name: Run smoke tests

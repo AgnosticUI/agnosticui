@@ -13,6 +13,7 @@ export default defineConfig({
     })
   ],
   optimizeDeps: {
+    noDiscovery: true,
     include: [
       'vue',
       'lit',
