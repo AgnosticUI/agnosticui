@@ -18,8 +18,11 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run dev -- --port 5174',
+    // In CI: build once then serve static files (fast, no on-demand compilation).
+    // Locally: reuse whatever dev server is already running.
+    command: 'npx vite build && npx vite preview --port 5174',
     url: 'http://localhost:5174',
     reuseExistingServer: !process.env.CI,
+    timeout: 120000,
   },
 });
