@@ -64,7 +64,7 @@ jobs:
         working-directory: v2/examples/${{ matrix.example }}
 
       - name: Run smoke tests
-        run: npx playwright test
+        run: npx playwright test --max-failures=1
         working-directory: v2/examples/${{ matrix.example }}
 
       - name: Upload Playwright report
