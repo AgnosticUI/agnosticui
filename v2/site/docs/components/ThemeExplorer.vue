@@ -1,6 +1,73 @@
 <template>
   <div class="theme-explorer">
     <h3>Theme Controls</h3>
+
+    <!-- Image-to-theme extraction drop zone -->
+    <div
+      class="image-drop-zone"
+      :class="{ 'drag-over': isDragOver, 'has-image': extractedPalette.length > 0 }"
+      @dragover.prevent="isDragOver = true"
+      @dragleave="isDragOver = false"
+      @drop.prevent="handleImageDrop"
+      @click="extractedPalette.length === 0 && triggerFileInput()"
+      role="button"
+      tabindex="0"
+      aria-label="Drop an image or click to upload for theme extraction"
+      @keydown.enter="triggerFileInput"
+      @keydown.space.prevent="triggerFileInput"
+    >
+      <input
+        ref="fileInputRef"
+        type="file"
+        accept="image/png,image/jpeg,image/webp"
+        class="sr-only"
+        @change="handleImageSelect"
+        tabindex="-1"
+        aria-hidden="true"
+      />
+      <template v-if="extractedPalette.length === 0">
+        <svg
+          class="drop-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <p class="drop-label">Drop an image to extract a theme palette</p>
+        <p class="drop-hint">PNG · JPG · WebP — or click to browse</p>
+      </template>
+      <template v-else>
+        <div class="palette-result" @click.stop>
+          <div class="palette-swatches">
+            <div
+              v-for="color in extractedPalette"
+              :key="color"
+              class="palette-swatch-item"
+              :style="{ backgroundColor: color }"
+              :title="color"
+            ></div>
+          </div>
+          <VueButton
+            size="sm"
+            variant="monochrome"
+            :bordered="true"
+            shape="rounded"
+            @click.stop="clearExtraction"
+          >Clear</VueButton>
+        </div>
+      </template>
+    </div>
+
     <div class="controls">
       <div class="theme-buttons">
         <VueButton
@@ -211,6 +278,11 @@ import { Pencil } from "lucide-vue-next";
 
 const originalTokens = ref({});
 const tokensByCategory = ref({});
+
+// Image extraction state
+const isDragOver = ref(false);
+const extractedPalette = ref([]);
+const fileInputRef = ref(null);
 
 const agTokensCss = [
   ":where(html) {",
@@ -577,6 +649,406 @@ const themes = {
     "--ag-border": "#3D444D",
   },
 };
+
+// ─── Image drop zone handlers ────────────────────────────────────────────────
+
+function triggerFileInput() {
+  fileInputRef.value?.click();
+}
+
+function handleImageDrop(event) {
+  isDragOver.value = false;
+  const file = event.dataTransfer?.files?.[0];
+  if (file && file.type.startsWith("image/")) {
+    processImageFile(file);
+  }
+}
+
+function handleImageSelect(event) {
+  const file = event.target?.files?.[0];
+  if (file) processImageFile(file);
+}
+
+function clearExtraction() {
+  extractedPalette.value = [];
+  if (fileInputRef.value) fileInputRef.value.value = "";
+}
+
+function processImageFile(file) {
+  const img = new Image();
+  const url = URL.createObjectURL(file);
+  img.onload = () => {
+    URL.revokeObjectURL(url);
+    const palette = extractColors(img);
+    extractedPalette.value = palette;
+    const { light, dark } = mapPaletteToTokens(palette);
+    applyExtractedTheme(light, dark);
+  };
+  img.src = url;
+}
+
+// ─── Canvas color extraction ──────────────────────────────────────────────────
+
+function extractColors(img) {
+  const MAX_DIM = 200;
+  const canvas = document.createElement("canvas");
+  const scale = Math.min(1, MAX_DIM / Math.max(img.width, img.height));
+  canvas.width = Math.round(img.width * scale);
+  canvas.height = Math.round(img.height * scale);
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+
+  const buckets = {};
+  for (let i = 0; i < data.length; i += 4) {
+    if (data[i + 3] < 128) continue;
+    const r = Math.round(data[i] / 24) * 24;
+    const g = Math.round(data[i + 1] / 24) * 24;
+    const b = Math.round(data[i + 2] / 24) * 24;
+    const key = `${r},${g},${b}`;
+    buckets[key] = (buckets[key] || 0) + 1;
+  }
+
+  const sorted = Object.entries(buckets)
+    .sort((a, b) => b[1] - a[1])
+    .map(([key]) => key.split(",").map(Number));
+
+  const selected = [];
+  for (const [r, g, b] of sorted) {
+    if (selected.length >= 8) break;
+    const tooClose = selected.some(([sr, sg, sb]) => {
+      const dr = r - sr, dg = g - sg, db = b - sb;
+      return Math.sqrt(dr * dr + dg * dg + db * db) < 50;
+    });
+    if (!tooClose) selected.push([r, g, b]);
+  }
+
+  return selected.map(([r, g, b]) => _rgbToHex(r, g, b));
+}
+
+// ─── Color math helpers ───────────────────────────────────────────────────────
+
+function _rgbToHex(r, g, b) {
+  return "#" + [r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("");
+}
+
+function _hexToRgb(hex) {
+  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return m
+    ? { r: parseInt(m[1], 16), g: parseInt(m[2], 16), b: parseInt(m[3], 16) }
+    : { r: 0, g: 0, b: 0 };
+}
+
+function _rgbToHsl(r, g, b) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h = 0, s = 0;
+  const l = (max + min) / 2;
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: h = ((b - r) / d + 2) / 6; break;
+      case b: h = ((r - g) / d + 4) / 6; break;
+    }
+  }
+  return { h: h * 360, s, l };
+}
+
+function _hslToHex(h, s, l) {
+  h /= 360;
+  const hue2rgb = (p, q, t) => {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1 / 6) return p + (q - p) * 6 * t;
+    if (t < 1 / 2) return q;
+    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+    return p;
+  };
+  let r, g, b;
+  if (s === 0) {
+    r = g = b = l;
+  } else {
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1 / 3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1 / 3);
+  }
+  return _rgbToHex(Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
+}
+
+function _getLuminance(hex) {
+  const { r, g, b } = _hexToRgb(hex);
+  const toLinear = (v) => {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  };
+  return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+}
+
+function _getContrastRatio(hex1, hex2) {
+  const l1 = _getLuminance(hex1), l2 = _getLuminance(hex2);
+  const lighter = Math.max(l1, l2), darker = Math.min(l1, l2);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+function _ensureContrast(color, against, minRatio, preferDarken = true) {
+  let { h, s, l } = (() => { const { r, g, b } = _hexToRgb(color); return _rgbToHsl(r, g, b); })();
+  for (let i = 0; i < 20; i++) {
+    if (_getContrastRatio(_hslToHex(h, s, l), against) >= minRatio) break;
+    l = preferDarken ? Math.max(0, l - 0.05) : Math.min(1, l + 0.05);
+  }
+  return _hslToHex(h, s, l);
+}
+
+function _darkenHex(hex, amount) {
+  const { r, g, b } = _hexToRgb(hex);
+  const { h, s, l } = _rgbToHsl(r, g, b);
+  return _hslToHex(h, s, Math.max(0, l - amount));
+}
+
+function _lightenHex(hex, amount) {
+  const { r, g, b } = _hexToRgb(hex);
+  const { h, s, l } = _rgbToHsl(r, g, b);
+  return _hslToHex(h, s, Math.min(1, l + amount));
+}
+
+function _vibrancyScore(hex) {
+  const { r, g, b } = _hexToRgb(hex);
+  const { s } = _rgbToHsl(r, g, b);
+  const lum = _getLuminance(hex);
+  return s * (1 - Math.abs(lum - 0.5) * 2);
+}
+
+// ─── Palette-to-token mapping ─────────────────────────────────────────────────
+
+function mapPaletteToTokens(palette) {
+  if (!palette.length) return { light: {}, dark: {} };
+
+  const colors = palette.map((hex) => {
+    const { r, g, b } = _hexToRgb(hex);
+    const hsl = _rgbToHsl(r, g, b);
+    return { hex, ...hsl, lum: _getLuminance(hex), vib: _vibrancyScore(hex) };
+  });
+
+  // ── Step 2: select semantic base colors by hue range ──
+  const findByHueRange = (min, max, exclude = []) =>
+    colors
+      .filter((c) => {
+        const inRange = min <= max ? c.h >= min && c.h <= max : c.h >= min || c.h <= max;
+        // Require minimum saturation so near-neutrals (grays) don't match a hue range
+        return inRange && !exclude.includes(c.hex) && c.s >= 0.15;
+      })
+      .sort((a, b) => b.vib - a.vib)[0];
+
+  const vibrancySorted = [...colors].sort((a, b) => b.vib - a.vib);
+
+  // Primary: highest vibrancy, luminance 0.15–0.70, ≥4.5:1 vs white
+  let primaryColor = vibrancySorted.find((c) => c.lum >= 0.15 && c.lum <= 0.70) || vibrancySorted[0];
+  let primaryHex = _ensureContrast(primaryColor.hex, "#ffffff", 4.5, true);
+  const { r: pr, g: pg, b: pb } = _hexToRgb(primaryHex);
+  const primaryHsl = _rgbToHsl(pr, pg, pb);
+  const dominantHue = primaryHsl.h;
+
+  // Secondary: different hue, Euclidean RGB distance > 60 from primary
+  const primaryRgb = _hexToRgb(primaryHex);
+  const secondaryColor = vibrancySorted.find((c) => {
+    const { r, g, b } = _hexToRgb(c.hex);
+    const dr = r - primaryRgb.r, dg = g - primaryRgb.g, db = b - primaryRgb.b;
+    return c.hex !== primaryColor.hex && Math.sqrt(dr * dr + dg * dg + db * db) > 60;
+  });
+  let secondaryHex = secondaryColor
+    ? _ensureContrast(secondaryColor.hex, "#ffffff", 3.0, true)
+    : _hslToHex((dominantHue + 30) % 360, primaryHsl.s, primaryHsl.l);
+
+  // Semantic base colors
+  const successBase = findByHueRange(90, 150);
+  const successHex = successBase?.hex ?? _hslToHex(120, 0.5, 0.35);
+  const dangerBase = findByHueRange(0, 20) ?? findByHueRange(340, 360);
+  const dangerHex = dangerBase?.hex ?? _hslToHex(0, 0.6, 0.40);
+  const warningBase = findByHueRange(35, 65);
+  const warningHex = warningBase?.hex ?? _hslToHex(45, 0.7, 0.45);
+  const infoBase = findByHueRange(200, 240, [primaryHex]);
+  const infoHex = infoBase
+    ? infoBase.hex
+    : (() => {
+        const { r, g, b } = _hexToRgb(primaryHex);
+        const pHsl = _rgbToHsl(r, g, b);
+        return _hslToHex(210, Math.max(0, pHsl.s - 0.3), pHsl.l);
+      })();
+
+  // ── Step 3: light mode ──
+  const neutrals = colors.filter((c) => c.s < 0.25).sort((a, b) => b.lum - a.lum);
+  const bgPrimary = neutrals[0]?.hex ?? _hslToHex(dominantHue, 0.05, 0.98);
+  const bgSecondary = neutrals[1]?.hex ?? _darkenHex(bgPrimary, 0.04);
+  const bgTertiary = _darkenHex(bgSecondary, 0.03);
+
+  const darkestColor = [...colors].sort((a, b) => a.lum - b.lum)[0];
+  let textPrimary = _ensureContrast(darkestColor?.hex ?? "#111827", bgSecondary, 4.5, true);
+  const { r: tpr, g: tpg, b: tpb } = _hexToRgb(textPrimary);
+  const tpHsl = _rgbToHsl(tpr, tpg, tpb);
+  let textSecondary = _ensureContrast(
+    _hslToHex(tpHsl.h, tpHsl.s, Math.min(1, tpHsl.l + 0.15)),
+    bgSecondary, 3.0, true
+  );
+
+  const bgSecLum = _getLuminance(bgSecondary);
+  const tsLum = _getLuminance(textSecondary);
+  const borderL = (bgSecLum + tsLum) / 2;
+  const border = _hslToHex(dominantHue, 0.10, Math.max(0.1, Math.min(0.9, borderL)));
+  const borderSubtle = _lightenHex(border, 0.05);
+
+  const semanticLight = (baseHex) => {
+    // Ensure base is dark enough to serve as a visible UI accent against the main background (3:1)
+    const base = _ensureContrast(baseHex, bgPrimary, 3.0, true);
+    const { r, g, b } = _hexToRgb(base);
+    const { h } = _rgbToHsl(r, g, b);
+    const dark = _darkenHex(base, 0.12);
+    const background = _hslToHex(h, 0.20, 0.93);
+    const text = _ensureContrast(_darkenHex(base, 0.10), background, 4.5, true);
+    const fg = _getLuminance(base) < 0.5 ? "#ffffff" : "#111827";
+    return { base, dark, background, text, fg };
+  };
+
+  const primaryDark = _darkenHex(primaryHex, 0.12);
+  const primaryBackground = _hslToHex(dominantHue, 0.20, 0.93);
+  const primaryText = _ensureContrast(_darkenHex(primaryHex, 0.10), primaryBackground, 4.5, true);
+  const secondaryDark = _darkenHex(secondaryHex, 0.10);
+  const sl = semanticLight;
+
+  // ── Step 4: dark mode ──
+  const darkNeutrals = colors
+    .filter((c) => c.s < 0.25 && c.lum < 0.06) // strict: medium grays must not become dark-mode backgrounds
+    .sort((a, b) => a.lum - b.lum);
+  const darkBgPrimary = darkNeutrals[0]?.hex ?? _hslToHex(dominantHue, 0.10, 0.07);
+  const darkBgSecondary = _lightenHex(darkBgPrimary, 0.05);
+  const darkBgTertiary = _lightenHex(darkBgPrimary, 0.10);
+
+  const lightestColor = [...colors].sort((a, b) => b.lum - a.lum)[0];
+  let darkTextPrimary = _ensureContrast(lightestColor?.hex ?? "#F0F6FC", darkBgSecondary, 4.5, false);
+  const { r: dtpr, g: dtpg, b: dtpb } = _hexToRgb(darkTextPrimary);
+  const dtpHsl = _rgbToHsl(dtpr, dtpg, dtpb);
+  let darkTextSecondary = _ensureContrast(
+    _hslToHex(dtpHsl.h, dtpHsl.s, Math.max(0, dtpHsl.l - 0.10)),
+    darkBgSecondary, 3.0, false
+  );
+
+  const darkBorder = _hslToHex(dominantHue, 0.12, 0.25);
+  const darkBorderSubtle = _lightenHex(darkBorder, 0.08);
+
+  let darkPrimary = primaryHex;
+  if (_getLuminance(darkPrimary) < 0.25) darkPrimary = _lightenHex(darkPrimary, 0.20);
+  darkPrimary = _ensureContrast(darkPrimary, "#ffffff", 4.5, false);
+  const { r: dphr, g: dphg, b: dphb } = _hexToRgb(darkPrimary);
+  const darkPrimaryHsl = _rgbToHsl(dphr, dphg, dphb);
+  const darkPrimaryDark = _darkenHex(darkPrimary, 0.10);
+  const darkPrimaryBg = _hslToHex(darkPrimaryHsl.h, 0.40, 0.12);
+  const darkPrimaryText = _ensureContrast(_lightenHex(darkPrimary, 0.10), darkPrimaryBg, 4.5, false);
+
+  let darkSecondary = _getLuminance(secondaryHex) < 0.25
+    ? _lightenHex(secondaryHex, 0.20)
+    : secondaryHex;
+  const darkSecondaryDark = _darkenHex(darkSecondary, 0.10);
+
+  const semanticDark = (lightBaseHex) => {
+    const { r, g, b } = _hexToRgb(lightBaseHex);
+    const { h } = _rgbToHsl(r, g, b);
+    let base = _getLuminance(lightBaseHex) < 0.25
+      ? _lightenHex(lightBaseHex, 0.20)
+      : lightBaseHex;
+    // Ensure base is visible as a UI accent against the dark background (3:1)
+    base = _ensureContrast(base, darkBgPrimary, 3.0, false);
+    const dark = _lightenHex(base, 0.10);
+    const background = _hslToHex(h, 0.35, 0.10);
+    const text = _ensureContrast(_lightenHex(base, 0.10), background, 4.5, false);
+    const fg = _getContrastRatio("#ffffff", base) >= 4.5 ? "#ffffff" : "#F0F6FC";
+    return { base, dark, background, text, fg };
+  };
+
+  const sd = semanticDark;
+
+  const light = {
+    "--ag-primary": primaryHex,
+    "--ag-primary-dark": primaryDark,
+    "--ag-primary-background": primaryBackground,
+    "--ag-primary-text": primaryText,
+    "--ag-secondary": secondaryHex,
+    "--ag-secondary-dark": secondaryDark,
+    "--ag-background-primary": bgPrimary,
+    "--ag-background-secondary": bgSecondary,
+    "--ag-background-tertiary": bgTertiary,
+    "--ag-text-primary": textPrimary,
+    "--ag-text-secondary": textSecondary,
+    "--ag-border": border,
+    "--ag-border-subtle": borderSubtle,
+    "--ag-success": sl(successHex).base,
+    "--ag-success-dark": sl(successHex).dark,
+    "--ag-success-background": sl(successHex).background,
+    "--ag-success-text": sl(successHex).text,
+    "--ag-danger": sl(dangerHex).base,
+    "--ag-danger-dark": sl(dangerHex).dark,
+    "--ag-danger-background": sl(dangerHex).background,
+    "--ag-danger-text": sl(dangerHex).text,
+    "--ag-warning": sl(warningHex).base,
+    "--ag-warning-dark": sl(warningHex).dark,
+    "--ag-warning-background": sl(warningHex).background,
+    "--ag-warning-text": sl(warningHex).text,
+    "--ag-info": sl(infoHex).base,
+    "--ag-info-dark": sl(infoHex).dark,
+    "--ag-info-background": sl(infoHex).background,
+    "--ag-info-text": sl(infoHex).text,
+  };
+
+  const dark = {
+    "--ag-primary": darkPrimary,
+    "--ag-primary-dark": darkPrimaryDark,
+    "--ag-primary-background": darkPrimaryBg,
+    "--ag-primary-text": darkPrimaryText,
+    "--ag-secondary": darkSecondary,
+    "--ag-secondary-dark": darkSecondaryDark,
+    "--ag-background-primary": darkBgPrimary,
+    "--ag-background-secondary": darkBgSecondary,
+    "--ag-background-tertiary": darkBgTertiary,
+    "--ag-text-primary": darkTextPrimary,
+    "--ag-text-secondary": darkTextSecondary,
+    "--ag-border": darkBorder,
+    "--ag-border-subtle": darkBorderSubtle,
+    "--ag-success": sd(successHex).base,
+    "--ag-success-dark": sd(successHex).dark,
+    "--ag-success-background": sd(successHex).background,
+    "--ag-success-text": sd(successHex).text,
+    "--ag-danger": sd(dangerHex).base,
+    "--ag-danger-dark": sd(dangerHex).dark,
+    "--ag-danger-background": sd(dangerHex).background,
+    "--ag-danger-text": sd(dangerHex).text,
+    "--ag-warning": sd(warningHex).base,
+    "--ag-warning-dark": sd(warningHex).dark,
+    "--ag-warning-background": sd(warningHex).background,
+    "--ag-warning-text": sd(warningHex).text,
+    "--ag-info": sd(infoHex).base,
+    "--ag-info-dark": sd(infoHex).dark,
+    "--ag-info-background": sd(infoHex).background,
+    "--ag-info-text": sd(infoHex).text,
+  };
+
+  return { light, dark };
+}
+
+function applyExtractedTheme(light, dark) {
+  for (const category in tokensByCategory.value) {
+    for (const token of tokensByCategory.value[category]) {
+      if (light[token.name] !== undefined) token.lightValue = light[token.name];
+      if (dark[token.name] !== undefined) token.darkValue = dark[token.name];
+      const isDarkMode = document.documentElement.getAttribute("data-theme") === "dark";
+      token.value = isDarkMode ? token.darkValue : token.lightValue;
+    }
+  }
+  updateCss();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 function parseTokens(css) {
   const isDarkMode =
@@ -1068,5 +1540,95 @@ onMounted(() => {
   .ratings-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* ── Image drop zone ───────────────────────────────────────────── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.image-drop-zone {
+  border: 2px dashed var(--ag-border);
+  border-radius: var(--ag-radius-md);
+  padding: var(--ag-space-6) var(--ag-space-4);
+  margin-bottom: var(--ag-space-4);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  color: var(--ag-text-secondary);
+  background-color: var(--ag-background-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  user-select: none;
+}
+
+.image-drop-zone:hover,
+.image-drop-zone:focus-visible {
+  border-color: var(--ag-primary);
+  background-color: var(--ag-primary-background);
+  outline: none;
+}
+
+.image-drop-zone.drag-over {
+  border-color: var(--ag-primary);
+  background-color: var(--ag-primary-background);
+}
+
+.image-drop-zone.has-image {
+  cursor: default;
+  padding: var(--ag-space-3) var(--ag-space-4);
+}
+
+.drop-icon {
+  margin-bottom: var(--ag-space-2);
+  color: var(--ag-text-secondary);
+}
+
+.drop-label {
+  margin: 0 0 var(--ag-space-1);
+  font-size: var(--ag-font-size-sm);
+  color: var(--ag-text-primary);
+}
+
+.drop-hint {
+  margin: 0;
+  font-size: var(--ag-font-size-xs);
+  color: var(--ag-text-secondary);
+}
+
+.palette-result {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.palette-swatches {
+  display: flex;
+  gap: var(--ag-space-1);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.palette-swatch-item {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ag-radius-sm);
+  border: 1px solid var(--ag-border);
+  flex-shrink: 0;
 }
 </style>
