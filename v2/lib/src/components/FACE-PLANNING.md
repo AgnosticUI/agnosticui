@@ -1,7 +1,7 @@
 # FACE Planning: AgnosticUI Form Components
 
-*Form Associated Custom Elements (FACE) implementation roadmap.*
-*Each entry below should become its own GitHub Issue, scoped like Issue #274.*
+_Form Associated Custom Elements (FACE) implementation roadmap._
+_Each entry below should become its own GitHub Issue, scoped like Issue #274._
 
 ---
 
@@ -20,18 +20,18 @@ implementation pattern.
 
 ### ✅ Completed
 
-| Component | Issue | Notes |
-|-----------|-------|-------|
-| `AgInput` | #274 | Includes textarea mode; value submission, reset, disabled, constraint validation |
-| `AgToggle` | #301 | Direct validity (no inner input); null when unchecked; matches native checkbox semantics |
-| `AgCheckbox` | #303 | Delegation via inner `<input type="checkbox">`; null when unchecked; indeterminate treated as unchecked |
-| `AgSelect` | #305 | Delegation via inner `<select>`; `FormData` overload for multi-select; `defaultSelected` reset |
-| `AgRadio` | #307 | Delegation via inner `<input type="radio">`; group FACE sync via Lit `updated()` reactive chain |
-| `AgSlider` | #310 | Migrated from hand-rolled FACE to FaceMixin; `firstUpdated` captures default; dual mode uses FormData overload |
-| `AgRating` | #312 | Direct validity (no inner input); null when value=0; positive values submit as string |
-| `AgSelectionButtonGroup` | #314 | FACE on group (not items); radio=string, checkbox=FormData overload; formReset clears internal state |
-| `AgSelectionCardGroup` | #314 | Same pattern as AgSelectionButtonGroup |
-| `AgCombobox` | #316 | Direct validity; no free-text mode — only `selectOption()`/`clearSelection()` commit values; single=string, multiple=FormData overload |
+| Component                | Issue | Notes                                                                                                                                  |
+| ------------------------ | ----- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `AgInput`                | #274  | Includes textarea mode; value submission, reset, disabled, constraint validation                                                       |
+| `AgToggle`               | #301  | Direct validity (no inner input); null when unchecked; matches native checkbox semantics                                               |
+| `AgCheckbox`             | #303  | Delegation via inner `<input type="checkbox">`; null when unchecked; indeterminate treated as unchecked                                |
+| `AgSelect`               | #305  | Delegation via inner `<select>`; `FormData` overload for multi-select; `defaultSelected` reset                                         |
+| `AgRadio`                | #307  | Delegation via inner `<input type="radio">`; group FACE sync via Lit `updated()` reactive chain                                        |
+| `AgSlider`               | #310  | Migrated from hand-rolled FACE to FaceMixin; `firstUpdated` captures default; dual mode uses FormData overload                         |
+| `AgRating`               | #312  | Direct validity (no inner input); null when value=0; positive values submit as string                                                  |
+| `AgSelectionButtonGroup` | #314  | FACE on group (not items); radio=string, checkbox=FormData overload; formReset clears internal state                                   |
+| `AgSelectionCardGroup`   | #314  | Same pattern as AgSelectionButtonGroup                                                                                                 |
+| `AgCombobox`             | #316  | Direct validity; no free-text mode — only `selectOption()`/`clearSelection()` commit values; single=string, multiple=FormData overload |
 
 ---
 
@@ -39,17 +39,17 @@ implementation pattern.
 
 These components are not form controls and do not need FACE:
 
-| Component | Reason |
-|-----------|--------|
-| `AgButton` | Not FACE (no form value). The inner `<button>` is in shadow DOM and cannot natively submit a parent form. Fixed in `_handleClick`: `this.closest('form').requestSubmit()` / `.reset()` for `type="submit"` / `type="reset"`. |
-| `AgAlert` | Display only |
-| `AgDialog` | Container, not a value |
-| `AgTabs` | Navigation, not a form field |
-| `AgAccordion` | Display/navigation |
-| `AgToast` | Notifications |
-| `AgPagination` | Navigation |
-| `AgBadge`, `AgTag`, `AgMark` | Display only |
-| All layout/utility components | Display only |
+| Component                     | Reason                                                                                                                                                                                                                       |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AgButton`                    | Not FACE (no form value). The inner `<button>` is in shadow DOM and cannot natively submit a parent form. Fixed in `_handleClick`: `this.closest('form').requestSubmit()` / `.reset()` for `type="submit"` / `type="reset"`. |
+| `AgAlert`                     | Display only                                                                                                                                                                                                                 |
+| `AgDialog`                    | Container, not a value                                                                                                                                                                                                       |
+| `AgTabs`                      | Navigation, not a form field                                                                                                                                                                                                 |
+| `AgAccordion`                 | Display/navigation                                                                                                                                                                                                           |
+| `AgToast`                     | Notifications                                                                                                                                                                                                                |
+| `AgPagination`                | Navigation                                                                                                                                                                                                                   |
+| `AgBadge`, `AgTag`, `AgMark`  | Display only                                                                                                                                                                                                                 |
+| All layout/utility components | Display only                                                                                                                                                                                                                 |
 
 ---
 
@@ -70,14 +70,14 @@ These components are not form controls and do not need FACE:
 
 These were explicitly deferred during the FACE rollout and should each become a separate GitHub issue.
 
-| Item | Scope | Notes |
-|------|-------|-------|
-| ~~`required` prop for `AgSelectionButtonGroup` / `AgSelectionCardGroup`~~ | ✅ Done | Added `required` property + `valueMissing` validity; `test-setup.ts` shim updated to track validity state |
-| ~~Custom validation messages~~ | ✅ Done | `validationMessages` prop on all 5 direct-validity components (Toggle, Rating, SelectionButtonGroup, SelectionCardGroup, Combobox). `ValidationMessages` interface exported from `face-mixin.ts`. Event-driven `ag-validate` left out of scope. |
-| ~~`AgButton` shadow DOM submit/reset bridge~~ | ✅ Done | `_handleClick` calls `this.closest('form').requestSubmit()` / `.reset()` for `type="submit"` / `type="reset"`. All 39 Button tests pass. |
-| ~~`form-association` playbook~~ | ✅ Done | Three-framework demo (React/Vue/Lit) verifying FACE end-to-end. Key findings: React needs native `addEventListener` (not `onSubmit` prop) when `requestSubmit()` comes from shadow DOM; Vue wrappers must explicitly bind `:name="name"` if `name` is a declared prop. |
-| `formStateRestoreCallback` | All FACE components | Called by browser on autofill/session restore; restores component to a saved state; each component needs its own restore logic |
-| `CustomStateSet` / `:state()` pseudo-class | All FACE components | Allows CSS to target internal states (e.g. `:state(checked)`); part of the ElementInternals API; useful for styling |
+| Item                                                                      | Scope   | Notes                                                                                                                                                                                                                                                                  |
+| ------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ~~`required` prop for `AgSelectionButtonGroup` / `AgSelectionCardGroup`~~ | ✅ Done | Added `required` property + `valueMissing` validity; `test-setup.ts` shim updated to track validity state                                                                                                                                                              |
+| ~~Custom validation messages~~                                            | ✅ Done | `validationMessages` prop on all 5 direct-validity components (Toggle, Rating, SelectionButtonGroup, SelectionCardGroup, Combobox). `ValidationMessages` interface exported from `face-mixin.ts`. Event-driven `ag-validate` left out of scope.                        |
+| ~~`AgButton` shadow DOM submit/reset bridge~~                             | ✅ Done | `_handleClick` calls `this.closest('form').requestSubmit()` / `.reset()` for `type="submit"` / `type="reset"`. All 39 Button tests pass.                                                                                                                               |
+| ~~`form-association` playbook~~                                           | ✅ Done | Three-framework demo (React/Vue/Lit) verifying FACE end-to-end. Key findings: React needs native `addEventListener` (not `onSubmit` prop) when `requestSubmit()` comes from shadow DOM; Vue wrappers must explicitly bind `:name="name"` if `name` is a declared prop. |
+| `formStateRestoreCallback`                                                | ✅      | Called by browser on autofill/session restore; restores component to a saved state; each component needs its own restore logic                                                                                                                                         |
+| `CustomStateSet` / `:state()` pseudo-class                                | ✅      | Allows CSS to target internal states (e.g. `:state(checked)`); part of the ElementInternals API; useful for styling                                                                                                                                                    |
 
 ---
 

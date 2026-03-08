@@ -40,7 +40,7 @@ and a submit button. Add a submit handler that logs the form data:
 </form>
 
 <script>
-  document.getElementById('test-form').addEventListener('submit', (e) => {
+  document.getElementById("test-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
     console.log(data); // { email: "whatever you typed" }
@@ -61,9 +61,9 @@ Click on the component in the Chrome DevTools Elements panel so it becomes `$0`,
 switch to the Console and type:
 
 ```js
-$0.form       // should return the parent <form> element
-$0.name       // should return the name attribute value
-$0.willValidate // should return true
+$0.form; // should return the parent <form> element
+$0.name; // should return the name attribute value
+$0.willValidate; // should return true
 ```
 
 If `$0.form` returns `undefined` instead of a form element, the browser doesn't recognize
@@ -73,7 +73,7 @@ the element as form-associated. That means either `formAssociated = true` is mis
 You can also check that the element appears in the form's element collection:
 
 ```js
-Array.from(document.querySelector('form').elements)
+Array.from(document.querySelector("form").elements);
 // your ag-* element should be in this list
 ```
 
@@ -87,8 +87,8 @@ the right messages is worth testing, but it gets more involved once we add consu
 control over validation messages. The basic check is:
 
 ```js
-$0.validity.valid     // false if the field is in an invalid state
-$0.reportValidity()   // triggers browser validation UI, returns true/false
+$0.validity.valid; // false if the field is in an invalid state
+$0.reportValidity(); // triggers browser validation UI, returns true/false
 ```
 
 This is straightforward for components using the delegation strategy (AgInput). For
@@ -206,29 +206,29 @@ behavior.
 Everything that depends only on `ElementInternals` and the FACE contract, not on what
 the component looks like or what its value means:
 
-| Member | Why it's here |
-|--------|--------------|
-| `static formAssociated = true` | Same on every FACE component |
-| `attachInternals()` in constructor | Must happen in constructor; same everywhere |
-| `name` reflected property | Needed for FormData; same shape on every component |
-| `get form()` | Delegates to `_internals.form` |
-| `get validity()` | Delegates to `_internals.validity` |
-| `get validationMessage()` | Delegates to `_internals.validationMessage` |
-| `get willValidate()` | Delegates to `_internals.willValidate` |
-| `checkValidity()` | Thin wrapper on `_internals.checkValidity()` |
-| `reportValidity()` | Thin wrapper on `_internals.reportValidity()` |
-| `formDisabledCallback(disabled)` | Same pattern everywhere: sync `this.disabled` from fieldset |
-| `formResetCallback()` no-op | Subclasses must override with their own reset logic |
+| Member                             | Why it's here                                               |
+| ---------------------------------- | ----------------------------------------------------------- |
+| `static formAssociated = true`     | Same on every FACE component                                |
+| `attachInternals()` in constructor | Must happen in constructor; same everywhere                 |
+| `name` reflected property          | Needed for FormData; same shape on every component          |
+| `get form()`                       | Delegates to `_internals.form`                              |
+| `get validity()`                   | Delegates to `_internals.validity`                          |
+| `get validationMessage()`          | Delegates to `_internals.validationMessage`                 |
+| `get willValidate()`               | Delegates to `_internals.willValidate`                      |
+| `checkValidity()`                  | Thin wrapper on `_internals.checkValidity()`                |
+| `reportValidity()`                 | Thin wrapper on `_internals.reportValidity()`               |
+| `formDisabledCallback(disabled)`   | Same pattern everywhere: sync `this.disabled` from fieldset |
+| `formResetCallback()` no-op        | Subclasses must override with their own reset logic         |
 
 ### What Stays in the Component
 
 Anything that depends on the component's own state, rendering, or what "value" means:
 
-| Member | Why it stays |
-|--------|-------------|
-| `setFormValue()` calls | Only the component knows when its value changes and what to submit |
-| `formResetCallback()` override | Each component has a different default state |
-| `_syncValidity()` | Each component has different validation logic |
+| Member                         | Why it stays                                                       |
+| ------------------------------ | ------------------------------------------------------------------ |
+| `setFormValue()` calls         | Only the component knows when its value changes and what to submit |
+| `formResetCallback()` override | Each component has a different default state                       |
+| `_syncValidity()`              | Each component has different validation logic                      |
 
 FaceMixin owns the infrastructure. The component owns the semantics.
 
@@ -251,7 +251,7 @@ Instead of re-implementing all of that, we mirror the inner element's validity s
 ```typescript
 export function syncInnerInputValidity(
   internals: ElementInternals,
-  inputEl: HTMLInputElement | HTMLTextAreaElement | null | undefined
+  inputEl: HTMLInputElement | HTMLTextAreaElement | null | undefined,
 ): void {
   if (!inputEl) return;
   if (!inputEl.validity.valid) {
@@ -337,7 +337,7 @@ components share semantics that are different from text inputs.
 ### The Null Form Value
 
 ```typescript
-this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+this._internals.setFormValue(this.checked ? this.value || "on" : null);
 ```
 
 A native `<input type="checkbox">` that is unchecked is simply absent from `FormData`.
@@ -361,7 +361,7 @@ private _syncValidity(): void {
 }
 ```
 
-### Where _syncValidity Gets Called
+### Where \_syncValidity Gets Called
 
 For AgInput it's called on every keystroke. For AgToggle it's called in `_performToggle()`
 on every state change. The timing is different but the principle is the same: validity
@@ -557,11 +557,11 @@ const customMessage = validateEvent.detail.message ?? el.validationMessage;
 this._internals.setValidity(el.validity, customMessage, el);
 ```
 
-| Pro | Con |
-|-----|-----|
-| Works in plain HTML and all frameworks | Fires on every input event |
+| Pro                                    | Con                                                |
+| -------------------------------------- | -------------------------------------------------- |
+| Works in plain HTML and all frameworks | Fires on every input event                         |
 | Consumer has full per-instance control | Mutating `event.detail` is unfamiliar to many devs |
-| No new component API needed | Synchronous only, no async validators |
+| No new component API needed            | Synchronous only, no async validators              |
 
 ### Option B: Validation Map Property
 
@@ -584,11 +584,11 @@ validationMessages?: Partial<Record<keyof ValidityState, string>>;
 />
 ```
 
-| Pro | Con |
-|-----|-----|
-| Declarative and easy to read | Evaluated at render time, not validation time |
+| Pro                                             | Con                                                 |
+| ----------------------------------------------- | --------------------------------------------------- |
+| Declarative and easy to read                    | Evaluated at render time, not validation time       |
 | Familiar (similar to many React form libraries) | Doesn't work in plain HTML, only framework wrappers |
-| Easy to type with TypeScript | Consumer must know `ValidityState` flag names |
+| Easy to type with TypeScript                    | Consumer must know `ValidityState` flag names       |
 
 ### Where We Landed
 
@@ -672,7 +672,7 @@ that inner button has no form owner. Clicking "Send Message →" simply fires a 
 that goes nowhere; the parent `<form>`'s submit event never fires.
 
 This is the exact mirror image of the shadow DOM inputs discovery from AgCheckbox, but for
-*submit* (and *reset*) buttons rather than value submission.
+_submit_ (and _reset_) buttons rather than value submission.
 
 The fix lives in `_handleClick` on the host element. The host element IS in the light DOM
 and therefore IS a descendant of the ancestor form. `this.closest('form')` works correctly
@@ -680,11 +680,11 @@ from there:
 
 ```typescript
 if (!this.disabled && !this.loading && !event.defaultPrevented) {
-  if (this.type === 'submit') {
-    const form = this.closest('form');
+  if (this.type === "submit") {
+    const form = this.closest("form");
     if (form) form.requestSubmit();
-  } else if (this.type === 'reset') {
-    const form = this.closest('form');
+  } else if (this.type === "reset") {
+    const form = this.closest("form");
     if (form) form.reset();
   }
 }
@@ -699,7 +699,7 @@ framework-specific workaround; the correction lives in core `_Button.ts` and is 
 available everywhere `ag-button` is used.
 
 AgButton is not FACE — it has no form value to submit and does not need `formAssociated`.
-But it does need to *interact* with the form its host element lives in, and that interaction
+But it does need to _interact_ with the form its host element lives in, and that interaction
 requires explicit coordination across the shadow boundary.
 
 ---
@@ -729,10 +729,10 @@ requires explicit coordination across the shadow boundary.
 
 ## Future Work
 
-- [ ] `formStateRestoreCallback` for autofill and session history (separate issue)
+- [x] `formStateRestoreCallback` for autofill and session history (separate issue)
 - [x] `validationMessages` prop — done; all 5 direct-validity components (Toggle, Rating, SelectionButtonGroup, SelectionCardGroup, Combobox) accept `validationMessages?: ValidationMessages` to override hardcoded fallback strings
 - [x] `CustomStateSet` via `_internals.states` for CSS pseudo-class support — done; see `## CustomStateSet / :state() pseudo-class` section below
-- [ ] `_parentDisabled` refinement for `formDisabledCallback` to avoid conflict with local disabled attribute
+- [x] `_parentDisabled` refinement for `formDisabledCallback` to avoid conflict with local disabled attribute
 - [x] `AgButton` shadow DOM submit/reset bridge — done; `_handleClick` calls `this.closest('form').requestSubmit()` / `.reset()` for `type="submit"` and `type="reset"`
 
 ---
@@ -935,15 +935,15 @@ submission, causing a full page reload that wipes React state before re-render.
 
 ```tsx
 useEffect(() => {
-  const form = formRef.current
-  if (!form) return
+  const form = formRef.current;
+  if (!form) return;
   function onSubmit(e: Event) {
-    e.preventDefault()
+    e.preventDefault();
     // read FormData, setSubmissionData, etc.
   }
-  form.addEventListener('submit', onSubmit)
-  return () => form.removeEventListener('submit', onSubmit)
-}, [])
+  form.addEventListener("submit", onSubmit);
+  return () => form.removeEventListener("submit", onSubmit);
+}, []);
 ```
 
 This matches what Vue's `@submit.prevent` does under the hood and guarantees
@@ -962,7 +962,7 @@ never bound in the template. FACE elements with `name=""` are excluded from Form
 **Fix:** explicitly bind `:name="name"` in the wrapper template alongside the other props.
 
 ```html
-<ag-input :name="name" ... v-bind="$attrs">
+<ag-input :name="name" ... v-bind="$attrs"></ag-input>
 ```
 
 `VueToggle` and `VueSelectionButtonGroup` already had `:name="name"` explicitly — `VueInput`
@@ -988,14 +988,21 @@ releases. No polyfill needed.
 
 ```css
 /* From a global stylesheet or a wrapping component's styles */
-ag-toggle:state(checked)   { outline: 2px dashed green; }
-ag-radio:state(invalid)    { outline: 2px dashed red; }
-ag-checkbox:state(checked) { background: lightgreen; }
+ag-toggle:state(checked) {
+  outline: 2px dashed green;
+}
+ag-radio:state(invalid) {
+  outline: 2px dashed red;
+}
+ag-checkbox:state(checked) {
+  background: lightgreen;
+}
 ```
 
 And from JS:
+
 ```js
-element.matches(':state(checked)') // true / false
+element.matches(":state(checked)"); // true / false
 ```
 
 This is the CSS-native equivalent of what a `:checked` or `:invalid` pseudo-class does
@@ -1030,6 +1037,7 @@ properties into the `CustomStateSet`. The rule: **call `_syncStates()` after eve
 which `_syncValidity()` just updated.
 
 **AgCheckbox** — checked, indeterminate, disabled, required, invalid:
+
 ```typescript
 private _syncStates(): void {
   this._setState('checked', this.checked);
@@ -1041,6 +1049,7 @@ private _syncStates(): void {
 ```
 
 **AgRadio** — checked, disabled, required, invalid:
+
 ```typescript
 private _syncStates(): void {
   this._setState('checked', this.checked);
@@ -1051,6 +1060,7 @@ private _syncStates(): void {
 ```
 
 **AgToggle** — checked, disabled, readonly, required, invalid:
+
 ```typescript
 private _syncStates(): void {
   this._setState('checked', this.checked);
@@ -1075,7 +1085,7 @@ override updated(changedProperties: Map<string, unknown>) {
 
 ### The `invalid` state tracks FACE validity, not the `invalid` prop
 
-`ag-checkbox` and `ag-toggle` both have an `invalid` *prop* (consumer-set, cosmetic).
+`ag-checkbox` and `ag-toggle` both have an `invalid` _prop_ (consumer-set, cosmetic).
 `:state(invalid)` tracks `!this._internals.validity.valid` — the constraint validation
 result — which is what `form.checkValidity()` uses. The two can differ and are independent.
 
@@ -1090,6 +1100,7 @@ see them as the same radio group — so each unchecked required radio independen
 Two fixes were needed:
 
 1. **Replace delegation with group-aware direct validation** in `_syncValidity()`:
+
 ```typescript
 private _isGroupChecked(): boolean {
   if (this.checked) return true;
@@ -1115,8 +1126,9 @@ private _syncValidity(): void {
 ```
 
 2. **Force-sync siblings in `uncheckOtherRadiosInGroup()`**: When a radio is clicked,
-siblings that were already `false` don't trigger Lit's `updated()` (no property change),
-so their `_syncValidity()` is never called. Explicitly re-syncing them fixes this:
+   siblings that were already `false` don't trigger Lit's `updated()` (no property change),
+   so their `_syncValidity()` is never called. Explicitly re-syncing them fixes this:
+
 ```typescript
 radio.checked = false;
 radio._syncValidity(); // TypeScript allows this — same class, different instance
@@ -1130,8 +1142,8 @@ The modern spec uses `:state(checked)`. The older double-dash form `:--checked` 
 
 ### States exposed per component
 
-| Component | States |
-|-----------|--------|
+| Component     | States                                                        |
+| ------------- | ------------------------------------------------------------- |
 | `ag-checkbox` | `checked`, `indeterminate`, `disabled`, `required`, `invalid` |
-| `ag-radio` | `checked`, `disabled`, `required`, `invalid` |
-| `ag-toggle` | `checked`, `disabled`, `readonly`, `required`, `invalid` |
+| `ag-radio`    | `checked`, `disabled`, `required`, `invalid`                  |
+| `ag-toggle`   | `checked`, `disabled`, `readonly`, `required`, `invalid`      |
