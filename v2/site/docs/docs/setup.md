@@ -78,16 +78,16 @@ Follow the "Next Steps" printed by the CLI:
    You can also load the styles directly in your `index.html`:
 
    ```html
-      <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css" />
-      <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
-      ```
-   
-      You can view the full list of theme tokens available in <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a>.
-   
-   2. **Set Up Theming**
+   <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css" />
+   <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
+   ```
 
-   ::: warning Vite Default Dark Mode
-   Vite's default template uses a dark background (`#242424`). You'll need to override this to use AgnosticUI's theme system.
+   You can view the full list of theme tokens available in <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a>.
+
+2. **Set Up Theming**
+
+   ::: tip Override Default Styles
+   Many build tools (Vite, Create React App, etc.) include default background colors. You may need to override these to use AgnosticUI's theme system. See the [Theming Guide](../theming.md) for framework-specific details.
    :::
 
    AgnosticUI uses a `data-theme` attribute on the `<html>` element to control theming. Add this to your main CSS file or in a `<style>` tag:
@@ -137,7 +137,17 @@ Follow the "Next Steps" printed by the CLI:
    npx agnosticui-cli add button input card
    ```
 
-4. **Use Components**
+4. **Wire Up Your AI Coding Assistant**
+
+   Generate a context file so tools like Claude Code, Cursor, or Copilot know your installed components, their prop types, and import paths:
+
+   ```bash
+   npx agnosticui-cli context
+   ```
+
+   AgnosticUI auto-detects which AI tool you're using and writes to the right file. Re-run after adding more components to keep context current. See the [Generating AI Context](#generating-ai-context) section below for `--format` and `--output` options.
+
+5. **Use Components**
 
    Import and use them in your app:
 
@@ -340,15 +350,122 @@ Your `agnosticui.config.json` will store these settings:
 }
 ```
 
-### Syncing Updates (Development)
+### Syncing Updates
 
-During active development, you can sync the reference library with a new tarball:
+The `sync` command updates the reference library in `./agnosticui/` and shared infrastructure files without touching your installed components. After syncing, re-add any components you want to update:
 
 ```bash
-npx agnosticui-cli sync --tarball /path/to/agnosticui-local-v0.0.2.tar.gz
+npx agnosticui-cli add input --force
 ```
 
-This updates the reference library in `./agnosticui/` without touching your customized components.
+#### Pull Latest from NPM
+
+Run without any flags to download and apply the latest published version:
+
+```bash
+npx agnosticui-cli sync
+```
+
+#### Pin a Specific Version or Tag
+
+Use `--tag` to target a dist-tag or exact semver:
+
+```bash
+# Latest alpha release
+npx agnosticui-cli sync --tag alpha
+
+# Specific version
+npx agnosticui-cli sync --tag 2.0.0-alpha.21
+```
+
+#### Use a Local Tarball
+
+Point to a locally built tarball with `--tarball`. Useful when testing unpublished changes:
+
+```bash
+npx agnosticui-cli sync --tarball /path/to/agnosticui-local-v2.0.0.tar.gz
+```
+
+#### Re-initialize with --force
+
+If the reference library or shared infrastructure gets out of sync, `init --force` re-runs initialization without prompts. Existing config values (framework, components path) are reused and installed components are not modified:
+
+```bash
+npx agnosticui-cli init --force
+
+# Or target a specific version
+npx agnosticui-cli init --force --tag 2.0.0-alpha.21
+```
+
+### Installing Playbooks
+
+Playbooks are pre-built, self-contained page templates (login forms, dashboards, data grids, etc.) that you can install directly into your project as a starting point or reference.
+
+List all available playbooks:
+
+```bash
+npx agnosticui-cli playbook --list
+```
+
+Install a playbook into your project:
+
+```bash
+npx agnosticui-cli playbook <slug> --framework <react|vue|lit>
+```
+
+For example:
+
+```bash
+npx agnosticui-cli playbook login --framework react
+npx agnosticui-cli playbook dashboard --framework vue
+npx agnosticui-cli playbook grid --framework lit
+```
+
+Files are written to `src/playbooks/<slug>/` by default. Use `--path` to choose a different destination:
+
+```bash
+npx agnosticui-cli playbook login --framework react --path ./my-login
+```
+
+Each playbook is a self-contained Vite project. Once installed, run it directly to see it in the browser:
+
+```bash
+cd src/playbooks/login
+npm install
+npm run dev
+```
+
+Or copy only the pieces you need into your own project.
+
+### Generating AI Context
+
+Once you have components installed, generate an AI context file so your coding assistant knows their prop types and import paths:
+
+```bash
+npx agnosticui-cli context
+```
+
+AgnosticUI auto-detects configured tools (Claude Code, Cursor, Copilot, Windsurf, and others) and writes a formatted context block to the appropriate file. If multiple tools are detected, it prompts you to choose.
+
+Re-running the command after adding more components splices the updated content in place — it never duplicates or overwrites unrelated content.
+
+Use `--format` to target a specific tool explicitly:
+
+```bash
+npx agnosticui-cli context --format cursor    # .cursor/rules/agnosticui.mdc (MDC frontmatter added)
+npx agnosticui-cli context --format claude    # CLAUDE.md
+npx agnosticui-cli context --format copilot  # .github/copilot-instructions.md
+npx agnosticui-cli context --format windsurf # .windsurfrules
+npx agnosticui-cli context --format openai   # AGENTS.md
+npx agnosticui-cli context --format gemini   # GEMINI.md
+npx agnosticui-cli context --format generic  # llms.txt
+```
+
+Use `--output` to write to a custom path instead:
+
+```bash
+npx agnosticui-cli context --output ./docs/agnosticui-context.md
+```
 
 ## TypeScript Configuration
 

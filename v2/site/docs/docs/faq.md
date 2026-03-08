@@ -270,13 +270,42 @@ npx ag list
 
 ### How do I update the reference library?
 
-Use the sync command with a new tarball:
+The `sync` command updates the reference library in `./agnosticui/` and shared infrastructure files without touching your installed components. After syncing, re-add any components you want to update:
 
 ```bash
-npx agnosticui-cli sync --tarball /path/to/agnosticui-local-v0.0.2.tar.gz
+npx agnosticui-cli add input --force
 ```
 
-This updates `./agnosticui/` without touching your customized components.
+**Pull latest from NPM** (no flags — downloads the latest published version):
+
+```bash
+npx agnosticui-cli sync
+```
+
+**Pin a specific version or tag** with `--tag`:
+
+```bash
+# Latest alpha release
+npx agnosticui-cli sync --tag alpha
+
+# Specific version
+npx agnosticui-cli sync --tag 2.0.0-alpha.21
+```
+
+**Use a local tarball** with `--tarball` (useful for testing unpublished changes):
+
+```bash
+npx agnosticui-cli sync --tarball /path/to/agnosticui-local-v2.0.0.tar.gz
+```
+
+**Re-initialize with `--force`** if the reference library or shared infrastructure gets out of sync:
+
+```bash
+npx agnosticui-cli init --force
+
+# Or target a specific version
+npx agnosticui-cli init --force --tag 2.0.0-alpha.21
+```
 
 ### Can I remove components?
 
