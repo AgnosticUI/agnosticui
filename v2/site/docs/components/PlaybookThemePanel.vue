@@ -356,6 +356,13 @@ function _getContrastRatio(hex1, hex2) {
   return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05)
 }
 
+/** Pick black or white — whichever contrasts more against the given background. */
+function _bestFg(hex) {
+  return _getContrastRatio(hex, '#000000') >= _getContrastRatio(hex, '#ffffff')
+    ? '#000000'
+    : '#ffffff'
+}
+
 function _ensureContrast(color, against, minRatio, preferDarken = true) {
   let { h, s, l } = (() => { const { r, g, b } = _hexToRgb(color); return _rgbToHsl(r, g, b) })()
   for (let i = 0; i < 20; i++) {
@@ -518,9 +525,11 @@ function mapPaletteToTokens(palette) {
 
   const light = {
     '--ag-primary': primaryHex, '--ag-primary-dark': _darkenHex(primaryHex, 0.12),
+    '--ag-primary-fg': _bestFg(primaryHex),
     '--ag-primary-background': _hslToHex(dominantHue, 0.20, 0.93),
     '--ag-primary-text': _ensureContrast(_darkenHex(primaryHex, 0.10), _hslToHex(dominantHue, 0.20, 0.93), 4.5, true),
     '--ag-secondary': secondaryHex, '--ag-secondary-dark': _darkenHex(secondaryHex, 0.10),
+    '--ag-secondary-fg': _bestFg(secondaryHex),
     '--ag-background-primary': bgPrimary, '--ag-background-secondary': bgSecondary, '--ag-background-tertiary': bgTertiary,
     '--ag-text-primary': textPrimary, '--ag-text-secondary': textSecondary,
     '--ag-border': border, '--ag-border-subtle': borderSubtle,
@@ -536,9 +545,11 @@ function mapPaletteToTokens(palette) {
 
   const dark = {
     '--ag-primary': darkPrimary, '--ag-primary-dark': _darkenHex(darkPrimary, 0.10),
+    '--ag-primary-fg': _bestFg(darkPrimary),
     '--ag-primary-background': _hslToHex(darkPrimaryHsl.h, 0.40, 0.12),
     '--ag-primary-text': _ensureContrast(_lightenHex(darkPrimary, 0.10), _hslToHex(darkPrimaryHsl.h, 0.40, 0.12), 4.5, false),
     '--ag-secondary': darkSecondary, '--ag-secondary-dark': _darkenHex(darkSecondary, 0.10),
+    '--ag-secondary-fg': _bestFg(darkSecondary),
     '--ag-background-primary': darkBgPrimary, '--ag-background-secondary': darkBgSecondary, '--ag-background-tertiary': darkBgTertiary,
     '--ag-text-primary': darkTextPrimary, '--ag-text-secondary': darkTextSecondary,
     '--ag-border': darkBorder, '--ag-border-subtle': darkBorderSubtle,
