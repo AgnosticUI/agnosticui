@@ -101,6 +101,10 @@
             <VueIcon size="13" no-fill><Copy :size="13" /></VueIcon>
             <span class="mis1">Copy</span>
           </VueButton>
+          <VueButton size="small" variant="monochrome" :bordered="true" shape="rounded" @click="downloadCustomCss">
+            <VueIcon size="13" no-fill><Download :size="13" /></VueIcon>
+            <span class="mis1">Download</span>
+          </VueButton>
           <VueButton size="small" variant="monochrome" :bordered="true" shape="rounded" @click="clearCustomCss">
             Clear
           </VueButton>
@@ -118,7 +122,7 @@ import { SKINS_CSS } from '@skins/skins-css-data.js'
 import VueButton from 'agnosticui-core/button/vue'
 import VueInput from 'agnosticui-core/input/vue'
 import { VueIcon } from 'agnosticui-core/icon/vue'
-import { ImagePlus, ChevronDown, Copy } from 'lucide-vue-next'
+import { ImagePlus, ChevronDown, Copy, Download } from 'lucide-vue-next'
 
 // ── State ─────────────────────────────────────────────────────────────────────
 
@@ -231,6 +235,19 @@ async function copyCustomCss() {
   } catch {
     applyStatus.value = 'Copy failed'
   }
+  setTimeout(() => { applyStatus.value = '' }, 2000)
+}
+
+function downloadCustomCss() {
+  if (!customCssText.value) return
+  const blob = new Blob([customCssText.value], { type: 'text/css' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'ag-theme.css'
+  a.click()
+  URL.revokeObjectURL(url)
+  applyStatus.value = 'Downloaded!'
   setTimeout(() => { applyStatus.value = '' }, 2000)
 }
 

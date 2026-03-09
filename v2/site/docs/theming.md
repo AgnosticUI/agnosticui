@@ -107,14 +107,12 @@ See the full list of available CSS custom properties in the theme tokens files: 
 
 Beyond custom theming via tokens, AgnosticUI offers 15+ pre-built skins — coordinated light and dark mode palettes ranging from earthy tones like **Deep Forest** and **Coffee Espresso** to bold styles like **Neons On Black** and **Retro Brutalist**. Each skin restyles your entire UI by overriding the token layer with a single CSS class on `<html>`.
 
-Skins are available through the [Playbooks](/playbooks/dashboard) — click the palette FAB (floating action button) in the bottom-right corner to browse and switch skins live. Use the **Copy CSS** button to grab any skin's styles and paste them into your own project.
-
-The copied CSS includes both light and dark mode variants in a single payload. Save it to a file (e.g. `skin.css`) and import it immediately after the base token files so the skin overrides cascade correctly:
+Skins are available through the [Theme Playground](/playbooks/) — click the palette FAB in the bottom-right corner to browse and switch skins live, extract a theme from an image, or paste custom CSS vars. Copy or download the result as `ag-theme.css`, then import it immediately after the base token files so the overrides cascade correctly:
 
 ```css
 @import './components/ag/styles/ag-tokens.css';
 @import './components/ag/styles/ag-tokens-dark.css';
-@import './skin.css'; /* contains both light + dark skin overrides */
+@import './ag-theme.css'; /* contains both light + dark overrides */
 ```
 
 Then activate the skin by adding the corresponding class to `<html>`:
