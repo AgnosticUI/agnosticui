@@ -1,0 +1,65 @@
+/**
+ * Cyberpunk Skin — Light Mode (Purple Dark)
+ *
+ * Purple/plum base with hot pink accents. Distinct from Neons On Black
+ * (purple tones vs cyan) and maintains a cohesive plum-to-magenta palette.
+ * Note: "Light mode" uses dark backgrounds to preserve the cyberpunk aesthetic.
+ *
+ * Activate by adding class="ag-skin-cyberpunk" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-cyberpunk {
+  /* ── Primary color family (hot pink/magenta) ── */
+  --ag-primary: #ff7edb;
+  --ag-primary-fg: #1a0f2e;
+  --ag-primary-dark: #f050c8;
+  --ag-primary-border: #ff9ee8;
+  --ag-primary-background: #2d0a26;
+  --ag-primary-text: #ffbcec;
+
+  /* ── Focus ring (pink-derived RGB) ── */
+  --ag-focus: 255, 126, 219;
+  --ag-focus-dark: #ff9ee8;
+
+  /* ── Semantic text (lavender on purple) ── */
+  --ag-text-primary: #f0e6ff;
+  --ag-text-secondary: #d4b8f0;
+  --ag-text-muted: #9a78c0;
+  --ag-text-primary-muted: #e0ccf8;
+
+  /* ── Borders (muted purple-grey) ── */
+  --ag-border: #4a3d5c;
+  --ag-border-subtle: #3a2e4a;
+
+  /* ── Backgrounds (purple/plum dark) ── */
+  --ag-background-primary: #2b213a;
+  --ag-background-secondary: #221932;
+  --ag-background-tertiary: #1e1530;
+
+  /* ── Border radius (futuristic, slightly sharp) ── */
+  --ag-radius-lg: 0.375rem;
+
+  /* ── Shadows (pink neon glow) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(255, 126, 219, 0.2);
+  --ag-shadow-sm: 0 0 8px 0 rgba(255, 126, 219, 0.28);
+  --ag-shadow-md: 0 0 15px 0 rgba(255, 126, 219, 0.28);
+  --ag-shadow-lg: 0 0 25px -2px rgba(255, 126, 219, 0.32);
+  --ag-shadow-xl: 0 0 35px -4px rgba(255, 126, 219, 0.4);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #ff7edb;
+  --ag-rating-filled-primary: #ff7edb;
+
+  /* ── Cyberpunk pink palette (overrides blue palette) ── */
+  --ag-blue-50: #ffe8f9;
+  --ag-blue-100: #ffccf3;
+  --ag-blue-200: #ffaae8;
+  --ag-blue-300: #ff7edb;
+  --ag-blue-400: #ff52cc;
+  --ag-blue-500: #e034af;
+  --ag-blue-600: #be2090;
+  --ag-blue-700: #9c1375;
+  --ag-blue-800: #7a085a;
+  --ag-blue-900: #580040;
+}

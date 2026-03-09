@@ -29,6 +29,14 @@ export const SKINS = [
   // Blues / indigos (~210–260°)
   { id: 'high-contrast', label: 'High Contrast', swatch: '#0050d8' },
   { id: 'glassmorphism', label: 'Glassmorphism', swatch: '#6366f1' },
+  // Dark / OLED themes
+  { id: 'midnight', label: 'Midnight', swatch: '#218bff' },
+  { id: 'deep-sea', label: 'Deep Sea', swatch: '#58a6ff' },
+  // Eye-comfort themes
+  { id: 'solarized', label: 'Solarized', swatch: '#2aa198' },
+  { id: 'paper', label: 'Paper', swatch: '#433422' },
+  // Purples / pinks
+  { id: 'cyberpunk', label: 'Cyberpunk', swatch: '#ff7edb' },
   // Neutrals / achromatics
   { id: 'monochromatic', label: 'Monochromatic', swatch: '#000000' },
   { id: 'black-cream', label: 'Black Cream', swatch: '#1a1a1a' },

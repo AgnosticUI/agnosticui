@@ -1,0 +1,64 @@
+/**
+ * Paper Skin — Dark Mode
+ *
+ * Dark sepia for night-time reading. Maintains the warm, low-blue-light
+ * character of the Paper skin while shifting to a dark background.
+ *
+ * Activate by adding class="ag-skin-paper" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-paper {
+  /* ── Primary color family (warm tan/caramel on dark sepia) ── */
+  --ag-primary: #c9a87a;
+  --ag-primary-fg: #180f08;
+  --ag-primary-dark: #b8946a;
+  --ag-primary-border: #c9a87a;
+  --ag-primary-background: #2a1e10;
+  --ag-primary-text: #e0c49a;
+
+  /* ── Focus ring (warm tan RGB) ── */
+  --ag-focus: 201, 168, 122;
+  --ag-focus-dark: #d9b888;
+
+  /* ── Semantic text (warm light on dark sepia) ── */
+  --ag-text-primary: #e8dcc8;
+  --ag-text-secondary: #d4c4a8;
+  --ag-text-muted: #9a8870;
+  --ag-text-primary-muted: #e0d0b8;
+
+  /* ── Borders (dark warm) ── */
+  --ag-border: #3d3025;
+  --ag-border-subtle: #2e2418;
+
+  /* ── Backgrounds (dark sepia) ── */
+  --ag-background-primary: #1f1710;
+  --ag-background-secondary: #2a1e10;
+  --ag-background-tertiary: #332515;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm sepia on dark) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(201, 168, 122, 0.1);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(201, 168, 122, 0.12);
+  --ag-shadow-md: 0 2px 10px 0 rgba(201, 168, 122, 0.12);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(201, 168, 122, 0.15);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(201, 168, 122, 0.18);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #c9a87a;
+  --ag-rating-filled-primary: #c9a87a;
+
+  /* ── Sepia/brown palette (dark mode, lighter values for dark bg) ── */
+  --ag-blue-50: #e0c49a;
+  --ag-blue-100: #d9b888;
+  --ag-blue-200: #c9a87a;
+  --ag-blue-300: #b8946a;
+  --ag-blue-400: #a08060;
+  --ag-blue-500: #8a6c4e;
+  --ag-blue-600: #6b5030;
+  --ag-blue-700: #4a3822;
+  --ag-blue-800: #2c2012;
+  --ag-blue-900: #1f1710;
+}

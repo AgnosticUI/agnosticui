@@ -1,0 +1,64 @@
+/**
+ * Solarized Skin — Dark Mode
+ *
+ * Classic Solarized Dark theme with teal/cyan primary.
+ * Deep blue-green background with warm-neutral text.
+ *
+ * Activate by adding class="ag-skin-solarized" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-solarized {
+  /* ── Primary color family (same cyan, pops on dark bg) ── */
+  --ag-primary: #2aa198;
+  --ag-primary-fg: #002b36;
+  --ag-primary-dark: #238880;
+  --ag-primary-border: #2aa198;
+  --ag-primary-background: #01343d;
+  --ag-primary-text: #5acec7;
+
+  /* ── Focus ring (teal-derived RGB) ── */
+  --ag-focus: 42, 161, 152;
+  --ag-focus-dark: #5acec7;
+
+  /* ── Semantic text (Solarized dark base colors) ── */
+  --ag-text-primary: #93a1a1;
+  --ag-text-secondary: #839496;
+  --ag-text-muted: #657b83;
+  --ag-text-primary-muted: #93a1a1;
+
+  /* ── Borders (Solarized base02) ── */
+  --ag-border: #073642;
+  --ag-border-subtle: #0d4654;
+
+  /* ── Backgrounds (Solarized dark) ── */
+  --ag-background-primary: #002b36;
+  --ag-background-secondary: #073642;
+  --ag-background-tertiary: #0d4654;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (teal-tinted on dark) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(42, 161, 152, 0.1);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(42, 161, 152, 0.12);
+  --ag-shadow-md: 0 2px 10px 0 rgba(42, 161, 152, 0.12);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(42, 161, 152, 0.15);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(42, 161, 152, 0.18);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #b58900;
+  --ag-rating-filled-primary: #2aa198;
+
+  /* ── Solarized teal/cyan palette (dark mode reversed) ── */
+  --ag-blue-50: #5acec7;
+  --ag-blue-100: #2aa198;
+  --ag-blue-200: #238880;
+  --ag-blue-300: #1c6e67;
+  --ag-blue-400: #155551;
+  --ag-blue-500: #0d3b38;
+  --ag-blue-600: #062220;
+  --ag-blue-700: #01343d;
+  --ag-blue-800: #073642;
+  --ag-blue-900: #002b36;
+}
