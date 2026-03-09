@@ -94,18 +94,18 @@
           class="ptp-textarea-input"
         />
         <div class="ptp-paste-actions">
-          <VueButton size="small" variant="primary" shape="rounded" @click="applyCustomCss">
+          <VueButton size="small" variant="primary" shape="rounded" :is-disabled="!customCssText" @click="applyCustomCss">
             Apply
           </VueButton>
-          <VueButton size="small" variant="monochrome" :bordered="true" shape="rounded" @click="copyCustomCss">
+          <VueButton size="small" variant="monochrome" :bordered="true" shape="rounded" :is-disabled="!customCssText" @click="copyCustomCss">
             <VueIcon size="13" no-fill><Copy :size="13" /></VueIcon>
             <span class="mis1">Copy</span>
           </VueButton>
-          <VueButton size="small" variant="monochrome" :bordered="true" shape="rounded" @click="downloadCustomCss">
+          <VueButton size="small" variant="monochrome" :bordered="true" shape="rounded" :is-disabled="!customCssText" @click="downloadCustomCss">
             <VueIcon size="13" no-fill><Download :size="13" /></VueIcon>
             <span class="mis1">Download</span>
           </VueButton>
-          <VueButton size="small" variant="monochrome" :bordered="true" shape="rounded" @click="clearCustomCss">
+          <VueButton size="small" variant="monochrome" :bordered="true" shape="rounded" :is-disabled="!customCssText" @click="clearCustomCss">
             Clear
           </VueButton>
           <span v-if="applyStatus" class="ptp-status" aria-live="polite">{{ applyStatus }}</span>
