@@ -1,0 +1,29 @@
+/**
+ * VitePress-specific skin overrides.
+ *
+ * Some AgnosticUI skins define dark backgrounds even in "light mode"
+ * (e.g. Neons On Black). VitePress renders its chrome with --vp-c-* vars
+ * which are not overridden by skins-bundle.css. This file bridges that gap
+ * so the VitePress page chrome (nav, sidebar, content background) also
+ * picks up the skin's intended palette.
+ *
+ * Loaded after skins-bundle.css in config.mts head.
+ */
+
+/* ── Neons On Black — light mode: always dark ─────────────────────────────── */
+/* The skin comment says: "Light mode here is actually dark to maintain the    */
+/* neon-on-black aesthetic." Override VitePress vars to match.                 */
+:where(html).ag-skin-neons-on-black {
+  --vp-c-bg: #000000;
+  --vp-c-bg-soft: #0a0a0a;
+  --vp-c-bg-alt: #141414;
+  --vp-c-bg-elv: #0a0a0a;
+  --vp-c-text-1: #ffffff;
+  --vp-c-text-2: #e0e0e0;
+  --vp-c-text-3: #a0a0a0;
+  --vp-c-divider: #1a1a2e;
+  --vp-c-border: #1a1a2e;
+  --vp-c-gutter: #000000;
+  --vp-nav-bg-color: #000000;
+  --vp-sidebar-bg-color: #0a0a0a;
+}

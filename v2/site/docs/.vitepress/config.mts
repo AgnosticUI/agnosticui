@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import path from 'path'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -8,6 +9,8 @@ export default defineConfig({
   head: [
     ['link', { rel: 'stylesheet', href: '/ag-tokens.css' }],
     ['link', { rel: 'stylesheet', href: '/ag-tokens-dark.css' }],
+    ['link', { rel: 'stylesheet', href: '/skins-bundle.css' }],
+    ['link', { rel: 'stylesheet', href: '/skin-vp-overrides.css' }],
     ['link', { rel: 'stylesheet', href: '/table.css' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     // Open Graph
@@ -38,6 +41,11 @@ export default defineConfig({
   // Pre-bundling breaks Vue render context for Lit-based custom elements (slots/SSR),
   // causing runtime errors and FOUC. This is a known VitePress issue/workaround.
   vite: {
+    resolve: {
+      alias: {
+        '@skins': path.resolve(__dirname, '../../../skins'),
+      },
+    },
     optimizeDeps: {
       exclude: ['agnosticui-core'],
     },
@@ -79,6 +87,7 @@ export default defineConfig({
       {
         text: 'AI Playbooks',
         items: [
+          { text: 'Playground', link: '/playbooks/' },
           { text: 'Login Form', link: '/playbooks/login' },
           { text: 'Onboarding Wizard', link: '/playbooks/onboarding' },
           { text: 'Discovery Dashboard', link: '/playbooks/dashboard' },

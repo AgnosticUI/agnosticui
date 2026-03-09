@@ -6,7 +6,7 @@
   "author": "Rob Levin",
   "license": "MIT",
   "scripts": {
-    "sync-tokens": "npm run --prefix ../theme-registry rebuild && cp ../theme-registry/dist/ag-tokens.css ./docs/public/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css ./docs/public/ag-tokens-dark.css && cp ../lib/src/styles/table.css ./docs/public/table.css",
+    "sync-tokens": "npm run --prefix ../theme-registry rebuild && cp ../theme-registry/dist/ag-tokens.css ./docs/public/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css ./docs/public/ag-tokens-dark.css && cp ../lib/src/styles/table.css ./docs/public/table.css && cp ../skins/skins-bundle.css ./docs/public/skins-bundle.css",
     "clear:cache": "rm -rf docs/.vitepress/cache",
     "reinstall:lib": "npm run clear:cache && npm i ../lib/agnosticui-core-2.0.0-alpha.21.tgz && npm run sync-tokens",
     "docs:dev": "vitepress dev docs --port 8000",
