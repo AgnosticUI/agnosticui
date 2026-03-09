@@ -164,15 +164,20 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     const currentCount = parseInt(document.body.getAttribute('data-dialog-count') || '0', 10);
 
     if (currentCount === 0) {
-      // First dialog - store original overflow and scrollbar-gutter, then lock scroll.
-      // scrollbar-gutter: stable reserves the gutter space so the page does not
-      // shift when the scrollbar disappears due to overflow: hidden.
+      // First dialog - lock scroll on body (propagates to viewport) and reserve
+      // the scrollbar gutter on both body and html. The visible scrollbar belongs
+      // to the html element in most browsers/frameworks (including VitePress), so
+      // scrollbar-gutter: stable must be applied there to prevent layout shift.
+      const html = document.documentElement;
       document.body.setAttribute('data-dialog-original-overflow',
         document.body.style.overflow || '');
       document.body.setAttribute('data-dialog-original-scrollbar-gutter',
         document.body.style.scrollbarGutter || '');
+      document.body.setAttribute('data-dialog-original-html-scrollbar-gutter',
+        html.style.scrollbarGutter || '');
       document.body.style.overflow = 'hidden';
       document.body.style.scrollbarGutter = 'stable';
+      html.style.scrollbarGutter = 'stable';
       document.body.setAttribute('data-dialog-scroll-locked', '');
     }
 
@@ -186,13 +191,17 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     document.body.setAttribute('data-dialog-count', newCount.toString());
 
     if (newCount === 0) {
-      // Last dialog closing - restore original overflow and scrollbar-gutter
+      // Last dialog closing - restore all saved styles
+      const html = document.documentElement;
       const originalOverflow = document.body.getAttribute('data-dialog-original-overflow');
       const originalScrollbarGutter = document.body.getAttribute('data-dialog-original-scrollbar-gutter');
+      const originalHtmlScrollbarGutter = document.body.getAttribute('data-dialog-original-html-scrollbar-gutter');
       document.body.style.overflow = originalOverflow || '';
       document.body.style.scrollbarGutter = originalScrollbarGutter || '';
+      html.style.scrollbarGutter = originalHtmlScrollbarGutter || '';
       document.body.removeAttribute('data-dialog-original-overflow');
       document.body.removeAttribute('data-dialog-original-scrollbar-gutter');
+      document.body.removeAttribute('data-dialog-original-html-scrollbar-gutter');
       document.body.removeAttribute('data-dialog-scroll-locked');
       document.body.removeAttribute('data-dialog-count');
     }
