@@ -60,7 +60,7 @@
         <div class="react-note">
           <p>
             <strong>Interactive Preview:</strong> To see this example in action,
-            <template v-if="codepenUrl"> select Open in CodePen (NPM package style) or Open in StackBlitz (CLI local components) to</template>
+            <template v-if="codepenUrl"> select Open in CodePen (NPM package approach) or Open in StackBlitz (CLI local components) to</template>
             <template v-else> click Open in StackBlitz to</template>
             launch an interactive playground.
           </p>
