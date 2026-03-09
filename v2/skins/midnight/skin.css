@@ -1,0 +1,63 @@
+/**
+ * Midnight Skin — Light Mode (OLED Black)
+ *
+ * Pure black OLED background with GitHub-style blue accents.
+ * Note: "Light mode" uses dark backgrounds to preserve the OLED aesthetic.
+ *
+ * Activate by adding class="ag-skin-midnight" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-midnight {
+  /* ── Primary color family (GitHub blue) ── */
+  --ag-primary: #218bff;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #1a7aef;
+  --ag-primary-border: #388bfd;
+  --ag-primary-background: #031d40;
+  --ag-primary-text: #79c0ff;
+
+  /* ── Focus ring (blue-derived RGB) ── */
+  --ag-focus: 33, 139, 255;
+  --ag-focus-dark: #4d9fff;
+
+  /* ── Semantic text (light on OLED black) ── */
+  --ag-text-primary: #f0f6fc;
+  --ag-text-secondary: #c9d1d9;
+  --ag-text-muted: #8b949e;
+  --ag-text-primary-muted: #e6edf3;
+
+  /* ── Borders (subtle dark grey-blue) ── */
+  --ag-border: #21262d;
+  --ag-border-subtle: #161b22;
+
+  /* ── Backgrounds (pure OLED black) ── */
+  --ag-background-primary: #000000;
+  --ag-background-secondary: #0d0d0d;
+  --ag-background-tertiary: #141414;
+
+  /* ── Border radius (clean, modern) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (blue-tinted on black) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(33, 139, 255, 0.15);
+  --ag-shadow-sm: 0 0 8px 0 rgba(33, 139, 255, 0.2);
+  --ag-shadow-md: 0 0 15px 0 rgba(33, 139, 255, 0.2);
+  --ag-shadow-lg: 0 0 25px -2px rgba(33, 139, 255, 0.25);
+  --ag-shadow-xl: 0 0 35px -4px rgba(33, 139, 255, 0.3);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #218bff;
+
+  /* ── GitHub blue palette (overrides blue palette) ── */
+  --ag-blue-50: #ddf4ff;
+  --ag-blue-100: #b6e3ff;
+  --ag-blue-200: #80ccff;
+  --ag-blue-300: #54aeff;
+  --ag-blue-400: #218bff;
+  --ag-blue-500: #0969da;
+  --ag-blue-600: #0550ae;
+  --ag-blue-700: #033d8b;
+  --ag-blue-800: #0a3069;
+  --ag-blue-900: #002155;
+}

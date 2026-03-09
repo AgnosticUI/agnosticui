@@ -1,0 +1,64 @@
+/**
+ * Paper Skin — Light Mode
+ *
+ * Warm bone/sepia background designed as a low-blue-light reading mode.
+ * Calming, parchment-like aesthetic that reduces eye strain in
+ * ambient lighting conditions.
+ *
+ * Activate by adding class="ag-skin-paper" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-paper {
+  /* ── Primary color family (dark sepia/brown) ── */
+  --ag-primary: #433422;
+  --ag-primary-fg: #f6f1e5;
+  --ag-primary-dark: #332819;
+  --ag-primary-border: #8a6a44;
+  --ag-primary-background: #ede0cc;
+  --ag-primary-text: #2c2012;
+
+  /* ── Focus ring (sepia-derived RGB) ── */
+  --ag-focus: 67, 52, 34;
+  --ag-focus-dark: #6b5030;
+
+  /* ── Semantic text (warm dark sepia) ── */
+  --ag-text-primary: #2c2012;
+  --ag-text-secondary: #4a3822;
+  --ag-text-muted: #7a6248;
+  --ag-text-primary-muted: #3d2e18;
+
+  /* ── Borders (warm tan) ── */
+  --ag-border: #d4c4a8;
+  --ag-border-subtle: #e0d6c4;
+
+  /* ── Backgrounds (warm parchment) ── */
+  --ag-background-secondary: #ede7d6;
+  --ag-background-tertiary: #e8e0cd;
+
+  /* ── Border radius (comfortable, gentle) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm sepia tinted) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(67, 52, 34, 0.08);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(67, 52, 34, 0.1);
+  --ag-shadow-md: 0 2px 10px 0 rgba(67, 52, 34, 0.1);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(67, 52, 34, 0.12);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(67, 52, 34, 0.15);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #8a6a44;
+  --ag-rating-filled-primary: #433422;
+
+  /* ── Sepia/brown palette (overrides blue palette) ── */
+  --ag-blue-50: #f9f6ee;
+  --ag-blue-100: #f0e8d4;
+  --ag-blue-200: #ddd0b8;
+  --ag-blue-300: #c4b090;
+  --ag-blue-400: #a08860;
+  --ag-blue-500: #7a6344;
+  --ag-blue-600: #5c4a30;
+  --ag-blue-700: #433422;
+  --ag-blue-800: #2c2012;
+  --ag-blue-900: #180f08;
+}

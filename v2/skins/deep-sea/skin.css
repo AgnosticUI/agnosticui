@@ -1,0 +1,64 @@
+/**
+ * Deep Sea Skin — Light Mode (Navy Dark)
+ *
+ * GitHub dark-inspired navy/blue base with cool blue accents.
+ * Distinct from Deep Forest (no green lean) and Midnight (navy, not pure black).
+ * Note: "Light mode" uses dark backgrounds to preserve the navy aesthetic.
+ *
+ * Activate by adding class="ag-skin-deep-sea" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-deep-sea {
+  /* ── Primary color family (GitHub dark blue) ── */
+  --ag-primary: #58a6ff;
+  --ag-primary-fg: #0d1117;
+  --ag-primary-dark: #388bfd;
+  --ag-primary-border: #79c0ff;
+  --ag-primary-background: #051f40;
+  --ag-primary-text: #79c0ff;
+
+  /* ── Focus ring (blue-derived RGB) ── */
+  --ag-focus: 88, 166, 255;
+  --ag-focus-dark: #79c0ff;
+
+  /* ── Semantic text (light on navy) ── */
+  --ag-text-primary: #e6edf3;
+  --ag-text-secondary: #c9d1d9;
+  --ag-text-muted: #8b949e;
+  --ag-text-primary-muted: #d1dae3;
+
+  /* ── Borders (subtle blue-grey) ── */
+  --ag-border: #30363d;
+  --ag-border-subtle: #21262d;
+
+  /* ── Backgrounds (navy dark, bluish) ── */
+  --ag-background-primary: #0d1117;
+  --ag-background-secondary: #161b22;
+  --ag-background-tertiary: #1c2128;
+
+  /* ── Border radius (clean and modern) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (blue-grey tinted) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(88, 166, 255, 0.12);
+  --ag-shadow-sm: 0 0 8px 0 rgba(88, 166, 255, 0.16);
+  --ag-shadow-md: 0 0 15px 0 rgba(88, 166, 255, 0.16);
+  --ag-shadow-lg: 0 0 25px -2px rgba(88, 166, 255, 0.2);
+  --ag-shadow-xl: 0 0 35px -4px rgba(88, 166, 255, 0.24);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #58a6ff;
+
+  /* ── Deep sea blue palette (overrides blue palette) ── */
+  --ag-blue-50: #cae8ff;
+  --ag-blue-100: #a5d6ff;
+  --ag-blue-200: #79c0ff;
+  --ag-blue-300: #58a6ff;
+  --ag-blue-400: #388bfd;
+  --ag-blue-500: #1f6feb;
+  --ag-blue-600: #1158c7;
+  --ag-blue-700: #0d419d;
+  --ag-blue-800: #0c2d6b;
+  --ag-blue-900: #051d4d;
+}

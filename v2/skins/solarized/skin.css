@@ -1,0 +1,64 @@
+/**
+ * Solarized Skin — Light Mode
+ *
+ * Classic Solarized Light theme with teal/cyan primary.
+ * Specifically designed for scientific eye-strain reduction with
+ * warm off-white background and carefully balanced contrast.
+ *
+ * Activate by adding class="ag-skin-solarized" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-solarized {
+  /* ── Primary color family (Solarized cyan) ── */
+  --ag-primary: #2aa198;
+  --ag-primary-fg: #fdf6e3;
+  --ag-primary-dark: #238880;
+  --ag-primary-border: #5acec7;
+  --ag-primary-background: #e8f8f7;
+  --ag-primary-text: #1c6e67;
+
+  /* ── Focus ring (teal-derived RGB) ── */
+  --ag-focus: 42, 161, 152;
+  --ag-focus-dark: #238880;
+
+  /* ── Semantic text (Solarized base colors) ── */
+  --ag-text-primary: #073642;
+  --ag-text-secondary: #586e75;
+  --ag-text-muted: #839496;
+  --ag-text-primary-muted: #657b83;
+
+  /* ── Borders (Solarized base1 and base2) ── */
+  --ag-border: #93a1a1;
+  --ag-border-subtle: #c2caca;
+
+  /* ── Backgrounds (Solarized base3 and base2) ── */
+  --ag-background-secondary: #eee8d5;
+  --ag-background-tertiary: #e8e2cf;
+
+  /* ── Border radius (comfortable, moderate) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm neutral) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(7, 54, 66, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(7, 54, 66, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(7, 54, 66, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(7, 54, 66, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(7, 54, 66, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #b58900;
+  --ag-rating-filled-primary: #2aa198;
+
+  /* ── Solarized teal/cyan palette (overrides blue palette) ── */
+  --ag-blue-50: #e8f8f7;
+  --ag-blue-100: #c5edea;
+  --ag-blue-200: #96deda;
+  --ag-blue-300: #5acec7;
+  --ag-blue-400: #2aa198;
+  --ag-blue-500: #238880;
+  --ag-blue-600: #1c6e67;
+  --ag-blue-700: #155551;
+  --ag-blue-800: #0d3b38;
+  --ag-blue-900: #062220;
+}

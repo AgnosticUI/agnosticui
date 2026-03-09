@@ -514,6 +514,136 @@ export const SKINS_CSS = {
   --ag-blue-900: #150e08;
 }`,
   },
+  'cyberpunk': {
+    light: `/**
+ * Cyberpunk Skin — Light Mode (Purple Dark)
+ *
+ * Purple/plum base with hot pink accents. Distinct from Neons On Black
+ * (purple tones vs cyan) and maintains a cohesive plum-to-magenta palette.
+ * Note: "Light mode" uses dark backgrounds to preserve the cyberpunk aesthetic.
+ *
+ * Activate by adding class="ag-skin-cyberpunk" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-cyberpunk {
+  /* ── Primary color family (hot pink/magenta) ── */
+  --ag-primary: #ff7edb;
+  --ag-primary-fg: #1a0f2e;
+  --ag-primary-dark: #f050c8;
+  --ag-primary-border: #ff9ee8;
+  --ag-primary-background: #2d0a26;
+  --ag-primary-text: #ffbcec;
+
+  /* ── Focus ring (pink-derived RGB) ── */
+  --ag-focus: 255, 126, 219;
+  --ag-focus-dark: #ff9ee8;
+
+  /* ── Semantic text (lavender on purple) ── */
+  --ag-text-primary: #f0e6ff;
+  --ag-text-secondary: #d4b8f0;
+  --ag-text-muted: #9a78c0;
+  --ag-text-primary-muted: #e0ccf8;
+
+  /* ── Borders (muted purple-grey) ── */
+  --ag-border: #4a3d5c;
+  --ag-border-subtle: #3a2e4a;
+
+  /* ── Backgrounds (purple/plum dark) ── */
+  --ag-background-primary: #2b213a;
+  --ag-background-secondary: #221932;
+  --ag-background-tertiary: #1e1530;
+
+  /* ── Border radius (futuristic, slightly sharp) ── */
+  --ag-radius-lg: 0.375rem;
+
+  /* ── Shadows (pink neon glow) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(255, 126, 219, 0.2);
+  --ag-shadow-sm: 0 0 8px 0 rgba(255, 126, 219, 0.28);
+  --ag-shadow-md: 0 0 15px 0 rgba(255, 126, 219, 0.28);
+  --ag-shadow-lg: 0 0 25px -2px rgba(255, 126, 219, 0.32);
+  --ag-shadow-xl: 0 0 35px -4px rgba(255, 126, 219, 0.4);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #ff7edb;
+  --ag-rating-filled-primary: #ff7edb;
+
+  /* ── Cyberpunk pink palette (overrides blue palette) ── */
+  --ag-blue-50: #ffe8f9;
+  --ag-blue-100: #ffccf3;
+  --ag-blue-200: #ffaae8;
+  --ag-blue-300: #ff7edb;
+  --ag-blue-400: #ff52cc;
+  --ag-blue-500: #e034af;
+  --ag-blue-600: #be2090;
+  --ag-blue-700: #9c1375;
+  --ag-blue-800: #7a085a;
+  --ag-blue-900: #580040;
+}`,
+    dark: `/**
+ * Cyberpunk Skin — Dark Mode
+ *
+ * Deeper purple with brighter pink for dark mode preference.
+ *
+ * Activate by adding class="ag-skin-cyberpunk" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-cyberpunk {
+  /* ── Primary color family (brighter pink for deeper dark) ── */
+  --ag-primary: #ff9ee8;
+  --ag-primary-fg: #1a0f2e;
+  --ag-primary-dark: #ff7edb;
+  --ag-primary-border: #ffbcec;
+  --ag-primary-background: #27051e;
+  --ag-primary-text: #ffcef2;
+
+  /* ── Focus ring (brightened pink RGB) ── */
+  --ag-focus: 255, 158, 232;
+  --ag-focus-dark: #ffbcec;
+
+  /* ── Semantic text (bright lavender on deep purple) ── */
+  --ag-text-primary: #f8f0ff;
+  --ag-text-secondary: #e0ccf8;
+  --ag-text-muted: #b090d0;
+  --ag-text-primary-muted: #f0e4ff;
+
+  /* ── Borders (visible purple in dark mode) ── */
+  --ag-border: #3d2b54;
+  --ag-border-subtle: #2e1f40;
+
+  /* ── Backgrounds (deepest purple) ── */
+  --ag-background-primary: #1a0f2e;
+  --ag-background-secondary: #150b25;
+  --ag-background-tertiary: #110820;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.375rem;
+
+  /* ── Shadows (intensified pink glow) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(255, 158, 232, 0.25);
+  --ag-shadow-sm: 0 0 8px 0 rgba(255, 158, 232, 0.32);
+  --ag-shadow-md: 0 0 15px 0 rgba(255, 158, 232, 0.32);
+  --ag-shadow-lg: 0 0 25px -2px rgba(255, 158, 232, 0.38);
+  --ag-shadow-xl: 0 0 35px -4px rgba(255, 158, 232, 0.45);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #ff9ee8;
+  --ag-rating-filled-primary: #ff9ee8;
+
+  /* ── Cyberpunk pink palette (brightened for dark mode) ── */
+  --ag-blue-50: #fff0fc;
+  --ag-blue-100: #ffe8f9;
+  --ag-blue-200: #ffccf3;
+  --ag-blue-300: #ffaae8;
+  --ag-blue-400: #ff9ee8;
+  --ag-blue-500: #ff7edb;
+  --ag-blue-600: #ff52cc;
+  --ag-blue-700: #e034af;
+  --ag-blue-800: #be2090;
+  --ag-blue-900: #9c1375;
+}`,
+  },
   'deep-forest': {
     light: `/**
  * Deep Forest Skin — Light Mode
@@ -629,6 +759,134 @@ export const SKINS_CSS = {
   --ag-blue-700: #174f4a;
   --ag-blue-800: #0f3834;
   --ag-blue-900: #0d2926;
+}`,
+  },
+  'deep-sea': {
+    light: `/**
+ * Deep Sea Skin — Light Mode (Navy Dark)
+ *
+ * GitHub dark-inspired navy/blue base with cool blue accents.
+ * Distinct from Deep Forest (no green lean) and Midnight (navy, not pure black).
+ * Note: "Light mode" uses dark backgrounds to preserve the navy aesthetic.
+ *
+ * Activate by adding class="ag-skin-deep-sea" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-deep-sea {
+  /* ── Primary color family (GitHub dark blue) ── */
+  --ag-primary: #58a6ff;
+  --ag-primary-fg: #0d1117;
+  --ag-primary-dark: #388bfd;
+  --ag-primary-border: #79c0ff;
+  --ag-primary-background: #051f40;
+  --ag-primary-text: #79c0ff;
+
+  /* ── Focus ring (blue-derived RGB) ── */
+  --ag-focus: 88, 166, 255;
+  --ag-focus-dark: #79c0ff;
+
+  /* ── Semantic text (light on navy) ── */
+  --ag-text-primary: #e6edf3;
+  --ag-text-secondary: #c9d1d9;
+  --ag-text-muted: #8b949e;
+  --ag-text-primary-muted: #d1dae3;
+
+  /* ── Borders (subtle blue-grey) ── */
+  --ag-border: #30363d;
+  --ag-border-subtle: #21262d;
+
+  /* ── Backgrounds (navy dark, bluish) ── */
+  --ag-background-primary: #0d1117;
+  --ag-background-secondary: #161b22;
+  --ag-background-tertiary: #1c2128;
+
+  /* ── Border radius (clean and modern) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (blue-grey tinted) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(88, 166, 255, 0.12);
+  --ag-shadow-sm: 0 0 8px 0 rgba(88, 166, 255, 0.16);
+  --ag-shadow-md: 0 0 15px 0 rgba(88, 166, 255, 0.16);
+  --ag-shadow-lg: 0 0 25px -2px rgba(88, 166, 255, 0.2);
+  --ag-shadow-xl: 0 0 35px -4px rgba(88, 166, 255, 0.24);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #58a6ff;
+
+  /* ── Deep sea blue palette (overrides blue palette) ── */
+  --ag-blue-50: #cae8ff;
+  --ag-blue-100: #a5d6ff;
+  --ag-blue-200: #79c0ff;
+  --ag-blue-300: #58a6ff;
+  --ag-blue-400: #388bfd;
+  --ag-blue-500: #1f6feb;
+  --ag-blue-600: #1158c7;
+  --ag-blue-700: #0d419d;
+  --ag-blue-800: #0c2d6b;
+  --ag-blue-900: #051d4d;
+}`,
+    dark: `/**
+ * Deep Sea Skin — Dark Mode
+ *
+ * Deeper navy with brighter blue for dark mode preference.
+ *
+ * Activate by adding class="ag-skin-deep-sea" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-deep-sea {
+  /* ── Primary color family (brighter blue for deeper dark) ── */
+  --ag-primary: #79c0ff;
+  --ag-primary-fg: #010409;
+  --ag-primary-dark: #58a6ff;
+  --ag-primary-border: #a5d6ff;
+  --ag-primary-background: #031526;
+  --ag-primary-text: #a5d6ff;
+
+  /* ── Focus ring (brightened blue RGB) ── */
+  --ag-focus: 121, 192, 255;
+  --ag-focus-dark: #a5d6ff;
+
+  /* ── Semantic text ── */
+  --ag-text-primary: #f0f6fc;
+  --ag-text-secondary: #e6edf3;
+  --ag-text-muted: #8b949e;
+  --ag-text-primary-muted: #e6edf3;
+
+  /* ── Borders (darker navy in full dark mode) ── */
+  --ag-border: #21262d;
+  --ag-border-subtle: #161b22;
+
+  /* ── Backgrounds (deepest navy) ── */
+  --ag-background-primary: #010409;
+  --ag-background-secondary: #0d1117;
+  --ag-background-tertiary: #161b22;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (intensified blue glow) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(121, 192, 255, 0.16);
+  --ag-shadow-sm: 0 0 8px 0 rgba(121, 192, 255, 0.2);
+  --ag-shadow-md: 0 0 15px 0 rgba(121, 192, 255, 0.2);
+  --ag-shadow-lg: 0 0 25px -2px rgba(121, 192, 255, 0.25);
+  --ag-shadow-xl: 0 0 35px -4px rgba(121, 192, 255, 0.3);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #79c0ff;
+
+  /* ── Deep sea blue palette (brightened for dark mode) ── */
+  --ag-blue-50: #e8f4ff;
+  --ag-blue-100: #cae8ff;
+  --ag-blue-200: #a5d6ff;
+  --ag-blue-300: #79c0ff;
+  --ag-blue-400: #58a6ff;
+  --ag-blue-500: #388bfd;
+  --ag-blue-600: #1f6feb;
+  --ag-blue-700: #1158c7;
+  --ag-blue-800: #0d419d;
+  --ag-blue-900: #0c2d6b;
 }`,
   },
   'glassmorphism': {
@@ -883,6 +1141,133 @@ export const SKINS_CSS = {
   --ag-blue-700: #003078;
   --ag-blue-800: #002050;
   --ag-blue-900: #001030;
+}`,
+  },
+  'midnight': {
+    light: `/**
+ * Midnight Skin — Light Mode (OLED Black)
+ *
+ * Pure black OLED background with GitHub-style blue accents.
+ * Note: "Light mode" uses dark backgrounds to preserve the OLED aesthetic.
+ *
+ * Activate by adding class="ag-skin-midnight" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-midnight {
+  /* ── Primary color family (GitHub blue) ── */
+  --ag-primary: #218bff;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #1a7aef;
+  --ag-primary-border: #388bfd;
+  --ag-primary-background: #031d40;
+  --ag-primary-text: #79c0ff;
+
+  /* ── Focus ring (blue-derived RGB) ── */
+  --ag-focus: 33, 139, 255;
+  --ag-focus-dark: #4d9fff;
+
+  /* ── Semantic text (light on OLED black) ── */
+  --ag-text-primary: #f0f6fc;
+  --ag-text-secondary: #c9d1d9;
+  --ag-text-muted: #8b949e;
+  --ag-text-primary-muted: #e6edf3;
+
+  /* ── Borders (subtle dark grey-blue) ── */
+  --ag-border: #21262d;
+  --ag-border-subtle: #161b22;
+
+  /* ── Backgrounds (pure OLED black) ── */
+  --ag-background-primary: #000000;
+  --ag-background-secondary: #0d0d0d;
+  --ag-background-tertiary: #141414;
+
+  /* ── Border radius (clean, modern) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (blue-tinted on black) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(33, 139, 255, 0.15);
+  --ag-shadow-sm: 0 0 8px 0 rgba(33, 139, 255, 0.2);
+  --ag-shadow-md: 0 0 15px 0 rgba(33, 139, 255, 0.2);
+  --ag-shadow-lg: 0 0 25px -2px rgba(33, 139, 255, 0.25);
+  --ag-shadow-xl: 0 0 35px -4px rgba(33, 139, 255, 0.3);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #218bff;
+
+  /* ── GitHub blue palette (overrides blue palette) ── */
+  --ag-blue-50: #ddf4ff;
+  --ag-blue-100: #b6e3ff;
+  --ag-blue-200: #80ccff;
+  --ag-blue-300: #54aeff;
+  --ag-blue-400: #218bff;
+  --ag-blue-500: #0969da;
+  --ag-blue-600: #0550ae;
+  --ag-blue-700: #033d8b;
+  --ag-blue-800: #0a3069;
+  --ag-blue-900: #002155;
+}`,
+    dark: `/**
+ * Midnight Skin — Dark Mode
+ *
+ * Intensified OLED black with brighter GitHub blue for dark mode preference.
+ *
+ * Activate by adding class="ag-skin-midnight" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-midnight {
+  /* ── Primary color family (brighter blue for dark mode) ── */
+  --ag-primary: #4d9fff;
+  --ag-primary-fg: #000000;
+  --ag-primary-dark: #218bff;
+  --ag-primary-border: #54aeff;
+  --ag-primary-background: #021a38;
+  --ag-primary-text: #a5d6ff;
+
+  /* ── Focus ring (brightened blue RGB) ── */
+  --ag-focus: 77, 159, 255;
+  --ag-focus-dark: #80ccff;
+
+  /* ── Semantic text (ultra bright on OLED black) ── */
+  --ag-text-primary: #f0f6fc;
+  --ag-text-secondary: #e6edf3;
+  --ag-text-muted: #8b949e;
+  --ag-text-primary-muted: #f0f6fc;
+
+  /* ── Borders (slightly more visible in dark mode) ── */
+  --ag-border: #30363d;
+  --ag-border-subtle: #21262d;
+
+  /* ── Backgrounds (pure OLED black, intensified) ── */
+  --ag-background-primary: #000000;
+  --ag-background-secondary: #080808;
+  --ag-background-tertiary: #0d0d0d;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.5rem;
+
+  /* ── Shadows (intensified blue glow) ── */
+  --ag-shadow-xs: 0 0 4px 0 rgba(77, 159, 255, 0.2);
+  --ag-shadow-sm: 0 0 8px 0 rgba(77, 159, 255, 0.25);
+  --ag-shadow-md: 0 0 15px 0 rgba(77, 159, 255, 0.25);
+  --ag-shadow-lg: 0 0 25px -2px rgba(77, 159, 255, 0.3);
+  --ag-shadow-xl: 0 0 35px -4px rgba(77, 159, 255, 0.35);
+
+  /* ── Rating ── */
+  --ag-rating-filled-primary: #4d9fff;
+
+  /* ── GitHub blue palette (brightened for dark mode) ── */
+  --ag-blue-50: #cae8ff;
+  --ag-blue-100: #a5d6ff;
+  --ag-blue-200: #80ccff;
+  --ag-blue-300: #54aeff;
+  --ag-blue-400: #4d9fff;
+  --ag-blue-500: #218bff;
+  --ag-blue-600: #1a7aef;
+  --ag-blue-700: #0969da;
+  --ag-blue-800: #0550ae;
+  --ag-blue-900: #033d8b;
 }`,
   },
   'mo-neobrut': {
@@ -1420,6 +1805,136 @@ export const SKINS_CSS = {
   --ag-info: #ff33cc;
 }`,
   },
+  'paper': {
+    light: `/**
+ * Paper Skin — Light Mode
+ *
+ * Warm bone/sepia background designed as a low-blue-light reading mode.
+ * Calming, parchment-like aesthetic that reduces eye strain in
+ * ambient lighting conditions.
+ *
+ * Activate by adding class="ag-skin-paper" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-paper {
+  /* ── Primary color family (dark sepia/brown) ── */
+  --ag-primary: #433422;
+  --ag-primary-fg: #f6f1e5;
+  --ag-primary-dark: #332819;
+  --ag-primary-border: #8a6a44;
+  --ag-primary-background: #ede0cc;
+  --ag-primary-text: #2c2012;
+
+  /* ── Focus ring (sepia-derived RGB) ── */
+  --ag-focus: 67, 52, 34;
+  --ag-focus-dark: #6b5030;
+
+  /* ── Semantic text (warm dark sepia) ── */
+  --ag-text-primary: #2c2012;
+  --ag-text-secondary: #4a3822;
+  --ag-text-muted: #7a6248;
+  --ag-text-primary-muted: #3d2e18;
+
+  /* ── Borders (warm tan) ── */
+  --ag-border: #d4c4a8;
+  --ag-border-subtle: #e0d6c4;
+
+  /* ── Backgrounds (warm parchment) ── */
+  --ag-background-secondary: #ede7d6;
+  --ag-background-tertiary: #e8e0cd;
+
+  /* ── Border radius (comfortable, gentle) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm sepia tinted) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(67, 52, 34, 0.08);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(67, 52, 34, 0.1);
+  --ag-shadow-md: 0 2px 10px 0 rgba(67, 52, 34, 0.1);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(67, 52, 34, 0.12);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(67, 52, 34, 0.15);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #8a6a44;
+  --ag-rating-filled-primary: #433422;
+
+  /* ── Sepia/brown palette (overrides blue palette) ── */
+  --ag-blue-50: #f9f6ee;
+  --ag-blue-100: #f0e8d4;
+  --ag-blue-200: #ddd0b8;
+  --ag-blue-300: #c4b090;
+  --ag-blue-400: #a08860;
+  --ag-blue-500: #7a6344;
+  --ag-blue-600: #5c4a30;
+  --ag-blue-700: #433422;
+  --ag-blue-800: #2c2012;
+  --ag-blue-900: #180f08;
+}`,
+    dark: `/**
+ * Paper Skin — Dark Mode
+ *
+ * Dark sepia for night-time reading. Maintains the warm, low-blue-light
+ * character of the Paper skin while shifting to a dark background.
+ *
+ * Activate by adding class="ag-skin-paper" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-paper {
+  /* ── Primary color family (warm tan/caramel on dark sepia) ── */
+  --ag-primary: #c9a87a;
+  --ag-primary-fg: #180f08;
+  --ag-primary-dark: #b8946a;
+  --ag-primary-border: #c9a87a;
+  --ag-primary-background: #2a1e10;
+  --ag-primary-text: #e0c49a;
+
+  /* ── Focus ring (warm tan RGB) ── */
+  --ag-focus: 201, 168, 122;
+  --ag-focus-dark: #d9b888;
+
+  /* ── Semantic text (warm light on dark sepia) ── */
+  --ag-text-primary: #e8dcc8;
+  --ag-text-secondary: #d4c4a8;
+  --ag-text-muted: #9a8870;
+  --ag-text-primary-muted: #e0d0b8;
+
+  /* ── Borders (dark warm) ── */
+  --ag-border: #3d3025;
+  --ag-border-subtle: #2e2418;
+
+  /* ── Backgrounds (dark sepia) ── */
+  --ag-background-primary: #1f1710;
+  --ag-background-secondary: #2a1e10;
+  --ag-background-tertiary: #332515;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm sepia on dark) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(201, 168, 122, 0.1);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(201, 168, 122, 0.12);
+  --ag-shadow-md: 0 2px 10px 0 rgba(201, 168, 122, 0.12);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(201, 168, 122, 0.15);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(201, 168, 122, 0.18);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #c9a87a;
+  --ag-rating-filled-primary: #c9a87a;
+
+  /* ── Sepia/brown palette (dark mode, lighter values for dark bg) ── */
+  --ag-blue-50: #e0c49a;
+  --ag-blue-100: #d9b888;
+  --ag-blue-200: #c9a87a;
+  --ag-blue-300: #b8946a;
+  --ag-blue-400: #a08060;
+  --ag-blue-500: #8a6c4e;
+  --ag-blue-600: #6b5030;
+  --ag-blue-700: #4a3822;
+  --ag-blue-800: #2c2012;
+  --ag-blue-900: #1f1710;
+}`,
+  },
   'retro-brutalist': {
     light: `/**
  * Retro Brutalist Skin — Light Mode
@@ -1822,6 +2337,136 @@ export const SKINS_CSS = {
   --ag-blue-700: #2a4432;
   --ag-blue-800: #1a2e20;
   --ag-blue-900: #0e1e14;
+}`,
+  },
+  'solarized': {
+    light: `/**
+ * Solarized Skin — Light Mode
+ *
+ * Classic Solarized Light theme with teal/cyan primary.
+ * Specifically designed for scientific eye-strain reduction with
+ * warm off-white background and carefully balanced contrast.
+ *
+ * Activate by adding class="ag-skin-solarized" to <html>.
+ * Load this file AFTER ag-tokens.css so the cascade overrides.
+ */
+
+:where(html).ag-skin-solarized {
+  /* ── Primary color family (Solarized cyan) ── */
+  --ag-primary: #2aa198;
+  --ag-primary-fg: #fdf6e3;
+  --ag-primary-dark: #238880;
+  --ag-primary-border: #5acec7;
+  --ag-primary-background: #e8f8f7;
+  --ag-primary-text: #1c6e67;
+
+  /* ── Focus ring (teal-derived RGB) ── */
+  --ag-focus: 42, 161, 152;
+  --ag-focus-dark: #238880;
+
+  /* ── Semantic text (Solarized base colors) ── */
+  --ag-text-primary: #073642;
+  --ag-text-secondary: #586e75;
+  --ag-text-muted: #839496;
+  --ag-text-primary-muted: #657b83;
+
+  /* ── Borders (Solarized base1 and base2) ── */
+  --ag-border: #93a1a1;
+  --ag-border-subtle: #c2caca;
+
+  /* ── Backgrounds (Solarized base3 and base2) ── */
+  --ag-background-secondary: #eee8d5;
+  --ag-background-tertiary: #e8e2cf;
+
+  /* ── Border radius (comfortable, moderate) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (warm neutral) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(7, 54, 66, 0.06);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(7, 54, 66, 0.08);
+  --ag-shadow-md: 0 2px 10px 0 rgba(7, 54, 66, 0.08);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(7, 54, 66, 0.1);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(7, 54, 66, 0.12);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #b58900;
+  --ag-rating-filled-primary: #2aa198;
+
+  /* ── Solarized teal/cyan palette (overrides blue palette) ── */
+  --ag-blue-50: #e8f8f7;
+  --ag-blue-100: #c5edea;
+  --ag-blue-200: #96deda;
+  --ag-blue-300: #5acec7;
+  --ag-blue-400: #2aa198;
+  --ag-blue-500: #238880;
+  --ag-blue-600: #1c6e67;
+  --ag-blue-700: #155551;
+  --ag-blue-800: #0d3b38;
+  --ag-blue-900: #062220;
+}`,
+    dark: `/**
+ * Solarized Skin — Dark Mode
+ *
+ * Classic Solarized Dark theme with teal/cyan primary.
+ * Deep blue-green background with warm-neutral text.
+ *
+ * Activate by adding class="ag-skin-solarized" to <html>.
+ * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
+ */
+
+[data-theme="dark"].ag-skin-solarized {
+  /* ── Primary color family (same cyan, pops on dark bg) ── */
+  --ag-primary: #2aa198;
+  --ag-primary-fg: #002b36;
+  --ag-primary-dark: #238880;
+  --ag-primary-border: #2aa198;
+  --ag-primary-background: #01343d;
+  --ag-primary-text: #5acec7;
+
+  /* ── Focus ring (teal-derived RGB) ── */
+  --ag-focus: 42, 161, 152;
+  --ag-focus-dark: #5acec7;
+
+  /* ── Semantic text (Solarized dark base colors) ── */
+  --ag-text-primary: #93a1a1;
+  --ag-text-secondary: #839496;
+  --ag-text-muted: #657b83;
+  --ag-text-primary-muted: #93a1a1;
+
+  /* ── Borders (Solarized base02) ── */
+  --ag-border: #073642;
+  --ag-border-subtle: #0d4654;
+
+  /* ── Backgrounds (Solarized dark) ── */
+  --ag-background-primary: #002b36;
+  --ag-background-secondary: #073642;
+  --ag-background-tertiary: #0d4654;
+
+  /* ── Border radius (matches light) ── */
+  --ag-radius-lg: 0.75rem;
+
+  /* ── Shadows (teal-tinted on dark) ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(42, 161, 152, 0.1);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(42, 161, 152, 0.12);
+  --ag-shadow-md: 0 2px 10px 0 rgba(42, 161, 152, 0.12);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(42, 161, 152, 0.15);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(42, 161, 152, 0.18);
+
+  /* ── Rating ── */
+  --ag-rating-filled: #b58900;
+  --ag-rating-filled-primary: #2aa198;
+
+  /* ── Solarized teal/cyan palette (dark mode reversed) ── */
+  --ag-blue-50: #5acec7;
+  --ag-blue-100: #2aa198;
+  --ag-blue-200: #238880;
+  --ag-blue-300: #1c6e67;
+  --ag-blue-400: #155551;
+  --ag-blue-500: #0d3b38;
+  --ag-blue-600: #062220;
+  --ag-blue-700: #01343d;
+  --ag-blue-800: #073642;
+  --ag-blue-900: #002b36;
 }`,
   },
   'terra-soft': {
