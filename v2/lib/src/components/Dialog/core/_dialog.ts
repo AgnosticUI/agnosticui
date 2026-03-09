@@ -164,10 +164,15 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     const currentCount = parseInt(document.body.getAttribute('data-dialog-count') || '0', 10);
 
     if (currentCount === 0) {
-      // First dialog - store original overflow and lock scroll
+      // First dialog - store original overflow and scrollbar-gutter, then lock scroll.
+      // scrollbar-gutter: stable reserves the gutter space so the page does not
+      // shift when the scrollbar disappears due to overflow: hidden.
       document.body.setAttribute('data-dialog-original-overflow',
         document.body.style.overflow || '');
+      document.body.setAttribute('data-dialog-original-scrollbar-gutter',
+        document.body.style.scrollbarGutter || '');
       document.body.style.overflow = 'hidden';
+      document.body.style.scrollbarGutter = 'stable';
       document.body.setAttribute('data-dialog-scroll-locked', '');
     }
 
@@ -181,10 +186,13 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     document.body.setAttribute('data-dialog-count', newCount.toString());
 
     if (newCount === 0) {
-      // Last dialog closing - restore original overflow
+      // Last dialog closing - restore original overflow and scrollbar-gutter
       const originalOverflow = document.body.getAttribute('data-dialog-original-overflow');
+      const originalScrollbarGutter = document.body.getAttribute('data-dialog-original-scrollbar-gutter');
       document.body.style.overflow = originalOverflow || '';
+      document.body.style.scrollbarGutter = originalScrollbarGutter || '';
       document.body.removeAttribute('data-dialog-original-overflow');
+      document.body.removeAttribute('data-dialog-original-scrollbar-gutter');
       document.body.removeAttribute('data-dialog-scroll-locked');
       document.body.removeAttribute('data-dialog-count');
     }
