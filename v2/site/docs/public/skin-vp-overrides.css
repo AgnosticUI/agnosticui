@@ -27,3 +27,51 @@
   --vp-nav-bg-color: #000000;
   --vp-sidebar-bg-color: #0a0a0a;
 }
+
+/* ── Midnight — light mode: OLED pure black ───────────────────────────────── */
+:where(html).ag-skin-midnight {
+  --vp-c-bg: #000000;
+  --vp-c-bg-soft: #0d0d0d;
+  --vp-c-bg-alt: #141414;
+  --vp-c-bg-elv: #0d0d0d;
+  --vp-c-text-1: #f0f6fc;
+  --vp-c-text-2: #c9d1d9;
+  --vp-c-text-3: #8b949e;
+  --vp-c-divider: #21262d;
+  --vp-c-border: #21262d;
+  --vp-c-gutter: #000000;
+  --vp-nav-bg-color: #000000;
+  --vp-sidebar-bg-color: #0d0d0d;
+}
+
+/* ── Deep Sea — light mode: navy dark ────────────────────────────────────── */
+:where(html).ag-skin-deep-sea {
+  --vp-c-bg: #0d1117;
+  --vp-c-bg-soft: #161b22;
+  --vp-c-bg-alt: #1c2128;
+  --vp-c-bg-elv: #161b22;
+  --vp-c-text-1: #e6edf3;
+  --vp-c-text-2: #c9d1d9;
+  --vp-c-text-3: #8b949e;
+  --vp-c-divider: #30363d;
+  --vp-c-border: #30363d;
+  --vp-c-gutter: #0d1117;
+  --vp-nav-bg-color: #0d1117;
+  --vp-sidebar-bg-color: #161b22;
+}
+
+/* ── Cyberpunk — light mode: purple/plum dark ────────────────────────────── */
+:where(html).ag-skin-cyberpunk {
+  --vp-c-bg: #2b213a;
+  --vp-c-bg-soft: #221932;
+  --vp-c-bg-alt: #1e1530;
+  --vp-c-bg-elv: #221932;
+  --vp-c-text-1: #f0e6ff;
+  --vp-c-text-2: #d4b8f0;
+  --vp-c-text-3: #9a78c0;
+  --vp-c-divider: #4a3d5c;
+  --vp-c-border: #4a3d5c;
+  --vp-c-gutter: #2b213a;
+  --vp-nav-bg-color: #2b213a;
+  --vp-sidebar-bg-color: #221932;
+}
