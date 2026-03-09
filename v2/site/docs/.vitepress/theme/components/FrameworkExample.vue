@@ -59,7 +59,10 @@
       <VueTabPanel panel="panel-react">
         <div class="react-note">
           <p>
-            <strong>Interactive Preview:</strong> To see this example in action, select Open in CodePen (NPM package style) or Open in StackBlitz (CLI local components) to launch an interactive playground.
+            <strong>Interactive Preview:</strong> To see this example in action,
+            <template v-if="codepenUrl"> select Open in CodePen (NPM package style) or Open in StackBlitz (CLI local components) to</template>
+            <template v-else> click Open in StackBlitz to</template>
+            launch an interactive playground.
           </p>
         </div>
         <details v-if="reactCode" class="code-details" open>
