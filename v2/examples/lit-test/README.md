@@ -1,6 +1,6 @@
-# AgnosticUI React Example
+# AgnosticUI Lit Example
 
-A React + TypeScript + Vite project pre-configured with AgnosticUI Local.
+A Lit + TypeScript + Vite project pre-configured with AgnosticUI Local.
 
 ## Getting started
 
