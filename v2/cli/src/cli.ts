@@ -36,7 +36,8 @@ import { list } from "./commands/list.js";
 import { sync } from "./commands/sync.js";
 import { playbook } from "./commands/playbook.js";
 import { context } from "./commands/context.js";
-import type { Framework, SyncOptions } from "./types/index.js";
+import { view } from "./commands/view.js";
+import type { Framework, SyncOptions, ViewOptions } from "./types/index.js";
 
 const program = new Command();
 
@@ -165,6 +166,21 @@ program
   )
   .action(async (options) => {
     await context({ output: options.output, format: options.format });
+  });
+
+// ag view command
+program
+  .command("view")
+  .description("Launch a component viewer for your installed (ejected) components")
+  .option("-p, --port <number>", "Port for the Vite dev server", "7173")
+  .option("--clean", "Delete .agnosticui-viewer/ and rebuild from scratch")
+  .option("--no-open", "Skip auto-opening the browser")
+  .action(async (options) => {
+    await view({
+      port: parseInt(options.port, 10),
+      clean: options.clean ?? false,
+      open: options.open ?? true,
+    } as ViewOptions);
   });
 
 // Parse arguments

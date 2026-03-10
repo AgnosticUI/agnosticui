@@ -191,6 +191,7 @@ export async function init(options: InitOptions = {}): Promise<void> {
       const ignorePattern = `${referenceDirName}/`;
 
       await updateIgnoreFile(path.join(process.cwd(), '.gitignore'), ignorePattern);
+      await updateIgnoreFile(path.join(process.cwd(), '.gitignore'), '.agnosticui-viewer/');
 
       const eslintConfigPath = path.join(process.cwd(), 'eslint.config.js');
       if (pathExists(eslintConfigPath)) {

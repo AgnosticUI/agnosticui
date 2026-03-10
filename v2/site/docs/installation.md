@@ -467,6 +467,46 @@ Use `--output` to write to a custom path instead:
 npx agnosticui-cli context --output ./docs/agnosticui-context.md
 ```
 
+## Component Viewer
+
+Once you have components ejected, `ag view` launches a lightweight Vite-powered viewer so you can browse them visually without setting up Storybook.
+
+```bash
+ag view
+```
+
+The viewer auto-opens at `http://localhost:7173` and displays:
+
+- **Left sidebar** — alphabetical list of all installed components with an Overview/usage summary and link to these docs.
+- **Main area** — per-component tabbed panel: **Preview** (default render), **HTML** (import snippet with copy button), **Info** (version, date added).
+
+The viewer automatically applies your project's CSS tokens (`ag-tokens.css`, `ag-tokens-dark.css`) and — if present — your `ag-theme.css` skin override, so components appear exactly as they will in your app.
+
+### Options
+
+| Flag | Default | Description |
+|---|---|---|
+| `--port <number>` | `7173` | Dev server port |
+| `--clean` | false | Delete `.agnosticui-viewer/` and rebuild from scratch |
+| `--no-open` | false | Skip auto-opening the browser |
+
+```bash
+# Custom port
+ag view --port 8080
+
+# Full rebuild (use after ag add / ag sync)
+ag view --clean
+
+# Don't open the browser automatically
+ag view --no-open
+```
+
+The viewer caches its `node_modules` between runs for fast startup. Only `ag view --clean` triggers a fresh install.
+
+::: tip Theme support
+Place your skin overrides in `src/components/ag/styles/ag-theme.css` and they will be picked up by the viewer automatically.
+:::
+
 ## TypeScript Configuration
 
 If using TypeScript with Lit web components, enable experimental decorators in your TypeScript configuration (e.g., `tsconfig.app.json` or `tsconfig.json`):
