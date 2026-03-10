@@ -544,7 +544,7 @@ function generateVueApp(
       ? `UserVue${n}`
       : VUE_EXPORT_OVERRIDES[n] ?? undefined;
     const block = getVueRenderBlock(n, localName);
-    const condition = i === 0 ? `v-if="current?.name === ${JSON.stringify(n)}"` : `v-else-if="current?.name === ${JSON.stringify(n)}"`;
+    const condition = i === 0 ? `v-if="current?.name === '${n}'"` : `v-else-if="current?.name === '${n}'"`;
     return `          <template ${condition}>${block}</template>`;
   }).join('\n');
 
