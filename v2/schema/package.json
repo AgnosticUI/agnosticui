@@ -13,12 +13,16 @@
   },
   "scripts": {
     "test": "vitest run",
-    "build": "tsc"
+    "build": "tsc",
+    "m4": "npx tsx m4-llm-test.ts",
+    "m4:dry": "npx tsx m4-llm-test.ts --dry-run"
   },
   "dependencies": {
     "zod": "^3.23.0"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   }
