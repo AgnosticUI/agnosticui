@@ -20,6 +20,12 @@ const TEXT_CHILD_COMPONENTS = new Set([
   'Kbd', 'Link', 'Mark', 'MessageBubble', 'Tag',
 ]);
 
+// Components whose main React export name differs from React${name}.
+// Maps component name to the actual exported identifier to import and render.
+const REACT_EXPORT_OVERRIDES: Record<string, string> = {
+  Flex: 'ReactFlexRow',
+};
+
 // React-specific minimal renders for form/display components
 const REACT_SPECIFIC: Record<string, string> = {
   Avatar:         '<ReactAvatar text="AG" />',
@@ -28,7 +34,7 @@ const REACT_SPECIFIC: Record<string, string> = {
   CopyButton:     '<ReactCopyButton text="ag add button" />',
   Divider:        '<ReactDivider />',
   EmptyState:     '<ReactEmptyState />',
-  Flex:           '<ReactFlex><span>Item 1</span><span>Item 2</span><span>Item 3</span></ReactFlex>',
+  Flex:           '<ReactFlexRow><span>Item 1</span><span>Item 2</span><span>Item 3</span></ReactFlexRow>',
   IconButton:     '<ReactIconButton aria-label="settings"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></ReactIconButton>',
   IconButtonFx:   '<ReactIconButtonFx aria-label="settings"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/></svg></ReactIconButtonFx>',
   Input:          '<ReactInput id="viewer-input" label="Label" type="text" />',
@@ -47,6 +53,12 @@ const REACT_SPECIFIC: Record<string, string> = {
   VisuallyHidden: '<ReactVisuallyHidden>Screen reader only text</ReactVisuallyHidden>',
 };
 
+// Components whose main Vue export name differs from Vue${name}.vue.
+// Maps component name to the actual .vue file basename to import and render.
+const VUE_EXPORT_OVERRIDES: Record<string, string> = {
+  Flex: 'VueFlexRow',
+};
+
 // Vue-specific minimal renders
 const VUE_SPECIFIC: Record<string, { props: string; slot: string }> = {
   Avatar:         { props: 'text="AG"', slot: '' },
@@ -54,6 +66,7 @@ const VUE_SPECIFIC: Record<string, { props: string; slot: string }> = {
   CopyButton:     { props: 'text="ag add button"', slot: '' },
   Divider:        { props: '', slot: '' },
   EmptyState:     { props: '', slot: '' },
+  Flex:           { props: '', slot: '<span>Item 1</span><span>Item 2</span><span>Item 3</span>' },
   IconButton:     { props: 'aria-label="settings"', slot: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>' },
   IconButtonFx:   { props: 'aria-label="settings"', slot: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>' },
   Input:          { props: 'id="viewer-input" label="Label" type="text"', slot: '' },
@@ -95,6 +108,9 @@ const LIT_SPECIFIC: Record<string, (tag: string) => string> = {
   VisuallyHidden: (tag) => `<${tag}>Screen reader only text</${tag}>`,
 };
 
+// Components also used as viewer chrome — import aliases needed to avoid duplicate identifiers
+const VIEWER_CHROME_COMPONENTS = new Set(['CopyButton', 'Header', 'Tabs']);
+
 function toKebabCase(name: string): string {
   return name.replace(/([A-Z])/g, (match, char, offset) =>
     (offset > 0 ? '-' : '') + char.toLowerCase()
@@ -105,15 +121,19 @@ function getAgTagName(name: string): string {
   return `ag-${toKebabCase(name)}`;
 }
 
-function getReactRender(name: string): string {
-  const wrapper = `React${name}`;
+function getReactRender(name: string, localName?: string): string {
+  const wrapper = localName ?? `React${name}`;
   if (TEXT_CHILD_COMPONENTS.has(name)) return `<${wrapper}>${name}</${wrapper}>`;
-  if (REACT_SPECIFIC[name]) return REACT_SPECIFIC[name];
+  if (REACT_SPECIFIC[name]) {
+    return localName
+      ? REACT_SPECIFIC[name].replace(`React${name}`, localName)
+      : REACT_SPECIFIC[name];
+  }
   return `<${wrapper} />`;
 }
 
-function getVueRenderBlock(name: string): string {
-  const wrapper = `Vue${name}`;
+function getVueRenderBlock(name: string, localName?: string): string {
+  const wrapper = localName ?? `Vue${name}`;
   if (TEXT_CHILD_COMPONENTS.has(name)) {
     return `<${wrapper}>${name}</${wrapper}>`;
   }
@@ -312,11 +332,34 @@ function generateReactApp(
   installedComponents: Record<string, { version: string; added: string; files: string[] }>,
   componentsPath: string,
   hasTheme: boolean,
+  componentsAbsPath: string,
 ): string {
   const names = Object.keys(installedComponents).sort();
 
+  // Determine import path: if React${n}.tsx/ts exists use that file, otherwise fall back to the
+  // directory index (some components like Flex export multiple sub-components from index.ts).
+  function getReactImportPath(n: string): string {
+    const base = path.join(componentsAbsPath, n, 'react');
+    if (existsSync(path.join(base, `React${n}.tsx`)) || existsSync(path.join(base, `React${n}.ts`))) {
+      return `@ag-components/${n}/react/React${n}`;
+    }
+    return `@ag-components/${n}/react`;
+  }
+
   const componentImports = names
-    .map(n => `import { React${n} } from '@ag-components/${n}/react/React${n}'`)
+    .map(n => {
+      const importPath = getReactImportPath(n);
+      const exportName = REACT_EXPORT_OVERRIDES[n] ?? `React${n}`;
+      if (VIEWER_CHROME_COMPONENTS.has(n)) {
+        // Alias to avoid conflict with the viewer chrome import of the same name
+        return `import { ${exportName} as UserReact${n} } from '${importPath}'`;
+      }
+      if (REACT_EXPORT_OVERRIDES[n]) {
+        // Import under the real export name (e.g. ReactFlexContainer)
+        return `import { ${exportName} } from '${importPath}'`;
+      }
+      return `import { React${n} } from '${importPath}'`;
+    })
     .join('\n');
 
   const themeImport = hasTheme
@@ -326,7 +369,10 @@ function generateReactApp(
   const componentEntries = names.map(n => {
     const meta = installedComponents[n];
     const snippet = `import { React${n} } from '${componentsPath}/${n}/react/React${n}'`;
-    const render = getReactRender(n);
+    const localName = VIEWER_CHROME_COMPONENTS.has(n)
+      ? `UserReact${n}`
+      : REACT_EXPORT_OVERRIDES[n] ?? undefined;
+    const render = getReactRender(n, localName);
     return `  {
     name: ${JSON.stringify(n)},
     version: ${JSON.stringify(meta.version)},
@@ -449,18 +495,35 @@ function generateVueApp(
   installedComponents: Record<string, { version: string; added: string; files: string[] }>,
   componentsPath: string,
   hasTheme: boolean,
+  componentsAbsPath: string,
 ): string {
   const names = Object.keys(installedComponents).sort();
 
+  // For Vue, Flex and similar components use a different .vue filename than Vue${name}.vue
+  function getVueImportFile(n: string): string {
+    const override = VUE_EXPORT_OVERRIDES[n];
+    if (override) return `${override}.vue`;
+    return `Vue${n}.vue`;
+  }
+
   const componentImports = names
-    .map(n => `import Vue${n} from '@ag-components/${n}/vue/Vue${n}.vue'`)
+    .map(n => {
+      const file = getVueImportFile(n);
+      const localName = VIEWER_CHROME_COMPONENTS.has(n) ? `UserVue${n}` : (VUE_EXPORT_OVERRIDES[n] ?? `Vue${n}`);
+      return `import ${localName} from '@ag-components/${n}/vue/${file}'`;
+    })
     .join('\n');
 
   const themeImport = hasTheme
     ? `import '@ag-components/styles/ag-theme.css'` : '';
 
   const componentMapEntries = names
-    .map(n => `    ${JSON.stringify(n)}: Vue${n}`)
+    .map(n => {
+      const localName = VIEWER_CHROME_COMPONENTS.has(n)
+        ? `UserVue${n}`
+        : (VUE_EXPORT_OVERRIDES[n] ?? `Vue${n}`);
+      return `    ${JSON.stringify(n)}: ${localName}`;
+    })
     .join(',\n');
 
   const componentDataEntries = names.map(n => {
@@ -477,7 +540,10 @@ function generateVueApp(
 
   // Build per-component v-if render blocks
   const previewBlocks = names.map((n, i) => {
-    const block = getVueRenderBlock(n);
+    const localName = VIEWER_CHROME_COMPONENTS.has(n)
+      ? `UserVue${n}`
+      : VUE_EXPORT_OVERRIDES[n] ?? undefined;
+    const block = getVueRenderBlock(n, localName);
     const condition = i === 0 ? `v-if="current?.name === ${JSON.stringify(n)}"` : `v-else-if="current?.name === ${JSON.stringify(n)}"`;
     return `          <template ${condition}>${block}</template>`;
   }).join('\n');
@@ -631,11 +697,15 @@ function generateLitApp(
   }`;
   }).join(',\n');
 
+  // Only import chrome components from @ag-ref if they are NOT already in user components.
+  // Both would register the same ag-* custom element tag, causing a double-define error.
+  const chromeImports = ['Header', 'Tabs', 'CopyButton']
+    .filter(n => !names.includes(n))
+    .map(n => `import '@ag-ref/${n}/core/${n}'`)
+    .join('\n');
+
   return `// Auto-generated by \`ag view\`. Do not edit manually.
-import '@ag-ref/Header/core/Header'
-import '@ag-ref/Tabs/core/Tabs'
-import '@ag-ref/CopyButton/core/CopyButton'
-import '@ag-components/styles/ag-tokens.css'
+${chromeImports ? chromeImports + '\n' : ''}import '@ag-components/styles/ag-tokens.css'
 import '@ag-components/styles/ag-tokens-dark.css'
 ${themeImport}
 import './viewer.css'
@@ -951,12 +1021,12 @@ export async function generateViewerApp(
 
   if (framework === 'react') {
     mainContent = generateReactMain();
-    appContent = generateReactApp(installedComponents, config.paths.components, hasTheme);
+    appContent = generateReactApp(installedComponents, config.paths.components, hasTheme, componentsAbsPath);
     appFileName = 'App.tsx';
     await writeFile(path.join(srcPath, 'main.tsx'), mainContent);
   } else if (framework === 'vue') {
     mainContent = generateVueMain();
-    appContent = generateVueApp(installedComponents, config.paths.components, hasTheme);
+    appContent = generateVueApp(installedComponents, config.paths.components, hasTheme, componentsAbsPath);
     appFileName = 'App.vue';
     await writeFile(path.join(srcPath, 'main.ts'), mainContent);
   } else {
