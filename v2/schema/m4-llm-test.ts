@@ -6,11 +6,15 @@
  * against the @agnosticui/schema to confirm no hallucinated props and
  * correct structural output.
  *
- * Usage (live — requires API key):
+ * Usage (live — requires an API key from console.anthropic.com):
  *   ANTHROPIC_API_KEY=sk-... npx tsx m4-llm-test.ts
  *   ANTHROPIC_API_KEY=sk-... npm run m4
  *
- * Usage (dry run — validates a representative expected payload, no API key needed):
+ * Note: Claude Pro / Claude Code OAuth credentials do NOT work here.
+ * The Anthropic API requires a separate API key (free tier available at
+ * console.anthropic.com — no paid plan required for low-volume testing).
+ *
+ * Usage (dry run — validates a representative expected payload, no network needed):
  *   npx tsx m4-llm-test.ts --dry-run
  *   npm run m4:dry
  */
@@ -132,7 +136,7 @@ function printResults(nodes: unknown[], source: string): void {
 
 async function runLive(): Promise<void> {
   const { default: Anthropic } = await import('@anthropic-ai/sdk');
-  const client = new Anthropic();
+  const client = new Anthropic(); // reads ANTHROPIC_API_KEY from env
 
   const response = await client.messages.create({
     model: 'claude-sonnet-4-6',
