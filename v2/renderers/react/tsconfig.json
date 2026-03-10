@@ -7,7 +7,7 @@
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
