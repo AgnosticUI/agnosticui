@@ -653,10 +653,6 @@ make it a bit more aesthetically pleasing. */
   .playbook-screenshot-item {
     flex: 1 1 auto;
   }
-
-  .playbook-screenshot {
-    width: 100%;
-  }
 }
 
 /* Large screens: bigger max-height */
