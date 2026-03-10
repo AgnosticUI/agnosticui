@@ -86,3 +86,9 @@ export interface ContextOptions {
   output?: string; // Explicit output file path (overrides format and auto-detect)
   format?: string; // AI tool format: claude, cursor, copilot, windsurf, openai, gemini, generic
 }
+
+export interface ViewOptions {
+  port?: number;  // Dev server port (default: 7173)
+  clean?: boolean; // Nuke .agnosticui-viewer/ and rebuild from scratch
+  open?: boolean;  // Auto-open browser (default: true)
+}

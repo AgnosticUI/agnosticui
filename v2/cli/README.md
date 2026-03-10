@@ -150,6 +150,37 @@ If multiple tools are detected, an interactive prompt asks which to use.
 The output file uses HTML sentinel markers so re-running only replaces the AgnosticUI
 section — anything else in the file is preserved. Re-run after adding or updating components.
 
+### `ag view`
+
+Launch a lightweight Vite-powered component viewer for all your installed (ejected) components.
+No Storybook setup required — just run the command from your project root.
+
+```bash
+ag view [options]
+
+Options:
+  -p, --port <number>   Dev server port (default: 7173)
+  --clean               Delete .agnosticui-viewer/ and rebuild from scratch
+  --no-open             Skip auto-opening the browser
+
+Examples:
+  ag view                  # Start viewer at http://localhost:7173
+  ag view --port 8080      # Use a custom port
+  ag view --clean          # Full rebuild (use after ag add / ag sync)
+  ag view --no-open        # Don't auto-open browser
+```
+
+The viewer generates a self-contained Vite app in `.agnosticui-viewer/` (gitignored) using
+your project's framework (React, Vue, or Lit/vanilla). It shows each installed component with
+a three-tab panel: **Preview**, **HTML** import snippet, and **Info** metadata.
+
+CSS tokens and any `ag-theme.css` skin override in your styles directory are automatically
+applied so components look exactly as they do in your app.
+
+`node_modules` inside `.agnosticui-viewer/` are cached between runs. The App entry file is
+always regenerated (cheap) so the component list stays current. Run `ag view --clean` after
+a `ag add` or `ag sync` when you want a guaranteed fresh install.
+
 ## How It Works
 
 After running `ag init`, your project structure looks like this:
