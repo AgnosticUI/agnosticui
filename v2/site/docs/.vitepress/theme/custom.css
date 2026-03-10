@@ -651,11 +651,7 @@ make it a bit more aesthetically pleasing. */
   }
 
   .playbook-screenshot-item {
-    flex: 0 1 auto;
-  }
-
-  .playbook-screenshot {
-    max-height: 450px;
+    flex: 1 1 auto;
   }
 }
 
