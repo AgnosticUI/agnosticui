@@ -37,7 +37,7 @@ npm run dev
 ## Browse installed components
 
 ```bash
-npm run view
+npm run viewer
 ```
 
 Opens a lightweight component viewer at `http://localhost:7173` showing every installed component with a preview, import snippet, and metadata.
@@ -49,7 +49,7 @@ npm install                          # install deps (first time)
 npx agnosticui-cli sync              # get/update the reference library
 npx agnosticui-cli add <component>   # eject a component into your project
 npm run dev                          # start your app
-npm run view                         # browse your installed components
+npm run viewer                         # browse your installed components
 ```
 
 ## More commands
