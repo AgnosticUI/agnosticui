@@ -26,4 +26,7 @@ dist-ssr
 # Playwright
 playwright-report/
 test-results/
+
+# AgnosticUI generated directories (run: npx agnosticui-cli sync / ag view)
+agnosticui/
 .agnosticui-viewer/

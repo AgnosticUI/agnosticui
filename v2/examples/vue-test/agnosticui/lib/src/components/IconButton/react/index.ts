@@ -1,1 +1,0 @@
-export { ReactIconButton } from './ReactIconButton';

@@ -1,1 +1,0 @@
-export { ReactHeader } from './ReactHeader';
