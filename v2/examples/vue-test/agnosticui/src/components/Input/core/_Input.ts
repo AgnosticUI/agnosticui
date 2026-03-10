@@ -16,6 +16,7 @@ import {
   isHorizontalLabel,
   type LabelPosition,
 } from '../../../shared/form-control-utils';
+import { FaceMixin, syncInnerInputValidity } from '../../../shared/face-mixin';
 
 export type InputType =
   | 'text'
@@ -43,6 +44,7 @@ export interface InputProps {
   labelPosition?: LabelPosition;
   noLabel?: boolean;
   ariaLabel?: string;
+  name?: string;
   type?: InputType;
   value?: string;
   placeholder?: string;
@@ -67,7 +69,7 @@ export interface InputProps {
   onBlur?: (event: FocusEvent) => void;
 }
 
-export class AgInput extends LitElement implements InputProps {
+export class AgInput extends FaceMixin(LitElement) implements InputProps {
   static styles = [
     formControlStyles,
     css`
@@ -481,6 +483,33 @@ export class AgInput extends LitElement implements InputProps {
     this._inputElement?.select();
   }
 
+  // ─── FACE: AgInput-specific overrides ────────────────────────────────────
+  // Common boilerplate (formAssociated, _internals, name, form/validity
+  // getters, checkValidity, reportValidity, formDisabledCallback) lives in
+  // FaceMixin (shared/face-mixin.ts).
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Restores value to empty and clears validity state.
+   */
+  override formResetCallback(): void {
+    this.value = '';
+    this._internals.setFormValue('');
+    this._internals.setValidity({});
+  }
+
+  /**
+   * Sync the inner input's native validity state to ElementInternals.
+   * Delegates constraint validation (required, minlength, type=email, etc.)
+   * to the inner <input> rather than reimplementing it from scratch.
+   * Uses the shared syncInnerInputValidity() helper from face-mixin.ts.
+   */
+  private _syncValidity(): void {
+    syncInnerInputValidity(this._internals, this._inputElement);
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
+
   /**
    * Handle slot changes to detect addons
    */
@@ -503,6 +532,10 @@ export class AgInput extends LitElement implements InputProps {
   private _handleInput(e: Event) {
     const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     this.value = target.value;
+    // FACE: keep form submission value in sync
+    this._internals.setFormValue(this.value);
+    // FACE: mirror native constraint validity (required, minlength, type, etc.)
+    this._syncValidity();
 
     if (this.onInput) {
       this.onInput(e as InputEvent);
@@ -515,6 +548,10 @@ export class AgInput extends LitElement implements InputProps {
   private _handleChange(e: Event) {
     const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     this.value = target.value;
+    // FACE: keep form submission value in sync
+    this._internals.setFormValue(this.value);
+    // FACE: mirror native constraint validity (required, minlength, type, etc.)
+    this._syncValidity();
 
     if (this.onChange) {
       this.onChange(e);
@@ -642,6 +679,10 @@ export class AgInput extends LitElement implements InputProps {
   }
 
   override firstUpdated() {
+    // FACE: set initial form value and sync validity after first render
+    this._internals.setFormValue(this.value ?? '');
+    this._syncValidity();
+
     // Initial check for slot content
     setTimeout(() => {
       const leftAddonSlot = this.shadowRoot?.querySelector('slot[name="addon-left"]') as HTMLSlotElement;
@@ -713,7 +754,11 @@ export class AgInput extends LitElement implements InputProps {
   }
 
   /**
-   * Render custom error message for Input
+   * Render custom error message for Input.
+   * role="alert" + aria-atomic="true" ensures screen readers announce the
+   * message immediately when it becomes visible (e.g. after blur or submit).
+   * The live region is always in the DOM so ATs register it on page load;
+   * content is populated only when invalid so announcements fire on change.
    */
   private _renderError() {
     return html`
@@ -721,6 +766,8 @@ export class AgInput extends LitElement implements InputProps {
         id="${this._ids.errorId}"
         class="ag-form-control__error ag-input__error"
         part="ag-input-error"
+        role="alert"
+        aria-atomic="true"
         ?hidden="${!this.invalid || !this.errorMessage}"
       >
         ${this.errorMessage || ''}

@@ -27,3 +27,4 @@ dist-ssr
 playwright-report/
 test-results/
 agnosticui/
+.agnosticui-viewer/

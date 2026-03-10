@@ -16,6 +16,7 @@
     :helpText="helpText"
     :name="name"
     :value="value"
+    .validationMessages="validationMessages"
     @click="handleClick"
     @toggle-change="handleToggleChange"
     v-bind="$attrs"
@@ -29,6 +30,7 @@ import type {
   ToggleChangeEvent,
   ToggleChangeEventDetail,
 } from "../core/Toggle";
+import type { ValidationMessages } from "../../../shared/face-mixin";
 import "../core/Toggle"; // Registers the ag-toggle web component
 
 // Define props interface (omit function props since wrapper uses emits)

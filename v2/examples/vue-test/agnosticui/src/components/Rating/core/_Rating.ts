@@ -8,6 +8,7 @@ import {
   type LabelPosition,
 } from '../../../shared/form-control-utils';
 import { formControlStyles } from '../../../shared/form-control-styles';
+import { FaceMixin, type ValidationMessages } from '../../../shared/face-mixin';
 
 // Event detail interfaces
 export interface RatingChangeEventDetail {
@@ -46,6 +47,7 @@ export interface RatingProps {
   invalid?: boolean;
   errorMessage?: string;
   helpText?: string;
+  validationMessages?: ValidationMessages;
   // Event handlers
   onRatingChange?: (event: RatingChangeEvent) => void;
   onRatingHover?: (event: RatingHoverEvent) => void;
@@ -53,7 +55,7 @@ export interface RatingProps {
 
 let uniqueIdCounter = 0;
 
-export class AgRating extends LitElement {
+export class AgRating extends FaceMixin(LitElement) {
   private uniqueId = ++uniqueIdCounter; // Unique ID for clip paths in half-star rendering
 
   // Form control IDs
@@ -84,9 +86,6 @@ export class AgRating extends LitElement {
   @property({ type: String, reflect: true })
   declare size: RatingSize; // Size: small, medium, large
 
-  @property({ type: String })
-  declare name: string; // Form integration name
-
   // Form control properties
   @property({ type: String })
   declare label: string;
@@ -111,6 +110,9 @@ export class AgRating extends LitElement {
 
   @property({ type: String, attribute: 'help-text' })
   declare helpText: string;
+
+  @property({ attribute: false })
+  declare validationMessages: ValidationMessages | undefined;
 
   // Event handlers
   @property({ attribute: false })
@@ -141,7 +143,6 @@ export class AgRating extends LitElement {
     this.allowClear = false;
     this.variant = '';
     this.size = 'md';
-    this.name = '';
     this.label = '';
     this.labelHidden = false;
     this.noLabel = false;
@@ -149,10 +150,61 @@ export class AgRating extends LitElement {
     this.invalid = false;
     this.errorMessage = '';
     this.helpText = '';
+    this.validationMessages = undefined;
     this.handlePointerMove = this.handlePointerMove.bind(this);
     this.handlePointerUp = this.handlePointerUp.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
+
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  /**
+   * Sync the form value to ElementInternals.
+   * Submits the numeric rating as a string, or null when value is 0 (no rating).
+   */
+  private _syncFormValue(): void {
+    this._internals.setFormValue(this.value > 0 ? String(this.value) : null);
+  }
+
+  /**
+   * Sync validity. No inner input to delegate to, so we implement required
+   * directly: a rating of 0 with required=true is valueMissing.
+   */
+  private _syncValidity(): void {
+    if (this.required && this.value === 0) {
+      this._internals.setValidity(
+        { valueMissing: true },
+        this.validationMessages?.valueMissing ?? 'Please select a rating.'
+      );
+    } else {
+      this._internals.setValidity({});
+    }
+  }
+
+  override firstUpdated() {
+    this._syncFormValue();
+    this._syncValidity();
+  }
+
+  override updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    if (changedProperties.has('value')) {
+      this._syncFormValue();
+      this._syncValidity();
+    }
+  }
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Restores rating to 0 (no selection).
+   */
+  override formResetCallback(): void {
+    this.value = 0;
+    this._internals.setFormValue(null);
+    this._internals.setValidity({});
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
 
   connectedCallback() {
     super.connectedCallback();
@@ -558,6 +610,11 @@ export class AgRating extends LitElement {
   private commitValue(newValue: number, oldValue: number) {
     const normalized = this.roundToPrecision(newValue);
     this.value = normalized;
+
+    // FACE: sync form value and validity on user interaction
+    this._syncFormValue();
+    this._syncValidity();
+
     const changeEvent = new CustomEvent<RatingChangeEventDetail>('rating-change', {
       detail: { oldValue, newValue: normalized },
       bubbles: true,

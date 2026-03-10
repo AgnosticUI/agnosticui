@@ -6,6 +6,7 @@
     .allowClear="allowClear"
     .required="required"
     .invalid="invalid"
+    .validationMessages="validationMessages"
     :max="max"
     :precision="precision"
     :variant="variant"
@@ -28,6 +29,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import "../core/Rating";
+import type { ValidationMessages } from "../../../shared/face-mixin";
 
 /**
  * Vue Rating Props
@@ -59,6 +61,7 @@ export interface VueRatingProps {
   invalid?: boolean;
   errorMessage?: string;
   helpText?: string;
+  validationMessages?: ValidationMessages;
 }
 
 const props = withDefaults(defineProps<VueRatingProps>(), {

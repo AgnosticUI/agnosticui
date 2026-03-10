@@ -5,6 +5,7 @@ import {
   createFormControlIds,
   buildAriaDescribedBy,
 } from '../../../shared/form-control-utils';
+import { FaceMixin } from '../../../shared/face-mixin';
 
 
 export type RadioSize = 'small' | 'medium' | 'large';
@@ -96,7 +97,7 @@ export interface RadioProps {
   onChange?: (event: RadioChangeEvent) => void;
 }
 
-export class AgRadio extends LitElement implements RadioProps {
+export class AgRadio extends FaceMixin(LitElement) implements RadioProps {
   static override styles = [
     formControlStyles,
     css`
@@ -287,9 +288,6 @@ export class AgRadio extends LitElement implements RadioProps {
   ];
 
   @property({ type: String, reflect: true })
-  name = '';
-
-  @property({ type: String, reflect: true })
   value = '';
 
   @property({ type: Boolean, reflect: true })
@@ -336,12 +334,119 @@ export class AgRadio extends LitElement implements RadioProps {
   // Stable IDs for form control elements (created once)
   private _ids = createFormControlIds('ag-radio');
 
+  private inputRef?: HTMLInputElement;
+
   // Event callback props
   @property({ attribute: false })
   onClick?: (event: MouseEvent) => void;
 
   @property({ attribute: false })
   onChange?: (event: RadioChangeEvent) => void;
+
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  /**
+   * Sync the form value to ElementInternals.
+   * Submits this radio's value when checked, or null when unchecked.
+   * Each radio in the group reports independently; only the checked one
+   * contributes a value, matching native radio behavior.
+   */
+  private _syncFormValue(): void {
+    this._internals.setFormValue(this.checked ? this.value : null);
+  }
+
+  /**
+   * Returns true if any ag-radio in this named group is checked.
+   * Uses the same DOM-traversal logic as uncheckOtherRadiosInGroup so it
+   * works whether the radios are in the document or nested inside a shadow root.
+   */
+  private _isGroupChecked(): boolean {
+    if (this.checked) return true;
+    // Query from the immediate root node. If the radios live inside a shadow root
+    // (e.g. a Lit host component), getRootNode() returns that shadow root and
+    // querySelectorAll can reach them. If they're in the document's light DOM
+    // (React/Vue), getRootNode() returns the document. Traversing all the way up
+    // to document would bypass shadow roots and miss the siblings.
+    const root = this.getRootNode() as Document | ShadowRoot;
+    return Array.from(root.querySelectorAll(`ag-radio[name="${this.name}"]`)).some(
+      (el) => (el as AgRadio).checked
+    );
+  }
+
+  /**
+   * Sync validity to ElementInternals.
+   *
+   * Shadow DOM isolation prevents the inner <input type="radio"> from seeing
+   * sibling ag-radio elements in separate shadow trees, so native delegation
+   * would report each unchecked required radio as invalid individually.
+   * Instead we query the DOM directly: a required radio group is valid when
+   * ANY radio with the same name is checked.
+   */
+  private _syncValidity(): void {
+    if (!this.required) {
+      this._internals.setValidity({});
+      return;
+    }
+    if (this._isGroupChecked()) {
+      this._internals.setValidity({});
+    } else {
+      this._internals.setValidity({ valueMissing: true }, 'Please select one of these options.');
+    }
+  }
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Restores checked to false and clears the form value.
+   */
+  override formResetCallback(): void {
+    this.checked = false;
+    this._internals.setFormValue(null);
+    this._internals.setValidity({});
+    this._syncStates();
+  }
+
+  /**
+   * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
+   *
+   * Must be called AFTER _syncValidity() so that :state(invalid) reads the
+   * freshly-updated _internals.validity.valid value.
+   *
+   * Exposed states:
+   *  :state(checked)  — this radio is selected
+   *  :state(disabled) — radio is disabled
+   *  :state(required) — radio is required
+   *  :state(invalid)  — FACE constraint validation is failing
+   */
+  private _syncStates(): void {
+    this._setState('checked', this.checked);
+    this._setState('disabled', this.disabled);
+    this._setState('required', this.required);
+    this._setState('invalid', !this._internals.validity.valid);
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
+
+  override firstUpdated() {
+    this.inputRef = this.shadowRoot?.querySelector('.radio-input') as HTMLInputElement;
+
+    // FACE: set initial form value and sync validity after first render
+    this._syncFormValue();
+    this._syncValidity();
+    this._syncStates();
+  }
+
+  override updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+
+    // FACE: sync form value and validity for programmatic changes to checked.
+    // This fires when uncheckOtherRadiosInGroup() sets sibling.checked = false,
+    // so group FACE state stays synchronized without any explicit coordination.
+    if (changedProperties.has('checked')) {
+      this._syncFormValue();
+      this._syncValidity();
+      this._syncStates();
+    }
+  }
 
   private handleClick(e: MouseEvent) {
     if (this.onClick) {
@@ -415,22 +520,8 @@ export class AgRadio extends LitElement implements RadioProps {
 
   private getRadiosInGroup(): AgRadio[] {
     if (!this.name) return [];
-
-    // Find the root document (traverse up from shadow roots if needed)
-    let root: Node = this.getRootNode();
-    while (root && 'host' in root) {
-      const parent = (root as ShadowRoot).host?.getRootNode();
-      if (parent && parent !== root) {
-        root = parent;
-      } else {
-        break;
-      }
-    }
-
-    const doc = root instanceof Document ? root : document;
-    const allRadios = doc.querySelectorAll(`ag-radio[name="${this.name}"]`);
-
-    // Filter to only enabled radios and return as array
+    const root = this.getRootNode() as Document | ShadowRoot;
+    const allRadios = root.querySelectorAll(`ag-radio[name="${this.name}"]`);
     return Array.from(allRadios).filter((radio): radio is AgRadio => {
       return radio instanceof AgRadio && !radio.disabled;
     });
@@ -445,6 +536,11 @@ export class AgRadio extends LitElement implements RadioProps {
     const input = e.target as HTMLInputElement;
     const wasChecked = this.checked;
     this.checked = input.checked;
+
+    // FACE: sync form value and validity on user interaction
+    this._syncFormValue();
+    this._syncValidity();
+    this._syncStates();
 
     // Radio group coordination: When this radio is checked, uncheck all other radios with the same name
     // This is necessary because native radios in separate shadow DOMs don't coordinate automatically
@@ -474,23 +570,17 @@ export class AgRadio extends LitElement implements RadioProps {
   }
 
   private uncheckOtherRadiosInGroup() {
-    // Find the root document (traverse up from shadow roots if needed)
-    let root: Node = this.getRootNode();
-    while (root && 'host' in root) {
-      const parent = (root as ShadowRoot).host?.getRootNode();
-      if (parent && parent !== root) {
-        root = parent;
-      } else {
-        break;
-      }
-    }
-
-    const doc = root instanceof Document ? root : document;
-    const allRadios = doc.querySelectorAll(`ag-radio[name="${this.name}"]`);
+    const root = this.getRootNode() as Document | ShadowRoot;
+    const allRadios = root.querySelectorAll(`ag-radio[name="${this.name}"]`);
 
     allRadios.forEach((radio) => {
       if (radio !== this && radio instanceof AgRadio) {
         radio.checked = false;
+        // If checked didn't actually change (was already false), Lit's updated() won't
+        // fire on the sibling, so _syncValidity() wouldn't be called. Force it so
+        // unchecked siblings correctly reflect the group's new validity state.
+        radio._syncValidity();
+        radio._syncStates();
       }
     });
   }

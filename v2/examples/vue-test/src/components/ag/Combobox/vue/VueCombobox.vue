@@ -132,6 +132,7 @@ defineExpose({
     .clearable="clearable"
     .readonly="readonly"
     .required="required"
+    .validationMessages="validationMessages"
     .loading="loading"
     .multiple="multiple"
     .closeOnSelect="closeOnSelect"

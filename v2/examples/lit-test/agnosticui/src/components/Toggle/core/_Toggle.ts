@@ -34,6 +34,7 @@ import {
   type LabelPosition,
 } from '../../../shared/form-control-utils';
 import { formControlStyles } from '../../../shared/form-control-styles';
+import { FaceMixin, type ValidationMessages } from '../../../shared/face-mixin';
 
 // Event types
 export interface ToggleChangeEventDetail {
@@ -60,6 +61,7 @@ export interface ToggleProps {
   helpText?: string;
   name?: string;
   value?: string;
+  validationMessages?: ValidationMessages;
   // Event callbacks
   onClick?: (event: MouseEvent) => void;
   onToggleChange?: (event: ToggleChangeEvent) => void;
@@ -80,7 +82,7 @@ export interface ToggleProps {
  * - Size variants with consistent proportions
  * - Form integration support
  */
-export class AgToggle extends LitElement implements ToggleProps {
+export class AgToggle extends FaceMixin(LitElement) implements ToggleProps {
   static styles = [
     formControlStyles,
     css`
@@ -331,13 +333,7 @@ export class AgToggle extends LitElement implements ToggleProps {
   declare helpText: string;
 
   /**
-   * Form integration - name attribute
-   */
-  @property({ type: String })
-  declare name: string;
-
-  /**
-   * Form integration - value when checked
+   * Form integration - value submitted when checked (defaults to 'on' like native checkbox)
    */
   @property({ type: String })
   declare value: string;
@@ -347,6 +343,12 @@ export class AgToggle extends LitElement implements ToggleProps {
    */
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
+
+  /**
+   * Consumer-supplied validation messages (overrides built-in English fallbacks)
+   */
+  @property({ attribute: false })
+  declare validationMessages: ValidationMessages | undefined;
 
   /**
    * Toggle change event callback
@@ -377,11 +379,78 @@ export class AgToggle extends LitElement implements ToggleProps {
     this.invalid = false;
     this.errorMessage = '';
     this.helpText = '';
-    this.name = '';
     this.value = '';
+    this.validationMessages = undefined;
+  }
+
+  // ─── FACE ─────────────────────────────────────────────────────────────────
+
+  /**
+   * FACE lifecycle: called when the parent form is reset.
+   * Restores checked to false and clears form value and validity.
+   */
+  override formResetCallback(): void {
+    this.checked = false;
+    this._internals.setFormValue(null);
+    this._internals.setValidity({});
+    this._syncStates();
+  }
+
+  /**
+   * Sync validity state to ElementInternals.
+   * Toggle has no inner <input> to delegate to, so required validation
+   * is implemented directly: unchecked + required = valueMissing.
+   */
+  private _syncValidity(): void {
+    if (this.required && !this.checked) {
+      this._internals.setValidity(
+        { valueMissing: true },
+        this.validationMessages?.valueMissing ?? 'Please check this field.'
+      );
+    } else {
+      this._internals.setValidity({});
+    }
+  }
+
+  /**
+   * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
+   *
+   * Must be called AFTER _syncValidity() so that :state(invalid) reads the
+   * freshly-updated _internals.validity.valid value.
+   *
+   * Exposed states:
+   *  :state(checked)  — toggle is on
+   *  :state(disabled) — toggle is disabled
+   *  :state(readonly) — toggle is read-only
+   *  :state(required) — toggle is required
+   *  :state(invalid)  — FACE constraint validation is failing
+   */
+  private _syncStates(): void {
+    this._setState('checked', this.checked);
+    this._setState('disabled', this.disabled);
+    this._setState('readonly', this.readonly);
+    this._setState('required', this.required);
+    this._setState('invalid', !this._internals.validity.valid);
+  }
+
+  // ─── End FACE ─────────────────────────────────────────────────────────────
+
+  override updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    // FACE: sync states when disabled or readonly change programmatically.
+    // checked, required, and invalid are already handled via _performToggle
+    // and firstUpdated, but these two can change without going through toggle.
+    if (changedProperties.has('disabled') || changedProperties.has('readonly')) {
+      this._syncStates();
+    }
   }
 
   protected firstUpdated() {
+    // FACE: set initial form value and sync validity after first render
+    this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+    this._syncValidity();
+    this._syncStates();
+
     // Developer experience: warn about missing label
     if (!this.label && !this.noLabel) {
       // eslint-disable-next-line no-console
@@ -438,6 +507,11 @@ export class AgToggle extends LitElement implements ToggleProps {
     }
 
     this.checked = !this.checked;
+
+    // FACE: sync form value and validity on every toggle
+    this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
+    this._syncValidity();
+    this._syncStates();
 
     // Dispatch custom event with form integration details
     const toggleChangeEvent = new CustomEvent<ToggleChangeEventDetail>('toggle-change', {

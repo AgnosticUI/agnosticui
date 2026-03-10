@@ -1,9 +1,10 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { hasSlotContent } from '../../../utils/slot';
 
 export type CardVariant = 'success' | 'info' | 'error' | 'warning' | 'monochrome' | '';
 export type CardRounded = 'sm' | 'md' | 'lg' | '';
+export type CardMediaPosition = 'top' | 'bottom';
 
 /**
  * Converter for rounded prop: accepts boolean (true -> 'md') or string values
@@ -28,6 +29,10 @@ export interface CardProps {
   /** Border radius size. Use 'sm', 'md', 'lg' or true (defaults to 'md') */
   rounded?: CardRounded | boolean;
   variant?: CardVariant;
+  /** Enables the media slot for edge-to-edge image/video rendering */
+  hasMedia?: boolean;
+  /** Whether media renders above or below the header/content/footer */
+  mediaPosition?: CardMediaPosition;
 }
 
 export class AgCard extends LitElement implements CardProps {
@@ -36,6 +41,8 @@ export class AgCard extends LitElement implements CardProps {
   @property({ type: Boolean, reflect: true }) declare animated: boolean;
   @property({ converter: roundedConverter, reflect: true }) declare rounded: CardRounded;
   @property({ type: String, reflect: true }) declare variant: CardVariant;
+  @property({ type: Boolean, reflect: true, attribute: 'has-media' }) declare hasMedia: boolean;
+  @property({ type: String, reflect: true, attribute: 'media-position' }) declare mediaPosition: CardMediaPosition;
 
   private _hasHeaderSlotContent = false;
   private _hasFooterSlotContent = false;
@@ -47,6 +54,8 @@ export class AgCard extends LitElement implements CardProps {
     this.animated = false;
     this.rounded = '';
     this.variant = '';
+    this.hasMedia = false;
+    this.mediaPosition = 'top';
   }
 
   /**
@@ -209,6 +218,37 @@ export class AgCard extends LitElement implements CardProps {
       position: relative;
       z-index: 2;
     }
+
+    /* ── Media slot ─────────────────────────────────────────────────── */
+
+    /* Clip image corners to the card's border-radius for non-shadow cards */
+    :host([has-media]) {
+      overflow: hidden;
+    }
+
+    .card-media {
+      overflow: hidden; /* belt-and-suspenders for non-rounded cards */
+      line-height: 0;   /* collapses inline whitespace below slotted img */
+    }
+
+    /* Top media: clip only the card's top two corners */
+    :host([rounded="sm"]) .card-media--top  { border-radius: var(--ag-radius-sm) var(--ag-radius-sm) 0 0; }
+    :host([rounded="md"]) .card-media--top  { border-radius: var(--ag-radius-md) var(--ag-radius-md) 0 0; }
+    :host([rounded="lg"]) .card-media--top  { border-radius: var(--ag-radius-lg) var(--ag-radius-lg) 0 0; }
+
+    /* Bottom media: clip only the card's bottom two corners */
+    :host([rounded="sm"]) .card-media--bottom { border-radius: 0 0 var(--ag-radius-sm) var(--ag-radius-sm); }
+    :host([rounded="md"]) .card-media--bottom { border-radius: 0 0 var(--ag-radius-md) var(--ag-radius-md); }
+    :host([rounded="lg"]) .card-media--bottom { border-radius: 0 0 var(--ag-radius-lg) var(--ag-radius-lg); }
+
+    /* Sensible defaults for slotted media elements */
+    .card-media ::slotted(img),
+    .card-media ::slotted(video) {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
   `;
 
   render() {
@@ -217,6 +257,11 @@ export class AgCard extends LitElement implements CardProps {
 
     return html`
       <div class="card-wrapper" part="ag-card-wrapper">
+        ${this.hasMedia && this.mediaPosition === 'top' ? html`
+          <div class="card-media card-media--top" part="ag-card-media">
+            <slot name="media"></slot>
+          </div>` : nothing}
+
         <div class="${headerClass}" part="ag-card-header">
           <slot name="header" @slotchange=${this._handleSlotChange}></slot>
         </div>
@@ -226,6 +271,11 @@ export class AgCard extends LitElement implements CardProps {
         <div class="${footerClass}" part="ag-card-footer">
           <slot name="footer" @slotchange=${this._handleSlotChange}></slot>
         </div>
+
+        ${this.hasMedia && this.mediaPosition === 'bottom' ? html`
+          <div class="card-media card-media--bottom" part="ag-card-media">
+            <slot name="media"></slot>
+          </div>` : nothing}
       </div>
     `;
   }
