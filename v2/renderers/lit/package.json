@@ -1,0 +1,32 @@
+{
+  "name": "@agnosticui/render-lit",
+  "version": "2.0.0-alpha.1",
+  "description": "Lit renderer for AgnosticUI SDUI nodes",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "test": "vitest run",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@agnosticui/schema": "file:../../schema"
+  },
+  "peerDependencies": {
+    "agnosticui-core": ">=2.0.0-alpha",
+    "lit": "^3.0.0"
+  },
+  "devDependencies": {
+    "agnosticui-core": "file:../../lib",
+    "happy-dom": "^18.0.1",
+    "lit": "^3.3.1",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
