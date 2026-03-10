@@ -125,9 +125,15 @@ function getReactRender(name: string, localName?: string): string {
   const wrapper = localName ?? `React${name}`;
   if (TEXT_CHILD_COMPONENTS.has(name)) return `<${wrapper}>${name}</${wrapper}>`;
   if (REACT_SPECIFIC[name]) {
-    return localName
-      ? REACT_SPECIFIC[name].replace(`React${name}`, localName)
-      : REACT_SPECIFIC[name];
+    const s = REACT_SPECIFIC[name];
+    // Only replace the default tag name if localName is provided AND the string
+    // doesn't already contain localName (e.g. REACT_SPECIFIC for Flex already
+    // uses 'ReactFlexRow' directly, so replacing 'ReactFlex' → 'ReactFlexRow'
+    // would produce 'ReactFlexRowRow').
+    if (localName && !s.includes(localName)) {
+      return s.replace(new RegExp(`React${name}`, 'g'), localName);
+    }
+    return s;
   }
   return `<${wrapper} />`;
 }
