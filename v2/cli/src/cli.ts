@@ -44,7 +44,7 @@ const program = new Command();
 program
   .name("ag")
   .description("AgnosticUI Local - The UI kit that lives in your codebase")
-  .version("2.0.0-alpha.21");
+  .version("2.0.0-alpha.22");
 
 // ag init command
 program
@@ -61,7 +61,7 @@ program
   .option("-t, --tarball <path>", "Path to local tarball (for development)")
   .option(
     "--tag <tag>",
-    "NPM dist-tag or version to download (e.g., alpha, latest, 2.0.0-alpha.21)",
+    "NPM dist-tag or version to download (e.g., alpha, latest, 2.0.0-alpha.22)",
     "alpha",
   )
   .option(
@@ -120,7 +120,7 @@ program
   .option("-t, --tarball <path>", "Path to local tarball (skips NPM download)")
   .option(
     "--tag <tag>",
-    "NPM dist-tag or version to download (e.g., alpha, latest, 2.0.0-alpha.21)",
+    "NPM dist-tag or version to download (e.g., alpha, latest, 2.0.0-alpha.22)",
     "alpha",
   )
   .option("--force", "Bypass confirmation prompt")
