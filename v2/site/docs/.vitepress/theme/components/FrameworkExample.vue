@@ -127,6 +127,11 @@ const CODEPEN_URLS = {
   'breadcrumb': 'https://codepen.io/editor/roblevin/pen/019cddeb-7087-75fa-9a66-dd89f83be2a7?file=%2Fscript.js%3A439%3A377&orientation=left&show=split',
   'button': 'https://codepen.io/editor/roblevin/pen/019ccb59-c544-7086-9728-a39bf626d1c9?file=%2Fscript.js&orientation=left&show=split',
   'button-fx': 'https://codepen.io/editor/roblevin/pen/019cddee-0e96-76fa-ab32-b33d9047b264?file=%2Fscript.js&orientation=left&show=split',
+  'card': 'https://codepen.io/editor/roblevin/pen/019cdefc-ae4b-7379-8f2a-cdd4aae8f91c?file=%2Fscript.js&orientation=left&show=split',
+  'checkbox': 'https://codepen.io/editor/roblevin/pen/019cdeff-5064-7478-8fd6-d4254c068195?file=%2Fscript.js&orientation=left&show=split',
+  'collapsible': 'https://codepen.io/editor/roblevin/pen/019cdf01-5481-70b4-99cd-8dc78846df9e?file=%2Fscript.js%3A509%3A10481&orientation=left&show=split',
+  'combobox': 'https://codepen.io/editor/roblevin/pen/019cdf03-8ff7-7339-975d-0cb62efe7e43?file=%2Fscript.js&orientation=left&show=split',
+  'copy-button': 'https://codepen.io/editor/roblevin/pen/019cdf0c-a2ed-736c-a49f-7bb62a41b5b0?file=%2Fscript.js%3A441%3A377&orientation=left&show=split',
 }
 
 export default {
