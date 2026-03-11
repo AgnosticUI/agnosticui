@@ -529,14 +529,18 @@ When the AgnosticUI CLI is updated (for example, when a new Storybook major is s
 
 ### Customizing Generated Stories
 
-Generated story files are intentionally simple starting points. To customize a story without losing your changes on the next `--force` regeneration, copy the file and rename it:
+::: danger Do not edit generated story files directly
+Every `.stories.tsx` / `.stories.ts` file written by the CLI starts with an `AUTO-GENERATED` header. Editing these files directly will cause your changes to be silently overwritten the next time you run `npx agnosticui-cli storybook --force` or re-add a component with `--force`. There is no merge step — the file is replaced wholesale.
+:::
+
+If you want to write custom stories, copy the file and give it a different name:
 
 ```
-Button/react/Button.stories.tsx          # auto-generated, safe to overwrite
+Button/react/Button.stories.tsx          # auto-generated, will be overwritten
 Button/react/Button.stories.custom.tsx   # your customizations, never touched by CLI
 ```
 
-Storybook picks up both files automatically.
+Storybook picks up both files automatically, so your custom stories appear alongside the generated ones.
 
 ## TypeScript Configuration
 
