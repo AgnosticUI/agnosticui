@@ -470,10 +470,10 @@ npx agnosticui-cli context --output ./docs/agnosticui-context.md
 ## Storybook Integration
 
 ::: warning Experimental Feature
-`ag storybook` is currently experimental. The generated story templates and `.storybook/` config are updated with each CLI release. Run `ag storybook --force` after upgrading the CLI to pick up any improvements.
+`npx agnosticui-cli storybook` is currently experimental. The generated story templates and `.storybook/` config are updated with each CLI release. Run `npx agnosticui-cli storybook --force` after upgrading the CLI to pick up any improvements.
 :::
 
-Once you have components installed, `ag storybook` sets up [Storybook](https://storybook.js.org) and generates a story file for every component in your project. This is a one-time opt-in command: run it once to configure Storybook, then use `npm run storybook` to start the dev server.
+Once you have components installed, `npx agnosticui-cli storybook` sets up [Storybook](https://storybook.js.org) and generates a story file for every component in your project. This is a one-time opt-in command: run it once to configure Storybook, then use `npm run storybook` to start the dev server.
 
 ```bash
 npx agnosticui-cli storybook
@@ -484,7 +484,7 @@ This command will:
 1. Install the appropriate Storybook packages for your framework (`storybook@^10`, `@storybook/react-vite`, `@storybook/addon-docs`, `@storybook/addon-a11y`, etc.)
 2. Write `.storybook/main.ts`, `.storybook/preview.ts`, and `.storybook/manager.ts` — all pre-configured for AgnosticUI's Vite setup
 3. Generate a `.stories.tsx` / `.stories.ts` file for every installed component, co-located next to the component
-4. Add a `"storybook": "storybook dev -p 6006"` script to your `package.json`
+4. Add a `"storybook"` script to your `package.json`
 
 Then start Storybook:
 
@@ -492,7 +492,7 @@ Then start Storybook:
 npm run storybook
 ```
 
-Storybook opens at `http://localhost:6006` with auto-generated stories for all your installed components. CSS tokens are imported automatically so components render with your project's theme.
+Auto-generated stories for all your installed components are ready to browse. CSS tokens are imported automatically so components render with your project's theme.
 
 ### Skipping Package Installation
 
@@ -520,12 +520,12 @@ npx agnosticui-cli add button
 # Writes Button/react/Button.stories.tsx alongside the component
 ```
 
-Use `ag add --force` to regenerate both the component and its story.
+Use `npx agnosticui-cli add --force` to regenerate both the component and its story.
 :::
 
 ### Keeping Stories Up to Date
 
-When the AgnosticUI CLI is updated (for example, when a new Storybook major is supported), run `ag storybook --force` to regenerate all config and story files from the latest templates. The `agnosticui.config.json` records the Storybook version used so future tooling can detect when an upgrade is needed.
+When the AgnosticUI CLI is updated (for example, when a new Storybook major is supported), run `npx agnosticui-cli storybook --force` to regenerate all config and story files from the latest templates. The `agnosticui.config.json` records the Storybook version used so future tooling can detect when an upgrade is needed.
 
 ### Customizing Generated Stories
 
