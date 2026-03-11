@@ -1,5 +1,6 @@
 import { useState } from "react";
-import ReactDialog, {
+import {
+  ReactDialog,
   DialogHeader,
   DialogFooter,
 } from "agnosticui-core/dialog/react";
