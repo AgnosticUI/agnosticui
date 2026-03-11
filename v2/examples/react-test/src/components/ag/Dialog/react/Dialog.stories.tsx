@@ -9,11 +9,11 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     open: { control: 'boolean' },
-    heading: { control: 'text' },
-    description: { control: 'text' },
     showCloseButton: { control: 'boolean' },
     noCloseOnEscape: { control: 'boolean' },
     noCloseOnBackdrop: { control: 'boolean' },
+    heading: { control: 'text' },
+    description: { control: 'text' },
     drawerPosition: {
       control: 'select',
       options: [undefined, 'start', 'end', 'top', 'bottom'],
@@ -29,7 +29,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Dialogs need open state — wrap in a controller so the story is interactive.
+// Dialog needs open state - wrap in a controller so the story is interactive.
 function DialogDemo(props: React.ComponentProps<typeof ReactDialog>) {
   const [open, setOpen] = useState(props.open ?? false);
   return (
@@ -66,11 +66,6 @@ export const OpenByDefault: Story = {
   render: (args) => <DialogDemo {...args} />,
 };
 
-export const NoCloseButton: Story = {
-  args: { showCloseButton: false },
-  render: (args) => <DialogDemo {...args} />,
-};
-
 export const DrawerEnd: Story = {
   args: { heading: 'Drawer (end)', drawerPosition: 'end' },
   render: (args) => <DialogDemo {...args} />,
@@ -80,3 +75,4 @@ export const DrawerStart: Story = {
   args: { heading: 'Drawer (start)', drawerPosition: 'start' },
   render: (args) => <DialogDemo {...args} />,
 };
+

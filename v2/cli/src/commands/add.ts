@@ -144,21 +144,25 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         // Emit story file if Storybook is configured
         const storybookConfigured = existsSync(path.join(process.cwd(), '.storybook', 'main.ts'));
         if (storybookConfigured) {
+          let storyPath: string;
+          let storyContent: string;
+
           if (config.framework === 'react') {
-            const storyPath = path.join(componentsPath, componentName, 'react', `${componentName}.stories.tsx`);
-            if (!existsSync(storyPath)) {
-              await writeFile(storyPath, generateReactStory(componentName), 'utf-8');
-            }
+            storyPath = path.join(componentsPath, componentName, 'react', `${componentName}.stories.tsx`);
+            storyContent = generateReactStory(componentName);
           } else if (config.framework === 'vue') {
-            const storyPath = path.join(componentsPath, componentName, 'vue', `${componentName}.stories.ts`);
-            if (!existsSync(storyPath)) {
-              await writeFile(storyPath, generateVueStory(componentName), 'utf-8');
-            }
-          } else if (config.framework === 'lit') {
-            const storyPath = path.join(componentsPath, componentName, 'core', `${componentName}.stories.ts`);
-            if (!existsSync(storyPath)) {
-              await writeFile(storyPath, generateLitStory(componentName), 'utf-8');
-            }
+            storyPath = path.join(componentsPath, componentName, 'vue', `${componentName}.stories.ts`);
+            storyContent = generateVueStory(componentName);
+          } else {
+            storyPath = path.join(componentsPath, componentName, 'core', `${componentName}.stories.ts`);
+            storyContent = generateLitStory(componentName);
+          }
+
+          const storyExists = existsSync(storyPath);
+          if (!storyExists || options.force) {
+            await writeFile(storyPath, storyContent, 'utf-8');
+            const relStoryPath = path.relative(process.cwd(), storyPath);
+            spinner?.message(`${progress} ${storyExists ? 'Regenerated' : 'Generated'} story: ${relStoryPath}`);
           }
         }
 

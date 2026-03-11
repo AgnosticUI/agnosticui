@@ -1,7 +1,7 @@
 /**
  * Dependency management utilities
  */
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import path from 'node:path';
 import type { Framework } from '../types/index.js';
@@ -87,18 +87,27 @@ export function installDependencies(packages: string[], cwd: string = process.cw
 }
 
 /**
- * Check if dependencies are already installed
+ * Check if dependencies are declared in the project's package.json.
+ * We check package.json rather than node_modules because npm 7+ installs
+ * the CLI's own peer dependencies into node_modules automatically, which
+ * would cause a false-positive and skip adding the deps to the user's project.
  */
 export function checkDependenciesInstalled(packages: string[], cwd: string = process.cwd()): boolean {
-  const nodeModulesPath = path.join(cwd, 'node_modules');
+  const pkgJsonPath = path.join(cwd, 'package.json');
 
-  if (!existsSync(nodeModulesPath)) {
+  if (!existsSync(pkgJsonPath)) {
     return false;
   }
 
-  // Check if all packages exist in node_modules
-  return packages.every(pkg => {
-    const pkgPath = path.join(nodeModulesPath, pkg);
-    return existsSync(pkgPath);
-  });
+  try {
+    const pkg = JSON.parse(readFileSync(pkgJsonPath, 'utf-8'));
+    const declared = {
+      ...(pkg.dependencies ?? {}),
+      ...(pkg.devDependencies ?? {}),
+      ...(pkg.peerDependencies ?? {}),
+    };
+    return packages.every(p => p in declared);
+  } catch {
+    return false;
+  }
 }

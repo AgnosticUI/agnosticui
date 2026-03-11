@@ -27,6 +27,10 @@ export interface AgnosticUIConfig {
   git?: {
     commitReference?: boolean;
   };
+  storybook?: {
+    version: number;   // Storybook major version used during setup (e.g. 10)
+    setupAt: string;   // ISO timestamp of last setup/force run
+  };
 }
 
 export interface ComponentEntry {
@@ -88,7 +92,8 @@ export interface ContextOptions {
 }
 
 export interface StorybookOptions {
-  port?: number;        // Dev server port (default: 6006)
-  open?: boolean;       // Auto-open browser
+  port?: number;         // Dev server port (default: 6006)
+  open?: boolean;        // Auto-open browser
   skipInstall?: boolean; // Skip npm install (assume packages already installed)
+  force?: boolean;       // Overwrite existing story files and .storybook config
 }

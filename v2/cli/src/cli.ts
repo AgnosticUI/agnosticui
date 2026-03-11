@@ -173,8 +173,9 @@ program
   .command('storybook')
   .description('Set up Storybook for your installed components')
   .option('--skip-install', 'Skip npm install (assume packages already installed)')
+  .option('--force', 'Overwrite existing story files and .storybook config files')
   .action(async (options) => {
-    await storybook({ skipInstall: options.skipInstall } as StorybookOptions);
+    await storybook({ skipInstall: options.skipInstall, force: options.force } as StorybookOptions);
   });
 
 // Parse arguments

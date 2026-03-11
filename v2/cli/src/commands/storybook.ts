@@ -7,14 +7,15 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { execSync } from 'node:child_process';
 import * as p from '@clack/prompts';
 import pc from 'picocolors';
-import { loadConfig } from '../utils/config.js';
+import { loadConfig, saveConfig } from '../utils/config.js';
 import { logger } from '../utils/logger.js';
 import { ensureDir } from '../utils/files.js';
-import { generateStorybookMain, generateStorybookPreview, generateReactStory, generateVueStory, generateLitStory } from '../utils/stories.js';
+import { generateStorybookMain, generateStorybookPreview, generateStorybookManager, generateReactStory, generateVueStory, generateLitStory } from '../utils/stories.js';
 import type { StorybookOptions } from '../types/index.js';
 
 export async function storybook(options: StorybookOptions = {}): Promise<void> {
   const skipInstall = options.skipInstall ?? false;
+  const force = options.force ?? false;
 
   p.intro(pc.bold(pc.cyan('AgnosticUI Storybook Setup')));
 
@@ -30,12 +31,14 @@ export async function storybook(options: StorybookOptions = {}): Promise<void> {
   const storybookConfigDir = path.join(cwd, '.storybook');
   const mainTsPath = path.join(storybookConfigDir, 'main.ts');
   const previewTsPath = path.join(storybookConfigDir, 'preview.ts');
+  const managerTsPath = path.join(storybookConfigDir, 'manager.ts');
   const componentsAbsPath = path.resolve(cwd, config.paths.components);
 
   const alreadyConfigured = existsSync(mainTsPath);
 
-  if (alreadyConfigured) {
+  if (alreadyConfigured && !force) {
     logger.info('Storybook already configured (.storybook/main.ts exists). Skipping install and config steps.');
+    logger.info(pc.dim('Run ') + pc.cyan('ag storybook --force') + pc.dim(' to overwrite .storybook config and regenerate all stories.'));
   } else {
     // Install packages
     if (skipInstall) {
@@ -51,7 +54,7 @@ export async function storybook(options: StorybookOptions = {}): Promise<void> {
       }
 
       const installSpinner = p.spinner();
-      installSpinner.start('Installing Storybook packages...');
+      installSpinner.start(alreadyConfigured ? 'Re-installing Storybook packages...' : 'Installing Storybook packages...');
       try {
         execSync(installCmd, { cwd, stdio: 'pipe' });
         installSpinner.stop(pc.green('✓') + ' Storybook packages installed');
@@ -67,7 +70,7 @@ export async function storybook(options: StorybookOptions = {}): Promise<void> {
     await ensureDir(storybookConfigDir);
     const mainContent = generateStorybookMain(config.framework);
     await writeFile(mainTsPath, mainContent, 'utf-8');
-    logger.info(pc.green('✓') + ' Written .storybook/main.ts');
+    logger.info(pc.green('✓') + (alreadyConfigured ? ' Overwrote' : ' Written') + ' .storybook/main.ts');
 
     // Write .storybook/preview.ts
     // Compute relative path from .storybook/ to the components styles directory
@@ -77,9 +80,14 @@ export async function storybook(options: StorybookOptions = {}): Promise<void> {
     const componentsRelForImport = componentsRelFromStorybook.split(path.sep).join('/');
     const previewContent = generateStorybookPreview(config.framework, componentsRelForImport);
     await writeFile(previewTsPath, previewContent, 'utf-8');
-    logger.info(pc.green('✓') + ' Written .storybook/preview.ts');
+    logger.info(pc.green('✓') + (alreadyConfigured ? ' Overwrote' : ' Written') + ' .storybook/preview.ts');
 
-    // Add storybook script to package.json
+    // Write .storybook/manager.ts — sets brandTitle so the auto-generated nature is visible in Storybook UI
+    const managerContent = generateStorybookManager();
+    await writeFile(managerTsPath, managerContent, 'utf-8');
+    logger.info(pc.green('✓') + (alreadyConfigured ? ' Overwrote' : ' Written') + ' .storybook/manager.ts');
+
+    // Add storybook script to package.json (never overwrite a user-customised script)
     const pkgJsonPath = path.join(cwd, 'package.json');
     if (existsSync(pkgJsonPath)) {
       try {
@@ -99,6 +107,11 @@ export async function storybook(options: StorybookOptions = {}): Promise<void> {
         logger.warn(`Could not update package.json: ${err instanceof Error ? err.message : String(err)}`);
       }
     }
+
+    // Record storybook setup metadata in agnosticui.config.json
+    const updatedConfig = { ...config, storybook: { version: 10, setupAt: new Date().toISOString() } };
+    await saveConfig(updatedConfig);
+    logger.info(pc.green('✓') + ' Updated agnosticui.config.json with storybook metadata');
   }
 
   // Generate per-component story files
@@ -111,10 +124,10 @@ export async function storybook(options: StorybookOptions = {}): Promise<void> {
   }
 
   const genSpinner = p.spinner();
-  genSpinner.start(`Generating story files for ${installedComponentNames.length} component(s)...`);
+  genSpinner.start(`${force ? 'Regenerating' : 'Generating'} story files for ${installedComponentNames.length} component(s)...`);
 
   let generated = 0;
-  let skipped = 0;
+  const skippedPaths: string[] = [];
 
   for (const name of installedComponentNames) {
     let storyPath: string;
@@ -132,8 +145,8 @@ export async function storybook(options: StorybookOptions = {}): Promise<void> {
       content = generateLitStory(name);
     }
 
-    if (existsSync(storyPath)) {
-      skipped++;
+    if (existsSync(storyPath) && !force) {
+      skippedPaths.push(storyPath);
       continue;
     }
     await writeFile(storyPath, content, 'utf-8');
@@ -142,14 +155,23 @@ export async function storybook(options: StorybookOptions = {}): Promise<void> {
 
   genSpinner.stop(
     pc.green('✓') +
-    ` Stories generated: ${generated} written, ${skipped} skipped (already exist)`
+    ` Stories: ${generated} ${force ? 'regenerated' : 'written'}, ${skippedPaths.length} skipped`
   );
+
+  // Log each skipped story so users know exactly which ones were left unchanged
+  if (skippedPaths.length > 0) {
+    logger.newline();
+    for (const sp of skippedPaths) {
+      logger.info(pc.dim(`  skipped: ${path.relative(cwd, sp)}`));
+    }
+    logger.info(pc.dim('  Tip: Run ') + pc.cyan('ag storybook --force') + pc.dim(' to regenerate all stories.'));
+  }
 
   logger.newline();
   logger.box('Storybook ready', [
     pc.dim(`Framework:  ${config.framework}`),
     pc.dim(`Components: ${installedComponentNames.length}`),
-    pc.dim(`Stories:    ${generated} generated, ${skipped} skipped`),
+    pc.dim(`Stories:    ${generated} ${force ? 'regenerated' : 'generated'}, ${skippedPaths.length} skipped`),
     '',
     pc.green('Run: npm run storybook'),
     '',

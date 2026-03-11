@@ -209,6 +209,11 @@ export async function init(options: InitOptions = {}): Promise<void> {
 
       spinner.message('Configuring TypeScript...');
       await updateTsConfigs();
+
+      if (framework === 'vue') {
+        spinner.message('Patching vite.config.ts for Vue web components...');
+        await patchViteConfigForVue();
+      }
     }
 
     logger.newline();
@@ -352,6 +357,56 @@ async function updateTsConfigs(): Promise<void> {
 }
 
 /**
+ * Patch vite.config.ts for Vue projects to add isCustomElement so ag-* web component
+ * tags are not treated as unresolved Vue components.
+ */
+async function patchViteConfigForVue(): Promise<void> {
+  const cwd = process.cwd();
+  const candidates = ['vite.config.ts', 'vite.config.js'];
+
+  for (const filename of candidates) {
+    const filePath = path.join(cwd, filename);
+    if (!pathExists(filePath)) continue;
+
+    const content = await readFile(filePath, 'utf-8');
+
+    // Already patched
+    if (content.includes('isCustomElement')) {
+      logger.info(`${filename} already has isCustomElement configured.`);
+      return;
+    }
+
+    // Only patch if @vitejs/plugin-vue is used (vue() call present)
+    if (!content.includes('vue()') && !content.includes('vue({')) {
+      logger.info(`${filename} does not use @vitejs/plugin-vue — skipping isCustomElement patch.`);
+      return;
+    }
+
+    // Replace vue() with vue({ template: { compilerOptions: { isCustomElement: ... } } })
+    // Handle both `vue()` and `vue({...})` forms
+    let patched: string;
+    if (content.includes('vue()')) {
+      patched = content.replace(
+        'vue()',
+        `vue({\n    template: {\n      compilerOptions: {\n        isCustomElement: (tag) => tag.startsWith('ag-'),\n      },\n    },\n  })`
+      );
+    } else {
+      // vue({ ... }) — insert isCustomElement into the existing options object
+      patched = content.replace(
+        /vue\(\{/,
+        `vue({\n    template: {\n      compilerOptions: {\n        isCustomElement: (tag) => tag.startsWith('ag-'),\n      },\n    },`
+      );
+    }
+
+    if (patched !== content) {
+      await writeFile(filePath, patched, 'utf-8');
+      logger.info(pc.green('✓') + ` Patched ${filename} with isCustomElement for ag-* web components`);
+      return;
+    }
+  }
+}
+
+/**
  * Handle dependency installation for the selected framework
  */
 async function handleDependencies(framework: Framework, skipPrompts: boolean = false): Promise<void> {
@@ -364,21 +419,25 @@ async function handleDependencies(framework: Framework, skipPrompts: boolean = f
     return;
   }
 
-  // Skip installation in non-interactive mode
-  if (skipPrompts) {
-    logger.newline();
-    logger.info(`This framework requires the following dependencies:`);
-    requiredDeps.forEach(dep => {
-      console.log('  ' + pc.cyan(dep));
-    });
-    logger.newline();
-    const packageManager = detectPackageManager();
-    logger.info(`Install them with: ${pc.cyan(`${packageManager} ${packageManager === 'npm' ? 'install' : 'add'} ${requiredDeps.join(' ')}`)}`);
-    return;
-  }
-
   // Detect package manager
   const packageManager = detectPackageManager();
+
+  // In non-interactive mode, auto-install without prompting
+  if (skipPrompts) {
+    logger.newline();
+    logger.info(`Installing required dependencies: ${pc.dim(requiredDeps.join(', '))}`);
+    const spinner = p.spinner();
+    spinner.start('Installing dependencies...');
+    try {
+      installDependencies(requiredDeps);
+      spinner.stop(pc.green('✓') + ' Dependencies installed successfully!');
+    } catch (error) {
+      spinner.stop(pc.red('✖') + ' Failed to install dependencies');
+      logger.error(`Installation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      logger.info(`You can install manually with: ${pc.cyan(`${packageManager} ${packageManager === 'npm' ? 'install' : 'add'} ${requiredDeps.join(' ')}`)}`);
+    }
+    return;
+  }
 
   // Prompt user
   logger.newline();

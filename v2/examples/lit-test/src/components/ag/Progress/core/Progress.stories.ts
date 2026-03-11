@@ -9,15 +9,34 @@ const meta: Meta = {
   argTypes: {
     value: { control: { type: 'number', min: 0, max: 100 } },
     max: { control: { type: 'number' } },
-    size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
-    },
+    label: { control: 'text' },
   },
-  render: (args: any) => html`<ag-progress></ag-progress>`,
+  args: {
+    value: 60,
+    max: 100,
+    label: 'Loading progress',
+  },
+  render: (args: any) => html`
+    <ag-progress
+      .value=${args.value}
+      .max=${args.max}
+      .label=${args.label}
+    ></ag-progress>
+  `,
 } satisfies Meta;
 
 export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {};
+
+export const Variants: Story = {
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 500px;">
+      <ag-progress .value=${25} .max=${100} .label=${'25%'}></ag-progress>
+      <ag-progress .value=${50} .max=${100} .label=${'50%'}></ag-progress>
+      <ag-progress .value=${75} .max=${100} .label=${'75%'}></ag-progress>
+      <ag-progress .value=${100} .max=${100} .label=${'Complete'}></ag-progress>
+    </div>
+  `,
+};
