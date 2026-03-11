@@ -467,45 +467,76 @@ Use `--output` to write to a custom path instead:
 npx agnosticui-cli context --output ./docs/agnosticui-context.md
 ```
 
-## Component Viewer
+## Storybook Integration
 
-Once you have components ejected, `ag view` launches a lightweight Vite-powered viewer so you can browse them visually without setting up Storybook.
-
-```bash
-ag view
-```
-
-The viewer auto-opens at `http://localhost:7173` and displays:
-
-- **Left sidebar** — alphabetical list of all installed components with an Overview/usage summary and link to these docs.
-- **Main area** — per-component tabbed panel: **Preview** (default render), **HTML** (import snippet with copy button), **Info** (version, date added).
-
-The viewer automatically applies your project's CSS tokens (`ag-tokens.css`, `ag-tokens-dark.css`) and — if present — your `ag-theme.css` skin override, so components appear exactly as they will in your app.
-
-### Options
-
-| Flag | Default | Description |
-|---|---|---|
-| `--port <number>` | `7173` | Dev server port |
-| `--clean` | false | Delete `.agnosticui-viewer/` and rebuild from scratch |
-| `--no-open` | false | Skip auto-opening the browser |
-
-```bash
-# Custom port
-ag view --port 8080
-
-# Full rebuild (use after ag add / ag sync)
-ag view --clean
-
-# Don't open the browser automatically
-ag view --no-open
-```
-
-The viewer caches its `node_modules` between runs for fast startup. Only `ag view --clean` triggers a fresh install.
-
-::: tip Theme support
-Place your skin overrides in `src/components/ag/styles/ag-theme.css` and they will be picked up by the viewer automatically.
+::: warning Experimental Feature
+`ag storybook` is currently experimental. The generated story templates and `.storybook/` config are updated with each CLI release. Run `ag storybook --force` after upgrading the CLI to pick up any improvements.
 :::
+
+Once you have components installed, `ag storybook` sets up [Storybook](https://storybook.js.org) and generates a story file for every component in your project. This is a one-time opt-in command: run it once to configure Storybook, then use `npm run storybook` to start the dev server.
+
+```bash
+npx agnosticui-cli storybook
+```
+
+This command will:
+
+1. Install the appropriate Storybook packages for your framework (`storybook@^10`, `@storybook/react-vite`, `@storybook/addon-docs`, `@storybook/addon-a11y`, etc.)
+2. Write `.storybook/main.ts`, `.storybook/preview.ts`, and `.storybook/manager.ts` — all pre-configured for AgnosticUI's Vite setup
+3. Generate a `.stories.tsx` / `.stories.ts` file for every installed component, co-located next to the component
+4. Add a `"storybook": "storybook dev -p 6006"` script to your `package.json`
+
+Then start Storybook:
+
+```bash
+npm run storybook
+```
+
+Storybook opens at `http://localhost:6006` with auto-generated stories for all your installed components. CSS tokens are imported automatically so components render with your project's theme.
+
+### Skipping Package Installation
+
+If Storybook packages are already installed, skip the install step:
+
+```bash
+npx agnosticui-cli storybook --skip-install
+```
+
+### Regenerating Stories
+
+All generated files start with an `AUTO-GENERATED` comment so you know not to edit them by hand. Use `--force` to overwrite the Storybook config files and regenerate all story files:
+
+```bash
+npx agnosticui-cli storybook --force
+```
+
+Without `--force`, existing story files are left unchanged (skipped files are listed in the output).
+
+::: tip Story co-generation with `ag add`
+When Storybook is configured (`.storybook/main.ts` exists), adding a component also generates its story file automatically:
+
+```bash
+npx agnosticui-cli add button
+# Writes Button/react/Button.stories.tsx alongside the component
+```
+
+Use `ag add --force` to regenerate both the component and its story.
+:::
+
+### Keeping Stories Up to Date
+
+When the AgnosticUI CLI is updated (for example, when a new Storybook major is supported), run `ag storybook --force` to regenerate all config and story files from the latest templates. The `agnosticui.config.json` records the Storybook version used so future tooling can detect when an upgrade is needed.
+
+### Customizing Generated Stories
+
+Generated story files are intentionally simple starting points. To customize a story without losing your changes on the next `--force` regeneration, copy the file and rename it:
+
+```
+Button/react/Button.stories.tsx          # auto-generated, safe to overwrite
+Button/react/Button.stories.custom.tsx   # your customizations, never touched by CLI
+```
+
+Storybook picks up both files automatically.
 
 ## TypeScript Configuration
 
