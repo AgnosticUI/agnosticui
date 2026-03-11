@@ -7,17 +7,21 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "viewer": "npx agnosticui-cli view",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
-    "agnosticui-cli": "^2.0.0-alpha.19",
+    "agnosticui-cli": "file:../../cli/agnosticui-cli-2.0.0-alpha.22.tgz",
     "focus-trap": "^7.6.6",
     "lit": "^3.3.1"
   },
   "devDependencies": {
     "@playwright/test": "^1",
+    "@storybook/addon-a11y": "^10.2.17",
+    "@storybook/addon-docs": "^10.2.17",
+    "@storybook/web-components-vite": "^10.2.17",
+    "storybook": "^10.2.17",
     "typescript": "~5.9.3",
     "vite": "^7.2.4"
   }

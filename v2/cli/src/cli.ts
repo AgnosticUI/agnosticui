@@ -36,15 +36,15 @@ import { list } from "./commands/list.js";
 import { sync } from "./commands/sync.js";
 import { playbook } from "./commands/playbook.js";
 import { context } from "./commands/context.js";
-import { view } from "./commands/view.js";
-import type { Framework, SyncOptions, ViewOptions } from "./types/index.js";
+import { storybook } from "./commands/storybook.js";
+import type { Framework, SyncOptions, StorybookOptions } from "./types/index.js";
 
 const program = new Command();
 
 program
   .name("ag")
   .description("AgnosticUI Local - The UI kit that lives in your codebase")
-  .version("2.0.0-alpha.20");
+  .version("2.0.0-alpha.21");
 
 // ag init command
 program
@@ -168,19 +168,13 @@ program
     await context({ output: options.output, format: options.format });
   });
 
-// ag view command
+// ag storybook command
 program
-  .command("view")
-  .description("Launch a component viewer for your installed (ejected) components")
-  .option("-p, --port <number>", "Port for the Vite dev server", "7173")
-  .option("--clean", "Delete .agnosticui-viewer/ and rebuild from scratch")
-  .option("--no-open", "Skip auto-opening the browser")
+  .command('storybook')
+  .description('Set up Storybook for your installed components')
+  .option('--skip-install', 'Skip npm install (assume packages already installed)')
   .action(async (options) => {
-    await view({
-      port: parseInt(options.port, 10),
-      clean: options.clean ?? false,
-      open: options.open ?? true,
-    } as ViewOptions);
+    await storybook({ skipInstall: options.skipInstall } as StorybookOptions);
   });
 
 // Parse arguments

@@ -4,10 +4,12 @@
 import * as p from '@clack/prompts';
 import path from 'node:path';
 import { stat, readdir, readFile, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import type { AddOptions, Framework } from '../types/index.js';
 import { logger } from '../utils/logger.js';
 import { loadConfig, saveConfig, addComponentToConfig, hasComponent } from '../utils/config.js';
 import { ensureDir, pathExists } from '../utils/files.js';
+import { generateReactStory, generateVueStory, generateLitStory } from '../utils/stories.js';
 import {
   getAvailableComponents,
   componentExists,
@@ -138,6 +140,28 @@ export async function add(componentNames: string[], options: AddOptions = {}): P
         // so we don't need to scan for them here
 
         results.push({ name: componentName, success: true, files });
+
+        // Emit story file if Storybook is configured
+        const storybookConfigured = existsSync(path.join(process.cwd(), '.storybook', 'main.ts'));
+        if (storybookConfigured) {
+          if (config.framework === 'react') {
+            const storyPath = path.join(componentsPath, componentName, 'react', `${componentName}.stories.tsx`);
+            if (!existsSync(storyPath)) {
+              await writeFile(storyPath, generateReactStory(componentName), 'utf-8');
+            }
+          } else if (config.framework === 'vue') {
+            const storyPath = path.join(componentsPath, componentName, 'vue', `${componentName}.stories.ts`);
+            if (!existsSync(storyPath)) {
+              await writeFile(storyPath, generateVueStory(componentName), 'utf-8');
+            }
+          } else if (config.framework === 'lit') {
+            const storyPath = path.join(componentsPath, componentName, 'core', `${componentName}.stories.ts`);
+            if (!existsSync(storyPath)) {
+              await writeFile(storyPath, generateLitStory(componentName), 'utf-8');
+            }
+          }
+        }
+
         spinner.message(`${progress} Added ${componentName}`);
       } catch (error) {
         results.push({ name: componentName, success: false, files: [] });

@@ -87,8 +87,8 @@ export interface ContextOptions {
   format?: string; // AI tool format: claude, cursor, copilot, windsurf, openai, gemini, generic
 }
 
-export interface ViewOptions {
-  port?: number;  // Dev server port (default: 7173)
-  clean?: boolean; // Nuke .agnosticui-viewer/ and rebuild from scratch
-  open?: boolean;  // Auto-open browser (default: true)
+export interface StorybookOptions {
+  port?: number;        // Dev server port (default: 6006)
+  open?: boolean;       // Auto-open browser
+  skipInstall?: boolean; // Skip npm install (assume packages already installed)
 }

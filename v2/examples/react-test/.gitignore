@@ -28,3 +28,6 @@ playwright-report/
 test-results/
 agnosticui/
 .agnosticui-viewer/
+
+*storybook.log
+storybook-static
