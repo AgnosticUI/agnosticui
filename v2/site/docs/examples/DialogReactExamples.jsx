@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactDialog, {
-  ReactDialogHeader,
-  ReactDialogFooter,
+  DialogHeader,
+  DialogFooter,
 } from "agnosticui-core/dialog/react";
 import { ReactButton } from "agnosticui-core/button/react";
 
@@ -64,11 +64,11 @@ export default function DialogReactExamples() {
           open={isHeaderFooterDialogOpen}
           onOpenChange={setIsHeaderFooterDialogOpen}
         >
-          <ReactDialogHeader>
+          <DialogHeader>
             <h2 className="m0 p0 b0">My Header</h2>
-          </ReactDialogHeader>
+          </DialogHeader>
           <p>This dialog uses dialog header and footer components.</p>
-          <ReactDialogFooter>
+          <DialogFooter>
             <div style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}>
               <ReactButton onClick={() => setIsHeaderFooterDialogOpen(false)}>
                 Cancel
@@ -80,7 +80,7 @@ export default function DialogReactExamples() {
                 Confirm
               </ReactButton>
             </div>
-          </ReactDialogFooter>
+          </DialogFooter>
         </ReactDialog>
       </div>
 
@@ -202,13 +202,13 @@ export default function DialogReactExamples() {
             This dialog demonstrates CSS Shadow Parts customization with styled
             backdrop, container, header, heading, content, footer, and close button.
           </p>
-          <ReactDialogFooter>
+          <DialogFooter>
             <div style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}>
               <ReactButton onClick={() => setIsCustomDialogOpen(false)}>
                 Close
               </ReactButton>
             </div>
-          </ReactDialogFooter>
+          </DialogFooter>
         </ReactDialog>
       </div>
     </section>
