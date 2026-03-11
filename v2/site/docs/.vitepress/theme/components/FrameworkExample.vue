@@ -118,7 +118,15 @@ import 'agnosticui-core/icon'
 // Add an entry here as each CodePen is created — the button only renders
 // when a mapping exists for the current component.
 const CODEPEN_URLS = {
+  'accordion': 'https://codepen.io/editor/roblevin/pen/019cdd72-c3ac-775a-af17-a04f94ae9ceb?file=%2Fscript.js%3A518%3A12345&orientation=left&show=split',
+  'alert': 'https://codepen.io/editor/roblevin/pen/019cdd61-87cf-7044-8b6d-f032418ee538?file=%2Fscript.js&orientation=left&show=split',
+  'aspect-ratio': 'https://codepen.io/editor/roblevin/pen/019cddcc-6678-756d-a32f-59faf0f25472?file=%2Fscript.js&orientation=left&show=split',
+  'avatar': 'https://codepen.io/editor/roblevin/pen/019cddd3-d391-74bd-a901-178307c83220?file=%2Fscript.js%3A473%3A3236&orientation=left&show=split',
+  'badge': 'https://codepen.io/editor/roblevin/pen/019cddd9-4e9a-74e8-b6e8-71ad0a7b0a60?file=%2Fscript.js&orientation=left&show=split',
+  'badge-fx': 'https://codepen.io/editor/roblevin/pen/019cdde3-2eb0-7003-a3a1-6929acc4ac15?file=%2Fscript.js&orientation=left&show=split',
+  'breadcrumb': 'https://codepen.io/editor/roblevin/pen/019cddeb-7087-75fa-9a66-dd89f83be2a7?file=%2Fscript.js%3A439%3A377&orientation=left&show=split',
   'button': 'https://codepen.io/editor/roblevin/pen/019ccb59-c544-7086-9728-a39bf626d1c9?file=%2Fscript.js&orientation=left&show=split',
+  'button-fx': 'https://codepen.io/editor/roblevin/pen/019cddee-0e96-76fa-ab32-b33d9047b264?file=%2Fscript.js&orientation=left&show=split',
 }
 
 export default {
