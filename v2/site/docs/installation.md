@@ -469,8 +469,9 @@ npx agnosticui-cli context --output ./docs/agnosticui-context.md
 
 ## Storybook Integration
 
-::: warning Experimental Feature
-`npx agnosticui-cli storybook` is currently experimental. The generated story templates and `.storybook/` config are updated with each CLI release. Run `npx agnosticui-cli storybook --force` after upgrading the CLI to pick up any improvements.
+::: warning Experimental: Use with Caution
+npx agnosticui-cli storybook is in an evaluation phase. Due to its high maintenance overhead, this feature may be deprecated or removed depending on community feedback and adoption.
+Run with --force after CLI upgrades to sync templates.
 :::
 
 Once you have components installed, `npx agnosticui-cli storybook` sets up [Storybook](https://storybook.js.org) and generates a story file for every component in your project. This is a one-time opt-in command: run it once to configure Storybook, then use `npm run storybook` to start the dev server.
