@@ -1,6 +1,6 @@
 import { hasSlotContent } from '../../../utils/slot';
 import { LitElement, html, css } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 
 export type EmptyStateProps = {
   title?: string;
@@ -30,10 +30,10 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
   @property({ type: Boolean })
   declare rounded: boolean;
 
-  @property({ type: Boolean, state: true })
+  @state()
   private _hasIconSlot = false;
 
-  @property({ type: Boolean, state: true })
+  @state()
   private _hasActionsSlot = false;
 
   constructor() {
@@ -55,8 +55,6 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
     } else if (slotName === 'actions') {
       this._hasActionsSlot = hasSlotContent(slot);
     }
-
-    this.requestUpdate();
   }
 
   override firstUpdated() {
