@@ -893,7 +893,8 @@ export class DialogLitExamples extends LitElement {
 // Register the custom element
 customElements.define('dialog-lit-examples', DialogLitExamples);
 `,ts=`import { useState } from "react";
-import ReactDialog, {
+import {
+  ReactDialog,
   DialogHeader,
   DialogFooter,
 } from "agnosticui-core/dialog/react";
