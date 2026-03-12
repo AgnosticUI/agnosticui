@@ -1087,6 +1087,30 @@ describe('AgnosticUI v2 Event Conventions', () => {
     });
   });
 
+  describe('Focus Management (delegatesFocus)', () => {
+    it('should have delegatesFocus enabled on shadow root options', () => {
+      expect(AgInput.shadowRootOptions.delegatesFocus).toBe(true);
+    });
+
+    it('should have a focusable internal input element', async () => {
+      element.label = 'Focus test';
+      element.type = 'text';
+      await element.updateComplete;
+      const input = element.shadowRoot?.querySelector('input');
+      expect(input).toBeDefined();
+      expect(input?.tabIndex).not.toBe(-1);
+    });
+
+    it('should have a focusable internal textarea element', async () => {
+      element.label = 'Focus textarea test';
+      element.type = 'textarea';
+      await element.updateComplete;
+      const textarea = element.shadowRoot?.querySelector('textarea');
+      expect(textarea).toBeDefined();
+      expect(textarea?.tabIndex).not.toBe(-1);
+    });
+  });
+
   describe('Non-Bubbling Event Re-dispatch Pattern', () => {
     it('re-dispatches focus event from host element', async () => {
       let focusEventOnHost: Event | undefined;

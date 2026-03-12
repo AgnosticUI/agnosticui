@@ -370,65 +370,15 @@ describe('AgButton', () => {
   });
 
   describe('Focus Management', () => {
-    it('should have focus() method that delegates to internal button', async () => {
+    it('should have delegatesFocus enabled on shadow root options', () => {
+      expect(AgButton.shadowRootOptions.delegatesFocus).toBe(true);
+    });
+
+    it('should have a focusable internal button', async () => {
       await element.updateComplete;
-
-      expect(typeof element.focus).toBe('function');
-
-      // Mock the internal button's focus method
-      const button = element.shadowRoot?.querySelector('button');
-      const focusSpy = vi.spyOn(button as HTMLElement, 'focus');
-
-      element.focus();
-
-      expect(focusSpy).toHaveBeenCalledOnce();
-    });
-
-    it('should have blur() method that delegates to internal button', async () => {
-      await element.updateComplete;
-
-      expect(typeof element.blur).toBe('function');
-
-      // Mock the internal button's blur method
-      const button = element.shadowRoot?.querySelector('button');
-      const blurSpy = vi.spyOn(button as HTMLElement, 'blur');
-
-      element.blur();
-
-      expect(blurSpy).toHaveBeenCalledOnce();
-    });
-
-    it('should handle focus() gracefully when shadowRoot is not available', () => {
-      // Create element without adding to DOM
-      const isolatedElement = document.createElement('ag-button') as AgButton;
-
-      // Should not throw error even if shadowRoot is not ready
-      expect(() => isolatedElement.focus()).not.toThrow();
-    });
-
-    it('should handle blur() gracefully when shadowRoot is not available', () => {
-      // Create element without adding to DOM
-      const isolatedElement = document.createElement('ag-button') as AgButton;
-
-      // Should not throw error even if shadowRoot is not ready
-      expect(() => isolatedElement.blur()).not.toThrow();
-    });
-
-    it('should be focusable for keyboard navigation', async () => {
-      await element.updateComplete;
-
-      // Element should be detectable by focus management systems
       const button = element.shadowRoot?.querySelector('button');
       expect(button).toBeDefined();
       expect(button?.tabIndex).not.toBe(-1);
-
-      // Element should support focus delegation - spy on the button's focus method
-      const focusSpy = vi.spyOn(button as HTMLElement, 'focus');
-      element.focus();
-      expect(focusSpy).toHaveBeenCalledOnce();
-
-      // In a real DOM, focus would be on the internal button
-      // In test environment, activeElement behavior may vary
     });
 
     it('should not be focusable when disabled', async () => {
@@ -437,10 +387,30 @@ describe('AgButton', () => {
 
       const button = element.shadowRoot?.querySelector('button');
       expect(button?.disabled).toBe(true);
+    });
 
-      // Disabled buttons should not receive focus
-      element.focus();
-      expect(document.activeElement).not.toBe(button);
+    it('should dispatch focus event from host when inner button is focused', async () => {
+      await element.updateComplete;
+
+      const focusSpy = vi.fn();
+      element.addEventListener('focus', focusSpy);
+
+      const button = element.shadowRoot?.querySelector('button');
+      button?.dispatchEvent(new FocusEvent('focus', { bubbles: false, composed: true }));
+
+      expect(focusSpy).toHaveBeenCalledOnce();
+    });
+
+    it('should dispatch blur event from host when inner button is blurred', async () => {
+      await element.updateComplete;
+
+      const blurSpy = vi.fn();
+      element.addEventListener('blur', blurSpy);
+
+      const button = element.shadowRoot?.querySelector('button');
+      button?.dispatchEvent(new FocusEvent('blur', { bubbles: false, composed: true }));
+
+      expect(blurSpy).toHaveBeenCalledOnce();
     });
   });
 });
