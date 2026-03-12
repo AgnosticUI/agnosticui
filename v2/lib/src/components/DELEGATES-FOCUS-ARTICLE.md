@@ -20,7 +20,7 @@ These two behaviors together eliminate the most common boilerplate found in simp
 
 ## Opting In with Lit
 
-Lit exposes shadow root configuration through a static class property. The opt-in is a one-liner:
+Lit exposes shadow root configuration through a static class property. The opt-in is a one-line addition to LitElement's own `shadowRootOptions`:
 
 ```typescript
 export class AgButton extends LitElement {
@@ -41,11 +41,11 @@ Spreading `LitElement.shadowRootOptions` is important. It preserves Lit's own de
 
 For AgnosticUI, the right candidates are clear:
 
-| Component | Use `delegatesFocus`? | Reason |
-|---|---|---|
-| `<ag-button>` | Yes | Single `<button>`, unambiguous focus target |
-| `<ag-input>` | Yes | Single `<input>` or `<textarea>`, same pattern |
-| `<ag-select>` | Yes | Single `<select>`, identical case |
+| Component     | Use `delegatesFocus`? | Reason                                         |
+| ------------- | --------------------- | ---------------------------------------------- |
+| `<ag-button>` | Yes                   | Single `<button>`, unambiguous focus target    |
+| `<ag-input>`  | Yes                   | Single `<input>` or `<textarea>`, same pattern |
+| `<ag-select>` | Yes                   | Single `<select>`, identical case              |
 
 But `delegatesFocus` is not universally appropriate. Components that manage their own focus routing should opt out:
 
@@ -84,7 +84,23 @@ blur() {
 
 With `delegatesFocus: true`, calling `.focus()` on the host element automatically delegates to the inner native element. The manual overrides became dead code and were removed.
 
-**Keep the focus and blur re-dispatch handlers.** One thing we did _not_ remove is the `@focus` and `@blur` listeners on the internal elements that re-dispatch bubbling events from the host. Those exist for a different reason: `focus` and `blur` do not bubble natively, so consumers listening on the host element with `addEventListener('focus', ...)` would never hear them. `delegatesFocus` does not fix this; it only handles delegation on click. The re-dispatch pattern still carries its weight.
+**Keep the focus and blur re-dispatch handlers.** One thing we did _not_ remove is the `@focus` and `@blur` listeners on the internal elements that re-dispatch bubbling events from the host. It is worth being explicit here: removing the manual `focus()` and `blur()` overrides does _not_ neuter these listeners. They are completely separate concerns.
+
+The `@focus` and `@blur` listeners on the inner element fire normally whenever that element receives or loses focus, regardless of how the focus arrived. `delegatesFocus` is only responsible for _routing_ focus on a host click; it has no effect on event listeners that are already attached to elements inside the shadow root.
+
+Those listeners exist because `focus` and `blur` do not bubble natively. A consumer listening on the host with `addEventListener('focus', ...)` would never hear events that stay trapped inside the shadow root. The re-dispatch pattern solves that by catching the non-bubbling event on the inner element and re-firing it as a bubbling, composed event from the host. `delegatesFocus` does not address this gap at all. The two mechanisms do different jobs and both stay in place:
+
+```typescript
+// This is untouched — delegatesFocus does not replace it
+private _handleFocus(event: FocusEvent) {
+  this.dispatchEvent(new FocusEvent('focus', {
+    bubbles: true,
+    composed: true,
+    relatedTarget: event.relatedTarget,
+  }));
+  this.onFocus?.(event);
+}
+```
 
 ---
 
