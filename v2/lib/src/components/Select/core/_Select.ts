@@ -49,6 +49,11 @@ export interface SelectProps {
  * @fires change - Emitted when selection changes
  */
 export class Select extends FaceMixin(LitElement) implements SelectProps {
+  static shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   @property({ type: String, reflect: true })
   public size: SelectSize = '';
 

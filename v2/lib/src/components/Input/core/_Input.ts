@@ -70,6 +70,11 @@ export interface InputProps {
 }
 
 export class AgInput extends FaceMixin(LitElement) implements InputProps {
+  static shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   static styles = [
     formControlStyles,
     css`
@@ -460,20 +465,6 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
       this._inputElement.value = value;
       this.value = value;
     }
-  }
-
-  /**
-   * Focus the input element
-   */
-  focus(): void {
-    this._inputElement?.focus();
-  }
-
-  /**
-   * Blur the input element
-   */
-  blur(): void {
-    this._inputElement?.blur();
   }
 
   /**

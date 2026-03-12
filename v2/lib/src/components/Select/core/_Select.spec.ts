@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { Select } from './Select';
 
 // Component registers itself on import
@@ -29,6 +29,43 @@ describe('ag-select', () => {
     expect(element.size).toBe('');
     expect(element.multiple).toBe(false);
     expect(element.disabled).toBe(false);
+  });
+
+  describe('Focus Management', () => {
+    it('should have delegatesFocus enabled on shadow root options', () => {
+      expect(Select.shadowRootOptions.delegatesFocus).toBe(true);
+    });
+
+    it('should have a focusable internal select element', async () => {
+      await element.updateComplete;
+      const select = element.shadowRoot?.querySelector('select');
+      expect(select).toBeDefined();
+      expect(select?.tabIndex).not.toBe(-1);
+    });
+
+    it('should re-dispatch focus event from host when inner select is focused', async () => {
+      await element.updateComplete;
+
+      const focusSpy = vi.fn();
+      element.addEventListener('focus', focusSpy);
+
+      const select = element.shadowRoot?.querySelector('select');
+      select?.dispatchEvent(new FocusEvent('focus', { bubbles: false, composed: true }));
+
+      expect(focusSpy).toHaveBeenCalledOnce();
+    });
+
+    it('should re-dispatch blur event from host when inner select is blurred', async () => {
+      await element.updateComplete;
+
+      const blurSpy = vi.fn();
+      element.addEventListener('blur', blurSpy);
+
+      const select = element.shadowRoot?.querySelector('select');
+      select?.dispatchEvent(new FocusEvent('blur', { bubbles: false, composed: true }));
+
+      expect(blurSpy).toHaveBeenCalledOnce();
+    });
   });
 
   it('should render a select element', () => {
