@@ -12,9 +12,11 @@ When you attach a shadow root with `delegatesFocus: true`, the browser takes on 
 
 **First:** Any click on the host element (including padding areas and decorative regions outside the inner control) automatically forwards focus to the first focusable element inside the shadow root. No `this.shadowRoot.querySelector('button').focus()` required.
 
-**Second:** The host element receives the CSS `:focus-within` pseudo-class whenever an internal element is focused. This means you can style the host wrapper based on internal focus state without any JavaScript at all.
+**Second:** The host element receives both the `:focus` and `:focus-within` CSS pseudo-classes whenever an internal element is focused. `:focus-within` applies to any ancestor of a focused element, which you may already know. The less obvious one is `:focus` itself: when `delegatesFocus: true` is set, the shadow host is also matched by `:focus` as if it were the focused element. This means focus ring styles applied to the host via `:focus` or `:focus-visible` will work correctly without any JavaScript at all.
 
-These two behaviors together eliminate the most common boilerplate found in simple wrapper components.
+**Third:** This matters especially for keyboard users and people using screen readers. Without correct focus delegation, clicking a padding area or decorative region of a custom element host can land focus nowhere, leaving keyboard and assistive technology users stranded. `delegatesFocus` closes that gap at the platform level, ensuring any interaction that reaches the host reliably moves focus to the inner control.
+
+These behaviors together eliminate the most common boilerplate found in simple wrapper components.
 
 ---
 
@@ -55,6 +57,8 @@ But `delegatesFocus` is not universally appropriate. Components that manage thei
 
 The rule is simple: if there is only one place focus should ever go, delegate. If the component decides where focus goes, keep control.
 
+**One more pitfall: do not add `tabindex` to the host when using `delegatesFocus`.** Setting `tabindex="0"` on the host creates two stops in the tab order where there should be one: the host receives focus on the first Tab, then the inner element receives it on the next. This breaks the expected navigation flow for keyboard users. With `delegatesFocus`, the host participates in focus routing automatically. Adding a manual `tabindex` on top of it interferes with that and produces confusing, inaccessible behavior.
+
 ---
 
 ## What We Changed in AgnosticUI
@@ -69,6 +73,8 @@ static shadowRootOptions = {
   delegatesFocus: true,
 };
 ```
+
+**A note on `autofocus`.** If a component should receive focus immediately on page load, the `autofocus` attribute can be placed on the inner element inside the shadow root rather than reaching for JavaScript. With `delegatesFocus`, the host will reflect the focus state correctly when the inner element autofocuses. That said, use `autofocus` with care: moving focus on page load without user intent disrupts screen reader users who have not yet oriented to the page, and it can disorient keyboard users who expect focus to start at the top of the document. Reserve it for cases where the page exists solely to interact with that control, such as a focused search page or a modal that opens in response to an explicit user action.
 
 **Remove the manual `focus()` and `blur()` overrides.** Each component had something like this:
 
