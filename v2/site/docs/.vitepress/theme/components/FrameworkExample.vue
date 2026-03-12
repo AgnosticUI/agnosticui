@@ -132,6 +132,9 @@ const CODEPEN_URLS = {
   'collapsible': 'https://codepen.io/editor/roblevin/pen/019cdf01-5481-70b4-99cd-8dc78846df9e?file=%2Fscript.js%3A509%3A10481&orientation=left&show=split',
   'combobox': 'https://codepen.io/editor/roblevin/pen/019cdf03-8ff7-7339-975d-0cb62efe7e43?file=%2Fscript.js&orientation=left&show=split',
   'copy-button': 'https://codepen.io/editor/roblevin/pen/019cdf0c-a2ed-736c-a49f-7bb62a41b5b0?file=%2Fscript.js%3A441%3A377&orientation=left&show=split',
+  'dialog': 'https://codepen.io/editor/roblevin/pen/019cdf11-5fdd-73cf-8bdb-21bcf1d1c389?file=%2Fscript.js&orientation=left&show=split',
+  'divider': 'https://codepen.io/editor/roblevin/pen/019ce2d3-eff6-739f-a7e3-3ed81e9772c8?file=%2Fscript.js&orientation=left&show=split',
+  'drawer': 'https://codepen.io/editor/roblevin/pen/019ce2d6-64a4-708a-bcca-9f145bf0453f?file=%2Fscript.js&orientation=left&show=split',
 }
 
 export default {
