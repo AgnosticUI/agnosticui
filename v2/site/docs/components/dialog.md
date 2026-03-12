@@ -470,3 +470,21 @@ The Vue Dialog component supports `v-model:open` for two-way binding:
 ```
 
 This automatically syncs the dialog's open state with your component's data.
+
+## onOpenChange Support (React)
+
+The React Dialog component supports `onOpenChange` for controlled-component two-way binding:
+
+```tsx
+const [isOpen, setIsOpen] = useState(false);
+
+<ReactDialog
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  heading="My Dialog"
+>
+  <p>Dialog content</p>
+</ReactDialog>
+```
+
+`onOpenChange` is called with `false` whenever the dialog closes itself internally (Escape key, backdrop click, or close button), keeping React state in sync. Without it, stale `open={true}` state would be re-applied on the next render, causing dismissed dialogs to reappear when other dialogs are opened and closed.
