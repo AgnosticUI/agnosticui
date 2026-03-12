@@ -466,3 +466,22 @@ The Drawer component follows accessibility best practices for slide-out panels:
 - **Filters** (`end`): Search filters, data table filters
 - **Notifications** (`top`): System notifications, alerts
 - **Quick Actions** (`bottom`): Mobile-friendly action menus, sharing options
+
+## onOpenChange Support (React)
+
+The React Drawer component supports `onOpenChange` for controlled-component two-way binding:
+
+```tsx
+const [isOpen, setIsOpen] = useState(false);
+
+<ReactDrawer
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  heading="My Drawer"
+  position="end"
+>
+  <p>Drawer content</p>
+</ReactDrawer>
+```
+
+`onOpenChange` is called with `false` whenever the drawer closes itself internally (Escape key, backdrop click, or close button), keeping React state in sync. Without it, stale `open={true}` state would be re-applied on the next render, causing dismissed drawers to reappear when other drawers are opened and closed.
