@@ -1,0 +1,1 @@
+function d(t){if(!t)return!1;const o=t.assignedNodes(),r=e=>{var n;return e.children.length>0||((n=e.textContent)==null?void 0:n.trim())!==""};return o.some(e=>{var n;return e.nodeType===Node.ELEMENT_NODE?r(e):e.nodeType===Node.TEXT_NODE?((n=e.textContent)==null?void 0:n.trim())!=="":!1})}export{d as o};
