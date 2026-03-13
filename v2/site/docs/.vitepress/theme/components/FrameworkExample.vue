@@ -168,6 +168,9 @@ const CODEPEN_URLS = {
   'tag': 'https://codepen.io/editor/roblevin/pen/019ce4d4-9f51-7346-939f-b11b2211f3ec?file=%2Fscript.js&orientation=left&panel=files&show=split',
   'timeline': 'https://codepen.io/editor/roblevin/pen/019ce4d6-e4fb-716c-95a7-8658019474e4?file=%2Fscript.js&orientation=left&panel=files&show=split',
   'toast': 'https://codepen.io/editor/roblevin/pen/019ce4d9-1e62-7458-ab31-150200200a40?file=%2Fscript.js%3A1113%3A32783&orientation=left&panel=files&show=split',
+  'toggle': 'https://codepen.io/editor/roblevin/pen/019ce4dc-0bab-7582-91a5-b172ef781cf1?file=%2Fscript.js%3A544%3A377&orientation=left&panel=files&show=split',
+  'tooltip': 'https://codepen.io/editor/roblevin/pen/019ce4de-7007-7286-96cb-ef2210bc22b9?file=%2Fscript.js&orientation=left&panel=files&show=split',
+  'visually-hidden': 'https://codepen.io/editor/roblevin/pen/019ce4df-fa29-725d-81bc-393aee758ab4?file=%2Fscript.js&orientation=left&panel=files&show=split',
 }
 export default {
   name: "FrameworkExample",
