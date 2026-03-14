@@ -14,6 +14,8 @@
   "scripts": {
     "test": "vitest run",
     "build": "tsc",
+    "codegen": "tsx scripts/codegen.ts",
+    "check-codegen": "tsx scripts/check-codegen.ts",
     "m4": "npx tsx m4-llm-test.ts",
     "m4:dry": "npx tsx m4-llm-test.ts --dry-run"
   },
@@ -22,6 +24,7 @@
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.78.0",
+    "ts-morph": "^24.0.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
