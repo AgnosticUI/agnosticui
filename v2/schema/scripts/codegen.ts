@@ -6,7 +6,7 @@ import { Project, type Type, type InterfaceDeclaration, type Symbol as MorphSymb
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { writeFileSync } from 'fs';
-import { omitConfig, actionAliasMap, typeOverrides, skipComponents } from './codegen.config.js';
+import { omitConfig, actionAliasMap, typeOverrides, skipComponents, rendererSlotConfig, vueDefaultImportComponents, type RendererSlot } from './codegen.config.js';
 
 // scripts/ -> schema/ -> v2/ -> agnosticui/
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -104,18 +104,38 @@ interface PropInfo {
   zodExpr: string;
 }
 
+interface ActionPropInfo {
+  sourceName: string;  // e.g., 'onClick', 'onToggleChange'
+  alias: string;       // e.g., 'on_click', 'on_change'
+  litEvent: string;    // e.g., 'click', 'toggle-change'
+}
+
 function isFunctionSymbol(sym: MorphSymbol): boolean {
   const decl = sym.getValueDeclaration();
   if (!decl) return false;
   return decl.getType().getNonNullableType().getCallSignatures().length > 0;
 }
 
-function getPropsForComponent(componentName: string, iface: InterfaceDeclaration): PropInfo[] {
+// Convert PascalCase component name to kebab-case slug (e.g. 'ButtonFx' → 'button-fx')
+function toKebab(name: string): string {
+  return name.replace(/([A-Z])/g, (_, c) => '-' + c.toLowerCase()).replace(/^-/, '');
+}
+
+// Convert function prop name to Lit event name (e.g. 'onToggleChange' → 'toggle-change')
+function toLitEvent(propName: string): string {
+  return toKebab(propName.slice(2)); // remove 'on', then kebab-case
+}
+
+function getComponentInfo(
+  componentName: string,
+  iface: InterfaceDeclaration,
+): { props: PropInfo[]; actions: ActionPropInfo[] } {
   const sdui = `Ag${componentName}`;
   const manualOmit = new Set(omitConfig[sdui] ?? []);
   const overrides = (typeOverrides as Record<string, Record<string, PropMapping>>)[sdui] ?? {};
   const seenAliases = new Set<string>();
-  const result: PropInfo[] = [];
+  const props: PropInfo[] = [];
+  const actions: ActionPropInfo[] = [];
 
   for (const sym of iface.getType().getProperties()) {
     const propName = sym.getName();
@@ -129,13 +149,16 @@ function getPropsForComponent(componentName: string, iface: InterfaceDeclaration
       const alias = actionAliasMap[propName];
       if (alias && !seenAliases.has(alias)) {
         seenAliases.add(alias);
-        result.push({ name: alias, tsType: 'string', zodExpr: 'z.string()' });
+        props.push({ name: alias, tsType: 'string', zodExpr: 'z.string()' });
+      }
+      if (alias) {
+        actions.push({ sourceName: propName, alias, litEvent: toLitEvent(propName) });
       }
       continue;
     }
 
     if (overrides[propName]) {
-      result.push({ name: propName, ...overrides[propName] });
+      props.push({ name: propName, ...overrides[propName] });
       continue;
     }
 
@@ -145,10 +168,15 @@ function getPropsForComponent(componentName: string, iface: InterfaceDeclaration
       continue;
     }
 
-    result.push({ name: propName, tsType: mapping.tsType, zodExpr: mapping.zodExpr });
+    props.push({ name: propName, tsType: mapping.tsType, zodExpr: mapping.zodExpr });
   }
 
-  return result;
+  return { props, actions };
+}
+
+// Legacy wrapper for schema generation (returns only props)
+function getPropsForComponent(componentName: string, iface: InterfaceDeclaration): PropInfo[] {
+  return getComponentInfo(componentName, iface).props;
 }
 
 // ─── Code generators ──────────────────────────────────────────────────────────
@@ -240,6 +268,429 @@ function generateIndexTs(componentNames: string[]): string {
   ].join('\n');
 }
 
+// ─── Renderer generators ───────────────────────────────────────────────────────
+
+interface ComponentData {
+  name: string;
+  props: PropInfo[];
+  actions: ActionPropInfo[];
+  slotType: RendererSlot;
+}
+
+function litDefault(tsType: string): string {
+  if (tsType === 'boolean') return ' ?? false';
+  if (tsType === 'number') return ' ?? 0';
+  return " ?? ''";
+}
+
+function generateReactCase(c: ComponentData): string {
+  const sdui = `Ag${c.name}`;
+  const wrapper = `React${c.name}`;
+  const slug = toKebab(c.name);
+  const directProps = c.props.filter(
+    p => !p.name.startsWith('on_') && p.name !== 'children'
+      && !(c.slotType === 'label-child' && p.name === 'label'),
+  );
+  const lines: string[] = [];
+  lines.push(`    case '${sdui}':`);
+  lines.push(`      return (`);
+
+  const propLines: string[] = [];
+  propLines.push(`        <${wrapper}`);
+  propLines.push(`          key={node.id}`);
+  for (const p of directProps) {
+    propLines.push(`          ${p.name}={node.${quoteName(p.name)}}`);
+  }
+  for (const a of c.actions) {
+    propLines.push(`          ${a.sourceName}={() => dispatch(node.${quoteName(a.alias)}, actions)}`);
+  }
+
+  if (c.slotType === 'none') {
+    propLines[propLines.length - 1] += ' />';
+    lines.push(...propLines);
+    lines.push(`      );`);
+  } else if (c.slotType === 'label-child') {
+    propLines.push(`        >`);
+    lines.push(...propLines);
+    lines.push(`          {node.children?.length ? renderChildren(node.children) : (node.label ?? '')}`);
+    lines.push(`        </${wrapper}>`);
+    lines.push(`      );`);
+  } else {
+    // children
+    propLines.push(`        >`);
+    lines.push(...propLines);
+    lines.push(`          {renderChildren(node.children)}`);
+    lines.push(`        </${wrapper}>`);
+    lines.push(`      );`);
+  }
+
+  // Suppress unused-import warnings when a component has no import path yet
+  void slug;
+  return lines.join('\n');
+}
+
+function generateReactRenderer(components: ComponentData[]): string {
+  const imports = components.map(c => {
+    const slug = toKebab(c.name);
+    return `import { React${c.name} } from 'agnosticui-core/${slug}/react';`;
+  }).join('\n');
+
+  const cases = components.map(c => generateReactCase(c)).join('\n\n');
+
+  return [
+    FILE_HEADER,
+    `import * as React from 'react';`,
+    `import type { AgNode } from '@agnosticui/schema';`,
+    imports,
+    '',
+    `type Actions = Record<string, (payload?: unknown) => void>;`,
+    '',
+    `export interface AgDynamicRendererProps {`,
+    `  nodes: AgNode[];`,
+    `  actions?: Actions;`,
+    `}`,
+    '',
+    `/**`,
+    ` * Create an action dispatcher bound to a given actions map.`,
+    ` *`,
+    ` * This is the XSS boundary: only aliases present in the map are called;`,
+    ` * unknown aliases are silently ignored. No eval(), no dynamic code execution.`,
+    ` */`,
+    `export function createDispatcher(actions: Actions) {`,
+    `  return (alias?: string): void => {`,
+    `    if (alias) actions[alias]?.();`,
+    `  };`,
+    `}`,
+    '',
+    `function dispatch(alias: string | undefined, actions: Actions): void {`,
+    `  if (alias) actions[alias]?.();`,
+    `}`,
+    '',
+    `function renderNode(`,
+    `  node: AgNode,`,
+    `  nodeMap: Map<string, AgNode>,`,
+    `  actions: Actions,`,
+    `): React.ReactNode {`,
+    `  const renderChildren = (childIds?: string[]): React.ReactNode[] =>`,
+    `    (childIds ?? [])`,
+    `      .map(id => {`,
+    `        const child = nodeMap.get(id);`,
+    `        return child ? renderNode(child, nodeMap, actions) : null;`,
+    `      })`,
+    `      .filter((n): n is React.ReactNode => n !== null);`,
+    '',
+    `  switch (node.component) {`,
+    cases,
+    '',
+    `    default:`,
+    `      return null;`,
+    `  }`,
+    `}`,
+    '',
+    `/**`,
+    ` * AgDynamicRenderer (React)`,
+    ` *`,
+    ` * Consumes a flat array of AgNode objects and renders them using the`,
+    ` * AgnosticUI React wrapper components. Nodes not referenced as children`,
+    ` * by any other node are treated as roots.`,
+    ` *`,
+    ` * Actions are routed through a whitelist map — unknown aliases are`,
+    ` * silently ignored, providing an XSS boundary.`,
+    ` */`,
+    `export function AgDynamicRenderer({ nodes, actions = {} }: AgDynamicRendererProps): React.ReactElement {`,
+    `  const nodeMap = new Map(nodes.map(n => [n.id, n]));`,
+    `  const childIds = new Set(nodes.flatMap(n => n.children ?? []));`,
+    `  const rootNodes = nodes.filter(n => !childIds.has(n.id));`,
+    '',
+    `  return (`,
+    `    <>`,
+    `      {rootNodes.map(node => renderNode(node, nodeMap, actions))}`,
+    `    </>`,
+    `  );`,
+    `}`,
+    '',
+  ].join('\n');
+}
+
+function generateVueCase(c: ComponentData): string {
+  const sdui = `Ag${c.name}`;
+  const wrapper = `Vue${c.name}`;
+  const directProps = c.props.filter(
+    p => !p.name.startsWith('on_') && p.name !== 'children'
+      && !(c.slotType === 'label-child' && p.name === 'label'),
+  );
+  const lines: string[] = [];
+  lines.push(`    case '${sdui}':`);
+
+  const propsObj: string[] = [];
+  for (const p of directProps) {
+    propsObj.push(`        ${p.name}: node.${quoteName(p.name)},`);
+  }
+  for (const a of c.actions) {
+    propsObj.push(`        ${a.sourceName}: () => doDispatch(node.${quoteName(a.alias)}, actions),`);
+  }
+
+  if (c.slotType === 'none') {
+    lines.push(`      return h(`);
+    lines.push(`        ${wrapper},`);
+    lines.push(`        {`);
+    lines.push(...propsObj);
+    lines.push(`        },`);
+    lines.push(`      );`);
+  } else if (c.slotType === 'label-child') {
+    lines.push(`      return h(`);
+    lines.push(`        ${wrapper},`);
+    lines.push(`        {`);
+    lines.push(...propsObj);
+    lines.push(`        },`);
+    lines.push(`        {`);
+    lines.push(`          default: () =>`);
+    lines.push(`            node.children?.length`);
+    lines.push(`              ? renderChildren(node.children)`);
+    lines.push(`              : (node.label ?? ''),`);
+    lines.push(`        },`);
+    lines.push(`      );`);
+  } else {
+    // children
+    lines.push(`      return h(`);
+    lines.push(`        ${wrapper},`);
+    lines.push(`        {`);
+    lines.push(...propsObj);
+    lines.push(`        },`);
+    lines.push(`        { default: () => renderChildren(node.children) },`);
+    lines.push(`      );`);
+  }
+
+  return lines.join('\n');
+}
+
+function generateVueRenderer(components: ComponentData[]): string {
+  const defaultSet = new Set(vueDefaultImportComponents);
+  const imports = components.map(c => {
+    const slug = toKebab(c.name);
+    if (defaultSet.has(c.name)) {
+      // This component's vue export resolves to the compiled .vue file directly (default only)
+      return `import Vue${c.name} from 'agnosticui-core/${slug}/vue';`;
+    }
+    return `import { Vue${c.name} } from 'agnosticui-core/${slug}/vue';`;
+  }).join('\n');
+
+  const cases = components.map(c => generateVueCase(c)).join('\n\n');
+
+  return [
+    FILE_HEADER,
+    `import { defineComponent, h, type PropType, type VNode } from 'vue';`,
+    `import type { AgNode } from '@agnosticui/schema';`,
+    imports,
+    '',
+    `type Actions = Record<string, (payload?: unknown) => void>;`,
+    '',
+    `/**`,
+    ` * Create an action dispatcher bound to a given actions map.`,
+    ` *`,
+    ` * This is the XSS boundary: only aliases present in the map are called;`,
+    ` * unknown aliases are silently ignored. No eval(), no dynamic code execution.`,
+    ` */`,
+    `export function createDispatcher(actions: Actions) {`,
+    `  return (alias?: string): void => {`,
+    `    if (alias) actions[alias]?.();`,
+    `  };`,
+    `}`,
+    '',
+    `function doDispatch(alias: string | undefined, actions: Actions): void {`,
+    `  if (alias) actions[alias]?.();`,
+    `}`,
+    '',
+    `function renderNode(`,
+    `  node: AgNode,`,
+    `  nodeMap: Map<string, AgNode>,`,
+    `  actions: Actions,`,
+    `): VNode | null {`,
+    `  const renderChildren = (childIds?: string[]): (VNode | null)[] =>`,
+    `    (childIds ?? []).map(id => {`,
+    `      const child = nodeMap.get(id);`,
+    `      return child ? renderNode(child, nodeMap, actions) : null;`,
+    `    });`,
+    '',
+    `  switch (node.component) {`,
+    cases,
+    '',
+    `    default:`,
+    `      return null;`,
+    `  }`,
+    `}`,
+    '',
+    `/**`,
+    ` * AgDynamicRenderer (Vue)`,
+    ` *`,
+    ` * Consumes a flat array of AgNode objects and renders them using the`,
+    ` * AgnosticUI Vue wrapper components. Nodes not referenced as children`,
+    ` * by any other node are treated as roots.`,
+    ` *`,
+    ` * Actions are routed through a whitelist map — unknown aliases are`,
+    ` * silently ignored, providing an XSS boundary.`,
+    ` */`,
+    `export const AgDynamicRenderer = defineComponent({`,
+    `  name: 'AgDynamicRenderer',`,
+    '',
+    `  props: {`,
+    `    nodes: {`,
+    `      type: Array as PropType<AgNode[]>,`,
+    `      required: true,`,
+    `    },`,
+    `    actions: {`,
+    `      type: Object as PropType<Actions>,`,
+    `      default: () => ({}),`,
+    `    },`,
+    `  },`,
+    '',
+    `  setup(props) {`,
+    `    return () => {`,
+    `      const nodeMap = new Map(props.nodes.map(n => [n.id, n]));`,
+    `      const childIds = new Set(props.nodes.flatMap(n => n.children ?? []));`,
+    `      const rootNodes = props.nodes.filter(n => !childIds.has(n.id));`,
+    `      return rootNodes.map(node => renderNode(node, nodeMap, props.actions));`,
+    `    };`,
+    `  },`,
+    `});`,
+    '',
+  ].join('\n');
+}
+
+function generateLitCase(c: ComponentData): string {
+  const sdui = `Ag${c.name}`;
+  const tag = `ag-${toKebab(c.name)}`;
+  const directProps = c.props.filter(
+    p => !p.name.startsWith('on_') && p.name !== 'children'
+      && !(c.slotType === 'label-child' && p.name === 'label'),
+  );
+
+  const attrLines = directProps.map(p => {
+    const def = litDefault(p.tsType);
+    return `        .${p.name}=\${node.${p.name}${def}}`;
+  });
+  for (const a of c.actions) {
+    attrLines.push(`        @${a.litEvent}=\${() => doDispatch(node.${a.alias}, actions)}`);
+  }
+
+  const attrs = attrLines.length > 0 ? '\n' + attrLines.join('\n') + '\n      ' : '';
+
+  let innerContent: string;
+  if (c.slotType === 'label-child') {
+    innerContent = `\${node.children?.length ? renderChildren(node.children) : (node.label ?? '')}`;
+  } else if (c.slotType === 'children') {
+    innerContent = `\${renderChildren(node.children)}`;
+  } else {
+    innerContent = '';
+  }
+
+  return [
+    `    case '${sdui}':`,
+    `      return html\`<${tag}${attrs}>${innerContent}</${tag}>\`;`,
+  ].join('\n');
+}
+
+function generateLitRenderer(components: ComponentData[]): string {
+  const coreImports = components.map(c => {
+    const slug = toKebab(c.name);
+    return `import 'agnosticui-core/${slug}';`;
+  }).join('\n');
+
+  const cases = components.map(c => generateLitCase(c)).join('\n\n');
+
+  return [
+    FILE_HEADER,
+    `import { LitElement, html, nothing, type TemplateResult } from 'lit';`,
+    `import { property } from 'lit/decorators.js';`,
+    `import type { AgNode } from '@agnosticui/schema';`,
+    '',
+    `// Register AgnosticUI core custom elements`,
+    coreImports,
+    '',
+    `type Actions = Record<string, (payload?: unknown) => void>;`,
+    '',
+    `/**`,
+    ` * Create an action dispatcher bound to a given actions map.`,
+    ` *`,
+    ` * This is the XSS boundary: only aliases present in the map are called;`,
+    ` * unknown aliases are silently ignored. No eval(), no dynamic code execution.`,
+    ` */`,
+    `export function createDispatcher(actions: Actions) {`,
+    `  return (alias?: string): void => {`,
+    `    if (alias) actions[alias]?.();`,
+    `  };`,
+    `}`,
+    '',
+    `function doDispatch(alias: string | undefined, actions: Actions): void {`,
+    `  if (alias) actions[alias]?.();`,
+    `}`,
+    '',
+    `function renderNode(`,
+    `  node: AgNode,`,
+    `  nodeMap: Map<string, AgNode>,`,
+    `  actions: Actions,`,
+    `): TemplateResult | typeof nothing {`,
+    `  const renderChildren = (childIds?: string[]) =>`,
+    `    (childIds ?? []).map(id => {`,
+    `      const child = nodeMap.get(id);`,
+    `      return child ? renderNode(child, nodeMap, actions) : nothing;`,
+    `    });`,
+    '',
+    `  switch (node.component) {`,
+    cases,
+    '',
+    `    default:`,
+    `      return nothing;`,
+    `  }`,
+    `}`,
+    '',
+    `/**`,
+    ` * AgDynamicRenderer (Lit)`,
+    ` *`,
+    ` * A custom element that consumes a flat array of AgNode objects and renders`,
+    ` * them using the AgnosticUI core web components directly. Renders into light`,
+    ` * DOM so it works transparently inside any framework.`,
+    ` *`,
+    ` * Nodes not referenced as children by any other node are treated as roots.`,
+    ` * Actions are routed through a whitelist map — unknown aliases are silently`,
+    ` * ignored, providing an XSS boundary.`,
+    ` *`,
+    ` * @example`,
+    ` * <ag-dynamic-renderer></ag-dynamic-renderer>`,
+    ` *`,
+    ` * el.nodes = [{ id: 'btn-1', component: 'AgButton', label: 'Click', on_click: 'SUBMIT' }];`,
+    ` * el.actions = { SUBMIT: () => console.log('submitted') };`,
+    ` */`,
+    `export class AgDynamicRenderer extends LitElement {`,
+    `  // Render into light DOM so child elements are accessible to parent frameworks`,
+    `  override createRenderRoot() {`,
+    `    return this;`,
+    `  }`,
+    '',
+    `  @property({ type: Array }) nodes: AgNode[] = [];`,
+    `  @property({ type: Object }) actions: Actions = {};`,
+    '',
+    `  override render() {`,
+    `    const nodeMap = new Map(this.nodes.map(n => [n.id, n]));`,
+    `    const childIds = new Set(this.nodes.flatMap(n => n.children ?? []));`,
+    `    const rootNodes = this.nodes.filter(n => !childIds.has(n.id));`,
+    `    return html\`\${rootNodes.map(node => renderNode(node, nodeMap, this.actions))}\`;`,
+    `  }`,
+    `}`,
+    '',
+    `if (!customElements.get('ag-dynamic-renderer')) {`,
+    `  customElements.define('ag-dynamic-renderer', AgDynamicRenderer);`,
+    `}`,
+    '',
+    `declare global {`,
+    `  interface HTMLElementTagNameMap {`,
+    `    'ag-dynamic-renderer': AgDynamicRenderer;`,
+    `  }`,
+    `}`,
+    '',
+  ].join('\n');
+}
+
 // ─── Stale omit validation ─────────────────────────────────────────────────────
 
 function validateOmitConfig(
@@ -302,7 +753,7 @@ async function main() {
   if (omitErrors > 0) process.exit(1);
 
   // Discover and process components
-  const components: Array<{ name: string; props: PropInfo[] }> = [];
+  const components: ComponentData[] = [];
 
   for (const sf of sourceFiles) {
     const parts = sf.getFilePath().split('/');
@@ -322,20 +773,40 @@ async function main() {
     if (components.some(c => c.name === componentName)) continue;
 
     console.log(`Processing ${componentName}...`);
-    const props = getPropsForComponent(componentName, iface);
-    components.push({ name: componentName, props });
+    const { props, actions } = getComponentInfo(componentName, iface);
+    const sdui = `Ag${componentName}`;
+    const slotType: RendererSlot = rendererSlotConfig[sdui] ?? 'none';
+    components.push({ name: componentName, props, actions, slotType });
   }
 
   // Alphabetical order for deterministic output
   components.sort((a, b) => a.name.localeCompare(b.name));
 
-  // Write generated files
+  // Write schema files
   writeFileSync(resolve(SCHEMA_ROOT, 'src/types.ts'), generateTypesTs(components));
   writeFileSync(resolve(SCHEMA_ROOT, 'src/schema.ts'), generateSchemaTs(components));
   writeFileSync(resolve(SCHEMA_ROOT, 'src/index.ts'), generateIndexTs(components.map(c => c.name)));
 
+  // Write renderer files
+  const RENDERERS_ROOT = resolve(ROOT, 'v2/renderers');
+  writeFileSync(
+    resolve(RENDERERS_ROOT, 'react/src/AgDynamicRenderer.tsx'),
+    generateReactRenderer(components),
+  );
+  writeFileSync(
+    resolve(RENDERERS_ROOT, 'vue/src/AgDynamicRenderer.ts'),
+    generateVueRenderer(components),
+  );
+  writeFileSync(
+    resolve(RENDERERS_ROOT, 'lit/src/AgDynamicRenderer.ts'),
+    generateLitRenderer(components),
+  );
+
   console.log(`\nGenerated ${components.length} component schemas.`);
   console.log('src/types.ts, src/schema.ts, src/index.ts updated.');
+  console.log('v2/renderers/react/src/AgDynamicRenderer.tsx updated.');
+  console.log('v2/renderers/vue/src/AgDynamicRenderer.ts updated.');
+  console.log('v2/renderers/lit/src/AgDynamicRenderer.ts updated.');
 }
 
 main().catch(err => { console.error(err); process.exit(1); });

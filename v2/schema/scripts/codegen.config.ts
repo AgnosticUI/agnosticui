@@ -59,6 +59,37 @@ export const actionAliasMap: Record<string, string> = {
 };
 
 /**
+ * rendererSlotConfig: controls how each component renders its content in the
+ * three framework renderers.
+ *
+ *  'label-child' — renders node.label as text content (with node.children override)
+ *  'children'    — renders child nodes recursively into the default slot
+ *  'none'        — self-contained; no slot content emitted (default)
+ *
+ * Components not listed here default to 'none'.
+ */
+export type RendererSlot = 'label-child' | 'children' | 'none';
+
+export const rendererSlotConfig: Record<string, RendererSlot> = {
+  // label is the button/link text — rendered as slot content, not a prop
+  AgButton:        'label-child',
+  AgButtonFx:      'label-child',
+
+  // container components that wrap child nodes
+  AgAccordion:     'children',
+  AgAlert:         'children',
+  AgCard:          'children',
+  AgFieldset:      'children',
+  AgHeader:        'children',
+  AgKbd:           'children',
+  AgLink:          'children',
+  AgMark:          'children',
+  AgMessageBubble: 'children',
+  AgProgress:      'children',
+  AgTag:           'children',
+};
+
+/**
  * typeOverrides: explicit TS type + Zod expression for specific component props.
  * Use when the auto-detected type from the source interface is not what the SDUI
  * schema should expose (e.g. 'textarea' is a valid InputType in core but should
@@ -73,6 +104,18 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
     },
   },
 };
+
+/**
+ * vueDefaultImportComponents: component names whose agnosticui-core Vue export
+ * resolves to the compiled component file directly (not an index.js re-export),
+ * so they must be imported as a default rather than a named export.
+ *
+ * Example: agnosticui-core/button/vue points to VueButton.js (default only).
+ * All other components use index.js which re-exports a named { VueName }.
+ */
+export const vueDefaultImportComponents: string[] = [
+  'Button', // package.json maps ./button/vue → VueButton.js (default only, no named VueButton)
+];
 
 /**
  * skipComponents: component directory names to exclude from all generated output.
