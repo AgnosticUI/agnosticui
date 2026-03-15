@@ -500,7 +500,7 @@ function renderNode(
         .label=${node.label ?? ''}
         .checked=${node.checked ?? false}
         .disabled=${node.disabled ?? false}
-      ></ag-selection-button>`;
+      >${renderChildren(node.children)}</ag-selection-button>`;
 
     case 'AgSelectionButtonGroup':
       return html`<ag-selection-button-group
@@ -515,7 +515,7 @@ function renderNode(
         .values=${node.values ?? ''}
         .disabled=${node.disabled ?? false}
         .required=${node.required ?? false}
-      ></ag-selection-button-group>`;
+      >${renderChildren(node.children)}</ag-selection-button-group>`;
 
     case 'AgSelectionCard':
       return html`<ag-selection-card
@@ -523,7 +523,7 @@ function renderNode(
         .label=${node.label ?? ''}
         .checked=${node.checked ?? false}
         .disabled=${node.disabled ?? false}
-      ></ag-selection-card>`;
+      >${renderChildren(node.children)}</ag-selection-card>`;
 
     case 'AgSelectionCardGroup':
       return html`<ag-selection-card-group
@@ -536,7 +536,7 @@ function renderNode(
         .values=${node.values ?? ''}
         .disabled=${node.disabled ?? false}
         .required=${node.required ?? false}
-      ></ag-selection-card-group>`;
+      >${renderChildren(node.children)}</ag-selection-card-group>`;
 
     case 'AgSpinner':
       return html`<ag-spinner
@@ -550,7 +550,7 @@ function renderNode(
         .activeTab=${node.activeTab ?? 0}
         .orientation=${node.orientation ?? ''}
         .ariaLabel=${node.ariaLabel ?? ''}
-      ></ag-tabs>`;
+      >${renderChildren(node.children)}</ag-tabs>`;
 
     case 'AgTag':
       return html`<ag-tag
@@ -593,6 +593,19 @@ function renderNode(
         @show=${() => doDispatch(node.on_show, actions)}
         @hide=${() => doDispatch(node.on_hide, actions)}
       ></ag-tooltip>`;
+
+    case 'AgText': {
+      const _text = node.text ?? '';
+      switch (node.el ?? 'span') {
+        case 'p': return html`<p>${_text}</p>`;
+        case 'h1': return html`<h1>${_text}</h1>`;
+        case 'h2': return html`<h2>${_text}</h2>`;
+        case 'h3': return html`<h3>${_text}</h3>`;
+        case 'h4': return html`<h4>${_text}</h4>`;
+        case 'label': return html`<label>${_text}</label>`;
+        default: return html`<span>${_text}</span>`;
+      }
+    }
 
     default:
       return nothing;

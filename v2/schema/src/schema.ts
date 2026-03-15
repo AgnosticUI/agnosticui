@@ -601,6 +601,14 @@ export const AgTooltipSchema = z.object({
   children: z.array(z.string()).optional(),
 });
 
+export const AgTextSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgText'),
+  text: z.string(),
+  el: z.enum(['p', 'span', 'h1', 'h2', 'h3', 'h4', 'label']).optional(),
+  children: z.array(z.string()).optional(),
+});
+
 export const AgNodeSchema = z.discriminatedUnion('component', [
   AgAccordionSchema,
   AgAlertSchema,
@@ -642,4 +650,5 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgTagSchema,
   AgToggleSchema,
   AgTooltipSchema,
+  AgTextSchema,
 ]);

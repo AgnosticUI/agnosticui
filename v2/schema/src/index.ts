@@ -44,6 +44,7 @@ export type {
   AgTagNode,
   AgToggleNode,
   AgTooltipNode,
+  AgTextNode,
   AgComponentName,
 } from './types.js';
 
@@ -89,6 +90,7 @@ export {
   AgTagSchema,
   AgToggleSchema,
   AgTooltipSchema,
+  AgTextSchema,
 } from './schema.js';
 
 export { validate } from './validate.js';

@@ -6,7 +6,7 @@ import { Project, type Type, type InterfaceDeclaration, type Symbol as MorphSymb
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { writeFileSync } from 'fs';
-import { omitConfig, actionAliasMap, typeOverrides, skipComponents, rendererSlotConfig, vueDefaultImportComponents, reactPropRenames, type RendererSlot } from './codegen.config.js';
+import { omitConfig, actionAliasMap, typeOverrides, skipComponents, rendererSlotConfig, vueDefaultImportComponents, reactPropRenames, rendererPrimitives, type RendererSlot, type RendererPrimitive } from './codegen.config.js';
 
 // scripts/ -> schema/ -> v2/ -> agnosticui/
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -215,40 +215,60 @@ function generateZodSchema(componentName: string, props: PropInfo[]): string {
   return lines.join('\n');
 }
 
-export function generateTypesTs(components: Array<{ name: string; props: PropInfo[] }>): string {
+export function generateTypesTs(
+  components: Array<{ name: string; props: PropInfo[] }>,
+  primitives: RendererPrimitive[] = rendererPrimitives,
+): string {
   const interfaces = components.map(c => generateNodeInterface(c.name, c.props)).join('\n\n');
-  const union = components.map(c => `  | Ag${c.name}Node`).join('\n');
-  return [
-    FILE_HEADER,
-    interfaces,
-    '',
-    `export type AgNode =`,
-    `${union};`,
-    '',
-    `export type AgComponentName = AgNode['component'];`,
-    '',
+  const allMembers = [
+    ...components.map(c => `  | Ag${c.name}Node`),
+    ...primitives.map(p => `  | Ag${p.name}Node`),
   ].join('\n');
+  const parts: string[] = [FILE_HEADER, interfaces];
+  if (primitives.length > 0) {
+    parts.push(primitives.map(p => p.typesBlock).join('\n\n'));
+  }
+  parts.push('');
+  parts.push(`export type AgNode =`);
+  parts.push(`${allMembers};`);
+  parts.push('');
+  parts.push(`export type AgComponentName = AgNode['component'];`);
+  parts.push('');
+  return parts.join('\n');
 }
 
-export function generateSchemaTs(components: Array<{ name: string; props: PropInfo[] }>): string {
+export function generateSchemaTs(
+  components: Array<{ name: string; props: PropInfo[] }>,
+  primitives: RendererPrimitive[] = rendererPrimitives,
+): string {
   const schemas = components.map(c => generateZodSchema(c.name, c.props)).join('\n\n');
-  const union = components.map(c => `  Ag${c.name}Schema`).join(',\n');
-  return [
-    FILE_HEADER,
-    `import { z } from 'zod';`,
-    '',
-    schemas,
-    '',
-    `export const AgNodeSchema = z.discriminatedUnion('component', [`,
-    `${union},`,
-    `]);`,
-    '',
-  ].join('\n');
+  const allUnionMembers = [
+    ...components.map(c => `  Ag${c.name}Schema`),
+    ...primitives.map(p => `  Ag${p.name}Schema`),
+  ].join(',\n');
+  const parts: string[] = [FILE_HEADER, `import { z } from 'zod';`, '', schemas];
+  if (primitives.length > 0) {
+    parts.push('');
+    parts.push(primitives.map(p => p.schemaBlock).join('\n\n'));
+  }
+  parts.push('');
+  parts.push(`export const AgNodeSchema = z.discriminatedUnion('component', [`);
+  parts.push(`${allUnionMembers},`);
+  parts.push(`]);`);
+  parts.push('');
+  return parts.join('\n');
 }
 
-export function generateIndexTs(componentNames: string[]): string {
-  const nodeTypes = componentNames.map(n => `  Ag${n}Node`).join(',\n');
-  const schemas = componentNames.map(n => `  Ag${n}Schema`).join(',\n');
+export function generateIndexTs(
+  componentNames: string[],
+  primitives: RendererPrimitive[] = rendererPrimitives,
+): string {
+  const compNodeTypes = componentNames.map(n => `  Ag${n}Node`).join(',\n');
+  const primNodeTypes = primitives.map(p => `  Ag${p.name}Node`).join(',\n');
+  const nodeTypes = primNodeTypes ? compNodeTypes + ',\n' + primNodeTypes : compNodeTypes;
+  const compSchemas = componentNames.map(n => `  Ag${n}Schema`).join(',\n');
+  const primSchemas = primitives.map(p => `  Ag${p.name}Schema`).join(',\n');
+  const schemas = primSchemas ? compSchemas + ',\n' + primSchemas : compSchemas;
   return [
     FILE_HEADER,
     `export type {`,
@@ -330,13 +350,19 @@ function generateReactCase(c: ComponentData): string {
   return lines.join('\n');
 }
 
-export function generateReactRenderer(components: ComponentData[]): string {
+export function generateReactRenderer(
+  components: ComponentData[],
+  primitives: RendererPrimitive[] = rendererPrimitives,
+): string {
   const imports = components.map(c => {
     const slug = toKebab(c.name);
     return `import { React${c.name} } from 'agnosticui-core/${slug}/react';`;
   }).join('\n');
 
-  const cases = components.map(c => generateReactCase(c)).join('\n\n');
+  const compCases = components.map(c => generateReactCase(c)).join('\n\n');
+  const cases = primitives.length > 0
+    ? compCases + '\n\n' + primitives.map(p => p.reactCase).join('\n\n')
+    : compCases;
 
   return [
     FILE_HEADER,
@@ -465,7 +491,10 @@ function generateVueCase(c: ComponentData): string {
   return lines.join('\n');
 }
 
-export function generateVueRenderer(components: ComponentData[]): string {
+export function generateVueRenderer(
+  components: ComponentData[],
+  primitives: RendererPrimitive[] = rendererPrimitives,
+): string {
   const defaultSet = new Set(vueDefaultImportComponents);
   const imports = components.map(c => {
     const slug = toKebab(c.name);
@@ -476,7 +505,10 @@ export function generateVueRenderer(components: ComponentData[]): string {
     return `import { Vue${c.name} } from 'agnosticui-core/${slug}/vue';`;
   }).join('\n');
 
-  const cases = components.map(c => generateVueCase(c)).join('\n\n');
+  const compCases = components.map(c => generateVueCase(c)).join('\n\n');
+  const cases = primitives.length > 0
+    ? compCases + '\n\n' + primitives.map(p => p.vueCase).join('\n\n')
+    : compCases;
 
   return [
     FILE_HEADER,
@@ -591,13 +623,19 @@ function generateLitCase(c: ComponentData): string {
   ].join('\n');
 }
 
-export function generateLitRenderer(components: ComponentData[]): string {
+export function generateLitRenderer(
+  components: ComponentData[],
+  primitives: RendererPrimitive[] = rendererPrimitives,
+): string {
   const coreImports = components.map(c => {
     const slug = toKebab(c.name);
     return `import 'agnosticui-core/${slug}';`;
   }).join('\n');
 
-  const cases = components.map(c => generateLitCase(c)).join('\n\n');
+  const compCases = components.map(c => generateLitCase(c)).join('\n\n');
+  const cases = primitives.length > 0
+    ? compCases + '\n\n' + primitives.map(p => p.litCase).join('\n\n')
+    : compCases;
 
   return [
     FILE_HEADER,

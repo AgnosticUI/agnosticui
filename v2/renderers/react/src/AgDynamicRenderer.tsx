@@ -742,6 +742,11 @@ function renderNode(
           onHide={() => dispatch(node.on_hide, actions)} />
       );
 
+    case 'AgText': {
+      const Tag = node.el ?? 'span';
+      return <Tag key={node.id}>{node.text}</Tag>;
+    }
+
     default:
       return null;
   }

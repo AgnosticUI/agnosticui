@@ -91,17 +91,22 @@ export const rendererSlotConfig: Record<string, RendererSlot> = {
   AgPopover:       'children',
 
   // container components that wrap child nodes
-  AgAccordion:     'children',
-  AgAlert:         'children',
-  AgCard:          'children',
-  AgFieldset:      'children',
-  AgHeader:        'children',
-  AgKbd:           'children',
-  AgLink:          'children',
-  AgMark:          'children',
-  AgMessageBubble: 'children',
-  AgProgress:      'children',
-  AgTag:           'children',
+  AgAccordion:          'children',
+  AgAlert:              'children',
+  AgCard:               'children',
+  AgFieldset:           'children',
+  AgHeader:             'children',
+  AgKbd:                'children',
+  AgLink:               'children',
+  AgMark:               'children',
+  AgMessageBubble:      'children',
+  AgProgress:           'children',
+  AgSelectionButton:    'children',
+  AgSelectionButtonGroup: 'children',
+  AgSelectionCard:      'children',
+  AgSelectionCardGroup: 'children',
+  AgTag:                'children',
+  AgTabs:               'children',
 };
 
 /**
@@ -182,4 +187,72 @@ export const skipComponents: string[] = [
   'Slider',         // continuous value state requires two-way binding (deferred — see issue #375)
   'Toast',          // autoDismiss + open/close lifecycle (deferred — see issue #375)
   'VisuallyHidden', // no Props interface; pure slot wrapper
+];
+
+/**
+ * RendererPrimitive: a hand-maintained node type that is renderer-only.
+ * No _Xxx.ts source file exists in v2/lib/src/components/ for these.
+ * The codegen appends them verbatim after the discovered-component output.
+ */
+export interface RendererPrimitive {
+  /** Component name without 'Ag' prefix, e.g. 'Text' */
+  name: string;
+  /** Verbatim block to append to schema.ts (must export AgXxxSchema) */
+  schemaBlock: string;
+  /** Verbatim block to append to types.ts (must export interface AgXxxNode) */
+  typesBlock: string;
+  /** Verbatim React renderer switch case */
+  reactCase: string;
+  /** Verbatim Vue renderer switch case */
+  vueCase: string;
+  /** Verbatim Lit renderer switch case */
+  litCase: string;
+}
+
+/**
+ * rendererPrimitives: renderer-only node types that have no AgnosticUI core
+ * component counterpart. Add new primitives here to have them preserved across
+ * codegen runs.
+ */
+export const rendererPrimitives: RendererPrimitive[] = [
+  {
+    name: 'Text',
+    schemaBlock:
+`export const AgTextSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgText'),
+  text: z.string(),
+  el: z.enum(['p', 'span', 'h1', 'h2', 'h3', 'h4', 'label']).optional(),
+  children: z.array(z.string()).optional(),
+});`,
+    typesBlock:
+`export interface AgTextNode {
+  id: string;
+  component: 'AgText';
+  text: string;
+  el?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'label';
+  children?: string[];
+}`,
+    reactCase:
+`    case 'AgText': {
+      const Tag = node.el ?? 'span';
+      return <Tag key={node.id}>{node.text}</Tag>;
+    }`,
+    vueCase:
+`    case 'AgText':
+      return h(node.el ?? 'span', { key: node.id }, node.text ?? '');`,
+    litCase:
+`    case 'AgText': {
+      const _text = node.text ?? '';
+      switch (node.el ?? 'span') {
+        case 'p': return html\`<p>\${_text}</p>\`;
+        case 'h1': return html\`<h1>\${_text}</h1>\`;
+        case 'h2': return html\`<h2>\${_text}</h2>\`;
+        case 'h3': return html\`<h3>\${_text}</h3>\`;
+        case 'h4': return html\`<h4>\${_text}</h4>\`;
+        case 'label': return html\`<label>\${_text}</label>\`;
+        default: return html\`<span>\${_text}</span>\`;
+      }
+    }`,
+  },
 ];

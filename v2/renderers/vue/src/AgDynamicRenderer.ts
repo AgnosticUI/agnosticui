@@ -619,6 +619,7 @@ function renderNode(
         checked: node.checked,
         disabled: node.disabled,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgSelectionButtonGroup':
@@ -637,6 +638,7 @@ function renderNode(
         disabled: node.disabled,
         required: node.required,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgSelectionCard':
@@ -648,6 +650,7 @@ function renderNode(
         checked: node.checked,
         disabled: node.disabled,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgSelectionCardGroup':
@@ -664,6 +667,7 @@ function renderNode(
         disabled: node.disabled,
         required: node.required,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgSpinner':
@@ -684,6 +688,7 @@ function renderNode(
         orientation: node.orientation,
         ariaLabel: node.ariaLabel,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgTag':
@@ -737,6 +742,9 @@ function renderNode(
         onHide: () => doDispatch(node.on_hide, actions),
         },
       );
+
+    case 'AgText':
+      return h(node.el ?? 'span', { key: node.id }, node.text ?? '');
 
     default:
       return null;

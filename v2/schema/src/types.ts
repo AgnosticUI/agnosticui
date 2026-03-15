@@ -598,6 +598,13 @@ export interface AgTooltipNode {
   on_hide?: string;
   children?: string[];
 }
+export interface AgTextNode {
+  id: string;
+  component: 'AgText';
+  text: string;
+  el?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'label';
+  children?: string[];
+}
 
 export type AgNode =
   | AgAccordionNode
@@ -639,6 +646,7 @@ export type AgNode =
   | AgTabsNode
   | AgTagNode
   | AgToggleNode
-  | AgTooltipNode;
+  | AgTooltipNode
+  | AgTextNode;
 
 export type AgComponentName = AgNode['component'];
