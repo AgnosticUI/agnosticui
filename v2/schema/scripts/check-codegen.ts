@@ -97,16 +97,19 @@ async function main() {
   console.log('');
 
   if (failed.length > 0) {
+    // Map each failed label back to a repo-root-relative path for the git add instruction
+    const failedPaths = failed.map(label => {
+      const t = targets.find(x => x.label === label)!;
+      return t.committedPath.replace(ROOT + '/', '');
+    });
+
     console.error(
       `check-codegen: ${failed.length} file(s) are out of sync with codegen output:\n` +
       failed.map(f => `  - ${f}`).join('\n') +
       '\n\nThese files are AUTO-GENERATED. To fix, regenerate them and commit the result:\n\n' +
       '  cd v2/schema\n' +
       '  npm run codegen\n' +
-      '  git add ../renderers/react/src/AgDynamicRenderer.tsx \\\n' +
-      '          ../renderers/vue/src/AgDynamicRenderer.ts \\\n' +
-      '          ../renderers/lit/src/AgDynamicRenderer.ts \\\n' +
-      '          src/types.ts src/schema.ts src/index.ts\n' +
+      `  git add ${failedPaths.join(' \\\n        ')}\n` +
       '  git commit -m "regen: update generated files"\n' +
       '  git push\n'
     );
