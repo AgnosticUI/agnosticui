@@ -125,7 +125,7 @@ function renderNode(
           size={node.size}
           shape={node.shape}
           variant={node.variant}
-          ariaLabel={node.ariaLabel} />
+          aria-label={node.ariaLabel} />
       );
 
     case 'AgBadge':
@@ -168,7 +168,7 @@ function renderNode(
           key={node.id}
           type={node.type}
           primary={node.primary}
-          ariaLabel={node.ariaLabel}
+          aria-label={node.ariaLabel}
           onBreadcrumbClick={() => dispatch(node.on_click, actions)} />
       );
 
@@ -187,7 +187,7 @@ function renderNode(
           type={node.type}
           disabled={node.disabled}
           loading={node.loading}
-          ariaLabel={node.ariaLabel}
+          aria-label={node.ariaLabel}
           onClick={() => dispatch(node.on_click, actions)}
           onToggle={() => dispatch(node.on_toggle, actions)}
         >
@@ -210,7 +210,7 @@ function renderNode(
           type={node.type}
           disabled={node.disabled}
           loading={node.loading}
-          ariaLabel={node.ariaLabel}
+          aria-label={node.ariaLabel}
           fx={node.fx}
           fxSpeed={node.fxSpeed}
           fxEase={node.fxEase}
@@ -382,7 +382,7 @@ function renderNode(
           labelHidden={node.labelHidden}
           labelPosition={node.labelPosition}
           noLabel={node.noLabel}
-          ariaLabel={node.ariaLabel}
+          aria-label={node.ariaLabel}
           name={node.name}
           type={node.type}
           value={node.value}
@@ -461,7 +461,7 @@ function renderNode(
           buttonBordered={node.buttonBordered}
           external={node.external}
           disabled={node.disabled}
-          ariaLabel={node.ariaLabel}
+          aria-label={node.ariaLabel}
           onClick={() => dispatch(node.on_click, actions)}
         >
           {renderChildren(node.children)}
@@ -473,7 +473,7 @@ function renderNode(
         <ReactLoader
           key={node.id}
           size={node.size}
-          ariaLabel={node.ariaLabel} />
+          aria-label={node.ariaLabel} />
       );
 
     case 'AgMark':
@@ -663,7 +663,7 @@ function renderNode(
         <ReactSpinner
           key={node.id}
           size={node.size}
-          ariaLabel={node.ariaLabel} />
+          aria-label={node.ariaLabel} />
       );
 
     case 'AgTabs':
@@ -673,7 +673,7 @@ function renderNode(
           activation={node.activation}
           activeTab={node.activeTab}
           orientation={node.orientation}
-          ariaLabel={node.ariaLabel} />
+          aria-label={node.ariaLabel} />
       );
 
     case 'AgTag':
