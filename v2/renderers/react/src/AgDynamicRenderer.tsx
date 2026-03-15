@@ -613,7 +613,10 @@ function renderNode(
           value={node.value}
           label={node.label}
           checked={node.checked}
-          disabled={node.disabled} />
+          disabled={node.disabled}
+        >
+          {renderChildren(node.children)}
+        </ReactSelectionButton>
       );
 
     case 'AgSelectionButtonGroup':
@@ -630,7 +633,10 @@ function renderNode(
           value={node.value}
           values={node.values}
           disabled={node.disabled}
-          required={node.required} />
+          required={node.required}
+        >
+          {renderChildren(node.children)}
+        </ReactSelectionButtonGroup>
       );
 
     case 'AgSelectionCard':
@@ -640,7 +646,10 @@ function renderNode(
           value={node.value}
           label={node.label}
           checked={node.checked}
-          disabled={node.disabled} />
+          disabled={node.disabled}
+        >
+          {renderChildren(node.children)}
+        </ReactSelectionCard>
       );
 
     case 'AgSelectionCardGroup':
@@ -655,7 +664,10 @@ function renderNode(
           value={node.value}
           values={node.values}
           disabled={node.disabled}
-          required={node.required} />
+          required={node.required}
+        >
+          {renderChildren(node.children)}
+        </ReactSelectionCardGroup>
       );
 
     case 'AgSpinner':
@@ -673,7 +685,10 @@ function renderNode(
           activation={node.activation}
           activeTab={node.activeTab}
           orientation={node.orientation}
-          aria-label={node.ariaLabel} />
+          aria-label={node.ariaLabel}
+        >
+          {renderChildren(node.children)}
+        </ReactTabs>
       );
 
     case 'AgTag':
