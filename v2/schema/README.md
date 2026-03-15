@@ -155,7 +155,7 @@ AgInput: {
 
 ## M4 LLM test harness
 
-`m4-llm-test.ts` is a smoke test that sends the `render_ui` tool definition to Claude and validates every returned node against the schema. It confirms that Claude does not hallucinate props and produces structurally correct output.
+"M4" is shorthand for claude-sonnet-**4** (the Claude 4 model family used in this test). `m4-llm-test.ts` is a smoke test that sends the `render_ui` tool definition to Claude and validates every returned node against the schema. It confirms that Claude does not hallucinate props and produces structurally correct output.
 
 ```bash
 # Live run (requires an API key from console.anthropic.com)
