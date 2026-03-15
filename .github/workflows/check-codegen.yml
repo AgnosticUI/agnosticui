@@ -1,0 +1,36 @@
+name: Check codegen drift
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'v2/lib/src/components/**'
+      - 'v2/schema/**'
+      - 'v2/renderers/**'
+  pull_request:
+    paths:
+      - 'v2/lib/src/components/**'
+      - 'v2/schema/**'
+      - 'v2/renderers/**'
+
+jobs:
+  check-codegen:
+    name: Verify generated files are up to date
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: v2/schema/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: v2/schema
+
+      - name: Check codegen drift
+        run: npm run check-codegen
+        working-directory: v2/schema
