@@ -15,7 +15,9 @@ import { ReactButton } from 'agnosticui-core/button/react';
 import { ReactButtonFx } from 'agnosticui-core/button-fx/react';
 import { ReactCard } from 'agnosticui-core/card/react';
 import { ReactCheckbox } from 'agnosticui-core/checkbox/react';
+import { ReactDialog } from 'agnosticui-core/dialog/react';
 import { ReactDivider } from 'agnosticui-core/divider/react';
+import { ReactDrawer } from 'agnosticui-core/drawer/react';
 import { ReactFieldset } from 'agnosticui-core/fieldset/react';
 import { ReactHeader } from 'agnosticui-core/header/react';
 import { ReactIcon } from 'agnosticui-core/icon/react';
@@ -28,6 +30,7 @@ import { ReactLink } from 'agnosticui-core/link/react';
 import { ReactLoader } from 'agnosticui-core/loader/react';
 import { ReactMark } from 'agnosticui-core/mark/react';
 import { ReactMessageBubble } from 'agnosticui-core/message-bubble/react';
+import { ReactPopover } from 'agnosticui-core/popover/react';
 import { ReactProgress } from 'agnosticui-core/progress/react';
 import { ReactRadio } from 'agnosticui-core/radio/react';
 import { ReactRating } from 'agnosticui-core/rating/react';
@@ -254,6 +257,25 @@ function renderNode(
           onChange={() => dispatch(node.on_change, actions)} />
       );
 
+    case 'AgDialog':
+      return (
+        <ReactDialog
+          key={node.id}
+          open={node.open}
+          heading={node.heading}
+          description={node.description}
+          noCloseOnEscape={node.noCloseOnEscape}
+          noCloseOnBackdrop={node.noCloseOnBackdrop}
+          showCloseButton={node.showCloseButton}
+          drawerPosition={node.drawerPosition}
+          onDialogOpen={() => dispatch(node.on_open, actions)}
+          onDialogClose={() => dispatch(node.on_close, actions)}
+          onDialogCancel={() => dispatch(node.on_cancel, actions)}
+        >
+          {renderChildren(node.children)}
+        </ReactDialog>
+      );
+
     case 'AgDivider':
       return (
         <ReactDivider
@@ -262,6 +284,25 @@ function renderNode(
           justify={node.justify}
           size={node.size}
           variant={node.variant} />
+      );
+
+    case 'AgDrawer':
+      return (
+        <ReactDrawer
+          key={node.id}
+          open={node.open}
+          heading={node.heading}
+          description={node.description}
+          noCloseOnEscape={node.noCloseOnEscape}
+          noCloseOnBackdrop={node.noCloseOnBackdrop}
+          showCloseButton={node.showCloseButton}
+          position={node.position}
+          onDrawerOpen={() => dispatch(node.on_open, actions)}
+          onDrawerClose={() => dispatch(node.on_close, actions)}
+          onDrawerCancel={() => dispatch(node.on_cancel, actions)}
+        >
+          {renderChildren(node.children)}
+        </ReactDrawer>
       );
 
     case 'AgFieldset':
@@ -464,6 +505,28 @@ function renderNode(
         </ReactMessageBubble>
       );
 
+    case 'AgPopover':
+      return (
+        <ReactPopover
+          key={node.id}
+          placement={node.placement}
+          distance={node.distance}
+          skidding={node.skidding}
+          arrow={node.arrow}
+          disabled={node.disabled}
+          triggerType={node.triggerType}
+          matchTriggerWidth={node.matchTriggerWidth}
+          showCloseButton={node.showCloseButton}
+          showHeader={node.showHeader}
+          closeLabel={node.closeLabel}
+          trapFocus={node.trapFocus}
+          onShow={() => dispatch(node.on_show, actions)}
+          onHide={() => dispatch(node.on_hide, actions)}
+        >
+          {renderChildren(node.children)}
+        </ReactPopover>
+      );
+
     case 'AgProgress':
       return (
         <ReactProgress
@@ -659,7 +722,9 @@ function renderNode(
           distance={node.distance}
           skidding={node.skidding}
           trigger={node.trigger}
-          disabled={node.disabled} />
+          disabled={node.disabled}
+          onShow={() => dispatch(node.on_show, actions)}
+          onHide={() => dispatch(node.on_hide, actions)} />
       );
 
     default:

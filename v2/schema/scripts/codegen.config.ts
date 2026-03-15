@@ -44,7 +44,7 @@ export const omitConfig: Record<string, string[]> = {
  * When the codegen finds a function-typed prop whose name appears here, it
  * emits an optional string prop with the alias name instead of dropping it entirely.
  * Function props NOT in this map are silently dropped (low-level browser events
- * like onFocus, onBlur, onInput, onShow, onHide are not SDUI-actionable).
+ * like onFocus, onBlur, onInput are not SDUI-actionable).
  */
 export const actionAliasMap: Record<string, string> = {
   onClick:              'on_click',
@@ -56,6 +56,16 @@ export const actionAliasMap: Record<string, string> = {
   onAlertDismiss:       'on_dismiss',
   onBreadcrumbClick:    'on_click',
   onToggle:             'on_toggle',
+  // Dialog / Drawer open-close lifecycle
+  onDialogOpen:         'on_open',
+  onDialogClose:        'on_close',
+  onDialogCancel:       'on_cancel',
+  onDrawerOpen:         'on_open',
+  onDrawerClose:        'on_close',
+  onDrawerCancel:       'on_cancel',
+  // Popover show/hide
+  onShow:               'on_show',
+  onHide:               'on_hide',
 };
 
 /**
@@ -74,6 +84,11 @@ export const rendererSlotConfig: Record<string, RendererSlot> = {
   // label is the button/link text — rendered as slot content, not a prop
   AgButton:        'label-child',
   AgButtonFx:      'label-child',
+
+  // overlay/modal components — slot content authored as child nodes
+  AgDialog:        'children',
+  AgDrawer:        'children',
+  AgPopover:       'children',
 
   // container components that wrap child nodes
   AgAccordion:     'children',
@@ -103,6 +118,20 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
       zodExpr: "z.enum(['text', 'password', 'email', 'number', 'search', 'tel', 'url', 'date', 'datetime-local', 'month', 'time', 'week'])",
     },
   },
+  AgDialog: {
+    // EdgePosition is a local type alias; spell it out for a self-contained SDUI schema
+    drawerPosition: {
+      tsType: "'top' | 'bottom' | 'start' | 'end'",
+      zodExpr: "z.enum(['top', 'bottom', 'start', 'end'])",
+    },
+  },
+  AgPopover: {
+    // Placement is imported from @floating-ui/dom; ts-morph cannot resolve external types
+    placement: {
+      tsType: "'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'",
+      zodExpr: "z.enum(['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'])",
+    },
+  },
 };
 
 /**
@@ -123,17 +152,14 @@ export const vueDefaultImportComponents: string[] = [
  */
 export const skipComponents: string[] = [
   'Collapsible',    // requires open/close state
-  'Combobox',       // complex filtering + multi-select state
-  'Dialog',         // lifecycle-driven open/close
-  'Drawer',         // lifecycle-driven open/close
-  'Menu',           // complex open + selected-value state
-  'Pagination',     // stateful current-page tracking (see issue #375 for SDUI pattern)
-  'Popover',        // show/hide trigger management
+  'Combobox',       // complex filtering + multi-select state (deferred — see issue #375)
+  'Menu',           // complex open + selected-value state (deferred — see issue #375)
+  'Pagination',     // stateful current-page tracking (deferred — see issue #375)
   'ScrollProgress', // tracks live scroll position — purely behavioral
   'ScrollToButton', // scroll-detection behavioral component
-  'Sidebar',        // open + collapsed state management
+  'Sidebar',        // open + collapsed state management (deferred — see issue #375)
   'SidebarNav',     // no Props interface; pure slot composition
-  'Slider',         // continuous value state requires two-way binding
-  'Toast',          // autoDismiss + open/close lifecycle
+  'Slider',         // continuous value state requires two-way binding (deferred — see issue #375)
+  'Toast',          // autoDismiss + open/close lifecycle (deferred — see issue #375)
   'VisuallyHidden', // no Props interface; pure slot wrapper
 ];

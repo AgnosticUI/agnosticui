@@ -15,7 +15,9 @@ import VueButton from 'agnosticui-core/button/vue';
 import { VueButtonFx } from 'agnosticui-core/button-fx/vue';
 import { VueCard } from 'agnosticui-core/card/vue';
 import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
+import { VueDialog } from 'agnosticui-core/dialog/vue';
 import { VueDivider } from 'agnosticui-core/divider/vue';
+import { VueDrawer } from 'agnosticui-core/drawer/vue';
 import { VueFieldset } from 'agnosticui-core/fieldset/vue';
 import { VueHeader } from 'agnosticui-core/header/vue';
 import { VueIcon } from 'agnosticui-core/icon/vue';
@@ -28,6 +30,7 @@ import { VueLink } from 'agnosticui-core/link/vue';
 import { VueLoader } from 'agnosticui-core/loader/vue';
 import { VueMark } from 'agnosticui-core/mark/vue';
 import { VueMessageBubble } from 'agnosticui-core/message-bubble/vue';
+import { VuePopover } from 'agnosticui-core/popover/vue';
 import { VueProgress } from 'agnosticui-core/progress/vue';
 import { VueRadio } from 'agnosticui-core/radio/vue';
 import { VueRating } from 'agnosticui-core/rating/vue';
@@ -258,6 +261,24 @@ function renderNode(
         },
       );
 
+    case 'AgDialog':
+      return h(
+        VueDialog,
+        {
+        open: node.open,
+        heading: node.heading,
+        description: node.description,
+        noCloseOnEscape: node.noCloseOnEscape,
+        noCloseOnBackdrop: node.noCloseOnBackdrop,
+        showCloseButton: node.showCloseButton,
+        drawerPosition: node.drawerPosition,
+        onDialogOpen: () => doDispatch(node.on_open, actions),
+        onDialogClose: () => doDispatch(node.on_close, actions),
+        onDialogCancel: () => doDispatch(node.on_cancel, actions),
+        },
+        { default: () => renderChildren(node.children) },
+      );
+
     case 'AgDivider':
       return h(
         VueDivider,
@@ -267,6 +288,24 @@ function renderNode(
         size: node.size,
         variant: node.variant,
         },
+      );
+
+    case 'AgDrawer':
+      return h(
+        VueDrawer,
+        {
+        open: node.open,
+        heading: node.heading,
+        description: node.description,
+        noCloseOnEscape: node.noCloseOnEscape,
+        noCloseOnBackdrop: node.noCloseOnBackdrop,
+        showCloseButton: node.showCloseButton,
+        position: node.position,
+        onDrawerOpen: () => doDispatch(node.on_open, actions),
+        onDrawerClose: () => doDispatch(node.on_close, actions),
+        onDrawerCancel: () => doDispatch(node.on_cancel, actions),
+        },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgFieldset':
@@ -465,6 +504,27 @@ function renderNode(
         avatarUrl: node.avatarUrl,
         footer: node.footer,
         variant: node.variant,
+        },
+        { default: () => renderChildren(node.children) },
+      );
+
+    case 'AgPopover':
+      return h(
+        VuePopover,
+        {
+        placement: node.placement,
+        distance: node.distance,
+        skidding: node.skidding,
+        arrow: node.arrow,
+        disabled: node.disabled,
+        triggerType: node.triggerType,
+        matchTriggerWidth: node.matchTriggerWidth,
+        showCloseButton: node.showCloseButton,
+        showHeader: node.showHeader,
+        closeLabel: node.closeLabel,
+        trapFocus: node.trapFocus,
+        onShow: () => doDispatch(node.on_show, actions),
+        onHide: () => doDispatch(node.on_hide, actions),
         },
         { default: () => renderChildren(node.children) },
       );
@@ -673,6 +733,8 @@ function renderNode(
         skidding: node.skidding,
         trigger: node.trigger,
         disabled: node.disabled,
+        onShow: () => doDispatch(node.on_show, actions),
+        onHide: () => doDispatch(node.on_hide, actions),
         },
       );
 
