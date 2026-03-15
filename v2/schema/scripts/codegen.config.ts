@@ -126,7 +126,14 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
     },
   },
   AgPopover: {
-    // Placement is imported from @floating-ui/dom; ts-morph cannot resolve external types
+    // Placement is imported from @floating-ui/dom; ts-morph cannot resolve external types in CI
+    placement: {
+      tsType: "'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'",
+      zodExpr: "z.enum(['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'])",
+    },
+  },
+  AgTooltip: {
+    // Placement is imported from @floating-ui/dom; ts-morph cannot resolve external types in CI
     placement: {
       tsType: "'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'",
       zodExpr: "z.enum(['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'])",

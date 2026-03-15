@@ -591,7 +591,7 @@ export const AgTooltipSchema = z.object({
   id: z.string(),
   component: z.literal('AgTooltip'),
   content: z.string().optional(),
-  placement: z.enum(['top', 'bottom', 'right', 'left', 'top-end', 'top-start', 'bottom-end', 'bottom-start', 'right-end', 'right-start', 'left-end', 'left-start']).optional(),
+  placement: z.enum(['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end']).optional(),
   distance: z.number().optional(),
   skidding: z.number().optional(),
   trigger: z.string().optional(),

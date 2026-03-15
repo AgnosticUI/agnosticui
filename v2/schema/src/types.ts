@@ -589,7 +589,7 @@ export interface AgTooltipNode {
   id: string;
   component: 'AgTooltip';
   content?: string;
-  placement?: 'top' | 'bottom' | 'right' | 'left' | 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start' | 'right-end' | 'right-start' | 'left-end' | 'left-start';
+  placement?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
   distance?: number;
   skidding?: number;
   trigger?: string;
