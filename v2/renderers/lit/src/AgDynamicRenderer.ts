@@ -18,7 +18,9 @@ import 'agnosticui-core/button';
 import 'agnosticui-core/button-fx';
 import 'agnosticui-core/card';
 import 'agnosticui-core/checkbox';
+import 'agnosticui-core/dialog';
 import 'agnosticui-core/divider';
+import 'agnosticui-core/drawer';
 import 'agnosticui-core/fieldset';
 import 'agnosticui-core/header';
 import 'agnosticui-core/icon';
@@ -31,6 +33,7 @@ import 'agnosticui-core/link';
 import 'agnosticui-core/loader';
 import 'agnosticui-core/mark';
 import 'agnosticui-core/message-bubble';
+import 'agnosticui-core/popover';
 import 'agnosticui-core/progress';
 import 'agnosticui-core/radio';
 import 'agnosticui-core/rating';
@@ -212,6 +215,20 @@ function renderNode(
         @change=${() => doDispatch(node.on_change, actions)}
       ></ag-checkbox>`;
 
+    case 'AgDialog':
+      return html`<ag-dialog
+        .open=${node.open ?? false}
+        .heading=${node.heading ?? ''}
+        .description=${node.description ?? ''}
+        .noCloseOnEscape=${node.noCloseOnEscape ?? false}
+        .noCloseOnBackdrop=${node.noCloseOnBackdrop ?? false}
+        .showCloseButton=${node.showCloseButton ?? false}
+        .drawerPosition=${node.drawerPosition ?? ''}
+        @dialog-open=${() => doDispatch(node.on_open, actions)}
+        @dialog-close=${() => doDispatch(node.on_close, actions)}
+        @dialog-cancel=${() => doDispatch(node.on_cancel, actions)}
+      >${renderChildren(node.children)}</ag-dialog>`;
+
     case 'AgDivider':
       return html`<ag-divider
         .vertical=${node.vertical ?? false}
@@ -219,6 +236,20 @@ function renderNode(
         .size=${node.size ?? ''}
         .variant=${node.variant ?? ''}
       ></ag-divider>`;
+
+    case 'AgDrawer':
+      return html`<ag-drawer
+        .open=${node.open ?? false}
+        .heading=${node.heading ?? ''}
+        .description=${node.description ?? ''}
+        .noCloseOnEscape=${node.noCloseOnEscape ?? false}
+        .noCloseOnBackdrop=${node.noCloseOnBackdrop ?? false}
+        .showCloseButton=${node.showCloseButton ?? false}
+        .position=${node.position ?? ''}
+        @drawer-open=${() => doDispatch(node.on_open, actions)}
+        @drawer-close=${() => doDispatch(node.on_close, actions)}
+        @drawer-cancel=${() => doDispatch(node.on_cancel, actions)}
+      >${renderChildren(node.children)}</ag-drawer>`;
 
     case 'AgFieldset':
       return html`<ag-fieldset
@@ -377,6 +408,23 @@ function renderNode(
         .footer=${node.footer ?? ''}
         .variant=${node.variant ?? ''}
       >${renderChildren(node.children)}</ag-message-bubble>`;
+
+    case 'AgPopover':
+      return html`<ag-popover
+        .placement=${node.placement ?? ''}
+        .distance=${node.distance ?? 0}
+        .skidding=${node.skidding ?? 0}
+        .arrow=${node.arrow ?? false}
+        .disabled=${node.disabled ?? false}
+        .triggerType=${node.triggerType ?? ''}
+        .matchTriggerWidth=${node.matchTriggerWidth ?? false}
+        .showCloseButton=${node.showCloseButton ?? false}
+        .showHeader=${node.showHeader ?? false}
+        .closeLabel=${node.closeLabel ?? ''}
+        .trapFocus=${node.trapFocus ?? false}
+        @show=${() => doDispatch(node.on_show, actions)}
+        @hide=${() => doDispatch(node.on_hide, actions)}
+      >${renderChildren(node.children)}</ag-popover>`;
 
     case 'AgProgress':
       return html`<ag-progress
@@ -542,6 +590,8 @@ function renderNode(
         .skidding=${node.skidding ?? 0}
         .trigger=${node.trigger ?? ''}
         .disabled=${node.disabled ?? false}
+        @show=${() => doDispatch(node.on_show, actions)}
+        @hide=${() => doDispatch(node.on_hide, actions)}
       ></ag-tooltip>`;
 
     default:

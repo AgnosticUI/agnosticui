@@ -162,6 +162,22 @@ export interface AgCheckboxNode {
   children?: string[];
 }
 
+export interface AgDialogNode {
+  id: string;
+  component: 'AgDialog';
+  open?: boolean;
+  heading?: string;
+  description?: string;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
+  showCloseButton?: boolean;
+  drawerPosition?: 'top' | 'bottom' | 'start' | 'end';
+  on_open?: string;
+  on_close?: string;
+  on_cancel?: string;
+  children?: string[];
+}
+
 export interface AgDividerNode {
   id: string;
   component: 'AgDivider';
@@ -169,6 +185,22 @@ export interface AgDividerNode {
   justify?: 'end' | 'start' | 'center';
   size?: 'default' | 'small' | 'large' | 'xlarge';
   variant?: 'default' | 'success' | 'monochrome' | 'warning' | 'info' | 'error';
+  children?: string[];
+}
+
+export interface AgDrawerNode {
+  id: string;
+  component: 'AgDrawer';
+  open?: boolean;
+  heading?: string;
+  description?: string;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
+  showCloseButton?: boolean;
+  position?: 'top' | 'bottom' | 'end' | 'start';
+  on_open?: string;
+  on_close?: string;
+  on_cancel?: string;
   children?: string[];
 }
 
@@ -351,6 +383,25 @@ export interface AgMessageBubbleNode {
   avatarUrl?: string;
   footer?: string;
   variant?: 'default' | 'success' | 'monochrome' | 'warning' | 'info' | 'danger' | 'neutral';
+  children?: string[];
+}
+
+export interface AgPopoverNode {
+  id: string;
+  component: 'AgPopover';
+  placement?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
+  distance?: number;
+  skidding?: number;
+  arrow?: boolean;
+  disabled?: boolean;
+  triggerType?: 'click' | 'hover' | 'focus';
+  matchTriggerWidth?: boolean;
+  showCloseButton?: boolean;
+  showHeader?: boolean;
+  closeLabel?: string;
+  trapFocus?: boolean;
+  on_show?: string;
+  on_hide?: string;
   children?: string[];
 }
 
@@ -538,11 +589,13 @@ export interface AgTooltipNode {
   id: string;
   component: 'AgTooltip';
   content?: string;
-  placement?: 'top' | 'bottom' | 'right' | 'left' | 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start' | 'right-end' | 'right-start' | 'left-end' | 'left-start';
+  placement?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
   distance?: number;
   skidding?: number;
   trigger?: string;
   disabled?: boolean;
+  on_show?: string;
+  on_hide?: string;
   children?: string[];
 }
 
@@ -558,7 +611,9 @@ export type AgNode =
   | AgButtonFxNode
   | AgCardNode
   | AgCheckboxNode
+  | AgDialogNode
   | AgDividerNode
+  | AgDrawerNode
   | AgFieldsetNode
   | AgHeaderNode
   | AgIconNode
@@ -571,6 +626,7 @@ export type AgNode =
   | AgLoaderNode
   | AgMarkNode
   | AgMessageBubbleNode
+  | AgPopoverNode
   | AgProgressNode
   | AgRadioNode
   | AgRatingNode

@@ -164,6 +164,22 @@ export const AgCheckboxSchema = z.object({
   children: z.array(z.string()).optional(),
 });
 
+export const AgDialogSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgDialog'),
+  open: z.boolean().optional(),
+  heading: z.string().optional(),
+  description: z.string().optional(),
+  noCloseOnEscape: z.boolean().optional(),
+  noCloseOnBackdrop: z.boolean().optional(),
+  showCloseButton: z.boolean().optional(),
+  drawerPosition: z.enum(['top', 'bottom', 'start', 'end']).optional(),
+  on_open: z.string().optional(),
+  on_close: z.string().optional(),
+  on_cancel: z.string().optional(),
+  children: z.array(z.string()).optional(),
+});
+
 export const AgDividerSchema = z.object({
   id: z.string(),
   component: z.literal('AgDivider'),
@@ -171,6 +187,22 @@ export const AgDividerSchema = z.object({
   justify: z.enum(['end', 'start', 'center']).optional(),
   size: z.enum(['default', 'small', 'large', 'xlarge']).optional(),
   variant: z.enum(['default', 'success', 'monochrome', 'warning', 'info', 'error']).optional(),
+  children: z.array(z.string()).optional(),
+});
+
+export const AgDrawerSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgDrawer'),
+  open: z.boolean().optional(),
+  heading: z.string().optional(),
+  description: z.string().optional(),
+  noCloseOnEscape: z.boolean().optional(),
+  noCloseOnBackdrop: z.boolean().optional(),
+  showCloseButton: z.boolean().optional(),
+  position: z.enum(['top', 'bottom', 'end', 'start']).optional(),
+  on_open: z.string().optional(),
+  on_close: z.string().optional(),
+  on_cancel: z.string().optional(),
   children: z.array(z.string()).optional(),
 });
 
@@ -353,6 +385,25 @@ export const AgMessageBubbleSchema = z.object({
   avatarUrl: z.string().optional(),
   footer: z.string().optional(),
   variant: z.enum(['default', 'success', 'monochrome', 'warning', 'info', 'danger', 'neutral']).optional(),
+  children: z.array(z.string()).optional(),
+});
+
+export const AgPopoverSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgPopover'),
+  placement: z.enum(['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end']).optional(),
+  distance: z.number().optional(),
+  skidding: z.number().optional(),
+  arrow: z.boolean().optional(),
+  disabled: z.boolean().optional(),
+  triggerType: z.enum(['click', 'hover', 'focus']).optional(),
+  matchTriggerWidth: z.boolean().optional(),
+  showCloseButton: z.boolean().optional(),
+  showHeader: z.boolean().optional(),
+  closeLabel: z.string().optional(),
+  trapFocus: z.boolean().optional(),
+  on_show: z.string().optional(),
+  on_hide: z.string().optional(),
   children: z.array(z.string()).optional(),
 });
 
@@ -540,11 +591,13 @@ export const AgTooltipSchema = z.object({
   id: z.string(),
   component: z.literal('AgTooltip'),
   content: z.string().optional(),
-  placement: z.enum(['top', 'bottom', 'right', 'left', 'top-end', 'top-start', 'bottom-end', 'bottom-start', 'right-end', 'right-start', 'left-end', 'left-start']).optional(),
+  placement: z.enum(['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end']).optional(),
   distance: z.number().optional(),
   skidding: z.number().optional(),
   trigger: z.string().optional(),
   disabled: z.boolean().optional(),
+  on_show: z.string().optional(),
+  on_hide: z.string().optional(),
   children: z.array(z.string()).optional(),
 });
 
@@ -560,7 +613,9 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgButtonFxSchema,
   AgCardSchema,
   AgCheckboxSchema,
+  AgDialogSchema,
   AgDividerSchema,
+  AgDrawerSchema,
   AgFieldsetSchema,
   AgHeaderSchema,
   AgIconSchema,
@@ -573,6 +628,7 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgLoaderSchema,
   AgMarkSchema,
   AgMessageBubbleSchema,
+  AgPopoverSchema,
   AgProgressSchema,
   AgRadioSchema,
   AgRatingSchema,
