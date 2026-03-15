@@ -142,6 +142,19 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
 };
 
 /**
+ * reactPropRenames: JSX attribute name overrides for the React renderer.
+ * Used when a Lit element property name conflicts with a standard HTML attribute
+ * that @lit/react exposes under a different name in its TypeScript types.
+ *
+ * Example: Lit stores 'ariaLabel' as a property but @lit/react expects the
+ * standard HTML 'aria-label' attribute. The SDUI schema keeps 'ariaLabel' so
+ * LLMs can set it; the React renderer emits 'aria-label' so tsc passes.
+ */
+export const reactPropRenames: Record<string, string> = {
+  ariaLabel: 'aria-label',
+};
+
+/**
  * vueDefaultImportComponents: component names whose agnosticui-core Vue export
  * resolves to the compiled component file directly (not an index.js re-export),
  * so they must be imported as a default rather than a named export.

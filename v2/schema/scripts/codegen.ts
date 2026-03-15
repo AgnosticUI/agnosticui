@@ -6,7 +6,7 @@ import { Project, type Type, type InterfaceDeclaration, type Symbol as MorphSymb
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { writeFileSync } from 'fs';
-import { omitConfig, actionAliasMap, typeOverrides, skipComponents, rendererSlotConfig, vueDefaultImportComponents, type RendererSlot } from './codegen.config.js';
+import { omitConfig, actionAliasMap, typeOverrides, skipComponents, rendererSlotConfig, vueDefaultImportComponents, reactPropRenames, type RendererSlot } from './codegen.config.js';
 
 // scripts/ -> schema/ -> v2/ -> agnosticui/
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -299,7 +299,8 @@ function generateReactCase(c: ComponentData): string {
   propLines.push(`        <${wrapper}`);
   propLines.push(`          key={node.id}`);
   for (const p of directProps) {
-    propLines.push(`          ${p.name}={node.${quoteName(p.name)}}`);
+    const jsxAttr = reactPropRenames[p.name] ?? p.name;
+    propLines.push(`          ${jsxAttr}={node.${quoteName(p.name)}}`);
   }
   for (const a of c.actions) {
     propLines.push(`          ${a.sourceName}={() => dispatch(node.${quoteName(a.alias)}, actions)}`);
