@@ -13,8 +13,15 @@ AgnosticUI can be installed in two ways: using the **AgnosticUI CLI** (recommend
 The AgnosticUI CLI provides a "local-first" approach where components are copied directly into your project. This gives you full ownership and control over the component code, making it easy to customize and extend components without worrying about breaking changes from upstream updates.
 
 ::: warning TypeScript Required
-The CLI copies TypeScript (`.ts`) files containing decorators and type annotations. Your project **must** have a build tool that can compile TypeScript (e.g., Vite, webpack with ts-loader, or tsc). If your project uses plain JavaScript without TypeScript support, use the [NPM Package approach](#npm-package-alternative) instead.
+The CLI copies TypeScript (`.ts`) files containing decorators and type annotations. Your project **must** have a build tool that can compile TypeScript (e.g., [Vite](https://vite.dev/guide/), [esbuild](https://esbuild.github.io/), or [rollup](https://rollupjs.org/)). If you're using a framework CLI (Next.js, SvelteKit, Astro, Nuxt, etc.),
+TypeScript support is already included. If your project uses plain JavaScript without TypeScript support, use the [NPM Package approach](#npm-package-alternative) instead.
 :::
+
+Starting from scratch? The quickest path is Vite:
+
+```shell
+npm create vite@latest my-app && cd my-app && npm i
+```
 
 ### Quick Start
 
@@ -25,12 +32,9 @@ Initialize AgnosticUI in your project root:
 npx agnosticui-cli init
 ```
 
-The interactive CLI will guide you through:
-
-1. Selecting your framework (React, Vue, Lit, Svelte)
-2. Choosing where to generate components
-3. Installing required dependencies (`lit`, `@floating-ui/dom`, etc.)
-4. Configuring TypeScript (if detected)
+The interactive CLI will prompt you to select your framework, choose where
+to generate components, and install required dependencies. TypeScript
+configuration is handled automatically if detected.
 
 ::: tip CLI Command Variants
 We recommend using `npx agnosticui-cli` since it works without requiring a global install. However, if you prefer the shorter `npx ag` variant, first install the CLI globally:
@@ -57,7 +61,7 @@ bun add -g agnosticui-cli@alpha
 
 After global installation, all `npx agnosticui-cli` commands can be replaced with `npx ag` (e.g., `npx ag init`, `npx ag add button`).
 
-**Note:** If you have "The Silver Searcher" tool installed (which also uses the `ag` command), you may experience conflicts. In that case, stick with the full `npx agnosticui-cli` variant.
+**Note:** If you have The Silver Searcher installed, its `ag` command will conflict. Stick with `npx agnosticui-cli` instead.
 :::
 
 #### After Initialization
@@ -96,7 +100,9 @@ Follow the "Next Steps" printed by the CLI:
    body {
      background: var(--ag-background-primary);
      color: var(--ag-text-primary);
-     transition: background 0.2s ease, color 0.2s ease;
+     transition:
+       background 0.2s ease,
+       color 0.2s ease;
    }
    ```
 
@@ -774,16 +780,16 @@ If using Preact, Solid, or other frameworks that rely on Babel for JSX transform
 **1. Update `vite.config.ts`:**
 
 ```typescript
-import { defineConfig } from 'vite'
-import preact from '@preact/preset-vite' // or your framework plugin
+import { defineConfig } from "vite";
+import preact from "@preact/preset-vite"; // or your framework plugin
 
 export default defineConfig({
   plugins: [
     preact({
       exclude: [/\/components\/ag\//], // Let esbuild handle AgnosticUI files
-    })
+    }),
   ],
-})
+});
 ```
 
 **2. Create `src/components/ag/ag-elements.d.ts`:**
@@ -791,7 +797,7 @@ export default defineConfig({
 ```typescript
 declare namespace preact.JSX {
   interface IntrinsicElements {
-    'ag-button': {
+    "ag-button": {
       variant?: string;
       size?: string;
       onClick?: () => void;
@@ -808,16 +814,16 @@ Each component exports a `Props` interface you can reference. For example, see `
 
 ## Comparison: CLI vs NPM
 
-| Feature                | CLI (Recommended)                    | NPM Package                        |
-| ---------------------- | ------------------------------------ | ---------------------------------- |
-| **Setup**              | `npx agnosticui-cli init`            | `npm install agnosticui-core`      |
-| **Component Location** | Local in your project                | node_modules                       |
-| **Customization**      | Full control - edit freely           | Limited - must extend/wrap         |
-| **Updates**            | Manual - copy new versions           | Automatic - npm update             |
-| **Bundle Size**        | Only components you use              | Tree-shakeable                     |
-| **TypeScript**         | Required (copies .ts files)          | Full type definitions              |
-| **Build Tool**         | Must support TS compilation          | Any modern bundler                 |
-| **Best For**           | TS projects needing customization    | Quick prototyping, JS projects     |
+| Feature                | CLI (Recommended)                 | NPM Package                    |
+| ---------------------- | --------------------------------- | ------------------------------ |
+| **Setup**              | `npx agnosticui-cli init`         | `npm install agnosticui-core`  |
+| **Component Location** | Local in your project             | node_modules                   |
+| **Customization**      | Full control - edit freely        | Limited - must extend/wrap     |
+| **Updates**            | Manual - copy new versions        | Automatic - npm update         |
+| **Bundle Size**        | Only components you use           | Tree-shakeable                 |
+| **TypeScript**         | Required (copies .ts files)       | Full type definitions          |
+| **Build Tool**         | Must support TS compilation       | Any modern bundler             |
+| **Best For**           | TS projects needing customization | Quick prototyping, JS projects |
 
 ## Framework Support
 
