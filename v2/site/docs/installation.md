@@ -93,7 +93,7 @@ You can view the full list of theme tokens available in <a href="https://github.
 2. **Set Up Theming**
 
    ::: tip Override Default Styles
-   Many build tools (Vite, Create React App, etc.) include default background colors. You may need to override these to use AgnosticUI's theme system. See the [Theming Guide](./theming.md) for framework-specific details.
+   Many build tools (Vite, Next.js, etc.) include opinionated resets and default background colors that conflict with AgnosticUI's token system. You may want to empty or remove those default stylesheets before proceeding. See the [Theming Guide](./theming.md) for framework-specific details.
    :::
 
    AgnosticUI uses a `data-theme` attribute on the `<html>` element to control theming. Add this to your main CSS file or in a `<style>` tag:
