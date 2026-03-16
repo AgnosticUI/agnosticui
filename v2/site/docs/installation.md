@@ -70,23 +70,25 @@ Follow the "Next Steps" printed by the CLI:
 
 1. **Import CSS Tokens**
 
-   Add the following to your main entry file (e.g., `main.ts`, `main.jsx`):
+Add the following to your main entry file (e.g., `main.ts`, `main.tsx`):
 
-   ```js
-   import "./src/components/ag/styles/ag-tokens.css";
-   import "./src/components/ag/styles/ag-tokens-dark.css";
-   ```
+```ts
+import "./components/ag/styles/ag-tokens.css";
+import "./components/ag/styles/ag-tokens-dark.css";
+```
 
-   **Alternative: Use HTML Link Tags**
+> **Note:** The exact path depends on where your entry file lives. If imports fail, check the path relative to your `main.ts` or `main.jsx`.
 
-   You can also load the styles directly in your `index.html`:
+**Alternative: Use HTML Link Tags**
 
-   ```html
-   <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css" />
-   <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
-   ```
+You can also load the styles directly in your `index.html`:
 
-   You can view the full list of theme tokens available in <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a>.
+```html
+<link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css" />
+<link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
+```
+
+You can view the full list of theme tokens available in <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a>.
 
 2. **Set Up Theming**
 
