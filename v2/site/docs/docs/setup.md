@@ -3,7 +3,7 @@
 <AlphaWarning />
 
 <script setup>
-import AlphaWarning from '../components/AlphaWarning.vue'
+import AlphaWarning from '../components/AlphaWarning.vue';
 </script>
 
 AgnosticUI can be installed in two ways: using the **AgnosticUI CLI** (recommended) or as an **npm package**. Choose the approach that best fits your workflow.
@@ -13,8 +13,15 @@ AgnosticUI can be installed in two ways: using the **AgnosticUI CLI** (recommend
 The AgnosticUI CLI provides a "local-first" approach where components are copied directly into your project. This gives you full ownership and control over the component code, making it easy to customize and extend components without worrying about breaking changes from upstream updates.
 
 ::: warning TypeScript Required
-The CLI copies TypeScript (`.ts`) files containing decorators and type annotations. Your project **must** have a build tool that can compile TypeScript (e.g., Vite, webpack with ts-loader, or tsc). If your project uses plain JavaScript without TypeScript support, use the [NPM Package approach](#npm-package-alternative) instead.
+The CLI copies TypeScript (`.ts`) files containing decorators and type annotations. Your project **must** have a build tool that can compile TypeScript (e.g., [Vite](https://vite.dev/guide/), [esbuild](https://esbuild.github.io/), or [rollup](https://rollupjs.org/)). If you're using a framework CLI (Next.js, SvelteKit, Astro, Nuxt, etc.),
+TypeScript support is already included. If your project uses plain JavaScript without TypeScript support, use the [NPM Package approach](#npm-package-alternative) instead.
 :::
+
+Starting from scratch? The quickest path is Vite:
+
+```shell
+npm create vite@latest my-app && cd my-app && npm i
+```
 
 ### Quick Start
 
@@ -25,12 +32,9 @@ Initialize AgnosticUI in your project root:
 npx agnosticui-cli init
 ```
 
-The interactive CLI will guide you through:
-
-1. Selecting your framework (React, Vue, Lit, Svelte)
-2. Choosing where to generate components
-3. Installing required dependencies (`lit`, `@floating-ui/dom`, etc.)
-4. Configuring TypeScript (if detected)
+The interactive CLI will prompt you to select your framework, choose where
+to generate components, and install required dependencies. TypeScript
+configuration is handled automatically if detected.
 
 ::: tip CLI Command Variants
 We recommend using `npx agnosticui-cli` since it works without requiring a global install. However, if you prefer the shorter `npx ag` variant, first install the CLI globally:
@@ -57,7 +61,7 @@ bun add -g agnosticui-cli@alpha
 
 After global installation, all `npx agnosticui-cli` commands can be replaced with `npx ag` (e.g., `npx ag init`, `npx ag add button`).
 
-**Note:** If you have "The Silver Searcher" tool installed (which also uses the `ag` command), you may experience conflicts. In that case, stick with the full `npx agnosticui-cli` variant.
+**Note:** If you have The Silver Searcher installed, its `ag` command will conflict. Stick with `npx agnosticui-cli` instead.
 :::
 
 #### After Initialization
@@ -66,28 +70,30 @@ Follow the "Next Steps" printed by the CLI:
 
 1. **Import CSS Tokens**
 
-   Add the following to your main entry file (e.g., `main.ts`, `main.jsx`):
+Add the following to your main entry file (e.g., `main.ts`, `main.tsx`):
 
-   ```js
-   import "./src/components/ag/styles/ag-tokens.css";
-   import "./src/components/ag/styles/ag-tokens-dark.css";
-   ```
+```ts
+import "./components/ag/styles/ag-tokens.css";
+import "./components/ag/styles/ag-tokens-dark.css";
+```
 
-   **Alternative: Use HTML Link Tags**
+> **Note:** The exact path depends on where your entry file lives. If imports fail, check the path relative to your `main.ts` or `main.jsx`.
 
-   You can also load the styles directly in your `index.html`:
+**Alternative: Use HTML Link Tags**
 
-   ```html
-   <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css" />
-   <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
-   ```
+You can also load the styles directly in your `index.html`:
 
-   You can view the full list of theme tokens available in <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a>.
+```html
+<link rel="stylesheet" href="/src/components/ag/styles/ag-tokens.css" />
+<link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
+```
+
+You can view the full list of theme tokens available in <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a>.
 
 2. **Set Up Theming**
 
    ::: tip Override Default Styles
-   Many build tools (Vite, Create React App, etc.) include default background colors. You may need to override these to use AgnosticUI's theme system. See the [Theming Guide](../theming.md) for framework-specific details.
+   Many build tools (Vite, Next.js, etc.) include opinionated resets and default background colors that conflict with AgnosticUI's token system. You may want to empty or remove those default stylesheets before proceeding. See the [Theming Guide](../theming.md) for framework-specific details.
    :::
 
    AgnosticUI uses a `data-theme` attribute on the `<html>` element to control theming. Add this to your main CSS file or in a `<style>` tag:
@@ -96,7 +102,9 @@ Follow the "Next Steps" printed by the CLI:
    body {
      background: var(--ag-background-primary);
      color: var(--ag-text-primary);
-     transition: background 0.2s ease, color 0.2s ease;
+     transition:
+       background 0.2s ease,
+       color 0.2s ease;
    }
    ```
 
@@ -467,6 +475,82 @@ Use `--output` to write to a custom path instead:
 npx agnosticui-cli context --output ./docs/agnosticui-context.md
 ```
 
+## Storybook Integration
+
+::: warning Experimental: Use with Caution
+npx agnosticui-cli storybook is in an evaluation phase. Due to its high maintenance overhead, this feature may be deprecated or removed depending on community feedback and adoption.
+Run with --force after CLI upgrades to sync templates.
+:::
+
+Once you have components installed, `npx agnosticui-cli storybook` sets up [Storybook](https://storybook.js.org) and generates a story file for every component in your project. This is a one-time opt-in command: run it once to configure Storybook, then use `npm run storybook` to start the dev server.
+
+```bash
+npx agnosticui-cli storybook
+```
+
+This command will:
+
+1. Install the appropriate Storybook packages for your framework (`storybook@^10`, `@storybook/react-vite`, `@storybook/addon-docs`, `@storybook/addon-a11y`, etc.)
+2. Write `.storybook/main.ts`, `.storybook/preview.ts`, and `.storybook/manager.ts` — all pre-configured for AgnosticUI's Vite setup
+3. Generate a `.stories.tsx` / `.stories.ts` file for every installed component, co-located next to the component
+4. Add a `"storybook"` script to your `package.json`
+
+Then start Storybook:
+
+```bash
+npm run storybook
+```
+
+Auto-generated stories for all your installed components are ready to browse. CSS tokens are imported automatically so components render with your project's theme.
+
+### Skipping Package Installation
+
+If Storybook packages are already installed, skip the install step:
+
+```bash
+npx agnosticui-cli storybook --skip-install
+```
+
+### Regenerating Stories
+
+All generated files start with an `AUTO-GENERATED` comment so you know not to edit them by hand. Use `--force` to overwrite the Storybook config files and regenerate all story files:
+
+```bash
+npx agnosticui-cli storybook --force
+```
+
+Without `--force`, existing story files are left unchanged (skipped files are listed in the output).
+
+::: tip Story co-generation with `ag add`
+When Storybook is configured (`.storybook/main.ts` exists), adding a component also generates its story file automatically:
+
+```bash
+npx agnosticui-cli add button
+# Writes Button/react/Button.stories.tsx alongside the component
+```
+
+Use `npx agnosticui-cli add --force` to regenerate both the component and its story.
+:::
+
+### Keeping Stories Up to Date
+
+When the AgnosticUI CLI is updated (for example, when a new Storybook major is supported), run `npx agnosticui-cli storybook --force` to regenerate all config and story files from the latest templates. The `agnosticui.config.json` records the Storybook version used so future tooling can detect when an upgrade is needed.
+
+### Customizing Generated Stories
+
+::: danger Do not edit generated story files directly
+Every `.stories.tsx` / `.stories.ts` file written by the CLI starts with an `AUTO-GENERATED` header. Editing these files directly will cause your changes to be silently overwritten the next time you run `npx agnosticui-cli storybook --force` or re-add a component with `--force`. There is no merge step — the file is replaced wholesale.
+:::
+
+If you want to write custom stories, copy the file and give it a different name:
+
+```
+Button/react/Button.stories.tsx          # auto-generated, will be overwritten
+Button/react/Button.stories.custom.tsx   # your customizations, never touched by CLI
+```
+
+Storybook picks up both files automatically, so your custom stories appear alongside the generated ones.
+
 ## TypeScript Configuration
 
 If using TypeScript with Lit web components, enable experimental decorators in your TypeScript configuration (e.g., `tsconfig.app.json` or `tsconfig.json`):
@@ -698,16 +782,16 @@ If using Preact, Solid, or other frameworks that rely on Babel for JSX transform
 **1. Update `vite.config.ts`:**
 
 ```typescript
-import { defineConfig } from 'vite'
-import preact from '@preact/preset-vite' // or your framework plugin
+import { defineConfig } from 'vite';
+import preact from '@preact/preset-vite'; // or your framework plugin
 
 export default defineConfig({
   plugins: [
     preact({
       exclude: [/\/components\/ag\//], // Let esbuild handle AgnosticUI files
-    })
+    }),
   ],
-})
+});
 ```
 
 **2. Create `src/components/ag/ag-elements.d.ts`:**
@@ -732,16 +816,16 @@ Each component exports a `Props` interface you can reference. For example, see `
 
 ## Comparison: CLI vs NPM
 
-| Feature                | CLI (Recommended)                    | NPM Package                        |
-| ---------------------- | ------------------------------------ | ---------------------------------- |
-| **Setup**              | `npx agnosticui-cli init`            | `npm install agnosticui-core`      |
-| **Component Location** | Local in your project                | node_modules                       |
-| **Customization**      | Full control - edit freely           | Limited - must extend/wrap         |
-| **Updates**            | Manual - copy new versions           | Automatic - npm update             |
-| **Bundle Size**        | Only components you use              | Tree-shakeable                     |
-| **TypeScript**         | Required (copies .ts files)          | Full type definitions              |
-| **Build Tool**         | Must support TS compilation          | Any modern bundler                 |
-| **Best For**           | TS projects needing customization    | Quick prototyping, JS projects     |
+| Feature                | CLI (Recommended)                 | NPM Package                    |
+| ---------------------- | --------------------------------- | ------------------------------ |
+| **Setup**              | `npx agnosticui-cli init`         | `npm install agnosticui-core`  |
+| **Component Location** | Local in your project             | node_modules                   |
+| **Customization**      | Full control - edit freely        | Limited - must extend/wrap     |
+| **Updates**            | Manual - copy new versions        | Automatic - npm update         |
+| **Bundle Size**        | Only components you use           | Tree-shakeable                 |
+| **TypeScript**         | Required (copies .ts files)       | Full type definitions          |
+| **Build Tool**         | Must support TS compilation       | Any modern bundler             |
+| **Best For**           | TS projects needing customization | Quick prototyping, JS projects |
 
 ## Framework Support
 

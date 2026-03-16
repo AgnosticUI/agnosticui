@@ -3,7 +3,7 @@
 <AlphaWarning />
 
 <script setup>
-import AlphaWarning from './components/AlphaWarning.vue'
+import AlphaWarning from './components/AlphaWarning.vue';
 </script>
 
 AgnosticUI can be installed in two ways: using the **AgnosticUI CLI** (recommended) or as an **npm package**. Choose the approach that best fits your workflow.
@@ -782,8 +782,8 @@ If using Preact, Solid, or other frameworks that rely on Babel for JSX transform
 **1. Update `vite.config.ts`:**
 
 ```typescript
-import { defineConfig } from "vite";
-import preact from "@preact/preset-vite"; // or your framework plugin
+import { defineConfig } from 'vite';
+import preact from '@preact/preset-vite'; // or your framework plugin
 
 export default defineConfig({
   plugins: [
@@ -799,7 +799,7 @@ export default defineConfig({
 ```typescript
 declare namespace preact.JSX {
   interface IntrinsicElements {
-    "ag-button": {
+    'ag-button': {
       variant?: string;
       size?: string;
       onClick?: () => void;
