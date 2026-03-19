@@ -211,7 +211,7 @@ function generateZodSchema(componentName: string, props: PropInfo[]): string {
     lines.push(`  ${quoteName(p.name)}: ${p.zodExpr}.optional(),`);
   }
   lines.push(`  children: z.array(z.string()).optional(),`);
-  lines.push(`});`);
+  lines.push(`}).strict();`);
   return lines.join('\n');
 }
 
@@ -283,7 +283,8 @@ export function generateIndexTs(
     `} from './schema.js';`,
     '',
     `export { validate, validateGraph } from './validate.js';`,
-    `export type { ValidateResult, ValidateSuccess, ValidateFailure, ValidateGraphResult, GraphNodeError } from './validate.js';`,
+    `export type { ValidateResult, ValidateSuccess, ValidateFailure, ValidateOptions, ValidateGraphResult, GraphNodeError } from './validate.js';`,
+    `export { formatHint, formatHints } from './hints.js';`,
     '',
   ].join('\n');
 }
