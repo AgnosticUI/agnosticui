@@ -1,0 +1,44 @@
+name: A11y audit — axe-core on fixture graphs
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'v2/schema/**'
+      - 'v2/demo/src/fixtures/**'
+      - 'v2/demo/src/a11y/**'
+      - 'v2/renderers/**'
+  pull_request:
+    paths:
+      - 'v2/schema/**'
+      - 'v2/demo/src/fixtures/**'
+      - 'v2/demo/src/a11y/**'
+      - 'v2/renderers/**'
+
+jobs:
+  a11y-audit:
+    name: axe-core critical/serious violations gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: |
+            v2/schema/package-lock.json
+            v2/demo/package-lock.json
+
+      - name: Build schema
+        run: npm ci && npm run build
+        working-directory: v2/schema
+
+      - name: Install demo deps
+        run: npm ci
+        working-directory: v2/demo
+
+      - name: Run a11y audit
+        run: npm test
+        working-directory: v2/demo
