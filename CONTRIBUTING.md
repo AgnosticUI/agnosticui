@@ -188,6 +188,12 @@ node v2/scripts/verify-examples.mjs   # check example project health
 
 Pass `--fix` to auto-correct version drift in `package.json` and `agnosticui.config.json`.
 
+## SDUI Fixture Health Tests
+
+`v2/demo/src/a11y/toHtml.spec.ts` runs structural invariant checks on every `fixtureBank` variation. It uses `toHtml()` (the same serializer as the a11y tests) to confirm each variation produces the expected element counts and button labels. Assertions are derived from the fixture data itself, so no manual updates are needed when fixtures change intentionally — the tests will catch genuine regressions and pass for correct changes.
+
+These tests run as part of the existing `validate-fixtures` CI workflow.
+
 ## PR Checklist
 
 - [ ] `npm run lint && npm run typecheck && npm run test` pass in `v2/lib`
