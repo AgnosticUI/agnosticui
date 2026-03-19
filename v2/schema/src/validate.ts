@@ -28,7 +28,9 @@ export type ValidateResult = ValidateSuccess | ValidateFailure;
 
 function isDev(options?: ValidateOptions): boolean {
   if (options?.dev !== undefined) return options.dev;
-  return typeof process === 'undefined' || process.env?.['NODE_ENV'] !== 'production';
+  const g = globalThis as Record<string, unknown>;
+  const nodeEnv = (g['process'] as { env?: Record<string, string> } | undefined)?.env?.['NODE_ENV'];
+  return nodeEnv !== 'production';
 }
 
 function extractComponentName(value: unknown): string | undefined {
