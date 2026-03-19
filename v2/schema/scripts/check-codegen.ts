@@ -8,6 +8,8 @@ import { resolve } from 'path';
 import { writeFileSync, readFileSync, mkdirSync } from 'fs';
 import { tmpdir } from 'os';
 import { execSync } from 'child_process';
+import { zodToJsonSchema } from 'zod-to-json-schema';
+import { AgNodeSchema } from '../src/schema.js';
 import {
   ROOT,
   SCHEMA_ROOT,
@@ -19,6 +21,11 @@ import {
   generateVueRenderer,
   generateLitRenderer,
 } from './codegen.js';
+
+function generateSchemaJson(): string {
+  const schema = zodToJsonSchema(AgNodeSchema, { $refStrategy: 'none' });
+  return JSON.stringify(schema, null, 2) + '\n';
+}
 
 const RENDERERS_ROOT = resolve(ROOT, 'v2/renderers');
 
@@ -61,6 +68,11 @@ async function main() {
       label: 'v2/renderers/lit/src/AgDynamicRenderer.ts',
       committedPath: resolve(RENDERERS_ROOT, 'lit/src/AgDynamicRenderer.ts'),
       generate: () => generateLitRenderer(components),
+    },
+    {
+      label: 'v2/schema/agnosticui-schema.json',
+      committedPath: resolve(SCHEMA_ROOT, 'agnosticui-schema.json'),
+      generate: () => generateSchemaJson(),
     },
   ];
 
@@ -108,7 +120,7 @@ async function main() {
       failed.map(f => `  - ${f}`).join('\n') +
       '\n\nThese files are AUTO-GENERATED. To fix, regenerate them and commit the result:\n\n' +
       '  cd v2/schema\n' +
-      '  npm run codegen\n' +
+      '  npm run codegen -- --emit-schema-json\n' +
       `  git add ${failedPaths.join(' \\\n        ')}\n` +
       '  git commit -m "regen: update generated files"\n' +
       '  git push\n'

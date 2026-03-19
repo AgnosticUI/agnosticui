@@ -15,6 +15,7 @@
     "test": "vitest run",
     "build": "tsc",
     "codegen": "tsx scripts/codegen.ts",
+    "emit-schema-json": "tsx scripts/emit-schema-json.ts",
     "check-codegen": "tsx scripts/check-codegen.ts",
     "m4": "npx tsx m4-llm-test.ts",
     "m4:dry": "npx tsx m4-llm-test.ts --dry-run"
@@ -27,6 +28,7 @@
     "ts-morph": "^24.0.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.2",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "zod-to-json-schema": "^3.25.1"
   }
 }

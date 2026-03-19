@@ -876,6 +876,12 @@ async function main() {
   console.log('v2/renderers/react/src/AgDynamicRenderer.tsx updated.');
   console.log('v2/renderers/vue/src/AgDynamicRenderer.ts updated.');
   console.log('v2/renderers/lit/src/AgDynamicRenderer.ts updated.');
+
+  if (process.argv.includes('--emit-schema-json')) {
+    const { execFileSync } = await import('child_process');
+    const emitScript = resolve(dirname(fileURLToPath(import.meta.url)), 'emit-schema-json.ts');
+    execFileSync('tsx', [emitScript], { stdio: 'inherit' });
+  }
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

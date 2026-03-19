@@ -1,0 +1,2682 @@
+{
+  "anyOf": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgAccordion"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgAlert"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error",
+            "danger"
+          ]
+        },
+        "bordered": {
+          "type": "boolean"
+        },
+        "rounded": {
+          "type": "boolean"
+        },
+        "borderedLeft": {
+          "type": "boolean"
+        },
+        "dismissible": {
+          "type": "boolean"
+        },
+        "on_dismiss": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgAspectRatio"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "maxWidth": {
+          "type": "number"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgAvatar"
+        },
+        "text": {
+          "type": "string"
+        },
+        "imgSrc": {
+          "type": "string"
+        },
+        "imgAlt": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "shape": {
+          "type": "string",
+          "enum": [
+            "circle",
+            "square",
+            "rounded"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error",
+            "transparent"
+          ]
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgBadge"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "danger",
+            "neutral"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md"
+          ]
+        },
+        "dot": {
+          "type": "boolean"
+        },
+        "value": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "interactive": {
+          "type": "boolean"
+        },
+        "statusLabel": {
+          "type": "string"
+        },
+        "live": {
+          "type": "string",
+          "enum": [
+            "off",
+            "polite",
+            "assertive"
+          ]
+        },
+        "hiddenFromAT": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgBadgeFx"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "danger",
+            "neutral"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md"
+          ]
+        },
+        "dot": {
+          "type": "boolean"
+        },
+        "value": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "interactive": {
+          "type": "boolean"
+        },
+        "statusLabel": {
+          "type": "string"
+        },
+        "live": {
+          "type": "string",
+          "enum": [
+            "off",
+            "polite",
+            "assertive"
+          ]
+        },
+        "hiddenFromAT": {
+          "type": "boolean"
+        },
+        "fx": {
+          "type": "string"
+        },
+        "fxSpeed": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "fxEase": {
+          "type": "string",
+          "enum": [
+            "ease",
+            "ease-in",
+            "ease-out",
+            "ease-in-out",
+            "bounce",
+            "spring-sm",
+            "spring-md",
+            "spring-lg"
+          ]
+        },
+        "fxDisabled": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgBreadcrumb"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "default",
+            "slash",
+            "bullet",
+            "arrow"
+          ]
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgButton"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "danger",
+            "secondary"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "xl",
+            "x-sm"
+          ]
+        },
+        "shape": {
+          "type": "string",
+          "enum": [
+            "circle",
+            "square",
+            "rounded",
+            "capsule",
+            "rounded-square"
+          ]
+        },
+        "bordered": {
+          "type": "boolean"
+        },
+        "ghost": {
+          "type": "boolean"
+        },
+        "link": {
+          "type": "boolean"
+        },
+        "grouped": {
+          "type": "boolean"
+        },
+        "fullWidth": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "button",
+            "submit",
+            "reset"
+          ]
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "loading": {
+          "type": "boolean"
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "on_toggle": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgButtonFx"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "danger",
+            "secondary"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "xl",
+            "x-sm"
+          ]
+        },
+        "shape": {
+          "type": "string",
+          "enum": [
+            "circle",
+            "square",
+            "rounded",
+            "capsule",
+            "rounded-square"
+          ]
+        },
+        "bordered": {
+          "type": "boolean"
+        },
+        "ghost": {
+          "type": "boolean"
+        },
+        "link": {
+          "type": "boolean"
+        },
+        "grouped": {
+          "type": "boolean"
+        },
+        "fullWidth": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "button",
+            "submit",
+            "reset"
+          ]
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "loading": {
+          "type": "boolean"
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "on_toggle": {
+          "type": "string"
+        },
+        "fx": {
+          "type": "string"
+        },
+        "fxSpeed": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "fxEase": {
+          "type": "string",
+          "enum": [
+            "ease",
+            "ease-in",
+            "ease-out",
+            "ease-in-out",
+            "bounce",
+            "spring-sm",
+            "spring-md",
+            "spring-lg"
+          ]
+        },
+        "fxDisabled": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgCard"
+        },
+        "stacked": {
+          "type": "boolean"
+        },
+        "shadow": {
+          "type": "boolean"
+        },
+        "animated": {
+          "type": "boolean"
+        },
+        "rounded": {
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error"
+          ]
+        },
+        "hasMedia": {
+          "type": "boolean"
+        },
+        "mediaPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom"
+          ]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgCheckbox"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "checked": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
+        },
+        "labelText": {
+          "type": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "end",
+            "start"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "invalid": {
+          "type": "boolean"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "helpText": {
+          "type": "string"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "on_change": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgDialog"
+        },
+        "open": {
+          "type": "boolean"
+        },
+        "heading": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "noCloseOnEscape": {
+          "type": "boolean"
+        },
+        "noCloseOnBackdrop": {
+          "type": "boolean"
+        },
+        "showCloseButton": {
+          "type": "boolean"
+        },
+        "drawerPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "start",
+            "end"
+          ]
+        },
+        "on_open": {
+          "type": "string"
+        },
+        "on_close": {
+          "type": "string"
+        },
+        "on_cancel": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgDivider"
+        },
+        "vertical": {
+          "type": "boolean"
+        },
+        "justify": {
+          "type": "string",
+          "enum": [
+            "end",
+            "start",
+            "center"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "default",
+            "small",
+            "large",
+            "xlarge"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error"
+          ]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgDrawer"
+        },
+        "open": {
+          "type": "boolean"
+        },
+        "heading": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "noCloseOnEscape": {
+          "type": "boolean"
+        },
+        "noCloseOnBackdrop": {
+          "type": "boolean"
+        },
+        "showCloseButton": {
+          "type": "boolean"
+        },
+        "position": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
+        },
+        "on_open": {
+          "type": "string"
+        },
+        "on_close": {
+          "type": "string"
+        },
+        "on_cancel": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgFieldset"
+        },
+        "legend": {
+          "type": "string"
+        },
+        "bordered": {
+          "type": "boolean"
+        },
+        "layout": {
+          "type": "string",
+          "enum": [
+            "vertical",
+            "horizontal"
+          ]
+        },
+        "legendHidden": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgHeader"
+        },
+        "sticky": {
+          "type": "boolean"
+        },
+        "contentJustify": {
+          "type": "string",
+          "enum": [
+            "end",
+            "start",
+            "center",
+            "between",
+            "around"
+          ]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgIcon"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "14",
+            "16",
+            "18",
+            "20",
+            "24",
+            "32",
+            "36",
+            "40",
+            "48",
+            "56",
+            "64"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error",
+            "action"
+          ]
+        },
+        "noFill": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgIconButton"
+        },
+        "label": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "unicode": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "danger",
+            "secondary",
+            "ghost"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "button",
+            "submit",
+            "reset"
+          ]
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "loading": {
+          "type": "boolean"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "on_activate": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgIconButtonFx"
+        },
+        "label": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "unicode": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "danger",
+            "secondary",
+            "ghost"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "button",
+            "submit",
+            "reset"
+          ]
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "loading": {
+          "type": "boolean"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "on_activate": {
+          "type": "string"
+        },
+        "fx": {
+          "type": "string"
+        },
+        "fxSpeed": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "fxEase": {
+          "type": "string",
+          "enum": [
+            "ease",
+            "ease-in",
+            "ease-out",
+            "ease-in-out",
+            "bounce",
+            "spring-sm",
+            "spring-md",
+            "spring-lg"
+          ]
+        },
+        "fxDisabled": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgInput"
+        },
+        "label": {
+          "type": "string"
+        },
+        "labelHidden": {
+          "type": "boolean"
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
+        },
+        "noLabel": {
+          "type": "boolean"
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "password",
+            "email",
+            "number",
+            "search",
+            "tel",
+            "url",
+            "date",
+            "datetime-local",
+            "month",
+            "time",
+            "week"
+          ]
+        },
+        "value": {
+          "type": "string"
+        },
+        "placeholder": {
+          "type": "string"
+        },
+        "rows": {
+          "type": "number"
+        },
+        "cols": {
+          "type": "number"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "default",
+            "small",
+            "large"
+          ]
+        },
+        "capsule": {
+          "type": "boolean"
+        },
+        "rounded": {
+          "type": "boolean"
+        },
+        "underlined": {
+          "type": "boolean"
+        },
+        "underlinedWithBackground": {
+          "type": "boolean"
+        },
+        "inline": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "readonly": {
+          "type": "boolean"
+        },
+        "invalid": {
+          "type": "boolean"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "helpText": {
+          "type": "string"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "on_change": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgIntlFormatter"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "number",
+            "date",
+            "percent",
+            "currency"
+          ]
+        },
+        "value": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "weekday": {
+          "type": "string",
+          "enum": [
+            "narrow",
+            "short",
+            "long"
+          ]
+        },
+        "era": {
+          "type": "string",
+          "enum": [
+            "narrow",
+            "short",
+            "long"
+          ]
+        },
+        "year": {
+          "type": "string",
+          "enum": [
+            "numeric",
+            "2-digit"
+          ]
+        },
+        "month": {
+          "type": "string",
+          "enum": [
+            "narrow",
+            "short",
+            "long",
+            "numeric",
+            "2-digit"
+          ]
+        },
+        "day": {
+          "type": "string",
+          "enum": [
+            "numeric",
+            "2-digit"
+          ]
+        },
+        "hour": {
+          "type": "string",
+          "enum": [
+            "numeric",
+            "2-digit"
+          ]
+        },
+        "minute": {
+          "type": "string",
+          "enum": [
+            "numeric",
+            "2-digit"
+          ]
+        },
+        "second": {
+          "type": "string",
+          "enum": [
+            "numeric",
+            "2-digit"
+          ]
+        },
+        "timeZoneName": {
+          "type": "string",
+          "enum": [
+            "short",
+            "long"
+          ]
+        },
+        "timeZone": {
+          "type": "string"
+        },
+        "hourFormat": {
+          "type": "string",
+          "enum": [
+            "24",
+            "auto",
+            "12"
+          ]
+        },
+        "dateStyle": {
+          "type": "string",
+          "enum": [
+            "medium",
+            "short",
+            "long",
+            "full"
+          ]
+        },
+        "timeStyle": {
+          "type": "string",
+          "enum": [
+            "medium",
+            "short",
+            "long",
+            "full"
+          ]
+        },
+        "noGrouping": {
+          "type": "boolean"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "currencyDisplay": {
+          "type": "string",
+          "enum": [
+            "symbol",
+            "narrowSymbol",
+            "code",
+            "name"
+          ]
+        },
+        "minimumIntegerDigits": {
+          "type": "number"
+        },
+        "minimumFractionDigits": {
+          "type": "number"
+        },
+        "maximumFractionDigits": {
+          "type": "number"
+        },
+        "minimumSignificantDigits": {
+          "type": "number"
+        },
+        "maximumSignificantDigits": {
+          "type": "number"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgKbd"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error",
+            "danger",
+            "secondary"
+          ]
+        },
+        "bordered": {
+          "type": "boolean"
+        },
+        "background": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgLink"
+        },
+        "href": {
+          "type": "string"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "danger"
+          ]
+        },
+        "isButton": {
+          "type": "boolean"
+        },
+        "buttonSize": {
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "xl",
+            "x-sm"
+          ]
+        },
+        "buttonShape": {
+          "type": "string",
+          "enum": [
+            "circle",
+            "square",
+            "rounded",
+            "capsule",
+            "rounded-square"
+          ]
+        },
+        "buttonBordered": {
+          "type": "boolean"
+        },
+        "external": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgLoader"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "default",
+            "small",
+            "large"
+          ]
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgMark"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error",
+            "secondary"
+          ]
+        },
+        "search": {
+          "type": "string"
+        },
+        "caseSensitive": {
+          "type": "boolean"
+        },
+        "matchAll": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgMessageBubble"
+        },
+        "from": {
+          "type": "string",
+          "enum": [
+            "me",
+            "them"
+          ]
+        },
+        "message": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "footer": {
+          "type": "string"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "danger",
+            "neutral"
+          ]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgPopover"
+        },
+        "placement": {
+          "type": "string",
+          "enum": [
+            "top",
+            "top-start",
+            "top-end",
+            "right",
+            "right-start",
+            "right-end",
+            "bottom",
+            "bottom-start",
+            "bottom-end",
+            "left",
+            "left-start",
+            "left-end"
+          ]
+        },
+        "distance": {
+          "type": "number"
+        },
+        "skidding": {
+          "type": "number"
+        },
+        "arrow": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "triggerType": {
+          "type": "string",
+          "enum": [
+            "click",
+            "hover",
+            "focus"
+          ]
+        },
+        "matchTriggerWidth": {
+          "type": "boolean"
+        },
+        "showCloseButton": {
+          "type": "boolean"
+        },
+        "showHeader": {
+          "type": "boolean"
+        },
+        "closeLabel": {
+          "type": "string"
+        },
+        "trapFocus": {
+          "type": "boolean"
+        },
+        "on_show": {
+          "type": "string"
+        },
+        "on_hide": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgProgress"
+        },
+        "value": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "label": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgRadio"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "checked": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
+        },
+        "theme": {
+          "type": "string",
+          "enum": [
+            "default",
+            "primary",
+            "success",
+            "monochrome"
+          ]
+        },
+        "labelText": {
+          "type": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "end",
+            "start"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "labelHidden": {
+          "type": "boolean"
+        },
+        "noLabel": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "invalid": {
+          "type": "boolean"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "helpText": {
+          "type": "string"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "on_change": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgRating"
+        },
+        "value": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "precision": {
+          "type": "string",
+          "enum": [
+            "whole",
+            "half"
+          ]
+        },
+        "readonly": {
+          "type": "boolean"
+        },
+        "allowClear": {
+          "type": "boolean"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "success",
+            "warning",
+            "danger"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
+        },
+        "labelHidden": {
+          "type": "boolean"
+        },
+        "noLabel": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "invalid": {
+          "type": "boolean"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "helpText": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgSelect"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "small",
+            "large"
+          ]
+        },
+        "multiple": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "multipleSize": {
+          "type": "number"
+        },
+        "label": {
+          "type": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
+        },
+        "labelHidden": {
+          "type": "boolean"
+        },
+        "noLabel": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "invalid": {
+          "type": "boolean"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "helpText": {
+          "type": "string"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "on_change": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgSelectionButton"
+        },
+        "value": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "checked": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgSelectionButtonGroup"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "radio",
+            "checkbox"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "legend": {
+          "type": "string"
+        },
+        "legendHidden": {
+          "type": "boolean"
+        },
+        "theme": {
+          "type": "string",
+          "enum": [
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "shape": {
+          "type": "string",
+          "enum": [
+            "rounded",
+            "capsule"
+          ]
+        },
+        "value": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "on_change": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgSelectionCard"
+        },
+        "value": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "checked": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgSelectionCardGroup"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "radio",
+            "checkbox"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "legend": {
+          "type": "string"
+        },
+        "legendHidden": {
+          "type": "boolean"
+        },
+        "theme": {
+          "type": "string",
+          "enum": [
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error"
+          ]
+        },
+        "value": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "on_change": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgSpinner"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "default",
+            "small",
+            "large",
+            "xlarge"
+          ]
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgTabs"
+        },
+        "activation": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "automatic"
+          ]
+        },
+        "activeTab": {
+          "type": "number"
+        },
+        "orientation": {
+          "type": "string",
+          "enum": [
+            "vertical",
+            "horizontal"
+          ]
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgTag"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error"
+          ]
+        },
+        "shape": {
+          "type": "string",
+          "enum": [
+            "circle",
+            "pill",
+            "round"
+          ]
+        },
+        "uppercase": {
+          "type": "boolean"
+        },
+        "removable": {
+          "type": "boolean"
+        },
+        "on_remove": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgToggle"
+        },
+        "label": {
+          "type": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
+        },
+        "labelHidden": {
+          "type": "boolean"
+        },
+        "noLabel": {
+          "type": "boolean"
+        },
+        "checked": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "success",
+            "monochrome",
+            "warning",
+            "danger"
+          ]
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "readonly": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "invalid": {
+          "type": "boolean"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "helpText": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "on_click": {
+          "type": "string"
+        },
+        "on_change": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgTooltip"
+        },
+        "content": {
+          "type": "string"
+        },
+        "placement": {
+          "type": "string",
+          "enum": [
+            "top",
+            "top-start",
+            "top-end",
+            "right",
+            "right-start",
+            "right-end",
+            "bottom",
+            "bottom-start",
+            "bottom-end",
+            "left",
+            "left-start",
+            "left-end"
+          ]
+        },
+        "distance": {
+          "type": "number"
+        },
+        "skidding": {
+          "type": "number"
+        },
+        "trigger": {
+          "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "on_show": {
+          "type": "string"
+        },
+        "on_hide": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgText"
+        },
+        "text": {
+          "type": "string"
+        },
+        "el": {
+          "type": "string",
+          "enum": [
+            "p",
+            "span",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "label"
+          ]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component",
+        "text"
+      ],
+      "additionalProperties": false
+    }
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
