@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { validate } from './validate.js';
+import { validate, validateGraph } from './validate.js';
 
 describe('@agnosticui/schema — validate()', () => {
   // ─── Shared rules ────────────────────────────────────────────────────────────
@@ -32,6 +32,53 @@ describe('@agnosticui/schema — validate()', () => {
       expect(result.errors.length).toBeGreaterThan(0);
       expect(result.errors[0]).toMatch(/variant/);
     }
+  });
+
+  // ─── validateGraph() ─────────────────────────────────────────────────────────
+
+  describe('validateGraph()', () => {
+    it('returns success for a valid single-node graph', () => {
+      const result = validateGraph([{ id: 'btn-1', component: 'AgButton', label: 'OK' }]);
+      expect(result.success).toBe(true);
+      expect(result.errors).toHaveLength(0);
+    });
+
+    it('returns success for a multi-node graph with valid child refs', () => {
+      const result = validateGraph([
+        { id: 'card-1', component: 'AgCard', children: ['btn-1'] },
+        { id: 'btn-1', component: 'AgButton', label: 'Click me' },
+      ]);
+      expect(result.success).toBe(true);
+    });
+
+    it('fails when a node does not pass schema validation', () => {
+      const result = validateGraph([{ id: 'btn-1', component: 'AgButton', variant: 'rainbow' }]);
+      expect(result.success).toBe(false);
+      expect(result.errors[0].nodeId).toBe('btn-1');
+      expect(result.errors[0].errors[0]).toMatch(/variant/);
+    });
+
+    it('fails when a child ref ID is missing from the graph', () => {
+      const result = validateGraph([
+        { id: 'card-1', component: 'AgCard', children: ['missing-id'] },
+      ]);
+      expect(result.success).toBe(false);
+      expect(result.errors[0].nodeId).toBe('card-1');
+      expect(result.errors[0].errors[0]).toMatch(/missing-id/);
+    });
+
+    it('reports all failing nodes, not just the first', () => {
+      const result = validateGraph([
+        { id: 'btn-1', component: 'AgButton', variant: 'bad' },
+        { id: 'btn-2', component: 'AgButton', size: 'xxl' },
+      ]);
+      expect(result.success).toBe(false);
+      expect(result.errors).toHaveLength(2);
+    });
+
+    it('returns success for an empty graph', () => {
+      expect(validateGraph([]).success).toBe(true);
+    });
   });
 
   // ─── AgButton ─────────────────────────────────────────────────────────────────
