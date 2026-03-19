@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { validate, validateGraph } from './validate.js';
+import { formatHint, formatHints } from './hints.js';
+import type { ZodIssue } from 'zod';
 
 describe('@agnosticui/schema — validate()', () => {
   // ─── Shared rules ────────────────────────────────────────────────────────────
@@ -38,7 +40,7 @@ describe('@agnosticui/schema — validate()', () => {
 
   describe('validateGraph()', () => {
     it('returns success for a valid single-node graph', () => {
-      const result = validateGraph([{ id: 'btn-1', component: 'AgButton', label: 'OK' }]);
+      const result = validateGraph([{ id: 'btn-1', component: 'AgButton', variant: 'primary' }]);
       expect(result.success).toBe(true);
       expect(result.errors).toHaveLength(0);
     });
@@ -46,7 +48,7 @@ describe('@agnosticui/schema — validate()', () => {
     it('returns success for a multi-node graph with valid child refs', () => {
       const result = validateGraph([
         { id: 'card-1', component: 'AgCard', children: ['btn-1'] },
-        { id: 'btn-1', component: 'AgButton', label: 'Click me' },
+        { id: 'btn-1', component: 'AgButton', variant: 'secondary' },
       ]);
       expect(result.success).toBe(true);
     });
@@ -81,6 +83,107 @@ describe('@agnosticui/schema — validate()', () => {
     });
   });
 
+  // ─── Developer hints ─────────────────────────────────────────────────────────
+
+  describe('dev hints', () => {
+    it('returns hints when dev: true and an enum value is wrong', () => {
+      const result = validate({ id: 'btn-1', component: 'AgButton', variant: 'rainbow' }, { dev: true });
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.hints).toBeDefined();
+        expect(result.hints![0]).toMatch(/\[AgButton\]/);
+        expect(result.hints![0]).toMatch(/rainbow/);
+        expect(result.hints![0]).toMatch(/primary/);
+      }
+    });
+
+    it('returns hints when dev: true and a required prop is missing', () => {
+      const result = validate({ component: 'AgButton' }, { dev: true });
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.hints).toBeDefined();
+        expect(result.hints![0]).toMatch(/required/);
+      }
+    });
+
+    it('returns hints when dev: true and an unknown prop is present', () => {
+      const result = validate({ id: 'btn-1', component: 'AgButton', label: 'bad' }, { dev: true });
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.hints).toBeDefined();
+        expect(result.hints!.some(h => h.toLowerCase().includes('unknown') || h.toLowerCase().includes('unrecognized'))).toBe(true);
+        expect(result.hints!.join(' ')).toMatch(/label/);
+      }
+    });
+
+    it('does not include hints when dev: false', () => {
+      const result = validate({ id: 'btn-1', component: 'AgButton', variant: 'rainbow' }, { dev: false });
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.hints).toBeUndefined();
+      }
+    });
+
+    it('includes hints in validateGraph errors when dev: true', () => {
+      const result = validateGraph([{ id: 'btn-1', component: 'AgButton', variant: 'rainbow' }], { dev: true });
+      expect(result.success).toBe(false);
+      expect(result.errors[0].hints).toBeDefined();
+      expect(result.errors[0].hints![0]).toMatch(/\[AgButton\]/);
+    });
+  });
+
+  // ─── formatHints() ────────────────────────────────────────────────────────────
+
+  describe('formatHints()', () => {
+    it('formats an invalid_enum_value issue', () => {
+      const issue: ZodIssue = {
+        code: 'invalid_enum_value',
+        path: ['variant'],
+        message: 'Invalid enum value',
+        options: ['primary', 'secondary'],
+        received: 'rainbow',
+      };
+      const hint = formatHint(issue, 'AgButton');
+      expect(hint).toBe('[AgButton] variant: "rainbow" is not a valid value. Expected one of: "primary", "secondary".');
+    });
+
+    it('formats an invalid_type (missing required) issue', () => {
+      const issue: ZodIssue = {
+        code: 'invalid_type',
+        path: ['id'],
+        message: 'Required',
+        expected: 'string',
+        received: 'undefined',
+      };
+      const hint = formatHint(issue, 'AgButton');
+      expect(hint).toBe('[AgButton] id: required but missing.');
+    });
+
+    it('formats an unrecognized_keys issue', () => {
+      const issue: ZodIssue = {
+        code: 'unrecognized_keys',
+        path: [],
+        message: 'Unrecognized key(s)',
+        keys: ['label', 'foo'],
+      };
+      const hint = formatHint(issue, 'AgButton');
+      expect(hint).toMatch(/Unknown props/);
+      expect(hint).toMatch(/"label"/);
+      expect(hint).toMatch(/"foo"/);
+    });
+
+    it('formatHints returns an array of hint strings', () => {
+      const issues: ZodIssue[] = [
+        { code: 'invalid_enum_value', path: ['variant'], message: '', options: ['primary'], received: 'bad' },
+        { code: 'invalid_type', path: ['id'], message: 'Required', expected: 'string', received: 'undefined' },
+      ];
+      const hints = formatHints(issues, 'AgButton');
+      expect(hints).toHaveLength(2);
+      expect(hints[0]).toMatch(/variant/);
+      expect(hints[1]).toMatch(/id/);
+    });
+  });
+
   // ─── AgButton ─────────────────────────────────────────────────────────────────
 
   describe('AgButton', () => {
@@ -92,7 +195,6 @@ describe('@agnosticui/schema — validate()', () => {
       const result = validate({
         id: 'btn-1',
         component: 'AgButton',
-        label: 'Submit',
         variant: 'primary',
         size: 'md',
         shape: 'capsule',

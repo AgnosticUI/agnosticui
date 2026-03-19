@@ -275,7 +275,7 @@ export const rendererPrimitives: RendererPrimitive[] = [
   text: z.string(),
   el: z.enum(['p', 'span', 'h1', 'h2', 'h3', 'h4', 'label']).optional(),
   children: z.array(z.string()).optional(),
-});`,
+}).strict();`,
     typesBlock:
 `export interface AgTextNode {
   id: string;
