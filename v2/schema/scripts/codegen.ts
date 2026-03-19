@@ -6,7 +6,7 @@ import { Project, type Type, type InterfaceDeclaration, type Symbol as MorphSymb
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { writeFileSync } from 'fs';
-import { omitConfig, actionAliasMap, typeOverrides, skipComponents, rendererSlotConfig, vueDefaultImportComponents, reactPropRenames, rendererPrimitives, type RendererSlot, type RendererPrimitive } from './codegen.config.js';
+import { omitConfig, actionAliasMap, actionPayloadMap, typeOverrides, skipComponents, rendererSlotConfig, vueDefaultImportComponents, reactPropRenames, rendererPrimitives, noUndefinedProps, type RendererSlot, type RendererPrimitive } from './codegen.config.js';
 
 // scripts/ -> schema/ -> v2/ -> agnosticui/
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -318,12 +318,22 @@ function generateReactCase(c: ComponentData): string {
   const propLines: string[] = [];
   propLines.push(`        <${wrapper}`);
   propLines.push(`          key={node.id}`);
+  const noUndef = new Set(noUndefinedProps[sdui] ?? []);
   for (const p of directProps) {
     const jsxAttr = reactPropRenames[p.name] ?? p.name;
-    propLines.push(`          ${jsxAttr}={node.${quoteName(p.name)}}`);
+    if (noUndef.has(p.name)) {
+      propLines.push(`          {...(node.${quoteName(p.name)} !== undefined ? { ${jsxAttr}: node.${quoteName(p.name)} } : {})}`);
+    } else {
+      propLines.push(`          ${jsxAttr}={node.${quoteName(p.name)}}`);
+    }
   }
   for (const a of c.actions) {
-    propLines.push(`          ${a.sourceName}={() => dispatch(node.${quoteName(a.alias)}, actions)}`);
+    const payloadExpr = actionPayloadMap[a.sourceName];
+    if (payloadExpr) {
+      propLines.push(`          ${a.sourceName}={(e) => dispatch(node.${quoteName(a.alias)}, actions, ${payloadExpr})}`);
+    } else {
+      propLines.push(`          ${a.sourceName}={() => dispatch(node.${quoteName(a.alias)}, actions)}`);
+    }
   }
 
   if (c.slotType === 'none') {
@@ -333,7 +343,7 @@ function generateReactCase(c: ComponentData): string {
   } else if (c.slotType === 'label-child') {
     propLines.push(`        >`);
     lines.push(...propLines);
-    lines.push(`          {node.children?.length ? renderChildren(node.children) : (node.label ?? '')}`);
+    lines.push(`          {node.children?.length ? renderChildren(node.children) : ((node as { label?: string }).label ?? '')}`);
     lines.push(`        </${wrapper}>`);
     lines.push(`      );`);
   } else {
@@ -384,13 +394,13 @@ export function generateReactRenderer(
     ` * unknown aliases are silently ignored. No eval(), no dynamic code execution.`,
     ` */`,
     `export function createDispatcher(actions: Actions) {`,
-    `  return (alias?: string): void => {`,
-    `    if (alias) actions[alias]?.();`,
+    `  return (alias?: string, payload?: unknown): void => {`,
+    `    if (alias) actions[alias]?.(payload);`,
     `  };`,
     `}`,
     '',
-    `function dispatch(alias: string | undefined, actions: Actions): void {`,
-    `  if (alias) actions[alias]?.();`,
+    `function dispatch(alias: string | undefined, actions: Actions, payload?: unknown): void {`,
+    `  if (alias) actions[alias]?.(payload);`,
     `}`,
     '',
     `function renderNode(`,
@@ -454,7 +464,12 @@ function generateVueCase(c: ComponentData): string {
     propsObj.push(`        ${p.name}: node.${quoteName(p.name)},`);
   }
   for (const a of c.actions) {
-    propsObj.push(`        ${a.sourceName}: () => doDispatch(node.${quoteName(a.alias)}, actions),`);
+    const payloadExpr = actionPayloadMap[a.sourceName];
+    if (payloadExpr) {
+      propsObj.push(`        ${a.sourceName}: (e: Event) => doDispatch(node.${quoteName(a.alias)}, actions, ${payloadExpr}),`);
+    } else {
+      propsObj.push(`        ${a.sourceName}: () => doDispatch(node.${quoteName(a.alias)}, actions),`);
+    }
   }
 
   if (c.slotType === 'none') {
@@ -474,7 +489,7 @@ function generateVueCase(c: ComponentData): string {
     lines.push(`          default: () =>`);
     lines.push(`            node.children?.length`);
     lines.push(`              ? renderChildren(node.children)`);
-    lines.push(`              : (node.label ?? ''),`);
+    lines.push(`              : ((node as { label?: string }).label ?? ''),`);
     lines.push(`        },`);
     lines.push(`      );`);
   } else {
@@ -525,13 +540,13 @@ export function generateVueRenderer(
     ` * unknown aliases are silently ignored. No eval(), no dynamic code execution.`,
     ` */`,
     `export function createDispatcher(actions: Actions) {`,
-    `  return (alias?: string): void => {`,
-    `    if (alias) actions[alias]?.();`,
+    `  return (alias?: string, payload?: unknown): void => {`,
+    `    if (alias) actions[alias]?.(payload);`,
     `  };`,
     `}`,
     '',
-    `function doDispatch(alias: string | undefined, actions: Actions): void {`,
-    `  if (alias) actions[alias]?.();`,
+    `function doDispatch(alias: string | undefined, actions: Actions, payload?: unknown): void {`,
+    `  if (alias) actions[alias]?.(payload);`,
     `}`,
     '',
     `function renderNode(`,
@@ -598,19 +613,28 @@ function generateLitCase(c: ComponentData): string {
       && !(c.slotType === 'label-child' && p.name === 'label'),
   );
 
+  const litNoUndef = new Set(noUndefinedProps[sdui] ?? []);
   const attrLines = directProps.map(p => {
+    if (litNoUndef.has(p.name)) {
+      return `        .${p.name}=\${node.${quoteName(p.name)} ?? nothing}`;
+    }
     const def = litDefault(p.tsType);
-    return `        .${p.name}=\${node.${p.name}${def}}`;
+    return `        .${p.name}=\${node.${quoteName(p.name)}${def}}`;
   });
   for (const a of c.actions) {
-    attrLines.push(`        @${a.litEvent}=\${() => doDispatch(node.${a.alias}, actions)}`);
+    const payloadExpr = actionPayloadMap[a.sourceName];
+    if (payloadExpr) {
+      attrLines.push(`        @${a.litEvent}=\${(e: Event) => doDispatch(node.${a.alias}, actions, ${payloadExpr})}`);
+    } else {
+      attrLines.push(`        @${a.litEvent}=\${() => doDispatch(node.${a.alias}, actions)}`);
+    }
   }
 
   const attrs = attrLines.length > 0 ? '\n' + attrLines.join('\n') + '\n      ' : '';
 
   let innerContent: string;
   if (c.slotType === 'label-child') {
-    innerContent = `\${node.children?.length ? renderChildren(node.children) : (node.label ?? '')}`;
+    innerContent = `\${node.children?.length ? renderChildren(node.children) : ((node as { label?: string }).label ?? '')}`;
   } else if (c.slotType === 'children') {
     innerContent = `\${renderChildren(node.children)}`;
   } else {
@@ -655,13 +679,13 @@ export function generateLitRenderer(
     ` * unknown aliases are silently ignored. No eval(), no dynamic code execution.`,
     ` */`,
     `export function createDispatcher(actions: Actions) {`,
-    `  return (alias?: string): void => {`,
-    `    if (alias) actions[alias]?.();`,
+    `  return (alias?: string, payload?: unknown): void => {`,
+    `    if (alias) actions[alias]?.(payload);`,
     `  };`,
     `}`,
     '',
-    `function doDispatch(alias: string | undefined, actions: Actions): void {`,
-    `  if (alias) actions[alias]?.();`,
+    `function doDispatch(alias: string | undefined, actions: Actions, payload?: unknown): void {`,
+    `  if (alias) actions[alias]?.(payload);`,
     `}`,
     '',
     `function renderNode(`,

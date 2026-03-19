@@ -72,6 +72,8 @@ Every tool sees the **raw source**. This creates a high-fidelity environment for
 
 This is the architecture for the next era of development: **context-aware, framework-agnostic, and AI-ready.**
 
+The schema-driven layer ships with a **coverage registry** — a single document that tracks which components have SDUI schema coverage, renderer parity across React/Vue/Lit, and why any props or components are deferred: [`v2/docs/schema-coverage.md`](./v2/docs/schema-coverage.md).
+
 ---
 
 ## Built once. Runs everywhere.

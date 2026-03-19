@@ -54,13 +54,13 @@ type Actions = Record<string, (payload?: unknown) => void>;
  * unknown aliases are silently ignored. No eval(), no dynamic code execution.
  */
 export function createDispatcher(actions: Actions) {
-  return (alias?: string): void => {
-    if (alias) actions[alias]?.();
+  return (alias?: string, payload?: unknown): void => {
+    if (alias) actions[alias]?.(payload);
   };
 }
 
-function doDispatch(alias: string | undefined, actions: Actions): void {
-  if (alias) actions[alias]?.();
+function doDispatch(alias: string | undefined, actions: Actions, payload?: unknown): void {
+  if (alias) actions[alias]?.(payload);
 }
 
 function renderNode(
@@ -135,6 +135,7 @@ function renderNode(
         live: node.live,
         hiddenFromAT: node.hiddenFromAT,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgBadgeFx':
@@ -155,6 +156,7 @@ function renderNode(
         fxEase: node.fxEase,
         fxDisabled: node.fxDisabled,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgBreadcrumb':
@@ -191,7 +193,7 @@ function renderNode(
           default: () =>
             node.children?.length
               ? renderChildren(node.children)
-              : (node.label ?? ''),
+              : ((node as { label?: string }).label ?? ''),
         },
       );
 
@@ -222,7 +224,7 @@ function renderNode(
           default: () =>
             node.children?.length
               ? renderChildren(node.children)
-              : (node.label ?? ''),
+              : ((node as { label?: string }).label ?? ''),
         },
       );
 
@@ -637,6 +639,7 @@ function renderNode(
         values: node.values,
         disabled: node.disabled,
         required: node.required,
+        onSelectionChange: (e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value),
         },
         { default: () => renderChildren(node.children) },
       );
@@ -666,6 +669,7 @@ function renderNode(
         values: node.values,
         disabled: node.disabled,
         required: node.required,
+        onSelectionChange: (e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value),
         },
         { default: () => renderChildren(node.children) },
       );

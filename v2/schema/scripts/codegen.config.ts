@@ -40,6 +40,28 @@ export const omitConfig: Record<string, string[]> = {
 };
 
 /**
+ * noUndefinedProps: props that must NOT be passed as `undefined` to the React
+ * renderer because they are `reflect: true` @property decorators used in CSS
+ * attribute selectors (e.g. :host([size="md"])) that set CSS custom properties.
+ * Passing `undefined` via @lit/react removes the attribute, breaking the CSS
+ * variable chain even when the component has constructor defaults.
+ *
+ * The codegen emits a conditional spread for these:
+ *   {...(node.size !== undefined ? { size: node.size } : {})}
+ * instead of the normal:
+ *   size={node.size}
+ */
+export const noUndefinedProps: Record<string, string[]> = {
+  // size drives --toggle-width/--handle-size used in the checked transform
+  // variant drives checked-state color selectors
+  AgToggle:  ['size', 'variant'],
+
+  // value binding sets native input.value; undefined coerces to string "undefined"
+  // size drives input sizing CSS selectors
+  AgInput:   ['value', 'size'],
+};
+
+/**
  * actionAliasMap: maps function prop names to their SDUI string alias replacements.
  * When the codegen finds a function-typed prop whose name appears here, it
  * emits an optional string prop with the alias name instead of dropping it entirely.
@@ -66,6 +88,23 @@ export const actionAliasMap: Record<string, string> = {
   // Popover show/hide
   onShow:               'on_show',
   onHide:               'on_hide',
+  // SelectionCardGroup selection change — fires with detail.value as payload
+  onSelectionChange:    'on_change',
+};
+
+/**
+ * actionPayloadMap: maps function prop names to a JS expression that extracts
+ * a serializable payload from the event argument.
+ *
+ * When an event is listed here, the renderer emits a one-arg lambda
+ *   `(e) => dispatch(node.alias, actions, <expr>)`
+ * instead of the zero-arg form `() => dispatch(node.alias, actions)`.
+ *
+ * The expression is evaluated in a context where `e` is the raw event.
+ */
+export const actionPayloadMap: Record<string, string> = {
+  // SelectionChangeEvent.detail.value is the selected card's value string
+  onSelectionChange: '(e as CustomEvent<{value: string}>).detail.value',
 };
 
 /**
@@ -84,6 +123,10 @@ export const rendererSlotConfig: Record<string, RendererSlot> = {
   // label is the button/link text — rendered as slot content, not a prop
   AgButton:        'label-child',
   AgButtonFx:      'label-child',
+
+  // badge content is always child nodes (text, icons)
+  AgBadge:         'children',
+  AgBadgeFx:       'children',
 
   // overlay/modal components — slot content authored as child nodes
   AgDialog:        'children',
@@ -142,6 +185,14 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
     placement: {
       tsType: "'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'",
       zodExpr: "z.enum(['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'])",
+    },
+  },
+  AgRating: {
+    // Rating.variant in core is '' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+    // ts-morph resolves the RatingVariant alias differently — lock it down explicitly.
+    variant: {
+      tsType: "'primary' | 'secondary' | 'success' | 'warning' | 'danger'",
+      zodExpr: "z.enum(['primary', 'secondary', 'success', 'warning', 'danger'])",
     },
   },
 };

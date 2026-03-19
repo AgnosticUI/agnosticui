@@ -59,13 +59,13 @@ export interface AgDynamicRendererProps {
  * unknown aliases are silently ignored. No eval(), no dynamic code execution.
  */
 export function createDispatcher(actions: Actions) {
-  return (alias?: string): void => {
-    if (alias) actions[alias]?.();
+  return (alias?: string, payload?: unknown): void => {
+    if (alias) actions[alias]?.(payload);
   };
 }
 
-function dispatch(alias: string | undefined, actions: Actions): void {
-  if (alias) actions[alias]?.();
+function dispatch(alias: string | undefined, actions: Actions, payload?: unknown): void {
+  if (alias) actions[alias]?.(payload);
 }
 
 function renderNode(
@@ -140,7 +140,10 @@ function renderNode(
           interactive={node.interactive}
           statusLabel={node.statusLabel}
           live={node.live}
-          hiddenFromAT={node.hiddenFromAT} />
+          hiddenFromAT={node.hiddenFromAT}
+        >
+          {renderChildren(node.children)}
+        </ReactBadge>
       );
 
     case 'AgBadgeFx':
@@ -159,7 +162,10 @@ function renderNode(
           fx={node.fx}
           fxSpeed={node.fxSpeed}
           fxEase={node.fxEase}
-          fxDisabled={node.fxDisabled} />
+          fxDisabled={node.fxDisabled}
+        >
+          {renderChildren(node.children)}
+        </ReactBadgeFx>
       );
 
     case 'AgBreadcrumb':
@@ -191,7 +197,7 @@ function renderNode(
           onClick={() => dispatch(node.on_click, actions)}
           onToggle={() => dispatch(node.on_toggle, actions)}
         >
-          {node.children?.length ? renderChildren(node.children) : (node.label ?? '')}
+          {node.children?.length ? renderChildren(node.children) : ((node as { label?: string }).label ?? '')}
         </ReactButton>
       );
 
@@ -218,7 +224,7 @@ function renderNode(
           onClick={() => dispatch(node.on_click, actions)}
           onToggle={() => dispatch(node.on_toggle, actions)}
         >
-          {node.children?.length ? renderChildren(node.children) : (node.label ?? '')}
+          {node.children?.length ? renderChildren(node.children) : ((node as { label?: string }).label ?? '')}
         </ReactButtonFx>
       );
 
@@ -385,11 +391,11 @@ function renderNode(
           aria-label={node.ariaLabel}
           name={node.name}
           type={node.type}
-          value={node.value}
+          {...(node.value !== undefined ? { value: node.value } : {})}
           placeholder={node.placeholder}
           rows={node.rows}
           cols={node.cols}
-          size={node.size}
+          {...(node.size !== undefined ? { size: node.size } : {})}
           capsule={node.capsule}
           rounded={node.rounded}
           underlined={node.underlined}
@@ -634,6 +640,7 @@ function renderNode(
           values={node.values}
           disabled={node.disabled}
           required={node.required}
+          onSelectionChange={(e) => dispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value)}
         >
           {renderChildren(node.children)}
         </ReactSelectionButtonGroup>
@@ -665,6 +672,7 @@ function renderNode(
           values={node.values}
           disabled={node.disabled}
           required={node.required}
+          onSelectionChange={(e) => dispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value)}
         >
           {renderChildren(node.children)}
         </ReactSelectionCardGroup>
@@ -714,8 +722,8 @@ function renderNode(
           labelHidden={node.labelHidden}
           noLabel={node.noLabel}
           checked={node.checked}
-          size={node.size}
-          variant={node.variant}
+          {...(node.size !== undefined ? { size: node.size } : {})}
+          {...(node.variant !== undefined ? { variant: node.variant } : {})}
           disabled={node.disabled}
           readonly={node.readonly}
           required={node.required}

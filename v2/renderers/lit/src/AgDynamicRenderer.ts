@@ -57,13 +57,13 @@ type Actions = Record<string, (payload?: unknown) => void>;
  * unknown aliases are silently ignored. No eval(), no dynamic code execution.
  */
 export function createDispatcher(actions: Actions) {
-  return (alias?: string): void => {
-    if (alias) actions[alias]?.();
+  return (alias?: string, payload?: unknown): void => {
+    if (alias) actions[alias]?.(payload);
   };
 }
 
-function doDispatch(alias: string | undefined, actions: Actions): void {
-  if (alias) actions[alias]?.();
+function doDispatch(alias: string | undefined, actions: Actions, payload?: unknown): void {
+  if (alias) actions[alias]?.(payload);
 }
 
 function renderNode(
@@ -120,7 +120,7 @@ function renderNode(
         .statusLabel=${node.statusLabel ?? ''}
         .live=${node.live ?? ''}
         .hiddenFromAT=${node.hiddenFromAT ?? false}
-      ></ag-badge>`;
+      >${renderChildren(node.children)}</ag-badge>`;
 
     case 'AgBadgeFx':
       return html`<ag-badge-fx
@@ -137,7 +137,7 @@ function renderNode(
         .fxSpeed=${node.fxSpeed ?? ''}
         .fxEase=${node.fxEase ?? ''}
         .fxDisabled=${node.fxDisabled ?? false}
-      ></ag-badge-fx>`;
+      >${renderChildren(node.children)}</ag-badge-fx>`;
 
     case 'AgBreadcrumb':
       return html`<ag-breadcrumb
@@ -163,7 +163,7 @@ function renderNode(
         .ariaLabel=${node.ariaLabel ?? ''}
         @click=${() => doDispatch(node.on_click, actions)}
         @toggle=${() => doDispatch(node.on_toggle, actions)}
-      >${node.children?.length ? renderChildren(node.children) : (node.label ?? '')}</ag-button>`;
+      >${node.children?.length ? renderChildren(node.children) : ((node as { label?: string }).label ?? '')}</ag-button>`;
 
     case 'AgButtonFx':
       return html`<ag-button-fx
@@ -185,7 +185,7 @@ function renderNode(
         .fxDisabled=${node.fxDisabled ?? false}
         @click=${() => doDispatch(node.on_click, actions)}
         @toggle=${() => doDispatch(node.on_toggle, actions)}
-      >${node.children?.length ? renderChildren(node.children) : (node.label ?? '')}</ag-button-fx>`;
+      >${node.children?.length ? renderChildren(node.children) : ((node as { label?: string }).label ?? '')}</ag-button-fx>`;
 
     case 'AgCard':
       return html`<ag-card
@@ -313,11 +313,11 @@ function renderNode(
         .ariaLabel=${node.ariaLabel ?? ''}
         .name=${node.name ?? ''}
         .type=${node.type ?? ''}
-        .value=${node.value ?? ''}
+        .value=${node.value ?? nothing}
         .placeholder=${node.placeholder ?? ''}
         .rows=${node.rows ?? 0}
         .cols=${node.cols ?? 0}
-        .size=${node.size ?? ''}
+        .size=${node.size ?? nothing}
         .capsule=${node.capsule ?? false}
         .rounded=${node.rounded ?? false}
         .underlined=${node.underlined ?? false}
@@ -515,6 +515,7 @@ function renderNode(
         .values=${node.values ?? ''}
         .disabled=${node.disabled ?? false}
         .required=${node.required ?? false}
+        @selection-change=${(e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value)}
       >${renderChildren(node.children)}</ag-selection-button-group>`;
 
     case 'AgSelectionCard':
@@ -536,6 +537,7 @@ function renderNode(
         .values=${node.values ?? ''}
         .disabled=${node.disabled ?? false}
         .required=${node.required ?? false}
+        @selection-change=${(e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value)}
       >${renderChildren(node.children)}</ag-selection-card-group>`;
 
     case 'AgSpinner':
@@ -568,8 +570,8 @@ function renderNode(
         .labelHidden=${node.labelHidden ?? false}
         .noLabel=${node.noLabel ?? false}
         .checked=${node.checked ?? false}
-        .size=${node.size ?? ''}
-        .variant=${node.variant ?? ''}
+        .size=${node.size ?? nothing}
+        .variant=${node.variant ?? nothing}
         .disabled=${node.disabled ?? false}
         .readonly=${node.readonly ?? false}
         .required=${node.required ?? false}
