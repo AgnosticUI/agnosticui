@@ -188,6 +188,28 @@ node v2/scripts/verify-examples.mjs   # check example project health
 
 Pass `--fix` to auto-correct version drift in `package.json` and `agnosticui.config.json`.
 
+## SDUI Renderer Golden Tests
+
+Each of the three SDUI renderers (`v2/renderers/react`, `v2/renderers/vue`, `v2/renderers/lit`) has a `golden.spec` file that renders every `fixtureBank` variation and snapshots the HTML output. Committed `.snap` files are the source of truth. A failing snapshot diff in CI means the renderer's output changed for an existing fixture, which requires a deliberate update.
+
+**When a fixture or renderer changes intentionally**, regenerate snapshots and commit them:
+
+```bash
+# React
+cd v2/renderers/react
+npx vitest run --update-snapshots
+
+# Vue
+cd v2/renderers/vue
+npx vitest run --update-snapshots
+
+# Lit
+cd v2/renderers/lit
+npx vitest run --update-snapshots
+```
+
+The updated `.snap` files in `src/__snapshots__/` must be committed alongside the code change.
+
 ## PR Checklist
 
 - [ ] `npm run lint && npm run typecheck && npm run test` pass in `v2/lib`
@@ -197,6 +219,7 @@ Pass `--fix` to auto-correct version drift in `package.json` and `agnosticui.con
 - [ ] Design token changes originate in `v2/theme-registry/`, not hardcoded in component CSS
 - [ ] FACE API is preserved if a form component was modified
 - [ ] `agnosticui-core` does not appear as a direct dependency in any example `package.json`
+- [ ] If fixtures or renderers changed, golden snapshots are regenerated and committed
 
 ## Code of Conduct
 
