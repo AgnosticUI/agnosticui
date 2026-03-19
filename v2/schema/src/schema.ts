@@ -448,7 +448,7 @@ export const AgRatingSchema = z.object({
   precision: z.enum(['whole', 'half']).optional(),
   readonly: z.boolean().optional(),
   allowClear: z.boolean().optional(),
-  variant: z.enum(['primary', 'success', 'monochrome', 'warning', 'danger', 'secondary']).optional(),
+  variant: z.enum(['primary', 'secondary', 'success', 'warning', 'danger']).optional(),
   size: z.enum(['sm', 'md', 'lg']).optional(),
   name: z.string().optional(),
   label: z.string().optional(),
@@ -507,6 +507,7 @@ export const AgSelectionButtonGroupSchema = z.object({
   values: z.array(z.string()).optional(),
   disabled: z.boolean().optional(),
   required: z.boolean().optional(),
+  on_change: z.string().optional(),
   children: z.array(z.string()).optional(),
 });
 
@@ -532,6 +533,7 @@ export const AgSelectionCardGroupSchema = z.object({
   values: z.array(z.string()).optional(),
   disabled: z.boolean().optional(),
   required: z.boolean().optional(),
+  on_change: z.string().optional(),
   children: z.array(z.string()).optional(),
 });
 

@@ -446,7 +446,7 @@ export interface AgRatingNode {
   precision?: 'whole' | 'half';
   readonly?: boolean;
   allowClear?: boolean;
-  variant?: 'primary' | 'success' | 'monochrome' | 'warning' | 'danger' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
   size?: 'sm' | 'md' | 'lg';
   name?: string;
   label?: string;
@@ -505,6 +505,7 @@ export interface AgSelectionButtonGroupNode {
   values?: string[];
   disabled?: boolean;
   required?: boolean;
+  on_change?: string;
   children?: string[];
 }
 
@@ -530,6 +531,7 @@ export interface AgSelectionCardGroupNode {
   values?: string[];
   disabled?: boolean;
   required?: boolean;
+  on_change?: string;
   children?: string[];
 }
 

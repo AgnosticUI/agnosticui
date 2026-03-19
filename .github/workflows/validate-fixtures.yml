@@ -1,0 +1,42 @@
+name: Validate SDUI fixtures
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'v2/schema/**'
+      - 'v2/demo/src/fixtures/**'
+      - 'v2/renderers/**'
+  pull_request:
+    paths:
+      - 'v2/schema/**'
+      - 'v2/demo/src/fixtures/**'
+      - 'v2/renderers/**'
+
+jobs:
+  validate-fixtures:
+    name: validateGraph() against all fixtures
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: |
+            v2/schema/package-lock.json
+            v2/demo/package-lock.json
+
+      - name: Build schema
+        run: npm ci && npm run build
+        working-directory: v2/schema
+
+      - name: Install demo deps
+        run: npm ci
+        working-directory: v2/demo
+
+      - name: Run fixture validation
+        run: npm test
+        working-directory: v2/demo

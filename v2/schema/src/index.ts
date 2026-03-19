@@ -93,5 +93,5 @@ export {
   AgTextSchema,
 } from './schema.js';
 
-export { validate } from './validate.js';
-export type { ValidateResult, ValidateSuccess, ValidateFailure } from './validate.js';
+export { validate, validateGraph } from './validate.js';
+export type { ValidateResult, ValidateSuccess, ValidateFailure, ValidateGraphResult, GraphNodeError } from './validate.js';
