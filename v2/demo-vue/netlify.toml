@@ -1,5 +1,5 @@
 [build]
-  ignore = "[ -n \"$CACHED_COMMIT_REF\" ] && git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- v2/schema/ v2/lib/ v2/renderers/vue/ v2/demo/ v2/demo-vue/"
+  ignore = "[ \"$CONTEXT\" = 'production' ] && [ -n \"$CACHED_COMMIT_REF\" ] && git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- v2/schema/ v2/lib/ v2/renderers/vue/ v2/demo/ v2/demo-vue/"
   command = """
     (cd ../lib && npm ci --ignore-scripts && npm run build:no-sync) &&
     (cd ../schema && npm ci && npm run build) &&
