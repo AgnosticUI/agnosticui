@@ -5,6 +5,9 @@ import type { AgNode } from '@agnosticui/schema';
 import { pickVariation, confirmFixtures, workflowActions } from '../../../demo/src/fixtures/index';
 import { streamFixture } from '../../../demo/src/lib/stream';
 
+// Only these aliases require form validation before advancing to step 2.
+const FORM_ACTIONS = new Set(['SUBMIT_FORM', 'SUBMIT_LOGIN']);
+
 export class StreamingOutput extends LitElement {
   static styles = css`
     :host { display: block; }
@@ -47,11 +50,27 @@ export class StreamingOutput extends LitElement {
     }
   }
 
+  // ag-dynamic-renderer uses createRenderRoot(){return this} so its children
+  // are in its own light DOM, directly queryable from the shadow root of this element.
+  private _validateForm(): boolean {
+    const renderer = this.renderRoot.querySelector('ag-dynamic-renderer');
+    if (!renderer) return true;
+    const elements = renderer.querySelectorAll('ag-input, ag-checkbox, ag-toggle');
+    let valid = true;
+    elements.forEach(el => {
+      if (typeof (el as HTMLInputElement).reportValidity === 'function') {
+        if (!(el as HTMLInputElement).reportValidity()) valid = false;
+      }
+    });
+    return valid;
+  }
+
   private buildActions(workflow: string): Record<string, () => void> {
     const aliases = workflowActions[workflow] ?? {};
     const map: Record<string, () => void> = {};
     for (const [alias, confirmKey] of Object.entries(aliases)) {
       map[alias] = () => {
+        if (FORM_ACTIONS.has(alias) && !this._validateForm()) return;
         const fixture = confirmFixtures[confirmKey];
         if (fixture) this.runStream(fixture);
       };
