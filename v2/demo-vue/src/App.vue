@@ -54,6 +54,7 @@ const handleRegenerate = () => {
 .demo-layout {
   max-width: 800px;
   margin: 0 auto;
+  margin-block-start: var(--ag-space-8, 2rem);
   padding: 0 1.5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -123,5 +124,10 @@ const handleRegenerate = () => {
 
 .demo-output-body ag-button + ag-button {
   margin-block-start: var(--ag-space-4, 1rem);
+}
+
+.demo-output-body ag-alert {
+  display: block;
+  margin-block-end: var(--ag-space-4, 1rem);
 }
 </style>

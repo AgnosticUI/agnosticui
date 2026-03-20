@@ -164,7 +164,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
 // The renderer is stateless; only the node array swaps.
 export const confirmFixtures: Record<string, AgNode[]> = {
   'contact-form-confirm': [
-    { id: 'cf-ok-alert',    component: 'AgAlert',  variant: 'success', bordered: true, children: ['cf-ok-alert-text'] },
+    { id: 'cf-ok-alert',    component: 'AgAlert',  variant: 'success', bordered: true, rounded: true, children: ['cf-ok-alert-text'] },
     { id: 'cf-ok-alert-text', component: 'AgText', text: "You're now signed up! We'll be in touch within 24 hours." },
     { id: 'cf-ok-card',    component: 'AgCard',   shadow: true, rounded: 'md', children: ['cf-ok-heading', 'cf-ok-body'] },
     { id: 'cf-ok-heading', component: 'AgText',   text: 'Message received', el: 'h2' },
@@ -180,7 +180,7 @@ export const confirmFixtures: Record<string, AgNode[]> = {
   ],
 
   'pricing-trial-confirm': [
-    { id: 'tr-ok-alert',    component: 'AgAlert',  variant: 'success', bordered: true, children: ['tr-ok-alert-text'] },
+    { id: 'tr-ok-alert',    component: 'AgAlert',  variant: 'success', bordered: true, rounded: true, children: ['tr-ok-alert-text'] },
     { id: 'tr-ok-alert-text', component: 'AgText', text: 'Your 14-day trial has been started!' },
     { id: 'tr-ok-card',    component: 'AgCard',   shadow: true, rounded: 'md', children: ['tr-ok-heading', 'tr-ok-body', 'tr-ok-divider', 'tr-ok-badge'] },
     { id: 'tr-ok-heading', component: 'AgText',   text: 'Trial activated', el: 'h2' },

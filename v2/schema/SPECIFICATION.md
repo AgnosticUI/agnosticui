@@ -430,3 +430,69 @@ Breaking changes will be announced via:
 
 Until `@agnosticui/schema` is published to npm (tracked in a future issue), the schema version is
 communicated through the git tag on the `v2/schema/` directory.
+
+## 10. Form Validation
+
+### FACE Components
+
+Ten AgnosticUI components implement the FACE (Form Associated Custom Elements) API via `FaceMixin`:
+`ag-input`, `ag-checkbox`, `ag-radio`, `ag-toggle`, `ag-select`, `ag-selection-button-group`,
+`ag-selection-card-group`, `ag-rating`, `ag-combobox` (excluded from SDUI schema), `ag-slider` (excluded).
+
+Each exposes `checkValidity()` and `reportValidity()` via `ElementInternals`. `reportValidity()` both
+validates and shows the browser-native validation popover.
+
+### Validation in Renderers
+
+Renderers that need to gate action dispatch on form validity should:
+
+1. Keep a ref/query to the renderer container element.
+2. Query all FACE elements using `AG_FACE_SELECTOR` (exported from `@agnosticui/schema`).
+3. Call `reportValidity()` on each; collect the `&&` of all results.
+4. Proceed with the action only if all return `true`.
+
+Do NOT use a real `<form>` element inside `ag-dynamic-renderer` — SDUI nodes are stateless and
+cannot declare a `<form>` boundary. Validation is triggered imperatively from action handlers.
+
+### Validation Selector
+
+`AG_FACE_SELECTOR` is exported from `@agnosticui/schema` and covers all FACE-enabled components
+in the schema (`ag-combobox` and `ag-slider` are excluded as both are in `skipComponents`):
+
+```ts
+import { AG_FACE_SELECTOR } from '@agnosticui/schema';
+
+// AG_FACE_SELECTOR =
+//   'ag-input, ag-checkbox, ag-radio, ag-toggle, ag-select, ' +
+//   'ag-selection-button-group, ag-selection-card-group, ag-rating'
+```
+
+The validation loop is a 5-line pattern that lives in app code (not exported from the library),
+giving users flexibility to customize behavior (scroll to first error, stop on first failure, etc.):
+
+```ts
+function validateOutput(container: Element | null): boolean {
+  if (!container) return true;
+  const elements = container.querySelectorAll(AG_FACE_SELECTOR);
+  let valid = true;
+  elements.forEach(el => {
+    if (typeof (el as HTMLInputElement).reportValidity === 'function') {
+      if (!(el as HTMLInputElement).reportValidity()) valid = false;
+    }
+  });
+  return valid;
+}
+```
+
+### Custom Validation Messages
+
+Components using the "direct" validity strategy (`ag-toggle`, `ag-rating`, `ag-selection-button-group`,
+`ag-selection-card-group`) accept a `validationMessages` prop — a record of validity keys to error strings:
+
+```ts
+{ valueMissing: 'Please select an option' }
+```
+
+Components using the "delegation" strategy (`ag-input`, `ag-checkbox`, `ag-radio`, `ag-select`)
+surface standard HTML constraint attributes (`required`, `min`, `max`, `pattern`) and mirror
+the inner native element's validity state automatically.
