@@ -1,35 +1,22 @@
 .demo-layout {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 0 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.demo-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.demo-title {
-  font-size: 1.5rem;
+.demo-brand {
+  text-decoration: none;
+  color: inherit;
   font-weight: 700;
-  margin: 0;
+  font-size: 1.25rem;
 }
 
-.demo-subtitle {
-  margin: 0;
+.demo-nav-label {
+  font-size: 0.9rem;
   color: var(--ag-color-muted, #666);
-  font-size: 0.95rem;
-}
-
-.demo-subtitle code {
-  font-size: 0.85em;
-  background: var(--ag-background-alt, #f4f4f5);
-  padding: 0.1em 0.4em;
-  border-radius: 4px;
 }
 
 .demo-output-header {
