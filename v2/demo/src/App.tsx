@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ReactButton } from 'agnosticui-core/button/react';
 import { WorkflowPicker } from './components/WorkflowPicker';
 import { StreamingOutput } from './components/StreamingOutput';
 import './App.css';
@@ -28,9 +29,9 @@ export default function App() {
       <section className="demo-output">
         <div className="demo-output-header">
           <span className="demo-output-label">Generated output</span>
-          <button className="demo-regenerate" onClick={handleRegenerate}>
+          <ReactButton shape="rounded" onClick={handleRegenerate}>
             Regenerate
-          </button>
+          </ReactButton>
         </div>
         <div className="demo-output-body">
           <StreamingOutput workflow={workflow} seed={seed} />

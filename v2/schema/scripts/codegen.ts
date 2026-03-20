@@ -6,7 +6,7 @@ import { Project, type Type, type InterfaceDeclaration, type Symbol as MorphSymb
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { writeFileSync } from 'fs';
-import { omitConfig, actionAliasMap, actionPayloadMap, typeOverrides, skipComponents, rendererSlotConfig, vueDefaultImportComponents, reactPropRenames, rendererPrimitives, noUndefinedProps, type RendererSlot, type RendererPrimitive } from './codegen.config.js';
+import { omitConfig, actionAliasMap, actionPayloadMap, vueActionPayloadMap, typeOverrides, skipComponents, rendererSlotConfig, vueDefaultImportComponents, reactPropRenames, rendererPrimitives, noUndefinedProps, type RendererSlot, type RendererPrimitive } from './codegen.config.js';
 
 // scripts/ -> schema/ -> v2/ -> agnosticui/
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -301,7 +301,7 @@ export interface ComponentData {
 function litDefault(tsType: string): string {
   if (tsType === 'boolean') return ' ?? false';
   if (tsType === 'number') return ' ?? 0';
-  return " ?? ''";
+  return ' ?? nothing';
 }
 
 function generateReactCase(c: ComponentData): string {
@@ -465,7 +465,7 @@ function generateVueCase(c: ComponentData): string {
     propsObj.push(`        ${p.name}: node.${quoteName(p.name)},`);
   }
   for (const a of c.actions) {
-    const payloadExpr = actionPayloadMap[a.sourceName];
+    const payloadExpr = vueActionPayloadMap[a.sourceName] ?? actionPayloadMap[a.sourceName];
     if (payloadExpr) {
       propsObj.push(`        ${a.sourceName}: (e: Event) => doDispatch(node.${quoteName(a.alias)}, actions, ${payloadExpr}),`);
     } else {

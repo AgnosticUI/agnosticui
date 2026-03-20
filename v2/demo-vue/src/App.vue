@@ -1,3 +1,50 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import WorkflowPicker from './components/WorkflowPicker.vue';
+import StreamingOutput from './components/StreamingOutput.vue';
+
+const workflow = ref('contact-form');
+const seed = ref(0);
+
+const handleSelect = (next: string) => {
+  workflow.value = next;
+  seed.value = 0;
+};
+
+const handleRegenerate = () => {
+  seed.value += 1;
+};
+</script>
+
+<template>
+  <div class="demo-layout">
+    <header class="demo-header">
+      <h1 class="demo-title">AgnosticUI — Schema-Driven UI Demo (Vue)</h1>
+      <p class="demo-subtitle">
+        Select a workflow below. The output renders from a validated
+        <code>AgNode[]</code> graph with simulated streaming.
+      </p>
+    </header>
+
+    <section class="demo-picker">
+      <div class="demo-picker-section">
+        <WorkflowPicker @select="handleSelect" />
+      </div>
+    </section>
+
+    <section class="demo-output">
+      <div class="demo-output-header">
+        <span class="demo-output-label">Generated output</span>
+        <ag-button shape="rounded" @click="handleRegenerate">Regenerate</ag-button>
+      </div>
+      <div class="demo-output-body">
+        <StreamingOutput :workflow="workflow" :seed="seed" />
+      </div>
+    </section>
+  </div>
+</template>
+
+<style>
 .demo-layout {
   max-width: 800px;
   margin: 0 auto;
@@ -47,7 +94,6 @@
   color: var(--ag-color-muted, #666);
 }
 
-
 .demo-picker-section {
   background: var(--ag-background-secondary, #f3f4f6);
   border: 1px solid var(--ag-border, #e5e7eb);
@@ -85,3 +131,4 @@
 .demo-output-body ag-button + ag-button {
   margin-block-start: var(--ag-space-4, 1rem);
 }
+</style>
