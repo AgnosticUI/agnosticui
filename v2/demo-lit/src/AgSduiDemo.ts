@@ -14,6 +14,7 @@ export class AgSduiDemo extends LitElement {
     .demo-layout {
       max-width: 800px;
       margin: 0 auto;
+      margin-block-start: var(--ag-space-8, 2rem);
       padding: 0 1.5rem 2rem;
       display: flex;
       flex-direction: column;

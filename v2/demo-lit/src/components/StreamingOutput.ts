@@ -27,6 +27,11 @@ export class StreamingOutput extends LitElement {
     ag-button + ag-button {
       margin-block-start: var(--ag-space-4, 1rem);
     }
+
+    ag-alert {
+      display: block;
+      margin-inline: var(--ag-space-4, 1rem);
+    }
   `;
 
   @property() workflow = 'contact-form';
