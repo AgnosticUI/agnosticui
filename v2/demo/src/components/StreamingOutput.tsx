@@ -1,15 +1,13 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { AgNode } from '@agnosticui/schema';
+import { AG_FACE_SELECTOR } from '@agnosticui/schema';
 import { AgDynamicRenderer } from '@agnosticui/render-react';
 import { pickVariation, confirmFixtures, workflowActions } from '../fixtures/index';
 import { streamFixture } from '../lib/stream';
 
-// Only these aliases require form validation before advancing to step 2.
-const FORM_ACTIONS = new Set(['SUBMIT_FORM', 'SUBMIT_LOGIN']);
-
 function validateOutput(container: Element | null): boolean {
   if (!container) return true;
-  const elements = container.querySelectorAll('ag-input, ag-checkbox, ag-toggle');
+  const elements = container.querySelectorAll(AG_FACE_SELECTOR);
   let valid = true;
   elements.forEach(el => {
     if (typeof (el as HTMLInputElement).reportValidity === 'function') {
@@ -51,7 +49,7 @@ export function StreamingOutput({ workflow, seed }: StreamingOutputProps) {
   const actions: Record<string, () => void> = {};
   for (const [alias, confirmKey] of Object.entries(aliases)) {
     actions[alias] = () => {
-      if (FORM_ACTIONS.has(alias) && !validateOutput(wrapperRef.current)) return;
+      if (!validateOutput(wrapperRef.current)) return;
       const fixture = confirmFixtures[confirmKey];
       if (fixture) runStream(fixture);
     };

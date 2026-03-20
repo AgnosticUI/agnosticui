@@ -2,11 +2,9 @@ import { LitElement, html, css } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '@agnosticui/render-lit';
 import type { AgNode } from '@agnosticui/schema';
+import { AG_FACE_SELECTOR } from '@agnosticui/schema';
 import { pickVariation, confirmFixtures, workflowActions } from '../../../demo/src/fixtures/index';
 import { streamFixture } from '../../../demo/src/lib/stream';
-
-// Only these aliases require form validation before advancing to step 2.
-const FORM_ACTIONS = new Set(['SUBMIT_FORM', 'SUBMIT_LOGIN']);
 
 export class StreamingOutput extends LitElement {
   static styles = css`
@@ -55,7 +53,7 @@ export class StreamingOutput extends LitElement {
   private _validateForm(): boolean {
     const renderer = this.renderRoot.querySelector('ag-dynamic-renderer');
     if (!renderer) return true;
-    const elements = renderer.querySelectorAll('ag-input, ag-checkbox, ag-toggle');
+    const elements = renderer.querySelectorAll(AG_FACE_SELECTOR);
     let valid = true;
     elements.forEach(el => {
       if (typeof (el as HTMLInputElement).reportValidity === 'function') {
@@ -70,7 +68,7 @@ export class StreamingOutput extends LitElement {
     const map: Record<string, () => void> = {};
     for (const [alias, confirmKey] of Object.entries(aliases)) {
       map[alias] = () => {
-        if (FORM_ACTIONS.has(alias) && !this._validateForm()) return;
+        if (!this._validateForm()) return;
         const fixture = confirmFixtures[confirmKey];
         if (fixture) this.runStream(fixture);
       };

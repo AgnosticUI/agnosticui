@@ -2,11 +2,9 @@
 import { ref, watch } from 'vue';
 import { AgDynamicRenderer } from '@agnosticui/render-vue';
 import type { AgNode } from '@agnosticui/schema';
+import { AG_FACE_SELECTOR } from '@agnosticui/schema';
 import { pickVariation, confirmFixtures, workflowActions } from '../../../demo/src/fixtures/index';
 import { streamFixture } from '../../../demo/src/lib/stream';
-
-// Only these aliases require form validation before advancing to step 2.
-const FORM_ACTIONS = new Set(['SUBMIT_FORM', 'SUBMIT_LOGIN']);
 
 const props = defineProps<{ workflow: string; seed: number }>();
 
@@ -30,7 +28,7 @@ async function runStream(fixture: AgNode[]) {
 function validateOutput(): boolean {
   const container = wrapperEl.value;
   if (!container) return true;
-  const elements = container.querySelectorAll('ag-input, ag-checkbox, ag-toggle');
+  const elements = container.querySelectorAll(AG_FACE_SELECTOR);
   let valid = true;
   elements.forEach(el => {
     if (typeof (el as HTMLInputElement).reportValidity === 'function') {
@@ -51,7 +49,7 @@ watch(
     const map: Record<string, () => void> = {};
     for (const [alias, confirmKey] of Object.entries(aliases)) {
       map[alias] = () => {
-        if (FORM_ACTIONS.has(alias) && !validateOutput()) return;
+        if (!validateOutput()) return;
         const fixture = confirmFixtures[confirmKey];
         if (fixture) runStream(fixture);
       };
