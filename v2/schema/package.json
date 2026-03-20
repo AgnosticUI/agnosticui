@@ -14,7 +14,6 @@
   "scripts": {
     "test": "vitest run",
     "build": "tsc",
-    "prepare": "npm run build",
     "codegen": "tsx scripts/codegen.ts",
     "emit-schema-json": "tsx scripts/emit-schema-json.ts",
     "check-codegen": "tsx scripts/check-codegen.ts",
