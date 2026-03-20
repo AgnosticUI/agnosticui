@@ -128,6 +128,6 @@ const handleRegenerate = () => {
 
 .demo-output-body ag-alert {
   display: block;
-  margin-inline: var(--ag-space-4, 1rem);
+  margin-block-end: var(--ag-space-4, 1rem);
 }
 </style>

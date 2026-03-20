@@ -30,7 +30,7 @@ export class StreamingOutput extends LitElement {
 
     ag-alert {
       display: block;
-      margin-inline: var(--ag-space-4, 1rem);
+      margin-block-end: var(--ag-space-4, 1rem);
     }
   `;
 
