@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { VueHeader } from 'agnosticui-core/header/vue';
 import WorkflowPicker from './components/WorkflowPicker.vue';
 import StreamingOutput from './components/StreamingOutput.vue';
 
@@ -17,15 +18,17 @@ const handleRegenerate = () => {
 </script>
 
 <template>
-  <div class="demo-layout">
-    <header class="demo-header">
-      <h1 class="demo-title">AgnosticUI — Schema-Driven UI Demo (Vue)</h1>
-      <p class="demo-subtitle">
-        Select a workflow below. The output renders from a validated
-        <code>AgNode[]</code> graph with simulated streaming.
-      </p>
-    </header>
+  <div>
+    <VueHeader>
+      <template #logo>
+        <a href="/" class="demo-brand">AgnosticUI SDUI</a>
+      </template>
+      <nav aria-label="Demo navigation">
+        <span class="demo-nav-label">Schema-Driven UI Demo (Vue)</span>
+      </nav>
+    </VueHeader>
 
+    <div class="demo-layout">
     <section class="demo-picker">
       <div class="demo-picker-section">
         <WorkflowPicker @select="handleSelect" />
@@ -41,6 +44,7 @@ const handleRegenerate = () => {
         <StreamingOutput :workflow="workflow" :seed="seed" />
       </div>
     </section>
+    </div>
   </div>
 </template>
 
@@ -48,35 +52,22 @@ const handleRegenerate = () => {
 .demo-layout {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 0 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.demo-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.demo-title {
-  font-size: 1.5rem;
+.demo-brand {
+  text-decoration: none;
+  color: inherit;
   font-weight: 700;
-  margin: 0;
+  font-size: 1.25rem;
 }
 
-.demo-subtitle {
-  margin: 0;
+.demo-nav-label {
+  font-size: 0.9rem;
   color: var(--ag-color-muted, #666);
-  font-size: 0.95rem;
-}
-
-.demo-subtitle code {
-  font-size: 0.85em;
-  background: var(--ag-background-alt, #f4f4f5);
-  padding: 0.1em 0.4em;
-  border-radius: 4px;
 }
 
 .demo-output-header {

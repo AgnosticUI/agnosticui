@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ReactButton } from 'agnosticui-core/button/react';
+import { ReactHeader } from 'agnosticui-core/header/react';
 import { WorkflowPicker } from './components/WorkflowPicker';
 import { StreamingOutput } from './components/StreamingOutput';
 import './App.css';
@@ -11,14 +12,14 @@ export default function App() {
   const handleRegenerate = () => setState(s => ({ ...s, seed: s.seed + 1 }));
 
   return (
-    <div className="demo-layout">
-      <header className="demo-header">
-        <h1 className="demo-title">AgnosticUI — Schema-Driven UI Demo</h1>
-        <p className="demo-subtitle">
-          Select a workflow below. The output renders from a validated{' '}
-          <code>AgNode[]</code> graph with simulated streaming.
-        </p>
-      </header>
+    <>
+      <ReactHeader>
+        <a href="/" slot="logo" className="demo-brand">AgnosticUI SDUI</a>
+        <nav aria-label="Demo navigation">
+          <span className="demo-nav-label">Schema-Driven UI Demo</span>
+        </nav>
+      </ReactHeader>
+      <div className="demo-layout">
 
       <section className="demo-picker">
         <div className="demo-picker-section">
@@ -38,5 +39,6 @@ export default function App() {
         </div>
       </section>
     </div>
+    </>
   );
 }
