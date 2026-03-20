@@ -3,6 +3,7 @@ import { state } from 'lit/decorators.js';
 import 'agnosticui-core/header';
 import './components/WorkflowPicker';
 import './components/StreamingOutput';
+import './SkinSwitcher';
 
 export class AgSduiDemo extends LitElement {
   static styles = css`
@@ -99,6 +100,7 @@ export class AgSduiDemo extends LitElement {
           </div>
         </section>
       </div>
+      <skin-switcher></skin-switcher>
     `;
   }
 }

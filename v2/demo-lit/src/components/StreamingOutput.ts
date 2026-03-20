@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '@agnosticui/render-lit';
 import type { AgNode } from '@agnosticui/schema';
-import { pickVariation } from '../../../demo/src/fixtures/index';
+import { pickVariation, confirmFixtures, workflowActions } from '../../../demo/src/fixtures/index';
 import { streamFixture } from '../../../demo/src/lib/stream';
 
 export class StreamingOutput extends LitElement {
@@ -32,30 +32,47 @@ export class StreamingOutput extends LitElement {
   @property({ type: Number }) seed = 0;
 
   @state() private nodes: AgNode[] = [];
+  @state() private actions: Record<string, () => void> = {};
 
   private cancelStream: (() => void) | null = null;
 
-  private async startStream(workflow: string) {
+  private async runStream(fixture: AgNode[]) {
     if (this.cancelStream) this.cancelStream();
     let cancelled = false;
     this.cancelStream = () => { cancelled = true; };
     this.nodes = [];
-    const fixture = pickVariation(workflow);
     for await (const node of streamFixture(fixture)) {
       if (cancelled) break;
       this.nodes = [...this.nodes, node];
     }
   }
 
+  private buildActions(workflow: string): Record<string, () => void> {
+    const aliases = workflowActions[workflow] ?? {};
+    const map: Record<string, () => void> = {};
+    for (const [alias, confirmKey] of Object.entries(aliases)) {
+      map[alias] = () => {
+        const fixture = confirmFixtures[confirmKey];
+        if (fixture) this.runStream(fixture);
+      };
+    }
+    return map;
+  }
+
+  private startWorkflow(workflow: string) {
+    this.actions = this.buildActions(workflow);
+    this.runStream(pickVariation(workflow));
+  }
+
   override updated(changed: Map<string, unknown>) {
     if (changed.has('workflow') || changed.has('seed')) {
-      this.startStream(this.workflow);
+      this.startWorkflow(this.workflow);
     }
   }
 
   override connectedCallback() {
     super.connectedCallback();
-    this.startStream(this.workflow);
+    this.startWorkflow(this.workflow);
   }
 
   override disconnectedCallback() {
@@ -64,7 +81,7 @@ export class StreamingOutput extends LitElement {
   }
 
   render() {
-    return html`<ag-dynamic-renderer .nodes=${this.nodes}></ag-dynamic-renderer>`;
+    return html`<ag-dynamic-renderer .nodes=${this.nodes} .actions=${this.actions}></ag-dynamic-renderer>`;
   }
 }
 
