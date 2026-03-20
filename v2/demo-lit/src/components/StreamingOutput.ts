@@ -6,7 +6,27 @@ import { pickVariation } from '../../../demo/src/fixtures/index';
 import { streamFixture } from '../../../demo/src/lib/stream';
 
 export class StreamingOutput extends LitElement {
-  static styles = css`:host { display: block; }`;
+  static styles = css`
+    :host { display: block; }
+
+    ag-checkbox {
+      display: block;
+    }
+
+    ag-input,
+    ag-checkbox,
+    ag-toggle,
+    ag-divider,
+    ag-link,
+    ag-badge {
+      display: block;
+      margin-block-end: var(--ag-space-4, 1rem);
+    }
+
+    ag-button + ag-button {
+      margin-block-start: var(--ag-space-4, 1rem);
+    }
+  `;
 
   @property() workflow = 'contact-form';
   @property({ type: Number }) seed = 0;

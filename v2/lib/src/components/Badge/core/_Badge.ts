@@ -1,6 +1,7 @@
 import { LitElement, html, css, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import '../../VisuallyHidden/core/VisuallyHidden.js';
 
 export interface BadgeProps {
   variant?: 'default' | 'success' | 'warning' | 'danger' | 'primary' | 'info' | 'neutral' | 'monochrome';
@@ -230,9 +231,8 @@ export class AgBadge extends LitElement implements BadgeProps {
   private _updateLiveRegion() {
     let liveRegion = document.getElementById('ag-badge-live');
     if (!liveRegion) {
-      liveRegion = document.createElement('div');
+      liveRegion = document.createElement('ag-visually-hidden');
       liveRegion.id = 'ag-badge-live';
-      liveRegion.className = 'visually-hidden';
       liveRegion.setAttribute('aria-live', this.live);
       liveRegion.setAttribute('aria-atomic', 'true');
       document.body.appendChild(liveRegion);

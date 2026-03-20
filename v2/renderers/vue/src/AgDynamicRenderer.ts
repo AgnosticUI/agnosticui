@@ -639,7 +639,7 @@ function renderNode(
         values: node.values,
         disabled: node.disabled,
         required: node.required,
-        onSelectionChange: (e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value),
+        onSelectionChange: (e: Event) => doDispatch(node.on_change, actions, (e as unknown as {value: string}).value),
         },
         { default: () => renderChildren(node.children) },
       );
@@ -669,7 +669,7 @@ function renderNode(
         values: node.values,
         disabled: node.disabled,
         required: node.required,
-        onSelectionChange: (e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value),
+        onSelectionChange: (e: Event) => doDispatch(node.on_change, actions, (e as unknown as {value: string}).value),
         },
         { default: () => renderChildren(node.children) },
       );

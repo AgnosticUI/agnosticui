@@ -83,7 +83,7 @@ function renderNode(
 
     case 'AgAlert':
       return html`<ag-alert
-        .variant=${node.variant ?? ''}
+        .variant=${node.variant ?? nothing}
         .bordered=${node.bordered ?? false}
         .rounded=${node.rounded ?? false}
         .borderedLeft=${node.borderedLeft ?? false}
@@ -100,88 +100,88 @@ function renderNode(
 
     case 'AgAvatar':
       return html`<ag-avatar
-        .text=${node.text ?? ''}
-        .imgSrc=${node.imgSrc ?? ''}
-        .imgAlt=${node.imgAlt ?? ''}
-        .size=${node.size ?? ''}
-        .shape=${node.shape ?? ''}
-        .variant=${node.variant ?? ''}
-        .ariaLabel=${node.ariaLabel ?? ''}
+        .text=${node.text ?? nothing}
+        .imgSrc=${node.imgSrc ?? nothing}
+        .imgAlt=${node.imgAlt ?? nothing}
+        .size=${node.size ?? nothing}
+        .shape=${node.shape ?? nothing}
+        .variant=${node.variant ?? nothing}
+        .ariaLabel=${node.ariaLabel ?? nothing}
       ></ag-avatar>`;
 
     case 'AgBadge':
       return html`<ag-badge
-        .variant=${node.variant ?? ''}
-        .size=${node.size ?? ''}
+        .variant=${node.variant ?? nothing}
+        .size=${node.size ?? nothing}
         .dot=${node.dot ?? false}
         .value=${node.value ?? 0}
         .max=${node.max ?? 0}
         .interactive=${node.interactive ?? false}
-        .statusLabel=${node.statusLabel ?? ''}
-        .live=${node.live ?? ''}
+        .statusLabel=${node.statusLabel ?? nothing}
+        .live=${node.live ?? nothing}
         .hiddenFromAT=${node.hiddenFromAT ?? false}
       >${renderChildren(node.children)}</ag-badge>`;
 
     case 'AgBadgeFx':
       return html`<ag-badge-fx
-        .variant=${node.variant ?? ''}
-        .size=${node.size ?? ''}
+        .variant=${node.variant ?? nothing}
+        .size=${node.size ?? nothing}
         .dot=${node.dot ?? false}
         .value=${node.value ?? 0}
         .max=${node.max ?? 0}
         .interactive=${node.interactive ?? false}
-        .statusLabel=${node.statusLabel ?? ''}
-        .live=${node.live ?? ''}
+        .statusLabel=${node.statusLabel ?? nothing}
+        .live=${node.live ?? nothing}
         .hiddenFromAT=${node.hiddenFromAT ?? false}
-        .fx=${node.fx ?? ''}
-        .fxSpeed=${node.fxSpeed ?? ''}
-        .fxEase=${node.fxEase ?? ''}
+        .fx=${node.fx ?? nothing}
+        .fxSpeed=${node.fxSpeed ?? nothing}
+        .fxEase=${node.fxEase ?? nothing}
         .fxDisabled=${node.fxDisabled ?? false}
       >${renderChildren(node.children)}</ag-badge-fx>`;
 
     case 'AgBreadcrumb':
       return html`<ag-breadcrumb
-        .type=${node.type ?? ''}
+        .type=${node.type ?? nothing}
         .primary=${node.primary ?? false}
-        .ariaLabel=${node.ariaLabel ?? ''}
+        .ariaLabel=${node.ariaLabel ?? nothing}
         @breadcrumb-click=${() => doDispatch(node.on_click, actions)}
       ></ag-breadcrumb>`;
 
     case 'AgButton':
       return html`<ag-button
-        .variant=${node.variant ?? ''}
-        .size=${node.size ?? ''}
-        .shape=${node.shape ?? ''}
+        .variant=${node.variant ?? nothing}
+        .size=${node.size ?? nothing}
+        .shape=${node.shape ?? nothing}
         .bordered=${node.bordered ?? false}
         .ghost=${node.ghost ?? false}
         .link=${node.link ?? false}
         .grouped=${node.grouped ?? false}
         .fullWidth=${node.fullWidth ?? false}
-        .type=${node.type ?? ''}
+        .type=${node.type ?? nothing}
         .disabled=${node.disabled ?? false}
         .loading=${node.loading ?? false}
-        .ariaLabel=${node.ariaLabel ?? ''}
+        .ariaLabel=${node.ariaLabel ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
         @toggle=${() => doDispatch(node.on_toggle, actions)}
       >${node.children?.length ? renderChildren(node.children) : ((node as { label?: string }).label ?? '')}</ag-button>`;
 
     case 'AgButtonFx':
       return html`<ag-button-fx
-        .variant=${node.variant ?? ''}
-        .size=${node.size ?? ''}
-        .shape=${node.shape ?? ''}
+        .variant=${node.variant ?? nothing}
+        .size=${node.size ?? nothing}
+        .shape=${node.shape ?? nothing}
         .bordered=${node.bordered ?? false}
         .ghost=${node.ghost ?? false}
         .link=${node.link ?? false}
         .grouped=${node.grouped ?? false}
         .fullWidth=${node.fullWidth ?? false}
-        .type=${node.type ?? ''}
+        .type=${node.type ?? nothing}
         .disabled=${node.disabled ?? false}
         .loading=${node.loading ?? false}
-        .ariaLabel=${node.ariaLabel ?? ''}
-        .fx=${node.fx ?? ''}
-        .fxSpeed=${node.fxSpeed ?? ''}
-        .fxEase=${node.fxEase ?? ''}
+        .ariaLabel=${node.ariaLabel ?? nothing}
+        .fx=${node.fx ?? nothing}
+        .fxSpeed=${node.fxSpeed ?? nothing}
+        .fxEase=${node.fxEase ?? nothing}
         .fxDisabled=${node.fxDisabled ?? false}
         @click=${() => doDispatch(node.on_click, actions)}
         @toggle=${() => doDispatch(node.on_toggle, actions)}
@@ -192,25 +192,25 @@ function renderNode(
         .stacked=${node.stacked ?? false}
         .shadow=${node.shadow ?? false}
         .animated=${node.animated ?? false}
-        .rounded=${node.rounded ?? ''}
-        .variant=${node.variant ?? ''}
+        .rounded=${node.rounded ?? nothing}
+        .variant=${node.variant ?? nothing}
         .hasMedia=${node.hasMedia ?? false}
-        .mediaPosition=${node.mediaPosition ?? ''}
+        .mediaPosition=${node.mediaPosition ?? nothing}
       >${renderChildren(node.children)}</ag-card>`;
 
     case 'AgCheckbox':
       return html`<ag-checkbox
-        .name=${node.name ?? ''}
-        .value=${node.value ?? ''}
+        .name=${node.name ?? nothing}
+        .value=${node.value ?? nothing}
         .checked=${node.checked ?? false}
         .disabled=${node.disabled ?? false}
-        .size=${node.size ?? ''}
-        .labelText=${node.labelText ?? ''}
-        .labelPosition=${node.labelPosition ?? ''}
+        .size=${node.size ?? nothing}
+        .labelText=${node.labelText ?? nothing}
+        .labelPosition=${node.labelPosition ?? nothing}
         .required=${node.required ?? false}
         .invalid=${node.invalid ?? false}
-        .errorMessage=${node.errorMessage ?? ''}
-        .helpText=${node.helpText ?? ''}
+        .errorMessage=${node.errorMessage ?? nothing}
+        .helpText=${node.helpText ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
         @change=${() => doDispatch(node.on_change, actions)}
       ></ag-checkbox>`;
@@ -218,12 +218,12 @@ function renderNode(
     case 'AgDialog':
       return html`<ag-dialog
         .open=${node.open ?? false}
-        .heading=${node.heading ?? ''}
-        .description=${node.description ?? ''}
+        .heading=${node.heading ?? nothing}
+        .description=${node.description ?? nothing}
         .noCloseOnEscape=${node.noCloseOnEscape ?? false}
         .noCloseOnBackdrop=${node.noCloseOnBackdrop ?? false}
         .showCloseButton=${node.showCloseButton ?? false}
-        .drawerPosition=${node.drawerPosition ?? ''}
+        .drawerPosition=${node.drawerPosition ?? nothing}
         @dialog-open=${() => doDispatch(node.on_open, actions)}
         @dialog-close=${() => doDispatch(node.on_close, actions)}
         @dialog-cancel=${() => doDispatch(node.on_cancel, actions)}
@@ -232,20 +232,20 @@ function renderNode(
     case 'AgDivider':
       return html`<ag-divider
         .vertical=${node.vertical ?? false}
-        .justify=${node.justify ?? ''}
-        .size=${node.size ?? ''}
-        .variant=${node.variant ?? ''}
+        .justify=${node.justify ?? nothing}
+        .size=${node.size ?? nothing}
+        .variant=${node.variant ?? nothing}
       ></ag-divider>`;
 
     case 'AgDrawer':
       return html`<ag-drawer
         .open=${node.open ?? false}
-        .heading=${node.heading ?? ''}
-        .description=${node.description ?? ''}
+        .heading=${node.heading ?? nothing}
+        .description=${node.description ?? nothing}
         .noCloseOnEscape=${node.noCloseOnEscape ?? false}
         .noCloseOnBackdrop=${node.noCloseOnBackdrop ?? false}
         .showCloseButton=${node.showCloseButton ?? false}
-        .position=${node.position ?? ''}
+        .position=${node.position ?? nothing}
         @drawer-open=${() => doDispatch(node.on_open, actions)}
         @drawer-close=${() => doDispatch(node.on_close, actions)}
         @drawer-cancel=${() => doDispatch(node.on_cancel, actions)}
@@ -253,33 +253,33 @@ function renderNode(
 
     case 'AgFieldset':
       return html`<ag-fieldset
-        .legend=${node.legend ?? ''}
+        .legend=${node.legend ?? nothing}
         .bordered=${node.bordered ?? false}
-        .layout=${node.layout ?? ''}
+        .layout=${node.layout ?? nothing}
         .legendHidden=${node.legendHidden ?? false}
       >${renderChildren(node.children)}</ag-fieldset>`;
 
     case 'AgHeader':
       return html`<ag-header
         .sticky=${node.sticky ?? false}
-        .contentJustify=${node.contentJustify ?? ''}
+        .contentJustify=${node.contentJustify ?? nothing}
       >${renderChildren(node.children)}</ag-header>`;
 
     case 'AgIcon':
       return html`<ag-icon
-        .size=${node.size ?? ''}
-        .type=${node.type ?? ''}
+        .size=${node.size ?? nothing}
+        .type=${node.type ?? nothing}
         .noFill=${node.noFill ?? false}
       ></ag-icon>`;
 
     case 'AgIconButton':
       return html`<ag-icon-button
-        .label=${node.label ?? ''}
-        .icon=${node.icon ?? ''}
-        .unicode=${node.unicode ?? ''}
-        .size=${node.size ?? ''}
-        .variant=${node.variant ?? ''}
-        .type=${node.type ?? ''}
+        .label=${node.label ?? nothing}
+        .icon=${node.icon ?? nothing}
+        .unicode=${node.unicode ?? nothing}
+        .size=${node.size ?? nothing}
+        .variant=${node.variant ?? nothing}
+        .type=${node.type ?? nothing}
         .disabled=${node.disabled ?? false}
         .loading=${node.loading ?? false}
         @icon-button-click=${() => doDispatch(node.on_click, actions)}
@@ -288,17 +288,17 @@ function renderNode(
 
     case 'AgIconButtonFx':
       return html`<ag-icon-button-fx
-        .label=${node.label ?? ''}
-        .icon=${node.icon ?? ''}
-        .unicode=${node.unicode ?? ''}
-        .size=${node.size ?? ''}
-        .variant=${node.variant ?? ''}
-        .type=${node.type ?? ''}
+        .label=${node.label ?? nothing}
+        .icon=${node.icon ?? nothing}
+        .unicode=${node.unicode ?? nothing}
+        .size=${node.size ?? nothing}
+        .variant=${node.variant ?? nothing}
+        .type=${node.type ?? nothing}
         .disabled=${node.disabled ?? false}
         .loading=${node.loading ?? false}
-        .fx=${node.fx ?? ''}
-        .fxSpeed=${node.fxSpeed ?? ''}
-        .fxEase=${node.fxEase ?? ''}
+        .fx=${node.fx ?? nothing}
+        .fxSpeed=${node.fxSpeed ?? nothing}
+        .fxEase=${node.fxEase ?? nothing}
         .fxDisabled=${node.fxDisabled ?? false}
         @icon-button-click=${() => doDispatch(node.on_click, actions)}
         @icon-button-activate=${() => doDispatch(node.on_activate, actions)}
@@ -306,15 +306,15 @@ function renderNode(
 
     case 'AgInput':
       return html`<ag-input
-        .label=${node.label ?? ''}
+        .label=${node.label ?? nothing}
         .labelHidden=${node.labelHidden ?? false}
-        .labelPosition=${node.labelPosition ?? ''}
+        .labelPosition=${node.labelPosition ?? nothing}
         .noLabel=${node.noLabel ?? false}
-        .ariaLabel=${node.ariaLabel ?? ''}
-        .name=${node.name ?? ''}
-        .type=${node.type ?? ''}
+        .ariaLabel=${node.ariaLabel ?? nothing}
+        .name=${node.name ?? nothing}
+        .type=${node.type ?? nothing}
         .value=${node.value ?? nothing}
-        .placeholder=${node.placeholder ?? ''}
+        .placeholder=${node.placeholder ?? nothing}
         .rows=${node.rows ?? 0}
         .cols=${node.cols ?? 0}
         .size=${node.size ?? nothing}
@@ -327,34 +327,34 @@ function renderNode(
         .disabled=${node.disabled ?? false}
         .readonly=${node.readonly ?? false}
         .invalid=${node.invalid ?? false}
-        .errorMessage=${node.errorMessage ?? ''}
-        .helpText=${node.helpText ?? ''}
+        .errorMessage=${node.errorMessage ?? nothing}
+        .helpText=${node.helpText ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
         @change=${() => doDispatch(node.on_change, actions)}
       ></ag-input>`;
 
     case 'AgIntlFormatter':
       return html`<ag-intl-formatter
-        .type=${node.type ?? ''}
-        .value=${node.value ?? ''}
-        .lang=${node.lang ?? ''}
-        .date=${node.date ?? ''}
-        .weekday=${node.weekday ?? ''}
-        .era=${node.era ?? ''}
-        .year=${node.year ?? ''}
-        .month=${node.month ?? ''}
-        .day=${node.day ?? ''}
-        .hour=${node.hour ?? ''}
-        .minute=${node.minute ?? ''}
-        .second=${node.second ?? ''}
-        .timeZoneName=${node.timeZoneName ?? ''}
-        .timeZone=${node.timeZone ?? ''}
-        .hourFormat=${node.hourFormat ?? ''}
-        .dateStyle=${node.dateStyle ?? ''}
-        .timeStyle=${node.timeStyle ?? ''}
+        .type=${node.type ?? nothing}
+        .value=${node.value ?? nothing}
+        .lang=${node.lang ?? nothing}
+        .date=${node.date ?? nothing}
+        .weekday=${node.weekday ?? nothing}
+        .era=${node.era ?? nothing}
+        .year=${node.year ?? nothing}
+        .month=${node.month ?? nothing}
+        .day=${node.day ?? nothing}
+        .hour=${node.hour ?? nothing}
+        .minute=${node.minute ?? nothing}
+        .second=${node.second ?? nothing}
+        .timeZoneName=${node.timeZoneName ?? nothing}
+        .timeZone=${node.timeZone ?? nothing}
+        .hourFormat=${node.hourFormat ?? nothing}
+        .dateStyle=${node.dateStyle ?? nothing}
+        .timeStyle=${node.timeStyle ?? nothing}
         .noGrouping=${node.noGrouping ?? false}
-        .currency=${node.currency ?? ''}
-        .currencyDisplay=${node.currencyDisplay ?? ''}
+        .currency=${node.currency ?? nothing}
+        .currencyDisplay=${node.currencyDisplay ?? nothing}
         .minimumIntegerDigits=${node.minimumIntegerDigits ?? 0}
         .minimumFractionDigits=${node.minimumFractionDigits ?? 0}
         .maximumFractionDigits=${node.maximumFractionDigits ?? 0}
@@ -364,63 +364,63 @@ function renderNode(
 
     case 'AgKbd':
       return html`<ag-kbd
-        .variant=${node.variant ?? ''}
+        .variant=${node.variant ?? nothing}
         .bordered=${node.bordered ?? false}
         .background=${node.background ?? false}
-        .size=${node.size ?? ''}
+        .size=${node.size ?? nothing}
       >${renderChildren(node.children)}</ag-kbd>`;
 
     case 'AgLink':
       return html`<ag-link
-        .href=${node.href ?? ''}
-        .variant=${node.variant ?? ''}
+        .href=${node.href ?? nothing}
+        .variant=${node.variant ?? nothing}
         .isButton=${node.isButton ?? false}
-        .buttonSize=${node.buttonSize ?? ''}
-        .buttonShape=${node.buttonShape ?? ''}
+        .buttonSize=${node.buttonSize ?? nothing}
+        .buttonShape=${node.buttonShape ?? nothing}
         .buttonBordered=${node.buttonBordered ?? false}
         .external=${node.external ?? false}
         .disabled=${node.disabled ?? false}
-        .ariaLabel=${node.ariaLabel ?? ''}
+        .ariaLabel=${node.ariaLabel ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
       >${renderChildren(node.children)}</ag-link>`;
 
     case 'AgLoader':
       return html`<ag-loader
-        .size=${node.size ?? ''}
-        .ariaLabel=${node.ariaLabel ?? ''}
+        .size=${node.size ?? nothing}
+        .ariaLabel=${node.ariaLabel ?? nothing}
       ></ag-loader>`;
 
     case 'AgMark':
       return html`<ag-mark
-        .variant=${node.variant ?? ''}
-        .search=${node.search ?? ''}
+        .variant=${node.variant ?? nothing}
+        .search=${node.search ?? nothing}
         .caseSensitive=${node.caseSensitive ?? false}
         .matchAll=${node.matchAll ?? false}
       >${renderChildren(node.children)}</ag-mark>`;
 
     case 'AgMessageBubble':
       return html`<ag-message-bubble
-        .from=${node.from ?? ''}
-        .message=${node.message ?? ''}
-        .time=${node.time ?? ''}
-        .author=${node.author ?? ''}
-        .avatarUrl=${node.avatarUrl ?? ''}
-        .footer=${node.footer ?? ''}
-        .variant=${node.variant ?? ''}
+        .from=${node.from ?? nothing}
+        .message=${node.message ?? nothing}
+        .time=${node.time ?? nothing}
+        .author=${node.author ?? nothing}
+        .avatarUrl=${node.avatarUrl ?? nothing}
+        .footer=${node.footer ?? nothing}
+        .variant=${node.variant ?? nothing}
       >${renderChildren(node.children)}</ag-message-bubble>`;
 
     case 'AgPopover':
       return html`<ag-popover
-        .placement=${node.placement ?? ''}
+        .placement=${node.placement ?? nothing}
         .distance=${node.distance ?? 0}
         .skidding=${node.skidding ?? 0}
         .arrow=${node.arrow ?? false}
         .disabled=${node.disabled ?? false}
-        .triggerType=${node.triggerType ?? ''}
+        .triggerType=${node.triggerType ?? nothing}
         .matchTriggerWidth=${node.matchTriggerWidth ?? false}
         .showCloseButton=${node.showCloseButton ?? false}
         .showHeader=${node.showHeader ?? false}
-        .closeLabel=${node.closeLabel ?? ''}
+        .closeLabel=${node.closeLabel ?? nothing}
         .trapFocus=${node.trapFocus ?? false}
         @show=${() => doDispatch(node.on_show, actions)}
         @hide=${() => doDispatch(node.on_hide, actions)}
@@ -430,27 +430,27 @@ function renderNode(
       return html`<ag-progress
         .value=${node.value ?? 0}
         .max=${node.max ?? 0}
-        .label=${node.label ?? ''}
-        .size=${node.size ?? ''}
+        .label=${node.label ?? nothing}
+        .size=${node.size ?? nothing}
       >${renderChildren(node.children)}</ag-progress>`;
 
     case 'AgRadio':
       return html`<ag-radio
-        .name=${node.name ?? ''}
-        .value=${node.value ?? ''}
+        .name=${node.name ?? nothing}
+        .value=${node.value ?? nothing}
         .checked=${node.checked ?? false}
         .disabled=${node.disabled ?? false}
-        .size=${node.size ?? ''}
-        .theme=${node.theme ?? ''}
-        .labelText=${node.labelText ?? ''}
-        .labelPosition=${node.labelPosition ?? ''}
-        .label=${node.label ?? ''}
+        .size=${node.size ?? nothing}
+        .theme=${node.theme ?? nothing}
+        .labelText=${node.labelText ?? nothing}
+        .labelPosition=${node.labelPosition ?? nothing}
+        .label=${node.label ?? nothing}
         .labelHidden=${node.labelHidden ?? false}
         .noLabel=${node.noLabel ?? false}
         .required=${node.required ?? false}
         .invalid=${node.invalid ?? false}
-        .errorMessage=${node.errorMessage ?? ''}
-        .helpText=${node.helpText ?? ''}
+        .errorMessage=${node.errorMessage ?? nothing}
+        .helpText=${node.helpText ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
         @change=${() => doDispatch(node.on_change, actions)}
       ></ag-radio>`;
@@ -459,60 +459,60 @@ function renderNode(
       return html`<ag-rating
         .value=${node.value ?? 0}
         .max=${node.max ?? 0}
-        .precision=${node.precision ?? ''}
+        .precision=${node.precision ?? nothing}
         .readonly=${node.readonly ?? false}
         .allowClear=${node.allowClear ?? false}
-        .variant=${node.variant ?? ''}
-        .size=${node.size ?? ''}
-        .name=${node.name ?? ''}
-        .label=${node.label ?? ''}
-        .labelPosition=${node.labelPosition ?? ''}
+        .variant=${node.variant ?? nothing}
+        .size=${node.size ?? nothing}
+        .name=${node.name ?? nothing}
+        .label=${node.label ?? nothing}
+        .labelPosition=${node.labelPosition ?? nothing}
         .labelHidden=${node.labelHidden ?? false}
         .noLabel=${node.noLabel ?? false}
         .required=${node.required ?? false}
         .invalid=${node.invalid ?? false}
-        .errorMessage=${node.errorMessage ?? ''}
-        .helpText=${node.helpText ?? ''}
+        .errorMessage=${node.errorMessage ?? nothing}
+        .helpText=${node.helpText ?? nothing}
       ></ag-rating>`;
 
     case 'AgSelect':
       return html`<ag-select
-        .size=${node.size ?? ''}
+        .size=${node.size ?? nothing}
         .multiple=${node.multiple ?? false}
         .disabled=${node.disabled ?? false}
-        .name=${node.name ?? ''}
+        .name=${node.name ?? nothing}
         .multipleSize=${node.multipleSize ?? 0}
-        .label=${node.label ?? ''}
-        .labelPosition=${node.labelPosition ?? ''}
+        .label=${node.label ?? nothing}
+        .labelPosition=${node.labelPosition ?? nothing}
         .labelHidden=${node.labelHidden ?? false}
         .noLabel=${node.noLabel ?? false}
         .required=${node.required ?? false}
         .invalid=${node.invalid ?? false}
-        .errorMessage=${node.errorMessage ?? ''}
-        .helpText=${node.helpText ?? ''}
+        .errorMessage=${node.errorMessage ?? nothing}
+        .helpText=${node.helpText ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
         @change=${() => doDispatch(node.on_change, actions)}
       ></ag-select>`;
 
     case 'AgSelectionButton':
       return html`<ag-selection-button
-        .value=${node.value ?? ''}
-        .label=${node.label ?? ''}
+        .value=${node.value ?? nothing}
+        .label=${node.label ?? nothing}
         .checked=${node.checked ?? false}
         .disabled=${node.disabled ?? false}
       >${renderChildren(node.children)}</ag-selection-button>`;
 
     case 'AgSelectionButtonGroup':
       return html`<ag-selection-button-group
-        .type=${node.type ?? ''}
-        .name=${node.name ?? ''}
-        .legend=${node.legend ?? ''}
+        .type=${node.type ?? nothing}
+        .name=${node.name ?? nothing}
+        .legend=${node.legend ?? nothing}
         .legendHidden=${node.legendHidden ?? false}
-        .theme=${node.theme ?? ''}
-        .size=${node.size ?? ''}
-        .shape=${node.shape ?? ''}
-        .value=${node.value ?? ''}
-        .values=${node.values ?? ''}
+        .theme=${node.theme ?? nothing}
+        .size=${node.size ?? nothing}
+        .shape=${node.shape ?? nothing}
+        .value=${node.value ?? nothing}
+        .values=${node.values ?? nothing}
         .disabled=${node.disabled ?? false}
         .required=${node.required ?? false}
         @selection-change=${(e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value)}
@@ -520,21 +520,21 @@ function renderNode(
 
     case 'AgSelectionCard':
       return html`<ag-selection-card
-        .value=${node.value ?? ''}
-        .label=${node.label ?? ''}
+        .value=${node.value ?? nothing}
+        .label=${node.label ?? nothing}
         .checked=${node.checked ?? false}
         .disabled=${node.disabled ?? false}
       >${renderChildren(node.children)}</ag-selection-card>`;
 
     case 'AgSelectionCardGroup':
       return html`<ag-selection-card-group
-        .type=${node.type ?? ''}
-        .name=${node.name ?? ''}
-        .legend=${node.legend ?? ''}
+        .type=${node.type ?? nothing}
+        .name=${node.name ?? nothing}
+        .legend=${node.legend ?? nothing}
         .legendHidden=${node.legendHidden ?? false}
-        .theme=${node.theme ?? ''}
-        .value=${node.value ?? ''}
-        .values=${node.values ?? ''}
+        .theme=${node.theme ?? nothing}
+        .value=${node.value ?? nothing}
+        .values=${node.values ?? nothing}
         .disabled=${node.disabled ?? false}
         .required=${node.required ?? false}
         @selection-change=${(e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value)}
@@ -542,22 +542,22 @@ function renderNode(
 
     case 'AgSpinner':
       return html`<ag-spinner
-        .size=${node.size ?? ''}
-        .ariaLabel=${node.ariaLabel ?? ''}
+        .size=${node.size ?? nothing}
+        .ariaLabel=${node.ariaLabel ?? nothing}
       ></ag-spinner>`;
 
     case 'AgTabs':
       return html`<ag-tabs
-        .activation=${node.activation ?? ''}
+        .activation=${node.activation ?? nothing}
         .activeTab=${node.activeTab ?? 0}
-        .orientation=${node.orientation ?? ''}
-        .ariaLabel=${node.ariaLabel ?? ''}
+        .orientation=${node.orientation ?? nothing}
+        .ariaLabel=${node.ariaLabel ?? nothing}
       >${renderChildren(node.children)}</ag-tabs>`;
 
     case 'AgTag':
       return html`<ag-tag
-        .variant=${node.variant ?? ''}
-        .shape=${node.shape ?? ''}
+        .variant=${node.variant ?? nothing}
+        .shape=${node.shape ?? nothing}
         .uppercase=${node.uppercase ?? false}
         .removable=${node.removable ?? false}
         @tag-remove=${() => doDispatch(node.on_remove, actions)}
@@ -565,8 +565,8 @@ function renderNode(
 
     case 'AgToggle':
       return html`<ag-toggle
-        .label=${node.label ?? ''}
-        .labelPosition=${node.labelPosition ?? ''}
+        .label=${node.label ?? nothing}
+        .labelPosition=${node.labelPosition ?? nothing}
         .labelHidden=${node.labelHidden ?? false}
         .noLabel=${node.noLabel ?? false}
         .checked=${node.checked ?? false}
@@ -576,21 +576,21 @@ function renderNode(
         .readonly=${node.readonly ?? false}
         .required=${node.required ?? false}
         .invalid=${node.invalid ?? false}
-        .errorMessage=${node.errorMessage ?? ''}
-        .helpText=${node.helpText ?? ''}
-        .name=${node.name ?? ''}
-        .value=${node.value ?? ''}
+        .errorMessage=${node.errorMessage ?? nothing}
+        .helpText=${node.helpText ?? nothing}
+        .name=${node.name ?? nothing}
+        .value=${node.value ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
         @toggle-change=${() => doDispatch(node.on_change, actions)}
       ></ag-toggle>`;
 
     case 'AgTooltip':
       return html`<ag-tooltip
-        .content=${node.content ?? ''}
-        .placement=${node.placement ?? ''}
+        .content=${node.content ?? nothing}
+        .placement=${node.placement ?? nothing}
         .distance=${node.distance ?? 0}
         .skidding=${node.skidding ?? 0}
-        .trigger=${node.trigger ?? ''}
+        .trigger=${node.trigger ?? nothing}
         .disabled=${node.disabled ?? false}
         @show=${() => doDispatch(node.on_show, actions)}
         @hide=${() => doDispatch(node.on_hide, actions)}

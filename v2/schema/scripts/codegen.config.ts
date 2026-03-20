@@ -108,6 +108,16 @@ export const actionPayloadMap: Record<string, string> = {
 };
 
 /**
+ * vueActionPayloadMap: Vue-specific overrides for actionPayloadMap.
+ * Vue wrappers emit detail directly (not wrapped in CustomEvent), so
+ * handlers receive the detail object as the first argument, not a CustomEvent.
+ */
+export const vueActionPayloadMap: Record<string, string> = {
+  // Vue emits detail directly: e IS the SelectionChangeEventDetail
+  onSelectionChange: '(e as unknown as {value: string}).value',
+};
+
+/**
  * rendererSlotConfig: controls how each component renders its content in the
  * three framework renderers.
  *

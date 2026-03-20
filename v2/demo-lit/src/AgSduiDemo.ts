@@ -65,19 +65,6 @@ export class AgSduiDemo extends LitElement {
       color: var(--ag-color-muted, #666);
     }
 
-    .demo-regenerate {
-      font-size: 0.85rem;
-      padding: 0.35rem 0.85rem;
-      border: 1px solid var(--ag-border-color, #d1d5db);
-      border-radius: 6px;
-      background: transparent;
-      cursor: pointer;
-      color: inherit;
-    }
-
-    .demo-regenerate:hover {
-      background: var(--ag-background-alt, #f4f4f5);
-    }
   `;
 
   @state() private workflow = 'contact-form';
@@ -114,9 +101,9 @@ export class AgSduiDemo extends LitElement {
         <section class="demo-output">
           <div class="demo-output-header">
             <span class="demo-output-label">Generated output</span>
-            <button class="demo-regenerate" @click=${this.handleRegenerate}>
+            <ag-button shape="rounded" @click=${this.handleRegenerate}>
               Regenerate
-            </button>
+            </ag-button>
           </div>
           <div class="demo-output-body">
             <ag-streaming-output
