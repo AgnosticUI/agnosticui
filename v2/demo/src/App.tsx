@@ -3,6 +3,7 @@ import { ReactButton } from 'agnosticui-core/button/react';
 import { ReactHeader } from 'agnosticui-core/header/react';
 import { WorkflowPicker } from './components/WorkflowPicker';
 import { StreamingOutput } from './components/StreamingOutput';
+import { SkinSwitcher } from './SkinSwitcher';
 import './App.css';
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
         </div>
       </section>
     </div>
+      <SkinSwitcher />
     </>
   );
 }

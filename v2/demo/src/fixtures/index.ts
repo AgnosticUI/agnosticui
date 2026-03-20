@@ -7,7 +7,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'cf1-name',         component: 'AgInput',  label: 'Full name',    type: 'text',     placeholder: 'Jane Smith',          required: true, rounded: true },
       { id: 'cf1-email',        component: 'AgInput',  label: 'Email',        type: 'email',    placeholder: 'jane@example.com',    required: true, rounded: true },
       { id: 'cf1-msg',          component: 'AgInput',  label: 'Message',      type: 'text',     placeholder: 'How can we help?',    rows: 4, rounded: true },
-      { id: 'cf1-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', children: ['cf1-submit-label'] },
+      { id: 'cf1-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', on_click: 'SUBMIT_FORM', children: ['cf1-submit-label'] },
       { id: 'cf1-submit-label', component: 'AgText',   text: 'Send message' },
     ],
     // variation 2 — with phone + subject
@@ -17,7 +17,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'cf2-phone',        component: 'AgInput',  label: 'Phone',        type: 'tel',      placeholder: '+1 555 000 0000', rounded: true },
       { id: 'cf2-subject',      component: 'AgInput',  label: 'Subject',      type: 'text',     placeholder: 'How can we help?',    required: true, rounded: true },
       { id: 'cf2-msg',          component: 'AgInput',  label: 'Message',      type: 'text',     placeholder: 'Tell us more...',     rows: 5, rounded: true },
-      { id: 'cf2-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', children: ['cf2-submit-label'] },
+      { id: 'cf2-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', on_click: 'SUBMIT_FORM', children: ['cf2-submit-label'] },
       { id: 'cf2-submit-label', component: 'AgText',   text: 'Submit' },
     ],
     // variation 3 — with newsletter opt-in
@@ -27,7 +27,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'cf3-msg',          component: 'AgInput',  label: 'Message',      type: 'text',     placeholder: 'How can we help?',    rows: 4, rounded: true },
       { id: 'cf3-newsletter',   component: 'AgToggle', label: 'Send me updates and news' },
       { id: 'cf3-divider',      component: 'AgDivider' },
-      { id: 'cf3-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', children: ['cf3-submit-label'] },
+      { id: 'cf3-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', on_click: 'SUBMIT_FORM', children: ['cf3-submit-label'] },
       { id: 'cf3-submit-label', component: 'AgText',   text: 'Get in touch' },
     ],
     // variation 4 — with company + priority
@@ -36,7 +36,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'cf4-company',      component: 'AgInput',  label: 'Company',      type: 'text',     placeholder: 'Acme Corp', rounded: true },
       { id: 'cf4-email',        component: 'AgInput',  label: 'Work email',   type: 'email',    placeholder: 'jane@acme.com',       required: true, rounded: true },
       { id: 'cf4-msg',          component: 'AgInput',  label: 'Message',      type: 'text',     placeholder: 'Describe your issue', rows: 4, rounded: true },
-      { id: 'cf4-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', children: ['cf4-submit-label'] },
+      { id: 'cf4-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', on_click: 'SUBMIT_FORM', children: ['cf4-submit-label'] },
       { id: 'cf4-submit-label', component: 'AgText',   text: 'Send request' },
     ],
     // variation 5 — with badge heading + divider
@@ -48,7 +48,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'cf5-name',         component: 'AgInput',  label: 'Full name',    type: 'text',     placeholder: 'Jane Smith',          required: true, rounded: true },
       { id: 'cf5-email',        component: 'AgInput',  label: 'Email',        type: 'email',    placeholder: 'jane@example.com',    required: true, rounded: true },
       { id: 'cf5-msg',          component: 'AgInput',  label: 'Message',      type: 'text',     placeholder: 'How can we help?',    rows: 4, rounded: true },
-      { id: 'cf5-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', fullWidth: true, children: ['cf5-submit-label'] },
+      { id: 'cf5-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', fullWidth: true, on_click: 'SUBMIT_FORM', children: ['cf5-submit-label'] },
       { id: 'cf5-submit-label', component: 'AgText',   text: 'Send message' },
     ],
   ],
@@ -59,7 +59,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'lf1-email',        component: 'AgInput',  label: 'Email',        type: 'email',    placeholder: 'you@example.com',  required: true, rounded: true },
       { id: 'lf1-password',     component: 'AgInput',  label: 'Password',     type: 'password', required: true, rounded: true },
       { id: 'lf1-remember',     component: 'AgToggle', label: 'Remember me' },
-      { id: 'lf1-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', children: ['lf1-submit-label'] },
+      { id: 'lf1-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', on_click: 'SUBMIT_LOGIN', children: ['lf1-submit-label'] },
       { id: 'lf1-submit-label', component: 'AgText',   text: 'Sign in' },
     ],
     // variation 2 — with forgot password link
@@ -69,7 +69,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'lf2-password',     component: 'AgInput',  label: 'Password',     type: 'password', required: true, rounded: true },
       { id: 'lf2-forgot',       component: 'AgLink',   href: '#',             children: ['lf2-forgot-text'] },
       { id: 'lf2-forgot-text',  component: 'AgText',   text: 'Forgot password?' },
-      { id: 'lf2-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', fullWidth: true, children: ['lf2-submit-label'] },
+      { id: 'lf2-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', fullWidth: true, on_click: 'SUBMIT_LOGIN', children: ['lf2-submit-label'] },
       { id: 'lf2-submit-label', component: 'AgText',   text: 'Sign in' },
     ],
     // variation 3 — with divider and alternate copy
@@ -77,7 +77,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'lf3-email',        component: 'AgInput',  label: 'Email address', type: 'email',   placeholder: 'you@example.com',  required: true, rounded: true },
       { id: 'lf3-password',     component: 'AgInput',  label: 'Password',      type: 'password', required: true, rounded: true },
       { id: 'lf3-divider',      component: 'AgDivider' },
-      { id: 'lf3-submit',       component: 'AgButton', variant: 'primary',     type: 'submit',  shape: 'rounded', children: ['lf3-submit-label'] },
+      { id: 'lf3-submit',       component: 'AgButton', variant: 'primary',     type: 'submit',  shape: 'rounded', on_click: 'SUBMIT_LOGIN', children: ['lf3-submit-label'] },
       { id: 'lf3-submit-label', component: 'AgText',   text: 'Log in to your account' },
     ],
     // variation 4 — with terms checkbox
@@ -85,7 +85,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'lf4-email',        component: 'AgInput',    label: 'Email',    type: 'email',    placeholder: 'you@example.com',           required: true, rounded: true },
       { id: 'lf4-password',     component: 'AgInput',    label: 'Password', type: 'password', required: true, rounded: true },
       { id: 'lf4-terms',        component: 'AgCheckbox', name: 'terms',     value: 'agreed',  labelText: 'I agree to the terms of service', required: true },
-      { id: 'lf4-submit',       component: 'AgButton',   variant: 'primary', type: 'submit',  shape: 'rounded', children: ['lf4-submit-label'] },
+      { id: 'lf4-submit',       component: 'AgButton',   variant: 'primary', type: 'submit',  shape: 'rounded', on_click: 'SUBMIT_LOGIN', children: ['lf4-submit-label'] },
       { id: 'lf4-submit-label', component: 'AgText',     text: 'Create account' },
     ],
     // variation 5 — with badge + full-width button
@@ -95,7 +95,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'lf5-email',        component: 'AgInput',  label: 'Email',      type: 'email',    placeholder: 'you@example.com', required: true, rounded: true },
       { id: 'lf5-password',     component: 'AgInput',  label: 'Password',   type: 'password', required: true, rounded: true },
       { id: 'lf5-remember',     component: 'AgToggle', label: 'Stay signed in' },
-      { id: 'lf5-submit',       component: 'AgButton', variant: 'primary',  type: 'submit',   shape: 'rounded', fullWidth: true, children: ['lf5-submit-label'] },
+      { id: 'lf5-submit',       component: 'AgButton', variant: 'primary',  type: 'submit',   shape: 'rounded', fullWidth: true, on_click: 'SUBMIT_LOGIN', children: ['lf5-submit-label'] },
       { id: 'lf5-submit-label', component: 'AgText',   text: 'Sign in' },
     ],
   ],
@@ -109,7 +109,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'pc1-title',       component: 'AgText',    text: 'Pro plan',    el: 'h2' },
       { id: 'pc1-price',       component: 'AgText',    text: '$12 / month', el: 'p' },
       { id: 'pc1-divider',     component: 'AgDivider' },
-      { id: 'pc1-cta',         component: 'AgButton',  variant: 'primary',  shape: 'rounded', fullWidth: true, children: ['pc1-cta-label'] },
+      { id: 'pc1-cta',         component: 'AgButton',  variant: 'primary',  shape: 'rounded', fullWidth: true, on_click: 'START_TRIAL', children: ['pc1-cta-label'] },
       { id: 'pc1-cta-label',   component: 'AgText',    text: 'Get started' },
     ],
     // variation 2 — Starter plan
@@ -119,7 +119,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'pc2-price',       component: 'AgText',    text: '$5 / month',  el: 'p' },
       { id: 'pc2-desc',        component: 'AgText',    text: 'Perfect for individuals and small projects', el: 'p' },
       { id: 'pc2-divider',     component: 'AgDivider' },
-      { id: 'pc2-cta',         component: 'AgButton',  bordered: true,      shape: 'rounded', fullWidth: true, children: ['pc2-cta-label'] },
+      { id: 'pc2-cta',         component: 'AgButton',  bordered: true,      shape: 'rounded', fullWidth: true, on_click: 'START_TRIAL', children: ['pc2-cta-label'] },
       { id: 'pc2-cta-label',   component: 'AgText',    text: 'Start free trial' },
     ],
     // variation 3 — Enterprise
@@ -130,7 +130,7 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'pc3-title',       component: 'AgText',    text: 'Custom pricing', el: 'h2' },
       { id: 'pc3-price',       component: 'AgText',    text: 'Contact us',  el: 'p' },
       { id: 'pc3-divider',     component: 'AgDivider' },
-      { id: 'pc3-cta',         component: 'AgButton',  variant: 'primary',  shape: 'rounded', fullWidth: true, children: ['pc3-cta-label'] },
+      { id: 'pc3-cta',         component: 'AgButton',  variant: 'primary',  shape: 'rounded', fullWidth: true, on_click: 'START_TRIAL', children: ['pc3-cta-label'] },
       { id: 'pc3-cta-label',   component: 'AgText',    text: 'Talk to sales' },
     ],
     // variation 4 — Annual plan
@@ -140,24 +140,91 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'pc4-badge-text',  component: 'AgText',    text: 'Save 20%' },
       { id: 'pc4-title',       component: 'AgText',    text: 'Annual plan',   el: 'h2' },
       { id: 'pc4-price',       component: 'AgText',    text: '$99 / year',    el: 'p' },
-      { id: 'pc4-saving',      component: 'AgText',    text: 'Billed annually — that\'s $8.25/mo', el: 'p' },
+      { id: 'pc4-saving',      component: 'AgText',    text: 'Billed annually, that\'s $8.25/mo', el: 'p' },
       { id: 'pc4-divider',     component: 'AgDivider' },
-      { id: 'pc4-cta',         component: 'AgButton',  variant: 'primary',    shape: 'rounded', fullWidth: true, children: ['pc4-cta-label'] },
+      { id: 'pc4-cta',         component: 'AgButton',  variant: 'primary',    shape: 'rounded', fullWidth: true, on_click: 'START_TRIAL', children: ['pc4-cta-label'] },
       { id: 'pc4-cta-label',   component: 'AgText',    text: 'Get annual plan' },
     ],
-    // variation 5 — Team plan
+    // variation 5 — Team plan (two CTAs: trial + view plans)
     [
       { id: 'pc5-card',        component: 'AgCard',    shadow: true, rounded: 'md', children: ['pc5-title', 'pc5-price', 'pc5-desc', 'pc5-divider', 'pc5-cta-primary', 'pc5-cta-secondary'] },
       { id: 'pc5-title',       component: 'AgText',    text: 'Team plan',       el: 'h2' },
       { id: 'pc5-price',       component: 'AgText',    text: '$8 / user / month', el: 'p' },
-      { id: 'pc5-desc',        component: 'AgText',    text: 'Minimum 5 seats — scales as your team grows', el: 'p' },
+      { id: 'pc5-desc',        component: 'AgText',    text: 'Minimum 5 seats, scales as your team grows', el: 'p' },
       { id: 'pc5-divider',     component: 'AgDivider' },
-      { id: 'pc5-cta-primary',    component: 'AgButton', variant: 'primary',  shape: 'rounded', fullWidth: true, children: ['pc5-cta-primary-label'] },
+      { id: 'pc5-cta-primary',    component: 'AgButton', variant: 'primary',  shape: 'rounded', fullWidth: true, on_click: 'START_TRIAL', children: ['pc5-cta-primary-label'] },
       { id: 'pc5-cta-primary-label', component: 'AgText', text: 'Start team trial' },
-      { id: 'pc5-cta-secondary',   component: 'AgButton', bordered: true,      shape: 'rounded', fullWidth: true, children: ['pc5-cta-secondary-label'] },
+      { id: 'pc5-cta-secondary',   component: 'AgButton', bordered: true,      shape: 'rounded', fullWidth: true, on_click: 'VIEW_PLANS', children: ['pc5-cta-secondary-label'] },
       { id: 'pc5-cta-secondary-label', component: 'AgText', text: 'View all plans' },
     ],
   ],
+};
+
+// Step-2 confirmation fixtures — single screens shown after an action fires.
+// The renderer is stateless; only the node array swaps.
+export const confirmFixtures: Record<string, AgNode[]> = {
+  'contact-form-confirm': [
+    { id: 'cf-ok-alert',    component: 'AgAlert',  variant: 'success', bordered: true, children: ['cf-ok-alert-text'] },
+    { id: 'cf-ok-alert-text', component: 'AgText', text: "You're now signed up! We'll be in touch within 24 hours." },
+    { id: 'cf-ok-card',    component: 'AgCard',   shadow: true, rounded: 'md', children: ['cf-ok-heading', 'cf-ok-body'] },
+    { id: 'cf-ok-heading', component: 'AgText',   text: 'Message received', el: 'h2' },
+    { id: 'cf-ok-body',    component: 'AgText',   text: 'Our team will review your message and get back to you shortly. Check your inbox for a confirmation email.', el: 'p' },
+  ],
+
+  'login-form-confirm': [
+    { id: 'lf-ok-card',    component: 'AgCard',   shadow: true, rounded: 'md', children: ['lf-ok-badge', 'lf-ok-heading', 'lf-ok-body'] },
+    { id: 'lf-ok-badge',   component: 'AgBadge',  variant: 'success', children: ['lf-ok-badge-text'] },
+    { id: 'lf-ok-badge-text', component: 'AgText', text: 'Authenticated' },
+    { id: 'lf-ok-heading', component: 'AgText',   text: 'Welcome back!', el: 'h2' },
+    { id: 'lf-ok-body',    component: 'AgText',   text: "You're now signed in. Redirecting you to your dashboard...", el: 'p' },
+  ],
+
+  'pricing-trial-confirm': [
+    { id: 'tr-ok-alert',    component: 'AgAlert',  variant: 'success', bordered: true, children: ['tr-ok-alert-text'] },
+    { id: 'tr-ok-alert-text', component: 'AgText', text: 'Your 14-day trial has been started!' },
+    { id: 'tr-ok-card',    component: 'AgCard',   shadow: true, rounded: 'md', children: ['tr-ok-heading', 'tr-ok-body', 'tr-ok-divider', 'tr-ok-badge'] },
+    { id: 'tr-ok-heading', component: 'AgText',   text: 'Trial activated', el: 'h2' },
+    { id: 'tr-ok-body',    component: 'AgText',   text: 'Full access is unlocked for 14 days. No credit card required until you upgrade.', el: 'p' },
+    { id: 'tr-ok-divider', component: 'AgDivider' },
+    { id: 'tr-ok-badge',   component: 'AgBadge',  variant: 'info', children: ['tr-ok-badge-text'] },
+    { id: 'tr-ok-badge-text', component: 'AgText', text: 'Expires in 14 days' },
+  ],
+
+  'pricing-plans': [
+    { id: 'pl-heading',    component: 'AgText',   text: 'All plans', el: 'h2' },
+    { id: 'pl-divider',    component: 'AgDivider' },
+    { id: 'pl-starter',    component: 'AgCard',   shadow: true, rounded: 'sm', children: ['pl-starter-title', 'pl-starter-price', 'pl-starter-cta'] },
+    { id: 'pl-starter-title', component: 'AgText', text: 'Starter', el: 'h3' },
+    { id: 'pl-starter-price', component: 'AgText', text: 'Free — up to 3 projects', el: 'p' },
+    { id: 'pl-starter-cta',   component: 'AgButton', bordered: true, shape: 'rounded', fullWidth: true, children: ['pl-starter-cta-label'] },
+    { id: 'pl-starter-cta-label', component: 'AgText', text: 'Get started free' },
+    { id: 'pl-pro',        component: 'AgCard',   shadow: true, rounded: 'sm', children: ['pl-pro-badge', 'pl-pro-title', 'pl-pro-price', 'pl-pro-cta'] },
+    { id: 'pl-pro-badge',  component: 'AgBadge',  variant: 'primary', children: ['pl-pro-badge-text'] },
+    { id: 'pl-pro-badge-text', component: 'AgText', text: 'Most popular' },
+    { id: 'pl-pro-title',  component: 'AgText',   text: 'Pro', el: 'h3' },
+    { id: 'pl-pro-price',  component: 'AgText',   text: '$12 / month', el: 'p' },
+    { id: 'pl-pro-cta',    component: 'AgButton', variant: 'primary', shape: 'rounded', fullWidth: true, children: ['pl-pro-cta-label'] },
+    { id: 'pl-pro-cta-label', component: 'AgText', text: 'Start Pro trial' },
+    { id: 'pl-ent',        component: 'AgCard',   shadow: true, rounded: 'sm', children: ['pl-ent-title', 'pl-ent-price', 'pl-ent-cta'] },
+    { id: 'pl-ent-title',  component: 'AgText',   text: 'Enterprise', el: 'h3' },
+    { id: 'pl-ent-price',  component: 'AgText',   text: 'Custom pricing', el: 'p' },
+    { id: 'pl-ent-cta',    component: 'AgButton', variant: 'monochrome', shape: 'rounded', fullWidth: true, children: ['pl-ent-cta-label'] },
+    { id: 'pl-ent-cta-label', component: 'AgText', text: 'Talk to sales' },
+  ],
+};
+
+// Maps each workflow's action aliases to the confirm fixture key they trigger.
+export const workflowActions: Record<string, Record<string, string>> = {
+  'contact-form': {
+    SUBMIT_FORM: 'contact-form-confirm',
+  },
+  'login-form': {
+    SUBMIT_LOGIN: 'login-form-confirm',
+  },
+  'pricing-card': {
+    START_TRIAL: 'pricing-trial-confirm',
+    VIEW_PLANS:  'pricing-plans',
+  },
 };
 
 export function pickVariation(workflow: string): AgNode[] {

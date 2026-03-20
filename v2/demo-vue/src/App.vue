@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { VueHeader } from 'agnosticui-core/header/vue';
 import WorkflowPicker from './components/WorkflowPicker.vue';
 import StreamingOutput from './components/StreamingOutput.vue';
+import SkinSwitcher from './SkinSwitcher.vue';
 
 const workflow = ref('contact-form');
 const seed = ref(0);
@@ -45,6 +46,7 @@ const handleRegenerate = () => {
       </div>
     </section>
     </div>
+    <SkinSwitcher />
   </div>
 </template>
 
