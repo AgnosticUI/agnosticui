@@ -753,6 +753,7 @@
     "copy-styles": "mkdir -p dist/styles && cp src/styles/ag-tokens.css dist/styles/ag-tokens.css && cp src/styles/ag-tokens-dark.css dist/styles/ag-tokens-dark.css",
     "prebuild": "npm run sync-tokens",
     "build": "vite build && npm run copy-styles",
+    "build:no-sync": "vite build && npm run copy-styles",
     "dev": "vite build",
     "test": "vitest run",
     "lint": "eslint .",
