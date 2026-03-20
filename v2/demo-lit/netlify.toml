@@ -2,6 +2,7 @@
   command = """
     (cd ../lib && npm ci --ignore-scripts && npm run build:no-sync) &&
     (cd ../schema && npm ci && npm run build) &&
+    (cd ../demo && npm ci --ignore-scripts) &&
     (cd ../renderers/lit && npm ci --ignore-scripts && npm run build) &&
     npm ci --ignore-scripts &&
     npm run build
