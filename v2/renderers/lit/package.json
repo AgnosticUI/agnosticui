@@ -13,7 +13,8 @@
   },
   "scripts": {
     "test": "vitest run",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "@agnosticui/schema": "file:../../schema"

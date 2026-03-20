@@ -12,7 +12,7 @@ function buildNodeMap(nodes: AgNode[]): NodeMap {
 }
 
 function renderChildren(node: AgNode, nodeMap: NodeMap): string {
-  const n = node as Record<string, unknown>;
+  const n = node as unknown as Record<string, unknown>;
   if (!Array.isArray(n['children'])) return '';
   return (n['children'] as string[])
     .map(id => {
@@ -23,7 +23,7 @@ function renderChildren(node: AgNode, nodeMap: NodeMap): string {
 }
 
 function renderNode(node: AgNode, nodeMap: NodeMap): string {
-  const n = node as Record<string, unknown>;
+  const n = node as unknown as Record<string, unknown>;
   const id = n['id'] as string;
   const children = renderChildren(node, nodeMap);
 
@@ -139,7 +139,7 @@ export function toHtml(nodes: AgNode[]): string {
   const nodeMap = buildNodeMap(nodes);
   const childIds = new Set<string>();
   for (const node of nodes) {
-    const n = node as Record<string, unknown>;
+    const n = node as unknown as Record<string, unknown>;
     if (Array.isArray(n['children'])) {
       for (const id of n['children'] as string[]) childIds.add(id);
     }
