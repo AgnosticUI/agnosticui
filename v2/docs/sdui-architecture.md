@@ -34,8 +34,8 @@ graph TD
     D --> E
     E --> F
     F --> G
-    CI1 -.->|"watches v2/lib + v2/schema + v2/renderers"| B
-    CI2 -.->|"watches v2/demo/src/fixtures"| E
+    CI1 -.->|"watches v2/lib + v2/sdui/schema + v2/sdui/renderers"| B
+    CI2 -.->|"watches v2/sdui/demo/src/fixtures"| E
 ```
 
 ---
@@ -184,7 +184,7 @@ Errors are returned as `GraphNodeError[]`, each containing the `nodeId` and an a
 
 ## Framework renderers
 
-Three renderer files are generated at `v2/renderers/{react,vue,lit}/src/AgDynamicRenderer.{tsx,ts}`. Each contains:
+Three renderer files are generated at `v2/sdui/renderers/{react,vue,lit}/src/AgDynamicRenderer.{tsx,ts}`. Each contains:
 
 - A `switch (node.component)` block mapping every component name to its framework wrapper.
 - A `renderChildren(childIds)` helper that resolves IDs from the node map and renders recursively.
@@ -217,8 +217,8 @@ This affects only the React renderer because Vue and Lit do not use `@lit/react`
 ### check-codegen
 
 **Workflow:** `.github/workflows/check-codegen.yml`
-**Trigger:** push or PR touching `v2/lib/src/components/**`, `v2/schema/**`, or `v2/renderers/**`
-**Command:** `npm run check-codegen` (from `v2/schema/`)
+**Trigger:** push or PR touching `v2/lib/src/components/**`, `v2/sdui/schema/**`, or `v2/sdui/renderers/**`
+**Command:** `npm run check-codegen` (from `v2/sdui/schema/`)
 
 This runs `check-codegen.ts`, which invokes codegen in dry-run mode and compares each of the 7 generated files against what codegen would produce. If any file differs, the step fails with a diff and exits non-zero.
 
@@ -227,8 +227,8 @@ This runs `check-codegen.ts`, which invokes codegen in dry-run mode and compares
 ### validate-fixtures
 
 **Workflow:** `.github/workflows/validate-fixtures.yml`
-**Trigger:** push or PR touching `v2/schema/**`, `v2/demo/src/fixtures/**`, or `v2/renderers/**`
-**Command:** `npm test` (from `v2/demo/`)
+**Trigger:** push or PR touching `v2/sdui/schema/**`, `v2/sdui/demo/src/fixtures/**`, or `v2/sdui/renderers/**`
+**Command:** `npm test` (from `v2/sdui/demo/`)
 
 Runs Vitest against `fixtures.spec.ts`, which calls `validateGraph()` on every variation in `fixtureBank` plus `pickerFixture`. Currently covers 16 fixture variations across multiple workflow types (login form, contact form, etc.).
 
@@ -245,33 +245,42 @@ v2/
       Toggle/core/_Toggle.ts
       ...                    (57 total component directories)
 
-  schema/                    @agnosticui/schema package
-    src/
-      schema.ts              Zod discriminated union (AgNodeSchema) — AUTO-GENERATED
-      types.ts               TypeScript interfaces (AgNode, AgButtonNode, etc.) — AUTO-GENERATED
-      validate.ts            validate() + validateGraph() — hand-maintained
-      index.ts               Public exports — AUTO-GENERATED
-    scripts/
-      codegen.ts             ts-morph introspection + file generator
-      codegen.config.ts      omitConfig, noUndefinedProps, rendererSlotConfig, etc.
-      check-codegen.ts       Dry-run diff used by CI
-      emit-schema-json.ts    JSON Schema output (--emit-schema-json flag)
-    agnosticui-schema.json   JSON Schema for LLM/agent use — AUTO-GENERATED
+  sdui/
+    schema/                  @agnosticui/schema package
+      src/
+        schema.ts            Zod discriminated union (AgNodeSchema) — AUTO-GENERATED
+        types.ts             TypeScript interfaces (AgNode, AgButtonNode, etc.) — AUTO-GENERATED
+        validate.ts          validate() + validateGraph() — hand-maintained
+        index.ts             Public exports — AUTO-GENERATED
+      scripts/
+        codegen.ts           ts-morph introspection + file generator
+        codegen.config.ts    omitConfig, noUndefinedProps, rendererSlotConfig, etc.
+        check-codegen.ts     Dry-run diff used by CI
+        emit-schema-json.ts  JSON Schema output (--emit-schema-json flag)
+      agnosticui-schema.json JSON Schema for LLM/agent use — AUTO-GENERATED
 
-  renderers/
-    react/src/AgDynamicRenderer.tsx   React renderer — AUTO-GENERATED
-    vue/src/AgDynamicRenderer.ts      Vue renderer — AUTO-GENERATED
-    lit/src/AgDynamicRenderer.ts      Lit renderer — AUTO-GENERATED
+    renderers/
+      react/src/AgDynamicRenderer.tsx   React renderer — AUTO-GENERATED
+      vue/src/AgDynamicRenderer.ts      Vue renderer — AUTO-GENERATED
+      lit/src/AgDynamicRenderer.ts      Lit renderer — AUTO-GENERATED
 
-  demo/                      React Vite demonstration app
-    src/
-      fixtures/
-        index.ts             fixtureBank (AgNode[][] per workflow type)
-        picker.ts            pickerFixture (WorkflowPicker graph)
-        fixtures.spec.ts     Vitest: validateGraph() on all fixture variations
-      components/
-        WorkflowPicker/      SelectionCardGroup for choosing a fixture
-        StreamingOutput/     Live renderer output panel
+    demo/                    React Vite demonstration app
+      src/
+        fixtures/
+          index.ts           fixtureBank (AgNode[][] per workflow type)
+          picker.ts          pickerFixture (WorkflowPicker graph)
+          fixtures.spec.ts   Vitest: validateGraph() on all fixture variations
+        components/
+          WorkflowPicker/    SelectionCardGroup for choosing a fixture
+          StreamingOutput/   Live renderer output panel
+
+    demo-lit/                Lit Vite demonstration app
+    demo-vue/                Vue Vite demonstration app
+
+    examples/
+      sdui-react/            Minimal scaffolded React SDUI example
+      sdui-lit/              Minimal scaffolded Lit SDUI example
+      sdui-vue/              Minimal scaffolded Vue SDUI example
 
   docs/                      Developer guides (this file lives here)
     sdui-architecture.md

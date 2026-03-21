@@ -4,16 +4,16 @@ on:
   push:
     branches: [master]
     paths:
-      - 'v2/schema/**'
-      - 'v2/demo/src/fixtures/**'
-      - 'v2/demo/src/a11y/**'
-      - 'v2/renderers/**'
+      - 'v2/sdui/schema/**'
+      - 'v2/sdui/demo/src/fixtures/**'
+      - 'v2/sdui/demo/src/a11y/**'
+      - 'v2/sdui/renderers/**'
   pull_request:
     paths:
-      - 'v2/schema/**'
-      - 'v2/demo/src/fixtures/**'
-      - 'v2/demo/src/a11y/**'
-      - 'v2/renderers/**'
+      - 'v2/sdui/schema/**'
+      - 'v2/sdui/demo/src/fixtures/**'
+      - 'v2/sdui/demo/src/a11y/**'
+      - 'v2/sdui/renderers/**'
 
 jobs:
   a11y-audit:
@@ -28,17 +28,17 @@ jobs:
           node-version: 20
           cache: npm
           cache-dependency-path: |
-            v2/schema/package-lock.json
-            v2/demo/package-lock.json
+            v2/sdui/schema/package-lock.json
+            v2/sdui/demo/package-lock.json
 
       - name: Build schema
         run: npm ci && npm run build
-        working-directory: v2/schema
+        working-directory: v2/sdui/schema
 
       - name: Install demo deps
         run: npm ci
-        working-directory: v2/demo
+        working-directory: v2/sdui/demo
 
       - name: Run a11y audit
         run: npm test
-        working-directory: v2/demo
+        working-directory: v2/sdui/demo

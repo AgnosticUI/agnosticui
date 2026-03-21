@@ -5,13 +5,13 @@ on:
     branches: [master]
     paths:
       - 'v2/lib/src/components/**'
-      - 'v2/schema/**'
-      - 'v2/renderers/**'
+      - 'v2/sdui/schema/**'
+      - 'v2/sdui/renderers/**'
   pull_request:
     paths:
       - 'v2/lib/src/components/**'
-      - 'v2/schema/**'
-      - 'v2/renderers/**'
+      - 'v2/sdui/schema/**'
+      - 'v2/sdui/renderers/**'
 
 jobs:
   check-codegen:
@@ -25,12 +25,12 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: v2/schema/package-lock.json
+          cache-dependency-path: v2/sdui/schema/package-lock.json
 
       - name: Install dependencies
         run: npm ci
-        working-directory: v2/schema
+        working-directory: v2/sdui/schema
 
       - name: Check codegen drift
         run: npm run check-codegen
-        working-directory: v2/schema
+        working-directory: v2/sdui/schema
