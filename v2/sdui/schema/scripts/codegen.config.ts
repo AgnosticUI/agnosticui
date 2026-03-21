@@ -229,7 +229,8 @@ export const reactPropRenames: Record<string, string> = {
  * All other components use index.js which re-exports a named { VueName }.
  */
 export const vueDefaultImportComponents: string[] = [
-  'Button', // package.json maps ./button/vue → VueButton.js (default only, no named VueButton)
+  // All Vue components now export named exports via index.js — this list is empty.
+  // See: fix(lib) PR #441 which fixed button/vue package.json export to point to index.js.
 ];
 
 /**
