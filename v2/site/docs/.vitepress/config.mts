@@ -105,6 +105,7 @@ export default defineConfig({
           { text: 'Setup Guide', link: '/docs/setup' },
           { text: 'Understanding AgnosticUI', link: '/docs/understand' },
           { text: 'Advanced Usage', link: '/docs/advanced/advanced-usage' },
+          { text: 'Schema-Driven UI (SDUI)', link: '/docs/sdui' },
           { text: 'CSS Utilities', link: '/docs/utilities' },
           { text: 'FAQ', link: '/docs/faq' },
         ]
