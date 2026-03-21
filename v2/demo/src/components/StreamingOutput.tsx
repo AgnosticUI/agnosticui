@@ -3,7 +3,7 @@ import type { AgNode } from '@agnosticui/schema';
 import { AG_FACE_SELECTOR } from '@agnosticui/schema';
 import { AgDynamicRenderer } from '@agnosticui/render-react';
 import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
-import type { CollapsibleToggleEvent } from 'agnosticui-core/collapsible/react';
+import type { CollapsibleToggleEvent } from 'agnosticui-core/collapsible';
 import { pickVariation, confirmFixtures, workflowActions } from '../fixtures/index';
 import { streamFixture } from '../lib/stream';
 import './StreamingOutput.css';
