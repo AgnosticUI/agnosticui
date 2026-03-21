@@ -122,6 +122,7 @@ const CODEPEN_URLS = {
   'alert': 'https://codepen.io/editor/roblevin/pen/019cdd61-87cf-7044-8b6d-f032418ee538?file=%2Fscript.js&orientation=left&show=split',
   'aspect-ratio': 'https://codepen.io/editor/roblevin/pen/019cddcc-6678-756d-a32f-59faf0f25472?file=%2Fscript.js&orientation=left&show=split',
   'avatar': 'https://codepen.io/editor/roblevin/pen/019cddd3-d391-74bd-a901-178307c83220?file=%2Fscript.js%3A473%3A3236&orientation=left&show=split',
+  'avatar-fx': 'https://codepen.io/editor/roblevin/pen/019d12ba-6eec-70ec-b704-b7a77228eb96?file=%2Fscript.js%3A467%3A4456&orientation=left&panel=files&show=split',
   'badge': 'https://codepen.io/editor/roblevin/pen/019cddd9-4e9a-74e8-b6e8-71ad0a7b0a60?file=%2Fscript.js&orientation=left&show=split',
   'badge-fx': 'https://codepen.io/editor/roblevin/pen/019cdde3-2eb0-7003-a3a1-6929acc4ac15?file=%2Fscript.js&orientation=left&show=split',
   'breadcrumb': 'https://codepen.io/editor/roblevin/pen/019cddeb-7087-75fa-9a66-dd89f83be2a7?file=%2Fscript.js%3A439%3A377&orientation=left&show=split',
@@ -167,10 +168,12 @@ const CODEPEN_URLS = {
   'slider': 'https://codepen.io/editor/roblevin/pen/019ce4c9-8916-753f-921d-11a7a9ec59b1?file=%2Fscript.js&orientation=left&panel=files&show=split',
   'spinner': 'https://codepen.io/editor/roblevin/pen/019ce4ca-ed0c-7681-9252-6cc8c73823ec?file=%2Fscript.js%3A465%3A15222&orientation=left&panel=files&show=split',
   'tag': 'https://codepen.io/editor/roblevin/pen/019ce4d4-9f51-7346-939f-b11b2211f3ec?file=%2Fscript.js&orientation=left&panel=files&show=split',
+  'tag-fx': 'https://codepen.io/editor/roblevin/pen/019ce4d4-9f51-7346-939f-b11b2211f3ec?file=%2Fscript.js&orientation=left&panel=files&show=split',
   'timeline': 'https://codepen.io/editor/roblevin/pen/019ce4d6-e4fb-716c-95a7-8658019474e4?file=%2Fscript.js&orientation=left&panel=files&show=split',
   'toast': 'https://codepen.io/editor/roblevin/pen/019ce4d9-1e62-7458-ab31-150200200a40?file=%2Fscript.js%3A1113%3A32783&orientation=left&panel=files&show=split',
   'toggle': 'https://codepen.io/editor/roblevin/pen/019ce4dc-0bab-7582-91a5-b172ef781cf1?file=%2Fscript.js%3A544%3A377&orientation=left&panel=files&show=split',
   'tooltip': 'https://codepen.io/editor/roblevin/pen/019ce4de-7007-7286-96cb-ef2210bc22b9?file=%2Fscript.js&orientation=left&panel=files&show=split',
+  'tooltip-fx': 'https://codepen.io/editor/roblevin/pen/019d12cf-4c0a-73fc-8169-816633d73891?file=%2Fpackage.json&orientation=left&panel=files&show=split',
   'visually-hidden': 'https://codepen.io/editor/roblevin/pen/019ce4df-fa29-725d-81bc-393aee758ab4?file=%2Fscript.js&orientation=left&panel=files&show=split',
 }
 export default {
