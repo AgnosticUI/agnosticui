@@ -3,7 +3,7 @@ import { ref, watch, onUnmounted } from 'vue';
 import { AgDynamicRenderer } from '@agnosticui/render-vue';
 import type { AgNode } from '@agnosticui/schema';
 import { AG_FACE_SELECTOR } from '@agnosticui/schema';
-import VueCollapsible from 'agnosticui-core/collapsible/vue';
+import { VueCollapsible } from 'agnosticui-core/collapsible/vue';
 import type { CollapsibleToggleEvent } from 'agnosticui-core/collapsible';
 import { pickVariation, confirmFixtures, workflowActions } from '../../../demo/src/fixtures/index';
 import { streamFixture } from '../../../demo/src/lib/stream';
