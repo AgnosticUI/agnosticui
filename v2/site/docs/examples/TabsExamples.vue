@@ -216,7 +216,7 @@
 </template>
 
 <script>
-import VueTabs, { VueTab, VueTabPanel } from "agnosticui-core/tabs/vue";
+import { VueTabs, VueTab, VueTabPanel } from "agnosticui-core/tabs/vue";
 import { Info, Settings, User } from "lucide-vue-next";
 
 export default {
