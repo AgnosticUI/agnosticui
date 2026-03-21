@@ -56,7 +56,7 @@ import {
   applyTheme,
   restorePrefs,
   copySkinCSS,
-} from '../../skins/skin-switcher-core.js';
+} from '../../../skins/skin-switcher-core.js';
 
 const open = ref(false);
 const skin = ref(localStorage.getItem('ag-skin') || '');
