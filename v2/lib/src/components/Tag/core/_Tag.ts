@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
 
 export type TagVariant = 'info' | 'warning' | 'error' | 'success' | 'primary' | 'monochrome' | '';
@@ -28,7 +28,7 @@ export interface TagProps {
  * @fires tag-remove - Fired when the remove button is clicked
  */
 export class AgTag extends LitElement implements TagProps {
-  static styles = css`
+  static styles: CSSResultGroup = css`
     :host {
       display: inline-flex;
       --tag-background-color: var(--ag-background-tertiary);
