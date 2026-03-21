@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import type { AgNode } from '@agnosticui/schema';
 import { AG_FACE_SELECTOR } from '@agnosticui/schema';
 import { AgDynamicRenderer } from '@agnosticui/render-react';
+import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
+import type { CollapsibleToggleEvent } from 'agnosticui-core/collapsible/react';
 import { pickVariation, confirmFixtures, workflowActions } from '../fixtures/index';
 import { streamFixture } from '../lib/stream';
 import './StreamingOutput.css';
@@ -38,14 +40,16 @@ export function StreamingOutput({ workflow, seed }: StreamingOutputProps) {
     fadeTimerRef.current = setTimeout(() => setPanelOpen(false), PANEL_AUTO_CLOSE_MS);
   }, []);
 
-  const togglePanel = useCallback(() => {
-    if (panelOpen) {
+  const handleCollapsibleToggle = useCallback((e: CollapsibleToggleEvent) => {
+    const nowOpen = e.detail.open;
+    setPanelOpen(nowOpen);
+    if (nowOpen) {
       if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
-      setPanelOpen(false);
+      fadeTimerRef.current = setTimeout(() => setPanelOpen(false), PANEL_AUTO_CLOSE_MS);
     } else {
-      openPanel();
+      if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
     }
-  }, [panelOpen, openPanel]);
+  }, []);
 
   const runStream = useCallback(async (fixture: AgNode[]) => {
     cancelRef.current();
@@ -81,17 +85,14 @@ export function StreamingOutput({ workflow, seed }: StreamingOutputProps) {
 
   return (
     <div ref={wrapperRef}>
-      <div className="node-panel">
-        <div className="node-panel-header">
-          <span className="node-panel-label">Node array</span>
-          <button className="node-panel-toggle" onClick={togglePanel}>
-            {panelOpen ? 'Hide' : 'Show'}
-          </button>
-        </div>
-        <div className={`node-panel-body${panelOpen ? ' is-open' : ''}`}>
-          <pre className="node-panel-pre">{JSON.stringify(nodes, null, 2)}</pre>
-        </div>
-      </div>
+      <ReactCollapsible
+        className="node-panel"
+        open={panelOpen}
+        onToggle={handleCollapsibleToggle}
+      >
+        <span slot="summary">Node array</span>
+        <pre className="node-panel-pre">{JSON.stringify(nodes, null, 2)}</pre>
+      </ReactCollapsible>
       <AgDynamicRenderer nodes={nodes} actions={actions} />
     </div>
   );

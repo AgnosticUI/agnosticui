@@ -1,20 +1,16 @@
-.node-panel {
+/* Outer element: border + radius + spacing */
+ag-collapsible.node-panel {
+  display: block;
   border: 1px solid var(--ag-border, #e5e7eb);
   border-radius: 6px;
-  margin-block-end: 1rem;
   overflow: hidden;
+  margin-block-end: 1rem;
 }
 
-.node-panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Summary (trigger row) */
+ag-collapsible.node-panel::part(ag-collapsible-summary) {
   padding: 0.4rem 0.75rem;
   background: var(--ag-background-secondary, #f3f4f6);
-  border-bottom: 1px solid var(--ag-border, #e5e7eb);
-}
-
-.node-panel-label {
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -23,33 +19,20 @@
   font-family: monospace;
 }
 
-.node-panel-toggle {
-  font-size: 0.7rem;
-  cursor: pointer;
-  padding: 0.15rem 0.5rem;
-  border: 1px solid var(--ag-border, #ccc);
-  border-radius: 4px;
-  background: transparent;
+/* Chevron icon */
+ag-collapsible.node-panel::part(ag-collapsible-indicator) {
   color: var(--ag-text-muted, #666);
-  font-family: inherit;
-  line-height: 1.4;
 }
 
-.node-panel-toggle:hover {
-  background: var(--ag-border, #e5e7eb);
-}
-
-.node-panel-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-
-.node-panel-body.is-open {
+/* Content area: border-top separator, constrained scroll */
+ag-collapsible.node-panel::part(ag-collapsible-content) {
+  padding: 0;
+  border-top: 1px solid var(--ag-border, #e5e7eb);
   max-height: 320px;
   overflow-y: auto;
 }
 
+/* JSON pre block (light DOM, styled normally) */
 .node-panel-pre {
   margin: 0;
   padding: 0.75rem;

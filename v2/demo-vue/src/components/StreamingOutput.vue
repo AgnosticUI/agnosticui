@@ -3,6 +3,8 @@ import { ref, watch, onUnmounted } from 'vue';
 import { AgDynamicRenderer } from '@agnosticui/render-vue';
 import type { AgNode } from '@agnosticui/schema';
 import { AG_FACE_SELECTOR } from '@agnosticui/schema';
+import VueCollapsible from 'agnosticui-core/collapsible/vue';
+import type { CollapsibleToggleEvent } from 'agnosticui-core/collapsible/react';
 import { pickVariation, confirmFixtures, workflowActions } from '../../../demo/src/fixtures/index';
 import { streamFixture } from '../../../demo/src/lib/stream';
 
@@ -22,12 +24,14 @@ function openPanel() {
   fadeTimer = setTimeout(() => { panelOpen.value = false; }, PANEL_AUTO_CLOSE_MS);
 }
 
-function togglePanel() {
-  if (panelOpen.value) {
+function handleCollapsibleToggle(e: CollapsibleToggleEvent) {
+  const nowOpen = e.detail.open;
+  panelOpen.value = nowOpen;
+  if (nowOpen) {
     if (fadeTimer) clearTimeout(fadeTimer);
-    panelOpen.value = false;
+    fadeTimer = setTimeout(() => { panelOpen.value = false; }, PANEL_AUTO_CLOSE_MS);
   } else {
-    openPanel();
+    if (fadeTimer) clearTimeout(fadeTimer);
   }
 }
 
@@ -87,39 +91,30 @@ onUnmounted(() => { if (fadeTimer) clearTimeout(fadeTimer); });
 
 <template>
   <div ref="wrapperEl">
-    <div class="node-panel">
-      <div class="node-panel-header">
-        <span class="node-panel-label">Node array</span>
-        <button class="node-panel-toggle" @click="togglePanel">
-          {{ panelOpen ? 'Hide' : 'Show' }}
-        </button>
-      </div>
-      <div :class="['node-panel-body', panelOpen ? 'is-open' : '']">
-        <pre class="node-panel-pre">{{ JSON.stringify(nodes, null, 2) }}</pre>
-      </div>
-    </div>
+    <VueCollapsible
+      class="node-panel"
+      :open="panelOpen"
+      @toggle="handleCollapsibleToggle"
+    >
+      <template #summary>Node array</template>
+      <pre class="node-panel-pre">{{ JSON.stringify(nodes, null, 2) }}</pre>
+    </VueCollapsible>
     <AgDynamicRenderer :nodes="nodes" :actions="actions" />
   </div>
 </template>
 
 <style>
-.node-panel {
+ag-collapsible.node-panel {
+  display: block;
   border: 1px solid var(--ag-border, #e5e7eb);
   border-radius: 6px;
-  margin-block-end: 1rem;
   overflow: hidden;
+  margin-block-end: 1rem;
 }
 
-.node-panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+ag-collapsible.node-panel::part(ag-collapsible-summary) {
   padding: 0.4rem 0.75rem;
   background: var(--ag-background-secondary, #f3f4f6);
-  border-bottom: 1px solid var(--ag-border, #e5e7eb);
-}
-
-.node-panel-label {
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -128,29 +123,13 @@ onUnmounted(() => { if (fadeTimer) clearTimeout(fadeTimer); });
   font-family: monospace;
 }
 
-.node-panel-toggle {
-  font-size: 0.7rem;
-  cursor: pointer;
-  padding: 0.15rem 0.5rem;
-  border: 1px solid var(--ag-border, #ccc);
-  border-radius: 4px;
-  background: transparent;
+ag-collapsible.node-panel::part(ag-collapsible-indicator) {
   color: var(--ag-text-muted, #666);
-  font-family: inherit;
-  line-height: 1.4;
 }
 
-.node-panel-toggle:hover {
-  background: var(--ag-border, #e5e7eb);
-}
-
-.node-panel-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-
-.node-panel-body.is-open {
+ag-collapsible.node-panel::part(ag-collapsible-content) {
+  padding: 0;
+  border-top: 1px solid var(--ag-border, #e5e7eb);
   max-height: 320px;
   overflow-y: auto;
 }

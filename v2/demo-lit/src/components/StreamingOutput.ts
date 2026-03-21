@@ -1,6 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '@agnosticui/render-lit';
+import 'agnosticui-core/collapsible';
+import type { CollapsibleToggleEvent } from 'agnosticui-core/collapsible';
 import type { AgNode } from '@agnosticui/schema';
 import { AG_FACE_SELECTOR } from '@agnosticui/schema';
 import { pickVariation, confirmFixtures, workflowActions } from '../../../demo/src/fixtures/index';
@@ -35,23 +37,17 @@ export class StreamingOutput extends LitElement {
       margin-block-end: var(--ag-space-4, 1rem);
     }
 
-    .node-panel {
+    ag-collapsible.node-panel {
+      display: block;
       border: 1px solid var(--ag-border, #e5e7eb);
       border-radius: 6px;
-      margin-block-end: 1rem;
       overflow: hidden;
+      margin-block-end: 1rem;
     }
 
-    .node-panel-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    ag-collapsible.node-panel::part(ag-collapsible-summary) {
       padding: 0.4rem 0.75rem;
       background: var(--ag-background-secondary, #f3f4f6);
-      border-bottom: 1px solid var(--ag-border, #e5e7eb);
-    }
-
-    .node-panel-label {
       font-size: 0.7rem;
       font-weight: 600;
       text-transform: uppercase;
@@ -60,29 +56,13 @@ export class StreamingOutput extends LitElement {
       font-family: monospace;
     }
 
-    .node-panel-toggle {
-      font-size: 0.7rem;
-      cursor: pointer;
-      padding: 0.15rem 0.5rem;
-      border: 1px solid var(--ag-border, #ccc);
-      border-radius: 4px;
-      background: transparent;
+    ag-collapsible.node-panel::part(ag-collapsible-indicator) {
       color: var(--ag-text-muted, #666);
-      font-family: inherit;
-      line-height: 1.4;
     }
 
-    .node-panel-toggle:hover {
-      background: var(--ag-border, #e5e7eb);
-    }
-
-    .node-panel-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .node-panel-body.is-open {
+    ag-collapsible.node-panel::part(ag-collapsible-content) {
+      padding: 0;
+      border-top: 1px solid var(--ag-border, #e5e7eb);
       max-height: 320px;
       overflow-y: auto;
     }
@@ -116,12 +96,14 @@ export class StreamingOutput extends LitElement {
     this.fadeTimer = setTimeout(() => { this.panelOpen = false; }, PANEL_AUTO_CLOSE_MS);
   }
 
-  private togglePanel() {
-    if (this.panelOpen) {
+  private _onCollapsibleToggle(e: CollapsibleToggleEvent) {
+    const nowOpen = e.detail.open;
+    this.panelOpen = nowOpen;
+    if (nowOpen) {
       if (this.fadeTimer) clearTimeout(this.fadeTimer);
-      this.panelOpen = false;
+      this.fadeTimer = setTimeout(() => { this.panelOpen = false; }, PANEL_AUTO_CLOSE_MS);
     } else {
-      this.openPanel();
+      if (this.fadeTimer) clearTimeout(this.fadeTimer);
     }
   }
 
@@ -189,17 +171,14 @@ export class StreamingOutput extends LitElement {
 
   render() {
     return html`
-      <div class="node-panel">
-        <div class="node-panel-header">
-          <span class="node-panel-label">Node array</span>
-          <button class="node-panel-toggle" @click=${this.togglePanel}>
-            ${this.panelOpen ? 'Hide' : 'Show'}
-          </button>
-        </div>
-        <div class="node-panel-body ${this.panelOpen ? 'is-open' : ''}">
-          <pre class="node-panel-pre">${JSON.stringify(this.nodes, null, 2)}</pre>
-        </div>
-      </div>
+      <ag-collapsible
+        class="node-panel"
+        .open=${this.panelOpen}
+        .onToggle=${(e: CollapsibleToggleEvent) => this._onCollapsibleToggle(e)}
+      >
+        <span slot="summary">Node array</span>
+        <pre class="node-panel-pre">${JSON.stringify(this.nodes, null, 2)}</pre>
+      </ag-collapsible>
       <ag-dynamic-renderer .nodes=${this.nodes} .actions=${this.actions}></ag-dynamic-renderer>
     `;
   }
