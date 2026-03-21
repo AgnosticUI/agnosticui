@@ -218,14 +218,14 @@ export class TooltipFx extends Tooltip implements TooltipFxProps {
     }
   }
 
-  override firstUpdated() {
-    super.firstUpdated();
+  override firstUpdated(changedProperties: Map<PropertyKey, unknown>) {
+    super.firstUpdated(changedProperties);
     this._applyFxClasses();
     this._applyFxCustomProperties();
     this._updateTheme();
   }
 
-  override updated(changedProperties: Map<string, unknown>) {
+  override updated(changedProperties: Map<PropertyKey, unknown>) {
     super.updated(changedProperties);
 
     if (changedProperties.has('fx') || changedProperties.has('fxDisabled')) {
