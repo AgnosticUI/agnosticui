@@ -1,3 +1,10 @@
+---
+head:
+  - - link
+    - rel: canonical
+      href: https://www.agnosticui.com/theming
+---
+
 # Theming
 
 <AlphaWarning />
