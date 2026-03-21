@@ -189,7 +189,7 @@
 <script lang="ts">
 import { defineComponent, ref, onUnmounted } from "vue";
 import { VueProgressRing } from "agnosticui-core/progress-ring/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 
 export default defineComponent({
   name: "ProgressRingExamples",

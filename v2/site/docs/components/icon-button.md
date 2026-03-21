@@ -120,7 +120,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script>
-import VueIconButton from "agnosticui-core/icon-button/vue";
+import { VueIconButton } from "agnosticui-core/icon-button/vue";
 import { Settings, Trash, Save, Heart, Loader, Zap } from "lucide-vue-next";
 
 export default {

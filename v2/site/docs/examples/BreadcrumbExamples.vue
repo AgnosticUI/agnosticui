@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import VueBreadcrumb from "agnosticui-core/breadcrumb/vue";
+import { VueBreadcrumb } from "agnosticui-core/breadcrumb/vue";
 export default {
   name: "BreadcrumbExamples",
   components: { VueBreadcrumb },

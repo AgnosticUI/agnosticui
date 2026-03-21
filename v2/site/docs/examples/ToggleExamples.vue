@@ -224,8 +224,8 @@
 </template>
 
 <script>
-import VueToggle from "agnosticui-core/toggle/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueToggle } from "agnosticui-core/toggle/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 
 export default {
   name: "ToggleExamples",

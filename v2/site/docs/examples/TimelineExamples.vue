@@ -640,7 +640,7 @@ import {
 } from "agnosticui-core/timeline/vue";
 import { VueIcon as AgIcon } from "agnosticui-core/icon/vue";
 import { VueCard as AgCard } from "agnosticui-core/card/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import { VueBadge as AgBadge } from "agnosticui-core/badge/vue";
 import { VueIconButton as AgIconButton } from "agnosticui-core/icon-button/vue";
 

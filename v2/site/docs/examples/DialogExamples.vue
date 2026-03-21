@@ -142,7 +142,7 @@ import VueDialog, {
   VueDialogHeader,
   VueDialogFooter,
 } from "agnosticui-core/dialog/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 
 export default {
   name: "DialogExamples",

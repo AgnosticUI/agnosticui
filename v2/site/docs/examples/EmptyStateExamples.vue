@@ -632,7 +632,7 @@
 
 <script>
 import { VueEmptyState } from "agnosticui-core/empty-state/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import {
   SearchX,
   Folder,

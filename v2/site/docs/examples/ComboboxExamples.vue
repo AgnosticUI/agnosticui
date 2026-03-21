@@ -435,7 +435,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import VueCombobox from "agnosticui-core/combobox/vue";
+import { VueCombobox } from "agnosticui-core/combobox/vue";
 import type { ComboboxOption } from "agnosticui-core/combobox";
 
 // State options

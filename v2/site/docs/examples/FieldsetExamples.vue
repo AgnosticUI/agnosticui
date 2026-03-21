@@ -689,10 +689,10 @@
 
 <script>
 import { VueFieldset } from "agnosticui-core/fieldset/vue";
-import VueInput from "agnosticui-core/input/vue";
+import { VueInput } from "agnosticui-core/input/vue";
 import { VueRadio } from "agnosticui-core/radio/vue";
 import { VueCheckbox } from "agnosticui-core/checkbox/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import {
   Search,
   CreditCard,

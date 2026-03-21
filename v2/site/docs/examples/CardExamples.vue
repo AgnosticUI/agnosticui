@@ -310,7 +310,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { VueCard } from "agnosticui-core/card/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 
 export default defineComponent({
   name: "CardExamples",

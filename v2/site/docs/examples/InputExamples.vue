@@ -477,7 +477,7 @@
 </template>
 
 <script>
-import VueInput from "agnosticui-core/input/vue";
+import { VueInput } from "agnosticui-core/input/vue";
 import { Globe, DollarSign, Percent, Search, User2 } from "lucide-vue-next";
 
 export default {

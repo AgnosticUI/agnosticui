@@ -121,8 +121,8 @@ The CLI copies source code directly into your project, giving you full visibilit
 
 <script>
 import { VueEmptyState } from "agnosticui-core/empty-state/vue";
-import VueIcon from "agnosticui-core/icon/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueIcon } from "agnosticui-core/icon/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 
 export default {
   components: {

@@ -350,7 +350,7 @@
 
 <script>
 import { VuePopover } from "agnosticui-core/popover/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import { Menu, MoreVertical } from "lucide-vue-next";
 import { ref } from "vue";
 

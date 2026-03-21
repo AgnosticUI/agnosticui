@@ -356,8 +356,8 @@
 import { defineComponent } from "vue";
 import { VueMessageBubble } from "agnosticui-core/message-bubble/vue";
 import { VueAvatar } from "agnosticui-core/avatar/vue";
-import VueInput from "agnosticui-core/input/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueInput } from "agnosticui-core/input/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import { MessageCircle, Send, Bot, Trash2 } from "lucide-vue-next";
 
 export default defineComponent({

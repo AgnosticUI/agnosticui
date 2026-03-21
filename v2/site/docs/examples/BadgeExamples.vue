@@ -396,10 +396,10 @@
 
 <script>
 import { VueBadge } from "agnosticui-core/badge/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import { VueIcon } from "agnosticui-core/icon/vue";
 import { Mail, Bell, Info, ShoppingCart } from "lucide-vue-next";
-import VueAlert from "agnosticui-core/alert/vue";
+import { VueAlert } from "agnosticui-core/alert/vue";
 import { VueVisuallyHidden } from "agnosticui-core/visually-hidden/vue";
 
 export default {

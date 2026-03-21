@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import VueImage from "agnosticui-core/image/vue";
+import { VueImage } from "agnosticui-core/image/vue";
 import { VueIcon } from "agnosticui-core/icon/vue";
 import { TriangleAlert } from "lucide-vue-next";
 

@@ -237,8 +237,8 @@
 </template>
 
 <script>
-import VueDrawer from "agnosticui-core/drawer/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueDrawer } from "agnosticui-core/drawer/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import { Plus, Upload, Download, Share2, Filter } from "lucide-vue-next";
 
 export default {
