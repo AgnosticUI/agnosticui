@@ -6,7 +6,7 @@
 
 **Supporting components:** Header, Button, Card, Badge, Avatar, Divider, Accordion, Tabs
 
-**Design inspiration:** Linear, Vercel, Stripe
+**Design inspiration:** Linear, Netlify, Stripe
 
 **Target aesthetic:** High-contrast marketing page. Inter typeface. Bold hero with animated
 Lab components. Sections: Hero → Features → Testimonials → Pricing → FAQ → Footer.
