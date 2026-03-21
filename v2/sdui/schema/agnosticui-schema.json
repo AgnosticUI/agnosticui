@@ -179,6 +179,100 @@
         },
         "component": {
           "type": "string",
+          "const": "AgAvatarFx"
+        },
+        "text": {
+          "type": "string"
+        },
+        "imgSrc": {
+          "type": "string"
+        },
+        "imgAlt": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "shape": {
+          "type": "string",
+          "enum": [
+            "circle",
+            "square",
+            "rounded"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error",
+            "transparent"
+          ]
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "fx": {
+          "type": "string"
+        },
+        "fxSpeed": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "fxEase": {
+          "type": "string",
+          "enum": [
+            "ease",
+            "ease-in",
+            "ease-out",
+            "ease-in-out",
+            "bounce",
+            "spring-sm",
+            "spring-md",
+            "spring-lg"
+          ]
+        },
+        "fxDisabled": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
           "const": "AgBadge"
         },
         "variant": {
@@ -2491,6 +2585,86 @@
         },
         "component": {
           "type": "string",
+          "const": "AgTagFx"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error"
+          ]
+        },
+        "shape": {
+          "type": "string",
+          "enum": [
+            "circle",
+            "pill",
+            "round"
+          ]
+        },
+        "uppercase": {
+          "type": "boolean"
+        },
+        "removable": {
+          "type": "boolean"
+        },
+        "on_remove": {
+          "type": "string"
+        },
+        "fx": {
+          "type": "string"
+        },
+        "fxSpeed": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "fxEase": {
+          "type": "string",
+          "enum": [
+            "ease",
+            "ease-in",
+            "ease-out",
+            "ease-in-out",
+            "bounce",
+            "spring-sm",
+            "spring-md",
+            "spring-lg"
+          ]
+        },
+        "fxDisabled": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
           "const": "AgToggle"
         },
         "label": {
@@ -2624,6 +2798,96 @@
         },
         "on_hide": {
           "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgTooltipFx"
+        },
+        "content": {
+          "type": "string"
+        },
+        "placement": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "right",
+            "left",
+            "top-end",
+            "top-start",
+            "bottom-end",
+            "bottom-start",
+            "right-end",
+            "right-start",
+            "left-end",
+            "left-start"
+          ]
+        },
+        "distance": {
+          "type": "number"
+        },
+        "skidding": {
+          "type": "number"
+        },
+        "trigger": {
+          "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "on_show": {
+          "type": "string"
+        },
+        "on_hide": {
+          "type": "string"
+        },
+        "fx": {
+          "type": "string"
+        },
+        "fxSpeed": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "fxEase": {
+          "type": "string",
+          "enum": [
+            "ease",
+            "ease-in",
+            "ease-out",
+            "ease-in-out",
+            "bounce",
+            "spring-sm",
+            "spring-md",
+            "spring-lg"
+          ]
+        },
+        "fxDisabled": {
+          "type": "boolean"
         },
         "children": {
           "type": "array",
