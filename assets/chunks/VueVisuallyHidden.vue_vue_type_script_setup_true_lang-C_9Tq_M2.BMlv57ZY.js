@@ -1,0 +1,1 @@
+import"./VisuallyHidden.CGw79oCK.js";import{d as o,c as l,o as n,r as t}from"./framework.DmF2n0Fc.js";const i=o({__name:"VueVisuallyHidden",setup(a){return(e,r)=>(n(),l("ag-visually-hidden",null,[t(e.$slots,"default")]))}});export{i as p};
