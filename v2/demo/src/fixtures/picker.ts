@@ -8,7 +8,26 @@ export const pickerFixture: AgNode[] = [
     name: 'workflow',
     legend: 'Choose a workflow to generate',
     on_change: 'workflow-select',
-    children: ['card-contact', 'card-login', 'card-pricing'],
+    children: ['card-wizard', 'card-contact', 'card-login', 'card-pricing'],
+  },
+  {
+    id: 'card-wizard',
+    component: 'AgSelectionCard',
+    value: 'account-setup',
+    label: 'Account setup wizard',
+    children: ['card-wizard-title', 'card-wizard-desc'],
+  },
+  {
+    id: 'card-wizard-title',
+    component: 'AgText',
+    text: 'Account setup',
+    el: 'p',
+  },
+  {
+    id: 'card-wizard-desc',
+    component: 'AgText',
+    text: '3 steps · branches on plan type',
+    el: 'p',
   },
   {
     id: 'card-contact',

@@ -1,5 +1,19 @@
 import type { AgNode } from '@agnosticui/schema';
 
+// Wizard step 1 is shared between fixtureBank (initial render) and
+// confirmFixtures (so WZ_RESTART can navigate back to it).
+const wzStep1: AgNode[] = [
+  { id: 'wz1-heading',           component: 'AgText',    text: 'Set up your account',                        el: 'h2' },
+  { id: 'wz1-sub',               component: 'AgText',    text: 'Choose your account type to get started.',   el: 'p' },
+  { id: 'wz1-badge',             component: 'AgBadge',   variant: 'info',  children: ['wz1-badge-text'] },
+  { id: 'wz1-badge-text',        component: 'AgText',    text: 'Step 1 of 3' },
+  { id: 'wz1-divider',           component: 'AgDivider' },
+  { id: 'wz1-btn-personal',      component: 'AgButton',  variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'WZ_PLAN_PERSONAL', children: ['wz1-btn-personal-label'] },
+  { id: 'wz1-btn-personal-label', component: 'AgText',   text: 'Personal account' },
+  { id: 'wz1-btn-team',          component: 'AgButton',  bordered: true,     shape: 'rounded', fullWidth: true, on_click: 'WZ_PLAN_TEAM',     children: ['wz1-btn-team-label'] },
+  { id: 'wz1-btn-team-label',    component: 'AgText',    text: 'Team account' },
+];
+
 export const fixtureBank: Record<string, AgNode[][]> = {
   'contact-form': [
     // variation 1 — minimal
@@ -100,6 +114,8 @@ export const fixtureBank: Record<string, AgNode[][]> = {
     ],
   ],
 
+  'account-setup': [wzStep1],
+
   'pricing-card': [
     // variation 1 — Pro plan
     [
@@ -190,6 +206,62 @@ export const confirmFixtures: Record<string, AgNode[]> = {
     { id: 'tr-ok-badge-text', component: 'AgText', text: 'Expires in 14 days' },
   ],
 
+  // ── Account-setup wizard ────────────────────────────────────────────────
+
+  // Step 1 is also the restart target (referenced by WZ_RESTART).
+  'wz-step-1': wzStep1,
+
+  // Step 2a — personal path
+  'wz-step-2-personal': [
+    { id: 'wz2p-heading',       component: 'AgText',    text: 'Your profile',                   el: 'h2' },
+    { id: 'wz2p-badge',         component: 'AgBadge',   variant: 'info',  children: ['wz2p-badge-text'] },
+    { id: 'wz2p-badge-text',    component: 'AgText',    text: 'Step 2 of 3 · Personal' },
+    { id: 'wz2p-divider',       component: 'AgDivider' },
+    { id: 'wz2p-name',          component: 'AgInput',   label: 'Full name',     type: 'text',  placeholder: 'Jane Smith',          required: true, rounded: true },
+    { id: 'wz2p-email',         component: 'AgInput',   label: 'Email',         type: 'email', placeholder: 'jane@example.com',    required: true, rounded: true },
+    { id: 'wz2p-next',          component: 'AgButton',  variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'WZ_PROFILE_NEXT', children: ['wz2p-next-label'] },
+    { id: 'wz2p-next-label',    component: 'AgText',    text: 'Continue' },
+  ],
+
+  // Step 2b — team path (branch)
+  'wz-step-2-team': [
+    { id: 'wz2t-heading',       component: 'AgText',    text: 'Team details',                   el: 'h2' },
+    { id: 'wz2t-badge',         component: 'AgBadge',   variant: 'warning', children: ['wz2t-badge-text'] },
+    { id: 'wz2t-badge-text',    component: 'AgText',    text: 'Step 2 of 3 · Team' },
+    { id: 'wz2t-divider',       component: 'AgDivider' },
+    { id: 'wz2t-company',       component: 'AgInput',   label: 'Company name',  type: 'text',  placeholder: 'Acme Corp',           required: true, rounded: true },
+    { id: 'wz2t-email',         component: 'AgInput',   label: 'Work email',    type: 'email', placeholder: 'you@acme.com',        required: true, rounded: true },
+    { id: 'wz2t-next',          component: 'AgButton',  variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'WZ_PROFILE_NEXT', children: ['wz2t-next-label'] },
+    { id: 'wz2t-next-label',    component: 'AgText',    text: 'Continue' },
+  ],
+
+  // Step 3 — shared review step (both paths converge here)
+  'wz-step-3-review': [
+    { id: 'wz3-heading',        component: 'AgText',    text: 'Almost done',                    el: 'h2' },
+    { id: 'wz3-badge',          component: 'AgBadge',   variant: 'info',  children: ['wz3-badge-text'] },
+    { id: 'wz3-badge-text',     component: 'AgText',    text: 'Step 3 of 3' },
+    { id: 'wz3-divider',        component: 'AgDivider' },
+    { id: 'wz3-card',           component: 'AgCard',    shadow: true, rounded: 'md', children: ['wz3-card-body'] },
+    { id: 'wz3-card-body',      component: 'AgText',    text: 'Review your details above and click Finish to create your account. You can change everything later in settings.', el: 'p' },
+    { id: 'wz3-submit',         component: 'AgButton',  variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'WZ_SUBMIT',  children: ['wz3-submit-label'] },
+    { id: 'wz3-submit-label',   component: 'AgText',    text: 'Finish setup' },
+    { id: 'wz3-restart',        component: 'AgButton',  bordered: true,     shape: 'rounded', fullWidth: true, on_click: 'WZ_RESTART', children: ['wz3-restart-label'] },
+    { id: 'wz3-restart-label',  component: 'AgText',    text: 'Start over' },
+  ],
+
+  // Step 4 — success
+  'wz-confirm-success': [
+    { id: 'wz4-alert',          component: 'AgAlert',   variant: 'success', bordered: true, rounded: true, children: ['wz4-alert-text'] },
+    { id: 'wz4-alert-text',     component: 'AgText',    text: 'Account created! Welcome aboard.' },
+    { id: 'wz4-card',           component: 'AgCard',    shadow: true, rounded: 'md', children: ['wz4-badge', 'wz4-heading', 'wz4-body'] },
+    { id: 'wz4-badge',          component: 'AgBadge',   variant: 'success', children: ['wz4-badge-text'] },
+    { id: 'wz4-badge-text',     component: 'AgText',    text: 'Setup complete' },
+    { id: 'wz4-heading',        component: 'AgText',    text: "You're all set!",                el: 'h2' },
+    { id: 'wz4-body',           component: 'AgText',    text: 'Check your email for a confirmation link. Your account will be ready within a few minutes.', el: 'p' },
+  ],
+
+  // ── /Account-setup wizard ────────────────────────────────────────────────
+
   'pricing-plans': [
     { id: 'pl-heading',    component: 'AgText',   text: 'All plans', el: 'h2' },
     { id: 'pl-divider',    component: 'AgDivider' },
@@ -215,6 +287,13 @@ export const confirmFixtures: Record<string, AgNode[]> = {
 
 // Maps each workflow's action aliases to the confirm fixture key they trigger.
 export const workflowActions: Record<string, Record<string, string>> = {
+  'account-setup': {
+    WZ_PLAN_PERSONAL: 'wz-step-2-personal', // branch A
+    WZ_PLAN_TEAM:     'wz-step-2-team',     // branch B
+    WZ_PROFILE_NEXT:  'wz-step-3-review',   // both branches converge here
+    WZ_SUBMIT:        'wz-confirm-success',
+    WZ_RESTART:       'wz-step-1',
+  },
   'contact-form': {
     SUBMIT_FORM: 'contact-form-confirm',
   },
