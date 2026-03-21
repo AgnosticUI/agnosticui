@@ -8,6 +8,7 @@ import { ReactAccordion } from 'agnosticui-core/accordion/react';
 import { ReactAlert } from 'agnosticui-core/alert/react';
 import { ReactAspectRatio } from 'agnosticui-core/aspect-ratio/react';
 import { ReactAvatar } from 'agnosticui-core/avatar/react';
+import { ReactAvatarFx } from 'agnosticui-core/avatar-fx/react';
 import { ReactBadge } from 'agnosticui-core/badge/react';
 import { ReactBadgeFx } from 'agnosticui-core/badge-fx/react';
 import { ReactBreadcrumb } from 'agnosticui-core/breadcrumb/react';
@@ -42,8 +43,10 @@ import { ReactSelectionCardGroup } from 'agnosticui-core/selection-card-group/re
 import { ReactSpinner } from 'agnosticui-core/spinner/react';
 import { ReactTabs } from 'agnosticui-core/tabs/react';
 import { ReactTag } from 'agnosticui-core/tag/react';
+import { ReactTagFx } from 'agnosticui-core/tag-fx/react';
 import { ReactToggle } from 'agnosticui-core/toggle/react';
 import { ReactTooltip } from 'agnosticui-core/tooltip/react';
+import { ReactTooltipFx } from 'agnosticui-core/tooltip-fx/react';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -126,6 +129,23 @@ function renderNode(
           shape={node.shape}
           variant={node.variant}
           aria-label={node.ariaLabel} />
+      );
+
+    case 'AgAvatarFx':
+      return (
+        <ReactAvatarFx
+          key={node.id}
+          text={node.text}
+          imgSrc={node.imgSrc}
+          imgAlt={node.imgAlt}
+          size={node.size}
+          shape={node.shape}
+          variant={node.variant}
+          aria-label={node.ariaLabel}
+          fx={node.fx}
+          fxSpeed={node.fxSpeed}
+          fxEase={node.fxEase}
+          fxDisabled={node.fxDisabled} />
       );
 
     case 'AgBadge':
@@ -713,6 +733,21 @@ function renderNode(
         </ReactTag>
       );
 
+    case 'AgTagFx':
+      return (
+        <ReactTagFx
+          key={node.id}
+          variant={node.variant}
+          shape={node.shape}
+          uppercase={node.uppercase}
+          removable={node.removable}
+          fx={node.fx}
+          fxSpeed={node.fxSpeed}
+          fxEase={node.fxEase}
+          fxDisabled={node.fxDisabled}
+          onTagRemove={() => dispatch(node.on_remove, actions)} />
+      );
+
     case 'AgToggle':
       return (
         <ReactToggle
@@ -746,6 +781,24 @@ function renderNode(
           skidding={node.skidding}
           trigger={node.trigger}
           disabled={node.disabled}
+          onShow={() => dispatch(node.on_show, actions)}
+          onHide={() => dispatch(node.on_hide, actions)} />
+      );
+
+    case 'AgTooltipFx':
+      return (
+        <ReactTooltipFx
+          key={node.id}
+          content={node.content}
+          placement={node.placement}
+          distance={node.distance}
+          skidding={node.skidding}
+          trigger={node.trigger}
+          disabled={node.disabled}
+          fx={node.fx}
+          fxSpeed={node.fxSpeed}
+          fxEase={node.fxEase}
+          fxDisabled={node.fxDisabled}
           onShow={() => dispatch(node.on_show, actions)}
           onHide={() => dispatch(node.on_hide, actions)} />
       );

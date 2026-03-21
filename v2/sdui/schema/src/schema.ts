@@ -44,6 +44,23 @@ export const AgAvatarSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgAvatarFxSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgAvatarFx'),
+  text: z.string().optional(),
+  imgSrc: z.string().optional(),
+  imgAlt: z.string().optional(),
+  size: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
+  shape: z.enum(['circle', 'square', 'rounded']).optional(),
+  variant: z.enum(['default', 'success', 'monochrome', 'warning', 'info', 'error', 'transparent']).optional(),
+  ariaLabel: z.string().optional(),
+  fx: z.string().optional(),
+  fxSpeed: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
+  fxEase: z.enum(['ease', 'ease-in', 'ease-out', 'ease-in-out', 'bounce', 'spring-sm', 'spring-md', 'spring-lg']).optional(),
+  fxDisabled: z.boolean().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgBadgeSchema = z.object({
   id: z.string(),
   component: z.literal('AgBadge'),
@@ -566,6 +583,21 @@ export const AgTagSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgTagFxSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgTagFx'),
+  variant: z.enum(['primary', 'success', 'monochrome', 'warning', 'info', 'error']).optional(),
+  shape: z.enum(['circle', 'pill', 'round']).optional(),
+  uppercase: z.boolean().optional(),
+  removable: z.boolean().optional(),
+  on_remove: z.string().optional(),
+  fx: z.string().optional(),
+  fxSpeed: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
+  fxEase: z.enum(['ease', 'ease-in', 'ease-out', 'ease-in-out', 'bounce', 'spring-sm', 'spring-md', 'spring-lg']).optional(),
+  fxDisabled: z.boolean().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgToggleSchema = z.object({
   id: z.string(),
   component: z.literal('AgToggle'),
@@ -603,6 +635,24 @@ export const AgTooltipSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgTooltipFxSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgTooltipFx'),
+  content: z.string().optional(),
+  placement: z.enum(['top', 'bottom', 'right', 'left', 'top-end', 'top-start', 'bottom-end', 'bottom-start', 'right-end', 'right-start', 'left-end', 'left-start']).optional(),
+  distance: z.number().optional(),
+  skidding: z.number().optional(),
+  trigger: z.string().optional(),
+  disabled: z.boolean().optional(),
+  on_show: z.string().optional(),
+  on_hide: z.string().optional(),
+  fx: z.string().optional(),
+  fxSpeed: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
+  fxEase: z.enum(['ease', 'ease-in', 'ease-out', 'ease-in-out', 'bounce', 'spring-sm', 'spring-md', 'spring-lg']).optional(),
+  fxDisabled: z.boolean().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgTextSchema = z.object({
   id: z.string(),
   component: z.literal('AgText'),
@@ -616,6 +666,7 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgAlertSchema,
   AgAspectRatioSchema,
   AgAvatarSchema,
+  AgAvatarFxSchema,
   AgBadgeSchema,
   AgBadgeFxSchema,
   AgBreadcrumbSchema,
@@ -650,7 +701,9 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgSpinnerSchema,
   AgTabsSchema,
   AgTagSchema,
+  AgTagFxSchema,
   AgToggleSchema,
   AgTooltipSchema,
+  AgTooltipFxSchema,
   AgTextSchema,
 ]);
