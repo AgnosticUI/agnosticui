@@ -34,13 +34,19 @@ Components are copied to `./src/components/ag/` where you own and can customize 
 npm run dev
 ```
 
-## Browse installed components
+## Browse components with Storybook
+
+One-time setup (run once per project):
 
 ```bash
-npm run viewer
+npx agnosticui-cli storybook
 ```
 
-Opens a lightweight component viewer at `http://localhost:7173` showing every installed component with a preview, import snippet, and metadata.
+Then start Storybook:
+
+```bash
+npm run storybook
+```
 
 ## Typical workflow
 
@@ -49,7 +55,7 @@ npm install                          # install deps (first time)
 npx agnosticui-cli sync              # get/update the reference library
 npx agnosticui-cli add <component>   # eject a component into your project
 npm run dev                          # start your app
-npm run viewer                         # browse your installed components
+npm run storybook                    # browse your installed components
 ```
 
 ## More commands

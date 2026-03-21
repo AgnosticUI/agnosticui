@@ -60,8 +60,14 @@ Basic "does the framework integration work?" check. One ag-button, one ag-alert.
 | Smoke     | ag-button   | ✅    | ✅  | ✅  |
 | Smoke     | ag-alert    | ✅    | ✅  | ✅  |
 
-### Milestone 2 – Full Coverage (DONE)
+### Milestone 2 – Full Coverage (TODO)
 One page per category. MVP assertion: element attached to DOM.
+
+Category pages are fully implemented in all 3 frameworks (`pages/*.html` and
+their entry-point files). What is missing are the Playwright spec files:
+`actions.spec.ts`, `forms.spec.ts`, `feedback.spec.ts`, `navigation.spec.ts`,
+`overlays.spec.ts`, `layout.spec.ts`, `display.spec.ts`. Only `smoke.spec.ts`
+exists today.
 
 #### Actions (`pages/actions.html`)
 | Component        | ag-tag-name       | React | Vue | Lit |
