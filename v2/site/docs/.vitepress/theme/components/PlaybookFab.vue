@@ -65,7 +65,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vitepress'
 import { VueIcon } from 'agnosticui-core/icon/vue'
-import VueButton from 'agnosticui-core/button/vue'
+import { VueButton } from 'agnosticui-core/button/vue'
 import { Palette, X } from 'lucide-vue-next'
 import PlaybookThemePanel from '../../../components/PlaybookThemePanel.vue'
 

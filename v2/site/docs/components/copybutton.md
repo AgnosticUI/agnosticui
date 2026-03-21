@@ -92,7 +92,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script>
-import VueCopyButton from 'agnosticui-core/copy-button/vue'
+import { VueCopyButton } from 'agnosticui-core/copy-button/vue'
 
 export default {
   components: { VueCopyButton },
