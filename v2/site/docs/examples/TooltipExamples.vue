@@ -135,8 +135,8 @@
 </template>
 
 <script>
-import VueTooltip from "agnosticui-core/tooltip/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueTooltip } from "agnosticui-core/tooltip/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import { Pencil, Trash2, Download, Share2 } from "lucide-vue-next";
 
 export default {

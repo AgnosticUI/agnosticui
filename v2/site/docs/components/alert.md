@@ -132,7 +132,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 <script>
 import { Info } from "lucide-vue-next";
-import VueAlert from "agnosticui-core/alert/vue";
+import { VueAlert } from "agnosticui-core/alert/vue";
 export default {
   name: "AlertExamples",
   components: { VueAlert, Info },
@@ -358,7 +358,7 @@ Alerts can be made dismissible by adding the `dismissible` prop. This displays a
 </template>
 
 <script>
-import VueAlert from "agnosticui-core/alert/vue";
+import { VueAlert } from "agnosticui-core/alert/vue";
 
 export default {
   components: { VueAlert },

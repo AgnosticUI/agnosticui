@@ -1131,7 +1131,7 @@
   </section>
 </template>
 <script>
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import { VueVisuallyHidden } from "agnosticui-core/visually-hidden/vue";
 import { VueIcon } from "agnosticui-core/icon/vue";
 

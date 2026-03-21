@@ -261,7 +261,7 @@
 </template>
 
 <script>
-import VueIconButton from "agnosticui-core/icon-button/vue";
+import { VueIconButton } from "agnosticui-core/icon-button/vue";
 import { VueIcon } from "agnosticui-core/icon/vue";
 import {
   Settings,

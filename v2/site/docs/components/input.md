@@ -101,7 +101,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script>
-import VueInput from "agnosticui-core/input/vue";
+import { VueInput } from "agnosticui-core/input/vue";
 import { DollarSign } from "lucide-vue-next";
 
 export default {
@@ -558,7 +558,7 @@ Add icons or text before or after the input using slots. Addons are **automatica
 </template>
 
 <script>
-import VueInput from "agnosticui-core/input/vue";
+import { VueInput } from "agnosticui-core/input/vue";
 import { Globe, DollarSign } from "lucide-vue-next";
 
 export default {

@@ -103,7 +103,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 
 <script>
 import { VuePopover } from "agnosticui-core/popover/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 
 export default {
   components: {

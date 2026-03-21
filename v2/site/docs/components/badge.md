@@ -93,7 +93,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 
 <script>
 import { VueBadge } from "agnosticui-core/badge/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 import { VueIcon } from "agnosticui-core/icon/vue";
 
 export default {

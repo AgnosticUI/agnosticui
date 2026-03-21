@@ -153,7 +153,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script>
-import VueSidebar from "agnosticui-core/sidebar/vue";
+import { VueSidebar } from "agnosticui-core/sidebar/vue";
 import {
   VueSidebarNav,
   VueSidebarNavItem,

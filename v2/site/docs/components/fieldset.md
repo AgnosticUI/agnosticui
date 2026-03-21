@@ -140,10 +140,10 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script>
-import VueFieldset from "agnosticui-core/fieldset/vue";
-import VueInput from "agnosticui-core/input/vue";
-import VueRadio from "agnosticui-core/radio/vue";
-import VueCheckbox from "agnosticui-core/checkbox/vue";
+import { VueFieldset } from "agnosticui-core/fieldset/vue";
+import { VueInput } from "agnosticui-core/input/vue";
+import { VueRadio } from "agnosticui-core/radio/vue";
+import { VueCheckbox } from "agnosticui-core/checkbox/vue";
 
 export default {
   components: {

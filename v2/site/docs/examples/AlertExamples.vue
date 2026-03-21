@@ -298,7 +298,7 @@
 </template>
 <script>
 import { Info } from "lucide-vue-next";
-import VueAlert from "agnosticui-core/alert/vue";
+import { VueAlert } from "agnosticui-core/alert/vue";
 export default {
   name: "AlertExamples",
   components: { VueAlert, Info },

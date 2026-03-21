@@ -123,8 +123,8 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script>
-import VueDrawer from "agnosticui-core/drawer/vue";
-import VueButton from "agnosticui-core/button/vue";
+import { VueDrawer } from "agnosticui-core/drawer/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 
 export default {
   components: {
