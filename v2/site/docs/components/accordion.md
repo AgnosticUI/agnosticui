@@ -108,7 +108,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script>
-import VueAccordion, {
+import { VueAccordion,
   VueAccordionItem,
   VueAccordionHeader,
   VueAccordionContent,

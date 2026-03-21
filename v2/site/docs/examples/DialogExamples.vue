@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import VueDialog, {
+import { VueDialog,
   VueDialogHeader,
   VueDialogFooter,
 } from "agnosticui-core/dialog/vue";

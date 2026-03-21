@@ -97,7 +97,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script>
-import VueDialog, {
+import { VueDialog,
   VueDialogHeader,
   VueDialogFooter,
 } from "agnosticui-core/dialog/vue";

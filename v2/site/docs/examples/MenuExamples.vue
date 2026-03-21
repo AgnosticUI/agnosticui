@@ -585,7 +585,7 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from "vue";
-import VueMenu, {
+import { VueMenu,
   VueMenuItem,
   VueMenuSeparator,
 } from "agnosticui-core/menu/vue";

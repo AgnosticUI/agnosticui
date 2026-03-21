@@ -368,7 +368,7 @@
 </template>
 
 <script>
-import VueAccordion, {
+import { VueAccordion,
   VueAccordionItem,
   VueAccordionHeader,
   VueAccordionContent,
