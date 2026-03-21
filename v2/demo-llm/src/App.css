@@ -1,0 +1,113 @@
+.demo-layout {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-block-start: var(--ag-space-8, 2rem);
+  padding: 0 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.demo-brand {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.demo-nav-label {
+  font-size: 0.9rem;
+  color: var(--ag-text-muted, #666);
+}
+
+/* Prompt section */
+.demo-prompt {
+  background: var(--ag-background-secondary, #f3f4f6);
+  border: 1px solid var(--ag-border, #e5e7eb);
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.demo-prompt-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ag-text-muted, #666);
+}
+
+.demo-prompt-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  border: 1px solid var(--ag-border, #d1d5db);
+  border-radius: 6px;
+  background: var(--ag-background-primary, #fff);
+  color: var(--ag-text-primary, #111);
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  resize: vertical;
+  outline: none;
+}
+
+.demo-prompt-textarea:focus {
+  border-color: var(--ag-focus, #2563eb);
+  box-shadow: 0 0 0 2px var(--ag-focus-ring, rgba(37, 99, 235, 0.2));
+}
+
+.demo-prompt-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.demo-prompt-hint {
+  font-size: 0.78rem;
+  color: var(--ag-text-muted, #9ca3af);
+}
+
+/* Output section */
+.demo-output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.demo-output-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ag-text-muted, #666);
+}
+
+.demo-output-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ag-space-4, 1rem);
+  min-height: 120px;
+}
+
+.demo-output-body ag-input,
+.demo-output-body ag-checkbox,
+.demo-output-body ag-toggle,
+.demo-output-body ag-divider,
+.demo-output-body ag-link,
+.demo-output-body ag-badge {
+  display: block;
+  margin-block-end: var(--ag-space-4, 1rem);
+}
+
+.demo-output-body ag-button + ag-button {
+  margin-block-start: var(--ag-space-4, 1rem);
+}
+
+.demo-output-body ag-alert {
+  display: block;
+  margin-block-end: var(--ag-space-4, 1rem);
+}

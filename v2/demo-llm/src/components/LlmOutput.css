@@ -1,0 +1,88 @@
+.llm-status {
+  margin-block-end: 0.75rem;
+  min-height: 1.5rem;
+}
+
+.llm-status-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.llm-status-streaming {
+  background: var(--ag-primary-light, #dbeafe);
+  color: var(--ag-primary, #2563eb);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.llm-status-done {
+  background: var(--ag-success-light, #dcfce7);
+  color: var(--ag-success, #16a34a);
+}
+
+.llm-status-error {
+  background: var(--ag-danger-light, #fee2e2);
+  color: var(--ag-danger, #dc2626);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+.llm-error {
+  font-size: 0.85rem;
+  color: var(--ag-danger, #dc2626);
+  background: var(--ag-danger-light, #fee2e2);
+  border: 1px solid var(--ag-danger, #dc2626);
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-block-end: 1rem;
+}
+
+/* Node panel — same pattern as the fixture demos */
+ag-collapsible.node-panel {
+  display: block;
+  border: 1px solid var(--ag-border, #e5e7eb);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-block-end: 1rem;
+}
+
+ag-collapsible.node-panel::part(ag-collapsible-summary) {
+  padding: 0.4rem 0.75rem;
+  background: var(--ag-background-secondary, #f3f4f6);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ag-text-muted, #666);
+  font-family: monospace;
+}
+
+ag-collapsible.node-panel::part(ag-collapsible-indicator) {
+  color: var(--ag-text-muted, #666);
+}
+
+ag-collapsible.node-panel::part(ag-collapsible-content) {
+  padding: 0;
+  border-top: 1px solid var(--ag-border, #e5e7eb);
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.node-panel-pre {
+  margin: 0;
+  padding: 0.75rem;
+  font-family: monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--ag-text-primary, #111);
+  background: var(--ag-background-primary, #fff);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
