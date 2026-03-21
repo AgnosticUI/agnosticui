@@ -409,7 +409,7 @@ npm dist-tag ls agnosticui-core
 **Publish CLI:**
 
 ```bash
-cd v2/cli
+cd v2/cli && npm run build # build CLI
 
 # Dry-run
 npm publish --dry-run --tag alpha
