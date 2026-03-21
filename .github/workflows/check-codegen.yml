@@ -27,9 +27,13 @@ jobs:
           cache: npm
           cache-dependency-path: v2/sdui/schema/package-lock.json
 
-      - name: Install dependencies
+      - name: Install schema dependencies
         run: npm ci
         working-directory: v2/sdui/schema
+
+      - name: Install lib dependencies (needed for TypeScript type resolution)
+        run: npm ci
+        working-directory: v2/lib
 
       - name: Check codegen drift
         run: npm run check-codegen
