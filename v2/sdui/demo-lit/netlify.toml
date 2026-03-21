@@ -1,7 +1,7 @@
 [build]
-  ignore = "[ \"$CONTEXT\" = 'production' ] && [ -n \"$CACHED_COMMIT_REF\" ] && git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- v2/schema/ v2/lib/ v2/renderers/lit/ v2/demo/ v2/demo-lit/"
+  ignore = "[ \"$CONTEXT\" = 'production' ] && [ -n \"$CACHED_COMMIT_REF\" ] && git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- v2/sdui/schema/ v2/lib/ v2/sdui/renderers/lit/ v2/sdui/demo/ v2/sdui/demo-lit/"
   command = """
-    (cd ../lib && npm ci --ignore-scripts && npm run build:no-sync) &&
+    (cd ../../lib && npm ci --ignore-scripts && npm run build:no-sync) &&
     (cd ../schema && npm ci && npm run build) &&
     (cd ../demo && npm ci --ignore-scripts) &&
     (cd ../renderers/lit && npm ci --ignore-scripts && npm run build) &&

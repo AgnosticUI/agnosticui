@@ -1,4 +1,3 @@
-export { default } from './VueMenu.vue';
 export { default as VueMenu } from './VueMenu.vue';
 export { default as VueMenuItem } from './VueMenuItem.vue';
 export { default as VueMenuSeparator } from './VueMenuSeparator.vue';

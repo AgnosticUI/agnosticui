@@ -859,7 +859,7 @@ async function main() {
   writeFileSync(resolve(SCHEMA_ROOT, 'src/index.ts'), generateIndexTs(components.map(c => c.name)));
 
   // Write renderer files
-  const RENDERERS_ROOT = resolve(ROOT, 'v2/renderers');
+  const RENDERERS_ROOT = resolve(ROOT, 'v2/sdui/renderers');
   writeFileSync(
     resolve(RENDERERS_ROOT, 'react/src/AgDynamicRenderer.tsx'),
     generateReactRenderer(components),
@@ -875,9 +875,9 @@ async function main() {
 
   console.log(`\nGenerated ${components.length} component schemas.`);
   console.log('src/types.ts, src/schema.ts, src/index.ts updated.');
-  console.log('v2/renderers/react/src/AgDynamicRenderer.tsx updated.');
-  console.log('v2/renderers/vue/src/AgDynamicRenderer.ts updated.');
-  console.log('v2/renderers/lit/src/AgDynamicRenderer.ts updated.');
+  console.log('v2/sdui/renderers/react/src/AgDynamicRenderer.tsx updated.');
+  console.log('v2/sdui/renderers/vue/src/AgDynamicRenderer.ts updated.');
+  console.log('v2/sdui/renderers/lit/src/AgDynamicRenderer.ts updated.');
 
   if (process.argv.includes('--emit-schema-json')) {
     const { execFileSync } = await import('child_process');

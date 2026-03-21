@@ -1,5 +1,3 @@
-// v2/lib/src/components/Image/vue/index.ts
-export { default } from './VueImage.vue';
 export { default as VueImage } from './VueImage.vue';
 
 // Define props interface

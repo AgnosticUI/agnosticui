@@ -1,4 +1,3 @@
-export { default } from './VueSlider.vue';
 export { default as VueSlider } from './VueSlider.vue';
 
 // Define types separately since Vue component types are handled differently

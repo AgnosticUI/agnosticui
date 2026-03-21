@@ -64,8 +64,8 @@
       "import": "./dist/components/Input/core/Input.js"
     },
     "./button/vue": {
-      "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
-      "import": "./dist/components/Button/vue/VueButton.js"
+      "types": "./dist/components/Button/vue/index.d.ts",
+      "import": "./dist/components/Button/vue/index.js"
     },
     "./intl-formatter": {
       "types": "./dist/components/IntlFormatter/core/IntlFormatter.d.ts",
@@ -208,7 +208,7 @@
       "import": "./dist/components/EmptyState/react/ReactEmptyState.js"
     },
     "./empty-state/vue": {
-      "types": "./dist/components/EmptyState/react/index.d.ts",
+      "types": "./dist/components/EmptyState/vue/index.d.ts",
       "import": "./dist/components/EmptyState/vue/index.js"
     },
     "./toggle": {

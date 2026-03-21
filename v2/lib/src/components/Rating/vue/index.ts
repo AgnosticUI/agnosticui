@@ -1,4 +1,3 @@
-export { default } from './VueRating.vue';
 export { default as VueRating } from './VueRating.vue';
 
 export interface VueRatingProps {

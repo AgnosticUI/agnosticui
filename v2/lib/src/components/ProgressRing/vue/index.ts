@@ -6,6 +6,3 @@ export { VueProgressRing };
 
 // Export the TypeScript interface
 export type { AgProgressRingProps as VueProgressRingProps };
-
-// Default export for convenience
-export default VueProgressRing;
