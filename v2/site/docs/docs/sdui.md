@@ -153,8 +153,16 @@ function validateOutput(container: Element | null): boolean {
 }
 ```
 
-Call `validateOutput` inside your action handler before swapping the node array. The
-transition is blocked until all fields pass.
+Wire it into your action handler — the transition is blocked until all fields pass:
+
+```ts
+const actions = {
+  SUBMIT_FORM: () => {
+    if (!validateOutput(containerRef.current)) return
+    runStream(confirmFixture)
+  },
+}
+```
 
 ---
 
