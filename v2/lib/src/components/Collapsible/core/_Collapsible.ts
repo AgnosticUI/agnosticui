@@ -100,7 +100,8 @@ export class AgCollapsible extends LitElement implements CollapsibleProps {
 
     /* Indicator wrapper - visible by default unless noIndicator is set */
     .indicator {
-      display: block;
+      display: inline-flex;
+      align-items: center;
       flex-shrink: 0;
       transition: transform var(--ag-motion-slow) ease;
     }
