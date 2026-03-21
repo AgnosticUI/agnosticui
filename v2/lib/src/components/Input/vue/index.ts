@@ -1,4 +1,3 @@
-export { default } from './VueInput.vue';
 export { default as VueInput } from './VueInput.vue';
 
 // Define types separately since Vue component types are handled differently

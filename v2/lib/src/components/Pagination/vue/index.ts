@@ -1,4 +1,3 @@
-export { default } from './VuePagination.vue';
 export { default as VuePagination } from './VuePagination.vue';
 export { default as VueContentPagination } from './VueContentPagination.vue';
 

@@ -6,6 +6,3 @@ export { VueScrollToButton };
 
 // Export the TypeScript interface
 export type { ScrollToButtonProps as VueScrollToButtonProps };
-
-// Default export for convenience
-export default VueScrollToButton;

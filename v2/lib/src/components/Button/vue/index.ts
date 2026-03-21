@@ -1,4 +1,3 @@
-export { default } from './VueButton.vue';
 export { default as VueButton } from './VueButton.vue';
 
 // Define props interface
