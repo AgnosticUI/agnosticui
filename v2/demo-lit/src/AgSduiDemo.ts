@@ -30,7 +30,7 @@ export class AgSduiDemo extends LitElement {
 
     .demo-nav-label {
       font-size: 0.9rem;
-      color: var(--ag-color-muted, #666);
+      color: var(--ag-text-muted, #666);
     }
 
     .demo-picker-section {
@@ -52,7 +52,7 @@ export class AgSduiDemo extends LitElement {
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--ag-color-muted, #666);
+      color: var(--ag-text-muted, #666);
     }
 
   `;
