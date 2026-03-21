@@ -265,6 +265,11 @@ export async function init(options: InitOptions = {}): Promise<void> {
       '  ' + logger.code(exampleImport),
     ]);
 
+    // SDUI scaffolding (when --sdui flag is set)
+    if (options.sdui) {
+      await scaffoldSdui(framework, options.skipPrompts);
+    }
+
     // Clean up temporary download directory if it exists
     await cleanupTempDownload();
   } catch (error) {
@@ -503,6 +508,209 @@ function showTypeScriptNote(wasUpdated: boolean = false): void {
       logger.info(pc.dim('(For Vite: add to both tsconfig.json AND tsconfig.app.json)'));
     }
   }
+}
+
+/**
+ * Scaffold a minimal Schema-Driven UI app for the given framework.
+ * Creates src/sdui/fixture.ts and src/sdui/SduiDemo.{tsx|vue|ts}, then
+ * installs the appropriate renderer package.
+ */
+async function scaffoldSdui(framework: Framework, skipPrompts: boolean = false): Promise<void> {
+  logger.newline();
+  logger.info(pc.cyan('Schema-Driven UI') + ' — scaffolding starter files...');
+
+  const sduiDir = path.join(process.cwd(), 'src', 'sdui');
+  await ensureDir(sduiDir);
+
+  // Write shared fixture file
+  const fixtureContent = `import type { AgNode } from '@agnosticui/schema';
+
+export const fixture: AgNode[] = [
+  { id: 'f-name',         component: 'AgInput',  label: 'Full name', type: 'text',  placeholder: 'Jane Smith',       required: true, rounded: true },
+  { id: 'f-email',        component: 'AgInput',  label: 'Email',     type: 'email', placeholder: 'jane@example.com', required: true, rounded: true },
+  { id: 'f-submit',       component: 'AgButton', variant: 'primary', type: 'submit', shape: 'rounded', on_click: 'SUBMIT', children: ['f-submit-label'] },
+  { id: 'f-submit-label', component: 'AgText',   text: 'Send message' },
+];
+`;
+  await writeFile(path.join(sduiDir, 'fixture.ts'), fixtureContent);
+  logger.info(pc.green('✓') + ' Created ' + pc.dim('src/sdui/fixture.ts'));
+
+  // Write framework-specific demo component
+  if (framework === 'react') {
+    const demoContent = `import { useState } from 'react';
+import { AgDynamicRenderer } from '@agnosticui/render-react';
+import type { AgNode } from '@agnosticui/schema';
+import { fixture } from './fixture';
+
+function SkinToggle() {
+  const toggle = () => {
+    const root = document.documentElement;
+    root.setAttribute('data-theme', root.getAttribute('data-theme') === 'dark' ? '' : 'dark');
+  };
+  return (
+    <button
+      onClick={toggle}
+      style={{ position: 'fixed', bottom: '1rem', right: '1rem', padding: '0.5rem 1rem', cursor: 'pointer' }}
+    >
+      Toggle dark
+    </button>
+  );
+}
+
+export function SduiDemo() {
+  const [nodes] = useState<AgNode[]>(fixture);
+  return (
+    <div style={{ maxWidth: '600px', margin: '2rem auto', padding: '0 1rem' }}>
+      <h1>Schema-Driven UI</h1>
+      <AgDynamicRenderer nodes={nodes} actions={{}} />
+      <SkinToggle />
+    </div>
+  );
+}
+`;
+    await writeFile(path.join(sduiDir, 'SduiDemo.tsx'), demoContent);
+    logger.info(pc.green('✓') + ' Created ' + pc.dim('src/sdui/SduiDemo.tsx'));
+  } else if (framework === 'vue') {
+    const demoContent = `<script setup lang="ts">
+import { ref } from 'vue';
+import { AgDynamicRenderer } from '@agnosticui/render-vue';
+import type { AgNode } from '@agnosticui/schema';
+import { fixture } from './fixture';
+
+const nodes = ref<AgNode[]>(fixture);
+
+function toggleDark() {
+  const root = document.documentElement;
+  root.setAttribute('data-theme', root.getAttribute('data-theme') === 'dark' ? '' : 'dark');
+}
+</script>
+
+<template>
+  <div style="max-width: 600px; margin: 2rem auto; padding: 0 1rem">
+    <h1>Schema-Driven UI</h1>
+    <AgDynamicRenderer :nodes="nodes" :actions="{}" />
+    <button
+      @click="toggleDark"
+      style="position: fixed; bottom: 1rem; right: 1rem; padding: 0.5rem 1rem; cursor: pointer"
+    >
+      Toggle dark
+    </button>
+  </div>
+</template>
+`;
+    await writeFile(path.join(sduiDir, 'SduiDemo.vue'), demoContent);
+    logger.info(pc.green('✓') + ' Created ' + pc.dim('src/sdui/SduiDemo.vue'));
+  } else {
+    // Lit (and other web-component-based frameworks)
+    const demoContent = `import { LitElement, html, css } from 'lit';
+import { state } from 'lit/decorators.js';
+import '@agnosticui/render-lit';
+import type { AgNode } from '@agnosticui/schema';
+import { fixture } from './fixture';
+
+export class SduiDemo extends LitElement {
+  static styles = css\`
+    :host { display: block; }
+    .container { max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+    .skin-toggle { position: fixed; bottom: 1rem; right: 1rem; padding: 0.5rem 1rem; cursor: pointer; }
+  \`;
+
+  @state() private nodes: AgNode[] = fixture;
+
+  private toggleDark() {
+    const root = document.documentElement;
+    root.setAttribute('data-theme', root.getAttribute('data-theme') === 'dark' ? '' : 'dark');
+  }
+
+  render() {
+    return html\`
+      <div class="container">
+        <h1>Schema-Driven UI</h1>
+        <ag-dynamic-renderer .nodes=\${this.nodes} .actions=\${{}}></ag-dynamic-renderer>
+        <button class="skin-toggle" @click=\${this.toggleDark}>Toggle dark</button>
+      </div>
+    \`;
+  }
+}
+
+customElements.define('ag-sdui-demo', SduiDemo);
+`;
+    await writeFile(path.join(sduiDir, 'SduiDemo.ts'), demoContent);
+    logger.info(pc.green('✓') + ' Created ' + pc.dim('src/sdui/SduiDemo.ts'));
+  }
+
+  // Install renderer package
+  const rendererPkg =
+    framework === 'react' ? '@agnosticui/render-react' :
+    framework === 'vue'   ? '@agnosticui/render-vue'   :
+    '@agnosticui/render-lit';
+  const sduiDeps = [rendererPkg, '@agnosticui/schema'];
+  const packageManager = detectPackageManager();
+
+  if (checkDependenciesInstalled(sduiDeps)) {
+    logger.info('SDUI renderer already installed: ' + pc.dim(sduiDeps.join(', ')));
+  } else {
+    let shouldInstall = true;
+
+    if (!skipPrompts) {
+      logger.newline();
+      logger.info('SDUI requires the following packages:');
+      sduiDeps.forEach(dep => console.log('  ' + pc.cyan(dep)));
+      logger.newline();
+
+      const answer = await p.confirm({
+        message: `Install using ${pc.cyan(packageManager)}?`,
+        initialValue: true,
+      });
+
+      if (p.isCancel(answer) || !answer) {
+        shouldInstall = false;
+        logger.warn('Skipped SDUI dependency installation.');
+        logger.info(`Install manually: ${pc.cyan(`${packageManager} ${packageManager === 'npm' ? 'install' : 'add'} ${sduiDeps.join(' ')}`)}`);
+      }
+    }
+
+    if (shouldInstall) {
+      const spinner = p.spinner();
+      spinner.start('Installing SDUI renderer...');
+      try {
+        installDependencies(sduiDeps);
+        spinner.stop(pc.green('✓') + ' SDUI renderer installed!');
+      } catch (error) {
+        spinner.stop(pc.red('✖') + ' Failed to install SDUI renderer');
+        logger.error(`Installation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+        logger.info(`Install manually: ${pc.cyan(`${packageManager} ${packageManager === 'npm' ? 'install' : 'add'} ${sduiDeps.join(' ')}`)}`);
+      }
+    }
+  }
+
+  const demoFile =
+    framework === 'react' ? 'SduiDemo.tsx' :
+    framework === 'vue'   ? 'SduiDemo.vue' :
+    'SduiDemo.ts';
+
+  const importSnippet =
+    framework === 'react' ? `import { SduiDemo } from './sdui/SduiDemo'` :
+    framework === 'vue'   ? `import SduiDemo from './sdui/SduiDemo.vue'` :
+    `import './sdui/SduiDemo'`;
+
+  const useSnippet =
+    framework === 'react' ? `<SduiDemo />` :
+    framework === 'vue'   ? `<SduiDemo />` :
+    `<ag-sdui-demo></ag-sdui-demo>`;
+
+  logger.newline();
+  logger.box('SDUI Scaffold Ready:', [
+    pc.dim('Files created:'),
+    '  ' + pc.cyan('src/sdui/fixture.ts') + pc.dim('  — edit this to change the rendered UI'),
+    '  ' + pc.cyan(`src/sdui/${demoFile}`) + pc.dim('  — AgDynamicRenderer wired to fixture'),
+    '',
+    pc.dim('Wire it into your App:'),
+    '  ' + logger.code(importSnippet),
+    '  ' + logger.code(useSnippet),
+    '',
+    pc.dim('Learn more: https://www.agnosticui.com/sdui.html'),
+  ]);
 }
 
 /**
