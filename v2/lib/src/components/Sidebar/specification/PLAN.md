@@ -248,7 +248,7 @@ Reference the existing Lit Sidebar stories (v2/playgrounds/lit/src/stories/Sideb
 **Component imports:**
 
 ```typescript
-import VueSidebar from "agnosticui-core/sidebar/vue";
+import { VueSidebar } from "agnosticui-core/sidebar/vue";
 import {
   VueSidebarNav,
   VueSidebarNavItem,

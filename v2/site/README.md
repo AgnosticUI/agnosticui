@@ -117,7 +117,7 @@ Create `/v2/site/docs/examples/{ComponentName}Examples.vue`
 
 <script>
 // Import the component from agnosticui-core using the package.json export path
-import VueComponentName from "agnosticui-core/{component-name}/vue";
+import { VueComponentName } from "agnosticui-core/{component-name}/vue";
 
 // Import any icons from lucide-vue-next if needed
 import { Info } from "lucide-vue-next";
@@ -208,7 +208,7 @@ import ComponentNameExamples from '../examples/{ComponentName}Examples.vue'
 </template>
 
 <script>
-import VueComponentName from "agnosticui-core/{component-name}/vue";
+import { VueComponentName } from "agnosticui-core/{component-name}/vue";
 
 export default {
   components: { VueComponentName },

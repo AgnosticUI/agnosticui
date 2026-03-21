@@ -865,7 +865,7 @@ import { ReactButton } from 'agnosticui-core/button/react'
 // - Vue reactivity (v-model)
 // - Event emitters (@click, @change)
 // - Slots
-import VueButton from 'agnosticui-core/button/vue'
+import { VueButton } from 'agnosticui-core/button/vue'
 ```
 
 **Lit:**
