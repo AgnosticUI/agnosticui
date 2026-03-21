@@ -21,7 +21,7 @@ const VUE_INDEX_EXPORTS: Record<string, string> = {
 };
 
 // Components that have Fx animation props
-const FX_COMPONENTS = new Set(['BadgeFx', 'ButtonFx', 'IconButtonFx']);
+const FX_COMPONENTS = new Set(['BadgeFx', 'ButtonFx', 'IconButtonFx', 'TagFx', 'AvatarFx', 'TooltipFx']);
 
 // Components with an `open` prop that are invisible until triggered
 const OPEN_CONTROLLED_COMPONENTS = new Set([

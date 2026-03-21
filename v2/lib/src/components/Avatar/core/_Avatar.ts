@@ -7,7 +7,7 @@
  * Supports multiple sizes, shapes, and color variants.
  */
 
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
 
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -39,7 +39,7 @@ export interface AvatarProps {
 }
 
 export class Avatar extends LitElement implements AvatarProps {
-  static styles = css`
+  static styles: CSSResultGroup = css`
     :host {
       display: inline-flex;
     }

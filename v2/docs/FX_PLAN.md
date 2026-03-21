@@ -15,11 +15,11 @@ This document specifies the standardized approach for extending AgnosticUI core 
 | BadgeFx | ✅ Done (`v2/lib/src/components/BadgeFx/`) |
 | ButtonFx | ✅ Done (`v2/lib/src/components/ButtonFx/`) |
 | IconButtonFx | ✅ Done (`v2/lib/src/components/IconButtonFx/`) |
-| TagFx | ⬜ Remaining |
-| AvatarFx | ⬜ Remaining |
-| TooltipFx | ⬜ Remaining |
+| TagFx | ✅ Done (`v2/lib/src/components/TagFx/`) |
+| AvatarFx | ✅ Done (`v2/lib/src/components/AvatarFx/`) |
+| TooltipFx | ✅ Done (`v2/lib/src/components/TooltipFx/`) |
 
-The architecture spec below applies to all remaining Fx components.
+All Fx components are implemented. The architecture spec below serves as reference.
 
 ---
 

@@ -8,7 +8,7 @@
  * https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/
  */
 
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, type CSSResultGroup } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
 import { computePosition, autoUpdate, flip, shift, offset, arrow, type Placement } from '@floating-ui/dom';
 
@@ -64,7 +64,7 @@ export interface TooltipProps {
 }
 
 export class Tooltip extends LitElement implements TooltipProps {
-  static styles = css`
+  static styles: CSSResultGroup = css`
     :host {
       display: inline-block;
     }

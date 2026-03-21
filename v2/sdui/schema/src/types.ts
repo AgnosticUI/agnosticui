@@ -42,6 +42,23 @@ export interface AgAvatarNode {
   children?: string[];
 }
 
+export interface AgAvatarFxNode {
+  id: string;
+  component: 'AgAvatarFx';
+  text?: string;
+  imgSrc?: string;
+  imgAlt?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  shape?: 'circle' | 'square' | 'rounded';
+  variant?: 'default' | 'success' | 'monochrome' | 'warning' | 'info' | 'error' | 'transparent';
+  ariaLabel?: string;
+  fx?: string;
+  fxSpeed?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  fxEase?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
+  fxDisabled?: boolean;
+  children?: string[];
+}
+
 export interface AgBadgeNode {
   id: string;
   component: 'AgBadge';
@@ -564,6 +581,21 @@ export interface AgTagNode {
   children?: string[];
 }
 
+export interface AgTagFxNode {
+  id: string;
+  component: 'AgTagFx';
+  variant?: 'primary' | 'success' | 'monochrome' | 'warning' | 'info' | 'error';
+  shape?: 'circle' | 'pill' | 'round';
+  uppercase?: boolean;
+  removable?: boolean;
+  on_remove?: string;
+  fx?: string;
+  fxSpeed?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  fxEase?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
+  fxDisabled?: boolean;
+  children?: string[];
+}
+
 export interface AgToggleNode {
   id: string;
   component: 'AgToggle';
@@ -600,6 +632,24 @@ export interface AgTooltipNode {
   on_hide?: string;
   children?: string[];
 }
+
+export interface AgTooltipFxNode {
+  id: string;
+  component: 'AgTooltipFx';
+  content?: string;
+  placement?: 'top' | 'bottom' | 'right' | 'left' | 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start' | 'right-end' | 'right-start' | 'left-end' | 'left-start';
+  distance?: number;
+  skidding?: number;
+  trigger?: string;
+  disabled?: boolean;
+  on_show?: string;
+  on_hide?: string;
+  fx?: string;
+  fxSpeed?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  fxEase?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
+  fxDisabled?: boolean;
+  children?: string[];
+}
 export interface AgTextNode {
   id: string;
   component: 'AgText';
@@ -613,6 +663,7 @@ export type AgNode =
   | AgAlertNode
   | AgAspectRatioNode
   | AgAvatarNode
+  | AgAvatarFxNode
   | AgBadgeNode
   | AgBadgeFxNode
   | AgBreadcrumbNode
@@ -647,8 +698,10 @@ export type AgNode =
   | AgSpinnerNode
   | AgTabsNode
   | AgTagNode
+  | AgTagFxNode
   | AgToggleNode
   | AgTooltipNode
+  | AgTooltipFxNode
   | AgTextNode;
 
 export type AgComponentName = AgNode['component'];

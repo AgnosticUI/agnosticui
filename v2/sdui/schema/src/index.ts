@@ -8,6 +8,7 @@ export type {
   AgAlertNode,
   AgAspectRatioNode,
   AgAvatarNode,
+  AgAvatarFxNode,
   AgBadgeNode,
   AgBadgeFxNode,
   AgBreadcrumbNode,
@@ -42,8 +43,10 @@ export type {
   AgSpinnerNode,
   AgTabsNode,
   AgTagNode,
+  AgTagFxNode,
   AgToggleNode,
   AgTooltipNode,
+  AgTooltipFxNode,
   AgTextNode,
   AgComponentName,
 } from './types.js';
@@ -54,6 +57,7 @@ export {
   AgAlertSchema,
   AgAspectRatioSchema,
   AgAvatarSchema,
+  AgAvatarFxSchema,
   AgBadgeSchema,
   AgBadgeFxSchema,
   AgBreadcrumbSchema,
@@ -88,8 +92,10 @@ export {
   AgSpinnerSchema,
   AgTabsSchema,
   AgTagSchema,
+  AgTagFxSchema,
   AgToggleSchema,
   AgTooltipSchema,
+  AgTooltipFxSchema,
   AgTextSchema,
 } from './schema.js';
 

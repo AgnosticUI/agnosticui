@@ -8,6 +8,7 @@ import { VueAccordion } from 'agnosticui-core/accordion/vue';
 import { VueAlert } from 'agnosticui-core/alert/vue';
 import { VueAspectRatio } from 'agnosticui-core/aspect-ratio/vue';
 import { VueAvatar } from 'agnosticui-core/avatar/vue';
+import { VueAvatarFx } from 'agnosticui-core/avatar-fx/vue';
 import { VueBadge } from 'agnosticui-core/badge/vue';
 import { VueBadgeFx } from 'agnosticui-core/badge-fx/vue';
 import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
@@ -42,8 +43,10 @@ import { VueSelectionCardGroup } from 'agnosticui-core/selection-card-group/vue'
 import { VueSpinner } from 'agnosticui-core/spinner/vue';
 import { VueTabs } from 'agnosticui-core/tabs/vue';
 import { VueTag } from 'agnosticui-core/tag/vue';
+import { VueTagFx } from 'agnosticui-core/tag-fx/vue';
 import { VueToggle } from 'agnosticui-core/toggle/vue';
 import { VueTooltip } from 'agnosticui-core/tooltip/vue';
+import { VueTooltipFx } from 'agnosticui-core/tooltip-fx/vue';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -118,6 +121,24 @@ function renderNode(
         shape: node.shape,
         variant: node.variant,
         ariaLabel: node.ariaLabel,
+        },
+      );
+
+    case 'AgAvatarFx':
+      return h(
+        VueAvatarFx,
+        {
+        text: node.text,
+        imgSrc: node.imgSrc,
+        imgAlt: node.imgAlt,
+        size: node.size,
+        shape: node.shape,
+        variant: node.variant,
+        ariaLabel: node.ariaLabel,
+        fx: node.fx,
+        fxSpeed: node.fxSpeed,
+        fxEase: node.fxEase,
+        fxDisabled: node.fxDisabled,
         },
       );
 
@@ -708,6 +729,22 @@ function renderNode(
         { default: () => renderChildren(node.children) },
       );
 
+    case 'AgTagFx':
+      return h(
+        VueTagFx,
+        {
+        variant: node.variant,
+        shape: node.shape,
+        uppercase: node.uppercase,
+        removable: node.removable,
+        fx: node.fx,
+        fxSpeed: node.fxSpeed,
+        fxEase: node.fxEase,
+        fxDisabled: node.fxDisabled,
+        onTagRemove: () => doDispatch(node.on_remove, actions),
+        },
+      );
+
     case 'AgToggle':
       return h(
         VueToggle,
@@ -742,6 +779,25 @@ function renderNode(
         skidding: node.skidding,
         trigger: node.trigger,
         disabled: node.disabled,
+        onShow: () => doDispatch(node.on_show, actions),
+        onHide: () => doDispatch(node.on_hide, actions),
+        },
+      );
+
+    case 'AgTooltipFx':
+      return h(
+        VueTooltipFx,
+        {
+        content: node.content,
+        placement: node.placement,
+        distance: node.distance,
+        skidding: node.skidding,
+        trigger: node.trigger,
+        disabled: node.disabled,
+        fx: node.fx,
+        fxSpeed: node.fxSpeed,
+        fxEase: node.fxEase,
+        fxDisabled: node.fxDisabled,
         onShow: () => doDispatch(node.on_show, actions),
         onHide: () => doDispatch(node.on_hide, actions),
         },

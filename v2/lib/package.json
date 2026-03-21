@@ -699,6 +699,42 @@
       "types": "./dist/components/IconButtonFx/vue/index.d.ts",
       "import": "./dist/components/IconButtonFx/vue/index.js"
     },
+    "./tag-fx": {
+      "types": "./dist/components/TagFx/core/TagFx.d.ts",
+      "import": "./dist/components/TagFx/core/TagFx.js"
+    },
+    "./tag-fx/react": {
+      "types": "./dist/components/TagFx/react/ReactTagFx.d.ts",
+      "import": "./dist/components/TagFx/react/ReactTagFx.js"
+    },
+    "./tag-fx/vue": {
+      "types": "./dist/components/TagFx/vue/index.d.ts",
+      "import": "./dist/components/TagFx/vue/index.js"
+    },
+    "./avatar-fx": {
+      "types": "./dist/components/AvatarFx/core/AvatarFx.d.ts",
+      "import": "./dist/components/AvatarFx/core/AvatarFx.js"
+    },
+    "./avatar-fx/react": {
+      "types": "./dist/components/AvatarFx/react/ReactAvatarFx.d.ts",
+      "import": "./dist/components/AvatarFx/react/ReactAvatarFx.js"
+    },
+    "./avatar-fx/vue": {
+      "types": "./dist/components/AvatarFx/vue/index.d.ts",
+      "import": "./dist/components/AvatarFx/vue/index.js"
+    },
+    "./tooltip-fx": {
+      "types": "./dist/components/TooltipFx/core/TooltipFx.d.ts",
+      "import": "./dist/components/TooltipFx/core/TooltipFx.js"
+    },
+    "./tooltip-fx/react": {
+      "types": "./dist/components/TooltipFx/react/ReactTooltipFx.d.ts",
+      "import": "./dist/components/TooltipFx/react/ReactTooltipFx.js"
+    },
+    "./tooltip-fx/vue": {
+      "types": "./dist/components/TooltipFx/vue/index.d.ts",
+      "import": "./dist/components/TooltipFx/vue/index.js"
+    },
     "./selection-card": {
       "types": "./dist/components/SelectionCard/core/SelectionCard.d.ts",
       "import": "./dist/components/SelectionCard/core/SelectionCard.js"

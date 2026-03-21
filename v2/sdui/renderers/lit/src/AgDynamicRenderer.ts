@@ -11,6 +11,7 @@ import 'agnosticui-core/accordion';
 import 'agnosticui-core/alert';
 import 'agnosticui-core/aspect-ratio';
 import 'agnosticui-core/avatar';
+import 'agnosticui-core/avatar-fx';
 import 'agnosticui-core/badge';
 import 'agnosticui-core/badge-fx';
 import 'agnosticui-core/breadcrumb';
@@ -45,8 +46,10 @@ import 'agnosticui-core/selection-card-group';
 import 'agnosticui-core/spinner';
 import 'agnosticui-core/tabs';
 import 'agnosticui-core/tag';
+import 'agnosticui-core/tag-fx';
 import 'agnosticui-core/toggle';
 import 'agnosticui-core/tooltip';
+import 'agnosticui-core/tooltip-fx';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -108,6 +111,21 @@ function renderNode(
         .variant=${node.variant ?? nothing}
         .ariaLabel=${node.ariaLabel ?? nothing}
       ></ag-avatar>`;
+
+    case 'AgAvatarFx':
+      return html`<ag-avatar-fx
+        .text=${node.text ?? nothing}
+        .imgSrc=${node.imgSrc ?? nothing}
+        .imgAlt=${node.imgAlt ?? nothing}
+        .size=${node.size ?? nothing}
+        .shape=${node.shape ?? nothing}
+        .variant=${node.variant ?? nothing}
+        .ariaLabel=${node.ariaLabel ?? nothing}
+        .fx=${node.fx ?? nothing}
+        .fxSpeed=${node.fxSpeed ?? nothing}
+        .fxEase=${node.fxEase ?? nothing}
+        .fxDisabled=${node.fxDisabled ?? false}
+      ></ag-avatar-fx>`;
 
     case 'AgBadge':
       return html`<ag-badge
@@ -563,6 +581,19 @@ function renderNode(
         @tag-remove=${() => doDispatch(node.on_remove, actions)}
       >${renderChildren(node.children)}</ag-tag>`;
 
+    case 'AgTagFx':
+      return html`<ag-tag-fx
+        .variant=${node.variant ?? nothing}
+        .shape=${node.shape ?? nothing}
+        .uppercase=${node.uppercase ?? false}
+        .removable=${node.removable ?? false}
+        .fx=${node.fx ?? nothing}
+        .fxSpeed=${node.fxSpeed ?? nothing}
+        .fxEase=${node.fxEase ?? nothing}
+        .fxDisabled=${node.fxDisabled ?? false}
+        @tag-remove=${() => doDispatch(node.on_remove, actions)}
+      ></ag-tag-fx>`;
+
     case 'AgToggle':
       return html`<ag-toggle
         .label=${node.label ?? nothing}
@@ -595,6 +626,22 @@ function renderNode(
         @show=${() => doDispatch(node.on_show, actions)}
         @hide=${() => doDispatch(node.on_hide, actions)}
       ></ag-tooltip>`;
+
+    case 'AgTooltipFx':
+      return html`<ag-tooltip-fx
+        .content=${node.content ?? nothing}
+        .placement=${node.placement ?? nothing}
+        .distance=${node.distance ?? 0}
+        .skidding=${node.skidding ?? 0}
+        .trigger=${node.trigger ?? nothing}
+        .disabled=${node.disabled ?? false}
+        .fx=${node.fx ?? nothing}
+        .fxSpeed=${node.fxSpeed ?? nothing}
+        .fxEase=${node.fxEase ?? nothing}
+        .fxDisabled=${node.fxDisabled ?? false}
+        @show=${() => doDispatch(node.on_show, actions)}
+        @hide=${() => doDispatch(node.on_hide, actions)}
+      ></ag-tooltip-fx>`;
 
     case 'AgText': {
       const _text = node.text ?? '';
