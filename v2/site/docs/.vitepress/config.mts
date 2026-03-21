@@ -126,6 +126,7 @@ function getComponents() {
       { text: 'Alerts', link: '/components/alert' },
       { text: 'AspectRatio', link: '/components/aspect-ratio' },
       { text: 'Avatar', link: '/components/avatar' },
+      { text: 'AvatarFx (Lab)', link: '/components/avatar-fx' },
       { text: 'Badge', link: '/components/badge' },
       { text: 'BadgeFx (Lab)', link: '/components/badge-fx' },
       { text: 'Breadcrumb', link: '/components/breadcrumb' },
@@ -173,10 +174,12 @@ function getComponents() {
       { text: 'Table', link: '/components/table' },
       { text: 'Tabs', link: '/components/tabs' },
       { text: 'Tag', link: '/components/tag' },
+      { text: 'TagFx (Lab)', link: '/components/tag-fx' },
       { text: 'Timeline', link: '/components/timeline' },
       { text: 'Toast', link: '/components/toast' },
       { text: 'Toggle', link: '/components/toggle' },
       { text: 'Tooltip', link: '/components/tooltip' },
+      { text: 'TooltipFx (Lab)', link: '/components/tooltip-fx' },
       { text: 'VisuallyHidden', link: '/components/visually-hidden' },
     ]
   }
