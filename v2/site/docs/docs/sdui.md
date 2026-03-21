@@ -72,12 +72,13 @@ html`<ag-dynamic-renderer .nodes=${nodes} .actions=${{ SUBMIT_FORM: () => handle
 
 ## Supported components
 
-All 50+ AgnosticUI components are available as SDUI nodes. The `component` field is the
+41 AgnosticUI components are available as SDUI nodes. The `component` field is the
 PascalCase component name (`AgButton`, `AgInput`, `AgCard`, etc.). Props map directly to
 the component's documented props.
 
-A small set of inherently-stateful components (Dialog, Drawer, Toast, Collapsible) are
-excluded — SDUI nodes are stateless and cannot own open/close lifecycle.
+A small number of components are excluded: `Collapsible` and `Toast` require open/close
+lifecycle state that the stateless renderer cannot own. `Slider` and `Combobox` are
+deferred pending schema design work.
 
 ---
 
@@ -94,7 +95,8 @@ const actions = {
 }
 ```
 
-Aliases are plain strings — the renderer never `eval`s them. You own the logic entirely.
+Aliases are plain strings that you name yourself. They are not part of any protocol or
+spec, and the renderer never `eval`s them. You own the naming and the logic entirely.
 
 ---
 
@@ -120,28 +122,81 @@ function validateOutput(container: Element | null): boolean {
 }
 ```
 
-Call this inside your action handler before swapping the node array. The browser shows
-native validation popovers on any failing field and the transition is blocked until all
-fields pass.
+Each `reportValidity()` call asks the element to validate itself using whatever constraints
+are declared on the node (`required`, `type="email"`, `minlength`, etc.) and show a native
+browser tooltip if invalid. The loop collects all results so every failing field surfaces
+at once rather than stopping at the first.
+
+For logic that goes beyond built-in constraints, run a custom check before the loop and
+use `setCustomValidity` to attach an error message the browser will display:
+
+```ts
+function validateOutput(container: Element | null): boolean {
+  if (!container) return true
+
+  // Custom check: phone must be exactly 10 digits
+  const phoneEl = container.querySelector('ag-input[name="phone"]') as any
+  if (phoneEl) {
+    const ok = /^\d{10}$/.test(phoneEl.value ?? '')
+    phoneEl.setCustomValidity(ok ? '' : 'Phone must be exactly 10 digits')
+  }
+
+  // Standard constraint validation across all FACE elements
+  const elements = container.querySelectorAll(AG_FACE_SELECTOR)
+  let valid = true
+  elements.forEach(el => {
+    if (typeof (el as HTMLInputElement).reportValidity === 'function') {
+      if (!(el as HTMLInputElement).reportValidity()) valid = false
+    }
+  })
+  return valid
+}
+```
+
+Call `validateOutput` inside your action handler before swapping the node array. The
+transition is blocked until all fields pass.
 
 ---
 
 ## Streaming
 
-`AgDynamicRenderer` accepts a partial array and updates incrementally as new nodes
-arrive. This lets you stream UI from a server or LLM token-by-token:
+`AgDynamicRenderer` re-renders whenever its `nodes` prop changes. Because it diffs the
+array rather than remounting, you can push one node at a time and the UI builds up
+incrementally — exactly like watching an LLM stream tokens, except each token is a
+fully-rendered component.
 
-```ts
-async function streamNodes(fixture: AgNode[]) {
-  for (const node of fixture) {
-    await delay(80)            // simulate streaming latency
-    setNodes(prev => [...prev, node])
+Here is the complete React picture:
+
+```tsx
+import { useState } from 'react'
+import { AgDynamicRenderer } from '@agnosticui/render-react'
+import type { AgNode } from '@agnosticui/schema'
+
+function StreamingDemo({ fixture }: { fixture: AgNode[] }) {
+  const [nodes, setNodes] = useState<AgNode[]>([])
+
+  async function startStream() {
+    setNodes([])                          // clear previous render
+    for (const node of fixture) {
+      await delay(80)                     // simulate network/LLM latency
+      setNodes(prev => [...prev, node])   // one more node, one more re-render
+    }
   }
+
+  return (
+    <>
+      <button onClick={startStream}>Stream</button>
+      {/* AgDynamicRenderer renders whatever is in `nodes` right now */}
+      <AgDynamicRenderer nodes={nodes} actions={{}} />
+    </>
+  )
 }
 ```
 
-Each push triggers a re-render that adds exactly one more element. Existing nodes do not
-re-mount.
+Each `setNodes` call gives `AgDynamicRenderer` a slightly longer array. It renders the
+new node and leaves the existing ones untouched. When `fixture` comes from a real server
+or LLM, replace `delay(80)` with your streaming read loop — the renderer does not care
+where the nodes come from, only that the array grows.
 
 ---
 
