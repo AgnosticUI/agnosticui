@@ -1,0 +1,46 @@
+/* Outer element: border + radius + spacing */
+ag-collapsible.node-panel {
+  display: block;
+  border: 1px solid var(--ag-border, #e5e7eb);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-block-end: 1rem;
+}
+
+/* Summary (trigger row) */
+ag-collapsible.node-panel::part(ag-collapsible-summary) {
+  padding: 0.4rem 0.75rem;
+  background: var(--ag-background-secondary, #f3f4f6);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ag-text-muted, #666);
+  font-family: monospace;
+}
+
+/* Chevron icon */
+ag-collapsible.node-panel::part(ag-collapsible-indicator) {
+  color: var(--ag-text-muted, #666);
+}
+
+/* Content area: border-top separator, constrained scroll */
+ag-collapsible.node-panel::part(ag-collapsible-content) {
+  padding: 0;
+  border-top: 1px solid var(--ag-border, #e5e7eb);
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+/* JSON pre block (light DOM, styled normally) */
+.node-panel-pre {
+  margin: 0;
+  padding: 0.75rem;
+  font-family: monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--ag-text-primary, #111);
+  background: var(--ag-background-primary, #fff);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
