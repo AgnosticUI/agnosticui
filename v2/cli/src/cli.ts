@@ -72,6 +72,10 @@ program
     "--force",
     "Re-initialize even if already initialized (reuses existing framework and path)",
   )
+  .option(
+    "--sdui",
+    "Scaffold a minimal Schema-Driven UI app (installs renderer, writes fixture + demo component)",
+  )
   .action(async (options) => {
     await init({
       framework: options.framework as Framework | undefined,
@@ -80,6 +84,7 @@ program
       tag: options.tag,
       skipPrompts: options.skipPrompts,
       force: options.force,
+      sdui: options.sdui,
     });
   });
 

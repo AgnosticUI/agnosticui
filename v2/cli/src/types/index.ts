@@ -63,6 +63,7 @@ export interface InitOptions {
   tag?: string;          // NPM dist-tag or version (e.g., 'alpha', 'latest', '2.0.0-alpha.21')
   skipPrompts?: boolean; // Skip all interactive prompts (non-interactive mode)
   force?: boolean;       // Re-initialize even if already initialized
+  sdui?: boolean;        // Scaffold a minimal SDUI app after init
 }
 
 export interface SyncOptions {
