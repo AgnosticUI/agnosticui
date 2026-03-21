@@ -106,7 +106,7 @@
 
 <script>
 import { computed, onMounted, ref } from 'vue'
-import VueTabs, { VueTab, VueTabPanel } from "agnosticui-core/tabs/vue"
+import { VueTabs, VueTab, VueTabPanel } from "agnosticui-core/tabs/vue"
 import { codeToHtml } from 'shiki'
 import sdk from '@stackblitz/sdk'
 import { Zap } from 'lucide-vue-next'

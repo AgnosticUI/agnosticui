@@ -6,7 +6,7 @@ import { Project, type Type, type InterfaceDeclaration, type Symbol as MorphSymb
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { writeFileSync } from 'fs';
-import { omitConfig, actionAliasMap, actionPayloadMap, vueActionPayloadMap, typeOverrides, skipComponents, rendererSlotConfig, vueDefaultImportComponents, reactPropRenames, rendererPrimitives, noUndefinedProps, type RendererSlot, type RendererPrimitive } from './codegen.config.js';
+import { omitConfig, actionAliasMap, actionPayloadMap, vueActionPayloadMap, typeOverrides, skipComponents, rendererSlotConfig, reactPropRenames, rendererPrimitives, noUndefinedProps, type RendererSlot, type RendererPrimitive } from './codegen.config.js';
 
 // scripts/ -> schema/ -> sdui/ -> v2/ -> agnosticui/
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../../..');
@@ -512,13 +512,8 @@ export function generateVueRenderer(
   components: ComponentData[],
   primitives: RendererPrimitive[] = rendererPrimitives,
 ): string {
-  const defaultSet = new Set(vueDefaultImportComponents);
   const imports = components.map(c => {
     const slug = toKebab(c.name);
-    if (defaultSet.has(c.name)) {
-      // This component's vue export resolves to the compiled .vue file directly (default only)
-      return `import Vue${c.name} from 'agnosticui-core/${slug}/vue';`;
-    }
     return `import { Vue${c.name} } from 'agnosticui-core/${slug}/vue';`;
   }).join('\n');
 

@@ -220,18 +220,6 @@ export const reactPropRenames: Record<string, string> = {
   ariaLabel: 'aria-label',
 };
 
-/**
- * vueDefaultImportComponents: component names whose agnosticui-core Vue export
- * resolves to the compiled component file directly (not an index.js re-export),
- * so they must be imported as a default rather than a named export.
- *
- * Example: agnosticui-core/button/vue points to VueButton.js (default only).
- * All other components use index.js which re-exports a named { VueName }.
- */
-export const vueDefaultImportComponents: string[] = [
-  // All Vue components now export named exports via index.js — this list is empty.
-  // See: fix(lib) PR #441 which fixed button/vue package.json export to point to index.js.
-];
 
 /**
  * skipComponents: component directory names to exclude from all generated output.

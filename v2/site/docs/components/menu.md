@@ -139,7 +139,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script>
-import VueMenu, { VueMenuItem, VueMenuSeparator } from "agnosticui-core/menu/vue";
+import { VueMenu, VueMenuItem, VueMenuSeparator } from "agnosticui-core/menu/vue";
 
 export default {
   components: {
@@ -730,7 +730,7 @@ export default function HeaderMenu() {
 </template>
 
 <script>
-import VueMenu, { VueMenuItem } from "agnosticui-core/menu/vue";
+import { VueMenu, VueMenuItem } from "agnosticui-core/menu/vue";
 
 export default {
   components: { VueMenu, VueMenuItem }
@@ -810,7 +810,7 @@ export default function DynamicIconMenu() {
 </template>
 
 <script>
-import VueMenu, { VueMenuItem } from "agnosticui-core/menu/vue";
+import { VueMenu, VueMenuItem } from "agnosticui-core/menu/vue";
 
 export default {
   components: { VueMenu, VueMenuItem }

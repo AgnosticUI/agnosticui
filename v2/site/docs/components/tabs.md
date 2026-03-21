@@ -87,7 +87,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 </template>
 
 <script>
-import VueTabs, { VueTab, VueTabPanel } from "agnosticui-core/tabs/vue";
+import { VueTabs, VueTab, VueTabPanel } from "agnosticui-core/tabs/vue";
 
 export default {
   components: {
@@ -346,7 +346,7 @@ The Tabs component follows AgnosticUI v2 event conventions with **dual-dispatch*
 
 <script setup>
 import { ref } from 'vue';
-import VueTabs, { VueTab, VueTabPanel } from 'agnosticui-core/tabs/vue';
+import { VueTabs, VueTab, VueTabPanel } from 'agnosticui-core/tabs/vue';
 
 const currentTab = ref(0);
 
