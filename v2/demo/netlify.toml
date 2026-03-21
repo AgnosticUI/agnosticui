@@ -1,2 +1,11 @@
 [build]
   base = "v2/sdui/demo"
+  ignore = "[ \"$CONTEXT\" = 'production' ] && [ -n \"$CACHED_COMMIT_REF\" ] && git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- v2/sdui/schema/ v2/lib/ v2/sdui/renderers/react/ v2/sdui/demo/"
+  command = """
+    (cd ../../lib && npm ci --ignore-scripts && npm run build:no-sync) &&
+    (cd ../schema && npm ci && npm run build) &&
+    (cd ../renderers/react && npm ci --ignore-scripts && npm run build) &&
+    npm ci --ignore-scripts &&
+    npm run build
+  """
+  publish = "dist"
