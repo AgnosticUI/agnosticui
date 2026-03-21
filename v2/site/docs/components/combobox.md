@@ -128,7 +128,7 @@ The CLI copies source code directly into your project, giving you full visibilit
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import VueCombobox from 'agnosticui-core/combobox/vue';
+import { VueCombobox } from 'agnosticui-core/combobox/vue';
 import type { ComboboxOption } from 'agnosticui-core/combobox';
 
 const stateOptions: ComboboxOption[] = [

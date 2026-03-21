@@ -119,8 +119,8 @@
 import { ref, onMounted } from 'vue'
 import { SKINS, applySkin } from '@skins/skin-switcher-core.js'
 import { SKINS_CSS } from '@skins/skins-css-data.js'
-import VueButton from 'agnosticui-core/button/vue'
-import VueInput from 'agnosticui-core/input/vue'
+import { VueButton } from 'agnosticui-core/button/vue'
+import { VueInput } from 'agnosticui-core/input/vue'
 import { VueIcon } from 'agnosticui-core/icon/vue'
 import { ImagePlus, ChevronDown, Copy, Download } from 'lucide-vue-next'
 
