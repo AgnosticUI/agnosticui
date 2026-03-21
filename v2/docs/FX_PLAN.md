@@ -1,14 +1,25 @@
 # FX_PLAN.md - Component FX Extension Specification
 
-**Version:** 1.0.0  
-**Last Updated:** 2024-12-02  
+**Version:** 1.0.0
+**Last Updated:** 2024-12-02
 **Status:** Canonical
 
 ## Overview
 
 This document specifies the standardized approach for extending AgnosticUI core components with CSS animation effects through `*Fx` variants. The FX system provides optional, accessibility-aware animations that enhance user experience without compromising functionality or performance.
 
-Components to implement: BadgeFx, TagFx, AvatarFx, TooltipFx.
+## Implementation Status
+
+| Component | Status |
+|-----------|--------|
+| BadgeFx | ✅ Done (`v2/lib/src/components/BadgeFx/`) |
+| ButtonFx | ✅ Done (`v2/lib/src/components/ButtonFx/`) |
+| IconButtonFx | ✅ Done (`v2/lib/src/components/IconButtonFx/`) |
+| TagFx | ⬜ Remaining |
+| AvatarFx | ⬜ Remaining |
+| TooltipFx | ⬜ Remaining |
+
+The architecture spec below applies to all remaining Fx components.
 
 ---
 

@@ -17,25 +17,13 @@ This directory contains the core architectural and development documentation for
      - Critical patterns & rules
    - **Use this as your primary reference for all development work**
 
-2. **[AGNOSTICUI_LOCAL.md](./AGNOSTICUI_LOCAL.md)** - Strategic planning document (Jan 2025)
-   - PRD for "AgnosticUI Local" — the Local UI Kit concept
-   - CLI architecture, dogfooding strategy, marketing positioning
-   - Independent from main development guide
-
-3. **[SIDEBAR_NAV_SPEC.md](./SIDEBAR_NAV_SPEC.md)** - NavigationRail component spec
-   - LLM-ready master spec for a sidebar/navigation rail primitive
-   - Covers slots, collapsed mode, keyboard navigation, token usage
-
-4. **[CLI.md](./CLI.md)** - CLI developer guide
+2. **[CLI.md](./CLI.md)** - CLI developer guide
    - Build, test, publish, and troubleshoot the agnosticui-cli
    - See also: [`v2/cli/README.md`](../cli/README.md) for user-facing docs
 
-5. **[FX_PLAN.md](./FX_PLAN.md)** - FX (animation/motion) plan
-   - Active spec for component animation variants (ButtonFx, BadgeFx, etc.)
-
-6. **[VITEPRESS_A11Y_PLAN.md](./VITEPRESS_A11Y_PLAN.md)** - VitePress a11y remediation (COMPLETED)
-   - Archived — all 54 doc files processed for WCAG contrast compliance
-   - Open component-level a11y issues extracted to [A11Y_OPEN_ISSUES.md](./A11Y_OPEN_ISSUES.md)
+3. **[FX_PLAN.md](./FX_PLAN.md)** - FX (animation/motion) plan
+   - Architecture spec for component animation variants
+   - BadgeFx, ButtonFx, IconButtonFx are done; TagFx, AvatarFx, TooltipFx remain
 
 ## For LLM Assistants
 
@@ -68,7 +56,14 @@ When discovering new patterns or making architectural decisions:
 3. Update the "Quick Reference: Common Mistakes" table if applicable
 4. Update the "Last Updated" date at the bottom
 
-## Previous Documentation
+## Previous / Archived Documentation
+
+The following documents were removed — they are either completed work artifacts, fully
+executed strategic plans, or pre-implementation specs superseded by the actual implementation:
+
+- `AGNOSTICUI_LOCAL.md` — Jan 2025 Local UI Kit strategic vision (CLI is now built and published)
+- `SIDEBAR_NAV_SPEC.md` — Pre-implementation `ag-navigation-rail` spec (actual impl: `ag-sidebar` + `ag-sidebar-nav`)
+- `VITEPRESS_A11Y_PLAN.md` — VitePress a11y remediation tracking (100% complete; open issues are in `A11Y_OPEN_ISSUES.md`)
 
 The following documents were consolidated into `DEVELOPMENT_GUIDE.md`:
 

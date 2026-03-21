@@ -2,38 +2,14 @@
 
 **Quick Start**: Add Vue/Lit/React examples to any AgnosticUI component in 3 steps.
 
-## Components Completed
+## Status
 
-- ✅ Accordion
-- ✅ Alert
-- ✅ AspectRatio
-- ✅ Avatar
-- ✅ Badge
-- ✅ BadgeFx
-- ✅ Breadcrumb
-- ✅ Button
-- ✅ ButtonFx
-- ✅ Card
-- ✅ Checkbox
-- ✅ Collapsible
-- ✅ Combobox
-- ✅ CopyButton
-- ✅ Dialog
-- ✅ Divider
-- ✅ Drawer
-- ✅ Icon
-- ✅ IconButton
-- ✅ IconButtonFx
-- ✅ Image
-- ✅ Input
-- ✅ IntlFormatter
-- ✅ Kbd
-- ✅ Link
-- ✅ Loader
-- ✅ Mark
-- ✅ Menu
-- ✅ Tooltip
-- ✅ VisuallyHidden
+All components have Vue + Lit + React example files except:
+
+| Component | Vue | Lit | React |
+|-----------|-----|-----|-------|
+| Tabs | ✅ | ⬜ | ⬜ |
+| Table | ✅ | ⬜ | ⬜ |
 
 ## Reference Implementation
 
