@@ -227,7 +227,7 @@ if (!result.success) {
 
 ## Further reading
 
-- [`v2/schema/SPECIFICATION.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/schema/SPECIFICATION.md) — full technical specification covering the node model, codegen pipeline, action semantics, slot model, streaming, and versioning policy
-- [`v2/schema/SYSTEM_PROMPT.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/schema/SYSTEM_PROMPT.md) — condensed reference for LLM consumers generating node arrays
+- [`v2/sdui/schema/SPECIFICATION.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/sdui/schema/SPECIFICATION.md) — full technical specification covering the node model, codegen pipeline, action semantics, slot model, streaming, and versioning policy
+- [`v2/sdui/schema/SYSTEM_PROMPT.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/sdui/schema/SYSTEM_PROMPT.md) — condensed reference for LLM consumers generating node arrays
 - [Form Association (FACE)](/docs/form-association) — how AgnosticUI form components work without a `<form>` wrapper
 - [GitHub: AgnosticUI/agnosticui](https://github.com/AgnosticUI/agnosticui) — source for all three renderer packages and demo apps

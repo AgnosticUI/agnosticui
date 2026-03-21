@@ -5,9 +5,9 @@ It covers the node model, validation pipeline, codegen contract, action dispatch
 streaming assumptions.
 
 Related files:
-- `v2/schema/README.md` — developer quick-start
-- `v2/schema/SYSTEM_PROMPT.md` — terse LLM tool definition
-- `v2/schema/scripts/codegen.config.ts` — annotated source of design decisions
+- `v2/sdui/schema/README.md` — developer quick-start
+- `v2/sdui/schema/SYSTEM_PROMPT.md` — terse LLM tool definition
+- `v2/sdui/schema/scripts/codegen.config.ts` — annotated source of design decisions
 
 ---
 
@@ -127,7 +127,7 @@ unrecognized `component` string fails validation with a Zod "invalid_union_discr
 ## 3. Codegen Pipeline
 
 All six output files (`schema.ts`, `types.ts`, `index.ts`, and the three renderers) are
-AUTO-GENERATED. Never edit them by hand. Run `npm run codegen` from `v2/schema/` to regenerate.
+AUTO-GENERATED. Never edit them by hand. Run `npm run codegen` from `v2/sdui/schema/` to regenerate.
 
 ### 3.1 Source of Truth
 
@@ -429,7 +429,7 @@ Breaking changes will be announced via:
 3. A GitHub issue tagged `breaking-change` linking the affected components
 
 Until `@agnosticui/schema` is published to npm (tracked in a future issue), the schema version is
-communicated through the git tag on the `v2/schema/` directory.
+communicated through the git tag on the `v2/sdui/schema/` directory.
 
 ## 10. Form Validation
 

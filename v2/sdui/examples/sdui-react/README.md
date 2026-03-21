@@ -39,7 +39,7 @@ npm run preview   # preview build on port 5176
 
 ## Related
 
-- `v2/schema/` — the `@agnosticui/schema` package (validation + types)
-- `v2/renderers/react/` — the renderer this app exercises
+- `v2/sdui/schema/` — the `@agnosticui/schema` package (validation + types)
+- `v2/sdui/renderers/react/` — the renderer this app exercises
 - `../sdui-vue/`, `../sdui-lit/` — same payload, different renderers
 - Issue #351 — AgnosticUI Agent-Ready SDUI framework PRD
