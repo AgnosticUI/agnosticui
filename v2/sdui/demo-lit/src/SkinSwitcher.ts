@@ -6,7 +6,7 @@ import {
   applyTheme,
   restorePrefs,
   copySkinCSS,
-} from '../../skins/skin-switcher-core.js';
+} from '../../../skins/skin-switcher-core.js';
 
 // Restore on load
 restorePrefs();
