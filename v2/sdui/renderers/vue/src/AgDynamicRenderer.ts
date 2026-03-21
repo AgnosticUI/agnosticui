@@ -11,7 +11,7 @@ import { VueAvatar } from 'agnosticui-core/avatar/vue';
 import { VueBadge } from 'agnosticui-core/badge/vue';
 import { VueBadgeFx } from 'agnosticui-core/badge-fx/vue';
 import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
-import VueButton from 'agnosticui-core/button/vue';
+import { VueButton } from 'agnosticui-core/button/vue';
 import { VueButtonFx } from 'agnosticui-core/button-fx/vue';
 import { VueCard } from 'agnosticui-core/card/vue';
 import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
