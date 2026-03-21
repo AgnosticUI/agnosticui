@@ -11,6 +11,6 @@
 body {
   margin: 0;
   padding: 0;
-  background: var(--ag-background, #fff);
-  color: var(--ag-color, #111);
+  background: var(--ag-background-primary, #fff);
+  color: var(--ag-text-primary, #111);
 }

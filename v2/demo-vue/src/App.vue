@@ -70,7 +70,7 @@ const handleRegenerate = () => {
 
 .demo-nav-label {
   font-size: 0.9rem;
-  color: var(--ag-color-muted, #666);
+  color: var(--ag-text-muted, #666);
 }
 
 .demo-output-header {
@@ -85,7 +85,7 @@ const handleRegenerate = () => {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--ag-color-muted, #666);
+  color: var(--ag-text-muted, #666);
 }
 
 .demo-picker-section {
@@ -101,7 +101,7 @@ const handleRegenerate = () => {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--ag-color-muted, #666);
+  color: var(--ag-text-muted, #666);
   margin-bottom: 0.75rem;
 }
 
