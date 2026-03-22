@@ -181,6 +181,19 @@ export const AgCheckboxSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgCopyButtonSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgCopyButton'),
+  text: z.string().optional(),
+  label: z.string().optional(),
+  successLabel: z.string().optional(),
+  errorLabel: z.string().optional(),
+  timeout: z.number().optional(),
+  size: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
+  variant: z.enum(['primary', 'success', 'monochrome', 'warning', 'danger', 'secondary', 'ghost']).optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgDialogSchema = z.object({
   id: z.string(),
   component: z.literal('AgDialog'),
@@ -220,6 +233,18 @@ export const AgDrawerSchema = z.object({
   on_open: z.string().optional(),
   on_close: z.string().optional(),
   on_cancel: z.string().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
+export const AgEmptyStateSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgEmptyState'),
+  title: z.string().optional(),
+  subtitle: z.string().optional(),
+  buttonText: z.string().optional(),
+  size: z.enum(['sm', 'md', 'lg']).optional(),
+  bordered: z.boolean().optional(),
+  rounded: z.boolean().optional(),
   children: z.array(z.string()).optional(),
 }).strict();
 
@@ -283,6 +308,23 @@ export const AgIconButtonFxSchema = z.object({
   fxSpeed: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
   fxEase: z.enum(['ease', 'ease-in', 'ease-out', 'ease-in-out', 'bounce', 'spring-sm', 'spring-md', 'spring-lg']).optional(),
   fxDisabled: z.boolean().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
+export const AgImageSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgImage'),
+  src: z.string().optional(),
+  alt: z.string().optional(),
+  width: z.number().optional(),
+  height: z.number().optional(),
+  aspectRatio: z.string().optional(),
+  fit: z.enum(['cover', 'contain', 'fill', 'none', 'scale-down']).optional(),
+  position: z.string().optional(),
+  loading: z.enum(['lazy', 'eager']).optional(),
+  fade: z.boolean().optional(),
+  duration: z.number().optional(),
+  fallbackSrc: z.string().optional(),
   children: z.array(z.string()).optional(),
 }).strict();
 
@@ -434,6 +476,16 @@ export const AgProgressSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgProgressRingSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgProgressRing'),
+  value: z.number().optional(),
+  size: z.enum(['small', 'medium', 'large']).optional(),
+  variant: z.enum(['primary', 'success', 'warning', 'info', 'danger']).optional(),
+  label: z.string().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgRadioSchema = z.object({
   id: z.string(),
   component: z.literal('AgRadio'),
@@ -554,6 +606,17 @@ export const AgSelectionCardGroupSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgSkeletonLoaderSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgSkeletonLoader'),
+  variant: z.enum(['rounded', 'text', 'circular', 'rectangular']).optional(),
+  effect: z.enum(['none', 'sheen', 'pulse']).optional(),
+  intensity: z.enum(['medium', 'light']).optional(),
+  width: z.string().optional(),
+  height: z.string().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgSpinnerSchema = z.object({
   id: z.string(),
   component: z.literal('AgSpinner'),
@@ -595,6 +658,16 @@ export const AgTagFxSchema = z.object({
   fxSpeed: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
   fxEase: z.enum(['ease', 'ease-in', 'ease-out', 'ease-in-out', 'bounce', 'spring-sm', 'spring-md', 'spring-lg']).optional(),
   fxDisabled: z.boolean().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
+export const AgTimelineSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgTimeline'),
+  orientation: z.enum(['vertical', 'horizontal']).optional(),
+  variant: z.enum(['primary', 'success', 'monochrome', 'warning', 'danger']).optional(),
+  compact: z.boolean().optional(),
+  ariaLabel: z.string().optional(),
   children: z.array(z.string()).optional(),
 }).strict();
 
@@ -674,14 +747,17 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgButtonFxSchema,
   AgCardSchema,
   AgCheckboxSchema,
+  AgCopyButtonSchema,
   AgDialogSchema,
   AgDividerSchema,
   AgDrawerSchema,
+  AgEmptyStateSchema,
   AgFieldsetSchema,
   AgHeaderSchema,
   AgIconSchema,
   AgIconButtonSchema,
   AgIconButtonFxSchema,
+  AgImageSchema,
   AgInputSchema,
   AgIntlFormatterSchema,
   AgKbdSchema,
@@ -691,6 +767,7 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgMessageBubbleSchema,
   AgPopoverSchema,
   AgProgressSchema,
+  AgProgressRingSchema,
   AgRadioSchema,
   AgRatingSchema,
   AgSelectSchema,
@@ -698,10 +775,12 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgSelectionButtonGroupSchema,
   AgSelectionCardSchema,
   AgSelectionCardGroupSchema,
+  AgSkeletonLoaderSchema,
   AgSpinnerSchema,
   AgTabsSchema,
   AgTagSchema,
   AgTagFxSchema,
+  AgTimelineSchema,
   AgToggleSchema,
   AgTooltipSchema,
   AgTooltipFxSchema,

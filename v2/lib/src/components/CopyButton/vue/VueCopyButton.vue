@@ -40,7 +40,7 @@ import "../core/CopyButton"; // Registers <ag-copy-button> on wrapper load
 
 const props = withDefaults(
   defineProps<{
-    text: string;
+    text?: string;
     label?: string;
     successLabel?: string;
     errorLabel?: string;
@@ -56,6 +56,7 @@ const props = withDefaults(
       | "monochrome";
   }>(),
   {
+    text: '',
     label: "Copy to clipboard",
     successLabel: "Copied!",
     errorLabel: "Copy failed",

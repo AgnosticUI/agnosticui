@@ -2,7 +2,7 @@ import { hasSlotContent } from '../../../utils/slot';
 import { LitElement, html, css } from 'lit';
 import { property, state } from 'lit/decorators.js';
 
-export type EmptyStateProps = {
+export interface EmptyStateProps {
   title?: string;
   subtitle?: string;
   buttonText?: string;

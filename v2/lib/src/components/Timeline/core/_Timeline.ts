@@ -16,6 +16,9 @@ export interface AgTimelineProps {
   ariaLabel?: string | null;
 }
 
+/** Alias required for SDUI codegen discovery (glob: Timeline/core/_*.ts → looks for TimelineProps) */
+export interface TimelineProps extends AgTimelineProps {}
+
 /**
  * AgTimeline - A semantic timeline component for displaying chronological events
  *

@@ -827,6 +827,66 @@
         },
         "component": {
           "type": "string",
+          "const": "AgCopyButton"
+        },
+        "text": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "successLabel": {
+          "type": "string"
+        },
+        "errorLabel": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "number"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "danger",
+            "secondary",
+            "ghost"
+          ]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
           "const": "AgDialog"
         },
         "open": {
@@ -977,6 +1037,52 @@
         },
         "on_cancel": {
           "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgEmptyState"
+        },
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "buttonText": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "bordered": {
+          "type": "boolean"
+        },
+        "rounded": {
+          "type": "boolean"
         },
         "children": {
           "type": "array",
@@ -1283,6 +1389,73 @@
         },
         "fxDisabled": {
           "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgImage"
+        },
+        "src": {
+          "type": "string"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "aspectRatio": {
+          "type": "string"
+        },
+        "fit": {
+          "type": "string",
+          "enum": [
+            "cover",
+            "contain",
+            "fill",
+            "none",
+            "scale-down"
+          ]
+        },
+        "position": {
+          "type": "string"
+        },
+        "loading": {
+          "type": "string",
+          "enum": [
+            "lazy",
+            "eager"
+          ]
+        },
+        "fade": {
+          "type": "boolean"
+        },
+        "duration": {
+          "type": "number"
+        },
+        "fallbackSrc": {
+          "type": "string"
         },
         "children": {
           "type": "array",
@@ -1977,6 +2150,53 @@
         },
         "component": {
           "type": "string",
+          "const": "AgProgressRing"
+        },
+        "value": {
+          "type": "number"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "warning",
+            "info",
+            "danger"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
           "const": "AgRadio"
         },
         "name": {
@@ -2456,6 +2676,59 @@
         },
         "component": {
           "type": "string",
+          "const": "AgSkeletonLoader"
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "rounded",
+            "text",
+            "circular",
+            "rectangular"
+          ]
+        },
+        "effect": {
+          "type": "string",
+          "enum": [
+            "none",
+            "sheen",
+            "pulse"
+          ]
+        },
+        "intensity": {
+          "type": "string",
+          "enum": [
+            "medium",
+            "light"
+          ]
+        },
+        "width": {
+          "type": "string"
+        },
+        "height": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
           "const": "AgSpinner"
         },
         "size": {
@@ -2643,6 +2916,52 @@
         },
         "fxDisabled": {
           "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgTimeline"
+        },
+        "orientation": {
+          "type": "string",
+          "enum": [
+            "vertical",
+            "horizontal"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "danger"
+          ]
+        },
+        "compact": {
+          "type": "boolean"
+        },
+        "ariaLabel": {
+          "type": "string"
         },
         "children": {
           "type": "array",

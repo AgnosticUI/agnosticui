@@ -13,6 +13,9 @@ export interface SkeletonProps {
   height?: string;
 }
 
+/** Alias required for SDUI codegen discovery (glob: SkeletonLoader/core/_*.ts → looks for SkeletonLoaderProps) */
+export interface SkeletonLoaderProps extends SkeletonProps {}
+
 export class AgSkeleton extends LitElement implements SkeletonProps {
   @property({ type: String, reflect: true }) declare variant: SkeletonVariant;
   @property({ type: String, reflect: true }) declare effect: SkeletonEffect;

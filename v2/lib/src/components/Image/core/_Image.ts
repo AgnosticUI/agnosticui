@@ -85,6 +85,9 @@ export interface AgImageProps {
 export type ImageLoadEvent = CustomEvent<void>;
 export type ImageErrorEvent = CustomEvent<void>;
 
+/** Alias required for SDUI codegen discovery (glob: Image/core/_*.ts → looks for ImageProps) */
+export interface ImageProps extends AgImageProps {}
+
 export class AgImage extends LitElement implements AgImageProps {
   // ──────────────────────────────────────────────────────────────
   // Public Properties

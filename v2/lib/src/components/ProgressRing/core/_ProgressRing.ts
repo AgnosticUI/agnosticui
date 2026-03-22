@@ -14,6 +14,9 @@ export interface AgProgressRingProps {
   'no-animation'?: boolean;
 }
 
+/** Alias required for SDUI codegen discovery (glob: ProgressRing/core/_*.ts → looks for ProgressRingProps) */
+export interface ProgressRingProps extends AgProgressRingProps {}
+
 // Fixed SVG coordinate system — the modern standard
 const VIEWBOX_SIZE = 100;
 const STROKE_WIDTH = 10;
