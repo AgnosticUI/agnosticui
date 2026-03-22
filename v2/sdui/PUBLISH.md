@@ -46,9 +46,10 @@ npm info @agnosticui/render-vue
 npm info @agnosticui/render-lit
 ```
 
-## Also tag as latest (optional)
+## 5. Point latest dist-tag to the published version
 
-If you want to promote alpha to latest:
+Required — matches the convention used for `agnosticui-core` and `agnosticui-cli`.
+Without this step, `npm install @agnosticui/schema` finds nothing; users would need `@alpha`.
 
 ```bash
 npm dist-tag add @agnosticui/schema@2.0.0-alpha.1 latest
