@@ -16,7 +16,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@agnosticui/schema": "file:../../schema"
+    "@agnosticui/schema": "^2.0.0-alpha.1"
   },
   "files": [
     "dist",
