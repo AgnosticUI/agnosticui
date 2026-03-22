@@ -12,7 +12,7 @@ All packages use the `alpha` dist-tag then immediately point `latest` to the sam
 cd v2/sdui/schema
 npm run build
 npm publish --access public --tag alpha
-npm dist-tag add @agnosticui/schema@2.0.0-alpha.1 latest
+npm dist-tag add @agnosticui/schema@VERSION latest
 # Verify dist-tags
 npm dist-tag ls @agnosticui/schema
 ```
@@ -23,7 +23,7 @@ npm dist-tag ls @agnosticui/schema
 cd v2/sdui/renderers/react
 npm run build
 npm publish --access public --tag alpha
-npm dist-tag add @agnosticui/render-react@2.0.0-alpha.1 latest
+npm dist-tag add @agnosticui/render-react@VERSION latest
 # Verify dist-tags
 npm dist-tag ls @agnosticui/render-react
 ```
@@ -34,7 +34,7 @@ npm dist-tag ls @agnosticui/render-react
 cd v2/sdui/renderers/vue
 npm run build
 npm publish --access public --tag alpha
-npm dist-tag add @agnosticui/render-vue@2.0.0-alpha.1 latest
+npm dist-tag add @agnosticui/render-vue@VERSION latest
 # Verify dist-tags
 npm dist-tag ls @agnosticui/render-vue
 ```
@@ -45,7 +45,7 @@ npm dist-tag ls @agnosticui/render-vue
 cd v2/sdui/renderers/lit
 npm run build
 npm publish --access public --tag alpha
-npm dist-tag add @agnosticui/render-lit@2.0.0-alpha.1 latest
+npm dist-tag add @agnosticui/render-lit@VERSION latest
 # Verify dist-tags
 npm dist-tag ls @agnosticui/render-lit
 ```
