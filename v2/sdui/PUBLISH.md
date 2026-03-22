@@ -3,7 +3,8 @@
 Publish order matters: `@agnosticui/schema` must be published before the renderers
 because they depend on it.
 
-All packages use the `alpha` dist-tag (same convention as `agnosticui-core` and `agnosticui-cli`).
+All packages use the `alpha` dist-tag then immediately point `latest` to the same version
+(same convention as `agnosticui-core` and `agnosticui-cli`).
 
 ## 1. Schema
 
@@ -11,6 +12,7 @@ All packages use the `alpha` dist-tag (same convention as `agnosticui-core` and 
 cd v2/sdui/schema
 npm run build
 npm publish --access public --tag alpha
+npm dist-tag add @agnosticui/schema@2.0.0-alpha.1 latest
 ```
 
 ## 2. React renderer
@@ -19,6 +21,7 @@ npm publish --access public --tag alpha
 cd v2/sdui/renderers/react
 npm run build
 npm publish --access public --tag alpha
+npm dist-tag add @agnosticui/render-react@2.0.0-alpha.1 latest
 ```
 
 ## 3. Vue renderer
@@ -27,6 +30,7 @@ npm publish --access public --tag alpha
 cd v2/sdui/renderers/vue
 npm run build
 npm publish --access public --tag alpha
+npm dist-tag add @agnosticui/render-vue@2.0.0-alpha.1 latest
 ```
 
 ## 4. Lit renderer
@@ -35,6 +39,7 @@ npm publish --access public --tag alpha
 cd v2/sdui/renderers/lit
 npm run build
 npm publish --access public --tag alpha
+npm dist-tag add @agnosticui/render-lit@2.0.0-alpha.1 latest
 ```
 
 ## Verify
@@ -44,18 +49,6 @@ npm info @agnosticui/schema
 npm info @agnosticui/render-react
 npm info @agnosticui/render-vue
 npm info @agnosticui/render-lit
-```
-
-## 5. Point latest dist-tag to the published version
-
-Required — matches the convention used for `agnosticui-core` and `agnosticui-cli`.
-Without this step, `npm install @agnosticui/schema` finds nothing; users would need `@alpha`.
-
-```bash
-npm dist-tag add @agnosticui/schema@2.0.0-alpha.1 latest
-npm dist-tag add @agnosticui/render-react@2.0.0-alpha.1 latest
-npm dist-tag add @agnosticui/render-vue@2.0.0-alpha.1 latest
-npm dist-tag add @agnosticui/render-lit@2.0.0-alpha.1 latest
 ```
 
 ## Package versions
