@@ -62,6 +62,7 @@ export const noUndefinedProps: Record<string, string[]> = {
   // value binding sets native input.value; undefined coerces to string "undefined"
   // size drives input sizing CSS selectors
   AgInput:   ['value', 'size'],
+
 };
 
 /**

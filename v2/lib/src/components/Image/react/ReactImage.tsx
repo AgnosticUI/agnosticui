@@ -10,7 +10,11 @@ import {
 /**
  * React-specific props interface for Image component
  */
-export interface ReactImageProps extends AgImageProps {
+export interface ReactImageProps extends Omit<AgImageProps, 'src' | 'alt'> {
+  /** Image source URL. Optional for SDUI schema-driven rendering; component defaults to ''. */
+  src?: string;
+  /** Alt text. Optional for SDUI schema-driven rendering; component defaults to ''. */
+  alt?: string;
   children?: React.ReactNode;
   className?: string;
   id?: string;
