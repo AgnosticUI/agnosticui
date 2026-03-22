@@ -547,11 +547,23 @@
       "types": "./dist/components/SkeletonLoader/core/SkeletonLoader.d.ts",
       "import": "./dist/components/SkeletonLoader/core/SkeletonLoader.js"
     },
+    "./skeleton-loader": {
+      "types": "./dist/components/SkeletonLoader/core/SkeletonLoader.d.ts",
+      "import": "./dist/components/SkeletonLoader/core/SkeletonLoader.js"
+    },
     "./skeleton/react": {
       "types": "./dist/components/SkeletonLoader/react/index.d.ts",
       "import": "./dist/components/SkeletonLoader/react/index.js"
     },
+    "./skeleton-loader/react": {
+      "types": "./dist/components/SkeletonLoader/react/index.d.ts",
+      "import": "./dist/components/SkeletonLoader/react/index.js"
+    },
     "./skeleton/vue": {
+      "types": "./dist/components/SkeletonLoader/vue/index.d.ts",
+      "import": "./dist/components/SkeletonLoader/vue/index.js"
+    },
+    "./skeleton-loader/vue": {
       "types": "./dist/components/SkeletonLoader/vue/index.d.ts",
       "import": "./dist/components/SkeletonLoader/vue/index.js"
     },
