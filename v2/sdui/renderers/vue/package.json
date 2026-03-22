@@ -18,8 +18,12 @@
   "dependencies": {
     "@agnosticui/schema": "file:../../schema"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "peerDependencies": {
-    "agnosticui-core": ">=2.0.0-alpha",
+    "agnosticui-core": ">=2.0.0-alpha.25",
     "vue": ">=3"
   },
   "devDependencies": {
