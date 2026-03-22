@@ -589,6 +589,88 @@ export default defineConfig({
 
 This prevents Vue from treating AgnosticUI web components as Vue components.
 
+## Schema-Driven UI
+
+::: danger Experimental — Not for Production
+Schema-Driven UI is in a very early, exploratory phase. The APIs, node schema, renderer interfaces, and scaffolded file structure are **all subject to breaking changes** without notice. This feature is intended for evaluation and feedback only — do **not** use it in production applications.
+:::
+
+Schema-Driven UI (SDUI) lets you describe your interface as a plain JSON array of `AgNode` objects and render it dynamically at runtime. Instead of writing component trees by hand, you declare what to render in data — useful for server-driven UIs, form builders, low-code editors, and A/B testing.
+
+Add the `--sdui` flag to `ag init` to scaffold everything in one step:
+
+```bash
+npx agnosticui-cli init -f react --sdui
+npx agnosticui-cli init -f vue --sdui
+npx agnosticui-cli init -f lit --sdui
+```
+
+This will:
+
+1. Install `@agnosticui/schema` and the appropriate renderer package (`@agnosticui/render-react`, `@agnosticui/render-vue`, or `@agnosticui/render-lit`)
+2. Create `src/sdui/fixture.ts` — a sample node array you can edit to change the rendered UI
+3. Create `src/sdui/SduiDemo.{tsx|vue|ts}` — a demo component with `AgDynamicRenderer` wired to the fixture
+
+### Wire SduiDemo into your App
+
+::: code-group
+
+```tsx [React]
+// src/App.tsx
+import { SduiDemo } from './sdui/SduiDemo';
+
+export function App() {
+  return <SduiDemo />;
+}
+```
+
+```vue [Vue]
+<!-- src/App.vue -->
+<script setup>
+import SduiDemo from './sdui/SduiDemo.vue';
+</script>
+
+<template>
+  <SduiDemo />
+</template>
+```
+
+```ts [Lit]
+// src/main.ts
+import './sdui/SduiDemo';
+// then in your HTML:
+// <ag-sdui-demo></ag-sdui-demo>
+```
+
+:::
+
+### Customising the UI
+
+Edit `src/sdui/fixture.ts` to change what gets rendered. Each node maps to an AgnosticUI component by name:
+
+```ts
+import type { AgNode } from '@agnosticui/schema';
+
+export const fixture: AgNode[] = [
+  { id: 'f-name',   component: 'AgInput',  label: 'Full name', type: 'text', rounded: true },
+  { id: 'f-submit', component: 'AgButton', variant: 'primary', on_click: 'SUBMIT', children: ['f-label'] },
+  { id: 'f-label',  component: 'AgText',   text: 'Send' },
+];
+```
+
+Pass an `actions` map to handle events:
+
+```ts
+const actions = {
+  SUBMIT: () => console.log('submitted'),
+};
+// <AgDynamicRenderer nodes={nodes} actions={actions} />
+```
+
+Unknown action aliases are silently ignored, providing an XSS boundary.
+
+For a full list of supported nodes and props, see the [SDUI schema docs](https://agnosticui.com/sdui.html).
+
 ## NPM Package (Alternative)
 
 For a more traditional approach, install AgnosticUI as an npm package. This method is suitable if you prefer using components as external dependencies.
