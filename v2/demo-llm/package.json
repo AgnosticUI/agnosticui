@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.52.0",
+    "openai": "^4.98.0",
     "@agnosticui/render-react": "file:../renderers/react",
     "@agnosticui/schema": "file:../schema",
     "@floating-ui/dom": "^1.7.4",
