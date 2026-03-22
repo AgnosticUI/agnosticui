@@ -2,23 +2,33 @@ import { LitElement, html, css, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '../../IconButton/core/IconButton.js';
 
+export interface CopyButtonProps {
+  text?: string;
+  label?: string;
+  successLabel?: string;
+  errorLabel?: string;
+  timeout?: number;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost' | 'monochrome';
+}
+
 /**
  * @slot icon-copy - Custom icon to show in the default (not copied) state
  * @slot icon-copied - Custom icon to show in the copied state
  * @slot icon-error - Custom icon to show when copy fails
- * 
+ *
  * Note: If providing custom icons, both icon-copy and icon-copied slots must be provided together. Providing only one will throw an error.
- * 
+ *
  * @csspart button - The icon button element
  * @csspart icon - The icon container (all states)
  * @csspart icon-copy - The copy icon (default state)
  * @csspart icon-copied - The checkmark icon (copied state)
  * @csspart icon-error - The error icon (error state)
- * 
+ *
  * @fires copy - Fired when text is successfully copied. Detail: { text: string }
  * @fires copy-error - Fired when copy fails. Detail: { error: Error }
  */
-export class AgCopyButton extends LitElement {
+export class AgCopyButton extends LitElement implements CopyButtonProps {
   static styles = css`
     :host {
       display: inline-block;

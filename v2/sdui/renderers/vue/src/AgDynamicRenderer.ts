@@ -16,14 +16,18 @@ import { VueButton } from 'agnosticui-core/button/vue';
 import { VueButtonFx } from 'agnosticui-core/button-fx/vue';
 import { VueCard } from 'agnosticui-core/card/vue';
 import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
+import { VueCopyButton } from 'agnosticui-core/copy-button/vue';
 import { VueDialog } from 'agnosticui-core/dialog/vue';
 import { VueDivider } from 'agnosticui-core/divider/vue';
 import { VueDrawer } from 'agnosticui-core/drawer/vue';
+import { VueEmptyState } from 'agnosticui-core/empty-state/vue';
 import { VueFieldset } from 'agnosticui-core/fieldset/vue';
+import { VueFlex } from 'agnosticui-core/flex/vue';
 import { VueHeader } from 'agnosticui-core/header/vue';
 import { VueIcon } from 'agnosticui-core/icon/vue';
 import { VueIconButton } from 'agnosticui-core/icon-button/vue';
 import { VueIconButtonFx } from 'agnosticui-core/icon-button-fx/vue';
+import { VueImage } from 'agnosticui-core/image/vue';
 import { VueInput } from 'agnosticui-core/input/vue';
 import { VueIntlFormatter } from 'agnosticui-core/intl-formatter/vue';
 import { VueKbd } from 'agnosticui-core/kbd/vue';
@@ -33,6 +37,7 @@ import { VueMark } from 'agnosticui-core/mark/vue';
 import { VueMessageBubble } from 'agnosticui-core/message-bubble/vue';
 import { VuePopover } from 'agnosticui-core/popover/vue';
 import { VueProgress } from 'agnosticui-core/progress/vue';
+import { VueProgressRing } from 'agnosticui-core/progress-ring/vue';
 import { VueRadio } from 'agnosticui-core/radio/vue';
 import { VueRating } from 'agnosticui-core/rating/vue';
 import { VueSelect } from 'agnosticui-core/select/vue';
@@ -40,10 +45,12 @@ import { VueSelectionButton } from 'agnosticui-core/selection-button/vue';
 import { VueSelectionButtonGroup } from 'agnosticui-core/selection-button-group/vue';
 import { VueSelectionCard } from 'agnosticui-core/selection-card/vue';
 import { VueSelectionCardGroup } from 'agnosticui-core/selection-card-group/vue';
+import { VueSkeletonLoader } from 'agnosticui-core/skeleton-loader/vue';
 import { VueSpinner } from 'agnosticui-core/spinner/vue';
 import { VueTabs } from 'agnosticui-core/tabs/vue';
 import { VueTag } from 'agnosticui-core/tag/vue';
 import { VueTagFx } from 'agnosticui-core/tag-fx/vue';
+import { VueTimeline } from 'agnosticui-core/timeline/vue';
 import { VueToggle } from 'agnosticui-core/toggle/vue';
 import { VueTooltip } from 'agnosticui-core/tooltip/vue';
 import { VueTooltipFx } from 'agnosticui-core/tooltip-fx/vue';
@@ -284,6 +291,20 @@ function renderNode(
         },
       );
 
+    case 'AgCopyButton':
+      return h(
+        VueCopyButton,
+        {
+        text: node.text,
+        label: node.label,
+        successLabel: node.successLabel,
+        errorLabel: node.errorLabel,
+        timeout: node.timeout,
+        size: node.size,
+        variant: node.variant,
+        },
+      );
+
     case 'AgDialog':
       return h(
         VueDialog,
@@ -331,6 +352,19 @@ function renderNode(
         { default: () => renderChildren(node.children) },
       );
 
+    case 'AgEmptyState':
+      return h(
+        VueEmptyState,
+        {
+        title: node.title,
+        subtitle: node.subtitle,
+        buttonText: node.buttonText,
+        size: node.size,
+        bordered: node.bordered,
+        rounded: node.rounded,
+        },
+      );
+
     case 'AgFieldset':
       return h(
         VueFieldset,
@@ -341,6 +375,21 @@ function renderNode(
         legendHidden: node.legendHidden,
         },
         { default: () => renderChildren(node.children) },
+      );
+
+    case 'AgFlex':
+      return h(
+        VueFlex,
+        {
+        direction: node.direction,
+        wrap: node.wrap,
+        justify: node.justify,
+        align: node.align,
+        alignContent: node.alignContent,
+        inline: node.inline,
+        reverse: node.reverse,
+        stretchChildren: node.stretchChildren,
+        },
       );
 
     case 'AgHeader':
@@ -398,6 +447,24 @@ function renderNode(
         fxDisabled: node.fxDisabled,
         onIconButtonClick: () => doDispatch(node.on_click, actions),
         onIconButtonActivate: () => doDispatch(node.on_activate, actions),
+        },
+      );
+
+    case 'AgImage':
+      return h(
+        VueImage,
+        {
+        src: node.src,
+        alt: node.alt,
+        width: node.width,
+        height: node.height,
+        aspectRatio: node.aspectRatio,
+        fit: node.fit,
+        position: node.position,
+        loading: node.loading,
+        fade: node.fade,
+        duration: node.duration,
+        fallbackSrc: node.fallbackSrc,
         },
       );
 
@@ -564,6 +631,18 @@ function renderNode(
         { default: () => renderChildren(node.children) },
       );
 
+    case 'AgProgressRing':
+      return h(
+        VueProgressRing,
+        {
+        value: node.value,
+        size: node.size,
+        variant: node.variant,
+        label: node.label,
+        no-animation: node.'no-animation',
+        },
+      );
+
     case 'AgRadio':
       return h(
         VueRadio,
@@ -695,6 +774,18 @@ function renderNode(
         { default: () => renderChildren(node.children) },
       );
 
+    case 'AgSkeletonLoader':
+      return h(
+        VueSkeletonLoader,
+        {
+        variant: node.variant,
+        effect: node.effect,
+        intensity: node.intensity,
+        width: node.width,
+        height: node.height,
+        },
+      );
+
     case 'AgSpinner':
       return h(
         VueSpinner,
@@ -742,6 +833,17 @@ function renderNode(
         fxEase: node.fxEase,
         fxDisabled: node.fxDisabled,
         onTagRemove: () => doDispatch(node.on_remove, actions),
+        },
+      );
+
+    case 'AgTimeline':
+      return h(
+        VueTimeline,
+        {
+        orientation: node.orientation,
+        variant: node.variant,
+        compact: node.compact,
+        ariaLabel: node.ariaLabel,
         },
       );
 

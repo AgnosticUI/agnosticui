@@ -179,6 +179,19 @@ export interface AgCheckboxNode {
   children?: string[];
 }
 
+export interface AgCopyButtonNode {
+  id: string;
+  component: 'AgCopyButton';
+  text?: string;
+  label?: string;
+  successLabel?: string;
+  errorLabel?: string;
+  timeout?: number;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  variant?: 'primary' | 'success' | 'monochrome' | 'warning' | 'danger' | 'secondary' | 'ghost';
+  children?: string[];
+}
+
 export interface AgDialogNode {
   id: string;
   component: 'AgDialog';
@@ -221,6 +234,18 @@ export interface AgDrawerNode {
   children?: string[];
 }
 
+export interface AgEmptyStateNode {
+  id: string;
+  component: 'AgEmptyState';
+  title?: string;
+  subtitle?: string;
+  buttonText?: string;
+  size?: 'sm' | 'md' | 'lg';
+  bordered?: boolean;
+  rounded?: boolean;
+  children?: string[];
+}
+
 export interface AgFieldsetNode {
   id: string;
   component: 'AgFieldset';
@@ -228,6 +253,20 @@ export interface AgFieldsetNode {
   bordered?: boolean;
   layout?: 'vertical' | 'horizontal';
   legendHidden?: boolean;
+  children?: string[];
+}
+
+export interface AgFlexNode {
+  id: string;
+  component: 'AgFlex';
+  direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+  wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
+  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
+  align?: 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'stretch';
+  alignContent?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
+  inline?: boolean;
+  reverse?: boolean;
+  stretchChildren?: boolean;
   children?: string[];
 }
 
@@ -281,6 +320,23 @@ export interface AgIconButtonFxNode {
   fxSpeed?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   fxEase?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
   fxDisabled?: boolean;
+  children?: string[];
+}
+
+export interface AgImageNode {
+  id: string;
+  component: 'AgImage';
+  src?: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  aspectRatio?: string;
+  fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  position?: string;
+  loading?: 'lazy' | 'eager';
+  fade?: boolean;
+  duration?: number;
+  fallbackSrc?: string;
   children?: string[];
 }
 
@@ -432,6 +488,17 @@ export interface AgProgressNode {
   children?: string[];
 }
 
+export interface AgProgressRingNode {
+  id: string;
+  component: 'AgProgressRing';
+  value?: number;
+  size?: 'small' | 'medium' | 'large';
+  variant?: 'primary' | 'success' | 'warning' | 'info' | 'danger';
+  label?: string;
+  'no-animation'?: boolean;
+  children?: string[];
+}
+
 export interface AgRadioNode {
   id: string;
   component: 'AgRadio';
@@ -552,6 +619,17 @@ export interface AgSelectionCardGroupNode {
   children?: string[];
 }
 
+export interface AgSkeletonLoaderNode {
+  id: string;
+  component: 'AgSkeletonLoader';
+  variant?: 'rounded' | 'text' | 'circular' | 'rectangular';
+  effect?: 'none' | 'sheen' | 'pulse';
+  intensity?: 'medium' | 'light';
+  width?: string;
+  height?: string;
+  children?: string[];
+}
+
 export interface AgSpinnerNode {
   id: string;
   component: 'AgSpinner';
@@ -593,6 +671,16 @@ export interface AgTagFxNode {
   fxSpeed?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   fxEase?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
   fxDisabled?: boolean;
+  children?: string[];
+}
+
+export interface AgTimelineNode {
+  id: string;
+  component: 'AgTimeline';
+  orientation?: 'vertical' | 'horizontal';
+  variant?: 'primary' | 'success' | 'monochrome' | 'warning' | 'danger';
+  compact?: boolean;
+  ariaLabel?: string;
   children?: string[];
 }
 
@@ -671,14 +759,18 @@ export type AgNode =
   | AgButtonFxNode
   | AgCardNode
   | AgCheckboxNode
+  | AgCopyButtonNode
   | AgDialogNode
   | AgDividerNode
   | AgDrawerNode
+  | AgEmptyStateNode
   | AgFieldsetNode
+  | AgFlexNode
   | AgHeaderNode
   | AgIconNode
   | AgIconButtonNode
   | AgIconButtonFxNode
+  | AgImageNode
   | AgInputNode
   | AgIntlFormatterNode
   | AgKbdNode
@@ -688,6 +780,7 @@ export type AgNode =
   | AgMessageBubbleNode
   | AgPopoverNode
   | AgProgressNode
+  | AgProgressRingNode
   | AgRadioNode
   | AgRatingNode
   | AgSelectNode
@@ -695,10 +788,12 @@ export type AgNode =
   | AgSelectionButtonGroupNode
   | AgSelectionCardNode
   | AgSelectionCardGroupNode
+  | AgSkeletonLoaderNode
   | AgSpinnerNode
   | AgTabsNode
   | AgTagNode
   | AgTagFxNode
+  | AgTimelineNode
   | AgToggleNode
   | AgTooltipNode
   | AgTooltipFxNode

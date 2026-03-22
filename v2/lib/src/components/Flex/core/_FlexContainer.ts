@@ -30,6 +30,9 @@ export interface FlexContainerProps {
   /** Apply flex: 1 1 auto to all children for equal sizing (defaults to false) */
   stretchChildren?: boolean;
 }
+/** Alias required for SDUI codegen discovery (glob: Flex/core/_*.ts → looks for FlexProps) */
+export interface FlexProps extends FlexContainerProps {}
+
 export class FlexContainer extends LitElement implements FlexContainerProps {
   static styles = css`
     :host {

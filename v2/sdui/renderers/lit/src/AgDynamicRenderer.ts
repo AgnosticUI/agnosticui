@@ -19,14 +19,18 @@ import 'agnosticui-core/button';
 import 'agnosticui-core/button-fx';
 import 'agnosticui-core/card';
 import 'agnosticui-core/checkbox';
+import 'agnosticui-core/copy-button';
 import 'agnosticui-core/dialog';
 import 'agnosticui-core/divider';
 import 'agnosticui-core/drawer';
+import 'agnosticui-core/empty-state';
 import 'agnosticui-core/fieldset';
+import 'agnosticui-core/flex';
 import 'agnosticui-core/header';
 import 'agnosticui-core/icon';
 import 'agnosticui-core/icon-button';
 import 'agnosticui-core/icon-button-fx';
+import 'agnosticui-core/image';
 import 'agnosticui-core/input';
 import 'agnosticui-core/intl-formatter';
 import 'agnosticui-core/kbd';
@@ -36,6 +40,7 @@ import 'agnosticui-core/mark';
 import 'agnosticui-core/message-bubble';
 import 'agnosticui-core/popover';
 import 'agnosticui-core/progress';
+import 'agnosticui-core/progress-ring';
 import 'agnosticui-core/radio';
 import 'agnosticui-core/rating';
 import 'agnosticui-core/select';
@@ -43,10 +48,12 @@ import 'agnosticui-core/selection-button';
 import 'agnosticui-core/selection-button-group';
 import 'agnosticui-core/selection-card';
 import 'agnosticui-core/selection-card-group';
+import 'agnosticui-core/skeleton-loader';
 import 'agnosticui-core/spinner';
 import 'agnosticui-core/tabs';
 import 'agnosticui-core/tag';
 import 'agnosticui-core/tag-fx';
+import 'agnosticui-core/timeline';
 import 'agnosticui-core/toggle';
 import 'agnosticui-core/tooltip';
 import 'agnosticui-core/tooltip-fx';
@@ -233,6 +240,17 @@ function renderNode(
         @change=${() => doDispatch(node.on_change, actions)}
       ></ag-checkbox>`;
 
+    case 'AgCopyButton':
+      return html`<ag-copy-button
+        .text=${node.text ?? nothing}
+        .label=${node.label ?? nothing}
+        .successLabel=${node.successLabel ?? nothing}
+        .errorLabel=${node.errorLabel ?? nothing}
+        .timeout=${node.timeout ?? 0}
+        .size=${node.size ?? nothing}
+        .variant=${node.variant ?? nothing}
+      ></ag-copy-button>`;
+
     case 'AgDialog':
       return html`<ag-dialog
         .open=${node.open ?? false}
@@ -269,6 +287,16 @@ function renderNode(
         @drawer-cancel=${() => doDispatch(node.on_cancel, actions)}
       >${renderChildren(node.children)}</ag-drawer>`;
 
+    case 'AgEmptyState':
+      return html`<ag-empty-state
+        .title=${node.title ?? nothing}
+        .subtitle=${node.subtitle ?? nothing}
+        .buttonText=${node.buttonText ?? nothing}
+        .size=${node.size ?? nothing}
+        .bordered=${node.bordered ?? false}
+        .rounded=${node.rounded ?? false}
+      ></ag-empty-state>`;
+
     case 'AgFieldset':
       return html`<ag-fieldset
         .legend=${node.legend ?? nothing}
@@ -276,6 +304,18 @@ function renderNode(
         .layout=${node.layout ?? nothing}
         .legendHidden=${node.legendHidden ?? false}
       >${renderChildren(node.children)}</ag-fieldset>`;
+
+    case 'AgFlex':
+      return html`<ag-flex
+        .direction=${node.direction ?? nothing}
+        .wrap=${node.wrap ?? nothing}
+        .justify=${node.justify ?? nothing}
+        .align=${node.align ?? nothing}
+        .alignContent=${node.alignContent ?? nothing}
+        .inline=${node.inline ?? false}
+        .reverse=${node.reverse ?? false}
+        .stretchChildren=${node.stretchChildren ?? false}
+      ></ag-flex>`;
 
     case 'AgHeader':
       return html`<ag-header
@@ -321,6 +361,21 @@ function renderNode(
         @icon-button-click=${() => doDispatch(node.on_click, actions)}
         @icon-button-activate=${() => doDispatch(node.on_activate, actions)}
       ></ag-icon-button-fx>`;
+
+    case 'AgImage':
+      return html`<ag-image
+        .src=${node.src ?? nothing}
+        .alt=${node.alt ?? nothing}
+        .width=${node.width ?? 0}
+        .height=${node.height ?? 0}
+        .aspectRatio=${node.aspectRatio ?? nothing}
+        .fit=${node.fit ?? nothing}
+        .position=${node.position ?? nothing}
+        .loading=${node.loading ?? nothing}
+        .fade=${node.fade ?? false}
+        .duration=${node.duration ?? 0}
+        .fallbackSrc=${node.fallbackSrc ?? nothing}
+      ></ag-image>`;
 
     case 'AgInput':
       return html`<ag-input
@@ -452,6 +507,15 @@ function renderNode(
         .size=${node.size ?? nothing}
       >${renderChildren(node.children)}</ag-progress>`;
 
+    case 'AgProgressRing':
+      return html`<ag-progress-ring
+        .value=${node.value ?? 0}
+        .size=${node.size ?? nothing}
+        .variant=${node.variant ?? nothing}
+        .label=${node.label ?? nothing}
+        .no-animation=${node.'no-animation' ?? false}
+      ></ag-progress-ring>`;
+
     case 'AgRadio':
       return html`<ag-radio
         .name=${node.name ?? nothing}
@@ -558,6 +622,15 @@ function renderNode(
         @selection-change=${(e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value)}
       >${renderChildren(node.children)}</ag-selection-card-group>`;
 
+    case 'AgSkeletonLoader':
+      return html`<ag-skeleton-loader
+        .variant=${node.variant ?? nothing}
+        .effect=${node.effect ?? nothing}
+        .intensity=${node.intensity ?? nothing}
+        .width=${node.width ?? nothing}
+        .height=${node.height ?? nothing}
+      ></ag-skeleton-loader>`;
+
     case 'AgSpinner':
       return html`<ag-spinner
         .size=${node.size ?? nothing}
@@ -593,6 +666,14 @@ function renderNode(
         .fxDisabled=${node.fxDisabled ?? false}
         @tag-remove=${() => doDispatch(node.on_remove, actions)}
       ></ag-tag-fx>`;
+
+    case 'AgTimeline':
+      return html`<ag-timeline
+        .orientation=${node.orientation ?? nothing}
+        .variant=${node.variant ?? nothing}
+        .compact=${node.compact ?? false}
+        .ariaLabel=${node.ariaLabel ?? nothing}
+      ></ag-timeline>`;
 
     case 'AgToggle':
       return html`<ag-toggle
