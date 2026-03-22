@@ -37,6 +37,9 @@ export const omitConfig: Record<string, string[]> = {
 
   // value: number | [number, number] tuple — not a simple JSON-serializable scalar
   AgSlider:             ['value'],
+
+  // no-animation: hyphenated prop name is invalid as a JSX attribute and as a JS identifier
+  AgProgressRing:       ['no-animation'],
 };
 
 /**
@@ -228,6 +231,7 @@ export const reactPropRenames: Record<string, string> = {
 export const skipComponents: string[] = [
   'Collapsible',    // requires open/close state
   'Combobox',       // complex filtering + multi-select state (deferred — see issue #375)
+  'Flex',           // multi-component family (FlexContainer/FlexRow/FlexCol/FlexInline) — no single ReactFlex/VueFlex wrapper
   'Menu',           // complex open + selected-value state (deferred — see issue #375)
   'Pagination',     // stateful current-page tracking (deferred — see issue #375)
   'ScrollProgress', // tracks live scroll position — purely behavioral

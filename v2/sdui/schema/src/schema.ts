@@ -258,20 +258,6 @@ export const AgFieldsetSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
-export const AgFlexSchema = z.object({
-  id: z.string(),
-  component: z.literal('AgFlex'),
-  direction: z.enum(['row', 'row-reverse', 'column', 'column-reverse']).optional(),
-  wrap: z.enum(['nowrap', 'wrap', 'wrap-reverse']).optional(),
-  justify: z.enum(['center', 'flex-start', 'flex-end', 'space-between', 'space-around', 'space-evenly']).optional(),
-  align: z.enum(['center', 'flex-start', 'flex-end', 'baseline', 'stretch']).optional(),
-  alignContent: z.enum(['center', 'flex-start', 'flex-end', 'space-between', 'space-around', 'space-evenly', 'stretch']).optional(),
-  inline: z.boolean().optional(),
-  reverse: z.boolean().optional(),
-  stretchChildren: z.boolean().optional(),
-  children: z.array(z.string()).optional(),
-}).strict();
-
 export const AgHeaderSchema = z.object({
   id: z.string(),
   component: z.literal('AgHeader'),
@@ -497,7 +483,6 @@ export const AgProgressRingSchema = z.object({
   size: z.enum(['small', 'medium', 'large']).optional(),
   variant: z.enum(['primary', 'success', 'warning', 'info', 'danger']).optional(),
   label: z.string().optional(),
-  'no-animation': z.boolean().optional(),
   children: z.array(z.string()).optional(),
 }).strict();
 
@@ -768,7 +753,6 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgDrawerSchema,
   AgEmptyStateSchema,
   AgFieldsetSchema,
-  AgFlexSchema,
   AgHeaderSchema,
   AgIconSchema,
   AgIconButtonSchema,

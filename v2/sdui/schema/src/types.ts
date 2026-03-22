@@ -256,20 +256,6 @@ export interface AgFieldsetNode {
   children?: string[];
 }
 
-export interface AgFlexNode {
-  id: string;
-  component: 'AgFlex';
-  direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
-  wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
-  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
-  align?: 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'stretch';
-  alignContent?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
-  inline?: boolean;
-  reverse?: boolean;
-  stretchChildren?: boolean;
-  children?: string[];
-}
-
 export interface AgHeaderNode {
   id: string;
   component: 'AgHeader';
@@ -495,7 +481,6 @@ export interface AgProgressRingNode {
   size?: 'small' | 'medium' | 'large';
   variant?: 'primary' | 'success' | 'warning' | 'info' | 'danger';
   label?: string;
-  'no-animation'?: boolean;
   children?: string[];
 }
 
@@ -765,7 +750,6 @@ export type AgNode =
   | AgDrawerNode
   | AgEmptyStateNode
   | AgFieldsetNode
-  | AgFlexNode
   | AgHeaderNode
   | AgIconNode
   | AgIconButtonNode

@@ -22,7 +22,6 @@ import { ReactDivider } from 'agnosticui-core/divider/react';
 import { ReactDrawer } from 'agnosticui-core/drawer/react';
 import { ReactEmptyState } from 'agnosticui-core/empty-state/react';
 import { ReactFieldset } from 'agnosticui-core/fieldset/react';
-import { ReactFlex } from 'agnosticui-core/flex/react';
 import { ReactHeader } from 'agnosticui-core/header/react';
 import { ReactIcon } from 'agnosticui-core/icon/react';
 import { ReactIconButton } from 'agnosticui-core/icon-button/react';
@@ -376,20 +375,6 @@ function renderNode(
         </ReactFieldset>
       );
 
-    case 'AgFlex':
-      return (
-        <ReactFlex
-          key={node.id}
-          direction={node.direction}
-          wrap={node.wrap}
-          justify={node.justify}
-          align={node.align}
-          alignContent={node.alignContent}
-          inline={node.inline}
-          reverse={node.reverse}
-          stretchChildren={node.stretchChildren} />
-      );
-
     case 'AgHeader':
       return (
         <ReactHeader
@@ -636,8 +621,7 @@ function renderNode(
           value={node.value}
           size={node.size}
           variant={node.variant}
-          label={node.label}
-          no-animation={node.'no-animation'} />
+          label={node.label} />
       );
 
     case 'AgRadio':

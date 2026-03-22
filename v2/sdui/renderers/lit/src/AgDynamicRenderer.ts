@@ -25,7 +25,6 @@ import 'agnosticui-core/divider';
 import 'agnosticui-core/drawer';
 import 'agnosticui-core/empty-state';
 import 'agnosticui-core/fieldset';
-import 'agnosticui-core/flex';
 import 'agnosticui-core/header';
 import 'agnosticui-core/icon';
 import 'agnosticui-core/icon-button';
@@ -305,18 +304,6 @@ function renderNode(
         .legendHidden=${node.legendHidden ?? false}
       >${renderChildren(node.children)}</ag-fieldset>`;
 
-    case 'AgFlex':
-      return html`<ag-flex
-        .direction=${node.direction ?? nothing}
-        .wrap=${node.wrap ?? nothing}
-        .justify=${node.justify ?? nothing}
-        .align=${node.align ?? nothing}
-        .alignContent=${node.alignContent ?? nothing}
-        .inline=${node.inline ?? false}
-        .reverse=${node.reverse ?? false}
-        .stretchChildren=${node.stretchChildren ?? false}
-      ></ag-flex>`;
-
     case 'AgHeader':
       return html`<ag-header
         .sticky=${node.sticky ?? false}
@@ -513,7 +500,6 @@ function renderNode(
         .size=${node.size ?? nothing}
         .variant=${node.variant ?? nothing}
         .label=${node.label ?? nothing}
-        .no-animation=${node.'no-animation' ?? false}
       ></ag-progress-ring>`;
 
     case 'AgRadio':

@@ -22,7 +22,6 @@ import { VueDivider } from 'agnosticui-core/divider/vue';
 import { VueDrawer } from 'agnosticui-core/drawer/vue';
 import { VueEmptyState } from 'agnosticui-core/empty-state/vue';
 import { VueFieldset } from 'agnosticui-core/fieldset/vue';
-import { VueFlex } from 'agnosticui-core/flex/vue';
 import { VueHeader } from 'agnosticui-core/header/vue';
 import { VueIcon } from 'agnosticui-core/icon/vue';
 import { VueIconButton } from 'agnosticui-core/icon-button/vue';
@@ -377,21 +376,6 @@ function renderNode(
         { default: () => renderChildren(node.children) },
       );
 
-    case 'AgFlex':
-      return h(
-        VueFlex,
-        {
-        direction: node.direction,
-        wrap: node.wrap,
-        justify: node.justify,
-        align: node.align,
-        alignContent: node.alignContent,
-        inline: node.inline,
-        reverse: node.reverse,
-        stretchChildren: node.stretchChildren,
-        },
-      );
-
     case 'AgHeader':
       return h(
         VueHeader,
@@ -639,7 +623,6 @@ function renderNode(
         size: node.size,
         variant: node.variant,
         label: node.label,
-        no-animation: node.'no-animation',
         },
       );
 
