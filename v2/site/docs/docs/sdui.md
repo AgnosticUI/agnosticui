@@ -72,7 +72,7 @@ html`<ag-dynamic-renderer .nodes=${nodes} .actions=${{ SUBMIT_FORM: () => handle
 
 ## Supported components
 
-41 AgnosticUI components are available as SDUI nodes. The `component` field is the
+50 AgnosticUI components are available as SDUI nodes. The `component` field is the
 PascalCase component name (`AgButton`, `AgInput`, `AgCard`, etc.). Props map directly to
 the component's documented props.
 
