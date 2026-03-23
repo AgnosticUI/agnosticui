@@ -98,27 +98,112 @@ export const actionAliasMap: Record<string, string> = {
 
 /**
  * actionPayloadMap: maps function prop names to a JS expression that extracts
- * a serializable payload from the event argument.
+ * a serializable payload from the event argument (React + Lit default).
  *
  * When an event is listed here, the renderer emits a one-arg lambda
  *   `(e) => dispatch(node.alias, actions, <expr>)`
  * instead of the zero-arg form `() => dispatch(node.alias, actions)`.
  *
- * The expression is evaluated in a context where `e` is the raw event.
+ * Per-component overrides in componentActionPayloadMap take priority.
  */
-export const actionPayloadMap: Record<string, string> = {
-  // SelectionChangeEvent.detail.value is the selected card's value string
-  onSelectionChange: '(e as CustomEvent<{value: string}>).detail.value',
-};
+export const actionPayloadMap: Record<string, string> = {};
 
 /**
  * vueActionPayloadMap: Vue-specific overrides for actionPayloadMap.
  * Vue wrappers emit detail directly (not wrapped in CustomEvent), so
  * handlers receive the detail object as the first argument, not a CustomEvent.
+ * Per-component overrides in vueComponentActionPayloadMap take priority.
  */
-export const vueActionPayloadMap: Record<string, string> = {
-  // Vue emits detail directly: e IS the SelectionChangeEventDetail
-  onSelectionChange: '(e as unknown as {value: string}).value',
+export const vueActionPayloadMap: Record<string, string> = {};
+
+/**
+ * componentActionPayloadMap: per-component, per-sourceName payload expressions
+ * for the React renderer. Takes priority over actionPayloadMap.
+ *
+ * All form input nodes emit { id: node.id, value: <current value> } so that
+ * consumers can accumulate questionnaire answers without parsing DOM events.
+ * node.id and node.<alias> are in scope in the generated lambda.
+ */
+export const componentActionPayloadMap: Record<string, Record<string, string>> = {
+  AgCheckbox: {
+    onChange: `{ id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked }`,
+  },
+  AgInput: {
+    onChange: `{ id: node.id, value: ((e as unknown) as React.ChangeEvent<HTMLInputElement>).target?.value ?? ((e as unknown) as CustomEvent<{ value: string }>).detail?.value ?? '' }`,
+  },
+  AgRadio: {
+    onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? '' }`,
+  },
+  AgSelect: {
+    onChange: `{ id: node.id, value: ((e as unknown) as { value?: string | string[] })?.value ?? '' }`,
+  },
+  AgToggle: {
+    onToggleChange: `{ id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked }`,
+  },
+  AgSelectionButtonGroup: {
+    onSelectionChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value }`,
+  },
+  AgSelectionCardGroup: {
+    onSelectionChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value }`,
+  },
+};
+
+/**
+ * vueComponentActionPayloadMap: per-component Vue payload expressions.
+ * Vue wrappers emit detail as the first argument (not wrapped in CustomEvent).
+ * All form inputs use the same { id, value } shape as React.
+ */
+export const vueComponentActionPayloadMap: Record<string, Record<string, string>> = {
+  AgCheckbox: {
+    onChange: `{ id: node.id, value: (e as unknown as { checked?: boolean })?.checked }`,
+  },
+  AgInput: {
+    onChange: `{ id: node.id, value: (e as unknown as { value?: string; target?: { value?: string } })?.value ?? (e as unknown as { target?: { value?: string } })?.target?.value ?? '' }`,
+  },
+  AgRadio: {
+    onChange: `{ id: node.id, value: (e as unknown as { value?: string })?.value ?? '' }`,
+  },
+  AgSelect: {
+    onChange: `{ id: node.id, value: (e as unknown as { value?: string | string[] })?.value ?? '' }`,
+  },
+  AgToggle: {
+    onToggleChange: `{ id: node.id, value: (e as unknown as { checked?: boolean })?.checked }`,
+  },
+  AgSelectionButtonGroup: {
+    onSelectionChange: `{ id: node.id, value: (e as unknown as { value?: string })?.value }`,
+  },
+  AgSelectionCardGroup: {
+    onSelectionChange: `{ id: node.id, value: (e as unknown as { value?: string })?.value }`,
+  },
+};
+
+/**
+ * litComponentActionPayloadMap: per-component Lit payload expressions.
+ * Lit fires native CustomEvents from web components.
+ * All form inputs use the same { id, value } shape as React.
+ */
+export const litComponentActionPayloadMap: Record<string, Record<string, string>> = {
+  AgCheckbox: {
+    onChange: `{ id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked }`,
+  },
+  AgInput: {
+    onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? (e as unknown as { target?: { value?: string } }).target?.value ?? '' }`,
+  },
+  AgRadio: {
+    onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? '' }`,
+  },
+  AgSelect: {
+    onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' }`,
+  },
+  AgToggle: {
+    onToggleChange: `{ id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked }`,
+  },
+  AgSelectionButtonGroup: {
+    onSelectionChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value }`,
+  },
+  AgSelectionCardGroup: {
+    onSelectionChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value }`,
+  },
 };
 
 /**

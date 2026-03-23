@@ -687,7 +687,7 @@ function renderNode(
           errorMessage={node.errorMessage}
           helpText={node.helpText}
           onClick={() => dispatch(node.on_click, actions)}
-          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' })} />
+          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: ((e as unknown) as { value?: string | string[] })?.value ?? '' })} />
       );
 
     case 'AgSelectionButton':
