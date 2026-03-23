@@ -78,3 +78,8 @@
   display: block;
   margin-block-end: var(--ag-space-4, 1rem);
 }
+
+.demo-output-body ag-selection-button-group {
+  display: block;
+  margin-block-end: var(--ag-space-4, 1rem);
+}

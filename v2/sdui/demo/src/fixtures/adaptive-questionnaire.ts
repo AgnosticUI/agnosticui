@@ -34,6 +34,8 @@ const step2RoutineNodes: AgNode[] = [
   { id: 'aq2r-badge-text',   component: 'AgText',   text: 'Step 2 of 3 · Annual checkup' },
   { id: 'aq2r-divider',      component: 'AgDivider' },
   { id: 'aq-preferred-date', component: 'AgInput',  label: 'Preferred appointment date', type: 'date', rounded: true, on_change: 'ANSWER_CHANGE' },
+  { id: 'aq2r-back',         component: 'AgButton', bordered: true, shape: 'rounded', fullWidth: true, on_click: 'PREV_STEP', children: ['aq2r-back-label'] },
+  { id: 'aq2r-back-label',   component: 'AgText',   text: 'Back' },
   { id: 'aq2r-next',         component: 'AgButton', variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'NEXT_STEP', children: ['aq2r-next-label'] },
   { id: 'aq2r-next-label',   component: 'AgText',   text: 'Next' },
 ];
@@ -64,6 +66,8 @@ const step2SymptomsNodes: AgNode[] = [
   { id: 'aq-sev-moderate-text', component: 'AgText',           text: 'Moderate' },
   { id: 'aq-sev-severe',       component: 'AgSelectionButton', value: 'severe',   label: 'Severe',   children: ['aq-sev-severe-text'] },
   { id: 'aq-sev-severe-text',  component: 'AgText',            text: 'Severe' },
+  { id: 'aq2s-back',          component: 'AgButton', bordered: true, shape: 'rounded', fullWidth: true, on_click: 'PREV_STEP', children: ['aq2s-back-label'] },
+  { id: 'aq2s-back-label',    component: 'AgText',   text: 'Back' },
   { id: 'aq2s-next',          component: 'AgButton', variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'NEXT_STEP', children: ['aq2s-next-label'] },
   { id: 'aq2s-next-label',    component: 'AgText',   text: 'Next' },
 ];
@@ -77,6 +81,8 @@ const step2FollowupNodes: AgNode[] = [
   { id: 'aq2f-divider',        component: 'AgDivider' },
   { id: 'aq-followup-reason',  component: 'AgInput',  label: 'Reason for follow-up', type: 'text', rounded: true, on_change: 'ANSWER_CHANGE' },
   { id: 'aq-last-visit',       component: 'AgInput',  label: 'Date of last visit',   type: 'date', rounded: true, on_change: 'ANSWER_CHANGE' },
+  { id: 'aq2f-back',           component: 'AgButton', bordered: true, shape: 'rounded', fullWidth: true, on_click: 'PREV_STEP', children: ['aq2f-back-label'] },
+  { id: 'aq2f-back-label',     component: 'AgText',   text: 'Back' },
   { id: 'aq2f-next',           component: 'AgButton', variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'NEXT_STEP', children: ['aq2f-next-label'] },
   { id: 'aq2f-next-label',     component: 'AgText',   text: 'Next' },
 ];
@@ -91,6 +97,8 @@ const step3Nodes: AgNode[] = [
   { id: 'aq-name',          component: 'AgInput',  label: 'Full name',     type: 'text',  rounded: true, required: true, on_change: 'ANSWER_CHANGE' },
   { id: 'aq-email',         component: 'AgInput',  label: 'Email address', type: 'email', rounded: true, required: true, on_change: 'ANSWER_CHANGE' },
   { id: 'aq-phone',         component: 'AgInput',  label: 'Phone number',  type: 'tel',   rounded: true, on_change: 'ANSWER_CHANGE' },
+  { id: 'aq3-back',         component: 'AgButton', bordered: true, shape: 'rounded', fullWidth: true, on_click: 'PREV_STEP', children: ['aq3-back-label'] },
+  { id: 'aq3-back-label',   component: 'AgText',   text: 'Back' },
   { id: 'aq3-submit',       component: 'AgButton', variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'SUBMIT', children: ['aq3-submit-label'] },
   { id: 'aq3-submit-label', component: 'AgText',   text: 'Book appointment' },
 ];

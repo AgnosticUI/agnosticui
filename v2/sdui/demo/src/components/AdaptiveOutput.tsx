@@ -28,6 +28,7 @@ export function AdaptiveOutput() {
   const [answers, setAnswers] = useState<Record<string, unknown>>({});
   const cancelRef = useRef<() => void>(() => {});
   const fadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const historyRef = useRef<AgNode[][]>([]);
 
   const openPanel = useCallback(() => {
     setPanelOpen(true);
@@ -79,8 +80,16 @@ export function AdaptiveOutput() {
     // answers, then display it. No streaming on transitions — they feel instant.
     NEXT_STEP: () => {
       const next = getNextNodes(answersRef.current);
+      historyRef.current = [...historyRef.current, nodes];
       openPanel();
       setNodes(next);
+    },
+
+    PREV_STEP: () => {
+      const prev = historyRef.current[historyRef.current.length - 1];
+      if (!prev) return;
+      historyRef.current = historyRef.current.slice(0, -1);
+      setNodes(prev);
     },
 
     // Final submit — getNextNodes returns confirmationNodes when all fields present.
@@ -94,6 +103,7 @@ export function AdaptiveOutput() {
     // Reset the entire flow.
     RESTART: () => {
       answersRef.current = {};
+      historyRef.current = [];
       setAnswers({});
       openPanel();
       runStream(step1Nodes);
