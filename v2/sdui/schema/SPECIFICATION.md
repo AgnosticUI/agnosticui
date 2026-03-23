@@ -283,14 +283,83 @@ function dispatch(alias: string | undefined, actions: Actions): void {
 }
 ```
 
-For events that carry a payload (currently `onSelectionChange`), the renderer emits a one-argument
-lambda and passes the extracted value to the action function:
+For events that carry a payload (all form input nodes), the renderer emits a one-argument lambda
+and passes a structured payload to the action function. The payload shape is standardized across
+all input components and all three renderers:
 
 ```ts
-// React:
-onSelectionChange={(e) => dispatch(node.on_change, actions, (e as CustomEvent<{value:string}>).detail.value)}
-// Vue (wrappers emit detail directly, not wrapped in CustomEvent):
-onSelectionChange={(e) => dispatch(node.on_change, actions, (e as {value:string}).value)}
+{ id: string; value: unknown }
+```
+
+- `id` is the node's `id` string, allowing the consumer to identify which field changed without
+  inspecting event targets.
+- `value` is the semantic current value of the input: a `string` for text, select, and radio; a
+  `boolean` (`checked`) for checkbox and toggle; `string | string[]` for multi-select.
+
+```ts
+// React — AgInput, AgRadio, AgSelect, AgCheckbox, AgToggle, AgSelectionButtonGroup, AgSelectionCardGroup:
+onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: ... })}
+
+// Vue (wrappers emit detail directly as first arg):
+onChange: (detail: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: ... })
+
+// Lit (native CustomEvent):
+@change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: ... })}
+```
+
+This payload shape enables questionnaire-style UIs to accumulate answers without parsing raw DOM
+events. See section 5.4 for the recommended integration pattern.
+
+### 5.4 Questionnaire / Adaptive-Flow Integration Pattern
+
+For multi-step UIs where the next screen depends on accumulated answers (health intake forms,
+onboarding surveys, insurance applications), the renderer stays stateless. The consumer owns
+the transition logic:
+
+```
+1. User changes an input
+   → on_change fires with { id: node.id, value: currentValue }
+   → consumer accumulates: answers[id] = value
+
+2. User clicks "Next" (or any navigation alias)
+   → on_click fires (no payload)
+   → consumer POSTs accumulated answers to server/LLM endpoint
+   → server returns next AgNode[] (only the next screen's nodes)
+   → consumer calls setNodes(nextNodes)
+   → renderer displays the next screen
+```
+
+The renderer never needs to know about steps, conditions, or skip logic. All branching
+intelligence lives server-side (or in an LLM prompt). This keeps the renderer predictable
+and testable: given `nodes[]` and `actions{}`, the output is deterministic.
+
+Example consumer skeleton (React):
+
+```tsx
+const [nodes, setNodes] = useState<AgNode[]>(initialNodes);
+const [answers, setAnswers] = useState<Record<string, unknown>>({});
+
+const actions = {
+  NEXT_STEP: async () => {
+    const nextNodes = await fetch('/api/next-step', {
+      method: 'POST',
+      body: JSON.stringify(answers),
+    }).then(r => r.json());
+    setNodes(nextNodes);
+  },
+};
+
+// on_change handlers accumulate answers — no application code needed in the renderer
+const changeActions = new Proxy(actions, {
+  get: (target, alias: string) =>
+    alias in target
+      ? target[alias as keyof typeof target]
+      : (payload: { id: string; value: unknown }) => {
+          setAnswers(prev => ({ ...prev, [payload.id]: payload.value }));
+        },
+});
+
+<AgDynamicRenderer nodes={nodes} actions={changeActions} />
 ```
 
 ### 5.2 XSS Boundary
