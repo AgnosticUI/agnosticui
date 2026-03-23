@@ -56,6 +56,8 @@ export interface InputProps {
   underlined?: boolean;
   underlinedWithBackground?: boolean;
   inline?: boolean;
+  min?: string;
+  max?: string;
   required?: boolean;
   disabled?: boolean;
   readonly?: boolean;
@@ -377,6 +379,13 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
   @property({ type: Boolean, reflect: true })
   declare inline: boolean;
 
+  // Range constraints (for date, number, time inputs)
+  @property({ type: String })
+  declare min: string;
+
+  @property({ type: String })
+  declare max: string;
+
   // Validation and state
   @property({ type: Boolean, reflect: true })
   declare required: boolean;
@@ -435,6 +444,8 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
     this.underlined = false;
     this.underlinedWithBackground = false;
     this.inline = false;
+    this.min = '';
+    this.max = '';
     this.required = false;
     this.disabled = false;
     this.readonly = false;
@@ -643,6 +654,10 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
   /**
    * Render the input or textarea element
    */
+  private _supportsMinMax(): boolean {
+    return ['date', 'datetime-local', 'month', 'time', 'week', 'number', 'range'].includes(this.type);
+  }
+
   private _renderInputElement() {
     const isTextarea = this.type === 'textarea';
 
@@ -687,6 +702,8 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
         class="ag-input__input"
         .value="${this.value}"
         placeholder="${ifDefined(this.placeholder || undefined)}"
+        min="${ifDefined(this._supportsMinMax() && this.min ? this.min : undefined)}"
+        max="${ifDefined(this._supportsMinMax() && this.max ? this.max : undefined)}"
         ?required="${this.required}"
         ?disabled="${this.disabled}"
         ?readonly="${this.readonly}"

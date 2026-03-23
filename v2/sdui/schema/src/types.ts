@@ -346,6 +346,8 @@ export interface AgInputNode {
   underlined?: boolean;
   underlinedWithBackground?: boolean;
   inline?: boolean;
+  min?: string;
+  max?: string;
   required?: boolean;
   disabled?: boolean;
   readonly?: boolean;

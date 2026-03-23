@@ -348,6 +348,8 @@ export const AgInputSchema = z.object({
   underlined: z.boolean().optional(),
   underlinedWithBackground: z.boolean().optional(),
   inline: z.boolean().optional(),
+  min: z.string().optional(),
+  max: z.string().optional(),
   required: z.boolean().optional(),
   disabled: z.boolean().optional(),
   readonly: z.boolean().optional(),

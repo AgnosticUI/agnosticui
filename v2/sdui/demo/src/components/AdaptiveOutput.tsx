@@ -74,27 +74,31 @@ export function AdaptiveOutput() {
       const { id, value } = payload as { id: string; value: unknown };
       answersRef.current = { ...answersRef.current, [id]: value };
       setAnswers({ ...answersRef.current });
-      // Clear any validation error on this node once the user starts filling it in.
-      setNodes(prev => prev.map(n => {
-        const raw = n as unknown as Record<string, unknown>;
-        return n.id === id && raw['errorMessage'] ? { ...n, invalid: false, errorMessage: undefined } : n;
-      }));
+      // Remove any validation alert node that was injected for this field.
+      setNodes(prev => prev.filter(n => n.id !== `${id}-error-text` && n.id !== `${id}-error-alert`));
     },
 
     // Ask the "server" (getNextNodes) what screen comes next given accumulated
     // answers, then display it. No streaming on transitions — they feel instant.
     NEXT_STEP: () => {
       // Validate required fields on the current screen before advancing.
-      const invalid = nodes.filter(n => {
+      // For each failing field, inject an AgAlert node immediately after it.
+      const requiredNodes = nodes.filter(n => {
         const raw = n as unknown as Record<string, unknown>;
         return raw['required'] && (answersRef.current[n.id] === undefined || answersRef.current[n.id] === '');
       });
-      if (invalid.length > 0) {
-        setNodes(nodes.map(n => {
-          if (!invalid.some(i => i.id === n.id)) return n;
-          const raw = n as unknown as Record<string, unknown>;
-          return { ...n, invalid: true, errorMessage: `${raw['label'] || 'This field'} is required` };
-        }));
+      if (requiredNodes.length > 0) {
+        const withErrors = nodes.reduce<AgNode[]>((acc, n) => {
+          acc.push(n);
+          if (requiredNodes.some(r => r.id === n.id)) {
+            const raw = n as unknown as Record<string, unknown>;
+            const label = String(raw['label'] || 'This field');
+            acc.push({ id: `${n.id}-error-text`, component: 'AgText', text: `${label} is required` } as AgNode);
+            acc.push({ id: `${n.id}-error-alert`, component: 'AgAlert', variant: 'danger', bordered: true, rounded: true, children: [`${n.id}-error-text`] } as AgNode);
+          }
+          return acc;
+        }, []);
+        setNodes(withErrors);
         return;
       }
       const next = getNextNodes(answersRef.current);

@@ -80,7 +80,7 @@ const step2FollowupNodes: AgNode[] = [
   { id: 'aq2f-badge-text',     component: 'AgText',   text: 'Step 2 of 3 · Follow-up visit' },
   { id: 'aq2f-divider',        component: 'AgDivider' },
   { id: 'aq-followup-reason',  component: 'AgInput',  label: 'Reason for follow-up', type: 'text', rounded: true, on_change: 'ANSWER_CHANGE' },
-  { id: 'aq-last-visit',       component: 'AgInput',  label: 'Date of last visit',   type: 'date', rounded: true, on_change: 'ANSWER_CHANGE' },
+  { id: 'aq-last-visit',       component: 'AgInput',  label: 'Date of last visit',   type: 'date', rounded: true, max: new Date().toISOString().split('T')[0], on_change: 'ANSWER_CHANGE' },
   { id: 'aq2f-back',           component: 'AgButton', bordered: true, shape: 'rounded', fullWidth: true, on_click: 'PREV_STEP', children: ['aq2f-back-label'] },
   { id: 'aq2f-back-label',     component: 'AgText',   text: 'Back' },
   { id: 'aq2f-next',           component: 'AgButton', variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'NEXT_STEP', children: ['aq2f-next-label'] },

@@ -469,6 +469,8 @@ function renderNode(
           underlined={node.underlined}
           underlinedWithBackground={node.underlinedWithBackground}
           inline={node.inline}
+          min={node.min}
+          max={node.max}
           required={node.required}
           disabled={node.disabled}
           readonly={node.readonly}
