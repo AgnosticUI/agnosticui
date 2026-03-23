@@ -77,7 +77,7 @@ export function AdaptiveOutput() {
       // Clear any validation error on this node once the user starts filling it in.
       setNodes(prev => prev.map(n => {
         const raw = n as unknown as Record<string, unknown>;
-        return n.id === id && raw['errorMessage'] ? { ...n, errorMessage: undefined } : n;
+        return n.id === id && raw['errorMessage'] ? { ...n, invalid: false, errorMessage: undefined } : n;
       }));
     },
 
@@ -93,7 +93,7 @@ export function AdaptiveOutput() {
         setNodes(nodes.map(n => {
           if (!invalid.some(i => i.id === n.id)) return n;
           const raw = n as unknown as Record<string, unknown>;
-          return { ...n, errorMessage: `${raw['label'] || 'This field'} is required` };
+          return { ...n, invalid: true, errorMessage: `${raw['label'] || 'This field'} is required` };
         }));
         return;
       }
