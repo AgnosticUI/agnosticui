@@ -12,7 +12,7 @@ npm install @agnosticui/render-react @agnosticui/schema agnosticui-core
 
 | Package | Version |
 |---------|---------|
-| `agnosticui-core` | `>=2.0.0-alpha.25` |
+| `agnosticui-core` | `>=2.0.0-alpha.26` |
 | `react` | `>=18` |
 | `react-dom` | `>=18` |
 
