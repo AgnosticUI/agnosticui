@@ -16,6 +16,37 @@ interface LlmOutputProps {
   systemPrompt: string;
 }
 
+/**
+ * Remove from each node's children array any IDs that are already
+ * reachable as descendants of another sibling child. Small models often
+ * include grandchild IDs directly in a container's children list,
+ * causing nodes to render twice (once inside their parent, once as a
+ * sibling of their parent).
+ */
+function deduplicateChildren(nodes: AgNode[]): AgNode[] {
+  const nodeMap = new Map(nodes.map(n => [n.id, n]));
+
+  function descendants(id: string, visited = new Set<string>()): Set<string> {
+    if (visited.has(id)) return visited;
+    visited.add(id);
+    const n = nodeMap.get(id);
+    for (const childId of n?.children ?? []) descendants(childId, visited);
+    return visited;
+  }
+
+  return nodes.map(node => {
+    if (!node.children?.length) return node;
+    const filtered = node.children.filter(childId => {
+      // Keep this child only if no OTHER sibling's descendants already include it
+      for (const otherId of node.children) {
+        if (otherId !== childId && descendants(otherId).has(childId)) return false;
+      }
+      return true;
+    });
+    return filtered.length === node.children.length ? node : { ...node, children: filtered };
+  });
+}
+
 function validateOutput(container: Element | null): boolean {
   if (!container) return true;
   const elements = container.querySelectorAll(AG_FACE_SELECTOR);
@@ -59,24 +90,24 @@ export function LlmOutput({ prompt, systemPrompt }: LlmOutputProps) {
     setError(null);
     openPanel();
 
-    let cancelled = false;
+    const controller = new AbortController();
 
     (async () => {
       try {
-        for await (const node of streamLlmNodes(prompt, systemPrompt)) {
-          if (cancelled) break;
+        for await (const node of streamLlmNodes(prompt, systemPrompt, controller.signal)) {
+          if (controller.signal.aborted) break;
           setNodes(prev => [...prev, node]);
         }
-        if (!cancelled) setStatus('done');
+        if (!controller.signal.aborted) setStatus('done');
       } catch (err) {
-        if (!cancelled) {
+        if (!controller.signal.aborted) {
           setStatus('error');
           setError(err instanceof Error ? err.message : String(err));
         }
       }
     })();
 
-    return () => { cancelled = true; };
+    return () => { controller.abort(); };
   }, [prompt, systemPrompt, openPanel]);
 
   useEffect(() => () => { if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current); }, []);
@@ -120,7 +151,7 @@ export function LlmOutput({ prompt, systemPrompt }: LlmOutputProps) {
         </ReactCollapsible>
       )}
 
-      <AgDynamicRenderer nodes={nodes} actions={actions} />
+      <AgDynamicRenderer nodes={deduplicateChildren(nodes)} actions={actions} />
     </div>
   );
 }

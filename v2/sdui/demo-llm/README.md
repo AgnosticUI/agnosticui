@@ -25,7 +25,7 @@ Install [Ollama](https://ollama.com), then pull a model:
 
 ```bash
 ollama pull mistral
-# or: ollama pull gemma:2b-instruct, llama3, qwen2.5, etc.
+# or: ollama pull llama3, qwen2.5, etc.
 ```
 
 ```bash
@@ -55,6 +55,10 @@ The node array panel (collapsible, auto-closes after 8s) shows the raw JSON driv
 ## SYSTEM_PROMPT.md
 
 Edit `SYSTEM_PROMPT.md` to change what components the LLM can use, add new examples, or adjust output format. The file is imported at build time via Vite's `?raw` import.
+
+## Model quality
+
+Models at roughly 7B parameters and above (e.g. `mistral`, `llama3`, `qwen2.5`) follow the schema instructions reliably and produce consistent output. Smaller models may still work but will produce variable results — inconsistent JSON structure, dropped properties, or slower token generation. The demo includes structural post-processing to handle common small-model deviations, but a capable model gives the best experience.
 
 ## Actions
 

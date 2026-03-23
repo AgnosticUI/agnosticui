@@ -18,11 +18,24 @@ Each line must be a single, complete, valid JSON object. Example:
 ## Rules
 
 - Every node requires a unique `id` (string) and a `component` (string from the registry below)
-- `children` is an array of `id` strings — used to express nesting (e.g. button label inside button)
+- `children` is an array of `id` strings — NEVER nest objects inside children. Children are ID references only.
 - `on_click` and `on_change` are action alias strings — NEVER executable code (e.g. `"SUBMIT_FORM"`)
 - Omit props you don't need — all props except `id` and `component` are optional
 - Output nodes in depth-first order: parent nodes come AFTER their children so children exist when the parent references them
 - Keep IDs short and descriptive (e.g. `"email-input"`, `"submit-btn"`)
+
+## IMPORTANT: flat output only — do NOT nest objects
+
+WRONG — children must not contain objects:
+```
+{ "id": "card", "component": "AgCard", "children": [{ "id": "heading", "component": "AgText", "text": "Hi" }] }
+```
+
+CORRECT — each node is its own line, children reference IDs:
+```
+{ "id": "heading", "component": "AgText", "text": "Hi", "el": "h2" }
+{ "id": "card", "component": "AgCard", "children": ["heading"] }
+```
 
 ## Component registry
 
