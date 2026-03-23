@@ -57,6 +57,7 @@ const step2SymptomsNodes: AgNode[] = [
     type: 'radio',
     name: 'severity',
     legend: 'How severe are your symptoms?',
+    required: true,
     on_change: 'ANSWER_CHANGE',
     children: ['aq-sev-mild', 'aq-sev-moderate', 'aq-sev-severe'],
   },

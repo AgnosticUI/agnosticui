@@ -92,7 +92,7 @@ export function AdaptiveOutput() {
           acc.push(n);
           if (requiredNodes.some(r => r.id === n.id)) {
             const raw = n as unknown as Record<string, unknown>;
-            const label = String(raw['label'] || 'This field');
+            const label = String(raw['label'] || raw['legend'] || 'This field');
             acc.push({ id: `${n.id}-error-text`, component: 'AgText', text: `${label} is required` } as AgNode);
             acc.push({ id: `${n.id}-error-alert`, component: 'AgAlert', variant: 'danger', bordered: true, rounded: true, children: [`${n.id}-error-text`] } as AgNode);
           }
