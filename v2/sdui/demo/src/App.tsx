@@ -36,11 +36,9 @@ export default function App() {
       <section className="demo-output">
         <div className="demo-output-header">
           <span className="demo-output-label">Generated output</span>
-          {!isAdaptive && (
-            <ReactButton shape="rounded" onClick={handleRegenerate}>
-              Regenerate
-            </ReactButton>
-          )}
+          <ReactButton shape="rounded" onClick={handleRegenerate}>
+            {isAdaptive ? 'Restart' : 'Regenerate'}
+          </ReactButton>
         </div>
         <div className="demo-output-body">
           {isAdaptive

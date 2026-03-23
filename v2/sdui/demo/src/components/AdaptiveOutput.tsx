@@ -74,11 +74,29 @@ export function AdaptiveOutput() {
       const { id, value } = payload as { id: string; value: unknown };
       answersRef.current = { ...answersRef.current, [id]: value };
       setAnswers({ ...answersRef.current });
+      // Clear any validation error on this node once the user starts filling it in.
+      setNodes(prev => prev.map(n => {
+        const raw = n as unknown as Record<string, unknown>;
+        return n.id === id && raw['errorMessage'] ? { ...n, errorMessage: undefined } : n;
+      }));
     },
 
     // Ask the "server" (getNextNodes) what screen comes next given accumulated
     // answers, then display it. No streaming on transitions — they feel instant.
     NEXT_STEP: () => {
+      // Validate required fields on the current screen before advancing.
+      const invalid = nodes.filter(n => {
+        const raw = n as unknown as Record<string, unknown>;
+        return raw['required'] && (answersRef.current[n.id] === undefined || answersRef.current[n.id] === '');
+      });
+      if (invalid.length > 0) {
+        setNodes(nodes.map(n => {
+          if (!invalid.some(i => i.id === n.id)) return n;
+          const raw = n as unknown as Record<string, unknown>;
+          return { ...n, errorMessage: `${raw['label'] || 'This field'} is required` };
+        }));
+        return;
+      }
       const next = getNextNodes(answersRef.current);
       historyRef.current = [...historyRef.current, nodes];
       openPanel();

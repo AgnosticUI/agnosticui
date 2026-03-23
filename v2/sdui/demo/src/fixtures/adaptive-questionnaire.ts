@@ -50,7 +50,7 @@ const step2SymptomsNodes: AgNode[] = [
   { id: 'aq2s-badge',         component: 'AgBadge',  variant: 'warning', children: ['aq2s-badge-text'] },
   { id: 'aq2s-badge-text',    component: 'AgText',   text: 'Step 2 of 3 · New symptoms' },
   { id: 'aq2s-divider',       component: 'AgDivider' },
-  { id: 'aq-symptoms',        component: 'AgInput',  label: 'Describe your symptoms', rows: 3, rounded: true, on_change: 'ANSWER_CHANGE' },
+  { id: 'aq-symptoms',        component: 'AgInput',  label: 'Describe your symptoms', rows: 3, rounded: true, required: true, on_change: 'ANSWER_CHANGE' },
   {
     id: 'aq-severity-group',
     component: 'AgSelectionButtonGroup',
