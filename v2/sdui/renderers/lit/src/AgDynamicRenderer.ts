@@ -236,7 +236,7 @@ function renderNode(
         .errorMessage=${node.errorMessage ?? nothing}
         .helpText=${node.helpText ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
-        @change=${() => doDispatch(node.on_change, actions)}
+        @change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked })}
       ></ag-checkbox>`;
 
     case 'AgCopyButton':
@@ -390,7 +390,7 @@ function renderNode(
         .errorMessage=${node.errorMessage ?? nothing}
         .helpText=${node.helpText ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
-        @change=${() => doDispatch(node.on_change, actions)}
+        @change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? (e as unknown as { target?: { value?: string } }).target?.value ?? '' })}
       ></ag-input>`;
 
     case 'AgIntlFormatter':
@@ -520,7 +520,7 @@ function renderNode(
         .errorMessage=${node.errorMessage ?? nothing}
         .helpText=${node.helpText ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
-        @change=${() => doDispatch(node.on_change, actions)}
+        @change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? '' })}
       ></ag-radio>`;
 
     case 'AgRating':
@@ -559,7 +559,7 @@ function renderNode(
         .errorMessage=${node.errorMessage ?? nothing}
         .helpText=${node.helpText ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
-        @change=${() => doDispatch(node.on_change, actions)}
+        @change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' })}
       ></ag-select>`;
 
     case 'AgSelectionButton':
@@ -583,7 +583,7 @@ function renderNode(
         .values=${node.values ?? nothing}
         .disabled=${node.disabled ?? false}
         .required=${node.required ?? false}
-        @selection-change=${(e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value)}
+        @selection-change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value })}
       >${renderChildren(node.children)}</ag-selection-button-group>`;
 
     case 'AgSelectionCard':
@@ -605,7 +605,7 @@ function renderNode(
         .values=${node.values ?? nothing}
         .disabled=${node.disabled ?? false}
         .required=${node.required ?? false}
-        @selection-change=${(e: Event) => doDispatch(node.on_change, actions, (e as CustomEvent<{value: string}>).detail.value)}
+        @selection-change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value })}
       >${renderChildren(node.children)}</ag-selection-card-group>`;
 
     case 'AgSkeletonLoader':
@@ -679,7 +679,7 @@ function renderNode(
         .name=${node.name ?? nothing}
         .value=${node.value ?? nothing}
         @click=${() => doDispatch(node.on_click, actions)}
-        @toggle-change=${() => doDispatch(node.on_change, actions)}
+        @toggle-change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked })}
       ></ag-toggle>`;
 
     case 'AgTooltip':

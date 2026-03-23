@@ -286,7 +286,7 @@ function renderNode(
         errorMessage: node.errorMessage,
         helpText: node.helpText,
         onClick: () => doDispatch(node.on_click, actions),
-        onChange: () => doDispatch(node.on_change, actions),
+        onChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { checked?: boolean })?.checked }),
         },
       );
 
@@ -480,7 +480,7 @@ function renderNode(
         errorMessage: node.errorMessage,
         helpText: node.helpText,
         onClick: () => doDispatch(node.on_click, actions),
-        onChange: () => doDispatch(node.on_change, actions),
+        onChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { value?: string; target?: { value?: string } })?.value ?? (e as unknown as { target?: { value?: string } })?.target?.value ?? '' }),
         },
       );
 
@@ -646,7 +646,7 @@ function renderNode(
         errorMessage: node.errorMessage,
         helpText: node.helpText,
         onClick: () => doDispatch(node.on_click, actions),
-        onChange: () => doDispatch(node.on_change, actions),
+        onChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { value?: string })?.value ?? '' }),
         },
       );
 
@@ -691,7 +691,7 @@ function renderNode(
         errorMessage: node.errorMessage,
         helpText: node.helpText,
         onClick: () => doDispatch(node.on_click, actions),
-        onChange: () => doDispatch(node.on_change, actions),
+        onChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { value?: string | string[] })?.value ?? '' }),
         },
       );
 
@@ -722,7 +722,7 @@ function renderNode(
         values: node.values,
         disabled: node.disabled,
         required: node.required,
-        onSelectionChange: (e: Event) => doDispatch(node.on_change, actions, (e as unknown as {value: string}).value),
+        onSelectionChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { value?: string })?.value }),
         },
         { default: () => renderChildren(node.children) },
       );
@@ -752,7 +752,7 @@ function renderNode(
         values: node.values,
         disabled: node.disabled,
         required: node.required,
-        onSelectionChange: (e: Event) => doDispatch(node.on_change, actions, (e as unknown as {value: string}).value),
+        onSelectionChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { value?: string })?.value }),
         },
         { default: () => renderChildren(node.children) },
       );
@@ -850,7 +850,7 @@ function renderNode(
         name: node.name,
         value: node.value,
         onClick: () => doDispatch(node.on_click, actions),
-        onToggleChange: () => doDispatch(node.on_change, actions),
+        onToggleChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { checked?: boolean })?.checked }),
         },
       );
 

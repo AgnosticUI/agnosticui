@@ -6,7 +6,7 @@ import { Project, type Type, type InterfaceDeclaration, type Symbol as MorphSymb
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { writeFileSync } from 'fs';
-import { omitConfig, actionAliasMap, actionPayloadMap, vueActionPayloadMap, typeOverrides, skipComponents, rendererSlotConfig, reactPropRenames, rendererPrimitives, noUndefinedProps, type RendererSlot, type RendererPrimitive } from './codegen.config.js';
+import { omitConfig, actionAliasMap, actionPayloadMap, vueActionPayloadMap, componentActionPayloadMap, vueComponentActionPayloadMap, litComponentActionPayloadMap, typeOverrides, skipComponents, rendererSlotConfig, reactPropRenames, rendererPrimitives, noUndefinedProps, type RendererSlot, type RendererPrimitive } from './codegen.config.js';
 
 // scripts/ -> schema/ -> sdui/ -> v2/ -> agnosticui/
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../../..');
@@ -330,7 +330,7 @@ function generateReactCase(c: ComponentData): string {
     }
   }
   for (const a of c.actions) {
-    const payloadExpr = actionPayloadMap[a.sourceName];
+    const payloadExpr = componentActionPayloadMap[sdui]?.[a.sourceName] ?? actionPayloadMap[a.sourceName];
     if (payloadExpr) {
       propLines.push(`          ${a.sourceName}={(e) => dispatch(node.${quoteName(a.alias)}, actions, ${payloadExpr})}`);
     } else {
@@ -466,9 +466,9 @@ function generateVueCase(c: ComponentData): string {
     propsObj.push(`        ${p.name}: node.${quoteName(p.name)},`);
   }
   for (const a of c.actions) {
-    const payloadExpr = vueActionPayloadMap[a.sourceName] ?? actionPayloadMap[a.sourceName];
+    const payloadExpr = vueComponentActionPayloadMap[sdui]?.[a.sourceName] ?? vueActionPayloadMap[a.sourceName] ?? actionPayloadMap[a.sourceName];
     if (payloadExpr) {
-      propsObj.push(`        ${a.sourceName}: (e: Event) => doDispatch(node.${quoteName(a.alias)}, actions, ${payloadExpr}),`);
+      propsObj.push(`        ${a.sourceName}: (e: unknown) => doDispatch(node.${quoteName(a.alias)}, actions, ${payloadExpr}),`);
     } else {
       propsObj.push(`        ${a.sourceName}: () => doDispatch(node.${quoteName(a.alias)}, actions),`);
     }
@@ -619,7 +619,7 @@ function generateLitCase(c: ComponentData): string {
     return `        .${p.name}=\${node.${quoteName(p.name)}${def}}`;
   });
   for (const a of c.actions) {
-    const payloadExpr = actionPayloadMap[a.sourceName];
+    const payloadExpr = litComponentActionPayloadMap[sdui]?.[a.sourceName] ?? actionPayloadMap[a.sourceName];
     if (payloadExpr) {
       attrLines.push(`        @${a.litEvent}=\${(e: Event) => doDispatch(node.${a.alias}, actions, ${payloadExpr})}`);
     } else {
