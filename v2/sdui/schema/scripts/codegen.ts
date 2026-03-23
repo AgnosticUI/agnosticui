@@ -468,7 +468,7 @@ function generateVueCase(c: ComponentData): string {
   for (const a of c.actions) {
     const payloadExpr = vueComponentActionPayloadMap[sdui]?.[a.sourceName] ?? vueActionPayloadMap[a.sourceName] ?? actionPayloadMap[a.sourceName];
     if (payloadExpr) {
-      propsObj.push(`        ${a.sourceName}: (e: Event) => doDispatch(node.${quoteName(a.alias)}, actions, ${payloadExpr}),`);
+      propsObj.push(`        ${a.sourceName}: (e: unknown) => doDispatch(node.${quoteName(a.alias)}, actions, ${payloadExpr}),`);
     } else {
       propsObj.push(`        ${a.sourceName}: () => doDispatch(node.${quoteName(a.alias)}, actions),`);
     }
