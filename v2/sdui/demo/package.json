@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "rebuild:lib": "npm run build --prefix ../../lib",
+    "rebuild:renderer": "npm run build --prefix ../renderers/react",
+    "rebuild:all": "npm run rebuild:lib && npm run rebuild:renderer",
+    "fresh": "npm run rebuild:all && rm -rf node_modules/.vite && npm run dev"
   },
   "dependencies": {
     "@agnosticui/render-react": "file:../renderers/react",

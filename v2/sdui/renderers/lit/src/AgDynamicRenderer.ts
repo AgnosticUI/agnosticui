@@ -4,6 +4,7 @@
 
 import { LitElement, html, nothing, type TemplateResult } from 'lit';
 import { property } from 'lit/decorators.js';
+import { repeat } from 'lit/directives/repeat.js';
 import type { AgNode } from '@agnosticui/schema';
 
 // Register AgnosticUI core custom elements
@@ -760,7 +761,7 @@ export class AgDynamicRenderer extends LitElement {
     const nodeMap = new Map(this.nodes.map(n => [n.id, n]));
     const childIds = new Set(this.nodes.flatMap(n => n.children ?? []));
     const rootNodes = this.nodes.filter(n => !childIds.has(n.id));
-    return html`${rootNodes.map(node => renderNode(node, nodeMap, this.actions))}`;
+    return html`${repeat(rootNodes, n => n.id, node => renderNode(node, nodeMap, this.actions))}`;
   }
 }
 

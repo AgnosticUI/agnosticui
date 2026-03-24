@@ -462,6 +462,7 @@ function generateVueCase(c: ComponentData): string {
   lines.push(`    case '${sdui}':`);
 
   const propsObj: string[] = [];
+  propsObj.push(`        key: node.id,`);
   for (const p of directProps) {
     propsObj.push(`        ${p.name}: node.${quoteName(p.name)},`);
   }
@@ -662,6 +663,7 @@ export function generateLitRenderer(
     FILE_HEADER,
     `import { LitElement, html, nothing, type TemplateResult } from 'lit';`,
     `import { property } from 'lit/decorators.js';`,
+    `import { repeat } from 'lit/directives/repeat.js';`,
     `import type { AgNode } from '@agnosticui/schema';`,
     '',
     `// Register AgnosticUI core custom elements`,
@@ -734,7 +736,7 @@ export function generateLitRenderer(
     `    const nodeMap = new Map(this.nodes.map(n => [n.id, n]));`,
     `    const childIds = new Set(this.nodes.flatMap(n => n.children ?? []));`,
     `    const rootNodes = this.nodes.filter(n => !childIds.has(n.id));`,
-    `    return html\`\${rootNodes.map(node => renderNode(node, nodeMap, this.actions))}\`;`,
+    `    return html\`\${repeat(rootNodes, n => n.id, node => renderNode(node, nodeMap, this.actions))}\`;`,
     `  }`,
     `}`,
     '',

@@ -17,9 +17,10 @@ export class WorkflowPicker extends LitElement {
 
   private actions = {
     'workflow-select': (payload: unknown) => {
-      this.selected = payload as string;
+      const value = (payload as { id: string; value: string }).value;
+      this.selected = value;
       this.dispatchEvent(new CustomEvent('workflow-select', {
-        detail: payload,
+        detail: value,
         bubbles: true,
         composed: true,
       }));

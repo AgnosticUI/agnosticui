@@ -3,7 +3,10 @@ import { state } from 'lit/decorators.js';
 import 'agnosticui-core/header';
 import './components/WorkflowPicker';
 import './components/StreamingOutput';
+import './components/AdaptiveOutput';
 import './SkinSwitcher';
+
+const ADAPTIVE_WORKFLOW = 'adaptive-questionnaire';
 
 export class AgSduiDemo extends LitElement {
   static styles = css`
@@ -12,7 +15,7 @@ export class AgSduiDemo extends LitElement {
     }
 
     .demo-layout {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       margin-block-start: var(--ag-space-8, 2rem);
       padding: 0 1.5rem 2rem;
@@ -55,10 +58,31 @@ export class AgSduiDemo extends LitElement {
       color: var(--ag-text-muted, #666);
     }
 
+    .demo-picker-section label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ag-text-muted, #666);
+      margin-bottom: 0.75rem;
+    }
+
+    .demo-output-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--ag-space-4, 1rem);
+      min-height: 120px;
+    }
+
   `;
 
   @state() private workflow = 'contact-form';
   @state() private seed = 0;
+
+  private get isAdaptive() {
+    return this.workflow === ADAPTIVE_WORKFLOW;
+  }
 
   private handleSelect(e: Event) {
     this.workflow = (e as CustomEvent<string>).detail;
@@ -90,14 +114,16 @@ export class AgSduiDemo extends LitElement {
           <div class="demo-output-header">
             <span class="demo-output-label">Generated output</span>
             <ag-button shape="rounded" @click=${this.handleRegenerate}>
-              Regenerate
+              ${this.isAdaptive ? 'Restart' : 'Regenerate'}
             </ag-button>
           </div>
           <div class="demo-output-body">
-            <ag-streaming-output
-              .workflow=${this.workflow}
-              .seed=${this.seed}
-            ></ag-streaming-output>
+            ${this.isAdaptive
+              ? html`<ag-adaptive-output></ag-adaptive-output>`
+              : html`<ag-streaming-output
+                  .workflow=${this.workflow}
+                  .seed=${this.seed}
+                ></ag-streaming-output>`}
           </div>
         </section>
       </div>

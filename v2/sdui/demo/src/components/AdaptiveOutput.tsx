@@ -11,7 +11,7 @@ const PANEL_AUTO_CLOSE_MS = 8000;
 
 type ValidationError = { failingId: string; errorText: AgNode; errorAlert: AgNode };
 
-// Checks required fields and max-date constraints against accumulated answers.
+// Checks required fields and date range constraints against accumulated answers.
 // Returns error node pairs to inject after each failing node.
 function buildValidationErrors(nodes: AgNode[], answers: Record<string, unknown>): ValidationError[] {
   const errors: ValidationError[] = [];
@@ -27,6 +27,10 @@ function buildValidationErrors(nodes: AgNode[], answers: Record<string, unknown>
       const max = raw['max'] as string | undefined;
       if (max && typeof val === 'string' && val > max) {
         message = `${label} cannot be a future date`;
+      }
+      const min = raw['min'] as string | undefined;
+      if (!message && min && typeof val === 'string' && val < min) {
+        message = `${label} cannot be a past date`;
       }
     }
 

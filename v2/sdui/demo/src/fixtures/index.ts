@@ -67,53 +67,6 @@ export const fixtureBank: Record<string, AgNode[][]> = {
     ],
   ],
 
-  'login-form': [
-    // variation 1 — minimal
-    [
-      { id: 'lf1-email',        component: 'AgInput',  label: 'Email',        type: 'email',    placeholder: 'you@example.com',  required: true, rounded: true },
-      { id: 'lf1-password',     component: 'AgInput',  label: 'Password',     type: 'password', required: true, rounded: true },
-      { id: 'lf1-remember',     component: 'AgToggle', label: 'Remember me' },
-      { id: 'lf1-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', on_click: 'SUBMIT_LOGIN', children: ['lf1-submit-label'] },
-      { id: 'lf1-submit-label', component: 'AgText',   text: 'Sign in' },
-    ],
-    // variation 2 — with forgot password link
-    [
-      { id: 'lf2-heading',      component: 'AgText',   text: 'Welcome back',  el: 'h2' },
-      { id: 'lf2-email',        component: 'AgInput',  label: 'Email',        type: 'email',    placeholder: 'you@example.com',  required: true, rounded: true },
-      { id: 'lf2-password',     component: 'AgInput',  label: 'Password',     type: 'password', required: true, rounded: true },
-      { id: 'lf2-forgot',       component: 'AgLink',   href: '#',             children: ['lf2-forgot-text'] },
-      { id: 'lf2-forgot-text',  component: 'AgText',   text: 'Forgot password?' },
-      { id: 'lf2-submit',       component: 'AgButton', variant: 'primary',    type: 'submit',   shape: 'rounded', fullWidth: true, on_click: 'SUBMIT_LOGIN', children: ['lf2-submit-label'] },
-      { id: 'lf2-submit-label', component: 'AgText',   text: 'Sign in' },
-    ],
-    // variation 3 — with divider and alternate copy
-    [
-      { id: 'lf3-email',        component: 'AgInput',  label: 'Email address', type: 'email',   placeholder: 'you@example.com',  required: true, rounded: true },
-      { id: 'lf3-password',     component: 'AgInput',  label: 'Password',      type: 'password', required: true, rounded: true },
-      { id: 'lf3-divider',      component: 'AgDivider' },
-      { id: 'lf3-submit',       component: 'AgButton', variant: 'primary',     type: 'submit',  shape: 'rounded', on_click: 'SUBMIT_LOGIN', children: ['lf3-submit-label'] },
-      { id: 'lf3-submit-label', component: 'AgText',   text: 'Log in to your account' },
-    ],
-    // variation 4 — with terms checkbox
-    [
-      { id: 'lf4-email',        component: 'AgInput',    label: 'Email',    type: 'email',    placeholder: 'you@example.com',           required: true, rounded: true },
-      { id: 'lf4-password',     component: 'AgInput',    label: 'Password', type: 'password', required: true, rounded: true },
-      { id: 'lf4-terms',        component: 'AgCheckbox', name: 'terms',     value: 'agreed',  labelText: 'I agree to the terms of service', required: true },
-      { id: 'lf4-submit',       component: 'AgButton',   variant: 'primary', type: 'submit',  shape: 'rounded', on_click: 'SUBMIT_LOGIN', children: ['lf4-submit-label'] },
-      { id: 'lf4-submit-label', component: 'AgText',     text: 'Create account' },
-    ],
-    // variation 5 — with badge + full-width button
-    [
-      { id: 'lf5-badge',        component: 'AgBadge',  variant: 'success',  children: ['lf5-badge-text'] },
-      { id: 'lf5-badge-text',   component: 'AgText',   text: 'Secure login' },
-      { id: 'lf5-email',        component: 'AgInput',  label: 'Email',      type: 'email',    placeholder: 'you@example.com', required: true, rounded: true },
-      { id: 'lf5-password',     component: 'AgInput',  label: 'Password',   type: 'password', required: true, rounded: true },
-      { id: 'lf5-remember',     component: 'AgToggle', label: 'Stay signed in' },
-      { id: 'lf5-submit',       component: 'AgButton', variant: 'primary',  type: 'submit',   shape: 'rounded', fullWidth: true, on_click: 'SUBMIT_LOGIN', children: ['lf5-submit-label'] },
-      { id: 'lf5-submit-label', component: 'AgText',   text: 'Sign in' },
-    ],
-  ],
-
   'account-setup': [wzStep1],
 
   'pricing-card': [
@@ -185,14 +138,6 @@ export const confirmFixtures: Record<string, AgNode[]> = {
     { id: 'cf-ok-card',    component: 'AgCard',   shadow: true, rounded: 'md', children: ['cf-ok-heading', 'cf-ok-body'] },
     { id: 'cf-ok-heading', component: 'AgText',   text: 'Message received', el: 'h2' },
     { id: 'cf-ok-body',    component: 'AgText',   text: 'Our team will review your message and get back to you shortly. Check your inbox for a confirmation email.', el: 'p' },
-  ],
-
-  'login-form-confirm': [
-    { id: 'lf-ok-card',    component: 'AgCard',   shadow: true, rounded: 'md', children: ['lf-ok-badge', 'lf-ok-heading', 'lf-ok-body'] },
-    { id: 'lf-ok-badge',   component: 'AgBadge',  variant: 'success', children: ['lf-ok-badge-text'] },
-    { id: 'lf-ok-badge-text', component: 'AgText', text: 'Authenticated' },
-    { id: 'lf-ok-heading', component: 'AgText',   text: 'Welcome back!', el: 'h2' },
-    { id: 'lf-ok-body',    component: 'AgText',   text: "You're now signed in. Redirecting you to your dashboard...", el: 'p' },
   ],
 
   'pricing-trial-confirm': [
@@ -296,9 +241,6 @@ export const workflowActions: Record<string, Record<string, string>> = {
   },
   'contact-form': {
     SUBMIT_FORM: 'contact-form-confirm',
-  },
-  'login-form': {
-    SUBMIT_LOGIN: 'login-form-confirm',
   },
   'pricing-card': {
     START_TRIAL: 'pricing-trial-confirm',

@@ -592,6 +592,11 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
     if (this.onChange) {
       this.onChange(e);
     }
+
+    // Native `change` is composed:false so it stops at the shadow root.
+    // Re-dispatch a composed change from the host so Vue @change listeners
+    // and other external DOM listeners receive it.
+    this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
   }
 
   /**

@@ -33,7 +33,7 @@ const step2RoutineNodes: AgNode[] = [
   { id: 'aq2r-badge',        component: 'AgBadge',  variant: 'info', children: ['aq2r-badge-text'] },
   { id: 'aq2r-badge-text',   component: 'AgText',   text: 'Step 2 of 3 · Annual checkup' },
   { id: 'aq2r-divider',      component: 'AgDivider' },
-  { id: 'aq-preferred-date', component: 'AgInput',  label: 'Preferred appointment date', type: 'date', rounded: true, on_change: 'ANSWER_CHANGE' },
+  { id: 'aq-preferred-date', component: 'AgInput',  label: 'Preferred appointment date', type: 'date', rounded: true, min: (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; })(), on_change: 'ANSWER_CHANGE' },
   { id: 'aq2r-back',         component: 'AgButton', bordered: true, shape: 'rounded', fullWidth: true, on_click: 'PREV_STEP', children: ['aq2r-back-label'] },
   { id: 'aq2r-back-label',   component: 'AgText',   text: 'Back' },
   { id: 'aq2r-next',         component: 'AgButton', variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'NEXT_STEP', children: ['aq2r-next-label'] },
