@@ -3,14 +3,19 @@ import { ReactButton } from 'agnosticui-core/button/react';
 import { ReactHeader } from 'agnosticui-core/header/react';
 import { WorkflowPicker } from './components/WorkflowPicker';
 import { StreamingOutput } from './components/StreamingOutput';
+import { AdaptiveOutput } from './components/AdaptiveOutput';
 import { SkinSwitcher } from './SkinSwitcher';
 import './App.css';
+
+const ADAPTIVE_WORKFLOW = 'adaptive-questionnaire';
 
 export default function App() {
   const [{ workflow, seed }, setState] = useState({ workflow: 'contact-form', seed: 0 });
 
   const handleSelect = (next: string) => setState({ workflow: next, seed: 0 });
   const handleRegenerate = () => setState(s => ({ ...s, seed: s.seed + 1 }));
+
+  const isAdaptive = workflow === ADAPTIVE_WORKFLOW;
 
   return (
     <>
@@ -32,11 +37,13 @@ export default function App() {
         <div className="demo-output-header">
           <span className="demo-output-label">Generated output</span>
           <ReactButton shape="rounded" onClick={handleRegenerate}>
-            Regenerate
+            {isAdaptive ? 'Restart' : 'Regenerate'}
           </ReactButton>
         </div>
         <div className="demo-output-body">
-          <StreamingOutput workflow={workflow} seed={seed} />
+          {isAdaptive
+            ? <AdaptiveOutput key={seed} />
+            : <StreamingOutput workflow={workflow} seed={seed} />}
         </div>
       </section>
     </div>

@@ -22,8 +22,9 @@ export function WorkflowPicker({ onSelect }: WorkflowPickerProps) {
       nodes={nodes}
       actions={{
         'workflow-select': (payload) => {
-          setSelected(payload as string);
-          onSelect(payload as string);
+          const value = (payload as { id: string; value: string }).value;
+          setSelected(value);
+          onSelect(value);
         },
       }}
     />

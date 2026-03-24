@@ -383,6 +383,8 @@ function renderNode(
         .underlined=${node.underlined ?? false}
         .underlinedWithBackground=${node.underlinedWithBackground ?? false}
         .inline=${node.inline ?? false}
+        .min=${node.min ?? nothing}
+        .max=${node.max ?? nothing}
         .required=${node.required ?? false}
         .disabled=${node.disabled ?? false}
         .readonly=${node.readonly ?? false}

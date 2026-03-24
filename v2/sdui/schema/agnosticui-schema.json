@@ -1556,6 +1556,12 @@
         "inline": {
           "type": "boolean"
         },
+        "min": {
+          "type": "string"
+        },
+        "max": {
+          "type": "string"
+        },
         "required": {
           "type": "boolean"
         },

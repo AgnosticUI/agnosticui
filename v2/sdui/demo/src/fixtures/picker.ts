@@ -8,7 +8,7 @@ export const pickerFixture: AgNode[] = [
     name: 'workflow',
     legend: 'Choose a workflow to generate',
     on_change: 'workflow-select',
-    children: ['card-wizard', 'card-contact', 'card-login', 'card-pricing'],
+    children: ['card-wizard', 'card-contact', 'card-login', 'card-pricing', 'card-questionnaire'],
   },
   {
     id: 'card-wizard',
@@ -84,6 +84,25 @@ export const pickerFixture: AgNode[] = [
     id: 'card-pricing-desc',
     component: 'AgText',
     text: 'Plan tiers, feature list, CTA',
+    el: 'p',
+  },
+  {
+    id: 'card-questionnaire',
+    component: 'AgSelectionCard',
+    value: 'adaptive-questionnaire',
+    label: 'Adaptive questionnaire',
+    children: ['card-questionnaire-title', 'card-questionnaire-desc'],
+  },
+  {
+    id: 'card-questionnaire-title',
+    component: 'AgText',
+    text: 'Adaptive questionnaire',
+    el: 'p',
+  },
+  {
+    id: 'card-questionnaire-desc',
+    component: 'AgText',
+    text: '3 steps · branches + skip logic · fixture-as-server',
     el: 'p',
   },
 ];
