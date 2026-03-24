@@ -9,37 +9,50 @@ import './StreamingOutput.css';
 
 const PANEL_AUTO_CLOSE_MS = 8000;
 
-// Returns an array of AgNodes (error text + alert pairs) to inject after
-// failing nodes. Checks required fields and max-date constraints.
-function buildValidationErrors(
-  nodes: AgNode[],
-  answers: Record<string, unknown>
-): { failingId: string; errorText: AgNode; errorAlert: AgNode }[] {
-  const errors: { failingId: string; errorText: AgNode; errorAlert: AgNode }[] = [];
+type ValidationError = { failingId: string; errorText: AgNode; errorAlert: AgNode };
+
+// Checks required fields and max-date constraints against accumulated answers.
+// Returns error node pairs to inject after each failing node.
+function buildValidationErrors(nodes: AgNode[], answers: Record<string, unknown>): ValidationError[] {
+  const errors: ValidationError[] = [];
   for (const n of nodes) {
     const raw = n as unknown as Record<string, unknown>;
     const val = answers[n.id];
     const label = String(raw['label'] || raw['legend'] || 'This field');
+    let message: string | null = null;
 
     if (raw['required'] && (val === undefined || val === '')) {
-      errors.push({
-        failingId: n.id,
-        errorText: { id: `${n.id}-error-text`, component: 'AgText', text: `${label} is required` } as AgNode,
-        errorAlert: { id: `${n.id}-error-alert`, component: 'AgAlert', variant: 'danger', bordered: true, rounded: true, children: [`${n.id}-error-text`] } as AgNode,
-      });
-      continue;
+      message = `${label} is required`;
+    } else {
+      const max = raw['max'] as string | undefined;
+      if (max && typeof val === 'string' && val > max) {
+        message = `${label} cannot be a future date`;
+      }
     }
 
-    const max = raw['max'] as string | undefined;
-    if (max && typeof val === 'string' && val > max) {
+    if (message) {
       errors.push({
         failingId: n.id,
-        errorText: { id: `${n.id}-error-text`, component: 'AgText', text: `${label} cannot be a future date` } as AgNode,
+        errorText: { id: `${n.id}-error-text`, component: 'AgText', text: message } as AgNode,
         errorAlert: { id: `${n.id}-error-alert`, component: 'AgAlert', variant: 'danger', bordered: true, rounded: true, children: [`${n.id}-error-text`] } as AgNode,
       });
     }
   }
   return errors;
+}
+
+// Injects error node pairs immediately after each failing node in the list.
+function injectValidationErrors(nodes: AgNode[], errors: ValidationError[]): AgNode[] {
+  const errorMap = new Map(errors.map(e => [e.failingId, e]));
+  return nodes.reduce<AgNode[]>((acc, n) => {
+    acc.push(n);
+    const err = errorMap.get(n.id);
+    if (err) {
+      acc.push(err.errorText);
+      acc.push(err.errorAlert);
+    }
+    return acc;
+  }, []);
 }
 
 // AdaptiveOutput implements the questionnaire integration pattern from
@@ -136,24 +149,8 @@ export function AdaptiveOutput() {
     // Ask the "server" (getNextNodes) what screen comes next given accumulated
     // answers, then display it. No streaming on transitions — they feel instant.
     NEXT_STEP: () => {
-      // Validate required fields and max constraints before advancing.
-      // For each failing field, inject an AgAlert node immediately after it.
-      const validationErrors = buildValidationErrors(nodes, answersRef.current);
-      if (validationErrors.length > 0) {
-        const failingIds = new Set(validationErrors.map(e => e.failingId));
-        const errorMap = new Map(validationErrors.map(e => [e.failingId, e]));
-        const withErrors = nodes.reduce<AgNode[]>((acc, n) => {
-          acc.push(n);
-          if (failingIds.has(n.id)) {
-            const err = errorMap.get(n.id)!;
-            acc.push(err.errorText);
-            acc.push(err.errorAlert);
-          }
-          return acc;
-        }, []);
-        setNodes(withErrors);
-        return;
-      }
+      const errors = buildValidationErrors(nodes, answersRef.current);
+      if (errors.length > 0) { setNodes(injectValidationErrors(nodes, errors)); return; }
       const next = getNextNodes(answersRef.current);
       historyRef.current = [...historyRef.current, nodes];
       openPanel();
@@ -169,22 +166,8 @@ export function AdaptiveOutput() {
 
     // Final submit — validate required fields then advance to confirmation.
     SUBMIT: () => {
-      const validationErrors = buildValidationErrors(nodes, answersRef.current);
-      if (validationErrors.length > 0) {
-        const failingIds = new Set(validationErrors.map(e => e.failingId));
-        const errorMap = new Map(validationErrors.map(e => [e.failingId, e]));
-        const withErrors = nodes.reduce<AgNode[]>((acc, n) => {
-          acc.push(n);
-          if (failingIds.has(n.id)) {
-            const err = errorMap.get(n.id)!;
-            acc.push(err.errorText);
-            acc.push(err.errorAlert);
-          }
-          return acc;
-        }, []);
-        setNodes(withErrors);
-        return;
-      }
+      const errors = buildValidationErrors(nodes, answersRef.current);
+      if (errors.length > 0) { setNodes(injectValidationErrors(nodes, errors)); return; }
       const next = getNextNodes(answersRef.current);
       openPanel();
       setNodes(next);
