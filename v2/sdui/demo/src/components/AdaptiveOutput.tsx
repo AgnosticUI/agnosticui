@@ -74,8 +74,20 @@ export function AdaptiveOutput() {
       const { id, value } = payload as { id: string; value: unknown };
       answersRef.current = { ...answersRef.current, [id]: value };
       setAnswers({ ...answersRef.current });
-      // Remove any validation alert node that was injected for this field.
-      setNodes(prev => prev.filter(n => n.id !== `${id}-error-text` && n.id !== `${id}-error-alert`));
+      // Remove any validation alert that was injected for this field, and
+      // update selection group nodes to controlled mode so their checked
+      // state is driven by the node value (not internal uncontrolled state).
+      setNodes(prev =>
+        prev
+          .filter(n => n.id !== `${id}-error-text` && n.id !== `${id}-error-alert`)
+          .map(n => {
+            if (n.id !== id) return n;
+            if (n.component === 'AgSelectionButtonGroup' || n.component === 'AgSelectionCardGroup') {
+              return { ...n, value: value as string } as AgNode;
+            }
+            return n;
+          })
+      );
     },
 
     // Ask the "server" (getNextNodes) what screen comes next given accumulated
