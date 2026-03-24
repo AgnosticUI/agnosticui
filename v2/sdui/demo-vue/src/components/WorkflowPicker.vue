@@ -16,8 +16,9 @@ const nodes = computed<AgNode[]>(() =>
 
 const actions = {
   'workflow-select': (payload: unknown) => {
-    selected.value = payload as string;
-    emit('select', payload as string);
+    const value = (payload as { id: string; value: string }).value;
+    selected.value = value;
+    emit('select', value);
   },
 };
 </script>

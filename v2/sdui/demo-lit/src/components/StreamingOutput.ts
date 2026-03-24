@@ -37,6 +37,11 @@ export class StreamingOutput extends LitElement {
       margin-block-end: var(--ag-space-4, 1rem);
     }
 
+    ag-selection-button-group {
+      display: block;
+      margin-block-end: var(--ag-space-4, 1rem);
+    }
+
     ag-collapsible.node-panel {
       display: block;
       border: 1px solid var(--ag-border, #e5e7eb);

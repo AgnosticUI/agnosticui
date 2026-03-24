@@ -88,6 +88,7 @@ function renderNode(
       return h(
         VueAccordion,
         {
+        key: node.id,
         },
         { default: () => renderChildren(node.children) },
       );
@@ -96,6 +97,7 @@ function renderNode(
       return h(
         VueAlert,
         {
+        key: node.id,
         variant: node.variant,
         bordered: node.bordered,
         rounded: node.rounded,
@@ -110,6 +112,7 @@ function renderNode(
       return h(
         VueAspectRatio,
         {
+        key: node.id,
         width: node.width,
         height: node.height,
         maxWidth: node.maxWidth,
@@ -120,6 +123,7 @@ function renderNode(
       return h(
         VueAvatar,
         {
+        key: node.id,
         text: node.text,
         imgSrc: node.imgSrc,
         imgAlt: node.imgAlt,
@@ -134,6 +138,7 @@ function renderNode(
       return h(
         VueAvatarFx,
         {
+        key: node.id,
         text: node.text,
         imgSrc: node.imgSrc,
         imgAlt: node.imgAlt,
@@ -152,6 +157,7 @@ function renderNode(
       return h(
         VueBadge,
         {
+        key: node.id,
         variant: node.variant,
         size: node.size,
         dot: node.dot,
@@ -169,6 +175,7 @@ function renderNode(
       return h(
         VueBadgeFx,
         {
+        key: node.id,
         variant: node.variant,
         size: node.size,
         dot: node.dot,
@@ -190,6 +197,7 @@ function renderNode(
       return h(
         VueBreadcrumb,
         {
+        key: node.id,
         type: node.type,
         primary: node.primary,
         ariaLabel: node.ariaLabel,
@@ -201,6 +209,7 @@ function renderNode(
       return h(
         VueButton,
         {
+        key: node.id,
         variant: node.variant,
         size: node.size,
         shape: node.shape,
@@ -228,6 +237,7 @@ function renderNode(
       return h(
         VueButtonFx,
         {
+        key: node.id,
         variant: node.variant,
         size: node.size,
         shape: node.shape,
@@ -259,6 +269,7 @@ function renderNode(
       return h(
         VueCard,
         {
+        key: node.id,
         stacked: node.stacked,
         shadow: node.shadow,
         animated: node.animated,
@@ -274,6 +285,7 @@ function renderNode(
       return h(
         VueCheckbox,
         {
+        key: node.id,
         name: node.name,
         value: node.value,
         checked: node.checked,
@@ -294,6 +306,7 @@ function renderNode(
       return h(
         VueCopyButton,
         {
+        key: node.id,
         text: node.text,
         label: node.label,
         successLabel: node.successLabel,
@@ -308,6 +321,7 @@ function renderNode(
       return h(
         VueDialog,
         {
+        key: node.id,
         open: node.open,
         heading: node.heading,
         description: node.description,
@@ -326,6 +340,7 @@ function renderNode(
       return h(
         VueDivider,
         {
+        key: node.id,
         vertical: node.vertical,
         justify: node.justify,
         size: node.size,
@@ -337,6 +352,7 @@ function renderNode(
       return h(
         VueDrawer,
         {
+        key: node.id,
         open: node.open,
         heading: node.heading,
         description: node.description,
@@ -355,6 +371,7 @@ function renderNode(
       return h(
         VueEmptyState,
         {
+        key: node.id,
         title: node.title,
         subtitle: node.subtitle,
         buttonText: node.buttonText,
@@ -368,6 +385,7 @@ function renderNode(
       return h(
         VueFieldset,
         {
+        key: node.id,
         legend: node.legend,
         bordered: node.bordered,
         layout: node.layout,
@@ -380,6 +398,7 @@ function renderNode(
       return h(
         VueHeader,
         {
+        key: node.id,
         sticky: node.sticky,
         contentJustify: node.contentJustify,
         },
@@ -390,6 +409,7 @@ function renderNode(
       return h(
         VueIcon,
         {
+        key: node.id,
         size: node.size,
         type: node.type,
         noFill: node.noFill,
@@ -400,6 +420,7 @@ function renderNode(
       return h(
         VueIconButton,
         {
+        key: node.id,
         label: node.label,
         icon: node.icon,
         unicode: node.unicode,
@@ -417,6 +438,7 @@ function renderNode(
       return h(
         VueIconButtonFx,
         {
+        key: node.id,
         label: node.label,
         icon: node.icon,
         unicode: node.unicode,
@@ -438,6 +460,7 @@ function renderNode(
       return h(
         VueImage,
         {
+        key: node.id,
         src: node.src,
         alt: node.alt,
         width: node.width,
@@ -456,6 +479,7 @@ function renderNode(
       return h(
         VueInput,
         {
+        key: node.id,
         label: node.label,
         labelHidden: node.labelHidden,
         labelPosition: node.labelPosition,
@@ -490,6 +514,7 @@ function renderNode(
       return h(
         VueIntlFormatter,
         {
+        key: node.id,
         type: node.type,
         value: node.value,
         lang: node.lang,
@@ -522,6 +547,7 @@ function renderNode(
       return h(
         VueKbd,
         {
+        key: node.id,
         variant: node.variant,
         bordered: node.bordered,
         background: node.background,
@@ -534,6 +560,7 @@ function renderNode(
       return h(
         VueLink,
         {
+        key: node.id,
         href: node.href,
         variant: node.variant,
         isButton: node.isButton,
@@ -552,6 +579,7 @@ function renderNode(
       return h(
         VueLoader,
         {
+        key: node.id,
         size: node.size,
         ariaLabel: node.ariaLabel,
         },
@@ -561,6 +589,7 @@ function renderNode(
       return h(
         VueMark,
         {
+        key: node.id,
         variant: node.variant,
         search: node.search,
         caseSensitive: node.caseSensitive,
@@ -573,6 +602,7 @@ function renderNode(
       return h(
         VueMessageBubble,
         {
+        key: node.id,
         from: node.from,
         message: node.message,
         time: node.time,
@@ -588,6 +618,7 @@ function renderNode(
       return h(
         VuePopover,
         {
+        key: node.id,
         placement: node.placement,
         distance: node.distance,
         skidding: node.skidding,
@@ -609,6 +640,7 @@ function renderNode(
       return h(
         VueProgress,
         {
+        key: node.id,
         value: node.value,
         max: node.max,
         label: node.label,
@@ -621,6 +653,7 @@ function renderNode(
       return h(
         VueProgressRing,
         {
+        key: node.id,
         value: node.value,
         size: node.size,
         variant: node.variant,
@@ -632,6 +665,7 @@ function renderNode(
       return h(
         VueRadio,
         {
+        key: node.id,
         name: node.name,
         value: node.value,
         checked: node.checked,
@@ -656,6 +690,7 @@ function renderNode(
       return h(
         VueRating,
         {
+        key: node.id,
         value: node.value,
         max: node.max,
         precision: node.precision,
@@ -679,6 +714,7 @@ function renderNode(
       return h(
         VueSelect,
         {
+        key: node.id,
         size: node.size,
         multiple: node.multiple,
         disabled: node.disabled,
@@ -701,6 +737,7 @@ function renderNode(
       return h(
         VueSelectionButton,
         {
+        key: node.id,
         value: node.value,
         label: node.label,
         checked: node.checked,
@@ -713,6 +750,7 @@ function renderNode(
       return h(
         VueSelectionButtonGroup,
         {
+        key: node.id,
         type: node.type,
         name: node.name,
         legend: node.legend,
@@ -733,6 +771,7 @@ function renderNode(
       return h(
         VueSelectionCard,
         {
+        key: node.id,
         value: node.value,
         label: node.label,
         checked: node.checked,
@@ -745,6 +784,7 @@ function renderNode(
       return h(
         VueSelectionCardGroup,
         {
+        key: node.id,
         type: node.type,
         name: node.name,
         legend: node.legend,
@@ -763,6 +803,7 @@ function renderNode(
       return h(
         VueSkeletonLoader,
         {
+        key: node.id,
         variant: node.variant,
         effect: node.effect,
         intensity: node.intensity,
@@ -775,6 +816,7 @@ function renderNode(
       return h(
         VueSpinner,
         {
+        key: node.id,
         size: node.size,
         ariaLabel: node.ariaLabel,
         },
@@ -784,6 +826,7 @@ function renderNode(
       return h(
         VueTabs,
         {
+        key: node.id,
         activation: node.activation,
         activeTab: node.activeTab,
         orientation: node.orientation,
@@ -796,6 +839,7 @@ function renderNode(
       return h(
         VueTag,
         {
+        key: node.id,
         variant: node.variant,
         shape: node.shape,
         uppercase: node.uppercase,
@@ -809,6 +853,7 @@ function renderNode(
       return h(
         VueTagFx,
         {
+        key: node.id,
         variant: node.variant,
         shape: node.shape,
         uppercase: node.uppercase,
@@ -825,6 +870,7 @@ function renderNode(
       return h(
         VueTimeline,
         {
+        key: node.id,
         orientation: node.orientation,
         variant: node.variant,
         compact: node.compact,
@@ -836,6 +882,7 @@ function renderNode(
       return h(
         VueToggle,
         {
+        key: node.id,
         label: node.label,
         labelPosition: node.labelPosition,
         labelHidden: node.labelHidden,
@@ -860,6 +907,7 @@ function renderNode(
       return h(
         VueTooltip,
         {
+        key: node.id,
         content: node.content,
         placement: node.placement,
         distance: node.distance,
@@ -875,6 +923,7 @@ function renderNode(
       return h(
         VueTooltipFx,
         {
+        key: node.id,
         content: node.content,
         placement: node.placement,
         distance: node.distance,

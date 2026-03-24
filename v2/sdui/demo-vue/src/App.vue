@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { VueHeader } from 'agnosticui-core/header/vue';
 import WorkflowPicker from './components/WorkflowPicker.vue';
 import StreamingOutput from './components/StreamingOutput.vue';
+import AdaptiveOutput from './components/AdaptiveOutput.vue';
 import SkinSwitcher from './SkinSwitcher.vue';
+
+const ADAPTIVE_WORKFLOW = 'adaptive-questionnaire';
 
 const workflow = ref('contact-form');
 const seed = ref(0);
+
+const isAdaptive = computed(() => workflow.value === ADAPTIVE_WORKFLOW);
 
 const handleSelect = (next: string) => {
   workflow.value = next;
@@ -39,10 +44,11 @@ const handleRegenerate = () => {
     <section class="demo-output">
       <div class="demo-output-header">
         <span class="demo-output-label">Generated output</span>
-        <ag-button shape="rounded" @click="handleRegenerate">Regenerate</ag-button>
+        <ag-button shape="rounded" @click="handleRegenerate">{{ isAdaptive ? 'Restart' : 'Regenerate' }}</ag-button>
       </div>
       <div class="demo-output-body">
-        <StreamingOutput :workflow="workflow" :seed="seed" />
+        <AdaptiveOutput v-if="isAdaptive" :key="seed" />
+        <StreamingOutput v-else :workflow="workflow" :seed="seed" />
       </div>
     </section>
     </div>
@@ -52,7 +58,7 @@ const handleRegenerate = () => {
 
 <style>
 .demo-layout {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   margin-block-start: var(--ag-space-8, 2rem);
   padding: 0 1.5rem 2rem;
@@ -127,6 +133,11 @@ const handleRegenerate = () => {
 }
 
 .demo-output-body ag-alert {
+  display: block;
+  margin-block-end: var(--ag-space-4, 1rem);
+}
+
+.demo-output-body ag-selection-button-group {
   display: block;
   margin-block-end: var(--ag-space-4, 1rem);
 }
