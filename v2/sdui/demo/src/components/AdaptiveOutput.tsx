@@ -9,6 +9,39 @@ import './StreamingOutput.css';
 
 const PANEL_AUTO_CLOSE_MS = 8000;
 
+// Returns an array of AgNodes (error text + alert pairs) to inject after
+// failing nodes. Checks required fields and max-date constraints.
+function buildValidationErrors(
+  nodes: AgNode[],
+  answers: Record<string, unknown>
+): { failingId: string; errorText: AgNode; errorAlert: AgNode }[] {
+  const errors: { failingId: string; errorText: AgNode; errorAlert: AgNode }[] = [];
+  for (const n of nodes) {
+    const raw = n as unknown as Record<string, unknown>;
+    const val = answers[n.id];
+    const label = String(raw['label'] || raw['legend'] || 'This field');
+
+    if (raw['required'] && (val === undefined || val === '')) {
+      errors.push({
+        failingId: n.id,
+        errorText: { id: `${n.id}-error-text`, component: 'AgText', text: `${label} is required` } as AgNode,
+        errorAlert: { id: `${n.id}-error-alert`, component: 'AgAlert', variant: 'danger', bordered: true, rounded: true, children: [`${n.id}-error-text`] } as AgNode,
+      });
+      continue;
+    }
+
+    const max = raw['max'] as string | undefined;
+    if (max && typeof val === 'string' && val > max) {
+      errors.push({
+        failingId: n.id,
+        errorText: { id: `${n.id}-error-text`, component: 'AgText', text: `${label} cannot be a future date` } as AgNode,
+        errorAlert: { id: `${n.id}-error-alert`, component: 'AgAlert', variant: 'danger', bordered: true, rounded: true, children: [`${n.id}-error-text`] } as AgNode,
+      });
+    }
+  }
+  return errors;
+}
+
 // AdaptiveOutput implements the questionnaire integration pattern from
 // SPECIFICATION.md section 5.4:
 //
@@ -103,20 +136,18 @@ export function AdaptiveOutput() {
     // Ask the "server" (getNextNodes) what screen comes next given accumulated
     // answers, then display it. No streaming on transitions — they feel instant.
     NEXT_STEP: () => {
-      // Validate required fields on the current screen before advancing.
+      // Validate required fields and max constraints before advancing.
       // For each failing field, inject an AgAlert node immediately after it.
-      const requiredNodes = nodes.filter(n => {
-        const raw = n as unknown as Record<string, unknown>;
-        return raw['required'] && (answersRef.current[n.id] === undefined || answersRef.current[n.id] === '');
-      });
-      if (requiredNodes.length > 0) {
+      const validationErrors = buildValidationErrors(nodes, answersRef.current);
+      if (validationErrors.length > 0) {
+        const failingIds = new Set(validationErrors.map(e => e.failingId));
+        const errorMap = new Map(validationErrors.map(e => [e.failingId, e]));
         const withErrors = nodes.reduce<AgNode[]>((acc, n) => {
           acc.push(n);
-          if (requiredNodes.some(r => r.id === n.id)) {
-            const raw = n as unknown as Record<string, unknown>;
-            const label = String(raw['label'] || raw['legend'] || 'This field');
-            acc.push({ id: `${n.id}-error-text`, component: 'AgText', text: `${label} is required` } as AgNode);
-            acc.push({ id: `${n.id}-error-alert`, component: 'AgAlert', variant: 'danger', bordered: true, rounded: true, children: [`${n.id}-error-text`] } as AgNode);
+          if (failingIds.has(n.id)) {
+            const err = errorMap.get(n.id)!;
+            acc.push(err.errorText);
+            acc.push(err.errorAlert);
           }
           return acc;
         }, []);
@@ -136,9 +167,24 @@ export function AdaptiveOutput() {
       setNodes(prev);
     },
 
-    // Final submit — getNextNodes returns confirmationNodes when all fields present.
+    // Final submit — validate required fields then advance to confirmation.
     SUBMIT: () => {
-      answersRef.current = { ...answersRef.current, 'aq-name': answersRef.current['aq-name'] ?? '' };
+      const validationErrors = buildValidationErrors(nodes, answersRef.current);
+      if (validationErrors.length > 0) {
+        const failingIds = new Set(validationErrors.map(e => e.failingId));
+        const errorMap = new Map(validationErrors.map(e => [e.failingId, e]));
+        const withErrors = nodes.reduce<AgNode[]>((acc, n) => {
+          acc.push(n);
+          if (failingIds.has(n.id)) {
+            const err = errorMap.get(n.id)!;
+            acc.push(err.errorText);
+            acc.push(err.errorAlert);
+          }
+          return acc;
+        }, []);
+        setNodes(withErrors);
+        return;
+      }
       const next = getNextNodes(answersRef.current);
       openPanel();
       setNodes(next);
