@@ -330,12 +330,13 @@ export class AgSelectionButtonGroup extends FaceMixin(LitElement) implements Sel
     const selectedValues = this._getSelectedValues();
 
     buttons.forEach((button) => {
+      const newChecked = selectedValues.includes(button.value);
       button._type = this.type;
       button._name = this.name;
       button._theme = this.theme;
       button._size = this.size;
       button._shape = this.shape;
-      button.checked = selectedValues.includes(button.value);
+      button.checked = newChecked;
       if (this.disabled) {
         button.disabled = true;
       }

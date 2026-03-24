@@ -77,17 +77,27 @@ export function AdaptiveOutput() {
       // Remove any validation alert that was injected for this field, and
       // update selection group nodes to controlled mode so their checked
       // state is driven by the node value (not internal uncontrolled state).
-      setNodes(prev =>
-        prev
+      // Also update child button/card checked props so @lit/react doesn't
+      // overwrite the group's internal _syncChildButtons result with undefined.
+      setNodes(prev => {
+        const groupNode = prev.find(n => n.id === id &&
+          (n.component === 'AgSelectionButtonGroup' || n.component === 'AgSelectionCardGroup'));
+        const groupChildren = groupNode
+          ? ((groupNode as unknown as Record<string, unknown>)['children'] as string[] ?? [])
+          : [];
+        return prev
           .filter(n => n.id !== `${id}-error-text` && n.id !== `${id}-error-alert`)
           .map(n => {
-            if (n.id !== id) return n;
-            if (n.component === 'AgSelectionButtonGroup' || n.component === 'AgSelectionCardGroup') {
+            if (n.id === id && (n.component === 'AgSelectionButtonGroup' || n.component === 'AgSelectionCardGroup')) {
               return { ...n, value: value as string } as AgNode;
             }
+            if (groupChildren.includes(n.id) && (n.component === 'AgSelectionButton' || n.component === 'AgSelectionCard')) {
+              const btnRaw = n as unknown as Record<string, unknown>;
+              return { ...n, checked: btnRaw['value'] === value } as AgNode;
+            }
             return n;
-          })
-      );
+          });
+      });
     },
 
     // Ask the "server" (getNextNodes) what screen comes next given accumulated
