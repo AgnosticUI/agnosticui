@@ -42,9 +42,17 @@ export default defineConfig({
   // causing runtime errors and FOUC. This is a known VitePress issue/workaround.
   vite: {
     resolve: {
-      alias: {
-        '@skins': path.resolve(__dirname, '../../../skins'),
-      },
+      alias: [
+        // Override VPContent to use <main> instead of <div> for the main landmark (a11y)
+        {
+          find: /^.*\/VPContent\.vue$/,
+          replacement: path.resolve(__dirname, './theme/components/VPContent.vue'),
+        },
+        {
+          find: '@skins',
+          replacement: path.resolve(__dirname, '../../../skins'),
+        },
+      ],
     },
     optimizeDeps: {
       exclude: ['agnosticui-core'],
