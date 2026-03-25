@@ -1,6 +1,6 @@
 {
   "name": "@agnosticui/render-vue",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Vue renderer for AgnosticUI SDUI nodes",
   "type": "module",
   "main": "dist/index.js",
