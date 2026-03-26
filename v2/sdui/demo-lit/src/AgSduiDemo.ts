@@ -127,7 +127,7 @@ export class AgSduiDemo extends LitElement {
             ${this.isAdaptive
               ? html`<ag-adaptive-output></ag-adaptive-output>`
               : this.isCollapsible
-                ? html`<ag-collapsible-demo></ag-collapsible-demo>`
+                ? html`<ag-collapsible-demo .seed=${this.seed}></ag-collapsible-demo>`
                 : html`<ag-streaming-output
                     .workflow=${this.workflow}
                     .seed=${this.seed}

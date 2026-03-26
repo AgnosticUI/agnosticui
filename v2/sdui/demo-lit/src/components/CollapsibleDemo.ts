@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import '@agnosticui/render-lit';
 import type { AgNode } from '@agnosticui/schema';
 import { collapsibleFixture } from '../../../demo/src/fixtures/collapsible-demo';
@@ -8,10 +8,17 @@ import { streamFixture } from '../../../demo/src/lib/stream';
 export class CollapsibleDemo extends LitElement {
   static styles = css`
     :host { display: block; }
+
+    ag-dynamic-renderer {
+      display: flex;
+      flex-direction: column;
+      gap: var(--ag-space-4, 1rem);
+    }
   `;
 
+  @property({ type: Number }) seed = 0;
   @state() private nodes: AgNode[] = [];
-  private cancelled = false;
+  private cancelStream: (() => void) | null = null;
 
   private actions = {
     COLLAPSIBLE_TOGGLE: (payload: unknown) => {
@@ -25,19 +32,31 @@ export class CollapsibleDemo extends LitElement {
     },
   };
 
-  async connectedCallback() {
-    super.connectedCallback();
-    this.cancelled = false;
+  private async runStream() {
+    if (this.cancelStream) this.cancelStream();
+    let cancelled = false;
+    this.cancelStream = () => { cancelled = true; };
     this.nodes = [];
     for await (const node of streamFixture(collapsibleFixture)) {
-      if (this.cancelled) break;
+      if (cancelled) break;
       this.nodes = [...this.nodes, node];
     }
   }
 
-  disconnectedCallback() {
+  override connectedCallback() {
+    super.connectedCallback();
+    this.runStream();
+  }
+
+  override updated(changed: Map<string, unknown>) {
+    if (changed.has('seed') && changed.get('seed') !== undefined) {
+      this.runStream();
+    }
+  }
+
+  override disconnectedCallback() {
     super.disconnectedCallback();
-    this.cancelled = true;
+    if (this.cancelStream) this.cancelStream();
   }
 
   render() {
