@@ -145,4 +145,9 @@ const handleRegenerate = () => {
   display: block;
   margin-block-end: var(--ag-space-4, 1rem);
 }
+
+ag-selection-card::part(ag-selection-card-container) {
+  box-sizing: border-box;
+  min-height: 240px;
+}
 </style>
