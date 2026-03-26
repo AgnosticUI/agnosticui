@@ -37,6 +37,12 @@ export function CollapsibleDemo() {
         })
       );
     },
+    SLIDER_CHANGE: (payload: unknown) => {
+      const { value } = payload as { id: string; value: number };
+      setNodes(prev =>
+        prev.map(n => n.id === 'slider-value' ? { ...n, text: `Count: ${value}` } as AgNode : n)
+      );
+    },
   };
 
   return <AgDynamicRenderer nodes={nodes} actions={actions} />;

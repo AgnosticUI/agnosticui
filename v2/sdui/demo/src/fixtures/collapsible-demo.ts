@@ -4,13 +4,13 @@ export const collapsibleFixture: AgNode[] = [
   {
     id: 'col-heading',
     component: 'AgText',
-    text: 'Collapsible Demo',
+    text: 'Stateful Components Demo',
     el: 'h2',
   },
   {
     id: 'col-intro',
     component: 'AgText',
-    text: 'Click a section to expand it. Opening one closes the others (accordion behavior driven by on_toggle actions).',
+    text: 'Accordion: click a section to expand it — opening one closes the others via on_toggle actions.',
     el: 'p',
   },
   {
@@ -56,6 +56,27 @@ export const collapsibleFixture: AgNode[] = [
     id: 'collapsible-3-content',
     component: 'AgText',
     text: 'Each node declares an on_toggle alias. When the component fires a toggle event the renderer dispatches the alias with a { id, value } payload. The consumer updates node state, closing others to create accordion behavior.',
+    el: 'p',
+  },
+  {
+    id: 'slider-heading',
+    component: 'AgText',
+    text: 'Slider: drag the thumb — on_change dispatches { id, value } and the count updates.',
+    el: 'p',
+  },
+  {
+    id: 'slider-1',
+    component: 'AgSlider',
+    label: 'Count',
+    min: 0,
+    max: 10,
+    step: 1,
+    on_change: 'SLIDER_CHANGE',
+  } as AgNode,
+  {
+    id: 'slider-value',
+    component: 'AgText',
+    text: 'Count: 0',
     el: 'p',
   },
 ];

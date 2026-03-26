@@ -94,6 +94,7 @@ export const actionAliasMap: Record<string, string> = {
   onHide:               'on_hide',
   // SelectionCardGroup selection change — fires with detail.value as payload
   onSelectionChange:    'on_change',
+  onPageChange:         'on_change',
 };
 
 /**
@@ -146,6 +147,12 @@ export const componentActionPayloadMap: Record<string, Record<string, string>> =
   AgSelectionCardGroup: {
     onSelectionChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value }`,
   },
+  AgSlider: {
+    onChange: `{ id: node.id, value: (e as CustomEvent<{ value: number | [number, number] }>).detail?.value }`,
+  },
+  AgPagination: {
+    onPageChange: `{ id: node.id, value: (e as CustomEvent<{ page: number }>).detail?.page }`,
+  },
 };
 
 /**
@@ -175,6 +182,12 @@ export const vueComponentActionPayloadMap: Record<string, Record<string, string>
   AgSelectionCardGroup: {
     onSelectionChange: `{ id: node.id, value: (e as unknown as { value?: string })?.value }`,
   },
+  AgSlider: {
+    onChange: `{ id: node.id, value: (e as unknown as { value?: number | [number, number] })?.value }`,
+  },
+  AgPagination: {
+    onPageChange: `{ id: node.id, value: (e as unknown as { page?: number })?.page }`,
+  },
 };
 
 /**
@@ -203,6 +216,12 @@ export const litComponentActionPayloadMap: Record<string, Record<string, string>
   },
   AgSelectionCardGroup: {
     onSelectionChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value }`,
+  },
+  AgSlider: {
+    onChange: `{ id: node.id, value: (e as CustomEvent<{ value: number | [number, number] }>).detail?.value }`,
+  },
+  AgPagination: {
+    onPageChange: `{ id: node.id, value: (e as CustomEvent<{ page: number }>).detail?.page }`,
   },
 };
 
@@ -294,6 +313,13 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
       zodExpr: "z.enum(['primary', 'secondary', 'success', 'warning', 'danger'])",
     },
   },
+  AgPagination: {
+    // PaginationJustify includes '' (empty string) which Zod handles as a union not an enum
+    justify: {
+      tsType: "'start' | 'center' | 'end' | ''",
+      zodExpr: "z.union([z.enum(['start', 'center', 'end']), z.literal('')])",
+    },
+  },
 };
 
 /**
@@ -319,12 +345,10 @@ export const skipComponents: string[] = [
   'Collapsible',
 
   // Deferred: complex state not expressible in a static fixture (see sub-issues of #460)
-  'Combobox',       // complex filtering + multi-select state
+  'Combobox',       // complex filtering + multi-select state (see #470)
   'Flex',           // multi-component family (FlexContainer/FlexRow/FlexCol/FlexInline) — no single ReactFlex/VueFlex wrapper
   'Menu',           // complex open + selected-value state
-  'Pagination',     // stateful current-page tracking
   'Sidebar',        // open + collapsed state management
-  'Slider',         // continuous value state requires two-way binding
   'Toast',          // autoDismiss + open/close lifecycle
 
   // Permanently skipped: no meaningful SDUI use case

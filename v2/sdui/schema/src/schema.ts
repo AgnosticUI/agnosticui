@@ -449,6 +449,19 @@ export const AgMessageBubbleSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgPaginationSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgPagination'),
+  current: z.number().optional(),
+  totalPages: z.number().optional(),
+  justify: z.union([z.enum(['start', 'center', 'end']), z.literal('')]).optional(),
+  ariaLabel: z.string().optional(),
+  bordered: z.boolean().optional(),
+  firstLastNavigation: z.boolean().optional(),
+  on_change: z.string().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgPopoverSchema = z.object({
   id: z.string(),
   component: z.literal('AgPopover'),
@@ -619,6 +632,36 @@ export const AgSkeletonLoaderSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgSliderSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgSlider'),
+  label: z.string().optional(),
+  labelPosition: z.enum(['top', 'bottom', 'end', 'start']).optional(),
+  labelHidden: z.boolean().optional(),
+  noLabel: z.boolean().optional(),
+  ariaLabel: z.string().optional(),
+  min: z.number().optional(),
+  max: z.number().optional(),
+  step: z.number().optional(),
+  dual: z.boolean().optional(),
+  vertical: z.boolean().optional(),
+  size: z.enum(['default', 'small', 'large']).optional(),
+  filled: z.boolean().optional(),
+  monochrome: z.boolean().optional(),
+  disabled: z.boolean().optional(),
+  readonly: z.boolean().optional(),
+  required: z.boolean().optional(),
+  invalid: z.boolean().optional(),
+  errorMessage: z.string().optional(),
+  helpText: z.string().optional(),
+  name: z.string().optional(),
+  showTooltip: z.boolean().optional(),
+  showTicks: z.boolean().optional(),
+  tickStep: z.number().optional(),
+  on_change: z.string().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgSpinnerSchema = z.object({
   id: z.string(),
   component: z.literal('AgSpinner'),
@@ -782,6 +825,7 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgLoaderSchema,
   AgMarkSchema,
   AgMessageBubbleSchema,
+  AgPaginationSchema,
   AgPopoverSchema,
   AgProgressSchema,
   AgProgressRingSchema,
@@ -793,6 +837,7 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgSelectionCardSchema,
   AgSelectionCardGroupSchema,
   AgSkeletonLoaderSchema,
+  AgSliderSchema,
   AgSpinnerSchema,
   AgTabsSchema,
   AgTagSchema,

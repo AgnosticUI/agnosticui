@@ -31,6 +31,12 @@ const actions = {
       return { ...n, open: newOpen } as AgNode;
     });
   },
+  SLIDER_CHANGE: (payload: unknown) => {
+    const { value } = payload as { id: string; value: number };
+    nodes.value = nodes.value.map(n =>
+      n.id === 'slider-value' ? { ...n, text: `Count: ${value}` } as AgNode : n
+    );
+  },
 };
 </script>
 

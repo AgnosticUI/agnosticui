@@ -90,19 +90,19 @@ export const pickerFixture: AgNode[] = [
     id: 'card-collapsible',
     component: 'AgSelectionCard',
     value: 'collapsible-demo',
-    label: 'Collapsible demo',
+    label: 'Stateful components',
     children: ['card-collapsible-title', 'card-collapsible-desc'],
   },
   {
     id: 'card-collapsible-title',
     component: 'AgText',
-    text: 'Collapsible',
+    text: 'Stateful components',
     el: 'p',
   },
   {
     id: 'card-collapsible-desc',
     component: 'AgText',
-    text: 'Accordion behavior · on_toggle actions · controlled open state',
+    text: 'Accordion · slider value tracking · controlled state via on_toggle and on_change',
     el: 'p',
   },
 ];

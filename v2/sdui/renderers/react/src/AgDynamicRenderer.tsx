@@ -34,6 +34,7 @@ import { ReactLink } from 'agnosticui-core/link/react';
 import { ReactLoader } from 'agnosticui-core/loader/react';
 import { ReactMark } from 'agnosticui-core/mark/react';
 import { ReactMessageBubble } from 'agnosticui-core/message-bubble/react';
+import { ReactPagination } from 'agnosticui-core/pagination/react';
 import { ReactPopover } from 'agnosticui-core/popover/react';
 import { ReactProgress } from 'agnosticui-core/progress/react';
 import { ReactProgressRing } from 'agnosticui-core/progress-ring/react';
@@ -45,6 +46,7 @@ import { ReactSelectionButtonGroup } from 'agnosticui-core/selection-button-grou
 import { ReactSelectionCard } from 'agnosticui-core/selection-card/react';
 import { ReactSelectionCardGroup } from 'agnosticui-core/selection-card-group/react';
 import { ReactSkeletonLoader } from 'agnosticui-core/skeleton-loader/react';
+import { ReactSlider } from 'agnosticui-core/slider/react';
 import { ReactSpinner } from 'agnosticui-core/spinner/react';
 import { ReactTabs } from 'agnosticui-core/tabs/react';
 import { ReactTag } from 'agnosticui-core/tag/react';
@@ -582,6 +584,19 @@ function renderNode(
         </ReactMessageBubble>
       );
 
+    case 'AgPagination':
+      return (
+        <ReactPagination
+          key={node.id}
+          current={node.current}
+          totalPages={node.totalPages}
+          justify={node.justify}
+          aria-label={node.ariaLabel}
+          bordered={node.bordered}
+          firstLastNavigation={node.firstLastNavigation}
+          onPageChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ page: number }>).detail?.page })} />
+      );
+
     case 'AgPopover':
       return (
         <ReactPopover
@@ -768,6 +783,36 @@ function renderNode(
           intensity={node.intensity}
           width={node.width}
           height={node.height} />
+      );
+
+    case 'AgSlider':
+      return (
+        <ReactSlider
+          key={node.id}
+          label={node.label}
+          labelPosition={node.labelPosition}
+          labelHidden={node.labelHidden}
+          noLabel={node.noLabel}
+          aria-label={node.ariaLabel}
+          min={node.min}
+          max={node.max}
+          step={node.step}
+          dual={node.dual}
+          vertical={node.vertical}
+          size={node.size}
+          filled={node.filled}
+          monochrome={node.monochrome}
+          disabled={node.disabled}
+          readonly={node.readonly}
+          required={node.required}
+          invalid={node.invalid}
+          errorMessage={node.errorMessage}
+          helpText={node.helpText}
+          name={node.name}
+          showTooltip={node.showTooltip}
+          showTicks={node.showTicks}
+          tickStep={node.tickStep}
+          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: number | [number, number] }>).detail?.value })} />
       );
 
     case 'AgSpinner':

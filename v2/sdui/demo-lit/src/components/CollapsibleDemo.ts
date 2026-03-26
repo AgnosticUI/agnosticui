@@ -30,6 +30,12 @@ export class CollapsibleDemo extends LitElement {
         return { ...n, open: newOpen } as AgNode;
       });
     },
+    SLIDER_CHANGE: (payload: unknown) => {
+      const { value } = payload as { id: string; value: number };
+      this.nodes = this.nodes.map(n =>
+        n.id === 'slider-value' ? { ...n, text: `Count: ${value}` } as AgNode : n
+      );
+    },
   };
 
   private async runStream() {
