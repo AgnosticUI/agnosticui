@@ -736,6 +736,21 @@ export const AgTextSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgCollapsibleSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgCollapsible'),
+  summary: z.string().optional(),
+  open: z.boolean().optional(),
+  bordered: z.boolean().optional(),
+  shadow: z.boolean().optional(),
+  useChevron: z.boolean().optional(),
+  useX: z.boolean().optional(),
+  useMinus: z.boolean().optional(),
+  noIndicator: z.boolean().optional(),
+  on_toggle: z.string().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgNodeSchema = z.discriminatedUnion('component', [
   AgAccordionSchema,
   AgAlertSchema,
@@ -787,4 +802,5 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgTooltipSchema,
   AgTooltipFxSchema,
   AgTextSchema,
+  AgCollapsibleSchema,
 ]);

@@ -8,7 +8,7 @@ export const pickerFixture: AgNode[] = [
     name: 'workflow',
     legend: 'Choose a workflow to generate',
     on_change: 'workflow-select',
-    children: ['card-wizard', 'card-contact', 'card-pricing', 'card-questionnaire'],
+    children: ['card-wizard', 'card-contact', 'card-pricing', 'card-questionnaire', 'card-collapsible'],
   },
   {
     id: 'card-wizard',
@@ -84,6 +84,25 @@ export const pickerFixture: AgNode[] = [
     id: 'card-questionnaire-desc',
     component: 'AgText',
     text: '3 steps · branches + skip logic · fixture-as-server',
+    el: 'p',
+  },
+  {
+    id: 'card-collapsible',
+    component: 'AgSelectionCard',
+    value: 'collapsible-demo',
+    label: 'Collapsible demo',
+    children: ['card-collapsible-title', 'card-collapsible-desc'],
+  },
+  {
+    id: 'card-collapsible-title',
+    component: 'AgText',
+    text: 'Collapsible',
+    el: 'p',
+  },
+  {
+    id: 'card-collapsible-desc',
+    component: 'AgText',
+    text: 'Accordion behavior · on_toggle actions · controlled open state',
     el: 'p',
   },
 ];

@@ -315,24 +315,31 @@ export const reactPropRenames: Record<string, string> = {
  * These require controlled runtime state that cannot be expressed in a static node.
  */
 export const skipComponents: string[] = [
-  'Collapsible',    // requires open/close state
-  'Combobox',       // complex filtering + multi-select state (deferred — see issue #375)
+  // Collapsible is handled as a rendererPrimitive (named summary slot requires manual case)
+  'Collapsible',
+
+  // Deferred: complex state not expressible in a static fixture (see sub-issues of #460)
+  'Combobox',       // complex filtering + multi-select state
   'Flex',           // multi-component family (FlexContainer/FlexRow/FlexCol/FlexInline) — no single ReactFlex/VueFlex wrapper
-  'Menu',           // complex open + selected-value state (deferred — see issue #375)
-  'Pagination',     // stateful current-page tracking (deferred — see issue #375)
-  'ScrollProgress', // tracks live scroll position — purely behavioral
-  'ScrollToButton', // scroll-detection behavioral component
-  'Sidebar',        // open + collapsed state management (deferred — see issue #375)
+  'Menu',           // complex open + selected-value state
+  'Pagination',     // stateful current-page tracking
+  'Sidebar',        // open + collapsed state management
+  'Slider',         // continuous value state requires two-way binding
+  'Toast',          // autoDismiss + open/close lifecycle
+
+  // Permanently skipped: no meaningful SDUI use case
+  'ScrollProgress', // tracks live scroll position via a DOM target ref — not serializable
+  'ScrollToButton', // scroll-detection behavioral component, no content to drive
   'SidebarNav',     // no Props interface; pure slot composition
-  'Slider',         // continuous value state requires two-way binding (deferred — see issue #375)
-  'Toast',          // autoDismiss + open/close lifecycle (deferred — see issue #375)
   'VisuallyHidden', // no Props interface; pure slot wrapper
 ];
 
 /**
- * RendererPrimitive: a hand-maintained node type that is renderer-only.
- * No _Xxx.ts source file exists in v2/lib/src/components/ for these.
- * The codegen appends them verbatim after the discovered-component output.
+ * RendererPrimitive: a hand-maintained node type that may or may not have a
+ * corresponding _Xxx.ts source file. Used for components that need manual
+ * renderer cases (e.g. named-slot components like Collapsible) or pure
+ * renderer primitives with no core component (e.g. Text).
+ * The codegen appends the cases verbatim after the discovered-component output.
  */
 export interface RendererPrimitive {
   /** Component name without 'Ag' prefix, e.g. 'Text' */
@@ -347,6 +354,12 @@ export interface RendererPrimitive {
   vueCase: string;
   /** Verbatim Lit renderer switch case */
   litCase: string;
+  /** Optional import line to inject into the React renderer (e.g. named import from agnosticui-core) */
+  reactImport?: string;
+  /** Optional import line to inject into the Vue renderer */
+  vueImport?: string;
+  /** Optional import line to inject into the Lit renderer (e.g. side-effect import) */
+  litImport?: string;
 }
 
 /**
@@ -393,6 +406,90 @@ export const rendererPrimitives: RendererPrimitive[] = [
         case 'label': return html\`<label>\${_text}</label>\`;
         default: return html\`<span>\${_text}</span>\`;
       }
+    }`,
+  },
+  {
+    name: 'Collapsible',
+    reactImport: `import { ReactCollapsible } from 'agnosticui-core/collapsible/react';`,
+    vueImport: `import { VueCollapsible } from 'agnosticui-core/collapsible/vue';`,
+    litImport: `import 'agnosticui-core/collapsible';`,
+    schemaBlock:
+`export const AgCollapsibleSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgCollapsible'),
+  summary: z.string().optional(),
+  open: z.boolean().optional(),
+  bordered: z.boolean().optional(),
+  shadow: z.boolean().optional(),
+  useChevron: z.boolean().optional(),
+  useX: z.boolean().optional(),
+  useMinus: z.boolean().optional(),
+  noIndicator: z.boolean().optional(),
+  on_toggle: z.string().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();`,
+    typesBlock:
+`export interface AgCollapsibleNode {
+  id: string;
+  component: 'AgCollapsible';
+  summary?: string;
+  open?: boolean;
+  bordered?: boolean;
+  shadow?: boolean;
+  useChevron?: boolean;
+  useX?: boolean;
+  useMinus?: boolean;
+  noIndicator?: boolean;
+  on_toggle?: string;
+  children?: string[];
+}`,
+    reactCase:
+`    case 'AgCollapsible':
+      return (
+        <ReactCollapsible
+          key={node.id}
+          open={node.open}
+          bordered={node.bordered}
+          shadow={node.shadow}
+          useChevron={node.useChevron}
+          useX={node.useX}
+          useMinus={node.useMinus}
+          noIndicator={node.noIndicator}
+          onToggle={(e) => dispatch(node.on_toggle, actions, { id: node.id, value: e.detail?.open })}
+        >
+          {node.summary && <span slot="summary">{node.summary}</span>}
+          {renderChildren(node.children)}
+        </ReactCollapsible>
+      );`,
+    vueCase:
+`    case 'AgCollapsible':
+      return h(VueCollapsible, {
+        key: node.id,
+        open: node.open ?? false,
+        bordered: node.bordered,
+        shadow: node.shadow,
+        useChevron: node.useChevron,
+        useX: node.useX,
+        useMinus: node.useMinus,
+        noIndicator: node.noIndicator,
+        onToggle: (e: unknown) => doDispatch(node.on_toggle, actions, { id: node.id, value: (e as CustomEvent<{ open: boolean }>).detail?.open }),
+      }, {
+        ...(node.summary ? { summary: () => h('span', {}, node.summary!) } : {}),
+        default: () => renderChildren(node.children),
+      });`,
+    litCase:
+`    case 'AgCollapsible': {
+      const _col_summary = node.summary;
+      return html\`<ag-collapsible
+        .open=\${node.open ?? false}
+        .bordered=\${node.bordered ?? false}
+        .shadow=\${node.shadow ?? false}
+        .useChevron=\${node.useChevron ?? true}
+        .useX=\${node.useX ?? false}
+        .useMinus=\${node.useMinus ?? false}
+        .noIndicator=\${node.noIndicator ?? false}
+        .onToggle=\${(e: CustomEvent<{ open: boolean }>) => doDispatch(node.on_toggle, actions, { id: node.id, value: e.detail?.open })}
+      >\${_col_summary ? html\`<span slot="summary">\${_col_summary}</span>\` : nothing}\${renderChildren(node.children)}</ag-collapsible>\`;
     }`,
   },
 ];

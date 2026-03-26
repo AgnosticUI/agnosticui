@@ -53,6 +53,7 @@ import { ReactTimeline } from 'agnosticui-core/timeline/react';
 import { ReactToggle } from 'agnosticui-core/toggle/react';
 import { ReactTooltip } from 'agnosticui-core/tooltip/react';
 import { ReactTooltipFx } from 'agnosticui-core/tooltip-fx/react';
+import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -888,6 +889,24 @@ function renderNode(
       const Tag = node.el ?? 'span';
       return <Tag key={node.id}>{node.text}</Tag>;
     }
+
+    case 'AgCollapsible':
+      return (
+        <ReactCollapsible
+          key={node.id}
+          open={node.open}
+          bordered={node.bordered}
+          shadow={node.shadow}
+          useChevron={node.useChevron}
+          useX={node.useX}
+          useMinus={node.useMinus}
+          noIndicator={node.noIndicator}
+          onToggle={(e) => dispatch(node.on_toggle, actions, { id: node.id, value: e.detail?.open })}
+        >
+          {node.summary && <span slot="summary">{node.summary}</span>}
+          {renderChildren(node.children)}
+        </ReactCollapsible>
+      );
 
     default:
       return null;

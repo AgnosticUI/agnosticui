@@ -57,6 +57,7 @@ import 'agnosticui-core/timeline';
 import 'agnosticui-core/toggle';
 import 'agnosticui-core/tooltip';
 import 'agnosticui-core/tooltip-fx';
+import 'agnosticui-core/collapsible';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -724,6 +725,20 @@ function renderNode(
         case 'label': return html`<label>${_text}</label>`;
         default: return html`<span>${_text}</span>`;
       }
+    }
+
+    case 'AgCollapsible': {
+      const _col_summary = node.summary;
+      return html`<ag-collapsible
+        .open=${node.open ?? false}
+        .bordered=${node.bordered ?? false}
+        .shadow=${node.shadow ?? false}
+        .useChevron=${node.useChevron ?? true}
+        .useX=${node.useX ?? false}
+        .useMinus=${node.useMinus ?? false}
+        .noIndicator=${node.noIndicator ?? false}
+        .onToggle=${(e: CustomEvent<{ open: boolean }>) => doDispatch(node.on_toggle, actions, { id: node.id, value: e.detail?.open })}
+      >${_col_summary ? html`<span slot="summary">${_col_summary}</span>` : nothing}${renderChildren(node.children)}</ag-collapsible>`;
     }
 
     default:

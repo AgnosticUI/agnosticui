@@ -733,6 +733,21 @@ export interface AgTextNode {
   children?: string[];
 }
 
+export interface AgCollapsibleNode {
+  id: string;
+  component: 'AgCollapsible';
+  summary?: string;
+  open?: boolean;
+  bordered?: boolean;
+  shadow?: boolean;
+  useChevron?: boolean;
+  useX?: boolean;
+  useMinus?: boolean;
+  noIndicator?: boolean;
+  on_toggle?: string;
+  children?: string[];
+}
+
 export type AgNode =
   | AgAccordionNode
   | AgAlertNode
@@ -783,6 +798,7 @@ export type AgNode =
   | AgToggleNode
   | AgTooltipNode
   | AgTooltipFxNode
-  | AgTextNode;
+  | AgTextNode
+  | AgCollapsibleNode;
 
 export type AgComponentName = AgNode['component'];

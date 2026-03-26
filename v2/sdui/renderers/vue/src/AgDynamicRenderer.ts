@@ -53,6 +53,7 @@ import { VueTimeline } from 'agnosticui-core/timeline/vue';
 import { VueToggle } from 'agnosticui-core/toggle/vue';
 import { VueTooltip } from 'agnosticui-core/tooltip/vue';
 import { VueTooltipFx } from 'agnosticui-core/tooltip-fx/vue';
+import { VueCollapsible } from 'agnosticui-core/collapsible/vue';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -941,6 +942,22 @@ function renderNode(
 
     case 'AgText':
       return h(node.el ?? 'span', { key: node.id }, node.text ?? '');
+
+    case 'AgCollapsible':
+      return h(VueCollapsible, {
+        key: node.id,
+        open: node.open ?? false,
+        bordered: node.bordered,
+        shadow: node.shadow,
+        useChevron: node.useChevron,
+        useX: node.useX,
+        useMinus: node.useMinus,
+        noIndicator: node.noIndicator,
+        onToggle: (e: unknown) => doDispatch(node.on_toggle, actions, { id: node.id, value: (e as CustomEvent<{ open: boolean }>).detail?.open }),
+      }, {
+        ...(node.summary ? { summary: () => h('span', {}, node.summary!) } : {}),
+        default: () => renderChildren(node.children),
+      });
 
     default:
       return null;

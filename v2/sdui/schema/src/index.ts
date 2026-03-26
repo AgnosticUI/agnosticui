@@ -54,6 +54,7 @@ export type {
   AgTooltipNode,
   AgTooltipFxNode,
   AgTextNode,
+  AgCollapsibleNode,
   AgComponentName,
 } from './types.js';
 
@@ -109,6 +110,7 @@ export {
   AgTooltipSchema,
   AgTooltipFxSchema,
   AgTextSchema,
+  AgCollapsibleSchema,
 } from './schema.js';
 
 export { validate, validateGraph } from './validate.js';
