@@ -148,6 +148,6 @@ const handleRegenerate = () => {
 
 ag-selection-card::part(ag-selection-card-container) {
   box-sizing: border-box;
-  min-height: 240px;
+  min-height: 276px;
 }
 </style>
