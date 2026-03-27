@@ -34,6 +34,7 @@ import { VueLink } from 'agnosticui-core/link/vue';
 import { VueLoader } from 'agnosticui-core/loader/vue';
 import { VueMark } from 'agnosticui-core/mark/vue';
 import { VueMessageBubble } from 'agnosticui-core/message-bubble/vue';
+import { VuePagination } from 'agnosticui-core/pagination/vue';
 import { VuePopover } from 'agnosticui-core/popover/vue';
 import { VueProgress } from 'agnosticui-core/progress/vue';
 import { VueProgressRing } from 'agnosticui-core/progress-ring/vue';
@@ -45,6 +46,7 @@ import { VueSelectionButtonGroup } from 'agnosticui-core/selection-button-group/
 import { VueSelectionCard } from 'agnosticui-core/selection-card/vue';
 import { VueSelectionCardGroup } from 'agnosticui-core/selection-card-group/vue';
 import { VueSkeletonLoader } from 'agnosticui-core/skeleton-loader/vue';
+import { VueSlider } from 'agnosticui-core/slider/vue';
 import { VueSpinner } from 'agnosticui-core/spinner/vue';
 import { VueTabs } from 'agnosticui-core/tabs/vue';
 import { VueTag } from 'agnosticui-core/tag/vue';
@@ -53,6 +55,7 @@ import { VueTimeline } from 'agnosticui-core/timeline/vue';
 import { VueToggle } from 'agnosticui-core/toggle/vue';
 import { VueTooltip } from 'agnosticui-core/tooltip/vue';
 import { VueTooltipFx } from 'agnosticui-core/tooltip-fx/vue';
+import { VueCollapsible } from 'agnosticui-core/collapsible/vue';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -614,6 +617,21 @@ function renderNode(
         { default: () => renderChildren(node.children) },
       );
 
+    case 'AgPagination':
+      return h(
+        VuePagination,
+        {
+        key: node.id,
+        current: node.current,
+        totalPages: node.totalPages,
+        justify: node.justify,
+        ariaLabel: node.ariaLabel,
+        bordered: node.bordered,
+        firstLastNavigation: node.firstLastNavigation,
+        onPageChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { page?: number })?.page }),
+        },
+      );
+
     case 'AgPopover':
       return h(
         VuePopover,
@@ -812,6 +830,38 @@ function renderNode(
         },
       );
 
+    case 'AgSlider':
+      return h(
+        VueSlider,
+        {
+        key: node.id,
+        label: node.label,
+        labelPosition: node.labelPosition,
+        labelHidden: node.labelHidden,
+        noLabel: node.noLabel,
+        ariaLabel: node.ariaLabel,
+        min: node.min,
+        max: node.max,
+        step: node.step,
+        dual: node.dual,
+        vertical: node.vertical,
+        size: node.size,
+        filled: node.filled,
+        monochrome: node.monochrome,
+        disabled: node.disabled,
+        readonly: node.readonly,
+        required: node.required,
+        invalid: node.invalid,
+        errorMessage: node.errorMessage,
+        helpText: node.helpText,
+        name: node.name,
+        showTooltip: node.showTooltip,
+        showTicks: node.showTicks,
+        tickStep: node.tickStep,
+        onChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { value?: number | [number, number] })?.value }),
+        },
+      );
+
     case 'AgSpinner':
       return h(
         VueSpinner,
@@ -941,6 +991,22 @@ function renderNode(
 
     case 'AgText':
       return h(node.el ?? 'span', { key: node.id }, node.text ?? '');
+
+    case 'AgCollapsible':
+      return h(VueCollapsible, {
+        key: node.id,
+        open: node.open ?? false,
+        bordered: node.bordered,
+        shadow: node.shadow,
+        useChevron: node.useChevron,
+        useX: node.useX,
+        useMinus: node.useMinus,
+        noIndicator: node.noIndicator,
+        onToggle: (e: unknown) => doDispatch(node.on_toggle, actions, { id: node.id, value: (e as CustomEvent<{ open: boolean }>).detail?.open }),
+      }, {
+        ...(node.summary ? { summary: () => h('span', {}, node.summary!) } : {}),
+        default: () => renderChildren(node.children),
+      });
 
     default:
       return null;

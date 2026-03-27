@@ -34,6 +34,7 @@ import { ReactLink } from 'agnosticui-core/link/react';
 import { ReactLoader } from 'agnosticui-core/loader/react';
 import { ReactMark } from 'agnosticui-core/mark/react';
 import { ReactMessageBubble } from 'agnosticui-core/message-bubble/react';
+import { ReactPagination } from 'agnosticui-core/pagination/react';
 import { ReactPopover } from 'agnosticui-core/popover/react';
 import { ReactProgress } from 'agnosticui-core/progress/react';
 import { ReactProgressRing } from 'agnosticui-core/progress-ring/react';
@@ -45,6 +46,7 @@ import { ReactSelectionButtonGroup } from 'agnosticui-core/selection-button-grou
 import { ReactSelectionCard } from 'agnosticui-core/selection-card/react';
 import { ReactSelectionCardGroup } from 'agnosticui-core/selection-card-group/react';
 import { ReactSkeletonLoader } from 'agnosticui-core/skeleton-loader/react';
+import { ReactSlider } from 'agnosticui-core/slider/react';
 import { ReactSpinner } from 'agnosticui-core/spinner/react';
 import { ReactTabs } from 'agnosticui-core/tabs/react';
 import { ReactTag } from 'agnosticui-core/tag/react';
@@ -53,6 +55,7 @@ import { ReactTimeline } from 'agnosticui-core/timeline/react';
 import { ReactToggle } from 'agnosticui-core/toggle/react';
 import { ReactTooltip } from 'agnosticui-core/tooltip/react';
 import { ReactTooltipFx } from 'agnosticui-core/tooltip-fx/react';
+import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -581,6 +584,19 @@ function renderNode(
         </ReactMessageBubble>
       );
 
+    case 'AgPagination':
+      return (
+        <ReactPagination
+          key={node.id}
+          current={node.current}
+          totalPages={node.totalPages}
+          justify={node.justify}
+          aria-label={node.ariaLabel}
+          bordered={node.bordered}
+          firstLastNavigation={node.firstLastNavigation}
+          onPageChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ page: number }>).detail?.page })} />
+      );
+
     case 'AgPopover':
       return (
         <ReactPopover
@@ -769,6 +785,36 @@ function renderNode(
           height={node.height} />
       );
 
+    case 'AgSlider':
+      return (
+        <ReactSlider
+          key={node.id}
+          label={node.label}
+          labelPosition={node.labelPosition}
+          labelHidden={node.labelHidden}
+          noLabel={node.noLabel}
+          aria-label={node.ariaLabel}
+          min={node.min}
+          max={node.max}
+          step={node.step}
+          dual={node.dual}
+          vertical={node.vertical}
+          size={node.size}
+          filled={node.filled}
+          monochrome={node.monochrome}
+          disabled={node.disabled}
+          readonly={node.readonly}
+          required={node.required}
+          invalid={node.invalid}
+          errorMessage={node.errorMessage}
+          helpText={node.helpText}
+          name={node.name}
+          showTooltip={node.showTooltip}
+          showTicks={node.showTicks}
+          tickStep={node.tickStep}
+          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: number | [number, number] }>).detail?.value })} />
+      );
+
     case 'AgSpinner':
       return (
         <ReactSpinner
@@ -888,6 +934,24 @@ function renderNode(
       const Tag = node.el ?? 'span';
       return <Tag key={node.id}>{node.text}</Tag>;
     }
+
+    case 'AgCollapsible':
+      return (
+        <ReactCollapsible
+          key={node.id}
+          open={node.open}
+          bordered={node.bordered}
+          shadow={node.shadow}
+          useChevron={node.useChevron}
+          useX={node.useX}
+          useMinus={node.useMinus}
+          noIndicator={node.noIndicator}
+          onToggle={(e) => dispatch(node.on_toggle, actions, { id: node.id, value: e.detail?.open })}
+        >
+          {node.summary && <span slot="summary">{node.summary}</span>}
+          {renderChildren(node.children)}
+        </ReactCollapsible>
+      );
 
     default:
       return null;

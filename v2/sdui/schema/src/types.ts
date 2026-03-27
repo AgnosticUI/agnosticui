@@ -447,6 +447,19 @@ export interface AgMessageBubbleNode {
   children?: string[];
 }
 
+export interface AgPaginationNode {
+  id: string;
+  component: 'AgPagination';
+  current?: number;
+  totalPages?: number;
+  justify?: 'start' | 'center' | 'end' | '';
+  ariaLabel?: string;
+  bordered?: boolean;
+  firstLastNavigation?: boolean;
+  on_change?: string;
+  children?: string[];
+}
+
 export interface AgPopoverNode {
   id: string;
   component: 'AgPopover';
@@ -617,6 +630,36 @@ export interface AgSkeletonLoaderNode {
   children?: string[];
 }
 
+export interface AgSliderNode {
+  id: string;
+  component: 'AgSlider';
+  label?: string;
+  labelPosition?: 'top' | 'bottom' | 'end' | 'start';
+  labelHidden?: boolean;
+  noLabel?: boolean;
+  ariaLabel?: string;
+  min?: number;
+  max?: number;
+  step?: number;
+  dual?: boolean;
+  vertical?: boolean;
+  size?: 'default' | 'small' | 'large';
+  filled?: boolean;
+  monochrome?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
+  required?: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  helpText?: string;
+  name?: string;
+  showTooltip?: boolean;
+  showTicks?: boolean;
+  tickStep?: number;
+  on_change?: string;
+  children?: string[];
+}
+
 export interface AgSpinnerNode {
   id: string;
   component: 'AgSpinner';
@@ -733,6 +776,21 @@ export interface AgTextNode {
   children?: string[];
 }
 
+export interface AgCollapsibleNode {
+  id: string;
+  component: 'AgCollapsible';
+  summary?: string;
+  open?: boolean;
+  bordered?: boolean;
+  shadow?: boolean;
+  useChevron?: boolean;
+  useX?: boolean;
+  useMinus?: boolean;
+  noIndicator?: boolean;
+  on_toggle?: string;
+  children?: string[];
+}
+
 export type AgNode =
   | AgAccordionNode
   | AgAlertNode
@@ -764,6 +822,7 @@ export type AgNode =
   | AgLoaderNode
   | AgMarkNode
   | AgMessageBubbleNode
+  | AgPaginationNode
   | AgPopoverNode
   | AgProgressNode
   | AgProgressRingNode
@@ -775,6 +834,7 @@ export type AgNode =
   | AgSelectionCardNode
   | AgSelectionCardGroupNode
   | AgSkeletonLoaderNode
+  | AgSliderNode
   | AgSpinnerNode
   | AgTabsNode
   | AgTagNode
@@ -783,6 +843,7 @@ export type AgNode =
   | AgToggleNode
   | AgTooltipNode
   | AgTooltipFxNode
-  | AgTextNode;
+  | AgTextNode
+  | AgCollapsibleNode;
 
 export type AgComponentName = AgNode['component'];

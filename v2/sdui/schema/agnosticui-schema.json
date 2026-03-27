@@ -2035,6 +2035,63 @@
         },
         "component": {
           "type": "string",
+          "const": "AgPagination"
+        },
+        "current": {
+          "type": "number"
+        },
+        "totalPages": {
+          "type": "number"
+        },
+        "justify": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "start",
+                "center",
+                "end"
+              ]
+            },
+            {
+              "type": "string",
+              "const": ""
+            }
+          ]
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "bordered": {
+          "type": "boolean"
+        },
+        "firstLastNavigation": {
+          "type": "boolean"
+        },
+        "on_change": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
           "const": "AgPopover"
         },
         "placement": {
@@ -2735,6 +2792,112 @@
         },
         "component": {
           "type": "string",
+          "const": "AgSlider"
+        },
+        "label": {
+          "type": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
+        },
+        "labelHidden": {
+          "type": "boolean"
+        },
+        "noLabel": {
+          "type": "boolean"
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "step": {
+          "type": "number"
+        },
+        "dual": {
+          "type": "boolean"
+        },
+        "vertical": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "default",
+            "small",
+            "large"
+          ]
+        },
+        "filled": {
+          "type": "boolean"
+        },
+        "monochrome": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "readonly": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "invalid": {
+          "type": "boolean"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "helpText": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "showTooltip": {
+          "type": "boolean"
+        },
+        "showTicks": {
+          "type": "boolean"
+        },
+        "tickStep": {
+          "type": "number"
+        },
+        "on_change": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
           "const": "AgSpinner"
         },
         "size": {
@@ -3263,6 +3426,56 @@
         "id",
         "component",
         "text"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgCollapsible"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "open": {
+          "type": "boolean"
+        },
+        "bordered": {
+          "type": "boolean"
+        },
+        "shadow": {
+          "type": "boolean"
+        },
+        "useChevron": {
+          "type": "boolean"
+        },
+        "useX": {
+          "type": "boolean"
+        },
+        "useMinus": {
+          "type": "boolean"
+        },
+        "noIndicator": {
+          "type": "boolean"
+        },
+        "on_toggle": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
       ],
       "additionalProperties": false
     }

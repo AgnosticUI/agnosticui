@@ -5,7 +5,14 @@ import { pickerFixture } from '../../../demo/src/fixtures/picker';
 import type { AgNode } from '@agnosticui/schema';
 
 export class WorkflowPicker extends LitElement {
-  static styles = css`:host { display: block; }`;
+  static styles = css`
+    :host { display: block; }
+
+    ag-selection-card::part(ag-selection-card-container) {
+      box-sizing: border-box;
+      min-height: 276px;
+    }
+  `;
 
   @state() private selected = 'contact-form';
 

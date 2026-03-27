@@ -4,9 +4,11 @@ import 'agnosticui-core/header';
 import './components/WorkflowPicker';
 import './components/StreamingOutput';
 import './components/AdaptiveOutput';
+import './components/CollapsibleDemo';
 import './SkinSwitcher';
 
 const ADAPTIVE_WORKFLOW = 'adaptive-questionnaire';
+const COLLAPSIBLE_WORKFLOW = 'collapsible-demo';
 
 export class AgSduiDemo extends LitElement {
   static styles = css`
@@ -84,6 +86,10 @@ export class AgSduiDemo extends LitElement {
     return this.workflow === ADAPTIVE_WORKFLOW;
   }
 
+  private get isCollapsible() {
+    return this.workflow === COLLAPSIBLE_WORKFLOW;
+  }
+
   private handleSelect(e: Event) {
     this.workflow = (e as CustomEvent<string>).detail;
     this.seed = 0;
@@ -120,10 +126,12 @@ export class AgSduiDemo extends LitElement {
           <div class="demo-output-body">
             ${this.isAdaptive
               ? html`<ag-adaptive-output></ag-adaptive-output>`
-              : html`<ag-streaming-output
-                  .workflow=${this.workflow}
-                  .seed=${this.seed}
-                ></ag-streaming-output>`}
+              : this.isCollapsible
+                ? html`<ag-collapsible-demo .seed=${this.seed}></ag-collapsible-demo>`
+                : html`<ag-streaming-output
+                    .workflow=${this.workflow}
+                    .seed=${this.seed}
+                  ></ag-streaming-output>`}
           </div>
         </section>
       </div>

@@ -4,10 +4,12 @@ import { ReactHeader } from 'agnosticui-core/header/react';
 import { WorkflowPicker } from './components/WorkflowPicker';
 import { StreamingOutput } from './components/StreamingOutput';
 import { AdaptiveOutput } from './components/AdaptiveOutput';
+import { CollapsibleDemo } from './components/CollapsibleDemo';
 import { SkinSwitcher } from './SkinSwitcher';
 import './App.css';
 
 const ADAPTIVE_WORKFLOW = 'adaptive-questionnaire';
+const COLLAPSIBLE_WORKFLOW = 'collapsible-demo';
 
 export default function App() {
   const [{ workflow, seed }, setState] = useState({ workflow: 'contact-form', seed: 0 });
@@ -16,6 +18,7 @@ export default function App() {
   const handleRegenerate = () => setState(s => ({ ...s, seed: s.seed + 1 }));
 
   const isAdaptive = workflow === ADAPTIVE_WORKFLOW;
+  const isCollapsible = workflow === COLLAPSIBLE_WORKFLOW;
 
   return (
     <>
@@ -43,7 +46,9 @@ export default function App() {
         <div className="demo-output-body">
           {isAdaptive
             ? <AdaptiveOutput key={seed} />
-            : <StreamingOutput workflow={workflow} seed={seed} />}
+            : isCollapsible
+              ? <CollapsibleDemo key={seed} />
+              : <StreamingOutput workflow={workflow} seed={seed} />}
         </div>
       </section>
     </div>

@@ -34,6 +34,7 @@ export type {
   AgLoaderNode,
   AgMarkNode,
   AgMessageBubbleNode,
+  AgPaginationNode,
   AgPopoverNode,
   AgProgressNode,
   AgProgressRingNode,
@@ -45,6 +46,7 @@ export type {
   AgSelectionCardNode,
   AgSelectionCardGroupNode,
   AgSkeletonLoaderNode,
+  AgSliderNode,
   AgSpinnerNode,
   AgTabsNode,
   AgTagNode,
@@ -54,6 +56,7 @@ export type {
   AgTooltipNode,
   AgTooltipFxNode,
   AgTextNode,
+  AgCollapsibleNode,
   AgComponentName,
 } from './types.js';
 
@@ -89,6 +92,7 @@ export {
   AgLoaderSchema,
   AgMarkSchema,
   AgMessageBubbleSchema,
+  AgPaginationSchema,
   AgPopoverSchema,
   AgProgressSchema,
   AgProgressRingSchema,
@@ -100,6 +104,7 @@ export {
   AgSelectionCardSchema,
   AgSelectionCardGroupSchema,
   AgSkeletonLoaderSchema,
+  AgSliderSchema,
   AgSpinnerSchema,
   AgTabsSchema,
   AgTagSchema,
@@ -109,6 +114,7 @@ export {
   AgTooltipSchema,
   AgTooltipFxSchema,
   AgTextSchema,
+  AgCollapsibleSchema,
 } from './schema.js';
 
 export { validate, validateGraph } from './validate.js';

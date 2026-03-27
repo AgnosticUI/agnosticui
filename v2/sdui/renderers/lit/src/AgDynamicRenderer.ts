@@ -38,6 +38,7 @@ import 'agnosticui-core/link';
 import 'agnosticui-core/loader';
 import 'agnosticui-core/mark';
 import 'agnosticui-core/message-bubble';
+import 'agnosticui-core/pagination';
 import 'agnosticui-core/popover';
 import 'agnosticui-core/progress';
 import 'agnosticui-core/progress-ring';
@@ -49,6 +50,7 @@ import 'agnosticui-core/selection-button-group';
 import 'agnosticui-core/selection-card';
 import 'agnosticui-core/selection-card-group';
 import 'agnosticui-core/skeleton-loader';
+import 'agnosticui-core/slider';
 import 'agnosticui-core/spinner';
 import 'agnosticui-core/tabs';
 import 'agnosticui-core/tag';
@@ -57,6 +59,7 @@ import 'agnosticui-core/timeline';
 import 'agnosticui-core/toggle';
 import 'agnosticui-core/tooltip';
 import 'agnosticui-core/tooltip-fx';
+import 'agnosticui-core/collapsible';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -472,6 +475,17 @@ function renderNode(
         .variant=${node.variant ?? nothing}
       >${renderChildren(node.children)}</ag-message-bubble>`;
 
+    case 'AgPagination':
+      return html`<ag-pagination
+        .current=${node.current ?? 0}
+        .totalPages=${node.totalPages ?? 0}
+        .justify=${node.justify ?? nothing}
+        .ariaLabel=${node.ariaLabel ?? nothing}
+        .bordered=${node.bordered ?? false}
+        .firstLastNavigation=${node.firstLastNavigation ?? false}
+        @page-change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ page: number }>).detail?.page })}
+      ></ag-pagination>`;
+
     case 'AgPopover':
       return html`<ag-popover
         .placement=${node.placement ?? nothing}
@@ -620,6 +634,34 @@ function renderNode(
         .height=${node.height ?? nothing}
       ></ag-skeleton-loader>`;
 
+    case 'AgSlider':
+      return html`<ag-slider
+        .label=${node.label ?? nothing}
+        .labelPosition=${node.labelPosition ?? nothing}
+        .labelHidden=${node.labelHidden ?? false}
+        .noLabel=${node.noLabel ?? false}
+        .ariaLabel=${node.ariaLabel ?? nothing}
+        .min=${node.min ?? 0}
+        .max=${node.max ?? 0}
+        .step=${node.step ?? 0}
+        .dual=${node.dual ?? false}
+        .vertical=${node.vertical ?? false}
+        .size=${node.size ?? nothing}
+        .filled=${node.filled ?? false}
+        .monochrome=${node.monochrome ?? false}
+        .disabled=${node.disabled ?? false}
+        .readonly=${node.readonly ?? false}
+        .required=${node.required ?? false}
+        .invalid=${node.invalid ?? false}
+        .errorMessage=${node.errorMessage ?? nothing}
+        .helpText=${node.helpText ?? nothing}
+        .name=${node.name ?? nothing}
+        .showTooltip=${node.showTooltip ?? false}
+        .showTicks=${node.showTicks ?? false}
+        .tickStep=${node.tickStep ?? 0}
+        @change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: number | [number, number] }>).detail?.value })}
+      ></ag-slider>`;
+
     case 'AgSpinner':
       return html`<ag-spinner
         .size=${node.size ?? nothing}
@@ -724,6 +766,20 @@ function renderNode(
         case 'label': return html`<label>${_text}</label>`;
         default: return html`<span>${_text}</span>`;
       }
+    }
+
+    case 'AgCollapsible': {
+      const _col_summary = node.summary;
+      return html`<ag-collapsible
+        .open=${node.open ?? false}
+        .bordered=${node.bordered ?? false}
+        .shadow=${node.shadow ?? false}
+        .useChevron=${node.useChevron ?? true}
+        .useX=${node.useX ?? false}
+        .useMinus=${node.useMinus ?? false}
+        .noIndicator=${node.noIndicator ?? false}
+        .onToggle=${(e: CustomEvent<{ open: boolean }>) => doDispatch(node.on_toggle, actions, { id: node.id, value: e.detail?.open })}
+      >${_col_summary ? html`<span slot="summary">${_col_summary}</span>` : nothing}${renderChildren(node.children)}</ag-collapsible>`;
     }
 
     default:

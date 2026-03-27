@@ -370,6 +370,7 @@ export function generateReactRenderer(
     const slug = toKebab(c.name);
     return `import { React${c.name} } from 'agnosticui-core/${slug}/react';`;
   }).join('\n');
+  const primImports = primitives.filter(p => p.reactImport).map(p => p.reactImport!).join('\n');
 
   const compCases = components.map(c => generateReactCase(c)).join('\n\n');
   const cases = primitives.length > 0
@@ -381,6 +382,7 @@ export function generateReactRenderer(
     `import * as React from 'react';`,
     `import type { AgNode } from '@agnosticui/schema';`,
     imports,
+    ...(primImports ? [primImports] : []),
     '',
     `type Actions = Record<string, (payload?: unknown) => void>;`,
     '',
@@ -517,6 +519,7 @@ export function generateVueRenderer(
     const slug = toKebab(c.name);
     return `import { Vue${c.name} } from 'agnosticui-core/${slug}/vue';`;
   }).join('\n');
+  const primImports = primitives.filter(p => p.vueImport).map(p => p.vueImport!).join('\n');
 
   const compCases = components.map(c => generateVueCase(c)).join('\n\n');
   const cases = primitives.length > 0
@@ -528,6 +531,7 @@ export function generateVueRenderer(
     `import { defineComponent, h, type PropType, type VNode } from 'vue';`,
     `import type { AgNode } from '@agnosticui/schema';`,
     imports,
+    ...(primImports ? [primImports] : []),
     '',
     `type Actions = Record<string, (payload?: unknown) => void>;`,
     '',
@@ -653,6 +657,7 @@ export function generateLitRenderer(
     const slug = toKebab(c.name);
     return `import 'agnosticui-core/${slug}';`;
   }).join('\n');
+  const primImports = primitives.filter(p => p.litImport).map(p => p.litImport!).join('\n');
 
   const compCases = components.map(c => generateLitCase(c)).join('\n\n');
   const cases = primitives.length > 0
@@ -668,6 +673,7 @@ export function generateLitRenderer(
     '',
     `// Register AgnosticUI core custom elements`,
     coreImports,
+    ...(primImports ? [primImports] : []),
     '',
     `type Actions = Record<string, (payload?: unknown) => void>;`,
     '',

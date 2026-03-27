@@ -4,14 +4,17 @@ import { VueHeader } from 'agnosticui-core/header/vue';
 import WorkflowPicker from './components/WorkflowPicker.vue';
 import StreamingOutput from './components/StreamingOutput.vue';
 import AdaptiveOutput from './components/AdaptiveOutput.vue';
+import CollapsibleDemo from './components/CollapsibleDemo.vue';
 import SkinSwitcher from './SkinSwitcher.vue';
 
 const ADAPTIVE_WORKFLOW = 'adaptive-questionnaire';
+const COLLAPSIBLE_WORKFLOW = 'collapsible-demo';
 
 const workflow = ref('contact-form');
 const seed = ref(0);
 
 const isAdaptive = computed(() => workflow.value === ADAPTIVE_WORKFLOW);
+const isCollapsible = computed(() => workflow.value === COLLAPSIBLE_WORKFLOW);
 
 const handleSelect = (next: string) => {
   workflow.value = next;
@@ -48,6 +51,7 @@ const handleRegenerate = () => {
       </div>
       <div class="demo-output-body">
         <AdaptiveOutput v-if="isAdaptive" :key="seed" />
+        <CollapsibleDemo v-else-if="isCollapsible" :key="seed" />
         <StreamingOutput v-else :workflow="workflow" :seed="seed" />
       </div>
     </section>
@@ -140,5 +144,10 @@ const handleRegenerate = () => {
 .demo-output-body ag-selection-button-group {
   display: block;
   margin-block-end: var(--ag-space-4, 1rem);
+}
+
+ag-selection-card::part(ag-selection-card-container) {
+  box-sizing: border-box;
+  min-height: 276px;
 }
 </style>
