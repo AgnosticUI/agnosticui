@@ -1,12 +1,36 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import type { AgNode } from '@agnosticui/schema';
 import { AgDynamicRenderer } from '@agnosticui/render-react';
+import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
+import type { CollapsibleToggleEvent } from 'agnosticui-core/collapsible';
 import { collapsibleFixture } from '../fixtures/collapsible-demo';
 import { streamFixture } from '../lib/stream';
+import './StreamingOutput.css';
+
+const PANEL_AUTO_CLOSE_MS = 8000;
 
 export function CollapsibleDemo() {
   const [nodes, setNodes] = useState<AgNode[]>([]);
+  const [panelOpen, setPanelOpen] = useState(false);
   const cancelRef = useRef<() => void>(() => {});
+  const fadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openPanel = useCallback(() => {
+    setPanelOpen(true);
+    if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
+    fadeTimerRef.current = setTimeout(() => setPanelOpen(false), PANEL_AUTO_CLOSE_MS);
+  }, []);
+
+  const handleCollapsibleToggle = useCallback((e: CollapsibleToggleEvent) => {
+    const nowOpen = e.detail.open;
+    setPanelOpen(nowOpen);
+    if (nowOpen) {
+      if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
+      fadeTimerRef.current = setTimeout(() => setPanelOpen(false), PANEL_AUTO_CLOSE_MS);
+    } else {
+      if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
+    }
+  }, []);
 
   const runStream = useCallback(async (fixture: AgNode[]) => {
     cancelRef.current();
@@ -20,12 +44,14 @@ export function CollapsibleDemo() {
   }, []);
 
   useEffect(() => {
+    openPanel();
     runStream(collapsibleFixture);
     return () => cancelRef.current();
-  }, [runStream]);
+  }, [runStream, openPanel]);
+
+  useEffect(() => () => { if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current); }, []);
 
   const actions = {
-    // When a collapsible toggles, open it and close all others (accordion behavior).
     COLLAPSIBLE_TOGGLE: (payload: unknown) => {
       const { id, value } = payload as { id: string; value: boolean };
       setNodes(prev =>
@@ -45,5 +71,17 @@ export function CollapsibleDemo() {
     },
   };
 
-  return <AgDynamicRenderer nodes={nodes} actions={actions} />;
+  return (
+    <>
+      <ReactCollapsible
+        className="node-panel"
+        open={panelOpen}
+        onToggle={handleCollapsibleToggle}
+      >
+        <span slot="summary">Node array</span>
+        <pre className="node-panel-pre">{JSON.stringify(nodes, null, 2)}</pre>
+      </ReactCollapsible>
+      <AgDynamicRenderer nodes={nodes} actions={actions} />
+    </>
+  );
 }
