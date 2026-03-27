@@ -1,4 +1,4 @@
-import { LitElement, html, css, nothing } from 'lit';
+import { LitElement, html, css } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import '@agnosticui/render-lit';
 import 'agnosticui-core/collapsible';
