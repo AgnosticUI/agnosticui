@@ -834,7 +834,7 @@ export class AgMenuItem extends LitElement implements MenuItemProps {
     button:focus,
     a:focus {
       background-color: var(--ag-background-secondary);
-      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
       outline-offset: 0;
     }
 
