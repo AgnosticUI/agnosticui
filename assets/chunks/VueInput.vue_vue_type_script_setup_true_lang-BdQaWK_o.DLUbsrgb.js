@@ -1,10 +1,10 @@
-import{a as x,x as l,E as h,i as B,z as i}from"./property-CemaeiRl.Cea_q1B7.js";import{n as k}from"./state-CovhUvdr.C-u8O0Fo.js";import{f as S}from"./query-BykXNUlT.Pm7lu9c1.js";import{Q as g}from"./Button.BmTmCFep.js";import{o as _}from"./slot.CsrcmCtp.js";import{i as z,u as L,t as v,a as C}from"./form-control-utils.BYIX_mid.js";import{c as E,_ as q}from"./face-mixin.MgCHLM8W.js";import{d as I,c,o as b,e as m,r as $,K as T}from"./framework.DmF2n0Fc.js";var A=Object.defineProperty,a=(n,e,r,s)=>{for(var o=void 0,u=n.length-1,p;u>=0;u--)(p=n[u])&&(o=p(e,r,o)||o);return o&&A(e,r,o),o};const f=class extends E(x){constructor(){super(),this._ids=z("ag-input"),this._hasLeftAddon=!1,this._hasRightAddon=!1,this.label="",this.labelHidden=!1,this.labelPosition="top",this.noLabel=!1,this.ariaLabel="",this.type="text",this.value="",this.placeholder="",this.rows=4,this.cols=50,this.size="default",this.capsule=!1,this.rounded=!1,this.underlined=!1,this.underlinedWithBackground=!1,this.inline=!1,this.required=!1,this.disabled=!1,this.readonly=!1,this.invalid=!1,this.errorMessage="",this.helpText=""}get controlElement(){return this._inputElement}getValue(){var e;return((e=this._inputElement)==null?void 0:e.value)??""}setValue(e){this._inputElement&&(this._inputElement.value=e,this.value=e)}select(){var e;(e=this._inputElement)==null||e.select()}formResetCallback(){this.value="",this._internals.setFormValue(""),this._internals.setValidity({}),this._syncStates()}formStateRestoreCallback(e,r){this.value=typeof e=="string"?e:"",this._internals.setFormValue(this.value),this._syncValidity(),this._syncStates()}_syncStates(){this._setState("disabled",this.disabled),this._setState("readonly",this.readonly),this._setState("required",this.required),this._setState("invalid",!this._internals.validity.valid)}_syncValidity(){q(this._internals,this._inputElement)}_handleSlotChange(e){const r=e.target,s=r.name;s==="addon-left"?this._hasLeftAddon=_(r):s==="addon-right"&&(this._hasRightAddon=_(r)),this.requestUpdate()}_handleInput(e){const r=e.target;this.value=r.value,this._internals.setFormValue(this.value),this._syncValidity(),this.onInput&&this.onInput(e)}_handleChange(e){const r=e.target;this.value=r.value,this._internals.setFormValue(this.value),this._syncValidity(),this.onChange&&this.onChange(e)}_handleFocus(e){this.dispatchEvent(new FocusEvent("focus",{bubbles:!0,composed:!0,relatedTarget:e.relatedTarget})),this.onFocus&&this.onFocus(e)}_handleBlur(e){this.dispatchEvent(new FocusEvent("blur",{bubbles:!0,composed:!0,relatedTarget:e.relatedTarget})),this.onBlur&&this.onBlur(e)}_handleClick(e){this.onClick&&this.onClick(e)}_getAriaDescribedBy(){return L({helperId:this._ids.helperId,errorId:this._ids.errorId,hasHelper:!!this.helpText,hasError:this.invalid&&!!this.errorMessage})}_renderInputElement(){const e=this.type==="textarea",r=this._getAriaDescribedBy(),s=[];return r&&s.push(r),e?l`
+import{a as x,x as l,E as g,i as B,z as n}from"./property-CemaeiRl.Cea_q1B7.js";import{n as k}from"./state-CovhUvdr.C-u8O0Fo.js";import{f as S}from"./query-BykXNUlT.Pm7lu9c1.js";import{Q as p}from"./Button.BmTmCFep.js";import{o as _}from"./slot.CsrcmCtp.js";import{i as z,u as E,t as v,a as L}from"./form-control-utils.BYIX_mid.js";import{c as C,_ as q}from"./face-mixin.MgCHLM8W.js";import{d as I,c,o as b,e as m,r as $,K as T}from"./framework.DmF2n0Fc.js";var A=Object.defineProperty,a=(i,e,r,s)=>{for(var o=void 0,u=i.length-1,h;u>=0;u--)(h=i[u])&&(o=h(e,r,o)||o);return o&&A(e,r,o),o};const f=class extends C(x){constructor(){super(),this._ids=z("ag-input"),this._hasLeftAddon=!1,this._hasRightAddon=!1,this.label="",this.labelHidden=!1,this.labelPosition="top",this.noLabel=!1,this.ariaLabel="",this.type="text",this.value="",this.placeholder="",this.rows=4,this.cols=50,this.size="default",this.capsule=!1,this.rounded=!1,this.underlined=!1,this.underlinedWithBackground=!1,this.inline=!1,this.min="",this.max="",this.required=!1,this.disabled=!1,this.readonly=!1,this.invalid=!1,this.errorMessage="",this.helpText=""}get controlElement(){return this._inputElement}getValue(){var e;return((e=this._inputElement)==null?void 0:e.value)??""}setValue(e){this._inputElement&&(this._inputElement.value=e,this.value=e)}select(){var e;(e=this._inputElement)==null||e.select()}formResetCallback(){this.value="",this._internals.setFormValue(""),this._internals.setValidity({}),this._syncStates()}formStateRestoreCallback(e,r){this.value=typeof e=="string"?e:"",this._internals.setFormValue(this.value),this._syncValidity(),this._syncStates()}_syncStates(){this._setState("disabled",this.disabled),this._setState("readonly",this.readonly),this._setState("required",this.required),this._setState("invalid",!this._internals.validity.valid)}_syncValidity(){q(this._internals,this._inputElement)}_handleSlotChange(e){const r=e.target,s=r.name;s==="addon-left"?this._hasLeftAddon=_(r):s==="addon-right"&&(this._hasRightAddon=_(r)),this.requestUpdate()}_handleInput(e){const r=e.target;this.value=r.value,this._internals.setFormValue(this.value),this._syncValidity(),this.onInput&&this.onInput(e)}_handleChange(e){const r=e.target;this.value=r.value,this._internals.setFormValue(this.value),this._syncValidity(),this.onChange&&this.onChange(e),this.dispatchEvent(new Event("change",{bubbles:!0,composed:!0}))}_handleFocus(e){this.dispatchEvent(new FocusEvent("focus",{bubbles:!0,composed:!0,relatedTarget:e.relatedTarget})),this.onFocus&&this.onFocus(e)}_handleBlur(e){this.dispatchEvent(new FocusEvent("blur",{bubbles:!0,composed:!0,relatedTarget:e.relatedTarget})),this.onBlur&&this.onBlur(e)}_handleClick(e){this.onClick&&this.onClick(e)}_getAriaDescribedBy(){return E({helperId:this._ids.helperId,errorId:this._ids.errorId,hasHelper:!!this.helpText,hasError:this.invalid&&!!this.errorMessage})}_supportsMinMax(){return["date","datetime-local","month","time","week","number","range"].includes(this.type)}_renderInputElement(){const e=this.type==="textarea",r=this._getAriaDescribedBy(),s=[];return r&&s.push(r),e?l`
         <textarea
           id="${this._ids.inputId}"
           part="ag-textarea"
           class="ag-input__textarea"
           .value="${this.value}"
-          placeholder="${g(this.placeholder||void 0)}"
+          placeholder="${p(this.placeholder||void 0)}"
           rows="${this.rows}"
           cols="${this.cols}"
           ?required="${this.required}"
@@ -12,8 +12,8 @@ import{a as x,x as l,E as h,i as B,z as i}from"./property-CemaeiRl.Cea_q1B7.js";
           ?readonly="${this.readonly}"
           aria-required="${this.required?"true":"false"}"
           aria-invalid="${this.invalid?"true":"false"}"
-          aria-label="${g(this.ariaLabel||void 0)}"
-          aria-describedby="${s.length>0?s.join(" "):g(void 0)}"
+          aria-label="${p(this.ariaLabel||void 0)}"
+          aria-describedby="${s.length>0?s.join(" "):p(void 0)}"
           @click=${this._handleClick}
           @input=${this._handleInput}
           @change=${this._handleChange}
@@ -27,21 +27,23 @@ import{a as x,x as l,E as h,i as B,z as i}from"./property-CemaeiRl.Cea_q1B7.js";
         part="ag-input"
         class="ag-input__input"
         .value="${this.value}"
-        placeholder="${g(this.placeholder||void 0)}"
+        placeholder="${p(this.placeholder||void 0)}"
+        min="${p(this._supportsMinMax()&&this.min?this.min:void 0)}"
+        max="${p(this._supportsMinMax()&&this.max?this.max:void 0)}"
         ?required="${this.required}"
         ?disabled="${this.disabled}"
         ?readonly="${this.readonly}"
         aria-required="${this.required?"true":"false"}"
         aria-invalid="${this.invalid?"true":"false"}"
-        aria-label="${g(this.ariaLabel||void 0)}"
-        aria-describedby="${s.length>0?s.join(" "):g(void 0)}"
+        aria-label="${p(this.ariaLabel||void 0)}"
+        aria-describedby="${s.length>0?s.join(" "):p(void 0)}"
         @click=${this._handleClick}
         @input=${this._handleInput}
         @change=${this._handleChange}
         @focus=${this._handleFocus}
         @blur=${this._handleBlur}
       />
-    `}updated(e){super.updated(e),(e.has("disabled")||e.has("readonly")||e.has("required")||e.has("invalid"))&&this._syncStates()}firstUpdated(){this._internals.setFormValue(this.value??""),this._syncValidity(),this._syncStates(),setTimeout(()=>{var u,p;const e=(u=this.shadowRoot)==null?void 0:u.querySelector('slot[name="addon-left"]'),r=(p=this.shadowRoot)==null?void 0:p.querySelector('slot[name="addon-right"]'),s=this._hasLeftAddon,o=this._hasRightAddon;this._hasLeftAddon=_(e),this._hasRightAddon=_(r),(s!==this._hasLeftAddon||o!==this._hasRightAddon)&&this.requestUpdate()},0)}_renderLabel(){if(!this.label||this.noLabel)return h;const e=[];return v(this.labelPosition)?(e.push("ag-form-control__label--horizontal"),e.push(`ag-form-control__label--${this.labelPosition}`),e.push("ag-input__label--horizontal"),e.push(`ag-input__label--${this.labelPosition}`)):this.labelPosition==="bottom"&&(e.push(`ag-form-control__label--${this.labelPosition}`),e.push(`ag-input__label--${this.labelPosition}`)),l`
+    `}updated(e){super.updated(e),(e.has("disabled")||e.has("readonly")||e.has("required")||e.has("invalid"))&&this._syncStates()}firstUpdated(){this._internals.setFormValue(this.value??""),this._syncValidity(),this._syncStates(),setTimeout(()=>{var u,h;const e=(u=this.shadowRoot)==null?void 0:u.querySelector('slot[name="addon-left"]'),r=(h=this.shadowRoot)==null?void 0:h.querySelector('slot[name="addon-right"]'),s=this._hasLeftAddon,o=this._hasRightAddon;this._hasLeftAddon=_(e),this._hasRightAddon=_(r),(s!==this._hasLeftAddon||o!==this._hasRightAddon)&&this.requestUpdate()},0)}_renderLabel(){if(!this.label||this.noLabel)return g;const e=[];return v(this.labelPosition)?(e.push("ag-form-control__label--horizontal"),e.push(`ag-form-control__label--${this.labelPosition}`),e.push("ag-input__label--horizontal"),e.push(`ag-input__label--${this.labelPosition}`)):this.labelPosition==="bottom"&&(e.push(`ag-form-control__label--${this.labelPosition}`),e.push(`ag-input__label--${this.labelPosition}`)),l`
       <label
         id="${this._ids.labelId}"
         for="${this._ids.inputId}"
@@ -51,7 +53,7 @@ import{a as x,x as l,E as h,i as B,z as i}from"./property-CemaeiRl.Cea_q1B7.js";
         ${this.label}
         ${this.required?l`
               <span class="ag-form-control__required ag-input__required" part="ag-input-required" aria-hidden="true">*</span>
-            `:h}
+            `:g}
       </label>
     `}_renderHelper(){return this.helpText?l`
       <div
@@ -61,7 +63,7 @@ import{a as x,x as l,E as h,i as B,z as i}from"./property-CemaeiRl.Cea_q1B7.js";
       >
         ${this.helpText}
       </div>
-    `:h}_renderError(){return l`
+    `:g}_renderError(){return l`
       <div
         id="${this._ids.errorId}"
         class="ag-form-control__error ag-input__error"
@@ -102,24 +104,24 @@ import{a as x,x as l,E as h,i as B,z as i}from"./property-CemaeiRl.Cea_q1B7.js";
             ${this._renderLabel()}
             ${o}
           </div>
-          ${this.helpText?this._renderHelper():h}
+          ${this.helpText?this._renderHelper():g}
           ${this._renderError()}
         </div>
       `:this.labelPosition==="bottom"?l`
         <div class="${s.join(" ")}" part="ag-input-wrapper">
           ${o}
-          ${this.helpText?this._renderHelper():h}
+          ${this.helpText?this._renderHelper():g}
           ${this._renderError()}
           ${this._renderLabel()}
         </div>
       `:l`
       <div class="${s.join(" ")}" part="ag-input-wrapper">
         ${this._renderLabel()}
-        ${this.helpText?this._renderHelper():h}
+        ${this.helpText?this._renderHelper():g}
         ${this._renderError()}
         ${o}
       </div>
-    `}};f.shadowRootOptions={...x.shadowRootOptions,delegatesFocus:!0},f.styles=[C,B`
+    `}};f.shadowRootOptions={...x.shadowRootOptions,delegatesFocus:!0},f.styles=[L,B`
       :host {
         display: block;
       }
@@ -357,4 +359,4 @@ import{a as x,x as l,E as h,i as B,z as i}from"./property-CemaeiRl.Cea_q1B7.js";
       :host([underlined-with-background]) .ag-input__addon {
         background-color: var(--ag-background-secondary);
       }
-    `];let t=f;a([S("input, textarea")],t.prototype,"_inputElement");a([i({type:String})],t.prototype,"label");a([i({type:Boolean,attribute:"label-hidden"})],t.prototype,"labelHidden");a([i({type:String,attribute:"label-position"})],t.prototype,"labelPosition");a([i({type:Boolean,attribute:"no-label"})],t.prototype,"noLabel");a([i({type:String,attribute:"aria-label"})],t.prototype,"ariaLabel");a([i({type:String})],t.prototype,"type");a([i({type:String,reflect:!0})],t.prototype,"value");a([i({type:String})],t.prototype,"placeholder");a([i({type:Number})],t.prototype,"rows");a([i({type:Number})],t.prototype,"cols");a([i({type:String,reflect:!0})],t.prototype,"size");a([i({type:Boolean,reflect:!0})],t.prototype,"capsule");a([i({type:Boolean,reflect:!0})],t.prototype,"rounded");a([i({type:Boolean,reflect:!0})],t.prototype,"underlined");a([i({type:Boolean,reflect:!0,attribute:"underlined-with-background"})],t.prototype,"underlinedWithBackground");a([i({type:Boolean,reflect:!0})],t.prototype,"inline");a([i({type:Boolean,reflect:!0})],t.prototype,"required");a([i({type:Boolean,reflect:!0})],t.prototype,"disabled");a([i({type:Boolean,reflect:!0})],t.prototype,"readonly");a([i({type:Boolean,reflect:!0})],t.prototype,"invalid");a([i({type:String,attribute:"error-message"})],t.prototype,"errorMessage");a([i({type:String,attribute:"help-text"})],t.prototype,"helpText");a([i({attribute:!1})],t.prototype,"onClick");a([i({attribute:!1})],t.prototype,"onInput");a([i({attribute:!1})],t.prototype,"onChange");a([i({attribute:!1})],t.prototype,"onFocus");a([i({attribute:!1})],t.prototype,"onBlur");a([k()],t.prototype,"_hasLeftAddon");a([k()],t.prototype,"_hasRightAddon");customElements.get("ag-input")||customElements.define("ag-input",t);const R=["name",".value",".labelHidden",".noLabel",".capsule",".rounded",".underlined",".underlinedWithBackground",".inline",".required",".disabled",".readonly",".invalid","type","placeholder","label","ariaLabel","helpText","errorMessage","size","rows","cols"],V={key:0,slot:"addon-left"},F={key:1,slot:"addon-right"},K=I({__name:"VueInput",props:{label:{default:""},labelHidden:{type:Boolean,default:!1},labelPosition:{},noLabel:{type:Boolean,default:!1},ariaLabel:{default:""},name:{},type:{default:"text"},value:{default:""},placeholder:{default:""},rows:{default:4},cols:{default:50},size:{default:"default"},capsule:{type:Boolean,default:!1},rounded:{type:Boolean,default:!1},underlined:{type:Boolean,default:!1},underlinedWithBackground:{type:Boolean,default:!1},inline:{type:Boolean,default:!1},required:{type:Boolean,default:!1},disabled:{type:Boolean,default:!1},readonly:{type:Boolean,default:!1},invalid:{type:Boolean,default:!1},errorMessage:{default:""},helpText:{default:""}},emits:["click","input","change","focus","blur","update:value"],setup(n,{emit:e}){const r=e,s=d=>{r("click",d)},o=d=>{r("input",d);const y=d.target;r("update:value",y.value)},u=d=>{r("change",d)},p=d=>{r("focus",d)},w=d=>{r("blur",d)};return(d,y)=>(b(),c("ag-input",T({name:n.name,".value":n.value,".labelHidden":n.labelHidden,".noLabel":n.noLabel,".capsule":n.capsule,".rounded":n.rounded,".underlined":n.underlined,".underlinedWithBackground":n.underlinedWithBackground,".inline":n.inline,".required":n.required,".disabled":n.disabled,".readonly":n.readonly,".invalid":n.invalid,type:n.type,placeholder:n.placeholder,label:n.label,ariaLabel:n.ariaLabel,helpText:n.helpText,errorMessage:n.errorMessage,size:n.size,rows:n.rows,cols:n.cols,onClick:s,onInput:o,onChange:u,onFocus:p,onBlur:w},d.$attrs),[d.$slots["addon-left"]?(b(),c("span",V,[$(d.$slots,"addon-left")])):m("",!0),d.$slots["addon-right"]?(b(),c("span",F,[$(d.$slots,"addon-right")])):m("",!0)],48,R))}});export{K as L};
+    `];let t=f;a([S("input, textarea")],t.prototype,"_inputElement");a([n({type:String})],t.prototype,"label");a([n({type:Boolean,attribute:"label-hidden"})],t.prototype,"labelHidden");a([n({type:String,attribute:"label-position"})],t.prototype,"labelPosition");a([n({type:Boolean,attribute:"no-label"})],t.prototype,"noLabel");a([n({type:String,attribute:"aria-label"})],t.prototype,"ariaLabel");a([n({type:String})],t.prototype,"type");a([n({type:String,reflect:!0})],t.prototype,"value");a([n({type:String})],t.prototype,"placeholder");a([n({type:Number})],t.prototype,"rows");a([n({type:Number})],t.prototype,"cols");a([n({type:String,reflect:!0})],t.prototype,"size");a([n({type:Boolean,reflect:!0})],t.prototype,"capsule");a([n({type:Boolean,reflect:!0})],t.prototype,"rounded");a([n({type:Boolean,reflect:!0})],t.prototype,"underlined");a([n({type:Boolean,reflect:!0,attribute:"underlined-with-background"})],t.prototype,"underlinedWithBackground");a([n({type:Boolean,reflect:!0})],t.prototype,"inline");a([n({type:String})],t.prototype,"min");a([n({type:String})],t.prototype,"max");a([n({type:Boolean,reflect:!0})],t.prototype,"required");a([n({type:Boolean,reflect:!0})],t.prototype,"disabled");a([n({type:Boolean,reflect:!0})],t.prototype,"readonly");a([n({type:Boolean,reflect:!0})],t.prototype,"invalid");a([n({type:String,attribute:"error-message"})],t.prototype,"errorMessage");a([n({type:String,attribute:"help-text"})],t.prototype,"helpText");a([n({attribute:!1})],t.prototype,"onClick");a([n({attribute:!1})],t.prototype,"onInput");a([n({attribute:!1})],t.prototype,"onChange");a([n({attribute:!1})],t.prototype,"onFocus");a([n({attribute:!1})],t.prototype,"onBlur");a([k()],t.prototype,"_hasLeftAddon");a([k()],t.prototype,"_hasRightAddon");customElements.get("ag-input")||customElements.define("ag-input",t);const P=["name",".value",".labelHidden",".noLabel",".capsule",".rounded",".underlined",".underlinedWithBackground",".inline",".required",".disabled",".readonly",".invalid","type","placeholder","label","labelPosition","ariaLabel","helpText","errorMessage","size","rows","cols","min","max"],R={key:0,slot:"addon-left"},V={key:1,slot:"addon-right"},K=I({__name:"VueInput",props:{label:{default:""},labelHidden:{type:Boolean,default:!1},labelPosition:{},noLabel:{type:Boolean,default:!1},ariaLabel:{default:""},name:{},type:{default:"text"},value:{default:""},placeholder:{default:""},rows:{default:4},cols:{default:50},size:{default:"default"},capsule:{type:Boolean,default:!1},rounded:{type:Boolean,default:!1},underlined:{type:Boolean,default:!1},underlinedWithBackground:{type:Boolean,default:!1},inline:{type:Boolean,default:!1},min:{},max:{},required:{type:Boolean,default:!1},disabled:{type:Boolean,default:!1},readonly:{type:Boolean,default:!1},invalid:{type:Boolean,default:!1},errorMessage:{default:""},helpText:{default:""}},emits:["click","input","change","focus","blur","update:value"],setup(i,{emit:e}){const r=e,s=d=>{r("click",d)},o=d=>{r("input",d);const y=d.target;r("update:value",y.value)},u=d=>{r("change",d)},h=d=>{r("focus",d)},w=d=>{r("blur",d)};return(d,y)=>(b(),c("ag-input",T({name:i.name,".value":i.value,".labelHidden":i.labelHidden,".noLabel":i.noLabel,".capsule":i.capsule,".rounded":i.rounded,".underlined":i.underlined,".underlinedWithBackground":i.underlinedWithBackground,".inline":i.inline,".required":i.required,".disabled":i.disabled,".readonly":i.readonly,".invalid":i.invalid,type:i.type,placeholder:i.placeholder,label:i.label,labelPosition:i.labelPosition,ariaLabel:i.ariaLabel,helpText:i.helpText,errorMessage:i.errorMessage,size:i.size,rows:i.rows,cols:i.cols,min:i.min,max:i.max,onClick:s,onInput:o,onChange:u,onFocus:h,onBlur:w},d.$attrs),[d.$slots["addon-left"]?(b(),c("span",R,[$(d.$slots,"addon-left")])):m("",!0),d.$slots["addon-right"]?(b(),c("span",V,[$(d.$slots,"addon-right")])):m("",!0)],48,P))}});export{K as L};
