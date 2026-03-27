@@ -108,7 +108,7 @@ export class AgBadge extends LitElement implements BadgeProps {
       filter: brightness(1.1);
     }
     :host([interactive]) .badge:focus-visible {
-      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
       outline-offset: var(--ag-focus-offset);
     }
     :host([single-char]) .badge {
