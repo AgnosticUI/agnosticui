@@ -147,6 +147,7 @@ Each example project has Playwright tests covering all component categories:
 
 ```bash
 cd v2/examples/react-test   # or vue-test / lit-test
+npm install
 npm run e2e
 ```
 
@@ -154,22 +155,48 @@ Or run all three via the CI workflow as reference (`.github/workflows/verify-exa
 
 ## CLI Development Cycle
 
-For contributors working on the CLI itself (`v2/cli`):
+The example apps in `v2/examples/` reference agnosticui-cli by its **npm registry version** (e.g. `"agnosticui-cli": "^2.0.0-alpha.22"`), not a `file:` path. This creates a chicken-and-egg problem: you cannot test local CLI changes via the normal install path without first publishing to npm.
+
+The workaround is to temporarily override the registry reference with a locally-packed tarball, then **restore** `package.json` and the lock file before committing.
 
 ```bash
+# 1. Build and pack your local CLI changes
 cd v2/cli
 npm run build
 npm pack
-# then update the tarball reference in v2/examples/<framework>-test/package.json
-# and reinstall:
-cd v2/examples/react-test
-rm -rf node_modules package-lock.json && npm install
+# produces agnosticui-cli-2.x.x-alpha.x.tgz in v2/cli/
+
+# 2. Install the local tarball into the example project
+cd v2/examples/react-test   # or vue-test / lit-test
+npm install ../../cli/agnosticui-cli-2.x.x-alpha.x.tgz
+
+# 3. Run and verify your changes
 npx agnosticui-cli <command>
+npm run dev
+
+# 4. Restore package.json and lock file — do NOT commit the local override
+git checkout -- package.json package-lock.json
 ```
 
-## Building the CLI Distribution Tarball
+Repeat steps 1-4 for each example project you need to verify. This workflow lets you iterate on CLI code locally without polluting git history with temporary `file:` or tarball references.
 
-To rebuild the full CLI reference tarball (needed when releasing or testing the end-to-end CLI install flow):
+## Building the v2/lib Reference Tarball
+
+`v2/scripts/build-local-tarball.sh` builds the **component library** reference tarball that the CLI copies into scaffolded projects when a user runs `npx agnosticui-cli init`. It is not a CLI distribution tarball.
+
+If you are working only on `v2/lib` (components, types, styles), a simpler workflow is sufficient:
+
+```bash
+cd v2/lib
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+npm pack
+# produces agnosticui-core-2.x.x-alpha.x.tgz in v2/lib/
+```
+
+Use the script when you need the full structured reference tarball (e.g. for a release or to verify the end-to-end scaffolding flow):
 
 ```bash
 cd v2
