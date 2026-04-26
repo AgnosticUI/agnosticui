@@ -15,7 +15,7 @@ This guide explains how to instruct a large language model to emit `AgNode[]` ar
 
 ## The system prompt template
 
-Copy and customize the block below. Replace the schema JSON placeholder with the actual content of `v2/schema/agnosticui-schema.json` when context budget allows (see [Using agnosticui-schema.json as LLM context](#using-agnosticui-schemajson-as-llm-context)).
+Copy and customize the block below. Replace the schema JSON placeholder with the actual content of `v2/sdui/schema/agnosticui-schema.json` when context budget allows (see [Using agnosticui-schema.json as LLM context](#using-agnosticui-schemajson-as-llm-context)).
 
 ```
 You are generating UI node graphs for the AgnosticUI SDUI system.
@@ -190,7 +190,7 @@ const result = validateGraph(nodes);
 
 ## Using `agnosticui-schema.json` as LLM context
 
-The file `v2/schema/agnosticui-schema.json` is the machine-readable version of the full Zod schema, emitted by:
+The file `v2/sdui/schema/agnosticui-schema.json` is the machine-readable version of the full Zod schema, emitted by:
 
 ```bash
 npm run codegen -- --emit-schema-json
@@ -205,7 +205,7 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
 const schemaJson = readFileSync(
-  resolve('v2/schema/agnosticui-schema.json'),
+  resolve('v2/sdui/schema/agnosticui-schema.json'),
   'utf-8'
 );
 

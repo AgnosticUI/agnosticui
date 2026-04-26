@@ -4,13 +4,16 @@
 AgnosticUI Local (v2) is a CLI-based UI component library that copies Lit web components directly into your project. Developers own the code, can customize it freely, and avoid dependency lock-in.
 
 ## AI Playbooks (Generative UI Patterns)
-The project provides structured **AI Playbooks** designed for agentic and generative UI workflows. Each playbook resides in the `/v2/playbooks/` directory and includes a `PROMPT.md` file that provides LLMs with the specific context needed to assemble AgnosticUI primitives into complex views.
+The project provides structured **AI Playbooks** designed for agentic and generative UI workflows. Each playbook resides in the `/v2/playbooks/` directory and includes prompt files (`PROMPT-3-FRAMEWORKS.md`, `PROMPT-REACT.md`, etc.) that give LLMs the specific context needed to assemble AgnosticUI primitives into complete views.
 
-- **Login Form**: `/v2/playbooks/login/` - Strategic patterns for authentication interfaces.
+- **Login Form**: `/v2/playbooks/login/` - Authentication interface patterns.
 - **Onboarding Wizard**: `/v2/playbooks/onboarding/` - Multi-step state management and flow.
 - **Discovery Dashboard**: `/v2/playbooks/dashboard/` - Layout orchestration for data-heavy views.
 - **Support Center**: `/v2/playbooks/support/` - Knowledge base and help desk interaction patterns.
 - **Data Grid**: `/v2/playbooks/grid/` - Complex table structures with sorting and filtering logic.
+- **Blog**: `/v2/playbooks/blog/` - Content listing and detail page patterns.
+- **Landing Page**: `/v2/playbooks/landing/` - Marketing and hero section layouts.
+- **Form Association**: `/v2/playbooks/form-association/` - Native form participation with FACE components.
 
 ## Key Architecture
 - **Framework**: Built with Lit for web components
@@ -20,7 +23,7 @@ The project provides structured **AI Playbooks** designed for agentic and genera
 - **React/Vue Wrappers**: Core components are wrapped in React and Vue wrappers for native framework experience (props instead of attributes, proper event handling, full TypeScript support). Located in `/v2/lib/src/components/[COMPONENT]/{react|vue}/` and use barrel files to export their API/interface.
 
 ## CLI Usage
-The main entry point is `npx agnosticui-cli` (or `npx ag` if installed locally) which copies components directly into target projects. Run `npx agnosticui-cli --help` for available commands. The CLI is in `/v2/cli`.
+The main entry point is `npx agnosticui-cli` (or `npx ag` if installed locally) which copies components directly into target projects. Available commands: `init`, `add`, `remove`, `list`, `sync`, `storybook`, `playbook`, `context` (and deprecated `view`). Run `npx agnosticui-cli --help` for the current list. The CLI source is in `/v2/cli`.
 
 ## Component Structure
 Each core component is in the `/v2/lib/` - `/v2/lib/src/components/[component-name]/` and contains:
@@ -58,17 +61,34 @@ The project uses a systematic design token approach via Style Dictionary located
 - Contains all user-facing documentation and guides
 - Component API documentation and usage examples
 
-### Development Playgrounds (`/v2/playgrounds/`)
-- Storybooks for React, Lit, and Vue
-- Used for local development and spot checks only
-- Not for production; for component isolation and testing
+### Supplementary Docs (`/v2/docs/`)
+- Architecture docs, dev guides, SDUI spec, LLM prompt guide
+- `llm-prompt-guide.md` - How to instruct LLMs to emit AgNode graphs for the SDUI system
+- `sdui-architecture.md` - Full SDUI codegen pipeline and CI architecture
+
+### Skins (`/v2/skins/`)
+- `skins-bundle.css` - All named skin themes in one file
+- `skin-switcher.css` + `skin-switcher-core.js` - Runtime theme switching utilities
+- One subdirectory per named skin (e.g. `autumn-slate/`, `cyberpunk/`, `midnight/`)
+
+### SDUI (`/v2/sdui/`)
+- Schema-driven, framework-agnostic UI rendering via `AgNode[]` graphs
+- `schema/` - JSON schema (`agnosticui-schema.json`), spec, source, dist; package name `@agnosticui/schema`
+- `renderers/` - React, Vue, and Lit `AgDynamicRenderer` implementations
+- `demo/`, `demo-vue/`, `demo-lit/` - Framework-specific SDUI demo apps
+- `demo-llm/` - Experimental LLM-driven SDUI demo
+
+### Scripts (`/v2/scripts/`)
+- `build-local-tarball.sh` - Build and pack CLI as a local tarball for testing
+- `generate-playbooks-manifest.mjs` - Regenerate `playbooks-manifest.json`
+- `scaffold-component.mjs` - Scaffold a new component skeleton
+- `verify-examples.mjs` / `verify-playbooks.mjs` - Smoke-test example and playbook apps
 
 ### Test Examples (`/v2/examples/`)
 - `/v2/examples/lit-test/` - Lit consumption test artifacts
 - `/v2/examples/react-test/` - React consumption test artifacts
 - `/v2/examples/vue-test/` - Vue consumption test artifacts
-- Manual testing artifacts from CLI-based component consumption
-- Real-world integration validation
+- Real-world integration validation; each has Storybook available via `npx agnosticui-cli storybook`
 
 ## Development Setup
 - Node.js environment required
