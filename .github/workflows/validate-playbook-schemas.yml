@@ -1,0 +1,28 @@
+name: Validate playbook sdui.json schemas
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'v2/playbooks/**/sdui.json'
+      - 'v2/playbooks/playbook-sdui.schema.json'
+      - 'v2/scripts/validate-playbook-schemas.mjs'
+  pull_request:
+    paths:
+      - 'v2/playbooks/**/sdui.json'
+      - 'v2/playbooks/playbook-sdui.schema.json'
+      - 'v2/scripts/validate-playbook-schemas.mjs'
+
+jobs:
+  validate:
+    name: Validate sdui.json files against playbook-sdui.schema.json
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate playbook schemas
+        run: node v2/scripts/validate-playbook-schemas.mjs
