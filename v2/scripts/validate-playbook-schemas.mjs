@@ -2,8 +2,9 @@
 /**
  * validate-playbook-schemas.mjs
  *
- * Validates every sdui.json file found under v2/playbooks/ against the
- * canonical schema at v2/playbooks/playbook-sdui.schema.json.
+ * Two checks in one pass:
+ *   1. Schema health — every typed node in playbook-sdui.schema.json has a description.
+ *   2. Instance validation — every sdui.json under v2/playbooks/ satisfies the schema rules.
  *
  * Validation rules mirror JSON Schema draft-07 for the fields defined in
  * playbook-sdui.schema.json without requiring an external validator package.
@@ -12,8 +13,8 @@
  *   node v2/scripts/validate-playbook-schemas.mjs
  *
  * Exit codes:
- *   0 — all files valid (or no sdui.json files found)
- *   1 — one or more files failed validation
+ *   0 — schema healthy and all instance files valid (or no sdui.json files found)
+ *   1 — schema missing descriptions, or one or more instance files failed validation
  */
 
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
@@ -38,6 +39,19 @@ function warn(msg) { console.log(`  ${YELLOW}!${RESET} ${msg}`); }
 
 // Current expected schema version — bump when playbook-sdui.schema.json shape changes.
 const CURRENT_SCHEMA_VERSION = 1;
+
+/**
+ * Walk a JSON Schema object and collect paths of typed nodes missing a description.
+ * Catches authoring gaps in playbook-sdui.schema.json before instance files are checked.
+ */
+function checkSchemaHealth(node, path = 'schema', issues = []) {
+  if (node.type && !node.description && path !== 'schema') issues.push(path);
+  if (node.properties) {
+    for (const [k, v] of Object.entries(node.properties)) checkSchemaHealth(v, `${path}.${k}`, issues);
+  }
+  if (node.items) checkSchemaHealth(node.items, `${path}.items`, issues);
+  return issues;
+}
 
 /**
  * Recursively find all sdui.json files under a directory.
@@ -169,6 +183,18 @@ if (!existsSync(SCHEMA_PATH)) {
   console.error(`${RED}Schema file not found: ${SCHEMA_PATH}${RESET}`);
   process.exit(1);
 }
+
+// ── Schema health check (runs even when no sdui.json files exist yet) ────────
+console.log(`${BOLD}playbooks/playbook-sdui.schema.json${RESET}`);
+const schema = JSON.parse(readFileSync(SCHEMA_PATH, 'utf-8'));
+const schemaIssues = checkSchemaHealth(schema);
+if (schemaIssues.length > 0) {
+  for (const p of schemaIssues) fail(`Missing description: ${p}`);
+  console.log('');
+  process.exit(1);
+}
+pass('All schema nodes have descriptions');
+console.log('');
 
 const files = findSduiFiles(PLAYBOOKS_DIR);
 
