@@ -173,6 +173,11 @@ export function generateManifest() {
     if (meta.externalFiles) entry.externalFiles = meta.externalFiles;
     if (meta.contentReplacements) entry.contentReplacements = meta.contentReplacements;
 
+    // Include root-level sdui.json when present (agentic intent decoration file).
+    if (existsSync(join(PLAYBOOKS_DIR, basePath, 'sdui.json'))) {
+      entry.rootFiles = ['sdui.json'];
+    }
+
     playbooks[slug] = entry;
   }
 

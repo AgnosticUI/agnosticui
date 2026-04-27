@@ -1,0 +1,26 @@
+{
+  "$schema": "../playbook-sdui.schema.json",
+  "version": 1,
+  "slug": "grid",
+  "displayName": "Data Grid",
+  "description": "E-commerce inventory admin screen with a segmented control to swap between three table implementations: AgnosticUI Table, Grid.js, and TanStack Table.",
+  "intent": {
+    "triggers": ["data grid", "table", "sortable list", "data table", "inventory", "admin table", "spreadsheet view"],
+    "summary": "When the user asks for a data grid, sortable table, or inventory screen, refer to the AgnosticUI Data Grid Playbook."
+  },
+  "recipe": {
+    "layout": "App shell with a fixed Header and Breadcrumb trail (Home / Inventory). Main content area: 'View as' segmented control (Simple / Grid.js / TanStack) in the top-right corner. Below it, a toolbar row with a search Input, filter Selects, and bulk-action Buttons. The active table panel fills the remaining space. Pagination row at the bottom.",
+    "components": [
+      { "component": "AgHeader",     "role": "App shell top bar with logo" },
+      { "component": "AgBreadcrumb", "role": "Home / Inventory navigation trail above the table" },
+      { "component": "AgInput",      "role": "Search box that filters table rows in real time" },
+      { "component": "AgSelect",     "role": "Category and status filter dropdowns in the toolbar" },
+      { "component": "AgCheckbox",   "role": "Per-row and select-all checkboxes for bulk actions" },
+      { "component": "AgTag",        "role": "Stock status labels (In Stock, Low, Out of Stock)" },
+      { "component": "AgPagination", "role": "Page through the product dataset" },
+      { "component": "AgDialog",     "role": "Confirmation modal for destructive bulk-delete actions" },
+      { "component": "AgEmptyState", "role": "Zero-results placeholder when filters match no rows" }
+    ],
+    "notes": "Each row's stock status maps to an AgTag variant. Example:\n```json\n{ \"id\": \"status-tag\", \"component\": \"AgTag\", \"props\": { \"label\": \"Low Stock\", \"variant\": \"warning\" } }\n```"
+  }
+}

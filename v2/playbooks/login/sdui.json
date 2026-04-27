@@ -1,0 +1,24 @@
+{
+  "$schema": "../playbook-sdui.schema.json",
+  "version": 1,
+  "slug": "login",
+  "displayName": "Login Form",
+  "description": "Centered authentication form with social login buttons, email/password inputs, and a remember-me checkbox on a full-bleed background image.",
+  "intent": {
+    "triggers": ["login", "sign in", "authentication", "auth form", "user login", "sign up"],
+    "summary": "When the user asks for a login or sign-in page, refer to the AgnosticUI Login Form Playbook."
+  },
+  "recipe": {
+    "layout": "Full-bleed background image. AgCard centered vertically and horizontally holds the logo, social login buttons, a labeled divider, email and password inputs, a remember-me checkbox, the primary submit button, and a forgot-password link.",
+    "components": [
+      { "component": "AgCard",     "role": "Floating panel that groups all form controls" },
+      { "component": "AgButton",   "role": "Social login (Google, Facebook) and primary submit action" },
+      { "component": "AgInput",    "role": "Email address and password credential fields" },
+      { "component": "AgCheckbox", "role": "Remember me opt-in below the password field" },
+      { "component": "AgDivider",  "role": "Visual separator between social and credential sections" },
+      { "component": "AgImage",    "role": "Full-bleed background and in-card logo" },
+      { "component": "AgLink",     "role": "Forgot password and create account navigation links" }
+    ],
+    "notes": "Social buttons come first, then a labeled AgDivider, then credential inputs. Example AgNode for the password field:\n```json\n{ \"id\": \"pwd\", \"component\": \"AgInput\", \"props\": { \"type\": \"password\", \"label\": \"Password\", \"name\": \"password\", \"required\": true } }\n```"
+  }
+}
