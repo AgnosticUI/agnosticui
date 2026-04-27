@@ -1,0 +1,25 @@
+{
+  "$schema": "../playbook-sdui.schema.json",
+  "version": 1,
+  "slug": "blog",
+  "displayName": "Blog / Article Reader",
+  "description": "Single-column editorial reading experience with scroll-progress tracking, rich article body, tagged categories, and a related-articles section.",
+  "intent": {
+    "triggers": ["blog", "articles", "content listing", "post detail", "editorial", "article reader", "reading experience"],
+    "summary": "When the user asks for a blog, article reader, or content-listing page, refer to the AgnosticUI Blog / Article Reader Playbook."
+  },
+  "recipe": {
+    "layout": "Single-column centered layout. AgScrollProgress bar pinned to the top edge. Article header: title, author AgAvatar, date, AgTag list. Full-width hero image in AgAspectRatio. Body copy with AgMark highlights. AgDivider between sections. Related articles AgTabs below the body. AgScrollToButton fixed in the bottom-right corner.",
+    "components": [
+      { "component": "AgScrollProgress", "role": "Thin progress bar at the top edge tracking read depth" },
+      { "component": "AgAvatar",         "role": "Author photo in the article byline" },
+      { "component": "AgTag",            "role": "Category and topic labels below the article title" },
+      { "component": "AgAspectRatio",    "role": "Constrains the hero image to a fixed ratio at any width" },
+      { "component": "AgMark",           "role": "Highlighted pull-quotes or keyword emphasis in body text" },
+      { "component": "AgTabs",           "role": "Switches between Related Articles, Comments, and Newsletter sections" },
+      { "component": "AgScrollToButton", "role": "Floating button that scrolls back to the top after reading" },
+      { "component": "AgBadge",          "role": "Estimated read-time badge displayed beside the article title" }
+    ],
+    "notes": "The hero image sits inside AgAspectRatio so it never reflows on resize. Example:\n```json\n{ \"id\": \"hero\", \"component\": \"AgAspectRatio\", \"props\": { \"ratio\": \"16/9\" }, \"children\": [\"hero-img\"] }\n```"
+  }
+}

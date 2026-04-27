@@ -1,0 +1,25 @@
+{
+  "$schema": "../playbook-sdui.schema.json",
+  "version": 1,
+  "slug": "dashboard",
+  "displayName": "Discovery Dashboard",
+  "description": "Layout orchestration for data-heavy views with metric KPI tiles, sidebar navigation, and tabbed content panels.",
+  "intent": {
+    "triggers": ["dashboard", "analytics", "metrics", "admin panel", "overview", "data view", "home screen"],
+    "summary": "When the user asks for a dashboard or analytics view, refer to the AgnosticUI Discovery Dashboard Playbook."
+  },
+  "recipe": {
+    "layout": "Sidebar navigation on the left, fixed Header across the top, main content area on the right. Main area: horizontal stats bar (3-4 metric AgCard tiles) above a tabbed content section.",
+    "components": [
+      { "component": "AgSidebar",       "role": "Persistent left-nav with icon links to app sections" },
+      { "component": "AgHeader",        "role": "Top bar with logo, breadcrumb, and user avatar" },
+      { "component": "AgCard",          "role": "Metric KPI tile in the top stats bar" },
+      { "component": "AgTabs",          "role": "Switch between content sections (Overview, Reports, Users)" },
+      { "component": "AgBadge",         "role": "Status indicator on data rows (Active, Pending, Error)" },
+      { "component": "AgAvatar",        "role": "User profile in the top-right header area" },
+      { "component": "AgSkeletonLoader","role": "Placeholder shown while async data loads" },
+      { "component": "AgButton",        "role": "Primary actions such as Export or Add New" }
+    ],
+    "notes": "Group metric cards in a horizontal flex container. Each card follows this shape:\n```json\n[\n  { \"id\": \"metric-revenue\", \"component\": \"AgCard\", \"children\": [\"metric-label\", \"metric-value\"] },\n  { \"id\": \"metric-label\",   \"component\": \"AgText\", \"text\": \"Revenue\", \"el\": \"p\" },\n  { \"id\": \"metric-value\",   \"component\": \"AgText\", \"text\": \"$12,400\", \"el\": \"h2\" }\n]\n```"
+  }
+}

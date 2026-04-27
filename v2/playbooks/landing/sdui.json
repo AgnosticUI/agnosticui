@@ -1,0 +1,25 @@
+{
+  "$schema": "../playbook-sdui.schema.json",
+  "version": 1,
+  "slug": "landing",
+  "displayName": "Landing / Marketing Page",
+  "description": "High-contrast marketing page with animated Lab (Fx) components, a sticky header, feature cards, testimonials, pricing tabs, and an FAQ accordion.",
+  "intent": {
+    "triggers": ["landing page", "marketing", "hero section", "homepage", "marketing page", "product page", "promotional page"],
+    "summary": "When the user asks for a landing page, marketing page, or product homepage, refer to the AgnosticUI Landing / Marketing Page Playbook."
+  },
+  "recipe": {
+    "layout": "Full-width vertical stack. Sticky AgHeader at top. Sections in order: Hero (large heading + animated AgButtonFx CTA), Features grid (3-column AgCards), Testimonials (AgAvatar + quotes), Pricing (AgTabs toggling monthly/annual plans), FAQ (AgAccordion), Footer. AgSkinSwitcher FAB fixed bottom-right for live theme switching.",
+    "components": [
+      { "component": "AgHeader",      "role": "Sticky navigation bar with logo and primary CTA" },
+      { "component": "AgButtonFx",    "role": "Animated primary call-to-action in the hero section" },
+      { "component": "AgBadgeFx",     "role": "Animated 'New' or promotional label above the hero headline" },
+      { "component": "AgIconButtonFx","role": "Animated icon actions in the feature highlight section" },
+      { "component": "AgCard",        "role": "Feature highlight tile in the three-column features grid" },
+      { "component": "AgAvatar",      "role": "Testimonial author portrait beside the quote" },
+      { "component": "AgTabs",        "role": "Toggle between monthly and annual pricing plans" },
+      { "component": "AgAccordion",   "role": "Expand/collapse individual FAQ items" }
+    ],
+    "notes": "Fx components accept the same props as their base counterparts plus an 'fx' animation variant. Hero CTA example:\n```json\n{ \"id\": \"hero-cta\", \"component\": \"AgButtonFx\", \"props\": { \"fx\": \"zoom\", \"label\": \"Get started free\", \"variant\": \"primary\" } }\n```"
+  }
+}

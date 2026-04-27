@@ -1,0 +1,26 @@
+{
+  "$schema": "../playbook-sdui.schema.json",
+  "version": 1,
+  "slug": "support",
+  "displayName": "Support Center",
+  "description": "Tabbed support hub with live chat, knowledge base search, ticket submission, and account settings.",
+  "intent": {
+    "triggers": ["support", "help center", "knowledge base", "FAQ", "tickets", "live chat", "customer support", "help desk"],
+    "summary": "When the user asks for a support center, help desk, or customer service portal, refer to the AgnosticUI Support Center Playbook."
+  },
+  "recipe": {
+    "layout": "Full-width page with a fixed Header. Main content is a four-tab layout: Live Chat, Knowledge Base, Submit a Ticket, and Settings. Each tab fills the remaining viewport height.",
+    "components": [
+      { "component": "AgTabs",          "role": "Top-level navigation between the four support sections" },
+      { "component": "AgMessageBubble", "role": "Individual chat messages in the Live Chat tab" },
+      { "component": "AgCombobox",      "role": "Search-as-you-type knowledge base article lookup" },
+      { "component": "AgDialog",        "role": "Article preview modal opened from search results" },
+      { "component": "AgDrawer",        "role": "Ticket history side panel that slides in from the edge" },
+      { "component": "AgSelect",        "role": "Category and priority dropdowns in the ticket form" },
+      { "component": "AgPagination",    "role": "Page through ticket history results" },
+      { "component": "AgRating",        "role": "Post-resolution satisfaction rating widget" },
+      { "component": "AgToggle",        "role": "Notification preference switches in the Settings tab" }
+    ],
+    "notes": "The Live Chat tab keeps AgMessageBubble items in a scrollable flex column, newest at the bottom. Example AgNode for a chat message:\n```json\n{ \"id\": \"msg-1\", \"component\": \"AgMessageBubble\", \"props\": { \"isMe\": false, \"text\": \"How can I help you today?\" } }\n```"
+  }
+}

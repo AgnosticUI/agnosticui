@@ -1,0 +1,23 @@
+{
+  "$schema": "../playbook-sdui.schema.json",
+  "version": 1,
+  "slug": "onboarding",
+  "displayName": "Onboarding Wizard",
+  "description": "Multi-step wizard that guides a new user through path selection, interest choices, and a review screen before launching the app.",
+  "intent": {
+    "triggers": ["onboarding", "wizard", "multi-step", "getting started", "user setup", "setup flow", "step wizard"],
+    "summary": "When the user asks for an onboarding wizard or multi-step setup flow, refer to the AgnosticUI Onboarding Wizard Playbook."
+  },
+  "recipe": {
+    "layout": "Full-viewport single-page app. AgProgress indicator at the top tracks the current step. Center content area renders one step at a time. Persistent Back/Next navigation row at the bottom (the interstitial step replaces it with a top Back link and full-width Next button).",
+    "components": [
+      { "component": "AgProgress",            "role": "Step indicator showing how far through the wizard the user is" },
+      { "component": "AgSelectionCardGroup",  "role": "Card-grid for path selection and interest multi-select steps" },
+      { "component": "AgSelectionButtonGroup","role": "Pill-button group for single-select choices (e.g. framework preference)" },
+      { "component": "AgButton",              "role": "Back, Next, and final submit actions" },
+      { "component": "AgAlert",               "role": "Confirmation message on the review and completion step" },
+      { "component": "AgIcon",                "role": "Decorative icons inside selection cards" }
+    ],
+    "notes": "Each step is a separate component rendered conditionally by a step index. Example AgNode for the path-selection step:\n```json\n{ \"id\": \"path-group\", \"component\": \"AgSelectionCardGroup\", \"props\": { \"multiple\": false }, \"children\": [\"card-frontend\", \"card-backend\", \"card-fullstack\"] }\n```"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "../playbook-sdui.schema.json",
+  "version": 1,
+  "slug": "form-association",
+  "displayName": "Contact Form (FACE)",
+  "description": "Contact form demonstrating Form Associated Custom Elements (FACE): native FormData submission, form.reset(), and constraint validation with no manual JS state wiring.",
+  "intent": {
+    "triggers": ["form", "native form", "form submission", "form validation", "contact form", "FACE", "form associated custom elements"],
+    "summary": "When the user asks for a contact form, native form submission, or FACE demonstration, refer to the AgnosticUI Contact Form (FACE) Playbook."
+  },
+  "recipe": {
+    "layout": "Centered single-column form. Fields stack vertically: Full Name, Email, Phone (optional), Message textarea, Newsletter Frequency selection group, Preferred Contact Method radio group (in a fieldset), Subscribe checkbox, Terms toggle. Submit and Reset buttons at the bottom.",
+    "components": [
+      { "component": "AgInput",              "role": "Full Name, Email, Phone, and Message fields; values surface via native FormData" },
+      { "component": "AgSelectionButtonGroup","role": "Newsletter Frequency: Weekly / Monthly / Major announcements only (radio, required)" },
+      { "component": "AgRadio",              "role": "Preferred Contact Method group sharing a name attribute inside a fieldset" },
+      { "component": "AgCheckbox",           "role": "Optional newsletter subscribe opt-in" },
+      { "component": "AgToggle",             "role": "Required Terms acceptance with custom validationMessages for i18n" },
+      { "component": "AgButton",             "role": "Submit and Reset form actions at the bottom of the form" },
+      { "component": "AgDivider",            "role": "Visual separator between form sections" }
+    ],
+    "notes": "No JS state needed for field values — ag-input participates in the parent <form> natively via FACE. Terms toggle with custom error copy:\n```json\n{ \"id\": \"terms\", \"component\": \"AgToggle\", \"props\": { \"name\": \"terms\", \"required\": true, \"validationMessages\": { \"valueMissing\": \"Please accept the terms to continue.\" } } }\n```"
+  }
+}

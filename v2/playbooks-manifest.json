@@ -203,7 +203,10 @@
       },
       "contentReplacements": {
         "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     },
     "login-v2": {
       "title": "Login Variant II",
@@ -426,7 +429,10 @@
       },
       "contentReplacements": {
         "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     },
     "onboarding": {
       "title": "Onboarding",
@@ -632,7 +638,10 @@
       },
       "contentReplacements": {
         "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     },
     "onboarding-v2": {
       "title": "Onboarding Carousel Wizard V2",
@@ -824,7 +833,10 @@
       },
       "contentReplacements": {
         "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     },
     "dashboard": {
       "title": "Dashboard",
@@ -1407,7 +1419,10 @@
       },
       "contentReplacements": {
         "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     },
     "support": {
       "title": "Support Center",
@@ -1732,7 +1747,10 @@
       },
       "contentReplacements": {
         "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     },
     "grid": {
       "title": "Data Grid",
@@ -2061,7 +2079,10 @@
       },
       "contentReplacements": {
         "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     },
     "grid-v2": {
       "title": "Data Grid V2",
@@ -2398,7 +2419,10 @@
       },
       "contentReplacements": {
         "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     },
     "blog": {
       "title": "Blog / Article Reader",
@@ -2705,7 +2729,10 @@
       },
       "contentReplacements": {
         "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     },
     "landing": {
       "title": "Landing / Marketing Page",
@@ -2970,7 +2997,10 @@
       },
       "contentReplacements": {
         "../../../../skins/skin-switcher-core.js": "./skins/skin-switcher-core.js"
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     },
     "form-association": {
       "title": "Contact Form (FACE)",
@@ -3206,7 +3236,10 @@
             "tsconfig.json"
           ]
         }
-      }
+      },
+      "rootFiles": [
+        "sdui.json"
+      ]
     }
   }
 }
