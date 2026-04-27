@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AgnosticUI Playbook Agentic Intent",
+  "type": "object",
+  "required": ["version", "slug", "displayName", "description", "intent", "recipe"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "description": "Schema version. Increment when the shape changes so the CLI can warn about stale files.",
+      "minimum": 1
+    },
+    "slug": {
+      "type": "string",
+      "description": "Matches the playbook directory name (e.g. 'dashboard')"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Human-readable name shown in UIs and docs (e.g. 'Dashboard')"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-sentence description of what the playbook demonstrates"
+    },
+    "intent": {
+      "type": "object",
+      "description": "Signals that identify when an AI agent should recommend this playbook based on user intent",
+      "required": ["triggers", "summary"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "items": { "type": "string", "description": "A natural-language phrase that signals this playbook" },
+          "minItems": 1,
+          "description": "Natural-language phrases that indicate a user wants this playbook (e.g. 'dashboard', 'analytics', 'admin panel')"
+        },
+        "summary": {
+          "type": "string",
+          "description": "One-sentence directive for the LLM: 'When the user asks for X, refer to the AgnosticUI Y Playbook.'"
+        }
+      },
+      "additionalProperties": false
+    },
+    "recipe": {
+      "type": "object",
+      "description": "Structural recipe describing how to build this UI pattern using AgnosticUI components",
+      "required": ["layout", "components"],
+      "properties": {
+        "layout": {
+          "type": "string",
+          "description": "Plain-English description of the page layout skeleton"
+        },
+        "components": {
+          "type": "array",
+          "description": "AgnosticUI components used in this playbook and the role each plays",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "description": "A single AgnosticUI component entry specifying its name and role in the playbook",
+            "required": ["component", "role"],
+            "properties": {
+              "component": {
+                "type": "string",
+                "description": "AgnosticUI component name (e.g. 'AgCard')"
+              },
+              "role": {
+                "type": "string",
+                "description": "What this component does in this specific playbook"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional implementation hints. Include 1-2 small JSON snippets as 'syntax flavor' to give the LLM enough context to generate correct AgNode graphs without requiring a full sampleGraph."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
