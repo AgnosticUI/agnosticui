@@ -49,6 +49,9 @@ Each playbook directory follows this structure:
 ├── PROMPT-VUE.md          # Builds Vue only → vue/      (login only)
 ├── PROMPT-LIT.md          # Builds Lit only → lit/      (login only)
 │
+│ # AGENTIC INTENT (required when PROMPT-3-FRAMEWORKS.md exists — CI hard-fails if missing)
+├── sdui.json              # Machine-readable metadata for AI agent discovery
+│
 │ # DESIGN ASSETS (shared resources referenced by prompts)
 ├── design/                # Mockups, logos, icons (varies per playbook)
 │
@@ -177,15 +180,29 @@ Each prompt should include:
 
 See `login/PROMPT-*.md` for reference.
 
-### 4. Update the StackBlitz Config
+### 4. Generate the sdui.json scaffold
+
+Every playbook with a `PROMPT-3-FRAMEWORKS.md` must ship a `sdui.json` — CI hard-fails without it. The scaffold script reads your PROMPT file, extracts the component list, and writes a structurally valid `sdui.json` with `TODO` placeholders for the fields that require human authorship:
+
+```bash
+node v2/scripts/draft-sdui-json.mjs <playbook-name>
+```
+
+Open the generated file and replace every `TODO` string. See `v2/docs/agentic-intent-authoring-guide.md` for field-by-field guidance and examples from existing playbooks. When done, validate:
+
+```bash
+node v2/scripts/validate-playbook-schemas.mjs
+```
+
+### 5. Update the StackBlitz Config
 
 Edit `v2/site/docs/.vitepress/theme/components/playbooks-config.ts` to include the new playbook.
 
-### 5. Create the Documentation Page
+### 6. Create the Documentation Page
 
 Add a markdown file at `v2/site/docs/playbooks/[name].md` with the PlaybookStackBlitz component.
 
-### 6. Add to Navigation
+### 7. Add to Navigation
 
 Update `v2/site/docs/.vitepress/config.mts` to include the new playbook in the sidebar.
 

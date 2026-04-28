@@ -173,8 +173,8 @@ function checkExample(exampleDir) {
 }
 
 /**
- * Check 6: every playbook with PROMPT-3-FRAMEWORKS.md should also have sdui.json.
- * Warns only — does not hard-fail or increment totalIssues.
+ * Check 6: every playbook with PROMPT-3-FRAMEWORKS.md must also have sdui.json.
+ * Hard-fails so CI blocks the PR — the fix is one command (draft-sdui-json.mjs).
  */
 function checkPlaybookSduiJson() {
   console.log(`\n${BOLD}Playbook sdui.json coverage${RESET}`);
@@ -186,13 +186,14 @@ function checkPlaybookSduiJson() {
     if (existsSync(join(playbookDir, 'sdui.json'))) {
       pass(`${entry.name}: sdui.json present`);
     } else {
-      warn(`${entry.name}: has PROMPT-3-FRAMEWORKS.md but no sdui.json -- run: node v2/scripts/draft-sdui-json.mjs ${entry.name}`);
+      fail(`${entry.name}: has PROMPT-3-FRAMEWORKS.md but no sdui.json -- run: node v2/scripts/draft-sdui-json.mjs ${entry.name}`);
       missing++;
     }
   }
   if (missing === 0) {
     console.log(`  ${GREEN}All playbooks with PROMPT-3-FRAMEWORKS.md have sdui.json${RESET}`);
   }
+  return missing;
 }
 
 /**
@@ -228,7 +229,7 @@ for (const example of examples.sort()) {
   totalIssues += checkExample(example);
 }
 
-checkPlaybookSduiJson();
+totalIssues += checkPlaybookSduiJson();
 totalIssues += checkManifestCurrency();
 
 console.log(`\n${BOLD}Summary:${RESET} ${totalIssues === 0

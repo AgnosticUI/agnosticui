@@ -189,7 +189,7 @@ node v2/scripts/draft-sdui-json.mjs <playbook-name>
 node v2/scripts/validate-playbook-schemas.mjs
 ```
 
-CI runs the same validation automatically on any change to `v2/playbooks/**`.
+CI runs the same validation automatically on any change to `v2/playbooks/**`, and hard-fails if `sdui.json` is missing entirely.
 
 ### What the script generates
 
