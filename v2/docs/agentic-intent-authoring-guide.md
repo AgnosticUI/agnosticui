@@ -166,3 +166,44 @@ CI runs this automatically on any change to `v2/playbooks/**`.
 ## Schema reference
 
 The canonical schema lives at `v2/playbooks/playbook-sdui.schema.json`. When the schema version increments, update the `version` field in your `sdui.json` and adjust any fields that changed.
+
+---
+
+## Creating sdui.json for a new playbook
+
+Every playbook that has a `PROMPT-3-FRAMEWORKS.md` should also ship a `sdui.json`. A scaffold script handles the structural boilerplate and extracts real component names from the PROMPT file automatically — so you only need to fill in the semantic content.
+
+### Workflow
+
+1. Author `PROMPT-3-FRAMEWORKS.md` for your new playbook as usual.
+2. Run the scaffold script, substituting your playbook's directory name:
+
+```bash
+node v2/scripts/draft-sdui-json.mjs <playbook-name>
+```
+
+3. Open the generated `sdui.json` and replace every `TODO` string (see below).
+4. Validate locally before committing:
+
+```bash
+node v2/scripts/validate-playbook-schemas.mjs
+```
+
+CI runs the same validation automatically on any change to `v2/playbooks/**`, and hard-fails if `sdui.json` is missing entirely.
+
+### What the script generates
+
+The script extracts the component list from the `npx agnosticui-cli add` commands in the PROMPT file and pre-populates `recipe.components[].component` with the correct `Ag`-prefixed names. All other fields that require understanding the playbook's design intent are scaffolded with `TODO` placeholder strings.
+
+The resulting file is structurally valid against the schema — you never need to look up which keys are required or how to spell them. You only replace the `TODO` values:
+
+| Field | What to write |
+|---|---|
+| `description` | One sentence describing what the playbook demonstrates |
+| `intent.triggers` | Natural-language phrases a user might type; include synonyms and domain terms |
+| `intent.summary` | Single directive sentence: *"When the user asks for X, refer to the AgnosticUI Y Playbook."* |
+| `recipe.layout` | Plain-English description of the page layout skeleton — describe regions, not components |
+| `recipe.components[].role` | What that specific component does in *this* playbook (not a generic description) |
+| `recipe.notes` | Optional — 1-2 implementation hints with a small AgNode JSON snippet; delete the field if not needed |
+
+Refer to the **Fields** section above and the existing `sdui.json` files in other playbooks as examples.

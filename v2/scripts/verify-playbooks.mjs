@@ -173,7 +173,31 @@ function checkExample(exampleDir) {
 }
 
 /**
- * Check 6: playbooks-manifest.json currency
+ * Check 6: every playbook with PROMPT-3-FRAMEWORKS.md must also have sdui.json.
+ * Hard-fails so CI blocks the PR — the fix is one command (draft-sdui-json.mjs).
+ */
+function checkPlaybookSduiJson() {
+  console.log(`\n${BOLD}Playbook sdui.json coverage${RESET}`);
+  const entries = readdirSync(PLAYBOOKS_DIR, { withFileTypes: true });
+  let missing = 0;
+  for (const entry of entries.filter(e => e.isDirectory()).sort((a, b) => a.name.localeCompare(b.name))) {
+    const playbookDir = join(PLAYBOOKS_DIR, entry.name);
+    if (!existsSync(join(playbookDir, 'PROMPT-3-FRAMEWORKS.md'))) continue;
+    if (existsSync(join(playbookDir, 'sdui.json'))) {
+      pass(`${entry.name}: sdui.json present`);
+    } else {
+      fail(`${entry.name}: has PROMPT-3-FRAMEWORKS.md but no sdui.json -- run: node v2/scripts/draft-sdui-json.mjs ${entry.name}`);
+      missing++;
+    }
+  }
+  if (missing === 0) {
+    console.log(`  ${GREEN}All playbooks with PROMPT-3-FRAMEWORKS.md have sdui.json${RESET}`);
+  }
+  return missing;
+}
+
+/**
+ * Check 7: playbooks-manifest.json currency
  * Re-generates the manifest from disk and compares to the committed copy.
  * Returns the number of issues found (0 or 1).
  */
@@ -205,6 +229,7 @@ for (const example of examples.sort()) {
   totalIssues += checkExample(example);
 }
 
+totalIssues += checkPlaybookSduiJson();
 totalIssues += checkManifestCurrency();
 
 console.log(`\n${BOLD}Summary:${RESET} ${totalIssues === 0
