@@ -186,7 +186,7 @@ function checkPlaybookSduiJson() {
     if (existsSync(join(playbookDir, 'sdui.json'))) {
       pass(`${entry.name}: sdui.json present`);
     } else {
-      warn(`${entry.name}: has PROMPT-3-FRAMEWORKS.md but no sdui.json -- use the AI drafting prompt in v2/docs/agentic-intent-authoring-guide.md`);
+      warn(`${entry.name}: has PROMPT-3-FRAMEWORKS.md but no sdui.json -- run: node v2/scripts/draft-sdui-json.mjs ${entry.name}`);
       missing++;
     }
   }

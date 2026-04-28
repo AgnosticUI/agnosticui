@@ -171,13 +171,18 @@ The canonical schema lives at `v2/playbooks/playbook-sdui.schema.json`. When the
 
 ## Creating sdui.json for a new playbook
 
-Every playbook that has a `PROMPT-3-FRAMEWORKS.md` should also ship a `sdui.json`. Because the PROMPT file already contains the full layout description, component list, and design intent, an AI agent can draft a high-quality `sdui.json` in one pass.
+Every playbook that has a `PROMPT-3-FRAMEWORKS.md` should also ship a `sdui.json`. A scaffold script handles the structural boilerplate and extracts real component names from the PROMPT file automatically — so you only need to fill in the semantic content.
 
 ### Workflow
 
 1. Author `PROMPT-3-FRAMEWORKS.md` for your new playbook as usual.
-2. Paste the drafting prompt below into your AI coding assistant (e.g. Claude Code), substituting your playbook's directory name for `[PLAYBOOK]`.
-3. Review the draft against this guide field-by-field.
+2. Run the scaffold script, substituting your playbook's directory name:
+
+```bash
+node v2/scripts/draft-sdui-json.mjs <playbook-name>
+```
+
+3. Open the generated `sdui.json` and replace every `TODO` string (see below).
 4. Validate locally before committing:
 
 ```bash
@@ -186,38 +191,19 @@ node v2/scripts/validate-playbook-schemas.mjs
 
 CI runs the same validation automatically on any change to `v2/playbooks/**`.
 
-### AI drafting prompt
+### What the script generates
 
-```
-Draft a `sdui.json` file for the AgnosticUI playbook at `v2/playbooks/[PLAYBOOK]/`.
+The script extracts the component list from the `npx agnosticui-cli add` commands in the PROMPT file and pre-populates `recipe.components[].component` with the correct `Ag`-prefixed names. All other fields that require understanding the playbook's design intent are scaffolded with `TODO` placeholder strings.
 
-Before writing anything, read these reference materials:
-- Schema:          v2/playbooks/playbook-sdui.schema.json
-- Authoring guide: v2/docs/agentic-intent-authoring-guide.md
-- Existing examples (read all 8 as few-shot grounding):
-    v2/playbooks/login/sdui.json
-    v2/playbooks/dashboard/sdui.json
-    v2/playbooks/onboarding/sdui.json
-    v2/playbooks/support/sdui.json
-    v2/playbooks/blog/sdui.json
-    v2/playbooks/landing/sdui.json
-    v2/playbooks/grid/sdui.json
-    v2/playbooks/form-association/sdui.json
+The resulting file is structurally valid against the schema — you never need to look up which keys are required or how to spell them. You only replace the `TODO` values:
 
-Source: Read `v2/playbooks/[PLAYBOOK]/PROMPT-3-FRAMEWORKS.md` to understand what
-the playbook builds: its layout structure, the AgnosticUI components it uses, the
-design intent, and any notable UX patterns.
+| Field | What to write |
+|---|---|
+| `description` | One sentence describing what the playbook demonstrates |
+| `intent.triggers` | Natural-language phrases a user might type; include synonyms and domain terms |
+| `intent.summary` | Single directive sentence: *"When the user asks for X, refer to the AgnosticUI Y Playbook."* |
+| `recipe.layout` | Plain-English description of the page layout skeleton — describe regions, not components |
+| `recipe.components[].role` | What that specific component does in *this* playbook (not a generic description) |
+| `recipe.notes` | Optional — 1-2 implementation hints with a small AgNode JSON snippet; delete the field if not needed |
 
-Output: Write `v2/playbooks/[PLAYBOOK]/sdui.json` conforming to the schema. Follow
-the field-by-field guidance in the authoring guide (triggers should include synonyms
-and domain terms; the recipe.notes field should include a small AgNode JSON snippet
-as syntax flavor). After writing the file, run:
-
-  node v2/scripts/validate-playbook-schemas.mjs
-
-and fix any validation errors before reporting done.
-```
-
-### Why not auto-generate?
-
-The content of `sdui.json` is semantic: intent triggers, role descriptions, and layout summaries require understanding what the playbook demonstrates. A filesystem scan cannot derive these. An AI agent reading the PROMPT file can, and the 8 existing `sdui.json` files serve as high-quality few-shot examples to guide the draft.
+Refer to the **Fields** section above and the existing `sdui.json` files in other playbooks as examples.
