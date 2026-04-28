@@ -166,3 +166,58 @@ CI runs this automatically on any change to `v2/playbooks/**`.
 ## Schema reference
 
 The canonical schema lives at `v2/playbooks/playbook-sdui.schema.json`. When the schema version increments, update the `version` field in your `sdui.json` and adjust any fields that changed.
+
+---
+
+## Creating sdui.json for a new playbook
+
+Every playbook that has a `PROMPT-3-FRAMEWORKS.md` should also ship a `sdui.json`. Because the PROMPT file already contains the full layout description, component list, and design intent, an AI agent can draft a high-quality `sdui.json` in one pass.
+
+### Workflow
+
+1. Author `PROMPT-3-FRAMEWORKS.md` for your new playbook as usual.
+2. Paste the drafting prompt below into your AI coding assistant (e.g. Claude Code), substituting your playbook's directory name for `[PLAYBOOK]`.
+3. Review the draft against this guide field-by-field.
+4. Validate locally before committing:
+
+```bash
+node v2/scripts/validate-playbook-schemas.mjs
+```
+
+CI runs the same validation automatically on any change to `v2/playbooks/**`.
+
+### AI drafting prompt
+
+```
+Draft a `sdui.json` file for the AgnosticUI playbook at `v2/playbooks/[PLAYBOOK]/`.
+
+Before writing anything, read these reference materials:
+- Schema:          v2/playbooks/playbook-sdui.schema.json
+- Authoring guide: v2/docs/agentic-intent-authoring-guide.md
+- Existing examples (read all 8 as few-shot grounding):
+    v2/playbooks/login/sdui.json
+    v2/playbooks/dashboard/sdui.json
+    v2/playbooks/onboarding/sdui.json
+    v2/playbooks/support/sdui.json
+    v2/playbooks/blog/sdui.json
+    v2/playbooks/landing/sdui.json
+    v2/playbooks/grid/sdui.json
+    v2/playbooks/form-association/sdui.json
+
+Source: Read `v2/playbooks/[PLAYBOOK]/PROMPT-3-FRAMEWORKS.md` to understand what
+the playbook builds: its layout structure, the AgnosticUI components it uses, the
+design intent, and any notable UX patterns.
+
+Output: Write `v2/playbooks/[PLAYBOOK]/sdui.json` conforming to the schema. Follow
+the field-by-field guidance in the authoring guide (triggers should include synonyms
+and domain terms; the recipe.notes field should include a small AgNode JSON snippet
+as syntax flavor). After writing the file, run:
+
+  node v2/scripts/validate-playbook-schemas.mjs
+
+and fix any validation errors before reporting done.
+```
+
+### Why not auto-generate?
+
+The content of `sdui.json` is semantic: intent triggers, role descriptions, and layout summaries require understanding what the playbook demonstrates. A filesystem scan cannot derive these. An AI agent reading the PROMPT file can, and the 8 existing `sdui.json` files serve as high-quality few-shot examples to guide the draft.
