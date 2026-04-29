@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { existsSync } from 'node:fs';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { context } from '../src/commands/context.js';
 import { createTempDir, removeTempDir, createInitializedProject } from './helpers.js';
@@ -94,5 +94,99 @@ describe('ag context', () => {
     await addButtonToConfig(tmpDir);
     await context({ output: '.github/copilot-instructions.md' });
     expect(existsSync(path.join(tmpDir, '.github', 'copilot-instructions.md'))).toBe(true);
+  });
+
+  it('omits playbook section when src/playbooks/ does not exist', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addButtonToConfig(tmpDir);
+    await context({ output: 'CLAUDE.md' });
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).not.toContain('Agentic Intent');
+  });
+
+  it('omits playbook section when src/playbooks/ is empty', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addButtonToConfig(tmpDir);
+    await mkdir(path.join(tmpDir, 'src', 'playbooks'), { recursive: true });
+    await context({ output: 'CLAUDE.md' });
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).not.toContain('Agentic Intent');
+  });
+
+  it('includes playbook section for one valid sdui.json', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addButtonToConfig(tmpDir);
+    const pbDir = path.join(tmpDir, 'src', 'playbooks', 'dashboard');
+    await mkdir(pbDir, { recursive: true });
+    await writeFile(path.join(pbDir, 'sdui.json'), JSON.stringify({
+      version: 1,
+      slug: 'dashboard',
+      displayName: 'Discovery Dashboard',
+      intent: { triggers: ['dashboard', 'analytics'], summary: 'Dashboard recipe' },
+      recipe: {
+        layout: 'Sidebar left, main content right.',
+        components: [
+          { component: 'AgCard', role: 'Metric KPI tile' },
+          { component: 'AgTabs', role: 'Switch content sections' },
+        ],
+        notes: 'Group metric cards in a flex container.',
+      },
+    }));
+    await context({ output: 'CLAUDE.md' });
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).toContain('Agentic Intent');
+    expect(content).toContain('Discovery Dashboard');
+    expect(content).toContain('dashboard, analytics');
+    expect(content).toContain('ag-card');
+    expect(content).toContain('ag-tabs');
+    expect(content).toContain('Group metric cards');
+  });
+
+  it('warns and still renders section for stale sdui.json schema version', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addButtonToConfig(tmpDir);
+    const pbDir = path.join(tmpDir, 'src', 'playbooks', 'login');
+    await mkdir(pbDir, { recursive: true });
+    await writeFile(path.join(pbDir, 'sdui.json'), JSON.stringify({
+      version: 0,
+      slug: 'login',
+      displayName: 'Login Form',
+      intent: { triggers: ['login'], summary: 'Login recipe' },
+      recipe: { layout: 'centered card', components: [], notes: '' },
+    }));
+    const logLines: string[] = [];
+    vi.spyOn(console, 'log').mockImplementation((...args: unknown[]) => {
+      logLines.push(args.map(String).join(' '));
+    });
+    await context({ output: 'CLAUDE.md' });
+    const output = logLines.join('\n');
+    expect(output).toContain('schema version 0');
+    expect(output).toContain('expected 1');
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).toContain('Login Form');
+  });
+
+  it('includes all sections and announces count for two valid sdui.json files', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addButtonToConfig(tmpDir);
+    for (const [slug, displayName] of [['dashboard', 'Discovery Dashboard'], ['login', 'Login Form']]) {
+      const pbDir = path.join(tmpDir, 'src', 'playbooks', slug);
+      await mkdir(pbDir, { recursive: true });
+      await writeFile(path.join(pbDir, 'sdui.json'), JSON.stringify({
+        version: 1, slug, displayName,
+        intent: { triggers: [slug], summary: `${displayName} recipe` },
+        recipe: { layout: 'test layout', components: [], notes: '' },
+      }));
+    }
+    const logLines: string[] = [];
+    vi.spyOn(console, 'log').mockImplementation((...args: unknown[]) => {
+      logLines.push(args.map(String).join(' '));
+    });
+    await context({ output: 'CLAUDE.md' });
+    const announced = logLines.join('\n');
+    expect(announced).toContain('Detected 2 installed playbooks');
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).toContain('Discovery Dashboard');
+    expect(content).toContain('Login Form');
   });
 });

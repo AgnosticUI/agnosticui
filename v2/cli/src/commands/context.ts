@@ -4,7 +4,7 @@
 import * as p from '@clack/prompts';
 import path from 'node:path';
 import { existsSync } from 'node:fs';
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import type { ContextOptions } from '../types/index.js';
 import { loadConfig, saveConfig } from '../utils/config.js';
 import { logger } from '../utils/logger.js';
@@ -26,6 +26,28 @@ const AI_TOOLS = {
 } as const;
 
 type AiTool = keyof typeof AI_TOOLS;
+
+const EXPECTED_SDUI_VERSION = 1;
+
+interface PlaybookRecipeComponent {
+  component: string;
+  role: string;
+}
+
+interface PlaybookSduiFile {
+  version: number;
+  slug: string;
+  displayName: string;
+  intent?: { triggers: string[]; summary: string };
+  recipe?: { layout: string; components: PlaybookRecipeComponent[]; notes?: string };
+}
+
+interface ScannedPlaybook {
+  slug: string;
+  displayName: string;
+  data: PlaybookSduiFile;
+  stale: boolean;
+}
 
 /** Detect which AI tools appear to be configured in the project */
 function detectTools(cwd: string): AiTool[] {
@@ -93,10 +115,87 @@ function findPropsFile(cwd: string, componentsPath: string, componentName: strin
   return null;
 }
 
+/** Scan for installed playbooks by looking for sdui.json files */
+async function scanPlaybooks(cwd: string, playbooksDir: string): Promise<ScannedPlaybook[]> {
+  const fullPath = path.resolve(cwd, playbooksDir);
+  if (!existsSync(fullPath)) return [];
+
+  let entries;
+  try {
+    entries = await readdir(fullPath, { withFileTypes: true });
+  } catch {
+    return [];
+  }
+
+  const results: ScannedPlaybook[] = [];
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    const sduiPath = path.join(fullPath, entry.name, 'sdui.json');
+    if (!existsSync(sduiPath)) continue;
+    try {
+      const raw = await readFile(sduiPath, 'utf-8');
+      const data = JSON.parse(raw) as PlaybookSduiFile;
+      results.push({
+        slug: data.slug ?? entry.name,
+        displayName: data.displayName ?? entry.name,
+        data,
+        stale: data.version < EXPECTED_SDUI_VERSION,
+      });
+    } catch {
+      // Skip unparseable files silently
+    }
+  }
+  return results;
+}
+
+/** Build the playbook intent section lines */
+function buildPlaybooksSection(playbooks: ScannedPlaybook[]): string[] {
+  const lines: string[] = [
+    '## AgnosticUI Agentic Intent — Playbook Recipes',
+    '',
+    "The following playbooks are installed in this project. When a user's request matches",
+    'a trigger phrase, use the corresponding recipe as your structural scaffold.',
+    '',
+  ];
+
+  for (const pb of playbooks) {
+    const { displayName, data } = pb;
+    const { intent, recipe } = data;
+
+    lines.push(`### ${displayName}`, '');
+
+    if (intent?.triggers?.length) {
+      lines.push(`> Triggers: ${intent.triggers.join(', ')}`, '');
+    }
+
+    if (recipe?.layout) {
+      lines.push(`Layout: ${recipe.layout}`, '');
+    }
+
+    if (recipe?.components?.length) {
+      lines.push('**Component recipe:**');
+      for (const comp of recipe.components) {
+        const tag = toAgTag(comp.component.replace(/^Ag/, ''));
+        lines.push(`- \`${tag}\` — ${comp.role}`);
+      }
+      lines.push('');
+    }
+
+    if (recipe?.notes) {
+      lines.push(`**Notes:** ${recipe.notes}`, '');
+    }
+
+    lines.push('---', '');
+  }
+
+  return lines;
+}
+
 /** Generate the AgnosticUI markdown body (shared across all tool formats) */
 async function generateBody(
   config: Awaited<ReturnType<typeof loadConfig>> & object,
-  cwd: string
+  cwd: string,
+  playbooks: ScannedPlaybook[] = []
 ): Promise<string> {
   const { framework, version, paths, components } = config;
   const componentNames = Object.keys(components).sort();
@@ -136,6 +235,10 @@ async function generateBody(
     }
   }
 
+  if (playbooks.length > 0) {
+    lines.push(...buildPlaybooksSection(playbooks));
+  }
+
   lines.push(SECTION_END);
   return lines.join('\n');
 }
@@ -172,6 +275,23 @@ export async function context(options: ContextOptions = {}): Promise<void> {
   }
 
   const cwd = process.cwd();
+
+  // Scan for installed playbooks (src/playbooks/*/sdui.json)
+  const scannedPlaybooks = await scanPlaybooks(cwd, 'src/playbooks');
+
+  if (scannedPlaybooks.length > 0) {
+    const slugList = scannedPlaybooks.map(pb => pb.slug).join(', ');
+    const noun = scannedPlaybooks.length === 1 ? 'playbook' : 'playbooks';
+    console.log(pc.dim(`  Detected ${scannedPlaybooks.length} installed ${noun} (${slugList}) — including intent recipes.`));
+  }
+
+  for (const pb of scannedPlaybooks) {
+    if (pb.stale) {
+      logger.warn(
+        `sdui.json for '${pb.slug}' uses schema version ${pb.data.version}, expected ${EXPECTED_SDUI_VERSION} — recipe may be stale. Re-install: npx agnosticui-cli playbook ${pb.slug} --force`
+      );
+    }
+  }
 
   // Resolve the output path in priority order:
   // 1. --output flag (explicit user override)
@@ -234,7 +354,7 @@ export async function context(options: ContextOptions = {}): Promise<void> {
   spinner.start(`Generating context for ${componentCount} component(s)...`);
 
   try {
-    const body = await generateBody(config, cwd);
+    const body = await generateBody(config, cwd, scannedPlaybooks);
 
     // Ensure parent directory exists (e.g. .cursor/rules/)
     await mkdir(path.dirname(absOutputPath), { recursive: true });
@@ -263,10 +383,15 @@ export async function context(options: ContextOptions = {}): Promise<void> {
   }
 
   logger.newline();
+  const playbookSummary = scannedPlaybooks.length > 0
+    ? [`${pc.dim('Playbooks:  ')}${pc.white(`${scannedPlaybooks.length} (${scannedPlaybooks.map(pb => pb.slug).join(', ')})`)}`, '']
+    : [];
+
   logger.box('Context generated!', [
     pc.dim('File:       ') + pc.cyan(relOutputPath),
     pc.dim('Components: ') + pc.white(String(componentCount)),
     pc.dim('Framework:  ') + pc.white(config.framework),
+    ...playbookSummary,
     '',
     pc.dim('AI coding tools (Claude Code, Cursor, Windsurf) will now'),
     pc.dim('automatically know about your installed components.'),
