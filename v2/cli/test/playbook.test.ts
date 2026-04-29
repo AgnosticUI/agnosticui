@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { existsSync } from 'node:fs';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { playbook } from '../src/commands/playbook.js';
 import { createTempDir, removeTempDir, initPackageJson, MOCK_MANIFEST } from './helpers.js';
@@ -86,5 +87,30 @@ describe('ag playbook', () => {
   it('exits with error when manifest fetch fails', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => ({ ok: false, status: 503 })));
     await expect(playbook(undefined, { list: true })).rejects.toThrow(/process\.exit/);
+  });
+
+  it('writes sdui.json to destRoot for ag context integration', async () => {
+    const mockSdui = JSON.stringify({
+      version: 1,
+      slug: 'login',
+      displayName: 'Login Form',
+      intent: { triggers: ['login', 'sign in'], summary: 'Login recipe' },
+      recipe: { layout: 'centered card', components: [], notes: '' },
+    });
+    vi.stubGlobal('fetch', vi.fn(async (url: string) => {
+      if (String(url).includes('playbooks-manifest.json')) {
+        return { ok: true, json: async () => MOCK_MANIFEST };
+      }
+      if (String(url).endsWith('sdui.json')) {
+        return { ok: true, text: async () => mockSdui };
+      }
+      return { ok: true, text: async () => '// content', arrayBuffer: async () => new ArrayBuffer(0) };
+    }));
+    await playbook('login', { framework: 'react', force: true });
+    const sduiPath = path.join(tmpDir, 'src', 'playbooks', 'login', 'sdui.json');
+    expect(existsSync(sduiPath)).toBe(true);
+    const parsed = JSON.parse(await readFile(sduiPath, 'utf-8'));
+    expect(parsed.slug).toBe('login');
+    expect(parsed.version).toBe(1);
   });
 });

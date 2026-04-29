@@ -210,6 +210,15 @@ export async function playbook(slug: string | undefined, options: PlaybookOption
     spinner.message(`Installing ${pc.cyan(playbookEntry.title)} (${framework}) — ${written}/${totalFiles} written...`);
   }
 
+  // Fetch and write sdui.json so `ag context` can auto-detect this playbook
+  const sduiUrl = `${githubRawBase}/${basePath}/sdui.json`;
+  const sduiText = await fetchText(sduiUrl);
+  if (sduiText !== null) {
+    await writeFile(path.join(destRoot, 'sdui.json'), sduiText, 'utf-8');
+  } else {
+    logger.warn('sdui.json not found — ag context will not include intent recipes for this playbook');
+  }
+
   spinner.stop(pc.green('✓') + ` Installed ${written} file(s)${failed > 0 ? pc.yellow(` (${failed} skipped)`) : ''}`);
 
   logger.newline();
