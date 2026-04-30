@@ -95,6 +95,7 @@ export default defineConfig({
       {
         text: 'AI Playbooks',
         items: [
+          { text: 'Agentic Intent', link: '/playbooks/agentic-intent' },
           { text: 'Playground', link: '/playbooks/' },
           { text: 'Login Form', link: '/playbooks/login' },
           { text: 'Onboarding Wizard', link: '/playbooks/onboarding' },

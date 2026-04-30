@@ -15,6 +15,10 @@ The project provides structured **AI Playbooks** designed for agentic and genera
 - **Landing Page**: `/v2/playbooks/landing/` - Marketing and hero section layouts.
 - **Form Association**: `/v2/playbooks/form-association/` - Native form participation with FACE components.
 
+## Agentic Intent
+
+Every bundled playbook ships with an `sdui.json` file containing machine-readable trigger phrases and component recipes. When a user runs `npx agnosticui-cli context` with playbooks installed, the CLI injects an **AgnosticUI Agentic Intent** section into their AI context file so the assistant knows which playbook layout to use when it recognises a user's UI intent. See `/v2/site/docs/playbooks/agentic-intent.md` for the full authoring guide and trigger phrase reference.
+
 ## Key Architecture
 - **Framework**: Built with Lit for web components
 - **Approach**: CLI-first tool that copies components to your project

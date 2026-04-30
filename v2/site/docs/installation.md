@@ -475,6 +475,32 @@ Use `--output` to write to a custom path instead:
 npx agnosticui-cli context --output ./docs/agnosticui-context.md
 ```
 
+### Agentic Intent: Playbook Recipes
+
+If you have installed any playbooks (`npx agnosticui-cli playbook <slug>`), `ag context`
+automatically detects them and injects their intent recipes into your AI context file.
+
+No extra flags needed. When playbooks are present, the CLI announces them:
+
+```
+Detected 2 installed playbooks (dashboard, login) - including intent recipes.
+```
+
+The generated context file gains an **AgnosticUI Agentic Intent** section that tells your
+AI assistant which playbook to use and how to compose it when a user expresses a known
+UI intent:
+
+> "When the user asks for a dashboard, use ag-card for metric tiles, ag-avatar in the
+> header, and ag-tabs for content sections, following the AgnosticUI Discovery Dashboard
+> Playbook layout."
+
+This transforms the AI context from a prop reference into a **structural mental model**:
+the assistant knows not just what components exist, but how to compose them for
+recognized UI patterns.
+
+See [Agentic Intent](/playbooks/agentic-intent) for the full list of bundled playbooks, trigger
+phrases, and how to author a custom `sdui.json` for your own project-specific playbooks.
+
 ## Storybook Integration
 
 ::: warning Experimental: Use with Caution
