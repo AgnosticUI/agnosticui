@@ -69,6 +69,11 @@ function toAgTag(name: string): string {
   return 'ag-' + name.replace(/([A-Z])/g, (m, l, i) => (i === 0 ? '' : '-') + l.toLowerCase());
 }
 
+/** Convert PascalCase to kebab-case (e.g. DrawerClose → drawer-close) */
+function pascalToKebab(name: string): string {
+  return name.replace(/([A-Z])/g, (_, l, i) => (i === 0 ? l.toLowerCase() : `-${l.toLowerCase()}`));
+}
+
 /** Build the framework-specific import statement */
 function buildImport(componentName: string, framework: string, componentsPath: string): string {
   const base = componentsPath.replace(/^\.\//, '').replace(/\/$/, '');
@@ -113,6 +118,63 @@ function findPropsFile(cwd: string, componentsPath: string, componentName: strin
   const lower = path.join(coreDir, `_${componentName.toLowerCase()}.ts`);
   if (existsSync(lower)) return lower;
   return null;
+}
+
+/** Extract events from a _Component.ts file using 3-tier strategy */
+async function extractEvents(filePath: string): Promise<string | null> {
+  let content: string;
+  try {
+    content = await readFile(filePath, 'utf-8');
+  } catch {
+    return null;
+  }
+
+  // Tier 1: typed export type *Event = CustomEvent<*>
+  const tier1Lines: string[] = [];
+  for (const m of content.matchAll(/export type (\w+Event) = CustomEvent<([^>]*)>/g)) {
+    const kebab = pascalToKebab(m[1].replace(/Event$/, ''));
+    const detail = m[2].trim() || 'void';
+    tier1Lines.push(`- \`${kebab}\` — \`CustomEvent<${detail}>\``);
+  }
+  if (tier1Lines.length > 0) return tier1Lines.join('\n');
+
+  // Tier 2: @fires JSDoc annotation (optional {Type} prefix supported)
+  const tier2Lines: string[] = [];
+  for (const m of content.matchAll(/@fires\s+(?:\{[^}]+\}\s+)?(\S+)(?:\s+-\s+(.+))?/g)) {
+    const desc = m[2]?.trim();
+    tier2Lines.push(desc ? `- \`${m[1]}\` — ${desc}` : `- \`${m[1]}\``);
+  }
+  if (tier2Lines.length > 0) return tier2Lines.join('\n');
+
+  // Tier 3: string-literal new CustomEvent(...)
+  const tier3Names = new Set<string>();
+  for (const m of content.matchAll(/new CustomEvent\(['"]([^'"]+)['"]/g)) {
+    tier3Names.add(m[1]);
+  }
+  if (tier3Names.size > 0) {
+    return [...tier3Names].map(n => `- \`${n}\``).join('\n');
+  }
+
+  return null;
+}
+
+/** Extract named slots from both _Component.ts and Component.ts in the core directory */
+async function extractSlots(propsFilePath: string, componentName: string): Promise<string | null> {
+  const coreDir = path.dirname(propsFilePath);
+  const names = new Set<string>();
+
+  for (const filePath of [propsFilePath, path.join(coreDir, `${componentName}.ts`)]) {
+    if (!existsSync(filePath)) continue;
+    try {
+      const content = await readFile(filePath, 'utf-8');
+      for (const m of content.matchAll(/<slot\s+name="([^"]+)"/g)) {
+        names.add(m[1]);
+      }
+    } catch {}
+  }
+
+  if (names.size === 0) return null;
+  return [...names].map(n => `- \`${n}\``).join('\n');
 }
 
 /** Scan for installed playbooks by looking for sdui.json files */
@@ -216,6 +278,8 @@ async function generateBody(
     const importLine = buildImport(name, framework, paths.components);
     const propsFile = findPropsFile(cwd, paths.components, name);
     const propsBlock = propsFile ? await extractProps(propsFile) : null;
+    const eventsBlock = propsFile ? await extractEvents(propsFile) : null;
+    const slotsBlock = propsFile ? await extractSlots(propsFile, name) : null;
 
     lines.push(`### ${name}`, '');
     lines.push(`**Import:** \`${importLine}\``);
@@ -231,6 +295,18 @@ async function generateBody(
       lines.push('```typescript');
       lines.push(propsBlock);
       lines.push('```');
+      lines.push('');
+    }
+
+    if (eventsBlock) {
+      lines.push('**Events:**');
+      lines.push(eventsBlock);
+      lines.push('');
+    }
+
+    if (slotsBlock) {
+      lines.push('**Slots:**');
+      lines.push(slotsBlock);
       lines.push('');
     }
   }
