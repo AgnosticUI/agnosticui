@@ -55,11 +55,11 @@ export async function createMockReferenceLibrary(refDir: string): Promise<void> 
 
   await writeFile(
     path.join(buttonCoreDir, 'Button.ts'),
-    `import { LitElement } from 'lit';\nexport class AgButton extends LitElement {}\n`,
+    `import { LitElement } from 'lit';\nexport class AgButton extends LitElement {}\n// template includes: <slot name="icon"></slot>\n`,
   );
   await writeFile(
     path.join(buttonCoreDir, '_Button.ts'),
-    `export interface ButtonProps {\n  label?: string;\n  disabled?: boolean;\n}\n`,
+    `export interface ButtonProps {\n  label?: string;\n  disabled?: boolean;\n}\nexport type ButtonToggleEvent = CustomEvent<{ isPressed: boolean }>;\n`,
   );
   await writeFile(
     path.join(buttonReactDir, 'ReactButton.tsx'),

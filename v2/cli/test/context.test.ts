@@ -5,6 +5,35 @@ import path from 'node:path';
 import { context } from '../src/commands/context.js';
 import { createTempDir, removeTempDir, createInitializedProject } from './helpers.js';
 
+/** Add any component to the project config by name */
+async function addComponentToConfig(projectDir: string, name: string): Promise<void> {
+  const configPath = path.join(projectDir, 'agnosticui.config.json');
+  const raw = await readFile(configPath, 'utf-8');
+  const config = JSON.parse(raw);
+  config.components[name] = {
+    added: new Date().toISOString(),
+    version: '2.0.0-alpha.test',
+    framework: config.framework,
+    files: [`${config.paths.components}/${name}/core`],
+  };
+  await writeFile(configPath, JSON.stringify(config, null, 2));
+}
+
+/** Write _Component.ts (and optionally Component.ts) to the installed components path */
+async function createComponentFiles(
+  projectDir: string,
+  name: string,
+  propsContent: string,
+  coreContent?: string,
+): Promise<void> {
+  const coreDir = path.join(projectDir, 'src', 'components', 'ag', name, 'core');
+  await mkdir(coreDir, { recursive: true });
+  await writeFile(path.join(coreDir, `_${name}.ts`), propsContent);
+  if (coreContent !== undefined) {
+    await writeFile(path.join(coreDir, `${name}.ts`), coreContent);
+  }
+}
+
 async function addButtonToConfig(projectDir: string): Promise<void> {
   const configPath = path.join(projectDir, 'agnosticui.config.json');
   const raw = await readFile(configPath, 'utf-8');
@@ -164,6 +193,105 @@ describe('ag context', () => {
     expect(output).toContain('expected 1');
     const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
     expect(content).toContain('Login Form');
+  });
+
+  // --- event extraction ---
+
+  it('includes Events section for component with Tier 1 typed event exports', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addButtonToConfig(tmpDir);
+    // Button mock in helpers.ts includes ButtonToggleEvent — create the installed files
+    await createComponentFiles(
+      tmpDir,
+      'Button',
+      `export interface ButtonProps { label?: string; }\nexport type ButtonToggleEvent = CustomEvent<{ isPressed: boolean }>;\n`,
+    );
+    await context({ output: 'CLAUDE.md' });
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).toContain('**Events:**');
+    expect(content).toContain('`button-toggle`');
+    expect(content).toContain('CustomEvent<{ isPressed: boolean }>');
+  });
+
+  it('includes Events section for component with Tier 2 @fires annotation', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addComponentToConfig(tmpDir, 'CopyButton');
+    await createComponentFiles(
+      tmpDir,
+      'CopyButton',
+      [
+        'export interface CopyButtonProps { text?: string; }',
+        ' * @fires copy - Fired when text is successfully copied. Detail: { text: string }',
+        ' * @fires copy-error - Fired when copy fails. Detail: { error: Error }',
+      ].join('\n'),
+    );
+    await context({ output: 'CLAUDE.md' });
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).toContain('**Events:**');
+    expect(content).toContain('`copy`');
+    expect(content).toContain('`copy-error`');
+    expect(content).toContain('Fired when text is successfully copied');
+  });
+
+  it('includes Events section for component with Tier 3 string-literal CustomEvent', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addComponentToConfig(tmpDir, 'Badge');
+    await createComponentFiles(
+      tmpDir,
+      'Badge',
+      [
+        'export interface BadgeProps { label?: string; }',
+        "this.dispatchEvent(new CustomEvent('badge:click', { bubbles: true, composed: true }));",
+      ].join('\n'),
+    );
+    await context({ output: 'CLAUDE.md' });
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).toContain('**Events:**');
+    expect(content).toContain('`badge:click`');
+  });
+
+  it('omits Events section for component with no custom events', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addComponentToConfig(tmpDir, 'Card');
+    await createComponentFiles(
+      tmpDir,
+      'Card',
+      'export interface CardProps { rounded?: boolean; }\n',
+    );
+    await context({ output: 'CLAUDE.md' });
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).not.toContain('**Events:**');
+  });
+
+  // --- slot extraction ---
+
+  it('includes Slots section for component with named slots', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addButtonToConfig(tmpDir);
+    await createComponentFiles(
+      tmpDir,
+      'Button',
+      'export interface ButtonProps { label?: string; }\n',
+      `import { LitElement } from 'lit';\nexport class AgButton extends LitElement {}\n// <slot name="icon"></slot>\n`,
+    );
+    await context({ output: 'CLAUDE.md' });
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).toContain('**Slots:**');
+    expect(content).toContain('`icon`');
+  });
+
+  it('omits Slots section for component with no named slots', async () => {
+    await createInitializedProject(tmpDir, 'react');
+    await addComponentToConfig(tmpDir, 'Badge');
+    await createComponentFiles(
+      tmpDir,
+      'Badge',
+      'export interface BadgeProps { label?: string; }\n',
+      'import { LitElement } from \'lit\';\nexport class AgBadge extends LitElement {}\n',
+    );
+    await context({ output: 'CLAUDE.md' });
+    const content = await readFile(path.join(tmpDir, 'CLAUDE.md'), 'utf-8');
+    expect(content).not.toContain('**Slots:**');
   });
 
   it('includes all sections and announces count for two valid sdui.json files', async () => {
