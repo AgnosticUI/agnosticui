@@ -498,7 +498,7 @@ This transforms the AI context from a prop reference into a **structural mental 
 the assistant knows not just what components exist, but how to compose them for
 recognized UI patterns.
 
-See [Agentic Intent](/agentic-intent) for the full list of bundled playbooks, trigger
+See [Agentic Intent](/playbooks/agentic-intent) for the full list of bundled playbooks, trigger
 phrases, and how to author a custom `sdui.json` for your own project-specific playbooks.
 
 ## Storybook Integration
