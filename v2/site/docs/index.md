@@ -5,7 +5,10 @@ layout: home
 hero:
   name: "AgnosticUI Local"
   text: "The AI-native UI kit"
-  tagline: Lives in your codebase so AI can actually help. React. Vue. Lit. Svelte. Solid. And more.
+  tagline: >
+    Local source lives in your codebase. Our AG Context Generator arms your
+    favorite LLM with exact component locations, types, and usage.
+    Claude. Codex. Copilot. Gemini. And more.
 ---
 
 <script setup>
@@ -45,15 +48,15 @@ onUnmounted(() => {
 <div class="custom-features">
   <div class="custom-feature">
     <h3>Local Components</h3>
-    <p>The entire UI library lives in your project—no MCP setup, node_modules, or npm. Every component AI-readable and yours to customize.</p>
+    <p>The entire UI library lives in your project (React, Vue, Lit, Svelte, Solid, and more). No MCP setup, node_modules, or npm. Every component is AI-readable.</p>
+  </div>
+  <div class="custom-feature">
+    <h3>Arm Your Agent</h3>
+    <p>Run <code>ag context</code> once and any AI coding assistant (Claude, Copilot, Cursor, Windsurf, Gemini) gets your exact prop types, import paths, and playbook blueprints. No hallucinated APIs.</p>
   </div>
   <div class="custom-feature">
     <h3>AI Can Actually Help</h3>
-    <p>No opaque npm packages. No wasted tokens on documentation. No context limits. No hallucinated APIs. Just instant, accurate help.</p>
-  </div>
-  <div class="custom-feature">
-    <h3>Smooth Migration Path</h3>
-    <p>Already using Shadcn, MUI, or Chakra? Migrate components one at a time. Works with React, Vue, Lit, and Svelte—your timeline, your rules.</p>
+    <p>No opaque npm packages. No wasted tokens on documentation. No context limits. Just accurate, instant help every session.</p>
   </div>
 </div>
 
@@ -64,7 +67,7 @@ onUnmounted(() => {
     fx-speed="xl"
     variant="primary"
     shape="capsule"
-    size="xl"
+    size="lg"
     class="jumbo-button"
     @click="() => router.go('/components/button')"
   >
@@ -75,11 +78,11 @@ onUnmounted(() => {
     fx-speed="xl"
     variant="monochrome"
     shape="capsule"
-    size="xl"
+    size="lg"
     class="jumbo-button"
     @click="() => router.go('/playbooks/')"
   >
-    View Playbooks →
+    View Agentic Playbooks →
   </VueButtonFx>
 </div>
 
