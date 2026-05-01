@@ -2,7 +2,7 @@
   <div class="cli-preview-section">
     <div class="cli-preview-container">
       <h2>Get Started in Seconds</h2>
-      <p class="subtitle">No more hallucinated UIs. One command sets you up.</p>
+      <p class="subtitle">Three commands and your agent of choice knows your entire stack.</p>
 
       <div class="cli-terminal">
         <div class="terminal-header">
@@ -27,26 +27,28 @@
           </div>
         </div>
       </div>
-      <VueLink
-        href="/installation"
+      <VueButtonFx
+        fx="press-shadow"
+        fx-ease="ease"
+        fx-speed="md"
+        variant="success"
+        shape="capsule"
+        size="lg"
         class="jumbo-button"
-        :isButton="true"
-        buttonShape="capsule"
-        buttonSize="xl"
-        variant="primary"
-        
+        @click="() => router.go('/installation')"
       >
-        View Full Installation Guide
-        <ArrowRight :size="20" style="display: inline-block; vertical-align: middle; margin-left: 0.5rem;" />
-      </VueLink>
+        Get Agent-Ready in 3 Steps →
+      </VueButtonFx>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { VueLink } from 'agnosticui-core/link/vue'
-import { ArrowRight } from 'lucide-vue-next'
+import { useRouter } from 'vitepress'
+import { VueButtonFx } from 'agnosticui-core/button-fx/vue'
+
+const router = useRouter()
 
 const commands = [
   {
@@ -63,6 +65,14 @@ const commands = [
       '✓ Adding button component...',
       '✓ Button component ready in src/components/ag/button/',
       '✨ Done! Import and use your button component.'
+    ]
+  },
+  {
+    command: 'npx agnosticui-cli context',
+    output: [
+      '✓ Detected Claude Code — writing to CLAUDE.md',
+      '✓ 7 components · 2 playbooks included',
+      'Done! Prompt Claude, Copilot, Gemini, or Codex — they know your stack.'
     ]
   }
 ]

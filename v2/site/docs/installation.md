@@ -6,9 +6,63 @@
 import AlphaWarning from './components/AlphaWarning.vue';
 </script>
 
-AgnosticUI can be installed in two ways: using the **AgnosticUI CLI** (recommended) or as an **npm package**. Choose the approach that best fits your workflow.
+AgnosticUI is designed around a single principle: **your AI agent should know your UI stack as well as you do.** The CLI copies components directly into your project so every prop type, import path, and layout blueprint is readable source code — not a locked npm package. One command arms any agent (Claude, Gemini, Cursor, Windsurf, Codex) with everything it needs to generate production-grade UI without guessing.
+
+There are two installation paths: the **CLI** (recommended, agent-ready) and the **npm package** (for teams who prefer dependency management). Both converge at Step 3: `ag context`.
+
+## The 3-Step Agentic Path
+
+> For teams who want the fastest route from zero to an AI agent that knows your entire UI stack.
+
+**Step 1 — Init:** Scaffold your framework and copy components into your project.
+
+```shell
+npx agnosticui-cli init
+npx agnosticui-cli add button card input
+```
+
+**Step 2 — (Optional) Install Playbooks:** Add machine-readable UI blueprints for common patterns.
+
+```shell
+npx agnosticui-cli playbook dashboard --framework react
+npx agnosticui-cli playbook login --framework react
+```
+
+**Step 3 — Context:** Generate the Agentic Intent context file for your AI tool.
+
+```shell
+npx agnosticui-cli context
+```
+
+Expected output:
+
+```shell
+◆  AgnosticUI Context Generator
+   Detected Claude Code — writing to CLAUDE.md
+   Detected 2 playbooks: dashboard, login. Schemas included.
+
+✓  Context written to CLAUDE.md
+   Components:  7
+   Framework:   react
+   Playbooks:   2  (dashboard, login)
+
+   AI coding tools (Claude Code, Cursor, Windsurf) will now
+   automatically know about your installed components.
+
+   Re-run after adding components: npx agnosticui-cli context
+```
+
+**Orchestrate:** Open your agent of choice and prompt naturally.
+
+> "Build me a dashboard page" → agent consults the AgnosticUI Discovery Dashboard Intent Schema → returns idiomatic, source-correct React code using the right components and layout.
+
+The context file is the **Instruction Set** that makes any LLM an AgnosticUI-expert — once, not every session.
 
 ## AgnosticUI CLI (Recommended)
+
+::: info
+This section covers the same steps as the 3-Step Agentic Path above in greater detail. Some overlap is intentional.
+:::
 
 The AgnosticUI CLI provides a "local-first" approach where components are copied directly into your project. This gives you full ownership and control over the component code, making it easy to customize and extend components without worrying about breaking changes from upstream updates.
 
@@ -137,23 +191,29 @@ You can view the full list of theme tokens available in <a href="https://github.
    </script>
    ```
 
-3. **Add Components**
+3. **Arm Your Agent**
+
+   Generate the Agentic Intent context file so any AI coding assistant knows your
+   installed components, their prop types, import paths, and — if you have installed
+   playbooks — their structural layout recipes:
+
+   ```bash
+   npx agnosticui-cli context
+   ```
+
+   AgnosticUI auto-detects which agent you're using (Claude Code, Cursor, Copilot,
+   Windsurf, Gemini, Codex) and writes to the right file. If playbooks are installed,
+   their Intent Schemas are injected automatically — no flag needed.
+
+   > Re-run after adding components or playbooks to keep the context current.
+
+4. **Add Components**
 
    Use the CLI to add the components you need:
 
    ```bash
    npx agnosticui-cli add button input card
    ```
-
-4. **Wire Up Your AI Coding Assistant**
-
-   Generate a context file so tools like Claude Code, Cursor, or Copilot know your installed components, their prop types, and import paths:
-
-   ```bash
-   npx agnosticui-cli context
-   ```
-
-   AgnosticUI auto-detects which AI tool you're using and writes to the right file. Re-run after adding more components to keep context current. See the [Generating AI Context](#generating-ai-context) section below for `--format` and `--output` options.
 
 5. **Use Components**
 
@@ -445,7 +505,7 @@ npm run dev
 
 Or copy only the pieces you need into your own project.
 
-### Generating AI Context
+### Agentic Intent: Arming Your AI Agent
 
 Once you have components installed, generate an AI context file so your coding assistant knows their prop types and import paths:
 
@@ -456,6 +516,33 @@ npx agnosticui-cli context
 AgnosticUI auto-detects configured tools (Claude Code, Cursor, Copilot, Windsurf, and others) and writes a formatted context block to the appropriate file. If multiple tools are detected, it prompts you to choose.
 
 Re-running the command after adding more components splices the updated content in place — it never duplicates or overwrites unrelated content.
+
+#### Playbook Intent Schemas (automatic)
+
+If you have installed any playbooks, `ag context` automatically detects them and injects
+their **Intent Schemas** into the context file — no extra flag required:
+
+```shell
+Detected 2 installed playbooks (dashboard, login) — including Intent Schemas.
+```
+
+The generated context file gains an **AgnosticUI Agentic Intent** section that tells your
+agent which playbook to use and how to compose it when a user expresses a UI intent:
+
+```markdown
+## AgnosticUI Agentic Intent — Playbook Recipes
+
+When the user asks for a **dashboard**, **analytics view**, or **admin panel**,
+refer to the AgnosticUI Discovery Dashboard Playbook:
+- Use `ag-card` for metric KPI tiles in the top stats bar
+- Use `ag-avatar` for user profile in the top-right header
+- Use `ag-tabs` to switch between content sections (Overview, Reports, Users)
+- Use `ag-badge` for status indicators on data rows
+- Layout: sidebar nav + main content area, metric cards in a horizontal flex row at top
+```
+
+This is the **Instruction Set** model: instead of prompting "build me a dashboard" and
+hoping the AI guesses correctly, the agent follows a deterministic recipe.
 
 Use `--format` to target a specific tool explicitly:
 
