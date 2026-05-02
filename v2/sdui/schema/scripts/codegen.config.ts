@@ -40,6 +40,11 @@ export const omitConfig: Record<string, string[]> = {
 
   // no-animation: hyphenated prop name is invalid as a JSX attribute and as a JS identifier
   AgProgressRing:       ['no-animation'],
+
+  // id: conflicts with the required SDUI node id field auto-added by codegen
+  // defaultValue: use value for SDUI; maxVisibleOptions/closeOnSelect/maxOptionsVisible: internal display/behavior config
+  // validationMessages: complex nested object
+  AgCombobox: ['id', 'defaultValue', 'maxVisibleOptions', 'closeOnSelect', 'maxOptionsVisible', 'validationMessages'],
 };
 
 /**
@@ -62,6 +67,11 @@ export const noUndefinedProps: Record<string, string[]> = {
   // value binding sets native input.value; undefined coerces to string "undefined"
   // size drives input sizing CSS selectors
   AgInput:   ['value', 'size'],
+
+  // options: required array prop — undefined would bypass constructor default []; must be an actual array
+  // size/variant: reflect: true, drive CSS :host([size=...]) and :host([variant=...]) selectors
+  // value: setter doesn't handle undefined safely in single-select mode
+  AgCombobox: ['options', 'size', 'variant', 'value'],
 
 };
 
@@ -129,6 +139,9 @@ export const componentActionPayloadMap: Record<string, Record<string, string>> =
   AgCheckbox: {
     onChange: `{ id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked }`,
   },
+  AgCombobox: {
+    onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' }`,
+  },
   AgInput: {
     onChange: `{ id: node.id, value: ((e as unknown) as React.ChangeEvent<HTMLInputElement>).target?.value ?? ((e as unknown) as CustomEvent<{ value: string }>).detail?.value ?? '' }`,
   },
@@ -164,6 +177,9 @@ export const vueComponentActionPayloadMap: Record<string, Record<string, string>
   AgCheckbox: {
     onChange: `{ id: node.id, value: (e as unknown as { checked?: boolean })?.checked }`,
   },
+  AgCombobox: {
+    onChange: `{ id: node.id, value: (e as unknown as { value?: string | string[] })?.value ?? '' }`,
+  },
   AgInput: {
     onChange: `{ id: node.id, value: (e as unknown as { value?: string; target?: { value?: string } })?.value ?? (e as unknown as { target?: { value?: string } })?.target?.value ?? '' }`,
   },
@@ -198,6 +214,9 @@ export const vueComponentActionPayloadMap: Record<string, Record<string, string>
 export const litComponentActionPayloadMap: Record<string, Record<string, string>> = {
   AgCheckbox: {
     onChange: `{ id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked }`,
+  },
+  AgCombobox: {
+    onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' }`,
   },
   AgInput: {
     onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? (e as unknown as { target?: { value?: string } }).target?.value ?? '' }`,
@@ -277,6 +296,14 @@ export const rendererSlotConfig: Record<string, RendererSlot> = {
  * be rejected in SDUI — it creates a fundamentally different element).
  */
 export const typeOverrides: Record<string, Record<string, { tsType: string; zodExpr: string }>> = {
+  AgCombobox: {
+    // ComboboxOption is an object type; ts-morph maps object arrays to null, so spell it out.
+    // Only the SDUI-relevant fields (value, label, disabled) are included.
+    options: {
+      tsType: "Array<{ value: string; label: string; disabled?: boolean }>",
+      zodExpr: "z.array(z.object({ value: z.string(), label: z.string(), disabled: z.boolean().optional() }))",
+    },
+  },
   AgInput: {
     // InputType in core includes 'textarea'; SDUI treats textarea as a separate concern
     type: {
@@ -345,7 +372,6 @@ export const skipComponents: string[] = [
   'Collapsible',
 
   // Deferred: complex state not expressible in a static fixture (see sub-issues of #460)
-  'Combobox',       // complex filtering + multi-select state (see #470)
   'Flex',           // multi-component family (FlexContainer/FlexRow/FlexCol/FlexInline) — no single ReactFlex/VueFlex wrapper
   'Menu',           // complex open + selected-value state
   'Sidebar',        // open + collapsed state management

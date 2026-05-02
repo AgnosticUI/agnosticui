@@ -16,6 +16,7 @@ import { VueButton } from 'agnosticui-core/button/vue';
 import { VueButtonFx } from 'agnosticui-core/button-fx/vue';
 import { VueCard } from 'agnosticui-core/card/vue';
 import { VueCheckbox } from 'agnosticui-core/checkbox/vue';
+import { VueCombobox } from 'agnosticui-core/combobox/vue';
 import { VueCopyButton } from 'agnosticui-core/copy-button/vue';
 import { VueDialog } from 'agnosticui-core/dialog/vue';
 import { VueDivider } from 'agnosticui-core/divider/vue';
@@ -302,6 +303,38 @@ function renderNode(
         helpText: node.helpText,
         onClick: () => doDispatch(node.on_click, actions),
         onChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { checked?: boolean })?.checked }),
+        },
+      );
+
+    case 'AgCombobox':
+      return h(
+        VueCombobox,
+        {
+        key: node.id,
+        options: node.options,
+        value: node.value,
+        placeholder: node.placeholder,
+        label: node.label,
+        labelPosition: node.labelPosition,
+        labelHidden: node.labelHidden,
+        noLabel: node.noLabel,
+        ariaLabel: node.ariaLabel,
+        helpText: node.helpText,
+        errorMessage: node.errorMessage,
+        autocomplete: node.autocomplete,
+        filterMode: node.filterMode,
+        clearable: node.clearable,
+        disabled: node.disabled,
+        readonly: node.readonly,
+        required: node.required,
+        invalid: node.invalid,
+        size: node.size,
+        variant: node.variant,
+        multiple: node.multiple,
+        loading: node.loading,
+        loadingText: node.loadingText,
+        noResultsText: node.noResultsText,
+        onChange: (e: unknown) => doDispatch(node.on_change, actions, { id: node.id, value: (e as unknown as { value?: string | string[] })?.value ?? '' }),
         },
       );
 

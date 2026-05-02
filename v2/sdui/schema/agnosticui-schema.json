@@ -827,6 +827,144 @@
         },
         "component": {
           "type": "string",
+          "const": "AgCombobox"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "disabled": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "value",
+              "label"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "value": {
+          "type": "string"
+        },
+        "placeholder": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
+        },
+        "labelHidden": {
+          "type": "boolean"
+        },
+        "noLabel": {
+          "type": "boolean"
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "helpText": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "autocomplete": {
+          "type": "string",
+          "enum": [
+            "list",
+            "none"
+          ]
+        },
+        "filterMode": {
+          "type": "string",
+          "enum": [
+            "none",
+            "startsWith",
+            "contains"
+          ]
+        },
+        "clearable": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "readonly": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "invalid": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "default",
+            "small",
+            "large"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "monochrome"
+          ]
+        },
+        "multiple": {
+          "type": "boolean"
+        },
+        "loading": {
+          "type": "boolean"
+        },
+        "loadingText": {
+          "type": "string"
+        },
+        "noResultsText": {
+          "type": "string"
+        },
+        "on_change": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
           "const": "AgCopyButton"
         },
         "text": {
@@ -1431,10 +1569,10 @@
         "fit": {
           "type": "string",
           "enum": [
+            "none",
             "cover",
             "contain",
             "fill",
-            "none",
             "scale-down"
           ]
         },
