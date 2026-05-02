@@ -8,7 +8,7 @@ export const pickerFixture: AgNode[] = [
     name: 'workflow',
     legend: 'Choose a workflow to generate',
     on_change: 'workflow-select',
-    children: ['card-wizard', 'card-contact', 'card-pricing', 'card-questionnaire', 'card-collapsible'],
+    children: ['card-wizard', 'card-contact', 'card-pricing', 'card-questionnaire', 'card-collapsible', 'card-combobox'],
   },
   {
     id: 'card-wizard',
@@ -103,6 +103,25 @@ export const pickerFixture: AgNode[] = [
     id: 'card-collapsible-desc',
     component: 'AgText',
     text: 'Accordion · slider value tracking · controlled state via on_toggle and on_change',
+    el: 'p',
+  },
+  {
+    id: 'card-combobox',
+    component: 'AgSelectionCard',
+    value: 'combobox-demo',
+    label: 'Combobox',
+    children: ['card-combobox-title', 'card-combobox-desc'],
+  },
+  {
+    id: 'card-combobox-title',
+    component: 'AgText',
+    text: 'Combobox',
+    el: 'p',
+  },
+  {
+    id: 'card-combobox-desc',
+    component: 'AgText',
+    text: 'Single-select · multi-select · on_change dispatch',
     el: 'p',
   },
 ];

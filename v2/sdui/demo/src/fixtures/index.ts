@@ -127,6 +127,50 @@ export const fixtureBank: Record<string, AgNode[][]> = {
       { id: 'pc5-cta-secondary-label', component: 'AgText', text: 'View all plans' },
     ],
   ],
+
+  'combobox-demo': [
+    // variation 1 — single-select department filter
+    [
+      { id: 'cb1-heading',       component: 'AgText',     text: 'Find opportunities',                         el: 'h2' },
+      { id: 'cb1-sub',           component: 'AgText',     text: 'Filter by department to see matching roles.', el: 'p' },
+      { id: 'cb1-divider',       component: 'AgDivider' },
+      { id: 'cb1-dept',          component: 'AgCombobox', label: 'Department', placeholder: 'Search departments…', filterMode: 'contains',
+        options: [
+          { value: 'engineering', label: 'Engineering' },
+          { value: 'design',      label: 'Design' },
+          { value: 'product',     label: 'Product' },
+          { value: 'marketing',   label: 'Marketing' },
+          { value: 'sales',       label: 'Sales' },
+          { value: 'support',     label: 'Customer Support' },
+        ],
+        on_change: 'COMBOBOX_CHANGE',
+      },
+      { id: 'cb1-submit',        component: 'AgButton',   variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'APPLY_FILTER', children: ['cb1-submit-label'] },
+      { id: 'cb1-submit-label',  component: 'AgText',     text: 'Apply filter' },
+    ],
+    // variation 2 — multi-select skills filter
+    [
+      { id: 'cb2-heading',       component: 'AgText',     text: 'Filter by skills',                                el: 'h2' },
+      { id: 'cb2-sub',           component: 'AgText',     text: 'Select one or more skills to narrow your search.', el: 'p' },
+      { id: 'cb2-divider',       component: 'AgDivider' },
+      { id: 'cb2-skills',        component: 'AgCombobox', label: 'Skills', placeholder: 'Search skills…', filterMode: 'contains',
+        multiple: true, closeOnSelect: false, maxOptionsVisible: 2,
+        options: [
+          { value: 'react',      label: 'React' },
+          { value: 'vue',        label: 'Vue' },
+          { value: 'typescript', label: 'TypeScript' },
+          { value: 'python',     label: 'Python' },
+          { value: 'go',         label: 'Go' },
+          { value: 'rust',       label: 'Rust' },
+          { value: 'graphql',    label: 'GraphQL' },
+          { value: 'postgres',   label: 'PostgreSQL' },
+        ],
+        on_change: 'COMBOBOX_CHANGE',
+      },
+      { id: 'cb2-submit',        component: 'AgButton',   variant: 'primary', shape: 'rounded', fullWidth: true, on_click: 'APPLY_FILTER', children: ['cb2-submit-label'] },
+      { id: 'cb2-submit-label',  component: 'AgText',     text: 'Search roles' },
+    ],
+  ],
 };
 
 // Step-2 confirmation fixtures — single screens shown after an action fires.
@@ -207,6 +251,14 @@ export const confirmFixtures: Record<string, AgNode[]> = {
 
   // ── /Account-setup wizard ────────────────────────────────────────────────
 
+  'combobox-confirm': [
+    { id: 'cb-ok-alert',    component: 'AgAlert',  variant: 'success', bordered: true, rounded: true, children: ['cb-ok-alert-text'] },
+    { id: 'cb-ok-alert-text', component: 'AgText', text: 'Filters applied! Showing matching results.' },
+    { id: 'cb-ok-card',    component: 'AgCard',   shadow: true, rounded: 'md', children: ['cb-ok-heading', 'cb-ok-body'] },
+    { id: 'cb-ok-heading', component: 'AgText',   text: 'Results ready', el: 'h2' },
+    { id: 'cb-ok-body',    component: 'AgText',   text: 'In a real app the selected values arrive in the on_change payload and can drive the next server render.', el: 'p' },
+  ],
+
   'pricing-plans': [
     { id: 'pl-heading',    component: 'AgText',   text: 'All plans', el: 'h2' },
     { id: 'pl-divider',    component: 'AgDivider' },
@@ -245,6 +297,9 @@ export const workflowActions: Record<string, Record<string, string>> = {
   'pricing-card': {
     START_TRIAL: 'pricing-trial-confirm',
     VIEW_PLANS:  'pricing-plans',
+  },
+  'combobox-demo': {
+    APPLY_FILTER: 'combobox-confirm',
   },
 };
 
