@@ -264,8 +264,10 @@ function renderNode(
         .required=${node.required ?? false}
         .invalid=${node.invalid ?? false}
         .size=${node.size ?? nothing}
+        .closeOnSelect=${node.closeOnSelect ?? false}
         .variant=${node.variant ?? nothing}
         .multiple=${node.multiple ?? false}
+        .maxOptionsVisible=${node.maxOptionsVisible ?? 0}
         .loading=${node.loading ?? false}
         .loadingText=${node.loadingText ?? nothing}
         .noResultsText=${node.noResultsText ?? nothing}

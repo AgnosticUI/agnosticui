@@ -42,9 +42,9 @@ export const omitConfig: Record<string, string[]> = {
   AgProgressRing:       ['no-animation'],
 
   // id: conflicts with the required SDUI node id field auto-added by codegen
-  // defaultValue: use value for SDUI; maxVisibleOptions/closeOnSelect/maxOptionsVisible: internal display/behavior config
-  // validationMessages: complex nested object
-  AgCombobox: ['id', 'defaultValue', 'maxVisibleOptions', 'closeOnSelect', 'maxOptionsVisible', 'validationMessages'],
+  // defaultValue: use value for SDUI; maxVisibleOptions: internal display config
+  // validationMessages: complex nested object; errorMessage covers SDUI needs
+  AgCombobox: ['id', 'defaultValue', 'maxVisibleOptions', 'validationMessages'],
 };
 
 /**
@@ -302,6 +302,12 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
     options: {
       tsType: "Array<{ value: string; label: string; disabled?: boolean }>",
       zodExpr: "z.array(z.object({ value: z.string(), label: z.string(), disabled: z.boolean().optional() }))",
+    },
+    // string | string[] — the codegen simplifies this union to string (string[] is not a primitive).
+    // Multi-select requires an array of selected values, so spell out the union explicitly.
+    value: {
+      tsType: "string | string[]",
+      zodExpr: "z.union([z.string(), z.array(z.string())])",
     },
   },
   AgInput: {

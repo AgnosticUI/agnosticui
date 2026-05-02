@@ -852,7 +852,17 @@
           }
         },
         "value": {
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         },
         "placeholder": {
           "type": "string"
@@ -922,6 +932,9 @@
             "large"
           ]
         },
+        "closeOnSelect": {
+          "type": "boolean"
+        },
         "variant": {
           "type": "string",
           "enum": [
@@ -931,6 +944,9 @@
         },
         "multiple": {
           "type": "boolean"
+        },
+        "maxOptionsVisible": {
+          "type": "number"
         },
         "loading": {
           "type": "boolean"

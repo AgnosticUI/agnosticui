@@ -183,7 +183,7 @@ export interface AgComboboxNode {
   id: string;
   component: 'AgCombobox';
   options?: Array<{ value: string; label: string; disabled?: boolean }>;
-  value?: string;
+  value?: string | string[];
   placeholder?: string;
   label?: string;
   labelPosition?: 'top' | 'bottom' | 'end' | 'start';
@@ -200,8 +200,10 @@ export interface AgComboboxNode {
   required?: boolean;
   invalid?: boolean;
   size?: 'default' | 'small' | 'large';
+  closeOnSelect?: boolean;
   variant?: 'default' | 'monochrome';
   multiple?: boolean;
+  maxOptionsVisible?: number;
   loading?: boolean;
   loadingText?: string;
   noResultsText?: string;

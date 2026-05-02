@@ -315,8 +315,10 @@ function renderNode(
           required={node.required}
           invalid={node.invalid}
           {...(node.size !== undefined ? { size: node.size } : {})}
+          closeOnSelect={node.closeOnSelect}
           {...(node.variant !== undefined ? { variant: node.variant } : {})}
           multiple={node.multiple}
+          maxOptionsVisible={node.maxOptionsVisible}
           loading={node.loading}
           loadingText={node.loadingText}
           noResultsText={node.noResultsText}
