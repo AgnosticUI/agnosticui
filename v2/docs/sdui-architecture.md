@@ -104,7 +104,7 @@ flowchart LR
 
 ### Skipped components
 
-Components in `skipComponents` are excluded from all generated output because they require controlled runtime state that cannot be expressed in a static node graph. Current exclusions: `Collapsible`, `Combobox`, `Menu`, `Pagination`, `ScrollProgress`, `ScrollToButton`, `Sidebar`, `SidebarNav`, `Slider`, `Toast`, `VisuallyHidden`.
+Components in `skipComponents` are excluded from all generated output because they require controlled runtime state that cannot be expressed in a static node graph. Current exclusions: `Collapsible`, `Flex`, `Menu`, `Sidebar`, `SidebarNav`, `ScrollProgress`, `ScrollToButton`, `Toast`, `VisuallyHidden`.
 
 ---
 
@@ -276,11 +276,6 @@ v2/
 
     demo-lit/                Lit Vite demonstration app
     demo-vue/                Vue Vite demonstration app
-
-    examples/
-      sdui-react/            Minimal scaffolded React SDUI example
-      sdui-lit/              Minimal scaffolded Lit SDUI example
-      sdui-vue/              Minimal scaffolded Vue SDUI example
 
   docs/                      Developer guides (this file lives here)
     sdui-architecture.md
