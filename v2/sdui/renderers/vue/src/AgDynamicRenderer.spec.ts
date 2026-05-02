@@ -62,6 +62,34 @@ describe('AgDynamicRenderer (Vue)', () => {
     expect(wrapper.find('ag-toggle').exists()).toBe(true);
   });
 
+  it('renders an AgCombobox node', async () => {
+    const nodes: AgNode[] = [{
+      id: 'cb-1',
+      component: 'AgCombobox',
+      label: 'Fruit',
+      options: [{ value: 'apple', label: 'Apple' }, { value: 'banana', label: 'Banana' }],
+    }];
+    const wrapper = mount(AgDynamicRenderer, { props: { nodes }, ...customElements });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.find('ag-combobox').exists()).toBe(true);
+  });
+
+  it('renders an AgCombobox node in multi-select mode', async () => {
+    const nodes: AgNode[] = [{
+      id: 'cb-2',
+      component: 'AgCombobox',
+      label: 'Fruits',
+      options: [{ value: 'apple', label: 'Apple' }, { value: 'banana', label: 'Banana' }],
+      multiple: true,
+      value: ['apple', 'banana'],
+      closeOnSelect: false,
+      maxOptionsVisible: 2,
+    }];
+    const wrapper = mount(AgDynamicRenderer, { props: { nodes }, ...customElements });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.find('ag-combobox').exists()).toBe(true);
+  });
+
   // ─── Nesting ────────────────────────────────────────────────────────────────
 
   it('renders nested nodes (button inside card)', async () => {
