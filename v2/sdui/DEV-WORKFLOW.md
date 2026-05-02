@@ -153,3 +153,80 @@ Lit is not affected (direct property binding in the renderer template).
 - [ ] `cd v2/sdui/schema && npm run build` if the schema types changed
 - [ ] Restart the demo dev server
 - [ ] If something still looks stale: `rm -rf node_modules/.vite` in the demo, then restart
+
+---
+
+## Manual verification checklist
+
+Run these to spot-check the full SDUI stack after a significant change or when returning
+to the codebase after a gap. All commands assume you are in the repo root.
+
+### 1. Schema unit tests
+
+```bash
+cd v2/sdui/schema && npm test
+```
+Expected: **43 tests pass.** Covers Zod schema validation for every component.
+
+### 2. Renderer unit tests — all three frameworks
+
+```bash
+cd v2/sdui/renderers/react && npm test
+cd v2/sdui/renderers/vue   && npm test
+cd v2/sdui/renderers/lit   && npm test
+```
+Expected: **14 / 14 / 16 tests pass** respectively. Ignore Lit dev-mode stderr warnings
+in the Lit suite — they are pre-existing jsdom noise, not failures.
+
+### 3. Fixture validation + accessibility
+
+```bash
+cd v2/sdui/demo && npm test
+```
+Expected: **44 tests pass** across `fixtures.spec.ts`, `a11y.spec.ts`, and `toHtml.spec.ts`.
+`fixtures.spec.ts` calls `validateGraph()` on every variation in `fixtureBank` and on
+`pickerFixture`. Adding a new workflow to `fixtureBank` is automatically covered with no
+test code changes required.
+
+### 4. Codegen consistency (mirrors CI)
+
+```bash
+cd v2/sdui/schema && npm run check-codegen
+```
+Expected: `check-codegen: all 7 files are up to date.`
+Fails if any generated file (`schema.ts`, `types.ts`, `index.ts`, the three renderers, or
+`agnosticui-schema.json`) is out of sync with what codegen would produce. Fix by running
+`npm run codegen` (and `npm run codegen -- --emit-schema-json` for the JSON artifact), then
+committing the regenerated files.
+
+### 5. Visual spot-check — React demo
+
+```bash
+cd v2/sdui/demo && npm run dev
+```
+Open the printed localhost URL. Use the workflow picker to exercise each card. Key things
+to verify:
+- Clicking **Regenerate** streams a new fixture variation into the renderer.
+- Selecting a workflow option and clicking the action button (Submit / Apply / etc.)
+  transitions to the confirmation fixture.
+- The **Node array** collapsible panel shows the live JSON for the current render.
+- The **Combobox** workflow demonstrates single-select (variation 1) and multi-select with
+  tag overflow (variation 2, `multiple` + `closeOnSelect: false` + `maxOptionsVisible: 2`).
+
+### 6. Visual spot-check — Vue and Lit demos
+
+```bash
+cd v2/sdui/demo-vue && npm run dev   # separate terminal
+cd v2/sdui/demo-lit && npm run dev   # separate terminal
+```
+Same spot-check steps as the React demo. The fixture data is identical (shared imports from
+`v2/sdui/demo/src/fixtures/`); only the renderer differs. Verify the same Combobox workflow
+works in each framework.
+
+### 7. Confirm legacy examples are gone
+
+```bash
+ls v2/sdui/
+```
+Expected directories: `demo  demo-lit  demo-llm  demo-vue  renderers  schema` plus the
+markdown files. No `examples/` directory.

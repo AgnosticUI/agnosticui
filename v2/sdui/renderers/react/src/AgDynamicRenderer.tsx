@@ -16,6 +16,7 @@ import { ReactButton } from 'agnosticui-core/button/react';
 import { ReactButtonFx } from 'agnosticui-core/button-fx/react';
 import { ReactCard } from 'agnosticui-core/card/react';
 import { ReactCheckbox } from 'agnosticui-core/checkbox/react';
+import { ReactCombobox } from 'agnosticui-core/combobox/react';
 import { ReactCopyButton } from 'agnosticui-core/copy-button/react';
 import { ReactDialog } from 'agnosticui-core/dialog/react';
 import { ReactDivider } from 'agnosticui-core/divider/react';
@@ -290,6 +291,38 @@ function renderNode(
           helpText={node.helpText}
           onClick={() => dispatch(node.on_click, actions)}
           onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked })} />
+      );
+
+    case 'AgCombobox':
+      return (
+        <ReactCombobox
+          key={node.id}
+          {...(node.options !== undefined ? { options: node.options } : {})}
+          {...(node.value !== undefined ? { value: node.value } : {})}
+          placeholder={node.placeholder}
+          label={node.label}
+          labelPosition={node.labelPosition}
+          labelHidden={node.labelHidden}
+          noLabel={node.noLabel}
+          aria-label={node.ariaLabel}
+          helpText={node.helpText}
+          errorMessage={node.errorMessage}
+          autocomplete={node.autocomplete}
+          filterMode={node.filterMode}
+          clearable={node.clearable}
+          disabled={node.disabled}
+          readonly={node.readonly}
+          required={node.required}
+          invalid={node.invalid}
+          {...(node.size !== undefined ? { size: node.size } : {})}
+          closeOnSelect={node.closeOnSelect}
+          {...(node.variant !== undefined ? { variant: node.variant } : {})}
+          multiple={node.multiple}
+          maxOptionsVisible={node.maxOptionsVisible}
+          loading={node.loading}
+          loadingText={node.loadingText}
+          noResultsText={node.noResultsText}
+          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' })} />
       );
 
     case 'AgCopyButton':

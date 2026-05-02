@@ -47,6 +47,32 @@ describe('AgDynamicRenderer (React)', () => {
     expect(document.querySelector('ag-toggle')).toBeInTheDocument();
   });
 
+  it('renders an AgCombobox node', () => {
+    const nodes: AgNode[] = [{
+      id: 'cb-1',
+      component: 'AgCombobox',
+      label: 'Fruit',
+      options: [{ value: 'apple', label: 'Apple' }, { value: 'banana', label: 'Banana' }],
+    }];
+    render(<AgDynamicRenderer nodes={nodes} />);
+    expect(document.querySelector('ag-combobox')).toBeInTheDocument();
+  });
+
+  it('renders an AgCombobox node in multi-select mode', () => {
+    const nodes: AgNode[] = [{
+      id: 'cb-2',
+      component: 'AgCombobox',
+      label: 'Fruits',
+      options: [{ value: 'apple', label: 'Apple' }, { value: 'banana', label: 'Banana' }],
+      multiple: true,
+      value: ['apple', 'banana'],
+      closeOnSelect: false,
+      maxOptionsVisible: 2,
+    }];
+    render(<AgDynamicRenderer nodes={nodes} />);
+    expect(document.querySelector('ag-combobox')).toBeInTheDocument();
+  });
+
   // ─── Nesting ────────────────────────────────────────────────────────────────
 
   it('renders nested nodes (button inside card)', () => {

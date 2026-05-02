@@ -179,6 +179,38 @@ export interface AgCheckboxNode {
   children?: string[];
 }
 
+export interface AgComboboxNode {
+  id: string;
+  component: 'AgCombobox';
+  options?: Array<{ value: string; label: string; disabled?: boolean }>;
+  value?: string | string[];
+  placeholder?: string;
+  label?: string;
+  labelPosition?: 'top' | 'bottom' | 'end' | 'start';
+  labelHidden?: boolean;
+  noLabel?: boolean;
+  ariaLabel?: string;
+  helpText?: string;
+  errorMessage?: string;
+  autocomplete?: 'list' | 'none';
+  filterMode?: 'none' | 'startsWith' | 'contains';
+  clearable?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
+  required?: boolean;
+  invalid?: boolean;
+  size?: 'default' | 'small' | 'large';
+  closeOnSelect?: boolean;
+  variant?: 'default' | 'monochrome';
+  multiple?: boolean;
+  maxOptionsVisible?: number;
+  loading?: boolean;
+  loadingText?: string;
+  noResultsText?: string;
+  on_change?: string;
+  children?: string[];
+}
+
 export interface AgCopyButtonNode {
   id: string;
   component: 'AgCopyButton';
@@ -317,7 +349,7 @@ export interface AgImageNode {
   width?: number;
   height?: number;
   aspectRatio?: string;
-  fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  fit?: 'none' | 'cover' | 'contain' | 'fill' | 'scale-down';
   position?: string;
   loading?: 'lazy' | 'eager';
   fade?: boolean;
@@ -804,6 +836,7 @@ export type AgNode =
   | AgButtonFxNode
   | AgCardNode
   | AgCheckboxNode
+  | AgComboboxNode
   | AgCopyButtonNode
   | AgDialogNode
   | AgDividerNode

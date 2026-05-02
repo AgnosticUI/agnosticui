@@ -20,6 +20,7 @@ import 'agnosticui-core/button';
 import 'agnosticui-core/button-fx';
 import 'agnosticui-core/card';
 import 'agnosticui-core/checkbox';
+import 'agnosticui-core/combobox';
 import 'agnosticui-core/copy-button';
 import 'agnosticui-core/dialog';
 import 'agnosticui-core/divider';
@@ -242,6 +243,36 @@ function renderNode(
         @click=${() => doDispatch(node.on_click, actions)}
         @change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked })}
       ></ag-checkbox>`;
+
+    case 'AgCombobox':
+      return html`<ag-combobox
+        .options=${node.options ?? nothing}
+        .value=${node.value ?? nothing}
+        .placeholder=${node.placeholder ?? nothing}
+        .label=${node.label ?? nothing}
+        .labelPosition=${node.labelPosition ?? nothing}
+        .labelHidden=${node.labelHidden ?? false}
+        .noLabel=${node.noLabel ?? false}
+        .ariaLabel=${node.ariaLabel ?? nothing}
+        .helpText=${node.helpText ?? nothing}
+        .errorMessage=${node.errorMessage ?? nothing}
+        .autocomplete=${node.autocomplete ?? nothing}
+        .filterMode=${node.filterMode ?? nothing}
+        .clearable=${node.clearable ?? false}
+        .disabled=${node.disabled ?? false}
+        .readonly=${node.readonly ?? false}
+        .required=${node.required ?? false}
+        .invalid=${node.invalid ?? false}
+        .size=${node.size ?? nothing}
+        .closeOnSelect=${node.closeOnSelect ?? false}
+        .variant=${node.variant ?? nothing}
+        .multiple=${node.multiple ?? false}
+        .maxOptionsVisible=${node.maxOptionsVisible ?? 0}
+        .loading=${node.loading ?? false}
+        .loadingText=${node.loadingText ?? nothing}
+        .noResultsText=${node.noResultsText ?? nothing}
+        @change=${(e: Event) => doDispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' })}
+      ></ag-combobox>`;
 
     case 'AgCopyButton':
       return html`<ag-copy-button
