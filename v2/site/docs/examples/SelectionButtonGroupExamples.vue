@@ -286,10 +286,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { VueSelectionButtonGroup } from 'agnosticui-core/selection-button-group/vue';
+import { VueSelectionButtonGroup, type SelectionButtonChangeEventDetail } from 'agnosticui-core/selection-button-group/vue';
 import { VueSelectionButton } from 'agnosticui-core/selection-button/vue';
 import { VueButton } from "agnosticui-core/button/vue";
-
 const radioSelection = ref('');
 const checkboxSelection = ref<string[]>([]);
 const activeFilter = ref<string[]>([]);
@@ -298,13 +297,14 @@ const handleClear = () => {
   activeFilter.value = [];
 };
 
-const handleChange = (e: CustomEvent) => {
-  radioSelection.value = e.detail.selectedValues[0] || '';
+const handleChange = (detail: SelectionButtonChangeEventDetail) => {
+  radioSelection.value = detail.selectedValues[0] || '';
 };
 
-const handleCheckboxChange = (e: CustomEvent) => {
-  checkboxSelection.value = e.detail.selectedValues;
+const handleCheckboxChange = (detail: SelectionButtonChangeEventDetail) => {
+  checkboxSelection.value = detail.selectedValues;
 };
+
 </script>
 
 <style scoped>

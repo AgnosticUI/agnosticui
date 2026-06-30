@@ -1,5 +1,6 @@
 import VueSelectionButtonGroup from './VueSelectionButtonGroup.vue';
 import type { SelectionButtonGroupProps as VueSelectionButtonGroupProps } from '../core/_SelectionButtonGroup';
+import type { SelectionButtonChangeEventDetail } from '../core/_SelectionButtonGroup';
 
 export { VueSelectionButtonGroup };
-export type { VueSelectionButtonGroupProps };
+export type { VueSelectionButtonGroupProps, SelectionButtonChangeEventDetail };
