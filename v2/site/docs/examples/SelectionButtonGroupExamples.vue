@@ -23,6 +23,24 @@
       <p class="selection-output">Selected: {{ radioSelection }}</p>
     </section>
 
+    <!-- Checkbox Group - Bugfix https://github.com/AgnosticUI/agnosticui/issues/493 -->
+    <section class="example-section">
+      <h3>Checkbox Group — Controlled Clear</h3>
+      <VueSelectionButtonGroup
+        v-model:values="activeFilter"
+        shape="rounded"
+        type="checkbox"
+        >
+        <VueSelectionButton value="Cheese" label="Cheese">Cheese</VueSelectionButton>
+        <VueSelectionButton value="Mushrooms" label="Mushrooms">Mushrooms</VueSelectionButton>
+        <VueSelectionButton value="Olives" label="Olives">Olives</VueSelectionButton>
+      </VueSelectionButtonGroup>
+      <p class="selection-output">
+        <VueButton class="mie3" shape="rounded" @click="handleClear">Clear</VueButton>
+        Selected: {{ activeFilter.join(', ') || 'None' }}
+      </p>
+    </section>
+
     <!-- Checkbox Group -->
     <section class="example-section">
       <h3>Checkbox Group (Multiple Selection)</h3>
@@ -270,9 +288,15 @@
 import { ref } from 'vue';
 import { VueSelectionButtonGroup } from 'agnosticui-core/selection-button-group/vue';
 import { VueSelectionButton } from 'agnosticui-core/selection-button/vue';
+import { VueButton } from "agnosticui-core/button/vue";
 
 const radioSelection = ref('');
 const checkboxSelection = ref<string[]>([]);
+const activeFilter = ref<string[]>([]);
+
+const handleClear = () => {
+  activeFilter.value = [];
+};
 
 const handleChange = (e: CustomEvent) => {
   radioSelection.value = e.detail.selectedValues[0] || '';

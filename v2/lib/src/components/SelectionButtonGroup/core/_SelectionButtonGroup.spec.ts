@@ -235,6 +235,38 @@ describe('SelectionButtonGroup - Comprehensive Tests', () => {
       expect((buttons[1] as AgSelectionButton).checked).toBe(false);
       expect((buttons[2] as AgSelectionButton).checked).toBe(true);
     });
+    it('should clear all selections when controlled values prop changes to empty array', async () => {
+      const group = await createGroup({ type: 'checkbox', values: ['a', 'c'] });
+      await group.updateComplete;
+
+      let buttons = group.querySelectorAll('ag-selection-button');
+      expect((buttons[0] as AgSelectionButton).checked).toBe(true);
+      expect((buttons[2] as AgSelectionButton).checked).toBe(true);
+
+      group.values = [];
+      await group.updateComplete;
+
+      buttons = group.querySelectorAll('ag-selection-button');
+      expect((buttons[0] as AgSelectionButton).checked).toBe(false);
+      expect((buttons[1] as AgSelectionButton).checked).toBe(false);
+      expect((buttons[2] as AgSelectionButton).checked).toBe(false);
+    });
+
+    it('should clear selection when controlled radio value prop changes to empty string', async () => {
+      const group = await createGroup({ type: 'radio', value: 'b' });
+      await group.updateComplete;
+
+      let buttons = group.querySelectorAll('ag-selection-button');
+      expect((buttons[1] as AgSelectionButton).checked).toBe(true);
+
+      group.value = '';
+      await group.updateComplete;
+
+      buttons = group.querySelectorAll('ag-selection-button');
+      buttons.forEach((button) => {
+        expect((button as AgSelectionButton).checked).toBe(false);
+      });
+    });
   });
 
   describe('Disabled State', () => {
