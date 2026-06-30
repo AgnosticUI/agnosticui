@@ -65,6 +65,34 @@
       </VueSelectionCard>
     </VueSelectionCardGroup>
 
+    <!-- Checkbox Group - Bugfix-style regression check, see issue #493 -->
+    <div class="mbe4">
+      <h2>Checkbox Group — Controlled Clear</h2>
+      <p class="mbs2 mbe3">Demonstrates clearing a controlled selection externally via <code>v-model:values</code></p>
+    </div>
+    <VueSelectionCardGroup
+      v-model:values="activeCardFilter"
+      type="checkbox"
+      name="card-filter"
+      legend="Select features to enable"
+      legend-hidden
+      class="mbe4"
+    >
+      <VueSelectionCard value="analytics" label="Analytics">
+        <div style="padding: 1rem; text-align: center;">Analytics</div>
+      </VueSelectionCard>
+      <VueSelectionCard value="notifications" label="Notifications">
+        <div style="padding: 1rem; text-align: center;">Notifications</div>
+      </VueSelectionCard>
+      <VueSelectionCard value="export" label="Export">
+        <div style="padding: 1rem; text-align: center;">Export</div>
+      </VueSelectionCard>
+    </VueSelectionCardGroup>
+    <p class="selection-output">
+      <VueButton class="mie3" shape="rounded" @click="handleClearCardFilterClick">Clear</VueButton>
+      Selected: {{ activeCardFilter.join(', ') || 'None' }}
+    </p>
+
     <div class="mbe4">
       <h2>Theme Variants</h2>
       <p class="mbs2 mbe3">Different color themes for various contexts</p>
@@ -239,15 +267,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { VueSelectionCardGroup } from "agnosticui-core/selection-card-group/vue";
 import { VueSelectionCard } from "agnosticui-core/selection-card/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 
 export default defineComponent({
   name: "SelectionCardGroupExamples",
   components: {
     VueSelectionCardGroup,
     VueSelectionCard,
+    VueButton,
+  },
+  setup() {
+    const activeCardFilter = ref<string[]>([]);
+    const handleClearCardFilterClick = () => {
+      activeCardFilter.value = [];
+    };
+    return { activeCardFilter, handleClearCardFilterClick };
   },
   methods: {
     handleChange(detail: { value: string; checked: boolean; selectedValues: string[] }) {

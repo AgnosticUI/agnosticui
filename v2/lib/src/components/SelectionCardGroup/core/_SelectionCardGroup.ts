@@ -107,10 +107,10 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
   declare theme: SelectionCardGroupTheme;
 
   @property({ type: String })
-  declare value: string;
+  declare value: string | undefined;
 
   @property({ type: Array })
-  declare values: string[];
+  declare values: string[] | undefined;
 
   @property({ type: Boolean, reflect: true })
   declare disabled: boolean;
@@ -134,8 +134,8 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
     this.legend = '';
     this.legendHidden = false;
     this.theme = '';
-    this.value = '';
-    this.values = [];
+    this.value = undefined;
+    this.values = undefined;
     this.disabled = false;
     this.required = false;
     this._internalSelectedValues = [];
@@ -145,14 +145,12 @@ export class AgSelectionCardGroup extends FaceMixin(LitElement) implements Selec
   // Get current selected values (controlled or uncontrolled)
   private _getSelectedValues(): string[] {
     if (this.type === 'radio') {
-      // For radio: use controlled value if set, otherwise internal state
-      if (this.value) {
-        return [this.value];
+      if (this.value !== undefined) {
+        return this.value ? [this.value] : [];
       }
       return this._internalSelectedValues;
     }
-    // For checkbox: use controlled values if set (non-empty), otherwise internal state
-    if (this.values && this.values.length > 0) {
+    if (this.values !== undefined) {
       return this.values;
     }
     return this._internalSelectedValues;
