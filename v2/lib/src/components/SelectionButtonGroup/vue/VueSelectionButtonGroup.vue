@@ -64,8 +64,7 @@ withDefaults(defineProps<VueSelectionButtonGroupProps>(), {
   theme: '',
   size: 'md',
   shape: '',
-  value: '',
-  values: () => [],
+  // value and values: no default — let them stay undefined when unbound
   disabled: false,
   required: false,
 });
