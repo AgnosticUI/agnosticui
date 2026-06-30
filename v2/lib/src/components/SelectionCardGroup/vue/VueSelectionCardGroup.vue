@@ -46,8 +46,7 @@ withDefaults(defineProps<VueSelectionCardGroupProps>(), {
   name: '',
   legend: '',
   legendHidden: false,
-  value: '',
-  values: () => [],
+  // value and values intentionally omitted — undefined signals uncontrolled mode
   disabled: false,
   required: false,
 });

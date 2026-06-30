@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { AgSelectionCardGroup } from './SelectionCardGroup';
+import { AgSelectionCardGroup, type SelectionCardGroupTheme } from './SelectionCardGroup';
 import { AgSelectionCard } from '../../SelectionCard/core/SelectionCard';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -208,6 +208,38 @@ describe('SelectionCardGroup - Comprehensive Tests', () => {
       expect((cards[1] as AgSelectionCard).checked).toBe(false);
       expect((cards[2] as AgSelectionCard).checked).toBe(true);
     });
+    it('should clear all selections when controlled values prop changes to empty array', async () => {
+      const group = await createGroup({ type: 'checkbox', values: ['a', 'c'] });
+      await group.updateComplete;
+
+      let cards = group.querySelectorAll('ag-selection-card');
+      expect((cards[0] as AgSelectionCard).checked).toBe(true);
+      expect((cards[2] as AgSelectionCard).checked).toBe(true);
+
+      group.values = [];
+      await group.updateComplete;
+
+      cards = group.querySelectorAll('ag-selection-card');
+      expect((cards[0] as AgSelectionCard).checked).toBe(false);
+      expect((cards[1] as AgSelectionCard).checked).toBe(false);
+      expect((cards[2] as AgSelectionCard).checked).toBe(false);
+    });
+
+    it('should clear selection when controlled radio value prop changes to empty string', async () => {
+      const group = await createGroup({ type: 'radio', value: 'b' });
+      await group.updateComplete;
+
+      let cards = group.querySelectorAll('ag-selection-card');
+      expect((cards[1] as AgSelectionCard).checked).toBe(true);
+
+      group.value = '';
+      await group.updateComplete;
+
+      cards = group.querySelectorAll('ag-selection-card');
+      cards.forEach((card) => {
+        expect((card as AgSelectionCard).checked).toBe(false);
+      });
+    });
   });
 
   describe('Disabled State', () => {
@@ -347,6 +379,21 @@ describe('SelectionCardGroup - Comprehensive Tests', () => {
     it('should use custom validationMessage when validationMessages.valueMissing is set', async () => {
       const group = await createGroup({ required: true, validationMessages: { valueMissing: 'Custom message' } }, []);
       expect(group.validationMessage).toBe('Custom message');
+    });
+  });
+
+  describe('Themes', () => {
+    const themes: SelectionCardGroupTheme[] = ['', 'success', 'info', 'warning', 'error', 'monochrome'];
+
+    themes.forEach((theme) => {
+      it(`should apply theme="${theme || 'default'}" to all cards`, async () => {
+        const group = await createGroup({ theme });
+        const cards = group.querySelectorAll('ag-selection-card');
+
+        cards.forEach((card) => {
+          expect((card as AgSelectionCard)._theme).toBe(theme);
+        });
+      });
     });
   });
 });
