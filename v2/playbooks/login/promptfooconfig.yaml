@@ -1,0 +1,49 @@
+description: "AgnosticUI Playbook Quality Evaluation Suite"
+
+prompts:
+  - "./PROMPTFOO-REACT.md"
+
+providers:
+  - id: ollama:chat:qwen2.5-coder:1.5b
+    config:
+      baseUrl: http://127.0.0.1:11434
+      temperature: 0.1
+      options:
+        num_ctx: 8192
+        num_predict: 512
+
+tests:
+  - assert:
+      - type: not-contains
+        value: "module.css"
+        description: "Enforce: Do NOT use CSS Modules for layout styles."
+
+      - type: not-contains
+        value: "ReactCard.Header"
+        description: "Enforce: Catch and reject dot-notation component hallucinations."
+
+      # Swapped from a strict string match to a robust JavaScript quote handler
+      - type: javascript
+        value: output.includes('./components/ag/') || output.includes('"./components/ag/') || output.includes("'./components/ag/")
+        description: "Verify that component imports map to local workspace paths."
+
+      - type: contains
+        value: 'slot="addon-left"'
+        description: "Verify that native AgnosticUI layout slot patterns are correctly implemented."
+
+      - type: icontains
+        value: "ReactDivider"
+        description: "Confirm structural ReactDivider wrapper components are utilized."
+
+      - type: javascript
+        value: output.includes('ReactButton') && output.includes('ReactInput')
+        description: "Verify essential structural input and action primitives are present."
+
+      # New Assertion: Ensures the model only consumes, never re-implements, the primitives
+      - type: not-contains
+        value: "export default const ReactButton"
+        description: "Enforce Governance: Model must not re-implement core framework primitives."
+
+      - type: not-contains
+        value: "export const ReactInput"
+        description: "Enforce Governance: Model must not write custom input primitive implementations."
