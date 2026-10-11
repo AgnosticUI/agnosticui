@@ -40,6 +40,12 @@ import { ReactSelectionCard } from "./components/ag/SelectionCard/react/ReactSel
 
 {% endraw %}
 
+## Strict Execution Guardrails
+
+- Output ONLY the structural skeleton of the `OnboardingWizard` main component.
+- Stop generating any text, explanations, or redundant code chunks once the component block is exported. Move directly to end-of-file.
+- CRITICAL CODE GOVERNANCE: You MUST import each primitive individually. Do NOT combine `ReactProgress`, `ReactAlert`, `ReactSelectionCardGroup`, or `ReactSelectionCard` into the `./components/ag/Button/react/ReactButton` path string.
+
 ## Reference Implementation Patterns
 
 Use these exact code block patterns for state bindings, layout loops, slots, and events. Do NOT use sub-components or dot-notation wrappers:
