@@ -13,7 +13,7 @@ export function hasSlotContent(slot: HTMLSlotElement | null): boolean {
   if (!slot) {
     return false;
   }
-  const assignedNodes = slot.assignedNodes({ flatten: true });
+  const assignedNodes = slot.assignedNodes();
 
   // Helper to check if an element has meaningful content
   const hasElementContent = (element: Element): boolean => {

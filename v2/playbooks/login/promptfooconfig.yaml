@@ -47,3 +47,35 @@ tests:
       - type: not-contains
         value: "export const ReactInput"
         description: "Enforce Governance: Model must not write custom input primitive implementations."
+
+      - type: contains
+        value: "<form"
+        description: "Accessibility: Core structure must be wrapped within a semantic native form tag."
+
+      - type: contains
+        value: 'type="submit"'
+        description: "Verify action button explicitly declares submission type execution."
+
+      - type: javascript
+        value: "output.includes('ReactButton') && output.includes('ReactInput') && output.includes('ReactLink') && output.includes('ReactCheckbox')"
+        description: "Verify essential structural and behavioral layout primitives are present."
+
+      - type: not-contains
+        value: "export default const ReactButton"
+        description: "Enforce Governance: Model must not re-implement core framework primitives."
+
+      - type: not-contains
+        value: "export const ReactInput"
+        description: "Enforce Governance: Model must not write custom input primitive implementations."
+
+      # Enforce strict deterministic component import path mapping
+      - type: javascript
+        value: |
+          const validButton = output.includes('import { ReactButton } from "./components/ag/Button/react/ReactButton"');
+          const validInput = output.includes('import { ReactInput } from "./components/ag/Input/react/ReactInput"');
+          const validDivider = output.includes('import { ReactDivider } from "./components/ag/Divider/react/ReactDivider"');
+          const validLink = output.includes('import { ReactLink } from "./components/ag/Link/react/ReactLink"');
+          const validCheckbox = output.includes('import { ReactCheckbox } from "./components/ag/Checkbox/react/ReactCheckbox"');
+
+          return validButton && validInput && validDivider && validLink && validCheckbox;
+        description: "Enforce Architecture: Verify all components strictly map to their isolated relative package paths."

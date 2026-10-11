@@ -7,6 +7,7 @@ You are a Senior Frontend Platform Engineer. Output a complete, production-ready
 - Output ONLY the `LoginForm` component file layout.
 - Do NOT rewrite, outline, or output implementation files for the underlying components (ReactButton.tsx, ReactInput.tsx, etc.).
 - Assume the components already exist at their local relative paths and work as intended.
+- You MUST wrap the core layout inside a native semantic `<form>` element to ensure full accessibility and proper FACE lifecycle support. Do NOT use a generic `<div>` as the root container of the form controls.
 
 ## CSS Architecture
 
@@ -22,16 +23,20 @@ You are a Senior Frontend Platform Engineer. Output a complete, production-ready
 
 - You MUST import individual AgnosticUI React primitives using standard destructuring or explicit paths.
 - Component paths MUST resolve locally relative to the component ecosystem directory layout.
+- You MUST include structural support for user credentials management by utilizing both `ReactCheckbox` (e.g., for Remember Me) and `ReactLink` (e.g., for Forgot Password or Sign Up) primitives.
 
 ### Reference Import Pattern
 
-Use this exact style for linking your UI primitives:
+You MUST import each component exclusively from its own distinct relative path. Do NOT combine multiple different primitives into a single component import path. Use this exact style:
+
 {% raw %}
 
 ```tsx
 import { ReactButton } from "./components/ag/Button/react/ReactButton";
 import { ReactInput } from "./components/ag/Input/react/ReactInput";
 import { ReactDivider } from "./components/ag/Divider/react/ReactDivider";
+import { ReactLink } from "./components/ag/Link/react/ReactLink";
+import { ReactCheckbox } from "./components/ag/Checkbox/react/ReactCheckbox";
 ```
 
 {% endraw %}

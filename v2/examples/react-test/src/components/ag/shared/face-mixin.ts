@@ -107,6 +107,11 @@ export declare class FaceMixinInterface {
   /** FACE lifecycle — called on form reset; subclasses should override */
   formResetCallback(): void;
   /**
+   * FACE lifecycle — called when the browser restores session state or autofills.
+   * Subclasses should override to restore their own state from the saved value.
+   */
+  formStateRestoreCallback(state: File | string | FormData | null, mode: 'restore' | 'autocomplete'): void;
+  /**
    * Toggle a custom state in ElementInternals.states (CustomStateSet).
    * Enables :state() pseudo-class targeting from external CSS.
    * Guards against environments where states is unavailable.
@@ -134,6 +139,16 @@ export const FaceMixin = <T extends Constructor<LitElement>>(superClass: T) => {
      * Must be initialized in constructor before any other use.
      */
     protected _internals!: ElementInternals;
+
+    /**
+     * The disabled state the user set on this element itself (via attribute or property),
+     * captured before a <fieldset disabled> ancestor overwrites it.
+     * Restored when the fieldset is re-enabled so the two sources don't stomp each other.
+     */
+    private _ownDisabled = false;
+
+    /** True while a <fieldset disabled> ancestor is disabling this element. */
+    private _parentDisabled = false;
 
     /**
      * The name under which this control's value is submitted with the parent form.
@@ -182,14 +197,21 @@ export const FaceMixin = <T extends Constructor<LitElement>>(superClass: T) => {
 
     /**
      * FACE lifecycle: called when a <fieldset disabled> ancestor is toggled.
-     * Syncs the component's own `disabled` property so it renders correctly.
-     *
-     * Note: this only fires for inherited disabled state (via fieldset), not
-     * for the element's own `disabled` attribute — both paths must be handled.
+     * Separates parent-disabled state from the element's own `disabled` attribute
+     * so re-enabling a fieldset does not accidentally re-enable an intentionally
+     * disabled control.
      */
     formDisabledCallback(disabled: boolean): void {
-      // `disabled` is declared on each subclass via @property; cast to access it
-      (this as unknown as { disabled: boolean }).disabled = disabled;
+      if (disabled) {
+        // Save the user's own disabled state before the fieldset takes over.
+        this._ownDisabled = (this as unknown as { disabled: boolean }).disabled;
+        this._parentDisabled = true;
+        (this as unknown as { disabled: boolean }).disabled = true;
+      } else {
+        this._parentDisabled = false;
+        // Restore only the user-set state — do not blindly set false.
+        (this as unknown as { disabled: boolean }).disabled = this._ownDisabled;
+      }
     }
 
     /**
@@ -198,6 +220,26 @@ export const FaceMixin = <T extends Constructor<LitElement>>(superClass: T) => {
      * and call this._internals.setFormValue('') / setValidity({}).
      */
     formResetCallback(): void {
+      // no-op default — override in subclass
+    }
+
+    /**
+     * FACE lifecycle: called when the browser restores form state from session history
+     * (back/forward navigation) or when the browser autofills the field.
+     *
+     * `state` is the value that was previously passed to setFormValue():
+     *   - a string for single-value controls
+     *   - a FormData for multi-value controls (multi-select, checkbox groups)
+     *   - null if the control had no value
+     *
+     * `mode` is 'restore' for session-history restores and 'autocomplete' for autofill.
+     *
+     * Default is a no-op. Subclasses should override to restore their own state.
+     */
+    formStateRestoreCallback(
+      _state: File | string | FormData | null,
+      _mode: 'restore' | 'autocomplete'
+    ): void {
       // no-op default — override in subclass
     }
 

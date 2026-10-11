@@ -69,6 +69,11 @@ export interface ButtonProps {
  * - APG-compliant accessibility
  */
 export class AgButton extends LitElement implements ButtonProps {
+  static shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   static styles = css`
     /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
@@ -633,26 +638,6 @@ export class AgButton extends LitElement implements ButtonProps {
       composed: true
     });
     this.dispatchEvent(blurEvent);
-  }
-
-  /**
-   * Focus the internal button element
-   */
-  focus() {
-    const button = this.shadowRoot?.querySelector('button');
-    if (button) {
-      button.focus();
-    }
-  }
-
-  /**
-   * Blur the internal button element
-   */
-  blur() {
-    const button = this.shadowRoot?.querySelector('button');
-    if (button) {
-      button.blur();
-    }
   }
 
   render() {
