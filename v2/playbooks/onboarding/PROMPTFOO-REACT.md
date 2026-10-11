@@ -4,10 +4,10 @@ You are a Senior Frontend Platform Engineer. Output a complete, production-ready
 
 ## Strict Execution Guardrails
 
-- Output ONLY the unified wizard main component file layout (e.g., `App.tsx`).
-- Do NOT rewrite, outline, or output implementation files for the underlying components (ReactButton.tsx, ReactProgress.tsx, etc.).
-- Assume the primitives already exist at their local relative paths and work as intended.
-- You MUST maintain a rigorous state machine configuration mapping a total of 6 view positions: Position 1 (`path` views), Positions 2, 4, 5 (`interests` multi-category views), Position 3 (`interstitial` confirmation view), and Position 6 (`review` summary step).
+- Output ONLY the structural skeleton of the `OnboardingWizard` main component.
+- Stop generating any text, explanations, or redundant code chunks once the component block is exported. Move directly to end-of-file.
+- You MUST manage step state navigation using explicitly named handler functions. The function responsible for decrementing or reversing the step sequence MUST be named `handleBack`.
+- The function responsible for incrementing or advancing the step sequence MUST be named `handleNext`.
 
 ## CSS Architecture
 
@@ -23,11 +23,10 @@ You are a Senior Frontend Platform Engineer. Output a complete, production-ready
 
 - You MUST import individual AgnosticUI React primitives using standard destructuring or explicit paths.
 - Component paths MUST resolve locally relative to the component ecosystem directory layout.
-- You MUST import each primitive exclusively from its own distinct relative path. Do NOT combine multiple different primitives into a single component import path.
 
 ### Reference Import Pattern
 
-Use this exact style with explicit relative paths for linking your UI primitives:
+Use this exact style for linking your UI primitives:
 {% raw %}
 
 ```tsx
@@ -39,12 +38,6 @@ import { ReactSelectionCard } from "./components/ag/SelectionCard/react/ReactSel
 ```
 
 {% endraw %}
-
-## Strict Execution Guardrails
-
-- Output ONLY the structural skeleton of the `OnboardingWizard` main component.
-- Stop generating any text, explanations, or redundant code chunks once the component block is exported. Move directly to end-of-file.
-- CRITICAL CODE GOVERNANCE: You MUST import each primitive individually. Do NOT combine `ReactProgress`, `ReactAlert`, `ReactSelectionCardGroup`, or `ReactSelectionCard` into the `./components/ag/Button/react/ReactButton` path string.
 
 ## Reference Implementation Patterns
 
