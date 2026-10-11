@@ -1,0 +1,49 @@
+description: "AgnosticUI Onboarding Playbook Quality Evaluation Suite"
+
+prompts:
+  - "./PROMPTFOO-REACT.md"
+
+providers:
+  - id: ollama:chat:qwen2.5-coder:1.5b
+    config:
+      baseUrl: http://127.0.0.1:11434
+      temperature: 0.1
+      options:
+        num_ctx: 8192 # Reduced slightly so Ollama loads the context window instantly
+        num_predict: 2048 # Increased to prevent the model from cutting off long files
+
+tests:
+  - assert:
+      - type: not-contains
+        value: "module.css"
+        description: "CSS Architecture: Do NOT use CSS Modules for layout styles."
+
+      - type: not-contains
+        value: "--ag-border-radius-md"
+        description: "Governance: Reject usage of the deprecated border-radius design token."
+
+      # 1. Verification of Isolated Component Package Paths (Positive Assertion)
+      - type: javascript
+        value: |
+          const validProgress = output.includes('import { ReactProgress } from "./components/ag/Progress/react/ReactProgress"');
+          const validAlert = output.includes('import { ReactAlert } from "./components/ag/Alert/react/ReactAlert"');
+          const validCardGroup = output.includes('import { ReactSelectionCardGroup } from "./components/ag/SelectionCardGroup/react/ReactSelectionCardGroup"');
+          const validCard = output.includes('import { ReactSelectionCard } from "./components/ag/SelectionCard/react/ReactSelectionCard"');
+          const validButton = output.includes('import { ReactButton } from "./components/ag/Button/react/ReactButton"');
+
+          return validProgress && validAlert && validCardGroup && validCard && validButton;
+        description: "Enforce Architecture: Verify all onboarding complex layout primitives strictly resolve to their separate package paths."
+
+      # 2. State Machine Logic Verifications
+      - type: contains
+        value: "ReactSelectionCardGroup"
+        description: "State Verification: Ensure multi-selection group containers are declared."
+
+      # FIX: Removed the 'return' keyword from this single-line expression to fix the SyntaxError
+      - type: javascript
+        value: output.includes('type="radio"') && output.includes('type="checkbox"')
+        description: "Verify that card groups support both radio pathing and checkbox multiple interest options."
+
+      - type: contains
+        value: "ReactProgress"
+        description: "Verify that the structural progress indicator tracks wizard state values."
