@@ -209,7 +209,8 @@ export class AgCopyButton extends LitElement implements CopyButtonProps {
   }
 
   private _handleCopy() {
-    if (!this.text) return;
+    const text = this.text;
+    if (!text) return;
 
     // Clear any existing timeout
     if (this._timeoutId) {
@@ -219,12 +220,12 @@ export class AgCopyButton extends LitElement implements CopyButtonProps {
     // Reset error state
     this._hasError = false;
 
-    this._copyWithFallback(this.text)
+    this._copyWithFallback(text)
       .then(() => {
         this._isCopied = true;
         this._announcement = this.successLabel;
-        this.dispatchEvent(new CustomEvent('copy', { 
-          detail: { text: this.text },
+        this.dispatchEvent(new CustomEvent('copy', {
+          detail: { text },
           bubbles: true,
           composed: true
         }));
