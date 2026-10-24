@@ -2,24 +2,18 @@
 
 <AlphaWarning />
 
-
 An enhanced button component with customizable animation effects that trigger on hover, click, or mount. ButtonFx extends the base Button component with a rich set of visual effects to create engaging, interactive UI elements.
 
 ::: info Opt-in Component
 ButtonFx adds a few hundred lines of CSS for animation effects. It's ideal for marketing sites, landing pages, or when visual polish is a priority.
 :::
 
-<FrameworkExample
-  component="button-fx"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
+<FrameworkExample component="button-fx" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode">
   <template #vue>
     <ButtonFxExamples />
   </template>
   <template #lit>
-    <buttonfx-lit-examples></buttonfx-lit-examples>
+    <button-fx-lit-examples></button-fx-lit-examples>
   </template>
 </FrameworkExample>
 
@@ -33,14 +27,35 @@ import litCode from '../examples/ButtonFxLitExamples.js?raw'
 import reactCode from '../examples/ButtonFxReactExamples.jsx?raw'
 </script>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes an **Isomorphic Architecture** to support server-first workflows (e.g. TanStack Start, Remix, Nuxt). Because CSS keyframe transformations require the browser's active window runtime to paint, animations cannot execute during server-side streaming.
+
+Since `ButtonFx` visually mirrors the base `Button` layout profile before client-side hydration completes, applications should utilize the base component's server fallback engine as a zero-drift placeholder to freeze initial geometry.
+
+Refer to the [Button Fallback Documentation](/components/button#server-side-rendering-ssr-fallback-layouts) for full integration code-blocks and pre-hydration bound examples.
+
+### Example Cross-Component Placeholder Strategy
+
+```vue
+<!-- Employ the core Button layout preview as a structural placeholder -->
+<ButtonFallbackPreview
+  variant="primary"
+  shape="rounded"
+  slotContent="Hover Me"
+/>
+```
+
 ## Usage
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add ButtonFx
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
@@ -268,7 +283,7 @@ The special `pulse-wobble` effect creates a two-stage animation:
 
 ### Disabling Effects
 
-You can disable effects while keeping the button functional applying <code>:fx-disabled="true"</code> which prevents the animation from playing while keeping the button clickable
+You can disable effects while keeping the button functional applying `html :fx-disabled="true"` which prevents the animation from playing while keeping the button clickable
 
 ::: details Vue
 
