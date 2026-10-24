@@ -157,8 +157,9 @@
   padding: 0;
   min-height: unset;
 }
-
-/* 5. Minimalist Ghost, Link, Bordered, Grouped, and Disabled States */
+/* ==========================================================================
+   5. Minimalist Ghost, Link, Bordered, Grouped, and Disabled States
+   ========================================================================== */
 :host([ghost]) button,
 :host([link]) button,
 .isGhost,
@@ -202,6 +203,13 @@
   border-color: var(--ag-danger);
 }
 
+/* PARITY FIX: Restored from master diff */
+:host([bordered][variant="monochrome"]) button,
+.isBordered.variantMonochrome {
+  color: var(--ag-text-primary);
+  border-color: var(--ag-text-primary);
+}
+
 /* Hover Filled Activation States: Inverts colors on interaction passes */
 :host([bordered][variant="primary"]) button:hover {
   background: var(--ag-primary);
@@ -221,6 +229,12 @@
 :host([bordered][variant="danger"]) button:hover {
   background: var(--ag-danger);
   color: var(--ag-danger-fg);
+}
+
+/* PARITY FIX: Restored from master diff */
+:host([bordered][variant="monochrome"]) button:hover {
+  background: var(--ag-background-primary-inverted);
+  color: var(--ag-text-primary-inverted);
 }
 
 :host([grouped]) button,
