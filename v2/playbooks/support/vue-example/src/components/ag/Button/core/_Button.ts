@@ -183,7 +183,9 @@ export class AgButton extends LitElement implements ButtonProps {
     }
 
     /* Default size (md) - applies when no size attribute or size="md" */
-    button,
+    /* Safely scopes layout traits to AgnosticUI primitives only */
+    .ag-btn,
+    :host button,
     :host([size="md"]) button {
       height: var(--ag-space-10);
       min-height: var(--ag-space-10);

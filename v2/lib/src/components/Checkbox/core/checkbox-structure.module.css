@@ -8,9 +8,11 @@
   display: inline-flex;
   align-items: center;
   cursor: pointer;
+  -webkit-user-select: none; /* Safari 3+, iOS Safari 3+ support */
   user-select: none;
   gap: 0;
 }
+
 
 .checkboxWrapperLabelStart {
   flex-direction: row-reverse;

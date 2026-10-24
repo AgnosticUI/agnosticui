@@ -483,5 +483,4 @@ ag-button::part(ag-button):hover {
 ## Related Components
 
 - [IconButton](/components/icon-button) - For icon-driven visual triggers.
-- [ButtonGroup](/components/button-group) - For tightly clustered navigation parameters.
 - [Link](/components/link) - For standalone content redirection paths.

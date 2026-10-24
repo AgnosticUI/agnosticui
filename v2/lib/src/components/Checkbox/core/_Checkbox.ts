@@ -455,11 +455,20 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
       this.labelPosition === 'start' ? 'checkbox-wrapper--label-start' : ''
     ].filter(Boolean).join(' ').trim();
 
+    // 1. Properly capitalize layout options to match your camelCase module hashes
+    const sizeCapitalized = this.size.charAt(0).toUpperCase() + this.size.slice(1);
+    const themeCapitalized = this.theme.charAt(0).toUpperCase() + this.theme.slice(1);
+
+    const sizeKey = `checkboxLabel${sizeCapitalized}`;   
+    const themeKey = `checkboxLabel${themeCapitalized}`; 
+    const copyKey = `checkboxLabelCopy${sizeCapitalized}`; 
+
+    // 2. Map these keys dynamically into your class arrays so the Shadow DOM picks them up instantly
     const labelClasses = [
       'checkbox-label',
       styles.checkboxLabel,
-      styles[`checkbox-label${this.size.charAt(0).toUpperCase() + this.size.slice(1)}`],
-      styles[`checkbox-label${this.theme.charAt(0).toUpperCase() + this.theme.slice(1)}`],
+      styles[sizeKey],
+      styles[themeKey],
       `checkbox-label--${this.size}`,
       `checkbox-label--${this.theme}`
     ].filter(Boolean).join(' ').trim();
@@ -467,7 +476,7 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
     const labelCopyClasses = [
       'checkbox-label-copy',
       styles.checkboxLabelCopy,
-      styles[`checkbox-labelCopy${this.size.charAt(0).toUpperCase() + this.size.slice(1)}`],
+      styles[copyKey], // Fixed: Safely map dynamic camelCase token hashes
       `checkbox-label-copy--${this.size}`
     ].filter(Boolean).join(' ').trim();
 
