@@ -12,6 +12,6 @@ declare global {
 }
 
 export * from './_Checkbox.js';
-// Expose the universal SSR fallback engine to layout bundlers
-export { _InputFallback as _CheckboxFallback } from './_InputFallback.js';
-export type { CheckboxFallbackProps } from './_InputFallback.js';
+// Expose the correctly named self-contained engine
+export { _CheckboxFallback } from './_CheckboxFallback.js';
+export type { CheckboxFallbackProps } from './_CheckboxFallback.js';

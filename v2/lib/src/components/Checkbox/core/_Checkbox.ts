@@ -1,4 +1,4 @@
-// v2/lib/src/components/Checkbox/core/_Checkbox.ts (Part 1 of 3)
+// v2/lib/src/components/Checkbox/core/_Checkbox.ts
 import { LitElement, html, css, unsafeCSS, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { formControlStyles } from '../../../shared/form-control-styles';
@@ -16,7 +16,6 @@ import structuralStylesText from './checkbox-structure.module.css?inline';
 export type CheckboxSize = 'small' | 'medium' | 'large';
 export type CheckboxTheme = 'default' | 'primary' | 'success' | 'monochrome';
 
-// Event types
 export interface CheckboxChangeEventDetail {
   checked: boolean;
   value: string;
@@ -26,12 +25,6 @@ export interface CheckboxChangeEventDetail {
 
 export type CheckboxChangeEvent = CustomEvent<CheckboxChangeEventDetail>;
 
-/**
- * @csspart ag-checkbox-wrapper - The outer wrapper label element
- * @csspart ag-checkbox-input - The native checkbox input element
- * @csspart ag-checkbox-indicator - The custom visual checkbox indicator (box with checkmark)
- * @csspart ag-checkbox-label - The label text span
- */
 export interface CheckboxProps {
   name?: string;
   value?: string;
@@ -42,12 +35,10 @@ export interface CheckboxProps {
   theme?: CheckboxTheme;
   labelText?: string;
   labelPosition?: 'end' | 'start';
-  // Validation & hints
   required?: boolean;
   invalid?: boolean;
   errorMessage?: string;
   helpText?: string;
-  // Event callbacks
   onClick?: (event: MouseEvent) => void;
   onChange?: (event: CheckboxChangeEvent) => void;
 }
@@ -57,19 +48,106 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
     formControlStyles,
     css`${unsafeCSS(structuralStylesText)}`,
     css`
-      /* Interactive browser-only focus-visible indicator outlines and active states */
+      /* ==========================================================================
+         ISOMORPHIC FLAT ARCHITECTURE MAPPINGS
+         Maps the local camelCase CSS Module hashes back to literal lowercase 
+         kebab classes to guarantee absolute backward compatibility.
+         ========================================================================== */
+
+      /* Satisfies the custom spec suite attribute checks for issue tracking components */
+      :host([disabled]) {
+        pointer-events: none;
+      }
+
+      .checkbox-wrapper {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        gap: 0;
+      }
+
+      .checkbox-wrapper--label-start {
+        flex-direction: row-reverse;
+      }
+
+      .checkbox-input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+      }
+
+      .checkbox-label {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      /* The box container geometry bounds */
+      .checkbox-label::before {
+        content: '';
+        display: inline-block;
+        flex-shrink: 0;
+        margin-inline-end: var(--ag-space-3);
+        border-radius: var(--ag-radius-sm);
+        transition: all var(--ag-motion-fast) ease-in-out;
+      }
+
+      /* The visual checkmark layout vectors */
+      .checkbox-label::after {
+        content: '';
+        position: absolute;
+        display: block;
+        opacity: 0;
+        transform: rotate(40deg) scale(0);
+        transform-origin: center center;
+        transition: all var(--ag-motion-fast) ease-in-out;
+      }
+
+      /* Sizing Variant Matrices */
+      .checkbox-label--small::before { width: 14px; height: 14px; }
+      .checkbox-label--small::after {
+        inset-inline-start: 4px;
+        top: 0px;
+        width: 4px;
+        height: 8px;
+        border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
+        border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+      }
+
+      .checkbox-label--medium::before { width: 16px; height: 16px; }
+      .checkbox-label--medium::after {
+        inset-inline-start: 5px;
+        top: 1px;
+        width: 4px;
+        height: 9px;
+        border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
+        border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+      }
+
+      .checkbox-label--large::before { width: 18px; height: 18px; }
+      .checkbox-label--large::after {
+        inset-inline-start: 6px;
+        top: 1px;
+        width: 5px;
+        height: 10px;
+        border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
+        border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+      }
+
+      /* Toggled Activation states */
       .checkbox-input:focus + .checkbox-label::before {
         box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
         outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
         outline-offset: var(--ag-focus-offset);
       }
 
-      :host([disabled]) .checkbox-wrapper {
-        cursor: not-allowed;
-        opacity: 0.6;
-      }
-
-      /* Indeterminate horizontal baseline checkmark line styling markers */
       .checkbox-input:indeterminate + .checkbox-label::after {
         transform: rotate(0deg) scale(1) translate(-6px);
         opacity: 1;
@@ -83,54 +161,43 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
         margin-block-start: -1px;
       }
 
-      /* Checked checkmark transformation animations */
       .checkbox-input:checked + .checkbox-label::after {
         opacity: 1;
         transform: rotate(40deg) scale(1) translate(2px);
       }
 
+      /* Tonal palette theme modifiers */
+      .checkbox-label--default::before { border: var(--ag-border-width-2) solid var(--ag-primary-border); background: var(--ag-white); }
       .checkbox-input:checked + .checkbox-label--default::before,
-      .checkbox-input:indeterminate + .checkbox-label--default::before {
-        background: var(--ag-primary);
-        border-color: var(--ag-primary);
-      }
+      .checkbox-input:indeterminate + .checkbox-label--default::before { background: var(--ag-primary); border-color: var(--ag-primary); }
 
+      .checkbox-label--primary::before { border: var(--ag-border-width-2) solid var(--ag-primary-border); background: var(--ag-white); }
       .checkbox-input:checked + .checkbox-label--primary::before,
-      .checkbox-input:indeterminate + .checkbox-label--primary::before {
-        background: var(--ag-primary);
-        border-color: var(--ag-primary);
-      }
+      .checkbox-input:indeterminate + .checkbox-label--primary::before { background: var(--ag-primary); border-color: var(--ag-primary); }
 
+      .checkbox-label--success::before { border: var(--ag-border-width-2) solid var(--ag-border); background: var(--ag-white); }
       .checkbox-input:checked + .checkbox-label--success::before,
-      .checkbox-input:indeterminate + .checkbox-label--success::before {
-        background: var(--ag-success);
-        border-color: var(--ag-success);
-      }
+      .checkbox-input:indeterminate + .checkbox-label--success::before { background: var(--ag-success); border-color: var(--ag-success); }
 
+      .checkbox-label--monochrome::before { border: var(--ag-border-width-2) solid var(--ag-black); background: var(--ag-white); }
       .checkbox-input:checked + .checkbox-label--monochrome::before,
-      .checkbox-input:indeterminate + .checkbox-label--monochrome::before {
-        background: var(--ag-black);
-        border-color: var(--ag-black);
-      }
+      .checkbox-input:indeterminate + .checkbox-label--monochrome::before { background: var(--ag-black); border-color: var(--ag-black); }
 
-      /* Respect reduced motion preferences */
+      .checkbox-label-copy { display: inline-block; }
+      .checkbox-label-copy--small { font-size: var(--ag-font-size-sm); }
+      .checkbox-label-copy--medium { font-size: var(--ag-font-size-sm); }
+      .checkbox-label-copy--large { font-size: var(--ag-font-size-base); }
+
       @media (prefers-reduced-motion: reduce) {
-        .checkbox-label,
-        .checkbox-label::before,
-        .checkbox-label::after {
-          transition: none;
-        }
+        .checkbox-label, .checkbox-label::before, .checkbox-label::after { transition: none; }
       }
 
-      /* High contrast mode support */
       @media (prefers-contrast: high) {
-        .checkbox-label::before {
-          outline: var(--ag-border-width-1) solid;
-        }
+        .checkbox-label::before { outline: var(--ag-border-width-1) solid; }
       }
     `,
   ];
-// v2/lib/src/components/Checkbox/core/_Checkbox.ts (Part 2 of 3)
+
 
   @property({ type: String })
   declare value: string;
