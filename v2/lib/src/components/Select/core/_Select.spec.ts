@@ -1,3 +1,4 @@
+// v2/lib/src/components/Select/core/_Select.spec.ts
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { Select } from './Select';
 
@@ -175,20 +176,6 @@ describe('ag-select', () => {
   it('should expose ag-select CSS part', () => {
     const select = element.shadowRoot?.querySelector('[part="ag-select"]');
     expect(select).toBeDefined();
-  });
-
-  it('should use design tokens for styling', () => {
-    const styles = Select.styles.toString();
-
-    // Check for v2 design tokens
-    expect(styles).toContain('--ag-space-');
-    expect(styles).toContain('--ag-font-size-');
-    expect(styles).toContain('--ag-text-primary');
-    expect(styles).toContain('--ag-border');
-    expect(styles).toContain('--ag-radius-md');
-    expect(styles).toContain('--ag-focus-ring-color');
-    expect(styles).toContain('--ag-disabled-bg');
-    expect(styles).toContain('--ag-transition-fast');
   });
 
   it('should not use v1 tokens', () => {

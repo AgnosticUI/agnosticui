@@ -1,9 +1,10 @@
+// v2/lib/src/shared/form-control-utils.ts
+
 /**
  * Shared form control utilities
  *
  * Pure utility functions for form controls (Input, Checkbox, Radio, Toggle, etc.)
  */
-
 import { html, type TemplateResult, nothing } from 'lit';
 import { generateUniqueId } from '../utils/unique-id';
 

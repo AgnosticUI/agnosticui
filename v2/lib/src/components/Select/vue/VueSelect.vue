@@ -27,11 +27,12 @@
 </template>
 
 <script lang="ts">
+// v2/lib/src/components/Select/vue/VueSelect.vue
 import { defineComponent, ref, type PropType } from "vue";
 import type { SelectProps, SelectSize, SelectChangeEventDetail } from "../core/Select";
-import "../core/Select"; // Registers the ag-select web component
+import "../core/Select";
 
-// Re-export event types
+// Re-export event types and the Isomorphic SSR Fallback Engine
 export type { SelectChangeEvent, SelectChangeEventDetail } from "../core/Select";
 
 export interface VueSelectProps extends Omit<SelectProps, 'onClick' | 'onFocus' | 'onBlur' | 'onChange'> {

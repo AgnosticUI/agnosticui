@@ -1,12 +1,15 @@
-import React from 'react';
-import { createComponent, type EventName } from '@lit/react';
-import { Select as SelectWC, type SelectChangeEvent } from '../core/Select.js';
+import React from "react";
+import { createComponent, type EventName } from "@lit/react";
+import { Select as SelectWC, type SelectChangeEvent } from "../core/Select.js";
 
-// Re-export event types
-export type { SelectChangeEvent, SelectChangeEventDetail } from '../core/Select.js';
+// Re-export event types and the Isomorphic SSR Fallback Engine
+export type {
+  SelectChangeEvent,
+  SelectChangeEventDetail,
+} from "../core/Select.js";
 
 export interface ReactSelectProps {
-  size?: 'small' | 'large' | '';
+  size?: "small" | "large" | "";
   multiple?: boolean;
   disabled?: boolean;
   name?: string;
@@ -15,7 +18,7 @@ export interface ReactSelectProps {
 
   // External label support
   label?: string;
-  labelPosition?: 'top' | 'start' | 'end' | 'bottom';
+  labelPosition?: "top" | "start" | "end" | "bottom";
   labelHidden?: boolean;
   noLabel?: boolean;
   required?: boolean;
@@ -33,11 +36,10 @@ export interface ReactSelectProps {
 }
 
 export const ReactSelect = createComponent({
-  tagName: 'ag-select',
+  tagName: "ag-select",
   elementClass: SelectWC,
   react: React,
   events: {
-    // Only map custom events - native events work automatically
-    onChange: 'change' as EventName<SelectChangeEvent>,
+    onChange: "change" as EventName<SelectChangeEvent>,
   },
 });

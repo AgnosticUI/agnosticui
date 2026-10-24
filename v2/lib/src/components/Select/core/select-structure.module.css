@@ -1,0 +1,113 @@
+/* 1. Isomorphic Layout Structural Wrapper */
+.ag-form-control--horizontal {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ag-space-3);
+}
+
+/* 2. Core Form Control Base Select Element */
+.select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* Reset browser native theme graphics */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Geometry & Layout spacing */
+  padding-block-start: var(--ag-space-2);
+  padding-block-end: var(--ag-space-2);
+  padding-inline-start: var(--ag-space-3);
+  padding-inline-end: var(--ag-space-8);
+  font-size: var(--ag-font-size-sm);
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: inherit;
+
+  /* Baseline Visual Identity Styles */
+  background-color: var(--ag-background-primary);
+  color: var(--ag-text-primary);
+  border: var(--ag-border-width-1) solid var(--ag-border);
+  border-radius: var(--ag-radius-md);
+}
+
+/* Embed the custom chevron directly in the shared stylesheet asset */
+.select:not([multiple]) {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333330' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right var(--ag-space-3) center;
+  background-size: var(--ag-font-size-base) var(--ag-space-3);
+}
+
+/* 3. Small Size Modifier Layout Geometry */
+:host([size="small"]) .select,
+.selectSmall {
+  padding-block-start: var(--ag-space-1);
+  padding-block-end: var(--ag-space-1);
+  padding-inline-start: var(--ag-space-2);
+  font-size: var(--ag-font-size-sm);
+}
+
+/* 4. Large Size Modifier Layout Geometry */
+:host([size="large"]) .select,
+.selectLarge {
+  padding-block-start: var(--ag-space-2);
+  padding-block-end: var(--ag-space-2);
+  padding-inline-start: var(--ag-space-4);
+  font-size: var(--ag-font-size-large);
+}
+
+/* 5. Structural Label Constraints */
+.ag-form-control__label {
+  display: block;
+  font-size: var(--ag-font-size-sm);
+  font-weight: 600;
+  line-height: var(--ag-line-height-base);
+  margin-block-end: var(--ag-space-2);
+}
+
+.ag-form-control__label--bottom {
+  margin-block-end: 0;
+  margin-block-start: var(--ag-space-2);
+}
+
+.ag-form-control__label--horizontal {
+  display: inline-block;
+  min-inline-size: 100px;
+  max-inline-size: 200px;
+  margin-inline-end: 0;
+  margin-block-end: 0;
+  flex-shrink: 0;
+}
+
+.ag-form-control__label--start {
+  order: -1;
+}
+
+.ag-form-control__label--end {
+  order: 1;
+}
+
+/* Visually Hidden Utility Layout */
+.ag-form-control__label--hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Form Helper & Error Layout Spacing */
+.ag-form-control__helper,
+.ag-form-control__error {
+  display: block;
+  font-size: var(--ag-font-size-sm);
+  margin-block-start: var(--ag-space-1);
+  margin-block-end: var(--ag-space-1);
+}

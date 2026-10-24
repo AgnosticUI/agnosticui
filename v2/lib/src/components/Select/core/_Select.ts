@@ -1,4 +1,5 @@
-import { LitElement, html, css } from 'lit';
+// v2/lib/src/components/Select/core/_Select.ts
+import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import {
   createFormControlIds,
@@ -8,6 +9,9 @@ import {
 } from '../../../shared/form-control-utils';
 import { formControlStyles } from '../../../shared/form-control-styles';
 import { FaceMixin, syncInnerInputValidity } from '../../../shared/face-mixin';
+
+// Import the identical structural module asset via bundler string injection loader
+import structuralStylesText from './select-structure.module.css?inline';
 
 export type SelectSize = 'small' | 'large' | '';
 
@@ -247,97 +251,52 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
 
   static styles = [
     formControlStyles,
+    css`${unsafeCSS(structuralStylesText)}`,
     css`
       :host {
         display: block;
         width: 100%;
       }
 
-      /* Hide the slot since options are moved into select */
       slot {
         display: none;
       }
 
       .select {
-      display: block;
-      width: 100%;
-      /* Remove default browser styling */
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-
-      /* Base styling */
-      padding: var(--ag-space-2) var(--ag-space-8) var(--ag-space-2) var(--ag-space-3);
-      -moz-padding-start: calc(var(--ag-space-3) - 3px);
-      font-size: var(--ag-font-size-sm);
-      font-weight: 400;
-      line-height: 1.5;
-      font-family: inherit;
-      color: var(--ag-text-primary);
-      border: var(--ag-border-width-1) solid var(--ag-border);
-      border-radius: var(--ag-radius-md);
-      background-color: var(--ag-background-primary);
-      transition:
-        border-color var(--ag-transition-fast) ease-in-out,
-        box-shadow var(--ag-transition-fast) ease-in-out;
-    }
-
-    /* Custom dropdown arrow for single select */
-    .select:not([multiple]) {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333330' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right var(--ag-space-3) center;
-      background-size: var(--ag-font-size-base) var(--ag-space-3);
-    }
-
-    /* Focus state */
-    .select:focus {
-      border-color: var(--ag-focus-ring-color);
-      box-shadow: 0 0 0 var(--ag-focus-ring-outline-width) var(--ag-focus-ring-color);
-      /* Needed for High Contrast mode */
-      outline:
-        var(--ag-focus-ring-outline-width) var(--ag-focus-ring-outline-style)
-        var(--ag-focus-ring-outline-color);
-      transition: box-shadow var(--ag-transition-fast) ease-out;
-    }
-
-    /* Disabled state */
-    .select:disabled {
-      background-color: var(--ag-disabled-bg);
-      cursor: not-allowed;
-      opacity: 0.6;
-    }
-
-    /* Firefox focusring fix */
-    .select:-moz-focusring {
-      color: transparent;
-      text-shadow: 0 0 0 var(--ag-text-primary);
-    }
-
-    /* Small size variant */
-    :host([size="small"]) .select {
-      padding-block-start: var(--ag-space-1);
-      padding-block-end: var(--ag-space-1);
-      padding-inline-start: var(--ag-space-2);
-      font-size: var(--ag-font-size-sm);
-    }
-
-    /* Large size variant */
-    :host([size="large"]) .select {
-      padding-block-start: var(--ag-space-2);
-      padding-block-end: var(--ag-space-2);
-      padding-inline-start: var(--ag-space-4);
-      font-size: var(--ag-font-size-large);
-    }
-
-    /* Reduced motion support */
-    @media (prefers-reduced-motion), (update: slow) {
-      .select,
-      .select:focus {
-        transition: none;
+        /* Keep only active client-side animation transitions here */
+        transition:
+          border-color var(--ag-transition-fast) ease-in-out,
+          box-shadow var(--ag-transition-fast) ease-in-out;
       }
-    }
-  `,
+
+      /* Active runtime browser states */
+      .select:focus {
+        border-color: var(--ag-focus-ring-color);
+        box-shadow: 0 0 0 var(--ag-focus-ring-outline-width) var(--ag-focus-ring-color);
+        outline:
+          var(--ag-focus-ring-outline-width) var(--ag-focus-ring-outline-style)
+          var(--ag-focus-ring-outline-color);
+        transition: box-shadow var(--ag-transition-fast) ease-out;
+      }
+
+      .select:disabled {
+        background-color: var(--ag-disabled-bg);
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+
+      .select:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 var(--ag-text-primary);
+      }
+
+      @media (prefers-reduced-motion), (update: slow) {
+        .select,
+        .select:focus {
+          transition: none;
+        }
+      }
+    `,
   ];
 
   private handleClick(event: MouseEvent) {
@@ -498,16 +457,5 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
       ${helperText}
       ${errorText}
     `;
-  }
-}
-
-// Register the custom element
-if (!customElements.get('ag-select')) {
-  customElements.define('ag-select', Select);
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ag-select': Select;
   }
 }
