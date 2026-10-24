@@ -12,13 +12,22 @@ To prevent file-generation and pathing hallucination, strict adherence to these 
 
 ### Target Structural Verification Output (Example for `[Component]` = "CustomSelect")
 
-v2/lib/src/components/CustomSelect/core/
-├── \_CustomSelect.spec.ts <-- Web Component Client Assertions
-├── \_CustomSelect.ts <-- Lit Web Component Class Definition
-├── \_CustomSelectFallback.spec.ts <-- Fallback String Engine Assertions
-├── \_CustomSelectFallback.ts <-- Isomorphic Pure HTML String Engine
-├── custom-select-structure.module.css <-- Shared Layout Source of Truth (CSS Modules)
-└── CustomSelect.ts <-- Public Element Barrels / Registry Hooks
+### Target Structural Verification Output (Example for `[Component]` = "CustomSelect")
+
+v2/lib/src/components/CustomSelect/
+├── core/
+│ ├── \_CustomSelect.spec.ts <-- Web Component Client Assertions
+│ ├── \_CustomSelect.ts <-- Lit Web Component Class Definition
+│ ├── \_CustomSelectFallback.spec.ts <-- Fallback String Engine Assertions
+│ ├── \_CustomSelectFallback.ts <-- Isomorphic Pure HTML String Engine
+│ ├── custom-select-structure.module.css <-- Shared Layout Source of Truth (CSS Modules)
+│ └── CustomSelect.ts <-- Public Element Barrels / Registry Hooks
+├── react/
+│ ├── index.ts <-- React Barrel Index Export
+│ └── ReactCustomSelect.tsx <-- React Component Wrapper
+└── vue/
+├── index.ts <-- Vue Barrel Index Export
+└── VueCustomSelect.vue <-- Vue Component Wrapper (SFC)
 
 ## 2. Shared Layout Sheet Constraints
 
@@ -107,3 +116,21 @@ Location: `v2/site/docs/components/[component].md`
 
 - Import the local `[component]-structure.module.css` stylesheet map directly into the spec suite file.
 - Update old hardcoded class assertions from literal strings (`expect(el.classList.contains('select'))`) straight to live module tokens (`expect(el.classList.contains(styles.select))`).
+
+## 9. Framework Wrapper & Barrel Export Rules
+
+To prevent compilation bottlenecks in downstream full-stack frameworks (like TypeScript failing to parse re-exported types inside Vue SFC `<script>` blocks), framework barrel indexes must bypass the wrappers for fallback logic:
+
+- **Direct Core Referencing:** The framework indexes (`react/index.ts` and `vue/index.ts`) must export the wrapper component natively, but pull the isomorphic fallback engine and its types directly from the core directory.
+
+### Example React Barrel Index (`react/index.ts`)
+
+export { default as ReactCustomSelect } from './ReactCustomSelect.jsx';
+export { \_CustomSelectFallback } from '../core/CustomSelect.js';
+export type { CustomSelectFallbackProps } from '../core/CustomSelect.js';
+
+### Example Vue Barrel Index (`vue/index.ts`)
+
+export { default as VueCustomSelect } from './VueCustomSelect.vue';
+export { \_CustomSelectFallback } from '../core/CustomSelect.js';
+export type { CustomSelectFallbackProps } from '../core/CustomSelect.js';
