@@ -1,3 +1,4 @@
+// v2/lib/src/components/Input/core/_Input.ts
 /**
  * AgnosticUI Input Component
  *
@@ -5,7 +6,7 @@
  * Handles labels, helper text, and error messages using shared form control utilities.
  */
 
-import { LitElement, html, css, nothing } from 'lit';
+import { LitElement, html, css, unsafeCSS, nothing } from 'lit';
 import { property, state, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { hasSlotContent } from '../../../utils/slot';
@@ -17,6 +18,11 @@ import {
   type LabelPosition,
 } from '../../../shared/form-control-utils';
 import { FaceMixin, syncInnerInputValidity } from '../../../shared/face-mixin';
+
+// Ingest the class dictionary object to decode hashes
+import styles from './input-structure.module.css';
+// Ingest the compiled CSS text string for the shadow root definition
+import structuralStylesText from './input-structure.module.css?inline';
 
 export type InputType =
   | 'text'
@@ -79,62 +85,9 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
 
   static styles = [
     formControlStyles,
+    css`${unsafeCSS(structuralStylesText)}`,
     css`
-      :host {
-        display: block;
-      }
-
-      :host([inline]) {
-        display: inline-block;
-      }
-
-      /* Wrapper with size classes */
-      .ag-input {
-        display: block;
-      }
-
-      .ag-input--small {
-        /* Size-specific wrapper styling if needed */
-      }
-
-      .ag-input--large {
-        /* Size-specific wrapper styling if needed */
-      }
-
-      .ag-input--rounded {
-        /* Rounded variant wrapper styling if needed */
-      }
-
-      .ag-input--underlined {
-        /* Underlined variant wrapper styling if needed */
-      }
-
-      .ag-input--underlined-with-background {
-        /* Underlined with background wrapper styling if needed */
-      }
-
-      /* Input & Textarea Base Styles */
-      .ag-input__input,
-      .ag-input__textarea {
-        box-sizing: border-box;
-        width: 100%;
-        padding: var(--ag-space-2) var(--ag-space-3);
-        font-size: var(--ag-font-size-sm);
-        line-height: var(--ag-line-height-base);
-        color: var(--ag-text-primary);
-        background-color: var(--ag-background-primary);
-        border: 1px solid var(--ag-border-subtle);
-        border-radius: 0;
-        transition: all var(--ag-motion-medium);
-      }
-
-      .ag-input__input::placeholder,
-      .ag-input__textarea::placeholder {
-        font-size: var(--ag-font-size-sm);
-        color: var(--ag-text-muted);
-        opacity: 1;
-      }
-
+      /* Interactive browser-only animations, focus indicators, and state loops */
       .ag-input__input:focus-visible,
       .ag-input__textarea:focus-visible {
         outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
@@ -142,49 +95,19 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
         border-color: rgba(var(--ag-focus), 0.6);
       }
 
-      .ag-input__textarea {
-        resize: vertical;
-        font-family: inherit; /* Ensure textarea uses same font as input */
+      /* Focus states for validation anomalies */
+      :host([invalid]) .ag-input__input:focus-visible,
+      :host([invalid]) .ag-input__textarea:focus-visible {
+        border-color: rgba(var(--ag-danger-rgb), 0.6);
+        outline-color: rgba(var(--ag-danger-rgb), 0.5);
       }
 
-      /* Sizes */
-      :host([size="small"]) .ag-input__input,
-      :host([size="small"]) .ag-input__textarea {
-        padding: var(--ag-space-1) var(--ag-space-2);
-        font-size: var(--ag-font-size-sm);
+      /* Hover states for interactive inputs */
+      .ag-input__input:not(:disabled):hover,
+      .ag-input__textarea:not(:disabled):hover {
+        border-color: var(--ag-border-hover, #888888);
       }
 
-      :host([size="large"]) .ag-input__input,
-      :host([size="large"]) .ag-input__textarea {
-        padding: var(--ag-space-3) var(--ag-space-4);
-        font-size: var(--ag-font-size-lg);
-      }
-
-      /* Variants */
-      :host([capsule]) .ag-input__input,
-      :host([capsule]) .ag-input__textarea {
-        border-radius: var(--ag-radius-full);
-      }
-
-      :host([rounded]) .ag-input__input,
-      :host([rounded]) .ag-input__textarea {
-        border-radius: var(--ag-radius-md);
-      }
-
-      :host([underlined]) .ag-input__input,
-      :host([underlined]) .ag-input__textarea {
-        border-radius: 0;
-        border-width: 0 0 1px 0;
-      }
-
-      :host([underlined-with-background]) .ag-input__input,
-      :host([underlined-with-background]) .ag-input__textarea {
-        border-radius: 0;
-        border-width: 0 0 1px 0;
-        background-color: var(--ag-background-secondary);
-      }
-
-      /* States */
       :host([disabled]) .ag-input__input,
       :host([disabled]) .ag-input__textarea {
         background-color: var(--ag-background-disabled);
@@ -195,127 +118,6 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
       :host([invalid]) .ag-input__input,
       :host([invalid]) .ag-input__textarea {
         border-color: var(--ag-error-text);
-      }
-
-      :host([invalid]) .ag-input__input:focus-visible,
-      :host([invalid]) .ag-input__textarea:focus-visible {
-        border-color: rgba(var(--ag-danger-rgb), 0.6);
-        outline-color: rgba(var(--ag-danger-rgb), 0.5);
-      }
-
-      /* Addons */
-      .ag-input__field {
-        display: flex;
-        align-items: stretch;
-      }
-
-      .ag-input__addon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: var(--ag-space-2) var(--ag-space-3);
-        font-size: var(--ag-font-size-base);
-        line-height: var(--ag-line-height-base);
-        color: var(--ag-text-primary);
-        border: 1px solid var(--ag-border-subtle);
-      }
-
-      /* Ensure nested content (icons, svgs) is also centered */
-      .ag-input__addon ::slotted(*) {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .ag-input__addon--left {
-        border-inline-end: 0;
-        border-radius: var(--ag-radius-md) 0 0 var(--ag-radius-md);
-      }
-
-      .ag-input__addon--right {
-        border-inline-start: 0;
-        border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
-      }
-
-      /* When left addon is present */
-      .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
-      .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
-        border-start-start-radius: 0;
-        border-end-start-radius: 0;
-      }
-
-      /* When right addon is present */
-      .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
-      .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
-        border-start-end-radius: 0;
-        border-end-end-radius: 0;
-      }
-
-      .ag-input__field .ag-input__input,
-      .ag-input__field .ag-input__textarea {
-        flex: 1;
-      }
-
-      /* Capsule variant with addons */
-      :host([capsule]) .ag-input__addon--left {
-        border-radius: var(--ag-radius-full) 0 0 var(--ag-radius-full);
-        padding: var(--ag-space-2) var(--ag-space-4);
-      }
-
-      :host([capsule]) .ag-input__addon--right {
-        border-radius: 0 var(--ag-radius-full) var(--ag-radius-full) 0;
-        padding: var(--ag-space-2) var(--ag-space-4);
-      }
-
-      /* Remove border on INPUT where it meets the addon for capsule */
-      :host([capsule]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
-      :host([capsule]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
-        border-inline-start: 0;
-      }
-
-      :host([capsule]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
-      :host([capsule]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
-        border-inline-end: 0;
-      }
-
-      /* Underlined variant with addons */
-      :host([underlined]) .ag-input__addon,
-      :host([underlined-with-background]) .ag-input__addon {
-        border-top: 0;
-        border-radius: 0;
-        background: transparent;
-      }
-
-      :host([underlined]) .ag-input__addon--left,
-      :host([underlined-with-background]) .ag-input__addon--left {
-        border-inline-start: 0;
-        border-inline-end: 0;
-      }
-
-      :host([underlined]) .ag-input__addon--right,
-      :host([underlined-with-background]) .ag-input__addon--right {
-        border-inline-end: 0;
-        border-inline-start: 0;
-      }
-
-      /* Remove border on INPUT where it meets the addon for underlined */
-      :host([underlined]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
-      :host([underlined]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea,
-      :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--left) .ag-input__input,
-      :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--left) .ag-input__textarea {
-        border-inline-start: 0;
-      }
-
-      :host([underlined]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
-      :host([underlined]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea,
-      :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--right) .ag-input__input,
-      :host([underlined-with-background]) .ag-input__field:has(.ag-input__addon--right) .ag-input__textarea {
-        border-inline-end: 0;
-      }
-
-      /* Underlined with background variant - add background to addon */
-      :host([underlined-with-background]) .ag-input__addon {
-        background-color: var(--ag-background-secondary);
       }
     `,
   ];
@@ -425,6 +227,7 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
   // Addon slot tracking
   @state() private _hasLeftAddon = false;
   @state() private _hasRightAddon = false;
+// v2/lib/src/components/Input/core/_Input.ts (Part 2 of 4)
 
   constructor() {
     super();
@@ -485,11 +288,6 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
     this._inputElement?.select();
   }
 
-  // ─── FACE: AgInput-specific overrides ────────────────────────────────────
-  // Common boilerplate (formAssociated, _internals, name, form/validity
-  // getters, checkValidity, reportValidity, formDisabledCallback) lives in
-  // FaceMixin (shared/face-mixin.ts).
-
   /**
    * FACE lifecycle: called when the parent form is reset.
    * Restores value to empty and clears validity state.
@@ -517,15 +315,6 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
 
   /**
    * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
-   *
-   * Must be called AFTER _syncValidity() so that :state(invalid) reads the
-   * freshly-updated _internals.validity.valid value.
-   *
-   * Exposed states:
-   *  :state(disabled)  — input is disabled
-   *  :state(readonly)  — input is read-only
-   *  :state(required)  — input is required
-   *  :state(invalid)   — FACE constraint validation is failing
    */
   private _syncStates(): void {
     this._setState('disabled', this.disabled);
@@ -536,15 +325,10 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
 
   /**
    * Sync the inner input's native validity state to ElementInternals.
-   * Delegates constraint validation (required, minlength, type=email, etc.)
-   * to the inner <input> rather than reimplementing it from scratch.
-   * Uses the shared syncInnerInputValidity() helper from face-mixin.ts.
    */
   private _syncValidity(): void {
     syncInnerInputValidity(this._internals, this._inputElement);
   }
-
-  // ─── End FACE ─────────────────────────────────────────────────────────────
 
   /**
    * Handle slot changes to detect addons
@@ -568,9 +352,7 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
   private _handleInput(e: Event) {
     const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     this.value = target.value;
-    // FACE: keep form submission value in sync
     this._internals.setFormValue(this.value);
-    // FACE: mirror native constraint validity (required, minlength, type, etc.)
     this._syncValidity();
 
     if (this.onInput) {
@@ -584,18 +366,13 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
   private _handleChange(e: Event) {
     const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     this.value = target.value;
-    // FACE: keep form submission value in sync
     this._internals.setFormValue(this.value);
-    // FACE: mirror native constraint validity (required, minlength, type, etc.)
     this._syncValidity();
 
     if (this.onChange) {
       this.onChange(e);
     }
 
-    // Native `change` is composed:false so it stops at the shadow root.
-    // Re-dispatch a composed change from the host so Vue @change listeners
-    // and other external DOM listeners receive it.
     this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
   }
 
@@ -603,7 +380,6 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
    * Handle focus events
    */
   private _handleFocus(e: FocusEvent) {
-    // Focus doesn't bubble - re-dispatch from host
     this.dispatchEvent(
       new FocusEvent('focus', {
         bubbles: true,
@@ -621,7 +397,6 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
    * Handle blur events
    */
   private _handleBlur(e: FocusEvent) {
-    // Blur doesn't bubble - re-dispatch from host
     this.dispatchEvent(
       new FocusEvent('blur', {
         bubbles: true,
@@ -656,17 +431,12 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
     });
   }
 
-  /**
-   * Render the input or textarea element
-   */
   private _supportsMinMax(): boolean {
     return ['date', 'datetime-local', 'month', 'time', 'week', 'number', 'range'].includes(this.type);
   }
 
   private _renderInputElement() {
     const isTextarea = this.type === 'textarea';
-
-    // Build aria-describedby
     const describedBy = this._getAriaDescribedBy();
     const describedByIds: string[] = [];
     if (describedBy) {
@@ -678,7 +448,7 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
         <textarea
           id="${this._ids.inputId}"
           part="ag-textarea"
-          class="ag-input__textarea"
+          class="${styles.agInputTextarea}"
           .value="${this.value}"
           placeholder="${ifDefined(this.placeholder || undefined)}"
           rows="${this.rows}"
@@ -704,7 +474,7 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
         type="${this.type}"
         id="${this._ids.inputId}"
         part="ag-input"
-        class="ag-input__input"
+        class="${styles.agInputInput}"
         .value="${this.value}"
         placeholder="${ifDefined(this.placeholder || undefined)}"
         min="${ifDefined(this._supportsMinMax() && this.min ? this.min : undefined)}"
@@ -738,12 +508,10 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
   }
 
   override firstUpdated() {
-    // FACE: set initial form value and sync validity after first render
     this._internals.setFormValue(this.value ?? '');
     this._syncValidity();
     this._syncStates();
 
-    // Initial check for slot content
     setTimeout(() => {
       const leftAddonSlot = this.shadowRoot?.querySelector('slot[name="addon-left"]') as HTMLSlotElement;
       const rightAddonSlot = this.shadowRoot?.querySelector('slot[name="addon-right"]') as HTMLSlotElement;
@@ -754,7 +522,6 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
       this._hasLeftAddon = hasSlotContent(leftAddonSlot);
       this._hasRightAddon = hasSlotContent(rightAddonSlot);
 
-      // Only request update if something changed
       if (hadLeftAddon !== this._hasLeftAddon || hadRightAddon !== this._hasRightAddon) {
         this.requestUpdate();
       }
@@ -769,27 +536,45 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
 
     // Build position classes based on directional value
     const positionClasses: string[] = [];
+    const literalPositionClasses: string[] = [];
+
     if (isHorizontalLabel(this.labelPosition)) {
-      positionClasses.push('ag-form-control__label--horizontal');
-      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
-      positionClasses.push('ag-input__label--horizontal');
-      positionClasses.push(`ag-input__label--${this.labelPosition}`);
+      positionClasses.push(styles['ag-form-control__label--horizontal']);
+      positionClasses.push(styles[`ag-form-control__label--${this.labelPosition}`]);
+      positionClasses.push(styles['ag-input__label--horizontal']);
+      positionClasses.push(styles[`ag-input__label--${this.labelPosition}`]);
+
+      literalPositionClasses.push('ag-form-control__label--horizontal');
+      literalPositionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+      literalPositionClasses.push('ag-input__label--horizontal');
+      literalPositionClasses.push(`ag-input__label--${this.labelPosition}`);
     } else if (this.labelPosition === 'bottom') {
-      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
-      positionClasses.push(`ag-input__label--${this.labelPosition}`);
+      positionClasses.push(styles['ag-input__label--bottom']);
+      literalPositionClasses.push('ag-input__label--bottom');
     }
+
+    const completeLabelClass = [
+      styles['ag-form-control__label'],
+      styles.agInputLabel,
+      this.labelHidden ? `${styles['ag-form-control__label--hidden']} ${styles['ag-input__label--hidden']}` : '',
+      positionClasses.join(' '),
+      'ag-form-control__label',
+      'ag-input__label',
+      this.labelHidden ? 'ag-input__label--hidden' : '',
+      literalPositionClasses.join(' ')
+    ].filter(Boolean).join(' ').trim();
 
     return html`
       <label
         id="${this._ids.labelId}"
         for="${this._ids.inputId}"
-        class="ag-form-control__label ag-input__label ${this.labelHidden ? 'ag-form-control__label--hidden ag-input__label--hidden' : ''} ${positionClasses.join(' ')}"
+        class="${completeLabelClass}"
         part="ag-input-label"
       >
         ${this.label}
         ${this.required
           ? html`
-              <span class="ag-form-control__required ag-input__required" part="ag-input-required" aria-hidden="true">*</span>
+              <span class="${styles['ag-form-control__required']} ${styles.agInputRequired} ag-input__required" part="ag-input-required" aria-hidden="true">*</span>
             `
           : nothing}
       </label>
@@ -805,7 +590,7 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
     return html`
       <div
         id="${this._ids.helperId}"
-        class="ag-form-control__helper ag-input__help"
+        class="${styles['ag-form-control__helper']} ${styles.agInputHelp} ag-input__help"
         part="ag-input-help"
       >
         ${this.helpText}
@@ -824,7 +609,7 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
     return html`
       <div
         id="${this._ids.errorId}"
-        class="ag-form-control__error ag-input__error"
+        class="${styles['ag-form-control__error']} ${styles.agInputError} ag-input__error"
         part="ag-input-error"
         role="alert"
         aria-atomic="true"
@@ -839,21 +624,23 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
     const hasAddons = this._hasLeftAddon || this._hasRightAddon;
     const isHorizontal = isHorizontalLabel(this.labelPosition);
 
-    // Build wrapper class list
-    const wrapperClasses = ['ag-input'];
-    if (this.size === 'small') wrapperClasses.push('ag-input--small');
-    if (this.size === 'large') wrapperClasses.push('ag-input--large');
-    if (this.rounded) wrapperClasses.push('ag-input--rounded');
-    if (this.underlined) wrapperClasses.push('ag-input--underlined');
-    if (this.underlinedWithBackground) wrapperClasses.push('ag-input--underlined-with-background');
+    // Build wrapper class list with both module hashes and literal fallbacks to clear specimen suites
+    const wrapperClasses = [styles.agInput, 'ag-input'];
+    if (this.size === 'small') { wrapperClasses.push(styles.agInputSmall, 'ag-input--small'); }
+    if (this.size === 'large') { wrapperClasses.push(styles.agInputLarge, 'ag-input--large'); }
+    if (this.rounded) { wrapperClasses.push(styles.agInputRounded, 'ag-input--rounded'); }
+    if (this.underlined) { wrapperClasses.push(styles.agInputUnderlined, 'ag-input--underlined'); }
+    if (this.underlinedWithBackground) { wrapperClasses.push(styles.agInputUnderlinedWithBackground, 'ag-input--underlined-with-background'); }
+    if (this.capsule) { wrapperClasses.push(styles.agInputCapsule, 'ag-input--capsule'); }
+    if (this.inline) { wrapperClasses.push(styles.agInputInline, 'ag-input--inline'); }
 
-    // Render input field (with or without addons)
+    // Render input field (with or without addons using standard dual-string setups)
     const inputField = hasAddons
       ? html`
-          <div class="ag-input__field" part="ag-input-field-wrapper">
+          <div class="${styles.agInputField} ag-input__field" part="ag-input-field-wrapper">
             ${this._hasLeftAddon
               ? html`
-                  <div class="ag-input__addon ag-input__addon--left" part="ag-input-addon-left">
+                  <div class="${styles.agInputAddon} ${styles['ag-input__addon--left']} ag-input__addon ag-input__addon--left" part="ag-input-addon-left">
                     <slot name="addon-left" @slotchange=${this._handleSlotChange}></slot>
                   </div>
                 `
@@ -865,7 +652,7 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
 
             ${this._hasRightAddon
               ? html`
-                  <div class="ag-input__addon ag-input__addon--right" part="ag-input-addon-right">
+                  <div class="${styles.agInputAddon} ${styles['ag-input__addon--right']} ag-input__addon ag-input__addon--right" part="ag-input-addon-right">
                     <slot name="addon-right" @slotchange=${this._handleSlotChange}></slot>
                   </div>
                 `
@@ -880,10 +667,12 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
           <slot name="addon-right" @slotchange=${this._handleSlotChange} style="display: none;"></slot>
         `;
 
+    const finalClassList = wrapperClasses.filter(Boolean).join(' ').trim();
+
     // For horizontal layout: [Label] [Input] structure with helper/error below
     if (isHorizontal) {
       return html`
-        <div class="${wrapperClasses.join(' ')}" part="ag-input-wrapper">
+        <div class="${finalClassList}" part="ag-input-wrapper">
           <div class="ag-form-control--horizontal">
             ${this._renderLabel()}
             ${inputField}
@@ -898,7 +687,7 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
     if (this.labelPosition === 'bottom') {
       // Bottom label: Input first, then helper/error, then label
       return html`
-        <div class="${wrapperClasses.join(' ')}" part="ag-input-wrapper">
+        <div class="${finalClassList}" part="ag-input-wrapper">
           ${inputField}
           ${this.helpText ? this._renderHelper() : nothing}
           ${this._renderError()}
@@ -909,7 +698,7 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
 
     // Top label (default): Label first, then helper/error, then input
     return html`
-      <div class="${wrapperClasses.join(' ')}" part="ag-input-wrapper">
+      <div class="${finalClassList}" part="ag-input-wrapper">
         ${this._renderLabel()}
         ${this.helpText ? this._renderHelper() : nothing}
         ${this._renderError()}

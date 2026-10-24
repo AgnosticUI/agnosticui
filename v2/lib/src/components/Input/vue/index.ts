@@ -1,3 +1,4 @@
+// v2/lib/src/components/Input/vue/index.ts
 export { default as VueInput } from './VueInput.vue';
 
 // Define types separately since Vue component types are handled differently
@@ -28,3 +29,7 @@ export interface VueInputProps {
   errorMessage?: string;
   helpText?: string;
 }
+
+// Directly reference core to satisfy the TypeScript compiler
+export { _InputFallback } from '../core/Input.js';
+export type { InputFallbackProps } from '../core/Input.js';

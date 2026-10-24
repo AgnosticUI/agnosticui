@@ -1,0 +1,229 @@
+/* v2/lib/src/components/Input/core/input-structure.module.css */
+
+/* 1. Isomorphic Layout Structural Wrappers */
+.agInput {
+  display: block;
+}
+
+.agInputInline {
+  display: inline-block;
+}
+
+/* Structural Layout Alignment Grid */
+.ag-form-control--horizontal {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ag-space-3);
+}
+
+/* 2. Primitives Geometry (Inputs & Textareas Baseline Visual Identity) */
+.agInputInput,
+.agInputTextarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--ag-space-2) var(--ag-space-3);
+  font-size: var(--ag-font-size-sm);
+  line-height: var(--ag-line-height-base);
+  color: var(--ag-text-primary);
+  background-color: var(--ag-background-primary);
+  border: 1px solid var(--ag-border-subtle);
+  border-radius: 0;
+  transition: all var(--ag-motion-medium);
+}
+
+.agInputInput::placeholder,
+.agInputTextarea::placeholder {
+  font-size: var(--ag-font-size-sm);
+  color: var(--ag-text-muted);
+  opacity: 1;
+}
+
+.agInputTextarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* 3. Size Layout Geometry Matrices */
+.agInputSmall .agInputInput,
+.agInputSmall .agInputTextarea {
+  padding: var(--ag-space-1) var(--ag-space-2);
+  font-size: var(--ag-font-size-sm);
+}
+
+.agInputLarge .agInputInput,
+.agInputLarge .agInputTextarea {
+  padding: var(--ag-space-3) var(--ag-space-4);
+  font-size: var(--ag-font-size-lg);
+}
+
+/* 4. Shape Layout Modifiers */
+.agInputCapsule .agInputInput,
+.agInputCapsule .agInputTextarea {
+  border-radius: var(--ag-radius-full);
+}
+
+.agInputRounded .agInputInput,
+.agInputRounded .agInputTextarea {
+  border-radius: var(--ag-radius-md);
+}
+
+.agInputUnderlined .agInputInput,
+.agInputUnderlined .agInputTextarea {
+  border-radius: 0;
+  border-width: 0 0 1px 0;
+}
+
+.agInputUnderlinedWithBackground .agInputInput,
+.agInputUnderlinedWithBackground .agInputTextarea {
+  border-radius: 0;
+  border-width: 0 0 1px 0;
+  background-color: var(--ag-background-secondary);
+}
+
+/* 5. Structural Label Constraints */
+.ag-form-control__label {
+  display: block;
+  font-size: var(--ag-font-size-sm);
+  font-weight: 600;
+  line-height: var(--ag-line-height-base);
+  margin-block-end: var(--ag-space-2);
+}
+
+.ag-input__label--bottom {
+  margin-block-end: 0;
+  margin-block-start: var(--ag-space-2);
+}
+
+.ag-form-control__label--horizontal {
+  display: inline-block;
+  min-inline-size: 100px;
+  max-inline-size: 200px;
+  margin-inline-end: 0;
+  margin-block-end: 0;
+  flex-shrink: 0;
+}
+
+.ag-form-control__label--start { order: -1; }
+.ag-form-control__label--end { order: 1; }
+
+.ag-form-control__label--hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.ag-form-control__required {
+  margin-inline-start: var(--ag-space-1);
+  color: var(--ag-error-text);
+}
+
+/* 6. Form Helper & Error Layout Spacing */
+.ag-form-control__helper,
+.ag-form-control__error {
+  display: block;
+  font-size: var(--ag-font-size-sm);
+  margin-block-start: var(--ag-space-1);
+  margin-block-end: var(--ag-space-1);
+}
+
+/* 7. Functional Addon Flex Containers & Boundaries */
+.agInputField {
+  display: flex;
+  align-items: stretch;
+}
+
+.agInputAddon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ag-space-2) var(--ag-space-3);
+  font-size: var(--ag-font-size-base);
+  line-height: var(--ag-line-height-base);
+  color: var(--ag-text-primary);
+  border: 1px solid var(--ag-border-subtle);
+  background-color: var(--ag-background-secondary);
+}
+
+.agInputAddon ::slotted(*) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ag-input__addon--left {
+  border-inline-end: 0;
+  border-radius: var(--ag-radius-md) 0 0 var(--ag-radius-md);
+}
+
+.ag-input__addon--right {
+  border-inline-start: 0;
+  border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
+}
+
+/* Unify Addon Radius with Parent Variants */
+.agInputCapsule .ag-input__addon--left {
+  border-radius: var(--ag-radius-full) 0 0 var(--ag-radius-full);
+  padding-inline-start: var(--ag-space-4);
+}
+
+.agInputCapsule .ag-input__addon--right {
+  border-radius: 0 var(--ag-radius-full) var(--ag-radius-full) 0;
+  padding-inline-end: var(--ag-space-4);
+}
+
+.agInputUnderlined .agInputAddon,
+.agInputUnderlinedWithBackground .agInputAddon {
+  border-top: 0;
+  border-inline-start: 0;
+  border-inline-end: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* Intersecting Input / Addon Joints */
+.agInputField:has(.ag-input__addon--left) .agInputInput,
+.agInputField:has(.ag-input__addon--left) .agInputTextarea {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+.agInputField:has(.ag-input__addon--right) .agInputInput,
+.agInputField:has(.ag-input__addon--right) .agInputTextarea {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.agInputCapsule .agInputField:has(.ag-input__addon--left) .agInputInput,
+.agInputCapsule .agInputField:has(.ag-input__addon--left) .agInputTextarea {
+  border-inline-start: 0;
+}
+
+.agInputCapsule .agInputField:has(.ag-input__addon--right) .agInputInput,
+.agInputCapsule .agInputField:has(.ag-input__addon--right) .agInputTextarea {
+  border-inline-end: 0;
+}
+
+.agInputUnderlined .agInputField:has(.ag-input__addon--left) .agInputInput,
+.agInputUnderlined .agInputField:has(.ag-input__addon--left) .agInputTextarea,
+.agInputUnderlinedWithBackground .agInputField:has(.ag-input__addon--left) .agInputInput,
+.agInputUnderlinedWithBackground .agInputField:has(.ag-input__addon--left) .agInputTextarea {
+  border-inline-start: 0;
+}
+
+.agInputUnderlined .agInputField:has(.ag-input__addon--right) .agInputInput,
+.agInputUnderlined .agInputField:has(.ag-input__addon--right) .agInputTextarea,
+.agInputUnderlinedWithBackground .agInputField:has(.ag-input__addon--right) .agInputInput,
+.agInputUnderlinedWithBackground .agInputField:has(.ag-input__addon--right) .agInputTextarea {
+  border-inline-end: 0;
+}
+
+.agInputField .agInputInput,
+.agInputField .agInputTextarea {
+  flex: 1;
+}
