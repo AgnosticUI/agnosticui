@@ -1,4 +1,5 @@
-import { LitElement, html, css, nothing } from 'lit';
+// v2/lib/src/components/Checkbox/core/_Checkbox.ts (Part 1 of 3)
+import { LitElement, html, css, unsafeCSS, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { formControlStyles } from '../../../shared/form-control-styles';
 import {
@@ -6,6 +7,11 @@ import {
   buildAriaDescribedBy,
 } from '../../../shared/form-control-utils';
 import { FaceMixin, syncInnerInputValidity } from '../../../shared/face-mixin';
+
+// Ingest the class dictionary hashes for runtime binding parity
+import styles from './checkbox-structure.module.css';
+// Ingest the raw compiled style content safely via inward bundler string loaders
+import structuralStylesText from './checkbox-structure.module.css?inline';
 
 export type CheckboxSize = 'small' | 'medium' | 'large';
 export type CheckboxTheme = 'default' | 'primary' | 'success' | 'monochrome';
@@ -49,235 +55,82 @@ export interface CheckboxProps {
 export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
   static override styles = [
     formControlStyles,
+    css`${unsafeCSS(structuralStylesText)}`,
     css`
-      :host {
-        display: inline-block;
+      /* Interactive browser-only focus-visible indicator outlines and active states */
+      .checkbox-input:focus + .checkbox-label::before {
+        box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
+        outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+        outline-offset: var(--ag-focus-offset);
       }
 
-    .checkbox-wrapper {
-      display: inline-flex;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
-      gap: 0;
-    }
-
-    :host([disabled]) .checkbox-wrapper {
-      cursor: not-allowed;
-      opacity: 0.6;
-    }
-
-    .checkbox-wrapper--label-start {
-      flex-direction: row-reverse;
-    }
-
-    .checkbox-input {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      opacity: 0;
-      margin: 0;
-      padding: 0;
-      clip: rect(0, 0, 0, 0);
-      overflow: hidden;
-    }
-
-    .checkbox-label {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
-    /* The box - drawn with ::before */
-    .checkbox-label::before {
-      content: '';
-      display: inline-block;
-      flex-shrink: 0;
-      margin-inline-end: var(--ag-space-3);
-      border-radius: var(--ag-radius-sm);
-      transition: all var(--ag-motion-fast) ease-in-out;
-    }
-
-    /* The checkmark - drawn with ::after */
-    .checkbox-label::after {
-      content: '';
-      position: absolute;
-      display: block;
-      opacity: 0;
-      transform: rotate(40deg) scale(0);
-      transform-origin: center center;
-      transition: all var(--ag-motion-fast) ease-in-out;
-    }
-
-    /* Size variants */
-    .checkbox-label--small::before {
-      width: 14px;
-      height: 14px;
-    }
-
-    .checkbox-label--small::after {
-      inset-inline-start: 4px;
-      top: 0px;
-      width: 4px;
-      height: 8px;
-      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
-      border-bottom: var(--ag-border-width-2) solid var(--ag-white);
-    }
-
-    .checkbox-label--medium::before {
-      width: 16px;
-      height: 16px;
-    }
-
-    .checkbox-label--medium::after {
-      inset-inline-start: 5px;
-      top: 1px;
-      width: 4px;
-      height: 9px;
-      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
-      border-bottom: var(--ag-border-width-2) solid var(--ag-white);
-    }
-
-    .checkbox-label--large::before {
-      width: 18px;
-      height: 18px;
-    }
-
-    .checkbox-label--large::after {
-      inset-inline-start: 6px;
-      top: 1px;
-      width: 5px;
-      height: 10px;
-      border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
-      border-bottom: var(--ag-border-width-2) solid var(--ag-white);
-    }
-
-    /* Indeterminate state - horizontal line */
-    .checkbox-input:indeterminate + .checkbox-label::after {
-      transform: rotate(0deg) scale(1) translate(-6px);
-      opacity: 1;
-      border-inline-end: none;
-      border-bottom: var(--ag-border-width-2) solid var(--ag-white);
-      width: 8px;
-      height: 0;
-      inset-inline-start: 50%;
-      top: 50%;
-      margin-inline-start: -4px;
-      margin-block-start: -1px;
-    }
-
-    /* Checked state */
-    .checkbox-input:checked + .checkbox-label::after {
-      opacity: 1;
-      transform: rotate(40deg) scale(1) translate(2px);
-    }
-
-    /* Default theme - alias to primary */
-    .checkbox-label--default::before {
-      border: var(--ag-border-width-2) solid var(--ag-primary-border);
-      background: var(--ag-white);
-    }
-
-    .checkbox-input:checked + .checkbox-label--default::before,
-    .checkbox-input:indeterminate + .checkbox-label--default::before {
-      background: var(--ag-primary);
-      border-color: var(--ag-primary);
-    }
-
-    .checkbox-input:focus + .checkbox-label--default::before {
-      box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
-      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
-      outline-offset: var(--ag-focus-offset);
-    }
-
-    /* Primary theme */
-    .checkbox-label--primary::before {
-      border: var(--ag-border-width-2) solid var(--ag-primary-border);
-      background: var(--ag-white);
-    }
-
-    .checkbox-input:checked + .checkbox-label--primary::before,
-    .checkbox-input:indeterminate + .checkbox-label--primary::before {
-      background: var(--ag-primary);
-      border-color: var(--ag-primary);
-    }
-
-    .checkbox-input:focus + .checkbox-label--primary::before {
-      box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
-      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
-      outline-offset: var(--ag-focus-offset);
-    }
-
-    /* Success theme - green */
-    .checkbox-label--success::before {
-      border: var(--ag-border-width-2) solid var(--ag-border);
-      background: var(--ag-white);
-    }
-
-    .checkbox-input:checked + .checkbox-label--success::before,
-    .checkbox-input:indeterminate + .checkbox-label--success::before {
-      background: var(--ag-success);
-      border-color: var(--ag-success);
-    }
-
-    .checkbox-input:focus + .checkbox-label--success::before {
-      box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
-      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
-      outline-offset: var(--ag-focus-offset);
-    }
-
-    /* Monochrome theme */
-    .checkbox-label--monochrome::before {
-      border: var(--ag-border-width-2) solid var(--ag-black);
-      background: var(--ag-white);
-    }
-
-    .checkbox-input:checked + .checkbox-label--monochrome::before,
-    .checkbox-input:indeterminate + .checkbox-label--monochrome::before {
-      background: var(--ag-black);
-      border-color: var(--ag-black);
-    }
-
-    .checkbox-input:focus + .checkbox-label--monochrome::before {
-      box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
-      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
-      outline-offset: var(--ag-focus-offset);
-    }
-
-    .checkbox-label-copy {
-      display: inline-block;
-    }
-
-    .checkbox-label-copy--small {
-      font-size: var(--ag-font-size-sm);
-    }
-
-    .checkbox-label-copy--medium {
-      font-size: var(--ag-font-size-sm);
-    }
-
-    .checkbox-label-copy--large {
-      font-size: var(--ag-font-size-base);
-    }
-
-    /* Respect reduced motion preferences */
-    @media (prefers-reduced-motion: reduce) {
-      .checkbox-label,
-      .checkbox-label::before,
-      .checkbox-label::after {
-        transition: none;
+      :host([disabled]) .checkbox-wrapper {
+        cursor: not-allowed;
+        opacity: 0.6;
       }
-    }
 
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-      .checkbox-label::before {
-        outline: var(--ag-border-width-1) solid;
+      /* Indeterminate horizontal baseline checkmark line styling markers */
+      .checkbox-input:indeterminate + .checkbox-label::after {
+        transform: rotate(0deg) scale(1) translate(-6px);
+        opacity: 1;
+        border-inline-end: none;
+        border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+        width: 8px;
+        height: 0;
+        inset-inline-start: 50%;
+        top: 50%;
+        margin-inline-start: -4px;
+        margin-block-start: -1px;
       }
-    }
-  `,
+
+      /* Checked checkmark transformation animations */
+      .checkbox-input:checked + .checkbox-label::after {
+        opacity: 1;
+        transform: rotate(40deg) scale(1) translate(2px);
+      }
+
+      .checkbox-input:checked + .checkbox-label--default::before,
+      .checkbox-input:indeterminate + .checkbox-label--default::before {
+        background: var(--ag-primary);
+        border-color: var(--ag-primary);
+      }
+
+      .checkbox-input:checked + .checkbox-label--primary::before,
+      .checkbox-input:indeterminate + .checkbox-label--primary::before {
+        background: var(--ag-primary);
+        border-color: var(--ag-primary);
+      }
+
+      .checkbox-input:checked + .checkbox-label--success::before,
+      .checkbox-input:indeterminate + .checkbox-label--success::before {
+        background: var(--ag-success);
+        border-color: var(--ag-success);
+      }
+
+      .checkbox-input:checked + .checkbox-label--monochrome::before,
+      .checkbox-input:indeterminate + .checkbox-label--monochrome::before {
+        background: var(--ag-black);
+        border-color: var(--ag-black);
+      }
+
+      /* Respect reduced motion preferences */
+      @media (prefers-reduced-motion: reduce) {
+        .checkbox-label,
+        .checkbox-label::before,
+        .checkbox-label::after {
+          transition: none;
+        }
+      }
+
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        .checkbox-label::before {
+          outline: var(--ag-border-width-1) solid;
+        }
+      }
+    `,
   ];
+// v2/lib/src/components/Checkbox/core/_Checkbox.ts (Part 2 of 3)
 
   @property({ type: String })
   declare value: string;
@@ -316,6 +169,7 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
   @property({ type: String, attribute: 'help-text' })
   declare helpText: string;
 
+  // Event callbacks
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
 
@@ -428,7 +282,13 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
     }
   }
 
+  // v2/lib/src/components/Checkbox/core/_Checkbox.ts (Part 3 of 3)
+
   private handleClick(e: MouseEvent) {
+    if (this.disabled) {
+      e.preventDefault();
+      return;
+    }
     // Invoke native click callback if provided
     if (this.onClick) {
       this.onClick(e);
@@ -522,40 +382,46 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
   }
 
   override render() {
-    const wrapperClasses = `
-      checkbox-wrapper
-      ${this.labelPosition === 'start' ? 'checkbox-wrapper--label-start' : ''}
-    `;
+    const wrapperClasses = [
+      'checkbox-wrapper',
+      this.labelPosition === 'start' ? styles.checkboxWrapperLabelStart : '',
+      this.labelPosition === 'start' ? 'checkbox-wrapper--label-start' : ''
+    ].filter(Boolean).join(' ').trim();
 
-    const labelClasses = `
-      checkbox-label
-      checkbox-label--${this.size}
-      checkbox-label--${this.theme}
-    `;
+    const labelClasses = [
+      'checkbox-label',
+      styles.checkboxLabel,
+      styles[`checkbox-label${this.size.charAt(0).toUpperCase() + this.size.slice(1)}`],
+      styles[`checkbox-label${this.theme.charAt(0).toUpperCase() + this.theme.slice(1)}`],
+      `checkbox-label--${this.size}`,
+      `checkbox-label--${this.theme}`
+    ].filter(Boolean).join(' ').trim();
 
-    const labelCopyClasses = `
-      checkbox-label-copy
-      checkbox-label-copy--${this.size}
-    `;
+    const labelCopyClasses = [
+      'checkbox-label-copy',
+      styles.checkboxLabelCopy,
+      styles[`checkbox-labelCopy${this.size.charAt(0).toUpperCase() + this.size.slice(1)}`],
+      `checkbox-label-copy--${this.size}`
+    ].filter(Boolean).join(' ').trim();
 
     // Build aria-describedby
     const describedBy = this._getAriaDescribedBy();
 
-    // Main structure wraps everything
+    // Main structure wraps everything with both CSS Modules and fallback literal compatibility
     return html`
-      <div class="ag-checkbox-container">
+      <div class="${styles.agCheckboxContainer} ag-checkbox-container">
         <label 
           for="${this._ids.inputId}"
-          class=${wrapperClasses.trim()} 
+          class="${wrapperClasses}" 
           part="ag-checkbox-wrapper"
         >
           <input
             type="checkbox"
             id="${this._ids.inputId}"
-            class="checkbox-input"
+            class="${styles.checkboxInput} checkbox-input"
             part="ag-checkbox-input"
-            name=${this.name}
-            value=${this.value}
+            .name=${this.name}
+            .value=${this.value}
             .checked=${this.checked}
             .indeterminate=${this.indeterminate}
             ?disabled=${this.disabled}
@@ -573,11 +439,11 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
             @change=${this.handleChange}
           />
           <span
-            class=${labelClasses.trim()}
+            class="${labelClasses}"
             part="ag-checkbox-indicator"
             aria-hidden="true"
           ></span>
-          <span class=${labelCopyClasses.trim()} part="ag-checkbox-label">
+          <span class="${labelCopyClasses}" part="ag-checkbox-label">
             ${this.labelText || html`<slot></slot>`}
             ${this.required
               ? html`<span class="ag-form-control__required" aria-label="required">*</span>`

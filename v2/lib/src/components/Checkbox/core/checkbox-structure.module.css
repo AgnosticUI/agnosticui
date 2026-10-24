@@ -1,0 +1,139 @@
+/* v2/lib/src/components/Checkbox/core/checkbox-structure.module.css */
+
+.agCheckboxContainer {
+  display: block;
+}
+
+.checkboxWrapper {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: 0;
+}
+
+.checkboxWrapperLabelStart {
+  flex-direction: row-reverse;
+}
+
+.checkboxInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+.checkboxLabel {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* The box - drawn with ::before */
+.checkboxLabel::before {
+  content: '';
+  display: inline-block;
+  flex-shrink: 0;
+  margin-inline-end: var(--ag-space-3);
+  border-radius: var(--ag-radius-sm);
+  transition: all var(--ag-motion-fast) ease-in-out;
+}
+
+/* The checkmark - drawn with ::after */
+.checkboxLabel::after {
+  content: '';
+  position: absolute;
+  display: block;
+  opacity: 0;
+  transform: rotate(40deg) scale(0);
+  transform-origin: center center;
+  transition: all var(--ag-motion-fast) ease-in-out;
+}
+
+/* Size variants */
+.checkboxLabelSmall::before {
+  width: 14px;
+  height: 14px;
+}
+
+.checkboxLabelSmall::after {
+  inset-inline-start: 4px;
+  top: 0px;
+  width: 4px;
+  height: 8px;
+  border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
+  border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+}
+
+.checkboxLabelMedium::before {
+  width: 16px;
+  height: 16px;
+}
+
+.checkboxLabelMedium::after {
+  inset-inline-start: 5px;
+  top: 1px;
+  width: 4px;
+  height: 9px;
+  border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
+  border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+}
+
+.checkboxLabelLarge::before {
+  width: 18px;
+  height: 18px;
+}
+
+.checkboxLabelLarge::after {
+  inset-inline-start: 6px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
+  border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+}
+
+/* Default theme - alias to primary */
+.checkboxLabelDefault::before {
+  border: var(--ag-border-width-2) solid var(--ag-primary-border);
+  background: var(--ag-white);
+}
+
+/* Primary theme */
+.checkboxLabelPrimary::before {
+  border: var(--ag-border-width-2) solid var(--ag-primary-border);
+  background: var(--ag-white);
+}
+
+/* Success theme */
+.checkboxLabelSuccess::before {
+  border: var(--ag-border-width-2) solid var(--ag-border);
+  background: var(--ag-white);
+}
+
+/* Monochrome theme */
+.checkboxLabelMonochrome::before {
+  border: var(--ag-border-width-2) solid var(--ag-black);
+  background: var(--ag-white);
+}
+
+.checkboxLabelCopy {
+  display: inline-block;
+}
+
+.checkboxLabelCopySmall {
+  font-size: var(--ag-font-size-sm);
+}
+
+.checkboxLabelCopyMedium {
+  font-size: var(--ag-font-size-sm);
+}
+
+.checkboxLabelCopyLarge {
+  font-size: var(--ag-font-size-base);
+}
