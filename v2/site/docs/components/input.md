@@ -2,17 +2,11 @@
 
 <AlphaWarning />
 
-
 A flexible, accessible form input component that supports text inputs, textareas, various styling variants, validation states, and input addons.
 
 ## Examples
 
-<FrameworkExample
-  component="input"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
+<FrameworkExample component="input" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode">
   <template #vue>
     <InputExamples />
   </template>
@@ -21,9 +15,42 @@ A flexible, accessible form input component that supports text inputs, textareas
   </template>
 </FrameworkExample>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes an **Isomorphic Architecture** to support server-first workflows (e.g. TanStack Start, Remix, Nuxt). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+### Standard Stacked Configuration
+
+<InputFallbackPreview 
+  label="Email Address" 
+  placeholder="name@example.com" 
+  helpText="We will never share your email address with third-party tracking services." 
+/>
+
+### Mandatory Rounded Row Layout
+
+<InputFallbackPreview 
+  label="Desired Username" 
+  labelPosition="start" 
+  required 
+  rounded 
+  placeholder="e.g. tech_explorer" 
+/>
+
+### Invalid Validation Error State with Left Addon Icon
+
+<InputFallbackPreview 
+  label="Payment Contribution" 
+  slotAddonLeft="<span>$</span>" 
+  value="InvalidAmount" 
+  invalid 
+  errorMessage="Please enter a valid numeric currency contribution amount to proceed." 
+/>
+
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import InputExamples from '../examples/InputExamples.vue'
+import InputFallbackPreview from '../examples/InputFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/InputLitExamples.js'
 import vueCode from '../examples/InputExamples.vue?raw'
@@ -31,14 +58,35 @@ import litCode from '../examples/InputLitExamples.js?raw'
 import reactCode from '../examples/InputReactExamples.jsx?raw'
 </script>
 
+### Handling Pre-selected / Form States during Hydration
+
+```vue
+<!-- Default configuration layout state -->
+<InputFallbackPreview label="Postal Code" placeholder="90210" />
+```
+
+If a user loads a page where a validation round already failed or an edit form context exists, pass the data directly into the `value` property token. The fallback engine cleanly maps the text node parameters to lock the layout hashes securely on the server before client-side hydration completes.
+
+```vue
+<!-- Hydration bound configuration layout -->
+<InputFallbackPreview
+  label="Postal Code"
+  :value="savedPostalCode || ''"
+  :invalid="!!validationError"
+  :errorMessage="validationError"
+/>
+```
+
 ## Usage
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add Input
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
@@ -127,186 +175,6 @@ export default {
 
 :::
 
-::: details React
-
-```tsx
-import { useState } from "react";
-import { ReactInput } from "agnosticui-core/input/react";
-import { ReactButton } from "agnosticui-core/button/react";
-
-export default function InputExample() {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [isInvalid, setIsInvalid] = useState(false);
-  const [message, setMessage] = useState("");
-  const [price, setPrice] = useState("");
-  const [small, setSmall] = useState("");
-  const [rounded, setRounded] = useState("");
-
-  return (
-    <section>
-      <ReactInput
-        value={email}
-        onChange={(e) => setEmail((e.target as HTMLInputElement).value)}
-        label="Email"
-        type="email"
-        placeholder="you@example.com"
-      />
-
-      <ReactInput
-        value={username}
-        onChange={(e) => setUsername((e.target as HTMLInputElement).value)}
-        label="Username"
-        rounded
-        required
-        invalid={isInvalid}
-        errorMessage="Username is required"
-        helpText="Choose a unique username"
-      />
-      <ReactButton
-        size="xl"
-        shape="rounded"
-        variant="monochrome"
-        onClick={() => setIsInvalid(!isInvalid)}
-      >
-        Toggle Invalid
-      </ReactButton>
-
-      <ReactInput
-        value={message}
-        onChange={(e) => setMessage(e.target as HTMLInputElement).value)}
-        label="Message"
-        type="textarea"
-        rows={4}
-        placeholder="Enter your message..."
-      />
-
-      <ReactInput
-        value={price}
-        onChange={(e) => setPrice(e.target as HTMLInputElement).value)}
-        label="Price"
-      >
-        <span slot="addon-left">$</span>
-      </ReactInput>
-
-      <ReactInput
-        value={small}
-        onChange={(e) => setSmall(e.target as HTMLInputElement).value)}
-        label="Small Input"
-        size="small"
-        placeholder="Small size"
-      />
-
-      <ReactInput
-        value={rounded}
-        onChange={(e) => setRounded(e.target as HTMLInputElement).value)}
-        label="Rounded"
-        rounded
-        placeholder="Rounded corners"
-      />
-
-      <ReactInput value="Cannot edit" label="Disabled" disabled />
-    </section>
-  );
-}
-```
-
-:::
-
-::: details Lit (Web Components)
-
-```typescript
-import { LitElement, html, css } from "lit";
-import { customElement } from "lit/decorators.js";
-import "agnosticui-core/input";
-
-@customElement("input-example")
-export class InputExample extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-    }
-    section {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-  `;
-
-  firstUpdated() {
-    // Set up event listeners for inputs in the shadow DOM
-    const emailInput = this.shadowRoot?.querySelector("#email-input");
-    const usernameInput = this.shadowRoot?.querySelector(
-      "#username-input"
-    ) as any;
-
-    emailInput?.addEventListener("input", (e: Event) => {
-      const target = e.target as HTMLInputElement;
-      console.log("Email:", target.value);
-    });
-
-    usernameInput?.addEventListener("blur", (e: Event) => {
-      const target = e.target as HTMLInputElement;
-      if (!target.value) {
-        usernameInput.invalid = true;
-      } else {
-        usernameInput.invalid = false;
-      }
-    });
-  }
-
-  render() {
-    return html`
-      <section>
-        <ag-input
-          id="email-input"
-          label="Email"
-          type="email"
-          placeholder="you@example.com"
-        ></ag-input>
-
-        <ag-input
-          id="username-input"
-          label="Username"
-          required
-          error-message="Username is required"
-          help-text="Choose a unique username"
-        ></ag-input>
-
-        <ag-input
-          id="message-input"
-          label="Message"
-          type="textarea"
-          rows="4"
-          placeholder="Enter your message..."
-        ></ag-input>
-
-        <ag-input id="price-input" label="Price">
-          <span slot="addon-left">$</span>
-        </ag-input>
-
-        <ag-input
-          label="Small Input"
-          size="small"
-          placeholder="Small size"
-        ></ag-input>
-
-        <ag-input
-          label="Rounded"
-          rounded
-          placeholder="Rounded corners"
-        ></ag-input>
-
-        <ag-input label="Disabled" disabled value="Cannot edit"></ag-input>
-      </section>
-    `;
-  }
-}
-```
-
-**Note:** When using input components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
-:::
-
 ## Props
 
 | Prop                       | Type                                    | Default     | Description                                                                                                         |
@@ -353,7 +221,6 @@ The Input component follows AgnosticUI v2 event conventions for native events. A
 
 **Vue:**
 
-- Use `v-model:value` for two-way binding
 - Listen to events with `@event-name` syntax (e.g., `@input`, `@change`, `@focus`, `@blur`)
 - The `update:value` emit is automatically fired on input for v-model support
 
@@ -406,7 +273,7 @@ input.onFocus = (e) => console.log("focused");
 
 ## Accessibility
 
-The Input component follows [BBC GEL Form Guidelines](https://www.bbc.co.uk/gel/guidelines/how-to-design-forms) and [WCAG 2.1 Level AA](https://www.w3.org/WAI/WCAG21/quickref/):
+The Input component follows [BBC GEL Form Guidelines](https://bbc.co.uk) and [WCAG 2.1 Level AA](https://w3.org):
 
 - **Label Above Input**: Labels are positioned above inputs by default (BBC GEL best practice) for better mobile usability and internationalization
 - **Semantic HTML**: Uses native `<input>` and `<label>` elements with proper `for` attribute association
@@ -502,14 +369,12 @@ export default {
       }
     },
     handleSubmit() {
-      // Validate all fields
       this.errors.firstName = this.form.firstName
         ? ""
         : "First name is required";
       this.validateEmail();
 
       if (!this.errors.firstName && !this.errors.email) {
-        // Submit form
         console.log("Form submitted:", this.form);
       }
     },
@@ -688,7 +553,7 @@ export default {
   },
   methods: {
     validateEmail() {
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+\$/;
       this.emailError = !regex.test(this.email) && this.email !== "";
     },
   },
@@ -729,11 +594,9 @@ The Input component exposes the following CSS Shadow Parts for custom styling:
 ```css
 ag-input::part(ag-input) {
   border: 2px solid transparent;
-  background: linear-gradient(white, white) padding-box, linear-gradient(
-        135deg,
-        #667eea 0%,
-        #764ba2 100%
-      ) border-box;
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
   border-radius: 12px;
   padding: 0.75rem 1rem;
 }
@@ -792,3 +655,9 @@ See the **CSS Shadow Parts Customization** section in the examples above for mor
 - You have a fixed set of options - use Select or Radio buttons instead
 - You need yes/no or on/off - use Toggle or Checkbox instead
 - You need date/time selection with a calendar - consider a DatePicker component
+
+## Related Components
+
+- [Select](/components/select) - For select list validation fields.
+- [Checkbox](/components/checkbox) - For binary options groupings.
+- [Radio](/components/radio) - For single item selections within a visible list parameters.
