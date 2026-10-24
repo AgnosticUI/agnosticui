@@ -13,7 +13,8 @@
   width: 100%;
 }
 
-button {
+/* FIX: Convert naked button selector to a scoped module class */
+.baseButton {
   margin: 0;
   border: 1px solid transparent;
   background: var(--ag-background-tertiary);
@@ -30,11 +31,11 @@ button {
   box-sizing: border-box;
 }
 
-.fullWidth button {
+.fullWidth .baseButton {
   width: 100%;
 }
 
-/* 2. Visual Baseline Tonal Identity & Variants (Primary, Secondary, Success, Warning, Danger, Monochrome) */
+/* 2. Visual Baseline Tonal Identity & Variants */
 :host([variant="secondary"]) button, .variantSecondary { background: var(--ag-neutral-400); color: var(--ag-neutral-900); }
 :host([variant="primary"]) button, .variantPrimary { background: var(--ag-primary); color: var(--ag-primary-fg); }
 :host([variant="success"]) button, .variantSuccess { background: var(--ag-success); color: var(--ag-success-fg); }
@@ -42,11 +43,12 @@ button {
 :host([variant="danger"]) button, .variantDanger { background: var(--ag-danger); color: var(--ag-danger-fg); }
 :host([variant="monochrome"]) button, .variantMonochrome { background: var(--ag-background-primary-inverted); color: var(--ag-text-primary-inverted); }
 
-/* 3. Size Layout Geometry Matrices (x-sm, sm, md, lg, xl) */
+/* 3. Size Layout Geometry Matrices */
 :host([size="x-sm"]) button, .sizeXSm { height: var(--ag-space-8); min-height: var(--ag-space-8); font-size: calc(var(--ag-font-size-base) - 0.375rem); padding-inline: var(--ag-space-2); padding-block: 0; }
 :host([size="sm"]) button, .sizeSm { height: var(--ag-space-9); min-height: var(--ag-space-9); font-size: var(--ag-font-size-xs); padding-inline: var(--ag-space-3); padding-block: 0; }
-.ag-btn,
-:host button,
+
+/* FIX: Swapped bare button target for the hashed modular class helper */
+.sizeMd,
 :host([size="md"]) button {
   height: var(--ag-space-10);
   min-height: var(--ag-space-10);
@@ -57,7 +59,7 @@ button {
 :host([size="lg"]) button, .sizeLg { height: var(--ag-space-12); min-height: var(--ag-space-12); font-size: var(--ag-font-size-base); padding-inline: var(--ag-space-5); padding-block: 0; }
 :host([size="xl"]) button, .sizeXl { height: var(--ag-space-14); min-height: var(--ag-space-14); font-size: var(--ag-font-size-md); padding-inline: var(--ag-space-6); padding-block: 0; }
 
-/* 4. Shape Layout Modifiers (capsule, rounded, circle, square, rounded-square) */
+/* 4. Shape Layout Modifiers */
 :host([shape="capsule"]) button, .shapeCapsule { border-radius: var(--ag-radius-full); padding-inline: var(--ag-space-5); }
 :host([shape="rounded"]) button, .shapeRounded { border-radius: var(--ag-radius-md); }
 :host([shape="circle"]) button, .shapeCircle { border-radius: 50%; width: var(--ag-space-10); height: var(--ag-space-10); padding: 0; min-height: unset; }
@@ -68,4 +70,6 @@ button {
 :host([ghost]) button, :host([link]) button, .isGhost, .isLink { background: transparent !important; border-color: transparent !important; box-shadow: none !important; }
 :host([bordered]) button, .isBordered { background: transparent; border-color: var(--ag-neutral-500); }
 :host([grouped]) button, .isGrouped { border-radius: var(--ag-radius-md); }
-button:disabled, .isDisabled { cursor: not-allowed; }
+
+/* FIX: Bound disabled resets specifically to the isolated module identifier */
+.baseButton:disabled, .isDisabled { cursor: not-allowed; }

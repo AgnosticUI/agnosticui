@@ -379,7 +379,8 @@ export class AgButton extends LitElement implements ButtonProps {
     const isDisabled = this.disabled || this.loading;
 
     // Apply design tokens to match mapped classes cleanly
-    const classes: string[] = [];
+    const classes: (string | undefined)[] = [styles.baseButton];
+
     if (this.variant === 'primary') classes.push(styles.variantPrimary);
     else if (this.variant === 'secondary') classes.push(styles.variantSecondary);
     else if (this.variant === 'success') classes.push(styles.variantSuccess);
