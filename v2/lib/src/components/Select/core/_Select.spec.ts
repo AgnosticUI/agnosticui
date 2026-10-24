@@ -1,9 +1,9 @@
 // v2/lib/src/components/Select/core/_Select.spec.ts
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { Select } from './Select';
+import styles from './select-structure.module.css';
 
 // Component registers itself on import
-
 describe('ag-select', () => {
   let element: Select;
 
@@ -72,7 +72,9 @@ describe('ag-select', () => {
   it('should render a select element', () => {
     const select = element.shadowRoot?.querySelector('select');
     expect(select).toBeDefined();
-    expect(select?.classList.contains('select')).toBe(true);
+    
+    // Use the dynamic stylesheet mapping variable instead of the hardcoded literal string
+    expect(select?.classList.contains(styles.select)).toBe(true);
   });
 
   it('should render slotted options', async () => {

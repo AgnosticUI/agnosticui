@@ -10,7 +10,9 @@ import {
 import { formControlStyles } from '../../../shared/form-control-styles';
 import { FaceMixin, syncInnerInputValidity } from '../../../shared/face-mixin';
 
-// Import the identical structural module asset via bundler string injection loader
+// Ingest the class dictionary object to decode hashes
+import styles from './select-structure.module.css';
+// Ingest the compiled CSS text string for the shadow root definition
 import structuralStylesText from './select-structure.module.css?inline';
 
 export type SelectSize = 'small' | 'large' | '';
@@ -107,16 +109,12 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
   @property({ attribute: false })
   declare onChange?: (event: SelectChangeEvent) => void;
 
+  // Query by tag name remains safe because the tag itself is still <select>
   @query('select')
   private selectElement!: HTMLSelectElement;
 
   // ─── FACE ─────────────────────────────────────────────────────────────────
 
-  /**
-   * FACE lifecycle: called when the parent form is reset.
-   * Restores each option to its defaultSelected state (the `selected`
-   * attribute from the original HTML), then re-syncs the form value.
-   */
   override formResetCallback(): void {
     if (this.selectElement) {
       Array.from(this.selectElement.options).forEach(opt => (opt.selected = opt.defaultSelected));
@@ -126,11 +124,6 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
     this._syncStates();
   }
 
-  /**
-   * FACE lifecycle: called on session restore or browser autofill.
-   * Restores the selected option(s) from the previously saved form state.
-   * Uses updateComplete to ensure options are in the DOM before restoring.
-   */
   override formStateRestoreCallback(
     state: File | string | FormData | null,
     _mode: 'restore' | 'autocomplete'
@@ -153,29 +146,12 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
     });
   }
 
-  /**
-   * Sync CustomStateSet states so :state() pseudo-classes work from external CSS.
-   *
-   * Must be called AFTER _syncValidity() so that :state(invalid) reads the
-   * freshly-updated _internals.validity.valid value.
-   *
-   * Exposed states:
-   *  :state(disabled) — select is disabled
-   *  :state(required) — select is required
-   *  :state(invalid)  — FACE constraint validation is failing
-   */
   private _syncStates(): void {
     this._setState('disabled', this.disabled);
     this._setState('required', this.required);
     this._setState('invalid', !this._internals.validity.valid);
   }
 
-  /**
-   * Sync the form value to ElementInternals.
-   * Single select: submits the selected value as a string.
-   * Multi-select: uses the FormData overload to submit all selected values
-   * under the same key (matching native <select multiple> behavior).
-   */
   private _syncFormValue(): void {
     if (!this.selectElement) return;
     if (this.multiple) {
@@ -189,9 +165,6 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
     }
   }
 
-  /**
-   * Sync validity to ElementInternals by delegating to the inner <select>.
-   */
   private _syncValidity(): void {
     syncInnerInputValidity(this._internals, this.selectElement);
   }
@@ -210,25 +183,19 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
   }
 
   protected firstUpdated() {
-    // Ensure options are moved after first render
     this.handleSlotChange();
 
-    // Listen for dynamic changes to slotted options
     const slotElement = this.shadowRoot?.querySelector('slot');
     if (slotElement) {
       slotElement.addEventListener('slotchange', () => this.handleSlotChange());
     }
 
-    // FACE: set initial form value and sync validity after options are in place
     this._syncFormValue();
     this._syncValidity();
     this._syncStates();
   }
 
   private handleSlotChange() {
-    // Move option/optgroup elements from light DOM into the shadow DOM select
-    // This is required because <option> elements must be direct children of <select>
-    // and slotted content doesn't satisfy this requirement
     if (!this.selectElement) return;
 
     const slotElement = this.shadowRoot?.querySelector('slot');
@@ -236,13 +203,10 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
 
     const assignedNodes = slotElement.assignedNodes();
 
-    // Move each option/optgroup from light DOM into the select element
     assignedNodes.forEach(node => {
       if (node.nodeType === Node.ELEMENT_NODE) {
         const el = node as Element;
         if (el.tagName === 'OPTION' || el.tagName === 'OPTGROUP') {
-          // Move the element from light DOM to shadow DOM
-          // appendChild will move it if it's not already a child
           this.selectElement.appendChild(node);
         }
       }
@@ -262,15 +226,14 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
         display: none;
       }
 
-      .select {
-        /* Keep only active client-side animation transitions here */
+      /* Target the tag directly to avoid missing un-hashed legacy string triggers */
+      select {
         transition:
           border-color var(--ag-transition-fast) ease-in-out,
           box-shadow var(--ag-transition-fast) ease-in-out;
       }
 
-      /* Active runtime browser states */
-      .select:focus {
+      select:focus {
         border-color: var(--ag-focus-ring-color);
         box-shadow: 0 0 0 var(--ag-focus-ring-outline-width) var(--ag-focus-ring-color);
         outline:
@@ -279,20 +242,20 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
         transition: box-shadow var(--ag-transition-fast) ease-out;
       }
 
-      .select:disabled {
+      select:disabled {
         background-color: var(--ag-disabled-bg);
         cursor: not-allowed;
         opacity: 0.6;
       }
 
-      .select:-moz-focusring {
+      select:-moz-focusring {
         color: transparent;
         text-shadow: 0 0 0 var(--ag-text-primary);
       }
 
       @media (prefers-reduced-motion), (update: slow) {
-        .select,
-        .select:focus {
+        select,
+        select:focus {
           transition: none;
         }
       }
@@ -300,33 +263,28 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
   ];
 
   private handleClick(event: MouseEvent) {
-    // Invoke callback if provided (native composed event)
     if (this.onClick) {
       this.onClick(event);
     }
   }
 
   private handleFocus(event: FocusEvent) {
-    // Re-dispatch from host so consumers can listen on <ag-select>
     this.dispatchEvent(new FocusEvent('focus', {
       bubbles: true,
       composed: true,
     }));
 
-    // Invoke callback if provided
     if (this.onFocus) {
       this.onFocus(event);
     }
   }
 
   private handleBlur(event: FocusEvent) {
-    // Re-dispatch from host so consumers can listen on <ag-select>
     this.dispatchEvent(new FocusEvent('blur', {
       bubbles: true,
       composed: true,
     }));
 
-    // Invoke callback if provided
     if (this.onBlur) {
       this.onBlur(event);
     }
@@ -342,11 +300,9 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
       value = select.value;
     }
 
-    // FACE: sync form value and validity on every selection change
     this._syncFormValue();
     this._syncValidity();
 
-    // Dual-dispatch: dispatchEvent + callback
     const changeEvent = new CustomEvent<SelectChangeEventDetail>('change', {
       detail: { value },
       bubbles: true,
@@ -354,7 +310,6 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
     });
     this.dispatchEvent(changeEvent);
 
-    // Invoke callback if provided
     if (this.onChange) {
       this.onChange(changeEvent);
     }
@@ -363,23 +318,27 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
   private renderLabel(ids: { inputId: string }) {
     if (!this.label || this.noLabel) return '';
 
-    // Build position classes
     const positionClasses: string[] = [];
     if (isHorizontalLabel(this.labelPosition)) {
-      positionClasses.push('ag-form-control__label--horizontal');
-      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+      positionClasses.push(styles['ag-form-control__label--horizontal']);
+      positionClasses.push(styles[`ag-form-control__label--${this.labelPosition}`]);
     } else if (this.labelPosition === 'bottom') {
-      positionClasses.push(`ag-form-control__label--${this.labelPosition}`);
+      positionClasses.push(styles['ag-form-control__label--bottom']);
     }
+
+    const labelClasses = [
+      styles['ag-form-control__label'],
+      this.labelHidden ? styles['ag-form-control__label--hidden'] : '',
+      ...positionClasses
+    ].filter(Boolean).join(' ');
 
     return html`
       <label
         for=${ids.inputId}
-        class="ag-form-control__label ${this.labelHidden
-          ? 'ag-form-control__label--hidden'
-          : ''} ${this.required ? 'ag-form-control__label--required' : ''} ${positionClasses.join(' ')}"
+        class="${labelClasses}"
       >
         ${this.label}
+        ${this.required ? html`<span class="ag-form-control__required" aria-hidden="true">*</span>` : ''}
       </label>
     `;
   }
@@ -395,10 +354,17 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
 
     const isHorizontal = isHorizontalLabel(this.labelPosition);
 
+    // Dynamic sizing layout hashes
+    let sizeModifierClass = '';
+    if (this.size === 'small') sizeModifierClass = styles.selectSmall;
+    if (this.size === 'large') sizeModifierClass = styles.selectLarge;
+
+    const selectComputedClass = `${styles.select} ${sizeModifierClass}`.trim();
+
     const selectElement = html`
       <select
         id=${ids.inputId}
-        class="select"
+        class="${selectComputedClass}"
         part="ag-select"
         ?multiple=${this.multiple}
         ?disabled=${this.disabled}
@@ -417,21 +383,20 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
     `;
 
     const helperText = this.helpText && !this.invalid
-      ? html`<div id=${ids.helperId} class="ag-form-control__helper">
+      ? html`<div id=${ids.helperId} class="${styles['ag-form-control__helper']}">
           ${this.helpText}
         </div>`
       : '';
 
     const errorText = this.invalid && this.errorMessage
-      ? html`<div id=${ids.errorId} class="ag-form-control__error">
+      ? html`<div id=${ids.errorId} class="${styles['ag-form-control__error']}">
           ${this.errorMessage}
         </div>`
       : '';
 
-    // For horizontal layout: [Label] [Select] structure with helper/error below
     if (isHorizontal) {
       return html`
-        <div class="ag-form-control--horizontal">
+        <div class="${styles['ag-form-control--horizontal']}">
           ${this.renderLabel(ids)}
           ${selectElement}
         </div>
@@ -440,7 +405,6 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
       `;
     }
 
-    // For bottom label: Select first, then helper/error, then label
     if (this.labelPosition === 'bottom') {
       return html`
         ${selectElement}
@@ -450,7 +414,6 @@ export class Select extends FaceMixin(LitElement) implements SelectProps {
       `;
     }
 
-    // Top label (default): Label first, then select, then helper/error
     return html`
       ${this.renderLabel(ids)}
       ${selectElement}

@@ -15,15 +15,67 @@ The Select component is a lightly styled native HTML select element that provide
   </template>
 </FrameworkExample>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes an **Isomorphic Architecture** to support server-first workflows (e.g. TanStack Start, Remix, Nuxt). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+### Standard Fallback Layout
+
+<SelectFallbackPreview 
+  label="Greatest Tennis Player" 
+  optionPlaceholder="- Select a player -" 
+/>
+
+### Small Horizontal Grid Configuration
+
+<SelectFallbackPreview 
+  label="Preferred Language" 
+  size="small" 
+  labelPosition="start" 
+  required
+  helpText="This configuration selection field is required"
+  optionPlaceholder="- Select a language -" 
+/>
+
+### Invalid Validation Error State
+
+<SelectFallbackPreview 
+  label="Payment Method" 
+  optionPlaceholder="- Select a payment method -" 
+  invalid
+  errorMessage="Please select a payment method to continue"
+/>
+
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import SelectExamples from '../examples/SelectExamples.vue'
+import SelectFallbackPreview from '../examples/SelectFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/SelectLitExamples.js'
 import vueCode from '../examples/SelectExamples.vue?raw'
 import litCode from '../examples/SelectLitExamples.js?raw'
 import reactCode from '../examples/SelectReactExamples.jsx?raw'
 </script>
+
+### Handling Pre-selected Values during Hydration
+
+```vue
+<!-- If no value is selected yet -->
+<SelectFallbackPreview
+  label="Greatest Tennis Player"
+  optionPlaceholder="- Select a player -"
+/>
+```
+
+If a user loads a page where a selection already exists (such as an edit form or a re-render after a failed validation), you can prevent a visual flash by dynamically passing the active value straight to the optionPlaceholder prop. This ensures the browser natively renders the correct initial value on the server before client-side hydration completes.
+
+```vue
+<!-- If a user has already selected a player previously -->
+<SelectFallbackPreview
+  label="Greatest Tennis Player"
+  :optionPlaceholder="player || '- Select a player -'"
+/>
+```
 
 ## Usage
 

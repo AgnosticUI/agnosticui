@@ -14,6 +14,7 @@
     },
     "./styles/tokens.css": "./dist/styles/ag-tokens.css",
     "./styles/tokens-dark.css": "./dist/styles/ag-tokens-dark.css",
+    "./styles/framework-components.css": "./dist/styles/framework-components.css",
     "./styles/table.css": "./dist/styles/table.css",
     "./styles/nav-button-styles": {
       "types": "./dist/styles/nav-button-styles.d.ts",
@@ -207,6 +208,7 @@
       "types": "./dist/components/EmptyState/react/ReactEmptyState.d.ts",
       "import": "./dist/components/EmptyState/react/ReactEmptyState.js"
     },
+
     "./empty-state/vue": {
       "types": "./dist/components/EmptyState/vue/index.d.ts",
       "import": "./dist/components/EmptyState/vue/index.js"

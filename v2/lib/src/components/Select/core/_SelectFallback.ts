@@ -14,6 +14,8 @@ export interface SelectFallbackProps {
   invalid?: boolean;
   errorMessage?: string;
   helpText?: string;
+  // Simple plain text placeholder string for the default option slot
+  optionPlaceholder?: string;
 }
 
 export function _SelectFallback(props: SelectFallbackProps = {}): string {
@@ -83,8 +85,7 @@ export function _SelectFallback(props: SelectFallbackProps = {}): string {
       size="${calculatedSize}"
       aria-disabled="${disabled ? 'true' : 'false'}"
       aria-invalid="${invalid ? 'true' : 'false'}"
-    ></select>
-  `.trim();
+    >${props.optionPlaceholder ? `<option value="">${props.optionPlaceholder}</option>` : ''}</select>`.trim();
 
   // 3. Assemble Layout Configurations
   if (isHorizontal) {
