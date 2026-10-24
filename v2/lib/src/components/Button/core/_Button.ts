@@ -1,3 +1,5 @@
+// v2/lib/src/components/Button/core/_Button.ts
+
 /**
  * AgnosticUI v2 Button - Canonical Implementation
  *
@@ -22,10 +24,14 @@
  * - experiments/: Experimental styling variations
  * - extensions/: AI-safe behavioral extensions
  */
-
-import { LitElement, html, css, type CSSResultGroup } from 'lit';
+import { LitElement, html, css, unsafeCSS, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+// Ingest the class dictionary object to decode hashes
+import styles from './button-structure.module.css';
+// Ingest the compiled CSS text string for the shadow root definition
+import structuralStylesText from './button-structure.module.css?inline';
 
 // Event types
 export interface ButtonToggleEventDetail {
@@ -60,13 +66,6 @@ export interface ButtonProps {
  *
  * A semantic button element that supports multiple types and follows
  * WAI-ARIA APG button patterns for full accessibility compliance.
- *
- * Features:
- * - Semantic <button> element foundation
- * - Space/Enter keyboard activation (browser default)
- * - Multiple button types (button, submit, reset)
- * - Minimalist styling via design tokens
- * - APG-compliant accessibility
  */
 export class AgButton extends LitElement implements ButtonProps {
   static shadowRootOptions = {
@@ -74,393 +73,129 @@ export class AgButton extends LitElement implements ButtonProps {
     delegatesFocus: true,
   };
 
-  static styles = css`
-    /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
-    :host {
-      /* Inline-flex for perfect centering while maintaining inline behavior */
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
+  static styles = [
+    css`${unsafeCSS(structuralStylesText)}`,
+    css`
+      /* Interactive browser-only properties (hover/focus loops, transitions) */
+      :host([variant="secondary"]) button:hover {
+        background: var(--ag-neutral-500);
+      }
+      :host([variant="primary"]) button:hover {
+        background: var(--ag-primary-dark);
+      }
+      :host([variant="success"]) button:hover {
+        background: var(--ag-success-dark);
+      }
+      :host([variant="warning"]) button:hover {
+        background: var(--ag-warning-dark);
+      }
+      :host([variant="danger"]) button:hover {
+        background: var(--ag-danger-dark);
+      }
+      :host([variant="monochrome"]) button:hover {
+        background: var(--ag-background-secondary-inverted);
+      }
 
-    /* Full-width variant */
-    :host([full-width]) {
-      display: block;
-      width: 100%;
-    }
+      :host([ghost][variant="danger"]) button:hover,
+      :host([ghost][variant="warning"]) button:hover,
+      :host([ghost][variant="success"]) button:hover,
+      :host([ghost][variant="primary"]) button:hover {
+        background: var(--ag-neutral-100);
+      }
 
-    :host([full-width]) button {
-      width: 100%;
-    }
+      :host([link]) button:hover {
+        border-bottom-color: var(--ag-primary);
+      }
 
-    button {
-      /* Reset browser defaults */
-      margin: 0;
-      border: 1px solid transparent;
-      background: var(--ag-background-tertiary);
+      :host([grouped]:not(:last-child)) button {
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+        margin-inline-end: -1px;
+      }
 
-      /* Inherit font styling from parent */
-      font: inherit;
-      color: inherit;
+      :host([grouped]:not(:first-child)) button {
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
+      }
 
-      /* Explicit line-height to prevent extra vertical spacing */
-      line-height: 1;
+      :host([bordered][variant="primary"]) button:hover {
+        background: var(--ag-primary);
+        color: var(--ag-primary-fg);
+      }
 
-      /* Basic interaction styling */
-      cursor: pointer;
+      :host([bordered][variant="success"]) button:hover {
+        color: var(--ag-success-fg);
+        background: var(--ag-success);
+      }
 
-      /* Flex layout for perfect content alignment */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--ag-space-1); /* Small gap for icon + text scenarios */
+      :host([bordered][variant="warning"]) button:hover {
+        background: var(--ag-warning);
+        color: var(--ag-warning-fg);
+      }
 
-      /* Smooth transitions */
-      transition-property: all;
-      transition-duration: var(--ag-motion-medium);
-    }
-    
-    /* Secondary inherits font color */
-    :host([variant="secondary"]) button {
-      background: var(--ag-neutral-400);
-      /* We lock the text color at neutral-900 for both light/dark modes */
-      color: var(--ag-neutral-900);
-    }
-    :host([variant="secondary"]) button:hover {
-      background: var(--ag-neutral-500);
-    }
+      :host([bordered][variant="danger"]) button:hover {
+        background: var(--ag-danger);
+        color: var(--ag-danger-fg);
+      }
 
-    /* Primary, success, warning, and danger use variant-specific foreground
-      tokens (--ag-{variant}-fg) and get darker on hover */
-    :host([variant="primary"]) button {
-      background: var(--ag-primary);
-      color: var(--ag-primary-fg);
-    }
-    :host([variant="primary"]) button:hover {
-      background: var(--ag-primary-dark);
-    }
-    :host([variant="success"]) button {
-      background: var(--ag-success);
-      color: var(--ag-success-fg);
-    }
-    :host([variant="success"]) button:hover {
-      background: var(--ag-success-dark);
-    }
-    :host([variant="warning"]) button {
-      background: var(--ag-warning);
-      color: var(--ag-warning-fg);
-    }
-    :host([variant="warning"]) button:hover {
-      background: var(--ag-warning-dark);
-    }
-    :host([variant="danger"]) button {
-      background: var(--ag-danger);
-      color: var(--ag-danger-fg);
-    }
-    :host([variant="danger"]) button:hover {
-      background: var(--ag-danger-dark);
-    }
+      :host([bordered][variant="monochrome"]) button:hover {
+        background: var(--ag-background-primary-inverted);
+        color: var(--ag-text-primary-inverted);
+      }
 
-    /* Monochrome variant - adapts to light/dark themes */
-    :host([variant="monochrome"]) button {
-      background: var(--ag-background-primary-inverted);
-      color: var(--ag-text-primary-inverted);
-    }
-    :host([variant="monochrome"]) button:hover {
-      background: var(--ag-background-secondary-inverted);
-    }
+      :host([ghost][variant="monochrome"]) button:hover {
+        background: var(--ag-background-secondary);
+      }
 
-    /* Size variants */
-    :host([size="x-sm"]) button {
-      height: var(--ag-space-8);
-      min-height: var(--ag-space-8);
-      font-size: calc(var(--ag-font-size-base) - 0.375rem);
-      padding-inline: var(--ag-space-2);
-      padding-block: 0;
-    }
+      /* Disabled states - per-variant to maintain tonal identity */
+      :host([variant="primary"]) button:disabled {
+        background: var(--ag-primary-background);
+        color: var(--ag-primary-text);
+      }
 
-    :host([size="sm"]) button {
-      height: var(--ag-space-9);
-      min-height: var(--ag-space-9);
-      font-size: var(--ag-font-size-xs);
-      padding-inline: var(--ag-space-3);
-      padding-block: 0;
-    }
+      :host([variant="success"]) button:disabled {
+        background: var(--ag-success-background);
+        color: var(--ag-success-text);
+      }
 
-    /* Default size (md) - applies when no size attribute or size="md" */
-    button,
-    :host([size="md"]) button {
-      height: var(--ag-space-10);
-      min-height: var(--ag-space-10);
-      font-size: var(--ag-font-size-sm);
-      padding-inline: var(--ag-space-4);
-      padding-block: 0;
-    }
+      :host([variant="warning"]) button:disabled {
+        background: var(--ag-warning-background);
+        color: var(--ag-warning-text);
+      }
 
-    :host([size="lg"]) button {
-      height: var(--ag-space-12);
-      min-height: var(--ag-space-12);
-      font-size: var(--ag-font-size-base);
-      padding-inline: var(--ag-space-5);
-      padding-block: 0;
-    }
+      :host([variant="danger"]) button:disabled {
+        background: var(--ag-danger-background);
+        color: var(--ag-danger-text);
+      }
 
-    :host([size="xl"]) button {
-      height: var(--ag-space-14);
-      min-height: var(--ag-space-14);
-      font-size: var(--ag-font-size-md);
-      padding-inline: var(--ag-space-6);
-      padding-block: 0;
-    }
+      :host([variant="secondary"]) button:disabled,
+      button:disabled {
+        background: var(--ag-background-disabled);
+      }
 
-    /* Shape variants */
-    :host([shape="capsule"]) button {
-      border-radius: var(--ag-radius-full);
-      padding-inline-start: var(--ag-space-5);
-      padding-inline-end: var(--ag-space-5);
-    }
+      :host([variant="monochrome"]) button:disabled {
+        background: var(--ag-background-tertiary);
+      }
 
-    :host([shape="rounded"]) button {
-      border-radius: var(--ag-radius-md);
-    }
+      :host([bordered]) button:disabled {
+        opacity: 60%;
+        background: transparent;
+      }
 
-    /* Circle and Square shapes are only intended for single character or icon */
-    :host([shape="circle"]) button {
-      border-radius: 50%;
-      width: var(--ag-space-10);
-      height: var(--ag-space-10);
-      padding: 0;
-      min-height: unset;
-    }
+      :host([ghost]) button:disabled,
+      :host([link]) button:disabled {
+        opacity: 60%;
+        background: transparent;
+      }
 
-    :host([shape="square"]) button {
-      border-radius: 0;
-      width: var(--ag-space-10);
-      height: var(--ag-space-10);
-      padding: 0;
-      min-height: unset;
-    }
-
-    :host([shape="rounded-square"]) button {
-      border-radius: var(--ag-radius-md);
-      width: var(--ag-space-10);
-      height: var(--ag-space-10);
-      padding: 0;
-      min-height: unset;
-    }
-
-    /* Ghost and Link - minimal/invisible button styles */
-    :host([ghost]) button,
-    :host([link]) button {
-      background: transparent;
-      border-color: transparent;
-      box-shadow: none;
-    }
-
-    /* Ghost-specific - minimal padding, respects variant colors */
-    :host([ghost]) button {
-      padding-inline-start: var(--ag-space-2);
-      padding-inline-end: var(--ag-space-2);
-    }
-
-    :host([ghost][variant="primary"]) button {
-      color: var(--ag-primary);
-    }
-
-    :host([ghost][variant="success"]) button {
-      color: var(--ag-success);
-    }
-
-    :host([ghost][variant="warning"]) button {
-      color: var(--ag-warning);
-    }
-
-    :host([ghost][variant="danger"]) button {
-      color: var(--ag-danger);
-    }
-
-
-    :host([link][variant="danger"]) button:hover,
-    :host([link][variant="warning"]) button:hover,
-    :host([link][variant="success"]) button:hover,
-    :host([link][variant="primary"]) button:hover {
-      background: transparent;
-    }
-
-    /* Only for ghosted buttons with text that of:
-          - "red" danger
-          - "yellow" warning
-          - "green" success
-          - "blue" primary
-      do we use an almost white nuetral 100 on hover.
-      The default and secondary are not changed here!
-    */
-    :host([ghost][variant="danger"]) button:hover,
-    :host([ghost][variant="warning"]) button:hover,
-    :host([ghost][variant="success"]) button:hover,
-    :host([ghost][variant="primary"]) button:hover {
-      background: var(--ag-neutral-100);
-    }
-
-    /* Link-specific - inline style with smooth underline transition */
-    :host([link]) button {
-      color: var(--ag-primary-text);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      padding: 0;
-      min-height: unset;
-    }
-
-    :host([link]) button:hover {
-      border-bottom-color: var(--ag-primary);
-    }
-
-    /* Grouped buttons - for use in button groups */
-    :host([grouped]) button {
-      border-radius: var(--ag-radius-md);
-    }
-
-    :host([grouped]:not(:last-child)) button {
-      border-start-end-radius: 0;
-      border-end-end-radius: 0;
-      margin-inline-end: -1px;
-    }
-
-    :host([grouped]:not(:first-child)) button {
-      border-start-start-radius: 0;
-      border-end-start-radius: 0;
-    }
-
-    /* Bordered variant - outline style */
-    :host([bordered]) button {
-      background: transparent;
-      border-color: var(--ag-neutral-500);
-    }
-
-    :host([bordered][variant="primary"]) button {
-      color: var(--ag-primary-text);
-      border-color: var(--ag-primary-text);
-    }
-
-    /* Bordered Buttons on Hover have a filled background with variant-specific
-      foreground text.  The Default Bordered is an exception to this rule. */
-    :host([bordered][variant="primary"]) button:hover {
-      background: var(--ag-primary);
-      color: var(--ag-primary-fg);
-    }
-
-    :host([bordered][variant="secondary"]) button,
-    :host([bordered][variant="secondary"]) button:hover {
-      color: var(--ag-text-secondary);
-      border-color: var(--ag-text-secondary);
-    }
-
-    :host([bordered][variant="success"]) button {
-      color: var(--ag-success-text);
-      border-color: var(--ag-success-text);
-    }
-
-    :host([bordered][variant="success"]) button:hover {
-      color: var(--ag-success-fg);
-      background: var(--ag-success);
-    }
-
-    :host([bordered][variant="warning"]) button {
-      color: var(--ag-warning-text);
-      border-color: var(--ag-warning-text);
-    }
-
-    :host([bordered][variant="warning"]) button:hover {
-      background: var(--ag-warning);
-      color: var(--ag-warning-fg);
-    }
-
-    :host([bordered][variant="danger"]) button {
-      color: var(--ag-danger-text);
-      border-color: var(--ag-danger-text);
-    }
-
-    :host([bordered][variant="danger"]) button:hover {
-      background: var(--ag-danger);
-      color: var(--ag-danger-fg);
-    }
-
-    :host([bordered][variant="monochrome"]) button {
-      color: var(--ag-text-primary);
-      border-color: var(--ag-text-primary);
-    }
-
-    :host([bordered][variant="monochrome"]) button:hover {
-      background: var(--ag-background-primary-inverted);
-      color: var(--ag-text-primary-inverted);
-    }
-
-    :host([ghost][variant="monochrome"]) button {
-      color: var(--ag-text-primary);
-    }
-
-    :host([ghost][variant="monochrome"]) button:hover {
-      background: var(--ag-background-secondary);
-    }
-
-    /* Disabled states - per-variant to maintain tonal identity */
-
-    /* Filled buttons - use lighter background tokens */
-    :host([variant="primary"]) button:disabled {
-      background: var(--ag-primary-background);
-      color: var(--ag-primary-text);
-    }
-
-    :host([variant="success"]) button:disabled {
-      background: var(--ag-success-background);
-      color: var(--ag-success-text);
-    }
-
-    :host([variant="warning"]) button:disabled {
-      background: var(--ag-warning-background);
-      color: var(--ag-warning-text);
-    }
-
-    :host([variant="danger"]) button:disabled {
-      background: var(--ag-danger-background);
-      color: var(--ag-danger-text);
-    }
-
-    :host([variant="secondary"]) button:disabled,
-    button:disabled {
-      background: var(--ag-background-disabled);
-    }
-
-    :host([variant="monochrome"]) button:disabled {
-      background: var(--ag-background-tertiary);
-    }
-
-    /* Bordered buttons - dim the border and text with opacity */
-    :host([bordered]) button:disabled {
-      opacity: 60%;
-      background: transparent;
-    }
-
-    /* Ghost and link buttons - dim with opacity */
-    :host([ghost]) button:disabled,
-    :host([link]) button:disabled {
-      opacity: 60%;
-      background: transparent;
-    }
-
-    /* All disabled buttons get not-allowed cursor */
-    button:disabled {
-      cursor: not-allowed;
-    }
-
-    button:focus-visible,
-    button:focus:not(:hover) {
-      /* Softer focus ring using alpha channel */
-      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
-      outline-offset: var(--ag-focus-offset);
-      transition: outline var(--ag-motion-medium) ease;
-    }
-  ` as CSSResultGroup;
+      button:focus-visible,
+      button:focus:not(:hover) {
+        outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+        outline-offset: var(--ag-focus-offset);
+        transition: outline var(--ag-motion-medium) ease;
+      }
+    `
+  ] as unknown as CSSResultGroup;
 
   /**
    * Visual variant for styling hooks
@@ -643,9 +378,37 @@ export class AgButton extends LitElement implements ButtonProps {
   render() {
     const isDisabled = this.disabled || this.loading;
 
+    // Apply design tokens to match mapped classes cleanly
+    const classes: string[] = [];
+    if (this.variant === 'primary') classes.push(styles.variantPrimary);
+    else if (this.variant === 'secondary') classes.push(styles.variantSecondary);
+    else if (this.variant === 'success') classes.push(styles.variantSuccess);
+    else if (this.variant === 'warning') classes.push(styles.variantWarning);
+    else if (this.variant === 'danger') classes.push(styles.variantDanger);
+    else if (this.variant === 'monochrome') classes.push(styles.variantMonochrome);
+
+    if (this.size === 'x-sm') classes.push(styles.sizeXSm);
+    else if (this.size === 'sm') classes.push(styles.sizeSm);
+    else if (this.size === 'md') classes.push(styles.sizeMd);
+    else if (this.size === 'lg') classes.push(styles.sizeLg);
+    else if (this.size === 'xl') classes.push(styles.sizeXl);
+
+    if (this.shape === 'capsule') classes.push(styles.shapeCapsule);
+    else if (this.shape === 'rounded') classes.push(styles.shapeRounded);
+    else if (this.shape === 'circle') classes.push(styles.shapeCircle);
+    else if (this.shape === 'square') classes.push(styles.shapeSquare);
+    else if (this.shape === 'rounded-square') classes.push(styles.shapeRoundedSquare);
+
+    if (this.bordered) classes.push(styles.isBordered);
+    if (this.ghost) classes.push(styles.isGhost);
+    if (this.link) classes.push(styles.isLink);
+    if (this.grouped) classes.push(styles.isGrouped);
+    if (isDisabled) classes.push(styles.isDisabled);
+
     return html`
       <button
         type=${this.type}
+        class="${classes.filter(Boolean).join(' ')}"
         part="ag-button"
         ?disabled=${isDisabled}
         aria-disabled=${isDisabled ? 'true' : 'false'}

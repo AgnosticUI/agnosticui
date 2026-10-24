@@ -2,17 +2,11 @@
 
 <AlphaWarning />
 
-
 The Button component provides a versatile, accessible button foundation with multiple variants, sizes, and shapes.
 
 ## Examples
 
-<FrameworkExample
-  component="button"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
+<FrameworkExample component="button" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode">
   <template #vue>
     <ButtonExamples />
   </template>
@@ -21,9 +15,26 @@ The Button component provides a versatile, accessible button foundation with mul
   </template>
 </FrameworkExample>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes an **Isomorphic Architecture** to support server-first workflows (e.g. TanStack Start, Remix, Nuxt). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+### Standard Fallback Layout
+
+<ButtonFallbackPreview variant="primary" slotContent="Primary Action" />
+
+### Secondary Capsule State
+
+<ButtonFallbackPreview variant="secondary" shape="capsule" slotContent="Explore Features" />
+
+### Loading State (Busy Indicator)
+
+<ButtonFallbackPreview variant="danger" loading slotContent="Deleting Asset..." />
+
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import ButtonExamples from '../examples/ButtonExamples.vue'
+import ButtonFallbackPreview from '../examples/ButtonFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/ButtonLitExamples.js'
 import vueCode from '../examples/ButtonExamples.vue?raw'
@@ -31,18 +42,39 @@ import litCode from '../examples/ButtonLitExamples.js?raw'
 import reactCode from '../examples/ButtonReactExamples.jsx?raw'
 </script>
 
+### Handling Pre-selected / Active States during Hydration
+
+```vue
+<!-- Default configuration without interaction state -->
+<ButtonFallbackPreview toggle :pressed="false" slotContent="Mute Audio" />
+```
+
+If a user loads a page where an operation already exists in an active toggle sequence, you can prevent visual layout popping or layout shifts by passing your live server dataset state directly into the `pressed` property token. This forces the server string engine to lock the matching CSS Module hashes perfectly on the server before client-side hydration completes.
+
+```vue
+<!-- Server-bound state mapping layout logic -->
+<ButtonFallbackPreview
+  toggle
+  :pressed="isMuted || false"
+  slotContent="Mute Audio"
+/>
+```
+
 ## Usage
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add Button
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -67,11 +99,9 @@ The CLI copies source code directly into your project, giving you full visibilit
     <VueButton disabled>Disabled</VueButton>
     <VueButton loading>Loading</VueButton>
 
-    <VueButton
-      toggle
-      :pressed="isPressed"
-      @toggle="handleToggle"
-    >Toggle Me</VueButton>
+    <VueButton toggle :pressed="isPressed" @toggle="handleToggle"
+      >Toggle Me</VueButton
+    >
 
     <VueButton type="submit" variant="primary">Submit</VueButton>
   </section>
@@ -97,12 +127,14 @@ export default {
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { useState } from 'react';
-import { ReactButton } from 'agnosticui-core/button/react';
+import { useState } from "react";
+import { ReactButton } from "agnosticui-core/button/react";
 
 export default function ButtonExample() {
   const [isPressed, setIsPressed] = useState(false);
@@ -128,35 +160,39 @@ export default function ButtonExample() {
       <ReactButton shape="capsule">Capsule</ReactButton>
       <ReactButton shape="circle">C</ReactButton>
 
-      <ReactButton bordered variant="primary">Bordered</ReactButton>
-      <ReactButton ghost variant="primary">Ghost</ReactButton>
+      <ReactButton bordered variant="primary">
+        Bordered
+      </ReactButton>
+      <ReactButton ghost variant="primary">
+        Ghost
+      </ReactButton>
       <ReactButton link>Link Style</ReactButton>
 
       <ReactButton disabled>Disabled</ReactButton>
       <ReactButton loading>Loading</ReactButton>
 
-      <ReactButton
-        toggle
-        pressed={isPressed}
-        onToggle={handleToggle}
-      >
+      <ReactButton toggle pressed={isPressed} onToggle={handleToggle}>
         Toggle Me
       </ReactButton>
 
-      <ReactButton type="submit" variant="primary">Submit</ReactButton>
+      <ReactButton type="submit" variant="primary">
+        Submit
+      </ReactButton>
     </section>
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
-```typescript
-import { LitElement, html, css } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
-import 'agnosticui-core/button';
 
-@customElement('button-example')
+```typescript
+import { LitElement, html, css } from "lit";
+import { customElement, state } from "lit/decorators.js";
+import "agnosticui-core/button";
+
+@customElement("button-example")
 export class ButtonExample extends LitElement {
   @state() private isPressed = false;
 
@@ -173,11 +209,11 @@ export class ButtonExample extends LitElement {
 
   firstUpdated() {
     // Set up event listener for toggle button in the shadow DOM
-    const toggleButton = this.shadowRoot?.querySelector('#toggle-button');
-    toggleButton?.addEventListener('toggle', (event: Event) => {
+    const toggleButton = this.shadowRoot?.querySelector("#toggle-button");
+    toggleButton?.addEventListener("toggle", (event: Event) => {
       const customEvent = event as CustomEvent;
       this.isPressed = customEvent.detail.pressed;
-      console.log('Button toggled:', this.isPressed);
+      console.log("Button toggled:", this.isPressed);
     });
   }
 
@@ -219,22 +255,22 @@ export class ButtonExample extends LitElement {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| ''` | `''` | Visual color variant |
-| `size` | `'x-sm' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size of the button |
-| `shape` | `'capsule' \| 'rounded' \| 'circle' \| 'square' \| 'rounded-square' \| ''` | `''` | Shape variant |
-| `bordered` | `boolean` | `false` | Outline style with transparent background |
-| `ghost` | `boolean` | `false` | Minimal style with transparent background |
-| `link` | `boolean` | `false` | Text link style with underline on hover |
-| `grouped` | `boolean` | `false` | Style for buttons in a group (removes inner borders) |
-| `fullWidth` | `boolean` | `false` | Makes button take 100% width of container |
-| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | HTML button type |
-| `disabled` | `boolean` | `false` | Disabled state |
-| `loading` | `boolean` | `false` | Loading/busy state (disables interaction) |
-| `toggle` | `boolean` | `false` | Enable toggle button mode |
-| `pressed` | `boolean` | `false` | Pressed state for toggle buttons |
-| `ariaLabel` | `string` | `''` | Accessible label (use when button has no text) |
+| Prop        | Type                                                                                   | Default    | Description                                          |
+| ----------- | -------------------------------------------------------------------------------------- | ---------- | ---------------------------------------------------- |
+| `variant`   | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'monochrome' \| ''` | `''`       | Visual color variant                                 |
+| `size`      | `'x-sm' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                               | `'md'`     | Size of the button                                   |
+| `shape`     | `'capsule' \| 'rounded' \| 'circle' \| 'square' \| 'rounded-square' \| ''`             | `''`       | Shape variant                                        |
+| `bordered`  | `boolean`                                                                              | `false`    | Outline style with transparent background            |
+| `ghost`     | `boolean`                                                                              | `false`    | Minimal style with transparent background            |
+| `link`      | `boolean`                                                                              | `false`    | Text link style with underline on hover              |
+| `grouped`   | `boolean`                                                                              | `false`    | Style for buttons in a group (removes inner borders) |
+| `fullWidth` | `boolean`                                                                              | `false`    | Makes button take 100% width of container            |
+| `type`      | `'button' \| 'submit' \| 'reset'`                                                      | `'button'` | HTML button type                                     |
+| `disabled`  | `boolean`                                                                              | `false`    | Disabled state                                       |
+| `loading`   | `boolean`                                                                              | `false`    | Loading/busy state (disables interaction)            |
+| `toggle`    | `boolean`                                                                              | `false`    | Enable toggle button mode                            |
+| `pressed`   | `boolean`                                                                              | `false`    | Pressed state for toggle buttons                     |
+| `ariaLabel` | `string`                                                                               | `''`       | Accessible label (use when button has no text)       |
 
 ## Events
 
@@ -245,12 +281,11 @@ export class ButtonExample extends LitElement {
 | `blur`   | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur`       | `FocusEvent`           | Fired when the button loses focus.                                               |
 | `toggle` | Vue: `@toggle`<br>React: `onToggle`<br>Lit: `@toggle` | `{ pressed: boolean }` | Emitted when a toggle button is clicked (only when the `toggle` prop is `true`). |
 
-
 **Note:** Standard button events (`click`, `focus`, `blur`) work uniformly across all frameworks. The `toggle` event is custom and only fires when the `toggle` prop is true, providing `{ pressed: boolean }` in its detail.
 
 ## Accessibility
 
-The Button component implements the [WAI-ARIA Button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/):
+The Button component implements the [WAI-ARIA Button pattern](https://w3.org):
 
 - Uses semantic `<button>` element
 - Full keyboard support (Space/Enter activation via browser defaults)
@@ -263,7 +298,8 @@ The Button component implements the [WAI-ARIA Button pattern](https://www.w3.org
 
 ### Toggle Buttons
 
-Toggle buttons follow the [WAI-ARIA Toggle Button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/#toggle_button):
+Toggle buttons follow the [WAI-ARIA Toggle Button pattern](https://w3.org#toggle_button):
+
 - Set `toggle` prop to enable toggle mode
 - `aria-pressed` communicates state to assistive technologies
 - Visual and programmatic state synchronization
@@ -271,6 +307,7 @@ Toggle buttons follow the [WAI-ARIA Toggle Button pattern](https://www.w3.org/WA
 ## Variant Guide
 
 ### Color Variants
+
 - **primary** - Primary action (blue)
 - **secondary** - Secondary action (neutral)
 - **success** - Positive action (green)
@@ -278,11 +315,13 @@ Toggle buttons follow the [WAI-ARIA Toggle Button pattern](https://www.w3.org/WA
 - **danger** - Destructive action (red)
 
 ### Style Variants
+
 - **bordered** - Outline style, fills on hover
 - **ghost** - Minimal padding, transparent background
 - **link** - Text link appearance with underline
 
 ### Shape Variants
+
 - **rounded** - Rounded corners
 - **capsule** - Fully rounded ends (pill shape)
 - **circle** - Perfect circle (for icons/single characters)
@@ -307,6 +346,7 @@ Each color variant (primary, success, warning, danger, secondary, monochrome) ma
 Use the `grouped` prop to create connected button groups:
 
 ::: details Vue
+
 ```vue
 <div class="flex-inline" role="group" aria-label="Actions">
   <VueButton grouped bordered>Edit</VueButton>
@@ -314,19 +354,29 @@ Use the `grouped` prop to create connected button groups:
   <VueButton grouped bordered>Share</VueButton>
 </div>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
 <div className="flex-inline" role="group" aria-label="Actions">
-  <ReactButton grouped bordered>Edit</ReactButton>
-  <ReactButton grouped bordered>Delete</ReactButton>
-  <ReactButton grouped bordered>Share</ReactButton>
+  <ReactButton grouped bordered>
+    Edit
+  </ReactButton>
+  <ReactButton grouped bordered>
+    Delete
+  </ReactButton>
+  <ReactButton grouped bordered>
+    Share
+  </ReactButton>
 </div>
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <div class="flex-inline" role="group" aria-label="Actions">
   <ag-button grouped bordered>Edit</ag-button>
@@ -334,6 +384,7 @@ Use the `grouped` prop to create connected button groups:
   <ag-button grouped bordered>Share</ag-button>
 </div>
 ```
+
 :::
 
 ## Form Integration
@@ -341,6 +392,7 @@ Use the `grouped` prop to create connected button groups:
 Buttons integrate seamlessly with forms using the `type` prop:
 
 ::: details Vue
+
 ```vue
 <form @submit.prevent="handleSubmit">
   <VueButton type="submit" variant="primary">Submit</VueButton>
@@ -348,19 +400,32 @@ Buttons integrate seamlessly with forms using the `type` prop:
   <VueButton type="button" @click="cancel">Cancel</VueButton>
 </form>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-<form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-  <ReactButton type="submit" variant="primary">Submit</ReactButton>
+<form
+  onSubmit={(e) => {
+    e.preventDefault();
+    handleSubmit();
+  }}
+>
+  <ReactButton type="submit" variant="primary">
+    Submit
+  </ReactButton>
   <ReactButton type="reset">Reset</ReactButton>
-  <ReactButton type="button" onClick={cancel}>Cancel</ReactButton>
+  <ReactButton type="button" onClick={cancel}>
+    Cancel
+  </ReactButton>
 </form>
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <form id="myForm">
   <ag-button type="submit" variant="primary">Submit</ag-button>
@@ -377,6 +442,7 @@ Buttons integrate seamlessly with forms using the `type` prop:
   document.getElementById("cancel-button")?.addEventListener("click", cancel);
 </script>
 ```
+
 :::
 
 ### Button Types
@@ -389,8 +455,8 @@ Buttons integrate seamlessly with forms using the `type` prop:
 
 Shadow Parts allow you to style internal elements of the button from outside the shadow DOM using the `::part()` CSS selector.
 
-| Part | Description |
-|------|-------------|
+| Part        | Description                     |
+| ----------- | ------------------------------- |
 | `ag-button` | The internal `<button>` element |
 
 ### Customization Example
@@ -413,3 +479,9 @@ ag-button::part(ag-button):hover {
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 ```
+
+## Related Components
+
+- [IconButton](/components/icon-button) - For icon-driven visual triggers.
+- [ButtonGroup](/components/button-group) - For tightly clustered navigation parameters.
+- [Link](/components/link) - For standalone content redirection paths.
