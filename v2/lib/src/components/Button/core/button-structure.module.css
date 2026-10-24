@@ -36,40 +36,200 @@
 }
 
 /* 2. Visual Baseline Tonal Identity & Variants */
-:host([variant="secondary"]) button, .variantSecondary { background: var(--ag-neutral-400); color: var(--ag-neutral-900); }
-:host([variant="primary"]) button, .variantPrimary { background: var(--ag-primary); color: var(--ag-primary-fg); }
-:host([variant="success"]) button, .variantSuccess { background: var(--ag-success); color: var(--ag-success-fg); }
-:host([variant="warning"]) button, .variantWarning { background: var(--ag-warning); color: var(--ag-warning-fg); }
-:host([variant="danger"]) button, .variantDanger { background: var(--ag-danger); color: var(--ag-danger-fg); }
-:host([variant="monochrome"]) button, .variantMonochrome { background: var(--ag-background-primary-inverted); color: var(--ag-text-primary-inverted); }
+:host([variant="secondary"]) button,
+.variantSecondary {
+  background: var(--ag-neutral-400);
+  color: var(--ag-neutral-900);
+}
+
+:host([variant="primary"]) button,
+.variantPrimary {
+  background: var(--ag-primary);
+  color: var(--ag-primary-fg);
+}
+
+:host([variant="success"]) button,
+.variantSuccess {
+  background: var(--ag-success);
+  color: var(--ag-success-fg);
+}
+
+:host([variant="warning"]) button,
+.variantWarning {
+  background: var(--ag-warning);
+  color: var(--ag-warning-fg);
+}
+
+:host([variant="danger"]) button,
+.variantDanger {
+  background: var(--ag-danger);
+  color: var(--ag-danger-fg);
+}
+
+:host([variant="monochrome"]) button,
+.variantMonochrome {
+  background: var(--ag-background-primary-inverted);
+  color: var(--ag-text-primary-inverted);
+}
 
 /* 3. Size Layout Geometry Matrices */
-:host([size="x-sm"]) button, .sizeXSm { height: var(--ag-space-8); min-height: var(--ag-space-8); font-size: calc(var(--ag-font-size-base) - 0.375rem); padding-inline: var(--ag-space-2); padding-block: 0; }
-:host([size="sm"]) button, .sizeSm { height: var(--ag-space-9); min-height: var(--ag-space-9); font-size: var(--ag-font-size-xs); padding-inline: var(--ag-space-3); padding-block: 0; }
+:host([size="x-sm"]) button,
+.sizeXSm {
+  height: var(--ag-space-8);
+  min-height: var(--ag-space-8);
+  font-size: calc(var(--ag-font-size-base) - 0.375rem);
+  padding-inline: var(--ag-space-2);
+  padding-block: 0;
+}
+
+:host([size="sm"]) button,
+.sizeSm {
+  height: var(--ag-space-9);
+  min-height: var(--ag-space-9);
+  font-size: var(--ag-font-size-xs);
+  padding-inline: var(--ag-space-3);
+  padding-block: 0;
+}
 
 /* FIX: Swapped bare button target for the hashed modular class helper */
-.sizeMd,
-:host([size="md"]) button {
+:host([size="md"]) button,
+.sizeMd {
   height: var(--ag-space-10);
   min-height: var(--ag-space-10);
   font-size: var(--ag-font-size-sm);
   padding-inline: var(--ag-space-4);
   padding-block: 0;
 }
-:host([size="lg"]) button, .sizeLg { height: var(--ag-space-12); min-height: var(--ag-space-12); font-size: var(--ag-font-size-base); padding-inline: var(--ag-space-5); padding-block: 0; }
-:host([size="xl"]) button, .sizeXl { height: var(--ag-space-14); min-height: var(--ag-space-14); font-size: var(--ag-font-size-md); padding-inline: var(--ag-space-6); padding-block: 0; }
+
+:host([size="lg"]) button,
+.sizeLg {
+  height: var(--ag-space-12);
+  min-height: var(--ag-space-12);
+  font-size: var(--ag-font-size-base);
+  padding-inline: var(--ag-space-5);
+  padding-block: 0;
+}
+
+:host([size="xl"]) button,
+.sizeXl {
+  height: var(--ag-space-14);
+  min-height: var(--ag-space-14);
+  font-size: var(--ag-font-size-md);
+  padding-inline: var(--ag-space-6);
+  padding-block: 0;
+}
 
 /* 4. Shape Layout Modifiers */
-:host([shape="capsule"]) button, .shapeCapsule { border-radius: var(--ag-radius-full); padding-inline: var(--ag-space-5); }
-:host([shape="rounded"]) button, .shapeRounded { border-radius: var(--ag-radius-md); }
-:host([shape="circle"]) button, .shapeCircle { border-radius: 50%; width: var(--ag-space-10); height: var(--ag-space-10); padding: 0; min-height: unset; }
-:host([shape="square"]) button, .shapeSquare { border-radius: 0; width: var(--ag-space-10); height: var(--ag-space-10); padding: 0; min-height: unset; }
-:host([shape="rounded-square"]) button, .shapeRoundedSquare { border-radius: var(--ag-radius-md); width: var(--ag-space-10); height: var(--ag-space-10); padding: 0; min-height: unset; }
+:host([shape="capsule"]) button,
+.shapeCapsule {
+  border-radius: var(--ag-radius-full);
+  padding-inline: var(--ag-space-5);
+}
+
+:host([shape="rounded"]) button,
+.shapeRounded {
+  border-radius: var(--ag-radius-md);
+}
+
+:host([shape="circle"]) button,
+.shapeCircle {
+  border-radius: 50%;
+  width: var(--ag-space-10);
+  height: var(--ag-space-10);
+  padding: 0;
+  min-height: unset;
+}
+
+:host([shape="square"]) button,
+.shapeSquare {
+  border-radius: 0;
+  width: var(--ag-space-10);
+  height: var(--ag-space-10);
+  padding: 0;
+  min-height: unset;
+}
+
+:host([shape="rounded-square"]) button,
+.shapeRoundedSquare {
+  border-radius: var(--ag-radius-md);
+  width: var(--ag-space-10);
+  height: var(--ag-space-10);
+  padding: 0;
+  min-height: unset;
+}
 
 /* 5. Minimalist Ghost, Link, Bordered, Grouped, and Disabled States */
-:host([ghost]) button, :host([link]) button, .isGhost, .isLink { background: transparent !important; border-color: transparent !important; box-shadow: none !important; }
-:host([bordered]) button, .isBordered { background: transparent; border-color: var(--ag-neutral-500); }
-:host([grouped]) button, .isGrouped { border-radius: var(--ag-radius-md); }
+:host([ghost]) button,
+:host([link]) button,
+.isGhost,
+.isLink {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Baseline Bordered Shell Constraints */
+:host([bordered]) button,
+.isBordered {
+  background: transparent;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--ag-neutral-500);
+}
+
+/* Initial State Color Rules: Forces text/border to match variant identity instead of bleeding white text */
+:host([bordered][variant="primary"]) button,
+.isBordered.variantPrimary {
+  color: var(--ag-primary);
+  border-color: var(--ag-primary);
+}
+
+:host([bordered][variant="success"]) button,
+.isBordered.variantSuccess {
+  color: var(--ag-success);
+  border-color: var(--ag-success);
+}
+
+:host([bordered][variant="warning"]) button,
+.isBordered.variantWarning {
+  color: var(--ag-warning);
+  border-color: var(--ag-warning);
+}
+
+:host([bordered][variant="danger"]) button,
+.isBordered.variantDanger {
+  color: var(--ag-danger);
+  border-color: var(--ag-danger);
+}
+
+/* Hover Filled Activation States: Inverts colors on interaction passes */
+:host([bordered][variant="primary"]) button:hover {
+  background: var(--ag-primary);
+  color: var(--ag-primary-fg);
+}
+
+:host([bordered][variant="success"]) button:hover {
+  background: var(--ag-success);
+  color: var(--ag-success-fg);
+}
+
+:host([bordered][variant="warning"]) button:hover {
+  background: var(--ag-warning);
+  color: var(--ag-warning-fg);
+}
+
+:host([bordered][variant="danger"]) button:hover {
+  background: var(--ag-danger);
+  color: var(--ag-danger-fg);
+}
+
+:host([grouped]) button,
+.isGrouped {
+  border-radius: var(--ag-radius-md);
+}
 
 /* FIX: Bound disabled resets specifically to the isolated module identifier */
-.baseButton:disabled, .isDisabled { cursor: not-allowed; }
+.baseButton:disabled,
+.isDisabled {
+  cursor: not-allowed;
+}
