@@ -134,3 +134,24 @@ export type { CustomSelectFallbackProps } from '../core/CustomSelect.js';
 export { default as VueCustomSelect } from './VueCustomSelect.vue';
 export { \_CustomSelectFallback } from '../core/CustomSelect.js';
 export type { CustomSelectFallbackProps } from '../core/CustomSelect.js';
+
+## ⚠️ Local DX Artifacts vs. Production Realities (Vite Dev-Server Lag)
+
+When auditing component layouts during local execution workflows (`npm run docs:dev`), you may encounter brief layout flashes or unexpected default user-agent properties (e.g., a momentary thick black border flash on native inputs or switches during a hard browser reload).
+
+### The Mechanics of the "Style Vacuum"
+
+1. **Asynchronous HMR Bundling:** In development mode, Vite processes CSS Modules dynamically, wrapping them inside asynchronous JavaScript chunks to facilitate fast Hot Module Replacement (HMR).
+2. **Synchronous Hydration Racing:** Custom elements or template string components often evaluate their layout properties and mount HTML nodes synchronously on frame delivery.
+3. **The Layout Gap:** This creates a multi-millisecond environment window where DOM nodes exist on the screen before Vite finishes executing and injecting the compiled modular style definitions. The browser leaks default User-Agent styling during this gap.
+
+### The Verification Strategy
+
+Do **NOT** assume a local refresh flash is a source code architectural regression. Before rewriting structural styles to bypass a development flash, perform a production dry-run simulation pass:
+
+```bash
+# Execute compilation passes to bundle assets statically
+npm run docs:build && npm run docs:preview
+```
+
+- **Validation Rule:** If the visual glitch disappears entirely in the static distribution preview environment, the architecture is sound. The artifact is a known dev-server streaming DX anomaly with zero impact on downstream client distribution layers.
