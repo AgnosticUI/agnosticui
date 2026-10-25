@@ -48,15 +48,14 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
     formControlStyles,
     css`${unsafeCSS(structuralStylesText)}`,
     css`
-      /* ==========================================================================
-         ISOMORPHIC FLAT ARCHITECTURE MAPPINGS
-         Maps the local camelCase CSS Module hashes back to literal lowercase 
-         kebab classes to guarantee absolute backward compatibility.
-         ========================================================================== */
-
       /* Satisfies the custom spec suite attribute checks for issue tracking components */
       :host([disabled]) {
         pointer-events: none;
+      }
+
+      /* Scope validation boundaries cleanly against the immutable part anchor to survive the pivot */
+      :host([invalid]) [part="ag-checkbox-indicator"]::before {
+        border-color: var(--ag-error-border, var(--ag-error-text)) !important;
       }
 
       .checkbox-wrapper {
@@ -141,14 +140,18 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
         border-bottom: var(--ag-border-width-2) solid var(--ag-white);
       }
 
-      /* Toggled Activation states */
-      .checkbox-input:focus + .checkbox-label::before {
+      /* 
+        CRITICAL ARCHITECTURAL REFACTOR:
+        Target primitive element tag selectors instead of hardcoded literal classes 
+        to circumvent dynamic bundler token hashing inside the Shadow DOM boundary.
+      */
+      input[type="checkbox"]:focus + .checkbox-label::before {
         box-shadow: 0 0 0 var(--ag-focus-width) rgba(var(--ag-focus), 0.5);
         outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
         outline-offset: var(--ag-focus-offset);
       }
 
-      .checkbox-input:indeterminate + .checkbox-label::after {
+      input[type="checkbox"]:indeterminate + .checkbox-label::after {
         transform: rotate(0deg) scale(1) translate(-6px);
         opacity: 1;
         border-inline-end: none;
@@ -161,27 +164,27 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
         margin-block-start: -1px;
       }
 
-      .checkbox-input:checked + .checkbox-label::after {
+      input[type="checkbox"]:checked + .checkbox-label::after {
         opacity: 1;
         transform: rotate(40deg) scale(1) translate(2px);
       }
 
-      /* Tonal palette theme modifiers */
+      /* Tonal palette theme modifiers securely mapped against primitive tokens */
       .checkbox-label--default::before { border: var(--ag-border-width-2) solid var(--ag-primary-border); background: var(--ag-white); }
-      .checkbox-input:checked + .checkbox-label--default::before,
-      .checkbox-input:indeterminate + .checkbox-label--default::before { background: var(--ag-primary); border-color: var(--ag-primary); }
+      input[type="checkbox"]:checked + .checkbox-label--default::before,
+      input[type="checkbox"]:indeterminate + .checkbox-label--default::before { background: var(--ag-primary); border-color: var(--ag-primary); }
 
       .checkbox-label--primary::before { border: var(--ag-border-width-2) solid var(--ag-primary-border); background: var(--ag-white); }
-      .checkbox-input:checked + .checkbox-label--primary::before,
-      .checkbox-input:indeterminate + .checkbox-label--primary::before { background: var(--ag-primary); border-color: var(--ag-primary); }
+      input[type="checkbox"]:checked + .checkbox-label--primary::before,
+      input[type="checkbox"]:indeterminate + .checkbox-label--primary::before { background: var(--ag-primary); border-color: var(--ag-primary); }
 
       .checkbox-label--success::before { border: var(--ag-border-width-2) solid var(--ag-border); background: var(--ag-white); }
-      .checkbox-input:checked + .checkbox-label--success::before,
-      .checkbox-input:indeterminate + .checkbox-label--success::before { background: var(--ag-success); border-color: var(--ag-success); }
+      input[type="checkbox"]:checked + .checkbox-label--success::before,
+      input[type="checkbox"]:indeterminate + .checkbox-label--success::before { background: var(--ag-success); border-color: var(--ag-success); }
 
       .checkbox-label--monochrome::before { border: var(--ag-border-width-2) solid var(--ag-black); background: var(--ag-white); }
-      .checkbox-input:checked + .checkbox-label--monochrome::before,
-      .checkbox-input:indeterminate + .checkbox-label--monochrome::before { background: var(--ag-black); border-color: var(--ag-black); }
+      input[type="checkbox"]:checked + .checkbox-label--monochrome::before,
+      input[type="checkbox"]:indeterminate + .checkbox-label--monochrome::before { background: var(--ag-black); border-color: var(--ag-black); }
 
       .checkbox-label-copy { display: inline-block; }
       .checkbox-label-copy--small { font-size: var(--ag-font-size-sm); }
@@ -189,15 +192,18 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
       .checkbox-label-copy--large { font-size: var(--ag-font-size-base); }
 
       @media (prefers-reduced-motion: reduce) {
-        .checkbox-label, .checkbox-label::before, .checkbox-label::after { transition: none; }
+        [part="ag-checkbox-indicator"], 
+        [part="ag-checkbox-indicator"]::before, 
+        [part="ag-checkbox-indicator"]::after { 
+          transition: none; 
+        }
       }
 
       @media (prefers-contrast: high) {
-        .checkbox-label::before { outline: var(--ag-border-width-1) solid; }
+        [part="ag-checkbox-indicator"]::before { outline: var(--ag-border-width-1) solid; }
       }
     `,
   ];
-
 
   @property({ type: String })
   declare value: string;
@@ -223,7 +229,6 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
   @property({ type: String })
   declare labelPosition: 'end' | 'start';
 
-  // Validation & hints
   @property({ type: Boolean, reflect: true })
   declare required: boolean;
 
@@ -236,16 +241,13 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
   @property({ type: String, attribute: 'help-text' })
   declare helpText: string;
 
-  // Event callbacks
   @property({ attribute: false })
   declare onClick?: (event: MouseEvent) => void;
 
   @property({ attribute: false })
   declare onChange?: (event: CheckboxChangeEvent) => void;
 
-  // Stable IDs for form control elements (created once)
   private _ids = createFormControlIds('ag-checkbox');
-
   private inputRef?: HTMLInputElement;
 
   constructor() {
@@ -264,19 +266,10 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
     this.helpText = '';
   }
 
-  /**
-   * Expose the internal focusable element for FormControl ARIA wiring
-   */
   get controlElement(): HTMLElement | null {
     return this.inputRef || null;
   }
 
-  // ─── FACE ─────────────────────────────────────────────────────────────────
-
-  /**
-   * FACE lifecycle: called when the parent form is reset.
-   * Restores checked and indeterminate to their default states.
-   */
   override formResetCallback(): void {
     this.checked = false;
     this.indeterminate = false;
@@ -285,11 +278,6 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
     this._syncStates();
   }
 
-  /**
-   * FACE lifecycle: called on session restore or browser autofill.
-   * Restores checked state from the previously saved form value.
-   * A non-null state means the checkbox was checked; null means unchecked.
-   */
   override formStateRestoreCallback(
     state: File | string | FormData | null,
     _mode: 'restore' | 'autocomplete'
@@ -301,11 +289,6 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
     this._syncStates();
   }
 
-  /**
-   * Sync validity to ElementInternals by delegating to the inner
-   * <input type="checkbox">. Required validation is handled natively
-   * by the inner input; we just mirror its state.
-   */
   private _syncValidity(): void {
     syncInnerInputValidity(this._internals, this.inputRef);
   }
@@ -323,7 +306,7 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
    *  :state(required)      — checkbox is required
    *  :state(invalid)       — FACE constraint validation is failing
    */
-  private _syncStates(): void {
+    private _syncStates(): void {
     this._setState('checked', this.checked);
     this._setState('indeterminate', this.indeterminate);
     this._setState('disabled', this.disabled);
@@ -336,27 +319,27 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
   override updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
 
-    // Sync indeterminate state to native input
     if (changedProperties.has('indeterminate') && this.inputRef) {
       this.inputRef.indeterminate = this.indeterminate;
     }
 
-    // FACE: sync form value and validity for programmatic changes to checked/indeterminate
     if (changedProperties.has('checked') || changedProperties.has('indeterminate')) {
+      // Safely intercept non-boolean attribute primitives without generating linter exceptions
+      if (typeof (this.checked as unknown) === 'string') {
+        this.checked = (this.checked as unknown) === 'true' || (this.checked as unknown) === '';
+      }
       this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
       this._syncValidity();
       this._syncStates();
     }
   }
 
-  // v2/lib/src/components/Checkbox/core/_Checkbox.ts (Part 3 of 3)
 
   private handleClick(e: MouseEvent) {
     if (this.disabled) {
       e.preventDefault();
       return;
     }
-    // Invoke native click callback if provided
     if (this.onClick) {
       this.onClick(e);
     }
@@ -371,17 +354,14 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
     const input = e.target as HTMLInputElement;
     this.checked = input.checked;
 
-    // When user clicks, clear indeterminate state
     if (this.indeterminate) {
       this.indeterminate = false;
     }
 
-    // FACE: sync form value and validity on user interaction
     this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
     this._syncValidity();
     this._syncStates();
 
-    // Dispatch custom change event with dual-dispatch pattern
     const changeEvent = new CustomEvent<CheckboxChangeEventDetail>('change', {
       detail: {
         checked: this.checked,
@@ -393,52 +373,31 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
       composed: true,
     });
 
-    // Dual-dispatch: DOM event first
     this.dispatchEvent(changeEvent);
 
-    // Then invoke callback if provided
     if (this.onChange) {
       this.onChange(changeEvent);
     }
   }
 
-  /**
-   * Render helper text
-   */
   private _renderHelper() {
     if (!this.helpText) return nothing;
-
     return html`
-      <div
-        id="${this._ids.helperId}"
-        class="ag-form-control__helper ag-checkbox__helper"
-        part="ag-checkbox-helper"
-      >
+      <div id="${this._ids.helperId}" class="ag-form-control__helper ag-checkbox__helper" part="ag-checkbox-helper">
         ${this.helpText}
       </div>
     `;
   }
 
-  /**
-   * Render error text
-   */
   private _renderError() {
     if (!this.invalid || !this.errorMessage) return nothing;
-
     return html`
-      <div
-        id="${this._ids.errorId}"
-        class="ag-form-control__error ag-checkbox__error"
-        part="ag-checkbox-error"
-      >
+      <div id="${this._ids.errorId}" class="ag-form-control__error ag-checkbox__error" part="ag-checkbox-error">
         ${this.errorMessage}
       </div>
     `;
   }
 
-  /**
-   * Build ARIA describedby attribute
-   */
   private _getAriaDescribedBy(): string | undefined {
     return buildAriaDescribedBy({
       helperId: this._ids.helperId,
@@ -451,11 +410,11 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
   override render() {
     const wrapperClasses = [
       'checkbox-wrapper',
+      styles.checkboxWrapper, 
       this.labelPosition === 'start' ? styles.checkboxWrapperLabelStart : '',
       this.labelPosition === 'start' ? 'checkbox-wrapper--label-start' : ''
     ].filter(Boolean).join(' ').trim();
 
-    // 1. Properly capitalize layout options to match your camelCase module hashes
     const sizeCapitalized = this.size.charAt(0).toUpperCase() + this.size.slice(1);
     const themeCapitalized = this.theme.charAt(0).toUpperCase() + this.theme.slice(1);
 
@@ -463,7 +422,6 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
     const themeKey = `checkboxLabel${themeCapitalized}`; 
     const copyKey = `checkboxLabelCopy${sizeCapitalized}`; 
 
-    // 2. Map these keys dynamically into your class arrays so the Shadow DOM picks them up instantly
     const labelClasses = [
       'checkbox-label',
       styles.checkboxLabel,
@@ -476,21 +434,15 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
     const labelCopyClasses = [
       'checkbox-label-copy',
       styles.checkboxLabelCopy,
-      styles[copyKey], // Fixed: Safely map dynamic camelCase token hashes
+      styles[copyKey],
       `checkbox-label-copy--${this.size}`
     ].filter(Boolean).join(' ').trim();
 
-    // Build aria-describedby
     const describedBy = this._getAriaDescribedBy();
 
-    // Main structure wraps everything with both CSS Modules and fallback literal compatibility
     return html`
       <div class="${styles.agCheckboxContainer} ag-checkbox-container">
-        <label 
-          for="${this._ids.inputId}"
-          class="${wrapperClasses}" 
-          part="ag-checkbox-wrapper"
-        >
+        <label for="${this._ids.inputId}" class="${wrapperClasses}" part="ag-checkbox-wrapper">
           <input
             type="checkbox"
             id="${this._ids.inputId}"
@@ -506,24 +458,14 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
             aria-required="${this.required ? 'true' : 'false'}"
             aria-invalid="${this.invalid ? 'true' : 'false'}"
             aria-describedby="${describedBy || nothing}"
-            aria-checked=${this.indeterminate
-              ? 'mixed'
-              : this.checked
-              ? 'true'
-              : 'false'}
+            aria-checked=${this.indeterminate ? 'mixed' : this.checked ? 'true' : 'false'}
             @click=${this.handleClick}
             @change=${this.handleChange}
           />
-          <span
-            class="${labelClasses}"
-            part="ag-checkbox-indicator"
-            aria-hidden="true"
-          ></span>
+          <span class="${labelClasses}" part="ag-checkbox-indicator" aria-hidden="true"></span>
           <span class="${labelCopyClasses}" part="ag-checkbox-label">
             ${this.labelText || html`<slot></slot>`}
-            ${this.required
-              ? html`<span class="ag-form-control__required" aria-label="required">*</span>`
-              : nothing}
+            ${this.required ? html`<span class="ag-form-control__required" aria-label="required">*</span>` : nothing}
           </span>
         </label>
         ${this._renderHelper()}
@@ -533,14 +475,10 @@ export class AgCheckbox extends FaceMixin(LitElement) implements CheckboxProps {
   }
 
   override firstUpdated() {
-    this.inputRef = this.shadowRoot?.querySelector(
-      '.checkbox-input'
-    ) as HTMLInputElement;
+    this.inputRef = this.shadowRoot?.querySelector('.checkbox-input') as HTMLInputElement;
     if (this.inputRef && this.indeterminate) {
       this.inputRef.indeterminate = this.indeterminate;
     }
-
-    // FACE: set initial form value and sync validity after first render
     this._internals.setFormValue(this.checked ? (this.value || 'on') : null);
     this._syncValidity();
     this._syncStates();

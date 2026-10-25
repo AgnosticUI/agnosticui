@@ -1,8 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { AgCheckbox } from './Checkbox';
+import { AgCheckbox } from './Checkbox.js';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import styles from './checkbox-structure.module.css';
+import './Checkbox.js';
 
-// Type alias for backward compatibility
 const Checkbox = AgCheckbox;
 
 expect.extend(toHaveNoViolations);
@@ -20,7 +21,7 @@ describe('Checkbox - Comprehensive Tests', () => {
   });
 
   const createCheckbox = async (props: Partial<AgCheckbox> = {}) => {
-    const checkbox = new AgCheckbox();
+    const checkbox = document.createElement('ag-checkbox') as AgCheckbox;
     Object.assign(checkbox, props);
     container.appendChild(checkbox);
     await checkbox.updateComplete;
@@ -45,9 +46,8 @@ describe('Checkbox - Comprehensive Tests', () => {
         checked: true,
         labelText: 'Accept',
       });
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.getAttribute('aria-checked')).toBe('true');
     });
 
@@ -58,9 +58,8 @@ describe('Checkbox - Comprehensive Tests', () => {
         checked: false,
         labelText: 'Accept',
       });
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.getAttribute('aria-checked')).toBe('false');
     });
 
@@ -71,9 +70,8 @@ describe('Checkbox - Comprehensive Tests', () => {
         indeterminate: true,
         labelText: 'Select all',
       });
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.getAttribute('aria-checked')).toBe('mixed');
     });
   });
@@ -138,9 +136,8 @@ describe('Checkbox - Comprehensive Tests', () => {
         indeterminate: true,
         labelText: 'Select all',
       });
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.indeterminate).toBe(true);
     });
 
@@ -152,9 +149,8 @@ describe('Checkbox - Comprehensive Tests', () => {
         labelText: 'Select all',
       });
 
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await checkbox.updateComplete;
 
@@ -166,9 +162,8 @@ describe('Checkbox - Comprehensive Tests', () => {
       checkbox.indeterminate = true;
       await checkbox.updateComplete;
 
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.indeterminate).toBe(true);
     });
   });
@@ -176,22 +171,23 @@ describe('Checkbox - Comprehensive Tests', () => {
   describe('Size Variants', () => {
     it('should render small size correctly', async () => {
       const checkbox = await createCheckbox({ size: 'small', labelText: 'Small' });
-      const indicator = checkbox.shadowRoot?.querySelector('.checkbox-label');
-      expect(indicator?.classList.contains('checkbox-label--small')).toBe(true);
+      const indicator = checkbox.shadowRoot?.querySelector(`.${styles.checkboxLabel}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains(styles.checkboxLabelSmall)).toBe(true);
     });
 
     it('should render medium size correctly', async () => {
       const checkbox = await createCheckbox({ size: 'medium', labelText: 'Medium' });
-      const indicator = checkbox.shadowRoot?.querySelector('.checkbox-label');
-      expect(indicator?.classList.contains('checkbox-label--medium')).toBe(
-        true
-      );
+      const indicator = checkbox.shadowRoot?.querySelector(`.${styles.checkboxLabel}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains(styles.checkboxLabelMedium)).toBe(true);
     });
 
     it('should render large size correctly', async () => {
       const checkbox = await createCheckbox({ size: 'large', labelText: 'Large' });
-      const indicator = checkbox.shadowRoot?.querySelector('.checkbox-label');
-      expect(indicator?.classList.contains('checkbox-label--large')).toBe(true);
+      const indicator = checkbox.shadowRoot?.querySelector(`.${styles.checkboxLabel}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains(styles.checkboxLabelLarge)).toBe(true);
     });
   });
 
@@ -201,10 +197,9 @@ describe('Checkbox - Comprehensive Tests', () => {
         theme: 'default',
         labelText: 'Default',
       });
-      const indicator = checkbox.shadowRoot?.querySelector('.checkbox-label');
-      expect(indicator?.classList.contains('checkbox-label--default')).toBe(
-        true
-      );
+      const indicator = checkbox.shadowRoot?.querySelector(`.${styles.checkboxLabel}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains('checkbox-label--default')).toBe(true);
     });
 
     it('should render primary theme correctly', async () => {
@@ -212,10 +207,9 @@ describe('Checkbox - Comprehensive Tests', () => {
         theme: 'primary',
         labelText: 'Primary',
       });
-      const indicator = checkbox.shadowRoot?.querySelector('.checkbox-label');
-      expect(indicator?.classList.contains('checkbox-label--primary')).toBe(
-        true
-      );
+      const indicator = checkbox.shadowRoot?.querySelector(`.${styles.checkboxLabel}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains('checkbox-label--primary')).toBe(true);
     });
 
     it('should render success theme correctly', async () => {
@@ -223,10 +217,9 @@ describe('Checkbox - Comprehensive Tests', () => {
         theme: 'success',
         labelText: 'Success',
       });
-      const indicator = checkbox.shadowRoot?.querySelector('.checkbox-label');
-      expect(indicator?.classList.contains('checkbox-label--success')).toBe(
-        true
-      );
+      const indicator = checkbox.shadowRoot?.querySelector(`.${styles.checkboxLabel}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains('checkbox-label--success')).toBe(true);
     });
 
     it('should render monochrome theme correctly', async () => {
@@ -234,20 +227,19 @@ describe('Checkbox - Comprehensive Tests', () => {
         theme: 'monochrome',
         labelText: 'Mono',
       });
-      const indicator = checkbox.shadowRoot?.querySelector('.checkbox-label');
-      expect(indicator?.classList.contains('checkbox-label--monochrome')).toBe(
-        true
-      );
+      const indicator = checkbox.shadowRoot?.querySelector(`.${styles.checkboxLabel}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains('checkbox-label--monochrome')).toBe(true);
     });
   });
 
   describe('Label Position', () => {
     it('should position label at end by default', async () => {
       const checkbox = await createCheckbox({ labelText: 'Label' });
-      const wrapper = checkbox.shadowRoot?.querySelector('.checkbox-wrapper');
-      expect(wrapper?.classList.contains('checkbox-wrapper--label-start')).toBe(
-        false
-      );
+      // FIX: Use camelCase key mapping to successfully look up the CSS Module token
+      const wrapper = checkbox.shadowRoot?.querySelector(`.${styles.checkboxWrapper}`);
+      expect(wrapper).toBeTruthy();
+      expect(wrapper!.classList.contains('checkbox-wrapper--label-start')).toBe(false);
     });
 
     it('should position label at start when specified', async () => {
@@ -255,10 +247,10 @@ describe('Checkbox - Comprehensive Tests', () => {
         labelText: 'Label',
         labelPosition: 'start',
       });
-      const wrapper = checkbox.shadowRoot?.querySelector('.checkbox-wrapper');
-      expect(wrapper?.classList.contains('checkbox-wrapper--label-start')).toBe(
-        true
-      );
+      // FIX: Use camelCase key mapping to successfully look up the CSS Module token
+      const wrapper = checkbox.shadowRoot?.querySelector(`.${styles.checkboxWrapper}`);
+      expect(wrapper).toBeTruthy();
+      expect(wrapper!.classList.contains('checkbox-wrapper--label-start')).toBe(true);
     });
   });
 
@@ -278,9 +270,8 @@ describe('Checkbox - Comprehensive Tests', () => {
         eventDetail = e.detail;
       }) as EventListener);
 
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await checkbox.updateComplete;
 
@@ -304,13 +295,11 @@ describe('Checkbox - Comprehensive Tests', () => {
         eventDetail = e.detail;
       }) as EventListener);
 
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await checkbox.updateComplete;
 
-      // After clicking indeterminate checkbox, it should be false
       expect(eventDetail.indeterminate).toBe(false);
     });
 
@@ -327,9 +316,8 @@ describe('Checkbox - Comprehensive Tests', () => {
         eventFired = true;
       });
 
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await checkbox.updateComplete;
 
@@ -348,9 +336,8 @@ describe('Checkbox - Comprehensive Tests', () => {
         eventBubbled = true;
       });
 
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await checkbox.updateComplete;
 
@@ -361,7 +348,7 @@ describe('Checkbox - Comprehensive Tests', () => {
   describe('Native Input', () => {
     it('should render native checkbox input', async () => {
       const checkbox = await createCheckbox();
-      const input = checkbox.shadowRoot?.querySelector('input[type="checkbox"]');
+      const input = checkbox.shadowRoot?.querySelector(`input[type="checkbox"].${styles.checkboxInput}`);
       expect(input).toBeTruthy();
     });
 
@@ -371,25 +358,22 @@ describe('Checkbox - Comprehensive Tests', () => {
         name: 'test',
         value: '1',
       });
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.checked).toBe(true);
     });
 
     it('should sync disabled state to native input', async () => {
       const checkbox = await createCheckbox({ disabled: true });
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.disabled).toBe(true);
     });
 
     it('should set name and value attributes', async () => {
       const checkbox = await createCheckbox({ name: 'group1', value: 'option1' });
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.name).toBe('group1');
       expect(input.value).toBe('option1');
     });
@@ -398,9 +382,7 @@ describe('Checkbox - Comprehensive Tests', () => {
   describe('CSS Shadow Parts', () => {
     it('should expose ag-checkbox-wrapper part', async () => {
       const checkbox = await createCheckbox({ labelText: 'Test' });
-      const part = checkbox.shadowRoot?.querySelector(
-        '[part="ag-checkbox-wrapper"]'
-      );
+      const part = checkbox.shadowRoot?.querySelector('[part="ag-checkbox-wrapper"]');
       expect(part).toBeTruthy();
     });
 
@@ -412,9 +394,7 @@ describe('Checkbox - Comprehensive Tests', () => {
 
     it('should expose ag-checkbox-indicator part', async () => {
       const checkbox = await createCheckbox();
-      const part = checkbox.shadowRoot?.querySelector(
-        '[part="ag-checkbox-indicator"]'
-      );
+      const part = checkbox.shadowRoot?.querySelector('[part="ag-checkbox-indicator"]');
       expect(part).toBeTruthy();
     });
 
@@ -436,17 +416,16 @@ describe('Checkbox - Comprehensive Tests', () => {
   describe('Label Rendering', () => {
     it('should render label text when provided', async () => {
       const checkbox = await createCheckbox({ labelText: 'Test Label' });
-      const label = checkbox.shadowRoot?.querySelector('.checkbox-label-copy');
-      expect(label?.textContent).toContain('Test Label');
+      const label = checkbox.shadowRoot?.querySelector(`.${styles.checkboxLabelCopy}`);
+      expect(label).toBeTruthy();
+      expect(label!.textContent).toContain('Test Label');
     });
 
     it('should render label span with slot even when no label text provided', async () => {
       const checkbox = await createCheckbox();
-      const label = checkbox.shadowRoot?.querySelector('.checkbox-label-copy');
-      // Label span is always rendered to support slotted content
+      const label = checkbox.shadowRoot?.querySelector(`.${styles.checkboxLabelCopy}`);
       expect(label).toBeTruthy();
-      // When no labelText prop and no slotted content, it should be empty
-      expect(label?.textContent?.trim()).toBe('');
+      expect(label!.textContent?.trim()).toBe('');
     });
   });
 
@@ -469,9 +448,8 @@ describe('Checkbox - Comprehensive Tests', () => {
         eventFired = true;
       });
 
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       const changeEvent = new Event('change', { bubbles: true });
       input.dispatchEvent(changeEvent);
       await checkbox.updateComplete;
@@ -513,7 +491,7 @@ describe('Checkbox - Comprehensive Tests', () => {
         await checkbox.updateComplete;
         checkbox.formDisabledCallback(false);
         await checkbox.updateComplete;
-        expect(checkbox.disabled).toBe(true); // user's disabled state preserved
+        expect(checkbox.disabled).toBe(true);
       });
 
       it('re-enables a control that was enabled before fieldset disabled it', async () => {
@@ -537,9 +515,8 @@ describe('Checkbox - Comprehensive Tests', () => {
         labelText: 'Toggle',
       });
 
-      const input = checkbox.shadowRoot?.querySelector(
-        'input'
-      ) as HTMLInputElement;
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
 
       expect(checkbox.checked).toBe(false);
 
@@ -552,14 +529,12 @@ describe('Checkbox - Comprehensive Tests', () => {
       expect(checkbox.checked).toBe(false);
     });
   });
-
   describe('Checkmark Animation', () => {
     it('should have checkmark styles defined for ::after pseudo-element', async () => {
       const checkbox = await createCheckbox({ labelText: 'Test' });
-      const indicator = checkbox.shadowRoot?.querySelector('.checkbox-label');
+      const indicator = checkbox.shadowRoot?.querySelector(`.${styles.checkboxLabel}`);
       expect(indicator).toBeTruthy();
 
-      // Verify the CSS includes ::after pseudo-element for checkmark
       const styleContent = Checkbox.styles.toString();
       expect(styleContent).toContain('.checkbox-label::after');
       expect(styleContent).toContain('content');
@@ -578,8 +553,9 @@ describe('Checkbox - Comprehensive Tests', () => {
       const eventSpy = vi.fn();
       checkbox.addEventListener('change', eventSpy);
 
-      const input = checkbox.shadowRoot?.querySelector('input');
-      input?.click();
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
+      input.click();
       await checkbox.updateComplete;
 
       expect(eventSpy).toHaveBeenCalledOnce();
@@ -604,8 +580,9 @@ describe('Checkbox - Comprehensive Tests', () => {
       checkbox.onChange = onChangeSpy;
       await checkbox.updateComplete;
 
-      const input = checkbox.shadowRoot?.querySelector('input');
-      input?.click();
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
+      input.click();
       await checkbox.updateComplete;
 
       expect(onChangeSpy).toHaveBeenCalledOnce();
@@ -624,8 +601,9 @@ describe('Checkbox - Comprehensive Tests', () => {
       checkbox.onClick = onClickSpy;
       await checkbox.updateComplete;
 
-      const input = checkbox.shadowRoot?.querySelector('input');
-      input?.click();
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
+      input.click();
       await checkbox.updateComplete;
 
       expect(onClickSpy).toHaveBeenCalledOnce();
@@ -646,15 +624,14 @@ describe('Checkbox - Comprehensive Tests', () => {
       checkbox.onChange = callbackSpy;
       await checkbox.updateComplete;
 
-      const input = checkbox.shadowRoot?.querySelector('input');
-      input?.click();
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
+      input.click();
       await checkbox.updateComplete;
 
-      // Both should be called
       expect(domEventSpy).toHaveBeenCalledOnce();
       expect(callbackSpy).toHaveBeenCalledOnce();
 
-      // Both should receive the same event data
       const domEvent = domEventSpy.mock.calls[0][0] as CustomEvent;
       const callbackEvent = callbackSpy.mock.calls[0][0];
       expect(domEvent.detail).toEqual(callbackEvent.detail);
@@ -671,8 +648,9 @@ describe('Checkbox - Comprehensive Tests', () => {
 
       expect(checkbox.indeterminate).toBe(true);
 
-      const input = checkbox.shadowRoot?.querySelector('input');
-      input?.click();
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
+      input.click();
       await checkbox.updateComplete;
 
       expect(checkbox.indeterminate).toBe(false);
@@ -693,11 +671,11 @@ describe('Checkbox - Comprehensive Tests', () => {
       checkbox.onChange = onChangeSpy;
       await checkbox.updateComplete;
 
-      const input = checkbox.shadowRoot?.querySelector('input');
-      input?.click();
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
+      input.click();
       await checkbox.updateComplete;
 
-      // Disabled checkboxes don't fire events
       expect(onClickSpy).not.toHaveBeenCalled();
       expect(onChangeSpy).not.toHaveBeenCalled();
     });
@@ -712,8 +690,9 @@ describe('Checkbox - Comprehensive Tests', () => {
       checkbox.addEventListener('change', eventSpy);
       await checkbox.updateComplete;
 
-      const input = checkbox.shadowRoot?.querySelector('input');
-      input?.click();
+      const input = checkbox.shadowRoot?.querySelector(`.${styles.checkboxInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
+      input.click();
       await checkbox.updateComplete;
 
       expect(eventSpy).toHaveBeenCalledOnce();
