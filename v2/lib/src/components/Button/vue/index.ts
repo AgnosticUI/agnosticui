@@ -1,16 +1,15 @@
-// v2/lib/src/components/Button/vue/index.ts
+import type { ButtonProps } from '../core/Button.js';
+
 export { default as VueButton } from './VueButton.vue';
 
-// Define props interface
-export interface VueButtonProps {
-  type?: 'button' | 'submit' | 'reset';
-  disabled?: boolean;
-  loading?: boolean;
-  toggle?: boolean;
-  pressed?: boolean;
-  ariaLabel?: string;
-  ariaDescribedby?: string;
-}
+/**
+ * Vue Button Props
+ * Following AgnosticUI v2 event conventions:
+ * - Omit callback props (Vue uses emits)
+ * - Support v-model:pressed via update:pressed emit
+ */
+export interface VueButtonProps
+  extends Omit<ButtonProps, "onClick" | "onFocus" | "onBlur" | "onToggle"> {}
 
 // Directly reference core to satisfy the TypeScript compiler
 export { _ButtonFallback } from '../core/Button.js';

@@ -1,16 +1,16 @@
 <template>
   <ag-button
     ref="buttonRef"
-    .disabled="disabled"
-    .loading="loading"
-    .toggle="toggle"
-    .pressed="pressed"
-    .bordered="bordered"
-    .ghost="ghost"
-    .link="link"
-    .grouped="grouped"
-    .fullWidth="fullWidth"
-    .ariaLabel="ariaLabel"
+    :disabled.prop="disabled"
+    :loading.prop="loading"
+    :toggle.prop="toggle"
+    :pressed.prop="pressed"
+    :bordered.prop="bordered"
+    :ghost.prop="ghost"
+    :link.prop="link"
+    :grouped.prop="grouped"
+    :fullWidth.prop="fullWidth"
+    :ariaLabel.prop="ariaLabel"
     :type="type"
     :variant="variant"
     :size="size"
@@ -27,18 +27,11 @@
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import type {
-  ButtonProps,
-  ButtonToggleEvent,
-  ButtonToggleEventDetail,
-} from "../core/Button";
-import "../core/Button"; // Registers the ag-button web component
+import type { ButtonToggleEvent, ButtonToggleEventDetail } from "../core/Button.js";
+import "../core/Button.js"; // Registers the ag-button web component
+import type { VueButtonProps } from "./index.js";
 
-// Define props interface (omit function props since wrapper uses emits)
-export interface VueButtonProps
-  extends Omit<ButtonProps, "onClick" | "onFocus" | "onBlur" | "onToggle"> {}
-
-// Define props with defaults
+// FIX: Captured returned defaults definition into active 'props' constant
 const props = withDefaults(defineProps<VueButtonProps>(), {
   type: "button",
   disabled: false,

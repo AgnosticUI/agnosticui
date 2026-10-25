@@ -9,16 +9,16 @@ const props = withDefaults(defineProps<{
   variant?: 'success' | 'primary' | 'secondary' | 'warning' | 'danger' | 'monochrome' | '';
   size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
   shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
-  bordered?: boolean;
-  ghost?: boolean;
-  link?: boolean;
-  grouped?: boolean;
-  fullWidth?: boolean;
+  bordered?: boolean | string;
+  ghost?: boolean | string;
+  link?: boolean | string;
+  grouped?: boolean | string;
+  fullWidth?: boolean | string;
   type?: 'button' | 'submit' | 'reset';
-  disabled?: boolean;
-  loading?: boolean;
-  toggle?: boolean;
-  pressed?: boolean;
+  disabled?: boolean | string;
+  loading?: boolean | string;
+  toggle?: boolean | string;
+  pressed?: boolean | string;
   ariaLabel?: string;
   slotContent?: string;
 }>(), {

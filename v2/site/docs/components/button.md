@@ -260,16 +260,16 @@ export class ButtonExample extends LitElement {
 | `variant`   | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'monochrome' \| ''` | `''`       | Visual color variant                                 |
 | `size`      | `'x-sm' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                               | `'md'`     | Size of the button                                   |
 | `shape`     | `'capsule' \| 'rounded' \| 'circle' \| 'square' \| 'rounded-square' \| ''`             | `''`       | Shape variant                                        |
-| `bordered`  | `boolean`                                                                              | `false`    | Outline style with transparent background            |
-| `ghost`     | `boolean`                                                                              | `false`    | Minimal style with transparent background            |
-| `link`      | `boolean`                                                                              | `false`    | Text link style with underline on hover              |
-| `grouped`   | `boolean`                                                                              | `false`    | Style for buttons in a group (removes inner borders) |
-| `fullWidth` | `boolean`                                                                              | `false`    | Makes button take 100% width of container            |
+| `bordered`  | `boolean \| string`                                                                    | `false`    | Outline style with transparent background            |
+| `ghost`     | `boolean \| string`                                                                    | `false`    | Minimal style with transparent background            |
+| `link`      | `boolean \| string`                                                                    | `false`    | Text link style with underline on hover              |
+| `grouped`   | `boolean \| string`                                                                    | `false`    | Style for buttons in a group (removes inner borders) |
+| `fullWidth` | `boolean \| string`                                                                    | `false`    | Makes button take 100% width of container            |
 | `type`      | `'button' \| 'submit' \| 'reset'`                                                      | `'button'` | HTML button type                                     |
-| `disabled`  | `boolean`                                                                              | `false`    | Disabled state                                       |
-| `loading`   | `boolean`                                                                              | `false`    | Loading/busy state (disables interaction)            |
-| `toggle`    | `boolean`                                                                              | `false`    | Enable toggle button mode                            |
-| `pressed`   | `boolean`                                                                              | `false`    | Pressed state for toggle buttons                     |
+| `disabled`  | `boolean \| string`                                                                    | `false`    | Disabled state                                       |
+| `loading`   | `boolean \| string`                                                                    | `false`    | Loading/busy state (disables interaction)            |
+| `toggle`    | `boolean \| string`                                                                    | `false`    | Enable toggle button mode                            |
+| `pressed`   | `boolean \| string`                                                                    | `false`    | Pressed state for toggle buttons                     |
 | `ariaLabel` | `string`                                                                               | `''`       | Accessible label (use when button has no text)       |
 
 ## Events
@@ -277,7 +277,7 @@ export class ButtonExample extends LitElement {
 | Event    | Framework                                             | Detail                 | Description                                                                      |
 | -------- | ----------------------------------------------------- | ---------------------- | -------------------------------------------------------------------------------- |
 | `click`  | Vue: `@click`<br>React: `onClick`<br>Lit: `@click`    | `MouseEvent`           | Fired when the button is clicked.                                                |
-| `focus`  | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus`    | `FocusEvent`           | Fired when the button receives focus.                                            |
+| `focus`  | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus`    | `FocusEvent`           | Fired when the button receives focus.                                                |
 | `blur`   | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur`       | `FocusEvent`           | Fired when the button loses focus.                                               |
 | `toggle` | Vue: `@toggle`<br>React: `onToggle`<br>Lit: `@toggle` | `{ pressed: boolean }` | Emitted when a toggle button is clicked (only when the `toggle` prop is `true`). |
 
