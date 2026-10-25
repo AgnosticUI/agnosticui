@@ -2,17 +2,11 @@
 
 <AlphaWarning />
 
-
 Radio button allows a user to select a single option from a set of mutually exclusive choices. It's ideal for forms where only one selection is permitted.
 
 ## Examples
 
-<FrameworkExample
-  component="radio"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
+<FrameworkExample component="radio" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode">
   <template #vue>
     <RadioExamples />
   </template>
@@ -21,9 +15,48 @@ Radio button allows a user to select a single option from a set of mutually excl
   </template>
 </FrameworkExample>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes an **Isomorphic Architecture** to support server-first workflows (e.g. TanStack Start, Remix, Nuxt). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+### Standard Fallback Layout
+
+<RadioFallbackPreview 
+  labelText="Yes, proceed with structural migration" 
+  name="ssr-example-group"
+  checked
+/>
+
+<RadioFallbackPreview 
+  labelText="No, halt compilation workflows" 
+  name="ssr-example-group"
+/>
+
+### Small Configuration with External Context Label
+
+<RadioFallbackPreview 
+  label="System Overrides"
+  labelText="Enable experimental HMR streaming flags" 
+  name="ssr-settings"
+  size="small"
+  required
+  helpText="Activating this setting changes local server timing targets."
+/>
+
+### Invalid Validation Error State
+
+<RadioFallbackPreview 
+  label="Subscription Plan Selection"
+  labelText="Premium Developer Account Tier" 
+  name="ssr-billing"
+  invalid
+  errorMessage="Please confirm your selection tier to finalize checkout options."
+/>
+
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import RadioExamples from '../examples/RadioExamples.vue'
+import RadioFallbackPreview from '../examples/RadioFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/RadioLitExamples.js'
 import vueCode from '../examples/RadioExamples.vue?raw'
@@ -35,34 +68,24 @@ import reactCode from '../examples/RadioReactExamples.jsx?raw'
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add Radio
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
     <VueFieldset legend="Choose your plan">
-      <VueRadio
-        name="plan"
-        value="free"
-        label-text="Free Plan"
-      />
-      <VueRadio
-        name="plan"
-        value="pro"
-        label-text="Pro Plan"
-        :checked="true"
-      />
-      <VueRadio
-        name="plan"
-        value="enterprise"
-        label-text="Enterprise Plan"
-      />
+      <VueRadio name="plan" value="free" label-text="Free Plan" />
+      <VueRadio name="plan" value="pro" label-text="Pro Plan" :checked="true" />
+      <VueRadio name="plan" value="enterprise" label-text="Enterprise Plan" />
     </VueFieldset>
 
     <VueFieldset legend="Select framework">
@@ -89,59 +112,44 @@ The CLI copies source code directly into your project, giving you full visibilit
 
     <VueFieldset legend="Gender">
       <div style="display: flex; gap: 1.5rem;">
-        <VueRadio
-          name="gender"
-          value="male"
-          label-text="Male"
-        />
+        <VueRadio name="gender" value="male" label-text="Male" />
         <VueRadio
           name="gender"
           value="female"
           label-text="Female"
           :checked="true"
         />
-        <VueRadio
-          name="gender"
-          value="other"
-          label-text="Other"
-        />
+        <VueRadio name="gender" value="other" label-text="Other" />
       </div>
     </VueFieldset>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { VueRadio } from 'agnosticui-core/radio/vue';
-import { VueFieldset } from 'agnosticui-core/fieldset/vue';
+import { defineComponent } from "vue";
+import { VueRadio } from "agnosticui-core/radio/vue";
+import { VueFieldset } from "agnosticui-core/fieldset/vue";
 
 export default defineComponent({
-  components: { VueRadio, VueFieldset }
+  components: { VueRadio, VueFieldset },
 });
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
-import { ReactRadio } from 'agnosticui-core/radio/react';
-import { ReactFieldset } from 'agnosticui-core/fieldset/react';
+import { ReactRadio } from "agnosticui-core/radio/react";
+import { ReactFieldset } from "agnosticui-core/fieldset/react";
 
 export default function Example() {
   return (
     <section>
       <ReactFieldset legend="Choose your plan">
-        <ReactRadio
-          name="plan"
-          value="free"
-          labelText="Free Plan"
-        />
-        <ReactRadio
-          name="plan"
-          value="pro"
-          labelText="Pro Plan"
-          checked
-        />
+        <ReactRadio name="plan" value="free" labelText="Free Plan" />
+        <ReactRadio name="plan" value="pro" labelText="Pro Plan" checked />
         <ReactRadio
           name="plan"
           value="enterprise"
@@ -172,51 +180,31 @@ export default function Example() {
       </ReactFieldset>
 
       <ReactFieldset legend="Gender">
-        <div style={{ display: 'flex', gap: '1.5rem' }}>
-          <ReactRadio
-            name="gender"
-            value="male"
-            labelText="Male"
-          />
-          <ReactRadio
-            name="gender"
-            value="female"
-            labelText="Female"
-            checked
-          />
-          <ReactRadio
-            name="gender"
-            value="other"
-            labelText="Other"
-          />
+        <div style={{ display: "flex", gap: "1.5rem" }}>
+          <ReactRadio name="gender" value="male" labelText="Male" />
+          <ReactRadio name="gender" value="female" labelText="Female" checked />
+          <ReactRadio name="gender" value="other" labelText="Other" />
         </div>
       </ReactFieldset>
     </section>
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
-  import 'agnosticui-core/radio';
-  import 'agnosticui-core/fieldset';
+  import "agnosticui-core/radio";
+  import "agnosticui-core/fieldset";
 </script>
 
 <section>
   <ag-fieldset legend="Choose your plan">
-    <ag-radio
-      name="plan"
-      value="free"
-      label-text="Free Plan"
-    ></ag-radio>
-    <ag-radio
-      name="plan"
-      value="pro"
-      label-text="Pro Plan"
-      checked
-    ></ag-radio>
+    <ag-radio name="plan" value="free" label-text="Free Plan"></ag-radio>
+    <ag-radio name="plan" value="pro" label-text="Pro Plan" checked></ag-radio>
     <ag-radio
       name="plan"
       value="enterprise"
@@ -248,26 +236,19 @@ export default function Example() {
 
   <ag-fieldset legend="Gender">
     <div style="display: flex; gap: 1.5rem;">
-      <ag-radio
-        name="gender"
-        value="male"
-        label-text="Male"
-      ></ag-radio>
+      <ag-radio name="gender" value="male" label-text="Male"></ag-radio>
       <ag-radio
         name="gender"
         value="female"
         label-text="Female"
         checked
       ></ag-radio>
-      <ag-radio
-        name="gender"
-        value="other"
-        label-text="Other"
-      ></ag-radio>
+      <ag-radio name="gender" value="other" label-text="Other"></ag-radio>
     </div>
   </ag-fieldset>
 </section>
 ```
+
 :::
 
 ## Label Position
@@ -292,6 +273,7 @@ The `labelPosition` prop controls where the internal label text appears relative
 ## External Label Support
 
 Radio buttons now support optional external labels, helper text, and error messages using the shared form control utilities. This is useful for:
+
 - Radio groups that need a descriptive label above them
 - Standalone radios that require validation feedback
 - Forms where consistent label/helper/error patterns are needed
@@ -347,11 +329,7 @@ Radio buttons now support optional external labels, helper text, and error messa
       help-text="Choose how you'd like to be notified"
       :checked="true"
     />
-    <VueRadio
-      name="notifications"
-      value="sms"
-      label-text="SMS notifications"
-    />
+    <VueRadio name="notifications" value="sms" label-text="SMS notifications" />
     <VueRadio
       name="notifications"
       value="push"
@@ -365,29 +343,29 @@ Radio buttons now support optional external labels, helper text, and error messa
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `name` | `string` | `''` | Name attribute for the radio input (required for grouping - all radios with the same name are mutually exclusive) |
-| `value` | `string` | `''` | Value of the radio input |
-| `checked` | `boolean` | `false` | Whether the radio is checked |
-| `disabled` | `boolean` | `false` | Whether the radio is disabled |
-| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Size of the radio button |
-| `theme` | `'default' \| 'primary' \| 'success' \| 'monochrome'` | `'primary'` | Color theme variant (default=blue alias to primary, primary=blue, success=green, monochrome=black/white) |
-| `labelText` | `string` | `''` | Label text for the radio button (internal label that wraps the radio) |
-| `labelPosition` | `'end' \| 'start'` | `'end'` | Position of labelText relative to radio button (`end` = after radio, `start` = before radio) |
-| `label` | `string` | `''` | Optional external label displayed above the radio (useful for groups or standalone with context) |
-| `labelHidden` | `boolean` | `false` | Visually hides the external label while keeping it accessible to screen readers |
-| `noLabel` | `boolean` | `false` | Completely removes the external label element |
-| `required` | `boolean` | `false` | Marks the radio as required. Displays an asterisk (*) after the external label |
-| `invalid` | `boolean` | `false` | Marks the radio as invalid. Sets aria-invalid and can display error message |
-| `errorMessage` | `string` | `''` | Error message displayed when invalid. Linked via aria-describedby |
-| `helpText` | `string` | `''` | Helper text displayed below the radio. Linked via aria-describedby |
+| Prop            | Type                                                  | Default     | Description                                                                                                       |
+| --------------- | ----------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------- |
+| `name`          | `string`                                              | `''`        | Name attribute for the radio input (required for grouping - all radios with the same name are mutually exclusive) |
+| `value`         | `string`                                              | `''`        | Value of the radio input                                                                                          |
+| `checked`       | `boolean`                                             | `false`     | Whether the radio is checked                                                                                      |
+| `disabled`      | `boolean`                                             | `false`     | Whether the radio is disabled                                                                                     |
+| `size`          | `'small' \| 'medium' \| 'large'`                      | `'medium'`  | Size of the radio button                                                                                          |
+| `theme`         | `'default' \| 'primary' \| 'success' \| 'monochrome'` | `'primary'` | Color theme variant (default=blue alias to primary, primary=blue, success=green, monochrome=black/white)          |
+| `labelText`     | `string`                                              | `''`        | Label text for the radio button (internal label that wraps the radio)                                             |
+| `labelPosition` | `'end' \| 'start'`                                    | `'end'`     | Position of labelText relative to radio button (`end` = after radio, `start` = before radio)                      |
+| `label`         | `string`                                              | `''`        | Optional external label displayed above the radio (useful for groups or standalone with context)                  |
+| `labelHidden`   | `boolean`                                             | `false`     | Visually hides the external label while keeping it accessible to screen readers                                   |
+| `noLabel`       | `boolean`                                             | `false`     | Completely removes the external label element                                                                     |
+| `required`      | `boolean`                                             | `false`     | Marks the radio as required. Displays an asterisk (\*) after the external label                                   |
+| `invalid`       | `boolean`                                             | `false`     | Marks the radio as invalid. Sets aria-invalid and can display error message                                       |
+| `errorMessage`  | `string`                                              | `''`        | Error message displayed when invalid. Linked via aria-describedby                                                 |
+| `helpText`      | `string`                                              | `''`        | Helper text displayed below the radio. Linked via aria-describedby                                                |
 
 ## Events
 
-| Event    | Framework                                             | Detail                                                    | Description                                                                   |
-| -------- | ----------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `click`  | Vue: `@click`<br>React: `onClick`<br>Lit: `@click`    | `MouseEvent`                                              | Fired when the radio is clicked.                                              |
+| Event    | Framework                                             | Detail                                              | Description                                                                   |
+| -------- | ----------------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `click`  | Vue: `@click`<br>React: `onClick`<br>Lit: `@click`    | `MouseEvent`                                        | Fired when the radio is clicked.                                              |
 | `change` | Vue: `@change`<br>React: `onChange`<br>Lit: `@change` | `{ checked: boolean, value: string, name: string }` | Fired when radio selection changes. Contains the checked state and form data. |
 
 **Note:** The Radio component supports **dual-dispatch event propagation**: it dispatches both DOM CustomEvents (usable with `addEventListener`) and invokes callback props (`.onChange`), giving you flexibility in how you handle events.
@@ -395,6 +373,7 @@ Radio buttons now support optional external labels, helper text, and error messa
 ### Event Usage Examples
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -403,13 +382,6 @@ Radio buttons now support optional external labels, helper text, and error messa
       value="red"
       label-text="Red"
       @change="handleChange"
-    />
-
-    <VueRadio
-      name="color"
-      value="blue"
-      label-text="Blue"
-      v-model:checked="selectedColor"
     />
 
     <VueRadio
@@ -428,23 +400,23 @@ Radio buttons now support optional external labels, helper text, and error messa
         :value="option.value"
         :label-text="option.label"
         :checked="selectedOption === option.value"
-        @change="(detail) => selectedOption = detail.value"
+        @change="(detail) => (selectedOption = detail.value)"
       />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { VueRadio } from 'agnosticui-core/radio/vue';
+import { ref } from "vue";
+import { VueRadio } from "agnosticui-core/radio/vue";
 
-const selectedColor = ref('blue');
-const selectedOption = ref('option1');
+const selectedColor = ref("blue");
+const selectedOption = ref("option1");
 
 const options = [
-  { value: 'option1', label: 'Option 1' },
-  { value: 'option2', label: 'Option 2' },
-  { value: 'option3', label: 'Option 3' },
+  { value: "option1", label: "Option 1" },
+  { value: "option2", label: "Option 2" },
+  { value: "option3", label: "Option 3" },
 ];
 
 const handleChange = (detail) => {
@@ -456,9 +428,11 @@ const handleColorChange = (detail) => {
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
 import { useState } from "react";
 import { ReactRadio } from "agnosticui-core/radio/react";
@@ -512,12 +486,15 @@ export default function Example() {
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
   import "agnosticui-core/radio";
+  import "agnosticui-core/fieldset";
 
   const radio1 = document.querySelector("#radio1");
   radio1.addEventListener("change", (e) => {
@@ -545,8 +522,8 @@ export default function Example() {
     console.log("Click callback:", e);
   };
 
-  const radios = document.querySelectorAll("ag-radio[name=\"group\"]");
-  radios.forEach(radio => {
+  const radios = document.querySelectorAll('ag-radio[name="group"]');
+  radios.forEach((radio) => {
     radio.addEventListener("change", (e) => {
       console.log("Selected:", e.detail.value);
     });
@@ -581,6 +558,7 @@ export default function Example() {
     value="4"
     label-text="With click handlers"
   ></ag-radio>
+
   <div style="display: flex; flex-direction: column; gap: 0.5rem;">
     <ag-radio name="group" value="a" label-text="Option A"></ag-radio>
     <ag-radio name="group" value="b" label-text="Option B"></ag-radio>
@@ -588,6 +566,7 @@ export default function Example() {
   </div>
 </section>
 ```
+
 :::
 
 **Type:**
@@ -606,12 +585,12 @@ export interface RadioChangeEventDetail {
 
 Shadow Parts allow you to style internal elements of the radio from outside the shadow DOM using the `::part()` CSS selector.
 
-| Part | Description |
-|------|-------------|
-| `ag-radio-wrapper` | The outer wrapper label element |
-| `ag-radio-input` | The native radio input element (visually hidden) |
-| `ag-radio-indicator` | The custom visual radio indicator (circle) |
-| `ag-radio-label` | The label text span |
+| Part                 | Description                                      |
+| -------------------- | ------------------------------------------------ |
+| `ag-radio-wrapper`   | The outer wrapper label element                  |
+| `ag-radio-input`     | The native radio input element (visually hidden) |
+| `ag-radio-indicator` | The custom visual radio indicator (circle)       |
+| `ag-radio-label`     | The label text span                              |
 
 ### Customization Examples
 
@@ -624,7 +603,7 @@ ag-radio::part(ag-radio-indicator) {
 ag-radio::part(ag-radio-wrapper) {
   padding: 0.5rem;
   background: #6366f1;
-  border-radius: #6366f1;
+  border-radius: 4px;
 }
 
 ag-radio::part(ag-radio-label) {

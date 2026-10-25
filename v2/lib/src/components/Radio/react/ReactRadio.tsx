@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { Radio, type RadioProps, type RadioChangeEvent } from '../core/Radio';
+import { AgRadio, type RadioProps, type RadioChangeEvent } from '../core/_Radio.js';
 
 /**
  * React-specific props interface derived from core RadioProps
@@ -17,7 +17,7 @@ export interface ReactRadioProps extends RadioProps {
 // Create component with @lit/react
 export const ReactRadio = createComponent({
   tagName: 'ag-radio',
-  elementClass: Radio,
+  elementClass: AgRadio,
   react: React,
   events: {
     onChange: 'change' as EventName<RadioChangeEvent>,
@@ -25,4 +25,4 @@ export const ReactRadio = createComponent({
 });
 
 // Re-export types
-export type { RadioChangeEvent, RadioChangeEventDetail, RadioSize, RadioTheme } from '../core/Radio';
+export type { RadioChangeEvent, RadioChangeEventDetail, RadioSize, RadioTheme } from '../core/_Radio.js';

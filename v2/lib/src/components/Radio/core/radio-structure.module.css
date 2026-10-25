@@ -1,0 +1,76 @@
+/* Core flex wrap alignment grid geometries */
+.radioWrapperWithExternal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ag-spacing-xs, 4px);
+}
+
+.radioWrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  gap: var(--ag-spacing-sm, 8px);
+  line-height: var(--ag-line-height-normal, 1.5);
+}
+
+.radioWrapperLabelStart {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+/* Functional alignment and hit target structures */
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  cursor: inherit;
+  z-index: 1;
+}
+
+.radioIndicator {
+  display: inline-block;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  border-radius: var(--ag-radius-full, 50%);
+  position: relative;
+}
+
+.radioLabel {
+  display: inline-block;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Precise layout dimensions mapping clean hashes */
+.radioIndicatorSmall {
+  width: 14px;
+  height: 14px;
+}
+
+.radioIndicatorMedium {
+  width: 18px;
+  height: 18px;
+}
+
+.radioIndicatorLarge {
+  width: 22px;
+  height: 22px;
+}
+
+.radioLabelSmall {
+  font-size: var(--ag-font-size-sm, 12px);
+}
+
+.radioLabelMedium {
+  font-size: var(--ag-font-size-base, 14px);
+}
+
+.radioLabelLarge {
+  font-size: var(--ag-font-size-lg, 16px);
+}

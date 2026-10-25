@@ -24,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import type { RadioSize, RadioTheme } from "../core/Radio";
-import "../core/Radio";
+import type { RadioSize, RadioTheme } from "../core/Radio.js";
+import "../core/Radio.js";
 
 export interface VueRadioProps {
   name?: string;

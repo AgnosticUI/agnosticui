@@ -1,10 +1,12 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { AgRadio } from './Radio';
+import { AgRadio } from './_Radio.js';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import styles from './radio-structure.module.css';
+import './Radio.js'
 
 expect.extend(toHaveNoViolations);
 
-describe('Radio - Comprehensive Tests', () => {
+describe('Radio - Comprehensive Tests (Part 1)', () => {
   let container: HTMLElement;
 
   beforeEach(() => {
@@ -42,7 +44,8 @@ describe('Radio - Comprehensive Tests', () => {
         checked: true,
         labelText: 'Option 1',
       });
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.getAttribute('aria-checked')).toBe('true');
     });
 
@@ -53,7 +56,8 @@ describe('Radio - Comprehensive Tests', () => {
         checked: false,
         labelText: 'Option 1',
       });
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.getAttribute('aria-checked')).toBe('false');
     });
   });
@@ -107,62 +111,94 @@ describe('Radio - Comprehensive Tests', () => {
   describe('Size Variants', () => {
     it('should render small size correctly', async () => {
       const radio = await createRadio({ size: 'small', labelText: 'Small' });
-      const indicator = radio.shadowRoot?.querySelector('.radio-indicator');
-      expect(indicator?.classList.contains('radio-indicator--small')).toBe(true);
+      const indicator = radio.shadowRoot?.querySelector(`.${styles.radioIndicator}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains(styles.radioIndicatorSmall)).toBe(true);
     });
 
     it('should render medium size correctly', async () => {
       const radio = await createRadio({ size: 'medium', labelText: 'Medium' });
-      const indicator = radio.shadowRoot?.querySelector('.radio-indicator');
-      expect(indicator?.classList.contains('radio-indicator--medium')).toBe(true);
+      const indicator = radio.shadowRoot?.querySelector(`.${styles.radioIndicator}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains(styles.radioIndicatorMedium)).toBe(true);
     });
 
     it('should render large size correctly', async () => {
       const radio = await createRadio({ size: 'large', labelText: 'Large' });
-      const indicator = radio.shadowRoot?.querySelector('.radio-indicator');
-      expect(indicator?.classList.contains('radio-indicator--large')).toBe(true);
+      const indicator = radio.shadowRoot?.querySelector(`.${styles.radioIndicator}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains(styles.radioIndicatorLarge)).toBe(true);
     });
   });
 
   describe('Theme Variants', () => {
     it('should render default theme correctly', async () => {
       const radio = await createRadio({ theme: 'default', labelText: 'Default' });
-      const indicator = radio.shadowRoot?.querySelector('.radio-indicator');
-      expect(indicator?.classList.contains('radio-indicator--default')).toBe(true);
+      const indicator = radio.shadowRoot?.querySelector(`.${styles.radioIndicator}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains('radio-indicator--default')).toBe(true);
     });
 
     it('should render primary theme correctly', async () => {
       const radio = await createRadio({ theme: 'primary', labelText: 'Primary' });
-      const indicator = radio.shadowRoot?.querySelector('.radio-indicator');
-      expect(indicator?.classList.contains('radio-indicator--primary')).toBe(true);
+      const indicator = radio.shadowRoot?.querySelector(`.${styles.radioIndicator}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains('radio-indicator--primary')).toBe(true);
     });
 
     it('should render success theme correctly', async () => {
       const radio = await createRadio({ theme: 'success', labelText: 'Success' });
-      const indicator = radio.shadowRoot?.querySelector('.radio-indicator');
-      expect(indicator?.classList.contains('radio-indicator--success')).toBe(true);
+      const indicator = radio.shadowRoot?.querySelector(`.${styles.radioIndicator}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains('radio-indicator--success')).toBe(true);
     });
 
     it('should render monochrome theme correctly', async () => {
       const radio = await createRadio({ theme: 'monochrome', labelText: 'Mono' });
-      const indicator = radio.shadowRoot?.querySelector('.radio-indicator');
-      expect(indicator?.classList.contains('radio-indicator--monochrome')).toBe(true);
+      const indicator = radio.shadowRoot?.querySelector(`.${styles.radioIndicator}`);
+      expect(indicator).toBeTruthy();
+      expect(indicator!.classList.contains('radio-indicator--monochrome')).toBe(true);
     });
   });
 
   describe('Label Position', () => {
     it('should position label at end by default', async () => {
       const radio = await createRadio({ labelText: 'Label' });
-      const wrapper = radio.shadowRoot?.querySelector('.radio-wrapper');
-      expect(wrapper?.classList.contains('radio-wrapper--label-start')).toBe(false);
+      const wrapper = radio.shadowRoot?.querySelector(`.${styles.radioWrapper}`);
+      expect(wrapper).toBeTruthy();
+      expect(wrapper!.classList.contains(styles.radioWrapperLabelStart)).toBe(false);
     });
 
     it('should position label at start when specified', async () => {
       const radio = await createRadio({ labelText: 'Label', labelPosition: 'start' });
-      const wrapper = radio.shadowRoot?.querySelector('.radio-wrapper');
-      expect(wrapper?.classList.contains('radio-wrapper--label-start')).toBe(true);
+      const wrapper = radio.shadowRoot?.querySelector(`.${styles.radioWrapper}`);
+      expect(wrapper).toBeTruthy();
+      expect(wrapper!.classList.contains(styles.radioWrapperLabelStart)).toBe(true);
     });
   });
+});
+
+
+describe('Radio - Comprehensive Tests (Part 2)', () => {
+  let container: HTMLElement;
+
+  beforeEach(() => {
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(() => {
+    container.innerHTML = '';
+  });
+
+  const createRadio = async (props: Partial<AgRadio> = {}) => {
+    // Force instantiation through the custom element registry to prevent Illegal Constructor exceptions
+    const radio = document.createElement('ag-radio') as AgRadio;
+    Object.assign(radio, props);
+    container.appendChild(radio);
+    await radio.updateComplete;
+    return radio;
+  };
 
   describe('Events', () => {
     it('should emit change event when changed (addEventListener pattern)', async () => {
@@ -180,7 +216,8 @@ describe('Radio - Comprehensive Tests', () => {
         eventDetail = e.detail;
       }) as EventListener);
 
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await radio.updateComplete;
 
@@ -205,7 +242,8 @@ describe('Radio - Comprehensive Tests', () => {
         callbackDetail = e.detail;
       };
 
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await radio.updateComplete;
 
@@ -233,7 +271,8 @@ describe('Radio - Comprehensive Tests', () => {
         callbackFired = true;
       };
 
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await radio.updateComplete;
 
@@ -254,7 +293,8 @@ describe('Radio - Comprehensive Tests', () => {
         clickFired = true;
       };
 
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await radio.updateComplete;
 
@@ -274,7 +314,8 @@ describe('Radio - Comprehensive Tests', () => {
         eventFired = true;
       });
 
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await radio.updateComplete;
 
@@ -293,7 +334,8 @@ describe('Radio - Comprehensive Tests', () => {
         eventBubbled = true;
       });
 
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await radio.updateComplete;
 
@@ -313,7 +355,8 @@ describe('Radio - Comprehensive Tests', () => {
         composedValue = e.composed;
       }) as EventListener);
 
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       input.click();
       await radio.updateComplete;
 
@@ -324,25 +367,28 @@ describe('Radio - Comprehensive Tests', () => {
   describe('Native Input', () => {
     it('should render native radio input', async () => {
       const radio = await createRadio();
-      const input = radio.shadowRoot?.querySelector('input[type="radio"]');
+      const input = radio.shadowRoot?.querySelector(`input[type="radio"].${styles.radioInput}`);
       expect(input).toBeTruthy();
     });
 
     it('should sync checked state to native input', async () => {
       const radio = await createRadio({ checked: true, name: 'test', value: '1' });
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.checked).toBe(true);
     });
 
     it('should sync disabled state to native input', async () => {
       const radio = await createRadio({ disabled: true });
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.disabled).toBe(true);
     });
 
     it('should set name and value attributes', async () => {
       const radio = await createRadio({ name: 'group1', value: 'option1' });
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       expect(input.name).toBe('group1');
       expect(input.value).toBe('option1');
     });
@@ -385,17 +431,16 @@ describe('Radio - Comprehensive Tests', () => {
   describe('Label Rendering', () => {
     it('should render label text when provided', async () => {
       const radio = await createRadio({ labelText: 'Test Label' });
-      const label = radio.shadowRoot?.querySelector('.radio-label');
-      expect(label?.textContent).toContain('Test Label');
+      const label = radio.shadowRoot?.querySelector(`.${styles.radioLabel}`);
+      expect(label).toBeTruthy();
+      expect(label!.textContent).toContain('Test Label');
     });
 
     it('should render label span with slot even when no label text provided', async () => {
       const radio = await createRadio();
-      const label = radio.shadowRoot?.querySelector('.radio-label');
-      // Label span is always rendered to support slotted content
+      const label = radio.shadowRoot?.querySelector(`.${styles.radioLabel}`);
       expect(label).toBeTruthy();
-      // When no labelText prop and no slotted content, it should be empty
-      expect(label?.textContent?.trim()).toBe('');
+      expect(label!.textContent?.trim()).toBe('');
     });
   });
 
@@ -414,11 +459,12 @@ describe('Radio - Comprehensive Tests', () => {
       });
 
       let eventFired = false;
-      radio.addEventListener('ag-change', () => {
+      radio.addEventListener('change', () => {
         eventFired = true;
       });
 
-      const input = radio.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input = radio.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input).toBeTruthy();
       const changeEvent = new Event('change', { bubbles: true });
       input.dispatchEvent(changeEvent);
       await radio.updateComplete;
@@ -432,9 +478,11 @@ describe('Radio - Comprehensive Tests', () => {
       const radio1 = await createRadio({ name: 'group', value: '1', labelText: '1' });
       const radio2 = await createRadio({ name: 'group', value: '2', labelText: '2' });
 
-      const input1 = radio1.shadowRoot?.querySelector('input') as HTMLInputElement;
-      const input2 = radio2.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input1 = radio1.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      const input2 = radio2.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
 
+      expect(input1).toBeTruthy();
+      expect(input2).toBeTruthy();
       expect(input1.name).toBe('group');
       expect(input2.name).toBe('group');
     });
@@ -462,20 +510,17 @@ describe('Radio - Comprehensive Tests', () => {
       const radio2 = await createRadio({ name: 'grp', value: 'b', required: true, labelText: 'B' });
       const radio3 = await createRadio({ name: 'grp', value: 'c', required: true, labelText: 'C' });
 
-      // Initially all unchecked and invalid
       expect(radio1.validity.valid).toBe(false);
       expect(radio2.validity.valid).toBe(false);
       expect(radio3.validity.valid).toBe(false);
 
-      // User clicks radio2's inner input
-      const input2 = radio2.shadowRoot?.querySelector('input') as HTMLInputElement;
+      const input2 = radio2.shadowRoot?.querySelector(`.${styles.radioInput}`) as HTMLInputElement;
+      expect(input2).toBeTruthy();
       input2.click();
       await radio2.updateComplete;
-      // uncheckOtherRadiosInGroup also force-syncs siblings
       await radio1.updateComplete;
       await radio3.updateComplete;
 
-      // radio2 is now checked — all three should be valid
       expect(radio2.validity.valid).toBe(true);
       expect(radio1.validity.valid).toBe(true);
       expect(radio3.validity.valid).toBe(true);

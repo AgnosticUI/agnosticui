@@ -11,3 +11,4 @@ declare global {
 }
 
 export * from './_Radio.js';
+export { _RadioFallback } from './_RadioFallback.js';
