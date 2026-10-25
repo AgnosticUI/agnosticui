@@ -128,43 +128,43 @@ bun add agnosticui-core
 
 ### Props
 
-| Prop            | Type                                    | Default     | Description                                                                                                                |
-| --------------- | --------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `size`          | `'small' \| 'large' \| ''`              | `''`        | Size variant of the select                                                                                                 |
-| `multiple`      | `boolean`                               | `false`     | Enable multiple selection                                                                                                  |
-| `disabled`      | `boolean`                               | `false`     | Disable the select                                                                                                         |
-| `name`          | `string`                                | `''`        | Form name attribute                                                                                                        |
-| `multipleSize`  | `number`                                | `undefined` | Number of visible options for multiple select                                                                              |
-| `label`         | `string`                                | `''`        | External label text                                                                                                        |
-| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'`     | Position of the label relative to select. **Note:** `'bottom'` is not recommended as the dropdown menu may cover the label |
-| `labelHidden`   | `boolean`                               | `false`     | Visually hides the label (still accessible to screen readers)                                                              |
-| `noLabel`       | `boolean`                               | `false`     | Removes the label element entirely                                                                                         |
-| `required`      | `boolean`                               | `false`     | Marks the select as required (adds asterisk to label)                                                                      |
-| `invalid`       | `boolean`                               | `false`     | Marks the select as invalid (shows error state)                                                                            |
-| `errorMessage`  | `string`                                | `''`        | Error message displayed when `invalid` is true                                                                             |
-| `helpText`      | `string`                                | `''`        | Helper text displayed below the select                                                                                     |
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `size` | `'small' \| 'large' \| ''` | `''` | Size variant of the select |
+| `multiple` | `boolean \| string` | `false` | Enable multiple selection (Accepts string conditions for loose SSR ingestion) |
+| `disabled` | `boolean \| string` | `false` | Disable the select (Accepts string conditions for loose SSR ingestion) |
+| `name` | `string` | `''` | Form name attribute |
+| `multipleSize` | `number` | `undefined` | Number of visible options for multiple select |
+| `label` | `string` | `''` | External label text |
+| `labelPosition` | `'top' \| 'start' \| 'end' \| 'bottom'` | `'top'` | Position of the label relative to select. **Note:** `'bottom'` is not recommended as the dropdown menu may cover the label |
+| `labelHidden` | `boolean \| string` | `false` | Visually hides the label (Accepts string conditions for loose SSR ingestion) |
+| `noLabel` | `boolean \| string` | `false` | Removes the label element entirely (Accepts string conditions for loose SSR ingestion) |
+| `required` | `boolean \| string` | `false` | Marks the select as required (Adds asterisk to label; accepts string conditions for loose SSR ingestion) |
+| `invalid` | `boolean \| string` | `false` | Marks the select as invalid (Shows error state; accepts string conditions for loose SSR ingestion) |
+| `errorMessage` | `string` | `''` | Error message displayed when `invalid` is true |
+| `helpText` | `string` | `''` | Helper text displayed below the select |
 
 ### Events
 
 The Select component supports both custom and native events following the AgnosticUI v2 event conventions.
 
-| Event    | Framework                                             | Detail                          | Description                                                                  |
-| -------- | ----------------------------------------------------- | ------------------------------- | ---------------------------------------------------------------------------- |
+| Event | Framework | Detail | Description |
+| :--- | :--- | :--- | :--- |
 | `change` | Vue: `@change`<br>React: `onChange`<br>Lit: `@change` | `{ value: string \| string[] }` | Fired when the selected value changes. **Custom event** with detail payload. |
-| `focus`  | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus`    | `FocusEvent`                    | Fired when select receives focus. **Native event**, re-dispatched from host. |
-| `blur`   | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur`       | `FocusEvent`                    | Fired when select loses focus. **Native event**, re-dispatched from host.    |
-| `click`  | Vue: `@click`<br>React: `onClick`<br>Lit: `@click`    | `MouseEvent`                    | Fired when select is clicked. **Native event**.                              |
+| `focus` | Vue: `@focus`<br>React: `onFocus`<br>Lit: `@focus` | `FocusEvent` | Fired when select receives focus. **Native event**, re-dispatched from host. |
+| `blur` | Vue: `@blur`<br>React: `onBlur`<br>Lit: `@blur` | `FocusEvent` | Fired when select loses focus. **Native event**, re-dispatched from host. |
+| `click` | Vue: `@click`<br>React: `onClick`<br>Lit: `@click` | `MouseEvent` | Fired when select is clicked. **Native event**. |
 
 ### Slots
 
-| Slot    | Description     |
-| ------- | --------------- |
+| Slot | Description |
+| :--- | :--- |
 | default | Option elements |
 
 ### CSS Shadow Parts
 
-| Part        | Description               |
-| ----------- | ------------------------- |
+| Part | Description |
+| :--- | :--- |
 | `ag-select` | The select element itself |
 
 ## Accessibility

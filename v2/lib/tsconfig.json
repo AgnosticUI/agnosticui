@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "ESNext",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "moduleResolution": "Node",
+    "rootDir": "./src",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "strict": true,
@@ -20,6 +25,13 @@
     "useDefineForClassFields": false,
     "skipLibCheck": true
   },
-  "include": ["src", "src/types/**/*"],
-  "exclude": ["dist", "**/*.spec.ts"]
+  "include": [
+    "src",
+    "src/types/**/*",
+    "src/types/css.d.ts"
+  ],
+  "exclude": [
+    "dist",
+    "**/*.spec.ts"
+  ]
 }

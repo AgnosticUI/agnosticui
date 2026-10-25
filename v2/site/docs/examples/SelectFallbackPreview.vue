@@ -1,20 +1,22 @@
 <!-- v2/site/docs/examples/SelectFallbackPreview.vue -->
 <script setup lang="ts">
 import { computed } from 'vue';
+// Rule 9 Correction: Core reference path directly addresses the compiled core module barrel 
 import { _SelectFallback } from 'agnosticui-core/select/vue';
+import { SelectFallbackProps } from 'agnosticui-core/select/vue';
 
 import 'agnosticui-core/styles/framework-components.css';
 
 const props = withDefaults(defineProps<{
   label?: string;
-  size?: 'small' | 'large' | '';
-  required?: boolean;
-  disabled?: boolean;
-  invalid?: boolean;
+  size?: SelectFallbackProps['size'];
+  required?: SelectFallbackProps['required'];
+  disabled?: SelectFallbackProps['disabled'];
+  invalid?: SelectFallbackProps['invalid'];
   errorMessage?: string;
   helpText?: string;
-  labelPosition?: 'top' | 'start' | 'end' | 'bottom';
-  optionPlaceholder?: string; // Add the string prop mapping boundary here
+  labelPosition?: SelectFallbackProps['labelPosition'];
+  optionPlaceholder?: string;
 }>(), {
   label: 'Select Option',
   size: '',
@@ -37,7 +39,7 @@ const fallbackHtml = computed(() => {
     errorMessage: props.errorMessage,
     helpText: props.helpText,
     labelPosition: props.labelPosition,
-    optionPlaceholder: props.optionPlaceholder // Simply forward the flat text token
+    optionPlaceholder: props.optionPlaceholder
   });
 });
 </script>

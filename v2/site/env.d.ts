@@ -1,0 +1,1 @@
+declare module 'agnosticui-core/styles/framework-components.css'
