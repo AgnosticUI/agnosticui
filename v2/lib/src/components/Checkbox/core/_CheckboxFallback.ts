@@ -1,4 +1,5 @@
 import styles from './checkbox-structure.module.css';
+import { escapeHtml } from '../../../utils/escape.js';
 
 export type CheckboxSize = 'small' | 'medium' | 'large';
 export type CheckboxTheme = 'default' | 'primary' | 'success' | 'monochrome';
@@ -18,16 +19,6 @@ export interface CheckboxFallbackProps {
   errorMessage?: string;
   helpText?: string;
   slotContent?: string;
-}
-
-function escapeHtml(str: string): string {
-  if (!str) return '';
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
 }
 
 /**

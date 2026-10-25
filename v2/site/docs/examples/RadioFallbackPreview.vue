@@ -36,22 +36,8 @@ const props = withDefaults(defineProps<{
 });
 
 const fallbackHtml = computed(() => {
-  return _RadioFallback({
-    labelText: props.labelText,
-    size: props.size,
-    theme: props.theme,
-    required: props.required,
-    disabled: props.disabled,
-    invalid: props.invalid,
-    errorMessage: props.errorMessage,
-    helpText: props.helpText,
-    labelPosition: props.labelPosition,
-    label: props.label,
-    labelHidden: props.labelHidden,
-    noLabel: props.noLabel,
-    checked: props.checked,
-    name: props.name
-  });
+  // Leverage object spreading to pass all spec configurations flawlessly
+  return _RadioFallback({ ...props });
 });
 </script>
 
@@ -63,10 +49,13 @@ const fallbackHtml = computed(() => {
 
 <style scoped>
 .fallback-preview-container {
-  padding: 2rem;
+  padding: 1.5rem;
   border: 1px dashed var(--vp-c-divider);
   border-radius: 8px;
   background-color: var(--vp-c-bg-soft);
   margin-block: 1rem;
+  /* Clean geometric constraints matching Checkbox */
+  display: inline-block;
+  min-width: 280px;
 }
 </style>

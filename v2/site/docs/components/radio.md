@@ -17,41 +17,49 @@ Radio button allows a user to select a single option from a set of mutually excl
 
 ## Server-Side Rendering (SSR) Fallback Layouts
 
-AgnosticUI utilizes an **Isomorphic Architecture** to support server-first workflows (e.g. TanStack Start, Remix, Nuxt). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+AgnosticUI utilizes a dual-layer **Isomorphic Architecture** to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/docs/how-ssr-fallbacks-work).
 
 ### Standard Fallback Layout
 
-<RadioFallbackPreview 
-  labelText="Yes, proceed with structural migration" 
-  name="ssr-example-group"
-  checked
-/>
-
-<RadioFallbackPreview 
-  labelText="No, halt compilation workflows" 
-  name="ssr-example-group"
-/>
+<!-- Wrapped in structural layout stack blocks to prevent adjacent spacing bugs -->
+<div class="ag-form-control-layout-stack" style="display: flex; flex-direction: column; gap: 0.75rem; margin-block: 1rem;">
+  <RadioFallbackPreview 
+    labelText="Yes, proceed with structural migration" 
+    name="ssr-example-group"
+    checked
+  />
+  <RadioFallbackPreview 
+    labelText="No, halt compilation workflows" 
+    name="ssr-example-group"
+  />
+</div>
 
 ### Small Configuration with External Context Label
 
-<RadioFallbackPreview 
-  label="System Overrides"
-  labelText="Enable experimental HMR streaming flags" 
-  name="ssr-settings"
-  size="small"
-  required
-  helpText="Activating this setting changes local server timing targets."
-/>
+<div style="margin-block: 1rem;">
+  <RadioFallbackPreview 
+    label="System Overrides"
+    labelText="Enable experimental HMR streaming flags" 
+    name="ssr-settings"
+    size="small"
+    required
+    helpText="Activating this setting changes local server timing targets."
+  />
+</div>
 
 ### Invalid Validation Error State
 
-<RadioFallbackPreview 
-  label="Subscription Plan Selection"
-  labelText="Premium Developer Account Tier" 
-  name="ssr-billing"
-  invalid
-  errorMessage="Please confirm your selection tier to finalize checkout options."
-/>
+<div style="margin-block: 1rem;">
+  <RadioFallbackPreview 
+    label="Subscription Plan Selection"
+    labelText="Premium Developer Account Tier" 
+    name="ssr-billing"
+    invalid
+    errorMessage="Please confirm your selection tier to finalize checkout options."
+  />
+</div>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
@@ -63,6 +71,26 @@ import vueCode from '../examples/RadioExamples.vue?raw'
 import litCode from '../examples/RadioLitExamples.js?raw'
 import reactCode from '../examples/RadioReactExamples.jsx?raw'
 </script>
+
+### Handling Dual-Class Token Lifecycle During Hydration
+
+```vue
+<!-- Default configuration fallback layout state -->
+<RadioFallbackPreview labelText="Receive push reminders" :checked="false" />
+```
+
+Our server fallback engine outputs **both** raw unhashed namespace classes (`ag-radio-*`) and empty placeholder modular mappings (`styles.*`).
+
+When your full-stack framework performs client-side hydration, the DOM reconciler checks for the presence of your compiled hash strings. Because the fallback engine pre-allocates these boundaries natively, client promotion completes with near-zero computation cost and eliminates Cumulative Layout Shift (CLS).
+
+```vue
+<!-- Hydration bound configuration layout -->
+<RadioFallbackPreview
+  labelText="Receive push reminders"
+  :checked="isSubscribed || false"
+  :disabled="isParentContainerLocked"
+/>
+```
 
 ## Usage
 

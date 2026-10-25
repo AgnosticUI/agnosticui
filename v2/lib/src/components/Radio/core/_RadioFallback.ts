@@ -1,94 +1,60 @@
 import { type RadioProps } from './_Radio.js';
+import { escapeHtml } from '../../../utils/escape.js';
 import styles from './radio-structure.module.css';
 
-/**
- * Escapes malicious HTML sequences inside property interpolations
- * to enforce the Markup Injection Guardrail.
- */
-function escapeHtml(value: string = ''): string {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+export type RadioSize = 'small' | 'medium' | 'large';
+export type RadioTheme = 'default' | 'primary' | 'success' | 'monochrome';
+
+export interface RadioFallbackProps {
+  name?: string;
+  value?: string;
+  checked?: boolean | string;
+  disabled?: boolean | string;
+  required?: boolean | string;
+  invalid?: boolean | string;
+  size?: RadioSize;
+  theme?: RadioTheme;
+  labelText?: string;
+  labelPosition?: 'end' | 'start';
+  label?: string;
+  labelHidden?: boolean | string;
+  noLabel?: boolean | string;
+  errorMessage?: string;
+  helpText?: string;
 }
 
 /**
- * Embedded Pre-Hydration Layout Reset Stylesheet Block
- * Injects baseline modular resets inline to eliminate transparent vacuums on dev servers.
- * Parallel to the verified Checkbox fallback architecture.
+ * _RadioFallback
+ * 
+ * An Isomorphic Pure HTML String Engine built to eliminate pre-hydration style voids.
+ * 
+ * NOTE ON CLASS DUPLICATION:
+ * This component outputs BOTH hashed CSS Module references (e.g. `styles.radioWrapper`) 
+ * and unhashed namespace fallbacks (e.g. `ag-radio-wrapper`). 
+ * 
+ * 1. The `ag-` global fallback classes ensure immediate geometric painting on the server.
+ * 2. The dynamic `styles` class hashes ensure that when the framework hydrator executes 
+ *    DOM reconciliation, the token already matches, making client activation near zero-cost.
+ * 
+ * For deep-dive architectural context, see the docs: "How SSR Fallbacks Work"
  */
-const fallbackStylesHtml = `
-  <style data-ag-fallback="radio">
-    .radio-wrapper {
-      display: inline-flex;
-      align-items: center;
-      position: relative;
-      cursor: pointer;
-      gap: var(--ag-spacing-sm, 8px);
-      line-height: var(--ag-line-height-normal, 1.5);
-    }
-    .radio-wrapper--label-start {
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-    }
-    .radio-input {
-      position: absolute;
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      margin: 0;
-      padding: 0;
-      cursor: inherit;
-      z-index: 1;
-    }
-    .radio-indicator {
-      display: inline-block;
-      box-sizing: border-box;
-      flex-shrink: 0;
-      border-radius: var(--ag-radius-full, 50%);
-      position: relative;
-      border: 2px solid currentColor;
-      background-color: transparent;
-      width: 18px;
-      height: 18px;
-    }
-    .radio-indicator-small { width: 14px; height: 14px; }
-    .radio-indicator-large { width: 22px; height: 22px; }
-    .radio-input:checked + .radio-indicator::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 50%;
-      height: 50%;
-      background-color: currentColor;
-      border-radius: 50%;
-    }
-  </style>
-`.trim();
-
-export function _RadioFallback(props: any = {}): string {
+export function _RadioFallback(props: RadioFallbackProps = {}): string {
   const normalizedProps: RadioProps = {
     name: props.name || '',
     value: props.value || '',
-    checked: props.checked !== undefined ? props.checked : props['checked'] === '' || props['checked'] === 'true',
-    disabled: props.disabled !== undefined ? props.disabled : props['disabled'] === '' || props['disabled'] === 'true',
-    required: props.required !== undefined ? props.required : props['required'] === '' || props['required'] === 'true',
-    invalid: props.invalid !== undefined ? props.invalid : props['invalid'] === '' || props['invalid'] === 'true',
+    checked: props.checked !== undefined ? (props.checked === true || props.checked === 'true' || props.checked === '') : false,
+    disabled: props.disabled !== undefined ? (props.disabled === true || props.disabled === 'true' || props.disabled === '') : false,
+    required: props.required !== undefined ? (props.required === true || props.required === 'true' || props.required === '') : false,
+    invalid: props.invalid !== undefined ? (props.invalid === true || props.invalid === 'true' || props.invalid === '') : false,
     size: props.size || 'medium',
     theme: props.theme || 'primary',
-    labelText: props.labelText || props['label-text'] || props['labelText'] || '',
-    labelPosition: props.labelPosition || props['label-position'] || props['labelPosition'] || 'end',
+    labelText: props.labelText || '',
+    labelPosition: props.labelPosition || 'end',
     label: props.label || '',
-    labelHidden: props.labelHidden !== undefined ? props.labelHidden : props['label-hidden'] === '' || props['label-hidden'] === 'true',
-    noLabel: props.noLabel !== undefined ? props.noLabel : props['no-label'] === '' || props['no-label'] === 'true',
-    errorMessage: props.errorMessage || props['error-message'] || props['errorMessage'] || '',
-    helpText: props.helpText || props['help-text'] || props['help-text'] || '',
+    labelHidden: props.labelHidden !== undefined ? (props.labelHidden === true || props.labelHidden === 'true' || props.labelHidden === '') : false,
+    noLabel: props.noLabel !== undefined ? (props.noLabel === true || props.noLabel === 'true' || props.noLabel === '') : false,
+    errorMessage: props.errorMessage || '',
+    helpText: props.helpText || '',
   };
 
   const name = normalizedProps.name ? ` name="${escapeHtml(normalizedProps.name)}"` : '';
@@ -115,33 +81,31 @@ export function _RadioFallback(props: any = {}): string {
   const size = normalizedProps.size || 'medium';
   let sizeClass = styles.radioIndicatorMedium;
   let labelSizeClass = styles.radioLabelMedium;
-  let resetSizeClass = '';
 
   if (size === 'small') {
     sizeClass = styles.radioIndicatorSmall;
     labelSizeClass = styles.radioLabelSmall;
-    resetSizeClass = ' radio-indicator-small';
   } else if (size === 'large') {
     sizeClass = styles.radioIndicatorLarge;
     labelSizeClass = styles.radioLabelLarge;
-    resetSizeClass = ' radio-indicator-large';
   }
 
   const theme = normalizedProps.theme || 'primary';
+  
   const wrapperClasses = `
-    ${styles.radioWrapper} radio-wrapper
-    ${normalizedProps.labelPosition === 'start' ? `${styles.radioWrapperLabelStart} radio-wrapper--label-start` : ''}
+    ${styles.radioWrapper} ag-radio-wrapper
+    ${normalizedProps.labelPosition === 'start' ? `${styles.radioWrapperLabelStart} ag-radio-wrapper--label-start` : ''}
   `.trim();
 
   const indicatorClasses = `
-    ${styles.radioIndicator} radio-indicator
-    ${sizeClass}${resetSizeClass}
-    radio-indicator--${theme}
+    ${styles.radioIndicator} ag-radio-indicator
+    ${sizeClass} ag-radio-indicator--${size}
+    ag-radio-indicator--${theme}
   `.trim();
 
   const labelClasses = `
-    ${styles.radioLabel}
-    ${labelSizeClass}
+    ${styles.radioLabel} ag-radio-label
+    ${labelSizeClass} ag-radio-label--${size}
   `.trim();
 
   const radioControlHtml = `
@@ -149,7 +113,7 @@ export function _RadioFallback(props: any = {}): string {
       <input
         type="radio"
         id="${inputId}"
-        class="${styles.radioInput} radio-input"
+        class="${styles.radioInput} ag-radio-input"
         part="ag-radio-input"
         ${name}
         ${value}
@@ -193,7 +157,7 @@ export function _RadioFallback(props: any = {}): string {
     `.trim();
 
     bodyHtml = `
-      <div class="${styles.radioWrapperWithExternal} ag-radio-wrapper-with-external">
+      <div class="${styles.radioContainer} ag-radio-container">
         ${externalLabelHtml}
         ${radioControlHtml}
         ${helperHtml}
@@ -202,8 +166,5 @@ export function _RadioFallback(props: any = {}): string {
     `.trim();
   }
 
-  return `
-    ${fallbackStylesHtml}
-    ${bodyHtml}
-  `.trim();
+  return bodyHtml;
 }

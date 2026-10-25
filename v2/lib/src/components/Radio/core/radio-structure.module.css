@@ -1,11 +1,26 @@
-/* Core flex wrap alignment grid geometries */
-.radioWrapperWithExternal {
+/* ==========================================================================
+   ISOMORPHIC HYBRID LAYOUT GEOMETRY
+   
+   WHY ARE MULTIPLE SELECTORS USED HERE?
+   AgnosticUI bridges two distinct lifecycles using a single source of truth sheet:
+   1. The pure un-prefixed classes (e.g. .radioWrapper) compile into CSS Modules for JS.
+   2. The :global() blocks compile into unhashed ag- namespaced selectors for static SSR.
+   
+   Colocating them together using comma-separation guarantees perfect DRY execution 
+   and eliminates maintenance drift during structural bugfixes.
+   
+   For detailed context, see the docs: "How SSR Fallbacks Work"
+   ========================================================================== */
+
+.radioContainer,
+:global(.ag-radio-container) {
   display: flex;
   flex-direction: column;
   gap: var(--ag-spacing-xs, 4px);
 }
 
-.radioWrapper {
+.radioWrapper,
+:global(.ag-radio-wrapper) {
   display: inline-flex;
   align-items: center;
   position: relative;
@@ -14,13 +29,14 @@
   line-height: var(--ag-line-height-normal, 1.5);
 }
 
-.radioWrapperLabelStart {
+.radioWrapperLabelStart,
+:global(.ag-radio-wrapper--label-start) {
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
 
-/* Functional alignment and hit target structures */
-.radioInput {
+.radioInput,
+:global(.ag-radio-input) {
   position: absolute;
   opacity: 0;
   width: 100%;
@@ -33,44 +49,131 @@
   z-index: 1;
 }
 
-.radioIndicator {
+.radioIndicator,
+:global(.ag-radio-indicator) {
   display: inline-block;
   box-sizing: border-box;
   flex-shrink: 0;
   border-radius: var(--ag-radius-full, 50%);
   position: relative;
+  /* FIX: Restored baseline structural border boundaries to prevent transparency gaps */
+  border: var(--ag-border-width-2) solid var(--ag-primary-border);
+  background-color: var(--ag-white);
 }
 
-.radioLabel {
+.radioLabel,
+:global(.ag-radio-label) {
   display: inline-block;
   -webkit-user-select: none;
   user-select: none;
 }
 
-/* Precise layout dimensions mapping clean hashes */
-.radioIndicatorSmall {
+/* --- Proportional Sizing: Small --- */
+.radioIndicatorSmall,
+:global(.ag-radio-indicator--small) {
   width: 14px;
   height: 14px;
 }
 
-.radioIndicatorMedium {
+.radioLabelSmall,
+:global(.ag-radio-label--small) {
+  font-size: var(--ag-font-size-sm, 12px);
+}
+
+/* --- Proportional Sizing: Medium --- */
+.radioIndicatorMedium,
+:global(.ag-radio-indicator--medium) {
   width: 18px;
   height: 18px;
 }
 
-.radioIndicatorLarge {
+.radioLabelMedium,
+:global(.ag-radio-label--medium) {
+  font-size: var(--ag-font-size-base, 14px);
+}
+
+/* --- Proportional Sizing: Large --- */
+.radioIndicatorLarge,
+:global(.ag-radio-indicator--large) {
   width: 22px;
   height: 22px;
 }
 
-.radioLabelSmall {
-  font-size: var(--ag-font-size-sm, 12px);
-}
-
-.radioLabelMedium {
-  font-size: var(--ag-font-size-base, 14px);
-}
-
-.radioLabelLarge {
+.radioLabelLarge,
+:global(.ag-radio-label--large) {
   font-size: var(--ag-font-size-lg, 16px);
+}
+
+/* --- Theme Baseline Border Overrides --- */
+.radioIndicatorDefault,
+:global(.ag-radio-indicator--default),
+.radioIndicatorPrimary,
+:global(.ag-radio-indicator--primary) {
+  border-color: var(--ag-primary-border);
+}
+
+.radioIndicatorSuccess,
+:global(.ag-radio-indicator--success) {
+  border-color: var(--ag-border);
+}
+
+.radioIndicatorMonochrome,
+:global(.ag-radio-indicator--monochrome) {
+  border-color: var(--ag-black);
+}
+
+/* ==========================================================================
+   ACTIVE INTERACTIVE STATE ENGINES
+   
+   WHY ARE !important OVERRIDES USED HERE?
+   During the brief hydration phase, server fallback classes and incoming dynamic 
+   hashed tokens exist on elements at the same time. The !important flag acts as an 
+   insurance policy. It defeats browser paint race conditions and guards external 
+   ejected consumers from unexpected toolchain specificity rules.
+   ========================================================================== */
+
+/* --- Layer A & B Combined: Center-Dot Selector Matrix --- */
+.radioInput:checked + .radioIndicator::after,
+:global(.ag-radio-input):checked + :global(.ag-radio-indicator)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  border-radius: var(--ag-radius-full, 50%);
+}
+
+/* --- Active Selection Theme Fill Controls --- */
+.radioInput:checked + .radioIndicatorPrimary,
+:global(.ag-radio-input):checked + :global(.ag-radio-indicator--primary),
+.radioInput:checked + .radioIndicatorDefault,
+:global(.ag-radio-input):checked + :global(.ag-radio-indicator--default) {
+  border-color: var(--ag-primary) !important;
+}
+/* Direct paint application prevents currentColor collapse */
+.radioInput:checked + .radioIndicatorPrimary::after,
+:global(.ag-radio-input):checked + :global(.ag-radio-indicator--primary)::after,
+.radioInput:checked + .radioIndicatorDefault::after,
+:global(.ag-radio-input):checked + :global(.ag-radio-indicator--default)::after {
+  background-color: var(--ag-primary) !important;
+}
+
+.radioInput:checked + .radioIndicatorSuccess,
+:global(.ag-radio-input):checked + :global(.ag-radio-indicator--success) {
+  border-color: var(--ag-success) !important;
+}
+.radioInput:checked + .radioIndicatorSuccess::after,
+:global(.ag-radio-input):checked + :global(.ag-radio-indicator--success)::after {
+  background-color: var(--ag-success) !important;
+}
+
+.radioInput:checked + .radioIndicatorMonochrome,
+:global(.ag-radio-input):checked + :global(.ag-radio-indicator--monochrome) {
+  border-color: var(--ag-black) !important;
+}
+.radioInput:checked + .radioIndicatorMonochrome::after,
+:global(.ag-radio-input):checked + :global(.ag-radio-indicator--monochrome)::after {
+  background-color: var(--ag-black) !important;
 }
