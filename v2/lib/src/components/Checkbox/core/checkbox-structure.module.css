@@ -1,24 +1,39 @@
-/* v2/lib/src/components/Checkbox/core/checkbox-structure.module.css */
+/* ==========================================================================
+   ISOMORPHIC HYBRID LAYOUT GEOMETRY
+   
+   WHY ARE MULTIPLE SELECTORS USED HERE?
+   AgnosticUI bridges two distinct lifecycles using a single source of truth sheet:
+   1. The pure un-prefixed classes (e.g. .checkboxWrapper) compile into CSS Modules for JS.
+   2. The :global() blocks compile into unhashed ag- namespaced selectors for static SSR.
+   
+   Colocating them together using comma-separation guarantees perfect DRY execution 
+   and eliminates maintenance drift during structural bugfixes.
+   
+   For detailed context, see the docs: "How SSR Fallbacks Work"
+   ========================================================================== */
 
-.agCheckboxContainer {
+.checkboxContainer,
+:global(.ag-checkbox-container) {
   display: block;
 }
 
-.checkboxWrapper {
+.checkboxWrapper,
+:global(.ag-checkbox-wrapper) {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  -webkit-user-select: none; /* Safari 3+, iOS Safari 3+ support */
+  -webkit-user-select: none;
   user-select: none;
   gap: 0;
 }
 
-
-.checkboxWrapperLabelStart {
+.checkboxWrapperLabelStart,
+:global(.ag-checkbox-wrapper--label-start) {
   flex-direction: row-reverse;
 }
 
-.checkboxInput {
+.checkboxInput,
+:global(.ag-checkbox-input) {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -29,7 +44,8 @@
   overflow: hidden;
 }
 
-.checkboxLabel {
+.checkboxLabel,
+:global(.ag-checkbox-label) {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -37,105 +53,182 @@
 }
 
 /* The box - drawn with ::before */
-.checkboxLabel::before {
+.checkboxLabel::before,
+:global(.ag-checkbox-label)::before {
   content: '';
   display: inline-block;
+  box-sizing: border-box;
   flex-shrink: 0;
   margin-inline-end: var(--ag-space-3);
   border-radius: var(--ag-radius-sm);
   transition: all var(--ag-motion-fast) ease-in-out;
 }
 
-/* The checkmark - drawn with ::after */
-.checkboxLabel::after {
+/* The checkmark vector - drawn with ::after */
+.checkboxLabel::after,
+:global(.ag-checkbox-label)::after {
   content: '';
   position: absolute;
   display: block;
+  box-sizing: border-box;
   opacity: 0;
   transform: rotate(40deg) scale(0);
   transform-origin: center center;
   transition: all var(--ag-motion-fast) ease-in-out;
 }
 
-/* Size variants */
-.checkboxLabelSmall::before {
-  width: 14px;
-  height: 14px;
+/* --- Proportional Sizing: Small --- */
+.checkboxLabelSmall::before,
+:global(.ag-checkbox-label--small)::before {
+  width: 16px;
+  height: 16px;
 }
 
-.checkboxLabelSmall::after {
-  inset-inline-start: 4px;
-  top: 0px;
+.checkboxLabelSmall::after,
+:global(.ag-checkbox-label--small)::after {
+  inset-inline-start: 5px;
+  top: 1px;
   width: 4px;
   height: 8px;
   border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
   border-bottom: var(--ag-border-width-2) solid var(--ag-white);
 }
 
-.checkboxLabelMedium::before {
-  width: 16px;
-  height: 16px;
+/* --- Proportional Sizing: Medium --- */
+.checkboxLabelMedium::before,
+:global(.ag-checkbox-label--medium)::before {
+  width: 18px;
+  height: 18px;
 }
 
-.checkboxLabelMedium::after {
-  inset-inline-start: 5px;
-  top: 1px;
+.checkboxLabelMedium::after,
+:global(.ag-checkbox-label--medium)::after {
+  inset-inline-start: 6px;
+  top: 2px;
   width: 4px;
   height: 9px;
   border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
   border-bottom: var(--ag-border-width-2) solid var(--ag-white);
 }
 
-.checkboxLabelLarge::before {
-  width: 18px;
-  height: 18px;
+/* --- Proportional Sizing: Large --- */
+.checkboxLabelLarge::before,
+:global(.ag-checkbox-label--large)::before {
+  width: 22px;
+  height: 22px;
 }
 
-.checkboxLabelLarge::after {
-  inset-inline-start: 6px;
-  top: 1px;
+.checkboxLabelLarge::after,
+:global(.ag-checkbox-label--large)::after {
+  inset-inline-start: 8px;
+  top: 2px;
   width: 5px;
-  height: 10px;
+  height: 11px;
   border-inline-end: var(--ag-border-width-2) solid var(--ag-white);
   border-bottom: var(--ag-border-width-2) solid var(--ag-white);
 }
 
-/* Default theme - alias to primary */
-.checkboxLabelDefault::before {
+/* Theme Baseline Colors */
+.checkboxLabelDefault::before,
+:global(.ag-checkbox-label--default)::before,
+.checkboxLabelPrimary::before,
+:global(.ag-checkbox-label--primary)::before {
   border: var(--ag-border-width-2) solid var(--ag-primary-border);
   background: var(--ag-white);
 }
 
-/* Primary theme */
-.checkboxLabelPrimary::before {
-  border: var(--ag-border-width-2) solid var(--ag-primary-border);
-  background: var(--ag-white);
-}
-
-/* Success theme */
-.checkboxLabelSuccess::before {
+.checkboxLabelSuccess::before,
+:global(.ag-checkbox-label--success)::before {
   border: var(--ag-border-width-2) solid var(--ag-border);
   background: var(--ag-white);
 }
 
-/* Monochrome theme */
-.checkboxLabelMonochrome::before {
+.checkboxLabelMonochrome::before,
+:global(.ag-checkbox-label--monochrome)::before {
   border: var(--ag-border-width-2) solid var(--ag-black);
   background: var(--ag-white);
 }
 
-.checkboxLabelCopy {
+/* --- Label Typography Fallbacks --- */
+.checkboxLabelCopy,
+:global(.ag-checkbox-label-copy) {
   display: inline-block;
 }
 
-.checkboxLabelCopySmall {
+.checkboxLabelCopySmall,
+:global(.ag-checkbox-label-copy--small) {
   font-size: var(--ag-font-size-sm);
 }
 
-.checkboxLabelCopyMedium {
+.checkboxLabelCopyMedium,
+:global(.ag-checkbox-label-copy--medium) {
   font-size: var(--ag-font-size-sm);
 }
 
-.checkboxLabelCopyLarge {
+.checkboxLabelCopyLarge,
+:global(.ag-checkbox-label-copy--large) {
   font-size: var(--ag-font-size-base);
+}
+
+/* ==========================================================================
+   ACTIVE INTERACTIVE STATE ENGINES
+   
+   WHY ARE !important OVERRIDES USED HERE?
+   During the brief hydration phase, server fallback classes and incoming dynamic 
+   hashed tokens exist on elements at the same time. The !important flag acts as an 
+   insurance policy. It defeats browser paint race conditions and guards external 
+   ejected consumers from unexpected toolchain specificity rules.
+   ========================================================================== */
+
+/* --- Default & Primary Theme Fills --- */
+.checkboxInput:checked + .checkboxLabelDefault::before,
+.checkboxInput:indeterminate + .checkboxLabelDefault::before,
+.checkboxInput:checked + .checkboxLabelPrimary::before,
+.checkboxInput:indeterminate + .checkboxLabelPrimary::before,
+:global(.ag-checkbox-input):checked + :global(.ag-checkbox-label--default)::before,
+:global(.ag-checkbox-input):indeterminate + :global(.ag-checkbox-label--default)::before,
+:global(.ag-checkbox-input):checked + :global(.ag-checkbox-label--primary)::before,
+:global(.ag-checkbox-input):indeterminate + :global(.ag-checkbox-label--primary)::before {
+  background: var(--ag-primary) !important;
+  border-color: var(--ag-primary) !important;
+}
+
+/* --- Success Theme Fills --- */
+.checkboxInput:checked + .checkboxLabelSuccess::before,
+.checkboxInput:indeterminate + .checkboxLabelSuccess::before,
+:global(.ag-checkbox-input):checked + :global(.ag-checkbox-label--success)::before,
+:global(.ag-checkbox-input):indeterminate + :global(.ag-checkbox-label--success)::before {
+  background: var(--ag-success) !important;
+  border-color: var(--ag-success) !important;
+}
+
+/* --- Monochrome Theme Fills --- */
+.checkboxInput:checked + .checkboxLabelMonochrome::before,
+.checkboxInput:indeterminate + .checkboxLabelMonochrome::before,
+:global(.ag-checkbox-input):checked + :global(.ag-checkbox-label--monochrome)::before,
+:global(.ag-checkbox-input):indeterminate + :global(.ag-checkbox-label--monochrome)::before {
+  background: var(--ag-black) !important;
+  border-color: var(--ag-black) !important;
+}
+
+/* --- Active Vector Checked State --- */
+.checkboxInput:checked + .checkboxLabel::after,
+:global(.ag-checkbox-input):checked + :global(.ag-checkbox-label)::after {
+  opacity: 1;
+  transform: rotate(40deg) scale(1) translate(2px);
+}
+
+/* --- Active Vector Indeterminate State --- */
+.checkboxInput:indeterminate + .checkboxLabel::after,
+:global(.ag-checkbox-input):indeterminate + :global(.ag-checkbox-label)::after {
+  transform: rotate(0deg) scale(1) translate(-6px);
+  opacity: 1;
+  border-inline-end: none;
+  border-bottom: var(--ag-border-width-2) solid var(--ag-white);
+  width: 8px;
+  height: 0;
+  inset-inline-start: 50%;
+  top: 50%;
+  margin-inline-start: -4px;
+  margin-block-start: -1px;
 }

@@ -17,26 +17,34 @@ Checkbox allows a user to select one or more options from a set. It's ideal for 
 
 ## Server-Side Rendering (SSR) Fallback Layouts
 
-AgnosticUI utilizes an **Isomorphic Architecture** to support server-first workflows (e.g. TanStack Start, Remix, Nuxt). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+AgnosticUI utilizes a dual-layer **Isomorphic Architecture** to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/docs/how-ssr-fallbacks-work).
 
 ### Standard Unchecked & Checked Previews
 
-<CheckboxFallbackPreview labelText="Subscribe to newsletter updates" :checked="false" />
-
-<CheckboxFallbackPreview labelText="Accept community usage guidelines" :checked="true" />
+<!-- Wrapped in structural grid containers to prevent layout collisions -->
+<div class="ag-form-control-layout-stack" style="display: flex; flex-direction: column; gap: 0.75rem; margin-block: 1rem;">
+  <CheckboxFallbackPreview labelText="Subscribe to newsletter updates" :checked="false" />
+  <CheckboxFallbackPreview labelText="Accept community usage guidelines" :checked="true" />
+</div>
 
 ### Indeterminate Group State (Mixed Option)
 
-<CheckboxFallbackPreview labelText="Select all item permissions" :indeterminate="true" />
+<div style="margin-block: 1rem;">
+  <CheckboxFallbackPreview labelText="Select all item permissions" :indeterminate="true" />
+</div>
 
 ### Validation Errors & Inline Helplines
 
-<CheckboxFallbackPreview 
-  labelText="Confirm automatic cloud backups" 
-  invalid 
-  errorMessage="You must explicitly confirm storage provisions to launch automation tasks." 
-  helpText="Saves differential snapshot snapshots directly into encrypted object tiers daily."
-/>
+<div class="ag-form-control-layout-stack" style="display: flex; flex-direction: column; gap: 0.75rem; margin-block: 1rem;">
+  <CheckboxFallbackPreview 
+    labelText="Confirm automatic cloud backups" 
+    invalid 
+    errorMessage="You must explicitly confirm storage provisions to launch automation tasks." 
+    helpText="Saves differential snapshot snapshots directly into encrypted object tiers daily."
+  />
+</div>
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
@@ -49,14 +57,16 @@ import litCode from '../examples/CheckboxLitExamples.js?raw'
 import reactCode from '../examples/CheckboxReactExamples.jsx?raw'
 </script>
 
-### Handling Pre-selected / State Restorations during Hydration
+### Handling Dual-Class Token Lifecycle During Hydration
 
 ```vue
-<!-- Default configuration layout state -->
+<!-- Default configuration fallback layout state -->
 <CheckboxFallbackPreview labelText="Receive push reminders" :checked="false" />
 ```
 
-If a user loads a page where an active record matching checked configurations already exists, synchronize your parameters by mapping the dataset conditions down to token flags. This locks down the CSS Module layer hashes on the server instantly before hydration.
+Our server fallback engine outputs **both** raw unhashed namespace classes (`ag-checkbox-*`) and empty placeholder modular mappings (`styles.*`).
+
+When your full-stack framework performs client-side hydration, the DOM reconciler checks for the presence of your compiled hash strings. Because the fallback engine pre-allocates these boundaries natively, client promotion completes with near-zero computation cost and eliminates Cumulative Layout Shift (CLS).
 
 ```vue
 <!-- Hydration bound configuration layout -->
@@ -220,6 +230,7 @@ export default function Example() {
     label-text="Primary theme"
     checked
   ></ag-checkbox>
+
   <ag-checkbox
     name="example"
     value="2"
@@ -359,21 +370,6 @@ Checkboxes now support optional external labels, helper text, and error messages
       value="agree"
       label-text="I agree to the terms"
       @change="handleChange"
-    />
-
-    <VueCheckbox
-      name="newsletter"
-      value="subscribed"
-      label-text="Subscribe to newsletter"
-      v-model:checked="isSubscribed"
-    />
-
-    <VueCheckbox
-      name="select-all"
-      value="all"
-      label-text="Select All"
-      v-model:indeterminate="isIndeterminate"
-      v-model:checked="allChecked"
     />
 
     <VueCheckbox
@@ -615,26 +611,20 @@ See the **CSS Shadow Parts Customization** section in the examples above for mor
 
 ## When to Use
 
-**Use Input when:**
+**Use Checkbox when:**
 
-- Collecting short, single-line text data (name, email, etc.)
-- Building forms for data entry
-- You need validation and error messaging
-- You need different input types (email, password, date, etc.)
-
-**Use Textarea (type="textarea") when:**
-
-- Collecting longer, multi-line text (comments, descriptions, etc.)
-- User needs to see multiple lines of their input at once
+- Selecting one or more independent options from a multi-choice dataset
+- Implementing explicit individual confirmation actions (e.g., policy opt-ins, EULAs)
+- Managing aggregated parent-child multi-selection control matrices via indeterminate variables
 
 **Consider alternatives when:**
 
-- You have a fixed set of options - use Select or Radio buttons instead
-- You need yes/no or on/off - use Toggle or Checkbox instead
-- You need date/time selection with a calendar - consider a DatePicker component
+- Toggling absolute, instantaneous system actions without form submission lifecycles — use Toggle instead
+- Picking exactly one option from an exclusive, narrow collection parameters — use Radio instead
+- Choosing one selection from massive options sets exceeding 5 items — consider a Select menu fields architecture instead
 
 ## Related Components
 
 - [Select](/components/select) - For select list validation fields.
-- [Checkbox](/components/checkbox) - For binary options groupings.
+- [Fieldset](/components/fieldset) - For wrapping checkboxes groupings in semantic accessible forms.
 - [Radio](/components/radio) - For single item selections within a visible list parameters.
