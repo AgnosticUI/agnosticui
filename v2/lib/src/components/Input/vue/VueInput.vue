@@ -1,30 +1,32 @@
+<!-- v2/lib/src/components/Input/vue/VueInput.vue -->
 <template>
   <ag-input
-    :name="name"
-    .value="value"
-    .labelHidden="labelHidden"
-    .noLabel="noLabel"
-    .capsule="capsule"
-    .rounded="rounded"
-    .underlined="underlined"
-    .underlinedWithBackground="underlinedWithBackground"
-    .inline="inline"
-    .required="required"
-    .disabled="disabled"
-    .readonly="readonly"
-    .invalid="invalid"
-    :type="type"
-    :placeholder="placeholder"
-    :label="label"
-    :labelPosition="labelPosition"
-    :ariaLabel="ariaLabel"
-    :helpText="helpText"
-    :errorMessage="errorMessage"
-    :size="size"
-    :rows="rows"
-    :cols="cols"
-    :min="min"
-    :max="max"
+    ref="agComponent"
+    :name.prop="name"
+    :value.prop="value"
+    :labelHidden.prop="labelHidden"
+    :noLabel.prop="noLabel"
+    :capsule.prop="capsule"
+    :rounded.prop="rounded"
+    :underlined.prop="underlined"
+    :underlinedWithBackground.prop="underlinedWithBackground"
+    :inline.prop="inline"
+    :required.prop="required"
+    :disabled.prop="disabled"
+    :readonly.prop="readonly"
+    :invalid.prop="invalid"
+    :type.prop="type"
+    :placeholder.prop="placeholder"
+    :label.prop="label"
+    :labelPosition.prop="labelPosition"
+    :ariaLabel.prop="ariaLabel"
+    :helpText.prop="helpText"
+    :errorMessage.prop="errorMessage"
+    :size.prop="size"
+    :rows.prop="rows"
+    :cols.prop="cols"
+    :min.prop="min"
+    :max.prop="max"
     @click="handleClick"
     @input="handleInput"
     @change="handleChange"
@@ -46,21 +48,11 @@
 </template>
 
 <script setup lang="ts">
-import type { InputProps } from "../core/Input";
-import "../core/Input"; // Registers the ag-input web component
+import { ref } from "vue";
+import "../core/Input.js"; // Registers the ag-input web component
+import type { VueInputProps } from "./index.js";
 
-/**
- * Vue Input Props
- * Following AgnosticUI v2 event conventions:
- * - Omit callback props (Vue uses emits)
- * - Support v-model:value via update:value emit
- */
-export interface VueInputProps
-  extends Omit<
-    InputProps,
-    "onClick" | "onInput" | "onChange" | "onFocus" | "onBlur"
-  > {}
-// Define props with defaults
+// Define props with defaults leveraging our shared external contract
 withDefaults(defineProps<VueInputProps>(), {
   value: "",
   label: "",

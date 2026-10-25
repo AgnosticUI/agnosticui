@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { createComponent } from '@lit/react';
-import { AgInput, type InputProps } from '../core/Input';
+import * as React from "react";
+import { createComponent } from "@lit/react";
+import { AgInput, type InputProps } from "../core/Input.js";
 
 /**
  * React-specific props for Input
@@ -25,7 +25,7 @@ export interface ReactInputProps extends InputProps {
 // Note: Native events (click, input, change, focus, blur) work automatically
 // No need to map them in the events object
 export const ReactInput = createComponent({
-  tagName: 'ag-input',
+  tagName: "ag-input",
   elementClass: AgInput,
   react: React,
   events: {

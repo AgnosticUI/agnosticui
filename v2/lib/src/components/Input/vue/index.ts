@@ -1,35 +1,18 @@
-// v2/lib/src/components/Input/vue/index.ts
+import type { InputProps } from '../core/Input.js';
+
 export { default as VueInput } from './VueInput.vue';
 
-// Define types separately since Vue component types are handled differently
-export interface VueInputProps {
-  modelValue?: string;
-  label?: string;
-  labelHidden?: boolean;
-  noLabel?: boolean;
-  ariaLabel?: string;
-  type?: string;
-  value?: string;
-  placeholder?: string;
-  name?: string;
-  rows?: number;
-  cols?: number;
-  size?: 'small' | 'default' | 'large';
-  isCapsule?: boolean;
-  isRounded?: boolean;
-  isUnderlined?: boolean;
-  isUnderlinedWithBackground?: boolean;
-  isInline?: boolean;
-  hasLeftAddon?: boolean;
-  hasRightAddon?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-  readonly?: boolean;
-  invalid?: boolean;
-  errorMessage?: string;
-  helpText?: string;
-}
+/**
+ * Vue Input Props
+ * Following AgnosticUI v2 event conventions:
+ * - Omit callback props (Vue uses emits)
+ * - Support v-model:value via update:value emit
+ */
+export interface VueInputProps
+  extends Omit<
+    InputProps,
+    "onClick" | "onInput" | "onChange" | "onFocus" | "onBlur"
+  > {}
 
-// Directly reference core to satisfy the TypeScript compiler
 export { _InputFallback } from '../core/Input.js';
 export type { InputFallbackProps } from '../core/Input.js';

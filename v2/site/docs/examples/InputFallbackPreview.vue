@@ -7,9 +7,9 @@ import 'agnosticui-core/styles/framework-components.css';
 
 const props = withDefaults(defineProps<{
   label?: string;
-  labelHidden?: boolean;
+  labelHidden?: boolean | string;
   labelPosition?: 'top' | 'end' | 'bottom' | 'start';
-  noLabel?: boolean;
+  noLabel?: boolean | string;
   ariaLabel?: string;
   name?: string;
   type?: any;
@@ -18,17 +18,17 @@ const props = withDefaults(defineProps<{
   rows?: number;
   cols?: number;
   size?: 'small' | 'default' | 'large';
-  capsule?: boolean;
-  rounded?: boolean;
-  underlined?: boolean;
-  underlinedWithBackground?: boolean;
-  inline?: boolean;
+  capsule?: boolean | string;
+  rounded?: boolean | string;
+  underlined?: boolean | string;
+  underlinedWithBackground?: boolean | string;
+  inline?: boolean | string;
   min?: string;
   max?: string;
-  required?: boolean;
-  disabled?: boolean;
-  readonly?: boolean;
-  invalid?: boolean;
+  required?: boolean | string;
+  disabled?: boolean | string;
+  readonly?: boolean | string;
+  invalid?: boolean | string;
   errorMessage?: string;
   helpText?: string;
   slotAddonLeft?: string;
