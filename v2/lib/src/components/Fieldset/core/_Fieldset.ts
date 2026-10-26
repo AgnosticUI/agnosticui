@@ -11,8 +11,10 @@
  * @csspart ag-content - The content wrapper div
  */
 
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
+import styles from './fieldset-structure.module.css';
+import structuralStylesText from './fieldset-structure.module.css?inline';
 
 /**
  * Interface for AgFieldset properties.
@@ -53,54 +55,8 @@ export interface FieldsetProps {
  * @element ag-fieldset
  */
 export class AgFieldset extends LitElement implements FieldsetProps {
-  static styles = css`
-    :host {
-      display: block;
-    }
-
-    .ag-fieldset {
-      border: 0;
-      padding: 0;
-      margin: 0;
-      min-inline-size: auto;
-    }
-
-    .ag-fieldset--bordered {
-      border: var(--ag-border-width-1) solid var(--ag-border);
-      border-radius: var(--ag-radius-md);
-      padding: var(--ag-fieldset-padding, var(--ag-space-4));
-    }
-
-    .ag-fieldset--horizontal .ag-fieldset-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--ag-fieldset-gap, var(--ag-space-4));
-      align-items: flex-start;
-    }
-
-    .ag-fieldset-legend {
-      font-weight: 600;
-      font-size: var(--ag-font-size-base);
-      color: var(--ag-text-primary);
-      padding: 0;
-    }
-
-    .ag-fieldset-legend--hidden {
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      padding: 0 !important;
-      margin: -1px !important;
-      overflow: hidden !important;
-      clip: rect(0, 0, 0, 0) !important;
-      white-space: nowrap !important;
-      border: 0 !important;
-    }
-
-    .ag-fieldset-content {
-      display: block;
-    }
-  `;
+  // Treat inline text as a secure, compile-time static token
+  static styles = css`${unsafeCSS(structuralStylesText || '')}`;
 
   @property({ type: String })
   legend = '';
@@ -111,7 +67,7 @@ export class AgFieldset extends LitElement implements FieldsetProps {
   @property({ type: String, reflect: true })
   layout: 'vertical' | 'horizontal' = 'vertical';
 
-  @property({ type: Boolean, attribute: 'legend-hidden' })
+  @property({ type: Boolean, attribute: 'legend-hidden', reflect: true })
   legendHidden = false;
 
   /**
@@ -125,29 +81,36 @@ export class AgFieldset extends LitElement implements FieldsetProps {
   }
 
   render() {
+    // Section 9 Dual-Class Token Lifecycle Solution: Emits both unhashed namespaced classes
+    // and layout modular properties side-by-side onto elements to pass pre-hydration checks.
     const classes = [
       'ag-fieldset',
+      styles.fieldsetWrapper,
       this.bordered ? 'ag-fieldset--bordered' : '',
-      this.layout === 'horizontal' ? 'ag-fieldset--horizontal' : ''
+      this.bordered ? styles.fieldsetWrapperBordered : '',
+      this.layout === 'horizontal' ? 'ag-fieldset--horizontal' : '',
+      this.layout === 'horizontal' ? styles.fieldsetWrapperHorizontal : ''
     ].filter(Boolean).join(' ');
 
     const legendClasses = [
       'ag-fieldset-legend',
-      this.legendHidden ? 'ag-fieldset-legend--hidden' : ''
+      styles.fieldsetLegend,
+      this.legendHidden ? 'ag-fieldset-legend--hidden' : '',
+      this.legendHidden ? styles.fieldsetLegendHidden : ''
+    ].filter(Boolean).join(' ');
+
+    const contentClasses = [
+      'ag-fieldset-content',
+      styles.fieldsetContent
     ].filter(Boolean).join(' ');
 
     return html`
-      <fieldset
-        class="${classes}"
-        part="ag-fieldset"
-      >
-        ${this.legend ? html`
-          <legend class="${legendClasses}" part="ag-legend">
-            ${this.legend}
-          </legend>
-        ` : ''}
-
-        <div class="ag-fieldset-content" part="ag-content">
+      <fieldset class="${classes}" part="ag-fieldset">
+        ${this.legend 
+          ? html`<legend class="${legendClasses}" part="ag-legend">${this.legend}</legend>` 
+          : ''
+        }
+        <div class="${contentClasses}" part="ag-content">
           <slot></slot>
         </div>
       </fieldset>

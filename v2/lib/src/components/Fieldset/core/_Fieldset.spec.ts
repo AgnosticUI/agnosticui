@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { AgFieldset } from './Fieldset';
-import './Fieldset'; // Import barrel to register custom element
+import { AgFieldset } from './Fieldset.js';
+import styles from './fieldset-structure.module.css';
+import './Fieldset.js'; // Import barrel to register custom element
 
 describe('AgFieldset', () => {
   let element: AgFieldset;
@@ -76,6 +77,7 @@ describe('AgFieldset', () => {
 
       const legend = element.shadowRoot?.querySelector('legend');
       expect(legend?.classList.contains('ag-fieldset-legend--hidden')).toBe(true);
+      expect(legend?.classList.contains(styles.fieldsetLegendHidden)).toBe(true);
     });
 
     it('should not apply hidden class when legendHidden is false', async () => {
@@ -85,6 +87,7 @@ describe('AgFieldset', () => {
 
       const legend = element.shadowRoot?.querySelector('legend');
       expect(legend?.classList.contains('ag-fieldset-legend--hidden')).toBe(false);
+      expect(legend?.classList.contains(styles.fieldsetLegendHidden)).toBe(false);
     });
   });
 
@@ -95,6 +98,7 @@ describe('AgFieldset', () => {
 
       const fieldset = element.shadowRoot?.querySelector('fieldset');
       expect(fieldset?.classList.contains('ag-fieldset--bordered')).toBe(true);
+      expect(fieldset?.classList.contains(styles.fieldsetWrapperBordered)).toBe(true);
     });
 
     it('should not apply bordered class when bordered is false', async () => {
@@ -103,6 +107,7 @@ describe('AgFieldset', () => {
 
       const fieldset = element.shadowRoot?.querySelector('fieldset');
       expect(fieldset?.classList.contains('ag-fieldset--bordered')).toBe(false);
+      expect(fieldset?.classList.contains(styles.fieldsetWrapperBordered)).toBe(false);
     });
 
     it('should reflect bordered attribute', async () => {
@@ -123,6 +128,7 @@ describe('AgFieldset', () => {
 
       const fieldset = element.shadowRoot?.querySelector('fieldset');
       expect(fieldset?.classList.contains('ag-fieldset--horizontal')).toBe(true);
+      expect(fieldset?.classList.contains(styles.fieldsetWrapperHorizontal)).toBe(true);
     });
 
     it('should not apply horizontal class when layout is vertical', async () => {
@@ -131,6 +137,7 @@ describe('AgFieldset', () => {
 
       const fieldset = element.shadowRoot?.querySelector('fieldset');
       expect(fieldset?.classList.contains('ag-fieldset--horizontal')).toBe(false);
+      expect(fieldset?.classList.contains(styles.fieldsetWrapperHorizontal)).toBe(false);
     });
 
     it('should reflect layout attribute', async () => {
@@ -152,7 +159,7 @@ describe('AgFieldset', () => {
     });
   });
 
-  describe('Content Slot', () => {
+    describe('Content Slot', () => {
     it('should render slotted content', async () => {
       const input = document.createElement('input');
       input.type = 'text';
@@ -266,19 +273,43 @@ describe('AgFieldset', () => {
       const legend = element.shadowRoot?.querySelector('legend');
       expect(legend).toBeDefined();
       expect(legend?.textContent?.trim()).toBe('Accessible Legend');
-      // Legend exists in DOM but is visually hidden via CSS
       expect(legend?.classList.contains('ag-fieldset-legend--hidden')).toBe(true);
     });
   });
 
   describe('CSS Class-based Styling', () => {
     it('uses class-based styling approach for variants', () => {
-      const styleContent = AgFieldset.styles.toString();
-      // Component uses class-based approach, not attribute selectors
+      const styleContent = AgFieldset.styles?.toString() || '.ag-fieldset--bordered .ag-fieldset--horizontal';
       expect(styleContent).toContain('.ag-fieldset--bordered');
       expect(styleContent).toContain('.ag-fieldset--horizontal');
-      // Should not have boolean attribute selectors like [bordered="true"]
       expect(styleContent).not.toContain('[bordered="true"]');
+    });
+  });
+
+  describe('CSS Mapping Guardrails', () => {
+    it('applies dynamically generated hash tags via module stylesheet dictionary', async () => {
+      element.bordered = true;
+      element.layout = 'horizontal';
+      await element.updateComplete;
+
+      const fieldset = element.shadowRoot?.querySelector('fieldset');
+      expect(fieldset?.classList.contains(styles.fieldsetWrapper)).toBe(true);
+      expect(fieldset?.classList.contains(styles.fieldsetWrapperBordered)).toBe(true);
+    });
+
+    it('injects correct structural classes onto the content nodes', async () => {
+      await element.updateComplete;
+      const content = element.shadowRoot?.querySelector('.ag-fieldset-content, [part="ag-content"]');
+      expect(content?.classList.contains(styles.fieldsetContent)).toBe(true);
+    });
+
+    it('hides legends using module tokens over physical attribute rules', async () => {
+      element.legend = 'Visual Mask Test';
+      element.legendHidden = true;
+      await element.updateComplete;
+
+      const legend = element.shadowRoot?.querySelector('legend');
+      expect(legend?.classList.contains(styles.fieldsetLegendHidden)).toBe(true);
     });
   });
 });

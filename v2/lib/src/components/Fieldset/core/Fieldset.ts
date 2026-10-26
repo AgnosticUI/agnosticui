@@ -18,5 +18,7 @@ declare global {
   }
 }
 
-// Re-export everything from core
-export * from './_Fieldset.js';
+export { AgFieldset } from './_Fieldset.js';
+export type { FieldsetProps } from './_Fieldset.js';
+export { _FieldsetFallback } from './_FieldsetFallback.js';
+export type { FieldsetFallbackProps } from './_FieldsetFallback.js';

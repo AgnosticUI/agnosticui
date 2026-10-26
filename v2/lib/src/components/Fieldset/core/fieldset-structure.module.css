@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Fieldset Layout Geometry (Zero-Drift Isomorphic CSS Modules Source of Truth)
+   ========================================================================== */
+
+.fieldsetWrapper,
+:global(.ag-fieldset) {
+  display: block;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-inline-size: auto;
+}
+
+.fieldsetWrapperBordered,
+:global(.ag-fieldset--bordered) {
+  border: var(--ag-border-width-1) solid var(--ag-border);
+  border-radius: var(--ag-radius-md);
+  padding: var(--ag-fieldset-padding, var(--ag-space-4));
+}
+
+.fieldsetContent,
+:global(.ag-fieldset-content) {
+  display: block;
+}
+
+/* Flat Concatenation Sibling Triggers without top-level nesting blocks */
+.fieldsetWrapperHorizontal .fieldsetContent,
+:global(.ag-fieldset--horizontal) :global(.ag-fieldset-content) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ag-fieldset-gap, var(--ag-space-4));
+  align-items: flex-start;
+}
+
+.fieldsetLegend,
+:global(.ag-fieldset-legend) {
+  font-weight: 600;
+  font-size: var(--ag-font-size-base);
+  color: var(--ag-text-primary);
+  padding: 0;
+}
+
+/* Screen-reader only accessible clip mask */
+.fieldsetLegendHidden,
+:global(.ag-fieldset-legend--hidden) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

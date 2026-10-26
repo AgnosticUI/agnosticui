@@ -21,15 +21,47 @@ A semantic fieldset component that groups related form controls with an optional
   </template>
 </FrameworkExample>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes an **Isomorphic Architecture** to support server-first workflows (e.g. TanStack Start, Remix, Nuxt). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+### Standard Stacked Configuration
+
+<FieldsetFallbackPreview variant="vertical" />
+
+### Mandatory Horizontal Row Layout
+
+<FieldsetFallbackPreview variant="horizontal" />
+
+
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import FieldsetExamples from '../examples/FieldsetExamples.vue'
+import FieldsetFallbackPreview from '../examples/FieldsetFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/FieldsetLitExamples.js'
 import vueCode from '../examples/FieldsetExamples.vue?raw'
 import litCode from '../examples/FieldsetLitExamples.js?raw'
 import reactCode from '../examples/FieldsetReactExamples.jsx?raw'
 </script>
+
+### Handling Pre-selected / Form States during Hydration
+
+```vue
+<!-- Default configuration layout state -->
+<FieldsetFallbackPreview legend="Profile Meta Options" />
+```
+
+If a user loads a page where a validation round already failed or an edit form context exists, pass the data directly into the properties. The fallback engine cleanly maps the text parameters to lock the layout hashes securely on the server before client-side hydration completes.
+
+```vue
+<!-- Hydration bound configuration layout -->
+<FieldsetFallbackPreview
+  :legend="activeSection || '- Section Group -'"
+  :bordered="isBordered"
+  :layout="activeLayout"
+/>
+```
 
 ## Usage
 
