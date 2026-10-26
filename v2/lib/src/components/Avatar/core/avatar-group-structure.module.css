@@ -1,0 +1,30 @@
+/* ==========================================================================
+   AvatarGroup Layout Geometry (Zero-Drift Isomorphic Source of Truth)
+   ========================================================================== */
+
+.avatarGroupWrapper,
+:global(.ag-avatar-group) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Overlap avatars except the first one */
+/* Flat active state and sibling selectors without top-level nesting blocks */
+.avatarGroupWrapper :global(ag-avatar:not(:first-child)),
+:global(.ag-avatar-group) :global(.ag-avatar:not(:first-child)) {
+  margin-inline-start: calc(-1 * 0.625rem);
+}
+
+/* Optional: Add z-index stacking so later avatars appear on top when hovered */
+.avatarGroupWrapper :global(ag-avatar),
+:global(.ag-avatar-group) :global(.ag-avatar) {
+  transition: transform 0.2s ease;
+  position: relative;
+}
+
+.avatarGroupWrapper :global(ag-avatar:hover),
+:global(.ag-avatar-group) :global(.ag-avatar:hover) {
+  transform: translateY(-2px);
+  z-index: 10;
+}

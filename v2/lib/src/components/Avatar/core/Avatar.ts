@@ -1,5 +1,10 @@
+/**
+ * AgnosticUI v2 Avatar Registry Barrel
+ * Coordinates custom element registration for both individual avatars and groupings.
+ */
+
 import { Avatar } from './_Avatar.js';
-import { AvatarGroup } from './AvatarGroup.js';
+import { AvatarGroup } from './_AvatarGroup.js';
 
 if (!customElements.get('ag-avatar')) {
   customElements.define('ag-avatar', Avatar);
@@ -16,6 +21,6 @@ declare global {
   }
 }
 
-// Export everything from implementation
+// Export cleanly from internal implementations
 export * from './_Avatar.js';
-export { AvatarGroup } from './AvatarGroup.js';
+export * from './_AvatarGroup.js';

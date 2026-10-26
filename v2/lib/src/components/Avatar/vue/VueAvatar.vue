@@ -21,8 +21,8 @@ import type {
   AvatarSize,
   AvatarShape,
   AvatarVariant,
-} from "../core/Avatar";
-import "../core/Avatar"; // Registers the ag-avatar web component
+} from "../core/_Avatar.js";
+import "../core/Avatar.js"; // Registers the ag-avatar web component
 
 export default defineComponent({
   name: "VueAvatar",

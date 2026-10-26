@@ -1,10 +1,7 @@
 import React from "react";
 import { createComponent } from "@lit/react";
-import {
-  Avatar as AvatarElement,
-  AvatarGroup as AvatarGroupElement,
-  type AvatarProps,
-} from "../core/Avatar";
+import { Avatar as AvatarElement, type AvatarProps } from "../core/_Avatar.js";
+import { AvatarGroup as AvatarGroupElement } from "../core/_AvatarGroup.js";
 
 /**
  * React-specific props for Avatar
@@ -24,9 +21,7 @@ export const ReactAvatar = createComponent({
   tagName: "ag-avatar",
   elementClass: AvatarElement,
   react: React,
-  events: {
-    // onEventName: 'event-name',
-  },
+  events: {},
 });
 
 // Create AvatarGroup component with @lit/react
@@ -38,4 +33,8 @@ export const ReactAvatarGroup = createComponent({
 });
 
 // Re-export types
-export type { AvatarSize, AvatarShape, AvatarVariant } from "../core/Avatar";
+export type {
+  AvatarSize,
+  AvatarShape,
+  AvatarVariant,
+} from "../core/_Avatar.js";

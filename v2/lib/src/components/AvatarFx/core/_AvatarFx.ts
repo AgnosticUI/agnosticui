@@ -28,6 +28,7 @@ export class AvatarFx extends Avatar implements AvatarFxProps {
          ======================================== */
 
       /* Shimmer needs a gradient mask */
+      .ag-avatar.ag-fx-shimmer,
       .avatar.ag-fx-shimmer {
         overflow: hidden;
         -webkit-mask-image: linear-gradient(
@@ -51,16 +52,19 @@ export class AvatarFx extends Avatar implements AvatarFxProps {
       }
 
       /* Ripple needs overflow visible to show expanding ring */
+      .ag-avatar.ag-fx-ripple,
       .avatar.ag-fx-ripple {
         overflow: visible;
       }
 
       /* Highlight Sweep needs a gradient background overlay */
+      .ag-avatar.ag-fx-highlight-sweep,
       .avatar.ag-fx-highlight-sweep {
         position: relative;
         overflow: hidden;
       }
 
+      .ag-avatar.ag-fx-highlight-sweep::before,
       .avatar.ag-fx-highlight-sweep::before {
         content: '';
         position: absolute;
@@ -79,82 +83,108 @@ export class AvatarFx extends Avatar implements AvatarFxProps {
 
       /* ========================================
          FX EFFECT CLASSES
-         Applied to target element (.avatar)
+         Applied to target element (.ag-avatar / .avatar)
          ======================================== */
 
+      :host([fx="bounce"]) .ag-avatar,
       :host([fx="bounce"]) .avatar,
+      :host([fx="flip"]) .ag-avatar,
       :host([fx="flip"]) .avatar,
+      :host([fx="jelly"]) .ag-avatar,
       :host([fx="jelly"]) .avatar {
         animation-iteration-count: 1;
       }
 
       /* Hover-triggered effects */
+      :host([fx="bounce"]:hover) .ag-avatar,
       :host([fx="bounce"]:hover) .avatar {
         animation: ag-fx-bounce var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
+      :host([fx="pulse"]:hover) .ag-avatar,
       :host([fx="pulse"]:hover) .avatar {
         animation: ag-fx-pulse var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
+      :host([fx="jelly"]:hover) .ag-avatar,
       :host([fx="jelly"]:hover) .avatar {
         animation: ag-fx-jelly var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
+      :host([fx="shimmer"]:hover) .ag-avatar,
       :host([fx="shimmer"]:hover) .avatar {
         animation: ag-fx-shimmer var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
+      :host([fx="glow"]:hover) .ag-avatar,
       :host([fx="glow"]:hover) .avatar {
         animation: ag-fx-glow var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
+      :host([fx="flip"]:hover) .ag-avatar,
       :host([fx="flip"]:hover) .avatar {
         animation: ag-fx-flip var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
+      :host([fx="ripple"]:hover) .ag-avatar,
       :host([fx="ripple"]:hover) .avatar {
         animation: ag-fx-ripple var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
+      :host([fx="highlight-sweep"]:hover) .ag-avatar::before,
       :host([fx="highlight-sweep"]:hover) .avatar::before {
         animation: ag-fx-highlight-sweep var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
       /* Active/press effects */
+      .ag-avatar.ag-fx-press-pop,
       .avatar.ag-fx-press-pop {
         cursor: pointer;
       }
 
+      .ag-avatar.ag-fx-press-pop:active,
       .avatar.ag-fx-press-pop:active {
         animation: ag-fx-press-pop var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
       /* Entrance effects */
+      .ag-avatar.ag-fx-slide-in,
       .avatar.ag-fx-slide-in {
         animation: ag-fx-slide-in var(--ag-fx-duration, 200ms) var(--ag-fx-ease, ease);
       }
 
       /* Disabled state */
+      .ag-avatar.ag-fx-disabled,
       .avatar.ag-fx-disabled {
         animation: none !important;
       }
 
+      .ag-avatar.ag-fx-disabled::before,
       .avatar.ag-fx-disabled::before {
         animation: none !important;
       }
 
       /* Reduced motion support */
       @media (prefers-reduced-motion: reduce) {
+        .ag-avatar.ag-fx-bounce,
         .avatar.ag-fx-bounce,
+        .ag-avatar.ag-fx-pulse,
         .avatar.ag-fx-pulse,
+        .ag-avatar.ag-fx-jelly,
         .avatar.ag-fx-jelly,
+        .ag-avatar.ag-fx-shimmer,
         .avatar.ag-fx-shimmer,
+        .ag-avatar.ag-fx-glow,
         .avatar.ag-fx-glow,
+        .ag-avatar.ag-fx-flip,
         .avatar.ag-fx-flip,
+        .ag-avatar.ag-fx-ripple,
         .avatar.ag-fx-ripple,
+        .ag-avatar.ag-fx-highlight-sweep,
         .avatar.ag-fx-highlight-sweep,
+        .ag-avatar.ag-fx-press-pop,
         .avatar.ag-fx-press-pop,
+        .ag-avatar.ag-fx-slide-in,
         .avatar.ag-fx-slide-in {
           animation-duration: 0.01ms !important;
           transition-duration: 0.01ms !important;
@@ -213,7 +243,7 @@ export class AvatarFx extends Avatar implements AvatarFxProps {
 
   private _updateTheme() {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const targetEl = this.shadowRoot?.querySelector('.avatar');
+    const targetEl = this.shadowRoot?.querySelector('.ag-avatar') || this.shadowRoot?.querySelector('.avatar');
     if (targetEl instanceof HTMLElement) {
       targetEl.style.setProperty('--ag-fx-shadow-opacity', isDark ? '0.8' : '0.4');
 
@@ -249,7 +279,7 @@ export class AvatarFx extends Avatar implements AvatarFxProps {
   }
 
   private _applyFxClasses() {
-    const targetEl = this.shadowRoot?.querySelector('.avatar');
+    const targetEl = this.shadowRoot?.querySelector('.ag-avatar') || this.shadowRoot?.querySelector('.avatar');
     if (targetEl) {
       const classesToRemove: string[] = [];
       targetEl.classList.forEach((className: string) => {
@@ -272,7 +302,7 @@ export class AvatarFx extends Avatar implements AvatarFxProps {
   }
 
   private _applyFxCustomProperties() {
-    const targetEl = this.shadowRoot?.querySelector('.avatar');
+    const targetEl = this.shadowRoot?.querySelector('.ag-avatar') || this.shadowRoot?.querySelector('.avatar');
     if (targetEl instanceof HTMLElement) {
       targetEl.style.setProperty('--ag-fx-duration', `var(--ag-fx-duration-${this.fxSpeed})`);
       targetEl.style.setProperty('--ag-fx-ease', `var(--ag-fx-ease-${this.fxEase})`);

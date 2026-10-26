@@ -1,0 +1,120 @@
+/* ==========================================================================
+   Avatar Layout Geometry (Zero-Drift Isomorphic CSS Modules Source of Truth)
+   ========================================================================== */
+
+.avatarWrapper,
+:global(.ag-avatar) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: var(--ag-space-10);
+  height: var(--ag-space-10);
+  max-inline-size: 100%;
+  border-radius: 50%;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+/* Base Presentational & Theme Safety Targets mapped to global namespaces */
+.avatarWrapper,
+:global(.ag-avatar) {
+  background: var(--ag-background-tertiary);
+  color: var(--ag-text-primary);
+  font-size: var(--ag-font-size-base);
+}
+
+/* Sizes */
+.avatarSizeXs,
+:global(.ag-avatar--xs) {
+  width: var(--ag-space-6);
+  height: var(--ag-space-6);
+  font-size: var(--ag-font-size-xs);
+}
+
+.avatarSizeSm,
+:global(.ag-avatar--sm) {
+  width: var(--ag-space-8);
+  height: var(--ag-space-8);
+  font-size: var(--ag-font-size-sm);
+}
+
+.avatarSizeMd,
+:global(.ag-avatar--md) {
+  width: var(--ag-space-10);
+  height: var(--ag-space-10);
+  font-size: var(--ag-font-size-base);
+}
+
+.avatarSizeLg,
+:global(.ag-avatar--lg) {
+  width: var(--ag-space-12);
+  height: var(--ag-space-12);
+  font-size: var(--ag-font-size-lg);
+}
+
+.avatarSizeXl,
+:global(.ag-avatar--xl) {
+  width: var(--ag-space-14);
+  height: var(--ag-space-14);
+  font-size: var(--ag-font-size-xl);
+}
+
+/* Shapes */
+.avatarShapeCircle,
+:global(.ag-avatar--circle) {
+  border-radius: 50%;
+}
+
+.avatarShapeSquare,
+:global(.ag-avatar--square) {
+  border-radius: 0;
+}
+
+.avatarShapeRounded,
+:global(.ag-avatar--rounded) {
+  border-radius: var(--ag-radius-md);
+}
+
+/* Variants */
+:global(.ag-avatar--variant-info) {
+  background: var(--ag-primary-background);
+  color: var(--ag-primary-text);
+}
+
+:global(.ag-avatar--variant-warning) {
+  background: var(--ag-warning-background);
+  color: var(--ag-warning-text);
+}
+
+:global(.ag-avatar--variant-success) {
+  background: var(--ag-success-background);
+  color: var(--ag-success-text);
+}
+
+:global(.ag-avatar--variant-error) {
+  background: var(--ag-danger-background);
+  color: var(--ag-danger-text);
+}
+
+:global(.ag-avatar--variant-transparent) {
+  background: transparent;
+}
+
+:global(.ag-avatar--variant-monochrome) {
+  background: var(--ag-background-primary-inverted);
+  color: var(--ag-text-primary-inverted);
+}
+
+.avatarImage,
+:global(.ag-avatar-image) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarText,
+:global(.ag-avatar-text) {
+  user-select: none;
+}

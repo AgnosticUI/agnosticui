@@ -1,10 +1,11 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Avatar } from './Avatar';
+import { Avatar } from './Avatar.js'; // <-- FIX: Import from Avatar.ts to trigger custom element registration first
+import styles from './avatar-structure.module.css';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
-describe('Avatar', () => {
+describe('Avatar Structural Verification', () => {
   let container: HTMLElement;
 
   beforeEach(() => {
@@ -37,26 +38,26 @@ describe('Avatar', () => {
     expect(el).toBeInstanceOf(Avatar);
   });
 
-  it('renders text initials', async () => {
+  it('renders text initials matching token elements', async () => {
     const el = await createAvatar({ text: 'AB' });
-    const textEl = el.shadowRoot?.querySelector('.avatar-text');
+    const textEl = el.shadowRoot?.querySelector(`.${styles.avatarText}`);
     expect(textEl?.textContent).toBe('AB');
   });
 
   it('renders image when imgSrc is provided', async () => {
     const el = await createAvatar({
-      imgSrc: 'https://example.com/avatar.jpg',
+      imgSrc: '/avatar.jpg',
       imgAlt: 'User avatar',
     });
     const img = el.shadowRoot?.querySelector('img');
     expect(img).toBeTruthy();
-    expect(img?.src).toContain('avatar.jpg');
+    expect(img?.getAttribute('src')).toBe('/avatar.jpg');
     expect(img?.alt).toBe('User avatar');
   });
 
   it('renders slotted content when no text or imgSrc', async () => {
     const el = await createAvatar();
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const svg = document.createElementNS('http://w3.org', 'svg');
     el.appendChild(svg);
     await el.updateComplete;
     const slot = el.shadowRoot?.querySelector('slot');
@@ -64,10 +65,11 @@ describe('Avatar', () => {
   });
 
   describe('Sizes', () => {
-    it('applies xs size', async () => {
+    it('applies xs size classes natively', async () => {
       const el = await createAvatar({ size: 'xs' });
+      const wrapper = el.shadowRoot?.querySelector('.ag-avatar');
       expect(el.size).toBe('xs');
-      expect(el.getAttribute('size')).toBe('xs');
+      expect(wrapper?.classList.contains(styles.avatarSizeXs)).toBe(true);
     });
 
     it('applies sm size', async () => {
@@ -97,10 +99,11 @@ describe('Avatar', () => {
       expect(el.shape).toBe('circle');
     });
 
-    it('applies square shape', async () => {
+    it('applies square shape layout modules', async () => {
       const el = await createAvatar({ shape: 'square' });
+      const wrapper = el.shadowRoot?.querySelector('.ag-avatar');
       expect(el.shape).toBe('square');
-      expect(el.getAttribute('shape')).toBe('square');
+      expect(wrapper?.classList.contains(styles.avatarShapeSquare)).toBe(true);
     });
 
     it('applies rounded shape', async () => {
@@ -142,46 +145,46 @@ describe('Avatar', () => {
     });
   });
 
-  describe('Accessibility', () => {
+  describe('AccessibilityAttribute Lifecycle', () => {
     it('has role="img" by default', async () => {
       const el = await createAvatar({ text: 'AB' });
-      const avatar = el.shadowRoot?.querySelector('.avatar');
+      const avatar = el.shadowRoot?.querySelector('.ag-avatar');
       expect(avatar?.getAttribute('role')).toBe('img');
     });
 
     it('has role="presentation" for decorative images', async () => {
-      const el = await createAvatar({ imgSrc: 'https://example.com/avatar.jpg' });
-      const avatar = el.shadowRoot?.querySelector('.avatar');
+      const el = await createAvatar({ imgSrc: '/avatar.jpg' });
+      const avatar = el.shadowRoot?.querySelector('.ag-avatar');
       expect(avatar?.getAttribute('role')).toBe('presentation');
     });
 
     it('has role="img" when imgAlt is provided', async () => {
       const el = await createAvatar({
-        imgSrc: 'https://example.com/avatar.jpg',
+        imgSrc: '/avatar.jpg',
         imgAlt: 'User',
       });
-      const avatar = el.shadowRoot?.querySelector('.avatar');
+      const avatar = el.shadowRoot?.querySelector('.ag-avatar');
       expect(avatar?.getAttribute('role')).toBe('img');
     });
 
     it('uses ariaLabel when provided', async () => {
       const el = await createAvatar({ text: 'AB', ariaLabel: 'Adam Brown' });
-      const avatar = el.shadowRoot?.querySelector('.avatar');
+      const avatar = el.shadowRoot?.querySelector('.ag-avatar');
       expect(avatar?.getAttribute('aria-label')).toBe('Adam Brown');
     });
 
     it('falls back to text for aria-label', async () => {
       const el = await createAvatar({ text: 'AB' });
-      const avatar = el.shadowRoot?.querySelector('.avatar');
+      const avatar = el.shadowRoot?.querySelector('.ag-avatar');
       expect(avatar?.getAttribute('aria-label')).toBe('AB');
     });
 
     it('falls back to imgAlt for aria-label', async () => {
       const el = await createAvatar({
-        imgSrc: 'https://example.com/avatar.jpg',
+        imgSrc: '/avatar.jpg',
         imgAlt: 'User avatar',
       });
-      const avatar = el.shadowRoot?.querySelector('.avatar');
+      const avatar = el.shadowRoot?.querySelector('.ag-avatar');
       expect(avatar?.getAttribute('aria-label')).toBe('User avatar');
     });
   });
@@ -201,7 +204,7 @@ describe('Avatar', () => {
 
     it('exposes ag-avatar-image part when imgSrc is provided', async () => {
       const el = await createAvatar({
-        imgSrc: 'https://example.com/avatar.jpg',
+        imgSrc: '/avatar.jpg',
         imgAlt: 'User',
       });
       const imagePart = el.shadowRoot?.querySelector('[part="ag-avatar-image"]');
@@ -214,7 +217,7 @@ describe('Avatar', () => {
       const el = await createAvatar({ text: 'AB' });
       el.text = 'CD';
       await el.updateComplete;
-      const textEl = el.shadowRoot?.querySelector('.avatar-text');
+      const textEl = el.shadowRoot?.querySelector(`.${styles.avatarText}`);
       expect(textEl?.textContent).toBe('CD');
     });
 

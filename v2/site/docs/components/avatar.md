@@ -2,8 +2,11 @@
 
 <AlphaWarning />
 
-
 Avatar components are used to represent users or entities in your application. They can display profile images, initials, or icons, and support multiple sizes, shapes, and color variants.
+
+## Pre-Hydration Fallback Preview
+
+<AvatarFallbackPreview />
 
 ## Examples
 
@@ -24,13 +27,13 @@ Avatar components are used to represent users or entities in your application. T
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import AvatarExamples from '../examples/AvatarExamples.vue'
+import AvatarFallbackPreview from '../examples/AvatarFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/AvatarLitExamples.js'
 import vueCode from '../examples/AvatarExamples.vue?raw'
 import litCode from '../examples/AvatarLitExamples.js?raw'
 import reactCode from '../examples/AvatarReactExamples.jsx?raw'
 </script>
-
 ## Usage
 
 ::: tip
@@ -42,6 +45,21 @@ npx ag add Avatar
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
+## Isomorphic Server Hydration Pattern
+
+When working inside server-first meta-frameworks (Astro, Next.js, Nuxt, Remix, SvelteKit), raw template blocks are processed synchronously on the server before client-side scripts download. To handle loose bindings or dynamically resolved parameters cleanly without creating unstyled layout shifting, employ dynamic fallback properties:
+
+```vue
+<template>
+  <!-- Handle missing values gracefully without virtual node processing overhead -->
+  <VueAvatar
+    :img-src="user.profilePic || ''"
+    :text="user.profilePic ? '' : (user.initials || '-')"
+    :img-alt="user.displayName"
+  />
+</template>
+```
+
 ::: details Vue
 ```vue
 <template>
@@ -49,7 +67,7 @@ The CLI copies source code directly into your project, giving you full visibilit
     <VueAvatar text="AB" />
 
     <VueAvatar
-      img-src="https://testingbot.com/free-online-tools/random-avatar/100"
+      img-src="https://testingbot.com"
       img-alt="User name"
     />
 
@@ -87,7 +105,7 @@ export default function Example() {
       <ReactAvatar text="AB" />
 
       <ReactAvatar
-        imgSrc="https://testingbot.com/free-online-tools/random-avatar/100"
+        imgSrc="https://testingbot.com"
         imgAlt="User name"
       />
 
@@ -116,7 +134,7 @@ export default function Example() {
 <ag-avatar text="AB"></ag-avatar>
 
 <ag-avatar
-  img-src="https://testingbot.com/free-online-tools/random-avatar/100"
+  img-src="https://testingbot.com"
   img-alt="User name"
 ></ag-avatar>
 
@@ -248,7 +266,6 @@ ag-avatar-group ag-avatar::part(ag-avatar) {
   <ag-avatar img-src="..." img-alt="User 2" size="lg"></ag-avatar>
 </ag-avatar-group>
 ```
-
 ## Accessibility
 
 The Avatar component is designed to be accessible by default:

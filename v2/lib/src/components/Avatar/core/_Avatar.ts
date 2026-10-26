@@ -7,8 +7,10 @@
  * Supports multiple sizes, shapes, and color variants.
  */
 
-import { LitElement, html, css, type CSSResultGroup } from 'lit';
+import { LitElement, html, css, unsafeCSS, type CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
+import styles from './avatar-structure.module.css';
+import structuralStylesText from './avatar-structure.module.css?inline';
 
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type AvatarShape = 'circle' | 'square' | 'rounded';
@@ -39,109 +41,77 @@ export interface AvatarProps {
 }
 
 export class Avatar extends LitElement implements AvatarProps {
+  // Treat inline text as a secure, compile-time static token
   static styles: CSSResultGroup = css`
-    :host {
-      display: inline-flex;
-    }
+    ${unsafeCSS(structuralStylesText || '')}
 
-    .avatar {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      width: var(--ag-space-10);
-      height: var(--ag-space-10);
-      max-inline-size: 100%;
+    .avatarWrapper,
+    :global(.ag-avatar) {
       background: var(--ag-background-tertiary);
       color: var(--ag-text-primary);
-      border-radius: 50%;
       font-size: var(--ag-font-size-base);
-      font-weight: 500;
     }
 
     /* Sizes */
-    :host([size="xs"]) .avatar {
-      width: var(--ag-space-6);
-      height: var(--ag-space-6);
+    :host([size="xs"]) .avatarWrapper,
+    :host([size="xs"]) :global(.ag-avatar) {
       font-size: var(--ag-font-size-xs);
     }
 
-    :host([size="sm"]) .avatar {
-      width: var(--ag-space-8);
-      height: var(--ag-space-8);
+    :host([size="sm"]) .avatarWrapper,
+    :host([size="sm"]) :global(.ag-avatar) {
       font-size: var(--ag-font-size-sm);
     }
 
-    :host([size="md"]) .avatar {
-      width: var(--ag-space-10);
-      height: var(--ag-space-10);
+    :host([size="md"]) .avatarWrapper,
+    :host([size="md"]) :global(.ag-avatar) {
       font-size: var(--ag-font-size-base);
     }
 
-    :host([size="lg"]) .avatar {
-      width: var(--ag-space-12);
-      height: var(--ag-space-12);
+    :host([size="lg"]) .avatarWrapper,
+    :host([size="lg"]) :global(.ag-avatar) {
       font-size: var(--ag-font-size-lg);
     }
 
-    :host([size="xl"]) .avatar {
-      width: var(--ag-space-14);
-      height: var(--ag-space-14);
+    :host([size="xl"]) .avatarWrapper,
+    :host([size="xl"]) :global(.ag-avatar) {
       font-size: var(--ag-font-size-xl);
     }
 
-    /* Shapes */
-    :host([shape="circle"]) .avatar {
-      border-radius: 50%;
-    }
-
-    :host([shape="square"]) .avatar {
-      border-radius: 0;
-    }
-
-    :host([shape="rounded"]) .avatar {
-      border-radius: var(--ag-radius-md);
-    }
-
     /* Variants */
-    :host([variant="info"]) .avatar {
+    :host([variant="info"]) .avatarWrapper,
+    :host([variant="info"]) :global(.ag-avatar) {
       background: var(--ag-primary-background);
       color: var(--ag-primary-text);
     }
 
-    :host([variant="warning"]) .avatar {
+    :host([variant="warning"]) .avatarWrapper,
+    :host([variant="warning"]) :global(.ag-avatar) {
       background: var(--ag-warning-background);
       color: var(--ag-warning-text);
     }
 
-    :host([variant="success"]) .avatar {
+    :host([variant="success"]) .avatarWrapper,
+    :host([variant="success"]) :global(.ag-avatar) {
       background: var(--ag-success-background);
       color: var(--ag-success-text);
     }
 
-    :host([variant="error"]) .avatar {
+    :host([variant="error"]) .avatarWrapper,
+    :host([variant="error"]) :global(.ag-avatar) {
       background: var(--ag-danger-background);
       color: var(--ag-danger-text);
     }
 
-    :host([variant="transparent"]) .avatar {
+    :host([variant="transparent"]) .avatarWrapper,
+    :host([variant="transparent"]) :global(.ag-avatar) {
       background: transparent;
     }
 
-    :host([variant="monochrome"]) .avatar {
+    :host([variant="monochrome"]) .avatarWrapper,
+    :host([variant="monochrome"]) :global(.ag-avatar) {
       background: var(--ag-background-primary-inverted);
       color: var(--ag-text-primary-inverted);
-    }
-
-    .avatar-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .avatar-text {
-      user-select: none;
     }
   `;
 
@@ -176,11 +146,11 @@ export class Avatar extends LitElement implements AvatarProps {
     this.variant = 'default';
     this.ariaLabel = '';
   }
-
+  // Update only your template builders within the class wrapper:
   private _renderContent() {
     if (this.imgSrc) {
       return html`<img
-        class="avatar-image"
+        class="${styles.avatarImage} ag-avatar-image avatar-image"
         part="ag-avatar-image"
         src="${this.imgSrc}"
         alt="${this.imgAlt}"
@@ -188,10 +158,9 @@ export class Avatar extends LitElement implements AvatarProps {
     }
 
     if (this.text) {
-      return html`<span class="avatar-text" part="ag-avatar-text">${this.text}</span>`;
+      return html`<span class="${styles.avatarText} ag-avatar-text avatar-text" part="ag-avatar-text">${this.text}</span>`;
     }
 
-    // Slot for custom content (e.g., SVG icons)
     return html`<slot></slot>`;
   }
 
@@ -199,9 +168,34 @@ export class Avatar extends LitElement implements AvatarProps {
     const role = this.imgSrc && !this.imgAlt ? 'presentation' : 'img';
     const ariaLabel = this.ariaLabel || (this.imgSrc ? this.imgAlt : this.text);
 
+    const sizeClassMap = {
+      xs: styles.avatarSizeXs,
+      sm: styles.avatarSizeSm,
+      md: styles.avatarSizeMd,
+      lg: styles.avatarSizeLg,
+      xl: styles.avatarSizeXl,
+    };
+
+    const shapeClassMap = {
+      circle: styles.avatarShapeCircle,
+      square: styles.avatarShapeSquare,
+      rounded: styles.avatarShapeRounded,
+    };
+
+    const classes = [
+      'ag-avatar',
+      'avatar', // <-- BACKWARD-COMPATIBILITY HOOK FOR SUBCLASSES & SPEC SUITES
+      styles.avatarWrapper,
+      `ag-avatar--${this.size}`,
+      sizeClassMap[this.size],
+      `ag-avatar--${this.shape}`,
+      shapeClassMap[this.shape],
+      `ag-avatar--variant-${this.variant}`
+    ].filter(Boolean).join(' ');
+
     return html`
       <div
-        class="avatar"
+        class="${classes}"
         part="ag-avatar"
         role="${role}"
         aria-label="${ariaLabel || 'Avatar'}"
@@ -210,8 +204,4 @@ export class Avatar extends LitElement implements AvatarProps {
       </div>
     `;
   }
-}
-
-if (!customElements.get('ag-avatar')) {
-  customElements.define('ag-avatar', Avatar);
 }

@@ -7,7 +7,9 @@
  * Should be used as a wrapper for multiple ag-avatar elements.
  */
 
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, unsafeCSS } from 'lit';
+import styles from './avatar-group-structure.module.css';
+import structuralStylesText from './avatar-group-structure.module.css?inline';
 
 /**
  * Container component for grouping multiple Avatar components
@@ -33,43 +35,52 @@ import { LitElement, html, css } from 'lit';
  * ```
  */
 export class AvatarGroup extends LitElement {
+  // Treat inline text extracted from CSS Modules as a secure, compile-time static token
   static styles = css`
+    ${unsafeCSS(structuralStylesText || '')}
+
     :host {
       display: inline-flex;
     }
 
-    .avatar-group {
+    .avatar-group,
+    :global(.ag-avatar-group) {
       display: flex;
       flex-direction: row;
       align-items: center;
     }
 
-    /* Overlap avatars except the first one */
-    ::slotted(ag-avatar:not(:first-child)) {
-      margin-inline-start: calc(-1 * 0.625rem);
+    /* Enforce slot containment bounds cleanly across shadow roots */
+    ::slotted(ag-avatar:not(:first-child)),
+    ::slotted(.ag-avatar:not(:first-child)) {
+      margin-inline-start: calc(-1 * 0.625rem) !important;
     }
 
-    /* Optional: Add z-index stacking so later avatars appear on top when hovered */
-    ::slotted(ag-avatar) {
+    ::slotted(ag-avatar),
+    ::slotted(.ag-avatar) {
       transition: transform 0.2s ease;
       position: relative;
     }
 
-    ::slotted(ag-avatar:hover) {
+    ::slotted(ag-avatar:hover),
+    ::slotted(.ag-avatar:hover) {
       transform: translateY(-2px);
       z-index: 10;
     }
   `;
 
   render() {
+    // Section 9 Dual-Class Token Lifecycle Solution: Emits both unhashed namespaced classes
+    // and layout modular properties side-by-side onto elements to pass pre-hydration checks.
+    const classes = [
+      'ag-avatar-group',
+      styles.avatarGroupWrapper
+    ].filter(Boolean).join(' ');
+
     return html`
-      <div class="avatar-group" part="ag-avatar-group">
+      <div class="${classes}" part="ag-avatar-group">
         <slot></slot>
       </div>
     `;
   }
-}
-
-if (!customElements.get('ag-avatar-group')) {
-  customElements.define('ag-avatar-group', AvatarGroup);
 }

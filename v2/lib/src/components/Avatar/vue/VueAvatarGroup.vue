@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import "../core/Avatar"; // Registers the ag-avatar-group web component
+import "../core/Avatar.js"; // Registers the ag-avatar-group web component
 
 export default defineComponent({
   name: "VueAvatarGroup",

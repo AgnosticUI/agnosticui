@@ -8,6 +8,10 @@ AvatarFx extends the core Avatar component with a handful of CSS-only micro-inte
 AvatarFx adds a few hundred lines of CSS for animation effects. It's ideal for marketing sites, landing pages, or when visual polish is a priority.
 :::
 
+## Pre-Hydration Fallback Preview
+
+<AvatarFxFallbackPreview />
+
 ## Examples
 
 <FrameworkExample
@@ -27,6 +31,7 @@ AvatarFx adds a few hundred lines of CSS for animation effects. It's ideal for m
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import AvatarFxExamples from '../examples/AvatarFxExamples.vue'
+import AvatarFxFallbackPreview from '../examples/AvatarFxFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/AvatarFxLitExamples.js'
 import vueCode from '../examples/AvatarFxExamples.vue?raw'
@@ -44,6 +49,10 @@ npx ag add AvatarFx
 ```
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
+
+## Isomorphic Motion Lifecycle Configuration
+
+Because motion effects rely on explicit tracking selectors inside the DOM tree, ensure components initialize using unhashed backward-compatibility targets (`.ag-avatar`) when injecting custom animations during server fallback phase builds.
 
 ::: details Vue
 

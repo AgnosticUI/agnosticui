@@ -32,6 +32,7 @@ v2/lib/src/components/CustomSelect/
 ## 2. Shared Layout Sheet Constraints & DRY Colocation
 
 - Keep `[component]-structure.module.css` restricted purely to layout geometry (display properties, flex configurations, grid calculations, margins, paddings, line-heights).
+- Do not consolodate multiple CSS properties into long, single-line declarations. Write CSS rules across multiple lines, using a single level of indentation for declarations.
 - Do NOT include reactive browser styling rules (hover triggers, focus-ring outlines, border coloring animations, color schemes). These must stay in the Lit `static styles = []` array block.
 
 ### Isomorphic Selector Colocation (The DRY Rule)
@@ -200,3 +201,36 @@ npm run docs:build && npm run docs:preview
 ```
 
 - **Validation Rule:** If the layout anomaly disappears entirely in the static distribution preview environment, the architecture is sound. The artifact is a known development server streaming DX anomaly with zero impact on downstream client distribution layers.
+
+## 10. Comment Preservation Guardrail (Zero-Stripping Rule)
+
+To prevent code comprehension regressions, maintain downstream developer visibility, and ensure component discoverability, all file refactoring passes must respect existing documentation:
+
+- **TSDoc / JSDoc Blocks:** Never strip, truncate, or omit documentation headers (`/** ... */`), custom type descriptions, or `@csspart` annotations.
+- **Inline Comments:** Retain all one-line and multi-line comments (`// ...` or `/* ... */`) that explain architectural intent, engine choices, or structural safety warnings.
+- **Transference:** Carry over all original comment structures exactly as written whenever splitting, refactoring, or wrapping code into target framework files.
+
+## 11. Local Quality Gate & Distribution Verification (Human-in-the-Loop)
+
+To guarantee that isomorphic refactoring passes do not introduce module resolution defects, runtime regressions, or broken build configurations, a strict local pipeline validation must be met.
+
+### Execution Timeline Constraints
+This pipeline **MUST** be enforced at this exact temporal boundary:
+1. **AFTER** all core component directory files (`v2/lib/src/components/[component]/*`) have been completely refactored.
+2. **BEFORE** starting any integration or documentation layout work on the VitePress site files (`v2/site/*`).
+
+### 🛑 AI Breakpoint & Mandated Execution Stream
+The AI **MUST STOP** generation immediately at this checkpoint. It is strictly forbidden to generate VitePress or site documentation files until the human engineer runs the verification command sequence locally and provides the success logs.
+
+Instruct the human engineer to execute this exact stream:
+
+```bash
+npm run lint && npm run typecheck && npm run test && npm run build && npm pack
+```
+
+### Downstream Distribution Criteria
+- **Lint Check:** Code must pass structural syntax guidelines with zero style-rule exclusions or errors.
+- **Type Safety:** Compilation checks must yield zero hidden implicitly-declared `any` assignment gate blocks.
+- **Test Integrity:** Component test spec suites must achieve complete assertion coverage with no skipped blocks.
+- **Build Pass:** Build processes must cleanly map CSS Modules into isolated global chunks without warnings.
+- **Tarball Inspection:** The generated `.tgz` archive must be unpacked locally to verify that all framework barrel index paths execute and resolve correctly.
