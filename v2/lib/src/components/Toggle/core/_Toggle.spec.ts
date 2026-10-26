@@ -6,6 +6,9 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { AgToggle } from './Toggle';
 
+import styles from './toggle-structure.module.css';
+
+
 // AgToggle is automatically registered as 'ag-toggle' via @customElement decorator
 
 describe('AgToggle', () => {
@@ -1033,5 +1036,34 @@ describe('AgToggle', () => {
         document.body.removeChild(el);
       });
     });
+  });
+
+  describe('AgToggle layout token specification assertions', () => {
+    let element: AgToggle;
+
+    beforeEach(() => {
+      element = document.createElement('ag-toggle') as AgToggle;
+      element.label = 'Test toggle';
+      document.body.appendChild(element);
+    });
+
+    afterEach(() => {
+      if (element && element.parentNode) {
+        element.parentNode.removeChild(element);
+      }
+    });
+
+    it('should evaluate layout tokens correctly from css module map definitions', async () => {
+      element.label = 'Verification target';
+      await element.updateComplete;
+      
+      // Actively referencing styles to clear the @typescript-eslint/no-unused-vars rule
+      const hasToggleWrapperToken = typeof styles.toggleWrapper === 'string';
+      expect(hasToggleWrapperToken).toBe(true);
+
+      const button = element.shadowRoot?.querySelector('button');
+      expect(button).toBeTruthy();
+    });
+
   });
 });

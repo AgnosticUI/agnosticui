@@ -1,0 +1,153 @@
+/* ==========================================================================
+   1. Isomorphic Layout Structural Wrapper & Geometry
+   ========================================================================== */
+
+.toggleContainer,
+:global(.ag-toggle-container) {
+  display: block;
+}
+
+.toggleWrapper,
+:global(.ag-toggle-wrapper) {
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  border-radius: var(--ag-focus-border-radius);
+  transition: all var(--ag-transition-duration) ease;
+}
+
+.toggleTrack,
+:global(.ag-toggle__track) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 9999px;
+  transition: inherit;
+  background: var(--ag-neutral-300);
+  border: 1px solid transparent;
+  width: var(--toggle-width, 40px);
+  height: var(--toggle-height, 20px);
+}
+
+.toggleHandle,
+:global(.ag-toggle__handle) {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 2px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  transition: transform var(--ag-transition-duration) ease;
+  background: var(--ag-white);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: var(--handle-size, 18px);
+  height: var(--handle-size, 18px);
+}
+
+/* ==========================================================================
+   2. Visual Baseline Tonal Identity & Variants
+   ========================================================================== */
+
+.variantSuccess,
+:global(.ag-toggle--success) {
+  --ag-toggle-active-bg: var(--ag-success);
+}
+
+.variantWarning,
+:global(.ag-toggle--warning) {
+  --ag-toggle-active-bg: var(--ag-warning);
+}
+
+.variantDanger,
+:global(.ag-toggle--danger) {
+  --ag-toggle-active-bg: var(--ag-danger);
+}
+
+.variantMonochrome,
+:global(.ag-toggle--monochrome) {
+  --ag-toggle-active-bg: var(--ag-background-primary-inverted);
+}
+
+/* ==========================================================================
+   3. Size Layout Geometry Matrices
+   ========================================================================== */
+
+.sizeXs,
+:global(.ag-toggle--xs) {
+  --toggle-width: 28px;
+  --toggle-height: 14px;
+  --handle-size: 12px;
+}
+
+.sizeSm,
+:global(.ag-toggle--sm) {
+  --toggle-width: 34px;
+  --toggle-height: 17px;
+  --handle-size: 15px;
+}
+
+.sizeMd,
+:global(.ag-toggle--md) {
+  --toggle-width: 40px;
+  --toggle-height: 20px;
+  --handle-size: 18px;
+}
+
+.sizeLg,
+:global(.ag-toggle--lg) {
+  --toggle-width: 48px;
+  --toggle-height: 24px;
+  --handle-size: 22px;
+}
+
+.sizeXl,
+:global(.ag-toggle--xl) {
+  --toggle-width: 56px;
+  --toggle-height: 28px;
+  --handle-size: 26px;
+}
+
+/* ==========================================================================
+   4. Active Interactive State Engines
+   
+   WHY ARE !important OVERRIDES USED HERE?
+   During the brief hydration phase, server fallback classes and incoming dynamic 
+   hashed tokens exist on elements at the same time. The !important flag acts as an 
+   insurance policy. It defeats browser paint race conditions and guards external 
+   ejected consumers from unexpected toolchain specificity rules.
+   ========================================================================== */
+
+/* --- Track Active Paint Controls --- */
+:host([checked]) .toggleTrack,
+.toggleWrapper[aria-checked="true"] .toggleTrack,
+:global(.ag-toggle-wrapper)[aria-checked="true"] :global(.ag-toggle__track) {
+  background: var(--ag-toggle-active-bg, var(--ag-primary)) !important;
+}
+
+/* --- Handle Horizontal Translation Active States --- */
+:host([checked]) .toggleHandle,
+.toggleWrapper[aria-checked="true"] .toggleHandle,
+:global(.ag-toggle-wrapper)[aria-checked="true"] :global(.ag-toggle__handle) {
+  transform: translateY(-50%) translateX(calc(var(--toggle-width) - var(--handle-size) - 4px)) !important;
+}
+
+/* --- RTL Horizontal Translation Overrides --- */
+:host-context([dir="rtl"]):host([checked]) .toggleHandle,
+[dir="rtl"] .toggleWrapper[aria-checked="true"] .toggleHandle,
+[dir="rtl"] :global(.ag-toggle-wrapper)[aria-checked="true"] :global(.ag-toggle__handle) {
+  transform: translateY(-50%) translateX(calc(-1 * (var(--toggle-width) - var(--handle-size) - 4px))) !important;
+}
+
+/* --- Inverse Color Handle Overrides for Monochrome Theme --- */
+.variantMonochrome[aria-checked="true"] .toggleHandle,
+:global(.ag-toggle--monochrome)[aria-checked="true"] :global(.ag-toggle__handle) {
+  background-color: var(--ag-text-primary-inverted) !important;
+}
