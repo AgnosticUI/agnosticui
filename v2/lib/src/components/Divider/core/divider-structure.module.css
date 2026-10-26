@@ -1,0 +1,114 @@
+/* Shared Layout Source of Truth (CSS Modules Layout Geometry Only) */
+
+.dividerWrapper,
+:global(.ag-divider) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.dividerWrapper::before,
+.dividerWrapper::after,
+:global(.ag-divider)::before,
+:global(.ag-divider)::after {
+  content: "";
+  background-color: var(--ag-border);
+  height: var(--ag-border-width-2);
+  flex-grow: 1;
+}
+
+/* Sizing Variant Matrices - Horizontal */
+.dividerSizeSmall::before,
+.dividerSizeSmall::after,
+:global(.ag-divider--small)::before,
+:global(.ag-divider--small)::after {
+  height: var(--ag-border-width-1);
+}
+
+.dividerSizeLarge::before,
+.dividerSizeLarge::after,
+:global(.ag-divider--large)::before,
+:global(.ag-divider--large)::after {
+  height: var(--ag-border-width-3);
+}
+
+.dividerSizeXlarge::before,
+.dividerSizeXlarge::after,
+:global(.ag-divider--xlarge)::before,
+:global(.ag-divider--xlarge)::after {
+  height: 4px;
+}
+
+/* Alignment Configurations */
+.dividerJustifyStart::before,
+:global(.ag-divider--justify-start)::before {
+  flex-grow: 0;
+  flex-basis: 3%;
+}
+
+.dividerJustifyEnd::after,
+:global(.ag-divider--justify-end)::after {
+  flex-grow: 0;
+  flex-basis: 3%;
+}
+
+/* Slotted Content Alignment Boundaries */
+.dividerContent,
+:global(.ag-divider-content) {
+  display: inline-block;
+}
+
+.dividerHasContent,
+:global(.ag-divider--has-content) {
+  padding-inline-start: var(--ag-space-4);
+  padding-inline-end: var(--ag-space-4);
+}
+
+/* Symmetrical Vertical Configuration Chaining */
+.dividerVertical,
+:global(.ag-divider--vertical) {
+  height: 100%;
+  margin: 0 var(--ag-space-4);
+  width: var(--ag-space-4);
+  flex-direction: column;
+}
+
+.dividerVertical::before,
+.dividerVertical::after,
+:global(.ag-divider--vertical)::before,
+:global(.ag-divider--vertical)::after {
+  width: var(--ag-border-width-2);
+  height: auto;
+}
+
+/* Sizing Variant Matrices - Vertical Chaining */
+.dividerVertical.dividerSizeSmall::before,
+.dividerVertical.dividerSizeSmall::after,
+:global(.ag-divider--vertical).ag-divider--small::before,
+:global(.ag-divider--vertical).ag-divider--small::after {
+  width: var(--ag-border-width-1);
+}
+
+.dividerVertical.dividerSizeLarge::before,
+.dividerVertical.dividerSizeLarge::after,
+:global(.ag-divider--vertical).ag-divider--large::before,
+:global(.ag-divider--vertical).ag-divider--large::after {
+  width: var(--ag-border-width-3);
+}
+
+.dividerVertical.dividerSizeXlarge::before,
+.dividerVertical.dividerSizeXlarge::after,
+:global(.ag-divider--vertical).ag-divider--xlarge::before,
+:global(.ag-divider--vertical).ag-divider--xlarge::after {
+  width: 4px;
+}
+
+.dividerVertical .dividerHasContent,
+:global(.ag-divider--vertical) :global(.ag-divider--has-content) {
+  padding-inline-start: var(--ag-space-6);
+  padding-inline-end: var(--ag-space-6);
+  padding-block-start: var(--ag-space-3);
+  padding-block-end: var(--ag-space-3);
+}

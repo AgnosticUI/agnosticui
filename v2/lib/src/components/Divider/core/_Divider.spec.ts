@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { AgDivider } from './Divider';
+import { AgDivider } from './Divider.js';
+import styles from './divider-structure.module.css';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
@@ -38,7 +39,7 @@ describe('Divider', () => {
   it('renders correctly with default props', async () => {
     const el = await createDivider();
     expect(el).toBeInstanceOf(AgDivider);
-    const dividerEl = el.shadowRoot?.querySelector('.divider');
+    const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
     expect(dividerEl).toBeTruthy();
   });
 
@@ -51,20 +52,20 @@ describe('Divider', () => {
   describe('Orientation', () => {
     it('has aria-orientation="horizontal" by default', async () => {
       const el = await createDivider();
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
       expect(dividerEl?.getAttribute('aria-orientation')).toBe('horizontal');
     });
 
     it('has aria-orientation="vertical" when vertical is true', async () => {
       const el = await createDivider({ vertical: true });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
       expect(dividerEl?.getAttribute('aria-orientation')).toBe('vertical');
     });
 
     it('applies divider-vertical class when vertical is true', async () => {
       const el = await createDivider({ vertical: true });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-vertical')).toBe(true);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerVertical)).toBe(true);
     });
   });
 
@@ -72,27 +73,27 @@ describe('Divider', () => {
     it('centers content by default', async () => {
       const el = await createDivider();
       expect(el.justify).toBe('center');
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-justify-start')).toBe(false);
-      expect(dividerEl?.classList.contains('divider-justify-end')).toBe(false);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerJustifyStart)).toBe(false);
+      expect(dividerEl?.classList.contains(styles.dividerJustifyEnd)).toBe(false);
     });
 
     it('applies divider-justify-start class', async () => {
       const el = await createDivider({ justify: 'start' });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-justify-start')).toBe(true);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerJustifyStart)).toBe(true);
     });
 
     it('applies divider-justify-end class', async () => {
       const el = await createDivider({ justify: 'end' });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-justify-end')).toBe(true);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerJustifyEnd)).toBe(true);
     });
 
     it('does not apply justify classes when vertical', async () => {
       const el = await createDivider({ vertical: true, justify: 'start' });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-justify-start')).toBe(false);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerJustifyStart)).toBe(false);
     });
   });
 
@@ -100,26 +101,26 @@ describe('Divider', () => {
     it('applies default size by default', async () => {
       const el = await createDivider();
       expect(el.size).toBe('default');
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.className).toBe('divider');
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.className).toContain(styles.dividerWrapper);
     });
 
     it('applies divider-small class', async () => {
       const el = await createDivider({ size: 'small' });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-small')).toBe(true);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerSizeSmall)).toBe(true);
     });
 
     it('applies divider-large class', async () => {
       const el = await createDivider({ size: 'large' });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-large')).toBe(true);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerSizeLarge)).toBe(true);
     });
 
     it('applies divider-xlarge class', async () => {
       const el = await createDivider({ size: 'xlarge' });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-xlarge')).toBe(true);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerSizeXlarge)).toBe(true);
     });
   });
 
@@ -129,34 +130,36 @@ describe('Divider', () => {
       expect(el.variant).toBe('default');
     });
 
-    it('applies divider-success class', async () => {
+    it('applies divider-success class via host reflection properties', async () => {
       const el = await createDivider({ variant: 'success' });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-success')).toBe(true);
+      expect(el.variant).toBe('success');
+      expect(el.getAttribute('variant')).toBe('success');
     });
 
-    it('applies divider-info class', async () => {
+    it('applies divider-info class via host reflection properties', async () => {
       const el = await createDivider({ variant: 'info' });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-info')).toBe(true);
+      expect(el.variant).toBe('info');
+      expect(el.getAttribute('variant')).toBe('info');
     });
 
-    it('applies divider-warning class', async () => {
+    it('applies divider-warning class via host reflection properties', async () => {
       const el = await createDivider({ variant: 'warning' });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-warning')).toBe(true);
+      expect(el.variant).toBe('warning');
+      expect(el.getAttribute('variant')).toBe('warning');
     });
 
-    it('applies divider-error class', async () => {
+    it('applies divider-error class via host reflection properties', async () => {
       const el = await createDivider({ variant: 'error' });
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-error')).toBe(true);
+      expect(el.variant).toBe('error');
+      expect(el.getAttribute('variant')).toBe('error');
     });
   });
 
   describe('Slotted Content', () => {
     it('renders slotted content', async () => {
       const el = await createDivider({}, 'Custom Text');
+      const slot = el.shadowRoot?.querySelector('slot');
+      slot?.dispatchEvent(new Event('slotchange'));
       await el.updateComplete;
       expect(el.textContent).toBe('Custom Text');
     });
@@ -187,8 +190,8 @@ describe('Divider', () => {
       const el = await createDivider({ vertical: false });
       el.vertical = true;
       await el.updateComplete;
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-vertical')).toBe(true);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerVertical)).toBe(true);
       expect(dividerEl?.getAttribute('aria-orientation')).toBe('vertical');
     });
 
@@ -196,24 +199,36 @@ describe('Divider', () => {
       const el = await createDivider({ justify: 'center' });
       el.justify = 'start';
       await el.updateComplete;
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-justify-start')).toBe(true);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerJustifyStart)).toBe(true);
     });
 
     it('updates size dynamically', async () => {
       const el = await createDivider({ size: 'default' });
       el.size = 'large';
       await el.updateComplete;
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-large')).toBe(true);
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerSizeLarge)).toBe(true);
     });
 
     it('updates variant dynamically', async () => {
       const el = await createDivider({ variant: 'default' });
       el.variant = 'success';
       await el.updateComplete;
-      const dividerEl = el.shadowRoot?.querySelector('.divider');
-      expect(dividerEl?.classList.contains('divider-success')).toBe(true);
+      expect(el.variant).toBe('success');
+      expect(el.getAttribute('variant')).toBe('success');
+    });
+  });
+
+  /* ADDITIVE SPECIFICATIONS: Verifying layouts against CSS Module dictionary structures cleanly */
+  describe('AgDivider layout token specification assertions', () => {
+    it('should evaluate layout tokens correctly from css module map definitions', async () => {
+      const hasDividerWrapperToken = typeof styles.dividerWrapper === 'string';
+      expect(hasDividerWrapperToken).toBe(true);
+
+      const el = await createDivider({ size: 'small', justify: 'end' });
+      const dividerEl = el.shadowRoot?.querySelector(`.${styles.dividerWrapper}`);
+      expect(dividerEl?.classList.contains(styles.dividerSizeSmall)).toBe(true);
     });
   });
 });

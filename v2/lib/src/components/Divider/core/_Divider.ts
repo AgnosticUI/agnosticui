@@ -1,12 +1,16 @@
-import { LitElement, html, css } from 'lit';
-import { property } from 'lit/decorators.js';
+import { LitElement, html, css, unsafeCSS } from 'lit';
+import { property, state } from 'lit/decorators.js';
 import { hasSlotContent } from '../../../utils/slot';
+import styles from './divider-structure.module.css';
+import structuralStylesText from './divider-structure.module.css?inline';
 
 export type DividerJustify = 'center' | 'start' | 'end';
 export type DividerSize = 'default' | 'small' | 'large' | 'xlarge';
 export type DividerVariant = 'default' | 'success' | 'info' | 'warning' | 'error' | 'monochrome';
 
 /**
+ * Props interface for Divider component
+ * 
  * @csspart ag-divider - The main divider container element
  * @csspart ag-divider-content - The content container (when slotted content is provided)
  */
@@ -24,143 +28,49 @@ export interface DividerProps {
  * @slot default - Optional content to display within the divider (text, icons, etc.)
  */
 export class AgDivider extends LitElement implements DividerProps {
-  static styles = css`
-    :host {
-      display: block;
-    }
+  // Treat inline text extracted from CSS Modules as a secure, compile-time static token
+  static styles = [
+    css`${unsafeCSS(structuralStylesText)}`,
+    css`
+      :host {
+        display: block;
+      }
 
-    :host([is-vertical]) {
-      align-self: stretch;
-    }
+      :host([is-vertical]) {
+        align-self: stretch;
+      }
 
-    .divider {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      white-space: nowrap;
-      width: 100%;
-    }
+      /* Tonal Palette Colors Mapping directly onto primitive states inside host roots */
+      :host([variant="warning"]) .divider::before,
+      :host([variant="warning"]) .divider::after {
+        background-color: var(--ag-warning);
+      }
 
-    .divider::before,
-    .divider::after {
-      content: '';
-      background-color: var(--ag-border);
-      height: var(--ag-border-width-2);
-      flex-grow: 1;
-    }
+      :host([variant="error"]) .divider::before,
+      :host([variant="error"]) .divider::after {
+        background-color: var(--ag-danger);
+      }
 
-    /* Sizes - Horizontal */
-    .divider-small::before,
-    .divider-small::after {
-      height: var(--ag-border-width-1);
-    }
+      :host([variant="success"]) .divider::before,
+      :host([variant="success"]) .divider::after {
+        background-color: var(--ag-success);
+      }
 
-    .divider-large::before,
-    .divider-large::after {
-      height: var(--ag-border-width-3);
-    }
+      :host([variant="info"]) .divider::before,
+      :host([variant="info"]) .divider::after {
+        background-color: var(--ag-info);
+      }
 
-    .divider-xlarge::before,
-    .divider-xlarge::after {
-      height: 4px;
-    }
+      :host([variant="monochrome"]) .divider::before,
+      :host([variant="monochrome"]) .divider::after {
+        background-color: var(--ag-text-primary);
+      }
 
-    /* Justify */
-    .divider-justify-end::after,
-    .divider-justify-start::before {
-      flex-grow: 0;
-      flex-basis: 3%;
-    }
-
-    /* Content */
-    .divider-has-content {
-      padding-inline-start: var(--ag-space-4);
-      padding-inline-end: var(--ag-space-4);
-    }
-
-    /* Vertical */
-    .divider-vertical {
-      height: 100%;
-      margin: 0 var(--ag-space-4);
-      width: var(--ag-space-4);
-      flex-direction: column;
-    }
-
-    .divider-vertical::before,
-    .divider-vertical::after {
-      width: var(--ag-border-width-2);
-      height: auto;  /* Override the fixed height for vertical growth */
-    }
-
-    /* Sizes - Vertical */
-    .divider-vertical.divider-small::before,
-    .divider-vertical.divider-small::after {
-      width: var(--ag-border-width-1);
-    }
-
-    .divider-vertical.divider-large::before,
-    .divider-vertical.divider-large::after {
-      width: var(--ag-border-width-3);
-    }
-
-    .divider-vertical.divider-xlarge::before,
-    .divider-vertical.divider-xlarge::after {
-      width: 4px;
-    }
-
-    .divider-vertical .divider-has-content {
-      padding-inline-start: var(--ag-space-6);
-      padding-inline-end: var(--ag-space-6);
-      padding-block-start: var(--ag-space-3);
-      padding-block-end: var(--ag-space-3);
-    }
-
-    /* Variants */
-    .divider-warning::before,
-    .divider-warning::after {
-      background-color: var(--ag-warning);
-    }
-
-    .divider-warning .divider-content {
-      color: var(--ag-text-primary);
-    }
-
-    .divider-error::before,
-    .divider-error::after {
-      background-color: var(--ag-danger);
-    }
-
-    .divider-error .divider-content {
-      color: var(--ag-text-primary);
-    }
-
-    .divider-success::before,
-    .divider-success::after {
-      background-color: var(--ag-success);
-    }
-
-    .divider-success .divider-content {
-      color: var(--ag-text-primary);
-    }
-
-    .divider-info::before,
-    .divider-info::after {
-      background-color: var(--ag-info);
-    }
-
-    .divider-info .divider-content {
-      color: var(--ag-text-primary);
-    }
-
-    .divider-monochrome::before,
-    .divider-monochrome::after {
-      background-color: var(--ag-text-primary);
-    }
-
-    .divider-monochrome .divider-content {
-      color: var(--ag-text-primary);
-    }
-  `;
+      :host([variant]) .divider-content {
+        color: var(--ag-text-primary);
+      }
+    `
+  ];
 
   @property({ type: Boolean, attribute: 'is-vertical', reflect: true })
   declare vertical: boolean;
@@ -174,7 +84,7 @@ export class AgDivider extends LitElement implements DividerProps {
   @property({ type: String, reflect: true })
   declare variant: DividerVariant;
 
-  @property({ type: Boolean, state: true })
+  @state()
   private declare hasContent: boolean;
 
   constructor() {
@@ -190,35 +100,42 @@ export class AgDivider extends LitElement implements DividerProps {
     this.hasContent = hasSlotContent(e.target as HTMLSlotElement);
   }
 
-  private getClasses() {
-    const classes = ['divider'];
-
-    if (this.vertical) {
-      classes.push('divider-vertical');
-    }
-
-    if (this.justify !== 'center' && !this.vertical) {
-      classes.push(`divider-justify-${this.justify}`);
-    }
-
-    if (this.size !== 'default') {
-      classes.push(`divider-${this.size}`);
-    }
-
-    if (this.variant !== 'default') {
-      classes.push(`divider-${this.variant}`);
-    }
-
-    return classes.join(' ');
-  }
-
   render() {
     const orientation = this.vertical ? 'vertical' : 'horizontal';
-    const contentClasses = this.hasContent ? 'divider-content divider-has-content' : 'divider-content';
+
+    // Programmatically format variable casing strategies into uniform tokens
+    const sizeCapitalized = this.size.charAt(0).toUpperCase() + this.size.slice(1);
+    const justifyCapitalized = this.justify.charAt(0).toUpperCase() + this.justify.slice(1);
+
+    const sizeKey = `dividerSize${sizeCapitalized}`;
+    const justifyKey = `dividerJustify${justifyCapitalized}`;
+
+    // Section 9 Dual-Class Token Lifecycle Solution: Emits both unhashed namespaced classes
+    // and layout modular properties side-by-side onto elements to pass pre-hydration checks.
+    const wrapperClasses = [
+      'divider',
+      'ag-divider',
+      styles.dividerWrapper,
+      this.vertical ? 'divider-vertical ag-divider--vertical' : '',
+      this.vertical ? styles.dividerVertical : '',
+      this.size !== 'default' ? `divider-${this.size} ag-divider--${this.size}` : '',
+      this.size !== 'default' ? styles[sizeKey] : '',
+      (this.justify !== 'center' && !this.vertical) ? `divider-justify-${this.justify} ag-divider--justify-${this.justify}` : '',
+      (this.justify !== 'center' && !this.vertical) ? styles[justifyKey] : '',
+      this.variant !== 'default' ? `divider-${this.variant} ag-divider--variant-${this.variant}` : ''
+    ].filter(Boolean).join(' ');
+
+    const contentClasses = [
+      'divider-content',
+      'ag-divider-content',
+      styles.dividerContent,
+      this.hasContent ? 'divider-has-content ag-divider--has-content' : '',
+      this.hasContent ? styles.dividerHasContent : ''
+    ].filter(Boolean).join(' ');
 
     return html`
       <div
-        class="${this.getClasses()}"
+        class="${wrapperClasses}"
         part="ag-divider"
         role="separator"
         aria-orientation="${orientation}"
@@ -228,11 +145,5 @@ export class AgDivider extends LitElement implements DividerProps {
         </span>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ag-divider': AgDivider;
   }
 }

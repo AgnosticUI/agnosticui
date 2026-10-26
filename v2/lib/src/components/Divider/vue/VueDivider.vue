@@ -21,8 +21,8 @@ import type {
   DividerJustify,
   DividerSize,
   DividerVariant,
-} from "../core/Divider";
-import "../core/Divider"; // Registers the ag-divider web component
+} from "../core/Divider.js";
+import "../core/Divider.js"; // Registers the ag-divider web component
 
 export default defineComponent({
   name: "VueDivider",
@@ -59,14 +59,12 @@ export default defineComponent({
       await nextTick();
       syncProps();
 
-      // Manually trigger slot content detection for Vue
-      // Vue's slot content might not trigger slotchange event reliably
+      // Manually trigger slot content detection for Vue execution layers
       await nextTick();
       const webComponent = agComponent.value;
       if (webComponent) {
         const slot = webComponent.shadowRoot?.querySelector("slot");
         if (slot) {
-          // Force the slot change handler to run
           slot.dispatchEvent(new Event("slotchange"));
         }
       }

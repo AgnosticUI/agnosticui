@@ -1,14 +1,14 @@
-import { createComponent } from '@lit/react';
-import React from 'react';
-import { AgDivider, type DividerProps } from '../core/Divider';
+import React from "react";
+import { createComponent } from "@lit/react";
+import { AgDivider, type DividerProps } from "../core/Divider.js";
 
-export type ReactDividerProps = DividerProps;
+export interface ReactDividerProps extends DividerProps {
+  children?: React.ReactNode;
+}
 
 export const ReactDivider = createComponent({
-  tagName: 'ag-divider',
+  tagName: "ag-divider",
   elementClass: AgDivider,
   react: React,
-  events: {
-    // onEventName: 'event-name',
-  },
+  events: {},
 });

@@ -2,7 +2,6 @@
 
 <AlphaWarning />
 
-
 Divider components visually separate content in your application. They support both horizontal and vertical orientations, optional text or icon content, and can be customized with different sizes and color variants.
 
 ## Examples
@@ -21,9 +20,24 @@ Divider components visually separate content in your application. They support b
   </template>
 </FrameworkExample>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer **Isomorphic Architecture** to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/docs/how-ssr-fallbacks-work).
+
+### Standard Layout Orientations
+<DividerFallbackPreview text="Baseline Division Block" />
+<DividerFallbackPreview justify="start" text="Left Justified Division" size="small" />
+
+### Tonal Color Variations
+<DividerFallbackPreview variant="success" text="Success Breakpoint" size="large" />
+<DividerFallbackPreview variant="error" text="Critical Exception Area" size="xlarge" />
+
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import DividerExamples from '../examples/DividerExamples.vue'
+import DividerFallbackPreview from '../examples/DividerFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/DividerLitExamples.js'
 import vueCode from '../examples/DividerExamples.vue?raw'
@@ -131,7 +145,7 @@ export default function Example() {
 | `vertical` | `boolean` | `false` | Vertical orientation (divides content left/right instead of top/bottom) |
 | `justify` | `'center' \| 'start' \| 'end'` | `'center'` | Content justification (horizontal only). Center places content in middle, start on left, end on right |
 | `size` | `'default' \| 'small' \| 'large' \| 'xlarge'` | `'default'` | Thickness of the divider line |
-| `variant` | `'default' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'default'` | Color variant |
+| `variant` | `'default' \| 'success' \| 'info' \| 'warning' \| 'error' \| 'monochrome'` | `'default'` | Color variant |
 
 ## Events
 
@@ -227,6 +241,17 @@ The Divider component is designed to be accessible by default:
   <ag-divider vertical></ag-divider>
   <div>Right panel content</div>
 </div>
+```
+
+## Hydration Pre-Selection Workflows
+
+When implementing server-first routing setups (like Astro or SvelteKit), state indicators or titles stored in global contexts can be cleanly bound to fallbacks using logical operations to suppress layout shifts before hydration loops spin up:
+
+```vue
+<!-- Pre-selected placeholder state configuration -->
+<VueDivider :size="dynamicSize || 'default'">
+  {{ rawContextHeader || 'Default Splitter Title' }}
+</VueDivider>
 ```
 
 ## Common Patterns

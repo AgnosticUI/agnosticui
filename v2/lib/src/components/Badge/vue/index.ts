@@ -1,24 +1,10 @@
+// Section 9 Direct Core Referencing Rule: Pull the isomorphic engine directly from core
 import VueBadge from './VueBadge.vue';
-import type { BadgeVariant, BadgeSize } from '../core/Badge';
+import type { BadgeProps as VueBadgeProps } from '../core/_Badge.js';
 
 export { VueBadge };
-export type {
-  BadgeVariant as VueBadgeVariant,
-  BadgeSize as VueBadgeSize
-};
+export type { VueBadgeProps };
 
-/** Props for VueBadge */
-export interface VueBadgeProps {
-  variant?: BadgeVariant;
-  size?: BadgeSize;
-  dot?: boolean;
-  value?: number | null;
-  max?: number;
-  interactive?: boolean;
-  statusLabel?: string | null;
-  live?: "off" | "polite" | "assertive";
-  hiddenFromAT?: boolean;
-}
-
-// Direct core reference bypass for cross-hydration stability
+// Clean export linkages mapping fallback utilities to downstream meta-framework bundles
 export { _BadgeFallback } from '../core/_BadgeFallback.js';
+export type { BadgeVariant, BadgeSize } from '../core/Badge.js';

@@ -161,6 +161,8 @@ To prevent compilation bottlenecks in downstream full-stack frameworks (like Typ
 
 - **Direct Core Referencing:** The framework indexes (`react/index.ts` and `vue/index.ts`) must export the wrapper component natively, but pull the isomorphic fallback engine and its types directly from the core directory.
 
++ - **Compound Registry Enforcement:** For layout modules that utilize compound structural pairings (e.g., `Avatar` and `AvatarGroup`), the single primary public registry configuration barrel file (`v2/lib/src/components/[Component]/core/[Component].ts`) must evaluate and define both custom tags cleanly within global window custom element registries, exporting all underlying source definitions collectively.
+
 ### Example React Barrel Index (`react/index.ts`)
 
 export { default as ReactCustomSelect } from './ReactCustomSelect.jsx';
@@ -204,11 +206,14 @@ npm run docs:build && npm run docs:preview
 
 ## 10. Comment Preservation Guardrail (Zero-Stripping Rule)
 
-To prevent code comprehension regressions, maintain downstream developer visibility, and ensure component discoverability, all file refactoring passes must respect existing documentation:
+To prevent code comprehension regressions, maintain downstream developer visibility, and ensure component discoverability, all file refactoring passes must respect existing documentation, and ensure no functional capabilities are dropped during architectural shifts:
 
 - **TSDoc / JSDoc Blocks:** Never strip, truncate, or omit documentation headers (`/** ... */`), custom type descriptions, or `@csspart` annotations.
 - **Inline Comments:** Retain all one-line and multi-line comments (`// ...` or `/* ... */`) that explain architectural intent, engine choices, or structural safety warnings.
 - **Transference:** Carry over all original comment structures exactly as written whenever splitting, refactoring, or wrapping code into target framework files.
+- **Zero-Stripping Rule:** Never strip, truncate, or omit existing unit test blocks, setup assertions, cleanup routines, or external boundary checks (e.g., `axe` tests). 
+- **Additive Spec Updates:** Carry over the complete original test block body exactly as written. Refactoring passes must only update the target string lookups (e.g., swapping hardcoded literal classes for live `styles.*` module tokens) and append new isomorphic fallback engine assertions additively at the end of the file.
+
 
 ## 11. Local Quality Gate & Distribution Verification (Human-in-the-Loop)
 
