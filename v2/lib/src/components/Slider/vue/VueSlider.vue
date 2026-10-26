@@ -1,8 +1,16 @@
 <template>
   <ag-slider
     ref="sliderRef"
-    .value="value"
-    .dual="dual"
+    :min="min"
+    :max="max"
+    :step="step"
+    :size="size"
+    :label="label"
+    :ariaLabel="ariaLabel"
+    :errorMessage="errorMessage"
+    :helpText="helpText"
+    :name="name"
+    :tickStep="tickStep"
     .vertical="vertical"
     .filled="filled"
     .monochrome="monochrome"
@@ -15,16 +23,6 @@
     .invalid="invalid"
     .showTooltip="showTooltip"
     .showTicks="showTicks"
-    :min="min"
-    :max="max"
-    :step="step"
-    :size="size"
-    :label="label"
-    :ariaLabel="ariaLabel"
-    :errorMessage="errorMessage"
-    :helpText="helpText"
-    :name="name"
-    :tickStep="tickStep"
     @input="handleInput"
     @change="handleChange"
     @focus="handleFocus"
@@ -34,8 +32,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { type VueSliderProps } from "./index"; // Pull the consolidated type definitions from the barrel file
+import { ref, watch, onMounted } from "vue";
+import { type VueSliderProps } from "./index";
 import "../core/Slider";
 
 const props = withDefaults(defineProps<VueSliderProps>(), {
@@ -75,19 +73,52 @@ const emit = defineEmits<{
 
 const sliderRef = ref<HTMLElement>();
 
+// Sync the initial baseline prop value when the component mounts onto the tree
+onMounted(() => {
+  if (sliderRef.value) {
+    (sliderRef.value as any).value = props.value;
+    (sliderRef.value as any).dual = props.dual;
+  }
+});
+
+// Watch reactive props changes to completely eliminate cross-framework value mutation desyncs
+watch(
+  () => props.value,
+  (newValue) => {
+    if (sliderRef.value && (sliderRef.value as any).value !== newValue) {
+      (sliderRef.value as any).value = newValue;
+    }
+  }
+);
+
+watch(
+  () => props.dual,
+  (newDual) => {
+    if (sliderRef.value) {
+      (sliderRef.value as any).dual = newDual;
+    }
+  }
+);
+
 const handleInput = (event: Event) => {
-  const customEvent = event as CustomEvent<{
-    value: number | [number, number];
-  }>;
-  emit("input", customEvent.detail);
-  emit("update:value", customEvent.detail.value);
+  const customEvent = event as CustomEvent<{ value: number | [number, number] }>;
+  
+  const targetValue = customEvent.detail && customEvent.detail.value !== undefined
+    ? customEvent.detail.value 
+    : (event.target as any).value;
+
+  emit("input", { value: targetValue });
+  emit("update:value", targetValue);
 };
 
 const handleChange = (event: Event) => {
-  const customEvent = event as CustomEvent<{
-    value: number | [number, number];
-  }>;
-  emit("change", customEvent.detail);
+  const customEvent = event as CustomEvent<{ value: number | [number, number] }>;
+  
+  const targetValue = customEvent.detail && customEvent.detail.value !== undefined
+    ? customEvent.detail.value 
+    : (event.target as any).value;
+
+  emit("change", { value: targetValue });
 };
 
 const handleFocus = (event: FocusEvent) => {

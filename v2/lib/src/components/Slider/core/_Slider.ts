@@ -137,8 +137,7 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
     this._handlePointerMove = this._handlePointerMove.bind(this);
     this._handlePointerUp = this._handlePointerUp.bind(this);
   }
-
-    @property({ type: String }) declare label: string;
+  @property({ type: String }) declare label: string;
   @property({ type: String, attribute: 'label-position' }) labelPosition: LabelPosition = 'top';
   @property({ type: Boolean, attribute: 'label-hidden' }) declare labelHidden: boolean;
   @property({ type: Boolean, attribute: 'no-label' }) declare noLabel: boolean;
@@ -199,8 +198,10 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
       if (clampedMin !== this.value[0] || clampedMax !== this.value[1]) {
         this.value = [clampedMin, clampedMax];
       }
-    } else if (!this.dual && typeof this.value === 'number') {
-      const clamped = this._clampValue(this.value);
+    } else if (!this.dual) {
+      // Force scalar arrays or un-initialized objects back to smooth type numbers safely
+      const targetValue = Array.isArray(this.value) ? this.value[0] : this.value;
+      const clamped = this._clampValue(Number(targetValue || 0));
       if (clamped !== this.value) {
         this.value = clamped;
       }
@@ -257,7 +258,8 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
         formValue.append(this.name, this.value[0].toString());
         formValue.append(this.name, this.value[1].toString());
       } else {
-        formValue.append(this.name, this.value.toString());
+        const fallbackValue = Array.isArray(this.value) ? this.value[0] : this.value;
+        formValue.append(this.name, (fallbackValue || 0).toString());
       }
       this._internals.setFormValue(formValue);
     } else {
@@ -268,7 +270,7 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
 
   private get _values(): [number, number] {
     if (Array.isArray(this.value)) return this.value;
-    return [this.min, this.value];
+    return [this.min, Number(this.value || 0)];
   }
 
   private _getPercentage(value: number): number {
@@ -303,9 +305,10 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
 
   private _announceValue(value: number | [number, number]) {
     if (!this._liveRegion) return;
-    const announcement = this.dual && Array.isArray(value)
+    const isArr = Array.isArray(value);
+    const announcement = this.dual && isArr
       ? `Range selected from ${value[0]} to ${value[1]}`
-      : `Value set to ${value}`;
+      : `Value set to ${isArr ? value[0] : value}`;
     setTimeout(() => {
       if (this._liveRegion) {
         this._liveRegion.textContent = announcement;
@@ -313,6 +316,7 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
       }
     }, 50);
   }
+
   private _handleThumbPointerDown(e: PointerEvent, thumbType: 'min' | 'max' | 'single') {
     if (this.disabled || this.readonly) return;
     const track = this._track;
@@ -385,8 +389,9 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
         }
       }
       if (newValue[0] > newValue[1]) newValue = [newValue[1], newValue[0]] as [number, number];
-    } else if (!this.dual && typeof newValue === 'number') {
-      newValue = this._clampValue(newValue);
+    } else if (!this.dual) {
+      const singleValue = Array.isArray(newValue) ? newValue[0] : newValue;
+      newValue = this._clampValue(Number(singleValue || 0));
     }
     this.value = newValue;
     this._updateFormValue();
@@ -515,6 +520,7 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
       </label>
     `;
   }
+
   render() {
     const values = this._values;
     const describedBy = buildAriaDescribedBy({
