@@ -325,63 +325,63 @@ Dot badges are small circular indicators perfect for status:
 
 ## Common Patterns
 
-### Positioning Badges
+### Notification Badge on Button
 
-::: tip
-You can control the badge placement with CSS. To apply absolute positioning to the badge, be sure to apply `position: relative;` on the parent button container.
+::: details Vue
+
+```vue
+<VueButton bordered variant="primary" shape="capsule">
+  Notifications
+  <VueBadge variant="danger" size="sm" style="margin-left: var(--ag-space-1);">
+    99+
+  </VueBadge>
+</VueButton>
+```
+
 :::
 
-#### Inside Buttons (as content)
+### Badge on Icon
 
-<div class="mbe4" style="display: flex; gap: 1rem; align-items: center;">
-  <VueButton bordered variant="primary" shape="capsule">
-    <span style="display: inline-flex; align-items: center; gap: var(--ag-space-2);">
-      Inbox
-      <VueBadge variant="danger" size="sm">99+</VueBadge>
-    </span>
-  </VueButton>
+::: details Vue
+
+```vue
+<div style="position: relative; display: inline-block;">
+  <VueIcon size="24">
+  </VueIcon>
+  <VueBadge
+    variant="danger"
+    size="xs"
+    style="position: absolute; top: -6px; right: -7px;"
+  >
+    3
+  </VueBadge>
 </div>
+```
 
-#### Absolute Position
+:::
 
-<div class="mbe4">
-  <div style="position: relative; display: inline-block;">
-    <VueButton bordered variant="primary" shape="capsule">Inbox</VueButton>
-    <VueBadge
-      variant="danger"
-      size="sm"
-      style="position: absolute; top: -10px; right: -10px; z-index: 10;"
-    >
-      99+
-    </VueBadge>
+### Status Indicators
+
+::: details Vue
+
+```vue
+<div style="display: flex; flex-direction: column; gap: 1rem;">
+  <div style="display: flex; align-items: center; gap: 0.5rem;">
+    <VueBadge dot variant="success" statusLabel="User is online" />
+    Online
   </div>
-</div>
-
-#### Badges with Icon
-
-<div class="mbe4" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-  <div style="position: relative; display: inline-block;">
-    <VueIcon size="24">🔔</VueIcon>
-    <VueBadge variant="danger" size="xs" style="position: absolute; top: -4px; right: -4px;">3</VueBadge>
+  <div style="display: flex; align-items: center; gap: 0.5rem;">
+    <VueBadge dot variant="warning" statusLabel="User is away" />
+    Away
   </div>
-  <div style="position: relative; display: inline-block; margin-left: 0.5rem;">
-    <VueIcon size="24">🔔</VueIcon>
-    <VueBadge variant="danger" size="xs" style="position: absolute; top: -4px; right: -4px;">3</VueBadge>
-  </div>
-</div>
-
-#### Button Icon with Badge
-
-<div class="mbe4" style="display: flex; align-items: center; gap: 1rem;">
-  <div style="position: relative; display: inline-block;">
-    <VueButton bordered style="padding: var(--ag-space-2); min-width: auto;">🛒</VueButton>
-    <VueBadge variant="danger" size="xs" style="position: absolute; top: -6px; right: -6px;">3</VueBadge>
-  </div>
-  <div style="position: relative; display: inline-block;">
-    <VueButton bordered style="padding: var(--ag-space-2); min-width: auto;">🛒</VueButton>
-    <VueBadge dot variant="success" size="xs" style="position: absolute; top: -2px; right: -2px;"></VueBadge>
+  <div style="display: flex; align-items: center; gap: 0.5rem;">
+    <VueBadge dot variant="danger" statusLabel="User is busy" />
+    Busy
   </div>
 </div>
+```
+
+:::
 
 ## CSS Shadow Parts
 
@@ -413,11 +413,8 @@ import AlphaWarning from '../components/AlphaWarning.vue'
 import BadgeExamples from '../examples/BadgeExamples.vue'
 import BadgeFallbackPreview from '../examples/BadgeFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
-
-// Consolidated production package component imports
 import { VueButton } from "agnosticui-core/button/vue"
 import { VueIcon } from "agnosticui-core/icon/vue"
-
 import '../examples/BadgeLitExamples.js'
 import vueCode from '../examples/BadgeExamples.vue?raw'
 import litCode from '../examples/BadgeLitExamples.js?raw'
