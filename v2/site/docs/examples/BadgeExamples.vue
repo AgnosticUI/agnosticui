@@ -170,7 +170,7 @@
         <VueBadge
           variant="danger"
           size="xs"
-          style="position: absolute; top: -6px; right: -7px;"
+          style="position: absolute; top: -4px; right: -5px;"
         >
           3
         </VueBadge>
@@ -185,7 +185,7 @@
         <VueBadge
           variant="danger"
           size="sm"
-          style="position: absolute; top: -7px; right: -9px;"
+          style="position: absolute; top: -6px; right: -5px;"
         >
           3
         </VueBadge>
@@ -200,7 +200,7 @@
         <VueBadge
           variant="danger"
           size="md"
-          style="position: absolute; top: -7px; right: -10px;"
+          style="position: absolute; top: -7px; right: -5px;"
         >
           3
         </VueBadge>
@@ -324,7 +324,7 @@
         <VueBadge
           variant="danger"
           size="sm"
-          style="position: absolute; top: -9px; right: -13px;"
+          style="position: absolute; top: -7px; right: -7px;"
         >3</VueBadge>
       </VueButton>
     </div>
@@ -348,7 +348,7 @@
         <VueBadge
           variant="default"
           size="sm"
-          style="position: absolute; top: -9px; right: -13px;"
+          style="position: absolute; top: -7px; right: -8px;"
         >3</VueBadge>
       </VueButton>
     </div>

@@ -1,7 +1,12 @@
-import { LitElement, html, css, type CSSResultGroup } from 'lit';
-import { property } from 'lit/decorators.js';
+// import { LitElement, html, css, unsafeCSS } from 'lit';
+import { LitElement, html, css, unsafeCSS, type CSSResultGroup } from 'lit';
+
+import { property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '../../VisuallyHidden/core/VisuallyHidden.js';
+
+import styles from './badge-structure.module.css';
+import structuralStylesText from './badge-structure.module.css?inline';
 
 export interface BadgeProps {
   variant?: 'default' | 'success' | 'warning' | 'danger' | 'primary' | 'info' | 'neutral' | 'monochrome';
@@ -16,148 +21,28 @@ export interface BadgeProps {
 }
 
 export class AgBadge extends LitElement implements BadgeProps {
-  static styles: CSSResultGroup = css`
-    :host {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--ag-radius-full);
-      padding: var(--ag-space-1) var(--ag-space-2);
-      font-size: var(--ag-font-size-xs);
-      line-height: 1;
-      white-space: nowrap;
-      transition: all var(--ag-motion-fast);
-    }
-    :host([dot]) .badge {
-      width: var(--ag-space-2);
-      height: var(--ag-space-2);
-      padding: 0;
-      border-radius: 50%;
-    }
-    :host([size="xs"]) .badge {
-      font-size: calc(var(--ag-font-size-xs) - 1px);
-    }
-    :host([size="xs"]:not([dot])) .badge {
-      padding: var(--ag-space-0) var(--ag-space-1);
-    }
-    :host([size="xs"][dot]) .badge {
-      width: var(--ag-space-1);
-      height: var(--ag-space-1);
-    }
-    :host([size="sm"]) .badge {
-      font-size: var(--ag-font-size-xs);
-    }
-    :host([size="sm"]:not([dot])) .badge {
-      padding: var(--ag-space-1) var(--ag-space-2);
-    }
-    :host([size="sm"][dot]) .badge {
-      width: var(--ag-space-2);
-      height: var(--ag-space-2);
-    }
-    :host([size="md"]) .badge {
-      font-size: var(--ag-font-size-sm);
-    }
-    :host([size="md"]:not([dot])) .badge {
-      padding: var(--ag-space-1) var(--ag-space-3);
-    }
-    :host([size="md"][dot]) .badge {
-      width: var(--ag-space-3);
-      height: var(--ag-space-3);
-    }
-    :host([variant="default"]) .badge {
-      background-color: var(--ag-background-tertiary);
-      color: var(--ag-text-primary);
-    }
-    :host([variant="primary"]) .badge {
-      background-color: var(--ag-primary);
-      color: var(--ag-white);
-    }
-    :host([variant="success"]) .badge {
-      background-color: var(--ag-success);
-      color: var(--ag-white);
-    }
-    :host([variant="warning"]) .badge {
-      background-color: var(--ag-warning);
-      color: var(--ag-black);
-    }
-    :host([variant="danger"]) .badge {
-      background-color: var(--ag-danger);
-      color: var(--ag-white);
-    }
-    :host([variant="info"]) .badge {
-      background-color: var(--ag-info-dark);
-      color: var(--ag-white);
-    }
-    :host([variant="neutral"]) .badge {
-      background-color: var(--ag-neutral-200);
-      color: var(--ag-neutral-800);
-    }
-    :host([variant="monochrome"]) .badge {
-      background-color: var(--ag-background-primary-inverted);
-      color: var(--ag-text-primary-inverted);
-    }
-    :host([interactive]) .badge {
-      cursor: pointer;
-    }
-    :host([interactive]) .badge:hover {
-      filter: brightness(1.1);
-    }
-    :host([interactive]) .badge:focus-visible {
-      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
-      outline-offset: var(--ag-focus-offset);
-    }
-    :host([single-char]) .badge {
-      border-radius: 50%;
-    }
-    :host([size="xs"][single-char]) .badge {
-      padding: 1px;
-      width: calc(var(--ag-font-size-xs));
-      height: calc(var(--ag-font-size-xs));
-    }
-    :host([size="sm"][single-char]) .badge {
-      padding: 2px;
-      width: var(--ag-font-size-sm);
-      height: var(--ag-font-size-sm);
-    }
-    :host([size="md"][single-char]) .badge {
-      padding: 2px;
-      width: var(--ag-font-size-base);
-      height: var(--ag-font-size-base);
-    }
-  `;
+static override styles: CSSResultGroup = [
+    css`${unsafeCSS(structuralStylesText)}`,
+    css`
+      :host {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+    `,
+  ];
 
-  @property({ type: String, reflect: true })
-  declare variant: 'default' | 'success' | 'warning' | 'primary' | 'danger' | 'info' | 'neutral' | 'monochrome';
+  @property({ type: String, reflect: true }) declare variant: 'default' | 'success' | 'warning' | 'primary' | 'danger' | 'info' | 'neutral' | 'monochrome';
+  @property({ type: String, reflect: true }) declare size: 'xs' | 'sm' | 'md';
+  @property({ type: Boolean, reflect: true }) declare dot: boolean;
+  @property({ type: Number }) declare value: number | null;
+  @property({ type: Number }) declare max: number;
+  @property({ type: Boolean, reflect: true }) declare interactive: boolean;
+  @property({ type: String, attribute: 'status-label' }) declare statusLabel: string | null;
+  @property({ type: String }) declare live: 'off' | 'polite' | 'assertive';
+  @property({ type: Boolean, attribute: 'hidden-from-at' }) declare hiddenFromAT: boolean;
 
-  @property({ type: String, reflect: true })
-  declare size: 'xs' | 'sm' | 'md';
-
-  @property({ type: Boolean, reflect: true })
-  declare dot: boolean;
-
-  @property({ type: Number })
-  declare value: number | null;
-
-  @property({ type: Number })
-  declare max: number;
-
-  @property({ type: Boolean, reflect: true })
-  declare interactive: boolean;
-
-  @property({ type: String, attribute: 'status-label' })
-  declare statusLabel: string | null;
-
-  @property({ type: String })
-  declare live: 'off' | 'polite' | 'assertive';
-
-  // Hidden from assistive technologies
-  @property({ type: Boolean, attribute: 'hidden-from-at' })
-  declare hiddenFromAT: boolean;
+  @state() private _isSingleChar = false;
 
   constructor() {
     super();
@@ -173,12 +58,8 @@ export class AgBadge extends LitElement implements BadgeProps {
   }
 
   private get _displayValue() {
-    if (this.value === null || this.value === undefined) {
-      return '';
-    }
-    if (this.value > this.max) {
-      return `${this.max}+`;
-    }
+    if (this.value === null || this.value === undefined) return '';
+    if (this.value > this.max) return `${this.max}+`;
     return this.value.toString();
   }
 
@@ -194,14 +75,12 @@ export class AgBadge extends LitElement implements BadgeProps {
     }
   }
 
-  connectedCallback() {
+  override connectedCallback() {
     super.connectedCallback();
-    if (this.live !== 'off') {
-      this._updateLiveRegion();
-    }
+    if (this.live !== 'off') this._updateLiveRegion();
   }
 
-  updated(changedProperties: Map<string | number | symbol, unknown>) {
+  override updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated(changedProperties);
     this._checkSingleChar();
     if (changedProperties.has('value') && this.live !== 'off') {
@@ -217,15 +96,15 @@ export class AgBadge extends LitElement implements BadgeProps {
       text += nodes.map(node => node.textContent || '').join('');
     }
     text = text.replace(/\s+/g, '');
-    if (text.length === 1 && !this.dot) {
-      this.setAttribute('single-char', 'true');
-    } else {
-      this.removeAttribute('single-char');
+    const currentSingleChar = text.length === 1 && !this.dot;
+    if (this._isSingleChar !== currentSingleChar) {
+      this._isSingleChar = currentSingleChar;
+      if (currentSingleChar) {
+        this.setAttribute('single-char', 'true');
+      } else {
+        this.removeAttribute('single-char');
+      }
     }
-  }
-
-  private _onSlotChange() {
-    this._checkSingleChar();
   }
 
   private _updateLiveRegion() {
@@ -245,18 +124,42 @@ export class AgBadge extends LitElement implements BadgeProps {
     }
   }
 
-  willUpdate(changedProperties: Map<string | number | symbol, unknown>) {
+  override willUpdate(changedProperties: Map<string | number | symbol, unknown>) {
     if (changedProperties.has('dot') || changedProperties.has('statusLabel')) {
       this.hiddenFromAT = (this.dot && !this.statusLabel) || this.hiddenFromAT;
     }
   }
 
-  render() {
+  override render() {
     const tabindex = this.interactive ? '0' : undefined;
+
+    let sizeStyle = styles.sizeMd;
+    if (this.size === 'xs') sizeStyle = styles.sizeXs;
+    if (this.size === 'sm') sizeStyle = styles.sizeSm;
+
+    let variantStyle = styles.variantDefault;
+    if (this.variant === 'primary') variantStyle = styles.variantPrimary;
+    if (this.variant === 'success') variantStyle = styles.variantSuccess;
+    if (this.variant === 'warning') variantStyle = styles.variantWarning;
+    if (this.variant === 'danger') variantStyle = styles.variantDanger;
+    if (this.variant === 'info') variantStyle = styles.variantInfo;
+    if (this.variant === 'neutral') variantStyle = styles.variantNeutral;
+    if (this.variant === 'monochrome') variantStyle = styles.variantMonochrome;
+
+    const badgeClasses = [
+      styles.badge,
+      'badge',
+      sizeStyle,
+      variantStyle
+    ];
+    if (this.dot) badgeClasses.push(styles.dot, 'dot');
+    if (this.interactive) badgeClasses.push(styles.interactive);
+    if (this._isSingleChar) badgeClasses.push(styles.singleChar);
+
     return html`
       <span
         part="ag-badge"
-        class="badge"
+        class="${badgeClasses.join(' ').trim()}"
         role=${ifDefined(this.interactive ? 'button' : undefined)}
         tabindex=${ifDefined(tabindex)}
         aria-label=${ifDefined(this.statusLabel || undefined)}
@@ -265,7 +168,7 @@ export class AgBadge extends LitElement implements BadgeProps {
         @keydown=${this._handleKeydown}
       >
         ${this.dot ? '' : this._displayValue}
-        <slot @slotchange=${this._onSlotChange}></slot>
+        <slot @slotchange=${this._checkSingleChar}></slot>
       </span>
     `;
   }

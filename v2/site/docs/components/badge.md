@@ -2,17 +2,11 @@
 
 <AlphaWarning />
 
-
 The Badge component provides a versatile way to display counts, status indicators, and labels with multiple variants and sizes.
 
 ## Examples
 
-<FrameworkExample
-  component="badge"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
+<FrameworkExample component="badge" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode">
   <template #vue>
     <BadgeExamples />
   </template>
@@ -21,28 +15,42 @@ The Badge component provides a versatile way to display counts, status indicator
   </template>
 </FrameworkExample>
 
-<script setup>
-import AlphaWarning from '../components/AlphaWarning.vue'
-import BadgeExamples from '../examples/BadgeExamples.vue'
-import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
-import '../examples/BadgeLitExamples.js'
-import vueCode from '../examples/BadgeExamples.vue?raw'
-import litCode from '../examples/BadgeLitExamples.js?raw'
-import reactCode from '../examples/BadgeReactExamples.jsx?raw'
-</script>
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes an **Isomorphic Architecture** to support server-first workflows (e.g. TanStack Start, Remix, Nuxt). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+### Standard Notification Count Previews
+
+<div class="ag-form-control-layout-stack" style="display: flex; gap: 0.75rem; margin-block: 1rem;">
+  <BadgeFallbackPreview :value="5" variant="success" />
+  <BadgeFallbackPreview :value="150" :max="99" variant="danger" />
+</div>
+
+### Dot Status Indicators
+
+<div style="display: flex; align-items: center; gap: 0.5rem; margin-block: 1rem;">
+  <BadgeFallbackPreview dot variant="success" statusLabel="User is online" />
+  <span>Online</span>
+</div>
 
 ## Usage
 
+::: tip Pre-Hydration Layout Promotion
+Our fallback engines emit **both** raw unhashed namespace classes (`ag-badge-*`) and empty modular layout maps side-by-side onto elements. The baseline configuration paints immediately on server stream, and promotes seamlessly when client hydration attaches active listeners.
+:::
+
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add Badge
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
-
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -78,8 +86,7 @@ The CLI copies source code directly into your project, giving you full visibilit
     </VueButton>
 
     <div style="position: relative; display: inline-block;">
-      <VueIcon size="24">
-      </VueIcon>
+      <VueIcon size="24"> </VueIcon>
       <VueBadge
         variant="danger"
         size="xs"
@@ -102,9 +109,11 @@ export default {
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
 import { ReactBadge } from "agnosticui-core/badge/react";
 import { ReactButton } from "agnosticui-core/button/react";
@@ -140,12 +149,13 @@ export default function BadgeExample() {
 
       <ReactButton variant="primary">
         Notifications
-        <ReactBadge variant="danger" size="sm">99+</ReactBadge>
+        <ReactBadge variant="danger" size="sm">
+          99+
+        </ReactBadge>
       </ReactButton>
 
       <div style={{ position: "relative", display: "inline-block" }}>
-        <ReactIcon size="24">
-        </ReactIcon>
+        <ReactIcon size="24"></ReactIcon>
         <ReactBadge
           variant="danger"
           size="xs"
@@ -158,9 +168,11 @@ export default function BadgeExample() {
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
+
 ```html
 <script type="module">
   import "agnosticui-core/badge";
@@ -200,8 +212,7 @@ export default function BadgeExample() {
   </ag-button>
 
   <div style="position: relative; display: inline-block;">
-    <ag-icon size="24">
-    </ag-icon>
+    <ag-icon size="24"> </ag-icon>
     <ag-badge
       variant="danger"
       size="xs"
@@ -212,26 +223,27 @@ export default function BadgeExample() {
   </div>
 </section>
 ```
+
 :::
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'default' \| 'success' \| 'info' \| 'warning' \| 'danger' \| 'neutral'` | `'default'` | Visual color variant |
-| `size` | `'xs' \| 'sm' \| 'md'` | `'md'` | Size of the badge |
-| `dot` | `boolean` | `false` | Render as a small circular dot (for status indicators) |
-| `value` | `number \| null` | `null` | Numeric value to display |
-| `max` | `number` | `99` | Maximum value before showing "+" suffix (e.g., "99+") |
-| `interactive` | `boolean` | `false` | Make badge clickable/interactive |
-| `statusLabel` | `string \| null` | `null` | ARIA label for status badges (especially important for dot badges) |
-| `live` | `'off' \| 'polite' \| 'assertive'` | `'off'` | ARIA live region politeness setting for dynamic count updates |
-| `hiddenFromAT` | `boolean` | `false` | Hide from assistive technologies |
+| Prop           | Type                                                                                                  | Default     | Description                                                        |
+| -------------- | ----------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------ |
+| `variant`      | `'default' \| 'success' \| 'info' \| 'warning' \| 'danger' \| 'neutral' \| 'primary' \| 'monochrome'` | `'default'` | Visual color variant                                               |
+| `size`         | `'xs' \| 'sm' \| 'md'`                                                                                | `'md'`      | Size of the badge                                                  |
+| `dot`          | `boolean`                                                                                             | `false`     | Render as a small circular dot (for status indicators)             |
+| `value`        | `number \| null`                                                                                      | `null`      | Numeric value to display                                           |
+| `max`          | `number`                                                                                              | `99`        | Maximum value before showing "+" suffix (e.g., "99+")              |
+| `interactive`  | `boolean`                                                                                             | `false`     | Make badge clickable/interactive                                   |
+| `statusLabel`  | `string \| null`                                                                                      | `null`      | ARIA label for status badges (especially important for dot badges) |
+| `live`         | `'off' \| 'polite' \| 'assertive'`                                                                    | `'off'`     | ARIA live region politeness setting for dynamic count updates      |
+| `hiddenFromAT` | `boolean`                                                                                             | `false`     | Hide from assistive technologies                                   |
 
 ## Events
 
-| Event | Detail | Description |
-|-------|---------|-------------|
+| Event                                                      | Detail        | Description                                  |
+| ---------------------------------------------------------- | ------------- | -------------------------------------------- |
 | `badge:click` (Vue: `@badge:click`, React: `onBadgeClick`) | `CustomEvent` | Emitted when an interactive badge is clicked |
 
 **Note:** The click event is only emitted when `interactive` prop is `true`.
@@ -251,12 +263,14 @@ The Badge component follows accessibility best practices:
 For status indicator badges (dots), always provide a `statusLabel`:
 
 ::: details Vue
+
 ```vue
 <div style="display: flex; align-items: center; gap: 0.5rem;">
   <VueBadge dot variant="success" statusLabel="User is online" />
   Online
 </div>
 ```
+
 :::
 
 ### Count Badges
@@ -264,6 +278,7 @@ For status indicator badges (dots), always provide a `statusLabel`:
 For live-updating counts (like notifications), use the `live` prop:
 
 ::: details Vue
+
 ```vue
 <VueBadge
   :value="notificationCount"
@@ -273,11 +288,13 @@ For live-updating counts (like notifications), use the `live` prop:
   statusLabel="unread notifications"
 />
 ```
+
 :::
 
 ## Variant Guide
 
 ### Color Variants
+
 - **default** - Neutral dark background (default)
 - **success** - Green for positive status
 - **info** - Blue for informational status
@@ -286,6 +303,7 @@ For live-updating counts (like notifications), use the `live` prop:
 - **neutral** - Light gray for subtle badges
 
 ### Size Variants
+
 - **xs** - Extra small (ideal for icon overlays)
 - **sm** - Small (good for inline text)
 - **md** - Medium (default size)
@@ -295,74 +313,82 @@ For live-updating counts (like notifications), use the `live` prop:
 Dot badges are small circular indicators perfect for status:
 
 ::: details Vue
+
 ```vue
 <VueBadge dot variant="success" statusLabel="Available" />
 <VueBadge dot variant="warning" statusLabel="Away" />
 <VueBadge dot variant="danger" statusLabel="Busy" />
 <VueBadge dot variant="info" statusLabel="In a meeting" />
 ```
+
 :::
 
 ## Common Patterns
 
-### Notification Badge on Button
+### Positioning Badges
 
-::: details Vue
-```vue
-<VueButton bordered variant="primary" shape="capsule">
-  Notifications
-  <VueBadge variant="danger" size="sm" style="margin-left: var(--ag-space-1);">
-    99+
-  </VueBadge>
-</VueButton>
-```
+::: tip
+You can control the badge placement with CSS. To apply absolute positioning to the badge, be sure to apply `position: relative;` on the parent button container.
 :::
 
-### Badge on Icon
+#### Inside Buttons (as content)
 
-::: details Vue
-```vue
-<div style="position: relative; display: inline-block;">
-  <VueIcon size="24">
-  </VueIcon>
-  <VueBadge
-    variant="danger"
-    size="xs"
-    style="position: absolute; top: -6px; right: -7px;"
-  >
-    3
-  </VueBadge>
+<div class="mbe4" style="display: flex; gap: 1rem; align-items: center;">
+  <VueButton bordered variant="primary" shape="capsule">
+    <span style="display: inline-flex; align-items: center; gap: var(--ag-space-2);">
+      Inbox
+      <VueBadge variant="danger" size="sm">99+</VueBadge>
+    </span>
+  </VueButton>
 </div>
-```
-:::
 
-### Status Indicators
+#### Absolute Position
 
-::: details Vue
-```vue
-<div style="display: flex; flex-direction: column; gap: 1rem;">
-  <div style="display: flex; align-items: center; gap: 0.5rem;">
-    <VueBadge dot variant="success" statusLabel="User is online" />
-    Online
-  </div>
-  <div style="display: flex; align-items: center; gap: 0.5rem;">
-    <VueBadge dot variant="warning" statusLabel="User is away" />
-    Away
-  </div>
-  <div style="display: flex; align-items: center; gap: 0.5rem;">
-    <VueBadge dot variant="danger" statusLabel="User is busy" />
-    Busy
+<div class="mbe4">
+  <div style="position: relative; display: inline-block;">
+    <VueButton bordered variant="primary" shape="capsule">Inbox</VueButton>
+    <VueBadge
+      variant="danger"
+      size="sm"
+      style="position: absolute; top: -10px; right: -10px; z-index: 10;"
+    >
+      99+
+    </VueBadge>
   </div>
 </div>
-```
-:::
+
+#### Badges with Icon
+
+<div class="mbe4" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+  <div style="position: relative; display: inline-block;">
+    <VueIcon size="24">🔔</VueIcon>
+    <VueBadge variant="danger" size="xs" style="position: absolute; top: -4px; right: -4px;">3</VueBadge>
+  </div>
+  <div style="position: relative; display: inline-block; margin-left: 0.5rem;">
+    <VueIcon size="24">🔔</VueIcon>
+    <VueBadge variant="danger" size="xs" style="position: absolute; top: -4px; right: -4px;">3</VueBadge>
+  </div>
+</div>
+
+#### Button Icon with Badge
+
+<div class="mbe4" style="display: flex; align-items: center; gap: 1rem;">
+  <div style="position: relative; display: inline-block;">
+    <VueButton bordered style="padding: var(--ag-space-2); min-width: auto;">🛒</VueButton>
+    <VueBadge variant="danger" size="xs" style="position: absolute; top: -6px; right: -6px;">3</VueBadge>
+  </div>
+  <div style="position: relative; display: inline-block;">
+    <VueButton bordered style="padding: var(--ag-space-2); min-width: auto;">🛒</VueButton>
+    <VueBadge dot variant="success" size="xs" style="position: absolute; top: -2px; right: -2px;"></VueBadge>
+  </div>
+</div>
 
 ## CSS Shadow Parts
 
 Shadow Parts allow you to style internal elements of the badge from outside the shadow DOM using the `::part()` CSS selector.
 
-| Part | Description |
-|------|-------------|
+| Part       | Description                   |
+| ---------- | ----------------------------- |
 | `ag-badge` | The internal `<span>` element |
 
 ### Customization Example
@@ -380,12 +406,20 @@ Shadow Parts allow you to style internal elements of the badge from outside the 
   color: #764ba2;
   border: 2px solid #764ba2;
 }
-
-.custom-minimal-badge::part(ag-badge) {
-  background: #f9fafb;
-  color: #6b7280;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  padding: 0.25rem 0.75rem;
-}
 ```
+
+<script setup lang="ts">
+import AlphaWarning from '../components/AlphaWarning.vue'
+import BadgeExamples from '../examples/BadgeExamples.vue'
+import BadgeFallbackPreview from '../examples/BadgeFallbackPreview.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+
+// Consolidated production package component imports
+import { VueButton } from "agnosticui-core/button/vue"
+import { VueIcon } from "agnosticui-core/icon/vue"
+
+import '../examples/BadgeLitExamples.js'
+import vueCode from '../examples/BadgeExamples.vue?raw'
+import litCode from '../examples/BadgeLitExamples.js?raw'
+import reactCode from '../examples/BadgeReactExamples.jsx?raw'
+</script>
