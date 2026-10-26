@@ -2,17 +2,11 @@
 
 <AlphaWarning />
 
-
 Slider allows a user to select a value or range of values by moving a thumb along a track. It's ideal for adjusting settings like volume, brightness, price ranges, and other numeric inputs.
 
 ## Examples
 
-<FrameworkExample
-  component="slider"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
+<FrameworkExample component="slider" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode">
   <template #vue>
     <SliderExamples />
   </template>
@@ -21,27 +15,30 @@ Slider allows a user to select a value or range of values by moving a thumb alon
   </template>
 </FrameworkExample>
 
-<script setup>
-import AlphaWarning from '../components/AlphaWarning.vue'
-import SliderExamples from '../examples/SliderExamples.vue'
-import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
-import '../examples/SliderLitExamples.js'
-import vueCode from '../examples/SliderExamples.vue?raw'
-import litCode from '../examples/SliderLitExamples.js?raw'
-import reactCode from '../examples/SliderReactExamples.jsx?raw'
-</script>
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer **Isomorphic Architecture** to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/docs/how-ssr-fallbacks-work).
+
+<SliderFallbackPreview />
 
 ## Usage
 
+::: tip Pre-Hydration Layout Promotion
+Our fallback engines emit **both** raw unhashed namespace classes (`ag-slider-*`) and empty modular layout maps side-by-side onto elements. The baseline configuration paints immediately on server stream, and promotes seamlessly when client hydration attaches active listeners.
+:::
+
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add Slider
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
-
 ::: details Vue
 
 ```vue
@@ -160,8 +157,7 @@ export default function Example() {
     dual
     min="0"
     max="1000"
-    .value="${[200,"
-    800]}
+    .value="\${[200, 800]}"
   ></ag-slider>
 
   <!-- With ticks and tooltip -->
@@ -253,7 +249,7 @@ export default function Example() {
     />
 
     <p>Current volume: {{ volume }}</p>
-    <p>Price range: ${{ priceRange[0] }} - ${{ priceRange[1] }}</p>
+    <p>Price range: \({{ priceRange[0] }} -\){{ priceRange[1] }}</p>
   </section>
 </template>
 
@@ -335,7 +331,7 @@ export default function Example() {
 
       <p>Current volume: {volume}</p>
       <p>
-        Price range: ${priceRange[0]} - ${priceRange[1]}
+        Price range: \({priceRange[0]} -\){priceRange[1]}
       </p>
     </section>
   );
@@ -516,3 +512,17 @@ All variants automatically support dark mode through CSS design tokens:
 - **Tooltip**: Set `showTooltip={true}` to show current value while dragging
 - **Lit**: Properties can be set via attributes or property binding (e.g., `.value=${50}`)
 - All three implementations (Lit, React, Vue) share the same underlying styles and behavior
+
+<script setup lang="ts">
+import AlphaWarning from '../components/AlphaWarning.vue'
+import SliderFallbackPreview from '../examples/SliderFallbackPreview.vue'
+import SliderExamples from '../examples/SliderExamples.vue'
+
+// Add the missing framework example tab container import here:
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+
+import '../examples/SliderLitExamples.js'
+import vueCode from '../examples/SliderExamples.vue?raw'
+import litCode from '../examples/SliderLitExamples.js?raw'
+import reactCode from '../examples/SliderReactExamples.jsx?raw'
+</script>

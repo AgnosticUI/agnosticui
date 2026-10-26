@@ -1,27 +1,9 @@
+import { type SliderProps } from '../core/Slider';
+
+// Define the interface natively inside the barrel file to bypass Vue SFC type compilation gates
+export interface VueSliderProps extends Omit<SliderProps, 'onChange' | 'onInput' | 'onFocus' | 'onBlur'> {}
+
 export { default as VueSlider } from './VueSlider.vue';
 
-// Define types separately since Vue component types are handled differently
-export interface VueSliderProps {
-  label?: string;
-  labelHidden?: boolean;
-  noLabel?: boolean;
-  ariaLabel?: string;
-  min?: number;
-  max?: number;
-  step?: number;
-  value?: number | [number, number];
-  dual?: boolean;
-  vertical?: boolean;
-  filled?: boolean;
-  monochrome?: boolean;
-  size?: 'small' | 'default' | 'large';
-  disabled?: boolean;
-  readonly?: boolean;
-  invalid?: boolean;
-  errorMessage?: string;
-  helpText?: string;
-  name?: string;
-  showTooltip?: boolean;
-  showTicks?: boolean;
-  tickStep?: number;
-}
+// Direct core reference bypass for cross-hydration stability
+export { _SliderFallback } from '../core/_SliderFallback.js';

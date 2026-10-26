@@ -35,17 +35,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { SliderProps } from "../core/Slider";
+import { type VueSliderProps } from "./index"; // Pull the consolidated type definitions from the barrel file
 import "../core/Slider";
-
-/**
- * Vue Slider Props
- * Following AgnosticUI v2 event conventions:
- * - Omit callback props (Vue uses emits)
- * - Support v-model:value via update:value emit
- */
-export interface VueSliderProps
-  extends Omit<SliderProps, "onChange" | "onInput" | "onFocus" | "onBlur"> {}
 
 const props = withDefaults(defineProps<VueSliderProps>(), {
   label: "",
