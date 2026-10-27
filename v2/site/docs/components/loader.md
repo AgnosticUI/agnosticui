@@ -2,8 +2,7 @@
 
 <AlphaWarning />
 
-
-Brief description of what the component does and when to use it.
+Loader component displays an animated three-dot status matrix to indicate background processing states or asynchronous data transit lifecycles.
 
 ## Examples
 
@@ -21,15 +20,50 @@ Brief description of what the component does and when to use it.
   </template>
 </FrameworkExample>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer **Isomorphic Architecture** to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/docs/how-ssr-fallbacks-work).
+
+### Standard Size Options Previews
+
+<!-- Wrapped in structural grid containers to prevent layout collisions -->
+<div class="ag-form-control-layout-stack" style="display: flex; align-items: center; gap: 2rem; margin-block: 1rem;">
+  <LoaderFallbackPreview size="small" ariaLabel="Loading small assets..." />
+  <LoaderFallbackPreview size="default" ariaLabel="Loading data..." />
+  <LoaderFallbackPreview size="large" ariaLabel="Loading application engine..." />
+</div>
+
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import LoaderExamples from '../examples/LoaderExamples.vue'
+import LoaderFallbackPreview from '../examples/LoaderFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/LoaderLitExamples.js'
 import vueCode from '../examples/LoaderExamples.vue?raw'
 import litCode from '../examples/LoaderLitExamples.js?raw'
 import reactCode from '../examples/LoaderReactExamples.jsx?raw'
 </script>
+
+### Handling Dual-Class Token Lifecycle During Hydration
+
+```vue
+<!-- Default configuration fallback layout state -->
+<LoaderFallbackPreview size="default" ariaLabel="Synchronizing updates..." />
+```
+
+Our server fallback engine outputs **both** raw unhashed namespace classes (`ag-loader-*`) and empty placeholder modular mappings (`styles.*`).
+
+When your full-stack framework performs client-side hydration, the DOM reconciler checks for the presence of your compiled hash strings. Because the fallback engine pre-allocates these boundaries natively, client promotion completes with near-zero computation cost and eliminates Cumulative Layout Shift (CLS).
+
+```vue
+<!-- Hydration bound configuration layout -->
+<LoaderFallbackPreview
+  :size="isMobileViewport ? 'small' : 'large'"
+  :ariaLabel="processingMessage || 'Loading account data...'"
+/>
+```
 
 ## Usage
 
@@ -79,8 +113,8 @@ export default function Example() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `size` | `small` \| `default` \| `large` | `default` | Sets the loader size. |
-| `ariaLabel` | `string` | `Loading...` | The ARIA label for accessibility. |
+| `size` | `small` \| `default` \| `large` | `default` | Sets the dimensional scaling diameter of the loader dots. |
+| `ariaLabel` | `string` | `Loading...` | The internal progress descriptive label for assistive screen reader navigation layers. |
 
 ## Variants
 
@@ -93,13 +127,17 @@ The `loader` component has `size` variants that include: `small`, `default`, and
 | `ag-loader` | The main loader container element. |
 | `ag-loader-label` | The screen reader text element. |
 
-
-## Events
-
-| Event | Payload | Description |
-|-------|---------|-------------|
-|       |         |             |
-
 ## Accessibility
 
-This section can be filled out by the LLM agent based on the ```SpecSheet.md```.
+- Explicitly handles `role="progressbar"` within an isolated text node boundary layer to notify assistive technologies of an active loading execution state.
+- Supports customizable fallback announcements via the `ariaLabel` property, masking content safely inside screen-reader specific geometric layout frames.
+- Automatically handles reduced motion systems (`prefers-reduced-motion`) by altering the animation timing thresholds to near-zero states instantly.
+
+## When to Use
+
+**Use Loader when:**
+- Announcing background process executions where form control inputs or page context elements are blocked awaiting updates.
+- Rendering skeleton container states or infinite scrolling card pagination updates.
+
+**Consider alternatives when:**
+- Displaying numeric, quantitative progression metrics or discrete sequence steps — use Progress fields instead.

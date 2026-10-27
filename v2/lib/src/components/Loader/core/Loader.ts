@@ -10,5 +10,6 @@ declare global {
   }
 }
 
-// Export everything from implementation
 export * from './_Loader.js';
+export { _LoaderFallback } from './_LoaderFallback.js';
+export type { LoaderFallbackProps } from './_LoaderFallback.js';

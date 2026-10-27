@@ -1,0 +1,108 @@
+.loader,
+:global(.ag-loader) {
+  --loading-size: var(--ag-space-4);
+
+  position: relative;
+  display: inline-block;
+  margin-inline-start: var(--loading-size);
+  opacity: 0%;
+  animation: blink 1s infinite;
+  animation-delay: 250ms;
+}
+
+.loader,
+:global(.ag-loader),
+.loader::before,
+.loader::after,
+:global(.ag-loader)::before,
+:global(.ag-loader)::after {
+  width: calc(var(--loading-size) / 2);
+  height: calc(var(--loading-size) / 2);
+  border-radius: var(--ag-radius-md);
+  background-color: var(--loading-color, var(--ag-text-primary));
+}
+
+.loader::before,
+.loader::after,
+:global(.ag-loader)::before,
+:global(.ag-loader)::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  animation: blink 1s infinite;
+}
+
+.loader::before,
+:global(.ag-loader)::before {
+  inset-inline-start: calc(-1 * var(--loading-size));
+  animation-delay: 0s;
+}
+
+.loader::after,
+:global(.ag-loader)::after {
+  inset-inline-start: var(--loading-size);
+  animation-delay: 500ms;
+}
+
+/* Size Variants geometry updates */
+:global(ag-loader[size="small"]) .loader,
+:global(ag-loader[size="small"]).ag-loader {
+  --loading-size: var(--ag-space-3);
+}
+
+:global(ag-loader[size="large"]) .loader,
+:global(ag-loader[size="large"]).ag-loader {
+  --loading-size: var(--ag-space-5);
+}
+
+:global(ag-loader[size="large"]) .loader,
+:global(ag-loader[size="large"]) .loader::before,
+:global(ag-loader[size="large"]) .loader::after,
+:global(ag-loader[size="large"]).ag-loader,
+:global(ag-loader[size="large"]).ag-loader::before,
+:global(ag-loader[size="large"]).ag-loader::after {
+  border-radius: var(--ag-radius-lg);
+}
+
+/* Visibility State Rules */
+.loader[aria-busy="true"],
+:global(.ag-loader)[aria-busy="true"] {
+  opacity: 100%;
+}
+
+/* Base Structural Host Box Geometry */
+:global(ag-loader) {
+  display: inline-block;
+}
+
+@keyframes blink {
+  50% {
+    background-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .loader,
+  .loader::before,
+  .loader::after,
+  :global(.ag-loader),
+  :global(.ag-loader)::before,
+  :global(.ag-loader)::after {
+    animation-duration: 0.001ms !important;
+  }
+}
+
+/* Screen reader text alignment constraints */
+.loaderLabel,
+:global(.ag-loader-label) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

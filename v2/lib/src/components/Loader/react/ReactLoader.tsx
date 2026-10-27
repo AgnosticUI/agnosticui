@@ -1,14 +1,12 @@
-import { createComponent } from '@lit/react';
-import React from 'react';
-import { Loader, type LoaderProps } from '../core/Loader';
+import { createComponent } from "@lit/react";
+import React from "react";
+import { Loader } from "../core/Loader.js";
 
-export type ReactLoaderProps = LoaderProps;
+export type ReactLoaderProps = React.ComponentProps<typeof ReactLoader>;
 
 export const ReactLoader = createComponent({
-  tagName: 'ag-loader',
+  tagName: "ag-loader",
   elementClass: Loader,
   react: React,
-  events: {
-    // onEventName: 'event-name',
-  },
+  events: {},
 });

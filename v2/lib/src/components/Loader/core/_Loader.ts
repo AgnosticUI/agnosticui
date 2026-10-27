@@ -1,5 +1,7 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
+import styles from './loader-structure.module.css';
+import structuralStylesText from './loader-structure.module.css?inline';
 
 export type LoaderSize = 'small' | 'default' | 'large';
 
@@ -19,105 +21,9 @@ export interface LoaderProps {
  * @slot default - Optional text to display instead of default aria label
  */
 export class Loader extends LitElement implements LoaderProps {
-  static styles = css`
-    :host {
-      display: inline-block;
-      box-sizing: border-box;
-    }
-
-    .loader {
-      --loading-size: var(--ag-space-4); /* 1rem = 16px */
-
-      position: relative;
-      box-sizing: border-box;
-      animation: blink 1s infinite;
-      animation-delay: 250ms;
-
-      /* Make up for negative positioning */
-      margin-inline-start: var(--loading-size);
-
-      /* Initially set zero until aria-busy becomes true */
-      opacity: 0%;
-    }
-
-    .loader,
-    .loader::before,
-    .loader::after {
-      width: calc(var(--loading-size) / 2);
-      height: calc(var(--loading-size) / 2);
-      border-radius: var(--ag-radius-md);
-      background-color: var(--loading-color, var(--ag-text-primary));
-    }
-
-    /* SMALL */
-    :host([size="small"]) .loader {
-      --loading-size: var(--ag-space-3); /* 0.75rem = 12px */
-    }
-
-    /* LARGE */
-    :host([size="large"]) .loader {
-      --loading-size: var(--ag-space-5); /* 1.25rem = 20px */
-    }
-
-    :host([size="large"]) .loader,
-    :host([size="large"]) .loader::before,
-    :host([size="large"]) .loader::after {
-      border-radius: var(--ag-radius-lg);
-    }
-
-    .loader::before,
-    .loader::after {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      top: 0;
-      animation: blink 1s infinite;
-    }
-
-    .loader::before {
-      inset-inline-start: calc(-1 * var(--loading-size));
-      animation-delay: 0s;
-    }
-
-    .loader::after {
-      inset-inline-start: var(--loading-size);
-      animation-delay: 500ms;
-    }
-
-    /**
-     * Setting aria-busy to true results in corresponding opacity change to visually show loader.
-     */
-    .loader[aria-busy="true"] {
-      opacity: 100%;
-    }
-
-    @keyframes blink {
-      50% {
-        background-color: transparent;
-      }
-    }
-
-    @media (prefers-reduced-motion), (update: slow) {
-      .loader,
-      .loader::before,
-      .loader::after {
-        animation-duration: 0.001ms !important;
-      }
-    }
-
-    /* Screen reader only text */
-    .loader-label {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-  `;
+  static styles = [
+    css`${unsafeCSS(structuralStylesText)}`
+  ];
 
   @property({ type: String, reflect: true })
   size: LoaderSize = 'default';
@@ -128,20 +34,14 @@ export class Loader extends LitElement implements LoaderProps {
   render() {
     return html`
       <div
-        class="loader"
+        class="${styles.loader}"
         part="ag-loader"
         aria-busy="true"
       >
-        <span class="loader-label" role="progressbar" aria-label="Loading" part="ag-loader-label">
+        <span class="${styles.loaderLabel}" role="progressbar" aria-label="Loading" part="ag-loader-label">
           <slot>${this.ariaLabel}</slot>
         </span>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ag-loader': Loader;
   }
 }

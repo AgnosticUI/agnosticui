@@ -239,3 +239,27 @@ npm run lint && npm run typecheck && npm run test && npm run build && npm pack
 - **Test Integrity:** Component test spec suites must achieve complete assertion coverage with no skipped blocks.
 - **Build Pass:** Build processes must cleanly map CSS Modules into isolated global chunks without warnings.
 - **Tarball Inspection:** The generated `.tgz` archive must be unpacked locally to verify that all framework barrel index paths execute and resolve correctly.
+
+Here is a more concise version that retains all precise structural engineering constraints:
+
+12. VitePress Documentation Standardization
+
+Every component guide at v2/site/docs/components/[component].md must place a dedicated server verification section directly below the main <FrameworkExample> block and right above the <script setup> tag.
+
+Exact Section Text Verification
+
+markdown
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer **Isomorphic Architecture** to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/docs/how-ssr-fallbacks-work).
+Use code with caution.
+
+Structural Rules
+
+• Sandbox Container: Group fallback previews inside an HTML <div> with class="ag-form-control-layout-stack" and inline flex spacing.
+• Hydration Narrative: Directly beneath <script setup>, add a ### Handling Dual-Class Token Lifecycle During Hydration subheading. Document how mapping unhashed global classes (ag-[component]-*) side-by-side with modular mappings (styles.*) eliminates Cumulative Layout Shift (CLS).
+Would you like me to generate the git commit message for the complete Loader migration, or should we move straight to your next component?
+
+
