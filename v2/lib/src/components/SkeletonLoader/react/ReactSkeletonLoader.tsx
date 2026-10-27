@@ -14,7 +14,5 @@ export const ReactSkeletonLoader = createComponent({
   tagName: "ag-skeleton-loader",
   elementClass: AgSkeleton,
   react: React,
-  events: {
-    // No custom events for Skeleton component
-  },
+  events: {},
 });

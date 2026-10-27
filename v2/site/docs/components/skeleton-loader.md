@@ -2,17 +2,11 @@
 
 <AlphaWarning />
 
-
 Skeleton loader provides a visual placeholders while content is loading, improving perceived performance and user experience. It represents the approximate shape and size of the content that will appear.
 
 ## Examples
 
-<FrameworkExample
-  component="skeleton"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
+<FrameworkExample component="skeleton" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode">
   <template #vue>
     <SkeletonLoaderExamples />
   </template>
@@ -21,24 +15,28 @@ Skeleton loader provides a visual placeholders while content is loading, improvi
   </template>
 </FrameworkExample>
 
-<script setup>
-import AlphaWarning from '../components/AlphaWarning.vue'
-import SkeletonLoaderExamples from '../examples/SkeletonLoaderExamples.vue'
-import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
-import '../examples/SkeletonLoaderLitExamples.js'
-import vueCode from '../examples/SkeletonLoaderExamples.vue?raw'
-import litCode from '../examples/SkeletonLoaderLitExamples.js?raw'
-import reactCode from '../examples/SkeletonLoaderReactExamples.jsx?raw'
-</script>
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer **Isomorphic Architecture** to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/docs/how-ssr-fallbacks-work).
+
+<SkeletonLoaderFallbackPreview />
+
+### Handling Dual-Class Token Lifecycle During Hydration
+
+Mapping unhashed global classes (`ag-skeleton-loader-*`) side-by-side with modular mappings (`styles.*`) eliminates Cumulative Layout Shift (CLS). The server-rendered baseline elements match root asset sheets immediately on network arrival to render placeholders before the main application JavaScript bundle finishes downloading or executing in the background.
 
 ## Usage
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add SkeletonLoader
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
@@ -96,8 +94,16 @@ export default function Example() {
   import "agnosticui-core/skeleton";
 </script>
 <ag-skeleton-loader variant="text"></ag-skeleton-loader>
-<ag-skeleton-loader variant="circular" width="60px" height="60px"></ag-skeleton-loader>
-<ag-skeleton-loader variant="rectangular" width="300px" height="200px"></ag-skeleton-loader>
+<ag-skeleton-loader
+  variant="circular"
+  width="60px"
+  height="60px"
+></ag-skeleton-loader>
+<ag-skeleton-loader
+  variant="rectangular"
+  width="300px"
+  height="200px"
+></ag-skeleton-loader>
 ```
 
 :::
@@ -171,3 +177,14 @@ Skeleton loaders use semantic design tokens (`--ag-background-secondary` and `--
   border-radius: var(--ag-radius-md) !important;
 }
 </style>
+
+<script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
+import SkeletonLoaderExamples from '../examples/SkeletonLoaderExamples.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import SkeletonLoaderFallbackPreview from '../examples/SkeletonLoaderFallbackPreview.vue'
+import '../examples/SkeletonLoaderLitExamples.js'
+import vueCode from '../examples/SkeletonLoaderExamples.vue?raw'
+import litCode from '../examples/SkeletonLoaderLitExamples.js?raw'
+import reactCode from '../examples/SkeletonLoaderReactExamples.jsx?raw'
+</script>

@@ -29,13 +29,16 @@ if (!fs.existsSync(BASE_DIR)) {
   process.exit(1);
 }
 
-// 3. Scan the components directory to find a case-insensitive match
+// 3. Scan the components directory to find a case-insensitive, whitespace-insensitive match
 const componentsDirs = fs.readdirSync(BASE_DIR).filter(item => {
   return fs.statSync(path.join(BASE_DIR, item)).isDirectory();
 });
 
+// Normalize the input name by stripping spaces and lowering case
+const normalizedInput = inputName.replace(/\s+/g, '').toLowerCase();
+
 const matchedComponentName = componentsDirs.find(
-  dir => dir.toLowerCase() === inputName.toLowerCase()
+  dir => dir.replace(/\s+/g, '').toLowerCase() === normalizedInput
 );
 
 if (!matchedComponentName) {

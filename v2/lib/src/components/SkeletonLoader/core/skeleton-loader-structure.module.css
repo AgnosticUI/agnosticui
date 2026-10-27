@@ -1,0 +1,112 @@
+/* Layout Geometry & Visual Foundations Source of Truth */
+.skeletonLoaderWrapper,
+:global(.ag-skeleton-loader-wrapper) {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--ag-background-secondary);
+}
+
+.skeletonLoaderInner,
+:global(.ag-skeleton-loader-inner) {
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Intensity Tokens (Shared Client/Server)
+   ========================================================================== */
+:host([intensity='light']),
+.skeletonLoaderWrapper[data-intensity='light'],
+:global(.ag-skeleton-loader-wrapper[data-intensity='light']) {
+  background-color: var(--ag-background-secondary);
+}
+
+:host([intensity='medium']),
+.skeletonLoaderWrapper[data-intensity='medium'],
+:global(.ag-skeleton-loader-wrapper[data-intensity='medium']) {
+  background-color: var(--ag-background-tertiary);
+}
+
+/* ==========================================================================
+   Shape Variants (Shared Client/Server)
+   ========================================================================== */
+:host([variant='text']),
+.skeletonLoaderWrapper[data-variant='text'],
+:global(.ag-skeleton-loader-wrapper[data-variant='text']) {
+  border-radius: var(--ag-radius-sm);
+  height: 1em;
+}
+
+:host([variant='circular']),
+.skeletonLoaderWrapper[data-variant='circular'],
+:global(.ag-skeleton-loader-wrapper[data-variant='circular']) {
+  border-radius: 50%;
+}
+
+:host([variant='rectangular']),
+.skeletonLoaderWrapper[data-variant='rectangular'],
+:global(.ag-skeleton-loader-wrapper[data-variant='rectangular']) {
+  border-radius: 0;
+}
+
+:host([variant='rounded']),
+.skeletonLoaderWrapper[data-variant='rounded'],
+:global(.ag-skeleton-loader-wrapper[data-variant='rounded']) {
+  border-radius: var(--ag-radius-md);
+}
+
+/* ==========================================================================
+   Animations & Pseudo Effects (Fully Scoped & Isolated Fallbacks)
+   ========================================================================== */
+@keyframes ag-sheen-fallback {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeletonLoaderWrapper[data-effect='sheen']::after,
+:global(.ag-skeleton-loader-wrapper[data-effect='sheen'])::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--ag-background-primary) 20%,
+    var(--ag-background-primary) 60%,
+    transparent 100%
+  );
+  opacity: 0.3;
+  animation: ag-sheen-fallback 1.5s infinite;
+}
+
+@keyframes ag-pulse-fallback {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.skeletonLoaderWrapper[data-effect='pulse'],
+:global(.ag-skeleton-loader-wrapper[data-effect='pulse']) {
+  animation: ag-pulse-fallback 1.5s infinite ease-in-out;
+}
+
+.skeletonLoaderWrapper[data-effect='none'],
+:global(.ag-skeleton-loader-wrapper[data-effect='none']) {
+  animation: none;
+}
+
+/* ==========================================================================
+   Accessibility Guardrails
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .skeletonLoaderWrapper[data-effect='pulse'],
+  :global(.ag-skeleton-loader-wrapper[data-effect='pulse']),
+  .skeletonLoaderWrapper[data-effect='sheen']::after,
+  :global(.ag-skeleton-loader-wrapper[data-effect='sheen'])::after {
+    animation: none !important;
+  }
+}

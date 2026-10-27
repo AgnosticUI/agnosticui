@@ -15,3 +15,6 @@ export type SkeletonVariant = SkeletonProps['variant'];
 export type SkeletonEffect = SkeletonProps['effect'];
 export type SkeletonWidth = SkeletonProps['width'];
 export type SkeletonHeight = SkeletonProps['height'];
+
+export { _SkeletonLoaderFallback } from './_SkeletonLoaderFallback.js';
+export type { SkeletonLoaderFallbackProps } from './_SkeletonLoaderFallback.js';
