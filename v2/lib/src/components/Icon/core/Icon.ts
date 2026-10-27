@@ -10,5 +10,6 @@ declare global {
   }
 }
 
-// Export everything from implementation
 export * from './_Icon.js';
+export { _IconFallback } from './_IconFallback.js';
+export type { IconFallbackProps } from './_IconFallback.js';

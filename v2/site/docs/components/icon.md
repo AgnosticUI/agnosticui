@@ -2,34 +2,18 @@
 
 <AlphaWarning />
 
-
 Icon is used to visually represent an action, object, or state within the UI.
 
 ## Examples
 
-<FrameworkExample
-  component="icon"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
-  <template #vue>
-    <IconExamples />
-  </template>
-  <template #lit>
-    <icon-lit-examples></icon-lit-examples>
-  </template>
-</FrameworkExample>
+<FrameworkExample component="icon" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode"><template #vue><IconExamples /></template><template #lit><icon-lit-examples></icon-lit-examples></template></FrameworkExample>
 
-<script setup>
-import AlphaWarning from '../components/AlphaWarning.vue'
-import IconExamples from '../examples/IconExamples.vue'
-import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
-import '../examples/IconLitExamples.js'
-import vueCode from '../examples/IconExamples.vue?raw'
-import litCode from '../examples/IconLitExamples.js?raw'
-import reactCode from '../examples/IconReactExamples.jsx?raw'
-</script>
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer Isomorphic Architecture to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/guides/ssr-fallbacks).
+
+<IconFallbackPreview />
 
 ## Usage
 
@@ -94,8 +78,9 @@ export default function Example() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `size` | `string` | `''` | Size variant for the icon wrapper and SVG (e.g., '14', '16', '18', '20', '24', '32', '36', '40', '48', '56', '64'). |
-| `type` | `'info' \| 'action' \| 'success' \| 'warning' \| 'error' \| ''` | `''` | Semantic type for color theming the icon. |
+| `size` | `string` | `'16'` | Size variant for the icon wrapper and SVG (e.g., '14', '16', '18', '20', '24', '32', '36', '40', '48', '56', '64'). |
+| `type` | `'info' \| 'primary' \| 'action' \| 'success' \| 'warning' \| 'error' \| 'monochrome' \| ''` | `''` | Semantic type for color theming the icon. |
+| `noFill` | `boolean` | `false` | When true, outlines SVG vector strings and maps stroke instead of structural fill bindings. |
 
 ## CSS Shadow Parts
 
@@ -125,7 +110,22 @@ Icons are typically decorative and use `aria-hidden="true"` on the SVG to preven
 
 ## Notes
 
-- **Sizes**: Available options include '14', '16', '18', '20', '24', '32', '36', '40', '48', '56', '64'; empty string uses default sizing.
-- **Types**: Empty `type` uses neutral styling; use 'info', 'action', 'success', 'warning', or 'error' for semantic colors.
+- **Sizes**: Available options include '14', '16', '18', '20', '24', '32', '36', '40', '48', '56', '64'; defaults cleanly to '16'.
+- **Types**: Empty `type` uses neutral styling; use 'info', 'primary', 'action', 'success', 'warning', 'error', or 'monochrome' for semantic colors.
 - **Default Slot**: Provide custom SVG content via the default slot; the component scales the SVG to fit the size.
 - All implementations share the same underlying styles and behavior. Properties can be set via attributes (e.g., `<ag-icon size="24">`) or property binding in Lit templates (e.g., `.size=${'24'}`).
+
+<script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
+import IconExamples from '../examples/IconExamples.vue'
+import IconFallbackPreview from '../examples/IconFallbackPreview.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/IconLitExamples.js'
+import vueCode from '../examples/IconExamples.vue?raw'
+import litCode from '../examples/IconLitExamples.js?raw'
+import reactCode from '../examples/IconReactExamples.jsx?raw'
+</script>
+
+### Handling Dual-Class Token Lifecycle During Hydration
+
+By setting unhashed legacy fallback hooks (`ag-icon-*`) and encrypted layout module mappings (`styles.*`) on raw markup primitives concurrently, our layout architecture eliminates Cumulative Layout Shift (CLS). The stable `.ag-` selectors are instantly painted by the browser directly from global server stylesheets on initial page load, while the metadata fields map directly to JavaScript bundle instances for instantaneous hydration.

@@ -1,0 +1,75 @@
+/* Symmetrical Colocation Pattern */
+.iconBase,
+:global(.ag-icon-base) {
+  display: inline-flex;
+  text-align: center;
+  max-inline-size: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.icon14,
+:global(.ag-icon-14) {
+  width: var(--ag-font-size-xs);
+  height: var(--ag-font-size-xs);
+}
+
+.icon16,
+:global(.ag-icon-16) {
+  width: var(--ag-font-size-base);
+  height: var(--ag-font-size-base);
+}
+
+.icon18,
+:global(.ag-icon-18) {
+  width: var(--ag-font-size-md);
+  height: var(--ag-font-size-md);
+}
+
+.icon20,
+:global(.ag-icon-20) {
+  width: var(--ag-font-size-lg);
+  height: var(--ag-font-size-lg);
+}
+
+.icon24,
+:global(.ag-icon-24) {
+  width: var(--ag-space-6);
+  height: var(--ag-space-6);
+}
+
+.icon32,
+:global(.ag-icon-32) {
+  width: var(--ag-space-8);
+  height: var(--ag-space-8);
+}
+
+.icon36,
+:global(.ag-icon-36) {
+  width: var(--ag-space-9);
+  height: var(--ag-space-9);
+}
+
+.icon40,
+:global(.ag-icon-40) {
+  width: var(--ag-space-10);
+  height: var(--ag-space-10);
+}
+
+.icon48,
+:global(.ag-icon-48) {
+  width: var(--ag-space-12);
+  height: var(--ag-space-12);
+}
+
+.icon56,
+:global(.ag-icon-56) {
+  width: var(--ag-space-14);
+  height: var(--ag-space-14);
+}
+
+.icon64,
+:global(.ag-icon-64) {
+  width: 4rem;
+  height: 4rem;
+}
