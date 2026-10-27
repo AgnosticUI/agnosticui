@@ -204,15 +204,24 @@ npm run docs:build && npm run docs:preview
 
 - **Validation Rule:** If the layout anomaly disappears entirely in the static distribution preview environment, the architecture is sound. The artifact is a known development server streaming DX anomaly with zero impact on downstream client distribution layers.
 
-## 10. Comment Preservation Guardrail (Zero-Stripping Rule)
+## 10. Comment Preservation & API Contract Guardrails (The Zero-Stripping Rule)
 
-To prevent code comprehension regressions, maintain downstream developer visibility, and ensure component discoverability, all file refactoring passes must respect existing documentation, and ensure no functional capabilities are dropped during architectural shifts:
+To prevent code comprehension regressions, maintain downstream developer visibility, and guarantee complete backward compatibility for existing consumers, all refactoring passes must operate under a strict additive mindset.
 
+### Public API Surface & Type Preservation
+- **Zero Interface Deletions:** Never delete, rename, or drop existing public exports, component wrappers, or type signatures from framework barrel indexes (e.g., `react/index.ts`, `vue/index.ts`).
+- **Backward Compatibility Mapping:** If an existing type is moved or refactored internally, you MUST maintain a legacy export alias in the barrel file (e.g., `export type { NewCoreType as LegacyFrameworkProps }`) so consumer builds do not break.
+- **Additive Evolution:** New isomorphic fallback engines (`_Fallback`) and their respective property interfaces must be added next to, or combined with, existing exports—never in place of them.
+
+### Comment & Documentation Headers
 - **TSDoc / JSDoc Blocks:** Never strip, truncate, or omit documentation headers (`/** ... */`), custom type descriptions, or `@csspart` annotations.
-- **Inline Comments:** Retain all one-line and multi-line comments (`// ...` or `/* ... */`) that explain architectural intent, engine choices, or structural safety warnings.
-- **Transference:** Carry over all original comment structures exactly as written whenever splitting, refactoring, or wrapping code into target framework files.
-- **Zero-Stripping Rule:** Never strip, truncate, or omit existing unit test blocks, setup assertions, cleanup routines, or external boundary checks (e.g., `axe` tests). 
-- **Additive Spec Updates:** Carry over the complete original test block body exactly as written. Refactoring passes must only update the target string lookups (e.g., swapping hardcoded literal classes for live `styles.*` module tokens) and append new isomorphic fallback engine assertions additively at the end of the file.
+- **Inline Comments:** Retain all one-line and multi-line comments (`// ...` or `/* ... */`) that explain architectural intent, engine choices, or structural safety warnings. Carry them over exactly as written when splitting code across files.
+
+### Testing Suite Integrity
+- **Zero-Stripping Rule:** Never strip, truncate, or omit existing unit test blocks, setup assertions, cleanup routines, or external boundary checks (e.g., `axe` accessibility tests). 
+- **Additive Spec Updates:** Carry over the complete original test block body exactly as written. Refactoring passes must only:
+  1. Update target string lookups (e.g., swapping hardcoded literal classes for live `styles.*` module tokens).
+  2. Append new isomorphic fallback engine assertions additively at the end of the file.
 
 
 ## 11. Local Quality Gate & Distribution Verification (Human-in-the-Loop)

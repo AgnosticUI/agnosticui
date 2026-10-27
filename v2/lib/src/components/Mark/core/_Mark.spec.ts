@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { Mark } from './_Mark';
+import styles from './mark-structure.module.css';
 
 // Ensure the custom element is defined
 if (!customElements.get('ag-mark')) {
@@ -26,7 +27,7 @@ describe('Mark', () => {
       document.body.appendChild(element);
       await element.updateComplete;
 
-      const markElement = element.shadowRoot?.querySelector('mark.mark');
+      const markElement = element.shadowRoot?.querySelector('mark');
       expect(markElement).toBeDefined();
       const slot = element.shadowRoot?.querySelector('slot');
       expect(slot).toBeDefined();
@@ -39,8 +40,8 @@ describe('Mark', () => {
       element.variant = 'success';
       await element.updateComplete;
 
-      const markElement = element.shadowRoot?.querySelector('mark.mark');
-      expect(markElement?.classList.contains('mark-success')).toBe(true);
+      const markElement = element.shadowRoot?.querySelector('mark');
+      expect(markElement?.classList.contains(styles.markSuccess)).toBe(true);
     });
   });
 
@@ -106,6 +107,17 @@ describe('Mark', () => {
       marks = element.shadowRoot?.querySelectorAll('mark');
       expect(marks?.length).toBe(1);
       expect(marks?.[0].textContent).toBe('dog');
+    });
+  });
+
+  describe('Additive Structural Module Verification', () => {
+    it('asserts core modular elements map safely back to module structure layouts', async () => {
+      element.innerHTML = 'Module Verify';
+      document.body.appendChild(element);
+      await element.updateComplete;
+      
+      const rootMark = element.shadowRoot?.querySelector('mark');
+      expect(rootMark?.classList.contains(styles.mark)).toBe(true);
     });
   });
 });

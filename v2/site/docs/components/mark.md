@@ -2,7 +2,6 @@
 
 <AlphaWarning />
 
-
 The `Mark` component is used to highlight or "mark" a portion of text. It can be used in two modes:
 
 1.  **Static Mode**: By default, it wraps its content in a `<mark>` tag, similar to the native HTML element, but styled with AgnosticUI design tokens.
@@ -24,9 +23,25 @@ The `Mark` component is used to highlight or "mark" a portion of text. It can be
   </template>
 </FrameworkExample>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer **Isomorphic Architecture** to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/docs/how-ssr-halbacks-work).
+
+<MarkFallbackPreview />
+
+### Handling Dual-Class Token Lifecycle During Hydration
+
+Our fallback engines solve FOUC by emitting both raw unhashed namespace classes (`ag-mark-*`) and empty placeholder modular mappings (`styles.*`) side-by-side onto elements.
+
+1. **Pre-Hydration Phase:** The stable `.ag-` global fallback classes match against root compiled assets and paint baseline layout geometry instantly on page load before JavaScript streams finish.
+2. **Post-Hydration Promotion:** When your full-stack framework executes client-side hydration, the DOM reconciler scans the nodes, discovers that the compiled hash strings are already present in the class list text, and binds its active event listeners instantly with near-zero computation cost. This completely eliminates Cumulative Layout Shift (CLS).
+
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import MarkExamples from '../examples/MarkExamples.vue'
+import MarkFallbackPreview from '../examples/MarkFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/MarkLitExamples.js'
 import vueCode from '../examples/MarkExamples.vue?raw'

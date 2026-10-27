@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import type { MarkVariant } from "../core/_Mark";
-import "../core/Mark"; // Registers the ag-mark web component
+import "../core/Mark";
 
 export default defineComponent({
   name: "VueMark",

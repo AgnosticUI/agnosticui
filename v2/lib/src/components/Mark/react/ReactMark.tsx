@@ -1,7 +1,7 @@
-import { createComponent } from '@lit/react';
-import React from 'react';
-import { Mark, type MarkProps } from '../core/_Mark';
-import '../core/Mark'; // Ensures the custom element is defined
+import { createComponent } from "@lit/react";
+import React from "react";
+import { Mark, type MarkProps } from "../core/_Mark";
+import "../core/Mark";
 
 export interface ReactMarkProps extends MarkProps {
   children?: React.ReactNode;
@@ -9,10 +9,8 @@ export interface ReactMarkProps extends MarkProps {
 }
 
 export const ReactMark = createComponent({
-  tagName: 'ag-mark',
+  tagName: "ag-mark",
   elementClass: Mark,
   react: React,
-  events: {
-    // No custom events for Mark, so this remains empty
-  },
+  events: {},
 });
