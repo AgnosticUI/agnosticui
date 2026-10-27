@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { AgTag } from './Tag';
+import styles from './tag-structure.module.css';
 
 describe('<ag-tag>', () => {
   let el: AgTag;
@@ -8,19 +9,20 @@ describe('<ag-tag>', () => {
     el = document.createElement('ag-tag') as AgTag;
     el.textContent = 'Hello';
     document.body.appendChild(el);
-    await el.updateComplete; // wait for Lit to render
-    await Promise.resolve(); // allow slot projection to flush
+    await el.updateComplete;
+    await Promise.resolve();
   });
 
   afterEach(() => {
     el.remove();
   });
+
   it('renders default content', async () => {
-    // ✅ New default render test
     await el.updateComplete;
     const renderedText = el.textContent?.trim();
     expect(renderedText).toBe('Hello');
   });
+
   it('reflects the variant attribute', async () => {
     el.setAttribute('variant', 'success');
     await el.updateComplete;
@@ -51,14 +53,14 @@ describe('<ag-tag>', () => {
     it('should not show remove button when removable is false', async () => {
       el.removable = false;
       await el.updateComplete;
-      const removeButton = el.shadowRoot?.querySelector('.tag-remove-button');
+      const removeButton = el.shadowRoot?.querySelector(`.${styles.tagRemoveButton}`);
       expect(removeButton).toBeNull();
     });
 
     it('should show remove button when removable is true', async () => {
       el.removable = true;
       await el.updateComplete;
-      const removeButton = el.shadowRoot?.querySelector('.tag-remove-button');
+      const removeButton = el.shadowRoot?.querySelector(`.${styles.tagRemoveButton}`);
       expect(removeButton).not.toBeNull();
     });
 
@@ -75,7 +77,7 @@ describe('<ag-tag>', () => {
         eventDetail = (e as CustomEvent).detail;
       });
 
-      const removeButton = el.shadowRoot?.querySelector('.tag-remove-button') as HTMLButtonElement;
+      const removeButton = el.shadowRoot?.querySelector(`.${styles.tagRemoveButton}`) as HTMLButtonElement;
       expect(removeButton).not.toBeNull();
       removeButton.click();
 
@@ -90,7 +92,7 @@ describe('<ag-tag>', () => {
       el.onTagRemove = onRemoveCallback;
       await el.updateComplete;
 
-      const removeButton = el.shadowRoot?.querySelector('.tag-remove-button') as HTMLButtonElement;
+      const removeButton = el.shadowRoot?.querySelector(`.${styles.tagRemoveButton}`) as HTMLButtonElement;
       removeButton.click();
 
       expect(onRemoveCallback).toHaveBeenCalledTimes(1);
@@ -110,10 +112,9 @@ describe('<ag-tag>', () => {
         addEventListenerCalled = true;
       });
 
-      const removeButton = el.shadowRoot?.querySelector('.tag-remove-button') as HTMLButtonElement;
+      const removeButton = el.shadowRoot?.querySelector(`.${styles.tagRemoveButton}`) as HTMLButtonElement;
       removeButton.click();
 
-      // Both patterns should work
       expect(onRemoveCallback).toHaveBeenCalledTimes(1);
       expect(addEventListenerCalled).toBe(true);
     });
@@ -134,7 +135,7 @@ describe('<ag-tag>', () => {
           eventDetail = (e as CustomEvent).detail;
         });
 
-        const removeButton = el.shadowRoot?.querySelector('.tag-remove-button') as HTMLButtonElement;
+        const removeButton = el.shadowRoot?.querySelector(`.${styles.tagRemoveButton}`) as HTMLButtonElement;
         removeButton.click();
 
         expect(eventFired).toBe(true);
@@ -150,7 +151,7 @@ describe('<ag-tag>', () => {
         el.onTagRemove = onRemoveCallback;
         await el.updateComplete;
 
-        const removeButton = el.shadowRoot?.querySelector('.tag-remove-button') as HTMLButtonElement;
+        const removeButton = el.shadowRoot?.querySelector(`.${styles.tagRemoveButton}`) as HTMLButtonElement;
         removeButton.click();
 
         expect(onRemoveCallback).toHaveBeenCalledTimes(1);
@@ -169,12 +170,20 @@ describe('<ag-tag>', () => {
           removeEvent = e;
         });
 
-        const removeButton = el.shadowRoot?.querySelector('.tag-remove-button') as HTMLButtonElement;
+        const removeButton = el.shadowRoot?.querySelector(`.${styles.tagRemoveButton}`) as HTMLButtonElement;
         removeButton.click();
 
         expect(removeEvent.bubbles).toBe(true);
         expect(removeEvent.composed).toBe(true);
       });
+    });
+  });
+
+  describe('Additive Structural Module Verification', () => {
+    it('asserts core modular elements map safely back to module structure layouts', async () => {
+      await el.updateComplete;
+      const rootWrapper = el.shadowRoot?.querySelector('div');
+      expect(rootWrapper?.classList.contains(styles.tagWrapper)).toBe(true);
     });
   });
 });

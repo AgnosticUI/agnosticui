@@ -1,0 +1,106 @@
+/* Ensure global fallback classes receive complete design token properties */
+.tagHost,
+:global(.ag-tag-host) {
+  display: inline-flex;
+  --tag-background-color: var(--ag-background-tertiary);
+  --tag-color: var(--ag-text-primary);
+  --tag-border-radius: var(--ag-radius-md);
+}
+
+.tagWrapper,
+:global(.ag-tag-wrapper) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: var(--ag-space-1) var(--ag-space-2);
+  background-color: var(--tag-background-color);
+  color: var(--tag-color);
+  border-radius: var(--tag-border-radius);
+  font-size: var(--ag-font-size-sm);
+  line-height: var(--ag-line-height-sm);
+}
+
+/* Fallback Variant Mappings */
+.tagVariantPrimary,
+:global(.ag-tag-variant-primary) {
+  --tag-background-color: var(--ag-primary-background);
+  --tag-color: var(--ag-primary-text);
+}
+
+.tagVariantSuccess,
+:global(.ag-tag-variant-success) {
+  --tag-background-color: var(--ag-success-background);
+  --tag-color: var(--ag-success-text);
+}
+
+.tagVariantWarning,
+:global(.ag-tag-variant-warning) {
+  --tag-background-color: var(--ag-warning-background);
+  --tag-color: var(--ag-warning-text);
+}
+
+.tagVariantError,
+:global(.ag-tag-variant-error) {
+  --tag-background-color: var(--ag-danger-background);
+  --tag-color: var(--ag-danger-text);
+}
+
+.tagVariantInfo,
+:global(.ag-tag-variant-info) {
+  --tag-background-color: var(--ag-info-background);
+  --tag-color: var(--ag-info-text);
+}
+
+.tagVariantMonochrome,
+:global(.ag-tag-variant-monochrome) {
+  --tag-background-color: var(--ag-background-primary-inverted);
+  --tag-color: var(--ag-text-primary-inverted);
+}
+
+/* Fallback Shape Mappings */
+.tagShapePill,
+:global(.ag-tag-shape-pill) {
+  --tag-border-radius: var(--ag-radius-full);
+}
+
+.tagShapeCircle,
+:global(.ag-tag-shape-circle-wrapper) {
+  --tag-border-radius: var(--ag-radius-full);
+  min-width: var(--ag-line-height-sm);
+  min-height: var(--ag-line-height-sm);
+  padding: var(--ag-space-2);
+}
+
+/* Fallback Uppercase Modifier Mappings */
+.tagUppercase,
+:global(.ag-tag-uppercase) {
+  text-transform: uppercase;
+  font-size: var(--ag-font-size-xs);
+  letter-spacing: var(--ag-letter-spacing-wide);
+}
+
+/* Cloned formatting for remove button layouts */
+.tagRemoveButton,
+:global(.ag-tag-remove-button) {
+  margin-inline-start: var(--ag-space-1);
+  padding: 0;
+  width: var(--ag-space-4);
+  height: var(--ag-space-4);
+  color: var(--tag-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--ag-radius-sm);
+  cursor: pointer;
+  font-size: var(--ag-font-size-xs);
+  line-height: 1;
+  transition: background-color var(--ag-motion-duration-fast) ease;
+}
+
+.tagRemoveButton:hover,
+:global(.ag-tag-remove-button):hover {
+  background: rgba(0, 0, 0, 0.1);
+}

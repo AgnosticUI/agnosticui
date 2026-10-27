@@ -24,12 +24,29 @@ Tag is used to label or categorize content, providing as a visual indicator for 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import TagExamples from '../examples/TagExamples.vue'
+import TagFallbackPreview from '../examples/TagFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/TagLitExamples.js'
 import vueCode from '../examples/TagExamples.vue?raw'
 import litCode from '../examples/TagLitExamples.js?raw'
 import reactCode from '../examples/TagReactExamples.jsx?raw'
 </script>
+
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes an Isomorphic Architecture to support server-first workflows across meta-frameworks. Below are visual previews generated directly from our isolated server layout string engines before client hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our layout framework description:
+
+### Handling Dual-Class Token Lifecycle During Hydration
+
+Our fallback engines solve unstyled flashes by emitting both raw unhashed namespace classes and empty placeholder modular mappings side-by-side onto elements.
+
+1. **Pre-Hydration Phase:** The stable fallback classes match against root compiled assets and paint baseline layout geometry instantly on page load before JavaScript streams finish.
+2. **Post-Hydration Promotion:** When your framework executes client-side hydration, the DOM reconciler scans the nodes, discovers that the compiled hash strings are already present in the class list text, and binds its active event listeners instantly with near-zero computation cost. This completely eliminates Cumulative Layout Shift.
+
+<TagFallbackPreview />
+
 
 ## Usage
 

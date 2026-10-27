@@ -1,6 +1,5 @@
-// v2/lib/src/components/Tag/vue/index.ts
 import VueTag from './VueTag.vue';
-import type { TagVariant, TagShape } from '../core/Tag'; 
+import type { TagVariant, TagShape } from '../core/Tag.js'; 
 
 export { VueTag };
 export type { 
@@ -15,3 +14,6 @@ export interface VueTagProps {
   isUppercase?: boolean;
 }
 
+// Add the new isomorphic fallback infrastructure additively
+export { _TagFallback } from '../core/_TagFallback.js';
+export type { TagFallbackProps as VueTagFallbackProps } from '../core/_TagFallback.js';

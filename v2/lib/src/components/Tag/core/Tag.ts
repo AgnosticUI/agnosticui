@@ -10,5 +10,4 @@ declare global {
   }
 }
 
-// Export everything from implementation
 export * from './_Tag.js';
