@@ -8,36 +8,16 @@ AvatarFx extends the core Avatar component with a handful of CSS-only micro-inte
 AvatarFx adds a few hundred lines of CSS for animation effects. It's ideal for marketing sites, landing pages, or when visual polish is a priority.
 :::
 
-## Pre-Hydration Fallback Preview
-
-<AvatarFxFallbackPreview />
-
 ## Examples
 
-<FrameworkExample
-  component="avatar-fx"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
-  <template #vue>
-    <AvatarFxExamples />
-  </template>
-  <template #lit>
-    <avatarfx-lit-examples></avatarfx-lit-examples>
-  </template>
-</FrameworkExample>
+<FrameworkExample component="avatar-fx" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode"><template #vue><AvatarFxExamples /></template><template #lit><avatarfx-lit-examples></avatarfx-lit-examples></template></FrameworkExample>
 
-<script setup>
-import AlphaWarning from '../components/AlphaWarning.vue'
-import AvatarFxExamples from '../examples/AvatarFxExamples.vue'
-import AvatarFxFallbackPreview from '../examples/AvatarFxFallbackPreview.vue'
-import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
-import '../examples/AvatarFxLitExamples.js'
-import vueCode from '../examples/AvatarFxExamples.vue?raw'
-import litCode from '../examples/AvatarFxLitExamples.js?raw'
-import reactCode from '../examples/AvatarFxReactExamples.jsx?raw'
-</script>
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer Isomorphic Architecture to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/guides/ssr-fallbacks).
+
+<AvatarFallbackPreview />
 
 ## Usage
 
@@ -55,7 +35,6 @@ The CLI copies source code directly into your project, giving you full visibilit
 Because motion effects rely on explicit tracking selectors inside the DOM tree, ensure components initialize using unhashed backward-compatibility targets (`.ag-avatar`) when injecting custom animations during server fallback phase builds.
 
 ::: details Vue
-
 ```vue
 <template>
   <VueAvatarFx fx="bounce" fx-speed="md" text="AB" />
@@ -65,11 +44,9 @@ Because motion effects rely on explicit tracking selectors inside the DOM tree, 
 import { VueAvatarFx } from "agnosticui-core/avatar-fx/vue";
 </script>
 ```
-
 :::
 
 ::: details React
-
 ```tsx
 import { ReactAvatarFx } from "agnosticui-core/avatar-fx/react";
 
@@ -77,11 +54,9 @@ function App() {
   return <ReactAvatarFx fx="bounce" fxSpeed="md" text="AB" />;
 }
 ```
-
 :::
 
 ::: details Lit
-
 ```html
 <script type="module">
   import "agnosticui-core/avatar-fx";
@@ -89,7 +64,6 @@ function App() {
 
 <ag-avatar-fx fx="bounce" fx-speed="md" text="AB"></ag-avatar-fx>
 ```
-
 :::
 
 ## Props
@@ -100,7 +74,7 @@ Inherits all [Avatar Props](./avatar.md#props) plus:
 | ------------ | ------------------------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `fx`         | `string`                                   | `undefined` | Effect name: `bounce`, `pulse`, `jelly`, `shimmer`, `glow`, `flip`, `ripple`, `highlight-sweep`, `press-pop`, `slide-in` |
 | `fxSpeed`    | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`     | `'md'`      | Animation duration preset                                                                                                |
-| `fxEase`     | `'ease' \| 'bounce' \| 'spring-sm' \| ...` | `'ease'`    | Easing function preset                                                                                                   |
+| `fxEase`     | `'ease' \| 'bounce' \| 'spring-sm' \| ...` | `'ease'`    | Easing function preset                                                                                                |
 | `fxDisabled` | `boolean`                                  | `false`     | Disable effects programmatically                                                                                         |
 
 ## Effects Library
@@ -117,3 +91,18 @@ Inherits all [Avatar Props](./avatar.md#props) plus:
 | `highlight-sweep` | hover   | Horizontal highlight sweep     |
 | `press-pop`       | active  | Quick press down/up            |
 | `slide-in`        | mount   | Entrance animation from below  |
+
+<script setup>
+import AlphaWarning from '../components/AlphaWarning.vue'
+import AvatarFxExamples from '../examples/AvatarFxExamples.vue'
+import AvatarFallbackPreview from '../examples/AvatarFallbackPreview.vue'
+import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
+import '../examples/AvatarFxLitExamples.js'
+import vueCode from '../examples/AvatarFxExamples.vue?raw'
+import litCode from '../examples/AvatarFxLitExamples.js?raw'
+import reactCode from '../examples/AvatarFxReactExamples.jsx?raw'
+</script>
+
+### Handling Dual-Class Token Lifecycle During Hydration
+
+By setting unhashed legacy fallback hooks (`ag-avatar-*`) and encrypted layout module mappings (`styles.*`) on raw markup primitives concurrently, our layout architecture eliminates Cumulative Layout Shift (CLS). The stable `.ag-` selectors are instantly painted by the browser directly from global server stylesheets on initial page load, while the metadata fields map directly to JavaScript bundle instances for instantaneous hydration.
