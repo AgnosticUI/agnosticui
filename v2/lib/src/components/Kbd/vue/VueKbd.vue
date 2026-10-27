@@ -13,10 +13,10 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { KbdProps } from "../core/Kbd";
-import "../core/Kbd"; // Registers the ag-kbd web component
+import type { KbdProps } from "../core/Kbd.js";
+import "../core/Kbd.js";
 
-const props = withDefaults(defineProps<KbdProps>(), {
+withDefaults(defineProps<KbdProps>(), {
   variant: "default",
   bordered: true,
   background: false,

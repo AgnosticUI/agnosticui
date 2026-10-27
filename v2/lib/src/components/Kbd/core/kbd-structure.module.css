@@ -1,0 +1,16 @@
+.kbdWrapper,
+:global(.ag-kbd-wrapper) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ag-radius-md);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Base structural host geometry */
+:global(ag-kbd) {
+  display: inline-flex;
+  font-family: monospace;
+  font-size: var(--ag-font-size-sm);
+}

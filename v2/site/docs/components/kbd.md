@@ -1,22 +1,10 @@
-# Kbd
+# Keyboard Input (Kbd)
 
-<AlphaWarning />
-
-
-Keyboard key components are used to represent keyboard shortcuts, hotkeys, or user input instructions in a visually distinct way. They mimic the appearance of physical keyboard keys.
-
-::: tip
-Note that single character content within an <i>&lt;ag-kbd&gt;</i> tag is bumped up by a single font size scale for readability.
-:::
+Keyboard input allows a user to identify system macros, short keys, and console commands using typography optimized for physical key representations.
 
 ## Examples
 
-<FrameworkExample
-  component="kbd"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
+<FrameworkExample component="kbd" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode">
   <template #vue>
     <KbdExamples />
   </template>
@@ -25,9 +13,40 @@ Note that single character content within an <i>&lt;ag-kbd&gt;</i> tag is bumped
   </template>
 </FrameworkExample>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer **Isomorphic Architecture** to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/docs/how-ssr-fallbacks-work).
+
+### Standard Key Captures & Previews
+
+<!-- Wrapped in structural grid containers to prevent layout collisions -->
+<div class="ag-form-control-layout-stack" style="display: flex; gap: 0.75rem; align-items: center; margin-block: 1rem;">
+  <KbdFallbackPreview label="Ctrl" />
+  <KbdFallbackPreview label="Shift" />
+  <KbdFallbackPreview label="Alt" />
+</div>
+
+### Single-Character Proportional Squares
+
+<div style="margin-block: 1rem; display: flex; gap: 0.5rem; align-items: center;">
+  <KbdFallbackPreview label="⌘" size="sm" />
+  <KbdFallbackPreview label="A" size="md" />
+  <KbdFallbackPreview label="K" size="lg" />
+</div>
+
+### Contextual Style Variants
+
+<div class="ag-form-control-layout-stack" style="display: flex; gap: 0.75rem; align-items: center; margin-block: 1rem;">
+  <KbdFallbackPreview label="Primary Key" variant="primary" />
+  <KbdFallbackPreview label="Success Trigger" variant="success" />
+  <KbdFallbackPreview label="Inverted Monolithic" variant="monochrome" background="true" />
+</div>
+
 <script setup>
-import AlphaWarning from '../components/AlphaWarning.vue'
 import KbdExamples from '../examples/KbdExamples.vue'
+import KbdFallbackPreview from '../examples/KbdFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/KbdLitExamples.js'
 import vueCode from '../examples/KbdExamples.vue?raw'
@@ -35,14 +54,36 @@ import litCode from '../examples/KbdLitExamples.js?raw'
 import reactCode from '../examples/KbdReactExamples.jsx?raw'
 </script>
 
+### Handling Dual-Class Token Lifecycle During Hydration
+
+```vue
+<!-- Default configuration fallback layout state -->
+<KbdFallbackPreview label="Ctrl" />
+```
+
+Our server fallback engine outputs **both** raw unhashed namespace classes (`ag-kbd-*`) and empty placeholder modular mappings (`styles.*`).
+
+When your full-stack framework performs client-side hydration, the DOM reconciler checks for the presence of your compiled hash strings. Because the fallback engine pre-allocates these boundaries natively, client promotion completes with near-zero computation cost and eliminates Cumulative Layout Shift (CLS).
+
+```vue
+<!-- Hydration bound configuration layout -->
+<KbdFallbackPreview
+  :label="activeShortcut || '-'"
+  :variant="activeShortcut ? 'primary' : 'default'"
+  :background="isKeyPressed"
+/>
+```
+
 ## Usage
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add Kbd
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
@@ -50,11 +91,17 @@ The CLI copies source code directly into your project, giving you full visibilit
 
 ```vue
 <template>
-  <VueKbd variant="primary" size="md" :bordered="true"> ⌘ </VueKbd>
+  <section>
+    <VueKbd label="Ctrl" />
+    <VueKbd label="⌘" size="sm" />
+    <VueKbd label="Shift" variant="primary" />
+  </section>
 </template>
+
 <script lang="ts">
 import { defineComponent } from "vue";
 import { VueKbd } from "agnosticui-core/kbd/vue";
+
 export default defineComponent({
   components: { VueKbd },
 });
@@ -70,9 +117,11 @@ import { ReactKbd } from "agnosticui-core/kbd/react";
 
 export default function Example() {
   return (
-    <ReactKbd variant="primary" size="md" bordered>
-      ⌘
-    </ReactKbd>
+    <section style={{ display: 'flex', gap: '8px' }}>
+      <ReactKbd label="Ctrl" />
+      <ReactKbd label="⌘" size="sm" />
+      <ReactKbd label="Shift" variant="primary" />
+    </section>
   );
 }
 ```
@@ -85,63 +134,46 @@ export default function Example() {
 <script type="module">
   import "agnosticui-core/kbd";
 </script>
-<ag-kbd variant="primary" size="md" bordered>⌘</ag-kbd>
+
+<section>
+  <ag-kbd>Ctrl</ag-kbd>
+  <ag-kbd size="sm">⌘</ag-kbd>
+  <ag-kbd variant="primary">Shift</ag-kbd>
+</section>
 ```
 
 :::
 
 ## Props
 
-| Prop         | Type                                                                                               | Default     | Description                                                                                                                        |
-| ------------ | -------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `variant`    | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'warning' \| 'success' \| 'danger' \| 'error'` | `'default'` | The visual variant of the kbd element (e.g., for color theming).                                                                   |
-| `size`       | `'sm' \| 'md' \| 'lg'`                                                                             | `'sm'`      | The size of the kbd element. Small is suitable for inline text, medium for emphasized shortcuts, and large for prominent displays. |
-| `bordered`   | `boolean`                                                                                          | `true`      | If `true`, displays a border around the kbd element to enhance the key appearance.                                                 |
-| `background` | `boolean`                                                                                          | `false`     | If `true`, adds a background color to the kbd element based on the variant, providing additional visual emphasis.                  |
-
-## CSS Shadow Parts
-
-| Part             | Description                                     |
-| ---------------- | ----------------------------------------------- |
-| `ag-kbd-wrapper` | The main wrapper element for the kbd's content. |
-
-### Customization Example
-
-```css
-ag-kbd.custom-kbd::part(ag-kbd-wrapper) {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  font-weight: 700;
-  padding: 0.5rem 0.75rem;
-  border: 2px solid #764ba2;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
-}
-
-ag-kbd.flat-kbd::part(ag-kbd-wrapper) {
-  background: #f5f5f5;
-  color: #333;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 0.25rem 0.5rem;
-  font-family: "Monaco", "Courier New", monospace;
-}
-```
+| Prop         | Type                                                                                                          | Default     | Description                                                                     |
+| ------------ | ------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------- |
+| `variant`    | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'warning' \| 'success' \| 'danger' \| 'error' \| 'monochrome'` | `'default'` | Background color styling variant matching standard framework typography markers |
+| `size`       | `'sm' \| 'md' \| 'lg'`                                                                                        | `'md'`      | Overall dimensional height and horizontal padding constraints                  |
+| `bordered`   | `boolean`                                                                                                     | `true`      | Surrounds the perimeter box container with a low-contrast boundary line         |
+| `background` | `boolean`                                                                                                     | `false`     | Activates a darkened ambient backing surface for increased character contrast   |
 
 ## Accessibility
 
-The kbd component uses the semantic `<kbd>` HTML element, which is automatically recognized by screen readers as representing keyboard input. The component preserves the natural text content for screen reader announcement. When using special characters or symbols (like ⌘, ⌥, ⇧, ⌃), ensure they are properly announced by including appropriate `aria-label` attributes if needed for clarity.
+- Font family scales cleanly behind native `monospace` stacks for uniform system glyph formatting.
+- Automatically flags single character content streams to align square width-to-height properties for physical keyboard layouts.
+- Preserves layout ratios natively if combined within screen-reader accessible control structures.
 
-## Notes
+## CSS Shadow Parts
 
-- **Variants**: The 'default' variant provides neutral styling suitable for most contexts. Use semantic variants ('info', 'warning', 'error', 'success') to indicate the nature of the shortcut or action.
-- **Sizes**: Choose 'sm' for inline documentation, 'md' for tutorial content, and 'lg' for hero sections or prominent feature callouts.
-- **Common Symbols**: Use standard keyboard symbols for better recognition:
-  - `⌘` - Command (Mac)
-  - `⌥` - Option/Alt (Mac)
-  - `⇧` - Shift
-  - `⌃` - Control
-  - Or use text like "Ctrl", "Alt", "Shift", "Enter", etc.
-- **Keyboard Combinations**: Display multiple keys together for shortcuts (e.g., "Ctrl + Shift + Del") either as a single Kbd component or as separate components with visible separators.
-- **Background Mode**: Enable `background` with semantic variants to create more visually prominent keyboard indicators, useful for tutorial overlays or highlighting critical shortcuts.
-- All implementations (Vue, React, Lit) share the same underlying styles and behavior. Properties can be set via attributes (e.g., `<ag-kbd bordered>`) or property binding in framework templates.
+The Kbd component exposes the following CSS Shadow Parts for custom styling:
+
+| Part             | Description                         |
+| ---------------- | ----------------------------------- |
+| `ag-kbd-wrapper` | The inner root hardware element tag |
+
+## When to Use
+
+**Use Kbd when:**
+- Mapping keyboard macro actions inside application workflow panels.
+- Explaining system terminal script run targets inside development document articles.
+- Detailing shortcut commands alongside operational instructions.
+
+**Consider alternatives when:**
+- Requiring an interactive, clickable link action element — use Button instead.
+- Rendering inline syntax code blocks or multiple variables blocks — use Code or Pre blocks instead.

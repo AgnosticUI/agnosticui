@@ -1,8 +1,8 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import { AgKbd, type KbdVariant, type KbdSize } from './_Kbd';
-import './Kbd';
-
-// IMPORTANT: We need to include the component import here so that the custom element is defined.
+import { AgKbd, type KbdVariant, type KbdSize } from './_Kbd.js';
+import { _KbdFallback } from './_KbdFallback.js';
+import styles from './kbd-structure.module.css';
+import './Kbd.js';
 
 describe('Kbd Component', () => {
   let element: AgKbd;
@@ -41,13 +41,13 @@ describe('Kbd Component', () => {
     expect(slot?.assignedNodes()[0].textContent).toBe(content);
   });
 
-  const variants: KbdVariant[] = ['default', 'primary', 'secondary', 'info', 'warning', 'success', 'danger', 'error'];
+  const variants: KbdVariant[] = ['default', 'primary', 'secondary', 'info', 'warning', 'success', 'danger', 'error', 'monochrome'];
   variants.forEach(variant => {
     it(`should set the variant to ${variant}`, async () => {
       element = await setup({ variant });
       expect(element.variant).toBe(variant);
-      const kbdWrapper = element.shadowRoot?.querySelector('.kbd-wrapper');
-      expect(kbdWrapper).toHaveClass('kbd-wrapper');
+      const kbdWrapper = element.shadowRoot?.querySelector(`.${styles.kbdWrapper}`);
+      expect(kbdWrapper).toBeTruthy();
     });
   });
 
@@ -56,8 +56,8 @@ describe('Kbd Component', () => {
     it(`should set the size to ${size}`, async () => {
       element = await setup({ size });
       expect(element.size).toBe(size);
-      const kbdWrapper = element.shadowRoot?.querySelector('.kbd-wrapper');
-      expect(kbdWrapper).toHaveClass('kbd-wrapper');
+      const kbdWrapper = element.shadowRoot?.querySelector(`.${styles.kbdWrapper}`);
+      expect(kbdWrapper).toBeTruthy();
     });
   });
 
@@ -83,5 +83,32 @@ describe('Kbd Component', () => {
     expect(styleContent).not.toContain('[bordered="true"]');
     expect(styleContent).toContain(':host([background])');
     expect(styleContent).not.toContain('[background="true"]');
+  });
+
+  /* Isomorphic Fallback Engine Assertion Coverage */
+  describe('Isomorphic Fallback Engine Integration', () => {
+    it('should generate basic default fallback markup with expected attributes', () => {
+      const html = _KbdFallback({ children: 'Ctrl' });
+      expect(html).toContain('variant="default"');
+      expect(html).toContain('size="md"');
+      expect(html).toContain('bordered');
+      expect(html).not.toContain('background');
+      expect(html).not.toContain('single-char');
+      expect(html).toContain('Ctrl');
+    });
+
+    it('should catch single character content strings and attach single-char attribute', () => {
+      const html = _KbdFallback({ children: 'A', size: 'sm' });
+      expect(html).toContain('single-char');
+      expect(html).toContain('size="sm"');
+      expect(html).toContain('A');
+    });
+
+    it('should safely parse loose string attributes passed down by servers', () => {
+      const html = _KbdFallback({ bordered: 'false', background: 'true', variant: 'primary', children: 'Shift' });
+      expect(html).not.toContain('bordered');
+      expect(html).toContain('background');
+      expect(html).toContain('variant="primary"');
+    });
   });
 });

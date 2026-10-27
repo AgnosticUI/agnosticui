@@ -1,4 +1,4 @@
 import VueKbd from './VueKbd.vue';
-import type { KbdProps as VueKbdProps } from '../core/_Kbd';
-
-export { VueKbd, type VueKbdProps };
+export { VueKbd };
+export { _KbdFallback } from '../core/_KbdFallback.js';
+export type { KbdFallbackProps } from '../core/_KbdFallback.js';

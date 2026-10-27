@@ -11,7 +11,10 @@ declare global {
 }
 
 export * from './_Kbd.js';
+export { _KbdFallback } from './_KbdFallback.js';
+export type { KbdFallbackProps } from './_KbdFallback.js';
+
 export type KbdVariant = KbdProps['variant'];
-export type KbdSize= KbdProps['size'];
+export type KbdSize = KbdProps['size'];
 export type KbdBordered = KbdProps['bordered'];
-export type KbdBackground= KbdProps['background'];
+export type KbdBackground = KbdProps['background'];
