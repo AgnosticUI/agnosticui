@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, watchEffect, nextTick, type PropType } from 'vue';
-import type { SpinnerProps, SpinnerSize } from '../core/Spinner';
-import '../core/Spinner'; // Registers the ag-spinner web component
+import type { SpinnerProps, SpinnerSize } from '../core/Spinner.js';
+import '../core/Spinner.js';
 
 export default defineComponent({
   name: 'VueSpinner',

@@ -1,4 +1,4 @@
 import VueSpinner from './VueSpinner.vue';
-import type { SpinnerProps as VueSpinnerProps } from '../core/_Spinner';
-
-export { VueSpinner, type VueSpinnerProps };
+export { VueSpinner };
+export { _SpinnerFallback } from '../core/Spinner.js';
+export type { SpinnerFallbackProps } from '../core/Spinner.js';

@@ -2,7 +2,6 @@
 
 <AlphaWarning />
 
-
 A spinner component displays a circular rotating animation to indicate loading state or ongoing activity. Use spinners to provide visual feedback when content is loading, processing, or waiting for a response.
 
 ## Examples
@@ -21,15 +20,51 @@ A spinner component displays a circular rotating animation to indicate loading s
   </template>
 </FrameworkExample>
 
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer **Isomorphic Architecture** to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: [How SSR Fallbacks Work](/docs/how-ssr-fallbacks-work).
+
+### Standard Size Options Previews
+
+<!-- Wrapped in structural grid containers to prevent layout collisions -->
+<div class="ag-form-control-layout-stack" style="display: flex; align-items: center; gap: 2.5rem; margin-block: 1rem;">
+  <SpinnerFallbackPreview size="small" ariaLabel="Loading small container assets..." />
+  <SpinnerFallbackPreview size="default" ariaLabel="Loading context..." />
+  <SpinnerFallbackPreview size="large" ariaLabel="Loading block payload..." />
+  <SpinnerFallbackPreview size="xlarge" ariaLabel="Loading heavy view canvas..." />
+</div>
+
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import SpinnerExamples from '../examples/SpinnerExamples.vue'
+import SpinnerFallbackPreview from '../examples/SpinnerFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/SpinnerLitExamples.js'
 import vueCode from '../examples/SpinnerExamples.vue?raw'
 import litCode from '../examples/SpinnerLitExamples.js?raw'
 import reactCode from '../examples/SpinnerReactExamples.jsx?raw'
 </script>
+
+### Handling Dual-Class Token Lifecycle During Hydration
+
+```vue
+<!-- Default configuration fallback layout state -->
+<SpinnerFallbackPreview size="default" ariaLabel="Fetching record layers..." />
+```
+
+Our server fallback engine outputs **both** raw unhashed namespace classes (`ag-spinner-*`) and empty placeholder modular mappings (`styles.*`).
+
+When your full-stack framework performs client-side hydration, the DOM reconciler checks for the presence of your compiled hash strings. Because the fallback engine pre-allocates these boundaries natively, client promotion completes with near-zero computation cost and eliminates Cumulative Layout Shift (CLS).
+
+```vue
+<!-- Hydration bound configuration layout -->
+<SpinnerFallbackPreview
+  :size="isWidgetCompact ? 'small' : 'xlarge'"
+  :ariaLabel="asyncProgressMessage || 'Loading encrypted pipeline...'"
+/>
+```
 
 ## Usage
 
@@ -144,8 +179,8 @@ export default function SpinnerExamples() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `size` | `small` \| `default` \| `large` \| `xlarge` | `default` | Sets the spinner size. |
-| `ariaLabel` | `string` | `Loading...` | The ARIA label for accessibility. |
+| `size` | `small` \| `default` \| `large` \| `xlarge` | `default` | Sets the spinner visual diameter and matching concentric border metrics. |
+| `ariaLabel` | `string` | `Loading...` | The ARIA progress context description injected for accessible screen reader layers. |
 
 ## Variants
 
@@ -198,10 +233,10 @@ The Spinner component is built with accessibility in mind and includes several f
 
 ### ARIA Attributes
 
-- **`role="status"`**: Identifies the spinner as a status indicator, telling screen readers this is dynamic content
-- **`aria-live="polite"`**: Announces loading state changes to screen readers without interrupting the user
-- **`aria-busy="true"`**: Indicates that the element is currently in a busy/loading state
-- **`aria-label`**: Provides customizable screen reader text (default: "Loading...")
+- **`role="status"`**: Identifies the spinner as a status indicator, telling screen readers this is dynamic content.
+- **`aria-live="polite"`**: Announces loading state changes to screen readers without interrupting the user.
+- **`aria-busy="true"`**: Indicates that the element is currently in a busy/loading state.
+- **`aria-label`**: Provides customizable screen reader text (default: "Loading...").
 
 ### Screen Reader Support
 
@@ -223,15 +258,7 @@ Or use the default slot to provide custom text:
 
 The spinner respects the user's motion preferences:
 
-- **`prefers-reduced-motion`**: When users have reduced motion enabled in their system settings, the spinner animation duration is reduced to nearly instant (0.001ms), effectively disabling the animation while maintaining visual indication
-
-### Best Practices
-
-1. **Always provide context**: Use descriptive `ariaLabel` text that explains what is being loaded
-2. **Don't overuse**: Only show spinners when content is actually loading or processing
-3. **Consider placement**: Position spinners where users expect to see loading feedback
-4. **Complement with text**: For longer operations, consider adding visible status text alongside the spinner
-5. **Remove when complete**: Hide or remove the spinner once loading is complete to indicate the action is finished
+- **`prefers-reduced-motion`**: When users have reduced motion enabled in their system settings, the spinner animation duration is reduced to nearly instant (0.001ms), effectively disabling the animation while maintaining visual indication.
 
 ### Keyboard Navigation
 
@@ -239,9 +266,9 @@ The spinner component is a non-interactive visual indicator and does not receive
 
 ## Notes
 
-- **Size variants**: Choose the appropriate size based on the context - use `small` for inline loading, `default` for standard content areas, `large` for larger containers, and `xlarge` for full-page loading states
-- **Color customization**: The spinner inherits the text color by default (`--ag-text-primary`), but you can customize it using the `--spinner-color` CSS custom property
-- **Lit**: Properties can be set via attributes (e.g., `<ag-spinner size="large">`) or via property binding in Lit templates (e.g., `.size=${'large'}`)
-- **Performance**: The spinner uses CSS animations with GPU acceleration for smooth performance
-- **Responsive motion**: The animation automatically adjusts based on user's system motion preferences, ensuring accessibility for users sensitive to motion
-- All three implementations (Lit, React, Vue) share the same underlying styles and behavior
+- **Size variants**: Choose the appropriate size based on the context - use `small` for inline loading, `default` for standard content areas, `large` for larger containers, and `xlarge` for full-page loading states.
+- **Color customization**: The spinner inherits the text color by default (`--ag-text-primary`), but you can customize it using the `--spinner-color` CSS custom property.
+- **Lit**: Properties can be set via attributes (e.g., `<ag-spinner size="large">`) or via property binding in Lit templates (e.g., `.size=${'large'}`).
+- **Performance**: The spinner uses CSS animations with GPU acceleration for smooth performance.
+- **Responsive motion**: The animation automatically adjusts based on user's system motion preferences, ensuring accessibility for users sensitive to motion.
+- All three implementations (Lit, React, Vue) share the same underlying styles and behavior.

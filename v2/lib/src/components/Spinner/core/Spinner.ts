@@ -1,4 +1,4 @@
-import { AgSpinner } from './_Spinner';
+import { AgSpinner } from './_Spinner.js';
 
 if (!customElements.get('ag-spinner')) {
   customElements.define('ag-spinner', AgSpinner);
@@ -10,5 +10,6 @@ declare global {
   }
 }
 
-// Export everything from implementation
 export * from './_Spinner.js';
+export { _SpinnerFallback } from './_SpinnerFallback.js';
+export type { SpinnerFallbackProps } from './_SpinnerFallback.js';

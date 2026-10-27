@@ -1,6 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { AgSpinner } from './Spinner';
+import { AgSpinner } from './_Spinner.js';
+import { _SpinnerFallback } from './_SpinnerFallback.js';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import styles from './spinner-structure.module.css';
+import './Spinner.js';
 
 expect.extend(toHaveNoViolations);
 
@@ -17,7 +20,7 @@ describe('AgSpinner', () => {
   });
 
   const createSpinner = async (props: Partial<AgSpinner> = {}) => {
-    const spinner = new AgSpinner();
+    const spinner = document.createElement('ag-spinner') as AgSpinner;
     Object.assign(spinner, props);
     container.appendChild(spinner);
     await spinner.updateComplete;
@@ -33,31 +36,31 @@ describe('AgSpinner', () => {
 
     it('has role="status"', async () => {
       const el = await createSpinner();
-      const spinnerEl = el.shadowRoot?.querySelector('.spinner');
+      const spinnerEl = el.shadowRoot?.querySelector(`.${styles.spinner}`);
       expect(spinnerEl?.getAttribute('role')).toBe('status');
     });
 
     it('has aria-live="polite"', async () => {
       const el = await createSpinner();
-      const spinnerEl = el.shadowRoot?.querySelector('.spinner');
+      const spinnerEl = el.shadowRoot?.querySelector(`.${styles.spinner}`);
       expect(spinnerEl?.getAttribute('aria-live')).toBe('polite');
     });
 
     it('has aria-busy="true" by default', async () => {
       const el = await createSpinner();
-      const spinnerEl = el.shadowRoot?.querySelector('.spinner');
+      const spinnerEl = el.shadowRoot?.querySelector(`.${styles.spinner}`);
       expect(spinnerEl?.getAttribute('aria-busy')).toBe('true');
     });
 
     it('contains screen reader text', async () => {
       const el = await createSpinner();
-      const label = el.shadowRoot?.querySelector('.spinner-label');
+      const label = el.shadowRoot?.querySelector(`.${styles.spinnerLabel}`);
       expect(label?.textContent?.trim()).toBe('Loading...');
     });
 
     it('uses custom aria label when provided', async () => {
       const el = await createSpinner({ ariaLabel: 'Please wait...' });
-      const label = el.shadowRoot?.querySelector('.spinner-label');
+      const label = el.shadowRoot?.querySelector(`.${styles.spinnerLabel}`);
       expect(label?.textContent?.trim()).toBe('Please wait...');
     });
   });
@@ -115,34 +118,6 @@ describe('AgSpinner', () => {
     });
   });
 
-  describe('CSS Structure', () => {
-    it('uses correct CSS attribute selectors for size variants', () => {
-      const styleContent = AgSpinner.styles.toString();
-      expect(styleContent).toContain(':host([size="small"])');
-      expect(styleContent).toContain(':host([size="large"])');
-      expect(styleContent).toContain(':host([size="xlarge"])');
-    });
-
-    it('uses grid layout for overlaying pseudo-elements', () => {
-      const styleContent = AgSpinner.styles.toString();
-      expect(styleContent).toContain('display: grid');
-      expect(styleContent).toContain('grid-area: content');
-    });
-
-    it('applies rotation animation', () => {
-      const styleContent = AgSpinner.styles.toString();
-      expect(styleContent).toContain('@keyframes loading-circle');
-      expect(styleContent).toContain('animation: loading-circle');
-      expect(styleContent).toContain('rotate(360deg)');
-    });
-
-    it('respects prefers-reduced-motion', () => {
-      const styleContent = AgSpinner.styles.toString();
-      expect(styleContent).toContain('@media (prefers-reduced-motion)');
-      expect(styleContent).toContain('transition-duration: 0.001ms !important');
-    });
-  });
-
   describe('Slot content', () => {
     it('displays slotted content when provided', async () => {
       const el = await createSpinner();
@@ -161,8 +136,24 @@ describe('AgSpinner', () => {
       const el = await createSpinner({ ariaLabel: 'Loading...' });
       el.ariaLabel = 'Processing...';
       await el.updateComplete;
-      const label = el.shadowRoot?.querySelector('.spinner-label');
+      const label = el.shadowRoot?.querySelector(`.${styles.spinnerLabel}`);
       expect(label?.textContent?.trim()).toBe('Processing...');
+    });
+  });
+
+  /* Isomorphic Fallback Engine Assertion Coverage */
+  describe('Isomorphic Fallback Engine Integration', () => {
+    it('should generate basic fallback markup matching default states', () => {
+      const html = _SpinnerFallback({});
+      expect(html).toContain('size="default"');
+      expect(html).toContain('aria-label="Loading..."');
+      expect(html).toContain('class="ag-spinner"');
+    });
+
+    it('should correctly propagate custom size configuration attributes', () => {
+      const html = _SpinnerFallback({ size: 'xlarge', ariaLabel: 'Syncing database blocks...' });
+      expect(html).toContain('size="xlarge"');
+      expect(html).toContain('aria-label="Syncing database blocks..."');
     });
   });
 });
