@@ -5,6 +5,5 @@
 </template>
 
 <script setup lang="ts">
-// By importing the barrel file, we register the web component with Vue
-import '../core/VisuallyHidden';
+import '../core/VisuallyHidden.js';
 </script>

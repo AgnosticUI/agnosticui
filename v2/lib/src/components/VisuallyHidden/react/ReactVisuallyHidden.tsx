@@ -1,6 +1,6 @@
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { VisuallyHidden } from '../core/VisuallyHidden';
+import { VisuallyHidden } from '../core/VisuallyHidden.js';
 
 export interface ReactVisuallyHiddenProps {
   children?: React.ReactNode;

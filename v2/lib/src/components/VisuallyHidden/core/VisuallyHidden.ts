@@ -11,3 +11,5 @@ declare global {
 }
 
 export * from './_VisuallyHidden.js';
+export { _VisuallyHiddenFallback } from './_VisuallyHiddenFallback.js';
+export type { VisuallyHiddenFallbackProps } from './_VisuallyHiddenFallback.js';
