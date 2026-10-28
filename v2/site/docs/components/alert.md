@@ -2,28 +2,29 @@
 
 <AlphaWarning />
 
-
 Alerts are used to provide timely feedback to the user.
 
 ## Examples
 
-<FrameworkExample
-  component="alert"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
-  <template #vue>
-    <AlertExamples />
-  </template>
-  <template #lit>
-    <alert-lit-examples></alert-lit-examples>
-  </template>
-</FrameworkExample>
+<FrameworkExample component="alert" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode"><template #vue><AlertExamples /></template><template #lit><alert-lit-examples></alert-lit-examples></template></FrameworkExample>
+
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer Isomorphic Architecture to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+To understand how these static strings safely handle global cascade isolation, see our architectural guide: How SSR Fallbacks Work.
+
+<AlertFallbackPreview />
+
+### Handling Dual-Class Token Lifecycle During Hydration
+
+By setting static unhashed namespaced identifiers (`ag-alert-*`) side-by-side with runtime framework token mappings (`styles.*`), our fallback engines protect web applications from unexpected element shifting during network transmission intervals.
+
+Before hydration runs on the client, root compiled stylesheets target the namespaced classes to instantly paint layout parameters and secure Cumulative Layout Shift (CLS) stability. When client bundles finish loading, DOM engines seamlessly inherit the running nodes with zero-drift visual recalculations.
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import AlertExamples from '../examples/AlertExamples.vue'
+import AlertFallbackPreview from '../examples/AlertFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/AlertLitExamples.js'
 import vueCode from '../examples/AlertExamples.vue?raw'
@@ -35,10 +36,12 @@ import reactCode from '../examples/AlertReactExamples.jsx?raw'
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add Alert
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
@@ -141,7 +144,6 @@ export default {
 ```
 
 :::
-
 ::: details React
 
 ```tsx
@@ -308,8 +310,12 @@ export default function AlertExamples() {
   </div>
   <div class="stacked">
     <ag-alert class="mbe2" borderedLeft>Default alert</ag-alert>
-    <ag-alert class="mbe2" borderedLeft variant="success">Success alert</ag-alert>
-    <ag-alert class="mbe2" borderedLeft variant="warning">Warning alert</ag-alert>
+    <ag-alert class="mbe2" borderedLeft variant="success"
+      >Success alert</ag-alert
+    >
+    <ag-alert class="mbe2" borderedLeft variant="warning"
+      >Warning alert</ag-alert
+    >
     <ag-alert class="mbe2" borderedLeft variant="danger">Danger alert</ag-alert>
     <ag-alert class="mbe2" borderedLeft variant="error">Error alert</ag-alert>
   </div>
@@ -436,11 +442,11 @@ export default function DismissibleAlertExample() {
 ::: details Lit (Web Components)
 
 ```typescript
-import { LitElement, html, css } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
-import 'agnosticui-core/alert';
+import { LitElement, html, css } from "lit";
+import { customElement, state } from "lit/decorators.js";
+import "agnosticui-core/alert";
 
-@customElement('alert-dismissible-example')
+@customElement("alert-dismissible-example")
 export class AlertDismissibleExample extends LitElement {
   @state() private showSuccess = true;
   @state() private showWarning = true;
@@ -452,19 +458,21 @@ export class AlertDismissibleExample extends LitElement {
   `;
 
   firstUpdated() {
-    // Set up event listeners for alerts in the shadow DOM
-    const successAlert = this.shadowRoot?.querySelector('#success-alert');
-    const warningAlert = this.shadowRoot?.querySelector('#warning-alert');
+    const successAlert = this.shadowRoot?.querySelector("#success-alert");
+    const warningAlert = this.shadowRoot?.querySelector("#warning-alert");
 
-    successAlert?.addEventListener('alert-dismiss', (e: Event) => {
+    successAlert?.addEventListener("alert-dismiss", (e: Event) => {
       const customEvent = e as CustomEvent;
-      console.log('Success alert dismissed, variant:', customEvent.detail.variant);
+      console.log(
+        "Success alert dismissed, variant:",
+        customEvent.detail.variant,
+      );
       this.showSuccess = false;
     });
 
     if (warningAlert) {
       (warningAlert as any).onAlertDismiss = (e: CustomEvent) => {
-        console.log('Warning dismissed, variant:', e.detail.variant);
+        console.log("Warning dismissed, variant:", e.detail.variant);
         this.showWarning = false;
       };
     }
@@ -482,16 +490,30 @@ export class AlertDismissibleExample extends LitElement {
     return html`
       <div>
         ${this.showSuccess
-          ? html`<ag-alert id="success-alert" variant="success" dismissible class="mbe2">
+          ? html`<ag-alert
+              id="success-alert"
+              variant="success"
+              dismissible
+              class="mbe2"
+            >
               This is a dismissible success alert. Click the × to dismiss.
             </ag-alert>`
-          : html`<button @click=${this.handleShowSuccess}>Show Success Alert</button>`}
-
+          : html`<button @click="\${this.handleShowSuccess}">
+              Show Success Alert
+            </button>`}
         ${this.showWarning
-          ? html`<ag-alert id="warning-alert" variant="warning" dismissible rounded class="mbe2">
+          ? html`<ag-alert
+              id="warning-alert"
+              variant="warning"
+              dismissible
+              rounded
+              class="mbe2"
+            >
               Warning: This action cannot be undone!
             </ag-alert>`
-          : html`<button @click=${this.handleShowWarning}>Show Warning Alert</button>`}
+          : html`<button @click="\${this.handleShowWarning}">
+              Show Warning Alert
+            </button>`}
       </div>
     `;
   }
@@ -504,18 +526,18 @@ export class AlertDismissibleExample extends LitElement {
 
 ## Props
 
-| Prop           | Type                                                                                | Default     | Description                               |
-| -------------- | ----------------------------------------------------------------------------------- | ----------- | ----------------------------------------- |
-| `variant`      | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'danger' \| 'error'` | `'default'` | The alert variant type                    |
-| `bordered`     | `boolean`                                                                           | `false`     | Adds a border around the alert            |
-| `rounded`      | `boolean`                                                                           | `false`     | Applies rounded corners to the alert      |
-| `borderedLeft` | `boolean`                                                                           | `false`     | Adds a left border accent to the alert    |
-| `dismissible`  | `boolean`                                                                           | `false`     | Shows a close button to dismiss the alert |
+| Prop           | Type                                                                                                | Default     | Description                               |
+| -------------- | --------------------------------------------------------------------------------------------------- | ----------- | ----------------------------------------- |
+| `variant`      | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'danger' \| 'error' \| 'monochrome'` | `'default'` | The alert variant type                    |
+| `bordered`     | `boolean`                                                                                           | `false`     | Adds a border around the alert            |
+| `rounded`      | `boolean`                                                                                           | `false`     | Applies rounded corners to the alert      |
+| `borderedLeft` | `boolean`                                                                                           | `false`     | Adds a left border accent to the alert    |
+| `dismissible`  | `boolean`                                                                                           | `false`     | Shows a close button to dismiss the alert |
 
 ## Events
 
-| Event           | Framework                                                                                      | Detail                   | Description                                                                               |
-| --------------- | ---------------------------------------------------------------------------------------------- | ------------------------ | ----------------------------------------------------------------------------------------- |
+| Event           | Framework                                                                                      | Detail                      | Description                                                                               |
+| --------------- | ---------------------------------------------------------------------------------------------- | --------------------------- | ----------------------------------------------------------------------------------------- |
 | `alert-dismiss` | Vue: `@alert-dismiss`<br>React: `onAlertDismiss`<br>Lit: `@alert-dismiss` or `.onAlertDismiss` | `{ variant: AlertVariant }` | Fired when the alert's close button is clicked. Provides the alert variant in the detail. |
 
 ### Event Patterns

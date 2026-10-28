@@ -1,6 +1,9 @@
-import { LitElement, html, css } from 'lit';
+/* v2/lib/src/components/Alert/core/_Alert.ts */
+import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import '../../shared/CloseButton/CloseButton';
+import styles from './alert-structure.module.css';
+import structuralStylesText from './alert-structure.module.css?inline';
 
 export type AlertVariant = 'warning' | 'info' | 'success' | 'error' | 'danger' | 'primary' | 'default' | 'monochrome';
 
@@ -50,100 +53,9 @@ export class AgAlert extends LitElement implements AlertProps {
     this.dismissible = false;
   }
 
-  static styles = css`
-    .alert {
-      position: relative;
-      padding: var(--ag-space-3);
-      background-color: var(--ag-info-background);
-      color: var(--ag-info-text);
-      border-width: var(--ag-border-width-1);
-      border-style: solid;
-      border-color: transparent;
-      display: flex;
-      align-items: flex-start;
-      gap: var(--ag-space-2);
-    }
-    .alert-content {
-      flex: 1;
-    }
-    .alert-close {
-      flex-shrink: 0;
-      margin-inline-start: auto;
-    }
-    .alert-rounded {
-      border-radius: var(--ag-radius-md);
-    }
-    .alert-bordered {
-      border-color: var(--ag-border);
-    }
-    .alert-bordered.alert-warning {
-      border-color: var(--ag-warning);
-    }
-    .alert-bordered.alert-info {
-      border-color: var(--ag-info);
-    }
-    .alert-bordered.alert-success {
-      border-color: var(--ag-success);
-    }
-    .alert-bordered.alert-danger,
-    .alert-bordered.alert-error {
-      border-color: var(--ag-danger);
-    }
-    .alert-bordered.alert-primary {
-      border-color: var(--ag-primary);
-    }
-    .alert-border-left {
-      border-inline-start-width: var(--ag-border-width-3);
-      border-inline-start-color: var(--ag-border);
-    }
-    .alert-warning {
-      background-color: var(--ag-warning-background);
-      color: var(--ag-warning-text);
-    }
-    .alert-border-left.alert-warning {
-      border-inline-start-color: var(--ag-warning);
-    }
-    .alert-info {
-      background-color: var(--ag-info-background);
-      color: var(--ag-info-text);
-    }
-    .alert-border-left.alert-info {
-      border-inline-start-color: var(--ag-info);
-    }
-    .alert-success {
-      background-color: var(--ag-success-background);
-      color: var(--ag-success-text);
-    }
-    .alert-border-left.alert-success {
-      border-inline-start-color: var(--ag-success);
-    }
-    .alert-danger,
-    .alert-error {
-      background-color: var(--ag-danger-background);
-      color: var(--ag-danger-text);
-    }
-    .alert-border-left.alert-danger,
-    .alert-border-left.alert-error {
-      border-inline-start-color: var(--ag-danger);
-    }
-    .alert-primary {
-      background-color: var(--ag-primary-background);
-      color: var(--ag-primary-text);
-    }
-    .alert-border-left.alert-primary {
-      border-inline-start-color: var(--ag-primary);
-    }
-    .alert-monochrome {
-      background-color: var(--ag-info-background);
-      color: var(--ag-text-primary);
-    }
-    .alert-bordered.alert-monochrome {
-      border-color: var(--ag-text-primary);
-    }
-    .alert-border-left.alert-monochrome {
-      border-inline-start-color: var(--ag-text-primary);
-    }
-  `;
+  static styles = [
+    css`${unsafeCSS(structuralStylesText)}`
+  ];
 
   private _handleDismiss = () => {
     // Dual-dispatch pattern for custom event
@@ -165,21 +77,28 @@ export class AgAlert extends LitElement implements AlertProps {
   };
 
   render() {
+    const variantClass = this.variant === 'warning' ? styles.alertWarning :
+                          this.variant === 'info' ? styles.alertInfo :
+                          this.variant === 'success' ? styles.alertSuccess :
+                          this.variant === 'primary' ? styles.alertPrimary :
+                          this.variant === 'monochrome' ? styles.alertMonochrome :
+                          (this.variant === 'danger' || this.variant === 'error') ? styles.alertDanger : '';
+
     const classes = [
-      'alert',
-      this.rounded ? 'alert-rounded' : '',
-      this.bordered ? 'alert-bordered' : '',
-      this.borderedLeft ? 'alert-border-left' : '',
-      `alert-${this.variant}`
+      styles.alert,
+      this.rounded ? styles.alertRounded : '',
+      this.bordered ? styles.alertBordered : '',
+      this.borderedLeft ? styles.alertBorderLeft : '',
+      variantClass
     ].filter(Boolean).join(' ');
 
     return html`
       <div class="${classes}" part="ag-alert" role="alert">
-        <div class="alert-content">
+        <div class="${styles.alertContent}">
           <slot></slot>
         </div>
         ${this.dismissible ? html`
-          <div class="alert-close">
+          <div class="${styles.alertClose}">
             <ag-close-button
               @click=${this._handleDismiss}
               aria-label="Dismiss alert"

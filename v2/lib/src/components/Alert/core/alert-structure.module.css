@@ -1,0 +1,181 @@
+/* v2/lib/src/components/Alert/core/alert-structure.module.css */
+
+.alert,
+:global(.ag-alert) {
+  position: relative;
+  padding: var(--ag-space-3);
+  background-color: var(--ag-info-background);
+  color: var(--ag-info-text);
+  border-width: var(--ag-border-width-1);
+  border-style: solid;
+  border-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ag-space-2);
+}
+
+.alertContent,
+:global(.ag-alert-content) {
+  flex: 1;
+}
+
+.alertClose,
+:global(.ag-alert-close) {
+  flex-shrink: 0;
+  margin-inline-start: auto;
+}
+
+/* Symmetrical SSR Fallback Replications matching shared/CloseButton/ exactly */
+:global(.ag-close-button) {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ag-text-secondary);
+  line-height: 1;
+  padding: var(--ag-space-1);
+  border-radius: var(--ag-radius-sm);
+  transition: background-color var(--ag-motion-fast) ease,
+              color var(--ag-motion-fast) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(.ag-close-button) svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+}
+
+:global(.ag-close-button-size-sm) {
+  font-size: var(--ag-font-size-2xl);
+  padding: var(--ag-space-1);
+}
+
+:global(.ag-close-button):hover {
+  background: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
+}
+
+:global(.ag-close-button):focus-visible {
+  outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+  outline-offset: var(--ag-focus-offset);
+}
+
+.alertRounded,
+:global(.ag-alert-rounded) {
+  border-radius: var(--ag-radius-md);
+}
+
+.alertBordered,
+:global(.ag-alert-bordered) {
+  border-color: var(--ag-border);
+}
+
+.alertBordered.alertWarning,
+:global(.ag-alert-bordered.ag-alert-warning) {
+  border-color: var(--ag-warning);
+}
+
+.alertBordered.alertInfo,
+:global(.ag-alert-bordered.ag-alert-info) {
+  border-color: var(--ag-info);
+}
+
+.alertBordered.alertSuccess,
+:global(.ag-alert-bordered.ag-alert-success) {
+  border-color: var(--ag-success);
+}
+
+.alertBordered.alertDanger,
+.alertBordered.alertError,
+:global(.ag-alert-bordered.ag-alert-danger),
+:global(.ag-alert-bordered.ag-alert-error) {
+  border-color: var(--ag-danger);
+}
+
+.alertBordered.alertPrimary,
+:global(.ag-alert-bordered.ag-alert-primary) {
+  border-color: var(--ag-primary);
+}
+
+.alertBorderLeft,
+:global(.ag-alert-border-left) {
+  border-inline-start-width: var(--ag-border-width-3);
+  border-inline-start-color: var(--ag-border);
+}
+
+.alertWarning,
+:global(.ag-alert-warning) {
+  background-color: var(--ag-warning-background);
+  color: var(--ag-warning-text);
+}
+
+.alertBorderLeft.alertWarning,
+:global(.ag-alert-border-left.ag-alert-warning) {
+  border-inline-start-color: var(--ag-warning);
+}
+
+.alertInfo,
+:global(.ag-alert-info) {
+  background-color: var(--ag-info-background);
+  color: var(--ag-info-text);
+}
+
+.alertBorderLeft.alertInfo,
+:global(.ag-alert-border-left.ag-alert-info) {
+  border-inline-start-color: var(--ag-info);
+}
+
+.alertSuccess,
+:global(.ag-alert-success) {
+  background-color: var(--ag-success-background);
+  color: var(--ag-success-text);
+}
+
+.alertBorderLeft.alertSuccess,
+:global(.ag-alert-border-left.ag-alert-success) {
+  border-inline-start-color: var(--ag-success);
+}
+
+.alertDanger,
+.alertError,
+:global(.ag-alert-danger),
+:global(.ag-alert-error) {
+  background-color: var(--ag-danger-background);
+  color: var(--ag-danger-text);
+}
+
+.alertBorderLeft.alertDanger,
+.alertBorderLeft.alertError,
+:global(.ag-alert-border-left.ag-alert-danger),
+:global(.ag-alert-border-left.ag-alert-error) {
+  border-inline-start-color: var(--ag-danger);
+}
+
+.alertPrimary,
+:global(.ag-alert-primary) {
+  background-color: var(--ag-primary-background);
+  color: var(--ag-primary-text);
+}
+
+.alertBorderLeft.alertPrimary,
+:global(.ag-alert-border-left.ag-alert-primary) {
+  border-inline-start-color: var(--ag-primary);
+}
+
+.alertMonochrome,
+:global(.ag-alert-monochrome) {
+  background-color: var(--ag-info-background);
+  color: var(--ag-text-primary);
+}
+
+.alertBordered.alertMonochrome,
+:global(.ag-alert-bordered.ag-alert-monochrome) {
+  border-color: var(--ag-text-primary);
+}
+
+.alertBorderLeft.alertMonochrome,
+:global(.ag-alert-border-left.ag-alert-monochrome) {
+  border-inline-start-color: var(--ag-text-primary);
+}
