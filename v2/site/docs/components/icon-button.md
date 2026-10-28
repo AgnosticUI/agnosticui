@@ -2,7 +2,6 @@
 
 <AlphaWarning />
 
-
 An accessible icon-only button component that displays a single icon with proper accessibility labeling. Icon buttons are ideal for toolbars, navigation, and actions where space is limited or the icon alone clearly conveys the action.
 
 ::: tip
@@ -11,23 +10,29 @@ If you don't want SVG scaling, consider placing SVG directly in an <code>ag-butt
 
 ## Examples
 
-<FrameworkExample
-  component="icon-button"
-  :vue-code="vueCode"
-  :lit-code="litCode"
-  :react-code="reactCode"
->
-  <template #vue>
-    <IconButtonExamples />
-  </template>
-  <template #lit>
-    <icon-button-lit-examples></icon-button-lit-examples>
-  </template>
-</FrameworkExample>
+<FrameworkExample component="icon-button" :vue-code="vueCode" :lit-code="litCode" :react-code="reactCode"><template #vue><IconButtonExamples /></template><template #lit><icon-button-lit-examples></icon-button-lit-examples></template></FrameworkExample>
+
+## Server-Side Rendering (SSR) Fallback Layouts
+
+AgnosticUI utilizes a dual-layer Isomorphic Architecture to support server-first workflows across all major modern meta-frameworks (e.g., Astro, Next.js, Nuxt, Remix, SvelteKit, TanStack Start). Below are zero-drift visual previews generated directly from our isolated server layout string engines before client-side hydration completes.
+
+To support different performance and design goals, the server fallback engine provides **two visual lifecycle strategies**:
+
+1. **Option 2 (Default Placeholder Ring):** Renders a highly muted, dashed wireframe ring inside the frame. This clearly signals that an icon asset is loading without making assumptions about its visual identity.
+2. **Option 1 (Empty Frame Mode):** Toggled by passing `useEmptyIcon: true`. This leaves the inside of the layout frame completely empty until client hydration runs. This completely avoids any visual popping or flash when the real icon is loaded.
+
+<IconButtonFallbackPreview />
+
+### Handling Dual-Class Token Lifecycle During Hydration
+
+By setting static unhashed namespaced identifiers (`ag-icon-button-*`) side-by-side with runtime framework token mappings (`styles.*`), our fallback engines protect web applications from unexpected element shifting during network transmission intervals.
+
+Before hydration runs on the client, root compiled stylesheets target the namespaced classes to instantly paint layout parameters and secure Cumulative Layout Shift (CLS) stability. When client bundles finish loading, DOM engines seamlessly inherit the running nodes with zero-drift visual recalculations.
 
 <script setup>
 import AlphaWarning from '../components/AlphaWarning.vue'
 import IconButtonExamples from '../examples/IconButtonExamples.vue'
+import IconButtonFallbackPreview from '../examples/IconButtonFallbackPreview.vue'
 import FrameworkExample from '../.vitepress/theme/components/FrameworkExample.vue'
 import '../examples/IconButtonLitExamples.js'
 import vueCode from '../examples/IconButtonExamples.vue?raw'
@@ -39,14 +44,17 @@ import reactCode from '../examples/IconButtonReactExamples.jsx?raw'
 
 ::: tip
 The framework examples below `import` AgnosticUI as an `npm` package. Alternatively, you can use the **CLI for complete control, AI/LLM visibility, and full code ownership**:
+
 ```bash
 npx ag init --framework FRAMEWORK # react, vue, lit, svelte, etc.
 npx ag add IconButton
 ```
+
 The CLI copies source code directly into your project, giving you full visibility and control. After running `npx ag add`, you'll receive exact import instructions.
 :::
 
 ::: details Vue
+
 ```vue
 <template>
   <section>
@@ -54,29 +62,17 @@ The CLI copies source code directly into your project, giving you full visibilit
       <Settings :size="18" />
     </VueIconButton>
 
-    <VueIconButton
-      label="Delete"
-      variant="danger"
-    >
+    <VueIconButton label="Delete" variant="danger">
       <Trash :size="18" />
     </VueIconButton>
-    <VueIconButton
-      label="Save"
-      variant="primary"
-    >
+    <VueIconButton label="Save" variant="primary">
       <Save :size="18" />
     </VueIconButton>
 
-    <VueIconButton
-      label="Small"
-      size="sm"
-    >
+    <VueIconButton label="Small" size="sm">
       <Heart :size="16" />
     </VueIconButton>
-    <VueIconButton
-      label="Large"
-      size="lg"
-    >
+    <VueIconButton label="Large" size="lg">
       <Heart :size="20" />
     </VueIconButton>
 
@@ -85,27 +81,15 @@ The CLI copies source code directly into your project, giving you full visibilit
       :pressed="isFavorite"
       @click="toggleFavorite"
     >
-      <Heart
-        :size="18"
-        :fill="isFavorite ? 'currentColor' : 'none'"
-      />
+      <Heart :size="18" :fill="isFavorite ? 'currentColor' : 'none'" />
     </VueIconButton>
 
-    <VueIconButton
-      label="Close"
-      unicode="×"
-    />
+    <VueIconButton label="Close" unicode="×" />
 
-    <VueIconButton
-      label="Disabled"
-      disabled
-    >
+    <VueIconButton label="Disabled" disabled>
       <Save :size="18" />
     </VueIconButton>
-    <VueIconButton
-      label="Loading"
-      loading
-    >
+    <VueIconButton label="Loading" loading>
       <Loader :size="18" />
     </VueIconButton>
 
@@ -152,9 +136,11 @@ export default {
 };
 </script>
 ```
+
 :::
 
 ::: details React
+
 ```tsx
 import { useState } from "react";
 import { ReactIconButton } from "agnosticui-core/icon-button/react";
@@ -188,22 +174,15 @@ export default function IconButtonExample() {
         <Save size={18} />
       </ReactIconButton>
 
-      <ReactIconButton label="Small" size="sm">
-        <Heart size={16} />
-      </ReactIconButton>
-      <ReactIconButton label="Large" size="lg">
-        <Heart size={20} />
-      </ReactIconButton>
+      <ReactIconButton label="Small" size={16} />
+      <ReactIconButton label="Large" size={20} />
 
       <ReactIconButton
         label="Toggle favorite"
         pressed={isFavorite}
         onClick={toggleFavorite}
       >
-        <Heart
-          size={18}
-          fill={isFavorite ? "currentColor" : "none"}
-        />
+        <Heart size={18} fill={isFavorite ? "currentColor" : "none"} />
       </ReactIconButton>
 
       <ReactIconButton label="Close" unicode="×" />
@@ -226,15 +205,17 @@ export default function IconButtonExample() {
   );
 }
 ```
+
 :::
 
 ::: details Lit (Web Components)
-```typescript
-import { LitElement, html, css } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
-import 'agnosticui-core/icon-button';
 
-@customElement('icon-button-example')
+```typescript
+import { LitElement, html, css } from "lit";
+import { customElement, state } from "lit/decorators.js";
+import "agnosticui-core/icon-button";
+
+@customElement("icon-button-example")
 export class IconButtonExample extends LitElement {
   @state() private isFavorite = false;
 
@@ -250,33 +231,41 @@ export class IconButtonExample extends LitElement {
   `;
 
   firstUpdated() {
-    // Set up event listeners for icon buttons in the shadow DOM
-    const favoriteBtn = this.shadowRoot?.querySelector('#favorite-toggle') as any;
+    const favoriteBtn = this.shadowRoot?.querySelector(
+      "#favorite-toggle",
+    ) as any;
 
-    favoriteBtn?.addEventListener('click', () => {
+    favoriteBtn?.addEventListener("click", () => {
       this.isFavorite = !this.isFavorite;
       favoriteBtn.pressed = this.isFavorite;
 
-      const heartIcon = favoriteBtn.querySelector('svg');
+      const heartIcon = favoriteBtn.querySelector("svg");
       if (heartIcon) {
-        heartIcon.setAttribute('fill', this.isFavorite ? 'currentColor' : 'none');
+        heartIcon.setAttribute(
+          "fill",
+          this.isFavorite ? "currentColor" : "none",
+        );
       }
     });
 
-    const actionBtn = this.shadowRoot?.querySelector('#action-btn');
-    actionBtn?.addEventListener('icon-button-click', (e: Event) => {
+    const actionBtn = this.shadowRoot?.querySelector("#action-btn");
+    actionBtn?.addEventListener("icon-button-click", (e: Event) => {
       const customEvent = e as CustomEvent;
-      console.log('Button clicked:', customEvent.detail.label, customEvent.detail.pressed);
+      console.log(
+        "Button clicked:",
+        customEvent.detail.label,
+        customEvent.detail.pressed,
+      );
     });
-    actionBtn?.addEventListener('icon-button-activate', (e: Event) => {
+    actionBtn?.addEventListener("icon-button-activate", (e: Event) => {
       const customEvent = e as CustomEvent;
-      console.log('Button activated via keyboard:', customEvent.detail.label);
+      console.log("Button activated via keyboard:", customEvent.detail.label);
     });
 
-    const callbackBtn = this.shadowRoot?.querySelector('#callback-btn') as any;
+    const callbackBtn = this.shadowRoot?.querySelector("#callback-btn") as any;
     if (callbackBtn) {
       callbackBtn.onIconButtonClick = (e: CustomEvent) => {
-        console.log('Callback click:', e.detail.label);
+        console.log("Callback click:", e.detail.label);
       };
     }
   }
@@ -285,61 +274,135 @@ export class IconButtonExample extends LitElement {
     return html`
       <section>
         <ag-icon-button label="Settings">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+          >
             <circle cx="12" cy="12" r="3"></circle>
-            <path d="M12 1v6m0 6v6M5.6 5.6l4.2 4.2m4.2 4.2l4.2 4.2M1 12h6m6 0h6M5.6 18.4l4.2-4.2m4.2-4.2l4.2-4.2"></path>
+            <path
+              d="M12 1v6m0 6v6M5.6 5.6l4.2 4.2m4.2 4.2l4.2 4.2M1 12h6m6 0h6M5.6 18.4l4.2-4.2m4.2-4.2l4.2-4.2"
+            ></path>
           </svg>
         </ag-icon-button>
 
         <ag-icon-button label="Delete" variant="danger">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-            <path d="M3 6h18M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              d="M3 6h18M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+            ></path>
           </svg>
         </ag-icon-button>
         <ag-icon-button label="Save" variant="primary">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"
+            ></path>
           </svg>
         </ag-icon-button>
 
         <ag-icon-button label="Small" size="sm">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+          <svg
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+            ></path>
           </svg>
         </ag-icon-button>
         <ag-icon-button label="Large" size="lg">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor">
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+            ></path>
           </svg>
         </ag-icon-button>
 
         <ag-icon-button id="favorite-toggle" label="Toggle favorite">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+            ></path>
           </svg>
         </ag-icon-button>
 
-        <ag-icon-button label="Close" unicode="×"></ag-icon-button>
-
         <ag-icon-button label="Disabled" disabled>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"
+            ></path>
           </svg>
         </ag-icon-button>
         <ag-icon-button label="Loading" loading>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
-            <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"
+            ></path>
           </svg>
         </ag-icon-button>
 
         <ag-icon-button id="action-btn" label="Action button">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+          >
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
           </svg>
         </ag-icon-button>
 
         <ag-icon-button id="callback-btn" label="Callback button">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+          >
             <circle cx="12" cy="12" r="10"></circle>
             <path d="M12 8v8m-4-4h8"></path>
           </svg>
@@ -350,30 +413,30 @@ export class IconButtonExample extends LitElement {
 }
 ```
 
-**Note:** When using icon-button components within a custom element's shadow DOM, set up event listeners in the component's lifecycle (e.g., `firstUpdated()`) rather than using `DOMContentLoaded`, as `document.querySelector()` cannot access elements inside shadow DOM. Use `this.shadowRoot.querySelector()` instead.
 :::
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | — | **Required**. Accessible name for the button. Used for aria-label to ensure screen readers can announce the button's purpose. |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size of the button. Controls both button dimensions and icon sizing. |
-| `variant` | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'ghost'` | `'ghost'` | Visual style variant. Ghost is transparent by default. Primary, success, warning, and danger have filled backgrounds with white icons and get darker on hover. Secondary uses a neutral gray background. |
-| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | Button type attribute. Use `'submit'` for form submissions or `'reset'` for form resets. |
-| `icon` | `string` | `''` | Icon identifier for icon systems. Can be used with icon libraries that support string identifiers. |
-| `unicode` | `string` | `''` | Unicode character for simple icons (e.g., `'×'`, `'☰'`, `'+'`). Alternative to using custom icons via slots. |
-| `disabled` | `boolean` | `false` | Disables the button, preventing interaction and applying reduced opacity. |
-| `pressed` | `boolean` | `false` | Indicates pressed state for toggle buttons. Sets `aria-pressed` and applies visual pressed styling. |
-| `loading` | `boolean` | `false` | Shows loading indicator and prevents interaction. Useful for async operations. |
-| `ariaLabel` | `string` | — | Additional ARIA label that overrides the `label` prop if provided. |
-| `ariaDescribedby` | `string` | `''` | ID reference for additional descriptive text. Points to an element that provides extended description. |
+| Prop              | Type                                                                                        | Default    | Description                                                                                                                                                                                             |
+| ----------------- | ------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`           | `string`                                                                                    | —          | **Required**. Accessible name for the button. Used for aria-label to ensure screen readers can announce the button's purpose.                                                                           |
+| `size`            | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                      | `'md'`     | Size of the button. Controls both button dimensions and icon sizing.                                                                                                                                    |
+| `variant`         | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'ghost' \| 'monochrome'` | `'ghost'`  | Visual style variant.                                                                                                                                                                                   |
+| `type`            | `'button' \| 'submit' \| 'reset'`                                                           | `'button'` | Button type attribute.                                                                                                                                                                                  |
+| `icon`            | `string`                                                                                    | `''`       | Icon identifier for icon systems.                                                                                                                                                                       |
+| `unicode`         | `string`                                                                                    | `''`       | Unicode character for simple icons (e.g., `'×'`, `'☰'`).                                                                                                                                               |
+| `disabled`        | `boolean`                                                                                   | `false`    | Disables the button, preventing interaction.                                                                                                                                                            |
+| `pressed`         | `boolean`                                                                                   | `false`    | Indicates pressed state for toggle buttons. Sets `aria-pressed`.                                                                                                                                        |
+| `loading`         | `boolean`                                                                                   | `false`    | Shows loading indicator and prevents interaction.                                                                                                                                                       |
+| `useEmptyIcon`    | `boolean`                                                                                   | `false`    | **SSR Fallback Engine Only**. When set to `true`, disables the default dashed loading placeholder ring and leaves the layout box interior completely clear to prevent visual flashing during hydration. |
+| `ariaLabel`       | `string`                                                                                    | —          | Additional ARIA label that overrides the `label` prop if provided.                                                                                                                                      |
+| `ariaDescribedby` | `string`                                                                                    | `''`       | ID reference for additional descriptive text.                                                                                                                                                           |
 
 ## Events
 
-| Event | Framework | Detail | Description |
-|-------|-----------|--------|-------------|
-| `icon-button-click` | Vue: `@icon-button-click`<br>React: `onIconButtonClick`<br>Lit: `@icon-button-click` or `.onIconButtonClick` | `{ originalEvent: MouseEvent, label: string, pressed: boolean }` | Fired when the icon button is clicked. Provides the original mouse event and button state. |
+| Event                  | Framework                                                                                                                | Detail                                                              | Description                                                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `icon-button-click`    | Vue: `@icon-button-click`<br>React: `onIconButtonClick`<br>Lit: `@icon-button-click` or `.onIconButtonClick`             | `{ originalEvent: MouseEvent, label: string, pressed: boolean }`    | Fired when the icon button is clicked. Provides the original mouse event and button state.                                    |
 | `icon-button-activate` | Vue: `@icon-button-activate`<br>React: `onIconButtonActivate`<br>Lit: `@icon-button-activate` or `.onIconButtonActivate` | `{ originalEvent: KeyboardEvent, label: string, pressed: boolean }` | Fired when the button is activated via keyboard (Space or Enter keys). Provides the original keyboard event and button state. |
 
 ### Event Patterns
@@ -381,6 +444,7 @@ export class IconButtonExample extends LitElement {
 AgnosticUI IconButton supports **three event handling patterns**:
 
 1. **addEventListener** (Lit/Vanilla JS):
+
 ```javascript
 const iconButton = document.querySelector("ag-icon-button");
 iconButton.addEventListener("icon-button-click", (e) => {
@@ -389,6 +453,7 @@ iconButton.addEventListener("icon-button-click", (e) => {
 ```
 
 2. **Callback props** (Lit/Vanilla JS):
+
 ```javascript
 const iconButton = document.querySelector("ag-icon-button");
 iconButton.onIconButtonClick = (e) => {
@@ -397,12 +462,14 @@ iconButton.onIconButtonClick = (e) => {
 ```
 
 3. **Framework event handlers** (Vue/React):
+
 ```vue
 <VueIconButton
   @icon-button-click="handleClick"
   @icon-button-activate="handleActivate"
 />
 ```
+
 ```tsx
 <ReactIconButton
   onIconButtonClick={handleClick}
@@ -416,12 +483,12 @@ All three patterns work identically thanks to the **dual-dispatch** system.
 
 The IconButton exposes CSS Shadow Parts that allow you to customize internal elements without breaking encapsulation:
 
-| Part | Description | Element |
-|------|-------------|---------|
+| Part                  | Description                             | Element  |
+| --------------------- | --------------------------------------- | -------- |
 | `ag-icon-has-slotted` | Icon wrapper when using slotted content | `<span>` |
-| `ag-icon-unicode` | Icon wrapper for unicode characters | `<span>` |
-| `ag-icon` | Icon wrapper for icon identifier | `<span>` |
-| `ag-icon-empty-slot` | Empty icon slot placeholder | `<span>` |
+| `ag-icon-unicode`     | Icon wrapper for unicode characters     | `<span>` |
+| `ag-icon`             | Icon wrapper for icon identifier        | `<span>` |
+| `ag-icon-empty-slot`  | Empty icon slot placeholder             | `<span>` |
 
 ### Example Usage
 
@@ -447,7 +514,7 @@ ag-icon-button::part(ag-icon):hover {
 
 ## Accessibility
 
-The IconButton implements the [WAI-ARIA Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/):
+The IconButton implements the [WAI-ARIA Button Pattern](https://w3.org):
 
 - Uses semantic `<button>` element for proper keyboard and screen reader support
 - **Requires accessible name** via the `label` prop (maps to `aria-label`)
@@ -463,6 +530,7 @@ The IconButton implements the [WAI-ARIA Button Pattern](https://www.w3.org/WAI/A
 The `label` prop is **required** for accessibility. Icon-only buttons need an accessible name so screen reader users can understand the button's purpose. While the label is not visually displayed, it's announced to screen readers via `aria-label`.
 
 **Good examples:**
+
 ```vue
 <VueIconButton label="Save document">
   <Save :size="18" />
@@ -474,6 +542,7 @@ The `label` prop is **required** for accessibility. Icon-only buttons need an ac
 ```
 
 **Bad example:**
+
 ```vue
 <VueIconButton>
   <Save :size="18" />

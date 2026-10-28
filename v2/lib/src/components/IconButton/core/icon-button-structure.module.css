@@ -1,0 +1,87 @@
+/* v2/lib/src/components/IconButton/core/icon-button-structure.module.css */
+
+.iconButtonHost,
+:global(.ag-icon-button-host) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconButton,
+:global(.ag-icon-button) {
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ag-icon-button-base, var(--ag-space-10));
+  height: var(--ag-icon-button-base, var(--ag-space-10));
+  min-width: 32px;
+  min-height: 32px;
+  color: var(--ag-text-primary);
+  border-radius: var(--ag-radius-sm);
+  transition: all var(--ag-motion-duration-fast) ease-in-out;
+}
+
+/* Isomorphic Sizing Baselines (Protects Pre-Hydration 1em Sizing Gap) */
+.sizeXs,
+:global(.ag-icon-button-size-xs) {
+  width: var(--ag-icon-button-xs, var(--ag-space-6));
+  height: var(--ag-icon-button-xs, var(--ag-space-6));
+  font-size: var(--ag-icon-button-font-size-xs, var(--ag-space-4));
+}
+
+.sizeSm,
+:global(.ag-icon-button-size-sm) {
+  width: var(--ag-icon-button-sm, var(--ag-space-8));
+  height: var(--ag-icon-button-sm, var(--ag-space-8));
+  font-size: var(--ag-icon-button-font-size-sm, var(--ag-space-5));
+}
+
+.sizeMd,
+:global(.ag-icon-button-size-md) {
+  width: var(--ag-icon-button-base, var(--ag-space-10));
+  height: var(--ag-icon-button-base, var(--ag-space-10));
+  font-size: var(--ag-icon-button-font-size-md, var(--ag-space-6));
+}
+
+.sizeLg,
+:global(.ag-icon-button-size-lg) {
+  width: var(--ag-icon-button-lg, var(--ag-space-12));
+  height: var(--ag-icon-button-lg, var(--ag-space-12));
+  font-size: var(--ag-icon-button-font-size-lg, var(--ag-space-7));
+}
+
+.sizeXl,
+:global(.ag-icon-button-size-xl) {
+  width: var(--ag-icon-button-xl, var(--ag-space-14));
+  height: var(--ag-icon-button-xl, var(--ag-space-14));
+  font-size: var(--ag-icon-button-font-size-xl, var(--ag-space-8));
+}
+
+.icon,
+:global(.ag-icon-button-icon) {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.visuallyHidden,
+:global(.ag-icon-button-visually-hidden) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

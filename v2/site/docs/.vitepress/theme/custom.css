@@ -642,6 +642,11 @@ make it a bit more aesthetically pleasing. */
   font-size: var(--ag-font-size-sm);
 }
 
+/* Centralized preview contrast patch: ensure light ghost/skeleton elements remain visible */
+.framework-example .preview {
+  background-color: transparent !important;
+}
+
 /* Tablet and up: side by side with larger max-height */
 @media (min-width: 768px) {
   .playbook-screenshots {
