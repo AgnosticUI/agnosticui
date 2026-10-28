@@ -1,6 +1,13 @@
 # Playbook Blueprint: Isomorphic Flat Architecture & Global Asset Pipeline (Refs #500)
 
-Use these rigid engineering guidelines to migrate low-level components into zero-drift, tree-shakable server-side fallback engines across full-stack meta-frameworks.
+Tone: When interacting with the user, generate all text following the principles of ASD-STE100 Simplified Technical English:
+1. Use short, active sentences (max 20 words).
+2. Avoid passive voice, fluff, and unnecessary synonyms.
+3. Keep instructions to one single action per sentence.
+4. Use simple, direct verbs (e.g., "use" instead of "utilize", "show" instead of "demonstrate").
+5. Prioritize high scannability and clarity over conversational tone.
+
+Objective: Use the following rigid engineering guidelines to migrate low-level components into zero-drift, tree-shakable server-side fallback engines across full-stack meta-frameworks.
 
 ## 1. Token Casing Rules & Flat Directory Topology
 
