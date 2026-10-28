@@ -51,7 +51,7 @@ if (!matchedComponentName) {
 const TARGET_DIR = path.join(BASE_DIR, matchedComponentName);
 const TMP_DIR = path.resolve(__dirname, '../../.tmp');
 const OUTPUT_FILE = path.join(TMP_DIR, `${matchedComponentName}_bundle.md`);
-const ALLOWED_EXTENSIONS = new Set(['.ts', '.tsx', '.vue']);
+const ALLOWED_EXTENSIONS = new Set(['.ts', '.tsx', '.vue', '.css']);
 
 // Ensure the local .tmp directory exists before writing
 if (!fs.existsSync(TMP_DIR)) {
@@ -85,7 +85,10 @@ function walkDirectory(currentPath) {
         const repoRelativePath = path.relative(path.resolve(__dirname, '../..'), fullPath);
         
         // Map language hints for markdown blocks
-        const lang = ext === '.vue' ? 'html' : ext.slice(1);
+        const lang =
+          ext === '.vue' ? 'vue' :
+          ext === '.css' ? 'css' :
+          ext.slice(1);
         
         console.log(` + Adding: ${repoRelativePath}`);
         
