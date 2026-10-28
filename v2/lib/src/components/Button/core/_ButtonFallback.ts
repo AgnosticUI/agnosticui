@@ -1,4 +1,5 @@
 import styles from './button-structure.module.css';
+import { escapeHtml } from '../../../utils/escape.js';
 
 export interface ButtonFallbackProps {
   variant?: 'success' | 'primary' | 'secondary' | 'warning' | 'danger' | 'monochrome' | '';
@@ -22,8 +23,14 @@ export function _ButtonFallback(props: ButtonFallbackProps = {}): string {
   const variant = props.variant || '';
   const size = props.size || 'md';
   const shape = props.shape || '';
-  const type = props.type || 'button';
-  const ariaLabel = props.ariaLabel || '';
+  const allowedTypes = ['button', 'submit', 'reset'];
+
+  const type = allowedTypes.includes(props.type || '')
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    ? props.type!
+    : 'button';
+
+  const ariaLabel = props.ariaLabel ? escapeHtml(props.ariaLabel) : '';
   const slotContent = props.slotContent || '';
 
   // Isomorphic Normalization Boundaries

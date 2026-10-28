@@ -66,4 +66,14 @@ describe('_ButtonFallback Engine', () => {
     expect(html).toContain('ag-button--full-width');
     expect(html).toContain('<div');
   });
+
+  it('should escape HTML in ariaLabel', () => {
+    const ariaLabel = '" onmouseover="alert(1)';
+    const html = _ButtonFallback({ ariaLabel });
+
+    expect(html).toContain(
+      'aria-label="&quot; onmouseover=&quot;alert(1)'
+    );
+    expect(html).not.toContain(`aria-label="${ariaLabel}"`);
+  });
 });
