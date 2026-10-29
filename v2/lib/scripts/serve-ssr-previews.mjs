@@ -4,14 +4,24 @@ import fs from 'fs';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 
-// Usage: npx tsx v2/lib/scripts/serve-ssr-previews.mjs
-
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const COMPONENT_LIB_ROOT = path.resolve(__dirname, '..');
+const REPO_ROOT = path.resolve(COMPONENT_LIB_ROOT, '..');
 const COMPONENTS_ROOT = path.resolve(COMPONENT_LIB_ROOT, 'src/components');
+
+// Paths to production style assets
+const STYLES_DIST_ROOT = path.resolve(COMPONENT_LIB_ROOT, 'dist/styles');
+const TOKENS_PATH = path.join(STYLES_DIST_ROOT, 'ag-tokens.css');
+const FRAMEWORK_CSS_PATH = path.join(STYLES_DIST_ROOT, 'framework-components.css');
 
 // eslint-disable-next-line no-undef
 console.log(`[INIT] Component Library Root: ${COMPONENT_LIB_ROOT}`);
+
+const COMPONENT_DEFAULT_SLOTS = {
+  Alert: { slotDefault: 'Alert Notice: System status nominal.' },
+  Button: { slotContent: 'Click Me' },
+  Kbd: { slotDefault: 'Ctrl' }
+};
 
 const tsExtensionRewritePlugin = () => ({
   name: 'ts-extension-rewrite',
@@ -78,29 +88,35 @@ const server = http.createServer(async (req, res) => {
       return res.end(`Export _${componentName}Fallback function not found.`);
     }
 
-    // ─── DYNAMIC PROP PARSING MATRIX ───
-    // Build properties payload directly out of active URL query arguments
     const props = {};
     reqUrl.searchParams.forEach((value, key) => {
       if (key === 'component') return;
-      // Parse boolean strings safely
       if (value === 'true') props[key] = true;
       else if (value === 'false') props[key] = false;
       else props[key] = value;
     });
 
-    // Provide generic default slots if none are passed in the URL parameters
-    if (componentName === 'Alert' && !props.slotDefault) {
-      props.slotDefault = 'Alert Notice: System status nominal.';
-    } else if (componentName === 'Button' && !props.slotContent) {
-      props.slotContent = 'Click Me';
+    if (COMPONENT_DEFAULT_SLOTS[componentName]) {
+      Object.entries(COMPONENT_DEFAULT_SLOTS[componentName]).forEach(([slotKey, defaultText]) => {
+        if (props[slotKey] === undefined) props[slotKey] = defaultText;
+      });
     }
 
     const renderedMarkup = fallbackFn(props);
 
-    let inlineStyles = '';
+    // Load global theme sheets dynamically if they exist on disk
+    let globalTokens = '';
+    let frameworkStyles = '';
+    let componentStructure = '';
+
+    if (fs.existsSync(TOKENS_PATH)) {
+      globalTokens = fs.readFileSync(TOKENS_PATH, 'utf8');
+    }
+    if (fs.existsSync(FRAMEWORK_CSS_PATH)) {
+      frameworkStyles = fs.readFileSync(FRAMEWORK_CSS_PATH, 'utf8');
+    }
     if (fs.existsSync(cssPath)) {
-      inlineStyles = fs.readFileSync(cssPath, 'utf8');
+      componentStructure = fs.readFileSync(cssPath, 'utf8');
     }
 
     const customTagName = `ag-${componentName.toLowerCase()}`;
@@ -113,13 +129,20 @@ const server = http.createServer(async (req, res) => {
         <meta charset="UTF-8">
         <title>Drift Preview - ${componentName}</title>
         <style>
-          ${inlineStyles}
+          /* 1. Universal Design Tokens & Root Custom Variables */
+          ${globalTokens}
           
-          /* Clean, neutral agnostic testing layout shell */
+          /* 2. Global Component Baseline Styling */
+          ${frameworkStyles}
+          
+          /* 3. Component-Specific Layout Structure */
+          ${componentStructure}
+          
+          /* 4. Playbook Visual Stability Guardrails */
           .ag-preview-shell {
             display: block;
             margin: 0;
-            padding: 1rem;
+            padding: 2rem;
             box-sizing: border-box;
           }
 
