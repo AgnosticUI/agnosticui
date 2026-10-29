@@ -1,0 +1,53 @@
+name: Hydration Drift Guardrail
+
+on:
+  pull_request:
+    branches:
+      - master
+      - "feat/**"
+  push:
+    branches:
+      - master
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: v2/lib
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: v2/lib/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chrome
+
+      - name: Start SSR Preview Server
+        run: |
+          npx tsx scripts/serve-ssr-previews.mjs &
+          npx wait-on http://localhost:3000/health
+        env:
+          NODE_ENV: test
+
+      - name: Run drift tests
+        run: npm run test:drift
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-drift-report
+          path: v2/lib/playwright-report/
+          if-no-files-found: ignore

@@ -9,10 +9,10 @@
 
 | Component      | Status  | Server Baseline | Hydrated Baseline | Notes                                  |
 | :------------- | :------ | :-------------- | :---------------- | :------------------------------------- |
-| Alert          | PENDING |                 |                   |                                        |
+| Alert          | COMPLETE | alert-server-baseline.png  | alert-hydrated-baseline.png  | Matrix Permutation (Success Bordered)  |
 | Avatar         | PENDING |                 |                   | Handles Avatar & AvatarGroup fallbacks |
 | Badge          | PENDING |                 |                   |                                        |
-| Button         | PENDING |                 |                   | Phase B Target Workflow                |
+| Button         | COMPLETE | button-server-baseline.png | button-hydrated-baseline.png | Phase B Target Workflow Verified |
 | Checkbox       | PENDING |                 |                   |                                        |
 | Divider        | PENDING |                 |                   |                                        |
 | Fieldset       | PENDING |                 |                   |                                        |

@@ -208,7 +208,6 @@
       "types": "./dist/components/EmptyState/react/ReactEmptyState.d.ts",
       "import": "./dist/components/EmptyState/react/ReactEmptyState.js"
     },
-
     "./empty-state/vue": {
       "types": "./dist/components/EmptyState/vue/index.d.ts",
       "import": "./dist/components/EmptyState/vue/index.js"
@@ -806,6 +805,9 @@
     "build:no-sync": "vite build && npm run copy-styles",
     "dev": "vite build",
     "test": "vitest run",
+    "test:drift": "playwright test -c playwright.config.ts",
+    "test:drift:update": "playwright test -c playwright.config.ts --update-snapshots",
+    "test:drift:report": "playwright show-report --browser=chrome",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "scaffold": "node ../scripts/scaffold-component.mjs",
@@ -817,6 +819,7 @@
     "focus-trap": "^7.6.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@sveltejs/vite-plugin-svelte": "^6.2.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.8.0",

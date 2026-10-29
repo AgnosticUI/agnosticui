@@ -1,1 +1,5 @@
 **/v1/
+
+# Playwright local test outputs
+v2/lib/playwright-report/
+v2/lib/test-results/
