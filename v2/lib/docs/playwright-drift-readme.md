@@ -1,26 +1,27 @@
 # Playwright Isomorphic Hydration-Drift Guardrail Engine
 
-This documentation covers how to spin up the visual drift regression engine to verify layout alignment between server-rendered (SSR) fallback engines and hydrated client elements.
+This documentation covers how to spin up the visual drift regression engine to verify layout alignment between server-rendered (SSR) fallback templates and hydrated client elements.
 
-## 📁 Key File Locations
+## 📌 Key File Locations
 
 - **System Specification:** `.github/playbooks/playwright-ssr-hydration-drift-guardrail-blueprint.md`
-- **Progress tracking:** `v2/lib/docs/playwright-drift-tracking.md`
-- **Continuous Integration:** `.github/workflows/playwright-drift-guardrail.yml` _(Work-In-Progress)_
+- **Progress Tracking:** `v2/lib/docs/playwright-drift-tracking.md`
+- **Continuation Resume:** `v2/lib/docs/playwright-drift-resume.md`
+- **Continuous Integration:** `.github/workflows/playwright-drift-guardrail.yml`
 
-## 🛠️ Local Development & Testing Workflow
+## 💻 Local Development & Testing Workflow
 
 Testing requires running the preview server and the test engine in parallel. Open two separate terminal tabs from the project root:
 
-### 📥 Tab 1: Spin up the SSR Preview Server
+### 1️⃣ Tab 1: Spin up the SSR Preview Server
 
-This server compiles local TypeScript components on the fly, serves structural stylesheets, and maps raw property queries dynamically.
+This server hosts a programmatic Vite instance that dynamically maps components to their corresponding documentation examples on the fly.
 
 ```bash
 npx tsx v2/lib/scripts/serve-ssr-previews.mjs
 ```
 
-### 🧪 Tab 2: Run or Update the Drift Testing Suite
+### 2️⃣ Tab 2: Run or Update the Drift Testing Suite
 
 - **To run standard assertions (CI Validation Mode):**
   Ensures that your current code perfectly aligns with the approved baseline images.
@@ -41,9 +42,14 @@ npx tsx v2/lib/scripts/serve-ssr-previews.mjs
   npm run test:drift:report
   ```
 
-## 📐 Matrix Query Modifications
+## 🔄 Symmetrical Dual-Target Testing Matrix
 
-The updated server dynamically evaluates property states via URL modifiers. You can preview complex component permutations directly in your desktop browser:
+The preview server utilizes a `mode` parameter to dynamically switch between the static server fallback template and the fully hydrated client matrix. This allows you to visually inspect the exact layouts seen by our end-users in `v2/site/docs/examples/`:
 
-- Button Baseline: `http://localhost:3000/?component=Button`
-- Alert Success Bordered Variant: `http://localhost:3000/?component=Alert&variant=success&bordered=true`
+- **SSR Fallback Component Matrix:**
+  `http://localhost:3000/?component=Button&mode=ssr`
+  _(Loads `ButtonFallbackPreview.vue` with JavaScript execution disabled in the test context)_
+
+- **Hydrated Client Component Matrix:**
+  `http://localhost:3000/?component=Button&mode=hydrated`
+  _(Loads `ButtonExamples.vue` with client-side Lit web components active)_

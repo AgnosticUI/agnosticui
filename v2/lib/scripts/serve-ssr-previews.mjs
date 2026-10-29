@@ -4,12 +4,12 @@ import fs from 'fs';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 
+// Set up ESM directory and absolute project path constants
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const COMPONENT_LIB_ROOT = path.resolve(__dirname, '..');
-const REPO_ROOT = path.resolve(COMPONENT_LIB_ROOT, '..');
 const COMPONENTS_ROOT = path.resolve(COMPONENT_LIB_ROOT, 'src/components');
 
-// Paths to production style assets
+// Define asset paths to pull styling from the production build artifacts
 const STYLES_DIST_ROOT = path.resolve(COMPONENT_LIB_ROOT, 'dist/styles');
 const TOKENS_PATH = path.join(STYLES_DIST_ROOT, 'ag-tokens.css');
 const FRAMEWORK_CSS_PATH = path.join(STYLES_DIST_ROOT, 'framework-components.css');
@@ -17,12 +17,17 @@ const FRAMEWORK_CSS_PATH = path.join(STYLES_DIST_ROOT, 'framework-components.css
 // eslint-disable-next-line no-undef
 console.log(`[INIT] Component Library Root: ${COMPONENT_LIB_ROOT}`);
 
+// Fallback content injected into web component slots if none is provided via URL
 const COMPONENT_DEFAULT_SLOTS = {
   Alert: { slotDefault: 'Alert Notice: System status nominal.' },
   Button: { slotContent: 'Click Me' },
   Kbd: { slotDefault: 'Ctrl' }
 };
 
+/**
+ * Custom Vite plugin that rewrites explicit `.js` imports inside the 
+ * components directory to their source `.ts` files to support native ESM.
+ */
 const tsExtensionRewritePlugin = () => ({
   name: 'ts-extension-rewrite',
   resolveId(source, importer) {
@@ -39,6 +44,7 @@ const tsExtensionRewritePlugin = () => ({
   }
 });
 
+// Spin up a programmable Vite development server instance in middleware mode
 const vite = await createViteServer({
   root: COMPONENT_LIB_ROOT,
   server: { middlewareMode: true },
@@ -49,6 +55,10 @@ const vite = await createViteServer({
   }
 });
 
+/**
+ * HTTP Server Core Request Handler
+ * Dynamically renders SSR-prehydrated fallbacks or passes assets to Vite.
+ */
 const server = http.createServer(async (req, res) => {
   const reqUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   const componentName = reqUrl.searchParams.get('component');
@@ -56,30 +66,36 @@ const server = http.createServer(async (req, res) => {
   // eslint-disable-next-line no-undef
   console.log(`[SERVER REQ] Path: ${reqUrl.pathname} ${reqUrl.search}`);
 
+  // Endpoint for Playwright to confirm the test server is fully ready
   if (reqUrl.pathname === '/health') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     return res.end('OK');
   }
 
+  // Delegate non-root paths (like scripts, styles, source files) to Vite's asset pipelines
   if (reqUrl.pathname !== '/') {
     return vite.middlewares(req, res);
   }
 
+  // Force incoming preview requests to target a specific web component
   if (!componentName) {
     res.writeHead(400, { 'Content-Type': 'text/plain' });
     return res.end('Missing component parameter (?component=Name)');
   }
 
   try {
+    // Locate the structural files for the requested component
     const componentDir = path.join(COMPONENTS_ROOT, componentName, 'core');
     const fallbackPath = path.join(componentDir, `_${componentName}Fallback.ts`);
     const cssPath = path.join(componentDir, `${componentName.toLowerCase()}-structure.module.css`);
 
+    // Ensure the matching server-side rendering fallback engine actually exists
     if (!fs.existsSync(fallbackPath)) {
       res.writeHead(404, { 'Content-Type': 'text/plain' });
       return res.end(`Fallback engine not found for component: ${componentName}`);
     }
 
+    // Programmatically execute the fallback file using Vite's Node SSR evaluator
     const module = await vite.ssrLoadModule(fallbackPath);
     const fallbackFn = module[`_${componentName}Fallback`];
 
@@ -88,6 +104,7 @@ const server = http.createServer(async (req, res) => {
       return res.end(`Export _${componentName}Fallback function not found.`);
     }
 
+    // Convert raw URL query parameters into strongly-typed properties
     const props = {};
     reqUrl.searchParams.forEach((value, key) => {
       if (key === 'component') return;
@@ -96,15 +113,17 @@ const server = http.createServer(async (req, res) => {
       else props[key] = value;
     });
 
+    // Populate missing properties with fallback default slot content
     if (COMPONENT_DEFAULT_SLOTS[componentName]) {
       Object.entries(COMPONENT_DEFAULT_SLOTS[componentName]).forEach(([slotKey, defaultText]) => {
         if (props[slotKey] === undefined) props[slotKey] = defaultText;
       });
     }
 
+    // Execute the module function to obtain the SSR markup
     const renderedMarkup = fallbackFn(props);
 
-    // Load global theme sheets dynamically if they exist on disk
+    // Read the current static CSS files directly from disk
     let globalTokens = '';
     let frameworkStyles = '';
     let componentStructure = '';
@@ -119,9 +138,11 @@ const server = http.createServer(async (req, res) => {
       componentStructure = fs.readFileSync(cssPath, 'utf8');
     }
 
+    // Establish naming conventions for tag generation and hydration execution
     const customTagName = `ag-${componentName.toLowerCase()}`;
     const clientScriptSrc = `/src/components/${componentName}/core/${componentName}.ts`;
 
+    // Construct raw HTML containing the server-side markup wrapped inside the custom tag shell
     const responseHtml = `
       <!DOCTYPE html>
       <html lang="en">
@@ -164,8 +185,10 @@ const server = http.createServer(async (req, res) => {
       </html>
     `;
 
+    // Inject Vite HMR structures and process client script transformations
     const transformedHtml = await vite.transformIndexHtml(req.url, responseHtml);
 
+    // Serve up the processed web payload back to the browser or test client
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(transformedHtml);
 
@@ -177,6 +200,7 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
+// Launch the local server on Port 3000
 const PORT = 3000;
 server.listen(PORT, () => {
   // eslint-disable-next-line no-undef
