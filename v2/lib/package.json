@@ -807,7 +807,7 @@
     "test": "vitest run",
     "test:drift": "playwright test -c playwright.config.ts",
     "test:drift:update": "playwright test -c playwright.config.ts --update-snapshots",
-    "test:drift:report": "playwright show-report --browser=chrome",
+    "test:drift:report": "playwright show-report",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "scaffold": "node ../scripts/scaffold-component.mjs",

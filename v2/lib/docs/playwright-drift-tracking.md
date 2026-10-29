@@ -9,10 +9,10 @@
 
 | Component      | Status      | Server Baseline  | Hydrated Baseline | Notes                                                  |
 | :------------- | :---------- | :--------------- | :---------------- | :----------------------------------------------------- |
-| Alert          | IN PROGRESS | PENDING REFACTOR | PENDING REFACTOR  | Retrofitting to use `AlertFallbackPreview.vue` matrix  |
+| Alert          | COMPLETE    | VERIFIED         | VERIFIED          | Fully retrofitted to use component matrix workflow     |
 | Avatar         | PENDING     |                  |                   | Handles Avatar & AvatarGroup fallbacks                 |
 | Badge          | PENDING     |                  |                   |                                                        |
-| Button         | IN PROGRESS | PENDING REFACTOR | PENDING REFACTOR  | Retrofitting to use `ButtonFallbackPreview.vue` matrix |
+| Button         | COMPLETE    | VERIFIED         | VERIFIED          | Fully retrofitted to use component matrix workflow     |
 | Checkbox       | PENDING     |                  |                   |                                                        |
 | Divider        | PENDING     |                  |                   |                                                        |
 | Fieldset       | PENDING     |                  |                   |                                                        |
