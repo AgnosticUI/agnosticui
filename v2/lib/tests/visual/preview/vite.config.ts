@@ -4,6 +4,7 @@ import { resolve } from 'path';
 export default defineConfig({
   server: {
     port: 4173,
+    strictPort: true,
     host: '0.0.0.0',
     fs: {
       strict: false,
@@ -13,6 +14,7 @@ export default defineConfig({
 
   preview: {
     port: 4173,
+    strictPort: true,
     host: '0.0.0.0',
     allowedHosts: ['host.docker.internal'],
   },
