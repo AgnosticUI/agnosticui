@@ -9,6 +9,10 @@ on:
       - "v2/lib/src/components/**"
       - "v2/lib/tests/visual/**"
       - "v2/lib/docs/**"
+      - "v2/lib/playwright.config.ts"
+      - "v2/lib/package.json"
+      - "v2/lib/package-lock.json"
+      - ".github/workflows/visual-regression.yml"
 
   pull_request:
     branches:
@@ -17,6 +21,10 @@ on:
       - "v2/lib/src/components/**"
       - "v2/lib/tests/visual/**"
       - "v2/lib/docs/**"
+      - "v2/lib/playwright.config.ts"
+      - "v2/lib/package.json"
+      - "v2/lib/package-lock.json"
+      - ".github/workflows/visual-regression.yml"
 
 jobs:
   visual-test:
