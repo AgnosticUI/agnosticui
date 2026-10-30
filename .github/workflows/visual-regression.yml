@@ -8,6 +8,7 @@ on:
     paths:
       - "v2/lib/src/components/**"
       - "v2/lib/tests/visual/**"
+      - "v2/lib/docs/**"
 
   pull_request:
     branches:
@@ -15,6 +16,7 @@ on:
     paths:
       - "v2/lib/src/components/**"
       - "v2/lib/tests/visual/**"
+      - "v2/lib/docs/**"
 
 jobs:
   visual-test:

@@ -116,7 +116,7 @@ The visual regression pipeline (`.github/workflows/visual-regression.yml`) kicks
 - A commit is pushed directly to the `master` branch.
 - A Pull Request is opened or updated targeting the `master` branch.
 
-_Note: The workflow uses performance path-filtering. It will intentionally skip execution unless your commit includes explicit changes to files inside `v2/lib/src/components/**` or `v2/lib/tests/visual/**`._
+_Note: The workflow uses performance path-filtering. It will intentionally skip execution unless your commit includes explicit changes to files inside `v2/lib/src/components/**` or `v2/lib/tests/visual/**` or `v2/lib/docs/**` \*/._
 
 ### Job Architecture
 
