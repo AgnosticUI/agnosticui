@@ -13,6 +13,7 @@ const loopbackGateway = 'host' + '.' + 'docker' + '.' + 'internal' + ':' + '4173
 export default defineConfig({
   testDir: './src/components',
   testMatch: '**/*.drift.spec.ts',
+  snapshotPathTemplate: '{testDir}/{testFileDir}/{testFileName}-snapshots/{arg}{ext}',
   fullyParallel: true,
   forbidOnly: isCI,
   retries: isCI ? 2 : 0,
