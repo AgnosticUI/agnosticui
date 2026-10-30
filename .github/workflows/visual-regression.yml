@@ -1,10 +1,20 @@
 name: Visual Regression Audit
 
 on:
-  pull_request:
+  push:
+    branches:
+      - "master"
+      - "feat/**"
     paths:
-      - 'v2/lib/src/components/**'
-      - 'v2/lib/tests/visual/**'
+      - "v2/lib/src/components/**"
+      - "v2/lib/tests/visual/**"
+
+  pull_request:
+    branches:
+      - "master"
+    paths:
+      - "v2/lib/src/components/**"
+      - "v2/lib/tests/visual/**"
 
 jobs:
   visual-test:
@@ -16,7 +26,7 @@ jobs:
       - name: Initialize Node.js Environment
         uses: actions/setup-node@v4
         with:
-          node-cache: 'npm'
+          node-cache: "npm"
           node-version: 20
 
       - name: Install Runtime Dependencies
