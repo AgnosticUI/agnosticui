@@ -1,0 +1,77 @@
+name: Visual Regression Audit
+
+on:
+  push:
+    branches:
+      - "master"
+      - "feat/**"
+    paths:
+      - "v2/lib/src/components/**"
+      - "v2/lib/tests/visual/**"
+      - "v2/lib/docs/**"
+      - "v2/lib/playwright.config.ts"
+      - "v2/lib/package.json"
+      - "v2/lib/package-lock.json"
+      - ".github/workflows/visual-regression.yml"
+
+  pull_request:
+    branches:
+      - "master"
+    paths:
+      - "v2/lib/src/components/**"
+      - "v2/lib/tests/visual/**"
+      - "v2/lib/docs/**"
+      - "v2/lib/playwright.config.ts"
+      - "v2/lib/package.json"
+      - "v2/lib/package-lock.json"
+      - ".github/workflows/visual-regression.yml"
+
+jobs:
+  visual-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Workspace Baseline
+        uses: actions/checkout@v4
+
+      - name: Initialize Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: "v2/lib/package-lock.json"
+
+      - name: Install Runtime Dependencies
+        run: cd v2/lib && npm ci
+
+      # --- Matches Terminal 1 from Guide ---
+      - name: Spin up Containerized Browser Server
+        run: |
+          docker run -d --name playwright-server --init --ipc=host --net=host --add-host=host.docker.internal:host-gateway mcr.microsoft.com/playwright:v1.64.1-noble npx -y playwright@1.64.1 run-server --port 3001 --host 0.0.0.0
+
+      # --- Matches Terminal 2 from Guide ---
+      - name: Run the Local Preview Server
+        run: |
+          cd v2/lib
+          npm run test:visual:preview &
+
+      # --- Network Health Check Synchronization ---
+      - name: Wait for Ports to be Ready
+        run: |
+          echo "Waiting for browser server (3001) and preview server (4173) to accept connections..."
+          timeout 30s sh -c 'until nc -z localhost 3001 && nc -z localhost 4173; do sleep 1; done' || (echo "Servers failed to start in time" && exit 1)
+
+      # --- Matches Terminal 3 from Guide ---
+      - name: Run Playwright Regression Suite
+        env:
+          PW_IN_DOCKER: true # Forces Playwright to use the container WebSocket socket
+        run: |
+          cd v2/lib
+          npm run test:visual
+
+      - name: Archive Visual Test Artifact Report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-visual-report
+          path: v2/lib/playwright-report/
+          retention-days: 14
