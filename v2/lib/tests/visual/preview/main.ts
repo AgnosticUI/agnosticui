@@ -17,10 +17,10 @@ async function mountPreview() {
   const theme = params.get('theme') || 'light';
 
   if (theme === 'dark') {
-    document.body.classList.add('dark-theme');
+    document.documentElement.setAttribute('data-theme', 'dark');
     document.body.style.backgroundColor = '#1a1a1a';
   } else {
-    document.body.classList.remove('dark-theme');
+    document.documentElement.removeAttribute('data-theme');
     document.body.style.backgroundColor = '#ffffff';
   }
 
