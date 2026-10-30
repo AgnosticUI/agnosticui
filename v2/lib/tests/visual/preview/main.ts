@@ -4,14 +4,69 @@ import '../../../src/index.ts';
 
 import { html, render } from 'lit';
 
+/**
+ * Pure JavaScript component layout mapping (no external types to break imports)
+ */
+/**
+ * Inline typed registry structure that doesn't rely on external framework imports
+ */
+const COMPONENT_REGISTRY: Record<string, () => unknown> = {
+  Button: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px;">
+      <!-- Row 1: Color Variants -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-button data-testid="btn-primary" variant="primary">Primary Action</ag-button>
+        <ag-button data-testid="btn-secondary" variant="secondary">Secondary Action</ag-button>
+        <ag-button data-testid="btn-success" variant="success">Success Action</ag-button>
+        <ag-button data-testid="btn-warning" variant="warning">Warning Action</ag-button>
+        <ag-button data-testid="btn-danger" variant="danger">Danger Action</ag-button>
+        <ag-button data-testid="btn-disabled" ?disabled=${true}>Disabled Action</ag-button>
+      </div>
+
+      <!-- Row 2: Size Variants -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-button variant="primary" size="x-sm">Extra Small</ag-button>
+        <ag-button variant="primary" size="sm">Small</ag-button>
+        <ag-button variant="primary" size="md">Medium</ag-button>
+        <ag-button variant="primary" size="lg">Large</ag-button>
+        <ag-button variant="primary" size="xl">Extra Large</ag-button>
+      </div>
+
+      <!-- Row 3: Shape Variants -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-button variant="primary" shape="rounded">Rounded Shape</ag-button>
+        <ag-button variant="primary" shape="capsule">Capsule Shape</ag-button>
+        <ag-button variant="primary" shape="circle">C</ag-button>
+        <ag-button variant="primary" shape="square">S</ag-button>
+        <ag-button variant="primary" shape="rounded-square">RS</ag-button>
+      </div>
+
+      <!-- Row 4: Bordered (Outline) Styles -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-button variant="primary" ?bordered=${true}>Bordered Primary</ag-button>
+        <ag-button variant="secondary" ?bordered=${true}>Bordered Secondary</ag-button>
+        <ag-button variant="success" ?bordered=${true}>Bordered Success</ag-button>
+        <ag-button variant="warning" ?bordered=${true}>Bordered Warning</ag-button>
+        <ag-button variant="danger" ?bordered=${true}>Bordered Danger</ag-button>
+      </div>
+    </div>
+  `
+};
+
 const root = document.getElementById('preview-root');
 
 async function mountPreview() {
-  if (!root) return;
+  console.log('[BROWSER DOM LOG]: mountPreview initialized');
+  if (!root) {
+    console.error('[BROWSER DOM LOG]: #preview-root was missing');
+    return;
+  }
 
   const params = new URLSearchParams(window.location.search);
   const component = params.get('component');
   const theme = params.get('theme') || 'light';
+
+  console.log(`[BROWSER DOM LOG]: Request parameter values -> component: ${component}, theme: ${theme}`);
 
   if (theme === 'dark') {
     document.body.classList.add('dark-theme');
@@ -22,57 +77,13 @@ async function mountPreview() {
   }
 
   if (component === 'Button') {
-    render(
-      html`
-        <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px;">
-          <!-- Row 1: Color Variants -->
-          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-            <ag-button data-testid="btn-primary" variant="primary">Primary Action</ag-button>
-            <ag-button data-testid="btn-secondary" variant="secondary">Secondary Action</ag-button>
-            <ag-button data-testid="btn-success" variant="success">Success Action</ag-button>
-            <ag-button data-testid="btn-warning" variant="warning">Warning Action</ag-button>
-            <ag-button data-testid="btn-danger" variant="danger">Danger Action</ag-button>
-            <ag-button data-testid="btn-disabled" ?disabled=${true}>Disabled Action</ag-button>
-          </div>
-
-          <!-- Row 2: Size Variants -->
-          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-            <ag-button variant="primary" size="x-sm">Extra Small</ag-button>
-            <ag-button variant="primary" size="sm">Small</ag-button>
-            <ag-button variant="primary" size="md">Medium</ag-button>
-            <ag-button variant="primary" size="lg">Large</ag-button>
-            <ag-button variant="primary" size="xl">Extra Large</ag-button>
-          </div>
-
-          <!-- Row 3: Shape Variants -->
-          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-            <ag-button variant="primary" shape="rounded">Rounded Shape</ag-button>
-            <ag-button variant="primary" shape="capsule">Capsule Shape</ag-button>
-            <ag-button variant="primary" shape="circle">C</ag-button>
-            <ag-button variant="primary" shape="square">S</ag-button>
-            <ag-button variant="primary" shape="rounded-square">RS</ag-button>
-          </div>
-
-          <!-- Row 4: Bordered (Outline) Styles -->
-          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-            <ag-button variant="primary" ?bordered=${true}>Bordered Primary</ag-button>
-            <ag-button variant="secondary" ?bordered=${true}>Bordered Secondary</ag-button>
-            <ag-button variant="success" ?bordered=${true}>Bordered Success</ag-button>
-            <ag-button variant="warning" ?bordered=${true}>Bordered Warning</ag-button>
-            <ag-button variant="danger" ?bordered=${true}>Bordered Danger</ag-button>
-          </div>
-        </div>
-      `,
-      root
-    );
+    console.log('[BROWSER DOM LOG]: Rendering Button via COMPONENT_REGISTRY lookup handler...');
+    render(COMPONENT_REGISTRY.Button(), root);
   }
 
-
-
-  // 1. Query the newly mounted custom elements directly from the DOM root
   const customElements = root.querySelectorAll('ag-button');
+  console.log(`[BROWSER DOM LOG]: Render complete. Tracking lifecycle updates for ${customElements.length} elements.`);
   
-  // 2. Map them into native Lit update completion promises cleanly without any casting type bypasses
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;
@@ -80,22 +91,18 @@ async function mountPreview() {
     return Promise.resolve();
   });
 
-  // 3. Await all components to complete their internal reactive compilation loops
   await Promise.all(updates);
 
-  // 4. Await full system web font resolution and settlement
   if (document.fonts && typeof document.fonts.ready === 'object') {
     await document.fonts.ready;
   }
 
-  // 5. Allow one layout repaint frame to clear any microtask canvas flashes
   requestAnimationFrame(() => {
-    // 6. Signal visual readiness directly to the Playwright container container
+    console.log('[BROWSER DOM LOG]: Render repaint frame executed. Flagging window.__visualReady = true');
     window.__visualReady = true;
     window.dispatchEvent(new Event('render-complete'));
   });
 }
-
 
 if (document.readyState === 'loading') {
   window.addEventListener('DOMContentLoaded', mountPreview);
