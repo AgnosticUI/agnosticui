@@ -1,6 +1,7 @@
 # Playwright Visual Regression Testing — Implementation Plan
 
-**Status:** Started  
+**Status:** Started
+
 - [x] Phase -1 — Repository Reconnaissance ✅
 - [x] Phase 0 — Establish a clean Git baseline ✅
 - [x] Phase 1 — Install dependencies and establish the environment ✅
@@ -8,6 +9,7 @@
 - [x] Phase 3 — Architect screenshot synchronization and lifecycle hooks ✅
 - [x] Phase 4 — Implement Button test coverage and baseline capture ✅
 - [x] Phase 5 — Establish automated CI workflows ✅
+- [ ] Phase 6 — Add Alert and Tag (STARTED)
 
 **Tracking issue:** [AgnosticUI #501](https://github.com/AgnosticUI/agnosticui/issues/501)  
 **Technical specification:** `playwright-visual-regression-spec.md`  
@@ -471,6 +473,7 @@ Show:
 - Commands and results.
 
 Ask the user to approve the preview architecture and readiness strategy.
+
 ### Phase 3 — Prove the workflow with Button
 
 **Objective:** Demonstrate a complete visual regression workflow with one real component.
@@ -596,6 +599,7 @@ Present:
 - Verification results.
 
 Ask the user to approve the CI implementation and the transition to a required pull-request check.
+
 ### Phase 6 — Add Alert and Tag
 
 **Objective:** Extend the verified workflow to two additional Lit components.
