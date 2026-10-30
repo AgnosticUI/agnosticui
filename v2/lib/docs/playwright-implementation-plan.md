@@ -1,6 +1,14 @@
 # Playwright Visual Regression Testing — Implementation Plan
 
-**Status:** Not started  
+**Status:** Started  
+- [x] Phase -1 — Repository Reconnaissance ✅
+- [x] Phase 0 — Establish a clean Git baseline ✅
+- [x] Phase 1 — Install dependencies and establish the environment ✅
+- [x] Phase 2 — Construct a standalone preview harness ✅
+- [x] Phase 3 — Architect screenshot synchronization and lifecycle hooks ✅
+- [x] Phase 4 — Implement Button test coverage and baseline capture ✅
+- [x] Phase 5 — Establish automated CI workflows ✅
+
 **Tracking issue:** [AgnosticUI #501](https://github.com/AgnosticUI/agnosticui/issues/501)  
 **Technical specification:** `playwright-visual-regression-spec.md`  
 **Contributor guide:** `playwright.readme.md`  

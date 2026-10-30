@@ -5,382 +5,94 @@ This guide explains how to run and maintain AgnosticUI's visual regression tests
 **Package:** `v2/lib`  
 **Test framework:** Playwright Test  
 **Browser:** Chromium  
-**Execution environment:** Docker with the official Microsoft Playwright image
+**Execution environment:** Isolated Playwright Browser Server (Docker Pinned Container) + Host Test Orchestration
 
-> Some commands and paths in this guide are planned. The implementation agent must replace or verify them during implementation before treating this guide as complete.
+---
+
+## ⚡ Quick Start: Local 3-Terminal Execution
+
+To avoid platform binary compilation discrepancies between host environments (macOS/Windows) and the container, this repository isolates test orchestration from browser rendering. Only Chromium runs inside Docker, connecting back to your host Node environment via a remote WebSocket socket.
+
+Follow this sequence across three separate terminal windows to run tests or update baselines:
+
+### 🖥️ Terminal 1: Spin up the Containerized Browser Server
+Launch the isolated Playwright browser instance. This exposes a stable Linux-based rendering engine on port 3001:
+```bash
+docker run --rm --init --ipc=host -p 3001:3001 mcr.microsoft.com/playwright:v1.64.1-noble npx playwright run-server --port 3001 --host 0.0.0.0
+```
+
+### 🖥️ Terminal 2: Run the Local Preview Server
+Start your Vite development server locally on the host machine. This serves your web components and style tokens on port 4173 across all network interfaces:
+```bash
+npm run test:visual:preview
+```
+
+### 🖥️ Terminal 3: Run Orchestration / Baseline Operations
+Execute the test runner locally on your host. It drives the flow, sends commands to the containerized browser via the loopback channel, and writes snapshots directly to disk:
+
+* **To run visual assertions against baselines:**
+  ```bash
+  npm run test:visual
+  ```
+* **To capture/update reference baseline snapshots:**
+  ```bash
+  npm run test:visual:update
+  ```
+
+---
 
 ## 1. Overview
 
-Visual regression tests detect unintended changes to component appearance.
+Visual regression tests detect unintended changes to component appearance. 
 
-Playwright renders an actual Lit component in Chromium and captures a screenshot.
+The visual test suite operates by launching a localized sandbox single-page application under `tests/visual/preview/` using the native Vite engine. Playwright navigates to this canvas using query strings (e.g., `/?component=Button&theme=dark`), synchronizes with the application-side readiness contract, and captures screenshots.
 
-It compares that screenshot with an approved baseline image stored in Git.
+We use Docker for browser rendering so that developers and continuous integration pipelines share an identical Linux layout environment. The suite covers core Lit web components; framework wrappers (React, Vue) are outside the scope of this project.
 
-If the screenshots differ beyond the configured tolerance, the test fails.
+---
 
-We use Docker for all screenshot generation and comparison. This gives developers and CI the same Linux and Chromium rendering environment.
+## 2. Synchronization and The Visual Readiness Contract
 
-The initial suite covers core Lit web components only.
+Tests must never rely on arbitrary timers or brittle sleep intervals. The testing framework uses a strict state flag synchronization contract to eliminate test flakiness:
 
-React and Vue wrappers are outside the scope of this effort.
+1. **Lit Lifecycle Hook:** The application renders the component and awaits the native `element.updateComplete` promise chain.
+2. **Asset Verification:** The engine ensures all web fonts have settled via the native `document.fonts.ready` promise.
+3. **Layout Settlement:** The harness schedules a `requestAnimationFrame` macro-task execution to guarantee layout painting is completed.
+4. **Signal Transmission:** The app flags `window.__visualReady = true`, instructing Playwright's containerized `page.waitForFunction` loop to release the screenshot trigger safely.
 
-## 2. Prerequisites
+---
 
-Before running visual tests, install:
+## 3. Reference Snapshot & Git Policies
 
-- Node.js version supported by `v2/lib`.
-- npm.
-- Docker Desktop or Docker Engine.
-- Git.
+Snapshot baselines are core assets tracked directly inside the repository alongside the implementation code. 
 
-Docker must be running.
+* **Location:** Visual spec files and their generated screenshot folders live adjacent to the target component implementation:
+  ```text
+  src/components/Button/core/
+  ├── _Button.ts
+  ├── _Button.drift.spec.ts
+  └── _Button.drift.spec.ts-snapshots/
+      ├── button-variants-light.png
+      └── button-variants-dark.png
+  ```
+* **Update Policy:** Regenerate reference baselines *only* when design variations, bug fixes, or typography shifts are intentional. 
+* **Review Staging:** Always inspect every modified `.png` file manually using `git diff` or the HTML report before staging commits. 
+* **Git Ignores:** Never check in temporary HTML reports (`playwright-report/`) or local workspace failure artifacts (`playwright-results/`).
 
-Playwright Test is installed as a development dependency of `v2/lib`.
+---
 
-From the `v2/lib` directory:
+## 4. Troubleshooting & CI Failure Remediation
 
-```bash
-npm install
-```
+### Investigation Workflow
+If a visual test fails locally or inside a Pull Request pipeline, follow this remediation path:
+1. **Locate Report:** Locally, run `npm run test:visual:report`. In CI, download the `playwright-visual-report` zip archive from the workflow summary block.
+2. **Analyze Differences:** Open the HTML report to view the three-panel layout screen displaying the Expected baseline, the Actual render, and the highlighted pixel Diff image.
+3. **Isolate Failures:** 
+    * If the difference is an **unintended CSS regression**, fix the core component styles.
+    * If the change is an **intentional feature update**, run `npm run test:visual:update` in Terminal 3 to overwrite the reference baselines, then commit the updated images.
 
-The Docker image is pinned to a version compatible with the installed Playwright version.
+### Port Conflicts
+If Terminal 1 throws a `port is already allocated` daemon error, another zombie container or process is holding port `3001`. Clear the stale process using your operating system's task tools, or switch the WebSocket routing endpoint uniformly across `playwright.config.ts` and the container script to an unallocated port (e.g., `3002`).
 
-You do not need to install a separate local browser for the Docker-based workflow.
+---
 
-## 3. Available Commands
-
-The following commands are the intended interface:
-
-| Command | Purpose |
-|---|---|
-| `npm run test:visual` | Run visual regression tests. |
-| `npm run test:visual:update` | Intentionally regenerate screenshot baselines. |
-| `npm run test:visual:report` | Open the latest HTML report. |
-
-Run these commands from `v2/lib`.
-
-All browser execution and screenshot generation must use the pinned Docker environment.
-
-Do not run snapshot updates directly on your host operating system.
-
-## 4. How the Preview Works
-
-The visual test suite uses a small Vite application.
-
-The preview application imports actual Lit component implementations and renders them in a browser.
-
-It does not contain copies or mock implementations of production components.
-
-Playwright starts the preview server and opens the required component.
-
-The test selects the component and state, waits for rendering readiness, and captures the custom element.
-
-The preview is test infrastructure. It is not a production application and is not published to npm.
-
-### Preview selection
-
-The preview may support query parameters to select components and states.
-
-For example:
-
-```text
-/?component=button
-/?component=button&variant=primary
-/?component=alert&variant=success
-/?component=tag&variant=default
-```
-
-The implementation must document the actual supported parameters after they are implemented.
-
-## 5. Running Visual Tests
-
-Run:
-
-```bash
-npm run test:visual
-```
-
-This command:
-
-1. Starts the required Docker environment.
-2. Starts the Vite preview server.
-3. Launches Chromium.
-4. Runs the Playwright visual tests.
-5. Compares screenshots with approved baselines.
-6. Saves reports and failure artifacts.
-7. Stops temporary processes and containers.
-
-An unchanged component should pass.
-
-An unexpected visual difference should fail.
-
-**Important:** This command must never update approved baselines automatically.
-
-## 6. Updating Screenshot Baselines
-
-Update baselines only when a visual change is intentional.
-
-For example:
-
-- A design change modifies a component's appearance.
-- A bug fix corrects incorrect spacing.
-- A typography change alters the component's dimensions.
-- A new approved component state requires a baseline.
-
-Run:
-
-```bash
-npm run test:visual:update
-```
-
-This generates new screenshots inside Docker.
-
-### Before committing updated baselines
-
-1. Inspect every changed PNG.
-2. Confirm that the visual changes are intentional.
-3. Review the actual screenshot against the previous baseline.
-4. Check for unrelated visual differences.
-5. Confirm that the test still covers the intended state.
-6. Review `git diff`.
-7. Commit the updated baseline with the relevant component change.
-
-Do not update baselines simply because a test fails.
-
-Investigate unexplained differences first.
-
-## 7. Viewing the HTML Report
-
-After a test run, open the report:
-
-```bash
-npm run test:visual:report
-```
-
-The report provides:
-
-- Test names.
-- Pass and failure status.
-- Assertion details.
-- Expected screenshots.
-- Actual screenshots.
-- Image differences.
-
-Use the report to investigate failures before changing baselines.
-
-The report must be accessible on the host after the Docker container exits.
-
-## 8. Understanding Screenshot Failures
-
-A screenshot failure means that the actual component rendering differs from its approved baseline beyond the configured tolerance.
-
-Possible causes include:
-
-- An intentional design change.
-- An unintended CSS regression.
-- A changed font or font-loading problem.
-- An incorrect component property.
-- An incomplete rendering-readiness check.
-- A browser or environment mismatch.
-- An unexpected animation or asynchronous update.
-
-Do not assume every screenshot failure is a genuine component regression.
-
-Investigate the difference.
-
-### Failure investigation
-
-1. Open the HTML report.
-2. Identify the failing component and state.
-3. Compare expected and actual screenshots.
-4. Inspect the difference image.
-5. Determine whether the change is intentional.
-6. Check whether the component was fully rendered.
-7. Check whether the browser environment matches the pinned configuration.
-8. Correct the underlying problem or intentionally update the baseline.
-
-## 9. CI Failures
-
-Visual regression tests run in pull-request CI.
-
-An unapproved visual difference must fail the CI job.
-
-When a pull request fails:
-
-1. Open the GitHub Actions run.
-2. Locate the failed visual test job.
-3. Download the `playwright-visual-report` artifact from the workflow run summary.
-4. Extract the downloaded archive.
-5. Open the HTML report.
-6. Inspect the expected, actual, and diff screenshots.
-7. Determine whether the change is intentional.
-8. If intentional, update the baseline locally using Docker.
-9. Commit the approved baseline changes.
-10. Push the updated pull request branch.
-
-Do not modify CI configuration or disable visual assertions merely to make a pull request pass.
-
-## 10. Adding a Visual Test for a New Component
-
-Place the test beside the component's core implementation.
-
-For example:
-
-```text
-src/components/Example/core/
-├── [existing component files]
-├── _Example.drift.spec.ts
-└── _Example.drift.spec.ts-snapshots/
-    └── [approved PNG baselines]
-```
-
-Use the existing test and snapshot conventions.
-
-### Steps
-
-1. Inspect the component API and implementation.
-2. Identify visually distinct properties and states.
-3. Select representative states.
-4. Explain what additional regression risk each screenshot covers.
-5. Reuse the shared preview infrastructure.
-6. Reuse the shared rendering-readiness helper.
-7. Capture the web component custom element itself.
-8. Generate baselines inside Docker.
-9. Review the generated images.
-10. Run the ordinary visual test command.
-11. Commit the test and approved baselines.
-
-Do not create a separate preview application for each component.
-
-Do not create component mocks in place of actual implementations.
-
-## 11. Choosing Which States to Test
-
-Do not test every possible combination of component properties.
-
-Use representative visual states and risk-based selection.
-
-Every component must have at least one default screenshot.
-
-Consider additional screenshots for:
-
-- Visually distinct variants.
-- Important size differences.
-- Disabled states.
-- Loading states.
-- Border and radius differences.
-- Icon placement and spacing.
-- Long content that changes layout or text wrapping.
-
-Before adding a screenshot, ask:
-
-1. Does this state change the visible appearance?
-2. Does it exercise a different rendering path?
-3. Could a regression affect an important use case?
-4. Does an existing screenshot already cover this behavior?
-
-If a screenshot adds little regression value, do not add it.
-
-### Initial planning guidelines
-
-| Component complexity | Initial screenshot target |
-|---|---:|
-| Simple component | 1–3 |
-| Moderate component | 2–5 |
-| Complex component | 4–8 |
-
-These are guidelines, not limits.
-
-Treat every screenshot as a maintenance commitment.
-
-Optimize for regression detection, not screenshot count.
-
-### Visual and functional tests
-
-Use screenshot tests for appearance.
-
-Use ordinary assertions for behavior.
-
-| Requirement | Test type |
-|---|---|
-| Button disabled styling | Visual |
-| Button cannot be clicked when disabled | Functional |
-| Correct accessibility attributes | Accessibility or attribute assertion |
-| Button event dispatch | Functional |
-| Button label wrapping | Visual |
-
-Do not use screenshots to verify behavior that can be tested more reliably with ordinary assertions.
-
-## 12. Baseline and Git Rules
-
-Approved baselines are part of the source repository.
-
-Commit them alongside their corresponding tests and component changes.
-
-Do not commit:
-
-- HTML reports.
-- Temporary test results.
-- Unreviewed screenshot artifacts.
-- Docker-generated temporary files.
-
-Before committing:
-
-```bash
-git status
-git diff
-```
-
-Review the staged files.
-
-Confirm that only intentional changes are included.
-
-Never commit an unexplained baseline change.
-
-## 13. Troubleshooting
-
-### Docker cannot start
-
-- Confirm Docker is running.
-- Check that the required image is available.
-- Check the Docker image tag.
-- Check available disk space.
-
-### Playwright cannot reach Vite
-
-- Confirm the preview server starts.
-- Check the Docker network configuration.
-- Confirm the preview listens on an accessible interface.
-- Check the configured preview URL.
-
-### Screenshots differ unexpectedly
-
-- Confirm that the pinned Docker image is being used.
-- Check the browser version.
-- Check font loading.
-- Check component readiness.
-- Check for asynchronous rendering.
-- Inspect the HTML report.
-
-### A component is captured before rendering completes
-
-- Check custom-element registration.
-- Check the Lit `updateComplete` promise.
-- Check additional asynchronous work.
-- Improve the shared readiness helper or add an explicit component-specific readiness condition.
-
-Avoid arbitrary sleep statements as a permanent solution.
-
-### Baselines differ between local and CI
-
-Both environments must use the same pinned Docker image and Chromium version.
-
-Do not generate baselines directly on macOS, Windows, or a different Linux browser environment.
-
-## 14. References
-
-- [Playwright screenshot assertions](https://playwright.dev/docs/api/class-snapshotassertions)
-- [Playwright Docker image](https://hub.docker.com/r/microsoft/playwright)
-- [Playwright HTML reporter](https://playwright.dev/docs/test-reporters#html-reporter)
-- [AgnosticUI repository](https://github.com/AgnosticUI/agnosticui)

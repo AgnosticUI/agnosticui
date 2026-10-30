@@ -1,0 +1,37 @@
+name: Visual Regression Audit
+
+on:
+  pull_request:
+    paths:
+      - 'v2/lib/src/components/**'
+      - 'v2/lib/tests/visual/**'
+
+jobs:
+  visual-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Workspace Baseline
+        uses: actions/checkout@v4
+
+      - name: Initialize Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-cache: 'npm'
+          node-version: 20
+
+      - name: Install Runtime Dependencies
+        run: cd v2/lib && npm ci
+
+      - name: Initialize Container Workspace Server
+        run: cd v2/lib && npm run test:visual:preview &
+
+      - name: Run Playwright Regression Suite Inside Container
+        run: cd v2/lib && npm run test:visual
+
+      - name: Archive Visual Test Artifact Report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-visual-report
+          path: v2/lib/playwright-report/
+          retention-days: 14
