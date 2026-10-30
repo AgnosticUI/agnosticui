@@ -6,6 +6,10 @@ test.describe('Button Component Visual Regression', () => {
   test('should render perfectly across light theme variants', async ({ page }) => {
     // Navigate and wait for the application layer to fully paint
     await gotoComponentPreview(page, { component: 'Button', theme: 'light' });
+    // Add this right inside your test block to stream browser logs to Terminal 3
+    page.on('console', msg => console.log(`[BROWSER LOG]: ${msg.text()}`));
+    page.on('pageerror', err => console.error(`[BROWSER CRASH]: ${err.message}`));
+
     
     // Capture visual baseline snapshot for the element viewport canvas
     await expect(page.locator('#preview-root')).toHaveScreenshot('button-variants-light.png');
