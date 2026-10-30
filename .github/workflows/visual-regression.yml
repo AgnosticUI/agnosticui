@@ -28,17 +28,35 @@ jobs:
       - name: Initialize Node.js Environment
         uses: actions/setup-node@v4
         with:
-          node-cache: "npm"
           node-version: 20
+          cache: "npm"
+          cache-dependency-path: "v2/lib/package-lock.json"
 
       - name: Install Runtime Dependencies
         run: cd v2/lib && npm ci
 
-      - name: Initialize Container Workspace Server
-        run: cd v2/lib && npm run test:visual:preview &
+      # --- Matches Terminal 1 from Guide ---
+      - name: Spin up Containerized Browser Server
+        run: |
+          docker run -d --name playwright-server --init --ipc=host --net=host mcr.microsoft.com/playwright:v1.64.1-noble npx playwright run-server --port 3001 --host 0.0.0.0
 
-      - name: Run Playwright Regression Suite Inside Container
-        run: cd v2/lib && npm run test:visual
+      # --- Matches Terminal 2 from Guide ---
+      - name: Run the Local Preview Server
+        run: |
+          cd v2/lib
+          npm run test:visual:preview &
+
+      # --- Network Health Check Synchronization ---
+      - name: Wait for Ports to be Ready
+        run: |
+          echo "Waiting for browser server (3001) and preview server (4173) to accept connections..."
+          timeout 30s sh -c 'until nc -z localhost 3001 && nc -z localhost 4173; do sleep 1; done' || (echo "Servers failed to start in time" && exit 1)
+
+      # --- Matches Terminal 3 from Guide ---
+      - name: Run Playwright Regression Suite
+        run: |
+          cd v2/lib
+          npm run test:visual
 
       - name: Archive Visual Test Artifact Report
         if: failure()

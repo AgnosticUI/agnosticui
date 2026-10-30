@@ -9,13 +9,13 @@ This guide explains how to run and maintain AgnosticUI's visual regression tests
 
 ---
 
-## ⚡ Quick Start: Local 3-Terminal Execution
+## Quick Start: Local 3-Terminal Execution
 
 To avoid platform binary compilation discrepancies between host environments (macOS/Windows) and the container, this repository isolates test orchestration from browser rendering. Only Chromium runs inside Docker, connecting back to your host Node environment via a remote WebSocket socket.
 
 Follow this sequence across three separate terminal windows to run tests or update baselines:
 
-### 🖥️ Terminal 1: Spin up the Containerized Browser Server
+### Terminal 1: Spin up the Containerized Browser Server
 
 Launch the isolated Playwright browser instance. This exposes a stable Linux-based rendering engine on port 3001:
 
@@ -23,7 +23,7 @@ Launch the isolated Playwright browser instance. This exposes a stable Linux-bas
 docker run --rm --init --ipc=host -p 3001:3001 mcr.microsoft.com/playwright:v1.64.1-noble npx playwright run-server --port 3001 --host 0.0.0.0
 ```
 
-### 🖥️ Terminal 2: Run the Local Preview Server
+### Terminal 2: Run the Local Preview Server
 
 Start your Vite development server locally on the host machine. This serves your web components and style tokens on port 4173 across all network interfaces:
 
@@ -31,7 +31,7 @@ Start your Vite development server locally on the host machine. This serves your
 npm run test:visual:preview
 ```
 
-### 🖥️ Terminal 3: Run Orchestration / Baseline Operations
+### Terminal 3: Run Orchestration / Baseline Operations
 
 Execute the test runner locally on your host. It drives the flow, sends commands to the containerized browser via the loopback channel, and writes snapshots directly to disk:
 
