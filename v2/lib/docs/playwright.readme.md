@@ -20,7 +20,7 @@ Follow this sequence across three separate terminal windows to run tests or upda
 Launch the isolated Playwright browser instance. This exposes a stable Linux-based rendering engine on port 3001:
 
 ```bash
-docker run --rm --init --ipc=host -p 3001:3001 mcr.microsoft.com/playwright:v1.64.1-noble npx playwright run-server --port 3001 --host 0.0.0.0
+docker run --rm --init --ipc=host -p 3001:3001 mcr.microsoft.com/playwright:v1.64.1-noble npx -y playwright@1.64.1 run-server --port 3001 --host 0.0.0.0
 ```
 
 ### Terminal 2: Run the Local Preview Server
