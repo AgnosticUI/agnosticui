@@ -46,7 +46,7 @@ Execute the test runner locally on your host. It drives the flow, sends commands
 
 ---
 
-## 1. Overview
+## 1. Workflow Rationale
 
 Visual regression tests detect unintended changes to component appearance.
 
