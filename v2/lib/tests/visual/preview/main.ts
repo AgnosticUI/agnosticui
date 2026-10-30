@@ -50,15 +50,63 @@ const COMPONENT_REGISTRY: Record<string, () => unknown> = {
         <ag-button variant="danger" ?bordered=${true}>Bordered Danger</ag-button>
       </div>
     </div>
+  `,
+  Alert: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
+      <!-- Section 1: Standard Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Standard Alerts</h3>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <ag-alert>Default alert</ag-alert>
+          <ag-alert variant="success">Success alert</ag-alert>
+          <ag-alert variant="info">Info alert</ag-alert>
+          <ag-alert variant="primary">Primary alert</ag-alert>
+          <ag-alert variant="warning">Warning alert</ag-alert>
+          <ag-alert variant="error">Error alert</ag-alert>
+          <ag-alert variant="danger">Danger alert</ag-alert>
+          <ag-alert variant="monochrome">Monochrome alert</ag-alert>
+        </div>
+      </div>
+
+      <!-- Section 2: Bordered Style Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Bordered Alerts</h3>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <ag-alert ?bordered=${true}>Default alert</ag-alert>
+          <ag-alert variant="success" ?bordered=${true}>Success alert</ag-alert>
+          <ag-alert variant="error" ?bordered=${true}>Error alert</ag-alert>
+          <ag-alert variant="monochrome" ?bordered=${true}>Monochrome alert</ag-alert>
+        </div>
+      </div>
+
+      <!-- Section 3: Rounded Corners -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Rounded Alerts</h3>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <ag-alert ?rounded=${true}>Default alert</ag-alert>
+          <ag-alert variant="success" ?rounded=${true}>Success alert</ag-alert>
+          <ag-alert variant="warning" ?rounded=${true}>Warning alert</ag-alert>
+        </div>
+      </div>
+
+      <!-- Section 4: Bordered Left Accents -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Bordered Left Alerts</h3>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <ag-alert ?borderedLeft=${true}>Default alert</ag-alert>
+          <ag-alert variant="success" ?borderedLeft=${true}>Success alert</ag-alert>
+          <ag-alert variant="danger" ?borderedLeft=${true}>Danger alert</ag-alert>
+        </div>
+      </div>
+    </div>
   `
+
 };
 
 const root = document.getElementById('preview-root');
 
 async function mountPreview() {
-  console.log('[BROWSER DOM LOG]: mountPreview initialized');
   if (!root) {
-    console.error('[BROWSER DOM LOG]: #preview-root was missing');
     return;
   }
 
@@ -66,7 +114,6 @@ async function mountPreview() {
   const component = params.get('component');
   const theme = params.get('theme') || 'light';
 
-  console.log(`[BROWSER DOM LOG]: Request parameter values -> component: ${component}, theme: ${theme}`);
 
   if (theme === 'dark') {
     document.body.classList.add('dark-theme');
@@ -77,12 +124,12 @@ async function mountPreview() {
   }
 
   if (component === 'Button') {
-    console.log('[BROWSER DOM LOG]: Rendering Button via COMPONENT_REGISTRY lookup handler...');
     render(COMPONENT_REGISTRY.Button(), root);
+  } else if (component === 'Alert') {
+    render(COMPONENT_REGISTRY.Alert(), root);
   }
 
-  const customElements = root.querySelectorAll('ag-button');
-  console.log(`[BROWSER DOM LOG]: Render complete. Tracking lifecycle updates for ${customElements.length} elements.`);
+  const customElements = root.querySelectorAll('ag-button, ag-alert');
   
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
@@ -98,7 +145,6 @@ async function mountPreview() {
   }
 
   requestAnimationFrame(() => {
-    console.log('[BROWSER DOM LOG]: Render repaint frame executed. Flagging window.__visualReady = true');
     window.__visualReady = true;
     window.dispatchEvent(new Event('render-complete'));
   });
