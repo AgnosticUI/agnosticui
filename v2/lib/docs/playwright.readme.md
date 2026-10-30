@@ -11,7 +11,7 @@ This guide explains how to run and maintain AgnosticUI's visual regression tests
 
 ## Quick Start: Local 3-Terminal Execution
 
-To avoid platform binary compilation discrepancies between host environments (macOS/Windows) and the container, this repository isolates test orchestration from browser rendering. Only Chromium runs inside Docker, connecting back to your host Node environment via a remote WebSocket socket.
+To prevent binary compilation discrepancies between host environments (macOS/Windows) and the container, this repository splits test orchestration from browser rendering. Only Chromium runs inside Docker, connecting back to your host Node environment via a remote WebSocket.
 
 Follow this sequence across three separate terminal windows to run tests or update baselines:
 

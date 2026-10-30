@@ -54,6 +54,8 @@ jobs:
 
       # --- Matches Terminal 3 from Guide ---
       - name: Run Playwright Regression Suite
+        env:
+          PW_IN_DOCKER: true # Forces Playwright to use the container WebSocket socket
         run: |
           cd v2/lib
           npm run test:visual
