@@ -1118,6 +1118,22 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  Pagination: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; width: 100%;">
+      <!-- Standard Layout and First/Last Opt-In -->
+      <ag-pagination current="5" total-pages="20"></ag-pagination>
+      <ag-pagination current="5" total-pages="20" first-last-navigation></ag-pagination>
+
+      <!-- Bordered Style, Offsets, and Ellipsis Truncation -->
+      <ag-pagination current="3" total-pages="15" bordered></ag-pagination>
+      <ag-pagination current="25" total-pages="100" offset="1"></ag-pagination>
+
+      <!-- Horizontal Alignment Multi-Stack (Justify Variations) -->
+      <ag-pagination current="1" total-pages="10" justify="start"></ag-pagination>
+      <ag-pagination current="1" total-pages="10" justify="center"></ag-pagination>
+      <ag-pagination current="1" total-pages="10" justify="end"></ag-pagination>
+    </div>
+  `,
   Popover: () => html`
     <div style="padding: 24px; max-width: 800px;">
       <!-- A simplified, non-transient, statically open test block for Popover baseline checks -->
