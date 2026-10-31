@@ -24,14 +24,16 @@ async function mountPreview() {
     document.body.style.backgroundColor = '#ffffff';
   }
 
-  // Pure sequential processing routes matching our verified baseline
   if (component === 'Button') {
     render(COMPONENT_REGISTRY.Button(), root);
   } else if (component === 'Alert') {
     render(COMPONENT_REGISTRY.Alert(), root);
+  } else if (component === 'Tag') {
+    render(COMPONENT_REGISTRY.Tag(), root);
   }
 
-  const customElements = root.querySelectorAll('ag-button, ag-alert');
+  // Include ag-tag in the selector matrix to synchronize the update lifecycles
+  const customElements = root.querySelectorAll('ag-button, ag-alert, ag-tag');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;

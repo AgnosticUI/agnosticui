@@ -94,6 +94,53 @@ export const COMPONENT_REGISTRY = {
         </div>
       </div>
     </div>
+  `,
+  Tag: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
+      <!-- Section 1: Standard Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Standard Tags</h3>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <ag-tag>Default Tag</ag-tag>
+          <ag-tag variant="primary">Primary Tag</ag-tag>
+          <ag-tag variant="info">Info Tag</ag-tag>
+          <ag-tag variant="success">Success Tag</ag-tag>
+          <ag-tag variant="warning">Warning Tag</ag-tag>
+          <ag-tag variant="error">Error Tag</ag-tag>
+          <ag-tag variant="monochrome">Monochrome Tag</ag-tag>
+        </div>
+      </div>
+
+      <!-- Section 2: Shapes Matrix -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Shapes Matrix</h3>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <ag-tag shape="pill" variant="info">Pill Tag</ag-tag>
+          <ag-tag shape="round" variant="success">Round Tag</ag-tag>
+          <ag-tag shape="circle" variant="error">!</ag-tag>
+        </div>
+      </div>
+
+      <!-- Section 3: Uppercase Modifiers -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Uppercase Modifiers</h3>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <ag-tag .isUppercase=${true} variant="warning">Uppercase Tag</ag-tag>
+          <ag-tag .isUppercase=${true} shape="pill">Pill Label</ag-tag>
+        </div>
+      </div>
+
+      <!-- Section 4: Removable Close Slots -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Removable & Close Slots</h3>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <ag-tag variant="error">Deletable <button slot="close" aria-label="close">✕</button></ag-tag>
+          <ag-tag variant="success" shape="pill">Active <button slot="close" aria-label="close">✕</button></ag-tag>
+          <ag-tag variant="warning" .isUppercase=${true}>Pending <button slot="close" aria-label="close">✕</button></ag-tag>
+          <ag-tag .removable=${true} variant="primary">Removable Prop</ag-tag>
+        </div>
+      </div>
+    </div>
   `
 
 };

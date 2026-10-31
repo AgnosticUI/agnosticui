@@ -1,12 +1,12 @@
 // Shared types
 export type { FxProps } from './types/fx';
 
-export * from './components/Alert/core/_Alert';
+export * from './components/Alert/core/Alert';
 export * from './components/Accordion/core/Accordion';
 export * from './components/Accordion/core/AccordionGroup';
 export * from './components/Avatar/core/AvatarGroup';
 export * from './components/Breadcrumb/core/_Breadcrumb';
-export * from './components/Button/core/_Button';
+export * from './components/Button/core/Button';
 export * from './components/Dialog/core/_dialog';
 export * from './components/Divider/core/_Divider';
 export * from './components/IconButton/core/_IconButton';
@@ -25,7 +25,7 @@ export * from './components/Radio/core/_Radio';
 export * from './components/Checkbox/core/_Checkbox';
 export * from './components/Progress/core/_Progress';
 export * from './components/ProgressRing/core/_ProgressRing';
-export * from './components/Tag/core/_Tag';
+export * from './components/Tag/core/Tag';
 export * from './components/Icon/core/_Icon';
 export * from './components/Toast/core/_Toast';
 export * from './components/Badge/core/_Badge';
