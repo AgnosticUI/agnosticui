@@ -163,6 +163,23 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Breadcrumb: () => {
+    const data = [
+      { label: 'Home', href: '#' },
+      { label: 'Services', href: '#services' },
+      { label: 'Products', href: '#products' }
+    ];
+    return html`
+      <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+        <ag-breadcrumb .items=${data}></ag-breadcrumb>
+        <ag-breadcrumb .items=${data} type="slash"></ag-breadcrumb>
+        <ag-breadcrumb .items=${data} type="bullet"></ag-breadcrumb>
+        <ag-breadcrumb .items=${data} type="arrow"></ag-breadcrumb>
+        <ag-breadcrumb .items=${data} primary type="arrow"></ag-breadcrumb>
+      </div>
+    `;
+  },
+
   Button: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px;">
       <!-- Row 1: Color Variants -->
