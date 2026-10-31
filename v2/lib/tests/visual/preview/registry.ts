@@ -1387,6 +1387,67 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  SelectionButtonGroup: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Selection Modes (Radio Single vs Checkbox Multiple) -->
+      <ag-selection-button-group type="radio" name="mode-radio" legend="Payment Typology" shape="rounded">
+        <ag-selection-button value="card" label="Credit Card">Credit Card</ag-selection-button>
+        <ag-selection-button value="paypal" label="PayPal">PayPal</ag-selection-button>
+      </ag-selection-button-group>
+
+      <ag-selection-button-group type="checkbox" name="mode-checkbox" legend="Toppings Layer" shape="rounded">
+        <ag-selection-button value="cheese" label="Extra Cheese">Extra Cheese</ag-selection-button>
+        <ag-selection-button value="mushrooms" label="Mushrooms">Mushrooms</ag-selection-button>
+      </ag-selection-button-group>
+
+      <!-- Sizing Scale Constraints Spectrum -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-selection-button-group type="radio" name="size-sm" legend="Small Group" legend-hidden size="sm" shape="rounded">
+          <ag-selection-button value="1" label="Small A">Small A</ag-selection-button>
+          <ag-selection-button value="2" label="Small B">Small B</ag-selection-button>
+        </ag-selection-button-group>
+        
+        <ag-selection-button-group type="radio" name="size-lg" legend="Large Group" legend-hidden size="lg" shape="rounded">
+          <ag-selection-button value="1" label="Large A">Large A</ag-selection-button>
+          <ag-selection-button value="2" label="Large B">Large B</ag-selection-button>
+        </ag-selection-button-group>
+      </div>
+
+      <!-- Shape Geometry Variations Matrix -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-selection-button-group type="radio" name="shape-rect" legend="Rectangular Frame" legend-hidden>
+          <ag-selection-button value="1" label="Node A">Node A</ag-selection-button>
+          <ag-selection-button value="2" label="Node B">Node B</ag-selection-button>
+        </ag-selection-button-group>
+
+        <ag-selection-button-group type="radio" name="shape-capsule" legend="Capsule Pill Frame" legend-hidden shape="capsule">
+          <ag-selection-button value="1" label="Node A">Node A</ag-selection-button>
+          <ag-selection-button value="2" label="Node B">Node B</ag-selection-button>
+        </ag-selection-button-group>
+      </div>
+
+      <!-- Theme Variants Spectrum -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <ag-selection-button-group type="radio" name="theme-success" legend="Success Group" legend-hidden theme="success" shape="rounded">
+          <ag-selection-button value="1" label="Success">Success</ag-selection-button>
+        </ag-selection-button-group>
+        <ag-selection-button-group type="radio" name="theme-error" legend="Error Group" legend-hidden theme="error" shape="rounded">
+          <ag-selection-button value="1" label="Error">Error</ag-selection-button>
+        </ag-selection-button-group>
+      </div>
+
+      <!-- Operational Disabled States Matrix -->
+      <ag-selection-button-group type="radio" name="disabled-group" legend="Disabled Group Frame" shape="rounded" disabled>
+        <ag-selection-button value="1" label="Option A">Option A</ag-selection-button>
+        <ag-selection-button value="2" label="Option B">Option B</ag-selection-button>
+      </ag-selection-button-group>
+
+      <ag-selection-button-group type="radio" name="disabled-nodes" legend="Mixed Operational Nodes" shape="rounded">
+        <ag-selection-button value="1" label="Active Node">Active Node</ag-selection-button>
+        <ag-selection-button value="2" label="Disabled Node" disabled>Disabled Node</ag-selection-button>
+      </ag-selection-button-group>
+    </div>
+  `,
   SkeletonLoader: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Standard Text Lines & Sizing -->
