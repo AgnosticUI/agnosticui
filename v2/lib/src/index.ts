@@ -31,7 +31,7 @@ export * from './components/Popover/core/Popover';
 export * from './components/Progress/core/Progress';
 export * from './components/ProgressRing/core/ProgressRing';
 export * from './components/Radio/core/Radio';
-export * from './components/ScrollProgress/core/_ScrollProgress';
+export * from './components/ScrollProgress/core/ScrollProgress';
 export * from './components/ScrollToButton/core/ScrollToButton';
 export * from './components/Sidebar/core/_Sidebar';
 export * from './components/SkeletonLoader/core/_SkeletonLoader';

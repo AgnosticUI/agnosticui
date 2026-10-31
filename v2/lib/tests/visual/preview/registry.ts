@@ -920,6 +920,35 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  ScrollProgress: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
+      <!-- Section 1: Structural Display Modes -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Display Modes</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <p style="margin: 0 0 4px 0; font-size: 12px; color: #666;">Mode: Bar (Static)</p>
+            <ag-scroll-progress mode="bar" style="position: static; display: block;"></ag-scroll-progress>
+          </div>
+          <div>
+            <p style="margin: 0 0 4px 0; font-size: 12px; color: #666;">Mode: Dot Trail (Static)</p>
+            <ag-scroll-progress mode="dot-trail" dots="5" badge-variant="success" style="position: static; display: block;"></ag-scroll-progress>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Variant Indicators Matrix -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Badge & Ring Variants</h3>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <ag-scroll-progress mode="badge" badge-variant="primary" style="position: static;"></ag-scroll-progress>
+          <ag-scroll-progress mode="badge" badge-variant="success" style="position: static;"></ag-scroll-progress>
+          <ag-scroll-progress mode="ring" ring-variant="primary" ring-size="40" style="position: static;"></ag-scroll-progress>
+          <ag-scroll-progress mode="ring" ring-variant="info" ring-size="40" style="position: static;"></ag-scroll-progress>
+        </div>
+      </div>
+    </div>
+  `,
   Tabs: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Basic Horizontal Tabs -->
