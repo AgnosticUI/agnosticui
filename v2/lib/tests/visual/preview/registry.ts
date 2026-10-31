@@ -175,6 +175,63 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Checkbox: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
+      <!-- Section 1: Standard States -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Standard States</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-checkbox name="example" value="1" label-text="Default Unchecked"></ag-checkbox>
+          <ag-checkbox name="example" value="2" label-text="Default Checked" ?checked=${true}></ag-checkbox>
+        </div>
+      </div>
 
+      <!-- Section 2: Indeterminate Matrix -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Indeterminate State</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-checkbox name="select-all" value="all" ?indeterminate=${true} label-text="Select All (Mixed Mode)"></ag-checkbox>
+        </div>
+      </div>
 
+      <!-- Section 3: Size Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Size Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-checkbox name="size" value="small" size="small" label-text="Small" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="size" value="medium" size="medium" label-text="Medium (Default)" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="size" value="large" size="large" label-text="Large" ?checked=${true}></ag-checkbox>
+        </div>
+      </div>
+
+      <!-- Section 4: Theme Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Theme Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-checkbox name="theme-primary" value="1" theme="primary" label-text="Primary (Blue)" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="theme-success" value="2" theme="success" label-text="Success (Green)" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="theme-mono" value="3" theme="monochrome" label-text="Monochrome" ?checked=${true}></ag-checkbox>
+        </div>
+      </div>
+
+      <!-- Section 5: Disabled States -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Disabled State</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-checkbox name="disabled" value="1" label-text="Disabled Unchecked" ?disabled=${true}></ag-checkbox>
+          <ag-checkbox name="disabled" value="2" label-text="Disabled Checked" ?checked=${true} ?disabled=${true}></ag-checkbox>
+          <ag-checkbox name="disabled" value="3" label-text="Disabled Indeterminate" ?indeterminate=${true} ?disabled=${true}></ag-checkbox>
+        </div>
+      </div>
+
+      <!-- Section 6: Label Positions -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Label Position</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-checkbox name="position" value="1" label-text="Label on End (Default)" label-position="end" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="position" value="2" label-text="Label on Start" label-position="start" ?checked=${true}></ag-checkbox>
+        </div>
+      </div>
+    </div>
+  `
 };

@@ -28,13 +28,15 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Button(), root);
   } else if (component === 'Alert') {
     render(COMPONENT_REGISTRY.Alert(), root);
+  } else if (component === 'Checkbox') {
+    render(COMPONENT_REGISTRY.Checkbox(), root);
   } else if (component === 'Tag') {
     render(COMPONENT_REGISTRY.Tag(), root);
   } else if (component === 'Badge') {
     render(COMPONENT_REGISTRY.Badge(), root);
   }
 
-  const customElements = root.querySelectorAll('ag-button, ag-alert, ag-tag, ag-badge');
+  const customElements = root.querySelectorAll('ag-button, ag-alert, ag-tag, ag-badge, ag-checkbox');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;
