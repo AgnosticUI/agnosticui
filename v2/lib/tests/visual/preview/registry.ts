@@ -1534,6 +1534,38 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  Slider: () => {
+    const rangeData = [200, 800];
+    const verticalRangeData = [25, 75];
+    return html`
+      <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px; width: 100%;">
+        <!-- Basic Track Typologies -->
+        <ag-slider label="Standard Volumetric Slider" value="75"></ag-slider>
+        <ag-slider label="Dual Pricing Range Bounds" dual min="0" max="1000" .value=${rangeData}></ag-slider>
+
+        <!-- Sizing & Visual Style Modifiers -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <ag-slider label="Size Small Filled Track" size="small" filled value="30"></ag-slider>
+          <ag-slider label="Size Large Monochrome Track" size="large" monochrome value="70"></ag-slider>
+        </div>
+
+        <!-- Annotation Extras (Ticks + Tooltips) -->
+        <ag-slider label="Granular Step Marks and Tooltip" show-ticks show-tooltip tick-step="20" step="10" value="40"></ag-slider>
+
+        <!-- Vertical Spatial Formulations Matrix -->
+        <div style="display: flex; gap: 40px; align-items: flex-end; height: 180px; padding: 12px; border: 1px dashed var(--ag-border, #e4e4e7); border-radius: 4px;">
+          <ag-slider label="Vertical Standard" vertical value="75"></ag-slider>
+          <ag-slider label="Vertical Dual Range" vertical dual .value=${verticalRangeData}></ag-slider>
+        </div>
+
+        <!-- Validation Constraints and Label Layouts -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <ag-slider label="Field Failure State" required invalid error-message="Value allocation fails boundary checks" value="30"></ag-slider>
+          <ag-slider label="Inline Label Position Start" label-position="start" value="60"></ag-slider>
+        </div>
+      </div>
+    `;
+  },
   Tabs: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Basic Horizontal Tabs -->
@@ -1626,6 +1658,21 @@ Kbd: () => html`
           <ag-tag variant="warning" .uppercase=${true}>Pending <button slot="close" aria-label="close">✕</button></ag-tag>
           <ag-tag .removable=${true} variant="primary">Removable Prop</ag-tag>
         </div>
+      </div>
+    </div>
+  `,
+  TagFx: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <ag-tag-fx fx="bounce" variant="success">Bounce</ag-tag-fx>
+        <ag-tag-fx fx="pulse" variant="info">Pulse</ag-tag-fx>
+        <ag-tag-fx fx="jelly" fx-speed="lg" fx-ease="spring-sm" variant="primary">Jelly</ag-tag-fx>
+        <ag-tag-fx fx="shimmer" fx-speed="xl" variant="warning">Shimmer</ag-tag-fx>
+        <ag-tag-fx fx="glow" variant="error">Glow</ag-tag-fx>
+        <ag-tag-fx fx="flip" fx-speed="lg" fx-ease="ease-in" variant="success">Flip</ag-tag-fx>
+        <ag-tag-fx fx="ripple" variant="info">Ripple</ag-tag-fx>
+        <ag-tag-fx fx="highlight-sweep" fx-speed="lg" fx-ease="ease-out" variant="monochrome">Sweep</ag-tag-fx>
+        <ag-tag-fx fx="press-pop" variant="primary">Press Pop</ag-tag-fx>
       </div>
     </div>
   `,
