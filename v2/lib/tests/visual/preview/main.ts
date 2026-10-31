@@ -30,6 +30,8 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Button(), root);
   } else if (component === 'Badge') {
     render(COMPONENT_REGISTRY.Badge(), root);
+  } else if (component === 'Card') {
+    render(COMPONENT_REGISTRY.Card(), root);
   } else if (component === 'Checkbox') {
     render(COMPONENT_REGISTRY.Checkbox(), root);
   } else if (component === 'Radio') {
@@ -38,7 +40,7 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Tag(), root);
   }
 
-  const customElements = root.querySelectorAll('ag-alert, ag-button, ag-badge, ag-checkbox, ag-radio,  ag-tag');
+  const customElements = root.querySelectorAll('ag-alert, ag-button, ag-badge, ag-card, ag-checkbox, ag-radio,  ag-tag');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;

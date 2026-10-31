@@ -129,6 +129,95 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Card: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;>
+      <!-- Default Card -->
+      <div class="mbe4">
+        <h2>Default Card</h2>
+      </div>
+      <div class="stacked-mobile">
+        <ag-card>
+          <p>This is a basic card with default styling.</p>
+        </ag-card>
+      </div>
+
+      <!-- Card with Header -->
+      <div class="mbe4">
+        <h2>Card with Header</h2>
+      </div>
+      <div class="stacked-mobile">
+        <ag-card ?shadow=${true}>
+          <h3 slot="header" class="m0">Product Details</h3>
+          <p>This card demonstrates using the header slot to add a title section with visual separation.</p>
+        </ag-card>
+      </div>
+
+      <!-- Rounded Card Variants -->
+      <div class="mbe4">
+        <h2>Rounded Card Variants</h2>
+        <p class="mbs2 mbe3">Cards can have different border radius sizes: small, medium, or large.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+        <ag-card rounded="sm">
+          <h3 class="m0">Small Rounded (sm)</h3>
+          <p>Subtle rounded corners using --ag-radius-sm (0.25rem).</p>
+        </ag-card>
+        <ag-card rounded="md">
+          <h3 class="m0">Medium Rounded (md)</h3>
+          <p>Moderate rounded corners using --ag-radius-md (0.375rem).</p>
+        </ag-card>
+        <ag-card rounded="lg">
+          <h3 class="m0">Large Rounded (lg)</h3>
+          <p>Prominent rounded corners using --ag-radius-lg (1rem).</p>
+        </ag-card>
+      </div>
+
+      <!-- Variant Cards -->
+      <div class="mbe4">
+        <h2>Variant Cards</h2>
+      </div>
+      <div class="stacked">
+        <ag-card variant="success" class="mbe2">
+          <h3 class="m0">Success</h3>
+          <p>Operation completed successfully!</p>
+        </ag-card>
+        <ag-card variant="info" class="mbe2">
+          <h3 class="m0">Information</h3>
+          <p>Here's some helpful information for you.</p>
+        </ag-card>
+        <ag-card variant="error" class="mbe2">
+          <h3 class="m0">Error</h3>
+          <p>Something went wrong. Please try again.</p>
+        </ag-card>
+        <ag-card variant="warning" class="mbe2">
+          <h3 class="m0">Warning</h3>
+          <p>Please review this information carefully.</p>
+        </ag-card>
+        <ag-card variant="monochrome" class="mbe2">
+          <h3 class="m0">Monochrome</h3>
+          <p>Clean and modern monochrome design.</p>
+        </ag-card>
+      </div>
+
+      <!-- Card with Slots (Header and Footer) -->
+      <div class="mbe4">
+        <h2>Card with Slots (Header and Footer)</h2>
+      </div>
+      <div class="stacked-mobile">
+        <ag-card ?shadow=${true}>
+          <h3 slot="header" class="m0">Card Header</h3>
+          <div>
+            <h4>Main Content</h4>
+            <p>This card demonstrates the header, default, and footer slots.</p>
+          </div>
+          <div slot="footer">
+            <ag-button variant="secondary">Cancel</ag-button>
+            <ag-button variant="primary" style="margin-left: 0.5rem;">Confirm</ag-button>
+          </div>
+        </ag-card>
+      </div>
+    </div>
+  `,
   Checkbox: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
       <!-- Section 1: Standard States -->
