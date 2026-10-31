@@ -108,6 +108,17 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  AvatarFx: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-avatar-fx fx="bounce" variant="info" text="AB"></ag-avatar-fx>
+        <ag-avatar-fx fx="pulse" variant="success" text="CD"></ag-avatar-fx>
+        <ag-avatar-fx fx="jelly" fx-speed="lg" fx-ease="spring-sm" variant="warning" text="EF"></ag-avatar-fx>
+        <ag-avatar-fx fx="shimmer" fx-speed="xl" variant="error" text="GH"></ag-avatar-fx>
+        <ag-avatar-fx fx="glow" variant="monochrome" text="IJ"></ag-avatar-fx>
+      </div>
+    </div>
+  `,
   Badge: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; font-family: system-ui, sans-serif;">
       <!-- Section 1: Color Variants -->
