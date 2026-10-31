@@ -56,6 +56,8 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Menu(), root);
   } else if (component === 'MessageBubble') {
     render(COMPONENT_REGISTRY.MessageBubble(), root);
+  } else if (component === 'Popover') {
+    render(COMPONENT_REGISTRY.Popover(), root);
   } else if (component === 'Progress') {
     render(COMPONENT_REGISTRY.Progress(), root);
   } else if (component === 'ProgressRing') {
@@ -73,7 +75,7 @@ async function mountPreview() {
   }
 
 
-  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-message-bubble, ag-progress, ag-progress-ring, ag-radio,  ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-toast, ag-toggle');
+  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-message-bubble, ag-popover, ag-progress, ag-progress-ring, ag-radio,  ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-toast, ag-toggle');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;

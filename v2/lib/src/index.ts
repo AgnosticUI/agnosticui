@@ -27,7 +27,7 @@ export * from './components/Loader/core/Loader';
 export * from './components/Mark/core/Mark';
 export * from './components/Menu/core/Menu';
 export * from './components/MessageBubble/core/MessageBubble';
-export * from './components/Popover/core/_Popover';
+export * from './components/Popover/core/Popover';
 export * from './components/Progress/core/Progress';
 export * from './components/ProgressRing/core/ProgressRing';
 export * from './components/Radio/core/Radio';

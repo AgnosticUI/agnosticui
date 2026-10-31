@@ -769,6 +769,20 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  Popover: () => html`
+    <div style="padding: 24px; max-width: 800px;">
+      <!-- A simplified, non-transient, statically open test block for Popover baseline checks -->
+      <div style="margin-bottom: 16px;">
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Standard Popover Preview</h3>
+        <ag-popover ?open=${true}>
+          <ag-button slot="trigger" variant="primary">View Features</ag-button>
+          <div slot="content" style="padding: 12px; font-family: sans-serif; font-size: 14px;">
+            Popover dropdown layout baseline configuration.
+          </div>
+        </ag-popover>
+      </div>
+    </div>
+  `,
   Progress: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Indeterminate Progress -->
