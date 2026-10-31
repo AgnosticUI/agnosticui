@@ -13,7 +13,7 @@ export * from './components/Dialog/core/_dialog';
 export * from './components/Divider/core/Divider';
 export * from './components/IconButton/core/IconButton';
 export * from './components/Input/core/Input';
-export * from './components/IntlFormatter/core/_IntlFormatter'
+export * from './components/IntlFormatter/core/IntlFormatter'
 export * from './components/Menu/core/_Menu';
 export * from './components/Tabs/core/_Tabs';
 export * from './components/Toggle/core/_Toggle';

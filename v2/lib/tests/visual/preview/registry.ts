@@ -410,6 +410,53 @@ export const COMPONENT_REGISTRY = {
 
     </div>
   `,
+  IntlFormatter: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
+      <!-- Section 1: Date Formatting & Localization -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Date Formatting</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div><strong>Default (US):</strong> <ag-intl-formatter type="date" date="2024-01-15T14:30:00" lang="en-US"></ag-intl-formatter></div>
+          <div><strong>Full Date & Time (FR):</strong> <ag-intl-formatter type="date" date="2024-01-15T14:30:00" date-style="full" time-style="short" lang="fr-FR"></ag-intl-formatter></div>
+          <div><strong>Custom 24-Hour (JA):</strong> <ag-intl-formatter type="date" date="2024-01-15T14:30:00" date-style="full" time-style="short" lang="ja-JP"></ag-intl-formatter></div>
+        </div>
+      </div>
+
+      <!-- Section 2: Number Formatting & Localization -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Number Formatting</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div><strong>Standard (US):</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="en-US"></ag-intl-formatter></div>
+          <div><strong>No Grouping (US):</strong> <ag-intl-formatter type="number" .value=${1234567.89} ?no-grouping=${true} lang="en-US"></ag-intl-formatter></div>
+          <div><strong>German Format (DE):</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="de-DE"></ag-intl-formatter></div>
+          <div><strong>Indian Lakhs (IN):</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="hi-IN"></ag-intl-formatter></div>
+        </div>
+      </div>
+
+      <!-- Section 3: Currency & Percentages -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Currency & Percent</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div><strong>USD Symbol:</strong> <ag-intl-formatter type="currency" .value=${1234.56} currency="USD" lang="en-US"></ag-intl-formatter></div>
+          <div><strong>EUR Display Code:</strong> <ag-intl-formatter type="currency" .value=${1234.56} currency="EUR" currency-display="code" lang="en-US"></ag-intl-formatter></div>
+          <div><strong>Percentage:</strong> <ag-intl-formatter type="percent" .value=${0.8532} .minimumFractionDigits=${2} .maximumFractionDigits=${2} lang="en-US"></ag-intl-formatter></div>
+        </div>
+      </div>
+
+      <!-- Section 4: CSS Shadow Parts Customs -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">CSS Shadow Parts Customization</h3>
+        <style>
+          .custom-currency::part(currency) { color: #16a34a; font-weight: bold; font-size: 1.25rem; }
+          .custom-number::part(number) { font-family: monospace; background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 4px; }
+        </style>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div><strong>Styled Currency:</strong> <ag-intl-formatter type="currency" .value=${1234.56} currency="USD" lang="en-US" class="custom-currency"></ag-intl-formatter></div>
+          <div><strong>Styled Number:</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="en-US" class="custom-number"></ag-intl-formatter></div>
+        </div>
+      </div>
+    </div>
+  `,
   Radio: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; font-family: system-ui, -apple-system, sans-serif;">
       <!-- Section 1: Default Layout & Grouping inside Fieldset -->
