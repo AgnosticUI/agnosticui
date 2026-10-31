@@ -56,6 +56,47 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Avatar: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
+      <!-- Section 1: Text Initials & Shapes -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Initials & Shapes Matrix</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-avatar text="AB" shape="circle"></ag-avatar>
+          <ag-avatar text="CD" shape="square"></ag-avatar>
+        </div>
+      </div>
+
+      <!-- Section 2: Size Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Size Spectrum</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-avatar text="SM" size="sm"></ag-avatar>
+          <ag-avatar text="MD" size="md"></ag-avatar>
+          <ag-avatar text="LG" size="lg"></ag-avatar>
+        </div>
+      </div>
+
+      <!-- Section 3: Theme Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Theme Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-avatar text="DF" variant="default"></ag-avatar>
+          <ag-avatar text="IN" variant="info"></ag-avatar>
+          <ag-avatar text="SC" variant="success"></ag-avatar>
+        </div>
+      </div>
+
+      <!-- Section 4: Avatar Grouping Matrix -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Avatar Grouping Matrix</h3>
+        <ag-avatar-group>
+          <ag-avatar text="TM" variant="info" size="lg"></ag-avatar>
+          <ag-avatar text="PL" variant="success" size="lg"></ag-avatar>
+        </ag-avatar-group>
+      </div>
+    </div>
+  `,
   Badge: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; font-family: system-ui, sans-serif;">
       <!-- Section 1: Color Variants -->

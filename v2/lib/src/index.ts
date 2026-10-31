@@ -4,6 +4,7 @@ export type { FxProps } from './types/fx';
 export * from './components/Alert/core/Alert';
 export * from './components/Accordion/core/Accordion';
 export * from './components/Accordion/core/AccordionGroup';
+export * from './components/Avatar/core/Avatar';
 export * from './components/Avatar/core/AvatarGroup';
 export * from './components/Breadcrumb/core/_Breadcrumb';
 export * from './components/Button/core/Button';
@@ -17,9 +18,8 @@ export * from './components/IntlFormatter/core/IntlFormatter'
 export * from './components/Menu/core/Menu';
 export * from './components/Tabs/core/Tabs';
 export * from './components/Toggle/core/Toggle';
-export * from './components/Tooltip/core/_Tooltip';
+export * from './components/Tooltip/core/Tooltip';
 export * from './utils/unique-id';
-export * from './components/Avatar/core/_Avatar';
 export * from './components/Loader/core/_Loader';
 export * from './components/Spinner/core/_Spinner';
 export * from './components/Radio/core/Radio';
