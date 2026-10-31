@@ -607,6 +607,48 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  ProgressRing: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
+      <!-- Section 1: Progress Values Spectrum -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Completion Levels</h3>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <ag-progress-ring value="0"></ag-progress-ring>
+          <ag-progress-ring value="50"></ag-progress-ring>
+          <ag-progress-ring value="100"></ag-progress-ring>
+        </div>
+      </div>
+
+      <!-- Section 2: Size Scale Matrix -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Sizes Spectrum</h3>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <ag-progress-ring size="small" value="60"></ag-progress-ring>
+          <ag-progress-ring size="medium" value="60"></ag-progress-ring>
+          <ag-progress-ring size="large" value="60"></ag-progress-ring>
+        </div>
+      </div>
+
+      <!-- Section 3: Color Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Contextual Colors</h3>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <ag-progress-ring variant="primary" value="70"></ag-progress-ring>
+          <ag-progress-ring variant="success" value="70"></ag-progress-ring>
+          <ag-progress-ring variant="danger" value="70"></ag-progress-ring>
+        </div>
+      </div>
+
+      <!-- Section 4: Slotted Custom Content Labels -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Slotted Custom Content</h3>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <ag-progress-ring value="45"><span style="font-size: 14px; font-weight: bold;">45/100</span></ag-progress-ring>
+          <ag-progress-ring value="80" variant="success"><span style="font-size: 18px;">✓</span></ag-progress-ring>
+        </div>
+      </div>
+    </div>
+  `,
   Radio: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; font-family: system-ui, -apple-system, sans-serif;">
       <!-- Section 1: Default Layout & Grouping inside Fieldset -->
