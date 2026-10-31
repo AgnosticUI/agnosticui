@@ -512,6 +512,36 @@ export const COMPONENT_REGISTRY = {
 
     </div>
   `,
+  EmptyState: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Standard Layout with Action Button -->
+      <ag-empty-state
+        title="No items found"
+        subtitle="Get started by creating your first template item."
+        buttonText="Create Item"
+      ></ag-empty-state>
+
+      <!-- Structural Modifiers: Bordered, Rounded, and Custom Icon Slot -->
+      <ag-empty-state
+        title="Empty Workspace Folder"
+        subtitle="Drag and drop configuration parameters here to unpack."
+        isBordered
+        isRounded
+      >
+        <ag-icon slot="icon" size="32" no-fill>
+          <svg xmlns="http://w3.org" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+          </svg>
+        </ag-icon>
+      </ag-empty-state>
+
+      <!-- Dense Blueprint Sizing Stack -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <ag-empty-state title="Sidebar Stack" subtitle="Dense view." size="sm" isBordered isRounded></ag-empty-state>
+        <ag-empty-state title="Main Panel" subtitle="Standard view." size="md" isBordered isRounded></ag-empty-state>
+      </div>
+    </div>
+  `,
   Icon: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Sizing Spectrum Matrix -->
