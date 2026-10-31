@@ -575,6 +575,38 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Progress: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
+      <!-- Section 1: Indeterminate Progress -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Indeterminate Progress</h3>
+        <ag-progress label="Loading..."></ag-progress>
+      </div>
+
+      <!-- Section 2: Progress with Determinate Value -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Progress with Value & Max Bounds</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <ag-progress value="50" label="50% complete"></ag-progress>
+          <ag-progress value="150" max="200" label="150 of 200"></ag-progress>
+        </div>
+      </div>
+
+      <!-- Section 3: CSS Shadow Parts Customization -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">CSS Shadow Parts Customization</h3>
+        <style>
+          .custom-progress::part(ag-progress-bar) {
+            background-color: #f3e8ff;
+            height: 1.5rem;
+          }
+          .custom-progress::part(ag-progress-bar)::-webkit-progress-value { background-color: #a855f7; }
+          .custom-progress::part(ag-progress-bar)::-moz-progress-bar { background-color: #a855f7; }
+        </style>
+        <ag-progress value="75" label="Customized progress" class="custom-progress"></ag-progress>
+      </div>
+    </div>
+  `,
   Radio: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; font-family: system-ui, -apple-system, sans-serif;">
       <!-- Section 1: Default Layout & Grouping inside Fieldset -->

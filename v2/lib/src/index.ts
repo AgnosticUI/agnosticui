@@ -23,7 +23,7 @@ export * from './utils/unique-id';
 export * from './components/Loader/core/Loader';
 export * from './components/Spinner/core/Spinner';
 export * from './components/Radio/core/Radio';
-export * from './components/Progress/core/_Progress';
+export * from './components/Progress/core/Progress';
 export * from './components/ProgressRing/core/_ProgressRing';
 export * from './components/Tag/core/Tag';
 export * from './components/Icon/core/_Icon';

@@ -46,6 +46,8 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.IntlFormatter(), root);
   } else if (component === 'Menu') {
     render(COMPONENT_REGISTRY.Menu(), root);
+  } else if (component === 'Progress') {
+    render(COMPONENT_REGISTRY.Progress(), root);
   } else if (component === 'Radio') {
     render(COMPONENT_REGISTRY.Radio(), root);
   } else if (component === 'Tag') {
@@ -57,7 +59,7 @@ async function mountPreview() {
   }
 
 
-  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-icon-button, ag-input, ag-intl-formatter, ag-menu, ag-radio,  ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-toggle');
+  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-icon-button, ag-input, ag-intl-formatter, ag-menu, ag-progress, ag-radio,  ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-toggle');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;
