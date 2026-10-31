@@ -542,6 +542,31 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Fieldset: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Standard Stack Fieldset -->
+      <ag-fieldset legend="Standard Group Layout">
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 4px 0;">
+          <input type="text" placeholder="Entry Parameter A" style="padding: 8px; border: 1px solid var(--ag-border); border-radius: 4px;" />
+          <input type="text" placeholder="Entry Parameter B" style="padding: 8px; border: 1px solid var(--ag-border); border-radius: 4px;" />
+        </div>
+      </ag-fieldset>
+
+      <!-- Bordered Layout with Hidden Legend -->
+      <ag-fieldset legend="Hidden Accessibility Context" bordered legend-hidden>
+        <div style="padding: 4px 0; color: var(--ag-text-secondary);">
+          This block contains a bordered frame with a visually hidden legend layout.
+        </div>
+      </ag-fieldset>
+
+      <!-- Horizontal Orientations Matrix -->
+      <ag-fieldset legend="Horizontal Inline Stack" bordered layout="horizontal">
+        <label style="display: inline-flex; align-items: center; gap: 8px;"><input type="radio" checked /> Option X</label>
+        <label style="display: inline-flex; align-items: center; gap: 8px;"><input type="radio" /> Option Y</label>
+        <label style="display: inline-flex; align-items: center; gap: 8px;"><input type="radio" /> Option Z</label>
+      </ag-fieldset>
+    </div>
+  `,
   Icon: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Sizing Spectrum Matrix -->
