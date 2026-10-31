@@ -141,6 +141,40 @@ export const COMPONENT_REGISTRY = {
         </div>
       </div>
     </div>
-  `
+  `,
+  Badge: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; font-family: system-ui, sans-serif;">
+      <!-- Section 1: Color Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Color Variants</h3>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <ag-badge variant="default">Default</ag-badge>
+          <ag-badge variant="success">Success</ag-badge>
+          <ag-badge variant="warning">Warning</ag-badge>
+          <ag-badge variant="danger">Danger</ag-badge>
+        </div>
+      </div>
+
+      <!-- Section 2: Size & Dot Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Sizes & Status Indicators</h3>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline;">
+          <ag-badge variant="default" size="xs">Extra Small</ag-badge>
+          <ag-badge variant="default" size="md">Medium</ag-badge>
+          <ag-badge ?dot=${true} variant="success" statusLabel="Online"></ag-badge>
+        </div>
+      </div>
+
+      <!-- Section 3: Value Truncation & Interactive States -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Value, Max & Interactive</h3>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <ag-badge variant="danger" .value=${105} .max=${99}></ag-badge>
+          <ag-badge variant="primary" ?interactive=${true}>Interactive</ag-badge>
+        </div>
+      </div>
+    </div>
+  `,
+
 
 };

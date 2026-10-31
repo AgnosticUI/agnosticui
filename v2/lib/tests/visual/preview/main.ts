@@ -30,10 +30,11 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Alert(), root);
   } else if (component === 'Tag') {
     render(COMPONENT_REGISTRY.Tag(), root);
+  } else if (component === 'Badge') {
+    render(COMPONENT_REGISTRY.Badge(), root);
   }
 
-  // Include ag-tag in the selector matrix to synchronize the update lifecycles
-  const customElements = root.querySelectorAll('ag-button, ag-alert, ag-tag');
+  const customElements = root.querySelectorAll('ag-button, ag-alert, ag-tag, ag-badge');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;
