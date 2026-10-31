@@ -789,6 +789,27 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Image: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Standard Image View Layout Configuration -->
+      <ag-image
+        src="data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='200' height='150' viewBox='0 0 200 150'><rect width='100%' height='100%' fill='%2309090b'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='14'>Static Baseline</text></svg>"
+        alt="Visual testing baseline target matrix element"
+        .width=${200}
+        .height=${150}
+      ></ag-image>
+
+      <!-- Aspect Ratio Mapping & Contain Box Rules -->
+      <div style="width: 300px; height: 150px; background: var(--ag-background-secondary, #f4f4f5); border: 1px solid var(--ag-border, #e4e4e7); border-radius: 4px; overflow: hidden;">
+        <ag-image
+          src="data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%237c3aed'/></svg>"
+          alt="Object fit constraint test"
+          aspect-ratio="16/9"
+          fit="contain"
+        ></ag-image>
+      </div>
+    </div>
+  `,
   Input: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px; font-family: system-ui, -apple-system, sans-serif;">
       
