@@ -492,6 +492,26 @@ export const COMPONENT_REGISTRY = {
 
     </div>
   `,
+  Drawer: () => html`
+    <!-- Isolate fixed/absolute drawer sub-containers within a relative preview grid -->
+    <div style="position: relative; width: 100%; min-height: 600px; padding: 24px; display: flex; flex-direction: column; gap: 40px; overflow: hidden;">
+
+      <!-- Right Configuration Drawer (position="end") -->
+      <div style="position: relative; width: 100%; height: 250px; border: 1px dashed var(--ag-border); overflow: hidden;">
+        <ag-drawer open position="end" heading="Context Configurations" show-close-button>
+          <div style="display: flex; flex-direction: column; gap: 12px; padding: 4px 0;">
+            <label><input type="checkbox" checked /> Dark mode default</label>
+            <label><input type="checkbox" /> Sync automated saves</label>
+          </div>
+          <div slot="footer" style="display: flex; gap: 8px; justify-content: flex-end;">
+            <ag-button size="small">Cancel</ag-button>
+            <ag-button size="small" variant="primary">Apply</ag-button>
+          </div>
+        </ag-drawer>
+      </div>
+
+    </div>
+  `,
   Icon: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Sizing Spectrum Matrix -->
