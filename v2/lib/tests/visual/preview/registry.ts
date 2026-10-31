@@ -751,6 +751,44 @@ export const COMPONENT_REGISTRY = {
 
     </div>
   `,
+  IconButtonFx: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <!-- Row 1: Effect Typology Grid Matrix -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-icon-button-fx fx="pulse" variant="primary" label="Pulse Item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><circle cx="12" cy="12" r="10"></circle></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="bounce" variant="success" label="Bounce Item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M12 5v14M5 12h14"></path></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="wobble" variant="warning" label="Wobble Item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="shake" variant="danger" label="Shake Item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="jelly" variant="ghost" label="Jelly Item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M12 2L2 22h20L12 2z"></path></svg>
+        </ag-icon-button-fx>
+      </div>
+
+      <!-- Row 2: Sizing Scale Constraints -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-icon-button-fx fx="pulse" size="xs" variant="primary" label="XS Frame">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:100%;height:100%;"><circle cx="12" cy="12" r="10"></circle></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="pulse" size="md" variant="primary" label="MD Frame">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:100%;height:100%;"><circle cx="12" cy="12" r="10"></circle></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="pulse" size="xl" variant="primary" label="XL Frame">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:100%;height:100%;"><circle cx="12" cy="12" r="10"></circle></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="pulse" fx-disabled variant="primary" label="Disabled Effect Layer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><circle cx="12" cy="12" r="10"></circle></svg>
+        </ag-icon-button-fx>
+      </div>
+    </div>
+  `,
   Input: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px; font-family: system-ui, -apple-system, sans-serif;">
       
