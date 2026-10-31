@@ -1087,6 +1087,54 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  Timeline: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
+      <!-- Section 1: Horizontal Layout Stepper -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Horizontal Stepper Layout</h3>
+        <ag-timeline orientation="horizontal" .responsive=${false}>
+          <ag-timeline-item>
+            <span slot="ag-start">Step 1</span>
+            <div slot="ag-marker" style="width: 24px; height: 24px; border-radius: 50%; background: var(--ag-success); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">1</div>
+            <span slot="ag-end">Completed</span>
+          </ag-timeline-item>
+          <ag-timeline-item>
+            <span slot="ag-start">Step 2</span>
+            <div slot="ag-marker" style="width: 24px; height: 24px; border-radius: 50%; background: var(--ag-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">2</div>
+            <span slot="ag-end">In Progress</span>
+          </ag-timeline-item>
+          <ag-timeline-item>
+            <span slot="ag-start">Step 3</span>
+            <div slot="ag-marker" style="width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--ag-border); color: var(--ag-text-secondary); display: flex; align-items: center; justify-content: center; font-size: 12px;">3</div>
+            <span slot="ag-end">Pending</span>
+          </ag-timeline-item>
+        </ag-timeline>
+      </div>
+
+      <!-- Section 2: Vertical Layout Thread -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Vertical Tracking Layout</h3>
+        <ag-timeline orientation="vertical" variant="primary">
+          <ag-timeline-item>
+            <span slot="ag-start">09:00 AM</span>
+            <div slot="ag-marker" style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary);"></div>
+            <div slot="ag-end">
+              <strong>Breakfast meeting</strong>
+              <p style="margin: 4px 0 0 0; font-size: 14px; color: var(--ag-text-secondary);">Oatmeal and coffee focus time</p>
+            </div>
+          </ag-timeline-item>
+          <ag-timeline-item>
+            <span slot="ag-start">10:00 AM</span>
+            <div slot="ag-marker" style="width: 12px; height: 12px; border-radius: 50%; background: var(--ag-primary);"></div>
+            <div slot="ag-end">
+              <strong>Daily Standup</strong>
+              <p style="margin: 4px 0 0 0; font-size: 14px; color: var(--ag-text-secondary);">Team synchronization block</p>
+            </div>
+          </ag-timeline-item>
+        </ag-timeline>
+      </div>
+    </div>
+  `,
   Toggle: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Default States & Sizes -->

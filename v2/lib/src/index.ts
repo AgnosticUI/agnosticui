@@ -43,5 +43,5 @@ export * from './components/Timeline/core/Timeline';
 export * from './components/Toast/core/Toast';
 export * from './components/Toggle/core/Toggle';
 export * from './components/Tooltip/core/Tooltip';
-export * from './components/VisuallyHidden/core/_VisuallyHidden';
+export * from './components/VisuallyHidden/core/VisuallyHidden';
 export * from './utils/unique-id';

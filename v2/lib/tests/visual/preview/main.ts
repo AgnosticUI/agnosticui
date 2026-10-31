@@ -72,6 +72,8 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Tag(), root);
   } else if (component === 'Tabs') {
     render(COMPONENT_REGISTRY.Tabs(), root);
+  } else if (component === 'Timeline') {
+    render(COMPONENT_REGISTRY.Timeline(), root);
   } else if (component === 'Toast') {
     render(COMPONENT_REGISTRY.Toast(), root);
   } else if (component === 'Toggle') {
@@ -79,7 +81,7 @@ async function mountPreview() {
   }
 
 
-  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-message-bubble, ag-popover, ag-progress, ag-progress-ring, ag-radio, ag-scroll-progress, ag-skeleton-loader, ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-toast, ag-toggle');
+  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-message-bubble, ag-popover, ag-progress, ag-progress-ring, ag-radio, ag-scroll-progress, ag-skeleton-loader, ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-timeline, ag-toast, ag-toggle');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;
