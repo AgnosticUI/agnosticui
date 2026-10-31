@@ -382,6 +382,17 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Collapsible: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <ag-collapsible use-chevron><span slot="summary">Use Chevron</span><p>Content</p></ag-collapsible>
+      <ag-collapsible use-minus><span slot="summary">Use Minus</span><p>Content</p></ag-collapsible>
+      <ag-collapsible use-x><span slot="summary">Use X</span><p>Content</p></ag-collapsible>
+      <ag-collapsible no-indicator><span slot="summary">No Indicator</span><p>Content</p></ag-collapsible>
+      <ag-collapsible bordered><span slot="summary">Bordered</span><p>Content</p></ag-collapsible>
+      <ag-collapsible shadow><span slot="summary">Shadow</span><p>Content</p></ag-collapsible>
+      <ag-collapsible bordered open><span slot="summary">Open by Default</span><p>Content</p></ag-collapsible>
+    </div>
+  `,
   Divider: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px; font-family: system-ui, -apple-system, sans-serif;">
       
