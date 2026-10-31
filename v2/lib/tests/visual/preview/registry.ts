@@ -152,6 +152,17 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  BadgeFx: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-badge-fx fx="bounce" variant="success">Bounce</ag-badge-fx>
+        <ag-badge-fx fx="pulse" variant="info">Pulse</ag-badge-fx>
+        <ag-badge-fx fx="jelly" fx-speed="lg" fx-ease="spring-sm" variant="monochrome">Jelly</ag-badge-fx>
+        <ag-badge-fx fx="shimmer" fx-speed="xl" variant="danger">Shimmer</ag-badge-fx>
+        <ag-badge-fx fx="glow" variant="primary">Glow</ag-badge-fx>
+      </div>
+    </div>
+  `,
   Button: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px;">
       <!-- Row 1: Color Variants -->
