@@ -48,6 +48,7 @@ export * from './components/ScrollToButton/core/ScrollToButton';
 export * from './components/Select/core/Select';
 export * from './components/SelectionButton/core/SelectionButton';
 export * from './components/SelectionButtonGroup/core/SelectionButtonGroup';
+export * from './components/SelectionCard/core/SelectionCard';
 export * from './components/SelectionCardGroup/core/SelectionCardGroup';
 export * from './components/Sidebar/core/Sidebar';
 export * from './components/SkeletonLoader/core/SkeletonLoader';

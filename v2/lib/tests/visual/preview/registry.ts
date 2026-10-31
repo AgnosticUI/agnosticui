@@ -1448,6 +1448,49 @@ Kbd: () => html`
       </ag-selection-button-group>
     </div>
   `,
+  SelectionCardGroup: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Selection Modes (Radio Single vs Checkbox Multiple) -->
+      <ag-selection-card-group type="radio" name="card-radio" legend="Select interest">
+        <ag-selection-card value="tech" label="Technology">
+          <div style="text-align: center; padding: 1rem;"><div style="font-weight: 600;">Technology</div></div>
+        </ag-selection-card>
+        <ag-selection-card value="music" label="Music">
+          <div style="text-align: center; padding: 1rem;"><div style="font-weight: 600;">Music</div></div>
+        </ag-selection-card>
+      </ag-selection-card-group>
+
+      <ag-selection-card-group type="checkbox" name="card-checkbox" legend="Enable features">
+        <ag-selection-card value="analytics" label="Analytics">
+          <div style="text-align: center; padding: 1rem;"><div style="font-weight: 600;">Analytics</div></div>
+        </ag-selection-card>
+        <ag-selection-card value="export" label="Export">
+          <div style="text-align: center; padding: 1rem;"><div style="font-weight: 600;">Export</div></div>
+        </ag-selection-card>
+      </ag-selection-card-group>
+
+      <!-- Theme Variants Spectrum -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-selection-card-group type="radio" name="card-success" legend="Success Group" legend-hidden theme="success">
+          <ag-selection-card value="1" label="Option A"><div style="padding: 1rem;">Success A</div></ag-selection-card>
+        </ag-selection-card-group>
+        <ag-selection-card-group type="radio" name="card-error" legend="Error Group" legend-hidden theme="error">
+          <ag-selection-card value="1" label="Option A"><div style="padding: 1rem;">Error A</div></ag-selection-card>
+        </ag-selection-card-group>
+      </div>
+
+      <!-- Operational Disabled States Matrix -->
+      <ag-selection-card-group type="radio" name="card-disabled-group" legend="Disabled Group Frame" disabled>
+        <ag-selection-card value="1" label="Option A"><div style="padding: 1rem;">Option A</div></ag-selection-card>
+        <ag-selection-card value="2" label="Option B"><div style="padding: 1rem;">Option B</div></ag-selection-card>
+      </ag-selection-card-group>
+
+      <ag-selection-card-group type="radio" name="card-disabled-nodes" legend="Mixed Operational Nodes">
+        <ag-selection-card value="1" label="Active Card"><div style="padding: 1rem;">Active Card</div></ag-selection-card>
+        <ag-selection-card value="2" label="Disabled Card" disabled><div style="padding: 1rem;">Disabled Card</div></ag-selection-card>
+      </ag-selection-card-group>
+    </div>
+  `,
   SkeletonLoader: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Standard Text Lines & Sizing -->
