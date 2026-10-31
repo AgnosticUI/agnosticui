@@ -24,6 +24,8 @@ async function mountPreview() {
     document.body.style.backgroundColor = '#ffffff';
   }
 
+  // MISSING: Accordion, AccordionGroup, AspectRatio, AvatarGroup, AvatarFx, BadgeFx, Breadcrumb, ButtonFx, Collapsible, Combobox, CopyButton, Dialog, Drawer, EmptyState, Fieldset, Flex, Header, IconButtonFx, Image, Loader, Pagination, Rating, ScrollToButton, Select, SelectionButtonGroup, SelectionCardGroup, Sidebar, Slider, Spinner, Table, TagFx, Tooltip, TooltipFx, VisuallyHidden
+
   if (component === 'Alert') {
     render(COMPONENT_REGISTRY.Alert(), root);
   } else if (component === 'Avatar') {
@@ -79,7 +81,6 @@ async function mountPreview() {
   } else if (component === 'Toggle') {
     render(COMPONENT_REGISTRY.Toggle(), root);
   }
-
 
   const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-message-bubble, ag-popover, ag-progress, ag-progress-ring, ag-radio, ag-scroll-progress, ag-skeleton-loader, ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-timeline, ag-toast, ag-toggle');
   const updates = Array.from(customElements).map((el) => {
