@@ -24,14 +24,65 @@ async function mountPreview() {
     document.body.style.backgroundColor = '#ffffff';
   }
 
-  // Pure sequential processing routes matching our verified baseline
-  if (component === 'Button') {
-    render(COMPONENT_REGISTRY.Button(), root);
-  } else if (component === 'Alert') {
+  // MISSING: Accordion, AccordionGroup, AspectRatio, AvatarGroup, AvatarFx, BadgeFx, Breadcrumb, ButtonFx, Collapsible, Combobox, CopyButton, Dialog, Drawer, EmptyState, Fieldset, Flex, Header, IconButtonFx, Image, Loader, Pagination, Rating, ScrollToButton, Select, SelectionButtonGroup, SelectionCardGroup, Sidebar, Slider, Spinner, Table, TagFx, Tooltip, TooltipFx, VisuallyHidden
+
+  if (component === 'Alert') {
     render(COMPONENT_REGISTRY.Alert(), root);
+  } else if (component === 'Avatar') {
+    render(COMPONENT_REGISTRY.Avatar(), root);
+  } else if (component === 'Button') {
+    render(COMPONENT_REGISTRY.Button(), root);
+  } else if (component === 'Badge') {
+    render(COMPONENT_REGISTRY.Badge(), root);
+  } else if (component === 'Card') {
+    render(COMPONENT_REGISTRY.Card(), root);
+  } else if (component === 'Checkbox') {
+    render(COMPONENT_REGISTRY.Checkbox(), root);
+  } else if (component === 'Divider') {
+    render(COMPONENT_REGISTRY.Divider(), root);
+  } else if (component === 'Icon') {
+    render(COMPONENT_REGISTRY.Icon(), root);
+  } else if (component === 'IconButton') {
+    render(COMPONENT_REGISTRY.IconButton(), root);
+  } else if (component === 'Input') {
+    render(COMPONENT_REGISTRY.Input(), root);
+  } else if (component === 'IntlFormatter') {
+    render(COMPONENT_REGISTRY.IntlFormatter(), root);
+  } else if (component === 'Kbd') {
+    render(COMPONENT_REGISTRY.Kbd(), root);
+  } else if (component === 'Link') {
+    render(COMPONENT_REGISTRY.Link(), root);
+  } else if (component === 'Mark') {
+    render(COMPONENT_REGISTRY.Mark(), root);
+  } else if (component === 'Menu') {
+    render(COMPONENT_REGISTRY.Menu(), root);
+  } else if (component === 'MessageBubble') {
+    render(COMPONENT_REGISTRY.MessageBubble(), root);
+  } else if (component === 'Popover') {
+    render(COMPONENT_REGISTRY.Popover(), root);
+  } else if (component === 'Progress') {
+    render(COMPONENT_REGISTRY.Progress(), root);
+  } else if (component === 'ProgressRing') {
+    render(COMPONENT_REGISTRY.ProgressRing(), root);
+  } else if (component === 'Radio') {
+    render(COMPONENT_REGISTRY.Radio(), root);
+  } else if (component === 'ScrollProgress') {
+    render(COMPONENT_REGISTRY.ScrollProgress(), root);
+  } else if (component === 'SkeletonLoader') {
+    render(COMPONENT_REGISTRY.SkeletonLoader(), root);
+  } else if (component === 'Tag') {
+    render(COMPONENT_REGISTRY.Tag(), root);
+  } else if (component === 'Tabs') {
+    render(COMPONENT_REGISTRY.Tabs(), root);
+  } else if (component === 'Timeline') {
+    render(COMPONENT_REGISTRY.Timeline(), root);
+  } else if (component === 'Toast') {
+    render(COMPONENT_REGISTRY.Toast(), root);
+  } else if (component === 'Toggle') {
+    render(COMPONENT_REGISTRY.Toggle(), root);
   }
 
-  const customElements = root.querySelectorAll('ag-button, ag-alert');
+  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-message-bubble, ag-popover, ag-progress, ag-progress-ring, ag-radio, ag-scroll-progress, ag-skeleton-loader, ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-timeline, ag-toast, ag-toggle');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;
