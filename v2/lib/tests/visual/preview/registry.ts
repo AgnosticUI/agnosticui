@@ -277,6 +277,39 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Divider: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px; font-family: system-ui, -apple-system, sans-serif;">
+      
+      <!-- Section 1: Standard Horizontal Dividers -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 0.5px;">Horizontal (Default)</h3>
+        <p style="margin: 0 0 8px 0; font-size: 14px;">Top Content Area</p>
+        <ag-divider></ag-divider>
+        <p style="margin: 8px 0 0 0; font-size: 14px;">Bottom Content Area</p>
+      </div>
+
+      <!-- Section 2: Horizontal with Centered or Custom Text Separators -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 0.5px;">With Text / Content</h3>
+        <p style="margin: 0 0 8px 0; font-size: 14px;">Social Sign In Section</p>
+        <ag-divider>or</ag-divider>
+        <p style="margin: 8px 0 0 0; font-size: 14px;">Standard Form Section</p>
+      </div>
+
+      <!-- Section 3: Vertical Orientation Constraints -->
+        <div class="mbe4">
+          <h2>Vertical Dividers</h2>
+        </div>
+        <div class="mbe4" style="display: flex; min-height: 200px;">
+          <p style="flex: 1;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <ag-divider is-vertical>Yes</ag-divider>
+          <p style="flex: 1;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+          <ag-divider is-vertical>Sir!</ag-divider>
+          <p style="flex: 1;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+    </div>
+  `,
   Radio: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; font-family: system-ui, -apple-system, sans-serif;">
       <!-- Section 1: Default Layout & Grouping inside Fieldset -->

@@ -10,7 +10,7 @@ export * from './components/Button/core/Button';
 export * from './components/Checkbox/core/Checkbox';
 export * from './components/Card/core/Card';
 export * from './components/Dialog/core/_dialog';
-export * from './components/Divider/core/_Divider';
+export * from './components/Divider/core/Divider';
 export * from './components/IconButton/core/_IconButton';
 export * from './components/Input/core/_Input';
 export * from './components/IntlFormatter/core/_IntlFormatter'
