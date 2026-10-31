@@ -24,8 +24,6 @@ async function mountPreview() {
     document.body.style.backgroundColor = '#ffffff';
   }
 
-  // MISSING: TagFx, Tooltip, TooltipFx, VisuallyHidden
-
   if (component === 'Accordion') {
     render(COMPONENT_REGISTRY.Accordion(), root);
   } else if (component === 'Alert') {
