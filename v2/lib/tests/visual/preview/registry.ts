@@ -1346,6 +1346,47 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  Select: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 500px;">
+      <!-- Standard Dropdown Frame with Slotted Child Options -->
+      <ag-select label="Greatest Tennis Player" name="tennis">
+        <option value="">- Select a player -</option>
+        <option value="serena">Serena Williams</option>
+        <option value="roger">Roger Federer</option>
+      </ag-select>
+
+      <!-- Sizing Constraints Spectrum Stack -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-select label="Small Size Layout" size="small" name="small">
+          <option value="1">Option 1</option>
+        </ag-select>
+        <ag-select label="Large Size Layout" size="large" name="large">
+          <option value="1">Option 1</option>
+        </ag-select>
+      </div>
+
+      <!-- Operational State Modifiers: Disabled and Multiple List Box -->
+      <ag-select label="Disabled Field" disabled name="disabled">
+        <option value="">Cannot select</option>
+      </ag-select>
+
+      <ag-select label="Multiple Selection List Box" multiple multiple-size="4" name="multiple">
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </ag-select>
+
+      <!-- Form Context Framework Fields -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-select label="Validation Failure State" required invalid error-message="Please select a valid payment method" name="payment">
+          <option value="">Select payment method</option>
+        </ag-select>
+        <ag-select label="Label Position Start" label-position="start" name="pos-start">
+          <option value="1">Option 1</option>
+        </ag-select>
+      </div>
+    </div>
+  `,
   SkeletonLoader: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Standard Text Lines & Sizing -->
