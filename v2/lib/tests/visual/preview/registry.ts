@@ -457,6 +457,83 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Menu: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
+      <!-- Section 1: Basic Menu Layout -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Basic Layout</h3>
+        <ag-menu-button menu-aria-label="Menu options">
+          Menu
+          <ag-menu slot="menu">
+            <ag-menu-item value="edit">Edit</ag-menu-item>
+            <ag-menu-item value="copy">Copy</ag-menu-item>
+            <ag-menu-separator></ag-menu-separator>
+            <ag-menu-item value="delete">Delete</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+
+      <!-- Section 2: Alignments -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Menu Alignment Matrix</h3>
+        <div style="display: flex; gap: 16px; justify-content: space-between;">
+          <ag-menu-button menu-align="left" menu-aria-label="Left menu">
+            Left Aligned
+            <ag-menu slot="menu">
+              <ag-menu-item value="1">Option 1</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
+          <ag-menu-button menu-align="right" menu-aria-label="Right menu">
+            Right Aligned
+            <ag-menu slot="menu">
+              <ag-menu-item value="1">Option 1</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
+        </div>
+      </div>
+
+      <!-- Section 3: Disabled Button and Item States -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Disabled States Matrix</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <ag-menu-button ?disabled=${true} menu-aria-label="Disabled menu button">
+            Disabled Trigger
+          </ag-menu-button>
+          <ag-menu-button menu-aria-label="Menu with disabled items">
+            Mixed Item States
+            <ag-menu slot="menu">
+              <ag-menu-item value="enabled">Active Option</ag-menu-item>
+              <ag-menu-item value="disabled" ?disabled=${true}>Disabled Option</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
+        </div>
+      </div>
+
+      <!-- Section 4: Icon and Variant Overrides -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Icon & Variant Layouts</h3>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <ag-menu-button menu-variant="icon" ?ghost=${true} menu-aria-label="Icon option menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <ag-menu slot="menu">
+              <ag-menu-item value="settings">Settings</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
+          <ag-menu-button button-variant="monochrome" menu-type="single-select" selected-value="active" menu-aria-label="Persisted selection menu">
+            Selection Persisted
+            <ag-menu slot="menu">
+              <ag-menu-item value="active" variant="monochrome">Active Choice</ag-menu-item>
+              <ag-menu-item value="other" variant="monochrome">Alternative</ag-menu-item>
+            </ag-menu>
+          </ag-menu-button>
+        </div>
+      </div>
+    </div>
+  `,
   Radio: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; font-family: system-ui, -apple-system, sans-serif;">
       <!-- Section 1: Default Layout & Grouping inside Fieldset -->
