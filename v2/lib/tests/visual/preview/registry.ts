@@ -657,6 +657,37 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Header: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; width: 100%;">
+      <!-- Standard Header with Logo Slot and Navigation -->
+      <ag-header>
+        <span slot="logo" style="font-weight: 700; font-size: 1.25rem; color: var(--ag-primary, #09090b);">AgnosticUI</span>
+        <nav>
+          <ul style="display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0;">
+            <li><a href="#home" style="text-decoration: none; color: inherit;">Home</a></li>
+            <li><a href="#services" style="text-decoration: none; color: inherit;">Services</a></li>
+          </ul>
+        </nav>
+      </ag-header>
+
+      <!-- Justification Variant Overrides (content-justify mapped from kebab rule) -->
+      <ag-header content-justify="start">
+        <span slot="logo" style="font-weight: 600;">Justify Start</span>
+        <nav style="margin-left: 24px;"><a href="#link" style="text-decoration: none; color: inherit;">Navigation</a></nav>
+      </ag-header>
+
+      <ag-header content-justify="end">
+        <span slot="logo" style="font-weight: 600;">Justify End</span>
+        <nav style="margin-left: 24px;"><a href="#link" style="text-decoration: none; color: inherit;">Navigation</a></nav>
+      </ag-header>
+
+      <!-- Sticky Structure Frame Layout -->
+      <ag-header sticky>
+        <span slot="logo" style="font-weight: 700; font-size: 1.25rem;">Sticky Viewport Baseline</span>
+        <nav><span style="color: var(--ag-text-secondary, #71717a);">Fixed Node</span></nav>
+      </ag-header>
+    </div>
+  `,
   IconButton: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; font-family: system-ui, -apple-system, sans-serif;">
       

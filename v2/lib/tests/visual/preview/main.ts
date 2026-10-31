@@ -24,7 +24,7 @@ async function mountPreview() {
     document.body.style.backgroundColor = '#ffffff';
   }
 
-  // MISSING: Flex, Header, IconButtonFx, Image, Loader, Pagination, Rating, ScrollToButton, Select, SelectionButtonGroup, SelectionCardGroup, Sidebar, Slider, Spinner, Table, TagFx, Tooltip, TooltipFx, VisuallyHidden
+  // MISSING: IconButtonFx, Image, Loader, Pagination, Rating, ScrollToButton, Select, SelectionButtonGroup, SelectionCardGroup, Sidebar, Slider, Spinner, Table, TagFx, Tooltip, TooltipFx, VisuallyHidden
 
   if (component === 'Accordion') {
     render(COMPONENT_REGISTRY.Accordion(), root);
@@ -66,6 +66,8 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Fieldset(), root);
   } else if (component === 'Flex') {
     render(COMPONENT_REGISTRY.Flex(), root);
+  } else if (component === 'Header') {
+    render(COMPONENT_REGISTRY.Header(), root);
   } else if (component === 'Icon') {
     render(COMPONENT_REGISTRY.Icon(), root);
   } else if (component === 'IconButton') {
@@ -108,7 +110,7 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Toggle(), root);
   }
 
-  const customElements = root.querySelectorAll('ag-accordion, ag-alert, ag-avatar, ag-avatar-fx, ag-breadcrumb, ag-button, ag-button-fx, ag-badge, ag-badge-fx, ag-card, ag-checkbox, ag-collapsible, ag-combobox, ag-copy-button, ag-dialog, ag-divider, ag-drawer, ag-empty-state, ag-fieldset, ag-flex, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-message-bubble, ag-popover, ag-progress, ag-progress-ring, ag-radio, ag-scroll-progress, ag-skeleton-loader, ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-timeline, ag-toast, ag-toggle');
+  const customElements = root.querySelectorAll('ag-accordion, ag-alert, ag-avatar, ag-avatar-fx, ag-breadcrumb, ag-button, ag-button-fx, ag-badge, ag-badge-fx, ag-card, ag-checkbox, ag-collapsible, ag-combobox, ag-copy-button, ag-dialog, ag-divider, ag-drawer, ag-empty-state, ag-fieldset, ag-flex, ag-header, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-message-bubble, ag-popover, ag-progress, ag-progress-ring, ag-radio, ag-scroll-progress, ag-skeleton-loader, ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-timeline, ag-toast, ag-toggle');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;
