@@ -597,6 +597,54 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Tabs: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
+      <!-- Section 1: Basic Horizontal Tabs -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Basic Horizontal Layout</h3>
+        <ag-tabs aria-label="Basic tabs example">
+          <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
+          <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
+          <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
+          <ag-tab-panel slot="panel" panel="panel-1">
+            <p style="margin: 12px 0 0 0;">Content for Tab 1</p>
+          </ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-2">
+            <p style="margin: 12px 0 0 0;">Content for Tab 2</p>
+          </ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="panel-3">
+            <p style="margin: 12px 0 0 0;">Content for Tab 3</p>
+          </ag-tab-panel>
+        </ag-tabs>
+      </div>
+
+      <!-- Section 2: Vertical Orientation Layout -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Vertical Orientation Layout</h3>
+        <ag-tabs orientation="vertical" aria-label="Vertical tabs">
+          <ag-tab slot="tab" panel="vert-1">Profile</ag-tab>
+          <ag-tab slot="tab" panel="vert-2">Settings</ag-tab>
+          <ag-tab slot="tab" panel="vert-3">Notifications</ag-tab>
+          <ag-tab-panel slot="panel" panel="vert-1"><div style="padding-left: 12px;">Profile content framework</div></ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="vert-2"><div style="padding-left: 12px;">Settings content engine</div></ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="vert-3"><div style="padding-left: 12px;">Notifications content wire</div></ag-tab-panel>
+        </ag-tabs>
+      </div>
+
+      <!-- Section 3: Disabled Tab States Matrix -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Disabled Tab Elements</h3>
+        <ag-tabs aria-label="Tabs with disabled tab">
+          <ag-tab slot="tab" panel="avail-1">Available Tab</ag-tab>
+          <ag-tab slot="tab" panel="disabled-2" ?disabled=${true}>Disabled Tab</ag-tab>
+          <ag-tab slot="tab" panel="avail-3">Also Available</ag-tab>
+          <ag-tab-panel slot="panel" panel="avail-1"><p style="margin: 12px 0 0 0;">Available rendering block</p></ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="disabled-2"><p style="margin: 12px 0 0 0;">Disabled hidden panel context</p></ag-tab-panel>
+          <ag-tab-panel slot="panel" panel="avail-3"><p style="margin: 12px 0 0 0;">Alternative active block element</p></ag-tab-panel>
+        </ag-tabs>
+      </div>
+    </div>
+  `,
   Tag: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
       <!-- Section 1: Standard Variants -->

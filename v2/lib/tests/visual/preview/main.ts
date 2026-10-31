@@ -48,9 +48,11 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Radio(), root);
   } else if (component === 'Tag') {
     render(COMPONENT_REGISTRY.Tag(), root);
+  } else if (component === 'Tabs') {
+    render(COMPONENT_REGISTRY.Tabs(), root);
   }
 
-  const customElements = root.querySelectorAll('ag-alert, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-icon-button, ag-input, ag-intl-formatter, ag-menu, ag-radio,  ag-tag');
+  const customElements = root.querySelectorAll('ag-alert, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-icon-button, ag-input, ag-intl-formatter, ag-menu, ag-radio,  ag-tabs, ag-tab, ag-tab-panel, ag-tag');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;
