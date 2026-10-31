@@ -439,6 +439,26 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Dialog: () => html`
+    <!-- Position relative wrapper allows fixed/absolute dialog child layers to render cleanly inside the preview bounding box viewport context -->
+    <div style="position: relative; width: 100%; min-height: 500px; padding: 24px;">
+      <ag-dialog
+        open
+        id="preview-dialog"
+        heading="Visual Regression Baseline"
+        description="Statically opened dialog layer to capture layout specs, close triggers, and typography tokens."
+        show-close-button
+      >
+        <p>This layout configures the standard container dimensions, font spacing, and background overlay colors.</p>
+        <ag-dialog-footer>
+          <div style="display: flex; gap: 8px; justify-content: flex-end;">
+            <ag-button size="small">Cancel</ag-button>
+            <ag-button size="small" variant="primary">Confirm Action</ag-button>
+          </div>
+        </ag-dialog-footer>
+      </ag-dialog>
+    </div>
+  `,
   Divider: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px; font-family: system-ui, -apple-system, sans-serif;">
       
