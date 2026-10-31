@@ -373,6 +373,43 @@ export const COMPONENT_REGISTRY = {
 
     </div>
   `,
+  Input: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px; font-family: system-ui, -apple-system, sans-serif;">
+      
+      <!-- Section 1: Size Constraints -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Sizes</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <ag-input label="Small Input" size="small" placeholder="Small size"></ag-input>
+          <ag-input label="Default Input" size="default" placeholder="Default size"></ag-input>
+          <ag-input label="Large Input" size="large" placeholder="Large size"></ag-input>
+        </div>
+      </div>
+
+      <!-- Section 2: Shape Variations -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Shape Variants</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <ag-input label="Default (rectangular)" placeholder="Default rectangular"></ag-input>
+          <ag-input label="Rounded" ?rounded=${true} placeholder="Rounded corners"></ag-input>
+          <ag-input label="Capsule" ?capsule=${true} placeholder="Capsule shape"></ag-input>
+          <ag-input label="Underlined" ?underlined=${true} placeholder="Underlined only"></ag-input>
+          <ag-input label="Underlined with Background" ?underlinedWithBackground=${true} placeholder="Underlined with background"></ag-input>
+        </div>
+      </div>
+
+      <!-- Section 3: Validation, Addons & Field States -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Validation & States</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <ag-input label="Disabled Field" ?disabled=${true} placeholder="Cannot type here"></ag-input>
+          <ag-input label="Invalid Entry" ?invalid=${true} error-message="This field entry layout is invalid" placeholder="Error state border"></ag-input>
+          <ag-input label="Helper Description" help-text="Please ensure your layout input values match criteria" placeholder="With helper text"></ag-input>
+        </div>
+      </div>
+
+    </div>
+  `,
   Radio: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; font-family: system-ui, -apple-system, sans-serif;">
       <!-- Section 1: Default Layout & Grouping inside Fieldset -->
