@@ -567,6 +567,49 @@ export const COMPONENT_REGISTRY = {
       </ag-fieldset>
     </div>
   `,
+  Flex: () => html`
+    <style>
+      .flex-preview-box {
+        padding: 12px;
+        border: 1px solid var(--ag-primary);
+        border-radius: 4px;
+        text-align: center;
+        min-width: 600px;
+      }
+    </style>
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 700px;">
+      <!-- Row distribution variants -->
+      <ag-flex-row style="--flex-gap: 12px;" justify="space-between" align="center">
+        <div class="flex-preview-box" style="min-width: 80px;">Row Item A</div>
+        <div class="flex-preview-box" style="min-width: 80px;">Row Item B</div>
+        <div class="flex-preview-box" style="min-width: 80px;">Row Item C</div>
+      </ag-flex-row>
+
+      <!-- Structural sizing modifiers with equal width distribution -->
+      <ag-flex-row style="--flex-gap: 16px;" stretch-children>
+        <div class="flex-preview-box">Short</div>
+        <div class="flex-preview-box">Equal Column Height/Width Frame</div>
+      </ag-flex-row>
+
+      <!-- Block column stacking structure -->
+      <ag-flex-col style="--flex-gap: 12px;">
+        <div class="flex-preview-box">Stacked Row Node 1</div>
+        <div class="flex-preview-box">Stacked Row Node 2</div>
+      </ag-flex-col>
+
+      <!-- Layout Aliases: Stack and Inline Flex groups -->
+      <div style="display: flex; gap: 24px;">
+        <ag-stack style="--flex-gap: 8px; flex: 1;">
+          <div class="flex-preview-box" style="min-width: unset;">Alias Stack 1</div>
+          <div class="flex-preview-box" style="min-width: unset;">Alias Stack 2</div>
+        </ag-stack>
+        <ag-flex-inline style="--flex-gap: 8px; background: var(--ag-background-secondary, #f4f4f5); padding: 8px; border-radius: 4px;">
+          <span style="padding: 4px 8px; background: var(--ag-background-primary, #ffffff); border: 1px solid var(--ag-border, #e4e4e7);">Tag X</span>
+          <span style="padding: 4px 8px; background: var(--ag-background-primary, #ffffff); border: 1px solid var(--ag-border, #e4e4e7);">Tag Y</span>
+        </ag-flex-inline>
+      </div>
+    </div>
+  `,
   Icon: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Sizing Spectrum Matrix -->
