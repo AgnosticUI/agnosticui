@@ -171,7 +171,7 @@ export const COMPONENT_REGISTRY = {
     </div>
   `,
   Card: () => html`
-    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;>
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
       <!-- Default Card -->
       <div class="mbe4">
         <h2>Default Card</h2>
@@ -1070,8 +1070,8 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Uppercase Modifiers</h3>
         <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-          <ag-tag .isUppercase=${true} variant="warning">Uppercase Tag</ag-tag>
-          <ag-tag .isUppercase=${true} shape="pill">Pill Label</ag-tag>
+          <ag-tag .uppercase=${true} variant="warning">Uppercase Tag</ag-tag>
+          <ag-tag .uppercase=${true} shape="pill">Pill Label</ag-tag>
         </div>
       </div>
 
@@ -1081,7 +1081,7 @@ Kbd: () => html`
         <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
           <ag-tag variant="error">Deletable <button slot="close" aria-label="close">✕</button></ag-tag>
           <ag-tag variant="success" shape="pill">Active <button slot="close" aria-label="close">✕</button></ag-tag>
-          <ag-tag variant="warning" .isUppercase=${true}>Pending <button slot="close" aria-label="close">✕</button></ag-tag>
+          <ag-tag variant="warning" .uppercase=${true}>Pending <button slot="close" aria-label="close">✕</button></ag-tag>
           <ag-tag .removable=${true} variant="primary">Removable Prop</ag-tag>
         </div>
       </div>

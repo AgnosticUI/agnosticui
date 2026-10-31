@@ -99,6 +99,7 @@ Do not pursue pixel-perfect detection at the expense of fragile tests or unneces
 
 The following is the proposed layout. Inspect the repository before creating files. Reuse existing infrastructure where possible.
 
+```shell
     v2/lib/
     ├── package.json
     ├── package-lock.json
@@ -131,6 +132,7 @@ The following is the proposed layout. Inspect the repository before creating fil
         ├── playwright-visual-regression-spec.md
         ├── playwright-implementation-plan.md
         └── playwright.readme.md
+```
 
 ### 6.1 Directory rules
 
@@ -162,7 +164,7 @@ Commit the resulting package configuration and lockfile changes.
 
 Use the official Microsoft Playwright image:
 
-    mcr.microsoft.com/playwright:<version>-<distribution>
+`mcr.microsoft.com/playwright:<version>-<distribution>`
 
 Requirements:
 
@@ -275,12 +277,14 @@ Do not require contributors to start Vite manually before running visual tests.
 
 An illustrative Playwright configuration is:
 
+```ts
     webServer: {
       command: 'npm run test:visual:preview',
       url: 'http://127.0.0.1:4173/',
       reuseExistingServer: !process.env.CI,
       timeout: 30_000,
     },
+```
 
 This is an example, not a complete configuration. Adapt the host and networking strategy to the Docker execution environment.
 
@@ -422,6 +426,7 @@ Initial configuration:
 
 Configure global screenshot assertion options:
 
+```ts
     expect: {
       toHaveScreenshot: {
         maxDiffPixelRatio: 0.01,
@@ -429,6 +434,7 @@ Configure global screenshot assertion options:
         caret: 'hide',
       },
     },
+```
 
 The 1% threshold is an initial setting, not a permanent requirement.
 
@@ -462,9 +468,11 @@ Use Playwright's standard snapshot directory convention.
 
 Example:
 
+```shell
     _Button.drift.spec.ts
     _Button.drift.spec.ts-snapshots/
     └── button-default-1-chromium-linux.png
+```
 
 Use descriptive names that identify the component and state.
 
@@ -676,7 +684,9 @@ Requirements:
 
 ### 14.3 Snapshot update command
 
-    npm run test:visual:update
+```shell
+npm run test:visual:update
+```
 
 Requirements:
 
@@ -691,7 +701,9 @@ This command is intended for developers who have made an intentional visual chan
 
 ### 14.4 Report command
 
-    npm run test:visual:report
+```shell
+npm run test:visual:report
+```
 
 Requirements:
 
@@ -707,11 +719,13 @@ The scripts should use a consistent Docker invocation and a pinned image.
 
 An illustrative command is:
 
+```shell
     docker run --rm \
       -v "$(pwd):/work" \
       -w /work \
       mcr.microsoft.com/playwright:<pinned-version> \
       npx playwright test
+```
 
 This example is not a final implementation.
 
@@ -755,7 +769,9 @@ Do not commit reports or temporary test results.
 
 After running tests:
 
-    npm run test:visual:report
+```shell
+npm run test:visual:report
+```
 
 The developer must be able to inspect the HTML report without entering the Docker container.
 
@@ -763,7 +779,7 @@ The developer must be able to inspect the HTML report without entering the Docke
 
 CI must upload an artifact named:
 
-    playwright-visual-report
+`playwright-visual-report`
 
 Developers must be able to download the archive from the GitHub Actions run summary.
 
@@ -796,18 +812,24 @@ When a developer intentionally changes a component's appearance:
 1. Make the component change.
 2. Run:
 
-   npm run test:visual
+```shell
+npm run test:visual
+```
 
 3. Review any failures.
 4. Confirm that the visual differences are intentional.
 5. Run:
 
-   npm run test:visual:update
+```shell
+npm run test:visual:update
+```
 
 6. Inspect all changed baseline images.
 7. Run:
 
-   npm run test:visual
+```shell
+npm run test:visual
+```
 
 8. Confirm that the tests pass.
 9. Review `git status` and `git diff`.
@@ -821,7 +843,9 @@ When a developer changes component behavior without intending to change its appe
 
 1. Run:
 
-   npm run test:visual
+```shell
+npm run test:visual
+```
 
 2. Investigate any visual failures.
 3. Confirm whether the appearance changed unexpectedly.
@@ -854,8 +878,10 @@ Commit them with their corresponding tests and component changes.
 
 Before committing, inspect:
 
-    git status
-    git diff
+```shell
+git status
+git diff
+```
 
 Confirm that:
 
