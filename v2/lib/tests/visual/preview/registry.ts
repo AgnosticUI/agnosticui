@@ -722,6 +722,53 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  MessageBubble: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
+      <!-- Section 1: Standard Conversational Layout Flows -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Basic Message Flows</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px; background: rgba(0,0,0,0.02); padding: 16px; border-radius: 8px;">
+          <ag-message-bubble
+            from="them"
+            message="Hey, are we still on for lunch?"
+            author="Sarah"
+            time="11:30 AM"
+          ></ag-message-bubble>
+          <ag-message-bubble
+            from="me"
+            message="Yes! Where should we go?"
+            author="Me"
+            time="11:32 AM"
+            footer="Delivered"
+          ></ag-message-bubble>
+        </div>
+      </div>
+
+      <!-- Section 2: Color Variations & Avatars -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Semantic Variants & Avatars</h3>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <ag-message-bubble
+            from="them"
+            message="Payment completed successfully!"
+            author="System"
+            time="10:02 AM"
+            variant="success"
+            avatar-url="https://pravatar.cc"
+          ></ag-message-bubble>
+          <ag-message-bubble
+            from="me"
+            message="I'm using a custom Avatar component with text initials!"
+            author="Jane Smith"
+            time="10:00 AM"
+            variant="info"
+          >
+            <ag-avatar slot="avatar" text="JS" variant="info" size="sm"></ag-avatar>
+          </ag-message-bubble>
+        </div>
+      </div>
+    </div>
+  `,
   Progress: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Indeterminate Progress -->
