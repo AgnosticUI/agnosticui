@@ -36,13 +36,15 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Checkbox(), root);
   } else if (component === 'Divider') {
     render(COMPONENT_REGISTRY.Divider(), root);
+  } else if (component === 'IconButton') {
+    render(COMPONENT_REGISTRY.IconButton(), root);
   } else if (component === 'Radio') {
     render(COMPONENT_REGISTRY.Radio(), root);
   } else if (component === 'Tag') {
     render(COMPONENT_REGISTRY.Tag(), root);
   }
 
-  const customElements = root.querySelectorAll('ag-alert, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-radio,  ag-tag');
+  const customElements = root.querySelectorAll('ag-alert, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-icon-button, ag-radio,  ag-tag');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;

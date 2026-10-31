@@ -310,6 +310,69 @@ export const COMPONENT_REGISTRY = {
 
     </div>
   `,
+  IconButton: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; font-family: system-ui, -apple-system, sans-serif;">
+      
+      <!-- Color Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-icon-button label="Ghost (default)" variant="ghost">
+            <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </ag-icon-button>
+          <ag-icon-button label="Primary" variant="primary">
+            <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </ag-icon-button>
+          <ag-icon-button label="Secondary" variant="secondary">
+            <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </ag-icon-button>
+          <ag-icon-button label="Success" variant="success">
+            <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </ag-icon-button>
+          <ag-icon-button label="Warning" variant="warning">
+            <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </ag-icon-button>
+          <ag-icon-button label="Danger" variant="danger">
+            <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 6h18"></path>
+              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+            </svg>
+          </ag-icon-button>
+          <ag-icon-button label="Monochrome" variant="monochrome">
+            <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </ag-icon-button>
+        </div>
+      </div>
+      <!-- Modifiers & States -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Modifiers & States</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-icon-button label="Bordered" variant="primary" ?bordered=${true}>
+            <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </ag-icon-button>
+          <ag-icon-button label="Disabled" variant="primary" ?disabled=${true}>
+            <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </ag-icon-button>
+        </div>
+      </div>
+
+    </div>
+  `,
   Radio: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; font-family: system-ui, -apple-system, sans-serif;">
       <!-- Section 1: Default Layout & Grouping inside Fieldset -->
