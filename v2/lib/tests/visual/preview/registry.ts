@@ -393,6 +393,31 @@ export const COMPONENT_REGISTRY = {
       <ag-collapsible bordered open><span slot="summary">Open by Default</span><p>Content</p></ag-collapsible>
     </div>
   `,
+  Combobox: () => {
+    const states = [
+      { value: 'ca', label: 'California' },
+      { value: 'co', label: 'Colorado' },
+      { value: 'fl', label: 'Florida' },
+      { value: 'ny', label: 'New York' }
+    ];
+    return html`
+      <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+        <!-- Standard Variations Matrix -->
+        <ag-combobox label="Standard Combobox" placeholder="Choose a state..." .options=${states}></ag-combobox>
+        <ag-combobox label="Small Size" size="small" placeholder="Small size..." .options=${states}></ag-combobox>
+        <ag-combobox label="Large Size" size="large" placeholder="Large size..." .options=${states}></ag-combobox>
+        
+        <!-- Field State & Validation Mappings -->
+        <ag-combobox label="Disabled Field" disabled placeholder="This is disabled" value="ca" .options=${states}></ag-combobox>
+        <ag-combobox label="Invalid Entry" invalid error-message="Please select a valid state" placeholder="This has an error" .options=${states}></ag-combobox>
+        
+        <!-- Multi-Select and Variant Overrides -->
+        <ag-combobox label="Multiple Select" multiple placeholder="Choose one or more states..." .options=${states}></ag-combobox>
+        <ag-combobox label="Monochrome Variant" variant="monochrome" placeholder="Choose a state..." .options=${states}></ag-combobox>
+        <ag-combobox label="Label Position Start" label-position="start" placeholder="Choose a state..." .options=${states}></ag-combobox>
+      </div>
+    `;
+  },
   Divider: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px; font-family: system-ui, -apple-system, sans-serif;">
       

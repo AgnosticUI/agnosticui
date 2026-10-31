@@ -50,6 +50,8 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Checkbox(), root);
   } else if (component === 'Collapsible') {
     render(COMPONENT_REGISTRY.Collapsible(), root);
+  } else if (component === 'Combobox') {
+    render(COMPONENT_REGISTRY.Combobox(), root);
   } else if (component === 'Divider') {
     render(COMPONENT_REGISTRY.Divider(), root);
   } else if (component === 'Icon') {
@@ -94,7 +96,7 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Toggle(), root);
   }
 
-  const customElements = root.querySelectorAll('ag-accordion, ag-alert, ag-avatar, ag-avatar-fx, ag-breadcrumb, ag-button, ag-button-fx, ag-badge, ag-badge-fx, ag-card, ag-checkbox, ag-collapsible, ag-divider, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-message-bubble, ag-popover, ag-progress, ag-progress-ring, ag-radio, ag-scroll-progress, ag-skeleton-loader, ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-timeline, ag-toast, ag-toggle');
+  const customElements = root.querySelectorAll('ag-accordion, ag-alert, ag-avatar, ag-avatar-fx, ag-breadcrumb, ag-button, ag-button-fx, ag-badge, ag-badge-fx, ag-card, ag-checkbox, ag-collapsible, ag-combobox, ag-divider, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-message-bubble, ag-popover, ag-progress, ag-progress-ring, ag-radio, ag-scroll-progress, ag-skeleton-loader, ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-timeline, ag-toast, ag-toggle');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;
