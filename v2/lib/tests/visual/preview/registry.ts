@@ -220,6 +220,20 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  ButtonFx: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-button-fx fx="bounce" variant="primary" shape="rounded">Bounce</ag-button-fx>
+        <ag-button-fx fx="pulse" variant="success" shape="rounded">Pulse</ag-button-fx>
+        <ag-button-fx fx="jelly" variant="warning" shape="rounded">Jelly</ag-button-fx>
+        <ag-button-fx fx="grow" variant="primary" shape="rounded">Grow</ag-button-fx>
+        <ag-button-fx fx="shrink" variant="secondary" shape="rounded">Shrink</ag-button-fx>
+        <ag-button-fx fx="bg-slide" variant="primary" shape="rounded">BG Slide</ag-button-fx>
+        <ag-button-fx fx="jelly" variant="primary" bordered shape="rounded">Bordered</ag-button-fx>
+        <ag-button-fx fx="bounce" fx-disabled variant="primary">FX Disabled</ag-button-fx>
+      </div>
+    </div>
+  `,
   Card: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
       <!-- Default Card -->
