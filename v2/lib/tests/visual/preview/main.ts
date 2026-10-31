@@ -58,12 +58,14 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Tag(), root);
   } else if (component === 'Tabs') {
     render(COMPONENT_REGISTRY.Tabs(), root);
+  } else if (component === 'Toast') {
+    render(COMPONENT_REGISTRY.Toast(), root);
   } else if (component === 'Toggle') {
     render(COMPONENT_REGISTRY.Toggle(), root);
   }
 
 
-  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-menu, ag-progress, ag-progress-ring, ag-radio,  ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-toggle');
+  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-menu, ag-progress, ag-progress-ring, ag-radio,  ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-toast, ag-toggle');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;

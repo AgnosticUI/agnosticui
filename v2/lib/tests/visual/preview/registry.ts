@@ -862,6 +862,17 @@ export const COMPONENT_REGISTRY = {
       <ag-toggle label="Disabled" ?disabled=${true}></ag-toggle>
       <!-- Validation & Positioning options available in source reference -->
     </div>
+  `,
+  Toast: () => html`
+    <div style="padding: 24px; max-width: 800px;">
+      <!-- A single, simple test case to verify style, color token, and close button rendering -->
+      <div style="margin-bottom: 16px;">
+        <ag-toast ?open=${true} .autoDismiss=${false} type="success">
+          Toast notification success verification.
+        </ag-toast>
+      </div>
+    </div>
   `
+
 
 };

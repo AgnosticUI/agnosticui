@@ -27,7 +27,7 @@ export * from './components/Progress/core/Progress';
 export * from './components/ProgressRing/core/ProgressRing';
 export * from './components/Tag/core/Tag';
 export * from './components/Icon/core/Icon';
-export * from './components/Toast/core/_Toast';
+export * from './components/Toast/core/Toast';
 export * from './components/Badge/core/Badge';
 export * from './components/Kbd';
 export * from './components/Collapsible/core/_Collapsible';
