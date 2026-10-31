@@ -38,10 +38,6 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Checkbox(), root);
   } else if (component === 'Divider') {
     render(COMPONENT_REGISTRY.Divider(), root);
-  } else if (component === 'Kbd') {
-    render(COMPONENT_REGISTRY.Kbd(), root);
-  } else if (component === 'Link') {
-    render(COMPONENT_REGISTRY.Link(), root);
   } else if (component === 'Icon') {
     render(COMPONENT_REGISTRY.Icon(), root);
   } else if (component === 'IconButton') {
@@ -50,6 +46,12 @@ async function mountPreview() {
     render(COMPONENT_REGISTRY.Input(), root);
   } else if (component === 'IntlFormatter') {
     render(COMPONENT_REGISTRY.IntlFormatter(), root);
+  } else if (component === 'Kbd') {
+    render(COMPONENT_REGISTRY.Kbd(), root);
+  } else if (component === 'Link') {
+    render(COMPONENT_REGISTRY.Link(), root);
+  } else if (component === 'Mark') {
+    render(COMPONENT_REGISTRY.Mark(), root);
   } else if (component === 'Menu') {
     render(COMPONENT_REGISTRY.Menu(), root);
   } else if (component === 'Progress') {
@@ -69,7 +71,7 @@ async function mountPreview() {
   }
 
 
-  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-menu, ag-progress, ag-progress-ring, ag-radio,  ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-toast, ag-toggle');
+  const customElements = root.querySelectorAll('ag-alert, ag-avatar, ag-button, ag-badge, ag-card, ag-checkbox, ag-divider, ag-kbd, ag-link, ag-icon, ag-icon-button, ag-input, ag-intl-formatter, ag-mark, ag-menu, ag-progress, ag-progress-ring, ag-radio,  ag-tabs, ag-tab, ag-tab-panel, ag-tag, ag-toast, ag-toggle');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;

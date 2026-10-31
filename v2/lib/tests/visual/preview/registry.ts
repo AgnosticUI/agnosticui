@@ -351,80 +351,6 @@ export const COMPONENT_REGISTRY = {
 
     </div>
   `,
-  Kbd: () => html`
-    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
-      <!-- Section 1: Standard Key Layout & Sizing Scales -->
-      <div>
-        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Sizes Scale</h3>
-        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-          <ag-kbd size="sm">⌘ + c</ag-kbd>
-          <ag-kbd size="md">⌥ + Tab</ag-kbd>
-          <ag-kbd size="lg">ctrl + shift + del</ag-kbd>
-        </div>
-      </div>
-
-      <!-- Section 2: Semantic Color Themes Matrix -->
-      <div>
-        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Theme Variants</h3>
-        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-          <ag-kbd variant="default">Default</ag-kbd>
-          <ag-kbd variant="primary">Primary</ag-kbd>
-          <ag-kbd variant="info">Info</ag-kbd>
-          <ag-kbd variant="success">Success</ag-kbd>
-          <ag-kbd variant="danger">Danger</ag-kbd>
-          <ag-kbd variant="monochrome">Monochrome</ag-kbd>
-        </div>
-      </div>
-
-      <!-- Section 3: Background & Border Configuration Tokens -->
-      <div>
-        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Background & Border Enhancements</h3>
-        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-          <ag-kbd ?background=${true} variant="primary">⌘</ag-kbd>
-          <ag-kbd ?background=${true} variant="success">⌥</ag-kbd>
-          <ag-kbd ?bordered=${true}>⇧</ag-kbd>
-          <ag-kbd .bordered=${false}>⌃</ag-kbd>
-        </div>
-      </div>
-    </div>
-  `,
-  Link: () => html`
-    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
-      <!-- Section 1: Basic Inline Links & Color Variants -->
-      <div>
-        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Standard Link Variants</h3>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-link href="#link">Standard Link</ag-link>
-          <ag-link href="#link" variant="primary">Primary Link</ag-link>
-          <ag-link href="#link" variant="success">Success Link</ag-link>
-          <ag-link href="#link" variant="danger">Danger Link</ag-link>
-          <ag-link href="#link" ?disabled=${true}>Disabled Link</ag-link>
-        </div>
-      </div>
-
-      <!-- Section 2: Button-Style Transformation Links -->
-      <div>
-        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Button-Style Links</h3>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-          <ag-link href="#link" ?isButton=${true}>Default Button</ag-link>
-          <ag-link href="#link" ?isButton=${true} variant="primary">Primary Button</ag-link>
-          <ag-link href="#link" ?isButton=${true} variant="success">Success Button</ag-link>
-          <ag-link href="#link" ?isButton=${true} variant="danger">Danger Button</ag-link>
-        </div>
-      </div>
-
-      <!-- Section 3: Button Size & Shape Modifiers -->
-      <div>
-        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Button Shape & Size Spectrum</h3>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-          <ag-link href="#link" ?isButton=${true} buttonSize="sm" variant="primary">Small Link</ag-link>
-          <ag-link href="#link" ?isButton=${true} buttonSize="lg" variant="primary">Large Link</ag-link>
-          <ag-link href="#link" ?isButton=${true} buttonShape="capsule" variant="primary">Capsule Link</ag-link>
-          <ag-link href="#link" ?isButton=${true} ?buttonBordered=${true} variant="primary">Outlined Link</ag-link>
-        </div>
-      </div>
-    </div>
-  `,
   Icon: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Sizing Spectrum Matrix -->
@@ -616,6 +542,106 @@ export const COMPONENT_REGISTRY = {
           <div><strong>Styled Currency:</strong> <ag-intl-formatter type="currency" .value=${1234.56} currency="USD" lang="en-US" class="custom-currency"></ag-intl-formatter></div>
           <div><strong>Styled Number:</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="en-US" class="custom-number"></ag-intl-formatter></div>
         </div>
+      </div>
+    </div>
+  `,
+Kbd: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
+      <!-- Section 1: Standard Key Layout & Sizing Scales -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Sizes Scale</h3>
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <ag-kbd size="sm">⌘ + c</ag-kbd>
+          <ag-kbd size="md">⌥ + Tab</ag-kbd>
+          <ag-kbd size="lg">ctrl + shift + del</ag-kbd>
+        </div>
+      </div>
+
+      <!-- Section 2: Semantic Color Themes Matrix -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Theme Variants</h3>
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <ag-kbd variant="default">Default</ag-kbd>
+          <ag-kbd variant="primary">Primary</ag-kbd>
+          <ag-kbd variant="info">Info</ag-kbd>
+          <ag-kbd variant="success">Success</ag-kbd>
+          <ag-kbd variant="danger">Danger</ag-kbd>
+          <ag-kbd variant="monochrome">Monochrome</ag-kbd>
+        </div>
+      </div>
+
+      <!-- Section 3: Background & Border Configuration Tokens -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Background & Border Enhancements</h3>
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <ag-kbd ?background=${true} variant="primary">⌘</ag-kbd>
+          <ag-kbd ?background=${true} variant="success">⌥</ag-kbd>
+          <ag-kbd ?bordered=${true}>⇧</ag-kbd>
+          <ag-kbd .bordered=${false}>⌃</ag-kbd>
+        </div>
+      </div>
+    </div>
+  `,
+  Link: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
+      <!-- Section 1: Basic Inline Links & Color Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Standard Link Variants</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <ag-link href="#link">Standard Link</ag-link>
+          <ag-link href="#link" variant="primary">Primary Link</ag-link>
+          <ag-link href="#link" variant="success">Success Link</ag-link>
+          <ag-link href="#link" variant="danger">Danger Link</ag-link>
+          <ag-link href="#link" ?disabled=${true}>Disabled Link</ag-link>
+        </div>
+      </div>
+
+      <!-- Section 2: Button-Style Transformation Links -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Button-Style Links</h3>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <ag-link href="#link" ?isButton=${true}>Default Button</ag-link>
+          <ag-link href="#link" ?isButton=${true} variant="primary">Primary Button</ag-link>
+          <ag-link href="#link" ?isButton=${true} variant="success">Success Button</ag-link>
+          <ag-link href="#link" ?isButton=${true} variant="danger">Danger Button</ag-link>
+        </div>
+      </div>
+
+      <!-- Section 3: Button Size & Shape Modifiers -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Button Shape & Size Spectrum</h3>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <ag-link href="#link" ?isButton=${true} buttonSize="sm" variant="primary">Small Link</ag-link>
+          <ag-link href="#link" ?isButton=${true} buttonSize="lg" variant="primary">Large Link</ag-link>
+          <ag-link href="#link" ?isButton=${true} buttonShape="capsule" variant="primary">Capsule Link</ag-link>
+          <ag-link href="#link" ?isButton=${true} ?buttonBordered=${true} variant="primary">Outlined Link</ag-link>
+        </div>
+      </div>
+    </div>
+  `,
+  Mark: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
+      <!-- Section 1: Mark Theme Variants -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Theme Variants</h3>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <ag-mark variant="warning">warning</ag-mark>
+          <ag-mark variant="info">info</ag-mark>
+          <ag-mark variant="success">success</ag-mark>
+          <ag-mark variant="error">error</ag-mark>
+          <ag-mark variant="primary">primary</ag-mark>
+          <ag-mark variant="monochrome">monochrome</ag-mark>
+        </div>
+      </div>
+
+      <!-- Section 2: Search Query String Highlighting -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Search Term Matcher</h3>
+        <p>
+          <ag-mark search="fox" variant="warning">
+            The quick brown fox jumps over the lazy dog. The lazy fox was not the same as the other fox.
+          </ag-mark>
+        </p>
       </div>
     </div>
   `,
