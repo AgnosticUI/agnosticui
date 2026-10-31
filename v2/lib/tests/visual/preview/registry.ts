@@ -418,6 +418,27 @@ export const COMPONENT_REGISTRY = {
       </div>
     `;
   },
+  CopyButton: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <!-- Row 1: Sizes Spectrum -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-copy-button text="XS Text" size="xs"></ag-copy-button>
+        <ag-copy-button text="SM Text" size="sm"></ag-copy-button>
+        <ag-copy-button text="MD Text" size="md"></ag-copy-button>
+        <ag-copy-button text="LG Text" size="lg"></ag-copy-button>
+        <ag-copy-button text="XL Text" size="xl"></ag-copy-button>
+      </div>
+
+      <!-- Row 2: Theme Variants -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-copy-button text="Primary Text" variant="primary"></ag-copy-button>
+        <ag-copy-button text="Success Text" variant="success"></ag-copy-button>
+        <ag-copy-button text="Warning Text" variant="warning"></ag-copy-button>
+        <ag-copy-button text="Danger Text" variant="danger"></ag-copy-button>
+        <ag-copy-button text="Ghost Text" variant="ghost"></ag-copy-button>
+      </div>
+    </div>
+  `,
   Divider: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px; font-family: system-ui, -apple-system, sans-serif;">
       
