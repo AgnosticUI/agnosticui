@@ -692,5 +692,14 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  Toggle: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
+      <!-- Default States & Sizes -->
+      <ag-toggle label="Default toggle"></ag-toggle>
+      <ag-toggle label="Checked by default" ?checked=${true}></ag-toggle>
+      <ag-toggle label="Disabled" ?disabled=${true}></ag-toggle>
+      <!-- Validation & Positioning options available in source reference -->
+    </div>
+  `
 
 };

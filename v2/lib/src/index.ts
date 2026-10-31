@@ -16,7 +16,7 @@ export * from './components/Input/core/Input';
 export * from './components/IntlFormatter/core/IntlFormatter'
 export * from './components/Menu/core/Menu';
 export * from './components/Tabs/core/Tabs';
-export * from './components/Toggle/core/_Toggle';
+export * from './components/Toggle/core/Toggle';
 export * from './components/Tooltip/core/_Tooltip';
 export * from './utils/unique-id';
 export * from './components/Avatar/core/_Avatar';
