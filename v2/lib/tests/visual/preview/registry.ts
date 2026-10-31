@@ -351,6 +351,43 @@ export const COMPONENT_REGISTRY = {
 
     </div>
   `,
+  Kbd: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
+      <!-- Section 1: Standard Key Layout & Sizing Scales -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Sizes Scale</h3>
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <ag-kbd size="sm">⌘ + c</ag-kbd>
+          <ag-kbd size="md">⌥ + Tab</ag-kbd>
+          <ag-kbd size="lg">ctrl + shift + del</ag-kbd>
+        </div>
+      </div>
+
+      <!-- Section 2: Semantic Color Themes Matrix -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Theme Variants</h3>
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <ag-kbd variant="default">Default</ag-kbd>
+          <ag-kbd variant="primary">Primary</ag-kbd>
+          <ag-kbd variant="info">Info</ag-kbd>
+          <ag-kbd variant="success">Success</ag-kbd>
+          <ag-kbd variant="danger">Danger</ag-kbd>
+          <ag-kbd variant="monochrome">Monochrome</ag-kbd>
+        </div>
+      </div>
+
+      <!-- Section 3: Background & Border Configuration Tokens -->
+      <div>
+        <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Background & Border Enhancements</h3>
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <ag-kbd ?background=${true} variant="primary">⌘</ag-kbd>
+          <ag-kbd ?background=${true} variant="success">⌥</ag-kbd>
+          <ag-kbd ?bordered=${true}>⇧</ag-kbd>
+          <ag-kbd .bordered=${false}>⌃</ag-kbd>
+        </div>
+      </div>
+    </div>
+  `,
   Icon: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Sizing Spectrum Matrix -->
