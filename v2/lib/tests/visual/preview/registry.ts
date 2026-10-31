@@ -1285,6 +1285,38 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  Rating: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Precision and Access Spectrum -->
+      <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+        <ag-rating value="3"></ag-rating>
+        <ag-rating value="2.5" precision="half"></ag-rating>
+        <ag-rating value="4" readonly></ag-rating>
+      </div>
+
+      <!-- Sizing Scale Constraints -->
+      <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+        <ag-rating size="sm" value="3"></ag-rating>
+        <ag-rating size="md" value="3"></ag-rating>
+        <ag-rating size="lg" value="3"></ag-rating>
+      </div>
+
+      <!-- Color Variant Typologies -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <ag-rating variant="primary" value="4"></ag-rating>
+        <ag-rating variant="success" value="4"></ag-rating>
+        <ag-rating variant="warning" value="4"></ag-rating>
+        <ag-rating variant="danger" value="4"></ag-rating>
+      </div>
+
+      <!-- Form Integration Framework Fields -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-rating label="Standard Validation Field" help-text="Rate user context feedback" value="3"></ag-rating>
+        <ag-rating label="Invalid Evaluation State" required invalid error-message="Rating allocation required" value="0"></ag-rating>
+        <ag-rating label="Inline Start Orientation" label-position="start" value="4"></ag-rating>
+      </div>
+    </div>
+  `,
   ScrollProgress: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Structural Display Modes -->
