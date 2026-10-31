@@ -22,7 +22,7 @@ export * from './components/Card/core/_Card';
 export * from './components/Avatar/core/_Avatar';
 export * from './components/Loader/core/_Loader';
 export * from './components/Spinner/core/_Spinner';
-export * from './components/Radio/core/_Radio';
+export * from './components/Radio/core/Radio';
 export * from './components/Progress/core/_Progress';
 export * from './components/ProgressRing/core/_ProgressRing';
 export * from './components/Tag/core/Tag';

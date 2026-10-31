@@ -24,19 +24,21 @@ async function mountPreview() {
     document.body.style.backgroundColor = '#ffffff';
   }
 
-  if (component === 'Button') {
-    render(COMPONENT_REGISTRY.Button(), root);
-  } else if (component === 'Alert') {
+  if (component === 'Alert') {
     render(COMPONENT_REGISTRY.Alert(), root);
-  } else if (component === 'Checkbox') {
-    render(COMPONENT_REGISTRY.Checkbox(), root);
-  } else if (component === 'Tag') {
-    render(COMPONENT_REGISTRY.Tag(), root);
+  } else if (component === 'Button') {
+    render(COMPONENT_REGISTRY.Button(), root);
   } else if (component === 'Badge') {
     render(COMPONENT_REGISTRY.Badge(), root);
+  } else if (component === 'Checkbox') {
+    render(COMPONENT_REGISTRY.Checkbox(), root);
+  } else if (component === 'Radio') {
+    render(COMPONENT_REGISTRY.Radio(), root);
+  } else if (component === 'Tag') {
+    render(COMPONENT_REGISTRY.Tag(), root);
   }
 
-  const customElements = root.querySelectorAll('ag-button, ag-alert, ag-tag, ag-badge, ag-checkbox');
+  const customElements = root.querySelectorAll('ag-alert, ag-button, ag-badge, ag-checkbox, ag-radio,  ag-tag');
   const updates = Array.from(customElements).map((el) => {
     if ('updateComplete' in el && el.updateComplete instanceof Promise) {
       return el.updateComplete;
