@@ -7,6 +7,17 @@ import { html } from 'lit';
  */
 export const COMPONENT_REGISTRY = {
   
+  Accordion: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <ag-accordion>
+        <ag-accordion-item use-chevron><span slot="header">Use Chevron</span><div slot="content"><p>Content</p></div></ag-accordion-item>
+        <ag-accordion-item use-minus><span slot="header">Use Minus</span><div slot="content"><p>Content</p></div></ag-accordion-item>
+        <ag-accordion-item use-x><span slot="header">Use X</span><div slot="content"><p>Content</p></div></ag-accordion-item>
+        <ag-accordion-item bordered><span slot="header">Bordered</span><div slot="content"><p>Content</p></div></ag-accordion-item>
+        <ag-accordion-item background><span slot="header">Background</span><div slot="content"><p>Content</p></div></ag-accordion-item>
+      </ag-accordion>
+    </div>
+  `,
   Alert: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
       <!-- Section 1: Standard Variants -->
@@ -28,10 +39,10 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Bordered Alerts</h3>
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <ag-alert ?bordered=${true}>Default alert</ag-alert>
-          <ag-alert variant="success" ?bordered=${true}>Success alert</ag-alert>
-          <ag-alert variant="error" ?bordered=${true}>Error alert</ag-alert>
-          <ag-alert variant="monochrome" ?bordered=${true}>Monochrome alert</ag-alert>
+          <ag-alert bordered>Default alert</ag-alert>
+          <ag-alert variant="success" bordered>Success alert</ag-alert>
+          <ag-alert variant="error" bordered>Error alert</ag-alert>
+          <ag-alert variant="monochrome" bordered>Monochrome alert</ag-alert>
         </div>
       </div>
 
@@ -39,9 +50,9 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Rounded Alerts</h3>
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <ag-alert ?rounded=${true}>Default alert</ag-alert>
-          <ag-alert variant="success" ?rounded=${true}>Success alert</ag-alert>
-          <ag-alert variant="warning" ?rounded=${true}>Warning alert</ag-alert>
+          <ag-alert rounded>Default alert</ag-alert>
+          <ag-alert variant="success" rounded>Success alert</ag-alert>
+          <ag-alert variant="warning" rounded>Warning alert</ag-alert>
         </div>
       </div>
 
@@ -49,9 +60,9 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Bordered Left Alerts</h3>
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <ag-alert ?borderedLeft=${true}>Default alert</ag-alert>
-          <ag-alert variant="success" ?borderedLeft=${true}>Success alert</ag-alert>
-          <ag-alert variant="danger" ?borderedLeft=${true}>Danger alert</ag-alert>
+          <ag-alert borderedLeft>Default alert</ag-alert>
+          <ag-alert variant="success" borderedLeft>Success alert</ag-alert>
+          <ag-alert variant="danger" borderedLeft>Danger alert</ag-alert>
         </div>
       </div>
     </div>
@@ -116,7 +127,7 @@ export const COMPONENT_REGISTRY = {
         <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline;">
           <ag-badge variant="default" size="xs">Extra Small</ag-badge>
           <ag-badge variant="default" size="md">Medium</ag-badge>
-          <ag-badge ?dot=${true} variant="success" statusLabel="Online"></ag-badge>
+          <ag-badge dot variant="success" statusLabel="Online"></ag-badge>
         </div>
       </div>
 
@@ -125,7 +136,7 @@ export const COMPONENT_REGISTRY = {
         <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Value, Max & Interactive</h3>
         <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
           <ag-badge variant="danger" .value=${105} .max=${99}></ag-badge>
-          <ag-badge variant="primary" ?interactive=${true}>Interactive</ag-badge>
+          <ag-badge variant="primary" interactive>Interactive</ag-badge>
         </div>
       </div>
     </div>
@@ -139,7 +150,7 @@ export const COMPONENT_REGISTRY = {
         <ag-button data-testid="btn-success" variant="success">Success Action</ag-button>
         <ag-button data-testid="btn-warning" variant="warning">Warning Action</ag-button>
         <ag-button data-testid="btn-danger" variant="danger">Danger Action</ag-button>
-        <ag-button data-testid="btn-disabled" ?disabled=${true}>Disabled Action</ag-button>
+        <ag-button data-testid="btn-disabled" disabled>Disabled Action</ag-button>
       </div>
 
       <!-- Row 2: Size Variants -->
@@ -162,11 +173,11 @@ export const COMPONENT_REGISTRY = {
 
       <!-- Row 4: Bordered (Outline) Styles -->
       <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-        <ag-button variant="primary" ?bordered=${true}>Bordered Primary</ag-button>
-        <ag-button variant="secondary" ?bordered=${true}>Bordered Secondary</ag-button>
-        <ag-button variant="success" ?bordered=${true}>Bordered Success</ag-button>
-        <ag-button variant="warning" ?bordered=${true}>Bordered Warning</ag-button>
-        <ag-button variant="danger" ?bordered=${true}>Bordered Danger</ag-button>
+        <ag-button variant="primary" bordered>Bordered Primary</ag-button>
+        <ag-button variant="secondary" bordered>Bordered Secondary</ag-button>
+        <ag-button variant="success" bordered>Bordered Success</ag-button>
+        <ag-button variant="warning" bordered>Bordered Warning</ag-button>
+        <ag-button variant="danger" bordered>Bordered Danger</ag-button>
       </div>
     </div>
   `,
@@ -187,7 +198,7 @@ export const COMPONENT_REGISTRY = {
         <h2>Card with Header</h2>
       </div>
       <div class="stacked-mobile">
-        <ag-card ?shadow=${true}>
+        <ag-card shadow>
           <h3 slot="header" class="m0">Product Details</h3>
           <p>This card demonstrates using the header slot to add a title section with visual separation.</p>
         </ag-card>
@@ -245,7 +256,7 @@ export const COMPONENT_REGISTRY = {
         <h2>Card with Slots (Header and Footer)</h2>
       </div>
       <div class="stacked-mobile">
-        <ag-card ?shadow=${true}>
+        <ag-card shadow>
           <h3 slot="header" class="m0">Card Header</h3>
           <div>
             <h4>Main Content</h4>
@@ -266,7 +277,7 @@ export const COMPONENT_REGISTRY = {
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Standard States</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
           <ag-checkbox name="example" value="1" label-text="Default Unchecked"></ag-checkbox>
-          <ag-checkbox name="example" value="2" label-text="Default Checked" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="example" value="2" label-text="Default Checked" checked></ag-checkbox>
         </div>
       </div>
 
@@ -274,7 +285,7 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Indeterminate State</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-checkbox name="select-all" value="all" ?indeterminate=${true} label-text="Select All (Mixed Mode)"></ag-checkbox>
+          <ag-checkbox name="select-all" value="all" indeterminate label-text="Select All (Mixed Mode)"></ag-checkbox>
         </div>
       </div>
 
@@ -282,9 +293,9 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Size Variants</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-checkbox name="size" value="small" size="small" label-text="Small" ?checked=${true}></ag-checkbox>
-          <ag-checkbox name="size" value="medium" size="medium" label-text="Medium (Default)" ?checked=${true}></ag-checkbox>
-          <ag-checkbox name="size" value="large" size="large" label-text="Large" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="size" value="small" size="small" label-text="Small" checked></ag-checkbox>
+          <ag-checkbox name="size" value="medium" size="medium" label-text="Medium (Default)" checked></ag-checkbox>
+          <ag-checkbox name="size" value="large" size="large" label-text="Large" checked></ag-checkbox>
         </div>
       </div>
 
@@ -292,9 +303,9 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Theme Variants</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-checkbox name="theme-primary" value="1" theme="primary" label-text="Primary (Blue)" ?checked=${true}></ag-checkbox>
-          <ag-checkbox name="theme-success" value="2" theme="success" label-text="Success (Green)" ?checked=${true}></ag-checkbox>
-          <ag-checkbox name="theme-mono" value="3" theme="monochrome" label-text="Monochrome" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="theme-primary" value="1" theme="primary" label-text="Primary (Blue)" checked></ag-checkbox>
+          <ag-checkbox name="theme-success" value="2" theme="success" label-text="Success (Green)" checked></ag-checkbox>
+          <ag-checkbox name="theme-mono" value="3" theme="monochrome" label-text="Monochrome" checked></ag-checkbox>
         </div>
       </div>
 
@@ -302,9 +313,9 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Disabled State</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-checkbox name="disabled" value="1" label-text="Disabled Unchecked" ?disabled=${true}></ag-checkbox>
-          <ag-checkbox name="disabled" value="2" label-text="Disabled Checked" ?checked=${true} ?disabled=${true}></ag-checkbox>
-          <ag-checkbox name="disabled" value="3" label-text="Disabled Indeterminate" ?indeterminate=${true} ?disabled=${true}></ag-checkbox>
+          <ag-checkbox name="disabled" value="1" label-text="Disabled Unchecked" disabled></ag-checkbox>
+          <ag-checkbox name="disabled" value="2" label-text="Disabled Checked" checked disabled></ag-checkbox>
+          <ag-checkbox name="disabled" value="3" label-text="Disabled Indeterminate" indeterminate disabled></ag-checkbox>
         </div>
       </div>
 
@@ -312,8 +323,8 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Label Position</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-checkbox name="position" value="1" label-text="Label on End (Default)" label-position="end" ?checked=${true}></ag-checkbox>
-          <ag-checkbox name="position" value="2" label-text="Label on Start" label-position="start" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="position" value="1" label-text="Label on End (Default)" label-position="end" checked></ag-checkbox>
+          <ag-checkbox name="position" value="2" label-text="Label on Start" label-position="start" checked></ag-checkbox>
         </div>
       </div>
     </div>
@@ -357,17 +368,17 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Sizes Spectrum</h3>
         <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-          <ag-icon ?no-fill=${true} size="16">
+          <ag-icon no-fill size="16">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </ag-icon>
-          <ag-icon ?no-fill=${true} size="24">
+          <ag-icon no-fill size="24">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </ag-icon>
-          <ag-icon ?no-fill=${true} size="32">
+          <ag-icon no-fill size="32">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
@@ -379,17 +390,17 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Semantic Color Themes</h3>
         <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-          <ag-icon ?no-fill=${true} type="info" size="24">
+          <ag-icon no-fill type="info" size="24">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </ag-icon>
-          <ag-icon ?no-fill=${true} type="success" size="24">
+          <ag-icon no-fill type="success" size="24">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </ag-icon>
-          <ag-icon ?no-fill=${true} type="error" size="24">
+          <ag-icon no-fill type="error" size="24">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
@@ -450,10 +461,10 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Modifiers & States</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-icon-button label="Bordered" variant="primary" ?bordered=${true}>
+          <ag-icon-button label="Bordered" variant="primary" bordered>
             <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </ag-icon-button>
-          <ag-icon-button label="Disabled" variant="primary" ?disabled=${true}>
+          <ag-icon-button label="Disabled" variant="primary" disabled>
             <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </ag-icon-button>
         </div>
@@ -479,10 +490,10 @@ export const COMPONENT_REGISTRY = {
         <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Shape Variants</h3>
         <div style="display: flex; flex-direction: column; gap: 12px;">
           <ag-input label="Default (rectangular)" placeholder="Default rectangular"></ag-input>
-          <ag-input label="Rounded" ?rounded=${true} placeholder="Rounded corners"></ag-input>
-          <ag-input label="Capsule" ?capsule=${true} placeholder="Capsule shape"></ag-input>
-          <ag-input label="Underlined" ?underlined=${true} placeholder="Underlined only"></ag-input>
-          <ag-input label="Underlined with Background" ?underlinedWithBackground=${true} placeholder="Underlined with background"></ag-input>
+          <ag-input label="Rounded" rounded placeholder="Rounded corners"></ag-input>
+          <ag-input label="Capsule" capsule placeholder="Capsule shape"></ag-input>
+          <ag-input label="Underlined" underlined placeholder="Underlined only"></ag-input>
+          <ag-input label="Underlined with Background" underlinedWithBackground placeholder="Underlined with background"></ag-input>
         </div>
       </div>
 
@@ -490,8 +501,8 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Validation & States</h3>
         <div style="display: flex; flex-direction: column; gap: 12px;">
-          <ag-input label="Disabled Field" ?disabled=${true} placeholder="Cannot type here"></ag-input>
-          <ag-input label="Invalid Entry" ?invalid=${true} error-message="This field entry layout is invalid" placeholder="Error state border"></ag-input>
+          <ag-input label="Disabled Field" disabled placeholder="Cannot type here"></ag-input>
+          <ag-input label="Invalid Entry" invalid error-message="This field entry layout is invalid" placeholder="Error state border"></ag-input>
           <ag-input label="Helper Description" help-text="Please ensure your layout input values match criteria" placeholder="With helper text"></ag-input>
         </div>
       </div>
@@ -515,7 +526,7 @@ export const COMPONENT_REGISTRY = {
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Number Formatting</h3>
         <div style="display: flex; flex-direction: column; gap: 12px;">
           <div><strong>Standard (US):</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="en-US"></ag-intl-formatter></div>
-          <div><strong>No Grouping (US):</strong> <ag-intl-formatter type="number" .value=${1234567.89} ?no-grouping=${true} lang="en-US"></ag-intl-formatter></div>
+          <div><strong>No Grouping (US):</strong> <ag-intl-formatter type="number" .value=${1234567.89} no-grouping lang="en-US"></ag-intl-formatter></div>
           <div><strong>German Format (DE):</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="de-DE"></ag-intl-formatter></div>
           <div><strong>Indian Lakhs (IN):</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="hi-IN"></ag-intl-formatter></div>
         </div>
@@ -574,9 +585,9 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Background & Border Enhancements</h3>
         <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-          <ag-kbd ?background=${true} variant="primary">⌘</ag-kbd>
-          <ag-kbd ?background=${true} variant="success">⌥</ag-kbd>
-          <ag-kbd ?bordered=${true}>⇧</ag-kbd>
+          <ag-kbd background variant="primary">⌘</ag-kbd>
+          <ag-kbd background variant="success">⌥</ag-kbd>
+          <ag-kbd bordered>⇧</ag-kbd>
           <ag-kbd .bordered=${false}>⌃</ag-kbd>
         </div>
       </div>
@@ -592,7 +603,7 @@ Kbd: () => html`
           <ag-link href="#link" variant="primary">Primary Link</ag-link>
           <ag-link href="#link" variant="success">Success Link</ag-link>
           <ag-link href="#link" variant="danger">Danger Link</ag-link>
-          <ag-link href="#link" ?disabled=${true}>Disabled Link</ag-link>
+          <ag-link href="#link" disabled>Disabled Link</ag-link>
         </div>
       </div>
 
@@ -600,10 +611,10 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Button-Style Links</h3>
         <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-          <ag-link href="#link" ?isButton=${true}>Default Button</ag-link>
-          <ag-link href="#link" ?isButton=${true} variant="primary">Primary Button</ag-link>
-          <ag-link href="#link" ?isButton=${true} variant="success">Success Button</ag-link>
-          <ag-link href="#link" ?isButton=${true} variant="danger">Danger Button</ag-link>
+          <ag-link href="#link" isButton>Default Button</ag-link>
+          <ag-link href="#link" isButton variant="primary">Primary Button</ag-link>
+          <ag-link href="#link" isButton variant="success">Success Button</ag-link>
+          <ag-link href="#link" isButton variant="danger">Danger Button</ag-link>
         </div>
       </div>
 
@@ -611,10 +622,10 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Button Shape & Size Spectrum</h3>
         <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-          <ag-link href="#link" ?isButton=${true} buttonSize="sm" variant="primary">Small Link</ag-link>
-          <ag-link href="#link" ?isButton=${true} buttonSize="lg" variant="primary">Large Link</ag-link>
-          <ag-link href="#link" ?isButton=${true} buttonShape="capsule" variant="primary">Capsule Link</ag-link>
-          <ag-link href="#link" ?isButton=${true} ?buttonBordered=${true} variant="primary">Outlined Link</ag-link>
+          <ag-link href="#link" isButton buttonSize="sm" variant="primary">Small Link</ag-link>
+          <ag-link href="#link" isButton buttonSize="lg" variant="primary">Large Link</ag-link>
+          <ag-link href="#link" isButton buttonShape="capsule" variant="primary">Capsule Link</ag-link>
+          <ag-link href="#link" isButton buttonBordered variant="primary">Outlined Link</ag-link>
         </div>
       </div>
     </div>
@@ -684,14 +695,14 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Disabled States Matrix</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <ag-menu-button ?disabled=${true} menu-aria-label="Disabled menu button">
+          <ag-menu-button disabled menu-aria-label="Disabled menu button">
             Disabled Trigger
           </ag-menu-button>
           <ag-menu-button menu-aria-label="Menu with disabled items">
             Mixed Item States
             <ag-menu slot="menu">
               <ag-menu-item value="enabled">Active Option</ag-menu-item>
-              <ag-menu-item value="disabled" ?disabled=${true}>Disabled Option</ag-menu-item>
+              <ag-menu-item value="disabled" disabled>Disabled Option</ag-menu-item>
             </ag-menu>
           </ag-menu-button>
         </div>
@@ -701,7 +712,7 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Icon & Variant Layouts</h3>
         <div style="display: flex; gap: 16px; align-items: center;">
-          <ag-menu-button menu-variant="icon" ?ghost=${true} menu-aria-label="Icon option menu">
+          <ag-menu-button menu-variant="icon" ghost menu-aria-label="Icon option menu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -774,7 +785,7 @@ Kbd: () => html`
       <!-- A simplified, non-transient, statically open test block for Popover baseline checks -->
       <div style="margin-bottom: 16px;">
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Standard Popover Preview</h3>
-        <ag-popover ?open=${true}>
+        <ag-popover open>
           <ag-button slot="trigger" variant="primary">View Features</ag-button>
           <div slot="content" style="padding: 12px; font-family: sans-serif; font-size: 14px;">
             Popover dropdown layout baseline configuration.
@@ -1031,7 +1042,7 @@ Kbd: () => html`
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Disabled Tab Elements</h3>
         <ag-tabs aria-label="Tabs with disabled tab">
           <ag-tab slot="tab" panel="avail-1">Available Tab</ag-tab>
-          <ag-tab slot="tab" panel="disabled-2" ?disabled=${true}>Disabled Tab</ag-tab>
+          <ag-tab slot="tab" panel="disabled-2" disabled>Disabled Tab</ag-tab>
           <ag-tab slot="tab" panel="avail-3">Also Available</ag-tab>
           <ag-tab-panel slot="panel" panel="avail-1"><p style="margin: 12px 0 0 0;">Available rendering block</p></ag-tab-panel>
           <ag-tab-panel slot="panel" panel="disabled-2"><p style="margin: 12px 0 0 0;">Disabled hidden panel context</p></ag-tab-panel>
@@ -1139,8 +1150,8 @@ Kbd: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Default States & Sizes -->
       <ag-toggle label="Default toggle"></ag-toggle>
-      <ag-toggle label="Checked by default" ?checked=${true}></ag-toggle>
-      <ag-toggle label="Disabled" ?disabled=${true}></ag-toggle>
+      <ag-toggle label="Checked by default" checked></ag-toggle>
+      <ag-toggle label="Disabled" disabled></ag-toggle>
       <!-- Validation & Positioning options available in source reference -->
     </div>
   `,
@@ -1148,7 +1159,7 @@ Kbd: () => html`
     <div style="padding: 24px; max-width: 800px;">
       <!-- A single, simple test case to verify style, color token, and close button rendering -->
       <div style="margin-bottom: 16px;">
-        <ag-toast ?open=${true} .autoDismiss=${false} type="success">
+        <ag-toast open .autoDismiss=${false} type="success">
           Toast notification success verification.
         </ag-toast>
       </div>
