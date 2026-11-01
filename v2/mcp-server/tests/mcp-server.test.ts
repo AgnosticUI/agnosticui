@@ -1,6 +1,11 @@
 /**
  * @file mcp-server.test.ts
  * @description Programmatic Integration Test Suite for AgnosticUI MCP Server
+ * 
+ * Flow:
+ * 1. Boots createMcpServer using the physical workspace configuration files.
+ * 2. Accesses SDK v2's private _registeredTools dictionary to test registration parameters.
+ * 3. Invocates the underlying tool handlers directly to evaluate real file system returns.
  */
 
 import { describe, test, expect, beforeEach } from "vitest";
@@ -10,10 +15,12 @@ describe("AgnosticUI MCP Server Core Infrastructure Verification Harness", () =>
   let context: ReturnType<typeof createMcpServer>;
 
   beforeEach(() => {
+    // Dynamically hooks into the physical project configurations via cascading lookup
     context = createMcpServer();
   });
 
   test("1. verify registerAllTools maps endpoints accurately onto server registry capabilities", () => {
+    // Access internal McpServer tools registry mapping in SDK v2
     const registeredTools = (context.server as any)._registeredTools;
     
     expect(registeredTools).toBeDefined();
@@ -26,6 +33,7 @@ describe("AgnosticUI MCP Server Core Infrastructure Verification Harness", () =>
     const tool = registeredTools["get_component_schema"];
     expect(tool).toBeDefined();
 
+    // Invoke the tool's handler callback block directly
     const result = await tool.handler({ component_name: "AgButton" });
     expect(result).toBeDefined();
     expect(result.content).toBeDefined();
@@ -35,6 +43,7 @@ describe("AgnosticUI MCP Server Core Infrastructure Verification Harness", () =>
       expect(parsedPayload.component).toBe("AgButton");
       expect(parsedPayload.active_framework).toBe("react");
     } else {
+      // Graceful fallback assertion if custom-elements.json has not been built locally yet
       expect(result.content[0].text).toContain("Manifest missing");
     }
   });
@@ -44,6 +53,7 @@ describe("AgnosticUI MCP Server Core Infrastructure Verification Harness", () =>
     const tool = registeredTools["generate_streamed_layout"];
     expect(tool).toBeDefined();
 
+    // Challenge engine with an un-mapped child pointer to assert error capturing
     const invalidPayload = {
       nodes: [
         { id: "parent-node", component: "AgCard", children: ["missing-child-id"] }
@@ -54,13 +64,8 @@ describe("AgnosticUI MCP Server Core Infrastructure Verification Harness", () =>
     expect(result).toBeDefined();
     expect(result.content).toBeDefined();
     
-    if (!result.isError) {
-      const report = JSON.parse(result.content[0].text);
-      expect(report.valid).toBe(false);
-      // Assert substring match against the string array index element safely
-      expect(report.errors[0]).toContain("references a missing or dead child ID");
-    } else {
-      expect(result.content[0].text).toContain("JSON Schema core definitions file missing");
-    }
+    const report = JSON.parse(result.content[0].text);
+    expect(report.valid).toBe(false);
+    expect(report.errors[0]).toContain("references a missing or dead child ID");
   });
 });
