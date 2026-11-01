@@ -501,7 +501,7 @@ export const COMPONENT_REGISTRY = {
             <label><input type="checkbox" checked /> Dark mode default</label>
             <label><input type="checkbox" /> Sync automated saves</label>
           </div>
-          <div slot="footer" style="display: flex; gap: 8px; justify-content: flex-end;">
+          <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px;">
             <ag-button size="small">Cancel</ag-button>
             <ag-button size="small" variant="primary">Apply</ag-button>
           </div>
