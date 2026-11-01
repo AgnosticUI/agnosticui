@@ -54,10 +54,14 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
       })
     },
     async ({ nodes }) => {
+      context.debugLog(`Executing generate_streamed_layout loop across node frames. Node count: ${nodes?.length}`);
+      
       // 1. Locate the source AgnosticUI flat graph Draft-07 JSON Schema definition
       const schemaPath = path.join(context.workspaceRoot, "sdui", "schema", "agnosticui-schema.json");
+      context.debugLog(`Resolving Draft-07 JSON Schema absolute target vector: ${schemaPath}`);
 
       if (!fs.existsSync(schemaPath)) {
+        context.debugLog(`CRITICAL: Dynamic validator engine schema template absent.`);
         return {
           content: [{ type: "text", text: `Error: JSON Schema core definitions file missing at target path: ${schemaPath}` }],
           isError: true,
@@ -98,19 +102,29 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
           }
         }
 
+        const evaluationFrame = {
+          valid: runtimeErrors.length === 0,
+          errors_detected_count: runtimeErrors.length,
+          errors: runtimeErrors,
+          hints: developerHints
+        };
+
+        context.debugLog(`Graph processing analysis frame complete. Evaluation matrix generated.`, evaluationFrame);
+
         return {
           content: [
             {
               type: "text",
               text: JSON.stringify({
-                valid: runtimeErrors.length === 0,
-                errors: runtimeErrors,
-                hints: developerHints,
+                valid: evaluationFrame.valid,
+                errors: evaluationFrame.errors,
+                hints: evaluationFrame.hints,
               }, null, 2),
             },
           ],
         };
       } catch (error) {
+        context.debugLog(`Dynamic evaluation anomaly intercept occurred inside AJV compiler execution trace.`);
         return {
           content: [{ type: "text", text: `Validation compiler loop anomaly: ${error instanceof Error ? error.message : String(error)}` }],
           isError: true,

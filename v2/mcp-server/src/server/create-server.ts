@@ -4,6 +4,7 @@ import * as path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { WorkspaceConfig } from "../types/index.js";
+import { registerAllTools } from "./register-tools.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -11,11 +12,10 @@ export interface ServerContext {
   server: McpServer;
   config: WorkspaceConfig;
   workspaceRoot: string;
+  verbose: boolean;
+  debugLog: (message: string, data?: any) => void;
 }
 
-/**
- * Traverses upwards to locate agnosticui.config.json and anchor the absolute workspace root
- */
 function findWorkspaceConfig(): { config: WorkspaceConfig; rootPath: string } {
   let currentDir = process.cwd();
   const rootCheck = path.parse(currentDir).root;
@@ -34,7 +34,6 @@ function findWorkspaceConfig(): { config: WorkspaceConfig; rootPath: string } {
     currentDir = path.dirname(currentDir);
   }
 
-  // Fallback structural check for canonical v2 setup if running inside mcp-server package
   const structuralParent = path.resolve(__dirname, "../../../");
   const parentConfigPath = path.join(structuralParent, "agnosticui.config.json");
   
@@ -43,24 +42,39 @@ function findWorkspaceConfig(): { config: WorkspaceConfig; rootPath: string } {
     return { config, rootPath: structuralParent };
   }
 
-  // Graceful Tier-3 Fail-Safe per Specification
   throw new Error(
-    "AgnosticUI MCP Server Error (-32603): Structural configuration file 'agnosticui.config.json' could not be found. Please run 'npx agnosticui-cli init' to bootstrap your workspace environment."
+    "AgnosticUI MCP Server Error (-32603): Structural configuration file 'agnosticui.config.json' could not be found."
   );
 }
 
 export function createMcpServer(): ServerContext {
   const { config, rootPath } = findWorkspaceConfig();
 
-  // Instantiate the authentic McpServer instance
+  // Look for --verbose or -v flags in the execution arguments
+  const verbose = process.argv.includes("--verbose") || process.argv.includes("-v");
+
+  // Diagnostic logging is safely restricted to stderr to shield the JSON-RPC pipeline
+  const debugLog = (message: string, data?: any) => {
+    if (verbose) {
+      const dump = data ? `\nDATA DUMP: ${JSON.stringify(data, null, 2)}` : "";
+      console.error(`[AgnosticUI DEBUG] ${message}${dump}`);
+    }
+  };
+
   const server = new McpServer({
     name: "mcp-server-agnosticui",
     version: "1.0.0",
   });
 
-  return {
+  const context: ServerContext = {
     server,
     config,
     workspaceRoot: rootPath,
+    verbose,
+    debugLog,
   };
+
+  registerAllTools(context);
+
+  return context;
 }

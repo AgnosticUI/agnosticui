@@ -38,6 +38,7 @@
     "ajv": "^8.20.0"
   },
   "devDependencies": {
+    "@rolldown/binding-darwin-x64": "^1.2.16",
     "@types/node": "^26.6.6",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",

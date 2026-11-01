@@ -1,0 +1,9 @@
+{
+  "version": "2.0.0-alpha",
+  "framework": "react",
+  "paths": {
+    "reference": "../agnosticui",
+    "components": "../src/components/ag"
+  },
+  "components": {}
+}

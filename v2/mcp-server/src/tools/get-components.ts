@@ -36,10 +36,14 @@ export function registerGetComponentsTool(context: ServerContext): void {
       }),
     },
     async ({ component_name }) => {
+      context.debugLog(`Executing get_component_schema lookup for entity: "${component_name}"`);
+      
       // 1. Resolve absolute location of the custom element manifest artifact
       const manifestPath = path.join(context.workspaceRoot, "lib", "custom-elements.json");
+      context.debugLog(`Resolving manifest absolute path trace: ${manifestPath}`);
       
       if (!fs.existsSync(manifestPath)) {
+        context.debugLog(`CRITICAL: Manifest target file absent from path index.`);
         return {
           content: [{ type: "text", text: `Error: Manifest missing at absolute path: ${manifestPath}` }],
           isError: true,
@@ -59,6 +63,7 @@ export function registerGetComponentsTool(context: ServerContext): void {
         );
 
         if (!matchedModule) {
+          context.debugLog(`Lookup Warning: Component signature absent from manifest register modules.`);
           return {
             content: [{ type: "text", text: `Component '${component_name}' not registered inside custom-elements manifest.` }],
             isError: true,
@@ -81,10 +86,13 @@ export function registerGetComponentsTool(context: ServerContext): void {
           noUndefinedProps: activeFramework === "react", // Guard against prop erasure inside React environments
         };
 
+        context.debugLog(`Schema resolution successful. Dispatching payload metadata frame.`, responsePayload);
+
         return {
           content: [{ type: "text", text: JSON.stringify(responsePayload, null, 2) }],
         };
       } catch (error) {
+        context.debugLog(`Parse error exception caught inside file context engine loop.`);
         return {
           content: [{ type: "text", text: `Parse error: ${error instanceof Error ? error.message : String(error)}` }],
           isError: true,
