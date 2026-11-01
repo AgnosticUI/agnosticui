@@ -74,19 +74,102 @@ The server operates as a standalone Node.js/TypeScript background process execut
 
 The server governs three structural lifecycles during an agentic session:
 
-#### A. Initialization and Discovery Lifecycle
+**Lifecycle: Handshake & Configuration Discovery**
+
+```text
+┌────────────────────────┐                 ┌────────────────────────┐
+│   Host AI Assistant    │                 │  AgnosticUI MCP Server │
+└───────────┬────────────┘                 └───────────┬────────────┘
+            │                                          │
+            │  1. Spawn Server Process (stdio)         │
+            ├──────────────────────────────────────>   │
+            │                                          │
+            │  2. JSON-RPC 'initialize' Handshake      │
+            │<──────────────────────────────────────   │
+            │                                          │
+            │  3. Scanning target process.cwd()        │
+            │       Is 'agnosticui.config.json' there? │
+            │                                          │
+            │       ├── [YES]: Map Paths & Framework   │
+            │       └── [NO]: Throw Error -32603       │
+            │           ("run npx agnosticui-cli init")│
+            │                                          │
+```
 
 1. **Handshake:** The host agent spawns the server process and executes the `initialize` handshake, trading protocol version constraints and capabilities.
 2. **Configuration Discovery:** The server scans the target workspace for an `agnosticui.config.json` profile. If present, it maps local framework targets (React, Vue, Lit) and absolute paths to component target directories.
 3. **Token Bootstrapping:** The server reads the compiled Style Dictionary outputs (`dist/tokens.json`) to stage valid token registers into internal memory caches for fast, zero-latency tool response windows.
 
+##### Error Strategy
+
+**Lifecycle: Token Cache Bootstrapping**
+
+```text
+┌────────────────────────┐              ┌────────────────────────┐
+│  theme-registry/dist/  │              │  Server Memory Cache   │
+└───────────┬────────────┘              └───────────┬────────────┘
+            │                                       │
+            │  1. Scan for compiled 'tokens.json'   │
+            ├──────────────────────────────────────>│
+            │                                       │
+            │       ├── [FOUND]: Stage primitives into zero-latency RAM
+            │       │   (colors, sizes, motion, shadows)
+            │       │
+            │       └── [MISSING]: Throw Error instructively
+            │           ("run `npm run build` inside theme-registry")
+```
+
+If the server fails to discover `agnosticui.config.json` or the compiled Style Dictionary outputs (`dist/tokens.json`), it means the project has not completed the prerequisite initialization steps. Rather than crashing silently, the server stops the transaction and raises a highly instructive JSON-RPC error block.
+
+• **Missing `agnosticui.config.json`:** The server returns protocol error code -32603 (Internal Error) with the explicit prompt:"AgnosticUI Configuration Error: `agnosticui.config.json` not found. Please initialize your workspace environment by running: npx agnosticui-cli init."
+
+• **Missing `dist/tokens.json`:** The server proceeds but flags tool degradation, instructing the developer or agent:"AgnosticUI Token Error: Style Dictionary compilation output missing. Please generate your token assets by running: `npm run build` inside your theme-registry package boundary."
+
 #### B. Component Schema Resolution Lifecycle
+
+**Lifecycle: Component Schema Resolution Lifecycle**
+
+```text
+┌────────────────────────┐              ┌────────────────────────┐
+│   Host AI Assistant    │              │  get_component_schema  │
+└───────────┬────────────┘              └───────────┬────────────┘
+            │                                       │
+            │  1. Call get_component_schema(name)   │
+            ├──────────────────────────────────────>│
+            │                                       │ 2. Parse source AST inside
+            │                                       │    'custom-elements.json'
+            │                                       │    extract slots & exports
+            │                                       │
+            │  3. Emit structured JSON props record │
+            │<──────────────────────────────────────┤
+            │  (Enforces spread rules if React)     │
+            │                                       │
+```
 
 1. **Dynamic Tool Query:** When an agent attempts to scaffold or refactor an interface element, it calls `get_component_schema(component_name)`.
 2. **AST Parsing:** The server reads the verified `custom-elements.json` or local template manifest files, extracting public slots, observed attributes, CSS properties, and framework-specific wrapper APIs.
 3. **Payload Delivery:** The server wraps the metadata in a strict MCP text content envelope, ensuring the agent uses exact parameter types and respects internal attributes (e.g., `noUndefinedProps` boundaries) instead of hallucinating properties.
 
 #### C. Schema-Driven UI (SDUI) Generation Lifecycle
+
+**Lifecycle: Schema-Driven UI (SDUI) Generation**
+
+```text
+┌────────────────────────┐              ┌────────────────────────┐
+│   Host AI Assistant    │              │ generate_streamed_layout│
+└───────────┬────────────┘              └───────────┬────────────┘
+            │                                       │
+            │  1. Pass flat array graph (AgNode[])  │
+            ├──────────────────────────────────────>│
+            │                                       │ 2. Compile Draft-07 validator
+            │                                       │    via 'agnosticui-schema.json'
+            │                                       │
+            │                                       │ 3. PASS 1: Validate node fields
+            │                                       │ 4. PASS 2: Detect dead children
+            │                                       │
+            │  5. Return valid: boolean + hints []  │
+            │<──────────────────────────────────────┤
+```
 
 1. **Intent Extraction:** The agent translates user goals into flat node structures and issues a `generate_streamed_layout` payload.
 2. **Schema Compilation:** The server passes the payload through an isolated `AJV` validation block explicitly configured to parse Draft-07 rules against `agnosticui-schema.json`.
