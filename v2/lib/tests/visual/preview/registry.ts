@@ -597,15 +597,16 @@ export const COMPONENT_REGISTRY = {
 
       <!-- Layout Aliases: Stack and Inline Flex groups -->
       <div style="display: flex; gap: 24px;">
-        <ag-stack style="--flex-gap: 8px; flex: 1;">
+        <ag-flex-col style="--flex-gap: 8px; flex: 1;">
           <div class="flex-preview-box" style="min-width: unset;">Alias Stack 1</div>
           <div class="flex-preview-box" style="min-width: unset;">Alias Stack 2</div>
-        </ag-stack>
+        </ag-flex-col>
         <ag-flex-inline style="--flex-gap: 8px; background: var(--ag-background-secondary, #f4f4f5); padding: 8px; border-radius: 4px;">
           <span style="padding: 4px 8px; background: var(--ag-background-primary, #ffffff); border: 1px solid var(--ag-border, #e4e4e7);">Tag X</span>
           <span style="padding: 4px 8px; background: var(--ag-background-primary, #ffffff); border: 1px solid var(--ag-border, #e4e4e7);">Tag Y</span>
         </ag-flex-inline>
       </div>
+
     </div>
   `,
   Icon: () => html`
