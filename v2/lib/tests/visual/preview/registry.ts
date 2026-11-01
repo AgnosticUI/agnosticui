@@ -492,7 +492,7 @@ export const COMPONENT_REGISTRY = {
   `,
   Drawer: () => html`
     <!-- Isolate fixed/absolute drawer sub-containers within a relative preview grid -->
-    <div style="position: relative; width: 100%; min-height: 600px; padding: 24px; display: flex; flex-direction: column; gap: 40px; overflow: hidden;">
+    <div style="position: relative; width: 100%; min-height: 720px; padding: 24px; display: flex; flex-direction: column; gap: 40px; overflow: hidden;">
 
       <!-- Right Configuration Drawer (position="end") -->
       <div style="position: relative; width: 100%; height: 250px; border: 1px dashed var(--ag-border); overflow: hidden;">
