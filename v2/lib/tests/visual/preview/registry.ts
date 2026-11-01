@@ -7,6 +7,17 @@ import { html } from 'lit';
  */
 export const COMPONENT_REGISTRY = {
   
+  Accordion: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <ag-accordion>
+        <ag-accordion-item use-chevron><span slot="header">Use Chevron</span><div slot="content"><p>Content</p></div></ag-accordion-item>
+        <ag-accordion-item use-minus><span slot="header">Use Minus</span><div slot="content"><p>Content</p></div></ag-accordion-item>
+        <ag-accordion-item use-x><span slot="header">Use X</span><div slot="content"><p>Content</p></div></ag-accordion-item>
+        <ag-accordion-item bordered><span slot="header">Bordered</span><div slot="content"><p>Content</p></div></ag-accordion-item>
+        <ag-accordion-item background><span slot="header">Background</span><div slot="content"><p>Content</p></div></ag-accordion-item>
+      </ag-accordion>
+    </div>
+  `,
   Alert: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
       <!-- Section 1: Standard Variants -->
@@ -28,10 +39,10 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Bordered Alerts</h3>
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <ag-alert ?bordered=${true}>Default alert</ag-alert>
-          <ag-alert variant="success" ?bordered=${true}>Success alert</ag-alert>
-          <ag-alert variant="error" ?bordered=${true}>Error alert</ag-alert>
-          <ag-alert variant="monochrome" ?bordered=${true}>Monochrome alert</ag-alert>
+          <ag-alert bordered>Default alert</ag-alert>
+          <ag-alert variant="success" bordered>Success alert</ag-alert>
+          <ag-alert variant="error" bordered>Error alert</ag-alert>
+          <ag-alert variant="monochrome" bordered>Monochrome alert</ag-alert>
         </div>
       </div>
 
@@ -39,9 +50,9 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Rounded Alerts</h3>
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <ag-alert ?rounded=${true}>Default alert</ag-alert>
-          <ag-alert variant="success" ?rounded=${true}>Success alert</ag-alert>
-          <ag-alert variant="warning" ?rounded=${true}>Warning alert</ag-alert>
+          <ag-alert rounded>Default alert</ag-alert>
+          <ag-alert variant="success" rounded>Success alert</ag-alert>
+          <ag-alert variant="warning" rounded>Warning alert</ag-alert>
         </div>
       </div>
 
@@ -49,9 +60,9 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Bordered Left Alerts</h3>
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <ag-alert ?borderedLeft=${true}>Default alert</ag-alert>
-          <ag-alert variant="success" ?borderedLeft=${true}>Success alert</ag-alert>
-          <ag-alert variant="danger" ?borderedLeft=${true}>Danger alert</ag-alert>
+          <ag-alert borderedLeft>Default alert</ag-alert>
+          <ag-alert variant="success" borderedLeft>Success alert</ag-alert>
+          <ag-alert variant="danger" borderedLeft>Danger alert</ag-alert>
         </div>
       </div>
     </div>
@@ -97,6 +108,17 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  AvatarFx: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-avatar-fx fx="bounce" variant="info" text="AB"></ag-avatar-fx>
+        <ag-avatar-fx fx="pulse" variant="success" text="CD"></ag-avatar-fx>
+        <ag-avatar-fx fx="jelly" fx-speed="lg" fx-ease="spring-sm" variant="warning" text="EF"></ag-avatar-fx>
+        <ag-avatar-fx fx="shimmer" fx-speed="xl" variant="error" text="GH"></ag-avatar-fx>
+        <ag-avatar-fx fx="glow" variant="monochrome" text="IJ"></ag-avatar-fx>
+      </div>
+    </div>
+  `,
   Badge: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; font-family: system-ui, sans-serif;">
       <!-- Section 1: Color Variants -->
@@ -116,7 +138,7 @@ export const COMPONENT_REGISTRY = {
         <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline;">
           <ag-badge variant="default" size="xs">Extra Small</ag-badge>
           <ag-badge variant="default" size="md">Medium</ag-badge>
-          <ag-badge ?dot=${true} variant="success" statusLabel="Online"></ag-badge>
+          <ag-badge dot variant="success" statusLabel="Online"></ag-badge>
         </div>
       </div>
 
@@ -125,11 +147,39 @@ export const COMPONENT_REGISTRY = {
         <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Value, Max & Interactive</h3>
         <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
           <ag-badge variant="danger" .value=${105} .max=${99}></ag-badge>
-          <ag-badge variant="primary" ?interactive=${true}>Interactive</ag-badge>
+          <ag-badge variant="primary" interactive>Interactive</ag-badge>
         </div>
       </div>
     </div>
   `,
+  BadgeFx: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-badge-fx fx="bounce" variant="success">Bounce</ag-badge-fx>
+        <ag-badge-fx fx="pulse" variant="info">Pulse</ag-badge-fx>
+        <ag-badge-fx fx="jelly" fx-speed="lg" fx-ease="spring-sm" variant="monochrome">Jelly</ag-badge-fx>
+        <ag-badge-fx fx="shimmer" fx-speed="xl" variant="danger">Shimmer</ag-badge-fx>
+        <ag-badge-fx fx="glow" variant="primary">Glow</ag-badge-fx>
+      </div>
+    </div>
+  `,
+  Breadcrumb: () => {
+    const data = [
+      { label: 'Home', href: '#' },
+      { label: 'Services', href: '#services' },
+      { label: 'Products', href: '#products' }
+    ];
+    return html`
+      <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+        <ag-breadcrumb .items=${data}></ag-breadcrumb>
+        <ag-breadcrumb .items=${data} type="slash"></ag-breadcrumb>
+        <ag-breadcrumb .items=${data} type="bullet"></ag-breadcrumb>
+        <ag-breadcrumb .items=${data} type="arrow"></ag-breadcrumb>
+        <ag-breadcrumb .items=${data} primary type="arrow"></ag-breadcrumb>
+      </div>
+    `;
+  },
+
   Button: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px;">
       <!-- Row 1: Color Variants -->
@@ -139,7 +189,7 @@ export const COMPONENT_REGISTRY = {
         <ag-button data-testid="btn-success" variant="success">Success Action</ag-button>
         <ag-button data-testid="btn-warning" variant="warning">Warning Action</ag-button>
         <ag-button data-testid="btn-danger" variant="danger">Danger Action</ag-button>
-        <ag-button data-testid="btn-disabled" ?disabled=${true}>Disabled Action</ag-button>
+        <ag-button data-testid="btn-disabled" disabled>Disabled Action</ag-button>
       </div>
 
       <!-- Row 2: Size Variants -->
@@ -162,11 +212,25 @@ export const COMPONENT_REGISTRY = {
 
       <!-- Row 4: Bordered (Outline) Styles -->
       <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-        <ag-button variant="primary" ?bordered=${true}>Bordered Primary</ag-button>
-        <ag-button variant="secondary" ?bordered=${true}>Bordered Secondary</ag-button>
-        <ag-button variant="success" ?bordered=${true}>Bordered Success</ag-button>
-        <ag-button variant="warning" ?bordered=${true}>Bordered Warning</ag-button>
-        <ag-button variant="danger" ?bordered=${true}>Bordered Danger</ag-button>
+        <ag-button variant="primary" bordered>Bordered Primary</ag-button>
+        <ag-button variant="secondary" bordered>Bordered Secondary</ag-button>
+        <ag-button variant="success" bordered>Bordered Success</ag-button>
+        <ag-button variant="warning" bordered>Bordered Warning</ag-button>
+        <ag-button variant="danger" bordered>Bordered Danger</ag-button>
+      </div>
+    </div>
+  `,
+  ButtonFx: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-button-fx fx="bounce" variant="primary" shape="rounded">Bounce</ag-button-fx>
+        <ag-button-fx fx="pulse" variant="success" shape="rounded">Pulse</ag-button-fx>
+        <ag-button-fx fx="jelly" variant="warning" shape="rounded">Jelly</ag-button-fx>
+        <ag-button-fx fx="grow" variant="primary" shape="rounded">Grow</ag-button-fx>
+        <ag-button-fx fx="shrink" variant="secondary" shape="rounded">Shrink</ag-button-fx>
+        <ag-button-fx fx="bg-slide" variant="primary" shape="rounded">BG Slide</ag-button-fx>
+        <ag-button-fx fx="jelly" variant="primary" bordered shape="rounded">Bordered</ag-button-fx>
+        <ag-button-fx fx="bounce" fx-disabled variant="primary">FX Disabled</ag-button-fx>
       </div>
     </div>
   `,
@@ -187,7 +251,7 @@ export const COMPONENT_REGISTRY = {
         <h2>Card with Header</h2>
       </div>
       <div class="stacked-mobile">
-        <ag-card ?shadow=${true}>
+        <ag-card shadow>
           <h3 slot="header" class="m0">Product Details</h3>
           <p>This card demonstrates using the header slot to add a title section with visual separation.</p>
         </ag-card>
@@ -245,7 +309,7 @@ export const COMPONENT_REGISTRY = {
         <h2>Card with Slots (Header and Footer)</h2>
       </div>
       <div class="stacked-mobile">
-        <ag-card ?shadow=${true}>
+        <ag-card shadow>
           <h3 slot="header" class="m0">Card Header</h3>
           <div>
             <h4>Main Content</h4>
@@ -266,7 +330,7 @@ export const COMPONENT_REGISTRY = {
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Standard States</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
           <ag-checkbox name="example" value="1" label-text="Default Unchecked"></ag-checkbox>
-          <ag-checkbox name="example" value="2" label-text="Default Checked" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="example" value="2" label-text="Default Checked" checked></ag-checkbox>
         </div>
       </div>
 
@@ -274,7 +338,7 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Indeterminate State</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-checkbox name="select-all" value="all" ?indeterminate=${true} label-text="Select All (Mixed Mode)"></ag-checkbox>
+          <ag-checkbox name="select-all" value="all" indeterminate label-text="Select All (Mixed Mode)"></ag-checkbox>
         </div>
       </div>
 
@@ -282,9 +346,9 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Size Variants</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-checkbox name="size" value="small" size="small" label-text="Small" ?checked=${true}></ag-checkbox>
-          <ag-checkbox name="size" value="medium" size="medium" label-text="Medium (Default)" ?checked=${true}></ag-checkbox>
-          <ag-checkbox name="size" value="large" size="large" label-text="Large" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="size" value="small" size="small" label-text="Small" checked></ag-checkbox>
+          <ag-checkbox name="size" value="medium" size="medium" label-text="Medium (Default)" checked></ag-checkbox>
+          <ag-checkbox name="size" value="large" size="large" label-text="Large" checked></ag-checkbox>
         </div>
       </div>
 
@@ -292,9 +356,9 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Theme Variants</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-checkbox name="theme-primary" value="1" theme="primary" label-text="Primary (Blue)" ?checked=${true}></ag-checkbox>
-          <ag-checkbox name="theme-success" value="2" theme="success" label-text="Success (Green)" ?checked=${true}></ag-checkbox>
-          <ag-checkbox name="theme-mono" value="3" theme="monochrome" label-text="Monochrome" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="theme-primary" value="1" theme="primary" label-text="Primary (Blue)" checked></ag-checkbox>
+          <ag-checkbox name="theme-success" value="2" theme="success" label-text="Success (Green)" checked></ag-checkbox>
+          <ag-checkbox name="theme-mono" value="3" theme="monochrome" label-text="Monochrome" checked></ag-checkbox>
         </div>
       </div>
 
@@ -302,9 +366,9 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Disabled State</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-checkbox name="disabled" value="1" label-text="Disabled Unchecked" ?disabled=${true}></ag-checkbox>
-          <ag-checkbox name="disabled" value="2" label-text="Disabled Checked" ?checked=${true} ?disabled=${true}></ag-checkbox>
-          <ag-checkbox name="disabled" value="3" label-text="Disabled Indeterminate" ?indeterminate=${true} ?disabled=${true}></ag-checkbox>
+          <ag-checkbox name="disabled" value="1" label-text="Disabled Unchecked" disabled></ag-checkbox>
+          <ag-checkbox name="disabled" value="2" label-text="Disabled Checked" checked disabled></ag-checkbox>
+          <ag-checkbox name="disabled" value="3" label-text="Disabled Indeterminate" indeterminate disabled></ag-checkbox>
         </div>
       </div>
 
@@ -312,10 +376,85 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Label Position</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-checkbox name="position" value="1" label-text="Label on End (Default)" label-position="end" ?checked=${true}></ag-checkbox>
-          <ag-checkbox name="position" value="2" label-text="Label on Start" label-position="start" ?checked=${true}></ag-checkbox>
+          <ag-checkbox name="position" value="1" label-text="Label on End (Default)" label-position="end" checked></ag-checkbox>
+          <ag-checkbox name="position" value="2" label-text="Label on Start" label-position="start" checked></ag-checkbox>
         </div>
       </div>
+    </div>
+  `,
+  Collapsible: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <ag-collapsible use-chevron><span slot="summary">Use Chevron</span><p>Content</p></ag-collapsible>
+      <ag-collapsible use-minus><span slot="summary">Use Minus</span><p>Content</p></ag-collapsible>
+      <ag-collapsible use-x><span slot="summary">Use X</span><p>Content</p></ag-collapsible>
+      <ag-collapsible no-indicator><span slot="summary">No Indicator</span><p>Content</p></ag-collapsible>
+      <ag-collapsible bordered><span slot="summary">Bordered</span><p>Content</p></ag-collapsible>
+      <ag-collapsible shadow><span slot="summary">Shadow</span><p>Content</p></ag-collapsible>
+      <ag-collapsible bordered open><span slot="summary">Open by Default</span><p>Content</p></ag-collapsible>
+    </div>
+  `,
+  Combobox: () => {
+    const states = [
+      { value: 'ca', label: 'California' },
+      { value: 'co', label: 'Colorado' },
+      { value: 'fl', label: 'Florida' },
+      { value: 'ny', label: 'New York' }
+    ];
+    return html`
+      <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+        <!-- Standard Variations Matrix -->
+        <ag-combobox label="Standard Combobox" placeholder="Choose a state..." .options=${states}></ag-combobox>
+        <ag-combobox label="Small Size" size="small" placeholder="Small size..." .options=${states}></ag-combobox>
+        <ag-combobox label="Large Size" size="large" placeholder="Large size..." .options=${states}></ag-combobox>
+        
+        <!-- Field State & Validation Mappings -->
+        <ag-combobox label="Disabled Field" disabled placeholder="This is disabled" value="ca" .options=${states}></ag-combobox>
+        <ag-combobox label="Invalid Entry" invalid error-message="Please select a valid state" placeholder="This has an error" .options=${states}></ag-combobox>
+        
+        <!-- Multi-Select and Variant Overrides -->
+        <ag-combobox label="Multiple Select" multiple placeholder="Choose one or more states..." .options=${states}></ag-combobox>
+        <ag-combobox label="Monochrome Variant" variant="monochrome" placeholder="Choose a state..." .options=${states}></ag-combobox>
+        <ag-combobox label="Label Position Start" label-position="start" placeholder="Choose a state..." .options=${states}></ag-combobox>
+      </div>
+    `;
+  },
+  CopyButton: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <!-- Row 1: Sizes Spectrum -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-copy-button text="XS Text" size="xs"></ag-copy-button>
+        <ag-copy-button text="SM Text" size="sm"></ag-copy-button>
+        <ag-copy-button text="MD Text" size="md"></ag-copy-button>
+        <ag-copy-button text="LG Text" size="lg"></ag-copy-button>
+        <ag-copy-button text="XL Text" size="xl"></ag-copy-button>
+      </div>
+
+      <!-- Row 2: Theme Variants -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-copy-button text="Primary Text" variant="primary"></ag-copy-button>
+        <ag-copy-button text="Success Text" variant="success"></ag-copy-button>
+        <ag-copy-button text="Warning Text" variant="warning"></ag-copy-button>
+        <ag-copy-button text="Danger Text" variant="danger"></ag-copy-button>
+        <ag-copy-button text="Ghost Text" variant="ghost"></ag-copy-button>
+      </div>
+    </div>
+  `,
+  Dialog: () => html`
+    <!-- Position relative wrapper allows fixed/absolute dialog child layers to render cleanly inside the preview bounding box viewport context -->
+    <div style="position: relative; width: 100%; min-height: 500px; padding: 24px;">
+      <ag-dialog
+        open
+        id="preview-dialog"
+        heading="Visual Regression Baseline"
+        description="Statically opened dialog layer to capture layout specs, close triggers, and typography tokens."
+        show-close-button
+      >
+        <p>This layout configures the standard container dimensions, font spacing, and background overlay colors.</p>
+        <div slot="footer" style="display: flex; gap: 8px; justify-content: flex-end;">
+          <ag-button size="small">Cancel</ag-button>
+          <ag-button size="small" variant="primary">Confirm Action</ag-button>
+        </div>
+      </ag-dialog>
     </div>
   `,
   Divider: () => html`
@@ -351,23 +490,142 @@ export const COMPONENT_REGISTRY = {
 
     </div>
   `,
+  Drawer: () => html`
+    <!-- Isolate fixed/absolute drawer sub-containers within a relative preview grid -->
+    <div style="position: relative; width: 100%; min-height: 720px; padding: 24px; display: flex; flex-direction: column; gap: 40px; overflow: hidden;">
+
+      <!-- Right Configuration Drawer (position="end") -->
+      <div style="position: relative; width: 100%; height: 250px; border: 1px dashed var(--ag-border); overflow: hidden;">
+        <ag-drawer open position="end" heading="Context Configurations" show-close-button>
+          <div style="display: flex; flex-direction: column; gap: 12px; padding: 4px 0;">
+            <label><input type="checkbox" checked /> Dark mode default</label>
+            <label><input type="checkbox" /> Sync automated saves</label>
+          </div>
+          <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px;">
+            <ag-button size="small">Cancel</ag-button>
+            <ag-button size="small" variant="primary">Apply</ag-button>
+          </div>
+        </ag-drawer>
+      </div>
+
+    </div>
+  `,
+  EmptyState: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Standard Layout with Action Button -->
+      <ag-empty-state
+        title="No items found"
+        subtitle="Get started by creating your first template item."
+        button-text="Create Item"
+      ></ag-empty-state>
+
+      <!-- Structural Modifiers: Bordered, Rounded, and Custom Icon Slot -->
+      <ag-empty-state
+        title="Empty Workspace Folder"
+        subtitle="Drag and drop configuration parameters here to unpack."
+        bordered
+        rounded
+      >
+        <ag-icon slot="icon" size="32" no-fill>
+          <svg xmlns="http://w3.org" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+          </svg>
+        </ag-icon>
+      </ag-empty-state>
+
+      <!-- Dense Blueprint Sizing Stack -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <ag-empty-state title="Sidebar Stack" subtitle="Dense view." size="sm" bordered rounded></ag-empty-state>
+        <ag-empty-state title="Main Panel" subtitle="Standard view." size="md" bordered rounded></ag-empty-state>
+      </div>
+    </div>
+  `,
+  Fieldset: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Standard Stack Fieldset -->
+      <ag-fieldset legend="Standard Group Layout">
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 4px 0;">
+          <input type="text" placeholder="Entry Parameter A" style="padding: 8px; border: 1px solid var(--ag-border); border-radius: 4px;" />
+          <input type="text" placeholder="Entry Parameter B" style="padding: 8px; border: 1px solid var(--ag-border); border-radius: 4px;" />
+        </div>
+      </ag-fieldset>
+
+      <!-- Bordered Layout with Hidden Legend -->
+      <ag-fieldset legend="Hidden Accessibility Context" bordered legend-hidden>
+        <div style="padding: 4px 0; color: var(--ag-text-secondary);">
+          This block contains a bordered frame with a visually hidden legend layout.
+        </div>
+      </ag-fieldset>
+
+      <!-- Horizontal Orientations Matrix -->
+      <ag-fieldset legend="Horizontal Inline Stack" bordered layout="horizontal">
+        <label style="display: inline-flex; align-items: center; gap: 8px;"><input type="radio" checked /> Option X</label>
+        <label style="display: inline-flex; align-items: center; gap: 8px;"><input type="radio" /> Option Y</label>
+        <label style="display: inline-flex; align-items: center; gap: 8px;"><input type="radio" /> Option Z</label>
+      </ag-fieldset>
+    </div>
+  `,
+  Flex: () => html`
+    <style>
+      .flex-preview-box {
+        padding: 12px;
+        border: 1px solid var(--ag-primary);
+        border-radius: 4px;
+        text-align: center;
+        min-width: 100px; /* Reduced from 600px to allow safe multi-column distributions */
+      }
+    </style>
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 700px;">
+      <!-- Row distribution variants -->
+      <ag-flex-row style="--flex-gap: 12px;" justify="space-between" align="center">
+        <div class="flex-preview-box" style="min-width: 80px;">Row Item A</div>
+        <div class="flex-preview-box" style="min-width: 80px;">Row Item B</div>
+        <div class="flex-preview-box" style="min-width: 80px;">Row Item C</div>
+      </ag-flex-row>
+
+      <!-- Structural sizing modifiers with equal width distribution -->
+      <ag-flex-row style="--flex-gap: 16px;" stretch-children>
+        <div class="flex-preview-box" style="min-width: 0;">Short</div>
+        <div class="flex-preview-box" style="min-width: 0;">Equal Column Height/Width Frame</div>
+      </ag-flex-row>
+
+      <!-- Block column stacking structure -->
+      <ag-flex-col style="--flex-gap: 12px;">
+        <div class="flex-preview-box" style="width: 100%;">Stacked Row Node 1</div>
+        <div class="flex-preview-box" style="width: 100%;">Stacked Row Node 2</div>
+      </ag-flex-col>
+
+      <!-- Layout Aliases: Stack and Inline Flex groups -->
+      <div style="display: flex; gap: 24px;">
+        <ag-flex-col style="--flex-gap: 8px; flex: 1;">
+          <div class="flex-preview-box" style="min-width: unset;">Alias Stack 1</div>
+          <div class="flex-preview-box" style="min-width: unset;">Alias Stack 2</div>
+        </ag-flex-col>
+        <ag-flex-inline style="--flex-gap: 8px; background: var(--ag-background-secondary, #f4f4f5); padding: 8px; border-radius: 4px;">
+          <span style="padding: 4px 8px; background: var(--ag-background-primary, #ffffff); border: 1px solid var(--ag-border, #e4e4e7);">Tag X</span>
+          <span style="padding: 4px 8px; background: var(--ag-background-primary, #ffffff); border: 1px solid var(--ag-border, #e4e4e7);">Tag Y</span>
+        </ag-flex-inline>
+      </div>
+
+    </div>
+  `,
   Icon: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Sizing Spectrum Matrix -->
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Sizes Spectrum</h3>
         <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-          <ag-icon ?no-fill=${true} size="16">
+          <ag-icon no-fill size="16">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </ag-icon>
-          <ag-icon ?no-fill=${true} size="24">
+          <ag-icon no-fill size="24">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </ag-icon>
-          <ag-icon ?no-fill=${true} size="32">
+          <ag-icon no-fill size="32">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
@@ -379,23 +637,54 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Semantic Color Themes</h3>
         <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-          <ag-icon ?no-fill=${true} type="info" size="24">
+          <ag-icon no-fill type="info" size="24">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </ag-icon>
-          <ag-icon ?no-fill=${true} type="success" size="24">
+          <ag-icon no-fill type="success" size="24">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </ag-icon>
-          <ag-icon ?no-fill=${true} type="error" size="24">
+          <ag-icon no-fill type="error" size="24">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </ag-icon>
         </div>
       </div>
+    </div>
+  `,
+  Header: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; width: 100%;">
+      <!-- Standard Header with Logo Slot and Navigation -->
+      <ag-header>
+        <span slot="logo" style="font-weight: 700; font-size: 1.25rem; color: var(--ag-primary, #09090b);">AgnosticUI</span>
+        <nav>
+          <ul style="display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0;">
+            <li><a href="#home" style="text-decoration: none; color: inherit;">Home</a></li>
+            <li><a href="#services" style="text-decoration: none; color: inherit;">Services</a></li>
+          </ul>
+        </nav>
+      </ag-header>
+
+      <!-- Justification Variant Overrides (content-justify mapped from kebab rule) -->
+      <ag-header content-justify="start">
+        <span slot="logo" style="font-weight: 600;">Justify Start</span>
+        <nav style="margin-left: 24px;"><a href="#link" style="text-decoration: none; color: inherit;">Navigation</a></nav>
+      </ag-header>
+
+      <ag-header content-justify="end">
+        <span slot="logo" style="font-weight: 600;">Justify End</span>
+        <nav style="margin-left: 24px;"><a href="#link" style="text-decoration: none; color: inherit;">Navigation</a></nav>
+      </ag-header>
+
+      <!-- Sticky Structure Frame Layout -->
+      <ag-header sticky>
+        <span slot="logo" style="font-weight: 700; font-size: 1.25rem;">Sticky Viewport Baseline</span>
+        <nav><span style="color: var(--ag-text-secondary, #71717a);">Fixed Node</span></nav>
+      </ag-header>
     </div>
   `,
   IconButton: () => html`
@@ -450,15 +739,75 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Modifiers & States</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-          <ag-icon-button label="Bordered" variant="primary" ?bordered=${true}>
+          <ag-icon-button label="Bordered" variant="primary" bordered>
             <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </ag-icon-button>
-          <ag-icon-button label="Disabled" variant="primary" ?disabled=${true}>
+          <ag-icon-button label="Disabled" variant="primary" disabled>
             <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </ag-icon-button>
         </div>
       </div>
 
+    </div>
+  `,
+  IconButtonFx: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <!-- Row 1: Effect Typology Grid Matrix -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-icon-button-fx fx="pulse" variant="primary" label="Pulse Item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><circle cx="12" cy="12" r="10"></circle></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="bounce" variant="success" label="Bounce Item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M12 5v14M5 12h14"></path></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="wobble" variant="warning" label="Wobble Item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="shake" variant="danger" label="Shake Item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="jelly" variant="ghost" label="Jelly Item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M12 2L2 22h20L12 2z"></path></svg>
+        </ag-icon-button-fx>
+      </div>
+
+      <!-- Row 2: Sizing Scale Constraints -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-icon-button-fx fx="pulse" size="xs" variant="primary" label="XS Frame">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:100%;height:100%;"><circle cx="12" cy="12" r="10"></circle></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="pulse" size="md" variant="primary" label="MD Frame">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:100%;height:100%;"><circle cx="12" cy="12" r="10"></circle></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="pulse" size="xl" variant="primary" label="XL Frame">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:100%;height:100%;"><circle cx="12" cy="12" r="10"></circle></svg>
+        </ag-icon-button-fx>
+        <ag-icon-button-fx fx="pulse" fx-disabled variant="primary" label="Disabled Effect Layer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><circle cx="12" cy="12" r="10"></circle></svg>
+        </ag-icon-button-fx>
+      </div>
+    </div>
+  `,
+  Image: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Standard Image View Layout Configuration -->
+      <ag-image
+        src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='150' viewBox='0 0 200 150'><rect width='100%' height='100%' fill='%2309090b'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-size='14'>Static Baseline</text></svg>"
+        alt="Visual testing baseline target matrix element"
+        .width=${200}
+        .height=${150}
+      ></ag-image>
+
+      <!-- Aspect Ratio Mapping & Contain Box Rules -->
+      <div style="width: 300px; height: 150px; background: var(--ag-background-secondary, #f4f4f5); border: 1px solid var(--ag-border, #e4e4e7); border-radius: 4px; overflow: hidden;">
+        <ag-image
+          src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%237c3aed'/></svg>"
+          alt="Object fit constraint test"
+          style="width: 100%; height: 100%;"
+          aspect-ratio="16/9"
+          fit="contain"
+        ></ag-image>
+      </div>
     </div>
   `,
   Input: () => html`
@@ -479,10 +828,10 @@ export const COMPONENT_REGISTRY = {
         <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Shape Variants</h3>
         <div style="display: flex; flex-direction: column; gap: 12px;">
           <ag-input label="Default (rectangular)" placeholder="Default rectangular"></ag-input>
-          <ag-input label="Rounded" ?rounded=${true} placeholder="Rounded corners"></ag-input>
-          <ag-input label="Capsule" ?capsule=${true} placeholder="Capsule shape"></ag-input>
-          <ag-input label="Underlined" ?underlined=${true} placeholder="Underlined only"></ag-input>
-          <ag-input label="Underlined with Background" ?underlinedWithBackground=${true} placeholder="Underlined with background"></ag-input>
+          <ag-input label="Rounded" rounded placeholder="Rounded corners"></ag-input>
+          <ag-input label="Capsule" capsule placeholder="Capsule shape"></ag-input>
+          <ag-input label="Underlined" underlined placeholder="Underlined only"></ag-input>
+          <ag-input label="Underlined with Background" underlined-with-background placeholder="Underlined with background"></ag-input>
         </div>
       </div>
 
@@ -490,8 +839,8 @@ export const COMPONENT_REGISTRY = {
       <div>
         <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #888;">Validation & States</h3>
         <div style="display: flex; flex-direction: column; gap: 12px;">
-          <ag-input label="Disabled Field" ?disabled=${true} placeholder="Cannot type here"></ag-input>
-          <ag-input label="Invalid Entry" ?invalid=${true} error-message="This field entry layout is invalid" placeholder="Error state border"></ag-input>
+          <ag-input label="Disabled Field" disabled placeholder="Cannot type here"></ag-input>
+          <ag-input label="Invalid Entry" invalid error-message="This field entry layout is invalid" placeholder="Error state border"></ag-input>
           <ag-input label="Helper Description" help-text="Please ensure your layout input values match criteria" placeholder="With helper text"></ag-input>
         </div>
       </div>
@@ -515,7 +864,7 @@ export const COMPONENT_REGISTRY = {
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Number Formatting</h3>
         <div style="display: flex; flex-direction: column; gap: 12px;">
           <div><strong>Standard (US):</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="en-US"></ag-intl-formatter></div>
-          <div><strong>No Grouping (US):</strong> <ag-intl-formatter type="number" .value=${1234567.89} ?no-grouping=${true} lang="en-US"></ag-intl-formatter></div>
+          <div><strong>No Grouping (US):</strong> <ag-intl-formatter type="number" .value=${1234567.89} no-grouping lang="en-US"></ag-intl-formatter></div>
           <div><strong>German Format (DE):</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="de-DE"></ag-intl-formatter></div>
           <div><strong>Indian Lakhs (IN):</strong> <ag-intl-formatter type="number" .value=${1234567.89} lang="hi-IN"></ag-intl-formatter></div>
         </div>
@@ -574,9 +923,9 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Background & Border Enhancements</h3>
         <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-          <ag-kbd ?background=${true} variant="primary">⌘</ag-kbd>
-          <ag-kbd ?background=${true} variant="success">⌥</ag-kbd>
-          <ag-kbd ?bordered=${true}>⇧</ag-kbd>
+          <ag-kbd background variant="primary">⌘</ag-kbd>
+          <ag-kbd background variant="success">⌥</ag-kbd>
+          <ag-kbd bordered>⇧</ag-kbd>
           <ag-kbd .bordered=${false}>⌃</ag-kbd>
         </div>
       </div>
@@ -592,7 +941,7 @@ Kbd: () => html`
           <ag-link href="#link" variant="primary">Primary Link</ag-link>
           <ag-link href="#link" variant="success">Success Link</ag-link>
           <ag-link href="#link" variant="danger">Danger Link</ag-link>
-          <ag-link href="#link" ?disabled=${true}>Disabled Link</ag-link>
+          <ag-link href="#link" disabled>Disabled Link</ag-link>
         </div>
       </div>
 
@@ -600,10 +949,10 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Button-Style Links</h3>
         <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-          <ag-link href="#link" ?isButton=${true}>Default Button</ag-link>
-          <ag-link href="#link" ?isButton=${true} variant="primary">Primary Button</ag-link>
-          <ag-link href="#link" ?isButton=${true} variant="success">Success Button</ag-link>
-          <ag-link href="#link" ?isButton=${true} variant="danger">Danger Button</ag-link>
+          <ag-link href="#link" isButton>Default Button</ag-link>
+          <ag-link href="#link" isButton variant="primary">Primary Button</ag-link>
+          <ag-link href="#link" isButton variant="success">Success Button</ag-link>
+          <ag-link href="#link" isButton variant="danger">Danger Button</ag-link>
         </div>
       </div>
 
@@ -611,10 +960,10 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Button Shape & Size Spectrum</h3>
         <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-          <ag-link href="#link" ?isButton=${true} buttonSize="sm" variant="primary">Small Link</ag-link>
-          <ag-link href="#link" ?isButton=${true} buttonSize="lg" variant="primary">Large Link</ag-link>
-          <ag-link href="#link" ?isButton=${true} buttonShape="capsule" variant="primary">Capsule Link</ag-link>
-          <ag-link href="#link" ?isButton=${true} ?buttonBordered=${true} variant="primary">Outlined Link</ag-link>
+          <ag-link href="#link" isButton buttonSize="sm" variant="primary">Small Link</ag-link>
+          <ag-link href="#link" isButton buttonSize="lg" variant="primary">Large Link</ag-link>
+          <ag-link href="#link" isButton buttonShape="capsule" variant="primary">Capsule Link</ag-link>
+          <ag-link href="#link" isButton buttonBordered variant="primary">Outlined Link</ag-link>
         </div>
       </div>
     </div>
@@ -684,14 +1033,14 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Disabled States Matrix</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <ag-menu-button ?disabled=${true} menu-aria-label="Disabled menu button">
+          <ag-menu-button disabled menu-aria-label="Disabled menu button">
             Disabled Trigger
           </ag-menu-button>
           <ag-menu-button menu-aria-label="Menu with disabled items">
             Mixed Item States
             <ag-menu slot="menu">
               <ag-menu-item value="enabled">Active Option</ag-menu-item>
-              <ag-menu-item value="disabled" ?disabled=${true}>Disabled Option</ag-menu-item>
+              <ag-menu-item value="disabled" disabled>Disabled Option</ag-menu-item>
             </ag-menu>
           </ag-menu-button>
         </div>
@@ -701,7 +1050,7 @@ Kbd: () => html`
       <div>
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Icon & Variant Layouts</h3>
         <div style="display: flex; gap: 16px; align-items: center;">
-          <ag-menu-button menu-variant="icon" ?ghost=${true} menu-aria-label="Icon option menu">
+          <ag-menu-button menu-variant="icon" ghost menu-aria-label="Icon option menu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -769,12 +1118,28 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  Pagination: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px; width: 100%;">
+      <!-- Standard Layout and First/Last Opt-In -->
+      <ag-pagination current="5" total-pages="20"></ag-pagination>
+      <ag-pagination current="5" total-pages="20" first-last-navigation></ag-pagination>
+
+      <!-- Bordered Style, Offsets, and Ellipsis Truncation -->
+      <ag-pagination current="3" total-pages="15" bordered></ag-pagination>
+      <ag-pagination current="25" total-pages="100" offset="1"></ag-pagination>
+
+      <!-- Horizontal Alignment Multi-Stack (Justify Variations) -->
+      <ag-pagination current="1" total-pages="10" justify="start"></ag-pagination>
+      <ag-pagination current="1" total-pages="10" justify="center"></ag-pagination>
+      <ag-pagination current="1" total-pages="10" justify="end"></ag-pagination>
+    </div>
+  `,
   Popover: () => html`
     <div style="padding: 24px; max-width: 800px;">
       <!-- A simplified, non-transient, statically open test block for Popover baseline checks -->
       <div style="margin-bottom: 16px;">
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Standard Popover Preview</h3>
-        <ag-popover ?open=${true}>
+        <ag-popover open>
           <ag-button slot="trigger" variant="primary">View Features</ag-button>
           <div slot="content" style="padding: 12px; font-family: sans-serif; font-size: 14px;">
             Popover dropdown layout baseline configuration.
@@ -920,6 +1285,38 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  Rating: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Precision and Access Spectrum -->
+      <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+        <ag-rating value="3"></ag-rating>
+        <ag-rating value="2.5" precision="half"></ag-rating>
+        <ag-rating value="4" readonly></ag-rating>
+      </div>
+
+      <!-- Sizing Scale Constraints -->
+      <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+        <ag-rating size="sm" value="3"></ag-rating>
+        <ag-rating size="md" value="3"></ag-rating>
+        <ag-rating size="lg" value="3"></ag-rating>
+      </div>
+
+      <!-- Color Variant Typologies -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <ag-rating variant="primary" value="4"></ag-rating>
+        <ag-rating variant="success" value="4"></ag-rating>
+        <ag-rating variant="warning" value="4"></ag-rating>
+        <ag-rating variant="danger" value="4"></ag-rating>
+      </div>
+
+      <!-- Form Integration Framework Fields -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-rating label="Standard Validation Field" help-text="Rate user context feedback" value="3"></ag-rating>
+        <ag-rating label="Invalid Evaluation State" required invalid error-message="Rating allocation required" value="0"></ag-rating>
+        <ag-rating label="Inline Start Orientation" label-position="start" value="4"></ag-rating>
+      </div>
+    </div>
+  `,
   ScrollProgress: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Structural Display Modes -->
@@ -947,6 +1344,151 @@ Kbd: () => html`
           <ag-scroll-progress mode="ring" ring-variant="info" ring-size="40" style="position: static;"></ag-scroll-progress>
         </div>
       </div>
+    </div>
+  `,
+  Select: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 500px;">
+      <!-- Standard Dropdown Frame with Slotted Child Options -->
+      <ag-select label="Greatest Tennis Player" name="tennis">
+        <option value="">- Select a player -</option>
+        <option value="serena">Serena Williams</option>
+        <option value="roger">Roger Federer</option>
+      </ag-select>
+
+      <!-- Sizing Constraints Spectrum Stack -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-select label="Small Size Layout" size="small" name="small">
+          <option value="1">Option 1</option>
+        </ag-select>
+        <ag-select label="Large Size Layout" size="large" name="large">
+          <option value="1">Option 1</option>
+        </ag-select>
+      </div>
+
+      <!-- Operational State Modifiers: Disabled and Multiple List Box -->
+      <ag-select label="Disabled Field" disabled name="disabled">
+        <option value="">Cannot select</option>
+      </ag-select>
+
+      <ag-select label="Multiple Selection List Box" multiple multiple-size="4" name="multiple">
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </ag-select>
+
+      <!-- Form Context Framework Fields -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-select label="Validation Failure State" required invalid error-message="Please select a valid payment method" name="payment">
+          <option value="">Select payment method</option>
+        </ag-select>
+        <ag-select label="Label Position Start" label-position="start" name="pos-start">
+          <option value="1">Option 1</option>
+        </ag-select>
+      </div>
+    </div>
+  `,
+  SelectionButtonGroup: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Selection Modes (Radio Single vs Checkbox Multiple) -->
+      <ag-selection-button-group type="radio" name="mode-radio" legend="Payment Typology" shape="rounded">
+        <ag-selection-button value="card" label="Credit Card">Credit Card</ag-selection-button>
+        <ag-selection-button value="paypal" label="PayPal">PayPal</ag-selection-button>
+      </ag-selection-button-group>
+
+      <ag-selection-button-group type="checkbox" name="mode-checkbox" legend="Toppings Layer" shape="rounded">
+        <ag-selection-button value="cheese" label="Extra Cheese">Extra Cheese</ag-selection-button>
+        <ag-selection-button value="mushrooms" label="Mushrooms">Mushrooms</ag-selection-button>
+      </ag-selection-button-group>
+
+      <!-- Sizing Scale Constraints Spectrum -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-selection-button-group type="radio" name="size-sm" legend="Small Group" legend-hidden size="sm" shape="rounded">
+          <ag-selection-button value="1" label="Small A">Small A</ag-selection-button>
+          <ag-selection-button value="2" label="Small B">Small B</ag-selection-button>
+        </ag-selection-button-group>
+        
+        <ag-selection-button-group type="radio" name="size-lg" legend="Large Group" legend-hidden size="lg" shape="rounded">
+          <ag-selection-button value="1" label="Large A">Large A</ag-selection-button>
+          <ag-selection-button value="2" label="Large B">Large B</ag-selection-button>
+        </ag-selection-button-group>
+      </div>
+
+      <!-- Shape Geometry Variations Matrix -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-selection-button-group type="radio" name="shape-rect" legend="Rectangular Frame" legend-hidden>
+          <ag-selection-button value="1" label="Node A">Node A</ag-selection-button>
+          <ag-selection-button value="2" label="Node B">Node B</ag-selection-button>
+        </ag-selection-button-group>
+
+        <ag-selection-button-group type="radio" name="shape-capsule" legend="Capsule Pill Frame" legend-hidden shape="capsule">
+          <ag-selection-button value="1" label="Node A">Node A</ag-selection-button>
+          <ag-selection-button value="2" label="Node B">Node B</ag-selection-button>
+        </ag-selection-button-group>
+      </div>
+
+      <!-- Theme Variants Spectrum -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <ag-selection-button-group type="radio" name="theme-success" legend="Success Group" legend-hidden theme="success" shape="rounded">
+          <ag-selection-button value="1" label="Success">Success</ag-selection-button>
+        </ag-selection-button-group>
+        <ag-selection-button-group type="radio" name="theme-error" legend="Error Group" legend-hidden theme="error" shape="rounded">
+          <ag-selection-button value="1" label="Error">Error</ag-selection-button>
+        </ag-selection-button-group>
+      </div>
+
+      <!-- Operational Disabled States Matrix -->
+      <ag-selection-button-group type="radio" name="disabled-group" legend="Disabled Group Frame" shape="rounded" disabled>
+        <ag-selection-button value="1" label="Option A">Option A</ag-selection-button>
+        <ag-selection-button value="2" label="Option B">Option B</ag-selection-button>
+      </ag-selection-button-group>
+
+      <ag-selection-button-group type="radio" name="disabled-nodes" legend="Mixed Operational Nodes" shape="rounded">
+        <ag-selection-button value="1" label="Active Node">Active Node</ag-selection-button>
+        <ag-selection-button value="2" label="Disabled Node" disabled>Disabled Node</ag-selection-button>
+      </ag-selection-button-group>
+    </div>
+  `,
+  SelectionCardGroup: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px;">
+      <!-- Selection Modes (Radio Single vs Checkbox Multiple) -->
+      <ag-selection-card-group type="radio" name="card-radio" legend="Select interest">
+        <ag-selection-card value="tech" label="Technology">
+          <div style="text-align: center; padding: 1rem;"><div style="font-weight: 600;">Technology</div></div>
+        </ag-selection-card>
+        <ag-selection-card value="music" label="Music">
+          <div style="text-align: center; padding: 1rem;"><div style="font-weight: 600;">Music</div></div>
+        </ag-selection-card>
+      </ag-selection-card-group>
+
+      <ag-selection-card-group type="checkbox" name="card-checkbox" legend="Enable features">
+        <ag-selection-card value="analytics" label="Analytics">
+          <div style="text-align: center; padding: 1rem;"><div style="font-weight: 600;">Analytics</div></div>
+        </ag-selection-card>
+        <ag-selection-card value="export" label="Export">
+          <div style="text-align: center; padding: 1rem;"><div style="font-weight: 600;">Export</div></div>
+        </ag-selection-card>
+      </ag-selection-card-group>
+
+      <!-- Theme Variants Spectrum -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <ag-selection-card-group type="radio" name="card-success" legend="Success Group" legend-hidden theme="success">
+          <ag-selection-card value="1" label="Option A"><div style="padding: 1rem;">Success A</div></ag-selection-card>
+        </ag-selection-card-group>
+        <ag-selection-card-group type="radio" name="card-error" legend="Error Group" legend-hidden theme="error">
+          <ag-selection-card value="1" label="Option A"><div style="padding: 1rem;">Error A</div></ag-selection-card>
+        </ag-selection-card-group>
+      </div>
+
+      <!-- Operational Disabled States Matrix -->
+      <ag-selection-card-group type="radio" name="card-disabled-group" legend="Disabled Group Frame" disabled>
+        <ag-selection-card value="1" label="Option A"><div style="padding: 1rem;">Option A</div></ag-selection-card>
+        <ag-selection-card value="2" label="Option B"><div style="padding: 1rem;">Option B</div></ag-selection-card>
+      </ag-selection-card-group>
+
+      <ag-selection-card-group type="radio" name="card-disabled-nodes" legend="Mixed Operational Nodes">
+        <ag-selection-card value="1" label="Active Card"><div style="padding: 1rem;">Active Card</div></ag-selection-card>
+        <ag-selection-card value="2" label="Disabled Card" disabled><div style="padding: 1rem;">Disabled Card</div></ag-selection-card>
+      </ag-selection-card-group>
     </div>
   `,
   SkeletonLoader: () => html`
@@ -992,6 +1534,38 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  Slider: () => {
+    const rangeData = [200, 800];
+    const verticalRangeData = [25, 75];
+    return html`
+      <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 600px; width: 100%;">
+        <!-- Basic Track Typologies -->
+        <ag-slider label="Standard Volumetric Slider" value="75"></ag-slider>
+        <ag-slider label="Dual Pricing Range Bounds" dual min="0" max="1000" .value=${rangeData}></ag-slider>
+
+        <!-- Sizing & Visual Style Modifiers -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <ag-slider label="Size Small Filled Track" size="small" filled value="30"></ag-slider>
+          <ag-slider label="Size Large Monochrome Track" size="large" monochrome value="70"></ag-slider>
+        </div>
+
+        <!-- Annotation Extras (Ticks + Tooltips) -->
+        <ag-slider label="Granular Step Marks and Tooltip" show-ticks show-tooltip tick-step="20" step="10" value="40"></ag-slider>
+
+        <!-- Vertical Spatial Formulations Matrix -->
+        <div style="display: flex; gap: 40px; align-items: flex-end; height: 180px; padding: 12px; border: 1px dashed var(--ag-border, #e4e4e7); border-radius: 4px;">
+          <ag-slider label="Vertical Standard" vertical value="75"></ag-slider>
+          <ag-slider label="Vertical Dual Range" vertical dual .value=${verticalRangeData}></ag-slider>
+        </div>
+
+        <!-- Validation Constraints and Label Layouts -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <ag-slider label="Field Failure State" required invalid error-message="Value allocation fails boundary checks" value="30"></ag-slider>
+          <ag-slider label="Inline Label Position Start" label-position="start" value="60"></ag-slider>
+        </div>
+      </div>
+    `;
+  },
   Tabs: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Basic Horizontal Tabs -->
@@ -1031,7 +1605,7 @@ Kbd: () => html`
         <h3 style="margin: 0 0 12px 0; font-family: sans-serif; font-size: 14px; color: #888;">Disabled Tab Elements</h3>
         <ag-tabs aria-label="Tabs with disabled tab">
           <ag-tab slot="tab" panel="avail-1">Available Tab</ag-tab>
-          <ag-tab slot="tab" panel="disabled-2" ?disabled=${true}>Disabled Tab</ag-tab>
+          <ag-tab slot="tab" panel="disabled-2" disabled>Disabled Tab</ag-tab>
           <ag-tab slot="tab" panel="avail-3">Also Available</ag-tab>
           <ag-tab-panel slot="panel" panel="avail-1"><p style="margin: 12px 0 0 0;">Available rendering block</p></ag-tab-panel>
           <ag-tab-panel slot="panel" panel="disabled-2"><p style="margin: 12px 0 0 0;">Disabled hidden panel context</p></ag-tab-panel>
@@ -1087,6 +1661,21 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  TagFx: () => html`
+    <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <ag-tag-fx fx="bounce" variant="success">Bounce</ag-tag-fx>
+        <ag-tag-fx fx="pulse" variant="info">Pulse</ag-tag-fx>
+        <ag-tag-fx fx="jelly" fx-speed="lg" fx-ease="spring-sm" variant="primary">Jelly</ag-tag-fx>
+        <ag-tag-fx fx="shimmer" fx-speed="xl" variant="warning">Shimmer</ag-tag-fx>
+        <ag-tag-fx fx="glow" variant="error">Glow</ag-tag-fx>
+        <ag-tag-fx fx="flip" fx-speed="lg" fx-ease="ease-in" variant="success">Flip</ag-tag-fx>
+        <ag-tag-fx fx="ripple" variant="info">Ripple</ag-tag-fx>
+        <ag-tag-fx fx="highlight-sweep" fx-speed="lg" fx-ease="ease-out" variant="monochrome">Sweep</ag-tag-fx>
+        <ag-tag-fx fx="press-pop" variant="primary">Press Pop</ag-tag-fx>
+      </div>
+    </div>
+  `,
   Timeline: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Horizontal Layout Stepper -->
@@ -1139,8 +1728,8 @@ Kbd: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Default States & Sizes -->
       <ag-toggle label="Default toggle"></ag-toggle>
-      <ag-toggle label="Checked by default" ?checked=${true}></ag-toggle>
-      <ag-toggle label="Disabled" ?disabled=${true}></ag-toggle>
+      <ag-toggle label="Checked by default" checked></ag-toggle>
+      <ag-toggle label="Disabled" disabled></ag-toggle>
       <!-- Validation & Positioning options available in source reference -->
     </div>
   `,
@@ -1148,7 +1737,7 @@ Kbd: () => html`
     <div style="padding: 24px; max-width: 800px;">
       <!-- A single, simple test case to verify style, color token, and close button rendering -->
       <div style="margin-bottom: 16px;">
-        <ag-toast ?open=${true} .autoDismiss=${false} type="success">
+        <ag-toast open .autoDismiss=${false} type="success">
           Toast notification success verification.
         </ag-toast>
       </div>
