@@ -1,5 +1,5 @@
 export interface WorkspaceConfig {
-  framework: 'react' | 'vue' | 'lit' | 'svelte';
+  framework: 'react' | 'vue' | 'lit';
   paths: {
     components: string;
   };

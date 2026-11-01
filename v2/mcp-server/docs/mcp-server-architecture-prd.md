@@ -39,34 +39,36 @@ By exposing these systems directly to agentic environments (such as Claude Code,
 
 The server operates as a standalone Node.js/TypeScript background process executing over standard input/output (stdio) channels, interacting natively with host applications (AI Coding Assistants) and the local workspace environment using JSON-RPC communication envelopes.
 
+```text
 ┌──────────────────────────────┐
-│ AI Assistant / Coding Host │
-│ (Claude Code, Cursor, etc.) │
-└──────────────┬───────────────┘
-│ (JSON-RPC over stdio)
-▼
+│ AI Assistant / Coding Host   │
+│ (Claude Code, Cursor, etc.)  │
+└──────────────▲───────────────┘
+               │ (JSON-RPC over stdio)
+               ▼
 ┌────────────────────────────────────────────────────────────────────────┐
-│ AGNOSTICUI MCP SERVER │
-│ │
-│ ┌────────────────────────┐ ┌────────────────────────────┐ │
-│ │ Tool Registry │ │ Schema Validation Engine │ │
-│ │ (get_component_schema) │ │ (AJV / JSON Schema) │ │
-│ └───────────┬────────────┘ └─────────────┬──────────────┘ │
-│ │ │ │
-│ ▼ ▼ │
-│ ┌────────────────────────┐ ┌────────────────────────────┐ │
-│ │ Token Resolution Core │ │ Workspace Context Discovery│ │
-│ │ (Style Dictionary) │ │ (agnosticui.config.json) │ │
-│ └────────────────────────┘ └────────────────────────────┘ │
-└──────────────────────────────────────┬─────────────────────────────────┘
-│ (Local I/O Access)
-▼
+│ AGNOSTICUI MCP SERVER                                                  │
+│                                                                        │
+│ ┌────────────────────────┐ ┌────────────────────────────┐              │
+│ │ Tool Registry          │ │ Schema Validation Engine   │              │
+│ │ (get_component_schema) │ │ (AJV / JSON Schema)        │              │
+│ └───────────┬────────────┘ └─────────────┬──────────────┘              │
+│             │                            │                             │
+│             ▼                            ▼                             │
+│ ┌────────────────────────┐ ┌────────────────────────────┐              │
+│ │ Token Resolution Core  │ │ Workspace Context Discovery│              │
+│ │ (Style Dictionary)     │ │ (agnosticui.config.json)   │              │
+│ └────────────────────────┘ └────────────────────────────┘              │
+└──────────────────────────────────────▲─────────────────────────────────┘
+                                       │ (Local I/O Access)
+                                       ▼
 ┌────────────────────────────────────────────────────────────────────────┐
-│ LOCAL USER WORKSPACE │
-│ │
-│ ├── agnosticui.config.json ├── src/components/ag/ │
-│ └── theme-registry/tokens/ └── sdui/schema/ │
+│ LOCAL USER WORKSPACE                                                   │
+│ │                                                                      │
+│ ├── agnosticui.config.json ├── src/components/ag/                      │
+│ └── theme-registry/tokens/ └── sdui/schema/                            │
 └────────────────────────────────────────────────────────────────────────┘
+```
 
 ### 1.3 Core Operational Architecture & Lifecycles
 
@@ -75,7 +77,7 @@ The server governs three structural lifecycles during an agentic session:
 #### A. Initialization and Discovery Lifecycle
 
 1. **Handshake:** The host agent spawns the server process and executes the `initialize` handshake, trading protocol version constraints and capabilities.
-2. **Configuration Discovery:** The server scans the target workspace for an `agnosticui.config.json` profile. If present, it maps local framework targets (React, Vue, Lit, or Svelte) and absolute paths to component target directories.
+2. **Configuration Discovery:** The server scans the target workspace for an `agnosticui.config.json` profile. If present, it maps local framework targets (React, Vue, Lit) and absolute paths to component target directories.
 3. **Token Bootstrapping:** The server reads the compiled Style Dictionary outputs (`dist/tokens.json`) to stage valid token registers into internal memory caches for fast, zero-latency tool response windows.
 
 #### B. Component Schema Resolution Lifecycle

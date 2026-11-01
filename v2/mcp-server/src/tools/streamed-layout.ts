@@ -1,3 +1,19 @@
+/**
+ * @file streamed-layout.ts
+ * @description Server-Driven UI (SDUI) Graph Validation Engine
+ * 
+ * PURPOSE:
+ * Provides a high-speed, structural validation gate for nested UI component graphs. 
+ * It compiles your project's local Draft-07 'agnosticui-schema.json' via AJV to parse 
+ * structural constraints against incoming code generation payloads.
+ * 
+ * WHY IT'S USEFUL:
+ * When agentic assistants stream modifications to complex components, tree hierarchies 
+ * can shift or break. This engine executes a multi-pass audit: Pass 1 verifies field-level 
+ * properties match your rules, and Pass 2 tracks parent-child topologies to intercept 
+ * dangling child reference strings or structural violations before they are written to disk.
+ */
+
 import { fromJsonSchema } from "@modelcontextprotocol/server";
 import AjvModule from "ajv";
 import * as fs from "node:fs";
@@ -5,7 +21,7 @@ import * as path from "node:path";
 import { ServerContext } from "../server/create-server.js";
 import { StreamedLayoutRequest } from "../types/index.js";
 
-// Resolve ESM default export compatibility
+// Handle CommonJS default export interoperability for strict NodeNext ESM targets
 const Ajv = (AjvModule as any).default || AjvModule;
 
 export function registerStreamedLayoutTool(context: ServerContext): void {
@@ -38,6 +54,7 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
       })
     },
     async ({ nodes }) => {
+      // 1. Locate the source AgnosticUI flat graph Draft-07 JSON Schema definition
       const schemaPath = path.join(context.workspaceRoot, "sdui", "schema", "agnosticui-schema.json");
 
       if (!fs.existsSync(schemaPath)) {
@@ -51,14 +68,14 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
         const rawSchema = fs.readFileSync(schemaPath, "utf-8");
         const schema = JSON.parse(rawSchema);
 
-        // Instantiate isolated compiler targeting Draft-07 parity matrices
+        // 2. Instantiate and compile an isolated AJV validator targeting Draft-07 rules
         const ajv = new Ajv({ allErrors: true, allowUnionTypes: true });
         const validate = ajv.compile(schema);
 
         const runtimeErrors: string[] = [];
         const developerHints: string[] = [];
 
-        // Pass 1: Individual Structural Node Field Auditing
+        // PASS 1: Field-level constraint audit (Verify individual nodes match schema properties)
         for (const node of nodes) {
           const valid = validate(node);
           if (!valid && validate.errors) {
@@ -68,7 +85,7 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
           }
         }
 
-        // Pass 2: Topological Hierarchy Validation (Checking for Dead References)
+        // PASS 2: Topological relationship audit (Catch dangling child reference pointers)
         const nodeMap = new Map(nodes.map((n) => [n.id, n]));
         for (const node of nodes) {
           if (node.children && Array.isArray(node.children)) {

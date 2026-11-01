@@ -1,3 +1,19 @@
+/**
+ * @file get-components.ts
+ * @description AgnosticUI Component Schema Resolution Tool
+ * 
+ * PURPOSE:
+ * Bridges the gap between an AI agent and the codebase by parsing the project's 
+ * generated 'custom-elements.json' manifest. It exposes real component structures, 
+ * allowed properties, conditional spreads, slots, and attributes.
+ * 
+ * WHY IT'S USEFUL:
+ * Prevents AI assistants from guessing or hallucinating framework wrapper attributes 
+ * (e.g., confusing properties between ReactAgInput and VueInput). By serving up exact 
+ * API contracts on-demand, it guarantees that code generation steps match your actual 
+ * workspace compilation boundaries from day one.
+ */
+
 import { fromJsonSchema } from "@modelcontextprotocol/server";
 import * as fs from "node:fs";
 import * as path from "node:path";
@@ -8,7 +24,6 @@ export function registerGetComponentsTool(context: ServerContext): void {
     "get_component_schema",
     {
       description: "Returns precise public slots, observed attributes, and metadata requirements for any AgnosticUI component using custom-elements.json.",
-      // fromJsonSchema types the handler arguments automatically from the JSON definition
       inputSchema: fromJsonSchema<{ component_name: string }>({
         type: "object",
         properties: {
@@ -21,6 +36,7 @@ export function registerGetComponentsTool(context: ServerContext): void {
       }),
     },
     async ({ component_name }) => {
+      // 1. Resolve absolute location of the custom element manifest artifact
       const manifestPath = path.join(context.workspaceRoot, "lib", "custom-elements.json");
       
       if (!fs.existsSync(manifestPath)) {
@@ -34,6 +50,7 @@ export function registerGetComponentsTool(context: ServerContext): void {
         const rawManifest = fs.readFileSync(manifestPath, "utf-8");
         const manifest = JSON.parse(rawManifest);
         
+        // 2. Scan manifest modules block to match the target component by name or internal declaration
         const matchedModule = manifest.modules?.find((mod: any) =>
           mod.exports?.some((exp: any) => 
             exp.name.toLowerCase() === component_name.toLowerCase() ||
@@ -48,10 +65,12 @@ export function registerGetComponentsTool(context: ServerContext): void {
           };
         }
 
+        // 3. Infer active framework targets to map exact wrapper syntax constraints
         const activeFramework = context.config.framework;
         const prefix = activeFramework === "react" ? "React" : activeFramework === "vue" ? "Vue" : "Ag";
         const cleanName = component_name.replace(/^Ag/, "");
         
+        // 4. Synthesize structural configuration properties layout payload
         const responsePayload = {
           component: component_name,
           active_framework: activeFramework,
@@ -59,7 +78,7 @@ export function registerGetComponentsTool(context: ServerContext): void {
           module_path: matchedModule.path,
           exports: matchedModule.exports || [],
           declarations: matchedModule.declarations || [],
-          noUndefinedProps: activeFramework === "react",
+          noUndefinedProps: activeFramework === "react", // Guard against prop erasure inside React environments
         };
 
         return {
