@@ -450,12 +450,10 @@ export const COMPONENT_REGISTRY = {
         show-close-button
       >
         <p>This layout configures the standard container dimensions, font spacing, and background overlay colors.</p>
-        <ag-dialog-footer>
-          <div style="display: flex; gap: 8px; justify-content: flex-end;">
-            <ag-button size="small">Cancel</ag-button>
-            <ag-button size="small" variant="primary">Confirm Action</ag-button>
-          </div>
-        </ag-dialog-footer>
+        <div slot="footer" style="display: flex; gap: 8px; justify-content: flex-end;">
+          <ag-button size="small">Cancel</ag-button>
+          <ag-button size="small" variant="primary">Confirm Action</ag-button>
+        </div>
       </ag-dialog>
     </div>
   `,
