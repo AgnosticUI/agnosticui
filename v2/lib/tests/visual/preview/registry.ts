@@ -572,7 +572,7 @@ export const COMPONENT_REGISTRY = {
         border: 1px solid var(--ag-primary);
         border-radius: 4px;
         text-align: center;
-        min-width: 600px;
+        min-width: 100px; /* Reduced from 600px to allow safe multi-column distributions */
       }
     </style>
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 700px;">
@@ -585,14 +585,14 @@ export const COMPONENT_REGISTRY = {
 
       <!-- Structural sizing modifiers with equal width distribution -->
       <ag-flex-row style="--flex-gap: 16px;" stretch-children>
-        <div class="flex-preview-box">Short</div>
-        <div class="flex-preview-box">Equal Column Height/Width Frame</div>
+        <div class="flex-preview-box" style="min-width: 0;">Short</div>
+        <div class="flex-preview-box" style="min-width: 0;">Equal Column Height/Width Frame</div>
       </ag-flex-row>
 
       <!-- Block column stacking structure -->
       <ag-flex-col style="--flex-gap: 12px;">
-        <div class="flex-preview-box">Stacked Row Node 1</div>
-        <div class="flex-preview-box">Stacked Row Node 2</div>
+        <div class="flex-preview-box" style="width: 100%;">Stacked Row Node 1</div>
+        <div class="flex-preview-box" style="width: 100%;">Stacked Row Node 2</div>
       </ag-flex-col>
 
       <!-- Layout Aliases: Stack and Inline Flex groups -->
