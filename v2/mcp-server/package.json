@@ -22,6 +22,7 @@
     "dev": "tsx watch src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:verbose": "AGNOSTICUI_VERBOSE=true npm run test",
     "test:watch": "vitest"
   },
   "keywords": [

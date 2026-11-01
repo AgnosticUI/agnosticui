@@ -50,10 +50,13 @@ function findWorkspaceConfig(): { config: WorkspaceConfig; rootPath: string } {
 export function createMcpServer(): ServerContext {
   const { config, rootPath } = findWorkspaceConfig();
 
-  // Look for --verbose or -v flags in the execution arguments
-  const verbose = process.argv.includes("--verbose") || process.argv.includes("-v");
+  // Inspect either command-line arguments OR local environment variables for debug flags
+  const verbose = 
+    process.argv.includes("--verbose") || 
+    process.argv.includes("-v") ||
+    process.env.AGNOSTICUI_VERBOSE === "true";
 
-  // Diagnostic logging is safely restricted to stderr to shield the JSON-RPC pipeline
+  // Diagnostic logging remains safely isolated to stderr
   const debugLog = (message: string, data?: any) => {
     if (verbose) {
       const dump = data ? `\nDATA DUMP: ${JSON.stringify(data, null, 2)}` : "";
@@ -78,3 +81,4 @@ export function createMcpServer(): ServerContext {
 
   return context;
 }
+
