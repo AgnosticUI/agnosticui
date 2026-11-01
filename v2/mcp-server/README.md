@@ -36,6 +36,20 @@ If an engineer or agent modifies properties anywhere within the core library dir
 
 If code structures diverge from compiled manifest definitions, the CI pipeline dry-run gates halt modifications immediately to enforce strict data parity.
 
+### 2.2 Continuous Manifest Synchronization Gate
+
+To guarantee that the MCP server never returns stale properties or hallucinates old parameters, the AgnosticUI repository's automated pipeline acts as a hard boundary check via GitHub Actions as follows:
+
+- **File Tracking Vector:** `.github/workflows/check-codegen.yml`
+- **Execution Validation Target:** `npm run check-codegen`
+- **Trigger Paths Block:**
+  ```yaml
+  paths:
+    - "v2/lib/src/components/**"
+    - "v2/sdui/schema/**"
+    - "v2/sdui/renderers/**"
+  ```
+
 ---
 
 ## 3. Local Installation & Development Workflow
