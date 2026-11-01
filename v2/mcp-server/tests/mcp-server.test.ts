@@ -57,9 +57,9 @@ describe("AgnosticUI MCP Server Core Infrastructure Verification Harness", () =>
     if (!result.isError) {
       const report = JSON.parse(result.content[0].text);
       expect(report.valid).toBe(false);
-      expect(report.errors).toContain("references a missing or dead child ID");
+      // Assert substring match against the string array index element safely
+      expect(report.errors[0]).toContain("references a missing or dead child ID");
     } else {
-      // Graceful fallback assertion if schema file is absent from the isolated test context path
       expect(result.content[0].text).toContain("JSON Schema core definitions file missing");
     }
   });

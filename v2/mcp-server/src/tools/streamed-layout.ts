@@ -57,7 +57,8 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
       context.debugLog(`Executing generate_streamed_layout loop across node frames. Node count: ${nodes?.length}`);
       
       // 1. Locate the source AgnosticUI flat graph Draft-07 JSON Schema definition
-      const schemaPath = path.join(context.workspaceRoot, "sdui", "schema", "agnosticui-schema.json");
+      const v2Root = path.resolve(context.config.paths.components, "../../../");
+      const schemaPath = path.join(v2Root, "sdui", "schema", "agnosticui-schema.json");
       context.debugLog(`Resolving Draft-07 JSON Schema absolute target vector: ${schemaPath}`);
 
       if (!fs.existsSync(schemaPath)) {

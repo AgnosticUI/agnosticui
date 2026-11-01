@@ -39,7 +39,10 @@ export function registerGetComponentsTool(context: ServerContext): void {
       context.debugLog(`Executing get_component_schema lookup for entity: "${component_name}"`);
       
       // 1. Resolve absolute location of the custom element manifest artifact
-      const manifestPath = path.join(context.workspaceRoot, "lib", "custom-elements.json");
+      // context.config.paths.components points to "v2/src/components/ag" or configured equivalent.
+      // We resolve lib relative to the master v2 folder (one level above components path)
+      const v2Root = path.resolve(context.config.paths.components, "../../../");
+      const manifestPath = path.join(v2Root, "lib", "custom-elements.json");
       context.debugLog(`Resolving manifest absolute path trace: ${manifestPath}`);
       
       if (!fs.existsSync(manifestPath)) {
