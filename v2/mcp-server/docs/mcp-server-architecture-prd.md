@@ -146,6 +146,37 @@ If the server fails to discover `agnosticui.config.json` or the compiled Style D
             │                                       │
 ```
 
+#### Ingestion Parity Strategy & CI Guard Pipeline
+
+To guarantee that the MCP server never returns stale properties or hallucinates old parameters, the AgnosticUI repository's automated pipeline acts as a hard boundary check:
+
+- **File Tracking Vector:** `.github/workflows/check-codegen.yml`
+- **Execution Validation Target:** `npm run check-codegen`
+- **Trigger Paths Block:**
+  ```yaml
+  paths:
+    - "v2/lib/src/components/**"
+    - "v2/sdui/schema/**"
+    - "v2/sdui/renderers/**"
+  ```
+
+```text
+┌────────────────────────┐      ┌────────────────────────┐      ┌────────────────────────┐
+│  v2/lib/src/components │      │   GitHub Actions CI    │      │  custom-elements.json  │
+└───────────┬────────────┘      └───────────┬────────────┘      └───────────┬────────────┘
+            │                               │                               │
+            │  1. Push component changes    │                               │
+            ├──────────────────────────────>│                               │
+            │                               │  2. Run 'check-codegen.yml'   │
+            │                               │     executes:                 │
+            │                               │     "npm run check-codegen"   │
+            │                               ├──────────────────────────────>│
+            │                               │                               │
+            │                               │   ├── [MATCHES]: Pass Gate    │
+            │                               │   └── [DRIFTED]: Halt Build   │
+            │                               │       ("Un-synchronized configuration")
+```
+
 1. **Dynamic Tool Query:** When an agent attempts to scaffold or refactor an interface element, it calls `get_component_schema(component_name)`.
 2. **AST Parsing:** The server reads the verified `custom-elements.json` or local template manifest files, extracting public slots, observed attributes, CSS properties, and framework-specific wrapper APIs.
 3. **Payload Delivery:** The server wraps the metadata in a strict MCP text content envelope, ensuring the agent uses exact parameter types and respects internal attributes (e.g., `noUndefinedProps` boundaries) instead of hallucinating properties.
