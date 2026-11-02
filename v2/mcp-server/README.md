@@ -55,6 +55,21 @@ npm install @modelcontextprotocol/server ajv ollama
 npm install -D typescript@latest vitest@latest tsx@latest @types/node@latest
 ```
 
+### 3.2 Local Integration Configuration Profile
+
+To link the built server process directly to your choice of local coding assistants, add the absolute directory configuration details to your host settings (e.g., inside your user `.mcp.json` or Cursor developer layout matrices):
+
+````json
+{
+  "mcpServers": {
+    "agnosticui-mcp": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "cwd": "/absolute/path/to/your/repository/v2/mcp-server"
+    }
+  }
+}
+
 ---
 
 ## 4. Operational Task Automation (`package.json`)
@@ -90,3 +105,4 @@ Execute the following orchestration scripts from the `v2/mcp-server/` package bo
 
 - `npm run test:local`: Compiles the repository distribution matrix automatically and launches an offline, zero-cost multi-turn tool-calling conversation test harness with your default model target (`qwen2.5-coder:1.5b`).
 - `npm run test:local:watch`: Compiles current deltas and executes the multi-turn pipeline sandbox wrapper while dynamically overriding the system target inline to leverage `llama3.2:latest`.
+````

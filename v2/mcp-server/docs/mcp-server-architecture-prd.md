@@ -204,7 +204,7 @@ To guarantee that the MCP server never returns stale properties or hallucinates 
 
 1. **Intent Extraction:** The agent translates user goals into flat node structures and issues a `generate_streamed_layout` payload.
 2. **Schema Compilation:** The server passes the payload through an isolated `AJV` validation block explicitly configured to parse Draft-07 rules against `agnosticui-schema.json`.
-3. **AST Transformation:** If valid, the engine computes component trees, resolving design tokens and validating tree topologies against structural layout guidelines, then responds with structural nodes ready for consumption by local renderer layers.
+3. **AST Transformation:** The generate_streamed_layout tool processes flat arrays to validate node inputs, outputting a clear evaluation envelope checking for valid Boolean parameters alongside detailed errors and hints listings.
 
 ---
 
@@ -300,7 +300,7 @@ The server's lifecycle metrics are bound directly to your existing GitHub Action
 #### Gate 2: Protocol Integrity Verification
 
 - **Workflow Hook:** `.github/workflows/validate-fixtures.yml`
-- **Execution Strategy:** Appends a workspace test script execution loop: `npm test --prefix v2/mcp-server`. This ensures any new component configurations or schema tightening added to the core library does not break the server's protocol response contracts. If a response structure breaks a fixture contract, the build halts immediately.
+- **Execution Strategy:** The validate-fixtures.yml continuous integration workflow executes downstream component demo fixture validation checks to identify render Parity drift across framework suites, rather than running localized stdio process transport tests inside the mcp-server package territory.
 
 ---
 

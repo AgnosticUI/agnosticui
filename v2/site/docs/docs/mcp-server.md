@@ -66,7 +66,7 @@ The background process connects smoothly to host environments or testing scripts
 
 ## Data Freshness & Synchronization
 
-To guarantee that the server never serves stale properties, the tool endpoints ingest the live project variables directly from your repository workspace root.
+The validation checks verify the structural schema arrays (agnosticui-schema.json) and renderer mapping rules directly to flag pipeline deviations, rather than continuously monitoring the internal custom elements manifest file.
 
 ### Manifest Synchronization Pipeline
 
@@ -88,7 +88,21 @@ npm run typecheck
 
 # Run continuous programmatic Vitest integration suites
 npm run test
+```
 
+### Prerequisites for Local Sandbox Executions
+
+Before running localized tool testing scripts (`npm run test:local`), you must install and start the Ollama service on your local environment:
+
+1. Download the executable bundle directly from [ollama.com](https://ollama.com).
+2. Start the desktop client background process.
+3. Pre-pull the required models from your terminal layout window using the following commands:
+   ```bash
+   ollama pull qwen2.5-coder:1.5b
+   ollama pull llama3.2:latest
+   ```
+
+```bash
 # Compile code deltas and launch an offline multi-turn conversation playground with Qwen 1.5B
 npm run test:local
 
