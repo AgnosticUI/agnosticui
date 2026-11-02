@@ -52,10 +52,12 @@ export function registerDesignTokensTool(context: ServerContext): void {
 
       const v2Root = path.resolve(context.config.paths.components, "../../../");
       const primaryTokensPath = path.join(v2Root, "theme-registry", "dist", "tokens.json");
+      let isPrimary = false;
       let rawTokens = "";
 
       if (fs.existsSync(primaryTokensPath)) {
         rawTokens = fs.readFileSync(primaryTokensPath, "utf-8");
+        isPrimary = true;
       } else {
         const backupPath = path.join(v2Root, "theme-registry", "tokens", `${category}.json`);
         context.debugLog(`Primary tokens.json absent. Falling back to category file: ${backupPath}`);
@@ -71,7 +73,24 @@ export function registerDesignTokensTool(context: ServerContext): void {
 
       try {
         const tokensData = JSON.parse(rawTokens);
-        const filteredTokens = tokensData[category] || tokensData;
+        let filteredTokens: any;
+
+        if (isPrimary) {
+          // Compiled flat schema layout lookup projection
+          filteredTokens = tokensData[category];
+          if (!filteredTokens) {
+            // Attempt to derive configuration projection properties from design definitions
+            filteredTokens = Object.keys(tokensData)
+              .filter((key) => key.startsWith(`ag-${category}`) || key.includes(category))
+              .reduce((obj: any, key) => {
+                obj[key] = tokensData[key];
+                return obj;
+              }, {});
+          }
+        } else {
+          // Native source configuration files are already category scoped
+          filteredTokens = tokensData;
+        }
 
         context.debugLog(`Successfully resolved token primitives for category context.`);
 
