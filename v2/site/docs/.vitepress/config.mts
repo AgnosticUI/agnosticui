@@ -115,10 +115,12 @@ export default defineConfig({
           { text: 'Understanding AgnosticUI', link: '/docs/understand' },
           { text: 'Advanced Usage', link: '/docs/advanced/advanced-usage' },
           { text: 'Schema-Driven UI (SDUI)', link: '/docs/sdui' },
+          { text: 'Model Context Protocol (MCP)', link: '/docs/mcp-server' },
           { text: 'CSS Utilities', link: '/docs/utilities' },
           { text: 'FAQ', link: '/docs/faq' },
         ]
       },
+
     ],
 
     socialLinks: [
