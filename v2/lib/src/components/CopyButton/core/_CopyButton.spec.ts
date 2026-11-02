@@ -210,17 +210,23 @@ describe('AgCopyButton', () => {
     });
 
     it('reports the text sent to the clipboard if the property changes while copying', async () => {
+      // Store original globals for clean teardown
+      const originalClipboard = Object.getOwnPropertyDescriptor(navigator, 'clipboard');
+      const originalIsSecureContext = Object.getOwnPropertyDescriptor(window, 'isSecureContext');
+
       let resolveWriteText: (() => void) | undefined;
       const writeText = vi.fn(
         () => new Promise<void>((resolve) => { resolveWriteText = resolve; })
       );
+
+      // Stub navigator.clipboard
       Object.defineProperty(navigator, 'clipboard', {
         value: { writeText },
         writable: true,
         configurable: true,
       });
 
-      const originalIsSecureContext = Object.getOwnPropertyDescriptor(window, 'isSecureContext');
+      // Stub window.isSecureContext
       Object.defineProperty(window, 'isSecureContext', {
         configurable: true,
         value: true,
@@ -229,7 +235,7 @@ describe('AgCopyButton', () => {
       try {
         await renderButton(html`<ag-copy-button text="first value"></ag-copy-button>`);
         const copyEvent = new Promise<CustomEvent<{ text: string }>>((resolve) => {
-          element.addEventListener('copy', (event) => resolve(event as CustomEvent<{ text: string }>), { once: true });
+          element.addEventListener('copy', (event) => resolve(event as unknown as CustomEvent<{ text: string }>), { once: true });
         });
 
         element.shadowRoot?.querySelector('ag-icon-button')?.click();
@@ -242,10 +248,19 @@ describe('AgCopyButton', () => {
         const event = await copyEvent;
         expect(event.detail.text).toBe('first value');
       } finally {
+        // Restore navigator.clipboard
+        if (originalClipboard) {
+          Object.defineProperty(navigator, 'clipboard', originalClipboard);
+        } else {
+          // Cast to any to cleanly allow deleting properties that TypeScript marks as non-optional on the global interfaces
+          delete (navigator as any).clipboard;
+        }
+
+        // Restore window.isSecureContext
         if (originalIsSecureContext) {
           Object.defineProperty(window, 'isSecureContext', originalIsSecureContext);
         } else {
-          delete (window as Window & { isSecureContext?: boolean }).isSecureContext;
+          delete (window as any).isSecureContext;
         }
       }
     });
