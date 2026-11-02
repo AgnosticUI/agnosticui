@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-<p align="center">Copy the source &nbsp;·&nbsp; Own the code &nbsp;·&nbsp; Framework-agnostic &nbsp;·&nbsp; Built for humans and AI agents</p>
+<p align="center"><b>Copy the source</b> &nbsp;·&nbsp; <b>Own the code</b> &nbsp;·&nbsp; <b>Framework-agnostic</b> &nbsp;·&nbsp; Built for <b>humans and AI agents</b></p>
 
 <p align="center">
   <strong>One component library. Every framework.</strong>
@@ -183,6 +183,8 @@ npx agnosticui-cli add Button Card Input
 
 After running `add`, your terminal prints the exact import path for your project. No guessing. **Supports agent-driven and prompt-ready UI workflows.**
 
+_💡 AgnosticUI utilizes a custom-built CLI engine that dynamically wraps standards-based Lit Web Components into tailored framework syntax at copy time._
+
 ---
 
 ## Accessibility first, not last
@@ -260,8 +262,8 @@ Full package indexing and release tracking are underway.
 <details>
 <summary><b>Maintainer Contact</b></summary>
 
-AgnosticUI is architected and maintained by Rob Levin. If you're looking for a frontend architect that specializes in design systems, custom CLI tooling, and agent-driven UIs, let's talk.
+AgnosticUI is architected and maintained by Rob Levin. If you're looking for a veteran frontend architect that specializes in design systems, custom CLI tooling, and agent-driven UIs, let's build something together.
 
-- **Inquiries & Consulting:** Reach out via [LinkedIn](https://www.linkedin.com/in/robinlevin/)
+- **Inquiries & Consulting:** Connect with [Rob Levin on LinkedIn](https://www.linkedin.com/in/robinlevin/) to discuss architecture assessments, token migrations, or custom agent-facing UI implementations.
 
 </details>
