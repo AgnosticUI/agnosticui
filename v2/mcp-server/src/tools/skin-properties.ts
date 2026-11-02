@@ -37,6 +37,7 @@ export function registerSkinPropertiesTool(context: ServerContext): void {
         properties: {
           skin_name: {
             type: "string",
+            pattern: "^[a-zA-Z0-9_-]+$",
             description: "Target skin folder identity name (e.g., 'autumn-slate')."
           },
           theme_mode: {
@@ -50,6 +51,14 @@ export function registerSkinPropertiesTool(context: ServerContext): void {
     },
     async ({ skin_name, theme_mode }) => {
       context.debugLog(`Executing resolve_skin_properties tool logic for skin: "${skin_name}" [${theme_mode}]`);
+
+      const skinNameRegex = /^[a-zA-Z0-9_-]+$/;
+      if (!skinNameRegex.test(skin_name)) {
+        return {
+          content: [{ type: "text", text: "Error: Invalid skin_name input configuration string format parameters format detected." }],
+          isError: true,
+        };
+      }
 
       const v2Root = path.resolve(context.config.paths.components, "../../../");
       const targetSkinDir = path.join(v2Root, "skins", skin_name);
@@ -70,7 +79,8 @@ export function registerSkinPropertiesTool(context: ServerContext): void {
         const rawCss = fs.readFileSync(targetFilePath, "utf-8");
         const variables: Record<string, string> = {};
 
-        const cssVarRegex = /--ag-([^:]+):\s*([^;]+);/g;
+        // Matches declarations regardless of trailing semicolon boundaries, bounded tightly to line/rule layouts
+        const cssVarRegex = /--ag-([^:]+):\s*([^;\}\r\n]+);?/g;
         let match;
 
         while ((match = cssVarRegex.exec(rawCss)) !== null) {
