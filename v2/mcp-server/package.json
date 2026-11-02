@@ -36,7 +36,8 @@
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/server": "^2.4.0",
-    "ajv": "^8.20.0"
+    "ajv": "^8.20.0",
+    "ollama": "^0.6.4"
   },
   "devDependencies": {
     "@rolldown/binding-darwin-x64": "^1.2.16",

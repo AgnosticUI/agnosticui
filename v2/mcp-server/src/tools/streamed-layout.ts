@@ -2,18 +2,22 @@
  * @file streamed-layout.ts
  * @description Server-Driven UI (SDUI) Graph Validation Engine
  * 
- * PURPOSE:
- * Provides a high-speed, structural validation gate for nested UI component graphs. 
- * It compiles your project's local Draft-07 'agnosticui-schema.json' via AJV to parse 
- * structural constraints against incoming code generation payloads.
+ * PURPOSE & LLM UTILITY:
+ * This tool acts as a pre-flight structural shield for nested layout graphs. 
+ * Before writing code adjustments or structural modifications to disk, the LLM passes 
+ * its flat component node configurations here to verify that the entire interface is 
+ * safe, semantic, and coherent.
  * 
- * WHY IT'S USEFUL:
- * When agentic assistants stream modifications to complex components, tree hierarchies 
- * can shift or break. This engine executes a multi-pass audit: Pass 1 verifies field-level 
- * properties match your rules, and Pass 2 tracks parent-child topologies to intercept 
- * dangling child reference strings or structural violations before they are written to disk.
+ * WHAT IT RETURNS (Happy Path JSON Payload):
+ * {
+ *   "valid": true,
+ *   "errors": [],
+ *   "hints": []
+ * }
+ * The LLM reads the 'valid' flag to confirm layout safety. If 'valid' is false, the 
+ * LLM uses the 'errors' text array to point out precise field errors or dead layout elements, 
+ * and reads the 'hints' array to safely reconstruct broken parent-child node pointers.
  */
-
 import { fromJsonSchema } from "@modelcontextprotocol/server";
 import AjvModule from "ajv";
 import * as fs from "node:fs";
@@ -21,7 +25,6 @@ import * as path from "node:path";
 import { ServerContext } from "../server/create-server.js";
 import { StreamedLayoutRequest } from "../types/index.js";
 
-// Handle CommonJS default export interoperability for strict NodeNext ESM targets
 const Ajv = (AjvModule as any).default || AjvModule;
 
 export function registerStreamedLayoutTool(context: ServerContext): void {
@@ -56,7 +59,6 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
     async ({ nodes }) => {
       context.debugLog(`Executing generate_streamed_layout loop across node frames. Node count: ${nodes?.length}`);
       
-      // 1. Locate the source AgnosticUI flat graph Draft-07 JSON Schema definition
       const v2Root = path.resolve(context.config.paths.components, "../../../");
       const schemaPath = path.join(v2Root, "sdui", "schema", "agnosticui-schema.json");
       context.debugLog(`Resolving Draft-07 JSON Schema absolute target vector: ${schemaPath}`);
@@ -73,14 +75,12 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
         const rawSchema = fs.readFileSync(schemaPath, "utf-8");
         const schema = JSON.parse(rawSchema);
 
-        // 2. Instantiate and compile an isolated AJV validator targeting Draft-07 rules
         const ajv = new Ajv({ allErrors: true, allowUnionTypes: true });
         const validate = ajv.compile(schema);
 
         const runtimeErrors: string[] = [];
         const developerHints: string[] = [];
 
-        // PASS 1: Field-level constraint audit (Verify individual nodes match schema properties)
         for (const node of nodes) {
           const valid = validate(node);
           if (!valid && validate.errors) {
@@ -90,7 +90,6 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
           }
         }
 
-        // PASS 2: Topological relationship audit (Catch dangling child reference pointers)
         const nodeMap = new Map(nodes.map((n) => [n.id, n]));
         for (const node of nodes) {
           if (node.children && Array.isArray(node.children)) {

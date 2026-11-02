@@ -2,15 +2,28 @@
  * @file design-tokens.ts
  * @description AgnosticUI Global Design Token Dictionary Resolver
  * 
- * PURPOSE:
- * Exposes compiled Style Dictionary design tokens directly to the model's environment
- * by tracking explicit properties categories (colors, sizes, radii, motion, shadows, etc.).
+ * PURPOSE & LLM UTILITY:
+ * This tool exposes your project's Style Dictionary variable primitive registries 
+ * directly to the model's active environment. When customizing HTML components, creating 
+ * utility blocks, or modifying spacing rules, the LLM runs this tool to lookup valid 
+ * token categories. This ensures the LLM applies real corporate variables instead of guessing 
+ * hex values or pixel widths.
  * 
- * WHY IT'S USEFUL:
- * Guarantees that AI code generation tasks map directly to real, theme-accurate 
- * CSS custom properties (--ag-*) instead of guessing hex codes or pixel widths.
+ * WHAT IT RETURNS (Happy Path JSON Payload):
+ * {
+ *   "category": "radii",
+ *   "tokens": {
+ *     "none": "0",
+ *     "sm": "0.25rem",
+ *     "md": "0.375rem",
+ *     "lg": "1rem",
+ *     "full": "9999px"
+ *   }
+ * }
+ * The LLM reads the keys within 'tokens' to format perfect, theme-compliant custom css properties 
+ * matching the exact target naming structures (e.g., transforming a "md" radius query directly 
+ * into `--ag-radius-md`).
  */
-
 import { fromJsonSchema } from "@modelcontextprotocol/server";
 import * as fs from "node:fs";
 import * as path from "node:path";
@@ -37,7 +50,6 @@ export function registerDesignTokensTool(context: ServerContext): void {
     async ({ category }) => {
       context.debugLog(`Executing get_design_tokens category lookup for: "${category}"`);
 
-      // 1. Resolve Style Dictionary path boundaries relative to absolute components directory coordinates
       const v2Root = path.resolve(context.config.paths.components, "../../../");
       const primaryTokensPath = path.join(v2Root, "theme-registry", "dist", "tokens.json");
       let rawTokens = "";
@@ -45,7 +57,6 @@ export function registerDesignTokensTool(context: ServerContext): void {
       if (fs.existsSync(primaryTokensPath)) {
         rawTokens = fs.readFileSync(primaryTokensPath, "utf-8");
       } else {
-        // 2. Fallback: Parse the source category file directly if compilation task hasn't run
         const backupPath = path.join(v2Root, "theme-registry", "tokens", `${category}.json`);
         context.debugLog(`Primary tokens.json absent. Falling back to category file: ${backupPath}`);
 
@@ -60,8 +71,6 @@ export function registerDesignTokensTool(context: ServerContext): void {
 
       try {
         const tokensData = JSON.parse(rawTokens);
-        
-        // Style Dictionary structures can wrap tokens inside root arrays or fields matching the category name
         const filteredTokens = tokensData[category] || tokensData;
 
         context.debugLog(`Successfully resolved token primitives for category context.`);

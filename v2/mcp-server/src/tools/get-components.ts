@@ -1,19 +1,26 @@
 /**
  * @file get-components.ts
- * @description AgnosticUI Component Schema Resolution Tool
+ * @description Component Schema Resolution Endpoint for the AgnosticUI MCP Server
  * 
- * PURPOSE:
- * Bridges the gap between an AI agent and the codebase by parsing the project's 
- * generated 'custom-elements.json' manifest. It exposes real component structures, 
- * allowed properties, conditional spreads, slots, and attributes.
+ * PURPOSE & LLM UTILITY:
+ * This tool prevents prop hallucinations when an LLM scaffolds or refactors an 
+ * AgnosticUI component. The LLM invokes this tool to obtain the exact public slots, 
+ * observed attributes, and metadata constraints derived from the code manifest.
  * 
- * WHY IT'S USEFUL:
- * Prevents AI assistants from guessing or hallucinating framework wrapper attributes 
- * (e.g., confusing properties between ReactAgInput and VueInput). By serving up exact 
- * API contracts on-demand, it guarantees that code generation steps match your actual 
- * workspace compilation boundaries from day one.
+ * WHAT IT RETURNS (Happy Path JSON Payload):
+ * {
+ *   "component": "AgButton",
+ *   "active_framework": "react",
+ *   "import_pattern": "import { ReactButton } from \"@agnosticui/react\"",
+ *   "module_path": "src/components/button.ts",
+ *   "exports": [ ... ],
+ *   "declarations": [ ... ],
+ *   "noUndefinedProps": true
+ * }
+ * The LLM reads the 'import_pattern' to write correct imports instantly, uses 'exports' 
+ * and 'declarations' to match strict attribute parameters, and checks 'noUndefinedProps' 
+ * to determine if explicit spread guardrails are required in React environments.
  */
-
 import { fromJsonSchema } from "@modelcontextprotocol/server";
 import * as fs from "node:fs";
 import * as path from "node:path";
@@ -38,9 +45,6 @@ export function registerGetComponentsTool(context: ServerContext): void {
     async ({ component_name }) => {
       context.debugLog(`Executing get_component_schema lookup for entity: "${component_name}"`);
       
-      // 1. Resolve absolute location of the custom element manifest artifact
-      // context.config.paths.components points to "v2/src/components/ag" or configured equivalent.
-      // We resolve lib relative to the master v2 folder (one level above components path)
       const v2Root = path.resolve(context.config.paths.components, "../../../");
       const manifestPath = path.join(v2Root, "lib", "custom-elements.json");
       context.debugLog(`Resolving manifest absolute path trace: ${manifestPath}`);
@@ -57,7 +61,6 @@ export function registerGetComponentsTool(context: ServerContext): void {
         const rawManifest = fs.readFileSync(manifestPath, "utf-8");
         const manifest = JSON.parse(rawManifest);
         
-        // 2. Scan manifest modules block to match the target component by name or internal declaration
         const matchedModule = manifest.modules?.find((mod: any) =>
           mod.exports?.some((exp: any) => 
             exp.name.toLowerCase() === component_name.toLowerCase() ||
@@ -73,12 +76,10 @@ export function registerGetComponentsTool(context: ServerContext): void {
           };
         }
 
-        // 3. Infer active framework targets to map exact wrapper syntax constraints
         const activeFramework = context.config.framework;
         const prefix = activeFramework === "react" ? "React" : activeFramework === "vue" ? "Vue" : "Ag";
         const cleanName = component_name.replace(/^Ag/, "");
         
-        // 4. Synthesize structural configuration properties layout payload
         const responsePayload = {
           component: component_name,
           active_framework: activeFramework,
@@ -86,7 +87,7 @@ export function registerGetComponentsTool(context: ServerContext): void {
           module_path: matchedModule.path,
           exports: matchedModule.exports || [],
           declarations: matchedModule.declarations || [],
-          noUndefinedProps: activeFramework === "react", // Guard against prop erasure inside React environments
+          noUndefinedProps: activeFramework === "react",
         };
 
         context.debugLog(`Schema resolution successful. Dispatching payload metadata frame.`, responsePayload);
