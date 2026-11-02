@@ -36,10 +36,10 @@ async function runLocalMcpTest() {
   const registeredTools = context.server._registeredTools;
 
   // 2. Format the MCP registry capabilities into standard JSON-Schema objects for Ollama
-  // Fix Applied: Access the raw .jsonSchema directly from inputSchema instead of passing the StandardSchemaWithJSON wrapper object
+  // Fix Applied: Extract the JSON Schema converter from the "~standard" wrapper targeting draft-07 explicitly
   const ollamaTools = Object.keys(registeredTools).map((toolName) => {
     const tool = registeredTools[toolName];
-    const rawSchema = tool.inputSchema?.jsonSchema || { type: "object", properties: {} };
+    const rawSchema = tool.inputSchema?.["~standard"]?.jsonSchema?.input?.({ target: "draft-07" }) || { type: "object", properties: {} };
     return {
       type: "function",
       function: {
