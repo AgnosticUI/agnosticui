@@ -88,8 +88,17 @@ export function registerDesignTokensTool(context: ServerContext): void {
               }, {});
           }
         } else {
-          // Native source configuration files are already category scoped
-          filteredTokens = tokensData;
+          // Normalize the native-source fallback in the category-filtering branch so radii returns a flat map
+          const radiusTokens = category === "radii" ? tokensData.radius : tokensData;
+          filteredTokens =
+            category === "radii"
+              ? Object.fromEntries(
+                  Object.entries(radiusTokens || {}).map(([key, token]) => [
+                    key,
+                    token && typeof token === "object" && "value" in token ? (token as any).value : token,
+                  ])
+                )
+              : tokensData;
         }
 
         context.debugLog(`Successfully resolved token primitives for category context.`);
