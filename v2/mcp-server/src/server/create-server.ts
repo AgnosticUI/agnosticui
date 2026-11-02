@@ -44,10 +44,8 @@ function findWorkspaceConfig(): { config: WorkspaceConfig & { paths: { reference
     currentDir = path.dirname(currentDir);
   }
 
-  // Consistent lookup mapping to mcp-server root directory from src/ or compiled dist/ targets
-  const structuralParent = __dirname.includes("dist")
-    ? path.resolve(__dirname, "../../")
-    : path.resolve(__dirname, "../");
+  // Both src/server and dist/server targets reside exactly two levels deep from the package root folder
+  const structuralParent = path.resolve(__dirname, "../../");
   const parentConfigPath = path.join(structuralParent, "agnosticui.config.json");
   
   if (fs.existsSync(parentConfigPath)) {
