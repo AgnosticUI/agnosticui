@@ -81,17 +81,19 @@ export function registerGetComponentsTool(context: ServerContext): void {
         const activeFramework = context.config.framework;
         const prefix = activeFramework === "react" ? "React" : activeFramework === "vue" ? "Vue" : "Ag";
         const cleanName = component_name.replace(/^Ag/, "");
-        const lowerClean = cleanName.toLowerCase();
+        
+        // Convert multi-word PascalCase into valid kebab-case subpaths (e.g. IconButton -> icon-button)
+        const kebabSubpath = cleanName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
         
         // Dynamically map paths to point cleanly into the published agnosticui-core package sub-directories
         let importPattern = "";
         if (activeFramework === "react") {
-          importPattern = `import { ${prefix}${cleanName} } from "agnosticui-core/${lowerClean}/react"`;
+          importPattern = `import { ${prefix}${cleanName} } from "agnosticui-core/${kebabSubpath}/react"`;
         } else if (activeFramework === "vue") {
-          importPattern = `import { ${prefix}${cleanName} } from "agnosticui-core/${lowerClean}/vue"`;
+          importPattern = `import { ${prefix}${cleanName} } from "agnosticui-core/${kebabSubpath}/vue"`;
         } else {
           // Lit and standard web components map directly to the component root sub-path
-          importPattern = `import { ${prefix}${cleanName} } from "agnosticui-core/${lowerClean}"`;
+          importPattern = `import { ${prefix}${cleanName} } from "agnosticui-core/${kebabSubpath}"`;
         }
 
         const responsePayload = {
