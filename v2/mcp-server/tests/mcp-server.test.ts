@@ -4,7 +4,7 @@
  */
 
 import { describe, test, expect, beforeEach } from "vitest";
-import { createMcpServer } from "../src/server/create-server.js";
+import { createMcpServer } from "../src/server/create-server.ts";
 
 describe("AgnosticUI MCP Server Core Infrastructure Verification Harness", () => {
   let context: ReturnType<typeof createMcpServer>;

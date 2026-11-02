@@ -75,6 +75,17 @@ Execute the following orchestration scripts from the `v2/mcp-server/` package bo
 - `npm run test:verbose`: Runs your continuous automated test verification matrix with internal verbosity flags raised (`AGNOSTICUI_VERBOSE=true`), streaming clean, uncorrupted server data dumps strictly down `stderr`.
 - `npm run test:watch`: Spins up a continuous test-runner watch loop window to intercept and evaluate file additions instantly.
 
+> [!TIP]
+> **Troubleshooting Native Binding Errors (`rolldown` / `wasm32`)**
+>
+> If running `npm run test` throws a startup crash regarding missing native bindings (e.g., `Cannot find module '@rolldown/binding...'`), your local package manager lockfile has fallen out of parity with your machine's CPU architecture. This is a known nuance when working across mixed environments (e.g., Apple Silicon vs. Intel/Linux).
+>
+> To resolve it instantly, force a clean hydration sweep of the native dependencies:
+>
+> ```bash
+> rm -rf node_modules package-lock.json && npm install
+> ```
+
 ### 4.3 Offline Local Model Playground Loops
 
 - `npm run test:local`: Compiles the repository distribution matrix automatically and launches an offline, zero-cost multi-turn tool-calling conversation test harness with your default model target (`qwen2.5-coder:1.5b`).
