@@ -79,14 +79,14 @@ export function registerSkinPropertiesTool(context: ServerContext): void {
         const rawCss = fs.readFileSync(targetFilePath, "utf-8");
         const variables: Record<string, string> = {};
 
-        // Matches declarations regardless of trailing semicolon boundaries, bounded tightly to line/rule layouts
-        const cssVarRegex = /--ag-([^:]+):\s*([^;\}\r\n]+);?/g;
+        // Validates names exactly while allowing multiline content captures without breaking on var() lookups
+        const cssVarRegex = /(--ag-[\w-]+)\s*:\s*([^;}]+)/g;
         let match;
 
         while ((match = cssVarRegex.exec(rawCss)) !== null) {
           const propName = match[1].trim();
           const propValue = match[2].trim();
-          variables[`--ag-${propName}`] = propValue;
+          variables[propName] = propValue;
         }
 
         context.debugLog(`Successfully extracted ${Object.keys(variables).length} skin overrides definitions.`);
