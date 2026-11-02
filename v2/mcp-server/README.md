@@ -10,8 +10,8 @@ The server exposes specialized JSON-RPC capabilities over standard input/output 
 
 1. **`get_component_schema`**: Returns precise public attributes, slots, events, and framework wrapper imports by analyzing the workspace's metadata manifest.
 2. **`generate_streamed_layout`**: Continuous graph-level validation that executes a multi-pass topological audit using a Draft-07 compiled AJV validator to catch dead children references before layouts are committed.
-3. **`get_design_tokens`** _(Pending Phase 4.3)_: Exposes `--ag-<prop>` variables directly from compiled Style Dictionary dictionaries.
-4. **`resolve_skin_properties`** _(Pending Phase 4.3)_: Supplies overrides for artistic visuals and visual sub-themes.
+3. **`get_design_tokens`**: Exposes `--ag-<prop>` variables directly from compiled Style Dictionary dictionaries.
+4. **`resolve_skin_properties`**: Supplies overrides for artistic visuals and visual sub-themes.
 
 ---
 
@@ -39,9 +39,9 @@ If code structures diverge from compiled manifest definitions, the CI pipeline d
 
 ---
 
-## 3. Local Installation & Development Workflow
+## 3. Local Installation & Configuration Lifecycle
 
-This server is built using modern **MCP SDK v2** standalone architectures, decoupled runtime environments, and TypeScript 6 compilation setups.
+This server is built using modern **MCP SDK v2** standalone architectures, decoupled runtime environments, and TypeScript 7 compilation setups.
 
 ### 3.1 Initial Hydration Loop
 
@@ -49,16 +49,33 @@ Dependencies are fetched dynamically via pure CLI invocation scripts to intercep
 
 ```bash
 # Ingest modern core transport layers and Draft-07 validators
-npm install @modelcontextprotocol/server ajv
+npm install @modelcontextprotocol/server ajv ollama
 
 # Pull absolute latest development environment tools
 npm install -D typescript@latest vitest@latest tsx@latest @types/node@latest
 ```
 
-### 3.2 Available Target Execution Tasks
+---
 
-Execute scripts from the `v2/mcp-server/` directory:
+## 4. Operational Task Automation (`package.json`)
 
-- `npm run typecheck`: Evaluates absolute boundary targets strictly via `tsc --noEmit`.
-- `npm run dev`: Hot-reloads the server instance immediately over standard I/O channels using `tsx watch`.
-- `npm run test`: Executes continuous automation test suites via `vitest`.
+Execute the following orchestration scripts from the `v2/mcp-server/` package boundary to govern testing, compiling, or local sandbox executions:
+
+### 4.1 Production Compilation & Baseline Validation
+
+- `npm run clean`: Cleanses distribution compilation outputs completely by removing the `./dist` workspace folder layout directory.
+- `npm run build`: Compiles TypeScript source configurations down into execution-ready ECMAScript Modules inside `./dist/`.
+- `npm run typecheck`: Evaluates absolute architectural boundaries strictly using the TypeScript compiler flag (`tsc --noEmit`).
+- `npm run start`: Boots up the built standalone background process pipeline (`node dist/index.js`) to listen over standard input/output channels.
+- `npm run dev`: Hot-reloads the server instance immediately over standard I/O channels for real-time diagnostic feedback loops using `tsx watch`.
+
+### 4.2 Programmatic Verification Testing
+
+- `npm run test`: Executes the complete programmatic verification suite via `vitest` in standard single-run layout mode.
+- `npm run test:verbose`: Runs your continuous automated test verification matrix with internal verbosity flags raised (`AGNOSTICUI_VERBOSE=true`), streaming clean, uncorrupted server data dumps strictly down `stderr`.
+- `npm run test:watch`: Spins up a continuous test-runner watch loop window to intercept and evaluate file additions instantly.
+
+### 4.3 Offline Local Model Playground Loops
+
+- `npm run test:local`: Compiles the repository distribution matrix automatically and launches an offline, zero-cost multi-turn tool-calling conversation test harness with your default model target (`qwen2.5-coder:1.5b`).
+- `npm run test:local:watch`: Compiles current deltas and executes the multi-turn pipeline sandbox wrapper while dynamically overriding the system target inline to leverage `llama3.2:latest`.

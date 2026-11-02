@@ -23,7 +23,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:verbose": "AGNOSTICUI_VERBOSE=true npm run test",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:local": "npm run build && node test-mcp-local.js",
+    "test:local:watch": "npm run build && OLLAMA_MODEL=llama3.2:latest node test-mcp-local.js"
   },
   "keywords": [
     "mcp",
