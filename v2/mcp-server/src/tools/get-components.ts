@@ -68,7 +68,7 @@ export function registerGetComponentsTool(context: ServerContext): void {
         const cleanName = component_name.replace(/^Ag/, "");
         const kebabTagName = `ag-${cleanName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()}`;
         
-        const matchedModule = manifest.modules?.find((mod: any) =>
+        const matchingModules = manifest.modules?.filter((mod: any) =>
           mod.exports?.some((exp: any) => {
             const expName = exp.name?.toLowerCase();
             const declName = exp.declaration?.name?.toLowerCase();
@@ -80,7 +80,11 @@ export function registerGetComponentsTool(context: ServerContext): void {
               declName === kebabTagName
             );
           })
-        );
+        ) ?? [];
+
+        // Prefer modules that declare component properties over re-exporting barrel files
+        const matchedModule =
+          matchingModules.find((mod: any) => mod.declarations?.length > 0) ?? matchingModules[0];
 
         if (!matchedModule) {
           context.debugLog(`Lookup Warning: Component signature absent from manifest register modules.`);
