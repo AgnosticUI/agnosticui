@@ -2,7 +2,7 @@
   "version": "2.0.0-alpha",
   "framework": "react",
   "paths": {
-    "reference": "../agnosticui",
+    "reference": "../lib",
     "components": "../src/components/ag"
   },
   "components": {}
