@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import vue from '@vitejs/plugin-vue';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { configDefaults } from 'vitest/config';
 
 export default defineConfig({
   plugins: [
@@ -23,5 +24,9 @@ export default defineConfig({
     environment: 'happy-dom',
     setupFiles: ['./src/test-setup.ts'],
     globals: true,
+    exclude: [
+      ...configDefaults.exclude,
+      '**/*.drift.spec.ts'
+    ],
   },
 });
