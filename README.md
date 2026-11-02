@@ -262,6 +262,6 @@ Full package indexing and release tracking are underway.
 
 AgnosticUI is architected and maintained by Rob Levin. If you're looking for a frontend architect that specializes in design systems, custom CLI tooling, and agent-driven UIs, let's talk.
 
-- **LinkedIn:** [linkedin.com/in/robinlevin](https://www.linkedin.com/in/robinlevin/)
+- **Inquiries & Consulting:** Reach out via [LinkedIn](https://www.linkedin.com/in/robinlevin/)
 
 </details>
