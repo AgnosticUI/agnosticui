@@ -26,6 +26,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { ServerContext } from "../server/create-server.js";
 
+
 export function registerGetComponentsTool(context: ServerContext): void {
   context.server.registerTool(
     "get_component_schema",
@@ -45,8 +46,8 @@ export function registerGetComponentsTool(context: ServerContext): void {
     async ({ component_name }) => {
       context.debugLog(`Executing get_component_schema lookup for entity: "${component_name}"`);
       
-      const v2Root = path.resolve(context.config.paths.components, "../../../");
-      const manifestPath = path.join(v2Root, "lib", "custom-elements.json");
+      const lookupRoot = context.config.paths.reference || path.resolve(context.config.paths.components, "../../../lib");
+      const manifestPath = path.join(lookupRoot, "custom-elements.json");
       context.debugLog(`Resolving manifest absolute path trace: ${manifestPath}`);
       
       if (!fs.existsSync(manifestPath)) {
@@ -60,11 +61,12 @@ export function registerGetComponentsTool(context: ServerContext): void {
       try {
         const rawManifest = fs.readFileSync(manifestPath, "utf-8");
         const manifest = JSON.parse(rawManifest);
+        const lowerTarget = component_name.toLowerCase();
         
         const matchedModule = manifest.modules?.find((mod: any) =>
           mod.exports?.some((exp: any) => 
-            exp.name.toLowerCase() === component_name.toLowerCase() ||
-            exp.declaration?.name.toLowerCase() === component_name.toLowerCase()
+            exp.name?.toLowerCase() === lowerTarget ||
+            exp.declaration?.name?.toLowerCase() === lowerTarget
           )
         );
 
@@ -79,11 +81,16 @@ export function registerGetComponentsTool(context: ServerContext): void {
         const activeFramework = context.config.framework;
         const prefix = activeFramework === "react" ? "React" : activeFramework === "vue" ? "Vue" : "Ag";
         const cleanName = component_name.replace(/^Ag/, "");
+        const lowerClean = cleanName.toLowerCase();
         
+        const importPattern = activeFramework === "react"
+          ? `import { ${prefix}${cleanName} } from "agnosticui-core/${lowerClean}/react"`
+          : `import { ${prefix}${cleanName} } from "@agnosticui/${activeFramework}"`;
+
         const responsePayload = {
           component: component_name,
           active_framework: activeFramework,
-          import_pattern: `import { ${prefix}${cleanName} } from "@agnosticui/${activeFramework}"`,
+          import_pattern: importPattern,
           module_path: matchedModule.path,
           exports: matchedModule.exports || [],
           declarations: matchedModule.declarations || [],
