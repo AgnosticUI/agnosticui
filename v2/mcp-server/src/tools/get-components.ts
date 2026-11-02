@@ -61,13 +61,25 @@ export function registerGetComponentsTool(context: ServerContext): void {
       try {
         const rawManifest = fs.readFileSync(manifestPath, "utf-8");
         const manifest = JSON.parse(rawManifest);
+        
         const lowerTarget = component_name.toLowerCase();
         
+        // Derive custom-element tag formatting (e.g., 'AgAccordion' -> 'ag-accordion')
+        const cleanName = component_name.replace(/^Ag/, "");
+        const kebabTagName = `ag-${cleanName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()}`;
+        
         const matchedModule = manifest.modules?.find((mod: any) =>
-          mod.exports?.some((exp: any) => 
-            exp.name?.toLowerCase() === lowerTarget ||
-            exp.declaration?.name?.toLowerCase() === lowerTarget
-          )
+          mod.exports?.some((exp: any) => {
+            const expName = exp.name?.toLowerCase();
+            const declName = exp.declaration?.name?.toLowerCase();
+            
+            return (
+              expName === lowerTarget ||
+              declName === lowerTarget ||
+              expName === kebabTagName ||
+              declName === kebabTagName
+            );
+          })
         );
 
         if (!matchedModule) {
@@ -80,7 +92,6 @@ export function registerGetComponentsTool(context: ServerContext): void {
 
         const activeFramework = context.config.framework;
         const prefix = activeFramework === "react" ? "React" : activeFramework === "vue" ? "Vue" : "Ag";
-        const cleanName = component_name.replace(/^Ag/, "");
         
         // Convert multi-word PascalCase into valid kebab-case subpaths (e.g. IconButton -> icon-button)
         const kebabSubpath = cleanName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();

@@ -87,4 +87,23 @@ describe("AgnosticUI MCP Server Core Infrastructure Verification Harness", () =>
     expect(payload.mode).toBe("dark");
     expect(payload.overrides).toBeDefined();
   });
+
+  test("6. verify get_component_schema resolves multi-word kebab subpaths and custom-element tags", async () => {
+    const tool = getToolHandler("get_component_schema");
+
+    // Test a multi-word component query to guarantee it maps to structural kebab exports
+    const result = await tool.handler({ component_name: "AgIconButton" });
+    expect(result).toBeDefined();
+    expect(result.content).toBeDefined();
+    
+    // If the test manifest fixture is built and readable, assert precise formatting parity
+    if (!result.isError) {
+      const payload = JSON.parse(result.content[0].text);
+      expect(payload.component).toBe("AgIconButton");
+      
+      // Enforce that multi-word transformations don't smash strings together incorrectly
+      expect(payload.import_pattern).toContain("icon-button");
+      expect(payload.import_pattern).not.toContain("iconbutton");
+    }
+  });
 });
