@@ -61,6 +61,37 @@ describe("AgnosticUI MCP Server Core Infrastructure Verification Harness", () =>
     expect(report.errors[0]).toContain("references a missing or dead child ID");
   });
 
+  test("3b. detects duplicate node IDs", async () => {
+    const tool = getToolHandler("generate_streamed_layout");
+    
+    const result = await tool.handler({
+      nodes: [
+        { id: "duplicate-id", component: "AgCard" },
+        { id: "duplicate-id", component: "AgCard" },
+      ],
+    });
+    
+    const report = JSON.parse(result.content[0].text);
+    expect(report.valid).toBe(false);
+    expect(report.errors.some((e: string) => e.includes("Duplicate node ID"))).toBe(true);
+  });
+
+  test("3c. detects cycles in disconnected graph components", async () => {
+    const tool = getToolHandler("generate_streamed_layout");
+    
+    const result = await tool.handler({
+      nodes: [
+        { id: "root", component: "AgCard" },
+        { id: "node-a", component: "AgCard", children: ["node-b"] },
+        { id: "node-b", component: "AgCard", children: ["node-a"] },
+      ],
+    });
+    
+    const report = JSON.parse(result.content[0].text);
+    expect(report.valid).toBe(false);
+    expect(report.errors.some((e: string) => e.includes("Cyclic rendering loop"))).toBe(true);
+  });
+
   test("4. verify get_design_tokens returns structured dictionary details", async () => {
     const tool = getToolHandler("get_design_tokens");
 
