@@ -10,16 +10,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export interface ServerContext {
   server: McpServer;
-  config: WorkspaceConfig;
+  config: WorkspaceConfig & { paths: { reference?: string } };
   workspaceRoot: string;
   verbose: boolean;
   debugLog: (message: string, data?: any) => void;
 }
 
-/**
- * Cleanly crawls upwards to locate a physical agnosticui.config.json file
- */
-function findWorkspaceConfig(): { config: WorkspaceConfig; rootPath: string } {
+function findWorkspaceConfig(): { config: WorkspaceConfig & { paths: { reference?: string } }; rootPath: string } {
   let currentDir = process.cwd();
   const rootCheck = path.parse(currentDir).root;
 
@@ -28,15 +25,14 @@ function findWorkspaceConfig(): { config: WorkspaceConfig; rootPath: string } {
     if (fs.existsSync(configPath)) {
       try {
         const rawContent = fs.readFileSync(configPath, "utf-8");
-        const rawConfig = JSON.parse(rawContent) as WorkspaceConfig;
+        const rawConfig = JSON.parse(rawContent) as WorkspaceConfig & { paths: { reference?: string } };
 
-        // Production Fix: Transform relative configuration target vectors into absolute system paths
-        // based completely on the directory location of the agnosticui.config.json file itself.
-        const absoluteConfig: WorkspaceConfig = {
+        const absoluteConfig = {
           ...rawConfig,
           paths: {
             ...rawConfig.paths,
-            components: path.resolve(currentDir, rawConfig.paths.components)
+            components: path.resolve(currentDir, rawConfig.paths.components),
+            reference: rawConfig.paths.reference ? path.resolve(currentDir, rawConfig.paths.reference) : undefined
           }
         };
 
@@ -48,20 +44,29 @@ function findWorkspaceConfig(): { config: WorkspaceConfig; rootPath: string } {
     currentDir = path.dirname(currentDir);
   }
 
-  // Pure fallback for isolated test automation contexts
-  const structuralParent = path.resolve(__dirname, "../../../");
+  // Consistent lookup mapping to mcp-server root directory from src/ or compiled dist/ targets
+  const structuralParent = __dirname.includes("dist")
+    ? path.resolve(__dirname, "../../")
+    : path.resolve(__dirname, "../");
   const parentConfigPath = path.join(structuralParent, "agnosticui.config.json");
   
   if (fs.existsSync(parentConfigPath)) {
-    const rawConfig = JSON.parse(fs.readFileSync(parentConfigPath, "utf-8")) as WorkspaceConfig;
-    const absoluteConfig: WorkspaceConfig = {
-      ...rawConfig,
-      paths: {
-        ...rawConfig.paths,
-        components: path.resolve(structuralParent, rawConfig.paths.components)
-      }
-    };
-    return { config: absoluteConfig, rootPath: structuralParent };
+    try {
+      const rawContent = fs.readFileSync(parentConfigPath, "utf-8");
+      const rawConfig = JSON.parse(rawContent) as WorkspaceConfig & { paths: { reference?: string } };
+      
+      const absoluteConfig = {
+        ...rawConfig,
+        paths: {
+          ...rawConfig.paths,
+          components: path.resolve(structuralParent, rawConfig.paths.components),
+          reference: rawConfig.paths.reference ? path.resolve(structuralParent, rawConfig.paths.reference) : undefined
+        }
+      };
+      return { config: absoluteConfig, rootPath: structuralParent };
+    } catch (error) {
+      throw new Error(`Workspace configuration file at ${parentConfigPath} is malformed.`);
+    }
   }
 
   throw new Error(
