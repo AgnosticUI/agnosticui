@@ -15,6 +15,7 @@
 
 import { createMcpServer } from "./dist/server/create-server.js";
 import ollama from "ollama";
+import process from "node:process";
 
 // ============================================================================
 // LOCAL CONFIGURATION ANCHOR
@@ -35,14 +36,16 @@ async function runLocalMcpTest() {
   const registeredTools = context.server._registeredTools;
 
   // 2. Format the MCP registry capabilities into standard JSON-Schema objects for Ollama
+  // Fix Applied: Access the raw .jsonSchema directly from inputSchema instead of passing the StandardSchemaWithJSON wrapper object
   const ollamaTools = Object.keys(registeredTools).map((toolName) => {
     const tool = registeredTools[toolName];
+    const rawSchema = tool.inputSchema?.jsonSchema || { type: "object", properties: {} };
     return {
       type: "function",
       function: {
         name: toolName,
         description: tool.description,
-        parameters: tool.inputSchema,
+        parameters: rawSchema,
       },
     };
   });
@@ -51,8 +54,13 @@ async function runLocalMcpTest() {
   console.log(`🧠 Prompting ${TARGET_MODEL} locally...`);
 
   // 3. Pose a layout question that requires absolute system file variables
+  // Enforce structural coordination guidelines onto lightweight models via explicit system instruction
   // TIP: Swap this prompt string when testing skin configurations or components!
   const messages = [
+    {
+      role: "system",
+      content: "You are a precise frontend assistant with direct access to local workspace tools. If the user asks for specific token categories, schemas, or configurations, you MUST call the appropriate tool. Do not guess hex codes or make up values yourself."
+    },
     { 
       role: "user", 
       content: "I want to style a custom container button. Can you look up what the exact Style Dictionary token overrides are for the 'radii' category so I don't guess the pixel sizing?" 
@@ -74,7 +82,7 @@ async function runLocalMcpTest() {
     const call = response.message.tool_calls[0];
     toolName = call.function.name;
     toolArgs = call.function.arguments;
-    console.log(`\n🎯 SUCCESS: Qwen issued a standard tool call array structure.`);
+    console.log(`\n🎯 SUCCESS: Model issued a standard tool call structure.`);
   } else {
     // 5. EXTRACT INTENT - PATH B: Fallback string parser to scrub markdown blocks from small models
     try {
@@ -96,7 +104,7 @@ async function runLocalMcpTest() {
       if (parsedContent.name) {
         toolName = parsedContent.name;
         toolArgs = parsedContent.arguments || {};
-        console.log(`\n🎯 SUCCESS: Qwen issued a text fallback tool call.`);
+        console.log(`\n🎯 SUCCESS: Model issued a text fallback tool call.`);
       }
     } catch (e) {
       // No valid tool selection or JSON format found; message is standard conversational text
@@ -116,19 +124,24 @@ async function runLocalMcpTest() {
   // 6. EXECUTE & RE-PROMPT: Feed the server data back to the model for conversational code output
   if (toolName && registeredTools[toolName]) {
     console.log(`📥 Tool identified: "${toolName}"`);
-    console.log(`📥 Arguments matching:`, toolArgs);
-    console.log(`⚙️ Executing server code path...`);
     
-    // Guardrail: If Qwen mixed up argument labels (e.g. using 'prop' instead of 'category'), align it
-    if (toolName === "get_design_tokens" && toolArgs && !toolArgs.category) {
-      toolArgs.category = toolArgs.prop || "radii";
+    // Fix Applied: Normalize nullish, blank, or partial toolArgs down to a safe object before processing guardrails or execution
+    if (!toolArgs || typeof toolArgs !== "object") {
+      toolArgs = {};
+    }
+    
+    // Guardrail: If Qwen mixed up argument labels (e.g. using 'prop' or 'key' instead of 'category'), align it
+    if (toolName === "get_design_tokens") {
+      if (!toolArgs.category && (toolArgs.prop || toolArgs.key)) {
+        toolArgs.category = toolArgs.prop || toolArgs.key;
+      }
+      if (!toolArgs.category) {
+        toolArgs.category = "radii";
+      }
     }
 
     // Guardrail: If Qwen targeted a skin properties tool but dropped layout objects, hydrate defaults
     if (toolName === "resolve_skin_properties") {
-      if (!toolArgs || typeof toolArgs !== "object") {
-        toolArgs = {};
-      }
       if (!toolArgs.skin_name) {
         toolArgs.skin_name = "autumn-slate";
       }
@@ -137,17 +150,23 @@ async function runLocalMcpTest() {
       }
     }
 
+    console.log(`📥 Cleaned arguments:`, toolArgs);
+    console.log(`⚙️ Executing server code path...`);
+
     const toolHandler = registeredTools[toolName];
     const result = await toolHandler.handler(toolArgs);
     const serverPayload = result.content[0].text;
     
     console.log(`\n📤 SERVER RESPONSE RECEIVED (Payload length: ${serverPayload.length} chars)`);
+    console.log(`\n--- DATA PAYLOAD ---\n${serverPayload}\n--------------------`);
     console.log(`🧠 Feeding data back to ${TARGET_MODEL} to generate your CSS styles...`);
 
     // Append the assistant's tool call choice and the tool's actual data payload to the chat history
+    // Fix Applied: Provide the explicit tool name matching Ollama's native tool-response criteria
     messages.push(response.message);
     messages.push({
       role: "tool",
+      name: toolName,
       content: serverPayload
     });
 
