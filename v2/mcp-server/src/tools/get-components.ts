@@ -11,7 +11,7 @@
  * {
  *   "component": "AgButton",
  *   "active_framework": "react",
- *   "import_pattern": "import { ReactButton } from \"@agnosticui/react\"",
+ *   "import_pattern": "import { ReactButton } from \"agnosticui-core/button/react\"",
  *   "module_path": "src/components/button.ts",
  *   "exports": [ ... ],
  *   "declarations": [ ... ],
@@ -83,9 +83,16 @@ export function registerGetComponentsTool(context: ServerContext): void {
         const cleanName = component_name.replace(/^Ag/, "");
         const lowerClean = cleanName.toLowerCase();
         
-        const importPattern = activeFramework === "react"
-          ? `import { ${prefix}${cleanName} } from "agnosticui-core/${lowerClean}/react"`
-          : `import { ${prefix}${cleanName} } from "@agnosticui/${activeFramework}"`;
+        // Dynamically map paths to point cleanly into the published agnosticui-core package sub-directories
+        let importPattern = "";
+        if (activeFramework === "react") {
+          importPattern = `import { ${prefix}${cleanName} } from "agnosticui-core/${lowerClean}/react"`;
+        } else if (activeFramework === "vue") {
+          importPattern = `import { ${prefix}${cleanName} } from "agnosticui-core/${lowerClean}/vue"`;
+        } else {
+          // Lit and standard web components map directly to the component root sub-path
+          importPattern = `import { ${prefix}${cleanName} } from "agnosticui-core/${lowerClean}"`;
+        }
 
         const responsePayload = {
           component: component_name,
