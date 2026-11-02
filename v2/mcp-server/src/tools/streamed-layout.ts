@@ -81,6 +81,7 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
         const runtimeErrors: string[] = [];
         const developerHints: string[] = [];
 
+        // 1. Structural Schema Properties Pass
         for (const node of nodes) {
           const valid = validate(node);
           if (!valid && validate.errors) {
@@ -90,6 +91,18 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
           }
         }
 
+        // 2. Duplicate Node ID Validation Check
+        const observedIds = new Set<string>();
+        for (const node of nodes) {
+          if (node.id) {
+            if (observedIds.has(node.id)) {
+              runtimeErrors.push(`Topological Error: Duplicate node ID detected in layout graph array: '${node.id}'`);
+            }
+            observedIds.add(node.id);
+          }
+        }
+
+        // 3. Topological Reference Pass (Dead children lookup)
         const nodeMap = new Map(nodes.map((n) => [n.id, n]));
         for (const node of nodes) {
           if (node.children && Array.isArray(node.children)) {
@@ -98,6 +111,41 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
                 runtimeErrors.push(`Topological Error: Node '${node.id}' references a missing or dead child ID: '${childId}'.`);
                 developerHints.push(`Ensure that nested children fields map strictly back to sibling node array elements present in the registry payload.`);
               }
+            }
+          }
+        }
+
+        // 4. Cycle Detection Pass via Depth-First Search (DFS)
+        const visiting = new Set<string>();
+        const visited = new Set<string>();
+        let graphHasCycle = false;
+
+        function checkCyclesDfs(nodeId: string): boolean {
+          visiting.add(nodeId);
+          const current = nodeMap.get(nodeId);
+          
+          if (current?.children && Array.isArray(current.children)) {
+            for (const childId of current.children) {
+              if (visiting.has(childId)) {
+                runtimeErrors.push(`Topological Error: Cyclic rendering loop dependency layout detected traversing branch containing node ID: '${childId}'`);
+                return true;
+              }
+              if (!visited.has(childId) && nodeMap.has(childId)) {
+                if (checkCyclesDfs(childId)) return true;
+              }
+            }
+          }
+          
+          visiting.delete(nodeId);
+          visited.add(nodeId);
+          return false;
+        }
+
+        for (const node of nodes) {
+          if (!visited.has(node.id)) {
+            if (checkCyclesDfs(node.id)) {
+              graphHasCycle = true;
+              break;
             }
           }
         }
