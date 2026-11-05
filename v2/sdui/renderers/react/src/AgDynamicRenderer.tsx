@@ -514,7 +514,7 @@ function renderNode(
           errorMessage={node.errorMessage}
           helpText={node.helpText}
           onClick={() => dispatch(node.on_click, actions)}
-          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: ((e as unknown) as React.ChangeEvent<HTMLInputElement>).target?.value ?? ((e as unknown) as CustomEvent<{ value: string }>).detail?.value ?? '' })} />
+          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as any).target?.value ?? (e as any).detail?.value ?? '' })} />
       );
 
     case 'AgIntlFormatter':
