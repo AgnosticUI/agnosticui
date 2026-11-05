@@ -4,20 +4,29 @@
 
 ```shell
 v2/sdui/demo-support-center/
-├── docs/
-│   └── e2e-support-agent-prd.md     # The approved PRD you provided
-├── src/
-│   ├── db/
-│   │   └── mockData.ts              # Isolated mock database engine
-│   ├── server/
-│   │   ├── gateway.ts               # Hono API Gateway with progressive parser
-│   │   └── cloud-kill-switch.ts     # Edge circuit breaker safety script
-│   └── mcp/
-│       ├── schema/
-│       │   └── agnosticui-schema.json # Authorized UI component definitions
-│       └── server.ts                # Background MCP Server with AJV Guard Shield
-├── promptfoo.yaml                   # LLM automated assertion testing suite
+├── docs
+│   ├── e2e-support-agent-prd.md     # Approved project PRD
+│   └── README.md
+├── package-lock.json
 ├── package.json                     # Workspace dependency tree
+├── src
+│   ├── client
+│   │   ├── __tests__
+│   │   │   └── streamClient.test.ts # Verifies async iterator streaming mechanics
+│   │   └── streamClient.ts          # Fetch stream client with for-await...of loops
+│   ├── db
+│   │   └── mockData.ts              # Isolated mock database engine
+│   ├── mcp
+│   │   └── schema
+│   │       └── agnosticui-schema.json # Authorized JSON schema layout constraints
+│   └── server
+│       ├── __tests__
+│       │   ├── actions.test.ts      # Verifies XSS and perimeter threat defenses
+│       │   ├── gateway.test.ts      # Verifies SSE streams and payload fragmentation
+│       │   └── streamUtils.test.ts  # Verifies progressive bracket-balancing bounds
+│       ├── actions.ts               # Secure execution registry & sanitation core
+│       ├── gateway.ts               # Hono API Gateway with progressive parser
+│       └── streamUtils.ts           # Sentinel-conditioned text buffer parser
 └── tsconfig.json                    # Isolated compiler configurations
 ```
 
@@ -32,7 +41,7 @@ When you open a fresh chat, upload or paste these files in your very first promp
 2. v2/sdui/demo-support-center/src/client/streamClient.ts — Anchors the front-end SduiStreamClient API design and the concrete AgNode layout type shape.
 3. v2/sdui/demo-support-center/src/server/gateway.ts — Establishes the real-time Hono POST /api/chat router orchestration.
 4. tree Output Command — Yes, definitely provide a fresh tree output. It prevents path hallucinations by showing exactly how the workspace is structured (especially now that client/ safely lives inside src/).
-	• Run this before starting: tree -L 4 -I node_modules v2/sdui/demo-support-center/
+And provide above Structure `tree` output.
 
 🗺️ Complete Project Implementation Lifecycle Ledger
 
