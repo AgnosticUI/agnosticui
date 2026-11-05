@@ -453,6 +453,7 @@ function renderNode(
         reverse: node.reverse,
         stretchChildren: node.stretchChildren,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgHeader':
@@ -475,6 +476,7 @@ function renderNode(
         type: node.type,
         noFill: node.noFill,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgIconButton':
@@ -671,6 +673,7 @@ function renderNode(
         type: node.type,
         checkHiddenItems: node.checkHiddenItems,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgMessageBubble':
@@ -1016,6 +1019,7 @@ function renderNode(
         rounded: node.rounded,
         borderedLeft: node.borderedLeft,
         },
+        { default: () => renderChildren(node.children) },
       );
 
     case 'AgToggle':

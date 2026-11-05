@@ -414,11 +414,15 @@ export interface RendererPrimitive {
 }
 
 /**
- * rendererPrimitives: renderer-only node types that have no AgnosticUI core
- * component counterpart. Add new primitives here to have them preserved across
- * codegen runs.
+ * rendererPrimitives: hand-maintained, renderer-only node types that do not have
+ * a direct 1:1 auto-parsed core model counterpart, or require specialized named-slot 
+ * asset handling across React, Vue, and Lit rendering targets.
  */
 export const rendererPrimitives: RendererPrimitive[] = [
+  /**
+   * Text primitive provides clean rendering pipelines for multi-element scalar strings
+   * such as headers, labels, and spans without requiring interactive property layers.
+   */
   {
     name: 'Text',
     schemaBlock:
@@ -459,11 +463,17 @@ export const rendererPrimitives: RendererPrimitive[] = [
       }
     }`,
   },
+  /**
+   * Collapsible primitive provides named structural slots ('summary') for accordion-like 
+   * behaviors. This block also serves as our central architectural hook to inject missing 
+   * style dependencies (flex layouts, toast notification triggers, menu positions) into 
+   * the auto-generated multi-framework bundle outputs.
+   */
   {
     name: 'Collapsible',
-    reactImport: `import { ReactCollapsible } from 'agnosticui-core/collapsible/react';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
-    vueImport: `import { VueCollapsible } from 'agnosticui-core/collapsible/vue';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
-    litImport: `import 'agnosticui-core/collapsible';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
+    reactImport: `import { ReactCollapsible } from 'agnosticui-core/collapsible/react';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/menu';\nimport 'agnosticui-core/toast';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
+    vueImport: `import { VueCollapsible } from 'agnosticui-core/collapsible/vue';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/menu';\nimport 'agnosticui-core/toast';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
+    litImport: `import 'agnosticui-core/collapsible';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/menu';\nimport 'agnosticui-core/toast';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
     schemaBlock:
 `export const AgCollapsibleSchema = z.object({
   id: z.string(),

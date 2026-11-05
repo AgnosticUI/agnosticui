@@ -356,7 +356,7 @@ function renderNode(
         .inline=${node.inline ?? false}
         .reverse=${node.reverse ?? false}
         .stretchChildren=${node.stretchChildren ?? false}
-      ></ag-flex>`;
+      >${renderChildren(node.children)}</ag-flex>`;
 
     case 'AgHeader':
       return html`<ag-header
@@ -369,7 +369,7 @@ function renderNode(
         .size=${node.size ?? nothing}
         .type=${node.type ?? nothing}
         .noFill=${node.noFill ?? false}
-      ></ag-icon>`;
+      >${renderChildren(node.children)}</ag-icon>`;
 
     case 'AgIconButton':
       return html`<ag-icon-button
@@ -522,7 +522,7 @@ function renderNode(
         .selectedValue=${node.selectedValue ?? nothing}
         .type=${node.type ?? nothing}
         .checkHiddenItems=${node.checkHiddenItems ?? false}
-      ></ag-menu>`;
+      >${renderChildren(node.children)}</ag-menu>`;
 
     case 'AgMessageBubble':
       return html`<ag-message-bubble
@@ -778,7 +778,7 @@ function renderNode(
         .bordered=${node.bordered ?? false}
         .rounded=${node.rounded ?? false}
         .borderedLeft=${node.borderedLeft ?? false}
-      ></ag-toast>`;
+      >${renderChildren(node.children)}</ag-toast>`;
 
     case 'AgToggle':
       return html`<ag-toggle

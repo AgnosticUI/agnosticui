@@ -429,7 +429,10 @@ function renderNode(
           alignContent={node.alignContent}
           inline={node.inline}
           reverse={node.reverse}
-          stretchChildren={node.stretchChildren} />
+          stretchChildren={node.stretchChildren}
+        >
+          {renderChildren(node.children)}
+        </ReactFlex>
       );
 
     case 'AgHeader':
@@ -449,7 +452,10 @@ function renderNode(
           key={node.id}
           size={node.size}
           type={node.type}
-          noFill={node.noFill} />
+          noFill={node.noFill}
+        >
+          {renderChildren(node.children)}
+        </ReactIcon>
       );
 
     case 'AgIconButton':
@@ -631,7 +637,10 @@ function renderNode(
           aria-label={node.ariaLabel}
           selectedValue={node.selectedValue}
           type={node.type}
-          checkHiddenItems={node.checkHiddenItems} />
+          checkHiddenItems={node.checkHiddenItems}
+        >
+          {renderChildren(node.children)}
+        </ReactMenu>
       );
 
     case 'AgMessageBubble':
@@ -954,7 +963,10 @@ function renderNode(
           pauseOnHover={node.pauseOnHover}
           bordered={node.bordered}
           rounded={node.rounded}
-          borderedLeft={node.borderedLeft} />
+          borderedLeft={node.borderedLeft}
+        >
+          {renderChildren(node.children)}
+        </ReactToast>
       );
 
     case 'AgToggle':
