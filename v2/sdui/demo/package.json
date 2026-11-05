@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run rebuild:all && tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "rebuild:lib": "npm run build --prefix ../../lib",
