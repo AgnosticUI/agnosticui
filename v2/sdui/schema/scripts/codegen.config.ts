@@ -147,7 +147,7 @@ export const componentActionPayloadMap: Record<string, Record<string, string>> =
     onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' }`,
   },
   AgInput: {
-    onChange: `{ id: node.id, value: ((e as unknown) as React.ChangeEvent<HTMLInputElement>).target?.value ?? ((e as unknown) as CustomEvent<{ value: string }>).detail?.value ?? '' }`,
+    onChange: `{ id: node.id, value: (e as any).target?.value ?? (e as any).detail?.value ?? '' }`,
   },
   AgRadio: {
     onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? '' }`,
