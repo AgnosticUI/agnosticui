@@ -2,6 +2,7 @@
  * @file gateway.ts
  * @description Real-time Hono API Gateway router executing streaming SDUI layout orchestration.
  * Integrates ChunkAccumulator brace-balancing pipelines and secure edge action validation.
+ * Uses modern for await...of async iterators to safely consume incoming web streams.
  */
 
 import { Hono } from 'hono';
@@ -45,18 +46,12 @@ app.post('/api/chat', async (c) => {
 
   // Instantiate our workspace token parser wrapper to balance incoming JSON structures
   const accumulator = new ChunkAccumulator();
-  const reader = rawBodyStream.getReader();
   const decoder = new TextDecoder();
 
   return streamSSE(c, async (stream) => {
     try {
-      while (true) {
-        const { done, value } = await reader.read();
-        
-        if (done) {
-          break;
-        }
-
+      // Leverage native async iteration directly over the stream chunks to eliminate manual locks
+      for await (const value of rawBodyStream) {
         // Decode the binary Uint8Array stream segment into readable text fragments
         const textFragment = decoder.decode(value, { stream: true });
         
@@ -94,8 +89,7 @@ app.post('/api/chat', async (c) => {
     } catch (streamErr) {
       console.error('[GATEWAY_CRITICAL] Exception encountered inside streaming chat loop:', streamErr);
     } finally {
-      // Cleanly release internal handles and close the SSE pipeline down gracefully
-      reader.releaseLock();
+      // Cleanly close the SSE pipeline channel down gracefully
       await stream.close();
     }
   });

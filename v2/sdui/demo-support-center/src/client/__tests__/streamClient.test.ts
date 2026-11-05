@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { SduiStreamClient, AgNode } from '../streamClient.js';
+import { SduiStreamClient, type AgNode } from '../streamClient.js';
 
 describe('AgnosticUI SDUI Front-End Stream Client Suite', () => {
   beforeEach(() => {
@@ -65,6 +65,7 @@ describe('AgnosticUI SDUI Front-End Stream Client Suite', () => {
     expect(statusSequence).toContain('COMPLETED');
     expect(receivedNodes.length).toBe(2);
     
+    // Explicit array index assertions fix the previous compilation crash
     expect(receivedNodes[0].id).toBe('node_card');
     expect(receivedNodes[0].component).toBe('AgCard');
     expect(receivedNodes[0].props?.title).toBe('Mock Card Title');

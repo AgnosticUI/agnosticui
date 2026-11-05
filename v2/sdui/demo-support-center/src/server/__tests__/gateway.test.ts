@@ -56,7 +56,6 @@ describe('AgnosticUI SDUI Hono Gateway Shell', () => {
     console.log('\n--- START TEST: STREAM FRAGMENTATION AGGREGATION ---');
 
     // Simulate a highly fractured, raw LLM token stream outputting an AgNode structure
-    // broken at awkward positions across transmission boundaries
     const incomingFragments = [
       'data: {"id": "node_1", ',
       '"component": "Ag',
@@ -65,22 +64,23 @@ describe('AgnosticUI SDUI Hono Gateway Shell', () => {
       '\n\n'
     ];
 
-    // Encode our fragments into an array of Uint8Arrays to feed our simulated stream
     const encoder = new TextEncoder();
-    const stream = new ReadableStream({
-      async start(controller) {
-        for (const fragment of incomingFragments) {
-          controller.enqueue(encoder.encode(fragment));
+    const binaryChunks = incomingFragments.map(f => encoder.encode(f));
+
+    // Construct a mock stream exposing Symbol.asyncIterator to perfectly align with gateway's for-await loop
+    const mockStream = {
+      [Symbol.asyncIterator]: async function* () {
+        for (const chunk of binaryChunks) {
+          yield chunk;
         }
-        controller.close();
       }
-    });
+    };
 
     // Send the simulated stream directly into the gateway interface hook
     const requestFixture = new Request('http://localhost/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: stream,
+      body: mockStream as any,
       // @ts-ignore - duplex is required in modern Node fetch for streaming bodies
       duplex: 'half'
     });
@@ -91,7 +91,6 @@ describe('AgnosticUI SDUI Hono Gateway Shell', () => {
     console.log(`[TEST_AUDIT] 📑 Aggregated SSE Stream output text:\n${responseText}`);
 
     // Confirm that the streaming engine successfully aggregated the awkward parts
-    // and re-emitted a coherent string block adhering to our layout contracts
     expect(responseText).toContain('data:');
     expect(responseText).toContain('node_1');
     expect(responseText).toContain('AgCard');
@@ -102,7 +101,6 @@ describe('AgnosticUI SDUI Hono Gateway Shell', () => {
     console.log('\n--- START TEST: SECURITY VECTOR ACTION SANITIZATION ---');
 
     // Simulate an adversarial payload structure injecting a malicious JavaScript execution string
-    // attempting to bypass action sanitization rules directly via the stream
     const maliciousPayload = [
       'data: {"id": "node_bad", "component": "AgButton", "props": {',
       '"actionToken": "javascript:void(window.location=\'http://attacker.com\')", ',
@@ -110,19 +108,20 @@ describe('AgnosticUI SDUI Hono Gateway Shell', () => {
     ];
 
     const encoder = new TextEncoder();
-    const stream = new ReadableStream({
-      async start(controller) {
-        for (const chunk of maliciousPayload) {
-          controller.enqueue(encoder.encode(chunk));
+    const binaryChunks = maliciousPayload.map(c => encoder.encode(c));
+
+    const mockStream = {
+      [Symbol.asyncIterator]: async function* () {
+        for (const chunk of binaryChunks) {
+          yield chunk;
         }
-        controller.close();
       }
-    });
+    };
 
     const requestFixture = new Request('http://localhost/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: stream,
+      body: mockStream as any,
       // @ts-ignore
       duplex: 'half'
     });
@@ -133,7 +132,6 @@ describe('AgnosticUI SDUI Hono Gateway Shell', () => {
     console.log(`[TEST_AUDIT] 📑 Sanitization validation test output:\n${responseText}`);
 
     // Verify that the adversarial action layout rule was systematically intercepted
-    // and safely stripped, omitted, or neutralized by our gateway security layer
     expect(responseText).not.toContain('javascript:void');
     expect(responseText).not.toContain('attacker.com');
   });
