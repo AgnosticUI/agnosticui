@@ -325,6 +325,15 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
       zodExpr: "z.enum(['top', 'bottom', 'start', 'end'])",
     },
   },
+  AgMenu: {
+    // Menu.type uses local type literals ('default' | 'single-select'). In the Vue renderer,
+    // passing an unmapped 'type' prop can conflict with standard HTML button or input attributes 
+    // during strict type checking. Overriding it here stabilizes the generated property definitions.
+    type: {
+      tsType: "'default' | 'single-select'",
+      zodExpr: "z.enum(['default', 'single-select'])"
+    }
+  },
   AgPopover: {
     // Placement is imported from @floating-ui/dom; ts-morph cannot resolve external types in CI
     placement: {
@@ -377,6 +386,10 @@ export const skipComponents: string[] = [
   // Collapsible is handled as a rendererPrimitive (named summary slot requires manual case)
   'Collapsible',
 
+  // Flex is handled as a rendererPrimitive because it is a multi-component family
+  // (FlexContainer/FlexRow/FlexCol) and lacks a single ReactFlex/VueFlex export.
+  'Flex',
+
   // Permanently skipped or deferred components:
   'Sidebar',        // open + collapsed state management
   'ScrollProgress', // tracks live scroll position via a DOM target ref — not serializable
@@ -414,15 +427,61 @@ export interface RendererPrimitive {
 }
 
 /**
- * rendererPrimitives: hand-maintained, renderer-only node types that do not have
- * a direct 1:1 auto-parsed core model counterpart, or require specialized named-slot 
- * asset handling across React, Vue, and Lit rendering targets.
+ * rendererPrimitives: renderer-only node types that have no AgnosticUI core
+ * component counterpart. Add new primitives here to have them preserved across
+ * codegen runs.
  */
 export const rendererPrimitives: RendererPrimitive[] = [
-  /**
-   * Text primitive provides clean rendering pipelines for multi-element scalar strings
-   * such as headers, labels, and spans without requiring interactive property layers.
-   */
+  {
+    name: 'Flex',
+    schemaBlock:
+`export const AgFlexSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgFlex'),
+  direction: z.enum(['row', 'row-reverse', 'column', 'column-reverse']).optional(),
+  wrap: z.enum(['nowrap', 'wrap', 'wrap-reverse']).optional(),
+  justify: z.enum(['center', 'flex-start', 'flex-end', 'space-between', 'space-around', 'space-evenly']).optional(),
+  align: z.enum(['center', 'flex-start', 'flex-end', 'baseline', 'stretch']).optional(),
+  alignContent: z.enum(['center', 'flex-start', 'flex-end', 'space-between', 'space-around', 'space-evenly', 'stretch']).optional(),
+  inline: z.boolean().optional(),
+  reverse: z.boolean().optional(),
+  stretchChildren: z.boolean().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();`,
+    typesBlock:
+`export interface AgFlexNode {
+  id: string;
+  component: 'AgFlex';
+  direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+  wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
+  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
+  align?: 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'stretch';
+  alignContent?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
+  inline?: boolean;
+  reverse?: boolean;
+  stretchChildren?: boolean;
+  children?: string[];
+}`,
+    reactCase:
+`    case 'AgFlex': {
+      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
+      return (
+        <div key={node.id} className={classes}>
+          {renderChildren(node.children)}
+        </div>
+      );
+    }`,
+    vueCase:
+`    case 'AgFlex': {
+      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
+      return h('div', { key: node.id, class: classes }, renderChildren(node.children));
+    }`,
+    litCase:
+`    case 'AgFlex': {
+      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
+      return html\`<div class=\${classes}>\${renderChildren(node.children)}</div>\`;
+    }`,
+  },
   {
     name: 'Text',
     schemaBlock:
@@ -463,12 +522,6 @@ export const rendererPrimitives: RendererPrimitive[] = [
       }
     }`,
   },
-  /**
-   * Collapsible primitive provides named structural slots ('summary') for accordion-like 
-   * behaviors. This block also serves as our central architectural hook to inject missing 
-   * style dependencies (flex layouts, toast notification triggers, menu positions) into 
-   * the auto-generated multi-framework bundle outputs.
-   */
   {
     name: 'Collapsible',
     reactImport: `import { ReactCollapsible } from 'agnosticui-core/collapsible/react';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/menu';\nimport 'agnosticui-core/toast';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,

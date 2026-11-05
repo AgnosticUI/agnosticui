@@ -23,7 +23,6 @@ import { ReactDivider } from 'agnosticui-core/divider/react';
 import { ReactDrawer } from 'agnosticui-core/drawer/react';
 import { ReactEmptyState } from 'agnosticui-core/empty-state/react';
 import { ReactFieldset } from 'agnosticui-core/fieldset/react';
-import { ReactFlex } from 'agnosticui-core/flex/react';
 import { ReactHeader } from 'agnosticui-core/header/react';
 import { ReactIcon } from 'agnosticui-core/icon/react';
 import { ReactIconButton } from 'agnosticui-core/icon-button/react';
@@ -61,6 +60,8 @@ import { ReactTooltip } from 'agnosticui-core/tooltip/react';
 import { ReactTooltipFx } from 'agnosticui-core/tooltip-fx/react';
 import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
 import 'agnosticui-core/flex';
+import 'agnosticui-core/menu';
+import 'agnosticui-core/toast';
 import 'agnosticui-core/scroll-progress';
 import 'agnosticui-core/scroll-to-button';
 import 'agnosticui-core/visually-hidden';
@@ -416,23 +417,6 @@ function renderNode(
         >
           {renderChildren(node.children)}
         </ReactFieldset>
-      );
-
-    case 'AgFlex':
-      return (
-        <ReactFlex
-          key={node.id}
-          direction={node.direction}
-          wrap={node.wrap}
-          justify={node.justify}
-          align={node.align}
-          alignContent={node.alignContent}
-          inline={node.inline}
-          reverse={node.reverse}
-          stretchChildren={node.stretchChildren}
-        >
-          {renderChildren(node.children)}
-        </ReactFlex>
       );
 
     case 'AgHeader':
@@ -1023,6 +1007,15 @@ function renderNode(
           onShow={() => dispatch(node.on_show, actions)}
           onHide={() => dispatch(node.on_hide, actions)} />
       );
+
+    case 'AgFlex': {
+      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
+      return (
+        <div key={node.id} className={classes}>
+          {renderChildren(node.children)}
+        </div>
+      );
+    }
 
     case 'AgText': {
       const Tag = node.el ?? 'span';

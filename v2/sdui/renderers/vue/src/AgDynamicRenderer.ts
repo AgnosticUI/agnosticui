@@ -23,7 +23,6 @@ import { VueDivider } from 'agnosticui-core/divider/vue';
 import { VueDrawer } from 'agnosticui-core/drawer/vue';
 import { VueEmptyState } from 'agnosticui-core/empty-state/vue';
 import { VueFieldset } from 'agnosticui-core/fieldset/vue';
-import { VueFlex } from 'agnosticui-core/flex/vue';
 import { VueHeader } from 'agnosticui-core/header/vue';
 import { VueIcon } from 'agnosticui-core/icon/vue';
 import { VueIconButton } from 'agnosticui-core/icon-button/vue';
@@ -61,6 +60,8 @@ import { VueTooltip } from 'agnosticui-core/tooltip/vue';
 import { VueTooltipFx } from 'agnosticui-core/tooltip-fx/vue';
 import { VueCollapsible } from 'agnosticui-core/collapsible/vue';
 import 'agnosticui-core/flex';
+import 'agnosticui-core/menu';
+import 'agnosticui-core/toast';
 import 'agnosticui-core/scroll-progress';
 import 'agnosticui-core/scroll-to-button';
 import 'agnosticui-core/visually-hidden';
@@ -435,23 +436,6 @@ function renderNode(
         bordered: node.bordered,
         layout: node.layout,
         legendHidden: node.legendHidden,
-        },
-        { default: () => renderChildren(node.children) },
-      );
-
-    case 'AgFlex':
-      return h(
-        VueFlex,
-        {
-        key: node.id,
-        direction: node.direction,
-        wrap: node.wrap,
-        justify: node.justify,
-        align: node.align,
-        alignContent: node.alignContent,
-        inline: node.inline,
-        reverse: node.reverse,
-        stretchChildren: node.stretchChildren,
         },
         { default: () => renderChildren(node.children) },
       );
@@ -1082,6 +1066,11 @@ function renderNode(
         onHide: () => doDispatch(node.on_hide, actions),
         },
       );
+
+    case 'AgFlex': {
+      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
+      return h('div', { key: node.id, class: classes }, renderChildren(node.children));
+    }
 
     case 'AgText':
       return h(node.el ?? 'span', { key: node.id }, node.text ?? '');

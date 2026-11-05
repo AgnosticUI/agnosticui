@@ -288,20 +288,6 @@ export interface AgFieldsetNode {
   children?: string[];
 }
 
-export interface AgFlexNode {
-  id: string;
-  component: 'AgFlex';
-  direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
-  wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
-  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
-  align?: 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'stretch';
-  alignContent?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
-  inline?: boolean;
-  reverse?: boolean;
-  stretchChildren?: boolean;
-  children?: string[];
-}
-
 export interface AgHeaderNode {
   id: string;
   component: 'AgHeader';
@@ -842,6 +828,20 @@ export interface AgTooltipFxNode {
   fxDisabled?: boolean;
   children?: string[];
 }
+export interface AgFlexNode {
+  id: string;
+  component: 'AgFlex';
+  direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+  wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
+  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
+  align?: 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'stretch';
+  alignContent?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
+  inline?: boolean;
+  reverse?: boolean;
+  stretchChildren?: boolean;
+  children?: string[];
+}
+
 export interface AgTextNode {
   id: string;
   component: 'AgText';
@@ -885,7 +885,6 @@ export type AgNode =
   | AgDrawerNode
   | AgEmptyStateNode
   | AgFieldsetNode
-  | AgFlexNode
   | AgHeaderNode
   | AgIconNode
   | AgIconButtonNode
@@ -921,6 +920,7 @@ export type AgNode =
   | AgToggleNode
   | AgTooltipNode
   | AgTooltipFxNode
+  | AgFlexNode
   | AgTextNode
   | AgCollapsibleNode;
 

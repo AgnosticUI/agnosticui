@@ -27,7 +27,6 @@ import 'agnosticui-core/divider';
 import 'agnosticui-core/drawer';
 import 'agnosticui-core/empty-state';
 import 'agnosticui-core/fieldset';
-import 'agnosticui-core/flex';
 import 'agnosticui-core/header';
 import 'agnosticui-core/icon';
 import 'agnosticui-core/icon-button';
@@ -65,6 +64,8 @@ import 'agnosticui-core/tooltip';
 import 'agnosticui-core/tooltip-fx';
 import 'agnosticui-core/collapsible';
 import 'agnosticui-core/flex';
+import 'agnosticui-core/menu';
+import 'agnosticui-core/toast';
 import 'agnosticui-core/scroll-progress';
 import 'agnosticui-core/scroll-to-button';
 import 'agnosticui-core/visually-hidden';
@@ -345,18 +346,6 @@ function renderNode(
         .layout=${node.layout ?? nothing}
         .legendHidden=${node.legendHidden ?? false}
       >${renderChildren(node.children)}</ag-fieldset>`;
-
-    case 'AgFlex':
-      return html`<ag-flex
-        .direction=${node.direction ?? nothing}
-        .wrap=${node.wrap ?? nothing}
-        .justify=${node.justify ?? nothing}
-        .align=${node.align ?? nothing}
-        .alignContent=${node.alignContent ?? nothing}
-        .inline=${node.inline ?? false}
-        .reverse=${node.reverse ?? false}
-        .stretchChildren=${node.stretchChildren ?? false}
-      >${renderChildren(node.children)}</ag-flex>`;
 
     case 'AgHeader':
       return html`<ag-header
@@ -828,6 +817,11 @@ function renderNode(
         @show=${() => doDispatch(node.on_show, actions)}
         @hide=${() => doDispatch(node.on_hide, actions)}
       ></ag-tooltip-fx>`;
+
+    case 'AgFlex': {
+      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
+      return html`<div class=${classes}>${renderChildren(node.children)}</div>`;
+    }
 
     case 'AgText': {
       const _text = node.text ?? '';
