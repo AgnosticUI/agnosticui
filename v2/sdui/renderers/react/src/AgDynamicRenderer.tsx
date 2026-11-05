@@ -34,7 +34,6 @@ import { ReactKbd } from 'agnosticui-core/kbd/react';
 import { ReactLink } from 'agnosticui-core/link/react';
 import { ReactLoader } from 'agnosticui-core/loader/react';
 import { ReactMark } from 'agnosticui-core/mark/react';
-import { ReactMenu } from 'agnosticui-core/menu/react';
 import { ReactMessageBubble } from 'agnosticui-core/message-bubble/react';
 import { ReactPagination } from 'agnosticui-core/pagination/react';
 import { ReactPopover } from 'agnosticui-core/popover/react';
@@ -54,17 +53,10 @@ import { ReactTabs } from 'agnosticui-core/tabs/react';
 import { ReactTag } from 'agnosticui-core/tag/react';
 import { ReactTagFx } from 'agnosticui-core/tag-fx/react';
 import { ReactTimeline } from 'agnosticui-core/timeline/react';
-import { ReactToast } from 'agnosticui-core/toast/react';
 import { ReactToggle } from 'agnosticui-core/toggle/react';
 import { ReactTooltip } from 'agnosticui-core/tooltip/react';
 import { ReactTooltipFx } from 'agnosticui-core/tooltip-fx/react';
 import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
-import 'agnosticui-core/flex';
-import 'agnosticui-core/menu';
-import 'agnosticui-core/toast';
-import 'agnosticui-core/scroll-progress';
-import 'agnosticui-core/scroll-to-button';
-import 'agnosticui-core/visually-hidden';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -436,10 +428,7 @@ function renderNode(
           key={node.id}
           size={node.size}
           type={node.type}
-          noFill={node.noFill}
-        >
-          {renderChildren(node.children)}
-        </ReactIcon>
+          noFill={node.noFill} />
       );
 
     case 'AgIconButton':
@@ -525,7 +514,7 @@ function renderNode(
           errorMessage={node.errorMessage}
           helpText={node.helpText}
           onClick={() => dispatch(node.on_click, actions)}
-          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as any).target?.value ?? (e as any).detail?.value ?? '' })} />
+          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: ((e as unknown) as React.ChangeEvent<HTMLInputElement>).target?.value ?? ((e as unknown) as CustomEvent<{ value: string }>).detail?.value ?? '' })} />
       );
 
     case 'AgIntlFormatter':
@@ -610,20 +599,6 @@ function renderNode(
         >
           {renderChildren(node.children)}
         </ReactMark>
-      );
-
-    case 'AgMenu':
-      return (
-        <ReactMenu
-          key={node.id}
-          {...(node.open !== undefined ? { open: node.open } : {})}
-          {...(node.placement !== undefined ? { placement: node.placement } : {})}
-          {...(node.ariaLabel !== undefined ? { aria-label: node.ariaLabel } : {})}
-          {...(node.selectedValue !== undefined ? { selectedValue: node.selectedValue } : {})}
-          {...(node.checkHiddenItems !== undefined ? { checkHiddenItems: node.checkHiddenItems } : {})}
-        >
-          {renderChildren(node.children)}
-        </ReactMenu>
       );
 
     case 'AgMessageBubble':
@@ -933,25 +908,6 @@ function renderNode(
           aria-label={node.ariaLabel} />
       );
 
-    case 'AgToast':
-      return (
-        <ReactToast
-          key={node.id}
-          open={node.open}
-          type={node.type}
-          position={node.position}
-          duration={node.duration}
-          autoDismiss={node.autoDismiss}
-          showCloseButton={node.showCloseButton}
-          pauseOnHover={node.pauseOnHover}
-          bordered={node.bordered}
-          rounded={node.rounded}
-          borderedLeft={node.borderedLeft}
-        >
-          {renderChildren(node.children)}
-        </ReactToast>
-      );
-
     case 'AgToggle':
       return (
         <ReactToggle
@@ -1006,15 +962,6 @@ function renderNode(
           onShow={() => dispatch(node.on_show, actions)}
           onHide={() => dispatch(node.on_hide, actions)} />
       );
-
-    case 'AgFlex': {
-      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
-      return (
-        <div key={node.id} className={classes}>
-          {renderChildren(node.children)}
-        </div>
-      );
-    }
 
     case 'AgText': {
       const Tag = node.el ?? 'span';

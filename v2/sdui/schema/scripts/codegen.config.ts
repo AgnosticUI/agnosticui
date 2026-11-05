@@ -23,9 +23,6 @@ export const omitConfig: Record<string, string[]> = {
   AgIconButton:  ['pressed'],
   AgIconButtonFx: ['pressed'],
 
-  // Prevent schema selection mode from polluting the underlying core button type attribute
-  AgMenu:        ['type'],
-
   // validationMessages: complex nested object; errorMessage covers SDUI needs
   AgToggle:             ['validationMessages'],
   AgRating:             ['validationMessages'],
@@ -76,8 +73,6 @@ export const noUndefinedProps: Record<string, string[]> = {
   // value: setter doesn't handle undefined safely in single-select mode
   AgCombobox: ['options', 'size', 'variant', 'value'],
 
-  // Guard menu attributes against passing `undefined` elements to strict multi-framework renderers
-  AgMenu: ['open', 'placement', 'ariaLabel', 'selectedValue', 'type', 'checkHiddenItems'],
 };
 
 /**
@@ -131,6 +126,7 @@ export const actionPayloadMap: Record<string, string> = {};
  * Per-component overrides in vueComponentActionPayloadMap take priority.
  */
 export const vueActionPayloadMap: Record<string, string> = {};
+
 /**
  * componentActionPayloadMap: per-component, per-sourceName payload expressions
  * for the React renderer. Takes priority over actionPayloadMap.
@@ -147,7 +143,7 @@ export const componentActionPayloadMap: Record<string, Record<string, string>> =
     onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' }`,
   },
   AgInput: {
-    onChange: `{ id: node.id, value: (e as any).target?.value ?? (e as any).detail?.value ?? '' }`,
+    onChange: `{ id: node.id, value: ((e as unknown) as React.ChangeEvent<HTMLInputElement>).target?.value ?? ((e as unknown) as CustomEvent<{ value: string }>).detail?.value ?? '' }`,
   },
   AgRadio: {
     onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? '' }`,
@@ -247,6 +243,7 @@ export const litComponentActionPayloadMap: Record<string, Record<string, string>
     onPageChange: `{ id: node.id, value: (e as CustomEvent<{ page: number }>).detail?.page }`,
   },
 };
+
 /**
  * rendererSlotConfig: controls how each component renders its content in the
  * three framework renderers.
@@ -274,26 +271,22 @@ export const rendererSlotConfig: Record<string, RendererSlot> = {
   AgPopover:       'children',
 
   // container components that wrap child nodes
-  AgAccordion:            'children',
-  AgAlert:                'children',
-  AgCard:                 'children',
-  AgFieldset:             'children',
-  AgFlex:                 'children',
-  AgHeader:               'children',
-  AgIcon:                 'children',
-  AgKbd:                  'children',
-  AgLink:                 'children',
-  AgMark:                 'children',
-  AgMenu:                 'children',
-  AgMessageBubble:        'children',
-  AgProgress:             'children',
-  AgSelectionButton:      'children',
+  AgAccordion:          'children',
+  AgAlert:              'children',
+  AgCard:               'children',
+  AgFieldset:           'children',
+  AgHeader:             'children',
+  AgKbd:                'children',
+  AgLink:               'children',
+  AgMark:               'children',
+  AgMessageBubble:      'children',
+  AgProgress:           'children',
+  AgSelectionButton:    'children',
   AgSelectionButtonGroup: 'children',
-  AgSelectionCard:        'children',
-  AgSelectionCardGroup:   'children',
-  AgTag:                  'children',
-  AgTabs:                 'children',
-  AgToast:                'children',
+  AgSelectionCard:      'children',
+  AgSelectionCardGroup: 'children',
+  AgTag:                'children',
+  AgTabs:               'children',
 };
 
 /**
@@ -330,15 +323,6 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
       tsType: "'top' | 'bottom' | 'start' | 'end'",
       zodExpr: "z.enum(['top', 'bottom', 'start', 'end'])",
     },
-  },
-  AgMenu: {
-    // Menu.type uses local type literals ('default' | 'single-select'). In the Vue renderer,
-    // passing an unmapped 'type' prop can conflict with standard HTML button or input attributes 
-    // during strict type checking. Overriding it here stabilizes the generated property definitions.
-    type: {
-      tsType: "'default' | 'single-select'",
-      zodExpr: "z.enum(['default', 'single-select'])"
-    }
   },
   AgPopover: {
     // Placement is imported from @floating-ui/dom; ts-morph cannot resolve external types in CI
@@ -384,6 +368,7 @@ export const reactPropRenames: Record<string, string> = {
   ariaLabel: 'aria-label',
 };
 
+
 /**
  * skipComponents: component directory names to exclude from all generated output.
  * These require controlled runtime state that cannot be expressed in a static node.
@@ -392,12 +377,13 @@ export const skipComponents: string[] = [
   // Collapsible is handled as a rendererPrimitive (named summary slot requires manual case)
   'Collapsible',
 
-  // Flex is handled as a rendererPrimitive because it is a multi-component family
-  // (FlexContainer/FlexRow/FlexCol) and lacks a single ReactFlex/VueFlex export.
-  'Flex',
-
-  // Permanently skipped or deferred components:
+  // Deferred: complex state not expressible in a static fixture (see sub-issues of #460)
+  'Flex',           // multi-component family (FlexContainer/FlexRow/FlexCol/FlexInline) — no single ReactFlex/VueFlex wrapper
+  'Menu',           // complex open + selected-value state
   'Sidebar',        // open + collapsed state management
+  'Toast',          // autoDismiss + open/close lifecycle
+
+  // Permanently skipped: no meaningful SDUI use case
   'ScrollProgress', // tracks live scroll position via a DOM target ref — not serializable
   'ScrollToButton', // scroll-detection behavioral component, no content to drive
   'SidebarNav',     // no Props interface; pure slot composition
@@ -438,56 +424,6 @@ export interface RendererPrimitive {
  * codegen runs.
  */
 export const rendererPrimitives: RendererPrimitive[] = [
-  {
-    name: 'Flex',
-    schemaBlock:
-`export const AgFlexSchema = z.object({
-  id: z.string(),
-  component: z.literal('AgFlex'),
-  direction: z.enum(['row', 'row-reverse', 'column', 'column-reverse']).optional(),
-  wrap: z.enum(['nowrap', 'wrap', 'wrap-reverse']).optional(),
-  justify: z.enum(['center', 'flex-start', 'flex-end', 'space-between', 'space-around', 'space-evenly']).optional(),
-  align: z.enum(['center', 'flex-start', 'flex-end', 'baseline', 'stretch']).optional(),
-  alignContent: z.enum(['center', 'flex-start', 'flex-end', 'space-between', 'space-around', 'space-evenly', 'stretch']).optional(),
-  inline: z.boolean().optional(),
-  reverse: z.boolean().optional(),
-  stretchChildren: z.boolean().optional(),
-  children: z.array(z.string()).optional(),
-}).strict();`,
-    typesBlock:
-`export interface AgFlexNode {
-  id: string;
-  component: 'AgFlex';
-  direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
-  wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
-  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
-  align?: 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'stretch';
-  alignContent?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
-  inline?: boolean;
-  reverse?: boolean;
-  stretchChildren?: boolean;
-  children?: string[];
-}`,
-    reactCase:
-`    case 'AgFlex': {
-      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
-      return (
-        <div key={node.id} className={classes}>
-          {renderChildren(node.children)}
-        </div>
-      );
-    }`,
-    vueCase:
-`    case 'AgFlex': {
-      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
-      return h('div', { key: node.id, class: classes }, renderChildren(node.children));
-    }`,
-    litCase:
-`    case 'AgFlex': {
-      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
-      return html\`<div class=\${classes}>\${renderChildren(node.children)}</div>\`;
-    }`,
-  },
   {
     name: 'Text',
     schemaBlock:
@@ -530,9 +466,9 @@ export const rendererPrimitives: RendererPrimitive[] = [
   },
   {
     name: 'Collapsible',
-    reactImport: `import { ReactCollapsible } from 'agnosticui-core/collapsible/react';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/menu';\nimport 'agnosticui-core/toast';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
-    vueImport: `import { VueCollapsible } from 'agnosticui-core/collapsible/vue';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/menu';\nimport 'agnosticui-core/toast';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
-    litImport: `import 'agnosticui-core/collapsible';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/menu';\nimport 'agnosticui-core/toast';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
+    reactImport: `import { ReactCollapsible } from 'agnosticui-core/collapsible/react';`,
+    vueImport: `import { VueCollapsible } from 'agnosticui-core/collapsible/vue';`,
+    litImport: `import 'agnosticui-core/collapsible';`,
     schemaBlock:
 `export const AgCollapsibleSchema = z.object({
   id: z.string(),

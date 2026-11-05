@@ -34,7 +34,6 @@ import { VueKbd } from 'agnosticui-core/kbd/vue';
 import { VueLink } from 'agnosticui-core/link/vue';
 import { VueLoader } from 'agnosticui-core/loader/vue';
 import { VueMark } from 'agnosticui-core/mark/vue';
-import { VueMenu } from 'agnosticui-core/menu/vue';
 import { VueMessageBubble } from 'agnosticui-core/message-bubble/vue';
 import { VuePagination } from 'agnosticui-core/pagination/vue';
 import { VuePopover } from 'agnosticui-core/popover/vue';
@@ -54,17 +53,10 @@ import { VueTabs } from 'agnosticui-core/tabs/vue';
 import { VueTag } from 'agnosticui-core/tag/vue';
 import { VueTagFx } from 'agnosticui-core/tag-fx/vue';
 import { VueTimeline } from 'agnosticui-core/timeline/vue';
-import { VueToast } from 'agnosticui-core/toast/vue';
 import { VueToggle } from 'agnosticui-core/toggle/vue';
 import { VueTooltip } from 'agnosticui-core/tooltip/vue';
 import { VueTooltipFx } from 'agnosticui-core/tooltip-fx/vue';
 import { VueCollapsible } from 'agnosticui-core/collapsible/vue';
-import 'agnosticui-core/flex';
-import 'agnosticui-core/menu';
-import 'agnosticui-core/toast';
-import 'agnosticui-core/scroll-progress';
-import 'agnosticui-core/scroll-to-button';
-import 'agnosticui-core/visually-hidden';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -460,7 +452,6 @@ function renderNode(
         type: node.type,
         noFill: node.noFill,
         },
-        { default: () => renderChildren(node.children) },
       );
 
     case 'AgIconButton':
@@ -641,20 +632,6 @@ function renderNode(
         search: node.search,
         caseSensitive: node.caseSensitive,
         matchAll: node.matchAll,
-        },
-        { default: () => renderChildren(node.children) },
-      );
-
-    case 'AgMenu':
-      return h(
-        VueMenu,
-        {
-        key: node.id,
-        open: node.open,
-        placement: node.placement,
-        ariaLabel: node.ariaLabel,
-        selectedValue: node.selectedValue,
-        checkHiddenItems: node.checkHiddenItems,
         },
         { default: () => renderChildren(node.children) },
       );
@@ -986,25 +963,6 @@ function renderNode(
         },
       );
 
-    case 'AgToast':
-      return h(
-        VueToast,
-        {
-        key: node.id,
-        open: node.open,
-        type: node.type,
-        position: node.position,
-        duration: node.duration,
-        autoDismiss: node.autoDismiss,
-        showCloseButton: node.showCloseButton,
-        pauseOnHover: node.pauseOnHover,
-        bordered: node.bordered,
-        rounded: node.rounded,
-        borderedLeft: node.borderedLeft,
-        },
-        { default: () => renderChildren(node.children) },
-      );
-
     case 'AgToggle':
       return h(
         VueToggle,
@@ -1065,11 +1023,6 @@ function renderNode(
         onHide: () => doDispatch(node.on_hide, actions),
         },
       );
-
-    case 'AgFlex': {
-      const classes = ['g-flex', node.direction, node.wrap, node.justify, node.align, node.inline ? 'g-flex-inline' : ''].filter(Boolean).join(' ');
-      return h('div', { key: node.id, class: classes }, renderChildren(node.children));
-    }
 
     case 'AgText':
       return h(node.el ?? 'span', { key: node.id }, node.text ?? '');

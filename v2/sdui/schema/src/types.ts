@@ -466,17 +466,6 @@ export interface AgMarkNode {
   children?: string[];
 }
 
-export interface AgMenuNode {
-  id: string;
-  component: 'AgMenu';
-  open?: boolean;
-  placement?: string;
-  ariaLabel?: string;
-  selectedValue?: string;
-  checkHiddenItems?: boolean;
-  children?: string[];
-}
-
 export interface AgMessageBubbleNode {
   id: string;
   component: 'AgMessageBubble';
@@ -757,22 +746,6 @@ export interface AgTimelineNode {
   children?: string[];
 }
 
-export interface AgToastNode {
-  id: string;
-  component: 'AgToast';
-  open?: boolean;
-  type?: 'default' | 'primary' | 'success' | 'monochrome' | 'warning' | 'info' | 'error' | 'danger';
-  position?: 'top' | 'bottom' | 'end' | 'start' | 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
-  duration?: number;
-  autoDismiss?: boolean;
-  showCloseButton?: boolean;
-  pauseOnHover?: boolean;
-  bordered?: boolean;
-  rounded?: boolean;
-  borderedLeft?: boolean;
-  children?: string[];
-}
-
 export interface AgToggleNode {
   id: string;
   component: 'AgToggle';
@@ -827,20 +800,6 @@ export interface AgTooltipFxNode {
   fxDisabled?: boolean;
   children?: string[];
 }
-export interface AgFlexNode {
-  id: string;
-  component: 'AgFlex';
-  direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
-  wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
-  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
-  align?: 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'stretch';
-  alignContent?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
-  inline?: boolean;
-  reverse?: boolean;
-  stretchChildren?: boolean;
-  children?: string[];
-}
-
 export interface AgTextNode {
   id: string;
   component: 'AgText';
@@ -895,7 +854,6 @@ export type AgNode =
   | AgLinkNode
   | AgLoaderNode
   | AgMarkNode
-  | AgMenuNode
   | AgMessageBubbleNode
   | AgPaginationNode
   | AgPopoverNode
@@ -915,11 +873,9 @@ export type AgNode =
   | AgTagNode
   | AgTagFxNode
   | AgTimelineNode
-  | AgToastNode
   | AgToggleNode
   | AgTooltipNode
   | AgTooltipFxNode
-  | AgFlexNode
   | AgTextNode
   | AgCollapsibleNode;
 
