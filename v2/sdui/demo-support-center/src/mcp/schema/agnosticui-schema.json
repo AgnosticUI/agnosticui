@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org",
+  "anyOf": [
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "component": { "type": "string", "const": "AgCard" },
+        "stacked": { "type": "boolean" },
+        "shadow": { "type": "boolean" },
+        "animated": { "type": "boolean" },
+        "rounded": { "type": "string", "enum": ["sm", "md", "lg"] },
+        "variant": { "type": "string", "enum": ["success", "monochrome", "warning", "info", "error"] },
+        "hasMedia": { "type": "boolean" },
+        "mediaPosition": { "type": "string", "enum": ["top", "bottom"] },
+        "children": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id", "component"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "component": { "type": "string", "const": "AgInput" },
+        "label": { "type": "string" },
+        "labelHidden": { "type": "boolean" },
+        "labelPosition": { "type": "string", "enum": ["top", "bottom", "end", "start"] },
+        "noLabel": { "type": "boolean" },
+        "ariaLabel": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["text", "password", "email", "number", "search", "tel", "url", "date", "datetime-local", "month", "time", "week"] },
+        "value": { "type": "string" },
+        "placeholder": { "type": "string" },
+        "size": { "type": "string", "enum": ["default", "small", "large"] },
+        "required": { "type": "boolean" },
+        "disabled": { "type": "boolean" },
+        "readonly": { "type": "boolean" },
+        "invalid": { "type": "boolean" },
+        "errorMessage": { "type": "string" },
+        "helpText": { "type": "string" },
+        "on_click": { "type": "string" },
+        "on_change": { "type": "string" },
+        "children": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id", "component"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "component": { "type": "string", "const": "AgButton" },
+        "variant": { "type": "string", "enum": ["primary", "success", "monochrome", "warning", "danger", "secondary"] },
+        "size": { "type": "string", "enum": ["sm", "md", "lg", "xl", "x-sm"] },
+        "shape": { "type": "string", "enum": ["circle", "square", "rounded", "capsule", "rounded-square"] },
+        "bordered": { "type": "boolean" },
+        "ghost": { "type": "boolean" },
+        "disabled": { "type": "boolean" },
+        "loading": { "type": "boolean" },
+        "ariaLabel": { "type": "string" },
+        "on_click": { "type": "string" },
+        "on_toggle": { "type": "string" },
+        "children": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id", "component"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "component": { "type": "string", "const": "AgMessageBubble" },
+        "from": { "type": "string", "enum": ["me", "them"] },
+        "message": { "type": "string" },
+        "time": { "type": "string" },
+        "author": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "variant": { "type": "string", "enum": ["default", "success", "monochrome", "warning", "info", "danger", "neutral"] },
+        "children": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id", "component"],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "component": { "type": "string", "const": "AgText" },
+        "text": { "type": "string" },
+        "el": { "type": "string", "enum": ["p", "span", "h1", "h2", "h3", "h4", "label"] },
+        "children": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id", "component", "text"],
+      "additionalProperties": false
+    }
+  ]
+}
