@@ -23,6 +23,9 @@ export const omitConfig: Record<string, string[]> = {
   AgIconButton:  ['pressed'],
   AgIconButtonFx: ['pressed'],
 
+  // Prevent schema selection mode from polluting the underlying core button type attribute
+  AgMenu:        ['type'],
+
   // validationMessages: complex nested object; errorMessage covers SDUI needs
   AgToggle:             ['validationMessages'],
   AgRating:             ['validationMessages'],
