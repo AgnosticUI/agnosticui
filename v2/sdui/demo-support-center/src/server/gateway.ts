@@ -1,8 +1,32 @@
 /**
  * @file gateway.ts
- * @description Hono API Gateway Engine.
- * Manages background stdio MCP processes, filters tokens, and runs fail-fast streaming parsing.
+ * @description Hono API Gateway Engine Sandbox (Instructional Iterative Pass)
  */
+
+import { Hono } from 'hono';
+import { serve } from '@hono/node-server';
+
+// Initialize our application shell instance
+const app = new Hono();
+
+// ============================================================================
+// ITERATIVE PASSTHROUGH ZONE (We will reactivate code blocks step-by-step here)
+// ============================================================================
+
+app.get('/api/health', (c) => {
+  console.log('[GATEWAY_LOG] 🩺 Health ping intercepted.');
+  return c.text('Gateway Sandbox Operational');
+});
+
+// Boot the micro-server process shell on our standard port 3000
+serve({ fetch: app.fetch, port: 3000 }, (info) => {
+  console.log(`[GATEWAY_START] 🚀 Instructional Gateway shell live at http://localhost:${info.port}`);
+});
+
+/* ============================================================================
+   ARCHIVED REFERENCE BLOCK (All prior complex logic is frozen below)
+   ============================================================================
+
 
 import { spawn, ChildProcess } from 'node:child_process';
 import { resolve, dirname } from 'node:path';
@@ -16,6 +40,7 @@ const __dirname = dirname(__filename);
 
 // Initialize Hono REST pipeline application
 const app = new Hono();
+*/
 
 // ============================================================================
 // 1. Immutable Token Sanitization Dictionary (XSS Boundary)
@@ -25,6 +50,7 @@ const app = new Hono();
  * Locked operational token directory. 
  * Incoming user interface click action events map strictly to these keys.
  */
+/*
 const IMMUTABLE_ACTION_DICTIONARY: Record<string, () => void> = {
   "SUBMIT_BILLING_DELTA": () => {
     console.log(`[GATEWAY_SECURITY] 🔒 Secure Action Invoked: processing payment update...`);
@@ -45,10 +71,12 @@ let jsonRpcMessageId = 1;
 
 // Map to track active JSON-RPC promise hooks pending across process standard stream replies
 const pendingRpcRequests = new Map<number, { resolve: (val: any) => void; reject: (err: any) => void }>();
+*/
 
 /**
  * Spawns the background core MCP process loop over system standard I/O channels.
  */
+/*
 function bootMcpProcessDaemon(): void {
   console.log(`[GATEWAY_INIT] ⚙️ Spawning Background MCP Server daemon at: ${mcpDaemonPath}`);
   
@@ -80,10 +108,12 @@ function bootMcpProcessDaemon(): void {
     console.error(`[MCP_SERVER_STDERR] ${data.toString().trim()}`);
   });
 }
+*/
 
 /**
  * Coordinates an asynchronous JSON-RPC call over stdio channels to invoke generate_streamed_layout.
  */
+/*
 async function invokeMcpLayoutValidation(nodesArray: any[]): Promise<{ valid: boolean; errors: string[] }> {
   if (!mcpProcess) bootMcpProcessDaemon();
   
@@ -200,5 +230,6 @@ if (process.env.NODE_ENV !== 'test') {
     console.log(`[GATEWAY_START] 🚀 Hono Edge Engine gateway running smoothly at http://localhost:${info.port}`);
   });
 }
+*/
 
 export default app;
