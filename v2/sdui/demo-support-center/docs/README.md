@@ -1,5 +1,54 @@
 # Cheat Sheet
 
+# SSE Resources
+
+Server-Sent Events (SSE): Build a Real-Time Stock Dashboard in Go
+https://www.youtube.com/watch?v=_s9LkfybCFQ
+
+Designing APIs for AI Services: The Interview Guide (REST, gRPC, SSE)
+https://www.youtube.com/watch?v=QwcPQCWydhk
+
+The Ultimate Next.js Dashboard Stack (Shadcn, WebSocket / SSE, OLTP / OLAP Database)
+https://www.youtube.com/watch?v=M4glLwqDEBw
+
+## Simplest SSE E2E
+```javascript
+// === SERVER (Koa.js Backend) ===
+const Koa = require('koa'); const app = new Koa();
+app.use(async ctx => {
+  // Validate path and the negotiated client-side query flag 'stream=true'
+  if (ctx.path === '/events' && ctx.query.stream === 'true') {
+    ctx.set({
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive'
+    });
+    ctx.body = new (require('stream').PassThrough)();
+    setInterval(() => { console.log('Server sending stream chunk'); ctx.body.write('data: Hello World\n\n'); }, 2000);
+  } else ctx.body = `
+<!DOCTYPE html><html><body>
+<!-- === CLIENT (Vanilla HTML/JS using Fetch + Streams API) === -->
+<script>
+  (async () => {
+    console.log('Client negotiating stream:true via query param...');
+    // EventSource lacks custom payloads/methods; native fetch handles the stream lifecycle manually
+    const response = await fetch('/events?stream=true'); 
+    const reader = response.body.pipeThrough(new TextDecoderStream()).getReader(); // Transforms raw binary chunks directly into text strings
+    while (true) {
+      const { value, done } = await reader.read(); // Continuous loop awaiting incoming data stream packets
+      if (done) break;
+      console.log('Raw chunk received:', JSON.stringify(value)); // Note: Value contains raw wire protocol including 'data:' and '\\n\\n'
+      // Pedantic regex split to match the SSE protocol logic and extract pure payloads
+      value.split('\\n\\n').filter(line => line.startsWith('data:')).forEach(msg => {
+        console.log('Parsed stream event:', msg.replace('data: ', ''));
+      });
+    }
+  })();
+</script></body></html>`;
+}); app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+
+```
+
 ## Structure
 
 ```shell
@@ -31,6 +80,12 @@ v2/sdui/demo-support-center/
 ```
 
 # NEXT SESSION
+
+NOTE: We should consider addressing the following considerations for the project (not mentioned in the PRD spec:)
+• Quotas, tokens-per-minute limits (something reasonable considering this is a toy OSS example not generating any moneys it MUST not result in API costs!), and the token bucket, and...
+  • Perhaps `max_tokens` in clients request schema?
+  • Handling 429 Too Many Requests with Retry-After, exponential backoff and jitter
+• When server starts streaming SSE do we provide a generated ID for tracking?
 
 To make sure your next session boots up with zero friction and perfect factual grounding, here is your exact context bootstrapping checklist and your updated project ledger.
 
@@ -65,6 +120,15 @@ Phase 3: Client-Edge Hydration & UI Manifest Binding (🚀 Last Completed & Next
 
 • Step 4.5: Modern Async Iterator Client Setup (**LAST COMPLETED**)
 	• Action: Implemented SduiStreamClient using the modern for await...of asynchronous iterator idiom on response.body. Streamlined both client and server layers to use native web streams, clearing 10/10 tests at 100% green compliance.
+
+---
+RESUMPTION CONSTRAINT: PHASE 3 - STEP 4.6 REALIGNMENT
+The upstream SDUI codegen schema and renderers have been fully synchronized and rebuilt. 
+We are resuming Step 4.6: AgNode Layout Assembly & State Binding. 
+We will now use the official, updated framework-agnostic @agnosticui/render-lit package 
+integrated natively inside our `v2/sdui/demo-support-center/` workspace workspace, ensuring 
+strict vocabulary conformity without altering the auto-generated code records directly.
+---
 • Step 4.6: AgNode Layout Assembly & State Binding (UPCOMING / NEXT UP)
 	• Action: Construct the browser mount engine to dynamically transform incoming serialized node metadata into live HTML DOM element renderings without layout stutter.
 • Step 4.7: Interactive Action Dispatch & Cycle Handshake
