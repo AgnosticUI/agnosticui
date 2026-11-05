@@ -505,12 +505,11 @@ function renderNode(
 
     case 'AgMenu':
       return html`<ag-menu
-        .open=${node.open ?? false}
+        .open=${node.open ?? nothing}
         .placement=${node.placement ?? nothing}
         .ariaLabel=${node.ariaLabel ?? nothing}
         .selectedValue=${node.selectedValue ?? nothing}
-        .type=${node.type ?? nothing}
-        .checkHiddenItems=${node.checkHiddenItems ?? false}
+        .checkHiddenItems=${node.checkHiddenItems ?? nothing}
       >${renderChildren(node.children)}</ag-menu>`;
 
     case 'AgMessageBubble':

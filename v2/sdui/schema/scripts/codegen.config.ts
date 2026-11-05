@@ -75,6 +75,9 @@ export const noUndefinedProps: Record<string, string[]> = {
   // size/variant: reflect: true, drive CSS :host([size=...]) and :host([variant=...]) selectors
   // value: setter doesn't handle undefined safely in single-select mode
   AgCombobox: ['options', 'size', 'variant', 'value'],
+
+  // Guard menu attributes against passing `undefined` elements to strict multi-framework renderers
+  AgMenu: ['open', 'placement', 'ariaLabel', 'selectedValue', 'type', 'checkHiddenItems'],
 };
 
 /**

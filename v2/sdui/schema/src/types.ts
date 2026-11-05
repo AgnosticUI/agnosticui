@@ -473,7 +473,6 @@ export interface AgMenuNode {
   placement?: string;
   ariaLabel?: string;
   selectedValue?: string;
-  type?: 'default' | 'single-select';
   checkHiddenItems?: boolean;
   children?: string[];
 }

@@ -654,7 +654,6 @@ function renderNode(
         placement: node.placement,
         ariaLabel: node.ariaLabel,
         selectedValue: node.selectedValue,
-        type: node.type,
         checkHiddenItems: node.checkHiddenItems,
         },
         { default: () => renderChildren(node.children) },

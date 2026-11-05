@@ -616,12 +616,11 @@ function renderNode(
       return (
         <ReactMenu
           key={node.id}
-          open={node.open}
-          placement={node.placement}
-          aria-label={node.ariaLabel}
-          selectedValue={node.selectedValue}
-          type={node.type}
-          checkHiddenItems={node.checkHiddenItems}
+          {...(node.open !== undefined ? { open: node.open } : {})}
+          {...(node.placement !== undefined ? { placement: node.placement } : {})}
+          {...(node.ariaLabel !== undefined ? { aria-label: node.ariaLabel } : {})}
+          {...(node.selectedValue !== undefined ? { selectedValue: node.selectedValue } : {})}
+          {...(node.checkHiddenItems !== undefined ? { checkHiddenItems: node.checkHiddenItems } : {})}
         >
           {renderChildren(node.children)}
         </ReactMenu>

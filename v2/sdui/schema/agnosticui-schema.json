@@ -2146,13 +2146,6 @@
         "selectedValue": {
           "type": "string"
         },
-        "type": {
-          "type": "string",
-          "enum": [
-            "default",
-            "single-select"
-          ]
-        },
         "checkHiddenItems": {
           "type": "boolean"
         },

@@ -475,7 +475,6 @@ export const AgMenuSchema = z.object({
   placement: z.string().optional(),
   ariaLabel: z.string().optional(),
   selectedValue: z.string().optional(),
-  type: z.enum(['default', 'single-select']).optional(),
   checkHiddenItems: z.boolean().optional(),
   children: z.array(z.string()).optional(),
 }).strict();
