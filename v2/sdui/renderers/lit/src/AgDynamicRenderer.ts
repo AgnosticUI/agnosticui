@@ -27,6 +27,7 @@ import 'agnosticui-core/divider';
 import 'agnosticui-core/drawer';
 import 'agnosticui-core/empty-state';
 import 'agnosticui-core/fieldset';
+import 'agnosticui-core/flex';
 import 'agnosticui-core/header';
 import 'agnosticui-core/icon';
 import 'agnosticui-core/icon-button';
@@ -38,6 +39,7 @@ import 'agnosticui-core/kbd';
 import 'agnosticui-core/link';
 import 'agnosticui-core/loader';
 import 'agnosticui-core/mark';
+import 'agnosticui-core/menu';
 import 'agnosticui-core/message-bubble';
 import 'agnosticui-core/pagination';
 import 'agnosticui-core/popover';
@@ -57,10 +59,15 @@ import 'agnosticui-core/tabs';
 import 'agnosticui-core/tag';
 import 'agnosticui-core/tag-fx';
 import 'agnosticui-core/timeline';
+import 'agnosticui-core/toast';
 import 'agnosticui-core/toggle';
 import 'agnosticui-core/tooltip';
 import 'agnosticui-core/tooltip-fx';
 import 'agnosticui-core/collapsible';
+import 'agnosticui-core/flex';
+import 'agnosticui-core/scroll-progress';
+import 'agnosticui-core/scroll-to-button';
+import 'agnosticui-core/visually-hidden';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -339,6 +346,18 @@ function renderNode(
         .legendHidden=${node.legendHidden ?? false}
       >${renderChildren(node.children)}</ag-fieldset>`;
 
+    case 'AgFlex':
+      return html`<ag-flex
+        .direction=${node.direction ?? nothing}
+        .wrap=${node.wrap ?? nothing}
+        .justify=${node.justify ?? nothing}
+        .align=${node.align ?? nothing}
+        .alignContent=${node.alignContent ?? nothing}
+        .inline=${node.inline ?? false}
+        .reverse=${node.reverse ?? false}
+        .stretchChildren=${node.stretchChildren ?? false}
+      ></ag-flex>`;
+
     case 'AgHeader':
       return html`<ag-header
         .sticky=${node.sticky ?? false}
@@ -494,6 +513,16 @@ function renderNode(
         .caseSensitive=${node.caseSensitive ?? false}
         .matchAll=${node.matchAll ?? false}
       >${renderChildren(node.children)}</ag-mark>`;
+
+    case 'AgMenu':
+      return html`<ag-menu
+        .open=${node.open ?? false}
+        .placement=${node.placement ?? nothing}
+        .ariaLabel=${node.ariaLabel ?? nothing}
+        .selectedValue=${node.selectedValue ?? nothing}
+        .type=${node.type ?? nothing}
+        .checkHiddenItems=${node.checkHiddenItems ?? false}
+      ></ag-menu>`;
 
     case 'AgMessageBubble':
       return html`<ag-message-bubble
@@ -736,6 +765,20 @@ function renderNode(
         .compact=${node.compact ?? false}
         .ariaLabel=${node.ariaLabel ?? nothing}
       ></ag-timeline>`;
+
+    case 'AgToast':
+      return html`<ag-toast
+        .open=${node.open ?? false}
+        .type=${node.type ?? nothing}
+        .position=${node.position ?? nothing}
+        .duration=${node.duration ?? 0}
+        .autoDismiss=${node.autoDismiss ?? false}
+        .showCloseButton=${node.showCloseButton ?? false}
+        .pauseOnHover=${node.pauseOnHover ?? false}
+        .bordered=${node.bordered ?? false}
+        .rounded=${node.rounded ?? false}
+        .borderedLeft=${node.borderedLeft ?? false}
+      ></ag-toast>`;
 
     case 'AgToggle':
       return html`<ag-toggle

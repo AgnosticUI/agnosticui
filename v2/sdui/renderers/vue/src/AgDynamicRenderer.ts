@@ -23,6 +23,7 @@ import { VueDivider } from 'agnosticui-core/divider/vue';
 import { VueDrawer } from 'agnosticui-core/drawer/vue';
 import { VueEmptyState } from 'agnosticui-core/empty-state/vue';
 import { VueFieldset } from 'agnosticui-core/fieldset/vue';
+import { VueFlex } from 'agnosticui-core/flex/vue';
 import { VueHeader } from 'agnosticui-core/header/vue';
 import { VueIcon } from 'agnosticui-core/icon/vue';
 import { VueIconButton } from 'agnosticui-core/icon-button/vue';
@@ -34,6 +35,7 @@ import { VueKbd } from 'agnosticui-core/kbd/vue';
 import { VueLink } from 'agnosticui-core/link/vue';
 import { VueLoader } from 'agnosticui-core/loader/vue';
 import { VueMark } from 'agnosticui-core/mark/vue';
+import { VueMenu } from 'agnosticui-core/menu/vue';
 import { VueMessageBubble } from 'agnosticui-core/message-bubble/vue';
 import { VuePagination } from 'agnosticui-core/pagination/vue';
 import { VuePopover } from 'agnosticui-core/popover/vue';
@@ -53,10 +55,15 @@ import { VueTabs } from 'agnosticui-core/tabs/vue';
 import { VueTag } from 'agnosticui-core/tag/vue';
 import { VueTagFx } from 'agnosticui-core/tag-fx/vue';
 import { VueTimeline } from 'agnosticui-core/timeline/vue';
+import { VueToast } from 'agnosticui-core/toast/vue';
 import { VueToggle } from 'agnosticui-core/toggle/vue';
 import { VueTooltip } from 'agnosticui-core/tooltip/vue';
 import { VueTooltipFx } from 'agnosticui-core/tooltip-fx/vue';
 import { VueCollapsible } from 'agnosticui-core/collapsible/vue';
+import 'agnosticui-core/flex';
+import 'agnosticui-core/scroll-progress';
+import 'agnosticui-core/scroll-to-button';
+import 'agnosticui-core/visually-hidden';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -432,6 +439,22 @@ function renderNode(
         { default: () => renderChildren(node.children) },
       );
 
+    case 'AgFlex':
+      return h(
+        VueFlex,
+        {
+        key: node.id,
+        direction: node.direction,
+        wrap: node.wrap,
+        justify: node.justify,
+        align: node.align,
+        alignContent: node.alignContent,
+        inline: node.inline,
+        reverse: node.reverse,
+        stretchChildren: node.stretchChildren,
+        },
+      );
+
     case 'AgHeader':
       return h(
         VueHeader,
@@ -634,6 +657,20 @@ function renderNode(
         matchAll: node.matchAll,
         },
         { default: () => renderChildren(node.children) },
+      );
+
+    case 'AgMenu':
+      return h(
+        VueMenu,
+        {
+        key: node.id,
+        open: node.open,
+        placement: node.placement,
+        ariaLabel: node.ariaLabel,
+        selectedValue: node.selectedValue,
+        type: node.type,
+        checkHiddenItems: node.checkHiddenItems,
+        },
       );
 
     case 'AgMessageBubble':
@@ -960,6 +997,24 @@ function renderNode(
         variant: node.variant,
         compact: node.compact,
         ariaLabel: node.ariaLabel,
+        },
+      );
+
+    case 'AgToast':
+      return h(
+        VueToast,
+        {
+        key: node.id,
+        open: node.open,
+        type: node.type,
+        position: node.position,
+        duration: node.duration,
+        autoDismiss: node.autoDismiss,
+        showCloseButton: node.showCloseButton,
+        pauseOnHover: node.pauseOnHover,
+        bordered: node.bordered,
+        rounded: node.rounded,
+        borderedLeft: node.borderedLeft,
         },
       );
 

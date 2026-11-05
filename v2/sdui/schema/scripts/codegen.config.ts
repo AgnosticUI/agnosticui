@@ -72,7 +72,6 @@ export const noUndefinedProps: Record<string, string[]> = {
   // size/variant: reflect: true, drive CSS :host([size=...]) and :host([variant=...]) selectors
   // value: setter doesn't handle undefined safely in single-select mode
   AgCombobox: ['options', 'size', 'variant', 'value'],
-
 };
 
 /**
@@ -126,7 +125,6 @@ export const actionPayloadMap: Record<string, string> = {};
  * Per-component overrides in vueComponentActionPayloadMap take priority.
  */
 export const vueActionPayloadMap: Record<string, string> = {};
-
 /**
  * componentActionPayloadMap: per-component, per-sourceName payload expressions
  * for the React renderer. Takes priority over actionPayloadMap.
@@ -243,7 +241,6 @@ export const litComponentActionPayloadMap: Record<string, Record<string, string>
     onPageChange: `{ id: node.id, value: (e as CustomEvent<{ page: number }>).detail?.page }`,
   },
 };
-
 /**
  * rendererSlotConfig: controls how each component renders its content in the
  * three framework renderers.
@@ -368,7 +365,6 @@ export const reactPropRenames: Record<string, string> = {
   ariaLabel: 'aria-label',
 };
 
-
 /**
  * skipComponents: component directory names to exclude from all generated output.
  * These require controlled runtime state that cannot be expressed in a static node.
@@ -377,13 +373,8 @@ export const skipComponents: string[] = [
   // Collapsible is handled as a rendererPrimitive (named summary slot requires manual case)
   'Collapsible',
 
-  // Deferred: complex state not expressible in a static fixture (see sub-issues of #460)
-  'Flex',           // multi-component family (FlexContainer/FlexRow/FlexCol/FlexInline) — no single ReactFlex/VueFlex wrapper
-  'Menu',           // complex open + selected-value state
+  // Permanently skipped or deferred components:
   'Sidebar',        // open + collapsed state management
-  'Toast',          // autoDismiss + open/close lifecycle
-
-  // Permanently skipped: no meaningful SDUI use case
   'ScrollProgress', // tracks live scroll position via a DOM target ref — not serializable
   'ScrollToButton', // scroll-detection behavioral component, no content to drive
   'SidebarNav',     // no Props interface; pure slot composition
@@ -466,9 +457,9 @@ export const rendererPrimitives: RendererPrimitive[] = [
   },
   {
     name: 'Collapsible',
-    reactImport: `import { ReactCollapsible } from 'agnosticui-core/collapsible/react';`,
-    vueImport: `import { VueCollapsible } from 'agnosticui-core/collapsible/vue';`,
-    litImport: `import 'agnosticui-core/collapsible';`,
+    reactImport: `import { ReactCollapsible } from 'agnosticui-core/collapsible/react';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
+    vueImport: `import { VueCollapsible } from 'agnosticui-core/collapsible/vue';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
+    litImport: `import 'agnosticui-core/collapsible';\nimport 'agnosticui-core/flex';\nimport 'agnosticui-core/scroll-progress';\nimport 'agnosticui-core/scroll-to-button';\nimport 'agnosticui-core/visually-hidden';`,
     schemaBlock:
 `export const AgCollapsibleSchema = z.object({
   id: z.string(),

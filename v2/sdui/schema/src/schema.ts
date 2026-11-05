@@ -290,6 +290,20 @@ export const AgFieldsetSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgFlexSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgFlex'),
+  direction: z.enum(['row', 'row-reverse', 'column', 'column-reverse']).optional(),
+  wrap: z.enum(['nowrap', 'wrap', 'wrap-reverse']).optional(),
+  justify: z.enum(['center', 'flex-start', 'flex-end', 'space-between', 'space-around', 'space-evenly']).optional(),
+  align: z.enum(['center', 'flex-start', 'flex-end', 'baseline', 'stretch']).optional(),
+  alignContent: z.enum(['center', 'flex-start', 'flex-end', 'space-between', 'space-around', 'space-evenly', 'stretch']).optional(),
+  inline: z.boolean().optional(),
+  reverse: z.boolean().optional(),
+  stretchChildren: z.boolean().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgHeaderSchema = z.object({
   id: z.string(),
   component: z.literal('AgHeader'),
@@ -465,6 +479,18 @@ export const AgMarkSchema = z.object({
   search: z.string().optional(),
   caseSensitive: z.boolean().optional(),
   matchAll: z.boolean().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
+export const AgMenuSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgMenu'),
+  open: z.boolean().optional(),
+  placement: z.string().optional(),
+  ariaLabel: z.string().optional(),
+  selectedValue: z.string().optional(),
+  type: z.enum(['default', 'single-select']).optional(),
+  checkHiddenItems: z.boolean().optional(),
   children: z.array(z.string()).optional(),
 }).strict();
 
@@ -748,6 +774,22 @@ export const AgTimelineSchema = z.object({
   children: z.array(z.string()).optional(),
 }).strict();
 
+export const AgToastSchema = z.object({
+  id: z.string(),
+  component: z.literal('AgToast'),
+  open: z.boolean().optional(),
+  type: z.enum(['default', 'primary', 'success', 'monochrome', 'warning', 'info', 'error', 'danger']).optional(),
+  position: z.enum(['top', 'bottom', 'end', 'start', 'top-end', 'top-start', 'bottom-end', 'bottom-start']).optional(),
+  duration: z.number().optional(),
+  autoDismiss: z.boolean().optional(),
+  showCloseButton: z.boolean().optional(),
+  pauseOnHover: z.boolean().optional(),
+  bordered: z.boolean().optional(),
+  rounded: z.boolean().optional(),
+  borderedLeft: z.boolean().optional(),
+  children: z.array(z.string()).optional(),
+}).strict();
+
 export const AgToggleSchema = z.object({
   id: z.string(),
   component: z.literal('AgToggle'),
@@ -846,6 +888,7 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgDrawerSchema,
   AgEmptyStateSchema,
   AgFieldsetSchema,
+  AgFlexSchema,
   AgHeaderSchema,
   AgIconSchema,
   AgIconButtonSchema,
@@ -857,6 +900,7 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgLinkSchema,
   AgLoaderSchema,
   AgMarkSchema,
+  AgMenuSchema,
   AgMessageBubbleSchema,
   AgPaginationSchema,
   AgPopoverSchema,
@@ -876,6 +920,7 @@ export const AgNodeSchema = z.discriminatedUnion('component', [
   AgTagSchema,
   AgTagFxSchema,
   AgTimelineSchema,
+  AgToastSchema,
   AgToggleSchema,
   AgTooltipSchema,
   AgTooltipFxSchema,

@@ -1298,6 +1298,88 @@
         },
         "component": {
           "type": "string",
+          "const": "AgFlex"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "row",
+            "row-reverse",
+            "column",
+            "column-reverse"
+          ]
+        },
+        "wrap": {
+          "type": "string",
+          "enum": [
+            "nowrap",
+            "wrap",
+            "wrap-reverse"
+          ]
+        },
+        "justify": {
+          "type": "string",
+          "enum": [
+            "center",
+            "flex-start",
+            "flex-end",
+            "space-between",
+            "space-around",
+            "space-evenly"
+          ]
+        },
+        "align": {
+          "type": "string",
+          "enum": [
+            "center",
+            "flex-start",
+            "flex-end",
+            "baseline",
+            "stretch"
+          ]
+        },
+        "alignContent": {
+          "type": "string",
+          "enum": [
+            "center",
+            "flex-start",
+            "flex-end",
+            "space-between",
+            "space-around",
+            "space-evenly",
+            "stretch"
+          ]
+        },
+        "inline": {
+          "type": "boolean"
+        },
+        "reverse": {
+          "type": "boolean"
+        },
+        "stretchChildren": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
           "const": "AgHeader"
         },
         "sticky": {
@@ -2109,6 +2191,51 @@
           "type": "boolean"
         },
         "matchAll": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgMenu"
+        },
+        "open": {
+          "type": "boolean"
+        },
+        "placement": {
+          "type": "string"
+        },
+        "ariaLabel": {
+          "type": "string"
+        },
+        "selectedValue": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "default",
+            "single-select"
+          ]
+        },
+        "checkHiddenItems": {
           "type": "boolean"
         },
         "children": {
@@ -3285,6 +3412,79 @@
         },
         "ariaLabel": {
           "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "component"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string",
+          "const": "AgToast"
+        },
+        "open": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "default",
+            "primary",
+            "success",
+            "monochrome",
+            "warning",
+            "info",
+            "error",
+            "danger"
+          ]
+        },
+        "position": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start",
+            "top-end",
+            "top-start",
+            "bottom-end",
+            "bottom-start"
+          ]
+        },
+        "duration": {
+          "type": "number"
+        },
+        "autoDismiss": {
+          "type": "boolean"
+        },
+        "showCloseButton": {
+          "type": "boolean"
+        },
+        "pauseOnHover": {
+          "type": "boolean"
+        },
+        "bordered": {
+          "type": "boolean"
+        },
+        "rounded": {
+          "type": "boolean"
+        },
+        "borderedLeft": {
+          "type": "boolean"
         },
         "children": {
           "type": "array",

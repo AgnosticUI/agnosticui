@@ -23,6 +23,7 @@ import { ReactDivider } from 'agnosticui-core/divider/react';
 import { ReactDrawer } from 'agnosticui-core/drawer/react';
 import { ReactEmptyState } from 'agnosticui-core/empty-state/react';
 import { ReactFieldset } from 'agnosticui-core/fieldset/react';
+import { ReactFlex } from 'agnosticui-core/flex/react';
 import { ReactHeader } from 'agnosticui-core/header/react';
 import { ReactIcon } from 'agnosticui-core/icon/react';
 import { ReactIconButton } from 'agnosticui-core/icon-button/react';
@@ -34,6 +35,7 @@ import { ReactKbd } from 'agnosticui-core/kbd/react';
 import { ReactLink } from 'agnosticui-core/link/react';
 import { ReactLoader } from 'agnosticui-core/loader/react';
 import { ReactMark } from 'agnosticui-core/mark/react';
+import { ReactMenu } from 'agnosticui-core/menu/react';
 import { ReactMessageBubble } from 'agnosticui-core/message-bubble/react';
 import { ReactPagination } from 'agnosticui-core/pagination/react';
 import { ReactPopover } from 'agnosticui-core/popover/react';
@@ -53,10 +55,15 @@ import { ReactTabs } from 'agnosticui-core/tabs/react';
 import { ReactTag } from 'agnosticui-core/tag/react';
 import { ReactTagFx } from 'agnosticui-core/tag-fx/react';
 import { ReactTimeline } from 'agnosticui-core/timeline/react';
+import { ReactToast } from 'agnosticui-core/toast/react';
 import { ReactToggle } from 'agnosticui-core/toggle/react';
 import { ReactTooltip } from 'agnosticui-core/tooltip/react';
 import { ReactTooltipFx } from 'agnosticui-core/tooltip-fx/react';
 import { ReactCollapsible } from 'agnosticui-core/collapsible/react';
+import 'agnosticui-core/flex';
+import 'agnosticui-core/scroll-progress';
+import 'agnosticui-core/scroll-to-button';
+import 'agnosticui-core/visually-hidden';
 
 type Actions = Record<string, (payload?: unknown) => void>;
 
@@ -411,6 +418,20 @@ function renderNode(
         </ReactFieldset>
       );
 
+    case 'AgFlex':
+      return (
+        <ReactFlex
+          key={node.id}
+          direction={node.direction}
+          wrap={node.wrap}
+          justify={node.justify}
+          align={node.align}
+          alignContent={node.alignContent}
+          inline={node.inline}
+          reverse={node.reverse}
+          stretchChildren={node.stretchChildren} />
+      );
+
     case 'AgHeader':
       return (
         <ReactHeader
@@ -599,6 +620,18 @@ function renderNode(
         >
           {renderChildren(node.children)}
         </ReactMark>
+      );
+
+    case 'AgMenu':
+      return (
+        <ReactMenu
+          key={node.id}
+          open={node.open}
+          placement={node.placement}
+          aria-label={node.ariaLabel}
+          selectedValue={node.selectedValue}
+          type={node.type}
+          checkHiddenItems={node.checkHiddenItems} />
       );
 
     case 'AgMessageBubble':
@@ -906,6 +939,22 @@ function renderNode(
           variant={node.variant}
           compact={node.compact}
           aria-label={node.ariaLabel} />
+      );
+
+    case 'AgToast':
+      return (
+        <ReactToast
+          key={node.id}
+          open={node.open}
+          type={node.type}
+          position={node.position}
+          duration={node.duration}
+          autoDismiss={node.autoDismiss}
+          showCloseButton={node.showCloseButton}
+          pauseOnHover={node.pauseOnHover}
+          bordered={node.bordered}
+          rounded={node.rounded}
+          borderedLeft={node.borderedLeft} />
       );
 
     case 'AgToggle':
