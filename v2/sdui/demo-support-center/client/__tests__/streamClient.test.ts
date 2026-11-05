@@ -11,7 +11,7 @@ describe('AgnosticUI SDUI Front-End Stream Client Suite', () => {
     vi.restoreAllMocks();
   });
 
-  it('should iteratively catch text fragments and trigger callbacks with fully formed AgNode layouts', async () => {
+  it('should iteratively catch text fragments and trigger callbacks with fully formed AgNode layouts using async iterators', async () => {
     console.log('\n--- START TEST: SduiStreamClient SPECIFICATION ANALYSIS ---');
 
     // Simulate standard chunk events output by our SSE endpoint
@@ -23,15 +23,17 @@ describe('AgnosticUI SDUI Front-End Stream Client Suite', () => {
 
     const encoder = new TextEncoder();
     
-    // Simulate a mock ReadableStream context mapping our target string parts
-    const mockReadableStream = new ReadableStream({
-      async start(controller) {
-        for (const chunk of mockServerChunks) {
-          controller.enqueue(encoder.encode(chunk));
+    // Form standard pre-encoded binary mock arrays to iterate over
+    const binaryChunks = mockServerChunks.map(chunk => encoder.encode(chunk));
+
+    // Construct a mock stream companion structure satisfying the async iterator interface specification
+    const mockReadableStream = {
+      [Symbol.asyncIterator]: async function* () {
+        for (const binaryChunk of binaryChunks) {
+          yield binaryChunk;
         }
-        controller.close();
       }
-    });
+    };
 
     // Stub out the global fetch broker sandbox explicitly
     const fetchSpy = vi.fn().mockResolvedValue({

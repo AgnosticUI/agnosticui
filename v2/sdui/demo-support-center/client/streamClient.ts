@@ -1,7 +1,7 @@
 /**
  * @file streamClient.ts
  * @description Framework-agnostic streaming client for consuming SDUI Server-Sent Events (SSE).
- * Reads chunked payloads over fetch request bodies, parsing and routing incoming nodes.
+ * Uses modern for await...of async iterators to safely consume network stream chunks.
  */
 
 /**
@@ -74,19 +74,13 @@ export class SduiStreamClient {
         throw new Error('[CLIENT_STREAM_ERROR] Streaming response payload body is completely null or unavailable.');
       }
 
-      const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let internalLineBuffer = '';
 
-      while (true) {
-        const { done, value } = await reader.read();
-
-        if (done) {
-          break;
-        }
-
-        // Decode binary Uint8Array segment into a readable string string slice block
-        const textFragment = decoder.decode(value, { stream: true });
+      // Direct asynchronous iteration eliminates old reader locks and manual 'while(true)' bounds
+      for await (const chunk of response.body) {
+        // Decode binary Uint8Array stream segment into readable text fragments
+        const textFragment = decoder.decode(chunk, { stream: true });
         internalLineBuffer += textFragment;
 
         // Process full lines separated by newline delimiters typical of SSE streams
