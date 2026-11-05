@@ -153,7 +153,7 @@ export const componentActionPayloadMap: Record<string, Record<string, string>> =
     onChange: `{ id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? '' }`,
   },
   AgSelect: {
-    onChange: `{ id: node.id, value: ((e as unknown) as { value?: string | string[] })?.value ?? '' }`,
+    onChange: `{ id: node.id, value: (e as any)?.value ?? '' }`,
   },
   AgToggle: {
     onToggleChange: `{ id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked }`,

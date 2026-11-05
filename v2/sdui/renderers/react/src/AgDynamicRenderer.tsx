@@ -763,7 +763,7 @@ function renderNode(
           errorMessage={node.errorMessage}
           helpText={node.helpText}
           onClick={() => dispatch(node.on_click, actions)}
-          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: ((e as unknown) as { value?: string | string[] })?.value ?? '' })} />
+          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as any)?.value ?? '' })} />
       );
 
     case 'AgSelectionButton':
