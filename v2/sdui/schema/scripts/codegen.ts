@@ -332,7 +332,7 @@ function generateReactCase(c: ComponentData): string {
   for (const a of c.actions) {
     const payloadExpr = componentActionPayloadMap[sdui]?.[a.sourceName] ?? actionPayloadMap[a.sourceName];
     if (payloadExpr) {
-      propLines.push(`          ${a.sourceName}={(e) => dispatch(node.${quoteName(a.alias)}, actions, ${payloadExpr})}`);
+      propLines.push(`          ${a.sourceName}={(e: any) => dispatch(node.${quoteName(a.alias)}, actions, ${payloadExpr})}`);
     } else {
       propLines.push(`          ${a.sourceName}={() => dispatch(node.${quoteName(a.alias)}, actions)}`);
     }

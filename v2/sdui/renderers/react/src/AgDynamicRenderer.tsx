@@ -290,7 +290,7 @@ function renderNode(
           errorMessage={node.errorMessage}
           helpText={node.helpText}
           onClick={() => dispatch(node.on_click, actions)}
-          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked })} />
+          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked })} />
       );
 
     case 'AgCombobox':
@@ -322,7 +322,7 @@ function renderNode(
           loading={node.loading}
           loadingText={node.loadingText}
           noResultsText={node.noResultsText}
-          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' })} />
+          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string | string[] }>).detail?.value ?? '' })} />
       );
 
     case 'AgCopyButton':
@@ -514,7 +514,7 @@ function renderNode(
           errorMessage={node.errorMessage}
           helpText={node.helpText}
           onClick={() => dispatch(node.on_click, actions)}
-          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: ((e as unknown) as React.ChangeEvent<HTMLInputElement>).target?.value ?? ((e as unknown) as CustomEvent<{ value: string }>).detail?.value ?? '' })} />
+          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as any).target?.value ?? (e as any).detail?.value ?? '' })} />
       );
 
     case 'AgIntlFormatter':
@@ -627,7 +627,7 @@ function renderNode(
           aria-label={node.ariaLabel}
           bordered={node.bordered}
           firstLastNavigation={node.firstLastNavigation}
-          onPageChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ page: number }>).detail?.page })} />
+          onPageChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ page: number }>).detail?.page })} />
       );
 
     case 'AgPopover':
@@ -695,7 +695,7 @@ function renderNode(
           errorMessage={node.errorMessage}
           helpText={node.helpText}
           onClick={() => dispatch(node.on_click, actions)}
-          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? '' })} />
+          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value ?? '' })} />
       );
 
     case 'AgRating':
@@ -738,7 +738,7 @@ function renderNode(
           errorMessage={node.errorMessage}
           helpText={node.helpText}
           onClick={() => dispatch(node.on_click, actions)}
-          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: ((e as unknown) as { value?: string | string[] })?.value ?? '' })} />
+          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as any)?.value ?? '' })} />
       );
 
     case 'AgSelectionButton':
@@ -769,7 +769,7 @@ function renderNode(
           values={node.values}
           disabled={node.disabled}
           required={node.required}
-          onSelectionChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value })}
+          onSelectionChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value })}
         >
           {renderChildren(node.children)}
         </ReactSelectionButtonGroup>
@@ -801,7 +801,7 @@ function renderNode(
           values={node.values}
           disabled={node.disabled}
           required={node.required}
-          onSelectionChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value })}
+          onSelectionChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: string }>).detail?.value })}
         >
           {renderChildren(node.children)}
         </ReactSelectionCardGroup>
@@ -845,7 +845,7 @@ function renderNode(
           showTooltip={node.showTooltip}
           showTicks={node.showTicks}
           tickStep={node.tickStep}
-          onChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: number | [number, number] }>).detail?.value })} />
+          onChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ value: number | [number, number] }>).detail?.value })} />
       );
 
     case 'AgSpinner':
@@ -928,7 +928,7 @@ function renderNode(
           name={node.name}
           value={node.value}
           onClick={() => dispatch(node.on_click, actions)}
-          onToggleChange={(e) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked })} />
+          onToggleChange={(e: any) => dispatch(node.on_change, actions, { id: node.id, value: (e as CustomEvent<{ checked: boolean; value: string }>).detail?.checked })} />
       );
 
     case 'AgTooltip':
