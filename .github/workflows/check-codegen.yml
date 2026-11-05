@@ -35,6 +35,8 @@ jobs:
         run: npm ci
         working-directory: v2/lib
 
-      - name: Check codegen drift
-        run: npm run check-codegen
+      - name: Generate schemas and check codegen drift
+        run: |
+          npm run codegen -- --emit-schema-json
+          npm run check-codegen
         working-directory: v2/sdui/schema
