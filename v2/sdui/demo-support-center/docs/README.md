@@ -49,43 +49,7 @@ app.use(async ctx => {
 
 ```
 
-## Structure
-
-```shell
-v2/sdui/demo-support-center/
-├── docs
-│   ├── e2e-support-agent-prd.md     # Approved project PRD
-│   └── README.md
-├── package-lock.json
-├── package.json                     # Workspace dependency tree
-├── src
-│   ├── client
-│   │   ├── __tests__
-│   │   │   └── streamClient.test.ts # Verifies async iterator streaming mechanics
-│   │   └── streamClient.ts          # Fetch stream client with for-await...of loops
-│   ├── db
-│   │   └── mockData.ts              # Isolated mock database engine
-│   ├── mcp
-│   │   └── schema
-│   │       └── agnosticui-schema.json # Authorized JSON schema layout constraints
-│   └── server
-│       ├── __tests__
-│       │   ├── actions.test.ts      # Verifies XSS and perimeter threat defenses
-│       │   ├── gateway.test.ts      # Verifies SSE streams and payload fragmentation
-│       │   └── streamUtils.test.ts  # Verifies progressive bracket-balancing bounds
-│       ├── actions.ts               # Secure execution registry & sanitation core
-│       ├── gateway.ts               # Hono API Gateway with progressive parser
-│       └── streamUtils.ts           # Sentinel-conditioned text buffer parser
-└── tsconfig.json                    # Isolated compiler configurations
-```
-
 # NEXT SESSION
-
-NOTE: We should consider addressing the following considerations for the project (not mentioned in the PRD spec:)
-• Quotas, tokens-per-minute limits (something reasonable considering this is a toy OSS example not generating any moneys it MUST not result in API costs!), and the token bucket, and...
-  • Perhaps `max_tokens` in clients request schema?
-  • Handling 429 Too Many Requests with Retry-After, exponential backoff and jitter
-• When server starts streaming SSE do we provide a generated ID for tracking?
 
 To make sure your next session boots up with zero friction and perfect factual grounding, here is your exact context bootstrapping checklist and your updated project ledger.
 
@@ -141,3 +105,40 @@ Phase 4: Verification, Polish & E2E Validation
 
 ## Prompt
 Ready to pick up at Step 4.6 with the async stream client locked in.
+
+
+## Structure
+
+```shell
+v2/sdui/demo-support-center/
+├── docs
+│   ├── e2e-support-agent-prd.md     # Approved project PRD
+│   └── README.md
+├── package-lock.json
+├── package.json                     # Workspace dependency tree
+├── src
+│   ├── client
+│   │   ├── __tests__
+│   │   │   └── streamClient.test.ts # Verifies async iterator streaming mechanics
+│   │   └── streamClient.ts          # Fetch stream client with for-await...of loops
+│   ├── db
+│   │   └── mockData.ts              # Isolated mock database engine
+│   ├── mcp
+│   │   └── schema
+│   │       └── agnosticui-schema.json # Authorized JSON schema layout constraints
+│   └── server
+│       ├── __tests__
+│       │   ├── actions.test.ts      # Verifies XSS and perimeter threat defenses
+│       │   ├── gateway.test.ts      # Verifies SSE streams and payload fragmentation
+│       │   └── streamUtils.test.ts  # Verifies progressive bracket-balancing bounds
+│       ├── actions.ts               # Secure execution registry & sanitation core
+│       ├── gateway.ts               # Hono API Gateway with progressive parser
+│       └── streamUtils.ts           # Sentinel-conditioned text buffer parser
+└── tsconfig.json                    # Isolated compiler configurations
+```
+
+NOTE: We should consider addressing the following considerations for the project (not mentioned in the PRD spec:)
+• Quotas, tokens-per-minute limits (something reasonable considering this is a toy OSS example not generating any moneys it MUST not result in API costs!), and the token bucket, and...
+  • Perhaps `max_tokens` in clients request schema?
+  • Handling 429 Too Many Requests with Retry-After, exponential backoff and jitter
+• When server starts streaming SSE do we provide a generated ID for tracking?
