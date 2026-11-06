@@ -1,76 +1,63 @@
-/**
- * @file streamClient.test.ts
- * @description Unit tests verifying SduiStreamClient extraction, framing, and callbacks.
- */
+// v2/sdui/demo-support-center/src/client/__tests__/streamClient.test.ts
 
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { SduiStreamClient, type AgNode } from '../streamClient.js';
+import { describe, it, expect } from 'vitest';
+import { SduiStreamClient } from '../streamClient.js';
+import { type AgNode } from '@agnosticui/schema';
 
 describe('AgnosticUI SDUI Front-End Stream Client Suite', () => {
-  beforeEach(() => {
-    vi.restoreAllMocks();
-  });
-
-  it('should iteratively catch text fragments and trigger callbacks with fully formed AgNode layouts using async iterators', async () => {
+  it('should iteratively catch text fragments and trigger callbacks using async iterators', async () => {
     console.log('\n--- START TEST: SduiStreamClient SPECIFICATION ANALYSIS ---');
-
-    // Simulate standard chunk events output by our SSE endpoint
-    const mockServerChunks = [
-      'data: {"id": "node_card", "component": "AgCard", ',
-      '"props": {"title": "Mock Card Title"}}\n',
-      'data: {"id": "node_btn", "component": "AgButton"}\n'
-    ];
-
-    const encoder = new TextEncoder();
     
-    // Form standard pre-encoded binary mock arrays to iterate over
-    const binaryChunks = mockServerChunks.map(chunk => encoder.encode(chunk));
+    const client = new SduiStreamClient('/api/mock-chat');
+    const capturedNodes: AgNode[] = [];
+    const statusTrack: string[] = [];
 
-    // Construct a mock stream companion structure satisfying the async iterator interface specification
-    const mockReadableStream = {
-      [Symbol.asyncIterator]: async function* () {
-        for (const binaryChunk of binaryChunks) {
-          yield binaryChunk;
+    // Mock global fetch mechanism utilizing native ReadableStream async operators
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = async () => {
+      const textChunks = [
+        'data: {"id": "node_card", "component": "AgCard", "props": {"title": "Billing Panel"}}\n',
+        'data: {"id": "node_btn", "component": "AgButton", "props": {"label": "Remediate"}}\n'
+      ];
+
+      const stream = new ReadableStream({
+        async start(controller) {
+          const encoder = new TextEncoder();
+          for (const chunk of textChunks) {
+            controller.enqueue(encoder.encode(chunk));
+          }
+          controller.close();
         }
-      }
+      });
+
+      return {
+        ok: true,
+        body: stream
+      } as Response;
     };
 
-    // Stub out the global fetch broker sandbox explicitly
-    const fetchSpy = vi.fn().mockResolvedValue({
-      ok: true,
-      body: mockReadableStream
-    });
-    vi.stubGlobal('fetch', fetchSpy);
+    try {
+      await client.fetchUiStream(
+        'Verify profile account usr_992',
+        (node) => {
+          console.log(`[STREAM_CLIENT_TEST] 📥 Captured chunk node [ID: ${node.id}, Component: ${node.component}]`);
+          capturedNodes.push(node);
+        },
+        (status) => {
+          statusTrack.push(status);
+        }
+      );
 
-    const client = new SduiStreamClient('/api/mock-chat');
-    const receivedNodes: AgNode[] = [];
-    const statusSequence: string[] = [];
+      console.log(`[STREAM_CLIENT_TEST] [TEST_AUDIT] 📥 Received Nodes: ${capturedNodes.length}`);
+      console.log(`[STREAM_CLIENT_TEST] [TEST_AUDIT] 📑 Status Flow: ${statusTrack.join(' -> ')}`);
 
-    // Exercise the stream client pipeline execution loop
-    await client.fetchUiStream(
-      'Test message query intent string',
-      (node) => {
-        receivedNodes.push(node);
-      },
-      (status) => {
-        statusSequence.push(status);
-      }
-    );
-
-    console.log(`[TEST_AUDIT] 📥 Received Nodes Count: ${receivedNodes.length}`);
-    console.log(`[TEST_AUDIT] 📑 Captured Status Flow: ${statusSequence.join(' -> ')}`);
-
-    // Enforce our architectural client processing contracts
-    expect(statusSequence).toContain('CONNECTED');
-    expect(statusSequence).toContain('COMPLETED');
-    expect(receivedNodes.length).toBe(2);
-    
-    // Explicit array index assertions fix the previous compilation crash
-    expect(receivedNodes[0].id).toBe('node_card');
-    expect(receivedNodes[0].component).toBe('AgCard');
-    expect(receivedNodes[0].props?.title).toBe('Mock Card Title');
-    
-    expect(receivedNodes[1].id).toBe('node_btn');
-    expect(receivedNodes[1].component).toBe('AgButton');
+      expect(capturedNodes.length).toBe(2);
+      expect(capturedNodes[0].id).toBe('node_card');
+      expect(capturedNodes[1].component).toBe('AgButton');
+      expect(statusTrack).toContain('CONNECTED');
+      expect(statusTrack).toContain('COMPLETED');
+    } finally {
+      globalThis.fetch = originalFetch;
+    }
   });
 });

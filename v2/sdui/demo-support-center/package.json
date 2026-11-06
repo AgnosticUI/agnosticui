@@ -15,6 +15,8 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@agnosticui/render-lit": "file:../renderers/lit/agnosticui-render-lit-2.0.0-alpha.1.tgz",
+    "@agnosticui/schema": "file:../schema/agnosticui-schema-2.0.0-alpha.1.tgz",
     "@hono/node-server": "^2.1.6",
     "ai": "^7.0.162",
     "ajv": "^8.20.0",

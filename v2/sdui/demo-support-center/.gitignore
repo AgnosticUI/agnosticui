@@ -15,3 +15,5 @@ yarn-error.log*
 # Environmental runtime parameters
 .env
 .env.local
+
+docs/NOTES.md

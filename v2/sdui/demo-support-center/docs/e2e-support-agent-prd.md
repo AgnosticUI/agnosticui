@@ -1,32 +1,30 @@
 # PRODUCT REQUIREMENTS DOCUMENT (PRD)
 
-**Document Version:** 1.0.0  
-**Status:** Approved / Specification Phase  
+**Document Version:** 1.1.0  
+**Status:** Approved / Core Architecture Realignment Phase  
 **Location Target:** `v2/sdui/demo-support-center/docs/e2e-support-agent-prd.md`  
 
 ---
 
 ## 1. Executive Summary & Core Objective
 
-
-
 ### 1.1 Objective & Vision
 The **AgnosticUI E2E Support Agent Demo** is a self-contained reference application housed within a dedicated directory at `v2/sdui/demo-support-center/`. This application demonstrates how a framework-agnostic component system can be driven dynamically by a local open-weight AI model (`qwen2.5-coder`) using an interactive **Schema-Driven UI (SDUI)** architecture.
 
-The application exposes a multi-turn support workflow. An AI agent processes natural language developer or customer service inquiries, calls local functions to inspect account data states, detects blockages (such as expired credit cards), and autonomously streams back **deterministically safe JSON layout graphs (`AgNode[]`)** verified on the fly by the local AgnosticUI Model Context Protocol (MCP) server.
+The application exposes a multi-turn support workflow. An AI agent processes natural language developer or customer service inquiries, calls local functions to inspect account data states, detects blockages (such as expired credit cards), and autonomously streams back **deterministically safe JSON layout graphs (`AgNode[]`)** verified on the fly by the local core library schemas. Rather than creating a fractured, ad-hoc renderer local to this demo, the platform dogfoods the unified monorepo primitives directly by importing `@agnosticui/schema` and `@agnosticui/render-lit` from locally bundled package archives.
 
 ```mermaid
 flowchart TB
     subgraph BROWSER["BROWSER PORTAL ENGINE (Frontend Workspace)"]
-        A["Live Chat UI Panel\n(ag-message-bubble logs)"] <-->|Bi-directional State| B["AgDynamicRenderer Canvas\n(Renders Validated SDUI Graph)"]
+        A["Live Chat UI Panel\n(ag-message-bubble logs)"] <-->|Bi-directional State| B["@agnosticui/render-lit\n(Canonical Workspace Canvas)"]
     end
 
     subgraph GATEWAY["LOCAL API GATEWAY (src/server/gateway.ts)"]
         C["Vercel AI SDK Run Loop\n(Orchestrates Agent Tools)"] <-->|Data Lookups| D["Mock In-Memory Accounts DB\n(mockData.ts Store Engine)"]
     end
 
-    subgraph MCP["BACKGROUND AGNOSTICUI MCP SERVER (Pure Library Core)"]
-        E["tool: generate_streamed_layout\n(Multi-Pass Graph Validation)"] <-->|Structural Integrity Check| F["Compiled AJV Guard Shield\n(Validates agnosticui-schema)"]
+    subgraph MCP["BACKGROUND AGNOSTICUI SCHEMA EDGE (Core Library)"]
+        E["@agnosticui/schema\n(Multi-Pass Graph Validation)"] <-->|Structural Integrity Check| F["Compiled AJV Guard Shield\n(Validates agnosticui-schema)"]
     end
 
     A & B <-->|HTTP / Server-Sent Events Token Stream| C
@@ -40,14 +38,15 @@ flowchart TB
     style GATEWAY fill:#f3e5f5,stroke:#333333,stroke-width:2px,color:#333333;
     style MCP fill:#e0f2f1,stroke:#333333,stroke-width:2px,color:#333333;
 ```
+
 ### 1.2 System Topology Diagram
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │ BROWSER PORTAL ENGINE (v2/sdui/demo-support-center/ Frontend Workspace)│
 │                                                                        │
 │ ┌──────────────────────────┐          ┌──────────────────────────────┐ │
-│ │ Live Chat UI Panel       │          │ AgDynamicRenderer Canvas     │ │
-│ │ (ag-message-bubble logs) │◄────────►│ (Renders Validated SDUI Graph)│ │
+│ │ Live Chat UI Panel       │          │ @agnosticui/render-lit       │ │
+│ │ (ag-message-bubble logs) │◄────────►│ (Canonical Workspace Canvas) │ │
 │ └───────────▲──────────────┘          └──────────────▲───────────────┘ │
 └─────────────┼────────────────────────────────────────┼─────────────────┘
               │ (HTTP / Server-Sent Events Token Stream)
@@ -61,11 +60,11 @@ flowchart TB
 └─────────────┼──────────────────────────────────────────────────────────┘
               │ (JSON-RPC over stdio Process Channels)
 ┌─────────────▼──────────────────────────────────────────────────────────┐
-│ BACKGROUND AGNOSTICUI MCP SERVER (v2/mcp-server/ Pure Library Core)   │
+│ BACKGROUND AGNOSTICUI SCHEMA EDGE (v2/sdui/schema/ Package Scope)       │
 │                                                                        │
 │ ┌──────────────────────────────┐      ┌──────────────────────────────┐ │
-│ │ tool: generate_streamed_layout│◄────►│ Compiled AJV Guard Shield    │ │
-│ │ (Multi-Pass Graph Validation)│      │ (Validates agnosticui-schema)│ │
+│ │ @agnosticui/schema Validation│◄────►│ Compiled AJV Guard Shield    │ │
+│ │ (Multi-Pass Graph Check)     │      │ (Validates agnosticui-schema)│ │
 │ └──────────────────────────────┘      └──────────────────────────────┘ │
 └────────────────────────────────────────────────────────────────────────┘
 ```
@@ -78,24 +77,24 @@ flowchart TB
 sequenceDiagram
     autonumber
     actor Agent as Support Agent
-    participant FE as Frontend Canvas
+    participant FE as Frontend Canvas (Lit)
     participant GW as Hono API Gateway
     participant LLM as AI Engine (Qwen)
-    participant MCP as MCP Validation Server
+    participant MCP as @agnosticui/schema Guard
 
     Agent->>FE: Inputs message: "User usr_992 can't see invoices"
     FE->>GW: Forwards transaction over HTTP Stream
     GW->>LLM: Evaluates state via Vercel AI SDK Run Loop
     LLM->>GW: Triggers database visibility tool call
-    GW->>GW: "Queries mockData.ts (Discovers account is 'past_due' & 'expired' or 'credit_card_number' is invalid)"
+    GW->>GW: "Queries mockData.ts (Discovers account is 'past_due' & 'expired')"
     GW->>LLM: Returns profile failure status
     Note over LLM: Decides to assemble an interactive<br/>Update User Account Form
     LLM->>GW: Emits form component layout stream (AgNode[])
-    GW->>MCP: Pipes payload to generate_streamed_layout
+    GW->>MCP: Pipes payload through JSON stream validator
     MCP->>MCP: Runs Compiled AJV Guard Schema Check
     MCP-->>GW: Verifies graph structure as safe and valid
     GW-->>FE: Streams validated JSON array via SSE tokens
-    FE->>Agent: AgDynamicRenderer paints payment update form widget
+    FE->>Agent: @agnosticui/render-lit paints payment form custom components
 
 ```
 
@@ -104,8 +103,8 @@ sequenceDiagram
 3. **Agentic Tool Evaluation:** The local Hono gateway forwards the transaction to the Vercel AI SDK loop. The model determines that it needs explicit database visibility and executes a tool call to query account parameters.
 4. **Data Condition Discovery:** The data function queries the mock database file and flags that the user's account state is currently `past_due` because their primary payment method is `expired`.
 5. **Structural Graph Emission:** The AI model skips lengthy text explanations. Instead, it generates a precise JSON layout graph (`AgNode[]`) outlining an interactive `AgCard` containing a payment card `AgInput` field and an update trigger `AgButton` linked back to a secure action handler.
-6. **Background MCP Verification:** The raw streamed node array is intercepted by the server gateway and piped through the background MCP server's **`generate_streamed_layout`** validation step. The internal AJV engine validates the elements against `agnosticui-schema.json` to ensure valid tags, parameters, and layout trees.
-7. **Frontend Canvas Streaming:** The validated JSON structures stream into the client browser layout, continuously appending to the active nodes array. The stateless `AgDynamicRenderer` builds out the payment update form widget incrementally in real-time without causing page reloads.
+6. **Incremental Validation Check:** The raw streamed node array is intercepted by the server gateway and piped through `@agnosticui/schema`'s validation engine. The internal AJV engine validates the elements against `agnosticui-schema.json` to ensure valid tags, parameters, and layout trees.
+7. **Frontend Canvas Streaming:** The validated JSON structures stream into the client browser layout, continuously appending to the active nodes array. The `@agnosticui/render-lit` web component canvas engine renders the elements incrementally in real-time with comprehensive shadow-DOM style encapsulation.
 
 ---
 
@@ -157,11 +156,12 @@ export const mockBillingProfiles: Record<string, BillingProfile> = {
 ## 4. Technical Constraints & Security Infrastructure
 
 * **Strict Code Isolation:** The workspace codebase must remain fully self-contained inside `v2/sdui/demo-support-center/` and can never alter or mutate code records in sibling folders.
-* **Malformed Component Dropping:** Any streaming node layout payload failing the MCP validation check is discarded immediately at the gateway layer before hitting the client browser canvas.
-* **Fail-Fast Stream Parsing (Incremental Validation):** The gateway layer does not wait for the full LLM response to complete before validating. It utilizes a progressive JSON stream parser to isolate and validate complete, individual component node objects (`AgNode`) within the streaming array in real-time. If an early component block violates the schema vocabulary or structure, the stream terminates instantly, preventing resource waste and ensuring corrupted code never touches the client canvas.
-* **Action Token Sanitization:** Incoming interactive events (e.g., `on_click: 'SUBMIT_BILLING_DELTA'`) are parsed strictly as validation mapping keys against an immutable local JavaScript lookup dictionary. This forms an absolute XSS security boundary inside the Light DOM environment.
-* **Strict Vocabulary Conformity (Anti-Hallucination Guard):** The background validation layer rejects data graphs containing perfectly valid standard HTML tags (e.g., `<button>`, `<div>`) or external UI frameworks that do not explicitly target an authorized AgnosticUI component schema variant definition (e.g., `AgButton`, `AgCard`). Code that is structurally sound but contextually unaligned with the AgnosticUI rendering engine is treated as invalid and dropped instantly.
-* **Decoupled Quality Evaluation (Non-Deterministic Boundary):** The background MCP server explicitly isolates structural safety from response quality. The validation guard enforces layout syntax, schema conformity, and security rules; it does *not* evaluate or enforce "how good," contextually accurate, or visually optimal the dynamic UI response is. UI aesthetic synthesis and utility remain entirely non-deterministic, moving with the inherent intelligence and capabilities of the downstream LLM engine.
+* **Dogfooding Package Boundaries:** The frontend workspace must strictly consume core rendering layouts and schema rules through compiled workspace tarballs installed locally via `npm pack`. Direct deep-linking to source directories outside the demo workspace boundary is strictly prohibited.
+* **Malformed Component Dropping:** Any streaming node layout payload failing the schema validation check is discarded immediately at the gateway layer before hitting the client browser canvas.
+* **Fail-Fast Stream Parsing (Incremental Validation):** The gateway layer does not wait for the full LLM response to complete before validating. It utilizes a progressive JSON stream parser to isolate and validate complete, individual component node objects within the streaming array in real-time. If an early component block violates the schema vocabulary or structure, the stream terminates instantly, preventing resource waste and ensuring corrupted code never touches the client canvas.
+* **Action Token Sanitization:** Incoming interactive events (e.g., matching button click events) are parsed strictly as validation mapping keys against an immutable local JavaScript lookup dictionary. This forms an absolute XSS security boundary inside the Light DOM environment.
+* **Strict Vocabulary Conformity (Anti-Hallucination Guard):** The background validation layer rejects data graphs containing perfectly valid standard HTML tags (e.g., `<button>`, `<div>`) or external UI frameworks that do not explicitly target an authorized AgnosticUI component schema variant definition. Code that is structurally sound but contextually unaligned with the AgnosticUI rendering engine is treated as invalid and dropped instantly.
+* **Decoupled Quality Evaluation (Non-Deterministic Boundary):** The background validation server explicitly isolates structural safety from response quality. The validation guard enforces layout syntax, schema conformity, and security rules; it does *not* evaluate or enforce "how good," contextually accurate, or visually optimal the dynamic UI response is. UI aesthetic synthesis and utility remain entirely non-deterministic, moving with the inherent intelligence and capabilities of the downstream LLM engine.
 
 ---
 
@@ -201,11 +201,11 @@ tests:
       - type: javascript
         value: |
           // Ensure output contains only allowed AgnosticUI components and NO raw HTML/external components
-          const allowedComponents = ['AgCard', 'AgInput', 'AgButton', 'AgMessageBubble', 'AgText'];
           try {
             const nodes = JSON.parse(output);
             if (!Array.isArray(nodes)) return false;
-            return nodes.every(node => allowedComponents.includes(node.type || node.tag));
+            // Evaluates using the canonical vocabulary imported via schema paths
+            return nodes.every(node => ['AgCard', 'AgInput', 'AgButton', 'AgMessageBubble', 'AgText'].includes(node.component));
           } catch (e) {
             return false;
           }
@@ -244,14 +244,14 @@ By checking this test harness into the repository, the project demonstrates ente
 flowchart TD
     subgraph LOCAL_TOPOLOGY["6.1 Local Development (Localhost)"]
         L_FE["Vite Frontend Sandbox\n(Port 5173)"] <-->|HTTP / SSE| L_GW["Hono Node.js Gateway\n(Port 3000)"]
-        L_GW <-->|stdio JSON-RPC| L_MCP["Background MCP Daemon\n(dist/index.js Process)"]
-        L_MCP <-->|Local API Pipes| L_LLM["Native Ollama Engine\n(qwen2.5-coder / LanceDB)"]
+        L_GW <-->|Local Memory Ingestion| L_MCP["@agnosticui/schema Validator"]
+        L_GW <-->|Secure Cloud Routing| L_LLM["Native Ollama Engine\n(qwen2.5-coder)"]
     end
 
     subgraph CLOUD_TOPOLOGY["6.2 Cloud Production (Cloudflare Edge Architecture)"]
         C_FE["Static Cloudflare Pages\n(Edge CDN Delivery)"] <-->|Turnstile Bot Shield| C_GW["Cloudflare Workers Gateway\n(Hono Edge Engine)"]
         C_GW <-->|Stateful Connection Broker| C_DO["Cloudflare Durable Objects\n(WebSocket Keep-Alive Instance)"]
-        C_DO <-->|Persistent WebSocket Pipe| C_MCP["Persistent VPS Cluster\n(Node MCP Runtime Host)"]
+        C_DO <-->|Persistent WebSocket Pipe| C_MCP["Persistent VPS Cluster\n(@agnosticui/schema Edge Check)"]
         C_MCP <-->|Secure Cloud Routing| C_LLM["Hosted Cloud LLM API\n(DeepSeek / Scale Cloud)"]
     end
 
@@ -266,15 +266,15 @@ flowchart TD
 To balance zero-cost local prototyping with enterprise resume highlights, the infrastructure targets a strict dual-topology blueprint.
 
 ### 6.1 Local Development (Localhost Architecture)
-* **The Stack:** Hono Node.js Entry Server (`@hono/node-server`), Native Ollama Engine, and local standard I/O pipes (`stdio`).
-* **Execution Boundary:** The API gateway runs as a standard Node process on `localhost:3000`. It spawns or maps directly to the compiled background `v2/mcp-server/dist/index.js` daemon over native OS command channels, querying the local `qwen2.5-coder` instance with no external web overhead.
+* **The Stack:** Hono Node.js Entry Server (`@hono/node-server`), Native Ollama Engine, and embedded archive processing.
+* **Execution Boundary:** The API gateway runs as a standard Node process on `localhost:3000`. It feeds data segments through the compiled schema library directly in memory, query processing the local `qwen2.5-coder` instance with zero external web overhead.
 
 ### 6.2 Cloud Production (Target Cloudflare Edge Architecture)
-* **The Stack:** Cloudflare Workers (Hono Gateway Edge), Cloudflare Durable Objects (Stateful WebSocket Router), Cloudflare Workers Turnstile (Bot Shield), and a persistent Node/VPS cluster (MCP Runtime Host).
+* **The Stack:** Cloudflare Workers (Hono Gateway Edge), Cloudflare Durable Objects (Stateful WebSocket Router), Cloudflare Workers Turnstile (Bot Shield), and a persistent Node/VPS cluster (Schema Validation Host).
 * **Execution Boundary:** 
   * The frontend static pages are delivered globally via **Cloudflare Pages** at the edge. 
   * API endpoints are intercepted immediately by a serverless **Cloudflare Worker running Hono**. Turnstile injects non-intrusive CAPTCHA checks to mitigate resource exhaustion attacks against downstream infrastructure.
-  * Because standard Cloudflare Worker edge runtimes are stateless and short-lived, they cannot maintain long-running WebSocket channels natively. In production environments, the Worker routes communication through a **Cloudflare Durable Object** instance. This stateful coordinator establishes and maintains an isolated, long-lived, high-stability WebSocket connection down to your background **MCP Server** hosted on a cloud VPS cluster, completely neutralizing serverless timeout limitations.
+  * Because standard Cloudflare Worker edge runtimes are stateless and short-lived, they cannot maintain long-running WebSocket channels natively. In production environments, the Worker routes communication through a **Cloudflare Durable Object** instance. This stateful coordinator establishes and maintains an isolated, long-lived, high-stability WebSocket connection down to your background validator hosted on a cloud VPS cluster, completely neutralizing serverless timeout limitations.
 
 ---
 
@@ -284,17 +284,17 @@ To maintain strict behavioral alignment between zero-cost local prototyping and 
 
 | Architectural Role | Localhost Prototyping (`6.1`) | Production Cloud Environment (`6.2`) | Cloudflare Cost Tier |
 | :--- | :--- | :--- | :--- |
-| **The User Interface Canvas** | `Vite Frontend` (Local Host on Port `5173`) | **Cloudflare Pages** (Globally Distributed Edge CDN Assets) | **$0.00 Free Tier** (Unlimited Bandwidth) |
+| **The User Interface Canvas** | `@agnosticui/render-lit` (Vite Sandbox on Port `5173`) | **Cloudflare Pages** (Globally Distributed Edge CDN Assets) | **$0.00 Free Tier** (Unlimited Bandwidth) |
 | **The Intelligent Orchestrator** | `Hono Node Server` (Local Host on Port `3000`) | **Cloudflare Workers** (Serverless Hono Edge Pipeline) | **$0.00 Free Tier** (Up to 100k requests/day) |
-| **The Stateful Connection Broker** | *Not Required* (Direct OS process mapping) | **Cloudflare Durable Objects** (Stateful Connection Coordinator) | **Low Cost** (Included in Workers Paid tier or micro-cents allocation) |
-| **The Compliance Guard Shield** | `v2/mcp-server` (Interacted via OS Standard `stdio`) | **Persistent Server Instance** (Interacted via Durable Object WebSocket Pipe) | **Self-Hosted** (Or zero-tier cloud compute micro-node) |
+| **The Stateful Connection Broker** | *Not Required* (Direct runtime processing) | **Cloudflare Durable Objects** (Stateful Connection Coordinator) | **Low Cost** (Included in Workers Paid tier or micro-cents allocation) |
+| **The Compliance Guard Shield** | `@agnosticui/schema` (Embedded inside application thread) | **Persistent Server Instance** (Interacted via Durable Object WebSocket Pipe) | **Self-Hosted** (Or zero-tier cloud compute micro-node) |
 | **The Dynamic Core LLM Brain** | `Native Ollama` (Running local `qwen2.5-coder`) | **Hosted Inference API** (Secured Cloud Engine Endpoint) | **Pay-As-You-Go Token Tier** |
 
 ### Core Architectural Implications for Engineering
 
-1. **Zero Behavioral Drift:** The JSON validation engine (`AJV`) compiles against the exact same structural schema document (`agnosticui-schema.json`) locally as it does in production. If a dynamic component layout passes local inspection, it is mathematically guaranteed to execute perfectly at the production edge without client-side parsing failures.
-2. **Protocol Abstraction:** The Local API Gateway abstracts the communication pattern. To the Vercel AI SDK loop, there is zero operational difference between communicating over an operating system standard I/O channel (`stdio`) or coordinating serialized JSON-RPC packets across a long-running, stateful Cloudflare Durable Object thread. 
-3. **Attack Surface Minimization:** Moving from a local process to a Cloudflare Worker introduces an automatic edge security perimeter. The edge tier isolates the backend compute nodes and database layers (`mockData.ts`) behind Cloudflare Turnstile bot shielding, completely neutralizing direct DDoS or malicious injection vectors before they ever touch the stateful core runtime or persistent VPS cluster.
+1. **Zero Behavioral Drift:** The JSON validation engine compiles against the exact same structural schema document (`agnosticui-schema.json`) locally as it does in production. If a dynamic component layout passes local inspection, it is mathematically guaranteed to execute perfectly at the production edge without client-side parsing failures.
+2. **Protocol Abstraction:** The Local API Gateway abstracts the communication pattern. To the Vercel AI SDK loop, there is zero operational difference between communicating over local thread channels or coordinating serialized JSON-RPC packets across a long-running, stateful Cloudflare Durable Object thread. 
+3. **Attack Surface Minimization:** Moving from a local process to a Cloudflare Worker introduces an automatic edge security perimeter. The edge tier isolates the backend compute nodes and database layers (`mockData.ts`) behind Cloudflare Workers Turnstile bot shielding, completely neutralizing direct DDoS or malicious injection vectors before they ever touch the stateful core runtime or persistent VPS cluster.
 
 ---
 
@@ -335,10 +335,11 @@ export default {
   }
 };
 ```
-* **Impact:** Downstream processing requests to both the **MCP Validation Server** and the **Cloud LLM Inference API** drop to exactly zero, safely freezing financial exposure metrics.
+
+* **Impact:** Downstream processing requests to both the validation cluster and the Cloud LLM Inference API drop to exactly zero, safely freezing financial exposure metrics.
 
 ### B.4 Secrets & Network Isolation Boundary
 
 To maintain absolute code safety within public repositories, all underlying system secrets are strictly abstracted out of the code files:
 * **Zero Secret Leakage:** Production variables (such as Cloudflare API tokens, private VPS connection strings, and hosted LLM keys) are injected exclusively through encrypted environment secrets managed via the Cloudflare dashboard or wrangler secrets vaults.
-* **Network Isolation:** The persistent MCP VPS cluster is configured behind strict firewall rules, rejecting all direct public HTTP/S traffic and *only* accepting authenticated incoming WebSocket tunnels brokered by the Cloudflare Durable Object edge network.
+* **Network Isolation:** The persistent VPS cluster is configured behind strict firewall rules, rejecting all direct public HTTP/S traffic and *only* accepting authenticated incoming WebSocket tunnels brokered by the Cloudflare Durable Object edge network.

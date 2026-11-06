@@ -1,26 +1,13 @@
 // v2/sdui/demo-support-center/src/client/index.ts
 
-/**
- * Structural definition matching the synchronized server-side AgNode format layout.
- * Acts as the absolute shared type definition for both our network clients and rendering factories.
- */
-export interface AgNode {
-  id: string;
-  component: string;
-  props?: {
-    actionToken?: string;
-    label?: string;
-    title?: string;
-    text?: string;
-    placeholder?: string;
-    content?: string;
-    [key: string]: any;
-  };
-  children?: string[];
-}
+import { type AgNode } from '@agnosticui/schema';
+
+// Re-export the canonical layout type straight from our dogfooded core package boundary
+export type { AgNode };
 
 /**
  * Functional callback mapping signature tracking an individual parsed node event.
+ * Securely bound to the unified discriminated union type schema.
  */
 export type NodeCallback = (node: AgNode) => void;
 

@@ -1,5 +1,4 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     "target": "es2022",
     "module": "nodenext",
@@ -9,7 +8,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "verbatimModuleSyntax": true,
-    "types": ["node"] // ✅ Core Fix: Force the compiler to load Node.js global typings explicitly
+    "types": ["node"]
   },
   "include": ["src/**/*"]
 }

@@ -1,33 +1,12 @@
 /**
  * @file streamClient.ts
  * @description Framework-agnostic streaming client for consuming SDUI Server-Sent Events (SSE).
- * Uses modern for await...of async iterators to safely consume network stream chunks.
+ * Uses modern for await...of async iterators to safely consume network stream chunks,
+ * importing type schemas straight from our dogfooded core package boundary.
  */
 
-/**
- * Structural definition matching the synchronized server-side AgNode format layout.
- */
-export interface AgNode {
-  id: string;
-  component: string;
-  props?: {
-    actionToken?: string;
-    label?: string;
-    title?: string;
-    [key: string]: any;
-  };
-  children?: string[];
-}
-
-/**
- * Functional callback mapping signature tracking an individual parsed node event.
- */
-export type NodeCallback = (node: AgNode) => void;
-
-/**
- * Functional callback mapping signature tracking network cycle completions or drops.
- */
-export type StatusCallback = (status: 'CONNECTED' | 'COMPLETED' | 'FAILED') => void;
+import { type AgNode } from '@agnosticui/schema';
+import { type NodeCallback, type StatusCallback } from './index.js';
 
 /**
  * Client controller orchestrating real-time SSE stream ingestion and node extraction.
@@ -55,6 +34,7 @@ export class SduiStreamClient {
     onStatusChange: StatusCallback
   ): Promise<void> {
     try {
+      console.log(`[STREAM_CLIENT] 🌐 Initializing network stream sequence targeting gateway route: "${this.gatewayUrl}"`);
       onStatusChange('CONNECTED');
 
       // Dispatch our payload transaction via fetch utilizing modern body stream protocols
@@ -76,6 +56,8 @@ export class SduiStreamClient {
 
       const decoder = new TextDecoder();
       let internalLineBuffer = '';
+
+      console.log('[STREAM_CLIENT] ⏳ Processing inbound Uint8Array binary chunks via native async iteration...');
 
       // Direct asynchronous iteration eliminates old reader locks and manual 'while(true)' bounds
       for await (const chunk of response.body) {
@@ -100,7 +82,8 @@ export class SduiStreamClient {
                 const parsedPayload = JSON.parse(rawJsonString);
                 
                 if (parsedPayload && parsedPayload.status !== 'EMPTY_PROMPT_STREAM') {
-                  // Forward the clean, structural node up into our reactive render callbacks
+                  console.log(`[STREAM_CLIENT] 📥 Successfully isolated chunk package packet node [ID: ${parsedPayload.id}, Component: ${parsedPayload.component}]`);
+                  // Forward the clean, structural node up into our reactive render callbacks typed safely against the schema core
                   onNodeReceived(parsedPayload as AgNode);
                 }
               } catch (jsonErr) {
@@ -114,6 +97,7 @@ export class SduiStreamClient {
         }
       }
 
+      console.log('[STREAM_CLIENT] 🏁 Async iteration stream channel processing successfully completed.');
       onStatusChange('COMPLETED');
     } catch (error) {
       console.error('[CLIENT_STREAM_CRITICAL] Exception caught inside network ingestion channel:', error);

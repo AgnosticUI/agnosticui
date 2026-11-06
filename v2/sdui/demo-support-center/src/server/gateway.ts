@@ -9,6 +9,7 @@ import { Hono } from 'hono';
 import { streamSSE } from 'hono/streaming';
 import { serve } from '@hono/node-server';
 import { ChunkAccumulator } from './streamUtils.js';
+import { validate } from '@agnosticui/schema';
 import { ACTION_DICTIONARY } from './actions.js';
 
 // Instantiate our core framework application router layout
@@ -44,7 +45,7 @@ app.post('/api/chat', async (c) => {
     });
   }
 
-  // Instantiate our workspace token parser wrapper to balance incoming JSON structures
+  // Instantiate our local workspace token parser wrapper to balance incoming JSON structures
   const accumulator = new ChunkAccumulator();
   const decoder = new TextDecoder();
 
@@ -61,27 +62,47 @@ app.post('/api/chat', async (c) => {
         // Iteratively handle each individual complete node extracted during this step
         for (const parsedNode of extractedNodes) {
           try {
-            // Execute edge-level action sanitization if structural props exist
-            if (parsedNode && parsedNode.props) {
-              const token = parsedNode.props.actionToken;
-              
-              if (token !== undefined) {
-                // Intercept any malicious patterns or unregistered action string values
-                if (typeof token === 'string' && (token.startsWith('javascript:') || !ACTION_DICTIONARY[token])) {
-                  console.warn(`[SECURITY_ALERT] 🛡️ Intercepted and scrubbed malicious or unauthorized action: "${token}"`);
-                  // Neutralize the malicious vector completely before broadcasting down to client
-                  delete parsedNode.props.actionToken;
-                }
-              }
+            // Guard: Safely skip incoming raw chat messages or user text prompt inputs
+            if (parsedNode && 'message' in parsedNode && !('component' in parsedNode)) {
+              continue;
             }
+
+            const targetNode = parsedNode as any;
+
+            // SECURITY BOUNDARY: Intercept and sanitize dynamic actions BEFORE passing to strict schemas
+            if (targetNode && targetNode.actionToken !== undefined) {
+              const token = targetNode.actionToken;
+              
+              if (typeof token === 'string' && (token.startsWith('javascript:') || !ACTION_DICTIONARY[token])) {
+                console.warn(`[SECURITY_ALERT] 🛡️ Intercepted and scrubbed malicious or unauthorized action: "${token}"`);
+              }
+              
+              // Clear the token key completely. Do NOT append metadata keys to avoid breaking strict Zod checks.
+              delete targetNode.actionToken;
+            }
+
+            console.log(`[GATEWAY_AUDIT] 🔍 Inspecting extracted structural node profile [ID: ${targetNode?.id || '<unknown>'}]`);
+
+            // Execute core package Zod validation check with dev hints enabled
+            const validationOutcome = validate(targetNode, { dev: true });
+
+            if (!validationOutcome.success) {
+              console.error('\n❌ [GATEWAY_SCHEMA_CRITICAL_FAILURE] Node rejected by Zod core library validator!');
+              console.error('❌ Raw input object shape:', JSON.stringify(targetNode, null, 2));
+              console.error('❌ Zod Validation Error Array:', validationOutcome.errors);
+              console.error('❌ Dev actionable suggestions:', validationOutcome.hints);
+              continue; 
+            }
+
+            // Extract the cleanly typed node data upon successful parse
+            const cleanNode = validationOutcome.data;
 
             // Flush the clean, verified node onto the client channel as a compliant SSE message
             await stream.writeSSE({
-              data: JSON.stringify(parsedNode)
+              data: JSON.stringify(cleanNode)
             });
 
           } catch (jsonErr) {
-            // Guard against edge exceptions when handling parsed structures
             console.error('[GATEWAY_ERROR] Failed emitting individual node layout string:', jsonErr);
           }
         }
@@ -89,7 +110,6 @@ app.post('/api/chat', async (c) => {
     } catch (streamErr) {
       console.error('[GATEWAY_CRITICAL] Exception encountered inside streaming chat loop:', streamErr);
     } finally {
-      // Cleanly close the SSE pipeline channel down gracefully
       await stream.close();
     }
   });
