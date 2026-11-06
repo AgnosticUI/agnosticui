@@ -51,64 +51,28 @@ app.use(async ctx => {
 
 # NEXT SESSION
 
-To make sure your next session boots up with zero friction and perfect factual grounding, here is your exact context bootstrapping checklist and your updated project ledger.
+## REFERENCE BASELINE FILES
 
-🧳 Context Window Bootstrapping Checklist (For your next session)
+When you open a fresh chat upload these:
 
-When you open a fresh chat, upload or paste these files in your very first prompt to anchor the AI's path definitions, type parameters, and code style:
-1. v2/sdui/demo-support-center/docs/e2e-support-agent-prd.md — Crucial to restore the high-level product vision, business rules, and mock user scenarios.
-2. v2/sdui/demo-support-center/src/client/streamClient.ts — Anchors the front-end SduiStreamClient API design and the concrete AgNode layout type shape.
-3. v2/sdui/demo-support-center/src/server/gateway.ts — Establishes the real-time Hono POST /api/chat router orchestration.
-4. tree Output Command — Yes, definitely provide a fresh tree output. It prevents path hallucinations by showing exactly how the workspace is structured (especially now that client/ safely lives inside src/).
-And provide above Structure `tree` output.
+```text
+File: src/client/index.ts
+[Paste complete index.ts here]
 
-🗺️ Complete Project Implementation Lifecycle Ledger
+File: tsconfig.json
+[Paste complete tsconfig.json here]
 
-Copy and paste this exact status ledger into your next opening prompt so the next agent knows precisely where the baton is being passed:
+File: vitest.config.ts
+[Paste complete vitest.config.ts here]
 
-Phase 1: Core Environment & Sandbox Architecture
+File: src/client/canvasRenderer.ts
+[Paste complete canvasRenderer.ts here]
+```
 
-• Step 4.1: Workspace Blueprint & Schema Setups
-	• Action: Initialized project workspace, ESM configurations, and strict TypeScript rules.
-• Step 4.2: Isolated Mock Database Infrastructure
-	• Action: Structured user accounts and billing exception states (mockData.ts).
-• Step 4.3: Action Security Compilers & Token Accumulators
-	• Action: Engineered the baseline token chunk parsing utilities (streamUtils.ts) and edge-level sanitization matrices (actions.ts).
-
-Phase 2: Gateway Pipeline Reactivation
-
-• Step 4.4: Real-Time SSE Route Orchestration
-	• Action: Bound chunk aggregation into Hono POST /api/chat with testing parameters covering fragmentation and script injection defenses.
-
-Phase 3: Client-Edge Hydration & UI Manifest Binding (🚀 Last Completed & Next Up)
-
-• Step 4.5: Modern Async Iterator Client Setup (**LAST COMPLETED**)
-	• Action: Implemented SduiStreamClient using the modern for await...of asynchronous iterator idiom on response.body. Streamlined both client and server layers to use native web streams, clearing 10/10 tests at 100% green compliance.
-
----
-RESUMPTION CONSTRAINT: PHASE 3 - STEP 4.6 REALIGNMENT
-The upstream SDUI codegen schema and renderers have been fully synchronized and rebuilt. 
-We are resuming Step 4.6: AgNode Layout Assembly & State Binding. 
-We will now use the official, updated framework-agnostic @agnosticui/render-lit package 
-integrated natively inside our `v2/sdui/demo-support-center/` workspace workspace, ensuring 
-strict vocabulary conformity without altering the auto-generated code records directly.
----
-• Step 4.6: AgNode Layout Assembly & State Binding (UPCOMING / NEXT UP)
-	• Action: Construct the browser mount engine to dynamically transform incoming serialized node metadata into live HTML DOM element renderings without layout stutter.
-• Step 4.7: Interactive Action Dispatch & Cycle Handshake
-	• Action: Intercept client clicks and form entries to dispatch authorized action tokens back to the gateway.
-
-Phase 4: Verification, Polish & E2E Validation
-
-• Step 4.8: Live Simulator Integration
-• Step 4.9: Production Asset Optimization
-
-## Prompt
-Ready to pick up at Step 4.6 with the async stream client locked in.
-
+## CONTEXT HANDOFF: AGNOSTICUI SDUI SUPPORT AGENT APPLICATION LOOPS
+We are working on a framework-agnostic coding project inside the `v2/sdui/demo-support-center/` workspace using a highly iterative, pedantic, hyper-focused instructional workflow. Absolute comprehension and rigorous verification override execution speed.
 
 ## Structure
-
 ```shell
 v2/sdui/demo-support-center/
 ├── docs
@@ -119,26 +83,73 @@ v2/sdui/demo-support-center/
 ├── src
 │   ├── client
 │   │   ├── __tests__
-│   │   │   └── streamClient.test.ts # Verifies async iterator streaming mechanics
-│   │   └── streamClient.ts          # Fetch stream client with for-await...of loops
+│   │   │   ├── canvasRenderer.test.ts # Runs global jsdom sandbox elements tests
+│   │   │   ├── sanity.test.ts
+│   │   │   ├── streamClient.test.ts
+│   │   │   └── vocabularyGuard.test.ts
+│   │   ├── canvasRenderer.ts        # Pure semantic vanilla CSS layout factory
+│   │   ├── index.ts                 # Canonical shared type & model manifest
+│   │   ├── streamClient.ts          # Async iterator fetch stream client
+│   │   └── vocabularyGuard.ts       # Anti-hallucination validation filter
 │   ├── db
 │   │   └── mockData.ts              # Isolated mock database engine
 │   ├── mcp
 │   │   └── schema
-│   │       └── agnosticui-schema.json # Authorized JSON schema layout constraints
+│   │       └── agnosticui-schema.json
 │   └── server
 │       ├── __tests__
-│       │   ├── actions.test.ts      # Verifies XSS and perimeter threat defenses
-│       │   ├── gateway.test.ts      # Verifies SSE streams and payload fragmentation
-│       │   └── streamUtils.test.ts  # Verifies progressive bracket-balancing bounds
+│       │   ├── actions.test.ts
+│       │   ├── gateway.test.ts
+│       │   └── streamUtils.test.ts
 │       ├── actions.ts               # Secure execution registry & sanitation core
 │       ├── gateway.ts               # Hono API Gateway with progressive parser
 │       └── streamUtils.ts           # Sentinel-conditioned text buffer parser
-└── tsconfig.json                    # Isolated compiler configurations
+├── tsconfig.json                    # Isolated compiler configurations
+└── vitest.config.ts                 # Global automated jsdom testing configuration
 ```
 
-NOTE: We should consider addressing the following considerations for the project (not mentioned in the PRD spec:)
-• Quotas, tokens-per-minute limits (something reasonable considering this is a toy OSS example not generating any moneys it MUST not result in API costs!), and the token bucket, and...
-  • Perhaps `max_tokens` in clients request schema?
-  • Handling 429 Too Many Requests with Retry-After, exponential backoff and jitter
-• When server starts streaming SSE do we provide a generated ID for tracking?
+### PROJECT IMPLEMENTATION LIFECYCLE LEDGER
+
+Phase 1: Core Environment & Sandbox Architecture
+• Step 4.1: Workspace Blueprint & Schema Setups
+	• Action: Initialized project workspace, ESM configurations, and strict TypeScript rules.
+• Step 4.2: Isolated Mock Database Infrastructure
+	• Action: Structured user accounts and billing exception states (mockData.ts).
+• Step 4.3: Action Security Compilers & Token Accumulators
+	• Action: Engineered the baseline token chunk parsing utilities (streamUtils.ts) and edge-level sanitization matrices (actions.ts).
+
+Phase 2: Gateway Pipeline Reactivation
+• Step 4.4: Real-Time SSE Route Orchestration
+	• Action: Bound chunk aggregation into Hono POST /api/chat with testing parameters covering fragmentation and script injection defenses.
+
+Phase 3: Client-Edge Hydration & UI Manifest Binding (🚀 Active Phase)
+• Step 4.5: Modern Async Iterator Client Setup
+	• Action: Implemented SduiStreamClient using the modern for await...of asynchronous iterator idiom on response.body. Streamlined both client and server layers to use native web streams.
+• Step 4.6: Centralizing Shared Layout Models & Base Renderer
+	• Action: Extracted core domain models out of concrete utility loops and established a unified structural entry manifest in `src/client/index.ts`. Built out the base `canvasRenderer.ts` using clean, semantic vanilla CSS designators (purged of utility frameworks) and safe `Element.textContent` primitives. Engineered an immutable verification filter `vocabularyGuard.ts` to block hallucinated inputs.
+
+Phase 4: Verification, Polish & E2E Validation (Upcoming)
+• Step 4.8: Live Simulator Integration
+• Step 4.9: Production Asset Optimization
+
+---
+
+### PRODUCTION SAFETY & RATE RESILIENCE CONSIDERATIONS
+Although this is an open-source reference example, it must not expose the operator to runaway API token costs or cascading network failures. The following constraints must be layered into our remaining client/gateway work:
+1. Budget Containment Shield: The client request schema must pass an explicit `max_tokens` layout bound parameter to guarantee strict budget encapsulation.
+2. Resilience Architecture (429 Handling): The stream client must gracefully intercept HTTP `429 Too Many Requests` status breaks, parsing edge `Retry-After` headers and falling back to a full Exponential Backoff with Decorrelated Jitter loop to eliminate server stampedes.
+3. Transaction Tracing Keys: The instant an SSE cycle initializes, the pipeline must generate a unique tracking identifier token string (e.g. `X-Session-ID`) to pair logs, streamline debug profiles, and trace state transitions across asynchronous boundaries.
+
+---
+
+### STRICT WORKFLOW RULES FOR THE NEXT SESSION
+1. SLOW DOWN & WORK ITERATIVELY: Work in small logical increments. Never build entire features or files at once. Break tasks across separate prompt exchanges.
+2. SEPARATIVE SPECS: Every logical routine, loop step, or condition block MUST come with a companion unit spec test in the same response file block to observe and print flow changes.
+3. MOTIVE BEFORE SYNTAX: Always explain the architectural "WHY" and defensive engineering motivation in approachable language before showing code syntax.
+4. NO PLACEHOLDERS: Provide 100% complete, copy-pasteable files for the specific section being updated. Never use "// ... rest of code".
+5. OVER-COMMENTING & EXPLANATORY LOGS: Add rich inline explanations and visual terminal console tracing markers to both production and spec files so execution flows can be audited dynamically.
+
+### RESUMPTION TASK: PHASE 3 - STEP 4.6i THE INTERACTIVE AGBUTTON HANDSHAKE
+We are ready to pick up exactly where we left off. Our goal is to extend `canvasRenderer.ts` and its companion test suite to support the `AgButton` component layout mapping, and bind interactive click action token properties to prepare our client-to-gateway event handshake pipeline.
+
+Please respond acknowledging these constraints, summarize where the architecture stands based on the ledger, and ask for my signal to deliver the first micro-chunk of code for the AgButton factory layout.
