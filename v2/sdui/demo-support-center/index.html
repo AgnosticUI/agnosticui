@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgnosticUI SDUI Live Simulator Panel</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; background: #fafafa; color: #111; }
+    .ag-simulator-workspace-layout { display: grid; grid-template-columns: 380px 1fr; height: 100vh; }
+    .ag-panel-chat-controls { padding: 1.5rem; border-right: 1px solid #ddd; background: #fff; }
+    .ag-panel-render-canvas-port { padding: 2rem; overflow-y: auto; }
+  </style>
+</head>
+<body>
+
+  <main class="ag-simulator-workspace-layout">
+    <!-- Left Interaction Panel Controls -->
+    <section class="ag-panel-chat-controls">
+      <h2>Simulator Controls</h2>
+      <form id="simulator-prompt-form">
+        <label for="simulator-ticket-input" style="display: block; margin-bottom: 0.5rem;">Prompt Ticket / Prompt Vector Input</label>
+        <input type="text" id="simulator-ticket-input" placeholder="Type prompt ticket instructions...">
+      </form>
+    </section>
+
+    <!-- Right Encapsulated Custom Element Port Canvas -->
+    <section class="ag-panel-render-canvas-port">
+      <ag-dynamic-renderer id="sdui-canvas-core"></ag-dynamic-renderer>
+    </section>
+  </main>
+
+  <!-- Initialize custom element registry and execute event-plumbing handshakes -->
+  <script type="module">
+    import '@agnosticui/render-lit';
+    import { LiveSimulatorController } from './src/client/simulator.js';
+
+    const controller = new LiveSimulatorController('/api/chat');
+    
+    const form = document.getElementById('simulator-prompt-form');
+    const input = document.getElementById('simulator-ticket-input');
+    const canvas = document.getElementById('sdui-canvas-core');
+
+    controller.bindSimulatorInterface(form, input, canvas);
+  </script>
+
+</body>
+</html>

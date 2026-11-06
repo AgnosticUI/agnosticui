@@ -1,16 +1,24 @@
 {
   "name": "demo-support-center",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "End-to-End interactive reference simulator verifying framework-agnostic SDUI ingestion architectures.",
+  "main": "src/server/gateway.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
+    "dev": "vite",
+    "server": "tsx src/server/gateway.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
-  "keywords": [],
+  "keywords": [
+    "agnosticui",
+    "sdui",
+    "mcp",
+    "lit-html",
+    "hono"
+  ],
   "author": "",
   "license": "ISC",
   "type": "module",
@@ -29,6 +37,7 @@
     "promptfoo": "^0.125.1",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
+    "vite": "^5.1.0",
     "vitest": "^5.1.0"
   }
 }
