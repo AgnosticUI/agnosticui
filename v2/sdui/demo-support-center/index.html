@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgnosticUI SDUI Live Simulator Panel</title>
+  <!-- Ingest canonical design system variable tokens from our local workspace footprint copies -->
+  <link rel="stylesheet" href="./ag-tokens.css" />
+  <link rel="stylesheet" href="./ag-tokens-dark.css" />
   <style>
     body { margin: 0; font-family: system-ui, sans-serif; background: #fafafa; color: #111; }
     .ag-simulator-workspace-layout { display: grid; grid-template-columns: 380px 1fr; height: 100vh; }
@@ -20,6 +23,7 @@
       <form id="simulator-prompt-form">
         <label for="simulator-ticket-input" style="display: block; margin-bottom: 0.5rem;">Prompt Ticket / Prompt Vector Input</label>
         <input type="text" id="simulator-ticket-input" placeholder="Type prompt ticket instructions...">
+        <p>User usr_992 states they are receiving an error when trying to view their enterprise invoice data sheet.</p>
       </form>
     </section>
 
