@@ -114,6 +114,32 @@ The core schemas enforce strict object whitelisting parameters combined with an 
 * **`AgMessageBubble` text binding:** The message string must be passed explicitly through the whitelisted **`message`** root key descriptor, *not* `text` or `content`.
 * **`AgButton` slot text propagation:** Container elements (such as `AgButton`) do not accept inline label variables natively. Instead, they use a child array mapping model or a hardcoded **`'label-child'`** `rendererSlotConfig` parameter that expects **`node.label`** to populate default text slots.
 
+### 4.1b The Flat Graph Component Relationship Tree
+Unlike traditional component frameworks that render deeply nested object configurations, AgnosticUI flushes a completely flat array of sibling nodes. Nested layouts are derived recursively at runtime by mapping component properties to string ID references:
+
+```mermaid
+graph TD
+    subgraph FlatArray["Flat Array Layout Array Input Envelope (AgNode[])"]
+        direction LR
+        N1["Node 1:<br/>AgMessageBubble<br/>(ID: msg_alert_usr_992)"]
+        N2["Node 2:<br/>AgCard<br/>(ID: card_form_usr_992)"]
+        N3["Node 3:<br/>AgInput<br/>(ID: input_cc_usr_992)"]
+        N4["Node 4:<br/>AgButton<br/>(ID: btn_submit_usr_992)"]
+    end
+
+    subgraph HydratedTree["Hydrated Viewport Composition (Shadow DOM Painting)"]
+        Root1["Root 1: AgMessageBubble"]
+        Root2["Root 2: AgCard"]
+        Child1["Child Slot: AgInput"]
+        Child2["Child Slot: AgButton"]
+        
+        Root2 -->|children: ['input_cc_...', 'btn_submit_...']| Child1
+        Root2 -->|children| Child2
+    end
+
+    N2 -.->|References Sibling IDs| HydratedTree
+```
+
 ### 4.2 Upstream Schema Pipeline Blindspots & Remediation
 Because the library's automated schema generator compiles rules directly from the core design system components' TypeScript code declarations (`*Props`), any element assigned to the `'label-child'` pipeline that relies on native child slots instead of a `label` property causes a validation trap—the validator rejects `label` as an unknown key while the rendering engine requires it to paint visible text.
 * **Remediation Invariant:** This discrepancy is handled cleanly by patching the core schema compiler rules via **`typeOverrides`** inside `v2/sdui/schema/scripts/codegen.config.ts`:
