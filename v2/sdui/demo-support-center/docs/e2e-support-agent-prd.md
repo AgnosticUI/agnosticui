@@ -1,7 +1,7 @@
 # PRODUCT REQUIREMENTS DOCUMENT (PRD)
 
 **Document Version:** 1.2.0  
-**Status:** Approved / Fully Synchronized Core Architecture Milestone  
+**Status:** Synchronized Core Architecture Milestone  
 **Location Target:** `v2/sdui/demo-support-center/docs/e2e-support-agent-prd.md`  
 
 ---
@@ -9,11 +9,9 @@
 ## 1. Executive Summary & Core Objective
 
 ### 1.1 Objective & Vision
-The **AgnosticUI E2E Support Agent Demo** is a self-contained reference application housed within a dedicated directory at `v2/sdui/demo-support-center/`. This application demonstrates how a framework-agnostic component system can be driven dynamically by a local open-weight AI model (`qwen2.5-coder:1.5b`) using an interactive, full-duplex **Schema-Driven UI (SDUI)** architecture.
+The **AgnosticUI Support Center Workspace** is a self-contained reference application housed within `v2/sdui/demo-support-center/`. This application demonstrates how a framework-agnostic component system can be driven dynamically using a deterministic, token-based **Schema-Driven UI (SDUI)** account-lookup workflow.
 
-The application exposes an adaptive multi-turn support workflow. An AI agent processes natural language developer or customer service inquiries, calls local functions to inspect account data states, detects blockages (such as expired credit cards), and autonomously streams back **deterministically safe JSON layout graphs (`AgNode[]`)** verified on the fly by the local core library schemas. 
-
-Rather than creating a fractured, ad-hoc renderer local to this demo, the platform dogfoods the unified monorepo primitives directly by importing `@agnosticui/schema` and `@agnosticui/render-lit` from locally bundled package archives.
+Rather than relying on non-deterministic client-side layout generation, the server gateway intercepts incoming inquiries, runs a structured database lookup to isolate customer file states, and synthesizes safe, flat, deterministic layout graphs (`AgNode[]`) verified by our strict schema validators. The local open-weight model (`qwen2.5-coder:1.5b`) is utilized exclusively within our automated **Promptfoo Evaluation Suite** to audit layout prompt compliance. Any production model-driven layout orchestration is explicitly designated as future work.
 
 ### 1.2 System Topology Diagram
 ```text
@@ -203,13 +201,12 @@ Small, local, open-weight models (such as `qwen2.5-coder:1.5b`) suffer from cont
 
 ---
 
-## 6. Deployment & Infrastructure Typologies
+## 6. Edge Security Perimeter & Cost Protection Controls
 
-To balance zero-cost local prototyping with enterprise resume highlights, the infrastructure targets a strict dual-topology blueprint.
+### 6.1 Turnstile Cryptographic Bot Shielding
+To guarantee zero-cost runtime stability and absolute defense against traffic inflation attacks, the production cloud gateway worker enforces strict edge cryptographic checks. 
 
-### 6.1 Local Development (Localhost Architecture)
-* **The Stack:** Hono Node.js Entry Server (`@hono/node-server`), Native Ollama Engine, and embedded archive processing.
-* **Execution Boundary:** The API gateway runs as a standard Node process on `localhost:3000`. It feeds data segments through the compiled schema library directly in memory, querying the local `qwen2.5-coder:1.5b` instance with zero external web overhead. The toolchain incorporates **Vite 6+ (`^6.0.0`)** and a reverse proxy configuration to eliminate `RequestInit` duplex stream path collisions smoothly across `localhost:5173`.
+The worker MUST explicitly validate incoming `x-turnstile-token` values against Cloudflare’s production `siteverify` API endpoint before processing any `/api/chat` transactions. Requests with absent, forged, or un-verified Turnstile tokens must be rejected instantly with an HTTP `401 Unauthorized` or `403 Forbidden` response. Natively tracking header presence or relying on upstream Managed Challenge rules alone is treated as insufficient perimeter defense.
 
 ### 6.2 Cloud Production (Target Cloudflare Edge Architecture)
 * **The Stack:** Cloudflare Workers (Hono Gateway Edge), Cloudflare Durable Objects (Stateful WebSocket Router), Cloudflare Workers Turnstile (Bot Shield), and a persistent Node/VPS cluster (Schema Validation Host).

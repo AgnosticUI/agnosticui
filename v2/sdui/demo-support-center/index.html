@@ -38,8 +38,9 @@
   <!-- Initialize our dogfooded custom web components and wire the live interaction loops -->
   <script type="module">
     import '@agnosticui/render-lit';
-    import { LiveSimulatorController } from './src/client/simulator.js';
-    import { initializeClientActions } from './src/client/actions.js';
+    // Updated with explicit .ts target file specifiers to avoid mapping reliance
+    import { LiveSimulatorController } from './src/client/simulator.ts';
+    import { initializeClientActions } from './src/client/actions.ts';
 
     console.log('[HTML_BOOT] 🏁 Initializing standard reference workspace app container...');
     const controller = new LiveSimulatorController('/api/chat');
@@ -48,7 +49,6 @@
     const inputElement = document.getElementById('simulator-ticket-input');
     const canvasElement = document.getElementById('sdui-canvas-core');
 
-    // Create a simple telemetry console logger container at runtime if not present
     let statusLog = document.getElementById('simulator-status-log');
     if (!statusLog) {
       statusLog = document.createElement('div');
@@ -61,11 +61,9 @@
 
     controller.bindSimulatorInterface(formElement, inputElement, canvasElement);
 
-    // Initialize our full-duplex interactive event mapping and inject directly into the renderer elements
     const interactiveActions = initializeClientActions(canvasElement, statusLog);
     canvasElement.actions = interactiveActions;
   </script>
-
 
 </body>
 </html>

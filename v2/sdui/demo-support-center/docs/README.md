@@ -1,6 +1,6 @@
 # AgnosticUI Support Center Workspace Ingestion Guide
 
-This workspace serves as an End-to-End (E2E) verification platform and interactive reference simulator for Schema-Driven UI (SDUI) workflows. To guarantee a production-grade integration layer, this demo bypasses arbitrary local path aliases and instead consumes local compiled package distributions generated directly from the monorepo core.
+This workspace serves as an End-to-End (E2E) verification platform and interactive reference simulator for Schema-Driven UI (SDUI) workflows.
 
 ---
 
@@ -36,7 +36,7 @@ flowchart TD
 Follow these steps sequentially inside your terminal window to build, package, and link your core libraries into the Support Center workspace.
 
 ### Step 2.1: Compile and Pack the Core SDUI Schema Registry
-Navigate into the foundational schema directory, build the TypeScript distribution targets, and produce the tarball archive:
+Start from your repository root directory and move into the schema folder:
 ```bash
 cd v2/sdui/schema
 npm run codegen -- --emit-schema-json
@@ -44,23 +44,25 @@ npm run check-codegen
 npm run build
 npm pack
 ```
-* **Expected Output Artifact:** A compressed file named exactly `agnosticui-schema-2.0.0-alpha.1.tgz` will be written to the `v2/sdui/schema/` directory root.
 
 ### Step 2.2: Compile and Pack the Lit Custom Component Renderer
-Navigate into the Lit renderer core directory, execute the local compiler suite, and compile the workspace layer:
+Return to the repository root directory before moving into the Lit renderer core folder:
 ```bash
+cd ../../..
 cd v2/sdui/renderers/lit
 npm run build
 npm pack
 ```
-* **Expected Output Artifact:** A compressed file named exactly `agnosticui-render-lit-2.0.0-alpha.1.tgz` will be written to the `v2/sdui/renderers/lit/` directory root.
 
 ### Step 2.3: Install Packed Ingestion Archives into the Support Center
-Navigate back into the Demo Support Center workspace root and inject the precise tarball paths using the native package manager installation command:
+Return to the repository root directory once more before entering the Demo Support Center workspace root:
 ```bash
+cd ../../..
 cd v2/sdui/demo-support-center
-npm install ../../schema/agnosticui-schema-2.0.0-alpha.1.tgz ../../renderers/lit/agnosticui-render-lit-2.0.0-alpha.1.tgz
+npm install ../schema/agnosticui-schema-2.0.0-alpha.1.tgz ../renderers/lit/agnosticui-render-lit-2.0.0-alpha.1.tgz
 ```
+* **Note:** Preserves existing package names and versions using precise, relative path references.
+
 ---
 
 ## 3. Local Runtime Execution Loops

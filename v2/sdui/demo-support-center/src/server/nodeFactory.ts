@@ -16,7 +16,6 @@ export function runAccountLookupTool(message: string): AgNode[] {
   const userMatch = message.match(/usr_\d+/);
   if (!userMatch) return [];
 
-  // Safely extract the string literal value from the RegExpMatchArray capture group
   const userId = userMatch[0];
   const user = mockUsersAccounts[userId];
   const billing = mockBillingProfiles[userId];
@@ -50,12 +49,8 @@ export function runAccountLookupTool(message: string): AgNode[] {
         id: `btn_submit_${userId}`,
         component: "AgButton",
         variant: "primary",
-        children: [`btn_text_${userId}`]
-      } as any,
-      {
-        id: `btn_text_${userId}`,
-        component: "AgText",
-        text: "SUBMIT REMEDIATION TRANSACTION",
+        label: "SUBMIT REMEDIATION TRANSACTION",
+        on_click: "SUBMIT_REMEDIATION",
         children: []
       } as any
     ];

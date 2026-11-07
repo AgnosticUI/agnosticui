@@ -554,6 +554,9 @@
         "on_toggle": {
           "type": "string"
         },
+        "label": {
+          "type": "string"
+        },
         "children": {
           "type": "array",
           "items": {
@@ -674,6 +677,9 @@
         },
         "fxDisabled": {
           "type": "boolean"
+        },
+        "label": {
+          "type": "string"
         },
         "children": {
           "type": "array",

@@ -16,17 +16,18 @@ describe('AgnosticUI SDUI Node Factory Unit Suite', () => {
 
     console.log(`[NODE_FACTORY_TEST] Manufactured graph contains ${manufacturedNodes.length} sequential nodes.`);
     
-    // Enforce strict asset requirements matching the PRD user account failure loop
+    // Aligned: Enforce strict requirements matching the clean, hack-free 4-node layout array
     expect(manufacturedNodes.length).toBe(4);
     
+    // Validate individual component mappings sequentially across the flat collection array
     expect(manufacturedNodes[0].component).toBe('AgMessageBubble');
     expect(manufacturedNodes[1].component).toBe('AgCard');
     expect(manufacturedNodes[2].component).toBe('AgInput');
     expect(manufacturedNodes[3].component).toBe('AgButton');
 
-    // Confirm structural children linking is intact inside the manufactured layout tree
-    expect(manufacturedNodes[1].children).toContain(`input_cc_usr_992`);
-    expect(manufacturedNodes[1].children).toContain(`btn_submit_usr_992`);
+    // Confirm structural child array ID references link correctly within the tree
+    expect((manufacturedNodes[1] as any).children).toContain(`input_cc_usr_992`);
+    expect((manufacturedNodes[1] as any).children).toContain(`btn_submit_usr_992`);
   });
 
   it('should cleanly fallback to an empty array vector if the user query contains no match tokens (Unhappy Path)', () => {
@@ -37,7 +38,6 @@ describe('AgnosticUI SDUI Node Factory Unit Suite', () => {
 
     console.log(`[NODE_FACTORY_TEST] Fallback array length verified: ${manufacturedNodes.length}`);
     
-    // Explicitly guarantee an absolute empty response baseline on unmapped intents
     expect(manufacturedNodes).toEqual([]);
     expect(manufacturedNodes.length).toBe(0);
   });

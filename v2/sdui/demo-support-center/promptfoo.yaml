@@ -1,6 +1,6 @@
 # promptfoo.yaml
 # Description: Automated LLM prompt metric evaluation profile verifying layout compliance matrices.
-# Dual-path few-shot rules mapped explicitly to anchor conditional layout branching logic.
+# Injects explicit few-shot engineering contexts and defensive markdown trimming filters.
 
 description: "AgnosticUI SDUI Support Center Local Ollama Layout Schema Assertion Suite"
 
@@ -23,7 +23,7 @@ prompts:
       {"id": "msg_1", "component": "AgMessageBubble", "message": "Account locked due to status exception.", "children": []},
       {"id": "card_1", "component": "AgCard", "children": ["input_1", "btn_1"]},
       {"id": "input_1", "component": "AgInput", "label": "Card Details", "placeholder": "0000", "children": []},
-      {"id": "btn_1", "component": "AgButton", "variant": "primary", "children": []}
+      {"id": "btn_1", "component": "AgButton", "variant": "primary", "label": "SUBMIT", "on_click": "SUBMIT_REMEDIATION", "children": []}
     ]
 
     Example 2 (Active Account Status Query):
@@ -57,6 +57,38 @@ tests:
         value: '"component": "AgInput"'
       - type: contains
         value: '"component": "AgButton"'
+      
+      # Enhanced programmatic validation layer with defensive markdown trimming filters
+      - type: javascript
+        value: |
+          try {
+            let cleanOutput = output.trim();
+            // Automatically neutralize and trim markdown fences if appended by the local LLM
+            if (cleanOutput.startsWith('```')) {
+              cleanOutput = cleanOutput.replace(/^```(?:json)?\n?/, '').replace(/```$/, '').trim();
+            }
+            
+            const nodes = JSON.parse(cleanOutput);
+            if (!Array.isArray(nodes)) return false;
+            
+            const ids = nodes.map(n => n.id);
+            const isUnique = new Set(ids).size === ids.length;
+            if (!isUnique) return false;
+
+            const allChildrenRefs = nodes.flatMap(n => n.children || []);
+            const allRefsResolve = allChildrenRefs.every(childId => ids.includes(childId));
+            
+            const buttonNode = nodes.find(n => n.component === 'AgButton');
+            if (buttonNode) {
+              // Ensure that any generated button includes label text and a valid action token string
+              const hasLabel = typeof buttonNode.label === 'string' && buttonNode.label.length > 0;
+              const hasValidAlias = typeof buttonNode.on_click === 'string' && buttonNode.on_click.length > 0;
+              return allRefsResolve && hasLabel && hasValidAlias;
+            }
+            return allRefsResolve;
+          } catch (e) {
+            return false;
+          }
 
   - description: "Verify active green account lookups bypass remediation form widgets"
     vars:
@@ -68,3 +100,5 @@ tests:
         value: '"component": "AgCard"'
       - type: not-contains
         value: '"component": "AgInput"'
+      - type: not-contains
+        value: '"component": "AgButton"'

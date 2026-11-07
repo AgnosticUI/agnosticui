@@ -296,18 +296,6 @@ export const rendererSlotConfig: Record<string, RendererSlot> = {
  * be rejected in SDUI — it creates a fundamentally different element).
  */
 export const typeOverrides: Record<string, Record<string, { tsType: string; zodExpr: string }>> = {
-  AgButton: {
-    label: {
-      tsType: 'string',
-      zodExpr: 'z.string().optional()',
-    }
-  },
-  AgButtonFx: {
-    label: {
-      tsType: 'string',
-      zodExpr: 'z.string().optional()',
-    }
-  },
   AgCombobox: {
     // ComboboxOption is an object type; ts-morph maps object arrays to null, so spell it out.
     // Only the SDUI-relevant fields (value, label, disabled) are included.

@@ -120,6 +120,7 @@ export interface AgButtonNode {
   ariaLabel?: string;
   on_click?: string;
   on_toggle?: string;
+  label?: string;
   children?: string[];
 }
 
@@ -144,6 +145,7 @@ export interface AgButtonFxNode {
   fxSpeed?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   fxEase?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'bounce' | 'spring-sm' | 'spring-md' | 'spring-lg';
   fxDisabled?: boolean;
+  label?: string;
   children?: string[];
 }
 

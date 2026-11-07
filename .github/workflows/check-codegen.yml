@@ -34,6 +34,9 @@ jobs:
         run: npm ci
         working-directory: v2/lib
 
+      - name: Validate Committed Generated Files (Pre-Flight Check)
+        run: npm run check-codegen
+
       - name: Generate schemas and check codegen drift
         run: |
           # 1. Force a fresh build loop execution of code configurations
