@@ -272,10 +272,8 @@ export class TagFx extends AgTag implements TagFxProps {
   }
 
   private _applyFxCustomProperties() {
-    const targetEl = this.shadowRoot?.querySelector('.tag-wrapper');
-    if (targetEl instanceof HTMLElement) {
-      targetEl.style.setProperty('--ag-fx-duration', `var(--ag-fx-duration-${this.fxSpeed})`);
-      targetEl.style.setProperty('--ag-fx-ease', `var(--ag-fx-ease-${this.fxEase})`);
-    }
+    this.style.setProperty('--ag-fx-duration', `var(--ag-fx-duration-${this.fxSpeed})`);
+    this.style.setProperty('--ag-fx-ease', `var(--ag-fx-ease-${this.fxEase})`);
   }
+
 }

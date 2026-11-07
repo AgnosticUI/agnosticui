@@ -261,10 +261,8 @@ export class TooltipFx extends Tooltip implements TooltipFxProps {
   }
 
   private _applyFxCustomProperties() {
-    const targetEl = this.shadowRoot?.querySelector('.tooltip');
-    if (targetEl instanceof HTMLElement) {
-      targetEl.style.setProperty('--ag-fx-duration', `var(--ag-fx-duration-${this.fxSpeed})`);
-      targetEl.style.setProperty('--ag-fx-ease', `var(--ag-fx-ease-${this.fxEase})`);
-    }
+    this.style.setProperty('--ag-fx-duration', `var(--ag-fx-duration-${this.fxSpeed})`);
+    this.style.setProperty('--ag-fx-ease', `var(--ag-fx-ease-${this.fxEase})`);
   }
+
 }

@@ -297,10 +297,7 @@ export class BadgeFx extends AgBadge implements BadgeFxProps {
   }
 
   private _applyFxCustomProperties() {
-    const targetEl = this.shadowRoot?.querySelector('.badge');
-    if (targetEl instanceof HTMLElement) {
-      targetEl.style.setProperty('--ag-fx-duration', `var(--ag-fx-duration-${this.fxSpeed})`);
-      targetEl.style.setProperty('--ag-fx-ease', `var(--ag-fx-ease-${this.fxEase})`);
-    }
+    this.style.setProperty('--ag-fx-duration', `var(--ag-fx-duration-${this.fxSpeed})`);
+    this.style.setProperty('--ag-fx-ease', `var(--ag-fx-ease-${this.fxEase})`);
   }
 }

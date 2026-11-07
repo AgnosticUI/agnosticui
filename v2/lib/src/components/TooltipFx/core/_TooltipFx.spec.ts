@@ -137,8 +137,7 @@ describe('TooltipFx', () => {
       element.fxSpeed = 'lg';
       await element.updateComplete;
 
-      const tooltip = element.shadowRoot?.querySelector('.tooltip') as HTMLElement;
-      const durationValue = tooltip?.style.getPropertyValue('--ag-fx-duration');
+      const durationValue = element.style.getPropertyValue('--ag-fx-duration');
       expect(durationValue).toBe('var(--ag-fx-duration-lg)');
     });
 
@@ -146,8 +145,7 @@ describe('TooltipFx', () => {
       element.fxEase = 'spring-md';
       await element.updateComplete;
 
-      const tooltip = element.shadowRoot?.querySelector('.tooltip') as HTMLElement;
-      const easeValue = tooltip?.style.getPropertyValue('--ag-fx-ease');
+      const easeValue = element.style.getPropertyValue('--ag-fx-ease');
       expect(easeValue).toBe('var(--ag-fx-ease-spring-md)');
     });
 
@@ -158,8 +156,7 @@ describe('TooltipFx', () => {
       element.fxSpeed = 'xl';
       await element.updateComplete;
 
-      const tooltip = element.shadowRoot?.querySelector('.tooltip') as HTMLElement;
-      const durationValue = tooltip?.style.getPropertyValue('--ag-fx-duration');
+      const durationValue = element.style.getPropertyValue('--ag-fx-duration');
       expect(durationValue).toBe('var(--ag-fx-duration-xl)');
     });
 
@@ -170,8 +167,7 @@ describe('TooltipFx', () => {
       element.fxEase = 'bounce';
       await element.updateComplete;
 
-      const tooltip = element.shadowRoot?.querySelector('.tooltip') as HTMLElement;
-      const easeValue = tooltip?.style.getPropertyValue('--ag-fx-ease');
+      const easeValue = element.style.getPropertyValue('--ag-fx-ease');
       expect(easeValue).toBe('var(--ag-fx-ease-bounce)');
     });
   });
