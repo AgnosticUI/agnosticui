@@ -39,6 +39,8 @@ Follow these steps sequentially inside your terminal window to build, package, a
 Navigate into the foundational schema directory, build the TypeScript distribution targets, and produce the tarball archive:
 ```bash
 cd v2/sdui/schema
+npm run codegen -- --emit-schema-json
+npm run check-codegen
 npm run build
 npm pack
 ```
@@ -59,33 +61,54 @@ Navigate back into the Demo Support Center workspace root and inject the precise
 cd v2/sdui/demo-support-center
 npm install ../../schema/agnosticui-schema-2.0.0-alpha.1.tgz ../../renderers/lit/agnosticui-render-lit-2.0.0-alpha.1.tgz
 ```
+---
+
+## 3. Local Runtime Execution Loops
+
+The development sandbox operates as a decoupled dual-process architecture. Follow these instructions to launch both your live visual workspace interactive environment and your automated metrics assertion engine.
+
+### 3.1 Browser-Based Payment Remediation Sandbox (Localhost:5173)
+This loop boots up a local Hono streaming server back-to-back with a Vite development server to test the end-to-end full-duplex support flows.
+
+1. **Terminal Tab 1 — Launch the Backend Hono Gateway Port:**
+   ```bash
+   cd v2/sdui/demo-support-center
+   npm run server
+   ```
+   * *Telemetry Check:* The console will emit `[GATEWAY_START] 🚀 Gateway live at http://localhost:3000`.
+
+2. **Terminal Tab 2 — Launch the Frontend Vite Sandbox:**
+   ```bash
+   cd v2/sdui/demo-support-center
+   npm run dev
+   ```
+   * *Telemetry Check:* The terminal wraps the dev dependencies and reports `Local: http://localhost:5173/`.
+
+3. **Verify the E2E Account Failure Loop:**
+   * Open your browser window viewport at `http://localhost:5173/`.
+   * Type this inquiry text string inside the minimalist **Simulator Controls** form and hit enter: `User usr_992 can't see invoices`.
+   * The Hono backend tool evaluates `mockData.ts`, checks the node shapes via `nodeGuard.ts`, and streams the payment form onto your canvas via serverless proxying.
+   * Input a test 16-digit payment card number inside the browser canvas element, click **SUBMIT REMEDIATION TRANSACTION**, and observe full-duplex execution logs running right inside the Chrome inspector terminal!
 
 ---
 
-## 3. Operational Code Implications & Consumption Mappings
+### 3.2 Automated Promptfoo Metric Evaluations (Ollama Runner)
+To programmatically test prompt compliance matrices against your local open-weight **`qwen2.5-coder:1.5b`** model without using external cloud tokens or payment keys, execute the unified script runner:
 
-Once linked, your dependencies are registered explicitly inside `v2/sdui/demo-support-center/package.json` pointing directly to local tarball paths:
+1. Ensure your local background Ollama process is up and running (`ollama serve`).
+2. Run the evaluation script directly from your terminal workspace root:
+   ```bash
+   cd v2/sdui/demo-support-center
+   npm run promptfoo
+   ```
 
-```json
-"dependencies": {
-  "@agnosticui/schema": "file:../../schema/agnosticui-schema-2.0.0-alpha.1.tgz",
-  "@agnosticui/render-lit": "file:../../renderers/lit/agnosticui-render-lit-2.0.0-alpha.1.tgz",
-  "hono": "^4.13.16"
-}
-```
-
-### 3.1 Seamless Import Semantics
-Any file processing streaming JSON schema evaluations or running client-side hydration layouts inside this demo can now reference standard package pathways. 
-
-For instance, your application code can import directly from the local node-modules container:
-```typescript
-// Verified standard library consumption within demo client loops
-import { type AgNode } from '@agnosticui/schema';
-import { AgDynamicRenderer } from '@agnosticui/render-lit';
-
-const canvasElement = document.getElementById('sdui-canvas')!;
-const renderer = new AgDynamicRenderer(canvasElement);
-```
+* **Expected Output Metric Summary Logs:**
+  ```text
+  Evaluating [████████████████████████████████████████] 100% | 2/2
+  [PASS] Verify past_due account anomalies for usr_992...
+  [PASS] Verify active green account lookups bypass...
+  ✓ 2 passed (100% prompt compliance metrics achieved)
+  ```
 
 ---
 
@@ -96,15 +119,9 @@ To confirm that your demo workspace is reading the authentic local package conte
 ```bash
 npm list @agnosticui/schema @agnosticui/render-lit
 ```
-* **Successful Response Verification Terminal Mirror:**
-  ```text
-  demo-support-center@1.0.0 v2/sdui/demo-support-center
-  ├── @agnosticui/render-lit@2.0.0-alpha.1 -> file:../../renderers/lit/agnosticui-render-lit-2.0.0-alpha.1.tgz
-  └── @agnosticui/schema@2.0.0-alpha.1 -> file:../../schema/agnosticui-schema-2.0.0-alpha.1.tgz
-  ```
 
 ### 4.2 Handling Stale Archive State Caches
-If you alter component code inside `v2/sdui/renderers/lit/src/` or update types inside `v2/sdui/schema/src/`, you **must** rebuild the pack archives. To fully refresh the node execution cache inside the demo application, run a clean purge sequence:
+If you alter component code inside `v2/sdui/renderers/lit/src/` or update types inside `v2/sdui/schema/src/`, you **must** rebuild the pack archives. To fully refresh the node execution cache inside the demo application, run a clean chapters purge sequence:
 ```bash
 # Inside v2/sdui/demo-support-center
 rm -rf node_modules package-lock.json
