@@ -18,7 +18,7 @@ on:
 jobs:
   verify:
     name: Verify example health
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
 
@@ -31,7 +31,7 @@ jobs:
 
   e2e:
     name: Playwright smoke tests (${{ matrix.example }})
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
