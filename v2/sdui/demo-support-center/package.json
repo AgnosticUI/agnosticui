@@ -10,7 +10,8 @@
     "dev": "vite",
     "server": "tsx src/server/gateway.ts",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "promptfoo": "npx promptfoo eval -c promptfoo.yaml"
   },
   "keywords": [
     "agnosticui",

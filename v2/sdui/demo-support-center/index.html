@@ -33,19 +33,37 @@
     </section>
   </main>
 
-  <!-- Initialize custom element registry and execute event-plumbing handshakes -->
+  <!-- Initialize our dogfooded custom web components and wire the live interaction loops -->
   <script type="module">
     import '@agnosticui/render-lit';
     import { LiveSimulatorController } from './src/client/simulator.js';
+    import { initializeClientActions } from './src/client/actions.js';
 
+    console.log('[HTML_BOOT] 🏁 Initializing standard reference workspace app container...');
     const controller = new LiveSimulatorController('/api/chat');
     
-    const form = document.getElementById('simulator-prompt-form');
-    const input = document.getElementById('simulator-ticket-input');
-    const canvas = document.getElementById('sdui-canvas-core');
+    const formElement = document.getElementById('simulator-prompt-form');
+    const inputElement = document.getElementById('simulator-ticket-input');
+    const canvasElement = document.getElementById('sdui-canvas-core');
 
-    controller.bindSimulatorInterface(form, input, canvas);
+    // Create a simple telemetry console logger container at runtime if not present
+    let statusLog = document.getElementById('simulator-status-log');
+    if (!statusLog) {
+      statusLog = document.createElement('div');
+      statusLog.id = 'simulator-status-log';
+      statusLog.style.fontSize = '0.85rem';
+      statusLog.style.color = '#555';
+      statusLog.innerText = 'Status: Idle';
+      formElement.appendChild(statusLog);
+    }
+
+    controller.bindSimulatorInterface(formElement, inputElement, canvasElement);
+
+    // Initialize our full-duplex interactive event mapping and inject directly into the renderer elements
+    const interactiveActions = initializeClientActions(canvasElement, statusLog);
+    canvasElement.actions = interactiveActions;
   </script>
+
 
 </body>
 </html>

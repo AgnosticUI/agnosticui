@@ -3,6 +3,7 @@
  * @description Main client-edge entry driver orchestrating the live UI simulator panel.
  * Connects standard chat inputs to the SduiStreamClient and feeds extracted layout items
  * straight into the canonical <ag-dynamic-renderer> web component container.
+ * Includes defensive event delegation fallback handlers to guarantee event action firing.
  */
 
 import { SduiStreamClient } from './streamClient.js';
@@ -25,9 +26,29 @@ export class LiveSimulatorController {
   public bindSimulatorInterface(
     formElement: HTMLFormElement,
     inputElement: HTMLInputElement,
-    rendererElement: HTMLElement & { nodes?: AgNode[]; resetCanvas?: () => void }
+    rendererElement: HTMLElement & { nodes?: AgNode[]; resetCanvas?: () => void; actions?: any }
   ): void {
     console.log('[SIMULATOR_INIT] 🛠️ Binding interactive event controls onto simulator dashboard shell...');
+
+    // Event Delegation Layer: Guarantees button actions fire even if framework property cycles lag
+    rendererElement.addEventListener('click', (event: Event) => {
+      const composePath = event.composedPath();
+      
+      // Traverse the composed path array to find any AgButton components hidden behind shadow roots
+      const targetButton = composePath.find(
+        (node: any) => node.tagName && node.tagName.toLowerCase() === 'ag-button'
+      ) as HTMLElement | undefined;
+
+      if (targetButton) {
+        console.log(`[SIMULATOR_DELEGATION] 🔔 Captured visual AgButton click target. ID reference: "${targetButton.id}"`);
+        
+        // Extract the explicit interactive handler dictionary mapped onto the renderer container
+        const attachedActions = rendererElement.actions;
+        if (attachedActions && typeof attachedActions.SUBMIT_REMEDIATION === 'function') {
+          attachedActions.SUBMIT_REMEDIATION();
+        }
+      }
+    });
 
     formElement.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -41,7 +62,6 @@ export class LiveSimulatorController {
       console.log(`\n--- START LIVE SSE SIMULATION CYCLE ---`);
       console.log(`[SIMULATOR_EXEC] Ingesting prompt ticket transaction: "${userPromptText}"`);
 
-      // Wipe active layout states to prepare the browser viewport canvas for clean incoming updates
       this.currentNodes = [];
       if (typeof rendererElement.resetCanvas === 'function') {
         rendererElement.resetCanvas();
@@ -55,8 +75,6 @@ export class LiveSimulatorController {
           (incomingNode: AgNode) => {
             console.log(`[SIMULATOR_RENDER] 📥 Appending extracted core element into active layout canvas [ID: ${incomingNode.id}]`);
             this.currentNodes.push(incomingNode);
-            
-            // Push the immutable array duplicate into the custom component to invoke an isolated shadow DOM redraw pass
             rendererElement.nodes = [...this.currentNodes];
           },
           (networkStatus) => {
