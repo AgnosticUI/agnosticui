@@ -1,8 +1,57 @@
 # FX_PLAN.md - Component FX Extension Specification
 
-**Version:** 1.0.0
-**Last Updated:** 2024-12-02
+**Version:** 1.0.1
+**Last Updated:** 2026-11-07
 **Status:** Canonical
+
+---
+
+## 2026 Architectural Amendment: Motion Context Provider Paradigm
+
+### Context & Pivot Intent
+Historically, the `_applyFxCustomProperties()` method in individual `*Fx` variants manually queried the component's internal shadow root to mutate inline styles on a specific inner target element (e.g., `.avatar`, `button`).
+
+To support advanced orchestration—such as enabling end-users to hook slotted micro-elements (like structural inline SVGs or badges) into the parent component's animation timeline—the system is pivoting to an **Inheritable Custom Property Tree**. 
+
+### The Refactored Variable Flow
+Instead of mutating the inner DOM, the component lifecycle reflects the motion context onto the custom element host (`this`) itself:
+
+```typescript
+private _applyFxCustomProperties() {
+  this.style.setProperty('--ag-fx-duration', `var(--ag-fx-duration-${this.fxSpeed})`);
+  this.style.setProperty('--ag-fx-ease', `var(--ag-fx-ease-${this.fxEase})`);
+}
+```
+
+This ensures that any child node inside the shadow root *as well as* light DOM slotted fragments inside a layout container natively inherit the motion context parameters (`--ag-fx-duration`, `--ag-fx-ease`) via the native browser cascade.
+
+---
+
+### **Refactor Learnings**
+
+#### **Phase 2 Log: AvatarFx (Simple Target)**
+*   **Feasibility Verdict:** `SUCCESS`
+*   **Observations:** Re-routing style mapping from internal shadow tree targets to `this` (host element root) executed perfectly without runtime regression. Legacy test specifications failed explicitly on `HTMLElement.style.getPropertyValue()` checks because they were looking for inline mutations on internal node leaves (`.avatar`) rather than inheriting from the host container context.
+*   **Design Token Insights:** Moving custom property trees to the `:host` container enforces cleaner encapsulation boundaries. It completely prevents premature DOM traversal queries during async hydration loops in multi-framework setups.
+
+#### **Phase 4 Log: ButtonFx (Complex Target)**
+*   **Feasibility Verdict:** `SUCCESS`
+*   **Observations:** Verified that the native `<button>` element perfectly inherited the property trees without breaking native `:hover` or active frame timings. The test suite failed predictably on lines 140, 149, 161, and 173 due to internal button leaf style queries. Up-shifting the assertion directly to the `element` host restored full passing test compliance.
+*   **Layout & Shadow Root Boundaries:** This rules out any complications regarding pseudo-states or attribute overrides (`:host([variant="primary"]) button:hover`). The native cascade treats custom properties orthogonally to layout specificity selectors, allowing theme backgrounds and motion settings to coexist seamlessly without interference.
+
+---
+
+### **Single Source of Truth & Build Strategy (No Duplication)**
+
+To safely distribute the public `utilities.css` bundle to consumer projects without maintaining two separate style sheets or duplicating code, we leverage Lit's template compilation engine.
+
+1. **The Shared Fragment:** The context-aware utility classes are isolated into a `sharedUtilityRules` export inside `motion.styles.ts`.
+2. **Shadow DOM Inclusion:** The shared utility rules are interpolated directly into the core `motionStyles` array via `${sharedUtilityRules}`. This ensures native slot piercing support (`:host([fx]:hover) .ag-fx-inherit-bounce`) within components with zero library overhead.
+3. **Build-Time Extraction Script:** A performance-focused build pipeline script (`scripts/build-utilities.js`) taps straight into `sharedUtilityRules.cssText` during the pre-publish phase, automatically writing the unified output to `./dist/styles/utilities.css`.
+
+This guarantees 100% feature parity between core internal element slots and external consumer utility layouts with zero manual engineering maintenance.
+
+---
 
 ## Overview
 

@@ -316,10 +316,7 @@ export class ButtonFx extends AgButton implements FxProps {
   }
 
   private _applyFxCustomProperties() {
-    const buttonEl = this.shadowRoot?.querySelector('button');
-    if (buttonEl instanceof HTMLElement) {
-      buttonEl.style.setProperty('--ag-fx-duration', `var(--ag-fx-duration-${this.fxSpeed})`);
-      buttonEl.style.setProperty('--ag-fx-ease', `var(--ag-fx-ease-${this.fxEase})`);
-    }
+    this.style.setProperty('--ag-fx-duration', `var(--ag-fx-duration-${this.fxSpeed})`);
+    this.style.setProperty('--ag-fx-ease', `var(--ag-fx-ease-${this.fxEase})`);
   }
 }
