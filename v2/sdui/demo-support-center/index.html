@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgnosticUI SDUI Live Simulator Panel</title>
+  <!-- Ingest canonical design system variable tokens from our local workspace footprint copies -->
+  <link rel="stylesheet" href="./ag-tokens.css" />
+  <link rel="stylesheet" href="./ag-tokens-dark.css" />
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; background: #fafafa; color: #111; }
+    .ag-simulator-workspace-layout { display: grid; grid-template-columns: 380px 1fr; height: 100vh; }
+    .ag-panel-chat-controls { padding: 1.5rem; border-right: 1px solid #ddd; background: #fff; }
+    .ag-panel-render-canvas-port { padding: 2rem; overflow-y: auto; }
+  </style>
+</head>
+<body>
+
+  <main class="ag-simulator-workspace-layout">
+    <!-- Left Interaction Panel Controls -->
+    <section class="ag-panel-chat-controls">
+      <h2>Simulator Controls</h2>
+      <form id="simulator-prompt-form">
+        <label for="simulator-ticket-input" style="display: block; margin-bottom: 0.5rem;">Prompt Ticket / Prompt Vector Input</label>
+        <input type="text" id="simulator-ticket-input" placeholder="Type prompt ticket instructions...">
+        <p>How to run:</p>
+        <p>Paste the text from below into the input then press "ENTER".</p>
+        <p>User usr_992 states they are receiving an error when trying to view their enterprise invoice data sheet.</p>
+      </form>
+    </section>
+
+    <!-- Right Encapsulated Custom Element Port Canvas -->
+    <section class="ag-panel-render-canvas-port">
+      <ag-dynamic-renderer id="sdui-canvas-core"></ag-dynamic-renderer>
+    </section>
+  </main>
+
+  <!-- Initialize our dogfooded custom web components and wire the live interaction loops -->
+  <script type="module">
+    import '@agnosticui/render-lit';
+    // Updated with explicit .ts target file specifiers to avoid mapping reliance
+    import { LiveSimulatorController } from './src/client/simulator.ts';
+    import { initializeClientActions } from './src/client/actions.ts';
+
+    console.log('[HTML_BOOT] 🏁 Initializing standard reference workspace app container...');
+    const controller = new LiveSimulatorController('/api/chat');
+    
+    const formElement = document.getElementById('simulator-prompt-form');
+    const inputElement = document.getElementById('simulator-ticket-input');
+    const canvasElement = document.getElementById('sdui-canvas-core');
+
+    let statusLog = document.getElementById('simulator-status-log');
+    if (!statusLog) {
+      statusLog = document.createElement('div');
+      statusLog.id = 'simulator-status-log';
+      statusLog.style.fontSize = '0.85rem';
+      statusLog.style.color = '#555';
+      statusLog.innerText = 'Status: Idle';
+      formElement.appendChild(statusLog);
+    }
+
+    controller.bindSimulatorInterface(formElement, inputElement, canvasElement);
+
+    const interactiveActions = initializeClientActions(canvasElement, statusLog);
+    canvasElement.actions = interactiveActions;
+  </script>
+
+</body>
+</html>

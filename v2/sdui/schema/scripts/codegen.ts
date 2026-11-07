@@ -171,6 +171,16 @@ export function getComponentInfo(
     props.push({ name: propName, tsType: mapping.tsType, zodExpr: mapping.zodExpr });
   }
 
+  // FIXED THE BLINDSPOT: Fulfill the code review criteria for label-child components
+  // Automatically whitelists the SDUI 'label' prop for AgButton & AgButtonFx without typeOverrides hacks!
+  if (rendererSlotConfig[sdui] === 'label-child') {
+    props.push({
+      name: 'label',
+      tsType: 'string',
+      zodExpr: 'z.string().optional()'
+    });
+  }
+
   return { props, actions };
 }
 

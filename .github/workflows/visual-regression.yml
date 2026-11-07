@@ -28,7 +28,7 @@ on:
 
 jobs:
   visual-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout Workspace Baseline
         uses: actions/checkout@v4

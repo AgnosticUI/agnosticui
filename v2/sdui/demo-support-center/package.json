@@ -1,0 +1,44 @@
+{
+  "name": "demo-support-center",
+  "version": "1.0.0",
+  "description": "End-to-End interactive reference simulator verifying framework-agnostic SDUI ingestion architectures.",
+  "main": "src/server/gateway.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "server": "tsx src/server/gateway.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "promptfoo": "npx promptfoo eval -c promptfoo.yaml"
+  },
+  "keywords": [
+    "agnosticui",
+    "sdui",
+    "mcp",
+    "lit-html",
+    "hono"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@agnosticui/render-lit": "file:../renderers/lit/agnosticui-render-lit-2.0.0-alpha.1.tgz",
+    "@agnosticui/schema": "file:../schema/agnosticui-schema-2.0.0-alpha.1.tgz",
+    "@hono/node-server": "^2.1.6",
+    "ai": "^7.0.162",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "hono": "^4.13.16"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "jsdom": "^29.1.1",
+    "promptfoo": "^0.125.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
+  }
+}

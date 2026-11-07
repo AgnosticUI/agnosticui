@@ -1,0 +1,110 @@
+# promptfoo.yaml
+# Description: Automated LLM prompt metric evaluation profile verifying layout compliance matrices.
+# Injects strict dual-path system contexts and explicit button action alias instructions.
+
+description: "AgnosticUI SDUI Support Center Local Ollama Layout Schema Assertion Suite"
+
+prompts:
+  - |
+    System: You are an expert SDUI layout synthesizer. Your job is to return ONLY a valid, plain, flat JSON array of objects. Do NOT wrap your output in markdown code blocks like ```json. Do NOT include any conversational text.
+    
+    Rules for components:
+    - If an account has a critical blockage or exception (e.g. past_due, locked, card error), you MUST render a message alert followed by a remediation form (AgCard containing an AgInput and AgButton).
+    - If an account is green-lit, active, or okay, you MUST ONLY return an AgMessageBubble displaying status. Do NOT return an AgCard or an AgInput.
+
+    Every object in the array MUST contain exactly:
+    - "id": string (unique)
+    - "component": string (Must be exactly one of: "AgMessageBubble", "AgCard", "AgInput", "AgButton")
+    - "children": array of string IDs referencing child nodes
+    
+    CRITICAL: Every "AgButton" component you generate MUST include BOTH a non-empty "label" property and a non-empty "on_click" property string (e.g., "on_click": "SUBMIT_REMEDIATION").
+
+    Example 1 (Blocked Account Error Query):
+    User: "User usr_000 account failure block"
+    Output: [
+      {"id": "msg_1", "component": "AgMessageBubble", "message": "Account locked due to status exception.", "children": []},
+      {"id": "card_1", "component": "AgCard", "children": ["input_1", "btn_1"]},
+      {"id": "input_1", "component": "AgInput", "label": "Card Details", "placeholder": "0000", "children": []},
+      {"id": "btn_1", "component": "AgButton", "variant": "primary", "label": "SUBMIT REMEDIATION TRANSACTION", "on_click": "SUBMIT_REMEDIATION", "children": []}
+    ]
+
+    Example 2 (Active Account Status Query):
+    User: "Audit settings for active user usr_111"
+    Output: [
+      {"id": "msg_ok", "component": "AgMessageBubble", "message": "Account status active and normal.", "children": []}
+    ]
+
+    User: {{userPrompt}}
+
+providers:
+  - id: "ollama:chat:qwen2.5-coder:1.5b"
+    config:
+      host: "http://localhost:11434"
+      temperature: 0.0
+
+defaultTest:
+  options:
+    stdev: 0.05
+
+tests:
+  - description: "Verify past_due account anomalies for usr_992 synthesize complete form elements"
+    vars:
+      userPrompt: "User usr_992 states they are receiving an error when trying to view their enterprise invoice data sheet."
+    assert:
+      - type: contains
+        value: '"component": "AgMessageBubble"'
+      - type: contains
+        value: '"component": "AgCard"'
+      - type: contains
+        value: '"component": "AgInput"'
+      - type: contains
+        value: '"component": "AgButton"'
+      
+      - type: javascript
+        value: |
+          try {
+            let cleanOutput = output.trim();
+            if (cleanOutput.startsWith('```')) {
+              cleanOutput = cleanOutput.replace(/^```(?:json)?\n?/, '').replace(/```$/, '').trim();
+            }
+            
+            const nodes = JSON.parse(cleanOutput);
+            if (!Array.isArray(nodes)) return false;
+            
+            const ids = nodes.map(n => n.id);
+            const isUnique = new Set(ids).size === ids.length;
+            if (!isUnique) return false;
+
+            const allChildrenRefs = nodes.flatMap(n => n.children || []);
+            const allRefsResolve = allChildrenRefs.every(childId => ids.includes(childId));
+            
+            // Assert that AgCard's children references explicitly containerize both forms
+            const cardNode = nodes.find(n => n.component === 'AgCard');
+            const cardHasFormChildren = cardNode && 
+              cardNode.children.some(c => c.toLowerCase().includes('input')) && 
+              cardNode.children.some(c => c.toLowerCase().includes('btn'));
+
+            // Enforce validation criteria across every single generated button instance
+            const buttonNodes = nodes.filter(n => n.component === 'AgButton');
+            const allButtonsValid = buttonNodes.length > 0 && buttonNodes.every(btn => 
+              typeof btn.label === 'string' && btn.label.length > 0 &&
+              typeof btn.on_click === 'string' && btn.on_click.length > 0
+            );
+
+            return allRefsResolve && cardHasFormChildren && allButtonsValid;
+          } catch (e) {
+            return false;
+          }
+
+  - description: "Verify active green account lookups bypass remediation form widgets"
+    vars:
+      userPrompt: "Audit account visibility settings for active user usr_991."
+    assert:
+      - type: contains
+        value: '"component": "AgMessageBubble"'
+      - type: not-contains
+        value: '"component": "AgCard"'
+      - type: not-contains
+        value: '"component": "AgInput"'
+      - type: not-contains
+        value: '"component": "AgButton"'

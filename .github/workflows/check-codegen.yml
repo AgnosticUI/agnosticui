@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   check-codegen:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # Pinned stable runner architecture to eliminate Ubuntu 26.04 drift anomalies
 
     steps:
       - name: Checkout repository
@@ -34,19 +34,16 @@ jobs:
         run: npm ci
         working-directory: v2/lib
 
-      - name: Generate schemas and check codegen drift
+      # Audit committed files directly BEFORE executing any code regeneration passes
+      - name: Check for Committed Codegen Drift
         run: |
-          # 1. Force a fresh build loop execution of code configurations
-          npm run codegen -- --emit-schema-json
-          
-          # 2. Intercept check failures cleanly to print friendly error instructions
           if ! npm run check-codegen; then
             echo ""
             echo "========================================================================"
             echo " ❌ CODEGEN DRIFT DETECTED!"
             echo "========================================================================"
-            echo "Your underlying core component definitions, interfaces, or config files"
-            echo "do not match the currently committed output files."
+            echo "Your committed generated schema or types files do not match the current"
+            echo "core component definitions, interfaces, or configurations."
             echo ""
             echo "Please run these exact steps locally in your terminal to synchronize:"
             echo ""
@@ -59,4 +56,11 @@ jobs:
             echo ""
             exit 1
           fi
+        working-directory: v2/sdui/schema
+
+      # Regenerate and compile ONLY after the initial pre-flight check has passed successfully
+      - name: Verify Codegen Execution and Build Toolchain Stability
+        run: |
+          npm run codegen -- --emit-schema-json
+          npm run build
         working-directory: v2/sdui/schema

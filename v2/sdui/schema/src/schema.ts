@@ -122,6 +122,7 @@ export const AgButtonSchema = z.object({
   ariaLabel: z.string().optional(),
   on_click: z.string().optional(),
   on_toggle: z.string().optional(),
+  label: z.string().optional().optional(),
   children: z.array(z.string()).optional(),
 }).strict();
 
@@ -146,6 +147,7 @@ export const AgButtonFxSchema = z.object({
   fxSpeed: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
   fxEase: z.enum(['ease', 'ease-in', 'ease-out', 'ease-in-out', 'bounce', 'spring-sm', 'spring-md', 'spring-lg']).optional(),
   fxDisabled: z.boolean().optional(),
+  label: z.string().optional().optional(),
   children: z.array(z.string()).optional(),
 }).strict();
 
