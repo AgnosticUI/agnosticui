@@ -1,6 +1,6 @@
 # promptfoo.yaml
 # Description: Automated LLM prompt metric evaluation profile verifying layout compliance matrices.
-# Injects explicit few-shot engineering contexts and defensive markdown trimming filters.
+# Injects strict dual-path system contexts and explicit button action alias instructions.
 
 description: "AgnosticUI SDUI Support Center Local Ollama Layout Schema Assertion Suite"
 
@@ -16,6 +16,8 @@ prompts:
     - "id": string (unique)
     - "component": string (Must be exactly one of: "AgMessageBubble", "AgCard", "AgInput", "AgButton")
     - "children": array of string IDs referencing child nodes
+    
+    CRITICAL: Every "AgButton" component you generate MUST include BOTH a non-empty "label" property and a non-empty "on_click" property string (e.g., "on_click": "SUBMIT_REMEDIATION").
 
     Example 1 (Blocked Account Error Query):
     User: "User usr_000 account failure block"
@@ -23,7 +25,7 @@ prompts:
       {"id": "msg_1", "component": "AgMessageBubble", "message": "Account locked due to status exception.", "children": []},
       {"id": "card_1", "component": "AgCard", "children": ["input_1", "btn_1"]},
       {"id": "input_1", "component": "AgInput", "label": "Card Details", "placeholder": "0000", "children": []},
-      {"id": "btn_1", "component": "AgButton", "variant": "primary", "label": "SUBMIT", "on_click": "SUBMIT_REMEDIATION", "children": []}
+      {"id": "btn_1", "component": "AgButton", "variant": "primary", "label": "SUBMIT REMEDIATION TRANSACTION", "on_click": "SUBMIT_REMEDIATION", "children": []}
     ]
 
     Example 2 (Active Account Status Query):
@@ -58,12 +60,10 @@ tests:
       - type: contains
         value: '"component": "AgButton"'
       
-      # Enhanced programmatic validation layer with defensive markdown trimming filters
       - type: javascript
         value: |
           try {
             let cleanOutput = output.trim();
-            // Automatically neutralize and trim markdown fences if appended by the local LLM
             if (cleanOutput.startsWith('```')) {
               cleanOutput = cleanOutput.replace(/^```(?:json)?\n?/, '').replace(/```$/, '').trim();
             }
@@ -78,14 +78,20 @@ tests:
             const allChildrenRefs = nodes.flatMap(n => n.children || []);
             const allRefsResolve = allChildrenRefs.every(childId => ids.includes(childId));
             
-            const buttonNode = nodes.find(n => n.component === 'AgButton');
-            if (buttonNode) {
-              // Ensure that any generated button includes label text and a valid action token string
-              const hasLabel = typeof buttonNode.label === 'string' && buttonNode.label.length > 0;
-              const hasValidAlias = typeof buttonNode.on_click === 'string' && buttonNode.on_click.length > 0;
-              return allRefsResolve && hasLabel && hasValidAlias;
-            }
-            return allRefsResolve;
+            // Assert that AgCard's children references explicitly containerize both forms
+            const cardNode = nodes.find(n => n.component === 'AgCard');
+            const cardHasFormChildren = cardNode && 
+              cardNode.children.some(c => c.toLowerCase().includes('input')) && 
+              cardNode.children.some(c => c.toLowerCase().includes('btn'));
+
+            // Enforce validation criteria across every single generated button instance
+            const buttonNodes = nodes.filter(n => n.component === 'AgButton');
+            const allButtonsValid = buttonNodes.length > 0 && buttonNodes.every(btn => 
+              typeof btn.label === 'string' && btn.label.length > 0 &&
+              typeof btn.on_click === 'string' && btn.on_click.length > 0
+            );
+
+            return allRefsResolve && cardHasFormChildren && allButtonsValid;
           } catch (e) {
             return false;
           }

@@ -7,10 +7,9 @@
 
 import { SduiStreamClient } from './streamClient.js';
 import { type AgNode } from '@agnosticui/schema';
-
-export interface ClientActions extends Record<string, Function> {
-  SUBMIT_REMEDIATION: () => void;
-}
+// Fixed: Re-export the type contract cleanly from actions to remove duplicates
+import { type ClientActions } from './actions.js';
+export { type ClientActions };
 
 export class LiveSimulatorController {
   private client: SduiStreamClient;
@@ -28,7 +27,6 @@ export class LiveSimulatorController {
   ): void {
     console.log('[SIMULATOR_INIT] 🛠️ Binding interactive event controls onto simulator dashboard shell...');
 
-    // Event Delegation Layer: Intercepts bubbling clicks crossing shadow boundaries securely
     rendererElement.addEventListener('click', (event: Event) => {
       const composePath = event.composedPath();
       
@@ -36,7 +34,6 @@ export class LiveSimulatorController {
         (node: any) => node.tagName && node.tagName.toLowerCase() === 'ag-button'
       ) as HTMLElement | undefined;
 
-      // Unlocked Gate: Intercept any valid ag-button configuration across the path
       if (targetButton) {
         console.log(`[SIMULATOR_DELEGATION] 🔔 Captured visual AgButton click target component match.`);
         

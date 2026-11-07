@@ -50,7 +50,7 @@ export function runAccountLookupTool(message: string): AgNode[] {
         component: "AgButton",
         variant: "primary",
         label: "SUBMIT REMEDIATION TRANSACTION",
-        on_click: "SUBMIT_REMEDIATION",
+        // Direct click alias removed here; actions.ts handles tracking via client-edge event delegation
         children: []
       } as any
     ];
