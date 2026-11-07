@@ -119,7 +119,7 @@ Unlike traditional component frameworks that render deeply nested object configu
 
 ```mermaid
 graph TD
-    subgraph FlatArray["Flat Array Layout Array Input Envelope (AgNode[])"]
+    subgraph FlatArray["Flat Layout Array Input Envelope (AgNode[])"]
         direction LR
         N1["Node 1:<br/>AgMessageBubble<br/>(ID: msg_alert_usr_992)"]
         N2["Node 2:<br/>AgCard<br/>(ID: card_form_usr_992)"]
@@ -133,12 +133,13 @@ graph TD
         Child1["Child Slot: AgInput"]
         Child2["Child Slot: AgButton"]
         
-        Root2 -->|children: ['input_cc_...', 'btn_submit_...']| Child1
-        Root2 -->|children| Child2
+        Root2 -->|"children: ['input_cc_...', 'btn_submit_...']"| Child1
+        Root2 -->|"children"| Child2
     end
 
     N2 -.->|References Sibling IDs| HydratedTree
 ```
+
 
 ### 4.2 Upstream Schema Pipeline Blindspots & Remediation
 Because the library's automated schema generator compiles rules directly from the core design system components' TypeScript code declarations (`*Props`), any element assigned to the `'label-child'` pipeline that relies on native child slots instead of a `label` property causes a validation trap—the validator rejects `label` as an unknown key while the rendering engine requires it to paint visible text.
