@@ -2,6 +2,8 @@
 
 ## Purpose
 
+**TODO: Update this entire file. It's no longer correct and the approach has changed drastically.**
+
 The `v2/examples` directory serves as the **full component coverage layer** for
 AgnosticUI, replacing the playgrounds (see Issue #332). Each framework example
 (react-test, vue-test, lit-test) must verify that every component renders
