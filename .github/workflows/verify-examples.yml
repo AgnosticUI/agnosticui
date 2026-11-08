@@ -19,6 +19,7 @@ jobs:
   verify:
     name: Verify example health
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
 
@@ -32,6 +33,7 @@ jobs:
   e2e:
     name: Playwright smoke tests (${{ matrix.example }})
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
