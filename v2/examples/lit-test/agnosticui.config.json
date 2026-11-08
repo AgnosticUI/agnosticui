@@ -1,6 +1,6 @@
 {
   "$schema": "https://agnosticui.com/schema.json",
-  "version": "2.0.0-alpha.21",
+  "version": "2.0.0-alpha.30",
   "framework": "lit",
   "paths": {
     "reference": "./agnosticui",
@@ -455,7 +455,7 @@
   },
   "tarball": {
     "source": "npm",
-    "version": "2.0.0-alpha.21",
-    "installed": "2026-03-10T17:52:10.060Z"
+    "version": "2.0.0-alpha.30",
+    "installed": "2026-11-08T19:22:01.534Z"
   }
 }
