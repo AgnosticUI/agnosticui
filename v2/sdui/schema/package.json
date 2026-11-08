@@ -1,6 +1,6 @@
 {
   "name": "@agnosticui/schema",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Standard Schema-validated JSON catalog for AgnosticUI SDUI",
   "type": "module",
   "main": "dist/index.js",

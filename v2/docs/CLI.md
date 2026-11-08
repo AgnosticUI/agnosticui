@@ -385,26 +385,35 @@ git push origin master
 
 ### 6. Publish to npm
 
-**Make sure you've first bumped the VERSION (v2/lib/package.json and v2/site/package.json which refers to it), and then rebuilt with `npm run build`.**
 
 **Publish Core Library:**
 
 ```bash
 cd v2/lib
 
+npm version prerelease --preid=alpha
+# Will bump just the alpha
+# -  "version": "2.0.0-alpha.1",
+# +  "version": "2.0.0-alpha.2",
+
+# 2. Extract the updated version string automatically into a local shell variable
+LIB_VERSION=$(node -p "require('./package.json').version")
+echo "Preparing to publish version: $LIB_VERSION"
+
 # Final dry-run check
 npm publish --dry-run --tag alpha
 
 # Publish!
-npm publish --tag alpha
+npm publish --tag alpha # May require npm login first
 
 # Point 'latest' dist-tag to this alpha version
 # (Required so users get this version with: npm install agnosticui-core)
-npm dist-tag add agnosticui-core@VERSION latest
+npm dist-tag add agnosticui-core@$LIB_VERSION latest
 
-# Verify dist-tags
+# Verify dist-tags (likely need to wait a few minutes first)
 npm dist-tag ls agnosticui-core
 ```
+**Make sure to adjust LIB_VERSION in the v2/site Vitepress v2/site/package.json 'reinstall' script to point to the LIB_VERSION).**
 
 **Publish CLI:**
 
@@ -417,10 +426,12 @@ npm publish --dry-run --tag alpha
 # Publish!
 npm publish --tag alpha
 
-# Point 'latest' dist-tag to this alpha version
-npm dist-tag add agnosticui-cli@VERSION latest
+CLI_VERSION=$(node -p "require('./package.json').version")
 
-# Verify dist-tags
+# Point 'latest' dist-tag to this alpha version
+npm dist-tag add agnosticui-cli@$CLI_VERSION latest
+
+# Verify dist-tags (likely need to wait a few minutes first)
 npm dist-tag ls agnosticui-cli
 ```
 
