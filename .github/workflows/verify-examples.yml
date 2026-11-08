@@ -50,13 +50,18 @@ jobs:
         run: npm install
         working-directory: v2/examples/${{ matrix.example }}
 
-      - name: Install Playwright browsers
+      - name: Install Playwright browsers & system dependencies
         run: npx playwright install --with-deps
         working-directory: v2/examples/${{ matrix.example }}
+        env:
+          NEEDRESTART_SUSPEND: "true" # Native way to bypass hook safely
+          CI: 'true'
 
       - name: Run smoke tests
         run: npx playwright test --max-failures=1
         working-directory: v2/examples/${{ matrix.example }}
+        env:
+          CI: 'true'
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
