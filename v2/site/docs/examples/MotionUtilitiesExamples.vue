@@ -11,11 +11,10 @@
       <div class="render-box">
         <VueButtonFx fx="bounce" fx-speed="xl" fx-ease="spring-lg" variant="primary">
           Settings
-          <SettingsIcon slot="icon" class="ag-fx-inherit-bounce icon-spacing" />
+          <SettingsIcon class="ag-fx-inherit-bounce icon-spacing" />
         </VueButtonFx>
       </div>
     </div>
-
     <!-- Pattern 2: The Multi-Element Staggered Orchestra Pattern -->
     <div class="demo-section mbe4">
       <h3 class="mbe2">2. Multi-Element Staggered Orchestra</h3>
@@ -25,9 +24,9 @@
       </p>
       <div class="render-box">
         <VueButtonFx fx="pulse" fx-speed="lg" fx-ease="spring-md" variant="success">
-          <ZapIcon slot="icon" class="ag-fx-inherit-pulse icon-spacing-left" />
+          <ZapIcon class="icon-spacing-left ag-fx-inherit-pulse" />
           <span>Deploy Action Completed</span>
-          <CheckIcon slot="icon" class="ag-fx-inherit-bounce icon-spacing" />
+          <CheckIcon class="ag-fx-inherit-bounce icon-spacing" />
         </VueButtonFx>
       </div>
     </div>
