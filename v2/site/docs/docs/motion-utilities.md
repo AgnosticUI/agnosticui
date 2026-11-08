@@ -49,27 +49,54 @@ Apply an `ag-fx-inherit-*` utility class to any native slotted element that's in
 </ag-button-fx>
 ```
 
-### 2. Custom Layout Orchestration (`.ag-fx-trigger`)
+### 2. Multi-Element Staggered Orchestra Pattern
 
-If you want to coordinate animations inside your own custom application containers, cards, or non-FX structural blocks, wrap them using the explicit `.ag-fx-trigger` class. This gives you high-performance, scoped hover and active control.
+Because motion parameters cascade through the native DOM tree, a single parent component container can orchestrate and run **completely different, synchronized physics tracks simultaneously** across separate light-DOM slotted nodes on hover.
 
 ```html
-<!-- The parent card container handles the mouse interaction trigger boundary -->
-<div class="ag-fx-trigger my-custom-dashboard-card">
-  <h3>Server Status</h3>
-  <p>Hovering anywhere inside this card container activates the micro-interaction below.</p>
+<ag-button-fx fx="pulse" fx-speed="lg" fx-ease="spring-md" variant="success">
+  <!-- This icon scales organically via the pulse track -->
+  <svg class="ag-fx-inherit-pulse">...</svg>
   
-  <!-- The icon executes a hardware-accelerated pulse layout cycle on container hover -->
-  <svg 
-    class="ag-fx-inherit-pulse status-icon"  /* <--- You'll add this */
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    stroke-width="2"
-  >
-    <polygon points="20 2 15 22 11 13 2 9 22 2"></polygon>
-  </svg>
+  <span>Action Status</span>
+  
+  <!-- While this icon simultaneously executes a vertical bounce trajectory -->
+  <svg class="ag-fx-inherit-bounce">...</svg>
+</ag-button-fx>
+```
+
+### 3. Component-Free Layout Orchestration (Fully Divorced)
+
+If you want to coordinate high-end micro-interactions inside your own custom application layouts, e-commerce cards, or structural blocks completely independent of AgnosticUI web components, wrap them using the explicit `.ag-fx-trigger` class. 
+
+This detaches the motion engine from the web component footprint completely, giving you clean, opt-in layout interaction boundaries using raw native elements:
+
+```html
+<!-- The custom wrapper container handles the interaction boundary -->
+<div class="ag-fx-trigger my-custom-product-card">
+  
+  <!-- The promo badge scales up smoothly on container hover -->
+  <span class="ag-fx-inherit-pulse custom-badge">PROMO</span>
+  
+  <div class="product-media-frame">
+    <!-- The product vector shifts on container hover -->
+    <svg class="ag-fx-inherit-jelly">...</svg>
+  </div>
+
+  <!-- A native anchor element responding to active click press-pops -->
+  <a href="#add" class="ag-fx-inherit-press-pop buy-button">
+    Quick Add
+    <svg class="ag-fx-inherit-bounce">...</svg>
+  </a>
 </div>
+
+<style>
+  /* Optional: Override or feed custom timing down to the trigger element */
+  .my-custom-product-card:hover {
+    --ag-fx-duration: var(--ag-fx-duration-lg);
+    --ag-fx-ease: var(--ag-fx-ease-spring-lg);
+  }
+</style>
 ```
 
 ---

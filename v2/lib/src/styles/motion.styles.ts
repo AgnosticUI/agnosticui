@@ -177,84 +177,88 @@ export const sharedUtilityRules = css`
      2. CONTEXT-AWARE HOVER & ACTIVE TRIGGERS
      ========================================================================== */
 
+    /* ==========================================================================
+     2. CONTEXT-AWARE HOVER & ACTIVE TRIGGERS (Descendant Space Refactor)
+     ========================================================================== */
+
   /* Bounce */
   .ag-fx-inherit-bounce:hover,
-  [fx="bounce"]:hover > .ag-fx-inherit-bounce,
-  .ag-fx-trigger:hover > .ag-fx-inherit-bounce {
+  [fx="bounce"]:hover .ag-fx-inherit-bounce,
+  .ag-fx-trigger:hover .ag-fx-inherit-bounce {
     animation-name: ag-fx-bounce;
   }
 
   /* Pulse */
   .ag-fx-inherit-pulse:hover,
-  [fx="pulse"]:hover > .ag-fx-inherit-pulse,
-  .ag-fx-trigger:hover > .ag-fx-inherit-pulse {
+  [fx="pulse"]:hover .ag-fx-inherit-pulse,  
+  .ag-fx-trigger:hover .ag-fx-inherit-pulse { 
     animation-name: ag-fx-pulse;
   }
 
   /* Jelly */
   .ag-fx-inherit-jelly:hover,
-  [fx="jelly"]:hover > .ag-fx-inherit-jelly,
-  .ag-fx-trigger:hover > .ag-fx-inherit-jelly {
+  [fx="jelly"]:hover .ag-fx-inherit-jelly,  
+  .ag-fx-trigger:hover .ag-fx-inherit-jelly { 
     animation-name: ag-fx-jelly;
   }
 
   /* Shimmer */
   .ag-fx-inherit-shimmer:hover,
-  [fx="shimmer"]:hover > .ag-fx-inherit-shimmer,
-  .ag-fx-trigger:hover > .ag-fx-inherit-shimmer {
+  [fx="shimmer"]:hover .ag-fx-inherit-shimmer,
+  .ag-fx-trigger:hover .ag-fx-inherit-shimmer {
     animation-name: ag-fx-shimmer;
   }
 
   /* Glow */
   .ag-fx-inherit-glow:hover,
-  [fx="glow"]:hover > .ag-fx-inherit-glow,
-  .ag-fx-trigger:hover > .ag-fx-inherit-glow {
+  [fx="glow"]:hover .ag-fx-inherit-glow,    
+  .ag-fx-trigger:hover .ag-fx-inherit-glow {
     animation-name: ag-fx-glow;
   }
 
   /* Flip */
   .ag-fx-inherit-flip:hover,
-  [fx="flip"]:hover > .ag-fx-inherit-flip,
-  .ag-fx-trigger:hover > .ag-fx-inherit-flip {
+  [fx="flip"]:hover .ag-fx-inherit-flip,    
+  .ag-fx-trigger:hover .ag-fx-inherit-flip {
     animation-name: ag-fx-flip;
   }
 
   /* Icon Reveal */
   .ag-fx-inherit-icon-reveal:hover,
-  [fx="icon-reveal"]:hover > .ag-fx-inherit-icon-reveal,
-  .ag-fx-trigger:hover > .ag-fx-inherit-icon-reveal {
+  [fx="icon-reveal"]:hover .ag-fx-inherit-icon-reveal,
+  .ag-fx-trigger:hover .ag-fx-inherit-icon-reveal {
     animation-name: ag-fx-icon-reveal;
   }
 
   /* Ripple */
   .ag-fx-inherit-ripple:hover,
-  [fx="ripple"]:hover > .ag-fx-inherit-ripple,
-  .ag-fx-trigger:hover > .ag-fx-inherit-ripple {
+  [fx="ripple"]:hover .ag-fx-inherit-ripple,
+  .ag-fx-trigger:hover .ag-fx-inherit-ripple {
     animation-name: ag-fx-ripple;
   }
 
   /* Highlight Sweep */
   .ag-fx-inherit-highlight-sweep:hover,
-  [fx="highlight-sweep"]:hover > .ag-fx-inherit-highlight-sweep,
-  .ag-fx-trigger:hover > .ag-fx-inherit-highlight-sweep {
+  [fx="highlight-sweep"]:hover .ag-fx-inherit-highlight-sweep,
+  .ag-fx-trigger:hover .ag-fx-inherit-highlight-sweep {   
     animation-name: ag-fx-highlight-sweep;
   }
 
   /* Press Pop (Active State Trigger) */
   .ag-fx-inherit-press-pop:active,
-  [fx="press-pop"]:active > .ag-fx-inherit-press-pop,
-  .ag-fx-trigger:active > .ag-fx-inherit-press-pop {
+  [fx="press-pop"]:active .ag-fx-inherit-press-pop,
+  .ag-fx-trigger:active .ag-fx-inherit-press-pop {
     animation-name: ag-fx-press-pop;
   }
 
   /* Tilt Press (Active State Trigger) */
   .ag-fx-inherit-tilt-press:active,
-  [fx="tilt-press"]:active > .ag-fx-inherit-tilt-press,
-  .ag-fx-trigger:active > .ag-fx-inherit-tilt-press {
+  [fx="tilt-press"]:active .ag-fx-inherit-tilt-press,
+  .ag-fx-trigger:active .ag-fx-inherit-tilt-press {
     animation-name: ag-fx-tilt-press;
   }
 
-  /* Slide In (Plays on element layout mount tree) */
+  /* Slide In */
   .ag-fx-inherit-slide-in {
     animation-name: ag-fx-slide-in;
   }

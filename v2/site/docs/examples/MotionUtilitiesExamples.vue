@@ -16,22 +16,55 @@
       </div>
     </div>
 
-    <!-- Pattern 2: Custom Layout Orchestration Demo -->
-    <div class="demo-section">
-      <h3 class="mbe2">2. Custom Layout Orchestration</h3>
+    <!-- Pattern 2: The Multi-Element Staggered Orchestra Pattern -->
+    <div class="demo-section mbe4">
+      <h3 class="mbe2">2. Multi-Element Staggered Orchestra</h3>
       <p class="demo-desc mbe3">
-        Hover anywhere inside the card boundary below. The <code>.ag-fx-trigger</code> class coordinates 
-        a smooth, hardware-accelerated pulse animation on the status icon.
+        A single component container acting as a motion context provider can drive entirely different, 
+        synchronized physics paths simultaneously across multiple light-DOM slotted nodes on hover.
       </p>
       <div class="render-box">
-        <div class="ag-fx-trigger my-custom-dashboard-card">
-          <div class="card-content">
-            <span class="card-title">Server Status</span>
-            <p class="card-text">All systems functional. Hover to ping micro-interaction loop.</p>
+        <VueButtonFx fx="pulse" fx-speed="lg" fx-ease="spring-md" variant="success">
+          <ZapIcon class="ag-fx-inherit-pulse icon-spacing-left" />
+          <span>Deploy Action Completed</span>
+          <CheckIcon class="ag-fx-inherit-bounce icon-spacing" />
+        </VueButtonFx>
+      </div>
+    </div>
+
+    <!-- Pattern 3: The "Fully Divorced" Custom Layout Orchestration (The Showstopper) -->
+    <div class="demo-section">
+      <h3 class="mbe2">3. Component-Free Layout Orchestration (Fully Divorced)</h3>
+      <p class="demo-desc mbe3">
+        This card layout uses pure custom application elements completely independent of 
+        AgnosticUI Web Components. It uses <code>.ag-fx-trigger</code> to establish explicit interaction 
+        boundaries, letting standard markup Point into the global animation engine seamlessly.
+      </p>
+      <div class="render-box">
+        
+        <div class="ag-fx-trigger advanced-product-card">
+          <div class="badge-layer">
+            <!-- This badge pulses dynamically on container hover -->
+            <span class="ag-fx-inherit-pulse custom-discount-badge">PROMO</span>
           </div>
-          <!-- Slotted icon pointing straight to the pulse engine track -->
-          <ZapIcon class="ag-fx-inherit-pulse status-icon" />
+          
+          <div class="product-visual">
+            <!-- The visual element pops organically on container active click -->
+            <SparklesIcon class="ag-fx-inherit-jelly visual-icon" />
+          </div>
+
+          <div class="product-details mbe3">
+            <span class="product-title">Next-Gen Interface Track</span>
+            <span class="product-price">$49.00</span>
+          </div>
+
+          <!-- Active state press-pop trigger built cleanly onto a standard anchor tag -->
+          <a href="#buy" class="ag-fx-inherit-press-pop product-buy-btn" @click.prevent>
+            Quick Add
+            <HeartIcon class="ag-fx-inherit-bounce btn-inner-icon" />
+          </a>
         </div>
+
       </div>
     </div>
 
@@ -40,7 +73,13 @@
 
 <script setup>
 import { VueButtonFx } from 'agnosticui-core/button-fx/vue';
-import { Settings as SettingsIcon, Zap as ZapIcon } from 'lucide-vue-next';
+import { 
+  Settings as SettingsIcon, 
+  Zap as ZapIcon, 
+  Check as CheckIcon, 
+  Sparkles as SparklesIcon, 
+  Heart as HeartIcon 
+} from 'lucide-vue-next';
 </script>
 
 <style scoped>
@@ -61,45 +100,105 @@ import { Settings as SettingsIcon, Zap as ZapIcon } from 'lucide-vue-next';
   align-items: center;
 }
 
-/* Icon layout rules matching your standard components */
 .icon-spacing {
   margin-inline-start: var(--ag-space-2, 0.5rem);
   width: 1.25rem;
   height: 1.25rem;
 }
+.icon-spacing-left {
+  margin-inline-end: var(--ag-space-2, 0.5rem);
+  width: 1.25rem;
+  height: 1.25rem;
+}
 
-/* Custom dashboard card styling */
-.my-custom-dashboard-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* ==========================================================================
+   ADVANCED PRODUCT CARD STYLING (FULLY DIVORCED CUSTOM LAYOUT)
+   ========================================================================== */
+.advanced-product-card {
   width: 100%;
-  max-width: 400px;
-  padding: 1.5rem;
-  border: 1px solid var(--ag-border);
-  border-radius: var(--ag-radius-md);
+  max-width: 320px;
+  padding: 1.25rem;
   background: var(--ag-background-primary);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
+  border: 1px solid var(--ag-border);
+  border-radius: var(--ag-radius-lg);
+  position: relative;
+  box-shadow: var(--ag-shadow-sm);
+  transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
 }
-.my-custom-dashboard-card:hover {
+
+/* Dynamic custom properties injected strictly when the orchestrator is active */
+.advanced-product-card:hover {
   border-color: var(--ag-primary);
-  box-shadow: var(--ag-shadow-md);
+  box-shadow: var(--ag-shadow-xl);
+  --ag-fx-duration: var(--ag-fx-duration-lg);
+  --ag-fx-ease: var(--ag-fx-ease-spring-lg);
 }
-.card-title {
-  display: block;
+
+.badge-layer {
+  display: flex;
+  justify-content: flex-end;
+  margin-block-end: 0.5rem;
+}
+.custom-discount-badge {
+  background: var(--ag-primary-background);
+  color: var(--ag-primary-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--ag-radius-sm);
+}
+
+.product-visual {
+  height: 140px;
+  background: var(--ag-background-secondary);
+  border-radius: var(--ag-radius-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block-end: 1rem;
+}
+.visual-icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--ag-primary);
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.product-title {
   font-weight: 600;
-  font-size: 1.1rem;
-  margin-block-end: 0.25rem;
+  font-size: 1rem;
+  color: var(--ag-text-primary);
 }
-.card-text {
-  font-size: 0.85rem;
+.product-price {
+  font-size: 0.9rem;
+  font-weight: 700;
   color: var(--ag-text-secondary);
-  margin: 0;
 }
-.status-icon {
-  width: 2rem;
-  height: 2rem;
-  color: var(--ag-warning);
+
+.product-buy-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--ag-text-primary);
+  color: var(--ag-background-primary) !important;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--ag-radius-md);
+  transition: background-color 0.2s ease;
+}
+.product-buy-btn:hover {
+  background: var(--ag-primary);
+}
+.btn-inner-icon {
+  width: 1rem;
+  height: 1rem;
 }
 </style>
