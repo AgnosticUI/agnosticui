@@ -6,7 +6,7 @@
   "author": "Rob Levin",
   "license": "MIT",
   "scripts": {
-    "sync-tokens": "npm run --prefix ../theme-registry rebuild && mkdir -p ./docs/public && cp ../theme-registry/dist/ag-tokens.css ./docs/public/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css ./docs/public/ag-tokens-dark.css && cp ../lib/src/styles/table.css ./docs/public/table.css && cp ../skins/skins-bundle.css ./docs/public/skins-bundle.css && npm run build --prefix ../lib && cp ../lib/dist/styles/motion-utilities.css ./docs/public/motion-utilities.css",
+    "sync-tokens": "npm run --prefix ../theme-registry rebuild && cp ../theme-registry/dist/ag-tokens.css ./docs/public/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css ./docs/public/ag-tokens-dark.css && cp ../lib/src/styles/table.css ./docs/public/table.css && cp ../skins/skins-bundle.css ./docs/public/skins-bundle.css && cp ../lib/dist/styles/motion-utilities.css ./docs/public/motion-utilities.css",
     "clear:cache": "rm -rf docs/.vitepress/cache",
     "reinstall:lib": "npm run clear:cache && npm i ../lib/agnosticui-core-2.0.0-alpha.30.tgz && npm run sync-tokens",
     "docs:dev": "vitepress dev docs --port 8000",
