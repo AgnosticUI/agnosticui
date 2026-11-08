@@ -19,6 +19,7 @@ jobs:
   verify:
     name: Verify example health
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
 
@@ -32,6 +33,7 @@ jobs:
   e2e:
     name: Playwright smoke tests (${{ matrix.example }})
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -50,18 +52,13 @@ jobs:
         run: npm install
         working-directory: v2/examples/${{ matrix.example }}
 
-      - name: Install Playwright browsers & system dependencies
+      - name: Install Playwright browsers
         run: npx playwright install --with-deps
         working-directory: v2/examples/${{ matrix.example }}
-        env:
-          NEEDRESTART_SUSPEND: "true" # Native way to bypass hook safely
-          CI: 'true'
 
       - name: Run smoke tests
         run: npx playwright test --max-failures=1
         working-directory: v2/examples/${{ matrix.example }}
-        env:
-          CI: 'true'
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
