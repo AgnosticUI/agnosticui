@@ -177,28 +177,24 @@ export const sharedUtilityRules = css`
      2. CONTEXT-AWARE HOVER & ACTIVE TRIGGERS
      ========================================================================== */
 
-    /* ==========================================================================
-     2. CONTEXT-AWARE HOVER & ACTIVE TRIGGERS (Descendant Space Refactor)
-     ========================================================================== */
-
-  /* Bounce */
+  /* Bounce Triggers */
   .ag-fx-inherit-bounce:hover,
   [fx="bounce"]:hover .ag-fx-inherit-bounce,
   .ag-fx-trigger:hover .ag-fx-inherit-bounce {
     animation-name: ag-fx-bounce;
   }
 
-  /* Pulse */
+  /* Pulse Triggers */
   .ag-fx-inherit-pulse:hover,
-  [fx="pulse"]:hover .ag-fx-inherit-pulse,  
-  .ag-fx-trigger:hover .ag-fx-inherit-pulse { 
+  [fx="pulse"]:hover .ag-fx-inherit-pulse,
+  .ag-fx-trigger:hover .ag-fx-inherit-pulse {
     animation-name: ag-fx-pulse;
   }
 
-  /* Jelly */
+  /* Jelly Triggers */
   .ag-fx-inherit-jelly:hover,
-  [fx="jelly"]:hover .ag-fx-inherit-jelly,  
-  .ag-fx-trigger:hover .ag-fx-inherit-jelly { 
+  [fx="jelly"]:hover .ag-fx-inherit-jelly,
+  .ag-fx-trigger:hover .ag-fx-inherit-jelly {
     animation-name: ag-fx-jelly;
   }
 

@@ -11,7 +11,7 @@
       <div class="render-box">
         <VueButtonFx fx="bounce" fx-speed="xl" fx-ease="spring-lg" variant="primary">
           Settings
-          <SettingsIcon class="ag-fx-inherit-bounce icon-spacing" />
+          <SettingsIcon slot="icon" class="ag-fx-inherit-bounce icon-spacing" />
         </VueButtonFx>
       </div>
     </div>
@@ -25,9 +25,9 @@
       </p>
       <div class="render-box">
         <VueButtonFx fx="pulse" fx-speed="lg" fx-ease="spring-md" variant="success">
-          <ZapIcon class="ag-fx-inherit-pulse icon-spacing-left" />
+          <ZapIcon slot="icon" class="ag-fx-inherit-pulse icon-spacing-left" />
           <span>Deploy Action Completed</span>
-          <CheckIcon class="ag-fx-inherit-bounce icon-spacing" />
+          <CheckIcon slot="icon" class="ag-fx-inherit-bounce icon-spacing" />
         </VueButtonFx>
       </div>
     </div>

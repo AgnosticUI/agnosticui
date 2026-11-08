@@ -43,13 +43,11 @@ This ensures that any child node inside the shadow root *as well as* light DOM s
 
 ### **Single Source of Truth & Build Strategy (No Duplication)**
 
-To safely distribute the public `utilities.css` bundle to consumer projects without maintaining two separate style sheets or duplicating code, we leverage Lit's template compilation engine.
+To safely distribute the public `motion-utilities.css` bundle to consumer projects without maintaining two separate style sheets or duplicating code, we leverage Lit's template compilation engine.
 
 1. **The Shared Fragment:** The context-aware utility classes are isolated into a `sharedUtilityRules` export inside `motion.styles.ts`.
-2. **Shadow DOM Inclusion:** The shared utility rules are interpolated directly into the core `motionStyles` array via `${sharedUtilityRules}`. This ensures native slot piercing support (`:host([fx]:hover) .ag-fx-inherit-bounce`) within components with zero library overhead.
-3. **Build-Time Extraction Script:** A performance-focused build pipeline script (`scripts/build-utilities.js`) taps straight into `sharedUtilityRules.cssText` during the pre-publish phase, automatically writing the unified output to `./dist/styles/utilities.css`.
-
-This guarantees 100% feature parity between core internal element slots and external consumer utility layouts with zero manual engineering maintenance.
+2. **Shadow DOM Inclusion:** The shared keyframe rules are interpolated directly into the core `motionStyles` array via `${sharedKeyframes}`. This ensures native performance footprints inside internal components.
+3. **Build-Time Extraction Script:** A performance-focused build pipeline script (`v2/scripts/build-motion-utilities.mjs`) taps straight into `sharedUtilityRules.cssText` during the pre-publish phase, automatically writing the unified output to `./dist/styles/motion-utilities.css`.
 
 ---
 

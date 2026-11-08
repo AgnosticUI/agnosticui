@@ -256,7 +256,7 @@ describe('ButtonFx', () => {
       hostElement.fxEase = 'spring-md'; // Explicit easing physics context
 
       // 2. Build a Light DOM slotted target with proper casting to avoid type errors
-      slottedIcon = document.createElementNS('http://w3.org', 'svg') as SVGElement;
+      slottedIcon = document.createElementNS('http://w3.org/2000/svg', 'svg') as SVGElement;
       slottedIcon.setAttribute('slot', 'icon');
       slottedIcon.classList.add('ag-fx-inherit-bounce'); // Hooks into the explicit trigger cascade
 

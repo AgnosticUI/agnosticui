@@ -14,8 +14,8 @@ Import the compiled motion utility stylesheet into your application's global sty
 
 ```js
 // Import globally in your main application entry point (e.g., main.js, App.tsx)
-import '@agnosticui/core/dist/styles/ag-tokens.css';
-import '@agnosticui/core/dist/styles/motion-utilities.css';
+import 'agnosticui-core/dist/styles/ag-tokens.css';
+import 'agnosticui-core/dist/styles/motion-utilities.css';
 ```
 
 ---
@@ -29,9 +29,10 @@ Apply an `ag-fx-inherit-*` utility class to any native slotted element that's in
 ```html
 <ag-button-fx fx="bounce" fx-speed="xl" fx-ease="spring-lg" variant="primary">
   Settings
+  <!-- Apply the ag-fx-inherit-bounce utility class below to synchronize the icon -->
   <svg 
     slot="icon" 
-    class="ag-fx-inherit-bounce"  /* <--- You'll add this */
+    class="ag-fx-inherit-bounce"
     viewBox="0 0 24 24" 
     fill="none" 
     stroke="currentColor" 

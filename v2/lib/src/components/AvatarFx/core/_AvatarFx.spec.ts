@@ -246,7 +246,7 @@ describe('AvatarFx', () => {
       hostElement.fxSpeed = 'lg'; // Explicit speed context mapping
       hostElement.fxEase = 'spring-md'; // Explicit easing physics context
 
-      slottedIcon = document.createElementNS('http://w3.org', 'svg') as SVGElement;
+      slottedIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg') as SVGElement;
       slottedIcon.setAttribute('slot', 'icon');
       slottedIcon.classList.add('ag-fx-inherit-bounce'); // Hooks into the trigger cascade
 
@@ -263,17 +263,17 @@ describe('AvatarFx', () => {
     it('should successfully pass custom property contexts across shadow root boundaries to slotted components', async () => {
       await hostElement.updateComplete;
 
-      // 1. Verify the parent context provider is successfully holding the tokens
+      // 1. Assert on the active footprint of the library context provider
       const hostDuration = hostElement.style.getPropertyValue('--ag-fx-duration');
       const hostEase = hostElement.style.getPropertyValue('--ag-fx-ease');
-      
       expect(hostDuration).toBe('var(--ag-fx-duration-lg)');
       expect(hostEase).toBe('var(--ag-fx-ease-spring-md)');
 
-      // 2. Verify the slotted child node possesses the correct inherit utility class
-      // Since the parent holds the variables, native CSS handles the cascading down to this class automatically.
+      // 2. Validate structural layout composition rules (Slot Name and Class Assertions)
+      expect(slottedIcon.getAttribute('slot')).toBe('icon');
       expect(slottedIcon.classList.contains('ag-fx-inherit-bounce')).toBe(true);
     });
+
 
   });
 
