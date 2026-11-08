@@ -12,6 +12,7 @@ export default defineConfig({
     ['link', { rel: 'stylesheet', href: '/skins-bundle.css' }],
     ['link', { rel: 'stylesheet', href: '/skin-vp-overrides.css' }],
     ['link', { rel: 'stylesheet', href: '/table.css' }],
+    ['link', { rel: 'stylesheet', href: '/motion-utilities.css' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     // Open Graph
     ['meta', { property: 'og:type', content: 'website' }],
@@ -117,6 +118,7 @@ export default defineConfig({
           { text: 'Schema-Driven UI (SDUI)', link: '/docs/sdui' },
           { text: 'Model Context Protocol (MCP)', link: '/docs/mcp-server' },
           { text: 'CSS Utilities', link: '/docs/utilities' },
+          { text: 'Motion Utilities', link: '/docs/motion-utilities' },
           { text: 'FAQ', link: '/docs/faq' },
         ]
       },

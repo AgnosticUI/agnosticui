@@ -280,6 +280,18 @@ You can disable effects while keeping the button functional applying <code>:fx-d
 
 :::
 
+## Custom FX
+
+::: tip
+Do you want to animate your own slotted elements? By importing the optional [motion-utilities.css](../docs/motion-utilities.md) bundle, you can **animate Light DOM slotted elements** (like custom icons or text blocks) with zero JavaScript overhead.
+```js
+// Import globally at your app entry point (e.g., main.js, App.tsx)
+import 'agnosticui-core/dist/styles/ag-tokens.css';
+import 'agnosticui-core/dist/styles/motion-utilities.css';
+```
+Learn more on the [Motion Utilities](../docs/motion-utilities.md) page.
+:::
+
 ## Accessibility
 
 - **Reduced Motion**: All effects automatically respect the `prefers-reduced-motion` media query. When users have reduced motion enabled in their OS settings, animations are disabled.

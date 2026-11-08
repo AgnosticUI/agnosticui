@@ -11,4 +11,7 @@ site/docs/.vitepress/dist/
 v2/lib/src/components/*/specifications/
 v2/site/docs/.vitepress/cache
 v2/site/docs/.vitepress/dist/
+# Auto-generated motion utilities stylesheet tracking
+v2/site/docs/public/motion-utilities.css
+
 tsconfig.app.tsbuildinfo

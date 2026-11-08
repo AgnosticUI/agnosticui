@@ -141,8 +141,7 @@ describe('IconButtonFx', () => {
       element.fxSpeed = 'lg';
       await element.updateComplete;
 
-      const button = element.shadowRoot?.querySelector('button') as HTMLElement;
-      const durationValue = button?.style.getPropertyValue('--ag-fx-duration');
+      const durationValue = element.style.getPropertyValue('--ag-fx-duration');
       expect(durationValue).toBe('var(--ag-fx-duration-lg)');
     });
 
@@ -150,8 +149,7 @@ describe('IconButtonFx', () => {
       element.fxEase = 'spring-md';
       await element.updateComplete;
 
-      const button = element.shadowRoot?.querySelector('button') as HTMLElement;
-      const easeValue = button?.style.getPropertyValue('--ag-fx-ease');
+      const easeValue = element.style.getPropertyValue('--ag-fx-ease');
       expect(easeValue).toBe('var(--ag-fx-ease-spring-md)');
     });
 
@@ -162,8 +160,7 @@ describe('IconButtonFx', () => {
       element.fxSpeed = 'xl';
       await element.updateComplete;
 
-      const button = element.shadowRoot?.querySelector('button') as HTMLElement;
-      const durationValue = button?.style.getPropertyValue('--ag-fx-duration');
+      const durationValue = element.style.getPropertyValue('--ag-fx-duration');
       expect(durationValue).toBe('var(--ag-fx-duration-xl)');
     });
 
@@ -174,8 +171,7 @@ describe('IconButtonFx', () => {
       element.fxEase = 'bounce';
       await element.updateComplete;
 
-      const button = element.shadowRoot?.querySelector('button') as HTMLElement;
-      const easeValue = button?.style.getPropertyValue('--ag-fx-ease');
+      const easeValue = element.style.getPropertyValue('--ag-fx-ease');
       expect(easeValue).toBe('var(--ag-fx-ease-bounce)');
     });
   });

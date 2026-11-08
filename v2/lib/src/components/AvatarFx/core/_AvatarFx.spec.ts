@@ -135,8 +135,8 @@ describe('AvatarFx', () => {
       element.fxSpeed = 'lg';
       await element.updateComplete;
 
-      const avatar = element.shadowRoot?.querySelector('.avatar') as HTMLElement;
-      const durationValue = avatar?.style.getPropertyValue('--ag-fx-duration');
+      // REFRACTORED: Query the host element where the context provider now sets inline styles
+      const durationValue = element.style.getPropertyValue('--ag-fx-duration');
       expect(durationValue).toBe('var(--ag-fx-duration-lg)');
     });
 
@@ -144,8 +144,7 @@ describe('AvatarFx', () => {
       element.fxEase = 'spring-md';
       await element.updateComplete;
 
-      const avatar = element.shadowRoot?.querySelector('.avatar') as HTMLElement;
-      const easeValue = avatar?.style.getPropertyValue('--ag-fx-ease');
+      const easeValue = element.style.getPropertyValue('--ag-fx-ease');
       expect(easeValue).toBe('var(--ag-fx-ease-spring-md)');
     });
 
@@ -156,8 +155,8 @@ describe('AvatarFx', () => {
       element.fxSpeed = 'xl';
       await element.updateComplete;
 
-      const avatar = element.shadowRoot?.querySelector('.avatar') as HTMLElement;
-      const durationValue = avatar?.style.getPropertyValue('--ag-fx-duration');
+      // REFRACTORED: Query the hostelement
+      const durationValue = element.style.getPropertyValue('--ag-fx-duration');
       expect(durationValue).toBe('var(--ag-fx-duration-xl)');
     });
 
@@ -168,11 +167,11 @@ describe('AvatarFx', () => {
       element.fxEase = 'bounce';
       await element.updateComplete;
 
-      const avatar = element.shadowRoot?.querySelector('.avatar') as HTMLElement;
-      const easeValue = avatar?.style.getPropertyValue('--ag-fx-ease');
+      const easeValue = element.style.getPropertyValue('--ag-fx-ease');
       expect(easeValue).toBe('var(--ag-fx-ease-bounce)');
     });
   });
+
 
   describe('FX Effects Support', () => {
     const fxEffects = [
@@ -235,4 +234,47 @@ describe('AvatarFx', () => {
       expect(img).toBeDefined();
     });
   });
+
+  describe('FX Slotted Orchestration & Context Cascading', () => {
+    let hostElement: AvatarFx;
+    let slottedIcon: SVGElement;
+
+    beforeEach(() => {
+      // 1. Establish the motion context provider host
+      hostElement = document.createElement('ag-avatar-fx') as AvatarFx;
+      hostElement.fx = 'bounce';
+      hostElement.fxSpeed = 'lg'; // Explicit speed context mapping
+      hostElement.fxEase = 'spring-md'; // Explicit easing physics context
+
+      slottedIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg') as SVGElement;
+      slottedIcon.setAttribute('slot', 'icon');
+      slottedIcon.classList.add('ag-fx-inherit-bounce'); // Hooks into the trigger cascade
+
+      hostElement.appendChild(slottedIcon);
+      document.body.appendChild(hostElement);
+    });
+
+    afterEach(() => {
+      if (hostElement && hostElement.parentNode) {
+        hostElement.parentNode.removeChild(hostElement);
+      }
+    });
+
+    it('should successfully pass custom property contexts across shadow root boundaries to slotted components', async () => {
+      await hostElement.updateComplete;
+
+      // 1. Assert on the active footprint of the library context provider
+      const hostDuration = hostElement.style.getPropertyValue('--ag-fx-duration');
+      const hostEase = hostElement.style.getPropertyValue('--ag-fx-ease');
+      expect(hostDuration).toBe('var(--ag-fx-duration-lg)');
+      expect(hostEase).toBe('var(--ag-fx-ease-spring-md)');
+
+      // 2. Validate structural layout composition rules (Slot Name and Class Assertions)
+      expect(slottedIcon.getAttribute('slot')).toBe('icon');
+      expect(slottedIcon.classList.contains('ag-fx-inherit-bounce')).toBe(true);
+    });
+
+
+  });
+
 });

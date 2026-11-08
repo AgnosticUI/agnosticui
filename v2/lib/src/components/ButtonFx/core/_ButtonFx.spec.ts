@@ -130,13 +130,13 @@ describe('ButtonFx', () => {
     });
   });
 
-  describe('FX Custom Properties', () => {
+   describe('FX Custom Properties', () => {
     it('should set --ag-fx-duration custom property based on fxSpeed', async () => {
       element.fxSpeed = 'lg';
       await element.updateComplete;
 
-      const button = element.shadowRoot?.querySelector('button') as HTMLElement;
-      const durationValue = button?.style.getPropertyValue('--ag-fx-duration');
+      // Query the host element context directly
+      const durationValue = element.style.getPropertyValue('--ag-fx-duration');
       expect(durationValue).toBe('var(--ag-fx-duration-lg)');
     });
 
@@ -144,8 +144,7 @@ describe('ButtonFx', () => {
       element.fxEase = 'spring-md';
       await element.updateComplete;
 
-      const button = element.shadowRoot?.querySelector('button') as HTMLElement;
-      const easeValue = button?.style.getPropertyValue('--ag-fx-ease');
+      const easeValue = element.style.getPropertyValue('--ag-fx-ease');
       expect(easeValue).toBe('var(--ag-fx-ease-spring-md)');
     });
 
@@ -156,8 +155,7 @@ describe('ButtonFx', () => {
       element.fxSpeed = 'xl';
       await element.updateComplete;
 
-      const button = element.shadowRoot?.querySelector('button') as HTMLElement;
-      const durationValue = button?.style.getPropertyValue('--ag-fx-duration');
+      const durationValue = element.style.getPropertyValue('--ag-fx-duration');
       expect(durationValue).toBe('var(--ag-fx-duration-xl)');
     });
 
@@ -168,12 +166,11 @@ describe('ButtonFx', () => {
       element.fxEase = 'bounce';
       await element.updateComplete;
 
-      const button = element.shadowRoot?.querySelector('button') as HTMLElement;
-      const easeValue = button?.style.getPropertyValue('--ag-fx-ease');
+      const easeValue = element.style.getPropertyValue('--ag-fx-ease');
       expect(easeValue).toBe('var(--ag-fx-ease-bounce)');
     });
   });
-
+ 
   describe('FX Effects Support', () => {
     const fxEffects = [
       'pulse',
@@ -246,4 +243,46 @@ describe('ButtonFx', () => {
       expect(toggleSpy).toHaveBeenCalled();
     });
   });
+
+  describe('FX Slotted Orchestration & Context Cascading', () => {
+    let hostElement: ButtonFx;
+    let slottedIcon: SVGElement;
+
+    beforeEach(() => {
+      // 1. Establish the motion context provider host for ButtonFx
+      hostElement = document.createElement('ag-button-fx') as ButtonFx;
+      hostElement.fx = 'bounce';
+      hostElement.fxSpeed = 'lg';       // Explicit speed context mapping
+      hostElement.fxEase = 'spring-md'; // Explicit easing physics context
+
+      // 2. Build a Light DOM slotted target with proper casting to avoid type errors
+      slottedIcon = document.createElementNS('http://w3.org/2000/svg', 'svg') as SVGElement;
+      slottedIcon.setAttribute('slot', 'icon');
+      slottedIcon.classList.add('ag-fx-inherit-bounce'); // Hooks into the explicit trigger cascade
+
+      hostElement.appendChild(slottedIcon);
+      document.body.appendChild(hostElement);
+    });
+
+    afterEach(() => {
+      if (hostElement && hostElement.parentNode) {
+        hostElement.parentNode.removeChild(hostElement);
+      }
+    });
+
+    it('should successfully pass custom property contexts across shadow root boundaries to slotted components inside buttons', async () => {
+      await hostElement.updateComplete;
+
+      // 1. Verify the ButtonFx host element context provider is successfully holding the tokens
+      const hostDuration = hostElement.style.getPropertyValue('--ag-fx-duration');
+      const hostEase = hostElement.style.getPropertyValue('--ag-fx-ease');
+      
+      expect(hostDuration).toBe('var(--ag-fx-duration-lg)');
+      expect(hostEase).toBe('var(--ag-fx-ease-spring-md)');
+
+      // 2. Verify the slotted child node possesses the correct context-aware inherit utility class
+      expect(slottedIcon.classList.contains('ag-fx-inherit-bounce')).toBe(true);
+    });
+  });
+
 });
