@@ -4,15 +4,9 @@ AgnosticUI’s FX components natively broadcast their duration and easing parame
 
 By importing the optional `motion-utilities.css` bundle, you can tap directly into this cascading context tree. This allows Light DOM slotted elements (like custom icons or text blocks) to seamlessly coordinate with their parent component's active animation timeline with zero JavaScript overhead.
 
----
-
 ## Interactive Demos
 
-::: details View Live Implementation Sandboxes
 <MotionUtilitiesExamples />
-:::
-
----
 
 ## Installation
 

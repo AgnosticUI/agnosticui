@@ -45,12 +45,12 @@
         <div class="ag-fx-trigger advanced-product-card">
           <div class="badge-layer">
             <!-- This badge pulses dynamically on container hover -->
-            <span class="ag-fx-inherit-pulse custom-discount-badge">PROMO</span>
+            <span class="ag-fx-inherit-jelly custom-discount-badge">PROMO</span>
           </div>
           
           <div class="product-visual">
             <!-- The visual element pops organically on container active click -->
-            <SparklesIcon class="ag-fx-inherit-jelly visual-icon" />
+            <SparklesIcon class="ag-fx-inherit-pulse visual-icon" />
           </div>
 
           <div class="product-details mbe3">
