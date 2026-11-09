@@ -1,6 +1,6 @@
 {
   "name": "@agnosticui/render-lit",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Lit renderer for AgnosticUI SDUI nodes",
   "type": "module",
   "main": "dist/index.js",
@@ -16,14 +16,14 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@agnosticui/schema": "^2.0.0-alpha.1"
+    "@agnosticui/schema": "2.0.0-alpha.2"
   },
   "files": [
     "dist",
     "README.md"
   ],
   "peerDependencies": {
-    "agnosticui-core": ">=2.0.0-alpha.26",
+    "agnosticui-core": ">=2.0.0-alpha.31",
     "lit": "^3.0.0"
   },
   "devDependencies": {

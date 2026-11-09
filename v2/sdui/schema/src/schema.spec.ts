@@ -107,12 +107,13 @@ describe('@agnosticui/schema — validate()', () => {
     });
 
     it('returns hints when dev: true and an unknown prop is present', () => {
-      const result = validate({ id: 'btn-1', component: 'AgButton', label: 'bad' }, { dev: true });
+      const result = validate({ id: 'card-1', component: 'AgCard', unrecognizedProp: 'bad' }, { dev: true });
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.hints).toBeDefined();
         expect(result.hints!.some(h => h.toLowerCase().includes('unknown') || h.toLowerCase().includes('unrecognized'))).toBe(true);
-        expect(result.hints!.join(' ')).toMatch(/label/);
+        // Align regex check with the actual property name we supplied
+        expect(result.hints!.join(' ')).toMatch(/unrecognizedProp/);
       }
     });
 
