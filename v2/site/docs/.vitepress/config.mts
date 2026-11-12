@@ -8,7 +8,7 @@ export default defineConfig({
     hostname: 'https://www.agnosticui.com'
   },
   transformPageData(pageData) {
-    const canonicalUrl = `https://agnosticui.com/${pageData.relativePath}`
+    const canonicalUrl = `https://www.agnosticui.com/${pageData.relativePath}`
       .replace(/index\.md$/, '')
       .replace(/\.md$/, '')
 
