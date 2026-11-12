@@ -3,8 +3,20 @@ import path from 'path'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  cleanUrls: true,
   sitemap: {
     hostname: 'https://www.agnosticui.com'
+  },
+  transformPageData(pageData) {
+    const canonicalUrl = `https://agnosticui.com/${pageData.relativePath}`
+      .replace(/index\.md$/, '')
+      .replace(/\.md$/, '')
+
+    pageData.frontmatter.head ??= []
+    pageData.frontmatter.head.push([
+      'link',
+      { rel: 'canonical', href: canonicalUrl }
+    ])
   },
   head: [
     ['link', { rel: 'stylesheet', href: '/ag-tokens.css' }],
