@@ -1,22 +1,35 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, type HeadConfig } from 'vitepress'
 import path from 'path'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   cleanUrls: true,
   sitemap: {
-    hostname: 'https://www.agnosticui.com'
+    hostname: 'https://www.agnosticui.com',
+    // Optional: keep legacy redirect/alias pages out of sitemap.xml
+    transformItems: (items) => {
+      return items.filter((item) => item.url !== 'docs/theming')
+    }
   },
   transformPageData(pageData) {
-    const canonicalUrl = `https://www.agnosticui.com/${pageData.relativePath}`
-      .replace(/index\.md$/, '')
-      .replace(/\.md$/, '')
-
     pageData.frontmatter.head ??= []
-    pageData.frontmatter.head.push([
-      'link',
-      { rel: 'canonical', href: canonicalUrl }
-    ])
+
+    // Skip if the Markdown file already defines a canonical tag in frontmatter
+    const hasCanonical = (pageData.frontmatter.head as HeadConfig[]).some(
+      ([tag, attrs]) => tag === 'link' && attrs?.rel === 'canonical'
+    )
+
+    if (!hasCanonical) {
+      const domain = ['https://', 'www.', 'agnosticui.com'].join('')
+      const canonicalUrl = `${domain}/${pageData.relativePath}`
+        .replace(/index\.md$/, '')
+        .replace(/\.md$/, '')
+
+      pageData.frontmatter.head.push([
+        'link',
+        { rel: 'canonical', href: canonicalUrl }
+      ])
+    }
   },
   head: [
     ['link', { rel: 'stylesheet', href: '/ag-tokens.css' }],
