@@ -45,6 +45,11 @@
     "description": "Disabled state background",
     "comment": "Used by: Button, Input, Checkbox, Radio, Select disabled states"
   },
+  "text-disabled": {
+    "value": "{neutral.600.value}",
+    "description": "Disabled state text color",
+    "comment": "Used by: Button disabled text"
+  },
   "primary-background": {
     "value": "{blue.50.value}",
     "comment": "Used by: Alert primary variant bg, Button faint variant bg"
@@ -52,6 +57,14 @@
   "primary-text": {
     "value": "{blue.600.value}",
     "comment": "Used by: Alert primary text, Button bordered/outlined text + border"
+  },
+  "monochrome-background": {
+    "value": "{neutral.200.value}",
+    "comment": "Used by: Button monochrome disabled bg"
+  },
+  "monochrome-text": {
+    "value": "{neutral.800.value}",
+    "comment": "Used by: Button monochrome disabled text"
   },
   "success-background": {
     "value": "{green.50.value}",

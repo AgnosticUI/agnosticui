@@ -179,7 +179,6 @@ export const COMPONENT_REGISTRY = {
       </div>
     `;
   },
-
   Button: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px;">
       <!-- Row 1: Color Variants -->
@@ -189,6 +188,7 @@ export const COMPONENT_REGISTRY = {
         <ag-button data-testid="btn-success" variant="success">Success Action</ag-button>
         <ag-button data-testid="btn-warning" variant="warning">Warning Action</ag-button>
         <ag-button data-testid="btn-danger" variant="danger">Danger Action</ag-button>
+        <ag-button data-testid="btn-monochrome" variant="monochrome">Monochrome Action</ag-button>
         <ag-button data-testid="btn-disabled" disabled>Disabled Action</ag-button>
       </div>
 
@@ -217,9 +217,31 @@ export const COMPONENT_REGISTRY = {
         <ag-button variant="success" bordered>Bordered Success</ag-button>
         <ag-button variant="warning" bordered>Bordered Warning</ag-button>
         <ag-button variant="danger" bordered>Bordered Danger</ag-button>
+        <ag-button variant="monochrome" bordered>Bordered Monochrome</ag-button>
+      </div>
+
+      <!-- Row 5: Disabled States (Filled & Bordered) -->
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-button disabled>Disabled Default</ag-button>
+        <ag-button variant="primary" disabled>Disabled Primary</ag-button>
+        <ag-button variant="secondary" disabled>Disabled Secondary</ag-button>
+        <ag-button variant="success" disabled>Disabled Success</ag-button>
+        <ag-button variant="warning" disabled>Disabled Warning</ag-button>
+        <ag-button variant="danger" disabled>Disabled Danger</ag-button>
+        <ag-button variant="monochrome" disabled>Disabled Monochrome</ag-button>
+      </div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <ag-button bordered disabled>Bordered Disabled Default</ag-button>
+        <ag-button variant="primary" bordered disabled>Bordered Disabled Primary</ag-button>
+        <ag-button variant="secondary" bordered disabled>Bordered Disabled Secondary</ag-button>
+        <ag-button variant="success" bordered disabled>Bordered Disabled Success</ag-button>
+        <ag-button variant="warning" bordered disabled>Bordered Disabled Warning</ag-button>
+        <ag-button variant="danger" bordered disabled>Bordered Disabled Danger</ag-button>
+        <ag-button variant="monochrome" bordered disabled>Bordered Disabled Monochrome</ag-button>
       </div>
     </div>
   `,
+
   ButtonFx: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 600px;">
       <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">

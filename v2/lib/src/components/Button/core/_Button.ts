@@ -429,16 +429,55 @@ export class AgButton extends LitElement implements ButtonProps {
     :host([variant="secondary"]) button:disabled,
     button:disabled {
       background: var(--ag-background-disabled);
+      color: var(--ag-text-disabled);
     }
 
     :host([variant="monochrome"]) button:disabled {
-      background: var(--ag-background-tertiary);
+      background: var(--ag-monochrome-background);
+      color: var(--ag-monochrome-text);
     }
 
-    /* Bordered buttons - dim the border and text with opacity */
+    /* Bordered buttons - soften border while keeping accessible text contrast */
     :host([bordered]) button:disabled {
-      opacity: 60%;
       background: transparent;
+      border-color: var(--ag-border-subtle);
+      color: var(--ag-text-disabled);
+    }
+
+    :host([bordered][variant="primary"]) button:disabled {
+      background: transparent;
+      border-color: var(--ag-primary-border);
+      color: var(--ag-primary-text);
+    }
+
+    :host([bordered][variant="secondary"]) button:disabled {
+      background: transparent;
+      border-color: var(--ag-border-subtle);
+      color: var(--ag-text-disabled);
+    }
+
+    :host([bordered][variant="success"]) button:disabled {
+      background: transparent;
+      border-color: var(--ag-border-subtle);
+      color: var(--ag-success-text);
+    }
+
+    :host([bordered][variant="warning"]) button:disabled {
+      background: transparent;
+      border-color: var(--ag-border-subtle);
+      color: var(--ag-warning-text);
+    }
+
+    :host([bordered][variant="danger"]) button:disabled {
+      background: transparent;
+      border-color: var(--ag-border-subtle);
+      color: var(--ag-danger-text);
+    }
+
+    :host([bordered][variant="monochrome"]) button:disabled {
+      background: transparent;
+      border-color: var(--ag-border-subtle);
+      color: var(--ag-monochrome-text);
     }
 
     /* Ghost and link buttons - dim with opacity */

@@ -40,11 +40,17 @@
     "description": "Background for tertiary (neutral buttons)"
   },
   "background-disabled": {
-    "value": "{neutral.500.value}",
-    "description": "Background for secondary (accordion backgrounds)"
+    "value": "{neutral.700.value}",
+    "description": "Disabled state background for dark mode; Background for secondary (accordion backgrounds)"
+  },
+  "text-disabled": {
+    "value": "{neutral.300.value}",
+    "description": "Disabled state text color for dark mode"
   },
   "primary-background": { "value": "{blue.900.value}" },
   "primary-text": { "value": "{blue.100.value}" },
+  "monochrome-background": { "value": "{neutral.700.value}" },
+  "monochrome-text": { "value": "{neutral.200.value}" },
   "success-background": { "value": "{green.900.value}" },
   "success-text": { "value": "{green.100.value}" },
   "info-background": { "value": "{neutral.800.value}" },

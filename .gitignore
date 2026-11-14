@@ -15,3 +15,7 @@ v2/site/docs/.vitepress/dist/
 v2/site/docs/public/motion-utilities.css
 
 tsconfig.app.tsbuildinfo
+
+# uirig
+.uirig/
+v2/site/.uirig/
