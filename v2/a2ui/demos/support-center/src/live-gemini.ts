@@ -47,7 +47,7 @@ STRICT RULES:
 - Available components & key props:
   - AgCard: { id, component: "AgCard", variant?: "success"|"info"|"warning"|"error", shadow?: boolean, stacked?: boolean, children: string[] }
   - AgText: { id, component: "AgText", el?: "h2"|"h3"|"p"|"span", text: string | {"@path": string} }
-  - AgBadge: { id, component: "AgBadge", variant?: "default"|"info"|"success"|"warning"|"danger", value: string }
+  - AgBadge: { id, component: "AgBadge", variant?: "default"|"info"|"success"|"warning"|"danger", value?: number, children?: string[] }
   - AgAlert: { id, component: "AgAlert", variant?: "info"|"success"|"warning"|"danger", borderedLeft?: boolean, children: string[] }
   - AgFieldset: { id, component: "AgFieldset", legend?: string, bordered?: boolean, children: string[] }
   - AgInput: { id, component: "AgInput", label: string, type?: "text"|"email"|"number", placeholder?: string, required?: boolean, value: {"@path": string} }
@@ -139,24 +139,37 @@ export async function generateLiveA2uiSurface(
     `[live-gemini] Request ${sessionCallCount}/${MAX_SESSION_CALLS} -> ${GEMINI_MODEL}`,
   );
 
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    signal: AbortSignal.timeout(15000),
-    headers: {
-      'Content-Type': 'application/json',
-      'x-goog-api-key': trimmedKey,
-    },
-    body: JSON.stringify({
-      systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
-      contents: [{ role: 'user', parts: [{ text: trimmedPrompt }] }],
-      generationConfig: {
-        temperature: 0.2,
-        responseMimeType: 'application/json',
-        thinkingConfig: { thinkingBudget: 0 },
+  let response: Response;
+  try {
+    response = await fetch(endpoint, {
+      method: 'POST',
+      signal: AbortSignal.timeout(15000),
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': trimmedKey,
       },
-    }),
-  });
-
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+        contents: [{ role: 'user', parts: [{ text: trimmedPrompt }] }],
+        generationConfig: {
+          temperature: 0.2,
+          responseMimeType: 'application/json',
+          thinkingConfig: { thinkingBudget: 0 },
+        },
+      }),
+    });
+  } catch (err) {
+    if (
+      err instanceof DOMException &&
+      (err.name === 'TimeoutError' || err.name === 'AbortError')
+    ) {
+      sessionCallCount = Math.max(0, sessionCallCount - 1);
+      throw new Error(
+        'Gemini free-tier queue timed out (15s). Use the instant Offline A2UI Fixtures or retry shortly.',
+      );
+    }
+    throw err;
+  }
 
   if (!response.ok) {
     if (response.status === 503) {
@@ -189,3 +202,242 @@ export async function generateLiveA2uiSurface(
     maxCalls: MAX_SESSION_CALLS,
   };
 }
+
+/**
+ * Deterministic local A2UI v1.0 compiler for zero-network-risk demos.
+ * Synthesizes a valid A2UI v1.0 wire stream tailored to keywords in userPrompt
+ * so presenters can demonstrate live prompt-to-surface compilation offline.
+ */
+export async function generateLocalA2uiSurface(
+  userPrompt: string,
+): Promise<LiveGeminiResult> {
+  const trimmedPrompt = userPrompt.trim();
+  if (!trimmedPrompt) {
+    throw new Error('Please enter a support UI prompt to generate.');
+  }
+
+  const startedAt = performance.now();
+  await new Promise((resolve) => window.setTimeout(resolve, 120));
+
+  const lower = trimmedPrompt.toLowerCase();
+  const isOutage =
+    lower.includes('outage') ||
+    lower.includes('alert') ||
+    lower.includes('incident') ||
+    lower.includes('webhook');
+
+  const messages: A2uiWireMessage[] = isOutage
+    ? [
+        {
+          version: '1.0',
+          createSurface: {
+            surfaceId: 'support_surface',
+            catalogId: AGNOSTICUI_CATALOG_ID,
+          },
+        },
+        {
+          version: '1.0',
+          updateComponents: {
+            surfaceId: 'support_surface',
+            components: [
+              {
+                id: 'root',
+                component: 'AgCard',
+                variant: 'warning',
+                shadow: true,
+                stacked: true,
+                children: [
+                  'local_badge',
+                  'local_heading',
+                  'local_alert',
+                  'local_divider',
+                  'local_ack_btn',
+                ],
+              },
+              {
+                id: 'local_badge',
+                component: 'AgBadge',
+                variant: 'danger',
+                children: ['local_badge_text'],
+              },
+              {
+                id: 'local_badge_text',
+                component: 'AgText',
+                el: 'span',
+                text: 'P1 • Critical Incident',
+              },
+              {
+                id: 'local_heading',
+                component: 'AgText',
+                el: 'h2',
+                text: { '@path': '/incident/title' },
+              },
+              {
+                id: 'local_alert',
+                component: 'AgAlert',
+                variant: 'warning',
+                borderedLeft: true,
+                children: ['local_alert_copy'],
+              },
+              {
+                id: 'local_alert_copy',
+                component: 'AgText',
+                el: 'p',
+                text: trimmedPrompt,
+              },
+              { id: 'local_divider', component: 'AgDivider' },
+              {
+                id: 'local_ack_btn',
+                component: 'AgButton',
+                variant: 'primary',
+                label: 'Acknowledge & Page On-Call',
+                action: {
+                  event: {
+                    name: 'acknowledge_incident',
+                    context: {
+                      title: { '@path': '/incident/title' },
+                      acknowledged: true,
+                    },
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          version: '1.0',
+          updateDataModel: {
+            surfaceId: 'support_surface',
+            path: '/',
+            value: {
+              incident: {
+                title: 'Production Webhook Delivery Degradation',
+                severity: 'critical',
+              },
+            },
+          },
+        },
+      ]
+    : [
+        {
+          version: '1.0',
+          createSurface: {
+            surfaceId: 'support_surface',
+            catalogId: AGNOSTICUI_CATALOG_ID,
+          },
+        },
+        {
+          version: '1.0',
+          updateComponents: {
+            surfaceId: 'support_surface',
+            components: [
+              {
+                id: 'root',
+                component: 'AgCard',
+                shadow: true,
+                stacked: true,
+                children: [
+                  'local_badge',
+                  'local_heading',
+                  'local_fieldset',
+                  'local_submit_btn',
+                ],
+              },
+              {
+                id: 'local_badge',
+                component: 'AgBadge',
+                variant: 'info',
+                children: ['local_badge_text'],
+              },
+              {
+                id: 'local_badge_text',
+                component: 'AgText',
+                el: 'span',
+                text: 'A2UI v1.0 • FACE Validated',
+              },
+              {
+                id: 'local_heading',
+                component: 'AgText',
+                el: 'h2',
+                text: { '@path': '/meta/title' },
+              },
+              {
+                id: 'local_fieldset',
+                component: 'AgFieldset',
+                legend: 'Request Details',
+                bordered: true,
+                children: [
+                  'owner_email_input',
+                  'resource_id_input',
+                  'urgent_checkbox',
+                ],
+              },
+              {
+                id: 'owner_email_input',
+                component: 'AgInput',
+                label: 'Owner Work Email',
+                type: 'email',
+                placeholder: 'owner@enterprise.io',
+                required: true,
+                value: { '@path': '/form/ownerEmail' },
+              },
+              {
+                id: 'resource_id_input',
+                component: 'AgInput',
+                label: 'Target Environment / Resource ID',
+                placeholder: 'prod-us-east-1',
+                required: true,
+                value: { '@path': '/form/resourceId' },
+              },
+              {
+                id: 'urgent_checkbox',
+                component: 'AgCheckbox',
+                labelText: 'Immediate security audit & expedited approval',
+                checked: { '@path': '/form/expedited' },
+              },
+              {
+                id: 'local_submit_btn',
+                component: 'AgButton',
+                variant: 'primary',
+                size: 'lg',
+                shape: 'rounded',
+                label: 'Validate & Execute Request',
+                action: {
+                  event: {
+                    name: 'execute_generated_form',
+                    context: {
+                      ownerEmail: { '@path': '/form/ownerEmail' },
+                      resourceId: { '@path': '/form/resourceId' },
+                      expedited: { '@path': '/form/expedited' },
+                    },
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          version: '1.0',
+          updateDataModel: {
+            surfaceId: 'support_surface',
+            path: '/',
+            value: {
+              meta: { title: trimmedPrompt },
+              form: {
+                ownerEmail: 'secops@acme-corp.io',
+                resourceId: 'prod-gateway-01',
+                expedited: true,
+              },
+            },
+          },
+        },
+      ];
+
+  return {
+    messages,
+    latencyMs: Math.round(performance.now() - startedAt),
+    callsUsed: sessionCallCount,
+    maxCalls: MAX_SESSION_CALLS,
+  };
+}
+

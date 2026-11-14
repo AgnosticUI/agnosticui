@@ -194,15 +194,45 @@ a2ui-surface ag-fieldset ag-checkbox {
   margin-top: var(--ag-space-3);
 }
 
-.live-prompt-bar {
-  display: grid;
-  grid-template-columns: 14rem minmax(0, 1fr) auto;
-  align-items: flex-end;
+.live-prompt-card {
+  display: flex;
+  flex-direction: column;
   gap: var(--ag-space-3);
   padding: var(--ag-space-3) var(--ag-space-4);
   border-radius: var(--ag-radius-md);
   background: var(--ag-background-primary);
   border: var(--ag-border-width-1) solid var(--ag-border);
+}
+
+.live-prompt-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ag-space-2);
+}
+
+.live-prompt-title {
+  font-size: var(--ag-font-size-xs);
+  font-weight: var(--ag-font-weight-semibold);
+  color: var(--ag-text-secondary);
+}
+
+.compiler-mode-radios {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-4);
+}
+
+.live-prompt-bar {
+  display: grid;
+  grid-template-columns: 14rem minmax(0, 1fr) auto;
+  align-items: flex-end;
+  gap: var(--ag-space-3);
+}
+
+.live-prompt-bar.is-local {
+  grid-template-columns: minmax(0, 1fr) auto;
 }
 
 .live-quota-pill {

@@ -2,8 +2,8 @@
  * @file main.ts
  * @description Declarative Lit studio (<ag-a2ui-studio>) showcasing AgnosticUI's
  * A2UI v1.0 catalog across 21 runtime skins, Light/Dark modes, live @path
- * DataModel inspection, FACE form validation, and optional Gemini 3.8 Flash
- * live prompt compilation.
+ * DataModel inspection, FACE form validation, and Local vs. Live Gemini 3.8
+ * Flash prompt compilation.
  */
 
 import 'agnosticui-core/styles/tokens.css';
@@ -27,6 +27,7 @@ import 'agnosticui-core/alert';
 import 'agnosticui-core/button';
 import 'agnosticui-core/icon-button';
 import 'agnosticui-core/input';
+import 'agnosticui-core/radio';
 import 'agnosticui-core/select';
 import 'agnosticui-core/toggle';
 
@@ -42,6 +43,7 @@ import {
 } from './fixtures/support-scenarios.js';
 import {
   generateLiveA2uiSurface,
+  generateLocalA2uiSurface,
   getGeminiSessionUsage,
   MAX_SESSION_CALLS,
 } from './live-gemini.js';
@@ -65,6 +67,7 @@ export class AgA2uiStudio extends LitElement {
     dataModelJson: { state: true },
     eventLogText: { state: true },
     activePromptBanner: { state: true },
+    compilerMode: { state: true },
     geminiApiKey: { state: true },
     livePromptText: { state: true },
     isGeneratingLive: { state: true },
@@ -82,6 +85,7 @@ export class AgA2uiStudio extends LitElement {
   private declare dataModelJson: string;
   private declare eventLogText: string;
   private declare activePromptBanner: string;
+  private declare compilerMode: 'local' | 'live';
   private declare geminiApiKey: string;
   private declare livePromptText: string;
   private declare isGeneratingLive: boolean;
@@ -100,6 +104,7 @@ export class AgA2uiStudio extends LitElement {
     this.isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     this.dataModelJson = '{}';
     this.eventLogText = 'Ready.';
+    this.compilerMode = 'local';
     this.geminiApiKey = sessionStorage.getItem(SESSION_KEY_STORAGE) ?? '';
     this.livePromptText =
       'Build an enterprise API key rotation form with owner email, environment name, urgent revoke checkbox, and submit button.';
@@ -177,6 +182,16 @@ export class AgA2uiStudio extends LitElement {
     );
   }
 
+  private handleCompilerModeChange(mode: 'local' | 'live'): void {
+    this.compilerMode = mode;
+    this.liveErrorText = '';
+    this.logEvent(
+      mode === 'local'
+        ? 'Compiler mode: Local Deterministic (Offline)'
+        : 'Compiler mode: Live Gemini 3.8 Flash',
+    );
+  }
+
   private readInputValue(selector: string, fallback: string): string {
     const host = this.querySelector(selector) as
       | (HTMLElement & { value?: string })
@@ -208,29 +223,39 @@ export class AgA2uiStudio extends LitElement {
     this.livePromptText = val;
   }
 
-  private async handleGenerateLive(): Promise<void> {
+  private async handleGeneratePrompt(): Promise<void> {
     if (this.isGeneratingLive) return;
 
-    const resolvedKey = this.readInputValue(
-      '#gemini-key-input',
-      this.geminiApiKey,
-    );
     const resolvedPrompt = this.readInputValue(
       '#live-prompt-input',
       this.livePromptText,
     );
-
-    this.geminiApiKey = resolvedKey;
     this.livePromptText = resolvedPrompt;
-    if (resolvedKey) {
-      sessionStorage.setItem(SESSION_KEY_STORAGE, resolvedKey);
-    }
-
     this.liveErrorText = '';
     this.isGeneratingLive = true;
-    this.logEvent('Calling Gemini 3.8 Flash for live A2UI v1.0 surface...');
 
     try {
+      if (this.compilerMode === 'local') {
+        const result = await generateLocalA2uiSurface(resolvedPrompt);
+        this.activePromptBanner = `[Local Compiler • ${result.latencyMs}ms] ${resolvedPrompt}`;
+        await this.renderWireMessages(
+          result.messages,
+          60,
+          'Local A2UI v1.0 Compiler',
+        );
+        return;
+      }
+
+      const resolvedKey = this.readInputValue(
+        '#gemini-key-input',
+        this.geminiApiKey,
+      );
+      this.geminiApiKey = resolvedKey;
+      if (resolvedKey) {
+        sessionStorage.setItem(SESSION_KEY_STORAGE, resolvedKey);
+      }
+
+      this.logEvent('Calling Gemini 3.8 Flash for live A2UI v1.0 surface...');
       const result = await generateLiveA2uiSurface(resolvedKey, resolvedPrompt);
       this.geminiCallsUsed = result.callsUsed;
       this.activePromptBanner = `[Live Gemini • ${result.latencyMs}ms] ${resolvedPrompt}`;
@@ -243,13 +268,13 @@ export class AgA2uiStudio extends LitElement {
       const msg = err instanceof Error ? err.message : String(err);
       this.liveErrorText = msg;
       this.geminiCallsUsed = getGeminiSessionUsage().used;
-      this.logEvent(`Live Gemini error: ${msg}`);
+      this.logEvent(`Compiler error: ${msg}`);
     } finally {
       this.isGeneratingLive = false;
     }
   }
 
-  private async playScenario(
+    private async playScenario(
     scenario: SupportScenario,
     delayMs = 0,
   ): Promise<void> {
@@ -308,9 +333,10 @@ export class AgA2uiStudio extends LitElement {
     }, 250);
   }
 
-    override render() {
+  override render() {
     const activeSkinLabel =
       SKINS.find((s) => s.id === this.activeSkinId)?.label ?? 'Default';
+    const isLocal = this.compilerMode === 'local';
 
     return html`
       <div class="studio-shell">
@@ -397,35 +423,71 @@ export class AgA2uiStudio extends LitElement {
           </aside>
 
           <main class="studio-stage">
-            <div class="live-prompt-bar">
-              <ag-input
-                id="gemini-key-input"
-                label="AI Studio Key (Session Only)"
-                type="password"
-                placeholder="AIza..."
-                .value=${this.geminiApiKey}
-                @input=${this.handleApiKeyInput}
-                @change=${this.handleApiKeyInput}
-              ></ag-input>
+            <div class="live-prompt-card">
+              <div class="live-prompt-top">
+                <span class="live-prompt-title">
+                  Prompt-to-A2UI Surface Compiler
+                </span>
 
-              <ag-input
-                id="live-prompt-input"
-                label="Optional Live Gemini 3.8 Flash Prompt (${this.geminiCallsUsed}/${MAX_SESSION_CALLS} calls)"
-                placeholder="Describe a support form or triage card..."
-                .value=${this.livePromptText}
-                @input=${this.handleLivePromptInput}
-                @change=${this.handleLivePromptInput}
-              ></ag-input>
+                <div class="compiler-mode-radios">
+                  <ag-radio
+                    name="compiler-mode"
+                    value="local"
+                    labelText="Local UI (Instant)"
+                    .checked=${isLocal}
+                    @change=${() => this.handleCompilerModeChange('local')}
+                  ></ag-radio>
 
-              <ag-button
-                variant="primary"
-                size="md"
-                shape="rounded"
-                .disabled=${this.isGeneratingLive}
-                @click=${() => void this.handleGenerateLive()}
-              >
-                ${this.isGeneratingLive ? 'Compiling...' : 'Generate Live UI'}
-              </ag-button>
+                  <ag-radio
+                    name="compiler-mode"
+                    value="live"
+                    labelText="Live Gemini (${this.geminiCallsUsed}/${MAX_SESSION_CALLS})"
+                    .checked=${!isLocal}
+                    @change=${() => this.handleCompilerModeChange('live')}
+                  ></ag-radio>
+                </div>
+              </div>
+
+              <div class="live-prompt-bar ${isLocal ? 'is-local' : ''}">
+                ${isLocal
+                  ? ''
+                  : html`
+                      <ag-input
+                        id="gemini-key-input"
+                        label="AI Studio Key (Session Only)"
+                        type="password"
+                        placeholder="AQ... or AIza..."
+                        .value=${this.geminiApiKey}
+                        @input=${this.handleApiKeyInput}
+                        @change=${this.handleApiKeyInput}
+                      ></ag-input>
+                    `}
+
+                <ag-input
+                  id="live-prompt-input"
+                  label=${isLocal
+                    ? 'Prompt (Compiled Locally to A2UI v1.0)'
+                    : 'Prompt (Compiled via Gemini 3.8 Flash)'}
+                  placeholder="Describe a support form or incident alert card..."
+                  .value=${this.livePromptText}
+                  @input=${this.handleLivePromptInput}
+                  @change=${this.handleLivePromptInput}
+                ></ag-input>
+
+                <ag-button
+                  variant="primary"
+                  size="md"
+                  shape="rounded"
+                  .disabled=${this.isGeneratingLive}
+                  @click=${() => void this.handleGeneratePrompt()}
+                >
+                  ${this.isGeneratingLive
+                    ? 'Compiling...'
+                    : isLocal
+                      ? 'Generate Local UI'
+                      : 'Generate Live UI'}
+                </ag-button>
+              </div>
             </div>
 
             ${this.liveErrorText
