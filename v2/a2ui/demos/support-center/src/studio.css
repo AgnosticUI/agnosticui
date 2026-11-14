@@ -1,4 +1,7 @@
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: var(--ag-font-family-sans);
@@ -6,28 +9,149 @@ body {
   color: var(--ag-text-primary);
   transition: background var(--ag-motion-medium) ease, color var(--ag-motion-medium) ease;
 }
-.studio-shell { display: grid; grid-template-columns: 22rem 1fr 24rem; min-height: 100vh; }
+
+.studio-shell {
+  display: grid;
+  grid-template-columns: 23rem 1fr 24rem;
+  min-height: 100vh;
+}
+
 .panel {
   padding: var(--ag-space-5);
   background: var(--ag-background-primary);
   border-right: var(--ag-border-width-1) solid var(--ag-border);
-  display: flex; flex-direction: column; gap: var(--ag-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ag-space-4);
 }
-.panel-right { border-right: none; border-left: var(--ag-border-width-1) solid var(--ag-border); }
-.studio-title { margin: 0 0 var(--ag-space-1); font-size: var(--ag-font-size-lg); color: var(--ag-text-primary); }
-.studio-subtitle, .section-label, .active-skin-badge, .skin-btn, pre.json-inspector {
+
+.panel-right {
+  border-right: none;
+  border-left: var(--ag-border-width-1) solid var(--ag-border);
+}
+
+.studio-title {
+  margin: 0 0 var(--ag-space-1);
+  font-size: var(--ag-font-size-lg);
+  color: var(--ag-text-primary);
+}
+
+.studio-subtitle {
+  margin: 0;
+  font-size: var(--ag-font-size-xs);
   color: var(--ag-text-secondary);
 }
-.skin-btn[aria-pressed="true"] {
-  border-color: var(--ag-primary);
-  background: var(--ag-background-primary);
-  box-shadow: 0 0 0 var(--ag-focus-width) var(--ag-primary-background);
+
+.section-label {
+  display: block;
+  font-size: var(--ag-font-size-xs);
+  font-weight: var(--ag-font-weight-semibold);
+  color: var(--ag-text-primary);
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ag-space-2);
+  margin-top: var(--ag-space-3);
+}
+
+.theme-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ag-space-2);
+}
+
+.skin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--ag-space-2);
+}
+
+.active-skin-badge {
+  font-size: var(--ag-font-size-xs);
+  color: var(--ag-primary-text, var(--ag-primary));
   font-weight: var(--ag-font-weight-semibold);
 }
-.canvas-port { padding: var(--ag-space-6); overflow-y: auto; display: flex; flex-direction: column; gap: var(--ag-space-5); }
+
+.skin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--ag-space-2);
+  overflow-y: auto;
+  padding-right: var(--ag-space-1);
+}
+
+.skin-btn-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--ag-radius-full);
+  flex-shrink: 0;
+  border: var(--ag-border-width-1) solid var(--ag-border);
+}
+
+.canvas-port {
+  padding: var(--ag-space-6);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ag-space-5);
+}
+
+.inspector-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.inspector-section-grow {
+  flex: 1;
+  min-height: 0;
+}
+
+.inspector-heading {
+  margin: 0 0 var(--ag-space-2);
+  font-size: var(--ag-font-size-sm);
+  color: var(--ag-text-primary);
+}
+
 pre.json-inspector {
-  margin: 0; padding: var(--ag-space-3); border-radius: var(--ag-radius-md);
-  background: var(--ag-background-secondary); font-family: var(--ag-font-family-mono);
-  font-size: var(--ag-font-size-xs); line-height: var(--ag-line-height-relaxed);
-  overflow: auto; max-height: 16rem; border: var(--ag-border-width-1) solid var(--ag-border);
+  margin: 0;
+  padding: var(--ag-space-3);
+  border-radius: var(--ag-radius-md);
+  background: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
+  font-family: var(--ag-font-family-mono);
+  font-size: var(--ag-font-size-xs);
+  line-height: var(--ag-line-height-relaxed);
+  overflow: auto;
+  max-height: 16rem;
+  border: var(--ag-border-width-1) solid var(--ag-border);
+}
+
+pre.event-log-box {
+  flex: 1;
+  min-height: 22rem;
+  max-height: none;
+}
+
+a2ui-surface ag-card > * + * {
+  display: block;
+  margin-top: var(--ag-space-4);
+}
+
+a2ui-surface ag-fieldset ag-input,
+a2ui-surface ag-fieldset ag-checkbox {
+  display: block;
+  margin-top: var(--ag-space-3);
 }
