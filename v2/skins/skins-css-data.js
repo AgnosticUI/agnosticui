@@ -1078,6 +1078,12 @@ export const SKINS_CSS = {
   --ag-blue-700: #003078;
   --ag-blue-800: #002050;
   --ag-blue-900: #001030;
+
+  /* ── Disabled & Monochrome states (WCAG AAA) ── */
+  --ag-background-disabled: #ebebeb;
+  --ag-text-disabled: #1a1a1a;
+  --ag-monochrome-background: #ebebeb;
+  --ag-monochrome-text: #000000;
 }`,
     dark: `/**
  * High Contrast Skin — Dark Mode
@@ -1141,6 +1147,12 @@ export const SKINS_CSS = {
   --ag-blue-700: #003078;
   --ag-blue-800: #002050;
   --ag-blue-900: #001030;
+
+  /* ── Disabled & Monochrome states (WCAG AAA) ── */
+  --ag-background-disabled: #141414;
+  --ag-text-disabled: #f0f0f0;
+  --ag-monochrome-background: #141414;
+  --ag-monochrome-text: #ffffff;
 }`,
   },
   'midnight': {
