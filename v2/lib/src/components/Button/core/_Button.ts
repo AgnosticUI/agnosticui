@@ -445,31 +445,37 @@ export class AgButton extends LitElement implements ButtonProps {
     }
 
     :host([bordered][variant="primary"]) button:disabled {
+      background: transparent;
       border-color: var(--ag-primary-border);
       color: var(--ag-primary-text);
     }
 
     :host([bordered][variant="secondary"]) button:disabled {
+      background: transparent;
       border-color: var(--ag-border-subtle);
       color: var(--ag-text-disabled);
     }
 
     :host([bordered][variant="success"]) button:disabled {
+      background: transparent;
       border-color: var(--ag-border-subtle);
       color: var(--ag-success-text);
     }
 
     :host([bordered][variant="warning"]) button:disabled {
+      background: transparent;
       border-color: var(--ag-border-subtle);
       color: var(--ag-warning-text);
     }
 
     :host([bordered][variant="danger"]) button:disabled {
+      background: transparent;
       border-color: var(--ag-border-subtle);
       color: var(--ag-danger-text);
     }
 
     :host([bordered][variant="monochrome"]) button:disabled {
+      background: transparent;
       border-color: var(--ag-border-subtle);
       color: var(--ag-monochrome-text);
     }

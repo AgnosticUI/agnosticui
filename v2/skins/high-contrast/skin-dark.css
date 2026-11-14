@@ -62,8 +62,8 @@
   --ag-blue-900: #001030;
 
   /* ── Disabled & Monochrome states (WCAG AAA) ── */
-  --ag-background-disabled: #141414;
+  --ag-background-disabled: #1f1f1f;
   --ag-text-disabled: #f0f0f0;
-  --ag-monochrome-background: #141414;
+  --ag-monochrome-background: #1f1f1f;
   --ag-monochrome-text: #ffffff;
 }

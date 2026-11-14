@@ -1080,9 +1080,9 @@ export const SKINS_CSS = {
   --ag-blue-900: #001030;
 
   /* ── Disabled & Monochrome states (WCAG AAA) ── */
-  --ag-background-disabled: #ebebeb;
+  --ag-background-disabled: #e0e0e0;
   --ag-text-disabled: #1a1a1a;
-  --ag-monochrome-background: #ebebeb;
+  --ag-monochrome-background: #e0e0e0;
   --ag-monochrome-text: #000000;
 }`,
     dark: `/**
@@ -1149,9 +1149,9 @@ export const SKINS_CSS = {
   --ag-blue-900: #001030;
 
   /* ── Disabled & Monochrome states (WCAG AAA) ── */
-  --ag-background-disabled: #141414;
+  --ag-background-disabled: #1f1f1f;
   --ag-text-disabled: #f0f0f0;
-  --ag-monochrome-background: #141414;
+  --ag-monochrome-background: #1f1f1f;
   --ag-monochrome-text: #ffffff;
 }`,
   },
