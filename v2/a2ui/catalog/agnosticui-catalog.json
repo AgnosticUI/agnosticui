@@ -1418,6 +1418,33 @@
         "@call",
         "args"
       ]
+    },
+    "validateSurface": {
+      "type": "object",
+      "description": "Validates all AgnosticUI Form-Associated Custom Elements (ag-input, ag-select, ag-checkbox, ag-radio) within the surface and returns true if all fields are valid.",
+      "returnType": "boolean",
+      "properties": {
+        "@call": {
+          "const": "validateSurface"
+        },
+        "args": {
+          "type": "object",
+          "properties": {
+            "surfaceId": {
+              "type": "string",
+              "description": "Optional target surface ID. Defaults to the current surface from DataContext."
+            },
+            "report": {
+              "type": "boolean",
+              "description": "When true (default), calls reportValidity() to display validation messages; when false, calls checkValidity()."
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      },
+      "required": [
+        "@call"
+      ]
     }
   },
   "$defs": {
@@ -1516,6 +1543,9 @@
         },
         {
           "$ref": "#/functions/not"
+        },
+        {
+          "$ref": "#/functions/validateSurface"
         }
       ]
     }

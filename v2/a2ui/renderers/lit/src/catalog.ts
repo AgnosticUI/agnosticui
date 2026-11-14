@@ -3,6 +3,7 @@ import { Catalog, BASIC_FUNCTIONS } from '@a2ui/web_core/v1_0';
 import { registerUniversalElement } from '@a2ui/web_core/universal';
 import type { LitComponentApi } from '@a2ui/lit';
 import { AgText } from './primitives/AgText.js';
+import { ValidateSurfaceImplementation } from './functions/validate-surface.js';
 import { AgAlert } from './components/AgAlert.js';
 import { AgAvatar } from './components/AgAvatar.js';
 import { AgBadge } from './components/AgBadge.js';
@@ -24,7 +25,7 @@ export const AgnosticUICatalog: Catalog<LitComponentApi> = new Catalog(
   AGNOSTICUI_CATALOG_ID,
   '1.0',
   [AgText, AgAlert, AgAvatar, AgBadge, AgButton, AgCard, AgCheckbox, AgDivider, AgFieldset, AgHeader, AgInput, AgRadio, AgSelect, AgTabs, AgTag] as unknown as LitComponentApi[],
-  [...BASIC_FUNCTIONS],
+  [...BASIC_FUNCTIONS, ValidateSurfaceImplementation],
   undefined,
   'Use AgnosticUI components (AgCard, AgFieldset, AgInput, AgSelect, AgCheckbox, AgRadio, AgButton, AgAlert, AgBadge, AgAvatar, AgTag, AgTabs, AgCollapsible, AgHeader, AgDivider, AgText). Always use UAX #31 component IDs (letters, digits, underscores only; no hyphens) and bind interactive form fields using {"@path": "/..."} pointers.',
 );
