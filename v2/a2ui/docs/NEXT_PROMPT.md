@@ -1,7 +1,7 @@
 ================================================================================
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
- TIMESTAMP BASELINE : 2026-11-14T20:32:00Z (Anchored to Saturday, Nov 14, 2026 Timeline)
+ TIMESTAMP BASELINE : 2026-11-14T21:26:00Z (Anchored to Saturday, Nov 14, 2026 Timeline)
  ACTIVE WORKSPACE   : Phase 3 Task 3.3 (Milestone 3: FACE Validation & 21-Skin Demo) / Optional Free-Tier Gemini Live Prompt Mode
  STRATEGIC PIVOT    :
    - Positioning: "Spec-compliant A2UI v1.0 Component Catalog & Web Renderer bringing AgnosticUI's 21 runtime skins and FACE form validation to generative UI surfaces."
@@ -17,7 +17,7 @@
        * Task 2.2: `v2/a2ui/renderers/lit/src/catalog.ts` & `src/catalog.spec.ts` (Explicit `'1.0'` catalog registration via `registerUniversalElement` and Light-DOM `<a2ui-surface>` rendering verified green in Vitest + `tsc`).
    - Phase 3 Completed Tasks (All Passing & Committed):
        * Task 3.1: `v2/a2ui/renderers/lit/src/functions/validate-surface.ts`, `src/test-setup.ts`, & `src/catalog.spec.ts` (Implemented `validateSurface` client function using `AG_FACE_SELECTOR` + `reportValidity()`, shimmed `attachInternals` for JSDOM, and verified two-way `@path` binding + FACE validation across 3/3 passing Vitest suites).
-       * Task 3.2: `v2/a2ui/demos/support-center/` (`index.html`, `src/main.ts`, `src/studio.css`, `src/fixtures/support-scenarios.ts`, `README.md`) — Built interactive 21-skin + Light/Dark studio using pure `var(--ag-*)` tokens, real `<ag-select>` / `<ag-button>` / `<ag-toggle>` controls, live `@path` DataModel inspector, and FACE validation.
+       * Task 3.2: `v2/a2ui/demos/support-center/` (`index.html`, `src/main.ts`, `src/studio.css`, `src/fixtures/support-scenarios.ts`, `README.md`) — Built declarative Lit `<ag-a2ui-studio>` with 21 `<ag-button>` runtime skins, Light/Dark toggle, pure `var(--ag-*)` tokens, live `DataModel` JSON inspector (`dataModel.get('')`), FACE validation, and native DOM Lucide `CircleSlash2` `<ag-icon-button>` clear log control.
 
  ROADMAP DELTAS     :
    - Phase 3 Remaining Tasks (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
@@ -37,13 +37,13 @@
 9. Verification & Git Checkpoint: Stop at the end of every chunk, provide the exact local verification command (`cd v2/a2ui/demos/support-center && npm run build`), suggest a conventional git commit message, and wait for user permission before advancing.
 
 --- TARGET RUNTIME DELTA ---
- EXACT NEXT TASK    : Phase 3 Task 3.3 (Micro-Chunk 3.3a) — Add an optional client-side "Live Gemini Prompt" panel (`v2/a2ui/demos/support-center/src/live-gemini.ts`) using `gemini-2.5-flash` + `agnosticui-catalog.json` alongside the offline Mock Stream presets
+ EXACT NEXT TASK    : Phase 3 Task 3.3 (Micro-Chunk 3.3a) — Add an optional client-side "Live Gemini Prompt" generator (`v2/a2ui/demos/support-center/src/live-gemini.ts`) using `gemini-2.5-flash` + `agnosticui-catalog.json` alongside the offline Mock Stream presets
  ENGINEERING "WHY"  :
    1. Keeping the offline Mock Stream presets as the default ensures 100% reliability during Monday's interview regardless of Wi-Fi or quota.
    2. Adding an optional "Live Prompt" input backed by Google AI Studio's free tier (`gemini-2.5-flash`) lets you demonstrate genuine real-time natural-language-to-AgnosticUI generation on the spot while capping smoke tests at 3–5 calls so Monday's daily free quota stays intact.
  CODE BOUNDARIES    :
    - Micro-Chunk 3.3a: Create `v2/a2ui/demos/support-center/src/live-gemini.ts` (sends system prompt with `agnosticui-catalog.json` + UAX #31 ID rules to `://googleapis.com` and parses returned A2UI v1.0 JSON array).
-   - Micro-Chunk 3.3b: Wire an optional `<ag-input>` prompt bar + API key session field into `index.html` and `src/main.ts` and run a capped 3-request smoke test.
+   - Micro-Chunk 3.3b: Wire an optional `<ag-input>` prompt bar + API key session field into `<ag-a2ui-studio>` (`src/main.ts`) and run a strictly capped 3-request smoke test.
 
 --- SYSTEM BOOT TRIGGER COMMAND ---
 ::: SYSTEM INITIALIZED. STOP BEFORE WRITING ANY CODE.

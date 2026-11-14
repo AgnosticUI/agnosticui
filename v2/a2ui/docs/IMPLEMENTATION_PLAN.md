@@ -47,8 +47,8 @@
 * **Task 3.2 — 21-Skin Support Center Offline Demo** ✅
   * **Micro-Chunk 3.2a:** Inspected `v2/skins/skin-switcher-core.js` and `v2/sdui/demo-support-center/`.
   * **Micro-Chunk 3.2b:** Scaffolded `v2/a2ui/demos/support-center/` (`package.json`, `tsconfig.json`, `vite.config.ts`, `README.md`, and A2UI v1.0 Support Center fixtures).
-  * **Micro-Chunk 3.2c:** Wired `agnosticui-core/styles/tokens.css`, `tokens-dark.css`, `v2/skins/skins-bundle.css`, `skin-switcher-core.js`, `var(--ag-*)` tokenized `studio.css`, real `<ag-select>` / `<ag-button>` / `<ag-toggle>` controls, FACE validation submit handler, and live DataModel JSON inspector.
-* **Task 3.3 — Free-Tier Cloud LLM Smoke Test & Interview Demo Mode** ⏳ *(Current)*
+  * **Micro-Chunk 3.2c:** Built declarative Lit `<ag-a2ui-studio>` (`src/main.ts`, `src/studio.css`) with `agnosticui-core/styles/tokens.css`, `tokens-dark.css`, `v2/skins/skins-bundle.css`, 21 `<ag-button>` skin pills, live `DataModel` JSON inspector (`dataModel.get('')`), FACE validation, and native DOM Lucide `CircleSlash2` `<ag-icon-button>` clear log control.
+* **Task 3.3 — Free-Tier Cloud LLM Smoke Test & Interview Demo Mode** ⏳ *(Next)*
   * **Micro-Chunk 3.3a:** Retrieve existing API key from Google AI Studio (`://google.com`, free tier—no billing linked) and run a strictly capped **3–5 request smoke test** using a Flash model (`gemini-2.5-flash`) with `agnosticui-catalog.json` to preserve daily free-tier quota for Monday's live demo.
   * **Micro-Chunk 3.3b:** Wire an optional "Live Prompt" input into `v2/a2ui/demos/support-center/` alongside the instant offline Mock Stream presets so live API generation can be demonstrated safely with zero risk of rate-limit or Wi-Fi failure.
 
