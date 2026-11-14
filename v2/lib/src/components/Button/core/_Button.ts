@@ -429,10 +429,12 @@ export class AgButton extends LitElement implements ButtonProps {
     :host([variant="secondary"]) button:disabled,
     button:disabled {
       background: var(--ag-background-disabled);
+      color: var(--ag-text-disabled);
     }
 
     :host([variant="monochrome"]) button:disabled {
-      background: var(--ag-background-tertiary);
+      background: var(--ag-monochrome-background);
+      color: var(--ag-monochrome-text);
     }
 
     /* Bordered buttons - dim the border and text with opacity */

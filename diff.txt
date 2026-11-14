@@ -1,0 +1,215 @@
+diff --git a/.gitignore b/.gitignore
+index f2cadde62..b2b1108dd 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -15,3 +15,7 @@ v2/site/docs/.vitepress/dist/
+ v2/site/docs/public/motion-utilities.css
+ 
+ tsconfig.app.tsbuildinfo
++
++# uirig
++.uirig/
++v2/site/.uirig/
+\ No newline at end of file
+diff --git a/v2/lib/src/components/Button/core/_Button.ts b/v2/lib/src/components/Button/core/_Button.ts
+index c5805afde..c00339fd0 100644
+--- a/v2/lib/src/components/Button/core/_Button.ts
++++ b/v2/lib/src/components/Button/core/_Button.ts
+@@ -429,10 +429,12 @@ export class AgButton extends LitElement implements ButtonProps {
+     :host([variant="secondary"]) button:disabled,
+     button:disabled {
+       background: var(--ag-background-disabled);
++      color: var(--ag-text-disabled);
+     }
+ 
+     :host([variant="monochrome"]) button:disabled {
+-      background: var(--ag-background-tertiary);
++      background: var(--ag-monochrome-background);
++      color: var(--ag-monochrome-text);
+     }
+ 
+     /* Bordered buttons - dim the border and text with opacity */
+diff --git a/v2/lib/src/styles/ag-tokens-dark.css b/v2/lib/src/styles/ag-tokens-dark.css
+index 226f91a1c..e50e52a7b 100644
+--- a/v2/lib/src/styles/ag-tokens-dark.css
++++ b/v2/lib/src/styles/ag-tokens-dark.css
+@@ -85,9 +85,12 @@
+   --ag-background-secondary: #212730;
+   --ag-background-secondary-inverted: #D1D7E0;
+   --ag-background-tertiary: #3D444D;
+-  --ag-background-disabled: #656C76;
++  --ag-background-disabled: #212730;
++  --ag-text-disabled: #9EA5AF;
+   --ag-primary-background: #051d4d;
+   --ag-primary-text: #a5d6ff;
++  --ag-monochrome-background: #212730;
++  --ag-monochrome-text: #B7BDC8;
+   --ag-success-background: #04260f;
+   --ag-success-text: #7ee787;
+   --ag-info-background: #171c24;
+diff --git a/v2/lib/src/styles/ag-tokens.css b/v2/lib/src/styles/ag-tokens.css
+index 19dea76f7..2bacefc11 100644
+--- a/v2/lib/src/styles/ag-tokens.css
++++ b/v2/lib/src/styles/ag-tokens.css
+@@ -153,8 +153,11 @@
+   --ag-background-secondary-inverted: #111827;
+   --ag-background-tertiary: #e5e7eb; /** Used by: Button default bg; also secondary button hover bg */
+   --ag-background-disabled: #f3f4f6; /** Used by: Button, Input, Checkbox, Radio, Select disabled states */
++  --ag-text-disabled: #4b5563; /** Used by: Button disabled text */
+   --ag-primary-background: #ddf4ff; /** Used by: Alert primary variant bg, Button faint variant bg */
+   --ag-primary-text: #0550ae; /** Used by: Alert primary text, Button bordered/outlined text + border */
++  --ag-monochrome-background: #e5e7eb; /** Used by: Button monochrome disabled bg */
++  --ag-monochrome-text: #202736; /** Used by: Button monochrome disabled text */
+   --ag-success-background: #dafbe1; /** Used by: Alert success variant bg, Badge success variant bg */
+   --ag-success-text: #116329; /** Used by: Alert success variant text, Badge success variant text */
+   --ag-info-background: #f3f4f6; /** Used by: Alert info variant bg, Badge info variant bg */
+diff --git a/v2/site/docs/public/ag-tokens-dark.css b/v2/site/docs/public/ag-tokens-dark.css
+index 226f91a1c..e50e52a7b 100644
+--- a/v2/site/docs/public/ag-tokens-dark.css
++++ b/v2/site/docs/public/ag-tokens-dark.css
+@@ -85,9 +85,12 @@
+   --ag-background-secondary: #212730;
+   --ag-background-secondary-inverted: #D1D7E0;
+   --ag-background-tertiary: #3D444D;
+-  --ag-background-disabled: #656C76;
++  --ag-background-disabled: #212730;
++  --ag-text-disabled: #9EA5AF;
+   --ag-primary-background: #051d4d;
+   --ag-primary-text: #a5d6ff;
++  --ag-monochrome-background: #212730;
++  --ag-monochrome-text: #B7BDC8;
+   --ag-success-background: #04260f;
+   --ag-success-text: #7ee787;
+   --ag-info-background: #171c24;
+diff --git a/v2/site/docs/public/ag-tokens.css b/v2/site/docs/public/ag-tokens.css
+index 19dea76f7..2bacefc11 100644
+--- a/v2/site/docs/public/ag-tokens.css
++++ b/v2/site/docs/public/ag-tokens.css
+@@ -153,8 +153,11 @@
+   --ag-background-secondary-inverted: #111827;
+   --ag-background-tertiary: #e5e7eb; /** Used by: Button default bg; also secondary button hover bg */
+   --ag-background-disabled: #f3f4f6; /** Used by: Button, Input, Checkbox, Radio, Select disabled states */
++  --ag-text-disabled: #4b5563; /** Used by: Button disabled text */
+   --ag-primary-background: #ddf4ff; /** Used by: Alert primary variant bg, Button faint variant bg */
+   --ag-primary-text: #0550ae; /** Used by: Alert primary text, Button bordered/outlined text + border */
++  --ag-monochrome-background: #e5e7eb; /** Used by: Button monochrome disabled bg */
++  --ag-monochrome-text: #202736; /** Used by: Button monochrome disabled text */
+   --ag-success-background: #dafbe1; /** Used by: Alert success variant bg, Badge success variant bg */
+   --ag-success-text: #116329; /** Used by: Alert success variant text, Badge success variant text */
+   --ag-info-background: #f3f4f6; /** Used by: Alert info variant bg, Badge info variant bg */
+diff --git a/v2/site/package-lock.json b/v2/site/package-lock.json
+index b5d43343f..0121b82e5 100644
+--- a/v2/site/package-lock.json
++++ b/v2/site/package-lock.json
+@@ -1980,7 +1980,7 @@
+     "node_modules/agnosticui-core": {
+       "version": "2.0.0-alpha.31",
+       "resolved": "file:../lib/agnosticui-core-2.0.0-alpha.31.tgz",
+-      "integrity": "sha512-/YvllBIytr0K3xi71mEDUCJ9wTGT7DoYOhNk1CnrgWYEs4vRlXlneTZjxJN2tum2i5bTRSq9WmjS65Y6QNUtjA==",
++      "integrity": "sha512-kbnYT+FdZwjsnRUf0aql4bAlL6zOiBiKtWln4C9fsP+tN6RyyHOe5ooJaTScrHClkW8AUBSeJCHWDwy5U5p7Jg==",
+       "license": "Apache-2.0",
+       "dependencies": {
+         "@floating-ui/dom": "^1.7.4",
+diff --git a/v2/theme-registry/dist/ag-tokens.css b/v2/theme-registry/dist/ag-tokens.css
+index 19dea76f7..2bacefc11 100644
+--- a/v2/theme-registry/dist/ag-tokens.css
++++ b/v2/theme-registry/dist/ag-tokens.css
+@@ -153,8 +153,11 @@
+   --ag-background-secondary-inverted: #111827;
+   --ag-background-tertiary: #e5e7eb; /** Used by: Button default bg; also secondary button hover bg */
+   --ag-background-disabled: #f3f4f6; /** Used by: Button, Input, Checkbox, Radio, Select disabled states */
++  --ag-text-disabled: #4b5563; /** Used by: Button disabled text */
+   --ag-primary-background: #ddf4ff; /** Used by: Alert primary variant bg, Button faint variant bg */
+   --ag-primary-text: #0550ae; /** Used by: Alert primary text, Button bordered/outlined text + border */
++  --ag-monochrome-background: #e5e7eb; /** Used by: Button monochrome disabled bg */
++  --ag-monochrome-text: #202736; /** Used by: Button monochrome disabled text */
+   --ag-success-background: #dafbe1; /** Used by: Alert success variant bg, Badge success variant bg */
+   --ag-success-text: #116329; /** Used by: Alert success variant text, Badge success variant text */
+   --ag-info-background: #f3f4f6; /** Used by: Alert info variant bg, Badge info variant bg */
+diff --git a/v2/theme-registry/dist/tokens.js b/v2/theme-registry/dist/tokens.js
+index 3310f2f55..e4f84a16e 100644
+--- a/v2/theme-registry/dist/tokens.js
++++ b/v2/theme-registry/dist/tokens.js
+@@ -156,8 +156,11 @@ export const BackgroundSecondary = "#f3f4f6";
+ export const BackgroundSecondaryInverted = "#111827";
+ export const BackgroundTertiary = "#e5e7eb"; // Used by: Button default bg; also secondary button hover bg
+ export const BackgroundDisabled = "#f3f4f6"; // Used by: Button, Input, Checkbox, Radio, Select disabled states
++export const TextDisabled = "#4b5563"; // Used by: Button disabled text
+ export const PrimaryBackground = "#ddf4ff"; // Used by: Alert primary variant bg, Button faint variant bg
+ export const PrimaryText = "#0550ae"; // Used by: Alert primary text, Button bordered/outlined text + border
++export const MonochromeBackground = "#e5e7eb"; // Used by: Button monochrome disabled bg
++export const MonochromeText = "#202736"; // Used by: Button monochrome disabled text
+ export const SuccessBackground = "#dafbe1"; // Used by: Alert success variant bg, Badge success variant bg
+ export const SuccessText = "#116329"; // Used by: Alert success variant text, Badge success variant text
+ export const InfoBackground = "#f3f4f6"; // Used by: Alert info variant bg, Badge info variant bg
+diff --git a/v2/theme-registry/dist/tokens.json b/v2/theme-registry/dist/tokens.json
+index 152deccd7..68dc358e9 100644
+--- a/v2/theme-registry/dist/tokens.json
++++ b/v2/theme-registry/dist/tokens.json
+@@ -187,8 +187,11 @@
+   "background-secondary-inverted": "#111827",
+   "background-tertiary": "#e5e7eb",
+   "background-disabled": "#f3f4f6",
++  "text-disabled": "#4b5563",
+   "primary-background": "#ddf4ff",
+   "primary-text": "#0550ae",
++  "monochrome-background": "#e5e7eb",
++  "monochrome-text": "#202736",
+   "success-background": "#dafbe1",
+   "success-text": "#116329",
+   "info-background": "#f3f4f6",
+diff --git a/v2/theme-registry/tokens/colors/dark-semantic.json b/v2/theme-registry/tokens/colors/dark-semantic.json
+index 136b0d114..51bf3e5f1 100644
+--- a/v2/theme-registry/tokens/colors/dark-semantic.json
++++ b/v2/theme-registry/tokens/colors/dark-semantic.json
+@@ -40,11 +40,17 @@
+     "description": "Background for tertiary (neutral buttons)"
+   },
+   "background-disabled": {
+-    "value": "{neutral.500.value}",
+-    "description": "Background for secondary (accordion backgrounds)"
++    "value": "{neutral.700.value}",
++    "description": "Disabled state background for dark mode; Background for secondary (accordion backgrounds)"
++  },
++  "text-disabled": {
++    "value": "{neutral.300.value}",
++    "description": "Disabled state text color for dark mode"
+   },
+   "primary-background": { "value": "{blue.900.value}" },
+   "primary-text": { "value": "{blue.100.value}" },
++  "monochrome-background": { "value": "{neutral.700.value}" },
++  "monochrome-text": { "value": "{neutral.200.value}" },
+   "success-background": { "value": "{green.900.value}" },
+   "success-text": { "value": "{green.100.value}" },
+   "info-background": { "value": "{neutral.800.value}" },
+diff --git a/v2/theme-registry/tokens/colors/light-semantic.json b/v2/theme-registry/tokens/colors/light-semantic.json
+index 52635dd32..6459ecd16 100644
+--- a/v2/theme-registry/tokens/colors/light-semantic.json
++++ b/v2/theme-registry/tokens/colors/light-semantic.json
+@@ -45,6 +45,11 @@
+     "description": "Disabled state background",
+     "comment": "Used by: Button, Input, Checkbox, Radio, Select disabled states"
+   },
++  "text-disabled": {
++    "value": "{neutral.600.value}",
++    "description": "Disabled state text color",
++    "comment": "Used by: Button disabled text"
++  },
+   "primary-background": {
+     "value": "{blue.50.value}",
+     "comment": "Used by: Alert primary variant bg, Button faint variant bg"
+@@ -53,6 +58,14 @@
+     "value": "{blue.600.value}",
+     "comment": "Used by: Alert primary text, Button bordered/outlined text + border"
+   },
++  "monochrome-background": {
++    "value": "{neutral.200.value}",
++    "comment": "Used by: Button monochrome disabled bg"
++  },
++  "monochrome-text": {
++    "value": "{neutral.800.value}",
++    "comment": "Used by: Button monochrome disabled text"
++  },
+   "success-background": {
+     "value": "{green.50.value}",
+     "comment": "Used by: Alert success variant bg, Badge success variant bg"
