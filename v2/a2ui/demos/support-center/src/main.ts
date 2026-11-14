@@ -4,6 +4,7 @@ import '../../../../skins/skins-bundle.css';
 import './studio.css';
 
 import { LitElement, html } from 'lit';
+import { createElement, CircleSlash2 } from 'lucide';
 import { MessageProcessor } from '@a2ui/web_core/v1_0';
 import { A2uiSurface, type LitComponentApi } from '@a2ui/lit';
 import {
@@ -12,15 +13,32 @@ import {
   runSurfaceValidation,
   createMockA2uiStream,
 } from '@agnosticui/a2ui-lit';
+
 import 'agnosticui-core/alert';
 import 'agnosticui-core/button';
+import 'agnosticui-core/icon-button';
 import 'agnosticui-core/select';
 import 'agnosticui-core/toggle';
-import { SKINS, applySkin, applyTheme, restorePrefs } from '../../../../skins/skin-switcher-core.js';
-import { SUPPORT_SCENARIOS, type SupportScenario } from './fixtures/support-scenarios.js';
+
+import {
+  SKINS,
+  applySkin,
+  applyTheme,
+  restorePrefs,
+} from '../../../../skins/skin-switcher-core.js';
+import {
+  SUPPORT_SCENARIOS,
+  type SupportScenario,
+} from './fixtures/support-scenarios.js';
 
 registerAgnosticUICatalog();
 restorePrefs();
+
+const CLEAR_ICON = createElement(CircleSlash2, {
+  width: 16,
+  height: 16,
+  'aria-hidden': 'true',
+});
 
 export class AgA2uiStudio extends LitElement {
   static override properties = {
@@ -35,11 +53,12 @@ export class AgA2uiStudio extends LitElement {
     return this;
   }
 
-  private selectedScenarioId = SUPPORT_SCENARIOS.at(0)!.id;
-  private activeSkinId = localStorage.getItem('ag-skin') ?? '';
-  private isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  private dataModelJson = '{}';
-  private eventLogText = 'Ready.';
+  private declare selectedScenarioId: string;
+  private declare activeSkinId: string;
+  private declare isDark: boolean;
+  private declare dataModelJson: string;
+  private declare eventLogText: string;
+
   private activeSurfaceEl: A2uiSurface | null = null;
   private inspectorTimer: number | null = null;
 
@@ -51,8 +70,6 @@ export class AgA2uiStudio extends LitElement {
     this.dataModelJson = '{}';
     this.eventLogText = 'Ready.';
   }
-
-
 
   override firstUpdated(): void {
     void this.playScenario(this.currentScenario, 0);
@@ -66,14 +83,28 @@ export class AgA2uiStudio extends LitElement {
   }
 
   private get currentScenario(): SupportScenario {
-    return SUPPORT_SCENARIOS.find((s) => s.id === this.selectedScenarioId) ?? SUPPORT_SCENARIOS.at(0)!;
+    return (
+      SUPPORT_SCENARIOS.find((s) => s.id === this.selectedScenarioId) ??
+      SUPPORT_SCENARIOS.at(0)!
+    );
   }
 
+  private serializeDataModel(model: {
+    dataModel: { get: (path: string) => unknown };
+  }): string {
+    const rootData = model.dataModel.get('') ?? model.dataModel.get('/') ?? {};
+    return JSON.stringify(rootData, null, 2);
+  }
 
   private logEvent(message: string, detail?: unknown): void {
     const stamp = new Date().toLocaleTimeString();
-    const extra = detail !== undefined ? `\n${JSON.stringify(detail, null, 2)}` : '';
+    const extra =
+      detail !== undefined ? `\n${JSON.stringify(detail, null, 2)}` : '';
     this.eventLogText = `[${stamp}] ${message}${extra}\n\n${this.eventLogText}`;
+  }
+
+  private handleClearLog(): void {
+    this.eventLogText = 'Log cleared.';
   }
 
   private handleSelectSkin(skin: { id: string; label: string }): void {
@@ -91,7 +122,9 @@ export class AgA2uiStudio extends LitElement {
   }
 
   private handleDarkToggle(e: Event): void {
-    const nextDark = Boolean((e as CustomEvent<{ checked?: boolean }>).detail?.checked);
+    const nextDark = Boolean(
+      (e as CustomEvent<{ checked?: boolean }>).detail?.checked,
+    );
     this.isDark = nextDark;
     applyTheme(nextDark);
     this.logEvent(`Theme mode: ${nextDark ? 'Dark' : 'Light'}`);
@@ -100,10 +133,17 @@ export class AgA2uiStudio extends LitElement {
   private handleRunFaceCheck(): void {
     if (!this.activeSurfaceEl) return;
     const valid = runSurfaceValidation(this.activeSurfaceEl, true);
-    this.logEvent(valid ? 'Manual FACE Check: ALL VALID' : 'Manual FACE Check: INVALID FIELDS HIGHLIGHTED');
+    this.logEvent(
+      valid
+        ? 'Manual FACE Check: ALL VALID'
+        : 'Manual FACE Check: INVALID FIELDS HIGHLIGHTED',
+    );
   }
 
-  private async playScenario(scenario: SupportScenario, delayMs = 0): Promise<void> {
+  private async playScenario(
+    scenario: SupportScenario,
+    delayMs = 0,
+  ): Promise<void> {
     if (this.inspectorTimer !== null) {
       window.clearInterval(this.inspectorTimer);
     }
@@ -122,7 +162,9 @@ export class AgA2uiStudio extends LitElement {
       const detail = (evt as CustomEvent).detail;
       const isValid = runSurfaceValidation(surfaceEl, true);
       if (!isValid) {
-        this.logEvent('Blocked action: FACE validation failed on required fields');
+        this.logEvent(
+          'Blocked action: FACE validation failed on required fields',
+        );
         return;
       }
       this.logEvent('FACE validation passed -> Dispatched A2UI Action', detail);
@@ -136,32 +178,33 @@ export class AgA2uiStudio extends LitElement {
         surfaceEl.surface = model;
       }
       if (model) {
-        this.dataModelJson = JSON.stringify(model.dataModel.get('/'), null, 2);
+        this.dataModelJson = this.serializeDataModel(model);
       }
     }
 
     this.inspectorTimer = window.setInterval(() => {
       const model = processor.model.getSurface('support_surface');
       if (model) {
-        this.dataModelJson = JSON.stringify(model.dataModel.get('/'), null, 2);
+        this.dataModelJson = this.serializeDataModel(model);
       }
     }, 250);
   }
 
   override render() {
-    const activeSkinLabel = SKINS.find((s) => s.id === this.activeSkinId)?.label ?? 'Default';
+    const activeSkinLabel =
+      SKINS.find((s) => s.id === this.activeSkinId)?.label ?? 'Default';
 
     return html`
-      <main class="studio-shell">
-        <aside class="panel">
-          <div>
-            <h2 class="studio-title">AgnosticUI × A2UI v1.0</h2>
+      <div class="studio-shell">
+        <header class="studio-header">
+          <div class="studio-title-group">
+            <h1>AgnosticUI × A2UI v1.0</h1>
             <p class="studio-subtitle">
               Same A2UI JSON payload • 21 runtime skins • FACE validation
             </p>
           </div>
 
-          <div>
+          <div class="studio-controls">
             <ag-select
               label="A2UI v1.0 Stream Fixture"
               name="scenario"
@@ -173,37 +216,43 @@ export class AgA2uiStudio extends LitElement {
               )}
             </ag-select>
 
-            <div class="control-row">
-              <ag-button
-                variant="primary"
-                size="sm"
-                shape="rounded"
-                @click=${() => void this.playScenario(this.currentScenario, 120)}
-              >Replay Stream (120ms)</ag-button>
-              <ag-button
-                variant="secondary"
-                size="sm"
-                shape="rounded"
-                bordered
-                @click=${this.handleRunFaceCheck}
-              >Run FACE Check</ag-button>
+            <ag-button
+              variant="primary"
+              size="sm"
+              shape="rounded"
+              @click=${() => void this.playScenario(this.currentScenario, 120)}
+            >
+              Replay Stream (120ms)
+            </ag-button>
+
+            <ag-button
+              variant="secondary"
+              size="sm"
+              shape="rounded"
+              bordered
+              @click=${this.handleRunFaceCheck}
+            >
+              Run FACE Check
+            </ag-button>
+
+            <div class="theme-toggle-group">
+              <span>Dark Mode</span>
+              <ag-toggle
+                label="Dark Mode"
+                .checked=${this.isDark}
+                @toggle-change=${this.handleDarkToggle}
+              ></ag-toggle>
             </div>
           </div>
+        </header>
 
-          <div class="theme-row">
-            <span class="section-label">Dark Mode</span>
-            <ag-toggle
-              label="Dark Mode"
-              .checked=${this.isDark}
-              @toggle-change=${this.handleDarkToggle}
-            ></ag-toggle>
-          </div>
-
-          <div>
-            <div class="skin-header">
-              <span class="section-label">Runtime Skin (21 Themes)</span>
+        <div class="studio-workspace">
+          <aside class="studio-sidebar">
+            <div class="sidebar-header">
+              <h2>Runtime Skin (21 Themes)</h2>
               <span class="active-skin-badge">${activeSkinLabel}</span>
             </div>
+
             <div class="skin-grid">
               ${SKINS.map((skin) => {
                 const isSelected = skin.id === this.activeSkinId;
@@ -217,35 +266,50 @@ export class AgA2uiStudio extends LitElement {
                     @click=${() => this.handleSelectSkin(skin)}
                   >
                     <span class="skin-btn-inner">
-                      <span class="swatch" style="background:${skin.swatch}"></span>
+                      <span
+                        class="swatch"
+                        style="background:${skin.swatch}"
+                      ></span>
                       <span>${skin.label}</span>
                     </span>
                   </ag-button>
                 `;
               })}
-
             </div>
-          </div>
-        </aside>
+          </aside>
 
-        <section class="canvas-port">
-          <ag-alert variant="info" borderedleft rounded>
-            <strong>Prompt:</strong> ${this.currentScenario.prompt}
-          </ag-alert>
-          <div id="surface-mount"></div>
-        </section>
+          <main class="studio-stage">
+            <div class="prompt-banner">
+              <strong>Prompt:</strong> ${this.currentScenario.prompt}
+            </div>
+            <div id="surface-mount"></div>
+          </main>
 
-        <aside class="panel panel-right">
-          <div class="inspector-section">
-            <h3 class="inspector-heading">Live A2UI DataModel (@path)</h3>
-            <pre class="json-inspector">${this.dataModelJson}</pre>
-          </div>
-          <div class="inspector-section inspector-section-grow">
-            <h3 class="inspector-heading">Action & FACE Event Log</h3>
-            <pre class="json-inspector event-log-box">${this.eventLogText}</pre>
-          </div>
-        </aside>
-      </main>
+          <aside class="studio-inspector">
+            <section class="inspector-panel">
+              <div class="panel-header">
+                <h3>Live A2UI DataModel (@path)</h3>
+              </div>
+              <pre class="json-viewer">${this.dataModelJson}</pre>
+            </section>
+
+            <section class="inspector-panel">
+              <div class="panel-header">
+                <h3>Action &amp; FACE Event Log</h3>
+                <ag-icon-button
+                  label="Clear event log"
+                  size="sm"
+                  variant="ghost"
+                  @click=${this.handleClearLog}
+                >
+                  ${CLEAR_ICON}
+                </ag-icon-button>
+              </div>
+              <pre class="event-log">${this.eventLogText}</pre>
+            </section>
+          </aside>
+        </div>
+      </div>
     `;
   }
 }
