@@ -3,7 +3,7 @@
 - **Branch:** `A2UI-experiment`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phase 1 ✅ | Phase 2 ✅ | Phase 3 ⏳ (Task 3.1 ✅ | Task 3.2 ✅ | Next: Task 3.3) | Phase 4 ⬜
+- **Overall Status:** Phase 1 ✅ | Phase 2 ✅ | Phase 3 ✅ | Phase 4 ⏳ (Next: Task 4.1)
 
 ---
 
@@ -11,7 +11,7 @@
 
 - [Phase 1: Scaffold, Mock Harness & Reference Components](#phase-1-scaffold-mock-harness--reference-components)
 - [Phase 2: Deterministic AST Codegen & MVP Component Suite](#phase-2-deterministic-ast-codegen--mvp-component-suite)
-- [Phase 3: FACE Validation Function, Two-Way Form Specs & 20-Skin Demo](#phase-3-face-validation-function-two-way-form-specs--20-skin-demo)
+- [Phase 3: FACE Validation Function, Two-Way Form Specs & 21-Skin Demo](#phase-3-face-validation-function-two-way-form-specs--21-skin-demo)
 - [Phase 4: Skill Generation, Site Docs, npm Publish & Ecosystem PR](#phase-4-skill-generation-site-docs-npm-publish--ecosystem-pr)
 
 ---
@@ -38,7 +38,7 @@
 
 ---
 
-## Phase 3: FACE Validation Function, Two-Way Form Specs & 20-Skin Demo
+## Phase 3: FACE Validation Function, Two-Way Form Specs & 21-Skin Demo
 
 * **Task 3.1 — Custom Client Function `validateSurface` & Form Binding Specs** ✅
   * **Micro-Chunk 3.1a:** Inspected `@a2ui/web_core` `FunctionImplementation` contract and `v2/sdui/renderers/lit/src/test-setup.ts`.
@@ -48,15 +48,15 @@
   * **Micro-Chunk 3.2a:** Inspected `v2/skins/skin-switcher-core.js` and `v2/sdui/demo-support-center/`.
   * **Micro-Chunk 3.2b:** Scaffolded `v2/a2ui/demos/support-center/` (`package.json`, `tsconfig.json`, `vite.config.ts`, `README.md`, and A2UI v1.0 Support Center fixtures).
   * **Micro-Chunk 3.2c:** Built declarative Lit `<ag-a2ui-studio>` (`src/main.ts`, `src/studio.css`) with `agnosticui-core/styles/tokens.css`, `tokens-dark.css`, `v2/skins/skins-bundle.css`, 21 `<ag-button>` skin pills, live `DataModel` JSON inspector (`dataModel.get('')`), FACE validation, and native DOM Lucide `CircleSlash2` `<ag-icon-button>` clear log control.
-* **Task 3.3 — Free-Tier Cloud LLM Smoke Test & Interview Demo Mode** ⏳ *(Next)*
-  * **Micro-Chunk 3.3a:** Retrieve existing API key from Google AI Studio (`://google.com`, free tier—no billing linked) and run a strictly capped **3–5 request smoke test** using a Flash model (`gemini-2.5-flash`) with `agnosticui-catalog.json` to preserve daily free-tier quota for Monday's live demo.
-  * **Micro-Chunk 3.3b:** Wire an optional "Live Prompt" input into `v2/a2ui/demos/support-center/` alongside the instant offline Mock Stream presets so live API generation can be demonstrated safely with zero risk of rate-limit or Wi-Fi failure.
+* **Task 3.3 — Free-Tier Cloud LLM Smoke Test & Responsive Live Demo Mode** ✅
+  * **Micro-Chunk 3.3a:** Created `v2/a2ui/demos/support-center/src/live-gemini.ts` targeting `gemini-3.8-flash` via `x-goog-api-key` header auth, `thinkingConfig: { thinkingBudget: 0 }`, `AbortSignal.timeout(15000)`, UAX #31 component ID validation, and a `MAX_SESSION_CALLS = 5` quota guard.
+  * **Micro-Chunk 3.3b:** Wired the session-scoped Live Gemini Prompt bar + `<ag-alert>` error surface into `<ag-a2ui-studio>` (`src/main.ts`), added 3 -> 2 -> 1 column responsive breakpoints in `src/studio.css`, and verified end-to-end API auth and routing.
 
 ---
 
 ## Phase 4: Skill Generation, Site Docs, npm Publish & Ecosystem PR
 
-* **Task 4.1 — Generate `SKILL.md` & CI Drift Check** ⬜
+* **Task 4.1 — Generate `SKILL.md` & CI Drift Check** ⏳ *(Next)*
   * **Micro-Chunk 4.1a:** Emit `v2/a2ui/catalog/SKILL.md` from `agnosticui-catalog.json` and add `check-codegen.ts` drift check.
 * **Task 4.2 — Documentation & Package Publishing** ⬜
   * **Micro-Chunk 4.2a:** Add `/docs/a2ui` guide to `v2/site/docs` (archiving `/docs/sdui`).

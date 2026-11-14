@@ -193,3 +193,67 @@ a2ui-surface ag-fieldset ag-checkbox {
   display: block;
   margin-top: var(--ag-space-3);
 }
+
+.live-prompt-bar {
+  display: grid;
+  grid-template-columns: 14rem minmax(0, 1fr) auto;
+  align-items: flex-end;
+  gap: var(--ag-space-3);
+  padding: var(--ag-space-3) var(--ag-space-4);
+  border-radius: var(--ag-radius-md);
+  background: var(--ag-background-primary);
+  border: var(--ag-border-width-1) solid var(--ag-border);
+}
+
+.live-quota-pill {
+  font-size: var(--ag-font-size-xs);
+  color: var(--ag-text-secondary);
+  font-weight: var(--ag-font-weight-semibold);
+}
+
+/* Responsive 3 -> 2 -> 1 column studio layout */
+@media (max-width: 1200px) {
+  .studio-workspace {
+    grid-template-columns: 18rem minmax(0, 1fr);
+  }
+
+  .studio-inspector {
+    grid-column: 1 / -1;
+    border-left: none;
+    border-top: var(--ag-border-width-1) solid var(--ag-border);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  pre.event-log {
+    min-height: 15rem;
+    max-height: 15rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .live-prompt-bar {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .studio-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-sidebar {
+    border-right: none;
+    border-bottom: var(--ag-border-width-1) solid var(--ag-border);
+  }
+
+  .skin-grid {
+    grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+    max-height: 12rem;
+  }
+
+  .studio-inspector {
+    grid-template-columns: 1fr;
+  }
+}
+

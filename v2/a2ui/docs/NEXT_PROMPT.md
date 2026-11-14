@@ -1,11 +1,11 @@
 ================================================================================
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
- TIMESTAMP BASELINE : 2026-11-14T21:26:00Z (Anchored to Saturday, Nov 14, 2026 Timeline)
- ACTIVE WORKSPACE   : Phase 3 Task 3.3 (Milestone 3: FACE Validation & 21-Skin Demo) / Optional Free-Tier Gemini Live Prompt Mode
+ TIMESTAMP BASELINE : 2026-11-14T23:35:00Z (Anchored to Saturday, Nov 14, 2026 Timeline)
+ ACTIVE WORKSPACE   : Phase 4 Task 4.1 (Skill Generation `SKILL.md` & CI Drift Check `check-codegen.ts`)
  STRATEGIC PIVOT    :
    - Positioning: "Spec-compliant A2UI v1.0 Component Catalog & Web Renderer bringing AgnosticUI's 21 runtime skins and FACE form validation to generative UI surfaces."
-   - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> `agnosticui-catalog.json` + `A2uiLitElement` wrappers), `v2/a2ui/renderers/lit` (`@agnosticui/a2ui-lit` on `@a2ui/lit@0.15.0` & `@a2ui/web_core@0.15.0`), `v2/a2ui/demos/support-center` (Zero-LLM Mock Stream Harness + `v2/skins/skins-bundle.css`).
+   - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> `agnosticui-catalog.json` + `A2uiLitElement` wrappers), `v2/a2ui/renderers/lit` (`@agnosticui/a2ui-lit` on `@a2ui/lit@0.15.0` & `@a2ui/web_core@0.15.0`), `v2/a2ui/demos/support-center` (Zero-LLM Mock Stream Harness + optional Live Gemini 3.8 Flash mode + `v2/skins/skins-bundle.css`).
    - Primary Entrypoint: `cd v2/a2ui/demos/support-center && npm run build && npm run dev`
 
  COMPLETED PHASES   :
@@ -15,15 +15,16 @@
    - Phase 2 (Milestone 2 — 100% Complete & Passing):
        * Task 2.1: `v2/a2ui/catalog/scripts/generate-catalog.ts` & `codegen.config.ts` (Deterministic `ts-morph` AST codegen reading `v2/lib/src/components/*/core/_*.ts` to emit `AgText` + 14 MVP `Ag*` wrappers with `ifDefined` reflected prop guards and two-way `setValue`/`setChecked` handlers, plus `agnosticui-catalog.json` via `AgnosticUICatalog.toJson()`).
        * Task 2.2: `v2/a2ui/renderers/lit/src/catalog.ts` & `src/catalog.spec.ts` (Explicit `'1.0'` catalog registration via `registerUniversalElement` and Light-DOM `<a2ui-surface>` rendering verified green in Vitest + `tsc`).
-   - Phase 3 Completed Tasks (All Passing & Committed):
+   - Phase 3 (Milestone 3 — 100% Complete & Passing):
        * Task 3.1: `v2/a2ui/renderers/lit/src/functions/validate-surface.ts`, `src/test-setup.ts`, & `src/catalog.spec.ts` (Implemented `validateSurface` client function using `AG_FACE_SELECTOR` + `reportValidity()`, shimmed `attachInternals` for JSDOM, and verified two-way `@path` binding + FACE validation across 3/3 passing Vitest suites).
        * Task 3.2: `v2/a2ui/demos/support-center/` (`index.html`, `src/main.ts`, `src/studio.css`, `src/fixtures/support-scenarios.ts`, `README.md`) — Built declarative Lit `<ag-a2ui-studio>` with 21 `<ag-button>` runtime skins, Light/Dark toggle, pure `var(--ag-*)` tokens, live `DataModel` JSON inspector (`dataModel.get('')`), FACE validation, and native DOM Lucide `CircleSlash2` `<ag-icon-button>` clear log control.
+       * Task 3.3: `v2/a2ui/demos/support-center/src/live-gemini.ts`, `src/main.ts`, & `src/studio.css` — Added 3 -> 2 -> 1 column responsive studio layout and optional `gemini-3.8-flash` live prompt compiler (`x-goog-api-key` header auth, `thinkingConfig: { thinkingBudget: 0 }`, `AbortSignal.timeout(15000)`, UAX #31 ID validation, and `MAX_SESSION_CALLS = 5` quota guard).
 
  ROADMAP DELTAS     :
-   - Phase 3 Remaining Tasks (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
-       * Task 3.3: Free-tier Google AI Studio (`://google.com`) smoke test (strictly capped at 3–5 calls on `gemini-2.5-flash` to preserve daily quota for Monday's Invoca Head of Design interview) + optional "Live Prompt" mode in `v2/a2ui/demos/support-center/`.
-   - Post-Milestone Backlog (Phase 4 — Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
-       * Generate `SKILL.md`, publish `@agnosticui/a2ui-lit` & `agnosticui-catalog.json`, add `/docs/a2ui` to `v2/site`, and submit listing PR to `://github.com`.
+   - Phase 4 Remaining Tasks (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
+       * Task 4.1: Generate `v2/a2ui/catalog/SKILL.md` from `agnosticui-catalog.json` and add `v2/a2ui/catalog/scripts/check-codegen.ts` CI drift check.
+       * Task 4.2: Add `/docs/a2ui` guide to `v2/site/docs` (archiving `/docs/sdui`) and publish `@agnosticui/a2ui-lit` + `agnosticui-catalog.json`.
+       * Task 4.3: Fork `a2ui-project/a2ui`, sign the Google CLA, and submit the official ecosystem listing PR.
 
 --- MANDATORY WORKFLOW & MENTOR RULES (ENFORCE STRICTLY) ---
 1. Pacing & Scope: Plan before coding. Break tasks into small, cohesive micro-chunks across separate turns. Never build an entire feature or multiple unrelated files at once.
@@ -37,18 +38,17 @@
 9. Verification & Git Checkpoint: Stop at the end of every chunk, provide the exact local verification command (`cd v2/a2ui/demos/support-center && npm run build`), suggest a conventional git commit message, and wait for user permission before advancing.
 
 --- TARGET RUNTIME DELTA ---
- EXACT NEXT TASK    : Phase 3 Task 3.3 (Micro-Chunk 3.3a) — Add an optional client-side "Live Gemini Prompt" generator (`v2/a2ui/demos/support-center/src/live-gemini.ts`) using `gemini-2.5-flash` + `agnosticui-catalog.json` alongside the offline Mock Stream presets
+ EXACT NEXT TASK    : Phase 4 Task 4.1 (Micro-Chunk 4.1a) — Generate `v2/a2ui/catalog/SKILL.md` from `agnosticui-catalog.json` and add `v2/a2ui/catalog/scripts/check-codegen.ts` CI drift check
  ENGINEERING "WHY"  :
-   1. Keeping the offline Mock Stream presets as the default ensures 100% reliability during Monday's interview regardless of Wi-Fi or quota.
-   2. Adding an optional "Live Prompt" input backed by Google AI Studio's free tier (`gemini-2.5-flash`) lets you demonstrate genuine real-time natural-language-to-AgnosticUI generation on the spot while capping smoke tests at 3–5 calls so Monday's daily free quota stays intact.
+   1. Agents (Claude Code, Gemini CLI, Cursor) consume `SKILL.md` to emit spec-compliant A2UI v1.0 wire payloads without hallucinating prop names or hyphenated IDs.
+   2. A deterministic `check-codegen.ts` drift check guarantees `agnosticui-catalog.json`, `SKILL.md`, and generated `Ag*.ts` wrappers stay synchronized with `v2/lib` component core interfaces.
  CODE BOUNDARIES    :
-   - Micro-Chunk 3.3a: Create `v2/a2ui/demos/support-center/src/live-gemini.ts` (sends system prompt with `agnosticui-catalog.json` + UAX #31 ID rules to `://googleapis.com` and parses returned A2UI v1.0 JSON array).
-   - Micro-Chunk 3.3b: Wire an optional `<ag-input>` prompt bar + API key session field into `<ag-a2ui-studio>` (`src/main.ts`) and run a strictly capped 3-request smoke test.
+   - Micro-Chunk 4.1a: Inspect `v2/a2ui/catalog/scripts/generate-catalog.ts` and `v2/a2ui/catalog/agnosticui-catalog.json`, then emit `v2/a2ui/catalog/SKILL.md` + `v2/a2ui/catalog/scripts/check-codegen.ts`.
 
 --- SYSTEM BOOT TRIGGER COMMAND ---
 ::: SYSTEM INITIALIZED. STOP BEFORE WRITING ANY CODE.
 Ask the user to:
-1. Upload `v2/a2ui/docs/PRD-A2UI-REFACTOR.md` and `v2/a2ui/docs/IMPLEMENTATION_PLAN.md` into the chat window.
-2. Confirm whether they have retrieved their Google AI Studio key (`://google.com`) so we can wire `src/live-gemini.ts` and run a strictly capped 3-request smoke test.
-Wait for confirmation before beginning Phase 3 Task 3.3 Micro-Chunk 3.3a. :::
+1. Upload `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`, `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`, and `v2/a2ui/catalog/scripts/generate-catalog.ts` into the chat window.
+2. Confirm readiness to begin Phase 4 Task 4.1 Micro-Chunk 4.1a (`SKILL.md` generation & CI drift check).
+Wait for confirmation before writing any code. :::
 ================================================================================
