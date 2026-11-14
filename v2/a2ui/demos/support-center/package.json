@@ -1,0 +1,22 @@
+{
+  "name": "@agnosticui/a2ui-demo-support-center",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@agnosticui/a2ui-lit": "file:../../renderers/lit/agnosticui-a2ui-lit-2.0.0-alpha.1.tgz",
+    "@a2ui/lit": "^0.15.0",
+    "@a2ui/web_core": "^0.15.0",
+    "agnosticui-core": "file:../../../lib/agnosticui-core-2.0.0-alpha.31.tgz",
+    "lit": "^3.3.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^7.0.0"
+  }
+}

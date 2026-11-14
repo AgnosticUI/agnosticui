@@ -1,12 +1,12 @@
 ================================================================================
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
- TIMESTAMP BASELINE : 2026-11-14T20:03:00Z (Anchored to Saturday, Nov 14, 2026 Timeline)
- ACTIVE WORKSPACE   : Phase 3 Task 3.2 (Milestone 3: FACE Validation & 20-Skin Demo) / 20-Skin Support Center Offline Demo
+ TIMESTAMP BASELINE : 2026-11-14T20:32:00Z (Anchored to Saturday, Nov 14, 2026 Timeline)
+ ACTIVE WORKSPACE   : Phase 3 Task 3.3 (Milestone 3: FACE Validation & 21-Skin Demo) / Optional Free-Tier Gemini Live Prompt Mode
  STRATEGIC PIVOT    :
-   - Positioning: "Spec-compliant A2UI v1.0 Component Catalog & Web Renderer bringing AgnosticUI's 20+ runtime skins and FACE form validation to generative UI surfaces."
+   - Positioning: "Spec-compliant A2UI v1.0 Component Catalog & Web Renderer bringing AgnosticUI's 21 runtime skins and FACE form validation to generative UI surfaces."
    - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> `agnosticui-catalog.json` + `A2uiLitElement` wrappers), `v2/a2ui/renderers/lit` (`@agnosticui/a2ui-lit` on `@a2ui/lit@0.15.0` & `@a2ui/web_core@0.15.0`), `v2/a2ui/demos/support-center` (Zero-LLM Mock Stream Harness + `v2/skins/skins-bundle.css`).
-   - Primary Entrypoint: `cd v2/a2ui/catalog && npm run generate && cd ../renderers/lit && npm test && npm run build`
+   - Primary Entrypoint: `cd v2/a2ui/demos/support-center && npm run build && npm run dev`
 
  COMPLETED PHASES   :
    - Phase 1 (Milestone 1 — 100% Complete & Passing):
@@ -17,11 +17,11 @@
        * Task 2.2: `v2/a2ui/renderers/lit/src/catalog.ts` & `src/catalog.spec.ts` (Explicit `'1.0'` catalog registration via `registerUniversalElement` and Light-DOM `<a2ui-surface>` rendering verified green in Vitest + `tsc`).
    - Phase 3 Completed Tasks (All Passing & Committed):
        * Task 3.1: `v2/a2ui/renderers/lit/src/functions/validate-surface.ts`, `src/test-setup.ts`, & `src/catalog.spec.ts` (Implemented `validateSurface` client function using `AG_FACE_SELECTOR` + `reportValidity()`, shimmed `attachInternals` for JSDOM, and verified two-way `@path` binding + FACE validation across 3/3 passing Vitest suites).
+       * Task 3.2: `v2/a2ui/demos/support-center/` (`index.html`, `src/main.ts`, `src/studio.css`, `src/fixtures/support-scenarios.ts`, `README.md`) — Built interactive 21-skin + Light/Dark studio using pure `var(--ag-*)` tokens, real `<ag-select>` / `<ag-button>` / `<ag-toggle>` controls, live `@path` DataModel inspector, and FACE validation.
 
  ROADMAP DELTAS     :
    - Phase 3 Remaining Tasks (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
-       * Task 3.2: 20-Skin Support Center Offline Demo (`v2/a2ui/demos/support-center/`) wired to `createMockA2uiStream`, `v2/skins/skins-bundle.css`, and live DataModel JSON inspector.
-       * Task 3.3: Free-tier Google AI Studio (Gemini) smoke test (strictly capped at 3–5 calls on `gemini-2.5-flash` to preserve daily quota for Monday's Invoca Head of Design interview) + optional "Live Prompt" mode in `support-center`.
+       * Task 3.3: Free-tier Google AI Studio (`://google.com`) smoke test (strictly capped at 3–5 calls on `gemini-2.5-flash` to preserve daily quota for Monday's Invoca Head of Design interview) + optional "Live Prompt" mode in `v2/a2ui/demos/support-center/`.
    - Post-Milestone Backlog (Phase 4 — Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
        * Generate `SKILL.md`, publish `@agnosticui/a2ui-lit` & `agnosticui-catalog.json`, add `/docs/a2ui` to `v2/site`, and submit listing PR to `://github.com`.
 
@@ -34,22 +34,21 @@
 6. No Code Placeholders & Small Widget Blocks: Never use "// ... rest of code". Keep each code block under ~110 lines (splitting files into numbered parts and avoiding nested triple backticks) so copy-paste widgets never break or escape.
 7. Ground-Truth Inspection First: Never guess `@a2ui/*@0.15.0` or `agnosticui-core` internal signatures—inspect `node_modules/` `.d.ts`/`.js` files via `> ~/Downloads/cat.txt` before writing glue code.
 8. Mandatory End-of-Task Doc Updates: At the end of EVERY completed task, provide updated `v2/a2ui/docs/NEXT_PROMPT.md` and `v2/a2ui/docs/IMPLEMENTATION_PLAN.md` files alongside the git commit checkpoint.
-9. Verification & Git Checkpoint: Stop at the end of every chunk, provide the exact local verification command (`cd v2/a2ui/renderers/lit && npm test && npm run build`), suggest a conventional git commit message, and wait for user permission before advancing.
+9. Verification & Git Checkpoint: Stop at the end of every chunk, provide the exact local verification command (`cd v2/a2ui/demos/support-center && npm run build`), suggest a conventional git commit message, and wait for user permission before advancing.
 
 --- TARGET RUNTIME DELTA ---
- EXACT NEXT TASK    : Phase 3 Task 3.2 (Micro-Chunk 3.2a) — Inspect `v2/skins/` and `v2/sdui/demo-support-center/` to scaffold the 20-skin A2UI Support Center demo in `v2/a2ui/demos/support-center/`
+ EXACT NEXT TASK    : Phase 3 Task 3.3 (Micro-Chunk 3.3a) — Add an optional client-side "Live Gemini Prompt" panel (`v2/a2ui/demos/support-center/src/live-gemini.ts`) using `gemini-2.5-flash` + `agnosticui-catalog.json` alongside the offline Mock Stream presets
  ENGINEERING "WHY"  :
-   1. Demonstrating A2UI v1.0 surfaces switching across 20+ AgnosticUI themes and Light/Dark mode in real time proves how design systems govern generative UI without altering agent JSON payloads.
-   2. Running on the Zero-LLM Mock Stream Harness guarantees instant, deterministic playback with zero Wi-Fi or API quota risk during Monday's live design interview.
+   1. Keeping the offline Mock Stream presets as the default ensures 100% reliability during Monday's interview regardless of Wi-Fi or quota.
+   2. Adding an optional "Live Prompt" input backed by Google AI Studio's free tier (`gemini-2.5-flash`) lets you demonstrate genuine real-time natural-language-to-AgnosticUI generation on the spot while capping smoke tests at 3–5 calls so Monday's daily free quota stays intact.
  CODE BOUNDARIES    :
-   - Micro-Chunk 3.2a: Inspect `v2/skins/skin-switcher-core.js` and `v2/sdui/demo-support-center/` via `~/Downloads/cat.txt` to confirm exact CSS bundle paths and theme attributes.
-   - Micro-Chunk 3.2b: Scaffold `v2/a2ui/demos/support-center/` (`package.json`, `vite.config.ts` with `resolve.dedupe`, `index.html`, and multi-surface A2UI v1.0 fixtures).
-   - Micro-Chunk 3.2c: Wire the 20-skin theme switcher, Light/Dark toggle, FACE validation submit handler, and live DataModel JSON inspector.
+   - Micro-Chunk 3.3a: Create `v2/a2ui/demos/support-center/src/live-gemini.ts` (sends system prompt with `agnosticui-catalog.json` + UAX #31 ID rules to `://googleapis.com` and parses returned A2UI v1.0 JSON array).
+   - Micro-Chunk 3.3b: Wire an optional `<ag-input>` prompt bar + API key session field into `index.html` and `src/main.ts` and run a capped 3-request smoke test.
 
 --- SYSTEM BOOT TRIGGER COMMAND ---
 ::: SYSTEM INITIALIZED. STOP BEFORE WRITING ANY CODE.
 Ask the user to:
 1. Upload `v2/a2ui/docs/PRD-A2UI-REFACTOR.md` and `v2/a2ui/docs/IMPLEMENTATION_PLAN.md` into the chat window.
-2. Run `ls -la v2/skins v2/sdui/demo-support-center > ~/Downloads/cat.txt && head -n 100 v2/skins/skin-switcher-core.js v2/sdui/demo-support-center/index.html v2/sdui/demo-support-center/package.json >> ~/Downloads/cat.txt` from the repo root and upload `~/Downloads/cat.txt` into the chat window.
-Wait for these files before beginning Phase 3 Task 3.2 Micro-Chunk 3.2a. :::
+2. Confirm whether they have retrieved their Google AI Studio key (`://google.com`) so we can wire `src/live-gemini.ts` and run a strictly capped 3-request smoke test.
+Wait for confirmation before beginning Phase 3 Task 3.3 Micro-Chunk 3.3a. :::
 ================================================================================
