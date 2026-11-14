@@ -413,3 +413,13 @@ ag-button::part(ag-button):hover {
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 ```
+
+<style>
+/* Fix contrast issue: disabled secondary and default button backgrounds are basically the same as preview background.
+   Remove preview background and add border for visibility (page-scoped fix). */
+.framework-example .preview {
+  background-color: transparent !important;
+  border: 1px solid var(--ag-border) !important;
+  border-radius: var(--ag-radius-md) !important;
+}
+</style>
