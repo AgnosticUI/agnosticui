@@ -3,7 +3,7 @@
 - **Branch:** `A2UI-experiment`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phase 1 ✅ | Phase 2 ✅ | Phase 3 ✅ | Phase 4 ✅ | Phase 5 ⏳ (Next: Task 5.1)
+- **Overall Status:** Phase 1 ✅ | Phase 2 ✅ | Phase 3 ✅ | Phase 4 ✅ | Phase 5 ⏳ (Task 5.1 ✅, Next: Task 5.2)
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 
 ---
@@ -69,12 +69,12 @@
 
 ## Phase 5: React & Vue Renderers, npm Publish & `a2ui.org` Ecosystem PR
 
-* **Task 5.1 — `@agnosticui/a2ui-react` Renderer Package** ⏳ *(Next)*
-  * **Micro-Chunk 5.1a:** Inspect `@a2ui/*@0.15.0` React exports and `agnosticui-core/*/react` wrappers; scaffold `v2/a2ui/renderers/react` (`package.json`, `vitest.config.ts`, `src/index.ts`) sharing `agnosticui-catalog.json` and `validateSurface`.
-  * **Micro-Chunk 5.1b:** Add Vitest specs verifying React `<AgA2uiSurface>` rendering, `@path` bindings, and FACE validation.
-* **Task 5.2 — `@agnosticui/a2ui-vue` Renderer Package** ⬜
-  * **Micro-Chunk 5.2a:** Scaffold `v2/a2ui/renderers/vue` (`package.json`, `vitest.config.ts`, `src/index.ts`) providing Vue 3 `<AgA2uiSurface>` and `agnosticui-core/*/vue` catalog integration.
-  * **Micro-Chunk 5.2b:** Add Vitest specs verifying Vue 3 `<AgA2uiSurface>` rendering, event emission, and FACE validation.
+* **Task 5.1 — `@agnosticui/a2ui-react` Renderer Package & Shared Vitest Deduplication** ✅
+  * **Micro-Chunk 5.1a:** Re-exported `A2uiSurface`, `MessageProcessor`, `SurfaceModel`, and `LitComponentApi` from `@agnosticui/a2ui-lit`; created `v2/a2ui/vitest.shared.mts` (`sharedA2uiResolve`) and aligned `renderers/lit/vitest.config.ts` and `renderers/react/vitest.config.ts` with single-instance `lit` & `@lit-labs/signals` deduplication plus package-local `src/test-setup.ts`.
+  * **Micro-Chunk 5.1b:** Implemented `<AgA2uiSurface>` (`@lit/react` + `React.forwardRef` `.surface` sync) and `useA2uiSurface` hook in `v2/a2ui/renderers/react/src/index.tsx`, plus Vitest specs in `src/index.spec.tsx` verifying React surface rendering and FACE action validation (2/2 passing, `tsc` clean).
+* **Task 5.2 — `@agnosticui/a2ui-vue` Renderer Package** ⏳ *(Next)*
+  * **Micro-Chunk 5.2a:** Scaffold `v2/a2ui/renderers/vue` (`package.json`, `tsconfig.json`, `vitest.config.ts`, `src/test-setup.ts`) using `sharedA2uiResolve(['vue'])`.
+  * **Micro-Chunk 5.2b:** Implement Vue 3 `<AgA2uiSurface>` and `useA2uiSurface()` composable in `src/index.ts`, plus Vitest specs in `src/index.spec.ts`.
 * **Task 5.3 — npm Publish & Official `a2ui.org` Ecosystem Listing PR** ⬜
   * **Micro-Chunk 5.3a:** Publish `@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, and `@agnosticui/a2ui-vue` (with `agnosticui-catalog.json` and `SKILL.md`) to npm.
   * **Micro-Chunk 5.3b:** Fork `a2ui-project/a2ui`, sign the Google CLA, and open the PR adding AgnosticUI (`v1.0`, Lit/React/Vue) to `docs/site/src/content/docs/ecosystem/renderers.mdx`.
