@@ -291,6 +291,7 @@ export async function generateLocalA2uiSurface(
                 component: 'AgButton',
                 variant: 'primary',
                 label: 'Acknowledge & Page On-Call',
+                shape: 'rounded',
                 action: {
                   event: {
                     name: 'acknowledge_incident',
@@ -346,7 +347,7 @@ export async function generateLocalA2uiSurface(
               {
                 id: 'local_badge',
                 component: 'AgBadge',
-                variant: 'info',
+                variant: 'default',
                 children: ['local_badge_text'],
               },
               {
