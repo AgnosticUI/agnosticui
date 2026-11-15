@@ -8,8 +8,9 @@
 
 import 'agnosticui-core/styles/tokens.css';
 import 'agnosticui-core/styles/tokens-dark.css';
-import '../../../../skins/skins-bundle.css';
-import './studio.css';
+import '../../../../../skins/skins-bundle.css';
+import '../../shared/studio.css';
+
 
 import { LitElement, html } from 'lit';
 import { createElement, CircleSlash2 } from 'lucide';
@@ -36,17 +37,18 @@ import {
   applySkin,
   applyTheme,
   restorePrefs,
-} from '../../../../skins/skin-switcher-core.js';
+} from '../../../../../skins/skin-switcher-core.js';
 import {
   SUPPORT_SCENARIOS,
   type SupportScenario,
-} from './fixtures/support-scenarios.js';
+} from '../../shared/support-scenarios.js';
 import {
   generateLiveA2uiSurface,
   generateLocalA2uiSurface,
   getGeminiSessionUsage,
   MAX_SESSION_CALLS,
-} from './live-gemini.js';
+} from '../../shared/live-gemini.js';
+
 
 registerAgnosticUICatalog();
 restorePrefs();
