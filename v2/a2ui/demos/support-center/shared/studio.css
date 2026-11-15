@@ -283,13 +283,25 @@ a2ui-surface {
   display: block;
 }
 
-/* Make outer root wrapper and any stacked layout card inside a MessageBubble transparent */
-a2ui-surface > ag-a2ui-card > ag-card,
-a2ui-surface ag-message-bubble ag-a2ui-card > ag-card {
-  --ag-card-background: transparent;
-  --ag-card-border: none;
-  --ag-card-shadow: none;
-  --ag-card-padding: 0;
+/* 1. Outer transcript card: stays visible & flush with the Agent Prompt Composer above */
+a2ui-surface > ag-a2ui-card > ag-card {
+  --card-padding: var(--ag-space-5);
+  width: 100%;
+}
+
+a2ui-surface > ag-a2ui-card > ag-card:has(ag-empty-state) {
+  --card-padding: 0;
+}
+
+a2ui-surface > ag-a2ui-card > ag-card::part(ag-card) {
+  border-radius: var(--ag-radius-md);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+/* 2. Inner layout card inside a MessageBubble: completely transparent (no nested band) */
+a2ui-surface ag-message-bubble ag-a2ui-card > ag-card,
+a2ui-surface ag-message-bubble ag-a2ui-card > ag-card::part(ag-card) {
+  --card-padding: 0;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -302,10 +314,24 @@ ag-a2ui-card > ag-card {
   --card-padding: var(--ag-space-3) var(--ag-space-4);
 }
 
-/* Give slotted content inside an agent MessageBubble comfortable width */
+/* Intentional conversational bubble proportions inside the transcript card */
 a2ui-surface ag-message-bubble {
-  display: block;
+  width: 100%;
 }
+
+a2ui-surface ag-message-bubble[from='me']::part(ag-bubble) {
+  max-width: 76%;
+}
+
+a2ui-surface ag-message-bubble[from='them']::part(ag-bubble) {
+  max-width: 90%;
+  width: 90%;
+}
+
+a2ui-surface ag-message-bubble::part(ag-header) {
+  margin-bottom: var(--ag-space-1);
+}
+
 
 a2ui-surface ag-message-bubble::part(ag-header) {
   margin-bottom: var(--ag-space-1);
@@ -347,7 +373,7 @@ a2ui-surface ag-fieldset ag-toggle {
   flex-direction: column;
   gap: var(--ag-space-3);
   padding: var(--ag-space-4) var(--ag-space-5);
-  border-radius: var(--ag-radius-lg, 0.75rem);
+  border-radius: var(--ag-radius-md);
   background: var(--ag-background-primary);
   border: var(--ag-border-width-1) solid var(--ag-border);
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
