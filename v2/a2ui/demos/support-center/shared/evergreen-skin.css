@@ -1,24 +1,42 @@
 /**
  * @file evergreen-skin.css
- * @description Custom "Evergreen" brand skin ([data-skin="evergreen"]) demonstrating
- * how an enterprise design system themes A2UI v1.0 surfaces via CSS tokens alone.
+ * @description Custom "Evergreen" brand skin (.ag-skin-evergreen) matching
+ * AgnosticUI's :where(html).ag-skin-<id> token architecture.
  */
 
-:root[data-skin='evergreen'] {
+:where(html).ag-skin-evergreen {
+  /* ── Primary color family (Evergreen #00a87f / #008766) ── */
   --ag-primary: #008766;
-  --ag-primary-hover: #007357;
-  --ag-primary-active: #004030;
-  --ag-primary-text: #007a53;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #006b51;
+  --ag-primary-border: #7fd4bc;
   --ag-primary-background: #dcf5ea;
-  --ag-focus-ring: 0 0 0 3px rgba(0, 168, 127, 0.28);
+  --ag-primary-text: #006b51;
 
+  --ag-neutral-background: #eef3e6;
+  --ag-neutral-text: #031d0e;
+
+  /* ── Focus ring (Evergreen-derived RGB) ── */
+  --ag-focus: 0, 168, 127;
+  --ag-focus-dark: #00a87f;
+
+  /* ── Semantic text (Deep Evergreen ink) ── */
+  --ag-text-primary: #031d0e;
+  --ag-text-secondary: #3b4d42;
+  --ag-text-muted: #5a6d61;
+  --ag-text-primary-muted: #243b2e;
+
+  /* ── Borders (Sage-tinted) ── */
+  --ag-border: #d4dace;
+  --ag-border-subtle: #e4e7df;
+
+  /* ── Backgrounds (Warm Ivory & Sand) ── */
   --ag-background-primary: #fefefa;
   --ag-background-secondary: #f8faf1;
-  --ag-text-primary: #031d0e;
-  --ag-text-secondary: #4a5a50;
-  --ag-border: #d4dace;
+  --ag-background-tertiary: #eef3e6;
 
-  --ag-success: #00a87f;
+  /* ── Semantic status tokens ── */
+  --ag-success: #008766;
   --ag-success-background: #dcf5ea;
   --ag-success-text: #04291d;
   --ag-warning: #855500;
@@ -28,29 +46,43 @@
   --ag-danger-background: #feeceb;
   --ag-danger-text: #7a170f;
 
-  --ag-radius-md: 0.75rem;
-  --ag-radius-lg: 1rem;
+  --ag-radius-md: var(--ag-radius-sm);
+  --ag-radius-lg: 0.75rem;
 }
 
-:root[data-skin='evergreen'][data-theme='dark'] {
+:where(html).ag-skin-evergreen[data-theme='dark'] {
+   --ag-radius-md: var(--ag-radius-sm);
+  /* ── Primary color family (Action Green #12d99b on Deep Evergreen) ── */
   --ag-primary: #12d99b;
-  --ag-primary-hover: #5fe0b3;
-  --ag-primary-active: #07c78c;
-  --ag-primary-text: #5fe0b3;
+  --ag-primary-fg: #031d0e;
+  --ag-primary-dark: #07c78c;
+  --ag-primary-border: #1e5e49;
   --ag-primary-background: #103d32;
-  --ag-focus-ring: 0 0 0 3px rgba(18, 217, 155, 0.32);
+  --ag-primary-text: #5fe0b3;
+
+  --ag-neutral-background: #122d26;
+  --ag-neutral-text: #fefefa;
+
+  --ag-focus: 18, 217, 155;
+  --ag-focus-dark: #5fe0b3;
+
+  --ag-text-primary: #fefefa;
+  --ag-text-secondary: #c5d1c7;
+  --ag-text-muted: #8fa396;
+  --ag-text-primary-muted: #dce6de;
+
+  --ag-border: #1e3a2c;
+  --ag-border-subtle: #152b20;
 
   --ag-background-primary: #0a231e;
   --ag-background-secondary: #031d0e;
-  --ag-text-primary: #fefefa;
-  --ag-text-secondary: #bbc5b5;
-  --ag-border: #1e3a2c;
+  --ag-background-tertiary: #103d32;
 
   --ag-success: #12d99b;
   --ag-success-background: #103d32;
   --ag-success-text: #a9efd3;
 }
 
-:root[data-skin='evergreen'] .studio-header {
+:where(html).ag-skin-evergreen .studio-header {
   border-bottom: 2px solid #00a87f;
 }
