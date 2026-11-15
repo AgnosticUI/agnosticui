@@ -519,6 +519,8 @@ async function main() {
   const indexTs = [
     GENERATED_HEADER,
     "export { AGNOSTICUI_CATALOG_ID, AgnosticUICatalog, registerAgnosticUICatalog } from './catalog.js';",
+    "export { A2uiSurface, type LitComponentApi } from '@a2ui/lit';",
+    "export { MessageProcessor, type SurfaceModel } from '@a2ui/web_core/v1_0';",
     "export { AgText, AgTextApi, AgTextSchema, AgA2uiTextElement } from './primitives/AgText.js';",
     "export { AG_FACE_SELECTOR, ValidateSurfaceSchema, ValidateSurfaceImplementation, runSurfaceValidation, type FaceValidatableElement } from './functions/validate-surface.js';",
     ...reExports,

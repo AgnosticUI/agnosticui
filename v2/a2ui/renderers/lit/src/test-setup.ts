@@ -1,5 +1,4 @@
 // Shim ElementInternals / attachInternals for FACE components in JSDOM.
-// Shim ElementInternals / attachInternals for FACE components in JSDOM.
 if (typeof HTMLElement !== 'undefined') {
   HTMLElement.prototype.attachInternals = function () {
     const validityFlags: Array<keyof ValidityStateFlags> = [

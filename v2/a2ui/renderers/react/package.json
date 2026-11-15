@@ -1,0 +1,46 @@
+{
+  "name": "@agnosticui/a2ui-react",
+  "version": "2.0.0-alpha.1",
+  "description": "A2UI v1.0 React renderer and surface bindings for AgnosticUI",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "test": "vitest run",
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "@a2ui/lit": "^0.15.0",
+    "@a2ui/web_core": "^0.15.0",
+    "@agnosticui/a2ui-lit": ">=2.0.0-alpha.1",
+    "agnosticui-core": ">=2.0.0-alpha.31",
+    "lit": "^3.0.0",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@lit/react": "^1.0.8"
+  },
+  "devDependencies": {
+    "@a2ui/lit": "^0.15.0",
+    "@a2ui/web_core": "^0.15.0",
+    "@agnosticui/a2ui-lit": "file:../lit",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.9",
+    "agnosticui-core": "file:../../../lib/agnosticui-core-2.0.0-alpha.31.tgz",
+    "jsdom": "^26.1.0",
+    "lit": "^3.3.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
