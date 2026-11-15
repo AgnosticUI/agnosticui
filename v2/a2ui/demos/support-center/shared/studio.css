@@ -7,7 +7,19 @@ body {
   font-family: var(--ag-font-family-sans);
   background: var(--ag-background-secondary);
   color: var(--ag-text-primary);
+  -webkit-font-smoothing: antialiased;
   transition: background var(--ag-motion-medium) ease, color var(--ag-motion-medium) ease;
+}
+
+@keyframes a2ui-stream-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .studio-shell {
@@ -25,11 +37,13 @@ body {
   padding: var(--ag-space-4) var(--ag-space-6);
   background: var(--ag-background-primary);
   border-bottom: var(--ag-border-width-1) solid var(--ag-border);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 .studio-title-group h1 {
   margin: 0 0 var(--ag-space-1);
   font-size: var(--ag-font-size-lg);
+  letter-spacing: -0.015em;
   color: var(--ag-text-primary);
 }
 
@@ -116,7 +130,7 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--ag-space-5);
+  gap: var(--ag-space-4);
 }
 
 .prompt-banner {
@@ -124,7 +138,12 @@ body {
   border-radius: var(--ag-radius-md);
   background: var(--ag-background-primary);
   border: var(--ag-border-width-1) solid var(--ag-border);
-  font-size: var(--ag-font-size-sm);
+  font-size: var(--ag-font-size-xs);
+  line-height: 1.5;
+  color: var(--ag-text-secondary);
+}
+
+.prompt-banner strong {
   color: var(--ag-text-primary);
 }
 
@@ -183,13 +202,40 @@ pre.event-log {
   min-height: 22rem;
 }
 
+/* Conversational A2UI Surface & Tactile Motion */
+a2ui-surface {
+  display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a2ui-surface ag-message-bubble,
+  a2ui-surface ag-card {
+    animation: a2ui-stream-in 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  a2ui-surface ag-message-bubble:nth-child(2) {
+    animation-delay: 80ms;
+  }
+}
+
+a2ui-surface ag-message-bubble + ag-message-bubble {
+  display: block;
+  margin-top: var(--ag-space-4);
+}
+
+a2ui-surface ag-message-bubble ag-card {
+  margin-top: var(--ag-space-3);
+}
+
 a2ui-surface ag-card > * + * {
   display: block;
   margin-top: var(--ag-space-4);
 }
 
 a2ui-surface ag-fieldset ag-input,
-a2ui-surface ag-fieldset ag-checkbox {
+a2ui-surface ag-fieldset ag-combobox,
+a2ui-surface ag-fieldset ag-checkbox,
+a2ui-surface ag-fieldset ag-toggle {
   display: block;
   margin-top: var(--ag-space-3);
 }
@@ -198,10 +244,11 @@ a2ui-surface ag-fieldset ag-checkbox {
   display: flex;
   flex-direction: column;
   gap: var(--ag-space-3);
-  padding: var(--ag-space-3) var(--ag-space-4);
+  padding: var(--ag-space-4);
   border-radius: var(--ag-radius-md);
   background: var(--ag-background-primary);
   border: var(--ag-border-width-1) solid var(--ag-border);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .live-prompt-top {
@@ -233,12 +280,6 @@ a2ui-surface ag-fieldset ag-checkbox {
 
 .live-prompt-bar.is-local {
   grid-template-columns: minmax(0, 1fr) auto;
-}
-
-.live-quota-pill {
-  font-size: var(--ag-font-size-xs);
-  color: var(--ag-text-secondary);
-  font-weight: var(--ag-font-weight-semibold);
 }
 
 /* Responsive 3 -> 2 -> 1 column studio layout */
@@ -286,4 +327,3 @@ a2ui-surface ag-fieldset ag-checkbox {
     grid-template-columns: 1fr;
   }
 }
-

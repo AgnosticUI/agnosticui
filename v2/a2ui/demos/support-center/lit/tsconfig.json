@@ -4,6 +4,9 @@
     "useDefineForClassFields": false,
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "paths": {
+      "@agnosticui/a2ui-lit": ["./node_modules/@agnosticui/a2ui-lit"]
+    },
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "types": ["vite/client"],
     "strict": true,

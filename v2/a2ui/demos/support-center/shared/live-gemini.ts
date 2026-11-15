@@ -243,6 +243,31 @@ export async function generateLocalA2uiSurface(
               {
                 id: 'root',
                 component: 'AgCard',
+                stacked: true,
+                children: ['user_prompt_bubble', 'agent_reply_bubble'],
+              },
+              {
+                id: 'user_prompt_bubble',
+                component: 'AgMessageBubble',
+                from: 'me',
+                author: 'Revenue Ops Lead',
+                time: 'Just now',
+                message: trimmedPrompt,
+              },
+              {
+                id: 'agent_reply_bubble',
+                component: 'AgMessageBubble',
+                from: 'them',
+                variant: 'warning',
+                author: 'Signal AI Incident Agent',
+                time: 'Just now',
+                message:
+                  'I triaged this incident and generated an actionable runbook card below:',
+                children: ['incident_card'],
+              },
+              {
+                id: 'incident_card',
+                component: 'AgCard',
                 variant: 'warning',
                 shadow: true,
                 stacked: true,
@@ -335,6 +360,31 @@ export async function generateLocalA2uiSurface(
               {
                 id: 'root',
                 component: 'AgCard',
+                stacked: true,
+                children: ['user_prompt_bubble', 'agent_reply_bubble'],
+              },
+              {
+                id: 'user_prompt_bubble',
+                component: 'AgMessageBubble',
+                from: 'me',
+                author: 'Revenue Ops Lead',
+                time: 'Just now',
+                message: trimmedPrompt,
+              },
+              {
+                id: 'agent_reply_bubble',
+                component: 'AgMessageBubble',
+                from: 'them',
+                variant: 'info',
+                author: 'Signal AI Concierge',
+                time: 'Just now',
+                message:
+                  'Here is an interactive AgnosticUI v1.0 workflow bound to your live DataModel:',
+                children: ['generated_form_card'],
+              },
+              {
+                id: 'generated_form_card',
+                component: 'AgCard',
                 shadow: true,
                 stacked: true,
                 children: [
@@ -347,7 +397,7 @@ export async function generateLocalA2uiSurface(
               {
                 id: 'local_badge',
                 component: 'AgBadge',
-                variant: 'default',
+                variant: 'info',
                 children: ['local_badge_text'],
               },
               {
@@ -441,4 +491,3 @@ export async function generateLocalA2uiSurface(
     maxCalls: MAX_SESSION_CALLS,
   };
 }
-

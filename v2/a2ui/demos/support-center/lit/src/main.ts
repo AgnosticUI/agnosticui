@@ -1,16 +1,16 @@
 /**
  * @file main.ts
  * @description Declarative Lit studio (<ag-a2ui-studio>) showcasing AgnosticUI's
- * A2UI v1.0 catalog across 21 runtime skins, Light/Dark modes, live @path
- * DataModel inspection, FACE form validation, and Local vs. Live Gemini 3.8
- * Flash prompt compilation.
+ * A2UI v1.0 catalog across 21+ runtime skins (including Invoca Brand), Light/Dark
+ * modes, live @path DataModel inspection, FACE form validation, and Local vs.
+ * Live Gemini 3.8 Flash prompt compilation.
  */
 
 import 'agnosticui-core/styles/tokens.css';
 import 'agnosticui-core/styles/tokens-dark.css';
 import '../../../../../skins/skins-bundle.css';
 import '../../shared/studio.css';
-
+import '../../shared/invoca-skin.css';
 
 import { LitElement, html } from 'lit';
 import { createElement, CircleSlash2 } from 'lucide';
@@ -49,9 +49,13 @@ import {
   MAX_SESSION_CALLS,
 } from '../../shared/live-gemini.js';
 
-
 registerAgnosticUICatalog();
 restorePrefs();
+
+const STUDIO_SKINS = [
+  { id: 'invoca', label: 'Invoca Brand', swatch: '#1d4ed8' },
+  ...SKINS,
+];
 
 const CLEAR_ICON = createElement(CircleSlash2, {
   width: 16,
@@ -102,7 +106,8 @@ export class AgA2uiStudio extends LitElement {
     const initial = SUPPORT_SCENARIOS.at(0)!;
     this.selectedScenarioId = initial.id;
     this.activePromptBanner = initial.prompt;
-    this.activeSkinId = localStorage.getItem('ag-skin') ?? '';
+    this.activeSkinId = localStorage.getItem('ag-skin') ?? 'invoca';
+    applySkin(this.activeSkinId);
     this.isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     this.dataModelJson = '{}';
     this.eventLogText = 'Ready.';
@@ -337,7 +342,7 @@ export class AgA2uiStudio extends LitElement {
 
   override render() {
     const activeSkinLabel =
-      SKINS.find((s) => s.id === this.activeSkinId)?.label ?? 'Default';
+      STUDIO_SKINS.find((s) => s.id === this.activeSkinId)?.label ?? 'Invoca Brand';
     const isLocal = this.compilerMode === 'local';
 
     return html`
@@ -346,7 +351,7 @@ export class AgA2uiStudio extends LitElement {
           <div class="studio-title-group">
             <h1>AgnosticUI × A2UI v1.0</h1>
             <p class="studio-subtitle">
-              Same A2UI JSON payload • 21 runtime skins • FACE validation
+              Same A2UI JSON payload • 21+ runtime skins • FACE validation
             </p>
           </div>
 
@@ -395,12 +400,12 @@ export class AgA2uiStudio extends LitElement {
         <div class="studio-workspace">
           <aside class="studio-sidebar">
             <div class="sidebar-header">
-              <h2>Runtime Skin (21 Themes)</h2>
+              <h2>Runtime Skin (22 Themes)</h2>
               <span class="active-skin-badge">${activeSkinLabel}</span>
             </div>
 
             <div class="skin-grid">
-              ${SKINS.map((skin) => {
+              ${STUDIO_SKINS.map((skin) => {
                 const isSelected = skin.id === this.activeSkinId;
                 return html`
                   <ag-button

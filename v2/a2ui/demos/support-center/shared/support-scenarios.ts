@@ -9,9 +9,163 @@ export interface SupportScenario {
 
 export const SUPPORT_SCENARIOS: SupportScenario[] = [
   {
+    id: 'conversational_agent_triage',
+    title: '1. Conversational Agent Triage (MessageBubble + Combobox + FACE)',
+    prompt:
+      'Caller asks Signal AI Agent to rotate a compromised Google Ads Webhook key and route alerts to the regional cluster.',
+    messages: [
+      {
+        version: '1.0',
+        createSurface: {
+          surfaceId: 'support_surface',
+          catalogId: AGNOSTICUI_CATALOG_ID,
+        },
+      },
+      {
+        version: '1.0',
+        updateComponents: {
+          surfaceId: 'support_surface',
+          components: [
+            {
+              id: 'root',
+              component: 'AgCard',
+              stacked: true,
+              children: ['caller_bubble', 'agent_bubble'],
+            },
+            {
+              id: 'caller_bubble',
+              component: 'AgMessageBubble',
+              from: 'me',
+              author: 'Maya Patel • Revenue Ops',
+              time: 'Just now',
+              message:
+                'We detected unexpected webhook retries on our Google Ads conversion endpoint. Can you help rotate the signing key for US-East?',
+            },
+            {
+              id: 'agent_bubble',
+              component: 'AgMessageBubble',
+              from: 'them',
+              variant: 'info',
+              author: 'Signal AI Concierge',
+              time: 'Just now',
+              message:
+                'I prepared a validated key rotation workflow bound to your tenant DataModel. Confirm the cluster and owner email below:',
+              children: ['agent_form_card'],
+            },
+            {
+              id: 'agent_form_card',
+              component: 'AgCard',
+              shadow: true,
+              stacked: true,
+              children: [
+                'triage_badge',
+                'triage_heading',
+                'triage_fieldset',
+                'submit_btn',
+              ],
+            },
+            {
+              id: 'triage_badge',
+              component: 'AgBadge',
+              variant: 'warning',
+              children: ['triage_badge_text'],
+            },
+            {
+              id: 'triage_badge_text',
+              component: 'AgText',
+              el: 'span',
+              text: 'P1 • Key Rotation & Webhook Guard',
+            },
+            {
+              id: 'triage_heading',
+              component: 'AgText',
+              el: 'h2',
+              text: { '@path': '/ticket/headline' },
+            },
+            {
+              id: 'triage_fieldset',
+              component: 'AgFieldset',
+              legend: 'Target Cluster & Security Owner',
+              bordered: true,
+              children: [
+                'cluster_combobox',
+                'email_input',
+                'revoke_toggle',
+              ],
+            },
+            {
+              id: 'cluster_combobox',
+              component: 'AgCombobox',
+              label: 'Routing Cluster',
+              placeholder: 'Search regional cluster...',
+              required: true,
+              options: [
+                { value: 'us-east-prod', label: 'US-East Production (Primary)' },
+                { value: 'eu-central-prod', label: 'EU-Frankfurt (GDPR)' },
+                { value: 'ap-southeast-prod', label: 'AP-Sydney Edge' },
+              ],
+              value: { '@path': '/form/cluster' },
+            },
+            {
+              id: 'email_input',
+              component: 'AgInput',
+              label: 'Security Owner Email',
+              type: 'email',
+              placeholder: 'secops@company.com',
+              required: true,
+              value: { '@path': '/form/email' },
+            },
+            {
+              id: 'revoke_toggle',
+              component: 'AgToggle',
+              label: 'Revoke previous signing secret immediately',
+              checked: { '@path': '/form/revokePrevious' },
+            },
+            {
+              id: 'submit_btn',
+              component: 'AgButton',
+              variant: 'primary',
+              size: 'lg',
+              shape: 'rounded',
+              label: 'Validate & Rotate Signing Key',
+              action: {
+                event: {
+                  name: 'rotate_webhook_key',
+                  context: {
+                    cluster: { '@path': '/form/cluster' },
+                    email: { '@path': '/form/email' },
+                    revokePrevious: { '@path': '/form/revokePrevious' },
+                  },
+                },
+              },
+            },
+          ],
+        },
+      },
+      {
+        version: '1.0',
+        updateDataModel: {
+          surfaceId: 'support_surface',
+          path: '/',
+          value: {
+            ticket: {
+              headline: 'Google Ads Conversion Webhook Key Rotation',
+            },
+            form: {
+              cluster: 'us-east-prod',
+              email: 'maya.patel@enterprise.io',
+              revokePrevious: true,
+            },
+          },
+        },
+      },
+    ],
+  },
+  {
     id: 'enterprise_triage',
-    title: '1. Enterprise Account Access Form (FACE + Two-Way @path)',
-    prompt: 'User usr_992 reports 403 SSO errors on enterprise invoice exports. Generate an access escalation form with validation.',
+    title: '2. Enterprise SSO Access Escalation (FACE + Two-Way @path)',
+    prompt:
+      'User usr_992 reports 403 SSO errors on enterprise invoice exports. Generate an access escalation form with validation.',
     messages: [
       {
         version: '1.0',
@@ -30,10 +184,32 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
               component: 'AgCard',
               shadow: true,
               stacked: true,
-              children: ['header_tag', 'title_text', 'sla_alert', 'ticket_fieldset', 'submit_btn'],
+              children: [
+                'header_tag',
+                'title_text',
+                'sla_alert',
+                'ticket_fieldset',
+                'submit_btn',
+              ],
             },
-            { id: 'header_tag', component: 'AgBadge', variant: 'warning', value: 'P1 • Enterprise SSO' },
-            { id: 'title_text', component: 'AgText', el: 'h2', text: { '@path': '/ticket/headline' } },
+            {
+              id: 'header_tag',
+              component: 'AgBadge',
+              variant: 'warning',
+              children: ['header_tag_text'],
+            },
+            {
+              id: 'header_tag_text',
+              component: 'AgText',
+              el: 'span',
+              text: 'P1 • Enterprise SSO',
+            },
+            {
+              id: 'title_text',
+              component: 'AgText',
+              el: 'h2',
+              text: { '@path': '/ticket/headline' },
+            },
             {
               id: 'sla_alert',
               component: 'AgAlert',
@@ -82,6 +258,7 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
               component: 'AgButton',
               variant: 'primary',
               size: 'lg',
+              shape: 'rounded',
               label: 'Validate & Dispatch Escalation',
               action: {
                 event: {
@@ -106,7 +283,8 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
             ticket: { headline: 'Ticket #INV-992: Enterprise Invoice SSO 403' },
             form: {
               email: 'usr_992@acme-corp.io',
-              summary: 'SAML assertion succeeds, but /api/v2/invoices returns 403 Forbidden',
+              summary:
+                'SAML assertion succeeds, but /api/v2/invoices returns 403 Forbidden',
               pageOnCall: true,
             },
           },
@@ -116,8 +294,9 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
   },
   {
     id: 'status_overview',
-    title: '2. Incident Diagnostics & Resolution Card',
-    prompt: 'Summarize root cause and resolution steps for SSO token scope mismatch.',
+    title: '3. Incident Diagnostics & Resolution Card',
+    prompt:
+      'Summarize root cause and resolution steps for SSO token scope mismatch.',
     messages: [
       {
         version: '1.0',
@@ -137,10 +316,32 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
               shadow: true,
               stacked: true,
               variant: 'success',
-              children: ['resolved_badge', 'diag_heading', 'diag_alert', 'divider_1', 'ack_btn'],
+              children: [
+                'resolved_badge',
+                'diag_heading',
+                'diag_alert',
+                'divider_1',
+                'ack_btn',
+              ],
             },
-            { id: 'resolved_badge', component: 'AgBadge', variant: 'success', value: 'Root Cause Identified' },
-            { id: 'diag_heading', component: 'AgText', el: 'h2', text: 'OAuth Scope Mismatch on Billing Role' },
+            {
+              id: 'resolved_badge',
+              component: 'AgBadge',
+              variant: 'success',
+              children: ['resolved_badge_text'],
+            },
+            {
+              id: 'resolved_badge_text',
+              component: 'AgText',
+              el: 'span',
+              text: 'Root Cause Identified',
+            },
+            {
+              id: 'diag_heading',
+              component: 'AgText',
+              el: 'h2',
+              text: 'OAuth Scope Mismatch on Billing Role',
+            },
             {
               id: 'diag_alert',
               component: 'AgAlert',
@@ -159,6 +360,7 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
               id: 'ack_btn',
               component: 'AgButton',
               variant: 'secondary',
+              shape: 'rounded',
               label: 'Apply Patch & Close Ticket',
               action: {
                 event: {
