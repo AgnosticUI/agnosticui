@@ -1,0 +1,422 @@
+/**
+ * @file main.tsx
+ * @description React 19 Support Center Studio showcasing @agnosticui/a2ui-react
+ * (<AgA2uiSurface> + useA2uiSurface) with AgnosticUI's A2UI v1.0 catalog across
+ * 22 runtime skins (including Evergreen), Light/Dark modes, live @path DataModel
+ * inspection, FACE validation, and Local vs. Live Gemini 3.8 Flash prompt compilation.
+ */
+
+import 'agnosticui-core/styles/tokens.css';
+import 'agnosticui-core/styles/tokens-dark.css';
+import '../../../../../skins/skins-bundle.css';
+import '../../shared/studio.css';
+import '../../shared/evergreen-skin.css';
+
+import * as React from 'react';
+import { createRoot } from 'react-dom/client';
+import { CircleSlash2, Code2, Moon, Sun } from 'lucide-react';
+import {
+  AgA2uiSurface,
+  useA2uiSurface,
+  type A2uiWireMessage,
+} from '@agnosticui/a2ui-react';
+import { ReactAlert } from 'agnosticui-core/alert/react';
+import { ReactButton } from 'agnosticui-core/button/react';
+import { ReactIconButton } from 'agnosticui-core/icon-button/react';
+import { ReactInput } from 'agnosticui-core/input/react';
+import { ReactRadio } from 'agnosticui-core/radio/react';
+import { ReactToggle } from 'agnosticui-core/toggle/react';
+
+import {
+  SKINS,
+  applySkin,
+  applyTheme,
+  restorePrefs,
+} from '../../../../../skins/skin-switcher-core.js';
+import {
+  EMPTY_STATE_SURFACE_MESSAGES,
+  QUICK_PROMPT_CHIPS,
+  buildActionConfirmationMessages,
+} from '../../shared/support-scenarios.js';
+import {
+  generateLiveA2uiSurface,
+  generateLocalA2uiSurface,
+  getGeminiSessionUsage,
+  MAX_SESSION_CALLS,
+} from '../../shared/live-gemini.js';
+
+restorePrefs();
+
+const STUDIO_SKINS = [
+  { id: 'evergreen', label: 'Evergreen', swatch: '#00a87f' },
+  ...SKINS,
+];
+
+const SESSION_KEY_STORAGE = 'ag-a2ui-gemini-key';
+
+function App() {
+  const [activeSkinId, setActiveSkinId] = React.useState<string>(() => {
+    const initialSkin = localStorage.getItem('ag-skin') ?? 'evergreen';
+    applySkin(initialSkin);
+    return initialSkin;
+  });
+
+  const [isDark, setIsDark] = React.useState<boolean>(
+    () => document.documentElement.getAttribute('data-theme') === 'dark',
+  );
+  const [inspectorOpen, setInspectorOpen] = React.useState(false);
+  const [actionCount, setActionCount] = React.useState(0);
+  const [dataModelJson, setDataModelJson] = React.useState('{}');
+  const [eventLogText, setEventLogText] = React.useState('Ready.');
+  const [compilerMode, setCompilerMode] = React.useState<'local' | 'live'>(
+    'local',
+  );
+  const [geminiApiKey, setGeminiApiKey] = React.useState<string>(
+    () => sessionStorage.getItem(SESSION_KEY_STORAGE) ?? '',
+  );
+  const [livePromptText, setLivePromptText] = React.useState<string>(
+    () => QUICK_PROMPT_CHIPS[0].prompt,
+  );
+  const [isGeneratingLive, setIsGeneratingLive] = React.useState(false);
+  const [geminiCallsUsed, setGeminiCallsUsed] = React.useState<number>(
+    () => getGeminiSessionUsage().used,
+  );
+  const [liveErrorText, setLiveErrorText] = React.useState('');
+
+  const activeMessagesRef = React.useRef<A2uiWireMessage[]>(
+    EMPTY_STATE_SURFACE_MESSAGES,
+  );
+
+    const logEvent = React.useCallback((message: string, detail?: unknown) => {
+    const stamp = new Date().toLocaleTimeString();
+    const extra =
+      detail !== undefined ? `\n${JSON.stringify(detail, null, 2)}` : '';
+    setEventLogText((prev) => `[${stamp}] ${message}${extra}\n\n${prev}`);
+  }, []);
+
+  const surfaceApiRef = React.useRef<{
+    processMessages: (msgs: A2uiWireMessage[]) => void;
+    getDataModel: () => unknown;
+  } | null>(null);
+
+  const handleSurfaceAction = React.useCallback(
+    (detail: Record<string, unknown>) => {
+      setActionCount((c) => c + 1);
+      logEvent('FACE validation passed -> Dispatched A2UI Action', detail);
+
+      const confirmMsgs = buildActionConfirmationMessages(
+        activeMessagesRef.current,
+        detail,
+      );
+      surfaceApiRef.current?.processMessages(confirmMsgs);
+      const nextData = surfaceApiRef.current?.getDataModel() ?? {};
+      setDataModelJson(JSON.stringify(nextData, null, 2));
+    },
+    [logEvent],
+  );
+
+  const {
+    surface,
+    surfaceRef,
+    processMessages,
+    streamMessages,
+    resetSurface,
+    getDataModel,
+  } = useA2uiSurface({
+    surfaceId: 'support_surface',
+    onAction: handleSurfaceAction,
+    validateOnAction: true,
+  });
+
+  surfaceApiRef.current = { processMessages, getDataModel };
+
+  const runStream = React.useCallback(
+    async (
+      messages: A2uiWireMessage[],
+      delayMs: number,
+      streamLabel: string,
+    ) => {
+      activeMessagesRef.current = messages;
+      resetSurface();
+      logEvent(`Streaming surface: ${streamLabel}`);
+      await streamMessages(messages, delayMs);
+      setDataModelJson(JSON.stringify(getDataModel(), null, 2));
+    },
+    [resetSurface, streamMessages, getDataModel, logEvent],
+  );
+
+  React.useEffect(() => {
+    void runStream(EMPTY_STATE_SURFACE_MESSAGES, 0, 'Idle Empty State');
+  }, [runStream]);
+
+  React.useEffect(() => {
+    const timer = window.setInterval(() => {
+      setDataModelJson(JSON.stringify(getDataModel(), null, 2));
+    }, 250);
+    return () => window.clearInterval(timer);
+  }, [getDataModel]);
+
+  const handleSelectSkin = (skin: { id: string; label: string }) => {
+    applySkin(skin.id);
+    setActiveSkinId(skin.id);
+    logEvent(`Applied skin: ${skin.label}`);
+  };
+
+  const handleDarkToggle = (e: CustomEvent<{ checked: boolean }>) => {
+    const nextDark = Boolean(e.detail?.checked);
+    setIsDark(nextDark);
+    applyTheme(nextDark);
+    logEvent(`Theme mode: ${nextDark ? 'Dark' : 'Light'}`);
+  };
+
+  const handleGeneratePrompt = async (overridePrompt?: string) => {
+    if (isGeneratingLive) return;
+
+    const resolvedPrompt = (overridePrompt ?? livePromptText).trim();
+    setLivePromptText(resolvedPrompt);
+    setLiveErrorText('');
+    setIsGeneratingLive(true);
+
+    try {
+      if (compilerMode === 'local') {
+        const result = await generateLocalA2uiSurface(resolvedPrompt);
+        await runStream(result.messages, 60, 'Local A2UI v1.0 Compiler');
+        return;
+      }
+
+      if (geminiApiKey) {
+        sessionStorage.setItem(SESSION_KEY_STORAGE, geminiApiKey);
+      }
+      logEvent('Calling Gemini 3.8 Flash for live A2UI v1.0 surface...');
+      const result = await generateLiveA2uiSurface(
+        geminiApiKey,
+        resolvedPrompt,
+      );
+      setGeminiCallsUsed(result.callsUsed);
+      await runStream(
+        result.messages,
+        60,
+        `Live Gemini (${result.callsUsed}/${result.maxCalls} quota)`,
+      );
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      setLiveErrorText(msg);
+      setGeminiCallsUsed(getGeminiSessionUsage().used);
+      logEvent(`Compiler error: ${msg}`);
+    } finally {
+      setIsGeneratingLive(false);
+    }
+  };
+  const activeSkinLabel =
+    STUDIO_SKINS.find((s) => s.id === activeSkinId)?.label ?? 'Evergreen';
+  const isLocal = compilerMode === 'local';
+
+  return (
+    <div className="studio-shell">
+      <header className="studio-header">
+        <div className="studio-title-group">
+          <h1>Ag × A2UI</h1>
+          <span className="protocol-pill">v1.0 Spec • React 19</span>
+        </div>
+
+        <div className="studio-controls">
+          <ReactButton
+            size="sm"
+            shape="rounded"
+            variant="secondary"
+            bordered={!inspectorOpen}
+            onClick={() => setInspectorOpen((open) => !open)}
+          >
+            <span className="inspector-toggle-inner">
+              <Code2 size={15} aria-hidden="true" />
+              <span>Inspector</span>
+              {actionCount > 0 && (
+                <span className="inspector-count-dot">{actionCount}</span>
+              )}
+            </span>
+          </ReactButton>
+
+          <div className="theme-toggle-group">
+            {isDark ? (
+              <Moon size={15} aria-hidden="true" />
+            ) : (
+              <Sun size={15} aria-hidden="true" />
+            )}
+            <ReactToggle
+              label="Dark Mode"
+              labelHidden
+              checked={isDark}
+              onToggleChange={handleDarkToggle}
+            />
+          </div>
+        </div>
+      </header>
+
+      <div className={`studio-workspace ${inspectorOpen ? 'has-inspector' : ''}`}>
+        <aside className="studio-sidebar">
+          <div className="sidebar-header">
+            <h2>Runtime Skin</h2>
+            <span className="active-skin-badge">{activeSkinLabel}</span>
+          </div>
+
+          <div className="skin-grid">
+            {STUDIO_SKINS.map((skin) => {
+              const isSelected = skin.id === activeSkinId;
+              return (
+                <ReactButton
+                  key={skin.id}
+                  size="sm"
+                  shape="rounded"
+                  fullWidth
+                  variant="primary"
+                  bordered={!isSelected}
+                  onClick={() => handleSelectSkin(skin)}
+                >
+                  <span className="skin-btn-inner">
+                    <span
+                      className="swatch"
+                      style={{ background: skin.swatch }}
+                    />
+                    <span>{skin.label}</span>
+                  </span>
+                </ReactButton>
+              );
+            })}
+          </div>
+        </aside>
+
+        <main className="studio-stage">
+          <div className="stage-container">
+            <div className="live-prompt-card">
+              <div className="live-prompt-top">
+                <span className="live-prompt-title">
+                  Agent Prompt Composer
+                </span>
+
+                <div className="compiler-mode-radios">
+                  <ReactRadio
+                    name="compiler-mode"
+                    value="local"
+                    labelText="Local UI (Instant)"
+                    checked={isLocal}
+                    onChange={() => {
+                      setCompilerMode('local');
+                      setLiveErrorText('');
+                    }}
+                  />
+
+                  <ReactRadio
+                    name="compiler-mode"
+                    value="live"
+                    labelText={`Live Gemini (${geminiCallsUsed}/${MAX_SESSION_CALLS})`}
+                    checked={!isLocal}
+                    onChange={() => {
+                      setCompilerMode('live');
+                      setLiveErrorText('');
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className={`live-prompt-bar ${isLocal ? 'is-local' : ''}`}>
+                {!isLocal && (
+                  <ReactInput
+                    label="AI Studio Key (Session Only)"
+                    type="password"
+                    placeholder="AQ... or AIza..."
+                    value={geminiApiKey}
+                    onInput={(e) => {
+                      const val = (e.target as HTMLInputElement).value;
+                      setGeminiApiKey(val);
+                      sessionStorage.setItem(SESSION_KEY_STORAGE, val);
+                    }}
+                  />
+                )}
+
+                <ReactInput
+                  label="Describe the agent workflow or support UI"
+                  placeholder="Describe a campaign workflow or caller alert..."
+                  value={livePromptText}
+                  onInput={(e) => {
+                    setLivePromptText((e.target as HTMLInputElement).value);
+                  }}
+                />
+
+                <ReactButton
+                  variant="primary"
+                  size="md"
+                  shape="rounded"
+                  disabled={isGeneratingLive}
+                  onClick={() => void handleGeneratePrompt()}
+                >
+                  {isGeneratingLive ? 'Compiling...' : 'Generate UI'}
+                </ReactButton>
+              </div>
+
+              <div className="prompt-chips-row">
+                <span className="prompt-chips-label">Try:</span>
+                {QUICK_PROMPT_CHIPS.map((chip) => (
+                  <button
+                    key={chip.label}
+                    type="button"
+                    className="prompt-chip"
+                    onClick={() => void handleGeneratePrompt(chip.prompt)}
+                  >
+                    {chip.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {liveErrorText && (
+              <ReactAlert variant="danger" borderedLeft>
+                {liveErrorText}
+              </ReactAlert>
+            )}
+
+            <AgA2uiSurface
+              ref={surfaceRef}
+              surface={surface}
+              data-surface-id="support_surface"
+            />
+          </div>
+        </main>
+
+        {inspectorOpen && (
+          <aside className="studio-inspector">
+            <section className="inspector-panel">
+              <div className="panel-header">
+                <h3>Live DataModel (@path)</h3>
+              </div>
+              <pre className="json-viewer">{dataModelJson}</pre>
+            </section>
+
+            <section className="inspector-panel">
+              <div className="panel-header">
+                <h3>Action &amp; FACE Log</h3>
+                <ReactIconButton
+                  label="Clear event log"
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => {
+                    setActionCount(0);
+                    setEventLogText('Log cleared.');
+                  }}
+                >
+                  <CircleSlash2 size={15} aria-hidden="true" />
+                </ReactIconButton>
+              </div>
+              <pre className="event-log">{eventLogText}</pre>
+            </section>
+          </aside>
+        )}
+      </div>
+    </div>
+  );
+}
+
+createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);

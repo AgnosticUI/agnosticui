@@ -99,10 +99,10 @@ export interface UseA2uiSurfaceResult {
   surfaceRef: React.RefObject<A2uiSurface | null>;
   processMessages: (messages: A2uiWireMessage[]) => void;
   streamMessages: (messages: A2uiWireMessage[], delayMs?: number) => Promise<void>;
+  resetSurface: () => void;
   validate: (report?: boolean) => boolean;
   getDataModel: () => unknown;
 }
-
 /**
  * Manages an A2UI v1.0 MessageProcessor bound to AgnosticUICatalog,
  * exposing reactive SurfaceModel state, FACE validation, and action handling.
@@ -118,6 +118,7 @@ export function useA2uiSurface(
 
   ensureAgnosticUICatalog();
 
+  const [processorEpoch, setProcessorEpoch] = React.useState(0);
   const processorRef = React.useRef<MessageProcessor<LitComponentApi> | null>(
     null,
   );
@@ -130,11 +131,38 @@ export function useA2uiSurface(
   const surfaceRef = React.useRef<A2uiSurface | null>(null);
   const [, forceRender] = React.useReducer((c: number) => c + 1, 0);
 
+  const onActionRef = React.useRef(onAction);
+  onActionRef.current = onAction;
+
+  const resetSurface = React.useCallback(() => {
+    processorRef.current = new MessageProcessor<LitComponentApi>([
+      AgnosticUICatalog,
+    ]);
+    setProcessorEpoch((e) => e + 1);
+    forceRender();
+  }, []);
+
   const processMessages = React.useCallback(
     (messages: A2uiWireMessage[]) => {
       const processor = processorRef.current;
       if (!processor) return;
-      processor.processMessages(messages as never[]);
+
+      for (const msg of messages) {
+        const envelope = msg as unknown as {
+          createSurface?: { surfaceId?: string };
+        };
+        const targetId = envelope.createSurface?.surfaceId;
+        if (targetId && processor.model.getSurface(targetId)) {
+          processor.processMessages([
+            { version: '1.0', deleteSurface: { surfaceId: targetId } } as never,
+          ]);
+        }
+        processor.processMessages([msg as never]);
+      }
+
+      if (surfaceRef.current) {
+        surfaceRef.current.requestUpdate();
+      }
       forceRender();
     },
     [],
@@ -163,26 +191,41 @@ export function useA2uiSurface(
   const surface = processorRef.current.model.getSurface(surfaceId);
 
   React.useEffect(() => {
-    const el = surfaceRef.current;
-    if (!el || !onAction) return;
+    const processor = processorRef.current;
+    if (!processor) return;
 
-    const listener = (evt: Event) => {
-      if (validateOnAction && !runSurfaceValidation(el, true)) {
+    const handleResolvedAction = (detail: Record<string, unknown>) => {
+      const el = surfaceRef.current;
+      if (el && validateOnAction && !runSurfaceValidation(el, true)) {
         return;
       }
-      const detail = (evt as A2uiActionEvent).detail ?? {};
-      onAction(detail);
+      onActionRef.current?.(detail);
     };
 
-    el.addEventListener('a2uiaction', listener);
-    return () => el.removeEventListener('a2uiaction', listener);
-  }, [onAction, validateOnAction, surface]);
+    const sub = processor.model.onAction.subscribe((action) => {
+      const detail = action as unknown as Record<string, unknown>;
+      handleResolvedAction(detail);
+    });
+
+    const el = surfaceRef.current;
+    const domListener = (evt: Event) => {
+      const detail = (evt as A2uiActionEvent).detail ?? {};
+      handleResolvedAction(detail);
+    };
+    el?.addEventListener('a2uiaction', domListener);
+
+    return () => {
+      sub.unsubscribe();
+      el?.removeEventListener('a2uiaction', domListener);
+    };
+  }, [processorEpoch, validateOnAction, surface]);
 
   return {
     surface,
     surfaceRef,
     processMessages,
     streamMessages,
+    resetSurface,
     validate,
     getDataModel,
   };
