@@ -45,17 +45,14 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
               id: 'agent_bubble',
               component: 'AgMessageBubble',
               from: 'them',
-              variant: 'info',
+              variant: 'neutral',
               author: 'Signal AI Concierge',
               time: 'Just now',
-              message:
-                'I prepared a validated key rotation workflow bound to your tenant DataModel. Confirm the cluster and owner email below:',
               children: ['agent_form_card'],
             },
             {
               id: 'agent_form_card',
               component: 'AgCard',
-              shadow: true,
               stacked: true,
               children: [
                 'triage_badge',
@@ -79,7 +76,7 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
             {
               id: 'triage_heading',
               component: 'AgText',
-              el: 'h2',
+              el: 'h3',
               text: { '@path': '/ticket/headline' },
             },
             {
@@ -182,14 +179,37 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
             {
               id: 'root',
               component: 'AgCard',
-              shadow: true,
+              stacked: true,
+              children: ['sso_user_bubble', 'sso_agent_bubble'],
+            },
+            {
+              id: 'sso_user_bubble',
+              component: 'AgMessageBubble',
+              from: 'me',
+              author: 'David Chen • Enterprise Admin',
+              time: '2m ago',
+              message:
+                'Our finance team (usr_992) is getting 403 Forbidden errors when exporting monthly invoices after our SAML IdP update.',
+            },
+            {
+              id: 'sso_agent_bubble',
+              component: 'AgMessageBubble',
+              from: 'them',
+              variant: 'neutral',
+              author: 'Signal AI Concierge',
+              time: '2m ago',
+              children: ['sso_form_card'],
+            },
+            {
+              id: 'sso_form_card',
+              component: 'AgCard',
               stacked: true,
               children: [
                 'header_tag',
                 'title_text',
                 'sla_alert',
                 'ticket_fieldset',
-                'submit_btn',
+                'sso_submit_btn',
               ],
             },
             {
@@ -207,7 +227,7 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
             {
               id: 'title_text',
               component: 'AgText',
-              el: 'h2',
+              el: 'h3',
               text: { '@path': '/ticket/headline' },
             },
             {
@@ -254,7 +274,7 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
               checked: { '@path': '/form/pageOnCall' },
             },
             {
-              id: 'submit_btn',
+              id: 'sso_submit_btn',
               component: 'AgButton',
               variant: 'primary',
               size: 'lg',
@@ -292,7 +312,8 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
       },
     ],
   },
-  {
+
+    {
     id: 'status_overview',
     title: '3. Incident Diagnostics & Resolution Card',
     prompt:
@@ -313,9 +334,31 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
             {
               id: 'root',
               component: 'AgCard',
-              shadow: true,
               stacked: true,
-              variant: 'success',
+              children: ['diag_user_bubble', 'diag_agent_bubble'],
+            },
+            {
+              id: 'diag_user_bubble',
+              component: 'AgMessageBubble',
+              from: 'me',
+              author: 'David Chen • Enterprise Admin',
+              time: '1m ago',
+              message:
+                'Can you run diagnostics on ticket #INV-992 and check which OAuth claim is missing?',
+            },
+            {
+              id: 'diag_agent_bubble',
+              component: 'AgMessageBubble',
+              from: 'them',
+              variant: 'neutral',
+              author: 'Signal AI Diagnostics',
+              time: 'Just now',
+              children: ['diag_card'],
+            },
+            {
+              id: 'diag_card',
+              component: 'AgCard',
+              stacked: true,
               children: [
                 'resolved_badge',
                 'diag_heading',
@@ -339,7 +382,7 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
             {
               id: 'diag_heading',
               component: 'AgText',
-              el: 'h2',
+              el: 'h3',
               text: 'OAuth Scope Mismatch on Billing Role',
             },
             {
@@ -383,3 +426,95 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
     ],
   },
 ];
+
+interface UpdateComponentsEnvelope {
+  updateComponents?: {
+    surfaceId?: string;
+    components?: Array<Record<string, unknown>>;
+  };
+}
+
+export function buildActionConfirmationMessages(
+  existingMessages: A2uiWireMessage[],
+  actionDetail: Record<string, unknown>,
+): A2uiWireMessage[] {
+  const envelopes = existingMessages as unknown as UpdateComponentsEnvelope[];
+  const updateMsg = envelopes.find(
+    (m) => typeof m.updateComponents === 'object' && m.updateComponents !== null,
+  );
+
+  const baseComponents = updateMsg?.updateComponents?.components ?? [];
+  const rootComp = baseComponents.find((c) => c.id === 'root');
+  const rootChildren = Array.isArray(rootComp?.children)
+    ? [...(rootComp.children as string[])]
+    : [];
+
+  if (!rootChildren.includes('agent_confirm_bubble')) {
+    rootChildren.push('agent_confirm_bubble');
+  }
+
+  const eventObj =
+    typeof actionDetail.event === 'object' && actionDetail.event !== null
+      ? (actionDetail.event as Record<string, unknown>)
+      : undefined;
+
+  const actionName = String(
+    actionDetail.name ?? eventObj?.name ?? 'action_completed',
+  );
+
+  const updatedComponents = [
+    ...baseComponents.map((c) =>
+      c.id === 'root' ? { ...c, children: rootChildren } : c,
+    ),
+    {
+      id: 'agent_confirm_bubble',
+      component: 'AgMessageBubble',
+      from: 'them',
+      variant: 'success',
+      author: 'Signal AI Concierge',
+      time: 'Just now',
+      children: ['confirm_card'],
+    },
+    {
+      id: 'confirm_card',
+      component: 'AgCard',
+      stacked: true,
+      children: ['confirm_badge', 'confirm_alert'],
+    },
+    {
+      id: 'confirm_badge',
+      component: 'AgBadge',
+      variant: 'success',
+      children: ['confirm_badge_text'],
+    },
+    {
+      id: 'confirm_badge_text',
+      component: 'AgText',
+      el: 'span',
+      text: `FACE Validated • ${actionName}`,
+    },
+    {
+      id: 'confirm_alert',
+      component: 'AgAlert',
+      variant: 'success',
+      borderedLeft: true,
+      children: ['confirm_copy'],
+    },
+    {
+      id: 'confirm_copy',
+      component: 'AgText',
+      el: 'p',
+      text: 'Action verified and committed to the tenant audit trail. All required FACE fields passed validation.',
+    },
+  ];
+
+  return [
+    {
+      version: '1.0',
+      updateComponents: {
+        surfaceId: 'support_surface',
+        components: updatedComponents,
+      },
+    } as unknown as A2uiWireMessage,
+  ];
+}

@@ -8,7 +8,7 @@ import 'agnosticui-core/combobox';
 export const AgComboboxSchema = z
   .object({
     options: z.array(z.object({ value: z.string(), label: z.string(), disabled: z.boolean().optional() })).optional(),
-    value: z.union([z.string(), z.array(z.string())]).optional(),
+    value: z.union([DynamicStringSchema, z.array(z.string())]).optional(),
     placeholder: DynamicStringSchema.describe('REF:#/$defs/DynamicString|String property placeholder.').optional(),
     label: DynamicStringSchema.describe('REF:#/$defs/DynamicString|String property label.').optional(),
     labelPosition: z.enum(['top', 'bottom', 'end', 'start']).optional(),

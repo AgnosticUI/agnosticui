@@ -478,7 +478,8 @@
         "value": {
           "anyOf": [
             {
-              "type": "string"
+              "$ref": "common_types.json#/$defs/DynamicString",
+              "description": "Represents a string"
             },
             {
               "type": "array",

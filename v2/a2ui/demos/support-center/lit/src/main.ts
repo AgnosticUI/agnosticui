@@ -39,6 +39,7 @@ import {
   restorePrefs,
 } from '../../../../../skins/skin-switcher-core.js';
 import {
+  buildActionConfirmationMessages,
   SUPPORT_SCENARIOS,
   type SupportScenario,
 } from '../../shared/support-scenarios.js';
@@ -114,7 +115,7 @@ export class AgA2uiStudio extends LitElement {
     this.compilerMode = 'local';
     this.geminiApiKey = sessionStorage.getItem(SESSION_KEY_STORAGE) ?? '';
     this.livePromptText =
-      'Build an enterprise API key rotation form with owner email, environment name, urgent revoke checkbox, and submit button.';
+      'Create a P1 webhook incident alert card with on-call acknowledgement button.';
     this.isGeneratingLive = false;
     this.geminiCallsUsed = getGeminiSessionUsage().used;
     this.liveErrorText = '';
@@ -308,8 +309,8 @@ export class AgA2uiStudio extends LitElement {
     mount.appendChild(surfaceEl);
     this.activeSurfaceEl = surfaceEl;
 
-    surfaceEl.addEventListener('a2uiaction', (evt: Event) => {
-      const detail = (evt as CustomEvent).detail;
+     processor.model.onAction.subscribe((action) => {
+      const detail = action as unknown as Record<string, unknown>;
       const isValid = runSurfaceValidation(surfaceEl, true);
       if (!isValid) {
         this.logEvent(
@@ -318,6 +319,17 @@ export class AgA2uiStudio extends LitElement {
         return;
       }
       this.logEvent('FACE validation passed -> Dispatched A2UI Action', detail);
+
+      const confirmMsgs = buildActionConfirmationMessages(messages, detail);
+      for (const cMsg of confirmMsgs) {
+        processor.processMessages([cMsg as never]);
+      }
+      const nextModel = processor.model.getSurface('support_surface');
+      if (nextModel) {
+        surfaceEl.surface = nextModel;
+        surfaceEl.requestUpdate();
+        this.dataModelJson = this.serializeDataModel(nextModel);
+      }
     });
 
     this.logEvent(`Streaming surface: ${streamLabel}`);

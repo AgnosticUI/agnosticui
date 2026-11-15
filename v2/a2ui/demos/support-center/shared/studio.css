@@ -207,9 +207,35 @@ a2ui-surface {
   display: block;
 }
 
+/* Make outer root wrapper and any stacked layout card inside a MessageBubble transparent */
+a2ui-surface > ag-a2ui-card > ag-card,
+a2ui-surface ag-message-bubble ag-a2ui-card > ag-card {
+  --ag-card-background: transparent;
+  --ag-card-border: none;
+  --ag-card-shadow: none;
+  --ag-card-padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  width: 100%;
+}
+
+/* Give slotted content inside an agent MessageBubble comfortable width */
+a2ui-surface ag-message-bubble {
+  display: block;
+}
+
+a2ui-surface ag-message-bubble ag-fieldset {
+  background: var(--ag-background-primary);
+  border-radius: var(--ag-radius-md);
+  width: 100%;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   a2ui-surface ag-message-bubble,
-  a2ui-surface ag-card {
+  a2ui-surface > ag-a2ui-card > ag-card > ag-a2ui-badge {
     animation: a2ui-stream-in 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
@@ -223,8 +249,15 @@ a2ui-surface ag-message-bubble + ag-message-bubble {
   margin-top: var(--ag-space-4);
 }
 
-a2ui-surface ag-message-bubble ag-card {
+/* Spacing for generative UI controls slotted directly inside an agent AgMessageBubble */
+a2ui-surface ag-message-bubble > * + * {
+  display: block;
   margin-top: var(--ag-space-3);
+}
+
+a2ui-surface ag-message-bubble ag-fieldset {
+  background: var(--ag-background-primary);
+  border-radius: var(--ag-radius-md);
 }
 
 a2ui-surface ag-card > * + * {

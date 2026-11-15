@@ -258,24 +258,19 @@ export async function generateLocalA2uiSurface(
                 id: 'agent_reply_bubble',
                 component: 'AgMessageBubble',
                 from: 'them',
-                variant: 'warning',
+                variant: 'neutral',
                 author: 'Signal AI Incident Agent',
                 time: 'Just now',
-                message:
-                  'I triaged this incident and generated an actionable runbook card below:',
                 children: ['incident_card'],
               },
               {
                 id: 'incident_card',
                 component: 'AgCard',
-                variant: 'warning',
-                shadow: true,
                 stacked: true,
                 children: [
                   'local_badge',
                   'local_heading',
                   'local_alert',
-                  'local_divider',
                   'local_ack_btn',
                 ],
               },
@@ -294,7 +289,7 @@ export async function generateLocalA2uiSurface(
               {
                 id: 'local_heading',
                 component: 'AgText',
-                el: 'h2',
+                el: 'h3',
                 text: { '@path': '/incident/title' },
               },
               {
@@ -310,7 +305,6 @@ export async function generateLocalA2uiSurface(
                 el: 'p',
                 text: trimmedPrompt,
               },
-              { id: 'local_divider', component: 'AgDivider' },
               {
                 id: 'local_ack_btn',
                 component: 'AgButton',
@@ -375,17 +369,14 @@ export async function generateLocalA2uiSurface(
                 id: 'agent_reply_bubble',
                 component: 'AgMessageBubble',
                 from: 'them',
-                variant: 'info',
+                variant: 'neutral',
                 author: 'Signal AI Concierge',
                 time: 'Just now',
-                message:
-                  'Here is an interactive AgnosticUI v1.0 workflow bound to your live DataModel:',
                 children: ['generated_form_card'],
               },
               {
                 id: 'generated_form_card',
                 component: 'AgCard',
-                shadow: true,
                 stacked: true,
                 children: [
                   'local_badge',
@@ -409,7 +400,7 @@ export async function generateLocalA2uiSurface(
               {
                 id: 'local_heading',
                 component: 'AgText',
-                el: 'h2',
+                el: 'h3',
                 text: { '@path': '/meta/title' },
               },
               {

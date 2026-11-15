@@ -307,7 +307,7 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
     // Multi-select requires an array of selected values, so spell out the union explicitly.
     value: {
       tsType: "string | string[]",
-      zodExpr: "z.union([z.string(), z.array(z.string())])",
+      zodExpr: "z.union([DynamicStringSchema, z.array(z.string())])",
     },
   },
   AgInput: {
