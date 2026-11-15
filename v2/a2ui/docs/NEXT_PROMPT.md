@@ -1,11 +1,11 @@
 ================================================================================
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
- TIMESTAMP BASELINE : 2026-11-15T14:45:00Z (Anchored to Sunday, Nov 15, 2026 Timeline)
- ACTIVE WORKSPACE   : Phase 5 Task 5.2 (Restructure Support Center Demo into `lit/`, `react/`, `vue/` with `AgMessageBubble` Chat Thread)
+ TIMESTAMP BASELINE : 2026-11-15T15:05:00Z (Anchored to Sunday, Nov 15, 2026 Timeline)
+ ACTIVE WORKSPACE   : Phase 5 Task 5.2 (Micro-Chunk 5.2a: Relocate Lit Demo to `demos/support-center/lit/` & Extract `shared/`, followed by 5.2b Design Polish & Invoca Brand Skin)
  STRATEGIC PIVOT    :
-   - Positioning: "Spec-compliant A2UI v1.0 Component Catalog & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`) bringing AgnosticUI's 21 runtime skins and FACE form validation to generative UI surfaces."
-   - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> 25 components in `agnosticui-catalog.json` + `SKILL.md` + `check-codegen.ts`), `v2/a2ui/renderers/{lit,react,vue}`, `v2/a2ui/demos/support-center/{shared,lit,react,vue}` (Conversational `AgMessageBubble` Support Center Studio across all 3 frameworks + 21 runtime skins).
+   - Positioning: "Spec-compliant A2UI v1.0 Component Catalog & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`) bringing AgnosticUI's 21+ runtime skins and FACE form validation to conversational generative UI surfaces."
+   - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> 25 components in `agnosticui-catalog.json` + `SKILL.md` + `check-codegen.ts`), `v2/a2ui/renderers/{lit,react,vue}`, `v2/a2ui/demos/support-center/{shared,lit,react,vue}` (Conversational `AgMessageBubble` Support Center Studio with tactile motion, Invoca brand skin option, and 21+ runtime skins).
    - Primary Entrypoints:
        * Lit Demo:   `(cd v2/a2ui/demos/support-center/lit && npm run build && npm run dev)`
        * React Demo: `(cd v2/a2ui/demos/support-center/react && npm run build && npm run dev)`
@@ -30,7 +30,10 @@
 
  ROADMAP DELTAS     :
    - Phase 5 Remaining Tasks (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
-       * Task 5.2: Restructure `v2/a2ui/demos/support-center` into `shared/`, `lit/`, and `react/` with conversational `AgMessageBubble` scenarios.
+       * Task 5.2:
+           - Micro-Chunk 5.2a: Relocate Lit demo into `v2/a2ui/demos/support-center/lit/` and extract `shared/` (`support-scenarios.ts`, `studio.css`, `live-gemini.ts`).
+           - Micro-Chunk 5.2b: Add Design Craft & Motion Polish (`AgMessageBubble` conversational triage scenarios, `prefers-reduced-motion`-safe streaming entrance transitions, typography/elevation refinement, and a temporary `Invoca Brand` skin in `shared/invoca-skin.css`).
+           - Micro-Chunk 5.2c: Build matching React 19 Support Center demo in `v2/a2ui/demos/support-center/react/` consuming `@agnosticui/a2ui-react` and `shared/`.
        * Task 5.3: Build `@agnosticui/a2ui-vue` (`v2/a2ui/renderers/vue`) + matching Vue 3 Support Center demo (`v2/a2ui/demos/support-center/vue/`).
        * Task 5.4: Publish `@agnosticui/a2ui-{lit,react,vue}` to npm and open the official `a2ui-project/a2ui` ecosystem PR (`v1.0`).
 
@@ -46,17 +49,17 @@
 9. Verification & Git Checkpoint: Stop at the end of every chunk, provide the exact local verification command, suggest a conventional git commit message, and wait for user permission before advancing.
 
 --- TARGET RUNTIME DELTA ---
- EXACT NEXT TASK    : Phase 5 Task 5.2 (Micro-Chunk 5.2a) — Relocate Lit Support Center demo into `v2/a2ui/demos/support-center/lit/`, extract shared fixtures (`support-scenarios.ts` enhanced with `AgMessageBubble` conversational triage), styles (`studio.css`), and compiler (`live-gemini.ts`) into `v2/a2ui/demos/support-center/shared/`
+ EXACT NEXT TASK    : Phase 5 Task 5.2 (Micro-Chunk 5.2a) — Relocate Lit Support Center demo into `v2/a2ui/demos/support-center/lit/` and extract `shared/` (`support-scenarios.ts`, `studio.css`, `live-gemini.ts`)
  ENGINEERING "WHY"  :
-   1. Framing support scenarios inside `AgMessageBubble` chat threads (User query bubble -> Agent reply bubble embedding the interactive AgnosticUI card/form) makes generative UI immediately intuitive for interviewers and `a2ui.org` reviewers.
-   2. Extracting `shared/` (`support-scenarios.ts`, `studio.css`, `live-gemini.ts`) allows `demos/support-center/lit`, `demos/support-center/react`, and `demos/support-center/vue` to run identical fixtures and 21-skin styling without duplicating logic.
+   1. Isolating `shared/` (`support-scenarios.ts`, `studio.css`, `live-gemini.ts`) before applying Micro-Chunk 5.2b's design polish (`AgMessageBubble` chat framing, motion, and `Invoca Brand` skin) ensures Lit, React, and Vue demos share identical visual craft and fixtures without duplication.
+   2. Ground-truth inspection of `v2/a2ui/demos/support-center/package.json` and `vite.config.ts` prevents broken relative paths (`../../../../skins/...` -> `../../../../../skins/...`) when moving one directory deeper into `lit/`.
  CODE BOUNDARIES    :
-   - Micro-Chunk 5.2a: Inspect `v2/a2ui/demos/support-center/` (`package.json`, `vite.config.ts`, `src/fixtures/support-scenarios.ts`), reorganize into `shared/` + `lit/`, and verify `(cd v2/a2ui/demos/support-center/lit && npm run build)`.
+   - Micro-Chunk 5.2a: Inspect `v2/a2ui/demos/support-center/package.json`, `vite.config.ts`, `tsconfig.json`, and `index.html`, move files cleanly into `lit/` and `shared/`, and verify `(cd v2/a2ui/demos/support-center/lit && npm run build)`.
 
 --- SYSTEM BOOT TRIGGER COMMAND ---
 ::: SYSTEM INITIALIZED. STOP BEFORE WRITING ANY CODE.
 Ask the user to:
-1. Upload `v2/a2ui/demos/support-center/package.json`, `v2/a2ui/demos/support-center/vite.config.ts`, and `v2/a2ui/demos/support-center/src/fixtures/support-scenarios.ts` into the chat window.
-2. Confirm readiness to begin Phase 5 Task 5.2 Micro-Chunk 5.2a (`shared/` extraction + `AgMessageBubble` conversational scenarios + `demos/support-center/lit/`).
+1. Upload `v2/a2ui/demos/support-center/package.json`, `v2/a2ui/demos/support-center/vite.config.ts`, `v2/a2ui/demos/support-center/tsconfig.json`, and `v2/a2ui/demos/support-center/index.html` into the chat window.
+2. Confirm readiness to begin Phase 5 Task 5.2 Micro-Chunk 5.2a (Relocate Lit demo to `lit/` & extract `shared/`).
 Wait for confirmation before writing any code. :::
 ================================================================================
