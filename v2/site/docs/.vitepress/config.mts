@@ -140,7 +140,7 @@ export default defineConfig({
           { text: 'Setup Guide', link: '/docs/setup' },
           { text: 'Understanding AgnosticUI', link: '/docs/understand' },
           { text: 'Advanced Usage', link: '/docs/advanced/advanced-usage' },
-          { text: 'Schema-Driven UI (SDUI)', link: '/docs/sdui' },
+          { text: 'Generative UI (A2UI)', link: '/docs/a2ui' },
           { text: 'Model Context Protocol (MCP)', link: '/docs/mcp-server' },
           { text: 'CSS Utilities', link: '/docs/utilities' },
           { text: 'Motion Utilities', link: '/docs/motion-utilities' },

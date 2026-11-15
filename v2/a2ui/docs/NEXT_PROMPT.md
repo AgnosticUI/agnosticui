@@ -1,8 +1,8 @@
 ================================================================================
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
- TIMESTAMP BASELINE : 2026-11-15T01:55:00Z (Anchored to Saturday, Nov 14, 2026 Timeline)
- ACTIVE WORKSPACE   : Phase 4 Task 4.2 (Sweep `v2/sdui` & `v2/cli`, Migrate VitePress Docs `/docs/a2ui`, & Retire `v2/sdui`)
+ TIMESTAMP BASELINE : 2026-11-15T02:15:00Z (Anchored to Saturday, Nov 14, 2026 Timeline)
+ ACTIVE WORKSPACE   : Phase 5 Task 5.1 (Scaffold & Implement `@agnosticui/a2ui-react` Renderer Package)
  STRATEGIC PIVOT    :
    - Positioning: "Spec-compliant A2UI v1.0 Component Catalog & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`) bringing AgnosticUI's 21 runtime skins and FACE form validation to generative UI surfaces."
    - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> 25 components in `agnosticui-catalog.json` + `SKILL.md` + `check-codegen.ts`), `v2/a2ui/renderers/{lit,react,vue}`, `v2/a2ui/demos/support-center` (Zero-LLM Mock Stream Harness + Local A2UI Compiler + optional Live Gemini 3.8 Flash mode + `v2/skins/skins-bundle.css`).
@@ -19,12 +19,11 @@
        * Task 3.1: `v2/a2ui/renderers/lit/src/functions/validate-surface.ts`, `src/test-setup.ts`, & `src/catalog.spec.ts` (Implemented `validateSurface` client function using `AG_FACE_SELECTOR` + `reportValidity()`, shimmed `attachInternals` for JSDOM, and verified two-way `@path` binding + FACE validation across 3/3 passing Vitest suites).
        * Task 3.2: `v2/a2ui/demos/support-center/` (`index.html`, `src/main.ts`, `src/studio.css`, `src/fixtures/support-scenarios.ts`, `README.md`) — Built declarative Lit `<ag-a2ui-studio>` with 21 `<ag-button>` runtime skins, Light/Dark toggle, pure `var(--ag-*)` tokens, live `DataModel` JSON inspector (`dataModel.get('')`), FACE validation, and native DOM Lucide `CircleSlash2` `<ag-icon-button>` clear log control.
        * Task 3.3: `v2/a2ui/demos/support-center/src/live-gemini.ts`, `src/main.ts`, & `src/studio.css` — Added `<ag-radio>` Local Deterministic vs. Live Gemini 3.8 Flash mode toggle (`generateLocalA2uiSurface` + `generateLiveA2uiSurface` with `x-goog-api-key` auth, `thinkingConfig: { thinkingBudget: 0 }`, `AbortSignal.timeout(15000)`, UAX #31 ID validation, and `MAX_SESSION_CALLS = 5`) plus 3 -> 2 -> 1 column responsive layout.
-   - Phase 4 Task 4.1 (Complete & Passing):
-       * Expanded `v2/a2ui/catalog/scripts/generate-catalog.ts` to 25 curated components (`AgText` + 24 `Ag*` components including `AgCombobox`, `AgMessageBubble`, `AgRating`, `AgTimeline`, `AgProgress`, `AgProgressRing`, `AgSpinner`, `AgEmptyState`, `AgAccordion`, `AgToggle`), emitted `v2/a2ui/catalog/SKILL.md`, and added `v2/a2ui/catalog/scripts/check-codegen.ts` CI drift check (`vitest run` 3/3 passing, `tsc` clean).
+   - Phase 4 (Milestone 4 — 100% Complete & Passing):
+       * Task 4.1: Expanded `v2/a2ui/catalog/scripts/generate-catalog.ts` to 25 curated components (`AgText` + 24 `Ag*` components including `AgCombobox`, `AgMessageBubble`, `AgRating`, `AgTimeline`, `AgProgress`, `AgProgressRing`, `AgSpinner`, `AgEmptyState`, `AgAccordion`, `AgToggle`), emitted `v2/a2ui/catalog/SKILL.md`, and added `v2/a2ui/catalog/scripts/check-codegen.ts` CI drift check (`vitest run` 3/3 passing, `tsc` clean).
+       * Task 4.2: Swept `v2/sdui`, `v2/cli`, and `v2/site`; migrated VitePress docs to `v2/site/docs/docs/a2ui.md` (explicitly stating A2UI Protocol Version `v1.0`), updated `installation.md`, `setup.md`, and `.vitepress/config.mts`, preserved `PUBLISH.md` in `v2/a2ui/docs/PUBLISH.md`, and retired `v2/sdui/`.
 
  ROADMAP DELTAS     :
-   - Phase 4 Remaining Tasks (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
-       * Task 4.2: Sweep `v2/sdui` and `v2/cli` for reusable nuggets, migrate VitePress docs (`/docs/a2ui`, `/installation`, `/docs/setup`), and retire `v2/sdui`.
    - Phase 5 Remaining Tasks (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
        * Task 5.1: Build `@agnosticui/a2ui-react` renderer package + Vitest specs.
        * Task 5.2: Build `@agnosticui/a2ui-vue` renderer package + Vitest specs.
@@ -42,17 +41,17 @@
 9. Verification & Git Checkpoint: Stop at the end of every chunk, provide the exact local verification command (`cd v2/a2ui/catalog && npx tsx scripts/check-codegen.ts`), suggest a conventional git commit message, and wait for user permission before advancing.
 
 --- TARGET RUNTIME DELTA ---
- EXACT NEXT TASK    : Phase 4 Task 4.2 (Micro-Chunk 4.2a) — Sweep `v2/sdui` and `v2/cli` for reusable nuggets (`setCustomValidity` helpers, `--sdui` CLI references) and inspect VitePress docs (`v2/site/docs/docs/sdui.md`, `v2/site/docs/installation.md`, `v2/site/docs/docs/setup.md`, `v2/site/.vitepress/`)
+ EXACT NEXT TASK    : Phase 5 Task 5.1 (Micro-Chunk 5.1a) — Inspect `@a2ui/*@0.15.0` React exports and `v2/a2ui/renderers/lit/package.json`, then scaffold `@agnosticui/a2ui-react` (`v2/a2ui/renderers/react`)
  ENGINEERING "WHY"  :
-   1. Auditing `v2/sdui/` and `v2/cli/` ensures zero valuable validation helpers or CLI integrations are lost before retiring `v2/sdui/`.
-   2. Migrating `/docs/sdui` to `/docs/a2ui` (explicitly documenting A2UI Protocol Version `v1.0`) satisfies Google's `a2ui.org` directory listing criteria and keeps AgnosticUI's public documentation aligned with the A2UI v1.0 architecture.
+   1. Wrapping `<a2ui-surface>` and `AgnosticUICatalog` via `@lit/react` (`createComponent`) gives React 18/19 developers typed JSX props (`surface`, `onA2uiAction`, `validateSurface()`) while sharing the exact same 25-component A2UI `v1.0` catalog and 21 runtime skins.
+   2. Ground-truth inspection of `v2/a2ui/renderers/lit/package.json` and `v2/lib/package.json` ensures clean peer dependency alignment without duplicate `lit` or `react` instances.
  CODE BOUNDARIES    :
-   - Micro-Chunk 4.2a: Run a targeted `grep` / directory inventory across `v2/sdui/`, `v2/cli/`, and `v2/site/` so we can migrate docs and retire `v2/sdui/` cleanly.
+   - Micro-Chunk 5.1a: Inspect `v2/a2ui/renderers/lit/package.json` and `v2/lib/package.json`, then create `v2/a2ui/renderers/react/package.json`, `tsconfig.json`, and `vitest.config.ts`.
 
 --- SYSTEM BOOT TRIGGER COMMAND ---
 ::: SYSTEM INITIALIZED. STOP BEFORE WRITING ANY CODE.
 Ask the user to:
-1. Run `grep -rn "sdui" v2/cli v2/site` (and list `v2/sdui/`) and share the output plus `v2/site/docs/docs/sdui.md` into the chat window.
-2. Confirm readiness to begin Phase 4 Task 4.2 Micro-Chunk 4.2a (`v2/sdui` & `v2/cli` sweep + VitePress `/docs/a2ui` migration).
+1. Upload `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`, `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`, `v2/a2ui/renderers/lit/package.json`, and `v2/lib/package.json` into the chat window.
+2. Confirm readiness to begin Phase 5 Task 5.1 Micro-Chunk 5.1a (`@agnosticui/a2ui-react` scaffold).
 Wait for confirmation before writing any code. :::
 ================================================================================

@@ -3,7 +3,7 @@
 - **Branch:** `A2UI-experiment`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phase 1 ✅ | Phase 2 ✅ | Phase 3 ✅ | Phase 4 ⏳ (Task 4.1 ✅, Next: Task 4.2) | Phase 5 ⬜
+- **Overall Status:** Phase 1 ✅ | Phase 2 ✅ | Phase 3 ✅ | Phase 4 ✅ | Phase 5 ⏳ (Next: Task 5.1)
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 
 ---
@@ -60,16 +60,16 @@
 
 * **Task 4.1 — Expand Catalog (25 Components incl. `MessageBubble`, `Combobox`, `Rating`), Emit `SKILL.md` & Add CI Drift Check** ✅
   * **Micro-Chunk 4.1a:** Expanded `v2/a2ui/catalog/scripts/generate-catalog.ts` (`CATALOG_COMPONENTS`) to 25 curated components (`AgText` + 24 `Ag*` components including `AgCombobox`, `AgMessageBubble`, `AgRating`, `AgTimeline`, `AgProgress`, `AgProgressRing`, `AgSpinner`, `AgEmptyState`, `AgAccordion`, `AgToggle`) with two-way `@path` bindings and guarded optional `action` invocations; verified `npm run generate`, `vitest run` (3/3 passing), and `tsc` clean.
-  * **Micro-Chunk 4.1b:** Added `generateSkillMarkdown()` emitting `v2/a2ui/catalog/SKILL.md` and created `v2/a2ui/catalog/scripts/check-codegen.ts` CI drift check.
-* **Task 4.2 — Sweep `v2/sdui` & `v2/cli`, Migrate VitePress Docs (`/docs/a2ui`) & Retire `v2/sdui`** ⏳ *(Next)*
-  * **Micro-Chunk 4.2a:** Audit `v2/sdui/` and `v2/cli/` for reusable validation/CLI helpers (`setCustomValidity` patterns, `--sdui` flags) and incorporate valuable nuggets into `v2/a2ui/`.
-  * **Micro-Chunk 4.2b:** Create `v2/site/docs/docs/a2ui.md` (explicitly stating A2UI Protocol Version `v1.0`), update `v2/site/docs/installation.md` and `v2/site/docs/docs/setup.md`, update VitePress sidebar config, and remove `v2/sdui/`.
+  * **Micro-Chunk 4.1b:** Added `generateSkillMarkdown()` emitting `v2/a2ui/catalog/SKILL.md`, created `v2/a2ui/catalog/scripts/check-codegen.ts` CI drift check, and configured `v2/a2ui/catalog/tsconfig.json`.
+* **Task 4.2 — Sweep `v2/sdui` & `v2/cli`, Migrate VitePress Docs (`/docs/a2ui`) & Retire `v2/sdui`** ✅
+  * **Micro-Chunk 4.2a:** Audited `v2/sdui/`, `v2/cli/`, and `v2/site/` (`sdui.json` playbook intent preserved; `PUBLISH.md` archived to `v2/a2ui/docs/PUBLISH.md`).
+  * **Micro-Chunk 4.2b:** Created `v2/site/docs/docs/a2ui.md` (explicitly stating A2UI Protocol Version `v1.0`), updated `v2/site/docs/installation.md` and `v2/site/docs/docs/setup.md`, updated VitePress sidebar (`Generative UI` -> `/docs/a2ui`), removed `v2/site/docs/docs/sdui.md`, and retired `v2/sdui/`.
 
 ---
 
 ## Phase 5: React & Vue Renderers, npm Publish & `a2ui.org` Ecosystem PR
 
-* **Task 5.1 — `@agnosticui/a2ui-react` Renderer Package** ⬜
+* **Task 5.1 — `@agnosticui/a2ui-react` Renderer Package** ⏳ *(Next)*
   * **Micro-Chunk 5.1a:** Inspect `@a2ui/*@0.15.0` React exports and `agnosticui-core/*/react` wrappers; scaffold `v2/a2ui/renderers/react` (`package.json`, `vitest.config.ts`, `src/index.ts`) sharing `agnosticui-catalog.json` and `validateSurface`.
   * **Micro-Chunk 5.1b:** Add Vitest specs verifying React `<AgA2uiSurface>` rendering, `@path` bindings, and FACE validation.
 * **Task 5.2 — `@agnosticui/a2ui-vue` Renderer Package** ⬜
