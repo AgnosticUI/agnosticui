@@ -1,9 +1,8 @@
 import { defineConfig } from 'vitest/config';
+import { sharedA2uiResolve } from '../../vitest.shared.mjs';
 
 export default defineConfig({
-  resolve: {
-    dedupe: ['lit', '@lit/reactive-element', 'lit-html', 'lit-element', 'zod'],
-  },
+  resolve: sharedA2uiResolve(),
   test: {
     environment: 'jsdom',
     globals: true,
