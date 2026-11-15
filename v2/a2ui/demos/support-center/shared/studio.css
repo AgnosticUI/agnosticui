@@ -215,6 +215,10 @@ a2ui-surface ag-message-bubble ag-a2ui-card > ag-card {
   width: 100%;
 }
 
+ag-a2ui-card > ag-card {
+  --card-padding: var(--ag-space-3) var(--ag-space-4);
+}
+
 /* Give slotted content inside an agent MessageBubble comfortable width */
 a2ui-surface ag-message-bubble {
   display: block;
@@ -223,6 +227,7 @@ a2ui-surface ag-message-bubble {
 a2ui-surface ag-message-bubble ag-fieldset {
   background: var(--ag-background-primary);
   border-radius: var(--ag-radius-md);
+  padding: var(--ag-space-3) var(--ag-space-4);
   width: 100%;
 }
 
