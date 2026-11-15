@@ -41,32 +41,26 @@ body {
 }
 
 .studio-title-group h1 {
-  margin: 0 0 var(--ag-space-1);
-  font-size: var(--ag-font-size-lg);
-  letter-spacing: -0.015em;
-  color: var(--ag-text-primary);
-}
-
-.studio-subtitle {
   margin: 0;
-  font-size: var(--ag-font-size-xs);
-  color: var(--ag-text-secondary);
+  font-size: var(--ag-font-size-lg);
+  letter-spacing: -0.02em;
+  color: var(--ag-text-primary);
 }
 
 .studio-controls {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
   gap: var(--ag-space-3);
 }
 
 .theme-toggle-group {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: var(--ag-space-2);
-  font-size: var(--ag-font-size-xs);
-  font-weight: var(--ag-font-weight-semibold);
 }
+
 
 .studio-workspace {
   display: grid;

@@ -102,6 +102,8 @@ export class AgA2uiStudio extends LitElement {
 
   private activeSurfaceEl: A2uiSurface | null = null;
   private inspectorTimer: number | null = null;
+  private activeMessages: A2uiWireMessage[] = EMPTY_STATE_SURFACE_MESSAGES;
+  private activeStreamLabel = 'Idle Empty State';
 
   constructor() {
     super();
@@ -301,6 +303,9 @@ export class AgA2uiStudio extends LitElement {
     delayMs: number,
     streamLabel: string,
   ): Promise<void> {
+    this.activeMessages = messages;
+    this.activeStreamLabel = streamLabel;
+
     if (this.inspectorTimer !== null) {
       window.clearInterval(this.inspectorTimer);
     }
@@ -368,47 +373,15 @@ export class AgA2uiStudio extends LitElement {
       <div class="studio-shell">
         <header class="studio-header">
           <div class="studio-title-group">
-            <h1>AgnosticUI × A2UI v1.0</h1>
-            <p class="studio-subtitle">
-              Same A2UI JSON payload • 21+ runtime skins • FACE validation
-            </p>
+            <h1>Ag × A2UI v1.0</h1>
           </div>
 
           <div class="studio-controls">
-            <ag-select
-              label="Offline A2UI Fixture"
-              name="scenario"
-              .value=${this.selectedScenarioId}
-              @change=${this.handleScenarioChange}
-            >
-              ${SUPPORT_SCENARIOS.map(
-                (s) => html`<option value=${s.id}>${s.title}</option>`,
-              )}
-            </ag-select>
-
-            <ag-button
-              variant="primary"
-              size="sm"
-              shape="rounded"
-              @click=${() => void this.playScenario(this.currentScenario, 120)}
-            >
-              Replay Stream (120ms)
-            </ag-button>
-
-            <ag-button
-              variant="secondary"
-              size="sm"
-              shape="rounded"
-              bordered
-              @click=${this.handleRunFaceCheck}
-            >
-              Run FACE Check
-            </ag-button>
-
             <div class="theme-toggle-group">
-              <span>Dark Mode</span>
               <ag-toggle
                 label="Dark Mode"
+                label-hidden
+                title="Toggle Dark Mode"
                 .checked=${this.isDark}
                 @toggle-change=${this.handleDarkToggle}
               ></ag-toggle>
