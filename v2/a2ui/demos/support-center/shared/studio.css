@@ -11,14 +11,48 @@ body {
   transition: background var(--ag-motion-medium) ease, color var(--ag-motion-medium) ease;
 }
 
-@keyframes a2ui-stream-in {
+@keyframes a2ui-bubble-user {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translate3d(10px, 6px, 0) scale(0.985);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes a2ui-bubble-agent {
+  from {
+    opacity: 0;
+    transform: translate3d(-10px, 10px, 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes a2ui-drawer-in {
+  from {
+    opacity: 0;
+    transform: translate3d(14px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes a2ui-badge-pop {
+  0% {
+    transform: scale(0.75);
+  }
+  65% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
@@ -179,7 +213,6 @@ body {
   flex-direction: column;
   gap: var(--ag-space-5);
 }
-
 .studio-inspector {
   padding: var(--ag-space-4);
   background: var(--ag-background-primary);
@@ -271,18 +304,6 @@ a2ui-surface ag-message-bubble ag-fieldset {
   border-radius: var(--ag-radius-md);
   padding: var(--ag-space-3) var(--ag-space-4);
   width: 100%;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a2ui-surface ag-message-bubble,
-  a2ui-surface > ag-a2ui-card > ag-card > ag-a2ui-badge,
-  a2ui-surface ag-empty-state {
-    animation: a2ui-stream-in 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  a2ui-surface ag-message-bubble:nth-child(2) {
-    animation-delay: 80ms;
-  }
 }
 
 a2ui-surface ag-message-bubble + ag-message-bubble {
@@ -378,14 +399,50 @@ a2ui-surface ag-fieldset ag-toggle {
   font-size: 0.74rem;
   font-weight: var(--ag-font-weight-medium);
   cursor: pointer;
-  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+  transition:
+    border-color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .prompt-chip:hover {
   border-color: var(--ag-primary);
   background: var(--ag-primary-background, var(--ag-background-tertiary));
   transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
+
+.prompt-chip:active {
+  transform: translateY(0) scale(0.97);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .inspector-count-dot {
+    animation: a2ui-badge-pop 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .studio-inspector {
+    animation: a2ui-drawer-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  a2ui-surface ag-message-bubble[from='me'] {
+    animation: a2ui-bubble-user 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  a2ui-surface ag-message-bubble[from='them'] {
+    animation: a2ui-bubble-agent 480ms cubic-bezier(0.22, 1, 0.36, 1) 180ms both;
+  }
+
+  a2ui-surface ag-message-bubble:nth-child(3) {
+    animation-delay: 80ms;
+  }
+
+  a2ui-surface ag-empty-state {
+    animation: a2ui-bubble-agent 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
 
 /* Responsive 3 -> 2 -> 1 column studio layout */
 @media (max-width: 1200px) {
