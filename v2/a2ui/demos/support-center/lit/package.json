@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build"
   },
   "dependencies": {
     "@a2ui/lit": "^0.15.0",
