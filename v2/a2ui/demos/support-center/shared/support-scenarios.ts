@@ -47,6 +47,29 @@ export const EMPTY_STATE_SURFACE_MESSAGES: A2uiWireMessage[] = [
   },
 ];
 
+export interface QuickPromptChip {
+  label: string;
+  prompt: string;
+}
+
+export const QUICK_PROMPT_CHIPS: QuickPromptChip[] = [
+  {
+    label: 'Rotate Webhook Key',
+    prompt:
+      'Rotate compromised Google Ads conversion webhook key for prod-us-east-1 and audit owner access.',
+  },
+  {
+    label: 'P1 Webhook Outage Alert',
+    prompt:
+      'Create a P1 webhook incident alert card with on-call acknowledgement button.',
+  },
+  {
+    label: 'SSO Scope Escalation',
+    prompt:
+      'Build an enterprise SSO invoice export access request form with security owner email and expedited audit.',
+  },
+];
+
 export const SUPPORT_SCENARIOS: SupportScenario[] = [
   {
     id: 'conversational_agent_triage',
@@ -502,6 +525,21 @@ export function buildActionConfirmationMessages(
     actionDetail.name ?? eventObj?.name ?? 'action_completed',
   );
 
+  const rawContext =
+    typeof actionDetail.context === 'object' && actionDetail.context !== null
+      ? (actionDetail.context as Record<string, unknown>)
+      : typeof eventObj?.context === 'object' && eventObj.context !== null
+        ? (eventObj.context as Record<string, unknown>)
+        : {};
+
+  const contextEntries = Object.entries(rawContext);
+  const summaryLine =
+    contextEntries.length > 0
+      ? `Committed @path state: ${contextEntries
+          .map(([k, v]) => `${k}=${JSON.stringify(v)}`)
+          .join(' • ')}`
+      : 'Action verified and committed to the tenant audit trail. All required FACE fields passed validation.';
+
   const updatedComponents = [
     ...baseComponents.map((c) =>
       c.id === 'root' ? { ...c, children: rootChildren } : c,
@@ -544,7 +582,7 @@ export function buildActionConfirmationMessages(
       id: 'confirm_copy',
       component: 'AgText',
       el: 'p',
-      text: 'Action verified and committed to the tenant audit trail. All required FACE fields passed validation.',
+      text: summaryLine,
     },
   ];
 
