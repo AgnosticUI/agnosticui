@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": false,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@agnosticui/a2ui-lit": ["./node_modules/@agnosticui/a2ui-lit"],
+      "@agnosticui/a2ui-vue": ["./node_modules/@agnosticui/a2ui-vue"]
+    },
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src", "../shared"]
+}

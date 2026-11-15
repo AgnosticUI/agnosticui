@@ -1,15 +1,15 @@
 ================================================================================
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
- TIMESTAMP BASELINE : 2026-11-15T21:55:00Z (Anchored to Sunday, Nov 15, 2026 Timeline)
- ACTIVE WORKSPACE   : Phase 5 Task 5.3 (Micro-Chunk 5.3a: `@agnosticui/a2ui-vue` Renderer Package in `v2/a2ui/renderers/vue/`, followed by Micro-Chunk 5.3b: Vue 3 Support Center Studio in `v2/a2ui/demos/support-center/vue/`)
+ TIMESTAMP BASELINE : 2026-11-15T22:45:00Z (Anchored to Sunday, Nov 15, 2026 Timeline)
+ ACTIVE WORKSPACE   : Phase 5 Task 5.4 (Final Verification, Publish Readiness & Official `a2ui-project/a2ui` Ecosystem PR `v1.0`)
  STRATEGIC PIVOT    :
    - Positioning: "Spec-compliant A2UI v1.0 Component Catalog & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`) bringing AgnosticUI's 22 runtime skins and FACE form validation to conversational generative UI surfaces."
    - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> 25 components in `agnosticui-catalog.json` + `SKILL.md` + `check-codegen.ts`), `v2/a2ui/renderers/{lit,react,vue}`, `v2/a2ui/demos/support-center/{shared,lit,react,vue}` (Conversational `AgMessageBubble` Support Center Studio with tactile motion, Evergreen skin, collapsible Inspector drawer, and 22 runtime skins).
    - Primary Entrypoints:
-       * Lit Demo:   `(cd v2/a2ui/demos/support-center/lit && npm run build && npm run dev)`
-       * React Demo: `(cd v2/a2ui/demos/support-center/react && npm run build && npm run dev)`
-       * Vue Demo:   `(cd v2/a2ui/demos/support-center/vue && npm run build && npm run dev)`
+       * Lit Demo:   `(cd v2/a2ui/demos/support-center/lit && npm run typecheck && npm run build && npm run dev)`
+       * React Demo: `(cd v2/a2ui/demos/support-center/react && npm run typecheck && npm run build && npm run dev)`
+       * Vue Demo:   `(cd v2/a2ui/demos/support-center/vue && npm run typecheck && npm run build && npm run dev)`
 
  COMPLETED PHASES   :
    - Phase 1 (Milestone 1 — 100% Complete & Passing):
@@ -28,13 +28,12 @@
        * Built `@agnosticui/a2ui-react` (`v2/a2ui/renderers/react/`) wrapping `<a2ui-surface>` via `@lit/react` + `React.forwardRef` (`<AgA2uiSurface>`) and `useA2uiSurface()` hook with automatic FACE validation (`vitest run` 2/2 passing, `tsc` clean), extracted `v2/a2ui/vitest.shared.mts` (`sharedA2uiResolve`), and added workflow `README.md` guides.
    - Phase 5 Task 5.2 (Complete & Passing — Micro-Chunks 5.2a, 5.2b, 5.2c):
        * Relocated Lit demo to `v2/a2ui/demos/support-center/lit/`, extracted `shared/` (`support-scenarios.ts`, `studio.css`, `live-gemini.ts`, `evergreen-skin.css`), enabled `DynamicStringSchema` on `AgCombobox.value`, wired A2UI v1.0 `processor.model.onAction.subscribe(...)` for 4-turn `me -> them -> me -> them` `AgMessageBubble` conversations (`Jordan Taylor • Growth Marketing` + `Campaign Concierge`), added `AgEmptyState` idle boot with `:has(ag-empty-state)` zero-padding styling, collapsible `Inspector` drawer, `scrollbar-gutter: stable` zero-CLS layout, directional `400-480ms` ease-out quint motion, custom `Evergreen` skin, and built the matching React 19 Support Center Studio (`v2/a2ui/demos/support-center/react/`) with StrictMode-safe `createSurface` handling in `@agnosticui/a2ui-react`.
+   - Phase 5 Task 5.3 (Complete & Passing — Micro-Chunks 5.3a, 5.3b):
+       * Built `@agnosticui/a2ui-vue` (`v2/a2ui/renderers/vue/`) with `defineComponent` `<AgA2uiSurface>` wrapper, `useA2uiSurface` composable, `README.md`, and Vitest + `@vue/test-utils` specs (2/2 passing, `tsc` clean, packed `.tgz`), plus the matching Vue 3 Support Center Studio (`v2/a2ui/demos/support-center/vue/`) verified clean with `vue-tsc --noEmit` and `vite build`.
 
  ROADMAP DELTAS     :
-   - Phase 5 Remaining Tasks (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
-       * Task 5.3:
-           - Micro-Chunk 5.3a: Scaffold and implement `v2/a2ui/renderers/vue` (`@agnosticui/a2ui-vue` with `<AgA2uiSurface>`, `useA2uiSurface()`, `README.md`, and Vitest specs).
-           - Micro-Chunk 5.3b: Build the matching Vue 3 Support Center demo in `v2/a2ui/demos/support-center/vue/` consuming `@agnosticui/a2ui-vue` and `shared/`.
-       * Task 5.4: Publish `@agnosticui/a2ui-{lit,react,vue}` to npm and open the official `a2ui-project/a2ui` ecosystem PR (`v1.0`).
+   - Phase 5 Remaining Task (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
+       * Task 5.4: Final cross-workspace verification (`check-codegen.ts`, all 3 renderer test/build suites, all 3 demo typecheck/build suites), review `v2/a2ui/docs/PUBLISH.md`, publish `@agnosticui/a2ui-{lit,react,vue}` to npm, and open the official `a2ui-project/a2ui` ecosystem PR (`v1.0`).
 
 --- MANDATORY WORKFLOW & MENTOR RULES (ENFORCE STRICTLY) ---
 1. Pacing & Scope: Plan before coding. Break tasks into small, cohesive micro-chunks across separate turns. Never build an entire feature or multiple unrelated files at once.
@@ -48,17 +47,17 @@
 9. Verification & Git Checkpoint: Stop at the end of every chunk, provide the exact local verification command, suggest a conventional git commit message, and wait for user permission before advancing.
 
 --- TARGET RUNTIME DELTA ---
- EXACT NEXT TASK    : Phase 5 Task 5.3 (Micro-Chunk 5.3a) — Scaffold and implement `@agnosticui/a2ui-vue` (`v2/a2ui/renderers/vue/`) with `<AgA2uiSurface>`, `useA2uiSurface()`, `README.md`, and Vitest specs
+ EXACT NEXT TASK    : Phase 5 Task 5.4 — Final Workspace Verification, npm Publish Readiness (`@agnosticui/a2ui-{lit,react,vue}`), and `a2ui-project/a2ui` Ecosystem PR (`v1.0`)
  ENGINEERING "WHY"  :
-   1. Vue 3 natively supports Custom Elements (`isCustomElement: (tag) => tag.startsWith('a2ui-') || tag.startsWith('ag-')`) and binds complex JS objects (like `SurfaceModel`) directly via `.surface="surface"` property binding without needing a wrapper runtime like `@lit/react`.
-   2. Ground-truth inspection of `v2/lib/src/components/Button/vue/` shows AgnosticUI's exact Vue 3 wrapper conventions (`defineComponent`, `PropType`, `emits`, TypeScript strictness, and `package.json` structure) before we write `v2/a2ui/renderers/vue/`.
+   1. Before publishing `@agnosticui/a2ui-{lit,react,vue}` to npm, `package.json` `devDependencies` / `peerDependencies` must be audited against `v2/a2ui/docs/PUBLISH.md` so no local `file:../lit` tarball references leak into published manifests.
+   2. Running a single end-to-end verification across `catalog`, `renderers/{lit,react,vue}`, and `demos/support-center/{lit,react,vue}` guarantees every package, type declaration, and reference demo is green before tagging and publishing.
  CODE BOUNDARIES    :
-   - Micro-Chunk 5.3a: Inspect `v2/lib/src/components/Button/vue/` and `v2/lib/package.json` for Vue 3 versions/conventions, scaffold `v2/a2ui/renderers/vue/` (`package.json`, `tsconfig.json`, `vitest.config.ts`, `src/test-setup.ts`, `src/index.ts`, `src/index.spec.ts`, `README.md`), and verify `npm test && npm run build`.
+   - Task 5.4: Inspect `v2/a2ui/docs/PUBLISH.md` and `v2/a2ui/renderers/{lit,react,vue}/package.json`, run full workspace verification, and prepare the publish + `a2ui-project/a2ui` PR checklist.
 
 --- SYSTEM BOOT TRIGGER COMMAND ---
 ::: SYSTEM INITIALIZED. STOP BEFORE WRITING ANY CODE.
 Ask the user to:
-1. Run `ls v2/lib/src/components/Button/vue && cat v2/lib/src/components/Button/vue/VueButton.vue > ~/Downloads/cat.txt` (plus check Vue 3 dependencies in `v2/lib/package.json`) and upload `~/Downloads/cat.txt`.
-2. Confirm readiness to begin Phase 5 Task 5.3 Micro-Chunk 5.3a (`@agnosticui/a2ui-vue` renderer package).
+1. Run `cat v2/a2ui/docs/PUBLISH.md > ~/Downloads/cat.txt` and upload `~/Downloads/cat.txt` (or confirm ready to review publish steps).
+2. Confirm readiness to begin Phase 5 Task 5.4 (Final Verification, npm Publish Readiness & Ecosystem PR).
 Wait for confirmation before writing any code. :::
 ================================================================================
