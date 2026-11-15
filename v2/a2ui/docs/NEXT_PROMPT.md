@@ -2,10 +2,10 @@
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
  TIMESTAMP BASELINE : 2026-11-15T15:05:00Z (Anchored to Sunday, Nov 15, 2026 Timeline)
- ACTIVE WORKSPACE   : Phase 5 Task 5.2 (Micro-Chunk 5.2a: Relocate Lit Demo to `demos/support-center/lit/` & Extract `shared/`, followed by 5.2b Design Polish & Invoca Brand Skin)
+ ACTIVE WORKSPACE   : Phase 5 Task 5.2 (Micro-Chunk 5.2a: Relocate Lit Demo to `demos/support-center/lit/` & Extract `shared/`, followed by 5.2b Design Polish & Evergreen Skin)
  STRATEGIC PIVOT    :
    - Positioning: "Spec-compliant A2UI v1.0 Component Catalog & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`) bringing AgnosticUI's 21+ runtime skins and FACE form validation to conversational generative UI surfaces."
-   - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> 25 components in `agnosticui-catalog.json` + `SKILL.md` + `check-codegen.ts`), `v2/a2ui/renderers/{lit,react,vue}`, `v2/a2ui/demos/support-center/{shared,lit,react,vue}` (Conversational `AgMessageBubble` Support Center Studio with tactile motion, Invoca brand skin option, and 21+ runtime skins).
+   - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> 25 components in `agnosticui-catalog.json` + `SKILL.md` + `check-codegen.ts`), `v2/a2ui/renderers/{lit,react,vue}`, `v2/a2ui/demos/support-center/{shared,lit,react,vue}` (Conversational `AgMessageBubble` Support Center Studio with tactile motion, Evergreen skin option, and 21+ runtime skins).
    - Primary Entrypoints:
        * Lit Demo:   `(cd v2/a2ui/demos/support-center/lit && npm run build && npm run dev)`
        * React Demo: `(cd v2/a2ui/demos/support-center/react && npm run build && npm run dev)`
@@ -32,7 +32,7 @@
    - Phase 5 Remaining Tasks (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
        * Task 5.2:
            - Micro-Chunk 5.2a: Relocate Lit demo into `v2/a2ui/demos/support-center/lit/` and extract `shared/` (`support-scenarios.ts`, `studio.css`, `live-gemini.ts`).
-           - Micro-Chunk 5.2b: Add Design Craft & Motion Polish (`AgMessageBubble` conversational triage scenarios, `prefers-reduced-motion`-safe streaming entrance transitions, typography/elevation refinement, and a temporary `Invoca Brand` skin in `shared/invoca-skin.css`).
+           - Micro-Chunk 5.2b: Add Design Craft & Motion Polish (`AgMessageBubble` conversational triage scenarios, `prefers-reduced-motion`-safe streaming entrance transitions, typography/elevation refinement, and a temporary `Evergreen` skin in `shared/evergreen-skin.css`).
            - Micro-Chunk 5.2c: Build matching React 19 Support Center demo in `v2/a2ui/demos/support-center/react/` consuming `@agnosticui/a2ui-react` and `shared/`.
        * Task 5.3: Build `@agnosticui/a2ui-vue` (`v2/a2ui/renderers/vue`) + matching Vue 3 Support Center demo (`v2/a2ui/demos/support-center/vue/`).
        * Task 5.4: Publish `@agnosticui/a2ui-{lit,react,vue}` to npm and open the official `a2ui-project/a2ui` ecosystem PR (`v1.0`).
@@ -51,7 +51,7 @@
 --- TARGET RUNTIME DELTA ---
  EXACT NEXT TASK    : Phase 5 Task 5.2 (Micro-Chunk 5.2a) — Relocate Lit Support Center demo into `v2/a2ui/demos/support-center/lit/` and extract `shared/` (`support-scenarios.ts`, `studio.css`, `live-gemini.ts`)
  ENGINEERING "WHY"  :
-   1. Isolating `shared/` (`support-scenarios.ts`, `studio.css`, `live-gemini.ts`) before applying Micro-Chunk 5.2b's design polish (`AgMessageBubble` chat framing, motion, and `Invoca Brand` skin) ensures Lit, React, and Vue demos share identical visual craft and fixtures without duplication.
+   1. Isolating `shared/` (`support-scenarios.ts`, `studio.css`, `live-gemini.ts`) before applying Micro-Chunk 5.2b's design polish (`AgMessageBubble` chat framing, motion, and `Evergreen` skin) ensures Lit, React, and Vue demos share identical visual craft and fixtures without duplication.
    2. Ground-truth inspection of `v2/a2ui/demos/support-center/package.json` and `vite.config.ts` prevents broken relative paths (`../../../../skins/...` -> `../../../../../skins/...`) when moving one directory deeper into `lit/`.
  CODE BOUNDARIES    :
    - Micro-Chunk 5.2a: Inspect `v2/a2ui/demos/support-center/package.json`, `vite.config.ts`, `tsconfig.json`, and `index.html`, move files cleanly into `lit/` and `shared/`, and verify `(cd v2/a2ui/demos/support-center/lit && npm run build)`.

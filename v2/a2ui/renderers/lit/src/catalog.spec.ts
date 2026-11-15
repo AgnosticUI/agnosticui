@@ -93,10 +93,10 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
     expect(agInput).not.toBeNull();
     expect(agCheckbox).not.toBeNull();
 
-    agInput!.dispatchEvent(new CustomEvent('input-change', { detail: { value: 'sophia@invoca.com' }, bubbles: true }));
+    agInput!.dispatchEvent(new CustomEvent('input-change', { detail: { value: 'maya.patel@enterprise.io' }, bubbles: true }));
     agCheckbox!.dispatchEvent(new CustomEvent('checkbox-change', { detail: { checked: true }, bubbles: true }));
 
-    expect(surfaceModel.dataModel.get('/form/email')).toBe('sophia@invoca.com');
+    expect(surfaceModel.dataModel.get('/form/email')).toBe('maya.patel@enterprise.io');
     expect(surfaceModel.dataModel.get('/form/agree')).toBe(true);
   });
 

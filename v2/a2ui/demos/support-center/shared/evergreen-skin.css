@@ -1,0 +1,56 @@
+/**
+ * @file evergreen-skin.css
+ * @description Custom "Evergreen" brand skin ([data-skin="evergreen"]) demonstrating
+ * how an enterprise design system themes A2UI v1.0 surfaces via CSS tokens alone.
+ */
+
+:root[data-skin='evergreen'] {
+  --ag-primary: #008766;
+  --ag-primary-hover: #007357;
+  --ag-primary-active: #004030;
+  --ag-primary-text: #007a53;
+  --ag-primary-background: #dcf5ea;
+  --ag-focus-ring: 0 0 0 3px rgba(0, 168, 127, 0.28);
+
+  --ag-background-primary: #fefefa;
+  --ag-background-secondary: #f8faf1;
+  --ag-text-primary: #031d0e;
+  --ag-text-secondary: #4a5a50;
+  --ag-border: #d4dace;
+
+  --ag-success: #00a87f;
+  --ag-success-background: #dcf5ea;
+  --ag-success-text: #04291d;
+  --ag-warning: #855500;
+  --ag-warning-background: #fff4d6;
+  --ag-warning-text: #593800;
+  --ag-danger: #b42318;
+  --ag-danger-background: #feeceb;
+  --ag-danger-text: #7a170f;
+
+  --ag-radius-md: 0.75rem;
+  --ag-radius-lg: 1rem;
+}
+
+:root[data-skin='evergreen'][data-theme='dark'] {
+  --ag-primary: #12d99b;
+  --ag-primary-hover: #5fe0b3;
+  --ag-primary-active: #07c78c;
+  --ag-primary-text: #5fe0b3;
+  --ag-primary-background: #103d32;
+  --ag-focus-ring: 0 0 0 3px rgba(18, 217, 155, 0.32);
+
+  --ag-background-primary: #0a231e;
+  --ag-background-secondary: #031d0e;
+  --ag-text-primary: #fefefa;
+  --ag-text-secondary: #bbc5b5;
+  --ag-border: #1e3a2c;
+
+  --ag-success: #12d99b;
+  --ag-success-background: #103d32;
+  --ag-success-text: #a9efd3;
+}
+
+:root[data-skin='evergreen'] .studio-header {
+  border-bottom: 2px solid #00a87f;
+}

@@ -1,12 +1,12 @@
 # AgnosticUI A2UI v1.0 Support Center Studio (`lit/`, `react/`, `vue/`)
 
-Interactive offline-first reference applications demonstrating **A2UI `v1.0`** conversational generative UI surfaces (`AgMessageBubble`, `AgCombobox`, `AgCard`, `AgInput`, `AgToggle`, `AgCheckbox`, `AgButton`), **Form-Associated Custom Element (FACE) validation**, two-way `@path` DataModel reactivity, and live switching across **21+ AgnosticUI runtime skins** (including an **Invoca Brand** skin) + Light/Dark mode.
+Interactive offline-first reference applications demonstrating **A2UI `v1.0`** conversational generative UI surfaces (`AgMessageBubble`, `AgCombobox`, `AgCard`, `AgInput`, `AgToggle`, `AgCheckbox`, `AgButton`), **Form-Associated Custom Element (FACE) validation**, two-way `@path` DataModel reactivity, and live switching across **21+ AgnosticUI runtime skins** (including an **Evergreen** skin) + Light/Dark mode.
 
 ## Directory Structure
 
 ```text
 v2/a2ui/demos/support-center/
-├── shared/   # Shared A2UI v1.0 fixtures, studio CSS, Invoca brand skin & local/live compiler
+├── shared/   # Shared A2UI v1.0 fixtures, studio CSS, Evergreen skin & local/live compiler
 ├── lit/      # Lit Web Components studio (<ag-a2ui-studio> + @agnosticui/a2ui-lit)
 ├── react/    # React 19 studio (<AgA2uiSurface> + useA2uiSurface + @agnosticui/a2ui-react)
 └── vue/      # Vue 3 studio (<AgA2uiSurface> + useA2uiSurface + @agnosticui/a2ui-vue)

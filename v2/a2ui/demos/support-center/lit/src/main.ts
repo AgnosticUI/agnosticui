@@ -1,7 +1,7 @@
 /**
  * @file main.ts
  * @description Declarative Lit studio (<ag-a2ui-studio>) showcasing AgnosticUI's
- * A2UI v1.0 catalog across 21+ runtime skins (including Invoca Brand), Light/Dark
+ * A2UI v1.0 catalog across 21+ runtime skins (including Evergreen), Light/Dark
  * modes, live @path DataModel inspection, FACE form validation, and Local vs.
  * Live Gemini 3.8 Flash prompt compilation.
  */
@@ -10,7 +10,7 @@ import 'agnosticui-core/styles/tokens.css';
 import 'agnosticui-core/styles/tokens-dark.css';
 import '../../../../../skins/skins-bundle.css';
 import '../../shared/studio.css';
-import '../../shared/invoca-skin.css';
+import '../../shared/evergreen-skin.css';
 
 import { LitElement, html } from 'lit';
 import { createElement, CircleSlash2 } from 'lucide';
@@ -55,7 +55,7 @@ registerAgnosticUICatalog();
 restorePrefs();
 
 const STUDIO_SKINS = [
-  { id: 'invoca', label: 'Invoca Brand', swatch: '#1d4ed8' },
+  { id: 'evergreen', label: 'Evergreen', swatch: '#00a87f' },
   ...SKINS,
 ];
 
@@ -109,7 +109,7 @@ export class AgA2uiStudio extends LitElement {
     this.selectedScenarioId = initial.id;
     this.activePromptBanner =
       'Idle — select an Offline A2UI Fixture above or click Generate Local UI.';
-    this.activeSkinId = localStorage.getItem('ag-skin') ?? 'invoca';
+    this.activeSkinId = localStorage.getItem('ag-skin') ?? 'evergreen';
     applySkin(this.activeSkinId);
     this.isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     this.dataModelJson = '{}';
@@ -360,7 +360,8 @@ export class AgA2uiStudio extends LitElement {
 
   override render() {
     const activeSkinLabel =
-      STUDIO_SKINS.find((s) => s.id === this.activeSkinId)?.label ?? 'Invoca Brand';
+      STUDIO_SKINS.find((s) => s.id === this.activeSkinId)?.label ?? 'Evergreen';
+
     const isLocal = this.compilerMode === 'local';
 
     return html`
