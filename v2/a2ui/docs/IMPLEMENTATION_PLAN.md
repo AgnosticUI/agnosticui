@@ -79,6 +79,11 @@
 * **Task 5.3 — `@agnosticui/a2ui-vue` Renderer Package & Vue 3 Support Center Demo** ✅
   * **Micro-Chunk 5.3a:** ✅ Scaffolded and implemented `@agnosticui/a2ui-vue` (`v2/a2ui/renderers/vue/`) with `defineComponent` `<AgA2uiSurface>` wrapper, `useA2uiSurface` composable (`model.onAction.subscribe` + StrictMode/re-stream `createSurface` reset), `README.md`, and Vitest + `@vue/test-utils` specs (2/2 passing, `tsc` clean, packed `.tgz`).
   * **Micro-Chunk 5.3b:** ✅ Built the matching Vue 3 Support Center demo in `v2/a2ui/demos/support-center/vue/` consuming `@agnosticui/a2ui-vue`, `agnosticui-core/*/vue` wrappers, and `shared/`, verified clean with `vue-tsc --noEmit`, `vite build`, and live Vite dev server.
-* **Task 5.4 — npm Publish & Official `a2ui.org` Ecosystem Listing PR** ⬜
-  * **Micro-Chunk 5.4a:** Publish `@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, and `@agnosticui/a2ui-vue` (with `agnosticui-catalog.json` and `SKILL.md`) to npm.
-  * **Micro-Chunk 5.4b:** Fork `a2ui-project/a2ui`, sign the Google CLA, and open the PR adding AgnosticUI (`v1.0`, Lit/React/Vue) to `docs/site/src/content/docs/ecosystem/renderers.mdx`.
+* **Task 5.4 — Final Workspace Verification, npm Publish Readiness & `a2ui-project/a2ui` Ecosystem PR (`v1.0`)** ⬜ *(Next)*
+  * **Micro-Chunk 5.4a (Publish Hygiene & Tarball Audit):**
+    * Copy `v2/a2ui/catalog/agnosticui-catalog.json` and `v2/a2ui/catalog/SKILL.md` into `v2/a2ui/renderers/lit/` (via `prepack` / release script) and expose `./agnosticui-catalog.json` in `renderers/lit/package.json` `"exports"`.
+    * Add explicit `"files"` whitelists to `renderers/lit/package.json` (`["dist", "README.md", "agnosticui-catalog.json", "SKILL.md"]`) and `renderers/{react,vue}/package.json` (`["dist", "README.md"]`) so local `.tgz` files, `src/`, and test configs are excluded.
+    * Swap `devDependencies` `"file:..."` tarball references (`agnosticui-core`, `@agnosticui/a2ui-lit`) to published semver ranges (`^2.0.0-alpha.31`, `^2.0.0-alpha.1`) prior to `npm publish`, verify tarball contents with `npm pack --dry-run`, and publish `@agnosticui/a2ui-{lit,react,vue}` to npm (`--access public`).
+  * **Micro-Chunk 5.4b (Ecosystem Submission):**
+    * Fork `a2ui-project/a2ui`, register AgnosticUI (`v1.0`) in the official community catalogs/renderers directory referencing `@agnosticui/a2ui-{lit,react,vue}` and `agnosticui-catalog.json`, and open the upstream PR.
+
