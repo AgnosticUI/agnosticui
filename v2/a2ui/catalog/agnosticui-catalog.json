@@ -1,7 +1,7 @@
 {
   "protocolVersion": "1.0",
   "catalogId": "https://agnosticui.com",
-  "instructions": "Use AgnosticUI components (AgCard, AgFieldset, AgInput, AgSelect, AgCheckbox, AgRadio, AgButton, AgAlert, AgBadge, AgAvatar, AgTag, AgTabs, AgCollapsible, AgHeader, AgDivider, AgText). Always use UAX #31 component IDs (letters, digits, underscores only; no hyphens) and bind interactive form fields using {\"@path\": \"/...\"} pointers.",
+  "instructions": "Use AgnosticUI components (AgCard, AgFieldset, AgDivider, AgHeader, AgAccordion, AgCollapsible, AgTabs, AgMessageBubble, AgAlert, AgBadge, AgAvatar, AgTag, AgEmptyState, AgTimeline, AgProgress, AgProgressRing, AgSpinner, AgButton, AgInput, AgCombobox, AgSelect, AgCheckbox, AgRadio, AgRating, AgToggle, AgText). Always use UAX #31 component IDs (letters, digits, underscores only; no hyphens) and bind interactive form fields using {\"@path\": \"/...\"} pointers.",
   "components": {
     "AgText": {
       "type": "object",
@@ -33,6 +33,22 @@
       "required": [
         "component",
         "text"
+      ],
+      "unevaluatedProperties": false
+    },
+    "AgAccordion": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "const": "AgAccordion"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "description": "Child component IDs rendered inside AgAccordion."
+        }
+      },
+      "required": [
+        "component"
       ],
       "unevaluatedProperties": false
     },
@@ -431,6 +447,168 @@
       ],
       "unevaluatedProperties": false
     },
+    "AgCombobox": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "const": "AgCombobox"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "disabled": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "value",
+              "label"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "placeholder": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property placeholder."
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property label."
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
+        },
+        "labelHidden": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property labelHidden."
+        },
+        "noLabel": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property noLabel."
+        },
+        "ariaLabel": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property ariaLabel."
+        },
+        "helpText": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property helpText."
+        },
+        "errorMessage": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property errorMessage."
+        },
+        "autocomplete": {
+          "type": "string",
+          "enum": [
+            "list",
+            "none"
+          ]
+        },
+        "filterMode": {
+          "type": "string",
+          "enum": [
+            "none",
+            "startsWith",
+            "contains"
+          ]
+        },
+        "clearable": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property clearable."
+        },
+        "disabled": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property disabled."
+        },
+        "readonly": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property readonly."
+        },
+        "required": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property required."
+        },
+        "invalid": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property invalid."
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "default",
+            "small",
+            "large"
+          ]
+        },
+        "closeOnSelect": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property closeOnSelect."
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "default",
+            "monochrome"
+          ]
+        },
+        "multiple": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property multiple."
+        },
+        "maxOptionsVisible": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "description": "Numeric property maxOptionsVisible."
+        },
+        "loading": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property loading."
+        },
+        "loadingText": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property loadingText."
+        },
+        "noResultsText": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property noResultsText."
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action",
+          "description": "Action dispatched on user interaction."
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "unevaluatedProperties": false
+    },
     "AgDivider": {
       "type": "object",
       "properties": {
@@ -468,6 +646,46 @@
             "default",
             "monochrome"
           ]
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "unevaluatedProperties": false
+    },
+    "AgEmptyState": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "const": "AgEmptyState"
+        },
+        "title": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property title."
+        },
+        "subtitle": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property subtitle."
+        },
+        "buttonText": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property buttonText."
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "bordered": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property bordered."
+        },
+        "rounded": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property rounded."
         }
       },
       "required": [
@@ -678,6 +896,135 @@
       ],
       "unevaluatedProperties": false
     },
+    "AgMessageBubble": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "const": "AgMessageBubble"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "description": "Child component IDs rendered inside AgMessageBubble."
+        },
+        "from": {
+          "type": "string",
+          "enum": [
+            "me",
+            "them"
+          ]
+        },
+        "message": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property message."
+        },
+        "time": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property time."
+        },
+        "author": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property author."
+        },
+        "avatarUrl": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property avatarUrl."
+        },
+        "footer": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property footer."
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "warning",
+            "info",
+            "success",
+            "danger",
+            "default",
+            "monochrome",
+            "neutral"
+          ]
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "unevaluatedProperties": false
+    },
+    "AgProgress": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "const": "AgProgress"
+        },
+        "children": {
+          "$ref": "common_types.json#/$defs/ChildList",
+          "description": "Child component IDs rendered inside AgProgress."
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "description": "Numeric property value."
+        },
+        "max": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "description": "Numeric property max."
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property label."
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "unevaluatedProperties": false
+    },
+    "AgProgressRing": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "const": "AgProgressRing"
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "description": "Numeric property value."
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "warning",
+            "info",
+            "success",
+            "danger",
+            "primary"
+          ]
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property label."
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "unevaluatedProperties": false
+    },
     "AgRadio": {
       "type": "object",
       "properties": {
@@ -766,6 +1113,100 @@
       ],
       "unevaluatedProperties": false
     },
+    "AgRating": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "const": "AgRating"
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "description": "Numeric property value."
+        },
+        "max": {
+          "$ref": "common_types.json#/$defs/DynamicNumber",
+          "description": "Numeric property max."
+        },
+        "precision": {
+          "type": "string",
+          "enum": [
+            "whole",
+            "half"
+          ]
+        },
+        "readonly": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property readonly."
+        },
+        "allowClear": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property allowClear."
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "success",
+            "warning",
+            "danger"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "name": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property name."
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property label."
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
+        },
+        "labelHidden": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property labelHidden."
+        },
+        "noLabel": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property noLabel."
+        },
+        "required": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property required."
+        },
+        "invalid": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property invalid."
+        },
+        "errorMessage": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property errorMessage."
+        },
+        "helpText": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property helpText."
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "unevaluatedProperties": false
+    },
     "AgSelect": {
       "type": "object",
       "properties": {
@@ -835,6 +1276,31 @@
         "action": {
           "$ref": "common_types.json#/$defs/Action",
           "description": "Action dispatched on user interaction."
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "unevaluatedProperties": false
+    },
+    "AgSpinner": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "const": "AgSpinner"
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "default",
+            "small",
+            "large",
+            "xlarge"
+          ]
+        },
+        "ariaLabel": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property ariaLabel."
         }
       },
       "required": [
@@ -916,6 +1382,136 @@
         "removable": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
           "description": "Boolean property removable."
+        },
+        "action": {
+          "$ref": "common_types.json#/$defs/Action",
+          "description": "Action dispatched on user interaction."
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "unevaluatedProperties": false
+    },
+    "AgTimeline": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "const": "AgTimeline"
+        },
+        "orientation": {
+          "type": "string",
+          "enum": [
+            "vertical",
+            "horizontal"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "warning",
+            "success",
+            "danger",
+            "primary",
+            "monochrome"
+          ]
+        },
+        "compact": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property compact."
+        },
+        "ariaLabel": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property ariaLabel."
+        }
+      },
+      "required": [
+        "component"
+      ],
+      "unevaluatedProperties": false
+    },
+    "AgToggle": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "const": "AgToggle"
+        },
+        "label": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property label."
+        },
+        "labelPosition": {
+          "type": "string",
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
+        },
+        "labelHidden": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property labelHidden."
+        },
+        "noLabel": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property noLabel."
+        },
+        "checked": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property checked."
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "warning",
+            "success",
+            "danger",
+            "default",
+            "monochrome"
+          ]
+        },
+        "disabled": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property disabled."
+        },
+        "readonly": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property readonly."
+        },
+        "required": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property required."
+        },
+        "invalid": {
+          "$ref": "common_types.json#/$defs/DynamicBoolean",
+          "description": "Boolean property invalid."
+        },
+        "errorMessage": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property errorMessage."
+        },
+        "helpText": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property helpText."
+        },
+        "name": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property name."
+        },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "String property value."
         },
         "action": {
           "$ref": "common_types.json#/$defs/Action",
@@ -1454,6 +2050,9 @@
           "$ref": "#/components/AgText"
         },
         {
+          "$ref": "#/components/AgAccordion"
+        },
+        {
           "$ref": "#/components/AgAlert"
         },
         {
@@ -1472,7 +2071,13 @@
           "$ref": "#/components/AgCheckbox"
         },
         {
+          "$ref": "#/components/AgCombobox"
+        },
+        {
           "$ref": "#/components/AgDivider"
+        },
+        {
+          "$ref": "#/components/AgEmptyState"
         },
         {
           "$ref": "#/components/AgFieldset"
@@ -1484,16 +2089,37 @@
           "$ref": "#/components/AgInput"
         },
         {
+          "$ref": "#/components/AgMessageBubble"
+        },
+        {
+          "$ref": "#/components/AgProgress"
+        },
+        {
+          "$ref": "#/components/AgProgressRing"
+        },
+        {
           "$ref": "#/components/AgRadio"
         },
         {
+          "$ref": "#/components/AgRating"
+        },
+        {
           "$ref": "#/components/AgSelect"
+        },
+        {
+          "$ref": "#/components/AgSpinner"
         },
         {
           "$ref": "#/components/AgTabs"
         },
         {
           "$ref": "#/components/AgTag"
+        },
+        {
+          "$ref": "#/components/AgTimeline"
+        },
+        {
+          "$ref": "#/components/AgToggle"
         }
       ],
       "discriminator": {
