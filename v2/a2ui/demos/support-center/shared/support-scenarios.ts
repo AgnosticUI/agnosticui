@@ -7,6 +7,46 @@ export interface SupportScenario {
   messages: A2uiWireMessage[];
 }
 
+export const EMPTY_STATE_SURFACE_MESSAGES: A2uiWireMessage[] = [
+  {
+    version: '1.0',
+    createSurface: {
+      surfaceId: 'support_surface',
+      catalogId: AGNOSTICUI_CATALOG_ID,
+    },
+  },
+  {
+    version: '1.0',
+    updateComponents: {
+      surfaceId: 'support_surface',
+      components: [
+        {
+          id: 'root',
+          component: 'AgCard',
+          shadow: true,
+          children: ['welcome_empty_state'],
+        },
+        {
+          id: 'welcome_empty_state',
+          component: 'AgEmptyState',
+          title: 'Ready to Stream an A2UI v1.0 Surface',
+          subtitle:
+            'Select an Offline A2UI Fixture in the header or enter a prompt above and click Generate Local UI.',
+          size: 'lg',
+        },
+      ],
+    },
+  },
+  {
+    version: '1.0',
+    updateDataModel: {
+      surfaceId: 'support_surface',
+      path: '/',
+      value: { status: 'idle' },
+    },
+  },
+];
+
 export const SUPPORT_SCENARIOS: SupportScenario[] = [
   {
     id: 'conversational_agent_triage',

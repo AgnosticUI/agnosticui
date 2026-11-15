@@ -41,6 +41,7 @@ import {
 import {
   buildActionConfirmationMessages,
   SUPPORT_SCENARIOS,
+  EMPTY_STATE_SURFACE_MESSAGES,
   type SupportScenario,
 } from '../../shared/support-scenarios.js';
 import {
@@ -106,7 +107,8 @@ export class AgA2uiStudio extends LitElement {
     super();
     const initial = SUPPORT_SCENARIOS.at(0)!;
     this.selectedScenarioId = initial.id;
-    this.activePromptBanner = initial.prompt;
+    this.activePromptBanner =
+      'Idle — select an Offline A2UI Fixture above or click Generate Local UI.';
     this.activeSkinId = localStorage.getItem('ag-skin') ?? 'invoca';
     applySkin(this.activeSkinId);
     this.isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -121,8 +123,12 @@ export class AgA2uiStudio extends LitElement {
     this.liveErrorText = '';
   }
 
-    override firstUpdated(): void {
-    void this.playScenario(this.currentScenario, 0);
+  override firstUpdated(): void {
+    void this.renderWireMessages(
+      EMPTY_STATE_SURFACE_MESSAGES,
+      0,
+      'Idle Empty State',
+    );
   }
 
   override disconnectedCallback(): void {
