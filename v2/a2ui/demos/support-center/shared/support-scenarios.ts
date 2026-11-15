@@ -7,6 +7,29 @@ export interface SupportScenario {
   messages: A2uiWireMessage[];
 }
 
+export interface QuickPromptChip {
+  label: string;
+  prompt: string;
+}
+
+export const QUICK_PROMPT_CHIPS: QuickPromptChip[] = [
+  {
+    label: 'Campaign Call Tracking',
+    prompt:
+      'Set up a paid search call tracking campaign with owner email, campaign channel, and instant conversion alerts.',
+  },
+  {
+    label: 'High-Intent Caller Spike',
+    prompt:
+      'Alert the sales floor about a 42% surge in high-intent inbound callers and route overflow to senior specialists.',
+  },
+  {
+    label: 'VIP Lead Routing Rule',
+    prompt:
+      'Create a priority caller routing rule for enterprise demo requests with manager email and instant specialist alerts.',
+  },
+];
+
 export const EMPTY_STATE_SURFACE_MESSAGES: A2uiWireMessage[] = [
   {
     version: '1.0',
@@ -31,7 +54,7 @@ export const EMPTY_STATE_SURFACE_MESSAGES: A2uiWireMessage[] = [
           component: 'AgEmptyState',
           title: 'Ready to Stream an A2UI v1.0 Surface',
           subtitle:
-            'Select an Offline A2UI Fixture in the header or enter a prompt above and click Generate Local UI.',
+            'Choose a quick prompt chip or describe a workflow above and click Generate UI.',
           size: 'lg',
         },
       ],
@@ -47,35 +70,12 @@ export const EMPTY_STATE_SURFACE_MESSAGES: A2uiWireMessage[] = [
   },
 ];
 
-export interface QuickPromptChip {
-  label: string;
-  prompt: string;
-}
-
-export const QUICK_PROMPT_CHIPS: QuickPromptChip[] = [
-  {
-    label: 'Rotate Webhook Key',
-    prompt:
-      'Rotate compromised Google Ads conversion webhook key for prod-us-east-1 and audit owner access.',
-  },
-  {
-    label: 'P1 Webhook Outage Alert',
-    prompt:
-      'Create a P1 webhook incident alert card with on-call acknowledgement button.',
-  },
-  {
-    label: 'SSO Scope Escalation',
-    prompt:
-      'Build an enterprise SSO invoice export access request form with security owner email and expedited audit.',
-  },
-];
-
 export const SUPPORT_SCENARIOS: SupportScenario[] = [
   {
-    id: 'conversational_agent_triage',
-    title: '1. Conversational Agent Triage (MessageBubble + Combobox + FACE)',
+    id: 'campaign_call_tracking',
+    title: '1. Campaign Call Attribution & Routing',
     prompt:
-      'Caller asks Signal AI Agent to rotate a compromised Google Ads Webhook key and route alerts to the regional cluster.',
+      'Set up a paid search call tracking campaign with regional routing and instant conversion alerts.',
     messages: [
       {
         version: '1.0',
@@ -99,17 +99,17 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
               id: 'caller_bubble',
               component: 'AgMessageBubble',
               from: 'me',
-              author: 'Maya Patel • Revenue Ops',
+              author: 'Jordan Taylor • Growth Marketing',
               time: 'Just now',
               message:
-                'We detected unexpected webhook retries on our Google Ads conversion endpoint. Can you help rotate the signing key for US-East?',
+                'We are launching our Q4 Paid Search campaign tomorrow. Can you help set up call tracking and route high-intent callers to our sales desk?',
             },
             {
               id: 'agent_bubble',
               component: 'AgMessageBubble',
               from: 'them',
               variant: 'neutral',
-              author: 'Signal AI Concierge',
+              author: 'Campaign Concierge',
               time: 'Just now',
               children: ['agent_form_card'],
             },
@@ -127,14 +127,14 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
             {
               id: 'triage_badge',
               component: 'AgBadge',
-              variant: 'warning',
+              variant: 'info',
               children: ['triage_badge_text'],
             },
             {
               id: 'triage_badge_text',
               component: 'AgText',
               el: 'span',
-              text: 'P1 • Key Rotation & Webhook Guard',
+              text: 'Campaign Setup • Live Attribution',
             },
             {
               id: 'triage_heading',
@@ -145,7 +145,7 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
             {
               id: 'triage_fieldset',
               component: 'AgFieldset',
-              legend: 'Target Cluster & Security Owner',
+              legend: 'Routing Region & Campaign Owner',
               bordered: true,
               children: [
                 'cluster_combobox',
@@ -156,29 +156,29 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
             {
               id: 'cluster_combobox',
               component: 'AgCombobox',
-              label: 'Routing Cluster',
-              placeholder: 'Search regional cluster...',
+              label: 'Sales Routing Desk',
+              placeholder: 'Search sales desk...',
               required: true,
               options: [
-                { value: 'us-east-prod', label: 'US-East Production (Primary)' },
-                { value: 'eu-central-prod', label: 'EU-Frankfurt (GDPR)' },
-                { value: 'ap-southeast-prod', label: 'AP-Sydney Edge' },
+                { value: 'na-enterprise', label: 'North America Enterprise Desk' },
+                { value: 'emea-growth', label: 'EMEA Growth & Inbound Desk' },
+                { value: 'apac-solutions', label: 'APAC Solutions Team' },
               ],
               value: { '@path': '/form/cluster' },
             },
             {
               id: 'email_input',
               component: 'AgInput',
-              label: 'Security Owner Email',
+              label: 'Campaign Owner Email',
               type: 'email',
-              placeholder: 'secops@company.com',
+              placeholder: 'jordan@company.com',
               required: true,
               value: { '@path': '/form/email' },
             },
             {
               id: 'revoke_toggle',
               component: 'AgToggle',
-              label: 'Revoke previous signing secret immediately',
+              label: 'Enable real-time conversation transcription & QA scoring',
               checked: { '@path': '/form/revokePrevious' },
             },
             {
@@ -187,14 +187,14 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
               variant: 'primary',
               size: 'lg',
               shape: 'rounded',
-              label: 'Validate & Rotate Signing Key',
+              label: 'Launch Campaign & Routing',
               action: {
                 event: {
-                  name: 'rotate_webhook_key',
+                  name: 'launch_campaign_routing',
                   context: {
                     cluster: { '@path': '/form/cluster' },
                     email: { '@path': '/form/email' },
-                    revokePrevious: { '@path': '/form/revokePrevious' },
+                    transcriptionEnabled: { '@path': '/form/revokePrevious' },
                   },
                 },
               },
@@ -209,11 +209,11 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
           path: '/',
           value: {
             ticket: {
-              headline: 'Google Ads Conversion Webhook Key Rotation',
+              headline: 'Q4 Paid Search Call Attribution & Routing',
             },
             form: {
-              cluster: 'us-east-prod',
-              email: 'maya.patel@enterprise.io',
+              cluster: 'na-enterprise',
+              email: 'jordan.taylor@brand.io',
               revokePrevious: true,
             },
           },
@@ -221,275 +221,7 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
       },
     ],
   },
-  {
-    id: 'enterprise_triage',
-    title: '2. Enterprise SSO Access Escalation (FACE + Two-Way @path)',
-    prompt:
-      'User usr_992 reports 403 SSO errors on enterprise invoice exports. Generate an access escalation form with validation.',
-    messages: [
-      {
-        version: '1.0',
-        createSurface: {
-          surfaceId: 'support_surface',
-          catalogId: AGNOSTICUI_CATALOG_ID,
-        },
-      },
-      {
-        version: '1.0',
-        updateComponents: {
-          surfaceId: 'support_surface',
-          components: [
-            {
-              id: 'root',
-              component: 'AgCard',
-              stacked: true,
-              children: ['sso_user_bubble', 'sso_agent_bubble'],
-            },
-            {
-              id: 'sso_user_bubble',
-              component: 'AgMessageBubble',
-              from: 'me',
-              author: 'David Chen • Enterprise Admin',
-              time: '2m ago',
-              message:
-                'Our finance team (usr_992) is getting 403 Forbidden errors when exporting monthly invoices after our SAML IdP update.',
-            },
-            {
-              id: 'sso_agent_bubble',
-              component: 'AgMessageBubble',
-              from: 'them',
-              variant: 'neutral',
-              author: 'Signal AI Concierge',
-              time: '2m ago',
-              children: ['sso_form_card'],
-            },
-            {
-              id: 'sso_form_card',
-              component: 'AgCard',
-              stacked: true,
-              children: [
-                'header_tag',
-                'title_text',
-                'sla_alert',
-                'ticket_fieldset',
-                'sso_submit_btn',
-              ],
-            },
-            {
-              id: 'header_tag',
-              component: 'AgBadge',
-              variant: 'warning',
-              children: ['header_tag_text'],
-            },
-            {
-              id: 'header_tag_text',
-              component: 'AgText',
-              el: 'span',
-              text: 'P1 • Enterprise SSO',
-            },
-            {
-              id: 'title_text',
-              component: 'AgText',
-              el: 'h3',
-              text: { '@path': '/ticket/headline' },
-            },
-            {
-              id: 'sla_alert',
-              component: 'AgAlert',
-              variant: 'info',
-              borderedLeft: true,
-              children: ['sla_copy'],
-            },
-            {
-              id: 'sla_copy',
-              component: 'AgText',
-              el: 'p',
-              text: 'All fields below are live-bound via A2UI @path pointers and validated client-side via FACE reportValidity().',
-            },
-            {
-              id: 'ticket_fieldset',
-              component: 'AgFieldset',
-              legend: 'Escalation Details',
-              bordered: true,
-              children: ['email_input', 'summary_input', 'urgent_check'],
-            },
-            {
-              id: 'email_input',
-              component: 'AgInput',
-              label: 'Requester Work Email',
-              type: 'email',
-              placeholder: 'name@company.com',
-              required: true,
-              value: { '@path': '/form/email' },
-            },
-            {
-              id: 'summary_input',
-              component: 'AgInput',
-              label: 'Incident Summary',
-              placeholder: 'Describe SAML / invoice export symptom...',
-              required: true,
-              value: { '@path': '/form/summary' },
-            },
-            {
-              id: 'urgent_check',
-              component: 'AgCheckbox',
-              labelText: 'Notify on-call security engineer immediately',
-              checked: { '@path': '/form/pageOnCall' },
-            },
-            {
-              id: 'sso_submit_btn',
-              component: 'AgButton',
-              variant: 'primary',
-              size: 'lg',
-              shape: 'rounded',
-              label: 'Validate & Dispatch Escalation',
-              action: {
-                event: {
-                  name: 'submit_escalation',
-                  context: {
-                    email: { '@path': '/form/email' },
-                    summary: { '@path': '/form/summary' },
-                    pageOnCall: { '@path': '/form/pageOnCall' },
-                  },
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        version: '1.0',
-        updateDataModel: {
-          surfaceId: 'support_surface',
-          path: '/',
-          value: {
-            ticket: { headline: 'Ticket #INV-992: Enterprise Invoice SSO 403' },
-            form: {
-              email: 'usr_992@acme-corp.io',
-              summary:
-                'SAML assertion succeeds, but /api/v2/invoices returns 403 Forbidden',
-              pageOnCall: true,
-            },
-          },
-        },
-      },
-    ],
-  },
-
-    {
-    id: 'status_overview',
-    title: '3. Incident Diagnostics & Resolution Card',
-    prompt:
-      'Summarize root cause and resolution steps for SSO token scope mismatch.',
-    messages: [
-      {
-        version: '1.0',
-        createSurface: {
-          surfaceId: 'support_surface',
-          catalogId: AGNOSTICUI_CATALOG_ID,
-        },
-      },
-      {
-        version: '1.0',
-        updateComponents: {
-          surfaceId: 'support_surface',
-          components: [
-            {
-              id: 'root',
-              component: 'AgCard',
-              stacked: true,
-              children: ['diag_user_bubble', 'diag_agent_bubble'],
-            },
-            {
-              id: 'diag_user_bubble',
-              component: 'AgMessageBubble',
-              from: 'me',
-              author: 'David Chen • Enterprise Admin',
-              time: '1m ago',
-              message:
-                'Can you run diagnostics on ticket #INV-992 and check which OAuth claim is missing?',
-            },
-            {
-              id: 'diag_agent_bubble',
-              component: 'AgMessageBubble',
-              from: 'them',
-              variant: 'neutral',
-              author: 'Signal AI Diagnostics',
-              time: 'Just now',
-              children: ['diag_card'],
-            },
-            {
-              id: 'diag_card',
-              component: 'AgCard',
-              stacked: true,
-              children: [
-                'resolved_badge',
-                'diag_heading',
-                'diag_alert',
-                'divider_1',
-                'ack_btn',
-              ],
-            },
-            {
-              id: 'resolved_badge',
-              component: 'AgBadge',
-              variant: 'success',
-              children: ['resolved_badge_text'],
-            },
-            {
-              id: 'resolved_badge_text',
-              component: 'AgText',
-              el: 'span',
-              text: 'Root Cause Identified',
-            },
-            {
-              id: 'diag_heading',
-              component: 'AgText',
-              el: 'h3',
-              text: 'OAuth Scope Mismatch on Billing Role',
-            },
-            {
-              id: 'diag_alert',
-              component: 'AgAlert',
-              variant: 'success',
-              bordered: true,
-              children: ['diag_body'],
-            },
-            {
-              id: 'diag_body',
-              component: 'AgText',
-              el: 'p',
-              text: 'Adding the `invoices:read` claim to the IdP group mapping restores access immediately without re-deploying.',
-            },
-            { id: 'divider_1', component: 'AgDivider' },
-            {
-              id: 'ack_btn',
-              component: 'AgButton',
-              variant: 'secondary',
-              shape: 'rounded',
-              label: 'Apply Patch & Close Ticket',
-              action: {
-                event: {
-                  name: 'close_ticket',
-                  context: { ticketId: 'INV-992' },
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        version: '1.0',
-        updateDataModel: {
-          surfaceId: 'support_surface',
-          path: '/status',
-          value: 'ready',
-        },
-      },
-    ],
-  },
 ];
-
 interface UpdateComponentsEnvelope {
   updateComponents?: {
     surfaceId?: string;
@@ -512,6 +244,9 @@ export function buildActionConfirmationMessages(
     ? [...(rootComp.children as string[])]
     : [];
 
+  if (!rootChildren.includes('user_action_bubble')) {
+    rootChildren.push('user_action_bubble');
+  }
   if (!rootChildren.includes('agent_confirm_bubble')) {
     rootChildren.push('agent_confirm_bubble');
   }
@@ -525,6 +260,25 @@ export function buildActionConfirmationMessages(
     actionDetail.name ?? eventObj?.name ?? 'action_completed',
   );
 
+  const sourceComponentId =
+    typeof actionDetail.sourceComponentId === 'string'
+      ? actionDetail.sourceComponentId
+      : undefined;
+
+  const clickedButton =
+    (sourceComponentId
+      ? baseComponents.find((c) => c.id === sourceComponentId)
+      : undefined) ??
+    baseComponents.find((c) => c.component === 'AgButton');
+
+  const buttonDisplayLabel =
+    typeof clickedButton?.label === 'string' && clickedButton.label.length > 0
+      ? clickedButton.label
+      : actionName
+          .split('_')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+
   const rawContext =
     typeof actionDetail.context === 'object' && actionDetail.context !== null
       ? (actionDetail.context as Record<string, unknown>)
@@ -532,24 +286,35 @@ export function buildActionConfirmationMessages(
         ? (eventObj.context as Record<string, unknown>)
         : {};
 
-  const contextEntries = Object.entries(rawContext);
-  const summaryLine =
-    contextEntries.length > 0
-      ? `Committed @path state: ${contextEntries
-          .map(([k, v]) => `${k}=${JSON.stringify(v)}`)
-          .join(' • ')}`
-      : 'Action verified and committed to the tenant audit trail. All required FACE fields passed validation.';
+  const ownerEmail =
+    typeof rawContext.ownerEmail === 'string' && rawContext.ownerEmail.length > 0
+      ? rawContext.ownerEmail
+      : undefined;
+
+  const summaryLine = ownerEmail
+    ? `All preferences have been validated and published. Confirmation and live alerts are routed to ${ownerEmail}.`
+    : typeof rawContext.title === 'string'
+      ? `Overflow routing is now active for "${rawContext.title}". Senior specialists have been notified.`
+      : 'Your workflow has been validated and published to the active workspace.';
 
   const updatedComponents = [
     ...baseComponents.map((c) =>
       c.id === 'root' ? { ...c, children: rootChildren } : c,
     ),
     {
+      id: 'user_action_bubble',
+      component: 'AgMessageBubble',
+      from: 'me',
+      author: 'Jordan Taylor • Growth Marketing',
+      time: 'Just now',
+      message: buttonDisplayLabel,
+    },
+    {
       id: 'agent_confirm_bubble',
       component: 'AgMessageBubble',
       from: 'them',
       variant: 'neutral',
-      author: 'Signal AI Concierge',
+      author: 'Campaign Concierge',
       time: 'Just now',
       children: ['confirm_card'],
     },
@@ -569,7 +334,7 @@ export function buildActionConfirmationMessages(
       id: 'confirm_badge_text',
       component: 'AgText',
       el: 'span',
-      text: `FACE Validated • ${actionName}`,
+      text: `Published • ${buttonDisplayLabel}`,
     },
     {
       id: 'confirm_alert',
