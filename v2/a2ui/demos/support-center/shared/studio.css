@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   font-family: var(--ag-font-family-sans);
@@ -10,6 +14,7 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background var(--ag-motion-medium) ease, color var(--ag-motion-medium) ease;
 }
+
 
 @keyframes a2ui-bubble-user {
   from {
@@ -60,6 +65,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: clip;
 }
 
 .studio-header {
@@ -204,7 +210,9 @@ body {
 .studio-stage {
   padding: var(--ag-space-6);
   overflow-y: auto;
+  scrollbar-gutter: stable;
 }
+
 
 .stage-container {
   max-width: 48rem;
@@ -297,6 +305,10 @@ ag-a2ui-card > ag-card {
 /* Give slotted content inside an agent MessageBubble comfortable width */
 a2ui-surface ag-message-bubble {
   display: block;
+}
+
+a2ui-surface ag-message-bubble::part(ag-header) {
+  margin-bottom: var(--ag-space-1);
 }
 
 a2ui-surface ag-message-bubble ag-fieldset {
