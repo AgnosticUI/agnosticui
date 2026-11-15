@@ -1,12 +1,15 @@
 ================================================================================
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
- TIMESTAMP BASELINE : 2026-11-15T14:15:00Z (Anchored to Sunday, Nov 15, 2026 Timeline)
- ACTIVE WORKSPACE   : Phase 5 Task 5.2 (Scaffold & Implement `@agnosticui/a2ui-vue` Renderer Package)
+ TIMESTAMP BASELINE : 2026-11-15T14:45:00Z (Anchored to Sunday, Nov 15, 2026 Timeline)
+ ACTIVE WORKSPACE   : Phase 5 Task 5.2 (Restructure Support Center Demo into `lit/`, `react/`, `vue/` with `AgMessageBubble` Chat Thread)
  STRATEGIC PIVOT    :
    - Positioning: "Spec-compliant A2UI v1.0 Component Catalog & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`) bringing AgnosticUI's 21 runtime skins and FACE form validation to generative UI surfaces."
-   - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> 25 components in `agnosticui-catalog.json` + `SKILL.md` + `check-codegen.ts`), `v2/a2ui/renderers/{lit,react,vue}`, `v2/a2ui/demos/support-center` (Zero-LLM Mock Stream Harness + Local A2UI Compiler + optional Live Gemini 3.8 Flash mode + `v2/skins/skins-bundle.css`).
-   - Primary Entrypoint: `cd v2/a2ui/demos/support-center && npm run build && npm run dev`
+   - Core Architecture: `v2/a2ui/catalog` (ts-morph AST codegen -> 25 components in `agnosticui-catalog.json` + `SKILL.md` + `check-codegen.ts`), `v2/a2ui/renderers/{lit,react,vue}`, `v2/a2ui/demos/support-center/{shared,lit,react,vue}` (Conversational `AgMessageBubble` Support Center Studio across all 3 frameworks + 21 runtime skins).
+   - Primary Entrypoints:
+       * Lit Demo:   `(cd v2/a2ui/demos/support-center/lit && npm run build && npm run dev)`
+       * React Demo: `(cd v2/a2ui/demos/support-center/react && npm run build && npm run dev)`
+       * Vue Demo:   `(cd v2/a2ui/demos/support-center/vue && npm run build && npm run dev)`
 
  COMPLETED PHASES   :
    - Phase 1 (Milestone 1 — 100% Complete & Passing):
@@ -23,12 +26,13 @@
        * Task 4.1: Expanded `v2/a2ui/catalog/scripts/generate-catalog.ts` to 25 curated components (`AgText` + 24 `Ag*` components including `AgCombobox`, `AgMessageBubble`, `AgRating`, `AgTimeline`, `AgProgress`, `AgProgressRing`, `AgSpinner`, `AgEmptyState`, `AgAccordion`, `AgToggle`), emitted `v2/a2ui/catalog/SKILL.md`, and added `v2/a2ui/catalog/scripts/check-codegen.ts` CI drift check (`vitest run` 3/3 passing, `tsc` clean).
        * Task 4.2: Swept `v2/sdui`, `v2/cli`, and `v2/site`; migrated VitePress docs to `v2/site/docs/docs/a2ui.md` (explicitly stating A2UI Protocol Version `v1.0`), updated `installation.md`, `setup.md`, and `.vitepress/config.mts`, preserved `PUBLISH.md` in `v2/a2ui/docs/PUBLISH.md`, and retired `v2/sdui/`.
    - Phase 5 Task 5.1 (Complete & Passing):
-       * Built `@agnosticui/a2ui-react` (`v2/a2ui/renderers/react/`) wrapping `<a2ui-surface>` via `@lit/react` + `React.forwardRef` (`<AgA2uiSurface>`) and `useA2uiSurface()` hook with automatic FACE validation (`vitest run` 2/2 passing, `tsc` clean), extracted `v2/a2ui/vitest.shared.mts` (`sharedA2uiResolve`), and aligned `renderers/lit/vitest.config.ts` and `renderers/react/vitest.config.ts`.
+       * Built `@agnosticui/a2ui-react` (`v2/a2ui/renderers/react/`) wrapping `<a2ui-surface>` via `@lit/react` + `React.forwardRef` (`<AgA2uiSurface>`) and `useA2uiSurface()` hook with automatic FACE validation (`vitest run` 2/2 passing, `tsc` clean), extracted `v2/a2ui/vitest.shared.mts` (`sharedA2uiResolve`), aligned `renderers/lit/vitest.config.ts` and `renderers/react/vitest.config.ts`, and added workflow `README.md` guides to both renderers.
 
  ROADMAP DELTAS     :
    - Phase 5 Remaining Tasks (Tracked in `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`):
-       * Task 5.2: Build `@agnosticui/a2ui-vue` renderer package + Vitest specs.
-       * Task 5.3: Publish `@agnosticui/a2ui-{lit,react,vue}` to npm and open the official `a2ui-project/a2ui` ecosystem PR (`v1.0`).
+       * Task 5.2: Restructure `v2/a2ui/demos/support-center` into `shared/`, `lit/`, and `react/` with conversational `AgMessageBubble` scenarios.
+       * Task 5.3: Build `@agnosticui/a2ui-vue` (`v2/a2ui/renderers/vue`) + matching Vue 3 Support Center demo (`v2/a2ui/demos/support-center/vue/`).
+       * Task 5.4: Publish `@agnosticui/a2ui-{lit,react,vue}` to npm and open the official `a2ui-project/a2ui` ecosystem PR (`v1.0`).
 
 --- MANDATORY WORKFLOW & MENTOR RULES (ENFORCE STRICTLY) ---
 1. Pacing & Scope: Plan before coding. Break tasks into small, cohesive micro-chunks across separate turns. Never build an entire feature or multiple unrelated files at once.
@@ -39,20 +43,20 @@
 6. No Code Placeholders & Small Widget Blocks: Never use "// ... rest of code". Keep each code block under ~110 lines (splitting files into numbered parts and avoiding nested triple backticks) so copy-paste widgets never break or escape.
 7. Ground-Truth Inspection First: Never guess `@a2ui/*@0.15.0` or `agnosticui-core` internal signatures—inspect `node_modules/` `.d.ts`/`.js` files via `> ~/Downloads/cat.txt` before writing glue code.
 8. Mandatory End-of-Task Doc Updates: At the end of EVERY completed task, provide updated `v2/a2ui/docs/NEXT_PROMPT.md` and `v2/a2ui/docs/IMPLEMENTATION_PLAN.md` files alongside the git commit checkpoint.
-9. Verification & Git Checkpoint: Stop at the end of every chunk, provide the exact local verification command (`(cd v2/a2ui/renderers/lit && npm test) && (cd v2/a2ui/renderers/react && npm test && npm run build)`), suggest a conventional git commit message, and wait for user permission before advancing.
+9. Verification & Git Checkpoint: Stop at the end of every chunk, provide the exact local verification command, suggest a conventional git commit message, and wait for user permission before advancing.
 
 --- TARGET RUNTIME DELTA ---
- EXACT NEXT TASK    : Phase 5 Task 5.2 (Micro-Chunk 5.2a) — Scaffold `@agnosticui/a2ui-vue` (`v2/a2ui/renderers/vue/package.json`, `tsconfig.json`, `vitest.config.ts`, `src/test-setup.ts`)
+ EXACT NEXT TASK    : Phase 5 Task 5.2 (Micro-Chunk 5.2a) — Relocate Lit Support Center demo into `v2/a2ui/demos/support-center/lit/`, extract shared fixtures (`support-scenarios.ts` enhanced with `AgMessageBubble` conversational triage), styles (`studio.css`), and compiler (`live-gemini.ts`) into `v2/a2ui/demos/support-center/shared/`
  ENGINEERING "WHY"  :
-   1. Providing a typed Vue 3 `<AgA2uiSurface>` component and `useA2uiSurface()` composable lets Vue 3 applications render any AgnosticUI A2UI `v1.0` surface with native Vue reactivity and automatic FACE validation.
-   2. Reusing `sharedA2uiResolve(['vue'])` from `v2/a2ui/vitest.shared.mts` keeps Vitest configuration DRY and prevents duplicate Lit/signal runtimes.
+   1. Framing support scenarios inside `AgMessageBubble` chat threads (User query bubble -> Agent reply bubble embedding the interactive AgnosticUI card/form) makes generative UI immediately intuitive for interviewers and `a2ui.org` reviewers.
+   2. Extracting `shared/` (`support-scenarios.ts`, `studio.css`, `live-gemini.ts`) allows `demos/support-center/lit`, `demos/support-center/react`, and `demos/support-center/vue` to run identical fixtures and 21-skin styling without duplicating logic.
  CODE BOUNDARIES    :
-   - Micro-Chunk 5.2a: Create `v2/a2ui/renderers/vue/package.json`, `tsconfig.json`, `vitest.config.ts`, and `src/test-setup.ts`, then run `npm install`.
+   - Micro-Chunk 5.2a: Inspect `v2/a2ui/demos/support-center/` (`package.json`, `vite.config.ts`, `src/fixtures/support-scenarios.ts`), reorganize into `shared/` + `lit/`, and verify `(cd v2/a2ui/demos/support-center/lit && npm run build)`.
 
 --- SYSTEM BOOT TRIGGER COMMAND ---
 ::: SYSTEM INITIALIZED. STOP BEFORE WRITING ANY CODE.
 Ask the user to:
-1. Upload `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`, `v2/a2ui/docs/IMPLEMENTATION_PLAN.md`, and `v2/a2ui/renderers/react/package.json` into the chat window.
-2. Confirm readiness to begin Phase 5 Task 5.2 Micro-Chunk 5.2a (`@agnosticui/a2ui-vue` scaffold).
+1. Upload `v2/a2ui/demos/support-center/package.json`, `v2/a2ui/demos/support-center/vite.config.ts`, and `v2/a2ui/demos/support-center/src/fixtures/support-scenarios.ts` into the chat window.
+2. Confirm readiness to begin Phase 5 Task 5.2 Micro-Chunk 5.2a (`shared/` extraction + `AgMessageBubble` conversational scenarios + `demos/support-center/lit/`).
 Wait for confirmation before writing any code. :::
 ================================================================================

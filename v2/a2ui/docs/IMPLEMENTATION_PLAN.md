@@ -14,7 +14,7 @@
 - [Phase 2: Deterministic AST Codegen & MVP Component Suite](#phase-2-deterministic-ast-codegen--mvp-component-suite)
 - [Phase 3: FACE Validation Function, Two-Way Form Specs & 21-Skin Demo](#phase-3-face-validation-function-two-way-form-specs--21-skin-demo)
 - [Phase 4: Full Component Catalog, Skill Generation, `v2/sdui` Sweep & VitePress Docs](#phase-4-full-component-catalog-skill-generation-v2sdui-sweep--vitepress-docs)
-- [Phase 5: React & Vue Renderers, npm Publish & `a2ui.org` Ecosystem PR](#phase-5-react--vue-renderers-npm-publish--a2uiorg-ecosystem-pr)
+- [Phase 5: Multi-Framework Renderers, `MessageBubble` Tri-Framework Demos & `a2ui.org` PR](#phase-5-multi-framework-renderers-messagebubble-tri-framework-demos--a2uiorg-pr)
 
 ---
 
@@ -67,14 +67,17 @@
 
 ---
 
-## Phase 5: React & Vue Renderers, npm Publish & `a2ui.org` Ecosystem PR
+## Phase 5: Multi-Framework Renderers, `MessageBubble` Tri-Framework Demos & `a2ui.org` PR
 
-* **Task 5.1 — `@agnosticui/a2ui-react` Renderer Package & Shared Vitest Deduplication** ✅
+* **Task 5.1 — `@agnosticui/a2ui-react` Renderer Package, Shared Vitest Deduplication & Dev READMEs** ✅
   * **Micro-Chunk 5.1a:** Re-exported `A2uiSurface`, `MessageProcessor`, `SurfaceModel`, and `LitComponentApi` from `@agnosticui/a2ui-lit`; created `v2/a2ui/vitest.shared.mts` (`sharedA2uiResolve`) and aligned `renderers/lit/vitest.config.ts` and `renderers/react/vitest.config.ts` with single-instance `lit` & `@lit-labs/signals` deduplication plus package-local `src/test-setup.ts`.
-  * **Micro-Chunk 5.1b:** Implemented `<AgA2uiSurface>` (`@lit/react` + `React.forwardRef` `.surface` sync) and `useA2uiSurface` hook in `v2/a2ui/renderers/react/src/index.tsx`, plus Vitest specs in `src/index.spec.tsx` verifying React surface rendering and FACE action validation (2/2 passing, `tsc` clean).
-* **Task 5.2 — `@agnosticui/a2ui-vue` Renderer Package** ⏳ *(Next)*
-  * **Micro-Chunk 5.2a:** Scaffold `v2/a2ui/renderers/vue` (`package.json`, `tsconfig.json`, `vitest.config.ts`, `src/test-setup.ts`) using `sharedA2uiResolve(['vue'])`.
-  * **Micro-Chunk 5.2b:** Implement Vue 3 `<AgA2uiSurface>` and `useA2uiSurface()` composable in `src/index.ts`, plus Vitest specs in `src/index.spec.ts`.
-* **Task 5.3 — npm Publish & Official `a2ui.org` Ecosystem Listing PR** ⬜
-  * **Micro-Chunk 5.3a:** Publish `@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, and `@agnosticui/a2ui-vue` (with `agnosticui-catalog.json` and `SKILL.md`) to npm.
-  * **Micro-Chunk 5.3b:** Fork `a2ui-project/a2ui`, sign the Google CLA, and open the PR adding AgnosticUI (`v1.0`, Lit/React/Vue) to `docs/site/src/content/docs/ecosystem/renderers.mdx`.
+  * **Micro-Chunk 5.1b:** Implemented `<AgA2uiSurface>` (`@lit/react` + `React.forwardRef` `.surface` sync) and `useA2uiSurface` hook in `v2/a2ui/renderers/react/src/index.tsx`, added Vitest specs in `src/index.spec.tsx` (2/2 passing, `tsc` clean), and added local workflow `README.md` guides to both `renderers/lit` and `renderers/react`.
+* **Task 5.2 — Restructure Support Center Demo (`lit/` & `react/`) with `AgMessageBubble` Chat Thread** ⏳ *(Next)*
+  * **Micro-Chunk 5.2a:** Relocate the existing Lit Support Center demo into `v2/a2ui/demos/support-center/lit/`, extract shared fixtures (`support-scenarios.ts` enhanced with `AgMessageBubble` conversational triage), styles (`studio.css`), and compiler (`live-gemini.ts`) into `v2/a2ui/demos/support-center/shared/`, and verify `demos/support-center/lit` builds cleanly.
+  * **Micro-Chunk 5.2b:** Build the matching React 19 Support Center demo in `v2/a2ui/demos/support-center/react/` consuming `@agnosticui/a2ui-react` (`<AgA2uiSurface>` + `useA2uiSurface`) and `shared/`.
+* **Task 5.3 — `@agnosticui/a2ui-vue` Renderer Package & Vue Support Center Demo (`vue/`)** ⬜
+  * **Micro-Chunk 5.3a:** Scaffold and implement `v2/a2ui/renderers/vue` (`@agnosticui/a2ui-vue` with `<AgA2uiSurface>`, `useA2uiSurface()`, `README.md`, and Vitest specs).
+  * **Micro-Chunk 5.3b:** Build the matching Vue 3 Support Center demo in `v2/a2ui/demos/support-center/vue/` consuming `@agnosticui/a2ui-vue` and `shared/`.
+* **Task 5.4 — npm Publish & Official `a2ui.org` Ecosystem Listing PR** ⬜
+  * **Micro-Chunk 5.4a:** Publish `@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, and `@agnosticui/a2ui-vue` (with `agnosticui-catalog.json` and `SKILL.md`) to npm.
+  * **Micro-Chunk 5.4b:** Fork `a2ui-project/a2ui`, sign the Google CLA, and open the PR adding AgnosticUI (`v1.0`, Lit/React/Vue) to `docs/site/src/content/docs/ecosystem/renderers.mdx`.
