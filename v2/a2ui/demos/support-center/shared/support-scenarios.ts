@@ -470,7 +470,7 @@ export function buildActionConfirmationMessages(
       id: 'agent_confirm_bubble',
       component: 'AgMessageBubble',
       from: 'them',
-      variant: 'success',
+      variant: 'neutral',
       author: 'Signal AI Concierge',
       time: 'Just now',
       children: ['confirm_card'],
@@ -496,7 +496,7 @@ export function buildActionConfirmationMessages(
     {
       id: 'confirm_alert',
       component: 'AgAlert',
-      variant: 'success',
+      variant: 'primary',
       borderedLeft: true,
       children: ['confirm_copy'],
     },

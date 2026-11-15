@@ -295,7 +295,7 @@ export async function generateLocalA2uiSurface(
               {
                 id: 'local_alert',
                 component: 'AgAlert',
-                variant: 'warning',
+                variant: 'primary',
                 borderedLeft: true,
                 children: ['local_alert_copy'],
               },
