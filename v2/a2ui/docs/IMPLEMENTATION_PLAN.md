@@ -84,7 +84,7 @@
 
 ## Phase 6: Pre-Publish Quality Hardening, npm Release & Official `a2ui-project/a2ui` PR (`v1.0`) ⬜ *(Planned)*
 
-_See commit b8e053892 first as some files are already touched._
+> **Context Checkpoint:** Inspect commit `b8e053892` first to review already-touched files before modifying paths below.
 
 * **Task 6.1 — Versioned, Resolvable `catalogId` and Static Hosting Sync (VitePress `/public/`)** ⬜
   * **Micro-Chunk 6.1a — Update Catalog ID and Synchronize Generated Artifacts**
@@ -99,11 +99,15 @@ _See commit b8e053892 first as some files are already touched._
     * Update the VitePress documentation page [a2ui.md](https://github.com/AgnosticUI/agnosticui/blob/master/v2/site/docs/docs/a2ui.md) in the repository.
   * **Micro-Chunk 6.1c — Verify Static Site Public File Location**
     * Verify the static site public file location for [catalog.json](https://github.com/AgnosticUI/agnosticui/blob/master/v2/site/docs/public/a2ui/v1/catalog.json) in the repository.
-* **Task 6.2 — Comprehensive 25-Component Catalog & Multi-Framework Hook Test Suite** ⬜
+* **Task 6.2 — Port MCP Server `generate_streamed_layout` Pre-Flight Validator to A2UI `v1.0`** ⬜
+  * **Micro-Chunk 6.2a — Audit Commit `b8e053892` & Port Graph Validator:**
+    * Inspect the legacy SDUI pre-flight graph validator (multi-pass topological audit exposing structural errors or dangling parent-child reference pointers) in the MCP server.
+    * Port `generate_streamed_layout` to validate A2UI `v1.0` adjacency-list component graphs (`root` reachability, missing child IDs, circular references, and `AGNOSTICUI_CATALOG_ID` schema conformance) and update MCP docs accordingly.
+* **Task 6.3 — Comprehensive 25-Component Catalog & Multi-Framework Hook Test Suite** ⬜
   * **Micro-Chunk 6.2a:** Expand `v2/a2ui/renderers/lit/src/catalog.spec.ts` to verify mounting, prop reflection, and `@path` resolution across all 25 catalog components (`AgText` + 24 `Ag*` wrappers), plus two-way `@path` binding specs on `AgInput`, `AgCheckbox`, `AgToggle`, `AgSelect`, `AgCombobox`, `AgRadio`, and `AgRating`.
   * **Micro-Chunk 6.2b:** Expand `v2/a2ui/renderers/react/src/index.spec.tsx` and `v2/a2ui/renderers/vue/src/index.spec.ts` to cover `streamMessages`, `resetSurface`, `getDataModel`, and `deleteSurface` / `onSurfaceDeleted` lifecycle cleanup.
   * **Micro-Chunk 6.2c:** Add automated end-to-end smoke checks across `v2/a2ui/demos/support-center/{lit,react,vue}` verifying clean boot, prompt chip streaming, FACE validation, and multi-turn action confirmation.
-* **Task 6.3 — npm Package Metadata Hygiene, Tarball Audit & Public Release (`@agnosticui/a2ui-{lit,react,vue}`)** ⬜
+* **Task 6.4 — npm Package Metadata Hygiene, Tarball Audit & Public Release (`@agnosticui/a2ui-{lit,react,vue}`)** ⬜
   * **Micro-Chunk 6.3a:** Add `"license": "MIT"`, `"repository"`, `"homepage"`, `"keywords": ["a2ui", "a2ui-v1", "agnosticui", ...]`, `"files"` whitelists, and `"./catalog.json"` / `"./SKILL.md"` exports to `v2/a2ui/renderers/{lit,react,vue}/package.json`. Swap `devDependencies` `"file:..."` tarball references (`agnosticui-core`, `@agnosticui/a2ui-lit`) to published semver ranges (`^2.0.0-alpha.31`, `^2.0.0-alpha.1`) prior to release, verify exact tarball contents with `npm pack --dry-run`, and publish `@agnosticui/a2ui-{lit,react,vue}` to npm (`--access public`).
-* **Task 6.4 — Official `a2ui-project/a2ui` Ecosystem PR (`v1.0`)** ⬜
+* **Task 6.5 — Official `a2ui-project/a2ui` Ecosystem PR (`v1.0`)** ⬜
   * **Micro-Chunk 6.4a:** Fork `a2ui-project/a2ui`, register AgnosticUI (`v1.0`) in the official community catalogs/renderers directory referencing `@agnosticui/a2ui-{lit,react,vue}` and `https://agnosticui.com`, and open the upstream PR.
