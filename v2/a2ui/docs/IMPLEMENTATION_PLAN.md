@@ -79,11 +79,29 @@
 * **Task 5.3 — `@agnosticui/a2ui-vue` Renderer Package & Vue 3 Support Center Demo** ✅
   * **Micro-Chunk 5.3a:** ✅ Scaffolded and implemented `@agnosticui/a2ui-vue` (`v2/a2ui/renderers/vue/`) with `defineComponent` `<AgA2uiSurface>` wrapper, `useA2uiSurface` composable (`model.onAction.subscribe` + StrictMode/re-stream `createSurface` reset), `README.md`, and Vitest + `@vue/test-utils` specs (2/2 passing, `tsc` clean, packed `.tgz`).
   * **Micro-Chunk 5.3b:** ✅ Built the matching Vue 3 Support Center demo in `v2/a2ui/demos/support-center/vue/` consuming `@agnosticui/a2ui-vue`, `agnosticui-core/*/vue` wrappers, and `shared/`, verified clean with `vue-tsc --noEmit`, `vite build`, and live Vite dev server.
-* **Task 5.4 — Final Workspace Verification, npm Publish Readiness & `a2ui-project/a2ui` Ecosystem PR (`v1.0`)** ⬜ *(Next)*
-  * **Micro-Chunk 5.4a (Publish Hygiene & Tarball Audit):**
-    * Copy `v2/a2ui/catalog/agnosticui-catalog.json` and `v2/a2ui/catalog/SKILL.md` into `v2/a2ui/renderers/lit/` (via `prepack` / release script) and expose `./agnosticui-catalog.json` in `renderers/lit/package.json` `"exports"`.
-    * Add explicit `"files"` whitelists to `renderers/lit/package.json` (`["dist", "README.md", "agnosticui-catalog.json", "SKILL.md"]`) and `renderers/{react,vue}/package.json` (`["dist", "README.md"]`) so local `.tgz` files, `src/`, and test configs are excluded.
-    * Swap `devDependencies` `"file:..."` tarball references (`agnosticui-core`, `@agnosticui/a2ui-lit`) to published semver ranges (`^2.0.0-alpha.31`, `^2.0.0-alpha.1`) prior to `npm publish`, verify tarball contents with `npm pack --dry-run`, and publish `@agnosticui/a2ui-{lit,react,vue}` to npm (`--access public`).
-  * **Micro-Chunk 5.4b (Ecosystem Submission):**
-    * Fork `a2ui-project/a2ui`, register AgnosticUI (`v1.0`) in the official community catalogs/renderers directory referencing `@agnosticui/a2ui-{lit,react,vue}` and `agnosticui-catalog.json`, and open the upstream PR.
 
+---
+
+## Phase 6: Pre-Publish Quality Hardening, npm Release & Official `a2ui-project/a2ui` PR (`v1.0`) ⬜ *(Planned)*
+
+* **Task 6.1 — Versioned, Resolvable `catalogId` and Static Hosting Sync (VitePress `/public/`)** ⬜
+  * **Micro-Chunk 6.1a — Update Catalog ID and Synchronize Generated Artifacts**
+    * Update `AGNOSTICUI_CATALOG_ID` in `v2/a2ui/catalog/scripts/generate-catalog.ts` to `'(https://agnosticui.com/a2ui/v1/catalog.json'`.
+    * Emit a synchronized copy to:
+      * `https://agnosticui.com/v2/site/docs/public/a2ui/v1/catalog.json`
+      * `v2/a2ui/renderers/lit/agnosticui-catalog.json`
+      * `SKILL.md`
+    * Update `check-codegen.ts` to enforce synchronization across all destinations.
+    * Sweep `v2/a2ui/` and `v2/site/` for any remaining bare `https://agnosticui.com` strings.
+  * **Micro-Chunk 6.1b — Update VitePress Documentation**
+    * Update the VitePress documentation page [a2ui.md](https://github.com/AgnosticUI/agnosticui/blob/master/v2/site/docs/docs/a2ui.md) in the repository.
+  * **Micro-Chunk 6.1c — Verify Static Site Public File Location**
+    * Verify the static site public file location for [catalog.json](https://github.com/AgnosticUI/agnosticui/blob/master/v2/site/docs/public/a2ui/v1/catalog.json) in the repository.
+* **Task 6.2 — Comprehensive 25-Component Catalog & Multi-Framework Hook Test Suite** ⬜
+  * **Micro-Chunk 6.2a:** Expand `v2/a2ui/renderers/lit/src/catalog.spec.ts` to verify mounting, prop reflection, and `@path` resolution across all 25 catalog components (`AgText` + 24 `Ag*` wrappers), plus two-way `@path` binding specs on `AgInput`, `AgCheckbox`, `AgToggle`, `AgSelect`, `AgCombobox`, `AgRadio`, and `AgRating`.
+  * **Micro-Chunk 6.2b:** Expand `v2/a2ui/renderers/react/src/index.spec.tsx` and `v2/a2ui/renderers/vue/src/index.spec.ts` to cover `streamMessages`, `resetSurface`, `getDataModel`, and `deleteSurface` / `onSurfaceDeleted` lifecycle cleanup.
+  * **Micro-Chunk 6.2c:** Add automated end-to-end smoke checks across `v2/a2ui/demos/support-center/{lit,react,vue}` verifying clean boot, prompt chip streaming, FACE validation, and multi-turn action confirmation.
+* **Task 6.3 — npm Package Metadata Hygiene, Tarball Audit & Public Release (`@agnosticui/a2ui-{lit,react,vue}`)** ⬜
+  * **Micro-Chunk 6.3a:** Add `"license": "MIT"`, `"repository"`, `"homepage"`, `"keywords": ["a2ui", "a2ui-v1", "agnosticui", ...]`, `"files"` whitelists, and `"./catalog.json"` / `"./SKILL.md"` exports to `v2/a2ui/renderers/{lit,react,vue}/package.json`. Swap `devDependencies` `"file:..."` tarball references (`agnosticui-core`, `@agnosticui/a2ui-lit`) to published semver ranges (`^2.0.0-alpha.31`, `^2.0.0-alpha.1`) prior to release, verify exact tarball contents with `npm pack --dry-run`, and publish `@agnosticui/a2ui-{lit,react,vue}` to npm (`--access public`).
+* **Task 6.4 — Official `a2ui-project/a2ui` Ecosystem PR (`v1.0`)** ⬜
+  * **Micro-Chunk 6.4a:** Fork `a2ui-project/a2ui`, register AgnosticUI (`v1.0`) in the official community catalogs/renderers directory referencing `@agnosticui/a2ui-{lit,react,vue}` and `https://agnosticui.com`, and open the upstream PR.
