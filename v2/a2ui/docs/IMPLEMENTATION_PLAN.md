@@ -84,6 +84,8 @@
 
 ## Phase 6: Pre-Publish Quality Hardening, npm Release & Official `a2ui-project/a2ui` PR (`v1.0`) ⬜ *(Planned)*
 
+_See commit b8e053892 first as some files are already touched._
+
 * **Task 6.1 — Versioned, Resolvable `catalogId` and Static Hosting Sync (VitePress `/public/`)** ⬜
   * **Micro-Chunk 6.1a — Update Catalog ID and Synchronize Generated Artifacts**
     * Update `AGNOSTICUI_CATALOG_ID` in `v2/a2ui/catalog/scripts/generate-catalog.ts` to `'(https://agnosticui.com/a2ui/v1/catalog.json'`.
