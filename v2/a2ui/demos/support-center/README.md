@@ -14,53 +14,32 @@ v2/a2ui/demos/support-center/
 
 ## Quick Start (From Repository Root)
 
-All commands below assume you are at the **repository root**:
-
-### 1. Lit Support Center Studio (`lit/`)
+If the renderer tarballs are already built, start any studio directly:
 
 ```bash
-# Pack @agnosticui/a2ui-lit, install dependencies, build, and start Vite dev server
-(cd v2/a2ui/renderers/lit && npm run build && npm pack) && \
-(cd v2/a2ui/demos/support-center/lit && npm install && npm run build && npm run dev)
+# Lit
+(cd v2/a2ui/demos/support-center/lit && npm install && npm run dev)
+
+# React 19
+(cd v2/a2ui/demos/support-center/react && npm install && npm run dev)
+
+# Vue 3
+(cd v2/a2ui/demos/support-center/vue && npm install && npm run dev)
 ```
 
-### 2. React 19 Support Center Studio (`react/`)
+## Regenerating Catalog & Packing Renderers
+
+Whenever you modify `v2/lib` props, `codegen.config.ts`, or `generate-catalog.ts`, run the all-in-one rebuild script from the **repository root**:
 
 ```bash
-# Build lit + react renderers, install demo dependencies, build, and start Vite dev server
-(cd v2/a2ui/renderers/lit && npm run build && npm pack) && \
-(cd v2/a2ui/renderers/react && npm run build && npm pack) && \
-(cd v2/a2ui/demos/support-center/react && npm install && npm run build && npm run dev)
+(cd v2/a2ui/catalog && npm run rebuild:all)
 ```
 
-### 3. Vue 3 Support Center Studio (`vue/`)
+Then reinstall the updated tarball in whichever demo you are testing (`lit`, `react`, or `vue`):
 
 ```bash
-# Build lit + vue renderers, install demo dependencies, build, and start Vite dev server
-(cd v2/a2ui/renderers/lit && npm run build && npm pack) && \
-(cd v2/a2ui/renderers/vue && npm run build && npm pack) && \
-(cd v2/a2ui/demos/support-center/vue && npm install && npm run build && npm run dev)
+# Example for Lit (swap `lit` for `react` or `vue` as needed)
+(cd v2/a2ui/demos/support-center/lit && rm -rf node_modules package-lock.json && npm install && npm run dev)
 ```
 
-## Troubleshooting Native Bindings (`npm/cli#4828`)
-
-If Vite or Rollup complains about missing `@rolldown/binding-darwin-x64` after editing a demo `package.json`, run a clean single-pass install inside that framework folder (e.g., `lit/`):
-
-```bash
-(cd v2/a2ui/demos/support-center/lit && rm -rf node_modules package-lock.json && npm install)
-```
-
-## Regenerating the A2UI Catalog After `v2/lib` Prop Changes
-
-If you add or modify component props in `v2/lib/src/components/*/core/_*.ts`:
-
-```bash
-# 1. Regenerate Lit wrappers, agnosticui-catalog.json, and SKILL.md
-(cd v2/a2ui/catalog && npm run generate && npx tsx scripts/check-codegen.ts)
-
-# 2. Re-test, rebuild, and repack @agnosticui/a2ui-lit
-(cd v2/a2ui/renderers/lit && npm test && npm run build && npm pack)
-
-# 3. Reinstall updated tarball in the active demo (e.g., lit/)
-(cd v2/a2ui/demos/support-center/lit && rm -rf node_modules package-lock.json && npm install)
-```
+> **Note:** Running `rm -rf node_modules package-lock.json && npm install` ensures npm picks up the newly packed `.tgz` tarballs and avoids the `npm/cli#4828` missing `@rolldown/binding-*` issue.

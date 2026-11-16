@@ -17,7 +17,7 @@ All commands below assume you are at the **repository root**:
 (cd v2/a2ui/catalog && npm run generate)
 
 # 2. Run Vitest unit specs and build dist/ (required before building react/vue renderers)
-(cd v2/a2ui/renderers/lit && npm test && npm run build)
+(cd v2/a2ui/renderers/lit && npm test && npm run build && npm pack)
 
 # 3. Verify zero codegen drift across agnosticui-catalog.json, SKILL.md, and Lit wrappers
 (cd v2/a2ui/catalog && npx tsx scripts/check-codegen.ts)
