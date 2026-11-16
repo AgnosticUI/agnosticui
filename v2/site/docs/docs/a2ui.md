@@ -4,9 +4,8 @@ AgnosticUI provides a spec-compliant **A2UI `v1.0`** component catalog and Web C
 
 ::: info Protocol & Catalog Metadata
 - **Supported A2UI Protocol Version:** `v1.0`
-- **Catalog ID:** `https://agnosticui.com`
+- **Catalog ID:** `https://agnosticui.com/a2ui/v1/catalog.json`
 - **Catalog Schema:** [`v2/a2ui/catalog/agnosticui-catalog.json`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/a2ui/catalog/agnosticui-catalog.json)
-- **Agent Skill Definition:** [`v2/a2ui/catalog/SKILL.md`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/a2ui/catalog/SKILL.md)
 :::
 
 ---
@@ -21,7 +20,7 @@ An agent emits a stream of **A2UI `v1.0` wire messages** (`createSurface`, `upda
     "version": "1.0",
     "createSurface": {
       "surfaceId": "support_surface",
-      "catalogId": "https://agnosticui.com"
+      "catalogId": "https://agnosticui.com/a2ui/v1/catalog.json"
     }
   },
   {
