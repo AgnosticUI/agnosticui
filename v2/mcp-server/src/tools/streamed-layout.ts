@@ -1,133 +1,354 @@
 /**
  * @file streamed-layout.ts
- * @description Server-Driven UI (SDUI) Graph Validation Engine
- * 
+ * @description A2UI v1.0 Pre-Flight Wire Stream & Adjacency-List Graph Validation Engine
+ *
  * PURPOSE & LLM UTILITY:
- * This tool acts as a pre-flight structural shield for nested layout graphs. 
- * Before writing code adjustments or structural modifications to disk, the LLM passes 
- * its flat component node configurations here to verify that the entire interface is 
- * safe, semantic, and coherent.
- * 
+ * Acts as a pre-flight structural shield for A2UI v1.0 generative UI payloads.
+ * Before streaming wire messages to <a2ui-surface> or writing code to disk, the LLM
+ * passes either an A2UI v1.0 `messages` stream (`createSurface`, `updateComponents`,
+ * `updateDataModel`) or a flat `nodes` component adjacency list here to verify:
+ *   1. Protocol envelope (`version: "1.0"`) & resolvable `catalogId` (`https://agnosticui.com/a2ui/v1/catalog.json`)
+ *   2. UAX #31 component ID syntax (`^[A-Za-z_][A-Za-z0-9_]*$`, no hyphens)
+ *   3. Component prop & `@path` conformance against `v2/a2ui/catalog/agnosticui-catalog.json`
+ *   4. Topological integrity: duplicate IDs, missing child pointers, DFS cycles, and `root` reachability
+ *
  * WHAT IT RETURNS (Happy Path JSON Payload):
  * {
  *   "valid": true,
+ *   "catalogId": "https://agnosticui.com/a2ui/v1/catalog.json",
+ *   "componentCount": 4,
  *   "errors": [],
  *   "hints": []
  * }
- * The LLM reads the 'valid' flag to confirm layout safety. If 'valid' is false, the 
- * LLM uses the 'errors' text array to point out precise field errors or dead layout elements, 
- * and reads the 'hints' array to safely reconstruct broken parent-child node pointers.
  */
 import { fromJsonSchema } from "@modelcontextprotocol/server";
 import AjvModule from "ajv";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { ServerContext } from "../server/create-server.js";
-import { StreamedLayoutRequest } from "../types/index.js";
+import { AgNode, StreamedLayoutRequest } from "../types/index.js";
 
 const Ajv = (AjvModule as any).default || AjvModule;
+
+/** Canonical versioned A2UI v1.0 catalog URI for AgnosticUI. */
+export const EXPECTED_CATALOG_ID = "https://agnosticui.com/a2ui/v1/catalog.json";
+
+/** UAX #31 identifier regex required by A2UI v1.0 component IDs (letters, digits, underscores only). */
+const UAX31_ID_REGEX = /^[A-Za-z_][A-Za-z0-9_]*$/;
+
+/**
+ * Shared A2UI v1.0 `common_types.json` definitions referenced by `$ref` inside
+ * `v2/a2ui/catalog/agnosticui-catalog.json`.
+ */
+const COMMON_TYPES_SCHEMA = {
+  $id: "common_types.json",
+  $defs: {
+    PathBinding: {
+      type: "object",
+      properties: {
+        "@path": { type: "string", minLength: 1 },
+      },
+      required: ["@path"],
+      additionalProperties: false,
+    },
+    DynamicString: {
+      anyOf: [
+        { type: "string" },
+        { $ref: "#/$defs/PathBinding" },
+      ],
+    },
+    DynamicBoolean: {
+      anyOf: [
+        { type: "boolean" },
+        { $ref: "#/$defs/PathBinding" },
+      ],
+    },
+    DynamicNumber: {
+      anyOf: [
+        { type: "number" },
+        { $ref: "#/$defs/PathBinding" },
+      ],
+    },
+    ChildList: {
+      type: "array",
+      items: { type: "string" },
+    },
+    Action: {
+      type: "object",
+      additionalProperties: true,
+    },
+  },
+};
+
+const COMPONENT_ITEM_SCHEMA = {
+  type: "object",
+  properties: {
+    id: { type: "string" },
+    component: { type: "string" },
+    children: {
+      type: "array",
+      items: { type: "string" },
+    },
+  },
+  required: ["id", "component"],
+  additionalProperties: true,
+};
 
 export function registerStreamedLayoutTool(context: ServerContext): void {
   context.server.registerTool(
     "generate_streamed_layout",
     {
-      description: "Performs continuous graph-level validation checks on incoming flat arrays (AgNode[]) using Draft-07 structural layouts.",
+      description:
+        "Validates A2UI v1.0 wire message streams (`messages`) or flat component adjacency lists (`nodes`) against `v2/a2ui/catalog/agnosticui-catalog.json`, checking protocol version, catalogId, UAX #31 IDs, prop schemas, dead child pointers, cycles, and `root` reachability.",
       inputSchema: fromJsonSchema<StreamedLayoutRequest>({
         type: "object",
         properties: {
-          nodes: {
+          messages: {
             type: "array",
-            description: "Flat array collection of structural user interface graph nodes to compile.",
+            description:
+              "A2UI v1.0 wire message stream (`createSurface`, `updateComponents`, `updateDataModel`).",
             items: {
               type: "object",
               properties: {
-                id: { type: "string" },
-                component: { type: "string" },
-                children: {
-                  type: "array",
-                  items: { type: "string" }
-                }
+                version: { type: "string" },
+                createSurface: {
+                  type: "object",
+                  properties: {
+                    surfaceId: { type: "string" },
+                    catalogId: { type: "string" },
+                  },
+                  additionalProperties: true,
+                },
+                updateComponents: {
+                  type: "object",
+                  properties: {
+                    surfaceId: { type: "string" },
+                    components: {
+                      type: "array",
+                      items: COMPONENT_ITEM_SCHEMA,
+                    },
+                  },
+                  additionalProperties: true,
+                },
+                updateDataModel: {
+                  type: "object",
+                  properties: {
+                    surfaceId: { type: "string" },
+                    path: { type: "string" },
+                  },
+                  additionalProperties: true,
+                },
+                deleteSurface: {
+                  type: "object",
+                  properties: {
+                    surfaceId: { type: "string" },
+                  },
+                  additionalProperties: true,
+                },
               },
-              required: ["id", "component"],
-              additionalProperties: true
-            }
-          }
+              additionalProperties: true,
+            },
+          },
+          nodes: {
+            type: "array",
+            description:
+              "Flat array of A2UI v1.0 component definitions (`{ id, component, children?, ...props }`).",
+            items: COMPONENT_ITEM_SCHEMA,
+          },
         },
-        required: ["nodes"]
-      })
+      }),
     },
-    async ({ nodes }) => {
-      context.debugLog(`Executing generate_streamed_layout loop across node frames. Node count: ${nodes?.length}`);
-      
-      const v2Root = path.resolve(context.config.paths.components, "../../../");
-      const schemaPath = path.join(v2Root, "sdui", "schema", "agnosticui-schema.json");
-      context.debugLog(`Resolving Draft-07 JSON Schema absolute target vector: ${schemaPath}`);
+    async ({ messages, nodes }) => {
+      context.debugLog(
+        `Executing generate_streamed_layout A2UI v1.0 pre-flight validation. Messages: ${messages?.length ?? 0}, Nodes: ${nodes?.length ?? 0}`,
+      );
 
-      if (!fs.existsSync(schemaPath)) {
-        context.debugLog(`CRITICAL: Dynamic validator engine schema template absent.`);
+      const v2Root = path.resolve(context.config.paths.components, "../../../");
+      const catalogPath = path.join(v2Root, "a2ui", "catalog", "agnosticui-catalog.json");
+      context.debugLog(`Resolving A2UI v1.0 catalog schema at: ${catalogPath}`);
+
+      if (!fs.existsSync(catalogPath)) {
+        context.debugLog(`CRITICAL: A2UI v1.0 catalog schema missing at ${catalogPath}`);
         return {
-          content: [{ type: "text", text: `Error: JSON Schema core definitions file missing at target path: ${schemaPath}` }],
+          content: [
+            {
+              type: "text",
+              text: `Error: A2UI v1.0 catalog schema file missing at target path: ${catalogPath}`,
+            },
+          ],
           isError: true,
         };
       }
 
       try {
-        const rawSchema = fs.readFileSync(schemaPath, "utf-8");
-        const schema = JSON.parse(rawSchema);
+        const rawCatalog = fs.readFileSync(catalogPath, "utf-8");
+        const catalog = JSON.parse(rawCatalog) as {
+          protocolVersion?: string;
+          catalogId?: string;
+          components?: Record<string, Record<string, unknown>>;
+        };
 
-        const ajv = new Ajv({ allErrors: true, allowUnionTypes: true });
-        const validate = ajv.compile(schema);
-
+        const catalogComponents = catalog.components ?? {};
         const runtimeErrors: string[] = [];
         const developerHints: string[] = [];
+        const collectedNodes: AgNode[] = [];
+        const isStreamMode = Array.isArray(messages);
 
-        // 1. Structural Schema Properties Pass
-        for (const node of nodes) {
-          const valid = validate(node);
-          if (!valid && validate.errors) {
-            validate.errors.forEach((err: any) => {
-              runtimeErrors.push(`Node [ID: ${node.id} (${node.component})]: ${err.instancePath || ""} ${err.message}`);
-            });
+        if (!isStreamMode && !Array.isArray(nodes)) {
+          runtimeErrors.push(
+            "Input Error: Provide either `messages` (A2UI v1.0 wire stream) or `nodes` (flat component adjacency list).",
+          );
+        }
+        // 1. A2UI v1.0 Wire Envelope & Surface Lifecycle Pass (when `messages` is provided)
+        if (isStreamMode) {
+          if (messages.length === 0) {
+            runtimeErrors.push("Protocol Error: `messages` stream must contain at least one A2UI v1.0 message.");
+          }
+
+          const declaredSurfaces = new Set<string>();
+
+          messages.forEach((msg, idx) => {
+            if (msg.version !== "1.0") {
+              runtimeErrors.push(
+                `Protocol Error [message[${idx}]]: Expected "version": "1.0", received ${JSON.stringify(msg.version)}.`,
+              );
+            }
+
+            if (msg.createSurface) {
+              const { surfaceId, catalogId } = msg.createSurface;
+              if (!surfaceId || typeof surfaceId !== "string") {
+                runtimeErrors.push(`Protocol Error [message[${idx}].createSurface]: Missing valid "surfaceId".`);
+              } else {
+                declaredSurfaces.add(surfaceId);
+              }
+
+              if (catalogId !== EXPECTED_CATALOG_ID) {
+                runtimeErrors.push(
+                  `Protocol Error [message[${idx}].createSurface]: Invalid catalogId '${catalogId}'. Expected '${EXPECTED_CATALOG_ID}'.`,
+                );
+                developerHints.push(`Set createSurface.catalogId to "${EXPECTED_CATALOG_ID}".`);
+              }
+            }
+
+            if (msg.updateComponents) {
+              const { surfaceId, components } = msg.updateComponents;
+              if (declaredSurfaces.size > 0 && !declaredSurfaces.has(surfaceId)) {
+                runtimeErrors.push(
+                  `Protocol Error [message[${idx}].updateComponents]: References undeclared surfaceId '${surfaceId}'.`,
+                );
+              }
+              if (!Array.isArray(components)) {
+                runtimeErrors.push(
+                  `Protocol Error [message[${idx}].updateComponents]: "components" must be an array.`,
+                );
+              } else {
+                collectedNodes.push(...components);
+              }
+            }
+
+            if (msg.updateDataModel) {
+              const { surfaceId } = msg.updateDataModel;
+              if (declaredSurfaces.size > 0 && !declaredSurfaces.has(surfaceId)) {
+                runtimeErrors.push(
+                  `Protocol Error [message[${idx}].updateDataModel]: References undeclared surfaceId '${surfaceId}'.`,
+                );
+              }
+            }
+          });
+        }
+
+        if (Array.isArray(nodes)) {
+          collectedNodes.push(...nodes);
+        }
+
+        // 2. Compile Per-Component AJV Validators from `agnosticui-catalog.json`
+        const ajv = new Ajv({ allErrors: true, allowUnionTypes: true, strict: false });
+        ajv.addSchema(COMMON_TYPES_SCHEMA);
+        const compiledValidators = new Map<string, any>();
+
+        for (const [compName, compSchema] of Object.entries(catalogComponents)) {
+          compiledValidators.set(compName, ajv.compile(compSchema));
+        }
+
+        // 3. UAX #31 ID & Component Schema Conformance Pass
+        for (const node of collectedNodes) {
+          if (!node.id || !UAX31_ID_REGEX.test(node.id)) {
+            const suggested = typeof node.id === "string" ? node.id.replace(/[^A-Za-z0-9_]/g, "_") : "root";
+            runtimeErrors.push(
+              `UAX #31 ID Error: Component ID '${node.id}' contains invalid characters (hyphens/spaces are forbidden in A2UI v1.0).`,
+            );
+            developerHints.push(
+              `Rename component ID '${node.id}' to '${suggested}' (letters, digits, and underscores only).`,
+            );
+          }
+
+          const validator = compiledValidators.get(node.component);
+          if (!validator) {
+            runtimeErrors.push(
+              `Catalog Error [ID: ${node.id}]: Unknown component '${node.component}' is not in AgnosticUI A2UI v1.0 catalog.`,
+            );
+            developerHints.push(
+              `Allowed components: ${Object.keys(catalogComponents).join(", ")}.`,
+            );
+            continue;
+          }
+
+          // Catalog component schemas validate `{ component, ...props }` without `id`
+          const { id: _omitId, ...componentPayload } = node;
+          const isValidProps = validator(componentPayload);
+          if (!isValidProps && validator.errors) {
+            for (const err of validator.errors) {
+              runtimeErrors.push(
+                `Schema Error [ID: ${node.id} (${node.component})]: ${err.instancePath || ""} ${err.message}`,
+              );
+            }
           }
         }
 
-        // 2. Duplicate Node ID Validation Check
+        // 4. Duplicate Component ID Check
         const observedIds = new Set<string>();
-        for (const node of nodes) {
+        for (const node of collectedNodes) {
           if (node.id) {
             if (observedIds.has(node.id)) {
-              runtimeErrors.push(`Topological Error: Duplicate node ID detected in layout graph array: '${node.id}'`);
+              runtimeErrors.push(
+                `Topological Error: Duplicate component ID detected in A2UI surface graph: '${node.id}'.`,
+              );
             }
             observedIds.add(node.id);
           }
         }
 
-        // 3. Topological Reference Pass (Dead children lookup)
-        const nodeMap = new Map(nodes.map((n) => [n.id, n]));
-        for (const node of nodes) {
-          if (node.children && Array.isArray(node.children)) {
+        // 5. Topological Reference Pass (Dead / missing child IDs)
+        const nodeMap = new Map(collectedNodes.map((n) => [n.id, n]));
+        for (const node of collectedNodes) {
+          if (Array.isArray(node.children)) {
             for (const childId of node.children) {
               if (!nodeMap.has(childId)) {
-                runtimeErrors.push(`Topological Error: Node '${node.id}' references a missing or dead child ID: '${childId}'.`);
-                developerHints.push(`Ensure that nested children fields map strictly back to sibling node array elements present in the registry payload.`);
+                runtimeErrors.push(
+                  `Topological Error: Component '${node.id}' references a missing or dead child ID: '${childId}'.`,
+                );
+                developerHints.push(
+                  `Ensure every ID in '${node.id}.children' matches a declared component id in updateComponents.`,
+                );
               }
             }
           }
         }
 
-        // 4. Cycle Detection Pass via Depth-First Search (DFS)
+        // 6. Cycle Detection Pass via Depth-First Search (DFS)
         const visiting = new Set<string>();
         const visited = new Set<string>();
-        let graphHasCycle = false;
 
         function checkCyclesDfs(nodeId: string): boolean {
           visiting.add(nodeId);
           const current = nodeMap.get(nodeId);
-          
-          if (current?.children && Array.isArray(current.children)) {
+
+          if (Array.isArray(current?.children)) {
             for (const childId of current.children) {
               if (visiting.has(childId)) {
-                runtimeErrors.push(`Topological Error: Cyclic rendering loop dependency layout detected traversing branch containing node ID: '${childId}'`);
+                runtimeErrors.push(
+                  `Topological Error: Cyclic rendering loop detected traversing branch containing component ID: '${childId}'.`,
+                );
                 return true;
               }
               if (!visited.has(childId) && nodeMap.has(childId)) {
@@ -135,49 +356,91 @@ export function registerStreamedLayoutTool(context: ServerContext): void {
               }
             }
           }
-          
+
           visiting.delete(nodeId);
           visited.add(nodeId);
           return false;
         }
 
-        for (const node of nodes) {
-          if (!visited.has(node.id)) {
-            if (checkCyclesDfs(node.id)) {
-              graphHasCycle = true;
-              break;
+        for (const node of collectedNodes) {
+          if (node.id && !visited.has(node.id)) {
+            if (checkCyclesDfs(node.id)) break;
+          }
+        }
+
+        // 7. Root Reachability Pass (BFS from "root")
+        if (collectedNodes.length > 0) {
+          if (!nodeMap.has("root")) {
+            if (isStreamMode) {
+              runtimeErrors.push(
+                `Topological Error: A2UI surface stream is missing a required 'root' entry component.`,
+              );
+              developerHints.push(`Include a top-level layout component with "id": "root".`);
+            }
+          } else {
+            const reachable = new Set<string>();
+            const queue: string[] = ["root"];
+            while (queue.length > 0) {
+              const currentId = queue.shift()!;
+              if (reachable.has(currentId)) continue;
+              reachable.add(currentId);
+              const current = nodeMap.get(currentId);
+              if (Array.isArray(current?.children)) {
+                for (const childId of current.children) {
+                  if (nodeMap.has(childId) && !reachable.has(childId)) {
+                    queue.push(childId);
+                  }
+                }
+              }
+            }
+
+            for (const node of collectedNodes) {
+              if (node.id && !reachable.has(node.id)) {
+                runtimeErrors.push(
+                  `Topological Error: Orphaned component '${node.id}' (${node.component}) is unreachable from 'root'.`,
+                );
+                developerHints.push(
+                  `Reference '${node.id}' inside a container's "children" array connected to 'root', or remove it.`,
+                );
+              }
             }
           }
         }
 
+        const uniqueHints = Array.from(new Set(developerHints));
         const evaluationFrame = {
           valid: runtimeErrors.length === 0,
-          errors_detected_count: runtimeErrors.length,
+          catalogId: catalog.catalogId ?? EXPECTED_CATALOG_ID,
+          componentCount: collectedNodes.length,
           errors: runtimeErrors,
-          hints: developerHints
+          hints: uniqueHints,
         };
 
-        context.debugLog(`Graph processing analysis frame complete. Evaluation matrix generated.`, evaluationFrame);
+        context.debugLog(
+          `A2UI v1.0 pre-flight validation complete. Valid: ${evaluationFrame.valid}, Errors: ${runtimeErrors.length}`,
+          evaluationFrame,
+        );
 
         return {
           content: [
             {
               type: "text",
-              text: JSON.stringify({
-                valid: evaluationFrame.valid,
-                errors: evaluationFrame.errors,
-                hints: evaluationFrame.hints,
-              }, null, 2),
+              text: JSON.stringify(evaluationFrame, null, 2),
             },
           ],
         };
       } catch (error) {
-        context.debugLog(`Dynamic evaluation anomaly intercept occurred inside AJV compiler execution trace.`);
+        context.debugLog(`A2UI v1.0 validation compiler anomaly inside AJV execution trace.`);
         return {
-          content: [{ type: "text", text: `Validation compiler loop anomaly: ${error instanceof Error ? error.message : String(error)}` }],
+          content: [
+            {
+              type: "text",
+              text: `Validation compiler loop anomaly: ${error instanceof Error ? error.message : String(error)}`,
+            },
+          ],
           isError: true,
         };
       }
-    }
+    },
   );
 }

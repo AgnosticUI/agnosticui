@@ -2,7 +2,7 @@ name: Check Codegen Consistency
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ master, main, A2UI-experiment ]
   pull_request:
     branches: [ master, main ]
 
@@ -20,47 +20,45 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install dependencies (root)
-        run: npm ci
-
-      - name: Install dependencies (v2/sdui/schema)
-        run: npm ci
-        working-directory: v2/sdui/schema
+          node-version: 22
 
       - name: Install dependencies (v2/lib)
         run: npm ci
         working-directory: v2/lib
 
-      # Audit committed files directly BEFORE executing any code regeneration passes
-      - name: Check for Committed Codegen Drift
+      - name: Install dependencies (v2/a2ui/catalog)
+        run: npm ci
+        working-directory: v2/a2ui/catalog
+
+      - name: Install dependencies (v2/a2ui/renderers/lit)
+        run: npm ci
+        working-directory: v2/a2ui/renderers/lit
+
+      - name: Check for Committed A2UI v1.0 Codegen Drift
         run: |
-          if ! npm run check-codegen; then
+          if ! npm run check; then
             echo ""
             echo "========================================================================"
-            echo " ❌ CODEGEN DRIFT DETECTED!"
+            echo " ❌ A2UI v1.0 CODEGEN DRIFT DETECTED!"
             echo "========================================================================"
-            echo "Your committed generated schema or types files do not match the current"
-            echo "core component definitions, interfaces, or configurations."
+            echo "Your committed agnosticui-catalog.json, SKILL.md, Lit wrappers, or"
+            echo "v2/site/docs/public/a2ui/v1/catalog.json do not match v2/lib interfaces."
             echo ""
             echo "Please run these exact steps locally in your terminal to synchronize:"
             echo ""
-            echo "  cd v2/sdui/schema"
-            echo "  npm run codegen -- --emit-schema-json"
-            echo "  npm run check-codegen"
+            echo "  cd v2/a2ui/catalog"
+            echo "  npm run generate"
+            echo "  npm run check"
             echo ""
             echo "Once completed, add, commit, and push the updated files to your PR branch."
             echo "========================================================================"
             echo ""
             exit 1
           fi
-        working-directory: v2/sdui/schema
+        working-directory: v2/a2ui/catalog
 
-      # Regenerate and compile ONLY after the initial pre-flight check has passed successfully
-      - name: Verify Codegen Execution and Build Toolchain Stability
+      - name: Verify @agnosticui/a2ui-lit Tests and Build
         run: |
-          npm run codegen -- --emit-schema-json
+          npm test
           npm run build
-        working-directory: v2/sdui/schema
+        working-directory: v2/a2ui/renderers/lit

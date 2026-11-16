@@ -1,11 +1,11 @@
 # Model Context Protocol (MCP) Server
 
-**AgnosticUI MCP Server** is a local workflow context engine that implements the open **Model Context Protocol (MCP)** specification. It bridges framework-agnostic design artifacts, Style Dictionary token registers, and Lit components directly into local AI-native coding environments.
+**AgnosticUI MCP Server** is a local workflow context engine that implements the open **Model Context Protocol (MCP)** specification. It bridges framework-agnostic design artifacts, Style Dictionary token registers, and **A2UI `v1.0`** catalog schemas directly into local AI-native coding environments.
 
 By exposing these systems directly over standard input/output channels, an LLM shifts from blind guessing to zero-drift code generation—completely eliminating prop hallucinations and styling drift during software workflows.
 
 ::: tip Early access
-The MCP Server is new and evolving. The server architecture is stable enough to test and build with locally, but not yet published to npm. Feedback welcome via [GitHub issues](https://github.com/AgnosticUI/agnosticui/issues).
+The MCP Server is new and evolving. The server architecture is stable enough to test and build with locally, but not yet published to npm. Feedback welcome via [GitHub issues](https://github.com).
 :::
 
 ---
@@ -14,12 +14,12 @@ The MCP Server is new and evolving. The server architecture is stable enough to 
 
 The background process provides four core tool capabilities to host AI applications:
 
-| Tool Name                  | Operational Intent                 | What it Returns                                                                                                   |
-| -------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `get_component_schema`     | Resolves public element signatures | Precise slots, observed attributes, and framework-appropriate import syntax statements.                           |
-| `generate_streamed_layout` | Pre-flight SDUI graph validator    | A multi-pass topological audit block exposing structural errors or dangling parent-child reference pointers.      |
-| `get_design_tokens`        | Style Dictionary primitivization   | Natively resolved nested token objects (colors, spacing sizing grids, radii variables, motion).                   |
-| `resolve_skin_properties`  | Artistic theme sheet tracker       | A key-value store mapping explicit custom property variables (`--ag-*`) modified by specialized visual sub-skins. |
+| Tool Name                  | Operational Intent                 | What it Returns                                                                                                                                                              |
+| -------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `get_component_schema`     | Resolves public element signatures | Precise slots, observed attributes, and framework-appropriate import syntax statements.                                                                                      |
+| `generate_streamed_layout` | Pre-flight A2UI `v1.0` validator   | Validates A2UI `v1.0` wire streams (`messages`) and adjacency lists (`nodes`) for `catalogId`, UAX #31 IDs, prop schemas, dead child pointers, cycles, and `root` reachability. |
+| `get_design_tokens`        | Style Dictionary primitivization   | Natively resolved nested token objects (colors, spacing sizing grids, radii variables, motion).                                                                              |
+| `resolve_skin_properties`  | Artistic theme sheet tracker       | A key-value store mapping explicit custom property variables (`--ag-*`) modified by specialized visual sub-skins.                                                            |
 
 ::: tip Local and Private
 The server runs entirely on your local machine. Combined with local LLM runners like Ollama, you can execute tool-calling workflows, look up design tokens, and analyze component structures 100% offline with zero external cloud subscriptions.
@@ -42,8 +42,8 @@ The background process connects smoothly to host environments or testing scripts
 │ AGNOSTICUI MCP SERVER                                                  │
 │                                                                        │
 │ ┌────────────────────────┐ ┌────────────────────────────┐              │
-│ │ Tool Registry          │ │ Schema Validation Engine   │              │
-│ │ (get_component_schema) │ │ (AJV / JSON Schema)        │              │
+│ │ Tool Registry          │ │ A2UI v1.0 Schema Validator │              │
+│ │ (get_component_schema) │ │ (AJV / agnosticui-catalog) │              │
 │ └───────────┬────────────┘ └─────────────┬──────────────┘              │
 │             │                            │                             │
 │             ▼                            ▼                             │
@@ -56,21 +56,21 @@ The background process connects smoothly to host environments or testing scripts
                                        ▼
 ┌────────────────────────────────────────────────────────────────────────┐
 │ LOCAL USER REPOSITORY WORKSPACE                                        │
-│ │                                                                      │
+│                                                                        │
 │ ├── agnosticui.config.json ├── v2/lib/custom-elements.json             │
-│ └── theme-registry/dist/   └── v2/skins/                               │
+│ └── theme-registry/dist/   └── v2/a2ui/catalog/agnosticui-catalog.json │
 └────────────────────────────────────────────────────────────────────────┘
 ```
-
 ---
 
 ## Data Freshness & Synchronization
 
-The validation checks verify the structural schema arrays (agnosticui-schema.json) and renderer mapping rules directly to flag pipeline deviations, rather than continuously monitoring the internal custom elements manifest file.
+`generate_streamed_layout` validates incoming A2UI `v1.0` wire streams (`createSurface`, `updateComponents`, `updateDataModel`) and flat component graphs directly against `v2/a2ui/catalog/agnosticui-catalog.json` (`https://agnosticui.com`).
 
-### Manifest Synchronization Pipeline
+### Manifest & Catalog Synchronization Pipeline
 
-The critical component metadata file located at `v2/lib/custom-elements.json` captures every public attribute and component wrapper restriction. This is automatically kept up-to-date via an AST morphing compilation pipeline tied to a hard automated CI gate check (`npm run check-codegen`), stopping any configuration drift before code gets generated.
+- **`v2/lib/custom-elements.json`**: Captures every public attribute and slot for `get_component_schema`.
+- **`v2/a2ui/catalog/agnosticui-catalog.json`**: Generated deterministically via `ts-morph` (`npm run generate` in `v2/a2ui/catalog`) and verified against drift with `npm run check` (`check-codegen.ts`).
 
 ---
 

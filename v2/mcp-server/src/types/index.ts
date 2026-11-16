@@ -15,12 +15,36 @@ export interface AgNode {
   [key: string]: unknown;
 }
 
-export interface ComponentSchemaRequest {
-  component_name: string;
+export interface A2uiWireMessage {
+  version?: string;
+  createSurface?: {
+    surfaceId: string;
+    catalogId: string;
+  };
+  updateComponents?: {
+    surfaceId: string;
+    components: AgNode[];
+  };
+  updateDataModel?: {
+    surfaceId: string;
+    path?: string;
+    value?: unknown;
+  };
+  deleteSurface?: {
+    surfaceId: string;
+  };
+  [key: string]: unknown;
 }
 
 export interface StreamedLayoutRequest {
-  nodes: AgNode[];
+  /** Canonical A2UI v1.0 wire message stream (createSurface, updateComponents, updateDataModel). */
+  messages?: A2uiWireMessage[];
+  /** Flat A2UI v1.0 component adjacency-list array (shorthand when validating components directly). */
+  nodes?: AgNode[];
+}
+
+export interface ComponentSchemaRequest {
+  component_name: string;
 }
 
 export interface DesignTokensRequest {
