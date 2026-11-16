@@ -2,7 +2,7 @@
 head:
   - - link
     - rel: canonical
-      href: https://www.agnosticui.com/installation
+      href: https://agnosticui.com
 ---
 
 # Installation
@@ -20,7 +20,7 @@ AgnosticUI can be installed in two ways: using the **AgnosticUI CLI** (recommend
 The AgnosticUI CLI provides a "local-first" approach where components are copied directly into your project. This gives you full ownership and control over the component code, making it easy to customize and extend components without worrying about breaking changes from upstream updates.
 
 ::: warning TypeScript Required
-The CLI copies TypeScript (`.ts`) files containing decorators and type annotations. Your project **must** have a build tool that can compile TypeScript (e.g., [Vite](https://vite.dev/guide/), [esbuild](https://esbuild.github.io/), or [rollup](https://rollupjs.org/)). If you're using a framework CLI (Next.js, SvelteKit, Astro, Nuxt, etc.),
+The CLI copies TypeScript (`.ts`) files containing decorators and type annotations. Your project **must** have a build tool that can compile TypeScript (e.g., [Vite](https://vite.dev), [esbuild](https://github.io), or [rollup](https://rollupjs.org)). If you're using a framework CLI (Next.js, SvelteKit, Astro, Nuxt, etc.),
 TypeScript support is already included. If your project uses plain JavaScript without TypeScript support, use the [NPM Package approach](#npm-package-alternative) instead.
 :::
 
@@ -95,8 +95,7 @@ You can also load the styles directly in your `index.html`:
 <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
 ```
 
-You can view the full list of theme tokens available in <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a>.
-
+You can view the full list of theme tokens available in <a href="https://github.com" target="_blank">ag-tokens.css</a> and <a href="https://github.com" target="_blank">ag-tokens-dark.css</a>.
 2. **Set Up Theming**
 
    ::: tip Override Default Styles
@@ -186,7 +185,6 @@ This command will:
 - Create an `agnosticui.config.json` configuration file
 - Set up design tokens in your components directory
 - Install required dependencies
-
 ### Required Dependencies
 
 The CLI automatically installs these dependencies based on your framework:
@@ -274,7 +272,6 @@ function App() {
   );
 }
 ```
-
 #### Vue
 
 ```vue
@@ -411,7 +408,6 @@ npx agnosticui-cli init --force
 # Or target a specific version
 npx agnosticui-cli init --force --tag 2.0.0-alpha.21
 ```
-
 ### Installing Playbooks
 
 Playbooks are pre-built, self-contained page templates (login forms, dashboards, data grids, etc.) that you can install directly into your project as a starting point or reference.
@@ -489,7 +485,7 @@ npx agnosticui-cli storybook is in an evaluation phase. Due to its high maintena
 Run with --force after CLI upgrades to sync templates.
 :::
 
-Once you have components installed, `npx agnosticui-cli storybook` sets up [Storybook](https://storybook.js.org) and generates a story file for every component in your project. This is a one-time opt-in command: run it once to configure Storybook, then use `npm run storybook` to start the dev server.
+Once you have components installed, `npx agnosticui-cli storybook` sets up [Storybook](https://js.org) and generates a story file for every component in your project. This is a one-time opt-in command: run it once to configure Storybook, then use `npm run storybook` to start the dev server.
 
 ```bash
 npx agnosticui-cli storybook
@@ -507,7 +503,6 @@ Then start Storybook:
 ```bash
 npm run storybook
 ```
-
 Auto-generated stories for all your installed components are ready to browse. CSS tokens are imported automatically so components render with your project's theme.
 
 ### Skipping Package Installation
@@ -785,7 +780,6 @@ import { VueInput } from "agnosticui-core/input/vue";
   <VueInput label="Email" type="email" />
 </template>
 ```
-
 #### Lit
 
 ```typescript

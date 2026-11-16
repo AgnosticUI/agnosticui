@@ -103,6 +103,8 @@
   * **Micro-Chunk 6.2a — Audit Commit `b8e053892` & Port Graph Validator:**
     * Inspect the legacy SDUI pre-flight graph validator (multi-pass topological audit exposing structural errors or dangling parent-child reference pointers) in the MCP server.
     * Port `generate_streamed_layout` to validate A2UI `v1.0` adjacency-list component graphs (`root` reachability, missing child IDs, circular references, and `AGNOSTICUI_CATALOG_ID` schema conformance) and update MCP docs accordingly.
+  * **Micro-Chunk 6.2b — Audit Codebase for `sdui` instances:**
+    * As the SDUI stuff has been removed and will be entirely replaced by A2UI, we need to do a deep project-wide search to audit Codebase for dangling rogue `sdui` & and replace or purge as appropriate:**
 * **Task 6.3 — Comprehensive 25-Component Catalog & Multi-Framework Hook Test Suite** ⬜
   * **Micro-Chunk 6.2a:** Expand `v2/a2ui/renderers/lit/src/catalog.spec.ts` to verify mounting, prop reflection, and `@path` resolution across all 25 catalog components (`AgText` + 24 `Ag*` wrappers), plus two-way `@path` binding specs on `AgInput`, `AgCheckbox`, `AgToggle`, `AgSelect`, `AgCombobox`, `AgRadio`, and `AgRating`.
   * **Micro-Chunk 6.2b:** Expand `v2/a2ui/renderers/react/src/index.spec.tsx` and `v2/a2ui/renderers/vue/src/index.spec.ts` to cover `streamMessages`, `resetSurface`, `getDataModel`, and `deleteSurface` / `onSurfaceDeleted` lifecycle cleanup.

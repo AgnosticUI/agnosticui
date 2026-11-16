@@ -29,7 +29,7 @@ import { AgTag } from './components/AgTag.js';
 import { AgTimeline } from './components/AgTimeline.js';
 import { AgToggle } from './components/AgToggle.js';
 
-export const AGNOSTICUI_CATALOG_ID = 'https://agnosticui.com/a2ui/v1/catalog.json';
+export const AGNOSTICUI_CATALOG_ID = 'https://agnosticui.com';
 
 export const AgnosticUICatalog: Catalog<LitComponentApi> = new Catalog(
   AGNOSTICUI_CATALOG_ID,
