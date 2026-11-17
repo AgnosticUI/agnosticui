@@ -1,10 +1,10 @@
 # Implementation Tracking Plan: AgnosticUI A2UI v1.0 Refactor
 
-- **Branch:** `master` (merged via PR #517)
+- **Branch:** `master` (Phases 1–6 merged via PR #517)
 - **Upstream Ecosystem PR:** `https://github.com/a2ui-project/a2ui/pull/4272`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phase 1 ✅ | Phase 2 ✅ | Phase 3 ✅ | Phase 4 ✅ | Phase 5 ✅ | Phase 6 ✅ (100% Complete)
+- **Overall Status:** Phases 1–6 ✅ (100% Complete) | Phase 7 ⬜ (Next: Task 7.1) | Phase 8 ⬜
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 
 ---
@@ -17,6 +17,8 @@
 - [Phase 4: Full Component Catalog, Skill Generation, `v2/sdui` Sweep & VitePress Docs](#phase-4-full-component-catalog-skill-generation-v2sdui-sweep--vitepress-docs)
 - [Phase 5: Multi-Framework Renderers, `MessageBubble` Tri-Framework Demos & `a2ui.org` PR](#phase-5-multi-framework-renderers-messagebubble-tri-framework-demos--a2uiorg-pr)
 - [Phase 6: Pre-Publish Quality Hardening, npm Release & Official `a2ui-project/a2ui` PR (`v1.0`)](#phase-6-pre-publish-quality-hardening-npm-release--official-a2ui-projecta2ui-pr-v10)
+- [Phase 7: Upstream A2UI Core Contributions, Studio v2 ("Wow Factor") & Homepage Positioning](#phase-7-upstream-a2ui-core-contributions-studio-v2-wow-factor--homepage-positioning)
+- [Phase 8: 35-Component Catalog Expansion (~65% Coverage)](#phase-8-35-component-catalog-expansion-65-coverage)
 
 ---
 
@@ -60,32 +62,54 @@
 ## Phase 4: Full Component Catalog, Skill Generation, `v2/sdui` Sweep & VitePress Docs
 
 * **Task 4.1 — Expand Catalog (25 Components) & Emit `SKILL.md`** ✅
-  * Expanded component generator to 25 curated components (including `AgCombobox`, `AgMessageBubble`, `AgRating`, and more), generated `v2/a2ui/catalog/SKILL.md`, and added CI drift checking.
+  * Expanded component generator to 25 curated components (`AgText` + 24 `Ag*`), generated `v2/a2ui/catalog/SKILL.md`, and added CI drift check (`check-codegen.ts`).
 * **Task 4.2 — Sweep `v2/sdui` & Migrate VitePress Docs** ✅
-  * Audited legacy `v2/sdui` components, created A2UI v1.0 documentation in `v2/site/docs/docs/a2ui.md`, updated sidebar navigation, and retired `v2/sdui`.
+  * Created `v2/site/docs/docs/a2ui.md` (A2UI Protocol Version `v1.0`), updated sidebar and setup/installation docs, and retired `v2/sdui/`.
 
 ---
 
 ## Phase 5: Multi-Framework Renderers, `MessageBubble` Tri-Framework Demos & `a2ui.org` PR
 
 * **Task 5.1 — `@agnosticui/a2ui-react` Renderer Package & Shared Vitest** ✅
-  * Created `@agnosticui/a2ui-react` with `AgA2uiSurface` and `useA2uiSurface`, configuring shared Vitest deduplication for Lit and React.
+  * Created `@agnosticui/a2ui-react` (`<AgA2uiSurface>` + `useA2uiSurface`) with shared Lit/React Vitest deduplication (`v2/a2ui/vitest.shared.mts`).
 * **Task 5.2 — Restructure Support Center Demo & Tri-Framework Support** ✅
-  * Modularized Support Center demos across Lit, React 19, and Vue 3 with shared fixtures, custom UI motion, and 4-turn `AgMessageBubble` conversational threads.
+  * Modularized Support Center demos across `lit/`, `react/`, and `shared/` with 4-turn `AgMessageBubble` threads, `AgEmptyState` boot, collapsible Inspector, and `Evergreen` skin.
 * **Task 5.3 — `@agnosticui/a2ui-vue` Renderer Package & Vue 3 Demo** ✅
-  * Implemented `@agnosticui/a2ui-vue` with Vue composition hooks, Vitest specs, and a matching Vue 3 Support Center demo.
+  * Implemented `@agnosticui/a2ui-vue` (`<AgA2uiSurface>` + `useA2uiSurface`) and matching Vue 3 Support Center demo.
 
 ---
 
 ## Phase 6: Pre-Publish Quality Hardening, npm Release & Official `a2ui-project/a2ui` PR (`v1.0`) ✅
 
 * **Task 6.1 — Versioned `catalogId` & Static Hosting Sync** ✅
-  * Standardized `AGNOSTICUI_CATALOG_ID` to `https://agnosticui.com` and synchronized static catalog JSON and `SKILL.md` assets across public documentation paths.
+  * Standardized `AGNOSTICUI_CATALOG_ID` to `https://agnosticui.com/a2ui/v1/catalog.json` and synchronized `agnosticui-catalog.json` and `SKILL.md` across `catalog/`, `renderers/lit/`, and `v2/site/docs/public/a2ui/v1/catalog.json`.
 * **Task 6.2 — Port MCP Server Validator & Codebase Audit** ✅
-  * Upgraded `v2/mcp-server` stream validation for A2UI v1.0 wire streams and purged legacy code.
+  * Upgraded `v2/mcp-server` `generate_streamed_layout` to validate A2UI `v1.0` wire streams and graphs (`10/10` passing) and purged legacy `v2/sdui` files.
 * **Task 6.3 — Comprehensive 25-Component Catalog & Hook Test Suite** ✅
-  * Verified all 25 catalog components and two-way binding specs across Lit, React, and Vue test suites.
+  * Verified all 25 catalog components and two-way `@path` bindings across Lit (`6/6`), React (`3/3`), and Vue (`3/3`) Vitest suites plus demo smoke tests.
 * **Task 6.4 — npm Package Metadata & Public Release** ✅
-  * Configured package exports, dependency ranges, and published `@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, and `@agnosticui/a2ui-vue` (`2.0.0-alpha.1`) to npm.
+  * Published `@agnosticui/a2ui-lit@2.0.0-alpha.1`, `@agnosticui/a2ui-react@2.0.0-alpha.1`, and `@agnosticui/a2ui-vue@2.0.0-alpha.1` to npm (`alpha` and `latest` dist-tags).
 * **Task 6.5 — AgnosticUI PR Merge, VitePress Deployment & Official `a2ui-project/a2ui` PR** ✅
-  * Merged upstream documentation hotfixes, deployed VitePress docs, and opened official PR [`a2ui-project/a2ui#4272`](https://github.com/a2ui-project/a2ui/pull/4272).
+  * Merged PR #517 + multi-framework docs hotfix into `master`, deployed VitePress docs, verified live HTTP `200` endpoints, and opened upstream PR [`a2ui-project/a2ui#4272`](https://github.com/AgnosticUI/agnosticui/pull/517).
+
+---
+
+## Phase 7: Upstream A2UI Core Contributions, Studio v2 ("Wow Factor") & Homepage Positioning ⬜
+
+* **Task 7.1 — Permanent `a2ui-project/a2ui` Dev Setup & Upstream Core Bugfix/Docs PRs** ⬜
+  * **Micro-Chunk 7.1a:** Clone `RobLevin/a2ui` (with `upstream` pointing to `a2ui-project/a2ui`) into a permanent workspace directory (`~/workspace/a2ui`), run its `@a2ui/web_core` and `@a2ui/lit` build/test suites locally, and map the core message-processing & renderer code flow.
+  * **Micro-Chunk 7.1b:** Triage open `v1.0`, Lit renderer, or validation issues in `a2ui-project/a2ui`, implement a targeted fix with unit tests, and submit an upstream PR.
+* **Task 7.2 — Support Center Studio v2 ("Wow Factor") & Public Netlify Hosting** ⬜
+  * **Micro-Chunk 7.2a:** Upgrade `v2/a2ui/demos/support-center/shared/` with progressive token/JSONL component streaming (skeleton -> bubble typing -> incremental field arrival) and live `@path` JSON diff highlights in the Inspector drawer.
+  * **Micro-Chunk 7.2b:** Add multi-turn agentic round-trips (`a2uiaction` validated payload -> dynamic follow-up A2UI confirmation/next-step surface) so users experience a true stateful agent loop.
+  * **Micro-Chunk 7.2c:** Configure and deploy a single canonical public Netlify demo (`Local Compiler` default = `$0` token cost + optional BYOK Gemini key with `MAX_SESSION_CALLS = 5` cap) and link it in `v2/a2ui/README.md` and `v2/site/docs/docs/a2ui.md`.
+* **Task 7.3 — Elevate A2UI `v1.0` on the AgnosticUI Homepage (`v2/site/docs/index.md`)** ⬜
+  * **Micro-Chunk 7.3a:** Update `v2/site/docs/index.md` so **CLI Local Components** and **A2UI v1.0 Generative UI** lead the core value proposition (positioning schema-enforced A2UI `v1.0` renderers & 22 skins ahead of probabilistic Playbooks) with direct links to `/docs/a2ui` and the live Studio.
+
+---
+
+## Phase 8: 35-Component Catalog Expansion (~65% Coverage) ⬜
+
+* **Task 8.1 — Expand Catalog from 25 to 35 Components** ⬜
+  * **Micro-Chunk 8.1a:** Inspect `v2/lib/src/components/*/core/_*.ts` for 10 high-value additions (`AgSlider`, `AgSkeletonLoader`, `AgBreadcrumb`, `AgPagination`, `AgCollapsible`, `AgImage`, `AgKbd`, `AgMark`, `AgToast`, `AgIntlFormatter`), add them to `CATALOG_COMPONENTS` and `TWO_WAY_BINDINGS` (`AgSlider.value`) in `v2/a2ui/catalog/scripts/generate-catalog.ts`, and regenerate `agnosticui-catalog.json` + `SKILL.md`.
+  * **Micro-Chunk 8.1b:** Expand `v2/a2ui/renderers/lit/src/catalog.spec.ts` to test all 35 components + `AgSlider` two-way `@path` binding, verify `npm run check` and `v2/mcp-server` tests pass, and bump minor/alpha release if desired.
