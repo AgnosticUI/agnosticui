@@ -2,7 +2,7 @@
 head:
   - - link
     - rel: canonical
-      href: https://www.agnosticui.com/installation
+      href: https://agnosticui.com
 ---
 
 # Installation
@@ -20,7 +20,7 @@ AgnosticUI can be installed in two ways: using the **AgnosticUI CLI** (recommend
 The AgnosticUI CLI provides a "local-first" approach where components are copied directly into your project. This gives you full ownership and control over the component code, making it easy to customize and extend components without worrying about breaking changes from upstream updates.
 
 ::: warning TypeScript Required
-The CLI copies TypeScript (`.ts`) files containing decorators and type annotations. Your project **must** have a build tool that can compile TypeScript (e.g., [Vite](https://vite.dev/guide/), [esbuild](https://esbuild.github.io/), or [rollup](https://rollupjs.org/)). If you're using a framework CLI (Next.js, SvelteKit, Astro, Nuxt, etc.),
+The CLI copies TypeScript (`.ts`) files containing decorators and type annotations. Your project **must** have a build tool that can compile TypeScript (e.g., [Vite](https://vite.dev), [esbuild](https://github.io), or [rollup](https://rollupjs.org)). If you're using a framework CLI (Next.js, SvelteKit, Astro, Nuxt, etc.),
 TypeScript support is already included. If your project uses plain JavaScript without TypeScript support, use the [NPM Package approach](#npm-package-alternative) instead.
 :::
 
@@ -95,8 +95,7 @@ You can also load the styles directly in your `index.html`:
 <link rel="stylesheet" href="/src/components/ag/styles/ag-tokens-dark.css" />
 ```
 
-You can view the full list of theme tokens available in <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens.css" target="_blank">ag-tokens.css</a> and <a href="https://github.com/AgnosticUI/agnosticui/blob/master/v2/lib/src/styles/ag-tokens-dark.css" target="_blank">ag-tokens-dark.css</a>.
-
+You can view the full list of theme tokens available in <a href="https://github.com" target="_blank">ag-tokens.css</a> and <a href="https://github.com" target="_blank">ag-tokens-dark.css</a>.
 2. **Set Up Theming**
 
    ::: tip Override Default Styles
@@ -186,7 +185,6 @@ This command will:
 - Create an `agnosticui.config.json` configuration file
 - Set up design tokens in your components directory
 - Install required dependencies
-
 ### Required Dependencies
 
 The CLI automatically installs these dependencies based on your framework:
@@ -274,7 +272,6 @@ function App() {
   );
 }
 ```
-
 #### Vue
 
 ```vue
@@ -411,7 +408,6 @@ npx agnosticui-cli init --force
 # Or target a specific version
 npx agnosticui-cli init --force --tag 2.0.0-alpha.21
 ```
-
 ### Installing Playbooks
 
 Playbooks are pre-built, self-contained page templates (login forms, dashboards, data grids, etc.) that you can install directly into your project as a starting point or reference.
@@ -489,7 +485,7 @@ npx agnosticui-cli storybook is in an evaluation phase. Due to its high maintena
 Run with --force after CLI upgrades to sync templates.
 :::
 
-Once you have components installed, `npx agnosticui-cli storybook` sets up [Storybook](https://storybook.js.org) and generates a story file for every component in your project. This is a one-time opt-in command: run it once to configure Storybook, then use `npm run storybook` to start the dev server.
+Once you have components installed, `npx agnosticui-cli storybook` sets up [Storybook](https://js.org) and generates a story file for every component in your project. This is a one-time opt-in command: run it once to configure Storybook, then use `npm run storybook` to start the dev server.
 
 ```bash
 npx agnosticui-cli storybook
@@ -507,7 +503,6 @@ Then start Storybook:
 ```bash
 npm run storybook
 ```
-
 Auto-generated stories for all your installed components are ready to browse. CSS tokens are imported automatically so components render with your project's theme.
 
 ### Skipping Package Installation
@@ -596,87 +591,79 @@ export default defineConfig({
 
 This prevents Vue from treating AgnosticUI web components as Vue components.
 
-## Schema-Driven UI
+## Generative UI (A2UI v1.0)
 
-::: danger Experimental — Not for Production
-Schema-Driven UI is in a very early, exploratory phase. The APIs, node schema, renderer interfaces, and scaffolded file structure are **all subject to breaking changes** without notice. This feature is intended for evaluation and feedback only — do **not** use it in production applications.
-:::
+AgnosticUI supports Google's open **A2UI `v1.0`** protocol, letting AI agents stream interactive, accessible, form-validated UI surfaces at runtime while preserving AgnosticUI's **21 runtime skins** and **Light/Dark mode** CSS tokens (`--ag-*`).
 
-Schema-Driven UI (SDUI) lets you describe your interface as a plain JSON array of `AgNode` objects and render it dynamically at runtime. Instead of writing component trees by hand, you declare what to render in data — useful for server-driven UIs, form builders, low-code editors, and A/B testing.
+### Install & Register the Catalog
 
-Add the `--sdui` flag to `ag init` to scaffold everything in one step:
+Install `@agnosticui/a2ui-lit` alongside `@a2ui/lit` and `@a2ui/web_core`:
 
 ```bash
-npx agnosticui-cli init -f react --sdui
-npx agnosticui-cli init -f vue --sdui
-npx agnosticui-cli init -f lit --sdui
+npm install @agnosticui/a2ui-lit @a2ui/lit @a2ui/web_core
 ```
 
-This will:
-
-1. Install `@agnosticui/schema` and the appropriate renderer package (`@agnosticui/render-react`, `@agnosticui/render-vue`, or `@agnosticui/render-lit`)
-2. Create `src/sdui/fixture.ts` — a sample node array you can edit to change the rendered UI
-3. Create `src/sdui/SduiDemo.{tsx|vue|ts}` — a demo component with `AgDynamicRenderer` wired to the fixture
-
-### Wire SduiDemo into your App
-
-::: code-group
-
-```tsx [React]
-// src/App.tsx
-import { SduiDemo } from './sdui/SduiDemo';
-
-export function App() {
-  return <SduiDemo />;
-}
-```
-
-```vue [Vue]
-<!-- src/App.vue -->
-<script setup>
-import SduiDemo from './sdui/SduiDemo.vue';
-</script>
-
-<template>
-  <SduiDemo />
-</template>
-```
-
-```ts [Lit]
-// src/main.ts
-import './sdui/SduiDemo';
-// then in your HTML:
-// <ag-sdui-demo></ag-sdui-demo>
-```
-
-:::
-
-### Customising the UI
-
-Edit `src/sdui/fixture.ts` to change what gets rendered. Each node maps to an AgnosticUI component by name:
+Register the AgnosticUI catalog once at startup and mount `<a2ui-surface>`:
 
 ```ts
-import type { AgNode } from '@agnosticui/schema';
+import 'agnosticui-core/styles/tokens.css';
+import 'agnosticui-core/styles/tokens-dark.css';
+import { MessageProcessor } from '@a2ui/web_core/v1_0';
+import { A2uiSurface, type LitComponentApi } from '@a2ui/lit';
+import {
+  AgnosticUICatalog,
+  registerAgnosticUICatalog,
+  runSurfaceValidation,
+} from '@agnosticui/a2ui-lit';
 
-export const fixture: AgNode[] = [
-  { id: 'f-name',   component: 'AgInput',  label: 'Full name', type: 'text', rounded: true },
-  { id: 'f-submit', component: 'AgButton', variant: 'primary', on_click: 'SUBMIT', children: ['f-label'] },
-  { id: 'f-label',  component: 'AgText',   text: 'Send' },
-];
+registerAgnosticUICatalog();
+
+const processor = new MessageProcessor<LitComponentApi>([AgnosticUICatalog]);
+const surfaceEl = new A2uiSurface();
+document.getElementById('mount')?.appendChild(surfaceEl);
+
+surfaceEl.addEventListener('a2uiaction', (event: Event) => {
+  if (!runSurfaceValidation(surfaceEl, true)) return;
+  console.log('Validated A2UI action:', (event as CustomEvent).detail);
+});
 ```
 
-Pass an `actions` map to handle events:
+### Render an A2UI v1.0 Wire Stream
+
+Feed `createSurface`, `updateComponents`, and `updateDataModel` messages (`version: "1.0"`) into `processor.processMessages(...)`:
 
 ```ts
-const actions = {
-  SUBMIT: () => console.log('submitted'),
-};
-// <AgDynamicRenderer nodes={nodes} actions={actions} />
+processor.processMessages([
+  {
+    version: '1.0',
+    createSurface: {
+      surfaceId: 'support_surface',
+      catalogId: 'https://agnosticui.com',
+    },
+  },
+  {
+    version: '1.0',
+    updateComponents: {
+      surfaceId: 'support_surface',
+      components: [
+        { id: 'root', component: 'AgCard', shadow: true, stacked: true, children: ['name_input', 'submit_btn'] },
+        { id: 'name_input', component: 'AgInput', label: 'Full name', type: 'text', required: true, value: { '@path': '/form/name' } },
+        { id: 'submit_btn', component: 'AgButton', variant: 'primary', shape: 'rounded', label: 'Send', action: { event: { name: 'SUBMIT' } } },
+      ],
+    },
+  },
+  {
+    version: '1.0',
+    updateDataModel: {
+      surfaceId: 'support_surface',
+      path: '/',
+      value: { form: { name: '' } },
+    },
+  },
+]);
 ```
 
-Unknown action aliases are silently ignored, providing an XSS boundary.
-
-For a full list of supported nodes and props, see the [SDUI schema docs](https://agnosticui.com/sdui.html).
+For the full 25-component catalog, FACE validation (`validateSurface`), and `SKILL.md` agent setup, see the [Generative UI (A2UI v1.0) guide](/docs/a2ui).
 
 ## NPM Package (Alternative)
 
@@ -793,7 +780,6 @@ import { VueInput } from "agnosticui-core/input/vue";
   <VueInput label="Email" type="email" />
 </template>
 ```
-
 #### Lit
 
 ```typescript

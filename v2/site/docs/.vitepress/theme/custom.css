@@ -52,6 +52,10 @@ html[data-theme="dark"] {
   --vp-c-text-2: #81a7e4;
 }
 
+body {
+  font-size: var(--ag-font-size-sm);
+}
+
 /* Logo */
 .title span {
   color: var(--vp-c-brand-1);

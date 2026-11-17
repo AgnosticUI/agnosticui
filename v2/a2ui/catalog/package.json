@@ -1,0 +1,20 @@
+{
+  "name": "@agnosticui/a2ui-catalog",
+  "version": "2.0.0-alpha.1",
+  "description": "A2UI v1.0 JSON Schema catalog generator for AgnosticUI",
+  "type": "module",
+  "scripts": {
+    "generate": "tsx scripts/generate-catalog.ts",
+    "check": "tsx scripts/check-codegen.ts",
+    "rebuild:all": "npm run generate && npm run check && (cd ../renderers/lit && npm test && npm run build && npm pack) && (cd ../renderers/react && npm run build && npm pack) && (cd ../renderers/vue && npm run build && npm pack)"
+  },
+  "dependencies": {
+    "@a2ui/web_core": "^0.15.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "ts-morph": "^27.0.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

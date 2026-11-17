@@ -72,11 +72,11 @@ Every tool sees the **raw source**. This creates a high-fidelity environment for
 
 This is the architecture for the next era of development: **context-aware, framework-agnostic, and AI-ready.**
 
-The schema-driven layer ships with three companion documents:
+The **A2UI v1.0** generative UI layer ships with three companion resources:
 
-- [`v2/docs/sdui-architecture.md`](./v2/docs/sdui-architecture.md) — full system architecture: codegen pipeline, node graph model, renderers, CI gates, and key design decisions
-- [`v2/docs/llm-prompt-guide.md`](./v2/docs/llm-prompt-guide.md) — copy-paste system prompt template and few-shot examples for generating valid `AgNode[]` graphs
-- [`v2/docs/schema-coverage.md`](./v2/docs/schema-coverage.md) — per-component SDUI coverage registry, renderer parity status, and omission reasons
+- [`v2/a2ui/README.md`](./v2/a2ui/README.md) — full architecture, AST codegen pipeline, multi-framework renderers (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`), and Support Center demos
+- [`v2/a2ui/catalog/SKILL.md`](./v2/a2ui/catalog/SKILL.md) — agent skill instructions and prompt rules for streaming valid A2UI `v1.0` surfaces
+- [`v2/a2ui/catalog/agnosticui-catalog.json`](./v2/a2ui/catalog/agnosticui-catalog.json) — 25-component A2UI `v1.0` JSON Schema catalog (`https://agnosticui.com/a2ui/v1/catalog.json`)
 
 ---
 

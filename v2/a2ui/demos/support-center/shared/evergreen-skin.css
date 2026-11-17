@@ -1,0 +1,88 @@
+/**
+ * @file evergreen-skin.css
+ * @description Custom "Evergreen" brand skin (.ag-skin-evergreen) matching
+ * AgnosticUI's :where(html).ag-skin-<id> token architecture.
+ */
+
+:where(html).ag-skin-evergreen {
+  /* ── Primary color family (Evergreen #00a87f / #008766) ── */
+  --ag-primary: #008766;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #006b51;
+  --ag-primary-border: #7fd4bc;
+  --ag-primary-background: #dcf5ea;
+  --ag-primary-text: #006b51;
+
+  --ag-neutral-background: #eef3e6;
+  --ag-neutral-text: #031d0e;
+
+  /* ── Focus ring (Evergreen-derived RGB) ── */
+  --ag-focus: 0, 168, 127;
+  --ag-focus-dark: #00a87f;
+
+  /* ── Semantic text (Deep Evergreen ink) ── */
+  --ag-text-primary: #031d0e;
+  --ag-text-secondary: #3b4d42;
+  --ag-text-muted: #5a6d61;
+  --ag-text-primary-muted: #243b2e;
+
+  /* ── Borders (Sage-tinted) ── */
+  --ag-border: #d4dace;
+  --ag-border-subtle: #e4e7df;
+
+  /* ── Backgrounds (Warm Ivory & Sand) ── */
+  --ag-background-primary: #fefefa;
+  --ag-background-secondary: #f8faf1;
+  --ag-background-tertiary: #eef3e6;
+
+  /* ── Semantic status tokens ── */
+  --ag-success: #008766;
+  --ag-success-background: #dcf5ea;
+  --ag-success-text: #04291d;
+  --ag-warning: #eab308;
+  --ag-warning-background: #fff4d6;
+  --ag-warning-text: #593800;
+  --ag-danger: #b42318;
+  --ag-danger-background: #feeceb;
+  --ag-danger-text: #7a170f;
+
+  --ag-radius-md: var(--ag-radius-sm);
+  --ag-radius-lg: 0.75rem;
+}
+
+:where(html).ag-skin-evergreen[data-theme='dark'] {
+   --ag-radius-md: var(--ag-radius-sm);
+  /* ── Primary color family (Action Green #12d99b on Deep Evergreen) ── */
+  --ag-primary: #12d99b;
+  --ag-primary-fg: #031d0e;
+  --ag-primary-dark: #07c78c;
+  --ag-primary-border: #1e5e49;
+  --ag-primary-background: #103d32;
+  --ag-primary-text: #5fe0b3;
+
+  --ag-neutral-background: #122d26;
+  --ag-neutral-text: #fefefa;
+
+  --ag-focus: 18, 217, 155;
+  --ag-focus-dark: #5fe0b3;
+
+  --ag-text-primary: #fefefa;
+  --ag-text-secondary: #c5d1c7;
+  --ag-text-muted: #8fa396;
+  --ag-text-primary-muted: #dce6de;
+
+  --ag-border: #1e3a2c;
+  --ag-border-subtle: #152b20;
+
+  --ag-background-primary: #0a231e;
+  --ag-background-secondary: #031d0e;
+  --ag-background-tertiary: #103d32;
+
+  --ag-success: #12d99b;
+  --ag-success-background: #103d32;
+  --ag-success-text: #a9efd3;
+}
+
+:where(html).ag-skin-evergreen .studio-header {
+  border-bottom: 2px solid #00a87f;
+}

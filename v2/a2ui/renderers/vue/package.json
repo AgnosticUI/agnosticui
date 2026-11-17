@@ -1,0 +1,62 @@
+{
+  "name": "@agnosticui/a2ui-vue",
+  "version": "2.0.0-alpha.1",
+  "description": "A2UI v1.0 Vue 3 renderer and surface composable for AgnosticUI",
+  "author": "AgnosticUI",
+  "license": "Apache-2.0",
+  "homepage": "https://agnosticui.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com",
+    "directory": "v2/a2ui/renderers/vue"
+  },
+  "keywords": [
+    "a2ui",
+    "a2ui-v1",
+    "agnosticui",
+    "generative-ui",
+    "vue",
+    "vue3",
+    "web-components"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "@a2ui/lit": "^0.15.0",
+    "@a2ui/web_core": "^0.15.0",
+    "@agnosticui/a2ui-lit": ">=2.0.0-alpha.1",
+    "agnosticui-core": ">=2.0.0-alpha.31",
+    "lit": "^3.0.0",
+    "vue": ">=3"
+  },
+  "devDependencies": {
+    "@a2ui/lit": "^0.15.0",
+    "@a2ui/web_core": "^0.15.0",
+    "@agnosticui/a2ui-lit": "^2.0.0-alpha.1",
+    "@types/node": "^26.6.6",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/test-utils": "^2.4.6",
+    "agnosticui-core": "^2.0.0-alpha.31",
+    "jsdom": "^26.1.0",
+    "lit": "^3.3.3",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0",
+    "vue": "^3.5.22"
+  }
+}

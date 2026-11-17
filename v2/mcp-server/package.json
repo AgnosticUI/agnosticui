@@ -1,7 +1,7 @@
 {
   "name": "@agnosticui/mcp-server",
   "version": "1.0.0",
-  "description": "Model Context Protocol Server for AgnosticUI schemas, manifests, and design tokens",
+  "description": "Model Context Protocol Server for AgnosticUI A2UI v1.0 schemas, manifests, and design tokens",
   "type": "module",
   "main": "./dist/index.js",
   "exports": {
@@ -31,7 +31,8 @@
     "mcp",
     "model-context-protocol",
     "agnosticui",
-    "sdui",
+    "a2ui",
+    "a2ui-v1",
     "design-tokens",
     "json-schema"
   ],
