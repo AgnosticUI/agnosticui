@@ -3,7 +3,7 @@
 - **Branch:** `A2UI-experiment`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phase 1 ✅ | Phase 2 ✅ | Phase 3 ✅ | Phase 4 ✅ | Phase 5 ✅ | Phase 6 ⏳ (Tasks 6.1–6.2 ✅, Next: Task 6.3)
+- **Overall Status:** Phase 1 ✅ | Phase 2 ✅ | Phase 3 ✅ | Phase 4 ✅ | Phase 5 ✅ | Phase 6 ⏳ (Tasks 6.1–6.3 ✅, Next: Task 6.4)
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 
 ---
@@ -54,7 +54,6 @@
 * **Task 3.3 — Local & Cloud Prompt Compiler + Responsive Studio Layout** ✅
   * **Micro-Chunk 3.3a:** Created `v2/a2ui/demos/support-center/src/live-gemini.ts` with deterministic local A2UI v1.0 prompt compiler (`generateLocalA2uiSurface`) + optional `gemini-3.8-flash` REST compiler (`x-goog-api-key` header auth, `thinkingConfig: { thinkingBudget: 0 }`, `AbortSignal.timeout(15000)`, UAX #31 ID validation, and `MAX_SESSION_CALLS = 5`).
   * **Micro-Chunk 3.3b:** Added `<ag-radio>` Local/Live mode toggle, 3 -> 2 -> 1 column responsive breakpoints in `src/studio.css`, and inline `<ag-alert>` diagnostics in `src/main.ts`.
-
 ---
 
 ## Phase 4: Full Component Catalog, Skill Generation, `v2/sdui` Sweep & VitePress Docs
@@ -65,6 +64,7 @@
 * **Task 4.2 — Sweep `v2/sdui` & `v2/cli`, Migrate VitePress Docs (`/docs/a2ui`) & Retire `v2/sdui`** ✅
   * **Micro-Chunk 4.2a:** Audited `v2/sdui/`, `v2/cli/`, and `v2/site/` (`sdui.json` playbook intent preserved; `PUBLISH.md` archived to `v2/a2ui/docs/PUBLISH.md`).
   * **Micro-Chunk 4.2b:** Created `v2/site/docs/docs/a2ui.md` (explicitly stating A2UI Protocol Version `v1.0`), updated `v2/site/docs/installation.md` and `v2/site/docs/docs/setup.md`, updated VitePress sidebar (`Generative UI` -> `/docs/a2ui`), removed `v2/site/docs/docs/sdui.md`, and retired `v2/sdui/`.
+
 ---
 
 ## Phase 5: Multi-Framework Renderers, `MessageBubble` Tri-Framework Demos & `a2ui.org` PR
@@ -90,10 +90,10 @@
 * **Task 6.2 — Port MCP Server `generate_streamed_layout` Pre-Flight Validator to A2UI `v1.0` & Codebase `sdui` Audit** ✅
   * **Micro-Chunk 6.2a — Port Graph & Wire Stream Validator:** Upgraded `v2/mcp-server/src/tools/streamed-layout.ts` and `v2/mcp-server/src/types/index.ts` to validate A2UI `v1.0` wire streams (`messages`: `version: "1.0"`, `createSurface.catalogId === "https://agnosticui.com"`, declared `surfaceId`) and component adjacency lists (`nodes`) against `v2/a2ui/catalog/agnosticui-catalog.json` with `common_types.json` `$defs`, enforcing UAX #31 component IDs, component prop/`@path` schemas, duplicate ID detection, dead child pointers, DFS cycle detection, and `root` reachability (10/10 Vitest specs passing, `tsc` clean).
   * **Micro-Chunk 6.2b — Update MCP Docs & Sweep Dangling `sdui` References:** Updated `v2/mcp-server/package.json`, `v2/mcp-server/README.md`, `v2/mcp-server/docs/NEXT_PROMPT.md`, and `v2/site/docs/docs/mcp-server.md` to A2UI `v1.0`; upgraded `.github/workflows/check-codegen.yml` to run `npm run check` in `v2/a2ui/catalog`; and removed leftover retired `v2/sdui/demo-support-center/docs/NOTES.md`, `v2/site/docs/docs/sdui.md`, `.github/workflows/a11y-audit.yml`, and `.github/workflows/validate-fixtures.yml` (while preserving intentional `v2/playbooks/**/sdui.json` schemas).
-* **Task 6.3 — Comprehensive 25-Component Catalog & Multi-Framework Hook Test Suite** ⬜
-  * **Micro-Chunk 6.3a:** Expand `v2/a2ui/renderers/lit/src/catalog.spec.ts` to verify mounting, prop reflection, and `@path` resolution across all 25 catalog components (`AgText` + 24 `Ag*` wrappers), plus two-way `@path` binding specs on `AgInput`, `AgCheckbox`, `AgToggle`, `AgSelect`, `AgCombobox`, `AgRadio`, and `AgRating`.
-  * **Micro-Chunk 6.3b:** Expand `v2/a2ui/renderers/react/src/index.spec.tsx` and `v2/a2ui/renderers/vue/src/index.spec.ts` to cover `streamMessages`, `resetSurface`, `getDataModel`, and `deleteSurface` / `onSurfaceDeleted` lifecycle cleanup.
-  * **Micro-Chunk 6.3c:** Add automated end-to-end smoke checks across `v2/a2ui/demos/support-center/{lit,react,vue}` verifying clean boot, prompt chip streaming, FACE validation, and multi-turn action confirmation.
+* **Task 6.3 — Comprehensive 25-Component Catalog & Multi-Framework Hook Test Suite** ✅
+  * **Micro-Chunk 6.3a:** Expanded `v2/a2ui/renderers/lit/src/catalog.spec.ts` to verify mounting, prop reflection, and `@path` resolution across all 25 catalog components (`AgText` + 24 `Ag*` wrappers), added synthetic `value: DynamicStringSchema` on `AgSelect`, aligned `TWO_WAY_BINDINGS` in `generate-catalog.ts` with exact `agnosticui-core` native event names (`input`, `change`, `rating-change`, `toggle-change`), and verified two-way `@path` binding specs on `AgInput`, `AgCheckbox`, `AgToggle`, `AgSelect`, `AgCombobox`, `AgRadio`, and `AgRating`.
+  * **Micro-Chunk 6.3b:** Expanded `v2/a2ui/renderers/react/src/index.spec.tsx` (3/3 passing) and `v2/a2ui/renderers/vue/src/index.spec.ts` (3/3 passing) to cover `streamMessages`, `resetSurface`, `getDataModel`, and `deleteSurface` lifecycle cleanup.
+  * **Micro-Chunk 6.3c:** Added `v2/a2ui/renderers/lit/src/demos-smoke.spec.ts` (3/3 passing; 6/6 total Lit specs passing) verifying idle `AgEmptyState` boot, prompt chip compilation & streaming across all 3 `QUICK_PROMPT_CHIPS`, FACE validation, and 4-turn `AgMessageBubble` confirmation; added `"typecheck": "tsc --noEmit"` to `renderers/{lit,react,vue}/package.json`; and verified all 3 renderers and all 3 Support Center demos (`lit`, `react`, `vue`) pass `test`, `typecheck`, and `build` cleanly.
 * **Task 6.4 — npm Package Metadata Hygiene, Tarball Audit & Public Release (`@agnosticui/a2ui-{lit,react,vue}`)** ⬜
   * **Micro-Chunk 6.4a:** Add `"license": "MIT"`, `"repository"`, `"homepage"`, `"keywords": ["a2ui", "a2ui-v1", "agnosticui", ...]`, `"files"` whitelists, and `"./catalog.json"` / `"./SKILL.md"` exports to `v2/a2ui/renderers/{lit,react,vue}/package.json`. Swap `devDependencies` `"file:..."` tarball references (`agnosticui-core`, `@agnosticui/a2ui-lit`) to published semver ranges (`^2.0.0-alpha.31`, `^2.0.0-alpha.1`) prior to release, verify exact tarball contents with `npm pack --dry-run`, and publish `@agnosticui/a2ui-{lit,react,vue}` to npm (`--access public`).
 * **Task 6.5 — Official `a2ui-project/a2ui` Ecosystem PR (`v1.0`)** ⬜
