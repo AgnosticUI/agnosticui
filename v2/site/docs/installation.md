@@ -755,7 +755,7 @@ processor.processMessages([
     version: '1.0',
     createSurface: {
       surfaceId: 'support_surface',
-      catalogId: 'https://agnosticui.com',
+      "catalogId": "https://agnosticui.com/a2ui/v1/catalog.json",
     },
   },
   {

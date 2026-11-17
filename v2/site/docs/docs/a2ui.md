@@ -4,7 +4,7 @@ AgnosticUI provides a spec-compliant **A2UI `v1.0`** component catalog and multi
 
 ::: info Protocol & Catalog Metadata
 - **Supported A2UI Protocol Version:** `v1.0`
-- **Catalog ID:** `https://agnosticui.com`
+- **Catalog ID:** `https://agnosticui.com/a2ui/v1/catalog.json`
 - **Catalog Schema:** [`v2/a2ui/catalog/agnosticui-catalog.json`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/a2ui/catalog/agnosticui-catalog.json)
 - **npm Packages:** `@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`
 :::
