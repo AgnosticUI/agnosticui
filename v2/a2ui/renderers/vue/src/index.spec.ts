@@ -11,6 +11,7 @@ import {
   AgA2uiSurface,
   useA2uiSurface,
   type A2uiWireMessage,
+  type UseA2uiSurfaceResult,
 } from './index.js';
 
 let activeWrappers: Array<{ unmount: () => void }> = [];
@@ -83,32 +84,36 @@ const SAMPLE_FORM_MESSAGES: A2uiWireMessage[] = [
     updateDataModel: {
       surfaceId: 'support_surface',
       path: '/',
-      value: { form: { email: '' } },
+      value: { form: { email: 'growth@agnosticui.com' } },
     },
   },
 ];
 
-function createHarness(onAction: (detail: Record<string, unknown>) => void) {
+function createHarness(
+  onAction: (detail: Record<string, unknown>) => void,
+  options: { autoMount?: boolean; onReady?: (api: UseA2uiSurfaceResult) => void } = {},
+) {
+  const { autoMount = true, onReady } = options;
   return defineComponent({
     name: 'VueTestHarness',
     setup() {
-      const { surface, surfaceRef, processMessages } = useA2uiSurface({
-        onAction,
-      });
+      const api = useA2uiSurface({ onAction });
+      onReady?.(api);
 
       onMounted(() => {
-        processMessages(SAMPLE_FORM_MESSAGES);
+        if (autoMount) {
+          api.processMessages(SAMPLE_FORM_MESSAGES);
+        }
       });
 
       return () =>
         h(AgA2uiSurface, {
-          ref: surfaceRef,
-          surface: surface.value,
+          ref: api.surfaceRef,
+          surface: api.surface.value,
         });
     },
   });
 }
-
 describe('@agnosticui/a2ui-vue', () => {
   it('renders an A2UI v1.0 surface with AgnosticUI components in Vue 3', async () => {
     const onAction = vi.fn();
@@ -146,13 +151,11 @@ describe('@agnosticui/a2ui-vue', () => {
     expect(inputEl).not.toBeNull();
     expect(btnEl).not.toBeNull();
 
-    // Simulate invalid required field
     inputEl.reportValidity = () => false;
     btnEl.click();
     await new Promise((r) => setTimeout(r, 0));
     expect(onAction).not.toHaveBeenCalled();
 
-    // Simulate valid field and verify action dispatches via processor.model.onAction
     inputEl.reportValidity = () => true;
     btnEl.click();
     await new Promise((r) => setTimeout(r, 0));
@@ -160,5 +163,54 @@ describe('@agnosticui/a2ui-vue', () => {
     expect(onAction).toHaveBeenCalledWith(
       expect.objectContaining({ name: 'launch_campaign' }),
     );
+  });
+
+  it('supports streamMessages, getDataModel, deleteSurface, and resetSurface lifecycle', async () => {
+    const onAction = vi.fn();
+    let capturedApi: UseA2uiSurfaceResult | null = null;
+
+    const wrapper = mount(
+      createHarness(onAction, {
+        autoMount: false,
+        onReady: (api) => {
+          capturedApi = api;
+        },
+      }),
+      { attachTo: document.body },
+    );
+    activeWrappers.push(wrapper);
+
+    expect(capturedApi).not.toBeNull();
+    expect(capturedApi!.surface.value).toBeUndefined();
+    expect(capturedApi!.getDataModel()).toEqual({});
+
+    // 1. Stream messages asynchronously and verify surface + getDataModel()
+    await capturedApi!.streamMessages(SAMPLE_FORM_MESSAGES, 0);
+    await settleTree(wrapper.element);
+
+    expect(capturedApi!.surface.value).toBeDefined();
+    expect(capturedApi!.getDataModel()).toEqual({
+      form: { email: 'growth@agnosticui.com' },
+    });
+    expect(wrapper.element.textContent).toContain('Vue 3 Campaign Attribution');
+
+    // 2. Process wire deleteSurface message and verify cleanup
+    capturedApi!.processMessages([
+      {
+        version: '1.0',
+        deleteSurface: { surfaceId: 'support_surface' },
+      } as unknown as A2uiWireMessage,
+    ]);
+    expect(capturedApi!.surface.value).toBeUndefined();
+    expect(capturedApi!.getDataModel()).toEqual({});
+
+    // 3. Re-stream and call resetSurface() to verify full composable reset
+    await capturedApi!.streamMessages(SAMPLE_FORM_MESSAGES, 0);
+    expect(capturedApi!.surface.value).toBeDefined();
+
+    capturedApi!.resetSurface();
+    expect(capturedApi!.surface.value).toBeUndefined();
+    expect(capturedApi!.getDataModel()).toEqual({});
+    console.info('[vue/index.spec] Verified streamMessages, getDataModel, deleteSurface, and resetSurface.');
   });
 });

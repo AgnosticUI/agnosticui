@@ -5,12 +5,13 @@
 
 import * as React from 'react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, act } from '@testing-library/react';
 import {
   AGNOSTICUI_CATALOG_ID,
   AgA2uiSurface,
   useA2uiSurface,
   type A2uiWireMessage,
+  type UseA2uiSurfaceResult,
 } from './index.js';
 
 afterEach(() => {
@@ -77,27 +78,33 @@ const SAMPLE_FORM_MESSAGES: A2uiWireMessage[] = [
     updateDataModel: {
       surfaceId: 'support_surface',
       path: '/',
-      value: { form: { email: '' } },
+      value: { form: { email: 'ops@agnosticui.com' } },
     },
   },
 ];
 
 function TestHarness({
   onAction,
+  autoMount = true,
+  hookRef,
 }: {
   onAction: (detail: Record<string, unknown>) => void;
+  autoMount?: boolean;
+  hookRef?: React.MutableRefObject<UseA2uiSurfaceResult | null>;
 }) {
-  const { surface, surfaceRef, processMessages } = useA2uiSurface({
-    onAction,
-  });
+  const api = useA2uiSurface({ onAction });
+  if (hookRef) {
+    hookRef.current = api;
+  }
 
   React.useEffect(() => {
-    processMessages(SAMPLE_FORM_MESSAGES);
-  }, [processMessages]);
+    if (autoMount) {
+      api.processMessages(SAMPLE_FORM_MESSAGES);
+    }
+  }, [autoMount, api.processMessages]);
 
-  return <AgA2uiSurface ref={surfaceRef} surface={surface} />;
+  return <AgA2uiSurface ref={api.surfaceRef} surface={api.surface} />;
 }
-
 describe('@agnosticui/a2ui-react', () => {
   it('renders an A2UI v1.0 surface with AgnosticUI components in React', async () => {
     const onAction = vi.fn();
@@ -128,7 +135,6 @@ describe('@agnosticui/a2ui-react', () => {
     };
     expect(inputEl).not.toBeNull();
 
-    // Simulate invalid required field
     inputEl.reportValidity = () => false;
     surfaceEl.dispatchEvent(
       new CustomEvent('a2uiaction', {
@@ -139,7 +145,6 @@ describe('@agnosticui/a2ui-react', () => {
     );
     expect(onAction).not.toHaveBeenCalled();
 
-    // Simulate valid field and verify action dispatches
     inputEl.reportValidity = () => true;
     surfaceEl.dispatchEvent(
       new CustomEvent('a2uiaction', {
@@ -149,5 +154,56 @@ describe('@agnosticui/a2ui-react', () => {
       }),
     );
     expect(onAction).toHaveBeenCalledTimes(1);
+  });
+
+  it('supports streamMessages, getDataModel, deleteSurface, and resetSurface lifecycle', async () => {
+    const onAction = vi.fn();
+    const hookRef: React.MutableRefObject<UseA2uiSurfaceResult | null> = {
+      current: null,
+    };
+    const { container } = render(
+      <TestHarness onAction={onAction} autoMount={false} hookRef={hookRef} />,
+    );
+
+    expect(hookRef.current).not.toBeNull();
+    expect(hookRef.current!.surface).toBeUndefined();
+    expect(hookRef.current!.getDataModel()).toEqual({});
+
+    // 1. Stream messages asynchronously and verify surface + getDataModel()
+    await act(async () => {
+      await hookRef.current!.streamMessages(SAMPLE_FORM_MESSAGES, 0);
+    });
+    await settleTree(container);
+
+    expect(hookRef.current!.surface).toBeDefined();
+    expect(hookRef.current!.getDataModel()).toEqual({
+      form: { email: 'ops@agnosticui.com' },
+    });
+    expect(container.textContent).toContain('React Support Escalation');
+
+    // 2. Process wire deleteSurface message and verify cleanup
+    act(() => {
+      hookRef.current!.processMessages([
+        {
+          version: '1.0',
+          deleteSurface: { surfaceId: 'support_surface' },
+        } as unknown as A2uiWireMessage,
+      ]);
+    });
+    expect(hookRef.current!.surface).toBeUndefined();
+    expect(hookRef.current!.getDataModel()).toEqual({});
+
+    // 3. Re-stream and call resetSurface() to verify full processor reset
+    await act(async () => {
+      await hookRef.current!.streamMessages(SAMPLE_FORM_MESSAGES, 0);
+    });
+    expect(hookRef.current!.surface).toBeDefined();
+
+    act(() => {
+      hookRef.current!.resetSurface();
+    });
+    expect(hookRef.current!.surface).toBeUndefined();
+    expect(hookRef.current!.getDataModel()).toEqual({});
+    console.info('[react/index.spec] Verified streamMessages, getDataModel, deleteSurface, and resetSurface.');
   });
 });
