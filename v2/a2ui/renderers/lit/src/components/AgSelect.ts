@@ -8,6 +8,7 @@ import 'agnosticui-core/select';
 export const AgSelectSchema = z
   .object({
     size: z.enum(['small', 'large']).optional(),
+    value: DynamicStringSchema.describe('REF:#/$defs/DynamicString|Selected option value for AgSelect.').optional(),
     multiple: DynamicBooleanSchema.describe('REF:#/$defs/DynamicBoolean|Boolean property multiple.').optional(),
     disabled: DynamicBooleanSchema.describe('REF:#/$defs/DynamicBoolean|Boolean property disabled.').optional(),
     name: DynamicStringSchema.describe('REF:#/$defs/DynamicString|String property name.').optional(),
@@ -50,6 +51,7 @@ export class AgA2uiSelectElement extends A2uiLitElement<typeof AgSelectApi> {
     const p = this.controller.props;
     return html`<ag-select
       .size=${ifDefined(p.size)}
+      .value=${ifDefined(p.value)}
       .multiple=${Boolean(p.multiple)}
       .disabled=${Boolean(p.disabled)}
       .name=${ifDefined(p.name)}
