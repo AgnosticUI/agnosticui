@@ -153,8 +153,11 @@
   --ag-background-secondary-inverted: #111827;
   --ag-background-tertiary: #e5e7eb; /** Used by: Button default bg; also secondary button hover bg */
   --ag-background-disabled: #f3f4f6; /** Used by: Button, Input, Checkbox, Radio, Select disabled states */
+  --ag-text-disabled: #4b5563; /** Used by: Button disabled text */
   --ag-primary-background: #ddf4ff; /** Used by: Alert primary variant bg, Button faint variant bg */
   --ag-primary-text: #0550ae; /** Used by: Alert primary text, Button bordered/outlined text + border */
+  --ag-monochrome-background: #e5e7eb; /** Used by: Button monochrome disabled bg */
+  --ag-monochrome-text: #202736; /** Used by: Button monochrome disabled text */
   --ag-success-background: #dafbe1; /** Used by: Alert success variant bg, Badge success variant bg */
   --ag-success-text: #116329; /** Used by: Alert success variant text, Badge success variant text */
   --ag-info-background: #f3f4f6; /** Used by: Alert info variant bg, Badge info variant bg */

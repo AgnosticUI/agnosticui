@@ -85,9 +85,12 @@
   --ag-background-secondary: #212730;
   --ag-background-secondary-inverted: #D1D7E0;
   --ag-background-tertiary: #3D444D;
-  --ag-background-disabled: #656C76;
+  --ag-background-disabled: #212730;
+  --ag-text-disabled: #9EA5AF;
   --ag-primary-background: #051d4d;
   --ag-primary-text: #a5d6ff;
+  --ag-monochrome-background: #212730;
+  --ag-monochrome-text: #B7BDC8;
   --ag-success-background: #04260f;
   --ag-success-text: #7ee787;
   --ag-info-background: #171c24;
