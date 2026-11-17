@@ -5,7 +5,7 @@ AgnosticUI provides a spec-compliant **A2UI `v1.0`** component catalog and multi
 ::: info Protocol & Catalog Metadata
 - **Supported A2UI Protocol Version:** `v1.0`
 - **Catalog ID:** `https://agnosticui.com`
-- **Catalog Schema:** [`v2/a2ui/catalog/agnosticui-catalog.json`](https://github.com)
+- **Catalog Schema:** [`v2/a2ui/catalog/agnosticui-catalog.json`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/a2ui/catalog/agnosticui-catalog.json)
 - **npm Packages:** `@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`
 :::
 
@@ -21,7 +21,7 @@ An agent emits a stream of **A2UI `v1.0` wire messages** (`createSurface`, `upda
     "version": "1.0",
     "createSurface": {
       "surfaceId": "support_surface",
-      "catalogId": "https://agnosticui.com"
+      "catalogId": "https://agnosticui.com/a2ui/v1/catalog.json"
     }
   },
   {
@@ -104,27 +104,51 @@ surfaceEl.addEventListener('a2uiaction', (event: Event) => {
 ```
 
 ```tsx [React (@agnosticui/a2ui-react)]
+import { useEffect } from 'react';
 import 'agnosticui-core/styles/tokens.css';
 import 'agnosticui-core/styles/tokens-dark.css';
-import { AgA2uiSurface, useA2uiSurface } from '@agnosticui/a2ui-react';
+import {
+  AgA2uiSurface,
+  useA2uiSurface,
+  type A2uiWireMessage,
+} from '@agnosticui/a2ui-react';
+
+// Wire messages shown in the JSON payload above
+const messages: A2uiWireMessage[] = [/* ... */];
 
 export function AgentSurface() {
   const { surfaceRef, surface, streamMessages } = useA2uiSurface({
     onAction: (detail) => console.log('Validated A2UI action:', detail),
   });
 
+  useEffect(() => {
+    void streamMessages(messages);
+  }, [streamMessages]);
+
   return <AgA2uiSurface ref={surfaceRef} surface={surface} />;
 }
 ```
 
-```vue [Vue 3 (@agnosticui/a2ui-vue)]
+```vue [Vue (@agnosticui/a2ui-vue)]
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import 'agnosticui-core/styles/tokens.css';
 import 'agnosticui-core/styles/tokens-dark.css';
-import { AgA2uiSurface, useA2uiSurface } from '@agnosticui/a2ui-vue';
+import {
+  AgA2uiSurface,
+  useA2uiSurface,
+  type A2uiWireMessage,
+} from '@agnosticui/a2ui-vue';
+
+// Wire messages shown in the JSON payload above
+const messages: A2uiWireMessage[] = [/* ... */];
 
 const { surfaceRef, surface, streamMessages } = useA2uiSurface({
   onAction: (detail) => console.log('Validated A2UI action:', detail),
+});
+
+onMounted(() => {
+  void streamMessages(messages);
 });
 </script>
 
@@ -132,7 +156,6 @@ const { surfaceRef, surface, streamMessages } = useA2uiSurface({
   <AgA2uiSurface ref="surfaceRef" :surface="surface" />
 </template>
 ```
-
 :::
 
 ---
