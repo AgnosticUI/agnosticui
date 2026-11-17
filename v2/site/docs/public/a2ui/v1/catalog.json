@@ -1221,6 +1221,10 @@
             "large"
           ]
         },
+        "value": {
+          "$ref": "common_types.json#/$defs/DynamicString",
+          "description": "Selected option value for AgSelect."
+        },
         "multiple": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
           "description": "Boolean property multiple."

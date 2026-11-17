@@ -237,6 +237,24 @@ function extractProps(componentName: string, iface: InterfaceDeclaration): { pro
     if (mapped) {
       props.push({ name: propName, ...mapped });
     }
+
+    if (rendererSlotConfig[sdui] === 'label-child' && !props.some((p) => p.name === 'label')) {
+      props.unshift({
+        name: 'label',
+        kind: 'dynamicString',
+        tsType: 'string',
+        zodExpr: `DynamicStringSchema.describe('REF:#/$defs/DynamicString|Text label displayed inside ${sdui}.')`,
+      });
+    }
+
+    if (sdui === 'AgSelect' && !props.some((p) => p.name === 'value')) {
+      props.push({
+        name: 'value',
+        kind: 'dynamicString',
+        tsType: 'string',
+        zodExpr: `DynamicStringSchema.describe('REF:#/$defs/DynamicString|Selected option value for ${sdui}.')`,
+      });
+    }
   }
 
   if (rendererSlotConfig[sdui] === 'label-child' && !props.some((p) => p.name === 'label')) {
