@@ -87,7 +87,7 @@ export class AgA2uiInputElement extends A2uiLitElement<typeof AgInputApi> {
       .errorMessage=${ifDefined(p.errorMessage)}
       .helpText=${ifDefined(p.helpText)}
       @click=${this.handleAction}
-      @input-change=${this.handleTwoWay}
+      @input=${this.handleTwoWay}
     ></ag-input>`;
   }
 }

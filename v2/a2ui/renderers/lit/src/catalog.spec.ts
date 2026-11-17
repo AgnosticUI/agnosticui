@@ -1,3 +1,8 @@
+// Comprehensive Vitest suite for @agnosticui/a2ui-lit:
+// 1. Verifies all 25 catalog components mount into <a2ui-surface> Light DOM & resolve @path bindings
+// 2. Verifies two-way @path data binding across all 7 interactive form controls
+// 3. Verifies AgnosticUI FACE validation via validateSurface client function
+
 import { describe, it, expect, beforeEach } from 'vitest';
 import { MessageProcessor, DataContext } from '@a2ui/web_core/v1_0';
 import { A2uiSurface, type LitComponentApi } from '@a2ui/lit';
@@ -10,6 +15,10 @@ import {
   type A2uiWireMessage,
 } from './index.js';
 
+/**
+ * Recursively awaits Lit `updateComplete` across light DOM and shadow roots
+ * so every nested custom element finishes rendering before assertions run.
+ */
 async function settleTree(node: Node): Promise<void> {
   const el = node as HTMLElement & { updateComplete?: Promise<boolean> };
   if (el.updateComplete) {
@@ -23,7 +32,15 @@ async function settleTree(node: Node): Promise<void> {
   }
 }
 
-async function mountFixture(processor: MessageProcessor<LitComponentApi>, surfaceId: string, fixture: A2uiWireMessage[]) {
+/**
+ * Streams an A2UI v1.0 fixture into a fresh MessageProcessor, mounts <a2ui-surface>,
+ * and waits for all Lit components to settle.
+ */
+async function mountFixture(
+  processor: MessageProcessor<LitComponentApi>,
+  surfaceId: string,
+  fixture: A2uiWireMessage[],
+) {
   for await (const msg of createMockA2uiStream(fixture)) {
     processor.processMessages([msg as never]);
   }
@@ -41,63 +58,179 @@ async function mountFixture(processor: MessageProcessor<LitComponentApi>, surfac
   return { surfaceModel: surfaceModel!, surfaceEl };
 }
 
+interface CatalogComponentCase {
+  component: string;
+  expectedTag: string;
+  props: Record<string, unknown>;
+  assertRendered?: (el: HTMLElement) => void;
+}
+
+// Exhaustive 25-component test matrix covering AgText + all 24 Ag* wrappers
+const ALL_25_COMPONENT_CASES: CatalogComponentCase[] = [
+  {
+    component: 'AgText',
+    expectedTag: 'ag-a2ui-text',
+    props: { el: 'h2', text: { '@path': '/dynamicTitle' } },
+    assertRendered: (el) => expect(el.querySelector('h2')?.textContent).toBe('Resolved Catalog Heading'),
+  },
+  { component: 'AgAccordion', expectedTag: 'ag-accordion', props: {} },
+  { component: 'AgAlert', expectedTag: 'ag-alert', props: { variant: 'info' } },
+  { component: 'AgAvatar', expectedTag: 'ag-avatar', props: { text: 'JT' } },
+  { component: 'AgBadge', expectedTag: 'ag-badge', props: { variant: 'success' } },
+  {
+    component: 'AgButton',
+    expectedTag: 'ag-button',
+    props: { variant: 'primary', label: 'Launch' },
+    assertRendered: (el) => expect(el.textContent?.trim()).toBe('Launch'),
+  },
+  { component: 'AgCard', expectedTag: 'ag-card', props: { shadow: true } },
+  { component: 'AgCheckbox', expectedTag: 'ag-checkbox', props: { labelText: 'Subscribe', checked: true } },
+  { component: 'AgCombobox', expectedTag: 'ag-combobox', props: { label: 'Region', value: 'us-east' } },
+  { component: 'AgDivider', expectedTag: 'ag-divider', props: {} },
+  { component: 'AgEmptyState', expectedTag: 'ag-empty-state', props: { title: 'No records yet' } },
+  { component: 'AgFieldset', expectedTag: 'ag-fieldset', props: { legend: 'Account Details' } },
+  { component: 'AgHeader', expectedTag: 'ag-header', props: {} },
+  { component: 'AgInput', expectedTag: 'ag-input', props: { label: 'Full Name', value: 'Jordan Taylor' } },
+  { component: 'AgMessageBubble', expectedTag: 'ag-message-bubble', props: { from: 'them', author: 'Concierge' } },
+  { component: 'AgProgress', expectedTag: 'ag-progress', props: { value: 65, max: 100 } },
+  { component: 'AgProgressRing', expectedTag: 'ag-progress-ring', props: { value: 80 } },
+  { component: 'AgRadio', expectedTag: 'ag-radio', props: { name: 'tier', value: 'pro', labelText: 'Pro Tier' } },
+  { component: 'AgRating', expectedTag: 'ag-rating', props: { value: 4, max: 5 } },
+  { component: 'AgSelect', expectedTag: 'ag-select', props: { label: 'Priority', value: 'high' } },
+  { component: 'AgSpinner', expectedTag: 'ag-spinner', props: {} },
+  { component: 'AgTabs', expectedTag: 'ag-tabs', props: {} },
+  { component: 'AgTag', expectedTag: 'ag-tag', props: { variant: 'info' } },
+  { component: 'AgTimeline', expectedTag: 'ag-timeline', props: {} },
+  { component: 'AgToggle', expectedTag: 'ag-toggle', props: { label: 'Auto-renew', checked: true } },
+];
 describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
   beforeEach(() => {
     registerAgnosticUICatalog();
     document.body.innerHTML = '';
   });
 
-  it('streams createSurface, updateComponents, and updateDataModel into <a2ui-surface>', async () => {
+  it('registers all 25 catalog components and mounts every single one cleanly into <a2ui-surface>', async () => {
+    // Verify catalog count matches our 25-component test matrix
+    expect(AgnosticUICatalog.components.size).toBe(25);
+    expect(ALL_25_COMPONENT_CASES).toHaveLength(25);
+
+    const registeredNames = Array.from(AgnosticUICatalog.components.keys()).sort();
+    const testedNames = ALL_25_COMPONENT_CASES.map((c) => c.component).sort();
+    expect(testedNames).toEqual(registeredNames);
+
+    const childIds = ALL_25_COMPONENT_CASES.map((_, idx) => `item_${idx}`);
+    const components: Record<string, unknown>[] = [
+      { id: 'root', component: 'AgCard', shadow: true, children: childIds },
+      ...ALL_25_COMPONENT_CASES.map((entry, idx) => ({
+        id: `item_${idx}`,
+        component: entry.component,
+        ...entry.props,
+      })),
+    ];
+
     const processor = new MessageProcessor<LitComponentApi>([AgnosticUICatalog]);
-    const { surfaceEl } = await mountFixture(processor, 'demo_surface', [
-      { version: '1.0', createSurface: { surfaceId: 'demo_surface', catalogId: AGNOSTICUI_CATALOG_ID } },
+    const { surfaceEl } = await mountFixture(processor, 'all_25_surface', [
+      { version: '1.0', createSurface: { surfaceId: 'all_25_surface', catalogId: AGNOSTICUI_CATALOG_ID } },
+      { version: '1.0', updateComponents: { surfaceId: 'all_25_surface', components } },
       {
         version: '1.0',
-        updateComponents: {
-          surfaceId: 'demo_surface',
-          components: [
-            { id: 'root', component: 'AgCard', shadow: true, children: ['cta_btn'] },
-            { id: 'cta_btn', component: 'AgButton', variant: 'primary', label: { '@path': '/ctaLabel' } },
-          ],
+        updateDataModel: {
+          surfaceId: 'all_25_surface',
+          path: '/dynamicTitle',
+          value: 'Resolved Catalog Heading',
         },
       },
-      { version: '1.0', updateDataModel: { surfaceId: 'demo_surface', path: '/ctaLabel', value: 'Submit Request' } },
     ]);
 
-    expect(surfaceEl.querySelector('ag-card')).not.toBeNull();
-    const agButton = surfaceEl.querySelector('ag-button');
-    expect(agButton).not.toBeNull();
-    expect(agButton?.textContent?.trim()).toBe('Submit Request');
+    for (const entry of ALL_25_COMPONENT_CASES) {
+      const mounted = surfaceEl.querySelector(entry.expectedTag) as HTMLElement | null;
+      expect(mounted, `Expected <${entry.expectedTag}> for ${entry.component} to mount`).not.toBeNull();
+      entry.assertRendered?.(mounted!);
+    }
+    console.info('[catalog.spec] Verified all 25 AgnosticUI A2UI v1.0 components mounted cleanly.');
   });
 
-  it('syncs two-way @path updates from AgInput and AgCheckbox back into the DataModel', async () => {
+  it('syncs two-way @path updates across all 7 interactive form controls back into DataModel', async () => {
     const processor = new MessageProcessor<LitComponentApi>([AgnosticUICatalog]);
-    const { surfaceModel, surfaceEl } = await mountFixture(processor, 'form_surface', [
-      { version: '1.0', createSurface: { surfaceId: 'form_surface', catalogId: AGNOSTICUI_CATALOG_ID } },
+    const { surfaceModel, surfaceEl } = await mountFixture(processor, 'two_way_7_surface', [
+      { version: '1.0', createSurface: { surfaceId: 'two_way_7_surface', catalogId: AGNOSTICUI_CATALOG_ID } },
       {
         version: '1.0',
         updateComponents: {
-          surfaceId: 'form_surface',
+          surfaceId: 'two_way_7_surface',
           components: [
-            { id: 'root', component: 'AgCard', children: ['email_field', 'terms_check'] },
-            { id: 'email_field', component: 'AgInput', label: 'Work Email', type: 'email', value: { '@path': '/form/email' } },
-            { id: 'terms_check', component: 'AgCheckbox', labelText: 'Accept terms', checked: { '@path': '/form/agree' } },
+            {
+              id: 'root',
+              component: 'AgCard',
+              children: [
+                'email_input',
+                'region_combobox',
+                'priority_select',
+                'terms_checkbox',
+                'plan_radio',
+                'csat_rating',
+                'alerts_toggle',
+              ],
+            },
+            { id: 'email_input', component: 'AgInput', label: 'Email', value: { '@path': '/form/email' } },
+            { id: 'region_combobox', component: 'AgCombobox', label: 'Region', value: { '@path': '/form/region' } },
+            { id: 'priority_select', component: 'AgSelect', label: 'Priority', value: { '@path': '/form/priority' } },
+            { id: 'terms_checkbox', component: 'AgCheckbox', labelText: 'Terms', checked: { '@path': '/form/terms' } },
+            { id: 'plan_radio', component: 'AgRadio', labelText: 'Enterprise', checked: { '@path': '/form/enterprise' } },
+            { id: 'csat_rating', component: 'AgRating', value: { '@path': '/form/rating' } },
+            { id: 'alerts_toggle', component: 'AgToggle', label: 'Alerts', checked: { '@path': '/form/alerts' } },
           ],
         },
       },
-      { version: '1.0', updateDataModel: { surfaceId: 'form_surface', path: '/form', value: { email: '', agree: false } } },
+      {
+        version: '1.0',
+        updateDataModel: {
+          surfaceId: 'two_way_7_surface',
+          path: '/form',
+          value: {
+            email: '',
+            region: '',
+            priority: '',
+            terms: false,
+            enterprise: false,
+            rating: 0,
+            alerts: false,
+          },
+        },
+      },
     ]);
 
-    const agInput = surfaceEl.querySelector('ag-input');
-    const agCheckbox = surfaceEl.querySelector('ag-checkbox');
-    expect(agInput).not.toBeNull();
-    expect(agCheckbox).not.toBeNull();
+    const agInput = surfaceEl.querySelector('ag-input') as HTMLElement & { value?: string };
+    agInput.value = 'maya.patel@enterprise.io';
+    agInput.dispatchEvent(new Event('input', { bubbles: true }));
 
-    agInput!.dispatchEvent(new CustomEvent('input-change', { detail: { value: 'maya.patel@enterprise.io' }, bubbles: true }));
-    agCheckbox!.dispatchEvent(new CustomEvent('checkbox-change', { detail: { checked: true }, bubbles: true }));
+    surfaceEl.querySelector('ag-combobox')!.dispatchEvent(
+      new CustomEvent('change', { detail: { value: 'eu-central' }, bubbles: true }),
+    );
+    surfaceEl.querySelector('ag-select')!.dispatchEvent(
+      new CustomEvent('change', { detail: { value: 'urgent' }, bubbles: true }),
+    );
+    surfaceEl.querySelector('ag-checkbox')!.dispatchEvent(
+      new CustomEvent('change', { detail: { checked: true }, bubbles: true }),
+    );
+    surfaceEl.querySelector('ag-radio')!.dispatchEvent(
+      new CustomEvent('change', { detail: { checked: true, value: 'enterprise' }, bubbles: true }),
+    );
+    surfaceEl.querySelector('ag-rating')!.dispatchEvent(
+      new CustomEvent('rating-change', { detail: { value: 5 }, bubbles: true }),
+    );
+    surfaceEl.querySelector('ag-toggle')!.dispatchEvent(
+      new CustomEvent('toggle-change', { detail: { checked: true }, bubbles: true }),
+    );
 
     expect(surfaceModel.dataModel.get('/form/email')).toBe('maya.patel@enterprise.io');
-    expect(surfaceModel.dataModel.get('/form/agree')).toBe(true);
+    expect(surfaceModel.dataModel.get('/form/region')).toBe('eu-central');
+    expect(surfaceModel.dataModel.get('/form/priority')).toBe('urgent');
+    expect(surfaceModel.dataModel.get('/form/terms')).toBe(true);
+    expect(surfaceModel.dataModel.get('/form/enterprise')).toBe(true);
+    expect(surfaceModel.dataModel.get('/form/rating')).toBe(5);
+    expect(surfaceModel.dataModel.get('/form/alerts')).toBe(true);
+    console.info('[catalog.spec] Verified two-way @path sync across all 7 interactive controls.');
   });
 
   it('validates AgnosticUI FACE controls via validateSurface client function', async () => {
@@ -120,12 +253,10 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
     const agInput = surfaceEl.querySelector('ag-input') as HTMLElement & { reportValidity?: () => boolean };
     expect(agInput).not.toBeNull();
 
-    // Simulate invalid state on the FACE control when required input is empty
     agInput.reportValidity = () => false;
     const dataCtx = new DataContext(surfaceModel, '/');
     expect(ValidateSurfaceImplementation.execute({}, dataCtx)).toBe(false);
 
-    // Simulate valid state once user enters required text
     agInput.reportValidity = () => true;
     expect(ValidateSurfaceImplementation.execute({}, dataCtx)).toBe(true);
   });

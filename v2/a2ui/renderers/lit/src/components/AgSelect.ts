@@ -41,7 +41,7 @@ export class AgA2uiSelectElement extends A2uiLitElement<typeof AgSelectApi> {
   }
 
   private handleTwoWay(e: Event) {
-    const next = (e as CustomEvent<{ value?: string }>).detail?.value ?? (e.target as HTMLSelectElement)?.value ?? "";
+    const next = (e as CustomEvent<{ value?: string | string[] }>).detail?.value ?? (e.target as HTMLSelectElement)?.value ?? "";
     (this.controller.props as unknown as Record<string, ((v: unknown) => void) | undefined>).setValue?.(next);
     void this.controller.props.action?.();
   }
@@ -63,7 +63,7 @@ export class AgA2uiSelectElement extends A2uiLitElement<typeof AgSelectApi> {
       .errorMessage=${ifDefined(p.errorMessage)}
       .helpText=${ifDefined(p.helpText)}
       @click=${this.handleAction}
-      @select-change=${this.handleTwoWay}
+      @change=${this.handleTwoWay}
     ></ag-select>`;
   }
 }

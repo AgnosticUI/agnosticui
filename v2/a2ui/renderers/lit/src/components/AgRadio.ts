@@ -67,7 +67,7 @@ export class AgA2uiRadioElement extends A2uiLitElement<typeof AgRadioApi> {
       .errorMessage=${ifDefined(p.errorMessage)}
       .helpText=${ifDefined(p.helpText)}
       @click=${this.handleAction}
-      @radio-change=${this.handleTwoWay}
+      @change=${this.handleTwoWay}
     ></ag-radio>`;
   }
 }

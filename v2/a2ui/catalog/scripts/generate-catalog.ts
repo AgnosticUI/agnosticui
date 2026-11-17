@@ -60,9 +60,10 @@ export const CATALOG_COMPONENTS = new Set([
 ]);
 
 // Two-way data-binding event map for interactive form controls
+// Event names verified directly against v2/lib/src/components/*/core/_*.ts
 const TWO_WAY_BINDINGS: Record<string, { event: string; setter: string; extract: string }> = {
   AgInput: {
-    event: 'input-change',
+    event: 'input',
     setter: 'setValue',
     extract: '(e as CustomEvent<{ value?: string }>).detail?.value ?? (e.target as HTMLInputElement)?.value ?? ""',
   },
@@ -72,17 +73,17 @@ const TWO_WAY_BINDINGS: Record<string, { event: string; setter: string; extract:
     extract: '(e as CustomEvent<{ value?: string | string[] }>).detail?.value ?? ""',
   },
   AgSelect: {
-    event: 'select-change',
+    event: 'change',
     setter: 'setValue',
-    extract: '(e as CustomEvent<{ value?: string }>).detail?.value ?? (e.target as HTMLSelectElement)?.value ?? ""',
+    extract: '(e as CustomEvent<{ value?: string | string[] }>).detail?.value ?? (e.target as HTMLSelectElement)?.value ?? ""',
   },
   AgCheckbox: {
-    event: 'checkbox-change',
+    event: 'change',
     setter: 'setChecked',
     extract: 'Boolean((e as CustomEvent<{ checked?: boolean }>).detail?.checked ?? (e.target as HTMLInputElement)?.checked)',
   },
   AgRadio: {
-    event: 'radio-change',
+    event: 'change',
     setter: 'setChecked',
     extract: 'Boolean((e as CustomEvent<{ checked?: boolean }>).detail?.checked ?? (e.target as HTMLInputElement)?.checked)',
   },
@@ -97,6 +98,7 @@ const TWO_WAY_BINDINGS: Record<string, { event: string; setter: string; extract:
     extract: 'Boolean((e as CustomEvent<{ checked?: boolean }>).detail?.checked)',
   },
 };
+
 
 type A2uiPropKind = 'dynamicString' | 'dynamicBoolean' | 'dynamicNumber' | 'enum' | 'literal' | 'stringArray' | 'numberArray';
 

@@ -310,6 +310,13 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
       zodExpr: "z.union([DynamicStringSchema, z.array(z.string())])",
     },
   },
+  AgSelect: {
+    // SelectProps is slot-driven in core without a value property; expose value for A2UI @path binding
+    value: {
+      tsType: 'string',
+      zodExpr: 'z.string()',
+    },
+  },
   AgInput: {
     // InputType in core includes 'textarea'; SDUI treats textarea as a separate concern
     type: {

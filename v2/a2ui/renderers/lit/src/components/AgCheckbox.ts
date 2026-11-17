@@ -59,7 +59,7 @@ export class AgA2uiCheckboxElement extends A2uiLitElement<typeof AgCheckboxApi> 
       .errorMessage=${ifDefined(p.errorMessage)}
       .helpText=${ifDefined(p.helpText)}
       @click=${this.handleAction}
-      @checkbox-change=${this.handleTwoWay}
+      @change=${this.handleTwoWay}
     ></ag-checkbox>`;
   }
 }
