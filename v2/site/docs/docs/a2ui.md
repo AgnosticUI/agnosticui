@@ -1,11 +1,12 @@
 # Generative UI (A2UI v1.0)
 
-AgnosticUI provides a spec-compliant **A2UI `v1.0`** component catalog and Web Component renderer that lets AI agents stream rich, accessible, form-validated UI surfaces at runtime—while preserving AgnosticUI's **21 runtime skins** and **Light/Dark mode** CSS custom properties (`--ag-*`).
+AgnosticUI provides a spec-compliant **A2UI `v1.0`** component catalog and multi-framework Web Component renderers (**`@agnosticui/a2ui-lit`**, **`@agnosticui/a2ui-react`**, and **`@agnosticui/a2ui-vue`**) that let AI agents stream rich, accessible, form-validated UI surfaces at runtime—while preserving AgnosticUI's **21+ runtime skins** and **Light/Dark mode** CSS custom properties (`--ag-*`).
 
 ::: info Protocol & Catalog Metadata
 - **Supported A2UI Protocol Version:** `v1.0`
-- **Catalog ID:** `https://agnosticui.com/a2ui/v1/catalog.json`
-- **Catalog Schema:** [`v2/a2ui/catalog/agnosticui-catalog.json`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/a2ui/catalog/agnosticui-catalog.json)
+- **Catalog ID:** `https://agnosticui.com`
+- **Catalog Schema:** [`v2/a2ui/catalog/agnosticui-catalog.json`](https://github.com)
+- **npm Packages:** `@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`
 :::
 
 ---
@@ -20,7 +21,7 @@ An agent emits a stream of **A2UI `v1.0` wire messages** (`createSurface`, `upda
     "version": "1.0",
     "createSurface": {
       "surfaceId": "support_surface",
-      "catalogId": "https://agnosticui.com/a2ui/v1/catalog.json"
+      "catalogId": "https://agnosticui.com"
     }
   },
   {
@@ -75,9 +76,11 @@ An agent emits a stream of **A2UI `v1.0` wire messages** (`createSurface`, `upda
 
 ## Registering & Rendering a Surface
 
-Register the AgnosticUI catalog once at app startup, feed incoming A2UI `v1.0` messages into `MessageProcessor`, and attach the surface to `<a2ui-surface>`:
+The example below uses **`@agnosticui/a2ui-lit`**. AgnosticUI also publishes **`@agnosticui/a2ui-react`** and **`@agnosticui/a2ui-vue`**, which wrap `<a2ui-surface>` with idiomatic hooks/composables and automatic FACE validation.
 
-```ts
+::: code-group
+
+```ts [Lit (@agnosticui/a2ui-lit)]
 import 'agnosticui-core/styles/tokens.css';
 import 'agnosticui-core/styles/tokens-dark.css';
 import { MessageProcessor } from '@a2ui/web_core/v1_0';
@@ -99,13 +102,46 @@ surfaceEl.addEventListener('a2uiaction', (event: Event) => {
   console.log('Validated A2UI action:', (event as CustomEvent).detail);
 });
 ```
+
+```tsx [React (@agnosticui/a2ui-react)]
+import 'agnosticui-core/styles/tokens.css';
+import 'agnosticui-core/styles/tokens-dark.css';
+import { AgA2uiSurface, useA2uiSurface } from '@agnosticui/a2ui-react';
+
+export function AgentSurface() {
+  const { surfaceRef, surface, streamMessages } = useA2uiSurface({
+    onAction: (detail) => console.log('Validated A2UI action:', detail),
+  });
+
+  return <AgA2uiSurface ref={surfaceRef} surface={surface} />;
+}
+```
+
+```vue [Vue 3 (@agnosticui/a2ui-vue)]
+<script setup lang="ts">
+import 'agnosticui-core/styles/tokens.css';
+import 'agnosticui-core/styles/tokens-dark.css';
+import { AgA2uiSurface, useA2uiSurface } from '@agnosticui/a2ui-vue';
+
+const { surfaceRef, surface, streamMessages } = useA2uiSurface({
+  onAction: (detail) => console.log('Validated A2UI action:', detail),
+});
+</script>
+
+<template>
+  <AgA2uiSurface ref="surfaceRef" :surface="surface" />
+</template>
+```
+
+:::
+
 ---
 
 ## Supported Catalog Components (25)
 
 Generated deterministically via `ts-morph` from AgnosticUI's core TypeScript prop interfaces:
 
-- **Layout & Structure:** `AgCard`, `AgFieldset`, `AgDivider`, `AgHeader`, `AgAccordion`, `AgCollapsible`, `AgTabs`
+- **Layout & Structure:** `AgCard`, `AgFieldset`, `AgDivider`, `AgHeader`, `AgAccordion`, `AgTabs`
 - **Conversational & Feedback:** `AgMessageBubble`, `AgAlert`, `AgBadge`, `AgAvatar`, `AgTag`, `AgEmptyState`, `AgTimeline`, `AgProgress`, `AgProgressRing`, `AgSpinner`
 - **Interactive Form & Action Controls (FACE-enabled):** `AgButton`, `AgInput`, `AgCombobox`, `AgSelect`, `AgCheckbox`, `AgRadio`, `AgRating`, `AgToggle`
 - **Primitives:** `AgText`
@@ -146,8 +182,8 @@ function handleSurfaceSubmit(surfaceEl: HTMLElement): boolean {
 ## Arming AI Agents (`SKILL.md` & `agnosticui-catalog.json`)
 
 - **`v2/a2ui/catalog/SKILL.md`**: Concise agent skill instructions with valid A2UI `v1.0` wire examples, UAX #31 rules, and component inventory.
-- **`v2/a2ui/catalog/agnosticui-catalog.json`**: Machine-readable A2UI `v1.0` JSON Schema emitted directly from `AgnosticUICatalog.toJson()`.
-- **CI Drift Check:** Run `npx tsx v2/a2ui/catalog/scripts/check-codegen.ts` to verify that generated wrappers, `agnosticui-catalog.json`, and `SKILL.md` match `v2/lib` component interfaces.
+- **`v2/a2ui/catalog/agnosticui-catalog.json`**: Machine-readable A2UI `v1.0` JSON Schema emitted directly from `AgnosticUICatalog.toJson()` (also exported via `@agnosticui/a2ui-lit/catalog.json` and `@agnosticui/a2ui-lit/SKILL.md`).
+- **CI Drift Check:** Run `npm run check` in `v2/a2ui/catalog` to verify that generated wrappers, `agnosticui-catalog.json`, `SKILL.md`, and `v2/site/docs/public/a2ui/v1/catalog.json` match `v2/lib` component interfaces.
 
 ---
 
