@@ -1,69 +1,63 @@
-# SDUI Package Publish Guide
+# AgnosticUI A2UI v1.0 Package Publish Guide
 
-Publish order matters: `@agnosticui/schema` must be published before the renderers
-because they depend on it.
+Publish order matters: `@agnosticui/a2ui-lit` must be published first because
+`@agnosticui/a2ui-react` and `@agnosticui/a2ui-vue` depend on it.
 
-All packages use the `alpha` dist-tag then immediately point `latest` to the same version
-(same convention as `agnosticui-core` and `agnosticui-cli`).
+All packages use the `alpha` dist-tag and immediately promote `latest` to the
+same version (matching `agnosticui-core` and `agnosticui-cli`).
 
-## 1. Schema
+## 1. Pre-Publish Audit (`npm pack --dry-run`)
+
+Verify builds, tests, and exact tarball file lists before publishing:
 
 ```bash
-cd v2/sdui/schema
+for pkg in lit react vue; do
+  (cd "v2/a2ui/renderers/\$pkg" && npm test && npm run typecheck && npm run build && npm pack --dry-run)
+done
+```
+
+## 2. Publish `@agnosticui/a2ui-lit` (Catalog + Lit Renderer)
+
+```bash
+cd v2/a2ui/renderers/lit
 npm run build
 npm publish --access public --tag alpha
-npm dist-tag add @agnosticui/schema@VERSION latest
-# Verify dist-tags
-npm dist-tag ls @agnosticui/schema
+npm dist-tag add @agnosticui/a2ui-lit@2.0.0-alpha.1 latest
+npm dist-tag ls @agnosticui/a2ui-lit
 ```
 
-## 2. React renderer
+## 3. Publish `@agnosticui/a2ui-react` (React 18/19 Renderer & Hook)
 
 ```bash
-cd v2/sdui/renderers/react
+cd v2/a2ui/renderers/react
 npm run build
 npm publish --access public --tag alpha
-npm dist-tag add @agnosticui/render-react@VERSION latest
-# Verify dist-tags
-npm dist-tag ls @agnosticui/render-react
+npm dist-tag add @agnosticui/a2ui-react@2.0.0-alpha.1 latest
+npm dist-tag ls @agnosticui/a2ui-react
 ```
 
-## 3. Vue renderer
+## 4. Publish `@agnosticui/a2ui-vue` (Vue 3 Renderer & Composable)
 
 ```bash
-cd v2/sdui/renderers/vue
+cd v2/a2ui/renderers/vue
 npm run build
 npm publish --access public --tag alpha
-npm dist-tag add @agnosticui/render-vue@VERSION latest
-# Verify dist-tags
-npm dist-tag ls @agnosticui/render-vue
+npm dist-tag add @agnosticui/a2ui-vue@2.0.0-alpha.1 latest
+npm dist-tag ls @agnosticui/a2ui-vue
 ```
 
-## 4. Lit renderer
+## 5. Verify Published Registry Metadata
 
 ```bash
-cd v2/sdui/renderers/lit
-npm run build
-npm publish --access public --tag alpha
-npm dist-tag add @agnosticui/render-lit@VERSION latest
-# Verify dist-tags
-npm dist-tag ls @agnosticui/render-lit
+npm info @agnosticui/a2ui-lit
+npm info @agnosticui/a2ui-react
+npm info @agnosticui/a2ui-vue
 ```
 
-## Verify
+## Package Versions
 
-```bash
-npm info @agnosticui/schema
-npm info @agnosticui/render-react
-npm info @agnosticui/render-vue
-npm info @agnosticui/render-lit
-```
-
-## Package versions
-
-| Package | Version |
-|---------|---------|
-| `@agnosticui/schema` | `2.0.0-alpha.1` |
-| `@agnosticui/render-react` | `2.0.0-alpha.1` |
-| `@agnosticui/render-vue` | `2.0.0-alpha.1` |
-| `@agnosticui/render-lit` | `2.0.0-alpha.1` |
+| Package | Version | Exports |
+|---------|---------|---------|
+| `@agnosticui/a2ui-lit` | `2.0.0-alpha.1` | `.`, `./catalog.json`, `./SKILL.md` |
+| `@agnosticui/a2ui-react` | `2.0.0-alpha.1` | `.` |
+| `@agnosticui/a2ui-vue` | `2.0.0-alpha.1` | `.` |
