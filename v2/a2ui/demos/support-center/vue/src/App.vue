@@ -30,6 +30,15 @@ import {
   getGeminiSessionUsage,
   MAX_SESSION_CALLS,
 } from '../../shared/live-gemini.js';
+import {
+  playProgressiveA2uiStream,
+  type StreamPhase,
+  type StreamPlaybackHandle,
+} from '../../shared/stream-player.js';
+import {
+  diffDataModelSnapshots,
+  renderHighlightedJsonHtml,
+} from '../../shared/data-model-diff.js';
 
 restorePrefs();
 
@@ -49,7 +58,10 @@ const isDark = ref<boolean>(
 );
 const inspectorOpen = ref(false);
 const actionCount = ref(0);
-const dataModelJson = ref('{}');
+const dataModelHtml = ref<string>(renderHighlightedJsonHtml({}, new Map()));
+const changedPathCount = ref(0);
+const streamPhase = ref<StreamPhase>('complete');
+const streamProgress = ref({ current: 0, total: 0 });
 const eventLogText = ref('Ready.');
 const compilerMode = ref<'local' | 'live'>('local');
 const geminiApiKey = ref<string>(
@@ -61,18 +73,39 @@ const geminiCallsUsed = ref<number>(getGeminiSessionUsage().used);
 const liveErrorText = ref('');
 
 let activeMessages: A2uiWireMessage[] = EMPTY_STATE_SURFACE_MESSAGES;
+let activeStreamHandle: StreamPlaybackHandle | null = null;
+let lastSnapshot: unknown = {};
+let lastSerialized = '{}';
+
+const syncDataModelInspector = (rawData: unknown, resetBaseline = false) => {
+  const normalized = rawData ?? {};
+  const serialized = JSON.stringify(normalized);
+  if (!resetBaseline && serialized === lastSerialized) {
+    return;
+  }
+
+  const nextSnapshot: unknown = JSON.parse(serialized);
+  const changes = resetBaseline
+    ? new Map()
+    : diffDataModelSnapshots(lastSnapshot, nextSnapshot);
+
+  lastSnapshot = nextSnapshot;
+  lastSerialized = serialized;
+  changedPathCount.value = changes.size;
+  dataModelHtml.value = renderHighlightedJsonHtml(nextSnapshot, changes);
+};
+
 const logEvent = (message: string, detail?: unknown) => {
   const stamp = new Date().toLocaleTimeString();
   const extra =
-    detail !== undefined ? `\n${JSON.stringify(detail, null, 2)}` : '';
-  eventLogText.value = `[${stamp}] ${message}${extra}\n\n${eventLogText.value}`;
+    detail !== undefined ? '\n' + JSON.stringify(detail, null, 2) : '';
+  eventLogText.value = '[' + stamp + '] ' + message + extra + '\n\n' + eventLogText.value;
 };
 
 const {
   surface,
   surfaceRef,
   processMessages,
-  streamMessages,
   resetSurface,
   getDataModel,
 } = useA2uiSurface({
@@ -84,32 +117,55 @@ const {
 
     const confirmMsgs = buildActionConfirmationMessages(activeMessages, detail);
     processMessages(confirmMsgs);
-    dataModelJson.value = JSON.stringify(getDataModel(), null, 2);
+    syncDataModelInspector(getDataModel());
   },
 });
 
 const runStream = async (
   messages: A2uiWireMessage[],
-  delayMs: number,
   streamLabel: string,
+  instant = false,
 ) => {
+  activeStreamHandle?.cancel();
   activeMessages = messages;
   resetSurface();
-  logEvent(`Streaming surface: ${streamLabel}`);
-  await streamMessages(messages, delayMs);
-  dataModelJson.value = JSON.stringify(getDataModel(), null, 2);
+  syncDataModelInspector({}, true);
+  streamProgress.value = { current: 0, total: 0 };
+  logEvent('Streaming surface: ' + streamLabel);
+
+  const handle = playProgressiveA2uiStream(
+    messages,
+    {
+      onPhaseChange: (phase) => {
+        streamPhase.value = phase;
+      },
+      onMessage: (msg, idx, total) => {
+        streamProgress.value = { current: idx + 1, total };
+        processMessages([msg]);
+        syncDataModelInspector(getDataModel());
+      },
+    },
+    instant
+      ? { skeletonDelayMs: 0, typingDelayMs: 0, chunkDelayMs: 0, verbose: false }
+      : { skeletonDelayMs: 140, typingDelayMs: 220, chunkDelayMs: 95, verbose: false },
+  );
+
+  activeStreamHandle = handle;
+  await handle.finished;
+  syncDataModelInspector(getDataModel());
 };
 
 let pollTimer: number | null = null;
 
 onMounted(() => {
-  void runStream(EMPTY_STATE_SURFACE_MESSAGES, 0, 'Idle Empty State');
+  void runStream(EMPTY_STATE_SURFACE_MESSAGES, 'Idle Empty State', true);
   pollTimer = window.setInterval(() => {
-    dataModelJson.value = JSON.stringify(getDataModel(), null, 2);
+    syncDataModelInspector(getDataModel());
   }, 250);
 });
 
 onUnmounted(() => {
+  activeStreamHandle?.cancel();
   if (pollTimer !== null) {
     window.clearInterval(pollTimer);
   }
@@ -125,14 +181,14 @@ const isLocal = computed(() => compilerMode.value === 'local');
 const handleSelectSkin = (skin: { id: string; label: string }) => {
   applySkin(skin.id);
   activeSkinId.value = skin.id;
-  logEvent(`Applied skin: ${skin.label}`);
+  logEvent('Applied skin: ' + skin.label);
 };
 
 const handleDarkToggle = (detail: { checked: boolean }) => {
   const nextDark = Boolean(detail?.checked);
   isDark.value = nextDark;
   applyTheme(nextDark);
-  logEvent(`Theme mode: ${nextDark ? 'Dark' : 'Light'}`);
+  logEvent('Theme mode: ' + (nextDark ? 'Dark' : 'Light'));
 };
 
 const handleApiKeyUpdate = (val: string) => {
@@ -151,7 +207,7 @@ const handleGeneratePrompt = async (overridePrompt?: string) => {
   try {
     if (compilerMode.value === 'local') {
       const result = await generateLocalA2uiSurface(resolvedPrompt);
-      await runStream(result.messages, 60, 'Local A2UI v1.0 Compiler');
+      await runStream(result.messages, 'Local A2UI v1.0 Compiler');
       return;
     }
 
@@ -166,19 +222,19 @@ const handleGeneratePrompt = async (overridePrompt?: string) => {
     geminiCallsUsed.value = result.callsUsed;
     await runStream(
       result.messages,
-      60,
-      `Live Gemini (${result.callsUsed}/${result.maxCalls} quota)`,
+      'Live Gemini (' + result.callsUsed + '/' + result.maxCalls + ' quota)',
     );
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     liveErrorText.value = msg;
     geminiCallsUsed.value = getGeminiSessionUsage().used;
-    logEvent(`Compiler error: ${msg}`);
+    logEvent('Compiler error: ' + msg);
   } finally {
     isGeneratingLive.value = false;
   }
 };
 </script>
+
 <template>
   <div class="studio-shell">
     <header class="studio-header">
@@ -266,7 +322,13 @@ const handleGeneratePrompt = async (overridePrompt?: string) => {
                 <VueRadio
                   name="compiler-mode"
                   value="live"
-                  :label-text="`Live Gemini (${geminiCallsUsed}/${MAX_SESSION_CALLS})`"
+                  :label-text="
+                    'Live Gemini (' +
+                    geminiCallsUsed +
+                    '/' +
+                    MAX_SESSION_CALLS +
+                    ')'
+                  "
                   :checked="!isLocal"
                   @change="
                     () => {
@@ -328,6 +390,37 @@ const handleGeneratePrompt = async (overridePrompt?: string) => {
             {{ liveErrorText }}
           </VueAlert>
 
+          <div
+            v-if="streamPhase === 'skeleton'"
+            class="a2ui-stream-skeleton"
+            aria-live="polite"
+          >
+            <div class="a2ui-skeleton-bar a2ui-skeleton-bar--short" />
+            <div class="a2ui-skeleton-bar a2ui-skeleton-bar--medium" />
+            <div class="a2ui-skeleton-bar a2ui-skeleton-bar--tall" />
+          </div>
+
+          <div
+            v-else-if="streamPhase === 'typing'"
+            class="a2ui-agent-typing"
+            aria-live="polite"
+          >
+            <span class="a2ui-typing-dots" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+            <span>Agent is composing A2UI v1.0 surface...</span>
+          </div>
+
+          <div
+            v-else-if="streamPhase === 'streaming' && streamProgress.total > 0"
+            class="a2ui-stream-status-bar"
+            aria-live="polite"
+          >
+            Streaming frame {{ streamProgress.current }}/{{ streamProgress.total }}...
+          </div>
+
           <AgA2uiSurface
             ref="surfaceRef"
             :surface="surface"
@@ -340,8 +433,11 @@ const handleGeneratePrompt = async (overridePrompt?: string) => {
         <section class="inspector-panel">
           <div class="panel-header">
             <h3>Live DataModel (@path)</h3>
+            <span v-if="changedPathCount > 0" class="protocol-pill">
+              {{ changedPathCount }} changed
+            </span>
           </div>
-          <pre class="json-viewer">{{ dataModelJson }}</pre>
+          <pre class="json-viewer" v-html="dataModelHtml" />
         </section>
 
         <section class="inspector-panel">

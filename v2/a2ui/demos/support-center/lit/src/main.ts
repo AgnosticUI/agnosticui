@@ -20,7 +20,6 @@ import {
   AgnosticUICatalog,
   registerAgnosticUICatalog,
   runSurfaceValidation,
-  createMockA2uiStream,
   type A2uiWireMessage,
 } from '@agnosticui/a2ui-lit';
 
@@ -48,6 +47,17 @@ import {
   getGeminiSessionUsage,
   MAX_SESSION_CALLS,
 } from '../../shared/live-gemini.js';
+
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import {
+  playProgressiveA2uiStream,
+  type StreamPhase,
+  type StreamPlaybackHandle,
+} from '../../shared/stream-player.js';
+import {
+  diffDataModelSnapshots,
+  renderHighlightedJsonHtml,
+} from '../../shared/data-model-diff.js';
 
 registerAgnosticUICatalog();
 restorePrefs();
@@ -84,12 +94,15 @@ const SUN_ICON = createElement(Sun, {
 const SESSION_KEY_STORAGE = 'ag-a2ui-gemini-key';
 
 export class AgA2uiStudio extends LitElement {
-  static override properties = {
+    static override properties = {
     activeSkinId: { state: true },
     isDark: { state: true },
     inspectorOpen: { state: true },
     actionCount: { state: true },
-    dataModelJson: { state: true },
+    dataModelHtml: { state: true },
+    changedPathCount: { state: true },
+    streamPhase: { state: true },
+    streamProgress: { state: true },
     eventLogText: { state: true },
     compilerMode: { state: true },
     geminiApiKey: { state: true },
@@ -107,7 +120,10 @@ export class AgA2uiStudio extends LitElement {
   private declare isDark: boolean;
   private declare inspectorOpen: boolean;
   private declare actionCount: number;
-  private declare dataModelJson: string;
+  private declare dataModelHtml: string;
+  private declare changedPathCount: number;
+  private declare streamPhase: StreamPhase;
+  private declare streamProgress: { current: number; total: number };
   private declare eventLogText: string;
   private declare compilerMode: 'local' | 'live';
   private declare geminiApiKey: string;
@@ -118,6 +134,9 @@ export class AgA2uiStudio extends LitElement {
 
   private activeSurfaceEl: A2uiSurface | null = null;
   private inspectorTimer: number | null = null;
+  private activeStreamHandle: StreamPlaybackHandle | null = null;
+  private lastDataSnapshot: unknown = {};
+  private lastSerializedSnapshot = '{}';
 
   constructor() {
     super();
@@ -126,7 +145,10 @@ export class AgA2uiStudio extends LitElement {
     this.isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     this.inspectorOpen = false;
     this.actionCount = 0;
-    this.dataModelJson = '{}';
+    this.dataModelHtml = renderHighlightedJsonHtml({}, new Map());
+    this.changedPathCount = 0;
+    this.streamPhase = 'complete';
+    this.streamProgress = { current: 0, total: 0 };
     this.eventLogText = 'Ready.';
     this.compilerMode = 'local';
     this.geminiApiKey = sessionStorage.getItem(SESSION_KEY_STORAGE) ?? '';
@@ -135,19 +157,43 @@ export class AgA2uiStudio extends LitElement {
     this.geminiCallsUsed = getGeminiSessionUsage().used;
     this.liveErrorText = '';
   }
+
   override firstUpdated(): void {
     void this.renderWireMessages(
       EMPTY_STATE_SURFACE_MESSAGES,
-      0,
       'Idle Empty State',
+      true,
     );
   }
 
   override disconnectedCallback(): void {
     super.disconnectedCallback();
+    this.activeStreamHandle?.cancel();
     if (this.inspectorTimer !== null) {
       window.clearInterval(this.inspectorTimer);
     }
+  }
+
+  private syncDataModelInspector(
+    model: { dataModel: { get: (path: string) => unknown } },
+    resetBaseline = false,
+  ): void {
+    const rawData = model.dataModel.get('') ?? model.dataModel.get('/') ?? {};
+    const serialized = JSON.stringify(rawData);
+
+    if (!resetBaseline && serialized === this.lastSerializedSnapshot) {
+      return;
+    }
+
+    const nextSnapshot: unknown = JSON.parse(serialized);
+    const changes = resetBaseline
+      ? new Map()
+      : diffDataModelSnapshots(this.lastDataSnapshot, nextSnapshot);
+
+    this.lastDataSnapshot = nextSnapshot;
+    this.lastSerializedSnapshot = serialized;
+    this.changedPathCount = changes.size;
+    this.dataModelHtml = renderHighlightedJsonHtml(nextSnapshot, changes);
   }
 
   private serializeDataModel(model: {
@@ -245,7 +291,6 @@ export class AgA2uiStudio extends LitElement {
         const result = await generateLocalA2uiSurface(resolvedPrompt);
         await this.renderWireMessages(
           result.messages,
-          60,
           'Local A2UI v1.0 Compiler',
         );
         return;
@@ -265,8 +310,7 @@ export class AgA2uiStudio extends LitElement {
       this.geminiCallsUsed = result.callsUsed;
       await this.renderWireMessages(
         result.messages,
-        60,
-        `Live Gemini (${result.callsUsed}/${result.maxCalls} quota)`,
+        'Live Gemini (' + result.callsUsed + '/' + result.maxCalls + ' quota)',
       );
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
@@ -277,11 +321,13 @@ export class AgA2uiStudio extends LitElement {
       this.isGeneratingLive = false;
     }
   }
+
   private async renderWireMessages(
     messages: A2uiWireMessage[],
-    delayMs: number,
     streamLabel: string,
+    instant = false,
   ): Promise<void> {
+    this.activeStreamHandle?.cancel();
     if (this.inspectorTimer !== null) {
       window.clearInterval(this.inspectorTimer);
     }
@@ -289,6 +335,11 @@ export class AgA2uiStudio extends LitElement {
     const mount = this.querySelector('#surface-mount');
     if (!mount) return;
     mount.innerHTML = '';
+
+    this.lastDataSnapshot = {};
+    this.lastSerializedSnapshot = '{}';
+    this.changedPathCount = 0;
+    this.dataModelHtml = renderHighlightedJsonHtml({}, new Map());
 
     const processor = new MessageProcessor<LitComponentApi>([AgnosticUICatalog]);
     const surfaceEl = new A2uiSurface();
@@ -316,28 +367,78 @@ export class AgA2uiStudio extends LitElement {
       if (nextModel) {
         surfaceEl.surface = nextModel;
         surfaceEl.requestUpdate();
-        this.dataModelJson = this.serializeDataModel(nextModel);
+        this.syncDataModelInspector(nextModel);
       }
     });
 
-    this.logEvent(`Streaming surface: ${streamLabel}`);
-    for await (const msg of createMockA2uiStream(messages, delayMs)) {
-      processor.processMessages([msg as never]);
-      const model = processor.model.getSurface('support_surface');
-      if (model && surfaceEl.surface !== model) {
-        surfaceEl.surface = model;
-      }
-      if (model) {
-        this.dataModelJson = this.serializeDataModel(model);
-      }
-    }
+    this.logEvent('Streaming surface: ' + streamLabel);
+    this.streamProgress = { current: 0, total: 0 };
+
+    const handle = playProgressiveA2uiStream(
+      messages,
+      {
+        onPhaseChange: (phase) => {
+          this.streamPhase = phase;
+        },
+        onMessage: (msg, idx, total) => {
+          this.streamProgress = { current: idx + 1, total };
+          processor.processMessages([msg as never]);
+          const model = processor.model.getSurface('support_surface');
+          if (model && surfaceEl.surface !== model) {
+            surfaceEl.surface = model;
+          }
+          if (model) {
+            this.syncDataModelInspector(model);
+          }
+        },
+      },
+      instant
+        ? { skeletonDelayMs: 0, typingDelayMs: 0, chunkDelayMs: 0, verbose: false }
+        : { skeletonDelayMs: 140, typingDelayMs: 220, chunkDelayMs: 95, verbose: false },
+    );
+
+    this.activeStreamHandle = handle;
+    await handle.finished;
 
     this.inspectorTimer = window.setInterval(() => {
       const model = processor.model.getSurface('support_surface');
       if (model) {
-        this.dataModelJson = this.serializeDataModel(model);
+        this.syncDataModelInspector(model);
       }
     }, 250);
+  }
+
+  private renderStreamFeedback() {
+    if (this.streamPhase === 'skeleton') {
+      return html`
+        <div class="a2ui-stream-skeleton" aria-live="polite">
+          <div class="a2ui-skeleton-bar a2ui-skeleton-bar--short"></div>
+          <div class="a2ui-skeleton-bar a2ui-skeleton-bar--medium"></div>
+          <div class="a2ui-skeleton-bar a2ui-skeleton-bar--tall"></div>
+        </div>
+      `;
+    }
+
+    if (this.streamPhase === 'typing') {
+      return html`
+        <div class="a2ui-agent-typing" aria-live="polite">
+          <span class="a2ui-typing-dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          <span>Agent is composing A2UI v1.0 surface...</span>
+        </div>
+      `;
+    }
+
+    if (this.streamPhase === 'streaming' && this.streamProgress.total > 0) {
+      return html`
+        <div class="a2ui-stream-status-bar" aria-live="polite">
+          Streaming frame this.streamProgress.current/{this.streamProgress.total}...
+        </div>
+      `;
+    }
+
+    return '';
   }
 
   override render() {
@@ -504,7 +605,7 @@ export class AgA2uiStudio extends LitElement {
                     ${this.liveErrorText}
                   </ag-alert>`
                 : ''}
-
+                ${this.renderStreamFeedback()}
               <div id="surface-mount"></div>
             </div>
           </main>
@@ -516,7 +617,7 @@ export class AgA2uiStudio extends LitElement {
                     <div class="panel-header">
                       <h3>Live DataModel (@path)</h3>
                     </div>
-                    <pre class="json-viewer">${this.dataModelJson}</pre>
+                    <pre class="json-viewer">${unsafeHTML(this.dataModelHtml)}</pre>
                   </section>
 
                   <section class="inspector-panel">

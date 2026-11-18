@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["vitest/globals"],
+    "paths": {
+      "@agnosticui/a2ui-lit": ["../../../renderers/lit/src/index.ts"]
+    }
+  },
+  "include": ["./**/*.ts"]
+}
