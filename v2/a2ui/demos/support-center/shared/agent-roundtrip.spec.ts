@@ -95,4 +95,33 @@ describe('AgentRoundTrip (Stateful Multi-Turn Agent Loop)', () => {
     expect(outcome.turn).toBe(1);
     expect(outcome.messages).toEqual(baseScenarioMessages);
   });
+  
+  it('preserves title-only Turn 2 overflow routing summary when advancing to Turn 3', () => {
+    const turnTwoOutcome = advanceAgentRoundTrip(baseScenarioMessages, {
+      name: 'activate_overflow_routing',
+      sourceComponentId: 'local_ack_btn',
+      context: {
+        title: '42% Surge in Qualified Inbound Sales Calls',
+        overflowActive: true,
+      },
+    });
+
+    const turnTwoComponents = extractComponents(turnTwoOutcome.messages);
+    const originalConfirmCopy = String(
+      turnTwoComponents.find((c) => c.id === 'confirm_copy')?.text ?? '',
+    );
+    expect(originalConfirmCopy).toContain('42% Surge in Qualified Inbound Sales Calls');
+
+    const simulateBtn = turnTwoComponents.find((c) => c.id === 'simulate_test_btn');
+    const turnThreeOutcome = advanceAgentRoundTrip(baseScenarioMessages, {
+      event: simulateBtn?.action?.event,
+    });
+
+    const turnThreeComponents = extractComponents(turnThreeOutcome.messages);
+    const preservedConfirmCopy = String(
+      turnThreeComponents.find((c) => c.id === 'confirm_copy')?.text ?? '',
+    );
+    expect(preservedConfirmCopy).toBe(originalConfirmCopy);
+  });
+
 });

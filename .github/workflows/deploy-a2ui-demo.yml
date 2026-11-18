@@ -39,8 +39,13 @@ jobs:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: |
+            v2/a2ui/renderers/lit/package-lock.json
             v2/a2ui/demos/support-center/shared/package-lock.json
             v2/a2ui/demos/support-center/lit/package-lock.json
+
+      - name: Install Lit renderer dependencies
+        working-directory: v2/a2ui/renderers/lit
+        run: npm ci
 
       - name: Install shared dependencies & run tests + typecheck
         working-directory: v2/a2ui/demos/support-center/shared

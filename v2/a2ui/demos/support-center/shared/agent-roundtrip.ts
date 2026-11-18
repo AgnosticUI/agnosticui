@@ -124,15 +124,18 @@ function buildTurnTwoComponents(
           ? rawContext.ownerEmail
           : undefined;
 
-  const summaryLine = emailCandidate
-    ? 'All preferences have been validated and published. Confirmation and live alerts are routed to ' +
-      emailCandidate +
-      '.'
-    : typeof rawContext.title === 'string'
-      ? 'Overflow routing is now active for "' +
-        rawContext.title +
-        '". Senior specialists have been notified.'
-      : 'Your workflow has been validated and published to the active workspace.';
+  const summaryLine =
+    typeof rawContext.submittedSummary === 'string' && rawContext.submittedSummary.length > 0
+      ? rawContext.submittedSummary
+      : emailCandidate
+        ? 'All preferences have been validated and published. Confirmation and live alerts are routed to ' +
+          emailCandidate +
+          '.'
+        : typeof rawContext.title === 'string'
+          ? 'Overflow routing is now active for "' +
+            rawContext.title +
+            '". Senior specialists have been notified.'
+          : 'Your workflow has been validated and published to the active workspace.';
 
   return [
     {
@@ -202,6 +205,7 @@ function buildTurnTwoComponents(
             verifiedEmail: emailCandidate ?? 'ops@agnosticui.com',
             cluster: String(rawContext.cluster ?? 'na-enterprise'),
             submittedLabel: buttonDisplayLabel,
+            submittedSummary: summaryLine,
           },
         },
       },

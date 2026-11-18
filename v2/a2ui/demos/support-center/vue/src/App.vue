@@ -3,7 +3,6 @@ import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { CircleSlash2, Code2, Moon, Sun } from 'lucide-vue-next';
 import {
   AgA2uiSurface,
-  runSurfaceValidation,
   useA2uiSurface,
   type A2uiWireMessage,
 } from '@agnosticui/a2ui-vue';
@@ -116,6 +115,7 @@ const {
   processMessages,
   resetSurface,
   getDataModel,
+  validate,
 } = useA2uiSurface({
   surfaceId: 'support_surface',
   validateOnAction: false,
@@ -132,8 +132,7 @@ const {
       return;
     }
 
-    const hostEl = surfaceRef.value as HTMLElement | null;
-    if (hostEl && !runSurfaceValidation(hostEl, true)) {
+    if (!validate(true)) {
       logEvent('Blocked action: FACE validation failed on required fields');
       return;
     }
@@ -152,6 +151,7 @@ const {
     syncDataModelInspector(getDataModel());
   },
 });
+
 
 const runStream = async (
   messages: A2uiWireMessage[],

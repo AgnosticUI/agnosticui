@@ -675,9 +675,15 @@ a2ui-surface ag-fieldset ag-toggle {
 
 .a2ui-json-number,
 .a2ui-json-boolean {
-  color: #0284c7;
+  color: var(--ag-info-text, #0369a1);
   font-weight: var(--ag-font-weight-semibold);
 }
+
+[data-theme='dark'] .a2ui-json-number,
+[data-theme='dark'] .a2ui-json-boolean {
+  color: var(--ag-info-text, #38bdf8);
+}
+
 
 .a2ui-json-null {
   color: var(--ag-text-secondary);
