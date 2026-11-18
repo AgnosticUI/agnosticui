@@ -120,6 +120,13 @@ export default defineConfig({
         ]
       },
       {
+        text: 'Generative UI',
+        items: [
+          { text: 'A2UI v1.0', link: '/docs/a2ui' }
+        ]
+      },
+      getComponents(),
+      {
         text: 'AI Playbooks',
         items: [
           { text: 'Agentic Intent', link: '/playbooks/agentic-intent' },
@@ -134,14 +141,12 @@ export default defineConfig({
           { text: 'Contact Form (FACE)', link: '/playbooks/form-association' },
         ]
       },
-      getComponents(),
       {
         text: 'Documentation',
         items: [
           { text: 'Setup Guide', link: '/docs/setup' },
           { text: 'Understanding AgnosticUI', link: '/docs/understand' },
           { text: 'Advanced Usage', link: '/docs/advanced/advanced-usage' },
-          { text: 'Generative UI (A2UI)', link: '/docs/a2ui' },
           { text: 'Model Context Protocol (MCP)', link: '/docs/mcp-server' },
           { text: 'CSS Utilities', link: '/docs/utilities' },
           { text: 'Motion Utilities', link: '/docs/motion-utilities' },

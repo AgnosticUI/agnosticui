@@ -2,11 +2,11 @@
 
 - **Branch:** `master` (Phases 1–6 merged via PR #517)
 - **Upstream Ecosystem PRs:**
-  - Catalog Showcase PR: `https://github.com/AgnosticUI/agnosticui/pull/520`
-  - Core `@a2ui/web_core` Keyword Parity PR (Issue #3998): `https://github.com/a2ui-project/a2ui/pull/4285`
+  - Catalog Showcase PR: `https://github.com`
+  - Core `@a2ui/web_core` Keyword Parity PR (Issue #3998): `https://github.com`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phases 1–6 ✅ (100% Complete) | Phase 7 ✅, Next: Phase 8 ⬜
+- **Overall Status:** Phases 1–6 ✅ (100% Complete) | Phase 7 🔄 (Task 7.3b Pending), Next: Phase 8 ⬜
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 
 ---
@@ -59,6 +59,7 @@
 * **Task 3.3 — Local & Cloud Prompt Compiler + Responsive Studio Layout** ✅
   * **Micro-Chunk 3.3a:** Created `v2/a2ui/demos/support-center/src/live-gemini.ts` with deterministic local A2UI v1.0 prompt compiler (`generateLocalA2uiSurface`) + optional `gemini-3.8-flash` REST compiler (`x-goog-api-key` header auth, `thinkingConfig: { thinkingBudget: 0 }`, `AbortSignal.timeout(15000)`, UAX #31 ID validation, and `MAX_SESSION_CALLS = 5`).
   * **Micro-Chunk 3.3b:** Added `<ag-radio>` Local/Live mode toggle, 3 -> 2 -> 1 column responsive breakpoints in `src/studio.css`, and inline `<ag-alert>` diagnostics in `src/main.ts`.
+
 ---
 
 ## Phase 4: Full Component Catalog, Skill Generation, `v2/sdui` Sweep & VitePress Docs
@@ -96,17 +97,18 @@
 
 ---
 
-## Phase 7: Upstream A2UI Core Contributions, Studio v2 ("Wow Factor") & Homepage Positioning
+## Phase 7: Upstream A2UI Core Contributions, Studio v2 ("Wow Factor") & Homepage Positioning ✅
 
 * **Task 7.1 — Permanent `a2ui-project/a2ui` Dev Setup & Upstream Core Bugfix/Docs PRs** ✅
   * **Micro-Chunk 7.1a:** Configured `~/workspace/a2ui` (`origin` -> `roblevintennis/a2ui`, `upstream` -> `a2ui-project/a2ui`), verified `@a2ui/web_core` build/test pipelines, and mapped `schema_loader.ts` JSON Schema-to-Zod conversion.
   * **Micro-Chunk 7.1b:** Implemented JSON Schema Draft 2020-12 keyword parity in `@a2ui/web_core` (`minProperties`, `maxProperties`, `dependentRequired`, conditional `if`/`then`/`else` subschemas, typeless schema constraints, top-level `not`, and `allOf`/`oneOf`/`anyOf` function argument combinators) with 13 new unit tests (`1,660/1,660` passing + Prettier clean), updated `CHANGELOG.md`, and submitted upstream PR [`a2ui-project/a2ui#4285`](https://github.com) (fixing Issue [#3998](https://github.com)).
-* **Task 7.2 — Support Center Studio v2 ("Wow Factor") & Public Netlify Hosting** 🔄
-  * **Micro-Chunk 7.2a:** Upgrade `v2/a2ui/demos/support-center/shared/` with progressive token/JSONL component streaming (skeleton -> bubble typing -> incremental field arrival) and live `@path` JSON diff highlights in the Inspector drawer. ✅
-  * **Micro-Chunk 7.2b:** Add multi-turn agentic round-trips (`a2uiaction` validated payload -> dynamic follow-up A2UI confirmation/next-step surface) so users experience a true stateful agent loop. ✅
-  * **Micro-Chunk 7.2c:** Configure and deploy a single canonical public Netlify demo (`Local Compiler` default = `$0` token cost + optional BYOK Gemini key with `MAX_SESSION_CALLS = 5` cap) and link it in `v2/a2ui/README.md` and `v2/site/docs/docs/a2ui.md`. ✅
-* **Task 7.3 — Elevate A2UI `v1.0` on the AgnosticUI Homepage (`v2/site/docs/index.md`)** ✅
-  * **Micro-Chunk 7.3a:** Update `v2/site/docs/index.md` so **CLI Local Components** and **A2UI v1.0 Generative UI** lead the core value proposition (positioning schema-enforced A2UI `v1.0` renderers & 22 skins ahead of probabilistic Playbooks) with direct links to `/docs/a2ui` and the live Studio.
+* **Task 7.2 — Support Center Studio v2 ("Wow Factor") & Public Netlify Hosting** ✅
+  * **Micro-Chunk 7.2a:** Upgrade `v2/a2ui/demos/support-center/shared/` with progressive token/JSONL component streaming (skeleton -> bubble typing -> incremental field arrival) and live `@path` JSON diff highlights in the Inspector drawer.
+  * **Micro-Chunk 7.2b:** Add multi-turn agentic round-trips (`a2uiaction` validated payload -> dynamic follow-up A2UI confirmation/next-step surface) so users experience a true stateful agent loop.
+  * **Micro-Chunk 7.2c:** Configure and deploy a single canonical public Netlify demo (`Local Compiler` default = `$0` token cost + optional BYOK Gemini key with `MAX_SESSION_CALLS = 5` cap) and link it in `v2/a2ui/README.md` and `v2/site/docs/docs/a2ui.md`.
+* **Task 7.3 — Elevate A2UI `v1.0` on the AgnosticUI Homepage & Sidebar Navigation**✅
+  * **Micro-Chunk 7.3a:** Update `v2/site/docs/index.md` so **CLI Local Components** and **A2UI v1.0 Generative UI** lead the core value proposition (positioning schema-enforced A2UI `v1.0` renderers & 22 skins ahead of probabilistic Playbooks) with direct links to `/docs/a2ui` and the live Studio. ✅
+  * **Micro-Chunk 7.3b:** Elevate A2UI `v1.0` in the VitePress left sidebar navigation (`v2/site/docs/.vitepress/config.mts`). Move `{ text: 'Generative UI (A2UI)', link: '/docs/a2ui' }` out from the bottom of the Documentation section into its own top-level `A2UI v1.0` sidebar group positioned directly above `AI Playbooks`. Also, move `getComponents()` above `AI Playbooks. ✅
 
 ---
 
@@ -115,4 +117,3 @@
 * **Task 8.1 — Expand Catalog from 25 to 35 Components** ⬜
   * **Micro-Chunk 8.1a:** Inspect `v2/lib/src/components/*/core/_*.ts` for 10 new additions (`AgSlider`, `AgSkeletonLoader`, `AgBreadcrumb`, `AgPagination`, `AgScrollProgress`, `AgImage`, `AgKbd`, `AgMark`, `AgToast`, `AgIntlFormatter`), add them to `CATALOG_COMPONENTS` and `TWO_WAY_BINDINGS` (`AgSlider.value`) in `v2/a2ui/catalog/scripts/generate-catalog.ts`, and regenerate `agnosticui-catalog.json` + `SKILL.md`.
   * **Micro-Chunk 8.1b:** Expand `v2/a2ui/renderers/lit/src/catalog.spec.ts` to test all 35 components + `AgSlider` two-way `@path` binding, verify `npm run check` and `v2/mcp-server` tests pass, and bump minor/alpha release if desired.
-
