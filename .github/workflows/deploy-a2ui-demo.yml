@@ -1,0 +1,53 @@
+name: Deploy A2UI Support Center Studio (Netlify)
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'v2/a2ui/demos/support-center/lit/**'
+      - 'v2/a2ui/demos/support-center/shared/**'
+      - 'v2/skins/**'
+      - '.github/workflows/deploy-a2ui-demo.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy-netlify:
+    name: Build & Deploy Lit Studio
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: v2/a2ui/demos/support-center/lit
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: v2/a2ui/demos/support-center/lit/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run shared unit tests
+        working-directory: v2/a2ui/demos/support-center/shared
+        run: npm ci && npm test
+
+      - name: Typecheck & build production bundle
+        run: npm run build
+
+      - name: Deploy to Netlify Production
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: './v2/a2ui/demos/support-center/lit/dist'
+          production-branch: master
+          production-deploy: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Deploy A2UI Support Center Studio (${{ github.sha }})'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: '503dcfad-78f1-4163-a4ad-47894954a5d8'
