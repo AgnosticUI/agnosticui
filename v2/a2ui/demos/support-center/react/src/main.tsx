@@ -2,8 +2,9 @@
  * @file main.tsx
  * @description React 19 Support Center Studio showcasing @agnosticui/a2ui-react
  * (<AgA2uiSurface> + useA2uiSurface) with AgnosticUI's A2UI v1.0 catalog across
- * 22 runtime skins (including Evergreen), Light/Dark modes, live @path DataModel
- * inspection, FACE validation, and Local vs. Live Gemini 3.8 Flash prompt compilation.
+ * 22 runtime skins (including Evergreen), Light/Dark modes, progressive JSONL
+ * component streaming, live @path DataModel diff highlighting, FACE validation,
+ * and Local vs. Live Gemini 3.8 Flash prompt compilation.
  */
 
 import 'agnosticui-core/styles/tokens.css';
@@ -17,6 +18,7 @@ import { createRoot } from 'react-dom/client';
 import { CircleSlash2, Code2, Moon, Sun } from 'lucide-react';
 import {
   AgA2uiSurface,
+  runSurfaceValidation,
   useA2uiSurface,
   type A2uiWireMessage,
 } from '@agnosticui/a2ui-react';
@@ -36,14 +38,23 @@ import {
 import {
   EMPTY_STATE_SURFACE_MESSAGES,
   QUICK_PROMPT_CHIPS,
-  buildActionConfirmationMessages,
 } from '../../shared/support-scenarios.js';
+import { advanceAgentRoundTrip } from '../../shared/agent-roundtrip.js';
 import {
   generateLiveA2uiSurface,
   generateLocalA2uiSurface,
   getGeminiSessionUsage,
   MAX_SESSION_CALLS,
 } from '../../shared/live-gemini.js';
+import {
+  playProgressiveA2uiStream,
+  type StreamPhase,
+  type StreamPlaybackHandle,
+} from '../../shared/stream-player.js';
+import {
+  diffDataModelSnapshots,
+  renderHighlightedJsonHtml,
+} from '../../shared/data-model-diff.js';
 
 restorePrefs();
 
@@ -66,7 +77,15 @@ function App() {
   );
   const [inspectorOpen, setInspectorOpen] = React.useState(false);
   const [actionCount, setActionCount] = React.useState(0);
-  const [dataModelJson, setDataModelJson] = React.useState('{}');
+  const [dataModelHtml, setDataModelHtml] = React.useState<string>(() =>
+    renderHighlightedJsonHtml({}, new Map()),
+  );
+  const [changedPathCount, setChangedPathCount] = React.useState(0);
+  const [streamPhase, setStreamPhase] = React.useState<StreamPhase>('complete');
+  const [streamProgress, setStreamProgress] = React.useState({
+    current: 0,
+    total: 0,
+  });
   const [eventLogText, setEventLogText] = React.useState('Ready.');
   const [compilerMode, setCompilerMode] = React.useState<'local' | 'live'>(
     'local',
@@ -86,87 +105,180 @@ function App() {
   const activeMessagesRef = React.useRef<A2uiWireMessage[]>(
     EMPTY_STATE_SURFACE_MESSAGES,
   );
+  const activeStreamRef = React.useRef<StreamPlaybackHandle | null>(null);
+  const streamPhaseRef = React.useRef<StreamPhase>('complete');
+  const lastSnapshotRef = React.useRef<unknown>({});
+  const lastSerializedRef = React.useRef<string>('{}');
 
-    const logEvent = React.useCallback((message: string, detail?: unknown) => {
+  const syncDataModelInspector = React.useCallback(
+    (rawData: unknown, resetBaseline = false) => {
+      const normalized = rawData ?? {};
+      const serialized = JSON.stringify(normalized);
+      if (!resetBaseline && serialized === lastSerializedRef.current) {
+        return;
+      }
+
+      const nextSnapshot: unknown = JSON.parse(serialized);
+      const changes = resetBaseline
+        ? new Map()
+        : diffDataModelSnapshots(lastSnapshotRef.current, nextSnapshot);
+
+      lastSnapshotRef.current = nextSnapshot;
+      lastSerializedRef.current = serialized;
+      setChangedPathCount(changes.size);
+      setDataModelHtml(renderHighlightedJsonHtml(nextSnapshot, changes));
+    },
+    [],
+  );
+
+  const logEvent = React.useCallback((message: string, detail?: unknown) => {
     const stamp = new Date().toLocaleTimeString();
     const extra =
-      detail !== undefined ? `\n${JSON.stringify(detail, null, 2)}` : '';
-    setEventLogText((prev) => `[${stamp}] ${message}${extra}\n\n${prev}`);
+      detail !== undefined ? '\n' + JSON.stringify(detail, null, 2) : '';
+    setEventLogText(
+      (prev) => '[' + stamp + '] ' + message + extra + '\n\n' + prev,
+    );
   }, []);
 
   const surfaceApiRef = React.useRef<{
     processMessages: (msgs: A2uiWireMessage[]) => void;
     getDataModel: () => unknown;
+    getSurfaceEl: () => HTMLElement | null;
   } | null>(null);
+
+  const runStreamRef = React.useRef<
+    ((msgs: A2uiWireMessage[], label: string, instant?: boolean) => Promise<void>) | null
+  >(null);
 
   const handleSurfaceAction = React.useCallback(
     (detail: Record<string, unknown>) => {
-      setActionCount((c) => c + 1);
-      logEvent('FACE validation passed -> Dispatched A2UI Action', detail);
+      if (streamPhaseRef.current !== 'complete') {
+        return;
+      }
 
-      const confirmMsgs = buildActionConfirmationMessages(
-        activeMessagesRef.current,
+      const outcome = advanceAgentRoundTrip(activeMessagesRef.current, detail);
+
+      if (outcome.kind === 'reset') {
+        logEvent('Agent round-trip reset -> Restored Turn 1 surface');
+        void runStreamRef.current?.(
+          activeMessagesRef.current,
+          'Turn 1 Surface (Reset)',
+          true,
+        );
+        return;
+      }
+
+      const hostEl = surfaceApiRef.current?.getSurfaceEl() ?? null;
+      if (hostEl && !runSurfaceValidation(hostEl, true)) {
+        logEvent('Blocked action: FACE validation failed on required fields');
+        return;
+      }
+
+      setActionCount((c) => c + 1);
+      logEvent(
+        'FACE validation passed -> Turn ' +
+          outcome.turn +
+          ' (' +
+          outcome.actionName +
+          ')',
         detail,
       );
-      surfaceApiRef.current?.processMessages(confirmMsgs);
+
+      surfaceApiRef.current?.processMessages(outcome.messages);
       const nextData = surfaceApiRef.current?.getDataModel() ?? {};
-      setDataModelJson(JSON.stringify(nextData, null, 2));
+      syncDataModelInspector(nextData);
     },
-    [logEvent],
+    [logEvent, syncDataModelInspector],
   );
 
   const {
     surface,
     surfaceRef,
     processMessages,
-    streamMessages,
     resetSurface,
     getDataModel,
   } = useA2uiSurface({
     surfaceId: 'support_surface',
     onAction: handleSurfaceAction,
-    validateOnAction: true,
+    validateOnAction: false,
   });
 
-  surfaceApiRef.current = { processMessages, getDataModel };
+  surfaceApiRef.current = {
+    processMessages,
+    getDataModel,
+    getSurfaceEl: () => surfaceRef.current as HTMLElement | null,
+  };
 
   const runStream = React.useCallback(
     async (
       messages: A2uiWireMessage[],
-      delayMs: number,
       streamLabel: string,
+      instant = false,
     ) => {
+      activeStreamRef.current?.cancel();
       activeMessagesRef.current = messages;
       resetSurface();
-      logEvent(`Streaming surface: ${streamLabel}`);
-      await streamMessages(messages, delayMs);
-      setDataModelJson(JSON.stringify(getDataModel(), null, 2));
+      syncDataModelInspector({}, true);
+      setStreamProgress({ current: 0, total: 0 });
+      logEvent('Streaming surface: ' + streamLabel);
+
+      const handle = playProgressiveA2uiStream(
+        messages,
+        {
+          onPhaseChange: (phase) => {
+            streamPhaseRef.current = phase;
+            setStreamPhase(phase);
+          },
+          onMessage: (msg, idx, total) => {
+            setStreamProgress({ current: idx + 1, total });
+            processMessages([msg]);
+            syncDataModelInspector(getDataModel());
+          },
+        },
+        instant
+          ? { skeletonDelayMs: 0, typingDelayMs: 0, chunkDelayMs: 0, verbose: false }
+          : { skeletonDelayMs: 140, typingDelayMs: 220, chunkDelayMs: 95, verbose: false },
+      );
+
+      activeStreamRef.current = handle;
+      await handle.finished;
+      syncDataModelInspector(getDataModel());
     },
-    [resetSurface, streamMessages, getDataModel, logEvent],
+    [
+      resetSurface,
+      processMessages,
+      getDataModel,
+      logEvent,
+      syncDataModelInspector,
+    ],
   );
 
+  runStreamRef.current = runStream;
   React.useEffect(() => {
-    void runStream(EMPTY_STATE_SURFACE_MESSAGES, 0, 'Idle Empty State');
+    void runStream(EMPTY_STATE_SURFACE_MESSAGES, 'Idle Empty State', true);
+    return () => {
+      activeStreamRef.current?.cancel();
+    };
   }, [runStream]);
 
   React.useEffect(() => {
     const timer = window.setInterval(() => {
-      setDataModelJson(JSON.stringify(getDataModel(), null, 2));
+      syncDataModelInspector(getDataModel());
     }, 250);
     return () => window.clearInterval(timer);
-  }, [getDataModel]);
+  }, [getDataModel, syncDataModelInspector]);
 
   const handleSelectSkin = (skin: { id: string; label: string }) => {
     applySkin(skin.id);
     setActiveSkinId(skin.id);
-    logEvent(`Applied skin: ${skin.label}`);
+    logEvent('Applied skin: ' + skin.label);
   };
 
   const handleDarkToggle = (e: CustomEvent<{ checked: boolean }>) => {
     const nextDark = Boolean(e.detail?.checked);
     setIsDark(nextDark);
     applyTheme(nextDark);
-    logEvent(`Theme mode: ${nextDark ? 'Dark' : 'Light'}`);
+    logEvent('Theme mode: ' + (nextDark ? 'Dark' : 'Light'));
   };
 
   const handleGeneratePrompt = async (overridePrompt?: string) => {
@@ -180,7 +292,7 @@ function App() {
     try {
       if (compilerMode === 'local') {
         const result = await generateLocalA2uiSurface(resolvedPrompt);
-        await runStream(result.messages, 60, 'Local A2UI v1.0 Compiler');
+        await runStream(result.messages, 'Local A2UI v1.0 Compiler');
         return;
       }
 
@@ -195,18 +307,18 @@ function App() {
       setGeminiCallsUsed(result.callsUsed);
       await runStream(
         result.messages,
-        60,
-        `Live Gemini (${result.callsUsed}/${result.maxCalls} quota)`,
+        'Live Gemini (' + result.callsUsed + '/' + result.maxCalls + ' quota)',
       );
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       setLiveErrorText(msg);
       setGeminiCallsUsed(getGeminiSessionUsage().used);
-      logEvent(`Compiler error: ${msg}`);
+      logEvent('Compiler error: ' + msg);
     } finally {
       setIsGeneratingLive(false);
     }
   };
+
   const activeSkinLabel =
     STUDIO_SKINS.find((s) => s.id === activeSkinId)?.label ?? 'Evergreen';
   const isLocal = compilerMode === 'local';
@@ -252,7 +364,7 @@ function App() {
         </div>
       </header>
 
-      <div className={`studio-workspace ${inspectorOpen ? 'has-inspector' : ''}`}>
+      <div className={'studio-workspace ' + (inspectorOpen ? 'has-inspector' : '')}>
         <aside className="studio-sidebar">
           <div className="sidebar-header">
             <h2>Runtime Skin</h2>
@@ -308,7 +420,13 @@ function App() {
                   <ReactRadio
                     name="compiler-mode"
                     value="live"
-                    labelText={`Live Gemini (${geminiCallsUsed}/${MAX_SESSION_CALLS})`}
+                    labelText={
+                      'Live Gemini (' +
+                      geminiCallsUsed +
+                      '/' +
+                      MAX_SESSION_CALLS +
+                      ')'
+                    }
                     checked={!isLocal}
                     onChange={() => {
                       setCompilerMode('live');
@@ -318,7 +436,7 @@ function App() {
                 </div>
               </div>
 
-              <div className={`live-prompt-bar ${isLocal ? 'is-local' : ''}`}>
+              <div className={'live-prompt-bar ' + (isLocal ? 'is-local' : '')}>
                 {!isLocal && (
                   <ReactInput
                     label="AI Studio Key (Session Only)"
@@ -374,6 +492,31 @@ function App() {
               </ReactAlert>
             )}
 
+            {streamPhase === 'skeleton' && (
+              <div className="a2ui-stream-skeleton" aria-live="polite">
+                <div className="a2ui-skeleton-bar a2ui-skeleton-bar--short" />
+                <div className="a2ui-skeleton-bar a2ui-skeleton-bar--medium" />
+                <div className="a2ui-skeleton-bar a2ui-skeleton-bar--tall" />
+              </div>
+            )}
+
+            {streamPhase === 'typing' && (
+              <div className="a2ui-agent-typing" aria-live="polite">
+                <span className="a2ui-typing-dots" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </span>
+                <span>Agent is composing A2UI v1.0 surface...</span>
+              </div>
+            )}
+
+            {streamPhase === 'streaming' && streamProgress.total > 0 && (
+              <div className="a2ui-stream-status-bar" aria-live="polite">
+                Streaming frame {streamProgress.current}/{streamProgress.total}...
+              </div>
+            )}
+
             <AgA2uiSurface
               ref={surfaceRef}
               surface={surface}
@@ -387,13 +530,21 @@ function App() {
             <section className="inspector-panel">
               <div className="panel-header">
                 <h3>Live DataModel (@path)</h3>
+                {changedPathCount > 0 && (
+                  <span className="protocol-pill">
+                    {changedPathCount} changed
+                  </span>
+                )}
               </div>
-              <pre className="json-viewer">{dataModelJson}</pre>
+              <pre
+                className="json-viewer"
+                dangerouslySetInnerHTML={{ __html: dataModelHtml }}
+              />
             </section>
 
             <section className="inspector-panel">
               <div className="panel-header">
-                <h3>Action &amp; FACE Log</h3>
+                                <h3>Action &amp; FACE Log</h3>
                 <ReactIconButton
                   label="Clear event log"
                   size="sm"

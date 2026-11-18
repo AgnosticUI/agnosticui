@@ -19,3 +19,5 @@ tsconfig.app.tsbuildinfo
 # uirig
 .uirig/
 v2/site/.uirig/
+# Local Netlify folder
+.netlify

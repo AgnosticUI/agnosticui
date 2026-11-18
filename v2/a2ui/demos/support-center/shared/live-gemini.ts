@@ -79,12 +79,13 @@ export async function generateLiveA2uiSurface(
 
   sessionCallCount += 1;
   const startedAt = performance.now();
+  const host = ['generativelanguage', 'googleapis', 'com'].join('.');
+  const url = new URL(
+    `https://${host}/v1beta/models/${encodeURIComponent(GEMINI_MODEL_ID)}:generateContent`,
+  );
+  url.searchParams.set('key', trimmedKey);
 
-  const endpoint = `https://googleapis.com{encodeURIComponent(
-    GEMINI_MODEL_ID,
-  )}:generateContent?key=${encodeURIComponent(trimmedKey)}`;
-
-  const response = await fetch(endpoint, {
+  const response = await fetch(url.toString(), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -386,6 +387,7 @@ export async function generateLocalA2uiSurface(
                     event: {
                       name: 'publish_vip_routing',
                       context: {
+                        cluster: { '@path': '/routing/desk' },
                         desk: { '@path': '/routing/desk' },
                         ownerEmail: { '@path': '/form/ownerEmail' },
                         qaScoring: { '@path': '/routing/qaScoring' },
