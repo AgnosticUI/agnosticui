@@ -76,6 +76,55 @@ describe('StreamPlayer (Progressive A2UI JSONL Streaming)', () => {
     console.log('--- END TEST: expandToGranularStream PASSED ---\n');
   });
 
+  it('expands nested root updateDataModel snapshots into sequential leaf @path patches', () => {
+    const multiKeyStream: A2uiWireMessage[] = [
+      {
+        version: '1.0',
+        updateDataModel: {
+          surfaceId: 'support_surface',
+          path: '/',
+          value: {
+            routing: {
+              ruleName: 'Enterprise Priority',
+              desk: 'na-enterprise',
+            },
+            form: {
+              ownerEmail: 'jordan.taylor@brand.io',
+            },
+          },
+        },
+      },
+    ];
+
+    const granular = expandToGranularStream(multiKeyStream);
+    expect(granular).toEqual([
+      {
+        version: '1.0',
+        updateDataModel: {
+          surfaceId: 'support_surface',
+          path: '/routing/ruleName',
+          value: 'Enterprise Priority',
+        },
+      },
+      {
+        version: '1.0',
+        updateDataModel: {
+          surfaceId: 'support_surface',
+          path: '/routing/desk',
+          value: 'na-enterprise',
+        },
+      },
+      {
+        version: '1.0',
+        updateDataModel: {
+          surfaceId: 'support_surface',
+          path: '/form/ownerEmail',
+          value: 'jordan.taylor@brand.io',
+        },
+      },
+    ]);
+  });
+
   it('transitions deterministically through skeleton -> typing -> streaming -> complete', async () => {
     const trace: string[] = [];
     const observedPhases: StreamPhase[] = [];

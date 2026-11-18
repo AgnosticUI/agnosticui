@@ -13,7 +13,16 @@ import '../../shared/studio.css';
 import '../../shared/evergreen-skin.css';
 
 import { LitElement, html } from 'lit';
-import { createElement, CircleSlash2, Code2, Moon, Sun } from 'lucide';
+import {
+  createElement,
+  Check,
+  CircleSlash2,
+  Code2,
+  Copy,
+  Moon,
+  RotateCcw,
+  Sun,
+} from 'lucide';
 import { MessageProcessor } from '@a2ui/web_core/v1_0';
 import { A2uiSurface, type LitComponentApi } from '@a2ui/lit';
 import {
@@ -27,7 +36,9 @@ import 'agnosticui-core/alert';
 import 'agnosticui-core/button';
 import 'agnosticui-core/icon-button';
 import 'agnosticui-core/input';
+import 'agnosticui-core/kbd';
 import 'agnosticui-core/radio';
+import 'agnosticui-core/skeleton-loader';
 import 'agnosticui-core/toggle';
 
 import {
@@ -73,6 +84,18 @@ const CLEAR_ICON = createElement(CircleSlash2, {
   'aria-hidden': 'true',
 });
 
+const COPY_ICON = createElement(Copy, {
+  width: 14,
+  height: 14,
+  'aria-hidden': 'true',
+});
+
+const CHECK_ICON = createElement(Check, {
+  width: 14,
+  height: 14,
+  'aria-hidden': 'true',
+});
+
 const INSPECTOR_ICON = createElement(Code2, {
   width: 15,
   height: 15,
@@ -91,6 +114,12 @@ const SUN_ICON = createElement(Sun, {
   'aria-hidden': 'true',
 });
 
+const REPLAY_ICON = createElement(RotateCcw, {
+  width: 13,
+  height: 13,
+  'aria-hidden': 'true',
+});
+
 const SESSION_KEY_STORAGE = 'ag-a2ui-gemini-key';
 
 export class AgA2uiStudio extends LitElement {
@@ -101,8 +130,11 @@ export class AgA2uiStudio extends LitElement {
     actionCount: { state: true },
     dataModelHtml: { state: true },
     changedPathCount: { state: true },
+    copiedJsonl: { state: true },
     streamPhase: { state: true },
     streamProgress: { state: true },
+    playbackSpeed: { state: true },
+    hasReplayableStream: { state: true },
     eventLogText: { state: true },
     compilerMode: { state: true },
     geminiApiKey: { state: true },
@@ -111,7 +143,6 @@ export class AgA2uiStudio extends LitElement {
     geminiCallsUsed: { state: true },
     liveErrorText: { state: true },
   };
-
   override createRenderRoot() {
     return this;
   }
@@ -122,8 +153,11 @@ export class AgA2uiStudio extends LitElement {
   private declare actionCount: number;
   private declare dataModelHtml: string;
   private declare changedPathCount: number;
+  private declare copiedJsonl: boolean;
   private declare streamPhase: StreamPhase;
   private declare streamProgress: { current: number; total: number };
+  private declare playbackSpeed: '1x' | '0.5x';
+  private declare hasReplayableStream: boolean;
   private declare eventLogText: string;
   private declare compilerMode: 'local' | 'live';
   private declare geminiApiKey: string;
@@ -138,6 +172,8 @@ export class AgA2uiStudio extends LitElement {
   private streamGeneration = 0;
   private lastDataSnapshot: unknown = {};
   private lastSerializedSnapshot = '{}';
+  private lastPlayedMessages: A2uiWireMessage[] | null = null;
+  private lastPlayedLabel = '';
 
   constructor() {
     super();
@@ -148,8 +184,11 @@ export class AgA2uiStudio extends LitElement {
     this.actionCount = 0;
     this.dataModelHtml = renderHighlightedJsonHtml({}, new Map());
     this.changedPathCount = 0;
+    this.copiedJsonl = false;
     this.streamPhase = 'complete';
     this.streamProgress = { current: 0, total: 0 };
+    this.playbackSpeed = '1x';
+    this.hasReplayableStream = false;
     this.eventLogText = 'Ready.';
     this.compilerMode = 'local';
     this.geminiApiKey = sessionStorage.getItem(SESSION_KEY_STORAGE) ?? '';
@@ -212,6 +251,21 @@ export class AgA2uiStudio extends LitElement {
     this.eventLogText = 'Log cleared.';
   }
 
+  private async handleCopyJsonl(): Promise<void> {
+    const payload = this.lastPlayedMessages ?? EMPTY_STATE_SURFACE_MESSAGES;
+    const jsonl = payload.map((msg) => JSON.stringify(msg)).join('\n');
+    try {
+      await navigator.clipboard.writeText(jsonl);
+      this.copiedJsonl = true;
+      this.logEvent(`Copied ${payload.length} A2UI v1.0 JSONL frames to clipboard.`);
+      window.setTimeout(() => {
+        this.copiedJsonl = false;
+      }, 1800);
+    } catch {
+      this.logEvent('Clipboard write blocked by browser permissions.');
+    }
+  }
+
   private handleSelectSkin(skin: { id: string; label: string }): void {
     applySkin(skin.id);
     this.activeSkinId = skin.id;
@@ -232,7 +286,31 @@ export class AgA2uiStudio extends LitElement {
     void this.handleGeneratePrompt(prompt);
   }
 
-  private handleCompilerModeChange(mode: 'local' | 'live'): void {
+  private handleTogglePlaybackSpeed(): void {
+    this.playbackSpeed = this.playbackSpeed === '1x' ? '0.5x' : '1x';
+    this.logEvent(
+      `Stream pacing set to ${this.playbackSpeed === '0.5x' ? '0.5x Slow-Mo (Demo)' : '1x Standard'}`,
+    );
+    if (this.lastPlayedMessages) {
+      void this.renderWireMessages(
+        this.lastPlayedMessages,
+        this.lastPlayedLabel,
+        false,
+      );
+    }
+  }
+
+  private handleReplayStream(): void {
+    if (!this.lastPlayedMessages) return;
+    this.logEvent(`Replaying stream (${this.playbackSpeed})...`);
+    void this.renderWireMessages(
+      this.lastPlayedMessages,
+      this.lastPlayedLabel,
+      false,
+    );
+  }
+
+    private handleCompilerModeChange(mode: 'local' | 'live'): void {
     this.compilerMode = mode;
     this.liveErrorText = '';
     this.logEvent(
@@ -273,7 +351,14 @@ export class AgA2uiStudio extends LitElement {
     this.livePromptText = val;
   }
 
-    private async handleGeneratePrompt(overridePrompt?: string): Promise<void> {
+  private handlePromptKeyDown(e: KeyboardEvent): void {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+      e.preventDefault();
+      void this.handleGeneratePrompt();
+    }
+  }
+
+  private async handleGeneratePrompt(overridePrompt?: string): Promise<void> {
     if (this.isGeneratingLive) return;
 
     const resolvedPrompt =
@@ -324,6 +409,12 @@ export class AgA2uiStudio extends LitElement {
     streamLabel: string,
     instant = false,
   ): Promise<void> {
+    if (!instant) {
+      this.lastPlayedMessages = messages;
+      this.lastPlayedLabel = streamLabel;
+      this.hasReplayableStream = true;
+    }
+
     const generation = ++this.streamGeneration;
     this.activeStreamHandle?.cancel();
     this.activeStreamHandle = null;
@@ -393,7 +484,10 @@ export class AgA2uiStudio extends LitElement {
       }
     });
 
-    this.logEvent('Streaming surface: ' + streamLabel);
+        const speedMultiplier = this.playbackSpeed === '0.5x' ? 2.4 : 1;
+    this.logEvent(
+      `Streaming surface: ${streamLabel}${instant ? '' : ` (${this.playbackSpeed})`}`,
+    );
     this.streamProgress = { current: 0, total: 0 };
 
     const handle = playProgressiveA2uiStream(
@@ -419,7 +513,12 @@ export class AgA2uiStudio extends LitElement {
       },
       instant
         ? { skeletonDelayMs: 0, typingDelayMs: 0, chunkDelayMs: 0, verbose: false }
-        : { skeletonDelayMs: 140, typingDelayMs: 220, chunkDelayMs: 95, verbose: false },
+        : {
+            skeletonDelayMs: Math.round(160 * speedMultiplier),
+            typingDelayMs: Math.round(240 * speedMultiplier),
+            chunkDelayMs: Math.round(105 * speedMultiplier),
+            verbose: false,
+          },
     );
 
     this.activeStreamHandle = handle;
@@ -452,9 +551,21 @@ export class AgA2uiStudio extends LitElement {
     if (this.streamPhase === 'skeleton') {
       return html`
         <div class="a2ui-stream-skeleton" aria-live="polite">
-          <div class="a2ui-skeleton-bar a2ui-skeleton-bar--short"></div>
-          <div class="a2ui-skeleton-bar a2ui-skeleton-bar--medium"></div>
-          <div class="a2ui-skeleton-bar a2ui-skeleton-bar--tall"></div>
+          <ag-skeleton-loader
+            variant="rounded"
+            width="42%"
+            height="1rem"
+          ></ag-skeleton-loader>
+          <ag-skeleton-loader
+            variant="text"
+            width="74%"
+            height="1rem"
+          ></ag-skeleton-loader>
+          <ag-skeleton-loader
+            variant="rounded"
+            width="100%"
+            height="2.75rem"
+          ></ag-skeleton-loader>
         </div>
       `;
     }
@@ -480,16 +591,25 @@ export class AgA2uiStudio extends LitElement {
 
     return '';
   }
+
   override render() {
     const activeSkinLabel =
       STUDIO_SKINS.find((s) => s.id === this.activeSkinId)?.label ?? 'Evergreen';
     const isLocal = this.compilerMode === 'local';
+    const workspaceClass = this.inspectorOpen
+      ? 'studio-workspace has-inspector'
+      : 'studio-workspace';
+    const promptBarClass = isLocal
+      ? 'live-prompt-bar is-local'
+      : 'live-prompt-bar';
+    const slowMoClass =
+      this.playbackSpeed === '0.5x' ? 'pacing-pill is-slowmo' : 'pacing-pill';
 
     return html`
       <div class="studio-shell">
         <header class="studio-header">
           <div class="studio-title-group">
-            <h1>Ag × A2UI</h1>
+            <h1>Ag &times; A2UI</h1>
             <span class="protocol-pill">v1.0 Spec</span>
           </div>
 
@@ -527,9 +647,7 @@ export class AgA2uiStudio extends LitElement {
           </div>
         </header>
 
-        <div
-          class="studio-workspace ${this.inspectorOpen ? 'has-inspector' : ''}"
-        >
+        <div class=${workspaceClass}>
           <aside class="studio-sidebar">
             <div class="sidebar-header">
               <h2>Runtime Skin</h2>
@@ -560,7 +678,6 @@ export class AgA2uiStudio extends LitElement {
               })}
             </div>
           </aside>
-
           <main class="studio-stage">
             <div class="stage-container">
               <div class="live-prompt-card">
@@ -569,26 +686,53 @@ export class AgA2uiStudio extends LitElement {
                     Agent Prompt Composer
                   </span>
 
-                  <div class="compiler-mode-radios">
-                    <ag-radio
-                      name="compiler-mode"
-                      value="local"
-                      labelText="Local UI (Instant)"
-                      .checked=${isLocal}
-                      @change=${() => this.handleCompilerModeChange('local')}
-                    ></ag-radio>
+                  <div class="composer-right-controls">
+                    <div class="stream-pacing-group">
+                      <button
+                        type="button"
+                        class=${slowMoClass}
+                        title="Toggle between 1x standard and 0.5x slow-motion demo streaming"
+                        @click=${() => this.handleTogglePlaybackSpeed()}
+                      >
+                        ${this.playbackSpeed === '0.5x' ? '0.5x Slow-Mo' : '1x Stream'}
+                      </button>
 
-                    <ag-radio
-                      name="compiler-mode"
-                      value="live"
-                      labelText="Live Gemini (${this.geminiCallsUsed}/${MAX_SESSION_CALLS})"
-                      .checked=${!isLocal}
-                      @change=${() => this.handleCompilerModeChange('live')}
-                    ></ag-radio>
+                      ${this.hasReplayableStream
+                        ? html`
+                            <button
+                              type="button"
+                              class="pacing-pill"
+                              title="Replay the current A2UI v1.0 stream"
+                              @click=${() => this.handleReplayStream()}
+                            >
+                              ${REPLAY_ICON}
+                              <span>Replay</span>
+                            </button>
+                          `
+                        : ''}
+                    </div>
+
+                    <div class="compiler-mode-radios">
+                      <ag-radio
+                        name="compiler-mode"
+                        value="local"
+                        labelText="Local UI (Instant)"
+                        .checked=${isLocal}
+                        @change=${() => this.handleCompilerModeChange('local')}
+                      ></ag-radio>
+
+                      <ag-radio
+                        name="compiler-mode"
+                        value="live"
+                        labelText="Live Gemini (${this.geminiCallsUsed}/${MAX_SESSION_CALLS})"
+                        .checked=${!isLocal}
+                        @change=${() => this.handleCompilerModeChange('live')}
+                      ></ag-radio>
+                    </div>
                   </div>
                 </div>
 
-                <div class="live-prompt-bar ${isLocal ? 'is-local' : ''}">
+                <div class=${promptBarClass}>
                   ${isLocal
                     ? ''
                     : html`
@@ -610,6 +754,7 @@ export class AgA2uiStudio extends LitElement {
                     .value=${this.livePromptText}
                     @input=${this.handleLivePromptInput}
                     @change=${this.handleLivePromptInput}
+                    @keydown=${this.handlePromptKeyDown}
                   ></ag-input>
 
                   <ag-button
@@ -619,10 +764,12 @@ export class AgA2uiStudio extends LitElement {
                     .disabled=${this.isGeneratingLive}
                     @click=${() => void this.handleGeneratePrompt()}
                   >
-                    ${this.isGeneratingLive ? 'Compiling...' : 'Generate UI'}
+                    <span class="generate-btn-inner">
+                      <span>${this.isGeneratingLive ? 'Compiling...' : 'Generate UI'}</span>
+                      <ag-kbd size="sm">&#8984; Enter</ag-kbd>
+                    </span>
                   </ag-button>
                 </div>
-
                 <div class="prompt-chips-row">
                   <span class="prompt-chips-label">Try:</span>
                   ${QUICK_PROMPT_CHIPS.map(
@@ -655,6 +802,15 @@ export class AgA2uiStudio extends LitElement {
                   <section class="inspector-panel">
                     <div class="panel-header">
                       <h3>Live DataModel (@path)</h3>
+                      <ag-icon-button
+                        label=${this.copiedJsonl ? 'Copied JSONL' : 'Copy A2UI JSONL payload'}
+                        title=${this.copiedJsonl ? 'Copied JSONL!' : 'Copy A2UI v1.0 JSONL payload'}
+                        size="sm"
+                        variant="ghost"
+                        @click=${() => void this.handleCopyJsonl()}
+                      >
+                        ${this.copiedJsonl ? CHECK_ICON : COPY_ICON}
+                      </ag-icon-button>
                     </div>
                     <pre class="json-viewer">${unsafeHTML(this.dataModelHtml)}</pre>
                   </section>

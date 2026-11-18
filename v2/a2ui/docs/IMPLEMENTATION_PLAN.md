@@ -3,7 +3,7 @@
 - **Branch:** `master` (Phases 1–6 merged via PR #517)
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phases 1–8 ✅ (100% Complete — 35-Component A2UI v1.0 Catalog)
+- **Overall Status:** Phases 1–9 ✅ (35-Component Catalog Live on npm `2.0.0-alpha.2` & Studio v2.1 Upgraded) | Phase 10 📋 (Planned)
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 ---
 
@@ -19,6 +19,16 @@
 - [Phase 8: 35-Component Catalog Expansion (~65% Coverage)](#phase-8-35-component-catalog-expansion-65-coverage)
 
 ---
+
+## File Generation & Output Integrity Rule (STRICT)
+
+1. **Full-File Output Only:** Whenever modifying or generating a file, you MUST output the **entire, complete, copy-pasteable file** from line 1 to EOF with all new integrations, types, and logic cleanly injected.
+2. **Zero Truncation / Zero Placeholders:** You are strictly forbidden from using lazy ellipsis comments or placeholders such as `// ... existing code ...`, `/* rest of file */`, `# unchanged`, or `...`. Every line of the target file must be present and syntactically valid.
+3. **Chunking Large Files (Widget Escape Prevention):** If a complete file exceeds ~300 lines (or risks truncating/escaping the markdown code block), split the output sequentially into clearly labeled, contiguous parts (e.g., **Part 1 of 2: Lines 1–250**, **Part 2 of 2: Lines 251–EOF**). Each part MUST be wrapped in its own self-contained fenced code block (with language tag) so it renders a clean Copy-to-Clipboard button, with zero overlap or omitted lines between parts.
+4. **Narrow Exceptions:** You may omit the rest of the file **only** when:
+   - Appending 1–3 standalone test specs (`it(...)` / `test(...)`) strictly to the very bottom of an existing test file, **OR**
+   - Adding 1–3 top-level `import` statements strictly to the very top of a file.
+   - In both exception cases, state the exact anchor line (e.g., *"Append after the final `});` at EOF"* or *"Insert after line 4"*).
 
 ## Phase 1: Scaffold, Mock Harness & Reference Components
 
@@ -113,3 +123,33 @@
 * **Task 8.1 — Expand Catalog from 25 to 35 Components** ✅
   * **Micro-Chunk 8.1a:** Inspected `v2/lib/src/components/*/core/_*.ts` for 10 new additions (`AgSlider`, `AgSkeletonLoader`, `AgBreadcrumb`, `AgPagination`, `AgIcon`, `AgImage`, `AgLink`, `AgKbd`, `AgMark`, `AgIntlFormatter`), configured complex prop overrides (`AgSlider.value`, `AgBreadcrumb.items`, `AgImage.sources`, `AgIntlFormatter.value`) and `AgIcon` slot rendering in `codegen.config.ts`, registered `AgSlider` in `TWO_WAY_BINDINGS` in `generate-catalog.ts`, and regenerated synchronized `agnosticui-catalog.json` + `SKILL.md`.
   * **Micro-Chunk 8.1b:** Expanded `v2/a2ui/renderers/lit/src/catalog.spec.ts` with count-agnostic assertions covering all 35 catalog components + `AgSlider` two-way `@path` binding across all 8 interactive controls, and verified Lit (`test`/`typecheck`/`build`), React, Vue, and `v2/mcp-server` test suites pass.
+
+---
+
+## Phase 9: Studio Streaming & 35-Component Showcase Polish ✅
+
+* **Task 9.1 — Sequential DataModel Streaming, `<ag-skeleton-loader>` Shimmers & Replay Pacing** ✅
+  * **Micro-Chunk 9.1a:** Updated `expandToGranularStream()` in `v2/a2ui/demos/support-center/shared/stream-player.ts` to expand root `updateDataModel` (`path: "/"`) payloads into sequential leaf `@path` envelopes so the Live DataModel inspector highlights keys arriving in real time; added unit tests in `stream-player.spec.ts`.
+  * **Micro-Chunk 9.1b:** Replaced raw shimmer divs in `v2/a2ui/demos/support-center/lit/src/main.ts` with `<ag-skeleton-loader>` elements and added a `1x Stream / 0.5x Slow-Mo` + `Replay` control in the Agent Prompt Composer bar.
+* **Task 9.2 — 4th Quick-Prompt Chip: "Enterprise SLA & Credit Cap"** ✅
+  * **Micro-Chunk 9.2a:** Added the 4th chip to `QUICK_PROMPT_CHIPS` in `support-scenarios.ts` and implemented `buildSlaCreditCapSurface()` in `live-gemini.ts` showcasing `AgBreadcrumb`, two-way bound `AgSlider` (`@path: "/policy/maxCredit"`), live reactive `AgIntlFormatter` (`type="currency"`), and `AgMark`.
+  * **Micro-Chunk 9.2b:** Expanded `v2/a2ui/renderers/lit/src/demos-smoke.spec.ts` to cover all 4 quick prompt chips and verified `AgSlider` two-way `@path` updates propagate live to `/policy/maxCredit`.
+* **Task 9.3 — Composer Micro-Polish (`AgKbd` Shortcut & Copy A2UI JSONL)** ✅
+  * **Micro-Chunk 9.3a:** Added `<ag-kbd>⌘ Enter</ag-kbd>` keyboard submission on `#live-prompt-input` and a one-click **Copy JSONL** button in the Live DataModel inspector header.
+
+---
+
+## Phase 10: Multi-Page Surface Flows, Turn-3 Audit & 45-Component Catalog Expansion 📋
+
+* **Task 10.1 — Stateful Multi-Page Queue Drill-Down (`AgBreadcrumb` + `AgPagination`)**
+  * Upgrade the *"High-Intent Caller Spike"* scenario to render an interactive caller queue with `AgPagination` at the bottom and `AgBreadcrumb` at the top, dispatching A2UI `action` events that page through callers inside `<a2ui-surface>`.
+* **Task 10.2 — Enriched Turn-3 Verification Audit (`AgTimeline` + `AgIntlFormatter` + `AgLink`)**
+  * Enhance `buildTurnThreeComponents()` in `agent-roundtrip.ts` to display a timestamped `AgTimeline` audit trail formatted with `AgIntlFormatter` and a trace `AgLink`.
+* **Task 10.3 — Expand A2UI v1.0 Catalog to ~45 Components (~80% Coverage)**
+  * Port 10 additional AgnosticUI v2 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`) into `generate-catalog.ts`, regenerate `agnosticui-catalog.json` + `SKILL.md`, and publish `2.0.0-alpha.3`.
+
+---
+
+## Side Track: Runtime Skin Curation (Over-Generate 45 -> Curate Best 21) 🎨
+
+* **Goal:** Replace underperforming themes in `v2/skins/` by generating 40–50 cohesive `--ag-*` token palettes (testing light & dark contrast ratios, surface elevation, and accent harmony inside the live Studio) and curating the strongest 21 skins to keep in `skins-bundle.css`.

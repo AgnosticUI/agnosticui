@@ -28,6 +28,11 @@ export const QUICK_PROMPT_CHIPS: QuickPromptChip[] = [
     prompt:
       'Create a priority caller routing rule for enterprise demo requests with manager email and instant specialist alerts.',
   },
+  {
+    label: 'Enterprise SLA & Credit Cap',
+    prompt:
+      'Configure an enterprise SLA escalation policy with an auto-approved credit cap slider, live currency formatting, and VP threshold alerts.',
+  },
 ];
 
 export const EMPTY_STATE_SURFACE_MESSAGES: A2uiWireMessage[] = [

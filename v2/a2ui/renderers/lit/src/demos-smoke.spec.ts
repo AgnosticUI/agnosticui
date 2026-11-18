@@ -1,8 +1,8 @@
 /**
  * @file demos-smoke.spec.ts
  * @description End-to-end smoke test suite for the Support Center Studio shared pipeline
- * (idle AgEmptyState boot, prompt chip compilation & streaming, FACE validation, and
- * 4-turn AgMessageBubble confirmation across Lit, React, and Vue demos).
+ * (idle AgEmptyState boot, prompt chip compilation & streaming, AgSlider two-way binding,
+ * FACE validation, and 4-turn AgMessageBubble confirmation across Lit, React, and Vue demos).
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
@@ -78,8 +78,8 @@ describe('Support Center Studio End-to-End Smoke Suite', () => {
     ).toContain('Ready to Stream an A2UI v1.0 Surface');
   });
 
-  it('compiles and streams all 3 quick prompt chips into 2-turn AgMessageBubble threads', async () => {
-    expect(QUICK_PROMPT_CHIPS).toHaveLength(3);
+  it('compiles and streams all quick prompt chips into 2-turn AgMessageBubble threads', async () => {
+    expect(QUICK_PROMPT_CHIPS.length).toBeGreaterThanOrEqual(4);
 
     for (const chip of QUICK_PROMPT_CHIPS) {
       document.body.innerHTML = '';
@@ -87,18 +87,43 @@ describe('Support Center Studio End-to-End Smoke Suite', () => {
       expect(compiled.messages.length).toBeGreaterThanOrEqual(3);
 
       const { surfaceEl } = await mountSurfaceMessages(compiled.messages);
-      const bubbles = surfaceEl.querySelectorAll('ag-message-bubble');
+      const bubbles = Array.from(surfaceEl.querySelectorAll('ag-message-bubble'));
       expect(bubbles.length).toBe(2);
-      expect(bubbles[0]?.getAttribute('from')).toBe('me');
-      expect(bubbles[1]?.getAttribute('from')).toBe('them');
+      expect(bubbles.at(0)?.getAttribute('from')).toBe('me');
+      expect(bubbles.at(1)?.getAttribute('from')).toBe('them');
     }
   });
 
+  it('mounts Enterprise SLA & Credit Cap chip with AgBreadcrumb, AgSlider, AgIntlFormatter, and AgMark', async () => {
+    const slaChip = QUICK_PROMPT_CHIPS.find((c) =>
+      c.label.includes('Enterprise SLA'),
+    );
+    expect(slaChip).toBeDefined();
+
+    const compiled = await generateLocalA2uiSurface(slaChip!.prompt);
+    const { surfaceModel, surfaceEl } = await mountSurfaceMessages(compiled.messages);
+
+    expect(surfaceEl.querySelector('ag-breadcrumb')).not.toBeNull();
+    expect(surfaceEl.querySelector('ag-intl-formatter')).not.toBeNull();
+    expect(surfaceEl.querySelector('ag-mark')).not.toBeNull();
+
+    const slider = surfaceEl.querySelector('ag-slider');
+    expect(slider).not.toBeNull();
+    expect(surfaceModel.dataModel.get('/policy/maxCredit')).toBe(1500);
+
+    slider!.dispatchEvent(
+      new CustomEvent('change', { detail: { value: 3250 }, bubbles: true }),
+    );
+    await settleTree(surfaceEl);
+
+    expect(surfaceModel.dataModel.get('/policy/maxCredit')).toBe(3250);
+  });
+
   it('enforces FACE validation and appends 4-turn confirmation bubbles on submit', async () => {
-    const scenario = SUPPORT_SCENARIOS[0];
+    const scenario = SUPPORT_SCENARIOS.at(0);
     expect(scenario).toBeDefined();
 
-    const { processor, surfaceEl } = await mountSurfaceMessages(scenario.messages);
+    const { processor, surfaceEl } = await mountSurfaceMessages(scenario!.messages);
 
     const emailInput = surfaceEl.querySelector('ag-input') as HTMLElement & {
       reportValidity?: () => boolean;
@@ -114,7 +139,7 @@ describe('Support Center Studio End-to-End Smoke Suite', () => {
     emailInput.checkValidity = () => true;
     expect(runSurfaceValidation(surfaceEl, true)).toBe(true);
 
-    const confirmationMessages = buildActionConfirmationMessages(scenario.messages, {
+    const confirmationMessages = buildActionConfirmationMessages(scenario!.messages, {
       name: 'launch_campaign_routing',
       sourceComponentId: 'submit_btn',
       context: { ownerEmail: 'jordan.taylor@brand.io' },
@@ -127,10 +152,10 @@ describe('Support Center Studio End-to-End Smoke Suite', () => {
     await new Promise((r) => setTimeout(r, 0));
     await settleTree(surfaceEl);
 
-    const bubbles = surfaceEl.querySelectorAll('ag-message-bubble');
+    const bubbles = Array.from(surfaceEl.querySelectorAll('ag-message-bubble'));
     expect(bubbles.length).toBe(4);
-    expect(bubbles[2]?.getAttribute('from')).toBe('me');
-    expect(bubbles[3]?.getAttribute('from')).toBe('them');
+    expect(bubbles.at(2)?.getAttribute('from')).toBe('me');
+    expect(bubbles.at(3)?.getAttribute('from')).toBe('them');
     expect(surfaceEl.textContent).toContain('jordan.taylor@brand.io');
   });
 });
