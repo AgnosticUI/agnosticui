@@ -5,7 +5,7 @@
  ACTIVE WORKSPACE   : Phases 1–8 ✅ (100% Complete — 35-Component A2UI v1.0 Catalog)
  STRATEGIC PIVOT    :
    - Spec-compliant A2UI v1.0 Component Catalog (35 components) & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`).
-   - Live Published npm Packages (`@agnosticui/a2ui-lit@2.0.0-alpha.1`, `@agnosticui/a2ui-react@2.0.0-alpha.1`, `@agnosticui/a2ui-vue@2.0.0-alpha.1`).
+   - Live Published npm Packages (`@agnosticui/a2ui-lit@2.0.0-alpha.2`, `@agnosticui/a2ui-react@2.0.0-alpha.2`, `@agnosticui/a2ui-vue@2.0.0-alpha.2`).
    - Live Public Endpoints:
      * Catalog JSON: `https://agnosticui.com`
      * Live Support Center Studio (Netlify): `https://netlify.app` (Project ID: `503dcfad-78f1-4163-a4ad-47894954a5d8`)

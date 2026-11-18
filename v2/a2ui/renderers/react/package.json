@@ -1,6 +1,6 @@
 {
   "name": "@agnosticui/a2ui-react",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "A2UI v1.0 React renderer and surface bindings for AgnosticUI",
   "author": "AgnosticUI",
   "license": "Apache-2.0",

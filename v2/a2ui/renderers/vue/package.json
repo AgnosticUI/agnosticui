@@ -1,6 +1,6 @@
 {
   "name": "@agnosticui/a2ui-vue",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "A2UI v1.0 Vue 3 renderer and surface composable for AgnosticUI",
   "author": "AgnosticUI",
   "license": "Apache-2.0",

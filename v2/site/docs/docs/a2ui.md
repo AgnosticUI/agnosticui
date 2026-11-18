@@ -161,13 +161,14 @@ onMounted(() => {
 
 ---
 
-## Supported Catalog Components (25)
+## Supported Catalog Components (35)
 
 Generated deterministically via `ts-morph` from AgnosticUI's core TypeScript prop interfaces:
 
-- **Layout & Structure:** `AgCard`, `AgFieldset`, `AgDivider`, `AgHeader`, `AgAccordion`, `AgTabs`
-- **Conversational & Feedback:** `AgMessageBubble`, `AgAlert`, `AgBadge`, `AgAvatar`, `AgTag`, `AgEmptyState`, `AgTimeline`, `AgProgress`, `AgProgressRing`, `AgSpinner`
-- **Interactive Form & Action Controls (FACE-enabled):** `AgButton`, `AgInput`, `AgCombobox`, `AgSelect`, `AgCheckbox`, `AgRadio`, `AgRating`, `AgToggle`
+- **Layout & Structure:** `AgCard`, `AgFieldset`, `AgDivider`, `AgHeader`, `AgAccordion`, `AgCollapsible`, `AgTabs`, `AgBreadcrumb`, `AgPagination`
+- **Conversational & Feedback:** `AgMessageBubble`, `AgAlert`, `AgBadge`, `AgAvatar`, `AgTag`, `AgEmptyState`, `AgTimeline`, `AgProgress`, `AgProgressRing`, `AgSpinner`, `AgSkeletonLoader`
+- **Media, Links & Inline Semantics:** `AgIcon`, `AgImage`, `AgLink`, `AgKbd`, `AgMark`, `AgIntlFormatter`
+- **Interactive Form & Action Controls (FACE-enabled):** `AgButton`, `AgInput`, `AgCombobox`, `AgSelect`, `AgCheckbox`, `AgRadio`, `AgRating`, `AgToggle`, `AgSlider`
 - **Primitives:** `AgText`
 
 All component IDs must follow **UAX #31** identifier syntax (`^[A-Za-z_][A-Za-z0-9_]*$` — letters, digits, and underscores only; no hyphens).
@@ -176,7 +177,7 @@ All component IDs must follow **UAX #31** identifier syntax (`^[A-Za-z_][A-Za-z0
 
 ## Form Validation (FACE) & Two-Way `@path` Binding
 
-Interactive form components (`AgInput`, `AgCombobox`, `AgSelect`, `AgCheckbox`, `AgRadio`, `AgRating`, `AgToggle`) automatically sync user edits back to the surface `DataModel` via `{"@path": "/..."}` pointers.
+Interactive form components (`AgInput`, `AgCombobox`, `AgSelect`, `AgCheckbox`, `AgRadio`, `AgRating`, `AgToggle`, `AgSlider`) automatically sync user edits back to the surface `DataModel` via `{"@path": "/..."}` pointers.
 
 Because `<a2ui-surface>` renders AgnosticUI's [Form-Associated Custom Elements (FACE)](/docs/form-association) in Light DOM, `runSurfaceValidation()` (and the catalog's `validateSurface` client function) validates every control using native `ElementInternals` `reportValidity()`:
 
