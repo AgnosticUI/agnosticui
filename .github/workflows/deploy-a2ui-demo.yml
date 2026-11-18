@@ -68,6 +68,6 @@ jobs:
           fi
           npx --yes netlify-cli deploy \
             --prod \
+            --no-build \
             --dir=./dist \
-            --config=./netlify.toml \
             --message="Deploy A2UI Support Center Studio (${GITHUB_SHA})"
