@@ -2,11 +2,11 @@
 
 - **Branch:** `master` (Phases 1–6 merged via PR #517)
 - **Upstream Ecosystem PRs:**
-  - Catalog Showcase PR: `https://github.com`
-  - Core `@a2ui/web_core` Keyword Parity PR (Issue #3998): `https://github.com`
+  - Catalog Showcase PR: `https://github.com/AgnosticUI/agnosticui/pull/520`
+  - Core `@a2ui/web_core` Keyword Parity PR (Issue #3998): `https://github.com/a2ui-project/a2ui/pull/4285`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phases 1–6 ✅ (100% Complete) | Phase 7 🔄 (Task 7.1 ✅, Next: Task 7.2) | Phase 8 ⬜
+- **Overall Status:** Phases 1–6 ✅ (100% Complete) | Phase 7 ✅, Next: Phase 8 ⬜
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 
 ---
@@ -96,7 +96,7 @@
 
 ---
 
-## Phase 7: Upstream A2UI Core Contributions, Studio v2 ("Wow Factor") & Homepage Positioning 🔄
+## Phase 7: Upstream A2UI Core Contributions, Studio v2 ("Wow Factor") & Homepage Positioning
 
 * **Task 7.1 — Permanent `a2ui-project/a2ui` Dev Setup & Upstream Core Bugfix/Docs PRs** ✅
   * **Micro-Chunk 7.1a:** Configured `~/workspace/a2ui` (`origin` -> `roblevintennis/a2ui`, `upstream` -> `a2ui-project/a2ui`), verified `@a2ui/web_core` build/test pipelines, and mapped `schema_loader.ts` JSON Schema-to-Zod conversion.
@@ -110,8 +110,9 @@
 
 ---
 
-## Phase 8: 35-Component Catalog Expansion (~65% Coverage) ⬜
+## Phase 8: 35-Component Catalog Expansion (~65% Coverage)
 
 * **Task 8.1 — Expand Catalog from 25 to 35 Components** ⬜
-  * **Micro-Chunk 8.1a:** Inspect `v2/lib/src/components/*/core/_*.ts` for 10 high-value additions (`AgSlider`, `AgSkeletonLoader`, `AgBreadcrumb`, `AgPagination`, `AgCollapsible`, `AgImage`, `AgKbd`, `AgMark`, `AgToast`, `AgIntlFormatter`), add them to `CATALOG_COMPONENTS` and `TWO_WAY_BINDINGS` (`AgSlider.value`) in `v2/a2ui/catalog/scripts/generate-catalog.ts`, and regenerate `agnosticui-catalog.json` + `SKILL.md`.
+  * **Micro-Chunk 8.1a:** Inspect `v2/lib/src/components/*/core/_*.ts` for 10 new additions (`AgSlider`, `AgSkeletonLoader`, `AgBreadcrumb`, `AgPagination`, `AgScrollProgress`, `AgImage`, `AgKbd`, `AgMark`, `AgToast`, `AgIntlFormatter`), add them to `CATALOG_COMPONENTS` and `TWO_WAY_BINDINGS` (`AgSlider.value`) in `v2/a2ui/catalog/scripts/generate-catalog.ts`, and regenerate `agnosticui-catalog.json` + `SKILL.md`.
   * **Micro-Chunk 8.1b:** Expand `v2/a2ui/renderers/lit/src/catalog.spec.ts` to test all 35 components + `AgSlider` two-way `@path` binding, verify `npm run check` and `v2/mcp-server` tests pass, and bump minor/alpha release if desired.
+

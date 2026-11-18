@@ -2,7 +2,7 @@
 
 Spec-compliant **A2UI `v1.0`** component catalog generator, multi-framework web renderers (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`), and interactive Support Center reference studios.
 
-- **Live Support Center Studio (Netlify):** [`https://a2ui-support-center-demo.netlify.app`](https://a2ui-support-center-demo.netlify.app) — defaults to the `$0` zero-token **Local UI Compiler** with 22 runtime skins, progressive JSONL streaming, multi-turn agent round-trips, live `@path` DataModel diffing, and an optional BYOK Gemini key (`5 calls/session` cap).
+- **Live Support Center Studio (Netlify):** [`https://a2ui-support-center-demo.netlify.app`](https://a2ui-support-center-demo.netlify.app) — defaults to the `$0` zero-token **Local UI Compiler** with 22 runtime skins, progressive JSONL streaming, multi-turn agent round-trips, live `@path` DataModel diffing, and an optional BYOK Gemini key (`5 calls per page load` cap).
 
 ## Workspace Map
 
