@@ -3,6 +3,7 @@
 AgnosticUI provides a spec-compliant **A2UI `v1.0`** component catalog and multi-framework Web Component renderers (**`@agnosticui/a2ui-lit`**, **`@agnosticui/a2ui-react`**, and **`@agnosticui/a2ui-vue`**) that let AI agents stream rich, accessible, form-validated UI surfaces at runtime—while preserving AgnosticUI's **21+ runtime skins** and **Light/Dark mode** CSS custom properties (`--ag-*`).
 
 ::: info Protocol & Catalog Metadata
+- **Live Interactive Studio:** [https://agnosticui-a2ui.netlify.app](https://agnosticui-a2ui.netlify.app) (`$0` Local UI Compiler default + 22 runtime skins + optional BYOK Gemini key)
 - **Supported A2UI Protocol Version:** `v1.0`
 - **Catalog ID:** `https://agnosticui.com/a2ui/v1/catalog.json`
 - **Catalog Schema:** [`v2/a2ui/catalog/agnosticui-catalog.json`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/a2ui/catalog/agnosticui-catalog.json)

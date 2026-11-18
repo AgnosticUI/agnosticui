@@ -22,8 +22,8 @@ import {
 import {
   EMPTY_STATE_SURFACE_MESSAGES,
   QUICK_PROMPT_CHIPS,
-  buildActionConfirmationMessages,
 } from '../../shared/support-scenarios.js';
+import { advanceAgentRoundTrip } from '../../shared/agent-roundtrip.js';
 import {
   generateLiveA2uiSurface,
   generateLocalA2uiSurface,
@@ -102,6 +102,12 @@ const logEvent = (message: string, detail?: unknown) => {
   eventLogText.value = '[' + stamp + '] ' + message + extra + '\n\n' + eventLogText.value;
 };
 
+let runStreamRef: (
+  messages: A2uiWireMessage[],
+  streamLabel: string,
+  instant?: boolean,
+) => Promise<void>;
+
 const {
   surface,
   surfaceRef,
@@ -112,11 +118,25 @@ const {
   surfaceId: 'support_surface',
   validateOnAction: true,
   onAction: (detail) => {
-    actionCount.value += 1;
-    logEvent('FACE validation passed -> Dispatched A2UI Action', detail);
+    const outcome = advanceAgentRoundTrip(activeMessages, detail);
 
-    const confirmMsgs = buildActionConfirmationMessages(activeMessages, detail);
-    processMessages(confirmMsgs);
+    if (outcome.kind === 'reset') {
+      logEvent('Agent round-trip reset -> Restored Turn 1 surface');
+      void runStreamRef(activeMessages, 'Turn 1 Surface (Reset)', true);
+      return;
+    }
+
+    actionCount.value += 1;
+    logEvent(
+      'FACE validation passed -> Turn ' +
+        outcome.turn +
+        ' (' +
+        outcome.actionName +
+        ')',
+      detail,
+    );
+
+    processMessages(outcome.messages);
     syncDataModelInspector(getDataModel());
   },
 });
@@ -154,6 +174,8 @@ const runStream = async (
   await handle.finished;
   syncDataModelInspector(getDataModel());
 };
+
+runStreamRef = runStream;
 
 let pollTimer: number | null = null;
 

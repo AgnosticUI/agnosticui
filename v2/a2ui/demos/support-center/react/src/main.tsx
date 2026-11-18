@@ -37,8 +37,8 @@ import {
 import {
   EMPTY_STATE_SURFACE_MESSAGES,
   QUICK_PROMPT_CHIPS,
-  buildActionConfirmationMessages,
 } from '../../shared/support-scenarios.js';
+import { advanceAgentRoundTrip } from '../../shared/agent-roundtrip.js';
 import {
   generateLiveA2uiSurface,
   generateLocalA2uiSurface,
@@ -143,21 +143,41 @@ function App() {
     getDataModel: () => unknown;
   } | null>(null);
 
+  const runStreamRef = React.useRef<
+    ((msgs: A2uiWireMessage[], label: string, instant?: boolean) => Promise<void>) | null
+  >(null);
+
   const handleSurfaceAction = React.useCallback(
     (detail: Record<string, unknown>) => {
-      setActionCount((c) => c + 1);
-      logEvent('FACE validation passed -> Dispatched A2UI Action', detail);
+      const outcome = advanceAgentRoundTrip(activeMessagesRef.current, detail);
 
-      const confirmMsgs = buildActionConfirmationMessages(
-        activeMessagesRef.current,
+      if (outcome.kind === 'reset') {
+        logEvent('Agent round-trip reset -> Restored Turn 1 surface');
+        void runStreamRef.current?.(
+          activeMessagesRef.current,
+          'Turn 1 Surface (Reset)',
+          true,
+        );
+        return;
+      }
+
+      setActionCount((c) => c + 1);
+      logEvent(
+        'FACE validation passed -> Turn ' +
+          outcome.turn +
+          ' (' +
+          outcome.actionName +
+          ')',
         detail,
       );
-      surfaceApiRef.current?.processMessages(confirmMsgs);
+
+      surfaceApiRef.current?.processMessages(outcome.messages);
       const nextData = surfaceApiRef.current?.getDataModel() ?? {};
       syncDataModelInspector(nextData);
     },
     [logEvent, syncDataModelInspector],
   );
+
 
   const {
     surface,
@@ -213,6 +233,8 @@ function App() {
       syncDataModelInspector,
     ],
   );
+
+  runStreamRef.current = runStream;
 
   React.useEffect(() => {
     void runStream(EMPTY_STATE_SURFACE_MESSAGES, 'Idle Empty State', true);

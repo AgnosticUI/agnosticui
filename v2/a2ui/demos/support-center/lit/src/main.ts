@@ -39,8 +39,8 @@ import {
 import {
   EMPTY_STATE_SURFACE_MESSAGES,
   QUICK_PROMPT_CHIPS,
-  buildActionConfirmationMessages,
 } from '../../shared/support-scenarios.js';
+import { advanceAgentRoundTrip } from '../../shared/agent-roundtrip.js';
 import {
   generateLiveA2uiSurface,
   generateLocalA2uiSurface,
@@ -349,6 +349,14 @@ export class AgA2uiStudio extends LitElement {
 
     processor.model.onAction.subscribe((action) => {
       const detail = action as unknown as Record<string, unknown>;
+      const outcome = advanceAgentRoundTrip(messages, detail);
+
+      if (outcome.kind === 'reset') {
+        this.logEvent('Agent round-trip reset -> Restored Turn 1 surface');
+        void this.renderWireMessages(messages, streamLabel, true);
+        return;
+      }
+
       const isValid = runSurfaceValidation(surfaceEl, true);
       if (!isValid) {
         this.logEvent(
@@ -356,12 +364,19 @@ export class AgA2uiStudio extends LitElement {
         );
         return;
       }
-      this.actionCount += 1;
-      this.logEvent('FACE validation passed -> Dispatched A2UI Action', detail);
 
-      const confirmMsgs = buildActionConfirmationMessages(messages, detail);
-      for (const cMsg of confirmMsgs) {
-        processor.processMessages([cMsg as never]);
+      this.actionCount += 1;
+      this.logEvent(
+        'FACE validation passed -> Turn ' +
+          outcome.turn +
+          ' (' +
+          outcome.actionName +
+          ')',
+        detail,
+      );
+
+      for (const nextMsg of outcome.messages) {
+        processor.processMessages([nextMsg as never]);
       }
       const nextModel = processor.model.getSurface('support_surface');
       if (nextModel) {
@@ -370,6 +385,7 @@ export class AgA2uiStudio extends LitElement {
         this.syncDataModelInspector(nextModel);
       }
     });
+
 
     this.logEvent('Streaming surface: ' + streamLabel);
     this.streamProgress = { current: 0, total: 0 };

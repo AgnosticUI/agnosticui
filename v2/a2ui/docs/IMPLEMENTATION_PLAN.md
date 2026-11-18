@@ -1,10 +1,12 @@
 # Implementation Tracking Plan: AgnosticUI A2UI v1.0 Refactor
 
 - **Branch:** `master` (Phases 1–6 merged via PR #517)
-- **Upstream Ecosystem PR:** `https://github.com/a2ui-project/a2ui/pull/4272`
+- **Upstream Ecosystem PRs:**
+  - Catalog Showcase PR: `https://github.com`
+  - Core `@a2ui/web_core` Keyword Parity PR (Issue #3998): `https://github.com`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phases 1–6 ✅ (100% Complete) | Phase 7 ⬜ (Next: Task 7.1) | Phase 8 ⬜
+- **Overall Status:** Phases 1–6 ✅ (100% Complete) | Phase 7 🔄 (Task 7.1 ✅, Next: Task 7.2) | Phase 8 ⬜
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 
 ---
@@ -82,7 +84,7 @@
 ## Phase 6: Pre-Publish Quality Hardening, npm Release & Official `a2ui-project/a2ui` PR (`v1.0`) ✅
 
 * **Task 6.1 — Versioned `catalogId` & Static Hosting Sync** ✅
-  * Standardized `AGNOSTICUI_CATALOG_ID` to `https://agnosticui.com/a2ui/v1/catalog.json` and synchronized `agnosticui-catalog.json` and `SKILL.md` across `catalog/`, `renderers/lit/`, and `v2/site/docs/public/a2ui/v1/catalog.json`.
+  * Standardized `AGNOSTICUI_CATALOG_ID` to `https://agnosticui.com` and synchronized `agnosticui-catalog.json` and `SKILL.md` across `catalog/`, `renderers/lit/`, and `v2/site/docs/public/a2ui/v1/catalog.json`.
 * **Task 6.2 — Port MCP Server Validator & Codebase Audit** ✅
   * Upgraded `v2/mcp-server` `generate_streamed_layout` to validate A2UI `v1.0` wire streams and graphs (`10/10` passing) and purged legacy `v2/sdui` files.
 * **Task 6.3 — Comprehensive 25-Component Catalog & Hook Test Suite** ✅
@@ -90,19 +92,19 @@
 * **Task 6.4 — npm Package Metadata & Public Release** ✅
   * Published `@agnosticui/a2ui-lit@2.0.0-alpha.1`, `@agnosticui/a2ui-react@2.0.0-alpha.1`, and `@agnosticui/a2ui-vue@2.0.0-alpha.1` to npm (`alpha` and `latest` dist-tags).
 * **Task 6.5 — AgnosticUI PR Merge, VitePress Deployment & Official `a2ui-project/a2ui` PR** ✅
-  * Merged PR #517 + multi-framework docs hotfix into `master`, deployed VitePress docs, verified live HTTP `200` endpoints, and opened upstream PR [`a2ui-project/a2ui#4272`](https://github.com/AgnosticUI/agnosticui/pull/517).
+  * Merged PR #517 + multi-framework docs hotfix into `master`, deployed VitePress docs, verified live HTTP `200` endpoints, and opened upstream PR [`a2ui-project/a2ui#4272`](https://github.com).
 
 ---
 
-## Phase 7: Upstream A2UI Core Contributions, Studio v2 ("Wow Factor") & Homepage Positioning ⬜
+## Phase 7: Upstream A2UI Core Contributions, Studio v2 ("Wow Factor") & Homepage Positioning 🔄
 
-* **Task 7.1 — Permanent `a2ui-project/a2ui` Dev Setup & Upstream Core Bugfix/Docs PRs** ⬜
-  * **Micro-Chunk 7.1a:** Clone `RobLevin/a2ui` (with `upstream` pointing to `a2ui-project/a2ui`) into a permanent workspace directory (`~/workspace/a2ui`), run its `@a2ui/web_core` and `@a2ui/lit` build/test suites locally, and map the core message-processing & renderer code flow.
-  * **Micro-Chunk 7.1b:** Triage open `v1.0`, Lit renderer, or validation issues in `a2ui-project/a2ui`, implement a targeted fix with unit tests, and submit an upstream PR.
-* **Task 7.2 — Support Center Studio v2 ("Wow Factor") & Public Netlify Hosting** ⬜
-  * **Micro-Chunk 7.2a:** Upgrade `v2/a2ui/demos/support-center/shared/` with progressive token/JSONL component streaming (skeleton -> bubble typing -> incremental field arrival) and live `@path` JSON diff highlights in the Inspector drawer.
-  * **Micro-Chunk 7.2b:** Add multi-turn agentic round-trips (`a2uiaction` validated payload -> dynamic follow-up A2UI confirmation/next-step surface) so users experience a true stateful agent loop.
-  * **Micro-Chunk 7.2c:** Configure and deploy a single canonical public Netlify demo (`Local Compiler` default = `$0` token cost + optional BYOK Gemini key with `MAX_SESSION_CALLS = 5` cap) and link it in `v2/a2ui/README.md` and `v2/site/docs/docs/a2ui.md`.
+* **Task 7.1 — Permanent `a2ui-project/a2ui` Dev Setup & Upstream Core Bugfix/Docs PRs** ✅
+  * **Micro-Chunk 7.1a:** Configured `~/workspace/a2ui` (`origin` -> `roblevintennis/a2ui`, `upstream` -> `a2ui-project/a2ui`), verified `@a2ui/web_core` build/test pipelines, and mapped `schema_loader.ts` JSON Schema-to-Zod conversion.
+  * **Micro-Chunk 7.1b:** Implemented JSON Schema Draft 2020-12 keyword parity in `@a2ui/web_core` (`minProperties`, `maxProperties`, `dependentRequired`, conditional `if`/`then`/`else` subschemas, typeless schema constraints, top-level `not`, and `allOf`/`oneOf`/`anyOf` function argument combinators) with 13 new unit tests (`1,660/1,660` passing + Prettier clean), updated `CHANGELOG.md`, and submitted upstream PR [`a2ui-project/a2ui#4285`](https://github.com) (fixing Issue [#3998](https://github.com)).
+* **Task 7.2 — Support Center Studio v2 ("Wow Factor") & Public Netlify Hosting** 🔄
+  * **Micro-Chunk 7.2a:** Upgrade `v2/a2ui/demos/support-center/shared/` with progressive token/JSONL component streaming (skeleton -> bubble typing -> incremental field arrival) and live `@path` JSON diff highlights in the Inspector drawer. ✅
+  * **Micro-Chunk 7.2b:** Add multi-turn agentic round-trips (`a2uiaction` validated payload -> dynamic follow-up A2UI confirmation/next-step surface) so users experience a true stateful agent loop. ✅
+  * **Micro-Chunk 7.2c:** Configure and deploy a single canonical public Netlify demo (`Local Compiler` default = `$0` token cost + optional BYOK Gemini key with `MAX_SESSION_CALLS = 5` cap) and link it in `v2/a2ui/README.md` and `v2/site/docs/docs/a2ui.md`. ✅
 * **Task 7.3 — Elevate A2UI `v1.0` on the AgnosticUI Homepage (`v2/site/docs/index.md`)** ⬜
   * **Micro-Chunk 7.3a:** Update `v2/site/docs/index.md` so **CLI Local Components** and **A2UI v1.0 Generative UI** lead the core value proposition (positioning schema-enforced A2UI `v1.0` renderers & 22 skins ahead of probabilistic Playbooks) with direct links to `/docs/a2ui` and the live Studio.
 
