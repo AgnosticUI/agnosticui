@@ -18,6 +18,7 @@ import { createRoot } from 'react-dom/client';
 import { CircleSlash2, Code2, Moon, Sun } from 'lucide-react';
 import {
   AgA2uiSurface,
+  runSurfaceValidation,
   useA2uiSurface,
   type A2uiWireMessage,
 } from '@agnosticui/a2ui-react';
@@ -105,6 +106,7 @@ function App() {
     EMPTY_STATE_SURFACE_MESSAGES,
   );
   const activeStreamRef = React.useRef<StreamPlaybackHandle | null>(null);
+  const streamPhaseRef = React.useRef<StreamPhase>('complete');
   const lastSnapshotRef = React.useRef<unknown>({});
   const lastSerializedRef = React.useRef<string>('{}');
 
@@ -141,6 +143,7 @@ function App() {
   const surfaceApiRef = React.useRef<{
     processMessages: (msgs: A2uiWireMessage[]) => void;
     getDataModel: () => unknown;
+    getSurfaceEl: () => HTMLElement | null;
   } | null>(null);
 
   const runStreamRef = React.useRef<
@@ -149,6 +152,10 @@ function App() {
 
   const handleSurfaceAction = React.useCallback(
     (detail: Record<string, unknown>) => {
+      if (streamPhaseRef.current !== 'complete') {
+        return;
+      }
+
       const outcome = advanceAgentRoundTrip(activeMessagesRef.current, detail);
 
       if (outcome.kind === 'reset') {
@@ -158,6 +165,12 @@ function App() {
           'Turn 1 Surface (Reset)',
           true,
         );
+        return;
+      }
+
+      const hostEl = surfaceApiRef.current?.getSurfaceEl() ?? null;
+      if (hostEl && !runSurfaceValidation(hostEl, true)) {
+        logEvent('Blocked action: FACE validation failed on required fields');
         return;
       }
 
@@ -178,7 +191,6 @@ function App() {
     [logEvent, syncDataModelInspector],
   );
 
-
   const {
     surface,
     surfaceRef,
@@ -188,12 +200,16 @@ function App() {
   } = useA2uiSurface({
     surfaceId: 'support_surface',
     onAction: handleSurfaceAction,
-    validateOnAction: true,
+    validateOnAction: false,
   });
 
-  surfaceApiRef.current = { processMessages, getDataModel };
+  surfaceApiRef.current = {
+    processMessages,
+    getDataModel,
+    getSurfaceEl: () => surfaceRef.current as HTMLElement | null,
+  };
 
-   const runStream = React.useCallback(
+  const runStream = React.useCallback(
     async (
       messages: A2uiWireMessage[],
       streamLabel: string,
@@ -209,7 +225,10 @@ function App() {
       const handle = playProgressiveA2uiStream(
         messages,
         {
-          onPhaseChange: (phase) => setStreamPhase(phase),
+          onPhaseChange: (phase) => {
+            streamPhaseRef.current = phase;
+            setStreamPhase(phase);
+          },
           onMessage: (msg, idx, total) => {
             setStreamProgress({ current: idx + 1, total });
             processMessages([msg]);
@@ -235,7 +254,6 @@ function App() {
   );
 
   runStreamRef.current = runStream;
-
   React.useEffect(() => {
     void runStream(EMPTY_STATE_SURFACE_MESSAGES, 'Idle Empty State', true);
     return () => {
@@ -346,7 +364,7 @@ function App() {
         </div>
       </header>
 
-       <div className={'studio-workspace ' + (inspectorOpen ? 'has-inspector' : '')}>
+      <div className={'studio-workspace ' + (inspectorOpen ? 'has-inspector' : '')}>
         <aside className="studio-sidebar">
           <div className="sidebar-header">
             <h2>Runtime Skin</h2>
@@ -526,7 +544,7 @@ function App() {
 
             <section className="inspector-panel">
               <div className="panel-header">
-                <h3>Action &amp; FACE Log</h3>
+                                <h3>Action &amp; FACE Log</h3>
                 <ReactIconButton
                   label="Clear event log"
                   size="sm"

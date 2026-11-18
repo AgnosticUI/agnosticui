@@ -21,6 +21,10 @@ export function escapeHtml(raw: string): string {
     .replaceAll("'", '&#39;');
 }
 
+function formatJsonStringHtml(raw: string): string {
+  return escapeHtml(JSON.stringify(raw));
+}
+
 /**
  * Encodes a single property key or array index into an RFC 6901 JSON Pointer segment.
  * Per RFC 6901 Section 3: `~` becomes `~0` and `/` becomes `~1`.
@@ -60,7 +64,7 @@ export function diffDataModelSnapshots(
   if (isPlainRecord(previous) && isPlainRecord(next)) {
     for (const key of Object.keys(next)) {
       const childPath = `${basePath}/${encodeJsonPointerSegment(key)}`;
-      if (!(key in previous)) {
+      if (!Object.prototype.hasOwnProperty.call(previous, key)) {
         // Brand-new property added to the DataModel
         changes.set(childPath, 'added');
       } else {
@@ -85,7 +89,7 @@ export function diffDataModelSnapshots(
   }
 
   // Case 3: Primitive value changed (or type changed from null/primitive to object/array)
-  const targetPath = basePath || '/';
+  const targetPath = basePath;
   const kind: PathChangeKind = previous === undefined ? 'added' : 'updated';
   changes.set(targetPath, kind);
 
@@ -142,7 +146,7 @@ export function renderHighlightedJsonHtml(
         const comma = isLast ? '' : ',';
         const childPath = `${currentPath}/${encodeJsonPointerSegment(key)}`;
         const childVal = value[key];
-        const safeKey = `<span class="a2ui-json-key">"${escapeHtml(key)}"</span>: `;
+        const safeKey = `<span class="a2ui-json-key">${formatJsonStringHtml(key)}</span>: `;
 
         if (isPlainRecord(childVal) || Array.isArray(childVal)) {
           const openBrace = Array.isArray(childVal) ? '[' : '{';
@@ -181,7 +185,7 @@ export function renderHighlightedJsonHtml(
       return;
     }
 
-    pushLine(indent, `${formatPrimitiveHtml(value)}${trailingComma}`, currentPath || '/');
+    pushLine(indent, `${formatPrimitiveHtml(value)}${trailingComma}`, currentPath);
   };
 
   const visitNestedChildren = (
@@ -207,7 +211,7 @@ export function renderHighlightedJsonHtml(
         const comma = idx === keys.length - 1 ? '' : ',';
         const childPath = `${parentPath}/${encodeJsonPointerSegment(key)}`;
         const childVal = container[key];
-        const safeKey = `<span class="a2ui-json-key">"${escapeHtml(key)}"</span>: `;
+        const safeKey = `<span class="a2ui-json-key">${formatJsonStringHtml(key)}</span>: `;
 
         if (isPlainRecord(childVal) || Array.isArray(childVal)) {
           const openBrace = Array.isArray(childVal) ? '[' : '{';
@@ -234,7 +238,7 @@ export function renderHighlightedJsonHtml(
     }
   };
 
-  visit(snapshot ?? {}, '', 0, '');
+  visit(snapshot === undefined ? {} : snapshot, '', 0, '');
   return lines.join('\n');
 }
 
@@ -245,14 +249,15 @@ function findMatchingChangeKind(
   path: string,
   changedPaths: DataModelChangeMap,
 ): PathChangeKind | undefined {
-  if (!path) return undefined;
-
   const direct = changedPaths.get(path);
   if (direct) return direct;
 
-  // If a parent object/array was newly added (e.g. "/routing"), highlight its nested lines too
-  for (const [changedPath, kind] of changedPaths.entries()) {
-    if (kind === 'added' && changedPath !== '/' && path.startsWith(`${changedPath}/`)) {
+  let cursor = path;
+  while (cursor.length > 0) {
+    const slashIdx = cursor.lastIndexOf('/');
+    if (slashIdx < 0) break;
+    cursor = cursor.slice(0, slashIdx);
+    if (changedPaths.get(cursor) === 'added') {
       return 'added';
     }
   }
@@ -268,7 +273,7 @@ function formatPrimitiveHtml(value: unknown): string {
     return `<span class="a2ui-json-null">null</span>`;
   }
   if (typeof value === 'string') {
-    return `<span class="a2ui-json-string">"${escapeHtml(value)}"</span>`;
+    return `<span class="a2ui-json-string">${formatJsonStringHtml(value)}</span>`;
   }
   if (typeof value === 'number') {
     return `<span class="a2ui-json-number">${String(value)}</span>`;

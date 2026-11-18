@@ -2,26 +2,32 @@ import { describe, expect, it } from 'vitest';
 import { SUPPORT_SCENARIOS } from './support-scenarios.js';
 import { advanceAgentRoundTrip } from './agent-roundtrip.js';
 
-/**
- * Helper to extract component IDs from the `updateComponents` envelope in an outcome.
- */
-function extractComponentIds(messages: readonly unknown[]): string[] {
+interface WireComponentRecord {
+  id: string;
+  text?: unknown;
+  action?: {
+    event?: {
+      name?: string;
+      context?: Record<string, unknown>;
+    };
+  };
+}
+
+function extractComponents(messages: readonly unknown[]): WireComponentRecord[] {
   const envelope = messages.find(
-    (m): m is { updateComponents: { components: Array<{ id: string }> } } =>
+    (m): m is { updateComponents: { components: WireComponentRecord[] } } =>
       typeof m === 'object' &&
       m !== null &&
       'updateComponents' in m &&
       typeof (m as Record<string, unknown>).updateComponents === 'object',
   );
-  return envelope?.updateComponents.components.map((c) => c.id) ?? [];
+  return envelope?.updateComponents.components ?? [];
 }
 
 describe('AgentRoundTrip (Stateful Multi-Turn Agent Loop)', () => {
   const baseScenarioMessages = SUPPORT_SCENARIOS[0].messages;
 
   it('advances Turn 1 form submission -> Turn 2 confirmation with interactive next-step buttons', () => {
-    console.log('\n--- START TEST: Turn 1 -> Turn 2 ---');
-
     const outcome = advanceAgentRoundTrip(baseScenarioMessages, {
       name: 'launch_campaign_routing',
       sourceComponentId: 'submit_btn',
@@ -31,63 +37,62 @@ describe('AgentRoundTrip (Stateful Multi-Turn Agent Loop)', () => {
       },
     });
 
-    console.log('Turn 2 outcome kind:', outcome.kind, 'turn:', outcome.turn);
     expect(outcome.kind).toBe('append_turn');
     expect(outcome.turn).toBe(2);
     expect(outcome.messages).toHaveLength(2);
 
-    const ids = extractComponentIds(outcome.messages);
-    console.log('Turn 2 component IDs:', ids);
+    const ids = extractComponents(outcome.messages).map((c) => c.id);
     expect(ids).toContain('user_action_bubble');
     expect(ids).toContain('agent_confirm_bubble');
     expect(ids).toContain('simulate_test_btn');
     expect(ids).toContain('reset_thread_btn');
-
-    console.log('--- END TEST: Turn 1 -> Turn 2 PASSED ---\n');
   });
 
-  it('advances Turn 2 -> Turn 3 live verification receipt without duplicate IDs', () => {
-    console.log('\n--- START TEST: Turn 2 -> Turn 3 ---');
-
-    const outcome = advanceAgentRoundTrip(baseScenarioMessages, {
-      event: {
-        name: 'simulate_test_call',
-        context: {
-          verifiedEmail: 'jordan.taylor@brand.io',
-          cluster: 'na-enterprise',
-        },
+  it('advances Turn 2 -> Turn 3 live verification receipt preserving submitted email and desk', () => {
+    const turnTwoOutcome = advanceAgentRoundTrip(baseScenarioMessages, {
+      name: 'launch_campaign_routing',
+      sourceComponentId: 'submit_btn',
+      context: {
+        email: 'sarah.chen@enterprise.io',
+        cluster: 'emea-growth',
       },
     });
 
-    console.log('Turn 3 outcome kind:', outcome.kind, 'turn:', outcome.turn);
-    expect(outcome.kind).toBe('append_turn');
-    expect(outcome.turn).toBe(3);
+    const turnTwoComponents = extractComponents(turnTwoOutcome.messages);
+    const simulateBtn = turnTwoComponents.find((c) => c.id === 'simulate_test_btn');
+    expect(simulateBtn?.action?.event?.name).toBe('simulate_test_call');
 
-    const ids = extractComponentIds(outcome.messages);
+    const turnThreeOutcome = advanceAgentRoundTrip(baseScenarioMessages, {
+      event: simulateBtn?.action?.event,
+    });
+
+    expect(turnThreeOutcome.kind).toBe('append_turn');
+    expect(turnThreeOutcome.turn).toBe(3);
+
+    const components = extractComponents(turnThreeOutcome.messages);
+    const ids = components.map((c) => c.id);
     const uniqueIds = new Set(ids);
-    console.log('Turn 3 total IDs:', ids.length, 'unique IDs:', uniqueIds.size);
 
-    // Every component ID in the updated surface must be strictly unique
     expect(uniqueIds.size).toBe(ids.length);
     expect(ids).toContain('agent_confirm_bubble');
     expect(ids).toContain('user_verify_bubble');
     expect(ids).toContain('agent_verify_bubble');
 
-    console.log('--- END TEST: Turn 2 -> Turn 3 PASSED ---\n');
+    const confirmAlertText = components.find((c) => c.id === 'confirm_copy')?.text;
+    const verifyAlertText = components.find((c) => c.id === 'verify_copy')?.text;
+
+    expect(String(confirmAlertText)).toContain('sarah.chen@enterprise.io');
+    expect(String(verifyAlertText)).toContain('sarah.chen@enterprise.io');
+    expect(String(verifyAlertText)).toContain('emea-growth');
   });
 
   it('resets cleanly back to Turn 1 when reset_agent_thread is triggered', () => {
-    console.log('\n--- START TEST: Reset to Turn 1 ---');
-
     const outcome = advanceAgentRoundTrip(baseScenarioMessages, {
       event: { name: 'reset_agent_thread' },
     });
 
-    console.log('Reset outcome kind:', outcome.kind, 'turn:', outcome.turn);
     expect(outcome.kind).toBe('reset');
     expect(outcome.turn).toBe(1);
     expect(outcome.messages).toEqual(baseScenarioMessages);
-
-    console.log('--- END TEST: Reset to Turn 1 PASSED ---\n');
   });
 });

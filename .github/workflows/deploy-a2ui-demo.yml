@@ -11,9 +11,17 @@ on:
       - '.github/workflows/deploy-a2ui-demo.yml'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: netlify-a2ui-support-center-demo
+  cancel-in-progress: true
+
 jobs:
   deploy-netlify:
     name: Build & Deploy Lit Studio
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -22,20 +30,24 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
-          cache-dependency-path: v2/a2ui/demos/support-center/lit/package-lock.json
+          cache-dependency-path: |
+            v2/a2ui/demos/support-center/shared/package-lock.json
+            v2/a2ui/demos/support-center/lit/package-lock.json
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run shared unit tests
+      - name: Install shared dependencies & run tests + typecheck
         working-directory: v2/a2ui/demos/support-center/shared
-        run: npm ci && npm test
+        run: npm ci && npm run typecheck && npm test
+
+      - name: Install Lit Studio dependencies
+        run: npm ci
 
       - name: Typecheck & build production bundle
         run: npm run build
@@ -44,9 +56,10 @@ jobs:
         uses: nwtgck/actions-netlify@v3.0
         with:
           publish-dir: './v2/a2ui/demos/support-center/lit/dist'
+          netlify-config-path: './v2/a2ui/demos/support-center/lit/netlify.toml'
           production-branch: master
           production-deploy: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          fails-without-credentials: true
           deploy-message: 'Deploy A2UI Support Center Studio (${{ github.sha }})'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

@@ -66,7 +66,7 @@ describe('DataModelDiff (Live @path JSON Diff Highlighter)', () => {
 
     // Adversarial HTML characters must be escaped to prevent XSS
     expect(html).not.toContain('<script>');
-    expect(html).toContain('&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;');
+    expect(html).toContain('&lt;script&gt;alert(\\&quot;xss\\&quot;)&lt;/script&gt;');
 
     console.log('--- END TEST: renderHighlightedJsonHtml PASSED ---\n');
   });

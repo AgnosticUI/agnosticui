@@ -597,7 +597,6 @@ a2ui-surface ag-fieldset ag-toggle {
     var(--ag-background-secondary) 75%
   );
   background-size: 200% 100%;
-  animation: a2ui-shimmer 1.3s ease-in-out infinite;
 }
 
 .a2ui-skeleton-bar--short {
@@ -636,7 +635,6 @@ a2ui-surface ag-fieldset ag-toggle {
   height: 0.36rem;
   border-radius: var(--ag-radius-full);
   background: var(--ag-primary);
-  animation: a2ui-typing-dot 1.1s infinite ease-in-out;
 }
 
 .a2ui-typing-dots span:nth-child(2) {
@@ -659,13 +657,11 @@ a2ui-surface ag-fieldset ag-toggle {
 .a2ui-json-line--updated {
   background: rgba(245, 158, 11, 0.16);
   border-left-color: #f59e0b;
-  animation: a2ui-diff-flash 500ms ease-out;
 }
 
 .a2ui-json-line--added {
   background: rgba(16, 185, 129, 0.16);
   border-left-color: #10b981;
-  animation: a2ui-diff-flash 500ms ease-out;
 }
 
 .a2ui-json-key {
@@ -686,4 +682,19 @@ a2ui-surface ag-fieldset ag-toggle {
 .a2ui-json-null {
   color: var(--ag-text-secondary);
   font-style: italic;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .a2ui-skeleton-bar {
+    animation: a2ui-shimmer 1.3s ease-in-out infinite;
+  }
+
+  .a2ui-typing-dots span {
+    animation: a2ui-typing-dot 1.1s infinite ease-in-out;
+  }
+
+  .a2ui-json-line--updated,
+  .a2ui-json-line--added {
+    animation: a2ui-diff-flash 500ms ease-out;
+  }
 }

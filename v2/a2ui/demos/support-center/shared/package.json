@@ -8,6 +8,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@agnosticui/a2ui-lit": "^2.0.0-alpha.1",
     "jsdom": "^29.1.1",
     "typescript": "^7.0.2",
     "vitest": "^5.1.1"

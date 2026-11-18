@@ -94,7 +94,7 @@ const SUN_ICON = createElement(Sun, {
 const SESSION_KEY_STORAGE = 'ag-a2ui-gemini-key';
 
 export class AgA2uiStudio extends LitElement {
-    static override properties = {
+  static override properties = {
     activeSkinId: { state: true },
     isDark: { state: true },
     inspectorOpen: { state: true },
@@ -135,6 +135,7 @@ export class AgA2uiStudio extends LitElement {
   private activeSurfaceEl: A2uiSurface | null = null;
   private inspectorTimer: number | null = null;
   private activeStreamHandle: StreamPlaybackHandle | null = null;
+  private streamGeneration = 0;
   private lastDataSnapshot: unknown = {};
   private lastSerializedSnapshot = '{}';
 
@@ -168,9 +169,12 @@ export class AgA2uiStudio extends LitElement {
 
   override disconnectedCallback(): void {
     super.disconnectedCallback();
+    this.streamGeneration += 1;
     this.activeStreamHandle?.cancel();
+    this.activeStreamHandle = null;
     if (this.inspectorTimer !== null) {
       window.clearInterval(this.inspectorTimer);
+      this.inspectorTimer = null;
     }
   }
 
@@ -194,13 +198,6 @@ export class AgA2uiStudio extends LitElement {
     this.lastSerializedSnapshot = serialized;
     this.changedPathCount = changes.size;
     this.dataModelHtml = renderHighlightedJsonHtml(nextSnapshot, changes);
-  }
-
-  private serializeDataModel(model: {
-    dataModel: { get: (path: string) => unknown };
-  }): string {
-    const rootData = model.dataModel.get('') ?? model.dataModel.get('/') ?? {};
-    return JSON.stringify(rootData, null, 2);
   }
 
   private logEvent(message: string, detail?: unknown): void {
@@ -276,7 +273,7 @@ export class AgA2uiStudio extends LitElement {
     this.livePromptText = val;
   }
 
-  private async handleGeneratePrompt(overridePrompt?: string): Promise<void> {
+    private async handleGeneratePrompt(overridePrompt?: string): Promise<void> {
     if (this.isGeneratingLive) return;
 
     const resolvedPrompt =
@@ -327,9 +324,12 @@ export class AgA2uiStudio extends LitElement {
     streamLabel: string,
     instant = false,
   ): Promise<void> {
+    const generation = ++this.streamGeneration;
     this.activeStreamHandle?.cancel();
+    this.activeStreamHandle = null;
     if (this.inspectorTimer !== null) {
       window.clearInterval(this.inspectorTimer);
+      this.inspectorTimer = null;
     }
 
     const mount = this.querySelector('#surface-mount');
@@ -348,6 +348,13 @@ export class AgA2uiStudio extends LitElement {
     this.activeSurfaceEl = surfaceEl;
 
     processor.model.onAction.subscribe((action) => {
+      if (
+        generation !== this.streamGeneration ||
+        this.streamPhase !== 'complete'
+      ) {
+        return;
+      }
+
       const detail = action as unknown as Record<string, unknown>;
       const outcome = advanceAgentRoundTrip(messages, detail);
 
@@ -386,7 +393,6 @@ export class AgA2uiStudio extends LitElement {
       }
     });
 
-
     this.logEvent('Streaming surface: ' + streamLabel);
     this.streamProgress = { current: 0, total: 0 };
 
@@ -394,9 +400,12 @@ export class AgA2uiStudio extends LitElement {
       messages,
       {
         onPhaseChange: (phase) => {
-          this.streamPhase = phase;
+          if (generation === this.streamGeneration) {
+            this.streamPhase = phase;
+          }
         },
         onMessage: (msg, idx, total) => {
+          if (generation !== this.streamGeneration) return;
           this.streamProgress = { current: idx + 1, total };
           processor.processMessages([msg as never]);
           const model = processor.model.getSurface('support_surface');
@@ -414,9 +423,24 @@ export class AgA2uiStudio extends LitElement {
     );
 
     this.activeStreamHandle = handle;
-    await handle.finished;
+    const completed = await handle.finished;
+
+    if (
+      !completed ||
+      generation !== this.streamGeneration ||
+      !this.isConnected
+    ) {
+      return;
+    }
 
     this.inspectorTimer = window.setInterval(() => {
+      if (generation !== this.streamGeneration || !this.isConnected) {
+        if (this.inspectorTimer !== null) {
+          window.clearInterval(this.inspectorTimer);
+          this.inspectorTimer = null;
+        }
+        return;
+      }
       const model = processor.model.getSurface('support_surface');
       if (model) {
         this.syncDataModelInspector(model);
@@ -449,14 +473,13 @@ export class AgA2uiStudio extends LitElement {
     if (this.streamPhase === 'streaming' && this.streamProgress.total > 0) {
       return html`
         <div class="a2ui-stream-status-bar" aria-live="polite">
-          Streaming frame this.streamProgress.current/{this.streamProgress.total}...
+          Streaming frame ${this.streamProgress.current}/${this.streamProgress.total}...
         </div>
       `;
     }
 
     return '';
   }
-
   override render() {
     const activeSkinLabel =
       STUDIO_SKINS.find((s) => s.id === this.activeSkinId)?.label ?? 'Evergreen';
@@ -621,7 +644,7 @@ export class AgA2uiStudio extends LitElement {
                     ${this.liveErrorText}
                   </ag-alert>`
                 : ''}
-                ${this.renderStreamFeedback()}
+              ${this.renderStreamFeedback()}
               <div id="surface-mount"></div>
             </div>
           </main>

@@ -77,22 +77,27 @@ describe('StreamPlayer (Progressive A2UI JSONL Streaming)', () => {
   });
 
   it('transitions deterministically through skeleton -> typing -> streaming -> complete', async () => {
-    console.log('\n--- START TEST: progressive phase & frame lifecycle ---');
-
+    const trace: string[] = [];
     const observedPhases: StreamPhase[] = [];
     const receivedFrames: A2uiWireMessage[] = [];
 
     const handle = playProgressiveA2uiStream(
       SAMPLE_BATCHED_STREAM,
       {
-        onPhaseChange: (phase) => observedPhases.push(phase),
-        onMessage: (msg) => receivedFrames.push(msg),
+        onPhaseChange: (phase) => {
+          observedPhases.push(phase);
+          trace.push(`phase:${phase}`);
+        },
+        onMessage: (msg, idx) => {
+          receivedFrames.push(msg);
+          trace.push(`frame:${idx}`);
+        },
       },
       {
         skeletonDelayMs: 10,
         typingDelayMs: 10,
         chunkDelayMs: 10,
-        verbose: true,
+        verbose: false,
       },
     );
 
@@ -101,9 +106,17 @@ describe('StreamPlayer (Progressive A2UI JSONL Streaming)', () => {
     expect(completed).toBe(true);
     expect(observedPhases).toEqual(['skeleton', 'typing', 'streaming', 'complete']);
     expect(receivedFrames).toHaveLength(5);
-
-    console.log('Observed phase sequence:', observedPhases.join(' -> '));
-    console.log('--- END TEST: progressive phase & frame lifecycle PASSED ---\n');
+    expect(trace).toEqual([
+      'phase:skeleton',
+      'phase:typing',
+      'phase:streaming',
+      'frame:0',
+      'frame:1',
+      'frame:2',
+      'frame:3',
+      'frame:4',
+      'phase:complete',
+    ]);
   });
 
   it('cancels cleanly mid-stream without emitting stale frames', async () => {

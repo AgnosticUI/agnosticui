@@ -137,12 +137,14 @@ export function playProgressiveA2uiStream(
   // Internal controller linked to any optional external AbortSignal
   const internalController = new AbortController();
   const { signal } = internalController;
+  let onExternalAbort: (() => void) | undefined;
 
   if (externalSignal) {
     if (externalSignal.aborted) {
       internalController.abort();
     } else {
-      externalSignal.addEventListener('abort', () => internalController.abort(), {
+      onExternalAbort = () => internalController.abort();
+      externalSignal.addEventListener('abort', onExternalAbort, {
         once: true,
       });
     }
@@ -159,55 +161,61 @@ export function playProgressiveA2uiStream(
   };
 
   const finished = (async (): Promise<boolean> => {
-    log(`Starting stream with ${messages.length} raw messages -> ${totalFrames} granular frames.`);
+    try {
+      log(`Starting stream with ${messages.length} raw messages -> ${totalFrames} granular frames.`);
 
-    // Stage 1: Skeleton shell
-    if (signal.aborted) return false;
-    log(`Phase -> 'skeleton' (waiting ${skeletonDelayMs}ms)`);
-    callbacks.onPhaseChange?.('skeleton');
-    if (!(await cancellableDelay(skeletonDelayMs, signal))) {
-      log('Aborted during skeleton phase.');
-      return false;
-    }
-
-    // Stage 2: Agent typing indicator
-    if (signal.aborted) return false;
-    log(`Phase -> 'typing' (waiting ${typingDelayMs}ms)`);
-    callbacks.onPhaseChange?.('typing');
-    if (!(await cancellableDelay(typingDelayMs, signal))) {
-      log('Aborted during typing phase.');
-      return false;
-    }
-
-    // Stage 3: Incremental wire frame arrival
-    if (signal.aborted) return false;
-    log(`Phase -> 'streaming' (emitting ${totalFrames} frames @ ${chunkDelayMs}ms intervals)`);
-    callbacks.onPhaseChange?.('streaming');
-
-    for (let i = 0; i < totalFrames; i++) {
-      if (signal.aborted) {
-        log(`Aborted at frame ${i + 1}/${totalFrames}.`);
+      // Stage 1: Skeleton shell
+      if (signal.aborted) return false;
+      log(`Phase -> 'skeleton' (waiting ${skeletonDelayMs}ms)`);
+      callbacks.onPhaseChange?.('skeleton');
+      if (!(await cancellableDelay(skeletonDelayMs, signal))) {
+        log('Aborted during skeleton phase.');
         return false;
       }
 
-      const frame = frames[i];
-      log(`Emitting frame ${i + 1}/${totalFrames}: ${Object.keys(frame).filter((k) => k !== 'version').join(', ')}`);
-      callbacks.onMessage(frame, i, totalFrames);
+      // Stage 2: Agent typing indicator
+      if (signal.aborted) return false;
+      log(`Phase -> 'typing' (waiting ${typingDelayMs}ms)`);
+      callbacks.onPhaseChange?.('typing');
+      if (!(await cancellableDelay(typingDelayMs, signal))) {
+        log('Aborted during typing phase.');
+        return false;
+      }
 
-      // Pause between frames (skip trailing delay after the very last frame)
-      if (i < totalFrames - 1) {
-        if (!(await cancellableDelay(chunkDelayMs, signal))) {
-          log(`Aborted while waiting after frame ${i + 1}/${totalFrames}.`);
+      // Stage 3: Incremental wire frame arrival
+      if (signal.aborted) return false;
+      log(`Phase -> 'streaming' (emitting ${totalFrames} frames @ ${chunkDelayMs}ms intervals)`);
+      callbacks.onPhaseChange?.('streaming');
+
+      for (let i = 0; i < totalFrames; i++) {
+        if (signal.aborted) {
+          log(`Aborted at frame ${i + 1}/${totalFrames}.`);
           return false;
         }
+
+        const frame = frames[i];
+        log(`Emitting frame ${i + 1}/${totalFrames}: ${Object.keys(frame).filter((k) => k !== 'version').join(', ')}`);
+        callbacks.onMessage(frame, i, totalFrames);
+
+        // Pause between frames (skip trailing delay after the very last frame)
+        if (i < totalFrames - 1) {
+          if (!(await cancellableDelay(chunkDelayMs, signal))) {
+            log(`Aborted while waiting after frame ${i + 1}/${totalFrames}.`);
+            return false;
+          }
+        }
+      }
+
+      // Stage 4: Stream complete
+      if (signal.aborted) return false;
+      log(`Phase -> 'complete'`);
+      callbacks.onPhaseChange?.('complete');
+      return true;
+    } finally {
+      if (externalSignal && onExternalAbort) {
+        externalSignal.removeEventListener('abort', onExternalAbort);
       }
     }
-
-    // Stage 4: Stream complete
-    if (signal.aborted) return false;
-    log(`Phase -> 'complete'`);
-    callbacks.onPhaseChange?.('complete');
-    return true;
   })();
 
   return {

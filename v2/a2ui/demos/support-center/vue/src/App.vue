@@ -3,6 +3,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { CircleSlash2, Code2, Moon, Sun } from 'lucide-vue-next';
 import {
   AgA2uiSurface,
+  runSurfaceValidation,
   useA2uiSurface,
   type A2uiWireMessage,
 } from '@agnosticui/a2ui-vue';
@@ -99,7 +100,8 @@ const logEvent = (message: string, detail?: unknown) => {
   const stamp = new Date().toLocaleTimeString();
   const extra =
     detail !== undefined ? '\n' + JSON.stringify(detail, null, 2) : '';
-  eventLogText.value = '[' + stamp + '] ' + message + extra + '\n\n' + eventLogText.value;
+  eventLogText.value =
+    '[' + stamp + '] ' + message + extra + '\n\n' + eventLogText.value;
 };
 
 let runStreamRef: (
@@ -116,13 +118,23 @@ const {
   getDataModel,
 } = useA2uiSurface({
   surfaceId: 'support_surface',
-  validateOnAction: true,
+  validateOnAction: false,
   onAction: (detail) => {
+    if (streamPhase.value !== 'complete') {
+      return;
+    }
+
     const outcome = advanceAgentRoundTrip(activeMessages, detail);
 
     if (outcome.kind === 'reset') {
       logEvent('Agent round-trip reset -> Restored Turn 1 surface');
       void runStreamRef(activeMessages, 'Turn 1 Surface (Reset)', true);
+      return;
+    }
+
+    const hostEl = surfaceRef.value as HTMLElement | null;
+    if (hostEl && !runSurfaceValidation(hostEl, true)) {
+      logEvent('Blocked action: FACE validation failed on required fields');
       return;
     }
 

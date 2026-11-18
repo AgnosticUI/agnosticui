@@ -33,10 +33,19 @@ function extractBaseComponents(
   existingMessages: readonly A2uiWireMessage[],
 ): Array<Record<string, unknown>> {
   const envelopes = existingMessages as unknown as UpdateComponentsEnvelope[];
-  const updateMsg = envelopes.find(
-    (m) => typeof m.updateComponents === 'object' && m.updateComponents !== null,
-  );
-  return updateMsg?.updateComponents?.components ?? [];
+  const mergedById = new Map<string, Record<string, unknown>>();
+
+  for (const envelope of envelopes) {
+    const comps = envelope.updateComponents?.components;
+    if (!Array.isArray(comps)) continue;
+    for (const comp of comps) {
+      if (typeof comp.id === 'string') {
+        mergedById.set(comp.id, comp);
+      }
+    }
+  }
+
+  return Array.from(mergedById.values());
 }
 
 /**
@@ -107,11 +116,13 @@ function buildTurnTwoComponents(
   rawContext: Record<string, unknown>,
 ): Array<Record<string, unknown>> {
   const emailCandidate =
-    typeof rawContext.email === 'string' && rawContext.email.length > 0
-      ? rawContext.email
-      : typeof rawContext.ownerEmail === 'string' && rawContext.ownerEmail.length > 0
-        ? rawContext.ownerEmail
-        : undefined;
+    typeof rawContext.verifiedEmail === 'string' && rawContext.verifiedEmail.length > 0
+      ? rawContext.verifiedEmail
+      : typeof rawContext.email === 'string' && rawContext.email.length > 0
+        ? rawContext.email
+        : typeof rawContext.ownerEmail === 'string' && rawContext.ownerEmail.length > 0
+          ? rawContext.ownerEmail
+          : undefined;
 
   const summaryLine = emailCandidate
     ? 'All preferences have been validated and published. Confirmation and live alerts are routed to ' +
@@ -190,6 +201,7 @@ function buildTurnTwoComponents(
           context: {
             verifiedEmail: emailCandidate ?? 'ops@agnosticui.com',
             cluster: String(rawContext.cluster ?? 'na-enterprise'),
+            submittedLabel: buttonDisplayLabel,
           },
         },
       },
@@ -314,7 +326,12 @@ export function advanceAgentRoundTrip(
   );
 
   // Always preserve Turn 2 components so Turn 3 appends cleanly below Turn 2
-  const turnTwoComponents = buildTurnTwoComponents(buttonDisplayLabel, rawContext);
+  const resolvedTurnTwoLabel =
+    typeof rawContext.submittedLabel === 'string' && rawContext.submittedLabel.length > 0
+      ? rawContext.submittedLabel
+      : buttonDisplayLabel;
+
+  const turnTwoComponents = buildTurnTwoComponents(resolvedTurnTwoLabel, rawContext);
   for (const id of ['user_action_bubble', 'agent_confirm_bubble']) {
     if (!rootChildren.includes(id)) {
       rootChildren.push(id);
