@@ -29,12 +29,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: false
 
       - name: Setup Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: 'npm'
@@ -58,14 +58,16 @@ jobs:
         run: npm run build
 
       - name: Deploy to Netlify Production
-        uses: nwtgck/actions-netlify@v3.0
-        with:
-          publish-dir: './v2/a2ui/demos/support-center/lit/dist'
-          netlify-config-path: './v2/a2ui/demos/support-center/lit/netlify.toml'
-          production-branch: master
-          production-deploy: true
-          fails-without-credentials: true
-          deploy-message: 'Deploy A2UI Support Center Studio (${{ github.sha }})'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: '503dcfad-78f1-4163-a4ad-47894954a5d8'
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+            echo "Error: NETLIFY_AUTH_TOKEN secret is not set." >&2
+            exit 1
+          fi
+          npx --yes netlify-cli deploy \
+            --prod \
+            --dir=./dist \
+            --config=./netlify.toml \
+            --message="Deploy A2UI Support Center Studio (${GITHUB_SHA})"
