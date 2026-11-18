@@ -8,6 +8,7 @@ import { AgAccordion } from './components/AgAccordion.js';
 import { AgAlert } from './components/AgAlert.js';
 import { AgAvatar } from './components/AgAvatar.js';
 import { AgBadge } from './components/AgBadge.js';
+import { AgBreadcrumb } from './components/AgBreadcrumb.js';
 import { AgButton } from './components/AgButton.js';
 import { AgCard } from './components/AgCard.js';
 import { AgCheckbox } from './components/AgCheckbox.js';
@@ -16,13 +17,22 @@ import { AgDivider } from './components/AgDivider.js';
 import { AgEmptyState } from './components/AgEmptyState.js';
 import { AgFieldset } from './components/AgFieldset.js';
 import { AgHeader } from './components/AgHeader.js';
+import { AgIcon } from './components/AgIcon.js';
+import { AgImage } from './components/AgImage.js';
 import { AgInput } from './components/AgInput.js';
+import { AgIntlFormatter } from './components/AgIntlFormatter.js';
+import { AgKbd } from './components/AgKbd.js';
+import { AgLink } from './components/AgLink.js';
+import { AgMark } from './components/AgMark.js';
 import { AgMessageBubble } from './components/AgMessageBubble.js';
+import { AgPagination } from './components/AgPagination.js';
 import { AgProgress } from './components/AgProgress.js';
 import { AgProgressRing } from './components/AgProgressRing.js';
 import { AgRadio } from './components/AgRadio.js';
 import { AgRating } from './components/AgRating.js';
 import { AgSelect } from './components/AgSelect.js';
+import { AgSkeletonLoader } from './components/AgSkeletonLoader.js';
+import { AgSlider } from './components/AgSlider.js';
 import { AgSpinner } from './components/AgSpinner.js';
 import { AgTabs } from './components/AgTabs.js';
 import { AgTag } from './components/AgTag.js';
@@ -34,10 +44,10 @@ export const AGNOSTICUI_CATALOG_ID = 'https://agnosticui.com/a2ui/v1/catalog.jso
 export const AgnosticUICatalog: Catalog<LitComponentApi> = new Catalog(
   AGNOSTICUI_CATALOG_ID,
   '1.0',
-  [AgText, AgAccordion, AgAlert, AgAvatar, AgBadge, AgButton, AgCard, AgCheckbox, AgCombobox, AgDivider, AgEmptyState, AgFieldset, AgHeader, AgInput, AgMessageBubble, AgProgress, AgProgressRing, AgRadio, AgRating, AgSelect, AgSpinner, AgTabs, AgTag, AgTimeline, AgToggle] as unknown as LitComponentApi[],
+  [AgText, AgAccordion, AgAlert, AgAvatar, AgBadge, AgBreadcrumb, AgButton, AgCard, AgCheckbox, AgCombobox, AgDivider, AgEmptyState, AgFieldset, AgHeader, AgIcon, AgImage, AgInput, AgIntlFormatter, AgKbd, AgLink, AgMark, AgMessageBubble, AgPagination, AgProgress, AgProgressRing, AgRadio, AgRating, AgSelect, AgSkeletonLoader, AgSlider, AgSpinner, AgTabs, AgTag, AgTimeline, AgToggle] as unknown as LitComponentApi[],
   [...BASIC_FUNCTIONS, ValidateSurfaceImplementation],
   undefined,
-  'Use AgnosticUI components (AgCard, AgFieldset, AgDivider, AgHeader, AgAccordion, AgCollapsible, AgTabs, AgMessageBubble, AgAlert, AgBadge, AgAvatar, AgTag, AgEmptyState, AgTimeline, AgProgress, AgProgressRing, AgSpinner, AgButton, AgInput, AgCombobox, AgSelect, AgCheckbox, AgRadio, AgRating, AgToggle, AgText). Always use UAX #31 component IDs (letters, digits, underscores only; no hyphens) and bind interactive form fields using {"@path": "/..."} pointers.',
+  'Use AgnosticUI components (AgCard, AgFieldset, AgDivider, AgHeader, AgAccordion, AgCollapsible, AgTabs, AgBreadcrumb, AgPagination, AgMessageBubble, AgAlert, AgBadge, AgAvatar, AgTag, AgEmptyState, AgTimeline, AgProgress, AgProgressRing, AgSpinner, AgSkeletonLoader, AgIcon, AgImage, AgLink, AgKbd, AgMark, AgIntlFormatter, AgButton, AgInput, AgCombobox, AgSelect, AgCheckbox, AgRadio, AgRating, AgToggle, AgSlider, AgText). Always use UAX #31 component IDs (letters, digits, underscores only; no hyphens) and bind interactive form fields using {"@path": "/..."} pointers.',
 );
 
 export function registerAgnosticUICatalog(): void {

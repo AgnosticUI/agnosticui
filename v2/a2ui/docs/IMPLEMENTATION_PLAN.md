@@ -3,9 +3,8 @@
 - **Branch:** `master` (Phases 1–6 merged via PR #517)
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phases 1–6 ✅ (100% Complete) | Phase 7 🔄 (Task 7.3b Pending), Next: Phase 8 ⬜
+- **Overall Status:** Phases 1–8 ✅ (100% Complete — 35-Component A2UI v1.0 Catalog)
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
-
 ---
 
 ## Table of Contents
@@ -109,8 +108,8 @@
 
 ---
 
-## Phase 8: 35-Component Catalog Expansion (~65% Coverage)
+## Phase 8: 35-Component Catalog Expansion (~65% Coverage) ✅
 
-* **Task 8.1 — Expand Catalog from 25 to 35 Components** ⬜
-  * **Micro-Chunk 8.1a:** Inspect `v2/lib/src/components/*/core/_*.ts` for 10 new additions (`AgSlider`, `AgSkeletonLoader`, `AgBreadcrumb`, `AgPagination`, `AgScrollProgress`, `AgImage`, `AgKbd`, `AgMark`, `AgToast`, `AgIntlFormatter`), add them to `CATALOG_COMPONENTS` and `TWO_WAY_BINDINGS` (`AgSlider.value`) in `v2/a2ui/catalog/scripts/generate-catalog.ts`, and regenerate `agnosticui-catalog.json` + `SKILL.md`.
-  * **Micro-Chunk 8.1b:** Expand `v2/a2ui/renderers/lit/src/catalog.spec.ts` to test all 35 components + `AgSlider` two-way `@path` binding, verify `npm run check` and `v2/mcp-server` tests pass, and bump minor/alpha release if desired.
+* **Task 8.1 — Expand Catalog from 25 to 35 Components** ✅
+  * **Micro-Chunk 8.1a:** Inspected `v2/lib/src/components/*/core/_*.ts` for 10 new additions (`AgSlider`, `AgSkeletonLoader`, `AgBreadcrumb`, `AgPagination`, `AgIcon`, `AgImage`, `AgLink`, `AgKbd`, `AgMark`, `AgIntlFormatter`), configured complex prop overrides (`AgSlider.value`, `AgBreadcrumb.items`, `AgImage.sources`, `AgIntlFormatter.value`) and `AgIcon` slot rendering in `codegen.config.ts`, registered `AgSlider` in `TWO_WAY_BINDINGS` in `generate-catalog.ts`, and regenerated synchronized `agnosticui-catalog.json` + `SKILL.md`.
+  * **Micro-Chunk 8.1b:** Expanded `v2/a2ui/renderers/lit/src/catalog.spec.ts` with count-agnostic assertions covering all 35 catalog components + `AgSlider` two-way `@path` binding across all 8 interactive controls, and verified Lit (`test`/`typecheck`/`build`), React, Vue, and `v2/mcp-server` test suites pass.

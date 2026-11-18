@@ -35,9 +35,6 @@ export const omitConfig: Record<string, string[]> = {
   // offset: PaginationOffset (complex type); navigationLabels: NavigationLabels (complex object)
   AgPagination:         ['offset', 'navigationLabels'],
 
-  // value: number | [number, number] tuple — not a simple JSON-serializable scalar
-  AgSlider:             ['value'],
-
   // no-animation: hyphenated prop name is invalid as a JSX attribute and as a JS identifier
   AgProgressRing:       ['no-animation'],
 
@@ -276,6 +273,7 @@ export const rendererSlotConfig: Record<string, RendererSlot> = {
   AgCard:               'children',
   AgFieldset:           'children',
   AgHeader:             'children',
+  AgIcon:               'children',
   AgKbd:                'children',
   AgLink:               'children',
   AgMark:               'children',
@@ -358,6 +356,30 @@ export const typeOverrides: Record<string, Record<string, { tsType: string; zodE
     justify: {
       tsType: "'start' | 'center' | 'end' | ''",
       zodExpr: "z.union([z.enum(['start', 'center', 'end']), z.literal('')])",
+    },
+  },
+  AgSlider: {
+    value: {
+      tsType: 'number | [number, number]',
+      zodExpr: 'z.union([DynamicNumberSchema, z.tuple([z.number(), z.number()])])',
+    },
+  },
+  AgBreadcrumb: {
+    items: {
+      tsType: 'Array<{ label: string; href?: string; current?: boolean }>',
+      zodExpr: 'z.array(z.object({ label: z.string(), href: z.string().optional(), current: z.boolean().optional() }))',
+    },
+  },
+  AgImage: {
+    sources: {
+      tsType: 'Array<{ srcset: string; type?: string; media?: string; sizes?: string }>',
+      zodExpr: 'z.array(z.object({ srcset: z.string(), type: z.string().optional(), media: z.string().optional(), sizes: z.string().optional() }))',
+    },
+  },
+  AgIntlFormatter: {
+    value: {
+      tsType: 'string | number',
+      zodExpr: 'z.union([DynamicStringSchema, DynamicNumberSchema])',
     },
   },
 };
