@@ -1,9 +1,6 @@
 # Implementation Tracking Plan: AgnosticUI A2UI v1.0 Refactor
 
 - **Branch:** `master` (Phases 1–6 merged via PR #517)
-- **Upstream Ecosystem PRs:**
-  - Catalog Showcase PR: `https://github.com`
-  - Core `@a2ui/web_core` Keyword Parity PR (Issue #3998): `https://github.com`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
 - **Overall Status:** Phases 1–6 ✅ (100% Complete) | Phase 7 🔄 (Task 7.3b Pending), Next: Phase 8 ⬜

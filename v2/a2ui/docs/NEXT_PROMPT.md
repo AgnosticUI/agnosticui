@@ -7,11 +7,8 @@
    - Spec-compliant A2UI v1.0 Component Catalog & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`).
    - Live Published npm Packages (`@agnosticui/a2ui-lit@2.0.0-alpha.1`, `@agnosticui/a2ui-react@2.0.0-alpha.1`, `@agnosticui/a2ui-vue@2.0.0-alpha.1`).
    - Live Public Endpoints:
-     * Catalog JSON: `https://agnosticui.com`
-     * VitePress Guide: `https://agnosticui.com`
-     * Live Support Center Studio (Netlify): `https://netlify.app` (Project ID: `503dcfad-78f1-4163-a4ad-47894954a5d8`)
-     * Upstream Catalog PR: `https://github.com`
-     * Upstream Core Keyword Parity PR: `https://github.com` (fixes Issue `#3998`)
+     * Catalog JSON: `https://agnosticui.com/a2ui/v1/catalog.json`
+     * Live Support Center Studio (Netlify): `https://a2ui-support-center-demo.netlify.app/` (Project ID: `503dcfad-78f1-4163-a4ad-47894954a5d8`)
    - Permanent Upstream Dev Workspace: `~/workspace/a2ui` (`origin` -> `roblevintennis/a2ui`, `upstream` -> `a2ui-project/a2ui`).
 
  COMPLETED PHASES & TASKS :
