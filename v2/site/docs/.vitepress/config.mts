@@ -106,7 +106,8 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Components', link: '/components/button' }
+      { text: 'Components', link: '/components/button' },
+      { text: 'A2UI v1.0', link: '/docs/a2ui' },
     ],
 
     sidebar: [

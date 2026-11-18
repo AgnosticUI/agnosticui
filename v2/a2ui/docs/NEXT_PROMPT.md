@@ -19,11 +19,14 @@
      * Micro-Chunk 7.2a: Upgrade `v2/a2ui/demos/support-center/shared/` with progressive token/JSONL component streaming (skeleton -> bubble typing -> incremental field arrival) and live `@path` JSON diff highlights in the Inspector drawer.
      * Micro-Chunk 7.2b: Add multi-turn agentic round-trips (`a2uiaction` validated payload -> dynamic follow-up A2UI confirmation/next-step surface) so users experience a true stateful agent loop.
      * Micro-Chunk 7.2c: Configure and deploy a single canonical public Netlify demo (`Local Compiler` default = `$0` token cost + optional BYOK Gemini key with `MAX_SESSION_CALLS = 5` cap) and link it in `v2/a2ui/README.md` and `v2/site/docs/docs/a2ui.md`.
-
- NEXT UP            :
-
-* **Task 7.3 — Elevate A2UI `v1.0` on the AgnosticUI Homepage (`v2/site/docs/index.md`)** 
+  - **Task 7.3 — Elevate A2UI `v1.0` on the AgnosticUI Homepage (`v2/site/docs/index.md`)** 
   * **Micro-Chunk 7.3a:** Update `v2/site/docs/index.md` so **CLI Local Components** and **A2UI v1.0 Generative UI** lead the core value proposition (positioning schema-enforced A2UI `v1.0` renderers & 22 skins ahead of probabilistic Playbooks) with direct links to `/docs/a2ui` and the live Studio.
+
+
+ NEXT UP
+ 
+ Phase 8 — Task 8.1: 35-Component Catalog Expansion (~65% Coverage).
+
 
 --- MANDATORY WORKFLOW & MENTOR RULES ---
 1. Pacing & Scope: Plan before coding in small micro-chunks.

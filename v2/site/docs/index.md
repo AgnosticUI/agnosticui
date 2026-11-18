@@ -3,12 +3,12 @@
 layout: home
 
 hero:
-  name: "AgnosticUI Local"
-  text: "The AI-native UI kit"
+  name: "AgnosticUI"
+  text: "Local Components & A2UI v1.0 Generative UI"
   tagline: >
-    Local source lives in your codebase. Our AG Context Generator arms your
-    favorite LLM with exact component locations, types, and usage.
-    Claude. Codex. Copilot. Gemini. And more.
+    Own your component source locally via CLI, or stream schema-enforced
+    A2UI v1.0 agent interfaces across Lit, React, and Vue—powered by 22
+    runtime skins and native FACE form validation.
 ---
 
 <script setup>
@@ -26,6 +26,10 @@ const showDotTrail = ref(false)
 
 const handleScroll = () => {
   showDotTrail.value = window.scrollY > 50
+}
+
+const openLiveStudio = () => {
+  window.open('https://a2ui-support-center-demo.netlify.app', '_blank', 'noopener,noreferrer')
 }
 
 onMounted(() => {
@@ -47,16 +51,16 @@ onUnmounted(() => {
 
 <div class="custom-features">
   <div class="custom-feature">
-    <h3>Local Components</h3>
-    <p>The entire UI library lives in your project (React, Vue, Lit, Svelte, Solid, and more). No MCP setup, node_modules, or npm. Every component is AI-readable.</p>
+    <h3>1. Local Components via CLI</h3>
+    <p>The entire UI library lives in your project (React, Vue, Lit, Svelte, Solid, and more). No opaque black boxes—every component is readable, customizable, and AI-friendly.</p>
   </div>
   <div class="custom-feature">
-    <h3>Arm Your Agent</h3>
-    <p>Run <code>ag context</code> once and any AI coding assistant (Claude, Copilot, Cursor, Windsurf, Gemini) gets your exact prop types, import paths, and playbook blueprints. No hallucinated APIs.</p>
+    <h3>2. A2UI v1.0 Generative UI</h3>
+    <p>Stream schema-validated agent interfaces at runtime with <code>@agnosticui/a2ui-lit</code>, <code>-react</code>, and <code>-vue</code>. Includes native FACE validation, two-way <code>@path</code> binding, and 22 runtime skins.</p>
   </div>
   <div class="custom-feature">
-    <h3>AI Can Actually Help</h3>
-    <p>No opaque npm packages. No wasted tokens on documentation. No context limits. Just accurate, instant help every session.</p>
+    <h3>3. Arm Your Agent (Zero Hallucinations)</h3>
+    <p>Pair <code>ag context</code> for local builds with our machine-readable <code>agnosticui-catalog.json</code> and <code>SKILL.md</code> for A2UI agents—deterministic schemas instead of fragile prompt guesswork.</p>
   </div>
 </div>
 
@@ -80,9 +84,21 @@ onUnmounted(() => {
     shape="capsule"
     size="lg"
     class="jumbo-button"
-    @click="() => router.go('/playbooks/')"
+    @click="() => router.go('/docs/a2ui')"
   >
-    View Agentic Playbooks →
+    Explore A2UI v1.0 →
+  </VueButtonFx>
+  <VueButtonFx
+    fx="pulse-wobble"
+    fx-speed="xl"
+    variant="secondary"
+    bordered
+    shape="capsule"
+    size="lg"
+    class="jumbo-button"
+    @click="openLiveStudio"
+  >
+    Live A2UI Studio ↗
   </VueButtonFx>
 </div>
 
