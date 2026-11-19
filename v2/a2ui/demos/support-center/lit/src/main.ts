@@ -253,7 +253,7 @@ export class AgA2uiStudio extends LitElement {
 
   private async handleCopyJsonl(): Promise<void> {
     const payload = this.lastPlayedMessages ?? EMPTY_STATE_SURFACE_MESSAGES;
-    const jsonl = payload.map((msg) => JSON.stringify(msg)).join('\n');
+    const jsonl = payload.map((msg: A2uiWireMessage) => JSON.stringify(msg)).join('\n');
     try {
       await navigator.clipboard.writeText(jsonl);
       this.copiedJsonl = true;
