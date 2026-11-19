@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
   "dependencies": {
     "@a2ui/lit": "^0.15.0",
     "@a2ui/web_core": "^0.15.0",
@@ -11,6 +15,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "jsdom": "^26.1.0",
     "typescript": "^5.9.3",
     "vitest": "^5.1.0"
   }
