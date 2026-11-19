@@ -1,6 +1,6 @@
 {
   "protocolVersion": "1.0",
-  "catalogId": "https://agnosticui.com/a2ui/v1/catalog.json",
+  "catalogId": "https://agnosticui.com",
   "instructions": "Use AgnosticUI components (AgCard, AgFieldset, AgDivider, AgHeader, AgAccordion, AgCollapsible, AgTabs, AgBreadcrumb, AgPagination, AgMessageBubble, AgAlert, AgBadge, AgAvatar, AgTag, AgEmptyState, AgTimeline, AgProgress, AgProgressRing, AgSpinner, AgSkeletonLoader, AgIcon, AgImage, AgLink, AgKbd, AgMark, AgIntlFormatter, AgButton, AgInput, AgCombobox, AgSelect, AgCheckbox, AgRadio, AgRating, AgToggle, AgSlider, AgText). Always use UAX #31 component IDs (letters, digits, underscores only; no hyphens) and bind interactive form fields using {\"@path\": \"/...\"} pointers.",
   "components": {
     "AgText": {

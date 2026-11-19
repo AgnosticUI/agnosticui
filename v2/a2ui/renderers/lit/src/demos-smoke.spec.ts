@@ -1,10 +1,3 @@
-/**
- * @file demos-smoke.spec.ts
- * @description End-to-end smoke test suite for the Support Center Studio shared pipeline
- * (idle AgEmptyState boot, prompt chip compilation & streaming, AgSlider two-way binding,
- * FACE validation, and 4-turn AgMessageBubble confirmation across Lit, React, and Vue demos).
- */
-
 import { describe, it, expect, beforeEach } from 'vitest';
 import {
   A2uiSurface,
@@ -93,7 +86,6 @@ describe('Support Center Studio End-to-End Smoke Suite', () => {
       expect(bubbles.at(1)?.getAttribute('from')).toBe('them');
     }
   });
-
   it('mounts Enterprise SLA & Credit Cap chip with AgBreadcrumb, AgSlider, AgIntlFormatter, and AgMark', async () => {
     const slaChip = QUICK_PROMPT_CHIPS.find((c) =>
       c.label.includes('Enterprise SLA'),
@@ -117,6 +109,31 @@ describe('Support Center Studio End-to-End Smoke Suite', () => {
     await settleTree(surfaceEl);
 
     expect(surfaceModel.dataModel.get('/policy/maxCredit')).toBe(3250);
+  });
+
+  it('mounts High-Intent Caller Spike with AgBreadcrumb and AgPagination two-way page binding', async () => {
+    const spikeChip = QUICK_PROMPT_CHIPS.find(
+      (c) =>
+        c.label.toLowerCase().includes('caller') ||
+        c.prompt.toLowerCase().includes('surge'),
+    );
+    expect(spikeChip).toBeDefined();
+
+    const compiled = await generateLocalA2uiSurface(spikeChip!.prompt);
+    const { surfaceModel, surfaceEl } = await mountSurfaceMessages(compiled.messages);
+
+    expect(surfaceEl.querySelector('ag-breadcrumb')).not.toBeNull();
+    const pagination = surfaceEl.querySelector('ag-pagination');
+    expect(pagination).not.toBeNull();
+    expect(surfaceModel.dataModel.get('/queue/page')).toBe(1);
+    expect(surfaceModel.dataModel.get('/queue/totalPages')).toBe(3);
+
+    pagination!.dispatchEvent(
+      new CustomEvent('page-change', { detail: { page: 2 }, bubbles: true }),
+    );
+    await settleTree(surfaceEl);
+
+    expect(surfaceModel.dataModel.get('/queue/page')).toBe(2);
   });
 
   it('enforces FACE validation and appends 4-turn confirmation bubbles on submit', async () => {

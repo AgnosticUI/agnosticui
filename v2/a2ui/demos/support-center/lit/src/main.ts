@@ -448,7 +448,7 @@ export class AgA2uiStudio extends LitElement {
     mount.appendChild(surfaceEl);
     this.activeSurfaceEl = surfaceEl;
 
-    processor.model.onAction.subscribe((action) => {
+        processor.model.onAction.subscribe((action) => {
       if (
         generation !== this.streamGeneration ||
         this.streamPhase !== 'complete'
@@ -471,9 +471,25 @@ export class AgA2uiStudio extends LitElement {
           processor.processMessages([nextMsg as never]);
         }
         runSurfaceValidation(surfaceEl, true);
-        this.logEvent(
-          'Blocked action: Approver email is required before publishing SLA policy',
-        );
+        this.logEvent(`Blocked action: ${outcome.reason}`);
+        return;
+      }
+
+      if (outcome.kind === 'update_surface') {
+        this.appliedSurfaceMessages = [
+          ...(this.appliedSurfaceMessages ?? messages),
+          ...outcome.messages,
+        ];
+        this.logEvent(`Queue view updated (${outcome.actionName})`, detail);
+        for (const nextMsg of outcome.messages) {
+          processor.processMessages([nextMsg as never]);
+        }
+        const nextModel = processor.model.getSurface('support_surface');
+        if (nextModel) {
+          surfaceEl.surface = nextModel;
+          surfaceEl.requestUpdate();
+          this.syncDataModelInspector(nextModel);
+        }
         return;
       }
 
@@ -491,11 +507,7 @@ export class AgA2uiStudio extends LitElement {
         ...outcome.messages,
       ];
       this.logEvent(
-        'FACE validation passed -> Turn ' +
-          outcome.turn +
-          ' (' +
-          outcome.actionName +
-          ')',
+        `FACE validation passed -> Turn ${outcome.turn} (${outcome.actionName})`,
         detail,
       );
 
@@ -509,6 +521,7 @@ export class AgA2uiStudio extends LitElement {
         this.syncDataModelInspector(nextModel);
       }
     });
+
     const speedMultiplier = this.playbackSpeed === '0.5x' ? 2.4 : 1;
     this.logEvent(
       `Streaming surface: ${streamLabel}${instant ? '' : ` (${this.playbackSpeed})`}`,

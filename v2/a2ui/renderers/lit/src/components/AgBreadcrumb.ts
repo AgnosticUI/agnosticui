@@ -27,7 +27,8 @@ export class AgA2uiBreadcrumbElement extends A2uiLitElement<typeof AgBreadcrumbA
     return this;
   }
 
-  private handleAction() {
+  private handleAction(e: Event) {
+    (e as CustomEvent<{ event?: MouseEvent }>).detail?.event?.preventDefault();
     void this.controller.props.action?.();
   }
 
@@ -38,7 +39,7 @@ export class AgA2uiBreadcrumbElement extends A2uiLitElement<typeof AgBreadcrumbA
       .type=${ifDefined(p.type)}
       .primary=${Boolean(p.primary)}
       .ariaLabel=${ifDefined(p.ariaLabel)}
-      @click=${this.handleAction}
+      @breadcrumb-click=${this.handleAction}
     ></ag-breadcrumb>`;
   }
 }
