@@ -8,7 +8,7 @@ import 'agnosticui-core/kbd';
 export const AgKbdSchema = z
   .object({
     children: ChildListSchema.describe('REF:#/$defs/ChildList|Child component IDs rendered inside AgKbd.').optional(),
-    variant: z.enum(['warning', 'info', 'success', 'error', 'danger', 'primary', 'default', 'monochrome', 'secondary']).optional(),
+    variant: z.enum(['warning', 'info', 'success', 'error', 'danger', 'primary', 'default', 'monochrome', 'secondary', 'inherit']).optional(),
     bordered: DynamicBooleanSchema.describe('REF:#/$defs/DynamicBoolean|Boolean property bordered.').optional(),
     background: DynamicBooleanSchema.describe('REF:#/$defs/DynamicBoolean|Boolean property background.').optional(),
     size: z.enum(['sm', 'md', 'lg']).optional(),

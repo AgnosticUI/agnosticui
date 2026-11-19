@@ -1285,7 +1285,8 @@
             "primary",
             "default",
             "monochrome",
-            "secondary"
+            "secondary",
+            "inherit"
           ]
         },
         "bordered": {
